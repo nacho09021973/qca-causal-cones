@@ -1,8 +1,14 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-14  
-**Status:** INITIAL FREEZE — NO SCOPE EXPANSION  
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS
+
 **Repository:** `nacho09021973/qca-causal-cones`
+
+**Evidence baseline:** `2c7c2c9433e5817763fbeb8e400580f54a9dbeb0`.
+Canonical promotion is recorded in
+[`2026-09-14--standard-gate-promotion.md`](../reports/2026-09-14--standard-gate-promotion.md).
+The only next front is **MASSLESS INRADIUS RIGIDITY GATE**; its outcome is OPEN.
 
 ## 1. Purpose
 
@@ -51,6 +57,9 @@ In more than one dimension the correct primitive object is directional support, 
 - For a gapless branch, it may be read from the linear slope at the relevant low-energy node.
 - For a massive relativistic sector, `|∇ω(0)| = 0`, so `c_IR` must be read from the low-energy Hamiltonian/EFT structure, not from the slope at the origin.
 - At finite lattice mass, the spatial coefficient of the interpolating Hamiltonian and the coefficient inferred only from the `k^2` term of `ω^2` need not coincide exactly because lattice corrections contribute at the same order.
+- In the verified standard Dirac couplings they differ for every `0 < m < 1`.
+  Name the extraction `c_H` or `c_{ω^2}`; do not use an unspecified finite-lattice
+  `c_IR` as though those coefficients were interchangeable.
 
 ## 3. Established status
 
@@ -96,7 +105,7 @@ Therefore:
 - `B_full`: **GEOMETRICALLY IMPOSSIBLE for exact isotropic IR ball vs finite polytope in d >= 2**;
 - `B_touch`: **NOT equivalent to “c is the maximum substrate speed”**.
 
-## 4. Live hypotheses
+## 4. Canonical hypothesis status
 
 ### A — IR universality
 
@@ -112,59 +121,92 @@ Candidate:
 
 Interpretation: `c` would be the largest isotropic causal speed compatible with every microscopic direction, not the largest microscopic directional speed.
 
-**Status: TOO STRONG IF ASSERTED FOR ALL MASSIVE FINITE-LATTICE SECTORS; LIVE IN RESTRICTED FORM**
+| Claim | Status and scope |
+| --- | --- |
+| A — IR universality | **OPEN** |
+| B_max | **REJECTED** under isotropic containment in an anisotropic causal body, d >= 2 |
+| B_full | **REJECTED / GEOMETRICALLY IMPOSSIBLE** for a nondegenerate isotropic ball equaling a finite lattice polytope, d >= 2 |
+| Exact finite-mass B* | **REJECTED IN STANDARD DIRAC FAMILY**, for both specified extractions, every 0 < m < 1 |
+| B*_0 | **VERIFIED FOR STANDARD WEYL FAMILY / GENERALITY OPEN** |
+| B*_cont | **VERIFIED FOR STANDARD DIRAC COUPLINGS / GENERALITY OPEN** |
 
-Current restricted versions:
+The restricted statements are established for the declared cases below.
+There is no general rigidity theorem, proof of A, or novelty claim.
 
-- `B*_0`: exact matching in the massless sector;
-- `B*_cont`: matching in the relativistic continuum / small dimensionless lattice-mass limit.
+## 5. Completed standard Weyl/Dirac exact gate
 
-Both remain to be tested systematically.
+**Status: PASS — 247 exact checks, zero tolerance, specific negative controls.**
 
-## 5. Pavia-family evidence
+Evidence is the committed
+[contract](../reports/2026-09-14--weyl-dirac-gate-contract.md),
+[analytic derivation](../reports/2026-09-14--weyl-dirac-exact-gate.md),
+[verification record](../reports/2026-09-14--weyl-dirac-verification.md), and
+[permanent verifier](../scripts/verify_weyl_dirac_gate.py) at `2c7c2c9`.
+Source provenance and the published sign/dagger issues are recorded there.
+The analytic proof establishes the open mass interval and continuum scaling;
+the check count alone is not their justification or a formal proof certificate.
 
-Primary sources to check are recorded in `sources/README.md`.
+### Declared family and coordinates
 
-### Massless Weyl
+The cases are d=1 A; d=2 A, B; d=3 A+, B+, A-, B-, with the standard d=2
+on-site rotation parameter fixed to zero. The d=1 Dirac reduction also covers
+the minimal two-component blocks. The seven symbols are not seven independent
+geometries: transposes/chiralities within a dimension share support, inradius
+and linear speed. There are three dimension-specific geometries in this battery.
 
-For the standard isotropic Weyl automata, the published low-`k` coefficients in `d = 2, 3` match the inradius of the normalized microscopic neighbor polytope under the embedding used in the current discussion:
+Use Cartesian Euclidean coordinates dual to unit-length neighbors and one
+complete update per time unit:
 
-- `d = 2`: candidate factor `1/sqrt(2)`;
-- `d = 3`: candidate factor `1/sqrt(3)`.
+`N_d = {(+/-1, ..., +/-1)/sqrt(d)}`,
 
-**Status: SUPPORTED; MUST BE RE-DERIVED WITH NORMALIZATION FROZEN IN THE CURRENT GATE**
+`C_micro = [-1/sqrt(d), 1/sqrt(d)]^d`,
 
-### Massive Dirac
+`r_in = 1/sqrt(d)`, `V_causal^max = 1`.
 
-For the standard block coupling
+### Massless equality
 
-`U_k = [[n A_k, i m I], [i m I, n A_k^†]]`, with `n^2 + m^2 = 1`,
+For d=1,2,3 in this family, at the declared zero node,
 
-a preliminary derivation gives, if the Weyl phase is `θ(k)`,
+`m = 0: c_0 = r_in = 1/sqrt(d)` — **EXACT**.
 
-`cos ω_D(k) = n cos θ(k)`.
+This is equality of the linear IR coefficient, not exact finite-momentum
+relativistic dispersion or a theorem about every admissible symbol.
 
-Writing `M := ω_D(0) = arcsin(m)`, the preliminary spatial coefficient of the interpolating Hamiltonian is
+### Fixed nonzero lattice mass
 
-`c_H(m) = r_in * sqrt(1-m^2) * arcsin(m) / m`
+For `U_k = [[n A_k, i m I], [i m I, n A_k^†]]`,
+`0 < m < 1`, `n = sqrt(1-m^2)`, use `U = exp(-i H)` and the logarithm branch
+continuous from the identity near the massless zero node. Then
 
-or
+`cos ω_D(k) = n cos θ(k)`, `M = ω_D(0) = arcsin(m)`,
 
-`c_H / r_in = M cot M`.
+`F(m) = arcsin(m) sqrt(1-m^2) / m = M cot M`, with `0 < F < 1`,
 
-For `0 < m < 1`, this is strictly below 1, with expansion
+`c_H = r_in F < c_{ω^2} = r_in sqrt(F) < r_in` — **EXACT**.
 
-`c_H / r_in = 1 - m^2/3 - 2 m^4/15 + O(m^6)`.
+Exact finite-mass B* is refuted in the standard family under either extraction.
+This result is no longer PRELIMINARY.
 
-The coefficient inferred from the `k^2` term of `ω_D^2` is preliminarily
+The quadratic mass-direction Hamiltonian term `b |k|^2 β` reconciles the two
+expansions: `b = r_in^2 n (1-F)/(2m)` and
+`c_H^2 + 2 M b = c_{ω^2}^2`. Their discrepancy is a lattice correction,
+not a failure of the exact spectrum or an inconsistent calculation.
 
-`c_{ω^2} = r_in * sqrt(M sqrt(1-m^2) / m)`,
+The endpoint m=1 is separate: actual hopping vanishes, active support becomes
+`{0}`, and its inradius and spatial coefficients are zero. It is not covered
+by the strict inequalities for `0 < m < 1`.
 
-which differs from `c_H(m)` at finite lattice mass.
+### Small-mass / continuum matching
 
-**Status: PRELIMINARY — NOT YET CANONICAL THEOREM. MUST BE RECHECKED FROM THE EXACT PUBLISHED AUTOMATON AND BRANCH CONVENTIONS.**
+For each standard coupling in d=1,2,3,
 
-If confirmed, exact finite-mass `B*` fails while `B*_0` / `B*_cont` survive as the relevant candidates.
+`lim_{m -> 0+} c_H(m) = lim_{m -> 0+} c_{ω^2}(m) = r_in`.
+
+**VERIFIED FOR STANDARD DIRAC COUPLINGS.** Matching is asymptotic in m;
+the equality of the limits is established analytically. The joint scaling
+of momentum, dimensionless mass, neighbor length and time step is specified
+in the report. Its continuum statement is local at fixed rescaled momentum
+and mass, not a full propagator convergence theorem on arbitrary states.
 
 ## 6. Current scientific interpretation
 
@@ -178,20 +220,31 @@ The live geometric possibility is:
 
 Whether this is forced by locality + unitarity + discrete isotropy, or is merely a feature of the Pavia construction, is unknown.
 
+At finite mass the two natural extraction procedures differ exactly. A common
+relativistic coefficient is recovered in the specified continuum limit.
+Additional equivalent representatives cannot resolve the open generality issue;
+the next gate must examine structural freedom under fixed causal geometry and
+discrete isotropy.
+
 ## 7. NEXT GATE — only allowed calculation
 
-Complete an exact Weyl/Dirac battery before opening any new substrate class.
+**MASSLESS INRADIUS RIGIDITY GATE — OPEN; admissible-class freeze comes first.**
 
-For every available Pavia case in `d = 1, 2, 3`:
+The sole question is whether another admissible massless symbol can have
+`0 < c_0 < r_in(C_micro)` while preserving the same `N`, `C_micro`, embedding,
+unitarity, homogeneity and discrete isotropy as its selected standard baseline.
 
-1. freeze the generator/neighbor set and coordinate normalization;
-2. compute `C_micro`, `h_C`, `r_in`, and `V_causal^max`;
-3. write the exact Bloch unitary;
-4. derive eigenphases exactly;
-5. derive the low-energy interpolating Hamiltonian;
-6. record the massless `c_IR`;
-7. for Dirac mass `m`, compare `r_in`, `c_H(m)`, and `c_{ω^2}(m)`;
-8. classify each equality as exact, asymptotic, false, or convention-dependent.
+The [gate charter](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md) requires the
+internal dimension, isotropy group/action and representation, node/sector,
+and any irreducibility assumptions to be explicit before solving. Do not
+silently introduce minimality or weaken the symmetry when interpreting a result.
+
+- One exact admissible counterexample refutes B*_0 for a class containing it.
+- A rigidity claim requires an exhaustive analytic argument for an explicitly
+  quantified class; failure to find a deformation is not such an argument.
+- The absence of a continuous deformation alone does not exclude disconnected
+  admissible symbols. A restricted proof leaves wider generality open.
+- Prior-art classification assumptions must be checked before any novelty claim.
 
 ### Stop rule
 
@@ -200,7 +253,11 @@ Until this gate closes:
 - **NO causal sets**;
 - **NO new substrate class**;
 - **NO broad model search**;
+- **NO anisotropic-QCA detour**;
+- **NO change of support, embedding, time normalization or discrete isotropy
+  within a declared rigidity comparison**;
 - **NO novelty claim for B***;
 - **NO use of a scalar `v_max` without definition**.
 
-A clean falsification of `B*_0` or `B*_cont` is a successful project outcome.
+A certified falsification within the frozen admissible class is a successful
+gate outcome. This promotion does not execute or close the new rigidity gate.

@@ -26,11 +26,12 @@ Interval inequalities and continuum scaling are derived separately in the
 [analytic report](../reports/2026-09-14--weyl-dirac-exact-gate.md).
 Neither artifact changes the canonical project state automatically.
 
-## Initial scope
+## Initial scope (historical)
 
-The first code added here must implement only the frozen Weyl/Dirac gate described in `state/CURRENT_STATE.md`.
+The initial freeze required the first code to implement only the standard
+Weyl/Dirac battery. That gate is now PASS for its declared cases.
 
-Expected first tasks:
+Its tasks were:
 
 - exact causal-body geometry from a declared neighbor set;
 - support function / inradius calculation;
@@ -38,4 +39,14 @@ Expected first tasks:
 - low-`k` expansion with branch conventions made explicit;
 - comparison table for `r_in`, Hamiltonian spatial coefficient, and `ω^2` coefficient.
 
-Do not add parameter scans, new model families, fitting, or optimization before the analytic gate is closed.
+## Current scope
+
+The only next calculation is the
+[massless rigidity gate](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md), under
+`state/CURRENT_STATE.md`. Freeze an admissible-class contract before adding
+its scientific code. Preserve the completed verifier and its evidence record;
+this documentation promotion does not change their hashes or check semantics.
+
+No broad scans, anisotropic detours or new substrate classes. Every retained
+scientific result must have permanent, traced generating code; no ephemeral
+scripts may supply evidence.

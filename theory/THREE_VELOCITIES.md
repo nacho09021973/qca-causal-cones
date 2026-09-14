@@ -59,6 +59,17 @@ or, in the exact continuum relativistic form,
 
 On a finite lattice, higher-order Hamiltonian terms can contribute to the `|k|^2` coefficient of `ω^2`, so the two extraction procedures must be checked rather than assumed equivalent.
 
+The completed standard Dirac gate establishes a strict difference for
+`0 < m < 1`: with `F = arcsin(m) sqrt(1-m^2)/m`,
+`c_H = r_in F < c_{ω^2} = r_in sqrt(F) < r_in`.
+The quadratic mass-direction correction satisfies
+`c_H^2 + 2 M b = c_{ω^2}^2`, where `M = arcsin(m)` and
+`b = r_in^2 sqrt(1-m^2)(1-F)/(2m)`.
+
+Thus an unspecified finite-lattice `c_IR` is ambiguous between these
+extractions. Their common massless/continuum limit is verified for the standard
+family; see the [canonical state](../state/CURRENT_STATE.md) for the claim ceiling.
+
 ## 4. Safe inequalities and unsafe identifications
 
 The robust locality statement is that spectral propagation cannot outrun the microscopic causal geometry. In one dimension this reduces to a scalar Bernstein-type bound.

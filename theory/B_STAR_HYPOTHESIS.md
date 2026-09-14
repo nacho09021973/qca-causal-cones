@@ -20,34 +20,52 @@ B* says only that the isotropic IR velocity ball is maximally inscribed in the m
 
 ## 3. Current evidence
 
-For the standard isotropic massless Weyl QCAs discussed in the Pavia literature, the low-momentum coefficients in two and three spatial dimensions match the inradius factors associated with the normalized neighbor polytopes used in the present embedding:
+**STANDARD WEYL/DIRAC EXACT GATE: PASS.** The derivation, verifier, contract
+and provenance at `2c7c2c9` establish `c_0 = r_in = 1/sqrt(d)` for the
+declared standard massless family in d=1,2,3, in unit-neighbor and unit-time
+coordinates. See the [canonical state](../state/CURRENT_STATE.md) and
+[promotion record](../reports/2026-09-14--standard-gate-promotion.md).
 
-- `d = 2`: candidate `c_IR = 1/sqrt(2)`;
-- `d = 3`: candidate `c_IR = 1/sqrt(3)`.
-
-This is evidence for a massless matching mechanism, not a theorem of the class.
+The seven symbols include transpose/chirality partners sharing geometry and
+linear speed. They cover three dimension-specific geometries, not seven
+independent tests of generality. No theorem for a general class follows.
 
 ## 4. Massive warning
 
-The standard Dirac construction couples two Weyl automata with a dimensionless lattice mass parameter. A preliminary exact-phase calculation indicates that finite lattice mass reduces the spatial coefficient of the interpolating Hamiltonian below the massless inradius value.
+For the standard Dirac couplings and every `0 < m < 1`, define
+`F = arcsin(m) sqrt(1-m^2)/m`. The exact result is
+
+`c_H = r_in F < c_{ω^2} = r_in sqrt(F) < r_in`, with `0 < F < 1`.
+
+This is an established result for the declared family, no longer preliminary.
+The quadratic mass-direction Hamiltonian correction accounts for the exact
+discrepancy between the two extraction procedures.
 
 Therefore the unrestricted statement
 
 `c_IR(m) = r_in(C_micro) for all m`
 
-is not currently viable.
+is **REJECTED IN THE STANDARD DIRAC FAMILY** under either specified
+finite-mass extraction. At m=1 the active support collapses; treat that endpoint
+separately rather than extending the strict inequalities to it.
 
 The live restricted forms are:
 
 ### B*_0 — massless matching
 
-`c_IR(m = 0) = r_in(C_micro)`.
+`c_0 = r_in(C_micro)`.
+
+**VERIFIED FOR STANDARD WEYL FAMILY / GENERALITY OPEN.**
 
 ### B*_cont — continuum/small-mass matching
 
-`lim_{m_lattice -> 0} c_IR(m_lattice) = r_in(C_micro)`.
+`lim_{m -> 0+} c_H(m) = lim_{m -> 0+} c_{ω^2}(m) = r_in(C_micro)`.
 
-These are logically distinct. `B*_cont` can survive even if exact finite-mass `B*` fails.
+**VERIFIED FOR STANDARD DIRAC COUPLINGS / GENERALITY OPEN.** The continuum
+scaling and local convergence scope are fixed in the exact-gate report.
+
+These are logically distinct. In the declared standard family, continuum
+matching holds while exact finite-mass matching fails.
 
 ## 5. Required mechanism
 
@@ -65,7 +83,16 @@ A candidate derivation should identify which assumptions are essential among:
 
 ## 6. Falsifiers
 
-B*_0 is falsified by one valid finite-range QCA satisfying the intended symmetry assumptions whose exact massless relativistic coefficient is strictly below its microscopic inradius.
+B*_0 is falsified for a class by one member whose exact, nonzero, isotropic
+massless coefficient is strictly below its microscopic inradius. The active
+front is [MASSLESS INRADIUS RIGIDITY GATE](MASSLESS_INRADIUS_RIGIDITY_GATE.md):
+retain the selected standard neighborhood, causal body, normalization,
+unitarity, homogeneity and discrete isotropy. Freeze the internal dimension,
+symmetry representation and massless sector before solving.
+
+An exhaustive proof for one fixed class is a class-specific rigidity result;
+a failed search or a test of equivalent representatives is not. Added
+minimality or irreducibility assumptions must remain explicit in the conclusion.
 
 B*_cont is falsified if a valid massive family has a small-mass/continuum limit whose relativistic speed does not approach the microscopic inradius.
 

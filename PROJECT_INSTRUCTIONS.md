@@ -55,6 +55,10 @@ For any candidate equality involving propagation speeds:
 
 For massive sectors, do not identify `c_IR` with `|∇ω(0)|`. At finite lattice mass, also do not assume that the coefficient extracted from `ω^2` is automatically identical to the coefficient of the linear spatial term in the interpolating Hamiltonian; lattice corrections can spoil that equivalence.
 
+The standard Dirac battery establishes that these coefficients differ for
+`0 < m < 1`. Use `c_H` and `c_{ω^2}` explicitly; identify them with a common
+relativistic speed only in a specified limit or after an independent proof.
+
 ## 6. Novelty discipline
 
 The scalar/trigonometric Bernstein derivative bound and its classical equality theory are prior art. Do not claim them as novel.
@@ -63,12 +67,23 @@ Potential novelty, if any, must lie in QCA-specific structural statements, causa
 
 ## 7. Current gate
 
-No new substrate class or model search until the frozen Weyl/Dirac battery is completed:
+The **STANDARD WEYL/DIRAC EXACT GATE is PASS** for its declared cases, on the
+evidence committed at `2c7c2c9`. This does not establish generality or lift all
+scope restrictions.
 
-- dimensions `d = 1, 2, 3` where the Pavia family is defined;
-- massless Weyl geometry and `c_IR`;
-- massive Dirac extension;
-- explicit comparison of `r_in(C_micro)`, the Hamiltonian spatial coefficient, and the coefficient inferred from `ω^2`;
-- exact statement of which equalities hold, fail, or only emerge in the continuum/small-mass limit.
+The only next front is **MASSLESS INRADIUS RIGIDITY GATE**, specified in
+`theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md` and governed by the canonical state.
+
+- Seek an exact massless counterexample with `0 < c_0 < r_in`, preserving
+  the selected baseline's neighborhood, causal body, physical normalization,
+  unitarity, homogeneity and discrete isotropy.
+- Before solving, freeze internal dimension, group/action and representation,
+  node/sector and any irreducibility or minimality assumption. Every rigidity
+  conclusion must retain these quantifiers.
+- Vary admissible structural coefficients, not just transpose/chirality
+  representatives with the same geometry and linear speed.
+- Do not infer rigidity from a failed search, a finite scan or local isolation.
+- No anisotropic detour, broad model search, causal sets or new substrate class.
+- Check primary classification assumptions before claiming a new rigidity theorem.
 
 Negative results are valid project outcomes.
