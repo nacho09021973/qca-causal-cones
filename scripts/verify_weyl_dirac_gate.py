@@ -251,6 +251,40 @@ def verify_negative_controls():
     check_equal("negative control: missing quadratic mass term detected", discrepancy != 0, True)
 
 
+def verify_vertex_idempotency():
+    """Addendum (2026-09-14): exact non-nilpotency certificate for every
+    d=3 corner coefficient A_h, reusing published_symbol/fourier_support.
+    This is the algebraic input for the strict-asymptotic-body baseline
+    certificate; see reports/2026-09-14--strict-asymptotic-pavia-baseline.md.
+    Governed by no separate contract; it only extracts and checks exact
+    identities already reachable from the frozen d=3 factorization."""
+    positive_generators = {(1, 1, 1), (1, -1, -1), (-1, 1, -1), (-1, -1, 1)}
+    alpha_plus = sp.Rational(1, 4) * (1 - sp.I)
+    alpha_minus = sp.Rational(1, 4) * (1 + sp.I)
+    rows = []
+    for chirality in (1, -1):
+        own, other = (alpha_plus, alpha_minus) if chirality == 1 else (alpha_minus, alpha_plus)
+        for transpose in (False, True):
+            suffix = "+" if chirality == 1 else "-"
+            name = f"d=3 {'B' if transpose else 'A'}{suffix}"
+            variables = sp.symbols("z0:3", real=True, nonzero=True)
+            matrix, _ = published_symbol(3, chirality, variables)
+            if transpose:
+                matrix = matrix.T
+            support = fourier_support(matrix, variables)
+            for h in sorted(support):
+                coefficient = support[h]
+                expected = own if h in positive_generators else other
+                check_zero(f"{name}: vertex {h} rank-one (det A_h=0)", coefficient.det())
+                check_zero(f"{name}: vertex {h} trace A_h={sp.nsimplify(expected)}",
+                           sp.trace(coefficient) - expected)
+                check_zero(f"{name}: vertex {h} A_h^2=alpha*A_h",
+                           coefficient * coefficient - expected * coefficient)
+                check_equal(f"{name}: vertex {h} nonzero eigenvalue alpha", expected != 0, True)
+                rows.append((name, str(h), sp.sstr(expected)))
+    return rows
+
+
 def run():
     CHECKS.clear()
     check_equal("source PDF SHA256", digest(SOURCE), SOURCE_SHA256)
@@ -262,6 +296,7 @@ def run():
             rows.append(verify_case(dimension, chirality, transpose))
     verify_mass_coefficients()
     verify_negative_controls()
+    vertex_rows = verify_vertex_idempotency()
     lines = [
         "# Weyl/Dirac exact verification record", "",
         f"Result: PASS — {len(CHECKS)} exact checks; zero tolerance; seven Weyl symbols and their Dirac couplings.",
@@ -281,6 +316,19 @@ def run():
         "an inradius ratio for that collapsed active body.", "",
         "Negative controls: missing dagger, reversed phase sign, omitted quadratic mass term detected.",
         "Interval proof, continuum scaling and convention limits: see the analytic report.", "",
+        "## Addendum: d=3 vertex non-nilpotency certificate (2026-09-14)", "",
+        "For every one-step corner h in {-1,1}^3/sqrt(3) and every d=3 case,",
+        "det(A_h)=0 and A_h^2=alpha*A_h with alpha in {(1-i)/4,(1+i)/4}, alpha!=0",
+        "(exact). Hence each A_h is rank-one and not nilpotent, so",
+        "A_h^n=alpha^(n-1)*A_h != 0 for every n>=1. See",
+        "reports/2026-09-14--strict-asymptotic-pavia-baseline.md for the",
+        "convexity argument that turns this into C_infty^strict=C_micro for this",
+        "baseline. Baseline-specific; not a claim about other admissible symbols.",
+        "", "| Case | Vertex h | alpha |", "| --- | --- | ---: |",
+    ])
+    lines.extend(f"| {name} | {h} | {alpha} |" for name, h, alpha in vertex_rows)
+    lines.extend([
+        "",
         "## Provenance", "",
         f"- Script SHA256: `{digest(Path(__file__))}`",
         f"- Contract SHA256: `{digest(CONTRACT)}`",

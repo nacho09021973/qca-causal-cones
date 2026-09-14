@@ -10,6 +10,16 @@ Canonical promotion is recorded in
 [`2026-09-14--standard-gate-promotion.md`](../reports/2026-09-14--standard-gate-promotion.md).
 The only next front is **MASSLESS INRADIUS RIGIDITY GATE**; its outcome is OPEN.
 
+**Correction (2026-09-14):** `B*` as a comparison against the one-step
+inradius `r_in(C_micro)` is superseded by `B_infty^*`, a comparison against
+the strict asymptotic isotropic speed `c_strict^iso`. See
+[`B_STAR_HYPOTHESIS.md`](../theory/B_STAR_HYPOTHESIS.md) and
+[`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md)
+Sec. 0. New baseline-specific certificate (does not close the gate): for the
+standard Pavia Weyl family in d=3, `C_infty^strict = C_micro` exactly, so
+`c_strict^iso = r_in(C_micro) = 1/sqrt(3)`; see
+[`2026-09-14--strict-asymptotic-pavia-baseline.md`](../reports/2026-09-14--strict-asymptotic-pavia-baseline.md).
+
 ## 1. Purpose
 
 The project asks whether the relativistic propagation speed seen in the low-energy effective theory of a finite-range QCA is determined by the causal geometry of the microscopic substrate.
@@ -113,22 +123,28 @@ Why do distinct low-energy species share the same effective relativistic cone/sp
 
 **Status: OPEN**
 
-### B* — inradius matching
+### B_infty^* — strict asymptotic matching (supersedes B* / inradius matching)
 
 Candidate:
 
-`c_IR = r_in(C_micro)`.
+`c_0 = c_strict^iso`, `c_strict^iso = min_{n̂} h_infty(n̂)`,
 
-Interpretation: `c` would be the largest isotropic causal speed compatible with every microscopic direction, not the largest microscopic directional speed.
+with `h_infty` the strict asymptotic support function of
+[`CAUSAL_BODY_GEOMETRY.md`](../theory/CAUSAL_BODY_GEOMETRY.md) Sec. 6.
+Interpretation: `c` would match the exact long-run isotropic propagation
+speed of the same dynamics, not necessarily the inradius of the one-step
+body `C_micro` — the two satisfy `c_strict^iso <= r_in(C_micro)` in general,
+with equality only where separately certified (see the d=3 row below).
 
 | Claim | Status and scope |
 | --- | --- |
 | A — IR universality | **OPEN** |
 | B_max | **REJECTED** under isotropic containment in an anisotropic causal body, d >= 2 |
 | B_full | **REJECTED / GEOMETRICALLY IMPOSSIBLE** for a nondegenerate isotropic ball equaling a finite lattice polytope, d >= 2 |
-| Exact finite-mass B* | **REJECTED IN STANDARD DIRAC FAMILY**, for both specified extractions, every 0 < m < 1 |
-| B*_0 | **VERIFIED FOR STANDARD WEYL FAMILY / GENERALITY OPEN** |
+| Exact finite-mass B* | **REJECTED IN STANDARD DIRAC FAMILY**, for both specified extractions, every 0 < m < 1 (comparison against `r_in(C_micro)`, unaffected by the B_infty^* correction) |
+| B*_0 (linear order, `c_0=r_in`) | **VERIFIED FOR STANDARD WEYL FAMILY / GENERALITY OPEN** |
 | B*_cont | **VERIFIED FOR STANDARD DIRAC COUPLINGS / GENERALITY OPEN** |
+| B_infty^*, d=3 Pavia baseline (`C_infty^strict=C_micro`, full nonlinear order) | **CERTIFIED for the standard Weyl family `A+,B+,A-,B-`**; d=1,2 not checked; other admissible symbols OPEN |
 
 The restricted statements are established for the declared cases below.
 There is no general rigidity theorem, proof of A, or novelty claim.
@@ -212,13 +228,21 @@ and mass, not a full propagator convergence theorem on arbitrary states.
 
 The live idea is no longer:
 
-`c = maximum microscopic speed`.
+`c = maximum microscopic speed`,
 
-The live geometric possibility is:
+nor, unqualified, `c_massless = r_in(C_micro)`. The live hypothesis is
+`B_infty^*`: `c_0 = c_strict^iso`, the exact strict asymptotic isotropic
+speed of the same dynamics (Sec. 4). `r_in(C_micro)` remains a provable
+upper bound (`c_strict^iso <= r_in(C_micro)`), and is known to be exactly
+attained — `c_strict^iso = r_in(C_micro)` — for the standard Pavia Weyl
+family in d=3, by an explicit vertex non-nilpotency certificate, not merely
+by the linear-order Taylor coefficient.
 
-`c_massless/continuum = largest isotropic speed compatible with the microscopic causal body = r_in(C_micro)`.
-
-Whether this is forced by locality + unitarity + discrete isotropy, or is merely a feature of the Pavia construction, is unknown.
+Whether `c_0 = c_strict^iso` is forced by locality + unitarity + discrete
+isotropy, or is merely a feature of the Pavia construction, is unknown.
+Whether `c_strict^iso` further saturates `r_in(C_micro)` for every
+admissible symbol in the class, or only for this one, is a separate,
+equally open question.
 
 At finite mass the two natural extraction procedures differ exactly. A common
 relativistic coefficient is recovered in the specified continuum limit.
@@ -229,10 +253,17 @@ discrete isotropy.
 ## 7. NEXT GATE — only allowed calculation
 
 **MASSLESS INRADIUS RIGIDITY GATE — OPEN; admissible-class freeze comes first.**
+(Charter name kept for continuity; its comparison target is corrected, see
+[`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md)
+Sec. 0.)
 
 The sole question is whether another admissible massless symbol can have
-`0 < c_0 < r_in(C_micro)` while preserving the same `N`, `C_micro`, embedding,
-unitarity, homogeneity and discrete isotropy as its selected standard baseline.
+`0 < c_0 < c_strict^iso` for its own strict asymptotic body, while preserving
+the same `N`, `C_micro`, embedding, unitarity, homogeneity and discrete
+isotropy as its selected standard baseline. A candidate whose `c_0 < r_in(C_micro)`
+only because its own strict body already falls short of `r_in(C_micro)` for a
+combinatorial reason (a nilpotent one-step coefficient) is not this
+counterexample; see the charter's Sec. 0 for the (i)/(ii) split.
 
 The [gate charter](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md) requires the
 internal dimension, isotropy group/action and representation, node/sector,
