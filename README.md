@@ -19,3 +19,12 @@ Read [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) before doing new work. I
 ## Method rule
 
 No result is promoted from exploratory to canonical merely because it fits the current narrative. Every claimed identity must be checked against the exact QCA geometry, exact unitary spectrum, and the appropriate low-energy expansion.
+
+## Local Weyl/Dirac gate artifacts
+
+The [execution contract](reports/2026-09-14--weyl-dirac-gate-contract.md),
+[exact derivation](reports/2026-09-14--weyl-dirac-exact-gate.md), and
+[reproducible verification](reports/2026-09-14--weyl-dirac-verification.md)
+cover the seven declared standard symbols in d=1,2,3 and their Dirac couplings.
+These supply evidence for review; canonical promotion remains a separate
+reason-recording commit under `PROJECT_INSTRUCTIONS.md`.
