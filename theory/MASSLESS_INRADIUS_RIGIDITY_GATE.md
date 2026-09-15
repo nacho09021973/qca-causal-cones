@@ -13,7 +13,27 @@
 > additional representation assumptions, remains OPEN, and NOVELTY remains
 > OPEN. No successor gate is chartered; current status is in
 > [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 7. The body below is
-> unchanged from the pre-counterexample charter.
+> unchanged from the pre-counterexample charter, except for the erratum
+> below.
+
+> **ERRATUM 2026-09-15 — vertex nilpotency does not decide saturation.**
+> Earlier wording in Sec. 0(ii) and in the Sec. 5 `INADMISSIBLE_SATURATION`
+> row presented a nilpotent one-step vertex coefficient as the reason for
+> `c_strict^iso < \rho_{\rm micro}`. That causal reading is withdrawn. What is
+> established:
+>
+> - For an extreme vertex `h`, the coefficient of `U^n` at `n.h` is exactly
+>   `T_h^n`. If `T_h` is nilpotent, `n.h` is not in `S_n` for large `n`.
+> - By the vertex lemma, if every vertex coefficient is non-nilpotent, then
+>   `C_infty^strict = C_micro` and (ii) holds. So a saturation failure
+>   requires at least one nilpotent vertex coefficient.
+>
+> The converse is **not established**. Losing the exact ray `n.h` does not
+> by itself determine `h_infty` or `c_strict^iso`: mixed words can still
+> reach near the vertex, and a body truncated near a vertex need not have a
+> smaller minimal support. Saturation (ii) must be computed or proved for
+> each candidate. Vertex nilpotency alone is neither a certificate of
+> `c_strict^iso < \rho_{\rm micro}` nor an admissible explanation of one.
 
 **Original status: OPEN — charter fixed; an executable admissible-class contract is
 the next step.** Authority: [CURRENT_STATE](../state/CURRENT_STATE.md).
@@ -97,13 +117,12 @@ any candidate symbol with linear massless slope `c_0`:
   strict propagation speed of the same dynamics?
 - **(ii) saturation:** does `c_strict^iso = \rho_{\rm micro}` for that symbol —
   does its strict asymptotic body fill the entire shared one-step polytope,
-  or does it fall short because some one-step Fourier coefficient is
-  nilpotent (an admissible symbol only needs `T_h != 0`, not non-nilpotent
-  powers of `T_h`)?
+  or does it fall short? (An admissible symbol only needs `T_h != 0`, not
+  non-nilpotent powers of `T_h`. A nilpotent vertex coefficient is necessary
+  for falling short but does not by itself imply it; see the erratum above.)
 
 A candidate with `c_0 < \rho_{\rm micro}` that fails only (ii) — its own
-`c_strict^iso` is already below `\rho_{\rm micro}` for a purely combinatorial
-reason — is **not** a counterexample to `B_infty^*` and is not the kind of
+`c_strict^iso` is already below `\rho_{\rm micro}` — is **not** a counterexample to `B_infty^*` and is not the kind of
 result this gate is looking for; it would only have refuted the old,
 superseded comparison against the one-step body. Only a failure of (i) is a
 genuine rigidity counterexample. See
@@ -270,7 +289,7 @@ of structural degrees of freedom.
 | --- | --- |
 | COUNTEREXAMPLE_VERIFIED | `0 < c_0 < c_strict^iso` proved for that candidate's own strict body (Sec. 0(i)): B_infty^* is false for the declared class and any broader claim including this admissible example |
 | RIGIDITY_PROVED_FOR_FROZEN_CLASS | `c_0 = c_strict^iso` is proved for every member with every class restriction retained; wider classes remain open |
-| INADMISSIBLE_SATURATION | Candidate is admissible and `c_0 = c_strict^iso` (i) holds, but `c_strict^iso < r_d` (ii) fails — a nilpotent-corner degeneracy, not a rigidity counterexample; B_infty^* is not decided by this candidate |
+| INADMISSIBLE_SATURATION | Candidate is admissible and `c_0 = c_strict^iso` (i) holds, but `c_strict^iso < r_d` (ii) fails — a saturation failure, certified by computing `c_strict^iso` and not inferred from vertex nilpotency (erratum above); not a rigidity counterexample; B_infty^* is not decided by this candidate |
 | INADMISSIBLE_CANDIDATE | At least one invariant or cone condition fails; B_infty^* is not decided |
 | INCONCLUSIVE / OPEN | No certified counterexample or exhaustive proof; a solver failure or unsuccessful search is not rigidity |
 

@@ -178,8 +178,10 @@ A candidate derivation should identify which assumptions are essential among:
 `B_infty^*` is falsified for a symbol by an exact, nonzero, isotropic
 massless coefficient `c_0` strictly below that *same symbol's own*
 `c_strict^iso`. A symbol whose `c_0 < r_in(C_micro)` only because its own
-`C_infty^strict` is a strict subset of `C_micro` (a nilpotent-corner
-degeneracy, Sec. 6) is **not** by itself a falsifier of `B_infty^*` — it
+`c_strict^iso` is already below `r_in(C_micro)` is **not** by itself a
+falsifier of `B_infty^*`. (Erratum 2026-09-15: such a shortfall requires a
+nilpotent vertex coefficient, Sec. 6, but vertex nilpotency does not by itself
+imply it; see the gate charter's erratum.) Such a symbol
 would falsify only the old, superseded `B*_0` statement against
 `r_in(C_micro)`. Distinguish these two before claiming a counterexample.
 

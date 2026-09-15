@@ -358,8 +358,22 @@ for the `s=2` question.
 ### 7.2 Successor gate — to be chartered before any calculation
 
 No successor calculation is authorized until a charter is committed. Its
-question should be narrower than the refuted strong form. Candidate
-directions, none of them frozen yet:
+question should be narrower than the refuted strong form.
+
+**Candidate from a degraded debate (2026-09-15):**
+`GATE_COMPLETITUD_AXIAL_N3 = CANDIDATE_FROM_DEGRADED_DEBATE`, **not
+authorized.** In the
+[deliberation](../debates/2026-09-15--1100--siguiente-gate-b-infinito-post-s4.md),
+four members proposed `AUTHORIZE_C`. The tool classified the run as
+`DEGRADED_NO_CONSENSUS`: ASTRA failed two turns (Codex usage limit) and was
+excluded. ASTRA's recorded preference was A, and its objection that C reaches
+`c_strict^iso` only through the still unproven bound `c_0 <= c_strict^iso`
+was left unanswered. Before any part of that charter, including its first
+test, is executed, a short ratification with all five members must run,
+using the nilpotency erratum in Sec. 7.3. Until then, none of its steps is
+authorized.
+
+Candidate directions, none of them frozen yet:
 
 1. **Surviving bounds.** Which inequalities between `c_0`, `c_strict^iso`
    and `r_in(C_micro)` hold for every admissible symbol? Currently
@@ -382,9 +396,16 @@ The original question was whether another admissible massless symbol can have
 `0 < c_0 < c_strict^iso` for its own strict asymptotic body, while preserving
 the same `N`, `C_micro`, embedding, unitarity, homogeneity and discrete
 isotropy as its selected standard baseline. A candidate whose `c_0 < r_in(C_micro)`
-only because its own strict body already falls short of `r_in(C_micro)` for a
-combinatorial reason (a nilpotent one-step coefficient) is not this
-counterexample; see the charter's Sec. 0 for the (i)/(ii) split.
+only because its own strict body already falls short of `r_in(C_micro)` is not
+this counterexample; see the charter's Sec. 0 for the (i)/(ii) split.
+
+**Erratum (2026-09-15).** Earlier wording here attributed such a shortfall to
+a nilpotent one-step coefficient. What is established is only this: a
+saturation failure `c_strict^iso < r_in(C_micro)` requires at least one
+nilpotent vertex coefficient (contrapositive of the vertex lemma). The
+converse is not established. A nilpotent vertex removes the exact ray `n.h`
+from `S_n`, but it does not by itself determine `c_strict^iso`, which must be
+computed. See the charter's erratum.
 
 The [gate charter](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md) requires the
 internal dimension, isotropy group/action and representation, node/sector,
