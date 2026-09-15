@@ -1,0 +1,67 @@
+# Sanhedrin run log
+record:       2026-09-14--1711--siguiente-paso-b-infinito-rigidez-vs-saturacion.md
+started:      2026-09-14T15:11:07Z
+command:      sanedrin -r 3 -m opus,ciro,abner,gemini -i es -c state/CURRENT_STATE.md -c theory/B_STAR_HYPOTHESIS.md -c theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md -c reports/2026-09-14--strict-asymptotic-pavia-baseline.md /tmp/claude-1000/-home-ignac-qca-causal-cones/4a45ee4d-59d2-4ee4-95f4-bba29428e0ee/scratchpad/siguiente-paso-b-infinito-rigidez-vs-saturacion.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        /tmp/claude-1000/-home-ignac-qca-causal-cones/4a45ee4d-59d2-4ee4-95f4-bba29428e0ee/scratchpad/siguiente-paso-b-infinito-rigidez-vs-saturacion.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       3
+words/turn:   500
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-sonnet-5
+astra-model:  gpt-5.5
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.270 (Claude Code)
+codex:        codex-cli 0.154.0
+grok:         grok 1.0.5 (5115b46bc9) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   state/CURRENT_STATE.md (1801 words)
+attachment:   theory/B_STAR_HYPOTHESIS.md (1292 words)
+attachment:   theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md (1773 words)
+attachment:   reports/2026-09-14--strict-asymptotic-pavia-baseline.md (1615 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-14T15:11:08Z  round 1 | CLAUDE SONNET | send | context 7178 words
+2026-09-14T15:12:06Z  round 1 | CLAUDE SONNET | recv | 58s | 500 words | ok
+2026-09-14T15:12:06Z  round 1 | CIRO | send | context 7686 words
+2026-09-14T15:15:10Z  round 1 | CIRO | recv | 184s | 671 words | ok
+2026-09-14T15:15:10Z  round 1 | ABNER | send | context 8362 words
+2026-09-14T15:17:19Z  round 1 | ABNER | recv | 129s | 389 words | ok
+2026-09-14T15:17:19Z  round 1 | GEMINI | send | context 8756 words
+2026-09-14T15:18:09Z  round 1 | GEMINI | recv | 50s | 420 words | ok
+2026-09-14T15:18:09Z  round 2 | CIRO | send | context 9180 words
+2026-09-14T15:21:26Z  round 2 | CIRO | recv | 197s | 469 words | ok
+2026-09-14T15:21:26Z  round 2 | ABNER | send | context 9654 words
+2026-09-14T15:23:11Z  round 2 | ABNER | recv | 105s | 399 words | ok
+2026-09-14T15:23:11Z  round 2 | GEMINI | send | context 10058 words
+2026-09-14T15:23:42Z  round 2 | GEMINI | recv | 31s | 448 words | ok
+2026-09-14T15:23:42Z  round 2 | CLAUDE SONNET | send | context 10512 words
+2026-09-14T15:25:01Z  round 2 | CLAUDE SONNET | recv | 79s | 585 words | ok
+2026-09-14T15:25:01Z  round 3 | ABNER | send | context 11101 words
+2026-09-14T15:26:51Z  round 3 | ABNER | recv | 110s | 395 words | ok
+2026-09-14T15:26:51Z  round 3 | GEMINI | send | context 11501 words
+2026-09-14T15:27:18Z  round 3 | GEMINI | recv | 27s | 379 words | ok
+2026-09-14T15:27:18Z  round 3 | CLAUDE SONNET | send | context 11886 words
+2026-09-14T15:28:45Z  round 3 | CLAUDE SONNET | recv | 87s | 551 words | ok
+2026-09-14T15:28:45Z  round 3 | CIRO | send | context 12442 words
+2026-09-14T15:31:56Z  round 3 | CIRO | recv | 191s | 471 words | ok
+2026-09-14T15:31:56Z  round Residuo | CLAUDE SONNET | send | context 12923 words
+2026-09-14T15:32:13Z  round Residuo | CLAUDE SONNET | recv | 17s | 370 words | ok
+2026-09-14T15:32:13Z  round Residuo | CIRO | send | context 13298 words
+2026-09-14T15:34:14Z  round Residuo | CIRO | recv | 121s | 209 words | ok
+2026-09-14T15:34:14Z  round Residuo | ABNER | send | context 13512 words
+2026-09-14T15:34:39Z  round Residuo | ABNER | recv | 25s | 154 words | ok
+2026-09-14T15:34:39Z  round Residuo | GEMINI | send | context 13671 words
+2026-09-14T15:34:57Z  round Residuo | GEMINI | recv | 18s | 186 words | ok
+2026-09-14T15:34:57Z  round Veredicto | CLAUDE SONNET | send | context 13904 words
+2026-09-14T15:35:22Z  round Veredicto | CLAUDE SONNET | recv | 25s | 815 words | ok
+2026-09-14T15:35:22Z  round Veredicto | CLAUDE SONNET | send | context 1209 words
+2026-09-14T15:35:44Z  round Veredicto | CLAUDE SONNET | recv | 22s | 786 words | ok
+2026-09-14T15:35:44Z  END | record: /home/ignac/qca-causal-cones/debates/2026-09-14--1711--siguiente-paso-b-infinito-rigidez-vs-saturacion.md | wall clock 1477s
