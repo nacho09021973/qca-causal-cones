@@ -9,7 +9,7 @@ The central scientific question is not whether locality gives a finite propagati
 - **A — IR universality:** why different low-energy species would share one relativistic causal cone;
 - **B_infty^* — strict asymptotic matching:** under which explicitly stated structural hypotheses the massless relativistic speed `c_0` equals the strict asymptotic isotropic speed `c_strict^iso` of the same dynamics. This supersedes B* against the one-step inradius. The strong form, where locality, unitarity, homogeneity and discrete isotropy alone force the equality, is **REJECTED IN THE DECLARED s=4 CLASS**; see `state/CURRENT_STATE.md`.
 
-Do not silently broaden the project to causal sets, random lattices, interacting QCA, quantum gravity, or other substrate classes before the current gate is closed.
+Do not broaden the project to causal sets, random lattices, interacting QCA, quantum gravity, or other substrate classes except under a separately chartered successor gate.
 
 ## 2. Canonical authority
 

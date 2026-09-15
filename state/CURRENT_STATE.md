@@ -20,10 +20,12 @@ inradius `r_in(C_micro)` is superseded by `B_infty^*`, a comparison against
 the strict asymptotic isotropic speed `c_strict^iso`. See
 [`B_STAR_HYPOTHESIS.md`](../theory/B_STAR_HYPOTHESIS.md) and
 [`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md)
-Sec. 0. New baseline-specific certificate (does not close the gate): for the
+Sec. 0. New baseline-specific certificate: for the
 standard Pavia Weyl family in d=3, `C_infty^strict = C_micro` exactly, so
 `c_strict^iso = r_in(C_micro) = 1/sqrt(3)`; see
 [`2026-09-14--strict-asymptotic-pavia-baseline.md`](../reports/2026-09-14--strict-asymptotic-pavia-baseline.md).
+This baseline-specific certificate did not by itself close the gate; the
+later s=4 counterexample completed it for the declared s=4 class.
 
 **Integration (2026-09-15, branch-local):** an explicit irreducible `s=4`
 family on the same `N_3`, with the same `D2` action, has
