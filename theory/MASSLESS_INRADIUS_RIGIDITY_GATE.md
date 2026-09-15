@@ -1,6 +1,21 @@
 # MASSLESS INRADIUS RIGIDITY GATE
 
-**Status: OPEN — charter fixed; an executable admissible-class contract is
+> **Status: HISTORICAL / COMPLETED BY COUNTEREXAMPLE FOR THE DECLARED s=4
+> CLASS** (2026-09-15, branch-local). This file is kept as the charter under
+> which the counterexample was judged, and it is no longer the sole authorized
+> next front. The outcome is `COUNTEREXAMPLE_VERIFIED` (Sec. 5) for the class
+> declared in
+> [`S4_STRICT_CONE_COUNTEREXAMPLE.md`](S4_STRICT_CONE_COUNTEREXAMPLE.md),
+> with an [independent review](../reports/2026-09-15--s4-independent-review.md)
+> and a [prior-art audit](../reports/2026-09-15--s4-family-prior-art-audit.md).
+> The standard Pavia `s=2`, d=3 certificate (Sec. 0) is not affected. Rigidity
+> in the published minimal `s=2` class, and in stronger classes with
+> additional representation assumptions, remains OPEN, and NOVELTY remains
+> OPEN. No successor gate is chartered; current status is in
+> [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 7. The body below is
+> unchanged from the pre-counterexample charter.
+
+**Original status: OPEN — charter fixed; an executable admissible-class contract is
 the next step.** Authority: [CURRENT_STATE](../state/CURRENT_STATE.md).
 Predecessor: STANDARD WEYL/DIRAC EXACT GATE, PASS on evidence at `2c7c2c9`.
 

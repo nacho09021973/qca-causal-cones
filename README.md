@@ -10,7 +10,7 @@ The project asks whether a relativistic low-energy propagation speed can be deri
 2. the spectral group-velocity envelope `V_grp^max`, fixed by the bands of a specific automaton;
 3. the relativistic low-energy speed `c_IR`, fixed by the effective field theory.
 
-The original strong identification `c_IR = maximum microscopic substrate speed` does **not** survive generically in finite-range lattice QCAs for spatial dimension `d >= 2`. The current live question is whether the massless/continuum relativistic speed is instead tied to the inradius of the microscopic causal body.
+The original strong identification `c_IR = maximum microscopic substrate speed` does **not** survive generically in finite-range lattice QCAs for spatial dimension `d >= 2`. Comparison with the one-step inradius was replaced by `B_infty^*`, which compares the massless speed `c_0` with the strict asymptotic isotropic speed `c_strict^iso` of the same dynamics. Its strong form has an explicit counterexample in a declared four-component class. The open question is which additional structural hypotheses, if any, restore the equality.
 
 ## Canonical state
 
@@ -36,9 +36,23 @@ standard family; exact finite-mass matching is rejected for both `c_H` and
 `c_{ω^2}`. Generality and inter-species universality remain open. The seven
 symbols share three dimension-specific geometries.
 
-## Only next front
+## Status after the s=4 counterexample
 
-[MASSLESS INRADIUS RIGIDITY GATE](theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md):
-seek `0 < c_0 < r_in` at fixed neighborhood, causal body, normalization,
-unitarity, homogeneity and discrete isotropy. Freeze the admissible class
-before solving; a failed search does not establish rigidity.
+This status is branch-local to `research/b-infinity-post-s4-gate` and has not
+been promoted to `main`.
+
+The [MASSLESS INRADIUS RIGIDITY GATE](theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md)
+is historical. It was completed by an explicit
+[s=4 strict-cone counterexample](theory/S4_STRICT_CONE_COUNTEREXAMPLE.md)
+with an [independent review](reports/2026-09-15--s4-independent-review.md)
+and a [prior-art audit](reports/2026-09-15--s4-family-prior-art-audit.md).
+
+- Strong `B_infty^*` is **REJECTED IN THE DECLARED s=4 CLASS**.
+- The standard Pavia `s=2`, d=3 equality `c_0 = c_strict^iso = 1/sqrt(3)`
+  remains **CERTIFIED** and is not affected.
+- Rigidity in the published minimal `s=2` class, and in stronger classes with
+  additional representation assumptions, remains **OPEN**.
+- **NOVELTY remains OPEN.**
+- **No successor scientific gate is currently chartered.** Candidate questions
+  are listed in [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) Sec. 7;
+  none of them authorizes new calculations yet.

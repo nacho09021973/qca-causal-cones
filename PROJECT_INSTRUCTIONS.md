@@ -7,7 +7,7 @@ This repository studies finite-range quantum cellular automata (QCA), their micr
 The central scientific question is not whether locality gives a finite propagation bound; that is background. The live questions are:
 
 - **A — IR universality:** why different low-energy species would share one relativistic causal cone;
-- **B* — inradius matching:** whether, and under what conditions, the relativistic massless/continuum speed is selected by the inradius of the microscopic causal body.
+- **B_infty^* — strict asymptotic matching:** under which explicitly stated structural hypotheses the massless relativistic speed `c_0` equals the strict asymptotic isotropic speed `c_strict^iso` of the same dynamics. This supersedes B* against the one-step inradius. The strong form, where locality, unitarity, homogeneity and discrete isotropy alone force the equality, is **REJECTED IN THE DECLARED s=4 CLASS**; see `state/CURRENT_STATE.md`.
 
 Do not silently broaden the project to causal sets, random lattices, interacting QCA, quantum gravity, or other substrate classes before the current gate is closed.
 
@@ -71,18 +71,33 @@ The **STANDARD WEYL/DIRAC EXACT GATE is PASS** for its declared cases, on the
 evidence committed at `2c7c2c9`. This does not establish generality or lift all
 scope restrictions.
 
-The only next front is **MASSLESS INRADIUS RIGIDITY GATE**, specified in
-`theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md` and governed by the canonical state.
+The **MASSLESS INRADIUS RIGIDITY GATE** (`theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md`)
+is **HISTORICAL / COMPLETED BY COUNTEREXAMPLE FOR THE DECLARED s=4 CLASS**
+(`theory/S4_STRICT_CONE_COUNTEREXAMPLE.md`, independently reviewed). It is
+no longer the sole authorized next front.
 
-- Seek an exact massless counterexample with `0 < c_0 < r_in`, preserving
-  the selected baseline's neighborhood, causal body, physical normalization,
-  unitarity, homogeneity and discrete isotropy.
+- Strong `B_infty^*` is **REJECTED IN THE DECLARED s=4 CLASS**.
+- The standard Pavia `s=2`, d=3 equality `c_0 = c_strict^iso = 1/sqrt(3)`
+  remains **CERTIFIED** and is not affected.
+- Rigidity in the published minimal `s=2` class, and in stronger classes with
+  additional representation assumptions, remains **OPEN**.
+- **NOVELTY remains OPEN.**
+- **No successor scientific gate is currently chartered.** `CURRENT_STATE.md`
+  Sec. 7 lists candidate questions only: which bounds survive, which
+  hypotheses restore rigidity, and how general the intra/inter-sector rule
+  is. Do not start new algebra, searches or solver runs on them until one is
+  chosen and chartered.
+
+Rules that carry over to any successor gate:
+
 - Before solving, freeze internal dimension, group/action and representation,
   node/sector and any irreducibility or minimality assumption. Every rigidity
   conclusion must retain these quantifiers.
 - Vary admissible structural coefficients, not just transpose/chirality
   representatives with the same geometry and linear speed.
 - Do not infer rigidity from a failed search, a finite scan or local isolation.
+- Do not promote a family identity (such as the s=4 projector-metric rule) to
+  a general QCA law without a separate proof.
 - No anisotropic detour, broad model search, causal sets or new substrate class.
 - Check primary classification assumptions before claiming a new rigidity theorem.
 

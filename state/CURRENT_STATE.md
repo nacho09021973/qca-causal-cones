@@ -13,7 +13,7 @@ unchanged, and promotion requires a separate explicit decision.
 **Evidence baseline:** `2c7c2c9433e5817763fbeb8e400580f54a9dbeb0`.
 Canonical promotion is recorded in
 [`2026-09-14--standard-gate-promotion.md`](../reports/2026-09-14--standard-gate-promotion.md).
-The only next front is **MASSLESS INRADIUS RIGIDITY GATE**; its outcome is OPEN.
+**No successor scientific gate is currently chartered** (Sec. 7).
 
 **Correction (2026-09-14):** `B*` as a comparison against the one-step
 inradius `r_in(C_micro)` is superseded by `B_infty^*`, a comparison against
@@ -165,7 +165,7 @@ with equality only where separately certified (see the d=3 row below).
 | B*_cont | **VERIFIED FOR STANDARD DIRAC COUPLINGS / GENERALITY OPEN** |
 | B_infty^*, d=3 Pavia baseline (`C_infty^strict=C_micro`, full nonlinear order) | **CERTIFIED for the standard Weyl family `A+,B+,A-,B-`** (`s=2`): `c_0 = c_strict^iso = 1/sqrt(3)`; d=1,2 not checked; unaffected by the s=4 result |
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
-| B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
+| B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
 | B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN** |
 | Novelty of the s=4 family and its strict-support statement | **OPEN** — no equivalent found in eleven checked primary sources; not a novelty certificate |
 
@@ -297,9 +297,10 @@ The live idea is no longer:
 
 `c = maximum microscopic speed`,
 
-nor, unqualified, `c_massless = r_in(C_micro)`. The live hypothesis is
+nor, unqualified, `c_massless = r_in(C_micro)`. The corrected comparison is
 `B_infty^*`: `c_0 = c_strict^iso`, the exact strict asymptotic isotropic
-speed of the same dynamics (Sec. 4). `r_in(C_micro)` remains a provable
+speed of the same dynamics (Sec. 4). Its strong form is rejected in the
+declared s=4 class (update below). `r_in(C_micro)` remains a provable
 upper bound (`c_strict^iso <= r_in(C_micro)`), and is known to be exactly
 attained — `c_strict^iso = r_in(C_micro)` — for the standard Pavia Weyl
 family in d=3, by an explicit vertex non-nilpotency certificate, not merely
@@ -325,10 +326,10 @@ open.
 At finite mass the two natural extraction procedures differ exactly. A common
 relativistic coefficient is recovered in the specified continuum limit.
 Additional equivalent representatives cannot resolve the open generality issue;
-the next gate must examine structural freedom under fixed causal geometry and
-discrete isotropy.
+any successor gate must examine structural freedom under fixed causal geometry
+and discrete isotropy.
 
-## 7. NEXT GATE — only allowed calculation
+## 7. GATE STATUS — no calculation currently authorized
 
 **MASSLESS INRADIUS RIGIDITY GATE — COUNTEREXAMPLE_VERIFIED IN DECLARED s=4
 CLASS (branch-local); s=2 and irreducible-R classes OPEN; successor gate NOT
@@ -398,7 +399,7 @@ silently introduce minimality or weaken the symmetry when interpreting a result.
 
 ### Stop rule
 
-Until this gate closes:
+Until a successor gate is chartered and closed:
 
 - **NO causal sets**;
 - **NO new substrate class**;

@@ -28,13 +28,23 @@ The corrected object, defined precisely in
 
 `c_strict^iso = min_{||n̂||=1} h_infty(n̂)`, origin fixed at `v = 0`.
 
-**The live hypothesis is now:**
+**The corrected hypothesis is:**
 
 `B_infty^*: c_0 = c_strict^iso`,
 
 for the declared gapless sector, in the same embedding/time convention used
 to define `c_0`. This replaces `B*` as stated against `r_in(C_micro)`; the
 old formulation is kept below only as history and as a special case.
+
+**Status (2026-09-15, branch-local):** the strong form, where locality,
+unitarity, homogeneity and discrete isotropy alone force `B_infty^*`, is
+**REJECTED IN THE DECLARED s=4 CLASS**
+([`S4_STRICT_CONE_COUNTEREXAMPLE.md`](S4_STRICT_CONE_COUNTEREXAMPLE.md)).
+The standard Pavia `s=2`, d=3 equality (Sec. 6) remains **CERTIFIED** and is
+not affected. Rigidity in the published minimal `s=2` class, and in stronger
+classes with additional representation assumptions, remains **OPEN**.
+**NOVELTY remains OPEN.** No successor scientific gate is currently
+chartered; see the [canonical state](../state/CURRENT_STATE.md) Sec. 7.
 
 General relation: `c_strict^iso <= r_in(C_micro)` always (trivial inclusion
 `S_n/n subseteq C_micro`), so the old `B*` and the new `B_infty^*` coincide
@@ -123,7 +133,7 @@ is **REJECTED IN THE STANDARD DIRAC FAMILY** under either specified
 finite-mass extraction. At m=1 the active support collapses; treat that endpoint
 separately rather than extending the strict inequalities to it.
 
-The live restricted forms are:
+The restricted forms are:
 
 ### B*_0 — massless matching
 
@@ -173,9 +183,16 @@ degeneracy, Sec. 6) is **not** by itself a falsifier of `B_infty^*` — it
 would falsify only the old, superseded `B*_0` statement against
 `r_in(C_micro)`. Distinguish these two before claiming a counterexample.
 
-The active front is [MASSLESS INRADIUS RIGIDITY GATE](MASSLESS_INRADIUS_RIGIDITY_GATE.md):
-retain the selected standard neighborhood, causal body, normalization,
-unitarity, homogeneity and discrete isotropy. Freeze the internal dimension,
+This falsifier has been realized. The explicit s=4 family of
+[`S4_STRICT_CONE_COUNTEREXAMPLE.md`](S4_STRICT_CONE_COUNTEREXAMPLE.md) has
+`C_infty^strict = C_micro`, `c_strict^iso = 1/sqrt(3)` and
+`c_0 = a/sqrt(3)` for `0 < a < 1`. It keeps `N_3`, the D2 action (with the
+reducible representation `sigma_i (x) I_2`) and irreducible dynamics. It was
+judged under the now historical
+[MASSLESS INRADIUS RIGIDITY GATE](MASSLESS_INRADIUS_RIGIDITY_GATE.md), which
+is no longer an active front. Any successor gate must still retain the
+selected standard neighborhood, causal body, normalization, unitarity,
+homogeneity and discrete isotropy, and freeze the internal dimension,
 symmetry representation and massless sector before solving.
 
 An exhaustive proof for one fixed class is a class-specific rigidity result;
