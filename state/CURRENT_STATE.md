@@ -363,9 +363,22 @@ explicitly instructed: "pues adelante, punto (3)". Accordingly,
 `STRICT_CONE_CEILING_N3 = AUTHORIZED_BY_DIRECT_USER_INSTRUCTION` under the
 [frozen point-(3) contract](../theory/STRICT_CONE_CEILING_N3_GATE.md).
 Its sole target is `c_0 <= c_strict^iso` in all directions, including
-degenerate Floquet nodes and eigenvalue collisions in U^n. Its initial
-scientific status is **OPEN**, not an established inequality. No L1,
+degenerate Floquet nodes and eigenvalue collisions in U^n. The contract
+was frozen at `4135625` with initial scientific status **OPEN**. No L1,
 defect-metric or other C step is authorized by this instruction.
+
+**Point-(3) result (2026-09-16):**
+`PRELIMINARY_PROOF_COMPLETE_REVIEW_PENDING`. The
+[analytic report](../reports/2026-09-16--point-3-strict-cone-ceiling.md)
+supplies a matrix-polynomial boundary bound, compression to the original
+eigenspace, a direct directional-slope argument, and the exact support
+limit. The author's assessment is `PASS_ANALYTIC` under the frozen
+contract; **independent review has not been performed**, so this does not
+promote the general inequality to ESTABLISHED. No numerical search or
+scientific script was run. The full C gate is neither ratified nor closed;
+L1 remains a manual candidate and the defect identity remains family-only.
+The s=4 example refutes equality, not this proposed ceiling.
+**NOVELTY = OPEN.**
 
 The 2026-09-16 ratification attempt is `ABORTED_OR_INCOMPLETE`: Gemini was
 absent at launch; the process was interrupted without a final verdict.
@@ -391,7 +404,8 @@ Research directions (only the point-(3) ceiling is now frozen):
    and `r_in(C_micro)` hold for every admissible symbol? Currently
    `c_strict^iso <= r_in(C_micro)` is established. `c_IR <= r_in(C_micro)`
    is established only under the isotropic-containment premise of Sec. 3.3.
-   `c_0 <= c_strict^iso` is not established in general.
+   `c_0 <= c_strict^iso` has the point-(3) preliminary proof above under
+   its frozen cone assumptions; independent review remains pending.
 2. **Restoring hypotheses.** Which explicitly stated extra assumptions (for
    example `s=2` minimality with or without Eq. (2), or an irreducible `R`)
    give `c_0 = c_strict^iso` for a whole declared class?
