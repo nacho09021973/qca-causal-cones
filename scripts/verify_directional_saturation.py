@@ -603,6 +603,118 @@ def _():
                   "this does not imply equality of Bob's full reduced states")
 
 
+def verify_local_preparation():
+    """Exact, bounded successor certificate; frozen witness helpers unchanged.
+
+    Run with --local-preparation-only. Initial |0,down>, two common steps,
+    origin phase choice, one readout step, Bob=(1,1,1). No parameter scan.
+    Backs reports/2026-09-16--alice-local-preparation.md.
+    """
+    from verify_signaling_witness import (
+        DOWN, ORIGIN, evolve, exact_blocks, norm_squared, phase_choice,
+        reduced_state, square_kernel,
+    )
+
+    count = 0
+
+    def require(condition, label):
+        nonlocal count
+        if not condition:
+            raise AssertionError(label)
+        count += 1
+        print(f"[PASS] {label}")
+
+    bob = (1, 1, 1)
+    zero = sp.zeros(2, 1)
+    initial = {ORIGIN: DOWN}
+    blocks = exact_blocks()
+    kernel2 = square_kernel(blocks)
+    one = evolve(initial, blocks)
+    prepared = evolve(initial, kernel2)
+    require(set(initial) == {ORIGIN} and norm_squared(initial) == 1,
+            "initial resource is one normalized particle at Alice only")
+    require(phase_choice(initial) == {ORIGIN: -DOWN},
+            "zero preparation steps: encoding is a global phase")
+    require(one.get(ORIGIN, zero) == zero and phase_choice(one) == one,
+            "one preparation step: origin empty, encoding has no effect")
+    require(prepared == evolve(one, blocks),
+            "two-step preparation equals two sequential unchanged steps")
+    require(prepared[ORIGIN] == -3 * DOWN / 4 and norm_squared(prepared) == 1,
+            "common prepared state has origin amplitude -3 down/4 and unit norm")
+    require(prepared.get(bob, zero) == zero,
+            "Bob is exactly vacant even at the encoding event")
+    arm_a = {ORIGIN: prepared[ORIGIN]}
+    arm_rest = {x: v for x, v in prepared.items() if x != ORIGIN}
+    require(norm_squared(arm_a) == sp.Rational(9, 16)
+            and norm_squared(arm_rest) == sp.Rational(7, 16),
+            "both coherent arms have nonzero weight: phase is not global")
+    choices = [prepared, phase_choice(prepared)]
+    require(all(choices[1][x] == (-v if x == ORIGIN else v)
+                for x, v in choices[0].items()),
+            "branches share preparation; only the origin component changes sign")
+    outputs = [evolve(state, blocks) for state in choices]
+    require(all(norm_squared(state) == 1 for state in outputs),
+            "both final global states have exact unit norm")
+    require(all(max(abs(c) for c in x) <= steps
+                for steps, state in ((1, one), (2, prepared),
+                                     (3, outputs[0]), (3, outputs[1]))
+                for x in state), "every stage respects microscopic finite range")
+    require(sum(c*c for c in bob) > 1 and max(abs(c) for c in bob) == 1
+            and blocks[tuple(-c for c in bob)] == sp.diag(0, sp.Rational(1, 4)),
+            "from encoding: Bob outside emergent cone, on populated micro boundary")
+    a = evolve(arm_a, blocks).get(bob, zero)
+    r = evolve(arm_rest, blocks).get(bob, zero)
+    require(a == -3 * DOWN / 16 and r == -DOWN / 32,
+            "Bob arm amplitudes are -3 down/16 and -down/32")
+    require([state[bob] for state in outputs] == [-7 * DOWN / 32, 5 * DOWN / 32],
+            "Bob branch amplitudes are -7 down/32 and 5 down/32")
+    # A second algebraic path: extract the block directly from the symbol cube.
+    cube = walk2() ** 3
+    direct = sp.zeros(2)
+    for i in range(2):
+        for j in range(2):
+            poly = sp.Poly(sp.expand(laurent(cube[i, j]) * sp.prod(Z)**3), *Z)
+            direct[i, j] = poly.coeff_monomial(sp.prod(z**2 for z in Z))
+    require(direct.H * DOWN == outputs[0][bob],
+            "direct Laurent extraction of W^3 agrees with sequential evolution")
+    effect = sp.diag(0, 1, 1, 1)
+    rhos = [reduced_state(state, bob) for state in outputs]
+    probs = [sp.simplify(sp.trace(effect * rho)) for rho in rhos]
+    require(probs == [sp.Rational(49, 1024), sp.Rational(25, 1024)],
+            "p0=49/1024, p1=25/1024")
+    require(probs[1] - probs[0] == -4 * sp.re((a.H*r)[0])
+            == -sp.Rational(3, 128), "signed interference difference is -3/128")
+    require(all(rho == sp.diag(1-p, 0, p, 0) and 0 <= p <= 1
+                for rho, p in zip(rhos, probs)),
+            "Bob density matrices are normalized positive states; effect bound applies")
+    require(reduced_state(evolve(prepared, blocks), bob) == rhos[0],
+            "removing the encoder makes the two Bob states identical")
+    # Remove only Alice/rest coherence at choice time, keeping both populations
+    # and all coherence within the rest. Normalize each mixture component.
+    mixtures = []
+    for encode in (False, True):
+        rho = sp.zeros(4)
+        for arm in (arm_a, arm_rest):
+            weight = norm_squared(arm)
+            component = {x: v / sp.sqrt(weight) for x, v in arm.items()}
+            if encode:
+                component = phase_choice(component)
+            rho += weight * reduced_state(evolve(component, blocks), bob)
+        mixtures.append(rho.applyfunc(sp.simplify))
+    require(mixtures[0] == mixtures[1]
+            and sp.trace(effect * mixtures[0]) == sp.Rational(37, 1024),
+            "Alice/rest dephasing: identical full Bob states, p=37/1024")
+    axial = (2, 0, 0)
+    require(blocks.get(tuple(-c for c in axial), sp.zeros(2)) == sp.zeros(2)
+            and reduced_state(outputs[0], axial) == reduced_state(outputs[1], axial),
+            "outside microscopic cone from choice: axial reduced states coincide")
+    require(all(not entry.has(sp.Float)
+                for state in (initial, one, prepared, *outputs)
+                for v in state.values() for entry in v), "all state entries are exact")
+    print(f"\n{count}/{count} exact checks passed. EXISTENCE_CONSTRUCTED; no optimization.")
+    return 0
+
+
 def main():
     width = max(len(n) for n, _, _ in CHECKS)
     failed = 0
@@ -618,4 +730,7 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    if sys.argv[1:] == ["--local-preparation-only"]:
+        sys.exit(verify_local_preparation())
+    else:
+        sys.exit(main())

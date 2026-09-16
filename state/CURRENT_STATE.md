@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-16
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body** (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; Alice-local preparation signalling witness PROVED / INDEPENDENTLY REVIEWED (Sec. 8.13) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -821,6 +821,12 @@ not external human review, consensus, or a full PASS of the optimal-D gate.
 > around Alice, Bob's optimal measurement, a globally optimal protocol and
 > experimental feasibility are not established.
 
+**Superseded clause, 2026-09-16.** The requirement of a resource already
+distributed before Alice acts is no longer open: Sec. 8.13 exhibits a
+*different* channel, in the same model, driven from a particle initially at
+Alice alone. That successor does **not** supply a preparation protocol for
+*this* channel, whose theorem, review and ceiling above are unchanged.
+
 **Controls and limits.** For an Alice-localized particle the phase gate gives
 only a global phase, hence exactly zero signal. Removing spatial coherence
 also removes this protocol's signal. At the axial control the exact zero
@@ -841,3 +847,69 @@ the experimental problem is not opened. No claim about our universe follows.
 | --- | --- |
 | Theoretical: must `c` coincide with the substrate's causal limit? | **No** — (ii), proved |
 | Physical: does it coincide in our universe? | **Unknown** — (iii) |
+
+### 8.13 ALICE_LOCAL_PREPARATION_SIGNALING_WITNESS_PROVED / INDEPENDENTLY_REVIEWED (2026-09-16)
+
+Successor to Sec. 8.12, chartered by direct user instruction as an
+**existence question only**: does the signalling channel require a resource
+that is already spatially distributed before Alice acts? **It does not.**
+See [`ALICE_LOCAL_PREPARATION_WITNESS.md`](../theory/ALICE_LOCAL_PREPARATION_WITNESS.md)
+and the [construction report](../reports/2026-09-16--alice-local-preparation.md).
+
+Same unchanged CAR lift of CJWW (5.15), same conventions. At `T = 0` the
+resource is exactly one particle, `|0,down>`, with every other mode vacant.
+Between `T = 0` and `T = 2` **only the declared free dynamics acts**, equally
+for both messages: the prepared state is `chi = S^2|0,down>`, given in closed
+form by Cayley-Hamilton (`S^2 = 2fS - I`, `f = cos p1 cos p2 cos p3`), with
+38 populated sites, `||chi|| = 1`, `chi(0) = -3 down/4` and
+`||P chi||^2 = 9/16`, `||Q chi||^2 = 7/16`. Alice encodes at `A = (2,0)`
+with `I` or `exp(i pi n_0)`; Bob measures the even non-vacuum projection at
+`B = (3,(1,1,1))`. The exact probabilities are
+
+`p_0 = 49/1024`, `p_1 = 25/1024`, `Delta p_B = 3/128 > 0`, hence **`D >= 3/128`**.
+
+**Causal origin — the load-bearing step.** The bit is exogenous at `T = 2`.
+Both conditional histories are *identical operators on the whole Fock space*
+for `T = 0, 1, 2^-`, so the mutual information between the bit and any
+pre-choice observable is exactly zero and no earlier encoding exists. Bob's
+own site is **exactly vacant** at the encoding event (`chi(1,1,1) = 0`).
+Comparing cones from `T = 2` is therefore the appropriate operational
+reference for communication. From the encoding event,
+`|y_B| = sqrt(3) > c_IR Delta T = 1` while `||y_B||_inf = 1` and
+`K_1(0,y_B) = diag(0,1/4) != 0`: Bob is outside the emergent cone and on the
+**boundary of the exact microscopic causal support**. **No microscopic
+causality bound of the model is violated.** It is explicitly *not* claimed
+that Bob is outside the emergent cone of the initial event: from `T = 0`,
+`sqrt(3) < 3`.
+
+**Claim ceiling, branch-local:**
+
+> A particle initially localized at Alice alone suffices. The ordinary
+> microscopic dynamics generates the required spatial coherence before the
+> message is chosen. A later local choice by Alice then changes a Bob
+> statistic one step afterwards, with Bob outside the emergent causal cone
+> of **that encoding event** and within the microscopic causal support.
+> This is not a violation of the model's microcausality. Optimality,
+> minimal preparation time, experimental feasibility, asymptotics, capacity
+> and any claim about our universe are **not** established.
+
+**Evidence.** `verify_directional_saturation.py --local-preparation-only`
+passes **21/21 exact checks**; the frozen witness verifier still passes
+17/17 and the default suite 27/27, unchanged. The
+[independent review](../reports/2026-09-16--alice-local-preparation-independent-review.md)
+returns **PASS, no mandatory repairs**, and explicitly covers the item most
+exposed to adversarial attack: the closed-form derivation of `S^2|0,down>`
+and the identity of the two pre-choice histories. It reconstructs the
+prepared state from a separately transcribed symbol, records SHA256 hashes of
+every reviewed input, and confirms the script change is one added function
+plus a CLI dispatch, with the frozen witness path untouched. This is one
+separate agent's independent review — **not** external human review,
+multi-member consensus, or ratification.
+
+**Relation to Sec. 8.12.** The hypothesis is strictly weaker (no pre-existing
+Alice-Bob coherence) and the geometry differs (one readout step to
+`(1,1,1)`, not two to `(2,2,2)`); the signal is smaller, `3/128` against
+`3/32`. This does **not** retroactively supply a preparation protocol for the
+Sec. 8.12 channel, whose frozen theorem and review keep their exact bytes and
+scope. The optimal-D gate stays **PARTIAL**; H1 stays **OPEN**; H3 and H4 stay
+**NOT REACHED**. The experimental problem remains unopened, by instruction.
