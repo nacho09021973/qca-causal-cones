@@ -82,11 +82,11 @@ no longer the sole authorized next front.
 - Rigidity in the published minimal `s=2` class, and in stronger classes with
   additional representation assumptions, remains **OPEN**.
 - **NOVELTY remains OPEN.**
-- **No successor scientific gate is currently chartered.** `CURRENT_STATE.md`
-  Sec. 7 lists candidate questions only: which bounds survive, which
-  hypotheses restore rigidity, and how general the intra/inter-sector rule
-  is. Do not start new algebra, searches or solver runs on them until one is
-  chosen and chartered.
+- **Only point (3), the strict-cone ceiling, is now chartered by direct user
+  instruction (2026-09-16).** See `theory/STRICT_CONE_CEILING_N3_GATE.md`
+  and `CURRENT_STATE.md` Sec. 7.2. The incomplete ratification remains
+  incomplete; the full C gate, L1 and the metric-defect steps are not
+  authorized. Other successor questions remain unchartered.
 
 Rules that carry over to any successor gate:
 

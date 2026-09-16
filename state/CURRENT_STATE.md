@@ -1,6 +1,6 @@
 # CURRENT_STATE
 
-**Date:** 2026-09-15  
+**Date:** 2026-09-16
 **Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS (branch-local)
 
 **Branch-local state.** This file is reconciled on
@@ -13,7 +13,8 @@ unchanged, and promotion requires a separate explicit decision.
 **Evidence baseline:** `2c7c2c9433e5817763fbeb8e400580f54a9dbeb0`.
 Canonical promotion is recorded in
 [`2026-09-14--standard-gate-promotion.md`](../reports/2026-09-14--standard-gate-promotion.md).
-**No successor scientific gate is currently chartered** (Sec. 7).
+**Only point (3), the strict-cone ceiling, is chartered and authorized by
+direct user instruction** (Sec. 7.2). The full C gate is not ratified.
 
 **Correction (2026-09-14):** `B*` as a comparison against the one-step
 inradius `r_in(C_micro)` is superseded by `B_infty^*`, a comparison against
@@ -331,11 +332,11 @@ Additional equivalent representatives cannot resolve the open generality issue;
 any successor gate must examine structural freedom under fixed causal geometry
 and discrete isotropy.
 
-## 7. GATE STATUS — no calculation currently authorized
+## 7. GATE STATUS — only point (3) authorized by the user
 
 **MASSLESS INRADIUS RIGIDITY GATE — COUNTEREXAMPLE_VERIFIED IN DECLARED s=4
-CLASS (branch-local); s=2 and irreducible-R classes OPEN; successor gate NOT
-YET CHARTERED.**
+CLASS (branch-local); s=2 and irreducible-R classes OPEN; point (3) ceiling
+investigation separately chartered by direct user instruction.**
 (Charter name kept for continuity; its comparison target is corrected, see
 [`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md)
 Sec. 0.) Where the charter or
@@ -355,10 +356,21 @@ historical decision material, not as a current plan. Its open point about
 whether P17 Eq. (2) is derivable from the charter's identities still matters
 for the `s=2` question.
 
-### 7.2 Successor gate — to be chartered before any calculation
+### 7.2 Point (3) — direct user authorization, not a ratification
 
-No successor calculation is authorized until a charter is committed. Its
-question should be narrower than the refuted strong form.
+**Authorization (2026-09-16):** after the incomplete ratification, the user
+explicitly instructed: "pues adelante, punto (3)". Accordingly,
+`STRICT_CONE_CEILING_N3 = AUTHORIZED_BY_DIRECT_USER_INSTRUCTION` under the
+[frozen point-(3) contract](../theory/STRICT_CONE_CEILING_N3_GATE.md).
+Its sole target is `c_0 <= c_strict^iso` in all directions, including
+degenerate Floquet nodes and eigenvalue collisions in U^n. Its initial
+scientific status is **OPEN**, not an established inequality. No L1,
+defect-metric or other C step is authorized by this instruction.
+
+The 2026-09-16 ratification attempt is `ABORTED_OR_INCOMPLETE`: Gemini was
+absent at launch; the process was interrupted without a final verdict.
+ASTRA's first turn completed, but that does not constitute five-member
+ratification. Its partial acta and log remain local and unversioned.
 
 **Candidate from a degraded debate (2026-09-15):**
 `GATE_COMPLETITUD_AXIAL_N3 = CANDIDATE_FROM_DEGRADED_DEBATE`, **not
@@ -368,12 +380,12 @@ four members proposed `AUTHORIZE_C`. The tool classified the run as
 `DEGRADED_NO_CONSENSUS`: ASTRA failed two turns (Codex usage limit) and was
 excluded. ASTRA's recorded preference was A, and its objection that C reaches
 `c_strict^iso` only through the still unproven bound `c_0 <= c_strict^iso`
-was left unanswered. Before any part of that charter, including its first
-test, is executed, a short ratification with all five members must run,
-using the nilpotency erratum in Sec. 7.3. Until then, none of its steps is
-authorized.
+was left unanswered. The earlier requirement of five-member ratification
+has not been met. The later direct user instruction above authorizes only
+point (3) under a separate contract; it does not authorize the full C gate
+or convert either incomplete debate into consensus.
 
-Candidate directions, none of them frozen yet:
+Research directions (only the point-(3) ceiling is now frozen):
 
 1. **Surviving bounds.** Which inequalities between `c_0`, `c_strict^iso`
    and `r_in(C_micro)` hold for every admissible symbol? Currently
@@ -437,4 +449,5 @@ Until a successor gate is chartered and closed:
 A certified falsification within the frozen admissible class is a successful
 gate outcome. The s=4 counterexample is such an outcome for its declared
 class only. This branch-local reconciliation does not promote anything to
-`main` and does not charter the successor gate.
+`main`. The only later successor authorization is the point-(3) contract
+in Sec. 7.2, by direct user instruction.
