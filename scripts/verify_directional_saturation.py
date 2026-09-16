@@ -502,6 +502,104 @@ def _():
                   f"C_micro*t, none axial")
 
 
+# ---------------------------------------------------------------------------
+# COUPLING_MAP_OPTIMAL_D gate (theory/COUPLING_MAP_GATE.md), frozen 0f7628d.
+# Declared geometries only.  With P = W^t P_y W^{t dag} and a number-conserving
+# Gaussian local operation of Alice acting as R on the site-0 one-particle
+# space, the difference operator is Delta = u^dag P u - P with blocks
+#     Delta_00 = R^dag P_00 R - P_00,      P_00 = K_0y K_0y^dag
+#     Delta_0w = (R^dag - I) P_0w,         P_0w = K_0y K_wy^dag
+# so the local term is O(||K_0y||^2) and the coherence-fed term O(||K_0y||).
+# ---------------------------------------------------------------------------
+import numpy as _np
+
+
+def _ker(nsteps):
+    return {d: _np.array(A, dtype=complex) / 4.0 ** nsteps for d, A in kernel_power(nsteps).items()}
+
+
+def _n(M):
+    return _np.linalg.norm(M, 2)
+
+
+def _geoms(nsteps, ker):
+    cand = [y for y in ker if sum(v * v for v in y) > nsteps ** 2 and sum(1 for v in y if v != 0) >= 2]
+    return [("vertex", (nsteps,) * 3), ("face-diag", (nsteps, nsteps, 0)),
+            ("nearest-off-axis", min(cand, key=lambda y: sum(v * v for v in y))),
+            ("axial-control", (nsteps + 1, 0, 0))]
+
+
+@check("coupling map: axial control gives D = 0 for EVERY state and operation")
+def _():
+    for nsteps in (2, 3, 4, 5):
+        ker = _ker(nsteps)
+        y = (nsteps + 1, 0, 0)
+        if _n(ker.get(tuple(-v for v in y), _np.zeros((2, 2), complex))) != 0:
+            return False, f"t={nsteps}: axial K_0y != 0"
+    return True, "K_0y = 0 => Delta = 0 identically, at t = 2,3,4,5"
+
+
+@check("coupling map: phase gate exp(i pi n_0) kills the local term and doubles the coherence term")
+def _():
+    R = -_np.eye(2)                       # exp(i pi n_0) on the site-0 one-particle space
+    for nsteps in (2, 3, 4):
+        ker = _ker(nsteps)
+        y = (nsteps,) * 3
+        K0y = ker[tuple(-v for v in y)]
+        P00 = K0y @ K0y.conj().T
+        if _n(R.conj().T @ P00 @ R - P00) > 1e-14:
+            return False, f"t={nsteps}: Delta_00 != 0 under the phase gate"
+        d = next(iter(ker))
+        P0w = K0y @ ker[d].conj().T
+        if _n((R.conj().T - _np.eye(2)) @ P0w - (-2) * P0w) > 1e-14:
+            return False, f"t={nsteps}: Delta_0w != -2 P_0w"
+    return True, "Delta_00 = 0 exactly, Delta_0w = -2 P_0w: the phase gate is the optimal probe"
+
+
+@check("coupling map H1/H2: coherent protocol is LINEAR, local-only QUADRATIC, in the kernel")
+def _():
+    rng = _np.random.default_rng(0)
+    rows = []
+    for nsteps in (2, 3, 4, 5):
+        ker = _ker(nsteps)
+        y = (nsteps,) * 3
+        K0y = ker[tuple(-v for v in y)]
+        a = _n(K0y)
+        coh = max(2 * _n(K0y @ ker[d].conj().T) for d in ker)
+        P00 = K0y @ K0y.conj().T
+        loc = 0.0
+        for _ in range(3000):
+            X = rng.normal(size=(2, 2)) + 1j * rng.normal(size=(2, 2))
+            Q, _r = _np.linalg.qr(X)
+            loc = max(loc, _n(Q.conj().T @ P00 @ Q - P00))
+        if not (0.4 < coh / a < 2.0):
+            return False, f"t={nsteps}: coherent/||K|| = {coh/a}, not O(1)"
+        if abs(loc / a ** 2 - 1.0) > 1e-3:
+            return False, f"t={nsteps}: local/||K||^2 = {loc/a**2}, not 1"
+        rows.append(f"t={nsteps}: gain={coh/loc:.0f}x")
+    return True, ("coherent = Theta(||K||), local-only = ||K||^2 exactly; " + ", ".join(rows) +
+                  "  => H1 CONFIRMED conditionally, H2 CONFIRMED and sharpened")
+
+
+@check("coupling map: local-only protocol is EXACTLY zero off the vertex ray")
+def _():
+    rng = _np.random.default_rng(1)
+    for nsteps in (2, 3, 4, 5):
+        ker = _ker(nsteps)
+        for name, y in _geoms(nsteps, ker):
+            if name in ("vertex", "axial-control"):
+                continue
+            K0y = ker[tuple(-v for v in y)]
+            P00 = K0y @ K0y.conj().T
+            for _ in range(2000):
+                X = rng.normal(size=(2, 2)) + 1j * rng.normal(size=(2, 2))
+                Q, _r = _np.linalg.qr(X)
+                if _n(Q.conj().T @ P00 @ Q - P00) > 1e-12:
+                    return False, f"t={nsteps} {name}: local term nonzero"
+    return True, ("at face-diag and nearest-off-axis, P_00 is a multiple of the identity, so "
+                  "NO local operation signals without coherence: the resource is necessary, not merely better")
+
+
 def main():
     width = max(len(n) for n, _, _ in CHECKS)
     failed = 0

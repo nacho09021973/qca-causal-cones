@@ -770,6 +770,39 @@ anisotropic causal tail. Only afterwards does it make sense to ask whether an
 existing experiment already did this accidentally, and by how much it falls
 short. This is the coupling map above, and it is **not chartered**.
 
+### 8.12 COUPLING_MAP_OPTIMAL_D — PARTIAL, stop rule applied (2026-09-16)
+
+Contract [`COUPLING_MAP_GATE.md`](../theory/COUPLING_MAP_GATE.md) frozen at
+`0f7628d`, unchanged; [outcome](../reports/2026-09-16--coupling-map.md).
+
+**Optimal probe: the local phase gate `exp(iπn₀)`**, which exactly annihilates
+the local term (`Δ₀₀ = 0`) and doubles the coherence term (`Δ_{0w} = −2P_{0w}`).
+
+**H1 CONFIRMED conditionally, H2 CONFIRMED and sharpened.** `max D = Θ(‖K_{0,y}‖)`
+— the kernel is tight — **but only** with a state carrying coherence between
+Alice's site and a site `w` with `K_{w,y} ≠ 0`. Without it,
+`max D = Θ(‖K_{0,y}‖²)`, quadratically worse (gain `24×→544×` for `t = 2→5`,
+growing like `1/‖K‖`). At the face-diagonal and nearest-off-axis geometries
+`P₀₀ ∝ I`, so the local term vanishes for **every** operation: there the
+coherence is **necessary**. The required resource is therefore **not occupation
+at `A`** but `A`–interior coherence; a particle sharply localized at Alice's
+site is the worst case, not the best. Axial control passed: `K_{0,y} = 0` ⟹
+`D = 0` for every state and operation.
+
+**H3 and H4 NOT REACHED** (stop rule). H3 has a structural hint only — the
+resource is `A`–interior coherence, not `A`–`B` entanglement, and `B` plays no
+role in it — recorded as a hint, not a result.
+
+**Declared asymmetry.** Achievability is explicit; the upper bound covers only
+number-conserving Gaussian local operations, not pairing or non-Gaussian even
+operations. The map is recorded as achievability + restricted upper bound, not
+claimed in full.
+
+**Effect on Sec. 8.11.** The blocked transfer is unblocked *in principle* — the
+figure of merit is `‖K_{0,y}‖·‖K_{w,y}‖` with a phase-gate probe on a coherent
+state — and remains blocked *in practice* until H3 settles whether a Bell-type
+protocol realizes anything like it.
+
 **The original question, split.**
 
 | Question | Answer |

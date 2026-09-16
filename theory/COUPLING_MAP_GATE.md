@@ -94,4 +94,9 @@ side is obtained, the gate records that asymmetry rather than claiming the map.
 
 ## 7. Outcome record
 
-To be filled by the report. Status on freezing: **OPEN**.
+**Status: PARTIAL — stop rule applied at the first classifiable result (2026-09-16).**
+H1 CONFIRMED conditionally, H2 CONFIRMED and sharpened, axial control passed;
+**H3 and H4 NOT REACHED.** Returns achievability plus an upper bound restricted
+to number-conserving Gaussian local operations, so the map is recorded with that
+asymmetry rather than claimed in full (Sec. 6). See
+[`2026-09-16--coupling-map.md`](../reports/2026-09-16--coupling-map.md).
