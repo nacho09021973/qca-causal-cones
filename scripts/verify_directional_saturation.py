@@ -3,9 +3,11 @@
 Backs reports/2026-09-16--directional-causal-saturation.md for the two 3D walks
 of Cedzich-Joye-Werner-Werner, arXiv:2408.02108v1, Eqs. (5.12) and (5.15).
 
-Every load-bearing claim is exact (SymPy).  Only the two "does the velocity set
-fill the body" checks are numerical, and they are tagged SUPPORTED, not
-ESTABLISHED.  Run from the repository root:
+The spectral identities and support certificates use exact algebra. Numerical
+velocity-set checks and legacy finite occupation diagnostics are tagged
+SUPPORTED, not ESTABLISHED. The latter do not optimize trace distance or
+certify asymptotic scaling; the exact signalling witness has its own verifier,
+verify_signaling_witness.py. Run from the repository root:
 
     python3 scripts/verify_directional_saturation.py
 """
@@ -509,7 +511,8 @@ def _():
 # space, the difference operator is Delta = u^dag P u - P with blocks
 #     Delta_00 = R^dag P_00 R - P_00,      P_00 = K_0y K_0y^dag
 #     Delta_0w = (R^dag - I) P_0w,         P_0w = K_0y K_wy^dag
-# so the local term is O(||K_0y||^2) and the coherence-fed term O(||K_0y||).
+# These are occupation-observable blocks, not full trace distance. The cross
+# term depends on BOTH kernels; no asymptotic scaling or optimality is tested.
 # ---------------------------------------------------------------------------
 import numpy as _np
 
@@ -531,12 +534,12 @@ def _geoms(nsteps, ker):
 
 @check("coupling map: axial control gives D = 0 for EVERY state and operation")
 def _():
-    for nsteps in (2, 3, 4, 5):
+    for nsteps in (2, 3, 4):
         ker = _ker(nsteps)
         y = (nsteps + 1, 0, 0)
         if _n(ker.get(tuple(-v for v in y), _np.zeros((2, 2), complex))) != 0:
             return False, f"t={nsteps}: axial K_0y != 0"
-    return True, "K_0y = 0 => Delta = 0 identically, at t = 2,3,4,5"
+    return True, "K_0y = 0 excludes Alice from evolved Bob algebra, at t = 2,3,4"
 
 
 @check("coupling map: phase gate exp(i pi n_0) kills the local term and doubles the coherence term")
@@ -553,14 +556,14 @@ def _():
         P0w = K0y @ ker[d].conj().T
         if _n((R.conj().T - _np.eye(2)) @ P0w - (-2) * P0w) > 1e-14:
             return False, f"t={nsteps}: Delta_0w != -2 P_0w"
-    return True, "Delta_00 = 0 exactly, Delta_0w = -2 P_0w: the phase gate is the optimal probe"
+    return True, "Delta_00 = 0, Delta_0w = -2 P_0w: phase-gate occupation identity; no optimality claim"
 
 
-@check("coupling map H1/H2: coherent protocol is LINEAR, local-only QUADRATIC, in the kernel")
+@check("coupling map: finite occupation-witness ratios (not D optimization or asymptotics)", "SUPPORTED")
 def _():
     rng = _np.random.default_rng(0)
     rows = []
-    for nsteps in (2, 3, 4, 5):
+    for nsteps in (2, 3, 4):
         ker = _ker(nsteps)
         y = (nsteps,) * 3
         K0y = ker[tuple(-v for v in y)]
@@ -573,18 +576,18 @@ def _():
             Q, _r = _np.linalg.qr(X)
             loc = max(loc, _n(Q.conj().T @ P00 @ Q - P00))
         if not (0.4 < coh / a < 2.0):
-            return False, f"t={nsteps}: coherent/||K|| = {coh/a}, not O(1)"
+            return False, f"t={nsteps}: coherent/||K|| = {coh/a}, outside historical finite range"
         if abs(loc / a ** 2 - 1.0) > 1e-3:
             return False, f"t={nsteps}: local/||K||^2 = {loc/a**2}, not 1"
         rows.append(f"t={nsteps}: gain={coh/loc:.0f}x")
-    return True, ("coherent = Theta(||K||), local-only = ||K||^2 exactly; " + ", ".join(rows) +
-                  "  => H1 CONFIRMED conditionally, H2 CONFIRMED and sharpened")
+    return True, ("finite occupation diagnostics: " + ", ".join(rows) +
+                  "; sampled local rotations, no exact maximum or asymptotic claim")
 
 
-@check("coupling map: local-only protocol is EXACTLY zero off the vertex ray")
+@check("coupling map: sampled off-vertex local occupation response vanishes", "SUPPORTED")
 def _():
     rng = _np.random.default_rng(1)
-    for nsteps in (2, 3, 4, 5):
+    for nsteps in (2, 3, 4):
         ker = _ker(nsteps)
         for name, y in _geoms(nsteps, ker):
             if name in ("vertex", "axial-control"):
@@ -596,8 +599,8 @@ def _():
                 Q, _r = _np.linalg.qr(X)
                 if _n(Q.conj().T @ P00 @ Q - P00) > 1e-12:
                     return False, f"t={nsteps} {name}: local term nonzero"
-    return True, ("at face-diag and nearest-off-axis, P_00 is a multiple of the identity, so "
-                  "NO local operation signals without coherence: the resource is necessary, not merely better")
+    return True, ("sampled occupation responses vanish at face-diag and nearest-off-axis; "
+                  "this does not imply equality of Bob's full reduced states")
 
 
 def main():

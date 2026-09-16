@@ -94,9 +94,25 @@ side is obtained, the gate records that asymmetry rather than claiming the map.
 
 ## 7. Outcome record
 
-**Status: PARTIAL — stop rule applied at the first classifiable result (2026-09-16).**
-H1 CONFIRMED conditionally, H2 CONFIRMED and sharpened, axial control passed;
-**H3 and H4 NOT REACHED.** Returns achievability plus an upper bound restricted
-to number-conserving Gaussian local operations, so the map is recorded with that
-asymmetry rather than claimed in full (Sec. 6). See
-[`2026-09-16--coupling-map.md`](../reports/2026-09-16--coupling-map.md).
+**Status: PARTIAL — original optimization not closed (corrected 2026-09-16).**
+Sections 0–6 remain the frozen contract. The earlier conditional H1
+confirmation and claimed restricted optimal-D upper bound are withdrawn:
+the calculation concerned an occupation witness, not optimization of full
+trace distance. Preparation dependence is established for the explicit phase
+protocol, not as a necessity theorem for all admissible protocols.
+**H3 and H4 remain NOT REACHED.** The earlier evaluation of `t = 5` exceeded
+the frozen times `{2,3,4}` and is recorded as a scope deviation.
+
+The separately authorized finite existence task is now **CLOSED WITH AN EXACT
+WITNESS**, at the original `t = 2` vertex geometry: `Delta p_B = 3/32`, hence
+`D >= 3/32 > 0`. It uses one site with two modes per party and does not close
+the `N = M = 1` optimization. See the
+[corrected outcome](../reports/2026-09-16--coupling-map.md) and
+[theorem with exact certificate](COUPLING_MAP_SIGNALING_WITNESS.md).
+
+The [independent four-point review](../reports/2026-09-16--signaling-witness-independent-review.md)
+is PASS, with no mandatory repairs, on the frozen witness and script hashes.
+The finite witness is **EXISTENCE_WITNESS_PROVED / INDEPENDENTLY_REVIEWED**
+(one separate agent review). Its pre-existing Alice-Bob coherence is an
+explicit resource hypothesis; preparation from Alice-localized resources,
+optimization and experimental feasibility remain unestablished.

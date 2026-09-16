@@ -770,38 +770,70 @@ anisotropic causal tail. Only afterwards does it make sense to ask whether an
 existing experiment already did this accidentally, and by how much it falls
 short. This is the coupling map above, and it is **not chartered**.
 
-### 8.12 COUPLING_MAP_OPTIMAL_D — PARTIAL, stop rule applied (2026-09-16)
+### 8.12 COUPLING_MAP_OPTIMAL_D — PARTIAL; exact signalling witness CLOSED (2026-09-16)
 
 Contract [`COUPLING_MAP_GATE.md`](../theory/COUPLING_MAP_GATE.md) frozen at
-`0f7628d`, unchanged; [outcome](../reports/2026-09-16--coupling-map.md).
+`0f7628d`: frozen Sections 0–6 unchanged, outcome corrected;
+[report](../reports/2026-09-16--coupling-map.md).
 
-**Optimal probe: the local phase gate `exp(iπn₀)`**, which exactly annihilates
-the local term (`Δ₀₀ = 0`) and doubles the coherence term (`Δ_{0w} = −2P_{0w}`).
+**Correction authorized by the user, 2026-09-16.** The former conditional H1
+confirmation, universal linear/quadratic scaling and claimed restricted
+optimal-D upper bound are withdrawn. The code computed an occupation
+witness, not full trace-distance optimization. Four finite times cannot
+establish asymptotic scaling; moreover `t = 5` exceeded the frozen `{2,3,4}`.
+The historical ratios remain descriptive only. H1 is **OPEN**; H2 establishes
+preparation dependence for the specified protocol, not necessity of coherence
+for all admissible interventions. **H3 and H4 remain NOT REACHED**.
 
-**H1 CONFIRMED conditionally, H2 CONFIRMED and sharpened.** `max D = Θ(‖K_{0,y}‖)`
-— the kernel is tight — **but only** with a state carrying coherence between
-Alice's site and a site `w` with `K_{w,y} ≠ 0`. Without it,
-`max D = Θ(‖K_{0,y}‖²)`, quadratically worse (gain `24×→544×` for `t = 2→5`,
-growing like `1/‖K‖`). At the face-diagonal and nearest-off-axis geometries
-`P₀₀ ∝ I`, so the local term vanishes for **every** operation: there the
-coherence is **necessary**. The required resource is therefore **not occupation
-at `A`** but `A`–interior coherence; a particle sharply localized at Alice's
-site is the worst case, not the best. Axial control passed: `K_{0,y} = 0` ⟹
-`D = 0` for every state and operation.
+**Finite existence task: EXISTENCE_WITNESS_PROVED / INDEPENDENTLY_REVIEWED.** The user's
+subsequent instruction chartered closure as a theorem/witness, not further
+optimization or an experimental study. See
+[`COUPLING_MAP_SIGNALING_WITNESS.md`](../theory/COUPLING_MAP_SIGNALING_WITNESS.md).
+At `t = 2`, Alice at `0`, Bob at `y = (2,2,2)`, prepare
+`(|0,down> + |y,down>)/sqrt(2)` before Alice chooses between `I` and
+`exp(i pi n_0)`. Bob measures the even non-vacuum projection at his site.
+The exact probabilities are
 
-**H3 and H4 NOT REACHED** (stop rule). H3 has a structural hint only — the
-resource is `A`–interior coherence, not `A`–`B` entanglement, and `B` plays no
-role in it — recorded as a hint, not a result.
+`p_0 = 121/512`, `p_1 = 169/512`, `Delta p_B = 3/32 > 0`, hence **`D >= 3/32`**.
 
-**Declared asymmetry.** Achievability is explicit; the upper bound covers only
-number-conserving Gaussian local operations, not pairing or non-Gaussian even
-operations. The map is recorded as achievability + restricted upper bound, not
-claimed in full.
+The theorem fixes the existing CAR/Heisenberg convention, the state,
+intervention, measurement and spacetime point. The exact kernel is nonzero
+there: Bob is outside the emergent ball and **on the microscopic boundary**.
+This proves membership in the exact causal support, not strict interior
+membership. Each local site has two modes; the original `N = M = 1`
+optimization is not closed. The
+[verifier](../scripts/verify_signaling_witness.py) passes **17/17 exact checks**.
+The [independent review](../reports/2026-09-16--signaling-witness-independent-review.md)
+returns **PASS on the four requested points, no mandatory repairs**: analytic
+probabilities, code correspondence, causal location, and the convention
+`D = (1/2)||rho_1-rho_0||_1`. It records hashes of the unchanged reviewed
+theorem and both scripts. This is one separate agent's independent review,
+not external human review, consensus, or a full PASS of the optimal-D gate.
 
-**Effect on Sec. 8.11.** The blocked transfer is unblocked *in principle* — the
-figure of merit is `‖K_{0,y}‖·‖K_{w,y}‖` with a phase-gate probe on a coherent
-state — and remains blocked *in practice* until H3 settles whether a Bell-type
-protocol realizes anything like it.
+**Claim ceiling, branch-local:**
+
+> In this free-fermion lift, given a state prepared with coherence between
+> Alice and Bob's own site before Alice's choice, that local choice changes
+> a measurement probability accessible
+> to Bob outside the emergent relativistic cone and within the exact
+> microscopic causal support. The choices are distinguishable in principle.
+> Preparation of this operational channel from resources initially localized
+> around Alice, Bob's optimal measurement, a globally optimal protocol and
+> experimental feasibility are not established.
+
+**Controls and limits.** For an Alice-localized particle the phase gate gives
+only a global phase, hence exactly zero signal. Removing spatial coherence
+also removes this protocol's signal. At the axial control the exact zero
+kernel excludes Alice from the evolved Bob algebra, hence forbids signalling
+for any initial state under even local Alice unitaries. By contrast, a zero
+occupation witness alone never certifies `D = 0`.
+
+The second coherent arm in this construction is **at Bob's initial site**;
+the earlier hint excluding Bob from the resource is withdrawn. No Bell
+protocol has been modelled. The finite interference term involves both
+`K_0y` and `K_yy` with their internal alignment, not a universal asymptotic
+law in one kernel. The empirical transfer of Sec. 8.11 remains unresolved;
+the experimental problem is not opened. No claim about our universe follows.
 
 **The original question, split.**
 
