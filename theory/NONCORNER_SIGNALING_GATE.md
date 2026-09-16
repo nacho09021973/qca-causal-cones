@@ -100,8 +100,8 @@ Everything else in `Z^3` is excluded by an exact criterion, not by a search:
 The domain is therefore **finite, of size 4, and requires no search**. The
 support decomposition above is a reading of the frozen symbol, **not** a
 proved statement of this repository: it is re-certified exactly as execution
-step 0 (Sec. 10), and if certification fails the domain is recomputed from the
-certified support before any physical conclusion is drawn.
+step 0 (Sec. 10). **If that certification fails, the reduction to four points
+is void and the run stops**, under the binding stop rule of Sec. 10.
 
 ## 4. Symmetries
 
@@ -292,10 +292,21 @@ Binding on every outcome.
 
 Minimal exact computation, in order:
 
-0. **Certify the one-step support** exactly from the frozen symbol: exhibit
-   `supp K_1` and check it equals the 14 displacements of Sec. 3. Recompute
-   the admissible set from the certified support. On mismatch, stop at
-   `OPEN_AFTER_EXACT_BOUNDED_ANALYSIS`.
+0. **Certify the one-step support — BINDING STOP RULE.** Exhibit `supp K_1`
+   exactly and algebraically from the frozen symbol, and check it equals the
+   14 displacements of Sec. 3. This is **not** a routine preliminary. The
+   whole gate is one chain,
+
+   ```
+   exact supp K_1  =>  admissible domain  =>  the four sites  =>  M(y) at each
+   ```
+
+   and a failure of the first arrow voids the reduction, not merely one of its
+   steps. **On any mismatch: stop before evaluating any `M(y)`, assign
+   `OPEN_AFTER_EXACT_BOUNDED_ANALYSIS`, and report the domain discrepancy. Do
+   not repair, recompute or widen the domain, and do not proceed to the
+   remaining steps, in the same run.** A corrected domain is a new contract,
+   frozen separately before any evaluation.
 1. **Reuse `chi`.** The prepared state `chi = S^2|0,down>`, its origin
    component `P chi = -3 down/4` and the remainder `Q chi` are already built
    by the existing `--local-preparation-only` path. Do not recompute them by
