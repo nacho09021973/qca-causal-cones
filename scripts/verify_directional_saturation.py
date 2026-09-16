@@ -373,6 +373,135 @@ def _():
         "a finite rate => the angular structure of I is NOT resolved here")
 
 
+# ---------------------------------------------------------------------------
+# SUBSTRATE_CONE_OBSERVABILITY gate
+# (theory/SUBSTRATE_CONE_OBSERVABILITY_GATE.md).
+#
+# Free-fermion (CAR) lift of walk (5.15).  On the one-particle sector the
+# Bogoliubov automorphism gives alpha_t(n_x) = W^t P_x W^{t dag}, so
+#
+#     [alpha_t(n_x), n_y]  has (y,y') block  (W^t)_{y,x} ((W^t)_{y',x})^dag
+#
+# for y' != y.  Hence the commutator is nonzero exactly when the single-particle
+# kernel (W^t)_{y,x} is, and the operational causal structure of the lift is the
+# strict support of W^t.  Kernels are computed in EXACT Gaussian integers by
+# scaling W by 4 (every entry of 4*W_x lies in Z[i]).
+# ---------------------------------------------------------------------------
+
+
+def scaled_blocks():
+    """{x: 4*W_x} as exact Gaussian-integer 2x2 blocks, for walk (5.15)."""
+    out = {}
+    for i in range(2):
+        for j in range(2):
+            poly = sp.Poly(sp.expand(laurent(walk2()[i, j]) * Z[0] * Z[1] * Z[2]), *Z)
+            for mono, coeff in poly.terms():
+                x = tuple(int(m) - 1 for m in mono)
+                c = sp.nsimplify(sp.simplify(coeff * 4))
+                if c == 0:
+                    continue
+                if c != sp.re(c) + sp.I * sp.im(c) or sp.re(c) != int(sp.re(c)) or sp.im(c) != int(sp.im(c)):
+                    raise ValueError(f"4*W_{x}[{i},{j}] = {c} is not a Gaussian integer")
+                out.setdefault(x, [[0, 0], [0, 0]])[i][j] = complex(int(sp.re(c)), int(sp.im(c)))
+    return {x: [[b[0][0], b[0][1]], [b[1][0], b[1][1]]] for x, b in out.items()}
+
+
+def mat_mul(A, B):
+    return [[A[0][0] * B[0][0] + A[0][1] * B[1][0], A[0][0] * B[0][1] + A[0][1] * B[1][1]],
+            [A[1][0] * B[0][0] + A[1][1] * B[1][0], A[1][0] * B[0][1] + A[1][1] * B[1][1]]]
+
+
+def nonzero(A):
+    return any(v != 0 for row in A for v in row)
+
+
+def kernel_power(nsteps):
+    """Strict support and blocks of (4W)^n, exactly."""
+    base = scaled_blocks()
+    ker = {(0, 0, 0): [[1, 0], [0, 1]]}
+    for _ in range(nsteps):
+        nxt = {}
+        for y, A in ker.items():
+            for d, B in base.items():
+                z = (y[0] + d[0], y[1] + d[1], y[2] + d[2])
+                P = mat_mul(B, A)
+                if z in nxt:
+                    nxt[z] = [[nxt[z][i][j] + P[i][j] for j in range(2)] for i in range(2)]
+                else:
+                    nxt[z] = P
+        ker = {y: A for y, A in nxt.items() if nonzero(A)}
+    return ker
+
+
+@check("lift: strict support of W^t never leaves t*C_micro, and reaches its vertices")
+def _():
+    rows = []
+    for n in (1, 2, 3, 4):
+        ker = kernel_power(n)
+        if max(max(abs(v) for v in y) for y in ker) != n:
+            return False, f"t={n}: support leaves [-t,t]^3"
+        if (n, n, n) not in ker:
+            return False, f"t={n}: vertex ray not reached"
+        rows.append(f"t={n}: |supp|={len(ker)}, vertex block={ker[(n,n,n)][0][0]}/4^{n}")
+    return True, "; ".join(rows) + "  [H4: C_micro is the exact outer boundary]"
+
+
+@check("lift H2: nonzero commutator strictly OUTSIDE the light cone, off-axis")
+def _():
+    rows = []
+    for n in (1, 2, 3, 4):
+        ker = kernel_power(n)
+        # points in the strict support that are outside the emergent cone |y| <= c*t
+        outside = [y for y in ker if y[0] ** 2 + y[1] ** 2 + y[2] ** 2 > n * n]
+        if not outside:
+            return False, f"t={n}: nothing outside the light cone"
+        # the commutator needs a second populated site y' != y
+        y = (n, n, n)
+        others = [z for z in ker if z != y]
+        if not others:
+            return False, f"t={n}: no second site, commutator degenerate"
+        blk = ker[y]
+        comm_block = mat_mul(blk, [[ker[others[0]][0][0].conjugate(), ker[others[0]][1][0].conjugate()],
+                                   [ker[others[0]][0][1].conjugate(), ker[others[0]][1][1].conjugate()]])
+        if not nonzero(comm_block):
+            return False, f"t={n}: (y,y') block vanishes"
+        rows.append(f"t={n}: {len(outside)} sites outside B(c)t, |y|={sp.sqrt(3)*n if y==(n,n,n) else ''}")
+    return True, ("vertex ray |y| = sqrt(3) t > ct is in the strict support with "
+                  "nonzero (y,y') block => signalling possible outside B(c); "
+                  "magnitude ||(W_sigma)^t|| = 4^-t")
+
+
+@check("lift H3: EXACTLY zero commutator along the six axial directions beyond ct")
+def _():
+    for n in (1, 2, 3, 4):
+        ker = kernel_power(n)
+        for axis in range(3):
+            for L in range(n + 1, n + 4):
+                for sgn in (+1, -1):
+                    y = [0, 0, 0]
+                    y[axis] = sgn * L
+                    if tuple(y) in ker:
+                        return False, f"t={n}: axial site {tuple(y)} with L={L} > ct is populated"
+    return True, ("v_sub(e_i) = c, so every axial site beyond ct lies outside C_micro: "
+                  "kernel exactly zero, commutator exactly zero, no superluminal tail on-axis")
+
+
+@check("lift: the accessible region is exactly C_micro*t minus the light cone")
+def _():
+    n = 3
+    ker = kernel_power(n)
+    outside_cone = sorted(y for y in ker if y[0] ** 2 + y[1] ** 2 + y[2] ** 2 > n * n)
+    # every such site must satisfy ||y||_inf <= t (inside C_micro*t) ...
+    if any(max(abs(v) for v in y) > n for y in outside_cone):
+        return False, "a signalling site lies outside C_micro*t"
+    # ... and none of them may be axial
+    axial = [y for y in outside_cone if sum(1 for v in y if v != 0) == 1]
+    if axial:
+        return False, f"axial sites outside the cone: {axial}"
+    return True, (f"t={n}: {len(outside_cone)} sites strictly outside B(c)t, all inside "
+                  f"C_micro*t, none axial")
+
+
 def main():
     width = max(len(n) for n, _, _ in CHECKS)
     failed = 0

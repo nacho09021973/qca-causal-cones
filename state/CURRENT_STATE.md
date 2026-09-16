@@ -674,6 +674,41 @@ No evidence is offered here in either direction. This project makes **no claim
 about our universe**; asserting (iii) from (i)-(ii) would be a category error,
 since (i) is an existence result inside a declared model class.
 
+### 8.10 SUBSTRATE_CONE_OBSERVABILITY — PASSED, gate CLOSED (2026-09-16)
+
+Contract [`SUBSTRATE_CONE_OBSERVABILITY_GATE.md`](../theory/SUBSTRATE_CONE_OBSERVABILITY_GATE.md)
+frozen at `d86b018` before solving;
+[outcome](../reports/2026-09-16--substrate-cone-observability.md). This lifts
+the Sec. 8.8 `NOT_AUTHORIZED` for the signalling question only.
+
+The question was operational: for `ct < L < v_sub(n̂)t`, is `D = 0` or `D > 0`?
+It is **undefined** for the one-particle walk, so the gate declared a
+free-fermion (CAR) lift. On the one-particle sector `α_t(n_x) = W^t P_x W^{t†}`,
+so `[α_t(n_x), n_y]` has `(y,y')` block `(W^t)_{y,x}((W^t)_{y',x})†` and is
+nonzero exactly when the single-particle kernel is. **The operational causal
+structure of the lift is the strict support of `W^t`** — the object already
+certified in Sec. 8.5.
+
+**Answer: `D > 0`, exponentially small, strictly off-axis.** Exactly zero for
+`L > v_sub(n̂)t` (H4); nonzero `∝ 4^{-t}` at the vertex rays for
+`ct < L < v_sub(n̂)t` (H2); **exactly zero in the six axial directions** for
+every `L > ct`, since `v_sub(ê_i) = c` (H3). At `t = 3`, 108 of the 148
+populated sites lie strictly outside `B(c)t`, all inside `C_micro t`, none
+axial. **ESTABLISHED (exact, Gaussian-integer kernels).**
+
+This is the signature sought: fundamental causality outside the light cone with
+no superluminal ballistic propagation, carrying the angular fingerprint
+`v_sub(n̂) = ‖n̂‖₁ c`.
+
+**Limits.** Statements are about the lift, not the one-particle walk. A nonzero
+commutator means *there exists* an intervention and a state with `D > 0`; no
+specific protocol's `D` and no channel capacity were computed. How the
+suppression varies across `C_micro \ B(c)` is the anisotropic `I(v)` question,
+still `NOT_AUTHORIZED`. No claim about our universe: Sec. 8.9(iii) stands at
+UNKNOWN, and a wider cone fully decoupled from accessible observables would be
+invisible to any experiment, so no null result can establish exact coincidence.
+No experimental or LIV constraint survey is authorized.
+
 **The original question, split.**
 
 | Question | Answer |

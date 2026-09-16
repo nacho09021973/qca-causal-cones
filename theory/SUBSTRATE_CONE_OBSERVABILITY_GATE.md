@@ -88,4 +88,7 @@ substrate is **not** physically accessible by this mechanism.
 
 ## 5. Outcome record
 
-To be filled by the report. Status on freezing: **OPEN**.
+**Status: H1-H4 all CONFIRMED. Gate PASSED and CLOSED (2026-09-16).**
+See [`2026-09-16--substrate-cone-observability.md`](../reports/2026-09-16--substrate-cone-observability.md).
+Answer to Sec. 0: for `ct < L < v_sub(n̂)t`, `D > 0`, exponentially small
+(`∝ 4^{-t}` at the vertex rays), and possible only in non-axial directions.
