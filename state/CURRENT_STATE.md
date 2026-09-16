@@ -394,9 +394,13 @@ The s=4 example refutes equality and is consistent with this ceiling.
 **NOVELTY = OPEN.**
 
 The 2026-09-16 ratification attempt is `ABORTED_OR_INCOMPLETE`: Gemini was
-absent at launch; the process was interrupted without a final verdict.
-ASTRA's first turn completed, but that does not constitute five-member
-ratification. Its partial acta and log remain local and unversioned.
+absent at launch; the process was interrupted without a final verdict. Three
+first-round turns completed — ASTRA `PREFER_A`, CLAUDE OPUS `RATIFY_C`
+conditioned on its own amendment (i), CIRO `RATIFY_C` — and ABNER's turn was
+sent but never returned. That is neither a closed round nor five-member
+ratification, so the status above is unchanged. The partial acta is archived
+at [`2026-09-16--ratificacion-gate-completitud-axial-n3.md`](../debates/2026-09-16--ratificacion-gate-completitud-axial-n3.md);
+the raw session log stays local and unversioned.
 
 **Candidate from a degraded debate (2026-09-15):**
 `GATE_COMPLETITUD_AXIAL_N3 = CANDIDATE_FROM_DEGRADED_DEBATE`, **not
