@@ -39,6 +39,32 @@ Its tasks were:
 - low-`k` expansion with branch conventions made explicit;
 - comparison table for `r_in`, Hamiltonian spatial coefficient, and `ω^2` coefficient.
 
+## Directional causal saturation (2026-09-16)
+
+`verify_directional_saturation.py` is the traced evidence for the
+[directional saturation report](../reports/2026-09-16--directional-causal-saturation.md),
+covering the two 3D walks of CJWW `sources/2408.02108v1.pdf`, Eqs. (5.12) and (5.15).
+It is a verification of a chartered report, not a new gate calculation, and it
+changes no canonical state.
+
+Requirements: Python 3.12 and `sympy==1.14.0`. Run from the repository root:
+
+```sh
+python3 scripts/verify_directional_saturation.py
+```
+
+Fourteen of the fifteen checks are exact. The one numerical check — whether the
+group-velocity sets fill the tricylinder and the ball — is tagged
+`SUPPORTED (numerical)` in its own output and must not be cited as ESTABLISHED.
+The script fails closed: any exception counts as a failed check and the exit
+status is nonzero.
+
+Two refinements of the printed source were found while writing it and are
+recorded in the report: the trace of the literal product (5.12) is
+`ccc + sss`, not the `ccc - sss` printed in (5.13) (the two differ by `p -> -p`);
+and for (5.15) the equality set of `|grad omega| = 1` is the full axial lines
+through the conical points, not only the tips.
+
 ## Current scope
 
 The only next calculation is the

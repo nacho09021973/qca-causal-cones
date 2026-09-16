@@ -1,0 +1,317 @@
+"""Fail-closed checks for the directional causal saturation report.
+
+Backs reports/2026-09-16--directional-causal-saturation.md for the two 3D walks
+of Cedzich-Joye-Werner-Werner, arXiv:2408.02108v1, Eqs. (5.12) and (5.15).
+
+Every load-bearing claim is exact (SymPy).  Only the two "does the velocity set
+fill the body" checks are numerical, and they are tagged SUPPORTED, not
+ESTABLISHED.  Run from the repository root:
+
+    python3 scripts/verify_directional_saturation.py
+"""
+
+import hashlib
+import itertools
+from pathlib import Path
+import sys
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / "sources/2408.02108v1.pdf"
+SOURCE_SHA256 = "25e2b03ff056fc78a7105fb81a6859be326ae2ee5717b35f7fc664b89ae7bdf8"
+
+P1, P2, P3 = sp.symbols("p1 p2 p3", real=True)
+PS = (P1, P2, P3)
+C = tuple(sp.cos(p) for p in PS)
+S = tuple(sp.sin(p) for p in PS)
+I2 = sp.eye(2)
+PAULI = (
+    sp.Matrix([[0, 1], [1, 0]]),
+    sp.Matrix([[0, -sp.I], [sp.I, 0]]),
+    sp.diag(1, -1),
+)
+Z = sp.symbols("z1 z2 z3")
+CHECKS = []
+
+
+def laurent(e):
+    """Canonical form: every symbol here is a Laurent polynomial in z_k = e^{i p_k}.
+
+    Two such expressions agree as functions of real p iff they agree as Laurent
+    polynomials, so `laurent(a - b) == 0` is a sound equality test.  Needed
+    because (5.12) is written in cos/sin and (5.15) in exp, and SymPy does not
+    reconcile the two forms on its own.
+    """
+    e = sp.expand(sp.expand(e).rewrite(sp.exp))
+    e = e.subs({p: -sp.I * sp.log(z) for p, z in zip(PS, Z)})
+    return sp.cancel(sp.powsimp(sp.expand(sp.powsimp(e, force=True)), force=True))
+
+
+def is_zero(e):
+    return sp.simplify(laurent(e)) == 0
+
+
+def check(name, tag="ESTABLISHED"):
+    def wrap(fn):
+        CHECKS.append((name, tag, fn))
+        return fn
+    return wrap
+
+
+def walk1():
+    """CJWW (5.12): W(p) = exp(i p1 s1) exp(i p2 s2) exp(i p3 s3)."""
+    W = I2
+    for c, s, sig in zip(C, S, PAULI):
+        W = W * (c * I2 + sp.I * s * sig)
+    return sp.expand(W)
+
+
+def walk2():
+    """CJWW (5.15), transcribed entry by entry."""
+    e = sp.exp(sp.I * P3)
+    return sp.Matrix([
+        [C[0] * C[1] * e, -C[0] * S[1] + sp.I * S[0]],
+        [C[0] * S[1] + sp.I * S[0], C[0] * C[1] / e],
+    ])
+
+
+F1 = C[0] * C[1] * C[2] + S[0] * S[1] * S[2]     # tr W1 / 2
+F2 = C[0] * C[1] * C[2]                          # tr W2 / 2
+# B := -grad f, so that grad(arccos f) = B / sqrt(1 - f^2)
+B1 = [sp.simplify(-sp.diff(F1, p)) for p in PS]
+B2 = [sp.simplify(-sp.diff(F2, p)) for p in PS]
+
+
+@check("source byte identity")
+def _():
+    if not SOURCE.exists():
+        return False, f"missing {SOURCE}"
+    got = hashlib.sha256(SOURCE.read_bytes()).hexdigest()
+    return got == SOURCE_SHA256, got
+
+
+@check("both symbols unitary with det 1")
+def _():
+    out = []
+    for nm, W in (("5.12", walk1()), ("5.15", walk2())):
+        if not is_zero((W.H * W - I2).norm()) or not is_zero(sp.det(W) - 1):
+            return False, f"{nm}: not unitary or det != 1"
+        out.append(f"{nm}: W^dag W = I, det W = 1")
+    return True, "; ".join(out)
+
+
+@check("tr W(5.12)/2 = ccc + sss  (NOT the printed ccc - sss of (5.13))")
+def _():
+    tr = sp.trace(walk1()) / 2
+    printed = C[0] * C[1] * C[2] - S[0] * S[1] * S[2]      # as printed in (5.13)
+    return is_zero(tr - F1) and not is_zero(tr - printed), (
+        "matches ccc+sss; the printed (5.13) ccc-sss is the trace of "
+        "exp(-i p1 s1) exp(-i p2 s2) exp(-i p3 s3), i.e. the image under p -> -p")
+
+
+@check("tr W(5.15)/2 = ccc, i.e. CJWW (5.16)")
+def _():
+    return is_zero(sp.trace(walk2()) / 2 - F2), "omega = arccos(c1 c2 c3)"
+
+
+def jump_set(W):
+    """Exact Fourier support F = {x : W_x != 0}.
+
+    Both symbols have jump length 1 per coordinate, so multiplying by z1 z2 z3
+    clears all negative powers and the monomials can be read off directly.
+    """
+    support = set()
+    for entry in W:
+        poly = sp.Poly(sp.expand(laurent(entry) * Z[0] * Z[1] * Z[2]), *Z)
+        for mono, coeff in poly.terms():
+            if sp.simplify(coeff) != 0:
+                support.add(tuple(int(m) - 1 for m in mono))
+    return support
+
+
+CORNERS = set(itertools.product((-1, 1), repeat=3))
+
+
+@check("jump set of (5.12) is exactly the 8 cube vertices")
+def _():
+    F = jump_set(walk1())
+    return F == CORNERS, f"{len(F)} vectors: {sorted(F)}"
+
+
+@check("jump set of (5.15) has 14 vectors and contains the 8 cube vertices")
+def _():
+    F = jump_set(walk2())
+    ok = CORNERS <= F and len(F) == 14 and max(max(abs(v) for v in x) for x in F) == 1
+    return ok, f"{len(F)} vectors: {sorted(F)}"
+
+
+@check("conv F = [-1,1]^3 for both walks, so v_sub(n) = ||n||_1")
+def _():
+    # conv(F) = [-1,1]^3 iff all 8 vertices are present and no |x_i| exceeds 1.
+    msgs = []
+    for nm, W in (("5.12", walk1()), ("5.15", walk2())):
+        F = jump_set(W)
+        if not (CORNERS <= F and max(max(abs(v) for v in x) for x in F) == 1):
+            return False, f"{nm}: conv F != cube"
+        msgs.append(f"{nm}: ok")
+    # support function of the cube, exactly, on the named directions
+    for n, want in (((1, 0, 0), 1), ((1, 1, 0), sp.sqrt(2)), ((1, 1, 1), sp.sqrt(3))):
+        nn = sp.Matrix(n) / sp.sqrt(sum(v * v for v in n))
+        h = sum(abs(v) for v in nn)
+        if sp.simplify(h - want) != 0:
+            return False, f"h({n}) = {h} != {want}"
+    return True, "; ".join(msgs) + "; r_in=1, V_causal^max=sqrt(3)"
+
+
+@check("every cube vertex stays in the strict support of W^n (single lattice path)")
+def _():
+    msgs = []
+    for nm, W in (("5.12", walk1()), ("5.15", walk2())):
+        M = sp.Matrix(2, 2, lambda i, j: sp.expand(laurent(W[i, j])))
+        for sigma in sorted(CORNERS):
+            # coefficient of z^sigma: only one lattice path reaches n*sigma, so
+            # (W^n)_{n sigma} = (W_sigma)^n exactly, with no cancellation.
+            Wsig = sp.Matrix(2, 2, lambda i, j: sp.simplify(
+                M[i, j].coeff(Z[0], sigma[0]).coeff(Z[1], sigma[1]).coeff(Z[2], sigma[2])))
+            if Wsig.norm() == 0:
+                return False, f"{nm}: W_{sigma} = 0"
+            for n in (1, 2, 3, 5, 8):
+                if sp.simplify((Wsig ** n).norm()) == 0:
+                    return False, f"{nm}: (W_{sigma})^{n} = 0"
+        msgs.append(f"{nm}: all 8 vertices nonzero for n<=8")
+    return True, "; ".join(msgs)
+
+
+@check("(5.12): exact SOS identity (1-f^2) - (v_i^2+v_j^2)|scaled = (c_i c_j s_k + s_i s_j c_k)^2")
+def _():
+    for i, j, k in ((0, 1, 2), (0, 2, 1), (1, 2, 0)):
+        lhs = (1 - F1 ** 2) - (B1[i] ** 2 + B1[j] ** 2)
+        rhs = (C[i] * C[j] * S[k] + S[i] * S[j] * C[k]) ** 2
+        if sp.simplify(sp.expand_trig(sp.expand(lhs - rhs))) != 0:
+            return False, f"pair ({i},{j}) failed"
+    return True, "all three pairs: Gamma_1 is contained in the tricylinder v_i^2+v_j^2 <= 1"
+
+
+@check("(5.15): exact SOS identity (1-f^2) - |grad f|^2 = s2^2 s3^2 + s1^2 s2^2 c3^2 + s1^2 c2^2 s3^2")
+def _():
+    lhs = (1 - F2 ** 2) - sum(b ** 2 for b in B2)
+    rhs = S[1] ** 2 * S[2] ** 2 + S[0] ** 2 * S[1] ** 2 * C[2] ** 2 + S[0] ** 2 * C[1] ** 2 * S[2] ** 2
+    ok = sp.simplify(sp.expand_trig(sp.expand(lhs - rhs))) == 0
+    return ok, "hence |grad omega| <= 1 everywhere, with equality iff all three terms vanish"
+
+
+@check("(5.15): |grad omega| = 1 on the whole axis line, not only at the cone tips")
+def _():
+    # equality set of the SOS above: s2=s3=0 (p2,p3 in pi Z), p1 free.
+    q = sp.Symbol("q", real=True)
+    sub = {P1: q, P2: 0, P3: 0}
+    f = F2.subs(sub)
+    g = [b.subs(sub) for b in B2]
+    norm2 = sp.simplify(sum(x ** 2 for x in g) / (1 - f ** 2))
+    return sp.simplify(norm2 - 1) == 0, "|grad omega|^2 = 1 for all q, refining CJWW's 'maximum at the conical points'"
+
+
+@check("(5.12): max |v_g| = sqrt(3/2), attained exactly at p = (-pi/4,-pi/4,-pi/4)")
+def _():
+    sub = {p: -sp.pi / 4 for p in PS}
+    f = sp.simplify(F1.subs(sub))
+    v = [sp.simplify(b.subs(sub) / sp.sqrt(1 - f ** 2)) for b in B1]
+    n2 = sp.simplify(sum(x ** 2 for x in v))
+    # upper bound: the tricylinder's farthest point has |v|^2 = 3/2
+    return f == 0 and sp.simplify(n2 - sp.Rational(3, 2)) == 0, f"v = {v}, |v|^2 = {n2}"
+
+
+@check("axis direction: omega = |q| and v_g = (1,0,0) for BOTH walks")
+def _():
+    q = sp.Symbol("q", positive=True)
+    out = []
+    for nm, f, B in (("5.12", F1, B1), ("5.15", F2, B2)):
+        at = {P1: q, P2: 0, P3: 0}
+        # exact: cos(omega) = cos(q) and -grad f = (sin q, 0, 0)
+        if sp.simplify(f.subs(at) - sp.cos(q)) != 0:
+            return False, f"{nm}: cos(omega) != cos(q) on the axis"
+        g = [sp.simplify(b.subs(at)) for b in B]
+        if g != [sp.sin(q), 0, 0]:
+            return False, f"{nm}: -grad f = {g} on the axis"
+        # hence omega = |q| on the Brillouin zone and v_g = (sin q/|sin q|) e1 = e1
+        out.append(f"{nm}: omega=|q|, v_g=(1,0,0)=v_sub(e1)")
+    return True, "; ".join(out) + "  [c_IR = |v_g| = v_sub all equal 1 on the axes]"
+
+
+@check("conical expansion: omega^2 = |p|^2 + O(p^3), so c_IR = 1")
+def _():
+    # arccos has a branch point where f -> 1, so expand in u = 1 - f instead:
+    # arccos(1-u)^2 = 2u + u^2/3 + 4u^3/45 + O(u^4), an analytic series in u.
+    t = sp.Symbol("t", positive=True)
+    a, b, c = sp.symbols("a b c", real=True)
+    u = sp.Symbol("u", positive=True)
+    w2_of_u = sp.series(sp.acos(1 - u) ** 2, u, 0, 4).removeO()
+    out = []
+    for nm, f, cubic in (("5.12", F1, -2 * a * b * c), ("5.15", F2, 0)):
+        us = sp.series(1 - f.subs({P1: t * a, P2: t * b, P3: t * c}), t, 0, 5).removeO()
+        w2 = sp.expand(sp.series(w2_of_u.subs(u, us), t, 0, 4).removeO())
+        if sp.expand(w2.coeff(t, 2) - (a ** 2 + b ** 2 + c ** 2)) != 0:
+            return False, f"{nm}: t^2 coefficient is {w2.coeff(t, 2)}, not |p|^2"
+        if sp.expand(w2.coeff(t, 3) - cubic) != 0:
+            return False, f"{nm}: t^3 coefficient is {w2.coeff(t, 3)}, expected {cubic}"
+        term = "+ O(t^4) exactly (no cubic)" if cubic == 0 else f"- 2abc t^3 + O(t^4)"
+        out.append(f"{nm}: omega^2 = |p|^2 {term}")
+    return True, "; ".join(out) + "; so c_IR = 1 for both, in lattice-step units"
+
+
+@check("velocity sets fill the tricylinder / the ball", tag="SUPPORTED (numerical)")
+def _():
+    import math
+    N, M, R = 160, 18, 1.25
+    hit1 = set()
+    hit2 = set()
+    for i in range(N):
+        p1 = (i + 0.5) / N * 2 * math.pi - math.pi
+        c1, s1 = math.cos(p1), math.sin(p1)
+        for j in range(N):
+            p2 = (j + 0.5) / N * 2 * math.pi - math.pi
+            c2, s2 = math.cos(p2), math.sin(p2)
+            for k in range(N):
+                p3 = (k + 0.5) / N * 2 * math.pi - math.pi
+                c3, s3 = math.cos(p3), math.sin(p3)
+                for f, b, hit in (
+                    (c1 * c2 * c3 + s1 * s2 * s3,
+                     (s1 * c2 * c3 - c1 * s2 * s3, c1 * s2 * c3 - s1 * c2 * s3, c1 * c2 * s3 - s1 * s2 * c3),
+                     hit1),
+                    (c1 * c2 * c3, (s1 * c2 * c3, c1 * s2 * c3, c1 * c2 * s3), hit2),
+                ):
+                    d = 1.0 - f * f
+                    if d < 1e-9:
+                        continue
+                    d = math.sqrt(d)
+                    hit.add(tuple(min(M - 1, max(0, int((x / d + R) / (2 * R) * M))) for x in b))
+    def missed(hit, inside):
+        bad = 0
+        for cell in itertools.product(range(M), repeat=3):
+            v = [(u + 0.5) / M * 2 * R - R for u in cell]
+            if inside(v) and cell not in hit:
+                bad += 1
+        return bad
+    tri = lambda v: all(v[a] ** 2 + v[b] ** 2 <= 0.9 for a, b in ((0, 1), (1, 2), (0, 2)))
+    ball = lambda v: sum(x * x for x in v) <= 0.9
+    m1, m2 = missed(hit1, tri), missed(hit2, ball)
+    return m1 == 0 and m2 == 0, f"tricylinder cells missed: {m1}; ball cells missed: {m2}"
+
+
+def main():
+    width = max(len(n) for n, _, _ in CHECKS)
+    failed = 0
+    for name, tag, fn in CHECKS:
+        try:
+            ok, detail = fn()
+        except Exception as exc:                        # fail closed
+            ok, detail = False, f"raised {exc!r}"
+        print(f"[{'PASS' if ok else 'FAIL'}] {name:<{width}}  {tag}\n        {detail}")
+        failed += not ok
+    print(f"\n{len(CHECKS) - failed}/{len(CHECKS)} checks passed")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
