@@ -69,4 +69,7 @@ anything unverified is tagged as such.
 
 ## 5. Outcome record
 
-To be filled by the report. Status on freezing: **OPEN**.
+**Status: COMPLETE (2026-09-16).** Split verdict, see
+[`2026-09-16--empirical-substrate-cone-survey.md`](../reports/2026-09-16--empirical-substrate-cone-survey.md):
+`DIRECT_CONSTRAINTS_FOUND` for the scalar variable (Bell no-signalling tests),
+`NO_CURRENT_OPERATIONAL_TEST` for the directional structure of Sec. 8.10.

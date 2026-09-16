@@ -709,6 +709,42 @@ UNKNOWN, and a wider cone fully decoupled from accessible observables would be
 invisible to any experiment, so no null result can establish exact coincidence.
 No experimental or LIV constraint survey is authorized.
 
+### 8.11 EMPIRICAL_SUBSTRATE_CONE_SURVEY — COMPLETE (2026-09-16)
+
+Contract [`EMPIRICAL_SUBSTRATE_CONE_SURVEY_GATE.md`](../theory/EMPIRICAL_SUBSTRATE_CONE_SURVEY_GATE.md)
+frozen at `416dde1`;
+[outcome](../reports/2026-09-16--empirical-substrate-cone-survey.md).
+
+**Declared premise (computed before surveying).** With `t` in lattice steps, a
+Planck-scale substrate puts this model's own effect at `10^(-8.4e41)` over one
+second, against finest-ever bounds of `10^-20` to `10^-30`. The model's effect is
+**unobservable in principle**. The survey is therefore model-independent. The
+geometric window is by contrast not small: it reaches `√3 ct`, 73% beyond the
+light cone.
+
+**Split verdict.** `DIRECT_CONSTRAINTS_FOUND` for the scalar variable — Bell
+no-signalling tests bound exactly whether Alice's setting shifts Bob's marginal
+at spacelike separation, in the right geometry — but only to finite-sample
+precision, and contested (Adenier–Khrennikov exhibit apparent no-signalling
+violation in the Hensen data at significance comparable to the CHSH violation
+itself, generally attributed to systematics). `NO_CURRENT_OPERATIONAL_TEST` for
+the **directional structure** of Sec. 8.10.
+
+**Category error recorded, the survey's main result.** Salart 2008 (`v > 10⁴ c`)
+and Bancal 2012 (finite-speed influence ⟹ superluminal signalling) constrain
+models where the superluminal influence *explains* the quantum correlations. The
+tail of Sec. 8.10 is non-explanatory, so those bounds do **not** apply to it;
+using them to "exclude" it would be a category error. LIV/dispersion/threshold
+limits are `INDIRECT_ONLY` by contract Sec. 2.1, since Sec. 8 proves
+`sup|v_g| = c` is compatible with influence outside `B(c)`. Lieb–Robinson
+experiments (Cheneau 2012 and successors) **observe** this structure in
+engineered lattices: realizability, not a constraint on nature.
+
+**Consequence.** In the operational sense isolated in Sec. 8.10,
+`c = ` fundamental causal boundary is not merely unproved but essentially
+**untested**; and by the falsifiability asymmetry it cannot be established by
+null results. Sec. 8.9(iii) stands at UNKNOWN, now for a sharper reason.
+
 **The original question, split.**
 
 | Question | Answer |
