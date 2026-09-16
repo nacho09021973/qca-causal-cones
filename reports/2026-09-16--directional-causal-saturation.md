@@ -216,13 +216,20 @@ Versión correcta, direccional:
 
 ## 8. Resultado físico (§4 del entregable)
 
-> Un sustrato local discreto puede tener una relación causal microscópica
-> estrictamente más ancha que el cono relativista emergente en casi toda
-> dirección, aun cuando toda su dinámica balística —no sólo la de baja energía—
-> respete `c_IR` exactamente. El walk CJWW (5.15) lo realiza: `Γ = B(c_IR)` y sin
-> embargo `v_sub(n̂) = ‖n̂‖₁ c_IR`, hasta `√3 c_IR` en las diagonales. La
-> saturación causal es direccional, se da sólo en las seis direcciones axiales, y
-> `c_IR = r_in(C_micro)` es tangencia, no identidad de conos.
+> **Existe** al menos un modelo local, unitario y de alcance finito en 3D —el
+> walk de CJWW (5.15)— en el que **toda** la propagación balística satisface
+> `|v_g| ≤ c_IR`, mientras que la región causal microscópica es estrictamente
+> mayor que el cono relativista emergente: `sup|v_g| = c_IR` y
+> `B(c_IR) ⊊ C_micro`, con `v_sub(n̂) = ‖n̂‖₁ c_IR` hasta `√3 c_IR` en las
+> diagonales. Luego `c_IR = sup|v_g| ⇏ B(c_IR) = C_micro`: la igualdad entre `c_IR`
+> y el límite causal microscópico **no es consecuencia necesaria de la emergencia
+> relativista**. La saturación causal es direccional, se da sólo en las seis
+> direcciones axiales, y `c_IR = r_in(C_micro)` es tangencia, no identidad de
+> conos. Nada de esto es una afirmación sobre nuestro universo.
+
+*Nivel lógico:* enunciado existencial demostrado dentro de una clase declarada,
+no un enunciado modal ("puede") ni una afirmación sobre el universo físico. La
+formulación canónica está en `state/CURRENT_STATE.md` Sec. 8.9.
 
 ## 9. Riesgos conceptuales (§5 del entregable)
 

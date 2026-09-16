@@ -634,6 +634,49 @@ defined first, changes problem class, and merits an independent charter.
 
 **NOT_AUTHORIZED:** anisotropic/directional `I(v)`; probability vs signalling.
 
-**Physical summary of Sec. 8 as a whole.** `c_IR` can be the boundary of typical
-macroscopic propagation without coinciding with the full microscopic causal
-boundary of the substrate.
+(For the canonical conclusion of Sec. 8 as a whole, see Sec. 8.9.)
+
+### 8.9 Canonical conclusion — stated at the right logical level
+
+Earlier wording here read "`c_IR` **can** be the boundary of typical macroscopic
+propagation without coinciding with the microscopic causal boundary". That is
+modal, and too weak: this is not a possibility claim but an **explicit
+counterexample**. Corrected, and canonical:
+
+**(i) Existence — PROVED (exact).**
+
+> There exists at least one local, unitary, finite-range model in 3D — the
+> one-particle translation-invariant walk of CJWW Eq. (5.15) on `Z^3`, internal
+> space `C^2`, jump length 1 — in which **all** ballistic propagation satisfies
+> `|v_g| ≤ c_IR`, while the microscopic causal region is **strictly larger**
+> than the emergent relativistic cone:
+>
+> `sup|v_g| = c_IR`  **and**  `B(c_IR) ⊊ C_micro`.
+
+Both halves are exact: `sup|v_g| = c_IR = 1` by the SOS certificate of Sec. 8.4,
+and `B(c_IR) ⊊ C_micro = [-1,1]^3` with `v_sub(n̂) = ||n̂||_1` reaching `√3 c_IR`
+on the body diagonals, certified at every vertex ray for every `n` (Sec. 8.5),
+hence not a one-step artefact. This statement does **not** rest on the
+numerically supported half of `Γ_2 = B(1)`.
+
+**(ii) Logical consequence — PROVED in the class studied.**
+
+> `c_IR = sup|v_g|  ⇏  B(c_IR) = C_micro`.
+>
+> Equivalently: the equality "`c_IR` = microscopic causal limit" is **not a
+> necessary consequence of relativistic emergence**.
+
+**(iii) Explicitly NOT established — UNKNOWN.**
+
+> `c_universe < ` the fundamental causal limit of our universe.
+
+No evidence is offered here in either direction. This project makes **no claim
+about our universe**; asserting (iii) from (i)-(ii) would be a category error,
+since (i) is an existence result inside a declared model class.
+
+**The original question, split.**
+
+| Question | Answer |
+| --- | --- |
+| Theoretical: must `c` coincide with the substrate's causal limit? | **No** — (ii), proved |
+| Physical: does it coincide in our universe? | **Unknown** — (iii) |
