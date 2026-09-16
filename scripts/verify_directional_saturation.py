@@ -715,6 +715,172 @@ def verify_local_preparation():
     return 0
 
 
+def verify_noncorner_gate():
+    """Exact execution of theory/NONCORNER_SIGNALING_GATE.md, steps 0-5.
+
+    Run with --noncorner-gate-only. Step 0 is the contract's binding stop
+    rule: the admissible domain is derived from the certified support, never
+    assumed. No search, no sampling, no optimization, no floating point.
+    The frozen protocol and every pre-existing helper are used unchanged.
+    """
+    from verify_signaling_witness import (
+        DOWN, ORIGIN, evolve, exact_blocks, norm_squared, phase_choice,
+        reduced_state, square_kernel,
+    )
+
+    count = 0
+
+    def require(condition, label):
+        nonlocal count
+        if not condition:
+            raise AssertionError(label)
+        count += 1
+        print(f"[PASS] {label}")
+
+    zero = sp.zeros(2, 1)
+    vertices = {(i, j, k) for i in (1, -1) for j in (1, -1) for k in (1, -1)}
+    edges = {(i, j, 0) for i in (1, -1) for j in (1, -1)}
+    axes = {(i, 0, 0) for i in (1, -1)}
+    preregistered = vertices | edges | axes
+
+    # ---- Step 0: binding certification of the exact one-step support -----
+    blocks = exact_blocks()
+    require(len(preregistered) == 14
+            and all(block != sp.zeros(2) for block in blocks.values())
+            and set(blocks) == preregistered,
+            "STEP 0: supp K_1 is exactly the 14 preregistered displacements")
+    symbol = walk2()
+    attribution = {}
+    for i in range(2):
+        for j in range(2):
+            poly = sp.Poly(sp.expand(laurent(symbol[i, j]) * sp.prod(Z)), *Z)
+            attribution[(i, j)] = {tuple(power - 1 for power in powers)
+                                   for powers, coefficient in poly.terms()
+                                   if coefficient != 0}
+    require(attribution[(0, 0)] == {v for v in vertices if v[2] == 1}
+            and attribution[(1, 1)] == {v for v in vertices if v[2] == -1}
+            and attribution[(0, 1)] == attribution[(1, 0)] == edges | axes,
+            "STEP 0: per-entry attribution is exactly the one the contract declares")
+    reachable = {tuple(-c for c in d) for d in blocks}
+    require(reachable == set(blocks),
+            "STEP 0: the support is symmetric under y -> -y, so the convention is immaterial")
+    admissible = {y for y in reachable
+                  if sum(c * c for c in y) > 1
+                  and sum(1 for c in y if c != 0) < 3}
+    require(admissible == edges,
+            "STEP 0: the certified support yields exactly the four admissible sites")
+
+    # ---- Exclusions, from the certified support rather than by search ----
+    require(all(tuple(-c for c in y) not in blocks
+                for y in ((1, 0, 1), (0, 1, 1), (-1, 0, 1), (0, -1, 1),
+                          (1, 0, -1), (0, 1, -1), (-1, 0, -1), (0, -1, -1))),
+            "excluded edges with a zero in coordinate 1 or 2 have K_1 = 0 exactly")
+    require(all(tuple(-c for c in y) in blocks and sum(c * c for c in y) == 1
+                for y in axes),
+            "axis sites are micro-accessible but null-separated: excluded by (D1)")
+
+    # ---- Frozen preparation, reused and not recomputed -------------------
+    prepared = evolve({ORIGIN: DOWN}, square_kernel(blocks))
+    arm_a = {ORIGIN: prepared[ORIGIN]}
+    arm_rest = {x: v for x, v in prepared.items() if x != ORIGIN}
+    require(norm_squared(prepared) == 1 and prepared[ORIGIN] == -3 * DOWN / 4
+            and norm_squared(arm_a) == sp.Rational(9, 16)
+            and norm_squared(arm_rest) == sp.Rational(7, 16),
+            "frozen preparation unchanged: origin -3 down/4, arm weights 9/16 and 7/16")
+
+    def z3_parity_rule(state, up_on_even):
+        for x, vector in state.items():
+            allowed_up = (x[2] % 2 == 0) == up_on_even
+            if vector[1 if allowed_up else 0] != 0:
+                return False
+        return True
+
+    outputs = [evolve(prepared, blocks), evolve(phase_choice(prepared), blocks)]
+    require(z3_parity_rule(prepared, False)
+            and all(z3_parity_rule(state, True) for state in outputs),
+            "z3 parity selection rule: the internal component alternates with x3 parity")
+
+    # ---- The four admissible sites, exhaustively (no symmetry assumed) ---
+    arms = [evolve(arm_a, blocks), evolve(arm_rest, blocks)]
+    effect = sp.diag(0, 1, 1, 1)
+    up_effect = sp.diag(0, 1, 0, 0)
+    parity = sp.diag(1, -1, -1, 1)
+    results = {}
+    for y in sorted(admissible):
+        a = arms[0].get(y, zero)
+        r = arms[1].get(y, zero)
+        results[y] = (a, r, (a * r.H + r * a.H).applyfunc(sp.simplify))
+    require(len(results) == 4
+            and all(M == sp.diag(-sp.Rational(3, 256), 0)
+                    for _, _, M in results.values()),
+            "(P1) M(y) = diag(-3/256, 0) exactly at all four admissible sites")
+    require(all(M != sp.zeros(2) for _, _, M in results.values()),
+            "(P1) M(y) != 0: the two reduced states differ at every one of them")
+    require(all(a[1] == 0 and r[1] == 0
+                and sp.Abs(a[0]) == sp.Rational(3, 16)
+                and sp.Abs(r[0]) == sp.Rational(1, 32)
+                for a, r, _ in results.values()),
+            "both arms arrive purely in Bob's up channel: a(y) is spin-flipped")
+
+    states = {y: [reduced_state(state, y) for state in outputs]
+              for y in sorted(admissible)}
+    require(all(pair[0] != pair[1] for pair in states.values()),
+            "rho_B^(0) != rho_B^(1) directly from the reduced states")
+    require(all(sp.trace(effect * pair[0]) == sp.Rational(25, 1024)
+                and sp.trace(effect * pair[1]) == sp.Rational(49, 1024)
+                for pair in states.values()),
+            "p_0 = 25/1024 and p_1 = 49/1024: the vertex probabilities, exchanged")
+    require(all(((pair[0] - pair[1]).applyfunc(sp.simplify)[1:3, 1:3] == 2 * M
+                 and (pair[0] - pair[1]).applyfunc(sp.simplify)[0, 0]
+                 == -sp.trace(2 * M))
+                for (y, pair), (_, _, M) in zip(states.items(), results.values())),
+            "state difference equals 2M on the one-particle block: M is complete")
+    require(effect**2 == effect and up_effect**2 == up_effect
+            and effect * parity == parity * effect
+            and up_effect * parity == parity * up_effect,
+            "both effects are even local projections of norm one")
+    require(all(sp.Abs(sp.trace(effect * (pair[1] - pair[0]))) == sp.Rational(3, 128)
+                for pair in states.values()),
+            "(P2) non-vacuum projection: delta = 3/128 > 0, hence D >= 3/128")
+    require(all(sp.Abs(sp.trace(up_effect * (pair[1] - pair[0]))) == sp.Rational(3, 128)
+                for pair in states.values()),
+            "(P2) the up projection isolates the distinguishing channel, same delta")
+    require(all(sum(c * c for c in y) > 1 and max(abs(c) for c in y) == 1
+                and sum(1 for c in y if c != 0) == 2
+                and blocks[tuple(-c for c in y)] != sp.zeros(2)
+                for y in admissible),
+            "(P3) each positive site: outside emergent cone, on micro support, non-vertex")
+
+    # ---- Consistency with the frozen vertex witness, which is not touched -
+    vertex = (1, 1, 1)
+    a_v = arms[0].get(vertex, zero)
+    r_v = arms[1].get(vertex, zero)
+    vertex_states = [reduced_state(state, vertex) for state in outputs]
+    require((a_v * r_v.H + r_v * a_v.H).applyfunc(sp.simplify)
+            == sp.diag(0, sp.Rational(3, 256))
+            and sp.trace(effect * (vertex_states[1] - vertex_states[0]))
+            == -sp.Rational(3, 128),
+            "frozen vertex reproduced: same magnitude, opposite sign, down channel")
+    require(all(not entry.has(sp.Float)
+                for _, _, M in results.values() for entry in M)
+            and all(not entry.has(sp.Float)
+                    for state in (prepared, *outputs)
+                    for vector in state.values() for entry in vector),
+            "every reported quantity is exact")
+
+    print("\nPer-site table (Delta p_B = 2|Tr M|):")
+    for y in sorted(admissible):
+        a, r, M = results[y]
+        print(f"  y={y}  K_1(0,y)={blocks[tuple(-c for c in y)].tolist()}")
+        print(f"       a={list(a)}  r={list(r)}  M={M.tolist()}")
+        print(f"       Tr M={sp.trace(M)}  Delta p_B="
+              f"{sp.Abs(sp.trace(effect * (states[y][1] - states[y][0])))}"
+              f"  M==0 ? {M == sp.zeros(2)}")
+    print(f"\n{count}/{count} exact checks passed. "
+          "Verdict: NONCORNER_SIGNALING_CONSTRUCTED.")
+    return 0
+
+
 def main():
     width = max(len(n) for n, _, _ in CHECKS)
     failed = 0
@@ -732,5 +898,7 @@ def main():
 if __name__ == "__main__":
     if sys.argv[1:] == ["--local-preparation-only"]:
         sys.exit(verify_local_preparation())
+    elif sys.argv[1:] == ["--noncorner-gate-only"]:
+        sys.exit(verify_noncorner_gate())
     else:
         sys.exit(main())
