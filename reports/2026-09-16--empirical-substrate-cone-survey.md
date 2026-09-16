@@ -2,12 +2,18 @@
 
 **Contract:** [`EMPIRICAL_SUBSTRATE_CONE_SURVEY_GATE.md`](../theory/EMPIRICAL_SUBSTRATE_CONE_SURVEY_GATE.md), frozen at `416dde1` before surveying.
 
-**Verdict, split by what it applies to:**
+**Verdict, in three levels** (revised 2026-09-16 after review; see Sec. 7):
 
-- For the **scalar** variable ("is there any spacelike signalling?"):
-  `DIRECT_CONSTRAINTS_FOUND` — Bell no-signalling tests bound exactly this.
-- For the **directional structure** isolated in Sec. 8.10 (the window
-  `ct < L < v_sub(n̂)t`, off-axis only): `NO_CURRENT_OPERATIONAL_TEST`.
+| | |
+| --- | --- |
+| **Scalar no-signalling** | experimentally tested, to finite precision |
+| **Directional causal tail of Sec. 8.10** | no specific localized operational test |
+| **Exact equality `C_fundamental = B(c)`** | **not established** by null results |
+
+In contract categories: `DIRECT_CONSTRAINTS_FOUND` for the scalar variable,
+`NO_CURRENT_OPERATIONAL_TEST` for the directional structure — subject to the
+missing coupling map of Sec. 7, which blocks any *quantitative* transfer from
+the former to our `D`.
 
 ## 1. The trap, stated first
 
@@ -31,18 +37,25 @@ spacelike separation *is* `D(L,t) > 0`. The geometry is also right: Bell tests
 sit just barely spacelike, `L` slightly above `ct`, which lies inside the
 model's accessible window `ct < L < √3 ct`.
 
-But the bound is weak and contested. Adenier and Khrennikov analyse the Hensen
-et al. loophole-free CHSH data and report that by enlarging the event-ready
-sample one can exhibit "a violation of the no-signaling principle with a
-statistical significance at least similar to that of the reported violation of
-the CHSH inequality, if not stronger" (abstract read directly from
-`arXiv:1606.00784v3`). This is generally attributed to systematics and
-post-selection, not to real superluminal influence — but it fixes the
-**empirical precision**: no-signalling is verified only to finite-sample
-statistics, at roughly the percent-to-permille level.
+Adenier and Khrennikov analyse the Hensen et al. loophole-free CHSH data and
+report that by enlarging the event-ready sample one can exhibit "a violation of
+the no-signaling principle with a statistical significance at least similar to
+that of the reported violation of the CHSH inequality, if not stronger"
+(abstract read directly from `arXiv:1606.00784v3`).
 
-**Against a model prediction of `10^(-8.4e41)` over one second** (contract
-Sec. 1), the gap is ~`10^41` orders of magnitude **in the exponent**.
+**Correction to the first version of this report.** That paper was used here to
+assert that "the real empirical level is percent-to-permille". **That was an
+overreach and is withdrawn.** It is a contested reanalysis of one dataset,
+attributed by others to systematics and post-selection; it is neither a
+universal bound nor a calibrated confidence interval for our `D`, and the
+interpretation of such marginal deviations is itself under discussion in the
+later literature. What it does establish is weaker and still useful:
+no-signalling is verified **to finite statistical precision on specific
+datasets**, not exactly. No numerical empirical level is claimed by this survey.
+
+Whatever that level is, it is separated from a model prediction of
+`10^(-8.4e41)` over one second (contract Sec. 1) by a margin no plausible
+tightening could close.
 
 ## 3. Category B — indirect only, excluded by contract Sec. 2.1
 
@@ -64,16 +77,41 @@ measurable; it is **not** a constraint on nature's fundamental cone.
 
 ## 5. What this means
 
-The scalar question is tested, but only to the precision at which Bell
-experiments verify no-signalling, which is many tens of orders of magnitude
-short of anything a Planck-scale substrate would produce. The **directional**
-question — whether influence outside `B(c)` has the anisotropic window structure
+The scalar question is tested, to finite precision. The **directional** question
+— whether influence outside `B(c)` has the anisotropic window structure
 `ct < L < v_sub(n̂)t` with exact silence on the axes — is touched by no existing
 observation known to this survey.
 
-So `c = ` fundamental causal boundary is, in the operational sense isolated in
-Sec. 8.10, **not merely unproved but essentially untested**; and by the
-falsifiability asymmetry it cannot be established by null results anyway.
+The conclusion is therefore **not** "essentially untested" (an earlier, looser
+phrasing, withdrawn) but the sharper:
+
+> **The exact equality `C_fundamental = B(c)` is not established experimentally.**
+
+**Epistemological asymmetry, taken as firm.** No finite sequence of null results
+can prove `D = 0` exactly; it can only produce ever smaller upper bounds. A
+reproducible positive result outside `B(c)` could, by contrast, falsify the
+identification of `c` with the fundamental causal boundary.
+
+## 6. The missing coupling map — the real obstacle
+
+Sec. 8.10 gives `[A(t), B] ≠ 0`, hence `∃` a state and an intervention with
+`D > 0`. It does **not** give that the particular protocol of a standard Bell
+test is that intervention. Converting an experimental bound on Bell marginals
+into a quantitative bound on the tail of the lift requires a
+**coupling/protocol map**: which physical observable realizes `A`, which
+realizes `B`, and which preparation actually exploits the commutator.
+
+No such map exists here. Until it does, the scalar bound constrains the right
+*kind* of variable but cannot be converted into a number about our `D`. This,
+not the size of the effect, is what blocks the empirical question.
+
+## 7. Revision note
+
+The first version of this report (`5b6f6c4`) was revised after review on two
+points: the withdrawn percent-level claim in Sec. 2, and the sharpening of
+Sec. 5 from "essentially untested" to the exact-equality statement. The
+classification of Salart/Bancal as a category error (Sec. 1) is unchanged and
+was the survey's main result.
 
 ## 6. Evidence tags
 

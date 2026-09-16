@@ -722,13 +722,30 @@ second, against finest-ever bounds of `10^-20` to `10^-30`. The model's effect i
 geometric window is by contrast not small: it reaches `√3 ct`, 73% beyond the
 light cone.
 
-**Split verdict.** `DIRECT_CONSTRAINTS_FOUND` for the scalar variable — Bell
-no-signalling tests bound exactly whether Alice's setting shifts Bob's marginal
-at spacelike separation, in the right geometry — but only to finite-sample
-precision, and contested (Adenier–Khrennikov exhibit apparent no-signalling
-violation in the Hensen data at significance comparable to the CHSH violation
-itself, generally attributed to systematics). `NO_CURRENT_OPERATIONAL_TEST` for
-the **directional structure** of Sec. 8.10.
+**Verdict, in three levels.**
+
+| | |
+| --- | --- |
+| Scalar no-signalling | experimentally tested, to finite precision |
+| Directional causal tail of Sec. 8.10 | no specific localized operational test |
+| Exact equality `C_fundamental = B(c)` | **not established** by null results |
+
+In contract categories: `DIRECT_CONSTRAINTS_FOUND` for the scalar variable,
+`NO_CURRENT_OPERATIONAL_TEST` for the directional structure.
+
+**Missing coupling map — the real obstacle.** `[A(t),B] ≠ 0` gives `∃` a state
+and intervention with `D > 0`; it does **not** give that a standard Bell-test
+protocol is that intervention. Converting a bound on Bell marginals into a
+quantitative bound on the tail needs a coupling/protocol map — which observable
+realizes `A`, which realizes `B`, which preparation exploits the commutator.
+None exists. The scalar bound therefore constrains the right *kind* of variable
+without being convertible into a number about our `D`.
+
+**Withdrawn.** An earlier phrasing used Adenier–Khrennikov to fix the empirical
+level at "percent-to-permille". That was an overreach: it is a contested
+reanalysis of one dataset, not a universal bound nor a calibrated interval for
+`D`. No numerical empirical level is claimed. Likewise "essentially untested" is
+replaced by the exact-equality statement above.
 
 **Category error recorded, the survey's main result.** Salart 2008 (`v > 10⁴ c`)
 and Bancal 2012 (finite-speed influence ⟹ superluminal signalling) constrain
@@ -740,10 +757,18 @@ limits are `INDIRECT_ONLY` by contract Sec. 2.1, since Sec. 8 proves
 experiments (Cheneau 2012 and successors) **observe** this structure in
 engineered lattices: realizability, not a constraint on nature.
 
-**Consequence.** In the operational sense isolated in Sec. 8.10,
-`c = ` fundamental causal boundary is not merely unproved but essentially
-**untested**; and by the falsifiability asymmetry it cannot be established by
-null results. Sec. 8.9(iii) stands at UNKNOWN, now for a sharper reason.
+**Consequence, and the firm epistemological point.** No finite sequence of null
+results can prove `D = 0` exactly; it can only yield ever smaller upper bounds.
+A reproducible positive result outside `B(c)` could falsify the identification
+of `c` with the fundamental causal boundary. Sec. 8.9(iii) stands at UNKNOWN.
+
+**Next step if the line continues (not opened).** Not a further theoretical
+front, and not a generic FTL search: design the experiment that **maximizes `D`**
+for a Sec. 8.10-type tail — which two local operations, which spacelike
+separation, which remote observable optimally exploit an exponentially small,
+anisotropic causal tail. Only afterwards does it make sense to ask whether an
+existing experiment already did this accidentally, and by how much it falls
+short. This is the coupling map above, and it is **not chartered**.
 
 **The original question, split.**
 

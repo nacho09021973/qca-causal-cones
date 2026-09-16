@@ -73,3 +73,5 @@ anything unverified is tagged as such.
 [`2026-09-16--empirical-substrate-cone-survey.md`](../reports/2026-09-16--empirical-substrate-cone-survey.md):
 `DIRECT_CONSTRAINTS_FOUND` for the scalar variable (Bell no-signalling tests),
 `NO_CURRENT_OPERATIONAL_TEST` for the directional structure of Sec. 8.10.
+Revised after review: no numerical empirical level is claimed, and the
+quantitative transfer to `D` is blocked by a missing coupling/protocol map.
