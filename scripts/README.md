@@ -59,6 +59,12 @@ group-velocity sets fill the tricylinder and the ball — is tagged
 The script fails closed: any exception counts as a failed check and the exit
 status is nonzero.
 
+It also carries the four checks of the `LDP_RADIAL_INTERPRETATION` gate
+([contract](../theory/OPERATIONAL_INVISIBILITY_GATE.md)): CJWW Eq. (5.21) at
+their stated maximizer, its two slopes `1` and `sqrt(3)`, the three regimes of
+the dual transform with their quoted control value, and the declared limitation
+that the radial rate function is coarse on the axes. Nineteen checks in total.
+
 Two refinements of the printed source were found while writing it and are
 recorded in the report: the trace of the literal product (5.12) is
 `ccc + sss`, not the `ccc - sss` printed in (5.13) (the two differ by `p -> -p`);

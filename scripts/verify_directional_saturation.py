@@ -306,6 +306,73 @@ def _():
     return m1 == 0 and m2 == 0, f"tricylinder cells missed: {m1}; ball cells missed: {m2}"
 
 
+# ---------------------------------------------------------------------------
+# LDP_RADIAL_INTERPRETATION gate (theory/OPERATIONAL_INVISIBILITY_GATE.md).
+# Documents CJWW Eq. (5.21) and its Legendre transform for walk (5.15).
+# ---------------------------------------------------------------------------
+ELL = sp.Symbol("ell", positive=True)
+R_TILDE = 2 * sp.acosh(sp.cosh(ELL / (2 * sp.sqrt(3))) ** 3)
+
+
+@check("CJWW (5.21) is exact at their stated maximizer p=0, lambda = l(1,1,1)/sqrt(3)")
+def _():
+    # cos(omega) = prod_k cos(p_k + i lambda_k / 2); at p = 0 with all
+    # lambda_k = l/sqrt(3) this is cosh(l/(2 sqrt 3))^3, real and >= 1, so
+    # omega is purely imaginary and log|u|^2 = 2|Im omega| = 2 arccosh(...).
+    lam = ELL / sp.sqrt(3)
+    cos_omega = sp.prod([sp.cos(0 + sp.I * lam / 2) for _ in range(3)])
+    cos_omega = sp.simplify(sp.re(sp.expand(cos_omega.rewrite(sp.cosh))))
+    if sp.simplify(cos_omega - sp.cosh(ELL / (2 * sp.sqrt(3))) ** 3) != 0:
+        return False, f"cos(omega) = {cos_omega}"
+    return sp.simplify(2 * sp.acosh(cos_omega) - R_TILDE) == 0, (
+        "R~(l) = 2 arccosh(cosh(l/2sqrt3)^3); the LOCATION of the maximizer is "
+        "CJWW's numerical finding, the VALUE there is exact")
+
+
+@check("the two slopes of R~ are exactly c_IR = 1 and max_n v_sub(n) = sqrt(3)")
+def _():
+    s0 = sp.limit(sp.diff(R_TILDE, ELL), ELL, 0, "+")
+    si = sp.limit(sp.diff(R_TILDE, ELL), ELL, sp.oo)
+    ok = sp.simplify(s0 - 1) == 0 and sp.simplify(si - sp.sqrt(3)) == 0
+    return ok, (f"R~'(0) = {s0} = c_IR = h_B(n); "
+                f"R~'(oo) = {si} = ||(1,1,1)/sqrt(3)||_1 = v_sub(body diagonal)")
+
+
+@check("dual transform gives exactly three regimes, with CJWW's control value")
+def _():
+    s0, si = 1, sp.sqrt(3)
+    rows = []
+    for r, want in ((sp.Rational(9, 10), "zero"), (1, "zero"),
+                    (sp.Rational(11, 10), "finite"), (sp.Rational(3, 2), "finite"),
+                    (2, "infinite"), (3, "infinite")):
+        got = "zero" if r <= s0 else ("infinite" if r > si else "finite")
+        if got != want:
+            return False, f"r={r}: got {got}, expected {want}"
+        rows.append(f"{sp.nsimplify(r)}:{got}")
+    # control: CJWW quote I~(1.1) = .104
+    rr = sp.Rational(11, 10)
+    lstar = sp.nsolve(sp.diff(rr * ELL - R_TILDE, ELL), ELL, 2)
+    val = sp.N(rr * lstar - R_TILDE.subs(ELL, lstar), 4)
+    if abs(val - sp.Float("0.104")) > sp.Float("0.002"):
+        return False, f"I~(1.1) = {val}, CJWW quote .104"
+    return True, ("ballistic/emergent (r<=1) | causal but exponentially "
+                  f"suppressed (1<r<sqrt3) | causally forbidden (r>sqrt3); I~(1.1)={val}")
+
+
+@check("declared limitation: the radial rate function is coarse on the axes")
+def _():
+    # Sec. 8: v_sub(e_i) = 1 = c_IR, so a velocity r*e_i with r > 1 is already
+    # outside C_micro = [-1,1]^3, where the amplitude is EXACTLY zero.  The
+    # radial I~ nevertheless reports a finite rate for 1 < r < sqrt(3): that
+    # finite rate is carried by non-axial directions only.
+    r = sp.Rational(11, 10)
+    axial_outside_cube = max(abs(v) for v in (r, 0, 0)) > 1
+    radial_rate_finite = (1 < r) and (r < sp.sqrt(3))
+    return axial_outside_cube and radial_rate_finite, (
+        "at r=1.1 the axial ray is outside C_micro (exact zero) while I~ reports "
+        "a finite rate => the angular structure of I is NOT resolved here")
+
+
 def main():
     width = max(len(n) for n, _, _ in CHECKS)
     failed = 0

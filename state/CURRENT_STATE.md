@@ -477,7 +477,10 @@ Until a successor gate is chartered and closed:
 - **NO reading of `c_strict^iso`, `r_in(C_micro)` or `S_min` as "the microscopic
   speed of the substrate"** (Sec. 8.6);
 - **NO new novelty audit, Bernstein-rigidity, paraunitary-classification or
-  d=3-theorem line** under the Sec. 8.7 scope decision.
+  d=3-theorem line** under the Sec. 8.7 scope decision;
+- **NO directional/anisotropic `I(v)` computation** (Sec. 8.8, NOT_AUTHORIZED);
+- **NO operational-invisibility or no-signalling claim** from a rate function
+  (Sec. 8.8); that question requires its own charter.
 
 A certified falsification within the frozen admissible class is a successful
 gate outcome. The s=4 counterexample is such an outcome for its declared
@@ -591,3 +594,46 @@ Bernstein rigidity, paraunitary classification, or a new dimension-3 theorem.
 The previous novelty / Gate-C material is retained as historical project state
 and is **not an active prerequisite** for the physical line. Sec. 7 is unchanged
 and still governs anything done under the point-(3) contract.
+
+### 8.8 LDP_RADIAL_INTERPRETATION — PASSED, subline CLOSED (2026-09-16)
+
+**Status: `DOCUMENT_EXISTING_RESULT` — PASSED. This subline is CLOSED.**
+Contract: [`OPERATIONAL_INVISIBILITY_GATE.md`](../theory/OPERATIONAL_INVISIBILITY_GATE.md).
+A first freeze at `a9e611a` chartered the *directional* variant; it was narrowed
+by user instruction before any solving and is **SUPERSEDED, UNSOLVED** — nothing
+may be cited from it.
+
+For walk (5.15), CJWW's own radial rate function Eq. (5.21),
+`R̃(ℓ) = 2 arccosh(cosh(ℓ/2√3)³)`, has exactly the two slopes
+
+`R̃'(0) = 1 = c_IR`   and   `R̃'(∞) = √3 = max_n̂ v_sub(n̂) = v_sub(body diagonal)`,
+
+so by Legendre duality `Ĩ(r) = 0` for `r ≤ 1`, `0 < Ĩ(r) < ∞` for `1 < r < √3`,
+and `Ĩ(r) = ∞` for `r > √3`, reproducing CJWW's control value `Ĩ(1.1) ≈ 0.104`.
+Three regimes, with boundaries at precisely the two numbers Sec. 8 canonizes:
+
+**ballistic/emergent | causal but exponentially suppressed | causally forbidden**
+
+**ESTABLISHED (exact).** The *value* of (5.21) at CJWW's stated maximizer is
+exact; the *location* of that maximizer is their numerical finding, not ours.
+
+**Declared limitations, not to be dropped.**
+- `Ĩ` is radial and demonstrably coarse. Since `v_sub(ê_i) = c_IR`, a velocity
+  `r ê_i` with `r > 1` is already outside `C_micro`, where the amplitude is
+  **exactly zero**, not suppressed. The finite rate `Ĩ` reports for `1 < r < √3`
+  is therefore carried by non-axial directions only. The angular structure of
+  `I(x)` is **not resolved**.
+- Upper bound only; CJWW prove no lower bound.
+- It bounds the position distribution of one particle, nothing else.
+
+**Non-implication, explicit.** This does **not** yield an operational-invisibility
+or no-signalling theorem. At QCA level an exponentially small tail still lies
+inside the exact causal support, so "operationally invisible" may not be
+asserted. That question needs resources, distinguishability or channel capacity
+defined first, changes problem class, and merits an independent charter.
+
+**NOT_AUTHORIZED:** anisotropic/directional `I(v)`; probability vs signalling.
+
+**Physical summary of Sec. 8 as a whole.** `c_IR` can be the boundary of typical
+macroscopic propagation without coinciding with the full microscopic causal
+boundary of the substrate.

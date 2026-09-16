@@ -1,94 +1,76 @@
-# OPERATIONAL_INVISIBILITY_GATE — frozen contract
+# LDP_RADIAL_INTERPRETATION — frozen contract
 
-**Frozen:** 2026-09-16, before solving, per `PROJECT_INSTRUCTIONS.md` Sec. 5 and
-the charter discipline of `MASSLESS_INRADIUS_RIGIDITY_GATE.md` Sec. 2.
-**Initial scientific status: OPEN.**
-**Authorization:** direct user instruction, 2026-09-16, selecting the directional
-variant ("añadir la función de tasa direccional I(v)") over the narrow and the
-signalling variants.
+**Gate name:** `LDP_RADIAL_INTERPRETATION = DOCUMENT_EXISTING_RESULT`.
+**Frozen:** 2026-09-16.
+**Authorization:** direct user instruction, 2026-09-16.
 
-## 0. Question
+## 0. Revision note — supersedes the first freeze
 
-`state/CURRENT_STATE.md` Sec. 8 establishes that the substrate permits causal
-relations outside the emergent cone: `B(c_IR) ⊊ C_micro`, with the gap certified
-at the vertex rays for every `n`. This gate asks the immediate physical
-follow-up, and only this:
+This file was first frozen at `a9e611a` chartering the **directional** variant
+(computing `I(x)` by direction from CJWW Ec. (2.9)). Before any solving was
+done under it, the user narrowed the scope to documenting the existing radial
+result. That first charter is therefore **SUPERSEDED, UNSOLVED**; no result was
+produced under it and none may be cited from it. History is not rewritten: the
+narrowing is recorded here.
 
-> In the region `C_micro \ B(c_IR)`, is the propagation exponentially suppressed
-> at a **direction-dependent** rate, and does that rate distinguish the axial
-> directions (where `v_sub = c_IR`) from the rest?
+Reason given, and adopted: computing `I(v)` by direction is new work and is not
+needed to answer the physical question.
 
-## 1. Frozen object
+## 1. Scope — exactly this, nothing more
 
-The CJWW walk of `sources/2408.02108v1.pdf` Eq. (5.15) **only**
-(SHA256 `25e2b03e...a7bd8e0`, recorded in `sources/S4_FAMILY_AUDIT_SOURCES.md`):
+1. Verify CJWW Eq. (5.21) exactly.
+2. Derive its two asymptotic slopes.
+3. Record the dual transform and the three resulting regimes.
+4. Connect the slope `1` to `c_IR` and the slope `√3` to the body diagonal of
+   `C_micro`.
+5. Declare explicitly that **no** operational-invisibility or no-signalling
+   theorem follows from this.
+6. Leave anisotropic `I(v)` and the signalling question as `NOT_AUTHORIZED`.
 
-`ω(p) = arccos(cos p1 cos p2 cos p3)`, `C_micro = [-1,1]^3`, `c_IR = 1`,
-`Γ = B(1)` in the normalization of Sec. 8, one lattice step per time step.
+Target: the CJWW walk of `sources/2408.02108v1.pdf` Eq. (5.15) only, in the
+normalization of `state/CURRENT_STATE.md` Sec. 8 (`C_micro = [-1,1]^3`,
+`c_IR = 1`, one lattice step per time step).
 
-No other walk, lattice, internal dimension, mass term or substrate class is
-admitted. Walk (5.12) may be cited for contrast but is not part of the target.
+## 2. What is being documented
 
-## 2. Admitted method
+`R̃(ℓ) = 2 arccosh( cosh(ℓ/2√3)³ )` — CJWW Eq. (5.21) — and its Legendre
+transform `Ĩ`, which bounds the probability leakage outside a ball of radius
+`r` by `exp(-t Ĩ(r))` (their Eq. (5.18)).
 
-CJWW Theorem 2.1 only:
+## 3. Consistency control (must pass, or the gate fails)
 
-`I(x) = sup_λ ( λ·x − R(λ) )`,
-`R(λ) = sup_{p∈B} sup { log|u|² : u ∈ spec W(p + iλ/2) }`.
+`Ĩ(r) = 0` for `r < 1`, `Ĩ(r) = ∞` for `r > √3`, and `Ĩ(1.1) ≈ 0.104` as quoted
+by CJWW. A result that fails this control is wrong, not new.
 
-For this walk `det W = 1`, so both eigenvalues follow from the trace and
-`log|u|² = 2|Im ω|` with `cos ω = ∏_k cos(p_k + i λ_k/2)`.
+## 4. Declared limitations, stated before solving
 
-Nothing outside this is admitted: no new inequality, no new model, no
-Bernstein/paraunitary/novelty line (`CURRENT_STATE.md` Sec. 8.7).
-
-## 3. Declared hypotheses, stated before solving
-
-- **H1 (closed form).** The inner supremum over `p` is attained at the conical
-  points, giving `R(λ) = 2 arccosh( ∏_k cosh(λ_k/2) )`.
-- **H2 (two asymptotic regimes).** `R(λ) → h_{B(c_IR)}(λ) = |λ|` as `λ → 0`, and
-  `R(λ) → h_{C_micro}(λ) = ||λ||_1` as `|λ| → ∞`, so that the **small-λ regime is
-  governed by the emergent cone and the large-λ regime by the microscopic
-  causal body**.
-- **H3 (trichotomy).** `I(x) = 0` iff `x ∈ B(c_IR)`; `0 < I(x) < ∞` iff
-  `x ∈ int C_micro \ B(c_IR)`; `I(x) = ∞` iff `x ∉ C_micro`.
-- **H4 (axial sharpness).** In each of the six axial directions, where
-  `v_sub(ê_i) = c_IR`, there is **no** exponentially suppressed tail:
-  `I(r ê_i) = ∞` for every `r > 1`. The tail of H3 exists only off-axis.
-
-Refutation of any `Hi` is a valid gate outcome and must be recorded as such.
-`H1` in particular is a conjecture; it must not be assumed while testing H2-H4.
-
-## 4. Consistency control (must pass, or the gate fails)
-
-Restricted to `λ = ℓ(1,1,1)/√3`, the result must reproduce CJWW's own published
-radial function, Eq. (5.21), `R̃(ℓ) = 2 arccosh( cosh(ℓ/2√3)³ )`, together with
-`Ĩ(r) = 0` for `r < 1`, `Ĩ(r) = ∞` for `r > √3` and `Ĩ(1.1) ≈ 0.104`.
-A directional result that fails this control is wrong, not new.
-
-## 5. Evidence discipline
-
-Each claim carries its own tag (`PROJECT_INSTRUCTIONS.md` Sec. 4). In
-particular the location of the inner supremum over `p` is expected to be
-numerical; if so, `H1` is capped at **SUPPORTED** and every consequence drawn
-from it inherits that cap. Exact asymptotics and exact axial statements are not
-capped by it if they are derived without assuming `H1`.
-
-## 6. Explicit exclusions
-
-- **No signalling claim.** `I(x)` bounds the position distribution of one
-  particle. It is **not** a statement about commutators, operational
-  distinguishability or no-signalling. The probability/signalling question is
-  the variant the user did **not** select and remains unchartered.
-- **No QCA lift.** The walk is not promoted to a many-body QCA here.
-- **No lower bound on probability.** CJWW give an upper bound only (their
-  Sec. 2.1); "suppressed at rate `I`" means bounded above by `exp(-tI)`, not
+- **The radial function is coarse, and demonstrably so.** `Ĩ` is a radial
+  reduction; CJWW state that `I(x)` "is certainly not a rotation invariant
+  function". The angular structure of `I` is **not resolved by this gate**, and
+  Sec. 8 already implies the radial picture cannot be the whole story: since
+  `v_sub(ê_i) = c_IR` axially, a velocity `r ê_i` with `r > 1` lies outside
+  `C_micro`, where the amplitude is exactly zero — not exponentially suppressed.
+  So the finite rate that `Ĩ` reports for `1 < r < √3` is carried by non-axial
+  directions only.
+- **Upper bound only.** CJWW give no lower bound (their Sec. 2.1), so
+  "suppressed at rate `Ĩ`" means bounded above by `exp(-tĨ)`, never
   asymptotically equal to it.
-- **No continuum-limit theorem.** Any statement about the Weyl scaling limit is
-  a corollary at fixed rescaled velocity, with the scaling written out, not a
-  convergence theorem on arbitrary states.
-- Sec. 7 of `CURRENT_STATE.md` and the point-(3) contract are untouched.
+- **One particle, position distribution.** `Ĩ` bounds the distribution of
+  `Q(t)/t`. It says nothing about commutators, distinguishability or channel
+  capacity.
 
-## 7. Outcome record
+## 5. Explicit non-authorizations
 
-To be filled by the report. Status on freezing: **OPEN**.
+- `I(v)` anisotropic / directional: **NOT_AUTHORIZED**.
+- Probability vs signalling (operational invisibility proper): **NOT_AUTHORIZED**.
+  It needs resources, distinguishability or channel capacity to be defined
+  first, and changes problem class; it merits an independent charter if ever
+  attacked. At QCA level an exponentially small tail still lies inside the exact
+  causal support, so "operationally invisible" may **not** be asserted.
+- No new model, no Bernstein/paraunitary/novelty line
+  (`CURRENT_STATE.md` Sec. 8.7).
+
+## 6. Closure
+
+This is a documentation gate. On passing Sec. 3 and recording Secs. 1 and 4,
+the subline is **CLOSED**.
