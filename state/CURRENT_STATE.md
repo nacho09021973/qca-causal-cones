@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-16
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body** (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -296,6 +296,10 @@ and mass, not a full propagator convergence theorem on arbitrary states.
 
 ## 6. Current scientific interpretation
 
+**Superseded as the active line by Sec. 8 (2026-09-16).** This section records
+the `B_infty^*` reading of the project and remains valid where proved, but its
+scalar summaries must be read under the scope correction in Sec. 8.6.
+
 The live idea is no longer:
 
 `c = maximum microscopic speed`,
@@ -469,10 +473,121 @@ Until a successor gate is chartered and closed:
   within a declared rigidity comparison**;
 - **NO novelty claim for B*, B_infty^* or the s=4 family (NOVELTY = OPEN)**;
 - **NO use of a scalar `v_max` without definition**;
-- **NO promotion of the s=4 family identity to a general QCA law**.
+- **NO promotion of the s=4 family identity to a general QCA law**;
+- **NO reading of `c_strict^iso`, `r_in(C_micro)` or `S_min` as "the microscopic
+  speed of the substrate"** (Sec. 8.6);
+- **NO new novelty audit, Bernstein-rigidity, paraunitary-classification or
+  d=3-theorem line** under the Sec. 8.7 scope decision.
 
 A certified falsification within the frozen admissible class is a successful
 gate outcome. The s=4 counterexample is such an outcome for its declared
 class only. This branch-local reconciliation does not promote anything to
 `main`. The only later successor authorization is the point-(3) contract
 in Sec. 7.2, by direct user instruction.
+
+## 8. Directional causal saturation — canonical physical interpretation (2026-09-16)
+
+**Evidence commit:** `2494192`.
+[Report](../reports/2026-09-16--directional-causal-saturation.md),
+[verifier](../scripts/verify_directional_saturation.py) (15/15, fail-closed,
+fourteen exact).
+
+The active physical question is: **does `c_IR` coincide with the microscopic
+causal boundary of the discrete substrate?** The canonical answer is
+**direction-dependent; in general, no.**
+
+### 8.1 Three objects, never identified
+
+For the two 3D finite-range walks of CJWW `sources/2408.02108v1.pdf`,
+Eqs. (5.12) and (5.15):
+
+`B(c_IR) ⊆ Γ ⊆ C_micro`,
+
+- `B(c_IR)`: the emergent isotropic IR light cone;
+- `Γ`: the ballistic / group-velocity propagation body;
+- `C_micro = conv F`: the strict microscopic causal body of the finite step set `F`.
+
+`Γ ⊆ C_micro` is general (CJWW Lemma 4.1: the rate function is `+∞` outside
+`conv F`). `B(c_IR) ⊆ Γ` is **not** general and is asserted here only for these
+two walks; CJWW Sec. 5.3 exhibits a non-convex `Γ`, so no convexity of `Γ` may
+be assumed.
+
+### 8.2 The canonical saturation function
+
+For both walks `C_micro = [-1,1]^3`, hence for `||n̂||_2 = 1`
+
+`v_sub(n̂) := h_{C_micro}(n̂) = ||n̂||_1`,
+
+and, in the normalization `c_IR = 1`, the canonical directional saturation
+function is the **support-function ratio**
+
+`S(n̂) := h_{B(c_IR)}(n̂) / h_{C_micro}(n̂) = 1/||n̂||_1`.
+
+`S(n̂) = 1` only for the six axial directions `n̂ = ±e_i`; `S(n̂) < 1` for every
+non-axial direction, with `S_min = S((1,1,1)/sqrt(3)) = 1/sqrt(3)`.
+
+`S_min` is a **descriptive scalar summary only**. The full directional function
+`S(·)` is the canonical object. No scalar separates the two walks: `c_IR/r_in`
+is `1` and `S_min` is `1/sqrt(3)` for both; their difference lives in `Γ`.
+
+### 8.3 Walk (5.12)
+
+`B(1) ⊊ Γ_1 ⊊ [-1,1]^3`, with `sup|∇ω| = sqrt(3/2) > c_IR`, attained exactly at
+`p = (-π/4,-π/4,-π/4)`. This walk contains finite-momentum ballistic modes
+faster than the emergent IR light speed while remaining inside `C_micro`.
+`Γ_1 ⊆` tricylinder is exact (SOS identity); the reverse inclusion is numerical.
+
+### 8.4 Walk (5.15) — the clean counterexample
+
+`Γ_2 = B(1) ⊊ [-1,1]^3`, with `sup|∇ω| = c_IR = 1`.
+
+This refutes the identification
+
+`sup|v_g| = c_IR  ⟹  IR light cone = microscopic causal boundary`.
+
+Even when **all ballistic propagation respects `c_IR`**, the substrate permits
+causal propagation outside the relativistic ball in non-axial directions.
+
+**Evidence tags, not to be merged.** `sup|∇ω| = c_IR = 1` and
+`Γ_2 ⊆ B(1)` are **ESTABLISHED (exact SOS certificate**
+`(1-f²) - |∇f|² = s₂²s₃² + s₁²s₂²c₃² + s₁²c₂²s₃²`**)**, and `∂B(1) ⊆ Γ_2` is
+exact from the conical point. That `Γ_2` also fills the open ball is
+**SUPPORTED (numerical)** only. The counterexample does **not** depend on that
+last half: it needs only `sup|v_g| = c_IR`, which is exact.
+
+### 8.5 The gap is not a one-step artefact
+
+At the eight vertex rays a single lattice path contributes, so
+`(W^n)_{nσ} = (W_σ)^n`. Each `W_σ` has rank 1 with nonzero trace, hence
+`(W_σ)^n = tr(W_σ)^{n-1} W_σ ≠ 0` **for every `n ≥ 1`** (exact). Therefore
+`h_infty = h_{C_micro} = ||·||_1` exactly, and the distinction between `Γ` and
+`C_micro` is not an artefact of a one-step support bound.
+
+Between `Γ` and `C_micro`, propagation is non-ballistic and may be exponentially
+suppressed; it is **not generically causally forbidden**. **No claim is made
+that every point of this intermediate region has nonzero amplitude** — what is
+proved is the statement about the vertex rays.
+
+### 8.6 Scope correction to earlier scalar summaries
+
+`c_strict^iso` and `r_in(C_micro)` remain mathematically valid summaries where
+previously proved (Secs. 4, 6, 7), but **must not be interpreted as "the
+microscopic speed of the substrate."** The microscopic causal boundary is
+anisotropic and is represented by `C_micro`, equivalently by `h_{C_micro}(n̂)`.
+
+Under (i) finite `F`, (ii) `d ≥ 2` and (iii) an isotropic IR cone, exact
+equality `B(c_IR) = C_micro` is impossible, because `C_micro` is a finite
+polytope and the IR body a Euclidean ball. This restates `B_full` (Sec. 3.3)
+with its hypotheses made explicit; relaxing (i), (ii) or (iii) leaves it open.
+
+### 8.7 Scope decision
+
+The active line is now the physical relation **emergent relativistic cone vs
+microscopic causal body**.
+
+**Not authorized by this result:** further search for mathematical novelty,
+Bernstein rigidity, paraunitary classification, or a new dimension-3 theorem.
+
+The previous novelty / Gate-C material is retained as historical project state
+and is **not an active prerequisite** for the physical line. Sec. 7 is unchanged
+and still governs anything done under the point-(3) contract.

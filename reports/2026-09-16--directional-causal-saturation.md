@@ -91,9 +91,10 @@ Tres modificaciones mínimas y su razón:
 **(e) No es artefacto de un paso.** Con `h_∞` de `CAUSAL_BODY_GEOMETRY.md` §6:
 para cualquier `n̂`, el vértice `σ = (sgn n̂₁, sgn n̂₂, sgn n̂₃)` cumple
 `n̂·σ = ‖n̂‖₁`, y al vértice `nσ` llega **un solo camino de red**, de modo que
-`(W^n)_{nσ} = (W_σ)^n`. Verificado para los 8 vértices y ambos walks:
-`‖(W_σ)^n‖ = 2^{-3n/2}` (walk 1) y `4^{-n}` (walk 2), nunca nulo. Luego
-`h_∞(n̂) = v_sub(n̂) = ‖n̂‖₁` **exactamente**. **ESTABLISHED (derivado + numérico).**
+`(W^n)_{nσ} = (W_σ)^n`. Para los 8 vértices y ambos walks, `W_σ` tiene **rango 1**
+con **traza no nula** (exacto, SymPy), luego `W_σ² = tr(W_σ)·W_σ` y
+`(W_σ)^n = tr(W_σ)^{n−1} W_σ ≠ 0` **para todo `n ≥ 1`**, sin cota en `n`. Luego
+`h_∞(n̂) = v_sub(n̂) = ‖n̂‖₁` **exactamente**. **ESTABLISHED (exacto).**
 
 ## 2. Tarea 1 — `v_sub(n̂) = ‖n̂‖₁` para `[−1,1]³`
 

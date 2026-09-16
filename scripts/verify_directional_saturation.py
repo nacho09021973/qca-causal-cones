@@ -164,7 +164,7 @@ def _():
     return True, "; ".join(msgs) + "; r_in=1, V_causal^max=sqrt(3)"
 
 
-@check("every cube vertex stays in the strict support of W^n (single lattice path)")
+@check("every cube vertex stays in the strict support of W^n, for all n")
 def _():
     msgs = []
     for nm, W in (("5.12", walk1()), ("5.15", walk2())):
@@ -174,13 +174,20 @@ def _():
             # (W^n)_{n sigma} = (W_sigma)^n exactly, with no cancellation.
             Wsig = sp.Matrix(2, 2, lambda i, j: sp.simplify(
                 M[i, j].coeff(Z[0], sigma[0]).coeff(Z[1], sigma[1]).coeff(Z[2], sigma[2])))
-            if Wsig.norm() == 0:
+            if sp.simplify(Wsig.norm()) == 0:
                 return False, f"{nm}: W_{sigma} = 0"
-            for n in (1, 2, 3, 5, 8):
-                if sp.simplify((Wsig ** n).norm()) == 0:
-                    return False, f"{nm}: (W_{sigma})^{n} = 0"
-        msgs.append(f"{nm}: all 8 vertices nonzero for n<=8")
-    return True, "; ".join(msgs)
+            # Every vertex coefficient here has rank 1, so W^2 = tr(W) W and
+            # (W_sigma)^n = tr(W_sigma)^{n-1} W_sigma.  Nonzero trace therefore
+            # gives nonvanishing for ALL n, with no bound on n.
+            if Wsig.rank() != 1:
+                return False, f"{nm}: W_{sigma} has rank {Wsig.rank()}, rank-1 argument does not apply"
+            tr = sp.simplify(sp.trace(Wsig))
+            if tr == 0:
+                return False, f"{nm}: tr W_{sigma} = 0"
+            if sp.simplify((Wsig * Wsig - tr * Wsig).norm()) != 0:
+                return False, f"{nm}: W^2 = tr(W) W failed"
+        msgs.append(f"{nm}: all 8 vertices rank 1 with nonzero trace")
+    return True, "; ".join(msgs) + "  => (W^n)_{n sigma} != 0 for EVERY n >= 1"
 
 
 @check("(5.12): exact SOS identity (1-f^2) - (v_i^2+v_j^2)|scaled = (c_i c_j s_k + s_i s_j c_k)^2")
