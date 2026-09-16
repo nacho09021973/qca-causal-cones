@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-16
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -368,16 +368,25 @@ was frozen at `4135625` with initial scientific status **OPEN**. No L1,
 defect-metric or other C step is authorized by this instruction.
 
 **Point-(3) result (2026-09-16):**
-`PRELIMINARY_PROOF_COMPLETE_REVIEW_PENDING`. The
+`PROOF_COMPLETE_ONE_INDEPENDENT_ADVERSARIAL_REVIEW_PASS`;
+`THEOREM_STATUS = PROVED_UNDER_FROZEN_CONTRACT`. The
 [analytic report](../reports/2026-09-16--point-3-strict-cone-ceiling.md)
 supplies a matrix-polynomial boundary bound, compression to the original
 eigenspace, a direct directional-slope argument, and the exact support
 limit. The author's assessment is `PASS_ANALYTIC` under the frozen
-contract; **independent review has not been performed**, so this does not
-promote the general inequality to ESTABLISHED. No numerical search or
-scientific script was run. The full C gate is neither ratified nor closed;
+contract. The [independent adversarial review](../informe_adversarial_punto_3.md)
+at `bd44122`, reviewing `db083af` against `4135625`, records
+`ACCEPT_AS_WRITTEN`, with no mandatory repairs. One independent review is
+complete; it is not a five-member ratification. The follow-up incorporates
+its recommended sign control and expository clarifications without changing
+the frozen quantifiers. The bound is proved for the admitted cones and the
+exact support of the full symbol on N3, including degenerate Floquet nodes
+and collisions of eigenvalues after taking powers. It does not establish a
+sector-intrinsic or ballistic bound, or an extension to incommensurable
+displacement sets. No numerical search or scientific script was run.
+The full C gate is neither ratified nor closed;
 L1 remains a manual candidate and the defect identity remains family-only.
-The s=4 example refutes equality, not this proposed ceiling.
+The s=4 example refutes equality and is consistent with this ceiling.
 **NOVELTY = OPEN.**
 
 The 2026-09-16 ratification attempt is `ABORTED_OR_INCOMPLETE`: Gemini was
@@ -404,8 +413,10 @@ Research directions (only the point-(3) ceiling is now frozen):
    and `r_in(C_micro)` hold for every admissible symbol? Currently
    `c_strict^iso <= r_in(C_micro)` is established. `c_IR <= r_in(C_micro)`
    is established only under the isotropic-containment premise of Sec. 3.3.
-   `c_0 <= c_strict^iso` has the point-(3) preliminary proof above under
-   its frozen cone assumptions; independent review remains pending.
+   `c_0 <= c_strict^iso` is proved under the frozen point-(3) assumptions,
+   with one independent adversarial review PASS. Thus every admitted cone
+   satisfies `0 < c_0 <= c_strict^iso <= 1/sqrt(3)`. Equality and microscopic
+   saturation are not consequences of this ceiling.
 2. **Restoring hypotheses.** Which explicitly stated extra assumptions (for
    example `s=2` minimality with or without Eq. (2), or an irreducible `R`)
    give `c_0 = c_strict^iso` for a whole declared class?

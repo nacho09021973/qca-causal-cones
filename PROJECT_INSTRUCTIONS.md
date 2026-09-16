@@ -87,6 +87,11 @@ no longer the sole authorized next front.
   and `CURRENT_STATE.md` Sec. 7.2. The incomplete ratification remains
   incomplete; the full C gate, L1 and the metric-defect steps are not
   authorized. Other successor questions remain unchartered.
+- Point (3) is **PROVED UNDER ITS FROZEN CONTRACT**, with evidence level
+  `PROOF_COMPLETE_ONE_INDEPENDENT_ADVERSARIAL_REVIEW_PASS`: the review at
+  `bd44122` accepts the proof at `db083af` without mandatory repairs.
+  This records one independent review of the ceiling, not a five-member
+  ratification, a full C PASS, a matching theorem, or a novelty result.
 
 Rules that carry over to any successor gate:
 

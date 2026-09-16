@@ -4,9 +4,16 @@
 [`STRICT_CONE_CEILING_N3_GATE.md`](../theory/STRICT_CONE_CEILING_N3_GATE.md).
 **Authorization:** direct user instruction, point (3) only.
 **Author assessment:** `PASS_ANALYTIC` for the frozen point-(3) statement.
-**Evidence level:** `PRELIMINARY_PROOF_COMPLETE_REVIEW_PENDING`.
-**Independent review:** NOT PERFORMED. This report is not an independent
-certificate, a five-member ratification, or a PASS of the full C gate.
+**Evidence level:** `PROOF_COMPLETE_ONE_INDEPENDENT_ADVERSARIAL_REVIEW_PASS`.
+**Theorem status:** `PROVED_UNDER_FROZEN_CONTRACT`.
+**Independent review:** one adversarial reviewer, `ACCEPT_AS_WRITTEN`,
+with no mandatory repairs; see the
+[review](../informe_adversarial_punto_3.md) committed at `bd44122`, which
+examined the proof at `db083af` against the contract at `4135625`.
+The 2026-09-16 follow-up below adds the recommended exposition and sign
+control (O1-O4); it does not change the theorem or its quantifiers. Those
+editorial additions are not a second independent review. This is not a
+five-member ratification or a PASS of the full C gate.
 **NOVELTY = OPEN.**
 
 ## 1. Statement and exact scope
@@ -57,13 +64,20 @@ on the boundary unless it is constant. Taking the supremum over a,b gives
 `||F(z)|| <= 1` for `|z| <= 1`.
 
 **Hermiticity and lower bound.** Differentiating
-`F(exp(-it))^dagger F(exp(-it))=I` at t=0 gives `B=B^dagger`.
+`F(exp(-it))^dagger F(exp(-it))=I` at t=0 gives
+
+\[
+ iF'(1)^\dagger F(1)-iF(1)^\dagger F'(1)=0,
+\]
+
+hence `B=B^dagger`.
 For any v, the real polynomial function `g(r)=||F(r)v||^2` obeys
 `g(r)<=||v||^2=g(1)` for `r<1`. Thus its left derivative at 1 is
 nonnegative. Since
 
 \[
- g'(1)=2\operatorname{Re}\langle v,Bv\rangle
+ g'(1)=\langle v,[F'(1)^\dagger F(1)+F(1)^\dagger F'(1)]v\rangle
+       =2\operatorname{Re}\langle v,Bv\rangle
        =2\langle v,Bv\rangle,
 \]
 
@@ -119,13 +133,22 @@ Group terms with the same q.x and form the Laurent polynomial L satisfying
 F is an ordinary matrix polynomial of degree at most D and is unitary on
 the circle. Grouping may cancel some projected coefficients, including an
 endpoint, but cannot introduce exponents outside [a,b]; exact endpoint
-attainment by the grouped polynomial is not needed. Applying (2),
+attainment by the grouped polynomial is not needed. To expose the chain
+rule and its sign, write
 
 \[
- J_n(q)=a I+F(1)^\dagger F'(1),
+ U(tq)^n=e^{-iat}F(e^{-it}),\qquad
+ \left.\frac{d}{dt}U(tq)^n\right|_{t=0}
+   =-i\bigl(aF(1)+F'(1)\bigr).
 \]
 
-which proves (3) for these directions with their stated normalization.
+Since `F(1)=U(0)^n`, multiplying by `iF(1)^dagger` gives
+
+\[
+ J_n(q)=a I+F(1)^\dagger F'(1).
+\]
+
+Applying (2) proves (3) for these directions with their stated normalization.
 
 For `q=sqrt(3)m/l`, `l` a positive integer, divide the inequality for
 `sqrt(3)m` by l. This is valid because J_n is real-linear in q and H_n
@@ -134,7 +157,10 @@ For each fixed n, J_n is continuous and H_n is the maximum of finitely
 many linear functions. The Hermitian positive cone is closed, so (3)
 extends to every q, including irrational and non-axial directions.
 
-No time limit was used in this density argument.
+No time limit was used in this density argument. The reduction to integer
+exponents uses the commensurability `N_3 subseteq (1/sqrt(3))Z^3`.
+This argument does not establish an extension to arbitrary finite
+incommensurable displacement sets.
 
 ## 4. Compression before taking powers
 
@@ -264,7 +290,8 @@ numerical verification suite. No scientific script was executed.
 
 | Potential failure | Check and outcome |
 | --- | --- |
-| Wrong Fourier sign | For the predeclared scalar-shift sign control `U(k)=exp(-ik.h)`, `J_n(q)=n q.h`, and both bounds in (3) equal that value. This is only a sign check, not an admitted isotropic N3 counterexample. |
+| Wrong Fourier sign: scalar term | For the predeclared scalar-shift sign control `U(k)=exp(-ik.h)`, `J_n(q)=n q.h`, and both bounds in (3) equal that value. Here D=0, so this checks only the scalar term, not the derivative term. This is not an admitted isotropic N3 counterexample. |
+| Wrong Fourier sign: derivative term | The independent review supplies the nondegenerate control `U(t)=exp(-it)P_+ + exp(it)P_-`, for complementary orthogonal projectors. Then `a=-1`, `D=2`, `F(z)=z^2 P_+ + P_-`, so `aI+F(1)^dagger F'(1)=-I+2P_+=P_+-P_-`, agreeing with direct differentiation. This is a lemma control, not an admitted N3 family. |
 | Only coordinate axes proved | Rational vectors, followed by fixed-n continuity, give (3) for every real q. No coordinate-axis minimum is assumed. |
 | Ignored Fourier cancellations | S_n is defined after cancellation; grouping in Sec. 3 uses its actual extremes as enclosing bounds. No path-counting support is substituted. |
 | Nonzero Floquet phase | Factors lambda_* and its conjugate cancel in (4) and (6); omega_*=0 is not needed. |
@@ -297,8 +324,11 @@ are relevant prior context, not an independent review of (2)-(8) or an
 identification of exact support with ballistic propagation. Whether this
 precise formulation is already published has not been exhaustively audited.
 
-The author derivation closes the frozen analytic obligations on paper;
-its project evidence level remains PRELIMINARY pending independent review.
+The author derivation closes the frozen analytic obligations on paper.
+The independent adversarial review at `bd44122` accepts the proof as written
+under the frozen contract, with no mandatory repairs. The recorded evidence
+level is `PROOF_COMPLETE_ONE_INDEPENDENT_ADVERSARIAL_REVIEW_PASS`; this is
+one independent review, not multiple certification or full C ratification.
 It supports a ceiling, not a mechanism selecting equality. The certified
 s=4 strict inequality remains a counterexample to strong matching and is
 compatible with the ceiling. L1 remains a separate candidate; the metric
