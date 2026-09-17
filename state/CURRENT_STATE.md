@@ -1416,3 +1416,20 @@ conditional dictionary of Sec. 8.15. **Not authorized:** execution of
 this gate; fork 4A; a new signalling encoder, detector or geometry;
 re-optimizing `K_*` or `C`; treating `N → ∞` as `a, τ → 0`; using a
 Planck fiat as `DERIVED`.
+
+**Theory paper (draft, not a gate).** The closed model result is written
+as
+[`papers/ir-corona-operational-response-draft.md`](../papers/ir-corona-operational-response-draft.md).
+It does not wait on 4B. It separates ultraviolet propagator, infrared
+operational response, and nature.
+
+**Literature input to 4B, not execution.**
+[`2026-09-17--physical-realization-literature-scan.md`](../reports/2026-09-17--physical-realization-literature-scan.md).
+Adversarial bibliographic scan only. Three bins:
+`ENGINEERED_EMULATOR`, `NATURAL_EFFECTIVE_ANALOG`,
+`FUNDAMENTAL_CANDIDATE`. Hard question (natural system, `a` and `τ`
+physically fixed, infrared cone strictly narrower than microscopic
+support, known observable of that gap): **no** on this pass. Ion-trap
+and photonic Dirac automata are 4A antecedents. Pavia/Mlodinow–Brun
+are incomplete fundamental candidates (Planck `ASSUMPTION`, different
+observables). This scan does **not** assign a 4B terminal state.
