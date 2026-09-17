@@ -157,6 +157,25 @@ repository root:
 python3 -B scripts/verify_lower_bound_no_cancellation_gate.py
 ```
 
+## Regional directional-asymptotics certificate (2026-09-17)
+
+`verify_regional_directional_asymptotics_gate.py` is the exact certificate
+for the
+[regional-asymptotics report](../reports/2026-09-17--regional-directional-asymptotics-gate.md),
+executing
+[`REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE.md`](../theory/REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE.md)
+(preregistered at `08613d0`). See `state/CURRENT_STATE.md` Sec. 8.19. The
+verdict is `OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+
+It checks the holomorphic trace identity, facing-point algebra, the
+`log 2` tilt bound above `J`, tilted mixing `sinh t`, profile Taylor
+orders, and the one-dimensional layer critical point. It does **not**
+certify `C`, `β`, or remainder control. Run from the repository root:
+
+```sh
+python3 -B scripts/verify_regional_directional_asymptotics_gate.py
+```
+
 ## Current scope
 
 Project status, the active line and any authorized next calculation are

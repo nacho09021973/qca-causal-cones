@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate AUTHORIZED, NOT_EXECUTED (Sec. 8.19) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.19) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1162,8 +1162,10 @@ CJWW (5.15) in the one-particle sector).
 - The internal families are not exhaustive. `M = a I + b·σ` in general is
   not covered. `I` is `REFERENCE_CONTROL` only.
 - No new encoder is authorized. The cancellation analysis of the sixteen
-  pairs is Sec. 8.18. The remaining bottleneck is the regional
-  directional saddle of Sec. 8.19, `NOT_EXECUTED`.
+  pairs is Sec. 8.18. The regional exponential rate is Sec. 8.19. The
+  remaining bottleneck is the integrated Laplace coefficient
+  (Hessian, profiles, spin, interference with the free tail `r`), not
+  yet chartered.
 
 `Delta T = 2` and the experimental problem remain unopened.
 
@@ -1205,29 +1207,51 @@ after: `33691df6…` / `2da09280…`).
   leader, `A` and remainder are analytic and open.
 
 **Claim ceiling.** Same frozen class as Sec. 8.17. No existence, no
-vanishing, no `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. The next
-authorized front is Sec. 8.19.
+vanishing, no `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. The regional
+rate is Sec. 8.19.
 
-### 8.19 REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+### 8.19 OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY_REVIEWED (2026-09-17)
 
 Contract
 [`REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE.md`](../theory/REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE.md)
-frozen before any calculation, by direct user instruction (2026-09-17).
-Successor of Sec. 8.18, without reopening it. **Not a lower-bound gate.**
+preregistered at `08613d0` before any computation. Successor of Sec. 8.18,
+without reopening it. Three artefacts are recorded together here:
 
-**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.**
+- the [execution report](../reports/2026-09-17--regional-directional-asymptotics-gate.md);
+- its exact certificate
+  [`verify_regional_directional_asymptotics_gate.py`](../scripts/verify_regional_directional_asymptotics_gate.py);
+- the [independent review](../reports/2026-09-17--regional-directional-asymptotics-independent-review.md).
 
-**Single question.** What is the dominant anisotropic saddle of the
-regional propagator between `A_N` and `B_N`, and what is its first
-non-vanishing coefficient after the frozen profiles are integrated?
-The geometrically optimal point may fail to be the physically dominant
-saddle, because the profiles vanish there. The target expansion is
+**Verdict.** `OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+The regional exponential rate is
 
-`L_{M,M_B}(N) = e^{-K_* N} N^{-β} (C_{M,M_B} + C^{(1)}_{M,M_B}/N + ⋯)`,
+`K_* = I(v_*)`, `v_* = (1 - 1/(2√3))(1,1,1)`,
 
-with successive questions `K_*`, whether `C = 0`, and if so the first
-`C^{(j)} ≠ 0`.
+with `I(v) = sup_ξ [ξ·v - arcosh(∏_j cosh ξ_j)]`. This is strictly
+between `J` and `log 4`. It is the unique minimizer of `I` on the
+regional velocity set (supporting tilt `ξ_* ∥ û`). The profile logarithms
+are `O(log N)` and shift the saddle by `O(1)` lattice sites; they do
+**not** change `K_*`. The coefficient `C` and the power `β` remain
+unclassified. All sixteen pairs remain `OPEN_PAIR`. The independent
+review attacks the three load-bearing claims (`I(v)` and the dual saddle;
+uniqueness of `v_*`; `O(log N)` profiles) and returns **PASS**, with no
+mandatory repairs.
 
-**Frozen and not varied:** the scaled class of Secs. 8.17–8.18. New
-encoders, detectors and geometries are not authorized. Execution is
-not authorized by this section.
+**Frozen status, keeping evidence levels separate:**
+
+- **Scientific result: OPEN, with the exponential rate identified.**
+  `K_* = I(v_*)` is the Legendre envelope of the regional kernel. It is
+  the exponential rate of `L` only if some `C` (or `C^{(j)}`) is
+  non-vanishing and controlled, which is not claimed.
+- **Review metadata.** Cold independent agent review: PASS. No mandatory
+  repairs. Human freeze authorization: the 2026-09-17 instruction to
+  freeze this status if the cold review passed, and not to open a
+  coefficient gate before that review.
+- **Software certificate: PASS, 18/18 exact checks.** Identities only;
+  `C`, `β` and remainder are analytic and open.
+
+**Claim ceiling.** Same frozen class. No existence, no vanishing, no
+`IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. No new encoder. The remaining
+bottleneck is the integrated Laplace coefficient at this unique saddle
+(6D Hessian, `O(1)`-layer profiles, spinorial amplitude, interference
+with the free tail `r = O(N^{-3/2})`). That front is not chartered here.
