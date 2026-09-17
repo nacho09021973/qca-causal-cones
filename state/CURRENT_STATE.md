@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.19) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.19); regional Laplace-coefficient gate AUTHORIZED, NOT_EXECUTED (Sec. 8.20) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1252,6 +1252,31 @@ mandatory repairs.
 
 **Claim ceiling.** Same frozen class. No existence, no vanishing, no
 `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. No new encoder. The remaining
-bottleneck is the integrated Laplace coefficient at this unique saddle
-(6D Hessian, `O(1)`-layer profiles, spinorial amplitude, interference
-with the free tail `r = O(N^{-3/2})`). That front is not chartered here.
+bottleneck — the complete Laplace coefficient at this unique saddle — is
+now chartered as Sec. 8.20, `NOT_EXECUTED`.
+
+### 8.20 REGIONAL_LAPLACE_COEFFICIENT_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+
+Contract
+[`REGIONAL_LAPLACE_COEFFICIENT_GATE.md`](../theory/REGIONAL_LAPLACE_COEFFICIENT_GATE.md)
+frozen before any calculation, by direct user instruction (2026-09-17).
+Successor of Sec. 8.19, without reopening it. **Not a rate gate, not a
+geometry gate, not a lower-bound gate.**
+
+**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.**
+
+**Single question.** Compute the first **complete** Laplace coefficient of
+the sixteen frozen pairs at the already-certified regional saddle
+(`K_* = I(v_*)`), including the Hessian (hence `β`), the `O(1)`-layer
+profile zeros, the spinorial tilted amplitude, and the interference with
+the free tail `r = O(N^{-3/2})`, and decide whether some Pauli pair has
+a non-vanishing coefficient with controlled remainder.
+
+`C` is the full coefficient. It is **not** assumed to factor as
+`C_kernel C_profile C_spin C_interference`; interference may make `C` a
+sum of coupled contributions. The object is computed whole before any
+factorization.
+
+**Premises, not reopened:** `K_*`, `v_*`, the `O(log N)` profile logs, the
+`O(1)` saddle shift. **Not authorized:** re-optimizing `K_*`, new
+encoders, new detectors, new geometries, execution, or a new script.
