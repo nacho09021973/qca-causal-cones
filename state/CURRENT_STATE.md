@@ -1070,6 +1070,18 @@ criterion.
 - `Lambda -> 0` is not `a, tau -> 0`, and no physical scale is set
   (Sec. 8.15).
 
-The charter's administrative header (lines 3-7) is stale; it will be fixed in
-a separate act and does not alter the contract. `Delta T = 2` and the
-experimental problem remain unopened.
+**Erratum, charter header.** Lines 3-7 of the charter are pre-publication
+text. They cite drafting base `HEAD=11efe1f` and scientific remote `780ecb0`,
+state `NOT_EXECUTED / OUTCOME_OPEN`, and say that publication and execution
+are pending. All of that is superseded: the charter was published at
+`817050d`, executed, and frozen at `778a44a` with the status recorded in this
+section. The charter deliberately keeps its bytes, for two reasons:
+
+- its sha256 `3d559ced...` is pinned by the frozen certificate (check 1)
+  and recorded in the report, the independent review and the freeze
+  commits;
+- contracts in this repository keep their pre-execution text, as
+  `NONCORNER_SIGNALING_GATE.md` does.
+
+The header was never part of the scientific contract (Secs. 1-15), which
+is unchanged. `Delta T = 2` and the experimental problem remain unopened.
