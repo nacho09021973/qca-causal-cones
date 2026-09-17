@@ -2,9 +2,10 @@
 
 **Veredicto: `NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS`.**
 Razón, en la lista de §10 del contrato: **incompatibilidad del encoder con el
-criterio IR**. La stop rule de §7 se activó en el primer control: la fracción
-de la diferencia codificada que queda fuera de la banda cumple
-`eta_enc(Lambda) -> 1`, no `-> 0`. No se calculó `D_B`.
+criterio IR**. La stop rule de §7 se activó en el primer control: la fracción,
+en norma de traza, de la diferencia codificada que queda fuera del bloque
+`Pi_Lambda Delta_Lambda Pi_Lambda` cumple `eta_enc(Lambda) -> 1`, no `-> 0`.
+No se calculó `D_B`.
 
 Ejecución del contrato
 [`NARROW_BAND_SIGNALING_GATE.md`](../theory/NARROW_BAND_SIGNALING_GATE.md) en el
@@ -15,8 +16,11 @@ orden de su §13. El contrato no se modificó. No hubo commit ni push, y
 
 Convención de este informe: **[V]** marca una identidad o un límite que el
 certificado comprueba con aritmética exacta. **[A]** marca un paso analítico
-que se prueba aquí mismo a partir de pasos [V]. No se usó cuadratura,
-coma flotante ni malla como evidencia.
+probado en este informe y **no certificado por software**. Puede apoyarse en
+identidades [V], pero también en hechos analíticos no codificados (lista en
+§12). Una línea con [V] y [A] certifica por software sólo la identidad o el
+límite, no la desigualdad ni el signo. No se usó cuadratura, coma flotante ni
+malla como evidencia.
 
 ## 1. Preflight
 
@@ -83,7 +87,8 @@ Consecuencias en `|p| < pi/4`:
   identidad.
 
 Hay una ruta elemental independiente para `|p| <= 1/sqrt2`:
-`cos^2 x >= 1 - x^2` y `prod(1 - a_i) >= 1 - sum a_i` **[V]**. Da
+`cos^2 x >= 1 - x^2` y `prod(1 - a_i) >= 1 - sum a_i` (la identidad polinómica
+subyacente es **[V]**; las desigualdades, **[A]**). Da
 `2 prod c_i^2 - 1 >= 1 - 2|p|^2`, que es `> 0` en `|p| < 1/sqrt2`.
 
 ## 3. Control pre-elección (§6)
@@ -99,15 +104,16 @@ Normalización: `Z_Lambda = 64 Lambda^3/(3465 pi^2)` **[V]**.
 **(b) Error respecto de la dinámica Weyl.**
 
 *Lema 2* **[A]**: `r_W(Lambda) <= R_W(Lambda) := 3 Lambda^2 (1/2 + sqrt(1/2 + 25 Lambda^2/18))`.
-En la carta, además, `R_W(Lambda) < 5 Lambda^2` **[V]**, usando
-`pi < 22/7` por la integral de Dalzell **[V]**.
+En la carta, además, `R_W(Lambda) < 5 Lambda^2`: la desigualdad racional final
+es **[V]**, usa `pi < 22/7` por la integral de Dalzell **[V]**, y la forma de
+`R_W`, con sus constantes `3` y `25/18`, es **[A]**.
 
 Prueba en cuatro pasos:
 
 1. `W - I - i H_W` se descompone por entradas en restos de Taylor **[V]**:
    - diagonal: `(c1 c2 - 1) e^{±i p3} + (e^{±i p3} - 1 ∓ i p3)`;
    - fuera de la diagonal: `∓(c1 - 1) s2 ∓ (s2 - p2) + i(s1 - p1)`.
-2. Los restos integrales **[V]** dan `|e^{ix} - 1 - ix| <= x^2/2`,
+2. Las identidades de los restos integrales **[V]** dan **[A]** `|e^{ix} - 1 - ix| <= x^2/2`,
    `|cos x - 1| <= x^2/2` y `|sin x - x| <= |x|^3/6`. Con
    `|c1 c2 - 1| <= (p1^2 + p2^2)/2` y `|s2| <= |p2|`, cada entrada diagonal
    está acotada por `Lambda^2/2` y cada entrada fuera de la diagonal por
@@ -116,8 +122,8 @@ Prueba en cuatro pasos:
 3. `H_W` es hermítico con autovalores `±|p|`, así que
    `||e^{i H_W} - I - i H_W|| <= Lambda^2/2`. Tomando adjuntos,
    `||S - e^{-i H_W}|| = ||W - e^{i H_W}||`.
-4. Por telescopio **[V]**,
-   `||S^j - e^{-ij H_W}|| <= j ||S - e^{-i H_W}||` para `j <= 3`.
+4. Por la identidad telescópica **[V]** y la contractividad de los unitarios
+   **[A]**, `||S^j - e^{-ij H_W}|| <= j ||S - e^{-i H_W}||` para `j <= 3`.
 
 Traslado a estados, sin factores ocultos: `hat phi` tiene soporte en la bola,
 así que `||S^j phi - e^{-ij H_W} phi|| <= r_W`. La distancia de traza entre
@@ -192,7 +198,8 @@ Sean `e := P_0 psi = delta_0 (x) c` y `f := psi - e`, con `e ⊥ f`. Como
 
 `Delta_Lambda = |psi - 2e><psi - 2e| - |psi><psi| = -2(|e><f| + |f><e|) = -2(P_0 rho_0 Q_0 + Q_0 rho_0 P_0)`,
 
-`||Delta_Lambda||_1 = 4 sqrt(s(1 - s)) > 0` para todo `Lambda ∈ (0, pi/4)` **[V]**.
+`||Delta_Lambda||_1 = 4 sqrt(s(1 - s)) > 0` para todo `Lambda ∈ (0, pi/4)`
+(identidad **[V]**; positividad por `0 < s < 1`, Lema 4 **[A]**).
 
 **La convención `Delta = 0` de §7 no se activa en ningún punto de la carta.**
 
@@ -202,7 +209,7 @@ Sean `e := P_0 psi = delta_0 (x) c` y `f := psi - e`, con `e ⊥ f`. Como
 `e_out = (I - Pi) e`. El subespacio `V = span{psi, e_in, e_out}` es invariante
 bajo `Pi`. `Delta`, `L = Pi Delta Pi` y `R = Delta - L` tienen rango y soporte
 en `V`, y se anulan en `V^⊥`. Sus normas de traza quedan fijadas por los datos
-de Gram, que son reales:
+de Gram, que son reales. Esta reducción, incluido el Lema 3, es **[A]**:
 
 `<psi|psi> = 1`, `<psi|e_in> = <Pi psi|e> = <psi|P_0 psi> = s`,
 `||e_in||^2 = kappa s` (Lema 3), `||e_out||^2 = (1 - kappa) s`, y los demás
@@ -216,10 +223,10 @@ Con `w := Pi U_1 psi = psi - 2 e_in` y `h := (I - Pi) U_1 psi = -2 e_out`:
 
 ### 4.5 Normas y cociente
 
-Los tres operadores tienen `det = 0` en `V` y
-`e2 = (tr^2 - tr X^2)/2 <= 0`, que valen respectivamente `-4s(1-s)`,
-`-4s(kappa - s)` y `-4s(1-kappa)(1 - 4s(1-kappa))` **[V]**. Por eso
-`||X||_1 = sqrt(tr^2 - 4 e2)`:
+Los tres operadores tienen `det = 0` en `V` **[V]**, y
+`e2 = (tr^2 - tr X^2)/2` vale respectivamente `-4s(1-s)`, `-4s(kappa - s)` y
+`-4s(1-kappa)(1 - 4s(1-kappa))` **[V]**. Estos valores son `<= 0` para
+`0 < s <= kappa < 1/4` **[A]**. Por eso `||X||_1 = sqrt(tr^2 - 4 e2)`:
 
 | Cantidad | Valor exacto |
 | --- | --- |
@@ -227,25 +234,27 @@ Los tres operadores tienen `det = 0` en `V` y
 | `\|\|L\|\|_1 = \|\|Pi Delta Pi\|\|_1` | `4 sqrt(s^2(1-kappa)^2 + s(kappa-s))` **[V]** |
 | `\|\|Delta - Pi Delta Pi\|\|_1` | `4 sqrt(s(1-kappa)(1 - 3s(1-kappa)))` **[V]** |
 | `eta_enc(Lambda)` | `sqrt( (1-kappa)(1 - 3s(1-kappa)) / (1-s) )` **[V]** |
-| fuga absoluta `epsilon_1(0, Lambda)` | `4s(1-kappa) <= 11 Lambda^3/(35 pi^2) -> 0` **[V]** |
+| fuga absoluta `epsilon_1(0, Lambda)` | `4s(1-kappa)` **[V]**; `<= 11 Lambda^3/(35 pi^2)` por el Lema 4 **[A]**; `-> 0` **[V]** |
 
 ### 4.6 Cotas y límite
 
 Para `0 < s <= kappa < 1/3`, los numeradores de `1 - eta^2` y de
 `eta^2 - (1-kappa)(1-3kappa)`, que son `kappa - s + 3s(1-kappa)^2` y
-`3(1-kappa)(kappa - s(1-kappa)) + s(1-kappa)(1-3kappa)`, son `>= 0` **[V]**.
-Por tanto
+`3(1-kappa)(kappa - s(1-kappa)) + s(1-kappa)(1-3kappa)`: las dos identidades
+son **[V]** y su signo `>= 0` se lee por inspección **[A]**. Por tanto
 
 `(1 - kappa)(1 - 3 kappa) <= eta_enc(Lambda)^2 <= 1`.
 
-En toda la carta, `kappa < pi/384 < 11/1344`, y el suelo es decreciente con
+En toda la carta, `kappa < kappa(pi/4) = pi/384` **[A]**, y `pi/384 < 11/1344`
+porque `pi < 22/7` (integral de Dalzell **[V]**). El suelo es decreciente, con
 `floor(11/1344) = 1747563/1806336 > 24/25` **[V]**. Queda
 
 **`eta_enc(Lambda) > 2 sqrt(6)/5 ≈ 0.98` para todo `Lambda ∈ (0, pi/4)`**,
 
-y, por compresión entre las dos cotas, **`lim_{Lambda->0} eta_enc(Lambda) = 1`**
-**[V]**. En sentido complementario,
-`||L||_1/||Delta||_1 <= sqrt(kappa/(1-kappa)) -> 0` **[V]**.
+y, por compresión entre las dos cotas **[A]** (el límite del suelo es
+**[V]**), **`lim_{Lambda->0} eta_enc(Lambda) = 1`**. En sentido complementario,
+`||L||_1/||Delta||_1 <= sqrt(kappa/(1-kappa)) -> 0` (la identidad del cociente
+es **[V]**; la desigualdad, **[A]**).
 
 Lectura física. Al estrechar la banda, el recurso se extiende sobre unos
 `Lambda^{-3}` sitios, y su amplitud en Alice cae como `Lambda^{3/2}`. La puerta
@@ -253,9 +262,21 @@ de un solo sitio escribe el bit en la dirección `e = delta_0 (x) c`, cuyo
 espectro es plano: sólo una fracción `kappa ~ Lambda^3` de esa dirección cae
 dentro de la banda. `||Delta||_1 ~ (4/pi) sqrt(11/140) Lambda^{3/2}` tiende a
 cero, igual que la fuga absoluta, porque toda la intervención se hace pequeña.
-Pero la fracción de la diferencia codificada que vive fuera de la banda tiende
-a **1**. Es exactamente el escenario que §7 fue diseñado para detectar: pasar
-§6 en norma absoluta ocultaría una codificación esencialmente UV.
+Pero el cociente `eta_enc = ||Delta - Pi Delta Pi||_1/||Delta||_1` tiende a
+**1**. Es el escenario que §7 fue diseñado para detectar: la fuga absoluta de
+§6 tiende a cero aunque la diferencia codificada no quede asintóticamente en
+el bloque IR–IR.
+
+Estructura del residuo **[A]**. `R = |w><h| + |h><w| + |h><h|` (§4.4) se
+descompone en los bloques IR–UV `|w><h|`, UV–IR `|h><w|` y UV–UV `|h><h|`:
+
+- `|| |w><h| ||_1/||Delta||_1 = || |h><w| ||_1/||Delta||_1 = (1/2) sqrt((1-kappa)(1-4s(1-kappa))/(1-s)) -> 1/2`;
+- `|| |h><h| ||_1/||Delta||_1 = (1-kappa) sqrt(s/(1-s)) -> 0`.
+
+El residuo relativo está dominado por las coherencias IR–UV y UV–IR, y el
+bloque UV–UV es relativamente `O(sqrt s)`. Esto **no** autoriza a describir la
+codificación, la información ni ninguna señal como UV: no se calculó señal
+alguna, y lo que queda fuera del bloque IR–IR es casi todo término cruzado.
 
 **Observación estructural, que no amplía el veredicto.** La fórmula de
 `eta_enc` sólo usa de la familia congelada dos cosas: `Pi_Lambda psi_Lambda = psi_Lambda`
@@ -288,7 +309,8 @@ re-certificación geométrica de `y_B` y la igualdad de los estados de Bob en
 
 ## 8. Límite IR
 
-**Demostrado** (analítico, con certificado exacto):
+**Demostrado analíticamente.** El certificado cubre sólo las identidades y
+límites marcados [V]; los pasos sin cobertura se listan en §12.
 
 - `eta_enc(Lambda) -> 1`;
 - `||Delta_Lambda||_1 -> 0` como `Lambda^{3/2}`;
@@ -331,9 +353,12 @@ expresamente `IN_CONTINUUM_LIMIT` (§10). No afecta a este veredicto.
   (§11 del charter), y sus verificadores pasan sin cambios (§12).
 - Este negativo **no refuta** `3/128`,
   `ALICE_LOCAL_PREPARATION_SIGNALING_WITNESS_PROVED` ni
-  `NONCORNER_SIGNALING_CONSTRUCTED`. Lo que establece es que ese mecanismo,
-  con una puerta de un solo sitio sobre este recurso de banda estrecha, no
-  queda dentro del régimen IR según el criterio preregistrado.
+  `NONCORNER_SIGNALING_CONSTRUCTED`. Lo que establece es que la puerta
+  puntual congelada `U_1 = e^{i pi n_0}`, aplicada a la familia narrow-band
+  congelada, falla el criterio relativo de §7. No dice nada sobre el
+  protocolo ultralocal de `3/128`, que usa otro recurso (`|0,down>` localizado
+  en `T = 0`), otra lectura (Bob en `(1,1,1)`) y no está sometido a ningún
+  criterio IR.
 - Un positivo tampoco habría constituido una predicción experimental.
 - El negativo **sólo vale para la clase congelada**: nodo `p = 0`, envolvente
   `g`, espín `down`, dos pasos, `U_1 = e^{i pi n_0}` en el origen, `y_B`,
@@ -390,6 +415,33 @@ decisión de congelación.
 | `git diff --no-index --check` sobre los dos archivos nuevos | vacío |
 | Untracked preexistentes | intactos |
 
+**Cobertura real del certificado (R4).** Los "34/34" cubren sólo lo marcado
+[V]. Los siguientes pasos son analíticos o manuales y **no** están certificados
+por software. Varias mutaciones que los alteran sobreviven con 34/34:
+
+- Lema 1: concavidad → mínimo en un vértice del símplex, y monotonía de
+  `cos 2|p|`. El check correspondiente sólo verifica `2cos^2 t - 1 = cos 2t`.
+- Ruta elemental: el check sólo verifica una identidad polinómica.
+- Lema 3 (espectro plano) y reducción fiel a `V`.
+- Lema 4: cotas bilaterales de `s`. El check sólo verifica límites.
+- Paridad ⇒ anulación de las integrales impares.
+- Signos `e2 <= 0` y numeradores `>= 0`.
+- Mitad superior `eta_enc <= 1` del sándwich. Sólo se usa para "límite = 1",
+  no para `eta_enc ↛ 0`.
+- Vínculo entre `kappa(pi/4) = pi/384` y la constante `11/1344` del código.
+- Cadena de desigualdades de `R_W` y sus constantes `3` y `25/18`. `R_W` no
+  interviene en la stop rule.
+
+Hechos del entorno:
+
+- `main()` no crea ningún `Float` finito. Pero importar
+  `verify_directional_saturation.py` ejecuta `sp.simplify` a nivel de módulo
+  (línea 84), que carga `sympy.physics.units` y crea 17 `Float` finitos
+  (constantes físicas de la librería). No intervienen en ningún cálculo del
+  certificado.
+- Ese módulo importa `numpy` (línea 517), no declarado en
+  `scripts/requirements.txt`. Sin numpy, el certificado no arranca.
+
 ## 13. Observaciones sobre el charter (reportadas, no reparadas)
 
 1. **Encabezado sin enmendar.** Las líneas 3–7 siguen diciendo "sobre
@@ -411,7 +463,28 @@ decisión de congelación.
    código trazado para todo resultado retenido. Se resolvió con la
    autorización condicionada de la instrucción (§11 de este informe).
 5. **El diseño anticipó el resultado sin ser un error.** El control absoluto
-   de §6, por sí solo, habría aceptado una codificación esencialmente UV;
-   §7 existe precisamente para eso, y aquí fue decisivo.
+   de §6, por sí solo, habría aceptado una diferencia codificada que no queda
+   asintóticamente en el bloque IR–IR; §7 existe precisamente para eso, y aquí
+   fue decisivo.
 
 No se detectó ningún error que invalide el contrato.
+
+## 14. Registro de reparaciones
+
+Reparaciones obligatorias R1–R4, aplicadas el 2026-09-17 después de la
+self-review (10:28) y de la segunda revisión adversarial (10:47), ambas hechas
+en la misma sesión que la ejecución. Versión previa: sha256
+`5d3e7125f5dcae1ec445e3a0ac6dafc70636da89e1c411ca34111ab6a5445f8e`. No se
+cambió ninguna cantidad, regla, parámetro de la clase, criterio ni veredicto.
+
+- **R1.** Se sustituyó "fuera de la banda" por la formulación relativa al
+  bloque `Pi_Lambda Delta_Lambda Pi_Lambda` (encabezado y §4.6).
+- **R2.** Se eliminó "codificación esencialmente UV" (§4.6 y §13.5). En §4.6
+  se añadió la estructura del residuo **[A]**: dominan los bloques IR–UV y
+  UV–IR; el bloque UV–UV es relativamente `O(sqrt s)`.
+- **R3.** Se separó explícitamente el resultado del protocolo ultralocal de
+  `3/128` (§10).
+- **R4.** Se redefinió [A] como "no certificado por software", se corrigieron
+  las marcas [V] que cubrían desigualdades, signos, límites por compresión o
+  constantes (§§3, 4.3–4.6, 8) y se añadió la cobertura real del certificado
+  (§12).
