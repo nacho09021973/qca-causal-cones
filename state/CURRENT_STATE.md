@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -962,3 +962,40 @@ six additional checks would alter the reviewed artefact and therefore require
 a new review of that file. The earlier frozen contracts and witnesses retain
 their bytes and scope; the optimal-D gate remains **PARTIAL** and no
 experimental-design gate is opened here.
+
+### 8.15 PHYSICAL_DIMENSIONAL_TRANSLATION — CLOSED / CONDITIONAL (2026-09-17)
+
+Contract
+[`PHYSICAL_DIMENSIONAL_TRANSLATION_GATE.md`](../theory/PHYSICAL_DIMENSIONAL_TRANSLATION_GATE.md)
+frozen at `fca5881` before solving; see the
+[dimensional audit](../reports/2026-09-17--physical-dimensional-translation-audit.md).
+
+**Verdict: `DIMENSIONAL_MAP_CONDITIONAL`.** The source conventions support the
+symbolic restoration
+
+`x = a n`, `t = N tau`, `k = p/a`,
+`E = hbar omega/tau (mod 2 pi hbar/tau)`, and
+`v_phys = (a/tau) grad_p omega`.
+
+Hence `c_IR^phys = a/tau`. Identifying it with an observed `c_phys` imposes
+`a = c_phys tau`; it does not determine either absolute scale. The model and
+checked sources specify no numerical `a` or `tau`, and the earlier Planck-scale
+calculation was explicitly conditional, not a scale derivation.
+
+For the frozen non-corner witness, conditionally on `(a,tau)`, the
+encoding-to-readout interval is `tau` and Bob is at Euclidean distance
+`sqrt(2)a`. If `a/tau = c_phys`, then the scale-free ratio is
+`L/(c_phys tau) = sqrt(2)`: outside the emergent cone and inside the exact
+one-step microscopic support, exactly as in lattice units.
+
+The value `3/128` acquires **no units**. It remains the exact probability
+difference and trace distance for the two idealized local states. It is not an
+energy, rate or dimensional coupling. The exactly localized preparation is
+broad over the full Brillouin zone, not a low-energy narrow-band state, so no
+unique physical energy or momentum can be assigned from the IR dispersion.
+
+**Claim ceiling.** A consistent conditional dictionary is established; a
+parameter-free prediction in SI units is not. Absolute cutoff scale, physical
+realization/coupling, efficiencies, noise, feasibility and any identification
+with nature remain unspecified. No experiment was designed and `Delta T = 2`
+was not opened.

@@ -95,3 +95,13 @@ This is an audit, not a demand that nature supply a scale. Any one of the three
 outcome categories closes the gate if supported. `DIMENSIONAL_MAP_CONDITIONAL`
 or `DIMENSIONAL_MAP_NOT_SPECIFIED` forbids calling `3/128` a parameter-free
 physical prediction in SI units.
+
+## 7. Outcome record
+
+**Status: CLOSED (2026-09-17). Verdict: `DIMENSIONAL_MAP_CONDITIONAL`.** See
+[`2026-09-17--physical-dimensional-translation-audit.md`](../reports/2026-09-17--physical-dimensional-translation-audit.md).
+A consistent symbolic restoration exists, with `x = a n`, `t = N tau`,
+`k = p/a`, `E = hbar omega/tau` modulo `2 pi hbar/tau`, and
+`c_IR^phys = a/tau`. Neither absolute scale is fixed. The frozen witness has
+`(L,Delta t) = (sqrt(2)a,tau)`, while `3/128` remains a dimensionless trace
+distance/probability difference rather than a dimensionful observable.
