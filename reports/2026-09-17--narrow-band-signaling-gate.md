@@ -356,9 +356,14 @@ expresamente `IN_CONTINUUM_LIMIT` (§10). No afecta a este veredicto.
   `NONCORNER_SIGNALING_CONSTRUCTED`. Lo que establece es que la puerta
   puntual congelada `U_1 = e^{i pi n_0}`, aplicada a la familia narrow-band
   congelada, falla el criterio relativo de §7. No dice nada sobre el
-  protocolo ultralocal de `3/128`, que usa otro recurso (`|0,down>` localizado
-  en `T = 0`), otra lectura (Bob en `(1,1,1)`) y no está sometido a ningún
-  criterio IR.
+  protocolo ultralocal de `3/128`, ni en su witness de vértice (Bob en
+  `(1,1,1)`) ni en el no-corner (Bob en `(±1,±1,0)`). Ese protocolo comparte
+  con este gate los dos pasos comunes, la puerta `U_1` en el origen y
+  `Delta T = 1`, y en el caso no-corner también el propio sitio
+  `y_B = (1,1,0)`. Difiere en el recurso: `|0,down>` exactamente localizado
+  antes de los dos pasos, es decir `chi = S^2|0,down>` en el instante de la
+  elección, con espectro sobre toda la zona de Brillouin, en lugar de
+  `phi_Lambda` de banda estrecha. Además, no está sometido a ningún criterio IR.
 - Un positivo tampoco habría constituido una predicción experimental.
 - El negativo **sólo vale para la clase congelada**: nodo `p = 0`, envolvente
   `g`, espín `down`, dos pasos, `U_1 = e^{i pi n_0}` en el origen, `y_B`,
@@ -488,3 +493,11 @@ cambió ninguna cantidad, regla, parámetro de la clase, criterio ni veredicto.
   las marcas [V] que cubrían desigualdades, signos, límites por compresión o
   constantes (§§3, 4.3–4.6, 8) y se añadió la cobertura real del certificado
   (§12).
+- **MR1** (revisión independiente,
+  `reports/2026-09-17--narrow-band-signaling-gate-independent-review.md`,
+  sha256 `8dda2f32…`). El texto de R3 en §10 omitía el witness no-corner de
+  `3/128`, que usa el mismo `y_B = (1,1,0)`, y citaba la preparación con el
+  reloj del otro protocolo. Se sustituyó por el texto propuesto por el
+  revisor. Versión previa a MR1: sha256
+  `06828d5c49eb160ffbc3fbda83bcddff18d7672faacda24e249409a80fe9600d`. No cambia
+  ninguna cantidad, regla ni veredicto.

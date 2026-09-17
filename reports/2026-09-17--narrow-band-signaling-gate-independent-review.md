@@ -813,3 +813,107 @@ corresponden al usuario.
 - **Lo congelable** es el contenido de los hashes citados más el diff de MR1.
   El commit de congelación debe registrar `5d3e7125…`, `06828d5c…`, el hash
   posterior a MR1 y `23be80f2…` del certificado.
+
+## 15. Reconfirmación tras MR1 (2026-09-17, posterior a 11:35)
+
+Esta sección se añade sin reescribir §§0–14. Los primeros 37515 bytes de este
+archivo son exactamente la versión `8dda2f3209eef92fed45413977a2e39faece066d83165108217852032e154474`,
+en la que se formuló MR1. Tengo una copia de sólo lectura en mi scratchpad y
+se puede comprobar con `head -c 37515 … | sha256sum`.
+
+### 15.1 Hashes y alcance del cambio [X]
+
+| Objeto | sha256 | Estado |
+| --- | --- | --- |
+| informe actual | `826ed5930573e6788cc39b22a4beae05b7f0c3d04f4d2cff08987bdac01f2c81` | coincide con el esperado |
+| copia previa a MR1 (`scratchpad/prerepair/report-preMR1-06828d5c.md`) | `06828d5c49eb160ffbc3fbda83bcddff18d7672faacda24e249409a80fe9600d` | idéntica a la versión revisada en §§0–14 |
+| charter | `3d559ced…41ba9` | sin cambios |
+| certificado | `23be80f2…8d4586` | sin cambios; re-ejecutado: 34/34, exit 0 |
+| self-review / segunda revisión | `69d600a2…` / `d3a24a4a…` | sin cambios |
+| verificadores congelados | `1d189473…` / `4953009e…` | sin cambios |
+
+`HEAD` = `origin/research/b-infinity-post-s4-gate` = `817050d8…`. Sin cambios
+tracked, `__pycache__` intacto (08:45:20) y ningún commit nuevo.
+
+**Diff.** Generé el mío con `diff -u` entre la copia y el archivo del repo; no
+usé `MR1.diff`. Contiene exactamente dos hunks:
+
+- **(a)** `@@ -356,9 +356,14 @@`: sustituye las tres líneas de R3 en §10 por
+  el texto propuesto en §13 de esta revisión;
+- **(b)** `@@ -488,3 +493,11 @@`: añade la entrada "MR1" al final de §14.
+
+Ningún otro byte cambia.
+
+### 15.2 Exactitud factual de (a)
+
+Contrasté el texto nuevo con las fuentes:
+
+| Afirmación del nuevo texto | Fuente | Resultado |
+| --- | --- | --- |
+| `3/128` en el witness de vértice, con Bob en `(1,1,1)` | `ALICE_LOCAL_PREPARATION_WITNESS.md` l. 16–24; `CURRENT_STATE.md` §8.13 | correcto |
+| `3/128` en el no-corner, con Bob en `(±1,±1,0)` | `NONCORNER_SIGNALING_GATE.md` l. 44–51; informe no-corner l. 55 y 72 (`(1,1,0)`: `Delta p_B = 3/128`) | correcto |
+| comparten los dos pasos comunes | vértice l. 19 ("`T = 0 -> 2`: the declared free dynamics only"); no-corner l. 48–49; charter narrow-band §4 ("`T=-2 -> 0^-`: sólo `S^2`") | correcto |
+| misma puerta `U_1` en el origen | vértice l. 22–23; no-corner l. 49–50 (`A = (T=2, x=0)`, `U_1 = exp(i pi n_0)`); charter §4 (`A = (T=0, x=0)`) | correcto |
+| `Delta T = 1` | vértice l. 24 (`T = 3`); no-corner l. 50–51; charter §4 | correcto |
+| el no-corner incluye el propio `y_B = (1,1,0)` | no-corner l. 55 y 72; charter §4 | correcto |
+| diferencia en el recurso: `\|0,down>` localizado antes de los dos pasos, es decir `chi = S^2\|0,down>` en la elección | vértice y no-corner: recurso en `T = 0` y elección en `T = 2`; narrow-band: `phi_Lambda` en `T = -2` y elección en `T = 0` | correcto, con el reloj de la elección coherente en ambos |
+| `chi` tiene espectro sobre toda la zona de Brillouin | [M] `hat chi(p) = S(p)^2 e_down` con `S(p)` unitario, así que `\|\|hat chi(p)\|\| = 1` para todo `p`; coincide con `CURRENT_STATE.md` §8.15 | correcto |
+| no está sometido a ningún criterio IR | ningún criterio IR en esos contratos; charter §11 | correcto |
+
+Con recurso, puerta, pasos, `Delta T`, espín y (para el no-corner) sitio de Bob
+fijados, lo único que distingue los protocolos es el recurso, más el criterio
+IR que sólo impone este gate. La frase "difiere en el recurso" es por tanto
+exacta. **MR1 está correctamente incorporada.**
+
+### 15.3 Exactitud de (b)
+
+La entrada "MR1" de §14 afirma cuatro cosas, todas correctas:
+
+- el texto previo omitía el witness no-corner con el mismo `y_B = (1,1,0)`;
+- citaba la preparación con el reloj del otro protocolo;
+- se sustituyó por el texto del revisor;
+- la versión previa es `06828d5c…` y no cambia ninguna cantidad, regla ni
+  veredicto: el diff lo confirma.
+
+La referencia "`8dda2f32…`" identifica correctamente la versión de esta
+revisión que formuló MR1. Al añadir esta sección, el archivo tiene un hash
+nuevo, pero `8dda2f32…` sigue verificable como prefijo exacto (§15). No
+introduce afirmaciones nuevas incorrectas.
+
+### 15.4 Veredicto final
+
+Criterios de §13:
+
+- la matemática central está reconstruida independientemente (§§2–8);
+- R1–R4 están incorporadas, y el único defecto (R3) queda corregido por MR1;
+- no queda ningún defecto que altere el claim congelable;
+- los `SOFTWARE_ONLY_GAP` y los dos `PROOF_GAP` menores en texto
+  interpretativo fuera del claim (§§10–11) siguen siendo recomendaciones, no
+  reparaciones obligatorias;
+- ningún `VERDICT_THREATENING_GAP`.
+
+### **`PASS`**
+
+### 15.5 Estado congelable
+
+**Se autoriza `NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY_REVIEWED`**
+para el informe `826ed593…` y el certificado `23be80f2…`, bajo el charter
+`817050d` (`3d559ced…`), con el alcance del informe §10.
+
+Esta revisión es de un solo agente separado, desde un contexto independiente
+de la sesión ejecutora. No es revisión humana externa, consenso de varios
+miembros ni ratificación.
+
+**Condiciones de trazabilidad** para el acto de congelación, que corresponde
+al usuario:
+
+- **Hashes a registrar:** `5d3e7125…` (pre-R1–R4), `06828d5c…` (pre-MR1),
+  `826ed593…` (final) y el hash final de esta revisión.
+- **Límite de la cronología:** ejecución → revisiones → R1–R4 → MR1 sólo está
+  respaldada por mtimes (10:14 → 10:28/10:47 → 11:05 → 11:35), no por git.
+  Mi autorización cubre el contenido de esos bytes, no una cronología
+  criptográfica.
+- **Script nuevo:** la autorización de implementación sigue sin constar en el
+  repo; debe confirmarla el usuario (§12).
+- **Encabezado del charter:** debe corregirse, si se desea, en un acto
+  administrativo separado, sin tocar §§1–15.
