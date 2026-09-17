@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
-**Date:** 2026-09-16
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; Alice-local preparation signalling witness PROVED / INDEPENDENTLY REVIEWED (Sec. 8.13) (branch-local)
+**Date:** 2026-09-17
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -917,3 +917,48 @@ Alice-Bob coherence) and the geometry differs (one readout step to
 Sec. 8.12 channel, whose frozen theorem and review keep their exact bytes and
 scope. The optimal-D gate stays **PARTIAL**; H1 stays **OPEN**; H3 and H4 stay
 **NOT REACHED**. The experimental problem remains unopened, by instruction.
+
+### 8.14 NONCORNER_SIGNALING_CONSTRUCTED / INDEPENDENTLY_REVIEWED (2026-09-17)
+
+Successor to Sec. 8.13, executed under the frozen
+[`NONCORNER_SIGNALING_GATE.md`](../theory/NONCORNER_SIGNALING_GATE.md): the
+Alice-local preparation channel is **not** confined to the vertex
+`(1,1,1)`. The [corrected execution report](../reports/2026-09-16--noncorner-signaling-gate.md)
+and its [independent review](../reports/2026-09-16--noncorner-signaling-gate-independent-review.md)
+are frozen together here. The review verdict is **PASS with three mandatory
+textual repairs (`MR1`--`MR3`)**, all applied to the report; none changes a
+computed quantity or the scientific verdict.
+
+The exact one-step kernel support gives precisely four admissible non-vertex
+sites, `y = (+/-1,+/-1,0)`, and the preregistered construction succeeds at
+all four. At each site,
+
+`M(y) = diag(-3/256,0) != 0`,
+`p_0 = 25/1024`, `p_1 = 49/1024`, and `Delta p_B = 3/128`.
+
+The reduced-state trace distance is exactly `D = 3/128`, so the exhibited
+projection saturates the distinguishability bound for each computed pair of
+states. This is pairwise measurement optimality only; it is not protocol,
+preparation, site or intervention optimality. The result refutes
+vertex-exclusivity for this protocol at `Delta T = 1`; it says nothing about
+`Delta T = 2`, other vertices, asymptotic scaling, capacity, experimental
+feasibility or our universe. No violation of the model's microscopic causal
+bound is claimed.
+
+**Frozen status, keeping evidence levels separate:**
+
+- **Scientific result: CLOSED.** `NONCORNER_SIGNALING_CONSTRUCTED /
+  INDEPENDENTLY_REVIEWED` in the exact scope above.
+- **Software certificate: PASS with six externally verified properties not
+  yet encoded as checks.** The run
+  `verify_directional_saturation.py --noncorner-gate-only` passes **20/20
+  exact checks**, but that count **is not by itself an exhaustive certificate**
+  of the six properties listed in the execution report Sec. 8. They were
+  independently checked by the reviewer. They remain recorded certification
+  debt, not gaps in the scientific result.
+
+The reviewed script is deliberately unchanged after review. Encoding those
+six additional checks would alter the reviewed artefact and therefore require
+a new review of that file. The earlier frozen contracts and witnesses retain
+their bytes and scope; the optimal-D gate remains **PARTIAL** and no
+experimental-design gate is opened here.
