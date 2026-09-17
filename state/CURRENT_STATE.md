@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); lower-bound/no-cancellation gate AUTHORIZED, NOT_EXECUTED (Sec. 8.18) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1161,7 +1161,33 @@ CJWW (5.15) in the one-particle sector).
   `e^{-J' λ/a}`, with no numerical prediction.
 - The internal families are not exhaustive. `M = a I + b·σ` in general is
   not covered. `I` is `REFERENCE_CONTROL` only.
-- No new encoder is authorized. The remaining bottleneck is a lower bound
-  or a vanishing proof for the sixteen frozen pairs.
+- No new encoder is authorized. The remaining bottleneck — a lower bound
+  or a vanishing proof for the sixteen frozen pairs — is now chartered
+  separately as Sec. 8.18, `NOT_EXECUTED`.
 
 `Delta T = 2` and the experimental problem remain unopened.
+
+### 8.18 LOWER_BOUND_NO_CANCELLATION_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+
+Contract
+[`LOWER_BOUND_NO_CANCELLATION_GATE.md`](../theory/LOWER_BOUND_NO_CANCELLATION_GATE.md)
+frozen before any calculation, by direct user instruction (2026-09-17).
+Successor of Sec. 8.17, without reopening it.
+
+**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.** This section
+records authorization and the frozen question only. It records no
+coefficient, no symmetry, no vanishing, and no existence claim.
+
+**Single question.** For some of the sixteen IR-admissible frozen pairs,
+can \(\delta_{(M,M_B)}(N)>0\) be proved for all large \(N\), or can exact
+vanishing of those responses be proved? The one-sided bound of Sec. 8.17
+is a premise. The first attack is the cancellation structure of a
+dominant contour/saddle amplitude \(A_{M,M_B}(N)e^{-KN}\), not a brute
+lower bound of all of \(\delta_B\).
+
+**Frozen and not varied:** the scaled class of Sec. 8.17 (walk, regions,
+resource, internal families, profiles, \(\theta\), unprojected \(\delta\)).
+New encoders, detectors and geometries are not authorized.
+
+**Not authorized here:** execution, a new script, `Delta T = 2`, physical
+units, or any claim that \(A\neq 0\) or \(\delta\equiv 0\).
