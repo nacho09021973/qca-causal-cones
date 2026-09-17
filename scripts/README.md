@@ -109,12 +109,21 @@ conditions, the upper half of the squeeze, the `R_W` constants and the
 
 ## Current scope
 
-The only next calculation is the
-[massless rigidity gate](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md), under
-`state/CURRENT_STATE.md`. Freeze an admissible-class contract before adding
-its scientific code. Preserve the completed verifier and its evidence record;
-this documentation promotion does not change their hashes or check semantics.
+Project status, the active line and any authorized next calculation are
+recorded only in [`state/CURRENT_STATE.md`](../state/CURRENT_STATE.md), which
+is branch-local on `research/b-infinity-post-s4-gate`. This file does not
+restate them. The
+[massless rigidity gate](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md), which
+this section previously named as the only next calculation, is historical: it
+was completed by counterexample for the declared `s=4` class (see
+[`PROJECT_INSTRUCTIONS.md`](../PROJECT_INSTRUCTIONS.md) Sec. 7).
 
-No broad scans, anisotropic detours or new substrate classes. Every retained
-scientific result must have permanent, traced generating code; no ephemeral
-scripts may supply evidence.
+Rules for any new scientific script:
+
+- Freeze its contract before adding scientific code.
+- Preserve completed verifiers and their evidence records.
+- Do not change the bytes of an independently reviewed verifier without a new
+  review of that file.
+- No broad scans, anisotropic detours or new substrate classes.
+- Every retained scientific result must have permanent, traced generating
+  code; no ephemeral scripts may supply evidence.
