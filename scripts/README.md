@@ -47,7 +47,8 @@ covering the two 3D walks of CJWW `sources/2408.02108v1.pdf`, Eqs. (5.12) and (5
 It is a verification of a chartered report, not a new gate calculation, and it
 changes no canonical state.
 
-Requirements: Python 3.12 and `sympy==1.14.0`. Run from the repository root:
+Requirements: Python 3.12, `sympy==1.14.0` and `numpy==1.26.4`; numpy is
+imported at module level (see `requirements.txt`). Run from the repository root:
 
 ```sh
 python3 scripts/verify_directional_saturation.py
@@ -88,10 +89,10 @@ no Bob state and no `D_B` is constructed. It reuses the frozen symbol `walk2()`
 and the Laurent equality test from `verify_directional_saturation.py`
 read-only, and does not modify that reviewed file.
 
-Requirements: Python 3.12, `sympy==1.14.0` and `numpy`. The certificate itself
-does not use numpy, but `verify_directional_saturation.py` imports it at module
-level, and `requirements.txt` does not yet declare it; without numpy the
-import fails before any check runs. Run from the repository root:
+Requirements: Python 3.12, `sympy==1.14.0` and `numpy==1.26.4`, both pinned
+in `requirements.txt`. The certificate itself does not use numpy, but
+`verify_directional_saturation.py` imports it at module level; without numpy
+the import fails before any check runs. Run from the repository root:
 
 ```sh
 python3 scripts/verify_narrow_band_gate.py

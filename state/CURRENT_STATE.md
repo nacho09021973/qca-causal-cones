@@ -1055,7 +1055,7 @@ encoding, the information or any signal is UV.
   in report Sec. 12 are not encoded as checks; the independent reviewer
   verified them by hand. They are recorded certification debt, not gaps in the
   result. The certificate imports `verify_directional_saturation.py`, which
-  requires numpy; `scripts/requirements.txt` does not declare it.
+  requires numpy, pinned in `scripts/requirements.txt`.
 
 **Claim ceiling.** The result holds only for the frozen class and the Sec. 7
 criterion.
