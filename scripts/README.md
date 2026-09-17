@@ -176,6 +176,31 @@ certify `C`, `β`, or remainder control. Run from the repository root:
 python3 -B scripts/verify_regional_directional_asymptotics_gate.py
 ```
 
+## Regional Laplace-coefficient certificate (2026-09-17)
+
+`verify_regional_laplace_coefficient_gate.py` is the exact certificate
+for the
+[Laplace-coefficient report](../reports/2026-09-17--regional-laplace-coefficient-gate.md),
+executing
+[`REGIONAL_LAPLACE_COEFFICIENT_GATE.md`](../theory/REGIONAL_LAPLACE_COEFFICIENT_GATE.md)
+(preregistered at `6f520ad`, blob `18d1f65`). See
+`state/CURRENT_STATE.md` Sec. 8.20. The verdict is
+`PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY_REVIEWED`.
+
+It checks hermiticity of `S(-i ξ)`, half-period Laurent symmetries,
+triviality of plane characters, the closed forms of `P`, `C_*^2`,
+`q_n`, `q_t`, the Weyl tail of `r`, the Laplace/Poisson identities of
+the discrete layer, the prefactor `\mathcal K`, the algebraic power
+count `β = 13/2`, and interval enclosures of the sixteen complete
+coefficients `C_{M,M_B}(θ)` (uniform sign in `θ`). It does **not**
+certify the analytic remainder lemmas (`N_*`, `C'`). `--diagnostics`
+is `SUPPORTED` only and is never used for `β`, `C` or the terminal
+state. Run from the repository root:
+
+```sh
+python3 -B scripts/verify_regional_laplace_coefficient_gate.py
+```
+
 ## Current scope
 
 Project status, the active line and any authorized next calculation are

@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.19); regional Laplace-coefficient gate AUTHORIZED, NOT_EXECUTED (Sec. 8.20) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.19); regional Laplace-coefficient gate PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY REVIEWED (Sec. 8.20) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1250,33 +1250,71 @@ mandatory repairs.
 - **Software certificate: PASS, 18/18 exact checks.** Identities only;
   `C`, `β` and remainder are analytic and open.
 
-**Claim ceiling.** Same frozen class. No existence, no vanishing, no
-`IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. No new encoder. The remaining
-bottleneck — the complete Laplace coefficient at this unique saddle — is
-now chartered as Sec. 8.20, `NOT_EXECUTED`.
+**Claim ceiling.** Same frozen class. This section does not claim
+existence, vanishing, or `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`.
+No new encoder. The complete Laplace coefficient at this unique saddle
+is Sec. 8.20.
 
-### 8.20 REGIONAL_LAPLACE_COEFFICIENT_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+### 8.20 PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY_REVIEWED (2026-09-17)
 
 Contract
 [`REGIONAL_LAPLACE_COEFFICIENT_GATE.md`](../theory/REGIONAL_LAPLACE_COEFFICIENT_GATE.md)
-frozen before any calculation, by direct user instruction (2026-09-17).
-Successor of Sec. 8.19, without reopening it. **Not a rate gate, not a
-geometry gate, not a lower-bound gate.**
+preregistered at `6f520ad` before any computation (blob `18d1f65`).
+Successor of Sec. 8.19, without reopening it. Three artefacts are
+recorded together here:
 
-**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.**
+- the [execution report](../reports/2026-09-17--regional-laplace-coefficient-gate.md);
+- its exact certificate
+  [`verify_regional_laplace_coefficient_gate.py`](../scripts/verify_regional_laplace_coefficient_gate.py);
+- the [independent review](../reports/2026-09-17--regional-laplace-coefficient-gate-independent-review.md).
 
-**Single question.** Compute the first **complete** Laplace coefficient of
-the sixteen frozen pairs at the already-certified regional saddle
-(`K_* = I(v_*)`), including the Hessian (hence `β`), the `O(1)`-layer
-profile zeros, the spinorial tilted amplitude, and the interference with
-the free tail `r = O(N^{-3/2})`, and decide whether some Pauli pair has
-a non-vanishing coefficient with controlled remainder.
+**Verdict.** `PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY_REVIEWED`.
+For all sixteen frozen pairs,
 
-`C` is the full coefficient. It is **not** assumed to factor as
-`C_kernel C_profile C_spin C_interference`; interference may make `C` a
-sum of coupled contributions. The object is computed whole before any
-factorization.
+`L_{M,M_B}(N) = e^{-K_* N} N^{-13/2} (C_{M,M_B}(θ_N) + O(N^{-1/2}))`,
 
-**Premises, not reopened:** `K_*`, `v_*`, the `O(log N)` profile logs, the
-`O(1)` saddle shift. **Not authorized:** re-optimizing `K_*`, new
-encoders, new detectors, new geometries, execution, or a new script.
+with `θ_N = {√3 N/4}` and `β = 13/2`. The complete coefficient is a sum
+of the free-tail interference against the encoder layer, over the two
+torus saddles `η ∈ {0, π(1,1,1)}` (distinct projectors `P` and `P̄`,
+weights `Γ_±`). `C(θ)` is sign-definite and uniformly non-vanishing; the
+relative oscillation is bounded by `1.47×10^{-3}`. Quadratic terms are
+only bounded, at rate `e^{-2 K_* N}`. The independent review attacks the
+seven load-bearing claims (`β`; complete `C` as a sum; uniform
+non-vanishing; remainder vs charter `o(1)`; `C(θ)` vs constant `C`;
+eight torus points vs frozen `K_*`; terminal state) and returns **PASS**,
+with no mandatory repairs.
+
+**Frozen status, keeping evidence levels separate:**
+
+- **Scientific result: PAULI_LEADING_COEFFICIENT_NONVANISHING.** `β = 13/2`
+  is identified. All twelve Pauli pairs have `C(θ) ≠ 0` uniformly in `θ`,
+  controlled against an `O(N^{-1/2})` remainder. With Secs. 8.17 and 8.19
+  this authorizes, for those twelve pairs,
+  `δ_{M,M_B}(N) = |C_{M,M_B}(θ_N)| N^{-13/2} e^{-K_* N} (1 + O(N^{-1/2}))`
+  and `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED` for those pairs. The
+  four `M = I` pairs are also non-vanishing (`REFERENCE_CONTROL`).
+- **Review metadata.** Cold independent agent review: PASS. No mandatory
+  repairs. Human freeze authorization: the 2026-09-17 instruction to
+  freeze, commit and promote as separate steps if the cold review passed.
+- **Software certificate: PASS, 58/58 exact checks.** Identities and
+  interval enclosures of closed forms, including uniform sign of
+  `C_{M,M_B}(θ)` for all sixteen pairs. Analytic remainder lemmas (`N_*`,
+  `C'`) are report `[A]`, not encoded. Finite-`N` diagnostics are
+  `SUPPORTED` only.
+
+**Claim ceiling.** Same frozen class. `C = C(θ_N)`, not an `N`-independent
+constant. The remainder is asymptotic: `N_*` and `C'` are not explicit;
+the leading formula is not quantitatively reliable for `N ≲ 10^3`, and
+for `M ∈ {I, σ_3}` the `N^{-17/2}` piece dominates at diagnostic `N`.
+No `D_B = 0`, no `δ ≡ 0`. Does not reopen `K_*`, `v_*`, geometry,
+encoders, detectors, profiles, node or walk. Does not reopen
+Secs. 8.16–8.19, `3/128`, no-corner, or `Delta T = 2`. `N → ∞` is not
+`a, τ → 0`. No physical units. No claim of a microcausality violation.
+The general family `M = a I + b · σ` is not covered.
+
+The Sec. 8.19 sentence that the spectral-radius maximum is unique at
+`η = 0` is false (equality on `{0,π}³`); `K_*` is unchanged and the extra
+contributing point `π(1,1,1)` is included in `C`. The Sec. 8.19 files
+are not edited.
+
+This is a branch-local promotion only; `main` is unchanged.
