@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); lower-bound/no-cancellation gate AUTHORIZED, NOT_EXECUTED (Sec. 8.18) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate AUTHORIZED, NOT_EXECUTED (Sec. 8.19) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1161,33 +1161,73 @@ CJWW (5.15) in the one-particle sector).
   `e^{-J' λ/a}`, with no numerical prediction.
 - The internal families are not exhaustive. `M = a I + b·σ` in general is
   not covered. `I` is `REFERENCE_CONTROL` only.
-- No new encoder is authorized. The remaining bottleneck — a lower bound
-  or a vanishing proof for the sixteen frozen pairs — is now chartered
-  separately as Sec. 8.18, `NOT_EXECUTED`.
+- No new encoder is authorized. The cancellation analysis of the sixteen
+  pairs is Sec. 8.18. The remaining bottleneck is the regional
+  directional saddle of Sec. 8.19, `NOT_EXECUTED`.
 
 `Delta T = 2` and the experimental problem remain unopened.
 
-### 8.18 LOWER_BOUND_NO_CANCELLATION_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+### 8.18 OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY_REVIEWED (2026-09-17)
 
 Contract
 [`LOWER_BOUND_NO_CANCELLATION_GATE.md`](../theory/LOWER_BOUND_NO_CANCELLATION_GATE.md)
+preregistered at `1717d5e` before any computation. Successor of Sec. 8.17,
+without reopening it. Three artefacts are recorded together here:
+
+- the [execution report](../reports/2026-09-17--lower-bound-no-cancellation-gate.md);
+- its exact certificate
+  [`verify_lower_bound_no_cancellation_gate.py`](../scripts/verify_lower_bound_no_cancellation_gate.py);
+- the [independent review](../reports/2026-09-17--lower-bound-no-cancellation-independent-review.md).
+
+**Verdict.** `OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+The unique-path vertex
+
+`(S^N)_{(N,N,N),0} = 4^{-N} |↓⟩⟨↓|`
+
+exists and cannot be promoted to a regional leader (`K = log 4`, kills
+`↑`, coherent regional sum). The Euclidean minimum of `|y-x|_2` on the
+two balls is unique and lies on both spheres, where the profiles vanish.
+That implies neither `A = 0` nor `A ≠ 0`. All sixteen pairs remain
+`OPEN_PAIR`. `D_B = 0` is not asserted. The independent review attacks
+those three load-bearing claims and returns **PASS**, with one recommended
+drafting clarification applied at freeze (execution-report sha256 before /
+after: `33691df6…` / `2da09280…`).
+
+**Frozen status, keeping evidence levels separate:**
+
+- **Scientific result: OPEN.** The obstacle is now localized: the
+  competition between the propagation exponent and the profile zero at
+  the boundary, not a missing trajectory and not a new encoder.
+- **Review metadata.** Cold independent agent review: PASS. No mandatory
+  repairs. Human freeze authorization: the 2026-09-17 instruction to
+  freeze this status if the cold review passed.
+- **Software certificate: PASS, 24/24 exact checks.** Identities only;
+  leader, `A` and remainder are analytic and open.
+
+**Claim ceiling.** Same frozen class as Sec. 8.17. No existence, no
+vanishing, no `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. The next
+authorized front is Sec. 8.19.
+
+### 8.19 REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+
+Contract
+[`REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE.md`](../theory/REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE.md)
 frozen before any calculation, by direct user instruction (2026-09-17).
-Successor of Sec. 8.17, without reopening it.
+Successor of Sec. 8.18, without reopening it. **Not a lower-bound gate.**
 
-**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.** This section
-records authorization and the frozen question only. It records no
-coefficient, no symmetry, no vanishing, and no existence claim.
+**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.**
 
-**Single question.** For some of the sixteen IR-admissible frozen pairs,
-can \(\delta_{(M,M_B)}(N)>0\) be proved for all large \(N\), or can exact
-vanishing of those responses be proved? The one-sided bound of Sec. 8.17
-is a premise. The first attack is the cancellation structure of a
-dominant contour/saddle amplitude \(A_{M,M_B}(N)e^{-KN}\), not a brute
-lower bound of all of \(\delta_B\).
+**Single question.** What is the dominant anisotropic saddle of the
+regional propagator between `A_N` and `B_N`, and what is its first
+non-vanishing coefficient after the frozen profiles are integrated?
+The geometrically optimal point may fail to be the physically dominant
+saddle, because the profiles vanish there. The target expansion is
 
-**Frozen and not varied:** the scaled class of Sec. 8.17 (walk, regions,
-resource, internal families, profiles, \(\theta\), unprojected \(\delta\)).
-New encoders, detectors and geometries are not authorized.
+`L_{M,M_B}(N) = e^{-K_* N} N^{-β} (C_{M,M_B} + C^{(1)}_{M,M_B}/N + ⋯)`,
 
-**Not authorized here:** execution, a new script, `Delta T = 2`, physical
-units, or any claim that \(A\neq 0\) or \(\delta\equiv 0\).
+with successive questions `K_*`, whether `C = 0`, and if so the first
+`C^{(j)} ≠ 0`.
+
+**Frozen and not varied:** the scaled class of Secs. 8.17–8.18. New
+encoders, detectors and geometries are not authorized. Execution is
+not authorized by this section.

@@ -138,6 +138,25 @@ It runs 53 exact SymPy checks, with no floating point in any computed
 quantity, no quadrature, no lattice truncation and no `N` scan. It fails
 closed: any failed check or exception exits nonzero.
 
+## Lower-bound / no-cancellation certificate (2026-09-17)
+
+`verify_lower_bound_no_cancellation_gate.py` is the exact certificate for
+the [cancellation-gate report](../reports/2026-09-17--lower-bound-no-cancellation-gate.md),
+executing
+[`LOWER_BOUND_NO_CANCELLATION_GATE.md`](../theory/LOWER_BOUND_NO_CANCELLATION_GATE.md)
+(preregistered at `1717d5e`). See `state/CURRENT_STATE.md` Sec. 8.18. The
+verdict is `OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+
+It checks unique-path identities, facing-point geometry, the vanishing of
+the profiles on the Euclidean spheres, and the Taylor orders of `c_N` and
+`s_N`. It does **not** identify a leading amplitude, classify `A`, or
+certify vanishing. Those are analytic and remain open. Run from the
+repository root:
+
+```sh
+python3 -B scripts/verify_lower_bound_no_cancellation_gate.py
+```
+
 ## Current scope
 
 Project status, the active line and any authorized next calculation are
