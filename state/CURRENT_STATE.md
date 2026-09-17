@@ -1369,28 +1369,50 @@ next front is Sec. 8.21.
 
 Contract
 [`PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE.md`](../theory/PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE.md)
-frozen before any calculation, by direct user instruction (2026-09-17).
-Successor of Sec. 8.20, without reopening it. Inherits Sec. 8.15
-(`DIMENSIONAL_MAP_CONDITIONAL`) without reopening the `3/128` audit.
-**Not a signalling gate, not a rate gate, not a Laplace-coefficient gate,
-not a laboratory-implementation gate (4A).**
+frozen before any calculation, by direct user instruction (2026-09-17),
+with the four closure criteria and first-class negative outcomes
+incorporated before execution (this commit; first preregistration
+`e9353ad`). Successor of Sec. 8.20, without reopening it. Inherits
+Sec. 8.15 (`DIMENSIONAL_MAP_CONDITIONAL`) without reopening the `3/128`
+audit. **Not a signalling gate, not a rate gate, not a Laplace-coefficient
+gate, not a laboratory-implementation gate (4A).**
 
 **Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.**
 
-**Single question.** Given the frozen IR law
-`δ_{M,M_B}(N) = |C_{M,M_B}(θ_N)| N^{-13/2} e^{-K_* N} (1 + O(N^{-1/2}))`
-on the twelve Pauli pairs, what could `a`, `τ`, `Λ`, the internal degrees
-of freedom, Alice and Bob mean in a natural system, and does any such
-identification convert that dimensionless asymptotics into a prediction
-in metres, seconds, energy and instrumental sensitivity?
+Step 3 is **input**, not an object to re-optimize. The gate does **not**
+ask whether `δ_{M,M_B}(N) ≠ 0`. It asks whether a physically defensible
+identification
 
-`a` or `τ` named by fiat (Planck or otherwise) is not a derivation from
-the model. Sec. 8.15 already established that the sources do not fix
-either absolute scale. This gate asks for candidate correspondences with
-nature, each tagged as an external hypothesis, and whether any of them
-is forced.
+`(a, τ, Λ, internal modes, A, B) ↔ (physical magnitudes and operations)`
+
+converts `δ(N) ∼ |C(θ_N)| N^{-13/2} e^{-K_* N}` into a dimensional,
+falsifiable prediction.
+
+**Four hard closure criteria, all scored separately:**
+
+1. **Absolute scale.** `a/τ = c` is not enough. External information must
+   fix `a` or `τ`, or an additional physically motivated relation must
+   appear. `a = ℓ_P` is `ASSUMPTION`, never `DERIVED`.
+2. **Physical dictionary.** What the two internal components are, which
+   physical operation implements `M = σ_j`, what `M_B` is, and what a
+   narrow-band preparation is in the candidate system. A formal relabelling
+   is not a dictionary.
+3. **Dimensional observable.** From a dimensionless distance/probability
+   to something an apparatus records (counts, phase, frequency, energy,
+   occupation, correlation, or other), with an explicit SI law.
+4. **Detectability.** If substituting physical scales yields
+   `δ ∼ e^{-K_* λ/a}` with `λ/a` astronomical, the effect may be real
+   and experimentally inaccessible. That is a legitimate closure.
+
+A viable experiment is **not** the success criterion. First-class
+negative outcomes: `NO_ABSOLUTE_SCALE_DERIVABLE`,
+`PHYSICAL_MAP_CONDITIONAL_ONLY`,
+`PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE`. None of these weakens Sec. 8.20.
+
+Binding separation: model closed ≠ nature established ≠ experiment designed.
 
 **Premises, not reopened:** `K_*`, `β`, `C(θ_N)`, the sixteen pairs, the
 conditional dictionary of Sec. 8.15. **Not authorized:** execution of
 this gate; fork 4A; a new signalling encoder, detector or geometry;
-re-optimizing `K_*` or `C`; treating `N → ∞` as `a, τ → 0`.
+re-optimizing `K_*` or `C`; treating `N → ∞` as `a, τ → 0`; using a
+Planck fiat as `DERIVED`.

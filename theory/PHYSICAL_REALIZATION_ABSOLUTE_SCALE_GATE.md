@@ -10,40 +10,58 @@ No autoriza el fork 4A (implementación física del walk). No autoriza
 otro gate de señalización, ni un encoder, detector, geometría, perfil,
 walk o nodo nuevos.
 
+**Precisión de contrato (2026-09-17, antes de cualquier cálculo).**
+Incorpora los cuatro criterios de cierre y los desenlaces negativos
+como cierres de primera clase. El paso 3 **no se reabre por inercia**.
+
 Sucesor de `REGIONAL_LAPLACE_COEFFICIENT_GATE` (`CURRENT_STATE` §8.20),
 sin reabrirlo. Aquel resultado,
 
 `PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY_REVIEWED`,
 
-conserva sus bytes. Hereda, sin reabrirla, la auditoría dimensional
-§8.15 (`DIMENSIONAL_MAP_CONDITIONAL`): el modelo no fija `a` ni `τ`.
+conserva sus bytes y entra **como input**. Hereda, sin reabrirla, la
+auditoría dimensional §8.15 (`DIMENSIONAL_MAP_CONDITIONAL`): el modelo
+no fija `a` ni `τ`.
 
 Este gate **no** es de señalización, ni de tasa, ni de coeficiente
 Laplace, ni de traducción dimensional del testigo `3/128`.
 
+Separación vinculante, no negociable:
+
+```
+modelo: cerrado  ≠  naturaleza: establecido  ≠  experimento: diseñado
+```
+
+`e9353ad` marca esa transición: se deja de preguntar si el efecto
+existe en el modelo y se pregunta si el modelo puede adquirir
+significado físico absoluto. Ése es ya otro problema.
+
 ## 1. Pregunta única
 
-Dada la ley IR ya derivada, para los doce pares Pauli de la clase
-congelada y `N` suficientemente grande,
+**No** se pregunta si existe \(\delta_{M,M_B}(N)\neq 0\). Eso está
+cerrado en §8.20 y se hereda. Cualquier trabajo posterior sobre física
+real usa ese resultado como input; **no** vuelve a optimizar encoder,
+detector, geometría o asintótica para “mejorarlo”.
+
+La pregunta es si existe una identificación **físicamente defendible**
 
 \[
-\delta_{M,M_B}(N)
-=
-\bigl|C_{M,M_B}(\theta_N)\bigr|\,N^{-13/2}e^{-K_*N}\bigl(1+O(N^{-1/2})\bigr),
-\qquad
-K_*=I(v_*),
-\qquad
-\theta_N=\bigl\{\sqrt3\,N/4\bigr\},
+(a,\tau,\Lambda,\text{modos internos},A,B)
+\;\longleftrightarrow\;
+(\text{magnitudes y operaciones físicas})
 \]
 
-identificar qué **podrían** significar `a`, `τ`, `Λ`, los grados internos,
-Alice y Bob en un sistema natural, y decidir si alguna identificación
-convierte esa asintótica adimensional en una predicción en metros,
-segundos, energía y sensibilidad instrumental.
+que convierta
 
-La pregunta no es si el QCA “es la naturaleza”. Es si la **estructura**
-ya demostrada admite una correspondencia con algo natural, y qué
-predicción dimensionada seguiría.
+\[
+\delta(N)\sim\bigl|C(\theta_N)\bigr|\,N^{-13/2}e^{-K_*N}
+\]
+
+en una predicción **dimensional y falsable**.
+
+La pregunta no es si el QCA “es la naturaleza”. Es si la estructura ya
+demostrada admite una correspondencia absoluta, y qué predicción
+dimensionada —o qué inaccesibilidad— seguiría.
 
 ## 2. Clase congelada — nada se varía
 
@@ -59,11 +77,14 @@ y por `CURRENT_STATE` §§8.15–8.20:
   `E = ħ ω/τ` (mod `2π ħ/τ`), `v_phys = (a/τ) ∇_p ω`, de donde
   `c_IR^phys = a/τ`.
 
-**Prohibido.** Reabrir §§8.16–8.20. Recalcular `K_*`, `β` o `C`. Nuevos
-encoders, detectores, regiones, walk o nodo. Tratar `3/128` como si fuera
-esta ley IR. Fijar `a` o `τ` por decreto (Planck u otra escala nombrada)
-como si el modelo los derivara. Diseñar el experimento 4A. Afirmar
-violación de microcausalidad.
+**Prohibido.** Reabrir el paso 3 ni §§8.16–8.20. Recalcular `K_*`, `β`
+o `C`. Nuevos encoders, detectores, regiones, walk o nodo, aunque sea
+“para mejorar la señal”. Tratar `3/128` como si fuera esta ley IR.
+Fijar `a` o `τ` por decreto (Planck u otra escala nombrada) como si el
+modelo los derivara: `a=ℓ_P` es `ASSUMPTION`, nunca `DERIVED`. Diseñar
+el experimento 4A. Forzar el desenlace hacia “experimento viable”.
+Afirmar violación de microcausalidad. Afirmar que la naturaleza queda
+establecida porque el modelo está cerrado.
 
 ## 3. Bifurcación 4A / 4B
 
@@ -79,55 +100,82 @@ se bifurca:
 ambición original. El siguiente cálculo autorizado, si se ejecuta, es
 éste, no otro sobre `C` ni un diseño de laboratorio.
 
-## 4. Método vinculante
+## 4. Cuatro criterios de cierre (duros, los cuatro)
 
-**Paso 0.** Heredar §§8.15 y 8.20. No redemostrar la ley IR. No
-redemostrar que el modelo no fija `a` ni `τ`.
+Cada uno se puntúa por separado. El gate **no** tiene como criterio de
+éxito un experimento viable. Un negativo en cualquiera es un cierre
+legítimo y **no** debilita el paso 3.
 
-**Paso 1 — diccionario condicional de la ley IR.** Restaurar
-`δ_{M,M_B}(N)` a unidades físicas **condicionalmente** en `(a,τ,Λ)`:
-separación de las bolas, duración `Nτ`, corte `Λ/a`, y la tasa
-`e^{-K_* N}` como función de esas escalas. `N → ∞` **no** es
-`a,τ → 0`.
+**1. Escala absoluta.** No basta \(a/\tau=c\). Tiene que aparecer
+información **externa** que fije \(a\) o \(\tau\), o una relación
+adicional **físicamente motivada**. Poner \(a=\ell_P\) por conveniencia
+es `ASSUMPTION`, nunca `DERIVED`.
 
-**Paso 2 — identificaciones candidatas.** Enumerar, como **hipótesis
-externas** y no como salidas del QCA, qué podrían ser `a`, `τ`, `Λ`,
-los dos modos internos, Alice y Bob en un sistema natural
-(condensado, red óptica, escala de Planck, u otras). Cada candidata
-se etiqueta `HYPOTHESIS`, nunca `DERIVED_FROM_THE_MODEL`.
+**2. Diccionario físico.** Identificar qué son realmente los dos
+componentes internos, qué operación física implementa \(M=\sigma_j\),
+qué representa \(M_B\), y qué significa una preparación narrow-band en
+el sistema candidato. Un relabeling formal no es diccionario.
 
-**Paso 3 — forzamiento vs posibilidad.** Decidir, para cada candidata,
-si la estructura la **fuerza**, la **permite** o la **excluye**. Un
-ejemplo compatible no es una identificación. Un fiat Planck no es
-una derivación.
+**3. Observable dimensional.** Pasar de una distancia/probabilidad
+adimensional a algo que un aparato registre: conteos, fase, frecuencia,
+energía, ocupación, correlación, u otro, con una **ley explícita en SI**.
+\(\delta\) adimensional no es esa ley.
 
-**Paso 4 — predicción dimensionada y sensibilidad.** Donde una
-identificación (forzada o meramente parametrizada) esté bien
-definida, convertir la ley en una predicción en metros, segundos,
-energía, y en el umbral instrumental que haría observable
-`δ ∼ N^{-13/2} e^{-K_* N}`. Si ninguna identificación está forzada,
-la salida es una **familia** parametrizada, no un número único.
+**4. Detectabilidad.** Aunque exista el mapa, si al sustituir escalas
+físicas resulta
 
-**Paso 5.** Numerics de `N` concreto o de una escala nombrada: sólo
+\[
+\delta\sim e^{-K_*\lambda/a}
+\]
+
+con \(\lambda/a\) astronómico, el efecto puede ser físicamente real y
+experimentalmente inaccesible. Eso **también** cierra el gate.
+
+## 5. Método vinculante
+
+**Paso 0.** Heredar §§8.15 y 8.20 como input. No redemostrar la ley IR.
+No redemostrar que el modelo no fija `a` ni `τ`. No retocar encoder,
+detector, geometría ni asintótica.
+
+**Paso 1.** Restaurar \(\delta(N)\) condicionalmente en \((a,\tau,\Lambda)\):
+separación de las bolas, duración \(N\tau\), corte \(\Lambda/a\), tasa
+\(e^{-K_*N}\). \(N\to\infty\) **no** es \(a,\tau\to 0\). Esto no satisface
+el criterio 1.
+
+**Paso 2.** Candidatas de identificación, cada una `HYPOTHESIS` o
+`ASSUMPTION`, nunca `DERIVED` salvo prueba de forzamiento. Criterios 1
+y 2.
+
+**Paso 3.** Observable SI (criterio 3) sobre esa identificación, forzada
+o asumida. Si sólo hay familia parametrizada, el observable queda en
+función de \((a,\tau,\Lambda)\).
+
+**Paso 4.** Detectabilidad (criterio 4) al sustituir escalas. No se
+descarta un mapa por ser inobservable; se clasifica.
+
+**Paso 5.** Numerics de \(N\) concreto o de una escala nombrada: sólo
 diagnóstico, nunca fijan el estado terminal.
 
-## 5. Estados terminales (orden, sin solapes)
+## 6. Estados terminales (orden, sin solapes)
+
+El desenlace **no** se fuerza hacia experimento viable. Los tres
+negativos son cierres de primera clase.
 
 | Estado | Condición |
 | --- | --- |
-| `NATURAL_SCALE_FORCED` | Alguna identificación con un sistema natural está **forzada** por la estructura congelada (no meramente permitida) y produce una predicción cuantitativa en SI y sensibilidad. |
-| `CONDITIONAL_SI_FAMILY` | La ley se convierte en una familia parametrizada en metros, segundos, energía y sensibilidad, pero al menos una escala o identificación sigue siendo calibración externa. Análogo de §8.15 para esta ley IR. |
-| `NO_NATURAL_REALIZATION_IN_SCOPE` | Bajo las hipótesis declaradas, el protocolo IR congelado no admite correspondencia con un sistema natural. |
-| `OPEN_AFTER_REALIZATION_ANALYSIS` | Cualquier otro caso: identificaciones no clasificadas; fiat usado como si fuera derivación; 4A ejecutado como si fuera 4B; ley IR reabierta. |
+| `PHYSICAL_MAP_ABSOLUTE_AND_DETECTABLE` | Los cuatro criterios se cumplen: escala absoluta con información externa o relación adicional motivada (no fiat); diccionario físico de modos, \(M\), \(M_B\) y preparación; ley SI de un observable de aparato; \(\lambda/a\) no astronómico. **No** autoriza 4A ni “naturaleza establecida”. |
+| `PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE` | Hay mapa defendible (absoluto o bajo `ASSUMPTION` declarada) y ley SI, pero al sustituir escalas \(\delta\sim e^{-K_*\lambda/a}\) con \(\lambda/a\) astronómico. Cierre legítimo. El paso 3 no se debilita. |
+| `PHYSICAL_MAP_CONDITIONAL_ONLY` | Diccionario y/o observable SI existen como familia parametrizada; \(a\) o \(\tau\) siguen siendo calibración externa. \(a/\tau=c\) no basta para el criterio 1. Análogo de §8.15 para esta ley IR. |
+| `NO_ABSOLUTE_SCALE_DERIVABLE` | La estructura congelada no determina \(a\) ni \(\tau\) más allá de \(a/\tau=c\); no hay relación adicional físicamente motivada; Planck y similares quedan `ASSUMPTION`. No se alcanza un mapa útil para (2)–(4). |
+| `OPEN_AFTER_REALIZATION_ANALYSIS` | Cualquier otro caso: criterios no puntuados; fiat usado como `DERIVED`; paso 3 reabierto; 4A ejecutado como si fuera 4B. |
 
 **Regla explícita.** Que §8.15 sea `CONDITIONAL` no decide este gate:
-aquí el objeto es la ley IR de §8.20 y el significado físico de
-`a,τ,Λ`, no el testigo localizado `3/128`. Un diccionario simbólico
-sin candidatos de naturaleza no es `NATURAL_SCALE_FORCED`. Un
-candidato único nombrado sin argumento de forzamiento no lo es
-tampoco.
+el objeto es la ley IR de §8.20, no `3/128`. Un diccionario simbólico
+sin (2) ni (3) no es `PHYSICAL_MAP_CONDITIONAL_ONLY`. `a=ℓ_P` no
+promociona a `PHYSICAL_MAP_ABSOLUTE_AND_DETECTABLE`. Un mapa
+inobservable no se relabela como fracaso del modelo.
 
-## 6. Techo de reclamo
+## 7. Techo de reclamo
 
 Sólo la clase de §2. No reabre §§8.15–8.20, `3/128`, no-corner,
 `Delta T = 2`, ni `B_infty^*` (Sec. 4). No afirma `D_B > 0` fuera de
@@ -147,7 +195,7 @@ reabre y **no** refuerza:
 Eso es entidad científica del modelo, no de la naturaleza. El objeto
 de este gate es si esa estructura puede corresponder a algo natural.
 
-## 7. Implementación
+## 8. Implementación
 
 Los verificadores revisados conservan sus bytes. Un certificado nuevo
 sólo con necesidad demostrada y autorización en la instrucción de
