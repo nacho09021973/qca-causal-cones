@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1085,3 +1085,79 @@ section. The charter deliberately keeps its bytes, for two reasons:
 
 The header was never part of the scientific contract (Secs. 1-15), which
 is unchanged. `Delta T = 2` and the experimental problem remain unopened.
+
+### 8.17 OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY_REVIEWED (2026-09-17)
+
+Contract
+[`SCALED_IR_SIGNALING_GATE.md`](../theory/SCALED_IR_SIGNALING_GATE.md)
+preregistered at `31b5797` before any computation. Successor of Sec. 8.16,
+without reopening it. Three artefacts are recorded together here:
+
+- the [execution report](../reports/2026-09-17--scaled-ir-signaling-gate.md);
+- its exact certificate
+  [`verify_scaled_ir_gate.py`](../scripts/verify_scaled_ir_gate.py);
+- the [independent review](../reports/2026-09-17--scaled-ir-signaling-gate-independent-review.md).
+
+The question is the disappearance law of Bob's distinguishability when
+regions of size `O(1/Lambda)`, a margin `O(1/Lambda)` outside the emergent
+cone of Alice's whole region, and time `O(1/Lambda)` are scaled together
+(`N = Delta T = 1/Lambda`, Euclidean balls of radius `N/4`, frozen internal
+families). A signal at fixed `Delta T`, or with an `O(1)`-site margin, does
+not answer it.
+
+**Verdict.** `OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+The eight frozen operations are IR-admissible. There is a directional
+exponential upper bound, independently re-derived, for every one-particle
+state and every unitary supported on `A_N`:
+
+`δ_{M,M_B}(N) ≤ D_B(N) ≤ 36 N^4 exp[-(1 - √3/2)(log 2) N]`, `N ≥ 2`,
+
+with `J = (1 - √3/2) log 2 > 0`. This **excludes**
+`IR_RESOLVABLE_SIGNALING_POLYNOMIAL` in the frozen class and **does not
+authorize** `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. All sixteen pairs
+remain `OPEN_PAIR`: no positive lower bound, no proven vanishing, no
+non-vanishing amplitude. `D_B = 0` is not asserted. The independent review
+attacks specifically the three load-bearing steps named before promotion
+(the geometry-to-kernel derivation of `J`, uniformity of `36 N^4`, and
+polynomial exclusion without an existence claim) and returns **PASS**, with
+no mandatory repairs.
+
+**Frozen status, keeping evidence levels separate:**
+
+- **Scientific result: OPEN, with a one-sided quantitative bound.**
+  `OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY_REVIEWED`, in the exact
+  scope below.
+- **Review metadata.**
+  - Cold independent agent review: PASS. No mandatory repairs. Recommended
+    clarifications are expository only (`D_B = (1/2)||ρ1-ρ0||_1` written
+    out; off-diagonal of the ellipse matrix; Schur diagonal-norm; CAR
+    bound (DF) not part of the frozen claim).
+  - Human freeze authorization: the 2026-09-17 instruction to freeze this
+    status if the cold review passed.
+  - No external peer review / no external replication yet.
+- **Software certificate: PASS, 53/53 exact checks.** The count covers only
+  the identities and limits marked [V] in the execution report. The
+  analytic steps for `J`, `T_N`, `(D1)` and the classification were
+  re-derived by the independent reviewer; they are not encoded as checks.
+
+**Claim ceiling.** The result holds only for the frozen scaled class
+(Euclidean balls, `α = 1/2`, `θ = π/2`, the declared internal families,
+CJWW (5.15) in the one-particle sector).
+
+- Any allowed effect in this class is at most `O(N^4 e^{-JN})`. That is a
+  one-sided, model-falsifiable bound. It is not a two-sided prediction and
+  not an existence result.
+- Polynomial IR-resolvable signalling is discarded **in this
+  geometry/class**. If a positive signal exists, it is at most
+  nonperturbatively small. Existence is not claimed.
+- The bound does not refute `3/128`, the vertex or non-corner witnesses, or
+  the narrow-band negative (Sec. 8.16).
+- `N → ∞` is not `a, τ → 0`. No physical scale is set (Sec. 8.15). An
+  `e^{-JN}` law would translate only conditionally to a form
+  `e^{-J' λ/a}`, with no numerical prediction.
+- The internal families are not exhaustive. `M = a I + b·σ` in general is
+  not covered. `I` is `REFERENCE_CONTROL` only.
+- No new encoder is authorized. The remaining bottleneck is a lower bound
+  or a vanishing proof for the sixteen frozen pairs.
+
+`Delta T = 2` and the experimental problem remain unopened.

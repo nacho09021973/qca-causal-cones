@@ -108,6 +108,36 @@ reduction to three dimensions, the two-sided bounds on `s`, the sign
 conditions, the upper half of the squeeze, the `R_W` constants and the
 `kappa(pi/4)` link.
 
+## Scaled IR signalling gate certificate (2026-09-17)
+
+`verify_scaled_ir_gate.py` is the exact certificate for the
+[scaled IR signalling gate report](../reports/2026-09-17--scaled-ir-signaling-gate.md),
+which executes the contract
+[`SCALED_IR_SIGNALING_GATE.md`](../theory/SCALED_IR_SIGNALING_GATE.md)
+(preregistered at `31b5797`). See `state/CURRENT_STATE.md` Sec. 8.17. The
+verdict is `OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+
+It checks identities supporting geometry, chart, operation algebra, the
+ellipse-product polynomials, contour constants, Laurent-block norms and the
+sixteen response functionals. It does **not** compute signals, certify
+positivity, or encode the analytic steps for `J`, `T_N` or `D_B`. Those were
+re-derived in the
+[independent review](../reports/2026-09-17--scaled-ir-signaling-gate-independent-review.md).
+It reuses `walk2()`, `is_zero`, `PAULI`, `PS` and `exact_blocks` read-only.
+
+Requirements: Python 3.12, `sympy==1.14.0` and `numpy==1.26.4`, both pinned
+in `requirements.txt`. The certificate itself does not use numpy, but
+`verify_directional_saturation.py` imports it at module level. Run from the
+repository root:
+
+```sh
+python3 -B scripts/verify_scaled_ir_gate.py
+```
+
+It runs 53 exact SymPy checks, with no floating point in any computed
+quantity, no quadrature, no lattice truncation and no `N` scan. It fails
+closed: any failed check or exception exits nonzero.
+
 ## Current scope
 
 Project status, the active line and any authorized next calculation are
