@@ -107,3 +107,10 @@ Rules that carry over to any successor gate:
 - Check primary classification assumptions before claiming a new rigidity theorem.
 
 Negative results are valid project outcomes.
+
+**Live physical line (2026-09-17).** Recorded only in
+`state/CURRENT_STATE.md` Sec. 8. Operational IR signalling in the frozen
+CJWW (5.15) class is closed (Sec. 8.20). The authorized next front is
+Sec. 8.21, `PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE`, `NOT_EXECUTED`.
+A laboratory implementation of the walk (fork 4A) is identified and not
+chartered. The point-(3) / Gate C authorization above is unchanged.

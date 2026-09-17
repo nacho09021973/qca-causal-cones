@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.19); regional Laplace-coefficient gate PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY REVIEWED (Sec. 8.20) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = physical realization / absolute scale (Sec. 8.21), NOT_EXECUTED**; operational IR step 3 CLOSED in the frozen class (Sec. 8.20); non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.19); regional Laplace-coefficient gate PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY REVIEWED (Sec. 8.20) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -336,6 +336,22 @@ Additional equivalent representatives cannot resolve the open generality issue;
 any successor gate must examine structural freedom under fixed causal geometry
 and discrete isotropy.
 
+**Update (2026-09-17, branch-local, frozen class of Sec. 8 only).**
+`B_infty^*` matching in Sec. 4 is unchanged. What is now closed is the
+**operational IR question** on the preregistered CJWW (5.15) protocol of
+Secs. 8.16–8.20, not the matching hypothesis. In that class there is an
+IR-controlled operational response outside the emergent cone, and it is
+not a mere UV-propagator artefact:
+
+`c_IR < v_micro` (already geometric for (5.15)) and
+`IR probe → δ_B(N) ≠ 0` for large `N`, with
+`δ_{M,M_B}(N) ∼ |C_{M,M_B}(θ_N)| N^{-13/2} e^{-K_* N}`
+on the twelve Pauli pairs (Sec. 8.20). The signal is
+`IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. This is theoretical step 3
+of the physical line, closed inside the preregistered class. It is not
+`D_B > 0` for every QCA, not a claim about nature, and not a further
+signalling calculation. The authorized next front is Sec. 8.21.
+
 ## 7. GATE STATUS — only point (3) authorized by the user
 
 **MASSLESS INRADIUS RIGIDITY GATE — COUNTEREXAMPLE_VERIFIED IN DECLARED s=4
@@ -589,8 +605,17 @@ with its hypotheses made explicit; relaxing (i), (ii) or (iii) leaves it open.
 
 ### 8.7 Scope decision
 
-The active line is now the physical relation **emergent relativistic cone vs
-microscopic causal body**.
+The physical relation **emergent relativistic cone vs microscopic causal
+body** remains the line. As of 2026-09-17, inside the frozen IR class of
+Secs. 8.16–8.20, theoretical step 3 of that line is **closed**: the gap
+is not only geometric (`c_IR < v_micro`) but operational
+(`IR probe → δ_B(N) ≠ 0` for large `N`, nonperturbatively suppressed;
+Sec. 8.20). No further signalling gate is authorized.
+
+The live front is whether that structure can correspond to something in
+nature (Sec. 8.21, `NOT_EXECUTED`), not another calculation of `C` and
+not yet a laboratory implementation of the walk (fork 4A, identified,
+not chartered).
 
 **Not authorized by this result:** further search for mathematical novelty,
 Bernstein rigidity, paraunitary classification, or a new dimension-3 theorem.
@@ -1318,3 +1343,54 @@ contributing point `π(1,1,1)` is included in `C`. The Sec. 8.19 files
 are not edited.
 
 This is a branch-local promotion only; `main` is unchanged.
+
+**Project-level consequence (direct user instruction, 2026-09-17).**
+In this frozen class, theoretical step 3 of the physical line is closed.
+There is an operational IR response outside the emergent cone, and it is
+not a mere consequence of the UV propagator. For the twelve Pauli pairs
+the response is asymptotically non-vanishing and
+`IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. The precise claim, not to
+be exaggerated, is:
+
+> In the 3D Weyl QCA under study, the difference between the emergent
+> relativistic cone and the microscopic causal support is not only a
+> geometric possibility: under the preregistered IR-controlled protocol
+> it produces an asymptotically non-vanishing operational response,
+> albeit nonperturbatively suppressed.
+
+That is a property of the model, with standing outside the repository as
+such. It is not a statement about nature, not `D_B > 0` for every QCA,
+and not an experimental prediction. No further signalling gate is
+authorized. Fork 4A (a physical implementation of the walk that could
+test the derived law) is identified and **not chartered**. The authorized
+next front is Sec. 8.21.
+
+### 8.21 PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+
+Contract
+[`PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE.md`](../theory/PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE.md)
+frozen before any calculation, by direct user instruction (2026-09-17).
+Successor of Sec. 8.20, without reopening it. Inherits Sec. 8.15
+(`DIMENSIONAL_MAP_CONDITIONAL`) without reopening the `3/128` audit.
+**Not a signalling gate, not a rate gate, not a Laplace-coefficient gate,
+not a laboratory-implementation gate (4A).**
+
+**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.**
+
+**Single question.** Given the frozen IR law
+`δ_{M,M_B}(N) = |C_{M,M_B}(θ_N)| N^{-13/2} e^{-K_* N} (1 + O(N^{-1/2}))`
+on the twelve Pauli pairs, what could `a`, `τ`, `Λ`, the internal degrees
+of freedom, Alice and Bob mean in a natural system, and does any such
+identification convert that dimensionless asymptotics into a prediction
+in metres, seconds, energy and instrumental sensitivity?
+
+`a` or `τ` named by fiat (Planck or otherwise) is not a derivation from
+the model. Sec. 8.15 already established that the sources do not fix
+either absolute scale. This gate asks for candidate correspondences with
+nature, each tagged as an external hypothesis, and whether any of them
+is forced.
+
+**Premises, not reopened:** `K_*`, `β`, `C(θ_N)`, the sixteen pairs, the
+conditional dictionary of Sec. 8.15. **Not authorized:** execution of
+this gate; fork 4A; a new signalling encoder, detector or geometry;
+re-optimizing `K_*` or `C`; treating `N → ∞` as `a, τ → 0`.
