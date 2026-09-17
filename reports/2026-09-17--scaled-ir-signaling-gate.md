@@ -314,7 +314,11 @@ Sean `A=a^2`, `C=c^2`, `u=cos^2 p`. Las identidades exactas [V] son
 \frac{(C-1)(1-u)[A-1+C(1-u)]}{AC(AC-1)}.
 \]
 
-Son no negativos para `A,C>1`, `0<=u<=1`; luego `I-L^TL>=0`.
+La entrada extra-diagonal `(I-L^TL)_{12}` no es idénticamente cero: cambia
+de signo con `sin p` y `cos p`. El criterio de Sylvester para una matriz
+`2x2` simétrica usa `g_{11}>=0` y `det>=0`; el extra-diagonal queda
+absorbido en el determinante ya escrito. Los tres polinomios mostrados son
+no negativos para `A,C>1`, `0<=u<=1`; luego `I-L^TL>=0`.
 Esto prueba (E), incluida la frontera por continuidad. La implicación de
 los menores a positividad y la inclusión geométrica son [A], no checks.
 
@@ -351,7 +355,9 @@ dos axiales de norma `1/2`. Como `|u·d|<=3`,
 En la forma de Schur unitaria `T=[[lambda1,b],[0,lambda2]]`, `|b|<=32` y
 `|lambda_j|<=4`. La entrada superior de `T^N` es
 `b sum_(j=0)^(N-1) lambda1^j lambda2^(N-1-j)`, también para eigenvalores
-coincidentes. Por tanto
+coincidentes. La norma de operador de la parte diagonal es el máximo,
+`||diag(lambda1^N, lambda2^N)||_2 = max_j |lambda_j|^N <= 4^N`, y
+`|||e1><e2|||_2 = 1`. Por tanto
 
 \[
 \|S(p-it u)^N\|\le4^N+32N4^{N-1}\le9N4^N. \tag{P}
@@ -395,18 +401,21 @@ cualquier unitario que actúe como identidad fuera de Alice,
 `||v1-v0||<=2T_N`, con `v_b=P_B S^N U_b psi`.
 El estado reducido completo es
 `(1-||v_b||^2)|vac><vac|+|v_b><v_b|`, incluidos todos los modos de Bob.
-Como `||v_b||<=1`,
+Como `||v_b||<=1`, se usa la convención de distancia de traza del charter
+narrow-band, `D_B=\tfrac12\|\rho_1-\rho_0\|_1`, que es la que hace
+`D_B>=delta`. Con `X=|v_1\rangle\langle v_1|-|v_0\rangle\langle v_0|` y
+`α=-tr X` en el bloque de vacío, `\|\rho_1-\rho_0\|_1=|α|+\|X\|_1`, luego
 
 \[
-D_B\le\||v_1\rangle\langle v_1|-|v_0\rangle\langle v_0|\|_1
+D_B=\tfrac12\bigl(|α|+\|X\|_1\bigr)\le\|X\|_1
 \le(\|v_1\|+\|v_0\|)\|v_1-v_0\|
 \le4T_N\le36N^4e^{-JN}. \tag{D1}
 \]
 
-La primera desigualdad incluye el bloque de vacío: su contribución es
-`|tr X|`, acotada por `||X||_1`. Convexidad extiende (D1) a cualquier
-estado mixto de una partícula. Todo efecto físico de Bob satisface
-`delta<=D_B`; esto incluye exactamente los cuatro del charter.
+La desigualdad `D_B\le\|X\|_1` incluye el bloque de vacío porque
+`|tr X|\le\|X\|_1`. Convexidad extiende (D1) a cualquier estado mixto de
+una partícula. Todo efecto físico de Bob satisface `delta<=D_B`; esto
+incluye exactamente los cuatro del charter.
 
 Para no dejar ambigua la frase «toda operación unitaria, todo estado» de
 §6, también se obtiene una cota uniforme en el CAR completo para unitarios
@@ -725,3 +734,23 @@ Estado final: los cuatro untracked previos más los dos archivos nuevos;
 ningún cambio tracked ni staged. `HEAD` y la referencia remota local siguen
 en el baseline exacto. Charter y `CURRENT_STATE.md` conservan los hashes
 de §1. **Sin modificación del contrato, sin promoción, sin commit ni push.**
+
+## 12. Registro de congelación (redacción solamente)
+
+Tras la revisión independiente `PASS` (sin reparaciones obligatorias), se
+incorporan aquí las tres aclaraciones de redacción recomendadas. **No
+cambian** `J`, el prefactor `36 N^4`, (D1), (P), el lema de elipses, ni el
+estado `OPEN_AFTER_SCALED_IR_ANALYSIS`.
+
+| Aclaración | Dónde | Contenido |
+| --- | --- | --- |
+| Convención `D_B=\tfrac12\|\rho_1-\rho_0\|_1` | §6.4, (D1) | Explicitada; es la del charter narrow-band y la que hace `D_B\le\|X\|_1` con constante `36` |
+| Extra-diagonal de `I-L^TL` | §6.1 | `(I-L^TL)_{12}` no es idénticamente cero; Sylvester usa `g_{11}` y el `det` ya escrito |
+| Norma de Schur de la diagonal | §6.2, (P) | `\|\mathrm{diag}(\lambda_1^N,\lambda_2^N)\|_2=\max_j\|\lambda_j\|^N` |
+
+Sha256 del informe **antes** de estas tres frases:
+`4876ecab8ed6a7000aa2d2b991ad4bbb12a3f29538d2a7be910fb9c5476b7f31`.
+El hash posterior no se autoincluye aquí; se registra en la revisión
+independiente y en `CURRENT_STATE` §8.17. El certificado y el charter no
+se tocan. La cota CAR (DF) sigue siendo adicional al sector de una
+partícula y no forma parte del claim de los dieciséis pares.

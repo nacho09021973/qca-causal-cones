@@ -1128,12 +1128,16 @@ no mandatory repairs.
   `OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY_REVIEWED`, in the exact
   scope below.
 - **Review metadata.**
-  - Cold independent agent review: PASS. No mandatory repairs. Recommended
-    clarifications are expository only (`D_B = (1/2)||ρ1-ρ0||_1` written
-    out; off-diagonal of the ellipse matrix; Schur diagonal-norm; CAR
-    bound (DF) not part of the frozen claim).
+  - Cold independent agent review: PASS. No mandatory repairs. The three
+    recommended drafting clarifications (`D_B = (1/2)||ρ1-ρ0||_1`;
+    off-diagonal of the ellipse matrix; Schur diagonal operator-norm) were
+    applied to the execution report at freeze. They change no quantity and
+    no classification. Execution-report sha256 before/after those phrases:
+    `4876ecab…` / `86a086dc…`. The CAR bound (DF) is not part of the frozen
+    claim for the sixteen pairs.
   - Human freeze authorization: the 2026-09-17 instruction to freeze this
-    status if the cold review passed.
+    status if the cold review passed, then to publish with those
+    clarifications and without additional science.
   - No external peer review / no external replication yet.
 - **Software certificate: PASS, 53/53 exact checks.** The count covers only
   the identities and limits marked [V] in the execution report. The

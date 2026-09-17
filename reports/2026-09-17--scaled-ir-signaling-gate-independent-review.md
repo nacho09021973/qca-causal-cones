@@ -414,3 +414,23 @@ con lo demostrado. Congelar
 
 con la cota central de §0 está autorizado por esta revisión. No abre
 ciencia nueva.
+
+## 10. Aplicación de las aclaraciones de redacción
+
+Las aclaraciones 1–3 de §7 se incorporaron al informe de ejecución en el
+acto de congelación, sin cambiar cantidades ni clasificación:
+
+- `D_B=\tfrac12\|\rho_1-\rho_0\|_1` en (D1);
+- extra-diagonal de `I-L^\top L` en el lema de elipses;
+- `\||\mathrm{diag}(\lambda_1^N,\lambda_2^N)\||_2=\max_j|\lambda_j|^N` en (P).
+
+La aclaración 4 ((DF) fuera del claim de los dieciséis pares) ya estaba
+en el informe §6.4 y se mantiene. La 5 (construir `L` en el certificado)
+no se aplica: cambiaría bytes de un verificador y exigiría nueva revisión
+de ese archivo.
+
+Sha256 del informe **antes** de las tres frases:
+`4876ecab8ed6a7000aa2d2b991ad4bbb12a3f29538d2a7be910fb9c5476b7f31`.
+Sha256 **después** de aplicarlas:
+`86a086dcc7e13f65dafc4f1003f7fe6d6801156a659b2b179f1fa8f2884fcf92`.
+El veredicto de esta revisión no cambia.
