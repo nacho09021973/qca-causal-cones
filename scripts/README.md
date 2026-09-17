@@ -71,6 +71,42 @@ recorded in the report: the trace of the literal product (5.12) is
 and for (5.15) the equality set of `|grad omega| = 1` is the full axial lines
 through the conical points, not only the tips.
 
+## Narrow-band signalling gate certificate (2026-09-17)
+
+`verify_narrow_band_gate.py` is the exact certificate for the
+[narrow-band signalling gate report](../reports/2026-09-17--narrow-band-signaling-gate.md),
+which executes the contract
+[`NARROW_BAND_SIGNALING_GATE.md`](../theory/NARROW_BAND_SIGNALING_GATE.md)
+(preregistered at `817050d`). It was frozen at `778a44a` with its
+[independent review](../reports/2026-09-17--narrow-band-signaling-gate-independent-review.md);
+see `state/CURRENT_STATE.md` Sec. 8.16. The verdict is
+`NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS`.
+
+It covers steps 0-2 of the contract only: class, chart, pre-choice IR control
+and the Sec. 7 encoded-difference test. That test triggers the stop rule, so
+no Bob state and no `D_B` is constructed. It reuses the frozen symbol `walk2()`
+and the Laurent equality test from `verify_directional_saturation.py`
+read-only, and does not modify that reviewed file.
+
+Requirements: Python 3.12, `sympy==1.14.0` and `numpy`. The certificate itself
+does not use numpy, but `verify_directional_saturation.py` imports it at module
+level, and `requirements.txt` does not yet declare it; without numpy the
+import fails before any check runs. Run from the repository root:
+
+```sh
+python3 scripts/verify_narrow_band_gate.py
+```
+
+It runs 34 exact SymPy checks, with no floating point in any computed quantity,
+no quadrature, no lattice truncation and no `Lambda` scan. It fails closed: any
+failed check or exception exits nonzero. The count certifies only the
+identities and limits marked [V] in the report. The analytic steps listed in
+report Sec. 12 are not encoded as checks; the independent review verified them
+by hand. These steps are the chart lemma, the flat-spectrum lemma and the
+reduction to three dimensions, the two-sided bounds on `s`, the sign
+conditions, the upper half of the squeeze, the `R_W` constants and the
+`kappa(pi/4)` link.
+
 ## Current scope
 
 The only next calculation is the

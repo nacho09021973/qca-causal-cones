@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15) (branch-local)
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = directional causal saturation (Sec. 8), emergent cone vs microscopic causal body**; non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16) (branch-local)
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -999,3 +999,77 @@ parameter-free prediction in SI units is not. Absolute cutoff scale, physical
 realization/coupling, efficiencies, noise, feasibility and any identification
 with nature remain unspecified. No experiment was designed and `Delta T = 2`
 was not opened.
+
+### 8.16 NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY_REVIEWED (2026-09-17)
+
+Contract
+[`NARROW_BAND_SIGNALING_GATE.md`](../theory/NARROW_BAND_SIGNALING_GATE.md)
+preregistered at `817050d` before any computation. Three artefacts are frozen
+together at `778a44a`, through the provenance chain `5f6d350` -> `f00f64e` ->
+`778a44a`:
+
+- the [execution report](../reports/2026-09-17--narrow-band-signaling-gate.md);
+- its exact certificate
+  [`verify_narrow_band_gate.py`](../scripts/verify_narrow_band_gate.py);
+- the [independent review](../reports/2026-09-17--narrow-band-signaling-gate-independent-review.md).
+
+The question was whether the Alice-local signalling mechanism admits an
+IR-controlled version with a preestablished narrow-band resource. The frozen
+class is:
+
+- node `p = 0`, both Weyl branches;
+- `g(q) = (1-|q|^2)^2_+` supported on `|p| <= Lambda`, with
+  `0 < Lambda < pi/4`;
+- spin `down` and two common steps;
+- the point gate `U_1 = exp(i pi n_0)` at the origin;
+- Bob at `(1,1,0)`, with `Delta T = 1`.
+
+**Verdict.** The Sec. 7 stop rule fires at the first control, before any signal
+in Bob is computed: the point encoder is incompatible with the preregistered
+relative IR criterion. Let `kappa = Lambda^3/(6 pi^2)`, the in-band share of
+any one-site vector, and `s = ||P_0 psi_Lambda||^2`, with `0 < s <= kappa`. Then
+
+`||Delta_Lambda||_1 = 4 sqrt(s(1-s)) -> 0`,
+`eta_enc = ||Delta - Pi Delta Pi||_1/||Delta||_1 = sqrt((1-kappa)(1-3s(1-kappa))/(1-s))`.
+
+So `eta_enc > 2 sqrt(6)/5` on the whole chart and `eta_enc -> 1`, while the
+absolute leakage `epsilon_UV = 4s(1-kappa)` also tends to zero. The residual
+outside the IR-IR block is dominated by the IR-UV and UV-IR coherences; the
+UV-UV block is relatively `O(sqrt s)`. This is **not** a statement that the
+encoding, the information or any signal is UV.
+
+**Frozen status, keeping evidence levels separate:**
+
+- **Scientific result: CLOSED.** `NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS /
+  INDEPENDENTLY_REVIEWED`, in the exact scope below.
+- **Review metadata.**
+  - Cold independent agent review: PASS, after the mandatory repairs R1-R4 and
+    MR1, all textual and all applied.
+  - Human review: PASS.
+  - No external peer review / no external replication yet.
+  - Two earlier same-session adversarial reviews are archived as secondary,
+    non-independent records. The self-review contains errors that the
+    independent review corrected.
+- **Software certificate: PASS, 34/34 exact checks.** The count covers only
+  the identities and limits marked [V] in the report. The analytic steps listed
+  in report Sec. 12 are not encoded as checks; the independent reviewer
+  verified them by hand. They are recorded certification debt, not gaps in the
+  result. The certificate imports `verify_directional_saturation.py`, which
+  requires numpy; `scripts/requirements.txt` does not declare it.
+
+**Claim ceiling.** The result holds only for the frozen class and the Sec. 7
+criterion.
+
+- `D_B` was not computed, and `D_B = 0` is not asserted.
+- It does not refute `3/128`, either at the vertex or at the non-corner sites.
+  The non-corner witness uses the same `y_B = (1,1,0)`, but with an exactly
+  localized resource and no IR criterion.
+- It is no impossibility result for other encoders (extended, smoothed or
+  `Lambda`-dependent gates), for resources without exact spectral support, for
+  other notions of IR control, for other QCA, or for the physical continuum.
+- `Lambda -> 0` is not `a, tau -> 0`, and no physical scale is set
+  (Sec. 8.15).
+
+The charter's administrative header (lines 3-7) is stale; it will be fixed in
+a separate act and does not alter the contract. `Delta T = 2` and the
+experimental problem remain unopened.
