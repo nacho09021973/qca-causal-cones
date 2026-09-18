@@ -513,7 +513,7 @@ question.
 8. G. M. D'Ariano, M. Erba, P. Perinotti, *Isotropic quantum walks on
    lattices and the Weyl equation*, Phys. Rev. A **96**, 062101 (2017).
 9. I. Bialynicki-Birula, *Weyl, Dirac, and Maxwell equations on a lattice
-   as quantum cellular automata*, Phys. Rev. D **49**, 6925 (1994).
+   as unitary cellular automata*, Phys. Rev. D **49**, 6920 (1994).
 10. Repository `nacho09021973/qca-causal-cones`, branch
     `research/b-infinity-post-s4-gate`, `state/CURRENT_STATE.md`
     Secs. 8.4 and 8.16–8.20, and the reports cited there.
