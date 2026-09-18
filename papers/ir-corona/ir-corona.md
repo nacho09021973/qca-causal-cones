@@ -1,11 +1,11 @@
 # An infrared operational response outside the emergent light cone of a three-dimensional Weyl quantum walk
 
 > **Markdown transcription for review.** Source: `papers/ir-corona/ir-corona.tex`
-> (commit `a3bb725`). Section, theorem, equation and reference numbers match
-> the compiled PDF. If this file and the `.tex` disagree, the `.tex` is
-> authoritative. The prior art added in the revised Markdown draft
-> (`papers/ir-corona-operational-response-draft.md`, commit `9812cbc`) is not
-> yet merged here: Carteret–Richmond–Temme, Baryshnikov–Brady–Bressler–Pemantle,
+> (pre-publication revision of 2026-09-18). Section, theorem, equation and
+> reference numbers match the compiled PDF. If this file and the `.tex`
+> disagree, the `.tex` is authoritative. The prior art of the revised Markdown
+> draft (`papers/ir-corona-operational-response-draft.md`, commit `9812cbc`) is
+> now merged: Carteret–Richmond–Temme, Baryshnikov–Brady–Bressler–Pemantle,
 > ACSV, and the narrowed novelty statement.
 
 **José Ignacio Martín Gandul**  
@@ -25,7 +25,9 @@ propagation is non-ballistic but not causally forbidden.
 We ask whether the corona carries an operational response that survives
 infrared control. Alice prepares a narrow-band state and applies a local
 encoding, and Bob reads out with a local detector. All three operations are
-required to act, in a quantitative sense, within the infrared band. Bob's
+required to be infrared-admissible: acting on the band $|p|\le N^{-1}$, each
+produces only a vanishing fraction of its output outside the wider band
+$|p|\le N^{-1/2}$. Bob's
 region lies outside the emergent light cone of every site of Alice's region.
 After $N$ steps, Bob's distinguishability $\delta(N)$ obeys the explicit
 bound $\delta(N)\le 36N^4e^{-JN}$ with $J=(1-\sqrt3/2)\log 2$. For a concrete
@@ -50,18 +52,18 @@ inside the microscopic causal support.
 ## 1. Introduction
 
 Quantum cellular automata and quantum walks are unitary dynamics on a lattice
-with a strict bound on the speed of propagation [15, 2, 10]. After $N$ steps
+with a strict bound on the speed of propagation [18, 2, 12]. After $N$ steps
 of a finite-range walk, the propagator vanishes identically outside
 $N C_{\mathrm{micro}}$. Here $C_{\mathrm{micro}}=\operatorname{conv}F$ is the
 convex hull of the one-step jumps. Many such walks have a conical point in
 their dispersion relation. Near it, the long-wavelength dynamics is that of a
-Weyl or Dirac equation with a speed of light $c_{\mathrm{IR}}$ [3, 9, 4, 8].
+Weyl or Dirac equation with a speed of light $c_{\mathrm{IR}}$ [4, 11, 5, 10].
 
 In spatial dimension $d\ge2$ the two causal structures cannot coincide. The
 infrared cone of a Weyl node is a Euclidean ball, and $C_{\mathrm{micro}}$ is
 a polytope. Exact isotropy of the microscopic causal structure is incompatible
 with a regular lattice. It can be compatible with random discreteness, as in
-the causal-set theorem of Bombelli, Henson and Sorkin [5], but that setting
+the causal-set theorem of Bombelli, Henson and Sorkin [6], but that setting
 lies outside the scope of this paper. For a lattice walk, some velocities are
 therefore causally allowed but not relativistic. How much physics can be sent
 through them?
@@ -75,7 +77,7 @@ Three questions must be kept apart.
   $4^{-N}$ (Proposition 2.2). One-step Alice/Bob protocols built from
   localized operations turn this into a finite distinguishability (for
   instance $3/128$ after one step for a suitable localized preparation, as
-  recorded in [14]). Such protocols are broadband: their operations are not
+  recorded in [17]). Such protocols are broadband: their operations are not
   concentrated near the Weyl node.
 - **(I) Infrared operational response.** Require the preparation, the encoder
   and the detector to be infrared-admissible, and put Bob outside the
@@ -93,25 +95,26 @@ one walk and one explicit protocol.
 ### The walk
 
 We work with the Weyl walk of Cedzich, Joye, Werner and Werner
-[7, Eq. (5.15)]. They introduced it as a modification of the
-Bialynicki-Birula Weyl automaton [7, Eq. (5.12)], [3], with the same conical
+[9, Eq. (5.15)]. They introduced it as a modification of the
+Bialynicki-Birula Weyl automaton [9, Eq. (5.12)], [4], with the same conical
 points and with a *spherical* propagation region. For this walk the three
 velocity sets are nested as
 
 $$
-B(1)\;=\;\Gamma\;\subsetneq\;C_{\mathrm{micro}}=[-1,1]^3 .
+\Gamma\;\subseteq\;B(1)\;\subsetneq\;C_{\mathrm{micro}}=[-1,1]^3,
+\qquad \sup_{v\in\Gamma}|v|=c_{\mathrm{IR}}=1 .
 \tag{1}
 $$
 
-Here $B(1)$ is the infrared light cone ($c_{\mathrm{IR}}=1$), $\Gamma$ is the
-closed set of group velocities, and $C_{\mathrm{micro}}$ is the strict causal
-body. The first equality is exact in the form
-$\sup|\nabla\omega|=c_{\mathrm{IR}}$ together with $\partial B(1)\subset\Gamma$.
-Numerically, $\Gamma$ fills the ball. Every ballistic mode, at every energy,
-therefore respects the emergent light speed. Nevertheless, in every non-axial
+Here $B(1)=\overline B(0,1)$ is the closed infrared light cone
+($c_{\mathrm{IR}}=1$), $\Gamma$ is the closed set of group velocities, and
+$C_{\mathrm{micro}}$ is the strict causal body. Both statements in (1) are
+exact, and moreover $\partial B(1)\subseteq\Gamma$ (Proposition 2.2).
+Numerically, $\Gamma$ fills the ball; this is not proved and not used. Every
+ballistic mode, at every energy, therefore respects the emergent light speed. Nevertheless, in every non-axial
 direction $\hat n$ the causal support extends to
 $\|\hat n\|_1\in(1,\sqrt3\,]$ times the light speed. Probability outside
-$\Gamma$ is exponentially small in $N$ [7]. The question is whether it can be
+$\Gamma$ is exponentially small in $N$ [9]. The question is whether it can be
 *used* under infrared control.
 
 ### Main results
@@ -137,11 +140,13 @@ quadratically on the spheres.
    $\mathcal B_N$, Bob's distinguishability is at most $36N^4e^{-JN}$, with
    $J=(1-\tfrac{\sqrt3}{2})\log2$. Polynomial infrared signalling is
    excluded.
-3. *Regional rate* (Theorem 4.3). The optimal exponential rate for the kernel
-   between the two regions is $K_*=I(v_*)$. Here $I$ is the Legendre
-   transform of $\Phi(\xi)=\operatorname{arcosh}(\prod_j\cosh\xi_j)$, and
+3. *Regional rate* (Theorem 4.3). The kernel between the two regions is
+   $O(N^4)\,e^{-K_*N}$, where $K_*=I(v_*)$ is the minimal regional value of
+   a Legendre rate function. Here $I$ is the Legendre transform of
+   $\Phi(\xi)=\operatorname{arcosh}(\prod_j\cosh\xi_j)$, and
    $v_*=(1-\frac1{2\sqrt3})(1,1,1)$ is the unique minimiser of $I$ over the
-   regional velocity set. Moreover $J<K_*<\log4$.
+   regional velocity set. Moreover $J<K_*<\log4$. By item 4, the rate $K_*$
+   is attained by an explicit response.
 4. *Leading asymptotics* (Theorem 4.4). For all sixteen encoder–detector
    pairs,
    $\delta_{M,M_B}(N)=|C_{M,M_B}(\theta_N)|N^{-13/2}e^{-K_*N}(1+O(N^{-1/2}))$.
@@ -161,17 +166,32 @@ is a flat direction of the exponent that is confined only by the profiles.
 ### Relation to the literature
 
 Ballistic scaling and weak limit theorems for translation-invariant quantum
-walks are classical [12, 11, 1]: $Q(t)/t$ converges in distribution to the
+walks are classical [14, 13, 1]: $Q(t)/t$ converges in distribution to the
 group velocity distributed by the initial state. Cedzich, Joye, Werner and
-Werner [7] proved that the probability of velocities outside the support of
+Werner [9] proved that the probability of velocities outside the support of
 this limit decays exponentially. They gave a method for bounding the rate
 uniformly in the initial state and discussed the "fuzziness" of the emergent
 light cone in exactly this language. Our upper bound (item 2) uses their
 contour-shift idea, supplemented by an elementary ellipse lemma and a
-Jordan-safe bound on matrix powers. In one dimension, Sunada and Tate [16]
-obtained exact local asymptotics of transition probabilities, including
-exponential decay with an explicit prefactor in the region hidden from the
-weak limit.
+Jordan-safe bound on matrix powers. Their method bounds rates; it does not
+give prefactor-level asymptotics.
+
+Sharp asymptotics with prefactors outside the propagation region are known in
+one dimension. Sunada and Tate [19] obtained exact local asymptotics of
+transition probabilities, including exponential decay with an explicit
+prefactor in the region hidden from the weak limit. Carteret, Richmond and
+Temme [8] obtained uniformly convergent asymptotics in the exponentially
+decaying regions of coined walks on the line. These are the closest
+precursors of the saddle-point analysis of Section 7. In two dimensions,
+Baryshnikov, Brady, Bressler and Pemantle [3] analysed quantum walks through
+multivariate generating functions and determined the limiting profile in the
+feasible region, outside of which the probability is exponentially small.
+Analytic combinatorics in several variables [16] provides general transfer
+theorems for multivariate coefficient asymptotics, whose standard sharp forms
+assume minimality hypotheses on the critical points. We do not claim that
+these methods cannot reproduce the present result. We are not aware of a
+transfer theorem that yields it directly, and we carry out the model-specific
+saddle-point analysis explicitly.
 
 What we add is a *lower* bound, in the strong form of exact leading
 asymptotics. It concerns an *operational* quantity: the distinguishability
@@ -179,10 +199,16 @@ produced by a local encoding. The encoding is spread over a region of size
 $O(N)$ and constrained to be infrared-admissible, in dimension three, and at
 a point strictly inside the corona. Upper bounds alone cannot distinguish an
 exponentially small response from an exactly vanishing one. In the problem
-studied here that distinction is the content of the result. We make no claim
-of priority beyond this specific statement.
+studied here that distinction is the content of the result. The novelty
+claim is correspondingly narrow. To our knowledge, Theorem 4.4 is the first
+prefactor-level asymptotic, with a leading coefficient that is oscillatory and
+certified to be non-vanishing, for an infrared-controlled operational response
+in the strictly outside-propagation-region regime of a three-dimensional
+multi-component quantum walk. Exponential decay outside the propagation
+region, large-deviation rates, Weyl-cone dispersion and microscopic support
+outside an emergent cone all have prior art, cited above.
 
-Lieb–Robinson bounds [13, 6] give exponentially small leakage outside a
+Lieb–Robinson bounds [15, 7] give exponentially small leakage outside a
 linear cone for continuous-time lattice dynamics. For quantum walks the
 strict cone $C_{\mathrm{micro}}$ plays that role exactly, and the question
 here is the one *inside* it.
@@ -206,9 +232,10 @@ with internal basis ${\uparrow}=(1,0)^T$ and ${\downarrow}=(0,1)^T$. We use the
 Fourier transform $\hat\psi(p)=\sum_{x}e^{ip\cdot x}\psi(x)$, with inverse
 $\psi(x)=\int_{\mathbb T^3}e^{-ip\cdot x}\hat\psi(p)\,d\mu(p)$ and
 $d\mu=d^3p/(2\pi)^3$ on $\mathbb T^3=[-\pi,\pi)^3$. We write $c_j=\cos p_j$
-and $s_j=\sin p_j$.
+and $s_j=\sin p_j$. $B(1)=\overline B(0,1)$ denotes the closed Euclidean unit
+ball.
 
-The walk $W$ of [7, Eq. (5.15)] has symbol
+The walk $W$ of [9, Eq. (5.15)] has symbol
 
 $$
 W(p)=\begin{pmatrix} c_1c_2e^{ip_3} & -c_1s_2+is_1\\ c_1s_2+is_1 & c_1c_2e^{-ip_3}\end{pmatrix},
@@ -302,20 +329,22 @@ forces $\sigma_i(d_k)_i=1$ for all $i$ and $k$, that is, $d_k=\sigma$. Hence
 $(S^N)_{N\sigma,0}=S_\sigma^N$. By Lemma 2.1, $S_\sigma=\frac14\Pi_\sigma$,
 so $S_\sigma^N=4^{-N}\Pi_\sigma$. ∎
 
-**Remark 2.3.** The inclusion $B(1)\subseteq\Gamma$ (filling of the open
-ball) holds numerically but is not used. What is used is the exact statement
-$\sup|\nabla\omega|=c_{\mathrm{IR}}$. Consequently the relation
+**Remark 2.3.** The reverse inclusion $B(1)\subseteq\Gamma$, that is, that
+$\Gamma$ fills the ball, holds numerically but is not proved and not used.
+What is used is the exact inclusion $\Gamma\subseteq B(1)$, equivalently
+$\sup|\nabla\omega|\le c_{\mathrm{IR}}$, with equality by
+$\partial B(1)\subseteq\Gamma$. Consequently the relation
 $\sup|v_g|=c_{\mathrm{IR}}$ does *not* imply that the emergent cone coincides
 with the causal boundary. The two coincide only in the six axial directions.
 The *corona* is $C_{\mathrm{micro}}\setminus B(1)$. Propagation into $N$
 times the corona is not ballistic, but by (c) it is not forbidden.
 
-**Remark 2.4.** For the Bialynicki-Birula walk [7, Eq. (5.12)], $\Gamma$ is
+**Remark 2.4.** For the Bialynicki-Birula walk [9, Eq. (5.12)], $\Gamma$ is
 contained in the intersection of three orthogonal cylinders (and numerically
-equal to it [7, Fig. 5]). It contains group velocities up to
+equal to it [9, Fig. 5]). It contains group velocities up to
 $\sqrt{3/2}>c_{\mathrm{IR}}$, attained at $p=-\frac\pi4(1,1,1)$. In that
 walk the corona contains a ballistic sector faster than the emergent light.
-We restrict to [7, Eq. (5.15)] precisely because it has no such sector.
+We restrict to [9, Eq. (5.15)] precisely because it has no such sector.
 
 ---
 
@@ -480,7 +509,7 @@ $$
 $$
 
 **Remark 4.2 (Formal verification).** Theorem 4.1 is machine-checked in
-Lean 4 with Mathlib (`formal/` in [14]), for every $N\ge2$ and without
+Lean 4 with Mathlib (`formal/` in [17]), for every $N\ge2$ and without
 additional axioms. This covers the kernel bound, the geometry (6), the
 counting of lattice points, the operator bound on $T_N$, and the step
 $\delta\le4T_N$. The formal proof bounds the matrix powers through
@@ -595,15 +624,20 @@ $K_*$, the exact power $13/2$ and an explicit non-vanishing coefficient.
 the computation. First, $C(\sigma_3,\cdot)=-C(I,\cdot)$ at leading order; the
 two encoders differ only at lower orders. Second, the three Pauli encoders
 are not equivalent: with $M_B=I$ they give three different coefficients.
-Third, the encoder $\sigma_2$ is the most robust, since both contributing
-saddles enter with the same sign for every detector. The pairs $(I,\cdot)$
-and $(\sigma_3,\cdot)$ have the smallest coefficients. For them the
-next-order term, of size $N^{-17/2}e^{-K_*N}$, dominates numerically
-throughout the diagnostic range $N\le56$ of Appendix A.
+Third, for $M=\sigma_2$ the two contributing saddles enter with the same sign
+for every detector: $\ell_0$ and $\ell_\pi$ of Appendix A have the same sign.
+Since $\Gamma_+>0$ and $\Gamma_-\ge0$ (Lemma 7.3), non-vanishing then follows
+without the margin estimate in the proof of Theorem 4.4, so for this encoder
+the non-cancellation mechanism is particularly transparent. The smallest
+coefficients, $|\overline C|\approx0.0753$, occur for $M\in\{I,\sigma_3\}$
+with $M_B\in\{I,P_3\}$. For these two encoders with $M_B=I$, the
+diagnostics of Appendix A show that the next-order term, of size
+$N^{-17/2}e^{-K_*N}$, dominates numerically throughout the diagnostic range
+$N\le56$.
 
 **Remark 4.7 (Methodology).** The protocol (regions, profiles, encoders,
-detectors, scalings $\Lambda_N=N^{-1}$, $\Lambda'_N=N^{-1/2}$ and
-$\theta=\pi/2$) was fixed before the asymptotic analysis and was not tuned
+detectors, scalings $\Lambda_N=N^{-1}$, $\Lambda'_N=N^{-1/2}$ and the
+encoding angle $\pi/2$) was fixed before the asymptotic analysis and was not tuned
 afterwards. The family of encoders and detectors is not exhaustive: a general
 generator $M=aI+b\cdot\sigma$ is not covered, because no symmetry of the walk
 relating the directions $\hat n\cdot\sigma$ has been established.
@@ -728,7 +762,7 @@ Mixed states follow by convexity, and $\delta\le D_B$ holds for every effect.
 (take $\xi=0$). The inequality $\cosh\sqrt{a^2+b^2}\le\cosh a\cosh b$,
 applied twice, gives $\Phi(\xi)\ge|\xi|$, so $I=0$ on $\overline B(0,1)$.
 Since $\Phi(\xi)=|\xi|+O(|\xi|^3)$, $I(v)>0$ for $|v|>1$. Finally
-$I=+\infty$ outside $\operatorname{conv}F$ by [7, Lemma 4.1]. Directly, if
+$I=+\infty$ outside $\operatorname{conv}F$ by [9, Lemma 4.1]. Directly, if
 $v_j>1$, take $\xi=se_j$ and let $s\to\infty$, using $\Phi(se_j)=s$.
 
 (b) $\Phi$ is smooth where $\Pi(\xi)=\prod_j\cosh\xi_j>1$, with
@@ -846,11 +880,12 @@ not made explicit.
 
 ### 7.1. Reduction to one interference functional
 
-Let $P_B$ be the restriction to $\mathcal B_N$ (not a spectral projection)
-and put
+Let $P_B$ be the restriction to $\mathcal B_N$ (not a spectral projection).
+Write $\widetilde r=S^N\phi_N$ for the free evolution of the resource on all
+of $\mathbb Z^3$, and put
 
 $$
-r=P_BS^N\phi_N,\qquad a_c=P_BS^N(c_N\varphi_N{\downarrow}),\qquad
+r=P_B\widetilde r,\qquad a_c=P_BS^N(c_N\varphi_N{\downarrow}),\qquad
 a_{\uparrow}=P_BS^N(s_N\varphi_N{\uparrow}),\qquad a_{\downarrow}=P_BS^N(s_N\varphi_N{\downarrow}).
 $$
 
@@ -1008,7 +1043,7 @@ $\varepsilon_\perp$ by $\delta-|u_\perp|^2/2R$ costs a relative $O(N^{-1})$.
 ### 7.5. The free tail
 
 **Lemma 7.2.** Uniformly in $y\in\mathbb Z^3$,
-$r(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2})$, where
+$\widetilde r(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2})$, where
 
 $$
 R_0(w)=c_r\bigl[\mathcal I_0(|w|)\,I-\mathcal I_1(|w|)\,H_W(\hat w)\bigr]{\downarrow},
@@ -1023,6 +1058,8 @@ At the facing point $w_*=u-\hat u/4$, with $\rho_*=|w_*|=\sqrt3-\frac14$ and
 $\hat w_*=\hat u$, one has
 $R_0(w_*)=c_r\bigl(-\tfrac{\mathcal I_1}{\sqrt3}(1+i),\ \mathcal I_0+\tfrac{\mathcal I_1}{\sqrt3}\bigr)^T$,
 with $\mathcal I_0=0.716577\ldots>0$ and $\mathcal I_1=0.132252\ldots>0$.
+In particular $r(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2})$ uniformly in
+$y\in\mathcal B_N$, and $r=0$ outside $\mathcal B_N$.
 
 *Proof.* For $|p|\le N^{-1}$, $S(p)=e^{-iH(p)}$ with $H$ Hermitian, analytic,
 and $H-H_W=O(|p|^2)$. Duhamel's formula gives
@@ -1240,20 +1277,20 @@ fixed lattice units, not a continuum limit $a,\tau\to0$.
 The result is asymptotic. The remainder constants and $N_*$ are finite but
 not explicit. The finite-$N$ diagnostics of Appendix A indicate an effective
 relative correction of about $-100/N$. The leading formula is therefore
-quantitatively reliable only for $N\gtrsim10^3$. For $M\in\{I,\sigma_3\}$,
-whose coefficients are small, the $N^{-17/2}$ term dominates over the whole
-diagnostic range.
+quantitatively reliable only for $N\gtrsim10^3$. For $M\in\{I,\sigma_3\}$
+with $M_B=I$, whose coefficient is among the smallest, the $N^{-17/2}$ term
+dominates over the whole diagnostic range.
 
 ### 8.2. Physical reading
 
 Restoring a lattice spacing $a$, the integer $N$ is both the number of steps
 and the separation scale in lattice units, so $N\sim\ell/a$ for a separation
-$\ell$, and $\delta\sim e^{-K_*N}$ up to algebraic factors. If a walk of this
-type were a fundamental description of nature with $a$ near the Planck
-length, the response would be unobservably small at any macroscopic distance.
-In engineered discrete-time simulators, $N$ is small and the asymptotic
-regime $N\gtrsim10^3$ is out of reach. We therefore regard the result as a
-statement in the mathematical physics of finite-range unitary dynamics. Its
+$\ell$, and $\delta\sim e^{-K_*N}$ up to algebraic factors. The response is
+therefore negligible at any separation large compared with the lattice
+spacing, and by the preceding subsection the leading formula becomes accurate
+only for $N\gtrsim10^3$. We make no claim about observability, and regard the
+result as a statement in the mathematical physics of finite-range unitary
+dynamics. Its
 interest lies in the structure it exhibits: an exact separation between
 ballistic propagation, which respects $c_{\mathrm{IR}}$, and operational
 influence, which does not vanish inside the corona even under infrared
@@ -1263,25 +1300,32 @@ control.
 
 1. General encoders $M=aI+b\cdot\sigma$, and optimisation over admissible
    operations.
-2. Other walks, in particular the Bialynicki-Birula walk [7, Eq. (5.12)],
+2. Other walks, in particular the Bialynicki-Birula walk [9, Eq. (5.12)],
    whose corona contains ballistic modes faster than $c_{\mathrm{IR}}$, and
    the massive Dirac case.
 3. Explicit remainder constants and $N_*$, which would make the statement
    effective at finite $N$.
 4. Many-particle and second-quantized versions. The upper bound extends to
    even local unitaries on the full CAR algebra, with prefactor $288N^7$ in
-   place of $36N^4$ [14], but no lower bound is available there.
+   place of $36N^4$ [17], but no lower bound is available there.
 
 ---
 
 ## Appendix A. Computer-assisted parts and diagnostics
 
 Theorem 4.1, together with Lemma 5.1, is formally verified in Lean 4/Mathlib
-(`formal/` in [14]). The asymptotic results (Theorems 4.3 and 4.4) are not.
+(`formal/` in [17]). The asymptotic results (Theorems 4.3 and 4.4) are not.
 The analytic arguments above are complete up to the following verified
-computations. All of them are performed by scripts in the accompanying
-repository [14]. Exact identities use SymPy, and enclosures use mpmath
-interval arithmetic with 50 digits.
+computations. All of them are performed by the certificate scripts listed in
+[17], at the commit given there, with Python 3.12.3, SymPy 1.14.0 and mpmath
+1.3.0. Exact identities use SymPy. Enclosures use the interval context
+`mpmath.iv` with 50 digits, and only its elementary operations: the four
+arithmetic operations, integer powers by repeated multiplication,
+$\sqrt{\cdot}$, $\exp$, $\log$, $\sin$, $\cos$ and $\pi$. No interval
+quadrature is used: $\mathcal I_0(\rho_*)$, $\mathcal I_1(\rho_*)$ and $I_b$
+are enclosed through exact closed forms in $\sin$ and $\cos$, obtained from
+the moments $\int_0^1k^m\{\sin,\cos\}(\omega k)\,dk$, $m\le5$, which are
+checked symbolically.
 
 - The symbol identities: Lemma 2.1, (5), and Lemma 7.1(a)–(b). Also the
   ellipse-lemma polynomials, $\cosh^3(\log2)=125/64$ and the vertex blocks.
@@ -1310,11 +1354,16 @@ $\sigma_3$ are the negatives of the rows for $I$.
 | $(\sigma_2,P_2)$ | $-\frac{3A\alpha+\sqrt3B(c^2(1-\alpha)+c\alpha+2\alpha)}{6c^2}$ | $-\frac{3A\alpha+\sqrt3B(c^2(1-\alpha)-c\alpha+2\alpha)}{6c^2}$ |
 
 **Finite-$N$ diagnostics.** These are floating-point and not used in any
-proof. An exact FFT convolution in tilted variables ("brute") was compared
+proof; they use NumPy 1.26.4 and are produced by the `--diagnostics` option
+of the coefficient certificate [17]. A floating-point FFT evaluation of the
+exact discrete convolution formula in tilted variables ("brute") was compared
 with a reference that keeps the exact lattice geometry but replaces the
 kernel by its Gaussian form at the eight points of $\Sigma$. Their ratio
 tends to $1$ with deviation of order $c/N$, $c\in[-0.5,14]$, at
-$N=24,40,56$. A semi-analytic evaluation with discrete planes and exact
+$N=24,40,56$. For $M\in\{I,\sigma_3\}$ and $M_B=I$, the ratio of the
+$N^{-17/2}$ piece $2\operatorname{Re}\langle r,Ea_c\rangle$ to the piece
+$2\operatorname{Im}\langle r,Ea_{\downarrow}\rangle$ that carries the
+$N^{-13/2}$ term is $15.2$, $9.4$ and $6.4$ at $N=24,40,56$. A semi-analytic evaluation with discrete planes and exact
 profiles gives semi/lead $=0.906$, $0.990$ and $0.997$ at $N=10^3$, $10^4$
 and $3\cdot10^4$, consistent with a relative correction $\approx-100/N$. The
 free tail agrees with $N^{-3/2}R_0$ to relative accuracy $2\cdot10^{-6}$ at
@@ -1327,43 +1376,52 @@ $N=40$ and $8\cdot10^{-9}$ at $N=640$.
 1. A. Ahlbrecht, H. Vogts, A. H. Werner, R. F. Werner, *Asymptotic evolution
    of quantum walks with random coin*, arXiv:1009.2019.
 2. P. Arrighi, *An overview of quantum cellular automata*, arXiv:1904.12956.
-3. I. Bialynicki-Birula, *Weyl, Dirac, and Maxwell equations on a lattice as
+3. Y. Baryshnikov, W. Brady, A. Bressler, R. Pemantle, *Two-dimensional
+   quantum random walk*, J. Stat. Phys. **142**, 78–107 (2011),
+   arXiv:0810.5495.
+4. I. Bialynicki-Birula, *Weyl, Dirac, and Maxwell equations on a lattice as
    unitary cellular automata*, Phys. Rev. D **49**, 6920 (1994),
    arXiv:hep-th/9304070.
-4. A. Bisio, G. M. D'Ariano, P. Perinotti, A. Tosini, *Free quantum field
+5. A. Bisio, G. M. D'Ariano, P. Perinotti, A. Tosini, *Free quantum field
    theory from quantum cellular automata: derivation of Weyl, Dirac and
    Maxwell quantum cellular automata*, arXiv:1601.04832.
-5. L. Bombelli, J. Henson, R. D. Sorkin, *Discreteness without symmetry
+6. L. Bombelli, J. Henson, R. D. Sorkin, *Discreteness without symmetry
    breaking: a theorem*, arXiv:gr-qc/0605006.
-6. S. Bravyi, M. B. Hastings, F. Verstraete, *Lieb–Robinson bounds and the
+7. S. Bravyi, M. B. Hastings, F. Verstraete, *Lieb–Robinson bounds and the
    generation of correlations and topological quantum order*, Phys. Rev.
    Lett. **97**, 050401 (2006), arXiv:quant-ph/0603121.
-7. C. Cedzich, A. Joye, A. H. Werner, R. F. Werner, *Exponential tail
-   estimates for quantum lattice dynamics*, Ann. Henri Poincaré (2025),
-   doi:10.1007/s00023-025-01598-4, arXiv:2408.02108.
-8. G. M. D'Ariano, M. Erba, P. Perinotti, *Isotropic quantum walks on
-   lattices and the Weyl equation*, Phys. Rev. A **96**, 062101 (2017),
-   arXiv:1708.00826.
-9. G. M. D'Ariano, P. Perinotti, *Derivation of the Dirac equation from
-   principles of information processing*, Phys. Rev. A **90**, 062106
-   (2014), arXiv:1306.1934.
-10. T. Farrelly, *A review of quantum cellular automata*, Quantum **4**, 368
+8. H. A. Carteret, B. Richmond, N. M. Temme, *Evanescence in coined quantum
+   walks*, J. Phys. A: Math. Gen. **38**, 8641–8665 (2005),
+   arXiv:quant-ph/0506048.
+9. C. Cedzich, A. Joye, A. H. Werner, R. F. Werner, *Exponential tail
+   estimates for quantum lattice dynamics*, Ann. Henri Poincaré **27**,
+   2843–2870 (2026), doi:10.1007/s00023-025-01598-4, arXiv:2408.02108.
+10. G. M. D'Ariano, M. Erba, P. Perinotti, *Isotropic quantum walks on
+    lattices and the Weyl equation*, Phys. Rev. A **96**, 062101 (2017),
+    arXiv:1708.00826.
+11. G. M. D'Ariano, P. Perinotti, *Derivation of the Dirac equation from
+    principles of information processing*, Phys. Rev. A **90**, 062106
+    (2014), arXiv:1306.1934.
+12. T. Farrelly, *A review of quantum cellular automata*, Quantum **4**, 368
     (2020), arXiv:1904.13318.
-11. G. Grimmett, S. Janson, P. F. Scudo, *Weak limits for quantum random
+13. G. Grimmett, S. Janson, P. F. Scudo, *Weak limits for quantum random
     walks*, Phys. Rev. E **69**, 026119 (2004), arXiv:quant-ph/0309135.
-12. N. Konno, *Quantum random walks in one dimension*, Quantum Inf. Process.
+14. N. Konno, *Quantum random walks in one dimension*, Quantum Inf. Process.
     **1**, 345–354 (2002).
-13. E. H. Lieb, D. W. Robinson, *The finite group velocity of quantum spin
+15. E. H. Lieb, D. W. Robinson, *The finite group velocity of quantum spin
     systems*, Commun. Math. Phys. **28**, 251–257 (1972).
-14. Repository `nacho09021973/qca-causal-cones`,
-    <https://github.com/nacho09021973/qca-causal-cones>, branch
-    `research/b-infinity-post-s4-gate`. Certificates
+16. R. Pemantle, M. C. Wilson, S. Melczer, *Analytic Combinatorics in Several
+    Variables*, 2nd ed., Cambridge University Press (2024),
+    doi:10.1017/9781108874144.
+17. Repository `nacho09021973/qca-causal-cones`,
+    <https://github.com/nacho09021973/qca-causal-cones>, commit
+    `551addabe28b` (branch `research/b-infinity-post-s4-gate`). Certificates
     `scripts/verify_scaled_ir_gate.py`,
     `scripts/verify_regional_directional_asymptotics_gate.py`,
     `scripts/verify_regional_laplace_coefficient_gate.py`,
     `scripts/verify_directional_saturation.py`; Lean formalization in
     `formal/`.
-15. B. Schumacher, R. F. Werner, *Reversible quantum cellular automata*,
+18. B. Schumacher, R. F. Werner, *Reversible quantum cellular automata*,
     arXiv:quant-ph/0405174.
-16. T. Sunada, T. Tate, *Asymptotic behavior of quantum walks on the line*,
-    arXiv:1108.1878.
+19. T. Sunada, T. Tate, *Asymptotic behavior of quantum walks on the line*,
+    J. Funct. Anal. **262**, 2608–2645 (2012), arXiv:1108.1878.
