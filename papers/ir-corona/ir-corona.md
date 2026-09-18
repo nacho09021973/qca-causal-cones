@@ -45,7 +45,10 @@ interval arithmetic shows that it does not vanish for any $\theta$ in any of
 the sixteen pairs. The emergent cone is therefore not operationally sharp,
 even for infrared-admissible operations. The response is non-perturbatively
 small, invisible to every power of the infrared scale, and it lies strictly
-inside the microscopic causal support.
+inside the microscopic causal support. The result is purely asymptotic: the
+remainder constants are not explicit, and numerical diagnostics indicate that
+the leading term is quantitatively accurate only for $N$ of order $10^3$ and
+beyond.
 
 ---
 
@@ -153,6 +156,15 @@ quadratically on the spheres.
    The coefficient $C_{M,M_B}(\theta)$ is given in closed form and is
    uniformly non-zero, with relative oscillation in $\theta$ at most
    $1.5\times10^{-3}$.
+
+Result 4 is an asymptotic statement and not a numerical approximation valid
+from small $N$. The constants in its remainder are not explicit, and neither
+is the threshold $N_*$ beyond which $\delta_{M,M_B}(N)>0$ is guaranteed.
+Finite-$N$ diagnostics (Appendix A) indicate a relative correction of about
+$-100/N$, so the leading term is quantitatively accurate only for
+$N\gtrsim10^3$. For the pairs with the smallest coefficients, the next-order
+term $N^{-17/2}e^{-K_*N}$ dominates throughout the diagnostic range $N\le56$
+(Remark 4.6).
 
 The coefficient is not a product of local factors. It arises from the
 interference between the *free tail* of the resource at Bob, which is only
@@ -440,7 +452,8 @@ and $D_B=\frac12\|\rho_1-\rho_0\|_1\ge\delta$.
 
 ### 3.4. Infrared admissibility
 
-**Definition 3.1.** For a bounded operator $X$ on $\mathcal H$, set
+**Definition 3.1.** For a bounded operator $X$ on $\mathcal H$ with
+$X\Pi\ne0$, set
 
 $$
 \eta_{\mathrm{op}}(X)=\frac{\|(I-\Pi')X\Pi\|}{\|X\Pi\|}.
@@ -454,8 +467,12 @@ $$
 \qquad \Delta_M=U_M|\phi_N\rangle\langle\phi_N|U_M^*-|\phi_N\rangle\langle\phi_N|,
 $$
 
-as $N\to\infty$. The effect $E$ is infrared-admissible if
-$\eta_{\mathrm{op}}(E)\to0$.
+as $N\to\infty$, where $\Delta_M\ne0$ is required for
+$\eta_{\mathrm{enc}}^M$ to be defined. The effect $E$ is infrared-admissible
+if $\eta_{\mathrm{op}}(E)\to0$.
+
+For the operations of this paper all denominators are non-zero for every
+$N\ge2$ (Theorem 3.3).
 
 In words: acting on anything in the infrared band, an admissible operation
 leaves only a vanishing fraction of its output outside the wider band
@@ -514,7 +531,9 @@ additional axioms. This covers the kernel bound, the geometry (6), the
 counting of lattice points, the operator bound on $T_N$, and the step
 $\delta\le4T_N$. The formal proof bounds the matrix powers through
 Cayley–Hamilton and entrywise estimates instead of Lemma 5.3, and obtains the
-sharper constant $T_N\le4N^4e^{-JN}$. The identification of Bob's amplitudes
+sharper constant $T_N\le4N^4e^{-JN}$. Both constants are valid; the proof in
+Section 5 keeps the constant $9$ that the elementary Lemma 5.3 gives. The
+identification of Bob's amplitudes
 with the restricted walk, and the second-quantized distance $D_B$, are not
 formalized.
 
@@ -589,6 +608,11 @@ $$
 $$
 
 and $\delta_{M,M_B}(N)>0$ for all $N$ larger than some finite $N_*$.
+
+The constants implicit in the $O(N^{-1/2})$ terms are finite but not
+explicit, and neither is $N_*$. Theorem 4.4 therefore does not assert
+$\delta_{M,M_B}(N)>0$ at any specified $N$. It also does not say from which
+$N$ on the leading term is numerically accurate (Section 8).
 
 **Table 1.** Mean leading coefficients
 $\overline{C}_{M,M_B}=\mathcal K c_r\overline\Gamma\ell_0$ and the uniform

@@ -79,7 +79,10 @@ interval arithmetic shows that it does not vanish for any $\theta$ in any of
 the sixteen pairs.  The emergent cone is therefore not operationally sharp,
 even for infrared-admissible operations.  The response is non-perturbatively
 small, invisible to every power of the infrared scale, and it lies strictly
-inside the microscopic causal support.
+inside the microscopic causal support.  The result is purely asymptotic: the
+remainder constants are not explicit, and numerical diagnostics indicate
+that the leading term is quantitatively accurate only for $N$ of order
+$10^3$ and beyond.
 \end{abstract}
 
 \maketitle
@@ -192,6 +195,15 @@ on the spheres.
   uniformly non-zero, with relative oscillation in $\theta$ at most
   $1.5\times10^{-3}$.
 \end{enumerate}
+
+Result (iv) is an asymptotic statement and not a numerical approximation
+valid from small $N$.  The constants in its remainder are not explicit, and
+neither is the threshold $N_*$ beyond which $\delta_{M,M_B}(N)>0$ is
+guaranteed.  Finite-$N$ diagnostics (Appendix~\ref{app:numerics}) indicate
+a relative correction of about $-100/N$, so the leading term is
+quantitatively accurate only for $N\gtrsim10^3$.  For the pairs with the
+smallest coefficients, the next-order term $N^{-17/2}e^{-K_*N}$ dominates
+throughout the diagnostic range $N\le56$ (Remark~\ref{rem:features}).
 
 The coefficient is not a product of local factors.  It arises from the
 interference between the \emph{free tail} of the resource at Bob, which is
@@ -450,7 +462,7 @@ and $D_B=\frac12\|\rho_1-\rho_0\|_1\ge\delta$.
 
 \subsection{Infrared admissibility}
 \begin{definition}\label{def:admissible}
-For a bounded operator $X$ on $\mathcal H$, set
+For a bounded operator $X$ on $\mathcal H$ with $X\Pi\ne0$, set
 \[
 \eta_{\mathrm{op}}(X)=\frac{\|(I-\Pi')X\Pi\|}{\|X\Pi\|}.
 \]
@@ -460,9 +472,13 @@ $\eta_{\mathrm{op}}(U_M-I)\to0$ and
 \eta_{\mathrm{enc}}^M=\frac{\|\Delta_M-\Pi'\Delta_M\Pi'\|_1}{\|\Delta_M\|_1}\to0,
 \qquad \Delta_M=U_M|\phi_N\rangle\langle\phi_N|U_M^*-|\phi_N\rangle\langle\phi_N|,
 \]
-as $N\to\infty$.  The effect $E$ is infrared-admissible if
+as $N\to\infty$, where $\Delta_M\ne0$ is required for $\eta_{\mathrm{enc}}^M$
+to be defined.  The effect $E$ is infrared-admissible if
 $\eta_{\mathrm{op}}(E)\to0$.
 \end{definition}
+
+For the operations of this paper all denominators are non-zero for every
+$N\ge2$ (Theorem~\ref{thm:admissible}).
 
 In words: acting on anything in the infrared band, an admissible operation
 leaves only a vanishing fraction of its output outside the wider band
@@ -522,7 +538,9 @@ additional axioms.  This covers the kernel bound, the geometry
 $T_N$, and the step $\delta\le4T_N$.  The formal proof bounds the matrix
 powers through Cayley--Hamilton and entrywise estimates instead of
 Lemma~\ref{lem:schur}, and obtains the sharper constant
-$T_N\le4N^4e^{-JN}$.  The identification of Bob's amplitudes with the
+$T_N\le4N^4e^{-JN}$.  Both constants are valid; the proof in
+Section~\ref{sec:upper} keeps the constant $9$ that the elementary
+Lemma~\ref{lem:schur} gives.  The identification of Bob's amplitudes with the
 restricted walk, and the second-quantized distance $D_B$, are not
 formalized.
 \end{remark}
@@ -585,6 +603,12 @@ with the values in Table~\ref{tab:C}.  Consequently, for every pair,
 and $\delta_{M,M_B}(N)>0$ for all $N$ larger than some finite $N_*$.
 \end{theorem}
 
+The constants implicit in the $O(N^{-1/2})$ terms are finite but not
+explicit, and neither is $N_*$.  Theorem~\ref{thm:main} therefore does not
+assert $\delta_{M,M_B}(N)>0$ at any specified $N$.  It also does not say from
+which $N$ on the leading term is numerically accurate
+(Section~\ref{sec:discussion}).
+
 \begin{table}[t]
 \centering
 \small
@@ -624,7 +648,7 @@ nevertheless non-zero for all large $N$, with the exact rate $K_*$, the exact
 power $13/2$ and an explicit non-vanishing coefficient.
 \end{corollary}
 
-\begin{remark}
+\begin{remark}\label{rem:features}
 Three features of Table~\ref{tab:C} were not assumed and come out of the
 computation.  First, $C(\sigma_3,\cdot)=-C(I,\cdot)$ at leading order;
 the two encoders differ only at lower orders.  Second, the three Pauli
