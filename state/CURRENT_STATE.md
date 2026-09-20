@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
-**Date:** 2026-09-17
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; **ACTIVE LINE = physical realization / absolute scale (Sec. 8.21), NOT_EXECUTED**; operational IR step 3 CLOSED in the frozen class (Sec. 8.20); non-vertex signalling CONSTRUCTED / INDEPENDENTLY REVIEWED (Sec. 8.14); dimensional translation audit CLOSED / CONDITIONAL (Sec. 8.15); narrow-band IR signalling gate NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS / INDEPENDENTLY REVIEWED (Sec. 8.16); scaled IR signalling gate OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.17); cancellation analysis OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.18); regional directional-asymptotics gate OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY REVIEWED (Sec. 8.19); regional Laplace-coefficient gate PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY REVIEWED (Sec. 8.20) (branch-local)
+**Date:** 2026-09-20
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **ACTIVE RESEARCH LINE = H1-only reopening for the slowly inhomogeneous extension**: H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW, `H1c_LOCALIZATION (L') = OPEN`; H1 remains OPEN; E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN.
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1433,3 +1433,148 @@ support, known observable of that gap): **no** on this pass. Ion-trap
 and photonic Dirac automata are 4A antecedents. Pavia/Mlodinow–Brun
 are incomplete fundamental candidates (Planck `ASSUMPTION`, different
 observables). This scan does **not** assign a 4B terminal state.
+
+
+## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)
+
+**Status: H1 OPEN. Active bottleneck: \`H1c_LOCALIZATION (L')\`.**
+
+This update supersedes the older statement that physical-realization / absolute-scale
+Sec. 8.21 is the active line. The flat CJWW (5.15) operational IR-corona result
+remains closed in its frozen class. The later inhomogeneous/AdS extension is not
+reactivated as a whole: only H1 has been reopened.
+
+Full research record:
+- [H1 chat research log](../reports/2026-09-20--h1-chat-research-log.md)
+- [H1 localization reconstruction and gate ledger](../reports/2026-09-20--h1-inhomogeneous-localization-reconstruction.md)
+- primary endpoint/layer source: [regional Laplace-coefficient gate](../reports/2026-09-17--regional-laplace-coefficient-gate.md)
+
+### 9.1 Frozen local structure
+
+For
+\[
+D(z)=S(z)\oplus S(z)^{-1},\qquad
+C_N(X)=e^{-i\vartheta(X)\beta/N},
+\]
+under the working frozen beta contract
+\[
+\beta^2=I,\qquad \beta D\beta=D^{-1},
+\]
+the dominant rank-two Riesz bundle satisfies
+\[
+\mathcal P\beta\mathcal P=0.
+\]
+
+Current statuses:
+- \`H1-SR = PROVED_UNDER_FROZEN_BETA_CONTRACT\`;
+- \`H1a = PROOF_WRITTEN / UNREVIEWED\`;
+- \`H1b = PROOF_WRITTEN / UNREVIEWED\`;
+- \`DERIVATIVE_SELECTION_RULE = PASS\`.
+
+No global torus spectral gap is claimed.
+
+### 9.2 Endpoint absolute-mass gate
+
+The 2026-09-17 primary regional report was rechecked. It uses the complete
+endpoint spinors, before spectral projection,
+\[
+f=s_Nb_N\chi,\qquad w=h_BM_Br,
+\]
+with
+\[
+b_N=O(N^{-3/2}),\quad
+r(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2}),
+\]
+\[
+s_N=\frac{32\pi}{N^2}\varepsilon_\perp^2+O(N^{-6}),\quad
+h_B=\frac{64}{N^2}{\varepsilon'_\perp}^{\,2}.
+\]
+
+Accounting for tangential area \(O(N(1+j))\) at normal depth \(j\) and the
+exponentially summable tilted normal weight gives
+\[
+\sum_x e^{\xi_*\cdot(x-x_*)}\|f(x)\|=O(N^{-5/2}),
+\]
+\[
+\sum_y e^{-\xi_*\cdot(y-y_*)}\|w(y)\|=O(N^{-5/2}).
+\]
+
+Therefore:
+\[
+\boxed{\texttt{LAYER_ABSOLUTE_MASS_BOUND = PASS}}.
+\]
+
+This is a full-spinor absolute bound, not a cancellation or dominant-projection
+bound.
+
+### 9.3 Local-window insertion and leakage gates
+
+Using the derivative selection rule and the endpoint bounds:
+\[
+\boxed{\texttt{G_INSERTION_POWER_STABILITY = PASS_IN_LOCAL_WINDOW}}.
+\]
+
+The final complementary-bundle leakage is controlled by the full Bob norm.
+The safe dominant correction is the zeroth-order \(Q\beta\mathcal P/N\) term,
+giving
+\[
+|\Delta T_Q|=O(N^{-15/2}),
+\]
+not the earlier exploratory \(O(N^{-8})\) count. Hence:
+\[
+\boxed{\texttt{FINAL_Q_LEAKAGE_MATRIX_ELEMENT = PASS_IN_LOCAL_WINDOW}}.
+\]
+
+These are local-window statements only.
+
+### 9.4 Remaining H1c gate
+
+Literal pathwise H1b is not valid because a spatial path carries individual
+hopping matrices \(D_h\), not the full symbol \(D(z)\). Thus:
+\[
+\texttt{H1c_GLOBAL = UNNECESSARY},
+\qquad
+\texttt{H1c_LOCALIZED = OPEN}.
+\]
+
+The sole active H1c bottleneck is:
+\[
+\boxed{\texttt{H1c_LOCALIZATION (L') = OPEN}}.
+\]
+
+A candidate momentum-space Dyson route has been formulated. Its key local
+selection factor is
+\[
+\mathcal P(\eta+q)\beta\mathcal P(\eta)=O(|q|),
+\]
+and, for \(K_N(q)=N^3\widehat\vartheta(Nq)\),
+\[
+\int |q||K_N(q)|\,dq
+=\frac1N\int |p||\widehat\vartheta(p)|\,dp.
+\]
+The working regularity assumption for this route is the Fourier-moment
+condition
+\[
+\int_{\mathbb R^3}(1+|p|)|\widehat\vartheta(p)|\,dp<\infty.
+\]
+
+The desired \(n\)-insertion estimate is
+\[
+e^{-N\varphi_*}|T_n|
+\le C N^{-13/2}\frac{(C'/N)^n}{n!}.
+\]
+
+**This estimate is not proved.** The missing step is uniform control of
+non-normal variable-momentum products, including complementary-bundle visits,
+transitions among the eight saddle neighborhoods, and regions where the local
+Riesz splitting is unavailable. No momentum-conservation assumption may be
+smuggled into that proof.
+
+### 9.5 Locks
+
+The H1 reopening does not change:
+- \`E0 = OPEN_AT_STOP\`;
+- \`POWER_13/2_STABILITY = OPEN_AT_STOP\`;
+- \`E / AdS = STOPPED_UNPROVEN\`.
+
+No further promotion is authorized until L' is proved and reviewed.
