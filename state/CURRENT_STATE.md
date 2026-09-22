@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-22
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **ACTIVE RESEARCH LINE = H1-only reopening for the slowly inhomogeneous extension**: H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW, `H1c_LOCALIZATION (L') = OPEN`; H1 remains OPEN; E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b OPEN/UNBLOCKED, C2c BLOCKED ON C2b, C3 SEPARATE.
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **ACTIVE RESEARCH LINE = H1-only reopening for the slowly inhomogeneous extension**: H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW, `H1c_LOCALIZATION (L') = OPEN`; H1 remains OPEN; E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope UNBLOCKED / NOT_EXECUTED, C3 SEPARATE.
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1600,9 +1600,12 @@ This records completed authorized diagnostics, not authorization for larger scan
 
 Explicit user decision on 2026-09-22 to record the certified C1 and C2a
 verdicts here. Branch-local, like the rest of this file; `main` is unchanged.
+Subsequent user acceptance on the same date promotes C2b after its independent
+review and unblocks C2c as a structural-scope gate, without promoting C2c.
 Contracts: [C1/C2/C3](../theory/IR_ATTRIBUTION_C1_C2_C3_GATE.md),
 [C2a](../theory/IR_C2A_OSCILLATORY_TRANSFER_GATE.md),
-[C2b](../theory/IR_C2B_BLOCK_DECOMPOSITION_GATE.md).
+[C2b](../theory/IR_C2B_BLOCK_DECOMPOSITION_GATE.md),
+[C2c structural scope](../theory/IR_C2C_STRUCTURAL_SCOPE_GATE.md).
 The front is fixed to P=Pi'=1_{|p|<=N^-1/2} (hard cutoff), Q=I-P, and the
 signed block observable
 Lpp=tr(E S^N P Delta P S^-N). This observable is not the conditioned Lcond
@@ -1612,8 +1615,8 @@ of C3.
 | --- | --- | --- |
 | C1 leakage | **PASS** | [derivation](../reports/2026-09-22--ir-projection-leakage-and-conditioning.md), [independent review](../reports/2026-09-22--c1-leakage-independent-review.md) |
 | C2a transfer, sigma2/I | **PASS** | [derivation](../reports/2026-09-22--c2a-oscillatory-transfer.md), [independent review](../reports/2026-09-22--c2a-independent-review.md) |
-| C2b block decomposition | **OPEN / UNBLOCKED** | contract only; no certified result |
-| C2c structural explanation | **BLOCKED ON C2b** | — |
+| C2b block decomposition, sigma2/I | **PASS** | [candidate](../reports/2026-09-22--c2b-block-decomposition-candidate.md), [independent review](../reports/2026-09-22--c2b-independent-review.md); B4_PRIME_PASS separately |
+| C2c structural scope | **UNBLOCKED / NOT_EXECUTED** | [scope contract](../theory/IR_C2C_STRUCTURAL_SCOPE_GATE.md); no C2c result promoted |
 | C3 conditioning | **SEPARATE** | identity Lcond=(Lpp+q_N p0_N)/(1-q_N); not a substitute for C2 |
 | E/AdS | **FROZEN** (STOPPED_UNPROVEN, Sec. 9.5) | unchanged |
 
@@ -1624,10 +1627,27 @@ of C3.
   Lpp = N^-3 [C0 + C1 cos(sqrt(N)/2)] + O(N^-13/4), with C0 > C1 > 0 proved
   analytically (no numerical input). Hence Lpp = Theta(N^-3) and Lpp > 0 for
   all sufficiently large N.
-- **Consequence (arithmetic of certified results):** R = L - Lpp = -Lpp + L
+- **Earlier consequence of C2a (arithmetic only):** R = L - Lpp = -Lpp + L
   exactly, and Thm 4.1 gives |L| <= 36 N^4 e^{-JN}. The complement of the PP
   block therefore cancels an algebraic Theta(N^-3) response. This establishes
-  the cancellation's existence, not its mechanism.
+  the cancellation's existence; it is not the proof of C2b below.
+- **C2b result (sigma2/I):** direct block decomposition gives
+  Lpp = +N^-3 A_N + O(N^-13/4), Lqq = +N^-3 A_N + O(N^-13/4), and
+  Lpq + Lqp = -2 N^-3 A_N + O(N^-13/4), with the same
+  A_N = C0 + C1 cos(sqrt(N)/2) >= C0-C1 > 0 as C2a.
+  Thus the diagonal leaders are positive and the opposite leader lies in
+  the coherences. Lqq >= 0 exactly; positivity of Lpp is asymptotic.
+  B4_PRIME_PASS additionally gives Lpq = -N^-3 A_N + O(N^-13/4) and
+  Lqp = -N^-3 A_N + O(N^-13/4); exactly, Lqp is the complex conjugate
+  of Lpq, not necessarily equal to it at finite N.
+- **Autonomous mechanism and bounds:** d_Q = d - d_P follows from Q=I-P
+  and linearity. Thm 4.1 applies to the local source a, giving
+  ||E^(1/2)(d_Q+d_P)|| <= 2 T_N. For every N>=2,
+  |Lqq-Q_N| <= 8 T_N + 4 T_N^2 and
+  |Lpq+Lqp+Lin_N+2 Q_N| <= 12 T_N, with T_N <= 9 N^4 exp(-JN).
+  Here Q_N denotes the quadratic form <d_P,E d_P>, not the projector Q.
+  C2a controls this quadratic form and Lin_N separately. No L-Lpp,
+  Thm 4.4, total-signal asymptotics or N=24/40 data establish these blocks.
 
 Caveats that must be retained with the C2a PASS:
 
@@ -1639,7 +1659,28 @@ Caveats that must be retained with the C2a PASS:
 3. The PASS is one independent **agent** review (Claude Opus 5). It is not
    an external human verification or a multi-member ratification.
 
-C2b runs as a `POST-DISCOVERY VERIFICATION GATE`. Its candidate is not
-recorded here as a fact until its independent review passes. No new
-calculation, scan or code is authorized before that review. H1c, E0,
-POWER_13/2_STABILITY and the Sec. 8.20 flat theorem are unchanged.
+C2b remains a `POST-DISCOVERY VERIFICATION GATE`: its discovery preceded
+its contract. The independent review covers exactly snapshot
+`19eb7a383cbb09464e91b64e89f724204e58cccb` and returns C2B_PASS and
+B4_PRIME_PASS without required repairs. Review artifact SHA256:
+`65bab830c6960f2c661ae47d739d90c1ecf8ae06b5f9923383919f76c2b234d5`.
+The reviewer is recorded as **Codex, agent `/root`**, distinct from the
+candidate's author, Claude Opus 5. This is one independent agent review,
+not external human review, multi-member consensus or documented model
+diversity. No additional Astra review has been recorded; such a review
+remains an optional additional audit before publication, not a condition
+retroactively imposed on this internal PASS.
+
+C2c now addresses **structural scope**, starting from the mechanism already
+proved for sigma2/I: distinguish algebra and localized compensation from
+pair-dependent leading coefficients, classify the sixteen original pairs,
+and state the hypotheses and limits of any general hard-cutoff result.
+The +1:+1:-2 asymptotics and the N^-3 scale are not promoted to other pairs
+by this update. C2c is unblocked but not executed or passed. The frozen
+C2b contract and review retain their historical pre-promotion wording;
+this ledger records the later user decision.
+
+C3 remains SEPARATE; E/AdS remains FROZEN. H1c, E0,
+POWER_13/2_STABILITY and the Sec. 8.20 flat theorem are unchanged. No new
+numerical calculation, scan, manuscript publication, commit or push follows
+from this update.
