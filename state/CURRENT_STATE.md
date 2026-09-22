@@ -1578,3 +1578,20 @@ The H1 reopening does not change:
 - \`E / AdS = STOPPED_UNPROVEN\`.
 
 No further promotion is authorized until L' is proved and reviewed.
+
+## 10. IR spectral-attribution audit — 2026-09-22
+
+User-authorized exploratory audit and commit/push, documented in the
+[full report](../reports/2026-09-22--ir-spectral-attribution-audit.md).
+Status: **SUPPORTED / FINITE_N_NUMERICAL_DIAGNOSTIC**.
+For the fixed sigma2/I pair, N=24 and N=40 pass the stated empirical precision
+criterion. Lpp and R=L-Lpp nearly cancel. At N=40, direct nonperiodic
+position evolution agrees with the tilted FFT: field discrepancy normalized
+by maximum amplitude 1.62e-15; signal relative discrepancy 5.07e-16.
+No asymptotic trend, exclusively UV origin, or rigorous numerical enclosure
+is claimed. IR admissibility of operations does not by itself prove
+predominance of the PP contribution at the exponentially small signal scale.
+The stronger spectral attribution remains OPEN. The Sec. 8.20 flat theorem
+retains its scope and status; its full proof is not re-certified here.
+H1c, E0, POWER_13/2_STABILITY and E/AdS statuses of Sec. 9 are unchanged.
+This records completed authorized diagnostics, not authorization for larger scans.

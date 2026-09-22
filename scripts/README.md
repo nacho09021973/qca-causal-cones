@@ -221,3 +221,12 @@ Rules for any new scientific script:
 - No broad scans, anisotropic detours or new substrate classes.
 - Every retained scientific result must have permanent, traced generating
   code; no ephemeral scripts may supply evidence.
+
+## Exploratory IR spectral attribution (2026-09-22)
+
+`ir_precision_N24.py` preserves the original fixed-N record. `ir_cancellation.py`
+accepts N (default 24) and optional `--direct --scripts-dir scripts`.
+The optional check imports the existing exact blocks and evolves the compact
+perturbation in a nonperiodic box. No frozen verifier is modified.
+See the [audit and reproduction commands](../reports/2026-09-22--ir-spectral-attribution-audit.md).
+These are empirical finite-N diagnostics, not certificates or asymptotic gates.
