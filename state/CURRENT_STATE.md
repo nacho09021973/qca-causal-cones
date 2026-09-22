@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
-**Date:** 2026-09-20
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **ACTIVE RESEARCH LINE = H1-only reopening for the slowly inhomogeneous extension**: H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW, `H1c_LOCALIZATION (L') = OPEN`; H1 remains OPEN; E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN.
+**Date:** 2026-09-22
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **ACTIVE RESEARCH LINE = H1-only reopening for the slowly inhomogeneous extension**: H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW, `H1c_LOCALIZATION (L') = OPEN`; H1 remains OPEN; E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b OPEN/UNBLOCKED, C2c BLOCKED ON C2b, C3 SEPARATE.
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1595,3 +1595,51 @@ The stronger spectral attribution remains OPEN. The Sec. 8.20 flat theorem
 retains its scope and status; its full proof is not re-certified here.
 H1c, E0, POWER_13/2_STABILITY and E/AdS statuses of Sec. 9 are unchanged.
 This records completed authorized diagnostics, not authorization for larger scans.
+
+### 10.1 IR spectral-attribution front C1/C2/C3 — gate ledger (2026-09-22)
+
+Explicit user decision on 2026-09-22 to record the certified C1 and C2a
+verdicts here. Branch-local, like the rest of this file; `main` is unchanged.
+Contracts: [C1/C2/C3](../theory/IR_ATTRIBUTION_C1_C2_C3_GATE.md),
+[C2a](../theory/IR_C2A_OSCILLATORY_TRANSFER_GATE.md),
+[C2b](../theory/IR_C2B_BLOCK_DECOMPOSITION_GATE.md).
+The front is fixed to P=Pi'=1_{|p|<=N^-1/2} (hard cutoff), Q=I-P, and the
+signed block observable
+Lpp=tr(E S^N P Delta P S^-N). This observable is not the conditioned Lcond
+of C3.
+
+| Subgate | Status | Evidence |
+| --- | --- | --- |
+| C1 leakage | **PASS** | [derivation](../reports/2026-09-22--ir-projection-leakage-and-conditioning.md), [independent review](../reports/2026-09-22--c1-leakage-independent-review.md) |
+| C2a transfer, sigma2/I | **PASS** | [derivation](../reports/2026-09-22--c2a-oscillatory-transfer.md), [independent review](../reports/2026-09-22--c2a-independent-review.md) |
+| C2b block decomposition | **OPEN / UNBLOCKED** | contract only; no certified result |
+| C2c structural explanation | **BLOCKED ON C2b** | — |
+| C3 conditioning | **SEPARATE** | identity Lcond=(Lpp+q_N p0_N)/(1-q_N); not a substitute for C2 |
+| E/AdS | **FROZEN** (STOPPED_UNPROVEN, Sec. 9.5) | unchanged |
+
+- **C1 result:** q_N = ||Q(U_M-I)phi_N||^2 = D N^-5/2 (1+O(N^-1/2)) with
+  D = 1024 pi^2 Phi_0(1/4)^2/5 > 0, for all four encoders. It follows that
+  ||Delta - P Delta P||_1 = 2 sqrt(D) N^-5/4 (1+O(N^-1/2)).
+- **C2a result (sigma2/I):**
+  Lpp = N^-3 [C0 + C1 cos(sqrt(N)/2)] + O(N^-13/4), with C0 > C1 > 0 proved
+  analytically (no numerical input). Hence Lpp = Theta(N^-3) and Lpp > 0 for
+  all sufficiently large N.
+- **Consequence (arithmetic of certified results):** R = L - Lpp = -Lpp + L
+  exactly, and Thm 4.1 gives |L| <= 36 N^4 e^{-JN}. The complement of the PP
+  block therefore cancels an algebraic Theta(N^-3) response. This establishes
+  the cancellation's existence, not its mechanism.
+
+Caveats that must be retained with the C2a PASS:
+
+1. The error term gains only N^-1/4 over the leading term.
+2. The asymptotic regime is reached slowly: the oscillatory gains are powers
+   of 1/(gamma sqrt(N)), where gamma = sqrt(3) - 3/2, which is about 1.1 at
+   N=24 and 1.5 at N=40. The retained N=24/40 values do not validate or
+   refute the sign.
+3. The PASS is one independent **agent** review (Claude Opus 5). It is not
+   an external human verification or a multi-member ratification.
+
+C2b runs as a `POST-DISCOVERY VERIFICATION GATE`. Its candidate is not
+recorded here as a fact until its independent review passes. No new
+calculation, scan or code is authorized before that review. H1c, E0,
+POWER_13/2_STABILITY and the Sec. 8.20 flat theorem are unchanged.

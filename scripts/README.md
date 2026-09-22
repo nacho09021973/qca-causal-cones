@@ -2,6 +2,16 @@
 
 No scientific script was present at the initial freeze (`44ad178`).
 
+## IR projection leakage algebra (2026-09-22)
+
+`verify_ir_projection_leakage.py` checks exact algebra for the
+[projection and conditioning derivation](../reports/2026-09-22--ir-projection-leakage-and-conditioning.md):
+rank-two trace norm, conditioning correction, the four original encoders'
+boundary coefficients, radial Fourier constants and the sharp-cutoff kernel.
+Run `python3 -B scripts/verify_ir_projection_leakage.py` (SymPy 1.14.0).
+Fourier/Poisson error estimates remain written, independently unreviewed
+arguments; the script does not certify the asymptotics of the PP observable.
+
 ## Exact standard Weyl/Dirac battery
 
 `verify_weyl_dirac_gate.py` implements the
