@@ -16,8 +16,9 @@ Sea
 v=U_M\phi_N,\qquad w=P v,\qquad t=Qv,
 \qquad q_N=\|t\|^2.
 \]
-Como `P phi_N=phi_N`, `w` es el resultado de retener el sector P para el
-bit cero, mientras que para el bit uno la probabilidad de retención es
+Como `P phi_N=phi_N`, el resultado de retener el sector P para el
+bit cero es `phi_N`, con probabilidad uno. Para el bit uno el vector
+retenido sin normalizar es `w`, y la probabilidad de retención es
 `||w||^2=1-q_N`. Para `q_N<1`, el estado condicionado del bit uno es
 `|w><w|/(1-q_N)`, y el del bit cero es `|phi_N><phi_N|`.
 
@@ -55,7 +56,13 @@ condicionadas: `Lpp` es el observable firmado antes de la normalización.
 
 ## 2. Probabilidad de éxito y límite de `p0_N`
 
-C1 da, para cada uno de los cuatro encoders,
+C1 da, para cada uno de los cuatro encoders, con
+\[
+B=\Phi_0(1/4)
+=\frac{\sqrt{3465}}{64\pi^2}\,16\pi
+\int_0^1 k(1-k^2)^2\sin(k/4)\,dk>0
+\]
+(\(\Phi_0\) es radial; manuscrito §3.2, (7), y derivación C1 §3),
 \[
 q_N=D N^{-5/2}(1+O(N^{-1/2})),
 \qquad D=\frac{1024\pi^2 B^2}{5}>0.
@@ -76,7 +83,10 @@ Por tanto, escribiendo `r_N=S^N phi_N`,
 \[
 p_{0,N}=\sum_{y\in\mathbb Z^3}h_N(y)\,\|r_N(y)\|^2.
 \]
-El lema de la cola de C1 da `r_N(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2})`
+El Lema 7.2 del [manuscrito](../papers/ir-corona/ir-corona.md), §7.5,
+da `r_N(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2})`
+(`r_N` es su campo libre completo `tilde r`). Se usa este lema y su
+prueba directa del recurso, no la conclusión del Teorema 4.4. La cota vale
 uniformemente en la bola de Bob. Al poner `Y=y/N`, el factor
 `N^{-3}` de `\|r_N(y)\|^2` se compensa con la densidad `N^3` de la suma,
 y las sumas de Riemann dan
@@ -110,7 +120,12 @@ L_{PP}^{M,D_0}=N^{-3}\mathscr A_{M,D_0}(\sqrt N)+O(N^{-13/4}).
 
 La propia clasificación de C2c controla uniformemente el coeficiente líder
 en el alcance congelado; por tanto cada uno de esos cuatro pares satisface
-`L_{PP,N}=Theta(N^{-3})`, y en particular `L_{PP,N}->0`. Insertando (C3.4)–(C3.6) en
+`L_{PP,N}=Theta(N^{-3})`, y en particular `L_{PP,N}->0`.
+La cota superior `O(N^{-3})` basta aquí: (C3.7) sólo requiere
+`L_{PP,N}->0`; la cota inferior de (C15) no es necesaria para C3.
+El estatus heredado de C2c está registrado en su
+[revisión independiente](2026-09-23--c2c-independent-review.md) y en
+`state/CURRENT_STATE.md`, §10.1. Insertando (C3.4)–(C3.6) en
 (C3.3),
 \[
 \boxed{
@@ -132,7 +147,7 @@ compara `Lcond-Lpp` con el observable total `L` mediante una norma global.
 | Probabilidades de éxito | PASS, pendiente de revisión |
 | `p0_N -> p_infty > 0` para `M_B=I` | PASS, pendiente de revisión |
 | Corrección (C3.7) | PASS, pendiente de revisión |
-| Líder de `Lcond` o `abs(Lcond)` | OPEN |
+| Líder de `Lcond` o `abs(Lcond)` | Fuera de alcance; OPEN en el registro contractual, no una laguna por cancelación |
 | Comparación `Lcond-Lpp` con `L` | OPEN y fuera del gate |
 
 Resultado de esta ejecución: **`C3_PROOF_WRITTEN / REVIEW_PENDING`**. C3 no
