@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-22
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **ACTIVE RESEARCH LINE = H1-only reopening for the slowly inhomogeneous extension**: H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW, `H1c_LOCALIZATION (L') = OPEN`; H1 remains OPEN; E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 SEPARATE.
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **ACTIVE RESEARCH LINE = H1-only reopening for the slowly inhomogeneous extension**: H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW, `H1c_LOCALIZATION (L') = OPEN`; H1 remains OPEN; E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1617,7 +1617,7 @@ of C3.
 | C2a transfer, sigma2/I | **PASS** | [derivation](../reports/2026-09-22--c2a-oscillatory-transfer.md), [independent review](../reports/2026-09-22--c2a-independent-review.md) |
 | C2b block decomposition, sigma2/I | **PASS** | [candidate](../reports/2026-09-22--c2b-block-decomposition-candidate.md), [independent review](../reports/2026-09-22--c2b-independent-review.md); B4_PRIME_PASS separately |
 | C2c structural scope | **PASS — C2C_PASS, scope frozen** | [repaired execution](../reports/2026-09-22--c2c-structural-scope.md), [repaired review criteria](../theory/IR_C2C_REPAIRED_REVIEW_CRITERIA.md), [independent review](../reports/2026-09-23--c2c-independent-review.md); 16 original pairs only |
-| C3 conditioning | **SEPARATE** | identity Lcond=(Lpp+q_N p0_N)/(1-q_N); not a substitute for C2 |
+| C3 conditioning | **PASS — C3_PROOF_WRITTEN_REVIEW_ACCEPTED, scope frozen** | [execution](../reports/2026-09-23--c3-conditioning-execution.md), [DeepSeek/Gemini independent review](../reports/2026-09-23--c3-deepseek-gemini-review.md), commit `191ca20`; four original encoders, `M_B=I` only |
 | E/AdS | **FROZEN** (STOPPED_UNPROVEN, Sec. 9.5) | unchanged |
 
 - **C1 result:** q_N = ||Q(U_M-I)phi_N||^2 = D N^-5/2 (1+O(N^-1/2)) with
@@ -1684,11 +1684,19 @@ finite-support hypotheses. An independent review records
 `K=sqrt(N)` protocol, not a general QCA law; `N_0` and remainder constants
 remain non-effective, and `NOVELTY=OPEN`.
 
-This promotion is branch-local and does not reopen C3, E/AdS or FR1–FR3.
+C3 conditioning is now **C3_PROOF_WRITTEN_REVIEW_ACCEPTED** for the four
+original encoders with `M_B=I`, the frozen hard cutoff and the same CJWW
+protocol. The accepted result is
+`Lcond-LPP = D p_infty N^-5/2 (1+o(1))`, with `D>0` and `p_infty>0`.
+The result concerns the postselection increment. The leader and absolute
+magnitude of `Lcond`, and comparison with the total signal `L`, remain outside
+the C3 contract; no broader detector or QCA claim follows.
+
+The C2c promotion is branch-local and does not alter the C3 result, E/AdS or FR1–FR3.
 The repaired report and review retain their own commits and hashes; no
 finite-N claim or broader detector/QCA class is added.
 
-C3 remains SEPARATE; E/AdS remains FROZEN. H1c, E0,
+C3 is PASS in its frozen scope; E/AdS remains FROZEN. H1c, E0,
 POWER_13/2_STABILITY and the Sec. 8.20 flat theorem are unchanged. No new
 numerical calculation, scan, manuscript publication, commit or push follows
 from this update.
