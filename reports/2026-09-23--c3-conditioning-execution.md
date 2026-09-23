@@ -64,14 +64,29 @@ q_N=D N^{-5/2}(1+O(N^{-1/2})),
 Así `q_N -> 0` y la probabilidad de éxito del bit uno es
 `1-q_N=1-DN^{-5/2}(1+O(N^{-1/2}))`; la del bit cero es exactamente uno.
 
-Para `M_B=I`, el recurso libre escalado converge uniformemente en la bola de
-Bob al campo Weyl `R_0` usado en C1. Las sumas de Riemann dan
+Para `M_B=I`, se usa la normalización congelada del manuscrito
+`papers/ir-corona/ir-corona.md`, §3.2: con `u=(1,1,1)`,
+
+\[
+h_N(y)=\left(1-16|y-Nu|^2/N^2\right)_+^2,
+\qquad E=h_N\otimes I .
+\]
+
+Por tanto, escribiendo `r_N=S^N phi_N`,
+\[
+p_{0,N}=\sum_{y\in\mathbb Z^3}h_N(y)\,\|r_N(y)\|^2.
+\]
+El lema de la cola de C1 da `r_N(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2})`
+uniformemente en la bola de Bob. Al poner `Y=y/N`, el factor
+`N^{-3}` de `\|r_N(y)\|^2` se compensa con la densidad `N^3` de la suma,
+y las sumas de Riemann dan
 \[
 p_{0,N}\longrightarrow
-p_\infty:=\int_{|Y-u|<1/4}h(Y)\|R_0(Y)\|^2\,d^3Y.
+p_\infty:=\int_{|Y-u|<1/4}h_0(Y-u)\|R_0(Y)\|^2\,d^3Y,
+\qquad h_0(Z)=(1-16|Z|^2)^2.
 \tag{C3.5}
 \]
-El peso `h` es estrictamente positivo en el interior de la bola. `R_0` es
+El peso `h_0` es estrictamente positivo en el interior de la bola. `R_0` es
 la transformada de Fourier de una función compacta no nula y, por tanto,
 es analítica; no puede anularse en toda una bola abierta. De aquí
 \[
@@ -95,7 +110,7 @@ L_{PP}^{M,D_0}=N^{-3}\mathscr A_{M,D_0}(\sqrt N)+O(N^{-13/4}).
 
 La propia clasificación de C2c controla uniformemente el coeficiente líder
 en el alcance congelado; por tanto cada uno de esos cuatro pares satisface
-`L_{PP,N}=O(N^{-3})`, y en particular `L_{PP,N}->0`. Insertando (C3.4)–(C3.6) en
+`L_{PP,N}=Theta(N^{-3})`, y en particular `L_{PP,N}->0`. Insertando (C3.4)–(C3.6) en
 (C3.3),
 \[
 \boxed{
@@ -103,10 +118,11 @@ L_{\mathrm{cond},N}-L_{PP,N}
 =D p_\infty N^{-5/2}(1+o(1))}. 
 \tag{C3.7}
 \]
-La corrección es algebraica y positiva a orden líder. Esto no determina el
-término líder de `L_cond` ni de `Lpp` por separado: puede existir cancelación
-entre `Lpp` y la corrección de (C3.3). Tampoco compara `Lcond-Lpp` con el
-observable total `L` mediante una norma global.
+La corrección es algebraica y positiva a orden líder. El líder de `L_cond`
+queda fuera del alcance contractual; además, la cota `L_{PP,N}=Theta(N^{-3})`
+es de orden estrictamente menor que `N^{-5/2}`, así que no hay una
+cancelación por órdenes entre `Lpp` y la corrección de (C3.3). Tampoco se
+compara `Lcond-Lpp` con el observable total `L` mediante una norma global.
 
 ## 4. Veredicto de ejecución y límites
 
