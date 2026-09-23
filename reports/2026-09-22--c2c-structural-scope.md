@@ -1,7 +1,8 @@
 # C2c — alcance estructural de la compensación espectral
 
 Fecha: 2026-09-22. Autor: Codex, agente `/root`.
-**Estado: `PROOF_WRITTEN / REVIEW_PENDING`.**
+**Estado: `REPAIRED / REVIEW_PENDING`.**
+Reparación registrada: 2026-09-23, sobre el objeto original `fa9c07f`.
 
 Esta es la ejecución analítica de C2c, no su revisión independiente ni una
 promoción a PASS. C2b se usa como entrada certificada para su par congelado;
@@ -280,18 +281,32 @@ sin recalcular saddles.
 ### 5.2. Emparejamiento complejo lineal
 
 Para D fijo se sustituye el test de C2a por
-\(w_{D,N}=hDR_N\). Es exactamente D multiplicando el test original;
-su soporte, cotas Fourier de orden cuatro, regularidad angular,
-aproximación a \(hDR_0\) y cotas uniformes se conservan porque D es
-una matriz constante de norma a lo sumo uno. No es necesario que
-conmute con \(J(n)\).
+\(w_{D,N}=hDR_N\). La transferencia se comprueba lema a lema, no sólo
+por la frase «D es constante». Como \(D=D^\dagger\), \(0\le D\le I\) y
+\(\|D\|=\|D^{1/2}\|\le1\), para toda función matricial \(F\) y todo
+multiíndice angular \(\alpha\) se tiene
+\[
+\|D F\|_{C^{|\alpha|}}\le\|F\|_{C^{|\alpha|}},\qquad
+\|D^{1/2}F\|_{L^2}\le\|F\|_{L^2}.
+\tag{C6a}
+\]
+Estas desigualdades son las únicas propiedades del detector usadas en los
+lemas siguientes; no se conmuta D con \(J(n)\) ni con \(\Pi_\sigma(n)\).
 
-La fuente \(A_M\) conserva radialidad, borde, soporte y todas las
-cotas de C1. La separación de soportes de C2a (10), (17), (20) se
-mantiene para cada M y D. Las amplitudes angulares cambian, pero no sus
-cotas ni las fases \(\pm\sqrt3+(\epsilon-\eta)b-\sigma\), de módulo
-\(\ge\gamma\). Los correctores de dispersión (7)–(8) son identidades
-matriciales independientes de M y D.
+La fuente \(A_M\) conserva radialidad, borde y soporte para los cuatro
+espinores \(\zeta_M\), todos de norma uno. En el lema angular (C2a (6)),
+cada componente de \(D R_N\) tiene la misma regularidad y la norma
+\(C^6\) queda acotada por la de \(R_N\) mediante (C6a). Por tanto se
+conserva la ganancia \(O(r^{-1})\) y las fases radiales
+\(\pm\sqrt3+(\epsilon-\eta)b-\sigma\), cuyo módulo es al menos
+\(\gamma=\sqrt3-3/2\). En el muestreo (C2a (16)), multiplicar por D sólo
+multiplica las transformadas por una matriz constante y conserva la cota
+\(L^1\) de las imágenes. En los correctores (17)–(19), D no cambia los
+soportes de los tests ni el operador diferencial local; (C6a) conserva cada
+cota de resto. En el cambio de recurso (20), las cotas \(C^m\) de
+\(D(R_N-R_0)\) son las de \(R_N-R_0\). Así la transferencia lineal vale
+para cada M y D, con el mismo orden y constantes uniformes en la familia
+finita. Esta comprobación tampoco requiere que D conmute con \(J(n)\).
 
 Por ello el mismo presupuesto, ahora para
 \(c_{M,D,N}=\langle r,Ed_P\rangle\), es:
@@ -302,7 +317,7 @@ Por ello el mismo presupuesto, ahora para
 | Imágenes y muestreo, (16) | \(K^{-8}\) | Transformadas de orden cuatro y norma \(L^1\) uniforme |
 | Corrector cúbico, (17)–(18) | \(K^{-7}\) | Operador diferencial local, mismos soportes y ganancia angular |
 | Resto de dispersión, (19) | \(K^{-7}\) | Dos factores Fourier de orden cuatro; \(\|D\|\le1\) |
-| Cambio de recurso, (20) | \(K^{-9}\) | Mismo soporte y \(R_N-R_0=O(N^{-2})\) con derivadas |
+| Cambio de recurso, (20) | \(K^{-9}\) | Mismo soporte; (C6a) y \(R_N-R_0=O(N^{-2})\) con derivadas |
 
 Todas son cotas en módulo complejo, como explicita C2b §8. Con los
 interpolantes exactos de C2 (2)–(3), incluidos aliases y suma de red,
@@ -318,13 +333,17 @@ para los dieciséis pares, uniformemente al ser una familia finita.
 
 La cota C2a (21) sólo requiere el decaimiento de \(\widehat A_M\),
 las imágenes y Duhamel matricial. Para cada M da
-\(\|D_{M,N}-D^W_{M,K}\|_2=O(K^{-7/2})\).
-Por (C5), \(\|\sqrt hD^{1/2}D^W_{M,K}\|_2=O(K^{-3})\).
-Cauchy–Schwarz, con \(\|D^{1/2}\|\le1\), reproduce
-\(O(K^{-13/2})\) para la diferencia de las integrales cuadráticas.
-En el muestreo de \(hD_{M,N}^\dagger D D_{M,N}\), insertar D
-entre los dos factores no aumenta las normas usadas en C2a (23),
-por lo que el error sigue siendo \(O(K^{-8})\).
+\(\|D_{M,N}-D^W_{M,K}\|_2=O(K^{-7/2})\). Por (C6a) y (C5),
+\[
+\|\sqrt hD^{1/2}D^W_{M,K}\|_2=O(K^{-3}),\qquad
+\|\sqrt hD^{1/2}(D_{M,N}-D^W_{M,K})\|_2=O(K^{-7/2}).
+\]
+Cauchy–Schwarz da, con \(\|D^{1/2}\|\le1\),
+\(O(K^{-13/2})\) para la diferencia de las formas cuadráticas. En el
+muestreo de \(hD_{M,N}^\dagger D D_{M,N}\), se insertan D entre los dos
+factores y (C6a) conserva cada norma de C2a (23); el error sigue siendo
+\(O(K^{-8})\). Los cruces \(\Pi_+D\Pi_-\) no se eliminan: se mantienen
+en la matriz de Gram de §6.
 
 Así queda justificada, para todos los pares, la transferencia separada
 
@@ -524,8 +543,8 @@ Escribamos \(D_0=I\), \(D_j=(I+\sigma_j)/2\) para \(j=1,2,3\).
 Sean \(\mathscr A_{+,j}\), \(\mathscr A_{-,j}\) las funciones (C9)
 con espinor up y down respectivamente, y detector \(D_j\).
 Las fases globales de \(\zeta_M\) se cancelan en la matriz de Gram.
-Por tanto los dieciséis pares se agrupan en ocho familias de coeficiente
-líder: \(\sigma_1\) y \(\sigma_2\) comparten el coeficiente para
+Por tanto los dieciséis pares se agrupan en **a lo sumo ocho familias** de
+coeficiente líder: \(\sigma_1\) y \(\sigma_2\) comparten el coeficiente para
 cada detector; I y \(\sigma_3\) comparten el otro. Esto no afirma
 igualdad de las fuentes completas, de los restos o de las respuestas a N
 finito.
@@ -608,12 +627,17 @@ exterior abierto; luego sería cero en todo el toro. Eso obligaría a
 \(a=0\), contradicción. Fuera de Alice, \(Qa=-Pa\), de modo que
 Qa tiene también cola no local.
 
-Este argumento se extiende a cortes escalares con esas propiedades de
-abiertos, pero no atribuye una tasa a la cola ni a su funcional en Bob.
-No cubre sin más proyectores internos constantes, multiplicadores
-matriciales con núcleos, regiones espectrales degeneradas o fuentes
-sin soporte finito. El criterio de §4 es más abstracto que este mecanismo
-concreto de producción de colas.
+La misma prueba vale para un **corte escalar indicador** \(p=1_\Omega\) en
+el toro de momentos, siempre que \(\Omega\) y su complemento contengan
+abiertos no vacíos, la fuente tenga soporte finito y sea no nula, y la
+proyección se defina por el multiplicador escalar \(p\). Si \(Pa\) tuviera
+soporte finito, su transformada trigonométrica se anularía en el abierto
+del complemento de \(\Omega\), luego sería idénticamente nula; en el abierto
+de \(\Omega\) esto forzaría \(\widehat a=0\), contradiciendo la fuente.
+Este enunciado no cubre multiplicadores suaves, proyectores internos
+matriciales, regiones sin abiertos, fuentes sin soporte finito ni una tasa
+cuantitativa para la cola o su funcional en Bob. El criterio de §4 es más
+abstracto que este mecanismo concreto de producción de colas.
 
 ### 9.3. Parte cuantitativa del protocolo
 
@@ -688,7 +712,7 @@ escala del criterio abstracto y la escala del protocolo.
 3. La transferencia lineal y cuadrática para los dieciséis pares, las
    fórmulas completas de coeficientes (C8)–(C12), su cota inferior
    uniforme (C15) y las expansiones (C16).
-4. La agrupación de coeficientes líderes en ocho familias según el
+4. La agrupación de coeficientes líderes en a lo sumo ocho familias según el
    espinor up/down y los cuatro detectores, sin igualar respuestas a N
    finito.
 
@@ -704,9 +728,12 @@ cualquier aplicación inhomogénea/AdS. No quedan filas sin derivación
 dentro de los dieciséis pares, pero sólo \(\sigma_2/I\) tiene el PASS
 previo: la tabla nueva no es una promoción canónica.
 
-El único estado nuevo de C2c que registra **esta nota** es
-`PROOF_WRITTEN / REVIEW_PENDING`. No emite `C2C_PASS`. La autoría de esta
-derivación no constituye revisión independiente de ella misma.
+El estado de C2c que registra **esta nota reparada** es
+`REPAIRED / REVIEW_PENDING`. No emite `C2C_PASS`. La reparación añade las
+cotas explícitas (C6a) para la transferencia con D, corrige la clasificación
+a «a lo sumo ocho familias» y restringe §9.2 a cortes escalares indicadores
+con dos abiertos. La reparación sigue necesitando revisión independiente; la
+autoría de esta derivación no constituye esa revisión.
 `state/CURRENT_STATE.md` y el contrato se conservan exactamente como
 entradas congeladas en el commit obligatorio; su `NOT_EXECUTED` describe
 ese punto anterior a esta ejecución. Una actualización posterior del
@@ -714,8 +741,8 @@ registro deberá distinguir esta prueba escrita de su eventual aceptación.
 
 C1, C2a y C2b mantienen sus PASS y alcances previos. C3 sigue SEPARATE y
 E/AdS FROZEN. No se modifica el manuscrito ni se ejecuta código científico.
-El informe C2c se deja sin commit; el único commit de la tarea es el
-paquete de tres archivos solicitado al principio. No hay push.
+Esta reparación es un objeto nuevo que debe recibir su propia revisión; no
+hay promoción ni push.
 
 ## 12. Addendum bibliográfico — 2026-09-22
 
@@ -730,7 +757,7 @@ proporcionan un antecedente externo del mecanismo de colas inducidas por
 cortes duros discutido en §9.2. Su variable de Fourier es conjugada de una
 envolvente de momento reescalada; no se identifica con nuestro corte IR.
 No demuestra la compensación localizada, las escalas de C2c ni el patrón
-+1:+1:−2. Esta referencia se añade después de la derivación y no forma
-parte del snapshot de entrada ni cambia `PROOF_WRITTEN / REVIEW_PENDING`.
++1:+1:−2. Esta referencia se mantiene fuera del alcance de la revisión y no
+cambia `REPAIRED / REVIEW_PENDING`.
 La [nota FRONT-RESOURCE SCALING](2026-09-22--front-resource-scaling.md)
 registra la lectura, la provenance del PDF y las propuestas FR1–FR3.
