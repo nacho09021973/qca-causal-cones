@@ -1,0 +1,50 @@
+# Sanhedrin run log
+record:       2026-09-23--c3-deepseek-gemini-review.md
+started:      2026-09-23T10:53:55Z
+command:      sanedrin -r 2 -m abner,gemini --secuencial --timeout 900 --reintentos 1 -i es -o debates/2026-09-23--c3-deepseek-gemini-review.md -c theory/IR_C3_CONDITIONING_GATE.md -c reports/2026-09-23--c3-conditioning-execution.md -c reports/2026-09-22--ir-projection-leakage-and-conditioning.md -c reports/2026-09-22--ir-projection-leakage-and-conditioning.md -c state/CURRENT_STATE.md Revisión adversarial de C3. Audita únicamente el contrato y la ejecución C3 del condicionamiento posterior a la proyección IR. Verifica la identidad exacta de los estados condicionados y Lcond, las probabilidades de éxito 1 y 1-q_N, la asintótica q_N=D N^{-5/2}(1+O(N^{-1/2})) para los cuatro encoders, la convergencia p0_N -> p_infty>0 para M_B=I y la corrección Lcond-LPP=D p_infty N^{-5/2}(1+o(1)). Mantén OPEN el líder de Lcond, abs(Lcond), la comparación con L y cualquier interpretación local. No uses N=24/40, L-LPP, Teorema 4.4, simulaciones, cuadraturas ni barridos. Emite veredictos por obligación y un veredicto global C3_PROOF_WRITTEN_REVIEW_ACCEPTED, C3_REPAIR_REQUIRED, C3_FAIL o C3_INCOMPLETE. No reabras C2c, H1c ni E/AdS.
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        (tema en línea de órdenes)
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       2
+words/turn:   500
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (2 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.280 (Claude Code)
+codex:        codex-cli 0.155.1
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   theory/IR_C3_CONDITIONING_GATE.md (258 words)
+attachment:   reports/2026-09-23--c3-conditioning-execution.md (498 words)
+attachment:   reports/2026-09-22--ir-projection-leakage-and-conditioning.md (1679 words)
+attachment:   reports/2026-09-22--ir-projection-leakage-and-conditioning.md (1679 words)
+attachment:   state/CURRENT_STATE.md (11930 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-23T10:53:55Z  round 1 | ABNER | send | context 16647 words | access sellado
+2026-09-23T10:55:59Z  round 1 | ABNER | recv | 124s | 331 words | ok
+2026-09-23T10:55:59Z  round 1 | GEMINI | send | context 16986 words | access sellado
+2026-09-23T10:56:59Z  round 1 | GEMINI | recv | 60s | 376 words | ok
+2026-09-23T10:56:59Z  round 2 | ABNER | send | context 17365 words | access sellado
+2026-09-23T10:58:31Z  round 2 | ABNER | recv | 92s | 427 words | ok
+2026-09-23T10:58:31Z  round 2 | GEMINI | send | context 17797 words | access sellado
+2026-09-23T10:59:01Z  round 2 | GEMINI | recv | 30s | 116 words | ok
+2026-09-23T10:59:01Z  round Residuo | ABNER | send | context 17922 words | access sellado
+2026-09-23T10:59:32Z  round Residuo | ABNER | recv | 31s | 164 words | ok
+2026-09-23T10:59:32Z  round Residuo | GEMINI | send | context 18091 words | access sellado
+2026-09-23T10:59:54Z  round Residuo | GEMINI | recv | 22s | 143 words | ok
+2026-09-23T10:59:54Z  round Veredicto | ABNER | send | context 18280 words | access sellado
+2026-09-23T11:00:35Z  round Veredicto | ABNER | recv | 41s | 225 words | ok
+2026-09-23T11:00:35Z  round Veredicto | ABNER | send | context 653 words | access sellado
+2026-09-23T11:01:04Z  round Veredicto | ABNER | recv | 29s | 216 words | ok
+2026-09-23T11:01:04Z  END | record: debates/2026-09-23--c3-deepseek-gemini-review.md | wall clock 429s
