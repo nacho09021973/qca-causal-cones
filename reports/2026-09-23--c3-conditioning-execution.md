@@ -82,8 +82,20 @@ No se evalúa numéricamente `p_infty`.
 
 ## 3. Corrección de normalización
 
-El resultado C2c ya aceptado en su alcance congelado da, para `M_B=I`,
-`L_{PP,N}=O(N^{-3})`, luego `L_{PP,N}->0`. Insertando (C3.4)–(C3.6) en
+La premisa que se usa aquí está demostrada fila a fila en C2c, no sólo
+por la cobertura global de los dieciséis pares. En §8 de
+`reports/2026-09-22--c2c-structural-scope.md` aparecen explícitamente las
+cuatro filas con `D_0=I` y
+`M in {I, sigma_1, sigma_2, sigma_3}`. La expansión (C16), aplicada a cada
+una de esas filas, es
+
+\[
+L_{PP}^{M,D_0}=N^{-3}\mathscr A_{M,D_0}(\sqrt N)+O(N^{-13/4}).
+\]
+
+La propia clasificación de C2c controla uniformemente el coeficiente líder
+en el alcance congelado; por tanto cada uno de esos cuatro pares satisface
+`L_{PP,N}=O(N^{-3})`, y en particular `L_{PP,N}->0`. Insertando (C3.4)–(C3.6) en
 (C3.3),
 \[
 \boxed{
