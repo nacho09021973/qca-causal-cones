@@ -1,30 +1,40 @@
-# Revisión DeepSeek/Gemini de C3
+# Revisión DeepSeek/Gemini de C3 reparado
 
-**Fecha:** 2026-09-23  
-**Objeto:** `theory/IR_C3_CONDITIONING_GATE.md` y `reports/2026-09-23--c3-conditioning-execution.md`  
-**Herramienta:** `sanedrin`, commit `1ce73d2` de `~/herramientas`  
+**Objeto:** `reports/2026-09-23--c3-conditioning-execution.md`  
+**Commit del objeto:** `479a25d6bb19c961abb386e53cbf3b7689811767`  
+**SHA256:** `030e2396a1f209ac9f86f8392d1c634f8175c5dd605fc22de3f24c10869118de`  
+**Herramienta:** Sanedrín `8162508e3bd0e3d05770b4dd544fe7c962d0272c`  
 **Miembros:** DeepSeek (ABNER) y Gemini  
-**Alcance:** revisión adversarial del contrato y de la ejecución C3; sin reabrir C2c, H1c ni E/AdS.
+**Herramientas compartidas:** `1ce73d26a5fc116c2ab83fa6f3b55d24f9110aa4`
 
 ## Veredictos
 
 | Obligación | Resultado |
 |---|---|
-| Identidad exacta de los estados condicionados y de `Lcond` | PASS |
-| Probabilidades de éxito `1` y `1-q_N` | PASS |
-| `q_N = D N^{-5/2}(1+O(N^{-1/2}))` | PASS |
-| `p_{0,N} -> p_infty > 0` para `M_B=I` | PASS |
-| Corrección `Lcond-LPP = D p_infty N^{-5/2}(1+o(1))` | INCOMPLETE |
-| Límites de alcance | PASS |
+| Estados condicionados, probabilidades e identidad exacta | PASS |
+| Identificación de `q_N`, cuatro encoders y `B=Phi_0(1/4)` | PASS |
+| `p_{0,N} -> p_infty > 0` con normalización de red y Lema 7.2 | PASS |
+| Corrección `Lcond-LPP = D p_infty N^{-5/2}(1+o(1))` | PASS |
+| Respeto del perímetro contractual | PASS |
 
-## Motivo de la incompletitud
+## Convergencia
 
-La ecuación de la corrección usa `LPP,N = O(N^{-3})` para cada uno de los cuatro encoders con `M_B=I`. La ejecución C3 invoca esa premisa desde C2c, pero no transcribe ni señala de forma explícita, por encoder, el control de resto que la hace disponible. La frase global de que C2c cubre dieciséis pares no basta por sí sola como evidencia documental de una cota individual.
+Ambos revisores emitieron `C3_PROOF_WRITTEN_REVIEW_ACCEPTED`. No queda
+desacuerdo vivo ni reparación bloqueante. Confirmaron que C2c §8 y (C16)
+cubren exactamente las cuatro filas `D_0=I` y que la cota superior
+`L_{PP,N}=O(N^{-3})` basta para C3.7; la cota inferior de (C15) no es
+necesaria para ese paso.
 
-El problema es de trazabilidad de la premisa externa, no un error algebraico interno en las identidades de condicionamiento.
+La revisión también comprobó que el control de la suma de Riemann es una
+premisa real: el error uniforme de Lema 7.2 produce un error `O(N^{-4})`
+por sitio en el cuadrado del campo, `O(N^3)` sitios y, por tanto,
+`p_{0,N}-p_infty=o(1)` (de hecho `O(N^{-1})` bajo las cotas usadas).
+La jerarquía `N^{-5/2} >> N^{-3}` por sí sola no sustituye ese control.
 
-## Veredicto global
+El líder de `Lcond`, `|Lcond|` y la comparación con la señal total `L`
+permanecen fuera del alcance contractual. La revisión no reabre C2c, H1c,
+FR1–FR3 ni E/AdS.
 
-`C3_INCOMPLETE`.
-
-La reparación queda acotada a una de estas dos vías: señalar en C3 la parte congelada de C2c que exhibe la cota `O(N^-3)` para los cuatro pares `D_0=I`, o demostrar dentro de C3 la cota suficiente `LPP,N=o(N^{-5/2})`. Hasta entonces C3 permanece `PROOF_WRITTEN / REVIEW_PENDING`. No se autoriza con esta revisión ninguna conclusión sobre el líder de `Lcond`, `|Lcond|`, la comparación con `L`, H1c o E/AdS.
+**Estado de revisión:** `C3_PROOF_WRITTEN_REVIEW_ACCEPTED`. La revisión
+independiente está completa; la promoción canónica de `state/CURRENT_STATE.md`
+sigue siendo una decisión separada del P.I.
