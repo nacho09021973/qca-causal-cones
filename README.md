@@ -16,6 +16,16 @@ The original strong identification `c_IR = maximum microscopic substrate speed` 
 
 Read [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) before doing new work. It is the single source of truth for project status, gates, rejected claims, and the next allowed calculation.
 
+## Literature library
+
+`biblioteca/` (git-ignored) holds the local PDFs. **Before investigating any question, read
+`biblioteca/INDICE.md`** (one line per PDF, with subject tags;
+`grep -i <topic|keyword> biblioteca/INDICE.md`) and check whether a paper can help. The index
+locates papers, it proves nothing: read the PDF and cite `file.pdf p.N`, otherwise mark the claim
+`[UNVERIFIED]`. Tags marked `proposed` were written by an AI. Regenerate the index with
+`python3 ~/herramientas/biblioteca_catalog/build_catalog.py --repo .` after editing
+`scripts/biblioteca_catalog/curated.csv`.
+
 ## Method rule
 
 No result is promoted from exploratory to canonical merely because it fits the current narrative. Every claimed identity must be checked against the exact QCA geometry, exact unitary spectrum, and the appropriate low-energy expansion.
