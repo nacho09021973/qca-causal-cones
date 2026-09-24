@@ -1,6 +1,6 @@
 # T3: parada del test de cancelación
 
-Fecha: 2026-09-24. Estado: `STOP_GATE_TRIGGERED / CANCELLATION_TEST_NOT_EXECUTED`.
+Fecha: 2026-09-24. Estado: `STOPPED_NO_SIGNED_TERM`.
 Prerrequisito T2: completado en
 `reports/2026-09-24--two-channel-t2-trace.md`.
 

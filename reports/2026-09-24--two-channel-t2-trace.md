@@ -1,6 +1,6 @@
 # T2: trazabilidad del techo \(O(N^{-6})\) en las cinco piezas
 
-Fecha: 2026-09-24. Estado: `T2_TRACE_COMPLETE / TRANSFER_TO_CURRENT_RESPONSE_OPEN`.
+Fecha: 2026-09-24. Estado: `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`.
 Orden del usuario: después de la revisión independiente aceptada de T1,
 antes de T3. Esta nota sólo sigue cotas y escalas registradas. No prueba
 una asintótica, identifica un coeficiente ni busca cancelaciones.

@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-24
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence completed to its stop: T1 `INDEPENDENT_ADVERSARIAL_REVIEW_PASS` for the frozen model and admissible fixed W; T2 trace complete but transfer of `O(N^-6)` to the current responses OPEN; T3 stopped because no signed `N^-6` term or coefficient was identified. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. The quantitative bridge from the existing P/Q bounds to the ten physical endpoint pieces is not executed. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1639,7 +1639,7 @@ primary observable: (L_+, L_-)
 1. **T1 — exact signed P/Q lift:** derivation and frozen five-piece
    vocabulary in
    [`two-channel T1 report`](../reports/2026-09-24--two-channel-t1-exact-signed-pq.md).
-   Status: `T1_PASS`, reviewed by Claude Opus and DeepSeek V4-Pro in the
+   Status: `PASS`, reviewed by Claude Opus and DeepSeek V4-Pro in the
    deliberative session
    [`T1 re-review`](../debates/2026-09-24--two-channel-t1-rereview.md).
    This is independent agent review across two model families, not human
@@ -1648,17 +1648,20 @@ primary observable: (L_+, L_-)
 2. **T2 — trace of `O(N^-6)`:**
    [`T2 trace`](../reports/2026-09-24--two-channel-t2-trace.md) locates
    the old bound in the normalized auxiliary bilinear return correction.
-   It is a potential sub-contribution in the terminal-P linear slot
+   Status: `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`. It is a potential sub-contribution in the terminal-P linear slot
    `A_cP` for the earlier functional, conditional on matching its endpoint.
    No transfer to any of the ten current pieces is proved. The old
    `O(N^-6)` remains a coarse ceiling, not a signed term or coefficient.
-3. **T3 — cancellation:** the frozen stop applies because T2 isolated no
+3. **T3 — cancellation:** status `STOPPED_NO_SIGNED_TERM`. The frozen stop applies because T2 isolated no
    signed term or coefficient. No cancellation or symmetry search was
    performed; see [`T3 stop`](../reports/2026-09-24--two-channel-t3-stop.md).
 
 These records do not prove H1c or H1, promote preliminary localization
 prechecks, or alter C2/C3, E0, POWER_13/2_STABILITY, E/AdS, or the flat
 manuscript. Physical realization of the two channels remains OPEN.
+The next candidate question is whether bounds for all ten signed pieces
+can be derived from the physical endpoints \((r_c,d_{c,P},d_{c,Q})\).
+It is not executed or opened in this record.
 
 ## 10. IR spectral-attribution audit — 2026-09-22
 

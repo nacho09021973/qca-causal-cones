@@ -1,7 +1,8 @@
 # T1: lift exacto firmado de los dos canales al P/Q inclinado
 
 Fecha: 2026-09-24. Base inspeccionada: `d8ca7b285129b8b29a304e232195e29f20095526`.
-Estado: `T1_PROOF_WRITTEN / INDEPENDENT_ADVERSARIAL_REVIEW_PASS`.
+Estado: `T1: PASS`.
+Review status: `INDEPENDENT_ADVERSARIAL_REVIEW_PASS`.
 La revisión reparada de Claude Opus y DeepSeek V4-Pro acepta T1 en el
 contrato y el W fijado aquí. El expediente y sus límites están en
 `debates/2026-09-24--two-channel-t1-rereview.md`. El primer intento quedó
