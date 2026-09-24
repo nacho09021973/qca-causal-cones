@@ -1,0 +1,48 @@
+# Sanhedrin run log
+record:       2026-09-24--two-channel-t1-independent-review.md
+started:      2026-09-24T15:00:45Z
+command:      sanedrin -r 1 -m opus,gemini -i es -p 1600 -t 900 -q 1 -R /home/ignac/sanedrin/reglas/base.md -c reports/2026-09-24--two-channel-t1-exact-signed-pq.md -c reports/2026-09-24--h1c-return-kernel-schur-audit.md -c reports/2026-09-24--h1c-volterra-memory-kernel-precheck.md -c papers/ir-corona/ir-corona.tex -o debates/2026-09-24--two-channel-t1-independent-review.md debates/2026-09-24--two-channel-t1-review-request.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        debates/2026-09-24--two-channel-t1-review-request.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       1
+words/turn:   1600
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (1 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.281 (Claude Code)
+codex:        codex-cli 0.156.1
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   reports/2026-09-24--two-channel-t1-exact-signed-pq.md (1921 words)
+attachment:   reports/2026-09-24--h1c-return-kernel-schur-audit.md (2400 words)
+attachment:   reports/2026-09-24--h1c-volterra-memory-kernel-precheck.md (969 words)
+attachment:   papers/ir-corona/ir-corona.tex (7365 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-24T15:00:45Z  round 1 | CLAUDE OPUS | send | context 13792 words | access sellado
+2026-09-24T15:05:42Z  round 1 | CLAUDE OPUS | recv | 297s | 1082 words | ok
+2026-09-24T15:05:42Z  round 1 | GEMINI | send | context 14882 words | access sellado
+2026-09-24T15:05:43Z  retry 1 | GEMINI | intento 2/2
+2026-09-24T15:05:45Z  round 1 | GEMINI | recv | 3s | 43 words | FAILED
+2026-09-24T15:05:45Z  round Residuo | CLAUDE OPUS | send | context 14933 words | access sellado
+2026-09-24T15:05:59Z  round Residuo | CLAUDE OPUS | recv | 14s | 271 words | ok
+2026-09-24T15:05:59Z  round Residuo | GEMINI | send | context 15209 words | access sellado
+2026-09-24T15:06:00Z  retry Residuo | GEMINI | intento 2/2
+2026-09-24T15:06:02Z  round Residuo | GEMINI | recv | 3s | 43 words | FAILED
+2026-09-24T15:06:02Z  circuit-breaker | GEMINI | disabled after 2 failures
+2026-09-24T15:06:02Z  round Veredicto | CLAUDE OPUS | send | context 15318 words | access sellado
+2026-09-24T15:07:09Z  round Veredicto | CLAUDE OPUS | recv | 67s | 1121 words | ok
+2026-09-24T15:07:09Z  round Veredicto | CLAUDE OPUS | send | context 1553 words | access sellado
+2026-09-24T15:07:55Z  round Veredicto | CLAUDE OPUS | recv | 46s | 1147 words | ok
+2026-09-24T15:07:55Z  END | record: debates/2026-09-24--two-channel-t1-independent-review.md | wall clock 430s
