@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
-**Date:** 2026-09-23
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **ACTIVE RESEARCH LINE = H1-only reopening for the slowly inhomogeneous extension**: H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW, `H1c_LOCALIZATION (L') = OPEN`; H1 remains OPEN; E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
+**Date:** 2026-09-24
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Next gate: exact signed P/Q lift T1, then T2–T3, not executed. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1437,7 +1437,8 @@ observables). This scan does **not** assign a 4B terminal state.
 
 ## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)
 
-**Status: H1 OPEN. Active bottleneck: \`H1c_LOCALIZATION (L')\`.**
+**Status (2026-09-24): H1 OPEN; H1c localization unproved, work PAUSED.
+The operational contract is fixed in Sec. 9.6; the next gate is T1.**
 
 This update supersedes the older statement that physical-realization / absolute-scale
 Sec. 8.21 is the active line. The flat CJWW (5.15) operational IR-corona result
@@ -1507,6 +1508,10 @@ Therefore:
 This is a full-spinor absolute bound, not a cancellation or dominant-projection
 bound.
 
+**Scope at the 2026-09-24 freeze:** these are the inherited flat endpoint
+estimates. Their transfer to the two-channel response and its reference
+`U_N^N Phi_N` is not certified here; that trace belongs to T1–T2 in Sec. 9.6.
+
 ### 9.3 Local-window insertion and leakage gates
 
 Using the derivative selection rule and the endpoint bounds:
@@ -1537,10 +1542,13 @@ hopping matrices \(D_h\), not the full symbol \(D(z)\). Thus:
 \texttt{H1c_LOCALIZED = OPEN}.
 \]
 
-The sole active H1c bottleneck is:
+The unresolved localization statement recorded before the model freeze is:
 \[
 \boxed{\texttt{H1c_LOCALIZATION (L') = OPEN}}.
 \]
+
+Work on that asymptotic statement is **PAUSED** by the 2026-09-24 decision.
+Sec. 9.6 supersedes the immediate route below with an exact observable gate.
 
 A candidate momentum-space Dyson route has been formulated. Its key local
 selection factor is
@@ -1558,7 +1566,7 @@ condition
 \int_{\mathbb R^3}(1+|p|)|\widehat\vartheta(p)|\,dp<\infty.
 \]
 
-The desired \(n\)-insertion estimate is
+The historical candidate \(n\)-insertion estimate was
 \[
 e^{-N\varphi_*}|T_n|
 \le C N^{-13/2}\frac{(C'/N)^n}{n!}.
@@ -1570,6 +1578,12 @@ transitions among the eight saddle neighborhoods, and regions where the local
 Riesz splitting is unavailable. No momentum-conservation assumption may be
 smuggled into that proof.
 
+The [2026-09-24 Dyson precheck](../reports/2026-09-24--h1c-dyson-target-check.md)
+also challenges this target when `n` counts raw insertions and the fixed
+flat embedded endpoints are admitted. That precheck remains preliminary,
+without independent review; this freeze does not promote it or transfer
+its fixed-endpoint conclusion to the new physical response.
+
 ### 9.5 Locks
 
 The H1 reopening does not change:
@@ -1577,7 +1591,67 @@ The H1 reopening does not change:
 - \`POWER_13/2_STABILITY = OPEN_AT_STOP\`;
 - \`E / AdS = STOPPED_UNPROVEN\`.
 
-No further promotion is authorized until L' is proved and reviewed.
+No localization or H1 promotion is authorized without proof and review.
+The explicit operational model choice in Sec. 9.6 closes a contract only.
+
+### 9.6 H1c-0 close / two-channel operational model — 2026-09-24
+
+Direct user instruction freezes **TWO_DISTINGUISHABLE_CHANNELS** for this
+candidate extension. The complete contract, prior diagnostic stages and
+seven-report provenance are in the
+[Schur audit and operational close, §§6–8](../reports/2026-09-24--h1c-return-kernel-schur-audit.md).
+
+The one-particle space is `ell^2(Z^3) tensor C^2_channel tensor C^2_spin`.
+The blocks of `D=S direct-sum S^-1` are assumed to be distinguishable
+internal channels; `beta=sigma_x_channel tensor I_spin` exchanges them.
+Bob's ability to resolve the channel is part of the new assumption. The
+earlier repository did not derive this physical interpretation.
+
+Prepare `Phi_N=(phi_N,0)` and evolve
+`Psi_b=U_N^N mathcal U_M^(b) Phi_N=(psi_b^+,psi_b^-)`.
+At encoding, `U_M direct-sum U_M` and `U_M direct-sum I` agree on this
+preparation; they are not identified as physical operations on other states.
+Bob uses `F_+=E direct-sum 0`, `F_-=0 direct-sum E` and
+`F_empty=I_H-(E direct-sum E)`. The primary response is `(L_+,L_-)`,
+where `L_±=<psi_1^±,E psi_1^±>-<psi_0^±,E psi_0^±>` and
+`L_empty=-L_+-L_-`. `L_block=L_+` and `L_incl=L_++L_-` are only
+coarse-grainings; signed responses are summed before absolute values.
+
+For `vartheta=0`, `C_N=I` and `U_N^N(x,0)=(S^N x,0)`, so
+`(L_+,L_-)=(L_flat,0)` and `L_incl=L_flat` exactly. This flat control
+motivates the candidate; favorable asymptotics do not select its detector.
+Channels may retain quantum coherence; the three-outcome POVM does not
+reconstruct every coherence. Identification with a concrete physical
+system remains OPEN. All future extension claims are conditional on this
+contract, not universal claims about the original flat protocol. Neither
+coarse-graining may later replace the primary observable for better powers.
+
+```text
+H1c-0a mathematical doubled-walk contract: CLOSED
+H1c-0b operational model choice: FIXED_BY_EXPLICIT_ASSUMPTION
+physical realization/justification: OPEN
+Volterra/asymptotic localization: PAUSED
+primary observable: (L_+, L_-)
+```
+
+**Next session / 2026-09-25** — plan only, not executed:
+
+1. **T1:** derive the exact signed P/Q expressions for both responses from
+   the frozen POVM, without norm estimates. Retain quadratic cross terms;
+   do not assume `L_±=L_{±,P}+L_{±,Q}` or identify channels with P/Q.
+2. **T2, after T1:** trace the existing auxiliary `||mathbb M_N||=O(N^-1)`
+   and endpoint bounds to each signed contribution. Separate norm bounds,
+   actual asymptotic terms, cross terms and signed cancellations. The
+   current `O(N^-6)` is a coarse bound, with no isolated `E_6` coefficient.
+3. **T3, only after T1–T2:** test separately what survives or cancels in
+   `L_+`, `L_-` and their sum, without changing the primary observable.
+
+**STOP:** stop if T1 cannot produce an exact compatible signed observable.
+If T2 yields only a coarse bound without an identifiable coefficient, do
+not seek symmetries of a nonexistent term. No new analytical technique
+before T1–T3 close. The contract freeze does not prove H1c or H1, promote
+the preliminary prechecks, or alter C2c/C3, E0, POWER_13/2_STABILITY,
+E/AdS or the flat manuscript. This session closes with documentation only.
 
 ## 10. IR spectral-attribution audit — 2026-09-22
 
