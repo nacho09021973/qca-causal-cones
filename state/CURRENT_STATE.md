@@ -1365,7 +1365,9 @@ authorized. Fork 4A (a physical implementation of the walk that could
 test the derived law) is identified and **not chartered**. The authorized
 next front is Sec. 8.21.
 
-### 8.21 PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+### 8.21 PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE — AUTHORIZED (2026-09-17); EXECUTED (2026-09-25)
+
+`EXECUTION_AUTHORIZED_BY_DIRECT_USER_INSTRUCTION — 2026-09-25` («Pues vamos con el 8.21», 14:54 UTC). The status `NOT_EXECUTED` and the clause “Not authorized: execution of this gate” were correct as of 2026-09-17 and are superseded by that instruction.
 
 Contract
 [`PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE.md`](../theory/PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE.md)
@@ -1378,7 +1380,7 @@ audit. **Not a signalling gate, not a rate gate, not a Laplace-coefficient
 gate, not a laboratory-implementation gate (4A).**
 
 **Execution 2026-09-25:** `NO_ABSOLUTE_SCALE_DERIVABLE`.
-Evidence: `EXECUTED / PRELIMINARY / NO_INDEPENDENT_REVIEW`.
+Evidence: `EXECUTED / PRELIMINARY / PARTIAL_EXTERNAL_REVIEW`.
 [Execution report](../reports/2026-09-25--physical-realization-absolute-scale-gate.md).
 The frozen model fixes only `a/tau=c`; the targeted literature recheck supplies
 engineered simulators and external bounds on lattice spacing, but no absolute
@@ -1390,6 +1392,14 @@ but `a` remains undetermined. The terminal state is not
 `PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE`: no defensible physical map exists first.
 The Planck substitution is retained only as a diagnostic ASSUMPTION. 4A remains
 not chartered and Sec. 8.20 is unchanged.
+
+**4A authorization addendum — 2026-09-25.**
+`4A = AUTHORIZED_BY_DIRECT_USER_INSTRUCTION` by the user's later message
+«Pues lo autorizo» (2026-09-25, 15:35:40 UTC). This supersedes the
+`not chartered` status prospectively from that instruction only; the
+2026-09-17 statements remain historically correct. Authorization does not
+constitute a 4A design, execution, physical realization, or claim about
+nature. A separate 4A contract is still required before scientific work.
 
 Step 3 is **input**, not an object to re-optimize. The gate does **not**
 ask whether `δ_{M,M_B}(N) ≠ 0`. It asks whether a physically defensible
@@ -1424,8 +1434,8 @@ negative outcomes: `NO_ABSOLUTE_SCALE_DERIVABLE`,
 Binding separation: model closed ≠ nature established ≠ experiment designed.
 
 **Premises, not reopened:** `K_*`, `β`, `C(θ_N)`, the sixteen pairs, the
-conditional dictionary of Sec. 8.15. **Not authorized:** execution of
-this gate; fork 4A; a new signalling encoder, detector or geometry;
+conditional dictionary of Sec. 8.15. **Not authorized (as of 2026-09-17):** execution of
+this gate (superseded 2026-09-25, see above); fork 4A; a new signalling encoder, detector or geometry;
 re-optimizing `K_*` or `C`; treating `N → ∞` as `a, τ → 0`; using a
 Planck fiat as `DERIVED`.
 
@@ -1772,7 +1782,7 @@ unchanged.
 **Addendum 2026-09-25 — L2 A/B/C stop gate.**
 [`H1/L2 A-B-C stop gate`](../reports/2026-09-25--h1-l2-abc-stop-gate.md).
 Status: `L2_GATE = B / OPEN_BLOCKED_METHOD`;
-`EVIDENCE = PRELIMINARY_DECISION_AUDIT / NO_INDEPENDENT_REVIEW`.
+`EVIDENCE = PRELIMINARY_DECISION_AUDIT / PARTIAL_EXTERNAL_REVIEW`.
 The object is the `vartheta`-dependent physical terminal-P/stay remainder,
 not full `A_{+P}`. Its exact subtraction varies both endpoints. Available
 bounds leave the two displayed pieces at
