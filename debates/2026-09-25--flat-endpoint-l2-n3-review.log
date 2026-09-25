@@ -1,0 +1,52 @@
+# Sanhedrin run log
+record:       2026-09-25--flat-endpoint-l2-n3-review.md
+started:      2026-09-25T08:34:44Z
+command:      sanedrin -r 1 -m abner,gemini -i es -p 1600 -t 900 -q 1 -R /home/ignac/sanedrin/reglas/base.md -c debates/2026-09-25--flat-endpoint-l2-n3-derivation-DRAFT.md -c papers/ir-corona/ir-corona.tex -c reports/2026-09-17--regional-laplace-coefficient-gate.md -c reports/2026-09-17--scaled-ir-signaling-gate.md -c reports/2026-09-24--h1c-return-kernel-schur-audit.md -c reports/2026-09-24--h1c-exact-dyson-decomposition.md -c reports/2026-09-24--h1c-volterra-memory-kernel-precheck.md -c /tmp/claude-1000/-home-ignac-qca-causal-cones/3c111a78-8f97-4e46-a059-6b4da58da570/scratchpad/state/CURRENT_STATE.md -o debates/2026-09-25--flat-endpoint-l2-n3-review.md debates/2026-09-25--flat-endpoint-l2-n3-review-request.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        debates/2026-09-25--flat-endpoint-l2-n3-review-request.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       1
+words/turn:   1600
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (1 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.282 (Claude Code)
+codex:        codex-cli 0.156.1
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   debates/2026-09-25--flat-endpoint-l2-n3-derivation-DRAFT.md (566 words)
+attachment:   papers/ir-corona/ir-corona.tex (7365 words)
+attachment:   reports/2026-09-17--regional-laplace-coefficient-gate.md (4192 words)
+attachment:   reports/2026-09-17--scaled-ir-signaling-gate.md (4652 words)
+attachment:   reports/2026-09-24--h1c-return-kernel-schur-audit.md (2400 words)
+attachment:   reports/2026-09-24--h1c-exact-dyson-decomposition.md (1206 words)
+attachment:   reports/2026-09-24--h1c-volterra-memory-kernel-precheck.md (969 words)
+attachment:   /tmp/claude-1000/-home-ignac-qca-causal-cones/3c111a78-8f97-4e46-a059-6b4da58da570/scratchpad/state/CURRENT_STATE.md (12681 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-25T08:34:44Z  round 1 | ABNER | send | context 34859 words | access sellado
+2026-09-25T08:40:42Z  round 1 | ABNER | recv | 358s | 505 words | ok
+2026-09-25T08:40:42Z  round 1 | GEMINI | send | context 35372 words | access sellado
+2026-09-25T08:40:42Z  retry 1 | GEMINI | intento 2/2
+2026-09-25T08:40:45Z  round 1 | GEMINI | recv | 3s | 43 words | FAILED
+2026-09-25T08:40:45Z  round Residuo | ABNER | send | context 35422 words | access sellado
+2026-09-25T08:41:05Z  round Residuo | ABNER | recv | 20s | 144 words | ok
+2026-09-25T08:41:05Z  round Residuo | GEMINI | send | context 35571 words | access sellado
+2026-09-25T08:41:05Z  retry Residuo | GEMINI | intento 2/2
+2026-09-25T08:41:08Z  round Residuo | GEMINI | recv | 3s | 43 words | FAILED
+2026-09-25T08:41:08Z  circuit-breaker | GEMINI | disabled after 2 failures
+2026-09-25T08:41:08Z  round Veredicto | ABNER | send | context 35679 words | access sellado
+2026-09-25T08:41:46Z  round Veredicto | ABNER | recv | 38s | 449 words | ok
+2026-09-25T08:41:46Z  round Veredicto | ABNER | send | context 877 words | access sellado
+2026-09-25T08:42:38Z  round Veredicto | ABNER | recv | 52s | 445 words | ok
+2026-09-25T08:42:38Z  END | record: debates/2026-09-25--flat-endpoint-l2-n3-review.md | wall clock 474s

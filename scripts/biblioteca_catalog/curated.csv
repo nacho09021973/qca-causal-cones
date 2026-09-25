@@ -1,0 +1,19 @@
+# Curated fields for the shared engine ~/herramientas/biblioteca_catalog/build_catalog.py. One row per document (path relative to biblioteca/).
+# status: proposed = written by an AI from the literal title/filename, NOT reviewed by the user
+#         confirmed = reviewed by the user. Change to `confirmed` only after review.
+# tags: ';'-separated; each must exist in tags.csv (the controlled vocabulary).
+# title: only when the automatic title is wrong or unreadable (restored from the literal p.1 text).
+# purpose: only with a verifiable source, cited in the field.
+path,title,tags,purpose,status
+1312.2852v1.pdf,,qw-dirac-weyl;espaciotiempo-curvo-lorentz,,proposed
+1609.00305v2.pdf,,qw-dirac-weyl;espaciotiempo-curvo-lorentz,,proposed
+1708.00826v2.pdf,,qw-dirac-weyl,,proposed
+Derivation of the Dirac Equation from Principles of Information Processing.pdf,,qw-dirac-weyl;info-cuantica,,proposed
+Dirac and Weyl Equations on a Lattice as Quantum Cellular Automata.pdf,,qw-dirac-weyl;qca-fundamentos,,proposed
+EXPONENTIAL_TAIL_ESTIMATES_FOR_QUANTUM_LATTICE_DYNAMICS.pdf,,lieb-robinson,,proposed
+Lieb-Robinson bounds and the generation of correlations.pdf,,lieb-robinson,,proposed
+Maximal-velocity deficit under a finite-support_cn.pdf,,lieb-robinson,,proposed
+Quantum Cellular Automaton Theory of Light.pdf,,qca-fundamentos;qw-dirac-weyl,,proposed
+"Quantum Walks, Weyl equation and the Lorentz group.pdf",,qw-dirac-weyl;espaciotiempo-curvo-lorentz,,proposed
+review of Quantum Cellular Automata.pdf,,qca-fundamentos,,proposed
+Theory of Quantum Information.pdf,,info-cuantica,,proposed

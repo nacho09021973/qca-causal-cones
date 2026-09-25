@@ -1,0 +1,50 @@
+# Sanhedrin run log
+record:       2026-09-23--c2c-deepseek-gemini-review.md
+started:      2026-09-23T09:55:33Z
+command:      sanedrin -r 2 -m abner,gemini --secuencial --timeout 900 --reintentos 1 -i es -o debates/2026-09-23--c2c-deepseek-gemini-review.md -c reports/2026-09-22--c2c-structural-scope.md -c theory/IR_C2C_REPAIRED_REVIEW_CRITERIA.md -c theory/IR_C2C_STRUCTURAL_SCOPE_GATE.md -c reports/2026-09-22--c2a-oscillatory-transfer.md -c reports/2026-09-22--c2-projected-response-representation.md Revisión adversarial de C2c reparado. Audita únicamente el objeto fijado y sus reparaciones: transferencia a detectores D distinto de I y a los cuatro espinores, conservación de los órdenes y cruces de banda, no anulación C14, clasificación a lo sumo ocho familias y alcance preciso de §9.2. Emite veredictos por fila/nivel S3, C1 y §9.2. No reabras C3, E/AdS ni FR1–FR3. No uses N=24/40, L-L_PP, Teorema 4.4, simulación, cuadratura ni barridos.
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        (tema en línea de órdenes)
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       2
+words/turn:   500
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (2 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.280 (Claude Code)
+codex:        codex-cli 0.155.1
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   reports/2026-09-22--c2c-structural-scope.md (4997 words)
+attachment:   theory/IR_C2C_REPAIRED_REVIEW_CRITERIA.md (380 words)
+attachment:   theory/IR_C2C_STRUCTURAL_SCOPE_GATE.md (1145 words)
+attachment:   reports/2026-09-22--c2a-oscillatory-transfer.md (2571 words)
+attachment:   reports/2026-09-22--c2-projected-response-representation.md (1408 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-23T09:55:33Z  round 1 | ABNER | send | context 11074 words | access sellado
+2026-09-23T09:59:58Z  round 1 | ABNER | recv | 265s | 443 words | ok
+2026-09-23T09:59:58Z  round 1 | GEMINI | send | context 11525 words | access sellado
+2026-09-23T10:01:39Z  round 1 | GEMINI | recv | 101s | 445 words | ok
+2026-09-23T10:01:39Z  round 2 | ABNER | send | context 11973 words | access sellado
+2026-09-23T10:08:51Z  round 2 | ABNER | recv | 432s | 253 words | ok
+2026-09-23T10:08:51Z  round 2 | GEMINI | send | context 12231 words | access sellado
+2026-09-23T10:09:12Z  round 2 | GEMINI | recv | 21s | 200 words | ok
+2026-09-23T10:09:12Z  round Residuo | ABNER | send | context 12440 words | access sellado
+2026-09-23T10:09:52Z  round Residuo | ABNER | recv | 40s | 153 words | ok
+2026-09-23T10:09:52Z  round Residuo | GEMINI | send | context 12598 words | access sellado
+2026-09-23T10:10:10Z  round Residuo | GEMINI | recv | 18s | 174 words | ok
+2026-09-23T10:10:10Z  round Veredicto | ABNER | send | context 12818 words | access sellado
+2026-09-23T10:11:10Z  round Veredicto | ABNER | recv | 60s | 363 words | ok
+2026-09-23T10:11:10Z  round Veredicto | ABNER | send | context 791 words | access sellado
+2026-09-23T10:11:41Z  round Veredicto | ABNER | recv | 31s | 365 words | ok
+2026-09-23T10:11:41Z  END | record: debates/2026-09-23--c2c-deepseek-gemini-review.md | wall clock 968s

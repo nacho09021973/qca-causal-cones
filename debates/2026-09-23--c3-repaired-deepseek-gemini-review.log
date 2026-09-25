@@ -1,0 +1,54 @@
+# Sanhedrin run log
+record:       2026-09-23--c3-repaired-deepseek-gemini-review.md
+started:      2026-09-23T11:46:31Z
+command:      sanedrin -r 2 -m abner,gemini -p 900 --timeout 900 --reintentos 1 -i es -o debates/2026-09-23--c3-repaired-deepseek-gemini-review.md -c theory/IR_C3_CONDITIONING_GATE.md -c reports/2026-09-23--c3-conditioning-execution.md -c papers/ir-corona/ir-corona.md -c reports/2026-09-22--ir-projection-leakage-and-conditioning.md -c reports/2026-09-22--c1-leakage-independent-review.md -c reports/2026-09-22--c2c-structural-scope.md -c reports/2026-09-23--c2c-independent-review.md -c state/CURRENT_STATE.md -c reports/2026-09-23--c3-astra-internal-review.md debates/2026-09-23--c3-repaired-deepseek-gemini-request.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        debates/2026-09-23--c3-repaired-deepseek-gemini-request.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       2
+words/turn:   900
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (2 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.280 (Claude Code)
+codex:        codex-cli 0.155.1
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   theory/IR_C3_CONDITIONING_GATE.md (258 words)
+attachment:   reports/2026-09-23--c3-conditioning-execution.md (724 words)
+attachment:   papers/ir-corona/ir-corona.md (7792 words)
+attachment:   reports/2026-09-22--ir-projection-leakage-and-conditioning.md (1679 words)
+attachment:   reports/2026-09-22--c1-leakage-independent-review.md (1664 words)
+attachment:   reports/2026-09-22--c2c-structural-scope.md (4997 words)
+attachment:   reports/2026-09-23--c2c-independent-review.md (389 words)
+attachment:   state/CURRENT_STATE.md (11930 words)
+attachment:   reports/2026-09-23--c3-astra-internal-review.md (1301 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-23T11:46:31Z  round 1 | ABNER | send | context 31672 words | access sellado
+2026-09-23T11:55:00Z  round 1 | ABNER | recv | 509s | 464 words | ok
+2026-09-23T11:55:00Z  round 1 | GEMINI | send | context 32144 words | access sellado
+2026-09-23T11:55:22Z  round 1 | GEMINI | recv | 22s | 218 words | ok
+2026-09-23T11:55:22Z  round 2 | GEMINI | send | context 32365 words | access sellado
+2026-09-23T11:56:02Z  round 2 | GEMINI | recv | 40s | 308 words | ok
+2026-09-23T11:56:02Z  round 2 | ABNER | send | context 32678 words | access sellado
+2026-09-23T11:57:44Z  round 2 | ABNER | recv | 102s | 585 words | ok
+2026-09-23T11:57:44Z  round Residuo | ABNER | send | context 33272 words | access sellado
+2026-09-23T11:58:07Z  round Residuo | ABNER | recv | 23s | 91 words | ok
+2026-09-23T11:58:07Z  round Residuo | GEMINI | send | context 33368 words | access sellado
+2026-09-23T11:58:23Z  round Residuo | GEMINI | recv | 16s | 186 words | ok
+2026-09-23T11:58:23Z  round Veredicto | ABNER | send | context 33600 words | access sellado
+2026-09-23T11:59:54Z  round Veredicto | ABNER | recv | 91s | 412 words | ok
+2026-09-23T11:59:54Z  round Veredicto | ABNER | send | context 840 words | access sellado
+2026-09-23T12:00:29Z  round Veredicto | ABNER | recv | 35s | 395 words | ok
+2026-09-23T12:00:29Z  END | record: debates/2026-09-23--c3-repaired-deepseek-gemini-review.md | wall clock 838s

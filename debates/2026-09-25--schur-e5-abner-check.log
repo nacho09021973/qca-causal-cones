@@ -1,0 +1,45 @@
+# Sanhedrin run log
+record:       2026-09-25--schur-e5-abner-check.md
+started:      2026-09-25T11:07:18Z
+command:      sanedrin -r 1 -m abner,opus --secuencial -i es -p 1800 -t 900 -q 1 -R /home/ignac/sanedrin/reglas/base.md -c reports/2026-09-25--schur-block-stability-repaired.md -c reports/2026-09-24--h1c-return-kernel-schur-audit.md -c reports/2026-09-24--two-channel-t1-exact-signed-pq.md -c papers/ir-corona/ir-corona.tex -o debates/2026-09-25--schur-e5-abner-check.md debates/2026-09-25--schur-e5-abner-check-request.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        debates/2026-09-25--schur-e5-abner-check-request.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       1
+words/turn:   1800
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (1 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.282 (Claude Code)
+codex:        codex-cli 0.157.0
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   reports/2026-09-25--schur-block-stability-repaired.md (1411 words)
+attachment:   reports/2026-09-24--h1c-return-kernel-schur-audit.md (2490 words)
+attachment:   reports/2026-09-24--two-channel-t1-exact-signed-pq.md (2825 words)
+attachment:   papers/ir-corona/ir-corona.tex (7365 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-25T11:07:19Z  round 1 | ABNER | send | context 14999 words | access sellado
+2026-09-25T11:15:18Z  round 1 | ABNER | recv | 479s | 728 words | ok
+2026-09-25T11:15:18Z  round 1 | CLAUDE OPUS | send | context 15736 words | access sellado
+2026-09-25T11:19:00Z  round 1 | CLAUDE OPUS | recv | 222s | 1245 words | ok
+2026-09-25T11:19:00Z  round Residuo | ABNER | send | context 16988 words | access sellado
+2026-09-25T11:19:45Z  round Residuo | ABNER | recv | 45s | 131 words | ok
+2026-09-25T11:19:45Z  round Residuo | CLAUDE OPUS | send | context 17125 words | access sellado
+2026-09-25T11:20:03Z  round Residuo | CLAUDE OPUS | recv | 18s | 171 words | ok
+2026-09-25T11:20:04Z  round Veredicto | ABNER | send | context 17342 words | access sellado
+2026-09-25T11:20:53Z  round Veredicto | ABNER | recv | 49s | 660 words | ok
+2026-09-25T11:20:53Z  round Veredicto | ABNER | send | context 1090 words | access sellado
+2026-09-25T11:22:01Z  round Veredicto | ABNER | recv | 68s | 644 words | ok
+2026-09-25T11:22:01Z  END | record: debates/2026-09-25--schur-e5-abner-check.md | wall clock 883s

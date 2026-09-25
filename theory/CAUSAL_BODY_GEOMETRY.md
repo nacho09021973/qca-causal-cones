@@ -81,3 +81,28 @@ The statement is geometric. It assumes:
 - containment of the IR velocity ball inside the microscopic causal body.
 
 Changing coordinates or the norm changes the numerical inradius. Therefore every comparison must freeze the physical embedding before computing `r_in`.
+
+## 6. Strict asymptotic support and `c_strict^iso` (added 2026-09-14)
+
+`C_micro = conv(N)` is the *one-step* body: it only records which average velocities are compatible with a single update. It says nothing about whether a given direction is actually reachable arbitrarily far after repeated coarse-graining in time — that depends on whether the relevant Fourier coefficients survive under repeated multiplication, not on `N` alone.
+
+For a homogeneous step `U(k) = sum_h e^{-ik.h} T_h` and `n >= 1`, let
+
+`S_n = {x : the Fourier coefficient of U^n at x is nonzero}`.
+
+Define the **strict asymptotic support function**
+
+`h_infty(n̂) = limsup_{n->infty} (1/n) max_{x in S_n} n̂.x`,
+
+and, with the origin fixed at the physically privileged rest point `v = 0`,
+
+`c_strict^iso = min_{||n̂||=1} h_infty(n̂)`.
+
+Since `S_n/n subseteq C_micro` for every `n` (each one-step displacement lies in `C_micro` by definition), `h_infty(n̂) <= h_C(n̂)` for every `n̂`, hence
+
+`c_strict^iso <= r_in(C_micro)`.
+
+This is the exact and general relation between the two objects: `r_in(C_micro)` is a provable *upper bound* on the strict asymptotic isotropic speed, not a definition of it, and the two need not coincide. A pure one-step shift by `h_0 != 0` (`S_n = {n h_0}`) gives `h_infty(n̂) = n̂.h_0` and `min_{n̂} h_infty(n̂) = -||h_0|| < 0`: there is no bidirectional isotropic cone centered at `v=0` at all, which "inradius" language silently assumes. Do not call `c_strict^iso` an inradius except where a separate argument shows the relevant body is centered and `c_strict^iso = r_in(C_micro)` exactly.
+
+The live hypothesis built on this object, `B_infty^*`, and the exact d=3 Pavia baseline in which `c_strict^iso = r_in(C_micro) = 1/sqrt(3)` is certified (not merely bounded), are in [`B_STAR_HYPOTHESIS.md`](B_STAR_HYPOTHESIS.md) and
+[`2026-09-14--strict-asymptotic-pavia-baseline.md`](../reports/2026-09-14--strict-asymptotic-pavia-baseline.md).

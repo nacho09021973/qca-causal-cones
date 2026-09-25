@@ -92,10 +92,21 @@ If the IR cone is isotropic and must fit inside `C_micro`, then
 
 `c_IR <= r_in(C_micro)`.
 
-The strongest isotropic cone compatible with the microscopic causal body has radius exactly `r_in`.
+The strongest isotropic cone compatible with the *one-step* microscopic causal body has radius exactly `r_in`.
 
-This motivates, but does not prove, the restricted hypothesis
+**Correction (2026-09-14):** `r_in(C_micro)` is only an upper bound, and it
+bounds the one-step body, not the propagation actually achievable after
+repeated time steps. The object that should be compared against `c_IR` is the
+*strict asymptotic* isotropic speed `c_strict^iso = min h_infty`, defined from
+the actual long-run Fourier support in
+[`CAUSAL_BODY_GEOMETRY.md`](CAUSAL_BODY_GEOMETRY.md) Sec. 6, which satisfies
+`c_strict^iso <= r_in(C_micro)` in general and need not be an "inradius" at
+all (a pure shift gives a negative value). The live hypothesis is therefore
 
-`B*: c_IR = r_in(C_micro)`.
+`B_infty^*: c_0 = c_strict^iso`,
 
+not the old `c_IR = r_in(C_micro)`. The standard Pavia Weyl family in d=3 is
+the one baseline where the two targets are certified to coincide exactly
+(`c_strict^iso = r_in = 1/sqrt(3)`); see
+[`2026-09-14--strict-asymptotic-pavia-baseline.md`](../reports/2026-09-14--strict-asymptotic-pavia-baseline.md).
 See `B_STAR_HYPOTHESIS.md` for current status.

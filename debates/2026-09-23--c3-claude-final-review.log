@@ -1,0 +1,50 @@
+# Sanhedrin run log
+record:       2026-09-23--c3-claude-final-review.md
+started:      2026-09-23T11:19:20Z
+command:      sanedrin -r 2 -m opus,gemini --secuencial --timeout 900 --reintentos 1 -i es -o debates/2026-09-23--c3-claude-final-review.md -c theory/IR_C3_CONDITIONING_GATE.md -c reports/2026-09-23--c3-conditioning-execution.md -c reports/2026-09-22--c2c-structural-scope.md -c papers/ir-corona/ir-corona.md -c state/CURRENT_STATE.md Revisión final de C3 tras el commit 2eb8b00. Claude es el revisor principal. Audita únicamente la identidad exacta de Lcond, q_N y éxito, la definición congelada de h_N y la suma de red que define p0_N, el límite p0_N -> p_infty>0, la importación C15-C16 para los cuatro pares D0=I y la conclusión C3.7. Comprueba que se retiró la falsa posibilidad de cancelación por órdenes. Mantén fuera de alcance el líder de Lcond, abs(Lcond), comparación con L, H1c y E/AdS. No uses N=24/40, simulaciones, cuadraturas ni barridos. Emite PASS/INCOMPLETE/FAIL por obligación y veredicto global C3_PROOF_WRITTEN_REVIEW_ACCEPTED, C3_REPAIR_REQUIRED, C3_FAIL o C3_INCOMPLETE. No modifiques archivos.
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        (tema en línea de órdenes)
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       2
+words/turn:   500
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (2 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.280 (Claude Code)
+codex:        codex-cli 0.155.1
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   theory/IR_C3_CONDITIONING_GATE.md (258 words)
+attachment:   reports/2026-09-23--c3-conditioning-execution.md (625 words)
+attachment:   reports/2026-09-22--c2c-structural-scope.md (4997 words)
+attachment:   papers/ir-corona/ir-corona.md (7792 words)
+attachment:   state/CURRENT_STATE.md (11930 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-23T11:19:21Z  round 1 | CLAUDE OPUS | send | context 26216 words | access sellado
+2026-09-23T11:23:26Z  round 1 | CLAUDE OPUS | recv | 245s | 459 words | ok
+2026-09-23T11:23:26Z  round 1 | GEMINI | send | context 26683 words | access sellado
+2026-09-23T11:24:09Z  round 1 | GEMINI | recv | 43s | 419 words | ok
+2026-09-23T11:24:09Z  round 2 | CLAUDE OPUS | send | context 27106 words | access sellado
+2026-09-23T11:24:11Z  round 2 | CLAUDE OPUS | recv | 2s | 28 words | QUOTA
+2026-09-23T11:24:11Z  circuit-breaker | CLAUDE OPUS | disabled after 1 failures
+2026-09-23T11:24:11Z  round 2 | GEMINI | send | context 27159 words | access sellado
+2026-09-23T11:24:32Z  round 2 | GEMINI | recv | 21s | 239 words | ok
+2026-09-23T11:24:32Z  skip Residuo | CLAUDE OPUS | circuit-breaker
+2026-09-23T11:24:32Z  round Residuo | GEMINI | send | context 27407 words | access sellado
+2026-09-23T11:24:48Z  round Residuo | GEMINI | recv | 16s | 185 words | ok
+2026-09-23T11:24:48Z  round Veredicto | GEMINI | send | context 27638 words | access sellado
+2026-09-23T11:25:13Z  round Veredicto | GEMINI | recv | 25s | 228 words | ok
+2026-09-23T11:25:13Z  round Veredicto | GEMINI | send | context 658 words | access sellado
+2026-09-23T11:25:27Z  round Veredicto | GEMINI | recv | 14s | 221 words | ok
+2026-09-23T11:25:27Z  END | record: debates/2026-09-23--c3-claude-final-review.md | wall clock 367s

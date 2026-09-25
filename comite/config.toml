@@ -1,0 +1,59 @@
+# Comité de qca-causal-cones — motor común en ~/herramientas/skills/comite.
+# Cada [[rol]] elige un arquetipo del catálogo común; su ancla específica del
+# proyecto está en comite/roles/<id>.md.
+
+proyecto = "qca-causal-cones"
+idioma = "español"
+salida = "reports/comite"
+contexto = "comite/contexto.md"
+
+# Derivados de PROJECT_INSTRUCTIONS.md §§1-7.
+guardarrailes = [
+  "NO_UNQUALIFIED_VMAX — nunca v_max sin cualificar; C_micro, V_causal^max, V_grp^max y c_IR son distintos (§3)",
+  "NO_EVIDENCE_PROMOTION — nada sube de PRELIMINARY a ESTABLISHED por encajar en la narrativa (§4)",
+  "NO_RIGIDITY_FROM_FINITE_SCAN — una búsqueda fallida, un barrido finito o un aislamiento local no prueban rigidez (§7)",
+  "NO_UNCHARTERED_GATE — sólo se trabaja en gates autorizados en state/CURRENT_STATE.md (§§2, 7)",
+  "NO_SCOPE_BROADENING — nada de causal sets, redes aleatorias, QCA interactuantes ni nuevas clases de sustrato (§1)",
+  "NO_NOVELTY_WITHOUT_PRIOR_ART — Bernstein y su teoría de igualdad son prior art; la novedad sigue OPEN (§6)",
+  "KEEP_QUANTIFIERS — dimensión interna, grupo/acción, representación, nodo/sector e irreducibilidad se congelan antes y se conservan en toda conclusión (§7)",
+]
+
+[[rol]]
+id = "matematico"
+arquetipo = "matematico"
+titulo = "Matemático (análisis asintótico y geometría convexa)"
+
+[[rol]]
+id = "fisico"
+arquetipo = "fisico"
+titulo = "Físico (QCA y límite relativista IR)"
+
+[[rol]]
+id = "logico"
+arquetipo = "logico_formal"
+titulo = "Lógico formal (cuantificadores y Lean)"
+
+[[rol]]
+id = "numerico"
+arquetipo = "analista_numerico"
+titulo = "Analista numérico (cálculo exacto frente a diagnóstico)"
+
+[[rol]]
+id = "falsificador"
+arquetipo = "falsificador"
+titulo = "Falsificador"
+
+[[rol]]
+id = "guardian"
+arquetipo = "guardian"
+titulo = "Guardián de gates y alcance"
+
+[[rol]]
+id = "literatura"
+arquetipo = "verificador_literatura"
+titulo = "Verificador de literatura"
+
+[[rol]]
+id = "novedad"
+arquetipo = "auditor_novedad"
+titulo = "Auditor de novedad"
