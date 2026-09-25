@@ -1,4 +1,4 @@
-# H1 / L2: gate A/B/C de parada sobre el resto terminal-P físico
+# H1 / L2: gate A/B/C de parada sobre la subcontribución stay del término terminal-P físico
 
 Fecha: 2026-09-25.
 
@@ -11,17 +11,25 @@ H1 = OPEN
 
 Este gate no demuestra que H1 sea falsa. Registra únicamente que, con las
 hipótesis congeladas y el aparato ya disponible, no se alcanza la escala
-necesaria para probar la estabilidad fuerte del término terminal-P físico.
+necesaria para probar la estabilidad fuerte de la subcontribución `stay` del término terminal-P físico.
 No se abre un nuevo lema de localización, no se ejecuta código numérico y no
 se añaden hipótesis sobre \`vartheta\`.
 
 ## 1. Objeto y regla preescrita
 
-El objeto es el resto dependiente de \`vartheta\` de la contribución
-terminal-P de \`A_{+P}\`, no \`A_{+P}\` completo. La abreviatura
-\`PP[vartheta]-PP[0]\` usada en la discusión significa aquí esta pieza física
-terminal-P/stay y no el observable \`Lpp\` de la Sec. 10.
+El objeto es el resto dependiente de `vartheta` de la **subcontribución `stay`**
+dentro del término terminal-P de `A_{+P}`, no el término terminal-P completo y
+no `A_{+P}` completo. T1 (14) da la identidad exacta
 
+\[
+x_N=x^{stay}+f_{Q,N}+(\mathbb M_Nx)_N.
+\]
+
+Por tanto, “terminar en P” incluye también entradas desde Q y excursiones
+`P→Q→P`; `stay` es únicamente `x^{stay}=\Phi_P(N,0)Ps`, la trayectoria que
+permaneció siempre en P. La abreviatura `PP[vartheta]-PP[0]` usada en esta
+discusión se refiere sólo al resto `stay`; no es el observable `Lpp` de la
+Sec. 10.
 La escala plana relevante es
 
 \[
@@ -36,6 +44,11 @@ Salidas:
   contraejemplo o equivalente que impide la subdominancia.
 
 ## 2. Cotas físicas disponibles
+
+**Identidad exacta de alcance.** La salida terminal-P completa es
+`x_N=x^{stay}+f_{Q,N}+(𝕄_Nx)_N`. Las dos cotas de este §2 controlan sólo la
+subcontribución `stay`. Los términos `f_{Q,N}` y `(𝕄_Nx)_N` no se absorben
+aquí; su revisión corresponde al hueco L3.
 
 El informe de transferencia de extremos registra la resta exacta de la pieza
 stay:
@@ -133,8 +146,8 @@ requiere una decisión explícita que acepte nueva maquinaria o hipótesis.
 **No comprobado por esta revisión:**
 - las derivaciones fuente de las dos cotas de §2 no se han reconstruido desde sus artefactos anteriores;
 - no se ha demostrado que no exista otra cancelación, identidad o representación capaz de cerrar A;
-- no se ha resuelto si el objeto denominado aquí “resto terminal-P” coincide exactamente con la pieza `stay` usada en la resta de §2.
+- se ha resuelto que “terminal-P” y `stay` **no coinciden**: `stay` es sólo el primer sumando de la salida terminal-P `x_N`; esta revisión no reconstruye las cotas separadas de `f_{Q,N}` ni `(𝕄_Nx)_N`, que pertenecen al hueco L3.
 
 **Pendiente:**
-- reconciliar documentalmente `terminal-P` frente a `stay`;
+- reconciliación documental `terminal-P`/`stay`: **RESUELTA**; `stay` es una subcontribución estricta de la salida terminal-P;
 - si se desea promoción por encima de `PARTIAL_EXTERNAL_REVIEW`, realizar una revisión independiente que remonte las dos cotas de §2 a sus fuentes.
