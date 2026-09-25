@@ -10,8 +10,12 @@ Volterra, T1–T3 ni las piezas lineales \(A_{cP},A_{cQ}\).
 \boxed{\texttt{N^{-3} ENDPOINT CLAIM: UNVERIFIED}}
 \]
 \[
-\boxed{\texttt{CURRENT CERTIFIED CHAIN: }N^{-6}}
+\boxed{\texttt{CURRENT CHAIN: }N^{-6}\texttt{ — PRELIMINARY}}
 \]
+
+`PRELIMINARY` porque la cadena depende de Schur (8), que no tiene revisión
+independiente, y porque no está transferida al observable de dos canales
+(T2: `BOUND_NOT_TRANSFERRED`). Solo es un recuento formal de potencias.
 
 ## Origen del agujero
 
@@ -21,7 +25,7 @@ cota Schur \(O(N^{-1})\), esa afirmación daba \(N^{-3}N^{-1}N^{-3}=N^{-7}\).
 La afirmación no tiene derivación ni fichero que la sustente. Por eso la
 cadena \(N^{-7}\) **no** existe como resultado.
 
-## Cadena certificada
+## Cadena actual (preliminar)
 
 `state/CURRENT_STATE.md` §9.2 certifica solo masas absolutas inclinadas
 \(O(N^{-5/2})\) por extremo. Esas masas son las de los extremos planos
@@ -31,7 +35,8 @@ Como
 \|x\|_{\ell^2}\le\|x\|_{\ell^1},
 \]
 esas masas son también cotas \(\ell^2\) válidas. Con
-`reports/2026-09-24--h1c-return-kernel-schur-audit.md` (8), la cadena es
+`reports/2026-09-24--h1c-return-kernel-schur-audit.md` (8), que está marcada
+`PRELIMINARY / SIN REVISIÓN INDEPENDIENTE`, la cadena formal es
 \[
 N^{-5/2}\,N^{-1}\,N^{-5/2}=N^{-6}
 \]
@@ -65,6 +70,10 @@ la norma usada coinciden con la norma \(\ell^\infty_tL^2_p\) de Schur (8).
 soporte efectivo }\gtrsim N\text{ uniformemente?}}
 \]
 
-Si la respuesta es no, la vía \(N^{-7}\) queda cerrada. Si es sí, hay que
-demostrarla desde cero antes de reabrir \(N^{-7}\). No se toca Schur,
+Si no hay dispersión suficiente **y además** \(\|x\|_{\ell^1}=\Theta(N^{-5/2})\),
+se cierra la vía \(N^{-7}\) por dispersión. Sigue abierta una mejora directa
+\(\|x\|_{\ell^1}=O(N^{-3})\), que implicaría de inmediato
+\(\|x\|_{\ell^2}=O(N^{-3})\) sin necesitar soporte efectivo \(\gtrsim N\).
+Si la respuesta es sí, hay que demostrarla desde cero antes de reabrir
+\(N^{-7}\). No se toca Schur,
 Volterra ni las cuatro piezas lineales hasta resolverla.
