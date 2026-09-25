@@ -283,12 +283,14 @@ Lemas que faltan:
   un `O(N^{-1})` con constante no controlada en `j` no basta. La alternativa
   puntual `sup_y‖r_c(y)‖=O(N^{-3/2})` sí lo da. Análogo de la unitariedad de
   `S(p)` en el toro, que aquí no aplica.
-- **L2** `[rev.]`. Sobre el **resto `ϑ`-dependiente** de `A_{+P}` (no sobre `A_{+P}`
+- **L2** `[rev.]`. Sobre el **resto `ϑ`-dependiente de la subcontribución `stay`**
+  dentro de `A_{+P}` (no sobre la salida terminal-P completa ni sobre `A_{+P}`
   completo): probar `o(N^{-13/2}e^{-K_*N})` incluyendo la variación de ambos
-  extremos (`δr` y `δx^{stay}`, no sólo `Φ_P−m^N`); pairing con localización
-  gaussiana (H1c_LOCALIZATION).
-- **L3** `[rev.]`. Revisión independiente de las sumas tipo Schur (7)–(8): `f_{Q,N}`,
-  `(𝕄_Nx)_N` y también `Σ_kG_Q(N,k+1)C_kx_k` (la cota `‖y_N‖=O(N^{-4})`).
+  extremos (`δr` y `δx^{stay}`, no sólo `Φ_P−m^N`). T1 (14) deja explícito que
+  `x_N=x^{stay}+f_{Q,N}+(𝕄_Nx)_N`; por tanto `stay` no es sinónimo de terminal-P.
+- **L3** `[rev.]`. Revisión independiente de las otras piezas terminal-P y de las
+  sumas tipo Schur (7)–(8): `f_{Q,N}`, `(𝕄_Nx)_N` y también
+  `Σ_kG_Q(N,k+1)C_kx_k` (la cota `‖y_N‖=O(N^{-4})`).
 
 ## 7. Conclusión
 
