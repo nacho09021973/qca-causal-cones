@@ -1783,8 +1783,11 @@ unchanged.
 [`H1/L2 A-B-C stop gate`](../reports/2026-09-25--h1-l2-abc-stop-gate.md).
 Status: `L2_GATE = B / OPEN_BLOCKED_METHOD`;
 `EVIDENCE = PRELIMINARY_DECISION_AUDIT / PARTIAL_EXTERNAL_REVIEW`.
-The object is the `vartheta`-dependent physical terminal-P/stay remainder,
-not full `A_{+P}`. Its exact subtraction varies both endpoints. Available
+The object is the `vartheta`-dependent physical `stay` sub-remainder inside
+the terminal-P contribution, not the full terminal-P output and not full
+`A_{+P}`. T1 (14) gives `x_N=x^stay+f_{Q,N}+(M_Nx)_N`; the latter two
+terminal-P pieces are separate L3 material. The exact `stay` subtraction
+varies both endpoints. Available
 bounds leave the two displayed pieces at
 `O_{W,Theta}(N^-5 e^{-K_*N})` and
 `O_{W,Theta}(N^-6 e^{-K_*N})`, above the flat leader scale
