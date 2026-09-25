@@ -1,0 +1,35 @@
+# Sanhedrin run log
+record:       2026-09-23--irreducible-d2-deepseek-gemini-review.md
+started:      2026-09-23T15:30:42Z
+command:      sanedrin -r 2 -m abner,gemini -i es -R /home/ignac/sanedrin/reglas/base.md -p 1800 -t 900 -q 1 -c reports/2026-09-23--irreducible-d2-pavia-checks.md -c scripts/verify_irreducible_d2_pavia.py -c reports/2026-09-23--irreducible-d2-pavia-verification.md -c debates/2026-09-23--irreducible-d2-p17-source.txt -c scripts/verify_weyl_dirac_gate.py -c theory/CAUSAL_BODY_GEOMETRY.md -o debates/2026-09-23--irreducible-d2-deepseek-gemini-review.md debates/2026-09-23--irreducible-d2-review-request.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        debates/2026-09-23--irreducible-d2-review-request.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       2
+words/turn:   1800
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (2 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.280 (Claude Code)
+codex:        codex-cli 0.155.1
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   reports/2026-09-23--irreducible-d2-pavia-checks.md (1780 words)
+attachment:   scripts/verify_irreducible_d2_pavia.py (937 words)
+attachment:   reports/2026-09-23--irreducible-d2-pavia-verification.md (4425 words)
+attachment:   debates/2026-09-23--irreducible-d2-p17-source.txt (13007 words)
+attachment:   scripts/verify_weyl_dirac_gate.py (1862 words)
+attachment:   theory/CAUSAL_BODY_GEOMETRY.md (631 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-23T15:30:42Z  round 1 | ABNER | send | context 23738 words | access sellado
