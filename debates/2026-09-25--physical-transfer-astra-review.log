@@ -1,0 +1,51 @@
+# Sanhedrin run log
+record:       2026-09-25--physical-transfer-astra-review.md
+started:      2026-09-25T11:50:34Z
+command:      sanedrin -r 1 -m astra,ciro --secuencial -i es -p 1800 -t 900 -q 1 -R /home/ignac/sanedrin/reglas/base.md -c reports/2026-09-25--physical-linear-endpoint-transfer-gate.md -c reports/2026-09-25--schur-block-stability-repaired.md -c reports/2026-09-25--flat-endpoint-l2-n3.md -c reports/2026-09-24--two-channel-t1-exact-signed-pq.md -c reports/2026-09-24--two-channel-t2-trace.md -c reports/2026-09-24--two-channel-reconstruction-operator-norms.md -c reports/2026-09-24--h1c-exact-dyson-decomposition.md -c reports/2026-09-20--h1-inhomogeneous-localization-reconstruction.md -c papers/ir-corona/ir-corona.tex -o debates/2026-09-25--physical-transfer-astra-review.md debates/2026-09-25--physical-transfer-astra-review-request.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        debates/2026-09-25--physical-transfer-astra-review-request.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       1
+words/turn:   1800
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (1 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.282 (Claude Code)
+codex:        codex-cli 0.157.0
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   reports/2026-09-25--physical-linear-endpoint-transfer-gate.md (1961 words)
+attachment:   reports/2026-09-25--schur-block-stability-repaired.md (1899 words)
+attachment:   reports/2026-09-25--flat-endpoint-l2-n3.md (670 words)
+attachment:   reports/2026-09-24--two-channel-t1-exact-signed-pq.md (2825 words)
+attachment:   reports/2026-09-24--two-channel-t2-trace.md (1594 words)
+attachment:   reports/2026-09-24--two-channel-reconstruction-operator-norms.md (1371 words)
+attachment:   reports/2026-09-24--h1c-exact-dyson-decomposition.md (1206 words)
+attachment:   reports/2026-09-20--h1-inhomogeneous-localization-reconstruction.md (1025 words)
+attachment:   papers/ir-corona/ir-corona.tex (7365 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-25T11:50:36Z  round 1 | ASTRA | send | context 20843 words | access sellado
+2026-09-25T11:53:15Z  round 1 | ASTRA | recv | 159s | 1039 words | ok
+2026-09-25T11:53:15Z  round 1 | CIRO | send | context 21890 words | access sellado
+2026-09-25T11:57:01Z  round 1 | CIRO | recv | 226s | 1085 words | ok
+2026-09-25T11:57:01Z  round Residuo | ASTRA | send | context 22982 words | access sellado
+2026-09-25T11:57:04Z  round Residuo | ASTRA | recv | 3s | 93 words | QUOTA
+2026-09-25T11:57:04Z  circuit-breaker | ASTRA | disabled after 1 failures
+2026-09-25T11:57:04Z  round Residuo | CIRO | send | context 23099 words | access sellado
+2026-09-25T11:57:39Z  round Residuo | CIRO | recv | 35s | 176 words | ok
+2026-09-25T11:57:39Z  round Veredicto | CIRO | send | context 23321 words | access sellado
+2026-09-25T12:00:47Z  round Veredicto | CIRO | recv | 188s | 1475 words | ok
+2026-09-25T12:00:47Z  round Veredicto | CIRO | send | context 1905 words | access sellado
+2026-09-25T12:01:39Z  round Veredicto | CIRO | recv | 52s | 1517 words | ok
+2026-09-25T12:01:39Z  END | record: debates/2026-09-25--physical-transfer-astra-review.md | wall clock 665s
