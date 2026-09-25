@@ -141,13 +141,13 @@ requiere una decisión explícita que acepte nueva maquinaria o hipótesis.
 - la salida B puede justificarse sólo con §2 y la regla A/B/C de §1;
 - \(N^{-5}\) y \(N^{-6}\) no alcanzan la escala \(o(N^{-13/2})\);
 - B es una obstrucción del método disponible, no una refutación de H1 ni una salida C;
-- el informe no necesita afirmar que `H1c_LOCALIZATION` sea la única vía posible.
+- el informe no necesita afirmar que `H1c_LOCALIZATION` sea la única vía posible;
+- T1 (14) resuelve que “terminal-P” y `stay` **no coinciden**: `stay` es sólo el primer sumando de la salida terminal-P `x_N`.
 
 **No comprobado por esta revisión:**
 - las derivaciones fuente de las dos cotas de §2 no se han reconstruido desde sus artefactos anteriores;
 - no se ha demostrado que no exista otra cancelación, identidad o representación capaz de cerrar A;
-- se ha resuelto que “terminal-P” y `stay` **no coinciden**: `stay` es sólo el primer sumando de la salida terminal-P `x_N`; esta revisión no reconstruye las cotas separadas de `f_{Q,N}` ni `(𝕄_Nx)_N`, que pertenecen al hueco L3.
+- esta revisión no reconstruye las cotas separadas de `f_{Q,N}` ni `(𝕄_Nx)_N`, que pertenecen al hueco L3.
 
 **Pendiente:**
-- reconciliación documental `terminal-P`/`stay`: **RESUELTA**; `stay` es una subcontribución estricta de la salida terminal-P;
 - si se desea promoción por encima de `PARTIAL_EXTERNAL_REVIEW`, realizar una revisión independiente que remonte las dos cotas de §2 a sus fuentes.
