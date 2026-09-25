@@ -72,3 +72,22 @@ either. The local Ollama inventory contains only
 deepseek-coder:6.7b-instruct (7B, Q4_0); the sanedrin documentation explicitly
 excludes this fallback from mathematical deliberation. It is not used as an
 independent certification substitute. Status: API_CREDENTIAL_REQUIRED.
+
+## Requested Grok, then Gemini fallback — 2026-09-25
+
+The user subsequently requested Grok first and Gemini if unavailable.
+The direct Grok CLI request (grok-4.5, candidate attached, tools disabled)
+failed immediately with exit 1 and “Not signed in”; no mathematical
+response was returned. The models diagnostic independently reports the
+session as unauthenticated, with no configured XAI_API_KEY fallback.
+
+The Gemini fallback has neither GEMINI_API_KEY nor GOOGLE_API_KEY configured,
+no Gemini CLI, and no local Gemini OAuth credentials in the checked standard
+locations. The fallback therefore cannot issue an authenticated review.
+No uncredentialed API request is counted as a review attempt or a verdict.
+
+A Grok device-authorization flow was initiated to let the user restore access.
+The user must complete authentication before a review can be sent. Its
+temporary code and any credentials are deliberately not stored here.
+Independent review remains pending; none of these access checks is a pass
+or rejection of the mathematical proof.
