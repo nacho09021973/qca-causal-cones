@@ -71,8 +71,8 @@ Para W admisible y fijo, T1 §2 da
 \(C_P(W)=\|P\|_{L^2\to L^2}<\infty\) y
 \(C_Q(W)=\|Q\|_{L^2\to L^2}<\infty\), independientes de N. Por (1),
 \[
-\boxed{\|E^{1/2}\mathcal V_cP\|\le C_P(W)m_N=O_{W,\Theta}(N^{-1}),\qquad
-\|E^{1/2}\mathcal V_cQ\|\le C_Q(W)m_N=O_{W,\Theta}(N^{-1}).}
+\boxed{\|E^{1/2}\mathcal V_cP\|\le C_P(W)m_N=O_W(N^{-1}),\qquad
+\|E^{1/2}\mathcal V_cQ\|\le C_Q(W)m_N=O_W(N^{-1}).}
 \tag{2}
 \]
 Vale para ambos canales. No se afirma una cota inferior para ninguna
@@ -120,7 +120,7 @@ afirmación sobre historias individuales. **[actualizado 2026-09-25]** La estabi
 independiente documentada (ABNER/DeepSeek `PASS`; Astra/Ciro
 `PASS_WITH_REPAIRS`, reparaciones aplicadas; ver
 `2026-09-25--schur-block-stability-repaired.md` §5), con
-\(O_{W,\Theta}(1)\) en lugar de \(O_{W,\Theta}(1)\). Esa revisión se limitó a
+\(O_{W,\Theta}(1)\) en lugar de \(O_W(1)\). Esa revisión se limitó a
 (4); (5), (6) y las cotas por pieza que usan t_N son consecuencias
 inmediatas de (2) y (4) que no se revisaron expresamente y conservan el
 rótulo `PRELIMINARY`. En
