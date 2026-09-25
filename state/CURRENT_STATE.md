@@ -1437,8 +1437,9 @@ observables). This scan does **not** assign a 4B terminal state.
 
 ## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)
 
-**Status (2026-09-24): H1 OPEN; H1c localization unproved, work PAUSED.
-The operational contract is fixed in Sec. 9.6; the next gate is T1.**
+**Status (2026-09-25): H1 OPEN; the Schur / physical-endpoint bridge is
+written but awaits independent review in Sec. 9.7. The operational contract is fixed
+in Sec. 9.6. The full H1c localization claim is not closed.**
 
 This update supersedes the older statement that physical-realization / absolute-scale
 Sec. 8.21 is the active line. The flat CJWW (5.15) operational IR-corona result
@@ -1661,7 +1662,50 @@ prechecks, or alter C2/C3, E0, POWER_13/2_STABILITY, E/AdS, or the flat
 manuscript. Physical realization of the two channels remains OPEN.
 The next candidate question is whether bounds for all ten signed pieces
 can be derived from the physical endpoints \((r_c,d_{c,P},d_{c,Q})\).
-It is not executed or opened in this record.
+It was not executed or opened at that freeze. The later direct user
+instruction and its narrowly scoped continuation are recorded in Sec. 9.7.
+
+### 9.7 Schur stability and the current physical endpoints — 2026-09-24
+
+Direct user instruction: repair the bottleneck and continue, with an explicit
+follow-up requiring a line-by-line check that both endpoints belong to the
+current two-channel protocol. This authorizes the estimate audit and the
+linear-piece reduction below; it does not assert a nonzero leading coefficient.
+
+Status: **PROOF_WRITTEN / INDEPENDENT_REVIEW_PENDING**. The
+[candidate proof and endpoint trace](../reports/2026-09-24--schur-stability-physical-transfer.md)
+retains the exact T1 definitions and fixed W. It distinguishes bounded real
+profiles (B) from the additional Fourier-moment hypothesis of Sec. 9.4 (F).
+The latter is not implied by boundedness or merely C1 regularity.
+Two external review executions timed out without a mathematical verdict;
+the [execution record](../reports/2026-09-25--schur-physical-bridge-review-status.md)
+records both failures. Neither is a pass, rejection or consensus. No review
+process remains running.
+
+The candidate establishes under B the full double Schur sum O_W(N^-1),
+uniform stability of the normalized product, and the reconstruction norm
+Theta(N^-1). Under F it proposes the stronger full propagator estimate
+||T^N - R^N|| = O_W(N^-1), where R = D_xi/Lambda. The complete physical
+Alice source s = Fourier H_xi J(U_M-I)phi_N and the actual Bob dual endpoint
+v_c = V_c^* E B pi_c U_N^N J phi_N both have L2 norm O(N^-3).
+The Bob estimate is derived from the real, inhomogeneous doubled evolution
+in Fourier L1, not inherited from the flat reference.
+
+Their product yields an absolute O_W(N^-7 exp(-K_*N)) linear error.
+The signed continuation keeps the current reference r_+:
+
+- A_+P = 2 Re <r_+, E S^N(U_M-I)phi_N> + O_W(N^-7 exp(-K_*N)).
+- A_+Q, A_-P, A_-Q = O_W(N^-7 exp(-K_*N)).
+- The sum of quadratic pieces in either channel is nonnegative and
+  O_W(N^-8 exp(-2K_*N)); there are three such pieces per channel.
+
+These are candidate estimates pending review. N^-7 is smaller than the
+flat benchmark N^-13/2, but no lower bound for the current signed functional
+is supplied. Its sign, coefficient and nonvanishing remain OPEN. This is
+a proposed repair of the missing bridge, not a novelty claim, not transfer
+of the flat Bob spinor, and not closure of H1/H1c, E0,
+POWER_13/2_STABILITY or E/AdS. T3's earlier cancellation stop is not converted
+into a cancellation result.
 
 ## 10. IR spectral-attribution audit — 2026-09-22
 
