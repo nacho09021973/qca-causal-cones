@@ -60,3 +60,15 @@ line at EOF was also removed. These are not repairs prompted by a reviewer.
 One completed reviewer from a different model family would be an independent
 agent review of the author, not a multi-member consensus or human review.
 Failed execution is never interpreted as a mathematical pass or rejection.
+
+## Requested DeepSeek review — 2026-09-25
+
+The user explicitly requested DeepSeek after the Claude attempts.
+The [DeepSeek request](../debates/2026-09-25--schur-physical-bridge-deepseek-request.md)
+is prepared. No DeepSeek review has been invoked: DEEPSEEK_API_KEY is not
+configured in the available environment or the wrapper configuration.
+No NVIDIA or OpenRouter credential was found in the checked configuration
+either. The local Ollama inventory contains only
+deepseek-coder:6.7b-instruct (7B, Q4_0); the sanedrin documentation explicitly
+excludes this fallback from mathematical deliberation. It is not used as an
+independent certification substitute. Status: API_CREDENTIAL_REQUIRED.
