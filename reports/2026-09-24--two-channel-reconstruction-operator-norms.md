@@ -99,28 +99,38 @@ las normas P=L² y Q=\(\|\cdot\|_*\), uniformemente para N grande,
 \|A_j\|\le1+C/N,\quad \|B_j\|,\|C_j\|\le C/N,
 \quad \|D_j\|_*\le\rho_2<1.
 \]
+(**[corregido 2026-09-25]** \(A_j\) sobre \(\operatorname{ran}P\), y los
+bloques como aplicaciones entre rangos; ver
+`2026-09-25--schur-block-stability-repaired.md`.)
 En la norma producto \(\|x\|_2+\|y\|_*\), la recurrencia T1 (13)
 queda acotada por \(1+C'/N\) paso a paso (absorbiendo la contracción
 \(\rho_2\) y los dos bloques cruzados \(O(N^{-1})\)). Iterar N pasos
 da una constante independiente de N. El dato inicial satisface
-\(\|Ps\|+\|Qs\|\le(C_P(W)+C_Q(W))\|s\|\). Por tanto
+\(\nu_0=\|Ps\|_2+\|Qs\|_*\le(C_P(W)+C_0(W)C_Q(W))\|s\|\)
+**[corregido 2026-09-25: la versión anterior, con \(C_P+C_Q\), ignoraba
+la constante \(C_0\) de la norma \(\|\cdot\|_*\)]**. Por tanto
 \[
-\boxed{\|t_N\|_2\le C_{\rm stab}(W,\vartheta)\|s\|_2
-=O_W(1).}
+\boxed{\|t_N\|_2\le C_{\rm stab}(W,\Theta)\|s\|_2
+=O_{W,\Theta}(1),\quad\|\vartheta\|_\infty\le\Theta.}
 \tag{4}
 \]
 Ésta es sólo estabilidad L² del producto ya normalizado, que sale de
 las cotas de bloques Schur; no es una nueva cota de memoria ni una
-afirmación sobre historias individuales. El informe Schur está rotulado
-`PRELIMINARY / SIN REVISIÓN INDEPENDIENTE`, por lo que (4), (5), (6) y
-las cotas por pieza que usan t_N heredan ese nivel de evidencia. En
+afirmación sobre historias individuales. **[actualizado 2026-09-25]** La estabilidad (4) tiene ahora revisión
+independiente documentada (ABNER/DeepSeek `PASS`; Astra/Ciro
+`PASS_WITH_REPAIRS`, reparaciones aplicadas; ver
+`2026-09-25--schur-block-stability-repaired.md` §5), con
+\(O_{W,\Theta}(1)\) en lugar de \(O_W(1)\). Esa revisión se limitó a
+(4); (5), (6) y las cotas por pieza que usan t_N son consecuencias
+inmediatas de (2) y (4) que no se revisaron expresamente y conservan el
+rótulo `PRELIMINARY`. En
 cambio (1) y (2) son cotas operatoriales directas de la definición
 geométrica, condicionadas sólo a W fijo y a la acotación P/Q de T1.
 
 De (2) y (4), para c=+ y c=-,
 \[
-\boxed{\|E^{1/2}\mathcal V_cPt_N\|=O_W(N^{-1}),\qquad
-\|E^{1/2}\mathcal V_cQt_N\|=O_W(N^{-1}).}
+\boxed{\|E^{1/2}\mathcal V_cPt_N\|=O_{W,\Theta}(N^{-1}),\qquad
+\|E^{1/2}\mathcal V_cQt_N\|=O_{W,\Theta}(N^{-1}).}
 \tag{5}
 \]
 Al volver a las amplitudes físicas,
