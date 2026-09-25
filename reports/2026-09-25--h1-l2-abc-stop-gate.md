@@ -5,7 +5,7 @@ Fecha: 2026-09-25.
 Estado:
 \`\`\`
 L2_GATE = B / OPEN_BLOCKED_METHOD
-EVIDENCE = PRELIMINARY_DECISION_AUDIT / NO_INDEPENDENT_REVIEW
+EVIDENCE = PRELIMINARY_DECISION_AUDIT / PARTIAL_EXTERNAL_REVIEW
 H1 = OPEN
 \`\`\`
 
@@ -79,14 +79,21 @@ del propagador. No decide A ni C para L2 físico.
 
 ## 4. Aplicación de la regla de parada
 
-Para mejorar \(N^{-5}\)/\(N^{-6}\) hasta
-\(o(N^{-13/2})\) en el resto físico hace falta precisamente la estructura que
-el expediente llama \`H1c_LOCALIZATION\`: localización gaussiana/fase y
-transporte a momento variable del elemento físico. Abrir esa prueba sería
-nueva maquinaria, que la regla de parada decidió no iniciar en este intento.
+El veredicto B se apoya únicamente en la comparación de escalas de §2. Las
+cotas disponibles para los dos sumandos del resto físico son
+\(O_{W,\Theta}(N^{-5}e^{-K_*N})\) y
+\(O_{W,\Theta}(N^{-6}e^{-K_*N})\), mientras que A exige
+\(o(N^{-13/2}e^{-K_*N})\). Por tanto, con el aparato actualmente
+establecido, A no está demostrada.
 
-No se reabre Schur (7)–(8), no se abre L1 ni L3 como ruta de rescate y no se
-convierte la observación de paridad \`Gamma\` en un frente nuevo.
+La regla preescrita de §1 clasifica este caso como B cuando las cotas
+disponibles no alcanzan la escala requerida. §3 registra resultados más finos
+existentes que no transfieren al objeto físico aquí considerado, pero este
+informe **no afirma que `H1c_LOCALIZATION` sea la única vía posible** para
+cerrar A. Una prueba futura podría usar otra estructura, cancelación o
+representación que no esté en el expediente actual.
+
+No se abre en este gate ninguna de esas vías adicionales.
 
 Por la regla preescrita:
 
@@ -112,3 +119,22 @@ Se detiene aquí el intento fuerte de L2. H1 permanece **OPEN** y el objetivo
 fuerte queda **OPEN/BLOCKED por el método actual**. Los huecos L1 y L3 no se
 abren como rutas de rescate. Cualquier reapertura de la supervivencia fuerte
 requiere una decisión explícita que acepte nueva maquinaria o hipótesis.
+
+## 7. Revisión externa parcial
+
+**Estado:** `PARTIAL_EXTERNAL_REVIEW`.
+
+**Comprobado por la revisión:**
+- la salida B puede justificarse sólo con §2 y la regla A/B/C de §1;
+- \(N^{-5}\) y \(N^{-6}\) no alcanzan la escala \(o(N^{-13/2})\);
+- B es una obstrucción del método disponible, no una refutación de H1 ni una salida C;
+- el informe no necesita afirmar que `H1c_LOCALIZATION` sea la única vía posible.
+
+**No comprobado por esta revisión:**
+- las derivaciones fuente de las dos cotas de §2 no se han reconstruido desde sus artefactos anteriores;
+- no se ha demostrado que no exista otra cancelación, identidad o representación capaz de cerrar A;
+- no se ha resuelto si el objeto denominado aquí “resto terminal-P” coincide exactamente con la pieza `stay` usada en la resta de §2.
+
+**Pendiente:**
+- reconciliar documentalmente `terminal-P` frente a `stay`;
+- si se desea promoción por encima de `PARTIAL_EXTERNAL_REVIEW`, realizar una revisión independiente que remonte las dos cotas de §2 a sus fuentes.
