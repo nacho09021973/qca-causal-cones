@@ -1,7 +1,7 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-24
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. The quantitative bridge from the existing P/Q bounds to the ten physical endpoint pieces is not executed. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, conditional on the unreviewed Schur block-stability estimates; the operator norm bound is direct, but vector/piece bounds are not independently reviewed; the review `debates/2026-09-24--two-channel-stability-review.md` gave `REPAIR_REQUIRED` (premise `||A_j|| <= 1 + C/N` as a norm bound of the P block, not yet repaired). No `E_6` or dominance claim. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
 **Branch-local state.** This file is reconciled on
 `research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
@@ -1659,9 +1659,29 @@ primary observable: (L_+, L_-)
 These records do not prove H1c or H1, promote preliminary localization
 prechecks, or alter C2/C3, E0, POWER_13/2_STABILITY, E/AdS, or the flat
 manuscript. Physical realization of the two channels remains OPEN.
-The next candidate question is whether bounds for all ten signed pieces
-can be derived from the physical endpoints \((r_c,d_{c,P},d_{c,Q})\).
-It is not executed or opened in this record.
+### 9.7 Physical reconstruction operator norms — 2026-09-24
+
+The initial endpoint-transfer audit is recorded in
+[`physical bound-transfer audit`](../reports/2026-09-24--two-channel-physical-bound-transfer-audit.md)
+and its first STOP was superseded by the explicit Bob reconstruction norm
+estimate in
+[`reconstruction operator norms`](../reports/2026-09-24--two-channel-reconstruction-operator-norms.md).
+The vector/piece bounds are PRELIMINARY, conditional on the unreviewed
+Schur block-stability lemma in §2. The operator norm bound in (1)–(2)
+of the report is direct from the defined Bob geometry and does not use
+that lemma. For W fixed, `||E^{1/2} V_c P t_N||` and
+`||E^{1/2} V_c Q t_N||` are `O_W(N^-1)` in both channels. Consequently
+the ten physical pieces have the upper bounds in the linked report:
+linear `O_W(N^-1 e^{-K_*N})`, quadratic `O_W(N^-2 e^{-2K_*N})`.
+These are upper bounds only; no signed leading term, matching lower
+bound, or dominance result is identified. The old `O(N^-6)` remains
+untransferred.
+
+Review: `debates/2026-09-24--two-channel-stability-review.md` (Opus +
+DeepSeek, one round) gave `REPAIR_REQUIRED`. Critical premise:
+`||A_j|| <= 1 + C/N` as a **norm** bound (not spectral radius) of the P
+block, not yet repaired. Statements 1-3 PASS; 4 conditional on (a)-(d); 5
+correct given 4. Bounds remain PRELIMINARY.
 
 ## 10. IR spectral-attribution audit — 2026-09-22
 
