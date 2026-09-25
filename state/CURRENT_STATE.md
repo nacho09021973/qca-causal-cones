@@ -1687,7 +1687,7 @@ that lemma. For W fixed and `||vartheta||_inf <= Theta`,
 `||E^{1/2} V_c P t_N||` and
 `||E^{1/2} V_c Q t_N||` are `O_{W,Theta}(N^-1)` in both channels. Consequently
 the ten physical pieces have the upper bounds in the linked report:
-linear `O_W(N^-1 e^{-K_*N})`, quadratic `O_W(N^-2 e^{-2K_*N})`.
+linear `O_{W,Theta}(N^-1 e^{-K_*N})`, quadratic `O_{W,Theta}(N^-2 e^{-2K_*N})`.
 These are upper bounds only; no signed leading term, matching lower
 bound, or dominance result is identified. The old `O(N^-6)` remains
 untransferred.
