@@ -350,7 +350,7 @@ on the twelve Pauli pairs (Sec. 8.20). The signal is
 `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. This is theoretical step 3
 of the physical line, closed inside the preregistered class. It is not
 `D_B > 0` for every QCA, not a claim about nature, and not a further
-signalling calculation. The authorized next front is Sec. 8.21.
+signalling calculation. Sec. 8.21 has now been executed with terminal state `NO_ABSOLUTE_SCALE_DERIVABLE` (preliminary, not independently reviewed).
 
 ## 7. GATE STATUS — only point (3) authorized by the user
 
@@ -1377,7 +1377,19 @@ Sec. 8.15 (`DIMENSIONAL_MAP_CONDITIONAL`) without reopening the `3/128`
 audit. **Not a signalling gate, not a rate gate, not a Laplace-coefficient
 gate, not a laboratory-implementation gate (4A).**
 
-**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.**
+**Execution 2026-09-25:** `NO_ABSOLUTE_SCALE_DERIVABLE`.
+Evidence: `EXECUTED / PRELIMINARY / NO_INDEPENDENT_REVIEW`.
+[Execution report](../reports/2026-09-25--physical-realization-absolute-scale-gate.md).
+The frozen model fixes only `a/tau=c`; the targeted literature recheck supplies
+engineered simulators and external bounds on lattice spacing, but no absolute
+scale or natural physical dictionary for the complete Sec. 8.20 CJWW protocol.
+A conditional SI restoration is possible, with centre separation
+`L_c=sqrt(3) a N` and
+`delta(L_c;a) ~ |C({L_c/(4a)})|(L_c/(sqrt(3)a))^-13/2 exp[-(K_*/sqrt(3))L_c/a]`,
+but `a` remains undetermined. The terminal state is not
+`PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE`: no defensible physical map exists first.
+The Planck substitution is retained only as a diagnostic ASSUMPTION. 4A remains
+not chartered and Sec. 8.20 is unchanged.
 
 Step 3 is **input**, not an object to re-optimize. The gate does **not**
 ask whether `δ_{M,M_B}(N) ≠ 0`. It asks whether a physically defensible
