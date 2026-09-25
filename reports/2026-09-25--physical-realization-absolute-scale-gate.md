@@ -6,7 +6,7 @@ Date: 2026-09-25.
 
 \`\`\`
 PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE = NO_ABSOLUTE_SCALE_DERIVABLE
-EVIDENCE = EXECUTED / PRELIMINARY / NO_INDEPENDENT_REVIEW
+EVIDENCE = EXECUTED / PRELIMINARY / PARTIAL_EXTERNAL_REVIEW
 4A = NOT_CHARTERED / NOT_EXECUTED
 \`\`\`
 
@@ -32,7 +32,9 @@ Inherited without rederivation:
 \theta_N=\left\{\frac{\sqrt3\,N}{4}\right\},
 \]
 
-for the twelve frozen Pauli encoder–detector pairs, with
+for the twelve Pauli pairs \(M\in\{\sigma_1,\sigma_2,\sigma_3\}\) among the
+sixteen frozen encoder–detector pairs (the four \(M=I\) pairs are
+`REFERENCE_CONTROL`), with
 \(K_*=I(v_*)>0\), \(C(\theta_N)\) uniformly nonzero, and the geometry
 
 \[
@@ -262,11 +264,11 @@ The execution rechecked the literature scan against current sources.
 - C. Huerta Alderete et al., *Quantum walks and Dirac cellular automata on a
   programmable trapped-ion quantum computer*, **Nature Communications 11,
   3720 (2020)**, DOI **10.1038/s41467-020-17519-4**: engineered QW/DCA
-  simulator.
+  simulator (1+1D).
 - A. Suprano et al., *Photonic cellular automaton simulation of relativistic
   quantum fields: Observation of Zitterbewegung*, **Phys. Rev. Research 6,
   033136 (2024)**, DOI **10.1103/PhysRevResearch.6.033136**: engineered
-  photonic DQCA simulator.
+  photonic DQCA simulator (1+1D).
 - Leonard Mlodinow and Todd A. Brun, *Bounds on quantum cellular automaton
   lattice spacing from data on Lorentz violation*, **Phys. Rev. D 112,
   074513 (2025)**, published **23 October 2025**, DOI
@@ -314,3 +316,21 @@ This result means:
 - engineered realization remains a separate, unchartered 4A project.
 
 No further theoretical signalling gate is opened by this result.
+
+## 10. Revisión externa parcial
+
+**Estado:** `PARTIAL_EXTERNAL_REVIEW`.
+
+**Comprobado por la revisión:**
+- la sustitución de fase es coherente con \(\theta_N=\{\sqrt3 N/4\}\) y \(N=L_c/(\sqrt3 a)\), por lo que \(\theta_N=\{L_c/(4a)\}\);
+- la referencia de Mlodinow–Brun corresponde a *Phys. Rev. D* **112**, 074513 (2025), arXiv:2506.20136, y su uso aquí es como cota superior sobre el espaciado de otro QCA, no como determinación de \(a\) para CJWW (5.15);
+- los dos experimentos de emulación citados son realizaciones 1+1D y no constituyen una identificación natural 3D del protocolo congelado;
+- dieciséis pares congelados = doce pares Pauli más cuatro pares \(M=I\) `REFERENCE_CONTROL`; la ley de señalización reclamada se refiere a los doce pares Pauli.
+
+**No comprobado por esta revisión:**
+- no se ha hecho una auditoría bibliográfica exhaustiva que pruebe la ausencia de toda realización natural posible;
+- no se ha reabierto ni revisado de nuevo el teorema heredado de §8.20;
+- no se ha construido un diccionario físico nuevo ni un diseño experimental 4A.
+
+**Pendiente:**
+- una revisión independiente completa del gate 8.21 si se quiere elevar el estado por encima de `PARTIAL_EXTERNAL_REVIEW`.
