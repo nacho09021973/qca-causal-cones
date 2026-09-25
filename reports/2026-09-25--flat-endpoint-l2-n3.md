@@ -128,7 +128,11 @@ controla (T2).
 - **La cuenta \(N^{-3}\cdot N^{-1}\cdot N^{-3}\) no está instalada en ninguna
   pieza firmada del contrato actual.** T2 es `BOUND_NOT_TRANSFERRED`, T3 es
   `STOPPED_NO_SIGNED_TERM`, el extremo de Bob del observable es \(r_c\) y no
-  \(w\), y Schur (8) es PRELIMINARY.
+  \(w\), y Schur (8) es PRELIMINARY. El traslado distinto de
+  `reports/2026-09-24--two-channel-reconstruction-operator-norms.md`
+  (`CURRENT_STATE` §9.7) usa \(\|s\|\le2\) y el multiplicador de Bob, no esta
+  cota. Es PRELIMINARY y su revisión dio `REPAIR_REQUIRED`; esta nota no lo
+  modifica.
 - **Margen nulo.** Aunque se instalara, \(e^{-K_*N}N^{-7}\) coincide con el
   resto absoluto ya presente en el líder plano: informe regional §13,
   \(|R_N|\le C'N^{-1/2}\) sobre \(e^{-K_*N}N^{-13/2}\), con \(C'\) no explícita.
