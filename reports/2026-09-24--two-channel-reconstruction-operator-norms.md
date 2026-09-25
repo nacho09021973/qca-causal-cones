@@ -99,34 +99,44 @@ las normas P=L² y Q=\(\|\cdot\|_*\), uniformemente para N grande,
 \|A_j\|\le1+C/N,\quad \|B_j\|,\|C_j\|\le C/N,
 \quad \|D_j\|_*\le\rho_2<1.
 \]
+(**[corregido 2026-09-25]** \(A_j\) sobre \(\operatorname{ran}P\), y los
+bloques como aplicaciones entre rangos; ver
+`2026-09-25--schur-block-stability-repaired.md`.)
 En la norma producto \(\|x\|_2+\|y\|_*\), la recurrencia T1 (13)
 queda acotada por \(1+C'/N\) paso a paso (absorbiendo la contracción
 \(\rho_2\) y los dos bloques cruzados \(O(N^{-1})\)). Iterar N pasos
 da una constante independiente de N. El dato inicial satisface
-\(\|Ps\|+\|Qs\|\le(C_P(W)+C_Q(W))\|s\|\). Por tanto
+\(\nu_0=\|Ps\|_2+\|Qs\|_*\le(C_P(W)+C_0(W)C_Q(W))\|s\|\)
+**[corregido 2026-09-25: la versión anterior, con \(C_P+C_Q\), ignoraba
+la constante \(C_0\) de la norma \(\|\cdot\|_*\)]**. Por tanto
 \[
-\boxed{\|t_N\|_2\le C_{\rm stab}(W,\vartheta)\|s\|_2
-=O_W(1).}
+\boxed{\|t_N\|_2\le C_{\rm stab}(W,\Theta)\|s\|_2
+=O_{W,\Theta}(1),\quad\|\vartheta\|_\infty\le\Theta.}
 \tag{4}
 \]
 Ésta es sólo estabilidad L² del producto ya normalizado, que sale de
 las cotas de bloques Schur; no es una nueva cota de memoria ni una
-afirmación sobre historias individuales. El informe Schur está rotulado
-`PRELIMINARY / SIN REVISIÓN INDEPENDIENTE`, por lo que (4), (5), (6) y
-las cotas por pieza que usan t_N heredan ese nivel de evidencia. En
+afirmación sobre historias individuales. **[actualizado 2026-09-25]** La estabilidad (4) tiene ahora revisión
+independiente documentada (ABNER/DeepSeek `PASS`; Astra/Ciro
+`PASS_WITH_REPAIRS`, reparaciones aplicadas; ver
+`2026-09-25--schur-block-stability-repaired.md` §5), con
+\(O_{W,\Theta}(1)\) en lugar de \(O_W(1)\). Esa revisión se limitó a
+(4); (5), (6) y las cotas por pieza que usan t_N son consecuencias
+inmediatas de (2) y (4) que no se revisaron expresamente y conservan el
+rótulo `PRELIMINARY`. En
 cambio (1) y (2) son cotas operatoriales directas de la definición
 geométrica, condicionadas sólo a W fijo y a la acotación P/Q de T1.
 
 De (2) y (4), para c=+ y c=-,
 \[
-\boxed{\|E^{1/2}\mathcal V_cPt_N\|=O_W(N^{-1}),\qquad
-\|E^{1/2}\mathcal V_cQt_N\|=O_W(N^{-1}).}
+\boxed{\|E^{1/2}\mathcal V_cPt_N\|=O_{W,\Theta}(N^{-1}),\qquad
+\|E^{1/2}\mathcal V_cQt_N\|=O_{W,\Theta}(N^{-1}).}
 \tag{5}
 \]
 Al volver a las amplitudes físicas,
 \[
 \boxed{\|E^{1/2}d_{c,P}\|,
-\|E^{1/2}d_{c,Q}\|=O_W(N^{-1}e^{-K_*N}).}
+\|E^{1/2}d_{c,Q}\|=O_{W,\Theta}(N^{-1}e^{-K_*N}).}
 \tag{6}
 \]
 La fuente de la potencia \(N^{-1}\) es la norma del multiplicador
@@ -140,11 +150,11 @@ La unitariedad física y \(0\le E\le I\) dan
 \(\|E^{1/2}r_c\|\le1\). Aplicando Cauchy–Schwarz a las identidades
 exactas T1 (10a), sin cambiar los signos de las definiciones:
 \[
-|A_{cP}|,|A_{cQ}|=O_W(N^{-1}e^{-K_*N}),
+|A_{cP}|,|A_{cQ}|=O_{W,\Theta}(N^{-1}e^{-K_*N}),
 \]
 \[
-0\le B_{cPP},B_{cQQ}=O_W(N^{-2}e^{-2K_*N}),\qquad
-|B_{cPQ}|=O_W(N^{-2}e^{-2K_*N}),
+0\le B_{cPP},B_{cQQ}=O_{W,\Theta}(N^{-2}e^{-2K_*N}),\qquad
+|B_{cPQ}|=O_{W,\Theta}(N^{-2}e^{-2K_*N}),
 \quad c=+,-.
 \]
 Estas son cotas superiores uniformes en N para W fijo, **condicionales
@@ -155,16 +165,16 @@ identifican `LEADING_ASYMPTOTIC_TERM`. En particular, el operador bound no atrib
 
 | TERM | BOUND | SOURCE | ASSUMPTIONS | EXPONENTIAL_SCALE | POWER_OF_N | SIGNED_INFORMATION_RETAINED | LOST_BY_ABSOLUTE_VALUE | STATUS |
 |---|---|---|---|---|---|---|---|---|
-| `A_{+P}` | `O_W(N^-1 e^-K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; W fijo; Schur §2 | `e^-K*N` | `N^-1` upper only | `Re` en identidad | C–S pierde signo/fase | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `A_{+Q}` | `O_W(N^-1 e^-K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | igual; P→Q incluido; Schur §2 | `e^-K*N` | `N^-1` upper only | `Re` | C–S pierde signo/fase | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `B_{+PP}` | `O_W(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; W fijo; Schur §2 | `e^-2K*N` | `N^-2` upper only | no negativo exacto | cota no identifica tamaño | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `B_{+QQ}` | `O_W(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | igual; borde Q sin historia separada; Schur §2 | `e^-2K*N` | `N^-2` upper only | no negativo exacto | cota no identifica tamaño | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `B_{+PQ}` | `O_W(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; ambas salidas; Schur §2 | `e^-2K*N` | `N^-2` upper only | `Re` y signo | C–S pierde fase relativa | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `A_{-P}` | `O_W(N^-1 e^-K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; W fijo; Schur §2 | `e^-K*N` | `N^-1` upper only | `Re` en identidad | C–S pierde signo/fase | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `A_{-Q}` | `O_W(N^-1 e^-K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | igual; P→Q incluido; Schur §2 | `e^-K*N` | `N^-1` upper only | `Re` | C–S pierde signo/fase | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `B_{-PP}` | `O_W(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; W fijo; Schur §2 | `e^-2K*N` | `N^-2` upper only | no negativo exacto | cota no identifica tamaño | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `B_{-QQ}` | `O_W(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | igual; borde Q sin historia separada; Schur §2 | `e^-2K*N` | `N^-2` upper only | no negativo exacto | cota no identifica tamaño | `PRELIMINARY_BOUNDS_TRANSFERRED` |
-| `B_{-PQ}` | `O_W(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; ambas salidas; Schur §2 | `e^-2K*N` | `N^-2` upper only | `Re` y signo | C–S pierde fase relativa | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `A_{+P}` | `O_{W,\Theta}(N^-1 e^-K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; W fijo; Schur §2 | `e^-K*N` | `N^-1` upper only | `Re` en identidad | C–S pierde signo/fase | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `A_{+Q}` | `O_{W,\Theta}(N^-1 e^-K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | igual; P→Q incluido; Schur §2 | `e^-K*N` | `N^-1` upper only | `Re` | C–S pierde signo/fase | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `B_{+PP}` | `O_{W,\Theta}(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; W fijo; Schur §2 | `e^-2K*N` | `N^-2` upper only | no negativo exacto | cota no identifica tamaño | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `B_{+QQ}` | `O_{W,\Theta}(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | igual; borde Q sin historia separada; Schur §2 | `e^-2K*N` | `N^-2` upper only | no negativo exacto | cota no identifica tamaño | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `B_{+PQ}` | `O_{W,\Theta}(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; ambas salidas; Schur §2 | `e^-2K*N` | `N^-2` upper only | `Re` y signo | C–S pierde fase relativa | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `A_{-P}` | `O_{W,\Theta}(N^-1 e^-K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; W fijo; Schur §2 | `e^-K*N` | `N^-1` upper only | `Re` en identidad | C–S pierde signo/fase | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `A_{-Q}` | `O_{W,\Theta}(N^-1 e^-K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | igual; P→Q incluido; Schur §2 | `e^-K*N` | `N^-1` upper only | `Re` | C–S pierde signo/fase | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `B_{-PP}` | `O_{W,\Theta}(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; W fijo; Schur §2 | `e^-2K*N` | `N^-2` upper only | no negativo exacto | cota no identifica tamaño | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `B_{-QQ}` | `O_{W,\Theta}(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | igual; borde Q sin historia separada; Schur §2 | `e^-2K*N` | `N^-2` upper only | no negativo exacto | cota no identifica tamaño | `PRELIMINARY_BOUNDS_TRANSFERRED` |
+| `B_{-PQ}` | `O_{W,\Theta}(N^-2 e^-2K*N)` upper bound, preliminary | (1)–(6), T1 (10a) | E efecto; ambas salidas; Schur §2 | `e^-2K*N` | `N^-2` upper only | `Re` y signo | C–S pierde fase relativa | `PRELIMINARY_BOUNDS_TRANSFERRED` |
 
 Memoria Q: ambas salidas P contienen entradas/retornos desde Q; la salida
 Q contiene Q inicial y las salidas desde P, con historia de retornos en

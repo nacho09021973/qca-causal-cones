@@ -1,0 +1,46 @@
+# Sanhedrin run log
+record:       2026-09-25--schur-repair-astra-review.md
+started:      2026-09-25T10:49:12Z
+command:      sanedrin -r 1 -m astra,ciro --secuencial -i es -p 1800 -t 900 -q 1 -R /home/ignac/sanedrin/reglas/base.md -c reports/2026-09-24--h1c-return-kernel-schur-audit.md -c reports/2026-09-24--two-channel-reconstruction-operator-norms.md -c reports/2026-09-24--two-channel-t1-exact-signed-pq.md -c papers/ir-corona/ir-corona.tex -c state/CURRENT_STATE.md -o debates/2026-09-25--schur-repair-astra-review.md Instrucciones.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        Instrucciones.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       1
+words/turn:   1800
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (1 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.282 (Claude Code)
+codex:        codex-cli 0.157.0
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   reports/2026-09-24--h1c-return-kernel-schur-audit.md (2400 words)
+attachment:   reports/2026-09-24--two-channel-reconstruction-operator-norms.md (1313 words)
+attachment:   reports/2026-09-24--two-channel-t1-exact-signed-pq.md (2825 words)
+attachment:   papers/ir-corona/ir-corona.tex (7365 words)
+attachment:   state/CURRENT_STATE.md (12979 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-25T10:49:14Z  round 1 | ASTRA | send | context 27952 words | access sellado
+2026-09-25T10:50:54Z  round 1 | ASTRA | recv | 100s | 978 words | ok
+2026-09-25T10:50:54Z  round 1 | CIRO | send | context 28938 words | access sellado
+2026-09-25T10:56:32Z  round 1 | CIRO | recv | 338s | 823 words | ok
+2026-09-25T10:56:32Z  round Residuo | ASTRA | send | context 29768 words | access sellado
+2026-09-25T10:56:51Z  round Residuo | ASTRA | recv | 19s | 173 words | ok
+2026-09-25T10:56:51Z  round Residuo | CIRO | send | context 29946 words | access sellado
+2026-09-25T10:57:23Z  round Residuo | CIRO | recv | 32s | 111 words | ok
+2026-09-25T10:57:23Z  round Veredicto | ASTRA | send | context 30103 words | access sellado
+2026-09-25T10:58:00Z  round Veredicto | ASTRA | recv | 37s | 415 words | ok
+2026-09-25T10:58:00Z  round Veredicto | ASTRA | send | context 845 words | access sellado
+2026-09-25T10:58:30Z  round Veredicto | ASTRA | recv | 30s | 408 words | ok
+2026-09-25T10:58:30Z  END | record: debates/2026-09-25--schur-repair-astra-review.md | wall clock 558s

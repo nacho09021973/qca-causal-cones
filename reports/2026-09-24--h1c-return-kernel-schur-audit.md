@@ -98,6 +98,12 @@ matriz exterior sea no normal.
 En dimensión finita por fibra, el resolvente de la familia libre en
 una circunferencia `\rho_0<\rho_1<1` es uniformemente acotado en
 cada uno de los dos compactos (cierres de W y de su exterior).
+**[corregido 2026-09-25]** No se usa continuidad de la familia partida
+a través de `\partial W`: la cota sale por ramas (dentro de W, `M` es
+`(\lambda\Lambda)^{-1}Q`, con radio `\le\Lambda^{-1}`; en el compacto
+`T^3\setminus W`, que contiene `\partial W`, por `lem:specrad`) y por
+adjunta/determinante, sin diagonalizabilidad. Detalle en
+`2026-09-25--schur-block-stability-repaired.md` §3.
 Por la fórmula de Cauchy,
 \[
 \|(D_Q^{(0)})^h\|_{L^2\to L^2}
@@ -123,6 +129,12 @@ las normas P=`L^2`, Q=`\|\cdot\|_*`, los bloques exactos satisfacen
 La última desigualdad usa `|\lambda(p)|/\Lambda\le1` en W.
 Permite variación uniforme de la moneda entre pasos; no presume
 conservación del momento.
+**[corregido 2026-09-25]** `\|A_j\|_2\le1+C/N` es una cota de operador
+**sobre `\operatorname{ran}P`** (`A_jx=mx+P(\widehat C_N-I)mx`, `m=\lambda/\Lambda`
+escalar, `|m|\le1`), no sobre `L^2` entero; no se deduce de
+`\rho(A_j)\le1+C/N`. Las cotas de `B_j,C_j,D_j` se escriben como
+aplicaciones entre los rangos (`*\to2`, `2\to*`, `*\to*`). Nota
+reparada: `2026-09-25--schur-block-stability-repaired.md`.
 
 De (6) se obtiene directamente para el **retorno completo**
 \[
