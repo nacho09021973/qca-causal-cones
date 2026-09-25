@@ -12,7 +12,10 @@ FLAT_ENDPOINT_L2_N3_PASS — PRELIMINARY
 Revisión: sanedrín de una ronda, sin turnos fallidos, con veredicto
 `PASS_WITH_REPAIRS` por consenso. DeepSeek (abner) es el único revisor externo;
 Opus es de la misma familia que el autor. Acta:
-`debates/2026-09-25--flat-endpoint-l2-n3-review-opus-abner.md`. Las cuatro
+`debates/2026-09-25--flat-endpoint-l2-n3-review-opus-abner.md`. Hubo antes una
+ejecución **incompleta**, con DeepSeek y Gemini caído, que se conserva solo como
+registro y no como veredicto: `debates/2026-09-25--flat-endpoint-l2-n3-review.md`.
+Las cuatro
 reparaciones acordadas y la opcional sobre \(F_N\) están aplicadas aquí.
 
 **Esto no es `N^{-7} PROVED`.** Ver §6.
