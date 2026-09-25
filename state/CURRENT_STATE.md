@@ -1512,6 +1512,19 @@ bound.
 estimates. Their transfer to the two-channel response and its reference
 `U_N^N Phi_N` is not certified here; that trace belongs to T1–T2 in Sec. 9.6.
 
+**Addendum 2026-09-25 — tilted ℓ² norms of the flat endpoints.**
+[`flat-endpoint-l2-n3`](../reports/2026-09-25--flat-endpoint-l2-n3.md)
+derives, directly from the exact TeX profiles and without the ℓ¹ masses above,
+\(\|f\|_{\ell^2_{\rm tilt}},\|w\|_{\ell^2_{\rm tilt}}=O(N^{-3})\), with explicit
+constants, in the P-component of the norm used by Schur (8). Status:
+`FLAT_ENDPOINT_L2_N3_PASS — PRELIMINARY`. It was reviewed in one sanedrín
+round, `PASS_WITH_REPAIRS`, with the repairs applied; DeepSeek is the only
+reviewer outside the author's family. Scope: inherited flat endpoints only.
+Nothing is transferred to the two-channel contract or to `r_c`. The count
+`N^-3 · N^-1 · N^-3` is not installed in any signed piece, and its margin
+against the known `e^{-K_*N}N^{-7}` remainder of the flat leader is `N^0`.
+**This is not `N^-7 PROVED`.**
+
 ### 9.3 Local-window insertion and leakage gates
 
 Using the derivative selection rule and the endpoint bounds:
