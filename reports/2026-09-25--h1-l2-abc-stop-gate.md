@@ -3,17 +3,17 @@
 Fecha: 2026-09-25.
 
 Estado:
-\`\`\`
+```
 L2_GATE = B / OPEN_BLOCKED_METHOD
-EVIDENCE = PRELIMINARY_DECISION_AUDIT / PARTIAL_EXTERNAL_REVIEW
+EVIDENCE = PRELIMINARY_DECISION_AUDIT / PARTIAL_EXTERNAL_REVIEW + SOURCE_BOUNDS_REPRODUCED (§8)
 H1 = OPEN
-\`\`\`
+```
 
 Este gate no demuestra que H1 sea falsa. Registra únicamente que, con las
 hipótesis congeladas y el aparato ya disponible, no se alcanza la escala
 necesaria para probar la estabilidad fuerte de la subcontribución `stay` del término terminal-P físico.
 No se abre un nuevo lema de localización, no se ejecuta código numérico y no
-se añaden hipótesis sobre \`vartheta\`.
+se añaden hipótesis sobre `vartheta`.
 
 ## 1. Objeto y regla preescrita
 
@@ -37,7 +37,7 @@ L_{\rm lead}(N)\asymp N^{-13/2}e^{-K_*N}.
 \]
 
 Salidas:
-- **A — PROVED:** resto \`o(N^-13/2 e^-K*N)\` con las hipótesis congeladas.
+- **A — PROVED:** resto `o(N^-13/2 e^-K*N)` con las hipótesis congeladas.
 - **B — OPEN/BLOCKED:** las cotas disponibles no llegan a esa escala o hacerlo
   exige nueva maquinaria/hipótesis. B es obstrucción del método, no refutación.
 - **C — REFUTED:** aparece un perfil admisible con cota inferior,
@@ -77,17 +77,17 @@ resuelve L2.
 
 ## 3. Resultados finos existentes que no transfieren
 
-\`2026-09-20--h1-inhomogeneous-localization-reconstruction.md\` obtiene
+`2026-09-20--h1-inhomogeneous-localization-reconstruction.md` obtiene
 \(N^{-15/2}\) para una inserción G dentro de una ventana de saddle fija, pero
 declara expresamente que no se sigue localización global y deja
-\`H1c_LOCALIZATION (L') = OPEN\`: faltan cadenas a momento variable, visitas
+`H1c_LOCALIZATION (L') = OPEN`: faltan cadenas a momento variable, visitas
 a Q, transiciones entre las ocho ventanas y el exterior.
 
-\`2026-09-24--h1c-dyson-target-check.md\` y la descomposición Dyson exacta
+`2026-09-24--h1c-dyson-target-check.md` y la descomposición Dyson exacta
 controlan un test de moneda constante sobre los caminos y extremos planos
 fijados. El símbolo completo da allí una corrección relativa \(O(N^{-1})\).
 Ese test conserva homogeneidad en la zona relevante y no controla el
-\`A_{+P}\` físico con perfil espacial variable y ambos extremos dependientes
+`A_{+P}` físico con perfil espacial variable y ambos extremos dependientes
 del propagador. No decide A ni C para L2 físico.
 
 ## 4. Aplicación de la regla de parada
@@ -108,6 +108,15 @@ representación que no esté en el expediente actual.
 
 No se abre en este gate ninguna de esas vías adicionales.
 
+**Carácter estructural de B.** B es estructural para el método actual,
+basado en normas: las mismas estimaciones por normas (Cauchy–Schwarz con
+\(\|E\mathcal V\|\) y \(\|x^{\rm stay}\|\)) sólo acotan el **líder
+plano** \(\langle r_0,E\mathcal V x_0^{\rm stay}\rangle\) por
+\(O(N^{-3}\cdot N^{-3})=O(N^{-6}e^{-K_*N})\), por encima de su escala real
+\(N^{-13/2}e^{-K_*N}\). Ese medio orden procede de la localización gaussiana
+y de fase en momento, que ninguna cota de norma retiene. Por tanto B
+diagnostica una limitación del método, no evidencia contra H1.
+
 Por la regla preescrita:
 
 \[
@@ -117,7 +126,7 @@ Por la regla preescrita:
 ## 5. Alcance
 
 B significa que el objetivo fuerte de supervivencia queda bloqueado por el
-método actual. No significa \`H1=false\`, no aporta contraejemplo ni cota
+método actual. No significa `H1=false`, no aporta contraejemplo ni cota
 inferior, no decide dominancia y no afecta al resultado plano cerrado.
 
 No hay salida C. No se ejecutó ningún barrido de
@@ -151,3 +160,39 @@ requiere una decisión explícita que acepte nueva maquinaria o hipótesis.
 
 **Pendiente:**
 - si se desea promoción por encima de `PARTIAL_EXTERNAL_REVIEW`, realizar una revisión independiente que remonte las dos cotas de §2 a sus fuentes.
+  Realizado en §8 para las dos cotas de §2.
+
+## 8. Revisión externa de las cotas de §2 (Claude, 2026-09-26)
+
+Revisor: Claude (Anthropic). El informe no declara su autor; por el nombre de
+la rama (`chatgpt/…`), se toma como de otra familia.
+Revisión en frío contra las fuentes; no modifica ninguna matemática.
+
+**Alcance:** reproduce las dos cotas de §2 desde sus fuentes y valida la
+salida B. **No** revisa ni cierra H1, no examina L1/L3 ni
+`f_{Q,N}`/`(𝕄_Nx)_N`, y no demuestra la ausencia de otra vía hacia A.
+
+- **Primer sumando.** Por Parseval,
+  \(|\langle r_\vartheta-r_0,E\mathcal V x_\vartheta^{\rm stay}\rangle|
+  \le\sup_y h_N(y)e^{-\xi_*\cdot(y-y_*)}\,\|\delta r\|\,\|x_\vartheta^{\rm stay}\|\).
+  Con \(\sqrt{h_N}\le2s/R\) se obtiene
+  \(\sup_y h_Ne^{-\xi_*\cdot(y-y_*)}\le C_BN^{-2}\) y
+  \(C_B=256/(3e^2t_*^2)\). Por Duhamel,
+  \(\|\delta r\|\le\Theta\) (N pasos con \(\|C_N-I\|\le\Theta/N\)).
+  Además, \(\|x^{\rm stay}\|\le e^{C_P\Theta}C_P\|s\|=O(N^{-3})\), por el
+  bloque \(A_j\) reparado y \(\|s\|=O(N^{-3})\). Resultado:
+  \(O(N^{-5})\). **Se reproduce.**
+- **Segundo sumando.** El extremo plano de Bob es \(O(N^{-3})\) (nota
+  `2026-09-25--flat-endpoint-l2-n3.md`). Por telescopado,
+  \(\|x_\vartheta^{\rm stay}-x_0^{\rm stay}\|=O(\Theta N^{-3})\), con N
+  pasos y \(\|A^\vartheta-A^0\|\le C_P\Theta/N\); no hay ganancia en N.
+  Resultado: \(O(N^{-6})\). **Se reproduce.**
+- **Salida B:** correcta por la regla de §1. No procede C: no hay cota
+  inferior ni contraejemplo.
+- **Observación:** el primer sumando está limitado por \(\|\delta r\|\le\Theta\),
+  que no reconoce ninguna pequeñez de \(r_\vartheta-r_0\) en la zona de Bob.
+  Queda como observación; no es una cota nueva.
+
+`H1 = OPEN` sin cambio. Por decisión del usuario, H1 queda en pausa; no se
+abre `H1c_LOCALIZATION` ni otra vía.
+
