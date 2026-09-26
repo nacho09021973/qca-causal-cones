@@ -171,10 +171,15 @@ Epistemic (from `~/herramientas/REGLAS.md`):
   `comite/config.toml`, anchors in `comite/roles/`, output to `reports/comite/`.
   Its guardrails encode `PROJECT_INSTRUCTIONS.md` §§1-7. Use for "what do I do
   now?" — direction, scope, readiness. All members are Claude.
-- `sanedrin` (code in `~/sanedrin`; **not currently on PATH** — verified
-  2026-09-26, despite `REGLAS.md` saying it is) — adversarial debate across model
-  families. Use for "is this true?" before promoting or publishing. It sees only
-  what is attached with `-c`. Output to `debates/`. See `~/sanedrin/README.md`.
-  Recent debates failed on missing API credentials (commits `80fc450`, `05b1638`);
-  record such a failure rather than substituting a same-family review.
+- `sanedrin` (on PATH via `~/.local/bin/sanedrin` → `~/sanedrin/sanedrin`;
+  installed 2026-09-26 with `bash ~/sanedrin/instalar.sh`, idempotent, rerun it
+  if the symlink goes missing) — adversarial debate across model families. Use
+  for "is this true?" before promoting or publishing. It sees only what is
+  attached with `-c`. Output to `debates/`. See `~/sanedrin/README.md`.
+  Check the census first: `sanedrin --listar`. As of 2026-09-26 `opus` and
+  `astra` authenticate; `ciro` (Grok) and `gemini` are `ausente`, and `abner`
+  (DeepSeek) reports `ok` only because the key is *defined* — the value in
+  `~/.config/sanedrin/env` is still the `sk-PON…` placeholder, so it does not
+  authenticate. That is the failure already recorded in commits `80fc450` and
+  `05b1638`. Record such a failure rather than substituting a same-family review.
 - Neither authorizes anything; the user decides.
