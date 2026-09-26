@@ -176,10 +176,12 @@ Epistemic (from `~/herramientas/REGLAS.md`):
   if the symlink goes missing) — adversarial debate across model families. Use
   for "is this true?" before promoting or publishing. It sees only what is
   attached with `-c`. Output to `debates/`. See `~/sanedrin/README.md`.
-  Check the census first: `sanedrin --listar`. As of 2026-09-26 `opus` and
-  `astra` authenticate; `ciro` (Grok) and `gemini` are `ausente`, and `abner`
-  (DeepSeek) reports `ok` only because the key is *defined* — the value in
-  `~/.config/sanedrin/env` is still the `sk-PON…` placeholder, so it does not
-  authenticate. That is the failure already recorded in commits `80fc450` and
-  `05b1638`. Record such a failure rather than substituting a same-family review.
+  Check the census first: `sanedrin --listar`. As of 2026-09-26 `opus`, `astra`
+  and `ciro` (Grok, logged in via the `grok` CLI) are `ok`; `gemini` is `ausente`
+  for lack of `GEMINI_API_KEY`; and `abner` (DeepSeek) reports `ok` only because
+  the key is *defined* — the value in `~/.config/sanedrin/env` is still the
+  `sk-PON…` placeholder, so it does not authenticate. Read a first `ausente` for
+  `ciro` with suspicion: the check is `timeout 15 grok models`, and a cold
+  `grok` can exceed it; rerun before recording the house as unavailable. Record a
+  genuine failure rather than substituting a same-family review.
 - Neither authorizes anything; the user decides.
