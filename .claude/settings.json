@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdftotext *)",
+      "Bash(pdfinfo *)",
+      "Bash(pdftoppm *)",
+      "Bash(python3 scripts/verify_weyl_dirac_gate.py)",
+      "Bash(python3 -B scripts/verify_weyl_dirac_gate.py)",
+      "Bash(python3 scripts/verify_directional_saturation.py)",
+      "Bash(python3 -B scripts/verify_directional_saturation.py)",
+      "Bash(python3 scripts/verify_narrow_band_gate.py)",
+      "Bash(python3 -B scripts/verify_narrow_band_gate.py)",
+      "Bash(python3 scripts/verify_scaled_ir_gate.py)",
+      "Bash(python3 -B scripts/verify_scaled_ir_gate.py)",
+      "Bash(python3 scripts/verify_lower_bound_no_cancellation_gate.py)",
+      "Bash(python3 -B scripts/verify_lower_bound_no_cancellation_gate.py)",
+      "Bash(python3 scripts/verify_regional_directional_asymptotics_gate.py)",
+      "Bash(python3 -B scripts/verify_regional_directional_asymptotics_gate.py)",
+      "Bash(python3 scripts/verify_regional_laplace_coefficient_gate.py)",
+      "Bash(python3 -B scripts/verify_regional_laplace_coefficient_gate.py)",
+      "Bash(python3 scripts/verify_ir_projection_leakage.py)",
+      "Bash(python3 -B scripts/verify_ir_projection_leakage.py)",
+      "Bash(python3 scripts/verify_signaling_witness.py)",
+      "Bash(python3 -B scripts/verify_signaling_witness.py)",
+      "Bash(python3 scripts/cert_Aa_s4_counterexample.py)",
+      "Bash(python3 -B scripts/cert_Aa_s4_counterexample.py)",
+      "Bash(python3 scripts/review_Aa_s4_exact.py)",
+      "Bash(python3 -B scripts/review_Aa_s4_exact.py)",
+      "Bash(lake build)",
+      "Bash(lake exe cache get)"
+    ]
+  }
+}
