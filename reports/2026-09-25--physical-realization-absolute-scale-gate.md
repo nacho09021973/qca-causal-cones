@@ -4,11 +4,11 @@ Date: 2026-09-25.
 
 ## Verdict
 
-\`\`\`
+```
 PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE = NO_ABSOLUTE_SCALE_DERIVABLE
 EVIDENCE = EXECUTED / PRELIMINARY / PARTIAL_EXTERNAL_REVIEW
-4A = NOT_CHARTERED / NOT_EXECUTED
-\`\`\`
+4A = NOT_CHARTERED / NOT_EXECUTED   (a la fecha de ejecución; ver nota 4A abajo)
+```
 
 This closes the 4B question under the frozen contract without reopening
 Secs. 8.15–8.20. It does **not** weaken the closed model theorem. It does
@@ -18,8 +18,14 @@ not determine an absolute microscopic scale or provide a natural physical
 identification of the complete Sec. 8.20 protocol.
 
 The terminal state is not
-\`PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE\`: that label requires a defensible
+`PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE`: that label requires a defensible
 physical map and SI observable first. Here the map itself is missing.
+
+**Nota 4A (2026-09-26).** Al ejecutar el gate, 4A no estaba chartered. Más
+tarde el usuario lo autorizó («Pues lo autorizo», 2026-09-25, 15:35:40 UTC;
+`CURRENT_STATE` §8.21). Situación actual: **4A autorizado, sin contrato y
+no ejecutado**. Autorizado no significa chartered: hace falta un contrato 4A
+aparte antes de cualquier trabajo.
 
 ## 1. Frozen input
 
@@ -286,13 +292,13 @@ physical realizations.
 
 The ordered terminal-state table is applied as written.
 
-- \`PHYSICAL_MAP_ABSOLUTE_AND_DETECTABLE\`: no — criteria 1–3 fail.
-- \`PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE\`: no — no defensible physical map
+- `PHYSICAL_MAP_ABSOLUTE_AND_DETECTABLE`: no — criteria 1–3 fail.
+- `PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE`: no — no defensible physical map
   exists first.
-- \`PHYSICAL_MAP_CONDITIONAL_ONLY\`: no — the available symbolic/count
+- `PHYSICAL_MAP_CONDITIONAL_ONLY`: no — the available symbolic/count
   formulas are not attached to a natural physical dictionary for the frozen
   walk.
-- \`NO_ABSOLUTE_SCALE_DERIVABLE\`: **yes** — the frozen structure determines
+- `NO_ABSOLUTE_SCALE_DERIVABLE`: **yes** — the frozen structure determines
   only \(a/\tau=c\); no additional physically motivated relation fixes the
   microscopic scale, and no useful natural map closes criteria 2–4.
 
@@ -313,7 +319,7 @@ This result means:
 - the frozen model does **not** yield a parameter-free prediction in metres,
   seconds or detector counts;
 - assigning a Planck scale remains an explicit assumption;
-- engineered realization remains a separate, unchartered 4A project.
+- engineered realization remains a separate 4A project (authorized 2026-09-25, no contract yet).
 
 No further theoretical signalling gate is opened by this result.
 
@@ -334,3 +340,44 @@ No further theoretical signalling gate is opened by this result.
 
 **Pendiente:**
 - una revisión independiente completa del gate 8.21 si se quiere elevar el estado por encima de `PARTIAL_EXTERNAL_REVIEW`.
+
+## 11. Revisión externa (Claude, 2026-09-26)
+
+Revisor: Claude (Anthropic). Es una revisión en frío contra el contrato
+congelado; no modifica ninguna matemática ni el estado terminal.
+
+**Alcance.** Cubre la restauración dimensional, la puntuación de los cuatro
+criterios, la elección del estado terminal y el diagnóstico numérico. No es
+una auditoría bibliográfica exhaustiva y no reabre §8.20.
+
+- **Autorización:** la ejecución está registrada en `CURRENT_STATE` §8.21 («Pues
+  vamos con el 8.21», 2026-09-25, 14:54 UTC).
+- **Restauración dimensional (§2):** verificada. \(L_c=\sqrt3aN\),
+  \(R=aN/4\), \(T=L_c/(\sqrt3c)\), \(|k|\le\sqrt3/L_c\),
+  \(\theta_N=\{L_c/(4a)\}\) (a \(T\) fijo \(\{\sqrt3cT/(4a)\}\)),
+  exponente \(K_*L_c/(\sqrt3a)\) y resto \(O(\sqrt{a/L_c})\).
+- **Criterios 1 y 2:** el FAIL es correcto. El criterio 1 falla por
+  estructura: la ley adimensional es invariante de escala y sólo fija
+  \(a/\tau=c\).
+- **Criterio 3:** la ley de conteos es condicional a (2); está bien tratada
+  como no cerrada.
+- **Criterio 4:** aritmética verificada. \(J=0.092864\) y, con
+  \(a=\ell_P\) y \(L_c=1\) m, \(N=3.57\times10^{34}\),
+  \(JN=3.32\times10^{33}\) y cota \(\approx10^{-1.44\times10^{33}}\). La cota
+  \(36N^4e^{-JN}\) procede del TeX (l. 69 y 182); usarla en vez de
+  \(e^{-K_*N}\) es conservador. Correctamente marcado como diagnóstico.
+- **Estado terminal:** `NO_ABSOLUTE_SCALE_DERIVABLE` es correcto. El único
+  candidato dudoso, `PHYSICAL_MAP_CONDITIONAL_ONLY`, queda excluido por la
+  regla del contrato: el observable SI sólo existe condicionado a (2).
+- **Cita de Mlodinow–Brun:** verificada en arXiv:2506.20136 (cotas
+  **superiores** para la separación de red de un QCA de QED). No se han
+  verificado la referencia de revista ni las otras dos citas.
+
+**Consecuencia física.** A \(L_c\) fijo, el exponente depende sólo de
+\(L_c/a\). Cualquier realización con \(a\) microscópico caería en
+`PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE`. Sólo una realización con \(a\)
+mesoscópico, un simulador implementado a propósito (4A), podría acceder al
+efecto. Es una observación, no un cambio de estado.
+
+**Veredicto de la revisión:** `NO_ABSOLUTE_SCALE_DERIVABLE` correcto.
+

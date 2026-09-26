@@ -350,7 +350,7 @@ on the twelve Pauli pairs (Sec. 8.20). The signal is
 `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. This is theoretical step 3
 of the physical line, closed inside the preregistered class. It is not
 `D_B > 0` for every QCA, not a claim about nature, and not a further
-signalling calculation. Sec. 8.21 has now been executed with terminal state `NO_ABSOLUTE_SCALE_DERIVABLE` (preliminary, not independently reviewed).
+signalling calculation. Sec. 8.21 has now been executed with terminal state `NO_ABSOLUTE_SCALE_DERIVABLE` (preliminary; partial external review + Claude review 2026-09-26, see Sec. 8.21).
 
 ## 7. GATE STATUS — only point (3) authorized by the user
 
@@ -1390,8 +1390,12 @@ A conditional SI restoration is possible, with centre separation
 `delta(L_c;a) ~ |C({L_c/(4a)})|(L_c/(sqrt(3)a))^-13/2 exp[-(K_*/sqrt(3))L_c/a]`,
 but `a` remains undetermined. The terminal state is not
 `PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE`: no defensible physical map exists first.
-The Planck substitution is retained only as a diagnostic ASSUMPTION. 4A remains
-not chartered and Sec. 8.20 is unchanged.
+The Planck substitution is retained only as a diagnostic ASSUMPTION. 4A was
+not chartered at execution time (see addendum below: now authorized, still
+without contract) and Sec. 8.20 is unchanged.
+**Review 2026-09-26 (Claude):** dimensional restoration, criterion scoring,
+terminal state and Planck diagnostic arithmetic verified; terminal state
+correct (report Sec. 11). Not an exhaustive literature audit.
 
 **4A authorization addendum — 2026-09-25.**
 `4A = AUTHORIZED_BY_DIRECT_USER_INSTRUCTION` by the user's later message
