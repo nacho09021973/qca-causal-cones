@@ -182,8 +182,13 @@ Epistemic (from `~/herramientas/REGLAS.md`):
   reading that census. First, `abner` (DeepSeek) reports `ok` only because the
   key is *defined*: its check tests `-n "$DEEPSEEK_API_KEY"` and DNS, never
   authentication, and the value in `~/.config/sanedrin/env` is still the
-  `sk-PON…` placeholder. Only `gemini` verifies for real, with an authenticated
-  `curl`. Second, read a first `ausente` for `ciro` with suspicion: the check is
+  `sk-PON…` placeholder. `gemini` goes one step further — an authenticated
+  `curl` — but only a metadata `GET` on the model, which returns 200 even when
+  `generateContent` is refused; the free tier carries `limit: 0` for every *pro*
+  model, so the seat is pinned to `gemini-3.8-flash`, weaker than the pro the
+  design assumes. **No census check proves a house can generate.** Probe
+  `:generateContent` before relying on one. Second, read a first `ausente` for
+  `ciro` with suspicion: the check is
   `timeout 15 grok models`, and a cold `grok` can exceed it; rerun before
   recording the house as unavailable. Record a genuine failure rather than
   substituting a same-family review.
