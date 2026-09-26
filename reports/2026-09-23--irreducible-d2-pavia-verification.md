@@ -1,0 +1,541 @@
+# Irreducible D2 / P17: exact verification record
+
+Result: PASS — 519 exact checks; zero tolerance.
+
+Evidence: same-author computational checks; independent review pending.
+No canonical promotion. Published classification completeness is an input.
+
+Python: 3.12.3; SymPy: 1.14.0.
+
+Both P17 forms: c_0=1/sqrt(3); every vertex has a nonzero eigenvalue.
+The analytic all-n strict-support argument is in the companion report.
+The geometry checks verify the pair enumeration used to derive condition (2).
+
+## Provenance
+
+- Source SHA256: `dc4107946e6013640dd225bfd6792f8ff4be9cae48d4c9763a7d6da57bb91c81`
+- Checker SHA256: `878542f6999351ef6e229e4abe379245312520cdf21df0594825803890f8a27e`
+- Analytic report SHA256: `2c2024c8de8b9ac7261bd761f25e34d787481dcb24cdae8bfe649aee6f4cd684`
+- Imported baseline checker SHA256: `6c555cef8db0d8a7307a08e0251fa9278773aceeea8bf2bdb956ba2c3ca06597`
+
+## Checks
+
+- primary source SHA256
+- unique opposite difference (-1, -1, -1)
+- two-pair tetrahedral difference (-1, -1, -1),(-1, 1, 1)
+- two-pair tetrahedral difference (-1, -1, -1),(1, -1, 1)
+- two-pair tetrahedral difference (-1, -1, -1),(1, 1, -1)
+- unique opposite difference (-1, -1, 1)
+- two-pair tetrahedral difference (-1, -1, 1),(-1, 1, -1)
+- two-pair tetrahedral difference (-1, -1, 1),(1, -1, -1)
+- two-pair tetrahedral difference (-1, -1, 1),(1, 1, 1)
+- unique opposite difference (-1, 1, -1)
+- two-pair tetrahedral difference (-1, 1, -1),(-1, -1, 1)
+- two-pair tetrahedral difference (-1, 1, -1),(1, -1, -1)
+- two-pair tetrahedral difference (-1, 1, -1),(1, 1, 1)
+- unique opposite difference (-1, 1, 1)
+- two-pair tetrahedral difference (-1, 1, 1),(-1, -1, -1)
+- two-pair tetrahedral difference (-1, 1, 1),(1, -1, 1)
+- two-pair tetrahedral difference (-1, 1, 1),(1, 1, -1)
+- unique opposite difference (1, -1, -1)
+- two-pair tetrahedral difference (1, -1, -1),(-1, -1, 1)
+- two-pair tetrahedral difference (1, -1, -1),(-1, 1, -1)
+- two-pair tetrahedral difference (1, -1, -1),(1, 1, 1)
+- unique opposite difference (1, -1, 1)
+- two-pair tetrahedral difference (1, -1, 1),(-1, -1, -1)
+- two-pair tetrahedral difference (1, -1, 1),(-1, 1, 1)
+- two-pair tetrahedral difference (1, -1, 1),(1, 1, -1)
+- unique opposite difference (1, 1, -1)
+- two-pair tetrahedral difference (1, 1, -1),(-1, -1, -1)
+- two-pair tetrahedral difference (1, 1, -1),(-1, 1, 1)
+- two-pair tetrahedral difference (1, 1, -1),(1, -1, 1)
+- unique opposite difference (1, 1, 1)
+- two-pair tetrahedral difference (1, 1, 1),(-1, -1, 1)
+- two-pair tetrahedral difference (1, 1, 1),(-1, 1, -1)
+- two-pair tetrahedral difference (1, 1, 1),(1, -1, -1)
+- tetrahedron permutation (0, 1, 2, 3): orthogonal
+- tetrahedron permutation (0, 1, 2, 3): image 0
+- tetrahedron permutation (0, 1, 2, 3): image 1
+- tetrahedron permutation (0, 1, 2, 3): image 2
+- tetrahedron permutation (0, 1, 2, 3): image 3
+- tetrahedron permutation (0, 1, 3, 2): orthogonal
+- tetrahedron permutation (0, 1, 3, 2): image 0
+- tetrahedron permutation (0, 1, 3, 2): image 1
+- tetrahedron permutation (0, 1, 3, 2): image 2
+- tetrahedron permutation (0, 1, 3, 2): image 3
+- tetrahedron permutation (0, 2, 1, 3): orthogonal
+- tetrahedron permutation (0, 2, 1, 3): image 0
+- tetrahedron permutation (0, 2, 1, 3): image 1
+- tetrahedron permutation (0, 2, 1, 3): image 2
+- tetrahedron permutation (0, 2, 1, 3): image 3
+- tetrahedron permutation (0, 2, 3, 1): orthogonal
+- tetrahedron permutation (0, 2, 3, 1): image 0
+- tetrahedron permutation (0, 2, 3, 1): image 1
+- tetrahedron permutation (0, 2, 3, 1): image 2
+- tetrahedron permutation (0, 2, 3, 1): image 3
+- tetrahedron permutation (0, 3, 1, 2): orthogonal
+- tetrahedron permutation (0, 3, 1, 2): image 0
+- tetrahedron permutation (0, 3, 1, 2): image 1
+- tetrahedron permutation (0, 3, 1, 2): image 2
+- tetrahedron permutation (0, 3, 1, 2): image 3
+- tetrahedron permutation (0, 3, 2, 1): orthogonal
+- tetrahedron permutation (0, 3, 2, 1): image 0
+- tetrahedron permutation (0, 3, 2, 1): image 1
+- tetrahedron permutation (0, 3, 2, 1): image 2
+- tetrahedron permutation (0, 3, 2, 1): image 3
+- tetrahedron permutation (1, 0, 2, 3): orthogonal
+- tetrahedron permutation (1, 0, 2, 3): image 0
+- tetrahedron permutation (1, 0, 2, 3): image 1
+- tetrahedron permutation (1, 0, 2, 3): image 2
+- tetrahedron permutation (1, 0, 2, 3): image 3
+- tetrahedron permutation (1, 0, 3, 2): orthogonal
+- tetrahedron permutation (1, 0, 3, 2): image 0
+- tetrahedron permutation (1, 0, 3, 2): image 1
+- tetrahedron permutation (1, 0, 3, 2): image 2
+- tetrahedron permutation (1, 0, 3, 2): image 3
+- tetrahedron permutation (1, 2, 0, 3): orthogonal
+- tetrahedron permutation (1, 2, 0, 3): image 0
+- tetrahedron permutation (1, 2, 0, 3): image 1
+- tetrahedron permutation (1, 2, 0, 3): image 2
+- tetrahedron permutation (1, 2, 0, 3): image 3
+- tetrahedron permutation (1, 2, 3, 0): orthogonal
+- tetrahedron permutation (1, 2, 3, 0): image 0
+- tetrahedron permutation (1, 2, 3, 0): image 1
+- tetrahedron permutation (1, 2, 3, 0): image 2
+- tetrahedron permutation (1, 2, 3, 0): image 3
+- tetrahedron permutation (1, 3, 0, 2): orthogonal
+- tetrahedron permutation (1, 3, 0, 2): image 0
+- tetrahedron permutation (1, 3, 0, 2): image 1
+- tetrahedron permutation (1, 3, 0, 2): image 2
+- tetrahedron permutation (1, 3, 0, 2): image 3
+- tetrahedron permutation (1, 3, 2, 0): orthogonal
+- tetrahedron permutation (1, 3, 2, 0): image 0
+- tetrahedron permutation (1, 3, 2, 0): image 1
+- tetrahedron permutation (1, 3, 2, 0): image 2
+- tetrahedron permutation (1, 3, 2, 0): image 3
+- tetrahedron permutation (2, 0, 1, 3): orthogonal
+- tetrahedron permutation (2, 0, 1, 3): image 0
+- tetrahedron permutation (2, 0, 1, 3): image 1
+- tetrahedron permutation (2, 0, 1, 3): image 2
+- tetrahedron permutation (2, 0, 1, 3): image 3
+- tetrahedron permutation (2, 0, 3, 1): orthogonal
+- tetrahedron permutation (2, 0, 3, 1): image 0
+- tetrahedron permutation (2, 0, 3, 1): image 1
+- tetrahedron permutation (2, 0, 3, 1): image 2
+- tetrahedron permutation (2, 0, 3, 1): image 3
+- tetrahedron permutation (2, 1, 0, 3): orthogonal
+- tetrahedron permutation (2, 1, 0, 3): image 0
+- tetrahedron permutation (2, 1, 0, 3): image 1
+- tetrahedron permutation (2, 1, 0, 3): image 2
+- tetrahedron permutation (2, 1, 0, 3): image 3
+- tetrahedron permutation (2, 1, 3, 0): orthogonal
+- tetrahedron permutation (2, 1, 3, 0): image 0
+- tetrahedron permutation (2, 1, 3, 0): image 1
+- tetrahedron permutation (2, 1, 3, 0): image 2
+- tetrahedron permutation (2, 1, 3, 0): image 3
+- tetrahedron permutation (2, 3, 0, 1): orthogonal
+- tetrahedron permutation (2, 3, 0, 1): image 0
+- tetrahedron permutation (2, 3, 0, 1): image 1
+- tetrahedron permutation (2, 3, 0, 1): image 2
+- tetrahedron permutation (2, 3, 0, 1): image 3
+- tetrahedron permutation (2, 3, 1, 0): orthogonal
+- tetrahedron permutation (2, 3, 1, 0): image 0
+- tetrahedron permutation (2, 3, 1, 0): image 1
+- tetrahedron permutation (2, 3, 1, 0): image 2
+- tetrahedron permutation (2, 3, 1, 0): image 3
+- tetrahedron permutation (3, 0, 1, 2): orthogonal
+- tetrahedron permutation (3, 0, 1, 2): image 0
+- tetrahedron permutation (3, 0, 1, 2): image 1
+- tetrahedron permutation (3, 0, 1, 2): image 2
+- tetrahedron permutation (3, 0, 1, 2): image 3
+- tetrahedron permutation (3, 0, 2, 1): orthogonal
+- tetrahedron permutation (3, 0, 2, 1): image 0
+- tetrahedron permutation (3, 0, 2, 1): image 1
+- tetrahedron permutation (3, 0, 2, 1): image 2
+- tetrahedron permutation (3, 0, 2, 1): image 3
+- tetrahedron permutation (3, 1, 0, 2): orthogonal
+- tetrahedron permutation (3, 1, 0, 2): image 0
+- tetrahedron permutation (3, 1, 0, 2): image 1
+- tetrahedron permutation (3, 1, 0, 2): image 2
+- tetrahedron permutation (3, 1, 0, 2): image 3
+- tetrahedron permutation (3, 1, 2, 0): orthogonal
+- tetrahedron permutation (3, 1, 2, 0): image 0
+- tetrahedron permutation (3, 1, 2, 0): image 1
+- tetrahedron permutation (3, 1, 2, 0): image 2
+- tetrahedron permutation (3, 1, 2, 0): image 3
+- tetrahedron permutation (3, 2, 0, 1): orthogonal
+- tetrahedron permutation (3, 2, 0, 1): image 0
+- tetrahedron permutation (3, 2, 0, 1): image 1
+- tetrahedron permutation (3, 2, 0, 1): image 2
+- tetrahedron permutation (3, 2, 0, 1): image 3
+- tetrahedron permutation (3, 2, 1, 0): orthogonal
+- tetrahedron permutation (3, 2, 1, 0): image 0
+- tetrahedron permutation (3, 2, 1, 0): image 1
+- tetrahedron permutation (3, 2, 1, 0): image 2
+- tetrahedron permutation (3, 2, 1, 0): image 3
+- P17 epsilon=1: full support
+- P17 epsilon=1: origin
+- P17 epsilon=1: U Udag coefficient (0, 0, 0)
+- P17 epsilon=1: Udag U coefficient (0, 0, 0)
+- P17 epsilon=1: U Udag coefficient (0, 0, -2)
+- P17 epsilon=1: Udag U coefficient (0, 0, -2)
+- P17 epsilon=1: U Udag coefficient (0, -2, 0)
+- P17 epsilon=1: Udag U coefficient (0, -2, 0)
+- P17 epsilon=1: U Udag coefficient (0, -2, -2)
+- P17 epsilon=1: Udag U coefficient (0, -2, -2)
+- P17 epsilon=1: U Udag coefficient (-2, 0, 0)
+- P17 epsilon=1: Udag U coefficient (-2, 0, 0)
+- P17 epsilon=1: U Udag coefficient (-2, 0, -2)
+- P17 epsilon=1: Udag U coefficient (-2, 0, -2)
+- P17 epsilon=1: U Udag coefficient (-2, -2, 0)
+- P17 epsilon=1: Udag U coefficient (-2, -2, 0)
+- P17 epsilon=1: U Udag coefficient (-2, -2, -2)
+- P17 epsilon=1: Udag U coefficient (-2, -2, -2)
+- P17 epsilon=1: U Udag coefficient (0, 0, 2)
+- P17 epsilon=1: Udag U coefficient (0, 0, 2)
+- P17 epsilon=1: U Udag coefficient (0, -2, 2)
+- P17 epsilon=1: Udag U coefficient (0, -2, 2)
+- P17 epsilon=1: U Udag coefficient (-2, 0, 2)
+- P17 epsilon=1: Udag U coefficient (-2, 0, 2)
+- P17 epsilon=1: U Udag coefficient (-2, -2, 2)
+- P17 epsilon=1: Udag U coefficient (-2, -2, 2)
+- P17 epsilon=1: U Udag coefficient (0, 2, 0)
+- P17 epsilon=1: Udag U coefficient (0, 2, 0)
+- P17 epsilon=1: U Udag coefficient (0, 2, -2)
+- P17 epsilon=1: Udag U coefficient (0, 2, -2)
+- P17 epsilon=1: U Udag coefficient (-2, 2, 0)
+- P17 epsilon=1: Udag U coefficient (-2, 2, 0)
+- P17 epsilon=1: U Udag coefficient (-2, 2, -2)
+- P17 epsilon=1: Udag U coefficient (-2, 2, -2)
+- P17 epsilon=1: U Udag coefficient (0, 2, 2)
+- P17 epsilon=1: Udag U coefficient (0, 2, 2)
+- P17 epsilon=1: U Udag coefficient (-2, 2, 2)
+- P17 epsilon=1: Udag U coefficient (-2, 2, 2)
+- P17 epsilon=1: U Udag coefficient (2, 0, 0)
+- P17 epsilon=1: Udag U coefficient (2, 0, 0)
+- P17 epsilon=1: U Udag coefficient (2, 0, -2)
+- P17 epsilon=1: Udag U coefficient (2, 0, -2)
+- P17 epsilon=1: U Udag coefficient (2, -2, 0)
+- P17 epsilon=1: Udag U coefficient (2, -2, 0)
+- P17 epsilon=1: U Udag coefficient (2, -2, -2)
+- P17 epsilon=1: Udag U coefficient (2, -2, -2)
+- P17 epsilon=1: U Udag coefficient (2, 0, 2)
+- P17 epsilon=1: Udag U coefficient (2, 0, 2)
+- P17 epsilon=1: U Udag coefficient (2, -2, 2)
+- P17 epsilon=1: Udag U coefficient (2, -2, 2)
+- P17 epsilon=1: U Udag coefficient (2, 2, 0)
+- P17 epsilon=1: Udag U coefficient (2, 2, 0)
+- P17 epsilon=1: U Udag coefficient (2, 2, -2)
+- P17 epsilon=1: Udag U coefficient (2, 2, -2)
+- P17 epsilon=1: U Udag coefficient (2, 2, 2)
+- P17 epsilon=1: Udag U coefficient (2, 2, 2)
+- P17 epsilon=1: nonzero (1, 1, 1)
+- P17 epsilon=1: covariance axis 0, (1, 1, 1)
+- P17 epsilon=1: Eq2 axis 0, (1, 1, 1)
+- P17 epsilon=1: covariance axis 1, (1, 1, 1)
+- P17 epsilon=1: Eq2 axis 1, (1, 1, 1)
+- P17 epsilon=1: covariance axis 2, (1, 1, 1)
+- P17 epsilon=1: Eq2 axis 2, (1, 1, 1)
+- P17 epsilon=1: vertex determinant (1, 1, 1)
+- P17 epsilon=1: vertex trace (1, 1, 1)
+- P17 epsilon=1: vertex square (1, 1, 1)
+- P17 epsilon=1: nonzero vertex eigenvalue (1, 1, 1)
+- P17 epsilon=1: nonzero (1, -1, -1)
+- P17 epsilon=1: covariance axis 0, (1, -1, -1)
+- P17 epsilon=1: Eq2 axis 0, (1, -1, -1)
+- P17 epsilon=1: covariance axis 1, (1, -1, -1)
+- P17 epsilon=1: Eq2 axis 1, (1, -1, -1)
+- P17 epsilon=1: covariance axis 2, (1, -1, -1)
+- P17 epsilon=1: Eq2 axis 2, (1, -1, -1)
+- P17 epsilon=1: vertex determinant (1, -1, -1)
+- P17 epsilon=1: vertex trace (1, -1, -1)
+- P17 epsilon=1: vertex square (1, -1, -1)
+- P17 epsilon=1: nonzero vertex eigenvalue (1, -1, -1)
+- P17 epsilon=1: nonzero (-1, 1, -1)
+- P17 epsilon=1: covariance axis 0, (-1, 1, -1)
+- P17 epsilon=1: Eq2 axis 0, (-1, 1, -1)
+- P17 epsilon=1: covariance axis 1, (-1, 1, -1)
+- P17 epsilon=1: Eq2 axis 1, (-1, 1, -1)
+- P17 epsilon=1: covariance axis 2, (-1, 1, -1)
+- P17 epsilon=1: Eq2 axis 2, (-1, 1, -1)
+- P17 epsilon=1: vertex determinant (-1, 1, -1)
+- P17 epsilon=1: vertex trace (-1, 1, -1)
+- P17 epsilon=1: vertex square (-1, 1, -1)
+- P17 epsilon=1: nonzero vertex eigenvalue (-1, 1, -1)
+- P17 epsilon=1: nonzero (-1, -1, 1)
+- P17 epsilon=1: covariance axis 0, (-1, -1, 1)
+- P17 epsilon=1: Eq2 axis 0, (-1, -1, 1)
+- P17 epsilon=1: covariance axis 1, (-1, -1, 1)
+- P17 epsilon=1: Eq2 axis 1, (-1, -1, 1)
+- P17 epsilon=1: covariance axis 2, (-1, -1, 1)
+- P17 epsilon=1: Eq2 axis 2, (-1, -1, 1)
+- P17 epsilon=1: vertex determinant (-1, -1, 1)
+- P17 epsilon=1: vertex trace (-1, -1, 1)
+- P17 epsilon=1: vertex square (-1, -1, 1)
+- P17 epsilon=1: nonzero vertex eigenvalue (-1, -1, 1)
+- P17 epsilon=1: nonzero (-1, -1, -1)
+- P17 epsilon=1: covariance axis 0, (-1, -1, -1)
+- P17 epsilon=1: Eq2 axis 0, (-1, -1, -1)
+- P17 epsilon=1: covariance axis 1, (-1, -1, -1)
+- P17 epsilon=1: Eq2 axis 1, (-1, -1, -1)
+- P17 epsilon=1: covariance axis 2, (-1, -1, -1)
+- P17 epsilon=1: Eq2 axis 2, (-1, -1, -1)
+- P17 epsilon=1: vertex determinant (-1, -1, -1)
+- P17 epsilon=1: vertex trace (-1, -1, -1)
+- P17 epsilon=1: vertex square (-1, -1, -1)
+- P17 epsilon=1: nonzero vertex eigenvalue (-1, -1, -1)
+- P17 epsilon=1: nonzero (-1, 1, 1)
+- P17 epsilon=1: covariance axis 0, (-1, 1, 1)
+- P17 epsilon=1: Eq2 axis 0, (-1, 1, 1)
+- P17 epsilon=1: covariance axis 1, (-1, 1, 1)
+- P17 epsilon=1: Eq2 axis 1, (-1, 1, 1)
+- P17 epsilon=1: covariance axis 2, (-1, 1, 1)
+- P17 epsilon=1: Eq2 axis 2, (-1, 1, 1)
+- P17 epsilon=1: vertex determinant (-1, 1, 1)
+- P17 epsilon=1: vertex trace (-1, 1, 1)
+- P17 epsilon=1: vertex square (-1, 1, 1)
+- P17 epsilon=1: nonzero vertex eigenvalue (-1, 1, 1)
+- P17 epsilon=1: nonzero (1, -1, 1)
+- P17 epsilon=1: covariance axis 0, (1, -1, 1)
+- P17 epsilon=1: Eq2 axis 0, (1, -1, 1)
+- P17 epsilon=1: covariance axis 1, (1, -1, 1)
+- P17 epsilon=1: Eq2 axis 1, (1, -1, 1)
+- P17 epsilon=1: covariance axis 2, (1, -1, 1)
+- P17 epsilon=1: Eq2 axis 2, (1, -1, 1)
+- P17 epsilon=1: vertex determinant (1, -1, 1)
+- P17 epsilon=1: vertex trace (1, -1, 1)
+- P17 epsilon=1: vertex square (1, -1, 1)
+- P17 epsilon=1: nonzero vertex eigenvalue (1, -1, 1)
+- P17 epsilon=1: nonzero (1, 1, -1)
+- P17 epsilon=1: covariance axis 0, (1, 1, -1)
+- P17 epsilon=1: Eq2 axis 0, (1, 1, -1)
+- P17 epsilon=1: covariance axis 1, (1, 1, -1)
+- P17 epsilon=1: Eq2 axis 1, (1, 1, -1)
+- P17 epsilon=1: covariance axis 2, (1, 1, -1)
+- P17 epsilon=1: Eq2 axis 2, (1, 1, -1)
+- P17 epsilon=1: vertex determinant (1, 1, -1)
+- P17 epsilon=1: vertex trace (1, 1, -1)
+- P17 epsilon=1: vertex square (1, 1, -1)
+- P17 epsilon=1: nonzero vertex eigenvalue (1, 1, -1)
+- P17 epsilon=1: first moment 0
+- P17 epsilon=1: moment Hermitian 0
+- P17 epsilon=1: scalar first derivative 0
+- P17 epsilon=1: Clifford 0,0
+- P17 epsilon=1: scalar Hessian 0,0
+- P17 epsilon=1: Clifford 0,1
+- P17 epsilon=1: scalar Hessian 0,1
+- P17 epsilon=1: Clifford 0,2
+- P17 epsilon=1: scalar Hessian 0,2
+- P17 epsilon=1: first moment 1
+- P17 epsilon=1: moment Hermitian 1
+- P17 epsilon=1: scalar first derivative 1
+- P17 epsilon=1: Clifford 1,0
+- P17 epsilon=1: scalar Hessian 1,0
+- P17 epsilon=1: Clifford 1,1
+- P17 epsilon=1: scalar Hessian 1,1
+- P17 epsilon=1: Clifford 1,2
+- P17 epsilon=1: scalar Hessian 1,2
+- P17 epsilon=1: first moment 2
+- P17 epsilon=1: moment Hermitian 2
+- P17 epsilon=1: scalar first derivative 2
+- P17 epsilon=1: Clifford 2,0
+- P17 epsilon=1: scalar Hessian 2,0
+- P17 epsilon=1: Clifford 2,1
+- P17 epsilon=1: scalar Hessian 2,1
+- P17 epsilon=1: Clifford 2,2
+- P17 epsilon=1: scalar Hessian 2,2
+- P17 epsilon=1: determinant of full symbol
+- P17 epsilon=1: repository dictionary support
+- P17 epsilon=1: repository dictionary coefficient (-1, -1, -1)
+- P17 epsilon=1: repository dictionary coefficient (-1, -1, 1)
+- P17 epsilon=1: repository dictionary coefficient (-1, 1, -1)
+- P17 epsilon=1: repository dictionary coefficient (-1, 1, 1)
+- P17 epsilon=1: repository dictionary coefficient (1, -1, -1)
+- P17 epsilon=1: repository dictionary coefficient (1, -1, 1)
+- P17 epsilon=1: repository dictionary coefficient (1, 1, -1)
+- P17 epsilon=1: repository dictionary coefficient (1, 1, 1)
+- P17 epsilon=1: repository dictionary full symbol
+- P17 epsilon=1: Fourier convention inversion
+- P17 epsilon=-1: full support
+- P17 epsilon=-1: origin
+- P17 epsilon=-1: U Udag coefficient (0, 0, 0)
+- P17 epsilon=-1: Udag U coefficient (0, 0, 0)
+- P17 epsilon=-1: U Udag coefficient (0, 0, -2)
+- P17 epsilon=-1: Udag U coefficient (0, 0, -2)
+- P17 epsilon=-1: U Udag coefficient (0, -2, 0)
+- P17 epsilon=-1: Udag U coefficient (0, -2, 0)
+- P17 epsilon=-1: U Udag coefficient (0, -2, -2)
+- P17 epsilon=-1: Udag U coefficient (0, -2, -2)
+- P17 epsilon=-1: U Udag coefficient (-2, 0, 0)
+- P17 epsilon=-1: Udag U coefficient (-2, 0, 0)
+- P17 epsilon=-1: U Udag coefficient (-2, 0, -2)
+- P17 epsilon=-1: Udag U coefficient (-2, 0, -2)
+- P17 epsilon=-1: U Udag coefficient (-2, -2, 0)
+- P17 epsilon=-1: Udag U coefficient (-2, -2, 0)
+- P17 epsilon=-1: U Udag coefficient (-2, -2, -2)
+- P17 epsilon=-1: Udag U coefficient (-2, -2, -2)
+- P17 epsilon=-1: U Udag coefficient (0, 0, 2)
+- P17 epsilon=-1: Udag U coefficient (0, 0, 2)
+- P17 epsilon=-1: U Udag coefficient (0, -2, 2)
+- P17 epsilon=-1: Udag U coefficient (0, -2, 2)
+- P17 epsilon=-1: U Udag coefficient (-2, 0, 2)
+- P17 epsilon=-1: Udag U coefficient (-2, 0, 2)
+- P17 epsilon=-1: U Udag coefficient (-2, -2, 2)
+- P17 epsilon=-1: Udag U coefficient (-2, -2, 2)
+- P17 epsilon=-1: U Udag coefficient (0, 2, 0)
+- P17 epsilon=-1: Udag U coefficient (0, 2, 0)
+- P17 epsilon=-1: U Udag coefficient (0, 2, -2)
+- P17 epsilon=-1: Udag U coefficient (0, 2, -2)
+- P17 epsilon=-1: U Udag coefficient (-2, 2, 0)
+- P17 epsilon=-1: Udag U coefficient (-2, 2, 0)
+- P17 epsilon=-1: U Udag coefficient (-2, 2, -2)
+- P17 epsilon=-1: Udag U coefficient (-2, 2, -2)
+- P17 epsilon=-1: U Udag coefficient (0, 2, 2)
+- P17 epsilon=-1: Udag U coefficient (0, 2, 2)
+- P17 epsilon=-1: U Udag coefficient (-2, 2, 2)
+- P17 epsilon=-1: Udag U coefficient (-2, 2, 2)
+- P17 epsilon=-1: U Udag coefficient (2, 0, 0)
+- P17 epsilon=-1: Udag U coefficient (2, 0, 0)
+- P17 epsilon=-1: U Udag coefficient (2, 0, -2)
+- P17 epsilon=-1: Udag U coefficient (2, 0, -2)
+- P17 epsilon=-1: U Udag coefficient (2, -2, 0)
+- P17 epsilon=-1: Udag U coefficient (2, -2, 0)
+- P17 epsilon=-1: U Udag coefficient (2, -2, -2)
+- P17 epsilon=-1: Udag U coefficient (2, -2, -2)
+- P17 epsilon=-1: U Udag coefficient (2, 0, 2)
+- P17 epsilon=-1: Udag U coefficient (2, 0, 2)
+- P17 epsilon=-1: U Udag coefficient (2, -2, 2)
+- P17 epsilon=-1: Udag U coefficient (2, -2, 2)
+- P17 epsilon=-1: U Udag coefficient (2, 2, 0)
+- P17 epsilon=-1: Udag U coefficient (2, 2, 0)
+- P17 epsilon=-1: U Udag coefficient (2, 2, -2)
+- P17 epsilon=-1: Udag U coefficient (2, 2, -2)
+- P17 epsilon=-1: U Udag coefficient (2, 2, 2)
+- P17 epsilon=-1: Udag U coefficient (2, 2, 2)
+- P17 epsilon=-1: nonzero (1, 1, 1)
+- P17 epsilon=-1: covariance axis 0, (1, 1, 1)
+- P17 epsilon=-1: Eq2 axis 0, (1, 1, 1)
+- P17 epsilon=-1: covariance axis 1, (1, 1, 1)
+- P17 epsilon=-1: Eq2 axis 1, (1, 1, 1)
+- P17 epsilon=-1: covariance axis 2, (1, 1, 1)
+- P17 epsilon=-1: Eq2 axis 2, (1, 1, 1)
+- P17 epsilon=-1: vertex determinant (1, 1, 1)
+- P17 epsilon=-1: vertex trace (1, 1, 1)
+- P17 epsilon=-1: vertex square (1, 1, 1)
+- P17 epsilon=-1: nonzero vertex eigenvalue (1, 1, 1)
+- P17 epsilon=-1: nonzero (1, -1, -1)
+- P17 epsilon=-1: covariance axis 0, (1, -1, -1)
+- P17 epsilon=-1: Eq2 axis 0, (1, -1, -1)
+- P17 epsilon=-1: covariance axis 1, (1, -1, -1)
+- P17 epsilon=-1: Eq2 axis 1, (1, -1, -1)
+- P17 epsilon=-1: covariance axis 2, (1, -1, -1)
+- P17 epsilon=-1: Eq2 axis 2, (1, -1, -1)
+- P17 epsilon=-1: vertex determinant (1, -1, -1)
+- P17 epsilon=-1: vertex trace (1, -1, -1)
+- P17 epsilon=-1: vertex square (1, -1, -1)
+- P17 epsilon=-1: nonzero vertex eigenvalue (1, -1, -1)
+- P17 epsilon=-1: nonzero (-1, 1, -1)
+- P17 epsilon=-1: covariance axis 0, (-1, 1, -1)
+- P17 epsilon=-1: Eq2 axis 0, (-1, 1, -1)
+- P17 epsilon=-1: covariance axis 1, (-1, 1, -1)
+- P17 epsilon=-1: Eq2 axis 1, (-1, 1, -1)
+- P17 epsilon=-1: covariance axis 2, (-1, 1, -1)
+- P17 epsilon=-1: Eq2 axis 2, (-1, 1, -1)
+- P17 epsilon=-1: vertex determinant (-1, 1, -1)
+- P17 epsilon=-1: vertex trace (-1, 1, -1)
+- P17 epsilon=-1: vertex square (-1, 1, -1)
+- P17 epsilon=-1: nonzero vertex eigenvalue (-1, 1, -1)
+- P17 epsilon=-1: nonzero (-1, -1, 1)
+- P17 epsilon=-1: covariance axis 0, (-1, -1, 1)
+- P17 epsilon=-1: Eq2 axis 0, (-1, -1, 1)
+- P17 epsilon=-1: covariance axis 1, (-1, -1, 1)
+- P17 epsilon=-1: Eq2 axis 1, (-1, -1, 1)
+- P17 epsilon=-1: covariance axis 2, (-1, -1, 1)
+- P17 epsilon=-1: Eq2 axis 2, (-1, -1, 1)
+- P17 epsilon=-1: vertex determinant (-1, -1, 1)
+- P17 epsilon=-1: vertex trace (-1, -1, 1)
+- P17 epsilon=-1: vertex square (-1, -1, 1)
+- P17 epsilon=-1: nonzero vertex eigenvalue (-1, -1, 1)
+- P17 epsilon=-1: nonzero (-1, -1, -1)
+- P17 epsilon=-1: covariance axis 0, (-1, -1, -1)
+- P17 epsilon=-1: Eq2 axis 0, (-1, -1, -1)
+- P17 epsilon=-1: covariance axis 1, (-1, -1, -1)
+- P17 epsilon=-1: Eq2 axis 1, (-1, -1, -1)
+- P17 epsilon=-1: covariance axis 2, (-1, -1, -1)
+- P17 epsilon=-1: Eq2 axis 2, (-1, -1, -1)
+- P17 epsilon=-1: vertex determinant (-1, -1, -1)
+- P17 epsilon=-1: vertex trace (-1, -1, -1)
+- P17 epsilon=-1: vertex square (-1, -1, -1)
+- P17 epsilon=-1: nonzero vertex eigenvalue (-1, -1, -1)
+- P17 epsilon=-1: nonzero (-1, 1, 1)
+- P17 epsilon=-1: covariance axis 0, (-1, 1, 1)
+- P17 epsilon=-1: Eq2 axis 0, (-1, 1, 1)
+- P17 epsilon=-1: covariance axis 1, (-1, 1, 1)
+- P17 epsilon=-1: Eq2 axis 1, (-1, 1, 1)
+- P17 epsilon=-1: covariance axis 2, (-1, 1, 1)
+- P17 epsilon=-1: Eq2 axis 2, (-1, 1, 1)
+- P17 epsilon=-1: vertex determinant (-1, 1, 1)
+- P17 epsilon=-1: vertex trace (-1, 1, 1)
+- P17 epsilon=-1: vertex square (-1, 1, 1)
+- P17 epsilon=-1: nonzero vertex eigenvalue (-1, 1, 1)
+- P17 epsilon=-1: nonzero (1, -1, 1)
+- P17 epsilon=-1: covariance axis 0, (1, -1, 1)
+- P17 epsilon=-1: Eq2 axis 0, (1, -1, 1)
+- P17 epsilon=-1: covariance axis 1, (1, -1, 1)
+- P17 epsilon=-1: Eq2 axis 1, (1, -1, 1)
+- P17 epsilon=-1: covariance axis 2, (1, -1, 1)
+- P17 epsilon=-1: Eq2 axis 2, (1, -1, 1)
+- P17 epsilon=-1: vertex determinant (1, -1, 1)
+- P17 epsilon=-1: vertex trace (1, -1, 1)
+- P17 epsilon=-1: vertex square (1, -1, 1)
+- P17 epsilon=-1: nonzero vertex eigenvalue (1, -1, 1)
+- P17 epsilon=-1: nonzero (1, 1, -1)
+- P17 epsilon=-1: covariance axis 0, (1, 1, -1)
+- P17 epsilon=-1: Eq2 axis 0, (1, 1, -1)
+- P17 epsilon=-1: covariance axis 1, (1, 1, -1)
+- P17 epsilon=-1: Eq2 axis 1, (1, 1, -1)
+- P17 epsilon=-1: covariance axis 2, (1, 1, -1)
+- P17 epsilon=-1: Eq2 axis 2, (1, 1, -1)
+- P17 epsilon=-1: vertex determinant (1, 1, -1)
+- P17 epsilon=-1: vertex trace (1, 1, -1)
+- P17 epsilon=-1: vertex square (1, 1, -1)
+- P17 epsilon=-1: nonzero vertex eigenvalue (1, 1, -1)
+- P17 epsilon=-1: first moment 0
+- P17 epsilon=-1: moment Hermitian 0
+- P17 epsilon=-1: scalar first derivative 0
+- P17 epsilon=-1: Clifford 0,0
+- P17 epsilon=-1: scalar Hessian 0,0
+- P17 epsilon=-1: Clifford 0,1
+- P17 epsilon=-1: scalar Hessian 0,1
+- P17 epsilon=-1: Clifford 0,2
+- P17 epsilon=-1: scalar Hessian 0,2
+- P17 epsilon=-1: first moment 1
+- P17 epsilon=-1: moment Hermitian 1
+- P17 epsilon=-1: scalar first derivative 1
+- P17 epsilon=-1: Clifford 1,0
+- P17 epsilon=-1: scalar Hessian 1,0
+- P17 epsilon=-1: Clifford 1,1
+- P17 epsilon=-1: scalar Hessian 1,1
+- P17 epsilon=-1: Clifford 1,2
+- P17 epsilon=-1: scalar Hessian 1,2
+- P17 epsilon=-1: first moment 2
+- P17 epsilon=-1: moment Hermitian 2
+- P17 epsilon=-1: scalar first derivative 2
+- P17 epsilon=-1: Clifford 2,0
+- P17 epsilon=-1: scalar Hessian 2,0
+- P17 epsilon=-1: Clifford 2,1
+- P17 epsilon=-1: scalar Hessian 2,1
+- P17 epsilon=-1: Clifford 2,2
+- P17 epsilon=-1: scalar Hessian 2,2
+- P17 epsilon=-1: determinant of full symbol
+- P17 epsilon=-1: repository dictionary support
+- P17 epsilon=-1: repository dictionary coefficient (-1, -1, -1)
+- P17 epsilon=-1: repository dictionary coefficient (-1, -1, 1)
+- P17 epsilon=-1: repository dictionary coefficient (-1, 1, -1)
+- P17 epsilon=-1: repository dictionary coefficient (-1, 1, 1)
+- P17 epsilon=-1: repository dictionary coefficient (1, -1, -1)
+- P17 epsilon=-1: repository dictionary coefficient (1, -1, 1)
+- P17 epsilon=-1: repository dictionary coefficient (1, 1, -1)
+- P17 epsilon=-1: repository dictionary coefficient (1, 1, 1)
+- P17 epsilon=-1: repository dictionary full symbol
+- P17 epsilon=-1: Fourier convention inversion

@@ -1,0 +1,36 @@
+# Sanhedrin run log
+record:       2026-09-24--two-channel-stability-review.md
+started:      2026-09-24T17:21:47Z
+command:      sanedrin -r 1 -m opus,abner -i es -p 1800 -t 900 -q 1 -R /home/ignac/sanedrin/reglas/base.md -c reports/2026-09-24--h1c-return-kernel-schur-audit.md -c reports/2026-09-24--two-channel-reconstruction-operator-norms.md -c reports/2026-09-24--two-channel-t1-exact-signed-pq.md -c papers/ir-corona/ir-corona.tex -c state/CURRENT_STATE.md -o debates/2026-09-24--two-channel-stability-review.md debates/2026-09-24--two-channel-stability-review-request.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        debates/2026-09-24--two-channel-stability-review-request.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       1
+words/turn:   1800
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (1 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.281 (Claude Code)
+codex:        codex-cli 0.156.1
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   reports/2026-09-24--h1c-return-kernel-schur-audit.md (2400 words)
+attachment:   reports/2026-09-24--two-channel-reconstruction-operator-norms.md (1313 words)
+attachment:   reports/2026-09-24--two-channel-t1-exact-signed-pq.md (2825 words)
+attachment:   papers/ir-corona/ir-corona.tex (7365 words)
+attachment:   state/CURRENT_STATE.md (12800 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-09-24T17:21:48Z  round 1 | CLAUDE OPUS | send | context 27539 words | access sellado
+2026-09-24T17:28:36Z  round 1 | CLAUDE OPUS | recv | 408s | 1145 words | ok
+2026-09-24T17:28:36Z  round 1 | ABNER | send | context 28692 words | access sellado
