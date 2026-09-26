@@ -30,8 +30,8 @@ produces only a vanishing fraction of its output outside the wider band
 $|p|\le N^{-1/2}$. Bob's
 region lies outside the emergent light cone of every site of Alice's region.
 After $N$ steps, Bob's distinguishability $\delta(N)$ obeys the explicit
-bound $\delta(N)\le 36N^4e^{-JN}$ with $J=(1-\sqrt3/2)\log 2$. For a concrete
-family of sixteen encoder–detector pairs, it has the exact leading
+bound $\delta(N)\le 36N^4e^{-JN}$ with $J=(1-\sqrt3/2)\log 2$. For the twelve
+Pauli encoder–detector pairs of a concrete family, it has the exact leading
 asymptotics
 
 $$
@@ -42,7 +42,7 @@ $$
 Here $K_*\approx0.1905$ is the value of a Legendre rate function at a unique
 regional minimiser. The coefficient $C(\theta)$ is given in closed form, and
 interval arithmetic shows that it does not vanish for any $\theta$ in any of
-the sixteen pairs. The emergent cone is therefore not operationally sharp,
+these pairs; four further pairs with $M=I$ serve as reference controls. The emergent cone is therefore not operationally sharp,
 even for infrared-admissible operations. The response is non-perturbatively
 small, invisible to every power of the infrared scale, and it lies strictly
 inside the microscopic causal support. The result is purely asymptotic: the
@@ -150,8 +150,9 @@ quadratically on the spheres.
    $v_*=(1-\frac1{2\sqrt3})(1,1,1)$ is the unique minimiser of $I$ over the
    regional velocity set. Moreover $J<K_*<\log4$. By item 4, the rate $K_*$
    is attained by an explicit response.
-4. *Leading asymptotics* (Theorem 4.4). For all sixteen encoder–detector
-   pairs,
+4. *Leading asymptotics* (Theorem 4.4). For the twelve Pauli
+   encoder–detector pairs ($M\ne I$; the four pairs with $M=I$ are
+   reference controls),
    $\delta_{M,M_B}(N)=|C_{M,M_B}(\theta_N)|N^{-13/2}e^{-K_*N}(1+O(N^{-1/2}))$.
    The coefficient $C_{M,M_B}(\theta)$ is given in closed form and is
    uniformly non-zero, with relative oscillation in $\theta$ at most
@@ -609,6 +610,11 @@ $$
 
 and $\delta_{M,M_B}(N)>0$ for all $N$ larger than some finite $N_*$.
 
+Throughout, the operational claim concerns the twelve Pauli pairs,
+$M\in\{\sigma_1,\sigma_2,\sigma_3\}$. The four pairs with $M=I$ are
+included as reference controls. Theorem 4.4 and Table 1 cover all sixteen
+pairs.
+
 The constants implicit in the $O(N^{-1/2})$ terms are finite but not
 explicit, and neither is $N_*$. Theorem 4.4 therefore does not assert
 $\delta_{M,M_B}(N)>0$ at any specified $N$. It also does not say from which
@@ -617,7 +623,7 @@ $N$ on the leading term is numerically accurate (Section 8).
 **Table 1.** Mean leading coefficients
 $\overline{C}_{M,M_B}=\mathcal K c_r\overline\Gamma\ell_0$ and the uniform
 bound on their relative oscillation in $\theta$. Values are certified by
-interval arithmetic (Appendix A).
+interval arithmetic (Appendix A). Rows with $M=I$ are reference controls.
 
 | $M$ | $M_B$ | $\overline{C}_{M,M_B}$ | $\sup_\theta \lvert C/\overline{C}-1\rvert$ |
 | --- | --- | ---: | ---: |
@@ -639,8 +645,8 @@ interval arithmetic (Appendix A).
 | $\sigma_3$ | $P_3$ | $+0.0752752093$ | $1.47\cdot10^{-3}$ |
 
 **Corollary 4.5.** In this protocol the emergent light cone is not
-operationally sharp for infrared-admissible operations. For each pair the
-response is non-perturbatively small: $\delta_{M,M_B}(N)=o(N^{-k})$ for every
+operationally sharp for infrared-admissible operations. For each of the
+twelve Pauli pairs the response is non-perturbatively small: $\delta_{M,M_B}(N)=o(N^{-k})$ for every
 $k$. It is nevertheless non-zero for all large $N$, with the exact rate
 $K_*$, the exact power $13/2$ and an explicit non-vanishing coefficient.
 
