@@ -1,12 +1,14 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-24
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; flat absolute-scale gate 4B CLOSED as `NO_ABSOLUTE_SCALE_DERIVABLE` (Sec. 8.21, within that frozen class); **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification for H1 OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
-**Branch-local state.** This file is reconciled on
-`research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
-merged on this branch. It is **not** a canonical promotion: `main` is
-unchanged, and promotion requires a separate explicit decision.
+**Branch-local state.** The baseline body of this file is reconciled on
+`research/b-infinity-post-s4-gate` only. The 2026-09-28 Sec. 8.21 terminal
+decision is an addendum for `claude/endpoint-transfer-partial`; it does not
+reconcile the other sections on this branch. This file is **not** a canonical
+promotion: `main` is unchanged, and promotion there requires a separate explicit
+decision.
 
 **Repository:** `nacho09021973/qca-causal-cones`
 
@@ -1377,7 +1379,7 @@ Sec. 8.15 (`DIMENSIONAL_MAP_CONDITIONAL`) without reopening the `3/128`
 audit. **Not a signalling gate, not a rate gate, not a Laplace-coefficient
 gate, not a laboratory-implementation gate (4A).**
 
-**Initial evidence status: `NOT_EXECUTED / OUTCOME_OPEN`.**
+**Initial evidence status (2026-09-17): `NOT_EXECUTED / OUTCOME_OPEN`.**
 
 Step 3 is **input**, not an object to re-optimize. The gate does **not**
 ask whether `δ_{M,M_B}(N) ≠ 0`. It asks whether a physically defensible
@@ -1432,7 +1434,21 @@ physically fixed, infrared cone strictly narrower than microscopic
 support, known observable of that gap): **no** on this pass. Ion-trap
 and photonic Dirac automata are 4A antecedents. Pavia/Mlodinow–Brun
 are incomplete fundamental candidates (Planck `ASSUMPTION`, different
-observables). This scan does **not** assign a 4B terminal state.
+observables). This scan did **not** assign a 4B terminal state.
+
+**Terminal decision (2026-09-28; branch-local, direct user decision).**
+The reviewed diagnosis in
+[`2026-09-28--physical-realization-absolute-scale-gate.md`](../reports/2026-09-28--physical-realization-absolute-scale-gate.md),
+versioned at `16c4f0f`, is accepted for the frozen flat CJWW (5.15) class.
+4B is **CLOSED: `NO_ABSOLUTE_SCALE_DERIVABLE`**. The model and protocol do
+not determine an absolute scale or supply the physical dictionary needed for
+a prediction about nature. This closure does not assert that no future theory
+could provide those ingredients. Reopening 4B requires a new, physically
+justified ingredient and a separate explicit decision. Chrono-Grid remains a
+candidate reference without an established identification with CJWW; it does
+not open a new workstream. The mathematical corona result in Sec. 8.20 is
+unchanged. This decision does not close or promote the distinct H1 physical
+realization question in Sec. 9.
 
 
 ## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)

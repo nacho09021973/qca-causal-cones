@@ -11,16 +11,16 @@ primarias enlazadas abajo y la consistencia dimensional de la conclusión.
 Los resultados heredados de §§8.15–8.20 se toman como premisas del contrato;
 esta revisión no vuelve a demostrar la ley operacional.
 
-**Límite de autorización:** el contrato de 2026-09-17 autorizó congelar el
-protocolo, y dice expresamente que no autorizaba ejecutar 4B. Por tanto, este
-documento registra y evalúa el análisis realizado, pero `NO_ABSOLUTE_SCALE_DERIVABLE`
-es aquí un **diagnóstico compatible con el contrato**, no un cierre formal ni
-una promoción del gate. La instrucción actual autoriza revisar y versionar este
-informe; no cambia retroactivamente el alcance de la autorización de ejecución.
+**Autorización y decisión posterior:** el contrato de 2026-09-17 autorizó
+congelar el protocolo, no ejecutar 4B. La decisión explícita del usuario del
+2026-09-28 acepta el diagnóstico revisado y cierra formalmente 4B con el alcance
+de la clase congelada. Esta decisión no convierte retroactivamente el análisis
+en una ejecución autorizada bajo el acto de 2026-09-17; adopta sus conclusiones
+como base suficiente para el cierre terminal.
 
 ## Resultado
 
-**Diagnóstico del análisis para el modelo congelado: `NO_ABSOLUTE_SCALE_DERIVABLE`.**
+**Estado terminal aceptado para el modelo congelado: `NO_ABSOLUTE_SCALE_DERIVABLE`.**
 
 La dinámica fija una relación de velocidades, pero deja una familia de escalas
 absolutas. No encontré una relación física adicional que fije esas escalas **y
@@ -118,9 +118,9 @@ absoluta ni mapa físico para la señal operacional. La diferencia geométrica
 entre soporte microscópico y cono IR sigue establecida dentro de la clase del
 modelo; su traducción a la naturaleza permanece abierta.
 
-No se actualizó `state/CURRENT_STATE.md`: su cabecera declara que la
-reconciliación corresponde a `research/b-infinity-post-s4-gate`, mientras que la
-rama examinada es `claude/endpoint-transfer-partial`. Además, la cabecera
-canónica del estado mantiene abierta la realización física. La promoción del
-diagnóstico a estado terminal requiere una decisión explícita separada y una
-revisión de la autorización del gate.
+`state/CURRENT_STATE.md` registra esta decisión como cierre branch-local en
+`claude/endpoint-transfer-partial`; ese fichero sigue reconciliado con
+`research/b-infinity-post-s4-gate` y `main` no se modifica. El cierre se limita
+al gate 4B para CJWW (5.15) congelado. La cuestión distinta de realización física
+en la extensión H1 de Sec. 9 sigue OPEN. Chrono-Grid queda como candidato sin
+identificación demostrada con CJWW y no abre otra línea de trabajo.
