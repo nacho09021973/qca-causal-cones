@@ -20,6 +20,7 @@ reopened or promoted by that successor.
 | Exact CJWW dynamic-graph bridge | **STRONG_EXACT_BRIDGE_IMPOSSIBLE** for one fixed pure geometry background and exact reduced CJWW dynamics for every matter state; backreaction then cannot carry matter information | [2026-09-29 no-go proof](../reports/2026-09-29--explicit-cjww-dynamic-graph-bridge.md) |
 | W1 perturbative link bridge | **W1_CAUSAL_UNITARY_BRIDGE_PASS / FULL_QCGD_SYNTHESIS_OPEN**; exact CJWW at g=0, matter-dependent link response O(g), regular-background matter correction begins at O(g^2) | [2026-09-29 W1 report](../reports/2026-09-29--w1-perturbative-backreaction-bridge.md) |
 | W1 geometricity | **W1_OPERATIONAL_GEOMETRY_PASS**, scope **FINITE_TIME_EXACT_SUPPORT_ONLY**; two link states give different exact 2-step matter support, while one-step adjacency and outer causal body remain unchanged | [2026-09-29 geometricity report](../reports/2026-09-29--w1-geometricity.md) |
+| W1 coarse metric | **W1_SCALAR_POTENTIAL_ONLY / NO_METRIC_DEFORMATION**; link backgrounds add scalar potential/dephasing but do not alter the Weyl principal symbol, one-step neighborhood or outer causal body | [2026-09-29 coarse-metric report](../reports/2026-09-29--w1-coarse-metric.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2246,3 +2247,36 @@ For the W1 successor model, the specific old G0 obstruction
 evolving link register, reciprocal matter/link coupling and an operational
 support witness. Nevertheless G1 is **not** opened here because no coarse
 metric/curvature observable has yet been derived.
+
+
+## 16. W1 coarse-metric test — 2026-09-29
+
+**Contract:** [`W1_COARSE_METRIC_GATE.md`](../theory/W1_COARSE_METRIC_GATE.md),
+frozen at commit `a0a769b35b1c4e8e57241713a6cbd423038fb507`.
+
+**Execution:** [coarse-metric report](../reports/2026-09-29--w1-coarse-metric.md),
+commit `d1a93bab9e1922c1cc8243976479d90d32c8ed84`.
+
+Status:
+
+```
+W1_COARSE_METRIC_GATE =
+W1_SCALAR_POTENTIAL_ONLY / NO_METRIC_DEFORMATION
+```
+
+For a separable link background, the first-order matter generator is
+`sum_e b_e A_e = sum_x v(x)|x><x| tensor I_2`: a scalar on-site potential.
+For link eigen-backgrounds this is exact,
+`W_g(x,p)=exp[-ig v(x)] W_0(p)`, so the momentum derivative and local
+group-velocity/characteristic cone are unchanged. Non-eigenstate backgrounds
+produce the previously derived dephasing-type reduced correction and can lift
+finite-time interference zeros, but that is not a principal-symbol/tetrad
+deformation.
+
+The W1 operational-geometricity PASS of Sec. 15 therefore remains valid only
+at the finite-time exact-support level. It does not supply a coarse metric.
+The gravitational-normalization programme remains blocked before G1 for this
+coupling. A successor would have to couple geometry to the hopping/coin
+matrices themselves so that a geometry-dependent
+`sigma^a e_a^i(x) p_i` term appears. No such new coupling is constructed
+here.
