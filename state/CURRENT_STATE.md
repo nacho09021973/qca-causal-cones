@@ -16,7 +16,8 @@ reopened or promoted by that successor.
 | Spectral attribution | C2c PASS for the sixteen frozen pairs; C3 PASS for four encoders with M_B=I, limited to the conditioning correction | Section 10.1 |
 | Physical realization / absolute scale (4B) | Existing September 25 execution records NO_ABSOLUTE_SCALE_DERIVABLE with PRELIMINARY / PARTIAL_EXTERNAL_REVIEW evidence and a scoped September 26 review | Section 8.21; [existing execution](../reports/2026-09-25--physical-realization-absolute-scale-gate.md) |
 | Gravitational normalization successor | **BLOCKED_NO_DYNAMICAL_GEOMETRY** at G0 on the frozen CJWW/H1 model; G1-G3 not executed | [2026-09-29 G0 report](../reports/2026-09-29--gravitational-normalization-g0.md) |
-| Dynamical-geometry model class | **VIABLE_MODEL_CLASS_IDENTIFIED / EXPLICIT_BRIDGE_NOT_CONSTRUCTED**; QCGD-type bounded-degree class selected, exact CJWW-preserving bridge still OPEN | [2026-09-29 class-selection report](../reports/2026-09-29--dynamical-geometry-model-class.md) |
+| Dynamical-geometry model class | **VIABLE_MODEL_CLASS_IDENTIFIED / EXPLICIT_BRIDGE_NOT_CONSTRUCTED**; QCGD-type bounded-degree class selected | [2026-09-29 class-selection report](../reports/2026-09-29--dynamical-geometry-model-class.md) |
+| Exact CJWW dynamic-graph bridge | **STRONG_EXACT_BRIDGE_IMPOSSIBLE** for one fixed pure geometry background and exact reduced CJWW dynamics for every matter state; backreaction then cannot carry matter information | [2026-09-29 no-go proof](../reports/2026-09-29--explicit-cjww-dynamic-graph-bridge.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2115,3 +2116,36 @@ No edge-flip rule is invented in this gate. Construction or impossibility of
 the explicit bridge requires a separate successor. The gravitational
 normalization gate remains blocked until such a bridge passes its own G0
 requirements.
+
+
+## 13. Exact CJWW / dynamic-graph bridge no-go — 2026-09-29
+
+**Contract:** [`EXPLICIT_CJWW_DYNAMIC_GRAPH_BRIDGE_GATE.md`](../theory/EXPLICIT_CJWW_DYNAMIC_GRAPH_BRIDGE_GATE.md),
+frozen at commit `b8655ceefce70b3ec30df2372211a3565757df34`.
+
+**Execution:** [no-go proof](../reports/2026-09-29--explicit-cjww-dynamic-graph-bridge.md),
+commit `ef38144d2dec51819b91d84aeee8eb218e7aa86a`.
+
+Status:
+
+```
+EXPLICIT_CJWW_DYNAMIC_GRAPH_BRIDGE_GATE =
+STRONG_EXACT_BRIDGE_IMPOSSIBLE
+```
+
+For one fixed pure geometry background `|G0>`, assume the reduced matter
+channel is exactly `U_CJWW rho U_CJWW^dag` for every matter state. The
+joint output for every pure matter input must then factorize, and linearity
+forces the geometry factor to be independent of the matter input. Therefore
+the complementary geometry channel is constant and cannot encode
+matter-dependent backreaction.
+
+This obstruction is algebraic and precedes locality or QCGD gate synthesis.
+It does not rule out dynamical-geometry QCA. It rules out only the strong
+combination of exact CJWW reduced dynamics for every matter input and
+simultaneous information-bearing backreaction on the same fixed pure
+background.
+
+The conservative escape route is W1: exact CJWW at zero backreaction coupling
+and controlled matter-channel corrections at nonzero coupling. W1 is not
+opened or constructed by this record.
