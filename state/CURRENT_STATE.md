@@ -2,10 +2,12 @@
 
 ## Reading guide and synchronization — 2026-09-28
 
-This is a documentation-only checkpoint requested by the user before further
-research. Its remote baseline is `main@0ad333fb645200a409733642cfccc7dd2fec8f48`.
-It inventories existing evidence and imports one preliminary report; it does
-not promote a scientific result, close a gate, or authorize a new calculation.
+This branch was created from the documentation-only checkpoint of 2026-09-28.
+That checkpoint's inventory remains unchanged below. On 2026-09-29 the user
+directly authorized a separately chartered successor,
+`GRAVITATIONAL_NORMALIZATION_GATE`; its G0 stop result is recorded in the
+2026-09-29 addendum at the end of this file. No earlier scientific gate is
+reopened or promoted by that successor.
 
 | Front | Recorded status and scope | Where to resume |
 | --- | --- | --- |
@@ -13,6 +15,7 @@ not promote a scientific result, close a gate, or authorize a new calculation.
 | Flat CJWW corona | CLOSED in the frozen model/protocol; this is not evidence of a natural substrate | Section 8.20; [authoritative manuscript](../papers/ir-corona/ir-corona.tex) |
 | Spectral attribution | C2c PASS for the sixteen frozen pairs; C3 PASS for four encoders with M_B=I, limited to the conditioning correction | Section 10.1 |
 | Physical realization / absolute scale (4B) | Existing September 25 execution records NO_ABSOLUTE_SCALE_DERIVABLE with PRELIMINARY / PARTIAL_EXTERNAL_REVIEW evidence and a scoped September 26 review | Section 8.21; [existing execution](../reports/2026-09-25--physical-realization-absolute-scale-gate.md) |
+| Gravitational normalization successor | **BLOCKED_NO_DYNAMICAL_GEOMETRY** at G0 on the frozen CJWW/H1 model; G1-G3 not executed | [2026-09-29 G0 report](../reports/2026-09-29--gravitational-normalization-g0.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2027,3 +2030,45 @@ C3 is PASS in its frozen scope; E/AdS remains FROZEN. H1c, E0,
 POWER_13/2_STABILITY and the Sec. 8.20 flat theorem are unchanged. No new
 numerical calculation, scan, manuscript publication, commit or push follows
 from this update.
+
+
+## 11. Gravitational-normalization successor — 2026-09-29
+
+**Authorization:** direct user instruction on 2026-09-29. This is a separately
+chartered quantum-gravity successor, satisfying the scope rule in
+`PROJECT_INSTRUCTIONS.md`.
+
+**Contract:** [`GRAVITATIONAL_NORMALIZATION_GATE.md`](../theory/GRAVITATIONAL_NORMALIZATION_GATE.md),
+frozen at commit `2680d799210731ab2815533e0b9ca9918f15d397`.
+
+**Execution:** [G0 report](../reports/2026-09-29--gravitational-normalization-g0.md),
+commit `f9f20746ccf44e62c440565455679eb4fd384a7d`.
+
+Status:
+
+```
+GRAVITATIONAL_NORMALIZATION_GATE = BLOCKED_NO_DYNAMICAL_GEOMETRY
+G0 = FAIL
+G1 = NOT_EXECUTED
+G2 = NOT_EXECUTED
+G3 = NOT_EXECUTED
+```
+
+Reason: the frozen inhomogeneous operator
+[
+D(z)=S(z)\oplus S(z)^{-1},\qquad
+C_N(X)=\exp[-i\vartheta(X)\beta/N],\qquad
+A_N(X,z)=C_N(X)D(z)
+]
+treats `vartheta(X)` as an externally specified profile. The frozen state
+space contains no geometric degree of freedom that is evolved by the update,
+and there is no matter-to-geometry backreaction rule. Therefore the stop rule
+forbids assigning this model an Einstein-Hilbert normalization, Newton
+constant or dynamically selected AdS radius.
+
+This does **not** refute or reopen E/H1. E remains a propagation-stability
+question on a prescribed inhomogeneous background and retains
+`STOPPED_UNPROVEN`. A future successor would first need a separately
+chartered dynamical-geometry model class: microscopic geometry degrees of
+freedom, their local update and explicit backreaction. No such model is
+constructed or authorized by this result.
