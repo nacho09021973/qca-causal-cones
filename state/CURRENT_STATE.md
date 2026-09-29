@@ -16,6 +16,7 @@ reopened or promoted by that successor.
 | Spectral attribution | C2c PASS for the sixteen frozen pairs; C3 PASS for four encoders with M_B=I, limited to the conditioning correction | Section 10.1 |
 | Physical realization / absolute scale (4B) | Existing September 25 execution records NO_ABSOLUTE_SCALE_DERIVABLE with PRELIMINARY / PARTIAL_EXTERNAL_REVIEW evidence and a scoped September 26 review | Section 8.21; [existing execution](../reports/2026-09-25--physical-realization-absolute-scale-gate.md) |
 | Gravitational normalization successor | **BLOCKED_NO_DYNAMICAL_GEOMETRY** at G0 on the frozen CJWW/H1 model; G1-G3 not executed | [2026-09-29 G0 report](../reports/2026-09-29--gravitational-normalization-g0.md) |
+| Dynamical-geometry model class | **VIABLE_MODEL_CLASS_IDENTIFIED / EXPLICIT_BRIDGE_NOT_CONSTRUCTED**; QCGD-type bounded-degree class selected, exact CJWW-preserving bridge still OPEN | [2026-09-29 class-selection report](../reports/2026-09-29--dynamical-geometry-model-class.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2072,3 +2073,45 @@ question on a prescribed inhomogeneous background and retains
 chartered dynamical-geometry model class: microscopic geometry degrees of
 freedom, their local update and explicit backreaction. No such model is
 constructed or authorized by this result.
+
+
+## 12. Dynamical-geometry model-class successor — 2026-09-29
+
+**Authorization:** direct user instruction to continue after the G0 stop.
+
+**Contract:** [`DYNAMICAL_GEOMETRY_MODEL_CLASS_GATE.md`](../theory/DYNAMICAL_GEOMETRY_MODEL_CLASS_GATE.md),
+frozen at commit `abfa341a30cd71ae2b6e130b387808a85f3b5a06`.
+
+**Execution:** [model-class selection report](../reports/2026-09-29--dynamical-geometry-model-class.md),
+commit `c08394e720e2c06bd91543a81aa2dbd4ac0b12c5`.
+
+Status:
+
+```
+DYNAMICAL_GEOMETRY_MODEL_CLASS_GATE =
+VIABLE_MODEL_CLASS_IDENTIFIED / EXPLICIT_BRIDGE_NOT_CONSTRUCTED
+```
+
+Selected minimal successor class: bounded-degree Quantum Causal Graph
+Dynamics-type kinematics with joint local matter/graph unitary gates and a
+required fixed-background sector reproducing CJWW Eq. (5.15).
+
+Evidence roles are separated:
+
+- Arrighi--Martiel QCGD supplies discrete-time unitary causal graph dynamics
+  and finite-depth localizability at the class level;
+- Hamma et al. evolving-graph Bose--Hubbard supplies an explicit prior-art
+  mechanism for bidirectional matter/graph coupling, but not in the CJWW
+  discrete-time QCA;
+- gauge-invariant CA/QCA constructions show that matter plus link variables
+  can be coupled by reversible/local discrete dynamics, but gauge links are
+  not reinterpreted as geometry.
+
+The unresolved hard condition is M6: no explicit local gate set has yet been
+constructed that has nontrivial graph backreaction while reducing **exactly**
+to CJWW (5.15) on a regular fixed-background sector.
+
+No edge-flip rule is invented in this gate. Construction or impossibility of
+the explicit bridge requires a separate successor. The gravitational
+normalization gate remains blocked until such a bridge passes its own G0
+requirements.
