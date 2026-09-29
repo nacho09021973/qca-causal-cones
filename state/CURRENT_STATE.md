@@ -18,6 +18,7 @@ reopened or promoted by that successor.
 | Gravitational normalization successor | **BLOCKED_NO_DYNAMICAL_GEOMETRY** at G0 on the frozen CJWW/H1 model; G1-G3 not executed | [2026-09-29 G0 report](../reports/2026-09-29--gravitational-normalization-g0.md) |
 | Dynamical-geometry model class | **VIABLE_MODEL_CLASS_IDENTIFIED / EXPLICIT_BRIDGE_NOT_CONSTRUCTED**; QCGD-type bounded-degree class selected | [2026-09-29 class-selection report](../reports/2026-09-29--dynamical-geometry-model-class.md) |
 | Exact CJWW dynamic-graph bridge | **STRONG_EXACT_BRIDGE_IMPOSSIBLE** for one fixed pure geometry background and exact reduced CJWW dynamics for every matter state; backreaction then cannot carry matter information | [2026-09-29 no-go proof](../reports/2026-09-29--explicit-cjww-dynamic-graph-bridge.md) |
+| W1 perturbative link bridge | **W1_CAUSAL_UNITARY_BRIDGE_PASS / FULL_QCGD_SYNTHESIS_OPEN**; exact CJWW at g=0, matter-dependent link response O(g), regular-background matter correction begins at O(g^2); geometric interpretation OPEN | [2026-09-29 W1 report](../reports/2026-09-29--w1-perturbative-backreaction-bridge.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2149,3 +2150,55 @@ background.
 The conservative escape route is W1: exact CJWW at zero backreaction coupling
 and controlled matter-channel corrections at nonzero coupling. W1 is not
 opened or constructed by this record.
+
+
+## 14. W1 perturbative link-backreaction bridge — 2026-09-29
+
+**Contract:** [`W1_PERTURBATIVE_BACKREACTION_BRIDGE_GATE.md`](../theory/W1_PERTURBATIVE_BACKREACTION_BRIDGE_GATE.md),
+frozen at commit `2631e31369a9598da044d00e37cbb54d7100cab6`.
+
+**Execution:** [W1 report](../reports/2026-09-29--w1-perturbative-backreaction-bridge.md),
+commit `c3ff835e0ee5a72c9e64f3557820a55cad8fde40`.
+
+Status:
+
+```
+W1_PERTURBATIVE_BACKREACTION_BRIDGE_GATE =
+W1_CAUSAL_UNITARY_BRIDGE_PASS / FULL_QCGD_SYNTHESIS_OPEN
+GEOMETRIC_INTERPRETATION = OPEN
+GRAVITATIONAL_NORMALIZATION_G0 = NOT_REOPENED
+```
+
+Construction: one qubit on each undirected edge of the fourteen-jump CJWW
+support graph, with local endpoint projector
+`A_e = (|x><x|+|y><y|) tensor I_2` and edge gate
+`V_e(g)=exp[-ig(Z_e+X_e) tensor A_e]`.
+
+The seven undirected displacement classes all have a representative with
+first coordinate +1. Splitting each class by the parity of the starting
+`x_1` gives fourteen matching layers, so the added interaction is
+finite-depth and bounded-range.
+
+On the regular product background all edge qubits are `|0>`.
+Matter changes each edge state at first order according to its endpoint
+occupation. Conversely, changing one edge background from `|0>` to
+`|1>` changes the first-order matter generator by `2 A_e`.
+
+Because every site is incident to exactly fourteen support edges,
+`sum_e A_e = 14 I` on the one-particle matter Hilbert space. Therefore the
+regular-background first-order reduced matter correction is only a global
+phase and vanishes on density matrices. The first nonzero correction is
+
+[
+Phi_g(ho)=U_0ho U_0^dagger+
+g^2sum_eleft(A_esigma A_e-rac12{A_e,sigma}ight)+O(g^3),
+quad sigma=U_0ho U_0^dagger.
+]
+
+Thus link backreaction is `O(g)` while regular-background matter disturbance
+begins at `O(g^2)`, consistent with the exact-bridge no-go.
+
+This is **not yet dynamical geometry**: the edge qubit has not been proved to
+change adjacency, causal distance or a metric observable. The G0
+gravitational-normalization block therefore remains in force. A separately
+chartered geometricity test would be required before G0 can be reconsidered.
