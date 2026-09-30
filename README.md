@@ -16,6 +16,21 @@ The original strong identification `c_IR = maximum microscopic substrate speed` 
 
 Read [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) before doing new work. It is the single source of truth for project status, gates, rejected claims, and the next allowed calculation.
 
+## Current reading order — 2026-09-28
+
+1. [State and synchronization summary](state/CURRENT_STATE.md#reading-guide-and-synchronization--2026-09-28):
+   accepted scopes, preliminary work, paused fronts, and reconciled local history.
+2. [Flat CJWW manuscript](papers/ir-corona/ir-corona.tex): the model result.
+3. [Independent-use discrimination cost](reports/2026-09-28--iid-message-discrimination-cost.md):
+   supplied preliminary derivation, independent review pending.
+4. [Existing 4B execution](reports/2026-09-25--physical-realization-absolute-scale-gate.md):
+   negative absolute-scale result, with its recorded evidence limitations;
+   terminal closure recorded in `state/CURRENT_STATE.md` Section 8.21.
+
+The immediate task is independent review of the preliminary discrimination-cost
+report before further research.
+The new report does not establish a universal operational boundary at c.
+
 ## Literature library
 
 `biblioteca/` (git-ignored) holds the local PDFs. **Before investigating any question, read
@@ -48,8 +63,9 @@ symbols share three dimension-specific geometries.
 
 ## Status after the s=4 counterexample
 
-This status is branch-local to `research/b-infinity-post-s4-gate` and has not
-been promoted to `main`.
+The records below originated on `research/b-infinity-post-s4-gate` and are
+present in the September 28 remote main baseline. Their scientific scope
+and evidence levels remain those recorded in `state/CURRENT_STATE.md`.
 
 The [MASSLESS INRADIUS RIGIDITY GATE](theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md)
 is historical. It was completed by an explicit
@@ -63,6 +79,7 @@ and a [prior-art audit](reports/2026-09-15--s4-family-prior-art-audit.md).
 - Rigidity in the published minimal `s=2` class, and in stronger classes with
   additional representation assumptions, remains **OPEN**.
 - **NOVELTY remains OPEN.**
-- **No successor scientific gate is currently chartered.** Candidate questions
-  are listed in [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) Sec. 7;
-  none of them authorizes new calculations yet.
+- This is the historical s=4 summary. Later authorizations and stops are
+  recorded in [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md), Sections 8–10.
+  Use its reading guide before continuing; this documentation update opens
+  no new scientific gate.

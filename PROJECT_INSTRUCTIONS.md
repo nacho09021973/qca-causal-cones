@@ -108,10 +108,12 @@ Rules that carry over to any successor gate:
 
 Negative results are valid project outcomes.
 
-**Live physical line (2026-09-17).** Recorded only in
-`state/CURRENT_STATE.md` Sec. 8. Operational IR signalling in the frozen
-CJWW (5.15) class is closed (Sec. 8.20). The authorized next front is
-Sec. 8.21, `PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE`, `NOT_EXECUTED`.
-Step 3 is not reopened. A laboratory implementation of the walk (fork 4A)
-is identified and not chartered. Negative 4B closures are first-class.
-The point-(3) / Gate C authorization above is unchanged.
+**Current physical-line navigation (2026-09-28).** Use the dated reading
+guide in `state/CURRENT_STATE.md` and the detailed records in Sections 8–10.
+The previous September 17 paragraph naming 4B as NOT_EXECUTED is historical:
+Section 8.21 now records September 25 execution authorization, the negative
+result and its limited review, and a later 4A authorization without a contract.
+H1 remains OPEN and paused under the L2 stop record. The September 28 iid
+discrimination-cost report is PRELIMINARY, pending independent review.
+This documentation checkpoint does not change the point-(3) / Gate C
+authorization, promote scientific evidence, or authorize new calculations.

@@ -1,12 +1,50 @@
 # CURRENT_STATE
 
+## Reading guide and synchronization — 2026-09-28
+
+This is a documentation-only checkpoint requested by the user before further
+research. Its remote baseline is `main@0ad333fb645200a409733642cfccc7dd2fec8f48`.
+It inventories existing evidence and imports one preliminary report; it does
+not promote a scientific result, close a gate, or authorize a new calculation.
+
+| Front | Recorded status and scope | Where to resume |
+| --- | --- | --- |
+| Central question: c and the substrate | Strong matching rejected in the declared s=4 class; standard Pavia equality retained; additional matching hypotheses and species universality OPEN | Sections 4–7 |
+| Flat CJWW corona | CLOSED in the frozen model/protocol; this is not evidence of a natural substrate | Section 8.20; [authoritative manuscript](../papers/ir-corona/ir-corona.tex) |
+| Spectral attribution | C2c PASS for the sixteen frozen pairs; C3 PASS for four encoders with M_B=I, limited to the conditioning correction | Section 10.1 |
+| Physical realization / absolute scale (4B) | September 25 execution records NO_ABSOLUTE_SCALE_DERIVABLE with PRELIMINARY / PARTIAL_EXTERNAL_REVIEW evidence and a scoped September 26 review; terminal closure by user decision on September 28, recorded 2026-09-30 (PR #12) | Section 8.21; [September 25 execution](../reports/2026-09-25--physical-realization-absolute-scale-gate.md); [September 28 report](../reports/2026-09-28--physical-realization-absolute-scale-gate.md) |
+| Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
+| H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
+| E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
+| Independent-use discrimination cost | PRELIMINARY, independent review pending: fixed-detector Theta(delta_N^-2); uniform one-particle lower bound Omega(N^-4 exp(K_* N)) for independent uses in the same regions | [September 28 supplied report](../reports/2026-09-28--iid-message-discrimination-cost.md) |
+
+**Local history reconciled (update 2026-09-30).** The local commits
+`16c4f0f` and `13d398a`, not retrievable when this checkpoint was written,
+reached `main` through PR #12 (merge `442cade`). The chronology conflict in
+Section 8.21 was resolved there by user decision: the September 25 execution
+and authorization record stays canonical; the September 28 report is cited as
+the later terminal closure, and its account of authorization is superseded by
+that record. This checkpoint adds no further 4B closure or evidence-level
+promotion.
+
+**Next step before new research.** Independently review the imported
+discrimination-cost report, including its declared baseline `13d398a` (now in
+main) and inherited sixteen-pair asymptotic. The manuscript at `3a44725`
+keeps the algebraic asymptotics for all sixteen pairs but restricts the
+operational claim to the twelve Pauli pairs; the four M=I pairs are
+reference controls, and the review must keep that distinction. Until then the
+cost remains PRELIMINARY. A universal operational boundary at c, viable
+communication inside it, other geometries, correlated uses, and stability
+under perturbations remain unproved and are not opened by this checkpoint.
+
 **Date:** 2026-09-24
 **Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; flat absolute-scale gate 4B CLOSED as `NO_ABSOLUTE_SCALE_DERIVABLE` (Sec. 8.21, within that frozen class); **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification for H1 OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. L2 stop gate: `B / OPEN_BLOCKED_METHOD` (PRELIMINARY decision audit; partial external review + source bounds reproduced by Claude; B structural to norm-based method, not evidence against H1; H1 OPEN and paused). The present physical stay-remainder bounds do not reach `o(N^-13/2 e^{-K_*N})` without the still-open H1c localization machinery; this is a method obstruction, not an H1 refutation. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
-**Branch-local state.** This file is reconciled on
-`research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
-merged on this branch. It is **not** a canonical promotion: `main` is
-unchanged, and promotion requires a separate explicit decision.
+**Historical branch provenance.** The earlier reconciliation originated on
+`research/b-infinity-post-s4-gate`. These records are now present in the remote
+main baseline named above; the former statement that main was unchanged is
+obsolete. Repository integration does not by itself promote an evidence level.
+This checkpoint records inventory and provenance only.
 
 **Repository:** `nacho09021973/qca-causal-cones`
 
@@ -1724,7 +1762,12 @@ can be derived from the physical endpoints \((r_c,d_{c,P},d_{c,Q})\).
 It was not executed or opened at that freeze. The later direct user
 instruction and its narrowly scoped continuation are recorded in Sec. 9.7.
 
-### 9.7 Schur stability and the current physical endpoints — 2026-09-24
+### Historical Schur / endpoint proposal — 2026-09-24 (superseded in part)
+
+The following proposal is retained for provenance. Its claimed physical Bob
+endpoint and resulting N^-7 estimates are not current accepted results: use
+the subsequent Section 9.7 repairs and L2 stop addendum. The later Schur PASS
+covers the stated stability norm only.
 
 Direct user instruction: repair the bottleneck and continue, with an explicit
 follow-up requiring a line-by-line check that both endpoints belong to the
