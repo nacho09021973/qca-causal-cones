@@ -18,6 +18,7 @@ branches were incorporated by fast-forward into
 | Gravity line (W1–W12, W6/CJWW control class) | **CLOSED_BY_CONTRACT (W12 §4), 2026-09-30** | Direct user decision («cierra la línea como dice el contrato»). Negative result for this control class; no joint Einstein–Weyl gate will be opened. Reopening requires a new control family with an independent physical justification written before any calculation; after-the-fact rescue is not allowed |
 | Elastic/common-graph successor class | **KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN — PRELIMINARY** | Contract frozen only after independent graph/elastic motivation was written; four +I species see exactly (h_*=a^2\Lambda\Lambda^T), metric rank 6/6. This is common-embedding kinematics only; it does not reopen W3–W11 or supply strain-dependent CJWW hopping dynamics | [2026-09-30 elastic-graph report](../reports/2026-09-30--elastic-graph-species-universality.md) |
 | Unitary elastic hopping-response attempt | **UNITARY_ELASTIC_RESPONSE_INCONSISTENT** | Frozen bond generator depends on arbitrary orientation set `F_+` because exact CJWW blocks do not satisfy `W_-h=W_h^†`; four-species metric test was not executed | [2026-09-30 elastic-hopping report](../reports/2026-09-30--elastic-hopping-unitary-response.md) |
+| Orientation-independent Hermitian elastic successor | **FROZEN / NOT_EXECUTED** | Full 14-hop bond-weighted symbol with Hermitian-part generator; common strain, common coordinates, fixed ordering and no post-result tuning. Four-species node/gauge and metric tests not yet run | [gate](../theory/ELASTIC_HOPPING_HERMITIAN_RESPONSE_GATE.md) |
 
 **Review provenance:** the first review covered `41d0e0d`. The
 [second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
@@ -2959,3 +2960,38 @@ stress components needed by W10.
 
 No canonical strictly local all-momentum Floquet stress tensor or exact
 one-step local energy/momentum continuity law is claimed.
+
+
+## 33. Orientation-independent Hermitian elastic successor — frozen 2026-09-30
+
+**Contract:** [`ELASTIC_HOPPING_HERMITIAN_RESPONSE_GATE.md`](../theory/ELASTIC_HOPPING_HERMITIAN_RESPONSE_GATE.md),
+frozen at commit `1cda245e20acc111a856fa4296f77359be714bd2`.
+
+Status:
+
+```
+AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED
+```
+
+The successor removes the arbitrary half-support orientation that killed the
+previous elastic-response attempt. It uses the full 14-hop weighted symbol
+
+[
+R_u(p)=sum_{hin F}ho_h(u)e^{ipcdot h}W_h,
+qquad
+ho_h(u)=rac{h^Tuh}{h^Th},
+]
+
+and the Hermitian generator
+
+[
+K_u(p)=rac12(R_u(p)+R_u(p)^dagger).
+]
+
+The exact unitary response is frozen as
+`W_{eps,u}(q)=exp[-i eps K_u(p)] W_0(p)`,
+with the same common affine embedding and common physical coordinates used by
+the predecessor elastic-graph gate.
+
+No node/gauge decomposition, four-species metric comparison, metric-rank
+calculation or coefficient adjustment has been performed after freezing.
