@@ -19,14 +19,16 @@ Read [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) before doing new work. I
 ## Current reading order — 2026-09-28
 
 1. [State and synchronization summary](state/CURRENT_STATE.md#reading-guide-and-synchronization--2026-09-28):
-   accepted scopes, preliminary work, paused fronts, and missing local commits.
+   accepted scopes, preliminary work, paused fronts, and reconciled local history.
 2. [Flat CJWW manuscript](papers/ir-corona/ir-corona.tex): the model result.
 3. [Independent-use discrimination cost](reports/2026-09-28--iid-message-discrimination-cost.md):
    supplied preliminary derivation, independent review pending.
 4. [Existing 4B execution](reports/2026-09-25--physical-realization-absolute-scale-gate.md):
-   negative absolute-scale result, with its recorded evidence limitations.
+   negative absolute-scale result, with its recorded evidence limitations;
+   terminal closure recorded in `state/CURRENT_STATE.md` Section 8.21.
 
-The immediate task is synchronization and review before further research.
+The immediate task is independent review of the preliminary discrimination-cost
+report before further research.
 The new report does not establish a universal operational boundary at c.
 
 ## Literature library

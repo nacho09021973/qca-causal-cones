@@ -20,6 +20,10 @@ No se ha ejecutado código para producir resultados científicos nuevos.
 > El expediente 4B del 25 de septiembre ya existe en esa base (estado §8.21);
 > la última frase del informe no lo cierra de nuevo ni incorpora el distinto
 > informe local del 28 de septiembre mencionado por el usuario.
+>
+> Actualización — 2026-09-30. `13d398a` y el informe local 4B del 28 ya están
+> en `main` (PR #12, merge `442cade`); la cronología de 4B quedó resuelta en
+> `state/CURRENT_STATE.md` §8.21. El cuerpo de esta derivación sigue PRELIMINARY.
 
 ## 1. Contrato estadístico y resultados disponibles
 

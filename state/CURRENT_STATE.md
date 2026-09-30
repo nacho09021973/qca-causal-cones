@@ -12,30 +12,27 @@ not promote a scientific result, close a gate, or authorize a new calculation.
 | Central question: c and the substrate | Strong matching rejected in the declared s=4 class; standard Pavia equality retained; additional matching hypotheses and species universality OPEN | Sections 4–7 |
 | Flat CJWW corona | CLOSED in the frozen model/protocol; this is not evidence of a natural substrate | Section 8.20; [authoritative manuscript](../papers/ir-corona/ir-corona.tex) |
 | Spectral attribution | C2c PASS for the sixteen frozen pairs; C3 PASS for four encoders with M_B=I, limited to the conditioning correction | Section 10.1 |
-| Physical realization / absolute scale (4B) | Existing September 25 execution records NO_ABSOLUTE_SCALE_DERIVABLE with PRELIMINARY / PARTIAL_EXTERNAL_REVIEW evidence and a scoped September 26 review | Section 8.21; [existing execution](../reports/2026-09-25--physical-realization-absolute-scale-gate.md) |
+| Physical realization / absolute scale (4B) | September 25 execution records NO_ABSOLUTE_SCALE_DERIVABLE with PRELIMINARY / PARTIAL_EXTERNAL_REVIEW evidence and a scoped September 26 review; terminal closure by user decision on September 28, recorded 2026-09-30 (PR #12) | Section 8.21; [September 25 execution](../reports/2026-09-25--physical-realization-absolute-scale-gate.md); [September 28 report](../reports/2026-09-28--physical-realization-absolute-scale-gate.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
 | Independent-use discrimination cost | PRELIMINARY, independent review pending: fixed-detector Theta(delta_N^-2); uniform one-particle lower bound Omega(N^-4 exp(K_* N)) for independent uses in the same regions | [September 28 supplied report](../reports/2026-09-28--iid-message-discrimination-cost.md) |
 
-**Local versus remote evidence.** At this checkpoint, the remote
-`claude/endpoint-transfer-partial` points to `a19c6478`, 25 commits behind
-the main baseline. The report's declared local baseline `13d398a` and the
-user-reported `16c4f0f` could not be retrieved from GitHub. Their absence
-from this remote does not invalidate local work, but they are not verified
-remote evidence. The distinct local September 28 4B report has not been
-imported because its full text is unavailable in this session.
+**Local history reconciled (update 2026-09-30).** The local commits
+`16c4f0f` and `13d398a`, not retrievable when this checkpoint was written,
+reached `main` through PR #12 (merge `442cade`). The chronology conflict in
+Section 8.21 was resolved there by user decision: the September 25 execution
+and authorization record stays canonical; the September 28 report is cited as
+the later terminal closure, and its account of authorization is superseded by
+that record. This checkpoint adds no further 4B closure or evidence-level
+promotion.
 
-**4B chronology correction.** The September 25 report and Section 8.21 already
-record execution authorization and the negative result. The recent account
-that only contract freezing had been authorized must not overwrite that
-existing record on the basis of the different, unavailable September 28
-report. Reconcile the local history against these records when it is synced;
-no new 4B closure or evidence-level promotion is performed here.
-
-**Next step before new research.** Reconcile the unavailable local commits,
-then independently review the imported discrimination-cost report, including
-its declared baseline and inherited sixteen-pair asymptotic. Until then the
+**Next step before new research.** Independently review the imported
+discrimination-cost report, including its declared baseline `13d398a` (now in
+main) and inherited sixteen-pair asymptotic. The manuscript at `3a44725`
+keeps the algebraic asymptotics for all sixteen pairs but restricts the
+operational claim to the twelve Pauli pairs; the four M=I pairs are
+reference controls, and the review must keep that distinction. Until then the
 cost remains PRELIMINARY. A universal operational boundary at c, viable
 communication inside it, other geometries, correlated uses, and stability
 under perturbations remain unproved and are not opened by this checkpoint.
