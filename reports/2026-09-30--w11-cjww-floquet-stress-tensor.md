@@ -7,6 +7,10 @@
 
 ## Verdict
 
+> **SUPERSEDED — see §9.** The block below is historical. Current gate:
+> **OPEN_AFTER_AUDIT**. F3 has a scoped one-particle obstruction; the broader
+> contract question remains OPEN.
+
 \`\`\`
 W11_CJWW_FLOQUET_STRESS_TENSOR_GATE =
 LOW_ENERGY_LOCAL_STRESS_SURROGATE_PASS /
@@ -310,9 +314,12 @@ Einstein-Weyl system to controlled order.
 Authorization: the user's handoff after source check `7903713`. Inputs:
 [repair list](../debates/2026-09-30--w9-w11-blind-review/reparaciones.md)
 and [primary-source check](../investigaciones/2026-09-30-prior-art-walk-graviton/comprobacion.md).
-The frozen report at `83acdfd` is preserved above. These repairs are author-side
-work, **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
-They do not freeze or open the joint Einstein–Weyl gate.
+The frozen report at `83acdfd` is preserved above, with an added superseded
+banner. **Second-review update (2026-09-30):** both reviewers accept the
+node/K/bound calculations and the scoped F3 proof at snapshot `86fe771`;
+the review is recorded at `d6e74e6`. This §9 implements items 3, 5–7 of its
+[README](../debates/2026-09-30--w9-w11-repair-review/README.md). The gate remains
+OPEN; no joint Einstein–Weyl gate is frozen or opened by this review.
 
 ### A1 — nodes and species contract
 
@@ -408,6 +415,11 @@ not a claim of finite-range band selection.
 K still vanishes at **all eight nodes**. It is not the all-zone quasienergy,
 not a positive energy, and not a continuous-time generator of U. Its exact
 free conservation does not prove conservation after a geometry coupling.
+More precisely, on a local branch about a node of sign s*,
+\(U=s_*e^{-iH_*}\), hence \(K=s_*\sin H_*\). At the −I nodes,
+\(K=-H_*+O(|k|^3)\): its leading energy sign is opposite to the shifted
+Weyl generator. For a fixed spectral direction its sine dependence also
+identifies eigenphases θ and π−θ; K cannot resolve that quasienergy ambiguity.
 The construction is established here algebraically; no checked primary
 literature attribution for this particular energy surrogate is claimed.
 
@@ -437,10 +449,12 @@ symmetrization and full four-species local source construction remain open.
 This chooses the explicit downgrade permitted by A3. It supersedes the
 claim in §§3,6 that all three local source types needed by W10 were supplied.
 
-### C3 / F3 — obstruction for a continuous translation-invariant logarithm
+### C3 / F3 — one-particle obstruction with full Z³ translation invariance
 
-For this particular two-component walk, suppose a periodic continuous
-Hermitian \(H(p)\) on the connected Brillouin torus obeyed
+Restrict to a **one-particle** generator (or its number-conserving quadratic
+second quantization), invariant under **every translation in ℤ³**, with
+the original **two-component cell**. For this walk, suppose a periodic
+continuous Hermitian 2×2 \(H(p)\) on the connected Brillouin torus obeyed
 \(e^{-iH(p)}=W(p)\). Then \(\operatorname{tr}H(p)\in2\pi\mathbb Z\) is
 constant, since \(\det W=1\). Also \([H,W]=0\). Approaching any Weyl node
 along k=tn and dividing that commutator by t gives
@@ -455,8 +469,13 @@ absolutely summable translation-invariant hopping matrices (which would
 have a continuous symbol). This includes finite range. This proof uses
 both kinds of nondegenerate Weyl node; it is not a no-go for all QCA, for
 translation-breaking generators, or for time-dependent local circuits.
-It is an author-side proof, not an independently reviewed promotion. Po et
-al.'s chiral-edge result is not used as evidence for it.
+In particular it does not exclude generators invariant only under a
+supercell subgroup, or interacting many-body generators of the second-quantized
+update. Discontinuous logarithms are also outside the exclusion. These
+cases remain open, so **the broader F3 question in the frozen contract is
+not closed**. Both second-round reviewers accept the proof in the stated
+one-particle/full-ℤ³ class; their acceptance does not enlarge that class or
+establish novelty. Po et al.'s chiral-edge result is not used as evidence.
 
 ### C3 / F4 and primary antecedent
 
@@ -478,9 +497,10 @@ result about gravitational energy-momentum or the CJWW stress tensor.
 W11 = OPEN_AFTER_AUDIT
 F1 = PASS / FOUR_ZERO_QUASIENERGY_SPECIES
 F2 = INTEGRATED_CHARGES_AND_ZERO_TRANSFER_TETRAD_ONLY
-F3 = NO_CONTINUOUS_TRANSLATION_INVARIANT_LOGARITHM / AUTHOR_PROOF
+F3_CONTRACT = OPEN
+F3_SUBRESULT = ONE_PARTICLE_FULL_Z3_CONTINUOUS_LOGARITHM_EXCLUDED
 F4 = GLOBAL_BOND_MOMENTUM_CONSERVED / LOCAL_STRESS_OPEN
-EVIDENCE = PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED
+REVIEW = SCOPED_RESULTS_ACCEPTED / SECOND_ROUND_CLARIFICATIONS_APPLIED
 ```
 
 The new [certificate](../scripts/verify_w11_ir_stress_source.py) extracts
@@ -489,6 +509,12 @@ operators, checks conservation by both Bloch algebra and real-space
 convolution, tabulates eight frames/chiralities, and checks arbitrary-direction
 Taylor coefficients with an independent exact-axis case. It does not
 construct q≠0 stress kernels. D2 is repaired for these declared checks;
-its full-stress part remains open. The analytic band bound and the
+its full-stress part remains open. Node completeness and the identity
+\(H_{\rm eff}=-(\arcsin|a|/|a|)a\cdot\sigma\) on the +I branch are
+**analytic inputs**, not conclusions proved by the code. At |a|=0 the ratio
+is defined by its limit. The script checks exact recentering and frame
+derivatives at every node and prints the table; it does not compare each
+printed row with an independent expected table (only the +I chirality
+multiset is asserted). The analytic band bound and the
 continuous-logarithm obstruction are the arguments above, not numerical
 inferences from the certificate.

@@ -6,6 +6,9 @@
 
 ## Verdict
 
+> **SUPERSEDED — see §9.** The block below is historical. Current gate:
+> **OPEN_AFTER_AUDIT**; C5 is not met by the available integrated charges.
+
 \`\`\`
 W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE =
 CONTINUUM_SOURCED_CONSTRAINT_BRIDGE_PASS /
@@ -294,7 +297,12 @@ controlled continuity identities.
 Inputs: [blind-review repairs](../debates/2026-09-30--w9-w11-blind-review/reparaciones.md)
 and [source check at 7903713](../investigaciones/2026-09-30-prior-art-walk-graviton/comprobacion.md).
 The report at `f956f68` and its frozen contract are not rewritten.
-Evidence: **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
+**Second-review update (2026-09-30):** the review at `d6e74e6` covers snapshot
+`86fe771`: DeepSeek ACCEPT; Opus ACCEPT_WITH_REPAIRS. This §9 implements
+items 3–4 and 9 of the
+[review README](../debates/2026-09-30--w9-w11-repair-review/README.md).
+The continuum calculation is supported by that review; the local-source
+and backreaction questions remain OPEN.
 
 ### A4 — correct the premature terminal state
 
@@ -361,6 +369,13 @@ For independent components, the lapse variation is
 \(-2G^{0i}+\lambda T_{(0)}^{0i}=0\). Diagonal spatial components have
 multiplicity one; off-diagonal spatial components have multiplicity two.
 There are no independent adjustable scalar/vector source normalizations.
+The shift is a Lagrange multiplier **in the Hamiltonian formulation**, after
+the Legendre transform introduces the spatial canonical momenta. In the
+quadratic Lagrangian displayed here, h00 is linear while h0i enters
+quadratically (through spatial derivatives). There is no shift time-kinetic
+term, but that does not make the shift a linear Lagrangian multiplier.
+This qualifies the historical multiplier wording in §§1–2; Gu–Wen's
+first-order canonical form and the h-only Lagrangian must be distinguished.
 Equivalently, define \(\mathcal C^\nu_{\rm geom}=2G^{0\nu}_{\rm lin}\):
 
 \[
@@ -393,7 +408,11 @@ L-model dynamics or controlled lattice realization of this continuum target
 is established by W10.
 
 The Bianchi identity gives compatibility with a prescribed **free flat-space**
-\(T_{(0)}\) satisfying \(\partial_\mu T_{(0)}^{\mu\nu}=0\). In a coupling
+\(T_{(0)}\) satisfying \(\partial_\mu T_{(0)}^{\mu\nu}=0\). For the CJWW
+application the required tensor is the total of **all four** zero-quasienergy
+species, \(T_{(0)}^{\mu\nu}=\sum_{s_*=+1}T_{*,(0)}^{\mu\nu}\), in their
+respective frames. Its full local microscopic matching has not been
+constructed: this is an input to C2, not a new W11 output. In a coupling
 expansion at fixed weak h, if matter responds as
 \(T=T_{(0)}+\lambda T_{(1)}+\cdots\), the source \(\lambda T/2\) acquires
 O(λ²) terms. The free identity alone does not control their divergence.

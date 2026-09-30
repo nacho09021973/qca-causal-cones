@@ -3,26 +3,36 @@
 ## Authoritative W9–W11 repair update — 2026-09-30
 
 This update supersedes the W9–W11 summaries and Sections 29–31 below where
-they conflict. The user authorized applying the blind-review repairs after
-the source check at `7903713`; the review branch was incorporated by
-fast-forward into `research/gravitational-normalization-gate`.
+they conflict. The user authorized applying both rounds of blind-review
+repairs, after source check `7903713` and second review `d6e74e6`. Both review
+branches were incorporated by fast-forward into
+`research/gravitational-normalization-gate`.
 
 | Front | Current status | Evidence and limit |
 | --- | --- | --- |
-| W9 | `CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS / MICROSCOPIC_SPACETIME_COMPLETION_OPEN` | Conditional symmetric/conserved continuum stress identity, on the free matter shell at O(λ); no full local CJWW stress or off-shell/Lorentz completion |
+| W9 | **`OPEN_AFTER_AUDIT`**; B2 `ON_SHELL_CONTINUUM_IDENTITY_PASS` | Conditional symmetric/conserved continuum stress identity on the free matter shell at O(λ); the CJWW bridge and reciprocal completion remain open |
 | W10 | **`OPEN_AFTER_AUDIT`** | Former C5 PASS was premature; explicit continuum action/constraint coefficients now checked, but full W11 local source matching and controlled constraint identity remain absent |
 | W11 | **`OPEN_AFTER_AUDIT`** | Four zero-quasienergy species plus four π nodes; K is a finite-range exactly conserved free charge with O(Λ³) branch-local energy error; nonzero-transfer Belinfante source and local continuity current remain open |
-| W11 F3 | `NO_CONTINUOUS_TRANSLATION_INVARIANT_LOGARITHM / AUTHOR_PROOF` | Specific two-component CJWW walk; finite-range and absolutely summable translation-invariant generators excluded; no claim for arbitrary QCA or time-dependent circuits |
+| W11 F3 | **Contract OPEN**; `ONE_PARTICLE_FULL_Z3_CONTINUOUS_LOGARITHM_EXCLUDED` | Scoped proof accepted by both second-round reviewers: one particle, every ℤ³ translation, original two-component cell; interacting many-body and supercell generators are outside the proof |
 | Joint Einstein–Weyl successor | **NOT_READY_TO_FREEZE / NOT_OPENED** | All four zero-quasienergy species must be retained; microscopic source matching, coupled Ward identities and reciprocal completion remain open |
 
-Evidence level: **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
-The DeepSeek/Opus review applies to the earlier `41d0e0d` snapshot; it is
-not a review of the present repairs. A1/A2/A4 are applied. A3 uses the
+**Review provenance:** the first review covered `41d0e0d`. The
+[second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
+`d6e74e6` covers `86fe771`: DeepSeek gives W9 ACCEPT_WITH_REPAIRS and W10/W11
+ACCEPT; Opus gives ACCEPT_WITH_REPAIRS for all three. Both accept the
+node/K/bound calculations and the scoped F3 proof. Their remaining scope
+and presentation repairs are now applied; the revised W9 checker is a local
+author-side validation, not a third independent review. No full gate or
+novelty claim is promoted. A1/A2/A4 are applied. A3 uses the
 explicit downgrade permitted by the repair list. B1 fixes one continuum
 normalization; B2/B3 restrict the Einstein calculation to a flat test source
 at O(λ), not the Gu–Wen L lattice model. B4–B6 and C1–C3 are addressed in
 the dated addenda. D1 now checks the actual gauge-coupling algebra; D2
 constructs real-space charge operators but leaves q≠0 local stress open.
+The second-round clarifications also distinguish the Hamiltonian shift
+multiplier from quadratic shift dependence in the Lagrangian, require the
+four-species total T_(0) in W10, and record K's opposite leading energy sign
+at the −I nodes. The old verdict blocks now carry superseded banners.
 
 Records: [W9 addendum](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md#9-repair-addendum--2026-09-30),
 [W10 addendum](../reports/2026-09-30--w10-sourced-gu-wen-constraints.md#9-repair-addendum--2026-09-30-supersedes-the-terminal-decision),
@@ -63,9 +73,9 @@ reopened or promoted by that successor.
 | W7 spin-2 kinematics | **SPIN2_KINEMATIC_SECTOR_PASS / TT_GAUGE_CONSTRAINTS_OPEN — PRELIMINARY, independent review pending**; spatial tetrad perturbations decompose as frame rotations (3) + trace scalar (1) + symmetric-traceless spin-2 tensor (5), but no 5→2 TT reduction is derived | [2026-09-30 W7 report](../reports/2026-09-30--w7-spin2-kinematics.md) |
 | W8 TT gauge completion | **TT_GAUGE_REDUCTION_KINEMATIC_PASS / MICROSCOPIC_GAUGE_EMBEDDING_OPEN — PRELIMINARY, independent review pending**; a traceless vector gauge orbit has rank 3 at nonzero momentum and reduces the 5-component spin-2 tensor to plus/cross, but W6 does not realize this redundancy microscopically | [2026-09-30 W8 report](../reports/2026-09-30--w8-tt-gauge-completion.md) |
 | W8 prior-art correction | Gu-Wen already provide emergent helicity ±2 and low-energy linearized diffeomorphism gauge structure from qubit/spin models; Pretko rank-2 theories already include the relevant 5→2 tensor-gauge structure. Novelty target pivots to the CJWW matter-gravity bridge | [2026-09-30 prior-art audit](../reports/2026-09-30--w8-prior-art-gauge-audit.md) |
-| W9 CJWW-graviton matter bridge | **CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS / MICROSCOPIC_SPACETIME_COMPLETION_OPEN — PRELIMINARY**; spatial-only coupling fails gauge consistency, while the full h_mu_nu T^mu_nu coupling passes in the Weyl continuum and forces lapse/shift completion | [2026-09-30 W9 report](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md) |
-| W10 sourced Gu-Wen constraints | **CONTINUUM_SOURCED_CONSTRAINT_BRIDGE_PASS / MICROSCOPIC_CJWW_CHARGES_OPEN — PRELIMINARY**; CJWW Weyl T00/T0i consistently source the Gu-Wen-type scalar/vector constraints in the continuum, exact lattice/Floquet charges still open | [2026-09-30 W10 report](../reports/2026-09-30--w10-sourced-gu-wen-constraints.md) |
-| W11 CJWW Floquet stress | **LOW_ENERGY_LOCAL_STRESS_SURROGATE_PASS / EXACT_FLOQUET_STRESS_OPEN — PRELIMINARY**; finite-range bond bilinears reproduce Weyl T00/T0i/Tij in the narrow-band limit, but no canonical exact local Floquet stress tensor is proved | [2026-09-30 W11 report](../reports/2026-09-30--w11-cjww-floquet-stress-tensor.md) |
+| W9 CJWW-graviton matter bridge | **OPEN_AFTER_AUDIT**; only the conditional on-shell continuum identity passes; see the authoritative repair update above | [2026-09-30 W9 report, §9](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md) |
+| W10 sourced Gu-Wen constraints | **OPEN_AFTER_AUDIT**; continuum test-source result only; full local four-species source and backreaction open | [2026-09-30 W10 report, §9](../reports/2026-09-30--w10-sourced-gu-wen-constraints.md) |
+| W11 CJWW Floquet stress | **OPEN_AFTER_AUDIT**; integrated free charges and scoped one-particle F3 obstruction accepted; local Belinfante stress and contract F3 open | [2026-09-30 W11 report, §9](../reports/2026-09-30--w11-cjww-floquet-stress-tensor.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2788,6 +2798,9 @@ Report commit: `44bc411ab72b121302c42cfe8a0afc5fd4613c01`.
 
 ## 29. W9 CJWW / graviton-matter bridge — 2026-09-30
 
+> Historical record, superseded by the authoritative repair update above
+> and W9 report §9. Current W9: **OPEN_AFTER_AUDIT**.
+
 **Contract:** [`W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE.md`](../theory/W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE.md),
 frozen at commit `4a40c12c83801d5bdfdd7fc1c3638bb6308005e0`.
 
@@ -2824,6 +2837,9 @@ stress-energy object.
 
 ## 30. W10 sourced Gu-Wen constraints — 2026-09-30
 
+> Historical record, superseded by the authoritative repair update above
+> and W10 report §9. Current W10: **OPEN_AFTER_AUDIT**.
+
 **Contract:** [`W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE.md`](../theory/W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE.md),
 frozen at commit `7109a3ae5d5c3aaf958cf473c0f6a0200413664d`.
 
@@ -2848,6 +2864,9 @@ The microscopic CJWW model still lacks proved local exact Floquet operators
 for those charges.
 
 ## 31. W11 low-energy CJWW stress source — 2026-09-30
+
+> Historical record, superseded by the authoritative repair update above
+> and W11 report §9. Current W11: **OPEN_AFTER_AUDIT**; contract F3 remains open.
 
 **Contract:** [`W11_CJWW_FLOQUET_STRESS_TENSOR_GATE.md`](../theory/W11_CJWW_FLOQUET_STRESS_TENSOR_GATE.md),
 frozen at commit `cfdc5c6059a169028b38fa326444286d9703e8e5`.

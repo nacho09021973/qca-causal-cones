@@ -52,4 +52,44 @@ Recomendadas (un revisor):
 9. W10: T₍₀₎ en C2 debe ser el tensor total de las cuatro especies (no construido).
 10. Opcional: afinar `‖K − H_IR‖ ≤ Λ³/2`.
 
-Estado: revisión recibida; reparaciones no aplicadas. Decide el usuario.
+Estado al recibir la revisión: reparaciones no aplicadas. La aplicación
+autorizada posteriormente por el usuario se registra a continuación.
+
+## Aplicación autorizada — 2026-09-30
+
+Rama: `research/gravitational-normalization-gate`, tras incorporar `d6e74e6`
+por avance rápido. Se conservan los informes de los revisores y los contratos.
+Los tres informes científicos reciben una nota junto al veredicto histórico
+y correcciones de alcance en §9. Estas correcciones responden a esta revisión;
+no constituyen una tercera revisión independiente ni cierran los gates.
+
+| Punto | Cambio aplicado |
+| --- | --- |
+| 1 | W9 pasa a `OPEN_AFTER_AUDIT`, con B2 `ON_SHELL_CONTINUUM_IDENTITY_PASS / O(lambda)` y puente CJWW abierto. Estado canónico y tabla de navegación sincronizados. |
+| 2 | Se eliminan los asserts redundantes de W9. Se verifica la diferencia entre variación espacial calculada y residuo contra el término de conservación. Un tensor simétrico conservado polinómico comprueba variación completa nula, caso estático y un caso temporal no nulo, sin dividir por k. La integración por partes se describe como convención analítica. |
+| 3 | Los tres bloques de veredicto originales llevan `SUPERSEDED — see §9` con el estado actual. Las secciones históricas 29–31 del estado también remiten a las reparaciones. |
+| 4 | W9/W10 distinguen multiplicadores en forma hamiltoniana de dependencia cuadrática del shift en el lagrangiano h-only. |
+| 5 | F3: una partícula (o segunda cuantización cuadrática que conserva número), todas las traslaciones ℤ³, celda original de dos componentes. Interacciones, superceldas y logaritmos discontinuos quedan fuera; F3 del contrato permanece abierto. |
+| 6 | W11 explicita `K=s_* sin(H_*)`: signo opuesto a primer orden en −I y ambigüedad θ ↔ π−θ. |
+| 7 | W11 identifica completitud de nodos y fórmula de H_eff como entradas analíticas; precisa qué comprueba el script y qué tabla imprime. |
+| 8 | W9 conserva explícitamente el término de frontera temporal y dice «al menos estático», sin afirmar una clasificación del grupo residual. |
+| 9 | W10 exige que T_(0) sea la suma de las cuatro especies; su correspondencia local microscópica sigue sin construirse. |
+| 10 (opcional) | Se mantiene la cota Λ³ ya válida. No se añade un refinamiento de constante a esta reparación de alcance. |
+
+Validación local:
+
+- `python3 -B scripts/verify_w9_continuum_gauge_bridge.py`: PASS.
+- `python3 -B scripts/verify_w10_linearized_constraints.py`: PASS, sin modificar el certificado.
+- `python3 -B debates/2026-09-30--w9-w11-repair-review/verify_reviewer_claims.py`:
+  PASS; cocientes máximos muestreados de banda y dinámica 0.998. Son muestras,
+  no supremos demostrados. Su último chequeo reproduce la objeción al W9 de
+  `86fe771`, no describe el certificado reparado actual.
+- `git diff --check`: PASS.
+
+SHA256 del certificado W9 actualizado:
+`60254b382f634227f728d0622e8f9d79a540b0b891df0d5079bf15f909cbdc58`.
+
+Los resultados aceptados de nodos, K, cotas y prueba F3 no se alteran. Siguen
+abiertos el tensor local de Belinfante a q≠0, el emparejamiento local de las
+cuatro especies y la backreaction. La aceptación de F3 en su clase no es una
+prueba de novedad.
