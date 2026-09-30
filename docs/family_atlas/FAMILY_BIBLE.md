@@ -2,6 +2,9 @@
 
 Primera edición documental: 2026-09-30. Base inspeccionada:
 `research/gravitational-normalization-gate` @ `16850476a6320c55aaf6d25471d00454cdc15b41`.
+Sincronización posterior: se recuperaron los expedientes remotos F2-F5 hasta
+`3976026`, el atlas inicial se publicó en `f21af94`, y esta versión añade el
+certificado restringido F5 y la selección/preflight F7.
 
 El atlas registra clases, contratos, obstrucciones y puentes. No decide gates:
 manda [CURRENT_STATE](../../state/CURRENT_STATE.md). No es una clasificación
@@ -13,23 +16,20 @@ Los IDs F son del atlas; no sustituyen los IDs W del proyecto.
 | ID / ficha | Clase y objeto geométrico | Resultado trazable en esta edición | Evidencia / decisión |
 |---|---|---|---|
 | [F1 — W6 Pauli-selective](families/F1_w6_pauli_selective.md) | Grafo fijo; nueve controles de transporte; métrica del símbolo principal | `UNIVERSAL_SUBFAMILY_DEFICIENT`: rango 3/6 sobre métricas constantes | Revisión W12 registrada; `CLOSED_BY_CONTRACT` para W6/CJWW |
-| [F2 — Embedding común](families/F2_common_embedding.md) | Propuesta de embedding afín común; regla pendiente de localizar | `[UNVERIFIED]`: universalidad/rango 6 mencionados en la propuesta | Pendiente de trazabilidad; sin decisión incorporada |
-| [F3 — Hopping unitario elástico](families/F3_unitary_elastic.md) | Propuesta de hopping con orientación de semisoporte | `[UNVERIFIED]`: inconsistencia de orientación mencionada en la propuesta | Pendiente de contrato y contraejemplo |
-| [F4 — Hopping hermítico elástico](families/F4_hermitian_elastic.md) | Propuesta de respuesta hermítica; embedding y hopping por separar | `[UNVERIFIED]`: contribución métrica nula del hopping mencionada en la propuesta | Pendiente de regla y certificado |
-| [F5 — Puente paired-QW](families/F5_arrighi_facchini_bridge.md) | Antecedente publicado de QWs curvos mediante agrupación y codificación | Antecedente comprobado; bloqueo exacto con CJWW `[UNVERIFIED]` | Bibliográfico; falta expediente del puente |
-
-F2–F5 preservan los nombres y las afirmaciones recibidas, no las certifican.
-La búsqueda en los documentos y scripts del checkout no localizó sus expedientes.
-La ausencia local no implica que no existan en otra rama o carpeta. Véase
-[provenance y comprobaciones](PROVENANCE.md).
+| [F2 — Embedding común](families/F2_common_embedding.md) | Embedding afín común; métrica cinemática constante | `KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN` | Certificado simbólico recuperado; preliminar, revisión independiente pendiente |
+| [F3 — Hopping unitario elástico](families/F3_unitary_elastic.md) | Hopping con orientación de semisoporte | `UNITARY_ELASTIC_RESPONSE_INCONSISTENT` | Contraejemplo exacto de orientación; test de especies no ejecutado |
+| [F4 — Hopping hermítico elástico](families/F4_hermitian_elastic.md) | Respuesta hermítica de hopping más embedding común | `HERMITIAN_ELASTIC_METRIC_UNIVERSAL_EMBEDDING_ONLY` | Certificado recuperado; hopping no aporta marco métrico nuevo a primer orden |
+| [F5 — Puente paired-QW](families/F5_arrighi_facchini_bridge.md) | Antecedente publicado de QWs curvos mediante substeps direccionales | `SINGLE_COORDINATE_FACTORIZATION_EXCLUDED` para el puente restringido | Certificado autor-side nuevo; no-go solo para un factor por coordenada en celda C2 |
+| [F6 — Arnault-Debbasch](families/F6_arnault_debbasch.md) | DTQW curvo publicado en (1+2)D | `PUBLISHED_2D_CURVED_DTQW / DIRECT_3D_CJWW_BRIDGE_NOT_PROVIDED` | Comparador bibliográfico; sin test algebraico |
+| [F7 — QCGD](families/F7_qcgd.md) | Grafos cuánticos dinámicos; causalidad intrínseca | `BRIDGE_QUANTIFIERS_OPEN / EXPLICIT_CJWW_RULE_NOT_SPECIFIED` | Preflight primario; no se inventa regla |
 
 ## Mapa de navegación
 
 Las aristas clasifican entradas; no representan implicaciones ni equivalencias.
 El color expresa el estado documental de esta edición, no viabilidad física.
-Rojo: cierre contractual; gris: trazabilidad pendiente; azul: antecedente
-bibliográfico; amarillo: cuestión abierta; verde: test acotado superado
-(ninguna familia completa recibe verde en esta edición).
+Rojo: cierre contractual o fallo terminal; gris: no ejecutado; azul:
+antecedente bibliográfico; amarillo: cuestión abierta; verde: test acotado
+superado, sin promoción a programa completo.
 
 ```mermaid
 flowchart TB
@@ -38,28 +38,28 @@ flowchart TB
   A --> D["Grafos dinámicos"]
   A --> C["Sectores con restricciones"]
   G --> F1["F1 · W6/CJWW · cierre contractual"]
-  G --> F2["F2 · embedding común · pendiente"]
-  G --> F3["F3 · hopping unitario · pendiente"]
-  G --> F4["F4 · hopping hermítico · pendiente"]
-  P --> F5["F5 · paired-QW · antecedente verificado"]
-  F5 -.-> B["Puente CJWW: falta expediente"]
-  P --> F6["F6 · Arnault–Debbasch · reserva bibliográfica"]
-  D --> F7["F7 · QCGD · reserva documental"]
+  G --> F2["F2 · embedding común · cinemática PASS"]
+  G --> F3["F3 · hopping unitario · inconsistente"]
+  G --> F4["F4 · hopping hermítico · embedding only"]
+  P --> F5["F5 · paired-QW · puente restringido excluido"]
+  P --> F6["F6 · Arnault-Debbasch · comparador 2D"]
+  D --> F7["F7 · QCGD · regla CJWW abierta"]
   C --> F8["F8 · Gu–Wen · reserva bibliográfica"]
   classDef closed fill:#fee2e2,stroke:#991b1b,color:#111827;
   classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
   classDef bibliography fill:#dbeafe,stroke:#1e40af,color:#111827;
-  class F1 closed;
-  class F2,F3,F4,F7,B pending;
-  class F5,F6,F8 bibliography;
+  classDef open fill:#fef3c7,stroke:#92400e,color:#111827;
+  classDef pass fill:#dcfce7,stroke:#166534,color:#111827;
+  class F1,F3,F5 closed;
+  class F2 pass;
+  class F4,F7 open;
+  class F6,F8 bibliography;
 ```
 
 ## Entradas reservadas fuera del núcleo
 
 | ID | Identidad y evidencia de entrada | Límite de esta edición |
 |---|---|---|
-| F6 | Arnault–Debbasch, `biblioteca/arXiv-1609.00722.pdf` p.1: DTQWs en (1+2)D con límite de Dirac en campo gravitatorio | Fuente leída en p.1; no se evalúan aquí universalidad entre especies ni backreaction |
-| F7 | QCGD / grafo dinámico; [registro local de selección](../../reports/2026-09-29--dynamical-geometry-model-class.md), [no-go del puente fuerte](../../reports/2026-09-29--explicit-cjww-dynamic-graph-bridge.md) | Referencias de navegación; sin nueva verificación de la clase ni de su no-go en esta edición |
 | F8 | Gu–Wen, `biblioteca/arXiv-0907.1203.pdf` p.1: separar modelo L (dispersión cúbica, análisis semiclásico) y modelo N (dispersión lineal argumentada sin control fiable) | No fusionar ambos modelos ni atribuir a L dinámica de Einstein; dossier completo pendiente |
 
 Pretko queda como referencia candidata para una entrada distinta, sin asignar

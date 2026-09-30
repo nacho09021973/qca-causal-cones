@@ -62,3 +62,30 @@ no se sustituye por el canal exacto fuerte excluido en el no-go anterior.
 
 No se convocan revisores externos en esta ronda. Una lectura o certificado
 local no cuentan como revisión independiente. W3–W11 no se reabren.
+
+## Ejecución de la lectura F7
+
+PDF local: `biblioteca/arXiv-1607.06700v2.pdf`, sha256
+`a8feaab0e3bf46680de45ae92b5c07aa514d27417b64c7ff8b6b4eeed8614dde`.
+
+La lectura primaria acotada localizó:
+
+- p.2, Def. 1: grafos finitos etiquetados, con vertices tomados de un
+  universo contable, grado acotado, puertos finitos y etiquetas parciales.
+- p.3, Defs. 6-7: espacio de Hilbert con base de grafos finitos etiquetados
+  y propiedad de conservar vertices.
+- pp.5-6: extension marcada y teorema de representacion localizada para una
+  unitaria causal que conserva vertices.
+
+Resultado:
+
+```text
+BRIDGE_QUANTIFIERS_OPEN / EXPLICIT_CJWW_RULE_NOT_SPECIFIED
+PRIMARY_SOURCE_PREFLIGHT
+```
+
+La arquitectura QCGD sigue viva como candidata de grafo dinamico. La lectura
+no proporciona todavia una regla CJWW exacta en `g=0` sobre Z3 infinito ni una
+ley de backreaction. El siguiente movimiento admisible seria un contrato
+nuevo que declare sector finito/infinito, regla unitaria concreta y el puente
+exacto al tick CJWW plano antes de cualquier test de especies.

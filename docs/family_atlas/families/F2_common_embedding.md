@@ -4,66 +4,84 @@
 
 ## 1. Identidad
 
-Entrada recibida en la propuesta del usuario; alta documental 2026-09-30.
-Fecha de apertura científica y motivación independiente previa: no localizadas.
-Objeto propuesto: deformar un embedding común para las especies.
+Apertura y alta documental: 2026-09-30. El expediente, inicialmente ausente
+del checkout, se recuperó del remoto en esta fecha. El
+[contrato](../../../theory/ELASTIC_GRAPH_SPECIES_UNIVERSALITY_GATE.md) §0
+registra motivación de grafo/elasticidad anterior al cálculo y distinta de W6:
+una deformación del soporte espacial compartida por toda la materia.
 
 ## 2. Cuantificadores congelados
 
-No se ha localizado contrato. Dimensión interna, walk exacto, especies,
-lattice, soporte, grouping/supercell/ancillas, escalas, orden y equivalencias:
-pendientes. «Común» es parte del nombre propuesto, no prueba de que los
-cuantificadores estuvieran congelados. No se heredan automáticamente los de F1.
+Una partícula, CJWW (5.15), ℓ²(ℤ³)⊗C²; los cuatro nodos +I de W12.
+Coordenadas físicas comunes, sin redefinición por especie. `Λ∈GL⁺(3,R)`,
+`Λ=I+εL`, L real arbitraria 3×3; a es la escala espacial común. Sin cambio
+de celda, especies, ancillas o grouping. Los bloques abstractos W_h y la
+unitaria CJWW se conservan. Primer orden en momento de especie; identidad
+métrica exacta en Λ. El rango tangente se toma a primer orden en ε.
 
 ## 3. Qué es geometría
 
-La propuesta habla de un embedding afín `Λ` y una métrica común. Su
-definición operacional y su relación con las coordenadas físicas no están
-documentadas en una fuente localizada.
+`X_Λ(n)=aΛn`, `ℓ_h=aΛh`. Con `p=aΛᵀq` y nodo físico
+`q_*=a⁻¹Λ⁻ᵀp_*`, el marco es `E_*^(Λ)=aE_*Λᵀ` y la métrica
+`h_*^(Λ)=a²ΛΛᵀ`, usando `E_*ᵀE_*=I`.
 
 ## 4. Qué no se cuenta como geometría
 
-Pendiente de precisar embedding cinemático frente a respuesta de hopping,
-gauge y dinámica. No atribuir dinámica a una transformación de coordenadas.
+No se introducen controles Pauli-selective, gauge vectorial/axial ni
+respuesta de hopping. La parte antisimétrica de L es rotación rígida
+infinitesimal de embedding, sin contenido métrico tangente. Un Λ constante
+describe geometría plana y se elimina por un cambio afín global.
 
 ## 5. Regla microscópica
 
-No localizada. La propuesta da el esquema `p → Λᵀp`; no se adopta aquí como
-regla completa ni como conservación probada de soporte o unitariedad.
+`W_Λ(q)=W_0(aΛᵀq)`. Es la misma actualización abstracta en un embedding
+distinto; no cambia W_h. A Λ=I recupera exactamente CJWW.
+Implementación: [certificado permanente](../../../scripts/verify_elastic_graph_species_universality.py).
 
 ## 6. Kill tests
 
-La propuesta menciona universalidad y rango 6/6. Falta el contrato que fije
-especies, espacio de controles, convención métrica y umbral. No se ejecutan.
+E0 recuperación plana; E1 transporte nodal; E2 igualdad métrica entre
+especies; E3 rango 6 para strain simétrico, separando rotaciones; E4 techo
+cinemático; E5 conservación del negativo W6. Los umbrales están en el contrato.
 
 ## 7. Resultado
 
-**Pendiente de trazabilidad, `[UNVERIFIED]`.** Literal recibido:
-`KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN`.
-No se ha localizado informe, certificado, revisión ni commit que permita
-incorporarlo como resultado verificado o decisión canónica.
+**`KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN`.**
+Identidad exacta `h_*=a²ΛΛᵀ` para las cuatro especies; mapa tangente
+`δh/a²=L+Lᵀ`, rango 6/6 y núcleo antisimétrico de dimensión 3.
+Certificado reejecutado con código 0. Evidencia canónica **PRELIMINARY /
+AUTHOR_DERIVATION / INDEPENDENT_REVIEW_PENDING**; reejecutar no la promueve.
+
+Contrato `25d8138`, código `103a2c4`,
+[informe](../../../reports/2026-09-30--elastic-graph-species-universality.md)
+en `b16e15e`, registro de resultado `8d52415`.
 
 ## 8. Modo de fallo
 
-No determinado. La limitación «solo cinemática» procede de la propuesta y
-queda `[UNVERIFIED]` hasta leer la definición y la derivación originales.
+No falla E2 ni E3. La limitación es que toda la respuesta es cinemática:
+no se construye hopping sensible a strain, curvatura ni dinámica geométrica.
 
 ## 9. Qué deja vivo
 
-Una entrada identificable para recuperar el expediente, sin perder la
-distinción entre embedding y hopping. Próximo movimiento: localizar fuentes.
+Referencia universal de embedding y un test para separar esa contribución
+de una futura respuesta física. F3 y F4 son sucesores distintos, con contratos
+propios; sus terminales no invalidan esta identidad.
 
 ## 10. Qué queda prohibido después
 
-No usar esta ficha como justificación física previa, como PASS ni como
-reapertura de F1. No reconstruir un contrato retrospectivo para el rango citado.
+El contrato §6 impone detenerse en este terminal. Una nueva regla de hopping
+o grafo dinámico requiere motivación previa, contrato propio y repetición del
+test de cuatro especies. No se reejecuta W3–W11 por este PASS cinemático.
 
 ## Flujo visual
 
 ```mermaid
 flowchart LR
-  A["Lambda propuesto"] -.-> B["Regla exacta pendiente"]
-  B -.-> C["Separación gauge pendiente"]
-  C -.-> D["Marco pendiente"] -.-> E["Métrica pendiente"]
-  E -.-> F["Universalidad / rango: UNVERIFIED"]
+  A["Lambda común"] --> B["p = a Lambda transpuesta q"]
+  B --> C["Transportar nodos; sin gauge añadido"]
+  C --> D["E físico = a E Lambda transpuesta"]
+  D --> E["h = a² Lambda Lambda transpuesta"]
+  E --> F["Universal; rango 6/6; SOLO CINEMÁTICA"]
+  classDef limited fill:#fef3c7,stroke:#92400e,color:#111827;
+  class F limited;
 ```

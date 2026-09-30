@@ -1,67 +1,87 @@
-# F3 — Ansatz unitario de hopping elástico
+# F3 — Ansatz unitario de hopping elástico con semisoporte
 
 [Atlas](../FAMILY_BIBLE.md)
 
 ## 1. Identidad
 
-Nombre recibido: «First unitary elastic hopping ansatz, half-support orientation».
-Alta documental: 2026-09-30. Apertura científica, fuente y motivación previa:
-no localizadas. La relación de sucesión con F2 procede de la propuesta.
+Apertura y alta documental: 2026-09-30; sucesor de F2. El
+[contrato](../../../theory/ELASTIC_HOPPING_UNITARY_RESPONSE_GATE.md) congela
+la respuesta longitudinal de enlace `ρ_h=(hᵀuh)/(hᵀh)` como motivación
+elástica, sin importar un Hamiltoniano de semimetal a CJWW.
+Expediente recuperado del remoto después de la primera edición del atlas.
 
 ## 2. Cuantificadores congelados
 
-Contrato no localizado. Pendientes: Hilbert, walk, especies, lattice,
-semisoporte y criterio de orientación, coordenadas, grouping/supercell/ancillas,
-controles, orden y observable. No asumir que son los de F1 o F2.
+CJWW (5.15), una partícula, ℤ³, celda C², soporte plano de 14 hops;
+cuatro especies +I y coordenadas comunes. Strain real simétrico u compartido;
+`p=a(I+εu)ᵀq`. F_+ debe contener un representante de cada par ±h y
+su elección debe ser físicamente irrelevante. Orden de puertas y coeficiente
+fijos; sin nuevas especies, supercell, ancillas ni ajustes tras ejecutar.
+La respuesta métrica pretendida era de primer orden, pero no se llegó a ella.
 
 ## 3. Qué es geometría
 
-La propuesta relaciona deformación elástica y hopping. Falta la definición
-que permita separar respuesta métrica de elecciones de orientación.
+El embedding común y la posible respuesta principal inducida por strain.
+La orientación arbitraria de un enlace no forma parte de la geometría física
+definida por este contrato.
 
 ## 4. Qué no se cuenta como geometría
 
-No identificar una elección de representante de enlace con un efecto físico
-sin comprobar las equivalencias permitidas por el contrato ausente.
+Desplazamiento nodal por término Pauli constante: gauge vectorial/axial.
+Término identidad: fase/quasienergía. Ninguno llegó a extraerse: el test
+terminó antes de la comparación entre especies.
 
 ## 5. Regla microscópica
 
-No localizada; no se inventa una regla unitaria que produzca el fallo descrito.
+`K_u(p)=Σ_(h∈F_+) ρ_h [exp(ip·h)W_h+exp(-ip·h)W_h†]`.
+La respuesta congelada es `exp(-iεK_u(p))W_0(p)`, con el embedding anterior.
+Es un ansatz de evolución unitaria con generador de rango finito; el
+exponencial no acredita soporte estricto de un tick igual al soporte plano.
 
 ## 6. Kill tests
 
-Test de orientación mencionado por el usuario, sin contraejemplo ni umbral
-localizado. Un expediente recuperado deberá especificar qué inversión de
-orientación deja invariantes los datos físicos y qué salida cambia.
+Antes de extraer nodos/métrica, comprobar independencia de F_+.
+El [certificado](../../../scripts/verify_elastic_hopping_orientation_obstruction.py)
+extrae exactamente los 14 bloques y compara dos elecciones admisibles con
+u=I y p=0: primer componente h1 positivo o negativo.
 
 ## 7. Resultado
 
-**Pendiente de trazabilidad, `[UNVERIFIED]`.** Literal recibido:
-`UNITARY_ELASTIC_RESPONSE_INCONSISTENT`. No incorporado como fallo verificado.
-Contrato, código, reporte, revisión y commit: pendientes.
+**`UNITARY_ELASTIC_RESPONSE_INCONSISTENT`.**
+`K_+(0)=[[1,1],[1,1]]` y `K_-(0)=[[1,-1],[-1,1]]`.
+En los 14 bloques, `W_-h≠W_h†`. El certificado reejecutado reproduce el
+contraejemplo, código 0. **Test métrico de cuatro especies NOT_EXECUTED**.
+Evidencia: obstrucción algebraica local, sin revisión independiente registrada.
+
+Contrato `15bc76b`, código `f08b884`,
+[informe](../../../reports/2026-09-30--elastic-hopping-unitary-response.md)
+`40e4a16`, registro terminal `ecdbd68`.
 
 ## 8. Modo de fallo
 
-Dependencia de orientación, según la propuesta. No se ha reproducido ni
-se generaliza a otras reglas de hopping unitario.
+La regla depende de una convención que pretendía eliminar. Falla la
+definición física de esta respuesta, no la universalidad métrica ni toda
+la clase de hopping unitario.
 
 ## 9. Qué deja vivo
 
-La pregunta de si la orientación es convención o dato físico. Próximo
-movimiento documental: recuperar la regla y el test original.
+La identidad de embedding F2 y un testigo exacto reutilizable de orientación.
+F4 fue congelada después como otro expediente; no sustituye la regla de F3.
 
 ## 10. Qué queda prohibido después
 
-No etiquetar toda la clase de hopping unitario como inconsistente; no
-corregir orientación a posteriori bajo el mismo contrato. No certificar F4
-por llamarla sucesora de F3.
+No fijar una orientación favorecida como rescate, cambiar el funcional o
+calcular una regla reparada bajo el mismo contrato. No etiquetar este fallo
+como no-go universal de hopping ni como fallo métrico de cuatro especies.
 
 ## Flujo visual
 
 ```mermaid
 flowchart LR
-  A["Hopping propuesto"] -.-> B["Símbolo no localizado"]
-  B -.-> C["Orientación física o convencional: pendiente"]
-  C -.-> D["Marco pendiente"] -.-> E["Métrica pendiente"]
-  E -.-> F["Fallo de orientación alegado: UNVERIFIED"]
+  A["Strain u y elección F_+"] --> B["Generador K_u"]
+  B --> C["DOS ORIENTACIONES: K distinto"]
+  C -.-> D["Marco: no ejecutado"] -.-> E["Métrica: no ejecutada"]
+  E -.-> F["Test de especies: no ejecutado"]
+  classDef closed fill:#fee2e2,stroke:#991b1b,color:#111827;
+  class C closed;
 ```

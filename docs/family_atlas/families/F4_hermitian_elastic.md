@@ -1,71 +1,89 @@
-# F4 — Respuesta de hopping elástico hermítico
+# F4 — Respuesta de hopping elástico hermítico de soporte completo
 
 [Atlas](../FAMILY_BIBLE.md)
 
 ## 1. Identidad
 
-Nombre y relación de sucesión con F3 recibidos en la propuesta del usuario.
-Alta documental: 2026-09-30. Fecha de apertura científica y justificación
-independiente anterior al cálculo: no localizadas.
+Apertura y alta documental: 2026-09-30. Sucesor separado de F3, congelado
+antes de su cálculo de especies para eliminar F_+. Fuente de definición:
+[contrato](../../../theory/ELASTIC_HOPPING_HERMITIAN_RESPONSE_GATE.md).
+Expediente recuperado del remoto después de la primera edición del atlas.
 
 ## 2. Cuantificadores congelados
 
-No hay contrato localizado. Pendientes: espacio interno, materia, especies,
-soporte, controles elásticos, orientación, coordenadas, agrupaciones,
-supercell/ancillas, orden y definición métrica. No importar los de F2/F3.
+Una partícula CJWW (5.15), ℤ³, celda C²; sus 14 bloques W_h completos.
+Cuatro nodos +I, coordenadas comunes, u real simétrica de seis componentes,
+`p=a(I+εu)ᵀq`. Primer orden en ε y momento de especie; sin cambiar
+agrupación, especies, ancillas, orden de puertas ni coeficiente. No se
+certifica alcance finito del tick exponencial a ε no nulo; sí del generador.
 
 ## 3. Qué es geometría
 
-La propuesta distingue una métrica de embedding y una posible respuesta
-adicional del hopping. La descomposición exacta está pendiente de fuente.
+`h_*=E_*ᵀE_*` en coordenadas físicas comunes, separando contribución de
+embedding y respuesta de hopping. El rango 6 puede proceder entero del embedding.
 
 ## 4. Qué no se cuenta como geometría
 
-Una fase escalar no se contará como cambio de marco sin comprobar su
-dependencia en momento y la extracción del símbolo. La afirmación de que
-solo queda esa fase procede de la propuesta, no de un cálculo en esta edición.
+Fase identidad en el nodo, gauge por desplazamiento Pauli constante y tilt
+identidad lineal en momento deben separarse del marco. En el cálculo retenido
+solo aparece una fase nodal común `α_*=tr(u)/3`.
+El desplazamiento **adicional del hopping** es cero; el transporte del nodo
+por el embedding sigue el de F2.
 
 ## 5. Regla microscópica
 
-El esquema recibido nombra `ρ_h(u)` y `K_u`; no se han localizado sus
-definiciones. Hermiticidad de un generador no basta para fijar por sí sola
-una actualización discreta de alcance finito: falta la regla concreta.
+`R_u(p)=Σ_(h∈F) ρ_h(u)exp(ip·h)W_h`, con
+`ρ_h=(hᵀuh)/(hᵀh)` y `K_u=(R_u+R_u†)/2`.
+Se fija `W_(ε,u)(q)=exp(-iεK_u(p))W_0(p)`.
+K es hermítico, la actualización es exactamente unitaria y recupera W_0
+a ε=0. [Código permanente](../../../scripts/verify_elastic_hopping_hermitian_response.py).
 
 ## 6. Kill tests
 
-Orientación, universalidad y contribución métrica del hopping mencionados
-en la propuesta. Contrato, órdenes retenidos y criterios PASS/FAIL pendientes.
+HH0 recuperación plana; HH1 orientación/hermiticidad; HH2 unitariedad;
+HH3 descomposición de nodo/gauge; HH4 universalidad; HH5 rango 6;
+HH6 separar embedding/hopping; HH7 no rescate. La clasificación distingue
+un PASS universal debido solo al embedding de una respuesta de hopping no trivial.
 
 ## 7. Resultado
 
-**Pendiente de trazabilidad, `[UNVERIFIED]`.** Literal recibido:
-`HERMITIAN_ELASTIC_METRIC_UNIVERSAL_EMBEDDING_ONLY`.
-La afirmación `δE_hop=0` necesita definición y certificado. No hay informe,
-revisión ni commit localizado que permita adoptarla como resultado.
+**`HERMITIAN_ELASTIC_METRIC_UNIVERSAL_EMBEDDING_ONLY` — PRELIMINARY.**
+`K_u(p_*)=tr(u)I/3`; retirando la fase,
+`δE_*^hop=0` y no hay tilt a este orden. Las cuatro especies dan
+`δh_*=2a²u`, rango 6/6, completamente heredado de F2.
+El certificado reejecutado pasa con código 0. Revisión independiente pendiente.
+
+Contrato `1cda245`, código `060c481`,
+[informe](../../../reports/2026-09-30--elastic-hopping-hermitian-response.md)
+`5de01a8`, registros `5631620` y `bfa58dd`.
 
 ## 8. Modo de fallo
 
-Contribución métrica nueva nula, según la propuesta. No implica hopping
-nulo, ausencia de otros efectos ni un no-go para toda regla hermítica.
+No hay inconsistencia de orientación ni fallo de universalidad. El término
+nuevo no deforma el marco principal al orden contratado. Eso no dice que
+el operador de hopping sea cero o carezca de otros efectos.
 
 ## 9. Qué deja vivo
 
-Una comparación propuesta entre embedding y hopping. Próximo movimiento:
-recuperar la regla y el cálculo que separa ambas contribuciones.
+Una respuesta unitaria definida sin elección de semisoporte, la separación
+explícita de fase/métrica y la referencia de embedding común. Ningún resultado
+de curvatura, backreaction o gravedad se desprende de este terminal.
 
 ## 10. Qué queda prohibido después
 
-No presentar la reparación de orientación ni la universalidad como PASS.
-No cambiar órdenes, controles o especies para evitar una cancelación bajo
-el mismo contrato; cualquier sucesor necesita su expediente previo.
+Detenerse en el estado 5 del contrato. No sustituir parte hermítica por otra
+prescripción, cambiar orden, funcional de enlace, strain o coeficientes tras
+ver la cancelación. Una familia nueva necesita motivación independiente previa.
 
 ## Flujo visual
 
 ```mermaid
 flowchart LR
-  A["rho_h(u) propuesto"] -.-> B["K_u no localizado"]
-  B -.-> C["Fase escalar: UNVERIFIED"]
-  C -.-> D["delta E_hop = 0: UNVERIFIED"]
-  D -.-> E["Métrica de embedding: pendiente"]
-  E -.-> F["Resultado pendiente de certificado"]
+  A["Strain u; soporte F completo"] --> B["K = parte hermítica de R"]
+  B --> C["Fase tr(u)/3; sin gauge adicional"]
+  C --> D["delta E hopping = 0"]
+  D --> E["delta h = 2a²u: embedding"]
+  E --> F["Universal; rango 6/6; EMBEDDING ONLY"]
+  classDef limited fill:#fef3c7,stroke:#92400e,color:#111827;
+  class F limited;
 ```

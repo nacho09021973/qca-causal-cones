@@ -4,83 +4,94 @@
 
 ## 1. Identidad
 
-Dos objetos separados: una familia publicada y un supuesto test de puente
-exacto a CJWW (5.15). Alta en el atlas: 2026-09-30. Fecha de apertura y
-motivación contractual del puente: no localizadas.
-
-Fuente leída: `biblioteca/1609.00305v2.pdf` p.1, Arrighi y Facchini,
-*Quantum walking in curved spacetime: (3 + 1) dimensions, and beyond*.
-En esa página se describen agrupación/codificación, paired QWs y combinación
-por operator splitting para obtener límites continuos, incluido Dirac curvo.
-No confundir con `biblioteca/arXiv-1505.07023.pdf` p.1, Arrighi, Facchini y
-Forets, cuyo resultado allí descrito es en (1+1)D.
+Alta y lectura dirigida: 2026-09-30. La motivación es recuperar un esquema
+publicado de métrica/tetrad en vez de inventar una ley elástica para CJWW.
+Fuente: `biblioteca/1609.00305v2.pdf`, Arrighi–Facchini. P.1 presenta
+el objetivo continuo; p.5 §IV, ec.36, y pp.6–7 muestran los substeps
+direccionales, su composición y la implementación. No confundir con
+Arrighi–Facchini–Forets (1505.07023), antecedente (1+1)D.
 
 ## 2. Cuantificadores congelados
 
-La publicación 1609.00305 p.1 anuncia dimensiones espaciales arbitrarias y
-dimensión interna par, con agrupación y codificación. No determina por ello
-los cuantificadores de un puente a CJWW de celda original de dos componentes.
+El [contrato de verificación](../../../theory/CJWW_SINGLE_COORDINATE_FACTORIZATION_AUDIT.md)
+fue escrito antes del nuevo código, pero **después** de la lectura que ya
+alegaba el bloqueo. Un tick CJWW (5.15), celda C² original, ejes originales;
+tres factores invertibles diferenciables 2×2, uno por coordenada, cualquier
+orden. Conjugación constante permitida. Sin supercell, dilación, ancillas,
+factores repetidos por eje, mezcla de ejes ni bloqueo temporal.
 
-Contrato del puente no localizado: quedan pendientes soporte, sectores,
-especies, coordenadas, pasos temporales, grouping/supercell/ancillas,
-equivalencias y si se compara el operador completo o solo su límite continuo.
+La fuente admite agrupación/codificación; el certificado no excluye todos
+esos puentes. Se aplica solo cuando el candidato en la celda original se
+reduce a la factorización anterior. La dimensión física par permite dos
+componentes; por sí sola no es el motivo del bloqueo.
 
 ## 3. Qué es geometría
 
-En el antecedente, un campo métrico se representa mediante unitarias locales
-cuyo límite continuo reproduce la ecuación objetivo (1609.00305, p.1).
-Esta atribución no establece equivalencia exacta con CJWW.
+En la publicación, parámetros locales cuyo límite continuo implementa
+el Hamiltoniano curvo objetivo; la métrica aparece en las matrices del
+símbolo principal, no como grafo dinámico. Se comprueba aquí la elegibilidad
+del miembro plano exacto, antes de extraer respuesta geométrica CJWW.
 
 ## 4. Qué no se cuenta como geometría
 
-Coincidencia de PDE límite y equivalencia microscópica son criterios distintos.
-Una construcción de Dirac curvo no prueba por sí sola dinámica autónoma del
-campo geométrico ni backreaction en el modelo que aquí se busca catalogar.
+Coincidencia de PDE límite no acredita igualdad de un tick. Las matrices
+de masa/conexión y la codificación no prueban backreaction o dinámica del
+campo métrico. No se ha ejecutado un test de especies en una deformación AF/CJWW.
 
 ## 5. Regla microscópica
 
-La regla de un puente exacto a CJWW no se ha localizado. Se remite al paper
-para la familia publicada; esta ficha no transcribe ni audita su construcción
-completa a partir de la primera página.
+En el candidato homogéneo de tres substeps, `U=U_i(p_i)U_j(p_j)U_k(p_k)`.
+La regla completa AF agrupada se remite al paper; no se identifica con esta
+subclase sin verificar sus condiciones de traslación y celda.
+Se usa `walk2()` como operador exacto objetivo, sin cambiarlo.
 
 ## 6. Kill tests
 
-La propuesta menciona obstrucción en el operator split estándar y exactitud
-plana respecto de CJWW (5.15). Faltan el contrato y la prueba del bloqueo.
-No extender una eventual obstrucción a esquemas agrupados diferentes.
+Si W=A(p_i)B(p_j)C(p_k), su derivada logarítmica izquierda
+`L_i=(∂_iW)W⁻¹=A′A⁻¹` depende solo de p_i. El
+[certificado permanente](../../../scripts/verify_cjww_coordinate_factorization.py)
+da dependencia cruzada para cada posible primer eje y excluye los seis órdenes.
+Segunda vía: `W(π/2,p2,p3)=iσ1`, pero a p1=0 W varía en p2 y p3.
+Un producto invertible con un factor por eje no puede tener ambas propiedades.
+Control positivo: `walk1()` factoriza en el orden 1,2,3 y supera la condición.
 
 ## 7. Resultado
 
-**Antecedente bibliográfico comprobado en p.1; puente pendiente de trazabilidad.**
-Literal recibido para el puente:
-`STRUCTURALLY_BLOCKED_IN_STANDARD_OPERATOR_SPLIT` — **`[UNVERIFIED]`**.
-No se ha localizado un reporte, certificado, revisión o commit de ese resultado.
-La verificación bibliográfica de esta ficha no verifica ese bloqueo.
+**`SINGLE_COORDINATE_FACTORIZATION_EXCLUDED` — PRELIMINARY /
+AUTHOR_SIDE_CERTIFICATE / INDEPENDENT_REVIEW_PENDING.**
+El código pasa sin tolerancia numérica. El
+[informe nuevo](../../../reports/2026-09-30--cjww-coordinate-factorization-audit.md)
+delimita el alcance; contrato congelado en `f9dcb46`.
+La [lectura dirigida](../../../reports/2026-09-30--arrighi-facchini-cjww-directed-reading.md)
+en `3976026` registra `STRUCTURALLY_BLOCKED_IN_STANDARD_OPERATOR_SPLIT`.
+Ese literal se conserva con los cuantificadores acotados anteriores, sin
+promover todo su contenido a teorema sobre paired QWs.
 
 ## 8. Modo de fallo
 
-Factorización/operator splitting según la propuesta; sin prueba localizada.
-No se atribuye ese fallo a Arrighi–Facchini ni a todos los paired QWs.
+Factorización del miembro plano en la celda/tiempo original. No es fallo
+de la construcción continua de Arrighi–Facchini ni no-go de todos sus usos.
 
 ## 9. Qué deja vivo
 
-Un antecedente primario identificado y la distinción entre simulación de
-una PDE y equivalencia exacta de walks. Próximo movimiento documental:
-localizar contrato y prueba del puente, incluyendo transformaciones permitidas.
+La plantilla continua publicada y una obstrucción exacta reutilizable para
+el puente restringido. Puentes agrupados o circuitos con ejes repetidos
+siguen fuera de este test, sin autorización implícita para diseñarlos.
 
 ## 10. Qué queda prohibido después
 
-No usar la publicación como prueba del bloqueo CJWW; no presentar el bloqueo
-alegado como teorema general. No añadir agrupación, ancillas o cambio de paso
-temporal después del test sin un contrato distinto.
+No introducir ancillas, supercell, otro tick o otro walk para evadir este
+resultado bajo el mismo contrato. No sustituir exactitud por acuerdo IR sin
+una decisión explícita que cambie el objetivo.
 
 ## Flujo visual
 
 ```mermaid
 flowchart LR
-  A["Agrupación / codificación"] --> B["Paired QW + operator splitting"]
-  B --> C["PDE límite objetivo · p.1"]
-  C -.-> D["Separación y marco CJWW pendientes"]
-  D -.-> E["Métrica comparada pendiente"]
-  E -.-> F["Bloqueo del puente: UNVERIFIED"]
+  A["Substeps direccionales publicados"] --> B["Candidato: un factor por eje"]
+  B --> C["TEST PLANO: factorización excluida"]
+  C -.-> D["Marco CJWW curvo: no construido"]
+  D -.-> E["Métrica: no calculada"] -.-> F["Especies: no ejecutado"]
+  classDef blocked fill:#fee2e2,stroke:#991b1b,color:#111827;
+  class C blocked;
 ```

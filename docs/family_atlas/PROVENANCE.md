@@ -4,6 +4,11 @@ Fecha: 2026-09-30. Checkout inspeccionado:
 `research/gravitational-normalization-gate` @
 `16850476a6320c55aaf6d25471d00454cdc15b41`.
 
+Sincronización posterior: el primer commit del atlas fue publicado como
+`f21af94`. Después se incorporó la rama remota hasta `3976026`, que contenía
+los contratos, scripts e informes de F2-F5. Esta página conserva el origen de
+la primera edición y añade abajo la trazabilidad vigente.
+
 ## Alcance
 
 Edición documental del núcleo F1–F5 solicitado, con reservas F6–F8.
@@ -62,6 +67,72 @@ arXiv y páginas permiten localizar las fuentes; no se copian al atlas.
 Comprobación editorial: ocho archivos Markdown, 26 enlaces locales resueltos,
 diez secciones en cada ficha y sin espacios finales. Los diagramas se
 entregan como fuente Mermaid; no se ha comprobado su renderizado en un visor.
+
+## Sincronización F2-F5
+
+Tras `git fetch` y rebase sobre `origin/research/gravitational-normalization-gate`,
+se recuperaron y leyeron los expedientes remotos:
+
+| Familia | Contrato / informe / script | Estado incorporado |
+|---|---|---|
+| F2 | `theory/ELASTIC_GRAPH_SPECIES_UNIVERSALITY_GATE.md`; `reports/2026-09-30--elastic-graph-species-universality.md`; `scripts/verify_elastic_graph_species_universality.py` | `KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN` |
+| F3 | `theory/ELASTIC_HOPPING_UNITARY_RESPONSE_GATE.md`; `reports/2026-09-30--elastic-hopping-unitary-response.md`; `scripts/verify_elastic_hopping_orientation_obstruction.py` | `UNITARY_ELASTIC_RESPONSE_INCONSISTENT` |
+| F4 | `theory/ELASTIC_HOPPING_HERMITIAN_RESPONSE_GATE.md`; `reports/2026-09-30--elastic-hopping-hermitian-response.md`; `scripts/verify_elastic_hopping_hermitian_response.py` | `HERMITIAN_ELASTIC_METRIC_UNIVERSAL_EMBEDDING_ONLY` |
+| F5 | `reports/2026-09-30--arrighi-facchini-cjww-directed-reading.md`; new scoped audit below | `STRUCTURALLY_BLOCKED_IN_STANDARD_OPERATOR_SPLIT` kept only with restricted quantifiers |
+
+The following existing commands were re-run locally and ended with code 0:
+
+```bash
+python3 -B scripts/verify_elastic_graph_species_universality.py
+python3 -B scripts/verify_elastic_hopping_orientation_obstruction.py
+python3 -B scripts/verify_elastic_hopping_hermitian_response.py
+```
+
+These runs are local author-side reproductions. They are not independent
+external reviews.
+
+## New F5 restricted certificate
+
+The new permanent script
+`scripts/verify_cjww_coordinate_factorization.py` verifies the restricted
+claim in
+[`reports/2026-09-30--cjww-coordinate-factorization-audit.md`](../../reports/2026-09-30--cjww-coordinate-factorization-audit.md):
+
+```bash
+python3 -B scripts/verify_cjww_coordinate_factorization.py
+```
+
+The run ended with code 0 and verdict
+`SINGLE_COORDINATE_FACTORIZATION_EXCLUDED`. Its scope is one CJWW tick, the
+original two-component cell, one factor per original coordinate, and constant
+on-site conjugation allowed. It does not exclude grouped, ancilla, blocked or
+repeated-axis paired-QW constructions.
+
+## New F6-F7 reading
+
+F6 records `biblioteca/arXiv-1609.00722.pdf` as a bibliographic comparator:
+the read sections support a published (1+2)D curved DTQW, not a direct exact
+(3+1)D CJWW bridge.
+
+F7 records a primary-source preflight of `biblioteca/arXiv-1607.06700v2.pdf`.
+The read definitions and theorem use finite labelled graphs and
+vertex-preserving causal unitaries; they do not by themselves specify an
+exact CJWW rule on infinite Z3. The terminal state recorded for the next
+family selection is
+`BRIDGE_QUANTIFIERS_OPEN / EXPLICIT_CJWW_RULE_NOT_SPECIFIED`.
+
+The library catalog row for `arXiv-1607.06700v2.pdf` was added to
+`scripts/biblioteca_catalog/curated.csv` and regenerated with the shared
+engine:
+
+```bash
+python3 /home/ignac/herramientas/biblioteca_catalog/build_catalog.py --repo /home/ignac/qca-causal-cones
+```
+
+Shared-tool provenance for the catalog run:
+`~/herramientas` @ `b817ac0`.
+
+## Mantenimiento
 
 El atlas conserva los resultados negativos y las incertidumbres. Al recuperar
 un expediente, reemplazar «pendiente» solo después de comprobar sus
