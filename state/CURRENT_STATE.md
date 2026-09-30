@@ -2341,3 +2341,31 @@ No curvature tensor/action, local Lorentz/diffeomorphism structure,
 Einstein equation, `G_eff`, AdS radius or absolute scale is derived.
 Curvature/dynamics is the next open layer; gravitational normalization G1
 remains unopened.
+
+
+## 18. W2 tetrad-backreaction correction — 2026-09-30
+
+**Audit contract:** [`W2_TETRAD_BACKREACTION_AUDIT.md`](../theory/W2_TETRAD_BACKREACTION_AUDIT.md),
+frozen at commit `1fc383fd62607ab118f3d6305c8e445ca10caab9`.
+
+**Execution:** [audit report](../reports/2026-09-30--w2-tetrad-backreaction-audit.md),
+commit `16ca6302ed4132f822df1cc48cf0ffaafb2788f5`.
+
+Corrected state:
+
+```
+W2_PRINCIPAL_SYMBOL_CONTROL = PASS
+W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL
+```
+
+Reason: W2 uses `H_e=B_e tensor J_e` with `B_e=Z_e+X_e`, while the
+principal-symbol coefficient is `b_e=<B_e>`. Exactly
+`[H_e,B_e tensor I]=0`, hence `<B_e>` is conserved for every joint state
+and every coupling. The link density matrix can still change in components
+orthogonal to `B_e`, but matter cannot change the variable that controls the
+W2 tetrad deformation.
+
+Therefore the phrase "dynamical tetrad-like variable" in the original W2
+execution is superseded. W2 is a **link-controlled principal-symbol
+deformation**, not yet a backreacting tetrad. A repair must use noncommuting
+geometry operators so that matter can change the next-step transport control.
