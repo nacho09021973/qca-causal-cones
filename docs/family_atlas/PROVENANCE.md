@@ -139,6 +139,21 @@ python3 /home/ignac/herramientas/biblioteca_catalog/build_catalog.py --repo /hom
 Shared-tool provenance for the catalog run:
 `~/herramientas` @ `b817ac0`.
 
+## New F8 reading
+
+F8 records a primary-source preflight of `biblioteca/arXiv-0907.1203.pdf`
+and the existing W8-W10 repair records. The retained terminal state is:
+
+```text
+VACUUM_CONSTRAINT_ARCHITECTURE_PRIOR_ART /
+DIRECT_CJWW_SOURCE_BRIDGE_OPEN
+```
+
+The result separates the controlled L-type model with cubic dispersion from
+the less controlled N-type linear-dispersion proposal, and it keeps W10 in
+its repaired `OPEN_AFTER_AUDIT` scope. F8 is a constraint/gauge architecture
+and novelty ceiling, not an executable CJWW metric family.
+
 ## Mantenimiento
 
 El atlas conserva los resultados negativos y las incertidumbres. Al recuperar

@@ -22,6 +22,7 @@ Los IDs F son del atlas; no sustituyen los IDs W del proyecto.
 | [F5 — Puente paired-QW](families/F5_arrighi_facchini_bridge.md) | Antecedente publicado de QWs curvos mediante substeps direccionales | `SINGLE_COORDINATE_FACTORIZATION_EXCLUDED` para el puente restringido | Certificado autor-side nuevo; no-go solo para un factor por coordenada en celda C2 |
 | [F6 — Arnault-Debbasch](families/F6_arnault_debbasch.md) | DTQW curvo publicado en (1+2)D | `PUBLISHED_2D_CURVED_DTQW / DIRECT_3D_CJWW_BRIDGE_NOT_PROVIDED` | Comparador bibliográfico; sin test algebraico |
 | [F7 — QCGD](families/F7_qcgd.md) | Grafos cuánticos dinámicos; causalidad intrínseca | `NO_RULE_SPECIFIED` tras preflight `BRIDGE_QUANTIFIERS_OPEN` | Contrato de especificación congelado; no hay test métrico ejecutable |
+| [F8 — Gu-Wen constraints](families/F8_gu_wen_constraints.md) | Sector tensorial con constraints escalares/vectoriales y helicidad +/-2 | `VACUUM_CONSTRAINT_ARCHITECTURE_PRIOR_ART / DIRECT_CJWW_SOURCE_BRIDGE_OPEN` | Fuente primaria y W10 reparado; no hay puente CJWW local |
 
 ## Mapa de navegación
 
@@ -44,7 +45,7 @@ flowchart TB
   P --> F5["F5 · paired-QW · puente restringido excluido"]
   P --> F6["F6 · Arnault-Debbasch · comparador 2D"]
   D --> F7["F7 · QCGD · NO_RULE_SPECIFIED"]
-  C --> F8["F8 · Gu–Wen · reserva bibliográfica"]
+  C --> F8["F8 · Gu-Wen · constraint prior art"]
   classDef closed fill:#fee2e2,stroke:#991b1b,color:#111827;
   classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
   classDef bibliography fill:#dbeafe,stroke:#1e40af,color:#111827;
@@ -55,12 +56,6 @@ flowchart TB
   class F4,F7 open;
   class F6,F8 bibliography;
 ```
-
-## Entradas reservadas fuera del núcleo
-
-| ID | Identidad y evidencia de entrada | Límite de esta edición |
-|---|---|---|
-| F8 | Gu–Wen, `biblioteca/arXiv-0907.1203.pdf` p.1: separar modelo L (dispersión cúbica, análisis semiclásico) y modelo N (dispersión lineal argumentada sin control fiable) | No fusionar ambos modelos ni atribuir a L dinámica de Einstein; dossier completo pendiente |
 
 Pretko queda como referencia candidata para una entrada distinta, sin asignar
 resultado ni identificarlo con Gu–Wen. La secuencia W1–W11 puede incorporarse
