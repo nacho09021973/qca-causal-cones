@@ -16,6 +16,7 @@ branches were incorporated by fast-forward into
 | W11 F3 | **Contract OPEN**; `ONE_PARTICLE_FULL_Z3_CONTINUOUS_LOGARITHM_EXCLUDED` | Scoped proof accepted by both second-round reviewers: one particle, every ℤ³ translation, original two-component cell; interacting many-body and supercell generators are outside the proof |
 | W12 four-species metric universality | **`UNIVERSAL_SUBFAMILY_DEFICIENT` — REVIEWED** (DeepSeek ACCEPT; Opus ACCEPT_WITH_REPAIRS, presentation only) | `dim(U)=3`, metric rank `3/6` on constant δh, no common rotation; with the −I nodes it would be `NON_UNIVERSAL`. Cite as a contract outcome on constant controls: read as a gauge condition, the missing relations fail only on `q₃=0` and a cone ([review](../debates/2026-09-30--w12-blind-review/README.md)) |
 | Gravity line (W1–W12, W6/CJWW control class) | **CLOSED_BY_CONTRACT (W12 §4), 2026-09-30** | Direct user decision («cierra la línea como dice el contrato»). Negative result for this control class; no joint Einstein–Weyl gate will be opened. Reopening requires a new control family with an independent physical justification written before any calculation; after-the-fact rescue is not allowed |
+| Elastic/common-graph successor class | **KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN — PRELIMINARY** | Contract frozen only after independent graph/elastic motivation was written; four +I species see exactly (h_*=a^2\Lambda\Lambda^T), metric rank 6/6. This is common-embedding kinematics only; it does not reopen W3–W11 or supply strain-dependent CJWW hopping dynamics | [2026-09-30 elastic-graph report](../reports/2026-09-30--elastic-graph-species-universality.md) |
 
 **Review provenance:** the first review covered `41d0e0d`. The
 [second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
@@ -48,6 +49,39 @@ Records: [W9 addendum](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md#
 The [primary-source audit](../investigaciones/2026-09-30-prior-art-walk-graviton/comprobacion.md)
 remains the bounded prior-art record: novelty OPEN, pending sources still
 pending, catalog tags still proposed. No earlier scientific gate is reopened.
+
+**Contractually permitted successor, 2026-09-30.** After the W12 closure, the
+user explicitly froze a physically distinct common-graph/elastic family only
+after its independent motivation had been written: geometry is one deformation
+of the spatial support shared by all matter, rather than W6 Pauli-selective
+controls on a fixed graph. The frozen contract is
+[`ELASTIC_GRAPH_SPECIES_UNIVERSALITY_GATE.md`](../theory/ELASTIC_GRAPH_SPECIES_UNIVERSALITY_GATE.md)
+at `25d8138`.
+
+For the minimal homogeneous affine embedding
+`X_Lambda(n)=a Lambda n`, with the abstract CJWW hopping blocks unchanged,
+the exact principal frame at every decisive +I species is
+`E_*^(Lambda)=a E_* Lambda^T`. Since the reviewed flat nodes all satisfy
+`E_*^T E_*=I`, every species sees exactly
+`h_*^(Lambda)=a^2 Lambda Lambda^T`. The first-order metric map is
+`delta h/a^2=L+L^T`, with symmetric-strain rank 6/6 and a three-dimensional
+antisymmetric rotation kernel.
+
+Terminal state:
+```
+KINEMATIC_COMMON_EMBEDDING_UNIVERSAL /
+ELASTIC_HOPPING_RESPONSE_OPEN
+```
+
+This survives the first four-species kill test but is deliberately not a full
+reopening of the gravity programme. The pass is kinematic because the abstract
+CJWW unitary and its transition blocks are unchanged. A further successor
+would need a separately frozen, physically motivated **unitary
+strain-dependent hopping rule or dynamical-graph rule** and must repeat the
+four-species metric test before any backreaction/spin-2/constraint work. W12
+remains unchanged for the W6/CJWW control class. Evidence is
+`AUTHOR_DERIVATION / EXACT_SYMBOLIC_CERTIFICATE /
+INDEPENDENT_REVIEW_PENDING`.
 
 ## Reading guide and synchronization — 2026-09-28
 
