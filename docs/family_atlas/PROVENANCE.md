@@ -154,6 +154,21 @@ the less controlled N-type linear-dispersion proposal, and it keeps W10 in
 its repaired `OPEN_AFTER_AUDIT` scope. F8 is a constraint/gauge architecture
 and novelty ceiling, not an executable CJWW metric family.
 
+## New F9 reading
+
+F9 records a primary-source preflight of `biblioteca/arXiv-1606.08857.pdf`
+and `biblioteca/arXiv-1702.07613.pdf`. The retained terminal state is:
+
+```text
+RANK2_GAUSS_LAW_PRIOR_ART /
+DIRECT_CJWW_QCA_BRIDGE_ABSENT
+```
+
+The result separates Pretko's rank-2 tensor-gauge/fracton dictionary from
+Gu-Wen's qubit/spin construction. F9 supplies Gauss-law architecture and a
+claim ceiling for tensor-gauge mode counting; it does not supply a CJWW walk,
+local stress source, reciprocal backreaction or exact QCA update.
+
 ## Mantenimiento
 
 El atlas conserva los resultados negativos y las incertidumbres. Al recuperar
