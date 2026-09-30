@@ -24,6 +24,7 @@ Los IDs F son del atlas; no sustituyen los IDs W del proyecto.
 | [F7 — QCGD](families/F7_qcgd.md) | Grafos cuánticos dinámicos; causalidad intrínseca | `NO_RULE_SPECIFIED` tras preflight `BRIDGE_QUANTIFIERS_OPEN` | Contrato de especificación congelado; no hay test métrico ejecutable |
 | [F8 — Gu-Wen constraints](families/F8_gu_wen_constraints.md) | Sector tensorial con constraints escalares/vectoriales y helicidad +/-2 | `VACUUM_CONSTRAINT_ARCHITECTURE_PRIOR_ART / DIRECT_CJWW_SOURCE_BRIDGE_OPEN` | Fuente primaria y W10 reparado; no hay puente CJWW local |
 | [F9 — Pretko tensor gauge](families/F9_pretko_tensor_gauge.md) | Teorías gauge tensoriales rank-2; Gauss laws, fractones y polarizaciones | `RANK2_GAUSS_LAW_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` | Fuente primaria; diccionario estructural, no familia CJWW ejecutable |
+| [F10 — Gauge-invariant CA](families/F10_gauge_invariant_ca.md) | Autómatas celulares con extensión gauge local; variables de enlace y sourcing matter/gauge | `GAUGE_EXTENSION_CA_ARCHITECTURE_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` | Fuente primaria arXiv; arquitectura gauge discreta, no geometría CJWW |
 
 ## Mapa de navegación
 
@@ -39,6 +40,7 @@ flowchart TB
   A --> P["Walks curvos publicados"]
   A --> D["Grafos dinámicos"]
   A --> C["Sectores con restricciones"]
+  A --> L["Arquitecturas gauge / links"]
   G --> F1["F1 · W6/CJWW · cierre contractual"]
   G --> F2["F2 · embedding común · cinemática PASS"]
   G --> F3["F3 · hopping unitario · inconsistente"]
@@ -48,6 +50,7 @@ flowchart TB
   D --> F7["F7 · QCGD · NO_RULE_SPECIFIED"]
   C --> F8["F8 · Gu-Wen · constraint prior art"]
   C --> F9["F9 · Pretko · rank-2 gauge prior art"]
+  L --> F10["F10 · gauge-invariant CA · link variables"]
   classDef closed fill:#fee2e2,stroke:#991b1b,color:#111827;
   classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
   classDef bibliography fill:#dbeafe,stroke:#1e40af,color:#111827;
@@ -56,7 +59,7 @@ flowchart TB
   class F1,F3,F5 closed;
   class F2 pass;
   class F4,F7 open;
-  class F6,F8,F9 bibliography;
+  class F6,F8,F9,F10 bibliography;
 ```
 
 La secuencia W1–W11 puede incorporarse mediante nuevas fichas o antecedentes

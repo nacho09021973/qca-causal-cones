@@ -169,6 +169,39 @@ Gu-Wen's qubit/spin construction. F9 supplies Gauss-law architecture and a
 claim ceiling for tensor-gauge mode counting; it does not supply a CJWW walk,
 local stress source, reciprocal backreaction or exact QCA update.
 
+## New F10 reading
+
+F10 records a primary-source preflight of `biblioteca/arXiv-2102.06912.pdf`
+by Arrighi, Costes and Eon, *Universal gauge-invariant cellular automata*.
+The PDF was downloaded from arXiv and has checksum:
+
+```text
+c44d21281318b1340aa4336c02306a18b2326128452ce6e7d751fc62db721b20
+```
+
+Read pages: pp.1-14. The retained terminal state is:
+
+```text
+GAUGE_EXTENSION_CA_ARCHITECTURE_PRIOR_ART /
+DIRECT_CJWW_QCA_BRIDGE_ABSENT
+```
+
+The result records gauge extension, relative link gauge fields, universal
+gauge-invariant CA and a reversible non-relative matter/gauge feedback example
+as useful discrete architecture. It does not promote link gauge variables to
+geometry and does not supply a CJWW/QCA metric family.
+
+The library catalog row for `arXiv-2102.06912.pdf` was added to
+`scripts/biblioteca_catalog/curated.csv` and the ignored local index was
+regenerated with the shared engine:
+
+```bash
+python3 /home/ignac/herramientas/biblioteca_catalog/build_catalog.py --repo /home/ignac/qca-causal-cones
+```
+
+Shared-tool provenance for the catalog run:
+`~/herramientas` @ `b817ac0`.
+
 ## Mantenimiento
 
 El atlas conserva los resultados negativos y las incertidumbres. Al recuperar
