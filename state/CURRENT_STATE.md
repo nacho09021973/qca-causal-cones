@@ -33,6 +33,8 @@ reopened or promoted by that successor.
 | W8 TT gauge completion | **TT_GAUGE_REDUCTION_KINEMATIC_PASS / MICROSCOPIC_GAUGE_EMBEDDING_OPEN — PRELIMINARY, independent review pending**; a traceless vector gauge orbit has rank 3 at nonzero momentum and reduces the 5-component spin-2 tensor to plus/cross, but W6 does not realize this redundancy microscopically | [2026-09-30 W8 report](../reports/2026-09-30--w8-tt-gauge-completion.md) |
 | W8 prior-art correction | Gu-Wen already provide emergent helicity ±2 and low-energy linearized diffeomorphism gauge structure from qubit/spin models; Pretko rank-2 theories already include the relevant 5→2 tensor-gauge structure. Novelty target pivots to the CJWW matter-gravity bridge | [2026-09-30 prior-art audit](../reports/2026-09-30--w8-prior-art-gauge-audit.md) |
 | W9 CJWW-graviton matter bridge | **CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS / MICROSCOPIC_SPACETIME_COMPLETION_OPEN — PRELIMINARY**; spatial-only coupling fails gauge consistency, while the full h_mu_nu T^mu_nu coupling passes in the Weyl continuum and forces lapse/shift completion | [2026-09-30 W9 report](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md) |
+| W10 sourced Gu-Wen constraints | **CONTINUUM_SOURCED_CONSTRAINT_BRIDGE_PASS / MICROSCOPIC_CJWW_CHARGES_OPEN — PRELIMINARY**; CJWW Weyl T00/T0i consistently source the Gu-Wen-type scalar/vector constraints in the continuum, exact lattice/Floquet charges still open | [2026-09-30 W10 report](../reports/2026-09-30--w10-sourced-gu-wen-constraints.md) |
+| W11 CJWW Floquet stress | **LOW_ENERGY_LOCAL_STRESS_SURROGATE_PASS / EXACT_FLOQUET_STRESS_OPEN — PRELIMINARY**; finite-range bond bilinears reproduce Weyl T00/T0i/Tij in the narrow-band limit, but no canonical exact local Floquet stress tensor is proved | [2026-09-30 W11 report](../reports/2026-09-30--w11-cjww-floquet-stress-tensor.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2787,3 +2789,59 @@ Thus the W5/W6 spatial source is compatible with the spatial part of the
 continuum Weyl stress coupling, but the microscopic QCA still lacks
 lapse/shift constraint variables and a proved full local lattice
 stress-energy object.
+
+
+## 30. W10 sourced Gu-Wen constraints — 2026-09-30
+
+**Contract:** [`W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE.md`](../theory/W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE.md),
+frozen at commit `7109a3ae5d5c3aaf958cf473c0f6a0200413664d`.
+
+**Execution:** [W10 report](../reports/2026-09-30--w10-sourced-gu-wen-constraints.md),
+commit `f956f68b339d97ee207793d9402cb3cd9492f567`.
+
+Status:
+
+```
+W10 =
+CONTINUUM_SOURCED_CONSTRAINT_BRIDGE_PASS /
+MICROSCOPIC_CJWW_CHARGES_OPEN
+```
+
+Gu-Wen already supply the vacuum scalar/vector constraint architecture,
+including lapse/shift as Lagrange multipliers and a lattice energy-penalty
+implementation. The project-specific continuum bridge sources those
+constraints with Weyl `T^{00}` and `T^{0i}`; consistency follows from the
+linearized Bianchi identity together with `partial_mu T^{mu nu}=0`.
+
+The microscopic CJWW model still lacks proved local exact Floquet operators
+for those charges.
+
+## 31. W11 low-energy CJWW stress source — 2026-09-30
+
+**Contract:** [`W11_CJWW_FLOQUET_STRESS_TENSOR_GATE.md`](../theory/W11_CJWW_FLOQUET_STRESS_TENSOR_GATE.md),
+frozen at commit `cfdc5c6059a169028b38fa326444286d9703e8e5`.
+
+**Certificate:** [`verify_w11_ir_stress_source.py`](../scripts/verify_w11_ir_stress_source.py),
+added at commit `97592a465e40a3769980bcd64623c2c3ac8da3c9`.
+
+**Execution:** [W11 report](../reports/2026-09-30--w11-cjww-floquet-stress-tensor.md),
+commit `83acdfd6031cdb14be6c6477d09d18cc172950a7`.
+
+Status:
+
+```
+W11 =
+LOW_ENERGY_LOCAL_STRESS_SURROGATE_PASS /
+EXACT_FLOQUET_STRESS_OPEN
+EVIDENCE = PRELIMINARY / INDEPENDENT_REVIEW_PENDING
+```
+
+Centered finite differences give a finite-range IR Hamiltonian with symbol
+`-sigma^a E0_a^i sin p_i`, matching the branch-local CJWW Weyl generator to
+first order. Local bond momentum densities likewise have symbol `sin p_i`
+and reproduce `T^{0i}` in the narrow-band limit. Together with W5/W6 spatial
+currents this supplies low-energy lattice representatives for all continuum
+stress components needed by W10.
+
+No canonical strictly local all-momentum Floquet stress tensor or exact
+one-step local energy/momentum continuity law is claimed.
