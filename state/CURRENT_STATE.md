@@ -26,6 +26,8 @@ reopened or promoted by that successor.
 | W3 coarse curvature/dynamics | **COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL**; W3 induces an explicit coarse metric and can have nonzero kinematic curvature, but has no geometry-only stiffness/propagation term and no derived stress-energy source | [2026-09-30 curvature report](../reports/2026-09-30--w3-curvature-dynamics.md) |
 | W4 geometry stiffness | **W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN — PRELIMINARY, independent review pending**; partial-SWAP geometry-only brickwork preserves the homogeneous background and transports the tetrad-control variable and coarse curvature information in vacuum | [2026-09-30 W4 report](../reports/2026-09-30--w4-geometry-stiffness.md) |
 | W5 tetrad-conjugate source | **W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN — PRELIMINARY, independent review pending**; the source is the same current operator variationally conjugate to the spatial tetrad, but a conserved full stress-energy tensor/Ward identity is not derived | [2026-09-30 W5 report](../reports/2026-09-30--w5-tetrad-conjugate-source.md) |
+| W5 tetrad completeness audit | **RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN** for the original three-field model; exact rank 3 of 9 in tetrad space and 3 of 6 in metric space | [2026-09-30 rank audit](../reports/2026-09-30--w5-spatial-tetrad-completeness.md) |
+| W6 full spatial tetrad | **W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN — PRELIMINARY, independent review pending**; nine controls span all 9 spatial tetrad and all 6 metric perturbations, with a 3D metric kernel equal to infinitesimal frame rotations | [2026-09-30 W6 report](../reports/2026-09-30--w6-full-spatial-tetrad.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2585,3 +2587,55 @@ This justifies the narrow label **tetrad-conjugate stress source**. It does
 not yet justify identifying `J_e` with the full conserved
 `T_{mu nu}`: no discrete diffeomorphism/local-Lorentz Ward identity, full
 spacetime tetrad, or local energy continuity law has been derived.
+
+
+## 23. W5 spatial-tetrad completeness audit — 2026-09-30
+
+The original three-field W3-W5 map has exact rank 3 in the nine-dimensional
+spatial-tetrad tangent space and rank 3 in the six-dimensional spatial-metric
+tangent space. No derived gauge symmetry justifies treating the missing
+directions as redundant.
+
+Contract: `d6dfad60a887036047fd2e4ded8d984df2b28844`.
+Certificate: `322a6fe516f96398fc8cea401e125c7da22393ee`.
+Report: `23672d2b2c4650180985a2c56d24532cf772182d`.
+
+Status:
+
+```
+RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN
+```
+
+## 24. W6 full spatial tetrad — 2026-09-30
+
+**Contract:** [`W6_FULL_SPATIAL_TETRAD_GATE.md`](../theory/W6_FULL_SPATIAL_TETRAD_GATE.md),
+frozen at commit `318fff219c1b84db3c3515699a3905a42626dbb6`.
+
+**Certificate:** [`verify_w6_full_spatial_tetrad.py`](../scripts/verify_w6_full_spatial_tetrad.py),
+added at commit `1137a14ec11d335895d356b87c7189de0cbcde00`.
+
+**Execution:** [W6 report](../reports/2026-09-30--w6-full-spatial-tetrad.md),
+commit `156e00fdabf1a00c1a5b491695f9a6d736b6b949`.
+
+Status:
+
+```
+W6_FULL_SPATIAL_TETRAD_GATE =
+W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN
+EVIDENCE = PRELIMINARY / INDEPENDENT_REVIEW_PENDING
+```
+
+W6 replaces the three scalar controls by nine `z_{ar}`. With the invertible
+direction matrix `D`, the map
+`delta E=-2g Z D` has exact rank 9. The induced spatial metric map
+`delta h=E0^T delta E + delta E^T E0` has exact rank 6. Its
+three-dimensional kernel consists of infinitesimal internal frame rotations:
+`delta E=Omega E0` with `Omega^T=-Omega`.
+
+Each of the nine controls keeps the W5 tetrad-conjugate source and can inherit
+the W4 geometry-only propagation. The spatial rank obstruction is therefore
+repaired at the perturbative toy-model level.
+
+Still absent: temporal tetrad/lapse/shift completion, a proved local frame
+gauge symmetry, diffeomorphism constraints, full conserved stress-energy,
+massless spin-2 mode and Einstein dynamics.
