@@ -25,6 +25,7 @@ reopened or promoted by that successor.
 | W3 backreacting tetrad | **W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN — PRELIMINARY, independent review pending**; noncommuting Y-kick changes <Z_e>, and the same <Z_e> controls the momentum-linear Weyl tetrad in the transport substep | [2026-09-30 W3 report](../reports/2026-09-30--w3-backreacting-tetrad.md) |
 | W3 coarse curvature/dynamics | **COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL**; W3 induces an explicit coarse metric and can have nonzero kinematic curvature, but has no geometry-only stiffness/propagation term and no derived stress-energy source | [2026-09-30 curvature report](../reports/2026-09-30--w3-curvature-dynamics.md) |
 | W4 geometry stiffness | **W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN — PRELIMINARY, independent review pending**; partial-SWAP geometry-only brickwork preserves the homogeneous background and transports the tetrad-control variable and coarse curvature information in vacuum | [2026-09-30 W4 report](../reports/2026-09-30--w4-geometry-stiffness.md) |
+| W5 tetrad-conjugate source | **W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN — PRELIMINARY, independent review pending**; the source is the same current operator variationally conjugate to the spatial tetrad, but a conserved full stress-energy tensor/Ward identity is not derived | [2026-09-30 W5 report](../reports/2026-09-30--w5-tetrad-conjugate-source.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2535,3 +2536,52 @@ a geometry-only local unitary. This repairs the specific W3 C3 obstruction.
 The W3 source obstruction remains: endpoint occupation has not been derived
 as stress-energy. No Einstein equation, spin-2 mode, gauge symmetry,
 Einstein-Hilbert action, `G_eff`, AdS scale or absolute scale is established.
+
+
+## 22. W5 tetrad-conjugate source — 2026-09-30
+
+**Contract:** [`W5_TETRAD_CONJUGATE_SOURCE_GATE.md`](../theory/W5_TETRAD_CONJUGATE_SOURCE_GATE.md),
+frozen at commit `5a1e51286804c60f26aee8ccb3d07b4d1f8859f7`.
+
+**Certificate:** [`verify_w5_tetrad_source.py`](../scripts/verify_w5_tetrad_source.py),
+added at commit `bd91e1ae0ffd4e006b83b8ff7816cbaf6fcb5db9`.
+
+**Execution:** [W5 report](../reports/2026-09-30--w5-tetrad-conjugate-source.md),
+commit `d6fd2109a0960da3049063a6a2af99aa05141d7f`.
+
+Status:
+
+```
+W5_TETRAD_CONJUGATE_SOURCE_GATE =
+W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN
+EVIDENCE = PRELIMINARY / INDEPENDENT_REVIEW_PENDING
+```
+
+W5 replaces the W3 endpoint-occupation source with the same local current
+operator `J_e^(a)` that is variationally conjugate to the tetrad-control
+variable in the matter transport Hamiltonian. The repaired geometry kick is
+`R_e^T(eta)=exp[-i eta Y_e tensor J_e]`.
+
+Exactly,
+
+[
+z_e'
+=
+z_e[1+(cos2eta-1)a_e]
+-
+x_esin2eta,j_e,
+]
+
+so the leading source is
+`z_e'-z_e=-2 eta x_e <J_e>+O(eta^2)`.
+
+The current family has symbol
+`J_a(p)=2 sin(p.d_a) sigma_a
+=2 d_a^i p_i sigma_a+O(|p|^3)`, which is the directional lattice
+representative of the operator obtained by varying the Weyl Hamiltonian with
+respect to the spatial tetrad coefficient.
+
+This justifies the narrow label **tetrad-conjugate stress source**. It does
+not yet justify identifying `J_e` with the full conserved
+`T_{mu nu}`: no discrete diffeomorphism/local-Lorentz Ward identity, full
+spacetime tetrad, or local energy continuity law has been derived.
