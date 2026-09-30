@@ -14,6 +14,7 @@ branches were incorporated by fast-forward into
 | W10 | **`OPEN_AFTER_AUDIT`** | Former C5 PASS was premature; explicit continuum action/constraint coefficients now checked, but full W11 local source matching and controlled constraint identity remain absent |
 | W11 | **`OPEN_AFTER_AUDIT`** | Four zero-quasienergy species plus four π nodes; K is a finite-range exactly conserved free charge with O(Λ³) branch-local energy error; nonzero-transfer Belinfante source and local continuity current remain open |
 | W11 F3 | **Contract OPEN**; `ONE_PARTICLE_FULL_Z3_CONTINUOUS_LOGARITHM_EXCLUDED` | Scoped proof accepted by both second-round reviewers: one particle, every ℤ³ translation, original two-component cell; interacting many-body and supercell generators are outside the proof |
+| W12 four-species metric universality | **`UNIVERSAL_SUBFAMILY_DEFICIENT` — PRELIMINARY / BLIND REVIEW PENDING** | Exact W6-control calculation: `dim(U)=3`, induced metric rank `3/6`, no common metric-null control direction. Per the frozen contract this is the negative outcome for this W6/CJWW class; user will run the required DeepSeek/Opus review before promotion. |
 | Joint Einstein–Weyl successor | **NOT_READY_TO_FREEZE / NOT_OPENED** | All four zero-quasienergy species must be retained; microscopic source matching, coupled Ward identities and reciprocal completion remain open |
 
 **Review provenance:** the first review covered `41d0e0d`. The
@@ -33,6 +34,13 @@ The second-round clarifications also distinguish the Hamiltonian shift
 multiplier from quadratic shift dependence in the Lagrangian, require the
 four-species total T_(0) in W10, and record K's opposite leading energy sign
 at the −I nodes. The old verdict blocks now carry superseded banners.
+
+W12 is separately authorized by the frozen contract at `2ff88b2` and has now
+been executed. The [report](../reports/2026-09-30--w12-four-species-metric-universality.md)
+records `UNIVERSAL_SUBFAMILY_DEFICIENT` at first order for the declared W6
+controls. This remains PRELIMINARY pending the blind review required by W12;
+the contract was not modified. This is a negative result within that control
+class, not a general no-gravity result.
 
 Records: [W9 addendum](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md#9-repair-addendum--2026-09-30),
 [W10 addendum](../reports/2026-09-30--w10-sourced-gu-wen-constraints.md#9-repair-addendum--2026-09-30-supersedes-the-terminal-decision),
