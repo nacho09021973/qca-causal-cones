@@ -1,0 +1,666 @@
+You are an independent referee in mathematical physics (quantum walks / quantum cellular automata,
+lattice fermions, linearized gravity). You receive only the documents below; no web access, no
+other context. Do not assume the documents are correct.
+
+The documents are: the contract of an earlier gate (W6) that defines nine geometry controls acting
+on a 3D two-component quantum walk; the contract of gate W12, frozen before any calculation; the W12
+execution report; the W12 SymPy certificate; and the definition of the walk (CJWW Eq. (5.15)).
+
+W12 asks whether the W6 controls induce the same first-order spatial metric perturbation at the
+four zero-quasienergy Weyl nodes of the walk (species universality). The report concludes
+UNIVERSAL_SUBFAMILY_DEFICIENT, which the contract classifies in advance as a negative result that
+closes this line for the W6 control class.
+
+Work in this order:
+
+1. **Setting.** Check that the report follows the frozen contract (common coordinates, ranks on the
+   coefficient of g, only the four +I nodes deciding, both product orders).
+2. **Derivation.** Check the node frames E_*, the first-order expansion of the control symbol
+   2 sin((p_* + k)·d_r) σ_a at each node, the induced δE_* and δh_*. Give the corrected
+   expression for any error.
+3. **Linear algebra.** Check dim U = 3, the basis of U, the rank 3/6 of the metric map on U, the
+   three missing metric relations, and the absence of a common frame-rotation direction. Recompute
+   them yourself if you can.
+4. **Certificate.** Say what the script actually checks and whether it matches the report. Flag
+   anything vacuous, circular or weaker than claimed.
+5. **Robustness of the negative conclusion.** Within the contract's rules, could a convention
+   choice (metric index placement, sign or ordering conventions, choice of reference node) change
+   the verdict? Is comparing δh at the four nodes the right test of species universality at this
+   order? Note anything that would make the negative result an artefact.
+6. **Scope.** Is the claim ceiling respected? Is anything overclaimed or understated?
+
+Output format: one section per point; a final table (claim / SUPPORTED, SUPPORTED_WEAKER or
+NOT_SUPPORTED / one-line reason); a final verdict: ACCEPT, ACCEPT_WITH_REPAIRS (list mandatory
+repairs) or REJECT. Be specific and brief; do not praise. Single round: state your assumptions
+instead of asking questions.
+
+=== DOCUMENT 1: W6_FULL_SPATIAL_TETRAD_GATE.md ===
+
+# W6_FULL_SPATIAL_TETRAD_GATE
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input
+
+Successor to
+
+```
+W5_SPATIAL_TETRAD_COMPLETENESS_GATE =
+RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN
+```
+
+The obstruction was rank: three controls gave rank 3 in tetrad space and rank
+3 in the six-dimensional spatial-metric tangent space.
+
+## 1. Geometry register enlargement
+
+Retain the three linearly independent CJWW support directions
+
+[
+d_1=(1,0,0),qquad
+d_2=(1,1,0),qquad
+d_3=(1,1,1),
+]
+
+with direction matrix
+
+[
+D=
+egin{pmatrix}
+1&0&0\\
+1&1&0\\
+1&1&1
+end{pmatrix},
+qquad det D=1.
+]
+
+For each Pauli/tetrad row (a=1,2,3) and direction label (r=1,2,3), attach
+one geometry qubit with control
+
+[
+z_{ar}=langle Z_{ar}angle.
+]
+
+## 2. Matter transport operators
+
+For each pair ((a,r)) and edge (e=(x,x+d_r)), define
+
+[
+J_e^{(a,r)}
+=
+i(|x+d_ranglelangle x|-|xanglelangle x+d_r|)
+otimessigma_a.
+]
+
+Transport gate:
+
+[
+T_e^{(a,r)}(g)
+=
+e^{-ig Z_{ar,e}otimes J_e^{(a,r)}}.
+]
+
+Backreaction kick:
+
+[
+R_e^{(a,r)}(eta)
+=
+e^{-ieta Y_{ar,e}otimes J_e^{(a,r)}}.
+]
+
+Geometry-only W4 exchange may be applied separately to each ((a,r)) register
+species.
+
+## 3. Principal-symbol target
+
+For a translation-invariant semiclassical geometry background, the
+momentum-linear correction should be
+
+[
+delta E_a{}^i
+=
+-2gsum_r z_{ar}D_r{}^i.
+]
+
+Writing (Z=(z_{ar})),
+
+[
+oxed{
+E=E_0-2gZD+O(g^2).
+}
+]
+
+## 4. Obligations
+
+### F1 — exact flat recovery
+
+At (g=eta=0), matter is exactly CJWW Eq. (5.15).
+
+### F2 — full tetrad rank
+
+The linear map
+
+[
+Zmapstodelta E=-2gZD
+]
+
+must have rank 9.
+
+### F3 — full spatial-metric rank
+
+For
+
+[
+delta h=E_0^Tdelta E+delta E^TE_0,
+]
+
+the induced linear map from the nine (z_{ar}) to symmetric metric
+perturbations must have rank 6.
+
+### F4 — kernel interpretation
+
+Compute the dimension and form of the kernel of
+(delta Emapstodelta h).
+
+If it is the expected three-dimensional antisymmetric frame-rotation
+direction at linear order, record that only as a **kinematic frame
+redundancy**, not a proved gauge symmetry.
+
+### F5 — reciprocal source
+
+For each (z_{ar}), the W5 variational source must be the corresponding
+(J^{(a,r)}), and the noncommuting Y-kick must change (z_{ar}) according to
+that source.
+
+### F6 — autonomous geometry propagation
+
+The W4 geometry-only exchange construction must apply independently to all
+nine register species without changing the flat (g=0) matter walk.
+
+## 5. Terminal states
+
+1. `W6_FULL_SPATIAL_TETRAD_FAIL`.
+2. `W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN`.
+3. `OPEN_AFTER_AUDIT`.
+
+## 6. Claim ceiling
+
+A full-rank spatial tetrad is not yet full 3+1 gravity. Passing W6 does not
+supply lapse, shift, time-like tetrad components, diffeomorphism constraints,
+local Lorentz gauge symmetry, Einstein dynamics, or gravitational
+normalization.
+
+=== DOCUMENT 2: W12_FOUR_SPECIES_METRIC_UNIVERSALITY_GATE.md ===
+
+# W12_FOUR_SPECIES_METRIC_UNIVERSALITY_GATE
+
+**Fecha:** 2026-09-30.
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`
+(«sí, congélalo y súbelo», 2026-09-30). Precisiones de Astra incorporadas antes de congelar:
+coordenadas comunes, U5 solo en nodos `+I`, rangos sobre el coeficiente de g.
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input and purpose
+
+W11 (repair addendum §9, A1) established that the zero-quasienergy sector of CJWW (5.15) consists
+of **four** Weyl species, at the `+I` nodes
+
+\[
+p_*\in\{(0,0,0),(\pi,\pi,0),(\pi,0,\pi),(0,\pi,\pi)\},
+\]
+
+with frames \(E_*=\operatorname{diag}(\sigma_2\sigma_3,-\sigma_3,1)\), \(\sigma_i=(-1)^{p_{*i}/\pi}\),
+and that any continuum coupling must use all four (option A1(i)). Both second-round reviewers
+confirmed the node table. In the flat walk all four species see the same metric,
+\(E_*^{T}E_*=I\).
+
+W6 introduced nine geometry controls \(z_{ar}\) acting through transport gates
+
+\[
+T_e^{(a,r)}(g)=e^{-igZ_{ar,e}\otimes J_e^{(a,r)}},\qquad
+J^{(a,r)}(p)=2\sin(p\cdot d_r)\,\sigma_a,
+\]
+
+with \(d_1=(1,0,0)\), \(d_2=(1,1,0)\), \(d_3=(1,1,1)\), and derived the induced frame
+\(E=E_0-2gZD+O(g^2)\) **only at the node \(p=0\)**.
+
+A geometry that couples to matter as gravity must give the **same metric to every species**
+(species universality, the equivalence principle at this linear level). This gate asks whether
+the W6 controls do so. It is a kill test for the gravity line: a negative outcome closes it for
+this control class.
+
+## 1. Single question
+
+For a translation-invariant semiclassical background \(Z=(z_{ar})\), to first order in \(g\) and
+in the species momentum \(k\), are the induced spatial metric perturbations
+\(\delta h_*=E_*^{T}\delta E_*+\delta E_*^{T}E_*\) **identical at the four `+I` nodes**?
+
+If not for all \(Z\): does a subspace \(\mathcal U\) of the nine controls exist on which they are
+identical, and what metric perturbations does \(\mathcal U\) span?
+
+## 2. Frozen setting
+
+- Matter: one-particle CJWW (5.15) symbol \(W_0(p)\), exactly as `walk2()` in
+  `scripts/verify_directional_saturation.py`.
+- Deformed walk to first order: \(W_g(p)=W_0(p)\,\big(I-ig\sum_{a,r}z_{ar}J^{(a,r)}(p)\big)+O(g^2)\).
+  The certificate must also check that the opposite order of the product gives the same result at
+  \(O(g\,k)\); if it does not, both orders are reported and the gate is `OPEN_AFTER_AUDIT`.
+- At each node define \(\delta E_*\) by
+  \(s_*W_g(p_*+k)=I+i\sigma^a\big(E_*+\delta E_*\big)_a{}^{i}k_i+O(|k|^2)+O(g^2)\).
+- Metric convention as in W6: \(h=E^{T}E\), so \(\delta h_*=E_*^{T}\delta E_*+\delta E_*^{T}E_*\).
+- **Common coordinates.** All \(\delta h_*\) are compared as tensors in the same lattice
+  coordinates \(k_i\) (the species momentum measured from its node along the fixed lattice axes).
+  No species-dependent spatial redefinition, relabelling or reflection of coordinates is allowed.
+- **Ranks on the coefficient of g.** Every rank and kernel in U3–U5 is computed on the linear
+  coefficient \(\partial_g\delta h_*|_{g=0}\), with the nine real controls \(z_{ar}\) as independent
+  variables. The \(g=0\) limit itself is only the flat-recovery check U6.
+- Only the four `+I` nodes enter the universality condition. The four `−I` nodes are computed and
+  reported but do not decide the gate (they are outside the A1(i) low-quasienergy contract).
+- No other control family, lattice, or matter model may be introduced in this gate.
+
+## 3. Obligations (all exact, symbolic; no numerics)
+
+**U1 — node frames.** Recompute \(E_*\) at all eight nodes from `walk2()` and check the W11 table.
+
+**U2 — induced frames.** Derive \(\delta E_*\) at each node as an explicit linear function of
+\(Z\). Record in particular the node-dependent sign of \(\sin((p_*+k)\cdot d_r)\) to first order in
+\(k\).
+
+**U3 — universality map.** Form the linear map
+\(\Phi: Z\mapsto(\delta h_{*2}-\delta h_{*1},\ \delta h_{*3}-\delta h_{*1},\ \delta h_{*4}-\delta h_{*1})\)
+and compute \(\mathcal U=\ker\Phi\) and \(\dim\mathcal U\).
+
+**U4 — universal span.** Compute the rank of \(Z\mapsto\delta h_{*1}\) restricted to \(\mathcal U\)
+(maximum 6), and identify which metric components are missing if the rank is below 6.
+
+**U5 — frame-rotation redundancy.** Separate from \(\mathcal U\) the directions that only rotate
+frames (\(\delta h_*=0\) at all four `+I` nodes); they carry no metric content and do not count
+towards U4. The `−I` nodes remain auxiliary here too and add no constraint.
+
+**U6 — flat recovery.** At \(g=0\) the deformed walk is exactly CJWW (5.15).
+
+## 4. Terminal states
+
+1. `METRIC_UNIVERSAL_FULL`: \(\Phi=0\) (every control gives the same metric to all four species)
+   and U4 has rank 6.
+2. `UNIVERSAL_SUBFAMILY_FULL_RANK`: \(\Phi\neq0\) but U4 has rank 6 on \(\mathcal U\). The gravity
+   line may continue with the geometry restricted to \(\mathcal U\); that restriction must be stated
+   in any successor.
+3. `UNIVERSAL_SUBFAMILY_DEFICIENT`: U4 has rank 1–5 on \(\mathcal U\); record the missing
+   components.
+4. `NON_UNIVERSAL`: U4 has rank 0 on \(\mathcal U\) (only frame rotations are universal).
+5. `OPEN_AFTER_AUDIT`: the product-order check of §2 or U1 fails.
+
+**Consequence fixed in advance.** States 3 and 4 close the gravity line for the W6/CJWW control
+class as a negative result. Reopening it requires a new control family with an independent
+physical justification written before any calculation; searching for a control family after the
+fact to rescue universality is not allowed. State 2 allows a separate decision to continue; it
+does not by itself authorize a successor gate. State 1 or 2 is not evidence of emergent gravity:
+dynamics, sources, backreaction and constraints remain as recorded in W9–W11.
+
+## 5. Certificate and review
+
+- Certificate: `scripts/verify_w12_four_species_metric_universality.py`, SymPy, exact. It builds
+  \(W_g\) from `walk2()` and the W6 symbols, extracts \(\delta E_*\) by differentiation at each
+  node, and prints \(\dim\mathcal U\), the U4 rank and, if deficient, the missing components.
+- Report: `reports/<fecha>--w12-four-species-metric-universality.md`, with the verdict and the
+  author's prior (below) compared to the outcome.
+- Independent review with `revision-ciega` (DeepSeek and Opus) before the result is used; the
+  gate stays PRELIMINARY until then.
+
+## 6. Author prior (recorded before calculation)
+
+Claude's expectation, written before any calculation: because \(\sin((p_*+k)\cdot d_r)\) changes
+sign between nodes for some \(r\) and the frames \(E_*\) differ by sign flips, generic \(Z\) will
+**not** give a universal metric, so \(\Phi\neq0\). Whether a rank-6 universal subfamily exists is
+not anticipated. This prior is recorded so that the outcome can be compared with it; it does not
+decide anything.
+
+## 7. Time box and claim ceiling
+
+- Time box: one working session for certificate and report. If U1–U5 are not settled in that
+  time, record `OPEN_AFTER_AUDIT` with what was done.
+- Claim ceiling: first order in \(g\) and \(k\), one-particle free walk, W6 controls only. No claim
+  about higher orders, interacting QCAs, the `−I` sector, dynamics of \(Z\), gravitational
+  normalization, or nature.
+
+=== DOCUMENT 3: 2026-09-30--w12-four-species-metric-universality.md ===
+
+# W12 — Four-species metric universality
+
+**Contract:** [`W12_FOUR_SPECIES_METRIC_UNIVERSALITY_GATE.md`](../theory/W12_FOUR_SPECIES_METRIC_UNIVERSALITY_GATE.md), frozen at `2ff88b2`.
+**Certificate:** [`verify_w12_four_species_metric_universality.py`](../scripts/verify_w12_four_species_metric_universality.py), SHA256 `dc17823a267a0085ec10f030e6e1bade738fbf91c95a3e119bf009fbbdbbcc73`.
+**Execution:** 2026-09-30, branch `research/gravitational-normalization-gate`.
+**Review:** not yet conducted; user will launch the contracted blind review. Evidence remains **PRELIMINARY / INDEPENDENT_REVIEW_PENDING**.
+
+## Verdict
+
+```
+W12 = UNIVERSAL_SUBFAMILY_DEFICIENT
+rank(Phi) = 6
+ dim(U) = 3
+rank(metric | U) = 3 / 6
+common metric-null directions in U = 0
+```
+
+For the nine W6 controls, generic backgrounds do not give the same linear metric to the four `+I` species. The universal subspace consists only of the three diagonal control directions, and these span a three-dimensional part of the six-dimensional spatial-metric tangent space. Per the frozen contract, this is the negative outcome for this W6/CJWW control class; it does not authorize searching a replacement control family. The outcome is preliminary until independent review.
+
+## U1 — nodes and frames
+
+The certificate recomputes the frames from `walk2()` at all eight corners and checks
+\(E_* = \operatorname{diag}(\sigma_2\sigma_3,-\sigma_3,1)\), with
+\(s_*=(-1)^{b_1+b_2+b_3}\) at \(p_*=\pi(b_1,b_2,b_3)\).
+The following table records `s*`, the diagonal of `E*`, and the direction signs \(\tau_r=(-1)^{b\cdot d_r}\). The four `−I` rows are diagnostics only.
+
+| Node \(b=p_*/\pi\) | \(s_*\) | \(\operatorname{diag}E_*\) | \((\tau_1,\tau_2,\tau_3)\) |
+|---|---:|---|---|
+| (0,0,0) | +1 | (1,−1,1) | (+,+,+) |
+| (0,0,1) | −1 | (−1,1,1) | (+,+,−) |
+| (0,1,0) | −1 | (−1,−1,1) | (+,−,−) |
+| (0,1,1) | +1 | (1,1,1) | (+,−,+) |
+| (1,0,0) | −1 | (1,−1,1) | (−,−,−) |
+| (1,0,1) | +1 | (−1,1,1) | (−,−,+) |
+| (1,1,0) | +1 | (−1,−1,1) | (−,+,+) |
+| (1,1,1) | −1 | (1,1,1) | (−,+,−) |
+
+The `+I` node set matches the frozen contract. At zero coupling, all four have \(E_*^TE_*=I\).
+
+## U2 — induced frames and product order
+
+Use the W6 matrix with direction vectors as **rows**,
+\[
+D=\begin{pmatrix}1&0&0\\1&1&0\\1&1&1\end{pmatrix},\qquad
+\tau_*=(\tau_1,\tau_2,\tau_3).
+\]
+Differentiating the frozen product \(W_g=W_0(I-igJ)\) gives, at every node,
+\[
+\frac{\delta E_*}{g}=-2Z\,\operatorname{diag}(\tau_*)D.
+\]
+The opposite product order \((I-igJ)W_0\) gives the same coefficient at order \(gk\). The exact comparison passes at all eight nodes. The flat check gives \(W_g|_{g=0}=W_0\).
+
+The signs in the table arise directly from
+\(\sin((p_*+k)\cdot d_r)=\tau_r(k\cdot d_r)+O(|k|^3)\). Both product orders have the same node value because \(J(p_*)=0\); their difference begins beyond the retained linear order in k.
+
+## U3 — universality subspace
+
+With control coordinates ordered
+\((z_{11},z_{12},z_{13},z_{21},z_{22},z_{23},z_{31},z_{32},z_{33})\), the exact 18-by-9 matrix for \(\Phi\) has rank 6. Its kernel is
+\[
+\mathcal U=\operatorname{span}\{e_{11},e_{22},e_{33}\},\qquad\dim\mathcal U=3,
+\]
+where \(e_{ar}\) means the single control \(z_{ar}\) is nonzero. Thus the prior that generic controls are nonuniversal is confirmed. The calculation finds the universal subspace rather than assuming it.
+
+## U4 — metric span on \(\mathcal U\)
+
+Order metric components as \((h_{11},h_{22},h_{33},h_{12},h_{13},h_{23})\). In the displayed control basis, the reference-species map restricted to \(\mathcal U\) is
+\[
+\begin{pmatrix}
+-4&0&0\\
+0&4&0\\
+0&0&-4\\
+0&2&0\\
+0&0&-2\\
+0&0&-2
+\end{pmatrix},
+\qquad \operatorname{rank}=3.
+\]
+Equivalently, writing the three universal controls as \(a=z_{11}, b=z_{22}, c=z_{33}\),
+\[
+\frac{\delta h_*}{g}=
+\begin{pmatrix}
+-4a&2b&-2c\\
+2b&4b&-2c\\
+-2c&-2c&-4c
+\end{pmatrix}
+\quad\text{at every `+I` node.}
+\]
+No individual coordinate component is identically zero throughout this span. Its three missing directions in the space of \(\delta h/g\) are expressed by the independent relations
+\[
+(\delta h/g)_{12}=\tfrac12(\delta h/g)_{22},\qquad
+(\delta h/g)_{13}=\tfrac12(\delta h/g)_{33},\qquad
+(\delta h/g)_{23}=\tfrac12(\delta h/g)_{33}.
+\]
+Therefore U4 is rank-deficient, not full-rank.
+
+## U5 — frame rotations
+
+The common metric map on the four `+I` species has a zero-dimensional kernel in the nine control variables. Hence no nonzero direction in \(\mathcal U\) is a pure common frame rotation with zero metric at every decisive node. These results are only about the linearized metric map; they do not establish a microscopic frame gauge symmetry.
+
+## U6 — flat recovery and claim ceiling
+
+At \(g=0\), the deformation reduces exactly to `walk2()`, as required. The whole calculation is exact and symbolic in the first-order coefficient of \(g\) and first-order species momentum \(k\), for the one-particle CJWW (5.15) symbol and the frozen nine W6 controls. Coordinates are held common across species. The `−I` nodes do not enter \(\Phi\), \(\mathcal U\), or the verdict.
+
+This outcome does not establish or refute gravity outside the declared W6/CJWW control class. It says nothing about higher orders, interacting walks, metric dynamics, local stress at nonzero transfer, backreaction, constraints, or gravitational normalization. A positive subfamily decision would have required a separate authorization; none is implied here.
+
+**Verification command:** `python3 -B scripts/verify_w12_four_species_metric_universality.py` — PASS for U1–U6 and the stated verdict.
+
+=== DOCUMENT 4: verify_w12_four_species_metric_universality.py ===
+
+"""Exact SymPy execution certificate for frozen W12 (commit 2ff88b2).
+
+Run from repository root:
+    python3 -B scripts/verify_w12_four_species_metric_universality.py
+
+The contract is not modified. Ranks are taken on the coefficient of g at
+first order in species momentum, with z_ar independent real controls. The
+four +I nodes decide universality; -I nodes are reported only as diagnostics.
+"""
+
+from itertools import product
+
+import sympy as sp
+
+from verify_directional_saturation import PAULI, P1, P2, P3, walk2
+
+PS = (P1, P2, P3)
+I2 = sp.eye(2)
+I3 = sp.eye(3)
+G = sp.symbols('g')
+ZV = sp.symbols('z11:14 z21:24 z31:34', real=True)
+Z = sp.Matrix(3, 3, ZV)
+D = sp.Matrix([[1, 0, 0], [1, 1, 0], [1, 1, 1]])  # rows are d1,d2,d3, as in W6
+DR = [sp.Matrix([1, 0, 0]), sp.Matrix([1, 1, 0]), sp.Matrix([1, 1, 1])]
+COMPONENTS = [(0, 0), (1, 1), (2, 2), (0, 1), (0, 2), (1, 2)]
+BITS_PLUS = [(0, 0, 0), (1, 1, 0), (1, 0, 1), (0, 1, 1)]
+BITS_ALL = list(product((0, 1), repeat=3))
+
+
+def simp_matrix(m):
+    return m.applyfunc(lambda x: sp.trigsimp(sp.expand(x)))
+
+
+def pauli_symbol(v):
+    return sum((v[a] * PAULI[a] for a in range(3)), sp.zeros(2))
+
+
+def node_subs(bits):
+    return dict(zip(PS, [sp.pi * b for b in bits]))
+
+
+def signs(bits):
+    return tuple((-1) ** b for b in bits)
+
+
+def node_sign(bits):
+    return (-1) ** sum(bits)
+
+
+def frame_from_walk(W, bits):
+    s = node_sign(bits)
+    at = node_subs(bits)
+    assert simp_matrix(W.subs(at) - s * I2) == sp.zeros(2)
+    E = sp.zeros(3)
+    for i, p in enumerate(PS):
+        deriv = s * sp.diff(W, p).subs(at)
+        for a in range(3):
+            E[a, i] = sp.simplify(sp.trace(deriv * PAULI[a]) / (2 * sp.I))
+    E = E.applyfunc(sp.simplify)
+    assert E.det() in (sp.S.One, sp.S.NegativeOne)
+    return E
+
+
+def gate_symbol():
+    J = sp.zeros(2)
+    for a in range(3):
+        for r, d in enumerate(DR):
+            phase = sum(PS[i] * d[i] for i in range(3))
+            J += 2 * Z[a, r] * sp.sin(phase) * PAULI[a]
+    return J
+
+
+def extract_delta_e(W, J, bits, right_order=True):
+    """Extract coefficient of g*k from s W0 (1-igJ) or s (1-igJ) W0."""
+    s, at = node_sign(bits), node_subs(bits)
+    perturb = -sp.I * (W * J if right_order else J * W)
+    dE = sp.zeros(3)
+    for i, p in enumerate(PS):
+        deriv = s * sp.diff(perturb, p).subs(at)
+        for a in range(3):
+            dE[a, i] = sp.simplify(sp.trace(deriv * PAULI[a]) / (2 * sp.I))
+    return dE.applyfunc(sp.simplify)
+
+
+def metric_coefficient(E, dE):
+    # dE already denotes the coefficient of g in delta E.
+    return simp_matrix(E.T * dE + dE.T * E)
+
+
+def vec6(M):
+    return sp.Matrix([sp.simplify(M[i, j]) for i, j in COMPONENTS])
+
+
+def linear_map(rows):
+    return sp.Matrix.vstack(*rows)
+
+
+def kernel_basis(A):
+    return A.nullspace()
+
+
+def main():
+    W = walk2()
+    J = gate_symbol()
+    # U6: first-order gate vanishes at g=0, recovering exactly the input walk.
+    Wg0 = W * (I2 - G * sp.I * J)
+    assert simp_matrix(Wg0.subs(G, 0) - W) == sp.zeros(2)
+    print('[PASS] U6 flat recovery: W_g|_(g=0) = walk2() exactly', flush=True)
+
+    # U1: derive all node frames from the walk, not from a hard-coded table.
+    frames = {}
+    for bits in BITS_ALL:
+        frames[bits] = frame_from_walk(W, bits)
+        sig = signs(bits)
+        expected = sp.diag(sig[1] * sig[2], -sig[2], 1)
+        assert frames[bits] == expected
+        print(f'[U1] node {bits}: s={node_sign(bits):+d}, E={tuple(frames[bits].diagonal())}', flush=True)
+    print('[PASS] U1 all eight frames match the W11 expression', flush=True)
+
+    # U2: first-order g,k coefficient, derived from the two product orders.
+    dEs, dhs = {}, {}
+    tau_rows = {}
+    for bits in BITS_ALL:
+        right = extract_delta_e(W, J, bits, right_order=True)
+        reverse = extract_delta_e(W, J, bits, right_order=False)
+        assert simp_matrix(right - reverse) == sp.zeros(3)
+        # Independently factor the expected node-dependent sign of sin(p*.d_r).
+        sig = signs(bits)
+        tau = tuple(sp.prod(sig[j] for j, c in enumerate(d) if c) for d in DR)
+        tau_rows[bits] = tau
+        expected_dE = -2 * Z * sp.diag(*tau) * D
+        assert simp_matrix(right - expected_dE) == sp.zeros(3)
+        dEs[bits] = right
+        dhs[bits] = metric_coefficient(frames[bits], right)
+        print(f'[U2] node {bits}: tau_r={tau}; deltaE/g={right}', flush=True)
+    print('[PASS] U2 product orders agree at O(g k) at all eight nodes', flush=True)
+
+    # U3: the universality map is the exact 18 x 9 coefficient matrix.
+    ref = BITS_PLUS[0]
+    phi_rows = []
+    for bits in BITS_PLUS[1:]:
+        phi_rows.extend(list(vec6(dhs[bits] - dhs[ref])))
+    Phi = linear_map([sp.Matrix([sp.diff(x, z) for z in ZV]).T for x in phi_rows])
+    assert Phi.shape == (18, 9)
+    phi_rank = Phi.rank()
+    U_basis = kernel_basis(Phi)
+    assert len(U_basis) == 9 - phi_rank
+    expected_U = {(1, 0, 0, 0, 0, 0, 0, 0, 0),
+                  (0, 0, 0, 0, 1, 0, 0, 0, 0),
+                  (0, 0, 0, 0, 0, 0, 0, 0, 1)}
+    assert {tuple(v) for v in U_basis} == expected_U
+    U_matrix = sp.Matrix.hstack(*U_basis) if U_basis else sp.zeros(9, 0)
+    print(f'[U3] rank(Phi)={phi_rank}; dim(U)={len(U_basis)}', flush=True)
+    print('[U3] universal control basis (column vectors in z11,...,z33 order):')
+    for b in U_basis:
+        print(' ', tuple(b), flush=True)
+
+    # U4: metric map of reference species restricted to U.
+    Href_rows = [sp.Matrix([sp.diff(x, z) for z in ZV]).T for x in vec6(dhs[ref])]
+    Href = linear_map(Href_rows)
+    restricted = Href * U_matrix
+    metric_rank = restricted.rank()
+    assert restricted == sp.Matrix([[-4, 0, 0], [0, 4, 0], [0, 0, -4],
+                                    [0, 2, 0], [0, 0, -2], [0, 0, -2]])
+    assert 0 <= metric_rank <= 6
+    metric_names = ('h11', 'h22', 'h33', 'h12', 'h13', 'h23')
+    annihilator = kernel_basis(restricted.T)
+    assert len(annihilator) == 6 - metric_rank
+    missing_relations = []
+    for relation in annihilator:
+        terms = [f'({sp.sstr(sp.simplify(c))})*{metric_names[i]}'
+                 for i, c in enumerate(relation) if c != 0]
+        missing_relations.append(' + '.join(terms) + ' = 0')
+    print(f'[U4] rank(metric map restricted to U)={metric_rank}/6', flush=True)
+    print('[U4] independent metric constraints (missing directions in Sym^2):', flush=True)
+    for relation in missing_relations:
+        print(' ', relation, flush=True)
+    print('[U4] restricted metric matrix:')
+    print(restricted, flush=True)
+
+    # U5: frame rotations are precisely the kernel of the common metric map.
+    all_metric = linear_map([sp.Matrix([sp.diff(x, z) for z in ZV]).T
+                             for bits in BITS_PLUS for x in vec6(dhs[bits])])
+    rotation_basis = kernel_basis(all_metric)
+    assert not rotation_basis
+    assert all(Phi * b == sp.zeros(Phi.rows, 1) for b in rotation_basis)
+    rotation_matrix = sp.Matrix.hstack(*rotation_basis) if rotation_basis else sp.zeros(9, 0)
+    assert all_metric * rotation_matrix == sp.zeros(all_metric.rows, rotation_matrix.cols)
+    print(f'[U5] common metric-null (frame-rotation) dimension={len(rotation_basis)}', flush=True)
+    print('[U5] frame-rotation basis:')
+    for b in rotation_basis:
+        print(' ', tuple(b), flush=True)
+
+    # Terminal state, as defined in the frozen contract.
+    if phi_rank == 0 and metric_rank == 6:
+        verdict = 'METRIC_UNIVERSAL_FULL'
+    elif phi_rank != 0 and metric_rank == 6:
+        verdict = 'UNIVERSAL_SUBFAMILY_FULL_RANK'
+    elif metric_rank == 0:
+        verdict = 'NON_UNIVERSAL'
+    else:
+        verdict = 'UNIVERSAL_SUBFAMILY_DEFICIENT'
+    assert metric_rank == 6 or bool(missing_relations)
+    print(f'VERDICT: {verdict}', flush=True)
+    print('Scope: exact first order in g and k; W6 controls and one-particle CJWW (5.15) only.', flush=True)
+    print('No claim: emergent gravity, higher orders, -I universality, or dynamics/backreaction of Z.', flush=True)
+
+
+if __name__ == '__main__':
+    main()
+
+=== DOCUMENT 5: cjww_walk_definition.md ===
+
+# CJWW Eq. (5.15) — momentum-space walk used by the W11 certificate
+
+Transcribed from `scripts/verify_directional_saturation.py`, function `walk2()`
+(lines 72–78 at commit `41d0e0d`), which the W11 certificate imports. In the
+certificate, `PAULI = (sigma_1, sigma_2, sigma_3)` in the standard basis and
+`c_k = cos p_k`, `s_k = sin p_k`.
+
+```
+W(p) = [[ c1 c2 e^{i p3},          -c1 s2 + i s1       ],
+        [  c1 s2 + i s1,             c1 c2 e^{-i p3}   ]]
+```
+
+The Weyl node used in W11 is p = 0.
