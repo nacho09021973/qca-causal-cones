@@ -30,6 +30,7 @@ reopened or promoted by that successor.
 | W5 tetrad completeness audit | **RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN** for the original three-field model; exact rank 3 of 9 in tetrad space and 3 of 6 in metric space | [2026-09-30 rank audit](../reports/2026-09-30--w5-spatial-tetrad-completeness.md) |
 | W6 full spatial tetrad | **W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN — PRELIMINARY, independent review pending**; nine controls span all 9 spatial tetrad and all 6 metric perturbations, with a 3D metric kernel equal to infinitesimal frame rotations | [2026-09-30 W6 report](../reports/2026-09-30--w6-full-spatial-tetrad.md) |
 | W7 spin-2 kinematics | **SPIN2_KINEMATIC_SECTOR_PASS / TT_GAUGE_CONSTRAINTS_OPEN — PRELIMINARY, independent review pending**; spatial tetrad perturbations decompose as frame rotations (3) + trace scalar (1) + symmetric-traceless spin-2 tensor (5), but no 5→2 TT reduction is derived | [2026-09-30 W7 report](../reports/2026-09-30--w7-spin2-kinematics.md) |
+| W8 TT gauge completion | **TT_GAUGE_REDUCTION_KINEMATIC_PASS / MICROSCOPIC_GAUGE_EMBEDDING_OPEN — PRELIMINARY, independent review pending**; a traceless vector gauge orbit has rank 3 at nonzero momentum and reduces the 5-component spin-2 tensor to plus/cross, but W6 does not realize this redundancy microscopically | [2026-09-30 W8 report](../reports/2026-09-30--w8-tt-gauge-completion.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2701,3 +2702,35 @@ However no local diffeomorphism/constraint structure has been derived to
 impose transversality or eliminate the scalar mode, and no 3D isotropic
 smooth-gapless tensor dispersion has been established. The physical
 two-polarization graviton is therefore still OPEN.
+
+
+## 27. W8 TT gauge-completion audit — 2026-09-30
+
+**Contract:** [`W8_TT_GAUGE_COMPLETION_GATE.md`](../theory/W8_TT_GAUGE_COMPLETION_GATE.md),
+frozen at commit `223d9f41665efb0e3dd6684403eeeac3109e54d1`.
+
+**Certificate:** [`verify_w8_tt_gauge_reduction.py`](../scripts/verify_w8_tt_gauge_reduction.py),
+added at commit `7be4a0a341156e371f9f6cae505b931a6373c0f1`.
+
+**Execution:** [W8 report](../reports/2026-09-30--w8-tt-gauge-completion.md),
+commit `5612284befab40ff1d664d02e0702aa88b834e86`.
+
+Status:
+
+```
+W8_TT_GAUGE_COMPLETION_GATE =
+TT_GAUGE_REDUCTION_KINEMATIC_PASS / MICROSCOPIC_GAUGE_EMBEDDING_OPEN
+EVIDENCE = PRELIMINARY / INDEPENDENT_REVIEW_PENDING
+```
+
+For nonzero momentum, the traceless-projected vector transformation
+`delta Q_ij = partial_i xi_j + partial_j xi_i
+-(2/3)delta_ij partial.k xi` has rank 3 inside the five-dimensional
+symmetric-traceless tensor space. For `k || z`, one can set
+`Q_xz=Q_yz=Q_zz=0`, leaving exactly
+`Q_xx=-Q_yy` and `Q_xy`: the plus/cross pair.
+
+This establishes only the kinematic gauge reduction. W6 does not contain an
+exact local generator/Gauss constraint identifying gauge-related tensor
+configurations; such configurations generally give different matter
+principal symbols. The physical graviton therefore remains OPEN.
