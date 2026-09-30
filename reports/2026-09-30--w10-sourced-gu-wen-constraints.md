@@ -288,3 +288,134 @@ The next admissible task is not another gravity ansatz. It is a
 **CJWW FLOQUET STRESS-TENSOR GATE**: determine whether suitable local
 low-energy energy/momentum densities can be derived from the exact walk with
 controlled continuity identities.
+
+## 9. Repair addendum — 2026-09-30 (supersedes the terminal decision)
+
+Inputs: [blind-review repairs](../debates/2026-09-30--w9-w11-blind-review/reparaciones.md)
+and [source check at 7903713](../investigaciones/2026-09-30-prior-art-walk-graviton/comprobacion.md).
+The report at `f956f68` and its frozen contract are not rewritten.
+Evidence: **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
+
+### A4 — correct the premature terminal state
+
+W10's terminal PASS was recorded at `f956f68`, before W11's contract
+`cfdc5c6`. C5 requires controlled low-energy source operators; the continuum
+identity alone did not meet that requirement at that time. The former
+terminal decision is therefore superseded, not retrospectively justified
+by the later W11 report.
+
+Reevaluation after A2 and the explicit A3 downgrade: W11 now supplies a
+finite-range exactly conserved free energy charge K with a controlled
+narrow-band error. It still does not supply the full local Belinfante
+stress at nonzero transfer, the four-species source matching, or a sourced
+constraint/Ward identity. Hence the conditions of C5 have not been shown
+for the intended local matter–geometry bridge. The authoritative state is
+
+```
+W10 = OPEN_AFTER_AUDIT
+C1 = PASS / EXPLICIT_CONTINUUM_CONVENTION_BELOW
+C2 = PASS / FLAT_TEST_SOURCE_AT_O(lambda)_ONLY
+C3 = ZERO_TRANSFER_SPATIAL_TETRAD_SOURCE / PARTIAL
+C4 = OPEN
+C5 = CONDITIONAL_ON_FULL_W11_LOCAL_SOURCE_MATCH / NOT_MET
+```
+
+Restoring the former weak PASS requires the missing W11 source matching
+and a controlled constraint identity in an explicitly specified low-energy
+sector. An exact microscopic Floquet stress remains a separate stronger
+condition. Neither is inferred from conservation of a global charge.
+
+### B1 — fixed quadratic action, signs and relative coefficients
+
+Fix signature \(\eta=\operatorname{diag}(-1,1,1,1)\), lower-index symmetric
+perturbation \(h_{\mu\nu}\), and compact support or boundary conditions
+that remove surface terms. Indices are raised with η. Put
+\(h=\eta^{\mu\nu}h_{\mu\nu}\), \(\Box=\eta^{\mu\nu}\partial_\mu\partial_\nu\).
+The following choice fixes the gravitational field normalization for this
+continuum calculation; it does not derive a Newton constant:
+
+\[
+S_g^{(2)}=-\frac12\int h_{\mu\nu}G_{\rm lin}^{\mu\nu}(h),\qquad
+S_{\rm int}=\frac\lambda2\int h_{\mu\nu}T_{(0)}^{\mu\nu},
+\]
+
+\[
+G^{\rm lin}_{\mu\nu}=\frac12\left[
+\partial_\mu\partial^\rho h_{\rho\nu}
++\partial_\nu\partial^\rho h_{\rho\mu}
+-\Box h_{\mu\nu}-\partial_\mu\partial_\nu h
+-\eta_{\mu\nu}(\partial^\rho\partial^\sigma h_{\rho\sigma}-\Box h)
+\right].
+\]
+
+Here \(T_{(0)}\) is symmetric and independent of h in the variation.
+The operator is formally self-adjoint (two integrations by parts). Thus
+\(\delta S_g=-\int\delta h_{\mu\nu}G_{\rm lin}^{\mu\nu}\) and
+
+\[
+G_{\rm lin}^{\mu\nu}=\frac\lambda2 T_{(0)}^{\mu\nu}.
+\]
+
+For independent components, the lapse variation is
+\(-G^{00}+\lambda T_{(0)}^{00}/2=0\), while the shift variation is
+\(-2G^{0i}+\lambda T_{(0)}^{0i}=0\). Diagonal spatial components have
+multiplicity one; off-diagonal spatial components have multiplicity two.
+There are no independent adjustable scalar/vector source normalizations.
+Equivalently, define \(\mathcal C^\nu_{\rm geom}=2G^{0\nu}_{\rm lin}\):
+
+\[
+\mathcal C^0_{\rm geom}=\partial_i\partial_jh_{ij}-\Delta h_{jj}
+=\lambda T_{(0)}^{00},
+\]
+
+\[
+\mathcal C^i_{\rm geom}=-\partial_j\dot h_{ij}
++\partial_i\dot h_{jj}+\Delta h_{0i}
+-\partial_i\partial_jh_{0j}
+=\lambda T_{(0)}^{0i}.
+\]
+
+These explicit definitions replace the schematic independent normalizations
+in §2. Their numerical mapping to Gu–Wen's canonical variables and J,g is
+not asserted. The coefficient λ in the former §3 equation must be replaced
+by λ/2 in this action convention (or renamed consistently everywhere).
+
+### B2–B3 — continuum target and perturbative ceiling
+
+C2 uses **the constrained continuum Einstein target**, not the controlled
+Gu–Wen lattice L model. Gu–Wen, `biblioteca/arXiv-0907.1203.pdf` p.12,
+eq.(37), introduce the multipliers and state the continuum Einstein-action
+result. Their p.1 distinguishes the controlled L model with cubic dispersion
+from the less controlled linear-dispersion N proposal. Both pages were
+re-read in this session. The L model cannot be substituted for this action:
+its cubic modes do not obey the TT wave equation derived here. No sourced
+L-model dynamics or controlled lattice realization of this continuum target
+is established by W10.
+
+The Bianchi identity gives compatibility with a prescribed **free flat-space**
+\(T_{(0)}\) satisfying \(\partial_\mu T_{(0)}^{\mu\nu}=0\). In a coupling
+expansion at fixed weak h, if matter responds as
+\(T=T_{(0)}+\lambda T_{(1)}+\cdots\), the source \(\lambda T/2\) acquires
+O(λ²) terms. The free identity alone does not control their divergence.
+Reciprocal backreaction needs the corresponding higher-order matter and
+gravity identities/self-couplings; they are not included here. Thus C2 is
+restricted to test-source consistency at O(λ), not a coupled closure test.
+No unverified Gupta/Deser attribution is needed for this restriction.
+
+The new [certificate](../scripts/verify_w10_linearized_constraints.py)
+checks all ten variations, the scalar/vector component formulas, Bianchi
+and gauge identities for arbitrary formal momentum, and the independent
+TT limit \(G_{12}=(\partial_t^2-\partial_3^2)h_{12}/2\). This verifies the
+chosen continuum calculation, not source conservation in a coupled QCA.
+
+### Prior-art and closure boundary
+
+The source audit through `7903713` locates no counterexample to a CJWW-like
+matter–graviton construction with reciprocal backreaction among the checked
+papers. That is a bounded search result, not a novelty proof. The outstanding
+source checks listed there remain outstanding; no proposed catalog tag is
+promoted by this repair.
+
+A1/A2/A4 are repaired; A3 takes the permitted downgrade, B1 fixes the continuum
+convention, and B2/B3 restrict C2 to the actual continuum/test-source result.
+A joint Einstein–Weyl gate is **not ready to freeze** from these results.

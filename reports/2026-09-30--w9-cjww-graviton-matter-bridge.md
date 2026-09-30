@@ -327,3 +327,60 @@ is the terminal state.
 
 No nonlinear Einstein, equivalence-principle, \(G_{\rm eff}\), AdS or
 absolute-scale claim follows.
+
+## 9. Repair addendum — 2026-09-30
+
+This addendum responds to A3, B5–B6, C1–C2 and D1 of the
+[blind-review repair list](../debates/2026-09-30--w9-w11-blind-review/reparaciones.md),
+imported through `7903713`. The frozen report above is retained.
+Evidence: **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
+
+**B1 / C1.** The computed variation is an obstruction to invariance under
+arbitrary time-dependent spatial gauge transformations of the truncated
+coupling. On the free conserved-stress shell and with vanishing boundary
+terms, it is also
+\(-\lambda\int(\partial_t\xi_j)T^{0j}\), which vanishes for static spatial
+parameters. It does not disprove a gauge-fixed formulation with residual
+gauge freedom. The missing requirements are the temporal constraint equations
+and their matter sources. The revised label is
+`SPATIAL_TRUNCATION_NOT_FULL_GAUGE_INVARIANT / STATIC_RESIDUAL_COMPATIBLE`.
+
+**B2 / B5–B6.** This is the continuum algebraic identity
+\(\delta S_{\rm int}=-\lambda\int\xi_\nu\partial_\mu T^{\mu\nu}\), for an
+already symmetric conserved stress, on the free matter shell, at O(λ).
+It is not CJWW-specific and does not derive the transformation of ψ,
+an off-shell matter symmetry, or a local-Lorentz Ward identity. Passing
+from a tetrad source to a symmetric metric stress is an additional input;
+W6's antisymmetric frame directions alone do not establish local Lorentz
+gauge redundancy. No complete off-shell Einstein–Weyl action is claimed.
+The revised label is `ON_SHELL_CONTINUUM_IDENTITY / O(lambda)`.
+
+CJWW's use of this identity depends on the repaired W11 F1, including its
+four-species contract. The original p=0 expansion describes only one of
+those species. The continuum target sums the four stresses; their full
+microscopic nonzero-transfer kernels have not been matched.
+
+**B3 / A3.** Keep only `ZERO_TRANSFER_SPATIAL_TETRAD_SOURCE / PARTIAL`.
+The current symbols span tetrad-conjugate structures at p=0; they do not
+establish the local symmetric Belinfante tensor at q≠0. In particular,
+no spin-improvement formula from a review is adopted without derivation.
+
+**B4 / C2.** The missing microscopic objects are local **constraint
+operators containing matter charges**, with a controlled penalty/projection
+and low-energy Ward identity. Lapse and shift may be Lagrange multipliers;
+separate microscopic registers for them are not a requirement. This
+supersedes the wording of §§5,7. B4 remains OPEN.
+
+**D1.** The updated [checker](../scripts/verify_w9_continuum_gauge_bridge.py)
+constructs the symmetric h,T coupling and its variation with ξ explicitly,
+checks the 1/2 factor and Fourier integration by parts, and checks the static
+residual case without division by any momentum component. Its output is
+labelled an algebraic consistency check. It takes stress conservation as an
+input and makes no W6 rank claim; the original W6 certificate remains the
+source for that separate rank calculation.
+
+The terminal label `CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS /
+MICROSCOPIC_SPACETIME_COMPLETION_OPEN` is retained **only for this conditional
+on-shell continuum statement**, not for a constructed CJWW local stress
+or reciprocal coupling. W10/W11's repaired OPEN states govern readiness
+for any joint successor.

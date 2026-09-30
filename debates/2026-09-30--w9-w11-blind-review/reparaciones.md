@@ -179,3 +179,54 @@ por penalización o proyección, no "registros de lapse/shift".
 4. B2–B6, C1–C3, D1–D2.
 5. Solo entonces congelar el JOINT EINSTEIN–WEYL LOW-ENERGY GATE, con el alcance de B2
    (O(λ) o con autoenergía) y la opción de A1 declarados en el contrato.
+
+## Aplicación en la rama de investigación — 2026-09-30
+
+Autorización: encargo del usuario tras `7903713`. La rama de investigación
+incorpora por avance rápido la revisión y la comprobación de fuentes. Los
+informes congelados se conservan íntegros; las correcciones son addenda §9.
+**Aplicada** significa respuesta del autor comprobada localmente, no objeción
+resuelta por una nueva revisión independiente. La versión reparada sigue
+PRELIMINARY y no abre el gate conjunto.
+
+| Reparación | Respuesta aplicada | Pendiente / límite |
+| --- | --- | --- |
+| A1 | W11 §9: ocho nodos, marcos y ambas convenciones de signo; opción (i), contrato de cuatro especies de cuasienergía cero | Construcción acoplada y exclusión controlada del sector π pendientes |
+| A2 | K construido desde los saltos de CJWW; conservación exacta por símbolo y convolución; cota uniforme de banda y tiempo | Es carga libre, no cuasienergía global ni tensor local |
+| A3 | Rebaja explícita de F2 y B3/C3 a cargas integradas y estructuras de tétrada a q=0 | Kernels Belinfante a q≠0, espín y emparejamiento de cuatro especies abiertos |
+| A4 | W10 se reevalúa tras A2/A3 y pasa a OPEN_AFTER_AUDIT; C5 no cumplida | El PASS anterior queda histórico/condicional, sin modificar f956f68 |
+| B1 | Acción cuadrática concreta, firma y normalización fijadas; diez variaciones y restricciones comprobadas en nuevo certificado W10 | No se afirma un mapa numérico a J,g de Gu–Wen ni se deriva G |
+| B2 | C2 restringido a fuente plana libre a O(λ) | Backreaction y cierre a orden superior no derivados |
+| B3 | Sector elegido: continuo de Einstein; se excluye identificarlo con el modelo L de dispersión cúbica | Emergencia desde una red controlada no establecida |
+| B4 | Error cúbico y cota dinámica; caso exacto en el eje p3; fórmula errónea del revisor descartada | Cota de H_IR solo cerca de p=0; se utiliza K como sustituto |
+| B5–B6 | W9 explícitamente algebraico, on-shell, O(λ), condicionado a W11 y al tensor simétrico continuo | Transformación de ψ y Ward de Lorentz local no derivados |
+| C1–C2 | Se distingue gauge residual estático y se requieren restricciones con materia, no registros de lapse/shift | Realización microscópica abierta |
+| C3 | Momento de enlace global exactamente conservado; prueba de obstrucción al logaritmo continuo invariante por traslación | Corriente local no construida; prueba nueva de F3 sin revisión independiente |
+| D1 | Variación con h, T simétrico y ξ explícitos; factor 1/2 e integración por partes; sin dividir por k_z ni atribuir una prueba de conservación | Certificado etiquetado de consistencia algebraica; se retira su afirmación de rango W6 |
+| D2 | Símbolos desde enlaces; nodos, conservación y jets simbólicos en dirección arbitraria | Parte q≠0 pendiente, conforme a la rebaja de A3 |
+| E | Se incorpora comprobacion.md; Gu–Wen pp.1,12 y Arnault–Cedzich pp.1–2 releídos para los addenda | Búsqueda no exhaustiva; pendientes del usuario y etiquetas proposed sin promover |
+
+Comprobaciones ejecutadas (salida correcta, salvo actualización posterior
+expresamente indicada):
+
+- `python3 -B scripts/verify_w9_continuum_gauge_bridge.py`.
+- `python3 -B scripts/verify_w10_linearized_constraints.py`.
+- `python3 -B scripts/verify_w11_ir_stress_source.py`.
+
+También se reprodujo el certificado original
+`python3 -B debates/2026-09-30--w9-w11-blind-review/verify_reviewer_claims.py`:
+mantiene sus PASS y la refutación del término cúbico propuesto por DeepSeek.
+`git diff --check` pasó y se comprobó que los tres informes originales
+permanecen byte a byte como prefijos de las versiones con addenda.
+
+SHA256 de los tres certificados W9, W10 y W11 actualizados, respectivamente:
+
+```
+4291df6f93c1b5b78675c8ac79723e2478c913157b0598de6d7e6b4104b31798
+ae12afd75048c307ba819e9c005f2a93ff19c5c470223315597289d28f54dc28
+cf52ab1c9119f2dbfb2076b562fbfaabaf348c02ce1476d57d9eb1c09a451a24
+```
+
+Los chequeos por convolución y el caso límite del eje son segundas vías de
+comprobación matemática. No se presentan como revisión independiente por
+otra familia. El estado canónico está al inicio de `state/CURRENT_STATE.md`.

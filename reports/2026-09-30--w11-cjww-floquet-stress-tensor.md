@@ -304,3 +304,191 @@ construct one **joint low-energy model** combining:
 
 and then test whether its coupled linearized equations reproduce the
 Einstein-Weyl system to controlled order.
+
+## 9. Repair addendum — 2026-09-30 (supersedes the verdict above)
+
+Authorization: the user's handoff after source check `7903713`. Inputs:
+[repair list](../debates/2026-09-30--w9-w11-blind-review/reparaciones.md)
+and [primary-source check](../investigaciones/2026-09-30-prior-art-walk-graviton/comprobacion.md).
+The frozen report at `83acdfd` is preserved above. These repairs are author-side
+work, **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
+They do not freeze or open the joint Einstein–Weyl gate.
+
+### A1 — nodes and species contract
+
+For the actual CJWW (5.15) symbol, write
+
+\[
+W=a_0I+i\boldsymbol a\cdot\boldsymbol\sigma,\qquad
+ a_0=c_1c_2c_3,\quad
+ \boldsymbol a=(s_1,-c_1s_2,c_1c_2s_3),
+\]
+
+where here \(c_i=\cos p_i\), \(s_i=\sin p_i\).
+Since \(\det W=1\), a degeneracy is \(W=\pm I\). The condition
+\(|a_0|=1\) forces every \(|c_i|=1\): the following eight nodes exhaust the
+Brillouin torus (coordinates understood modulo \(2\pi\)). Define the frame by
+
+\[
+W(p_*+k)=s_*[(1-|k|^2/2)I+i\sigma^a E_{*a}{}^i k_i+O(|k|^3)],\qquad
+H_*(k)=i\log[s_*W(p_*+k)]=-\sigma^a E_{*a}{}^ik_i+O(|k|^3).
+\]
+
+The Pauli-vector part has no quadratic term. The table uses the normalized
+frame of \(s_*W\), including at the π nodes.
+
+| \(p_*/\pi\) | \(s_*\) | \(\operatorname{diag}E_*\) | \(\det E_*\) | Hamiltonian chirality \(\operatorname{sgn}\det(-E_*)\) |
+| --- | --- | --- | --- | --- |
+| (0,0,0) | +1 | (1,−1,1) | −1 | +1 |
+| (1,1,0) | +1 | (−1,−1,1) | +1 | −1 |
+| (1,0,1) | +1 | (−1,1,1) | −1 | +1 |
+| (0,1,1) | +1 | (1,1,1) | +1 | −1 |
+| (0,0,1) | −1 | (−1,1,1) | −1 | +1 |
+| (0,1,0) | −1 | (−1,−1,1) | +1 | −1 |
+| (1,0,0) | −1 | (1,−1,1) | −1 | +1 |
+| (1,1,1) | −1 | (1,1,1) | +1 | −1 |
+
+The review's signs −,+,−,+ refer to \(\det E_*\); with the Hamiltonian
+convention \(W=e^{-iH}\), chirality has the opposite sign. Both conventions
+have zero net chirality in the four zero-quasienergy species. F1 in §1
+applies only near \(p=0\), not to the entire low-quasienergy sector.
+
+**Selected option A1(i): retain all four zero-quasienergy species.** Any
+subsequent continuum coupling must use their sum
+\(T^{\mu\nu}_{\mathrm{tot}}=\sum_{s_*=+1}T_*^{\mu\nu}\), each with its own
+frame, and one common geometry/coupling. This is a required contract, not a
+constructed microscopic coupling or a proof of universal coupling. A
+single-species truncation is not licensed. The π sector remains explicitly
+outside this low-quasienergy contract; its exclusion under coupled dynamics
+and all species-dependent source kernels must be checked before a joint PASS.
+No suppression of intervalley scattering is inferred from this node table.
+
+### A2 — replace the energy surrogate by K
+
+For the **one-particle free walk** \(U\), set
+
+\[
+K=\frac{i}{2}(U-U^\dagger),\qquad K(p)=-\boldsymbol a(p)\cdot\boldsymbol\sigma.
+\]
+
+This is Hermitian and exactly conserved: \([K,U]=0\). If
+\((U\psi)_x=\sum_r A_r\psi_{x+r}\), then
+\(B_r=i(A_r-A_{-r}^\dagger)/2\) are the hopping matrices of K and
+\(B_{-r}=B_r^\dagger\). One local Hermitian density is
+
+\[
+\varepsilon_x^K=\frac12\sum_r
+[\psi_x^\dagger B_r\psi_{x+r}+\psi_{x+r}^\dagger B_r^\dagger\psi_x],
+\qquad \sum_x\varepsilon_x^K=\langle\psi,K\psi\rangle.
+\]
+
+It has the spatial range of the walk (at most one site per coordinate).
+For a freely second-quantized walk the corresponding conserved bilinear is
+\(d\Gamma(K)\); taking \(i(\Gamma(U)-\Gamma(U)^\dagger)/2\) instead is not
+this local bilinear. No interacting QCA claim is made.
+
+On the union of the four balls \(|k|\le\Lambda\le1/2\) around \(+I\) nodes,
+let \(P_\Lambda\) be the band projector. Here \(\cos\theta=\prod_i\cos k_i>0\),
+\(\sin^2\theta=1-\prod_i(1-\sin^2k_i)\le|k|^2\), hence
+\(0\le\theta\le\arcsin\Lambda\). Spectral calculus gives
+\(K=\sin H_{\rm eff}\) on this branch, so
+
+\[
+\|(K-H_{\rm eff})P_\Lambda\|
+\le\frac{(\arcsin\Lambda)^3}{6},\qquad
+\|(U^n-e^{-inK})P_\Lambda\|
+\le |n|\frac{(\arcsin\Lambda)^3}{6}.
+\]
+
+The second estimate follows by telescoping/Duhamel for the two unitary
+propagators. It is useful for \(|n|\Lambda^3\ll1\), and uses invariance of
+\(P_\Lambda\) under the free walk. The projector is a restriction on states,
+not a claim of finite-range band selection.
+
+K still vanishes at **all eight nodes**. It is not the all-zone quasienergy,
+not a positive energy, and not a continuous-time generator of U. Its exact
+free conservation does not prove conservation after a geometry coupling.
+The construction is established here algebraically; no checked primary
+literature attribution for this particular energy surrogate is claimed.
+
+The old \(H_{\rm IR}\) in §2 is superseded. Its commutator with W has a
+nonzero quartic term. Near p=0 its mismatch with \(H_{\rm eff}\) is cubic,
+not merely the loose quadratic bound quoted there. In fact
+\(\|K-H_{\rm IR}\|\le\Lambda^3\) on the p=0 ball, from
+\(|1-\cos u|\le u^2/2\), so its free dynamical error is bounded by
+\(|n|[\Lambda^3+(\arcsin\Lambda)^3/6]\). On the p3 axis both surrogates
+are \(-\sin p_3\sigma_3\), while \(H_{\rm eff}=-p_3\sigma_3\); the cubic
+coefficient is \(1/6\). This also rejects the review's incorrect universal
+cubic formula for \(H_{\rm eff}\) (repair B4).
+
+### A3 / F2 — explicit downgrade of the local-stress claim
+
+F2 now certifies K as an energy **charge** surrogate on the stated band,
+the integrated canonical momentum near p=0, and the q=0 spatial
+**tetrad-conjugate** structures from W5/W6. It does not certify all local
+components of a symmetric Belinfante tensor. No longitudinal Ward identity
+is inferred merely from the integrated charges. At another node,
+\(\sin(p_{*i}+k_i)=(-1)^{p_{*i}/\pi}k_i+O(k_i^3)\); the original momentum
+surrogate is therefore not one common envelope-momentum operator for all
+four species without further matching.
+
+The kernels at nonzero momentum transfer, spin improvement, frame
+symmetrization and full four-species local source construction remain open.
+This chooses the explicit downgrade permitted by A3. It supersedes the
+claim in §§3,6 that all three local source types needed by W10 were supplied.
+
+### C3 / F3 — obstruction for a continuous translation-invariant logarithm
+
+For this particular two-component walk, suppose a periodic continuous
+Hermitian \(H(p)\) on the connected Brillouin torus obeyed
+\(e^{-iH(p)}=W(p)\). Then \(\operatorname{tr}H(p)\in2\pi\mathbb Z\) is
+constant, since \(\det W=1\). Also \([H,W]=0\). Approaching any Weyl node
+along k=tn and dividing that commutator by t gives
+\([H(p_*),\sigma^aE_{*a}{}^in_i]=0\) for every n. The frames in the table
+are invertible, so \(H(p_*)=c_*I\). At a +I node this requires
+\(c_*\in2\pi\mathbb Z\), hence an even multiple of \(2\pi\) for the
+trace. At a −I node it requires \(c_*\in(2\mathbb Z+1)\pi\), hence an odd
+multiple. This contradicts constant trace.
+
+Thus no such continuous logarithm exists, in particular none with
+absolutely summable translation-invariant hopping matrices (which would
+have a continuous symbol). This includes finite range. This proof uses
+both kinds of nondegenerate Weyl node; it is not a no-go for all QCA, for
+translation-breaking generators, or for time-dependent local circuits.
+It is an author-side proof, not an independently reviewed promotion. Po et
+al.'s chiral-edge result is not used as evidence for it.
+
+### C3 / F4 and primary antecedent
+
+The bond operator in §3 has total symbol \(\sin p_i I\), so its integrated
+charge is **exactly conserved** by the free walk. The missing step in F4 is
+a constructed local one-step current and its relation to the symmetric
+stress, not global conservation. Both that current and the q≠0 Belinfante
+identification remain open in this certificate.
+
+Arnault–Cedzich, `biblioteca/arXiv-2208.14997.pdf` pp.1–2, construct a
+(1+1)D single-particle discrete-time action and a lattice Noether theorem
+for **internal** symmetries, including a U(1) charge current. These pages
+were re-read for this addendum. This is a relevant antecedent; it is not a
+result about gravitational energy-momentum or the CJWW stress tensor.
+
+### Repaired decision and verification scope
+
+```
+W11 = OPEN_AFTER_AUDIT
+F1 = PASS / FOUR_ZERO_QUASIENERGY_SPECIES
+F2 = INTEGRATED_CHARGES_AND_ZERO_TRANSFER_TETRAD_ONLY
+F3 = NO_CONTINUOUS_TRANSLATION_INVARIANT_LOGARITHM / AUTHOR_PROOF
+F4 = GLOBAL_BOND_MOMENTUM_CONSERVED / LOCAL_STRESS_OPEN
+EVIDENCE = PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED
+```
+
+The new [certificate](../scripts/verify_w11_ir_stress_source.py) extracts
+real-space hoppings from `walk2()`, constructs K and the original bond
+operators, checks conservation by both Bloch algebra and real-space
+convolution, tabulates eight frames/chiralities, and checks arbitrary-direction
+Taylor coefficients with an independent exact-axis case. It does not
+construct q≠0 stress kernels. D2 is repaired for these declared checks;
+its full-stress part remains open. The analytic band bound and the
+continuous-logarithm obstruction are the arguments above, not numerical
+inferences from the certificate.

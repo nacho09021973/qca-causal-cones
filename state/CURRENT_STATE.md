@@ -1,5 +1,36 @@
 # CURRENT_STATE
 
+## Authoritative W9–W11 repair update — 2026-09-30
+
+This update supersedes the W9–W11 summaries and Sections 29–31 below where
+they conflict. The user authorized applying the blind-review repairs after
+the source check at `7903713`; the review branch was incorporated by
+fast-forward into `research/gravitational-normalization-gate`.
+
+| Front | Current status | Evidence and limit |
+| --- | --- | --- |
+| W9 | `CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS / MICROSCOPIC_SPACETIME_COMPLETION_OPEN` | Conditional symmetric/conserved continuum stress identity, on the free matter shell at O(λ); no full local CJWW stress or off-shell/Lorentz completion |
+| W10 | **`OPEN_AFTER_AUDIT`** | Former C5 PASS was premature; explicit continuum action/constraint coefficients now checked, but full W11 local source matching and controlled constraint identity remain absent |
+| W11 | **`OPEN_AFTER_AUDIT`** | Four zero-quasienergy species plus four π nodes; K is a finite-range exactly conserved free charge with O(Λ³) branch-local energy error; nonzero-transfer Belinfante source and local continuity current remain open |
+| W11 F3 | `NO_CONTINUOUS_TRANSLATION_INVARIANT_LOGARITHM / AUTHOR_PROOF` | Specific two-component CJWW walk; finite-range and absolutely summable translation-invariant generators excluded; no claim for arbitrary QCA or time-dependent circuits |
+| Joint Einstein–Weyl successor | **NOT_READY_TO_FREEZE / NOT_OPENED** | All four zero-quasienergy species must be retained; microscopic source matching, coupled Ward identities and reciprocal completion remain open |
+
+Evidence level: **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
+The DeepSeek/Opus review applies to the earlier `41d0e0d` snapshot; it is
+not a review of the present repairs. A1/A2/A4 are applied. A3 uses the
+explicit downgrade permitted by the repair list. B1 fixes one continuum
+normalization; B2/B3 restrict the Einstein calculation to a flat test source
+at O(λ), not the Gu–Wen L lattice model. B4–B6 and C1–C3 are addressed in
+the dated addenda. D1 now checks the actual gauge-coupling algebra; D2
+constructs real-space charge operators but leaves q≠0 local stress open.
+
+Records: [W9 addendum](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md#9-repair-addendum--2026-09-30),
+[W10 addendum](../reports/2026-09-30--w10-sourced-gu-wen-constraints.md#9-repair-addendum--2026-09-30-supersedes-the-terminal-decision),
+[W11 addendum](../reports/2026-09-30--w11-cjww-floquet-stress-tensor.md#9-repair-addendum--2026-09-30-supersedes-the-verdict-above).
+The [primary-source audit](../investigaciones/2026-09-30-prior-art-walk-graviton/comprobacion.md)
+remains the bounded prior-art record: novelty OPEN, pending sources still
+pending, catalog tags still proposed. No earlier scientific gate is reopened.
+
 ## Reading guide and synchronization — 2026-09-28
 
 This branch was created from the documentation-only checkpoint of 2026-09-28.

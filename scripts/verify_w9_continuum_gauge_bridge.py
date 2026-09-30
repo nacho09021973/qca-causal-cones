@@ -1,41 +1,48 @@
-"""Symbolic consistency certificate for theory/W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE.md."""
+"""W9 repaired algebraic gauge-variation check (2026-09-30, D1).
+
+Explicit symmetric h,T and gauge parameter xi; Fourier integration by parts.
+No division by a momentum component, no derivation of Weyl stress conservation,
+no local-Lorentz Ward identity, and no microscopic W6 source matching.
+"""
 
 import sympy as sp
 
 
+def symmetric(name):
+    entries = {(i, j): sp.Symbol(f'{name}{i}{j}')
+               for i in range(4) for j in range(i, 4)}
+    return sp.Matrix(4, 4, lambda i, j: entries[min(i, j), max(i, j)])
+
+
 def main():
-    lam = sp.symbols("lambda", nonzero=True)
-    # Fourier-space momentum k_mu and conserved stress tensor columns.
-    w, kx, ky, kz = sp.symbols("omega kx ky kz")
-    k = sp.Matrix([w, kx, ky, kz])
+    lam, eps = sp.symbols('lambda epsilon')
+    k = sp.Matrix(sp.symbols('k0:4'))
+    xi = sp.Matrix(sp.symbols('xi0:4'))
+    h, T = symmetric('h'), symmetric('T')
+    delta_h = sp.I * (k * xi.T + xi * k.T)
 
-    # Treat one fixed nu-column T^{mu nu}; conservation is k_mu T^{mu nu}=0.
-    T0, T1, T2, T3 = sp.symbols("T0 T1 T2 T3")
-    Tcol = sp.Matrix([T0, T1, T2, T3])
-    conservation = sp.expand((k.T*Tcol)[0])
+    def coupling(metric):
+        return lam * sum(metric[i, j] * T[i, j]
+                         for i in range(4) for j in range(4)) / 2
 
-    spatial_div = sp.expand(kx*T1 + ky*T2 + kz*T3)
-    assert sp.expand(spatial_div - (conservation - w*T0)) == 0
-    print("[PASS] spatial divergence = full conservation residual - omega*T^{0nu}")
+    variation = sp.expand(sp.diff(coupling(h + eps * delta_h), eps))
+    divergence = T * k
+    assert sp.expand(variation - sp.I * lam * xi.dot(divergence)) == 0
+    # h and xi carry k, T carries -k. The derivative on T is therefore -i k.
+    after_ibp = -lam * xi.dot(-sp.I * divergence)
+    assert sp.expand(variation - after_ibp) == 0
+    print('[PASS] symmetric h,T: factor 1/2 cancels; Fourier integration by parts checked')
 
-    # On the conserved shell, spatial-only coupling leaves -omega*T0 in general.
-    spatial_on_shell = sp.expand(spatial_div.subs(T3, (-w*T0-kx*T1-ky*T2)/kz))
-    assert sp.simplify(spatial_on_shell + w*T0) == 0
-    print("[PASS] spatial-only gauge variation is generically proportional to omega*T^{0nu}")
-
-    # Full linearized metric coupling contracts xi_nu with k_mu T^{mu nu}.
-    full_variation = lam * conservation
-    full_on_shell = sp.expand(full_variation.subs(T3, (-w*T0-kx*T1-ky*T2)/kz))
-    assert sp.simplify(full_on_shell) == 0
-    print("[PASS] full h_{mu nu}T^{mu nu} coupling is gauge invariant on conserved stress shell")
-
-    # W6 directional matrix spans all spatial tetrad derivatives.
-    D = sp.Matrix([[1,0,0],[1,1,0],[1,1,1]])
-    assert D.det() == 1
-    print("[PASS] W6 directional currents span all spatial sigma_a p_i tetrad source components")
-
-    print("\nVERDICT: spatial bridge is incomplete; full continuum linearized coupling works once lapse/shift source components are included.")
+    spatial = lam * sum(delta_h[i, j] * T[i, j]
+                        for i in range(1, 4) for j in range(1, 4)) / 2
+    split = sp.I * lam * sum(xi[j] * (divergence[j] - k[0] * T[0, j])
+                            for j in range(1, 4))
+    assert sp.expand(spatial - split) == 0
+    residual = -sp.I * lam * k[0] * sum(xi[j] * T[0, j] for j in range(1, 4))
+    assert residual.subs(k[0], 0) == 0
+    print('[PASS] spatial variation = conserved-shell temporal residual; static residual gauge passes')
+    print('VERDICT: algebraic on-shell O(lambda) consistency only; conservation and microscopic matching are inputs.')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
