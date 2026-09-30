@@ -31,6 +31,8 @@ reopened or promoted by that successor.
 | W6 full spatial tetrad | **W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN — PRELIMINARY, independent review pending**; nine controls span all 9 spatial tetrad and all 6 metric perturbations, with a 3D metric kernel equal to infinitesimal frame rotations | [2026-09-30 W6 report](../reports/2026-09-30--w6-full-spatial-tetrad.md) |
 | W7 spin-2 kinematics | **SPIN2_KINEMATIC_SECTOR_PASS / TT_GAUGE_CONSTRAINTS_OPEN — PRELIMINARY, independent review pending**; spatial tetrad perturbations decompose as frame rotations (3) + trace scalar (1) + symmetric-traceless spin-2 tensor (5), but no 5→2 TT reduction is derived | [2026-09-30 W7 report](../reports/2026-09-30--w7-spin2-kinematics.md) |
 | W8 TT gauge completion | **TT_GAUGE_REDUCTION_KINEMATIC_PASS / MICROSCOPIC_GAUGE_EMBEDDING_OPEN — PRELIMINARY, independent review pending**; a traceless vector gauge orbit has rank 3 at nonzero momentum and reduces the 5-component spin-2 tensor to plus/cross, but W6 does not realize this redundancy microscopically | [2026-09-30 W8 report](../reports/2026-09-30--w8-tt-gauge-completion.md) |
+| W8 prior-art correction | Gu-Wen already provide emergent helicity ±2 and low-energy linearized diffeomorphism gauge structure from qubit/spin models; Pretko rank-2 theories already include the relevant 5→2 tensor-gauge structure. Novelty target pivots to the CJWW matter-gravity bridge | [2026-09-30 prior-art audit](../reports/2026-09-30--w8-prior-art-gauge-audit.md) |
+| W9 CJWW-graviton matter bridge | **CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS / MICROSCOPIC_SPACETIME_COMPLETION_OPEN — PRELIMINARY**; spatial-only coupling fails gauge consistency, while the full h_mu_nu T^mu_nu coupling passes in the Weyl continuum and forces lapse/shift completion | [2026-09-30 W9 report](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2734,3 +2736,54 @@ This establishes only the kinematic gauge reduction. W6 does not contain an
 exact local generator/Gauss constraint identifying gauge-related tensor
 configurations; such configurations generally give different matter
 principal symbols. The physical graviton therefore remains OPEN.
+
+
+## 28. W8 prior-art correction — 2026-09-30
+
+Gu-Wen already establish local qubit/spin models with emergent low-energy
+linearized diffeomorphism gauge structure and helicity +/-2 modes. Pretko
+rank-2 tensor gauge theories already contain vector Gauss laws and, in the
+traceless vector-charge case, a two-polarization gauge sector. Therefore W7/W8
+mode counting is not a novelty claim.
+
+The W8 requirement is also corrected methodologically: an emergence programme
+need not realize the target diffeomorphism gauge symmetry exactly at the
+microscopic lattice level. A controlled low-energy constraint subspace and
+effective Ward identity can suffice.
+
+Report commit: `44bc411ab72b121302c42cfe8a0afc5fd4613c01`.
+
+## 29. W9 CJWW / graviton-matter bridge — 2026-09-30
+
+**Contract:** [`W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE.md`](../theory/W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE.md),
+frozen at commit `4a40c12c83801d5bdfdd7fc1c3638bb6308005e0`.
+
+**Certificate:** [`verify_w9_continuum_gauge_bridge.py`](../scripts/verify_w9_continuum_gauge_bridge.py),
+added at commit `5abd53673cef98c2ec0f0349db70f57fad869939`.
+
+**Execution:** [W9 report](../reports/2026-09-30--w9-cjww-graviton-matter-bridge.md),
+commit `8a8b2bf38e8bb7832153f5d8ce3bfaafb5130229`.
+
+Status:
+
+```
+W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE =
+CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS /
+MICROSCOPIC_SPACETIME_COMPLETION_OPEN
+
+B1 SPATIAL_ONLY = FAIL
+B2 FULL_LINEARIZED_CONTINUUM = PASS
+B3 W5/W6 SPATIAL_TETRAD_SOURCE = COMPATIBLE / PARTIAL
+B4 MICROSCOPIC LAPSE_SHIFT_STRESS = OPEN
+```
+
+The spatial coupling `h_ij T^ij` is not gauge complete because stress
+conservation gives `partial_i T^ij = -partial_t T^0j` rather than zero.
+Adding `h_00 T^00 + 2 h_0i T^0i` restores the full linearized coupling
+`h_mu_nu T^mu_nu/2`, whose gauge variation vanishes on
+`partial_mu T^mu_nu=0`.
+
+Thus the W5/W6 spatial source is compatible with the spatial part of the
+continuum Weyl stress coupling, but the microscopic QCA still lacks
+lapse/shift constraint variables and a proved full local lattice
+stress-energy object.
