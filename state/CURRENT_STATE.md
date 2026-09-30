@@ -21,6 +21,7 @@ reopened or promoted by that successor.
 | W1 perturbative link bridge | **W1_CAUSAL_UNITARY_BRIDGE_PASS / FULL_QCGD_SYNTHESIS_OPEN**; exact CJWW at g=0, matter-dependent link response O(g), regular-background matter correction begins at O(g^2) | [2026-09-29 W1 report](../reports/2026-09-29--w1-perturbative-backreaction-bridge.md) |
 | W1 geometricity | **W1_OPERATIONAL_GEOMETRY_PASS**, scope **FINITE_TIME_EXACT_SUPPORT_ONLY**; two link states give different exact 2-step matter support, while one-step adjacency and outer causal body remain unchanged | [2026-09-29 geometricity report](../reports/2026-09-29--w1-geometricity.md) |
 | W1 coarse metric | **W1_SCALAR_POTENTIAL_ONLY / NO_METRIC_DEFORMATION**; link backgrounds add scalar potential/dephasing but do not alter the Weyl principal symbol, one-step neighborhood or outer causal body | [2026-09-29 coarse-metric report](../reports/2026-09-29--w1-coarse-metric.md) |
+| W2 transport/tetrad bridge | **W2_DYNAMIC_PRINCIPAL_SYMBOL_PASS / CURVATURE_OPEN**; reciprocal matter-current/link coupling changes the momentum-linear Weyl coefficient matrix (E_a{}^i) at O(g) while recovering exact CJWW at g=0 | [2026-09-30 W2 report](../reports/2026-09-30--w2-transport-tetrad-bridge.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2280,3 +2281,63 @@ coupling. A successor would have to couple geometry to the hopping/coin
 matrices themselves so that a geometry-dependent
 `sigma^a e_a^i(x) p_i` term appears. No such new coupling is constructed
 here.
+
+
+## 17. W2 transport / tetrad-like bridge — 2026-09-30
+
+**Contract:** [`W2_TRANSPORT_TETRAD_BRIDGE_GATE.md`](../theory/W2_TRANSPORT_TETRAD_BRIDGE_GATE.md),
+frozen at commit `384c0032967fd1164206ca6bed7319db6a84e8e1`.
+
+**Symbolic certificate:** [`verify_w2_transport_tetrad.py`](../scripts/verify_w2_transport_tetrad.py),
+added at commit `6f81a52588cfbd63e76f2a93b666f7ad8119bf4f`.
+
+**Execution:** [W2 report](../reports/2026-09-30--w2-transport-tetrad-bridge.md),
+commit `57ebe0f0ccb5c65065a1232ddbe02e93f9bb8aaf`.
+
+Status:
+
+```
+W2_TRANSPORT_TETRAD_BRIDGE_GATE =
+W2_DYNAMIC_PRINCIPAL_SYMBOL_PASS / CURVATURE_OPEN
+FULL_QCGD_SYNTHESIS = OPEN
+EINSTEIN_DYNAMICS = NOT_CLAIMED
+GRAVITATIONAL_NORMALIZATION_G1 = NOT_OPENED
+```
+
+W2 replaces the W1 endpoint-occupation coupling by Hermitian local current
+operators on three linearly independent displacement families
+`d1=(1,0,0)`, `d2=(1,1,0)`, `d3=(1,1,1)`. The local gate is
+`exp[-ig (Z_e+X_e) tensor J_e^(a)]`, with
+`J_e^(a)=i(|x+d_a><x|-|x><x+d_a|) tensor sigma_a`.
+The added interaction is exactly unitary and admits six matching layers.
+
+At `g=0` the matter walk is exactly CJWW (5.15). Matter current changes the
+link state at first order, and the link expectation changes the matter
+transport generator at first order.
+
+For a translation-invariant semiclassical link background with family means
+`b_a=<Z+X>`, the momentum-linear CJWW coefficient matrix changes from
+`E0=diag(1,-1,1)` to
+
+[
+E(g)=E_0-2g,mathrm{diag}(b_1,b_2,b_3)
+egin{pmatrix}
+1&0&0\\
+1&1&0\\
+1&1&1
+end{pmatrix}.
+]
+
+The direction matrix has determinant one. In particular, with only `b1`
+nonzero, the leading dispersion becomes
+`omega^2=(1-2gb1)^2 p1^2+p2^2+p3^2+cdots`, so the local characteristic
+cone changes at order `g`.
+
+This crosses the W1 metric-level obstruction: the link variables now control
+the Weyl principal symbol itself and can be called **tetrad-like dynamical
+variables** within this narrow perturbative model.
+
+No curvature tensor/action, local Lorentz/diffeomorphism structure,
+Einstein equation, `G_eff`, AdS radius or absolute scale is derived.
+Curvature/dynamics is the next open layer; gravitational normalization G1
+remains unopened.
