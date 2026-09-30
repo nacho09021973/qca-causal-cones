@@ -17,6 +17,7 @@ branches were incorporated by fast-forward into
 | W12 four-species metric universality | **`UNIVERSAL_SUBFAMILY_DEFICIENT` — REVIEWED** (DeepSeek ACCEPT; Opus ACCEPT_WITH_REPAIRS, presentation only) | `dim(U)=3`, metric rank `3/6` on constant δh, no common rotation; with the −I nodes it would be `NON_UNIVERSAL`. Cite as a contract outcome on constant controls: read as a gauge condition, the missing relations fail only on `q₃=0` and a cone ([review](../debates/2026-09-30--w12-blind-review/README.md)) |
 | Gravity line (W1–W12, W6/CJWW control class) | **CLOSED_BY_CONTRACT (W12 §4), 2026-09-30** | Direct user decision («cierra la línea como dice el contrato»). Negative result for this control class; no joint Einstein–Weyl gate will be opened. Reopening requires a new control family with an independent physical justification written before any calculation; after-the-fact rescue is not allowed |
 | Elastic/common-graph successor class | **KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN — PRELIMINARY** | Contract frozen only after independent graph/elastic motivation was written; four +I species see exactly (h_*=a^2\Lambda\Lambda^T), metric rank 6/6. This is common-embedding kinematics only; it does not reopen W3–W11 or supply strain-dependent CJWW hopping dynamics | [2026-09-30 elastic-graph report](../reports/2026-09-30--elastic-graph-species-universality.md) |
+| Unitary elastic hopping-response attempt | **UNITARY_ELASTIC_RESPONSE_INCONSISTENT** | Frozen bond generator depends on arbitrary orientation set `F_+` because exact CJWW blocks do not satisfy `W_-h=W_h^†`; four-species metric test was not executed | [2026-09-30 elastic-hopping report](../reports/2026-09-30--elastic-hopping-unitary-response.md) |
 
 **Review provenance:** the first review covered `41d0e0d`. The
 [second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
@@ -82,6 +83,27 @@ four-species metric test before any backreaction/spin-2/constraint work. W12
 remains unchanged for the W6/CJWW control class. Evidence is
 `AUTHOR_DERIVATION / EXACT_SYMBOLIC_CERTIFICATE /
 INDEPENDENT_REVIEW_PENDING`.
+
+**First unitary hopping-response successor, 2026-09-30.** The separately
+frozen [`ELASTIC_HOPPING_UNITARY_RESPONSE_GATE.md`](../theory/ELASTIC_HOPPING_UNITARY_RESPONSE_GATE.md)
+at `15bc76b` fails before any four-species calculation. Its bond generator
+used one representative from each opposite pair and assumed that adding the
+adjoint removed the orientation convention. Exact CJWW blocks do not satisfy
+`W_-h=W_h^dagger`; for the isotropic control at `p=0`, the choices
+`h1=+1` and `h1=-1` give different generators,
+`[[1,1],[1,1]]` and `[[1,-1],[-1,1]]`.
+
+Terminal state:
+```
+UNITARY_ELASTIC_RESPONSE_INCONSISTENT
+FOUR_SPECIES_KILL_TEST = NOT_EXECUTED
+```
+
+The failure is at model definition, not at species universality. The
+common-embedding predecessor remains valid, and W12 remains unchanged.
+An orientation-independent Hermitian-part construction from the full
+bond-weighted symbol is noted only as a possible separately chartered
+successor; it was not substituted or executed after the failure.
 
 ## Reading guide and synchronization — 2026-09-28
 
