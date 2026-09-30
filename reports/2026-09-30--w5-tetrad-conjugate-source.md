@@ -1,0 +1,321 @@
+# W5_TETRAD_CONJUGATE_SOURCE_GATE — execution
+
+**Fecha:** 2026-09-30.  
+**Contrato:** [W5_TETRAD_CONJUGATE_SOURCE_GATE](../theory/W5_TETRAD_CONJUGATE_SOURCE_GATE.md), frozen at commit `5a1e51286804c60f26aee8ccb3d07b4d1f8859f7`.  
+**Certificado simbólico:** [verify_w5_tetrad_source.py](../scripts/verify_w5_tetrad_source.py), added at commit `bd91e1ae0ffd4e006b83b8ff7816cbaf6fcb5db9`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## Verdict
+
+```
+W5_TETRAD_CONJUGATE_SOURCE_GATE =
+W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN
+
+S1 = PASS
+S2 = PASS
+S3 = PASS
+S4 = PASS
+S5 = OPEN
+```
+
+W5 replaces the arbitrary endpoint-occupation source of W3 by the same local
+matter operator that is variationally conjugate to the tetrad-control
+variable in the matter transport Hamiltonian.
+
+## 1. Source operator
+
+For edge family (a) and edge (e=(x,x+d_a)),
+
+[
+J_e^{(a)}
+=
+i(|x+d_aanglelangle x|-|xanglelangle x+d_a|)
+otimessigma_a.
+]
+
+The transport gate is
+
+[
+T_e(g)=e^{-igZ_eotimes J_e^{(a)}}.
+]
+
+For a semiclassical geometry background (z_e=langle Z_eangle), the
+matter Hamiltonian receives
+
+[
+delta H_m=g,z_eJ_e^{(a)}
+]
+
+at leading order.
+
+Therefore
+
+[
+oxed{
+rac{partial H_m}{partial z_e}
+=
+gJ_e^{(a)}
+}
+]
+
+within the declared perturbative reduction.
+
+## 2. Repaired backreaction kick
+
+Define
+
+[
+R_e^{(T)}(eta)
+=
+e^{-ieta Y_eotimes J_e^{(a)}}.
+]
+
+Because (Y_e) and (J_e^{(a)}) are Hermitian, this gate is exactly unitary
+for every real (eta) and remains supported only on one geometry register
+and the two matter endpoints.
+
+[
+oxed{	exttt{S1 = PASS}.}
+]
+
+## 3. Exact update of the tetrad-control observable
+
+The edge current obeys
+
+[
+(J_e^{(a)})^2=A_e,
+qquad
+(J_e^{(a)})^3=J_e^{(a)},
+]
+
+where (A_e) is the endpoint projector.
+
+Hence
+
+[
+cos(2eta J_e)
+=
+I+(cos2eta-1)A_e,
+]
+
+[
+sin(2eta J_e)
+=
+sin2eta,J_e.
+]
+
+The Heisenberg transform is
+
+[
+R_e^{(T)dagger}Z_eR_e^{(T)}
+=
+Z_ecos(2eta J_e)
+-
+X_esin(2eta J_e).
+]
+
+For an initially uncorrelated geometry/matter state define
+
+[
+x_e=langle X_eangle,qquad
+z_e=langle Z_eangle,
+]
+
+[
+a_e=langle A_eangle,qquad
+j_e=langle J_e^{(a)}angle.
+]
+
+Then exactly
+
+[
+oxed{
+z_e'
+=
+z_eleft[1+(cos2eta-1)a_eight]
+-
+x_esin2eta,j_e.
+}
+]
+
+Therefore
+
+[
+oxed{
+z_e'-z_e
+=
+-2eta,x_e j_e
+-2eta^2z_ea_e
++O(eta^3).
+}
+]
+
+The leading source is the matter current/tetrad-conjugate operator (J_e),
+not endpoint occupation.
+
+[
+oxed{	exttt{S2 = PASS}.}
+]
+
+## 4. Variational reciprocity
+
+The matter-to-geometry source is (j_e=langle J_eangle).
+
+The geometry-to-matter transport coefficient satisfies
+
+[
+rac{partial H_m}{partial z_e}=gJ_e.
+]
+
+Thus the same microscopic observable controls both directions:
+
+[
+oxed{
+	ext{geometry variation}
+leftrightarrow
+J_e
+leftrightarrow
+	ext{geometry backreaction}.
+}
+]
+
+This is the discrete variational reciprocity missing from W3/W4.
+
+[
+oxed{	exttt{S3 = PASS}.}
+]
+
+## 5. Weyl continuum interpretation
+
+For a uniform oriented family with displacement (d_a),
+
+[
+J_a(p)
+=
+2sin(pcdot d_a)sigma_a.
+]
+
+Near the Weyl node,
+
+[
+oxed{
+J_a(p)
+=
+2d_a{}^i p_i,sigma_a
++
+O(|p|^3).
+}
+]
+
+The matter Hamiltonian has the form
+
+[
+H_m
+=
+-sigma^a E_a{}^i p_i+cdots
+]
+
+under the convention inherited from the CJWW symbol. Variation with respect
+to a spatial tetrad coefficient produces an operator proportional to
+
+[
+sigma^a p_i.
+]
+
+Thus the W5 source is a directional lattice representative of the operator
+conjugate to the spatial tetrad.
+
+It is therefore legitimate within this gate to call (J_e) a
+
+[
+oxed{	ext{tetrad-conjugate stress source}}
+]
+
+in the continuum/variational sense.
+
+This is deliberately weaker than identifying it with the complete
+stress-energy tensor.
+
+[
+oxed{	exttt{S4 = PASS}.}
+]
+
+## 6. Conservation and symmetry remain open
+
+The present project has not derived:
+
+- a discrete local time-translation symmetry yielding a local energy
+  continuity law for the full Floquet matter+geometry system;
+- a discrete diffeomorphism identity;
+- a local Lorentz Ward identity;
+- a conserved symmetric (T_{mu
+u});
+- the time-time and mixed components required for a complete 3+1
+  stress-energy tensor.
+
+The flat CJWW translation invariance and unitary quasienergy spectrum do not
+by themselves provide those identities once the geometry is dynamical.
+
+Therefore the project must not rename (J_e) as (T_{mu
+u}).
+
+[
+oxed{	exttt{S5 = OPEN}.}
+]
+
+## 7. Relation to W4
+
+Combining W4 and W5 now gives the following toy-model chain:
+
+[
+	ext{tetrad-conjugate matter source}
+longrightarrow
+z_e
+longrightarrow
+E_a{}^i
+longrightarrow
+h^{ij},
+]
+
+while
+
+[
+z_e
+longrightarrow
+K_kappa
+longrightarrow
+	ext{autonomous vacuum propagation of geometry}.
+]
+
+This is materially stronger than the W3 endpoint-occupation source.
+
+## 8. What is still missing before Einstein structure
+
+The remaining obstruction is now symmetry/conservation rather than mere
+backreaction:
+
+1. identify a complete coarse spacetime tetrad, including temporal/lapse/shift
+   structure or a controlled gauge-fixed equivalent;
+2. derive the relevant discrete/continuum Ward identities;
+3. show that the matter source entering geometry dynamics is the conserved
+   stress-energy object required by those identities;
+4. identify the geometry mode content and determine whether a massless spin-2
+   sector exists.
+
+Only after those steps would comparison with a linearized Einstein equation be
+meaningful.
+
+## 9. Terminal decision
+
+S1-S4 pass; S5 is not established.
+
+Therefore
+
+[
+oxed{
+	exttt{W5\_TETRAD\_CONJUGATE\_SOURCE\_PASS /
+STRESS\_ENERGY\_CONSERVATION\_OPEN}
+}
+]
+
+is the terminal state.
