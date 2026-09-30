@@ -64,6 +64,10 @@ de F1; este núcleo no la inventaría por completo.
 
 ## Reglas de incorporación
 
+Objetivo operativo para la versión 1: unas 16 familias. El rango razonable
+del atlas es 15-20 familias; por encima de 25-30 sólo se justifica si las
+entradas aportan obstrucciones o puentes realmente distintos.
+
 1. Registrar también las familias descartadas. Un resultado breve merece
    entrada si su clase y evidencia pueden identificarse.
 2. Usar la [plantilla](FAMILY_TEMPLATE.md). Conservar por separado resultado
@@ -78,6 +82,12 @@ de F1; este núcleo no la inventaría por completo.
    no métricos → marco → métrica → test. Usar pasos pendientes cuando falte evidencia.
 7. Los diagramas Mermaid son fuente editable permanente dentro de las fichas.
    Si se exportan figuras, conservar el generador y su correspondencia con la ficha.
+
+Una entrada nueva debe cambiar al menos una de estas cosas: qué cuenta como
+geometría, qué regla microscópica se permite, qué kill test aplica, qué modo
+de fallo queda registrado o qué puente bibliográfico aporta. Si sólo cambia
+un coeficiente, una orientación menor o una variante interna sin nuevo test,
+debe ir como subcaso dentro de la ficha existente.
 
 ## Distinciones de lectura
 
