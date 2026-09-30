@@ -29,6 +29,7 @@ reopened or promoted by that successor.
 | W5 tetrad-conjugate source | **W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN — PRELIMINARY, independent review pending**; the source is the same current operator variationally conjugate to the spatial tetrad, but a conserved full stress-energy tensor/Ward identity is not derived | [2026-09-30 W5 report](../reports/2026-09-30--w5-tetrad-conjugate-source.md) |
 | W5 tetrad completeness audit | **RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN** for the original three-field model; exact rank 3 of 9 in tetrad space and 3 of 6 in metric space | [2026-09-30 rank audit](../reports/2026-09-30--w5-spatial-tetrad-completeness.md) |
 | W6 full spatial tetrad | **W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN — PRELIMINARY, independent review pending**; nine controls span all 9 spatial tetrad and all 6 metric perturbations, with a 3D metric kernel equal to infinitesimal frame rotations | [2026-09-30 W6 report](../reports/2026-09-30--w6-full-spatial-tetrad.md) |
+| W7 spin-2 kinematics | **SPIN2_KINEMATIC_SECTOR_PASS / TT_GAUGE_CONSTRAINTS_OPEN — PRELIMINARY, independent review pending**; spatial tetrad perturbations decompose as frame rotations (3) + trace scalar (1) + symmetric-traceless spin-2 tensor (5), but no 5→2 TT reduction is derived | [2026-09-30 W7 report](../reports/2026-09-30--w7-spin2-kinematics.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2668,3 +2669,35 @@ Using the inverse angle on the second matching instead gives
 `cos omega = cos^2(kappa)+sin^2(kappa) cos k`, hence
 `omega=|sin(kappa)||k|+O(|k|^3)` near `k=0`.
 This is only a 1D repair witness; 3D isotropic tensor propagation remains open.
+
+
+## 26. W7 spin-2 kinematics — 2026-09-30
+
+**Contract:** [`W7_SPIN2_KINEMATICS_GATE.md`](../theory/W7_SPIN2_KINEMATICS_GATE.md),
+frozen at commit `57361ab6f27fb6c08cf38466dfa42906ca296f40`.
+
+**Certificate:** [`verify_w7_spin2_kinematics.py`](../scripts/verify_w7_spin2_kinematics.py),
+added at commit `34d7a5af510ee363fabf4716cf6dc5807bc067fb`.
+
+**Execution:** [W7 report](../reports/2026-09-30--w7-spin2-kinematics.md),
+commit `0c68dcb93e0399df526bd9d55a277e0a4e023cc5`.
+
+Status:
+
+```
+W7_SPIN2_KINEMATICS_GATE =
+SPIN2_KINEMATIC_SECTOR_PASS / TT_GAUGE_CONSTRAINTS_OPEN
+EVIDENCE = PRELIMINARY / INDEPENDENT_REVIEW_PENDING
+```
+
+Writing `A=E0^T delta E`, the nine spatial tetrad perturbations decompose
+exactly into antisymmetric frame directions (3), one trace scalar and a
+five-dimensional symmetric-traceless tensor `Q`. The metric sees only
+trace + `Q`, and the five-dimensional `Q` space is the standard global
+SO(3) spin-2 representation.
+
+Componentwise identical linear geometry propagation preserves these sectors.
+However no local diffeomorphism/constraint structure has been derived to
+impose transversality or eliminate the scalar mode, and no 3D isotropic
+smooth-gapless tensor dispersion has been established. The physical
+two-polarization graviton is therefore still OPEN.
