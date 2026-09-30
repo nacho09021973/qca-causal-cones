@@ -105,3 +105,24 @@ At \(g=0\), the deformation reduces exactly to `walk2()`, as required. The whole
 This outcome does not establish or refute gravity outside the declared W6/CJWW control class. It says nothing about higher orders, interacting walks, metric dynamics, local stress at nonzero transfer, backreaction, constraints, or gravitational normalization. A positive subfamily decision would have required a separate authorization; none is implied here.
 
 **Verification command:** `python3 -B scripts/verify_w12_four_species_metric_universality.py` — PASS for U1–U6 and the stated verdict.
+
+## Addendum — review and closure, 2026-09-30
+
+- **Blind review** ([record](../debates/2026-09-30--w12-blind-review/README.md), `4b0797d`):
+  DeepSeek ACCEPT; Opus ACCEPT_WITH_REPAIRS. Both recompute U1–U5 by hand and confirm the verdict;
+  both find it invariant under the conventions the contract allows. An independent re-derivation by
+  Claude (`verify_w12_independent.py`) gives the same result, also with `h = E Eᵀ`.
+- **Opus's additional facts, confirmed** (`verify_reviewer_claims.py`): on 𝒰,
+  `δh(−I) = −δh(+I)`, so an eight-node test would be `NON_UNIVERSAL`; each `+I` node alone has
+  metric rank 6 and node-dependent rotation kernels; read as a gauge condition on
+  `δh = ∂ᵢξⱼ + ∂ⱼξᵢ`, the three missing relations have symbol determinant
+  `−q₃(2q₁q₂ − q₁q₃ − q₂²)`.
+- **Citation scope.** The rank `3/6` refers to constant δh, which is gauge-trivial. The result is a
+  contract outcome for constant W6 controls, not a proof that three physical metric degrees of
+  freedom are missing; the gauge-aware deficit is `q₃ = 0` and a cone.
+- **Closure.** By direct user decision («cierra la línea como dice el contrato»), the contract's
+  §4 consequence applies: the gravity line is **closed** for the W6/CJWW control class as a
+  negative result. No joint Einstein–Weyl gate is opened. Opus's presentation repairs (−I δh
+  reporting, U6 "by construction", extra asserts) are recorded in the review README and do not
+  change the verdict; they are not applied here.
+

@@ -14,8 +14,8 @@ branches were incorporated by fast-forward into
 | W10 | **`OPEN_AFTER_AUDIT`** | Former C5 PASS was premature; explicit continuum action/constraint coefficients now checked, but full W11 local source matching and controlled constraint identity remain absent |
 | W11 | **`OPEN_AFTER_AUDIT`** | Four zero-quasienergy species plus four π nodes; K is a finite-range exactly conserved free charge with O(Λ³) branch-local energy error; nonzero-transfer Belinfante source and local continuity current remain open |
 | W11 F3 | **Contract OPEN**; `ONE_PARTICLE_FULL_Z3_CONTINUOUS_LOGARITHM_EXCLUDED` | Scoped proof accepted by both second-round reviewers: one particle, every ℤ³ translation, original two-component cell; interacting many-body and supercell generators are outside the proof |
-| W12 four-species metric universality | **`UNIVERSAL_SUBFAMILY_DEFICIENT` — PRELIMINARY / BLIND REVIEW PENDING** | Exact W6-control calculation: `dim(U)=3`, induced metric rank `3/6`, no common metric-null control direction. Per the frozen contract this is the negative outcome for this W6/CJWW class; user will run the required DeepSeek/Opus review before promotion. |
-| Joint Einstein–Weyl successor | **NOT_READY_TO_FREEZE / NOT_OPENED** | All four zero-quasienergy species must be retained; microscopic source matching, coupled Ward identities and reciprocal completion remain open |
+| W12 four-species metric universality | **`UNIVERSAL_SUBFAMILY_DEFICIENT` — REVIEWED** (DeepSeek ACCEPT; Opus ACCEPT_WITH_REPAIRS, presentation only) | `dim(U)=3`, metric rank `3/6` on constant δh, no common rotation; with the −I nodes it would be `NON_UNIVERSAL`. Cite as a contract outcome on constant controls: read as a gauge condition, the missing relations fail only on `q₃=0` and a cone ([review](../debates/2026-09-30--w12-blind-review/README.md)) |
+| Gravity line (W1–W12, W6/CJWW control class) | **CLOSED_BY_CONTRACT (W12 §4), 2026-09-30** | Direct user decision («cierra la línea como dice el contrato»). Negative result for this control class; no joint Einstein–Weyl gate will be opened. Reopening requires a new control family with an independent physical justification written before any calculation; after-the-fact rescue is not allowed |
 
 **Review provenance:** the first review covered `41d0e0d`. The
 [second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
@@ -2255,9 +2255,13 @@ regular-background first-order reduced matter correction is only a global
 phase and vanishes on density matrices. The first nonzero correction is
 
 [
-Phi_g(ho)=U_0ho U_0^dagger+
-g^2sum_eleft(A_esigma A_e-rac12{A_e,sigma}ight)+O(g^3),
-quad sigma=U_0ho U_0^dagger.
+Phi_g(
+ho)=U_0
+ho U_0^dagger+
+g^2sum_eleft(A_esigma A_e-rac12{A_e,sigma}
+ight)+O(g^3),
+quad sigma=U_0
+ho U_0^dagger.
 ]
 
 Thus link backreaction is `O(g)` while regular-background matter disturbance
