@@ -24,6 +24,7 @@ reopened or promoted by that successor.
 | W2 transport/tetrad bridge | **PRINCIPAL_SYMBOL_CONTROL PASS, but W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL** after exact audit; different link backgrounds change (E_a{}^i), but the controlling observable <Z+X> is conserved by the declared coupling | [2026-09-30 audit](../reports/2026-09-30--w2-tetrad-backreaction-audit.md) |
 | W3 backreacting tetrad | **W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN — PRELIMINARY, independent review pending**; noncommuting Y-kick changes <Z_e>, and the same <Z_e> controls the momentum-linear Weyl tetrad in the transport substep | [2026-09-30 W3 report](../reports/2026-09-30--w3-backreacting-tetrad.md) |
 | W3 coarse curvature/dynamics | **COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL**; W3 induces an explicit coarse metric and can have nonzero kinematic curvature, but has no geometry-only stiffness/propagation term and no derived stress-energy source | [2026-09-30 curvature report](../reports/2026-09-30--w3-curvature-dynamics.md) |
+| W4 geometry stiffness | **W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN — PRELIMINARY, independent review pending**; partial-SWAP geometry-only brickwork preserves the homogeneous background and transports the tetrad-control variable and coarse curvature information in vacuum | [2026-09-30 W4 report](../reports/2026-09-30--w4-geometry-stiffness.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2498,3 +2499,39 @@ geometric perturbations have no autonomous vacuum propagation law in the
 declared model. The source `a_e=<A_e>` is endpoint occupation and has not
 been derived as continuum stress-energy. Hence curvature kinematics passes,
 but gravity-like curvature dynamics does not.
+
+
+## 21. W4 autonomous geometry dynamics — 2026-09-30
+
+**Contract:** [`W4_GEOMETRY_STIFFNESS_GATE.md`](../theory/W4_GEOMETRY_STIFFNESS_GATE.md),
+frozen at commit `d4bcadf9e41ead03d3004607a48d46c1db5e6291`.
+
+**Certificate:** [`verify_w4_geometry_stiffness.py`](../scripts/verify_w4_geometry_stiffness.py),
+added at commit `3099bd5d06ea4395292489889f7324f79f48d405`.
+
+**Execution:** [W4 report](../reports/2026-09-30--w4-geometry-stiffness.md),
+commit `6b7c29643d26ac75b5d43ce0cd6bb95c0b5dc5d4`.
+
+Status:
+
+```
+W4_GEOMETRY_STIFFNESS_GATE =
+W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN
+EVIDENCE = PRELIMINARY / INDEPENDENT_REVIEW_PENDING
+```
+
+W4 adds a geometry-only exchange brickwork
+`K_ef(kappa)=exp[-i kappa(I-SWAP_ef)]` between neighboring parallel link
+registers. The homogeneous W3 geometry product state is exactly fixed because
+every identical pair is symmetric under SWAP. A local defect in the
+tetrad-control observable `z_e=<Z_e>` spreads autonomously in vacuum; for
+`|1,0>`, the pair evolves to
+`cos(kappa)|1,0>+i sin(kappa)|0,1>` up to a global phase.
+
+Because W3 already maps spatial `z_a(x)` textures to the coarse metric and
+linearized curvature, W4 makes that coarse curvature information evolve under
+a geometry-only local unitary. This repairs the specific W3 C3 obstruction.
+
+The W3 source obstruction remains: endpoint occupation has not been derived
+as stress-energy. No Einstein equation, spin-2 mode, gauge symmetry,
+Einstein-Hilbert action, `G_eff`, AdS scale or absolute scale is established.
