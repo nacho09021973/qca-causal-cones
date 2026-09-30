@@ -1,0 +1,2072 @@
+You are an independent referee in mathematical physics (quantum walks / quantum cellular automata,
+linearized gravity). You receive only the documents below; no web access, no other context. Do not
+assume the documents are correct.
+
+The documents are three research "gates" (W9, W10, W11): for each, a contract frozen before the
+work and an execution report. Each report has an original part and a later "Repair addendum"
+(Section 9 or similar) written after an earlier review; the addendum states that it supersedes the
+original verdict. Three SymPy certificate scripts and the definition of the underlying 3D
+two-component quantum walk (CJWW Eq. (5.15)) are attached.
+
+Focus on the repair addenda and the current certificates. Work in this order:
+
+1. **What is now claimed.** For W9, W10 and W11, state the current verdict and what each explicitly
+   does not claim.
+2. **W11 node table.** Check that the eight points p_i in {0, pi} are exactly the points where
+   W = +-I, and check each frame E_* and chirality sign in the table.
+3. **W11 energy charge K = i(U - U^dagger)/2.** Check: hermiticity and [K, U] = 0; the real-space
+   hopping matrices and the local density; the band bound ||(K - H_eff) P_Lambda|| <= (arcsin
+   Lambda)^3 / 6, including the claims sin^2(theta) <= |k|^2 and K = sin(H_eff) on the branch; the
+   dynamical bound ||(U^n - e^{-inK}) P_Lambda|| <= |n| (arcsin Lambda)^3 / 6; and the bound
+   ||K - H_IR|| <= Lambda^3. Give a counterexample or a corrected constant for any error.
+4. **W11 F3 obstruction.** Check the proof that no continuous periodic Hermitian H(p) with
+   e^{-iH(p)} = W(p) exists (constant trace in 2 pi Z; H(p_*) scalar at each node; parity
+   mismatch between +I and -I nodes). Is every step valid? Is the stated scope (continuous,
+   translation-invariant logarithms; not all QCAs) correct?
+5. **W10.** Check the explicit quadratic action, signature and normalization, and the claimed
+   relation G^{mu nu} = lambda T^{mu nu} / 2 with the lapse/shift factors, against the W10
+   certificate. Is the new verdict OPEN_AFTER_AUDIT consistent with the evidence?
+6. **W9.** Check the repaired certificate (explicit h, xi, symmetric T, factor 1/2, integration by
+   parts, static residual gauge) and whether the remaining PASS is stated at the right scope.
+7. **Certificates.** For each script, say what it actually checks and whether that matches what
+   the report says. Flag anything vacuous, circular or weaker than claimed.
+8. **Consistency of the downgrades.** Does any remaining PASS rely on something the same report
+   marks as open? Is anything overclaimed or, conversely, understated?
+
+Output format: one section per point; a final table (gate / claim / SUPPORTED, SUPPORTED_WEAKER or
+NOT_SUPPORTED / one-line reason); a final verdict per gate: ACCEPT, ACCEPT_WITH_REPAIRS (list
+mandatory repairs) or REJECT. Be specific and brief; do not praise. Single round: state your
+assumptions instead of asking questions.
+
+=== DOCUMENT 1: W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE.md ===
+
+# W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** \`AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED\`.  
+**Rama:** \`research/gravitational-normalization-gate\`.
+
+## 0. Input and prior-art boundary
+
+This gate supersedes the idea that the project should independently invent a
+microscopic graviton sector from scratch.
+
+Relevant prior art already supplies:
+
+- emergent helicity +/-2 modes and low-energy linearized diffeomorphism gauge
+  structure in local qubit/spin models (Gu-Wen);
+- symmetric rank-2 tensor gauge theories with explicit Gauss laws and known
+  mode counting (Pretko and related work).
+
+The unresolved project-specific target is the controlled bridge to the
+frozen 3D CJWW Weyl-limit matter sector.
+
+## 1. Single question
+
+Can the low-energy CJWW Weyl field be coupled to a helicity-2/tensor geometry
+sector in a way that is simultaneously:
+
+1. variationally sourced by the matter stress tensor;
+2. gauge-consistent at linearized level;
+3. reciprocal (geometry changes matter; matter sources geometry);
+4. compatible with exact CJWW recovery in the flat/zero-coupling limit?
+
+This gate evaluates the continuum/low-energy compatibility first. A
+microscopic QCA realization is a later obligation.
+
+## 2. Matter continuum target
+
+Near the CJWW Weyl node, use the continuum two-component Weyl theory with
+action schematically
+
+\[
+S_m=\int d^4x\, i\psi^\dagger
+\left(\partial_t-\sigma^i\partial_i\right)\psi
+\]
+
+up to the frozen sign/frame convention.
+
+Let \(T^{\mu\nu}\) denote a symmetric conserved stress tensor for this
+continuum matter theory:
+
+\[
+\partial_\mu T^{\mu\nu}=0
+\]
+
+on the matter equations of motion.
+
+No claim is made here that a unique microscopic lattice stress tensor has
+already been constructed.
+
+## 3. Linearized metric coupling
+
+For a weak metric perturbation \(h_{\mu\nu}\), the standard variational
+coupling target is
+
+\[
+S_{\rm int}
+=
+\frac{\lambda}{2}
+\int d^4x\,
+h_{\mu\nu}T^{\mu\nu}.
+\]
+
+Under linearized diffeomorphisms,
+
+\[
+\delta_\xi h_{\mu\nu}
+=
+\partial_\mu\xi_\nu+\partial_\nu\xi_\mu.
+\]
+
+The gate must test gauge invariance using stress-tensor conservation.
+
+## 4. B1 — spatial W6/W8 coupling test
+
+The current project controls only spatial tetrad/metric variables
+\(h_{ij}\).
+
+Test the truncated interaction
+
+\[
+S_{\rm int}^{\rm spatial}
+=
+\frac{\lambda}{2}
+\int d^4x\,h_{ij}T^{ij}.
+\]
+
+Under a general time-dependent spatial gauge parameter \(\xi_j(t,x)\), compute
+its variation.
+
+PASS would require the variation to vanish using only the already-available
+matter identities.
+
+## 5. B2 — temporal completion test
+
+If B1 fails, add the missing linearized lapse/shift components
+
+\[
+h_{00},\qquad h_{0i}.
+\]
+
+Test the full coupling
+
+\[
+S_{\rm int}
+=
+\frac{\lambda}{2}
+\int d^4x
+\left(
+h_{00}T^{00}+2h_{0i}T^{0i}+h_{ij}T^{ij}
+\right).
+\]
+
+PASS requires gauge variation to reduce to a boundary term when
+\(\partial_\mu T^{\mu\nu}=0\).
+
+## 6. B3 — relation to W5 source
+
+Determine whether the W5/W6 spatial current operators are consistent with the
+spatial derivative/tetrad variation of the continuum Weyl Hamiltonian.
+
+This may establish the spatial part of the stress source, but cannot by itself
+supply \(T^{00}\) or \(T^{0i}\).
+
+## 7. B4 — microscopic completion requirement
+
+Record whether the frozen QCA model contains microscopic degrees of freedom
+or constraint registers corresponding to:
+
+- lapse / time-time geometry;
+- shift / time-space geometry;
+- their conjugate constraints;
+- a discrete conserved energy-momentum object whose low-energy limit is
+  \(T^{\mu\nu}\).
+
+If absent, stop before claiming a gauge-complete matter-gravity coupling.
+
+## 8. Terminal states
+
+1. \`SPATIAL_COUPLING_GAUGE_FAIL\`.
+2. \`CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS /
+   MICROSCOPIC_SPACETIME_COMPLETION_OPEN\`.
+3. \`MICROSCOPIC_CJWW_GRAVITON_BRIDGE_PASS\`.
+4. \`OPEN_AFTER_AUDIT\`.
+
+## 9. Claim ceiling
+
+A continuum linearized coupling to a conserved Weyl stress tensor is not yet
+emergent GR. No Einstein-Hilbert dynamics, Newton constant, nonlinear
+diffeomorphism invariance, equivalence principle beyond linear order, or
+absolute scale follows from this gate.
+
+=== DOCUMENT 2: 2026-09-30--w9-cjww-graviton-matter-bridge.md ===
+
+# W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE — execution
+
+**Fecha:** 2026-09-30.  
+**Contrato:** [W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE](../theory/W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE.md), frozen at commit \`4a40c12c83801d5bdfdd7fc1c3638bb6308005e0\`.  
+**Certificado simbólico:** [verify_w9_continuum_gauge_bridge.py](../scripts/verify_w9_continuum_gauge_bridge.py), added at commit \`5abd53673cef98c2ec0f0349db70f57fad869939\`.  
+**Prior-art correction:** [w8-prior-art-gauge-audit.md](./2026-09-30--w8-prior-art-gauge-audit.md), commit \`44bc411ab72b121302c42cfe8a0afc5fd4613c01\`.  
+**Rama:** \`research/gravitational-normalization-gate\`.
+
+## Verdict
+
+\`\`\`
+W9_CJWW_GRAVITON_MATTER_BRIDGE_GATE =
+CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS /
+MICROSCOPIC_SPACETIME_COMPLETION_OPEN
+
+B1 SPATIAL_ONLY = FAIL
+B2 FULL_LINEARIZED_CONTINUUM = PASS
+B3 W5/W6 SPATIAL_TETRAD_SOURCE = COMPATIBLE / PARTIAL
+B4 MICROSCOPIC LAPSE_SHIFT_STRESS = OPEN
+\`\`\`
+
+W9 changes the target of the gravity programme. Prior art already supplies
+microscopic/qubit helicity-2 sectors. The project-specific bridge is the
+coupling of the explicit CJWW Weyl-limit matter sector to such geometry with
+reciprocal sourcing.
+
+## 1. Prior-art boundary
+
+Gu and Wen (arXiv:0907.1203; Nucl. Phys. B 863 (2012) 90-129) construct local
+qubit/spin models with emergent low-energy linearized diffeomorphism gauge
+structure and helicity +/-2 modes. Their controlled L-type model has cubic
+dispersion; their N-type model is argued, with weaker control, to admit a
+linear dispersion.
+
+Their paper explicitly treats combining gravity with nearly massless fermions
+as a future objective, rather than establishing that combined matter-gravity
+model.
+
+Pretko's rank-2 tensor U(1) gauge theories also already contain vector Gauss
+laws and known polarization counting. In particular, the traceless
+vector-charge theory has two gauge polarizations but cubic dispersion.
+
+Accordingly, no novelty is claimed for “qubits -> spin 2”, “rank-2 Gauss law”
+or the W8 five-to-two kinematic counting.
+
+## 2. B1 — spatial-only coupling fails gauge consistency
+
+The current W6 geometry controls only the spatial metric/tetrad sector.
+
+Consider
+
+\[
+S_{\rm int}^{\rm spatial}
+=
+\frac{\lambda}{2}
+\int d^4x\,h_{ij}T^{ij}.
+\]
+
+For symmetric \(T^{ij}\), under
+
+\[
+\delta h_{ij}=\partial_i\xi_j+\partial_j\xi_i,
+\]
+
+\[
+\delta S_{\rm int}^{\rm spatial}
+=
+\lambda\int d^4x\,T^{ij}\partial_i\xi_j.
+\]
+
+After integration by parts,
+
+\[
+\delta S_{\rm int}^{\rm spatial}
+=
+-\lambda\int d^4x\,\xi_j\partial_iT^{ij}
+\]
+
+up to a boundary term.
+
+Relativistic stress conservation gives
+
+\[
+\partial_\mu T^{\mu j}=0,
+\]
+
+hence
+
+\[
+\partial_iT^{ij}
+=
+-\partial_tT^{0j}.
+\]
+
+Therefore
+
+\[
+\boxed{
+\delta S_{\rm int}^{\rm spatial}
+=
+\lambda\int d^4x\,\xi_j\partial_tT^{0j}
+}
+\]
+
+in general, and does not vanish for arbitrary time-dependent gauge
+transformations.
+
+Thus the spatial W6/W8 bridge is incomplete as a linearized
+diffeomorphism-gauge coupling.
+
+\[
+\boxed{\texttt{B1 = FAIL}.}
+\]
+
+This is a structural result, not a failed parameter choice.
+
+## 3. B2 — full linearized matter-gravity coupling works
+
+Introduce the missing time-time and time-space metric components:
+
+\[
+h_{00},\qquad h_{0i}.
+\]
+
+Use the full linearized coupling
+
+\[
+S_{\rm int}
+=
+\frac{\lambda}{2}
+\int d^4x\,
+h_{\mu\nu}T^{\mu\nu}.
+\]
+
+Under
+
+\[
+\delta h_{\mu\nu}
+=
+\partial_\mu\xi_\nu+\partial_\nu\xi_\mu,
+\]
+
+symmetry of \(T^{\mu\nu}\) gives
+
+\[
+\delta S_{\rm int}
+=
+\lambda\int d^4x\,
+T^{\mu\nu}\partial_\mu\xi_\nu.
+\]
+
+Integrating by parts,
+
+\[
+\delta S_{\rm int}
+=
+-\lambda\int d^4x\,
+\xi_\nu\partial_\mu T^{\mu\nu}
+\]
+
+up to a boundary term.
+
+For the continuum Weyl field, on its equations of motion,
+
+\[
+\partial_\mu T^{\mu\nu}=0.
+\]
+
+Hence
+
+\[
+\boxed{\delta S_{\rm int}=0}
+\]
+
+to the declared linearized/on-shell order.
+
+\[
+\boxed{\texttt{B2 = PASS}.}
+\]
+
+This establishes continuum compatibility, not a microscopic lattice
+construction.
+
+## 4. B3 — relation to W5/W6 spatial source
+
+The W5/W6 edge-current family has low-momentum symbol
+
+\[
+J^{(a,r)}(p)
+=
+2(d_r\cdot p)\sigma_a+O(|p|^3).
+\]
+
+Since the W6 direction matrix is invertible, linear combinations of these
+operators span all spatial structures
+
+\[
+\sigma_a p_i.
+\]
+
+Those are precisely the structures obtained by varying the Weyl Hamiltonian
+with respect to spatial tetrad coefficients.
+
+Therefore W5/W6 already provide a lattice representative of the **spatial
+tetrad-conjugate source**.
+
+However, the symmetric metric stress tensor requires the appropriate
+symmetrization/frame treatment, and the current construction does not supply
+the temporal source components
+
+\[
+T^{00},\qquad T^{0i}.
+\]
+
+Thus:
+
+\[
+\boxed{
+\texttt{B3 = SPATIAL SOURCE COMPATIBLE / PARTIAL}.
+}
+\]
+
+## 5. B4 — microscopic spacetime completion is absent
+
+The frozen CJWW/W6-W8 construction has:
+
+- a preferred discrete update time;
+- nine spatial tetrad controls;
+- spatial current/tetrad source operators;
+- geometry-only spatial stiffness.
+
+It does **not** yet have microscopic variables or constraint registers
+corresponding to:
+
+\[
+h_{00},\qquad h_{0i}.
+\]
+
+It also lacks a complete discrete local conserved object already proved to
+flow to the full symmetric Weyl
+
+\[
+T^{\mu\nu}.
+\]
+
+In particular, a Floquet unitary has quasienergy but does not automatically
+supply the local time-translation Noether structure needed to identify an
+exact microscopic \(T^{00}\).
+
+Therefore the continuum gauge completion cannot yet be lifted back to the
+microscopic QCA.
+
+\[
+\boxed{\texttt{B4 = OPEN}.}
+\]
+
+## 6. Scientific interpretation
+
+The current programme has now separated two problems that had been conflated:
+
+### Gravity-sector problem
+
+How to obtain a stable two-polarization helicity-2 low-energy sector.
+
+This has substantial prior art, including Gu-Wen and rank-2 tensor gauge
+models. The project need not rediscover it.
+
+### Matter-gravity bridge problem
+
+How to couple the explicit CJWW Weyl matter sector to that geometry so that:
+
+\[
+\text{geometry}\to\text{Weyl principal symbol}
+\]
+
+and
+
+\[
+\text{Weyl stress}\to\text{geometry}
+\]
+
+are the same variational coupling and respect the low-energy gauge
+constraints.
+
+W9 shows that the spatial part of that bridge is already compatible with the
+W5/W6 construction, but full gauge consistency forces temporal completion.
+
+## 7. Minimal successor
+
+The next successor should not add more spatial tensor fields.
+
+It should construct the missing ADM-like linearized variables:
+
+\[
+\text{lapse-like }n\sim h_{00},
+\qquad
+\text{shift-like }n_i\sim h_{0i},
+\]
+
+and determine whether they can appear as microscopic constraint variables
+rather than extra propagating modes.
+
+The target low-energy coupling is then
+
+\[
+\frac{\lambda}{2}
+\left(
+h_{00}T^{00}
++2h_{0i}T^{0i}
++h_{ij}T^{ij}
+\right).
+\]
+
+Only after a discrete/low-energy conservation law is derived should the
+project attempt a full Gauss/diffeomorphism constraint algebra.
+
+## 8. Terminal decision
+
+\[
+\boxed{
+\texttt{CONTINUUM\_GRAVITON\_MATTER\_BRIDGE\_PASS /
+MICROSCOPIC\_SPACETIME\_COMPLETION\_OPEN}
+}
+\]
+
+is the terminal state.
+
+No nonlinear Einstein, equivalence-principle, \(G_{\rm eff}\), AdS or
+absolute-scale claim follows.
+
+## 9. Repair addendum — 2026-09-30
+
+This addendum responds to A3, B5–B6, C1–C2 and D1 of the
+[blind-review repair list](../debates/2026-09-30--w9-w11-blind-review/reparaciones.md),
+imported through `7903713`. The frozen report above is retained.
+Evidence: **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
+
+**B1 / C1.** The computed variation is an obstruction to invariance under
+arbitrary time-dependent spatial gauge transformations of the truncated
+coupling. On the free conserved-stress shell and with vanishing boundary
+terms, it is also
+\(-\lambda\int(\partial_t\xi_j)T^{0j}\), which vanishes for static spatial
+parameters. It does not disprove a gauge-fixed formulation with residual
+gauge freedom. The missing requirements are the temporal constraint equations
+and their matter sources. The revised label is
+`SPATIAL_TRUNCATION_NOT_FULL_GAUGE_INVARIANT / STATIC_RESIDUAL_COMPATIBLE`.
+
+**B2 / B5–B6.** This is the continuum algebraic identity
+\(\delta S_{\rm int}=-\lambda\int\xi_\nu\partial_\mu T^{\mu\nu}\), for an
+already symmetric conserved stress, on the free matter shell, at O(λ).
+It is not CJWW-specific and does not derive the transformation of ψ,
+an off-shell matter symmetry, or a local-Lorentz Ward identity. Passing
+from a tetrad source to a symmetric metric stress is an additional input;
+W6's antisymmetric frame directions alone do not establish local Lorentz
+gauge redundancy. No complete off-shell Einstein–Weyl action is claimed.
+The revised label is `ON_SHELL_CONTINUUM_IDENTITY / O(lambda)`.
+
+CJWW's use of this identity depends on the repaired W11 F1, including its
+four-species contract. The original p=0 expansion describes only one of
+those species. The continuum target sums the four stresses; their full
+microscopic nonzero-transfer kernels have not been matched.
+
+**B3 / A3.** Keep only `ZERO_TRANSFER_SPATIAL_TETRAD_SOURCE / PARTIAL`.
+The current symbols span tetrad-conjugate structures at p=0; they do not
+establish the local symmetric Belinfante tensor at q≠0. In particular,
+no spin-improvement formula from a review is adopted without derivation.
+
+**B4 / C2.** The missing microscopic objects are local **constraint
+operators containing matter charges**, with a controlled penalty/projection
+and low-energy Ward identity. Lapse and shift may be Lagrange multipliers;
+separate microscopic registers for them are not a requirement. This
+supersedes the wording of §§5,7. B4 remains OPEN.
+
+**D1.** The updated [checker](../scripts/verify_w9_continuum_gauge_bridge.py)
+constructs the symmetric h,T coupling and its variation with ξ explicitly,
+checks the 1/2 factor and Fourier integration by parts, and checks the static
+residual case without division by any momentum component. Its output is
+labelled an algebraic consistency check. It takes stress conservation as an
+input and makes no W6 rank claim; the original W6 certificate remains the
+source for that separate rank calculation.
+
+The terminal label `CONTINUUM_GRAVITON_MATTER_BRIDGE_PASS /
+MICROSCOPIC_SPACETIME_COMPLETION_OPEN` is retained **only for this conditional
+on-shell continuum statement**, not for a constructed CJWW local stress
+or reciprocal coupling. W10/W11's repaired OPEN states govern readiness
+for any joint successor.
+
+=== DOCUMENT 3: verify_w9_continuum_gauge_bridge.py ===
+
+"""W9 repaired algebraic gauge-variation check (2026-09-30, D1).
+
+Explicit symmetric h,T and gauge parameter xi; Fourier integration by parts.
+No division by a momentum component, no derivation of Weyl stress conservation,
+no local-Lorentz Ward identity, and no microscopic W6 source matching.
+"""
+
+import sympy as sp
+
+
+def symmetric(name):
+    entries = {(i, j): sp.Symbol(f'{name}{i}{j}')
+               for i in range(4) for j in range(i, 4)}
+    return sp.Matrix(4, 4, lambda i, j: entries[min(i, j), max(i, j)])
+
+
+def main():
+    lam, eps = sp.symbols('lambda epsilon')
+    k = sp.Matrix(sp.symbols('k0:4'))
+    xi = sp.Matrix(sp.symbols('xi0:4'))
+    h, T = symmetric('h'), symmetric('T')
+    delta_h = sp.I * (k * xi.T + xi * k.T)
+
+    def coupling(metric):
+        return lam * sum(metric[i, j] * T[i, j]
+                         for i in range(4) for j in range(4)) / 2
+
+    variation = sp.expand(sp.diff(coupling(h + eps * delta_h), eps))
+    divergence = T * k
+    assert sp.expand(variation - sp.I * lam * xi.dot(divergence)) == 0
+    # h and xi carry k, T carries -k. The derivative on T is therefore -i k.
+    after_ibp = -lam * xi.dot(-sp.I * divergence)
+    assert sp.expand(variation - after_ibp) == 0
+    print('[PASS] symmetric h,T: factor 1/2 cancels; Fourier integration by parts checked')
+
+    spatial = lam * sum(delta_h[i, j] * T[i, j]
+                        for i in range(1, 4) for j in range(1, 4)) / 2
+    split = sp.I * lam * sum(xi[j] * (divergence[j] - k[0] * T[0, j])
+                            for j in range(1, 4))
+    assert sp.expand(spatial - split) == 0
+    residual = -sp.I * lam * k[0] * sum(xi[j] * T[0, j] for j in range(1, 4))
+    assert residual.subs(k[0], 0) == 0
+    print('[PASS] spatial variation = conserved-shell temporal residual; static residual gauge passes')
+    print('VERDICT: algebraic on-shell O(lambda) consistency only; conservation and microscopic matching are inputs.')
+
+
+if __name__ == '__main__':
+    main()
+
+=== DOCUMENT 4: W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE.md ===
+
+# W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** \`AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED\`.  
+**Rama:** \`research/gravitational-normalization-gate\`.
+
+## 0. Prior-art import boundary
+
+Gu-Wen already supply the vacuum linearized-gravity constraint architecture:
+
+- spatial symmetric tensor geometry;
+- vector constraint of the form \(\partial_i\mathcal E^{ij}=0\);
+- scalar curvature constraint;
+- \(a_{0i}\) and \(a_{00}\) as Lagrange multipliers;
+- recovery of the linearized Einstein action in the continuum;
+- lattice realization of the constraints through energy-penalty terms after
+  compactification/discretization.
+
+These ingredients are prior art and are not reconstructed as project novelty.
+
+## 1. Single project-specific question
+
+Can the low-energy CJWW Weyl matter sector enter the Gu-Wen-type linearized
+gravity constraints as a consistent source?
+
+The continuum target is schematically
+
+\[
+\mathcal C^j
+=
+\partial_i\mathcal E^{ij}
+-\lambda\,T^{0j}
+=0
+\]
+
+and
+
+\[
+\mathcal C^0
+=
+\mathcal R^{(1)}
+-\lambda\,T^{00}
+=0,
+\]
+
+where \(\mathcal R^{(1)}\) denotes the linearized scalar-curvature constraint
+in the chosen convention and \(\lambda\) is an unfixed coupling.
+
+No normalization to \(8\pi G\) is assumed.
+
+## 2. C1 — continuum variational sourcing
+
+Starting from
+
+\[
+S_{\rm grav}^{(2)}
++
+\frac{\lambda}{2}\int h_{\mu\nu}T^{\mu\nu},
+\]
+
+variation with respect to lapse-like \(h_{00}\) and shift-like \(h_{0j}\)
+must produce sourced scalar and vector constraints proportional to
+\(T^{00}\) and \(T^{0j}\), respectively.
+
+## 3. C2 — constraint consistency
+
+Use:
+
+\[
+\partial_\mu G_{\rm lin}^{\mu\nu}=0
+\]
+
+and
+
+\[
+\partial_\mu T^{\mu\nu}=0
+\]
+
+to verify that the sourced continuum equations are mutually consistent.
+
+This is a low-energy continuum statement only.
+
+## 4. C3 — spatial source match
+
+Check compatibility with W5/W6:
+
+- spatial tetrad variation gives the lattice current family
+  \(J^{(a,r)}\);
+- in the Weyl continuum, those span the spatial
+  \(\sigma_a p_i\) structures entering the tetrad stress.
+
+The gate must distinguish this already-supported spatial source from the new
+constraint charges \(T^{00}\) and \(T^{0j}\).
+
+## 5. C4 — microscopic CJWW charge operators
+
+A microscopic PASS requires explicit local lattice/Floquet operators
+\(\widehat T^{00}_x\) and \(\widehat T^{0j}_x\) such that:
+
+1. their low-energy limit is the Weyl energy and momentum density;
+2. they obey a controlled discrete continuity/constraint identity to the
+   required order;
+3. they can be inserted into local Gu-Wen-type constraint penalties or
+   projectors without destroying exact flat CJWW recovery when
+   \(\lambda=0\).
+
+A particle-number density is not accepted as \(T^{00}\) merely because it is
+local.
+
+## 6. C5 — low-energy constrained subspace
+
+If exact microscopic charges are unavailable but controlled low-energy
+operators exist, record the weaker state
+
+\`CONTINUUM_SOURCED_CONSTRAINT_BRIDGE_PASS /
+MICROSCOPIC_CJWW_CHARGES_OPEN\`.
+
+Do not require exact microscopic diffeomorphism symmetry if the constraints
+and Ward identities emerge in a controlled low-energy sector.
+
+## 7. Terminal states
+
+1. \`SOURCED_CONSTRAINT_BRIDGE_FAIL\`.
+2. \`CONTINUUM_SOURCED_CONSTRAINT_BRIDGE_PASS /
+   MICROSCOPIC_CJWW_CHARGES_OPEN\`.
+3. \`MICROSCOPIC_SOURCED_CONSTRAINT_BRIDGE_PASS\`.
+4. \`OPEN_AFTER_AUDIT\`.
+
+## 8. Claim ceiling
+
+Passing the continuum gate does not establish nonlinear GR, a unique Newton
+constant, universal equivalence-principle coupling beyond the tested Weyl
+sector, or an absolute scale.
+
+=== DOCUMENT 5: 2026-09-30--w10-sourced-gu-wen-constraints.md ===
+
+# W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE — execution
+
+**Fecha:** 2026-09-30.  
+**Contrato:** [W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE](../theory/W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE.md), frozen at commit \`7109a3ae5d5c3aaf958cf473c0f6a0200413664d\`.  
+**Rama:** \`research/gravitational-normalization-gate\`.
+
+## Verdict
+
+\`\`\`
+W10_SOURCED_GU_WEN_CONSTRAINT_BRIDGE_GATE =
+CONTINUUM_SOURCED_CONSTRAINT_BRIDGE_PASS /
+MICROSCOPIC_CJWW_CHARGES_OPEN
+
+C1 = PASS
+C2 = PASS
+C3 = PASS / SPATIAL ONLY
+C4 = OPEN
+\`\`\`
+
+W10 does not invent a new graviton sector. It imports the linearized
+constraint architecture already available in Gu-Wen and tests whether the
+CJWW Weyl matter sector can source it consistently.
+
+## 1. Prior-art architecture
+
+Gu-Wen introduce the time-space and time-time metric variables as Lagrange
+multipliers for the vector and scalar constraints. In their continuum
+notation the corresponding terms are of the form
+
+\[
+2a_{0i}\partial_j\mathcal E^{ij}
++
+a_{00}
+\left(
+\partial^2 a_{ii}
+-
+\partial_i\partial_j a_{ij}
+\right).
+\]
+
+They state that, after integrating out the conjugate tensor momentum, the
+result is the linearized Einstein action about flat spacetime.
+
+They then discretize the vector and scalar constraints on the cubic lattice
+and impose them through energy-penalty terms in a compactified finite local
+Hilbert space.
+
+Those facts are treated as prior art, not project results.
+
+## 2. C1 — continuum matter sourcing
+
+Add the linearized matter coupling
+
+\[
+S_{\rm int}
+=
+\frac{\lambda}{2}
+\int d^4x\,
+h_{\mu\nu}T^{\mu\nu}.
+\]
+
+The lapse-like perturbation \(h_{00}\) enters without a propagating kinetic
+role at this linearized constraint level. Varying with respect to it gives the
+scalar constraint with source proportional to
+
+\[
+T^{00}.
+\]
+
+Likewise the shift-like variables \(h_{0j}\) multiply the vector constraints,
+and variation gives sources proportional to
+
+\[
+T^{0j}.
+\]
+
+Thus the vacuum Gu-Wen constraints acquire the schematic sourced form
+
+\[
+\boxed{
+\mathcal C^0_{\rm geom}
+=
+\lambda T^{00},
+}
+\]
+
+\[
+\boxed{
+\mathcal C^j_{\rm geom}
+=
+\lambda T^{0j}.
+}
+\]
+
+The precise numerical convention is deliberately left open because the
+gravitational normalization has not been derived.
+
+\[
+\boxed{\texttt{C1 = PASS}.}
+\]
+
+## 3. C2 — continuum consistency
+
+The linearized Einstein tensor satisfies the identity
+
+\[
+\partial_\mu G_{\rm lin}^{\mu\nu}=0.
+\]
+
+If the sourced field equation is
+
+\[
+G_{\rm lin}^{\mu\nu}
+=
+\lambda T^{\mu\nu},
+\]
+
+then consistency requires
+
+\[
+\partial_\mu T^{\mu\nu}=0.
+\]
+
+The low-energy continuum Weyl field has a conserved stress tensor on its
+equations of motion.
+
+Therefore the sourced scalar/vector constraints are compatible with the
+evolution equations at the declared continuum order.
+
+Equivalently, the same conservation identity that repaired the W9 gauge
+variation supplies the source-consistency condition here.
+
+\[
+\boxed{\texttt{C2 = PASS}.}
+\]
+
+## 4. C3 — spatial source compatibility with W5/W6
+
+W5/W6 already established the spatial tetrad-conjugate operator family
+
+\[
+J^{(a,r)}(p)
+=
+2\sin(p\cdot d_r)\sigma_a
+=
+2d_r{}^i p_i\sigma_a+O(|p|^3).
+\]
+
+Because the W6 direction matrix is invertible, these span the spatial
+structures
+
+\[
+\sigma_a p_i
+\]
+
+obtained by varying the Weyl Hamiltonian with respect to spatial tetrad
+components.
+
+Thus the project already has a microscopic candidate for the **spatial**
+stress/tetrad source.
+
+What W10 adds is the requirement that the temporal constraint charges be the
+correct
+
+\[
+T^{00},\qquad T^{0i},
+\]
+
+not endpoint occupation or particle number by relabeling.
+
+\[
+\boxed{\texttt{C3 = PASS / SPATIAL ONLY}.}
+\]
+
+## 5. C4 — exact microscopic CJWW energy/momentum charges are not available
+
+The frozen CJWW model is a discrete-time unitary/Floquet walk.
+
+Its low-energy logarithm near the Weyl node produces the expected continuum
+Weyl Hamiltonian. That is enough to define continuum
+
+\[
+T^{00},\qquad T^{0i},\qquad T^{ij}
+\]
+
+to the order used in W9-W10.
+
+However, the repository does not currently contain a proved set of strictly
+local microscopic Floquet operators
+
+\[
+\widehat T^{00}_x,\qquad
+\widehat T^{0i}_x
+\]
+
+with all of the following:
+
+1. exact or controlled discrete continuity relations;
+2. the correct Weyl low-energy limit;
+3. a local insertion into Gu-Wen-type constraint projectors/penalties;
+4. preservation of exact flat CJWW at zero matter-gravity coupling.
+
+In particular, the local particle-number density is not an acceptable
+substitute for energy density.
+
+A Floquet quasienergy is also not automatically a local conserved energy
+density.
+
+Therefore:
+
+\[
+\boxed{\texttt{C4 = OPEN}.}
+\]
+
+## 6. Scientific consequence
+
+The programme no longer has to guess how matter should source the graviton
+constraints.
+
+At low energy the bridge is fixed structurally:
+
+\[
+\boxed{
+T^{00}
+\longrightarrow
+\text{scalar/Hamiltonian constraint}
+}
+\]
+
+and
+
+\[
+\boxed{
+T^{0i}
+\longrightarrow
+\text{vector/momentum constraints}.
+}
+\]
+
+Together with W5/W6,
+
+\[
+T^{ij}
+\longrightarrow
+\text{spatial tetrad dynamics}.
+\]
+
+So the complete continuum source object is precisely the Weyl stress tensor.
+
+The remaining difficulty is a discrete-time microscopic realization of that
+stress tensor inside the CJWW QCA.
+
+## 7. Why this matters for novelty
+
+Gu-Wen already provide the vacuum tensor/graviton constraint structure.
+The project-specific unresolved contribution is now sharply isolated:
+
+\[
+\boxed{
+\text{CJWW Weyl matter}
++
+\text{sourced emergent-gravity constraints}
++
+\text{reciprocal backreaction}
+}
+\]
+
+in one local discrete-time construction.
+
+That is a materially narrower and more defensible target than “emergent
+gravity from qubits.”
+
+Novelty of the combined bridge remains OPEN pending dedicated literature
+review.
+
+## 8. Terminal decision
+
+\[
+\boxed{
+\texttt{CONTINUUM\_SOURCED\_CONSTRAINT\_BRIDGE\_PASS /
+MICROSCOPIC\_CJWW\_CHARGES\_OPEN}
+}
+\]
+
+is the terminal state.
+
+The next admissible task is not another gravity ansatz. It is a
+**CJWW FLOQUET STRESS-TENSOR GATE**: determine whether suitable local
+low-energy energy/momentum densities can be derived from the exact walk with
+controlled continuity identities.
+
+## 9. Repair addendum — 2026-09-30 (supersedes the terminal decision)
+
+Inputs: [blind-review repairs](../debates/2026-09-30--w9-w11-blind-review/reparaciones.md)
+and [source check at 7903713](../investigaciones/2026-09-30-prior-art-walk-graviton/comprobacion.md).
+The report at `f956f68` and its frozen contract are not rewritten.
+Evidence: **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
+
+### A4 — correct the premature terminal state
+
+W10's terminal PASS was recorded at `f956f68`, before W11's contract
+`cfdc5c6`. C5 requires controlled low-energy source operators; the continuum
+identity alone did not meet that requirement at that time. The former
+terminal decision is therefore superseded, not retrospectively justified
+by the later W11 report.
+
+Reevaluation after A2 and the explicit A3 downgrade: W11 now supplies a
+finite-range exactly conserved free energy charge K with a controlled
+narrow-band error. It still does not supply the full local Belinfante
+stress at nonzero transfer, the four-species source matching, or a sourced
+constraint/Ward identity. Hence the conditions of C5 have not been shown
+for the intended local matter–geometry bridge. The authoritative state is
+
+```
+W10 = OPEN_AFTER_AUDIT
+C1 = PASS / EXPLICIT_CONTINUUM_CONVENTION_BELOW
+C2 = PASS / FLAT_TEST_SOURCE_AT_O(lambda)_ONLY
+C3 = ZERO_TRANSFER_SPATIAL_TETRAD_SOURCE / PARTIAL
+C4 = OPEN
+C5 = CONDITIONAL_ON_FULL_W11_LOCAL_SOURCE_MATCH / NOT_MET
+```
+
+Restoring the former weak PASS requires the missing W11 source matching
+and a controlled constraint identity in an explicitly specified low-energy
+sector. An exact microscopic Floquet stress remains a separate stronger
+condition. Neither is inferred from conservation of a global charge.
+
+### B1 — fixed quadratic action, signs and relative coefficients
+
+Fix signature \(\eta=\operatorname{diag}(-1,1,1,1)\), lower-index symmetric
+perturbation \(h_{\mu\nu}\), and compact support or boundary conditions
+that remove surface terms. Indices are raised with η. Put
+\(h=\eta^{\mu\nu}h_{\mu\nu}\), \(\Box=\eta^{\mu\nu}\partial_\mu\partial_\nu\).
+The following choice fixes the gravitational field normalization for this
+continuum calculation; it does not derive a Newton constant:
+
+\[
+S_g^{(2)}=-\frac12\int h_{\mu\nu}G_{\rm lin}^{\mu\nu}(h),\qquad
+S_{\rm int}=\frac\lambda2\int h_{\mu\nu}T_{(0)}^{\mu\nu},
+\]
+
+\[
+G^{\rm lin}_{\mu\nu}=\frac12\left[
+\partial_\mu\partial^\rho h_{\rho\nu}
++\partial_\nu\partial^\rho h_{\rho\mu}
+-\Box h_{\mu\nu}-\partial_\mu\partial_\nu h
+-\eta_{\mu\nu}(\partial^\rho\partial^\sigma h_{\rho\sigma}-\Box h)
+\right].
+\]
+
+Here \(T_{(0)}\) is symmetric and independent of h in the variation.
+The operator is formally self-adjoint (two integrations by parts). Thus
+\(\delta S_g=-\int\delta h_{\mu\nu}G_{\rm lin}^{\mu\nu}\) and
+
+\[
+G_{\rm lin}^{\mu\nu}=\frac\lambda2 T_{(0)}^{\mu\nu}.
+\]
+
+For independent components, the lapse variation is
+\(-G^{00}+\lambda T_{(0)}^{00}/2=0\), while the shift variation is
+\(-2G^{0i}+\lambda T_{(0)}^{0i}=0\). Diagonal spatial components have
+multiplicity one; off-diagonal spatial components have multiplicity two.
+There are no independent adjustable scalar/vector source normalizations.
+Equivalently, define \(\mathcal C^\nu_{\rm geom}=2G^{0\nu}_{\rm lin}\):
+
+\[
+\mathcal C^0_{\rm geom}=\partial_i\partial_jh_{ij}-\Delta h_{jj}
+=\lambda T_{(0)}^{00},
+\]
+
+\[
+\mathcal C^i_{\rm geom}=-\partial_j\dot h_{ij}
++\partial_i\dot h_{jj}+\Delta h_{0i}
+-\partial_i\partial_jh_{0j}
+=\lambda T_{(0)}^{0i}.
+\]
+
+These explicit definitions replace the schematic independent normalizations
+in §2. Their numerical mapping to Gu–Wen's canonical variables and J,g is
+not asserted. The coefficient λ in the former §3 equation must be replaced
+by λ/2 in this action convention (or renamed consistently everywhere).
+
+### B2–B3 — continuum target and perturbative ceiling
+
+C2 uses **the constrained continuum Einstein target**, not the controlled
+Gu–Wen lattice L model. Gu–Wen, `biblioteca/arXiv-0907.1203.pdf` p.12,
+eq.(37), introduce the multipliers and state the continuum Einstein-action
+result. Their p.1 distinguishes the controlled L model with cubic dispersion
+from the less controlled linear-dispersion N proposal. Both pages were
+re-read in this session. The L model cannot be substituted for this action:
+its cubic modes do not obey the TT wave equation derived here. No sourced
+L-model dynamics or controlled lattice realization of this continuum target
+is established by W10.
+
+The Bianchi identity gives compatibility with a prescribed **free flat-space**
+\(T_{(0)}\) satisfying \(\partial_\mu T_{(0)}^{\mu\nu}=0\). In a coupling
+expansion at fixed weak h, if matter responds as
+\(T=T_{(0)}+\lambda T_{(1)}+\cdots\), the source \(\lambda T/2\) acquires
+O(λ²) terms. The free identity alone does not control their divergence.
+Reciprocal backreaction needs the corresponding higher-order matter and
+gravity identities/self-couplings; they are not included here. Thus C2 is
+restricted to test-source consistency at O(λ), not a coupled closure test.
+No unverified Gupta/Deser attribution is needed for this restriction.
+
+The new [certificate](../scripts/verify_w10_linearized_constraints.py)
+checks all ten variations, the scalar/vector component formulas, Bianchi
+and gauge identities for arbitrary formal momentum, and the independent
+TT limit \(G_{12}=(\partial_t^2-\partial_3^2)h_{12}/2\). This verifies the
+chosen continuum calculation, not source conservation in a coupled QCA.
+
+### Prior-art and closure boundary
+
+The source audit through `7903713` locates no counterexample to a CJWW-like
+matter–graviton construction with reciprocal backreaction among the checked
+papers. That is a bounded search result, not a novelty proof. The outstanding
+source checks listed there remain outstanding; no proposed catalog tag is
+promoted by this repair.
+
+A1/A2/A4 are repaired; A3 takes the permitted downgrade, B1 fixes the continuum
+convention, and B2/B3 restrict C2 to the actual continuum/test-source result.
+A joint Einstein–Weyl gate is **not ready to freeze** from these results.
+
+=== DOCUMENT 6: verify_w10_linearized_constraints.py ===
+
+"""W10 B1/B2/B3 repair certificate, 2026-09-30.
+
+Run: python3 -B scripts/verify_w10_linearized_constraints.py
+Frozen target: linearized Einstein continuum, eta=(-,+,+,+), g=eta+h.
+S_g=-1/2 integral h_(mu nu) G_lin^(mu nu)(h), S_int=lambda/2 integral h T.
+Formal commuting derivative symbols verify the quadratic variational operator,
+constraint coefficients, Bianchi identity and a transverse-traceless limit.
+This is not a lattice Gu-Wen L-model calculation or a coupled Ward identity.
+"""
+
+import sympy as sp
+
+
+def main():
+    eta = sp.diag(-1, 1, 1, 1)
+    d = sp.Matrix(sp.symbols('d0:4'))
+    dup = eta * d
+    hs = {(i, j): sp.Symbol(f'h{i}{j}') for i in range(4) for j in range(i, 4)}
+    h = sp.Matrix(4, 4, lambda i, j: hs[min(i, j), max(i, j)])
+    ts = {(i, j): sp.Symbol(f'T{i}{j}') for i in range(4) for j in range(i, 4)}
+    T = sp.Matrix(4, 4, lambda i, j: ts[min(i, j), max(i, j)])  # upper indices
+    lam = sp.Symbol('lambda')
+    box = d.dot(dup)
+    trace = sp.trace(eta * h)
+    div = h * dup
+    scalar = dup.dot(div) - box * trace
+    G = (d * div.T + div * d.T - box * h - d * d.T * trace - eta * scalar) / 2
+    Gup = (eta * G * eta).applyfunc(sp.expand)
+    assert (Gup * d).applyfunc(sp.expand) == sp.zeros(4, 1)
+    xi = sp.Matrix(sp.symbols('xi0:4'))
+    gauge = d * xi.T + xi * d.T
+    assert Gup.subs({hs[i, j]: gauge[i, j] for i, j in hs}, simultaneous=True).applyfunc(sp.expand) == sp.zeros(4)
+    print('[PASS] linearized Einstein operator: Bianchi and gauge identities for arbitrary momentum')
+
+    # Two derivatives make the formal adjoint even under d -> -d. Differentiating
+    # this quadratic form checks self-adjointness and off-diagonal multiplicity.
+    L = -sum(h[i, j] * Gup[i, j] for i in range(4) for j in range(4)) / 2
+    L += lam * sum(h[i, j] * T[i, j] for i in range(4) for j in range(4)) / 2
+    for (i, j), field in hs.items():
+        weight = 1 if i == j else 2
+        assert sp.expand(sp.diff(L, field) - weight * (-Gup[i, j] + lam * T[i, j] / 2)) == 0
+    print('[PASS] all ten variations: G^mu nu=lambda*T^mu nu/2; lapse/shift factors fixed')
+
+    spatial_trace = sum(h[i, i] for i in range(1, 4))
+    lap = sum(d[i]**2 for i in range(1, 4))
+    C0 = sum(d[i] * d[j] * h[i, j] for i in range(1, 4) for j in range(1, 4)) - lap * spatial_trace
+    assert sp.expand(2 * Gup[0, 0] - C0) == 0
+    for i in range(1, 4):
+        Ci = -sum(d[j] * d[0] * h[i, j] for j in range(1, 4)) + d[i] * d[0] * spatial_trace
+        Ci += lap * h[0, i] - d[i] * sum(d[j] * h[0, j] for j in range(1, 4))
+        assert sp.expand(2 * Gup[0, i] - Ci) == 0
+    print('[PASS] scalar/vector constraints agree with component formulae; no second time derivative')
+
+    # Independent TT limit: only h12=h21 survives, propagation along x3.
+    tt = {field: 0 for pair, field in hs.items() if pair != (1, 2)}
+    wave = Gup[1, 2].subs(tt).subs({d[1]: 0, d[2]: 0})
+    assert sp.expand(wave - (d[0]**2 - d[3]**2) * h[1, 2] / 2) == 0
+    print('[PASS] TT limit has the wave operator, not cubic lattice dispersion')
+    print('VERDICT: continuum test-source consistency at O(lambda); microscopic and reciprocal completion OPEN.')
+
+
+if __name__ == '__main__':
+    main()
+
+=== DOCUMENT 7: W11_CJWW_FLOQUET_STRESS_TENSOR_GATE.md ===
+
+# W11_CJWW_FLOQUET_STRESS_TENSOR_GATE
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** \`AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED\`.  
+**Rama:** \`research/gravitational-normalization-gate\`.
+
+## 0. Input
+
+Successor to
+
+\`\`\`
+W10 =
+CONTINUUM_SOURCED_CONSTRAINT_BRIDGE_PASS /
+MICROSCOPIC_CJWW_CHARGES_OPEN
+\`\`\`
+
+The missing objects are local matter sources corresponding to
+\(T^{00}\) and \(T^{0i}\).
+
+## 1. Single question
+
+Does the exact CJWW discrete-time walk admit a controlled local
+energy-momentum source suitable for the W10 constraints?
+
+The gate distinguishes:
+
+1. **IR/local surrogate:** a local lattice bilinear whose narrow-band limit is
+   the Weyl stress tensor;
+2. **exact Floquet stress:** a canonical strictly local microscopic
+   \(T^{\mu\nu}\) obeying exact one-step continuity identities.
+
+These are not conflated.
+
+## 2. F1 — effective Weyl generator
+
+From the exact CJWW symbol, derive
+
+\[
+W_0(p)
+=
+I+i\sigma^aE_{0\,a}{}^ip_i+O(|p|^2)
+\]
+
+and therefore a branch-local effective Hamiltonian
+
+\[
+H_{\rm eff}(p)
+=
+-\sigma^aE_{0\,a}{}^ip_i+O(|p|^2).
+\]
+
+## 3. F2 — local IR lattice surrogate
+
+Choose symmetric finite differences
+
+\[
+\nabla_i\psi_x
+=
+\frac{\psi_{x+\hat e_i}-\psi_{x-\hat e_i}}{2}.
+\]
+
+Define a local first-derivative Weyl Hamiltonian density using the frozen
+\(E_0\), and construct the corresponding standard continuum-limit bilinears
+for energy and momentum density.
+
+PASS requires only:
+
+- finite spatial range;
+- correct Weyl symbols through first order in \(p\);
+- a controlled statement that errors vanish in the narrow-band
+  \(p\to0\) limit.
+
+## 4. F3 — exact Floquet energy test
+
+Determine whether the repository has an exact strictly local Hermitian
+generator \(H_{\rm loc}\) with
+
+\[
+U_0=e^{-iH_{\rm loc}}
+\]
+
+and a proved local energy continuity law.
+
+Do not infer one merely from a branch of
+
+\[
+H_F=i\log U_0.
+\]
+
+## 5. F4 — exact microscopic momentum test
+
+Translation invariance gives conserved crystal momentum globally. Determine
+whether a strictly local momentum density/current satisfying an exact
+one-step continuity equation has been constructed.
+
+Global Bloch momentum conservation is not automatically such a local tensor.
+
+## 6. F5 — W10 source level
+
+If F1-F2 pass but F3-F4 remain open, authorize only a low-energy sourced
+constraint bridge:
+
+\`LOW_ENERGY_LOCAL_STRESS_SURROGATE_PASS /
+EXACT_FLOQUET_STRESS_OPEN\`.
+
+This can support a controlled continuum-emergence programme but not an exact
+microscopic Einstein constraint.
+
+## 7. Terminal states
+
+1. \`NO_LOCAL_STRESS_SOURCE\`.
+2. \`LOW_ENERGY_LOCAL_STRESS_SURROGATE_PASS /
+   EXACT_FLOQUET_STRESS_OPEN\`.
+3. \`EXACT_CJWW_FLOQUET_STRESS_PASS\`.
+4. \`OPEN_AFTER_AUDIT\`.
+
+## 8. Claim ceiling
+
+A low-energy stress surrogate does not define an exact microscopic energy,
+does not fix the gravitational coupling, and does not establish universal
+equivalence-principle coupling outside the Weyl sector.
+
+=== DOCUMENT 8: 2026-09-30--w11-cjww-floquet-stress-tensor.md ===
+
+# W11_CJWW_FLOQUET_STRESS_TENSOR_GATE — execution
+
+**Fecha:** 2026-09-30.  
+**Contrato:** [W11_CJWW_FLOQUET_STRESS_TENSOR_GATE](../theory/W11_CJWW_FLOQUET_STRESS_TENSOR_GATE.md), frozen at commit \`cfdc5c6059a169028b38fa326444286d9703e8e5\`.  
+**Certificado exacto:** [verify_w11_ir_stress_source.py](../scripts/verify_w11_ir_stress_source.py), added at commit \`97592a465e40a3769980bcd64623c2c3ac8da3c9\`.  
+**Rama:** \`research/gravitational-normalization-gate\`.
+
+## Verdict
+
+\`\`\`
+W11_CJWW_FLOQUET_STRESS_TENSOR_GATE =
+LOW_ENERGY_LOCAL_STRESS_SURROGATE_PASS /
+EXACT_FLOQUET_STRESS_OPEN
+
+F1 = PASS
+F2 = PASS
+F3 = OPEN
+F4 = OPEN
+\`\`\`
+
+The exact CJWW walk admits finite-range lattice bilinears whose narrow-band
+limit reproduces the Weyl energy/momentum source structure needed by W10.
+This is sufficient for a controlled low-energy matter-gravity bridge, but not
+for an exact microscopic Floquet stress tensor.
+
+## 1. F1 — branch-local Weyl generator
+
+For CJWW Eq. (5.15), exact differentiation at the Weyl node gives
+
+\[
+W_0(p)
+=
+I+i\left(
+p_1\sigma_1-p_2\sigma_2+p_3\sigma_3
+\right)
++O(|p|^2).
+\]
+
+With
+
+\[
+E_0=\operatorname{diag}(1,-1,1),
+\]
+
+this is
+
+\[
+W_0(p)
+=
+I+i\sigma^aE_{0\,a}{}^ip_i+O(|p|^2).
+\]
+
+For a local branch of \(W_0=e^{-iH_{\rm eff}}\),
+
+\[
+\boxed{
+H_{\rm eff}(p)
+=
+-\sigma^aE_{0\,a}{}^ip_i
++
+O(|p|^2).
+}
+\]
+
+Thus the low-energy matter generator is the expected Weyl Hamiltonian.
+
+\[
+\boxed{\texttt{F1 = PASS}.}
+\]
+
+## 2. F2 — finite-range IR energy source
+
+Use the centered lattice derivative
+
+\[
+\nabla_i\psi_x
+=
+\frac{\psi_{x+\hat e_i}-\psi_{x-\hat e_i}}{2}.
+\]
+
+Its Fourier symbol is
+
+\[
+i\sin p_i.
+\]
+
+Define the local IR lattice Hamiltonian
+
+\[
+H_{\rm IR}
+=
+\sum_x
+\psi_x^\dagger
+\left(
+i\sigma^aE_{0\,a}{}^i\nabla_i
+\right)
+\psi_x.
+\]
+
+Equivalently, a Hermitian bond decomposition is
+
+\[
+\varepsilon_x^{(i)}
+=
+\frac{i}{2}
+\left[
+\psi_x^\dagger M_i\psi_{x+\hat e_i}
+-
+\psi_{x+\hat e_i}^\dagger M_i\psi_x
+\right],
+\]
+
+with
+
+\[
+M_i=\sigma^aE_{0\,a}{}^i.
+\]
+
+The total symbol is
+
+\[
+\boxed{
+H_{\rm IR}(p)
+=
+-\sigma^aE_{0\,a}{}^i\sin p_i.
+}
+\]
+
+Therefore
+
+\[
+H_{\rm IR}(p)
+=
+-\sigma^aE_{0\,a}{}^ip_i
++
+O(|p|^3).
+\]
+
+Comparing with the branch-local exact Floquet generator,
+
+\[
+H_{\rm eff}(p)-H_{\rm IR}(p)
+=
+O(|p|^2).
+\]
+
+For matter supported in a narrow ball \(|p|\le\Lambda\), the generator
+mismatch vanishes at least as \(O(\Lambda^2)\) as \(\Lambda\to0\).
+
+This supplies a finite-range local **IR energy-density surrogate**.
+
+## 3. IR momentum density
+
+A local bond momentum-density surrogate is
+
+\[
+\pi_i(x)
+=
+-\frac{i}{2}
+\left(
+\psi_x^\dagger\psi_{x+\hat e_i}
+-
+\psi_{x+\hat e_i}^\dagger\psi_x
+\right).
+\]
+
+Its Fourier symbol is
+
+\[
+\sin p_i
+=
+p_i+O(p_i^3).
+\]
+
+Thus it reproduces the continuum momentum density entering \(T^{0i}\) in the
+Weyl narrow-band limit.
+
+Together with the W5/W6 spatial tetrad-current operators, the project now has
+local lattice representatives for all three continuum source types at IR
+level:
+
+\[
+T^{00},\qquad
+T^{0i},\qquad
+T^{ij}.
+\]
+
+The precise Belinfante/frame symmetrization remains a continuum-level
+identification, not an exact microscopic tensor equality.
+
+\[
+\boxed{\texttt{F2 = PASS}.}
+\]
+
+## 4. F3 — exact Floquet energy remains open
+
+The exact CJWW object is a one-step unitary \(U_0\), not a continuous-time
+Hamiltonian supplied as part of the microscopic definition.
+
+A Floquet logarithm
+
+\[
+H_F=i\log U_0
+\]
+
+requires a quasienergy branch choice and is not, merely by its existence, a
+canonical strictly local Hamiltonian density.
+
+The repository does not currently contain a proof of a finite-range Hermitian
+operator \(H_{\rm loc}\) such that
+
+\[
+U_0=e^{-iH_{\rm loc}}
+\]
+
+together with a strictly local exact energy continuity law.
+
+Therefore the IR bond energy above must not be called the exact microscopic
+CJWW energy.
+
+\[
+\boxed{\texttt{F3 = OPEN}.}
+\]
+
+## 5. F4 — exact microscopic momentum tensor remains open
+
+Exact translation invariance of CJWW implies conservation of Bloch/crystal
+momentum globally.
+
+That does not by itself produce a unique strictly local momentum density and
+one-step current satisfying a local continuity equation.
+
+The bond operator \(\pi_i(x)\) is therefore certified here only as a
+narrow-band representative of the continuum \(T^{0i}\), not as an exact
+microscopic Noether density.
+
+\[
+\boxed{\texttt{F4 = OPEN}.}
+\]
+
+## 6. Consequence for W10
+
+W10 can now be sharpened.
+
+At low energy, the sourced Gu-Wen-type constraints can use finite-range CJWW
+matter operators whose symbols converge to
+
+\[
+T^{00},\qquad T^{0i},\qquad T^{ij}.
+\]
+
+Thus a **low-energy local sourced-constraint bridge** is technically
+available in principle.
+
+But an exact all-momentum microscopic Einstein/Gauss constraint sourced by a
+canonical CJWW Floquet stress tensor is not established.
+
+The correct hierarchy is therefore
+
+\[
+\boxed{
+\text{exact CJWW QCA}
+\to
+\text{controlled Weyl IR}
+\to
+\text{local IR stress surrogate}
+\to
+\text{sourced low-energy gravity constraints}.
+}
+\]
+
+## 7. Scientific status
+
+This is a useful positive result because the Floquet issue does not block the
+emergent low-energy programme.
+
+It does block a stronger claim:
+
+\[
+\text{“the exact microscopic QCA already carries a canonical local
+stress-energy tensor.”}
+\]
+
+No such claim is made.
+
+## 8. Terminal decision
+
+\[
+\boxed{
+\texttt{LOW\_ENERGY\_LOCAL\_STRESS\_SURROGATE\_PASS /
+EXACT\_FLOQUET\_STRESS\_OPEN}
+}
+\]
+
+is the terminal state.
+
+The next serious step is no longer algebraic component counting. It is to
+construct one **joint low-energy model** combining:
+
+- a Gu-Wen-type constrained helicity-2 sector;
+- the CJWW Weyl matter sector;
+- the W11 local IR stress sources;
+- reciprocal matter-geometry coupling;
+
+and then test whether its coupled linearized equations reproduce the
+Einstein-Weyl system to controlled order.
+
+## 9. Repair addendum — 2026-09-30 (supersedes the verdict above)
+
+Authorization: the user's handoff after source check `7903713`. Inputs:
+[repair list](../debates/2026-09-30--w9-w11-blind-review/reparaciones.md)
+and [primary-source check](../investigaciones/2026-09-30-prior-art-walk-graviton/comprobacion.md).
+The frozen report at `83acdfd` is preserved above. These repairs are author-side
+work, **PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED**.
+They do not freeze or open the joint Einstein–Weyl gate.
+
+### A1 — nodes and species contract
+
+For the actual CJWW (5.15) symbol, write
+
+\[
+W=a_0I+i\boldsymbol a\cdot\boldsymbol\sigma,\qquad
+ a_0=c_1c_2c_3,\quad
+ \boldsymbol a=(s_1,-c_1s_2,c_1c_2s_3),
+\]
+
+where here \(c_i=\cos p_i\), \(s_i=\sin p_i\).
+Since \(\det W=1\), a degeneracy is \(W=\pm I\). The condition
+\(|a_0|=1\) forces every \(|c_i|=1\): the following eight nodes exhaust the
+Brillouin torus (coordinates understood modulo \(2\pi\)). Define the frame by
+
+\[
+W(p_*+k)=s_*[(1-|k|^2/2)I+i\sigma^a E_{*a}{}^i k_i+O(|k|^3)],\qquad
+H_*(k)=i\log[s_*W(p_*+k)]=-\sigma^a E_{*a}{}^ik_i+O(|k|^3).
+\]
+
+The Pauli-vector part has no quadratic term. The table uses the normalized
+frame of \(s_*W\), including at the π nodes.
+
+| \(p_*/\pi\) | \(s_*\) | \(\operatorname{diag}E_*\) | \(\det E_*\) | Hamiltonian chirality \(\operatorname{sgn}\det(-E_*)\) |
+| --- | --- | --- | --- | --- |
+| (0,0,0) | +1 | (1,−1,1) | −1 | +1 |
+| (1,1,0) | +1 | (−1,−1,1) | +1 | −1 |
+| (1,0,1) | +1 | (−1,1,1) | −1 | +1 |
+| (0,1,1) | +1 | (1,1,1) | +1 | −1 |
+| (0,0,1) | −1 | (−1,1,1) | −1 | +1 |
+| (0,1,0) | −1 | (−1,−1,1) | +1 | −1 |
+| (1,0,0) | −1 | (1,−1,1) | −1 | +1 |
+| (1,1,1) | −1 | (1,1,1) | +1 | −1 |
+
+The review's signs −,+,−,+ refer to \(\det E_*\); with the Hamiltonian
+convention \(W=e^{-iH}\), chirality has the opposite sign. Both conventions
+have zero net chirality in the four zero-quasienergy species. F1 in §1
+applies only near \(p=0\), not to the entire low-quasienergy sector.
+
+**Selected option A1(i): retain all four zero-quasienergy species.** Any
+subsequent continuum coupling must use their sum
+\(T^{\mu\nu}_{\mathrm{tot}}=\sum_{s_*=+1}T_*^{\mu\nu}\), each with its own
+frame, and one common geometry/coupling. This is a required contract, not a
+constructed microscopic coupling or a proof of universal coupling. A
+single-species truncation is not licensed. The π sector remains explicitly
+outside this low-quasienergy contract; its exclusion under coupled dynamics
+and all species-dependent source kernels must be checked before a joint PASS.
+No suppression of intervalley scattering is inferred from this node table.
+
+### A2 — replace the energy surrogate by K
+
+For the **one-particle free walk** \(U\), set
+
+\[
+K=\frac{i}{2}(U-U^\dagger),\qquad K(p)=-\boldsymbol a(p)\cdot\boldsymbol\sigma.
+\]
+
+This is Hermitian and exactly conserved: \([K,U]=0\). If
+\((U\psi)_x=\sum_r A_r\psi_{x+r}\), then
+\(B_r=i(A_r-A_{-r}^\dagger)/2\) are the hopping matrices of K and
+\(B_{-r}=B_r^\dagger\). One local Hermitian density is
+
+\[
+\varepsilon_x^K=\frac12\sum_r
+[\psi_x^\dagger B_r\psi_{x+r}+\psi_{x+r}^\dagger B_r^\dagger\psi_x],
+\qquad \sum_x\varepsilon_x^K=\langle\psi,K\psi\rangle.
+\]
+
+It has the spatial range of the walk (at most one site per coordinate).
+For a freely second-quantized walk the corresponding conserved bilinear is
+\(d\Gamma(K)\); taking \(i(\Gamma(U)-\Gamma(U)^\dagger)/2\) instead is not
+this local bilinear. No interacting QCA claim is made.
+
+On the union of the four balls \(|k|\le\Lambda\le1/2\) around \(+I\) nodes,
+let \(P_\Lambda\) be the band projector. Here \(\cos\theta=\prod_i\cos k_i>0\),
+\(\sin^2\theta=1-\prod_i(1-\sin^2k_i)\le|k|^2\), hence
+\(0\le\theta\le\arcsin\Lambda\). Spectral calculus gives
+\(K=\sin H_{\rm eff}\) on this branch, so
+
+\[
+\|(K-H_{\rm eff})P_\Lambda\|
+\le\frac{(\arcsin\Lambda)^3}{6},\qquad
+\|(U^n-e^{-inK})P_\Lambda\|
+\le |n|\frac{(\arcsin\Lambda)^3}{6}.
+\]
+
+The second estimate follows by telescoping/Duhamel for the two unitary
+propagators. It is useful for \(|n|\Lambda^3\ll1\), and uses invariance of
+\(P_\Lambda\) under the free walk. The projector is a restriction on states,
+not a claim of finite-range band selection.
+
+K still vanishes at **all eight nodes**. It is not the all-zone quasienergy,
+not a positive energy, and not a continuous-time generator of U. Its exact
+free conservation does not prove conservation after a geometry coupling.
+The construction is established here algebraically; no checked primary
+literature attribution for this particular energy surrogate is claimed.
+
+The old \(H_{\rm IR}\) in §2 is superseded. Its commutator with W has a
+nonzero quartic term. Near p=0 its mismatch with \(H_{\rm eff}\) is cubic,
+not merely the loose quadratic bound quoted there. In fact
+\(\|K-H_{\rm IR}\|\le\Lambda^3\) on the p=0 ball, from
+\(|1-\cos u|\le u^2/2\), so its free dynamical error is bounded by
+\(|n|[\Lambda^3+(\arcsin\Lambda)^3/6]\). On the p3 axis both surrogates
+are \(-\sin p_3\sigma_3\), while \(H_{\rm eff}=-p_3\sigma_3\); the cubic
+coefficient is \(1/6\). This also rejects the review's incorrect universal
+cubic formula for \(H_{\rm eff}\) (repair B4).
+
+### A3 / F2 — explicit downgrade of the local-stress claim
+
+F2 now certifies K as an energy **charge** surrogate on the stated band,
+the integrated canonical momentum near p=0, and the q=0 spatial
+**tetrad-conjugate** structures from W5/W6. It does not certify all local
+components of a symmetric Belinfante tensor. No longitudinal Ward identity
+is inferred merely from the integrated charges. At another node,
+\(\sin(p_{*i}+k_i)=(-1)^{p_{*i}/\pi}k_i+O(k_i^3)\); the original momentum
+surrogate is therefore not one common envelope-momentum operator for all
+four species without further matching.
+
+The kernels at nonzero momentum transfer, spin improvement, frame
+symmetrization and full four-species local source construction remain open.
+This chooses the explicit downgrade permitted by A3. It supersedes the
+claim in §§3,6 that all three local source types needed by W10 were supplied.
+
+### C3 / F3 — obstruction for a continuous translation-invariant logarithm
+
+For this particular two-component walk, suppose a periodic continuous
+Hermitian \(H(p)\) on the connected Brillouin torus obeyed
+\(e^{-iH(p)}=W(p)\). Then \(\operatorname{tr}H(p)\in2\pi\mathbb Z\) is
+constant, since \(\det W=1\). Also \([H,W]=0\). Approaching any Weyl node
+along k=tn and dividing that commutator by t gives
+\([H(p_*),\sigma^aE_{*a}{}^in_i]=0\) for every n. The frames in the table
+are invertible, so \(H(p_*)=c_*I\). At a +I node this requires
+\(c_*\in2\pi\mathbb Z\), hence an even multiple of \(2\pi\) for the
+trace. At a −I node it requires \(c_*\in(2\mathbb Z+1)\pi\), hence an odd
+multiple. This contradicts constant trace.
+
+Thus no such continuous logarithm exists, in particular none with
+absolutely summable translation-invariant hopping matrices (which would
+have a continuous symbol). This includes finite range. This proof uses
+both kinds of nondegenerate Weyl node; it is not a no-go for all QCA, for
+translation-breaking generators, or for time-dependent local circuits.
+It is an author-side proof, not an independently reviewed promotion. Po et
+al.'s chiral-edge result is not used as evidence for it.
+
+### C3 / F4 and primary antecedent
+
+The bond operator in §3 has total symbol \(\sin p_i I\), so its integrated
+charge is **exactly conserved** by the free walk. The missing step in F4 is
+a constructed local one-step current and its relation to the symmetric
+stress, not global conservation. Both that current and the q≠0 Belinfante
+identification remain open in this certificate.
+
+Arnault–Cedzich, `biblioteca/arXiv-2208.14997.pdf` pp.1–2, construct a
+(1+1)D single-particle discrete-time action and a lattice Noether theorem
+for **internal** symmetries, including a U(1) charge current. These pages
+were re-read for this addendum. This is a relevant antecedent; it is not a
+result about gravitational energy-momentum or the CJWW stress tensor.
+
+### Repaired decision and verification scope
+
+```
+W11 = OPEN_AFTER_AUDIT
+F1 = PASS / FOUR_ZERO_QUASIENERGY_SPECIES
+F2 = INTEGRATED_CHARGES_AND_ZERO_TRANSFER_TETRAD_ONLY
+F3 = NO_CONTINUOUS_TRANSLATION_INVARIANT_LOGARITHM / AUTHOR_PROOF
+F4 = GLOBAL_BOND_MOMENTUM_CONSERVED / LOCAL_STRESS_OPEN
+EVIDENCE = PRELIMINARY / REPAIRED_VERSION_NOT_INDEPENDENTLY_REVIEWED
+```
+
+The new [certificate](../scripts/verify_w11_ir_stress_source.py) extracts
+real-space hoppings from `walk2()`, constructs K and the original bond
+operators, checks conservation by both Bloch algebra and real-space
+convolution, tabulates eight frames/chiralities, and checks arbitrary-direction
+Taylor coefficients with an independent exact-axis case. It does not
+construct q≠0 stress kernels. D2 is repaired for these declared checks;
+its full-stress part remains open. The analytic band bound and the
+continuous-logarithm obstruction are the arguments above, not numerical
+inferences from the certificate.
+
+=== DOCUMENT 9: verify_w11_ir_stress_source.py ===
+
+"""W11 A1/A2 repair certificate (2026-09-30).
+
+Run: python3 scripts/verify_w11_ir_stress_source.py
+Original first-order checker: git show 97592a4:scripts/verify_w11_ir_stress_source.py
+Uses the original CJWW (5.15) symbol, extracts its real-space hopping matrices,
+and checks conservation both in Bloch space and by real-space convolution.
+Scope: free walk, integrated charges, all eight nodes; no q != 0 Belinfante
+stress kernel, interacting constraint identity, or Floquet logarithm no-go.
+"""
+
+from itertools import product
+
+import sympy as sp
+
+from verify_directional_saturation import PAULI, P1, P2, P3, Z, laurent, walk2
+
+PS = (P1, P2, P3)
+I2 = sp.eye(2)
+ZERO = sp.zeros(2)
+
+
+def equal(left, right):
+    assert all(sp.simplify(laurent(e)) == 0 for e in left - right)
+
+
+def hopping(symbol):
+    """symbol = sum_r A_r exp(i p.r); (A psi)_x = sum_r A_r psi_(x+r)."""
+    out = {}
+    for row in range(2):
+        for col in range(2):
+            poly = sp.Poly(sp.expand(laurent(symbol[row, col]) * sp.prod(Z)), *Z)
+            for mono, coeff in poly.terms():
+                if coeff != 0:
+                    r = tuple(int(m) - 1 for m in mono)
+                    out.setdefault(r, sp.zeros(2))[row, col] = coeff
+    return out
+
+
+def adjoint(hops):
+    return {tuple(-x for x in r): a.H for r, a in hops.items()}
+
+
+def convolution(left, right):
+    out = {}
+    for r, a in left.items():
+        for s, b in right.items():
+            rs = tuple(x + y for x, y in zip(r, s))
+            out[rs] = out.get(rs, ZERO) + a * b
+    return {r: a.applyfunc(sp.simplify) for r, a in out.items() if a != ZERO}
+
+
+def equal_hops(left, right):
+    for r in left.keys() | right.keys():
+        assert (left.get(r, ZERO) - right.get(r, ZERO)).applyfunc(sp.simplify) == ZERO
+
+
+def symbol(hops):
+    return sum((a * sp.exp(sp.I * sum(p * x for p, x in zip(PS, r)))
+                for r, a in hops.items()), sp.zeros(2))
+
+
+def sig(v):
+    return sum((x * s for x, s in zip(v, PAULI)), sp.zeros(2))
+
+
+def main():
+    W = walk2()
+    equal(W.H * W, I2)
+    assert sp.simplify(W.det()) == 1
+    # Exact SU(2) decomposition, derived independently from the matrix entries.
+    a0 = sp.prod(sp.cos(p) for p in PS)
+    a = sp.Matrix([sp.sin(P1), -sp.cos(P1) * sp.sin(P2),
+                   sp.cos(P1) * sp.cos(P2) * sp.sin(P3)])
+    equal(W, a0 * I2 + sp.I * sig(a))
+    assert sp.trigsimp(a.dot(a) + a0**2 - 1) == 0
+
+    U = hopping(W)
+    Ud = adjoint(U)
+    Khops = {r: sp.I * (U.get(r, ZERO) - Ud.get(r, ZERO)) / 2
+             for r in U.keys() | Ud.keys()}
+    K = symbol(Khops)
+    equal(K, sp.I * (W - W.H) / 2)
+    equal(K, -sig(a))
+    equal(K.H, K)
+    equal(K * W, W * K)
+    equal_hops(Khops, adjoint(Khops))
+    equal_hops(convolution(Ud, U), {(0, 0, 0): I2})
+    equal_hops(convolution(convolution(Ud, Khops), U), Khops)
+    assert len(U) == 14
+    assert max(max(abs(x) for x in r) for r in Khops) == 1
+    print('[PASS] K built from the 14 CJWW hoppings: Hermitian, range <= 1 per coordinate', flush=True)
+    print('[PASS] [K,W]=0 and U^dag K U=K, also by real-space convolution', flush=True)
+
+    # W(p_star+k)=s[I+i sigma.E k+O(k^2)]; H_shift=-sigma.E k+...
+    print('node/pi | W sign | diag(E), normalized by W sign | det(E) | chirality(H_shift)')
+    plus_chiralities = []
+    for bits in product((0, 1), repeat=3):
+        at = dict(zip(PS, (b * sp.pi for b in bits)))
+        signs = [(-1)**b for b in bits]
+        s = sp.prod(signs)
+        equal(W.subs(at), s * I2)
+        E = sp.diag(signs[1] * signs[2], -signs[2], 1)
+        shifted = {p: p + b * sp.pi for p, b in zip(PS, bits)}
+        # Exact recentering, not just node derivatives: all +I neighborhoods
+        # share the scalar dispersion and odd vector Taylor order.
+        equal(s * W.subs(shifted, simultaneous=True),
+              a0 * I2 + sp.I * sig(E * sp.diag(1, -1, 1) * a))
+        for i, p in enumerate(PS):
+            equal(sp.diff(W, p).subs(at), s * sp.I * sig(E[:, i]))
+            equal(sp.diff(K, p).subs(at), -s * sig(E[:, i]))
+        equal(K.subs(at), ZERO)
+        chirality = (-E).det()
+        if s == 1:
+            plus_chiralities.append(chirality)
+        print(f'{bits} | {int(s):+} | {tuple(E.diagonal())} | {int(E.det()):+} | {int(chirality):+}', flush=True)
+    assert sorted(plus_chiralities) == [-1, -1, 1, 1]
+    print('[PASS] four zero-quasienergy species, net chirality zero; four pi nodes', flush=True)
+    # Completeness: W=+-I implies |a0|=1. Each |cos p_i|<=1, so all p_i=0 or pi.
+
+    # Build the OLD H_IR and pi_i from their real-space bond coefficients.
+    E0 = sp.diag(1, -1, 1)
+    old_hops = {}
+    for i in range(3):
+        e = tuple(int(j == i) for j in range(3))
+        minus_e = tuple(-x for x in e)
+        M = sig(E0[:, i])
+        old_hops[e], old_hops[minus_e] = sp.I * M / 2, -sp.I * M / 2
+        pi_hops = {e: -sp.I * I2 / 2, minus_e: sp.I * I2 / 2}
+        Pi = symbol(pi_hops)
+        equal(Pi, sp.sin(PS[i]) * I2)
+        equal_hops(convolution(convolution(Ud, pi_hops), U), pi_hops)
+    Hir = symbol(old_hops)
+    equal(Hir, -sig(E0 * sp.Matrix([sp.sin(p) for p in PS])))
+    print('[PASS] old bond pi_i has exactly conserved integrated charge (not a Belinfante kernel)', flush=True)
+
+    t = sp.symbols('t', real=True)
+    v = sp.Matrix(sp.symbols('v1 v2 v3', real=True))
+    ray = dict(zip(PS, t * v))
+
+    def jet(expr, order):
+        return sp.expand(sp.series(expr.subs(ray), t, 0, order).removeO())
+
+    # H_eff=-(asin(|a|)/|a|)a.sigma near +I; ratio=1+|a|^2/6+O(|a|^4).
+    K3 = (-a).applyfunc(lambda e: jet(e, 4))
+    Heff3 = (-(1 + a.dot(a) / 6) * a).applyfunc(lambda e: jet(e, 4))
+    Hir3 = (-E0 * sp.Matrix([sp.sin(p) for p in PS])).applyfunc(lambda e: jet(e, 4))
+    for e in Heff3 - Hir3:
+        assert e.coeff(t, 0) == e.coeff(t, 1) == e.coeff(t, 2) == 0
+    expected = E0 * v * v.dot(v) * t**3 / 6
+    assert (K3 - Heff3 - expected).applyfunc(sp.simplify) == sp.zeros(3, 1)
+    comm4 = (Hir * W - W * Hir).applyfunc(lambda e: jet(e, 5))
+    assert all(e.coeff(t, n) == 0 for e in comm4 for n in range(4))
+    assert any(e.coeff(t, 4).subs(dict(zip(v, (1, 2, 3)))) != 0 for e in comm4)
+    print('[PASS] arbitrary-direction jets: K-H_eff=O(|p|^3); old H_IR commutator has nonzero quartic term', flush=True)
+
+    # Independent exact axis witness: W=exp(i p3 sigma3), H_eff=-p3 sigma3.
+    equal(W.subs({P1: 0, P2: 0}), sp.diag(sp.exp(sp.I * P3), sp.exp(-sp.I * P3)))
+    equal(K.subs({P1: 0, P2: 0}), -sp.sin(P3) * PAULI[2])
+    assert sp.limit((P3 - sp.sin(P3)) / P3**3, P3, 0) == sp.Rational(1, 6)
+    print('[PASS] exact p3-axis check: cubic energy error coefficient 1/6')
+    print('VERDICT: A1/A2 checks pass for free integrated charges; full local stress and coupled gate OPEN.')
+
+
+if __name__ == '__main__':
+    main()
+
+=== DOCUMENT 10: cjww_walk_definition.md ===
+
+# CJWW Eq. (5.15) — momentum-space walk used by the W11 certificate
+
+Transcribed from `scripts/verify_directional_saturation.py`, function `walk2()`
+(lines 72–78 at commit `41d0e0d`), which the W11 certificate imports. In the
+certificate, `PAULI = (sigma_1, sigma_2, sigma_3)` in the standard basis and
+`c_k = cos p_k`, `s_k = sin p_k`.
+
+```
+W(p) = [[ c1 c2 e^{i p3},          -c1 s2 + i s1       ],
+        [  c1 s2 + i s1,             c1 c2 e^{-i p3}   ]]
+```
+
+The Weyl node used in W11 is p = 0.
