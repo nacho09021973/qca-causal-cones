@@ -1,14 +1,12 @@
 # CURRENT_STATE
 
 **Date:** 2026-09-24
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; flat absolute-scale gate 4B CLOSED as `NO_ABSOLUTE_SCALE_DERIVABLE` (Sec. 8.21, within that frozen class); **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification for H1 OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; flat absolute-scale gate 4B CLOSED as `NO_ABSOLUTE_SCALE_DERIVABLE` (Sec. 8.21, within that frozen class); **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification for H1 OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. L2 stop gate: `B / OPEN_BLOCKED_METHOD` (PRELIMINARY decision audit; partial external review + source bounds reproduced by Claude; B structural to norm-based method, not evidence against H1; H1 OPEN and paused). The present physical stay-remainder bounds do not reach `o(N^-13/2 e^{-K_*N})` without the still-open H1c localization machinery; this is a method obstruction, not an H1 refutation. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
-**Branch-local state.** The baseline body of this file is reconciled on
-`research/b-infinity-post-s4-gate` only. The 2026-09-28 Sec. 8.21 terminal
-decision is an addendum for `claude/endpoint-transfer-partial`; it does not
-reconcile the other sections on this branch. This file is **not** a canonical
-promotion: `main` is unchanged, and promotion there requires a separate explicit
-decision.
+**Branch-local state.** This file is reconciled on
+`research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
+merged on this branch. It is **not** a canonical promotion: `main` is
+unchanged, and promotion requires a separate explicit decision.
 
 **Repository:** `nacho09021973/qca-causal-cones`
 
@@ -352,7 +350,7 @@ on the twelve Pauli pairs (Sec. 8.20). The signal is
 `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. This is theoretical step 3
 of the physical line, closed inside the preregistered class. It is not
 `D_B > 0` for every QCA, not a claim about nature, and not a further
-signalling calculation. The authorized next front is Sec. 8.21.
+signalling calculation. Sec. 8.21 has now been executed with terminal state `NO_ABSOLUTE_SCALE_DERIVABLE` (preliminary; partial external review + Claude review 2026-09-26, see Sec. 8.21).
 
 ## 7. GATE STATUS — only point (3) authorized by the user
 
@@ -1367,7 +1365,9 @@ authorized. Fork 4A (a physical implementation of the walk that could
 test the derived law) is identified and **not chartered**. The authorized
 next front is Sec. 8.21.
 
-### 8.21 PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE — AUTHORIZED, NOT_EXECUTED (2026-09-17)
+### 8.21 PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE — AUTHORIZED (2026-09-17); EXECUTED (2026-09-25)
+
+`EXECUTION_AUTHORIZED_BY_DIRECT_USER_INSTRUCTION — 2026-09-25` («Pues vamos con el 8.21», 14:54 UTC). The status `NOT_EXECUTED` and the clause “Not authorized: execution of this gate” were correct as of 2026-09-17 and are superseded by that instruction.
 
 Contract
 [`PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE.md`](../theory/PHYSICAL_REALIZATION_ABSOLUTE_SCALE_GATE.md)
@@ -1379,7 +1379,31 @@ Sec. 8.15 (`DIMENSIONAL_MAP_CONDITIONAL`) without reopening the `3/128`
 audit. **Not a signalling gate, not a rate gate, not a Laplace-coefficient
 gate, not a laboratory-implementation gate (4A).**
 
-**Initial evidence status (2026-09-17): `NOT_EXECUTED / OUTCOME_OPEN`.**
+**Execution 2026-09-25:** `NO_ABSOLUTE_SCALE_DERIVABLE`.
+Evidence: `EXECUTED / PRELIMINARY / PARTIAL_EXTERNAL_REVIEW`.
+[Execution report](../reports/2026-09-25--physical-realization-absolute-scale-gate.md).
+The frozen model fixes only `a/tau=c`; the targeted literature recheck supplies
+engineered simulators and external bounds on lattice spacing, but no absolute
+scale or natural physical dictionary for the complete Sec. 8.20 CJWW protocol.
+A conditional SI restoration is possible, with centre separation
+`L_c=sqrt(3) a N` and
+`delta(L_c;a) ~ |C({L_c/(4a)})|(L_c/(sqrt(3)a))^-13/2 exp[-(K_*/sqrt(3))L_c/a]`,
+but `a` remains undetermined. The terminal state is not
+`PHYSICAL_MAP_EXISTS_BUT_UNOBSERVABLE`: no defensible physical map exists first.
+The Planck substitution is retained only as a diagnostic ASSUMPTION. 4A was
+not chartered at execution time (see addendum below: now authorized, still
+without contract) and Sec. 8.20 is unchanged.
+**Review 2026-09-26 (Claude):** dimensional restoration, criterion scoring,
+terminal state and Planck diagnostic arithmetic verified; terminal state
+correct (report Sec. 11). Not an exhaustive literature audit.
+
+**4A authorization addendum — 2026-09-25.**
+`4A = AUTHORIZED_BY_DIRECT_USER_INSTRUCTION` by the user's later message
+«Pues lo autorizo» (2026-09-25, 15:35:40 UTC). This supersedes the
+`not chartered` status prospectively from that instruction only; the
+2026-09-17 statements remain historically correct. Authorization does not
+constitute a 4A design, execution, physical realization, or claim about
+nature. A separate 4A contract is still required before scientific work.
 
 Step 3 is **input**, not an object to re-optimize. The gate does **not**
 ask whether `δ_{M,M_B}(N) ≠ 0`. It asks whether a physically defensible
@@ -1414,8 +1438,8 @@ negative outcomes: `NO_ABSOLUTE_SCALE_DERIVABLE`,
 Binding separation: model closed ≠ nature established ≠ experiment designed.
 
 **Premises, not reopened:** `K_*`, `β`, `C(θ_N)`, the sixteen pairs, the
-conditional dictionary of Sec. 8.15. **Not authorized:** execution of
-this gate; fork 4A; a new signalling encoder, detector or geometry;
+conditional dictionary of Sec. 8.15. **Not authorized (as of 2026-09-17):** execution of
+this gate (superseded 2026-09-25, see above); fork 4A; a new signalling encoder, detector or geometry;
 re-optimizing `K_*` or `C`; treating `N → ∞` as `a, τ → 0`; using a
 Planck fiat as `DERIVED`.
 
@@ -1436,25 +1460,32 @@ and photonic Dirac automata are 4A antecedents. Pavia/Mlodinow–Brun
 are incomplete fundamental candidates (Planck `ASSUMPTION`, different
 observables). This scan did **not** assign a 4B terminal state.
 
-**Terminal decision (2026-09-28; branch-local, direct user decision).**
-The reviewed diagnosis in
-[`2026-09-28--physical-realization-absolute-scale-gate.md`](../reports/2026-09-28--physical-realization-absolute-scale-gate.md),
-versioned at `16c4f0f`, is accepted for the frozen flat CJWW (5.15) class.
-4B is **CLOSED: `NO_ABSOLUTE_SCALE_DERIVABLE`**. The model and protocol do
-not determine an absolute scale or supply the physical dictionary needed for
-a prediction about nature. This closure does not assert that no future theory
-could provide those ingredients. Reopening 4B requires a new, physically
-justified ingredient and a separate explicit decision. Chrono-Grid remains a
-candidate reference without an established identification with CJWW; it does
-not open a new workstream. The mathematical corona result in Sec. 8.20 is
-unchanged. This decision does not close or promote the distinct H1 physical
-realization question in Sec. 9.
+**Terminal closure (2026-09-28; direct user decision).**
+The later reviewed diagnosis in
+[`2026-09-28--physical-realization-absolute-scale-gate.md`](../reports/2026-09-28--physical-realization-absolute-scale-gate.md)
+(`16c4f0f`) confirms the 2026-09-25 execution outcome and is accepted for the
+frozen flat CJWW (5.15) class: 4B is **CLOSED: `NO_ABSOLUTE_SCALE_DERIVABLE`**.
+The model and protocol do not determine an absolute scale or supply the
+physical dictionary needed for a prediction about nature. This closure does
+not assert that no future theory could provide those ingredients. Reopening 4B
+requires a new, physically justified ingredient and a separate explicit
+decision. Chrono-Grid remains a candidate reference without an established
+identification with CJWW; it does not open a new workstream. The mathematical
+corona result in Sec. 8.20 is unchanged. This decision does not close or
+promote the distinct H1 physical realization question in Sec. 9.
+**Chronology:** the execution and authorization record above (2026-09-25
+instruction, 2026-09-25 report, 2026-09-26 review) is kept as canonical. The
+2026-09-28 report was prepared on `claude/endpoint-transfer-partial` without
+that record and describes the authorization differently (as analysis not
+authorized under the 2026-09-17 act); its conclusions are adopted, its account
+of authorization is superseded by the record above.
 
 
 ## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)
 
-**Status (2026-09-24): H1 OPEN; H1c localization unproved, work PAUSED.
-The operational contract is fixed in Sec. 9.6; the next gate is T1.**
+**Status (2026-09-25): H1 OPEN; the Schur / physical-endpoint bridge is
+written but awaits independent review in Sec. 9.7. The operational contract is fixed
+in Sec. 9.6. The full H1c localization claim is not closed.**
 
 This update supersedes the older statement that physical-realization / absolute-scale
 Sec. 8.21 is the active line. The flat CJWW (5.15) operational IR-corona result
@@ -1688,6 +1719,52 @@ primary observable: (L_+, L_-)
 These records do not prove H1c or H1, promote preliminary localization
 prechecks, or alter C2/C3, E0, POWER_13/2_STABILITY, E/AdS, or the flat
 manuscript. Physical realization of the two channels remains OPEN.
+The next candidate question is whether bounds for all ten signed pieces
+can be derived from the physical endpoints \((r_c,d_{c,P},d_{c,Q})\).
+It was not executed or opened at that freeze. The later direct user
+instruction and its narrowly scoped continuation are recorded in Sec. 9.7.
+
+### 9.7 Schur stability and the current physical endpoints — 2026-09-24
+
+Direct user instruction: repair the bottleneck and continue, with an explicit
+follow-up requiring a line-by-line check that both endpoints belong to the
+current two-channel protocol. This authorizes the estimate audit and the
+linear-piece reduction below; it does not assert a nonzero leading coefficient.
+
+Status: **PROOF_WRITTEN / INDEPENDENT_REVIEW_PENDING**. The
+[candidate proof and endpoint trace](../reports/2026-09-24--schur-stability-physical-transfer.md)
+retains the exact T1 definitions and fixed W. It distinguishes bounded real
+profiles (B) from the additional Fourier-moment hypothesis of Sec. 9.4 (F).
+The latter is not implied by boundedness or merely C1 regularity.
+Two external review executions timed out without a mathematical verdict;
+the [execution record](../reports/2026-09-25--schur-physical-bridge-review-status.md)
+records both failures. Neither is a pass, rejection or consensus. No review
+process remains running.
+
+The candidate establishes under B the full double Schur sum O_W(N^-1),
+uniform stability of the normalized product, and the reconstruction norm
+Theta(N^-1). Under F it proposes the stronger full propagator estimate
+||T^N - R^N|| = O_W(N^-1), where R = D_xi/Lambda. The complete physical
+Alice source s = Fourier H_xi J(U_M-I)phi_N and the actual Bob dual endpoint
+v_c = V_c^* E B pi_c U_N^N J phi_N both have L2 norm O(N^-3).
+The Bob estimate is derived from the real, inhomogeneous doubled evolution
+in Fourier L1, not inherited from the flat reference.
+
+Their product yields an absolute O_W(N^-7 exp(-K_*N)) linear error.
+The signed continuation keeps the current reference r_+:
+
+- A_+P = 2 Re <r_+, E S^N(U_M-I)phi_N> + O_W(N^-7 exp(-K_*N)).
+- A_+Q, A_-P, A_-Q = O_W(N^-7 exp(-K_*N)).
+- The sum of quadratic pieces in either channel is nonnegative and
+  O_W(N^-8 exp(-2K_*N)); there are three such pieces per channel.
+
+These are candidate estimates pending review. N^-7 is smaller than the
+flat benchmark N^-13/2, but no lower bound for the current signed functional
+is supplied. Its sign, coefficient and nonvanishing remain OPEN. This is
+a proposed repair of the missing bridge, not a novelty claim, not transfer
+of the flat Bob spinor, and not closure of H1/H1c, E0,
+POWER_13/2_STABILITY or E/AdS. T3's earlier cancellation stop is not converted
+into a cancellation result.
 ### 9.7 Physical reconstruction operator norms — 2026-09-24
 
 The initial endpoint-transfer audit is recorded in
@@ -1771,6 +1848,37 @@ derivation was refuted. **No conclusion on signal survival, dominance or a signe
 leading term; `N^-3 . N^-1 . N^-3 = N^-7` is not a theorem.** Which of L1/L2/L3
 to attack first is not decided here. H1/H1c, the manuscript and the observable are
 unchanged.
+
+
+**Addendum 2026-09-25 — L2 A/B/C stop gate.**
+[`H1/L2 A-B-C stop gate`](../reports/2026-09-25--h1-l2-abc-stop-gate.md).
+Status: `L2_GATE = B / OPEN_BLOCKED_METHOD`;
+`EVIDENCE = PRELIMINARY_DECISION_AUDIT / PARTIAL_EXTERNAL_REVIEW + SOURCE_BOUNDS_REPRODUCED`.
+The object is the `vartheta`-dependent physical `stay` sub-remainder inside
+the terminal-P contribution, not the full terminal-P output and not full
+`A_{+P}`. T1 (14) gives `x_N=x^stay+f_{Q,N}+(M_Nx)_N`; the latter two
+terminal-P pieces are separate L3 material. The exact `stay` subtraction
+varies both endpoints. Available
+bounds leave the two displayed pieces at
+`O_{W,Theta}(N^-5 e^{-K_*N})` and
+`O_{W,Theta}(N^-6 e^{-K_*N})`, above the flat leader scale
+`N^-13/2 e^{-K_*N}`. The existing local-window and fixed-endpoint
+homogeneous Dyson estimates do not transfer that control to the physical
+inhomogeneous remainder. Under the precommitted stop rule this is outcome B. The report does not
+claim that `H1c_LOCALIZATION`-class Gaussian-localization/phase transport is
+the only route to A.
+**Structural character of B.** B is structural for the present norm-based
+method: the same norm estimates already bound the flat leading `stay`
+contribution only at `O(N^-6 e^{-K_*N})`, missing the `N^-13/2` scale. Thus B
+diagnoses a limitation of the method, not evidence against H1.
+**Review 2026-09-26 (Claude, external to the author's family):** both bounds
+reproduced from their sources, B validated; H1 not reviewed or closed (report
+§8). By user decision H1 stays OPEN and work on it is paused; neither
+`H1c_LOCALIZATION` nor any other route is opened. B is a method
+obstruction, **not** a refutation: H1 remains OPEN; no admissible
+counterexample/lower bound (C), signal-survival or dominance claim is made.
+No `PP[vartheta]/PP[0]` sweep was run. L1 and L3 are not opened as rescue
+routes. The closed flat result is unchanged.
 
 ## 10. IR spectral-attribution audit — 2026-09-22
 
