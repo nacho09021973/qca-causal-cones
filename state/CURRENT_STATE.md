@@ -18,7 +18,7 @@ branches were incorporated by fast-forward into
 | Gravity line (W1–W12, W6/CJWW control class) | **CLOSED_BY_CONTRACT (W12 §4), 2026-09-30** | Direct user decision («cierra la línea como dice el contrato»). Negative result for this control class; no joint Einstein–Weyl gate will be opened. Reopening requires a new control family with an independent physical justification written before any calculation; after-the-fact rescue is not allowed |
 | Elastic/common-graph successor class | **KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN — PRELIMINARY** | Contract frozen only after independent graph/elastic motivation was written; four +I species see exactly (h_*=a^2\Lambda\Lambda^T), metric rank 6/6. This is common-embedding kinematics only; it does not reopen W3–W11 or supply strain-dependent CJWW hopping dynamics | [2026-09-30 elastic-graph report](../reports/2026-09-30--elastic-graph-species-universality.md) |
 | Unitary elastic hopping-response attempt | **UNITARY_ELASTIC_RESPONSE_INCONSISTENT** | Frozen bond generator depends on arbitrary orientation set `F_+` because exact CJWW blocks do not satisfy `W_-h=W_h^†`; four-species metric test was not executed | [2026-09-30 elastic-hopping report](../reports/2026-09-30--elastic-hopping-unitary-response.md) |
-| Orientation-independent Hermitian elastic successor | **FROZEN / NOT_EXECUTED** | Full 14-hop bond-weighted symbol with Hermitian-part generator; common strain, common coordinates, fixed ordering and no post-result tuning. Four-species node/gauge and metric tests not yet run | [gate](../theory/ELASTIC_HOPPING_HERMITIAN_RESPONSE_GATE.md) |
+| Orientation-independent Hermitian elastic successor | **HERMITIAN_ELASTIC_METRIC_UNIVERSAL_EMBEDDING_ONLY — PRELIMINARY** | HH0–HH5 pass; all four +I species have the same rank-6 metric response, but the new hopping generator contributes zero to the principal spatial frame at first order after removal of the common scalar phase. Entire metric response is inherited from the common embedding | [2026-09-30 Hermitian elastic report](../reports/2026-09-30--elastic-hopping-hermitian-response.md) |
 
 **Review provenance:** the first review covered `41d0e0d`. The
 [second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
@@ -2995,3 +2995,40 @@ the predecessor elastic-graph gate.
 
 No node/gauge decomposition, four-species metric comparison, metric-rank
 calculation or coefficient adjustment has been performed after freezing.
+
+**Execution result.** The exact symbolic first-order calculation was then
+performed without changing the frozen prescription. At every decisive +I
+node,
+
+[
+K_u(p_*)=rac{operatorname{tr}u}{3}I.
+]
+
+Thus there is no traceless constant term and no first-order node displacement;
+only a common scalar quasienergy phase remains. After removing that phase, the
+hopping-induced principal-frame correction vanishes exactly,
+
+[
+delta E_*^{m hop}=0.
+]
+
+The common embedding still gives
+
+[
+delta h_*=2a^2u
+]
+
+for all four species, with rank 6/6. Therefore the terminal state is
+
+```
+HERMITIAN_ELASTIC_METRIC_UNIVERSAL_EMBEDDING_ONLY
+```
+
+not a nontrivial elastic metric response. The stop rule applies: no alternate
+ordering, coefficient, bond functional or internal rotation is tried here.
+W3–W11 remain closed and W12 remains unchanged. Evidence is
+`EXACT SYMBOLIC FIRST-ORDER DERIVATION / AUTHOR-SIDE CERTIFICATE /
+INDEPENDENT REVIEW PENDING`.
+
+Execution report: [2026-09-30 Hermitian elastic response](../reports/2026-09-30--elastic-hopping-hermitian-response.md),
+commit `5de01a895582b61aa9baaee8b39006d6bdcf28a6`.
