@@ -21,7 +21,8 @@ reopened or promoted by that successor.
 | W1 perturbative link bridge | **W1_CAUSAL_UNITARY_BRIDGE_PASS / FULL_QCGD_SYNTHESIS_OPEN**; exact CJWW at g=0, matter-dependent link response O(g), regular-background matter correction begins at O(g^2) | [2026-09-29 W1 report](../reports/2026-09-29--w1-perturbative-backreaction-bridge.md) |
 | W1 geometricity | **W1_OPERATIONAL_GEOMETRY_PASS**, scope **FINITE_TIME_EXACT_SUPPORT_ONLY**; two link states give different exact 2-step matter support, while one-step adjacency and outer causal body remain unchanged | [2026-09-29 geometricity report](../reports/2026-09-29--w1-geometricity.md) |
 | W1 coarse metric | **W1_SCALAR_POTENTIAL_ONLY / NO_METRIC_DEFORMATION**; link backgrounds add scalar potential/dephasing but do not alter the Weyl principal symbol, one-step neighborhood or outer causal body | [2026-09-29 coarse-metric report](../reports/2026-09-29--w1-coarse-metric.md) |
-| W2 transport/tetrad bridge | **W2_DYNAMIC_PRINCIPAL_SYMBOL_PASS / CURVATURE_OPEN**; reciprocal matter-current/link coupling changes the momentum-linear Weyl coefficient matrix (E_a{}^i) at O(g) while recovering exact CJWW at g=0 | [2026-09-30 W2 report](../reports/2026-09-30--w2-transport-tetrad-bridge.md) |
+| W2 transport/tetrad bridge | **PRINCIPAL_SYMBOL_CONTROL PASS, but W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL** after exact audit; different link backgrounds change (E_a{}^i), but the controlling observable <Z+X> is conserved by the declared coupling | [2026-09-30 audit](../reports/2026-09-30--w2-tetrad-backreaction-audit.md) |
+| W3 backreacting tetrad | **W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN**; noncommuting Y-kick changes <Z_e>, and the same <Z_e> controls the momentum-linear Weyl tetrad in the transport substep | [2026-09-30 W3 report](../reports/2026-09-30--w3-backreacting-tetrad.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2369,3 +2370,82 @@ Therefore the phrase "dynamical tetrad-like variable" in the original W2
 execution is superseded. W2 is a **link-controlled principal-symbol
 deformation**, not yet a backreacting tetrad. A repair must use noncommuting
 geometry operators so that matter can change the next-step transport control.
+
+
+## 18. W2 tetrad-backreaction correction — 2026-09-30
+
+**Audit contract:** [`W2_TETRAD_BACKREACTION_AUDIT.md`](../theory/W2_TETRAD_BACKREACTION_AUDIT.md),
+frozen at commit `1fc383fd62607ab118f3d6305c8e445ca10caab9`.
+
+**Execution:** [audit report](../reports/2026-09-30--w2-tetrad-backreaction-audit.md),
+commit `16ca6302ed4132f822df1cc48cf0ffaafb2788f5`.
+
+Corrected state:
+
+```
+W2_PRINCIPAL_SYMBOL_CONTROL = PASS
+W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL
+```
+
+W2 uses `H_e=B_e tensor J_e` with `B_e=Z_e+X_e`, while the
+principal-symbol coefficient is `b_e=<B_e>`. Exactly
+`[H_e,B_e tensor I]=0`, hence `<B_e>` is conserved. The link density
+matrix can change in components orthogonal to `B_e`, but matter cannot
+change the variable that controls the W2 tetrad deformation.
+
+## 19. W3 backreacting tetrad — 2026-09-30
+
+**Contract:** [`W3_BACKREACTING_TETRAD_FLOQUET_GATE.md`](../theory/W3_BACKREACTING_TETRAD_FLOQUET_GATE.md),
+frozen at commit `5dc5fda054355f1b1db3bbc7e6c91e8e841273f4`.
+
+**Certificate:** [`verify_w3_backreacting_tetrad.py`](../scripts/verify_w3_backreacting_tetrad.py),
+added at commit `f1f54c973f05e610c309e4f5f3925cb3fafce953`.
+
+**Execution:** [W3 report](../reports/2026-09-30--w3-backreacting-tetrad.md),
+commit `ebf9142880945ee243eef22acc5cf5f4554697b4`.
+
+Status:
+
+```
+W3_BACKREACTING_TETRAD_FLOQUET_GATE =
+W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN
+FULL_QCGD_SYNTHESIS = OPEN
+EINSTEIN_DYNAMICS = NOT_CLAIMED
+GRAVITATIONAL_NORMALIZATION_G1 = NOT_OPENED
+```
+
+W3 separates roles on each link:
+`R_e=exp[-ig Y_e tensor A_e]` gives a matter-dependent geometry kick, while
+`T_e=exp[-ig Z_e tensor J_e]` makes `z_e=<Z_e>` control the current/hopping
+term and hence the Weyl principal symbol.
+
+For an initially uncorrelated edge/matter state,
+
+[
+z_e' =
+z_e+a_e[(\cos2g-1)z_e-\sin2g,x_e],
+]
+
+so
+
+[
+z_e'-z_e=-2g,x_e a_e+O(g^2).
+]
+
+The transport tetrad is
+`E(z)=E0-2g diag(z_1,z_2,z_3)D+O(g^2)`, hence the matter-dependent
+backreaction on the principal symbol is
+
+[
+\delta E_{\rm back}
+=
+4g^2\operatorname{diag}(x_1a_1,x_2a_2,x_3a_3)D+O(g^3).
+]
+
+Thus the same microscopic variable `z_e` that controls the local
+characteristic cone is changed by matter. This is the first project gate to
+supply an explicit backreacting tetrad-like microscopic variable.
+
+The source is endpoint occupation rather than a derived stress tensor, and no
+coarse curvature, Einstein equation, gauge symmetry, `G_eff`, AdS scale or
+absolute scale is established. Curvature/dynamics is the next open layer.
