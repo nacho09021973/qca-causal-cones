@@ -2255,13 +2255,9 @@ regular-background first-order reduced matter correction is only a global
 phase and vanishes on density matrices. The first nonzero correction is
 
 [
-Phi_g(
-ho)=U_0
-ho U_0^dagger+
-g^2sum_eleft(A_esigma A_e-rac12{A_e,sigma}
-ight)+O(g^3),
-quad sigma=U_0
-ho U_0^dagger.
+Phi_g(ho)=U_0ho U_0^dagger+
+g^2sum_eleft(A_esigma A_e-rac12{A_e,sigma}ight)+O(g^3),
+quad sigma=U_0ho U_0^dagger.
 ]
 
 Thus link backreaction is `O(g)` while regular-background matter disturbance
