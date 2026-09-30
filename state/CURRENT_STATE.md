@@ -25,6 +25,7 @@ reopened or promoted by that successor.
 | W3 backreacting tetrad | **W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN — PRELIMINARY, independent review pending**; noncommuting Y-kick changes <Z_e>, and the same <Z_e> controls the momentum-linear Weyl tetrad in the transport substep | [2026-09-30 W3 report](../reports/2026-09-30--w3-backreacting-tetrad.md) |
 | W3 coarse curvature/dynamics | **COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL**; W3 induces an explicit coarse metric and can have nonzero kinematic curvature, but has no geometry-only stiffness/propagation term and no derived stress-energy source | [2026-09-30 curvature report](../reports/2026-09-30--w3-curvature-dynamics.md) |
 | W4 geometry stiffness | **W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN — PRELIMINARY, independent review pending**; partial-SWAP geometry-only brickwork preserves the homogeneous background and transports the tetrad-control variable and coarse curvature information in vacuum | [2026-09-30 W4 report](../reports/2026-09-30--w4-geometry-stiffness.md) |
+| W4 long-wavelength spectrum | **W4_REPAIR_AVAILABLE_SMOOTH_GAPLESS**; declared same-sign brickwork is gapped at smooth k=0 and gapless only at k=pi, while opposite-sign second layer gives omega≈|sin kappa||k| near k=0 in 1D | [2026-09-30 spectrum audit](../reports/2026-09-30--w4-long-wavelength-spectrum.md) |
 | W5 tetrad-conjugate source | **W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN — PRELIMINARY, independent review pending**; the source is the same current operator variationally conjugate to the spatial tetrad, but a conserved full stress-energy tensor/Ward identity is not derived | [2026-09-30 W5 report](../reports/2026-09-30--w5-tetrad-conjugate-source.md) |
 | W5 tetrad completeness audit | **RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN** for the original three-field model; exact rank 3 of 9 in tetrad space and 3 of 6 in metric space | [2026-09-30 rank audit](../reports/2026-09-30--w5-spatial-tetrad-completeness.md) |
 | W6 full spatial tetrad | **W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN — PRELIMINARY, independent review pending**; nine controls span all 9 spatial tetrad and all 6 metric perturbations, with a 3D metric kernel equal to infinitesimal frame rotations | [2026-09-30 W6 report](../reports/2026-09-30--w6-full-spatial-tetrad.md) |
@@ -2639,3 +2640,31 @@ repaired at the perturbative toy-model level.
 Still absent: temporal tetrad/lapse/shift completion, a proved local frame
 gauge symmetry, diffeomorphism constraints, full conserved stress-energy,
 massless spin-2 mode and Einstein dynamics.
+
+
+## 25. W4 long-wavelength spectrum audit — 2026-09-30
+
+**Contract:** [`W4_LONG_WAVELENGTH_SPECTRUM_GATE.md`](../theory/W4_LONG_WAVELENGTH_SPECTRUM_GATE.md),
+frozen at commit `89d53c15b15cc75948bbcaded26f1110127164e9`.
+
+**Certificate:** [`verify_w4_long_wavelength_spectrum.py`](../scripts/verify_w4_long_wavelength_spectrum.py),
+added at commit `6d22b365e71d619803425c4ca93b2d045abc8b42`.
+
+**Execution:** [spectrum report](../reports/2026-09-30--w4-long-wavelength-spectrum.md),
+commit `66e29d084c74b6e4643bf1d849f1b8098c8fff6a`.
+
+Status:
+
+```
+W4_LONG_WAVELENGTH_SPECTRUM_GATE =
+W4_REPAIR_AVAILABLE_SMOOTH_GAPLESS
+DECLARED_W4 = SMOOTH_MODE_GAPPED / STAGGERED_GAPLESS_ONLY
+```
+
+For the original same-sign two-layer partial-SWAP brickwork,
+`cos omega = cos^2(kappa)-sin^2(kappa) cos k`; the smooth point `k=0`
+is generically gapped and the linear node lies at `k=pi`.
+Using the inverse angle on the second matching instead gives
+`cos omega = cos^2(kappa)+sin^2(kappa) cos k`, hence
+`omega=|sin(kappa)||k|+O(|k|^3)` near `k=0`.
+This is only a 1D repair witness; 3D isotropic tensor propagation remains open.
