@@ -21,7 +21,7 @@ Los IDs F son del atlas; no sustituyen los IDs W del proyecto.
 | [F4 — Hopping hermítico elástico](families/F4_hermitian_elastic.md) | Respuesta hermítica de hopping más embedding común | `HERMITIAN_ELASTIC_METRIC_UNIVERSAL_EMBEDDING_ONLY` | Certificado recuperado; hopping no aporta marco métrico nuevo a primer orden |
 | [F5 — Puente paired-QW](families/F5_arrighi_facchini_bridge.md) | Antecedente publicado de QWs curvos mediante substeps direccionales | `SINGLE_COORDINATE_FACTORIZATION_EXCLUDED` para el puente restringido | Certificado autor-side nuevo; no-go solo para un factor por coordenada en celda C2 |
 | [F6 — Arnault-Debbasch](families/F6_arnault_debbasch.md) | DTQW curvo publicado en (1+2)D | `PUBLISHED_2D_CURVED_DTQW / DIRECT_3D_CJWW_BRIDGE_NOT_PROVIDED` | Comparador bibliográfico; sin test algebraico |
-| [F7 — QCGD](families/F7_qcgd.md) | Grafos cuánticos dinámicos; causalidad intrínseca | `BRIDGE_QUANTIFIERS_OPEN / EXPLICIT_CJWW_RULE_NOT_SPECIFIED` | Preflight primario; no se inventa regla |
+| [F7 — QCGD](families/F7_qcgd.md) | Grafos cuánticos dinámicos; causalidad intrínseca | `NO_RULE_SPECIFIED` tras preflight `BRIDGE_QUANTIFIERS_OPEN` | Contrato de especificación congelado; no hay test métrico ejecutable |
 
 ## Mapa de navegación
 
@@ -43,7 +43,7 @@ flowchart TB
   G --> F4["F4 · hopping hermítico · embedding only"]
   P --> F5["F5 · paired-QW · puente restringido excluido"]
   P --> F6["F6 · Arnault-Debbasch · comparador 2D"]
-  D --> F7["F7 · QCGD · regla CJWW abierta"]
+  D --> F7["F7 · QCGD · NO_RULE_SPECIFIED"]
   C --> F8["F8 · Gu–Wen · reserva bibliográfica"]
   classDef closed fill:#fee2e2,stroke:#991b1b,color:#111827;
   classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;

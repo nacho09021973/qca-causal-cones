@@ -20,6 +20,11 @@ con puente directo a ese objetivo o si deja cuantificadores abiertos.
 No se sustituye Z3 infinito por grafos finitos, toros o limites
 termodinamicos sin nuevo contrato.
 
+Tras esta ficha, el contrato de especificacion
+[`F7_QCGD_CJWW_RULE_SPECIFICATION_GATE`](../../../theory/F7_QCGD_CJWW_RULE_SPECIFICATION_GATE.md)
+fija la siguiente puerta: antes de cualquier test metrico, debe existir una
+regla `U_F7(g)` completa y una interpretacion geometrica de sus observables.
+
 ## 3. Qué es geometría en esta familia
 
 El espacio de estados tiene bases de grafos finitos etiquetados. La geometria
@@ -62,6 +67,9 @@ Preflight documental:
 **`BRIDGE_QUANTIFIERS_OPEN / EXPLICIT_CJWW_RULE_NOT_SPECIFIED` —
 PRIMARY_SOURCE_PREFLIGHT.**
 
+La auditoria de especificacion posterior da
+**`NO_RULE_SPECIFIED`**:
+[`reports/2026-09-30--f7-qcgd-rule-specification.md`](../../../reports/2026-09-30--f7-qcgd-rule-specification.md).
 La arquitectura sigue siendo relevante, pero no hay todavia una familia
 ejecutable para el test de cuatro especies.
 
@@ -78,6 +86,9 @@ definicion de causalidad intrinseca al grafo y un criterio claro para el
 siguiente movimiento admisible: escribir un contrato que especifique regla,
 sector finito/infinito y recuperacion exacta de CJWW en `g=0`.
 
+El contrato ya esta escrito. Lo que falta ahora es el contenido matematico:
+sector, background, `U_F7(g)`, observables geometricos y prueba plana.
+
 ## 10. Qué queda prohibido después
 
 No inventar un edge flip, un acoplamiento de links o una dinamica de stress
@@ -92,7 +103,7 @@ flowchart LR
   A["Grafos finitos etiquetados"] --> B["Causalidad en discos del grafo"]
   B --> C["Teorema: representacion localizada de U causal"]
   C --> D["Regla fisica concreta: abierta"]
-  D --> E["Puente CJWW Z3 infinito: abierto"]
+  D --> E["Contrato de especificacion: NO_RULE_SPECIFIED"]
   E -.-> F["Test especies: no ejecutado"]
   classDef bibliography fill:#dbeafe,stroke:#1e40af,color:#111827;
   classDef open fill:#fef3c7,stroke:#92400e,color:#111827;

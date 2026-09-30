@@ -121,6 +121,13 @@ exact CJWW rule on infinite Z3. The terminal state recorded for the next
 family selection is
 `BRIDGE_QUANTIFIERS_OPEN / EXPLICIT_CJWW_RULE_NOT_SPECIFIED`.
 
+The next F7 specification gate is frozen in
+`theory/F7_QCGD_CJWW_RULE_SPECIFICATION_GATE.md` and executed in
+`reports/2026-09-30--f7-qcgd-rule-specification.md`. It audits the existing
+QCGD preflight, the 2026-09-29 class-selection result, the strong exact bridge
+no-go and W1. It stops at `NO_RULE_SPECIFIED`: no complete `U_F7(g)` with
+geometric observables is specified in the audited material.
+
 The library catalog row for `arXiv-1607.06700v2.pdf` was added to
 `scripts/biblioteca_catalog/curated.csv` and regenerated with the shared
 engine:

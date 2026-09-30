@@ -89,3 +89,22 @@ no proporciona todavia una regla CJWW exacta en `g=0` sobre Z3 infinito ni una
 ley de backreaction. El siguiente movimiento admisible seria un contrato
 nuevo que declare sector finito/infinito, regla unitaria concreta y el puente
 exacto al tick CJWW plano antes de cualquier test de especies.
+
+## Ejecución de la puerta de especificación
+
+Contrato:
+[`theory/F7_QCGD_CJWW_RULE_SPECIFICATION_GATE.md`](../../theory/F7_QCGD_CJWW_RULE_SPECIFICATION_GATE.md).
+
+Informe:
+[`reports/2026-09-30--f7-qcgd-rule-specification.md`](../../reports/2026-09-30--f7-qcgd-rule-specification.md).
+
+Resultado:
+
+```text
+F7_QCGD_CJWW_RULE_SPECIFICATION_GATE = NO_RULE_SPECIFIED
+```
+
+Motivo: QCGD aporta formalismo y W1 aporta un mecanismo de link-register con
+recuperacion CJWW en `g=0`, pero el material auditado no da una regla F7
+completa con interpretacion geometrica. El stop rule impide inventar edge
+flip, update de puertos, Hamiltoniano o observable metrico en el informe.
