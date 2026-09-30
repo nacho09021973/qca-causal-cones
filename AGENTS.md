@@ -23,3 +23,13 @@ Herramientas:
 - `/comite`: comité de expertos (motor común en `~/herramientas/skills/comite`); los roles
   de este repo están en `comite/config.toml` y los informes van a `reports/comite/`.
 - `sanedrin`: debate adversarial entre modelos de casas distintas.
+- `revision-ciega <astra|opus|deepseek> <carpeta> <documento>...`: revisión ciega sellada de
+  uno o varios documentos (p. ej. un report o `state/CURRENT_STATE.md`) por un solo modelo; el
+  encargo (`prompt.md`) y el informe van en `reports/` o `debates/`, junto al resultado revisado.
+- `investigacion-gemini investigaciones/<AAAA-MM-DD>-<slug> [prompt_abierto.md]`: encargo de
+  investigación a Gemini con búsqueda de Google. Localiza, no prueba: cada cita se lee en el
+  original y se anota en `comprobacion.md` de la carpeta del encargo.
+- `comprobar-objeciones <objeciones.csv> <documento.tex|.md>`: registro de objeciones con
+  estado y commit comprobado; avisa de las secciones que cambiaron desde la comprobación.
+- Las tres viven en `~/herramientas` (ver `~/herramientas/README.md`). `revision-ciega` e
+  `investigacion-gemini` envían texto a terceros: solo con permiso explícito del usuario.
