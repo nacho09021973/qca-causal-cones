@@ -23,6 +23,7 @@ reopened or promoted by that successor.
 | W1 coarse metric | **W1_SCALAR_POTENTIAL_ONLY / NO_METRIC_DEFORMATION**; link backgrounds add scalar potential/dephasing but do not alter the Weyl principal symbol, one-step neighborhood or outer causal body | [2026-09-29 coarse-metric report](../reports/2026-09-29--w1-coarse-metric.md) |
 | W2 transport/tetrad bridge | **PRINCIPAL_SYMBOL_CONTROL PASS, but W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL** after exact audit; different link backgrounds change (E_a{}^i), but the controlling observable <Z+X> is conserved by the declared coupling | [2026-09-30 audit](../reports/2026-09-30--w2-tetrad-backreaction-audit.md) |
 | W3 backreacting tetrad | **W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN**; noncommuting Y-kick changes <Z_e>, and the same <Z_e> controls the momentum-linear Weyl tetrad in the transport substep | [2026-09-30 W3 report](../reports/2026-09-30--w3-backreacting-tetrad.md) |
+| W3 coarse curvature/dynamics | **COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL**; W3 induces an explicit coarse metric and can have nonzero kinematic curvature, but has no geometry-only stiffness/propagation term and no derived stress-energy source | [2026-09-30 curvature report](../reports/2026-09-30--w3-curvature-dynamics.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
@@ -2449,3 +2450,50 @@ supply an explicit backreacting tetrad-like microscopic variable.
 The source is endpoint occupation rather than a derived stress tensor, and no
 coarse curvature, Einstein equation, gauge symmetry, `G_eff`, AdS scale or
 absolute scale is established. Curvature/dynamics is the next open layer.
+
+
+## 20. W3 coarse metric and curvature-dynamics audit — 2026-09-30
+
+**Contract:** [`W3_CURVATURE_DYNAMICS_GATE.md`](../theory/W3_CURVATURE_DYNAMICS_GATE.md),
+frozen at commit `3373869966836e0e219a80e54ce9ff208e99ad76`.
+
+**Execution:** [curvature-dynamics report](../reports/2026-09-30--w3-curvature-dynamics.md),
+commit `600122063633ca0f99e452e1e7439c8ecc93e70d`.
+
+Status:
+
+```
+W3_CURVATURE_DYNAMICS_GATE =
+COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL
+C1 = PASS
+C2 = PASS
+C3 = FAIL
+C4 = FAIL
+```
+
+The W3 principal symbol defines the coarse spatial metric
+`h^{ij}=sum_a E_a^i E_a^j`. To first order,
+
+[
+h^{ij}
+=
+\delta^{ij}
+-2g
+egin{pmatrix}
+2z_1&-z_2&z_3\\
+-z_2&-2z_2&z_3\\
+z_3&z_3&2z_3
+end{pmatrix}
++O(g^2).
+]
+
+Spatial textures of `z_a(x)` can therefore carry nonzero kinematic
+curvature; e.g. `z_1=f(x_2)`, `z_2=z_3=0` gives the linearized spatial
+scalar curvature `R^(1)=-4g f''(x_2)`.
+
+However, every W3 geometry-changing generator is multiplied by a matter
+operator. There is no geometry-only neighbor/plaquette/stiffness term, so
+geometric perturbations have no autonomous vacuum propagation law in the
+declared model. The source `a_e=<A_e>` is endpoint occupation and has not
+been derived as continuum stress-energy. Hence curvature kinematics passes,
+but gravity-like curvature dynamics does not.
