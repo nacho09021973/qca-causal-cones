@@ -30,6 +30,11 @@ Los IDs F son del atlas; no sustituyen los IDs W del proyecto.
 | [F13 — Farrelly–Short](families/F13_farrelly_short_discrete_spacetime.md) | Partícula causal discreta con espacio interno finito; límite Weyl y contraejemplo interno-3 | `PUBLISHED_CAUSAL_SINGLE_PARTICLE_WALK_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; rotacional no implica Lorentz, sin puente métrico CJWW |
 | [F14 — Walks isotrópicos](families/F14_isotropic_qw_classification.md) | Clasificación de walks de Cayley isotrópicos con coin 2; unicidad BCC y dos Weyl en d=3 | `PUBLISHED_ISOTROPIC_CAYLEY_QW_CLASSIFICATION / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; clasificación estructural, sin métrica variable ni test de especies |
 | [F15 — Principios informacionales](families/F15_information_principles_dirac.md) | QCA Weyl/Dirac derivada de linealidad, localidad, homogeneidad e isotropía | `INFORMATION_AXIOM_DERIVED_WEYL_DIRAC_QCA_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; arquitectura BCC y acoplamiento Weyl–Dirac, sin puente métrico |
+| [F16 — Białynicki-Birula](families/F16_bialynicki_birula_qca.md) | QCA cúbica/BCC explícita para Weyl y Dirac | `PUBLISHED_CUBIC_QCA_WEYL_DIRAC_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Regla local primaria; sin métrica variable ni respuesta CJWW |
+| [F17 — Lorentz no lineal](families/F17_weyl_walk_lorentz.md) | Simetría no lineal del Weyl walk en espacio de momentos | `NONLINEAR_POINCARE_SYMMETRY_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Simetría deformada a momento finito; sin métrica dinámica |
+| [F18 — Gravedad fractónica](families/F18_fracton_emergent_gravity.md) | Fractones, gauge rank-2 y gravitón emergente | `FRACTON_TENSOR_GRAVITY_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` | Mecanismo de movilidad restringida; no QCA CJWW |
+| [F19 — Gauge emergente](families/F19_emergent_gauge_gravity_mechanism.md) | Emergencia efectiva de gauge y difeomorfismos lineales | `EFFECTIVE_GAUGE_EMERGENCE_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` | Marco efectivo; sin regla microscópica CJWW |
+| [F20 — Bose–Lifshitz](families/F20_lifshitz_bose_liquid.md) | Líquido de Bose algebraico y gravedad de Lifshitz en red FCC | `LATTICE_BOSE_LIQUID_LIFSHITZ_GRAVITY_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` | Fase IR gauge/gravitatoria; red rígida, sin puente CJWW |
 
 ## Mapa de navegación
 
@@ -61,6 +66,11 @@ flowchart TB
   A --> F13["F13 · partícula causal · Weyl / no Lorentz"]
   A --> F14["F14 · isotropía Cayley · BCC / Weyl"]
   A --> F15["F15 · principios informacionales · Weyl / Dirac"]
+  A --> F16["F16 · Białynicki-Birula · QCA Weyl/Dirac"]
+  A --> F17["F17 · Lorentz no lineal · Weyl walk"]
+  A --> F18["F18 · fractones · gravedad rank-2"]
+  A --> F19["F19 · gauge emergente · gravedad lineal"]
+  A --> F20["F20 · Bose líquido · Lifshitz"]
   classDef closed fill:#fee2e2,stroke:#991b1b,color:#111827;
   classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
   classDef bibliography fill:#dbeafe,stroke:#1e40af,color:#111827;
@@ -69,7 +79,7 @@ flowchart TB
   class F1,F3,F5 closed;
   class F2 pass;
   class F4,F7 open;
-  class F6,F8,F9,F10,F11,F12,F13,F14,F15 bibliography;
+  class F6,F8,F9,F10,F11,F12,F13,F14,F15,F16,F17,F18,F19,F20 bibliography;
 ```
 
 La secuencia W1–W11 puede incorporarse mediante nuevas fichas o antecedentes

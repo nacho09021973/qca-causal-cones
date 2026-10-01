@@ -250,6 +250,21 @@ backreaction. El resultado documental queda
 `PUBLISHED_CAUSAL_SINGLE_PARTICLE_WALK_PRIOR_ART /
 DIRECT_CJWW_METRIC_BRIDGE_ABSENT`; no se ejecutó cálculo ni revisión externa.
 
+## Lecturas F16–F20 — 2026-10-01
+
+Se cerró la ronda documental F16–F20 con cinco fuentes primarias locales:
+
+| ID | Fuente | Resultado |
+|---|---|---|
+| F16 | Białynicki-Birula, `Dirac and Weyl Equations on a Lattice as Quantum Cellular Automata.pdf`, pp.1-5 | `PUBLISHED_CUBIC_QCA_WEYL_DIRAC_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` |
+| F17 | Bisio–D’Ariano–Perinotti, `Quantum Walks, Weyl equation and the Lorentz group.pdf`, pp.1-8 | `NONLINEAR_POINCARE_SYMMETRY_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` |
+| F18 | `arXiv-1702.07613.pdf`, pp.1-5, 8-12 | `FRACTON_TENSOR_GRAVITY_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` |
+| F19 | `arXiv-2108.06582.pdf`, pp.1-6, 9-22, 28-29 | `EFFECTIVE_GAUGE_EMERGENCE_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` |
+| F20 | `arXiv-1003.0009.pdf`, pp.1-3, 5-8 | `LATTICE_BOSE_LIQUID_LIFSHITZ_GRAVITY_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` |
+
+No se ejecutaron tests CJWW, cálculos nuevos ni revisiones externas. Las cinco
+entradas son documentales y no abren gates.
+
 ## Lectura F15 — 2026-10-01
 
 F15 registra la lectura primaria acotada de `biblioteca/Derivation of the
