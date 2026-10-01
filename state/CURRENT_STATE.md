@@ -35,6 +35,12 @@ branches were incorporated by fast-forward into
 | Barceló et al. emergent-gauge mechanism family (documentary addition, 2026-10-01) | **EFFECTIVE_GAUGE_EMERGENCE_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT** | Bounded primary-source F19 reading: effective emergence of gauge symmetries and linear diffeomorphisms; no microscopic CJWW rule. No scientific gate is opened or promoted | [F19 preflight](../reports/2026-10-01--f19-emergent-gauge-gravity-mechanism-preflight.md), [F19 atlas card](../docs/family_atlas/families/F19_emergent_gauge_gravity_mechanism.md) |
 | Xu–Hořava algebraic Bose liquid family (documentary addition, 2026-10-01) | **LATTICE_BOSE_LIQUID_LIFSHITZ_GRAVITY_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT** | Bounded primary-source F20 reading: FCC boson model with emergent Lifshitz gravity phases and IR gauge constraint; rigid lattice, no CJWW rule. No scientific gate is opened or promoted | [F20 preflight](../reports/2026-10-01--f20-lifshitz-bose-liquid-preflight.md), [F20 atlas card](../docs/family_atlas/families/F20_lifshitz_bose_liquid.md) |
 
+**Atlas relacional — 2026-10-01.** F1–F20 tienen ahora un mapa tipado en
+[`docs/family_atlas/RELATIONS.md`](../docs/family_atlas/RELATIONS.md) y una
+tabla estructurada en [`relations.csv`](../docs/family_atlas/relations.csv).
+Esta capa es documental: no cambia resultados, no transfiere gates y no abre
+ningún puente CJWW que las fichas no hayan demostrado.
+
 **Review provenance:** the first review covered `41d0e0d`. The
 [second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
 `d6e74e6` covers `86fe771`: DeepSeek gives W9 ACCEPT_WITH_REPAIRS and W10/W11

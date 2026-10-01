@@ -265,6 +265,17 @@ Se cerró la ronda documental F16–F20 con cinco fuentes primarias locales:
 No se ejecutaron tests CJWW, cálculos nuevos ni revisiones externas. Las cinco
 entradas son documentales y no abren gates.
 
+## Relaciones F1–F20 — 2026-10-01
+
+Se añadió la primera capa relacional del atlas en
+[`docs/family_atlas/RELATIONS.md`](RELATIONS.md) y
+[`docs/family_atlas/relations.csv`](relations.csv). La clasificación distingue
+subclase, soporte compartido, comprobación independiente, alcance de una
+obstrucción, complemento arquitectónico, contraste y puente bibliográfico.
+Cada arista conserva su alcance y estado (`ESTABLISHED_FROM_ATLAS`,
+`RESTRICTED`, `ABSENT` u `OPEN`); no se ejecutaron cálculos ni se promovieron
+gates.
+
 ## Lectura F15 — 2026-10-01
 
 F15 registra la lectura primaria acotada de `biblioteca/Derivation of the

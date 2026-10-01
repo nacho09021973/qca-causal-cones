@@ -11,6 +11,10 @@ manda [CURRENT_STATE](../../state/CURRENT_STATE.md). No es una clasificación
 exhaustiva, una afirmación de novedad ni una autorización para abrir modelos.
 Los IDs F son del atlas; no sustituyen los IDs W del proyecto.
 
+La capa de relaciones tipadas está en [RELATIONS.md](RELATIONS.md), con su
+versión estructurada en [relations.csv](relations.csv). Las relaciones no
+abren gates ni transfieren automáticamente cuantificadores.
+
 ## Registro maestro
 
 | ID / ficha | Clase y objeto geométrico | Resultado trazable en esta edición | Evidencia / decisión |
