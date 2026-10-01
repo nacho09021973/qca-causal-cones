@@ -62,6 +62,21 @@ auditoría completa de los artículos ni el supuesto bloqueo del puente F5.
 Los PDFs viven en la biblioteca local ignorada por Git. Sus identificadores
 arXiv y páginas permiten localizar las fuentes; no se copian al atlas.
 
+## Lectura F12 — 2026-10-01
+
+Fuente primaria ya presente en la biblioteca:
+`biblioteca/Quantum Cellular Automaton Theory of Light.pdf`, Bisio–D’Ariano–Perinotti,
+arXiv:1407.6928v1. SHA256:
+`8f36b0936fd8ab3f396d8495f15bd66033657fd860f94179db2819d708672fa0`.
+Leídas pp.1-7 mediante `pdftotext -layout`; ver
+[informe F12](../../reports/2026-10-01--f12-bisio-dariano-perinotti-light-preflight.md)
+para localizadores y límites.
+
+Resultado documental:
+`PUBLISHED_3D_WEYL_QCA_MAXWELL_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT`.
+No se ejecutó un test de cuatro especies, no se implementó la regla y no se
+invocó revisión independiente.
+
 ## Mantenimiento
 
 Comprobación editorial: ocho archivos Markdown, 26 enlaces locales resueltos,
@@ -201,6 +216,21 @@ python3 /home/ignac/herramientas/biblioteca_catalog/build_catalog.py --repo /hom
 
 Shared-tool provenance for the catalog run:
 `~/herramientas` @ `b817ac0`.
+
+## Lectura F11 — 2026-10-01
+
+Base inspeccionada: `ccc2e9f`. Fuente primaria ya presente en la biblioteca:
+`biblioteca/arXiv-2208.14997.pdf` (Arnault–Cedzich, arXiv:2208.14997v4).
+Leídas pp.1-11 y 19-20 mediante `pdftotext -layout`; ver
+[informe F11](../../reports/2026-10-01--f11-arnault-cedzich-lattice-gauge-preflight.md)
+para checksum, localizadores y alcance de la comprobación.
+
+Resultado documental:
+`DISCRETE_TIME_U1_ACTION_CURRENT_PRIOR_ART / DIRECT_CJWW_GEOMETRY_BRIDGE_ABSENT`.
+La segunda derivación de conservación de carga está en el apéndice E de la
+misma fuente; no es revisión independiente. No se implementó una regla,
+no se ejecutó un test de especies y no se invocaron herramientas externas
+de revisión ni el motor del catálogo.
 
 ## Mantenimiento
 
