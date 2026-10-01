@@ -15,6 +15,10 @@ La capa de relaciones tipadas está en [RELATIONS.md](RELATIONS.md), con su
 versión estructurada en [relations.csv](relations.csv). Las relaciones no
 abren gates ni transfieren automáticamente cuantificadores.
 
+La aplicación al proyecto está resumida en
+[PROJECT_NAVIGATION.md](PROJECT_NAVIGATION.md); es una guía de selección y
+claim ceiling, no un contrato nuevo.
+
 ## Registro maestro
 
 | ID / ficha | Clase y objeto geométrico | Resultado trazable en esta edición | Evidencia / decisión |

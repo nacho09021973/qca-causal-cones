@@ -276,6 +276,14 @@ Cada arista conserva su alcance y estado (`ESTABLISHED_FROM_ATLAS`,
 `RESTRICTED`, `ABSENT` u `OPEN`); no se ejecutaron cálculos ni se promovieron
 gates.
 
+## Uso del atlas en el proyecto — 2026-10-01
+
+La traducción operativa se conserva en
+[`PROJECT_NAVIGATION.md`](PROJECT_NAVIGATION.md). Organiza las familias por
+frentes del proyecto y fija el límite: el atlas selecciona antecedentes,
+comparadores y posibles contratos, pero no transfiere gates ni autoriza una
+regla CJWW nueva.
+
 ## Lectura F15 — 2026-10-01
 
 F15 registra la lectura primaria acotada de `biblioteca/Derivation of the

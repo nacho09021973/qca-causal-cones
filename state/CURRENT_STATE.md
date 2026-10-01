@@ -41,6 +41,11 @@ tabla estructurada en [`relations.csv`](../docs/family_atlas/relations.csv).
 Esta capa es documental: no cambia resultados, no transfiere gates y no abre
 ningún puente CJWW que las fichas no hayan demostrado.
 
+La guía operativa para usar el atlas en los frentes del proyecto está en
+[`PROJECT_NAVIGATION.md`](../docs/family_atlas/PROJECT_NAVIGATION.md). Es una
+guía de selección y claim ceiling; no autoriza cálculos ni modifica el cierre
+contractual de W12.
+
 **Review provenance:** the first review covered `41d0e0d`. The
 [second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
 `d6e74e6` covers `86fe771`: DeepSeek gives W9 ACCEPT_WITH_REPAIRS and W10/W11
