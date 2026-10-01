@@ -46,6 +46,10 @@ La guía operativa para usar el atlas en los frentes del proyecto está en
 guía de selección y claim ceiling; no autoriza cálculos ni modifica el cierre
 contractual de W12.
 
+La edición pedagógica del atlas está en
+[`student_edition/README.md`](../docs/family_atlas/student_edition/README.md);
+es una capa explicativa y no modifica la evidencia canónica.
+
 **Review provenance:** the first review covered `41d0e0d`. The
 [second review](../debates/2026-09-30--w9-w11-repair-review/README.md) at
 `d6e74e6` covers `86fe771`: DeepSeek gives W9 ACCEPT_WITH_REPAIRS and W10/W11

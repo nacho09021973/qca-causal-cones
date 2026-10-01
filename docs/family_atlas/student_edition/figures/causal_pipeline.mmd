@@ -1,0 +1,10 @@
+flowchart LR
+  A["Regla local"] --> B["C_micro"]
+  A --> C["U(k)"]
+  C --> D["omega(k)"]
+  D --> E["V_grp"]
+  C --> F["k pequeño"]
+  F --> G["c_IR"]
+  B -.-> H["Comparar con cuidado"]
+  E -.-> H
+  G -.-> H

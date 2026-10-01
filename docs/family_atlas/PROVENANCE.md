@@ -287,6 +287,14 @@ regla CJWW nueva.
 El primer cruce aplicado entre frentes W1–W12 y familias F1–F20 está en
 [`reports/2026-10-01--atlas-project-claim-crosswalk.md`](../../reports/2026-10-01--atlas-project-claim-crosswalk.md).
 
+## Edición estudiantil — 2026-10-01
+
+Se añadió `docs/family_atlas/student_edition/` como capa pedagógica separada.
+Incluye ejemplos de QCA/QW, un recorrido por Weyl/BCC, explicación de
+cuantificadores y claim ceiling, familias/relaciones y fallos. Sus diagramas
+Mermaid tienen fuentes permanentes en `student_edition/figures/`; no contienen
+resultados numéricos nuevos ni alteran la edición canónica.
+
 ## Lectura F15 — 2026-10-01
 
 F15 registra la lectura primaria acotada de `biblioteca/Derivation of the
