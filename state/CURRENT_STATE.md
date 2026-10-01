@@ -1,5 +1,19 @@
 # CURRENT_STATE
 
+## Transfer gate authorization — 2026-10-01
+
+The user authorized a contract-only methodological transfer from the
+`nachocausal` causal-fidelity audit. The new charter
+[`CAUSAL_DYNAMIC_IR_SEPARATION_GATE.md`](../theory/CAUSAL_DYNAMIC_IR_SEPARATION_GATE.md)
+freezes the distinction between microscopic causal support, explicit dynamic
+response and infrared comparison, plus a one-variable ablation matrix for a
+possible elastic/dynamic-graph successor.
+
+**Status:** `OPEN / CONTRACT_ONLY / NO_EXECUTION_AUTHORIZED`.
+
+This authorization does not execute a scientific gate, reopen W9–W12, alter the
+W12 contract, or promote any kinematic embedding result to dynamical geometry.
+
 ## Authoritative W9–W11 repair update — 2026-09-30
 
 This update supersedes the W9–W11 summaries and Sections 29–31 below where
