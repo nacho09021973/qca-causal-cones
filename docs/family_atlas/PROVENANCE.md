@@ -249,3 +249,24 @@ La fuente no especifica una regla CJWW, controles métricos, cuatro especies ni
 backreaction. El resultado documental queda
 `PUBLISHED_CAUSAL_SINGLE_PARTICLE_WALK_PRIOR_ART /
 DIRECT_CJWW_METRIC_BRIDGE_ABSENT`; no se ejecutó cálculo ni revisión externa.
+
+## Lectura F15 — 2026-10-01
+
+F15 registra la lectura primaria acotada de `biblioteca/Derivation of the
+Dirac Equation from Principles of Information Processing.pdf`,
+D’Ariano–Perinotti. Se comprobaron las pp.1-7: principios de la QCA, grafo de
+Cayley, emergencia de espacio vía embedding cuasi-isométrica, cuatro
+soluciones Weyl BCC y acoplamiento local Weyl–Dirac. La fuente no especifica
+controles métricos CJWW, cuatro especies ni backreaction. Resultado:
+`INFORMATION_AXIOM_DERIVED_WEYL_DIRAC_QCA_PRIOR_ART /
+DIRECT_CJWW_METRIC_BRIDGE_ABSENT`; no se ejecutó cálculo ni revisión externa.
+
+## Lectura F14 — 2026-10-01
+
+F14 registra la lectura primaria acotada de `biblioteca/1708.00826v2.pdf`,
+D’Ariano–Erba–Perinotti. Se comprobaron las pp.1-8 y Fig.1: definición de
+walk isotrópico en grafo de Cayley, clasificación para `Z^d`, `d=1,2,3`, y
+Proposición 5, que deja en d=3 la red BCC y los dos walks Weyl. La fuente no
+especifica controles métricos CJWW, cuatro especies ni dinámica de red.
+Resultado: `PUBLISHED_ISOTROPIC_CAYLEY_QW_CLASSIFICATION /
+DIRECT_CJWW_METRIC_BRIDGE_ABSENT`; no se ejecutó cálculo ni revisión externa.

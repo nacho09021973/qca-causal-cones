@@ -28,6 +28,8 @@ Los IDs F son del atlas; no sustituyen los IDs W del proyecto.
 | [F11 — Arnault–Cedzich lattice gauge](families/F11_arnault_cedzich_lattice_gauge.md) | Acción de walk (1+1)D, corriente de carga U(1) y sourcing gauge clásico | `DISCRETE_TIME_U1_ACTION_CURRENT_PRIOR_ART / DIRECT_CJWW_GEOMETRY_BRIDGE_ABSENT` | Lectura primaria acotada; campos no cuantizados, sin materia CJWW 3D ni test métrico |
 | [F12 — QCA de la luz](families/F12_bisio_dariano_perinotti_light.md) | Weyl QCA 3D en red BCC; bilineales Maxwell y dispersión de fotón compuesto | `PUBLISHED_3D_WEYL_QCA_MAXWELL_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; marco fijo, sin métrica variable ni test de especies |
 | [F13 — Farrelly–Short](families/F13_farrelly_short_discrete_spacetime.md) | Partícula causal discreta con espacio interno finito; límite Weyl y contraejemplo interno-3 | `PUBLISHED_CAUSAL_SINGLE_PARTICLE_WALK_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; rotacional no implica Lorentz, sin puente métrico CJWW |
+| [F14 — Walks isotrópicos](families/F14_isotropic_qw_classification.md) | Clasificación de walks de Cayley isotrópicos con coin 2; unicidad BCC y dos Weyl en d=3 | `PUBLISHED_ISOTROPIC_CAYLEY_QW_CLASSIFICATION / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; clasificación estructural, sin métrica variable ni test de especies |
+| [F15 — Principios informacionales](families/F15_information_principles_dirac.md) | QCA Weyl/Dirac derivada de linealidad, localidad, homogeneidad e isotropía | `INFORMATION_AXIOM_DERIVED_WEYL_DIRAC_QCA_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; arquitectura BCC y acoplamiento Weyl–Dirac, sin puente métrico |
 
 ## Mapa de navegación
 
@@ -57,6 +59,8 @@ flowchart TB
   L --> F11["F11 · acción de walk · corriente U(1)"]
   A --> F12["F12 · Weyl QCA · Maxwell compuesto"]
   A --> F13["F13 · partícula causal · Weyl / no Lorentz"]
+  A --> F14["F14 · isotropía Cayley · BCC / Weyl"]
+  A --> F15["F15 · principios informacionales · Weyl / Dirac"]
   classDef closed fill:#fee2e2,stroke:#991b1b,color:#111827;
   classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
   classDef bibliography fill:#dbeafe,stroke:#1e40af,color:#111827;
@@ -65,7 +69,7 @@ flowchart TB
   class F1,F3,F5 closed;
   class F2 pass;
   class F4,F7 open;
-  class F6,F8,F9,F10,F11,F12,F13 bibliography;
+  class F6,F8,F9,F10,F11,F12,F13,F14,F15 bibliography;
 ```
 
 La secuencia W1–W11 puede incorporarse mediante nuevas fichas o antecedentes
