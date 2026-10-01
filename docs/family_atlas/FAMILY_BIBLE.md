@@ -27,6 +27,7 @@ Los IDs F son del atlas; no sustituyen los IDs W del proyecto.
 | [F10 — Gauge-invariant CA](families/F10_gauge_invariant_ca.md) | Autómatas celulares con extensión gauge local; variables de enlace y sourcing matter/gauge | `GAUGE_EXTENSION_CA_ARCHITECTURE_PRIOR_ART / DIRECT_CJWW_QCA_BRIDGE_ABSENT` | Fuente primaria arXiv; arquitectura gauge discreta, no geometría CJWW |
 | [F11 — Arnault–Cedzich lattice gauge](families/F11_arnault_cedzich_lattice_gauge.md) | Acción de walk (1+1)D, corriente de carga U(1) y sourcing gauge clásico | `DISCRETE_TIME_U1_ACTION_CURRENT_PRIOR_ART / DIRECT_CJWW_GEOMETRY_BRIDGE_ABSENT` | Lectura primaria acotada; campos no cuantizados, sin materia CJWW 3D ni test métrico |
 | [F12 — QCA de la luz](families/F12_bisio_dariano_perinotti_light.md) | Weyl QCA 3D en red BCC; bilineales Maxwell y dispersión de fotón compuesto | `PUBLISHED_3D_WEYL_QCA_MAXWELL_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; marco fijo, sin métrica variable ni test de especies |
+| [F13 — Farrelly–Short](families/F13_farrelly_short_discrete_spacetime.md) | Partícula causal discreta con espacio interno finito; límite Weyl y contraejemplo interno-3 | `PUBLISHED_CAUSAL_SINGLE_PARTICLE_WALK_PRIOR_ART / DIRECT_CJWW_METRIC_BRIDGE_ABSENT` | Fuente primaria; rotacional no implica Lorentz, sin puente métrico CJWW |
 
 ## Mapa de navegación
 
@@ -55,6 +56,7 @@ flowchart TB
   L --> F10["F10 · gauge-invariant CA · link variables"]
   L --> F11["F11 · acción de walk · corriente U(1)"]
   A --> F12["F12 · Weyl QCA · Maxwell compuesto"]
+  A --> F13["F13 · partícula causal · Weyl / no Lorentz"]
   classDef closed fill:#fee2e2,stroke:#991b1b,color:#111827;
   classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
   classDef bibliography fill:#dbeafe,stroke:#1e40af,color:#111827;
@@ -63,7 +65,7 @@ flowchart TB
   class F1,F3,F5 closed;
   class F2 pass;
   class F4,F7 open;
-  class F6,F8,F9,F10,F11,F12 bibliography;
+  class F6,F8,F9,F10,F11,F12,F13 bibliography;
 ```
 
 La secuencia W1–W11 puede incorporarse mediante nuevas fichas o antecedentes

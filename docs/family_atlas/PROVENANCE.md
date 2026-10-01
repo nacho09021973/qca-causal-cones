@@ -238,3 +238,14 @@ El atlas conserva los resultados negativos y las incertidumbres. Al recuperar
 un expediente, reemplazar «pendiente» solo después de comprobar sus
 cuantificadores, evidencia y estado vigente; registrar el commit de origen.
 Un cambio documental no modifica contratos ni autoriza cálculos sucesores.
+
+## Lectura F13 — 2026-10-01
+
+F13 registra la lectura primaria acotada de `biblioteca/1312.2852v1.pdf`,
+Farrelly–Short. Se comprobaron las pp.1-5: clase causal de una partícula con
+`U_D = sum_q A_q S_q`, límite Weyl para espacio interno de dimensión 2 y
+ejemplo de dimensión 3 con `H = J dot P` rotacional pero no Lorentziano.
+La fuente no especifica una regla CJWW, controles métricos, cuatro especies ni
+backreaction. El resultado documental queda
+`PUBLISHED_CAUSAL_SINGLE_PARTICLE_WALK_PRIOR_ART /
+DIRECT_CJWW_METRIC_BRIDGE_ABSENT`; no se ejecutó cálculo ni revisión externa.
