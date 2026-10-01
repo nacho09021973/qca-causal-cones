@@ -284,6 +284,9 @@ frentes del proyecto y fija el límite: el atlas selecciona antecedentes,
 comparadores y posibles contratos, pero no transfiere gates ni autoriza una
 regla CJWW nueva.
 
+El primer cruce aplicado entre frentes W1–W12 y familias F1–F20 está en
+[`reports/2026-10-01--atlas-project-claim-crosswalk.md`](../../reports/2026-10-01--atlas-project-claim-crosswalk.md).
+
 ## Lectura F15 — 2026-10-01
 
 F15 registra la lectura primaria acotada de `biblioteca/Derivation of the

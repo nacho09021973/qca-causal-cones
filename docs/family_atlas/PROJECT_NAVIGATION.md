@@ -76,3 +76,6 @@ El atlas se usa ahora como capa de selección y auditoría. La línea W1–W12
 permanece cerrada por contrato en la clase W6/CJWW; el sucesor elástico F2–F4
 solo puede avanzar dentro de sus propios contratos; y las familias F5–F20 no
 abren por sí mismas un nuevo programa gravitatorio.
+
+El primer uso aplicado está documentado en
+[`reports/2026-10-01--atlas-project-claim-crosswalk.md`](../../reports/2026-10-01--atlas-project-claim-crosswalk.md).
