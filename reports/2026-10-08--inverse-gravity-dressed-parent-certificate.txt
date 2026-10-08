@@ -1,0 +1,8 @@
+SymPy 1.14.0; exact arithmetic
+PASS spatial algebra: R/V and T/S; redundancy sum r_aa=c
+PASS auxiliary dressing: changed parent, exact inverse, conserved energy, fixed ground projector
+PASS vertex characters: S=1 excludes exactly one violated R; global positive gap >=2
+PASS fixed physical excitation: T_x creates 16 violated R, energy=16
+CERTIFIED ENERGY GAP INTERVAL: 2 <= gap(K_E|physical) <= 16
+Scope: interval uniform on admitted tori; no claim that either endpoint is the exact gap
+VERDICT: DRESSED_PARENT_ALGEBRA_PASS_AUTHOR_SIDE

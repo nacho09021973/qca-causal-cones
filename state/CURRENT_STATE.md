@@ -33,6 +33,23 @@ none is a general QCA/gravity no-go. The next construction must supply a
 concrete `(K,U)` and controlled ground reference before its spectrum.
 R1 is not passed. No external review is opened.
 
+The user then authorized a concrete energy/tick construction. The
+[IG-S1 dressed-parent contract](../theory/INVERSE_GRAVITY_DRESSED_PARENT_GATE.md)
+and code were frozen at `67fd3b1`, then executed exactly with exit 0:
+`DRESSED_PARENT_ALGEBRA_PASS_AUTHOR_SIDE`. A commuting physical projector
+parent K_0 is conjugated by the fixed T circuit D, with circuit-defined
+`U_E=D F D†`, `K_E=D K_0 D†`. Conservation, inverse and finite-volume ground
+projector are explicit. The
+[result](../reports/2026-10-08--inverse-gravity-dressed-parent.md) closes this
+recipe as `DRESSED_COMMUTING_PARENT_REJECTED_FOR_GAPLESS_PROPAGATING_TARGET`:
+`2<=gap(K_E|physical)<=16` uniformly in admitted volume, and physical
+observable influence has radius <=4 cells for every integer time because
+`U_E^n=D F^n D†`. This is not a general no-go for conserved-energy QCA.
+Finite-volume stabilizer access does not establish a thermodynamic state
+limit; the low-energy bridge is empty of excitations below energy 2.
+`CRITICAL_CONSERVED_ENERGY_CONSTRUCTION_OPEN`. No parameters are rescued;
+R1/R3/R4 and Einstein remain OPEN, without independent review.
+
 The [IG1b local-gate contract](../theory/INVERSE_GRAVITY_LOCAL_GATE_GATE.md)
 and certificate were frozen at `601463b`, then executed with exact arithmetic
 and exit 0: `LOCAL_CONSTRAINT_PRESERVING_NONSCALAR_GATE_PASS_AUTHOR_SIDE`.
