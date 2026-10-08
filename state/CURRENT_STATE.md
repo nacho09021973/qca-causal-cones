@@ -11,6 +11,18 @@ allowed within this separately chartered line. Exact CJWW recovery is not a
 requirement; no earlier gate is reopened.
 
 Status: `CHARTER_OPEN / CONTROL_TICK_SPECIFIED / IR_UNDEFINED`.
+Current authorized continuation: the user accepted the recommendation to
+design the state/IR mechanism before another tick. The
+[IG-S0 state-first contract](../theory/INVERSE_GRAVITY_STATE_FIRST_GATE.md)
+opens a separately specified architecture preflight within this branch.
+Priority: jointly construct a strictly local tick and a conserved local
+energy with a controlled correlated ground reference; the relation between
+energy and tick phases is a separate admission condition. The previous
+control tick and A/B outcomes below retain their scope.
+`STATE_FIRST_PREFLIGHT_PENDING / NO_NEW_RULE_SPECIFIED`.
+Only auxiliary controls are specified; no new QCA spectrum is authorized
+without its complete microscopic contract. No external review is opened.
+
 The [IG1b local-gate contract](../theory/INVERSE_GRAVITY_LOCAL_GATE_GATE.md)
 and certificate were frozen at `601463b`, then executed with exact arithmetic
 and exit 0: `LOCAL_CONSTRAINT_PRESERVING_NONSCALAR_GATE_PASS_AUTHOR_SIDE`.
