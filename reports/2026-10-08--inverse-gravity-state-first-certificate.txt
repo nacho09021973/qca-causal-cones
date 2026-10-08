@@ -1,0 +1,9 @@
+SymPy 1.14.0; exact arithmetic; auxiliary controls only
+PASS Schmidt p=1/3: local action rank=4; norm identity; full product fixes state
+PASS Schmidt p=0: local action rank=2; norm identity; full product fixes state
+charpoly generator equals requested symbol: False
+PASS common kernel: fixed vacuum, unitary tick, ||U†KU-K||_HS^2=41472/15625 at t=1/2
+PASS phase/gap distinction: phase^2/gap -> 8; auxiliary parameter limit only
+PASS bands: positive Laplacian has zero slope and quadratic Hessian; signed linear control is not positive
+VERDICT: STATE_FIRST_AUXILIARY_CONTROLS_PASS
+New QCA rule, physical IR state, spin-2 spectrum and gravity: NOT_COMPUTED

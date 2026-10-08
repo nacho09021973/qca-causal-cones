@@ -19,9 +19,19 @@ Priority: jointly construct a strictly local tick and a conserved local
 energy with a controlled correlated ground reference; the relation between
 energy and tick phases is a separate admission condition. The previous
 control tick and A/B outcomes below retain their scope.
-`STATE_FIRST_PREFLIGHT_PENDING / NO_NEW_RULE_SPECIFIED`.
-Only auxiliary controls are specified; no new QCA spectrum is authorized
-without its complete microscopic contract. No external review is opened.
+The contract/code were frozen at `9bd3003`; a symbolic-generator comparison
+was repaired at `2dad9c4`, retaining the failed attempt. Exact auxiliary
+controls then passed with exit 0. The
+[IG-S0 report](../reports/2026-10-08--inverse-gravity-state-first.md) records
+`STATE_FIRST_PREFLIGHT_COMPLETE_AUTHOR_SIDE` and
+`STATE_FIRST_CONSTRUCTION_OPEN / NO_NEW_RULE_SPECIFIED`.
+It derives the full-rank reduced-state obstruction to nontrivial gatewise
+vacuum preservation, distinguishes a frustration-free Hamiltonian gap bound
+from QCA phases, and excludes positive linear gapless bands in a fixed-size
+analytic positive one-particle symbol. Each statement retains its hypotheses;
+none is a general QCA/gravity no-go. The next construction must supply a
+concrete `(K,U)` and controlled ground reference before its spectrum.
+R1 is not passed. No external review is opened.
 
 The [IG1b local-gate contract](../theory/INVERSE_GRAVITY_LOCAL_GATE_GATE.md)
 and certificate were frozen at `601463b`, then executed with exact arithmetic
