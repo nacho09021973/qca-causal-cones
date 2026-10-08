@@ -213,6 +213,18 @@ python3 -B scripts/verify_regional_laplace_coefficient_gate.py
 
 ## Current scope
 
+### IG-S2 true-ground-space sum-rule controls (2026-10-08)
+
+`verify_inverse_gravity_ground_sum_rules.py` checks
+[the frozen ground-space audit](../theory/INVERSE_GRAVITY_GROUND_SPACE_SUM_RULE_GATE.md).
+Its tests cover support geometry, a degree-two Fourier identity and an
+auxiliary three-level ground-space example. The example tests D=2F and
+refutes inference of two physical excited states from a rank-two averaged
+Gram matrix alone. It does not compute any true N-type ground expectation.
+See [the analytic report](../reports/2026-10-08--ig-s2-true-ground-sum-rules.md).
+Run `python3 -B scripts/verify_inverse_gravity_ground_sum_rules.py`;
+`--output <path>` retains output only after all checks pass.
+
 ### IG-S2 constraint-preserving curvature probes (2026-10-08)
 
 `verify_inverse_gravity_curvature_probes.py` certifies the stencils and
