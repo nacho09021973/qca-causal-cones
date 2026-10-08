@@ -59,6 +59,20 @@ Both exact inputs have identical hashes; all provider/state artifacts are
 retained. No completed report, reviewer verdict or recommendation exists.
 Scientific evidence levels and the IG-S1 closure are unchanged.
 
+Direct instruction «prueba con deep» authorizes the same sealed assignment
+to DeepSeek. Its [record](../debates/2026-10-08--inverse-gravity-deepseek-consult/README.md)
+is `CONSULTATION_COMPLETED`: after retaining an initial DNS failure, the
+approved retry returned `deepseek-v4-pro`, exit 0 and `finish_reason=stop`.
+The exact input hash matches Grok's. DeepSeek accepts the scoped IG-S1
+conservation, ground reference, gap interval and all-time support argument;
+this is one completed external consultation, not an independent code run
+or a gravity result. Its two formulation requests were already explicit
+in the submitted report. The [author assessment](../debates/2026-10-08--inverse-gravity-deepseek-consult/verificacion_autor.md)
+records that proposed A/B mechanisms lack concrete operators and gap closure;
+a decreasing gap lower bound or moving fixed-cost defects is insufficient.
+`CRITICAL_CONSERVED_ENERGY_CONSTRUCTION_OPEN` remains unchanged. No new model,
+contract relaxation or further external round is opened by this consultation.
+
 The [IG1b local-gate contract](../theory/INVERSE_GRAVITY_LOCAL_GATE_GATE.md)
 and certificate were frozen at `601463b`, then executed with exact arithmetic
 and exit 0: `LOCAL_CONSTRAINT_PRESERVING_NONSCALAR_GATE_PASS_AUTHOR_SIDE`.
