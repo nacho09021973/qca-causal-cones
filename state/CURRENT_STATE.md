@@ -46,9 +46,19 @@ B is the Cesaro average under the same frozen tick of the fixed beta=1 Gibbs
 seed; finite-volume stationarity is proved, but local response/IR control is not.
 The [selection report](../reports/2026-10-08--inverse-gravity-ir-options-ab.md)
 records exact qutrit controls with exit 0; these do not test the spatial A/B states.
-Next step: A0 conservation test in the actual physical sector; if it fails,
-activate B0 without adjusting seed, gates, angles or targets. Both spatial
-routes remain OPEN; `IR_STATE_SELECTION_OPEN`.
+The [A0 physical conservation contract](../theory/INVERSE_GRAVITY_A0_CONSERVATION_GATE.md)
+and permanent code were frozen at `bc2da80`, then executed exactly with exit 0.
+Result: `A0_FAIL_NONCONSERVED_PHYSICAL_PARENT`. On the fixed physical psi0,
+`Delta <H_A>/L^3=43046720/14348907>0`: each conjugated R has expectation
+3^-16, established using rank-16 charge independence over F3 for its affected
+T gates. This rejects A's frozen conserved-Gibbs route, not all correlated states.
+See [A0 result and B0 access audit](../reports/2026-10-08--inverse-gravity-a0-and-b0.md).
+B0 is activated with the same beta=1 seed and tick: finite-volume stationarity
+is proved, and an exact dual reduction to local observables is written.
+Controlled seed expectations and time-average convergence remain absent;
+the 2/M stationarity defect is not an error bound to the stationary ensemble.
+`B0=ACTIVE / CONTROLLED_LOCAL_ACCESS_OPEN`, B1/B2/B3 NOT_EXECUTED;
+`IR_STATE_SELECTION_OPEN`. No gate, angle, beta, weight or target is adjusted.
 No gravitational dispersion is calculated; IG1 remains incomplete for R1.
 No independent review is recorded.
 

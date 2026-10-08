@@ -1,0 +1,11 @@
+PASS independent root-phase calculation: both Weyl signs give constant 1/3
+R axis=0: affected T gates=16, charge rank F3=16
+Exact <U_T^dag R U_T>_psi0=1/43046721
+R axis=1: affected T gates=16, charge rank F3=16
+Exact <U_T^dag R U_T>_psi0=1/43046721
+R axis=2: affected T gates=16, charge rank F3=16
+Exact <U_T^dag R U_T>_psi0=1/43046721
+Delta <H_A>/L^3=43046720/14348907 (exact)
+VERDICT: A0_FAIL_NONCONSERVED_PHYSICAL_PARENT
+NEXT: B0 activated with the already frozen beta=1 seed; no gate change.
+Scope: exact physical state energy witness; not a Gibbs or IR spectrum computation.
