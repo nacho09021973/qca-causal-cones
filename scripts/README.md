@@ -213,6 +213,24 @@ python3 -B scripts/verify_regional_laplace_coefficient_gate.py
 
 ## Current scope
 
+### IG-S2 compact tensor-probe commutator controls (2026-10-08)
+
+`verify_inverse_gravity_sma_commutator.py` checks the permanent contract
+[IG-S2/M3](../theory/INVERSE_GRAVITY_SMA_TENSOR_PREFLIGHT_GATE.md).
+It uses exact 3x3/9x9 clock identities and a 27-state single-vertex momentum
+term to verify signs, trace-cosine coefficients, vector incidences and the
+zero-product-state witness. All-volume bounds require the analytic argument
+in [the M3 report](../reports/2026-10-08--ig-s2-method-three-commutator.md).
+It does not calculate the ground-state Gram matrix or excitation spectrum.
+
+Run from the repository root:
+
+```sh
+python3 -B scripts/verify_inverse_gravity_sma_commutator.py
+```
+
+Optional `--output <path>` retains the record only after every check passes.
+
 Project status, the active line and any authorized next calculation are
 recorded only in [`state/CURRENT_STATE.md`](../state/CURRENT_STATE.md), which
 is branch-local on `research/b-infinity-post-s4-gate`. This file does not
