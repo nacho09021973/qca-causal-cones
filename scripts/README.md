@@ -213,6 +213,19 @@ python3 -B scripts/verify_regional_laplace_coefficient_gate.py
 
 ## Current scope
 
+### IG-S2 constraint-preserving curvature probes (2026-10-08)
+
+`verify_inverse_gravity_curvature_probes.py` certifies the stencils and
+axial tangent symbol of the fixed R_xx/R_yy/R_xy pair in
+[the curvature contract](../theory/INVERSE_GRAVITY_CURVATURE_PROBE_GATE.md).
+It additionally checks sparse Weyl-word charges, costs and absence of
+translation collisions on the two declared tori L=4,6.
+It does not compute a true-ground correlator or spectral mode.
+All-volume conclusions use the analytic
+[report](../reports/2026-10-08--ig-s2-curvature-probe-preflight.md).
+Run `python3 -B scripts/verify_inverse_gravity_curvature_probes.py`;
+`--output <path>` retains the certificate only after all checks pass.
+
 ### IG-S2 compact tensor-probe commutator controls (2026-10-08)
 
 `verify_inverse_gravity_sma_commutator.py` checks the permanent contract
