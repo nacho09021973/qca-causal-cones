@@ -38,8 +38,17 @@ unitary sources in rho_L=P/Tr(P), at every time and finite admitted volume.
 This does not invalidate the nonzero physical commutator of IG1c. The physical
 Weyl pair also excludes a common W=1 state minimizing each auxiliary -A_W term.
 See [IG1d report](../reports/2026-10-08--inverse-gravity-ir-reference.md).
-Next filter: a locally justified correlated stationary state with nontrivial
-response and controlled excitations; `IR_STATE_SELECTION_OPEN`.
+The user authorized selecting at least two state options with B as fallback.
+The [IG1e A/B contract](../theory/INVERSE_GRAVITY_IR_OPTIONS_AB.md), frozen
+with algebra controls at `2bee605`, prioritizes A: constrained Gibbs of the
+fixed local auxiliary H_A, conditional on exact `[U,H_A]|H_P=0`.
+B is the Cesaro average under the same frozen tick of the fixed beta=1 Gibbs
+seed; finite-volume stationarity is proved, but local response/IR control is not.
+The [selection report](../reports/2026-10-08--inverse-gravity-ir-options-ab.md)
+records exact qutrit controls with exit 0; these do not test the spatial A/B states.
+Next step: A0 conservation test in the actual physical sector; if it fails,
+activate B0 without adjusting seed, gates, angles or targets. Both spatial
+routes remain OPEN; `IR_STATE_SELECTION_OPEN`.
 No gravitational dispersion is calculated; IG1 remains incomplete for R1.
 No independent review is recorded.
 

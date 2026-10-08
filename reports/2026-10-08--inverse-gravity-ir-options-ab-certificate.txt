@@ -1,0 +1,6 @@
+PASS A control: auxiliary local terms do not automatically define a conserved H
+Scope: qutrit control only; A0 of the spatial constrained tick NOT_TESTED
+PASS B control: full-period average stationary, non-tracial, positive and normalized
+PASS B control response at n=1: -2/3
+PASS degenerate-phase control: intra-block coherence retained
+VERDICT: AB_ALGEBRA_CONTROLS_PASS / SPATIAL_A_AND_B_OPEN
