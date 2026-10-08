@@ -1,0 +1,915 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Responde en español. Consulta científica adversarial, una sola ronda.
+Tu sesión está sellada: solo tienes los documentos adjuntos; no puedes usar
+herramientas, navegar ni acceder al repo. No escribas llamadas simuladas.
+El texto previo del autor es un objeto de auditoría, no autoridad científica.
+
+Buscamos cómo tendría que ser un QCA para que emerja gravedad de Einstein
+3+1. La envolvente actual es Z³ fija, celda finita independiente del volumen,
+unitariedad exacta, tick e inversa de alcance estricto uniforme. Se permiten
+interacciones y un sector tensorial colectivo. Einstein, dos polarizaciones,
+z=1, fuente universal y novedad siguen abiertos. No exigimos recuperar CJWW.
+
+El primer tick tensorial tenía influencia de un paso, pero faltaba referencia
+IR: el estado tracial no respondía; su Gibbs auxiliar no era conservado;
+un promedio temporal alternativo quedó abierto por falta de control. Ahora
+se exige diseñar juntos estado, energía y tick. La primera construcción
+explícita IG-S1 conserva una energía local exactamente y tiene referencia
+fundamental finita, pero se rechaza por gap uniforme y soporte acotado para
+todos los tiempos. No queremos seguir construyendo controles que satisfagan
+la prueba anterior pero no acerquen al objetivo gravitatorio.
+
+1. Rehaz las pruebas críticas de IG-S1: conservación y referencia, intervalo
+   2<=gap<=16 en S=V=1, y radio <=4 para todo n por U^n=D F^n D†.
+   Busca errores de signos, support/cancelación, degeneración, dependencia
+   del volumen o uso ilegítimo de un bloque qutrit como prueba de red.
+   Clasifica cada afirmación como válida con sus hipótesis, incompleta o falsa.
+   Si objetas, da un contraejemplo o el paso concreto que falta.
+2. Examina si el contrato IG-S0 impone condiciones innecesariamente fuertes,
+   especialmente energía estrictamente local exactamente conservada y puente
+   uniforme energía/quasifase sobre TODO el sector de baja energía. Distingue
+   requisito de nuestra ruta, condición suficiente y necesidad física real.
+   No propongas relajar condiciones retroactivamente para rescatar IG-S1.
+3. Recomienda como máximo DOS mecanismos concretos, A prioritario y B de
+   contingencia, que aborden simultáneamente selección de referencia,
+   excitaciones sin gap y propagación sostenida. Para cada uno da:
+   - un objeto matemático inicial, álgebra/estado y patrón de regla local;
+   - qué hipótesis físicas ofrece y qué permanece sin construir;
+   - el primer test falsable ANTES de construir puertas o calcular dispersiones;
+   - una razón de prioridad vinculada al objetivo tensorial/gravitatorio;
+   - qué exigencia del charter necesitaría cambiar, si alguna.
+   Una exponencial de Hamiltoniano local no es automáticamente QCA estricto;
+   un Trotter a tiempo finito no demuestra vacío IR estable; una proyección TT
+   manual no demuestra emergencia; un fermión libre no es el objetivo tensorial.
+   Evita listas de familias o promesas generales sin mecanismo especificable.
+4. Si citas antecedentes, indica autores, identificador y afirmación precisa.
+   Sin acceso al original, márcalos REFERENCIA_POR_VERIFICAR; no inventes
+   páginas ni presentes recuerdos como lectura primaria. No atribuyas novedad.
+
+Salida: (i) veredicto corto de IG-S1 con reparaciones obligatorias si existen;
+(ii) hasta cinco objeciones prioritarias al rumbo; (iii) tabla de A/B con
+primer test y coste/obstáculo principal; (iv) recomendación de un único
+siguiente expediente acotado. Es legítimo concluir que no hay todavía un
+candidato viable o que el programa requiere reconsiderar una hipótesis.
+
+=== DOCUMENT 1: INVERSE_GRAVITY_DESIGN_CHARTER.md ===
+
+# Diseño inverso de un QCA para gravedad emergente
+
+Fecha: 2026-10-08. Rama: `research/inverse-gravity-design`.
+Base: `0a4606c61a3f75e5516a245f3837ed009b0a56b4`.
+Estado inicial: `CHARTER_OPEN / REQUIREMENTS_DEFINED / NO_RULE_SPECIFIED`.
+
+## 0. Autorización y motivo independiente
+
+Instrucción directa del usuario: «si, creamos una rama independiente con el
+nombre que consideres y empezamos esta linea de investigacion», después de
+proponer deducir requisitos microscópicos desde un objetivo gravitatorio IR.
+
+Motivo: investigar qué mecanismo colectivo podría generar geometría dinámica,
+universalidad del cono y dinámica tensorial relativista en un QCA. El objeto
+es el par **regla microscópica + estado/sector colectivo**. El objetivo no es
+ajustar los controles W6/CJWW tras el negativo de W12. No se exige recuperar
+exactamente CJWW: la materia de esta línea podrá ser distinta y se deberá
+especificar antes de cualquier cálculo. Los cierres anteriores se conservan.
+
+La autorización cubre formulación, contraste primario, descarte conceptual y
+construcción local dentro de este charter. No autoriza envíos a terceros,
+publicación, promoción científica automática ni cambios retroactivos de gates.
+
+## 1. Objetivo y distinciones
+
+Objetivo final elegido: régimen efectivo de gravedad de Einstein en 3+1
+dimensiones, acoplado a materia, con errores controlados. Es un objetivo de
+investigación, no una propiedad que se suponga del QCA.
+
+Primer objetivo: determinar si se puede especificar una arquitectura local
+unitaria con sector tensorial físico de dos polarizaciones, dispersión lineal
+y un mecanismo de cono común con al menos dos sectores de materia distintos.
+
+Los tres últimos requisitos son parte del objetivo adoptado; esta lista no
+es un teorema de condiciones necesarias y suficientes para toda gravedad.
+Un campo tensorial, un fondo curvo prescrito o una fuerza atractiva aislada
+no constituye cumplimiento del objetivo final.
+
+## 2. Envolvente microscópica de esta primera fase
+
+- Red abstracta fija `Z³`; celda finita con dimensión local finita, independiente
+  del volumen. Bosones truncados o fermiones requieren definición explícita de
+  sus álgebras; un rotor infinito no pasa automáticamente esta envolvente.
+- Evolución reversible por automorfismo exactamente unitario y de alcance
+  estricto finito por tick. Circuitos de profundidad finita son una ruta
+  admisible, no una clasificación de todos los QCA.
+- Interacciones y variables geométricas colectivas se permiten en esta línea.
+  La red abstracta fija no exige que la métrica efectiva sea fija.
+- Regla periódica en el espacio con celda y periodo fijos, sin controles externos
+  dependientes del estado ni feedback clásico que sustituya la evolución unitaria.
+- Estado/sector, simetrías, materia, modos y observables se especifican junto
+  a la regla. Gauge puede ser efectivo en el IR; no se exige difeomorfismo
+  microscópico exacto como condición previa.
+
+Esta envolvente está fijada. Dimensión de celda, representación, puertas,
+estado, parámetros y restricciones siguen **NO_RULE_SPECIFIED**. Se congelarán
+en IG1 antes del primer cálculo; no se presenta este charter como contrato
+microscópico ya completo. Grafos dinámicos, dimensión local creciente, ancillas
+añadidas tras ver resultados o nuevas clases requieren revisión explícita.
+
+## 3. Requisitos que se intentará derivar o verificar
+
+| ID | Requisito de la ruta elegida | Evidencia exigida; fallo temprano |
+|---|---|---|
+| R0 | QCA exacto | Regla e inversa con alcance uniforme; exponentiar un Hamiltoniano local global no basta |
+| R1 | Sector IR definido | Estado de referencia y selección de rama/sector reproducibles; no llamar energía a una quasienergía sin justificarlo |
+| R2 | Geometría operacional dinámica | Observables internos reconstruyen el símbolo principal de materia, evolucionan en vacío y reciben respuesta de materia; un embedding externo no basta |
+| R3 | Dos modos tensoriales físicos | Restricciones y redundancia derivadas o sector efectivo controlado; eliminar componentes por proyección manual no basta |
+| R4 | Propagación relativista | `ω_g²=c_g²|k|²+o(|k|²)`, estabilidad y residuos físicos positivos en el sector retenido; z=2/3 no cumple el objetivo lineal |
+| R5 | Universalidad | Dos sectores materiales especificados ven la misma métrica operacional y `c_g=c_m` por un mecanismo; ajustar velocidades individualmente no cumple robustez |
+| R6 | Fuente y reciprocidad | Acoplamiento al stress efectivo total, identidad de conservación pertinente y respuesta recíproca; ocupación o carga interna aislada no basta |
+| R7 | Cierre no lineal | Autointeracción compatible, constraints/Ward y acción efectiva de Einstein con correcciones acotadas; spin-2 libre no basta |
+| R8 | Control y robustez | Familia de perturbaciones admisibles fijada antes del test, ventana IR, errores y límites declarados; un punto ajustado no acredita una fase |
+
+No se exige igualdad entre `c_IR` y el borde del soporte microscópico.
+`C_micro`, velocidad causal, velocidad de grupo y velocidades IR conservan
+sus definiciones separadas. R5 no requiere que todo el espectro sea relativista.
+R2–R8 no se prueban al escribir la acción efectiva deseada.
+
+## 4. Secuencia y estados de salida
+
+**IG0 — requisitos y obstrucciones.** Contrastar fuentes primarias, separar
+arquitecturas y localizar el primer requisito sin mecanismo. Salidas:
+`ARCHITECTURE_UNDERSPECIFIED`, `SCOPED_OBSTRUCTION`,
+`ARCHITECTURE_READY_FOR_SPECIFICATION`. Ninguna significa gravedad obtenida.
+
+**IG1 — especificación previa.** Un único candidato completo: dimensión local,
+álgebra, representación de simetrías, tick e inversa, soporte, estado/sector,
+parámetros y variables observables; procedimiento IR, ramas y todos los modos.
+Registrar perturbaciones admisibles, orden de expansión, límites y umbrales.
+Si falta un elemento, salida `NO_RULE_SPECIFIED`; no se calcula su espectro.
+
+**IG2 — prueba mínima.** R0/R1 primero; luego R3/R4 antes del acoplamiento.
+Solo después, materia y R2/R5. Un éxito sin materia se llama sector tensorial,
+no gravedad acoplada. R5 inicial requiere al menos dos sectores de materia
+inequivalentes explícitos; no generalizarlo a toda materia.
+
+**IG3 — fuente, cierre y control.** R6–R8 requieren contratos cuantitativos
+propios. El resultado de IG2 no autoriza un claim de Einstein ni una escala SI.
+
+Los cálculos y figuras futuros usan scripts permanentes con procedencia.
+Los requisitos exactos se comprueban con álgebra exacta; los aproximados
+necesitan umbral congelado y control de error antes de ejecutar.
+
+## 5. Límites y reglas de parada
+
+- Registrar el primer fallo y su clase. Un fallo de ansatz no es un no-go general.
+- No proyectar a TT a mano y contar luego dos modos como emergencia.
+- No inferir protección de Lorentz o velocidades comunes de isotropía discreta sola.
+- No inferir un sector IR estable de un paso Trotter ni de su error a tiempo fijo.
+- No insertar Einstein–Hilbert en las puertas y presentar su recuperación como
+  derivación independiente: explicitar lo impuesto, lo derivado y lo abierto.
+- No aplicar el bootstrap de spin-2 antes de verificar sus hipótesis efectivas.
+- No determinar escalas absolutas por conveniencia ni cambiar el objetivo a
+  Lifshitz si el candidato falla z=1. Una variante necesita contrato distinto.
+- Antes de una promoción, contrastar antecedentes y obtener la revisión
+  pertinente; el charter y una auditoría propia no son revisión independiente.
+
+Al cierre de IG0 se registra una decisión y una siguiente pregunta concreta.
+No hay barrido de modelos ni ajuste tras observar resultados bajo el mismo contrato.
+
+## 6. Fuentes y primer expediente
+
+Las lecturas, páginas comprobadas, objeciones y decisión inicial están en
+[el informe IG0](../reports/2026-10-08--inverse-gravity-ig0.md).
+ESTABLISHED queda reservado a afirmaciones demostradas o a hechos de fuentes
+comprobadas con su alcance. La viabilidad de esta línea es OPEN; NOVELTY OPEN.
+
+=== DOCUMENT 2: INVERSE_GRAVITY_STATE_FIRST_GATE.md ===
+
+# IG-S0 — diseñar la referencia física antes de las puertas
+
+Fecha: 2026-10-08. Rama `research/inverse-gravity-design`.
+Padre: [charter de diseño inverso](INVERSE_GRAVITY_DESIGN_CHARTER.md).
+Autorización directa: «adelante con tu recomendacion», después de recomendar
+una arquitectura que incorpore selección de estado y control de excitaciones.
+
+## 1. Alcance y presupuesto de este expediente
+
+Abrir una arquitectura sucesora dentro de la misma envolvente: Z³, dimensión
+local finita independiente de L, tick e inversa de alcance estricto uniforme.
+El objetivo continúa siendo Einstein 3+1; R0–R8 no cambian. El tick q=3
+anterior conserva sus resultados y A/B sus cierres; no se retocan sus puertas.
+
+Este expediente formula el mecanismo de selección, examina dos recetas
+concretas y deriva filtros antes de especificar otro autómata. Un único
+preflight analítico y tres controles algebraicos auxiliares, sin barridos.
+Se cierra con una decisión de diseño y obligaciones de construcción.
+No incluye espectro de un QCA nuevo: todavía falta su regla microscópica.
+
+## 2. Mecanismo prioritario: energía conservada y vacío correlacionado
+
+Construir conjuntamente `(álgebra local, sector físico, K_L, U_L)`:
+
+1. `K_L = sum_x k_x` tiene términos de soporte y norma acotados uniformemente,
+   con periodo espacial fijo. Es autoadjunto y acotado inferiormente por
+   `-b L³`. Se permite frustración: su mínimo global no tiene por qué minimizar
+   cada término. Debe tener una justificación física previa; no basta elegir
+   una función espectral global de U y llamarla energía local.
+2. `U_L` es un QCA exacto, con inversa explícita; preserva el sector físico y
+   satisface `U_L† K_L U_L = K_L` en él. La identidad se exige al tick completo,
+   sin imponer que cada puerta conserve K o su estado fundamental.
+3. En cada toro admisible, `G_L` es el proyector al mínimo de K en ese sector.
+   La receta fija `rho_0,L = G_L/Tr G_L`. Exige un límite local reproducible y
+   expectativas accesibles con error controlado. Si hay degeneración, debe
+   controlarse su efecto local; no se escoge un vector favorable a posteriori.
+   La conservación implica estacionariedad por cálculo funcional, no por
+   promediar tiempos. La preparación de rho es una condición inicial;
+   no se supone que U enfríe cualquier estado hasta ella.
+4. Hay que demostrar que K ordena las excitaciones del tiempo físico del tick.
+   Como condición suficiente de esta ruta, exigir una fase común del vacío
+   `U_L G_L = exp(-i phi_0,L) G_L` y, con tick de duración adimensional 1,
+
+   `||(exp(i phi_0,L) U_L - exp(-i (K_L-E_0,L))) P_L(Lambda)||`
+   `<= C Lambda^(1+eta)`, con `eta>0` y C independientes de L.
+
+   Aquí `P_L(Lambda)` incluye **todo** el espectro físico con
+   `0 <= K_L-E_0,L <= Lambda`. Lambda está por debajo de una constante fija
+   menor que pi. No se omiten nodos, especies o fases pi por conveniencia.
+   Estos proyectores son herramientas del análisis, no puertas no locales.
+   La exponencial del lado derecho tampoco define el QCA.
+5. El estado y sus observables deben permitir controlar la respuesta y el
+   sector tensorial. Dos polarizaciones físicas, z=1 y positividad de pesos
+   espectrales se comprueban después; ninguna se deduce de `[U,K]=0`.
+
+El orden de límites será L→∞ sobre toros compatibles a Lambda fija y después
+Lambda→0. La dimensión local, periodo, términos, puertas, simetrías y
+perturbaciones admisibles se fijarán antes de ejecutar el candidato.
+El criterio del punto 4 es una elección exigente de esta ruta, no un teorema
+de necesidad para toda gravedad emergente. Una alternativa requiere contrato
+previo con errores y significado físico comparables.
+
+Esta receta evita el promedio de tiempos de B, pero **no** suministra por
+sí sola K, U ni acceso a su vacío. Resolver sus identidades es el problema
+de construcción; no se declara R1 satisfecho.
+
+## 3. Dos recetas que deben pasar el filtro temprano
+
+**S — núcleo común de términos locales.** Elegir `h_X>=0` con
+`h_X |Omega>=0` y puertas `exp(-i theta_X h_X)`. El vacío queda fijo por
+construcción. Examinar separadamente: existencia de términos no triviales,
+conservación de `sum h_X`, y relación entre su gap y las fases del tick.
+No transferir un teorema de Hamiltonianos a una unitaria discreta sin puente.
+
+**E — energía global conservada con vacío correlacionado.** Es la receta de
+§2. Permite que las puertas intermedias cambien el estado, siempre que el
+tick cumpla las identidades. Es prioritaria si S solo proporciona
+estacionariedad o entra en una obstrucción bajo las hipótesis declaradas.
+Su viabilidad queda OPEN hasta construir un par local concreto.
+
+## 4. Preflight congelado antes de ejecutar controles
+
+P1. Para estado puro y soporte X, derivar qué permite
+`(g_X tensor I)|Omega> = lambda |Omega>` a partir de la matriz reducida.
+Comprobar por Schmidt y por norma de Hilbert–Schmidt. Distinguir rango
+completo en el espacio local de rango dentro de un subespacio restringido.
+
+P2. Contrastar el alcance del teorema 1 de Masaoka–Soejima–Watanabe,
+`arXiv:2406.06415v3`, PDF pp.3–5, para un parent frustration-free crítico.
+Especificar hipótesis sobre correlaciones, degeneración y gap; no inferir
+que prohíbe cualquier banda lineal o todo circuito que preserve ese vacío.
+Comprobar explícitamente que compartir vacío no implica conservar el parent.
+
+P3. Para un símbolo hermítico analítico finito `h(k)>=0` cerca de k=0 con
+kernel no vacío, examinar si las bandas que nacen de cero pueden tener
+pendiente lineal no nula. Segunda vía: mínimo–máximo y ejemplos exactos.
+Este filtro afecta a excitaciones de una partícula sobre vacío vacío cuando
+h es su energía; no a toda teoría bosónica interactuante ni a sistemas BdG.
+
+Script permanente: `scripts/verify_inverse_gravity_state_first.py`.
+Controles prefijados, auxiliares y sin interpretación como red gravitatoria:
+
+- Schmidt: `Omega_p=sqrt(p)|00>+sqrt(1-p)|11>` para p=1/3 y p=0;
+  rango del mapa `D -> (D tensor I)Omega_p`, identidad de norma y acción de
+  `Z tensor Z`. El caso p=0 comprueba la excepción de rango deficiente.
+- Núcleo común: en tres niveles, añadir |0> a dos proyectores de rango uno
+  en span{|1>,|2>}. `P=|1><1|`, `Q=|v><v|`,
+  `v=c|1>+s|2>`, `c=(1-t²)/(1+t²)`, `s=2t/(1+t²)`, `0<t<1`.
+  `K=P+Q`, `U=(I-2Q)(I-2P)`. Verificar vacío, unitariedad,
+  no conservación a t=1/2 y relación de fase/gap cuando t→0.
+  Esta familia no es un límite IR espacial ni un nuevo candidato.
+- Bandas: laplaciano `2 sum_j(1-cos k_j) I_2`; control firmado
+  `sin(k) sigma_z`. Verificar órdenes y signo exactamente.
+
+PASS de controles significa que se verifican las identidades del preflight,
+no que una receta genera gravedad. Un error obliga a reparar y registrar el
+motivo, sin sustituir ejemplos para obtener PASS.
+
+## 5. Salidas y siguiente frontera
+
+- `STATE_FIRST_PREFLIGHT_COMPLETE_AUTHOR_SIDE`: filtros derivados y controles
+  consistentes; no certifica una arquitectura.
+- `STATE_FIRST_CONSTRUCTION_OPEN / NO_NEW_RULE_SPECIFIED`: falta un par
+  `(K,U)` y un estado accesible que cumplan §2.
+- Una contradicción dentro de una receta se declara con sus hipótesis, sin
+  promoverla a no-go general de QCA.
+
+El siguiente expediente deberá especificar **un solo** par `(K,U)` con celda,
+sector, localidad, inversa, simetrías y receta de vacío antes de sus pruebas.
+Primera prueba: conservación exacta y acceso controlado al estado; después
+el puente energía–tick. Si falta especificación se cierra como tal, sin
+volver al promedio B ni iniciar un catálogo de circuitos.
+La prioridad sigue siendo un sector tensorial colectivo; un control escalar
+o fermión libre aislado no satisface el objetivo. No se añade materia ni se
+invoca el bootstrap gravitatorio antes de R1/R3/R4.
+
+No hay autorización de revisión externa, claim de novedad o promoción a
+gravedad. Los cálculos auxiliares y las derivaciones son evidencia del autor.
+
+=== DOCUMENT 3: INVERSE_GRAVITY_CONSTRAINT_PREFLIGHT.md ===
+
+# IG1a — preflight del módulo finito de restricciones tensoriales
+
+Fecha: 2026-10-08. Contrato padre:
+[INVERSE_GRAVITY_DESIGN_CHARTER](INVERSE_GRAVITY_DESIGN_CHARTER.md).
+Este preflight se congela antes de ejecutar el certificado. Es un módulo
+algebraico previo a IG1, no un candidato completo ni cálculo de espectro.
+
+## Objeto, motivación y alcance
+
+Fuente: Gu–Wen, `biblioteca/arXiv-0907.1203.pdf`, pp.13–15, Ecs.38–46.
+Se examina la realización de constraints mediante relojes finitos y operadores
+locales conmutantes. Motivo: resolver primero la compatibilidad de constraints
+con una celda finita; no seleccionar parámetros desde una dispersión buscada.
+
+Red Z³; tres registros diagonales xx,yy,zz en cada vértice y un registro
+xy,yz,zx en cada cara positiva correspondiente. Agrupados por celda primitiva:
+seis qutrits, dimensión local 3⁶=729. Aquí nG=3 es fijo, sin límite nG→∞.
+No se identifica esta celda con una fase semiclasica o un autómata gravitatorio.
+
+En cada registro: `X|n>=|n+1 mod 3>`, `Z|n>=ω^n|n>`,
+`ω=exp(2πi/3)`, de modo que `ZX=ωXZ`. No se postula una pareja
+canónica continua exacta en dimensión finita.
+
+## Stencils congelados
+
+Coordenadas duplicadas: vértices en (2i,2j,2k), caras xy en
+(2i+1,2j+1,2k), y análogamente. Variables de Laurent x,y,z para esas
+coordenadas; `t_a=a+a^-1`. Orden de registros: xx,yy,zz,xy,yz,zx.
+
+El escalar S en cada vértice es un producto de X con exponentes del stencil
+
+`c=(t_y²+t_z², t_x²+t_z², t_x²+t_y²,
+    -t_x*t_y, -t_y*t_z, -t_z*t_x)`.
+
+Los vectores V_a, centrados en los enlaces de cada dirección, son productos
+de Z con stencils relativos a esos centros:
+
+`v_x=(t_x,0,0,t_y,0,t_z)`;
+`v_y=(0,t_y,0,t_x,t_z,0)`;
+`v_z=(0,0,t_z,0,t_y,t_x)`.
+
+Esta notación incluye offsets geométricos y los factores 2 del cambio a
+variables compactas de la fuente; no reemplazarla por diferencias continuas.
+Al expandir, un diagonal c contiene coeficiente 4 en su centro y 1 en
+cuatro vecinos; cada componente fuera de la diagonal tiene cuatro -1.
+
+## Pruebas y umbrales previos
+
+Certificado permanente: `scripts/verify_inverse_gravity_constraint_module.py`.
+Álgebra exacta, tolerancia cero, sin fitting ni diagonalización de candidato.
+
+1. Comprobar X³=Z³=I y ZX=ωXZ en matrices de un qutrit.
+2. Comprobar `c·v_a=0` como identidades de Laurent, las tres direcciones.
+   Los stencils son pares: `v_a(x^-1,y^-1,z^-1)=v_a(x,y,z)`.
+   Por ello es también la identidad de correlación necesaria para todas
+   las traslaciones de S/V, no solo para un par coincidente.
+3. Segunda vía: construir los stencils enteros directamente en espacio real,
+   enumerar todos sus solapamientos por traslación y exigir fase entera cero.
+4. Repetir la vía real después de reducir exponentes módulo 3.
+
+PASS significa únicamente `FINITE_CONSTRAINT_ALGEBRA_PASS_AUTHOR_SIDE`.
+FAIL detiene este módulo como `CONSTRAINT_STENCIL_OR_CONVENTION_FAIL`;
+no cambiar stencils o q para rescatar el test bajo este contrato.
+
+## Qué queda fuera
+
+S/S y V/V conmutan por ser, respectivamente, productos exclusivamente de X
+y de Z. El sector físico propuesto es el eigensector S=V=1; su selección
+no se realiza mediante medición ni proyección TT durante la evolución.
+La existencia de estados que lo satisfacen se argumentará en el informe,
+pero no se calculará su dimensión ni el conteo de excitaciones.
+
+No hay tick, materia, estado estacionario de una dinámica, energía o rama IR
+especificados. No hay modo tensorial certificado, gauge continuo emergente,
+dispersión, métrica, backreaction ni resultado de gravedad.
+La prueba algebraica no promueve R1/R3/R4 del contrato padre.
+
+=== DOCUMENT 4: INVERSE_GRAVITY_LOCAL_GATE_GATE.md ===
+
+# IG1b — puertas locales no triviales y tick de control
+
+Fecha: 2026-10-08. Rama `research/inverse-gravity-design`.
+Padre: [charter](INVERSE_GRAVITY_DESIGN_CHARTER.md).
+Base: `058133a0bf92acf7d243bf73e08a0be19cab827e`.
+Contrato congelado antes de ejecutar el certificado de IG1b.
+
+## 1. Pregunta y motivo
+
+¿Existen puertas locales del módulo q=3 de IG1a que preserven exactamente
+S=V=1 y actúen allí de forma no escalar? Si pasan, definir un tick de control,
+su inversa y su alcance. No calcular espectro many-body ni dispersión IR.
+
+Motivo independiente: las puertas que solo son funciones de S/V actúan como
+fase en el sector. La fuente Gu–Wen `biblioteca/arXiv-0907.1203.pdf` pp.15–16,
+Ecs.48–49, ofrece operadores invariantes R y T con acción conjugada. Este
+contrato prueba esa alternativa; no ajusta coeficientes para obtener z=1.
+
+## 2. Datos fijos
+
+Red, registro, constraints y convención ZX=ωXZ de
+[IG1a](INVERSE_GRAVITY_CONSTRAINT_PREFLIGHT.md), q=3 y seis registros por celda.
+Orden xx,yy,zz,xy,yz,zx; `t_a=a+a^-1` en coordenadas duplicadas.
+
+R_aa son palabras X centradas en vértices con stencils
+
+```
+r_xx=(0,t_z²,t_y²,0,-t_y*t_z,0)
+r_yy=(t_z²,0,t_x²,0,0,-t_z*t_x)
+r_zz=(t_y²,t_x²,0,-t_x*t_y,0,0)
+```
+
+T_a^a son palabras Z centradas en el centro de cubo i+(1/2,1/2,1/2):
+
+```
+w_x=(0,0,0,t_z,0,-t_y)
+w_y=(0,0,0,-t_z,t_x,0)
+w_z=(0,0,0,0,-t_x,t_y)
+```
+
+El centrado de T_x^x expresa Eq.49 como +Lxy en dos caras y -Lzx en otras
+dos; no se identifica este operador diagonal de Cotton con todos los T_a^b.
+No se completa el modelo L ni se traslada su dispersión a este subconjunto.
+
+Solo simetría cíclica C3 de permutación x→y→z→x se adopta para ordenar
+las familias. No se afirma isotropía SO(3), simetría cúbica completa ni Lorentz.
+
+## 3. Puerta local fijada
+
+Para cada palabra W=R_aa o T_a^a:
+
+`A_W=(W+W†)/2`, `G_W=exp[-iθ A_W]`, `θ=π/3`.
+
+Cada A_W es hermítico. Como W³=I,
+
+`Π_W=(I+W+W²)/3`,
+`A_W=(3Π_W-I)/2`,
+`G_W=e^(iθ/2)[I+(e^(-3iθ/2)-1)Π_W]`.
+
+Esta fórmula permite verificar unitariedad y acción sin una exponencial
+global. θ es un ángulo de control elegido antes del test, no una velocidad.
+No se variará para rescatar resultados. Ventana de perturbación declarada
+para el claim de puerta no escalar: θ∈[π/4,5π/12], sin ejecutarla como scan.
+
+## 4. Pruebas predeclaradas
+
+Certificado: `scripts/verify_inverse_gravity_local_gates.py`, aritmética exacta.
+
+1. Cada r_aa conmuta con cada vector por toda traslación: correlación cero.
+   Cada w_a conmuta con el escalar: correlación cero. Las otras conmutaciones
+   son automáticas por tipos X/X o Z/Z.
+2. Segunda vía con stencils enteros de espacio real, introducidos desde las
+   Ecs.48–49. Comparar también sus polinomios con las fórmulas anteriores.
+3. Testigo fijado: Rzz en i=0 y T_x^x en centro duplicado (1,1,1).
+   Solapamiento de exponentes -1, fase no trivial módulo 3.
+4. En representación de una pareja qutrit R=X, T=Z^-1, comprobar relación
+   TR=ω^-1 RT, unitariedad de G_R y `[G_R,T]≠0` a θ=π/3.
+   Es test local de puerta, no el espectro de un autómata gravitatorio.
+5. Identidades `r_xx+r_yy+r_zz=c`, `w_x+w_y+w_z=0`; informar redundancias.
+
+PASS local: `LOCAL_CONSTRAINT_PRESERVING_NONSCALAR_GATE_PASS_AUTHOR_SIDE`.
+Primer FAIL detiene el contrato; no cambiar palabra, q ni ángulo para rescatar.
+Un PASS no cuenta dos modos físicos por tener dos palabras independientes.
+
+## 5. Tick fijado y alcance
+
+`U=U_T U_R` donde cada bloque aplica G_W en todas las posiciones y en
+los tres tipos, primero R y después T. Todas las puertas R conmutan entre sí;
+todas las T conmutan entre sí. No se exige conmutación entre bloques.
+
+Implementación en capas disjuntas: ordenar aa=(xx,yy,zz), colores de centros
+R=i mod 3 en orden lexicográfico, 27 por tipo; después a=(x,y,z), colores
+T=i mod 2, 8 por tipo. Total 81+24=105 capas independientes del volumen.
+Los soportes de R están dentro de las celdas i+[-1,1]³ y los de T dentro de
+i+[0,1]³. Esta coloración es suficiente; no es una profundidad óptima.
+Para toros de control: L≥6 múltiplo de 6 en cada dirección.
+
+La inversa es `U_R† U_T†` con orden de capas invertido. Cota por tick e
+inversa: 3 celdas en norma ℓ∞. Cada bloque conmutante solo puede añadir
+soportes de puertas que tocan el soporte inicial de ese bloque: diámetro
+R≤2, T≤1. No se deduce esta cota del número de puertas por volumen.
+Aunque la coloración tiene periodo 6, cada bloque completo es invariante por
+traslación de una celda por conmutación interna y coeficientes uniformes.
+
+## 6. Referencia de control y frontera IR
+
+En cada toro, P proyecta al sector no vacío S=V=1 de IG1a.
+Referencia fijada: `ρ_L=P/Tr(P)`. Es estacionaria si todas las puertas
+preservan P. No es un vacío energético ni un sector de baja temperatura.
+No se aplican mediciones ni proyecciones durante el tick.
+
+Este control fija una regla sin materia y una referencia algebraica. IG1
+del charter sigue incompleto respecto al criterio IR: antes de dispersión
+hay que especificar estado/sector IR, observables, ramas y límites con error.
+El criterio deseado sigue siendo dos polarizaciones físicas con z=1 en un
+régimen controlado; no se presupone para ρ_L ni se usa para seleccionar puertas.
+
+No se calcula conteo de modos, espectro, dinámica de materia o métrica.
+No se afirma transporte ni no trivialidad del tick completo a partir de
+la no trivialidad de una puerta: posibles cancelaciones colectivas requieren
+un test aparte. El testigo de este contrato acredita la puerta local.
+
+=== DOCUMENT 5: INVERSE_GRAVITY_DRESSED_PARENT_GATE.md ===
+
+# IG-S1 — construcción exacta por conjugación de un parent conmutante
+
+Fecha: 2026-10-08. Rama `research/inverse-gravity-design`.
+Padre: [IG-S0](INVERSE_GRAVITY_STATE_FIRST_GATE.md).
+Autorización: «adelante» después de proponer construir conjuntamente K y U.
+
+## 1. Motivo y cierre acotado
+
+Primer intento explícito de selección de estado por construcción: un parent
+de proyectores físicos conmutantes, conjugado por un circuito físico de
+profundidad fija. La solvencia de esta receta permite comprobar exactamente
+energía, referencia y tick. No se presume crítica ni gravitatoria.
+
+Se especifica un solo par. Primera batería: conservación, estado fundamental
+y localidad; filtro inmediato: gap y alcance a n ticks. Si no hay excitaciones
+de energía arbitrariamente pequeña o propagación sostenida, cerrar esta receta
+para el objetivo tensorial z=1. No ajustar pesos, profundidad ni q para rescatarla.
+El intento anterior A/B conserva su tick y contratos.
+
+## 2. Especificación completa del par
+
+Álgebra, constraints S/V, R_aa y T_a^a: los stencils congelados en
+[IG1a](INVERSE_GRAVITY_CONSTRAINT_PREFLIGHT.md) y
+[IG1b](INVERSE_GRAVITY_LOCAL_GATE_GATE.md). Se incorporan por referencia:
+Z³, seis qutrits por celda, dimensión 729, ZX=omega XZ, omega³=1.
+Sector físico S=V=1; toros L>=6 múltiplo de 6; coeficientes uniformes y
+simetría cíclica C3. Sin materia ni ancillas nuevas. No se afirma SO(3).
+
+Para cada R_aa(i), definir el proyector
+`Pi_R=(I+R+R²)/3` y `h_R=I-Pi_R`.
+
+`K_0 = sum_(i,a) h_Raa(i)`.
+
+Todos los h son proyectores físicos conmutantes; sus pesos son 1.
+La normalización de energía fija una duración de tick adimensional 1.
+No se adjudica una escala física absoluta.
+
+Definir D como el bloque completo de puertas T de IG1b:
+`D=prod_(i,a) exp[-i(pi/3) A_Ta(i)]`, `A_T=(T+T†)/2`.
+Las puertas conmutan dentro de D. El ángulo es fijo antes de las pruebas.
+
+La regla nueva se define **por circuito**:
+
+`F=prod_(i,a) [Pi_R + exp(-i)(I-Pi_R)]`,
+`U_E=D F D†`, `U_E^-1=D F† D†`,
+`K_E=D K_0 D† = sum_(i,a) D h_Raa(i) D†`.
+
+La identidad F=exp(-iK_0) se debe a la conmutación, y sirve para la prueba;
+una exponencial global genérica no sustituye la regla por circuito.
+Por ello también U_E=exp(-iK_E) como identidad, que se verificará.
+
+Capas: 24 para D†, 81 para F y 24 para D, en los órdenes/colores de IG1b;
+total 129, independiente del volumen. El periodo de coloración es 6,
+pero los bloques completos tienen traslación de una celda.
+
+## 3. Referencia y acceso
+
+`G_0 = prod_(i,a) Pi_Raa(i) prod_(i,a) Pi_Va(i)`,
+con `Pi_V=(I+V+V²)/3`. R/V conmutan y Rxx Ryy Rzz=S.
+Demostrar G_0 no nulo y que es todo el proyector fundamental de K_0 en
+el sector físico. No escoger un vector de su degeneración.
+
+`G_E=D G_0 D†`, `rho_E,L=G_E/Tr G_E`.
+
+Acceso en cada volumen por álgebra estabilizadora sobre F3: para una palabra
+Pauli, su esperanza en G_0/Tr G_0 se obtiene por pertenencia al grupo de
+R/V, con sus fases. La conjugación local por D requiere solo puertas que
+tocan el soporte inicial. No se sustituye por un Gibbs de región aislada.
+La existencia de un límite local uniforme debe auditarse si el candidato
+supera los filtros; el algoritmo finito no lo demuestra por sí mismo.
+
+## 4. Pruebas congeladas
+
+Certificado permanente: `scripts/verify_inverse_gravity_dressed_parent.py`.
+
+1. Revalidar R/V y T/S por stencils reales, todas las traslaciones; comprobar
+   redundancia Rxx Ryy Rzz=S también mediante Laurent.
+2. En el bloque auxiliar qutrit R=X, T=Z^-1, verificar projector, dressing,
+   conservación y referencia. La puerta F se verifica con un símbolo p
+   unimodular y después se identifica p=exp(-i); no fitting numérico.
+   Este bloque no simula el espectro de la red.
+3. Escribir la prueba de localidad del parent conjugado y el tick, incluyendo
+   U_E^n para todos los enteros n, sin extrapolar desde muestras temporales.
+4. Derivar el espectro de K_0 como número entero de R violados. En el sector
+   S=1, la redundancia excluye una única violación en un vértice.
+   Comprobar M>=2 por los 27 caracteres locales, no asumir independencia
+   entre vértices ni contar modos desde ese número.
+5. Testigo superior fijado: T_x del cubo origen actuando sobre una referencia
+   física R=1. Comparar stencils y geometría de cubo de IG1c; exigir 16 R
+   violados. Proporciona una excitación física de energía 16, no el gap exacto.
+
+La derivación espacial decide la receta. Un PASS de matrices auxiliares no
+autoriza espectro IR, respuesta de materia o gravedad. Mantener separados
+construcción exacta, límite del estado, gap, propagación y objetivo Einstein.
+Si el gap es uniforme positivo y la influencia permanece en soporte fijo,
+salida `DRESSED_COMMUTING_PARENT_REJECTED_FOR_GAPLESS_PROPAGATING_TARGET`.
+No declarar un no-go de todos los QCA con energía conservada.
+
+=== DOCUMENT 6: 2026-10-08--inverse-gravity-dressed-parent.md ===
+
+# IG-S1 — un par energía/tick exacto que falla el objetivo gravitatorio
+
+Fecha: 2026-10-08. Rama `research/inverse-gravity-design`.
+Contrato y código congelados en `67fd3b1b0c6962d5d6f1b50ac114995bc03cbe6d`:
+[especificación](../theory/INVERSE_GRAVITY_DRESSED_PARENT_GATE.md).
+
+## 1. Resultado
+
+`DRESSED_PARENT_ALGEBRA_PASS_AUTHOR_SIDE`.
+`DRESSED_COMMUTING_PARENT_REJECTED_FOR_GAPLESS_PROPAGATING_TARGET`.
+
+Se ha construido un par local `(K_E,U_E)` con energía exactamente conservada
+y una referencia fundamental explícita en volumen finito. Su gap de energía
+está uniformemente entre 2 y 16. La influencia espacial del tick permanece
+en radio <=4 celdas para **todos** los tiempos enteros. Por tanto esta receta
+no cumple el objetivo de un sector tensorial gapless con propagación z=1.
+
+No se obtuvo el gap exacto, un vacío crítico ni gravedad. El resultado rechaza
+la receta especificada, no toda energía conservada en QCA. No modifica el
+tick R/T anterior, el negativo A ni el estado formal B. La ruta prioritaria
+de energía conservada con referencia crítica permanece OPEN.
+
+## 2. Fuentes y verificación ejecutada
+
+Índice local consultado. Se releen directamente Gu–Wen,
+`biblioteca/arXiv-0907.1203.pdf`, pp.15–16, ecs.48–49 y 53, para Rzz y Tx.
+SHA256 `3b1af85075e346cf00b0b91824554f6f87bf494f6bfb9737c867f2a8c134fa0c`.
+Los stencils se comprueban de nuevo por solapamientos reales y Laurent.
+La construcción de K_E/U_E y las pruebas siguientes son derivaciones propias;
+no se atribuyen a Gu–Wen ni se trasladan sus modos L/N a este circuito.
+
+Se ejecutó `python3 -B scripts/verify_inverse_gravity_dressed_parent.py`,
+SymPy 1.14.0, aritmética exacta, salida 0. Salida íntegra en
+[certificado](2026-10-08--inverse-gravity-dressed-parent-certificate.txt).
+El bloque qutrit verifica identidades locales, no simula la red. La prueba
+espacial usa la regla completa y los argumentos de este informe.
+No hay revisión independiente ni claim de novedad.
+
+## 3. Energía y circuito construidos conjuntamente
+
+En el sector S=V=1 de seis qutrits por celda, fijar
+
+`h_alpha=I-Pi_Ralpha`, `Pi_R=(I+R+R²)/3`,
+`K_0=sum_alpha h_alpha`.
+
+Los R son palabras X físicas; cada h es un proyector y todos conmutan.
+D es el bloque físico de puertas T a ángulo pi/3. La regla nueva es
+
+`F=prod_alpha [Pi_Ralpha+exp(-i) h_alpha]`,
+`U_E=D F D†`, `K_E=D K_0 D†`.
+
+Cada factor de F es unitario porque Pi y h son proyectores complementarios.
+Por la conmutación, `F=exp(-iK_0)`; conjugando,
+
+`U_E=exp(-iK_E)` y `U_E† K_E U_E=K_E`.
+
+Esta exponencial es una identidad de un circuito finito ya especificado,
+no una suposición de causalidad para una exponencial global genérica.
+La inversa `D F† D†` es explícita. El bloque auxiliar verifica conservación
+con un símbolo unimodular, independientemente de aproximaciones numéricas.
+
+Los términos `D h_alpha D†` continúan siendo proyectores conmutantes.
+Por eso el dressing no introduce una frustración o una interacción espectral
+nueva: cambia la representación local y el estado, pero conserva el espectro.
+La receta pertenece a la alternativa de núcleo común de IG-S0; no constituye
+la realización crítica de su ruta E prioritaria.
+
+## 4. Referencia fundamental y alcance del acceso
+
+Definir
+
+`G_0=prod_alpha Pi_Ralpha prod_(i,a) Pi_Va(i)`.
+
+Las conmutaciones R/V permiten formar este proyector. Es no nulo: partir
+del producto con X=1 en cada registro y aplicar los promedios de V. En la
+base X, los V actúan como permutaciones con coeficientes positivos; el término
+identidad garantiza que el promedio no es cero. R=1 se mantiene porque R
+conmuta con V. La redundancia `Rxx Ryy Rzz=S` impone también S=1.
+
+Positividad de cada h implica que el kernel de K_0 es exactamente su núcleo
+común. Dentro del sector físico, G_0 es por tanto **todo** su proyector
+fundamental. No se utiliza el vector de la demostración como elección de
+vacío entre estados degenerados. La referencia fijada es
+
+`G_E=D G_0 D†`, `rho_E,L=G_E/Tr G_E`.
+
+Se tiene `K_E G_E=0`, `U_E G_E=G_E` y estacionariedad de rho_E,L.
+Un excitado físico construido abajo demuestra que G_E no es todo el sector;
+esta referencia no es P/Tr P.
+
+Acceso finito por una segunda formulación: R/V generan un grupo estabilizador
+abeliano de qutrits sin fases escalares no triviales, como también garantiza
+su núcleo común no vacío. Su promedio es G_0. La ortogonalidad de traza de
+las palabras Pauli reduce cada expectativa a pertenencia a ese grupo y su
+fase. Se resuelve mediante álgebra lineal sobre F3, sin la matriz Hilbert
+de dimensión 729^(L³). Una conjugación local por D añade solo las puertas
+que tocan el soporte inicial y puede expandirse en una base Pauli finita.
+
+Esto es una receta exacta de acceso a volumen finito, no una prueba del
+límite termodinámico local ni de preparación eficiente del estado. No se
+ejecuta una batería extensa de expectativas: los filtros siguientes ya
+rechazan el candidato. R1 como referencia IR crítica no queda aprobado.
+
+## 5. Gap: prueba entera y testigo espacial independiente
+
+En una base simultánea de R, cada término h vale 0 o 1. Por ello K_0 tiene
+energías enteras `M`, el número de R distintos de 1. No se supone que todas
+las asignaciones de caracteres sean realizables en la red.
+
+En cada vértice del sector físico, los caracteres `r_x,r_y,r_z` satisfacen
+`r_x+r_y+r_z=0 mod 3`. Una única entrada no nula viola esa identidad.
+Si un estado tiene energía positiva, tiene al menos un vértice con dos R
+violados. Luego
+
+`gap(K_0|physical) >=2`.
+
+El script comprueba los 27 triples locales; el argumento global solo utiliza
+la condición necesaria, sin inferir independencia entre vértices.
+
+Por otra vía, aplicar T_x del cubo origen a cualquier estado físico con
+R=1. El stencil de solapamientos da ocho vértices, cada uno con caracteres
+`(0,-1,+1)`. La geometría del cubo introducida independientemente coincide
+con los stencils. Son 16 R violados y T_x preserva el sector físico. Como
+T_x es unitario, produce un eigenestado no nulo de energía 16. No hay alias
+en los toros admitidos L>=6 múltiplo de 6. Conjugando el estado por D,
+
+`2 <= gap(K_E|physical) <=16`, uniformemente en L.
+
+La conjugación conserva todo el espectro, así que no puede cerrar ese gap.
+Para Lambda<2, el proyector de baja energía de IG-S0 solo contiene el vacío:
+la igualdad energía–tick es exacta pero su test en esa ventana es vacío de
+excitaciones. No acredita modos sin masa. Este es un gap de **energía**;
+no se deduce un gap uniforme de quasifases, que viven módulo 2pi.
+
+## 6. Localidad para cualquier número de ticks
+
+Un bloque de puertas mutuamente conmutantes solo necesita, al conjugar un
+observable O, las puertas que no conmutan con O inicialmente. Las otras
+pueden moverse junto a O y cancelarse por su conmutación con todo el bloque.
+Así, la extensión de soporte está acotada por el diámetro de esas puertas,
+independientemente del número de factores o de su ángulo.
+
+Las puertas R tienen diámetro <=2 celdas y las T <=1 en norma infinito.
+Por ello F y todas sus potencias tienen alcance <=2; D y D† <=1.
+Cada término D h_R D† queda en las celdas i+[-2,2]³: K_E es local con
+soporte y norma uniformes. El circuito admite las 129 capas disjuntas
+declaradas, independientemente del volumen.
+
+Además, para **todo** entero n,
+
+`U_E^n = D F^n D†`.
+
+La cancelación entre ticks es exacta. En consecuencia,
+
+`supp(U_E^-n O_A U_E^n) subset A+[-4,4]³`.
+
+Si un detector B_C está a distancia >4 celdas de A, el conmutador con el
+observable evolucionado es cero para todos los tiempos. Esto vale también
+en el sector físico, cualquier estado y n negativo. No es una extrapolación
+desde tiempos cortos ni una estimación que crezca como 4|n|.
+
+Puede haber influencia próxima y dinámica no escalar, pero no transporte
+balístico a distancias crecientes para esta regla. El testigo de energía 16
+recibe fase exp(-16i), distinta de 1, mientras el vacío queda fijo: el tick
+no es escalar. No se necesita confundir falta de propagación con trivialidad.
+
+## 7. Cierre de la receta y obligación pendiente
+
+La construcción resuelve algebraicamente conservación, localidad estricta
+y selección de referencia finita. Falla la condición de excitaciones sin
+gap y de propagación del objetivo tensorial. Se cierra este intento sin
+variar el ángulo, los pesos o el dressing.
+
+El argumento de soporte se aplica a toda la receta `D F D†` con D de alcance
+fijo y F un bloque de puertas locales mutuamente conmutantes: las potencias
+siguen teniendo soporte fijo. No se aplica a cualquier QCA que conserve un
+Hamiltoniano conmutante; un tick diferente podría, por ejemplo, transportar
+sus términos. La prueba del gap depende de los proyectores y pesos fijados.
+
+El siguiente candidato necesita un mecanismo que permita excitaciones de
+energía arbitrariamente pequeña y transporte sostenido, conservando a la vez
+una energía local y una referencia controlada. Conjugar este parent por más
+capas de profundidad fija no resuelve ninguno de los dos fallos.
+No se ha especificado todavía esa construcción crítica; permanece
+`CRITICAL_CONSERVED_ENERGY_CONSTRUCTION_OPEN`. El resultado actual no autoriza
+una batería IR ni un nuevo rescate del control q=3 anterior.
+
+=== DOCUMENT 7: verify_inverse_gravity_dressed_parent.py ===
+
+#!/usr/bin/env python3
+"""Exact certificate for the explicitly specified dressed commuting parent.
+
+Contract: theory/INVERSE_GRAVITY_DRESSED_PARENT_GATE.md.
+Spatial claims are proved in the report; no many-body matrix is simulated.
+"""
+
+from itertools import product
+
+import sympy as sp
+
+from verify_inverse_gravity_constraint_module import (
+    overlap_by_translation, real_scalar_stencils, real_vector_stencils,
+)
+from verify_inverse_gravity_local_gates import real_r, real_w, polynomial
+from verify_inverse_gravity_full_tick_dynamics import stencil_charges, geometric_charges
+
+
+def zero(matrix):
+    return all(sp.simplify(value) == 0 for value in matrix)
+
+
+def main():
+    print(f"SymPy {sp.__version__}; exact arithmetic")
+    for a in range(3):
+        for b in range(3):
+            assert all(v % 3 == 0 for v in overlap_by_translation(
+                real_r(a), real_vector_stencils(b)).values())
+        assert all(v % 3 == 0 for v in overlap_by_translation(
+            real_scalar_stencils(), real_w(a)).values())
+    variables = sp.symbols("x y z", nonzero=True)
+    assert zero(sum((polynomial(real_r(a), variables) for a in range(3)), sp.zeros(6, 1))
+                - polynomial(real_scalar_stencils(), variables))
+    print("PASS spatial algebra: R/V and T/S; redundancy sum r_aa=c")
+
+    omega = -sp.Rational(1, 2) + sp.I*sp.sqrt(3)/2
+    r = sp.Matrix([[0, 0, 1], [1, 0, 0], [0, 1, 0]])
+    z = sp.diag(1, omega, sp.simplify(omega**2))
+    t = z.adjoint()
+    pi = (sp.eye(3)+r+r*r)/3
+    h = sp.eye(3)-pi
+    pi_t = (sp.eye(3)+t+t*t)/3
+    d = (sp.sqrt(3)/2+sp.I/2)*(sp.eye(3)+(-sp.I-1)*pi_t)
+    assert zero(pi*pi-pi) and zero(h*h-h)
+    assert zero(d.adjoint()*d-sp.eye(3))
+    dressed_h = (d*h*d.adjoint()).applyfunc(sp.simplify)
+    ground = (d*pi*d.adjoint()).applyfunc(sp.simplify)
+    phase = sp.symbols("phase", nonzero=True)
+    f = pi+phase*h
+    f_inverse = pi+h/phase  # Equals F† for a unit-modulus phase.
+    u = d*f*d.adjoint()
+    u_inverse = d*f_inverse*d.adjoint()
+    assert zero(u_inverse*u-sp.eye(3))
+    assert zero(u_inverse*dressed_h*u-dressed_h)
+    assert zero(u*ground-ground) and zero(dressed_h*ground)
+    assert dressed_h != h
+    assert sp.simplify(sp.trace(dressed_h)) == 2
+    assert sp.simplify(sp.trace(ground)) == 1
+    print("PASS auxiliary dressing: changed parent, exact inverse, conserved energy, fixed ground projector")
+
+    nonzero_weights = []
+    for chars in product(range(3), repeat=3):
+        if sum(chars) % 3 == 0:
+            count = sum(v != 0 for v in chars)
+            if count:
+                nonzero_weights.append(count)
+    assert min(nonzero_weights) == 2
+    assert set(nonzero_weights) == {2, 3}
+    print("PASS vertex characters: S=1 excludes exactly one violated R; global positive gap >=2")
+
+    charges = stencil_charges(0, (1, 1, 1))
+    assert charges == geometric_charges(0, (0, 0, 0))
+    violated = [value for value in charges.values() if value % 3]
+    assert len(violated) == 16
+    assert all(sum(charges.get((a, vertex), 0) for a in range(3)) % 3 == 0
+               for vertex in set(vertex for _, vertex in charges))
+    print("PASS fixed physical excitation: T_x creates 16 violated R, energy=16")
+    print("CERTIFIED ENERGY GAP INTERVAL: 2 <= gap(K_E|physical) <= 16")
+    print("Scope: interval uniform on admitted tori; no claim that either endpoint is the exact gap")
+    print("VERDICT: DRESSED_PARENT_ALGEBRA_PASS_AUTHOR_SIDE")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 8: 2026-10-08--inverse-gravity-dressed-parent-certificate.txt ===
+
+SymPy 1.14.0; exact arithmetic
+PASS spatial algebra: R/V and T/S; redundancy sum r_aa=c
+PASS auxiliary dressing: changed parent, exact inverse, conserved energy, fixed ground projector
+PASS vertex characters: S=1 excludes exactly one violated R; global positive gap >=2
+PASS fixed physical excitation: T_x creates 16 violated R, energy=16
+CERTIFIED ENERGY GAP INTERVAL: 2 <= gap(K_E|physical) <= 16
+Scope: interval uniform on admitted tori; no claim that either endpoint is the exact gap
+VERDICT: DRESSED_PARENT_ALGEBRA_PASS_AUTHOR_SIDE

@@ -73,6 +73,16 @@ a decreasing gap lower bound or moving fixed-cost defects is insufficient.
 `CRITICAL_CONSERVED_ENERGY_CONSTRUCTION_OPEN` remains unchanged. No new model,
 contract relaxation or further external round is opened by this consultation.
 
+Direct instruction «prueba con codex» authorizes the same sealed input via
+`revision-ciega astra` / `codex exec`, requested `gpt-6-astra`, effort high.
+Its [record](../debates/2026-10-08--inverse-gravity-codex-consult/README.md)
+is `FAILED_NO_COMPLETED_RESPONSE`: initial read-only filesystem startup
+failure and an approved retry outside the sandbox timing out after 600 s.
+Input hash matches Grok/DeepSeek, without DeepSeek's answer being attached.
+No reviewer verdict or scientific recommendation exists. Same-family Codex
+would not count as independent verification even if completed. DeepSeek
+remains the only completed consultation; all scientific statuses are unchanged.
+
 The [IG1b local-gate contract](../theory/INVERSE_GRAVITY_LOCAL_GATE_GATE.md)
 and certificate were frozen at `601463b`, then executed with exact arithmetic
 and exit 0: `LOCAL_CONSTRAINT_PRESERVING_NONSCALAR_GATE_PASS_AUTHOR_SIDE`.
