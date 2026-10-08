@@ -1,0 +1,13 @@
+PASS R_xx/V: integer Laurent and independent real-space correlations
+PASS R_yy/V: integer Laurent and independent real-space correlations
+PASS R_xy/V: integer Laurent and independent real-space correlations
+PASS R/S and R/R: all words are pure commuting X products
+PASS axial tangent symbol: a(p)*diag(-1,1), a(p)=4 sin(p/2)^2~p^2
+PASS rank=2 for nonzero axial p; zero symbol at node; TT coefficient tensors
+FINITE_PASS L=4: 384 distinct signed translated words, V-neutral, exact H_J costs
+FINITE_PASS L=6: 1296 distinct signed translated words, V-neutral, exact H_J costs
+PASS witness coefficients: <0|D_R|0>=J*diag(207/4,54)
+Environment: SymPy 1.14.0
+VERDICT: CURVATURE_PROBE_ALGEBRA_CONTROLS_PASS
+Scope: stencil algebra, tangent symbol and finite sparse-word costs.
+No true-ground correlations, physical mode count or dispersion certified.

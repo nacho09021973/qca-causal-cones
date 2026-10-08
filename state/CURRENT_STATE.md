@@ -1,5 +1,74 @@
 # CURRENT_STATE
 
+## IG-S2 constraint-preserving curvature probes — 2026-10-08
+
+The user accepted the bounded R-operator route to test exact constraint
+preservation, axial TT tangent content and derivative factors.
+The [contract](../theory/INVERSE_GRAVITY_CURVATURE_PROBE_GATE.md) was frozen at
+`6ef247d` and the permanent local code at `63ca29d` before execution.
+The [report](../reports/2026-10-08--ig-s2-curvature-probe-preflight.md)
+records `CONSTRAINT_PRESERVING_PROBE_PASS_AUTHOR_SIDE /
+AXIAL_TANGENT_TENSOR_SYMBOL_PASS_AUTHOR_SIDE` for a fixed R_xx/R_yy/R_xy
+compact pair. Each probe commutes with every S/V and hence H_U; H_g also
+commutes, so the full double commutator reduces exactly to H_J.
+
+The axial tangent multiplier is `4 sin(p/2)^2`, of order p^2.
+A product-state witness with double-commutator expectation
+`J*diag(207/4,54)` refutes a state-independent p^4 operator-norm bound.
+The [exact certificate](../reports/2026-10-08--ig-s2-curvature-probe-certificate.txt)
+passed with exit 0. Its fixed-torus checks are auxiliary to the analytic
+all-volume identities, not a spectral extrapolation.
+`GROUND_STATE_CORRELATION_AND_TENSOR_SPECTRUM_OPEN`:
+the formal derivative multiplier is not an exact replacement of compact
+operators. No true-vacuum Gram/energy estimate or helicity mode count is
+established, and no scientific promotion or independent review is recorded.
+
+## IG-S2 method-three author-side preflight — 2026-10-08
+
+Direct user instruction "ok, primero el metodo tres" selects the commutator
+route. The [contract](../theory/INVERSE_GRAVITY_SMA_TENSOR_PREFLIGHT_GATE.md)
+was frozen at `737e2a6`, with permanent local code at `d402af8` before
+execution. The [report](../reports/2026-10-08--ig-s2-method-three-commutator.md)
+derives the exact full-H_N double commutator for a fixed compact sine-probe
+pair on q=3 even tori. Its true-ground expectation obeys
+`0<=F<=D<=(216 U1+36 J) I_2` uniformly in volume.
+Exact local controls passed with exit 0 and SymPy 1.14.0; the
+[certificate](../reports/2026-10-08--ig-s2-method-three-certificate.txt)
+checks local identities and witness coefficients, not a many-body spectrum.
+
+A product-state witness refutes a state-independent O(p^2) operator bound
+for this pair. The alternate route is
+`SPECTRAL_UPPER_BOUND_CONDITIONAL_ON_GRAM`: a true-ground-space-subtracted
+Gram bound `G(p_L)>=g_* L/(2pi) I_2` would suffice. That bound and physical
+tensor admission remain OPEN. The probes have TT tangent motivation but
+carry microscopic constraint charge. Six finite-order staggered Z symmetries
+and local variance sum rules do not alone imply the missing divergence.
+No independent review, spectral promotion, rest-sector separation, QCA
+energy–tick bridge or Einstein result is obtained.
+
+## IG-S2 documentary continuation and corrections — 2026-10-08
+
+On `research/inverse-gravity-design`, the user requested the N-type ground-energy
+preflight, fixed the projected q=3 reference at `801bc0e`, and then requested
+five references or five methods. The
+[five-method report](../reports/2026-10-08--ig-s2-five-ground-energy-methods.md)
+formulates local positive certificates, residual bounds, matrix commutator
+bounds, thermal trace bounds and exact block elimination.
+Status: `METHODS_FORMULATED / NTYPE_SPECTRAL_UPPER_BOUND_OPEN`.
+Their finite-dimensional implications are author-side derivations; the
+N-type quantitative hypotheses have not been established or independently
+reviewed. This is a documentary checkpoint, not a spectral promotion.
+
+The proof published at `edf54ff` misread H_J's trace cosine. The
+[corrected refutation](../reports/2026-10-08--inverse-gravity-ground-reference-refutation.md)
+retains that provenance and rederives the same non-eigenstate conclusion for
+the fixed q=3 reference and positive J. The initial audit's assertion that
+every variational route requires separately knowing E_0 is also corrected:
+ground-state commutator identities can cancel E_0, subject to correlation
+and complete-ground-space orthogonality bounds. The five-method formulation
+itself opened no microscopic probe pair; the later direct selection of M3
+is recorded above. All gravity and energy–tick obligations remain OPEN.
+
 ## Branch-local inverse-gravity successor — 2026-10-08
 
 Direct user instruction authorizes opening the independent research line on

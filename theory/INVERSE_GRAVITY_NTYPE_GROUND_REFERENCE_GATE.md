@@ -5,6 +5,13 @@ Branch: `research/inverse-gravity-design`
 Parent: [inverse-gravity design charter](INVERSE_GRAVITY_DESIGN_CHARTER.md)
 Status: `REFUTED_AS_EXACT_GROUND_REFERENCE`
 
+Author-side correction (2026-10-08): the first execution at `edf54ff`
+misread the trace cosine in H_J. The linked execution report now contains
+the repaired q=3 proof, retaining the failed proof's commit as provenance.
+The candidate frozen at `801bc0e` is unchanged; no independent review is
+claimed. This exact-reference test is one possible method, not a necessary
+prerequisite for every excitation bound.
+
 ## 1. Question
 
 Does the following fixed reference state provide the exact finite-volume ground
@@ -109,8 +116,11 @@ H_N(L)|\Omega_L\rangle\ne e_L|\Omega_L\rangle
 \quad\text{for every scalar }e_L.
 \]
 
-The proof uses the exact compact operators and the positivity of the printed
-\(H_J\) coefficients. This refutes this candidate as an exact ground-state
+The repaired proof uses the exact compact operators and the q=3 diagonal
+energies of the complete \(H_J\), including its negative trace-cosine term.
+This refutes this candidate as an exact ground-state
 reference; it does not refute the N-type Hamiltonian or all possible ground
-references. The remaining obligation is to select and freeze a different
-reference before attempting the \(E_0(L)\) lower-bound gate.
+references. Alternatives include a different controlled reference or a
+ground-state commutator method that eliminates the absolute ground energy.
+See the five-method preflight in
+`reports/2026-10-08--ig-s2-five-ground-energy-methods.md`.

@@ -1,0 +1,11 @@
+PASS q=3 clock orientation and Hermitian compact sine
+PASS 120 exact 9x9 nested-Weyl and sine identities
+PASS full 27-state diagonal vertex and J witness coefficients 9/4, 9/2
+PASS vector-link incidences: diagonal=2, face=4
+PASS |0_L> witness: diag(9 U1+9 J/4, 9 U1+9 J/2), independent of p
+PASS support-count constants for C_*=216 U1+36 J (analytic norm proof in report)
+PASS transverse-traceless coefficient tensors and source off-diagonal factor
+Environment: SymPy 1.14.0
+VERDICT: LOCAL_SMA_COMMUTATOR_CONTROLS_PASS
+Scope: local algebra/witness coefficients only; all-L results require analytic proof.
+No true-ground Gram matrix, mode count, dispersion, QCA or gravity certified.
