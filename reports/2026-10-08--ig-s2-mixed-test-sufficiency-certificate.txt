@@ -1,0 +1,8 @@
+PASS tau conditional central kinetic cost=3 J/2; other diagonal averages unchanged
+PASS twelve scalar face shifts: <T^dagger[H_J,T]>_tau=75 J/2
+PASS tau curvature numerator coefficients: diag(36,99/2)*J
+PASS coherent mixed cost determinant=-U2^2/4; explicit cost=-U2^2/(150 J)
+Environment: SymPy 1.14.0
+VERDICT: MIXED_TEST_SUFFICIENCY_AUXILIARY_CONTROLS_PASS
+Scope: local conditional averages, stencil counts, symbolic 2x2 matrix.
+No true-ground numerator, Gram or spectrum computed.
