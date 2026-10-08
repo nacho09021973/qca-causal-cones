@@ -275,6 +275,17 @@ Rules for any new scientific script:
 - Every retained scientific result must have permanent, traced generating
   code; no ephemeral scripts may supply evidence.
 
+## Mixed-test sufficiency audit (2026-10-08)
+
+`verify_inverse_gravity_mixed_test_sufficiency.py` checks the local q=3
+conditional kinetic average, face counts, and symbolic mixed cost matrix
+for the explicit false-positive density. Contract:
+`theory/INVERSE_GRAVITY_MIXED_TEST_SUFFICIENCY_GATE.md`.
+Run `python3 -B scripts/verify_inverse_gravity_mixed_test_sufficiency.py`
+from the repo root; optional `--output <path>` retains passing output.
+The all-volume state-admission and stationarity arguments are analytic;
+the code does not compute an N-type vacuum or bound its tensor numerator.
+
 ## Mixed ground stationarity test (2026-10-08)
 
 `verify_inverse_gravity_mixed_ground_test.py` checks the preregistered local
