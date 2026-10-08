@@ -1,0 +1,10 @@
+PASS local projector, partial shift, Y Hermitian, norm(Y)=1
+PASS scalar-orbit sign control: <0|i[H_scalar,Y]|0>=-3 U2
+PASS scalar-word unique common diagonal centre, all three species present
+FINITE_PASS L=4: 128 distinct signed scalar translates; one target match
+FINITE_PASS L=6: 432 distinct signed scalar translates; one target match
+PASS H_g structural exclusion: cosine and sine-product words use at most two diagonal species
+Environment: SymPy 1.14.0
+VERDICT: MIXED_STATIONARITY_AUXILIARY_CONTROLS_PASS
+Scope: local algebra, fixed-torus collisions, diagonal-species exclusion.
+No true-ground correlations, tensor cost or spectrum computed.
