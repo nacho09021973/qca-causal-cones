@@ -3,7 +3,7 @@
 Date: 2026-10-08
 Branch: `research/inverse-gravity-design`
 Parent: [inverse-gravity design charter](INVERSE_GRAVITY_DESIGN_CHARTER.md)
-Status: `OPEN`
+Status: `REFUTED_AS_EXACT_GROUND_REFERENCE`
 
 ## 1. Question
 
@@ -73,14 +73,17 @@ The following are obligations, not assumed properties:
 1. `CONSTRAINT_PASS`: \(S(i)|\Omega_L\rangle=|\Omega_L\rangle\) and
    \(V(i,i+a)|\Omega_L\rangle=|\Omega_L\rangle\) for every admissible site
    and direction.
-2. `EIGENSTATE_OR_REFUTED`: determine whether
-   \(H_N(L)|\Omega_L\rangle=e_L|\Omega_L\rangle\) for a scalar \(e_L\).
+2. `EIGENSTATE_OR_REFUTED`: **refuted for \(J>0\)**; see the execution report
+   `reports/2026-10-08--inverse-gravity-ground-reference-refutation.md`.
 3. `GROUND_LOWER_BOUND_OR_REFUTED`: determine whether there is a controlled
    bound \(H_N(L)-e_L\mathbf1\ge0\), or a lower bound whose error relative to
    the candidate is \(O(1/L)\) in the excitation estimate.
 
-Only item 1 follows from the already frozen constraint algebra. Items 2 and 3
-are open because \([H_U,H_J]\ne0\) and \([H_U,H_g]\ne0\).
+Only item 1 follows from the already frozen constraint algebra. Item 2 is
+refuted for this candidate. Item 3 is not evaluated as a separate
+lower-bound problem because failure of the eigenstate condition already
+rejects this reference as the exact ground state. The refutation is not a
+statement about other references or about all N-type ground states.
 
 ## 5. Exclusions
 
@@ -97,16 +100,17 @@ No finite-size diagonalization or exploratory scan is authorized by this
 contract. Any computation producing a retained result requires a permanent
 verifier and a separate execution report.
 
-## 6. Immediate falsifiable obligation
+## 6. Result and remaining obligation
 
-For the frozen candidate, prove or refute the single operator statement
+The exact-ground-state statement is refuted for \(J>0\):
 
 \[
-\exists e_L:\quad H_N(L)|\Omega_L\rangle=e_L|\Omega_L\rangle
-\quad\text{and}\quad
-H_N(L)-e_L\mathbf1\ge0
+H_N(L)|\Omega_L\rangle\ne e_L|\Omega_L\rangle
+\quad\text{for every scalar }e_L.
 \]
 
-for all declared \(L\ge3\). A refutation of either conjunct refutes this
-candidate as an exact ground-state reference; it does not refute the N-type
-Hamiltonian or all possible ground references.
+The proof uses the exact compact operators and the positivity of the printed
+\(H_J\) coefficients. This refutes this candidate as an exact ground-state
+reference; it does not refute the N-type Hamiltonian or all possible ground
+references. The remaining obligation is to select and freeze a different
+reference before attempting the \(E_0(L)\) lower-bound gate.
