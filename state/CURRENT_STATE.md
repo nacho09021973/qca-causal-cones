@@ -50,6 +50,15 @@ limit; the low-energy bridge is empty of excitations below energy 2.
 `CRITICAL_CONSERVED_ENERGY_CONSTRUCTION_OPEN`. No parameters are rescued;
 R1/R3/R4 and Einstein remain OPEN, without independent review.
 
+Direct instruction «haz la consulta a grok» authorizes a bounded external
+consultation, superseding prior no-review authorization statements only for
+this assignment. Its [record](../debates/2026-10-08--inverse-gravity-grok-consult/README.md)
+is `FAILED_NO_COMPLETED_RESPONSE`: initial CLI connection error and an
+approved retry outside the restricted environment that timed out after 600 s.
+Both exact inputs have identical hashes; all provider/state artifacts are
+retained. No completed report, reviewer verdict or recommendation exists.
+Scientific evidence levels and the IG-S1 closure are unchanged.
+
 The [IG1b local-gate contract](../theory/INVERSE_GRAVITY_LOCAL_GATE_GATE.md)
 and certificate were frozen at `601463b`, then executed with exact arithmetic
 and exit 0: `LOCAL_CONSTRAINT_PRESERVING_NONSCALAR_GATE_PASS_AUTHOR_SIDE`.

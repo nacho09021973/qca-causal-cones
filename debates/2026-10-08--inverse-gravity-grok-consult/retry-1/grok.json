@@ -1,0 +1,1753 @@
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":"Preparing a single-round"}
+{"type":"thought","data":" adversarial scientific"}
+{"type":"thought","data":" consultation in Spanish."}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":"\n\nThe session is sealed"}
+{"type":"thought","data":" with no tools or navigation."}
+{"type":"thought","data":" I will audit IG-S1 "}
+{"type":"thought","data":"and answer the four "}
+{"type":"thought","data":"questions. I must redo"}
+{"type":"thought","data":" the critical proofs"}
+{"type":"thought","data":" for conservation, reference,"}
+{"type":"thought","data":" interval bounds, and"}
+{"type":"thought","data":" radius constraints."}
+{"type":"thought","data":"\n\nI will audit each "}
+{"type":"thought","data":"claim for sign errors,"}
+{"type":"thought","data":" degeneracy, volume "}
+{"type":"thought","data":"dependence, and illegitimate"}
+{"type":"thought","data":" qutrit block proofs."}
+{"type":"thought","data":" Each claim gets classified"}
+{"type":"thought","data":" as valid with hypotheses,"}
+{"type":"thought","data":" incomplete, or false."}
+{"type":"thought","data":" I will also examine"}
+{"type":"thought","data":" whether IG-S0 imposes"}
+{"type":"thought","data":" unnecessarily strong"}
+{"type":"thought","data":" conditions on energy"}
+{"type":"thought","data":" conservation and quasiphase"}
+{"type":"thought","data":" bridges across the "}
+{"type":"thought","data":"low-energy sector. I"}
+{"type":"thought","data":" must distinguish route"}
+{"type":"thought","data":" requirements from real"}
+{"type":"thought","data":" physical necessity without proposing retroactive"}
+{"type":"thought","data":" relaxations."}
+{"type":"thought","data":"\n\nThe response will "}
+{"type":"thought","data":"be structured as a four-part"}
+{"type":"thought","data":" verdict: IG-S1 assessment"}
+{"type":"thought","data":" with repairs, up to"}
+{"type":"thought","data":" five priority objections,"}
+{"type":"thought","data":" an A/B mechanism table"}
+{"type":"thought","data":" with first tests and"}
+{"type":"thought","data":" main costs, and a single"}
+{"type":"thought","data":" bounded next expediente."}
+{"type":"thought","data":" I will recommend at"}
+{"type":"thought","data":" most two concrete mechanisms"}
+{"type":"thought","data":" that simultaneously"}
+{"type":"thought","data":" solve reference selection,"}
+{"type":"thought","data":" gapless excitations,"}
+{"type":"thought","data":" and sustained propagation."}
+{"type":"thought","data":" Antecedents will cite"}
+{"type":"thought","data":" authors, identifiers,"}
+{"type":"thought","data":" and precise claims,"}
+{"type":"thought","data":" marked REFERENCIA_POR_VERIFICAR"}
+{"type":"thought","data":" when original access"}
+{"type":"thought","data":" is unavailable."}
+{"type":"thought","data":"\n\nThe IG-S1 construction"}
+{"type":"thought","data":" is now mapped out: "}
+{"type":"thought","data":"six qutrits per cell"}
+{"type":"thought","data":" on a Z³ lattice, sector"}
+{"type":"thought","data":" S=V=1, with commuting"}
+{"type":"thought","data":" projectors h_R and "}
+{"type":"thought","data":"the operator K_0 = sum"}
+{"type":"thought","data":" h_Raa(i). The proof"}
+{"type":"thought","data":" of conservation begins"}
+{"type":"thought","data":" by noting that because"}
+{"type":"thought","data":" the R operators commute,"}
+{"type":"thought","data":" the h_R projectors "}
+{"type":"thought","data":"commute as well. This"}
+{"type":"thought","data":" implies F = exp(-i "}
+{"type":"thought","data":"K_0) is a circuit identity"}
+{"type":"thought","data":" rather than a generic"}
+{"type":"thought","data":" Hamiltonian exponential."}
+{"type":"thought","data":" Consequently U_E = "}
+{"type":"thought","data":"D F D† reduces to D "}
+{"type":"thought","data":"exp(-i K_0) D†, which"}
+{"type":"thought","data":" equals exp(-i K_E)."}
+{"type":"thought","data":"\n\nThe conservation proof"}
+{"type":"thought","data":" is now fully verified."}
+{"type":"thought","data":" U_E† K_E U_E equals K_E through both the"}
+{"type":"thought","data":" exponential identity"}
+{"type":"thought","data":" and the explicit circuit"}
+{"type":"thought","data":" chain D F† K_0 F D†"}
+{"type":"thought","data":" = D K_0 D†. This holds"}
+{"type":"thought","data":" because F commutes "}
+{"type":"thought","data":"with K_0, which follows"}
+{"type":"thought","data":" from F being a function"}
+{"type":"thought","data":" of commuting projectors."}
+{"type":"thought","data":" The validity hinges"}
+{"type":"thought","data":" on three hypotheses:"}
+{"type":"thought","data":" all R_aa(i) commute"}
+{"type":"thought","data":" as X-type words, F "}
+{"type":"thought","data":"is built from commuting"}
+{"type":"thought","data":" projectors, and D is"}
+{"type":"thought","data":" unitary. The next step"}
+{"type":"thought","data":" is to confirm that "}
+{"type":"thought","data":"every R operator truly"}
+{"type":"thought","data":" commutes."}
+{"type":"thought","data":"\n\nAll R operators commute."}
+{"type":"thought","data":" T gates are Z-type "}
+{"type":"thought","data":"and commute among themselves,"}
+{"type":"thought","data":" but R and T may not"}
+{"type":"thought","data":" commute.\n\nThe auxiliary"}
+{"type":"thought","data":" qutrit block is a valid"}
+{"type":"thought","data":" local identity check"}
+{"type":"thought","data":" with R=X and T=Z^{-1}."}
+{"type":"thought","data":" It is not a network"}
+{"type":"thought","data":" proof, and the report"}
+{"type":"thought","data":" correctly treats it"}
+{"type":"thought","data":" as such.\n\nF equals "}
+{"type":"thought","data":"exactly exp(-i K_0)."}
+{"type":"thought","data":" Because each h_α is"}
+{"type":"thought","data":" a projector, they commute"}
+{"type":"thought","data":" and exponentiate to"}
+{"type":"thought","data":" a product of commuting"}
+{"type":"thought","data":" terms. For a projector"}
+{"type":"thought","data":" h, exp(-i h) = Π + "}
+{"type":"thought","data":"e^{-i} h, so F reduces"}
+{"type":"thought","data":" to the exponential "}
+{"type":"thought","data":"of K_0."}
+{"type":"thought","data":"\n\nConservation of K_E"}
+{"type":"thought","data":" holds on the full Hilbert"}
+{"type":"thought","data":" space, so it applies"}
+{"type":"thought","data":" to the physical sector."}
+{"type":"thought","data":" U_E preserves S=V=1"}
+{"type":"thought","data":" because F commutes "}
+{"type":"thought","data":"with both S and V. F"}
+{"type":"thought","data":" is a function of R "}
+{"type":"thought","data":"operators that commute"}
+{"type":"thought","data":" with V, and IG1a established"}
+{"type":"thought","data":" that R commute with"}
+{"type":"thought","data":" V."}
+{"type":"thought","data":"\n\nD preserves the physical"}
+{"type":"thought","data":" sector because T gates"}
+{"type":"thought","data":" commute with both S"}
+{"type":"thought","data":" and V. The ground projector"}
+{"type":"thought","data":" G_0 is now being examined."}
+{"type":"thought","data":" It is defined as the"}
+{"type":"thought","data":" product of Π_Raa(i)"}
+{"type":"thought","data":" and Π_Va(i). Claims"}
+{"type":"thought","data":" about its non-vanishing,"}
+{"type":"thought","data":" its role as the full"}
+{"type":"thought","data":" ground projector in"}
+{"type":"thought","data":" the physical sector,"}
+{"type":"thought","data":" and the construction"}
+{"type":"thought","data":" of ρ = G_E / Tr G_E"}
+{"type":"thought","data":" are under scrutiny."}
+{"type":"thought","data":" The non-vanishing argument"}
+{"type":"thought","data":" begins from a product"}
+{"type":"thought","data":" state with X=1 on each"}
+{"type":"thought","data":" register and applies"}
+{"type":"thought","data":" V averages."}
+{"type":"thought","data":"\n\nThe non-vanishing "}
+{"type":"thought","data":"argument is being reconstructed"}
+{"type":"thought","data":" in the X eigenbasis."}
+{"type":"thought","data":" The state with all "}
+{"type":"thought","data":"registers at X=1 is "}
+{"type":"thought","data":"a +1 eigenstate of every"}
+{"type":"thought","data":" R operator. V averages"}
+{"type":"thought","data":" are now being checked"}
+{"type":"thought","data":" to see how they permute"}
+{"type":"thought","data":" these states and whether"}
+{"type":"thought","data":" the identity term guarantees"}
+{"type":"thought","data":" a non-zero average."}
+{"type":"thought","data":"\n\nThe computational "}
+{"type":"thought","data":"basis is the Z eigenbasis."}
+{"type":"thought","data":" In the X eigenbasis,"}
+{"type":"thought","data":" Z maps X-eigenstates"}
+{"type":"thought","data":" to X-eigenstates while"}
+{"type":"thought","data":" multiplying their eigenvalues"}
+{"type":"thought","data":" by ω. A product of "}
+{"type":"thought","data":"Z operators therefore"}
+{"type":"thought","data":" permutes the X-eigenbasis."}
+{"type":"thought","data":" Applying Π_V to the"}
+{"type":"thought","data":" state with all registers"}
+{"type":"thought","data":" at X=1 produces a superposition"}
+{"type":"thought","data":" of X-configurations."}
+{"type":"thought","data":"\n\nThe identity term "}
+{"type":"thought","data":"in each Π_V average "}
+{"type":"thought","data":"guarantees a non-zero"}
+{"type":"thought","data":" component of the all-X=1"}
+{"type":"thought","data":" state. Because Π_R "}
+{"type":"thought","data":"leaves that state invariant,"}
+{"type":"thought","data":" the remaining question"}
+{"type":"thought","data":" is whether the product"}
+{"type":"thought","data":" of all Π_V operators"}
+{"type":"thought","data":" survives. This is resolved"}
+{"type":"thought","data":" by the standard stabilizer"}
+{"type":"thought","data":" argument: if the abelian"}
+{"type":"thought","data":" stabilizer group generated"}
+{"type":"thought","data":" by R and V contains"}
+{"type":"thought","data":" no non-trivial scalar,"}
+{"type":"thought","data":" the projector is non-zero."}
+{"type":"thought","data":"\n\nThe argument for non-vanishing"}
+{"type":"thought","data":" G_0 is circular. It"}
+{"type":"thought","data":" claims the abelian "}
+{"type":"thought","data":"stabilizer group has"}
+{"type":"thought","data":" no non-trivial scalar"}
+{"type":"thought","data":" phases because the "}
+{"type":"thought","data":"group has a non-empty"}
+{"type":"thought","data":" common kernel, yet "}
+{"type":"thought","data":"it also uses that same"}
+{"type":"thought","data":" kernel to guarantee"}
+{"type":"thought","data":" the projector is non-zero."}
+{"type":"thought","data":" A cleaner independent"}
+{"type":"thought","data":" proof starts from the"}
+{"type":"thought","data":" all-X=1 state and applies"}
+{"type":"thought","data":" V averages, noting "}
+{"type":"thought","data":"that V acts as permutations"}
+{"type":"thought","data":" with positive coefficients"}
+{"type":"thought","data":" and the identity term"}
+{"type":"thought","data":" guarantees a non-zero"}
+{"type":"thought","data":" average."}
+{"type":"thought","data":"\n\nThe non-vanishing "}
+{"type":"thought","data":"argument is being reconsidered."}
+{"type":"thought","data":" Applying many Π_V operators"}
+{"type":"thought","data":" may not guarantee a"}
+{"type":"thought","data":" non-zero product, because"}
+{"type":"thought","data":" the stabilizer group"}
+{"type":"thought","data":" could still contain"}
+{"type":"thought","data":" a non-trivial scalar"}
+{"type":"thought","data":" phase. The key question"}
+{"type":"thought","data":" is whether the R/V "}
+{"type":"thought","data":"group contains no non-trivial"}
+{"type":"thought","data":" scalar. IG1a establishes"}
+{"type":"thought","data":" that c·v_a = 0 as Laurent"}
+{"type":"thought","data":" identities, which implies"}
+{"type":"thought","data":" commutation with S "}
+{"type":"thought","data":"and V, but it does not"}
+{"type":"thought","data":" directly prove that"}
+{"type":"thought","data":" the group contains "}
+{"type":"thought","data":"no ω^k I for k≠0."}
+{"type":"thought","data":"\n\nThe scalar-phase argument"}
+{"type":"thought","data":" is being refined. A"}
+{"type":"thought","data":" product of R and V "}
+{"type":"thought","data":"operators can equal "}
+{"type":"thought","data":"a phase times identity"}
+{"type":"thought","data":" only if both the total"}
+{"type":"thought","data":" X-word and total Z-word"}
+{"type":"thought","data":" vanish identically "}
+{"type":"thought","data":"on the lattice, while"}
+{"type":"thought","data":" the accumulated commutator"}
+{"type":"thought","data":" phase remains non-trivial."}
+{"type":"thought","data":" Because the generators"}
+{"type":"thought","data":" commute exactly, the"}
+{"type":"thought","data":" group is abelian with"}
+{"type":"thought","data":" trivial commutator "}
+{"type":"thought","data":"phases. The remaining"}
+{"type":"thought","data":" question is whether"}
+{"type":"thought","data":" the only relations "}
+{"type":"thought","data":"among the R operators"}
+{"type":"thought","data":" are the independent"}
+{"type":"thought","data":" ones such as Rxx Ryy"}
+{"type":"thought","data":" Rzz = S, and whether"}
+{"type":"thought","data":" the V operators satisfy"}
+{"type":"thought","data":" w_x + w_y + w_z = 0."}
+{"type":"thought","data":"\n\nGlobal relations on"}
+{"type":"thought","data":" a torus are harmless."}
+{"type":"thought","data":" A product of all S "}
+{"type":"thought","data":"operators over vertices"}
+{"type":"thought","data":" might equal the identity,"}
+{"type":"thought","data":" but that is a phase-1"}
+{"type":"thought","data":" operator word. Because"}
+{"type":"thought","data":" every generator commutes"}
+{"type":"thought","data":" exactly, reordering"}
+{"type":"thought","data":" carries no phase cost."}
+{"type":"thought","data":" The projector therefore"}
+{"type":"thought","data":" vanishes only if some"}
+{"type":"thought","data":" product equals ω^k "}
+{"type":"thought","data":"I with k ≠ 0."}
+{"type":"thought","data":"\n\nThe certificate script"}
+{"type":"thought","data":" does not verify G_0"}
+{"type":"thought","data":" ≠ 0 on the lattice."}
+{"type":"thought","data":" It only checks the "}
+{"type":"thought","data":"auxiliary qutrit. The"}
+{"type":"thought","data":" spatial non-vanishing"}
+{"type":"thought","data":" is therefore a report"}
+{"type":"thought","data":" argument, not a computationally"}
+{"type":"thought","data":" certified property."}
+{"type":"thought","data":"\n\nThe algebraic structure"}
+{"type":"thought","data":" is valid under its "}
+{"type":"thought","data":"stated hypotheses, but"}
+{"type":"thought","data":" the proof of G_0 ≠ "}
+{"type":"thought","data":"0 remains incomplete"}
+{"type":"thought","data":" as a rigorous lattice"}
+{"type":"thought","data":" argument. The degeneracy"}
+{"type":"thought","data":" claim is now being "}
+{"type":"thought","data":"verified: because K_0"}
+{"type":"thought","data":" is a sum of positive"}
+{"type":"thought","data":" projectors, its kernel"}
+{"type":"thought","data":" equals the intersection"}
+{"type":"thought","data":" of their kernels, which"}
+{"type":"thought","data":" is exactly the set "}
+{"type":"thought","data":"where all R operators"}
+{"type":"thought","data":" equal one. In the physical"}
+{"type":"thought","data":" sector, V=1 is already"}
+{"type":"thought","data":" enforced and S=1 follows"}
+{"type":"thought","data":" from the redundancy"}
+{"type":"thought","data":" relation Rxx Ryy Rzz"}
+{"type":"thought","data":" = S."}
+{"type":"thought","data":"\n\nThe ground projector"}
+{"type":"thought","data":" G_0 is the product "}
+{"type":"thought","data":"of commuting projectors"}
+{"type":"thought","data":" Π_R and Π_V, so it "}
+{"type":"thought","data":"projects onto the full"}
+{"type":"thought","data":" ground space in the"}
+{"type":"thought","data":" physical sector. The"}
+{"type":"thought","data":" trace Tr G_0 may grow"}
+{"type":"thought","data":" with system size L,"}
+{"type":"thought","data":" but the authors correctly"}
+{"type":"thought","data":" normalize to ρ = G_E"}
+{"type":"thought","data":" / Tr G_E as the maximally"}
+{"type":"thought","data":" mixed state on that"}
+{"type":"thought","data":" space."}
+{"type":"thought","data":"\n\nThe local limit of"}
+{"type":"thought","data":" the mixed state is "}
+{"type":"thought","data":"not proven. The unitary"}
+{"type":"thought","data":" evolution preserves"}
+{"type":"thought","data":" the ground projector"}
+{"type":"thought","data":" because F acts as identity"}
+{"type":"thought","data":" on all-R=1 states, "}
+{"type":"thought","data":"yielding a phase of "}
+{"type":"thought","data":"one. The lower bound"}
+{"type":"thought","data":" for the energy gap "}
+{"type":"thought","data":"is now being derived:"}
+{"type":"thought","data":" in the physical sector"}
+{"type":"thought","data":" S=V=1, each vertex "}
+{"type":"thought","data":"requires r_x + r_y +"}
+{"type":"thought","data":" r_z = 0 mod 3. A single"}
+{"type":"thought","data":" violated R operator"}
+{"type":"thought","data":" is therefore impossible,"}
+{"type":"thought","data":" so any positive energy"}
+{"type":"thought","data":" must involve at least"}
+{"type":"thought","data":" two violated operators"}
+{"type":"thought","data":" per vertex, giving "}
+{"type":"thought","data":"a minimum gap of two."}
+{"type":"thought","data":"\n\nThe lower bound of"}
+{"type":"thought","data":" two is valid only for"}
+{"type":"thought","data":" configurations that"}
+{"type":"thought","data":" are already realizable."}
+{"type":"thought","data":" It proves that any "}
+{"type":"thought","data":"such configuration cannot"}
+{"type":"thought","data":" have exactly one violated"}
+{"type":"thought","data":" R operator, but it "}
+{"type":"thought","data":"does not prove that "}
+{"type":"thought","data":"configurations with "}
+{"type":"thought","data":"two violations are actually"}
+{"type":"thought","data":" realizable."}
+{"type":"thought","data":"\n\nThe energy 16 witness"}
+{"type":"thought","data":" confirms the physical"}
+{"type":"thought","data":" sector is not the ground"}
+{"type":"thought","data":" space alone, so a finite"}
+{"type":"thought","data":" gap is guaranteed. "}
+{"type":"thought","data":"The authors do not claim"}
+{"type":"thought","data":" that M=2 is globally"}
+{"type":"thought","data":" realizable; they only"}
+{"type":"thought","data":" show that local vertices"}
+{"type":"thought","data":" can contribute 2 or"}
+{"type":"thought","data":" 3 to the energy."}
+{"type":"thought","data":"\n\nA potential hole in"}
+{"type":"thought","data":" the lower bound is "}
+{"type":"thought","data":"being examined. A configuration"}
+{"type":"thought","data":" with two violated R"}
+{"type":"thought","data":" operators at one vertex"}
+{"type":"thought","data":" and R=1 elsewhere may"}
+{"type":"thought","data":" not be globally realizable"}
+{"type":"thought","data":" as an X-eigenstate "}
+{"type":"thought","data":"assignment on the lattice."}
+{"type":"thought","data":" The R operators are"}
+{"type":"thought","data":" overlapping X-words,"}
+{"type":"thought","data":" so they are not independent"}
+{"type":"thought","data":" per vertex."}
+{"type":"thought","data":"\n\nThe map from X-configurations"}
+{"type":"thought","data":" to R-character assignments"}
+{"type":"thought","data":" is a linear map over"}
+{"type":"thought","data":" F_3. The image of this"}
+{"type":"thought","data":" map, intersected with"}
+{"type":"thought","data":" S=1 and V=1, determines"}
+{"type":"thought","data":" which energy values"}
+{"type":"thought","data":" M are possible. Because"}
+{"type":"thought","data":" neighboring R operators"}
+{"type":"thought","data":" share X operators, "}
+{"type":"thought","data":"their characters are"}
+{"type":"thought","data":" correlated. The local"}
+{"type":"thought","data":" vertex constraint is"}
+{"type":"thought","data":" therefore necessary"}
+{"type":"thought","data":" but may not be sufficient."}
+{"type":"thought","data":" The gap lower bound"}
+{"type":"thought","data":" of two is valid as "}
+{"type":"thought","data":"a necessary condition,"}
+{"type":"thought","data":" though it might not"}
+{"type":"thought","data":" be sharp. The authors"}
+{"type":"thought","data":" correctly avoid claiming"}
+{"type":"thought","data":" that either endpoint"}
+{"type":"thought","data":" is the exact gap."}
+{"type":"thought","data":"\n\nThe lower bound gap"}
+{"type":"thought","data":" ≥ 2 is now confirmed"}
+{"type":"thought","data":" as valid. A single "}
+{"type":"thought","data":"violated R operator "}
+{"type":"thought","data":"at one vertex would "}
+{"type":"thought","data":"violate the local sum"}
+{"type":"thought","data":" constraint, so no configuration"}
+{"type":"thought","data":" can have exactly one"}
+{"type":"thought","data":" violation. Because "}
+{"type":"thought","data":"energy is the total "}
+{"type":"thought","data":"count of violated operators,"}
+{"type":"thought","data":" the minimum positive"}
+{"type":"thought","data":" energy must be at least"}
+{"type":"thought","data":" two."}
+{"type":"thought","data":"\n\nThe upper bound is"}
+{"type":"thought","data":" verified by the T_x"}
+{"type":"thought","data":" operator on the origin"}
+{"type":"thought","data":" cube. It acts on any"}
+{"type":"thought","data":" physical R=1 state "}
+{"type":"thought","data":"to produce exactly 16"}
+{"type":"thought","data":" violated R operators,"}
+{"type":"thought","data":" giving energy 16. The"}
+{"type":"thought","data":" script confirms this"}
+{"type":"thought","data":" count and checks that"}
+{"type":"thought","data":" each vertex satisfies"}
+{"type":"thought","data":" the local sum constraint."}
+{"type":"thought","data":" Because T_x preserves"}
+{"type":"thought","data":" the physical sector"}
+{"type":"thought","data":" and is unitary, its"}
+{"type":"thought","data":" image is nonzero, and"}
+{"type":"thought","data":" aliasing is ruled out"}
+{"type":"thought","data":" for lattice sizes at"}
+{"type":"thought","data":" least six."}
+{"type":"thought","data":"\n\nThe T operator conjugates"}
+{"type":"thought","data":" R by a phase factor"}
+{"type":"thought","data":" equal to the overlap"}
+{"type":"thought","data":" of their Z- and X-words."}
+{"type":"thought","data":" Eight vertices with"}
+{"type":"thought","data":" characters (0, −1, "}
+{"type":"thought","data":"+1) each contribute "}
+{"type":"thought","data":"two violations, giving"}
+{"type":"thought","data":" the total of 16. The"}
+{"type":"thought","data":" exact spatial stencils"}
+{"type":"thought","data":" and charge-counting"}
+{"type":"thought","data":" functions are not attached,"}
+{"type":"thought","data":" so this count cannot"}
+{"type":"thought","data":" be independently verified."}
+{"type":"thought","data":"\n\nThe script’s 16-violation"}
+{"type":"thought","data":" count is valid as a"}
+{"type":"thought","data":" certified upper bound,"}
+{"type":"thought","data":" but the Gu–Wen cube"}
+{"type":"thought","data":" geometry is not attached."}
+{"type":"thought","data":" The claim that this"}
+{"type":"thought","data":" matches equations 48–49"}
+{"type":"thought","data":" therefore remains unverified."}
+{"type":"thought","data":"\n\nSign errors in the"}
+{"type":"thought","data":" R-character assignments"}
+{"type":"thought","data":" would not reduce the"}
+{"type":"thought","data":" violation count to "}
+{"type":"thought","data":"zero, so the energy "}
+{"type":"thought","data":"16 witness remains robust."}
+{"type":"thought","data":" The T_x operator preserves"}
+{"type":"thought","data":" both V=1 and S=1 because"}
+{"type":"thought","data":" T commutes with V and"}
+{"type":"thought","data":" with S. The gap is "}
+{"type":"thought","data":"volume-independent: "}
+{"type":"thought","data":"conjugation by D leaves"}
+{"type":"thought","data":" the spectrum of K unchanged,"}
+{"type":"thought","data":" so the energy gap is"}
+{"type":"thought","data":" uniform across lattice"}
+{"type":"thought","data":" sizes."}
+{"type":"thought","data":"\n\nThe lattice size L"}
+{"type":"thought","data":" ≥ 6 avoids wrapping"}
+{"type":"thought","data":" because the T operator"}
+{"type":"thought","data":" is local and R supports"}
+{"type":"thought","data":" are bounded in [-1,"}
+{"type":"thought","data":" 1]³. The auxiliary "}
+{"type":"thought","data":"qutrit is not used to"}
+{"type":"thought","data":" prove the gap for the"}
+{"type":"thought","data":" physical network. The"}
+{"type":"thought","data":" 27 characters describe"}
+{"type":"thought","data":" local vertex modes "}
+{"type":"thought","data":"only. Ground degeneracy"}
+{"type":"thought","data":" does not change the"}
+{"type":"thought","data":" energy gap above it."}
+{"type":"thought","data":" The reported bound "}
+{"type":"thought","data":"2 ≤ gap(K_E|physical)"}
+{"type":"thought","data":" ≤ 16 is uniform in "}
+{"type":"thought","data":"L."}
+{"type":"thought","data":"\n\nThe ground degeneracy"}
+{"type":"thought","data":" is topological and "}
+{"type":"thought","data":"does not close the energy"}
+{"type":"thought","data":" gap. The parent Hamiltonian’s"}
+{"type":"thought","data":" gap is therefore constant,"}
+{"type":"thought","data":" consistent with the"}
+{"type":"thought","data":" rejection of a radius"}
+{"type":"thought","data":" larger than four. The"}
+{"type":"thought","data":" next claim to verify"}
+{"type":"thought","data":" is that the unitary"}
+{"type":"thought","data":" evolution operator "}
+{"type":"thought","data":"U_E equals D F D†."}
+{"type":"thought","data":"\n\nThe operator identity"}
+{"type":"thought","data":" U_E^n = D F^n D† is"}
+{"type":"thought","data":" algebraically exact"}
+{"type":"thought","data":" because D† D = I. The"}
+{"type":"thought","data":" support of F is local"}
+{"type":"thought","data":" and bounded, so F^n"}
+{"type":"thought","data":" preserves that same"}
+{"type":"thought","data":" finite support for "}
+{"type":"thought","data":"all n including negative"}
+{"type":"thought","data":" powers."}
+{"type":"thought","data":"\n\nThe radius bound is"}
+{"type":"thought","data":" now being derived from"}
+{"type":"thought","data":" the support of F^n."}
+{"type":"thought","data":" Because F is a product"}
+{"type":"thought","data":" of commuting gates,"}
+{"type":"thought","data":" conjugating an observable"}
+{"type":"thought","data":" O_A by F^n only spreads"}
+{"type":"thought","data":" support where the gate"}
+{"type":"thought","data":" overlaps O_A. Each "}
+{"type":"thought","data":"factor of F acts on "}
+{"type":"thought","data":"a local region of diameter"}
+{"type":"thought","data":" at most two, so F^n"}
+{"type":"thought","data":" O F^{-n} has support"}
+{"type":"thought","data":" in A + [-2, 2]³. The"}
+{"type":"thought","data":" operators D and D† "}
+{"type":"thought","data":"each have diameter one,"}
+{"type":"thought","data":" giving the overall "}
+{"type":"thought","data":"bound A + [-4, 4]³. "}
+{"type":"thought","data":"The authors cite IG1b"}
+{"type":"thought","data":" to confirm that R supports"}
+{"type":"thought","data":" are contained within"}
+{"type":"thought","data":" cells i+[-1, 1]³."}
+{"type":"thought","data":"\n\nThe radius bound is"}
+{"type":"thought","data":" confirmed for the causal"}
+{"type":"thought","data":" cone of the QCA as "}
+{"type":"thought","data":"well as for observable"}
+{"type":"thought","data":" conjugation. A detector"}
+{"type":"thought","data":" more than four cells"}
+{"type":"thought","data":" from the origin cannot"}
+{"type":"thought","data":" commute with any evolved"}
+{"type":"thought","data":" observable at any time,"}
+{"type":"thought","data":" so the commutator vanishes."}
+{"type":"thought","data":" The argument relies"}
+{"type":"thought","data":" on the cell metric."}
+{"type":"thought","data":"\n\nThe report notes that"}
+{"type":"thought","data":" a different tick could"}
+{"type":"thought","data":" transport terms and"}
+{"type":"thought","data":" enlarge support, but"}
+{"type":"thought","data":" the current U_E = D"}
+{"type":"thought","data":" F D† does not. The "}
+{"type":"thought","data":"cancellation is exact"}
+{"type":"thought","data":" because D† D = I, so"}
+{"type":"thought","data":" approximate unitarity"}
+{"type":"thought","data":" or brickwork complications"}
+{"type":"thought","data":" are ruled out."}
+{"type":"thought","data":"\n\nThe authors do not"}
+{"type":"thought","data":" need to exhibit an "}
+{"type":"thought","data":"observable whose support"}
+{"type":"thought","data":" exactly saturates the"}
+{"type":"thought","data":" radius-four bound; "}
+{"type":"thought","data":"the upper bound is sufficient."}
+{"type":"thought","data":" A subtle point about"}
+{"type":"thought","data":" cell versus lattice-site"}
+{"type":"thought","data":" coordinates in the "}
+{"type":"thought","data":"duplicated coordinate"}
+{"type":"thought","data":" system is noted, but"}
+{"type":"thought","data":" the argument is accepted"}
+{"type":"thought","data":" as stated in IG1b."}
+{"type":"thought","data":"\n\nThe script simulates"}
+{"type":"thought","data":" a 3-level toy model"}
+{"type":"thought","data":" with R=X and T=Z^{-1},"}
+{"type":"thought","data":" not the full 6-register"}
+{"type":"thought","data":" cell or lattice. It"}
+{"type":"thought","data":" verifies conservation"}
+{"type":"thought","data":" identities as algebraic"}
+{"type":"thought","data":" relations, but spatial"}
+{"type":"thought","data":" claims remain separate."}
+{"type":"thought","data":" The formula d = (√3/2"}
+{"type":"thought","data":" + i/2)(I + (-i-1)π_T)"}
+{"type":"thought","data":" is checked against "}
+{"type":"thought","data":"IG1b using θ=π/3."}
+{"type":"thought","data":"\n\nThe local gate algebra"}
+{"type":"thought","data":" check is valid. Because"}
+{"type":"thought","data":" U_E = exp(-i K_E) and"}
+{"type":"thought","data":" energies are integers,"}
+{"type":"thought","data":" the quasiphase of the"}
+{"type":"thought","data":" evolution operator "}
+{"type":"thought","data":"is exactly e^{-i M}."}
+{"type":"thought","data":" For M ≥ 2 this phase"}
+{"type":"thought","data":" is not unity. The IG-S0"}
+{"type":"thought","data":" bridge test with Λ "}
+{"type":"thought","data":"< 2 therefore sees only"}
+{"type":"thought","data":" the vacuum, so it is"}
+{"type":"thought","data":" vacuous for excitations;"}
+{"type":"thought","data":" the report correctly"}
+{"type":"thought","data":" notes this."}
+{"type":"thought","data":"\n\nThe rejection is justified."}
+{"type":"thought","data":" The uniform gap of "}
+{"type":"thought","data":"at least two energy "}
+{"type":"thought","data":"units and the radius-four"}
+{"type":"thought","data":" influence bound together"}
+{"type":"thought","data":" rule out gapless tensor"}
+{"type":"thought","data":" modes and z=1 ballistic"}
+{"type":"thought","data":" propagation."}
+{"type":"thought","data":"\n\nFixed-depth layers"}
+{"type":"thought","data":" cannot enlarge the "}
+{"type":"thought","data":"radius-four support,"}
+{"type":"thought","data":" so sustained propagation"}
+{"type":"thought","data":" is structurally impossible."}
+{"type":"thought","data":" The IG-S0 contract "}
+{"type":"thought","data":"is now being examined;"}
+{"type":"thought","data":" its first condition"}
+{"type":"thought","data":" requires a local, bounded,"}
+{"type":"thought","data":" periodic, self-adjoint"}
+{"type":"thought","data":" operator K_L bounded"}
+{"type":"thought","data":" below by −b L³."}
+{"type":"thought","data":"\n\nThe IG-S0 contract"}
+{"type":"thought","data":" is now fully listed. It requires an exact"}
+{"type":"thought","data":" QCA preserving the "}
+{"type":"thought","data":"physical sector, exact"}
+{"type":"thought","data":" conservation of local"}
+{"type":"thought","data":" energy, a ground-state"}
+{"type":"thought","data":" projector with controlled"}
+{"type":"thought","data":" degeneracy, and a sufficient"}
+{"type":"thought","data":" condition on the spectral bridge norm for all"}
+{"type":"thought","data":" physical states below"}
+{"type":"thought","data":" a cutoff. The route"}
+{"type":"thought","data":" requirement and the"}
+{"type":"thought","data":" sufficient condition"}
+{"type":"thought","data":" are distinguished: "}
+{"type":"thought","data":"the former is what this"}
+{"type":"thought","data":" research path chose,"}
+{"type":"thought","data":" while the latter would"}
+{"type":"thought","data":" prove energy-tick alignment."}
+{"type":"thought","data":"\n\nThe physical necessity"}
+{"type":"thought","data":" of exact local energy"}
+{"type":"thought","data":" conservation is now"}
+{"type":"thought","data":" being weighed. Einstein’s"}
+{"type":"thought","data":" theory demands a conserved"}
+{"type":"thought","data":" stress-energy tensor,"}
+{"type":"thought","data":" but a discrete QCA "}
+{"type":"thought","data":"has no unique Hamiltonian,"}
+{"type":"thought","data":" so the requirement "}
+{"type":"thought","data":"is not automatically"}
+{"type":"thought","data":" satisfied."}
+{"type":"thought","data":"\n\nA strictly local K"}
+{"type":"thought","data":" commuting with a finite-range"}
+{"type":"thought","data":" U is a severe constraint"}
+{"type":"thought","data":" on the dynamics. Continuous-time"}
+{"type":"thought","data":" relativistic models"}
+{"type":"thought","data":" conserve energy, but"}
+{"type":"thought","data":" discrete QCA typically"}
+{"type":"thought","data":" conserve quasienergy"}
+{"type":"thought","data":" modulo 2π. Gravity "}
+{"type":"thought","data":"as an IR effective field"}
+{"type":"thought","data":" theory needs ∇_μ T^{μν}=0,"}
+{"type":"thought","data":" not necessarily a microscopic"}
+{"type":"thought","data":" local K exactly commuting"}
+{"type":"thought","data":" with a depth-1 tick."}
+{"type":"thought","data":"\n\nExact local energy"}
+{"type":"thought","data":" conservation forces"}
+{"type":"thought","data":" the evolution operator"}
+{"type":"thought","data":" to be U = exp(-iK)."}
+{"type":"thought","data":" If K contains non-commuting terms, U^n = exp(-inK)"}
+{"type":"thought","data":" cannot be a finite-range"}
+{"type":"thought","data":" QCA unless the terms commute or the circuit"}
+{"type":"thought","data":" is factorized. IG-S1"}
+{"type":"thought","data":" therefore chose commuting"}
+{"type":"thought","data":" projectors as the simplest"}
+{"type":"thought","data":" way to satisfy both"}
+{"type":"thought","data":" exact QCA and U = exp(-iK). Commuting projector"}
+{"type":"thought","data":" parents are typically"}
+{"type":"thought","data":" gapped."}
+{"type":"thought","data":"\n\nThe cited Masaoka–Soejima–Watanabe"}
+{"type":"thought","data":" paper is unreadable."}
+{"type":"thought","data":" IG-S0 only asked to contrast Theorem 1 "}
+{"type":"thought","data":"for a critical frustration-free"}
+{"type":"thought","data":" parent, not to infer"}
+{"type":"thought","data":" that such a parent "}
+{"type":"thought","data":"forbids any linear band."}
+{"type":"thought","data":" The commuting projector"}
+{"type":"thought","data":" construction belongs"}
+{"type":"thought","data":" to the S recipe (common"}
+{"type":"thought","data":" kernel), not the E "}
+{"type":"thought","data":"recipe (frustrated conserved"}
+{"type":"thought","data":" energy). IG-S1 explicitly"}
+{"type":"thought","data":" realized the S recipe,"}
+{"type":"thought","data":" not a critical E."}
+{"type":"thought","data":"\n\nThe sufficient condition"}
+{"type":"thought","data":" ensures the quasienergy of U matches the energy"}
+{"type":"thought","data":" of K for every low-lying"}
+{"type":"thought","data":" state, not merely the"}
+{"type":"thought","data":" vacuum. This would "}
+{"type":"thought","data":"make K generate physical"}
+{"type":"thought","data":" time. However, physical"}
+{"type":"thought","data":" necessity demands only"}
+{"type":"thought","data":" IR scaling on a hydrodynamic"}
+{"type":"thought","data":" subspace, not a uniform power-law error across"}
+{"type":"thought","data":" all states up to Λ."}
+{"type":"thought","data":"\n\nRequiring the spectral"}
+{"type":"thought","data":" bridge norm for all"}
+{"type":"thought","data":" species, nodes, and π-phases is stronger"}
+{"type":"thought","data":" than hydrodynamics."}
+{"type":"thought","data":" It demands a Trotter approximation of K "}
+{"type":"thought","data":"with controlled error"}
+{"type":"thought","data":" on a finite-energy window, uniform in volume."}
+{"type":"thought","data":" For gapless systems the projector P(Λ) "}
+{"type":"thought","data":"has exponential dimension"}
+{"type":"thought","data":" in L, so bounding ||U"}
+{"type":"thought","data":" − exp(−iK)|| uniformly"}
+{"type":"thought","data":" across that subspace is extremely strong."}
+{"type":"thought","data":" Even free photons are ruled out because exp(−iK)"}
+{"type":"thought","data":" itself is not a finite-range QCA."}
+{"type":"thought","data":"\n\nThe uniform operator-norm"}
+{"type":"thought","data":" bound may be too strong."}
+{"type":"thought","data":" It could force the "}
+{"type":"thought","data":"construction toward commuting or gapped "}
+{"type":"thought","data":"examples, or toward a trivial phase structure,"}
+{"type":"thought","data":" which would prevent"}
+{"type":"thought","data":" a strict QCA from propagating."}
+{"type":"thought","data":" The authors then begin to examine physical"}
+{"type":"thought","data":" necessity for gravity."}
+{"type":"thought","data":"\n\nThe physical necessity"}
+{"type":"thought","data":" for gravity is now "}
+{"type":"thought","data":"clearer. A reference"}
+{"type":"thought","data":" state in the IR should"}
+{"type":"thought","data":" look like a vacuum,"}
+{"type":"thought","data":" thermal state, or semiclassical"}
+{"type":"thought","data":" geometry. Low-energy"}
+{"type":"thought","data":" excitations must include"}
+{"type":"thought","data":" two tensor polarizations"}
+{"type":"thought","data":" with ω ~ c|k|, and the theory needs a causal"}
+{"type":"thought","data":" cone with universal"}
+{"type":"thought","data":" speed plus coupling"}
+{"type":"thought","data":" to matter and nonlinear"}
+{"type":"thought","data":" closure. Exact microscopic"}
+{"type":"thought","data":" conservation of a strictly"}
+{"type":"thought","data":" local K at every tick is not required. Neither"}
+{"type":"thought","data":" is the uniform operator-norm"}
+{"type":"thought","data":" bridge on all of P(Λ),"}
+{"type":"thought","data":" nor a frustration-free"}
+{"type":"thought","data":" parent, nor a ground"}
+{"type":"thought","data":" state of a commuting"}
+{"type":"thought","data":" projector Hamiltonian."}
+{"type":"thought","data":"\n\nStationarity can be"}
+{"type":"thought","data":" achieved through weaker"}
+{"type":"thought","data":" means than a ground"}
+{"type":"thought","data":" state of a local K."}
+{"type":"thought","data":" An eigenstate or invariant"}
+{"type":"thought","data":" subspace of the tick"}
+{"type":"thought","data":" U suffices. A KMS state of an effective IR "}
+{"type":"thought","data":"Hamiltonian is another possibility. Time averaging"}
+{"type":"thought","data":" was rejected because"}
+{"type":"thought","data":" it lacks control. A"}
+{"type":"thought","data":" topological code subspace"}
+{"type":"thought","data":" is gapped and unsuitable"}
+{"type":"thought","data":" for gravity. A Goldstone or condensate sector"}
+{"type":"thought","data":" is also viable. Physical"}
+{"type":"thought","data":" time can be ordered"}
+{"type":"thought","data":" by an emergent IR Hamiltonian"}
+{"type":"thought","data":" rather than a microscopic local K. The user explicitly"}
+{"type":"thought","data":" forbade relaxing conditions"}
+{"type":"thought","data":" retroactively to save IG-S1."}
+{"type":"thought","data":"\n\nIG-S1 fails the gravitational"}
+{"type":"thought","data":" target regardless of"}
+{"type":"thought","data":" IG-S0's extra strength,"}
+{"type":"thought","data":" because of no propagation"}
+{"type":"thought","data":" and uniform gap.\n\nThe"}
+{"type":"thought","data":" issue is that IG-S0's"}
+{"type":"thought","data":" sufficient conditions"}
+{"type":"thought","data":" may steer construction"}
+{"type":"thought","data":" toward structures that"}
+{"type":"thought","data":" cannot be gapless and"}
+{"type":"thought","data":" propagating, without"}
+{"type":"thought","data":" those conditions being"}
+{"type":"thought","data":" physically necessary for Einstein."}
+{"type":"thought","data":"\n\nA known tension exists"}
+{"type":"thought","data":" between strictly local energy conservation,"}
+{"type":"thought","data":" finite-range QCA, and"}
+{"type":"thought","data":" gaplessness. Local charges in one dimension"}
+{"type":"thought","data":" typically imply ballistic"}
+{"type":"thought","data":" transport. Yet commuting projector terms are"}
+{"type":"thought","data":" frozen under U = exp(−iK),"}
+{"type":"thought","data":" so each term is invariant"}
+{"type":"thought","data":" rather than merely "}
+{"type":"thought","data":"their sum being conserved."}
+{"type":"thought","data":"\n\nIG-S1 conserves each"}
+{"type":"thought","data":" local term separately, so every projector "}
+{"type":"thought","data":"is frozen under the "}
+{"type":"thought","data":"tick. Energy cannot "}
+{"type":"thought","data":"hop or form a flux. "}
+{"type":"thought","data":"This kills the energy"}
+{"type":"thought","data":" current T^{0i} required for gravity."}
+{"type":"thought","data":"\n\nNon-commuting local"}
+{"type":"thought","data":" terms could allow a"}
+{"type":"thought","data":" finite energy current,"}
+{"type":"thought","data":" but then U = exp(−iK) would no longer be "}
+{"type":"thought","data":"a finite-range circuit."}
+{"type":"thought","data":" Trotter approximation"}
+{"type":"thought","data":" at finite time cannot"}
+{"type":"thought","data":" prove IR vacuum stability,"}
+{"type":"thought","data":" and the charter forbids drawing that inference."}
+{"type":"thought","data":"\n\nThe E route of IG-S0"}
+{"type":"thought","data":" is the right idea: "}
+{"type":"thought","data":"global conserved energy, possibly frustrated,"}
+{"type":"thought","data":" with gates that need"}
+{"type":"thought","data":" not conserve K individually."}
+{"type":"thought","data":" Yet the uniform bridge"}
+{"type":"thought","data":" norm on all of P(Λ)"}
+{"type":"thought","data":" may force U too close"}
+{"type":"thought","data":" to the Hamiltonian "}
+{"type":"thought","data":"flow, conflicting with"}
+{"type":"thought","data":" strict finite range"}
+{"type":"thought","data":" unless K's terms nearly commute.\n\nPart 3 must"}
+{"type":"thought","data":" address reference selection,"}
+{"type":"thought","data":" gapless excitations,"}
+{"type":"thought","data":" and sustained propagation simultaneously. The"}
+{"type":"thought","data":" strict QCA cannot be"}
+{"type":"thought","data":" a Hamiltonian exponential, and Trotter at finite"}
+{"type":"thought","data":" time cannot serve as IR vacuum stability."}
+{"type":"thought","data":"\n\nThe authors are now"}
+{"type":"thought","data":" structuring concrete mechanisms. They reject manual TT projection"}
+{"type":"thought","data":" as emergence, free fermions as tensor objectives,"}
+{"type":"thought","data":" and lists of families without specifiable mechanisms. The plan"}
+{"type":"thought","data":" is limited to two routes: a priority and a contingency."}
+{"type":"thought","data":" Each route will specify an initial mathematical object, an algebra "}
+{"type":"thought","data":"or state pattern, local rules, offered physical hypotheses, unbuilt"}
+{"type":"thought","data":" components, and a first falsifiable test before any gate construction"}
+{"type":"thought","data":" or dispersion computation. Priority reasons must"}
+{"type":"thought","data":" link directly to the tensor and gravity "}
+{"type":"thought","data":"objective, and any charter requirement that would"}
+{"type":"thought","data":" need changing must be identified."}
+{"type":"thought","data":"\n\nThe core structural"}
+{"type":"thought","data":" problem is that gapless finite-range QCA typically"}
+{"type":"thought","data":" requires free fermions or Weyl QCAs, which"}
+{"type":"thought","data":" are not the tensor objective. Clifford "}
+{"type":"thought","data":"QCAs are too rigid and stabilizer-like. Hydrodynamic"}
+{"type":"thought","data":" or Goldstone modes from broken continuous"}
+{"type":"thought","data":" symmetry are also limited on finite local dimensions, because exact U(1) "}
+{"type":"thought","data":"bosons cannot exist there; only clock models or virtual symmetries"}
+{"type":"thought","data":" remain. Spin-2 excitations"}
+{"type":"thought","data":" require a different mechanism."}
+{"type":"thought","data":"\n\nGu-Wen (arXiv:0907.1203)"}
+{"type":"thought","data":" is a qubit or qutrit model related to gravity"}
+{"type":"thought","data":" in three dimensions or condensed matter"}
+{"type":"thought","data":" analogues. The documents use it for constraints"}
+{"type":"thought","data":" and R, T operators. The PDF is unavailable. This reference needs"}
+{"type":"thought","data":" verification.\n\nA mechanism idea is emerging. Linearized diffeomorphisms or "}
+{"type":"thought","data":"gauge redundancy could provide the spin-2 "}
+{"type":"thought","data":"polarizations. Constraints would eliminate redundant degrees of freedom."}
+{"type":"thought","data":" The remaining physical polarizations would then be the surviving"}
+{"type":"thought","data":" degrees of freedom.\n\nThe commuting projector F has frozen support."}
+{"type":"thought","data":" That property blocks propagation.\n\nA circuit that conjugates"}
+{"type":"thought","data":" local energy terms into shifted positions"}
+{"type":"thought","data":" could create a locally conserved energy current"}
+{"type":"thought","data":" and ballistic transport."}
+{"type":"thought","data":" Yet if K is a sum of commuting projectors,"}
+{"type":"thought","data":" translating them does not close the gap. "}
+{"type":"thought","data":"The spectrum remains gapped, so propagation would still be forbidden."}
+{"type":"thought","data":"\n\nHopping energy visons"}
+{"type":"thought","data":" remain massive particles"}
+{"type":"thought","data":" with ω = const or quadratic"}
+{"type":"thought","data":" dispersion, not the"}
+{"type":"thought","data":" required linear ω ="}
+{"type":"thought","data":" c|k|. Gapless tensor"}
+{"type":"thought","data":" modes therefore require"}
+{"type":"thought","data":" a gapless parent itself."}
+{"type":"thought","data":" Critical frustration-free"}
+{"type":"thought","data":" models such as RK and"}
+{"type":"thought","data":" Motzkin exist but typically"}
+{"type":"thought","data":" have z ≠ 1, often z"}
+{"type":"thought","data":" = 2 or exotic. Masaoka"}
+{"type":"thought","data":" et al. may restrict circuits that preserve"}
+{"type":"thought","data":" such vacua."}
+{"type":"thought","data":"\n\nThe first mechanism"}
+{"type":"thought","data":" is now fully specified."}
+{"type":"thought","data":" It uses a qutrit constraint"}
+{"type":"thought","data":" algebra with local "}
+{"type":"thought","data":"energy density t_{x,i}"}
+{"type":"thought","data":" and current j_{x,i}."}
+{"type":"thought","data":" The tick U satisfies"}
+{"type":"thought","data":" a discrete continuity"}
+{"type":"thought","data":" equation U† t_x U −"}
+{"type":"thought","data":" t_x = −div j_x. The"}
+{"type":"thought","data":" total K is conserved"}
+{"type":"thought","data":" globally, yet the local"}
+{"type":"thought","data":" terms do not all commute."}
+{"type":"thought","data":" The reference state"}
+{"type":"thought","data":" is either a frustration-minimizing"}
+{"type":"thought","data":" state of K or an invariant"}
+{"type":"thought","data":" KMS/ground state of"}
+{"type":"thought","data":" K in the IR."}
+{"type":"thought","data":"\n\nThe quantum lattice"}
+{"type":"thought","data":" gas idea was abandoned"}
+{"type":"thought","data":" as too vague. A more"}
+{"type":"thought","data":" precise priority mechanism"}
+{"type":"thought","data":" is now proposed: the constraint module of"}
+{"type":"thought","data":" IG1a with S = V = 1"}
+{"type":"thought","data":" as the kinematical "}
+{"type":"thought","data":"space."}
+{"type":"thought","data":"\n\nA non-commuting frustration-possible"}
+{"type":"thought","data":" local Hamiltonian K"}
+{"type":"thought","data":" is proposed, built "}
+{"type":"thought","data":"from constraint-preserving"}
+{"type":"thought","data":" terms such as R,T functions"}
+{"type":"thought","data":" or gauge-invariant "}
+{"type":"thought","data":"words. In Fourier space"}
+{"type":"thought","data":" it would have a quadratic"}
+{"type":"thought","data":" form with two tensor"}
+{"type":"thought","data":" branches. Yet linearizing and writing a continuous"}
+{"type":"thought","data":" Hamiltonian is not a QCA."}
+{"type":"thought","data":"\n\nThe tick is a brickwork"}
+{"type":"thought","data":" of constraint-preserving"}
+{"type":"thought","data":" local gates that implement a Trotter-like step"}
+{"type":"thought","data":" of K, plus an exact correction or staggered"}
+{"type":"thought","data":" current so the full tick conserves K exactly. Exact conservation "}
+{"type":"thought","data":"for non-commuting K can be achieved if U"}
+{"type":"thought","data":" is a symmetry of K,"}
+{"type":"thought","data":" such as a lattice translation, discrete rotation, "}
+{"type":"thought","data":"or circuit in the commutant."}
+{"type":"thought","data":"\n\nPure translation is"}
+{"type":"thought","data":" a shift QCA, not a "}
+{"type":"thought","data":"time evolution, so it"}
+{"type":"thought","data":" cannot generate energy."}
+{"type":"thought","data":" A true dynamical tick"}
+{"type":"thought","data":" must instead be a discrete"}
+{"type":"thought","data":" time symmetry of K."}
+{"type":"thought","data":" Marsden-Weinstein symplectic"}
+{"type":"thought","data":" structures are too "}
+{"type":"thought","data":"abstract for this purpose."}
+{"type":"thought","data":" Dual-unitary and spacetime-symmetric circuits offer maximal"}
+{"type":"thought","data":" transport but are typically"}
+{"type":"thought","data":" chaotic and infinite-temperature,"}
+{"type":"thought","data":" lacking an IR vacuum."}
+{"type":"thought","data":"\n\nInvertible phases "}
+{"type":"thought","data":"and Hall-like transport"}
+{"type":"thought","data":" are ruled out because they do not describe"}
+{"type":"thought","data":" gravity. The linearized"}
+{"type":"thought","data":" spin-2 field requires ω = c|k| with two helicities,"}
+{"type":"thought","data":" yet lattice gauge theory"}
+{"type":"thought","data":" makes gravitons difficult to realize. Regge calculus"}
+{"type":"thought","data":" is excluded by the "}
+{"type":"thought","data":"charter, which forbids"}
+{"type":"thought","data":" dynamical graphs without"}
+{"type":"thought","data":" revision. Tensor networks"}
+{"type":"thought","data":" and PEPS vacua typically"}
+{"type":"thought","data":" yield gapped states or non-unitary criticality,"}
+{"type":"thought","data":" so they cannot provide"}
+{"type":"thought","data":" the required gapless"}
+{"type":"thought","data":" tensor modes."}
+{"type":"thought","data":"\n\nA graviton condensate"}
+{"type":"thought","data":" is impossible in finite local dimension because"}
+{"type":"thought","data":" occupation is truncated. A QCA fluid's acoustic metric would yield "}
+{"type":"thought","data":"scalar phonons rather than tensor modes. "}
+{"type":"thought","data":"True tensor modes on a fixed lattice require spatial tensor variables,"}
+{"type":"thought","data":" gauge equivalence under linearized diffeomorphisms,"}
+{"type":"thought","data":" and a discrete wave equation. Gu-Wen's S and V constraints "}
+{"type":"thought","data":"and R and T invariant operators may already contain the right tensors"}
+{"type":"thought","data":" after linearization around the trivial "}
+{"type":"thought","data":"vacuum."}
+{"type":"thought","data":"\n\nThe prior IG1b tick"}
+{"type":"thought","data":" preserved constraints but lacked an energy"}
+{"type":"thought","data":" reference. The priority mechanism now specifies"}
+{"type":"thought","data":" a non-commuting local \"Maxwell-like\" or \"Cotton/Weyl-like\""}
+{"type":"thought","data":" Hamiltonian built from the existing R and T words, which do not"}
+{"type":"thought","data":" commute. The tick is a finite-depth circuit that is an exact symmetry"}
+{"type":"thought","data":" of this K and also moves support."}
+{"type":"thought","data":"\n\nA Feynman chessboard"}
+{"type":"thought","data":" or light-clock construction is proposed. Each tick would mix polarizations"}
+{"type":"thought","data":" locally and shift clock or direction registers, following the Dirac"}
+{"type":"thought","data":" QCA pattern of D'Ariano, Bisio, Perinotti, or"}
+{"type":"thought","data":" Arrighi. Weyl QCAs "}
+{"type":"thought","data":"for higher spin already exist in the literature,"}
+{"type":"thought","data":" so no new paper needs"}
+{"type":"thought","data":" to be invented. The"}
+{"type":"thought","data":" next step is to define"}
+{"type":"thought","data":" a concrete cell structure."}
+{"type":"thought","data":"\n\nThe concrete cell "}
+{"type":"thought","data":"is the six-qutrit IG1a"}
+{"type":"thought","data":" module with no extra ancillas. The energy K is a local, bounded"}
+{"type":"thought","data":" sum of terms built from R and T operators at overlapping supports,"}
+{"type":"thought","data":" so the terms do not commute. This structure is not a commuting parent. It may be gapless,"}
+{"type":"thought","data":" analogous to a discrete Maxwell Hamiltonian: R acts like a magnetic field, T like an electric"}
+{"type":"thought","data":" field, S like Gauss"}
+{"type":"thought","data":" law, and V like Bianchi."}
+{"type":"thought","data":"\n\nGu-Wen may already"}
+{"type":"thought","data":" contain this interpretation, but the reference still needs verification."}
+{"type":"thought","data":" The continuous-time exponential of K is"}
+{"type":"thought","data":" not a finite-range operator for lattice Maxwell, so the tick"}
+{"type":"thought","data":" cannot be U = exp(−iK). It must instead be "}
+{"type":"thought","data":"a strictly local discrete wave update that conserves the quadratic energy"}
+{"type":"thought","data":" exactly."}
+{"type":"thought","data":"\n\nA concrete finite-group"}
+{"type":"thought","data":" discrete Maxwell QCA is proposed. The tick"}
+{"type":"thought","data":" updates electric and"}
+{"type":"thought","data":" magnetic fields on the qutrit clock via E′ = E + d* B (mod 3) and B′ = B − d E′"}
+{"type":"thought","data":" (mod 3). This resembles"}
+{"type":"thought","data":" a linear reversible cellular automaton on the constraint surface, analogous to a lattice"}
+{"type":"thought","data":" wave equation over F_3. A leapfrog integrator"}
+{"type":"thought","data":" for harmonic oscillators was considered but rejected because it "}
+{"type":"thought","data":"does not extend to an exact unitary on the finite group."}
+{"type":"thought","data":"\n\nThe F_3 discrete Maxwell"}
+{"type":"thought","data":" update is a Clifford automaton. Its spectrum"}
+{"type":"thought","data":" lives on roots of unity, so it is not a real Hamiltonian and its"}
+{"type":"thought","data":" modes are cyclic rather than linearly dispersive."}
+{"type":"thought","data":" The IG1b tick U = U_T"}
+{"type":"thought","data":" U_R is actually the right object: it rotates in the T and R invariant"}
+{"type":"thought","data":" subspaces via real-angle exponentials, making it a genuine discrete"}
+{"type":"thought","data":" Maxwell-like update. The prior rejection of this tick needs reconsideration."}
+{"type":"thought","data":"\n\nThe prior rejection"}
+{"type":"thought","data":" of the IG1b tick was based on the maximally"}
+{"type":"thought","data":" mixed reference state ρ = P/Tr P, which does"}
+{"type":"thought","data":" not respond to local perturbations and lacks an IR vacuum. The proposed fix is to keep the "}
+{"type":"thought","data":"U_T U_R propagator because its non-commutativity prevents frozen support."}
+{"type":"thought","data":" It should be paired with a non-commuting local energy K that"}
+{"type":"thought","data":" it conserves exactly, or with a different reference state."}
+{"type":"thought","data":"\n\nThe U_T U_R propagator"}
+{"type":"thought","data":" is a first-order Trotter"}
+{"type":"thought","data":" approximation of A_R + A_T, so it does not exactly conserve that"}
+{"type":"thought","data":" sum. Constraint projectors are conserved but trivial; they do not distinguish"}
+{"type":"thought","data":" physical excitations. A non-trivial conserved K must instead be a"}
+{"type":"thought","data":" quadratic form built from the mode operators."}
+{"type":"thought","data":"\n\nA concrete test is"}
+{"type":"thought","data":" proposed before designing"}
+{"type":"thought","data":" gates. It asks whether"}
+{"type":"thought","data":" a translation-invariant local self-adjoint "}
+{"type":"thought","data":"operator K exists with"}
+{"type":"thought","data":" finite support, not built from S or V alone,"}
+{"type":"thought","data":" such that [U_T U_R,"}
+{"type":"thought","data":" K] = 0 exactly on the physical sector S ="}
+{"type":"thought","data":" V = 1. This becomes a finite-dimensional"}
+{"type":"thought","data":" linear algebra problem: find operators in the"}
+{"type":"thought","data":" commutant of Ad_U within the space of local words."}
+{"type":"thought","data":"\n\nThe IG1b tick is already"}
+{"type":"thought","data":" specified, so the first step is to search for"}
+{"type":"thought","data":" local conserved densities beyond constraints. If the commutant contains"}
+{"type":"thought","data":" only trivial operators, that tick cannot serve as a local energy source and a different propagator"}
+{"type":"thought","data":" must be chosen. Should a non-trivial local K exist in the commutant,"}
+{"type":"thought","data":" the next step is to study its gap on finite tori as a function "}
+{"type":"thought","data":"of system size."}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","learn","comite","morning","import-memory","alloy-verifier","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":"\n\nThe prior IG1b tick"}
+{"type":"thought","data":" is preserved because"}
+{"type":"thought","data":" the user forbade retouching gates. The search for"}
+{"type":"thought","data":" a conserved local energy K within its commutant"}
+{"type":"thought","data":" is therefore allowed. If that commutant is"}
+{"type":"thought","data":" too small, a new pair (K, U) will be built"}
+{"type":"thought","data":" instead."}
+{"type":"thought","data":"\n\nDiscrete symmetry "}
+{"type":"thought","data":"breaking cannot produce"}
+{"type":"thought","data":" a spin-2 Goldstone mode. String-net and Levin-Wen models are"}
+{"type":"thought","data":" gapped topological phases, incompatible with massless gravity"}
+{"type":"thought","data":" in three-plus-one dimensions. Because the vacuum must be gapless, finite local dimension forces"}
+{"type":"thought","data":" either an infinite degeneracy or a vanishing"}
+{"type":"thought","data":" gap scaling as 2πc/L on finite tori."}
+{"type":"thought","data":"\n\nThe first test for"}
+{"type":"thought","data":" gaplessness is an O(1/L) scaling of the first excited energy on a"}
+{"type":"thought","data":" torus of size L. This can be checked before the tick is built, but without a tick there"}
+{"type":"thought","data":" is no QCA. Mechanism A therefore proposes a locally generated"}
+{"type":"thought","data":" current QCA: shift-collide dynamics on constraint-invariant flux variables to enforce exact discrete continuity"}
+{"type":"thought","data":" with a non-commuting density."}
+{"type":"thought","data":"\n\nThe physical subspace"}
+{"type":"thought","data":" is the common +1 eigenspace"}
+{"type":"thought","data":" of all S and V operators. The local operator space is generated by"}
+{"type":"thought","data":" the constraint-invariant R_aa and T_a^a words from IG1b. The state is the ground space"}
+{"type":"thought","data":" of a local K built from non-commuting terms"}
+{"type":"thought","data":" drawn from {A_R, A_T}, not the full projector"}
+{"type":"thought","data":" P. A subtlety arises because A_R = (R+R†)/2"}
+{"type":"thought","data":" are functions of commuting R operators among themselves."}
+{"type":"thought","data":"\n\nThe concrete energy"}
+{"type":"thought","data":" K is a sum of A_R and A_T terms. It is non-commuting"}
+{"type":"thought","data":" because the R and T"}
+{"type":"thought","data":" operators do not commute"}
+{"type":"thought","data":" with each other, even"}
+{"type":"thought","data":" though each set within itself commutes. This"}
+{"type":"thought","data":" yields a frustrated transverse-field-like"}
+{"type":"thought","data":" Hamiltonian on the "}
+{"type":"thought","data":"constraint-invariant algebra.\n\nThe propagator will not be an exponential of K. Instead it will"}
+{"type":"thought","data":" be a strict two-layer circuit whose adjoint action implements a"}
+{"type":"thought","data":" discrete continuity equation for the densities"}
+{"type":"thought","data":" of K. The first layer conjugates the T-type"}
+{"type":"thought","data":" variables by R-rotations."}
+{"type":"thought","data":"\n\nThe staggered symplectic"}
+{"type":"thought","data":" Euler layering is just the IG1b tick again, so it cannot conserve"}
+{"type":"thought","data":" the non-commuting K."}
+{"type":"thought","data":" A finite-depth circuit in a discrete symmetry group of K would not"}
+{"type":"thought","data":" generate time evolution either. The remaining exact conservation route is double commutant"}
+{"type":"thought","data":" or operator spreading"}
+{"type":"thought","data":" within a closed algebra."}
+{"type":"thought","data":"\n\nA new route to a QCA"}
+{"type":"thought","data":" tick is proposed. If the local operators {A_R(i), A_T(i)} together with a finite set of"}
+{"type":"thought","data":" currents j close into a Lie algebra, and if a derivation δ of that algebra is locally generated and exponentiates"}
+{"type":"thought","data":" to a finite-range automorphism, then U = exp(δ) could"}
+{"type":"thought","data":" be a valid QCA. Clifford QCAs are noted as a special case where "}
+{"type":"thought","data":"the adjoint action is a linear map on the"}
+{"type":"thought","data":" Pauli group."}
+{"type":"thought","data":"\n\nA Clifford QCA preserving"}
+{"type":"thought","data":" a quadratic Hamiltonian is specifiable as a"}
+{"type":"thought","data":" linear symplectic map over F_3 on the constraint-reduced variables. This map may not yield real linear dispersion, so"}
+{"type":"thought","data":" it is not ideal for gapless photons. A Gaussian or bosonic QCA would be better "}
+{"type":"thought","data":"but requires infinite local dimension; the envelope allows truncated"}
+{"type":"thought","data":" bosons with an explicit algebra."}
+{"type":"thought","data":"\n\nThree structural failures"}
+{"type":"thought","data":" are now pinned down."}
+{"type":"thought","data":" A diagonal propagator with commuting layers"}
+{"type":"thought","data":" freezes support and yields a gapped spectrum. The IG1b tick with a tracial reference "}
+{"type":"thought","data":"state mixes the entire constraint sector without"}
+{"type":"thought","data":" selecting an IR vacuum. A Trotter approximation of K is not a strict QCA and lacks an IR proof. The mechanism"}
+{"type":"thought","data":" must therefore use non-commuting layers so that the support of U^n grows at least linearly before wrapping."}
+{"type":"thought","data":"\n\nMechanism A is now"}
+{"type":"thought","data":" the priority. It defines a finite-range automorphism"}
+{"type":"thought","data":" that shifts a non-commuting local energy density through discrete continuity on the constraint-invariant"}
+{"type":"thought","data":" algebra. The reference"}
+{"type":"thought","data":" state must be a proper subspace of the constraint sector selected by a physically motivated functional. Gaplessness"}
+{"type":"thought","data":" requires either K vanishing as L→∞ or U eigenvalues accumulating at the vacuum phase with momenta."}
+{"type":"thought","data":"\n\nThe conserved energy"}
+{"type":"thought","data":" K_L is a sum of local operators k_x with uniformly bounded support."}
+{"type":"thought","data":" These operators are not simultaneously "}
+{"type":"thought","data":"diagonalizable and do not all commute. The"}
+{"type":"thought","data":" tick is a periodic finite-depth circuit U whose Heisenberg action shifts each k_x"}
+{"type":"thought","data":" by a local lattice divergence div^* j_x. The current j must "}
+{"type":"thought","data":"be nonzero; otherwise the system would freeze like IG-S1."}
+{"type":"thought","data":"\n\nThe reference state"}
+{"type":"thought","data":" is the spectral projector of K_L below a threshold E_0(L)+δ(L) with δ(L)"}
+{"type":"thought","data":" vanishing in the thermodynamic limit. The density ρ = G/Tr G is preserved by U whenever U†KU "}
+{"type":"thought","data":"= K and G is a projector of K. This still does"}
+{"type":"thought","data":" not fix the specific k_x or the circuit."}
+{"type":"thought","data":" The user wants an initial mathematical object and a local rule pattern, not a fully specified"}
+{"type":"thought","data":" candidate. A first falsifiable test should"}
+{"type":"thought","data":" come before any gate construction."}
+{"type":"thought","data":"\n\nTest A0 is now defined."}
+{"type":"thought","data":" It asks whether a local Hermitian density k supported on a single"}
+{"type":"thought","data":" cube can be conserved by a local current j under a finite-depth"}
+{"type":"thought","data":" circuit built from the certified gates G_R and G_T on a bounded coloring. This test"}
+{"type":"thought","data":" is sharper than requiring"}
+{"type":"thought","data":" the circuit to exist, because it demands the continuity identity"}
+{"type":"thought","data":" itself."}
+{"type":"thought","data":"\n\nTest A0 is being refined"}
+{"type":"thought","data":" to avoid any reference"}
+{"type":"thought","data":" to the existing IG1b tick. The new version is an algebraic obstruction test that lives entirely"}
+{"type":"thought","data":" inside the constraint-invariant clock algebra. It asks"}
+{"type":"thought","data":" whether a local Hermitian operator with support in a ball of radius r can be written as"}
+{"type":"thought","data":" a divergence or as a commutator with the"}
+{"type":"thought","data":" old tick. This removes all gate and spectrum dependencies from the first check."}
+{"type":"thought","data":"\n\nThe obstruction test"}
+{"type":"thought","data":" is being sharpened to a purely algebraic property of the density k. It asks whether "}
+{"type":"thought","data":"k can be written as a local divergence with support O(r) and a nonzero translation "}
+{"type":"thought","data":"current, without any reference to a propagator U. The question is whether the subspace"}
+{"type":"thought","data":" of such locally conserved densities is larger than the span of the constraint projectors"}
+{"type":"thought","data":" and identity."}
+{"type":"thought","data":"\n\nA concrete A0 test"}
+{"type":"thought","data":" is now proposed. It checks whether quadratic"}
+{"type":"thought","data":" non-commuting combinations of {A_R, A_T} with range ≤2 can be lowered by long-wavelength "}
+{"type":"thought","data":"twists. This would indicate gaplessness before any propagator U is "}
+{"type":"thought","data":"built. The next step is to construct the"}
+{"type":"thought","data":" twist trial."}
+{"type":"thought","data":"\n\nThe twist trial is"}
+{"type":"thought","data":" being built on a torus with the IG-S1 reference |Ω⟩ in S=V=1. A smooth"}
+{"type":"thought","data":" family of local G_T rotations with angle"}
+{"type":"thought","data":" θ(x) = ε·x/L or a plane wave εe^{ik·x} with k = 2π/L will dress"}
+{"type":"thought","data":" the state. The candidate"}
+{"type":"thought","data":" energy K is being chosen"}
+{"type":"thought","data":" as a sum of A_T terms, since A_T on the R=1"}
+{"type":"thought","data":" vacuum acts as an off-diagonal kinetic term. On this"}
+{"type":"thought","data":" reference, ⟨A_R⟩ = "}
+{"type":"thought","data":"1 because R = 1 implies A_R = (R + R†)/2 = 1."}
+{"type":"thought","data":"\n\nThe candidate energy"}
+{"type":"thought","data":" is being written as K = Δ sum (I-Π_R) -"}
+{"type":"thought","data":" Γ sum A_T. This is "}
+{"type":"thought","data":"a quantum clock model on homological degrees of freedom, analogous to a qutrit toric code"}
+{"type":"thought","data":" in a transverse field."}
+{"type":"thought","data":" At large Δ it is gapped and topologically confined; at large Γ it may be another gapped phase. The gapless critical"}
+{"type":"thought","data":" point between them is expected to be a photon phase or first-order transition."}
+{"type":"thought","data":"\n\nThe proposed mechanism"}
+{"type":"thought","data":" is being abandoned because its gapless photon phase depends on a phase diagram "}
+{"type":"thought","data":"that cannot be verified. A discrete Z_q gauge theory in 3+1 dimensions"}
+{"type":"thought","data":" may not support a deconfined Coulomb phase, so the candidate is discarded."}
+{"type":"thought","data":"\n\nMechanism A is now"}
+{"type":"thought","data":" recast as a purely cohomological test on the IG1a physical algebra. The first test asks whether a local Hermitian"}
+{"type":"thought","data":" density k exists that is not cohomologous to a locally frozen commuting parent, and whether a finite-range derivation δ (the adjoint"}
+{"type":"thought","data":" of log U) can satisfy"}
+{"type":"thought","data":" δK = 0 while shifting k by a nonzero local divergence div j."}
+{"type":"thought","data":"\n\nThe first test is "}
+{"type":"thought","data":"now a variational gap check on small tori. It searches for a translation-invariant local Hamiltonian K"}
+{"type":"thought","data":" of range ≤2 that is not simultaneously diagonalizable in the R-basis. The goal is"}
+{"type":"thought","data":" to show that the energy density vanishes as"}
+{"type":"thought","data":" O(1/L²) or O(1/L) when minimized over long-wavelength"}
+{"type":"thought","data":" R-character twists of wavenumber 2π/L on L = 6 and 12. Exact diagonalization or an algebraic identity"}
+{"type":"thought","data":" on the invariant subspace will provide the proof."}
+{"type":"thought","data":"\n\nExact diagonalization"}
+{"type":"thought","data":" on a small torus is impossible because the local Hilbert space"}
+{"type":"thought","data":" has roughly 1.5×10⁵ dimensions. The variational gap test must therefore rely on an exact trial-state or algebraic identity"}
+{"type":"thought","data":" instead. A trial state built from finite-support G_T rotations applied to the reference vacuum"}
+{"type":"thought","data":" |Ω⟩ will be used, but"}
+{"type":"thought","data":" it only proves gaplessness if K contains terms"}
+{"type":"thought","data":" that do not vanish when acting on that rotated state."}
+{"type":"thought","data":"\n\nA single T_x defect"}
+{"type":"thought","data":" on the reference vacuum has energy 16 independent of L. A spread-out superposition of such"}
+{"type":"thought","data":" defects still yields a flat massive band with energy 16 + t cos k, so it remains"}
+{"type":"thought","data":" gapped. Hopping massive defects cannot produce gaplessness. True gaplessness"}
+{"type":"thought","data":" must therefore require"}
+{"type":"thought","data":" a different mechanism."}
+{"type":"thought","data":"\n\nGapless modes may "}
+{"type":"thought","data":"instead arise from a condensate with zero defect cost, a Goldstone mode from broken continuous symmetry, or a massless"}
+{"type":"thought","data":" photon from an unbroken U(1) gauge theory. A critical point is not robust. In gravity the graviton is a gauge particle of diffeomorphisms;"}
+{"type":"thought","data":" gapless modes should come from constraints"}
+{"type":"thought","data":" and gauge orbits rather than from massive R-defect hopping. Gu-Wen's linearized"}
+{"type":"thought","data":" theory around de Sitter or vacuum may already be designed for this."}
+{"type":"thought","data":"\n\nMechanism A is being"}
+{"type":"thought","data":" refined into a cochain complex. Linearized constraint-invariant displacements form "}
+{"type":"thought","data":"a discrete wave operator of order 2 on transverse-traceless harmonic cochains. The QCA must be a strict"}
+{"type":"thought","data":" reversible discrete-time wave map on these cochains, lifted exactly to the finite clock algebra. In the IG1a framework,"}
+{"type":"thought","data":" S acts as a 0-form Gauss law, V as a 2-form Bianchi identity, and the physical variables are 1-form-like with"}
+{"type":"thought","data":" six registers: three vertex diagonals and"}
+{"type":"thought","data":" three face registers."}
+{"type":"thought","data":"\n\nThe QCA is a Clifford"}
+{"type":"thought","data":" automorphism of the Z_3 clock group. It acts as a linear symplectic"}
+{"type":"thought","data":" map on (F_3)^{6 L^3} that preserves the "}
+{"type":"thought","data":"constraint subspaces ker S and ker V, and serves as a discrete"}
+{"type":"thought","data":" time step for the wave equation on the reduced"}
+{"type":"thought","data":" variables."}
+{"type":"thought","data":"\n\nA real-valued quadratic"}
+{"type":"thought","data":" energy cannot be conserved by linear maps over"}
+{"type":"thought","data":" F_3, because the dynamics of amplitudes must escape the finite field. The IG1b gates G_W "}
+{"type":"thought","data":"= exp(-i θ A_W are not Clifford unless θ is special; they rotate in the eigenspaces "}
+{"type":"thought","data":"of W with real angles. The many-body product of commuting G_R remains free in the R-basis, while G_T mixes that"}
+{"type":"thought","data":" basis."}
+{"type":"thought","data":"\n\nAlternating the gates"}
+{"type":"thought","data":" is like a kicked rotor on a stabilizer background."}
+{"type":"thought","data":" The Floquet operator U = U_T U_R can produce quasienergy bands, but weak mixing keeps"}
+{"type":"thought","data":" defect Bloch waves gapped. On the code space G_0, U_R acts trivially while U_T "}
+{"type":"thought","data":"maps out of it because T does not preserve"}
+{"type":"thought","data":" R=1."}
+{"type":"thought","data":"\n\nThe IG1b tick does"}
+{"type":"thought","data":" not preserve the commuting-parent"}
+{"type":"thought","data":" vacuum G_0. U_R acts trivially on G_0 because R = 1 there, but U_T then rotates by A_T and maps out of G_0."}
+{"type":"thought","data":" The tracial projector P/Tr P on the full S=V=1 sector is preserved"}
+{"type":"thought","data":" instead. This explains why the IG-S1 reference was too mixed, effectively"}
+{"type":"thought","data":" an infinite-temperature state on the physical"}
+{"type":"thought","data":" sector."}
+{"type":"thought","data":"\n\nA reference state "}
+{"type":"thought","data":"preserved by the spreading tick cannot be the commuting-parent vacuum, because preserving "}
+{"type":"thought","data":"a frustration-free vacuum with a circuit imposes severe restrictions. If the tick does preserve G_0 and that space is a stabilizer code,"}
+{"type":"thought","data":" the action inside G_0 becomes a logical QCA. On a 3D stabilizer code, logical operators"}
+{"type":"thought","data":" are typically non-local or topological, and the code itself is gapped as a Hamiltonian. The dynamics within G_0 would then reduce"}
+{"type":"thought","data":" to finite-dimensional degeneracy, such as torus degeneracy."}
+{"type":"thought","data":"\n\nA stabilizer code "}
+{"type":"thought","data":"vacuum cannot host gapless"}
+{"type":"thought","data":" tensor modes internally; such modes must instead be low-energy excitations above the vacuum. This means the IG-S0 construction,"}
+{"type":"thought","data":" which defines G as a projector onto the minimum of a local K with a uniform gap,"}
+{"type":"thought","data":" is incompatible with gravitons."}
+{"type":"thought","data":"\n\nThe ground projector"}
+{"type":"thought","data":" of a gapless K on a finite torus is the few lowest states, reflecting near-degeneracy"}
+{"type":"thought","data":" of IR modes. The local limit of ρ = G/Tr G with G = exact ground space may still exist;"}
+{"type":"thought","data":" for photons in Coulomb gauge this yields a unique vacuum in infinite volume. The finite-volume"}
+{"type":"thought","data":" spectrum has frequencies 2π|n|/L, a unique ground"}
+{"type":"thought","data":" state up to gauge, and first excited states scaling as O(1/L). "}
+{"type":"thought","data":"The resulting density matrix is the Fock "}
+{"type":"thought","data":"vacuum, locally a quasi-free state with power-law"}
+{"type":"thought","data":" correlations."}
+{"type":"thought","data":"\n\nIG-S1's G_0 is a topological"}
+{"type":"thought","data":" code vacuum with area-law and exponential clustering,"}
+{"type":"thought","data":" so it belongs to the wrong universality class. Mechanism A must instead force power-law correlations and a "}
+{"type":"thought","data":"gap that vanishes as 1/L with a growing light cone. For bosonic tensors, a single-clock harmonic analysis of"}
+{"type":"thought","data":" a linear QCA with real-angle rotations may work if the circuit layers are products of commuting G_W gates that do not commute across layers."}
+{"type":"thought","data":"\n\nThe qutrit clock group"}
+{"type":"thought","data":" lacks a well-defined single-particle sector,"}
+{"type":"thought","data":" so a Heisenberg-picture dispersion calculation is not the right first"}
+{"type":"thought","data":" test. A new mechanism must be validated before"}
+{"type":"thought","data":" gates are built or dispersions are computed."}
+{"type":"thought","data":"\n\nA first-test checklist"}
+{"type":"thought","data":" for gapless modes is"}
+{"type":"thought","data":" being drafted. It requires three algebraic conditions: a local k with trial twist energy scaling as O(k²) or O(|k|) "}
+{"type":"thought","data":"on the constraint surface, a finite-range derivation yielding nonzero current at that k, and the absence of a uniform"}
+{"type":"thought","data":" gap bound such as IG-S1’s vertex-counting argument."}
+{"type":"thought","data":"\n\nMechanism A is now"}
+{"type":"thought","data":" the top priority. It requires a non-commuting local energy of Maxwell or wave type on the"}
+{"type":"thought","data":" constraint-invariant"}
+{"type":"thought","data":" algebra, with a two-layer non-commuting circuit that satisfies an exact operator continuity"}
+{"type":"thought","data":" equation, and an infinite-volume ground or KMS reference for K.\n\nThe initial"}
+{"type":"thought","data":" object is the IG1a algebra generated by R and T. The Hamiltonian K is built from a non-commuting"}
+{"type":"thought","data":" family {W_α} = {all R and all T} as K = sum_α (I − Π_{W_α}),"}
+{"type":"thought","data":" or equivalently as a sum over local terms like (2−R_aa−R_aa†)/3 + (2−T_a−T_a†)/3.\n\nThe K Hamiltonian "}
+{"type":"thought","data":"is now fixed before the tick operator U. It is local, bounded, translation invariant, and C3 invariant. The reference state is "}
+{"type":"thought","data":"the ground projector G/Tr G of this K on"}
+{"type":"thought","data":" each physical torus."}
+{"type":"thought","data":" The tick circuit is a finite-depth product of allowed R and T gates whose layer order and angles are chosen"}
+{"type":"thought","data":" so that Ad_U(K) = K exactly."}
+{"type":"thought","data":"\n\nIf the existing IG1b"}
+{"type":"thought","data":" angles fail to conserve K, they must be replaced by a new tick specification."}
+{"type":"thought","data":" The remaining unbuilt pieces are the exact-conserve circuit U, the gap-scaling"}
+{"type":"thought","data":" proof, polarizations, and z = 1. A falsifiable test is being drafted that precedes gate construction and dispersion"}
+{"type":"thought","data":" calculations."}
+{"type":"thought","data":"\n\nA concrete variational"}
+{"type":"thought","data":" test is being designed to prove or disprove a uniform gap for K. It compares the energy of the old commuting-parent"}
+{"type":"thought","data":" vacuum G_0 against T-rotated local modifications, and against long-wavelength R-sector twists. A finite-support certificate"}
+{"type":"thought","data":" would bound the energy per unit volume below by a positive constant."}
+{"type":"thought","data":"\n\nA local detectability"}
+{"type":"thought","data":" lemma, SOS/Positivstellensatz, or frustration lower bound could prove K is uniformly gapped"}
+{"type":"thought","data":" without constructing U. If no such certificate exists and a long-wavelength k = 2π/L trial state shows excess energy"}
+{"type":"thought","data":" vanishing to zero, the gaplessness obstruction of IG-S1 is avoided at the level of K. "}
+{"type":"thought","data":"A more precise version of test A0 is being drafted."}
+{"type":"thought","data":"\n\nThe concrete A0 test"}
+{"type":"thought","data":" is being mapped to a single qutrit pair. On one cube, the joint"}
+{"type":"thought","data":" spectrum of the R and T words entering K is projected onto the"}
+{"type":"thought","data":" S=V=1 sector. The IG1b testigo already used this pair with R = "}
+{"type":"thought","data":"X and T = Z^{-1}, giving K = (I − Π_X) + (I − Π_Z). Because T and"}
+{"type":"thought","data":" R extend across neighboring cells, the smallest invariant patch is "}
+{"type":"thought","data":"larger than a single cell."}
+{"type":"thought","data":"\n\nThe local gap of order"}
+{"type":"thought","data":" 1 on a single qutrit pair does not guarantee a many-body gap. The"}
+{"type":"thought","data":" sum of local terms can still be gapless in the bulk, as in the Heisenberg antiferromagnet."}
+{"type":"thought","data":" In three dimensions, SU(2) Heisenberg is ordered and gapless Goldstone magnons appear"}
+{"type":"thought","data":" with ω ~ k. This is z = 1 or 2 depending on the order. No continuous"}
+{"type":"thought","data":" SU(2) symmetry exists here."}
+{"type":"thought","data":"\n\nThe concrete A0 test"}
+{"type":"thought","data":" is a finite-dimensional"}
+{"type":"thought","data":" detectability check: does there exist a state with all R = 1"}
+{"type":"thought","data":" and all T = 1? Because R and T do not commute,"}
+{"type":"thought","data":" their kernels cannot intersect on overlapping supports. The only common eigenvector is"}
+{"type":"thought","data":" the zero vector. This proves K is frustrated locally and its ground energy density is positive."}
+{"type":"thought","data":"\n\nThe many-body question"}
+{"type":"thought","data":" is whether the excess"}
+{"type":"thought","data":" energy above the ground"}
+{"type":"thought","data":" is gapped. A frustrated"}
+{"type":"thought","data":" K with no simultaneous kernel avoids the IG-S1"}
+{"type":"thought","data":" obstruction. A variational"}
+{"type":"thought","data":" test without constructing U uses sparse T-defects"}
+{"type":"thought","data":" on the R-vacuum; the"}
+{"type":"thought","data":" energy per defect remains O(1)."}
+{"type":"thought","data":"\n\nSingle defects cannot"}
+{"type":"thought","data":" lower the commuting"}
+{"type":"thought","data":" energy below 16 because"}
+{"type":"thought","data":" h_R is diagonal in "}
+{"type":"thought","data":"R. A uniform coherent"}
+{"type":"thought","data":" rotation of the stabilizer"}
+{"type":"thought","data":" vacuum, |θ⟩ = product_i"}
+{"type":"thought","data":" exp(-i θ A_{T_x}(i))"}
+{"type":"thought","data":" |Ω⟩ with small θ, is proposed as a long-wavelength"}
+{"type":"thought","data":" condensate trial state."}
+{"type":"thought","data":"\n\nThe uniform T-rotation"}
+{"type":"thought","data":" trial costs O(θ²) per"}
+{"type":"thought","data":" site from the electric"}
+{"type":"thought","data":" term h_R, while h_T contributes nothing."}
+{"type":"thought","data":" The total energy is therefore extensive"}
+{"type":"thought","data":" and massive, not a Goldstone mode. A true"}
+{"type":"thought","data":" gapless mode would "}
+{"type":"thought","data":"instead require a gradient"}
+{"type":"thought","data":" twist θ(x)=k·x with"}
+{"type":"thought","data":" energy scaling as O(k²) per volume."}
+{"type":"thought","data":"\n\nThe uniform rotation"}
+{"type":"thought","data":" trial gives a Higgs mass for the photon. A massless photon would"}
+{"type":"thought","data":" require both electric"}
+{"type":"thought","data":" and magnetic energy densities to be flat"}
+{"type":"thought","data":" directions in the vacuum. Compact U(1) gauge "}
+{"type":"thought","data":"theory achieves this in its Coulomb phase, but Z_3 3+1 gauge theory"}
+{"type":"thought","data":" may not. This is unverified lattice gauge lore, so it should not be"}
+{"type":"thought","data":" asserted."}
+{"type":"thought","data":"\n\nThe frozen envelope"}
+{"type":"thought","data":" of finite local dimension,"}
+{"type":"thought","data":" exact QCA, exact local K, and Z³ may contain"}
+{"type":"thought","data":" no viable candidate for Einstein gravitons."}
+{"type":"thought","data":" Commuting parents yield gapped or massive defects."}
+{"type":"thought","data":" Stabilizer vacua carry only finite degeneracy rather than a Fock "}
+{"type":"thought","data":"continuum. Discrete "}
+{"type":"thought","data":"Z_3 gauge theory likely lacks a Coulomb photon"}
+{"type":"thought","data":" in three plus one dimensions. The strict operator-norm"}
+{"type":"thought","data":" bridge further restricts the landscape to commuting or finite-spectrum "}
+{"type":"thought","data":"toys. Truncated spin-two oscillators could exist within the envelope"}
+{"type":"thought","data":" if bosons are truncated, yet truncation would either gap the graviton or break gauge symmetry."}
+{"type":"thought","data":"\n\nA truncated-spin-2"}
+{"type":"thought","data":" oscillator per cell is being considered"}
+{"type":"thought","data":" as a concrete bosonic candidate. The K Hamiltonian"}
+{"type":"thought","data":" would then be a truncated lattice Fierz-Pauli or linearized gravity"}
+{"type":"thought","data":" operator, and U would be a strict QCA that"}
+{"type":"thought","data":" does not reduce to exp(-iK). Truncation breaks gauge invariance and introduces a graviton"}
+{"type":"thought","data":" mass. The charter also requires an explicit algebra for any truncated bosons."}
+{"type":"thought","data":"\n\nThe first test is "}
+{"type":"thought","data":"whether a finite-dimensional local algebra can faithfully represent the linearized 3+1 gravity constraint"}
+{"type":"thought","data":" algebra with exactly two local degrees of freedom per point. IG1a already explored a finite constraint"}
+{"type":"thought","data":" module, but the remaining gap is dynamics and gaplessness."}
+{"type":"thought","data":"\n\nMechanism B is being"}
+{"type":"thought","data":" considered as an alternative to exact local conservation. It would treat K as a Lyapunov functional"}
+{"type":"thought","data":" that is approximately conserved on an infrared subspace. The strict QCA would then preserve a unique invariant "}
+{"type":"thought","data":"state with power-law correlations. This approach requires relaxing IG-S0 points 2 and 4."}
+{"type":"thought","data":"\n\nCharter R1 does not"}
+{"type":"thought","data":" require exact local K, only reproducible reference states. Mechanism B therefore changes"}
+{"type":"thought","data":" the construction route rather than the charter itself. The user wants"}
+{"type":"thought","data":" route, sufficiency, and physical necessity kept distinct, and IG-S1 must not be rescued by relaxing requirements."}
+{"type":"thought","data":" A new priority is set: stay on the E-route"}
+{"type":"thought","data":" of IG-S0 but forbid commuting parents and the DFD† sandwich."}
+{"type":"thought","data":"\n\nThe concrete search"}
+{"type":"thought","data":" is now framed as a "}
+{"type":"thought","data":"frustrated non-commuting K on the physical sector, built from both R and T families. The goal"}
+{"type":"thought","data":" is to find a finite-range U in the circuit group generated by {G_W(θ)}"}
+{"type":"thought","data":" such that U†KU = K and the adjoint action on densities carries"}
+{"type":"thought","data":" a nonzero current. The first step is an obstruction test on"}
+{"type":"thought","data":" K itself: either prove a uniform gap or show that a soft twist trial can lower the energy,"}
+{"type":"thought","data":" before attempting to construct U.\n\nIf the obstruction"}
+{"type":"thought","data":" test confirms a uniform gap or if no exact local U exists in the"}
+{"type":"thought","data":" circuit group, the route shifts to a strict spreading QCA with "}
+{"type":"thought","data":"non-commuting layers. The invariant state would be locally specifiable,"}
+{"type":"thought","data":" such as a frustration-free critical tensor-network limit or a Gaussian-like"}
+{"type":"thought","data":" clock state. Its two-point functions would be the inverse of a discrete Laplacian on transverse-traceless tensors."}
+{"type":"thought","data":"\n\nA simpler test for"}
+{"type":"thought","data":" Mechanism B is now preferred over heavy three-dimensional PEPS. The idea is to rule"}
+{"type":"thought","data":" out area-law or gapped clustering in the proposed reference state using only finite-correlation constraints or PEPS"}
+{"type":"thought","data":" injectivity obstructions. If the state is pure and a local unitary"}
+{"type":"thought","data":" fixes it, Schmidt rank conditions from P1 "}
+{"type":"thought","data":"of IG-S0 can be applied directly."}
+{"type":"thought","data":"\n\nMechanism B is unworkable."}
+{"type":"thought","data":" Local gates that preserve a critical vacuum are"}
+{"type":"thought","data":" severely restricted, so the vacuum cannot"}
+{"type":"thought","data":" be built from individual gates that each leave"}
+{"type":"thought","data":" it invariant. That would merely reproduce recipe S, which already"}
+{"type":"thought","data":" belongs to IG-S0 E. Without exact K, the"}
+{"type":"thought","data":" reference state must instead be a unique U-invariant state in"}
+{"type":"thought","data":" a superselection sector, constructed as an infinite-time"}
+{"type":"thought","data":" limit or boundary of a four-dimensional "}
+{"type":"thought","data":"tensor network. This description is too vague."}
+{"type":"thought","data":"\n\nMechanism B is being"}
+{"type":"thought","data":" concretized as a quantum"}
+{"type":"thought","data":" lattice-gas for spin-two. Each cell would hold two helicity registers moving along six lightlike"}
+{"type":"thought","data":" lattice directions,"}
+{"type":"thought","data":" with local collisions mixing them via a discrete little group and scalar or vector ghosts killed"}
+{"type":"thought","data":" by a constraint. The tick would be a shift"}
+{"type":"thought","data":" followed by collision, generalizing the D'Ariano-style"}
+{"type":"thought","data":" Weyl QCA to spin-two. No spin-two QCA paper"}
+{"type":"thought","data":" has been read yet; D'Ariano, Perinotti, and Bisio may have "}
+{"type":"thought","data":"relevant work."}
+{"type":"thought","data":"\n\nThe spin-two QCA will"}
+{"type":"thought","data":" be framed as a ballistic shift-collide model"}
+{"type":"thought","data":" whose on-site cubic-group representation contains a transverse-traceless"}
+{"type":"thought","data":" sector. The reference state is the Fock vacuum when the collision is linear, or a condensate"}
+{"type":"thought","data":" when it is nonlinear."}
+{"type":"thought","data":"\n\nThe first test is "}
+{"type":"thought","data":"representation theory on a single cell. A"}
+{"type":"thought","data":" finite-dimensional representation of the cubic group must exist"}
+{"type":"thought","data":" with dimension independent of L. After applying a linear constraint,"}
+{"type":"thought","data":" the remaining multiplicity of the two three-dimensional"}
+{"type":"thought","data":" irreps should be exactly"}
+{"type":"thought","data":" two, corresponding to helicities ±2 along a momentum orbit. Scalar"}
+{"type":"thought","data":" and vector ghosts should be exactly the image of a local differential operator."}
+{"type":"thought","data":"\n\nThe test is purely"}
+{"type":"thought","data":" a finite-group-representation and local-cohomology"}
+{"type":"thought","data":" check, with no gates or dispersion. IG1a deliberately avoided"}
+{"type":"thought","data":" computing the physical sector dimension or counting excitations,"}
+{"type":"thought","data":" so this new test is appropriate. The question"}
+{"type":"thought","data":" remains whether the"}
+{"type":"thought","data":" goal is a free linear"}
+{"type":"thought","data":" QCA of gravitons, since a free fermion was "}
+{"type":"thought","data":"already ruled out as the tensor objective."}
+{"type":"thought","data":"\n\nA free spin-2 QCA "}
+{"type":"thought","data":"is the tensor sector target, not the final Einstein theory. Charter"}
+{"type":"thought","data":" IG2 distinguishes a matter-free success as a tensorial sector"}
+{"type":"thought","data":" rather than coupled gravity. The user’s"}
+{"type":"thought","data":" earlier remark about the fermion was meant to forbid substituting"}
+{"type":"thought","data":" Dirac for graviton."}
+{"type":"thought","data":" Nonlinearity is deferred; the immediate priority is the linear tensor"}
+{"type":"thought","data":" QCA."}
+{"type":"thought","data":"\n\nA is preferred over"}
+{"type":"thought","data":" B because it stays closer to the energy-first"}
+{"type":"thought","data":" IG-S0 route and existing algebra. It fixes the frozen-support failure"}
+{"type":"thought","data":" by demanding a current, and can be abandoned"}
+{"type":"thought","data":" cheaply if K is uniformly gapped."}
+{"type":"thought","data":"\n\nMechanism B is now"}
+{"type":"thought","data":" viewed as more promising. Its shift-collide structure"}
+{"type":"thought","data":" naturally yields z=1 and propagation, and a Fock vacuum serves"}
+{"type":"thought","data":" as the reference state. However, it may violate"}
+{"type":"thought","data":" exact local K conservation. The generator of a QCA is typically non-local, so the conserved quasienergy"}
+{"type":"thought","data":" is defined mode-wise rather than as a local operator sum."}
+{"type":"thought","data":"\n\nA shift QCA is generated"}
+{"type":"thought","data":" by translation, so its conserved quantity is momentum rather than a local energy."}
+{"type":"thought","data":" For a Dirac QCA, the conserved quadratic form may not be strictly finite-range in position space if the dispersion"}
+{"type":"thought","data":" relation is not a special trigonometric polynomial. The one-step unitary is finite-range, but"}
+{"type":"thought","data":" the generator K is typically infinite-range because it is the logarithm of the symbol."}
+{"type":"thought","data":"\n\nMechanism B may avoid"}
+{"type":"thought","data":" exact K conservation"}
+{"type":"thought","data":" by replacing it with a quadratic energy form or the QCA's quasienergy."}
+{"type":"thought","data":" A leapfrog update rule, π' = π − Δφ and φ' "}
+{"type":"thought","data":"= φ + π', conserves a discrete energy exactly"}
+{"type":"thought","data":" and is finite-range. It may fail to be unitary in truncated boson "}
+{"type":"thought","data":"spaces."}
+{"type":"thought","data":"\n\nClock-based leapfrog"}
+{"type":"thought","data":" is unitary but conserves a modular quantity "}
+{"type":"thought","data":"rather than a real Hamiltonian with |k| spectrum. Real z=1 frequencies require real angles"}
+{"type":"thought","data":" and gates such as exp(-i θ A), which makes exact local K conservation"}
+{"type":"thought","data":" the hard part. The response will be structured as requested, and IG-S1"}
+{"type":"thought","data":" proofs need repair: G_0 ≠ 0 must be proved by enumerating global"}
+{"type":"thought","data":" relations in the torus stabilizer-phase argument instead of assuming positive coefficients."}
+{"type":"thought","data":"\n\nThe gap must be at"}
+{"type":"thought","data":" least two. Overlapping R-words can raise this"}
+{"type":"thought","data":" lower bound, so the 27-character check should not be read as"}
+{"type":"thought","data":" a global spectrum. The qutrit block remains local algebra only. Wrapping of large energies"}
+{"type":"thought","data":" in U = exp(-iK_E) makes"}
+{"type":"thought","data":" the IG-S0 bridge vacuous. Each dressed term is"}
+{"type":"thought","data":" separately conserved, which implies zero "}
+{"type":"thought","data":"energy current; this is stronger than the"}
+{"type":"thought","data":" support ≤4 rejection."}
+{"type":"thought","data":"\n\nConjugation on the"}
+{"type":"thought","data":" full algebra does not"}
+{"type":"thought","data":" increase support when restricted to the physical"}
+{"type":"thought","data":" sector. The local limit of a topologically "}
+{"type":"thought","data":"degenerate ρ is unproven, so R1 remains incomplete. The gap interval is"}
+{"type":"thought","data":" valid: the upper bound 16 corresponds to a"}
+{"type":"thought","data":" single-cube excitation for all L≥6, and the"}
+{"type":"thought","data":" lower bound 2 is independent of L. The factorization"}
+{"type":"thought","data":" `F^n` contains terms"}
+{"type":"thought","data":" `[Π + e^{-in} h]`."}
+{"type":"thought","data":"\n\nThe integer tick index"}
+{"type":"thought","data":" n is harmless because"}
+{"type":"thought","data":" e^{-in} = (e^{-i})^n"}
+{"type":"thought","data":" and support does not depend on n. The redundancy"}
+{"type":"thought","data":" sign is consistent:"}
+{"type":"thought","data":" adding the three R-words corresponds to multiplying"}
+{"type":"thought","data":" the operators, which"}
+{"type":"thought","data":" adds their exponents. For S=1 the character"}
+{"type":"thought","data":" sum must be divisible"}
+{"type":"thought","data":" by three, so the product of Rxx, Ryy, and Rzz"}
+{"type":"thought","data":" has eigenvalue one."}
+{"type":"thought","data":"\n\nThe conservation, "}
+{"type":"thought","data":"support, and gap proofs"}
+{"type":"thought","data":" are valid under their stated hypotheses. "}
+{"type":"thought","data":"The qutrit block is "}
+{"type":"thought","data":"legitimate only as auxiliary algebra, not as a network"}
+{"type":"thought","data":" proof. The zero-current rejection reason was"}
+{"type":"thought","data":" already covered by the support argument."}
+{"type":"thought","data":" Five priority objections"}
+{"type":"thought","data":" to the course are now being enumerated."}
+{"type":"thought","data":"\n\nThe first objection"}
+{"type":"thought","data":" is that IG-S0’s exact"}
+{"type":"thought","data":" local K and circuit-plus-bridge structure on all of P(Λ) structurally attract commuting or sandwich constructions that "}
+{"type":"thought","data":"cannot be gravitons."}
+{"type":"thought","data":" The second is that a finite-dimensional Z_3 constraint module with a stabilizer-like vacuum belongs to the"}
+{"type":"thought","data":" wrong universality class: it is topological, gapped, and area-law,"}
+{"type":"thought","data":" whereas 3+1 Einstein gravity requires massless"}
+{"type":"thought","data":" spin-two with long-range interactions. The third"}
+{"type":"thought","data":" is that exact conservation of commuting local terms implies vanishing energy flux, which is incompatible with"}
+{"type":"thought","data":" T^{0i} and R6.\n\nA fixed abstract Z³"}
+{"type":"thought","data":" lattice with finite"}
+{"type":"thought","data":" cells cannot host dynamical geometry in the strong sense. The operational metric must emerge from state and observables,"}
+{"type":"thought","data":" yet the current algebra may only yield topological excitations. Optimizing exact algebraic certificates"}
+{"type":"thought","data":" such as stencils and dressing without a mechanism for a soft transverse-traceless"}
+{"type":"thought","data":" mode is optimizing the wrong test rather than the gravitational objective."}
+{"type":"thought","data":"\n\nThe operator-norm "}
+{"type":"thought","data":"energy-tick bridge on the entire low-energy subspace is likely "}
+{"type":"thought","data":"incompatible with a finite-range QCA for a gapless continuum, because the generator"}
+{"type":"thought","data":" is non-local.\n\nIf A is chosen, IG-S0 sufficient"}
+{"type":"thought","data":" condition 4 should be dropped as a construction target and kept only"}
+{"type":"thought","data":" as a later IR check in a weaker topology; R0–R8 remain unchanged."}
+{"type":"thought","data":" If B is chosen, IG-S0 §2 items 2 and 4 should"}
+{"type":"thought","data":" change to exact K conservation and uniform bridge;"}
+{"type":"thought","data":" the parent charter stays intact if R1 is"}
+{"type":"thought","data":" interpreted as an IR reference rather than"}
+{"type":"thought","data":" a microscopic K."}
+{"type":"thought","data":"\n\nIf A or B fail, envelope"}
+{"type":"thought","data":" revision may be needed for truncated bosons or dynamical lattices."}
+{"type":"thought","data":" The next step is a "}
+{"type":"thought","data":"single bounded file, IG-S2a: an obstruction preflight for non-commuting"}
+{"type":"thought","data":" K on the physical sector. It specifies K as a sum of projection operators,"}
+{"type":"thought","data":" proves the terms do not commute, and runs three finite algebraic tests: no common kernel,"}
+{"type":"thought","data":" a local detectability or energy-density lower bound against long-wavelength trials, and whether"}
+{"type":"thought","data":" the commutant of the existing certified "}
+{"type":"thought","data":"gates contains a current for this K."}
+{"type":"thought","data":"\n\nThe next step is now"}
+{"type":"thought","data":" a representation and cohomology test for"}
+{"type":"thought","data":" a tensor shift-collide"}
+{"type":"thought","data":" cell. This is cheaper than a full K analysis"}
+{"type":"thought","data":" and closer to the z=1 target. A0 on K = h_R"}
+{"type":"thought","data":" + h_T would likely only prove frustration"}
+{"type":"thought","data":" and 3D gapping without advancing toward gravitons."}
+{"type":"thought","data":"\n\nThe tensor shift-collide"}
+{"type":"thought","data":" representation test is closer to R3 and R4. Combined with a"}
+{"type":"thought","data":" Fock vacuum, it yields a reference state, gapless modes, and propagation. This is a representation and cohomology check"}
+{"type":"thought","data":" before any gates are built. A linear QCA is effectively a free field, so the tensor"}
+{"type":"thought","data":" sector is the first nonlinear piece allowed by IG2. It conflicts"}
+{"type":"thought","data":" with an energy-first approach because the Fock vacuum serves "}
+{"type":"thought","data":"as the reference, mode quasienergy serves "}
+{"type":"thought","data":"as the energy, and there may be no strictly local K such that U = exp(-iK)."}
+{"type":"thought","data":"\n\nThe first test will"}
+{"type":"thought","data":" be a cohomological wave-complex check on"}
+{"type":"thought","data":" the existing stencils. It linearizes the discrete"}
+{"type":"thought","data":" wave operator over C using the Laurent "}
+{"type":"thought","data":"polynomials c, v_a, r_aa, and w_a. The kernel must match two polarizations"}
+{"type":"thought","data":" after constraints. The principal symbol"}
+{"type":"thought","data":" must be a wave operator of order one in time"}
+{"type":"thought","data":" and space for z=1."}
+{"type":"thought","data":"\n\nThe test is static"}
+{"type":"thought","data":" and gate-free. It computes"}
+{"type":"thought","data":" the rank of the linearized constraint map and "}
+{"type":"thought","data":"gauge map as Laurent matrices, then counts"}
+{"type":"thought","data":" degrees of freedom "}
+{"type":"thought","data":"in the harmonic space as a function of k."}
+{"type":"thought","data":" This is the missing pre-gate test that "}
+{"type":"thought","data":"IG1a omitted. The S "}
+{"type":"thought","data":"stencil is c = (t_y²+t_z², t_x²+t_z², t_x²+t_y²,"}
+{"type":"thought","data":" −t_x t_y, −t_y t_z, −t_z t_x)."}
+{"type":"thought","data":"\n\nThe V, R, and T stencils"}
+{"type":"thought","data":" are now written out. The identities c·v_a"}
+{"type":"thought","data":" = 0, r_xx+r_yy+r_zz=c, w_x+w_y+w_z=0, and "}
+{"type":"thought","data":"the commuting relations between R with V and"}
+{"type":"thought","data":" T with S are listed."}
+{"type":"thought","data":" These form a cochain complex. The first "}
+{"type":"thought","data":"test will treat the six-component Laurent"}
+{"type":"thought","data":" vector as a field φ(k) ∈ C^6 and solve the"}
+{"type":"thought","data":" linearized constraints"}
+{"type":"thought","data":" S(k)φ = 0."}
+{"type":"thought","data":"\n\nThe linearized constraint"}
+{"type":"thought","data":" map is c(k)·φ = 0 and v_a(k)·π = 0. Near "}
+{"type":"thought","data":"k=0 the stencil c(0) = (8,8,8,−4,−4,−4) "}
+{"type":"thought","data":"for t=2, which does not match the continuum"}
+{"type":"thought","data":" derivative that vanishes"}
+{"type":"thought","data":" at k=0 for Gauss. This"}
+{"type":"thought","data":" indicates the discrete symbol differs from"}
+{"type":"thought","data":" the continuous linearized"}
+{"type":"thought","data":" gravity theory."}
+{"type":"thought","data":"\n\nThe next expediente"}
+{"type":"thought","data":" is IG-S2. It performs a preflight on the frozen cochain by computing"}
+{"type":"thought","data":" exact Laurent linear algebra at zero momentum"}
+{"type":"thought","data":" and generic k, plus an obstruction test"}
+{"type":"thought","data":" against commuting or sandwich ticks. No gates or many-body spectrum"}
+{"type":"thought","data":" are required."}
+{"type":"thought","data":"\n\nIf the linearized "}
+{"type":"thought","data":"cochain has no two transverse-traceless"}
+{"type":"thought","data":" branches, the cell "}
+{"type":"thought","data":"or register algebra must change while the envelope stays a finite Z³ cell. If it does"}
+{"type":"thought","data":" contain them as harmonic cochains, the next step is a discrete-time"}
+{"type":"thought","data":" wave map built from leapfrog on those cochains; this candidate U carries"}
+{"type":"thought","data":" quadratic energy, so the contract must explicitly"}
+{"type":"thought","data":" face the QCA-versus-generator issue. This yields "}
+{"type":"thought","data":"a reference state, gapless modes, and propagation."}
+{"type":"thought","data":" If the Laurent rank test fails, effort on R/T q=3 stops."}
+{"type":"thought","data":"\n\nThe prior tests never"}
+{"type":"thought","data":" checked whether the"}
+{"type":"thought","data":" kinematical module can host two tensor "}
+{"type":"thought","data":"polarizations. Building"}
+{"type":"thought","data":" energies and gates on a module without "}
+{"type":"thought","data":"TT content is exactly passing previous tests"}
+{"type":"thought","data":" without approaching the objective.\n\nIf "}
+{"type":"thought","data":"the linearized harmonic space is wrong, the cell representation"}
+{"type":"thought","data":" should be redesigned by a representation-theoretic TT test rather than"}
+{"type":"thought","data":" by further q=3 dressing.\n\nA false claim in the gap upper bound using"}
+{"type":"thought","data":" T_x on any physical R=1 state also needs verification."}
+{"type":"thought","data":"\n\nT_x acting on a V=1"}
+{"type":"thought","data":" state preserves S=1 because T commutes "}
+{"type":"thought","data":"with V. The claim that the resulting state"}
+{"type":"thought","data":" is a simultaneous eigenstate of all h_R with M=16"}
+{"type":"thought","data":" is accepted as valid under the certificate,"}
+{"type":"thought","data":" pending the source "}
+{"type":"thought","data":"for stencil_charges. The auxiliary assertion that nonzero weights"}
+{"type":"thought","data":" are at least 2 is restricted to local triples whose"}
+{"type":"thought","data":" sum is zero modulo three."}
+{"type":"thought","data":"\n\nThe report correctly"}
+{"type":"thought","data":" scopes the vertex-character result and validly "}
+{"type":"thought","data":"lifts it to a global"}
+{"type":"thought","data":" gap lower bound. The"}
+{"type":"thought","data":" operator F acts as the identity on Π_R "}
+{"type":"thought","data":"while commuting with V, so it preserves "}
+{"type":"thought","data":"G_0. The draft will be written in Spanish"}
+{"type":"thought","data":" with a dry style, no invented novelty, and"}
+{"type":"thought","data":" unverified references marked. The Gu–Wen arXiv:0907.1203 source"}
+{"type":"thought","data":" is cited for constraints and R/T stencils but"}
+{"type":"thought","data":" remains unverified; its physical interpretation"}
+{"type":"thought","data":" for gravity and modes is also pending."}
+{"type":"thought","data":"\n\nThe documents explicitly"}
+{"type":"thought","data":" state that Gu–Wen L/N"}
+{"type":"thought","data":" modes do not transfer"}
+{"type":"thought","data":" to this circuit. The Masaoka–Soejima–Watanabe"}
+{"type":"thought","data":" arXiv:2406.06415v3 "}
+{"type":"thought","data":"theorem 1 is cited for the parent frustration-free"}
+{"type":"thought","data":" criticality, but remains unverified. The IG-S1"}
+{"type":"thought","data":" conservation check "}
+{"type":"thought","data":"is valid: F = exp(−i K_0) commutes with "}
+{"type":"thought","data":"K_0, so U_E† K_E U_E = K_E holds everywhere,"}
+{"type":"thought","data":" and G_E is strictly smaller than P because"}
+{"type":"thought","data":" an energy-16 state exists."}
+{"type":"thought","data":"\n\nThe gap upper bound"}
+{"type":"thought","data":" is volume-independent"}
+{"type":"thought","data":" because the T_x support"}
+{"type":"thought","data":" is a single cube and"}
+{"type":"thought","data":" R stays bounded. The draft will be organized"}
+{"type":"thought","data":" into four sections, including a comparison table for A and B. "}
+{"type":"thought","data":"The program may need to abandon the exact"}
+{"type":"thought","data":" local K hypothesis or reconsider whether"}
+{"type":"thought","data":" the q=3 Gu-Wen module provides the correct"}
+{"type":"thought","data":" kinematics."}
+{"type":"thought","data":"\n\nThe IG-S1 verdict "}
+{"type":"thought","data":"is final and unappealable. The conservation, sandwich"}
+{"type":"thought","data":" locality, and gap interval proofs are valid under"}
+{"type":"thought","data":" their stated hypotheses; only documentation "}
+{"type":"thought","data":"and rigor need repair, not the verdict itself. The gap interval 2 "}
+{"type":"thought","data":"≤ gap ≤ 16 is correctly"}
+{"type":"thought","data":" framed in the S = V = 1 sector, where V = 1 excludes the M = 16 state because T"}
+{"type":"thought","data":" preserves V while the argument starts from R = 1, V = 1."}
+{"type":"thought","data":"\n\nThe energy gap is "}
+{"type":"thought","data":"strictly positive because the operator U has "}
+{"type":"thought","data":"a genuine quasienergy gap. For integer M "}
+{"type":"thought","data":"≠ 0, the phase e^{−iM} never equals one, so"}
+{"type":"thought","data":" no excited state can"}
+{"type":"thought","data":" accidentally coincide with the ground state."}
+{"type":"thought","data":"\n\nThe operator U is "}
+{"type":"thought","data":"strictly local in time."}
+{"type":"thought","data":" Because U^n = D F^n D†, Heisenberg operators"}
+{"type":"thought","data":" never spread their "}
+{"type":"thought","data":"support; it stays confined within radius 4 forever."}
+{"type":"thought","data":" This rules out any "}
+{"type":"thought","data":"propagating massive "}
+{"type":"thought","data":"particle. The evolution behaves like an on-site"}
+{"type":"thought","data":" clock rather than a"}
+{"type":"thought","data":" relativistic wave. "}
+{"type":"thought","data":"This is fatal for the"}
+{"type":"thought","data":" candidate."}
+{"type":"thought","data":"\n\nThe candidate is being"}
+{"type":"thought","data":" adversarially reviewed"}
+{"type":"thought","data":" to find false claims"}
+{"type":"thought","data":" rather than rubber-stamped."}
+{"type":"thought","data":" The draft will be written in Spanish with complete"}
+{"type":"thought","data":" sentences, lead with"}
+{"type":"thought","data":" the answer, and use GitHub markdown. Unverified"}
+{"type":"thought","data":" citations remain marked."}
+{"type":"thought","data":"\n\nThe two remaining "}
+{"type":"thought","data":"claims were checked. G_0 is exactly the "}
+{"type":"thought","data":"projector onto the intersection of the R=1 kernel with"}
+{"type":"thought","data":" V=1 and S=1, because K_0 contains only h_R terms. The positivity"}
+{"type":"thought","data":" of each h_R also guarantees that ker K_0 equals the common kernel of"}
+{"type":"thought","data":" all h_R, since ⟨sum h⟩ = 0 implies each ⟨h⟩ = 0 for projectors."}
+{"type":"thought","data":"\n\nThe layering at line"}
+{"type":"thought","data":" 129 is volume-independent because every R and T commutes. The color-period"}
+{"type":"thought","data":" of six and the one-cell"}
+{"type":"thought","data":" translation of complete blocks are preserved by the global D and"}
+{"type":"thought","data":" F."}
+{"type":"thought","data":"\n\nThe operator U_E^n"}
+{"type":"thought","data":" does not grow its support with n because the noncommutativity of "}
+{"type":"thought","data":"D and F is hidden inside the unitary dressing."}
+{"type":"thought","data":" The Schrödinger evolution applies D, then F^n, then D†, so the local operator stays confined"}
+{"type":"thought","data":" within radius 4. This validates the strict"}
+{"type":"thought","data":" locality claim even though [D,F] ≠ 0.\n\nThe diameter bound for R_aa is now being checked"}
+{"type":"thought","data":" against the explicit register terms r_xx and the doubled-coordinate definition t_a = a + a^{-1}."}
+{"type":"thought","data":"\n\nThe explicit register"}
+{"type":"thought","data":" terms confirm that R_aa spans at most one cell, so the frozen"}
+{"type":"thought","data":" contract’s support bound is valid. Even if the constant were"}
+{"type":"thought","data":" twice as large, the radius would remain finite and independent of n, preserving the qualitative rejection."}
+{"type":"thought","data":" The script does not verify operator supports; the certificate relies on the paper proof."}
+{"type":"thought","data":"\n\nThe missing support"}
+{"type":"thought","data":" check is not a gap in the argument. The"}
+{"type":"thought","data":" 16-excitation count on tori L ≥ 6 is an"}
+{"type":"thought","data":" incomplete independent verification, not a"}
+{"type":"thought","data":" false claim."}
+{"type":"thought","data":"\n\nThe draft will frame"}
+{"type":"thought","data":" mechanism A as a leapfrog wave on the frozen cochain complex, driven"}
+{"type":"thought","data":" by quadratic energy and a noncommutative tick."}
