@@ -10,7 +10,21 @@ strictly causal unitary QCA envelope. Interacting many-body construction is
 allowed within this separately chartered line. Exact CJWW recovery is not a
 requirement; no earlier gate is reopened.
 
-Status: `CHARTER_OPEN / REQUIREMENTS_DEFINED / NO_RULE_SPECIFIED`.
+Status: `CHARTER_OPEN / CONTROL_TICK_SPECIFIED / IR_UNDEFINED`.
+The [IG1b local-gate contract](../theory/INVERSE_GRAVITY_LOCAL_GATE_GATE.md)
+and certificate were frozen at `601463b`, then executed with exact arithmetic
+and exit 0: `LOCAL_CONSTRAINT_PRESERVING_NONSCALAR_GATE_PASS_AUTHOR_SIDE`.
+Gu–Wen Rzz / T_x^x give a local physical Weyl pair in the q=3 constrained
+sector. A non-scalar unitary gate at theta=pi/3 is certified; its three cyclic
+families define a control tick, inverse, fixed-depth implementation and
+author-side strict range bound <=3 cells per tick. Reference rho_L=P/Tr(P)
+is stationary on the finite torus, not an energy vacuum.
+See [IG1b result](../reports/2026-10-08--inverse-gravity-local-gate.md).
+Next filter: collective physical dynamics and a justified IR state/sector.
+No full-tick transport, mode count or dispersion is proved; IG1 remains
+incomplete for IR spectroscopy and R1. No independent review is recorded.
+
+Historical IG1a checkpoint:
 Branch-local continuation: [IG1a constraint preflight](../theory/INVERSE_GRAVITY_CONSTRAINT_PREFLIGHT.md)
 frozen with its permanent certificate at `1798644`, then executed with exit 0
 (SymPy 1.14.0, exact arithmetic). Result:
@@ -21,14 +35,13 @@ constraints, not a QCA tick, an IR sector or physical modes.
 The [mechanism report](../reports/2026-10-08--inverse-gravity-constraint-mechanism.md)
 excludes constraint-only phase kicks as nontrivial dynamics in S=V=1 and
 records why Hamiltonian penalties/N-model linear dispersion cannot be
-transferred automatically to a Floquet QCA. Next question: local generators
-in the constraint commutant with controlled physical dynamics; no generator,
-tick or reference state has been selected as a complete candidate.
+transferred automatically to a Floquet QCA. Its then-open local-gate question
+is addressed by IG1b above, without supplying the still-missing IR control.
 The [initial primary-source/obstruction audit](../reports/2026-10-08--inverse-gravity-ig0.md)
 records `IG0 = ARCHITECTURE_UNDERSPECIFIED`, with local tensor collective
-sectors prioritized for specification, not proved viable. IG1 has no candidate
-yet. Next work: specify exact tick, finite cell, reference/IR sector and
-constraint mechanism before a two-polarization/linear-dispersion calculation.
+sectors prioritized for specification, not proved viable. That initial
+no-rule status is superseded only by the IG1b control tick above. A justified
+IR state/sector is still required before a two-polarization/dispersion calculation.
 Shared matter/geometry cones, conserved source and nonlinear closure remain OPEN.
 
 This authorization supersedes historical blanket restrictions on new substrate

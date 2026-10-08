@@ -1,0 +1,8 @@
+PASS axis=0: R/V and T/S, Laurent and real space, all translations
+PASS axis=1: R/V and T/S, Laurent and real space, all translations
+PASS axis=2: R/V and T/S, Laurent and real space, all translations
+PASS redundancies: Rxx Ryy Rzz=S; Tx Ty Tz=I
+PASS fixed physical Weyl witness: Rzz(0), Tx at (1,1,1), overlap=-1 mod 3
+PASS exact local qutrit gate: unitary, noncommuting with physical T
+VERDICT: LOCAL_CONSTRAINT_PRESERVING_NONSCALAR_GATE_PASS_AUTHOR_SIDE
+Scope: local gate algebra only; tick locality/state argued separately; no modes or IR.
