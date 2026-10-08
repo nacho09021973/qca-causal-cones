@@ -1,5 +1,83 @@
 # CURRENT_STATE
 
+## IG-S2 mixed-test sufficiency audit — 2026-10-08
+
+User continuation; [contract](../theory/INVERSE_GRAVITY_MIXED_TEST_SUFFICIENCY_GATE.md)
+frozen at `cb25f19`, permanent auxiliary code at `b6ed04b` before execution.
+The [author-side analysis](../reports/2026-10-08--ig-s2-mixed-test-sufficiency.md)
+exhibits tau: maximally mixed diagonal registers and zero-momentum faces.
+It passes all curvature-angle polynomial ground inequalities and the fixed
+mixed stationarity tests, but has constant curvature numerator
+`J*diag(36,99/2)`. This refutes sufficiency of that specified relaxation,
+not all tests in the full common commutant or the true-ground estimate.
+A genuine two-operator ground-cost PSD condition for `{P_i,S_i P_i}`
+excludes tau: its matrix determinant is `-U2^2/4`, with an explicit coherent
+cost `-U2^2/(150 J)`. Exact auxiliary controls passed; no independent review.
+No bound relating the admitted mixed-cost matrix to the true-ground tensor
+numerator is established. `TENSOR_SPECTRAL_GATE_OPEN`; no promotion.
+
+## IG-S2 mixed local stationarity test — 2026-10-08
+
+User-authorized mixed-test obligation, [contract](../theory/INVERSE_GRAVITY_MIXED_GROUND_TEST_GATE.md)
+frozen at `c15bde3` and permanent auxiliary code at `47ddd26` before execution.
+The [author-side proof](../reports/2026-10-08--ig-s2-mixed-ground-test.md)
+fixes P_i=1_{Lxx(i)=0} and Y_i=i(P_i S_i^dagger-S_i P_i).
+Its full-H_N stationarity residual in the zero-momentum product state is
+exactly -3 U2: the scalar penalty connects the selected configurations;
+diagonal terms and H_g cannot supply that transition. Thus this local mixed
+test excludes the false positive admitted by curvature-only ground tests.
+The proof also gives a local trace-norm distinction from every true ground
+density, with its explicit local-commutator norm dependence.
+`MIXED_STATIONARITY_TEST_ANALYTIC_PASS_AUTHOR_SIDE`; exact auxiliary
+[controls](../reports/2026-10-08--ig-s2-mixed-ground-test-certificate.txt) passed.
+Stationarity is necessary, not sufficient, for ground-state admission.
+No curvature-cost, Gram or spectral bound is obtained; no independent review
+or scientific promotion. `TENSOR_SPECTRAL_GATE_OPEN`.
+
+## IG-S2 restricted ground-cost certificates — 2026-10-08
+
+User-authorized continuation of the true-ground cost obligation, with
+[contract](../theory/INVERSE_GRAVITY_GROUND_COST_CERTIFICATE_GATE.md)
+frozen at `db2e5f6`. The author-side
+[analysis](../reports/2026-10-08--ig-s2-ground-cost-certificate-obstruction.md)
+gives an exact local positive-certificate principle without knowing E0.
+No actual small-cost certificate is obtained.
+Ground tests confined to the common commutant of H_U and H_g admit the
+momentum-zero product state, whose curvature cost remains positive and
+volume independent. Such tests cannot certify a vanishing upper cost,
+even if all supports and coherent combinations within that algebra are used.
+Individual unitary-cost tests also cannot certify a strictly positive lower
+cost by this positive-certificate form, by the full-trace obstruction.
+These are restrictions on certificate classes, not on the true N-type spectrum.
+The unchanged curvature verifier was rerun successfully; no new scientific
+script, optimization or independent review was performed.
+`RESTRICTED_GROUND_CERTIFICATE_CLASS_FAIL / NTYPE_GROUND_COST_OPEN`.
+The next local-test obligation is an explicit mixed angle/momentum variation
+outside that commutant which excludes the product-state false positive.
+The zeroth-moment O(L^-4) condition belongs to a stronger sufficient route;
+it is not necessary for the spectral target at the sampled momentum alone.
+
+## IG-S2 true-ground-space sum-rule audit — 2026-10-08
+
+The user instructed continuation using the true full-H_N ground space.
+[Contract](../theory/INVERSE_GRAVITY_GROUND_SPACE_SUM_RULE_GATE.md) frozen at
+`f57b0e6`, permanent auxiliary code at `1bfa5a7` before execution.
+The [report](../reports/2026-10-08--ig-s2-true-ground-sum-rules.md)
+derives `D=2F` in the canonical real ground density and reduces the axial
+numerator to five finite-range local ground-expectation matrices.
+Quartic polynomial cancellation is characterized by coefficient ratios
+`(1,-4,6,-4,1)`; quantitative finite-size moment rates are stated separately.
+No actual N-type ground moment has been evaluated or bounded.
+
+The zeroth moment is the true-ground-space energy cost of the p=0 probes.
+Stationarity implies positivity, not its vanishing. The immediate missing
+quantity is its L-uniform finite-size bound.
+An auxiliary three-level example refutes inference of two physical excited
+states from rank two of a ground-averaged Gram alone.
+The [local certificate](../reports/2026-10-08--ig-s2-true-ground-sum-rule-certificate.txt)
+passed with exit 0; it is not a N-type vacuum calculation or independent review.
+`NTYPE_GROUND_MOMENTS_UNKNOWN / TENSOR_SPECTRAL_GATE_OPEN`.
+
 ## IG-S2 constraint-preserving curvature probes — 2026-10-08
 
 The user accepted the bounded R-operator route to test exact constraint

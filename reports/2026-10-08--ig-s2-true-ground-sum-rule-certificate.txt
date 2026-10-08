@@ -1,0 +1,12 @@
+PASS axial H_J support, indices 0,0: [-2, -1, 0, 1, 2]
+PASS axial H_J support, indices 0,1: [-1, 0, 1]
+PASS axial H_J support, indices 1,0: [-1, 0, 1]
+PASS axial H_J support, indices 1,1: [-2, -1, 0, 1, 2]
+PASS unique degree-2 Fourier polynomial with fourth-order zero: (1,-4,6,-4,1)
+PASS canonical real-ground D=2F controls, including complex mixed probes
+FINITE_PASS averaged-rank counterexample: averaged G rank 2, physical excited space rank 1
+PASS zeroth-moment Hilbert-Schmidt identity on the auxiliary ground space
+Environment: SymPy 1.14.0
+VERDICT: GROUND_SUM_RULE_AUXILIARY_CONTROLS_PASS
+Scope: support geometry, polynomial identity and three-level logical controls.
+N-type ground moments, degeneracy and tensor spectral gate remain OPEN.
