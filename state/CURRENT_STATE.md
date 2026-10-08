@@ -11,6 +11,19 @@ allowed within this separately chartered line. Exact CJWW recovery is not a
 requirement; no earlier gate is reopened.
 
 Status: `CHARTER_OPEN / REQUIREMENTS_DEFINED / NO_RULE_SPECIFIED`.
+Branch-local continuation: [IG1a constraint preflight](../theory/INVERSE_GRAVITY_CONSTRAINT_PREFLIGHT.md)
+frozen with its permanent certificate at `1798644`, then executed with exit 0
+(SymPy 1.14.0, exact arithmetic). Result:
+`FINITE_CONSTRAINT_ALGEBRA_PASS_AUTHOR_SIDE`, reproduced from Gu–Wen scalar/vector
+clock constraints with six qutrits per cell. Both Laurent and independently
+entered real-space overlap formulations pass. This certifies only commuting
+constraints, not a QCA tick, an IR sector or physical modes.
+The [mechanism report](../reports/2026-10-08--inverse-gravity-constraint-mechanism.md)
+excludes constraint-only phase kicks as nontrivial dynamics in S=V=1 and
+records why Hamiltonian penalties/N-model linear dispersion cannot be
+transferred automatically to a Floquet QCA. Next question: local generators
+in the constraint commutant with controlled physical dynamics; no generator,
+tick or reference state has been selected as a complete candidate.
 The [initial primary-source/obstruction audit](../reports/2026-10-08--inverse-gravity-ig0.md)
 records `IG0 = ARCHITECTURE_UNDERSPECIFIED`, with local tensor collective
 sectors prioritized for specification, not proved viable. IG1 has no candidate

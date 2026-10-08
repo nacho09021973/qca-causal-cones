@@ -1,0 +1,9 @@
+PASS clock algebra: q=3, X^3=Z^3=I, ZX=omega XZ
+PASS Laurent correlation: scalar/vector x, all translations
+PASS Laurent correlation: scalar/vector y, all translations
+PASS Laurent correlation: scalar/vector z, all translations
+PASS independent real-space overlaps: axis=0, integer and mod 3
+PASS independent real-space overlaps: axis=1, integer and mod 3
+PASS independent real-space overlaps: axis=2, integer and mod 3
+VERDICT: FINITE_CONSTRAINT_ALGEBRA_PASS_AUTHOR_SIDE
+Scope: commuting finite tensor constraints only; no tick, IR, modes, or gravity.
