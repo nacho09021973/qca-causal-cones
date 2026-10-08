@@ -1,0 +1,7 @@
+PASS initial O/B physical-word supports disjoint; [O,B]=0
+PASS two formulations: all stencil incidences equal cube-vertex charges
+M(O)=16; M(B)=16; M(OB)=30
+f0(real,imag)=(1, 0); fB(real,imag)=(-1, 0)
+||[U^dag O U,B] psi0||^2=4 (exact)
+VERDICT: FULL_TICK_ONE_STEP_PHYSICAL_INFLUENCE_PASS_AUTHOR_SIDE
+Scope: frozen tick, physical sector, one step; no IR, modes, or gravity.

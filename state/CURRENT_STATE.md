@@ -20,9 +20,18 @@ families define a control tick, inverse, fixed-depth implementation and
 author-side strict range bound <=3 cells per tick. Reference rho_L=P/Tr(P)
 is stationary on the finite torus, not an energy vacuum.
 See [IG1b result](../reports/2026-10-08--inverse-gravity-local-gate.md).
-Next filter: collective physical dynamics and a justified IR state/sector.
-No full-tick transport, mode count or dispersion is proved; IG1 remains
-incomplete for IR spectroscopy and R1. No independent review is recorded.
+The [IG1c full-tick contract](../theory/INVERSE_GRAVITY_FULL_TICK_DYNAMICS_GATE.md)
+and permanent code were frozen at `10ddcf6`, then executed with exact
+arithmetic and exit 0. Result:
+`FULL_TICK_ONE_STEP_PHYSICAL_INFLUENCE_PASS_AUTHOR_SIDE`.
+For fixed physical words O/B with initially disjoint support,
+`||[U^dag O U,B] psi0||=2` in the constrained sector. This proves the
+full tick is non-scalar there and creates spatial physical influence in one
+step. Both stencil incidences and an independent cube-vertex formulation agree.
+See [IG1c report](../reports/2026-10-08--inverse-gravity-full-tick-dynamics.md).
+No sustained propagation, asymptotic speed, mode count or dispersion is proved.
+Next filter: a justified IR state/sector and controlled collective excitations;
+IG1 remains incomplete for IR spectroscopy and R1. No independent review is recorded.
 
 Historical IG1a checkpoint:
 Branch-local continuation: [IG1a constraint preflight](../theory/INVERSE_GRAVITY_CONSTRAINT_PREFLIGHT.md)
