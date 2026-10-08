@@ -1,0 +1,8 @@
+PASS Weyl pair: no common vector R=T=1 in exact qutrit control
+PASS algebra control n=0: response=0; commutator squared mean=3/4
+PASS algebra control n=1: response=0; commutator squared mean=3/4
+PASS algebra control n=2: response=0; commutator squared mean=25/108
+PASS invariant tracial state and nonzero squared commutator coexist
+PASS non-tracial positive control: response=3/4
+VERDICT: TRACIAL_REFERENCE_RESPONSE_NULL / TERMWISE_VACUUM_INCOMPATIBLE
+Scope: algebra controls; general sector proof in report; no QCA modes or IR.

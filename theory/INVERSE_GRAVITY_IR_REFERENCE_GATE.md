@@ -37,7 +37,8 @@ Si hay fuente externa que cambie el sector o la regla, no pertenece a este test.
 3. Aclarar compatibilidad con IG1c: un operador no nulo puede tener traza cero;
    su norma y correlador positivo `Tr(ρ_L C†C)` no tienen por qué ser cero.
 4. El par físico TR=ω^-1 RT excluye un vector no nulo con R=T=1.
-   Esto descarta solo la receta de vacío que minimiza cada A_W por separado,
+   Esto descarta solo la receta de vacío que minimiza cada término auxiliar
+   -A_W por separado (máximo A_W=1, equivalente a W=1),
    no todos los estados estacionarios, estados correlacionados o estados IR.
 
 Certificado permanente `scripts/verify_inverse_gravity_ir_reference.py`:

@@ -30,8 +30,18 @@ full tick is non-scalar there and creates spatial physical influence in one
 step. Both stencil incidences and an independent cube-vertex formulation agree.
 See [IG1c report](../reports/2026-10-08--inverse-gravity-full-tick-dynamics.md).
 No sustained propagation, asymptotic speed, mode count or dispersion is proved.
-Next filter: a justified IR state/sector and controlled collective excitations;
-IG1 remains incomplete for IR spectroscopy and R1. No independent review is recorded.
+The [IG1d IR-reference filter](../theory/INVERSE_GRAVITY_IR_REFERENCE_GATE.md)
+and algebra controls were frozen at `dd40dee`, then executed exactly with exit 0.
+Result: `TRACIAL_REFERENCE_RESPONSE_NULL / TERMWISE_VACUUM_INCOMPATIBLE`.
+The general trace proof gives zero mean response to all sector-preserving
+unitary sources in rho_L=P/Tr(P), at every time and finite admitted volume.
+This does not invalidate the nonzero physical commutator of IG1c. The physical
+Weyl pair also excludes a common W=1 state minimizing each auxiliary -A_W term.
+See [IG1d report](../reports/2026-10-08--inverse-gravity-ir-reference.md).
+Next filter: a locally justified correlated stationary state with nontrivial
+response and controlled excitations; `IR_STATE_SELECTION_OPEN`.
+No gravitational dispersion is calculated; IG1 remains incomplete for R1.
+No independent review is recorded.
 
 Historical IG1a checkpoint:
 Branch-local continuation: [IG1a constraint preflight](../theory/INVERSE_GRAVITY_CONSTRAINT_PREFLIGHT.md)
