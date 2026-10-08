@@ -67,6 +67,16 @@ Potential novelty, if any, must lie in QCA-specific structural statements, causa
 
 ## 7. Current gate
 
+**Branch-local successor authorization (2026-10-08).** Direct user instruction
+opens inverse design on `research/inverse-gravity-design`, governed by
+`theory/INVERSE_GRAVITY_DESIGN_CHARTER.md` and the newest entry of
+`state/CURRENT_STATE.md`. Within that charter, fixed-lattice interacting QCA
+construction and collective geometry are allowed; exact CJWW recovery is not
+required. Historical statements below that only point (3) is authorized or
+that no new class may be studied do not prohibit this separately authorized
+line. All prior evidence levels, closures and paused fronts retain their scope.
+The opening authorizes investigation, not a gravity or novelty result.
+
 The **STANDARD WEYL/DIRAC EXACT GATE is PASS** for its declared cases, on the
 evidence committed at `2c7c2c9`. This does not establish generality or lift all
 scope restrictions.

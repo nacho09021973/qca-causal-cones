@@ -1,5 +1,29 @@
 # CURRENT_STATE
 
+## Branch-local inverse-gravity successor — 2026-10-08
+
+Direct user instruction authorizes opening the independent research line on
+`research/inverse-gravity-design`, based on `0a4606c`. Its
+[charter](../theory/INVERSE_GRAVITY_DESIGN_CHARTER.md) fixes a 3+1-dimensional
+Einstein-gravity target and an initial fixed-lattice, finite-local-dimension,
+strictly causal unitary QCA envelope. Interacting many-body construction is
+allowed within this separately chartered line. Exact CJWW recovery is not a
+requirement; no earlier gate is reopened.
+
+Status: `CHARTER_OPEN / REQUIREMENTS_DEFINED / NO_RULE_SPECIFIED`.
+The [initial primary-source/obstruction audit](../reports/2026-10-08--inverse-gravity-ig0.md)
+records `IG0 = ARCHITECTURE_UNDERSPECIFIED`, with local tensor collective
+sectors prioritized for specification, not proved viable. IG1 has no candidate
+yet. Next work: specify exact tick, finite cell, reference/IR sector and
+constraint mechanism before a two-polarization/linear-dispersion calculation.
+Shared matter/geometry cones, conserved source and nonlinear closure remain OPEN.
+
+This authorization supersedes historical blanket restrictions on new substrate
+work only within the new charter. W1–W12 stays CLOSED_BY_CONTRACT in W6/CJWW;
+F2/F4 evidence remains PRELIMINARY; H1 remains OPEN and paused; no Einstein
+dynamics, novelty, physical scale or independent-review claim is promoted.
+No third-party review or publication is authorized by this opening.
+
 ## Authoritative W9–W11 repair update — 2026-09-30
 
 This update supersedes the W9–W11 summaries and Sections 29–31 below where
