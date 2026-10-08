@@ -275,6 +275,22 @@ Rules for any new scientific script:
 - Every retained scientific result must have permanent, traced generating
   code; no ephemeral scripts may supply evidence.
 
+## Mixed ground stationarity test (2026-10-08)
+
+`verify_inverse_gravity_mixed_ground_test.py` checks the preregistered local
+projector/partial-shift algebra, sign of the scalar-orbit stationarity witness,
+and signed scalar-word collisions at L=4,6. The H_g diagonal-species check
+uses the structural property inspected in Gu-Wen v3 p.18; it does not audit
+all rho coordinates or calculate the N-type vacuum. Contract:
+`theory/INVERSE_GRAVITY_MIXED_GROUND_TEST_GATE.md`. Run from the repo root:
+
+```sh
+python3 -B scripts/verify_inverse_gravity_mixed_ground_test.py
+```
+
+Optional `--output <path>` records output only after every check passes.
+No tensor energy bound, all-volume extrapolation or independent review follows.
+
 ## Exploratory IR spectral attribution (2026-09-22)
 
 `ir_precision_N24.py` preserves the original fixed-N record. `ir_cancellation.py`
