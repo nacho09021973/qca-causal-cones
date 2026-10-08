@@ -1,0 +1,6 @@
+PASS auxiliary N=2: ensemble distance >=1/2, stationarity defect <=2/N^2 (exact)
+PASS auxiliary N=4: ensemble distance >=1/2, stationarity defect <=2/N^2 (exact)
+PASS auxiliary N=8: ensemble distance >=1/2, stationarity defect <=2/N^2 (exact)
+PASS auxiliary N=16: ensemble distance >=1/2, stationarity defect <=2/N^2 (exact)
+VERDICT: STATIONARITY_DEFECT_NOT_AN_ENSEMBLE_ERROR_BOUND
+Scope: auxiliary family only; B-state convergence of fixed QCA NOT_TESTED.

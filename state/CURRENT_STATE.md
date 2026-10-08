@@ -57,8 +57,17 @@ B0 is activated with the same beta=1 seed and tick: finite-volume stationarity
 is proved, and an exact dual reduction to local observables is written.
 Controlled seed expectations and time-average convergence remain absent;
 the 2/M stationarity defect is not an error bound to the stationary ensemble.
-`B0=ACTIVE / CONTROLLED_LOCAL_ACCESS_OPEN`, B1/B2/B3 NOT_EXECUTED;
-`IR_STATE_SELECTION_OPEN`. No gate, angle, beta, weight or target is adjusted.
+The [bounded B0 access audit](../reports/2026-10-08--inverse-gravity-b0-access-audit.md),
+under its [contract](../theory/INVERSE_GRAVITY_B0_ACCESS_GATE.md) frozen at
+`04f0207`, closes the attempted local-average route as `B0_METHOD_NOT_CLOSED`.
+Exact auxiliary controls and a general proof show that a small stationarity
+defect alone is not ensemble-distance control; they do not simulate B or
+prove heating/failure of the frozen QCA. Certified seed expectations and
+observable-specific convergence remain missing.
+`B=OPEN_BY_CONTROL_LIMITATION`, B1/B2/B3 NOT_EXECUTED;
+`IR_SELECTION_OPEN_AFTER_AB`. This bounded A/B attempt is closed; a concrete
+new controlled method or a separately chartered architecture is required
+before further IR claims. No gate, angle, beta, weight or target is adjusted.
 No gravitational dispersion is calculated; IG1 remains incomplete for R1.
 No independent review is recorded.
 
