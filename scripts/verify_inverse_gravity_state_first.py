@@ -62,7 +62,17 @@ def common_kernel_controls():
     assert zero(k*omega) and zero(u*omega-omega)
     assert zero(u.adjoint()*u-sp.eye(3))
     e = sp.symbols("e", real=True)
-    assert sp.simplify(k[1:, 1:].charpoly(e).as_expr() - (e-(1-c))*(e-(1+c))) == 0
+    block = k[1:, 1:]
+    polynomial = block.charpoly(e)
+    # charpoly may recreate its generator without e's real assumption.
+    # Record this API distinction, then align the formal indeterminate.
+    print(f"charpoly generator equals requested symbol: {polynomial.gen == e}")
+    characteristic = polynomial.as_expr().subs(polynomial.gen, e)
+    assert sp.simplify(characteristic - (e-(1-c))*(e-(1+c))) == 0
+    # Independent reconstruction from trace/determinant, without charpoly.
+    assert sp.simplify(sp.trace(block)-2) == 0
+    assert sp.simplify(block.det()-s**2) == 0
+    assert sp.simplify((e*sp.eye(2)-block).det() - (e**2-2*e+s**2)) == 0
     assert sp.simplify(sp.trace(u[1:, 1:])-2*(2*c*c-1)) == 0
     assert sp.simplify(u[1:, 1:].det()-1) == 0
     delta = (u.adjoint()*k*u-k).subs(t, sp.Rational(1, 2)).applyfunc(sp.simplify)

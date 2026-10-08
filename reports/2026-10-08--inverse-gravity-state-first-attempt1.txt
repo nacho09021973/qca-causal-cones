@@ -1,0 +1,13 @@
+SymPy 1.14.0; exact arithmetic; auxiliary controls only
+PASS Schmidt p=1/3: local action rank=4; norm identity; full product fixes state
+PASS Schmidt p=0: local action rank=2; norm identity; full product fixes state
+
+Execution record appended from the tool output:
+Frozen code: 9bd3003; command: python3 -B scripts/verify_inverse_gravity_state_first.py
+Exit: 1. AssertionError in common_kernel_controls at the comparison
+charpoly(e).as_expr() == (e-(1-c))*(e-(1+c)).
+Only stdout was redirected in this first attempt; stderr location and assertion
+are transcribed here. The original code and its comparison remain in Git.
+Repair: align the polynomial's own generator with the requested symbol;
+also reconstruct its coefficients from trace and determinant independently.
+No matrix, parameter, expected spectrum or scientific criterion was changed.
