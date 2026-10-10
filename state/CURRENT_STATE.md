@@ -1,5 +1,28 @@
 # CURRENT_STATE
 
+## IG-S2 bounded mixed-cost transfer attempt — 2026-10-10
+
+Direct user instruction "Intentalo"; the existing sufficiency contract's
+dated continuation was frozen at `2a9c1b9` before derivation.
+The [dated report continuation](../reports/2026-10-08--ig-s2-mixed-test-sufficiency.md#7-bounded-mixed-cost-transfer-attempt--2026-10-10)
+derives the exact ground-energy block identity
+`F=X† M^+ X+R`, with `R>=0`, including singular M and complete
+ground-space degeneracy. PSD gives a lower bound, not the required upper
+bound; the remainder is uncontrolled. Two global qutrit charge differences
+also exclude full-operator reconstruction of the fixed curvature pair
+from the neutral mixed-generator algebra, even after products and
+translations. Its full-trace residual is bounded away from zero.
+This is NOT a lower bound in the true ground state, and the charges are
+not asserted to be symmetries of the full H_N.
+
+`BOUNDED_TRANSFER_ATTEMPT_STOPPED_OPEN`; no upper numerator or Rayleigh
+bound obtained. The full frozen ground-test family and N-type spectrum
+are not refuted. Results are author-side analytic only; no new scientific
+script, numerical execution, independent review or scientific promotion.
+The recommendation is to pause this direct transfer route until a concrete
+ground-sensitive estimate is available. No further test hierarchy is opened;
+`TENSOR_SPECTRAL_GATE_OPEN` and earlier closed/paused fronts are unchanged.
+
 ## IG-S2 mixed-test sufficiency audit — 2026-10-08
 
 User continuation; [contract](../theory/INVERSE_GRAVITY_MIXED_TEST_SUFFICIENCY_GATE.md)
