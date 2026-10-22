@@ -1,5 +1,28 @@
 # CURRENT_STATE
 
+## Independent review of the iid discrimination-cost report — 2026-10-22
+
+Direct user instruction "adelante con 2 y 3, autorizado" (consolidate before new
+research; external review authorized). Sealed reviews of the
+[September 28 report](../reports/2026-09-28--iid-message-discrimination-cost.md):
+Astra `PASS_WITH_REPAIRS` (three mandatory repairs), Gemini `PASS`. The author
+checked the three repairs and accepted all of them:
+- an upper bound on C was asserted without a premise; it is replaced by the
+  derived polynomial bound `|C| <= 8 N^{19/2}(1+10N)`;
+- "only if polynomial" per-copy cost is false as a necessary condition;
+  subexponential is sufficient;
+- (8)-(10) are restricted to one-particle-sector unitaries.
+
+They are applied as a dated addendum
+([verification](../debates/2026-10-22--iid-discrimination-cost-review-astra/verificacion_autor.md)).
+Central result unchanged: `R_eps = Theta(delta_N^-2)` for the sixteen frozen pairs,
+and the one-particle necessary bound (10). Inherited corona premises were out of
+scope. Status: `REVIEWED_PASS_WITH_REPAIRS`, with the repaired version not
+re-reviewed. This supersedes "PRELIMINARY, independent review pending" in the
+reading-guide row. The reconciliation of the unavailable local commits (`13d398a`,
+`16c4f0f`) remains undone. No gate is promoted, and no operational frontier at c
+is claimed. Same-day documentary commit: the 2026-10-08 elastic atlas audit.
+
 ## IG-S2 bounded mixed-cost transfer attempt — 2026-10-10
 
 Direct user instruction "Intentalo"; the existing sufficiency contract's
@@ -2681,9 +2704,13 @@ regular-background first-order reduced matter correction is only a global
 phase and vanishes on density matrices. The first nonzero correction is
 
 [
-Phi_g(ho)=U_0ho U_0^dagger+
-g^2sum_eleft(A_esigma A_e-rac12{A_e,sigma}ight)+O(g^3),
-quad sigma=U_0ho U_0^dagger.
+Phi_g(
+ho)=U_0
+ho U_0^dagger+
+g^2sum_eleft(A_esigma A_e-rac12{A_e,sigma}
+ight)+O(g^3),
+quad sigma=U_0
+ho U_0^dagger.
 ]
 
 Thus link backreaction is `O(g)` while regular-background matter disturbance
@@ -3346,9 +3373,11 @@ The successor removes the arbitrary half-support orientation that killed the
 previous elastic-response attempt. It uses the full 14-hop weighted symbol
 
 [
-R_u(p)=sum_{hin F}ho_h(u)e^{ipcdot h}W_h,
+R_u(p)=sum_{hin F}
+ho_h(u)e^{ipcdot h}W_h,
 qquad
-ho_h(u)=rac{h^Tuh}{h^Th},
+
+ho_h(u)=rac{h^Tuh}{h^Th},
 ]
 
 and the Hermitian generator
@@ -3378,7 +3407,8 @@ only a common scalar quasienergy phase remains. After removing that phase, the
 hopping-induced principal-frame correction vanishes exactly,
 
 [
-delta E_*^{m hop}=0.
+delta E_*^{
+m hop}=0.
 ]
 
 The common embedding still gives

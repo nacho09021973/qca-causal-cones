@@ -1,0 +1,1175 @@
+OpenAI Codex v0.163.0
+--------
+workdir: /tmp/tmp.tjtmSZKYvx/sello
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1628a-6fab-7953-9598-4d9eeb92ca3a
+--------
+user
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Responde en español. Revisión matemática adversarial e independiente, una sola ronda. Tu sesión está sellada: solo tienes los dos documentos adjuntos.
+
+El documento 1 deriva el número de repeticiones independientes necesarias para distinguir dos mensajes con un detector binario fijo en un autómata celular cuántico (CJWW), y una cota uniforme para la clase de una partícula. Las asintóticas de la «corona» (delta_N, el campo libre r_N, las cotas D_B) se HEREDAN como premisas de otro manuscrito: no las revises; revisa todo lo que el informe deriva a partir de ellas. El documento 2 es el contrato que fija los objetos.
+
+Para cada sección (§2 a §5):
+1. Rehaz las derivaciones clave: límite y positividad de p_infty (incluido el argumento de analiticidad real para P_3 y la cota estricta <1); la fórmula del error óptimo (2); las desigualdades de Bhattacharyya/TV (3)–(4) y sus constantes; la expansión de la afinidad y la uniformidad del resto; el resultado (5) con Theta; la segunda vía (6) con chi² y Chebyshev; el caso límite p_0=0; la telescopación (9) y la cota (10).
+2. Busca errores de signo, constantes, cuantificadores (uniformidad en N, en theta_N, en los 16 pares), confusión entre error medio y error por bit, y usos de las premisas fuera de su alcance (p. ej. (8) solo para una partícula).
+3. Comprueba que las afirmaciones de alcance (lo que NO se demuestra, §4 y §6) son correctas y suficientes, y señala cualquier sobreafirmación.
+4. Da un veredicto por sección y global: PASS, PASS_WITH_REPAIRS o FAIL, con las reparaciones obligatorias numeradas. Distingue error matemático, laguna de justificación y cuestión de redacción.
+Marca como NO VERIFICADO lo que dependa de fuentes que no tienes.
+
+=== DOCUMENT 1: 2026-09-28--iid-message-discrimination-cost.md ===
+
+# Coste de distinguir mensajes mediante repeticiones independientes
+
+Fecha: 2026-09-28. Baseline: `13d398a`, rama
+`claude/endpoint-transfer-partial`.
+
+Estado: **PRELIMINARY / derivación analítica del autor, sin revisión**
+**independiente**. Se responde al primer paso solicitado por el usuario:
+coste de repetir el protocolo congelado y alcance de las cotas existentes.
+Las asintóticas de la corona se heredan como premisas; no se recalculan.
+Este informe no promociona un gate ni demuestra una frontera universal en c.
+No se ha ejecutado código para producir resultados científicos nuevos.
+
+
+> Nota de incorporación — 2026-09-28. Texto aportado por el usuario, conservado
+> en su idioma original. Se normalizan el Markdown, las fórmulas y los enlaces;
+> «RN pasos-copia» aclara el recuento agregado de §4. Esta incorporación no es
+> una revisión matemática independiente. El baseline local declarado `13d398a`
+> no era recuperable en GitHub al incorporar el texto; la base remota es
+> `0ad333fb645200a409733642cfccc7dd2fec8f48`.
+> El expediente 4B del 25 de septiembre ya existe en esa base (estado §8.21);
+> la última frase del informe no lo cierra de nuevo ni incorpora el distinto
+> informe local del 28 de septiembre mencionado por el usuario.
+
+## 1. Contrato estadístico y resultados disponibles
+
+Se fijan CJWW (5.15), dos componentes, nodo cero, S=W†, el recurso phi_N,
+las bolas A_N y B_N, sus perfiles y los dieciséis pares (M,M_B) del
+[contrato original](../theory/SCALED_IR_SIGNALING_GATE.md), §§2–5.
+El bit b es el mismo durante R usos. Cada uso comienza con una copia
+independiente del recurso y aplica el mismo encoder y la medición binaria
+{E_N,I-E_N}, E_N=h_N M_B. Se conservan detecciones y no detecciones.
+R es fijado antes de observar; no se estudian reglas de parada adaptativas.
+
+Por defecto, los bits tienen probabilidades previas iguales. El objetivo es
+error medio ≤ epsilon, con 0<epsilon<1/2 fijo e independiente de N.
+Las leyes de ambos mensajes se consideran conocidas: se excluye del recuento
+el coste de calibrarlas. Al final se considera también error máximo por bit.
+
+Definimos
+
+$$
+p_{b,N}=\langle S^NU^{(b)}\phi_N,E_NS^NU^{(b)}\phi_N\rangle,
+\quad X_i\mid b\sim\operatorname{Bernoulli}(p_{b,N}),
+\quad \delta_N=|p_{1,N}-p_{0,N}|.
+$$
+
+Las premisas localizadas antes de derivar el coste son:
+
+| Premisa | Evidencia del repo | Uso |
+|---|---|---|
+| delta_N=abs(C(theta_N)) N^(-13/2) exp(-K_*N)(1+O(N^(-1/2))), con C uniformemente separado de cero | `state/CURRENT_STATE.md` §8.20; manuscrito, teorema de asintótica principal | Diferencia entre las probabilidades |
+| Campo libre r_N(y)=N^(-3/2)R_0(y/N)+O(N^(-5/2)), uniformemente en Bob | [Informe de coeficiente](2026-09-17--regional-laplace-coefficient-gate.md), §9; [TeX](../papers/ir-corona/ir-corona.tex), lema `lem:tail` | Fondo de detección |
+| p_{0,N} → p_infty>0 para M_B=I | [Informe C3](2026-09-23--c3-conditioning-execution.md), §2, C3.5–C3.6 | Ya da la positividad para el detector escalar |
+| D_B≤4T_N, T_N≤9N^4 exp(-JN) | TeX, teorema `thm:upper` y su prueba | Alcance uniforme de la obstrucción |
+| D_B≤4N^3(1+10N) exp(-K_*N) | TeX, teorema `thm:rate`, parte (d) | Versión uniforme de tasa más fuerte |
+
+Aquí theta_N={sqrt(3)N/4}. No se sustituye C(theta_N) por una constante.
+El contrato original excluye postselección. Las proyecciones de C1–C3 son
+otro objeto; sus probabilidades condicionadas no son p_{b,N}.
+
+## 2. El fondo queda separado de cero y de uno
+
+Para cada uno de los cuatro detectores, la suma de Riemann del campo libre da
+
+$$
+p_{0,N}\longrightarrow p_\infty^{(M_B)}
+=\int_{|Y-u|<1/4} (1-16|Y-u|^2)^2
+R_0(Y)^\dagger M_B R_0(Y)\,d^3Y,
+\qquad u=(1,1,1).
+\tag{1}
+$$
+
+El error uniforme de amplitud aporta O(N^-1) a la probabilidad al sumar
+O(N^3) sitios. La convergencia restante es una suma de Riemann de una
+función continua con soporte compacto. Esta operación ya aparece en C3
+para M_B=I; aquí se explicita su extensión a los detectores originales.
+
+**Positividad.** R_0 es la transformada inversa de
+c_r g(q) exp(-i H_W(q)) down, con soporte |q|≤1. Es analítica real.
+Si M_B^(1/2)R_0 se anulase en toda la bola abierta de Bob, se anularía
+en todas partes y también su transformada de Fourier. Para I, P_1 y P_2,
+esto contradice M_B down ≠0 en q=0. Para P_3=(I+sigma_3)/2, que anula
+down, la derivada en q_1 en cero es -i P_3 sigma_1 down ≠0.
+Por tanto el integrando es positivo en algún abierto interior y
+p_infty^(M_B)>0 en los cuatro casos.
+
+**Cota estricta superior.** Por Plancherel, la normalización heredada
+del recurso y la unitariedad de exp(-iH_W(q)), integral ||R_0||²=1.
+El peso extendido por cero satisface 0≤h<1 salvo en un punto de medida
+cero, y 0≤M_B≤I. Así p_infty^(M_B)<1. Esto también se ve integrando
+(1-h)||R_0||², que es estrictamente positivo.
+
+Como delta_N→0, ambos mensajes tienen el mismo límite en (0,1).
+Para cada detector existe m>0 y N_0 finito tales que
+m≤p_{b,N}≤1-m para N≥N_0. No se proporciona un valor efectivo de N_0.
+
+Esta condición es esencial. Un evento por sitio puede ser pequeño mientras
+la probabilidad integrada sobre O(N^3) sitios tenga un límite positivo.
+El límite p_infty puede ser numéricamente pequeño; la afirmación es que
+no decrece con N.
+
+## 3. Problema exacto de decisión y cotas de repeticiones
+
+El conteo K=sum_i X_i es suficiente: condicionado al conteo, las cadenas
+binarias son equiprobables bajo ambos mensajes. Por decisión de máxima
+verosimilitud, el error óptimo entre los registros de esta medición es
+
+$$
+P_e^*(R,N)=\frac12\sum_{k=0}^R {R\choose k}
+\min\{p_{0,N}^k(1-p_{0,N})^{R-k},
+        p_{1,N}^k(1-p_{1,N})^{R-k}\}.
+\tag{2}
+$$
+
+Sea R_epsilon(N) el mínimo entero R que hace (2) ≤ epsilon.
+La optimización es sobre la decisión clásica después de medir el efecto
+fijo; no es una optimización sobre mediciones cuánticas alternativas.
+
+Escribimos la afinidad de Bhattacharyya de un uso como
+
+B_{N}=√(p_{0,N}p_{1,N})+ √((1-p_{0,N})(1-p_{1,N})),  a_{N}=-log B_{N}.
+
+Para distribuciones P,Q, TV=(1/2)sum|P-Q| y B=sum sqrt(PQ) satisfacen
+1-B≤TV≤sqrt(1-B²). La primera desigualdad sigue de
+(sqrt(P)-sqrt(Q))²≤|P-Q|; la segunda, de Cauchy–Schwarz aplicado a
+|P-Q|=|sqrt(P)-sqrt(Q)|(sqrt(P)+sqrt(Q)). En productos independientes
+la afinidad es B_N^R. Dado P_e^*=(1-TV)/2, resulta
+
+$$
+\frac{1-\sqrt{1-B_N^{2R}}}{2}
+\le P_e^*(R,N)\le\frac{B_N^R}{2}.
+\tag{3}
+$$
+
+Para 0<B_N<1 esto da cotas no asintóticas:
+
+$$
+\frac{\log[1/(4\epsilon(1-\epsilon))]}{2a_N}
+\le R_\epsilon(N)
+\le\left\lceil\frac{\log[1/(2\epsilon)]}{a_N}\right\rceil.
+\tag{4}
+$$
+
+La derivación es autocontenida; las desigualdades estándar se contrastaron
+con Fuchs–van de Graaf, [Fuchs–van de Graaf](https://arxiv.org/pdf/quant-ph/9712042v2),
+pp. 17–18, proposición 5 y ecuaciones (43), (49)–(57). Para las convenciones
+de error óptimo y distancia se leyó también el PDF local
+`biblioteca/Theory of Quantum Information.pdf`, pp. PDF 148 y 183–184
+(páginas impresas 140 y 175–176; teoremas 3.4 y 3.36).
+
+Con p=p_{0,N}, d=p_{1,N}-p_{0,N}, la expansión directa es
+
+$$
+\sqrt{p(p+d)}+\sqrt{(1-p)(1-p-d)}=1-\frac{d^2}{8p(1-p)}+O(|d|^3).
+$$
+
+El resto es uniforme cuando p está separado de 0 y 1. Usando (1),
+
+$$
+a_N=\frac{\delta_N^2}{8p_\infty^{(M_B)}(1-p_\infty^{(M_B)})}(1+o(1)).
+$$
+
+Por (4), para cada par congelado y epsilon fijo,
+
+$$
+\boxed{R_\epsilon(N)=\Theta_{\epsilon,M,M_B}(\delta_N^{-2})
+=\Theta_{\epsilon,M,M_B}\left(
+\frac{N^{13}e^{2K_*N}}{|C_{M,M_B}(\theta_N)|^2}\right).}
+\tag{5}
+$$
+
+En particular, log R_epsilon(N)/N → 2K_*. La dependencia oscilante de C
+permanece acotada y no altera esta tasa. Theta expresa cotas de orden;
+no se ha demostrado aquí un prefactor óptimo exacto de R_epsilon.
+
+**Segunda vía de comprobación.** El test de umbral en
+(p_{0,N}+p_{1,N})/2 tiene, por Chebyshev, error bajo cada bit ≤1/(R delta_N²).
+Para una cota necesaria, chi²(Bern(p_1)||Bern(p_0))=delta_N²/[p_0(1-p_0)].
+La identidad de producto 1+chi²(P_1^R||P_0^R)=(1+chi²(P_1||P_0))^R
+y TV≤sqrt(chi²)/2 implican
+
+$$
+R_\epsilon(N)\ge
+\frac{\log[1+4(1-2\epsilon)^2]}
+{\log[1+\delta_N^2/(p_{0,N}(1-p_{0,N}))]}.
+\tag{6}
+$$
+
+(6) y el test de umbral recuperan (5) sin usar afinidad ni (3).
+También prueban el mismo orden si se exige error ≤epsilon bajo **cada**
+bit: la cota inferior de error medio sigue siendo necesaria y el test de
+umbral controla ambos errores. Son comprobaciones analíticas del autor,
+no una revisión independiente.
+
+**Caso límite que impide usar solamente delta.** Para p_0=0, p_1=delta,
+el test óptimo da P_e^*=(1-delta)^R/2 y R_epsilon=Theta(delta^-1).
+Ese caso tiene un fondo distinto al demostrado en §2. Por ello, la señal
+delta por sí sola no permite inferir el exponente doble de (5).
+
+## 4. Preparaciones, mediciones y postselección
+
+En (5) se cuentan R copias independientes del recurso, R usos del encoder
+y R mediciones binarias. Cada uso contiene N pasos del walk: el volumen
+de trabajo agregado es RN pasos-copia. Si los usos son secuenciales, la
+evolución requiere RN ticks, además de preparar y medir. Si son paralelos,
+pueden compartir N ticks de evolución, a costa de R sistemas preparados.
+Ninguna de esas modalidades identifica una duración absoluta sin tau.
+
+El recurso phi_N, con cola espacial, se supone disponible en el contrato.
+No hay un procedimiento de preparación local certificado ni un modelo de
+coste de construir regiones de tamaño O(N). Por tanto (5) es un coste de
+discriminación dado ese recurso. Sólo si el coste por copia fuese como
+máximo polinómico podría afirmarse que el coste total tiene la misma tasa
+exponencial 2K_*; esa hipótesis adicional no se prueba aquí.
+
+El protocolo original no descarta ensayos. Las no detecciones son parte
+de (2). Para un protocolo distinto con éxito s_b y probabilidad de click
+condicionada q_b, el registro mínimo que incluye el fallo tendría ley
+
+$$
+(1-s_b,\ s_b q_b,\ s_b(1-q_b)).
+\tag{7}
+$$
+
+Cuando s_0=s_1=s, obtener r éxitos cuesta r/s intentos **en esperanza**;
+una garantía de coste con probabilidad fijada necesita además controlar
+la cola del número de intentos. Si s_0≠s_1, las marcas de fallo y los
+tiempos de espera pueden contener información y se requiere la ley conjunta.
+Una mejora de la distancia condicionada no basta para demostrar un ahorro.
+El posprocesamiento clásico de registros completos no aumenta TV.
+
+La proyección espectral de C3 no pertenece a las operaciones locales del
+protocolo original. Además del recuento de intentos, necesitaría justificar
+implementación y acceso a la marca de éxito. No se incorpora como vía de
+comunicación para eludir (5).
+
+## 5. Qué extensión ya se deduce de las cotas uniformes
+
+El manuscrito demuestra, en las mismas bolas A_N,B_N y con tiempo N,
+para **todo** estado inicial de una partícula compartido antes de elegir
+el bit, toda unitaria U igual a I fuera de A_N y cualquier efecto en Bob,
+
+$$
+D_B(N)\le\eta_N:=\min\{1,4N^3(1+10N)e^{-K_*N}\}.
+\tag{8}
+$$
+
+La prueba usa ||v_1-v_0||≤2T_N y la forma explícita del estado reducido
+en los bloques de vacío y una partícula. Su lectura confirma ese alcance;
+no es una cota para estados arbitrarios del Fock de muchas partículas.
+
+Para R salidas independientes, telescopar la diferencia de los productos
+y usar la multiplicatividad de la norma traza da
+
+$$
+D(\rho_{0,B}^{\otimes R},\rho_{1,B}^{\otimes R})\le R\eta_N,
+\qquad
+P_{e,\mathrm{opt}}\ge\frac{1-\min\{1,R\eta_N\}}2.
+\tag{9}
+$$
+
+Esta cota incluye una medición conjunta arbitraria sobre las R salidas de
+Bob: por el principio de discriminación binaria, ni siquiera la medición
+óptima supera su distancia de traza. La telescopación funciona igualmente
+para protocolos predeterminados distintos en cada uso, si cada uno cumple
+(8) y sus entradas son independientes. En particular, fiabilidad fija exige
+
+$$
+R\ge\frac{1-2\epsilon}{\eta_N}
+=\Omega_\epsilon(N^{-4}e^{K_*N})\qquad(N\to\infty).
+\tag{10}
+$$
+
+De aquí ya sale que R polinómico, e incluso R=exp(o(N)), no mantiene
+un error separado de 1/2 en esta clase y geometría. Es una cota necesaria
+uniforme; no afirma que exista un protocolo que alcance la tasa $K_*$.
+La tasa $2K_*$ de (5) describe el detector binario congelado con su fondo.
+No se transfiere como tasa óptima a todos los protocolos de (8).
+
+## 6. Obligaciones que quedan para una frontera operacional
+
+1. **Geometría:** (8) controla las bolas y su separación diagonal congeladas.
+   Una frontera en c_IR=1 requiere familias con un margen fijo fuera del cono
+   en todas las direcciones pertinentes, y constantes uniformes en su clase.
+   No se toma el margen hacia cero en las cotas presentes.
+2. **Clase de recursos:** especificar muchas partículas, densidad o energía,
+   ancillas, entrelazamiento entre usos, adaptatividad, tamaño de laboratorios
+   y coste de preparar el recurso. (9) no controla entradas correlacionadas
+   ni un protocolo general de múltiples rondas.
+3. **Interior:** exhibir comunicación con fiabilidad fija y recursos
+   controlados dentro del cono. La velocidad de grupo, por sí sola, no es
+   ese protocolo operacional.
+4. **Estabilidad y universalidad:** quedan fuera de esta derivación; requieren
+   una familia explícita de perturbaciones y/o especies y cotas uniformes.
+5. **Valores finitos:** obtener constantes de resto y N_* efectivos, y
+   calibración/control de p_{b,N}, para transformar (5) en un presupuesto
+   numérico certificado a N dado. No se da aquí un número de ensayos concreto.
+
+El resultado obtenido es un coste exponencial de repeticiones para los
+dieciséis pares originales y una obstrucción uniforme más débil para la
+clase de una partícula descrita en §5. La hipótesis de que c delimita una
+frontera estable de comunicación macroscópica sigue abierta. Su formulación
+adimensional es compatible con el cierre acotado de 4B.
+
+=== DOCUMENT 2: SCALED_IR_SIGNALING_GATE.md ===
+
+# SCALED_IR_SIGNALING_GATE
+
+**Fecha:** 2026-09-17. **Estado al congelar:** contrato fijado antes de
+cualquier cálculo; `NOT_EXECUTED / OUTCOME_OPEN`. El estado posterior se
+registra sólo en `state/CURRENT_STATE.md`; este encabezado no se actualiza.
+
+**Autorización:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION` (2026-09-17). Cubre:
+
+- congelar este contrato;
+- sustituir el gate de existencia con `Delta T` fijo por esta formulación de
+  escalado;
+- investigar la tasa direccional `I(v)`, sólo como obligación de prueba
+  dentro del gate. Esto levanta, únicamente aquí, el `NOT_AUTHORIZED` de
+  `CURRENT_STATE` §8.8.
+
+**Ratificado por el usuario el 2026-09-17**, con dos precisiones incorporadas:
+las regiones son bolas euclídeas (§3), y las familias de encoders y detectores
+son **familias internas congeladas, no exhaustivas** (§4).
+
+Sucesor de `NARROW_BAND_SIGNALING_GATE` (`CURRENT_STATE` §8.16), sin
+reabrirlo. Aquel resultado, `NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS /
+INDEPENDENTLY_REVIEWED`, conserva sus bytes y su alcance.
+
+## 1. Pregunta única
+
+Con recurso, encoder y detector IR-admisibles, regiones de Alice y Bob de
+tamaño `O(1/Lambda)` separadas por un margen `O(1/Lambda)` fuera del cono
+emergente de **toda** la región de Alice, y tiempo `O(1/Lambda)`: ¿la
+distinguibilidad de Bob decae polinómicamente, es no perturbativamente
+pequeña, es exactamente nula o queda indeterminada?
+
+Se estudia la **ley de desaparición** cuando `Lambda -> 0`; no se exige un
+límite positivo. Una señal a `Delta T` fijo, o con un margen de `O(1)` sitios,
+no responde a esta pregunta, porque no es resoluble a la escala IR `~ 1/Lambda`.
+
+## 2. Modelo y convenciones heredadas
+
+Sin cambios respecto de `NARROW_BAND_SIGNALING_GATE.md` §2:
+
+- CAR libre de CJWW (5.15), en el sector de una partícula, con dos modos
+  internos por sitio;
+- `S = W^dagger` para estados y `K_t(x,z) = (W^t)_{x,z}`;
+- convención de Fourier `hat psi(p) = sum_x e^{i p.x} psi(x)`, con
+  `dmu = d^3p/(2pi)^3` sobre `B = [-pi,pi)^3`;
+- nodo `p = 0`, `H_W = p1 sigma1 - p2 sigma2 + p3 sigma3` y `c_IR = 1`;
+- `C_micro = [-1,1]^3`;
+- ambas ramas conservadas, sin ningún nuevo acoplamiento dinámico.
+
+Hechos previos del repo que se usan tal cual:
+
+- `sup|grad omega| = c_IR = 1`, exacto (`CURRENT_STATE` §8.4);
+- rayos de vértice no nulos para todo `n`, exacto (§8.5);
+- la LDP radial de CJWW (§8.8), que es una cota superior radial y sólo motiva:
+  no se usa como premisa.
+
+## 3. Parametrización escalada (congelada)
+
+Parámetro único `N ∈ Z`, con `N >= N_0 = 2`, y
+
+\[
+\Delta T=N,\qquad \Lambda_N=N^{-1},\qquad \Lambda'_N=N^{-1/2},
+\qquad\text{de modo que}\quad \Lambda_N\ll\Lambda'_N\ll1 .
+\]
+
+Equivale a `tau_0 = 1` y `alpha = 1/2`. `N` es entero por construcción, así
+que no hay redondeos retrospectivos. Para `N >= 2`, `Lambda_N` y `Lambda'_N`
+son menores que `pi/4`, dentro de la carta del charter anterior (§3), que se
+re-certificará.
+
+**Regiones.** Son bolas **euclídeas** (norma `l2`) intersecadas con `Z^3`:
+
+\[
+A_N=\{x\in\mathbb Z^3:\ |x|_2\le N/4\},\qquad
+B_N=\{y\in\mathbb Z^3:\ |y-(N,N,N)|_2\le N/4\}.
+\]
+
+En unidades de `1/Lambda_N`: `ell_A = ell_B = 1/4`, separación de centros
+`r_0 = sqrt(3)`, margen `mu = 1/5`. Todas las distancias de este contrato son
+euclídeas.
+
+**Admisibilidad causal**, sobre regiones completas y nunca sobre centros:
+
+\[
+\operatorname{dist}_2(A_N,B_N)-c_{\rm IR}N\ \ge\ \mu N=\frac{N}{5}.
+\]
+
+Para las bolas continuas, `dist = sqrt(3) N - N/2`. Los conjuntos de red sólo
+pueden estar más separados, así que el exceso sobre el cono emergente es al
+menos `(sqrt3 - 3/2) N ≈ 0.232 N > N/5`. Se re-certificará de forma exacta.
+
+Se exige además un par `(x,y) ∈ A_N x B_N` con `K_N(y,x) != 0`, para que la
+clase no sea trivialmente nula. El candidato declarado es `x = 0`,
+`y = (N,N,N)`, un rayo de vértice; su no nulidad se re-certificará con la
+convención de desplazamiento de §2.
+
+## 4. Recurso, encoder, detector y protocolo
+
+**Recurso.** Centrado en el origen, con espín `down`:
+
+\[
+\widehat\phi_N(p)=Z_N^{-1/2}\,g(p/\Lambda_N)\binom01,
+\qquad g(q)=(1-|q|^2)^2_+ .
+\]
+
+No hay pasos comunes: el recurso en la elección es `phi_N`. Se asume
+disponible; no es una preparación local certificada.
+
+**Encoder de Alice** (en `T = 0`, soportado en `A_N`). Con
+`F_A(x) = (1 - 16|x|^2/N^2)^2_+`, `theta = pi/2` y `M ∈ {I, sigma1, sigma2, sigma3}`:
+
+\[
+U^{(1)}_M=\exp\!\Big(i\theta\sum_x F_A(x)\,c_x^\dagger M c_x\Big),\qquad U^{(0)}=I .
+\]
+
+Es par, conserva el número y es local en `A_N`. En el sector de una
+partícula es la multiplicación por `exp(i theta F_A(x) M)`.
+
+`{I, sigma1, sigma2, sigma3}` es la **familia interna congelada**: una base
+interna fija. Se evalúan y reportan todos sus miembros con la misma
+disciplina, sin selección. **No es exhaustiva.** Un generador general
+`M = aI + b·sigma` no queda cubierto, porque no se ha certificado ninguna
+simetría del walk que haga equivalentes todas las direcciones
+`n̂·sigma`. Extender el resultado a `M` arbitrario requiere un teorema aparte,
+que no se presupone.
+
+- `M = I` es `REFERENCE_CONTROL` (generador de carga), no un control negativo:
+  su nulidad no está demostrada y no se presume. Por sí solo no puede
+  establecer un estado positivo.
+- Hecho algebraico declarado: con el recurso en `down`, `sigma3` actúa en el
+  instante de la elección como una fase de densidad; sólo `sigma1` y `sigma2`
+  mezclan grados internos. Se reporta y no altera la familia.
+
+**Detector de Bob** (en `T = N`, soportado en `B_N`). Con
+`h_B(y) = (1 - 16|y-(N,N,N)|^2/N^2)^2_+` y
+`M_B ∈ {I, (I+sigma1)/2, (I+sigma2)/2, (I+sigma3)/2}`:
+
+\[
+E_{B}=I-\Gamma\big(I-h_B\otimes M_B\big),\qquad 0\le E_B\le I ,
+\]
+
+donde `Gamma` es la segunda cuantización de una contracción. `E_B` es par y
+local en `B_N`; en el sector de una partícula coincide con `h_B (x) M_B`.
+También es una **familia congelada**, no exhaustiva.
+
+**Protocolo.** El bit es exógeno e independiente del recurso, y
+
+\[
+\psi_b(N)=S^N U^{(b)}\phi_N .
+\]
+
+Las historias previas a la elección son idénticas por construcción. No se
+admiten ancillas, postselección ni filtros que dependan del bit.
+
+## 5. Cantidades y admisibilidad IR
+
+**Señal física primaria** para cada par `(M, M_B)`, calculada sin ninguna
+proyección:
+
+\[
+\delta_{M,M_B}(N)=\big|\langle\psi_1(N)|h_B\!\otimes\! M_B|\psi_1(N)\rangle-\langle\psi_0(N)|h_B\!\otimes\! M_B|\psi_0(N)\rangle\big|
+=\big|\operatorname{Tr}E_B(\rho^{(1)}-\rho^{(0)})\big| .
+\]
+
+`D_B(N)` es la distancia de traza entre los estados reducidos del Fock
+completo a los modos de `B_N`. Se cumple `D_B >= delta`.
+
+**Presupuesto IR de las operaciones**, con `Pi' = Pi_{Lambda'_N}` y
+`Pi = Pi_{Lambda_N}`:
+
+\[
+\eta_{\rm enc,op}^{M}(N)=\frac{\|(I-\Pi')(U_M-I)\,\Pi\|}{\|(U_M-I)\,\Pi\|},
+\qquad
+\eta_{\rm read}^{M_B}(N)=\frac{\|(I-\Pi')(h_B\otimes M_B)\,\Pi\|}{\|(h_B\otimes M_B)\,\Pi\|},
+\]
+
+y, por continuidad con el criterio de §8.16, con `Delta_M = U_M rho U_M^† - rho`
+y `rho = |phi_N><phi_N|`:
+
+\[
+\eta_{\rm enc}^{M}(N)=\frac{\|\Delta_M-\Pi'\Delta_M\Pi'\|_1}{\|\Delta_M\|_1}.
+\]
+
+Rige la convención `Delta = 0` de §7 del charter anterior. Un denominador
+nulo se clasifica aparte y nunca cuenta como cumplimiento.
+
+**Encoder IR-admisible:** se demuestran, con cotas explícitas,
+`eta_enc,op^M(N) -> 0` y `eta_enc^M(N) -> 0`.
+**Detector IR-admisible:** `eta_read^{M_B}(N) -> 0`.
+
+**Sanity check obligatorio.** Con los mismos `Pi'` y `Pi`, la puerta puntual
+congelada `I - 2P_0` debe seguir dando `eta_enc,op -> 1` y `eta_enc -> 1`, y
+un detector puntual `P_y` debe dar `eta_read -> 1`. Así se comprueba que
+ensanchar el proyector no ha "curado" artificialmente el negativo de §8.16.
+Si falla, el criterio es incoherente y el gate queda `OPEN` por
+inconsistencia de convenciones.
+
+**Separación vinculante.** La admisibilidad IR es una propiedad de las
+operaciones (recurso, encoder, detector). La señal `delta` se evalúa sin
+proyección artificial. No se afirmará que una señal exponencialmente pequeña
+"la transporta el sector IR": partirla con proyectores espectrales introduce
+una no localidad artificial que puede ser mucho mayor que la propia señal.
+
+## 6. Obligaciones de prueba, en orden vinculante
+
+**Paso 0 — geometría y carta.** Re-certificar los conjuntos euclídeos, el
+margen, el par de vértice no nulo, la carta para `N >= 2` y la normalización
+`Z_N`.
+
+**Paso 1 — admisibilidad IR.** Cotas explícitas de `eta_enc,op^M` y `eta_enc^M`
+para las cuatro `M`, de `eta_read^{M_B}` para los cuatro detectores, y del
+sanity check puntual.
+
+*Stop rule:* si se demuestra que ninguna `M ∈ {sigma1, sigma2, sigma3}` es un
+encoder IR-admisible, cerrar con `NO_IR_ADMISSIBLE_ENCODER_IN_FROZEN_FAMILY`
+sin evaluar la señal. Una cota demasiado débil deja el caso `OPEN`.
+
+**Paso 2 — cota superior geométrica.** Demostrar, con constantes explícitas,
+
+\[
+D_B(N)\le C\,N^{q}\,e^{-J\,N},\qquad J>0,
+\]
+
+para toda operación unitaria soportada en `A_N`, todo estado inicial y todo
+efecto en `B_N`; por ejemplo, a partir de `||P_{B_N} S^N P_{A_N}||`. La tasa
+`J`, o la forma direccional de `I(v)` sobre el conjunto de velocidades
+`(B_N - A_N)/N`, **debe derivarse aquí; no puede asumirse**. Técnicas
+autorizadas:
+
+- desplazamiento del contorno a momentos complejos (el símbolo es un
+  polinomio trigonométrico);
+- análisis del símbolo y control uniforme de potencias de matrices `2x2`;
+- derivación de una tasa direccional;
+- reutilización de la LDP radial de §8.8 sólo donde realmente aplique.
+
+Un resultado sólo para algunas direcciones se registra como tal.
+
+**Paso 3 — cotas inferiores.** Para los doce pares con
+`M ∈ {sigma1, sigma2, sigma3}` y los cuatro de `REFERENCE_CONTROL`, buscar:
+
+- una cota inferior explícita, `delta(N) >= c N^{-p}` o
+  `delta(N) >= c N^{-p} e^{-C_1 N}`, válida para todo `N >= N_*`; o
+- una asintótica demostrada `delta(N) = A(N) e^{-C N}(1 + o(1))` con
+  `A(N) != 0` controlado.
+
+Se reportan los dieciséis pares, sin selección.
+
+**Paso 4 — clasificación** según §7.
+
+Se priorizan identidades, integrales analíticas y restos acotados. Una
+evaluación numérica en `N` concretos sólo puede figurar como diagnóstico
+`SUPPORTED` con error certificado. Nunca establece un estado terminal ni una
+ley asintótica, ni autoriza a cambiar parámetros después de verla.
+
+## 7. Estados terminales (orden de asignación, sin solapamientos)
+
+| Estado | Condición |
+| --- | --- |
+| `NO_IR_ADMISSIBLE_ENCODER_IN_FROZEN_FAMILY` | Se demuestra que ninguna `M ∈ {sigma1, sigma2, sigma3}` es un encoder IR-admisible (§5). |
+| `NO_SIGNALING_IN_SCALED_IR_CLASS` | Se demuestra `D_B(N) = 0` para todo `N >= N_*` y toda `M` de la familia congelada, `REFERENCE_CONTROL` incluido. Tiene que ser una obstrucción exacta, no una cota. |
+| `IR_RESOLVABLE_SIGNALING_POLYNOMIAL` | Hay un par admisible con `M ∈ {sigma1, sigma2, sigma3}` y cota inferior polinómica demostrada. |
+| `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED` | Hay un par admisible con `M ∈ {sigma1, sigma2, sigma3}` con cota inferior `c N^{-p} e^{-C_1 N}` o asintótica de amplitud no nula, **y** cota superior `C N^q e^{-C_2 N}` para ese par. |
+| `OPEN_AFTER_SCALED_IR_ANALYSIS` | Cualquier otro caso: sólo cota superior; cotas inferiores ausentes o insuficientes; tasa sin demostrar; admisibilidad sin demostrar; inconsistencia de convenciones. |
+
+**Regla explícita.** Si sólo se obtiene `0 <= delta(N) <= C N^q e^{-J N}` sin
+decidir si `delta` es exactamente cero, el estado es
+`OPEN_AFTER_SCALED_IR_ANALYSIS`. Una cota superior sola, con `J > 0`,
+**excluye** `IR_RESOLVABLE_SIGNALING_POLYNOMIAL`, pero **no autoriza**
+`IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. Que se vaya a obtener no se
+presume.
+
+Se registran por separado aunque el estado sea `OPEN`: la cota superior
+geométrica del paso 2, las constantes `J`, `C_1` y `C_2` si existen, y la tabla
+completa de los dieciséis pares.
+
+La lectura "invisible a cualquier expansión en potencias de `Lambda`" sólo se
+autoriza con `IR_SIGNALING_NONPERTURBATIVELY_SUPPRESSED`. No se usará la
+expresión "puramente de red".
+
+## 8. Techo de reclamo
+
+- El resultado vale sólo para la clase congelada: familias internas
+  congeladas, geometría euclídea, `alpha`, `tau_0`, `theta`, perfiles y walk.
+- Un negativo significa exactamente `..._IN_FROZEN_FAMILY`
+  o `..._IN_SCALED_IR_CLASS`. No significa que ningún generador interno suave
+  `M = aI + b·sigma` pueda funcionar, ni que no exista señal con otras
+  operaciones, preparaciones, nociones de control IR u otros QCA.
+- No reabre ni refuta `3/128`, los witnesses de vértice y no-corner, ni el
+  negativo narrow-band (§8.16).
+- `N -> infinity` con `Lambda_N = 1/N` es un límite espectral y geométrico
+  escalado de la red, no un límite continuo físico `a, tau -> 0`. Se mantiene
+  `DIMENSIONAL_MAP_CONDITIONAL` (§8.15): no se fijan `a`, `tau`, eV, metros ni
+  segundos. Una ley `e^{-J N}` sólo se traduciría condicionalmente a una forma
+  `e^{-J' lambda/a}`, sin predicción numérica.
+- No se diseña ningún experimento. No se abre `Delta T = 2` como pregunta de
+  existencia. No se afirma violación de la microcausalidad del modelo.
+- DP14, BDP17 y BB93 sólo motivan. No se transfieren a CJWW (5.15)
+  propiedades de otros walks.
+
+## 9. Implementación
+
+Los verificadores revisados conservan sus bytes. Si la ejecución necesita
+código nuevo, se crea un certificado propio, con necesidad demostrada y
+autorización de implementación en la instrucción de ejecución, según
+`scripts/README.md` ("Current scope"). Toda la aritmética decisiva será exacta
+o con cotas rigurosas. Los helpers de soporte espacial finito no pueden
+truncar sin control el recurso extendido.
+
+codex
+**Veredicto global: PASS_WITH_REPAIRS.** Las derivaciones de (2)–(6) y (9)–(10) son correctas bajo las premisas heredadas y la interpretación de una partícula. La conclusión principal —coste \(\Theta(\delta_N^{-2})\) para el detector congelado— se sostiene. Hay una afirmación incorrecta sobre el coste de preparación, una justificación incompleta sobre \(C(\theta_N)\) y una ambigüedad de alcance que conviene eliminar.
+
+Esta revisión es exclusivamente matemática y documental, en una ronda. Las asintóticas heredadas se aceptan como premisas; su demostración, las referencias externas y los estados del repositorio son **NO VERIFICADOS**.
+
+**§2: PASS.** El límite, su positividad y la cota estricta superior se justifican.
+
+Escribiendo \(Y=y/N\), la premisa uniforme implica
+\[
+r_N(y)^\dagger M_Br_N(y)
+=N^{-3}R_0(Y)^\dagger M_BR_0(Y)+O(N^{-4}),
+\]
+porque \(R_0\) está acotado sobre la bola compacta y \(\|M_B\|\le1\). Al sumar \(O(N^3)\) sitios, el error es \(O(N^{-1})\). El término principal es la suma de Riemann de (1). El perfil extendido por cero es continuo, por lo que la frontera de la bola no introduce un problema.
+
+Para comprobar la normalización con las convenciones del contrato, sea
+\[
+A=\int_{|q|\le1}|g(q)|^2\frac{d^3q}{(2\pi)^3}.
+\]
+El cambio de variable \(q=Np\) da exactamente \(Z_N=N^{-3}A\). Por tanto, con la representación de \(R_0\) declarada en §2,
+\[
+\widehat R_0(q)=A^{-1/2}g(q)e^{-iH_W(q)}\downarrow,
+\]
+y Plancherel da
+\[
+\int_{\mathbb R^3}\|R_0(Y)\|^2\,dY=1.
+\]
+Esto comprueba los factores de normalización, condicionado a la identificación heredada del campo límite.
+
+La analiticidad real no exige que \(g\) sea analítica en el borde de su soporte. Basta que \(\widehat R_0\) sea integrable y tenga soporte compacto: su transformada inversa se extiende a una función entera de las coordenadas complejas. Por ello, si \(M_B^{1/2}R_0\) se anula en una bola abierta, se anula en todo \(\mathbb R^3\). La unicidad de Fourier obliga entonces a anular \(M_B^{1/2}\widehat R_0\).
+
+Para \(I,P_1,P_2\), esto contradice su valor en \(q=0\). Para \(P_3\), la comprobación decisiva es
+\[
+\left.\partial_{q_1}
+\big[P_3g(q)e^{-iH_W(q)}\downarrow\big]\right|_{q=0}
+=-iP_3\sigma_1\downarrow
+=-i\binom10\ne0.
+\]
+Si se deriva la transformada completa, aparece además el factor no nulo \(A^{-1/2}\). Su omisión en el texto no afecta al argumento de no nulidad.
+
+Así, para cada detector existe un punto interior donde
+\(\|M_B^{1/2}R_0\|^2>0\); por continuidad, existe un abierto de contribución positiva. Esto prueba \(p_\infty^{(M_B)}>0\).
+
+La desigualdad estricta superior también es correcta:
+\[
+p_\infty^{(M_B)}
+\le\int h(Y)\|R_0(Y)\|^2\,dY<1.
+\]
+En efecto, \(1-h>0\) casi en todas partes y \(\|R_0\|^2\) tiene integral uno. Por tanto,
+\(\int(1-h)\|R_0\|^2>0\).
+
+Finalmente, \(\delta_N\to0\) hace que ambos mensajes converjan al mismo límite interior. La separación \(m\le p_{b,N}\le1-m\) es válida eventualmente. Además, **puede elegirse un mismo \(m>0\) y un mismo \(N_0\) para los dieciséis pares**: hay cuatro límites positivos y menores que uno, y una cantidad finita de convergencias. No se obtiene un \(N_0\) efectivo.
+
+**§3: PASS_WITH_REPAIRS.** Las fórmulas estadísticas y sus constantes son correctas. La reparación afecta a la afirmación de acotación de \(C\), no al orden en \(\delta_N\).
+
+Para priors iguales, cada cadena \(x\in\{0,1\}^R\) contribuye al error óptimo con
+\[
+\frac12\min\{P_0(x),P_1(x)\}.
+\]
+Agrupar las cadenas por su número \(k\) de detecciones produce exactamente (2). El conteo es suficiente porque la razón de verosimilitudes depende únicamente de \(k\). Los empates no alteran el error óptimo.
+
+Para comprobar (3), las identidades
+\[
+\sum_x(\sqrt{P(x)}-\sqrt{Q(x)})^2=2(1-B),
+\qquad
+\sum_x(\sqrt{P(x)}+\sqrt{Q(x)})^2=2(1+B)
+\]
+dan
+\[
+1-B\le\operatorname{TV}(P,Q)
+\le\frac12\sqrt{2(1-B)\,2(1+B)}
+=\sqrt{1-B^2}.
+\]
+La afinidad del producto es \(B_N^R\). Sustituir en
+\(P_e^*=(1-\operatorname{TV})/2\) demuestra (3), incluidos todos sus factores.
+
+La cota inferior de (3), junto con \(P_e^*\le\epsilon\), exige
+\[
+B_N^{2R}\le4\epsilon(1-\epsilon).
+\]
+Como \(B_N=e^{-a_N}\), resulta
+\[
+R\ge\frac{\log[1/(4\epsilon(1-\epsilon))]}{2a_N}.
+\]
+La condición suficiente \(B_N^R/2\le\epsilon\) produce el extremo superior de (4). El techo está correctamente colocado; podría añadirse un techo al extremo inferior para reforzarlo, pero no es necesario.
+
+La expansión puede comprobarse término a término:
+\[
+\sqrt{p(p+d)}
+=p+\frac d2-\frac{d^2}{8p}+\frac{d^3}{16p^2}+O(d^4),
+\]
+\[
+\sqrt{(1-p)(1-p-d)}
+=(1-p)-\frac d2-\frac{d^2}{8(1-p)}
+-\frac{d^3}{16(1-p)^2}+O(d^4).
+\]
+Los términos lineales se cancelan y queda
+\[
+B_N=1-\frac{d^2}{8p(1-p)}+O(|d|^3).
+\]
+Para justificar uniformidad basta exigir \(p\in[m,1-m]\) y \(|d|\le m/2\): las terceras derivadas permanecen acotadas en ese dominio. La convergencia \(\delta_N\to0\) garantiza esta condición eventualmente, uniformemente sobre la familia finita.
+
+Como \(-\log(1-x)=x+O(x^2)\),
+\[
+a_N=\frac{\delta_N^2}{8p_{0,N}(1-p_{0,N})}
++O(\delta_N^3),
+\]
+y después
+\[
+a_N=\frac{\delta_N^2}
+{8p_\infty^{(M_B)}(1-p_\infty^{(M_B)})}(1+o(1)).
+\]
+No hace falta que \(p_{0,N}-p_\infty\) sea comparable con \(\delta_N\): basta que tienda a cero.
+
+Para \(\epsilon\in(0,1/2)\) fijo, ambos numeradores de (4) son constantes positivas. Por tanto,
+\[
+R_\epsilon=\Theta(\delta_N^{-2}),
+\]
+y la sustitución de la asintótica heredada da correctamente (5). No demuestra un prefactor óptimo ni uniformidad cuando \(\epsilon\) depende de \(N\).
+
+**Reparación obligatoria 1 — laguna de justificación.** La separación uniforme de \(C\) respecto de cero **no implica** que \(C\) esté acotada superiormente. La tabla de premisas no declara esa cota superior ni una regularidad de \(C\) que la implique. Debe explicitarse como premisa heredada o retirarse la frase «la dependencia oscilante de \(C\) permanece acotada».
+
+La tasa logarítmica puede conservarse sin esa afirmación. Para los pares congelados, \(\delta_N\le D_B(N)\) y (8), junto con el resto relativo eventualmente menor que \(1/2\), dan
+\[
+|C(\theta_N)|
+\le8N^{19/2}(1+10N)=O(N^{21/2}).
+\]
+Combinado con \(|C(\theta_N)|\ge c>0\), esto implica
+\[
+\frac{\log|C(\theta_N)|}{N}\longrightarrow0.
+\]
+Así, (5) sí conduce a
+\[
+\frac{\log R_\epsilon(N)}N\longrightarrow2K_*.
+\]
+Esta comprobación solo necesita controlar la sucesión efectiva \(\theta_N\); no demuestra una cota para un parámetro \(\theta\) arbitrario.
+
+La segunda vía también es correcta. Si \(d>0\), se decide \(1\) cuando la media supera el punto medio; si \(d<0\), se invierte la orientación. Bajo cualquiera de los bits, un error exige una desviación de al menos \(\delta_N/2\). Por Chebyshev,
+\[
+P_b(\text{error})
+\le\frac{p_{b,N}(1-p_{b,N})/R}{(\delta_N/2)^2}
+\le\frac1{R\delta_N^2}.
+\]
+La constante uno es correcta.
+
+Por otra parte,
+\[
+\chi^2(P_1\|P_0)
+=\frac{d^2}{p_0}+\frac{d^2}{1-p_0}
+=\frac{\delta_N^2}{p_0(1-p_0)}.
+\]
+La identidad de producto se obtiene multiplicando los segundos momentos de la razón de verosimilitudes. Cauchy–Schwarz da
+\[
+\operatorname{TV}(P_1^R,P_0^R)
+\le\frac12\sqrt{
+\left(1+\frac{\delta_N^2}{p_0(1-p_0)}\right)^R-1}.
+\]
+Exigir \(\operatorname{TV}\ge1-2\epsilon\) produce exactamente (6).
+
+No hay confusión entre error medio y error por bit: (2)–(6) se formulan para error medio; para controlar ambos errores individuales, la cota inferior sigue siendo necesaria y Chebyshev da una condición suficiente del mismo orden. No se afirma igualdad entre sus constantes óptimas.
+
+El caso límite también pasa. Para \(p_0=0\), cualquier detección identifica el mensaje \(1\); la única cadena ambigua es la de ceros. Por ello,
+\[
+P_e^*=\frac12(1-\delta)^R,\qquad
+R_\epsilon=
+\left\lceil
+\frac{\log(1/(2\epsilon))}{-\log(1-\delta)}
+\right\rceil
+=\Theta_\epsilon(\delta^{-1})
+\]
+cuando \(\delta\downarrow0\). Esta es una fórmula de error medio, coherente con el contrato estadístico.
+
+**§4: PASS_WITH_REPAIRS.** El recuento de recursos y el tratamiento de postselección son correctos, salvo una condición presentada incorrectamente como necesaria.
+
+Los \(RN\) pasos-copia son el trabajo agregado de las evoluciones. Los \(RN\) ticks secuenciales y los \(N\) ticks paralelos corresponden a las modalidades descritas; no incluyen preparación y medición ni fijan una duración física.
+
+**Reparación obligatoria 2 — error matemático en una condición necesaria.** La frase «Sólo si el coste por copia fuese como máximo polinómico podría afirmarse que el coste total tiene la misma tasa exponencial» es falsa.
+
+Si el coste por copia es \(c_N\ge1\) y el coste agregado es \(R_\epsilon c_N\),
+\[
+\frac{\log(R_\epsilon c_N)}N
+=\frac{\log R_\epsilon}N+\frac{\log c_N}N.
+\]
+Basta que \(\log c_N=o(N)\). Por ejemplo, \(c_N=e^{\sqrt N}\) es superpolinómico y conserva la tasa \(2K_*\).
+
+Debe sustituirse por: «Un coste por copia subexponencial en \(N\), en particular polinómico, conservaría la tasa exponencial del coste agregado. Aquí no se demuestra ese control».
+
+La distribución ternaria (7) incluye correctamente el fallo y ambos resultados condicionados al éxito. Para intentos independientes con probabilidad común \(s>0\), el tiempo hasta \(r\) éxitos tiene esperanza \(r/s\). Esto no es un presupuesto determinista ni una garantía de cola.
+
+Si \(s_0\ne s_1\), los fallos y tiempos de espera contienen potencialmente información. La contracción de TV se aplica al posprocesamiento mediante una misma regla bajo ambas hipótesis. Condicionar al éxito puede aumentar la distancia condicionada, pero no convierte por sí solo esa distancia en un ahorro operacional. El documento mantiene correctamente esa distinción.
+
+La implementación y localidad concreta de las proyecciones de C3 son **NO VERIFICADAS** con los documentos disponibles. Su exclusión del protocolo congelado es consistente con el contrato.
+
+**§5: PASS_WITH_REPAIRS.** La telescopación y la cota de repeticiones son correctas; debe precisarse el dominio de las unitarias.
+
+Con la convención
+\[
+D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1,
+\]
+se tiene
+\[
+\rho_0^{\otimes R}-\rho_1^{\otimes R}
+=\sum_{j=1}^R
+\rho_0^{\otimes(j-1)}
+\otimes(\rho_0-\rho_1)
+\otimes\rho_1^{\otimes(R-j)}.
+\]
+La desigualdad triangular y
+\(\|A\otimes B\|_1=\|A\|_1\|B\|_1\), junto con
+\(\|\rho_b\|_1=1\), dan
+\[
+D(\rho_0^{\otimes R},\rho_1^{\otimes R})
+\le R D(\rho_0,\rho_1)\le R\eta_N.
+\]
+Además, \(D\le1\). La fórmula de discriminación binaria óptima produce exactamente (9), incluso permitiendo una medición conjunta sobre las salidas.
+
+Para usos distintos predeterminados, la misma expansión da
+\[
+D\!\left(\bigotimes_{j=1}^R\rho_{0,j},
+         \bigotimes_{j=1}^R\rho_{1,j}\right)
+\le\sum_{j=1}^R D(\rho_{0,j},\rho_{1,j})
+\le R\eta_N.
+\]
+La condición necesaria es la estructura de producto bajo cada bit y la aplicación de (8) a cada uso.
+
+Exigir error medio \(\le\epsilon\) obliga a
+\[
+R\eta_N\ge1-2\epsilon.
+\]
+Para \(K_*>0\), eventualmente
+\[
+\eta_N=4N^3(1+10N)e^{-K_*N},
+\]
+de donde
+\[
+R\ge
+\frac{1-2\epsilon}{4N^3(1+10N)}e^{K_*N}
+=\frac{1-2\epsilon}{40}N^{-4}e^{K_*N}(1+o(1)).
+\]
+La constante y el signo exponencial de (10) son correctos.
+
+Si \(R=e^{o(N)}\), entonces \(R\eta_N\to0\). En consecuencia, el error óptimo tiende a \(1/2\). Esto es una obstrucción necesaria; no establece alcanzabilidad de la tasa \(K_*\).
+
+**Reparación obligatoria 3 — precisión de alcance.** Debe indicarse expresamente que las unitarias de (8) actúan en el espacio de una partícula y satisfacen
+\[
+U=U_A\oplus I_{A^c},
+\]
+o que sus implementaciones en Fock preservan el sector de una partícula.
+
+Un estado inicial de una partícula, por sí solo, no garantiza que una unitaria local arbitraria en Fock deje la salida en ese sector. La justificación mediante bloques de vacío y una partícula necesita esa restricción. Bajo la lectura sectorial natural del contrato, no hay un error en (8)–(10); la reparación elimina una lectura más amplia que la prueba descrita no cubre.
+
+Como comprobación adicional del factor cuatro, si \(v_b\) es la componente de la partícula en Bob,
+\[
+\rho_{b,B}=(1-\|v_b\|^2)|0\rangle\langle0|
++|v_b\rangle\langle v_b|.
+\]
+Entonces
+\[
+D_B\le(\|v_0\|+\|v_1\|)\|v_1-v_0\|
+\le2\|v_1-v_0\|.
+\]
+La premisa \(\|v_1-v_0\|\le2T_N\) conduce a \(D_B\le4T_N\). Para estados iniciales mixtos de una partícula, la misma cota se extiende por convexidad. La estimación espacial de \(T_N\) permanece **NO VERIFICADA**, conforme al encargo.
+
+**Alcance de §6: PASS.** Las exclusiones son suficientes para impedir que este informe se interprete como una frontera operacional universal: faltan geometrías y direcciones uniformes, recursos generales, entradas correlacionadas, adaptatividad, comunicación interior y estabilidad. También es correcta la separación entre el límite escalado de red y una duración física.
+
+Las obligaciones de admisibilidad IR y los estados terminales del contrato no quedan certificados por esta revisión. El documento 1 no pretende certificarlos ni promocionar un gate, por lo que no hay contradicción. La compatibilidad concreta con el cierre de 4B es **NO VERIFICADA**: el expediente no está adjunto.
+
+El resultado matemático central sobrevive a las tres reparaciones: \(\Theta(\delta_N^{-2})\) para los dieciséis pares congelados, con constantes uniformizables por finitud, y una obstrucción uniforme de tasa necesaria \(K_*\) para productos de salidas de protocolos de una partícula. Ninguna de esas conclusiones establece una tasa óptima universal ni una frontera en \(c\).
+tokens used
+28,262
+**Veredicto global: PASS_WITH_REPAIRS.** Las derivaciones de (2)–(6) y (9)–(10) son correctas bajo las premisas heredadas y la interpretación de una partícula. La conclusión principal —coste \(\Theta(\delta_N^{-2})\) para el detector congelado— se sostiene. Hay una afirmación incorrecta sobre el coste de preparación, una justificación incompleta sobre \(C(\theta_N)\) y una ambigüedad de alcance que conviene eliminar.
+
+Esta revisión es exclusivamente matemática y documental, en una ronda. Las asintóticas heredadas se aceptan como premisas; su demostración, las referencias externas y los estados del repositorio son **NO VERIFICADOS**.
+
+**§2: PASS.** El límite, su positividad y la cota estricta superior se justifican.
+
+Escribiendo \(Y=y/N\), la premisa uniforme implica
+\[
+r_N(y)^\dagger M_Br_N(y)
+=N^{-3}R_0(Y)^\dagger M_BR_0(Y)+O(N^{-4}),
+\]
+porque \(R_0\) está acotado sobre la bola compacta y \(\|M_B\|\le1\). Al sumar \(O(N^3)\) sitios, el error es \(O(N^{-1})\). El término principal es la suma de Riemann de (1). El perfil extendido por cero es continuo, por lo que la frontera de la bola no introduce un problema.
+
+Para comprobar la normalización con las convenciones del contrato, sea
+\[
+A=\int_{|q|\le1}|g(q)|^2\frac{d^3q}{(2\pi)^3}.
+\]
+El cambio de variable \(q=Np\) da exactamente \(Z_N=N^{-3}A\). Por tanto, con la representación de \(R_0\) declarada en §2,
+\[
+\widehat R_0(q)=A^{-1/2}g(q)e^{-iH_W(q)}\downarrow,
+\]
+y Plancherel da
+\[
+\int_{\mathbb R^3}\|R_0(Y)\|^2\,dY=1.
+\]
+Esto comprueba los factores de normalización, condicionado a la identificación heredada del campo límite.
+
+La analiticidad real no exige que \(g\) sea analítica en el borde de su soporte. Basta que \(\widehat R_0\) sea integrable y tenga soporte compacto: su transformada inversa se extiende a una función entera de las coordenadas complejas. Por ello, si \(M_B^{1/2}R_0\) se anula en una bola abierta, se anula en todo \(\mathbb R^3\). La unicidad de Fourier obliga entonces a anular \(M_B^{1/2}\widehat R_0\).
+
+Para \(I,P_1,P_2\), esto contradice su valor en \(q=0\). Para \(P_3\), la comprobación decisiva es
+\[
+\left.\partial_{q_1}
+\big[P_3g(q)e^{-iH_W(q)}\downarrow\big]\right|_{q=0}
+=-iP_3\sigma_1\downarrow
+=-i\binom10\ne0.
+\]
+Si se deriva la transformada completa, aparece además el factor no nulo \(A^{-1/2}\). Su omisión en el texto no afecta al argumento de no nulidad.
+
+Así, para cada detector existe un punto interior donde
+\(\|M_B^{1/2}R_0\|^2>0\); por continuidad, existe un abierto de contribución positiva. Esto prueba \(p_\infty^{(M_B)}>0\).
+
+La desigualdad estricta superior también es correcta:
+\[
+p_\infty^{(M_B)}
+\le\int h(Y)\|R_0(Y)\|^2\,dY<1.
+\]
+En efecto, \(1-h>0\) casi en todas partes y \(\|R_0\|^2\) tiene integral uno. Por tanto,
+\(\int(1-h)\|R_0\|^2>0\).
+
+Finalmente, \(\delta_N\to0\) hace que ambos mensajes converjan al mismo límite interior. La separación \(m\le p_{b,N}\le1-m\) es válida eventualmente. Además, **puede elegirse un mismo \(m>0\) y un mismo \(N_0\) para los dieciséis pares**: hay cuatro límites positivos y menores que uno, y una cantidad finita de convergencias. No se obtiene un \(N_0\) efectivo.
+
+**§3: PASS_WITH_REPAIRS.** Las fórmulas estadísticas y sus constantes son correctas. La reparación afecta a la afirmación de acotación de \(C\), no al orden en \(\delta_N\).
+
+Para priors iguales, cada cadena \(x\in\{0,1\}^R\) contribuye al error óptimo con
+\[
+\frac12\min\{P_0(x),P_1(x)\}.
+\]
+Agrupar las cadenas por su número \(k\) de detecciones produce exactamente (2). El conteo es suficiente porque la razón de verosimilitudes depende únicamente de \(k\). Los empates no alteran el error óptimo.
+
+Para comprobar (3), las identidades
+\[
+\sum_x(\sqrt{P(x)}-\sqrt{Q(x)})^2=2(1-B),
+\qquad
+\sum_x(\sqrt{P(x)}+\sqrt{Q(x)})^2=2(1+B)
+\]
+dan
+\[
+1-B\le\operatorname{TV}(P,Q)
+\le\frac12\sqrt{2(1-B)\,2(1+B)}
+=\sqrt{1-B^2}.
+\]
+La afinidad del producto es \(B_N^R\). Sustituir en
+\(P_e^*=(1-\operatorname{TV})/2\) demuestra (3), incluidos todos sus factores.
+
+La cota inferior de (3), junto con \(P_e^*\le\epsilon\), exige
+\[
+B_N^{2R}\le4\epsilon(1-\epsilon).
+\]
+Como \(B_N=e^{-a_N}\), resulta
+\[
+R\ge\frac{\log[1/(4\epsilon(1-\epsilon))]}{2a_N}.
+\]
+La condición suficiente \(B_N^R/2\le\epsilon\) produce el extremo superior de (4). El techo está correctamente colocado; podría añadirse un techo al extremo inferior para reforzarlo, pero no es necesario.
+
+La expansión puede comprobarse término a término:
+\[
+\sqrt{p(p+d)}
+=p+\frac d2-\frac{d^2}{8p}+\frac{d^3}{16p^2}+O(d^4),
+\]
+\[
+\sqrt{(1-p)(1-p-d)}
+=(1-p)-\frac d2-\frac{d^2}{8(1-p)}
+-\frac{d^3}{16(1-p)^2}+O(d^4).
+\]
+Los términos lineales se cancelan y queda
+\[
+B_N=1-\frac{d^2}{8p(1-p)}+O(|d|^3).
+\]
+Para justificar uniformidad basta exigir \(p\in[m,1-m]\) y \(|d|\le m/2\): las terceras derivadas permanecen acotadas en ese dominio. La convergencia \(\delta_N\to0\) garantiza esta condición eventualmente, uniformemente sobre la familia finita.
+
+Como \(-\log(1-x)=x+O(x^2)\),
+\[
+a_N=\frac{\delta_N^2}{8p_{0,N}(1-p_{0,N})}
++O(\delta_N^3),
+\]
+y después
+\[
+a_N=\frac{\delta_N^2}
+{8p_\infty^{(M_B)}(1-p_\infty^{(M_B)})}(1+o(1)).
+\]
+No hace falta que \(p_{0,N}-p_\infty\) sea comparable con \(\delta_N\): basta que tienda a cero.
+
+Para \(\epsilon\in(0,1/2)\) fijo, ambos numeradores de (4) son constantes positivas. Por tanto,
+\[
+R_\epsilon=\Theta(\delta_N^{-2}),
+\]
+y la sustitución de la asintótica heredada da correctamente (5). No demuestra un prefactor óptimo ni uniformidad cuando \(\epsilon\) depende de \(N\).
+
+**Reparación obligatoria 1 — laguna de justificación.** La separación uniforme de \(C\) respecto de cero **no implica** que \(C\) esté acotada superiormente. La tabla de premisas no declara esa cota superior ni una regularidad de \(C\) que la implique. Debe explicitarse como premisa heredada o retirarse la frase «la dependencia oscilante de \(C\) permanece acotada».
+
+La tasa logarítmica puede conservarse sin esa afirmación. Para los pares congelados, \(\delta_N\le D_B(N)\) y (8), junto con el resto relativo eventualmente menor que \(1/2\), dan
+\[
+|C(\theta_N)|
+\le8N^{19/2}(1+10N)=O(N^{21/2}).
+\]
+Combinado con \(|C(\theta_N)|\ge c>0\), esto implica
+\[
+\frac{\log|C(\theta_N)|}{N}\longrightarrow0.
+\]
+Así, (5) sí conduce a
+\[
+\frac{\log R_\epsilon(N)}N\longrightarrow2K_*.
+\]
+Esta comprobación solo necesita controlar la sucesión efectiva \(\theta_N\); no demuestra una cota para un parámetro \(\theta\) arbitrario.
+
+La segunda vía también es correcta. Si \(d>0\), se decide \(1\) cuando la media supera el punto medio; si \(d<0\), se invierte la orientación. Bajo cualquiera de los bits, un error exige una desviación de al menos \(\delta_N/2\). Por Chebyshev,
+\[
+P_b(\text{error})
+\le\frac{p_{b,N}(1-p_{b,N})/R}{(\delta_N/2)^2}
+\le\frac1{R\delta_N^2}.
+\]
+La constante uno es correcta.
+
+Por otra parte,
+\[
+\chi^2(P_1\|P_0)
+=\frac{d^2}{p_0}+\frac{d^2}{1-p_0}
+=\frac{\delta_N^2}{p_0(1-p_0)}.
+\]
+La identidad de producto se obtiene multiplicando los segundos momentos de la razón de verosimilitudes. Cauchy–Schwarz da
+\[
+\operatorname{TV}(P_1^R,P_0^R)
+\le\frac12\sqrt{
+\left(1+\frac{\delta_N^2}{p_0(1-p_0)}\right)^R-1}.
+\]
+Exigir \(\operatorname{TV}\ge1-2\epsilon\) produce exactamente (6).
+
+No hay confusión entre error medio y error por bit: (2)–(6) se formulan para error medio; para controlar ambos errores individuales, la cota inferior sigue siendo necesaria y Chebyshev da una condición suficiente del mismo orden. No se afirma igualdad entre sus constantes óptimas.
+
+El caso límite también pasa. Para \(p_0=0\), cualquier detección identifica el mensaje \(1\); la única cadena ambigua es la de ceros. Por ello,
+\[
+P_e^*=\frac12(1-\delta)^R,\qquad
+R_\epsilon=
+\left\lceil
+\frac{\log(1/(2\epsilon))}{-\log(1-\delta)}
+\right\rceil
+=\Theta_\epsilon(\delta^{-1})
+\]
+cuando \(\delta\downarrow0\). Esta es una fórmula de error medio, coherente con el contrato estadístico.
+
+**§4: PASS_WITH_REPAIRS.** El recuento de recursos y el tratamiento de postselección son correctos, salvo una condición presentada incorrectamente como necesaria.
+
+Los \(RN\) pasos-copia son el trabajo agregado de las evoluciones. Los \(RN\) ticks secuenciales y los \(N\) ticks paralelos corresponden a las modalidades descritas; no incluyen preparación y medición ni fijan una duración física.
+
+**Reparación obligatoria 2 — error matemático en una condición necesaria.** La frase «Sólo si el coste por copia fuese como máximo polinómico podría afirmarse que el coste total tiene la misma tasa exponencial» es falsa.
+
+Si el coste por copia es \(c_N\ge1\) y el coste agregado es \(R_\epsilon c_N\),
+\[
+\frac{\log(R_\epsilon c_N)}N
+=\frac{\log R_\epsilon}N+\frac{\log c_N}N.
+\]
+Basta que \(\log c_N=o(N)\). Por ejemplo, \(c_N=e^{\sqrt N}\) es superpolinómico y conserva la tasa \(2K_*\).
+
+Debe sustituirse por: «Un coste por copia subexponencial en \(N\), en particular polinómico, conservaría la tasa exponencial del coste agregado. Aquí no se demuestra ese control».
+
+La distribución ternaria (7) incluye correctamente el fallo y ambos resultados condicionados al éxito. Para intentos independientes con probabilidad común \(s>0\), el tiempo hasta \(r\) éxitos tiene esperanza \(r/s\). Esto no es un presupuesto determinista ni una garantía de cola.
+
+Si \(s_0\ne s_1\), los fallos y tiempos de espera contienen potencialmente información. La contracción de TV se aplica al posprocesamiento mediante una misma regla bajo ambas hipótesis. Condicionar al éxito puede aumentar la distancia condicionada, pero no convierte por sí solo esa distancia en un ahorro operacional. El documento mantiene correctamente esa distinción.
+
+La implementación y localidad concreta de las proyecciones de C3 son **NO VERIFICADAS** con los documentos disponibles. Su exclusión del protocolo congelado es consistente con el contrato.
+
+**§5: PASS_WITH_REPAIRS.** La telescopación y la cota de repeticiones son correctas; debe precisarse el dominio de las unitarias.
+
+Con la convención
+\[
+D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1,
+\]
+se tiene
+\[
+\rho_0^{\otimes R}-\rho_1^{\otimes R}
+=\sum_{j=1}^R
+\rho_0^{\otimes(j-1)}
+\otimes(\rho_0-\rho_1)
+\otimes\rho_1^{\otimes(R-j)}.
+\]
+La desigualdad triangular y
+\(\|A\otimes B\|_1=\|A\|_1\|B\|_1\), junto con
+\(\|\rho_b\|_1=1\), dan
+\[
+D(\rho_0^{\otimes R},\rho_1^{\otimes R})
+\le R D(\rho_0,\rho_1)\le R\eta_N.
+\]
+Además, \(D\le1\). La fórmula de discriminación binaria óptima produce exactamente (9), incluso permitiendo una medición conjunta sobre las salidas.
+
+Para usos distintos predeterminados, la misma expansión da
+\[
+D\!\left(\bigotimes_{j=1}^R\rho_{0,j},
+         \bigotimes_{j=1}^R\rho_{1,j}\right)
+\le\sum_{j=1}^R D(\rho_{0,j},\rho_{1,j})
+\le R\eta_N.
+\]
+La condición necesaria es la estructura de producto bajo cada bit y la aplicación de (8) a cada uso.
+
+Exigir error medio \(\le\epsilon\) obliga a
+\[
+R\eta_N\ge1-2\epsilon.
+\]
+Para \(K_*>0\), eventualmente
+\[
+\eta_N=4N^3(1+10N)e^{-K_*N},
+\]
+de donde
+\[
+R\ge
+\frac{1-2\epsilon}{4N^3(1+10N)}e^{K_*N}
+=\frac{1-2\epsilon}{40}N^{-4}e^{K_*N}(1+o(1)).
+\]
+La constante y el signo exponencial de (10) son correctos.
+
+Si \(R=e^{o(N)}\), entonces \(R\eta_N\to0\). En consecuencia, el error óptimo tiende a \(1/2\). Esto es una obstrucción necesaria; no establece alcanzabilidad de la tasa \(K_*\).
+
+**Reparación obligatoria 3 — precisión de alcance.** Debe indicarse expresamente que las unitarias de (8) actúan en el espacio de una partícula y satisfacen
+\[
+U=U_A\oplus I_{A^c},
+\]
+o que sus implementaciones en Fock preservan el sector de una partícula.
+
+Un estado inicial de una partícula, por sí solo, no garantiza que una unitaria local arbitraria en Fock deje la salida en ese sector. La justificación mediante bloques de vacío y una partícula necesita esa restricción. Bajo la lectura sectorial natural del contrato, no hay un error en (8)–(10); la reparación elimina una lectura más amplia que la prueba descrita no cubre.
+
+Como comprobación adicional del factor cuatro, si \(v_b\) es la componente de la partícula en Bob,
+\[
+\rho_{b,B}=(1-\|v_b\|^2)|0\rangle\langle0|
++|v_b\rangle\langle v_b|.
+\]
+Entonces
+\[
+D_B\le(\|v_0\|+\|v_1\|)\|v_1-v_0\|
+\le2\|v_1-v_0\|.
+\]
+La premisa \(\|v_1-v_0\|\le2T_N\) conduce a \(D_B\le4T_N\). Para estados iniciales mixtos de una partícula, la misma cota se extiende por convexidad. La estimación espacial de \(T_N\) permanece **NO VERIFICADA**, conforme al encargo.
+
+**Alcance de §6: PASS.** Las exclusiones son suficientes para impedir que este informe se interprete como una frontera operacional universal: faltan geometrías y direcciones uniformes, recursos generales, entradas correlacionadas, adaptatividad, comunicación interior y estabilidad. También es correcta la separación entre el límite escalado de red y una duración física.
+
+Las obligaciones de admisibilidad IR y los estados terminales del contrato no quedan certificados por esta revisión. El documento 1 no pretende certificarlos ni promocionar un gate, por lo que no hay contradicción. La compatibilidad concreta con el cierre de 4B es **NO VERIFICADA**: el expediente no está adjunto.
+
+El resultado matemático central sobrevive a las tres reparaciones: \(\Theta(\delta_N^{-2})\) para los dieciséis pares congelados, con constantes uniformizables por finitud, y una obstrucción uniforme de tasa necesaria \(K_*\) para productos de salidas de protocolos de una partícula. Ninguna de esas conclusiones establece una tasa óptima universal ni una frontera en \(c\).

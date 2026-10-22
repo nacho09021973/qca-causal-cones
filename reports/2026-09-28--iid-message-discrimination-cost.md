@@ -301,3 +301,26 @@ dieciséis pares originales y una obstrucción uniforme más débil para la
 clase de una partícula descrita en §5. La hipótesis de que c delimita una
 frontera estable de comunicación macroscópica sigue abierta. Su formulación
 adimensional es compatible con el cierre acotado de 4B.
+
+## Adenda de reparación — 2026-10-22
+
+Revisión independiente sellada: Astra **PASS_WITH_REPAIRS**, Gemini **PASS**
+([registros](../debates/2026-10-22--iid-discrimination-cost-review-astra/verificacion_autor.md)).
+El texto anterior se conserva; estas reparaciones lo sustituyen donde lo contradicen.
+
+1. **§3, acotación de C.** Se retira «La dependencia oscilante de C permanece
+   acotada». Lo que vale: por δ_N ≤ D_B(N) ≤ 4N³(1+10N)e^{−K*N} y el resto
+   relativo eventualmente < 1/2, abs(C(θ_N)) ≤ 8N^{19/2}(1+10N). Es una cota
+   polinómica, así que log R_ε(N)/N → 2K* se mantiene. (5) sigue valiendo
+   con C(θ_N) explícito.
+2. **§4, coste por copia.** Se sustituye «Sólo si el coste por copia fuese como
+   máximo polinómico…» por: un coste por copia subexponencial en N
+   (log c_N = o(N)), en particular polinómico, conservaría la tasa exponencial
+   del coste agregado. Aquí no se demuestra ese control.
+3. **§5, alcance de (8).** Las unitarias admitidas actúan en el sector de una
+   partícula con U = U_A ⊕ I_{A^c}, o sus implementaciones en Fock preservan ese
+   sector. (8)–(10) no cubren unitarias locales que saquen la salida del sector.
+
+Estado: PRELIMINARY → **REVIEWED_PASS_WITH_REPAIRS (una revisión independiente;
+segunda revisión PASS sin reparaciones); versión reparada no revisada de nuevo**.
+No se promociona ningún gate ni se establece una frontera operacional en c.
