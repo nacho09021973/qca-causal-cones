@@ -1,5 +1,32 @@
 # CURRENT_STATE
 
+## Integrity audit: corrupted LaTeX and non-executing certificates — 2026-10-22
+
+While preparing the authorized W3–W6 independent review, two defects were found.
+The user instructed: "es un proyecto a largo plazo, no se trata de poner parches".
+[Audit report](../reports/2026-10-22--escape-corruption-audit.md).
+
+- **Certificates.** `verify_w2_transport_tetrad.py` and `verify_w5_tetrad_source.py`
+  could not pass under pinned SymPy 1.14.0 since they were added (structural `==`).
+  The identities are true; both are fixed via `certificate_utils.assert_sym_equal`.
+  All 42 verifiers pass (`reports/2026-10-22--verifier-sweep-after-fix.tsv`).
+- **Documents.** 36 tracked documents from 2026-09-20/30 (W1–W7 reports and frozen
+  contracts, CJWW bridges, G0/model class, part of this file) went through a
+  JSON-style escape layer. Escape sequences became control characters; other
+  backslashes were stripped without trace. A logged mechanical repair restored 578
+  certain cases. The rest needs **manual reconstruction**, and until then the math
+  of those documents is not reviewable.
+- **Evidence impact.** No scientific status changes. The W12 blind reviewers
+  received the corrupted W6 contract. W1–W7 PRELIMINARY results are not sent to
+  independent review until their text is reconstructed. 29 of the 42 verifiers lack
+  a `scripts/README.md` entry stating their scope.
+- **Prevention.** `scripts/text_integrity.py --check` and
+  `scripts/run_all_verifiers.py` are now mandatory before commits (AGENTS.md,
+  CLAUDE.md).
+- **Next, in order:** reconstruct the corrupted documents (W3–W6 first, each
+  formula checked against its certificate; ambiguities marked, not guessed); add the
+  missing README scopes; then the W3–W6 independent review.
+
 ## Reconciliation of the September 28 local commits — 2026-10-22
 
 User continuation "adelante". The commits `16c4f0f` and `13d398a`, once described

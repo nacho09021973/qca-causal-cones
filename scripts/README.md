@@ -310,3 +310,24 @@ The optional check imports the existing exact blocks and evolves the compact
 perturbation in a nonperiodic box. No frozen verifier is modified.
 See the [audit and reproduction commands](../reports/2026-09-22--ir-spectral-attribution-audit.md).
 These are empirical finite-N diagnostics, not certificates or asymptotic gates.
+
+## Integrity tooling (2026-10-22)
+
+See [audit](../reports/2026-10-22--escape-corruption-audit.md).
+
+- `run_all_verifiers.py --output <tsv>`: runs every `verify_*.py` in its own
+  process, records git HEAD, versions, exit code, time and last line; exits nonzero
+  if any fails. It certifies nothing scientific; it tells whether the committed
+  certificates still execute.
+- `text_integrity.py --check | --repair --log <tsv> | --list-newline-suspects`:
+  detects escape-sequence corruption in tracked `.md`/`.tex` (control characters,
+  lone CR, suspected lost `\n`, bare `[`/`]` display delimiters). `--repair` restores
+  only mechanically certain cases; decisions on lost newlines are in
+  `text_integrity_newline_decisions.tsv`.
+- `certificate_utils.py`: `assert_sym_equal` / `sym_zero`, value equality for
+  SymPy identities (normalizes trig/exp). Used by `verify_w2_transport_tetrad.py` and
+  `verify_w5_tetrad_source.py`, which failed under SymPy 1.14.0 with structural `==`.
+
+29 verifiers (W1–W12, inverse-gravity, elastic families, others) still have no entry
+in this README stating what they certify and what they do not. Until they do, do not
+cite them for more than their own docstring and report say.
