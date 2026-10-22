@@ -1,0 +1,5 @@
+# path	line	decision	reason (2026-10-22, Claude; checked by reading context)
+reports/2026-09-29--w1-coarse-metric.md	111	JOIN	"\nabla" lost: previous line is the empty remainder after "["
+reports/2026-09-29--w1-coarse-metric.md	114	JOIN	same pattern
+reports/2026-09-30--w10-sourced-gu-wen-constraints.md	402	KEEP	English "eq.(37)" continuing the sentence
+theory/NARROW_BAND_SIGNALING_GATE.md	282	KEEP	backslashes intact in this file; u_B is a variable after "\["
