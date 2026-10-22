@@ -6,12 +6,14 @@ Usage (from the repo root):
 <base_commit> defaults to 2d144d9 (the logged mechanical repair). The check
 removes the leading "> **Typographic reconstruction" blockquote from the
 working-tree file, deletes every backslash from both versions, and requires
-the results to be identical. Thus the reconstruction may add backslashes (and
+the results to be identical (a restored "\\n" before a letter counts as the
+newline it became). Thus the reconstruction may add backslashes (and
 nothing else) relative to the corrupted text. Exits 1 and prints the first
 difference otherwise. See reports/2026-10-22--escape-corruption-audit.md.
 """
 
 import difflib
+import re
 import subprocess
 import sys
 
@@ -37,8 +39,11 @@ def main():
     old = subprocess.run(["git", "show", f"{base}:{path}"], capture_output=True,
                          check=True).stdout.decode("utf-8")
     new = open(path, encoding="utf-8", newline="").read()
-    a = old.replace("\\", "")
-    b = strip_header(new).replace("\\", "")
+    # A restored "\\n<letter>" (e.g. \\neq, \\nabla) corresponds to a newline
+    # in the corrupted text; normalize it identically on both sides.
+    norm = lambda s: re.sub(r"\\n(?=[A-Za-z])", "\n", s).replace("\\", "")
+    a = norm(old)
+    b = norm(strip_header(new))
     if a == b:
         print(f"[PASS] {path}: differs from {base} only by backslashes")
         return 0
