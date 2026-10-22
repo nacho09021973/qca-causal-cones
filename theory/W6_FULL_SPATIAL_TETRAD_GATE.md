@@ -1,5 +1,14 @@
 # W6_FULL_SPATIAL_TETRAD_GATE
 
+> **Typographic reconstruction — 2026-10-22.** The frozen text is commit `318fff2`.
+> It lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand. `scripts/check_reconstruction.py` certifies that only
+> backslashes were added. The formulas were checked against
+> `scripts/verify_w6_full_spatial_tetrad.py`. The contract remains the version
+> frozen at `318fff2`. The W12 blind reviewers (2026-09-30) received the corrupted
+> form of this text.
+
 **Fecha:** 2026-09-30.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -20,59 +29,59 @@ The obstruction was rank: three controls gave rank 3 in tetrad space and rank
 
 Retain the three linearly independent CJWW support directions
 
-[
-d_1=(1,0,0),qquad
-d_2=(1,1,0),qquad
+\[
+d_1=(1,0,0),\qquad
+d_2=(1,1,0),\qquad
 d_3=(1,1,1),
-]
+\]
 
 with direction matrix
 
-[
+\[
 D=
 \begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
-end{pmatrix},
-qquad det D=1.
-]
+\end{pmatrix},
+\qquad \det D=1.
+\]
 
-For each Pauli/tetrad row (a=1,2,3) and direction label (r=1,2,3), attach
+For each Pauli/tetrad row \(a=1,2,3\) and direction label \(r=1,2,3\), attach
 one geometry qubit with control
 
-[
-z_{ar}=langle Z_{ar}\rangle.
-]
+\[
+z_{ar}=\langle Z_{ar}\rangle.
+\]
 
 ## 2. Matter transport operators
 
-For each pair ((a,r)) and edge (e=(x,x+d_r)), define
+For each pair \((a,r)\) and edge \(e=(x,x+d_r)\), define
 
-[
+\[
 J_e^{(a,r)}
 =
-i(|x+d_r\ranglelangle x|-|x\ranglelangle x+d_r|)
-otimessigma_a.
-]
+i(|x+d_r\rangle\langle x|-|x\rangle\langle x+d_r|)
+\otimes\sigma_a.
+\]
 
 Transport gate:
 
-[
+\[
 T_e^{(a,r)}(g)
 =
-e^{-ig Z_{ar,e}otimes J_e^{(a,r)}}.
-]
+e^{-ig Z_{ar,e}\otimes J_e^{(a,r)}}.
+\]
 
 Backreaction kick:
 
-[
-R_e^{(a,r)}(eta)
+\[
+R_e^{(a,r)}(\eta)
 =
-e^{-ieta Y_{ar,e}otimes J_e^{(a,r)}}.
-]
+e^{-i\eta Y_{ar,e}\otimes J_e^{(a,r)}}.
+\]
 
-Geometry-only W4 exchange may be applied separately to each ((a,r)) register
+Geometry-only W4 exchange may be applied separately to each \((a,r)\) register
 species.
 
 ## 3. Principal-symbol target
@@ -80,33 +89,33 @@ species.
 For a translation-invariant semiclassical geometry background, the
 momentum-linear correction should be
 
-[
-delta E_a{}^i
+\[
+\delta E_a{}^i
 =
--2gsum_r z_{ar}D_r{}^i.
-]
+-2g\sum_r z_{ar}D_r{}^i.
+\]
 
-Writing (Z=(z_{ar})),
+Writing \(Z=(z_{ar})\),
 
-[
+\[
 \boxed{
 E=E_0-2gZD+O(g^2).
 }
-]
+\]
 
 ## 4. Obligations
 
 ### F1 — exact flat recovery
 
-At (g=eta=0), matter is exactly CJWW Eq. (5.15).
+At \(g=\eta=0\), matter is exactly CJWW Eq. (5.15).
 
 ### F2 — full tetrad rank
 
 The linear map
 
-[
-Zmapstodelta E=-2gZD
-]
+\[
+Z\mapsto\delta E=-2gZD
+\]
 
 must have rank 9.
 
@@ -114,17 +123,17 @@ must have rank 9.
 
 For
 
-[
-delta h=E_0^Tdelta E+delta E^TE_0,
-]
+\[
+\delta h=E_0^T\delta E+\delta E^TE_0,
+\]
 
-the induced linear map from the nine (z_{ar}) to symmetric metric
+the induced linear map from the nine \(z_{ar}\) to symmetric metric
 perturbations must have rank 6.
 
 ### F4 — kernel interpretation
 
 Compute the dimension and form of the kernel of
-(delta Emapstodelta h).
+\(\delta E\mapsto\delta h\).
 
 If it is the expected three-dimensional antisymmetric frame-rotation
 direction at linear order, record that only as a **kinematic frame
@@ -132,14 +141,14 @@ redundancy**, not a proved gauge symmetry.
 
 ### F5 — reciprocal source
 
-For each (z_{ar}), the W5 variational source must be the corresponding
-(J^{(a,r)}), and the noncommuting Y-kick must change (z_{ar}) according to
+For each \(z_{ar}\), the W5 variational source must be the corresponding
+\(J^{(a,r)}\), and the noncommuting Y-kick must change \(z_{ar}\) according to
 that source.
 
 ### F6 — autonomous geometry propagation
 
 The W4 geometry-only exchange construction must apply independently to all
-nine register species without changing the flat (g=0) matter walk.
+nine register species without changing the flat \(g=0\) matter walk.
 
 ## 5. Terminal states
 
