@@ -3,6 +3,7 @@
 import sympy as sp
 
 from verify_directional_saturation import PAULI
+from certificate_utils import assert_sym_equal
 
 
 def main():
@@ -44,7 +45,7 @@ def main():
     # Continuum current symbol.
     q = sp.symbols("q", real=True)
     jsym = sp.simplify(sp.I*(sp.exp(-sp.I*q)-sp.exp(sp.I*q)))
-    assert sp.simplify(jsym-2*sp.sin(q)) == 0
+    assert_sym_equal(jsym, 2*sp.sin(q), "current symbol")
     assert sp.diff(jsym, q).subs(q, 0) == 2
     print("[PASS] J_a(p)=2 sin(p.d_a) sigma_a = 2(d_a.p) sigma_a + O(p^3)")
 

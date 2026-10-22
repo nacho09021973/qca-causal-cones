@@ -10,6 +10,7 @@ Run:
 import sympy as sp
 
 from verify_directional_saturation import walk2, P1, P2, P3, PAULI
+from certificate_utils import assert_sym_equal
 
 
 def main():
@@ -45,15 +46,15 @@ def main():
     # Isolated family-1 deformation changes the p1 characteristic coefficient.
     E1 = sp.simplify(E.subs({b2: 0, b3: 0}))
     metric1 = sp.simplify(E1.T * E1)
-    assert metric1[0, 0] == (1 - 2*g*b1)**2
-    assert metric1[1, 1] == 1
-    assert metric1[2, 2] == 1
+    assert_sym_equal(metric1[0, 0], (1 - 2*g*b1)**2, "metric1[0,0]")
+    assert_sym_equal(metric1[1, 1], 1, "metric1[1,1]")
+    assert_sym_equal(metric1[2, 2], 1, "metric1[2,2]")
     print("[PASS] isolated b1 changes the local cone coefficient along p1")
 
     # Current Fourier symbol: i(T_d-T_-d) sigma_a = 2 sin(p.d) sigma_a.
     q = sp.symbols("q", real=True)
     current_scalar = sp.simplify(sp.I * (sp.exp(-sp.I*q) - sp.exp(sp.I*q)))
-    assert sp.simplify(current_scalar - 2*sp.sin(q)) == 0
+    assert_sym_equal(current_scalar, 2*sp.sin(q), "current symbol")
     assert sp.diff(current_scalar, q).subs(q, 0) == 2
     print("[PASS] edge current has symbol 2 sin(p.d) sigma_a and linear slope 2 d.p")
 
