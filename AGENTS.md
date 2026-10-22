@@ -18,6 +18,17 @@ edita `scripts/biblioteca_catalog/curated.csv` y regenera con
 `python3 ~/herramientas/biblioteca_catalog/build_catalog.py --repo .`. `biblioteca/` está en
 `.gitignore`: el índice es local, pero `curated.csv` y `tags.csv` sí se versionan.
 
+Integridad antes de cada commit (desde 2026-10-22, ver
+`reports/2026-10-22--escape-corruption-audit.md`):
+
+- Si añades o cambias texto: `python3 -B scripts/text_integrity.py --check` no debe señalar
+  nada nuevo. La lista que ya existía es la cola de reconstrucción pendiente.
+- Si añades o cambias certificados: `python3 -B scripts/run_all_verifiers.py --output <tsv>`
+  debe pasar entero. Las identidades simbólicas se comprueban con
+  `certificate_utils.assert_sym_equal`, no con `==` estructural.
+- No escribas LaTeX a través de capas que interpreten escapes (JSON, cadenas de Python sin
+  `r""`, APIs) sin pasar después `--check`. Así se perdieron las fórmulas de la serie W.
+
 Herramientas:
 
 - `/comite`: comité de expertos (motor común en `~/herramientas/skills/comite`); los roles

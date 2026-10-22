@@ -122,6 +122,16 @@ Note which branch a status belongs to before citing it.
 
 ## Hard rules
 
+Integrity (since 2026-10-22; see `reports/2026-10-22--escape-corruption-audit.md`):
+
+- Before committing text: `python3 -B scripts/text_integrity.py --check` must report
+  nothing new (the existing list is the manual-reconstruction queue).
+- Before committing certificates: `python3 -B scripts/run_all_verifiers.py --output <tsv>`
+  must pass in full. Use `certificate_utils.assert_sym_equal` for symbolic identities,
+  never structural `==` on simplified expressions.
+- Never route LaTeX through an escape-interpreting layer (JSON, non-raw Python strings,
+  APIs) without running `--check` afterwards: this is how the W-series lost its formulas.
+
 Scientific:
 
 - **Never write `v_max` unqualified.** Keep `C_micro`, `V_causal^max`,
