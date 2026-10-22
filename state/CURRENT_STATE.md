@@ -1,5 +1,30 @@
 # CURRENT_STATE
 
+## Reconciliation of the September 28 local commits — 2026-10-22
+
+User continuation "adelante". The commits `16c4f0f` and `13d398a`, once described
+as unavailable, exist locally and on `origin/main`. They are not ancestors of
+this branch: the merge base is `a19c647`. `16c4f0f` adds the
+[September 28 4B report](../reports/2026-09-28--physical-realization-absolute-scale-gate.md),
+now imported unchanged as a historical record. `13d398a` records on main a
+direct user decision of 2026-09-28 closing 4B as `NO_ABSOLUTE_SCALE_DERIVABLE`
+for the frozen flat CJWW (5.15) class.
+
+Reconciliation:
+- **Outcome:** concordant with the September 25 execution (same terminal state,
+  same class).
+- **Authorization chronology:** the September 28 report states that only
+  contract freezing was authorized. It was written on `a19c647`, which lacks the
+  September 25 record of execution authorization ("Pues vamos con el 8.21",
+  2026-09-25 14:54 UTC; Sec. 8.21). The September 25 record stands.
+- **Closure:** the September 28 user decision is recorded as the terminal closure
+  of 4B in its frozen class. It does not raise the evidence level of the analysis
+  (Sept 25: PRELIMINARY / partial external review).
+
+This resolves the "4B chronology correction" and the reconciliation part of
+"Next step before new research" in the reading guide. No gate is reopened or
+promoted, and main is not merged into this branch.
+
 ## Independent review of the iid discrimination-cost report — 2026-10-22
 
 Direct user instruction "adelante con 2 y 3, autorizado" (consolidate before new
