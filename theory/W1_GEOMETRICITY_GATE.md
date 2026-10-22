@@ -18,7 +18,7 @@ The W1 ansatz attaches one qubit to each undirected edge of the certified
 CJWW (5.15) support graph and uses
 
 [
-A_e=(|xanglelangle x|+|yanglelangle y|)otimes I_2,
+A_e=(|x\ranglelangle x|+|y\ranglelangle y|)otimes I_2,
 ]
 
 [
@@ -29,7 +29,7 @@ V_g=prod_eV_e(g),
 
 [
 U_g=V_g(I_gotimes U_0),
-qquad U_0=U_{m CJWW}.
+qquad U_0=U_{\rm CJWW}.
 ]
 
 ## 1. Single question
@@ -54,12 +54,12 @@ leaving all exact support relations unchanged does **not** pass this gate.
 
 ## 2. Gm1 — one-step support dependence
 
-For geometry states (|Gangle,|G'angle), define the joint transition
+For geometry states (|G\rangle,|G'\rangle), define the joint transition
 support from matter site (x) to matter site (y) by the existence of some
 nonzero geometry matrix element
 
 [
-langle G_f,y|U_g|G,xangle
+langle G_f,y|U_g|G,x\rangle
 e0.
 ]
 
@@ -86,7 +86,7 @@ Every (A_e) is diagonal in the matter position basis. Therefore every
 (V_e(g)), and hence (V_g), is block diagonal in matter position:
 
 [
-V_g=sum_x |xanglelangle x|otimes R_x
+V_g=sum_x |x\ranglelangle x|otimes R_x
 ]
 
 for geometry/internal operators (R_x).

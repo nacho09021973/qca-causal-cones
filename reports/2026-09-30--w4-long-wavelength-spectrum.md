@@ -26,7 +26,7 @@ sector acts as
 
 [
 M(kappa)=
-egin{pmatrix}
+\begin{pmatrix}
 c&i s\\
 i s&c
 end{pmatrix},
@@ -37,7 +37,7 @@ With a two-site unit cell and the second matching shifted by one lattice site,
 the two-layer Bloch unitary has determinant one and
 
 [
-oxed{
+\boxed{
 cosomega_+(k)
 =
 c^2-s^2cos k.
@@ -69,7 +69,7 @@ For (k=pi+q),
 [
 cosomega_+
 =
-1-rac12s^2q^2+O(q^4),
+1-\frac12s^2q^2+O(q^4),
 ]
 
 hence
@@ -107,7 +107,7 @@ The second layer becomes
 [
 M(-kappa)
 =
-egin{pmatrix}
+\begin{pmatrix}
 c&-is\\
 -is&c
 end{pmatrix}
@@ -118,7 +118,7 @@ with the appropriate Bloch shifts.
 The two-layer unitary again has determinant one, but now
 
 [
-oxed{
+\boxed{
 cosomega_-(k)
 =
 c^2+s^2cos k.
@@ -136,13 +136,13 @@ For small (k),
 [
 cosomega_-(k)
 =
-1-rac12s^2k^2+O(k^4),
+1-\frac12s^2k^2+O(k^4),
 ]
 
 so
 
 [
-oxed{
+\boxed{
 omega_-(k)
 =
 |sinkappa|,|k|
@@ -156,13 +156,13 @@ geometry mode in the 1D reduction.
 ## 4. Homogeneous background remains exact
 
 Each local generator (I-S_{ef}) annihilates an identical pair
-(|n_0,n_0angle).
+(|n_0,n_0\rangle).
 
-Changing (kappa	o-kappa) therefore does not alter the exact homogeneous
+Changing (kappa\to-kappa) therefore does not alter the exact homogeneous
 background stability:
 
 [
-K_{pmkappa}|n_0,n_0angle=|n_0,n_0angle.
+K_{pmkappa}|n_0,n_0\rangle=|n_0,n_0\rangle.
 ]
 
 The repair changes the excitation spectrum without introducing background
@@ -181,7 +181,7 @@ The W4 statement must be split:
 The repaired 1D speed is
 
 [
-v_g^{m geom}=|sinkappa|
+v_g^{\rm geom}=|sinkappa|
 ]
 
 in geometry-lattice sites per full two-layer step.
@@ -206,8 +206,8 @@ constraint.
 ## 7. Terminal decision
 
 [
-oxed{
-	exttt{W4\_REPAIR\_AVAILABLE\_SMOOTH\_GAPLESS}
+\boxed{
+\texttt{W4\_REPAIR\_AVAILABLE\_SMOOTH\_GAPLESS}
 }
 ]
 

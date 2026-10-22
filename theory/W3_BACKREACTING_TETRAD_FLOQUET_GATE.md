@@ -29,14 +29,14 @@ For (e=(x,x+d_a)), retain the Hermitian current
 [
 J_e^{(a)}
 =
-i(|x+d_aanglelangle x|-|xanglelangle x+d_a|)
+i(|x+d_a\ranglelangle x|-|x\ranglelangle x+d_a|)
 otimessigma_a.
 ]
 
 Define also the endpoint occupation projector
 
 [
-A_e=(|xanglelangle x|+|x+d_aanglelangle x+d_a|)
+A_e=(|x\ranglelangle x|+|x+d_a\ranglelangle x+d_a|)
 otimes I_2.
 ]
 
@@ -76,14 +76,14 @@ No full finite-depth synthesis claim for (U_0) is added.
 Use a product edge state with Bloch vector
 
 [
-(x_0,y_0,z_0)=(sin	heta,0,cos	heta),
-qquad 0<	heta<pi/2.
+(x_0,y_0,z_0)=(sin\theta,0,cos\theta),
+qquad 0<\theta<pi/2.
 ]
 
 Thus both (x_0) and (z_0) are nonzero while (y_0=0).
 
 This avoids a first-order scalar-potential mean from the kick and permits
-first-order matter-dependent evolution of (z_e=langle Z_eangle).
+first-order matter-dependent evolution of (z_e=langle Z_e\rangle).
 
 ## 4. Obligations
 
@@ -101,7 +101,7 @@ must be bounded independently of volume.
 ### W3.3 tetrad control
 
 For a slowly varying/separable geometry background with
-(z_a=langle Z_eangle) on family (a), the transport gate must give
+(z_a=langle Z_e\rangle) on family (a), the transport gate must give
 
 [
 E(z)=E_0-2g,mathrm{diag}(z_1,z_2,z_3)D+O(g^2)
@@ -142,4 +142,4 @@ If W3.1-W3.5 pass, stop at
 `W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN`.
 
 Do not infer curvature action, local Lorentz/diffeomorphism symmetry,
-Einstein equations, (G_{m eff}), AdS, or an absolute scale.
+Einstein equations, (G_{\rm eff}), AdS, or an absolute scale.

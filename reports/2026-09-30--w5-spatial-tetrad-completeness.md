@@ -30,7 +30,7 @@ with
 
 [
 D=
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
@@ -40,7 +40,7 @@ end{pmatrix}.
 The three derivative matrices
 
 [
-rac{partialdelta E}{partial z_a}
+\frac{partialdelta E}{partial z_a}
 ]
 
 are linearly independent because the rows of (D) are nonzero and occupy
@@ -55,14 +55,14 @@ Therefore the map
 has exact rank
 
 [
-oxed{3}.
+\boxed{3}.
 ]
 
-A general real (3	imes3) spatial tetrad perturbation has nine components
+A general real (3\times3) spatial tetrad perturbation has nine components
 before any internal-frame redundancy.
 
 [
-oxed{	exttt{T1 = RANK 3 OF 9}.}
+\boxed{\texttt{T1 = RANK 3 OF 9}.}
 ]
 
 ## 2. Metric tangent-space rank
@@ -81,7 +81,7 @@ Using the W3 convention,
 delta h
 =
 -2g
-egin{pmatrix}
+\begin{pmatrix}
 2z_1&-z_2&z_3\\
 -z_2&-2z_2&z_3\\
 z_3&z_3&2z_3
@@ -89,18 +89,18 @@ end{pmatrix}.
 ]
 
 The coefficient matrices of (z_1,z_2,z_3) are linearly independent, so the
-map into the six-dimensional space of symmetric (3	imes3) matrices has
+map into the six-dimensional space of symmetric (3\times3) matrices has
 exact rank
 
 [
-oxed{3}.
+\boxed{3}.
 ]
 
 Hence the current model reaches only a three-dimensional linear subspace of
 the six-dimensional spatial-metric tangent space.
 
 [
-oxed{	exttt{T2 = RANK 3 OF 6}.}
+\boxed{\texttt{T2 = RANK 3 OF 6}.}
 ]
 
 ## 3. Gauge-completion escape is not available yet
@@ -123,7 +123,7 @@ Therefore the missing metric directions cannot be reclassified as gauge by
 fiat.
 
 [
-oxed{	exttt{T3 = GAUGE COMPLETION OPEN}.}
+\boxed{\texttt{T3 = GAUGE COMPLETION OPEN}.}
 ]
 
 ## 4. Temporal completion is also absent
@@ -141,7 +141,7 @@ The fixed discrete update time supplies a preferred foliation, but a preferred
 foliation is not a derivation of an admissible GR gauge fixing.
 
 [
-oxed{	exttt{T4 = TEMPORAL COMPLETION OPEN}.}
+\boxed{\texttt{T4 = TEMPORAL COMPLETION OPEN}.}
 ]
 
 ## 5. Consequence
@@ -149,12 +149,12 @@ foliation is not a derivation of an admissible GR gauge fixing.
 The current chain
 
 [
-	ext{matter}
+\text{matter}
 leftrightarrow
 z_a
-ightarrow
+\rightarrow
 E_a{}^i
-ightarrow
+\rightarrow
 h^{ij}
 ]
 
@@ -185,7 +185,7 @@ delta E_a{}^i
 -2gsum_r z_{ar}D_r{}^i
 ]
 
-and the (3	imes3) direction matrix (D) is invertible, then for each
+and the (3\times3) direction matrix (D) is invertible, then for each
 tetrad row (a) the three (z_{ar}) span all three spatial directions.
 
 The resulting linear map from nine (z_{ar}) to nine tetrad components is
@@ -196,8 +196,8 @@ That extension is not constructed in this report.
 ## 7. Terminal decision
 
 [
-oxed{
-	exttt{RESTRICTED\_SPATIAL\_METRIC\_SUBMANIFOLD /
+\boxed{
+\texttt{RESTRICTED\_SPATIAL\_METRIC\_SUBMANIFOLD /
 GAUGE\_COMPLETION\_OPEN}
 }
 ]

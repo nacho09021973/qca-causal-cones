@@ -27,7 +27,7 @@ Define
 A=E_0^Tdelta E.
 ]
 
-Every real (3	imes3) matrix decomposes uniquely as
+Every real (3\times3) matrix decomposes uniquely as
 
 [
 A=Omega+S,
@@ -36,15 +36,15 @@ A=Omega+S,
 with
 
 [
-Omega=rac12(A-A^T),
+Omega=\frac12(A-A^T),
 qquad
-S=rac12(A+A^T).
+S=\frac12(A+A^T).
 ]
 
 Then
 
 [
-S=rac{phi}{3}I+Q,
+S=\frac{phi}{3}I+Q,
 qquad
 phi=operatorname{tr}S,
 qquad
@@ -78,10 +78,10 @@ delta h=A+A^T=2S.
 Therefore
 
 [
-oxed{
+\boxed{
 delta h
 =
-rac{2phi}{3}I+2Q.
+\frac{2phi}{3}I+2Q.
 }
 ]
 
@@ -98,7 +98,7 @@ Under a global rotation (Rin SO(3)), a spatial rank-two tensor transforms as
 Qmapsto R Q R^T.
 ]
 
-The space of real symmetric traceless (3	imes3) matrices is
+The space of real symmetric traceless (3\times3) matrices is
 five-dimensional and is the standard spin-2 irreducible representation of
 global spatial (SO(3)).
 
@@ -185,11 +185,11 @@ has not been obtained.
 The current hierarchy is now:
 
 [
-	ext{generic spatial tetrad}
-ightarrow
-	ext{generic spatial metric}
-ightarrow
-	ext{spin-2 kinematic sector}
+\text{generic spatial tetrad}
+\rightarrow
+\text{generic spatial metric}
+\rightarrow
+\text{spin-2 kinematic sector}
 ]
 
 with backreaction, autonomous geometry propagation, and a tetrad-conjugate
@@ -201,8 +201,8 @@ propagation law** that would make the spin-2 sector physical.
 ## 7. Terminal decision
 
 [
-oxed{
-	exttt{SPIN2\_KINEMATIC\_SECTOR\_PASS /
+\boxed{
+\texttt{SPIN2\_KINEMATIC\_SECTOR\_PASS /
 TT\_GAUGE\_CONSTRAINTS\_OPEN}
 }
 ]

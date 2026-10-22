@@ -25,7 +25,7 @@ E(z)=E_0-2g,mathrm{diag}(z_1,z_2,z_3)D+O(g^2),
 E_0=operatorname{diag}(1,-1,1),
 qquad
 D=
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
@@ -73,7 +73,7 @@ E_0^Tdelta E+delta E^T E_0.
 ]
 
 Compute the dimension of the image in the six-dimensional vector space of
-symmetric (3	imes3) matrices.
+symmetric (3\times3) matrices.
 
 ## 4. T3 — gauge-completion escape
 

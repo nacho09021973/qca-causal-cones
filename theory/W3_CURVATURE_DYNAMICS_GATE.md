@@ -15,7 +15,7 @@ W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN
 The W3 coarse principal symbol is
 
 [
-H_{m Weyl}(x,p)sim sigma^a E_a{}^i(x)p_i,
+H_{\rm Weyl}(x,p)sim sigma^a E_a{}^i(x)p_i,
 ]
 
 with
@@ -24,7 +24,7 @@ with
 E(z)=E_0-2g,mathrm{diag}(z_1,z_2,z_3)D+O(g^2),
 ]
 
-and the same (z_e=langle Z_eangle) is changed by matter through the
+and the same (z_e=langle Z_e\rangle) is changed by matter through the
 noncommuting Y-kick.
 
 ## 1. Single question
@@ -76,7 +76,7 @@ geometry kinetic term at this gate.
 
 ## 5. C4 — gravitational source structure
 
-The W3 source is currently endpoint occupation (a_e=langle A_eangle).
+The W3 source is currently endpoint occupation (a_e=langle A_e\rangle).
 
 PASS requires either:
 

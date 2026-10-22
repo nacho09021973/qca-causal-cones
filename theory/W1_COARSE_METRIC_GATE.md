@@ -22,7 +22,7 @@ B_e=Z_e+X_e,
 ]
 
 [
-A_e=(|xanglelangle x|+|yanglelangle y|)otimes I_2,
+A_e=(|x\ranglelangle x|+|y\ranglelangle y|)otimes I_2,
 ]
 
 followed after the frozen CJWW (5.15) matter update.
@@ -70,16 +70,16 @@ b_e=operatorname{tr}(eta_e B_e),
 the first-order reduced matter generator contributed by W1 is
 
 [
-H_{m link}^{(1)}=sum_e b_e A_e.
+H_{\rm link}^{(1)}=sum_e b_e A_e.
 ]
 
 Because each (A_e) is diagonal in matter position and proportional to the
 coin identity,
 
 [
-H_{m link}^{(1)}
+H_{\rm link}^{(1)}
 =
-sum_x v(x)|xanglelangle x|otimes I_2,
+sum_x v(x)|x\ranglelangle x|otimes I_2,
 ]
 
 where
@@ -98,9 +98,9 @@ If every edge is in an eigenstate of (B_e), then W1 acts on the matter
 sector as a position-dependent on-site phase,
 
 [
-V_g^{m eff}
+V_g^{\rm eff}
 =
-sum_x e^{-ig v(x)}|xanglelangle x|otimes I_2.
+sum_x e^{-ig v(x)}|x\ranglelangle x|otimes I_2.
 ]
 
 For locally constant (v(x)), the Bloch symbol is

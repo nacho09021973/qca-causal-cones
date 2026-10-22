@@ -28,35 +28,35 @@ Can one construct a joint local unitary `U_DG` on
 mathcal H_gotimesmathcal H_m
 ]
 
-and a fixed regular background state (|G_0angle) such that both hold:
+and a fixed regular background state (|G_0\rangle) such that both hold:
 
 ### B1 — exact CJWW matter channel on the background
 
-For **every** matter density matrix (ho),
+For **every** matter density matrix (\rho),
 
 [
 operatorname{tr}_g!left[
-U_{DG}(|G_0anglelangle G_0|otimesho)U_{DG}^dagger
-ight]
+U_{DG}(|G_0\ranglelangle G_0|otimes\rho)U_{DG}^dagger
+\right]
 =
-U_{m CJWW}ho U_{m CJWW}^dagger.
+U_{\rm CJWW}\rho U_{\rm CJWW}^dagger.
 ]
 
 This is the strong meaning of an exact fixed-background CJWW sector.
 
 ### B2 — matter-to-geometry backreaction on that same background
 
-There exist two matter states (ho,ho') such that
+There exist two matter states (\rho,\rho') such that
 
 [
 operatorname{tr}_m!left[
-U_{DG}(|G_0anglelangle G_0|otimesho)U_{DG}^dagger
-ight]
+U_{DG}(|G_0\ranglelangle G_0|otimes\rho)U_{DG}^dagger
+\right]
 
 e
 operatorname{tr}_m!left[
-U_{DG}(|G_0anglelangle G_0|otimesho')U_{DG}^dagger
-ight].
+U_{DG}(|G_0\ranglelangle G_0|otimes\rho')U_{DG}^dagger
+\right].
 ]
 
 The question is whether B1 and B2 can hold simultaneously.
@@ -68,37 +68,37 @@ an algebraic no-go stops before local gate synthesis.
 
 **Unitary-channel complementary-constancy lemma.**
 
-Let (V:mathcal H_m	omathcal H_gotimesmathcal H_m) be the isometry
+Let (V:mathcal H_m\tomathcal H_gotimesmathcal H_m) be the isometry
 
 [
-V|psiangle=
-U_{DG}(|G_0angleotimes|psiangle).
+V|psi\rangle=
+U_{DG}(|G_0\rangleotimes|psi\rangle).
 ]
 
 If the reduced matter channel is exactly unitary,
 
 [
-operatorname{tr}_g[Vho V^dagger]=Uho U^dagger
+operatorname{tr}_g[V\rho V^dagger]=U\rho U^dagger
 ]
 
-for every (ho), then the complementary geometry channel is constant:
-there exists one geometry state (sigma_g), independent of (ho), such
+for every (\rho), then the complementary geometry channel is constant:
+there exists one geometry state (sigma_g), independent of (\rho), such
 that
 
 [
-operatorname{tr}_m[Vho V^dagger]=sigma_g
+operatorname{tr}_m[V\rho V^dagger]=sigma_g
 ]
 
-for every (ho).
+for every (\rho).
 
-For pure (|G_0angle) and global unitary dilation, the stronger factorized
+For pure (|G_0\rangle) and global unitary dilation, the stronger factorized
 form should follow:
 
 [
-V|psiangle=|Gammaangleotimes U|psiangle
+V|psi\rangle=|Gamma\rangleotimes U|psi\rangle
 ]
 
-up to a fixed geometry isometry/state independent of (|psiangle).
+up to a fixed geometry isometry/state independent of (|psi\rangle).
 
 The execution must prove this directly, not cite it by slogan.
 
@@ -125,7 +125,7 @@ If the strong bridge is impossible, record but do not automatically open:
 - **W1 perturbative bridge:** CJWW recovered at zero backreaction coupling
   (g=0), with (O(g)) matter corrections when geometry reacts.
 - **W2 vacuum-sector bridge:** exact CJWW only for a restricted matter sector
-  (e.g. vacuum/reference states), not every (ho).
+  (e.g. vacuum/reference states), not every (\rho).
 - **W3 semiclassical bridge:** CJWW emerges approximately after tracing over a
   sharply peaked geometry state.
 - **W4 relational encoding:** the two-component CJWW field is a relational

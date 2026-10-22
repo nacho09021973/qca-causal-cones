@@ -36,10 +36,10 @@ Using
 [
 S_{ef}
 =
-rac12
+\frac12
 left(
 I+X_eX_f+Y_eY_f+Z_eZ_f
-ight),
+\right),
 ]
 
 the generator is a standard exchange/stiffness operator,
@@ -47,10 +47,10 @@ the generator is a standard exchange/stiffness operator,
 [
 I-S_{ef}
 =
-rac12
+\frac12
 left(
 I-X_eX_f-Y_eY_f-Z_eZ_f
-ight).
+\right).
 ]
 
 No matter operator appears.
@@ -67,7 +67,7 @@ can be updated in parallel.
 Thus the geometry-only brickwork has depth at most
 
 [
-oxed{6}
+\boxed{6}
 ]
 
 independent of system size.
@@ -84,47 +84,47 @@ At (g=0), matter remains exactly CJWW because (K_kappa) acts only on
 geometry.
 
 [
-oxed{	exttt{W4.1 = PASS}.}
+\boxed{\texttt{W4.1 = PASS}.}
 ]
 
 ## 3. Homogeneous W3 background is exactly stationary under K
 
-Let every geometry qubit be in the same state (|n_0angle), including the
+Let every geometry qubit be in the same state (|n_0\rangle), including the
 W3 reference state with Bloch vector
-((sin	heta,0,cos	heta)).
+((sin\theta,0,cos\theta)).
 
 For every neighboring pair,
 
 [
-S_{ef}|n_0,n_0angle=|n_0,n_0angle,
+S_{ef}|n_0,n_0\rangle=|n_0,n_0\rangle,
 ]
 
 hence
 
 [
-(I-S_{ef})|n_0,n_0angle=0
+(I-S_{ef})|n_0,n_0\rangle=0
 ]
 
 and
 
 [
-K_{ef}(kappa)|n_0,n_0angle=|n_0,n_0angle.
+K_{ef}(kappa)|n_0,n_0\rangle=|n_0,n_0\rangle.
 ]
 
 Therefore
 
 [
-oxed{
-K_kappa|n_0angle^{otimes E}
+\boxed{
+K_kappa|n_0\rangle^{otimes E}
 =
-|n_0angle^{otimes E}
+|n_0\rangle^{otimes E}
 }
 ]
 
 exactly, with no background drift.
 
 [
-oxed{	exttt{W4.2 = PASS}.}
+\boxed{\texttt{W4.2 = PASS}.}
 ]
 
 ## 4. Autonomous propagation of the tetrad-control variable
@@ -132,28 +132,28 @@ exactly, with no background drift.
 For one neighboring geometry pair start from
 
 [
-|1,0angle.
+|1,0\rangle.
 ]
 
-Because (S|1,0angle=|0,1angle),
+Because (S|1,0\rangle=|0,1\rangle),
 
 [
-K_{ef}(kappa)|1,0angle
+K_{ef}(kappa)|1,0\rangle
 =
 e^{-ikappa}
 left[
-coskappa,|1,0angle
+coskappa,|1,0\rangle
 +
-isinkappa,|0,1angle
-ight].
+isinkappa,|0,1\rangle
+\right].
 ]
 
 Thus
 
 [
-langle Z_eangle=-cos2kappa,
+langle Z_e\rangle=-cos2kappa,
 qquad
-langle Z_fangle=cos2kappa.
+langle Z_f\rangle=cos2kappa.
 ]
 
 Initially these were ((-1,+1)). For generic nonzero (kappa), both change
@@ -162,7 +162,7 @@ without any matter present.
 At
 
 [
-kappa=rac{pi}{2},
+kappa=\frac{pi}{2},
 ]
 
 the defect transfers completely from (e) to (f).
@@ -170,14 +170,14 @@ the defect transfers completely from (e) to (f).
 Therefore the same variable
 
 [
-z_e=langle Z_eangle
+z_e=langle Z_e\rangle
 ]
 
 that controls the W3 principal symbol now has an autonomous local propagation
 law.
 
 [
-oxed{	exttt{W4.3 = PASS}.}
+\boxed{\texttt{W4.3 = PASS}.}
 ]
 
 ## 5. Repeated finite-speed geometry propagation
@@ -198,7 +198,7 @@ Hence W4 has a finite microscopic geometry-propagation speed and permits
 arbitrarily long vacuum transport under repeated steps.
 
 [
-oxed{	exttt{W4.4 = PASS}.}
+\boxed{\texttt{W4.4 = PASS}.}
 ]
 
 ## 6. Link to the W3 coarse curvature
@@ -227,7 +227,7 @@ Take a one-link (Z)-defect along the (x_2) geometry chain:
 
 [
 z_n=
-egin{cases}
+\begin{cases}
 -1,&n=0,\\
 +1,&n
 e0.
@@ -259,7 +259,7 @@ Therefore W4 supplies autonomous propagation of the coarse curvature
 information already defined kinematically in W3.
 
 [
-oxed{	exttt{W4.5 = PASS}}
+\boxed{\texttt{W4.5 = PASS}}
 ]
 
 within the explicitly limited linearized/coarse-field meaning.
@@ -271,7 +271,7 @@ W4 deliberately does not change the W3 matter source.
 The backreaction kick still uses endpoint occupation
 
 [
-a_e=langle A_eangle,
+a_e=langle A_e\rangle,
 ]
 
 and no derivation identifies this with the conserved stress-energy tensor of
@@ -280,7 +280,7 @@ the continuum Weyl theory.
 Therefore:
 
 [
-oxed{	exttt{GRAVITATIONAL_SOURCE = OPEN}.}
+\boxed{\texttt{GRAVITATIONAL_SOURCE = OPEN}.}
 ]
 
 This preserves the earlier W3 C4 failure.
@@ -290,21 +290,21 @@ This preserves the earlier W3 C4 failure.
 The model now contains, at the declared perturbative/coarse level,
 
 [
-	ext{matter}
+\text{matter}
 longrightarrow
-	ext{tetrad control }z_e
+\text{tetrad control }z_e
 longrightarrow
-	ext{matter cone},
+\text{matter cone},
 ]
 
 together with
 
 [
-	ext{tetrad control }z_e
+\text{tetrad control }z_e
 longrightarrow
-	ext{geometry-only local propagation}
+\text{geometry-only local propagation}
 longrightarrow
-	ext{evolving coarse curvature}.
+\text{evolving coarse curvature}.
 ]
 
 In particular, the geometry sector is no longer frozen in vacuum.
@@ -334,8 +334,8 @@ W4.1-W4.5 pass and W4.6 is retained as an explicit open condition.
 Therefore
 
 [
-oxed{
-	exttt{W4\_AUTONOMOUS\_GEOMETRY\_DYNAMICS\_PASS /
+\boxed{
+\texttt{W4\_AUTONOMOUS\_GEOMETRY\_DYNAMICS\_PASS /
 GRAVITATIONAL\_SOURCE\_OPEN}
 }
 ]

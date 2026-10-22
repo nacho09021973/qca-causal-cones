@@ -40,7 +40,7 @@ E_0=operatorname{diag}(1,-1,1),
 Z=operatorname{diag}(z_1,z_2,z_3),
 qquad
 D=
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
@@ -66,12 +66,12 @@ I-2g(E_0^TZD+D^TZE_0)+O(g^2).
 Explicitly,
 
 [
-oxed{
+\boxed{
 h^{ij}
 =
 delta^{ij}
 -2g
-egin{pmatrix}
+\begin{pmatrix}
 2z_1&-z_2&z_3\\
 -z_2&-2z_2&z_3\\
 z_3&z_3&2z_3
@@ -84,7 +84,7 @@ Thus the state of the link/tetrad variables determines an explicit coarse
 spatial metric at the principal-symbol level.
 
 [
-oxed{	exttt{C1 = PASS}.}
+\boxed{\texttt{C1 = PASS}.}
 ]
 
 ## 2. C2 — kinematically nonzero curvature is possible
@@ -128,7 +128,7 @@ q_i{}^i=-4g f(x_2),
 and all other (q^{ij}) vanish. Hence
 
 [
-oxed{
+\boxed{
 R^{(1)}=-4g f''(x_2).
 }
 ]
@@ -139,7 +139,7 @@ spatial metric has nonzero linearized curvature.
 This is a kinematic construction only.
 
 [
-oxed{	exttt{C2 = PASS}.}
+\boxed{\texttt{C2 = PASS}.}
 ]
 
 ## 3. C3 — no autonomous geometry dynamics
@@ -157,7 +157,7 @@ Every geometry generator is multiplied by a matter operator.
 There is no declared term of the form
 
 [
-U_{m geom}
+U_{\rm geom}
 ]
 
 acting nontrivially on neighboring geometry/link registers alone, nor a
@@ -179,7 +179,7 @@ Indirect mediation through later matter motion is not the geometry-only
 dynamics required by the frozen gate.
 
 [
-oxed{	exttt{C3 = FAIL}.}
+\boxed{\texttt{C3 = FAIL}.}
 ]
 
 ## 4. C4 — source is not derived stress-energy
@@ -195,7 +195,7 @@ z_e'-z_e
 where
 
 [
-a_e=langle A_eangle
+a_e=langle A_e\rangle
 ]
 
 is endpoint occupation.
@@ -210,7 +210,7 @@ proved.
 Therefore:
 
 [
-oxed{	exttt{C4 = FAIL}.}
+\boxed{\texttt{C4 = FAIL}.}
 ]
 
 ## 5. Scientific interpretation
@@ -218,11 +218,11 @@ Therefore:
 W3 has reached
 
 [
-	ext{matter}
+\text{matter}
 leftrightarrow
-	ext{backreacting tetrad}
+\text{backreacting tetrad}
 longrightarrow
-	ext{coarse metric}
+\text{coarse metric}
 ]
 
 and spatially varying tetrad configurations can be assigned nonzero coarse
@@ -231,7 +231,7 @@ curvature.
 But it has **not** reached
 
 [
-	ext{curvature with its own dynamics}.
+\text{curvature with its own dynamics}.
 ]
 
 The missing ingredient is now precise: a local geometry-geometry unitary
@@ -243,8 +243,8 @@ tetrad field, together with a justified matter source.
 C1-C2 pass, C3-C4 fail. By the frozen stop rule,
 
 [
-oxed{
-	exttt{COARSE\_METRIC\_KINEMATICS\_PASS /
+\boxed{
+\texttt{COARSE\_METRIC\_KINEMATICS\_PASS /
 CURVATURE\_DYNAMICS\_FAIL}
 }
 ]

@@ -57,7 +57,7 @@ Fijar de forma inequívoca:
 - el operador inhomogéneo (U_N=C_N(x)D);
 - la inclinación;
 - la definición exacta de la cola comparada;
-- las hipótesis de regularidad de (artheta);
+- las hipótesis de regularidad de (\vartheta);
 - el dominio complejo relevante para el saddle.
 
 **Salida:** contrato matemático único antes de cualquier prueba larga.

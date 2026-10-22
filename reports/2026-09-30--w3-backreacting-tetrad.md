@@ -27,14 +27,14 @@ For edge (e=(x,x+d_a)),
 [
 J_e^{(a)}
 =
-i(|x+d_aanglelangle x|-|xanglelangle x+d_a|)
+i(|x+d_a\ranglelangle x|-|x\ranglelangle x+d_a|)
 otimessigma_a
 ]
 
 and
 
 [
-A_e=(|xanglelangle x|+|x+d_aanglelangle x+d_a|)
+A_e=(|x\ranglelangle x|+|x+d_a\ranglelangle x+d_a|)
 otimes I_2.
 ]
 
@@ -62,8 +62,8 @@ R_e(0)=T_e(0)=I,
 so
 
 [
-oxed{
-U_{g=0}=I_gotimes U_{m CJWW}.
+\boxed{
+U_{g=0}=I_gotimes U_{\rm CJWW}.
 }
 ]
 
@@ -76,7 +76,7 @@ The transport substep depends on (Z_e).
 For a slowly varying/separable edge background with family means
 
 [
-z_a=langle Z_eangle,
+z_a=langle Z_e\rangle,
 ]
 
 the W2 current-symbol calculation transfers directly:
@@ -97,7 +97,7 @@ with
 E_0=operatorname{diag}(1,-1,1),
 qquad
 D=
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
@@ -108,7 +108,7 @@ Since (det D=1), the (Z)-field changes the momentum-linear Weyl
 principal symbol and local characteristic cone.
 
 [
-oxed{	exttt{W3.3 = PASS}.}
+\boxed{\texttt{W3.3 = PASS}.}
 ]
 
 ## 3. Matter changes the actual tetrad-control observable
@@ -124,34 +124,34 @@ Z_eotimes(I-A_e)
 +
 left(
 Z_ecos2g-X_esin2g
-ight)otimes A_e.
+\right)otimes A_e.
 ]
 
 For an initially uncorrelated edge/matter state, define
 
 [
-x_e=langle X_eangle,qquad
-z_e=langle Z_eangle,qquad
-a_e=langle A_eangle.
+x_e=langle X_e\rangle,qquad
+z_e=langle Z_e\rangle,qquad
+a_e=langle A_e\rangle.
 ]
 
 Then
 
 [
-oxed{
+\boxed{
 z_e'
 =
 z_e+
 a_eleft[
 (cos2g-1)z_e-sin2g,x_e
-ight].
+\right].
 }
 ]
 
 Hence
 
 [
-oxed{
+\boxed{
 z_e'-z_e
 =
 -2g,x_e a_e+O(g^2).
@@ -161,8 +161,8 @@ z_e'-z_e
 With the frozen reference geometry Bloch vector
 
 [
-(x_0,y_0,z_0)=(sin	heta,0,cos	heta),
-qquad0<	heta<pi/2,
+(x_0,y_0,z_0)=(sin\theta,0,cos\theta),
+qquad0<\theta<pi/2,
 ]
 
 both (x_0) and (z_0) are nonzero.
@@ -174,7 +174,7 @@ The subsequent transport gate commutes with (Z_e), so it does not undo this
 change.
 
 [
-oxed{	exttt{W3.4 = PASS}.}
+\boxed{\texttt{W3.4 = PASS}.}
 ]
 
 ## 4. Explicit matter-to-tetrad backreaction
@@ -196,8 +196,8 @@ delta z_a=-2g,x_a a_a+O(g^2),
 the matter-dependent contribution to the next transport coefficient is
 
 [
-oxed{
-delta E_{m back}
+\boxed{
+delta E_{\rm back}
 =
 4g^2
 operatorname{diag}(x_1a_1,x_2a_2,x_3a_3)D
@@ -211,19 +211,19 @@ Thus the matter state changes the local Weyl tetrad/principal symbol.
 The ordering is physically transparent:
 
 [
-	ext{matter density}
+\text{matter density}
 overset{R}{longrightarrow}
 z_e
 overset{T}{longrightarrow}
 E_a{}^i
 overset{}{longrightarrow}
-	ext{matter cone}.
+\text{matter cone}.
 ]
 
 This is the reciprocal closure that W2 lacked.
 
 [
-oxed{	exttt{W3.5 = PASS}.}
+\boxed{\texttt{W3.5 = PASS}.}
 ]
 
 ## 5. Perturbative orders
@@ -243,14 +243,14 @@ CJWW.
 Within the declared one-particle causal-unitary model,
 
 [
-oxed{
-	ext{matter}
+\boxed{
+\text{matter}
 longrightarrow
-	ext{local link control }z_e
+\text{local link control }z_e
 longrightarrow
-	ext{Weyl tetrad }E_a{}^i
+\text{Weyl tetrad }E_a{}^i
 longrightarrow
-	ext{local characteristic cone}
+\text{local characteristic cone}
 }
 ]
 
@@ -275,7 +275,7 @@ In particular:
 - no connection, torsion or curvature tensor has been constructed;
 - no local Lorentz or diffeomorphism gauge symmetry is established;
 - no Einstein-Hilbert action or Einstein equation is derived;
-- no (G_{m eff}), cosmological constant, AdS radius or absolute scale is
+- no (G_{\rm eff}), cosmological constant, AdS radius or absolute scale is
   determined;
 - full QCGD finite-depth synthesis of the frozen CJWW baseline remains OPEN.
 
@@ -297,8 +297,8 @@ No novelty claim is made pending dedicated prior-art review.
 All frozen W3.1-W3.5 obligations pass. Therefore
 
 [
-oxed{
-	exttt{W3\_BACKREACTING\_TETRAD\_PASS /
+\boxed{
+\texttt{W3\_BACKREACTING\_TETRAD\_PASS /
 CURVATURE\_DYNAMICS\_OPEN}
 }
 ]

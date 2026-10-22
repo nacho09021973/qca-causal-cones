@@ -24,7 +24,7 @@ For edge family (a) and oriented edge (e=(x,x+d_a)), retain
 [
 J_e^{(a)}
 =
-i(|x+d_aanglelangle x|-|xanglelangle x+d_a|)
+i(|x+d_a\ranglelangle x|-|x\ranglelangle x+d_a|)
 otimessigma_a.
 ]
 
@@ -34,7 +34,7 @@ The transport/tetrad gate remains
 T_e(g)=e^{-igZ_eotimes J_e^{(a)}}.
 ]
 
-For a semiclassical background (z_e=langle Z_eangle), the matter
+For a semiclassical background (z_e=langle Z_e\rangle), the matter
 Hamiltonian contribution is, to leading order,
 
 [
@@ -44,7 +44,7 @@ delta H_m=g,z_eJ_e^{(a)}.
 Thus the operator conjugate to (z_e) is
 
 [
-rac{partial H_m}{partial z_e}=gJ_e^{(a)}
+\frac{partial H_m}{partial z_e}=gJ_e^{(a)}
 ]
 
 at the declared perturbative level.
@@ -75,13 +75,13 @@ no gravitational normalization is assumed.
 For an initially uncorrelated geometry/matter state derive the update of
 
 [
-z_e=langle Z_eangle.
+z_e=langle Z_e\rangle.
 ]
 
 PASS requires a leading term proportional to
 
 [
-j_e=langle J_e^{(a)}angle.
+j_e=langle J_e^{(a)}\rangle.
 ]
 
 ### S3 — variational reciprocity

@@ -29,7 +29,7 @@ For edge family (a) and edge (e=(x,x+d_a)),
 [
 J_e^{(a)}
 =
-i(|x+d_aanglelangle x|-|xanglelangle x+d_a|)
+i(|x+d_a\ranglelangle x|-|x\ranglelangle x+d_a|)
 otimessigma_a.
 ]
 
@@ -39,7 +39,7 @@ The transport gate is
 T_e(g)=e^{-igZ_eotimes J_e^{(a)}}.
 ]
 
-For a semiclassical geometry background (z_e=langle Z_eangle), the
+For a semiclassical geometry background (z_e=langle Z_e\rangle), the
 matter Hamiltonian receives
 
 [
@@ -51,8 +51,8 @@ at leading order.
 Therefore
 
 [
-oxed{
-rac{partial H_m}{partial z_e}
+\boxed{
+\frac{partial H_m}{partial z_e}
 =
 gJ_e^{(a)}
 }
@@ -75,7 +75,7 @@ for every real (eta) and remains supported only on one geometry register
 and the two matter endpoints.
 
 [
-oxed{	exttt{S1 = PASS}.}
+\boxed{\texttt{S1 = PASS}.}
 ]
 
 ## 3. Exact update of the tetrad-control observable
@@ -117,22 +117,22 @@ X_esin(2eta J_e).
 For an initially uncorrelated geometry/matter state define
 
 [
-x_e=langle X_eangle,qquad
-z_e=langle Z_eangle,
+x_e=langle X_e\rangle,qquad
+z_e=langle Z_e\rangle,
 ]
 
 [
-a_e=langle A_eangle,qquad
-j_e=langle J_e^{(a)}angle.
+a_e=langle A_e\rangle,qquad
+j_e=langle J_e^{(a)}\rangle.
 ]
 
 Then exactly
 
 [
-oxed{
+\boxed{
 z_e'
 =
-z_eleft[1+(cos2eta-1)a_eight]
+z_eleft[1+(cos2eta-1)a_e\right]
 -
 x_esin2eta,j_e.
 }
@@ -141,7 +141,7 @@ x_esin2eta,j_e.
 Therefore
 
 [
-oxed{
+\boxed{
 z_e'-z_e
 =
 -2eta,x_e j_e
@@ -154,35 +154,35 @@ The leading source is the matter current/tetrad-conjugate operator (J_e),
 not endpoint occupation.
 
 [
-oxed{	exttt{S2 = PASS}.}
+\boxed{\texttt{S2 = PASS}.}
 ]
 
 ## 4. Variational reciprocity
 
-The matter-to-geometry source is (j_e=langle J_eangle).
+The matter-to-geometry source is (j_e=langle J_e\rangle).
 
 The geometry-to-matter transport coefficient satisfies
 
 [
-rac{partial H_m}{partial z_e}=gJ_e.
+\frac{partial H_m}{partial z_e}=gJ_e.
 ]
 
 Thus the same microscopic observable controls both directions:
 
 [
-oxed{
-	ext{geometry variation}
+\boxed{
+\text{geometry variation}
 leftrightarrow
 J_e
 leftrightarrow
-	ext{geometry backreaction}.
+\text{geometry backreaction}.
 }
 ]
 
 This is the discrete variational reciprocity missing from W3/W4.
 
 [
-oxed{	exttt{S3 = PASS}.}
+\boxed{\texttt{S3 = PASS}.}
 ]
 
 ## 5. Weyl continuum interpretation
@@ -198,7 +198,7 @@ J_a(p)
 Near the Weyl node,
 
 [
-oxed{
+\boxed{
 J_a(p)
 =
 2d_a{}^i p_i,sigma_a
@@ -228,7 +228,7 @@ conjugate to the spatial tetrad.
 It is therefore legitimate within this gate to call (J_e) a
 
 [
-oxed{	ext{tetrad-conjugate stress source}}
+\boxed{\text{tetrad-conjugate stress source}}
 ]
 
 in the continuum/variational sense.
@@ -237,7 +237,7 @@ This is deliberately weaker than identifying it with the complete
 stress-energy tensor.
 
 [
-oxed{	exttt{S4 = PASS}.}
+\boxed{\texttt{S4 = PASS}.}
 ]
 
 ## 6. Conservation and symmetry remain open
@@ -260,7 +260,7 @@ Therefore the project must not rename (J_e) as (T_{mu
 u}).
 
 [
-oxed{	exttt{S5 = OPEN}.}
+\boxed{\texttt{S5 = OPEN}.}
 ]
 
 ## 7. Relation to W4
@@ -268,7 +268,7 @@ u}).
 Combining W4 and W5 now gives the following toy-model chain:
 
 [
-	ext{tetrad-conjugate matter source}
+\text{tetrad-conjugate matter source}
 longrightarrow
 z_e
 longrightarrow
@@ -284,7 +284,7 @@ z_e
 longrightarrow
 K_kappa
 longrightarrow
-	ext{autonomous vacuum propagation of geometry}.
+\text{autonomous vacuum propagation of geometry}.
 ]
 
 This is materially stronger than the W3 endpoint-occupation source.
@@ -312,8 +312,8 @@ S1-S4 pass; S5 is not established.
 Therefore
 
 [
-oxed{
-	exttt{W5\_TETRAD\_CONJUGATE\_SOURCE\_PASS /
+\boxed{
+\texttt{W5\_TETRAD\_CONJUGATE\_SOURCE\_PASS /
 STRESS\_ENERGY\_CONSERVATION\_OPEN}
 }
 ]

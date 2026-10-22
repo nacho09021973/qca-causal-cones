@@ -26,7 +26,7 @@ Ignore the common bond phase. On a paired bond, partial SWAP acts as
 
 [
 M(kappa)=
-egin{pmatrix}
+\begin{pmatrix}
 c&i s\\
 i s&c
 end{pmatrix},
@@ -43,7 +43,7 @@ Derive the two-layer Bloch unitary and its quasienergy (omega(k)).
 Determine whether
 
 [
-omega(k)	o0
+omega(k)\to0
 ]
 
 at the smooth point (k=0), and whether the leading small-(k) dispersion

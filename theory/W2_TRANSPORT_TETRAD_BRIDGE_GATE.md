@@ -28,7 +28,7 @@ mathcal H_m=ell^2(mathbb Z^3)otimesmathbb C^2.
 Flat update:
 
 [
-U_0=U_{m CJWW(5.15)}.
+U_0=U_{\rm CJWW(5.15)}.
 ]
 
 Near (p=0), the exact symbol satisfies
@@ -36,7 +36,7 @@ Near (p=0), the exact symbol satisfies
 [
 W_0(p)
 =
-I+ileft(p_1sigma_1-p_2sigma_2+p_3sigma_3ight)
+I+ileft(p_1sigma_1-p_2sigma_2+p_3sigma_3\right)
 +O(|p|^2),
 ]
 
@@ -72,10 +72,10 @@ Define the Hermitian matter current on edge (e=(x,x+d_a)),
 J_e^{(a)}
 =
 ileft(
-|x+d_aanglelangle x|
+|x+d_a\ranglelangle x|
 -
-|xanglelangle x+d_a|
-ight)otimessigma_a.
+|x\ranglelangle x+d_a|
+\right)otimessigma_a.
 ]
 
 Define the exact local unitary
@@ -113,13 +113,13 @@ and the two endpoint matter sites. Layer depth must be independent of volume.
 
 ### W2.3 matter-to-link backreaction
 
-For some local matter states (ho,ho'), the first derivative of the edge
+For some local matter states (\rho,\rho'), the first derivative of the edge
 state at (g=0) must differ. The response must depend on a matter current
 observable, not merely total occupation.
 
 ### W2.4 link-to-matter transport response
 
-Two edge backgrounds with different (langle B_eangle) must alter the
+Two edge backgrounds with different (langle B_e\rangle) must alter the
 first-order matter transport generator.
 
 ### W2.5 principal-symbol/tetrad deformation
@@ -127,7 +127,7 @@ first-order matter transport generator.
 For a translation-invariant semiclassical link background with family means
 
 [
-b_a=langle B_eangle,qquad eparallel d_a,
+b_a=langle B_e\rangle,qquad eparallel d_a,
 ]
 
 derive the uniform first-order matter symbol. PASS requires a nonzero
@@ -166,7 +166,7 @@ Because
 
 [
 D=
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1

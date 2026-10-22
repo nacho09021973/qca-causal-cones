@@ -49,10 +49,10 @@ for every real (g).
 Thus, for every joint initial state,
 
 [
-oxed{
-langle B_eangle_{m out}
+\boxed{
+langle B_e\rangle_{\rm out}
 =
-langle B_eangle_{m in}.
+langle B_e\rangle_{\rm in}.
 }
 ]
 
@@ -67,7 +67,7 @@ identified in W2.3.
 However, the principal-symbol deformation depends on
 
 [
-b_e=langle B_eangle,
+b_e=langle B_e\rangle,
 ]
 
 and this quantity is exactly conserved.
@@ -75,13 +75,13 @@ and this quantity is exactly conserved.
 So the declared W2 coupling provides:
 
 [
-	ext{link background} 	o 	ext{matter principal symbol}
+\text{link background} \to \text{matter principal symbol}
 ]
 
 but not
 
 [
-	ext{matter} 	o b_e 	o 	ext{principal symbol}.
+\text{matter} \to b_e \to \text{principal symbol}.
 ]
 
 ## Corrected scientific state

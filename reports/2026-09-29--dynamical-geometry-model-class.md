@@ -91,12 +91,12 @@ evolution.
 The selected class is therefore:
 
 [
-oxed{
-	ext{bounded-degree QCGD}
+\boxed{
+\text{bounded-degree QCGD}
 +
-	ext{joint local graph/matter gates}
+\text{joint local graph/matter gates}
 +
-	ext{fixed CJWW background sector}
+\text{fixed CJWW background sector}
 }
 ]
 
@@ -141,8 +141,8 @@ The charter forbids inventing an edge-flip rule inside this gate.
 Accordingly the terminal state is
 
 [
-oxed{
-	exttt{VIABLE\_MODEL\_CLASS\_IDENTIFIED /
+\boxed{
+\texttt{VIABLE\_MODEL\_CLASS\_IDENTIFIED /
 EXPLICIT\_BRIDGE\_NOT\_CONSTRUCTED}
 }
 ]

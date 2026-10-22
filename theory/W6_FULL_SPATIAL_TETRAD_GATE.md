@@ -30,7 +30,7 @@ with direction matrix
 
 [
 D=
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
@@ -42,7 +42,7 @@ For each Pauli/tetrad row (a=1,2,3) and direction label (r=1,2,3), attach
 one geometry qubit with control
 
 [
-z_{ar}=langle Z_{ar}angle.
+z_{ar}=langle Z_{ar}\rangle.
 ]
 
 ## 2. Matter transport operators
@@ -52,7 +52,7 @@ For each pair ((a,r)) and edge (e=(x,x+d_r)), define
 [
 J_e^{(a,r)}
 =
-i(|x+d_ranglelangle x|-|xanglelangle x+d_r|)
+i(|x+d_r\ranglelangle x|-|x\ranglelangle x+d_r|)
 otimessigma_a.
 ]
 
@@ -89,7 +89,7 @@ delta E_a{}^i
 Writing (Z=(z_{ar})),
 
 [
-oxed{
+\boxed{
 E=E_0-2gZD+O(g^2).
 }
 ]

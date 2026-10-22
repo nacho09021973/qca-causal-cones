@@ -25,7 +25,7 @@ hop set, and the outer CJWW causal body remain fixed.
 On the one-particle matter space,
 
 [
-V_g=sum_x |xanglelangle x|otimes R_x
+V_g=sum_x |x\ranglelangle x|otimes R_x
 ]
 
 for unitary geometry operators (R_x). Therefore
@@ -41,7 +41,7 @@ one-step displacement or remove an existing one.
 Thus:
 
 [
-oxed{	ext{one-step adjacency is unchanged}.}
+\boxed{\text{one-step adjacency is unchanged}.}
 ]
 
 The pathwise outer reach after (t) steps is consequently still bounded by
@@ -85,7 +85,7 @@ for which
 M_*=
 S_{(-1,-1,0)}S_{(1,1,1)}
 =
-egin{pmatrix}
+\begin{pmatrix}
 0&0\\
 i/16&0
 end{pmatrix}.
@@ -107,9 +107,9 @@ Expanding the two-step joint amplitude at (z) to first order in (g),
 [
 mathcal A_z(g)
 =
-sum_y M_y|Gangle
--igsum_y K_y M_y|Gangle
--ig K_zsum_y M_y|Gangle
+sum_y M_y|G\rangle
+-igsum_y K_y M_y|G\rangle
+-ig K_zsum_y M_y|G\rangle
 +O(g^2).
 ]
 
@@ -118,7 +118,7 @@ Since the flat sum is exactly zero, the first and third terms vanish:
 [
 mathcal A_z(g)
 =
--igsum_yK_yM_y|Gangle+O(g^2).
+-igsum_yK_yM_y|G\rangle+O(g^2).
 ]
 
 Choose the edge
@@ -131,17 +131,17 @@ Among the eight contributing intermediate sites, only (y_*) is incident on
 (e_*). Therefore the coefficient of (B_{e_*}) in the derivative is
 exactly (M_*).
 
-On the regular W1 background (|G_0angle=otimes_e|0angle_e),
+On the regular W1 background (|G_0\rangle=otimes_e|0\rangle_e),
 
 [
-B_{e_*}|0angle=|0angle+|1angle.
+B_{e_*}|0\rangle=|0\rangle+|1\rangle.
 ]
 
 The component in which only (e_*) is flipped therefore has derivative
 
 [
 -iM_*=
-egin{pmatrix}
+\begin{pmatrix}
 0&0\\
 1/16&0
 end{pmatrix}
@@ -152,8 +152,8 @@ e0.
 Hence for sufficiently small generic nonzero (g),
 
 [
-oxed{
-langle G_f,z|U_g^2|G_0,0angle
+\boxed{
+langle G_f,z|U_g^2|G_0,0\rangle
 e0
 }
 ]
@@ -173,19 +173,19 @@ Every matter site is incident on exactly fourteen edges. Therefore for every
 site (x),
 
 [
-R_x|G_+angle
+R_x|G_+\rangle
 =
-e^{-i14sqrt2,g}|G_+angle.
+e^{-i14sqrt2,g}|G_+\rangle.
 ]
 
 The interaction is a position-independent global phase on this geometry
 state. Consequently, after any number of steps,
 
 [
-U_g^t(|G_+angleotimes|psiangle)
+U_g^t(|G_+\rangleotimes|psi\rangle)
 =
 e^{-i14sqrt2,gt}
-|G_+angleotimes U_0^t|psiangle.
+|G_+\rangleotimes U_0^t|psi\rangle.
 ]
 
 In particular,
@@ -200,7 +200,7 @@ Thus two states of the link register at the same coupling (g) give different
 exact two-step matter support:
 
 [
-oxed{
+\boxed{
 mathcal R_2^{G_0}(0)
 emathcal R_2^{G_+}(0).
 }
@@ -230,7 +230,7 @@ but it is not enough to claim an emergent metric or general relativity.
 ## 6. Consequence for the gravitational-normalization programme
 
 The earlier G0 failure was based on the original H1/E model, where
-(artheta(X)) was externally prescribed and no geometry variable existed.
+(\vartheta(X)) was externally prescribed and no geometry variable existed.
 
 W1 now supplies:
 
@@ -255,11 +255,11 @@ interference zeros.
 ## 7. Terminal-state decision
 
 [
-oxed{	exttt{W1\_OPERATIONAL\_GEOMETRY\_PASS}}
+\boxed{\texttt{W1\_OPERATIONAL\_GEOMETRY\_PASS}}
 ]
 
 with the mandatory scope label
 
 [
-oxed{	exttt{FINITE\_TIME\_EXACT\_SUPPORT\_ONLY}.}
+\boxed{\texttt{FINITE\_TIME\_EXACT\_SUPPORT\_ONLY}.}
 ]

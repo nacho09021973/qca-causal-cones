@@ -27,7 +27,7 @@ For CJWW Eq. (5.15),
 
 [
 W_0(p)=
-egin{pmatrix}
+\begin{pmatrix}
 c_1c_2e^{ip_3}&-c_1s_2+i s_1\\
 c_1s_2+i s_1&c_1c_2e^{-ip_3}
 end{pmatrix}.
@@ -53,7 +53,7 @@ with
 
 [
 E_0=
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 0&-1&0\\
 0&0&1
@@ -78,7 +78,7 @@ For (e=(x,x+d_a)),
 [
 J_e^{(a)}
 =
-i(|x+d_aanglelangle x|-|xanglelangle x+d_a|)
+i(|x+d_a\ranglelangle x|-|x\ranglelangle x+d_a|)
 otimessigma_a.
 ]
 
@@ -119,8 +119,8 @@ V_e^{(a)}(0)=I
 for every edge, so
 
 [
-oxed{
-U_{g=0}=I_gotimes U_{m CJWW}.
+\boxed{
+U_{g=0}=I_gotimes U_{\rm CJWW}.
 }
 ]
 
@@ -142,13 +142,13 @@ this gate, so `FULL_QCGD_SYNTHESIS` remains OPEN.
 Let an edge start in
 
 [
-eta_e=|0anglelangle0|.
+eta_e=|0\ranglelangle0|.
 ]
 
 For a matter state (sigma), to first order,
 
 [
-ho_e(g)
+\rho_e(g)
 =
 eta_e
 -ig,j_e[B_e,eta_e]
@@ -172,27 +172,27 @@ e0,
 the edge-state derivative is proportional to the **matter current**
 (j_e).
 
-This response is explicitly nontrivial. Let (|s_a^+angle) be the
+This response is explicitly nontrivial. Let (|s_a^+\rangle) be the
 (+1) eigenvector of (sigma_a), and on the two endpoint positions take
 
 [
-|psi_pmangle
+|psi_pm\rangle
 =
-rac{|xanglepm i|x+d_aangle}{sqrt2}
-otimes|s_a^+angle.
+\frac{|x\ranglepm i|x+d_a\rangle}{sqrt2}
+otimes|s_a^+\rangle.
 ]
 
 Then
 
 [
-langlepsi_pm|J_e^{(a)}|psi_pmangle=pm1.
+langlepsi_pm|J_e^{(a)}|psi_pm\rangle=pm1.
 ]
 
 The same initial link state therefore acquires opposite first-order responses
 for the two matter currents.
 
 [
-oxed{	exttt{W2.3 = PASS}.}
+\boxed{\texttt{W2.3 = PASS}.}
 ]
 
 ## 5. W2.4 — link-to-matter transport response
@@ -209,8 +209,8 @@ b_e=operatorname{tr}(eta_e B_e).
 For example,
 
 [
-langle0|B_e|0angle=+1,qquad
-langle1|B_e|1angle=-1.
+langle0|B_e|0\rangle=+1,qquad
+langle1|B_e|1\rangle=-1.
 ]
 
 Thus two link backgrounds differing only by the local edge state induce
@@ -219,7 +219,7 @@ opposite first-order hopping/current terms.
 This is a transport modification, not an on-site scalar potential.
 
 [
-oxed{	exttt{W2.4 = PASS}.}
+\boxed{\texttt{W2.4 = PASS}.}
 ]
 
 ## 6. W2.5 — exact current symbol and tetrad deformation
@@ -228,7 +228,7 @@ For one uniform oriented displacement family (d),
 
 [
 sum_x
-i(|x+danglelangle x|-|xanglelangle x+d|)
+i(|x+d\ranglelangle x|-|x\ranglelangle x+d|)
 ]
 
 has Fourier symbol
@@ -271,7 +271,7 @@ O(|p|^2,g^2|p|),
 where
 
 [
-oxed{
+\boxed{
 E(g)
 =
 E_0
@@ -284,7 +284,7 @@ and
 
 [
 D=
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
@@ -297,7 +297,7 @@ Explicitly,
 
 [
 E(g)=
-egin{pmatrix}
+\begin{pmatrix}
 1-2gb_1&0&0\\
 -2gb_2&-1-2gb_2&0\\
 -2gb_3&-2gb_3&1-2gb_3
@@ -326,7 +326,7 @@ Thus the link background changes the local effective cone rather than merely
 adding a quasienergy shift.
 
 [
-oxed{	exttt{W2.5 = PASS}.}
+\boxed{\texttt{W2.5 = PASS}.}
 ]
 
 Because (det E(0)=-1), the tetrad remains nondegenerate for sufficiently
@@ -347,7 +347,7 @@ Therefore reciprocal coupling and principal-symbol deformation are not two
 unrelated mechanisms added after the fact.
 
 [
-oxed{	exttt{W2.6 = PASS}.}
+\boxed{\texttt{W2.6 = PASS}.}
 ]
 
 ## 8. What has been achieved
@@ -355,12 +355,12 @@ unrelated mechanisms added after the fact.
 At the declared one-particle causal-unitary level, W2 gives
 
 [
-oxed{
-	ext{CJWW at }g=0
+\boxed{
+\text{CJWW at }g=0
 ;longrightarrow;
-	ext{dynamical link variables}
+\text{dynamical link variables}
 ;longleftrightarrow;
-	ext{matter currents}
+\text{matter currents}
 ;longrightarrow;
 E_a{}^i(G)
 }
@@ -388,7 +388,7 @@ Missing:
 2. its autonomous long-wavelength equation of motion;
 3. a curvature observable/action built from that field;
 4. gauge redundancy/local Lorentz or diffeomorphism structure;
-5. an Einstein-Hilbert coefficient or (G_{m eff});
+5. an Einstein-Hilbert coefficient or (G_{\rm eff});
 6. an independently generated curvature scale;
 7. a proof that the complete CJWW+link evolution is a QCGD finite-depth
    circuit, rather than the present causal-unitary construction plus a
@@ -405,8 +405,8 @@ dynamics and generate a controlled gravitational continuum equation.
 All W2.1-W2.6 obligations pass at the declared level. Therefore
 
 [
-oxed{
-	exttt{W2\_DYNAMIC\_PRINCIPAL\_SYMBOL\_PASS /
+\boxed{
+\texttt{W2\_DYNAMIC\_PRINCIPAL\_SYMBOL\_PASS /
 CURVATURE\_OPEN}
 }
 ]

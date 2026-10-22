@@ -27,7 +27,7 @@ qquad B_e=Z_e+X_e,
 the W1 interaction gives, to first order in (g),
 
 [
-H_{m link}^{(1)}
+H_{\rm link}^{(1)}
 =
 sum_e b_e A_e,
 ]
@@ -35,15 +35,15 @@ sum_e b_e A_e,
 with
 
 [
-A_e=(|xanglelangle x|+|yanglelangle y|)otimes I_2.
+A_e=(|x\ranglelangle x|+|y\ranglelangle y|)otimes I_2.
 ]
 
 Collecting edge contributions by site,
 
 [
-H_{m link}^{(1)}
+H_{\rm link}^{(1)}
 =
-sum_x v(x)|xanglelangle x|otimes I_2,
+sum_x v(x)|x\ranglelangle x|otimes I_2,
 ]
 
 where
@@ -63,11 +63,11 @@ register remains unentangled by the W1 interaction and the induced matter
 operator is exactly
 
 [
-V_g^{m eff}
+V_g^{\rm eff}
 =
-exp!left[-igsum_e b_eA_eight]
+exp!left[-igsum_e b_eA_e\right]
 =
-sum_x e^{-igv(x)}|xanglelangle x|otimes I_2.
+sum_x e^{-igv(x)}|x\ranglelangle x|otimes I_2.
 ]
 
 Therefore the local/semi-classical one-step symbol is
@@ -79,7 +79,7 @@ W_g(x,p)=e^{-igv(x)}W_0(p).
 If
 
 [
-W_0(p)=e^{-iH_W(p)}+	ext{lattice corrections},
+W_0(p)=e^{-iH_W(p)}+\text{lattice corrections},
 ]
 
 then locally
@@ -107,11 +107,9 @@ gv(x)+omega_{0,pm}(p)
 modulo the Floquet branch, hence
 
 [
-
-abla_pomega_{g,pm}
+\nabla_pomega_{g,pm}
 =
-
-abla_pomega_{0,pm}.
+\nabla_pomega_{0,pm}.
 ]
 
 So the local characteristic/group-velocity cone is unchanged.
@@ -136,22 +134,22 @@ light-cone slope or principal symbol changes.
 
 ## 4. Non-eigenstate link backgrounds
 
-For backgrounds such as the W1 product (|0angle_e), the links entangle
+For backgrounds such as the W1 product (|0\rangle_e), the links entangle
 with matter.
 
 The W1 bridge calculation gives, on the homogeneous regular background,
 
 [
-Phi_g(ho)
+Phi_g(\rho)
 =
 sigma+
 g^2sum_e
 left(
-A_esigma A_e-rac12{A_e,sigma}
-ight)
+A_esigma A_e-\frac12{A_e,sigma}
+\right)
 +O(g^3),
 qquad
-sigma=U_0ho U_0^dagger.
+sigma=U_0\rho U_0^dagger.
 ]
 
 This is a local dephasing-type correction after the links are traced out. It
@@ -185,8 +183,8 @@ The present W1 coupling does none of these.
 Therefore
 
 [
-oxed{
-	exttt{W1\_SCALAR\_POTENTIAL\_ONLY /
+\boxed{
+\texttt{W1\_SCALAR\_POTENTIAL\_ONLY /
 NO\_METRIC\_DEFORMATION}
 }
 ]

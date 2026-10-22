@@ -19,24 +19,24 @@ finite-depth synthesis or continuum limits enter.
 Let
 
 [
-V:mathcal H_m	o mathcal H_gotimesmathcal H_m
+V:mathcal H_m\to mathcal H_gotimesmathcal H_m
 ]
 
 be the isometry induced by the joint unitary from the fixed pure geometry
 background:
 
 [
-V|psiangle=
-U_{DG}(|G_0angleotimes|psiangle).
+V|psi\rangle=
+U_{DG}(|G_0\rangleotimes|psi\rangle).
 ]
 
-Assume B1: for every matter density matrix (ho),
+Assume B1: for every matter density matrix (\rho),
 
 [
-operatorname{tr}_g(Vho V^dagger)
+operatorname{tr}_g(V\rho V^dagger)
 =
-Uho U^dagger,
-qquad U=U_{m CJWW}.
+U\rho U^dagger,
+qquad U=U_{\rm CJWW}.
 ]
 
 Define
@@ -48,110 +48,110 @@ widetilde V=(I_gotimes U^dagger)V.
 Then
 
 [
-operatorname{tr}_g(widetilde Vhowidetilde V^dagger)=ho
+operatorname{tr}_g(widetilde V\rhowidetilde V^dagger)=\rho
 ]
 
-for every (ho). It is therefore enough to prove the statement for the
+for every (\rho). It is therefore enough to prove the statement for the
 identity matter channel.
 
 ## 2. Pure-state factorization
 
-Take any pure matter state (|psiangle). The reduced matter state of
+Take any pure matter state (|psi\rangle). The reduced matter state of
 
 [
-|Psi_psiangle=widetilde V|psiangle
+|Psi_psi\rangle=widetilde V|psi\rangle
 ]
 
-is (|psianglelanglepsi|), which is pure.
+is (|psi\ranglelanglepsi|), which is pure.
 
 A bipartite pure state has a pure reduced state iff its Schmidt rank is one.
-Hence there is a normalized geometry vector (|gamma_psiangle) such that
+Hence there is a normalized geometry vector (|gamma_psi\rangle) such that
 
 [
-widetilde V|psiangle
+widetilde V|psi\rangle
 =
-|gamma_psiangleotimes|psiangle.
+|gamma_psi\rangleotimes|psi\rangle.
 ]
 
 At this point the geometry vector could still appear to depend on
-(|psiangle). Linearity removes that possibility.
+(|psi\rangle). Linearity removes that possibility.
 
 ## 3. Linearity forces one geometry state
 
-Choose an orthonormal matter basis ({|iangle}). For each basis state,
+Choose an orthonormal matter basis ({|i\rangle}). For each basis state,
 
 [
-widetilde V|iangle
+widetilde V|i\rangle
 =
-|gamma_iangleotimes|iangle.
+|gamma_i\rangleotimes|i\rangle.
 ]
 
 Now apply the same statement to
 
 [
-|+angle=rac{|iangle+|jangle}{sqrt2}.
+|+\rangle=\frac{|i\rangle+|j\rangle}{sqrt2}.
 ]
 
 Linearity gives
 
 [
-widetilde V|+angle
+widetilde V|+\rangle
 =
-rac{|gamma_iangleotimes|iangle+
-      |gamma_jangleotimes|jangle}{sqrt2}.
+\frac{|gamma_i\rangleotimes|i\rangle+
+      |gamma_j\rangleotimes|j\rangle}{sqrt2}.
 ]
 
 But the reduced matter state must be exactly
 
 [
-|+anglelangle+|.
+|+\ranglelangle+|.
 ]
 
 Tracing out geometry gives an off-diagonal coefficient
 
 [
-rac12langlegamma_j|gamma_iangle |ianglelangle j|+mathrm{h.c.}
+\frac12langlegamma_j|gamma_i\rangle |i\ranglelangle j|+mathrm{h.c.}
 ]
 
 which equals the required coefficient (1/2) only if
 
 [
-langlegamma_j|gamma_iangle=1.
+langlegamma_j|gamma_i\rangle=1.
 ]
 
 For normalized vectors this implies
 
 [
-|gamma_iangle=|gamma_jangle.
+|gamma_i\rangle=|gamma_j\rangle.
 ]
 
 As (i,j) were arbitrary, one fixed normalized vector
-(|Gammaangle) satisfies
+(|Gamma\rangle) satisfies
 
 [
-widetilde V|psiangle
+widetilde V|psi\rangle
 =
-|Gammaangleotimes|psiangle
+|Gamma\rangleotimes|psi\rangle
 ]
 
-for every (|psiangle). Undoing the (U^dagger) conjugation,
+for every (|psi\rangle). Undoing the (U^dagger) conjugation,
 
 [
-oxed{
-V|psiangle
+\boxed{
+V|psi\rangle
 =
-|Gammaangleotimes U_{m CJWW}|psiangle.
+|Gamma\rangleotimes U_{\rm CJWW}|psi\rangle.
 }
 ]
 
 ## 4. Complementary geometry channel
 
-Therefore, for every matter density matrix (ho),
+Therefore, for every matter density matrix (\rho),
 
 [
-operatorname{tr}_m(Vho V^dagger)
+operatorname{tr}_m(V\rho V^dagger)
 =
-|GammaanglelangleGamma|.
+|Gamma\ranglelangleGamma|.
 ]
 
 The final geometry state is independent of the matter input.
@@ -159,10 +159,10 @@ The final geometry state is independent of the matter input.
 Thus B1 implies the negation of B2.
 
 [
-oxed{
-	ext{exact CJWW reduced unitary for all matter states}
+\boxed{
+\text{exact CJWW reduced unitary for all matter states}
 Longrightarrow
-	ext{no information-bearing matter-to-geometry backreaction}.
+\text{no information-bearing matter-to-geometry backreaction}.
 }
 ]
 
@@ -175,7 +175,7 @@ arbitrary global unitary dilation.
 B1 and B2 are incompatible, so
 
 [
-oxed{	exttt{STRONG_EXACT_BRIDGE_IMPOSSIBLE}}.
+\boxed{\texttt{STRONG_EXACT_BRIDGE_IMPOSSIBLE}}.
 ]
 
 This is a theorem under the frozen pure-background and exact-channel
@@ -203,11 +203,11 @@ possibilities are:
 The most conservative successor for this project is W1: require
 
 [
-U_{m matter}(g=0)=U_{m CJWW}
+U_{\rm matter}(g=0)=U_{\rm CJWW}
 ]
 
 exactly and quantify the first nontrivial joint matter/geometry correction as
-(g	o0). That does not contradict the theorem because for (g
+(g\to0). That does not contradict the theorem because for (g
 e0) the
 reduced matter channel is no longer required to be exactly unitary CJWW.
 

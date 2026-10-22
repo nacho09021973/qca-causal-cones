@@ -37,15 +37,15 @@ Decompose
 [
 A=Omega+S,
 qquad
-Omega=rac12(A-A^T),
+Omega=\frac12(A-A^T),
 qquad
-S=rac12(A+A^T).
+S=\frac12(A+A^T).
 ]
 
 Then decompose
 
 [
-S=rac{phi}{3}I+Q,
+S=\frac{phi}{3}I+Q,
 qquad
 phi=operatorname{tr}S,
 qquad
@@ -61,7 +61,7 @@ Show
 [
 delta h=2S
 =
-rac{2phi}{3}I+2Q
+\frac{2phi}{3}I+2Q
 ]
 
 and that the antisymmetric (Omega) sector is exactly invisible to the

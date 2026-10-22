@@ -81,18 +81,18 @@ finite-depth independent of system size.
 For the W3 reference single-qubit state
 
 [
-|n_0angle,qquad
-langle Xangle=sin	heta,;
-langle Yangle=0,;
-langle Zangle=cos	heta,
+|n_0\rangle,qquad
+langle X\rangle=sin\theta,;
+langle Y\rangle=0,;
+langle Z\rangle=cos\theta,
 ]
 
 prove
 
 [
-K_kappa |n_0angle^{otimes E}
+K_kappa |n_0\rangle^{otimes E}
 =
-|n_0angle^{otimes E}
+|n_0\rangle^{otimes E}
 ]
 
 exactly (up to at most a global phase).
@@ -114,7 +114,7 @@ speed.
 ### W4.5 curvature linkage
 
 Use the already established W3 coarse metric to show that a spatial texture
-of (z_e=langle Z_eangle) with nonzero coarse curvature can evolve under
+of (z_e=langle Z_e\rangle) with nonzero coarse curvature can evolve under
 (K_kappa) even when the matter source is zero.
 
 This is a curvature-dynamics statement only at the kinematic/coarse-field

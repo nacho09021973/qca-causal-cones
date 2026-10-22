@@ -1156,7 +1156,7 @@ arXiv:1708.00826v2 [quant-ph] 30 Nov 2017
                                                                                                                the arrow directed from g to g 0 . In the following we will
                                             ‡ paolo.perinotti@unipv.it
                                                                                                                take |S+ | < ∞, namely the group G is finitely generated.
-                                                                                                                                      2
+\f                                                                                                                                      2
 
 The Cayley graph of a group can be defined by giving                The previous definition guarantees that the group of
 a presentation, namely choosing a set of generators (an          local changes of basis representing the isotropy group L—
@@ -1234,7 +1234,7 @@ that
 where λ ∈ Λ, and such that the action of Λ is transitive         Corollary 1. Each subgroup Ln ≤ L is isomorphic to a
                 n                                                                                                 n
 on each subset S+ .                                              finite permutation group acting transitively on S+ .
-                                                                                                                                  3
+\f                                                                                                                                  3
 
 Corollary 2. If all generators have the same order, L         The unitary operator of the QW is given by
 is isomorphic to a finite permutation group acting tran-                       XX
@@ -1315,7 +1315,7 @@ The Brillouin zone B ⊆ Rd is defined as the polytope
             \                                                 as explained in the following. Indeed, the isotropy re-
      B=        {k ∈ Rd | −π|h̃|2 ≤ k · h̃ ≤ π|h̃|2 }.         quirement implies that Ak=0 commutes with the repre-
            h̃∈D̃                                              sentation of the isotropy group L, whence we can classify
-                                                                                                                                4
+\f                                                                                                                                4
 
 the QW by requiring identity (9) and then multiplying                      • d = 2: Zn and Dn with n ∈ {1, 2, 3, 4, 6};
 the QW operator A on the left by (I ⊗V ), with V unitary
@@ -1382,7 +1382,7 @@ to:                                                                   there exis
    • d = 3: Zn , Dn with n ∈ {1, 2, 3, 4, 6}, A4 , S4 , and           hl , hm ∈ {0, OL (h1 )}, one has
      the direct products of all the previous groups with
      Z2 ;                                                             hi − hj = hl − hm ⇐⇒ (hi = hl ) ∨ (hi = −hm ). (14)
-                                                                                                                                5
+\f                                                                                                                                5
 
 Then, a second set of equations from conditions (8) is                       The isotropic QWs on Zd for d = 1, 2, 3
 
@@ -1449,7 +1449,7 @@ group K such that all the hk ∈ OK (h1 ) (for h1 ∈ S+ )                      
 satisfy condition (14), then either UK = H or UK = J                                     0 im
                                                                               Ae = V             ,
 or UK = I.                                                                              im 0
-                                                                                                                                   6
+\f                                                                                                                                   6
 
 
 
@@ -1522,7 +1522,7 @@ namely Ae = 0. Imposing Eq. (9), one can choose                                 
                        1    1 1                                         with φ, ψ phase factors. Using isotropy, namely consid-
                  V =  √
                         2 −1 1                                          ering the orbit of the above matrices under conjugation
-                                                                                                                                7
+\f                                                                                                                                7
 
 with H, we obtain                                                        b) Case d = 2: one has Ae = 0 and
                                                                                                               
@@ -1618,7 +1618,7 @@ and one has the following:                                            Finally, t
       where n, m are real such that n2 +m2 = 1, and V is              expressed in this publication are those of the authors and
       an arbitrary unitary if S+ = {h1 } or V is a unitary            do not necessarily reflect the views of the John Temple-
       commuting with σX if S+ = {h1 , −h1 }.                          ton Foundation.
-                                                                                                                           8
+\f                                                                                                                           8
 
          Appendix A: Excluding Cayley graphs                    (s, t signs). Our strategy is now to solve the necessary
                                                                 conditions for the violation of (A1), consisting in systems
@@ -1682,7 +1682,7 @@ Suppose that for all A, B ∈ L0 := {0 ∈ M3 (R)} ∪ L one                A4 .
 has:
                                                                    4. The truncated tetrahedron, whose vertices are all
  (I−D)v = s(A+tB)v ⇔ (sAv = v)∨(stBv = v), (A1)                       the permutations with an even number of minus
-                                                                                                                          9
+\f                                                                                                                          9
                                                                                                 
       signs of the coordinates of vtt = α(3, 1, 1)T and are                            2s
       generated by orbiting vtt under A4 ; in addition,             1. s(Xi + tXj ) =    ±ξ          , modulo permutations
@@ -1751,7 +1751,7 @@ excluded in Subsec. A 1. The remaining cases are then i)                     
 A, B 6∈ {I, R} or ii) v = (0, β, γ)T and signed permuta-                  2 s1 −1
 tions. Case (ii), however, will appear as a special instance        3. −1 ξ s2 , with si arbitrary.
 of (i). In case (i), we have six cases for s(A + tB):                    s3 −1 0
-                                                                                                                        10
+\f                                                                                                                        10
                      
        1   0    2s − 1                                       orbiting the elements generated by (A3) under the left
    4. −1  1       0 , with s arbitrary.                    action of {I, C} with
@@ -1829,7 +1829,7 @@ elements in the coset CA4 . Nevertheless, in our case the               t     s3
 sign is irrelevant, since we are considering combinations            1 + t1 s1         −1         1+ξ             −1
 s(A + tB) of A, B ∈ S4 with s, t arbitrary signs. Ac-               −1 1 + t2 s2  ,  −1 1 + t2                 s2 ,
 cordingly, we consider the representation resulting from                s3     −1 1 + t3                s3 − 1 1 + t3
-                                                                                                                           11
+\f                                                                                                                           11
                                                      
           1      t1    s1 − 1      1 + t1    s1      −1            • For M3 one has OS4 (vs ), OS4 (vb ), OS4 (vc ),
       t2 − 1 1 + s2          , s2 − 1 1 + t2                     OS4 (vt o), OS4 (v1 ) and OS4 (v4 ), with
@@ -1903,7 +1903,7 @@ treated in Sec. A 2.                                           the elements Gwtt
                             0                                  tary. Consider the following unitarity conditions:
                     v3 = α ;
                             β                                            AI A†W + A−W A†−I = 0,        W = X, Y.
-                                                                                                                          12
+\f                                                                                                                          12
 
 By multiplication on the right by AI we obtain                   Now, substituting Eq. (A10), and using definition (A9),
                                                                  the nonvanishing matrix element of the previous identity
@@ -1970,7 +1970,7 @@ and reminding that A†−I AR A†Y = 0 by Eq. (A14), one                In ord
 has                                                              sary to determine the paths with length 2 constructed
                                                                  by elements in {0} ∪ OL (v1 ): by the above analysis, the
             A†−I A−RX A†−I + A†−I A−Y A†−R = 0.                  problem is reduced to a two-dimensional problem, since
-                                                                                                                             13
+\f                                                                                                                             13
 
 the form of the vectors in OL (v1 ) is vi = (xi , yi , ±h)T :=    Multiplying the last equation by Av1 on the right and
 (cos χi , sin χi , ±h)T . Accordingly, it is easy to see that     taking the adjoint we get [30]
@@ -2062,7 +2062,7 @@ and thus necessarily µ2 6= µ∗ 2 . Consider now the unitar-
 ity condition                                                     by multiplying on the right by Av1 , we get
 
    Av1 A†v2 + A−v2 A†−v1 + Av4 A†v3 + A−v3 A†−v4 = 0.                                  Av1 A†−v2 Av1 = 0.
-                                                                                                                         14
+\f                                                                                                                         14
 
 Up to a change of basis U 2π3
                               = diag(ei , e−i ) holds with    which cannot be satisfied neither in case 1 nor in case 2.
@@ -2150,7 +2150,7 @@ then has                                                                  
                 α+                                                v0 =  1  , v1 = −1 , v2 =  1  , v3 = −1 .
                  2 ei = − h−| Uπ† U 2π Uπ |−i ,
                 α−                    3                                   h            h              h               h
-                                                                                                                                      15
+\f                                                                                                                                      15
 
 We notice that excluding this solution allows us to ex-               to respect the D2 algebra, while the case A†−v3 Av0 =
 clude the case including the inverses, namely S+ = S− .               Av0 A†−v2 = 0 is accounted by the symmetry of the uni-
@@ -2221,12 +2221,12 @@ since Av0 A†−v2 = Av0 A†−v3 = 0 is forbidden in order                 �
      A 48, 1687 (1993).
                                                                            A†v1 R2 Av1 = α+    2
                                                                                                  |+i h+| V † R2 V |+i h+|, and by Eq.
-                                                                                                                16
+\f                                                                                                                16
 
      (A17) h+| V † R2 V |+i = 0.                             Journal of Physics A: Mathematical and Theoretical 50,
 [31] G. M. D’Ariano and P. Perinotti, Unpublished.           035301 (2017).
 [32] G. M. D’Ariano, M. Erba, P. Perinotti, and A. Tosini,
-
+\f
 ```
 
 ### Contexto adjunto: scripts/verify_weyl_dirac_gate.py

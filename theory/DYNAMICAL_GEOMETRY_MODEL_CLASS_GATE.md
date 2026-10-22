@@ -81,10 +81,10 @@ The label creates no new theory.
 A member must have a Hilbert space containing both
 
 [
-mathcal H_{m geom}otimesmathcal H_{m matter},
+mathcal H_{\rm geom}otimesmathcal H_{\rm matter},
 ]
 
-where (mathcal H_{m geom}) resolves local adjacency/link variables.
+where (mathcal H_{\rm geom}) resolves local adjacency/link variables.
 
 One complete update `U` must satisfy:
 
@@ -107,14 +107,14 @@ for some admissible state/edge.
 
 ### M4 — backreaction
 The geometry update must depend on matter. A sufficient operational witness is
-two matter states (ho_m,ho'_m) with the same initial geometry state such
+two matter states (\rho_m,\rho'_m) with the same initial geometry state such
 that after one or finitely many updates some local geometric expectation
 differs:
 [
-operatorname{tr}[G_e U(ho_gotimesho_m)U^dagger]
+operatorname{tr}[G_e U(\rho_gotimes\rho_m)U^dagger]
 
 e
-operatorname{tr}[G_e U(ho_gotimesho'_m)U^dagger].
+operatorname{tr}[G_e U(\rho_gotimes\rho'_m)U^dagger].
 ]
 
 ### M5 — geometry affects matter

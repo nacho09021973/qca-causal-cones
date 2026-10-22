@@ -2732,7 +2732,7 @@ phase and vanishes on density matrices. The first nonzero correction is
 Phi_g(
 ho)=U_0
 ho U_0^dagger+
-g^2sum_eleft(A_esigma A_e-rac12{A_e,sigma}
+g^2sum_eleft(A_esigma A_e-\frac12{A_e,sigma}
 ight)+O(g^3),
 quad sigma=U_0
 ho U_0^dagger.
@@ -2861,7 +2861,7 @@ For a translation-invariant semiclassical link background with family means
 
 [
 E(g)=E_0-2g,mathrm{diag}(b_1,b_2,b_3)
-egin{pmatrix}
+\begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
@@ -3018,7 +3018,7 @@ h^{ij}
 =
 \delta^{ij}
 -2g
-egin{pmatrix}
+\begin{pmatrix}
 2z_1&-z_2&z_3\\
 -z_2&-2z_2&z_3\\
 z_3&z_3&2z_3
@@ -3402,13 +3402,13 @@ R_u(p)=sum_{hin F}
 ho_h(u)e^{ipcdot h}W_h,
 qquad
 
-ho_h(u)=rac{h^Tuh}{h^Th},
+ho_h(u)=\frac{h^Tuh}{h^Th},
 ]
 
 and the Hermitian generator
 
 [
-K_u(p)=rac12(R_u(p)+R_u(p)^dagger).
+K_u(p)=\frac12(R_u(p)+R_u(p)^dagger).
 ]
 
 The exact unitary response is frozen as
@@ -3424,7 +3424,7 @@ performed without changing the frozen prescription. At every decisive +I
 node,
 
 [
-K_u(p_*)=rac{operatorname{tr}u}{3}I.
+K_u(p_*)=\frac{operatorname{tr}u}{3}I.
 ]
 
 Thus there is no traceless constant term and no first-order node displacement;
