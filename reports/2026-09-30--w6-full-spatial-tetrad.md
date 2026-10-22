@@ -299,3 +299,17 @@ SPACETIME\_GAUGE\_STRUCTURE\_OPEN}
 \]
 
 is the terminal state.
+
+## Review repairs — 2026-10-22
+
+Independent sealed reviews (Astra, DeepSeek): **ACCEPT_WITH_REPAIRS**
+([author verification](../debates/2026-10-22--w3-w6-review-astra/verificacion_autor.md)).
+The text above is kept; these repairs restrict it where they conflict.
+
+1. Ranks 9 and 6 and the 3-dimensional kernel are exact for g≠0 and at infinitesimal order.
+2. **Correction:** the displayed U_{0,0}=I_g⊗U_CJWW is not the full step when the W4 exchange K_κ is retained. The correct statement is that at g=η=0 the matter evolves exactly by CJWW and the full step is K_κ⊗U_CJWW. Free matter recovery requires η=0.
+3. F1, F5 and F6 rest on the W4/W5 constructions and are not certified by the script. No explicit finite-depth coloring schedule for the nine species is given. Both remain obligations.
+4. The kernel is a kinematic frame redundancy, not a gauge symmetry.
+
+Evidence: REVIEWED_ACCEPT_WITH_REPAIRS (two independent reviews), repaired scope as above.
+Pending certificate obligations are recorded in the author verification.

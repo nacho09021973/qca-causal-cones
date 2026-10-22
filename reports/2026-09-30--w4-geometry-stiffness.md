@@ -351,3 +351,17 @@ is the terminal state.
 
 A successor should now audit the **source and symmetry structure**, not add
 more arbitrary geometry propagation terms.
+
+## Review repairs — 2026-10-22
+
+Independent sealed reviews (Astra, DeepSeek): **ACCEPT_WITH_REPAIRS**
+([author verification](../debates/2026-10-22--w3-w6-review-astra/verificacion_autor.md)).
+The text above is kept; these repairs restrict it where they conflict.
+
+1. W4.4: the unbounded-distance transport claim rests on the full-SWAP witness at κ=π/2. The generic-κ amplitude argument does not control interference and is withdrawn as proof.
+2. W4.5 establishes transport of a **discrete linearized curvature witness**, not curvature dynamics with a controlled coarse-field limit. R^{(1)}=−4g∂₂²z₁ is cited from W3 and not certified here.
+3. Bounded depth applies to the geometry-only update K_κ, not to the full step containing CJWW.
+4. "Autonomous propagation law" for z is read as autonomous geometry evolution; no closed equation for z is derived.
+
+Evidence: REVIEWED_ACCEPT_WITH_REPAIRS (two independent reviews), repaired scope as above.
+Pending certificate obligations are recorded in the author verification.

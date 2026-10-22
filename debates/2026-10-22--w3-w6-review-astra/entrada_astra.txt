@@ -1,0 +1,2237 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+You are an independent referee in mathematical physics (quantum walks / QCA, lattice fermions, linearized gravity). You receive only the documents below; no web, no other context. Do not assume they are correct. Answer in English or Spanish.
+
+The documents are four consecutive gates (W3, W4, W5-source, W6) of a toy "dynamical geometry" construction coupled to a 3D two-component quantum walk (CJWW Eq. 5.15): for each gate the contract frozen before calculation, the execution report and its exact SymPy certificate. The LaTeX of the contracts and reports was typographically reconstructed after an encoding accident; each carries a note saying so. Judge the mathematics, not the typography.
+
+For each gate:
+1. **Contract compliance.** Does the report address every obligation as frozen, without moving the goalposts?
+2. **Derivations.** Re-derive the key steps: W3 Heisenberg update of Z under exp(-ig Y⊗A) with A²=A, z'-z, and the O(g²) backreaction δE; W4 SWAP identities, fixed homogeneous product state, the |1,0⟩ propagation and the discrete-curvature witness; W5 the identities for cos(2ηJ), sin(2ηJ) with J²=A, J³=J, the exact z' and its expansion, the variational relation ∂H_m/∂z=gJ and the symbol 2 sin(p·d)σ; W6 ranks 9 and 6, kernel dimension 3 and its identification with linearized frame rotations. Give corrected expressions for any error.
+3. **Hidden assumptions.** Flag where a step uses an uncontrolled approximation: semiclassical/mean-field replacement of Z by ⟨Z⟩, "initially uncorrelated" states, the passage from a per-tick unitary to an effective Hamiltonian δH_m=g z J, finite-depth claims for the full step, and whether "tetrad-conjugate stress source" and "curvature propagation" are justified at the stated level.
+4. **Certificates.** Say exactly what each script checks and whether that matches the report. Flag anything vacuous, circular or weaker than claimed (for instance, a script asserting a formula it defines rather than deriving it).
+5. **Scope.** Is each claim ceiling respected? Anything overclaimed or understated?
+
+Output: one section per gate; a final table (claim / SUPPORTED, SUPPORTED_WEAKER or NOT_SUPPORTED / one-line reason); a verdict per gate: ACCEPT, ACCEPT_WITH_REPAIRS (numbered mandatory repairs) or REJECT. Be specific and brief; single round; state assumptions instead of asking.
+
+=== DOCUMENT 1: W3_BACKREACTING_TETRAD_FLOQUET_GATE.md ===
+
+# W3_BACKREACTING_TETRAD_FLOQUET_GATE
+
+> **Typographic reconstruction — 2026-10-22.** The frozen text is commit `5dc5fda`.
+> It lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). Here the delimiters and
+> commands have been restored by hand, checked against
+> `scripts/verify_w3_backreacting_tetrad.py`. No symbol, coefficient, criterion or
+> word of the contract has changed. Where the frozen text was ambiguous, the
+> restored form is the only one consistent with the certificate. The contract
+> remains the version frozen at `5dc5fda`.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input and correction
+
+Successor to the exact W2 audit
+
+```
+W2_PRINCIPAL_SYMBOL_CONTROL = PASS
+W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL
+```
+
+W3 must make the observable that controls transport itself matter-dependent.
+
+## 1. Frozen matter baseline and directions
+
+Retain CJWW Eq. (5.15) as \(U_0\), and the three linearly independent support
+directions
+
+\[
+d_1=(1,0,0),\quad d_2=(1,1,0),\quad d_3=(1,1,1).
+\]
+
+For \(e=(x,x+d_a)\), retain the Hermitian current
+
+\[
+J_e^{(a)}
+=
+i(|x+d_a\rangle\langle x|-|x\rangle\langle x+d_a|)
+\otimes\sigma_a.
+\]
+
+Define also the endpoint occupation projector
+
+\[
+A_e=(|x\rangle\langle x|+|x+d_a\rangle\langle x+d_a|)
+\otimes I_2.
+\]
+
+## 2. Geometry qubit and two noncommuting substeps
+
+Each edge carries one qubit.
+
+### Backreaction kick
+
+\[
+R_e(g)=\exp[-ig\,Y_e\otimes A_e].
+\]
+
+### Transport/tetrad gate
+
+\[
+T_e(g)=\exp[-ig\,Z_e\otimes J_e^{(a)}].
+\]
+
+One local W3 edge substep is
+
+\[
+V_e(g)=T_e(g)R_e(g).
+\]
+
+The full interaction uses the same parity/matching layering as W2. The complete
+matter/geometry step is
+
+\[
+U_g=V_g(I_g\otimes U_0).
+\]
+
+No full finite-depth synthesis claim for \(U_0\) is added.
+
+## 3. Reference geometry state
+
+Use a product edge state with Bloch vector
+
+\[
+(x_0,y_0,z_0)=(\sin\theta,0,\cos\theta),
+\qquad 0<\theta<\pi/2.
+\]
+
+Thus both \(x_0\) and \(z_0\) are nonzero while \(y_0=0\).
+
+This avoids a first-order scalar-potential mean from the kick and permits
+first-order matter-dependent evolution of \(z_e=\langle Z_e\rangle\).
+
+## 4. Obligations
+
+### W3.1 exact CJWW recovery
+
+\[
+U_{g=0}=I_g\otimes U_0.
+\]
+
+### W3.2 exact local unitarity and finite interaction depth
+
+Both \(R_e\) and \(T_e\) must be exact local unitaries. The interaction depth
+must be bounded independently of volume.
+
+### W3.3 tetrad control
+
+For a slowly varying/separable geometry background with
+\(z_a=\langle Z_e\rangle\) on family \(a\), the transport gate must give
+
+\[
+E(z)=E_0-2g\,\mathrm{diag}(z_1,z_2,z_3)D+O(g^2)
+\]
+
+with \(D\) the W2 direction matrix.
+
+### W3.4 matter changes the tetrad control
+
+For initially uncorrelated edge/matter states, derive
+
+\[
+z_e' - z_e
+\]
+
+after \(R_e(g)\). PASS requires a matter-dependent leading term.
+
+### W3.5 reciprocal closure at perturbative level
+
+Combining W3.3 and W3.4 must give a nonzero matter-dependent change of the
+next-step principal-symbol/tetrad coefficient.
+
+### W3.6 no false Einstein claim
+
+The backreaction source may be endpoint occupation at this gate. It is not
+identified with the stress-energy tensor, and the resulting difference
+equation is not called Einstein dynamics.
+
+## 5. Terminal states
+
+1. `W3_BACKREACTING_TETRAD_FAIL`.
+2. `W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN`.
+3. `OPEN_AFTER_AUDIT`.
+
+## 6. Stop rule
+
+If W3.1-W3.5 pass, stop at
+`W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN`.
+
+Do not infer curvature action, local Lorentz/diffeomorphism symmetry,
+Einstein equations, \(G_{\rm eff}\), AdS, or an absolute scale.
+
+=== DOCUMENT 2: 2026-09-30--w3-backreacting-tetrad.md ===
+
+# W3_BACKREACTING_TETRAD_FLOQUET_GATE — execution
+
+> **Typographic reconstruction — 2026-10-22.** The text recorded on 2026-09-30
+> (commit `ebf9142`) lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand. `scripts/check_reconstruction.py` certifies that
+> only backslashes were added. The formulas were checked against
+> `scripts/verify_w3_backreacting_tetrad.py`, which passes. No result or scope
+> statement has changed.
+
+**Fecha:** 2026-09-30.  
+**Contrato:** [W3_BACKREACTING_TETRAD_FLOQUET_GATE](../theory/W3_BACKREACTING_TETRAD_FLOQUET_GATE.md), frozen at commit `5dc5fda054355f1b1db3bbc7e6c91e8e841273f4`.  
+**Certificado simbólico:** [verify_w3_backreacting_tetrad.py](../scripts/verify_w3_backreacting_tetrad.py), added at commit `f1f54c973f05e610c309e4f5f3925cb3fafce953`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## Verdict
+
+```
+W3_BACKREACTING_TETRAD_FLOQUET_GATE =
+W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN
+
+FULL_QCGD_SYNTHESIS = OPEN
+EINSTEIN_DYNAMICS = NOT_CLAIMED
+GRAVITATIONAL_NORMALIZATION_G1 = NOT_OPENED
+```
+
+W3 repairs the exact conservation defect found in W2 by separating the
+geometry operator that controls transport from a noncommuting geometry
+operator that receives the matter kick.
+
+## 1. Exact local substeps
+
+For edge \(e=(x,x+d_a)\),
+
+\[
+J_e^{(a)}
+=
+i(|x+d_a\rangle\langle x|-|x\rangle\langle x+d_a|)
+\otimes\sigma_a
+\]
+
+and
+
+\[
+A_e=(|x\rangle\langle x|+|x+d_a\rangle\langle x+d_a|)
+\otimes I_2.
+\]
+
+The two local gates are
+
+\[
+R_e(g)=e^{-igY_e\otimes A_e},
+\qquad
+T_e(g)=e^{-igZ_e\otimes J_e^{(a)}}.
+\]
+
+Both generators are Hermitian, hence both gates are exactly unitary for every
+real \(g\).
+
+The complete interaction uses the same three direction families and parity
+matchings as W2. Executing all kick layers and transport layers requires at
+most twelve disjoint-edge layers, independent of volume.
+
+At \(g=0\),
+
+\[
+R_e(0)=T_e(0)=I,
+\]
+
+so
+
+\[
+\boxed{
+U_{g=0}=I_g\otimes U_{\rm CJWW}.
+}
+\]
+
+Thus W3.1 and W3.2 pass for the added interaction.
+
+## 2. Tetrad control by Z
+
+The transport substep depends on \(Z_e\).
+
+For a slowly varying/separable edge background with family means
+
+\[
+z_a=\langle Z_e\rangle,
+\]
+
+the W2 current-symbol calculation transfers directly:
+
+\[
+E(z)
+=
+E_0
+-
+2g\,\operatorname{diag}(z_1,z_2,z_3)D
++
+O(g^2),
+\]
+
+with
+
+\[
+E_0=\operatorname{diag}(1,-1,1),
+\qquad
+D=
+\begin{pmatrix}
+1&0&0\\
+1&1&0\\
+1&1&1
+\end{pmatrix}.
+\]
+
+Since \(\det D=1\), the \(Z\)-field changes the momentum-linear Weyl
+principal symbol and local characteristic cone.
+
+\[
+\boxed{\texttt{W3.3 = PASS}.}
+\]
+
+## 3. Matter changes the actual tetrad-control observable
+
+The backreaction kick uses \(Y_e\), which does not commute with \(Z_e\).
+
+Because \(A_e^2=A_e\), the Heisenberg evolution of \(Z_e\) is exact:
+
+\[
+R_e^\dagger(Z_e\otimes I)R_e
+=
+Z_e\otimes(I-A_e)
++
+\left(
+Z_e\cos2g-X_e\sin2g
+\right)\otimes A_e.
+\]
+
+For an initially uncorrelated edge/matter state, define
+
+\[
+x_e=\langle X_e\rangle,\qquad
+z_e=\langle Z_e\rangle,\qquad
+a_e=\langle A_e\rangle.
+\]
+
+Then
+
+\[
+\boxed{
+z_e'
+=
+z_e+
+a_e\left[
+(\cos2g-1)z_e-\sin2g\,x_e
+\right].
+}
+\]
+
+Hence
+
+\[
+\boxed{
+z_e'-z_e
+=
+-2g\,x_e a_e+O(g^2).
+}
+\]
+
+With the frozen reference geometry Bloch vector
+
+\[
+(x_0,y_0,z_0)=(\sin\theta,0,\cos\theta),
+\qquad0<\theta<\pi/2,
+\]
+
+both \(x_0\) and \(z_0\) are nonzero.
+
+Different matter endpoint occupations \(a_e\) therefore produce different
+first-order changes in the same \(z_e\) that controls transport.
+
+The subsequent transport gate commutes with \(Z_e\), so it does not undo this
+change.
+
+\[
+\boxed{\texttt{W3.4 = PASS}.}
+\]
+
+## 4. Explicit matter-to-tetrad backreaction
+
+Insert the updated \(z_a'\) into the principal-symbol coefficient:
+
+\[
+E(z')
+=
+E_0-2g\,\operatorname{diag}(z_1',z_2',z_3')D+O(g^2).
+\]
+
+Using
+
+\[
+\delta z_a=-2g\,x_a a_a+O(g^2),
+\]
+
+the matter-dependent contribution to the next transport coefficient is
+
+\[
+\boxed{
+\delta E_{\rm back}
+=
+4g^2
+\operatorname{diag}(x_1a_1,x_2a_2,x_3a_3)D
++
+O(g^3).
+}
+\]
+
+Thus the matter state changes the local Weyl tetrad/principal symbol.
+
+The ordering is physically transparent:
+
+\[
+\text{matter density}
+\overset{R}{\longrightarrow}
+z_e
+\overset{T}{\longrightarrow}
+E_a{}^i
+\overset{}{\longrightarrow}
+\text{matter cone}.
+\]
+
+This is the reciprocal closure that W2 lacked.
+
+\[
+\boxed{\texttt{W3.5 = PASS}.}
+\]
+
+## 5. Perturbative orders
+
+For the declared reference background:
+
+- baseline geometry-controlled cone deformation is \(O(g z_0)\);
+- matter changes the geometric control \(z_e\) at \(O(g)\);
+- matter-induced change of the principal symbol is \(O(g^2)\).
+
+There is no contradiction with the earlier exact-channel no-go: at nonzero
+coupling the reduced matter evolution is not required to remain exactly
+CJWW.
+
+## 6. What W3 establishes
+
+Within the declared one-particle causal-unitary model,
+
+\[
+\boxed{
+\text{matter}
+\longrightarrow
+\text{local link control }z_e
+\longrightarrow
+\text{Weyl tetrad }E_a{}^i
+\longrightarrow
+\text{local characteristic cone}
+}
+\]
+
+and the reverse influence is present because the cone controls subsequent
+matter propagation.
+
+This is the first gate in the project where the **same coarse variable that
+controls the principal symbol is explicitly changed by matter**.
+
+It is therefore legitimate, within this restricted construction, to call
+\(z_e\) a **backreacting tetrad-like microscopic variable**.
+
+## 7. Mandatory limitations
+
+W3 is still a toy dynamical-geometry model, not emergent general relativity.
+
+In particular:
+
+- the backreaction source \(a_e\) is endpoint occupation, not a derived
+  stress-energy tensor;
+- no continuum coarse field \(e_a{}^i(x,t)\) has yet been rigorously derived;
+- no connection, torsion or curvature tensor has been constructed;
+- no local Lorentz or diffeomorphism gauge symmetry is established;
+- no Einstein-Hilbert action or Einstein equation is derived;
+- no \(G_{\rm eff}\), cosmological constant, AdS radius or absolute scale is
+  determined;
+- full QCGD finite-depth synthesis of the frozen CJWW baseline remains OPEN.
+
+## 8. Relation to prior art
+
+Quantum-walk literature already establishes that local-unitary fields can
+encode curved-spacetime Dirac principal symbols. The present project does not
+claim novelty for that fact.
+
+The additional internal question answered here is narrower: can a microscopic
+link degree both control the Weyl principal symbol and be changed by the
+matter sector in one local unitary Floquet construction? W3 supplies an
+explicit perturbative yes within its toy-model scope.
+
+No novelty claim is made pending dedicated prior-art review.
+
+## 9. Terminal-state decision
+
+All frozen W3.1-W3.5 obligations pass. Therefore
+
+\[
+\boxed{
+\texttt{W3\_BACKREACTING\_TETRAD\_PASS /
+CURVATURE\_DYNAMICS\_OPEN}
+}
+\]
+
+is the terminal state.
+
+The next admissible layer is to define and test a coarse geometric field and
+a curvature/dynamics observable. Gravitational-normalization G1 remains
+closed until that separate gate passes.
+
+=== DOCUMENT 3: verify_w3_backreacting_tetrad.py ===
+
+"""Exact symbolic certificate for theory/W3_BACKREACTING_TETRAD_FLOQUET_GATE.md."""
+
+import sympy as sp
+
+
+def main():
+    g = sp.symbols("g", real=True)
+    I = sp.I
+    X = sp.Matrix([[0, 1], [1, 0]])
+    Y = sp.Matrix([[0, -I], [I, 0]])
+    Z = sp.diag(1, -1)
+    I2 = sp.eye(2)
+
+    # Exact geometry rotation on the A_e=1 matter sector.
+    R = sp.cos(g) * I2 - I * sp.sin(g) * Y
+    Zrot = sp.simplify(R.H * Z * R)
+    expected = sp.simplify(sp.cos(2*g) * Z - sp.sin(2*g) * X)
+    assert sp.simplify(Zrot - expected) == sp.zeros(2)
+    print("[PASS] R_e rotates Z exactly to Z cos(2g)-X sin(2g) on occupied endpoints")
+
+    x, z, a = sp.symbols("x z a", real=True)
+    dz = sp.expand(a * ((sp.cos(2*g) - 1) * z - sp.sin(2*g) * x))
+    slope = sp.simplify(sp.diff(dz, g).subs(g, 0))
+    assert slope == -2*a*x
+    print("[PASS] z'-z = -2 g x a + O(g^2)")
+
+    # W2 direction matrix and W3 tetrad control.
+    D = sp.Matrix([[1, 0, 0], [1, 1, 0], [1, 1, 1]])
+    assert D.det() == 1
+    E0 = sp.diag(1, -1, 1)
+    z1, z2, z3 = sp.symbols("z1 z2 z3", real=True)
+    E = E0 - 2*g*sp.diag(z1, z2, z3)*D
+    assert sp.simplify(E.subs(g, 0) - E0) == sp.zeros(3)
+    print("[PASS] transport tetrad is E=E0-2g diag(z_a)D")
+
+    # Matter-dependent correction after one backreaction kick:
+    x1, x2, x3, a1, a2, a3 = sp.symbols("x1 x2 x3 a1 a2 a3", real=True)
+    dz_vec = sp.Matrix([-2*g*x1*a1, -2*g*x2*a2, -2*g*x3*a3])
+    dE_back = sp.simplify(-2*g*sp.diag(*list(dz_vec))*D)
+    expected_back = 4*g**2*sp.diag(x1*a1, x2*a2, x3*a3)*D
+    assert dE_back == expected_back
+    print("[PASS] matter-dependent principal-symbol backreaction appears at O(g^2)")
+
+    print("\nVERDICT: the transport-control observable itself backreacts in W3.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 4: W4_GEOMETRY_STIFFNESS_GATE.md ===
+
+# W4_GEOMETRY_STIFFNESS_GATE
+
+> **Typographic reconstruction — 2026-10-22.** The frozen text is commit `d4bcadf`.
+> It lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand. `scripts/check_reconstruction.py` certifies that only
+> backslashes were added. The formulas were checked against
+> `scripts/verify_w4_geometry_stiffness.py`. The contract remains the version
+> frozen at `d4bcadf`.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input
+
+Successor to:
+
+```
+W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN
+W3_CURVATURE_DYNAMICS_GATE =
+COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL
+```
+
+The W3 failure C3 was specific: no geometry-only propagation/stiffness term
+was present.
+
+W4 may add a geometry-only local unitary, but must leave the W3 matter/tetrad
+coupling unchanged.
+
+## 1. Geometry lattice
+
+Retain one geometry qubit on each declared W3 edge register. For a fixed W3
+edge family \(a\), identify its parallel copies by the starting vertex
+\(x\in\mathbb Z^3\).
+
+For each coordinate direction \(j=1,2,3\), define neighboring geometry
+registers
+
+\[
+e=(a,x),\qquad f=(a,x+\hat e_j).
+\]
+
+No vertex creation/destruction is introduced.
+
+## 2. Geometry-only exchange gate
+
+Let \(S_{ef}\) be the SWAP operator between geometry qubits \(e,f\). Define
+
+\[
+K_{ef}(\kappa)
+=
+\exp[-i\kappa(I-S_{ef})].
+\]
+
+Since \(S_{ef}=S_{ef}^\dagger=S_{ef}^{-1}\), each \(K_{ef}\) is exactly
+unitary.
+
+For each coordinate direction, split geometry-neighbor pairs by parity of
+\(x_j\), giving two matchings. All W3 edge families can be updated in
+parallel because they use distinct qubits.
+
+Thus the geometry-only update has at most six matching layers.
+
+Call their ordered product \(K_\kappa\).
+
+## 3. Complete W4 step
+
+Retain the W3 interaction \(V_g\) and the CJWW matter step \(U_0\). Define
+
+\[
+U_{g,\kappa}
+=
+K_\kappa\,V_g\,(I_g\otimes U_0).
+\]
+
+At \(g=0\), matter remains exactly CJWW regardless of \(\kappa\), because
+\(K_\kappa\) acts on geometry only.
+
+## 4. Obligations
+
+### W4.1 exact local unitarity / bounded depth
+
+Prove the geometry-only update is exactly unitary, bounded-range and
+finite-depth independent of system size.
+
+### W4.2 homogeneous background stability
+
+For the W3 reference single-qubit state
+
+\[
+|n_0\rangle,\qquad
+\langle X\rangle=\sin\theta,\;
+\langle Y\rangle=0,\;
+\langle Z\rangle=\cos\theta,
+\]
+
+prove
+
+\[
+K_\kappa |n_0\rangle^{\otimes E}
+=
+|n_0\rangle^{\otimes E}
+\]
+
+exactly (up to at most a global phase).
+
+### W4.3 autonomous geometry propagation
+
+With matter absent/decoupled, exhibit two geometry registers \(e,f\) and an
+initial local defect for which \(K_{ef}\) changes the expectation of the
+tetrad-control observable \(Z_f\).
+
+This must not use any matter operator.
+
+### W4.4 repeated propagation
+
+Show that brickwork composition can move/spread a local geometry defect over
+arbitrarily many geometry-neighbor steps with a finite maximum propagation
+speed.
+
+### W4.5 curvature linkage
+
+Use the already established W3 coarse metric to show that a spatial texture
+of \(z_e=\langle Z_e\rangle\) with nonzero coarse curvature can evolve under
+\(K_\kappa\) even when the matter source is zero.
+
+This is a curvature-dynamics statement only at the kinematic/coarse-field
+level.
+
+### W4.6 source remains separate
+
+Do not repair W3 C4 inside this gate. Endpoint occupation is still not a
+derived stress-energy tensor.
+
+## 5. Terminal states
+
+1. `W4_GEOMETRY_STIFFNESS_FAIL`.
+2. `W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN`.
+3. `OPEN_AFTER_AUDIT`.
+
+## 6. Claim ceiling
+
+Passing W4 does not establish Einstein equations, a massless spin-2 mode,
+diffeomorphism symmetry, an Einstein-Hilbert action, Newton's constant,
+AdS/CFT, or an absolute scale.
+
+The result would be only: the same microscopic variables that control the
+matter tetrad have a local autonomous vacuum dynamics and can transport
+coarse curvature information.
+
+=== DOCUMENT 5: 2026-09-30--w4-geometry-stiffness.md ===
+
+# W4_GEOMETRY_STIFFNESS_GATE — execution
+
+> **Typographic reconstruction — 2026-10-22.** The text recorded on 2026-09-30
+> (commit `6b7c296`) lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand. `scripts/check_reconstruction.py` certifies that
+> only backslashes were added. The formulas were checked against
+> `scripts/verify_w4_geometry_stiffness.py`, which passes. The coarse-curvature
+> formula \(R^{(1)}\) is cited from W3 and was not rechecked here.
+
+**Fecha:** 2026-09-30.  
+**Contrato:** [W4_GEOMETRY_STIFFNESS_GATE](../theory/W4_GEOMETRY_STIFFNESS_GATE.md), frozen at commit `d4bcadf9e41ead03d3004607a48d46c1db5e6291`.  
+**Certificado simbólico:** [verify_w4_geometry_stiffness.py](../scripts/verify_w4_geometry_stiffness.py), added at commit `3099bd5d06ea4395292489889f7324f79f48d405`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## Verdict
+
+```
+W4_GEOMETRY_STIFFNESS_GATE =
+W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN
+
+COARSE_CURVATURE_PROPAGATION = PASS_IN_LINEARIZED_KINEMATIC_SENSE
+EINSTEIN_STRUCTURE = OPEN
+GRAVITATIONAL_NORMALIZATION_G1 = NOT_OPENED
+```
+
+W4 repairs the W3 C3 failure by adding a local geometry-only exchange
+subdynamics acting on the same link variables whose \(Z\) expectations control
+the W3 tetrad.
+
+## 1. Exact geometry-only local unitary
+
+For neighboring geometry registers \(e,f\), let \(S_{ef}\) be SWAP and define
+
+\[
+K_{ef}(\kappa)=e^{-i\kappa(I-S_{ef})}.
+\]
+
+Since \(S_{ef}=S_{ef}^\dagger=S_{ef}^{-1}\), the generator is Hermitian and
+\(K_{ef}\) is exactly unitary.
+
+Using
+
+\[
+S_{ef}
+=
+\frac12
+\left(
+I+X_eX_f+Y_eY_f+Z_eZ_f
+\right),
+\]
+
+the generator is a standard exchange/stiffness operator,
+
+\[
+I-S_{ef}
+=
+\frac12
+\left(
+I-X_eX_f-Y_eY_f-Z_eZ_f
+\right).
+\]
+
+No matter operator appears.
+
+## 2. Finite-depth implementation
+
+For each W3 edge family \(a\) and each coordinate direction \(j\), pair
+parallel edge registers based at \(x\) and \(x+\hat e_j\).
+
+Splitting each coordinate-direction pairing by parity of \(x_j\) gives two
+matchings. Different W3 edge families act on disjoint geometry registers and
+can be updated in parallel.
+
+Thus the geometry-only brickwork has depth at most
+
+\[
+\boxed{6}
+\]
+
+independent of system size.
+
+The complete W4 step is
+
+\[
+U_{g,\kappa}
+=
+K_\kappa\,V_g\,(I_g\otimes U_0).
+\]
+
+At \(g=0\), matter remains exactly CJWW because \(K_\kappa\) acts only on
+geometry.
+
+\[
+\boxed{\texttt{W4.1 = PASS}.}
+\]
+
+## 3. Homogeneous W3 background is exactly stationary under K
+
+Let every geometry qubit be in the same state \(|n_0\rangle\), including the
+W3 reference state with Bloch vector
+\((\sin\theta,0,\cos\theta)\).
+
+For every neighboring pair,
+
+\[
+S_{ef}|n_0,n_0\rangle=|n_0,n_0\rangle,
+\]
+
+hence
+
+\[
+(I-S_{ef})|n_0,n_0\rangle=0
+\]
+
+and
+
+\[
+K_{ef}(\kappa)|n_0,n_0\rangle=|n_0,n_0\rangle.
+\]
+
+Therefore
+
+\[
+\boxed{
+K_\kappa|n_0\rangle^{\otimes E}
+=
+|n_0\rangle^{\otimes E}
+}
+\]
+
+exactly, with no background drift.
+
+\[
+\boxed{\texttt{W4.2 = PASS}.}
+\]
+
+## 4. Autonomous propagation of the tetrad-control variable
+
+For one neighboring geometry pair start from
+
+\[
+|1,0\rangle.
+\]
+
+Because \(S|1,0\rangle=|0,1\rangle\),
+
+\[
+K_{ef}(\kappa)|1,0\rangle
+=
+e^{-i\kappa}
+\left[
+\cos\kappa\,|1,0\rangle
++
+i\sin\kappa\,|0,1\rangle
+\right].
+\]
+
+Thus
+
+\[
+\langle Z_e\rangle=-\cos2\kappa,
+\qquad
+\langle Z_f\rangle=\cos2\kappa.
+\]
+
+Initially these were \((-1,+1)\). For generic nonzero \(\kappa\), both change
+without any matter present.
+
+At
+
+\[
+\kappa=\frac{\pi}{2},
+\]
+
+the defect transfers completely from \(e\) to \(f\).
+
+Therefore the same variable
+
+\[
+z_e=\langle Z_e\rangle
+\]
+
+that controls the W3 principal symbol now has an autonomous local propagation
+law.
+
+\[
+\boxed{\texttt{W4.3 = PASS}.}
+\]
+
+## 5. Repeated finite-speed geometry propagation
+
+The geometry update is a bounded-depth nearest-neighbor brickwork on the
+lattice of parallel edge registers.
+
+After one matching layer, a local geometry disturbance can move by at most one
+geometry-neighbor bond. After \(m\) layers it is supported only within graph
+distance \(m\) of its initial geometry register.
+
+Conversely, for any \(0<|\sin\kappa|\le1\), successive partial-SWAP factors
+give nonzero amplitudes along allowed brickwork paths. At
+\(\kappa=\pi/2\), the update reduces locally to complete swaps, giving an
+explicit deterministic transport witness along the scheduled matching path.
+
+Hence W4 has a finite microscopic geometry-propagation speed and permits
+arbitrarily long vacuum transport under repeated steps.
+
+\[
+\boxed{\texttt{W4.4 = PASS}.}
+\]
+
+## 6. Link to the W3 coarse curvature
+
+W3 established, for example, that a texture
+
+\[
+z_1=f(x_2),\qquad z_2=z_3=0
+\]
+
+has linearized spatial scalar curvature
+
+\[
+R^{(1)}=-4g\,\partial_2^2 z_1.
+\]
+
+Use the discrete second difference
+
+\[
+\Delta_2 z_n=z_{n+1}-2z_n+z_{n-1}
+\]
+
+as the lattice linearized-curvature witness.
+
+Take a one-link \(Z\)-defect along the \(x_2\) geometry chain:
+
+\[
+z_n=
+\begin{cases}
+-1,&n=0,\\
++1,&n\ne0.
+\end{cases}
+\]
+
+Initially,
+
+\[
+\Delta_2 z_0=4.
+\]
+
+After a geometry-only partial-SWAP between registers \(0\) and \(1\),
+
+\[
+z_0=-\cos2\kappa,\qquad
+z_1=\cos2\kappa,
+\]
+
+while the untouched neighbors remain \(+1\).
+
+Thus the discrete curvature pattern changes. At
+\(\kappa=\pi/2\), the \(Z\)-defect and its associated second-difference
+curvature pattern move one geometry bond.
+
+No matter operation is used in this evolution.
+
+Therefore W4 supplies autonomous propagation of the coarse curvature
+information already defined kinematically in W3.
+
+\[
+\boxed{\texttt{W4.5 = PASS}}
+\]
+
+within the explicitly limited linearized/coarse-field meaning.
+
+## 7. Source remains open
+
+W4 deliberately does not change the W3 matter source.
+
+The backreaction kick still uses endpoint occupation
+
+\[
+a_e=\langle A_e\rangle,
+\]
+
+and no derivation identifies this with the conserved stress-energy tensor of
+the continuum Weyl theory.
+
+Therefore:
+
+\[
+\boxed{\texttt{GRAVITATIONAL_SOURCE = OPEN}.}
+\]
+
+This preserves the earlier W3 C4 failure.
+
+## 8. What W4 has achieved
+
+The model now contains, at the declared perturbative/coarse level,
+
+\[
+\text{matter}
+\longrightarrow
+\text{tetrad control }z_e
+\longrightarrow
+\text{matter cone},
+\]
+
+together with
+
+\[
+\text{tetrad control }z_e
+\longrightarrow
+\text{geometry-only local propagation}
+\longrightarrow
+\text{evolving coarse curvature}.
+\]
+
+In particular, the geometry sector is no longer frozen in vacuum.
+
+This repairs the specific W3 C3 obstruction.
+
+## 9. What is still absent
+
+W4 does **not** establish:
+
+- a relativistic or spin-2 geometry mode;
+- the Einstein constraint structure;
+- a stress-energy source;
+- local Lorentz or diffeomorphism gauge symmetry;
+- an Einstein-Hilbert action;
+- a Newton constant;
+- a cosmological constant or AdS solution;
+- an absolute physical scale.
+
+The partial-SWAP/exchange dynamics is a deliberately minimal stiffness model,
+not a derivation of general relativity.
+
+## 10. Terminal decision
+
+W4.1-W4.5 pass and W4.6 is retained as an explicit open condition.
+
+Therefore
+
+\[
+\boxed{
+\texttt{W4\_AUTONOMOUS\_GEOMETRY\_DYNAMICS\_PASS /
+GRAVITATIONAL\_SOURCE\_OPEN}
+}
+\]
+
+is the terminal state.
+
+A successor should now audit the **source and symmetry structure**, not add
+more arbitrary geometry propagation terms.
+
+=== DOCUMENT 6: verify_w4_geometry_stiffness.py ===
+
+"""Exact symbolic certificate for theory/W4_GEOMETRY_STIFFNESS_GATE.md."""
+
+import sympy as sp
+
+
+def kron(a, b):
+    return sp.kronecker_product(a, b)
+
+
+def main():
+    k = sp.symbols("k", real=True)
+    I2 = sp.eye(2)
+    X = sp.Matrix([[0, 1], [1, 0]])
+    Y = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+    Z = sp.diag(1, -1)
+    I4 = sp.eye(4)
+
+    # SWAP in computational basis.
+    S = sp.Matrix([
+        [1, 0, 0, 0],
+        [0, 0, 1, 0],
+        [0, 1, 0, 0],
+        [0, 0, 0, 1],
+    ])
+    assert S.H == S and S*S == I4
+    pauli_swap = sp.simplify((I4 + kron(X, X) + kron(Y, Y) + kron(Z, Z))/2)
+    assert pauli_swap == S
+    print("[PASS] SWAP is Hermitian/unitary and equals (I+XX+YY+ZZ)/2")
+
+    # Exact partial-SWAP form.
+    K = sp.exp(-sp.I*k) * (sp.cos(k)*I4 + sp.I*sp.sin(k)*S)
+    H = I4 - S
+    # Differentiate at k=0 to verify generator.
+    dK0 = sp.simplify(sp.diff(K, k).subs(k, 0))
+    assert dK0 == -sp.I*H
+    print("[PASS] K(k)=exp[-ik(I-S)] has the declared generator")
+
+    # Homogeneous two-qubit state is fixed because it is symmetric.
+    a, b = sp.symbols("a b")
+    n = sp.Matrix([a, b])
+    nn = kron(n, n)
+    assert sp.simplify(S*nn - nn) == sp.zeros(4, 1)
+    assert sp.simplify(H*nn) == sp.zeros(4, 1)
+    print("[PASS] every identical-product pair |n,n> is fixed exactly")
+
+    # Local Z-defect propagation.
+    ket0 = sp.Matrix([1, 0])
+    ket1 = sp.Matrix([0, 1])
+    psi0 = kron(ket1, ket0)  # |1,0>
+    psi = sp.simplify(K*psi0)
+    expected = sp.exp(-sp.I*k)*(sp.cos(k)*kron(ket1, ket0) + sp.I*sp.sin(k)*kron(ket0, ket1))
+    assert sp.simplify(psi-expected) == sp.zeros(4, 1)
+
+    Ze = kron(Z, I2)
+    Zf = kron(I2, Z)
+    ze = sp.simplify((psi.H*Ze*psi)[0])
+    zf = sp.simplify((psi.H*Zf*psi)[0])
+    assert sp.trigsimp(ze + sp.cos(2*k)) == 0
+    assert sp.trigsimp(zf - sp.cos(2*k)) == 0
+    assert sp.simplify(ze+zf) == 0
+    print("[PASS] |1,0> spreads autonomously: <Z_e>=-cos(2k), <Z_f>=cos(2k)")
+
+    # At k=pi/2 the defect swaps fully.
+    psi_swap = sp.simplify(psi.subs(k, sp.pi/2))
+    target = sp.simplify(sp.exp(-sp.I*sp.pi/2)*sp.I*kron(ket0, ket1))
+    assert sp.simplify(psi_swap-target) == sp.zeros(4, 1)
+    print("[PASS] k=pi/2 gives a full one-bond geometry transfer")
+
+    print("\nVERDICT: geometry-only partial-SWAP transports the tetrad-control variable in vacuum.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 7: W5_TETRAD_CONJUGATE_SOURCE_GATE.md ===
+
+# W5_TETRAD_CONJUGATE_SOURCE_GATE
+
+> **Typographic reconstruction — 2026-10-22.** The frozen text is commit `5a1e512`.
+> It lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand, including a lost `\nu` in \(T_{\mu\nu}\).
+> `scripts/check_reconstruction.py` certifies that only backslashes were added.
+> The formulas were checked against `scripts/verify_w5_tetrad_source.py`. The
+> contract remains the version frozen at `5a1e512`.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input
+
+Successor to:
+
+```
+W3_BACKREACTING_TETRAD_PASS
+W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN
+```
+
+The remaining W3/W4 source defect is that the geometry kick was driven by
+endpoint occupation \(A_e\), not by a source derived from variation of the
+matter dynamics with respect to the tetrad-control variable.
+
+## 1. Frozen transport operator
+
+For edge family \(a\) and oriented edge \(e=(x,x+d_a)\), retain
+
+\[
+J_e^{(a)}
+=
+i(|x+d_a\rangle\langle x|-|x\rangle\langle x+d_a|)
+\otimes\sigma_a.
+\]
+
+The transport/tetrad gate remains
+
+\[
+T_e(g)=e^{-igZ_e\otimes J_e^{(a)}}.
+\]
+
+For a semiclassical background \(z_e=\langle Z_e\rangle\), the matter
+Hamiltonian contribution is, to leading order,
+
+\[
+\delta H_m=g\,z_eJ_e^{(a)}.
+\]
+
+Thus the operator conjugate to \(z_e\) is
+
+\[
+\frac{\partial H_m}{\partial z_e}=gJ_e^{(a)}
+\]
+
+at the declared perturbative level.
+
+## 2. Source repair
+
+Replace only the W3 backreaction kick by
+
+\[
+R_e^{(T)}(\eta)
+=
+e^{-i\eta Y_e\otimes J_e^{(a)}}.
+\]
+
+The W4 geometry-only stiffness step is retained unchanged.
+
+The couplings \(g\) and \(\eta\) remain independent dimensionless parameters;
+no gravitational normalization is assumed.
+
+## 3. Obligations
+
+### S1 — exact local unitarity
+
+\(R_e^{(T)}\) must be exactly unitary and bounded-range.
+
+### S2 — source changes tetrad control
+
+For an initially uncorrelated geometry/matter state derive the update of
+
+\[
+z_e=\langle Z_e\rangle.
+\]
+
+PASS requires a leading term proportional to
+
+\[
+j_e=\langle J_e^{(a)}\rangle.
+\]
+
+### S3 — variational reciprocity
+
+The source appearing in the geometry update must be the same matter operator
+that satisfies
+
+\[
+\partial H_m/\partial z_e=gJ_e^{(a)}
+\]
+
+in the transport sector.
+
+### S4 — Weyl continuum interpretation
+
+Show that the Fourier symbol of the summed current family is
+
+\[
+J_a(p)=2\sin(p\cdot d_a)\sigma_a
+=
+2d_a{}^i p_i\sigma_a+O(|p|^3).
+\]
+
+Therefore, in the Weyl continuum limit, the source is a directional
+contraction of the operator conjugate to the spatial tetrad coefficient
+\(e_a{}^i\).
+
+This may be called a **tetrad-conjugate stress source**, not yet the full
+stress-energy tensor.
+
+### S5 — conservation/symmetry ceiling
+
+A PASS requires an independent discrete conservation/gauge identity before
+calling the source \(T_{\mu\nu}\).
+
+If no such identity is present, record
+
+`TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN`.
+
+Do not manufacture a local energy density from Floquet quasienergy.
+
+## 4. Terminal states
+
+1. `W5_SOURCE_REPAIR_FAIL`.
+2. `W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN`.
+3. `W5_STRESS_ENERGY_SOURCE_PASS`.
+4. `OPEN_AFTER_AUDIT`.
+
+## 5. Claim ceiling
+
+Passing S1-S4 alone does not establish Einstein coupling. The continuum
+variational relation between tetrads and fermionic stress-energy is the
+motivation for the test, but the project must separately establish the
+relevant conservation/symmetry structure of its own discrete model.
+
+=== DOCUMENT 8: 2026-09-30--w5-tetrad-conjugate-source.md ===
+
+# W5_TETRAD_CONJUGATE_SOURCE_GATE — execution
+
+> **Typographic reconstruction — 2026-10-22.** The text recorded on 2026-09-30
+> (commit `d6fd210`) lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand, including two lost `\nu` in \(T_{\mu\nu}\).
+> `scripts/check_reconstruction.py` certifies that only backslashes were added.
+> The formulas were checked against `scripts/verify_w5_tetrad_source.py`. That
+> certificate could not pass under SymPy 1.14.0 until its fix at `cb1e038`; it
+> passes now. No result or scope statement has changed.
+
+**Fecha:** 2026-09-30.  
+**Contrato:** [W5_TETRAD_CONJUGATE_SOURCE_GATE](../theory/W5_TETRAD_CONJUGATE_SOURCE_GATE.md), frozen at commit `5a1e51286804c60f26aee8ccb3d07b4d1f8859f7`.  
+**Certificado simbólico:** [verify_w5_tetrad_source.py](../scripts/verify_w5_tetrad_source.py), added at commit `bd91e1ae0ffd4e006b83b8ff7816cbaf6fcb5db9`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## Verdict
+
+```
+W5_TETRAD_CONJUGATE_SOURCE_GATE =
+W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN
+
+S1 = PASS
+S2 = PASS
+S3 = PASS
+S4 = PASS
+S5 = OPEN
+```
+
+W5 replaces the arbitrary endpoint-occupation source of W3 by the same local
+matter operator that is variationally conjugate to the tetrad-control
+variable in the matter transport Hamiltonian.
+
+## 1. Source operator
+
+For edge family \(a\) and edge \(e=(x,x+d_a)\),
+
+\[
+J_e^{(a)}
+=
+i(|x+d_a\rangle\langle x|-|x\rangle\langle x+d_a|)
+\otimes\sigma_a.
+\]
+
+The transport gate is
+
+\[
+T_e(g)=e^{-igZ_e\otimes J_e^{(a)}}.
+\]
+
+For a semiclassical geometry background \(z_e=\langle Z_e\rangle\), the
+matter Hamiltonian receives
+
+\[
+\delta H_m=g\,z_eJ_e^{(a)}
+\]
+
+at leading order.
+
+Therefore
+
+\[
+\boxed{
+\frac{\partial H_m}{\partial z_e}
+=
+gJ_e^{(a)}
+}
+\]
+
+within the declared perturbative reduction.
+
+## 2. Repaired backreaction kick
+
+Define
+
+\[
+R_e^{(T)}(\eta)
+=
+e^{-i\eta Y_e\otimes J_e^{(a)}}.
+\]
+
+Because \(Y_e\) and \(J_e^{(a)}\) are Hermitian, this gate is exactly unitary
+for every real \(\eta\) and remains supported only on one geometry register
+and the two matter endpoints.
+
+\[
+\boxed{\texttt{S1 = PASS}.}
+\]
+
+## 3. Exact update of the tetrad-control observable
+
+The edge current obeys
+
+\[
+(J_e^{(a)})^2=A_e,
+\qquad
+(J_e^{(a)})^3=J_e^{(a)},
+\]
+
+where \(A_e\) is the endpoint projector.
+
+Hence
+
+\[
+\cos(2\eta J_e)
+=
+I+(\cos2\eta-1)A_e,
+\]
+
+\[
+\sin(2\eta J_e)
+=
+\sin2\eta\,J_e.
+\]
+
+The Heisenberg transform is
+
+\[
+R_e^{(T)\dagger}Z_eR_e^{(T)}
+=
+Z_e\cos(2\eta J_e)
+-
+X_e\sin(2\eta J_e).
+\]
+
+For an initially uncorrelated geometry/matter state define
+
+\[
+x_e=\langle X_e\rangle,\qquad
+z_e=\langle Z_e\rangle,
+\]
+
+\[
+a_e=\langle A_e\rangle,\qquad
+j_e=\langle J_e^{(a)}\rangle.
+\]
+
+Then exactly
+
+\[
+\boxed{
+z_e'
+=
+z_e\left[1+(\cos2\eta-1)a_e\right]
+-
+x_e\sin2\eta\,j_e.
+}
+\]
+
+Therefore
+
+\[
+\boxed{
+z_e'-z_e
+=
+-2\eta\,x_e j_e
+-2\eta^2z_ea_e
++O(\eta^3).
+}
+\]
+
+The leading source is the matter current/tetrad-conjugate operator \(J_e\),
+not endpoint occupation.
+
+\[
+\boxed{\texttt{S2 = PASS}.}
+\]
+
+## 4. Variational reciprocity
+
+The matter-to-geometry source is \(j_e=\langle J_e\rangle\).
+
+The geometry-to-matter transport coefficient satisfies
+
+\[
+\frac{\partial H_m}{\partial z_e}=gJ_e.
+\]
+
+Thus the same microscopic observable controls both directions:
+
+\[
+\boxed{
+\text{geometry variation}
+\leftrightarrow
+J_e
+\leftrightarrow
+\text{geometry backreaction}.
+}
+\]
+
+This is the discrete variational reciprocity missing from W3/W4.
+
+\[
+\boxed{\texttt{S3 = PASS}.}
+\]
+
+## 5. Weyl continuum interpretation
+
+For a uniform oriented family with displacement \(d_a\),
+
+\[
+J_a(p)
+=
+2\sin(p\cdot d_a)\sigma_a.
+\]
+
+Near the Weyl node,
+
+\[
+\boxed{
+J_a(p)
+=
+2d_a{}^i p_i\,\sigma_a
++
+O(|p|^3).
+}
+\]
+
+The matter Hamiltonian has the form
+
+\[
+H_m
+=
+-\sigma^a E_a{}^i p_i+\cdots
+\]
+
+under the convention inherited from the CJWW symbol. Variation with respect
+to a spatial tetrad coefficient produces an operator proportional to
+
+\[
+\sigma^a p_i.
+\]
+
+Thus the W5 source is a directional lattice representative of the operator
+conjugate to the spatial tetrad.
+
+It is therefore legitimate within this gate to call \(J_e\) a
+
+\[
+\boxed{\text{tetrad-conjugate stress source}}
+\]
+
+in the continuum/variational sense.
+
+This is deliberately weaker than identifying it with the complete
+stress-energy tensor.
+
+\[
+\boxed{\texttt{S4 = PASS}.}
+\]
+
+## 6. Conservation and symmetry remain open
+
+The present project has not derived:
+
+- a discrete local time-translation symmetry yielding a local energy
+  continuity law for the full Floquet matter+geometry system;
+- a discrete diffeomorphism identity;
+- a local Lorentz Ward identity;
+- a conserved symmetric \(T_{\mu\nu}\);
+- the time-time and mixed components required for a complete 3+1
+  stress-energy tensor.
+
+The flat CJWW translation invariance and unitary quasienergy spectrum do not
+by themselves provide those identities once the geometry is dynamical.
+
+Therefore the project must not rename \(J_e\) as \(T_{\mu\nu}\).
+
+\[
+\boxed{\texttt{S5 = OPEN}.}
+\]
+
+## 7. Relation to W4
+
+Combining W4 and W5 now gives the following toy-model chain:
+
+\[
+\text{tetrad-conjugate matter source}
+\longrightarrow
+z_e
+\longrightarrow
+E_a{}^i
+\longrightarrow
+h^{ij},
+\]
+
+while
+
+\[
+z_e
+\longrightarrow
+K_\kappa
+\longrightarrow
+\text{autonomous vacuum propagation of geometry}.
+\]
+
+This is materially stronger than the W3 endpoint-occupation source.
+
+## 8. What is still missing before Einstein structure
+
+The remaining obstruction is now symmetry/conservation rather than mere
+backreaction:
+
+1. identify a complete coarse spacetime tetrad, including temporal/lapse/shift
+   structure or a controlled gauge-fixed equivalent;
+2. derive the relevant discrete/continuum Ward identities;
+3. show that the matter source entering geometry dynamics is the conserved
+   stress-energy object required by those identities;
+4. identify the geometry mode content and determine whether a massless spin-2
+   sector exists.
+
+Only after those steps would comparison with a linearized Einstein equation be
+meaningful.
+
+## 9. Terminal decision
+
+S1-S4 pass; S5 is not established.
+
+Therefore
+
+\[
+\boxed{
+\texttt{W5\_TETRAD\_CONJUGATE\_SOURCE\_PASS /
+STRESS\_ENERGY\_CONSERVATION\_OPEN}
+}
+\]
+
+is the terminal state.
+
+=== DOCUMENT 9: verify_w5_tetrad_source.py ===
+
+"""Exact symbolic certificate for theory/W5_TETRAD_CONJUGATE_SOURCE_GATE.md."""
+
+import sympy as sp
+
+from verify_directional_saturation import PAULI
+from certificate_utils import assert_sym_equal
+
+
+def main():
+    # Two-site position factor ordered as |x>, |y>.
+    I2 = sp.eye(2)
+    Yg = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+    Zg = sp.diag(1, -1)
+    Xg = sp.Matrix([[0, 1], [1, 0]])
+
+    # Spatial current i(|y><x|-|x><y|).
+    Q = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+    sigma = PAULI[0]
+    J = sp.kronecker_product(Q, sigma)
+    A = sp.kronecker_product(sp.eye(2), sp.eye(2))
+
+    # On the declared two-endpoint matter sector J^2=I; in the full lattice this
+    # identity is J_e^2=A_e (endpoint projector).
+    assert sp.simplify(J*J - A) == sp.zeros(4)
+    print("[PASS] edge current squares to the endpoint projector on its support")
+
+    eta = sp.symbols("eta", real=True)
+    # Functional identities implied by spectrum {-1,0,+1}.
+    c, s = sp.cos(2*eta), sp.sin(2*eta)
+
+    # Check the Pauli rotation sign on each J eigenvalue +/-1.
+    for lam in (+1, -1):
+        Rg = sp.cos(eta)*I2 - sp.I*sp.sin(eta)*lam*Yg
+        Zrot = sp.simplify(Rg.H*Zg*Rg)
+        expected = sp.simplify(c*Zg - lam*s*Xg)
+        assert sp.simplify(Zrot-expected) == sp.zeros(2)
+    print("[PASS] Z rotation is Z cos(2 eta J)-X sin(2 eta J)")
+
+    x, z, a, j = sp.symbols("x z a j", real=True)
+    dz = sp.expand(z*(1+(c-1)*a) - x*s*j - z)
+    slope = sp.simplify(sp.diff(dz, eta).subs(eta, 0))
+    assert slope == -2*x*j
+    print("[PASS] z'-z = -2 eta x <J> + O(eta^2)")
+
+    # Continuum current symbol.
+    q = sp.symbols("q", real=True)
+    jsym = sp.simplify(sp.I*(sp.exp(-sp.I*q)-sp.exp(sp.I*q)))
+    assert_sym_equal(jsym, 2*sp.sin(q), "current symbol")
+    assert sp.diff(jsym, q).subs(q, 0) == 2
+    print("[PASS] J_a(p)=2 sin(p.d_a) sigma_a = 2(d_a.p) sigma_a + O(p^3)")
+
+    print("\nVERDICT: W5 source is exactly tetrad-conjugate at the declared perturbative level.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 10: certificate_utils.py ===
+
+"""Shared helpers for exact symbolic certificates.
+
+Structural equality (`a == b`) on SymPy expressions compares syntax trees, not
+mathematical values: `simplify` may return an algebraically equal but
+differently written form. Two certificates (W2, W5) failed under the pinned
+SymPy 1.14.0 for this reason (reports/2026-10-22--escape-corruption-audit.md).
+Use `sym_zero` / `assert_sym_equal` for value identities.
+"""
+
+import sympy as sp
+
+
+def sym_zero(expr):
+    """True iff expr simplifies to exactly zero (trig/exp forms normalized)."""
+    if isinstance(expr, sp.MatrixBase):
+        return all(sym_zero(e) for e in expr)
+    e = sp.expand(sp.sympify(expr).rewrite(sp.exp))
+    return sp.simplify(e) == 0
+
+
+def assert_sym_equal(a, b, what=""):
+    """Assert a and b are equal as values; report the residual on failure."""
+    residual = (sp.Matrix(a) - sp.Matrix(b)) if isinstance(a, sp.MatrixBase) \
+        else sp.sympify(a) - sp.sympify(b)
+    assert sym_zero(residual), f"{what}: nonzero residual {sp.simplify(residual)}"
+
+=== DOCUMENT 11: W6_FULL_SPATIAL_TETRAD_GATE.md ===
+
+# W6_FULL_SPATIAL_TETRAD_GATE
+
+> **Typographic reconstruction — 2026-10-22.** The frozen text is commit `318fff2`.
+> It lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand. `scripts/check_reconstruction.py` certifies that only
+> backslashes were added. The formulas were checked against
+> `scripts/verify_w6_full_spatial_tetrad.py`. The contract remains the version
+> frozen at `318fff2`. The W12 blind reviewers (2026-09-30) received the corrupted
+> form of this text.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input
+
+Successor to
+
+```
+W5_SPATIAL_TETRAD_COMPLETENESS_GATE =
+RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN
+```
+
+The obstruction was rank: three controls gave rank 3 in tetrad space and rank
+3 in the six-dimensional spatial-metric tangent space.
+
+## 1. Geometry register enlargement
+
+Retain the three linearly independent CJWW support directions
+
+\[
+d_1=(1,0,0),\qquad
+d_2=(1,1,0),\qquad
+d_3=(1,1,1),
+\]
+
+with direction matrix
+
+\[
+D=
+\begin{pmatrix}
+1&0&0\\
+1&1&0\\
+1&1&1
+\end{pmatrix},
+\qquad \det D=1.
+\]
+
+For each Pauli/tetrad row \(a=1,2,3\) and direction label \(r=1,2,3\), attach
+one geometry qubit with control
+
+\[
+z_{ar}=\langle Z_{ar}\rangle.
+\]
+
+## 2. Matter transport operators
+
+For each pair \((a,r)\) and edge \(e=(x,x+d_r)\), define
+
+\[
+J_e^{(a,r)}
+=
+i(|x+d_r\rangle\langle x|-|x\rangle\langle x+d_r|)
+\otimes\sigma_a.
+\]
+
+Transport gate:
+
+\[
+T_e^{(a,r)}(g)
+=
+e^{-ig Z_{ar,e}\otimes J_e^{(a,r)}}.
+\]
+
+Backreaction kick:
+
+\[
+R_e^{(a,r)}(\eta)
+=
+e^{-i\eta Y_{ar,e}\otimes J_e^{(a,r)}}.
+\]
+
+Geometry-only W4 exchange may be applied separately to each \((a,r)\) register
+species.
+
+## 3. Principal-symbol target
+
+For a translation-invariant semiclassical geometry background, the
+momentum-linear correction should be
+
+\[
+\delta E_a{}^i
+=
+-2g\sum_r z_{ar}D_r{}^i.
+\]
+
+Writing \(Z=(z_{ar})\),
+
+\[
+\boxed{
+E=E_0-2gZD+O(g^2).
+}
+\]
+
+## 4. Obligations
+
+### F1 — exact flat recovery
+
+At \(g=\eta=0\), matter is exactly CJWW Eq. (5.15).
+
+### F2 — full tetrad rank
+
+The linear map
+
+\[
+Z\mapsto\delta E=-2gZD
+\]
+
+must have rank 9.
+
+### F3 — full spatial-metric rank
+
+For
+
+\[
+\delta h=E_0^T\delta E+\delta E^TE_0,
+\]
+
+the induced linear map from the nine \(z_{ar}\) to symmetric metric
+perturbations must have rank 6.
+
+### F4 — kernel interpretation
+
+Compute the dimension and form of the kernel of
+\(\delta E\mapsto\delta h\).
+
+If it is the expected three-dimensional antisymmetric frame-rotation
+direction at linear order, record that only as a **kinematic frame
+redundancy**, not a proved gauge symmetry.
+
+### F5 — reciprocal source
+
+For each \(z_{ar}\), the W5 variational source must be the corresponding
+\(J^{(a,r)}\), and the noncommuting Y-kick must change \(z_{ar}\) according to
+that source.
+
+### F6 — autonomous geometry propagation
+
+The W4 geometry-only exchange construction must apply independently to all
+nine register species without changing the flat \(g=0\) matter walk.
+
+## 5. Terminal states
+
+1. `W6_FULL_SPATIAL_TETRAD_FAIL`.
+2. `W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN`.
+3. `OPEN_AFTER_AUDIT`.
+
+## 6. Claim ceiling
+
+A full-rank spatial tetrad is not yet full 3+1 gravity. Passing W6 does not
+supply lapse, shift, time-like tetrad components, diffeomorphism constraints,
+local Lorentz gauge symmetry, Einstein dynamics, or gravitational
+normalization.
+
+=== DOCUMENT 12: 2026-09-30--w6-full-spatial-tetrad.md ===
+
+# W6_FULL_SPATIAL_TETRAD_GATE — execution
+
+> **Typographic reconstruction — 2026-10-22.** The text recorded on 2026-09-30
+> (commit `156e00f`) lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand. `scripts/check_reconstruction.py` certifies that
+> only backslashes were added. The formulas were checked against
+> `scripts/verify_w6_full_spatial_tetrad.py`, which passes. No result or scope
+> statement has changed.
+
+**Fecha:** 2026-09-30.  
+**Contrato:** [W6_FULL_SPATIAL_TETRAD_GATE](../theory/W6_FULL_SPATIAL_TETRAD_GATE.md), frozen at commit `318fff219c1b84db3c3515699a3905a42626dbb6`.  
+**Certificado exacto:** [verify_w6_full_spatial_tetrad.py](../scripts/verify_w6_full_spatial_tetrad.py), added at commit `1137a14ec11d335895d356b87c7189de0cbcde00`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## Verdict
+
+```
+W6_FULL_SPATIAL_TETRAD_GATE =
+W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN
+
+EVIDENCE = PRELIMINARY / INDEPENDENT_REVIEW_PENDING
+```
+
+W6 repairs the rank obstruction of the three-field W3-W5 toy model by
+promoting the geometry control to nine local fields \(z_{ar}\).
+
+## 1. Full-rank spatial tetrad map
+
+Let
+
+\[
+Z=(z_{ar})\in M_{3\times3}(\mathbb R)
+\]
+
+and retain
+
+\[
+D=
+\begin{pmatrix}
+1&0&0\\
+1&1&0\\
+1&1&1
+\end{pmatrix},
+\qquad \det D=1.
+\]
+
+The linearized tetrad deformation is
+
+\[
+\boxed{
+\delta E=-2gZD.
+}
+\]
+
+Since right multiplication by an invertible matrix is an isomorphism of
+\(3\times3\) matrices, the map
+
+\[
+Z\mapsto\delta E
+\]
+
+has exact rank
+
+\[
+\boxed{9}.
+\]
+
+Thus W6 spans every infinitesimal spatial tetrad perturbation.
+
+\[
+\boxed{\texttt{F2 = PASS}.}
+\]
+
+## 2. Full-rank spatial metric map
+
+The spatial metric is
+
+\[
+h=E^TE.
+\]
+
+At linear order around
+
+\[
+E_0=\operatorname{diag}(1,-1,1),
+\]
+
+\[
+\delta h=E_0^T\delta E+\delta E^TE_0.
+\]
+
+The induced linear map from the nine \(z_{ar}\) to the six independent
+components of a symmetric \(3\times3\) matrix has exact rank
+
+\[
+\boxed{6}.
+\]
+
+Therefore W6 spans every infinitesimal spatial metric perturbation.
+
+\[
+\boxed{\texttt{F3 = PASS}.}
+\]
+
+## 3. Three-dimensional kernel and frame rotations
+
+The kernel condition is
+
+\[
+E_0^T\delta E+\delta E^TE_0=0.
+\]
+
+Let
+
+\[
+A=E_0^T\delta E.
+\]
+
+Then the kernel condition becomes
+
+\[
+A+A^T=0.
+\]
+
+Hence \(A\) is antisymmetric and the kernel has dimension three.
+
+Equivalently, define
+
+\[
+\Omega=E_0AE_0.
+\]
+
+Then
+
+\[
+\Omega^T=-\Omega
+\]
+
+and
+
+\[
+\delta E=\Omega E_0.
+\]
+
+This is exactly the linearized form of an internal spatial frame rotation.
+
+Thus:
+
+\[
+\boxed{
+\dim\ker(\delta E\mapsto\delta h)=3
+}
+\]
+
+with the expected SO(3)-type kinematic frame directions.
+
+This is a **kinematic redundancy of the metric map**. W6 does not yet prove
+that the microscopic theory has a local SO(3) gauge symmetry generated by
+those directions.
+
+\[
+\boxed{\texttt{F4 = PASS AS KINEMATIC FRAME REDUNDANCY}.}
+\]
+
+## 4. Exact flat recovery and local construction
+
+For each pair \((a,r)\), the W6 transport and source gates are
+
+\[
+T_e^{(a,r)}(g)
+=
+e^{-igZ_{ar,e}\otimes J_e^{(a,r)}},
+\]
+
+\[
+R_e^{(a,r)}(\eta)
+=
+e^{-i\eta Y_{ar,e}\otimes J_e^{(a,r)}}.
+\]
+
+At \(g=\eta=0\), all added gates are identity, hence
+
+\[
+\boxed{
+U_{0,0}=I_g\otimes U_{\rm CJWW}.
+}
+\]
+
+Each gate remains finite-range. A finite coloring/layering exists because
+there are finitely many direction/species labels and each individual
+direction family admits the parity matching used in W2-W5.
+
+Thus exact CJWW recovery is retained.
+
+\[
+\boxed{\texttt{F1 = PASS}.}
+\]
+
+## 5. Reciprocal variational source survives componentwise
+
+For each geometry control \(z_{ar}\), the corresponding matter Hamiltonian
+variation is
+
+\[
+\frac{\partial H_m}{\partial z_{ar}}
+=
+gJ^{(a,r)}
+\]
+
+at the declared perturbative level.
+
+The noncommuting Y-kick gives, exactly as in W5,
+
+\[
+z_{ar}'-z_{ar}
+=
+-2\eta\,x_{ar}\langle J^{(a,r)}\rangle
++O(\eta^2).
+\]
+
+Therefore every one of the nine spatial tetrad components has its own local
+tetrad-conjugate matter source.
+
+\[
+\boxed{\texttt{F5 = PASS}.}
+\]
+
+## 6. Autonomous geometry propagation survives componentwise
+
+The W4 geometry-only exchange gate can be applied independently to each
+\((a,r)\) register species.
+
+Because those geometry species are distinct Hilbert-space factors, the W4
+partial-SWAP stiffness construction transfers directly: each control field
+\(z_{ar}(x)\) can propagate in vacuum while the uniform background remains
+fixed.
+
+\[
+\boxed{\texttt{F6 = PASS}.}
+\]
+
+## 7. What W6 changes scientifically
+
+The restricted three-field chain
+
+\[
+z_a
+\rightarrow
+E_a{}^i
+\]
+
+has been replaced by
+
+\[
+\boxed{
+z_{ar}
+\longleftrightarrow
+E_a{}^i
+}
+\]
+
+with a locally invertible linear map at the flat background.
+
+At the spatial level, the toy geometry is therefore no longer rank-deficient:
+it contains enough microscopic control variables to represent a generic
+infinitesimal spatial tetrad and all six infinitesimal spatial metric
+components.
+
+## 8. What is still missing
+
+W6 is not yet a 3+1 gravitational theory.
+
+Still open:
+
+- time-like tetrad/lapse structure;
+- shift/mixed components;
+- a proved local frame gauge symmetry rather than only a metric-map kernel;
+- diffeomorphism/constraint structure;
+- a conserved full stress-energy tensor;
+- identification of the physical propagating geometry modes;
+- proof of a massless spin-2 sector;
+- Einstein-Hilbert dynamics and normalization.
+
+The fixed update time remains a preferred foliation unless a successor
+derives or justifies a controlled gauge interpretation.
+
+## 9. Terminal decision
+
+All F1-F6 obligations pass at the declared spatial/perturbative level.
+
+Therefore
+
+\[
+\boxed{
+\texttt{W6\_FULL\_SPATIAL\_TETRAD\_PASS /
+SPACETIME\_GAUGE\_STRUCTURE\_OPEN}
+}
+\]
+
+is the terminal state.
+
+=== DOCUMENT 13: verify_w6_full_spatial_tetrad.py ===
+
+"""Exact rank certificate for theory/W6_FULL_SPATIAL_TETRAD_GATE.md."""
+
+import sympy as sp
+
+
+def main():
+    g = sp.symbols("g", nonzero=True)
+    E0 = sp.diag(1, -1, 1)
+    D = sp.Matrix([[1,0,0],[1,1,0],[1,1,1]])
+    assert D.det() == 1
+
+    zs = sp.symbols("z11 z12 z13 z21 z22 z23 z31 z32 z33")
+    Z = sp.Matrix(3, 3, zs)
+    dE = -2*g*Z*D
+
+    # Rank of linear map Z -> dE.
+    cols_E = []
+    for z in zs:
+        cols_E.append(sp.Matrix([sp.diff(dE[i,j], z) for i in range(3) for j in range(3)]))
+    ME = sp.Matrix.hstack(*cols_E)
+    assert ME.rank() == 9
+    print("[PASS] full spatial tetrad tangent rank = 9")
+
+    dh = sp.simplify(E0.T*dE + dE.T*E0)
+    comps = [(0,0),(1,1),(2,2),(0,1),(0,2),(1,2)]
+    cols_h=[]
+    for z in zs:
+        cols_h.append(sp.Matrix([sp.diff(dh[i,j], z) for (i,j) in comps]))
+    Mh = sp.Matrix.hstack(*cols_h)
+    assert Mh.rank() == 6
+    assert len(Mh.nullspace()) == 3
+    print("[PASS] induced spatial metric tangent rank = 6 with kernel dimension 3")
+
+    # Kernel form: E0^T dE antisymmetric.
+    a12,a13,a23 = sp.symbols("a12 a13 a23")
+    A = sp.Matrix([[0,a12,a13],[-a12,0,a23],[-a13,-a23,0]])
+    dEker = E0*A
+    dhker = sp.simplify(E0.T*dEker + dEker.T*E0)
+    assert dhker == sp.zeros(3)
+    print("[PASS] kernel is generated by antisymmetric frame directions")
+
+    # Same kernel written as infinitesimal internal rotations dE = Omega E0.
+    Omega = sp.simplify(E0*A*E0)
+    assert sp.simplify(Omega.T + Omega) == sp.zeros(3)
+    assert sp.simplify(Omega*E0 - dEker) == sp.zeros(3)
+    print("[PASS] kernel equals infinitesimal SO(3)-type frame rotations at linear order")
+
+    print("\nVERDICT: W6 spans a generic spatial tetrad and all six spatial metric perturbations.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 14: cjww_walk_definition.md ===
+
+# CJWW Eq. (5.15) — momentum-space walk used by the W11 certificate
+
+Transcribed from `scripts/verify_directional_saturation.py`, function `walk2()`
+(lines 72–78 at commit `41d0e0d`), which the W11 certificate imports. In the
+certificate, `PAULI = (sigma_1, sigma_2, sigma_3)` in the standard basis and
+`c_k = cos p_k`, `s_k = sin p_k`.
+
+```
+W(p) = [[ c1 c2 e^{i p3},          -c1 s2 + i s1       ],
+        [  c1 s2 + i s1,             c1 c2 e^{-i p3}   ]]
+```
+
+The Weyl node used in W11 is p = 0.

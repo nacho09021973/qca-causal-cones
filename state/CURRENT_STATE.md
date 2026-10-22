@@ -1,5 +1,23 @@
 # CURRENT_STATE
 
+## Independent review of W3–W6 — 2026-10-22
+
+Sealed reviews of the reconstructed W3, W4, W5 (tetrad-conjugate source) and W6
+records by Astra and DeepSeek: **ACCEPT_WITH_REPAIRS for all four gates** from both.
+No error was found in the exact identities. The author checked and accepted the
+repairs ([verification](../debates/2026-10-22--w3-w6-review-astra/verificacion_autor.md));
+they are appended to each report. Evidence moves from PRELIMINARY to
+`REVIEWED_ACCEPT_WITH_REPAIRS`, with reduced scope:
+- **W3:** backreaction is mean-field only.
+- **W4:** transport of a discrete curvature witness via the full-SWAP case.
+- **W5:** semiclassical directional variational relation.
+- **W6:** exact ranks for g≠0. The displayed full-step flat identity is
+  corrected to K_kappa⊗U_CJWW; matter recovery needs eta=0.
+
+Pending obligations: certificates that derive E(z) from J_a(p), dH/dz, J_a(p) for
+a=1,2,3, and W6 F1/F5/F6; an explicit W6 finite-depth schedule. W1–W12 remains
+CLOSED_BY_CONTRACT and is not reopened.
+
 ## Reconstruction progress — 2026-10-22
 
 User continuation "adelante". The W3, W4, W5 (tetrad-conjugate source) and W6

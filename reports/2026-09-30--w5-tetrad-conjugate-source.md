@@ -326,3 +326,16 @@ STRESS\_ENERGY\_CONSERVATION\_OPEN}
 \]
 
 is the terminal state.
+
+## Review repairs — 2026-10-22
+
+Independent sealed reviews (Astra, DeepSeek): **ACCEPT_WITH_REPAIRS**
+([author verification](../debates/2026-10-22--w3-w6-review-astra/verificacion_autor.md)).
+The text above is kept; these repairs restrict it where they conflict.
+
+1. δH_m=g z J and ∂H_m/∂z=gJ are leading-order semiclassical relations for the transport generator in a background ⟨Z⟩, not a full effective Hamiltonian.
+2. S2 is exact for product (uncorrelated) inputs. Reciprocity is a first-step/mean-field statement, not a closed dynamical equation after entanglement.
+3. "Tetrad-conjugate stress source" means only the demonstrated directional variational relation. The certificate checks one scalar symbol, not J_a(p) for a=1,2,3 or the variational derivative.
+
+Evidence: REVIEWED_ACCEPT_WITH_REPAIRS (two independent reviews), repaired scope as above.
+Pending certificate obligations are recorded in the author verification.

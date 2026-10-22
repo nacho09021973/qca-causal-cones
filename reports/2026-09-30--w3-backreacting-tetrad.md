@@ -316,3 +316,16 @@ is the terminal state.
 The next admissible layer is to define and test a coarse geometric field and
 a curvature/dynamics observable. Gravitational-normalization G1 remains
 closed until that separate gate passes.
+
+## Review repairs — 2026-10-22
+
+Independent sealed reviews (Astra, DeepSeek): **ACCEPT_WITH_REPAIRS**
+([author verification](../debates/2026-10-22--w3-w6-review-astra/verificacion_autor.md)).
+The text above is kept; these repairs restrict it where they conflict.
+
+1. Label the O(g²) backreaction δE_back as the **mean-field** contribution: it reuses z′ as a classical background after an entangling step, and correlations contribute at the same order. The complete O(g²) reduced principal symbol is not established.
+2. δE(z) and the reciprocal closure hold under the semiclassical replacement of Z by ⟨Z⟩ and for initially uncorrelated states. Repeated closure needs factorization and remainder control, which is not provided.
+3. The certificate checks E(z) as defined, at g=0, and the substitution of δz. It does not derive E(z) from the current symbol.
+
+Evidence: REVIEWED_ACCEPT_WITH_REPAIRS (two independent reviews), repaired scope as above.
+Pending certificate obligations are recorded in the author verification.
