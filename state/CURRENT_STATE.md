@@ -1,5 +1,18 @@
 # CURRENT_STATE
 
+## Reconstruction progress — 2026-10-22
+
+User continuation "adelante". The W3, W4, W5 (tetrad-conjugate source) and W6
+contracts and reports have been typographically reconstructed (8 documents).
+`scripts/check_reconstruction.py` certifies that each differs from the logged
+mechanical repair `2d144d9` only by restored backslashes. The formulas were
+checked against the four certificates, which pass. Lost `\ne` and `\nu`
+newlines were restored where found. One edit (W4 report) was applied with an
+inline snippet; the commit diff and the checker record its full effect.
+`text_integrity.py --check` still lists 26 documents for manual
+reconstruction. The W3–W6 independent review has been launched on the
+reconstructed text. No scientific status changes.
+
 ## Integrity audit: corrupted LaTeX and non-executing certificates — 2026-10-22
 
 While preparing the authorized W3–W6 independent review, two defects were found.
