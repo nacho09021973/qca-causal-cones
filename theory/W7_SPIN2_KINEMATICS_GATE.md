@@ -1,5 +1,12 @@
 # W7_SPIN2_KINEMATICS_GATE
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against `scripts/verify_w7_spin2_kinematics.py`. No words, coefficients
+> or criteria changed. The frozen contract remains
+> `57361ab6f27fb6c08cf38466dfa42906ca296f40`. The distinction between the
+> matrix representation, microscopic symmetry and conditional dynamics closure
+> is recorded in `reports/2026-10-26--w7-spin2-reconstruction.md`.
+
 **Fecha:** 2026-09-30.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -14,15 +21,15 @@ W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN
 
 At linear order, define
 
-[
-A:=E_0^Tdelta E.
-]
+\[
+A:=E_0^T\delta E.
+\]
 
 Then
 
-[
-delta h=A+A^T.
-]
+\[
+\delta h=A+A^T.
+\]
 
 ## 1. Single question
 
@@ -34,23 +41,23 @@ graviton?
 
 Decompose
 
-[
-A=Omega+S,
-qquad
-Omega=\frac12(A-A^T),
-qquad
+\[
+A=\Omega+S,
+\qquad
+\Omega=\frac12(A-A^T),
+\qquad
 S=\frac12(A+A^T).
-]
+\]
 
 Then decompose
 
-[
-S=\frac{phi}{3}I+Q,
-qquad
-phi=operatorname{tr}S,
-qquad
-operatorname{tr}Q=0.
-]
+\[
+S=\frac{\phi}{3}I+Q,
+\qquad
+\phi=\operatorname{tr}S,
+\qquad
+\operatorname{tr}Q=0.
+\]
 
 Count dimensions.
 
@@ -58,23 +65,23 @@ Count dimensions.
 
 Show
 
-[
-delta h=2S
+\[
+\delta h=2S
 =
-\frac{2phi}{3}I+2Q
-]
+\frac{2\phi}{3}I+2Q
+\]
 
-and that the antisymmetric (Omega) sector is exactly invisible to the
+and that the antisymmetric \(\Omega\) sector is exactly invisible to the
 metric at linear order.
 
 ## 4. K3 — global rotation representation
 
-Under a global spatial/internal frame rotation (Rin SO(3)), test the
+Under a global spatial/internal frame rotation \(R\in SO(3)\), test the
 linearized transformation
 
-[
-Qmapsto R Q R^T.
-]
+\[
+Q\mapsto R Q R^T.
+\]
 
 Record the symmetric-traceless five-dimensional sector as the standard
 spin-2 representation only at the kinematic/global level.
@@ -99,11 +106,11 @@ two-polarization sector after constraints/gauge reduction.
 
 Check whether the project has derived:
 
-[
-partial_i Q^{ij}=0,
-qquad
-operatorname{tr}Q=0
-]
+\[
+\partial_i Q^{ij}=0,
+\qquad
+\operatorname{tr}Q=0
+\]
 
 as dynamical constraints/gauge conditions and whether only two propagating
 polarizations remain.

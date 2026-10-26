@@ -1,5 +1,22 @@
 # CURRENT_STATE
 
+## W7 spin-2 kinematics reconstruction — 2026-10-26
+
+User continuation "ADELANTE" to documentary block g. The W7 contract and
+report pass reconstruction against `2d144d9`; the kinematics certificate
+passes its four check blocks. Basis, kernel and representation arguments
+were contrasted manually in the
+[local record](../reports/2026-10-26--w7-spin2-reconstruction.md).
+The `9 = 3 + 1 + 5` decomposition is a matrix-representation result, not a
+proof of microscopic continuous SO(3) symmetry or local gauge invariance.
+Section 4 dynamics closure is conditional on a common componentwise linear
+operator; the certificate does not derive a closed microscopic expectation
+equation. No TT constraint or physical graviton is established.
+Text-integrity warnings decrease from 165 to 119. No code was changed;
+there is no new independent review or evidence promotion. The state remains
+`SPIN2_KINEMATIC_SECTOR_PASS / TT_GAUGE_CONSTRAINTS_OPEN`; W1–W12 stays
+CLOSED_BY_CONTRACT. Next documentary block: exact CJWW dynamic-graph bridge.
+
 ## W5 spatial-tetrad completeness reconstruction — 2026-10-26
 
 User continuation "ADELANTE" to documentary block f. The spatial-tetrad
