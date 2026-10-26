@@ -1,5 +1,30 @@
 # CURRENT_STATE
 
+## W4 spectrum reconstruction and interpretation limits — 2026-10-26
+
+User continuation "adelante" to documentary block e. Both W4 spectrum texts
+pass reconstruction checks against `2d144d9`; the spectrum and stiffness
+certificates pass. Text-integrity warnings decrease from 249 to 211; no code
+changed. The [local record](../reports/2026-10-26--w4-spectrum-reconstruction.md)
+documents additional manual checks and material qualifications:
+
+- The spectrum certificate removes `exp(-2i kappa)` from the same-sign
+  one-defect sector while the full gate fixes the vacuum. Restoring that
+  phase gives a zero-quasienergy uniform branch at k=0, quadratic for fixed
+  `0 < kappa < pi/2`. Historical `SMOOTH_MODE_GAPPED` applies to the
+  rephased matrix, not an absence of a zero branch of the full gate.
+- `|sin(kappa)|` is a slope in two-site cells per two-layer step; it is
+  `2|sin(kappa)|` in neighboring-register units for unit register spacing.
+- A defect-amplitude Bloch phase does not itself determine an alternating
+  Z expectation or a propagating metric mode. That observable map remains open.
+
+These qualifications govern the historical W4 spectrum table and execution
+record below. `W4_REPAIR_AVAILABLE_SMOOTH_GAPLESS` retains only the recorded
+phase-stripped algebra and 1D control, without independent review of this
+corrected interpretation, model replacement or evidence promotion. W1–W12
+stays CLOSED_BY_CONTRACT. The next text-reconstruction block is W5 spatial
+tetrad completeness; no further calculation is executed in this block.
+
 ## W3 curvature/dynamics typographic reconstruction — 2026-10-26
 
 User continuation "adelante" to block d of the October 22 work sheet. The

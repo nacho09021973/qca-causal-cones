@@ -1,5 +1,12 @@
 # W4_LONG_WAVELENGTH_SPECTRUM_GATE
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against `scripts/verify_w4_long_wavelength_spectrum.py`. No words,
+> coefficients or criteria changed. The frozen contract remains
+> `89d53c15b15cc75948bbcaded26f1110127164e9`. The discarded sector phase,
+> momentum units and observable scope require the qualifications recorded in
+> `reports/2026-10-26--w4-spectrum-reconstruction.md`.
+
 **Fecha:** 2026-09-30.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -8,9 +15,9 @@
 
 W4 uses the geometry-only nearest-neighbor gate
 
-[
-K_{ef}(kappa)=e^{-ikappa(I-S_{ef})}
-]
+\[
+K_{ef}(\kappa)=e^{-i\kappa(I-S_{ef})}
+\]
 
 in an even/odd brickwork.
 
@@ -20,50 +27,50 @@ whether the **smooth long-wavelength geometry sector** is gapless.
 ## 1. One-dimensional reduction
 
 For one geometry register species along one coordinate chain, restrict to the
-one-defect sector above a homogeneous (Z)-polarized background.
+one-defect sector above a homogeneous \(Z\)-polarized background.
 
 Ignore the common bond phase. On a paired bond, partial SWAP acts as
 
-[
-M(kappa)=
+\[
+M(\kappa)=
 \begin{pmatrix}
 c&i s\\
 i s&c
-end{pmatrix},
-qquad
-c=coskappa,;s=sinkappa.
-]
+\end{pmatrix},
+\qquad
+c=\cos\kappa,\;s=\sin\kappa.
+\]
 
-Use a two-site unit cell (A_m,B_m).
+Use a two-site unit cell \(A_m,B_m\).
 
 ## 2. L1 — exact Floquet dispersion for the declared same-sign brickwork
 
-Derive the two-layer Bloch unitary and its quasienergy (omega(k)).
+Derive the two-layer Bloch unitary and its quasienergy \(\omega(k)\).
 
 Determine whether
 
-[
-omega(k)\to0
-]
+\[
+\omega(k)\to0
+\]
 
-at the smooth point (k=0), and whether the leading small-(k) dispersion
+at the smooth point \(k=0\), and whether the leading small-\(k\) dispersion
 is linear.
 
 ## 3. L2 — location of any gapless node
 
-If the gapless point is instead at the staggered momentum (k=pi), record
+If the gapless point is instead at the staggered momentum \(k=\pi\), record
 that explicitly.
 
-A (k=pi) envelope may be mathematically gapless after demodulation, but it
-does not automatically represent a smooth coarse metric (z(x)).
+A \(k=\pi\) envelope may be mathematically gapless after demodulation, but it
+does not automatically represent a smooth coarse metric \(z(x)\).
 
 ## 4. L3 — minimal sign-staggered repair
 
 As a separately evaluated control inside this gate, replace the odd-bond
-layer by the inverse-angle gate (M(-kappa)).
+layer by the inverse-angle gate \(M(-\kappa)\).
 
 Derive its Bloch dispersion and determine whether this moves a linear gapless
-node to (k=0) while preserving the homogeneous geometry background.
+node to \(k=0\) while preserving the homogeneous geometry background.
 
 This control does not automatically replace W4 in the canonical model; it
 only tests whether a local repair exists.
