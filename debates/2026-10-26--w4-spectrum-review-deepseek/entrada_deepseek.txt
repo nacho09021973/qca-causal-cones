@@ -1,0 +1,697 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Audita desde las puertas microscópicas las afirmaciones de la auditoría W4
+adjunta. No supongas que la interpretación corregida es cierta. No has
+ejecutado código ni visto el resto del repositorio: el script es un argumento
+que debes inspeccionar, no evidencia de una ejecución propia.
+
+Objetivo: decidir si están justificadas las correcciones sobre fase respecto
+al vacío, ramas de cuasienergía, unidades de velocidad y expectativa Z, en la
+reducción 1D de un defecto. El contrato histórico también se adjunta para
+comprobar que no se cambia silenciosamente el modelo. No abras una línea
+3D/tensorial, no propongas rescates y no atribuyas novedad.
+
+Comprobaciones requeridas:
+1. Deriva la restricción de K(kappa)=exp[-i kappa(I-SWAP)] sin descartar
+   fases, la invariancia del vacío y el producto de los dos matchings.
+   Contrasta el símbolo con el circuito real de bits del segundo script.
+2. Deriva los autovalores, fija la convención lambda=exp(-i epsilon) y
+   distingue fase de sector, fase global, cruce entre bandas y frecuencia
+   cero relativa al vacío. Determina qué observables ven esa fase.
+3. Rehaz la expansión de la rama uniforme del mismo signo, comprueba signo,
+   coeficiente, dominio y resto, y prueba los extremos 0, pi/2 y pi. Revisa
+   si el calificativo cuadrático confunde no degeneración con gap espectral.
+4. Rehaz la rama del control de signos opuestos y el cruce en k=pi del caso
+   original. Comprueba los valores absolutos, la rama de arcsin y la necesidad
+   de sin(kappa) distinto de cero para propagación lineal.
+5. Restaura espaciado a y período tau: identifica el momento por celda y
+   por registro. Comprueba el factor dos con el desplazamiento SWAP exacto,
+   sin equiparar pendiente IR, velocidad máxima de grupo y soporte causal.
+6. Deriva <Z_n> desde el operador en vacío más un defecto. Audita el ejemplo
+   estacionario con k=pi y densidad uniforme, la respuesta de orden epsilon²
+   al mezclar vacío y defecto, y los dos estados con igual Z inicial pero
+   distinta Z posterior. Comprueba qué conclusiones generales permiten y
+   cuáles NO: no conviertas una limitación de esta derivación en un no-go
+   universal para ondas del métrico.
+7. Examina las verificaciones permanentes: circularidad, omisiones, signos,
+   convenciones, dependencia del mismo helper y cobertura finita frente al
+   argumento general. Separar una segunda formulación del autor de una
+   revisión independiente. No atribuyas al script lo que sólo prueba el texto.
+
+Resultado esperado: informe autocontenido, con veredicto
+ACCEPT / ACCEPT_WITH_REPAIRS / REJECT / INCONCLUSIVE y una tabla por cada
+punto: resultado, derivación comprobada, objeción y reparación mínima.
+Toda objeción llevará identificador W4-R1-NN, gravedad y referencia concreta
+al documento o función; si señalas un error, proporciona cálculo o
+contraejemplo. No hagas recomendaciones generales sin relación con W4.
+
+Máximo: una ronda de revisión sobre estos bytes. Cierre: informe completo y
+lista finita de objeciones, o declaración de insuficiencia. No inicies otra
+ronda ni supongas autorización para ejecutar herramientas. Tu aceptación
+no promueve por sí sola evidencia ni reabre W1–W12: las objeciones se
+contrastarán localmente antes de registrar una decisión científica.
+
+=== DOCUMENT 1: W4_LONG_WAVELENGTH_SPECTRUM_GATE.md ===
+
+# W4_LONG_WAVELENGTH_SPECTRUM_GATE
+
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against `scripts/verify_w4_long_wavelength_spectrum.py`. No words,
+> coefficients or criteria changed. The frozen contract remains
+> `89d53c15b15cc75948bbcaded26f1110127164e9`. The discarded sector phase,
+> momentum units and observable scope require the qualifications recorded in
+> `reports/2026-10-26--w4-spectrum-reconstruction.md`.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input
+
+W4 uses the geometry-only nearest-neighbor gate
+
+\[
+K_{ef}(\kappa)=e^{-i\kappa(I-S_{ef})}
+\]
+
+in an even/odd brickwork.
+
+W4 proved finite-speed vacuum propagation of geometry defects. This gate asks
+whether the **smooth long-wavelength geometry sector** is gapless.
+
+## 1. One-dimensional reduction
+
+For one geometry register species along one coordinate chain, restrict to the
+one-defect sector above a homogeneous \(Z\)-polarized background.
+
+Ignore the common bond phase. On a paired bond, partial SWAP acts as
+
+\[
+M(\kappa)=
+\begin{pmatrix}
+c&i s\\
+i s&c
+\end{pmatrix},
+\qquad
+c=\cos\kappa,\;s=\sin\kappa.
+\]
+
+Use a two-site unit cell \(A_m,B_m\).
+
+## 2. L1 — exact Floquet dispersion for the declared same-sign brickwork
+
+Derive the two-layer Bloch unitary and its quasienergy \(\omega(k)\).
+
+Determine whether
+
+\[
+\omega(k)\to0
+\]
+
+at the smooth point \(k=0\), and whether the leading small-\(k\) dispersion
+is linear.
+
+## 3. L2 — location of any gapless node
+
+If the gapless point is instead at the staggered momentum \(k=\pi\), record
+that explicitly.
+
+A \(k=\pi\) envelope may be mathematically gapless after demodulation, but it
+does not automatically represent a smooth coarse metric \(z(x)\).
+
+## 4. L3 — minimal sign-staggered repair
+
+As a separately evaluated control inside this gate, replace the odd-bond
+layer by the inverse-angle gate \(M(-\kappa)\).
+
+Derive its Bloch dispersion and determine whether this moves a linear gapless
+node to \(k=0\) while preserving the homogeneous geometry background.
+
+This control does not automatically replace W4 in the canonical model; it
+only tests whether a local repair exists.
+
+## 5. Terminal states
+
+1. `W4_SMOOTH_MODE_GAPPED / STAGGERED_GAPLESS_ONLY`.
+2. `W4_SMOOTH_GAPLESS_PASS`.
+3. `W4_REPAIR_AVAILABLE_SMOOTH_GAPLESS`.
+4. `OPEN_AFTER_AUDIT`.
+
+## 6. Claim ceiling
+
+Even a smooth linear geometry mode in this 1D reduction is not a massless
+spin-2 graviton and does not establish isotropic 3D relativistic geometry
+propagation.
+
+=== DOCUMENT 2: 2026-10-26--w4-spectrum-audit.md ===
+
+# W4: auditoría del espectro completo, las unidades y el observable
+
+Fecha: 2026-10-26. Autor: Codex. Base de trabajo: `800cafd8cd6b119a8ac69219e64a915d38a92d2a`.
+Autorización directa: auditar W4, convertir las comprobaciones manuales en
+verificaciones permanentes y preparar después una revisión independiente.
+Estado: `AUTHOR_CHECKED / INDEPENDENT_REVIEW_PREPARED_NOT_SENT`.
+
+## 1. Alcance y resultado
+
+Se audita exclusivamente la reducción 1D de un defecto sobre el vacío
+polarizado, con la puerta original `K(kappa)=exp[-i kappa (I-SWAP)]` y dos
+matchings sucesivos. El segundo matching tiene el mismo ángulo o el inverso;
+este último sigue siendo un control, no un reemplazo del modelo canónico.
+
+La conclusión histórica `SMOOTH_MODE_GAPPED / STAGGERED_GAPLESS_ONLY` no
+describe el espectro completo referido al vacío fijo. El paso original tiene
+una rama que vale cero en k=0 y es cuadrática para kappa fijo en (0, pi/2).
+El control de ángulos opuestos tiene un cruce lineal en k=0. La pendiente
+`|sin(kappa)|` usa celdas de dos registros y pasos completos de dos capas.
+En registros vecinos por paso completo es `2|sin(kappa)|`.
+
+El espectro es de amplitudes. Por sí solo no prueba una onda lineal del
+control z=<Z>, ni una onda del métrico. La regla microscópica de Z depende
+también de coherencias. La descripción actual de este gate queda como
+`OPEN_AFTER_AUDIT`, con estas comprobaciones locales PASS y la interpretación
+corregida pendiente de revisión independiente. W1–W12 sigue CLOSED_BY_CONTRACT.
+
+Se consultó `biblioteca/INDICE.md` antes de trabajar. Esta auditoría no usa
+papers como prueba ni hace afirmaciones de novedad: deriva las identidades
+desde las puertas del contrato y conserva todo el código que las verifica.
+El informe previo de reconstrucción localiza los errores; no es evidencia
+independiente del cálculo nuevo.
+
+## 2. Convenciones y fase respecto al vacío
+
+Sea A_m el registro 2m y B_m el 2m+1. El primer matching une A_m con B_m;
+el segundo une B_m con A_(m+1). Se usa psi_(A/B,m)=exp(ikm) u_(A/B) y el
+paso U=K_odd K_even. Un autovalor se escribe exp(-i epsilon); epsilon se
+entiende módulo 2pi, con la rama local indicada en cada expansión.
+
+Con c=cos(kappa), s=sin(kappa), las matrices sin fase son
+
+\[
+A=\begin{pmatrix}c&is\\is&c\end{pmatrix},\qquad
+B_\sigma=\begin{pmatrix}c&\sigma is e^{-ik}\\
+\sigma is e^{ik}&c\end{pmatrix},\qquad \sigma=\pm1.
+\]
+
+En el par vacío, K|00>=|00>. En el subespacio de un defecto del enlace,
+K=e^(-i kappa) A. Cada matching contiene un único enlace ocupado en el
+sector de un defecto; todos los otros enlaces son pares vacíos fijos. Así,
+
+\[
+U_{\sigma,\mathrm{full}}(k)
+=e^{-i(1+\sigma)\kappa}B_\sigma A,\qquad
+\frac12\operatorname{tr}(B_\sigma A)=c^2-\sigma s^2\cos k.
+\]
+
+El determinante de B_sigma A es uno; el del paso completo es
+exp[-2i(1+sigma)kappa]. La fase retirada es común dentro del sector de un
+defecto, pero no al vacío. Retirarla no cambia velocidades de grupo,
+degeneraciones entre bandas ni expectativas de Z dentro del sector. Sí
+cambia qué autovalor coincide con el del vacío. No se infiere que Z sea un
+detector de esa fase relativa: Z no conecta ambos sectores.
+
+El certificado simbólico comprueba el generador, la unitariedad, el vacío,
+la restricción de la puerta de dos qubits, las trazas y los determinantes.
+Como segunda vía, el certificado de observables construye el circuito
+completo de 2^L estados desde permutaciones de bits, y sólo después lo
+proyecta al sector de un defecto y a los momentos de Bloch. No fabrica ese
+circuito desde el símbolo que se pretende comprobar.
+
+## 3. Ramas y excepciones
+
+### Mismo signo
+
+En k=0, el vector simétrico (1,1) tiene autovalor 1 del paso completo; el
+antisimétrico tiene exp(-4i kappa). Además, el estado uniforme de un defecto
+es invariante bajo cada SWAP y, por tanto, bajo cada K. Es una segunda prueba
+del cero uniforme que no depende del cálculo de la traza. En cadena infinita
+es un modo de Bloch generalizado; en cada anillo finito es normalizable.
+
+Para kappa fijo en (0,pi/2), sea omega_+(0)=2 kappa y
+cos omega_+=c²-s² cos k. La rama relativa al vacío es
+
+\[
+\epsilon_{\rm unif}(k)=2\kappa-\omega_+(k)
+=\frac{\tan\kappa}{4}k^2+O(k^4).
+\]
+
+La prueba usa F(epsilon,k)=cos(2kappa-epsilon)-(c²-s² cos k).
+En (0,0), F_epsilon=sin(2kappa) no se anula, F_k=0 y F_kk=-s².
+El teorema de función implícita da una rama analítica, única localmente y
+par en k, con epsilon''(0)=s²/sin(2kappa)=tan(kappa)/2. El código verifica
+estas identidades y contrasta el coeficiente sustituyendo
+lambda=1-i tan(kappa) k²/4 en el polinomio característico completo hasta
+orden dos. El resto O(k^4) usa la paridad y analiticidad recién indicadas;
+no se obtiene de una extrapolación de anillos pequeños.
+
+En k=pi, el paso completo es exp(-2i kappa) I: el cruce está centrado en
+epsilon=2kappa módulo 2pi, no en cero respecto al vacío para este intervalo.
+Cada rama se separa del centro con pendiente de magnitud |s|; la separación
+entre las dos ramas es 2|s||q|+O(|q|³), igual que en el símbolo sin fase.
+Conviene distinguir «cruce entre bandas» de «excitación de cuasienergía
+cero respecto al vacío».
+
+### Ángulos opuestos
+
+Las fases se cancelan, U_-(0)=I y
+
+\[
+\sin^2\frac{\omega_-(k)}2=s^2\sin^2\frac{k}2,\qquad
+\omega_-(k)=2\arcsin\bigl(|s|\,|\sin(k/2)|\bigr)
+=|s|\,|k|+O(|k|^3).
+\]
+
+Esta es la rama no negativa próxima a cero; los autovalores son exp(±i omega_-).
+Para derivar las pendientes se usa la rama con signo 2 asin(v sin(k/2)),
+v=|s| en [0,1]. Sus términos primero y cúbico son v k y
+v(v²-1) k³/24. Se necesita s distinto de cero para una pendiente no nula.
+
+### Extremos
+
+En kappa=0 y pi ambas construcciones son identidad. En kappa=pi/2, K es
+SWAP tanto para el ángulo positivo como para el negativo, y ambos pasos son
+diag(exp(-ik),exp(ik)). Hay ramas lineales en ese extremo: la expansión
+cuadrática para kappa fijo en el intervalo abierto no es uniforme al acercarse
+a pi/2. No se extrapola a ese punto. Todos estos límites se verifican exactamente.
+
+## 4. Unidades y comprobación por transporte
+
+Si a es la distancia entre registros y tau el tiempo del paso completo,
+la longitud de celda es 2a, k=2a p y la frecuencia física es epsilon/tau.
+Por la regla de la cadena,
+
+\[
+v_{\rm grp}=\frac{2a}{\tau}\frac{d\epsilon}{dk},\qquad
+|v_{\rm IR,control}|=\frac{2a}{\tau}|\sin\kappa|.
+\]
+
+La última expresión es la pendiente del cruce del control 1D, no una igualdad
+general entre velocidad IR, velocidad máxima de grupo y soporte causal.
+En el caso SWAP se sigue exactamente A_m a A_(m+1) y B_m a B_(m-1): son
+dos registros por paso de dos capas. Se comprueban los desplazamientos
+orientados en anillos L=4,6; L=6 distingue +2 de -2 módulo L. Si se asigna
+un tiempo a cada capa, tau es dos veces ese tiempo; no se mezcla con un paso.
+
+## 5. Observable Z: qué se deriva y qué falta
+
+En vacío más un defecto, Z_n es diagonal: -1 si el defecto está en n y +1
+en los demás estados, incluido el vacío. Para un vector b no nulo de ese
+subespacio,
+
+\[
+\langle Z_n\rangle=1-2\frac{|b_n|^2}{\|b\|^2},
+\]
+
+donde b_n es la amplitud del defecto en n y la norma incluye el vacío.
+En el sector de un defecto normalizado se reduce a 1-2|psi_n|². La identidad
+se verifica con amplitudes simbólicas arbitrarias, proyectando los Z físicos.
+Una onda de Bloch pura tiene densidad constante de celda a celda, aunque sus
+dos subredes puedan tener densidades diferentes. El momento de las amplitudes
+no se convierte automáticamente en un momento de la expectativa de Z.
+
+Contraejemplo retenido: en L=4, psi_n=(-1)^floor(n/2)/2 tiene k=pi por celda
+y Z_n=1/2 en todos los registros. En kappa=pi/4 es un autoestado del paso
+completo para ambos controles (autovalores -i e i respectivamente). Su Z
+es uniforme y estacionario. El estado uniforme psi_n=1/2 es ortogonal y
+produce el mismo Z. Queda refutada la inferencia «fase k=pi implica Z alternante».
+
+Para (|vac>+epsilon|psi>)/sqrt(1+epsilon²), con psi normalizado, el cambio
+de Z empieza en epsilon²; la derivada primera en cero se anula. La misma
+identidad vale después de cualquier número de pasos, porque el vacío se fija
+y el sector de un defecto se conserva. El código verifica la identidad
+general y un paso explícito. No es un no-go para otros fondos, observables
+transversales, mezclas de densidad pequeña o sectores con varios defectos.
+
+Además, los estados de enlace (1,i)/sqrt(2) y (1,-i)/sqrt(2) tienen las
+mismas densidades iniciales y dan Z opuestos tras K(pi/4). En la base
+computacional restringida a los estados 1 y 2, se usa el Z del registro 1,
+diag(1,-1), y se obtienen -1 y +1. El contraejemplo también se comprueba
+para el paso completo de dos capas en L=4: ambos perfiles iniciales son
+(0,0,1,1), mientras los finales son (1,0,0,1) y (0,1,1,0). Esto impide
+deducir una actualización cerrada de Z para estados arbitrarios sólo desde
+el perfil inicial de Z.
+No niega el transporte de densidades ni el testigo discreto de curvatura
+W4 previamente acotado; tampoco establece una ecuación de onda del métrico.
+
+## 6. Verificaciones permanentes y reproducibilidad
+
+| Artefacto | Comprobación | Límite |
+| --- | --- | --- |
+| `scripts/verify_w4_long_wavelength_spectrum.py` | 7 bloques: puerta, símbolos completos, nodos, rama cuadrática, control lineal, extremos, unidades | Argumentos de rama y resto analítico explicitados arriba; no espectro 3D |
+| `scripts/verify_w4_spectrum_observables.py` | 6 bloques: dos anillos, identidad Z, contraejemplo k=pi, respuesta cuadrática y falta de cierre de densidad | 12 circuitos exactos: L=4,6; kappa=0,pi/4,pi/2; dos signos; todos los momentos permitidos en cada anillo |
+
+Los anillos son una segunda formulación y controles finitos, no revisión
+independiente ni prueba por extrapolación. No hay coma flotante ni ajuste.
+Las entradas algebraicas de las matrices finitas se expanden exactamente
+antes de usar `assert_sym_equal`, evitando falsas negativas del normalizador
+trigonométrico sobre productos complejos no expandidos. No se cambió el helper
+compartido ni se omitieron controles de unitariedad.
+
+Comandos desde la raíz:
+
+```sh
+python3 -B scripts/verify_w4_long_wavelength_spectrum.py
+python3 -B scripts/verify_w4_spectrum_observables.py
+python3 -B scripts/run_all_verifiers.py --output reports/2026-10-26--w4-audit-verifier-sweep.tsv
+sha256sum -c reports/2026-10-26--w4-audit-verifier-inputs.sha256
+python3 -B scripts/text_integrity.py --check
+git diff --check
+```
+
+Resultado local final: **43 verificadores, cero fallos**; los dos certificados
+de esta auditoría pasan sus 13 bloques. Las huellas de los scripts coinciden
+con el manifiesto. El barrido y el manifiesto de entradas se conservan junto
+a este informe. El HEAD del barrido identifica la base; el manifiesto identifica los bytes de
+los certificados ejecutados y el helper, incluidos los cambios sobre esa base.
+La reconstrucción y la revisión anteriores de W4 no revisaron estos bytes
+ni esta interpretación del espectro completo.
+
+## 7. Expediente independiente preparado
+
+En `debates/2026-10-26--w4-spectrum-review-deepseek/` quedan el encargo, el
+manifiesto y la entrada sellada para DeepSeek, familia distinta de la del
+autor. Se prepara con `revision-ciega` del PATH en modo
+`REVISION_SOLO_ENTRADA=1`: no se envía texto ni se ejecuta al revisor.
+Herramienta inspeccionada: `~/herramientas` en
+`d32e8507c32aefc0acd0721a000eeeb2a261d824`.
+
+El encargo fija una ronda, pide atacar las hipótesis y fórmulas, exige
+rederivaciones y separa el juicio matemático del significado físico. Termina
+con ACCEPT, ACCEPT_WITH_REPAIRS o REJECT/INCONCLUSIVE y una lista numerada de
+objeciones; una respuesta truncada o con llamadas simuladas no cuenta como
+informe. Una futura respuesta debe contrastarse localmente antes de cambiar
+evidencia o estado. Preparar el paquete no equivale a haber recibido revisión.
+
+=== DOCUMENT 3: verify_w4_long_wavelength_spectrum.py ===
+
+"""W4 one-defect spectrum, with the phase relative to the fixed vacuum.
+
+Exact algebra only; no metric-wave or 3D/tensor interpretation. See
+reports/2026-10-26--w4-spectrum-audit.md for branches, units and exclusions.
+The finite-qubit/observable cross-check is verify_w4_spectrum_observables.py.
+"""
+
+import sympy as sp
+
+from certificate_utils import assert_sym_equal, sym_zero
+
+
+def bloch_layers(k, kap, second_sign):
+    """Phase-stripped layers for psi_(A/B,m) = exp(i*k*m) u_(A/B)."""
+    assert second_sign in (-1, 1)
+    c, s = sp.cos(kap), sp.sin(kap)
+    even = sp.Matrix([[c, sp.I*s], [sp.I*s, c]])
+    odd = sp.Matrix([[c, second_sign*sp.I*s*sp.exp(-sp.I*k)],
+                     [second_sign*sp.I*s*sp.exp(sp.I*k), c]])
+    return even, odd
+
+
+def bloch_step(k, kap, second_sign):
+    """Full K_odd K_even in the one-defect sector; vacuum eigenvalue is 1."""
+    even, odd = bloch_layers(k, kap, second_sign)
+    return sp.exp(-sp.I*(1+second_sign)*kap) * odd * even
+
+
+def main():
+    k, kap = sp.symbols("k kap", real=True)
+    c, s = sp.cos(kap), sp.sin(kap)
+    swap = sp.Matrix([[1, 0, 0, 0], [0, 0, 1, 0],
+                      [0, 1, 0, 0], [0, 0, 0, 1]])
+    gate = sp.exp(-sp.I*kap)*(c*sp.eye(4)+sp.I*s*swap)
+    assert_sym_equal(gate.H*gate, sp.eye(4), "local unitarity")
+    assert_sym_equal(sp.diff(gate, kap).subs(kap, 0),
+                     -sp.I*(sp.eye(4)-swap), "declared generator")
+    assert_sym_equal(gate[:, 0], sp.eye(4)[:, 0], "fixed vacuum")
+    even, _ = bloch_layers(k, kap, 1)
+    assert_sym_equal(gate.extract([1, 2], [1, 2]),
+                     sp.exp(-sp.I*kap)*even, "occupied bond phase")
+    a, b = sp.symbols("a b")
+    pair = sp.Matrix([a*a, a*b, b*a, b*b])
+    assert_sym_equal(gate*pair, pair, "every identical pure pair fixed")
+    print("[PASS] full local gate: generator, unitarity, vacuum and occupied-bond phase")
+
+    traces = {}
+    stripped = {}
+    for sign in (1, -1):
+        even, odd = bloch_layers(k, kap, sign)
+        stripped[sign] = odd*even
+        traces[sign] = c**2-sign*s**2*sp.cos(k)
+        assert_sym_equal(sp.trace(stripped[sign])/2, traces[sign])
+        assert_sym_equal(stripped[sign].det(), 1)
+        full = bloch_step(k, kap, sign)
+        assert_sym_equal(full.H*full, sp.eye(2))
+        assert_sym_equal(full.det(), sp.exp(-2*sp.I*(1+sign)*kap))
+    print("[PASS] both traces, determinants and full Bloch unitaries with sector phases")
+
+    full_plus = bloch_step(k, kap, 1)
+    uniform, antisymmetric = sp.Matrix([1, 1]), sp.Matrix([1, -1])
+    assert_sym_equal(full_plus.subs(k, 0)*uniform, uniform)
+    assert_sym_equal(full_plus.subs(k, 0)*antisymmetric,
+                     sp.exp(-4*sp.I*kap)*antisymmetric)
+    assert_sym_equal(full_plus.subs(k, sp.pi), sp.exp(-2*sp.I*kap)*sp.eye(2))
+    # Mutation guard: stripping the phase loses the eigenvalue 1 relative to vacuum.
+    assert not sym_zero((stripped[1].subs({k: 0, kap: sp.pi/4})-sp.eye(2))*uniform)
+    print("[PASS] same-sign uniform eigenvalue 1; zone-edge crossing at quasienergy 2*kappa")
+
+    # lambda=exp(-i*epsilon); for fixed 0<kap<pi/2, epsilon(0)=0.
+    # F_epsilon=sin(2*kap) != 0 gives an analytic even implicit branch.
+    eps = sp.symbols("eps", real=True)
+    equation = sp.cos(2*kap-eps)-traces[1]
+    zero = {k: 0, eps: 0}
+    assert_sym_equal(equation.subs(zero), 0)
+    assert_sym_equal(sp.diff(equation, eps).subs(zero), sp.sin(2*kap))
+    assert_sym_equal(sp.diff(equation, k).subs(zero), 0)
+    second = -sp.diff(equation, k, 2).subs(zero)/sp.diff(equation, eps).subs(zero)
+    assert_sym_equal(second/2, sp.tan(kap)/4, "quadratic coefficient")
+    assert_sym_equal(equation.subs(k, -k), equation, "even branch")
+    # A distinct characteristic-polynomial check through second order.
+    trial = 1-sp.I*sp.tan(kap)*k**2/4
+    poly = trial**2-sp.trace(full_plus)*trial+full_plus.det()
+    for order in range(3):
+        assert_sym_equal(sp.diff(poly, k, order).subs(k, 0), 0)
+    print("[PASS] 0<kappa<pi/2 fixed: uniform quasienergy = tan(kappa)*k^2/4 + O(k^4)")
+
+    assert_sym_equal((1-traces[-1])/2, s**2*sp.sin(k/2)**2)
+    assert_sym_equal((1-traces[1].subs(k, sp.pi+k))/2, s**2*sp.sin(k/2)**2)
+    # v=|sin kap| in [0,1]; analytic signed branch near k=0.
+    v = sp.symbols("v", nonnegative=True)
+    signed_branch = 2*sp.asin(v*sp.sin(k/2))
+    assert_sym_equal(sp.diff(signed_branch, k).subs(k, 0), v)
+    assert_sym_equal(sp.diff(signed_branch, k, 2).subs(k, 0), 0)
+    assert_sym_equal(sp.diff(signed_branch, k, 3).subs(k, 0)/6, v*(v*v-1)/24)
+    assert_sym_equal(bloch_step(0, kap, -1), sp.eye(2))
+    print("[PASS] opposite-sign node: omega=2 asin(|sin kappa| |sin(k/2)|), slope |sin kappa|")
+
+    for sign in (1, -1):
+        for angle in (0, sp.pi):
+            assert_sym_equal(bloch_step(k, angle, sign), sp.eye(2))
+        assert_sym_equal(bloch_step(k, sp.pi/2, sign),
+                         sp.diag(sp.exp(-sp.I*k), sp.exp(sp.I*k)))
+    print("[PASS] degenerate zero-coupling cases and exceptional full-SWAP endpoint")
+
+    spacing, period = sp.symbols("a tau", positive=True)
+    momentum = sp.symbols("p", real=True)
+    omega = sp.Function("omega")
+    physical = omega(2*spacing*momentum)/period
+    expected = 2*spacing/period*sp.Subs(sp.diff(omega(k), k), k, 2*spacing*momentum)
+    assert_sym_equal(sp.diff(physical, momentum), expected)
+    print("[PASS] k=2*a*p: physical group speed = (2*a/tau)*domega/dk")
+    print("\nVERDICT: full same-sign smooth branch quadratic for 0<kappa<pi/2; "
+          "opposite-sign control linear in 1D. AUTHOR_CHECKED; metric interpretation open.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 4: verify_w4_spectrum_observables.py ===
+
+"""Independent real-space construction and Z-observable checks for W4.
+
+Finite rings are exact regression witnesses, not a finite-size extrapolation.
+General Bloch/branch arguments are in verify_w4_long_wavelength_spectrum.py
+and reports/2026-10-26--w4-spectrum-audit.md. All arithmetic is exact SymPy.
+"""
+
+import sympy as sp
+
+from certificate_utils import assert_sym_equal, sym_zero
+from verify_w4_long_wavelength_spectrum import bloch_step
+
+
+def swap_sites(length, first, second):
+    """Full 2**length qubit permutation; site n is bit n (little-endian)."""
+    entries = {}
+    for state in range(2**length):
+        target = state
+        if ((state >> first) & 1) != ((state >> second) & 1):
+            target ^= (1 << first) | (1 << second)
+        entries[target, state] = 1
+    return sp.SparseMatrix(2**length, 2**length, entries)
+
+
+def ring_step(length, kap, second_sign):
+    """Build from full qubit swaps, never from the proposed 2x2 symbol."""
+    assert length >= 4 and length % 2 == 0
+    assert second_sign in (-1, 1)
+    identity = sp.SparseMatrix(sp.eye(2**length))
+    step = identity
+    for parity, angle in ((0, kap), (1, second_sign*kap)):
+        stay = sp.simplify(sp.expand_complex(sp.exp(-sp.I*angle)*sp.cos(angle)))
+        hop = sp.simplify(sp.expand_complex(sp.I*sp.exp(-sp.I*angle)*sp.sin(angle)))
+        for n in range(parity, length, 2):
+            gate = stay*identity+hop*swap_sites(length, n, (n+1) % length)
+            # Keep the exact Gaussian-rational entries expanded before passing
+            # them to the shared trig/exp identity normalizer.
+            step = (gate*step).applyfunc(sp.expand)
+    return step
+
+
+def one_defect_embedding(length):
+    return sp.SparseMatrix(2**length, length, {(1 << n, n): 1 for n in range(length)})
+
+
+def bloch_embedding(length, k):
+    entries = {(2*m+sub, sub): sp.expand_complex(sp.exp(sp.I*k*m))
+               for m in range(length//2) for sub in (0, 1)}
+    return sp.SparseMatrix(length, 2, entries)
+
+
+def z_operator(length, site):
+    return sp.SparseMatrix(2**length, 2**length,
+                          {(state, state): 1-2*((state >> site) & 1)
+                           for state in range(2**length)})
+
+
+def main():
+    cases = 0
+    for length in (4, 6):
+        embedding = one_defect_embedding(length)
+        vacuum = sp.SparseMatrix(2**length, 1, {(0, 0): 1})
+        uniform = embedding*sp.ones(length, 1)
+        for kap in (0, sp.pi/4, sp.pi/2):
+            for sign in (1, -1):
+                step = ring_step(length, kap, sign)
+                assert_sym_equal(step.H*step, sp.eye(2**length), "full-qubit unitarity")
+                assert_sym_equal(step*vacuum, vacuum, "fixed vacuum")
+                assert_sym_equal(step*uniform, uniform, "fixed uniform defect")
+                restricted = embedding.H*step*embedding
+                assert_sym_equal(step*embedding, embedding*restricted, "sector closure")
+                for mode in range(length//2):
+                    k = 2*sp.pi*mode/(length//2)
+                    plane = bloch_embedding(length, k)
+                    expected = bloch_step(k, kap, sign).applyfunc(sp.expand_complex)
+                    assert_sym_equal((restricted*plane).applyfunc(sp.expand),
+                                     (plane*expected).applyfunc(sp.expand),
+                                     "real-space/Bloch agreement")
+                if kap == sp.pi/2:
+                    for n in range(length):
+                        target = (n+(2 if n % 2 == 0 else -2)) % length
+                        assert_sym_equal(restricted[:, n], sp.eye(length)[:, target],
+                                         "two-register transfer per full step")
+                cases += 1
+        print(f"[PASS] L={length}: full-qubit circuit, vacuum, sector, all Bloch momenta and SWAP displacement")
+    assert cases == 12
+
+    # Project the actual many-qubit Z onto vacuum plus one defect.
+    length = 4
+    embedding = one_defect_embedding(length)
+    vacuum = sp.SparseMatrix(2**length, 1, {(0, 0): 1})
+    restricted_basis = vacuum.row_join(embedding)
+    amps = sp.Matrix(sp.symbols("b0:5", complex=True))
+    norm = (amps.H*amps)[0]
+    for n in range(length):
+        actual = restricted_basis.H*z_operator(length, n)*restricted_basis
+        expected = sp.eye(length+1)
+        expected[n+1, n+1] = -1
+        assert_sym_equal(actual, expected)
+        assert_sym_equal((amps.H*actual*amps)[0], norm-2*sp.conjugate(amps[n+1])*amps[n+1])
+    print("[PASS] arbitrary vacuum+one-defect state: <Z_n>=1-2|b_(n+1)|^2/||b||^2")
+
+    # A momentum pi phase by CELL leaves site probabilities unchanged.
+    plain = sp.ones(length, 1)/sp.sqrt(length)
+    staggered = sp.Matrix([(-1)**(n//2) for n in range(length)])/sp.sqrt(length)
+    assert_sym_equal(plain.H*staggered, sp.zeros(1, 1), "distinct orthogonal amplitudes")
+    for n in range(length):
+        z = embedding.H*z_operator(length, n)*embedding
+        assert_sym_equal((plain.H*z*plain)[0], sp.Rational(1, 2))
+        assert_sym_equal((staggered.H*z*staggered)[0], sp.Rational(1, 2))
+    # The cell-pi state is an eigenstate for both signs at this angle.
+    for sign in (1, -1):
+        state = embedding*staggered
+        eigenvalue = sp.exp(-2*sp.I*sp.pi/4) if sign == 1 else sp.exp(2*sp.I*sp.pi/4)
+        assert_sym_equal(ring_step(length, sp.pi/4, sign)*state, eigenvalue*state)
+    print("[PASS] k=pi defect phases can have uniform, stationary Z; no forced staggering")
+
+    epsilon = sp.symbols("epsilon", real=True)
+    evolved = ring_step(length, sp.pi/4, 1)*embedding[:, 0]
+    state = (vacuum+epsilon*evolved)/sp.sqrt(1+epsilon**2)
+    for n in range(length):
+        z_value = (state.H*z_operator(length, n)*state)[0]
+        assert_sym_equal(sp.diff(z_value, epsilon).subs(epsilon, 0), 0)
+        assert_sym_equal(z_value,
+                         1-2*epsilon**2*sp.conjugate(evolved[1 << n])*evolved[1 << n]/(1+epsilon**2))
+    print("[PASS] vacuum+epsilon*defect: Z response starts at order epsilon^2, including after evolution")
+
+    # Equal initial Z profiles can have different next Z: density is not closed.
+    plus = sp.Matrix([1, sp.I])/sp.sqrt(2)
+    minus = sp.Matrix([1, -sp.I])/sp.sqrt(2)
+    z = sp.diag(1, -1)
+    full_bond = (1-sp.I)/2*sp.eye(4)+(1+sp.I)/2*swap_sites(2, 0, 1)
+    bond = full_bond.extract([1, 2], [1, 2])
+    assert_sym_equal((plus.H*z*plus)[0], (minus.H*z*minus)[0])
+    after_plus = (plus.H*bond.H*z*bond*plus)[0]
+    after_minus = (minus.H*bond.H*z*bond*minus)[0]
+    assert not sym_zero(after_plus-after_minus)
+    assert_sym_equal(after_plus, -1)
+    assert_sym_equal(after_minus, 1)
+    # The obstruction also survives the complete two-layer step, not only a bond.
+    initial_plus = embedding[:, :2]*plus
+    initial_minus = embedding[:, :2]*minus
+    step = ring_step(length, sp.pi/4, 1)
+    output_plus, output_minus = step*initial_plus, step*initial_minus
+    for n, (z_plus, z_minus) in enumerate(zip((1, 0, 0, 1), (0, 1, 1, 0))):
+        local_z = z_operator(length, n)
+        assert_sym_equal((initial_plus.H*local_z*initial_plus)[0],
+                         (initial_minus.H*local_z*initial_minus)[0])
+        assert_sym_equal((output_plus.H*local_z*output_plus)[0], z_plus)
+        assert_sym_equal((output_minus.H*local_z*output_minus)[0], z_minus)
+    print("[PASS] same initial Z, different next Z after a bond AND full step: density is not closed")
+    print("\nVERDICT: 12 exact finite-ring controls and Z-observable identities pass; "
+          "one-defect amplitude spectrum alone does not establish a linear metric wave.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 5: certificate_utils.py ===
+
+"""Shared helpers for exact symbolic certificates.
+
+Structural equality (`a == b`) on SymPy expressions compares syntax trees, not
+mathematical values: `simplify` may return an algebraically equal but
+differently written form. Two certificates (W2, W5) failed under the pinned
+SymPy 1.14.0 for this reason (reports/2026-10-22--escape-corruption-audit.md).
+Use `sym_zero` / `assert_sym_equal` for value identities.
+"""
+
+import sympy as sp
+
+
+def sym_zero(expr):
+    """True iff expr simplifies to exactly zero (trig/exp forms normalized)."""
+    if isinstance(expr, sp.MatrixBase):
+        return all(sym_zero(e) for e in expr)
+    e = sp.expand(sp.sympify(expr).rewrite(sp.exp))
+    return sp.simplify(e) == 0
+
+
+def assert_sym_equal(a, b, what=""):
+    """Assert a and b are equal as values; report the residual on failure."""
+    residual = (sp.Matrix(a) - sp.Matrix(b)) if isinstance(a, sp.MatrixBase) \
+        else sp.sympify(a) - sp.sympify(b)
+    assert sym_zero(residual), f"{what}: nonzero residual {sp.simplify(residual)}"
+
+=== DOCUMENT 6: requirements.txt ===
+
+sympy==1.14.0
+numpy==1.26.4

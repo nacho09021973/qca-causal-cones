@@ -11,6 +11,46 @@
 > User authorization "1 y despues 2" next covers strengthening W3–W6
 > certificates, without reopening W1–W12 or promoting scientific evidence.
 
+## W4 full-spectrum audit and review preparation — 2026-10-26
+
+Direct user instruction authorizes this focused audit and preparation of an
+independent review. Current W4 long-wavelength interpretation:
+
+```
+W4_LONG_WAVELENGTH_SPECTRUM = OPEN_AFTER_AUDIT
+LOCAL_ALGEBRA_AND_OBSERVABLE_CHECKS = PASS
+EVIDENCE = AUTHOR_CHECKED / INDEPENDENT_REVIEW_PREPARED_NOT_SENT
+```
+
+The [audit](../reports/2026-10-26--w4-spectrum-audit.md) supersedes the physical
+reading of the historical SMOOTH_MODE_GAPPED / STAGGERED_GAPLESS_ONLY label.
+The full same-sign step fixes the uniform one-defect state and has
+epsilon(k)=tan(kappa) k²/4+O(k^4) for fixed 0<kappa<pi/2. The zone-edge
+crossing is centered at 2kappa modulo 2pi relative to the fixed vacuum.
+The opposite-sign control has a linear node at zero with slope |sin(kappa)|
+in two-register cells per complete two-layer step: 2|sin(kappa)| registers
+per step. The full-SWAP endpoint is checked separately.
+
+The strengthened spectrum certificate and new observable certificate turn
+the earlier manual checks into permanent exact checks, with a second
+real-space construction on L=4,6 qubit rings. A cell-pi eigenstate can have
+uniform stationary Z. Around the polarized vacuum, a coherent small defect
+changes Z only at second order in its amplitude; equal initial Z profiles
+can have different next Z because coherences matter. These facts do not
+establish a linear metric wave or rule out other backgrounds/observables.
+
+All 43 verifiers pass in the retained
+[sweep](../reports/2026-10-26--w4-audit-verifier-sweep.tsv); the adjacent
+SHA256 manifest identifies the exact executed certificate bytes above the
+recorded base HEAD. The new W4 checks use exact arithmetic, not fitted spectra.
+
+The [review package](../debates/2026-10-26--w4-spectrum-review-deepseek/README.md)
+is prepared locally for a different model family, with one bounded round and
+exact inputs; no provider call or independent verdict has occurred. The prior
+W4 stiffness review does not cover this corrected spectrum interpretation.
+No model replacement, evidence promotion, new 3D/tensor calculation or
+reopening of W1–W12: it remains CLOSED_BY_CONTRACT.
+
 ## Authorized options 1 and 2 completed locally — 2026-10-26
 
 Direct user authorization "1 y despues 2": documentary reconstruction is
@@ -792,7 +832,7 @@ reopened or promoted by that successor.
 | W3 backreacting tetrad | **W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN — PRELIMINARY, independent review pending**; noncommuting Y-kick changes <Z_e>, and the same <Z_e> controls the momentum-linear Weyl tetrad in the transport substep | [2026-09-30 W3 report](../reports/2026-09-30--w3-backreacting-tetrad.md) |
 | W3 coarse curvature/dynamics | **COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL**; W3 induces an explicit coarse metric and can have nonzero kinematic curvature, but has no geometry-only stiffness/propagation term and no derived stress-energy source | [2026-09-30 curvature report](../reports/2026-09-30--w3-curvature-dynamics.md) |
 | W4 geometry stiffness | **W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN — PRELIMINARY, independent review pending**; partial-SWAP geometry-only brickwork preserves the homogeneous background and transports the tetrad-control variable and coarse curvature information in vacuum | [2026-09-30 W4 report](../reports/2026-09-30--w4-geometry-stiffness.md) |
-| W4 long-wavelength spectrum | **W4_REPAIR_AVAILABLE_SMOOTH_GAPLESS**; declared same-sign brickwork is gapped at smooth k=0 and gapless only at k=pi, while opposite-sign second layer gives omega≈|sin kappa||k| near k=0 in 1D | [2026-09-30 spectrum audit](../reports/2026-09-30--w4-long-wavelength-spectrum.md) |
+| W4 long-wavelength spectrum | **OPEN_AFTER_AUDIT / AUTHOR_CHECKED; independent review prepared, not sent**. Full same-sign step has a quadratic zero branch for fixed 0<kappa<pi/2; opposite-sign control is linear in 1D. Velocity slope uses two-register cells; no linear Z/metric wave follows from the amplitude spectrum. | [2026-10-26 full-spectrum audit](../reports/2026-10-26--w4-spectrum-audit.md) |
 | W5 tetrad-conjugate source | **W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN — PRELIMINARY, independent review pending**; the source is the same current operator variationally conjugate to the spatial tetrad, but a conserved full stress-energy tensor/Ward identity is not derived | [2026-09-30 W5 report](../reports/2026-09-30--w5-tetrad-conjugate-source.md) |
 | W5 tetrad completeness audit | **RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN** for the original three-field model; exact rank 3 of 9 in tetrad space and 3 of 6 in metric space | [2026-09-30 rank audit](../reports/2026-09-30--w5-spatial-tetrad-completeness.md) |
 | W6 full spatial tetrad | **W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN — PRELIMINARY, independent review pending**; nine controls span all 9 spatial tetrad and all 6 metric perturbations, with a 3D metric kernel equal to infinitesimal frame rotations | [2026-09-30 W6 report](../reports/2026-09-30--w6-full-spatial-tetrad.md) |
@@ -3416,6 +3456,11 @@ massless spin-2 mode and Einstein dynamics.
 
 
 ## 25. W4 long-wavelength spectrum audit — 2026-09-30
+
+> Historical execution below. The October 26 full-spectrum audit above
+> supersedes the physical reading of SMOOTH_MODE_GAPPED and the zone-edge
+> zero: those statements use a rephased one-defect matrix. Current status is
+> OPEN_AFTER_AUDIT, with corrected local checks and independent review pending.
 
 **Contract:** [`W4_LONG_WAVELENGTH_SPECTRUM_GATE.md`](../theory/W4_LONG_WAVELENGTH_SPECTRUM_GATE.md),
 frozen at commit `89d53c15b15cc75948bbcaded26f1110127164e9`.

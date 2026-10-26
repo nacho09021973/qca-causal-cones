@@ -1,5 +1,11 @@
 # W4_LONG_WAVELENGTH_SPECTRUM_GATE — execution
 
+> **Interpretation superseded — 2026-10-26.** The historical text below is
+> preserved. The [full-spectrum audit](2026-10-26--w4-spectrum-audit.md)
+> and permanent certificates replace its claims about a smooth gap relative
+> to the vacuum, velocity in sites and forced staggering of Z. Current state:
+> OPEN_AFTER_AUDIT / AUTHOR_CHECKED / INDEPENDENT_REVIEW_PREPARED_NOT_SENT.
+
 > **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
 > against `scripts/verify_w4_long_wavelength_spectrum.py`. No scientific text
 > changed. The certificate checks the phase-stripped one-defect matrices.
@@ -223,3 +229,16 @@ is the terminal state.
 
 A successor may replace the W4 stiffness brickwork by the sign-staggered
 version, but must separately verify the multidimensional/tensor spectrum.
+
+## 8. Full-spectrum audit follow-up — 2026-10-26
+
+The occupied-bond phase must be restored when comparing with the fixed
+vacuum. The original full same-sign step has a uniform zero branch, quadratic
+for fixed 0<kappa<pi/2; its zone-edge crossing sits at quasienergy 2kappa.
+The opposite-sign control retains the 1D linear node, with speed
+2|sin(kappa)| registers per complete two-layer step. A cell-pi amplitude
+can produce uniform stationary Z, so Section 2's alternating-expectation
+assertion is withdrawn. The amplitude spectrum alone proves no linear metric
+wave. See the linked audit for branch qualifications, exact finite-qubit
+cross-checks, observable identities and the prepared independent review.
+No replacement model is adopted and W1–W12 remains CLOSED_BY_CONTRACT.

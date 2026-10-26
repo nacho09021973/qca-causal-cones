@@ -13,6 +13,31 @@ it is off by default. These checks do not certify scientific correctness.
 
 No scientific script was present at the initial freeze (`44ad178`).
 
+## W4 full-spectrum and observable audit (2026-10-26)
+
+Run `python3 -B scripts/verify_w4_long_wavelength_spectrum.py` and
+`python3 -B scripts/verify_w4_spectrum_observables.py` from the repository root.
+The first has seven exact check blocks, including the occupied-bond phase
+relative to the vacuum, the quadratic same-sign branch for fixed
+0<kappa<pi/2, the opposite-sign linear node, exceptional endpoints and the
+two-register/two-layer velocity convention. It supersedes the old printed
+verdict that treated the phase-stripped smooth gap as a gap of the full gate.
+
+The second has six blocks. It independently builds the full qubit circuit
+on L=4,6 rings at kappa=0,pi/4,pi/2 for both signs (12 exact circuits), then
+checks its restriction against the Bloch symbol. It derives the Z expectation,
+tests a stationary uniform-density cell-pi eigenstate, verifies zero linear
+Z response around the polarized vacuum and gives a coherence counterexample
+to a closed density update. It shares only the equality helper and proposed
+Bloch symbol with the first script; the real-space circuit is built separately.
+
+See [audit and branch arguments](../reports/2026-10-26--w4-spectrum-audit.md).
+Finite rings are regression witnesses, not a general infinite-volume proof.
+Neither verifier certifies a linear metric wave, tensor/3D propagation or an
+independent review. The suite now contains 43 verifiers. The existing stiffness
+certificate and frozen W4 contract are unchanged; the control is not adopted
+as a replacement model.
+
 ## Strengthened W3/W5/W6 certificates (2026-10-26)
 
 Run each as `python3 -B scripts/<name>.py` from the repository root.

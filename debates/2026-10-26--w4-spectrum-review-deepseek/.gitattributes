@@ -1,0 +1,2 @@
+# Exact review input retains the frozen contract's Markdown hard-break spaces.
+entrada_deepseek.txt whitespace=-blank-at-eol
