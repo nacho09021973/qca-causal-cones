@@ -1,5 +1,11 @@
 # W2_TRANSPORT_TETRAD_BRIDGE_GATE
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against `scripts/verify_w2_transport_tetrad.py` and the displayed operators.
+> No words, coefficients or criteria changed. The frozen contract remains
+> `384c0032967fd1164206ca6bed7319db6a84e8e1`. This historical contract does not
+> supersede the later `W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL` audit.
+
 **Fecha:** 2026-09-30.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -21,127 +27,126 @@ CJWW Eq. (5.15) at zero coupling.
 
 Matter Hilbert space:
 
-[
-mathcal H_m=ell^2(mathbb Z^3)otimesmathbb C^2.
-]
+\[
+\mathcal H_m=\ell^2(\mathbb Z^3)\otimes\mathbb C^2.
+\]
 
 Flat update:
 
-[
+\[
 U_0=U_{\rm CJWW(5.15)}.
-]
+\]
 
-Near (p=0), the exact symbol satisfies
+Near \(p=0\), the exact symbol satisfies
 
-[
+\[
 W_0(p)
 =
-I+ileft(p_1sigma_1-p_2sigma_2+p_3sigma_3\right)
+I+i\left(p_1\sigma_1-p_2\sigma_2+p_3\sigma_3\right)
 +O(|p|^2),
-]
+\]
 
-equivalently (W_0=e^{-iH_0}) with the corresponding convention-dependent
+equivalently \(W_0=e^{-iH_0}\) with the corresponding convention-dependent
 Weyl tetrad. Only changes relative to this fixed convention matter below.
 
 Choose three linearly independent displacement vectors already contained in
 the exact CJWW support:
 
-[
-d_1=(1,0,0),qquad
-d_2=(1,1,0),qquad
+\[
+d_1=(1,0,0),\qquad
+d_2=(1,1,0),\qquad
 d_3=(1,1,1).
-]
+\]
 
 Their displacement matrix has determinant one.
 
 ## 2. Geometry/link registers
 
-For each oriented edge (e=(x,x+d_a)), (a=1,2,3), attach one qubit with
+For each oriented edge \(e=(x,x+d_a)\), \(a=1,2,3\), attach one qubit with
 
-[
+\[
 B_e=Z_e+X_e.
-]
+\]
 
 No metric meaning is assumed at freeze time.
 
 ## 3. Transport coupling
 
-Define the Hermitian matter current on edge (e=(x,x+d_a)),
+Define the Hermitian matter current on edge \(e=(x,x+d_a)\),
 
-[
+\[
 J_e^{(a)}
 =
-ileft(
-|x+d_a\ranglelangle x|
+i\left(
+|x+d_a\rangle\langle x|
 -
-|x\ranglelangle x+d_a|
-\right)otimessigma_a.
-]
+|x\rangle\langle x+d_a|
+\right)\otimes\sigma_a.
+\]
 
 Define the exact local unitary
 
-[
+\[
 V_e^{(a)}(g)
 =
-exp[-ig,B_eotimes J_e^{(a)}].
-]
+\exp[-ig\,B_e\otimes J_e^{(a)}].
+\]
 
-For each displacement family, split edges by parity of (x_1). Since
-((d_a)_1=1), each parity class is a matching. The added interaction therefore
+For each displacement family, split edges by parity of \(x_1\). Since
+\((d_a)_1=1\), each parity class is a matching. The added interaction therefore
 has at most six disjoint-edge layers.
 
-Let (V_g) be the ordered product of these six layers and
+Let \(V_g\) be the ordered product of these six layers and
 
-[
-U_g=V_g(I_gotimes U_0).
-]
+\[
+U_g=V_g(I_g\otimes U_0).
+\]
 
-No finite-depth synthesis claim for (U_0) itself is added.
+No finite-depth synthesis claim for \(U_0\) itself is added.
 
 ## 4. Obligations
 
 ### W2.1 exact flat recovery
 
-[
-U_{g=0}=I_gotimes U_0.
-]
+\[
+U_{g=0}=I_g\otimes U_0.
+\]
 
 ### W2.2 exact local unitarity and bounded causal range
 
-Each (V_e^{(a)}(g)) must be unitary and supported only on one link register
+Each \(V_e^{(a)}(g)\) must be unitary and supported only on one link register
 and the two endpoint matter sites. Layer depth must be independent of volume.
 
 ### W2.3 matter-to-link backreaction
 
-For some local matter states (\rho,\rho'), the first derivative of the edge
-state at (g=0) must differ. The response must depend on a matter current
+For some local matter states \(\rho,\rho'\), the first derivative of the edge
+state at \(g=0\) must differ. The response must depend on a matter current
 observable, not merely total occupation.
 
 ### W2.4 link-to-matter transport response
 
-Two edge backgrounds with different (langle B_e\rangle) must alter the
+Two edge backgrounds with different \(\langle B_e\rangle\) must alter the
 first-order matter transport generator.
 
 ### W2.5 principal-symbol/tetrad deformation
 
 For a translation-invariant semiclassical link background with family means
 
-[
-b_a=langle B_e\rangle,qquad eparallel d_a,
-]
+\[
+b_a=\langle B_e\rangle,\qquad e\parallel d_a,
+\]
 
 derive the uniform first-order matter symbol. PASS requires a nonzero
 momentum-linear correction
 
-[
-delta H(p)
+\[
+\delta H(p)
 =
-sum_{a,i}delta e_a{}^i,sigma_a p_i
+\sum_{a,i}\delta e_a{}^i\,\sigma_a p_i
 +O(|p|^2)
-]
+\]
 
-with at least one (delta e_a{}^i
-e0).
+with at least one \(\delta e_a{}^i\ne0\).
 
 A scalar potential or quasienergy shift does not pass.
 
@@ -156,23 +161,23 @@ backreaction is insufficient.
 For the declared three families, the linear current symbols are expected to
 contain
 
-[
-2sin(pcdot d_a)sigma_a
+\[
+2\sin(p\cdot d_a)\sigma_a
 =
-2(d_acdot p)sigma_a+O(|p|^3).
-]
+2(d_a\cdot p)\sigma_a+O(|p|^3).
+\]
 
 Because
 
-[
+\[
 D=
 \begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
-end{pmatrix},
-qquad det D=1,
-]
+\end{pmatrix},
+\qquad \det D=1,
+\]
 
 the three chosen directions span three-dimensional momentum space. This does
 not provide all nine tetrad components, but it is enough to test a genuine

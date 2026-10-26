@@ -1,5 +1,21 @@
 # CURRENT_STATE
 
+## W2 typographic reconstruction — 2026-10-26
+
+Direct user continuation "adelante" to the bounded W2 reconstruction.
+The transport contract and both W2 reports now have restored LaTeX;
+`scripts/check_reconstruction.py` passes for all three against `2d144d9`.
+The W2 certificate passes. The global text-integrity check decreases from
+611 to 499 warnings, with none in these three documents; the remaining
+reconstruction queue is still open. No certificate code was changed.
+[Local verification record](../reports/2026-10-26--w2-typographic-reconstruction.md).
+
+No scientific status changes: `W2_PRINCIPAL_SYMBOL_CONTROL = PASS` and
+`W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL`. The later conservation
+audit supersedes the original dynamical-tetrad interpretation. W1–W12 stays
+CLOSED_BY_CONTRACT. This block does not execute W1 reconstruction or open
+a successor model.
+
 ## Independent review of W3–W6 — 2026-10-22
 
 Sealed reviews of the reconstructed W3, W4, W5 (tetrad-conjugate source) and W6
