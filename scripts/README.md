@@ -13,6 +13,25 @@ it is off by default. These checks do not certify scientific correctness.
 
 No scientific script was present at the initial freeze (`44ad178`).
 
+## Strengthened W3/W5/W6 certificates (2026-10-26)
+
+Run each as `python3 -B scripts/<name>.py` from the repository root.
+All use value equality via `certificate_utils.assert_sym_equal`.
+
+| Script | Contract and report | Executed check blocks | Scope and exclusions |
+| --- | --- | --- | --- |
+| `verify_w3_backreacting_tetrad.py` | `W3_BACKREACTING_TETRAD_FLOQUET_GATE.md`; `2026-09-30--w3-backreacting-tetrad.md` | 4: exact rotation, initial-product slope, derived transport tetrad/sign control, mean-field feedback | Derives the transport g-jet from edge currents and CJWW; does not derive the full correlated O(g²) feedback or complete Floquet logarithm. |
+| `verify_w5_tetrad_source.py` | `W5_TETRAD_CONJUGATE_SOURCE_GATE.md`; `2026-09-30--w5-tetrad-conjugate-source.md` | 4: three source families and product-state expectation | Includes the zero-current subspace, exact local kick and variational derivative of the leading transport generator; no conserved full stress tensor or closure after entanglement. |
+| `verify_w6_full_spatial_tetrad.py` | `W6_FULL_SPATIAL_TETRAD_GATE.md`; `2026-09-30--w6-full-spatial-tetrad.md` | 11: four rank/kernel blocks, F5, F1, source-off negative control, F6, two schedule boxes, omitted-layer negative control | Derives nine-control transport jet and local F1/F5/F6 witnesses. Ranks require g≠0. Added-interaction schedule only; no full CJWW circuit synthesis, continuum metric propagation or gauge symmetry. |
+
+`tetrad_transport.py` is permanent shared derivation code, not a separate
+verdict. `w6_schedule.py` defines a conservative 90-layer scheduling witness;
+matching/coverage checks run at L=4,6 and the all-volume parity argument is in
+`reports/2026-10-26--w3-w6-certificate-strengthening.md`.
+The sweep uses the existing glob, so the inventory remains 42 verifiers.
+The modified certificates are author-checked versions; the earlier independent
+reviews do not automatically review their new bytes.
+
 ## IR projection leakage algebra (2026-09-22)
 
 `verify_ir_projection_leakage.py` checks exact algebra for the
@@ -339,6 +358,6 @@ See [audit](../reports/2026-10-22--escape-corruption-audit.md).
   SymPy identities (normalizes trig/exp). Used by `verify_w2_transport_tetrad.py` and
   `verify_w5_tetrad_source.py`, which failed under SymPy 1.14.0 with structural `==`.
 
-29 verifiers (W1–W12, inverse-gravity, elastic families, others) still have no entry
-in this README stating what they certify and what they do not. Until they do, do not
-cite them for more than their own docstring and report say.
+The October 22 audit recorded 29 verifiers without scope entries. The W3/W5/W6
+entries above address three of those; the broader documentation backlog is not
+closed here. Do not cite undocumented verifiers beyond their docstring/report scope.

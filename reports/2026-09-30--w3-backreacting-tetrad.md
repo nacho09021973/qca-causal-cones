@@ -329,3 +329,12 @@ The text above is kept; these repairs restrict it where they conflict.
 
 Evidence: REVIEWED_ACCEPT_WITH_REPAIRS (two independent reviews), repaired scope as above.
 Pending certificate obligations are recorded in the author verification.
+
+## Certificate implementation follow-up — 2026-10-26
+
+The strengthened script now derives the transport tetrad from edge Fourier
+currents and the CJWW step rather than defining E before checking it. Its
+O(g²) feedback remains explicitly mean-field. See the
+[implementation record](2026-10-26--w3-w6-certificate-strengthening.md).
+The complete 42-verifier sweep passes; these new bytes have not received
+a new independent review. The October 22 restrictions remain in force.

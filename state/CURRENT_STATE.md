@@ -11,6 +11,37 @@
 > User authorization "1 y despues 2" next covers strengthening W3–W6
 > certificates, without reopening W1–W12 or promoting scientific evidence.
 
+## Authorized options 1 and 2 completed locally — 2026-10-26
+
+Direct user authorization "1 y despues 2": documentary reconstruction is
+complete, with zero problems from `text_integrity.py --check` and six guard
+regression tests passing. See the
+[reconstruction closure](../reports/2026-10-26--document-reconstruction-closure.md).
+
+The W3/W5/W6 certificate implementation obligations from October 22 are now
+`IMPLEMENTED_AUTHOR_CHECKED / NEW_INDEPENDENT_REVIEW_PENDING`:
+
+- W3 derives E from the edge-current Fourier transform and the CJWW transport
+  first jet. The O(g²) feedback remains mean-field, not the correlated result.
+- W5 checks all three current families, the zero eigenspace, exact local kick
+  and derivative of the leading transport generator with respect to each z.
+- W6 derives all nine variations and supplies F1/F5/F6 local witnesses plus a
+  conservative 90-layer schedule for the added interaction. Exact matter
+  recovery requires g=eta=0, leaving K_geometry tensor U_CJWW. The schedule
+  is an admissible explicit witness, not a unique historical ordering or full
+  CJWW circuit synthesis. Matching proof uses parity; L=4,6 coverage controls
+  and omitted-layer/source-on negative controls pass.
+
+The [implementation record](../reports/2026-10-26--w3-w6-certificate-strengthening.md)
+states the hypotheses and exclusions. All 42 verifiers pass in the
+[sweep](../reports/2026-10-26--strengthened-verifier-sweep.tsv); its baseline
+HEAD plus the linked SHA256 manifest identify the executed code. These modified
+certificate bytes do not inherit the earlier independent review. No scientific
+evidence promotion, source-conservation proof, metric-wave/gauge claim or new
+model authorization. The W4 spectrum qualifications remain; W1–W12 stays
+CLOSED_BY_CONTRACT. Options 1 and 2 require no remaining implementation work
+within their stated local-verification scope.
+
 ## Exact CJWW dynamic-graph bridge reconstruction — 2026-10-26
 
 User continuation "adelante" to documentary block h. The bridge contract

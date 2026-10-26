@@ -1,55 +1,43 @@
-"""Exact symbolic certificate for theory/W5_TETRAD_CONJUGATE_SOURCE_GATE.md."""
+"""Derive W5 local source and transport-first-order variation for all families.
+
+No complete Floquet stress tensor, conservation law or correlated-state closure.
+"""
 
 import sympy as sp
 
-from verify_directional_saturation import PAULI
-from certificate_utils import assert_sym_equal
+from certificate_utils import assert_sym_equal, sym_zero
+from tetrad_transport import (DIRECTIONS, MOMENTA, PAULI, ZERO,
+                              current_kick_checks, current_symbol, transport_jet)
 
 
 def main():
-    # Two-site position factor ordered as |x>, |y>.
-    I2 = sp.eye(2)
-    Yg = sp.Matrix([[0, -sp.I], [sp.I, 0]])
-    Zg = sp.diag(1, -1)
-    Xg = sp.Matrix([[0, 1], [1, 0]])
+    eta, g = sp.symbols("eta g", real=True)
+    zs = sp.symbols("z1 z2 z3", real=True)
+    _, H = transport_jet({(a, a): zs[a] for a in range(3)}, g)
+    for a in range(3):
+        J, A, R, slope = current_kick_checks(a, eta)
+        symbol = current_symbol(a, a)
+        phase = sum(p*d for p, d in zip(MOMENTA, DIRECTIONS[a]))
+        assert_sym_equal(symbol, 2*sp.sin(phase)*PAULI[a], "Fourier current")
+        assert_sym_equal(symbol.subs(ZERO), sp.zeros(2), "zero-momentum current")
+        for i, p in enumerate(MOMENTA):
+            assert_sym_equal(sp.diff(symbol, p).subs(ZERO),
+                             2*DIRECTIONS[a][i]*PAULI[a], "directional slope")
+        assert_sym_equal(sp.diff(H, zs[a]), g*symbol, "transport variation")
+        assert not sym_zero(sp.diff(H, zs[a])+g*symbol), "reversed source sign undetected"
+        assert_sym_equal(R.subs(eta, 0), sp.eye(R.rows), "spectator-inclusive flat gate")
+        print(f"[PASS] a={a+1}: J^2=A, exact kick including zero sector, current symbol and dH/dz")
 
-    # Spatial current i(|y><x|-|x><y|).
-    Q = sp.Matrix([[0, -sp.I], [sp.I, 0]])
-    sigma = PAULI[0]
-    J = sp.kronecker_product(Q, sigma)
-    A = sp.kronecker_product(sp.eye(2), sp.eye(2))
-
-    # On the declared two-endpoint matter sector J^2=I; in the full lattice this
-    # identity is J_e^2=A_e (endpoint projector).
-    assert sp.simplify(J*J - A) == sp.zeros(4)
-    print("[PASS] edge current squares to the endpoint projector on its support")
-
-    eta = sp.symbols("eta", real=True)
-    # Functional identities implied by spectrum {-1,0,+1}.
-    c, s = sp.cos(2*eta), sp.sin(2*eta)
-
-    # Check the Pauli rotation sign on each J eigenvalue +/-1.
-    for lam in (+1, -1):
-        Rg = sp.cos(eta)*I2 - sp.I*sp.sin(eta)*lam*Yg
-        Zrot = sp.simplify(Rg.H*Zg*Rg)
-        expected = sp.simplify(c*Zg - lam*s*Xg)
-        assert sp.simplify(Zrot-expected) == sp.zeros(2)
-    print("[PASS] Z rotation is Z cos(2 eta J)-X sin(2 eta J)")
-
-    x, z, a, j = sp.symbols("x z a j", real=True)
-    dz = sp.expand(z*(1+(c-1)*a) - x*s*j - z)
-    slope = sp.simplify(sp.diff(dz, eta).subs(eta, 0))
-    assert slope == -2*x*j
-    print("[PASS] z'-z = -2 eta x <J> + O(eta^2)")
-
-    # Continuum current symbol.
-    q = sp.symbols("q", real=True)
-    jsym = sp.simplify(sp.I*(sp.exp(-sp.I*q)-sp.exp(sp.I*q)))
-    assert_sym_equal(jsym, 2*sp.sin(q), "current symbol")
-    assert sp.diff(jsym, q).subs(q, 0) == 2
-    print("[PASS] J_a(p)=2 sin(p.d_a) sigma_a = 2(d_a.p) sigma_a + O(p^3)")
-
-    print("\nVERDICT: W5 source is exactly tetrad-conjugate at the declared perturbative level.")
+    # Trace the operator slope against arbitrary independent factor densities.
+    x, y, z = sp.symbols("x y z", real=True)
+    X, Y, Z = PAULI
+    rho_g = (sp.eye(2)+x*X+y*Y+z*Z)/2
+    matter = sp.Matrix(6, 6, sp.symbols("m0:36"))
+    J, _, _, slope = current_kick_checks(2, eta)
+    observed = sp.trace(sp.kronecker_product(rho_g, matter)*slope)
+    assert_sym_equal(observed, -2*x*sp.trace(matter*J), "product-state source expectation")
+    print("[PASS] operator slope -2 X tensor J gives -2 x <J> on independent states")
+    print("\nVERDICT: all three W5 sources derived; variational identity is transport-first-order only.")
 
 
 if __name__ == "__main__":

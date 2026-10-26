@@ -339,3 +339,12 @@ The text above is kept; these repairs restrict it where they conflict.
 
 Evidence: REVIEWED_ACCEPT_WITH_REPAIRS (two independent reviews), repaired scope as above.
 Pending certificate obligations are recorded in the author verification.
+
+## Certificate implementation follow-up — 2026-10-26
+
+The strengthened script now checks all three current families, the zero-current
+subspace, the exact operator kick and the variational derivative of the leading
+transport generator. See the
+[implementation record](2026-10-26--w3-w6-certificate-strengthening.md).
+The 42-verifier sweep passes. The new bytes have not received a new independent
+review; product-state/mean-field and non-conservation restrictions remain.

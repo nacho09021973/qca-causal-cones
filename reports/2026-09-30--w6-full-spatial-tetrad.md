@@ -313,3 +313,16 @@ The text above is kept; these repairs restrict it where they conflict.
 
 Evidence: REVIEWED_ACCEPT_WITH_REPAIRS (two independent reviews), repaired scope as above.
 Pending certificate obligations are recorded in the author verification.
+
+## Certificate implementation follow-up — 2026-10-26
+
+The strengthened script supplies local F1/F5/F6 witnesses and a conservative
+90-layer schedule for the added interaction. The corrected zero-coupling
+identity is K_geometry tensor U_CJWW, with both g and eta zero. A source-on
+negative control rejects recovery from g=0 alone. All nine transport variations
+are derived, and parity matchings/coverage are checked in two finite boxes,
+with an all-volume parity proof in the
+[implementation record](2026-10-26--w3-w6-certificate-strengthening.md).
+The 42-verifier sweep passes. This is author-checked implementation, not a new
+independent review. It does not supply a full finite-depth synthesis of CJWW,
+a metric-wave equation or gauge symmetry; the previous restrictions remain.
