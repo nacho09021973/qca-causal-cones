@@ -1,5 +1,20 @@
 # CURRENT_STATE
 
+## W3 curvature/dynamics typographic reconstruction — 2026-10-26
+
+User continuation "adelante" to block d of the October 22 work sheet. The
+curvature/dynamics contract and report pass reconstruction checks against
+`2d144d9`; the related W3 backreaction certificate passes its four checks.
+The metric expansion and curvature witness `R^(1) = -4g f''(x2)` were checked
+manually by two formulations, with scope and provenance in the
+[local record](../reports/2026-10-26--w3-curvature-dynamics-reconstruction.md).
+The certificate itself does not compute curvature or derive E from the walk.
+Global text-integrity warnings decrease from 301 to 249; no code changed.
+The source retains separable/mean-field qualifications. C1/C2 PASS and
+C3/C4 FAIL remain `COARSE_METRIC_KINEMATICS_PASS / CURVATURE_DYNAMICS_FAIL`;
+no evidence promotion or reopening of W1–W12. The next documentary block
+is W4 long-wavelength spectrum reconstruction.
+
 ## W1 coarse-metric typographic reconstruction — 2026-10-26
 
 The coarse-metric contract and report also pass reconstruction checks against
