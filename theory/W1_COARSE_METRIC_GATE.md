@@ -1,5 +1,12 @@
 # W1_COARSE_METRIC_GATE
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against the displayed position projectors and their reduced generator.
+> No words, coefficients or criteria changed. The frozen contract remains
+> `a0a769b35b1c4e8e57241713a6cbd423038fb507`. Manual checks and limitations
+> are recorded in `reports/2026-10-26--w1-coarse-metric-reconstruction.md`;
+> the geometricity certificate does not certify this entire metric argument.
+
 **Fecha:** 2026-09-29.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -15,15 +22,15 @@ SCOPE = FINITE_TIME_EXACT_SUPPORT_ONLY
 
 The W1 interaction is
 
-[
-V_e(g)=exp[-ig B_eotimes A_e],
-qquad
+\[
+V_e(g)=\exp[-ig B_e\otimes A_e],
+\qquad
 B_e=Z_e+X_e,
-]
+\]
 
-[
-A_e=(|x\ranglelangle x|+|y\ranglelangle y|)otimes I_2,
-]
+\[
+A_e=(|x\rangle\langle x|+|y\rangle\langle y|)\otimes I_2,
+\]
 
 followed after the frozen CJWW (5.15) matter update.
 
@@ -43,11 +50,11 @@ first-order effective matter operator.
 PASS requires a correction to the coefficient of the momentum-dependent
 Weyl term,
 
-[
-H_W(p)=sigma^a e_a^{ i}p_i+cdots,
-]
+\[
+H_W(p)=\sigma^a e_a^{ i}p_i+\cdots,
+\]
 
-so that the link state changes (e_a^{ i}), the local characteristic cone,
+so that the link state changes \(e_a^{ i}\), the local characteristic cone,
 or an equivalent principal-symbol object.
 
 The following do **not** count as a metric deformation:
@@ -63,59 +70,58 @@ The following do **not** count as a metric deformation:
 
 For a product/separable link background with
 
-[
-b_e=operatorname{tr}(eta_e B_e),
-]
+\[
+b_e=\operatorname{tr}(\eta_e B_e),
+\]
 
 the first-order reduced matter generator contributed by W1 is
 
-[
-H_{\rm link}^{(1)}=sum_e b_e A_e.
-]
+\[
+H_{\rm link}^{(1)}=\sum_e b_e A_e.
+\]
 
-Because each (A_e) is diagonal in matter position and proportional to the
+Because each \(A_e\) is diagonal in matter position and proportional to the
 coin identity,
 
-[
+\[
 H_{\rm link}^{(1)}
 =
-sum_x v(x)|x\ranglelangle x|otimes I_2,
-]
+\sum_x v(x)|x\rangle\langle x|\otimes I_2,
+\]
 
 where
 
-[
-v(x)=sum_{e
-i x}b_e.
-]
+\[
+v(x)=\sum_{e\ni x}b_e.
+\]
 
 The execution must determine whether such a term can alter the Weyl principal
 symbol or only supply a scalar potential.
 
 ## 4. Exact eigen-background test
 
-If every edge is in an eigenstate of (B_e), then W1 acts on the matter
+If every edge is in an eigenstate of \(B_e\), then W1 acts on the matter
 sector as a position-dependent on-site phase,
 
-[
+\[
 V_g^{\rm eff}
 =
-sum_x e^{-ig v(x)}|x\ranglelangle x|otimes I_2.
-]
+\sum_x e^{-ig v(x)}|x\rangle\langle x|\otimes I_2.
+\]
 
-For locally constant (v(x)), the Bloch symbol is
+For locally constant \(v(x)\), the Bloch symbol is
 
-[
+\[
 W_g(x,p)=e^{-igv(x)}W_0(p).
-]
+\]
 
-The gate must compare the (p)-derivative/principal symbol of (W_g) with
-that of (W_0).
+The gate must compare the \(p\)-derivative/principal symbol of \(W_g\) with
+that of \(W_0\).
 
 ## 5. Traced-link test
 
 For non-eigenstate link backgrounds, the W1 report found the first
-regular-background matter correction at (O(g^2)) to be a local
+regular-background matter correction at \(O(g^2)\) to be a local
 dephasing-type channel.
 
 The gate must state whether that nonunitary correction defines a metric
@@ -129,9 +135,9 @@ principal symbol. It may not be relabeled as curvature by analogy.
 
 ## 7. Stop rule
 
-If the present (A_e) coupling only generates an order-zero scalar potential
+If the present \(A_e\) coupling only generates an order-zero scalar potential
 plus decoherence, stop. Do not repair it inside this gate by replacing
-(A_e) with geometry-controlled hopping matrices.
+\(A_e\) with geometry-controlled hopping matrices.
 
 Such a replacement would be a new model and requires a separate successor
 charter.

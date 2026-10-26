@@ -1,5 +1,19 @@
 # CURRENT_STATE
 
+## W1 coarse-metric typographic reconstruction — 2026-10-26
+
+The coarse-metric contract and report also pass reconstruction checks against
+`2d144d9`, completing block c of the October 22 work sheet. Across the four
+documents, global text-integrity warnings decrease from 411 to 301. The
+[local record](../reports/2026-10-26--w1-coarse-metric-reconstruction.md)
+flags a missing factor g in the historical H_g display, preserved rather
+than silently repaired, and limits the eigenphase argument to the frozen
+local symbol or homogeneous background. The related geometricity certificate
+passes; the metric argument was checked manually, without independent review.
+`W1_SCALAR_POTENTIAL_ONLY / NO_METRIC_DEFORMATION` retains that scope.
+No scientific evidence promotion, code changes or reopening of W1–W12.
+The next documentary block is W3 curvature/dynamics reconstruction.
+
 ## W1 geometricity typographic reconstruction — 2026-10-26
 
 User continuation "adelante" to the geometricity/coarse-metric documentary
