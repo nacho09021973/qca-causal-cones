@@ -1,5 +1,10 @@
 # DYNAMICAL_GEOMETRY_MODEL_CLASS_GATE — execution
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand.
+> No scientific text changed or source claim newly verified. This historical
+> class selection is not an explicit CJWW bridge; the later exact-bridge no-go
+> and the canonical current state override stronger readings of this record.
+
 **Fecha:** 2026-09-29.  
 **Contrato:** [DYNAMICAL_GEOMETRY_MODEL_CLASS_GATE](../theory/DYNAMICAL_GEOMETRY_MODEL_CLASS_GATE.md), frozen at commit `abfa341a30cd71ae2b6e130b387808a85f3b5a06`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -90,7 +95,7 @@ evolution.
 
 The selected class is therefore:
 
-[
+\[
 \boxed{
 \text{bounded-degree QCGD}
 +
@@ -98,7 +103,7 @@ The selected class is therefore:
 +
 \text{fixed CJWW background sector}
 }
-]
+\]
 
 with fixed vertex number at the first stage.
 
@@ -140,12 +145,12 @@ The charter forbids inventing an edge-flip rule inside this gate.
 
 Accordingly the terminal state is
 
-[
+\[
 \boxed{
 \texttt{VIABLE\_MODEL\_CLASS\_IDENTIFIED /
 EXPLICIT\_BRIDGE\_NOT\_CONSTRUCTED}
 }
-]
+\]
 
 and not `EXPLICIT_DG_QCA_BRIDGE_CONSTRUCTED`.
 
@@ -156,12 +161,12 @@ The next mathematical object is now precise.
 One would need a local unitary rule `U_DG` acting jointly on bounded-degree
 graph/link variables and the two-component matter field such that:
 
-1. on a frozen regular graph state (|G_0\rangle), the matter update is
+1. on a frozen regular graph state \(|G_0\rangle\), the matter update is
    exactly CJWW (5.15);
-2. off (|G_0\rangle), local graph variables alter the matter walk;
+2. off \(|G_0\rangle\), local graph variables alter the matter walk;
 3. local matter state can alter graph variables reversibly;
 4. the total update remains causal and finite-depth;
-5. (|G_0\rangle) is not destroyed merely by the vacuum/background matter
+5. \(|G_0\rangle\) is not destroyed merely by the vacuum/background matter
    sector.
 
 Constructing or proving impossible such a rule is a **separate successor

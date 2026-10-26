@@ -1,5 +1,10 @@
 # DYNAMICAL_GEOMETRY_MODEL_CLASS_GATE
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand.
+> The frozen contract remains `abfa341a30cd71ae2b6e130b387808a85f3b5a06`;
+> no words or criteria changed. Bibliographic claims remain historical inputs,
+> not newly checked evidence. The later exact-bridge no-go retains its scope.
+
 **Fecha:** 2026-09-29.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -80,18 +85,18 @@ The label creates no new theory.
 
 A member must have a Hilbert space containing both
 
-[
-mathcal H_{\rm geom}otimesmathcal H_{\rm matter},
-]
+\[
+\mathcal H_{\rm geom}\otimes\mathcal H_{\rm matter},
+\]
 
-where (mathcal H_{\rm geom}) resolves local adjacency/link variables.
+where \(\mathcal H_{\rm geom}\) resolves local adjacency/link variables.
 
 One complete update `U` must satisfy:
 
 ### M1 — unitary discrete update
-[
-U^dagger U=UU^dagger=I.
-]
+\[
+U^\dagger U=UU^\dagger=I.
+\]
 
 ### M2 — causal/localizable
 `U` is a QCGD-type causal dynamics admitting a bounded-depth product of
@@ -99,30 +104,28 @@ bounded-radius local unitaries.
 
 ### M3 — genuine geometry update
 At least one local geometric observable `G_e` is not conserved identically:
-[
-U^dagger G_e U
-e G_e
-]
+\[
+U^\dagger G_e U\ne G_e
+\]
 for some admissible state/edge.
 
 ### M4 — backreaction
 The geometry update must depend on matter. A sufficient operational witness is
-two matter states (\rho_m,\rho'_m) with the same initial geometry state such
+two matter states \(\rho_m,\rho'_m\) with the same initial geometry state such
 that after one or finitely many updates some local geometric expectation
 differs:
-[
-operatorname{tr}[G_e U(\rho_gotimes\rho_m)U^dagger]
-
-e
-operatorname{tr}[G_e U(\rho_gotimes\rho'_m)U^dagger].
-]
+\[
+\operatorname{tr}[G_e U(\rho_g\otimes\rho_m)U^\dagger]
+\ne
+\operatorname{tr}[G_e U(\rho_g\otimes\rho'_m)U^\dagger].
+\]
 
 ### M5 — geometry affects matter
 Conversely, two admissible local graph configurations must induce different
 matter evolution. This prevents a spectator geometry register.
 
 ### M6 — fixed-background CJWW sector
-There must exist a translation-invariant graph/background sector (mathcal G_0)
+There must exist a translation-invariant graph/background sector \(\mathcal G_0\)
 and a matter subspace on which the induced one-step matter symbol is exactly,
 or by an explicitly proved local unitary equivalence, CJWW Eq. (5.15).
 
