@@ -1,5 +1,10 @@
 # GRAVITATIONAL_NORMALIZATION_GATE — G0 execution
 
+> **Typographic reconstruction — 2026-10-26.** Display delimiters restored
+> by hand against the frozen operator contract. No scientific text changed.
+> G0 failure concerns the prescribed-background H1 model of this record;
+> the historical source descriptions were not independently rechecked here.
+
 **Fecha:** 2026-09-29.  
 **Contrato:** [GRAVITATIONAL_NORMALIZATION_GATE](../theory/GRAVITATIONAL_NORMALIZATION_GATE.md), frozen at commit `2680d799210731ab2815533e0b9ca9918f15d397`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -21,13 +26,13 @@ construction. It is not a no-go theorem for all QCA gravity models.
 
 The inhomogeneous H1 reconstruction fixes
 
-[
+\[
 D(z)=S(z)\oplus S(z)^{-1},
 \qquad
 C_N(X)=\exp[-i\vartheta(X)\beta/N],
 \qquad
 A_N(X,z)=C_N(X)D(z).
-]
+\]
 
 The same front treats `vartheta` as a bounded prescribed profile and studies
 how the already-defined matter propagator changes under this inhomogeneous
@@ -56,15 +61,15 @@ background. That is not yet a dynamical geometry.
 
 The update evolves the matter/spinor state through `A_N(X,z)`. No update map
 
-[
+\[
 g_t\mapsto g_{t+1}
-]
+\]
 
 or
 
-[
+\[
 \vartheta_t\mapsto\vartheta_{t+1}
-]
+\]
 
 is part of the frozen construction.
 
@@ -80,9 +85,9 @@ Because no geometric variable is evolved, the frozen model contains no map in
 which the matter/information state changes the subsequent geometric profile.
 There is therefore no microscopic backreaction channel of the form
 
-[
+\[
 \text{matter state}\longrightarrow\text{geometry update}.
-]
+\]
 
 The absence of such a channel is stronger than merely saying that Einstein's
 equations have not yet been derived: the current state space has no variable
@@ -93,9 +98,9 @@ on which such an equation could act.
 All three G0 requirements fail. The contract therefore requires immediate
 termination as
 
-[
+\[
 \boxed{\texttt{BLOCKED\_NO\_DYNAMICAL\_GEOMETRY}}.
-]
+\]
 
 G1 (Einstein-Hilbert normalization), G2 (independent curvature/length anchor)
 and G3 (non-circular physical identification) are **not executed**.
@@ -115,11 +120,11 @@ well-defined propagation problem.
 
 What G0 establishes is narrower:
 
-[
+\[
 \text{stability on a curved/inhomogeneous background}
 \;\not\Rightarrow\;
 \text{dynamical gravity}.
-]
+\]
 
 Thus even a future PASS of H1/E0 would not, by itself, repair
 `NO_ABSOLUTE_SCALE_DERIVABLE`.
