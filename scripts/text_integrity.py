@@ -85,6 +85,25 @@ def line_of(text, pos):
     return text.count("\n", 0, pos) + 1
 
 
+def bare_display_lines(text):
+    """Bare math delimiters outside Markdown fenced code (where ] is valid code).
+
+    Control-character and lost-newline checks deliberately still inspect code.
+    """
+    fence_char, fence_len = None, 0
+    for ln, line in enumerate(text.split("\n"), start=1):
+        fence = re.match(r"^ {0,3}(`{3,}|~{3,})(.*)$", line)
+        if fence:
+            marker, tail = fence.groups()
+            if fence_char is None:
+                fence_char, fence_len = marker[0], len(marker)
+            elif marker[0] == fence_char and len(marker) >= fence_len and not tail.strip():
+                fence_char = None
+            continue
+        if fence_char is None and line.strip() in ("[", "]"):
+            yield ln
+
+
 def check():
     dec = load_decisions()
     problems = 0
@@ -99,10 +118,9 @@ def check():
                 problems += 1
         # Display-math delimiters reduced to a bare "[" or "]" line indicate that
         # non-escape backslashes were stripped; these are not mechanically repairable.
-        for ln, line in enumerate(text.split("\n"), start=1):
-            if line.strip() in ("[", "]"):
-                print(f"{path}:{ln}: bare display delimiter (stripped backslashes)")
-                problems += 1
+        for ln in bare_display_lines(text):
+            print(f"{path}:{ln}: bare display delimiter (stripped backslashes)")
+            problems += 1
     print(f"{problems} problem(s)")
     return 1 if problems else 0
 

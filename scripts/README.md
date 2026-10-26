@@ -1,5 +1,16 @@
 # Scripts
 
+## Reconstruction integrity controls (2026-10-26)
+
+`text_integrity.py --check` checks tracked text for escape corruption; bare
+math delimiters inside fenced code are excluded, but control characters and
+lost-newline suspects remain checked there. Run its regression tests with
+`python3 -B scripts/test_text_integrity.py` (six tests).
+`check_reconstruction.py <file> [base]` compares restored notation after
+removing provenance blockquotes. `--allow-lost-cr-newlines` is an explicit
+exception for logged CR-to-LF damage, used for CURRENT_STATE against `8dd9080`;
+it is off by default. These checks do not certify scientific correctness.
+
 No scientific script was present at the initial freeze (`44ad178`).
 
 ## IR projection leakage algebra (2026-09-22)

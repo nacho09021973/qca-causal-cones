@@ -1,5 +1,9 @@
 # Hoja de ruta — frente E
 
+> **Typographic reconstruction — 2026-10-26.** Barras invertidas restauradas
+> a mano, sin cambiar palabras ni criterios. Es una hoja histórica: el estado
+> canónico posterior prevalece y esta restauración no reabre E/H1.
+
 **Fecha:** 2026-09-20  
 **Inicio operativo:** 2026-09-21  
 **Rama:** `research/b-infinity-post-s4-gate`
@@ -20,44 +24,44 @@ Estado de trabajo reconstruido:
 
 ## Gate 1 — test exploratorio falsable
 
-Antes de invertir en la demostración completa, comprobar con la misma deformación/perfil (w) congelado:
+Antes de invertir en la demostración completa, comprobar con la misma deformación/perfil \(w\) congelado:
 
-[
+\[
 R_N =
 \frac{\mathrm{tail}_{AdS}(N)}
      {\mathrm{tail}_{flat}(N)}.
-]
+\]
 
 Predicción de E:
 
-[
+\[
 R_N = 1 + O(N^{-1}).
-]
+\]
 
 ### Implementación
 
 1. Localizar primero el código y los runs ya existentes del walk plano.
 2. No crear un script nuevo mientras la infraestructura existente pueda reutilizarse.
-3. Como la moneda es *on-site*, explotar que conmuta con la inclinación (e^{\xi_*\cdot x}).
-4. Evolucionar directamente el operador inclinado para trabajar con amplitudes (O(1)), en vez de perseguir numéricamente la cola (e^{-K_*N}).
-5. Explorar únicamente (N) moderados, aproximadamente (50\text{–}100), si el coste lo permite.
+3. Como la moneda es *on-site*, explotar que conmuta con la inclinación \(e^{\xi_*\cdot x}\).
+4. Evolucionar directamente el operador inclinado para trabajar con amplitudes \(O(1)\), en vez de perseguir numéricamente la cola \(e^{-K_*N}\).
+5. Explorar únicamente \(N\) moderados, aproximadamente \(50\text{–}100\), si el coste lo permite.
 
 ### Criterio de parada
 
 Este cálculo es **exploratorio, no confirmatorio**.
 
-- Si (R_N) se aleja de 1 al crecer (N), E queda refutada en esta formulación y se detiene el frente.
-- Si la aproximación a 1 es claramente más lenta que (1/N), se detiene el frente.
-- Si los datos son compatibles con (1+O(1/N)), no se declara E confirmada: se autoriza únicamente pasar al Gate 2.
+- Si \(R_N\) se aleja de 1 al crecer \(N\), E queda refutada en esta formulación y se detiene el frente.
+- Si la aproximación a 1 es claramente más lenta que \(1/N\), se detiene el frente.
+- Si los datos son compatibles con \(1+O(1/N)\), no se declara E confirmada: se autoriza únicamente pasar al Gate 2.
 
 ## Gate 2 — congelar el objeto matemático
 
 Fijar de forma inequívoca:
 
-- el operador inhomogéneo (U_N=C_N(x)D);
+- el operador inhomogéneo \(U_N=C_N(x)D\);
 - la inclinación;
 - la definición exacta de la cola comparada;
-- las hipótesis de regularidad de (\vartheta);
+- las hipótesis de regularidad de \(\vartheta\);
 - el dominio complejo relevante para el saddle.
 
 **Salida:** contrato matemático único antes de cualquier prueba larga.
@@ -102,9 +106,9 @@ Orden de trabajo:
 
 Separar tres afirmaciones que no deben darse por equivalentes:
 
-1. estabilidad del exponente (K_*);
-2. estabilidad de la potencia (13/2);
-3. estabilidad/control del coeficiente líder (C).
+1. estabilidad del exponente \(K_*\);
+2. estabilidad de la potencia \(13/2\);
+3. estabilidad/control del coeficiente líder \(C\).
 
 Cada una requiere su propio gate.
 
@@ -126,4 +130,4 @@ No abrir mientras tanto una nueva búsqueda fenomenológica ni una nueva realiza
 
 ## Regla operativa
 
-**Un gate cada vez.** La primera tarea del 2026-09-21 es exclusivamente localizar la infraestructura existente y determinar si el test de (R_N) puede ejecutarse mediante modificación mínima. No generar código nuevo antes de esa inspección.
+**Un gate cada vez.** La primera tarea del 2026-09-21 es exclusivamente localizar la infraestructura existente y determinar si el test de \(R_N\) puede ejecutarse mediante modificación mínima. No generar código nuevo antes de esa inspección.

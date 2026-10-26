@@ -1,5 +1,16 @@
 # CURRENT_STATE
 
+> **Typographic reconstruction — 2026-10-26.** The remaining historical
+> formulas were restored against their already reconstructed reports. No
+> historical status or criterion changed. Lost CR-derived newlines in rho,
+> right and rm are explicitly checked with the opt-in reconstruction flag
+> against `8dd9080`; this is separate from new dated progress entries.
+> The authorized document reconstruction is complete: the integrity checker
+> reports zero problems. The former review-transcript warning was a valid
+> Python-list bracket inside fenced code, now covered by regression tests.
+> User authorization "1 y despues 2" next covers strengthening W3–W6
+> certificates, without reopening W1–W12 or promoting scientific evidence.
+
 ## Exact CJWW dynamic-graph bridge reconstruction — 2026-10-26
 
 User continuation "adelante" to documentary block h. The bridge contract
@@ -2799,11 +2810,11 @@ G3 = NOT_EXECUTED
 ```
 
 Reason: the frozen inhomogeneous operator
-[
+\[
 D(z)=S(z)\oplus S(z)^{-1},\qquad
 C_N(X)=\exp[-i\vartheta(X)\beta/N],\qquad
 A_N(X,z)=C_N(X)D(z)
-]
+\]
 treats `vartheta(X)` as an externally specified profile. The frozen state
 space contains no geometric degree of freedom that is evolved by the update,
 and there is no matter-to-geometry backreaction rule. Therefore the stop rule
@@ -2930,15 +2941,11 @@ Because every site is incident to exactly fourteen support edges,
 regular-background first-order reduced matter correction is only a global
 phase and vanishes on density matrices. The first nonzero correction is
 
-[
-Phi_g(
-ho)=U_0
-ho U_0^dagger+
-g^2sum_eleft(A_esigma A_e-\frac12{A_e,sigma}
-ight)+O(g^3),
-quad sigma=U_0
-ho U_0^dagger.
-]
+\[
+\Phi_g(\rho)=U_0\rho U_0^\dagger+
+g^2\sum_e\left(A_e\sigma A_e-\frac12\{A_e,\sigma\}\right)+O(g^3),
+\quad \sigma=U_0\rho U_0^\dagger.
+\]
 
 Thus link backreaction is `O(g)` while regular-background matter disturbance
 begins at `O(g^2)`, consistent with the exact-bridge no-go.
@@ -3061,14 +3068,14 @@ For a translation-invariant semiclassical link background with family means
 `b_a=<Z+X>`, the momentum-linear CJWW coefficient matrix changes from
 `E0=diag(1,-1,1)` to
 
-[
-E(g)=E_0-2g,mathrm{diag}(b_1,b_2,b_3)
+\[
+E(g)=E_0-2g\,\mathrm{diag}(b_1,b_2,b_3)
 \begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
-end{pmatrix}.
-]
+\end{pmatrix}.
+\]
 
 The direction matrix has determinant one. In particular, with only `b1`
 nonzero, the leading dispersion becomes
@@ -3163,26 +3170,26 @@ term and hence the Weyl principal symbol.
 
 For an initially uncorrelated edge/matter state,
 
-[
+\[
 z_e' =
-z_e+a_e[(\cos2g-1)z_e-\sin2g,x_e],
-]
+z_e+a_e[(\cos2g-1)z_e-\sin2g\,x_e],
+\]
 
 so
 
-[
-z_e'-z_e=-2g,x_e a_e+O(g^2).
-]
+\[
+z_e'-z_e=-2g\,x_e a_e+O(g^2).
+\]
 
 The transport tetrad is
 `E(z)=E0-2g diag(z_1,z_2,z_3)D+O(g^2)`, hence the matter-dependent
 backreaction on the principal symbol is
 
-[
+\[
 \delta E_{\rm back}
 =
 4g^2\operatorname{diag}(x_1a_1,x_2a_2,x_3a_3)D+O(g^3).
-]
+\]
 
 Thus the same microscopic variable `z_e` that controls the local
 characteristic cone is changed by matter. This is the first project gate to
@@ -3215,7 +3222,7 @@ C4 = FAIL
 The W3 principal symbol defines the coarse spatial metric
 `h^{ij}=sum_a E_a^i E_a^j`. To first order,
 
-[
+\[
 h^{ij}
 =
 \delta^{ij}
@@ -3224,9 +3231,9 @@ h^{ij}
 2z_1&-z_2&z_3\\
 -z_2&-2z_2&z_3\\
 z_3&z_3&2z_3
-end{pmatrix}
+\end{pmatrix}
 +O(g^2).
-]
+\]
 
 Spatial textures of `z_a(x)` can therefore carry nonzero kinematic
 curvature; e.g. `z_1=f(x_2)`, `z_2=z_3=0` gives the linearized spatial
@@ -3302,13 +3309,13 @@ variable in the matter transport Hamiltonian. The repaired geometry kick is
 
 Exactly,
 
-[
+\[
 z_e'
 =
-z_e[1+(cos2eta-1)a_e]
+z_e[1+(\cos2\eta-1)a_e]
 -
-x_esin2eta,j_e,
-]
+x_e\sin2\eta\,j_e,
+\]
 
 so the leading source is
 `z_e'-z_e=-2 eta x_e <J_e>+O(eta^2)`.
@@ -3599,19 +3606,17 @@ AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED
 The successor removes the arbitrary half-support orientation that killed the
 previous elastic-response attempt. It uses the full 14-hop weighted symbol
 
-[
-R_u(p)=sum_{hin F}
-ho_h(u)e^{ipcdot h}W_h,
-qquad
-
-ho_h(u)=\frac{h^Tuh}{h^Th},
-]
+\[
+R_u(p)=\sum_{h\in F}\rho_h(u)e^{ip\cdot h}W_h,
+\qquad
+\rho_h(u)=\frac{h^Tuh}{h^Th},
+\]
 
 and the Hermitian generator
 
-[
-K_u(p)=\frac12(R_u(p)+R_u(p)^dagger).
-]
+\[
+K_u(p)=\frac12(R_u(p)+R_u(p)^\dagger).
+\]
 
 The exact unitary response is frozen as
 `W_{eps,u}(q)=exp[-i eps K_u(p)] W_0(p)`,
@@ -3625,24 +3630,23 @@ calculation or coefficient adjustment has been performed after freezing.
 performed without changing the frozen prescription. At every decisive +I
 node,
 
-[
-K_u(p_*)=\frac{operatorname{tr}u}{3}I.
-]
+\[
+K_u(p_*)=\frac{\operatorname{tr}u}{3}I.
+\]
 
 Thus there is no traceless constant term and no first-order node displacement;
 only a common scalar quasienergy phase remains. After removing that phase, the
 hopping-induced principal-frame correction vanishes exactly,
 
-[
-delta E_*^{
-m hop}=0.
-]
+\[
+\delta E_*^{\rm hop}=0.
+\]
 
 The common embedding still gives
 
-[
-delta h_*=2a^2u
-]
+\[
+\delta h_*=2a^2u
+\]
 
 for all four species, with rank 6/6. Therefore the terminal state is
 
