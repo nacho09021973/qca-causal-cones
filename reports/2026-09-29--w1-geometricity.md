@@ -1,5 +1,12 @@
 # W1_GEOMETRICITY_GATE — execution
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against `scripts/verify_w1_geometricity.py` and the position-diagonal gates.
+> No scientific text changed and no evidence level is promoted.
+> The tensor-order, initial-spin and strict-boundary qualifications are recorded
+> in `2026-10-26--w1-geometricity-reconstruction.md`. The certificate
+> checks a two-step witness; it is not a general emergent-metric proof.
+
 **Fecha:** 2026-09-29.  
 **Contrato:** [W1_GEOMETRICITY_GATE](../theory/W1_GEOMETRICITY_GATE.md), frozen at commit `4c2abd64628f0f9d23e8c7d6371f8d790a4fc86f`.  
 **Certificado exacto:** [verify_w1_geometricity.py](../scripts/verify_w1_geometricity.py), added at commit `4a745f2878c8d973dfe8c627f1bf1131da376b3e`.  
@@ -24,187 +31,182 @@ hop set, and the outer CJWW causal body remain fixed.
 
 On the one-particle matter space,
 
-[
-V_g=sum_x |x\ranglelangle x|otimes R_x
-]
+\[
+V_g=\sum_x |x\rangle\langle x|\otimes R_x
+\]
 
-for unitary geometry operators (R_x). Therefore
+for unitary geometry operators \(R_x\). Therefore
 
-[
-U_g=V_g(I_gotimes U_0)
-]
+\[
+U_g=V_g(I_g\otimes U_0)
+\]
 
-has the same one-step matter displacement set as (U_0). Multiplying a
+has the same one-step matter displacement set as \(U_0\). Multiplying a
 nonzero CJWW block by a unitary geometry operator cannot create a new
 one-step displacement or remove an existing one.
 
 Thus:
 
-[
+\[
 \boxed{\text{one-step adjacency is unchanged}.}
-]
+\]
 
-The pathwise outer reach after (t) steps is consequently still bounded by
-the (t)-fold Minkowski sum of the same fourteen-jump set, and its convex
-outer body remains (t[-1,1]^3).
+The pathwise outer reach after \(t\) steps is consequently still bounded by
+the \(t\)-fold Minkowski sum of the same fourteen-jump set, and its convex
+outer body remains \(t[-1,1]^3\).
 
 ## 2. A two-step cancellation in flat CJWW
 
-Take initial matter site (0) and target
+Take initial matter site \(0\) and target
 
-[
+\[
 z=(0,0,1).
-]
+\]
 
 Using the exact fourteen Fourier blocks of CJWW Eq. (5.15), there are exactly
-eight nonzero two-step path contributions through intermediate sites (y):
+eight nonzero two-step path contributions through intermediate sites \(y\):
 
-[
-M_y=S_{z-y}S_y
-e0.
-]
+\[
+M_y=S_{z-y}S_y\ne0.
+\]
 
 Nevertheless,
 
-[
-sum_y M_y = (U_0^2)_{z,0}=0.
-]
+\[
+\sum_y M_y = (U_0^2)_{z,0}=0.
+\]
 
-Thus (z) is pathwise reachable in two local hops but is absent from the
+Thus \(z\) is pathwise reachable in two local hops but is absent from the
 **exact** two-step CJWW kernel by destructive interference.
 
 One contributing intermediate is
 
-[
+\[
 y_*=(1,1,1),
-]
+\]
 
 for which
 
-[
+\[
 M_*=
 S_{(-1,-1,0)}S_{(1,1,1)}
 =
 \begin{pmatrix}
 0&0\\
 i/16&0
-end{pmatrix}.
-]
+\end{pmatrix}.
+\]
 
 ## 3. Product-|0> link background lifts the exact zero
 
-For a matter particle at site (y), the W1 interaction applies the geometry
+For a matter particle at site \(y\), the W1 interaction applies the geometry
 generator
 
-[
-K_y=sum_{e
-i y} B_e,
-qquad B_e=Z_e+X_e.
-]
+\[
+K_y=\sum_{e\ni y} B_e,
+\qquad B_e=Z_e+X_e.
+\]
 
-Expanding the two-step joint amplitude at (z) to first order in (g),
+Expanding the two-step joint amplitude at \(z\) to first order in \(g\),
 
-[
-mathcal A_z(g)
+\[
+\mathcal A_z(g)
 =
-sum_y M_y|G\rangle
--igsum_y K_y M_y|G\rangle
--ig K_zsum_y M_y|G\rangle
+\sum_y M_y|G\rangle
+-ig\sum_y K_y M_y|G\rangle
+-ig K_z\sum_y M_y|G\rangle
 +O(g^2).
-]
+\]
 
 Since the flat sum is exactly zero, the first and third terms vanish:
 
-[
-mathcal A_z(g)
+\[
+\mathcal A_z(g)
 =
--igsum_yK_yM_y|G\rangle+O(g^2).
-]
+-ig\sum_yK_yM_y|G\rangle+O(g^2).
+\]
 
 Choose the edge
 
-[
-e_*={(1,1,1),(2,1,1)}.
-]
+\[
+e_*=\{(1,1,1),(2,1,1)\}.
+\]
 
-Among the eight contributing intermediate sites, only (y_*) is incident on
-(e_*). Therefore the coefficient of (B_{e_*}) in the derivative is
-exactly (M_*).
+Among the eight contributing intermediate sites, only \(y_*\) is incident on
+\(e_*\). Therefore the coefficient of \(B_{e_*}\) in the derivative is
+exactly \(M_*\).
 
-On the regular W1 background (|G_0\rangle=otimes_e|0\rangle_e),
+On the regular W1 background \(|G_0\rangle=\otimes_e|0\rangle_e\),
 
-[
+\[
 B_{e_*}|0\rangle=|0\rangle+|1\rangle.
-]
+\]
 
-The component in which only (e_*) is flipped therefore has derivative
+The component in which only \(e_*\) is flipped therefore has derivative
 
-[
+\[
 -iM_*=
 \begin{pmatrix}
 0&0\\
 1/16&0
-end{pmatrix}
+\end{pmatrix}
+\ne0.
+\]
 
-e0.
-]
+Hence for sufficiently small generic nonzero \(g\),
 
-Hence for sufficiently small generic nonzero (g),
-
-[
+\[
 \boxed{
-langle G_f,z|U_g^2|G_0,0\rangle
-e0
+\langle G_f,z|U_g^2|G_0,0\rangle\ne0
 }
-]
+\]
 
-for an appropriate final geometry basis state (G_f), whereas the flat CJWW
+for an appropriate final geometry basis state \(G_f\), whereas the flat CJWW
 amplitude is exactly zero.
 
 ## 4. A second geometry state preserves the zero
 
-Let every edge instead start in the (+sqrt2) eigenstate of
+Let every edge instead start in the \(+\sqrt2\) eigenstate of
 
-[
+\[
 B=Z+X.
-]
+\]
 
 Every matter site is incident on exactly fourteen edges. Therefore for every
-site (x),
+site \(x\),
 
-[
+\[
 R_x|G_+\rangle
 =
-e^{-i14sqrt2,g}|G_+\rangle.
-]
+e^{-i14\sqrt2\,g}|G_+\rangle.
+\]
 
 The interaction is a position-independent global phase on this geometry
 state. Consequently, after any number of steps,
 
-[
-U_g^t(|G_+\rangleotimes|psi\rangle)
+\[
+U_g^t(|G_+\rangle\otimes|\psi\rangle)
 =
-e^{-i14sqrt2,gt}
-|G_+\rangleotimes U_0^t|psi\rangle.
-]
+e^{-i14\sqrt2\,gt}
+|G_+\rangle\otimes U_0^t|\psi\rangle.
+\]
 
 In particular,
 
-[
+\[
 (U_g^2)_{(0,0,1),0}=0
-]
+\]
 
-on (G_+), exactly as in flat CJWW.
+on \(G_+\), exactly as in flat CJWW.
 
-Thus two states of the link register at the same coupling (g) give different
+Thus two states of the link register at the same coupling \(g\) give different
 exact two-step matter support:
 
-[
+\[
 \boxed{
-mathcal R_2^{G_0}(0)
-emathcal R_2^{G_+}(0).
+\mathcal R_2^{G_0}(0)\ne\mathcal R_2^{G_+}(0).
 }
-]
+\]
 
 This satisfies Gm2 and the exact zero/nonzero witness allowed by the frozen
 gate.
@@ -218,7 +220,7 @@ hops for every geometry state. Therefore:
 
 - the one-step support graph is unchanged;
 - the graph distance generated by that hop set is unchanged;
-- the strict outer body remains ([-1,1]^3) per step;
+- the strict outer body remains \([-1,1]^3\) per step;
 - no variable edge length, tetrad, lapse or metric tensor has been derived.
 
 What changes is an **interference-sensitive exact finite-time support**:
@@ -230,7 +232,7 @@ but it is not enough to claim an emergent metric or general relativity.
 ## 6. Consequence for the gravitational-normalization programme
 
 The earlier G0 failure was based on the original H1/E model, where
-(\vartheta(X)) was externally prescribed and no geometry variable existed.
+\(\vartheta(X)\) was externally prescribed and no geometry variable existed.
 
 W1 now supplies:
 
@@ -254,12 +256,12 @@ interference zeros.
 
 ## 7. Terminal-state decision
 
-[
+\[
 \boxed{\texttt{W1\_OPERATIONAL\_GEOMETRY\_PASS}}
-]
+\]
 
 with the mandatory scope label
 
-[
+\[
 \boxed{\texttt{FINITE\_TIME\_EXACT\_SUPPORT\_ONLY}.}
-]
+\]

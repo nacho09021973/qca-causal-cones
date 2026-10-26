@@ -1,5 +1,16 @@
 # CURRENT_STATE
 
+## W1 geometricity typographic reconstruction — 2026-10-26
+
+User continuation "adelante" to the geometricity/coarse-metric documentary
+block. The geometricity contract and report pass reconstruction checks against
+`2d144d9`; `verify_w1_geometricity.py` passes its five checks. The
+[local record](../reports/2026-10-26--w1-geometricity-reconstruction.md) traces
+manual checks, a specified initial spin witness and the outer-boundary argument.
+Only backslashes were restored outside provenance headers; no code changed.
+The operational PASS retains `FINITE_TIME_EXACT_SUPPORT_ONLY`, without metric
+or Einstein interpretation. W1–W12 stays CLOSED_BY_CONTRACT.
+
 ## W1 perturbative-bridge typographic reconstruction — 2026-10-26
 
 User continuation "commit y push y continúa" after W2. The W1 perturbative

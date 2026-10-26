@@ -1,5 +1,11 @@
 # W1_GEOMETRICITY_GATE
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against the displayed operators and `scripts/verify_w1_geometricity.py`.
+> No words, coefficients or criteria changed. The frozen contract remains
+> `4c2abd64628f0f9d23e8c7d6371f8d790a4fc86f`. Scope and qualifications are
+> recorded in `reports/2026-10-26--w1-geometricity-reconstruction.md`.
+
 **Fecha:** 2026-09-29.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -17,20 +23,20 @@ GEOMETRIC_INTERPRETATION = OPEN
 The W1 ansatz attaches one qubit to each undirected edge of the certified
 CJWW (5.15) support graph and uses
 
-[
-A_e=(|x\ranglelangle x|+|y\ranglelangle y|)otimes I_2,
-]
+\[
+A_e=(|x\rangle\langle x|+|y\rangle\langle y|)\otimes I_2,
+\]
 
-[
-V_e(g)=exp[-ig(Z_e+X_e)otimes A_e],
-qquad
-V_g=prod_eV_e(g),
-]
+\[
+V_e(g)=\exp[-ig(Z_e+X_e)\otimes A_e],
+\qquad
+V_g=\prod_eV_e(g),
+\]
 
-[
-U_g=V_g(I_gotimes U_0),
-qquad U_0=U_{\rm CJWW}.
-]
+\[
+U_g=V_g(I_g\otimes U_0),
+\qquad U_0=U_{\rm CJWW}.
+\]
 
 ## 1. Single question
 
@@ -54,54 +60,52 @@ leaving all exact support relations unchanged does **not** pass this gate.
 
 ## 2. Gm1 — one-step support dependence
 
-For geometry states (|G\rangle,|G'\rangle), define the joint transition
-support from matter site (x) to matter site (y) by the existence of some
+For geometry states \(|G\rangle,|G'\rangle\), define the joint transition
+support from matter site \(x\) to matter site \(y\) by the existence of some
 nonzero geometry matrix element
 
-[
-langle G_f,y|U_g|G,x\rangle
-e0.
-]
+\[
+\langle G_f,y|U_g|G,x\rangle\ne0.
+\]
 
-Gm1 PASS requires a pair (G,G') for which the set of reachable (y) differs.
+Gm1 PASS requires a pair \(G,G'\) for which the set of reachable \(y\) differs.
 
 ## 3. Gm2 — finite-time causal support dependence
 
-Let (mathcal R_t^G(x)) be the set of matter sites reachable with nonzero
-joint amplitude after (t) steps from geometry state (G) and a matter
-state localized at (x).
+Let \(\mathcal R_t^G(x)\) be the set of matter sites reachable with nonzero
+joint amplitude after \(t\) steps from geometry state \(G\) and a matter
+state localized at \(x\).
 
 Gm2 PASS requires
 
-[
-mathcal R_t^G(x)
-emathcal R_t^{G'}(x)
-]
+\[
+\mathcal R_t^G(x)\ne\mathcal R_t^{G'}(x)
+\]
 
-for some finite (t), or an equivalent difference in strict causal bodies.
+for some finite \(t\), or an equivalent difference in strict causal bodies.
 
 ## 4. Structural observation to test
 
-Every (A_e) is diagonal in the matter position basis. Therefore every
-(V_e(g)), and hence (V_g), is block diagonal in matter position:
+Every \(A_e\) is diagonal in the matter position basis. Therefore every
+\(V_e(g)\), and hence \(V_g\), is block diagonal in matter position:
 
-[
-V_g=sum_x |x\ranglelangle x|otimes R_x
-]
+\[
+V_g=\sum_x |x\rangle\langle x|\otimes R_x
+\]
 
-for geometry/internal operators (R_x).
+for geometry/internal operators \(R_x\).
 
-If this identity is exact, (V_g) cannot create a matter transition between
-distinct lattice sites. The only position-changing factor in (U_g) is
-(U_0).
+If this identity is exact, \(V_g\) cannot create a matter transition between
+distinct lattice sites. The only position-changing factor in \(U_g\) is
+\(U_0\).
 
 The execution must determine whether this implies
 
-[
-mathcal R_t^G(x)=mathcal R_t^{U_0}(x)
-]
+\[
+\mathcal R_t^G(x)=\mathcal R_t^{U_0}(x)
+\]
 
-for every geometry input (G) and every (t).
+for every geometry input \(G\) and every \(t\).
 
 ## 5. Terminal states
 
@@ -114,7 +118,7 @@ for every geometry input (G) and every (t).
 ## 6. Stop rule
 
 If the current W1 ansatz fails, do not repair it inside this gate by replacing
-(V_e) with a geometry-controlled hopping rule. Such a rule changes the model
+\(V_e\) with a geometry-controlled hopping rule. Such a rule changes the model
 class and requires a separate successor charter.
 
 A negative result does not invalidate W1 as a reversible matter-link
