@@ -1,5 +1,12 @@
 # EXPLICIT_CJWW_DYNAMIC_GRAPH_BRIDGE_GATE
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against the self-contained proof in the execution report. No words,
+> coefficients or criteria changed. The frozen contract remains
+> `b8655ceefce70b3ec30df2372211a3565757df34`. Quantifiers, a second proof
+> and the absence of a dedicated executable certificate are recorded in
+> `reports/2026-10-26--cjww-exact-bridge-reconstruction.md`.
+
 **Fecha:** 2026-09-29.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -24,40 +31,39 @@ the repository.
 
 Can one construct a joint local unitary `U_DG` on
 
-[
-mathcal H_gotimesmathcal H_m
-]
+\[
+\mathcal H_g\otimes\mathcal H_m
+\]
 
-and a fixed regular background state (|G_0\rangle) such that both hold:
+and a fixed regular background state \(|G_0\rangle\) such that both hold:
 
 ### B1 — exact CJWW matter channel on the background
 
-For **every** matter density matrix (\rho),
+For **every** matter density matrix \(\rho\),
 
-[
-operatorname{tr}_g!left[
-U_{DG}(|G_0\ranglelangle G_0|otimes\rho)U_{DG}^dagger
+\[
+\operatorname{tr}_g\!\left[
+U_{DG}(|G_0\rangle\langle G_0|\otimes\rho)U_{DG}^\dagger
 \right]
 =
-U_{\rm CJWW}\rho U_{\rm CJWW}^dagger.
-]
+U_{\rm CJWW}\rho U_{\rm CJWW}^\dagger.
+\]
 
 This is the strong meaning of an exact fixed-background CJWW sector.
 
 ### B2 — matter-to-geometry backreaction on that same background
 
-There exist two matter states (\rho,\rho') such that
+There exist two matter states \(\rho,\rho'\) such that
 
-[
-operatorname{tr}_m!left[
-U_{DG}(|G_0\ranglelangle G_0|otimes\rho)U_{DG}^dagger
+\[
+\operatorname{tr}_m\!\left[
+U_{DG}(|G_0\rangle\langle G_0|\otimes\rho)U_{DG}^\dagger
 \right]
-
-e
-operatorname{tr}_m!left[
-U_{DG}(|G_0\ranglelangle G_0|otimes\rho')U_{DG}^dagger
+\ne
+\operatorname{tr}_m\!\left[
+U_{DG}(|G_0\rangle\langle G_0|\otimes\rho')U_{DG}^\dagger
 \right].
-]
+\]
 
 The question is whether B1 and B2 can hold simultaneously.
 
@@ -68,37 +74,37 @@ an algebraic no-go stops before local gate synthesis.
 
 **Unitary-channel complementary-constancy lemma.**
 
-Let (V:mathcal H_m\tomathcal H_gotimesmathcal H_m) be the isometry
+Let \(V:\mathcal H_m\to\mathcal H_g\otimes\mathcal H_m\) be the isometry
 
-[
-V|psi\rangle=
-U_{DG}(|G_0\rangleotimes|psi\rangle).
-]
+\[
+V|\psi\rangle=
+U_{DG}(|G_0\rangle\otimes|\psi\rangle).
+\]
 
 If the reduced matter channel is exactly unitary,
 
-[
-operatorname{tr}_g[V\rho V^dagger]=U\rho U^dagger
-]
+\[
+\operatorname{tr}_g[V\rho V^\dagger]=U\rho U^\dagger
+\]
 
-for every (\rho), then the complementary geometry channel is constant:
-there exists one geometry state (sigma_g), independent of (\rho), such
+for every \(\rho\), then the complementary geometry channel is constant:
+there exists one geometry state \(\sigma_g\), independent of \(\rho\), such
 that
 
-[
-operatorname{tr}_m[V\rho V^dagger]=sigma_g
-]
+\[
+\operatorname{tr}_m[V\rho V^\dagger]=\sigma_g
+\]
 
-for every (\rho).
+for every \(\rho\).
 
-For pure (|G_0\rangle) and global unitary dilation, the stronger factorized
+For pure \(|G_0\rangle\) and global unitary dilation, the stronger factorized
 form should follow:
 
-[
-V|psi\rangle=|Gamma\rangleotimes U|psi\rangle
-]
+\[
+V|\psi\rangle=|\Gamma\rangle\otimes U|\psi\rangle
+\]
 
-up to a fixed geometry isometry/state independent of (|psi\rangle).
+up to a fixed geometry isometry/state independent of \(|\psi\rangle\).
 
 The execution must prove this directly, not cite it by slogan.
 
@@ -123,9 +129,9 @@ states.
 If the strong bridge is impossible, record but do not automatically open:
 
 - **W1 perturbative bridge:** CJWW recovered at zero backreaction coupling
-  (g=0), with (O(g)) matter corrections when geometry reacts.
+  \(g=0\), with \(O(g)\) matter corrections when geometry reacts.
 - **W2 vacuum-sector bridge:** exact CJWW only for a restricted matter sector
-  (e.g. vacuum/reference states), not every (\rho).
+  (e.g. vacuum/reference states), not every \(\rho\).
 - **W3 semiclassical bridge:** CJWW emerges approximately after tracing over a
   sharply peaked geometry state.
 - **W4 relational encoding:** the two-component CJWW field is a relational

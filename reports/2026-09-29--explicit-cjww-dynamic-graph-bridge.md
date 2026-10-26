@@ -1,5 +1,12 @@
 # EXPLICIT_CJWW_DYNAMIC_GRAPH_BRIDGE_GATE — execution
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against the self-contained purity and linearity proof below. No scientific
+> text changed. A second operator proof, the infinite-dimensional continuity
+> step and quantifier controls are recorded in
+> `2026-10-26--cjww-exact-bridge-reconstruction.md`. No dedicated executable
+> certificate or new independent review is claimed.
+
 **Fecha:** 2026-09-29.  
 **Contrato:** [EXPLICIT_CJWW_DYNAMIC_GRAPH_BRIDGE_GATE](../theory/EXPLICIT_CJWW_DYNAMIC_GRAPH_BRIDGE_GATE.md), frozen at commit `b8655ceefce70b3ec30df2372211a3565757df34`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -18,153 +25,153 @@ finite-depth synthesis or continuum limits enter.
 
 Let
 
-[
-V:mathcal H_m\to mathcal H_gotimesmathcal H_m
-]
+\[
+V:\mathcal H_m\to \mathcal H_g\otimes\mathcal H_m
+\]
 
 be the isometry induced by the joint unitary from the fixed pure geometry
 background:
 
-[
-V|psi\rangle=
-U_{DG}(|G_0\rangleotimes|psi\rangle).
-]
+\[
+V|\psi\rangle=
+U_{DG}(|G_0\rangle\otimes|\psi\rangle).
+\]
 
-Assume B1: for every matter density matrix (\rho),
+Assume B1: for every matter density matrix \(\rho\),
 
-[
-operatorname{tr}_g(V\rho V^dagger)
+\[
+\operatorname{tr}_g(V\rho V^\dagger)
 =
-U\rho U^dagger,
-qquad U=U_{\rm CJWW}.
-]
+U\rho U^\dagger,
+\qquad U=U_{\rm CJWW}.
+\]
 
 Define
 
-[
-widetilde V=(I_gotimes U^dagger)V.
-]
+\[
+\widetilde V=(I_g\otimes U^\dagger)V.
+\]
 
 Then
 
-[
-operatorname{tr}_g(widetilde V\rhowidetilde V^dagger)=\rho
-]
+\[
+\operatorname{tr}_g(\widetilde V\rho\widetilde V^\dagger)=\rho
+\]
 
-for every (\rho). It is therefore enough to prove the statement for the
+for every \(\rho\). It is therefore enough to prove the statement for the
 identity matter channel.
 
 ## 2. Pure-state factorization
 
-Take any pure matter state (|psi\rangle). The reduced matter state of
+Take any pure matter state \(|\psi\rangle\). The reduced matter state of
 
-[
-|Psi_psi\rangle=widetilde V|psi\rangle
-]
+\[
+|\Psi_\psi\rangle=\widetilde V|\psi\rangle
+\]
 
-is (|psi\ranglelanglepsi|), which is pure.
+is \(|\psi\rangle\langle\psi|\), which is pure.
 
 A bipartite pure state has a pure reduced state iff its Schmidt rank is one.
-Hence there is a normalized geometry vector (|gamma_psi\rangle) such that
+Hence there is a normalized geometry vector \(|\gamma_\psi\rangle\) such that
 
-[
-widetilde V|psi\rangle
+\[
+\widetilde V|\psi\rangle
 =
-|gamma_psi\rangleotimes|psi\rangle.
-]
+|\gamma_\psi\rangle\otimes|\psi\rangle.
+\]
 
 At this point the geometry vector could still appear to depend on
-(|psi\rangle). Linearity removes that possibility.
+\(|\psi\rangle\). Linearity removes that possibility.
 
 ## 3. Linearity forces one geometry state
 
-Choose an orthonormal matter basis ({|i\rangle}). For each basis state,
+Choose an orthonormal matter basis \(\{|i\rangle\}\). For each basis state,
 
-[
-widetilde V|i\rangle
+\[
+\widetilde V|i\rangle
 =
-|gamma_i\rangleotimes|i\rangle.
-]
+|\gamma_i\rangle\otimes|i\rangle.
+\]
 
 Now apply the same statement to
 
-[
-|+\rangle=\frac{|i\rangle+|j\rangle}{sqrt2}.
-]
+\[
+|+\rangle=\frac{|i\rangle+|j\rangle}{\sqrt2}.
+\]
 
 Linearity gives
 
-[
-widetilde V|+\rangle
+\[
+\widetilde V|+\rangle
 =
-\frac{|gamma_i\rangleotimes|i\rangle+
-      |gamma_j\rangleotimes|j\rangle}{sqrt2}.
-]
+\frac{|\gamma_i\rangle\otimes|i\rangle+
+      |\gamma_j\rangle\otimes|j\rangle}{\sqrt2}.
+\]
 
 But the reduced matter state must be exactly
 
-[
-|+\ranglelangle+|.
-]
+\[
+|+\rangle\langle+|.
+\]
 
 Tracing out geometry gives an off-diagonal coefficient
 
-[
-\frac12langlegamma_j|gamma_i\rangle |i\ranglelangle j|+mathrm{h.c.}
-]
+\[
+\frac12\langle\gamma_j|\gamma_i\rangle |i\rangle\langle j|+\mathrm{h.c.}
+\]
 
-which equals the required coefficient (1/2) only if
+which equals the required coefficient \(1/2\) only if
 
-[
-langlegamma_j|gamma_i\rangle=1.
-]
+\[
+\langle\gamma_j|\gamma_i\rangle=1.
+\]
 
 For normalized vectors this implies
 
-[
-|gamma_i\rangle=|gamma_j\rangle.
-]
+\[
+|\gamma_i\rangle=|\gamma_j\rangle.
+\]
 
-As (i,j) were arbitrary, one fixed normalized vector
-(|Gamma\rangle) satisfies
+As \(i,j\) were arbitrary, one fixed normalized vector
+\(|\Gamma\rangle\) satisfies
 
-[
-widetilde V|psi\rangle
+\[
+\widetilde V|\psi\rangle
 =
-|Gamma\rangleotimes|psi\rangle
-]
+|\Gamma\rangle\otimes|\psi\rangle
+\]
 
-for every (|psi\rangle). Undoing the (U^dagger) conjugation,
+for every \(|\psi\rangle\). Undoing the \(U^\dagger\) conjugation,
 
-[
+\[
 \boxed{
-V|psi\rangle
+V|\psi\rangle
 =
-|Gamma\rangleotimes U_{\rm CJWW}|psi\rangle.
+|\Gamma\rangle\otimes U_{\rm CJWW}|\psi\rangle.
 }
-]
+\]
 
 ## 4. Complementary geometry channel
 
-Therefore, for every matter density matrix (\rho),
+Therefore, for every matter density matrix \(\rho\),
 
-[
-operatorname{tr}_m(V\rho V^dagger)
+\[
+\operatorname{tr}_m(V\rho V^\dagger)
 =
-|Gamma\ranglelangleGamma|.
-]
+|\Gamma\rangle\langle\Gamma|.
+\]
 
 The final geometry state is independent of the matter input.
 
 Thus B1 implies the negation of B2.
 
-[
+\[
 \boxed{
 \text{exact CJWW reduced unitary for all matter states}
-Longrightarrow
+\Longrightarrow
 \text{no information-bearing matter-to-geometry backreaction}.
 }
-]
+\]
 
 No QCGD construction, local gate decomposition or graph rewrite can evade this
 while retaining B1 exactly, because the contradiction already holds for an
@@ -174,9 +181,9 @@ arbitrary global unitary dilation.
 
 B1 and B2 are incompatible, so
 
-[
+\[
 \boxed{\texttt{STRONG_EXACT_BRIDGE_IMPOSSIBLE}}.
-]
+\]
 
 This is a theorem under the frozen pure-background and exact-channel
 quantifiers. It is not based on a failed model search.
@@ -202,13 +209,12 @@ possibilities are:
 
 The most conservative successor for this project is W1: require
 
-[
+\[
 U_{\rm matter}(g=0)=U_{\rm CJWW}
-]
+\]
 
 exactly and quantify the first nontrivial joint matter/geometry correction as
-(g\to0). That does not contradict the theorem because for (g
-e0) the
+\(g\to0\). That does not contradict the theorem because for \(g\ne0\) the
 reduced matter channel is no longer required to be exactly unitary CJWW.
 
 No W1 construction is made in this report.

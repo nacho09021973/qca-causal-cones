@@ -1,5 +1,21 @@
 # CURRENT_STATE
 
+## Exact CJWW dynamic-graph bridge reconstruction — 2026-10-26
+
+User continuation "adelante" to documentary block h. The bridge contract
+and report pass reconstruction against `2d144d9`. The self-contained proof
+was checked manually by purity/linearity and by channel operators, including
+the separable-Hilbert-space continuity step and quantifier controls in the
+[local record](../reports/2026-10-26--cjww-exact-bridge-reconstruction.md).
+No dedicated executable certificate was found or claimed for this lemma.
+Text-integrity warnings decrease from 119 to 65; no code changed.
+`STRONG_EXACT_BRIDGE_IMPOSSIBLE` retains the fixed pure background, exact
+unitary matter channel for every input and simultaneous information-bearing
+backreaction quantifiers. It does not forbid input-independent geometry
+evolution or all dynamical-geometry models. No new independent review,
+evidence promotion or successor execution. W1–W12 stays CLOSED_BY_CONTRACT.
+Next documentary block: G0 normalization and dynamical model-class selection.
+
 ## W7 spin-2 kinematics reconstruction — 2026-10-26
 
 User continuation "ADELANTE" to documentary block g. The W7 contract and
