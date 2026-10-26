@@ -1,5 +1,13 @@
 # W1_PERTURBATIVE_BACKREACTION_BRIDGE_GATE — execution
 
+> **Typographic reconstruction — 2026-10-26.** LaTeX backslashes restored
+> by hand against the displayed projector coupling. No scientific text changed.
+> Manual checks of the local response and reduced channel are recorded in
+> `2026-10-26--w1-typographic-reconstruction.md`. The related geometricity
+> certificate checks support and interference, not this entire derivation.
+> No independent review or evidence promotion is claimed; later geometricity
+> and coarse-metric gates retain their conclusions and W1–W12 stays closed.
+
 **Fecha:** 2026-09-29.  
 **Contrato:** [W1_PERTURBATIVE_BACKREACTION_BRIDGE_GATE](../theory/W1_PERTURBATIVE_BACKREACTION_BRIDGE_GATE.md), frozen at commit `2631e31369a9598da044d00e37cbb54d7100cab6`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -27,113 +35,113 @@ physical geometry or adjacency.
 
 The certified support of Eq. (5.15) is
 
-[
-F={
+\[
+F=\{
 (-1,-1,-1),(-1,-1,0),(-1,-1,1),(-1,0,0),
 (-1,1,-1),(-1,1,0),(-1,1,1),
-]
-[
+\]
+\[
 (1,-1,-1),(1,-1,0),(1,-1,1),(1,0,0),
 (1,1,-1),(1,1,0),(1,1,1)
-}.
-]
+\}.
+\]
 
 Thus the seven undirected representatives can be taken as
 
-[
-D_+={
+\[
+D_+=\{
 (1,-1,-1),(1,-1,0),(1,-1,1),(1,0,0),
 (1,1,-1),(1,1,0),(1,1,1)
-}.
-]
+\}.
+\]
 
-Every site has degree (14) in this undirected support graph.
+Every site has degree \(14\) in this undirected support graph.
 
 For rigor of the global circuit, work first on an even periodic cubic box.
 All formulas below are local and uniform in the box size.
 
 ## 2. Local gate
 
-For each undirected edge (e={x,y}), let
+For each undirected edge \(e=\{x,y\}\), let
 
-[
-A_e=(|x\ranglelangle x|+|y\ranglelangle y|)otimes I_2,
-qquad A_e^2=A_e.
-]
+\[
+A_e=(|x\rangle\langle x|+|y\rangle\langle y|)\otimes I_2,
+\qquad A_e^2=A_e.
+\]
 
 Let the edge register be a qubit and define
 
-[
+\[
 B_e=Z_e+X_e,
-qquad B_e^2=2I_e,
-]
+\qquad B_e^2=2I_e,
+\]
 
-[
-H_e=B_eotimes A_e,
-qquad
+\[
+H_e=B_e\otimes A_e,
+\qquad
 V_e(g)=e^{-igH_e}.
-]
+\]
 
-Because (A_e) is a projector,
+Because \(A_e\) is a projector,
 
-[
+\[
 V_e(g)
 =
-I_eotimes(I-A_e)
+I_e\otimes(I-A_e)
 +
-e^{-igB_e}otimes A_e.
-]
+e^{-igB_e}\otimes A_e.
+\]
 
-So the gate is exactly unitary for every real (g), with no perturbative
+So the gate is exactly unitary for every real \(g\), with no perturbative
 unitarity claim.
 
 ## 3. W1.1 — exact zero-coupling recovery
 
-Let (V_g) be the product of all edge gates and
+Let \(V_g\) be the product of all edge gates and
 
-[
-U_g=V_g(I_gotimes U_0).
-]
+\[
+U_g=V_g(I_g\otimes U_0).
+\]
 
-At (g=0),
+At \(g=0\),
 
-[
-V_e(0)=I,qquad V_0=I,
-]
+\[
+V_e(0)=I,\qquad V_0=I,
+\]
 
 hence
 
-[
+\[
 \boxed{
-U_{g=0}=I_gotimes U_{\rm CJWW}.
+U_{g=0}=I_g\otimes U_{\rm CJWW}.
 }
-]
+\]
 
 **W1.1 = PASS.**
 
 ## 4. W1.5 — bounded locality and 14-layer interaction circuit
 
-Fix (din D_+). Orient each edge from (x) to (x+d). Since (d_1=1),
-split these edges according to the parity of (x_1).
+Fix \(d\in D_+\). Orient each edge from \(x\) to \(x+d\). Since \(d_1=1\),
+split these edges according to the parity of \(x_1\).
 
-For fixed (d) and fixed parity, two distinct edges cannot share a vertex:
-if ({x,x+d}) and ({y,y+d}) share one, then
-(y-xin{0,pm d}); the nonzero cases flip the parity of the first
+For fixed \(d\) and fixed parity, two distinct edges cannot share a vertex:
+if \(\{x,x+d\}\) and \(\{y,y+d\}\) share one, then
+\(y-x\in\{0,\pm d\}\); the nonzero cases flip the parity of the first
 coordinate.
 
 Therefore each parity class is a matching.
 
 There are seven displacement classes and two parities:
 
-[
-\boxed{\text{interaction depth}le 14.}
-]
+\[
+\boxed{\text{interaction depth}\le 14.}
+\]
 
 Each gate acts on one edge qubit and the two endpoint matter sites, with
-(ell^infty) range one. The depth is independent of system size.
+\(\ell^\infty\) range one. The depth is independent of system size.
 
-Moreover all (A_e) commute, and (B_e) acts on distinct edge registers, so
-all (H_e) commute algebraically; the 14 layers are an implementation
+Moreover all \(A_e\) commute, and \(B_e\) acts on distinct edge registers, so
+all \(H_e\) commute algebraically; the 14 layers are an implementation
 constraint, not an ordering ambiguity.
 
 **W1.5 = PASS for the added interaction.**
@@ -146,77 +154,76 @@ is established in the repository by this gate. Hence
 
 Let the regular edge state be
 
-[
-\rho_{e,0}=|0\ranglelangle0|.
-]
+\[
+\rho_{e,0}=|0\rangle\langle0|.
+\]
 
-For a matter state (sigma) entering the interaction layer, define
+For a matter state \(\sigma\) entering the interaction layer, define
 
-[
-a_e=operatorname{tr}(A_esigma).
-]
+\[
+a_e=\operatorname{tr}(A_e\sigma).
+\]
 
 To first order,
 
-[
+\[
 \rho_e(g)
 =
 \rho_{e,0}
--ig,a_e[B_e,\rho_{e,0}]
+-ig\,a_e[B_e,\rho_{e,0}]
 +O(g^2).
-]
+\]
 
-Since (Z_e) commutes with (\rho_{e,0}) and
-([X_e,\rho_{e,0}]
-e0),
+Since \(Z_e\) commutes with \(\rho_{e,0}\) and
+\([X_e,\rho_{e,0}]\ne0\),
 
-[
-left.\frac{d}{dg}\rho_e(g)\right|_{0}
+\[
+\left.\frac{d}{dg}\rho_e(g)\right|_{0}
 =
 -i a_e[X_e,\rho_{e,0}].
-]
+\]
 
 Equivalently,
 
-[
-left.\frac{d}{dg}langle Y_e\rangle\right|_{0}=-2a_e
-]
+\[
+\left.\frac{d}{dg}\langle Y_e\rangle\right|_{0}=-2a_e
+\]
 
 with the standard Pauli convention.
 
-Because (U_0) is unitary, choose two pre-interaction matter states whose
-post-(U_0) endpoint occupations on (e) differ. Then their edge-state
+Because \(U_0\) is unitary, choose two pre-interaction matter states whose
+post-\(U_0\) endpoint occupations on \(e\) differ. Then their edge-state
 derivatives differ.
 
-Thus the link register acquires matter-dependent information at order (g).
+Thus the link register acquires matter-dependent information at order \(g\).
 
 **W1.2 = PASS.**
 
 ## 6. W1.3 — link state affects matter at first order
 
-For a general initial edge state (eta_e), the first-order reduced matter
-generator contributed by edge (e) is
+For a general initial edge state \(\eta_e\), the first-order reduced matter
+generator contributed by edge \(e\) is
 
-[
-langle B_e\rangle_{eta_e}A_e.
-]
+\[
+\langle B_e\rangle_{\eta_e}A_e.
+\]
 
 In particular,
 
-[
-langle0|B_e|0\rangle=+1,
-qquad
-langle1|B_e|1\rangle=-1.
-]
+\[
+\langle0|B_e|0\rangle=+1,
+\qquad
+\langle1|B_e|1\rangle=-1.
+\]
 
-Two backgrounds identical except for (e) therefore differ at first order by
+Two backgrounds identical except for \(e\) therefore differ at first order by
 
-[
+\[
 2A_e
-]
+\]
 
 in the reduced matter generator. For a matter state not commuting with
-(A_e), the two reduced matter channels differ.
+\(A_e\), the two reduced matter channels differ.
 
 **W1.3 = PASS.**
 
@@ -225,119 +232,118 @@ matter. It does not yet prove that the register is adjacency or metric.
 
 ## 7. W1.4 — regular background: first order cancels to a global phase
 
-Let every edge start in (|0\rangle). The environment mean of each local
+Let every edge start in \(|0\rangle\). The environment mean of each local
 operator is
 
-[
-langle B_e\rangle=1.
-]
+\[
+\langle B_e\rangle=1.
+\]
 
 The first-order effective matter Hamiltonian is therefore
 
-[
-H_{\rm eff}^{(1)}=sum_e A_e.
-]
+\[
+H_{\rm eff}^{(1)}=\sum_e A_e.
+\]
 
 Every matter site belongs to exactly fourteen undirected support edges, so on
 the one-particle Hilbert space
 
-[
-sum_e A_e=14I_m.
-]
+\[
+\sum_e A_e=14I_m.
+\]
 
 Hence
 
-[
--i g[H_{\rm eff}^{(1)},sigma]
+\[
+-i g[H_{\rm eff}^{(1)},\sigma]
 =
--i14g[I_m,sigma]
+-i14g[I_m,\sigma]
 =0.
-]
+\]
 
 Thus, on the perfectly regular background,
 
-[
+\[
 \boxed{
-Phi_g(\rho)
+\Phi_g(\rho)
 =
-U_0\rho U_0^dagger + O(g^2).
+U_0\rho U_0^\dagger + O(g^2).
 }
-]
+\]
 
-This is stronger than the (O(g)) control required by the charter.
+This is stronger than the \(O(g)\) control required by the charter.
 
 It is also consistent with the preceding no-go: geometry can begin to acquire
-matter information at order (g), but the reduced matter density matrix
-cannot remain exactly CJWW for finite nonzero (g).
+matter information at order \(g\), but the reduced matter density matrix
+cannot remain exactly CJWW for finite nonzero \(g\).
 
 ## 8. Explicit second-order matter correction
 
 Let
 
-[
-sigma=U_0\rho U_0^dagger.
-]
+\[
+\sigma=U_0\rho U_0^\dagger.
+\]
 
 For distinct edges the regular product background gives factorized moments.
 With
 
-[
-langle B_e\rangle=1,qquad
-langle B_e^2\rangle=2,
-]
+\[
+\langle B_e\rangle=1,\qquad
+\langle B_e^2\rangle=2,
+\]
 
 the centered covariance is
 
-[
-langle(B_e-1)(B_f-1)\rangle=delta_{ef}.
-]
+\[
+\langle(B_e-1)(B_f-1)\rangle=\delta_{ef}.
+\]
 
-The mean contribution is generated by (14I_m) and therefore drops out.
+The mean contribution is generated by \(14I_m\) and therefore drops out.
 The first nonzero reduced correction is
 
-[
+\[
 \boxed{
-Phi_g(\rho)
+\Phi_g(\rho)
 =
-sigma
+\sigma
 +
-g^2sum_e
-left(
-A_esigma A_e
--\frac12{A_e,sigma}
+g^2\sum_e
+\left(
+A_e\sigma A_e
+-\frac12\{A_e,\sigma\}
 \right)
 +O(g^3).
 }
-]
+\]
 
-Since (A_e^2=A_e), this is a local dephasing-type correction.
+Since \(A_e^2=A_e\), this is a local dephasing-type correction.
 
 For a position coherence
-(|x\ranglelangle y|otimes M), (x
-e y), the coefficient is
+\(|x\rangle\langle y|\otimes M\), \(x\ne y\), the coefficient is
 
-[
+\[
 -\frac{g^2}{2}
-#{e: e\text{ is incident to exactly one of }x,y}.
-]
+\#\{e: e\text{ is incident to exactly one of }x,y\}.
+\]
 
 Therefore:
 
-- if (x,y) are joined by one support edge, the symmetric difference of
-  their incident-edge sets has size (26), giving coefficient
-  (-13g^2);
-- otherwise it has size (28), giving coefficient (-14g^2).
+- if \(x,y\) are joined by one support edge, the symmetric difference of
+  their incident-edge sets has size \(26\), giving coefficient
+  \(-13g^2\);
+- otherwise it has size \(28\), giving coefficient \(-14g^2\).
 
-Diagonal position populations have zero (g^2) correction from this
+Diagonal position populations have zero \(g^2\) correction from this
 dephasing term.
 
 The power counting is therefore explicit:
 
-[
+\[
 \text{link backreaction}=O(g),
-qquad
+\qquad
 \text{regular-background matter disturbance}=O(g^2).
-]
+\]
 
 **W1.4 = PASS.**
 
@@ -345,25 +351,24 @@ qquad
 
 Established here:
 
-[
+\[
 \boxed{
 \text{exact CJWW at }g=0
 +
-\text{unitary local link backreaction for }g
-e0
+\text{unitary local link backreaction for }g\ne0
 +
 \text{controlled reduced-matter correction}.
 }
-]
+\]
 
 Not established:
 
 - that the edge qubit is literally adjacency, distance, tetrad or metric;
-- that (|1\rangle_e) means an absent edge;
+- that \(|1\rangle_e\) means an absent edge;
 - that the full CJWW step has been synthesized inside the specific QCGD
   finite-depth gate model used for the interaction;
 - any Einstein-Hilbert term;
-- any (G_{\rm eff});
+- any \(G_{\rm eff}\);
 - any absolute scale.
 
 Thus the gravitational-normalization G0 stop is **not** lifted by this report.
@@ -375,19 +380,19 @@ as an internal link field.
 
 W1.1-W1.5 pass at the declared causal-unitary level. By the frozen stop rule,
 
-[
+\[
 \boxed{
 \texttt{W1\_CAUSAL\_UNITARY\_BRIDGE\_PASS /
 FULL\_QCGD\_SYNTHESIS\_OPEN}
 }
-]
+\]
 
 with the additional ceiling
 
-[
+\[
 \boxed{\texttt{GEOMETRIC\_INTERPRETATION = OPEN}.}
-]
+\]
 
 A natural successor is a **GEOMETRICITY GATE**: require the link register to
 change a genuine operational notion of adjacency, causal distance or
-propagation support while retaining the (g\to0) CJWW limit.
+propagation support while retaining the \(g\to0\) CJWW limit.

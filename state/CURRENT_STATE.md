@@ -1,5 +1,20 @@
 # CURRENT_STATE
 
+## W1 perturbative-bridge typographic reconstruction — 2026-10-26
+
+User continuation "commit y push y continúa" after W2. The W1 perturbative
+bridge contract and report have restored LaTeX; both reconstruction checks
+pass against `2d144d9`. The related geometricity certificate passes, but does
+not certify the full reduced-channel derivation. Manual operator and exact
+environment-overlap checks are recorded in the
+[local verification record](../reports/2026-10-26--w1-typographic-reconstruction.md),
+including qualifications on nonzero-coupling recurrences and finite-box size.
+Global text-integrity warnings decrease from 499 to 411, with none in these
+two reconstructed documents. No code or scientific status changes.
+W1–W12 stays CLOSED_BY_CONTRACT; the later W1 scalar-potential/no-metric
+conclusion stands. W1 geometricity/coarse-metric text reconstruction remains
+the next documentary block.
+
 ## W2 typographic reconstruction — 2026-10-26
 
 Direct user continuation "adelante" to the bounded W2 reconstruction.
