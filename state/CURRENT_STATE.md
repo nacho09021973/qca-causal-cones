@@ -1,5 +1,20 @@
 # CURRENT_STATE
 
+## W5 spatial-tetrad completeness reconstruction — 2026-10-26
+
+User continuation "ADELANTE" to documentary block f. The spatial-tetrad
+completeness contract and report pass reconstruction against `2d144d9`;
+`verify_w5_spatial_tetrad_rank.py` passes both checks. The ranks 3/9 and 3/6
+require nonzero g; both maps have rank zero at g=0. Independent-entry minors
+and three image relations were checked manually in the
+[local record](../reports/2026-10-26--w5-spatial-tetrad-reconstruction.md).
+Global text-integrity warnings decrease from 211 to 165. No code changes,
+new independent review, gauge construction or evidence promotion.
+`RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN` retains its
+first-order scope. This is not the W5 tetrad-source gate; the W3 mean-field
+and W4 spectrum qualifications remain in force. W1–W12 stays CLOSED_BY_CONTRACT.
+The next documentary block is W7 spin-2 kinematics reconstruction.
+
 ## W4 spectrum reconstruction and interpretation limits — 2026-10-26
 
 User continuation "adelante" to documentary block e. Both W4 spectrum texts

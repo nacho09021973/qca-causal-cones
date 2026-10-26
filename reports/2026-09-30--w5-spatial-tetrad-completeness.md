@@ -1,5 +1,14 @@
 # W5_SPATIAL_TETRAD_COMPLETENESS_GATE — execution
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against `scripts/verify_w5_spatial_tetrad_rank.py`. No scientific text changed.
+> The ranks are generic symbolic ranks, valid for g nonzero; both are zero
+> at g=0. Independent-entry and image-relation checks are recorded in
+> `2026-10-26--w5-spatial-tetrad-reconstruction.md`. This is a first-order
+> three-control result, not a gauge construction or an independent review.
+> The later W3 mean-field and W4 spectrum qualifications remain applicable
+> to the historical proof-of-principle language below.
+
 **Fecha:** 2026-09-30.  
 **Contrato:** [W5_SPATIAL_TETRAD_COMPLETENESS_GATE](../theory/W5_SPATIAL_TETRAD_COMPLETENESS_GATE.md), frozen at commit `d6dfad60a887036047fd2e4ded8d984df2b28844`.  
 **Certificado exacto:** [verify_w5_spatial_tetrad_rank.py](../scripts/verify_w5_spatial_tetrad_rank.py), added at commit `322a6fe516f96398fc8cea401e125c7da22393ee`.  
@@ -20,88 +29,88 @@ or metric perturbation.
 
 The linearized tetrad perturbation is
 
-[
-delta E
+\[
+\delta E
 =
--2g,operatorname{diag}(z_1,z_2,z_3)D,
-]
+-2g\,\operatorname{diag}(z_1,z_2,z_3)D,
+\]
 
 with
 
-[
+\[
 D=
 \begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
-end{pmatrix}.
-]
+\end{pmatrix}.
+\]
 
 The three derivative matrices
 
-[
-\frac{partialdelta E}{partial z_a}
-]
+\[
+\frac{\partial\delta E}{\partial z_a}
+\]
 
-are linearly independent because the rows of (D) are nonzero and occupy
+are linearly independent because the rows of \(D\) are nonzero and occupy
 different tetrad rows.
 
 Therefore the map
 
-[
-(z_1,z_2,z_3)mapstodelta E
-]
+\[
+(z_1,z_2,z_3)\mapsto\delta E
+\]
 
 has exact rank
 
-[
+\[
 \boxed{3}.
-]
+\]
 
-A general real (3\times3) spatial tetrad perturbation has nine components
+A general real \(3\times3\) spatial tetrad perturbation has nine components
 before any internal-frame redundancy.
 
-[
+\[
 \boxed{\texttt{T1 = RANK 3 OF 9}.}
-]
+\]
 
 ## 2. Metric tangent-space rank
 
 At first order,
 
-[
-delta h
+\[
+\delta h
 =
-E_0^Tdelta E+delta E^TE_0.
-]
+E_0^T\delta E+\delta E^TE_0.
+\]
 
 Using the W3 convention,
 
-[
-delta h
+\[
+\delta h
 =
 -2g
 \begin{pmatrix}
 2z_1&-z_2&z_3\\
 -z_2&-2z_2&z_3\\
 z_3&z_3&2z_3
-end{pmatrix}.
-]
+\end{pmatrix}.
+\]
 
-The coefficient matrices of (z_1,z_2,z_3) are linearly independent, so the
-map into the six-dimensional space of symmetric (3\times3) matrices has
+The coefficient matrices of \(z_1,z_2,z_3\) are linearly independent, so the
+map into the six-dimensional space of symmetric \(3\times3\) matrices has
 exact rank
 
-[
+\[
 \boxed{3}.
-]
+\]
 
 Hence the current model reaches only a three-dimensional linear subspace of
 the six-dimensional spatial-metric tangent space.
 
-[
+\[
 \boxed{\texttt{T2 = RANK 3 OF 6}.}
-]
+\]
 
 ## 3. Gauge-completion escape is not available yet
 
@@ -122,41 +131,41 @@ The project has not derived:
 Therefore the missing metric directions cannot be reclassified as gauge by
 fiat.
 
-[
+\[
 \boxed{\texttt{T3 = GAUGE COMPLETION OPEN}.}
-]
+\]
 
 ## 4. Temporal completion is also absent
 
-The model controls only the spatial Weyl coefficient matrix (E_a{}^i).
+The model controls only the spatial Weyl coefficient matrix \(E_a{}^i\).
 
 No independent dynamical variables or proved gauge conditions supply:
 
 - a lapse/time-leg;
 - shift/mixed components;
-- a full (3+1) tetrad;
+- a full \(3+1\) tetrad;
 - the corresponding constraint sector.
 
 The fixed discrete update time supplies a preferred foliation, but a preferred
 foliation is not a derivation of an admissible GR gauge fixing.
 
-[
+\[
 \boxed{\texttt{T4 = TEMPORAL COMPLETION OPEN}.}
-]
+\]
 
 ## 5. Consequence
 
 The current chain
 
-[
+\[
 \text{matter}
-leftrightarrow
+\leftrightarrow
 z_a
 \rightarrow
 E_a{}^i
 \rightarrow
 h^{ij}
-]
+\]
 
 remains mathematically valid inside its restricted three-field image.
 
@@ -168,39 +177,39 @@ a generic spatial gravitational configuration.
 
 ## 6. Minimal repair indicated by the rank calculation
 
-A natural successor is to replace the three controls (z_a) by nine local
+A natural successor is to replace the three controls \(z_a\) by nine local
 controls
 
-[
-z_{ar},qquad a,r=1,2,3,
-]
+\[
+z_{ar},\qquad a,r=1,2,3,
+\]
 
-where (r) labels three linearly independent displacement/current directions.
+where \(r\) labels three linearly independent displacement/current directions.
 
 If
 
-[
-delta E_a{}^i
+\[
+\delta E_a{}^i
 =
--2gsum_r z_{ar}D_r{}^i
-]
+-2g\sum_r z_{ar}D_r{}^i
+\]
 
-and the (3\times3) direction matrix (D) is invertible, then for each
-tetrad row (a) the three (z_{ar}) span all three spatial directions.
+and the \(3\times3\) direction matrix \(D\) is invertible, then for each
+tetrad row \(a\) the three \(z_{ar}\) span all three spatial directions.
 
-The resulting linear map from nine (z_{ar}) to nine tetrad components is
+The resulting linear map from nine \(z_{ar}\) to nine tetrad components is
 then potentially full rank.
 
 That extension is not constructed in this report.
 
 ## 7. Terminal decision
 
-[
+\[
 \boxed{
 \texttt{RESTRICTED\_SPATIAL\_METRIC\_SUBMANIFOLD /
 GAUGE\_COMPLETION\_OPEN}
 }
-]
+\]
 
 is the terminal state.
 

@@ -1,5 +1,12 @@
 # W5_SPATIAL_TETRAD_COMPLETENESS_GATE
 
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against `scripts/verify_w5_spatial_tetrad_rank.py`. No words, coefficients
+> or criteria changed. The frozen contract remains
+> `d6dfad60a887036047fd2e4ded8d984df2b28844`. The nonzero-coupling condition
+> and scope of the tangent-space result are recorded in
+> `reports/2026-10-26--w5-spatial-tetrad-reconstruction.md`.
+
 **Fecha:** 2026-09-30.  
 **Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
 **Rama:** `research/gravitational-normalization-gate`.
@@ -11,26 +18,26 @@ Current toy geometry after W3-W5 uses three scalar link controls
 
 The induced principal symbol is
 
-[
-H(x,p)sim sigma^a E_a{}^i(z,x)p_i,
-]
+\[
+H(x,p)\sim \sigma^a E_a{}^i(z,x)p_i,
+\]
 
 with
 
-[
-E(z)=E_0-2g,mathrm{diag}(z_1,z_2,z_3)D+O(g^2),
-]
+\[
+E(z)=E_0-2g\,\mathrm{diag}(z_1,z_2,z_3)D+O(g^2),
+\]
 
-[
-E_0=operatorname{diag}(1,-1,1),
-qquad
+\[
+E_0=\operatorname{diag}(1,-1,1),
+\qquad
 D=
 \begin{pmatrix}
 1&0&0\\
 1&1&0\\
 1&1&1
-end{pmatrix}.
-]
+\end{pmatrix}.
+\]
 
 ## 1. Single question
 
@@ -41,17 +48,17 @@ small spatial tetrad/metric perturbation, or only a restricted submanifold?
 
 The linearized tetrad perturbation is
 
-[
-delta E
+\[
+\delta E
 =
--2g,mathrm{diag}(z_1,z_2,z_3)D.
-]
+-2g\,\mathrm{diag}(z_1,z_2,z_3)D.
+\]
 
 Compute the dimension of the image of the linear map
 
-[
-(z_1,z_2,z_3)mapsto delta E.
-]
+\[
+(z_1,z_2,z_3)\mapsto \delta E.
+\]
 
 A generic real spatial tetrad has nine components before internal frame
 rotations.
@@ -60,20 +67,20 @@ rotations.
 
 The spatial metric is
 
-[
+\[
 h=E^TE.
-]
+\]
 
 At linear order,
 
-[
-delta h
+\[
+\delta h
 =
-E_0^Tdelta E+delta E^T E_0.
-]
+E_0^T\delta E+\delta E^T E_0.
+\]
 
 Compute the dimension of the image in the six-dimensional vector space of
-symmetric (3\times3) matrices.
+symmetric \(3\times3\) matrices.
 
 ## 4. T3 — gauge-completion escape
 
@@ -89,7 +96,7 @@ Absent that derivation, do not reinterpret missing components as gauge.
 ## 5. T4 — temporal completion
 
 The current principal symbol supplies only spatial tetrad coefficients
-(E_a{}^i). Record whether lapse/time-leg and shift/mixed spacetime tetrad
+\(E_a{}^i\). Record whether lapse/time-leg and shift/mixed spacetime tetrad
 components have been constructed or justified as a controlled gauge fixing.
 
 ## 6. Terminal states
