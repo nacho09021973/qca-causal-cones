@@ -12,6 +12,11 @@ The project asks whether a relativistic low-energy propagation speed can be deri
 
 The original strong identification `c_IR = maximum microscopic substrate speed` does **not** survive generically in finite-range lattice QCAs for spatial dimension `d >= 2`. Comparison with the one-step inradius was replaced by `B_infty^*`, which compares the massless speed `c_0` with the strict asymptotic isotropic speed `c_strict^iso` of the same dynamics. Its strong form has an explicit counterexample in a declared four-component class. The open question is which additional structural hypotheses, if any, restore the equality.
 
+## Setup on another computer
+
+See the [portability guide](docs/PORTABILIDAD.md) for Python dependencies,
+verification, and restoring the git-ignored local library.
+
 ## Canonical state
 
 Read [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) before doing new work. It is the single source of truth for project status, gates, rejected claims, and the next allowed calculation.
