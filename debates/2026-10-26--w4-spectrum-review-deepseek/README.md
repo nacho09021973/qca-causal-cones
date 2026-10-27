@@ -1,9 +1,11 @@
 # Revisión independiente de la interpretación W4
 
-Estado: **PREPARED_NOT_SENT**. Preparada el 2026-10-26 a petición del usuario.
+Estado: **COMPLETED / ACCEPT_WITH_REPAIRS**. El usuario autorizó «enviala» el
+2026-10-26; véase [registro de envío](envio.md). La entrada preparada en
+`85e22e0` conserva exactamente sus bytes y las huellas originales.
 Revisor previsto: DeepSeek, mediante `revision-ciega` del PATH. Familia
-distinta de la de Codex, autor de la auditoría. Esto prepara una revisión
-independiente; no acredita que haya ocurrido ni sustituye revisión humana.
+distinta de la de Codex, autor de la auditoría. El informe completo está en `intentos/03-low/informe_deepseek.md`;
+no sustituye revisión humana.
 
 ## Objeto y cierre
 
@@ -16,7 +18,9 @@ Se cierra la ronda con un informe íntegro y una lista finita de objeciones o
 con REJECT/INCONCLUSIVE. ACCEPT_WITH_REPAIRS requiere después comprobar las
 reparaciones; «respondida» no significa «resuelta». Una respuesta truncada o
 con llamadas a herramientas escritas como texto no se considera informe.
-No se ha creado ningún informe, archivo de respuesta API ni veredicto externo.
+El informe contiene cinco objeciones. Su comprobación y tratamiento local
+constan en el [registro](../../reports/2026-10-27--w4-review-objections.md);
+no han sido revisados de nuevo y no equivalen a evidencia promovida.
 
 ## Archivos y procedencia
 
@@ -50,6 +54,6 @@ El futuro lanzamiento debe usar los mismos seis adjuntos y comprobar que
 coinciden; el comando de preparación no ejecuta esa acción.
 
 Las reglas globales `~/herramientas/REGLAS.md` exigen permiso explícito para
-enviar texto a terceros con `revision-ciega`. La autorización actual pide
-**preparar** la revisión; el envío queda pendiente. No falta ningún trabajo
-local para que el usuario pueda inspeccionar qué se sometería al revisor.
+enviar texto a terceros con `revision-ciega`. La autorización posterior
+«enviala» cubre esta ronda; no autoriza rondas adicionales ni cambios al
+encargo. Los adjuntos revisados permanecen congelados.

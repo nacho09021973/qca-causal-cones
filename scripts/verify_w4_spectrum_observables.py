@@ -1,6 +1,8 @@
-"""Independent real-space construction and Z-observable checks for W4.
+"""Separate real-space construction and Z-observable checks for W4.
 
 Finite rings are exact regression witnesses, not a finite-size extrapolation.
+The Bloch comparison imports the other certificate: it is an author-side
+cross-check, not an independent review, and can share convention errors.
 General Bloch/branch arguments are in verify_w4_long_wavelength_spectrum.py
 and reports/2026-10-26--w4-spectrum-audit.md. All arithmetic is exact SymPy.
 """

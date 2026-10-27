@@ -63,6 +63,13 @@ def main():
     assert_sym_equal(full_plus.subs(k, 0)*antisymmetric,
                      sp.exp(-4*sp.I*kap)*antisymmetric)
     assert_sym_equal(full_plus.subs(k, sp.pi), sp.exp(-2*sp.I*kap)*sp.eye(2))
+    # Alternative exact check without the shared normalizer, at a nontrivial
+    # angle and momentum; the phase-stripped mutation must fail this check.
+    sample = {k: sp.pi/2, kap: sp.pi/4}
+    actual_trace = sp.trace(full_plus.subs(sample)).expand(complex=True).simplify()
+    assert actual_trace == -sp.I
+    mutated_trace = sp.trace(stripped[1].subs(sample)).expand(complex=True).simplify()
+    assert mutated_trace != -sp.I
     # Mutation guard: stripping the phase loses the eigenvalue 1 relative to vacuum.
     assert not sym_zero((stripped[1].subs({k: 0, kap: sp.pi/4})-sp.eye(2))*uniform)
     print("[PASS] same-sign uniform eigenvalue 1; zone-edge crossing at quasienergy 2*kappa")

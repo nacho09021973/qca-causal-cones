@@ -19,7 +19,7 @@ independent review. Current W4 long-wavelength interpretation:
 ```
 W4_LONG_WAVELENGTH_SPECTRUM = OPEN_AFTER_AUDIT
 LOCAL_ALGEBRA_AND_OBSERVABLE_CHECKS = PASS
-EVIDENCE = AUTHOR_CHECKED / INDEPENDENT_REVIEW_PREPARED_NOT_SENT
+EVIDENCE = AUTHOR_CHECKED / INDEPENDENT_REVIEW_ACCEPT_WITH_REPAIRS / AUTHOR_REPAIRS_CHECKED
 ```
 
 The [audit](../reports/2026-10-26--w4-spectrum-audit.md) supersedes the physical
@@ -45,8 +45,12 @@ SHA256 manifest identifies the exact executed certificate bytes above the
 recorded base HEAD. The new W4 checks use exact arithmetic, not fitted spectra.
 
 The [review package](../debates/2026-10-26--w4-spectrum-review-deepseek/README.md)
-is prepared locally for a different model family, with one bounded round and
-exact inputs; no provider call or independent verdict has occurred. The prior
+was sent to a different model family in one bounded round. The completed
+DeepSeek report returns ACCEPT_WITH_REPAIRS. Its five objections were checked
+and addressed locally in the [repair record](../reports/2026-10-27--w4-review-objections.md);
+the reviewer has not checked the subsequent changes. Completion does not
+promote evidence.
+The prior
 W4 stiffness review does not cover this corrected spectrum interpretation.
 No model replacement, evidence promotion, new 3D/tensor calculation or
 reopening of W1–W12: it remains CLOSED_BY_CONTRACT.
