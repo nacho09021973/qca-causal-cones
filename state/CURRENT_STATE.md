@@ -1022,8 +1022,14 @@ Why do distinct low-energy species share the same effective relativistic cone/sp
 Sub-question A.int (imported 2026-10-26, AI-formulated, unreviewed): with
 equal free IR speeds, does interaction in a Δt = Δx QCA shift `c^(i)` per
 species at O(g²) (Collins mechanism), and does any QCA symmetry forbid it?
-Status **OPEN / NOT_STARTED**; first step proposed but not executed: a
-bounded primary-source preflight. See the
+Status **OPEN / PRIMARY_SOURCE_PREFLIGHT_COMPLETE** (2026-10-27).
+The [primary-source preflight](../reports/2026-10-27--interaction-speed-primary-preflight.md)
+distinguishes EFT operator admissibility from a computed QCA loop shift.
+The checked covariance papers do not establish interacting 3+1 protection;
+this does not prove its absence. Number-preserving Thirring has exactly free
+one-particle evolution over the empty vacuum, so that sector is not a witness
+of the proposed radiative effect. QCA-specific loop matching and Q3 remain
+open; no calculation contract was opened. See the
 [imported question](../reports/2026-10-26--interaction-renormalized-species-speed.md).
 No gate opened or promoted.
 
