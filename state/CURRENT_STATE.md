@@ -1019,6 +1019,14 @@ Why do distinct low-energy species share the same effective relativistic cone/sp
 
 **Status: OPEN**
 
+Sub-question A.int (imported 2026-10-26, AI-formulated, unreviewed): with
+equal free IR speeds, does interaction in a Δt = Δx QCA shift `c^(i)` per
+species at O(g²) (Collins mechanism), and does any QCA symmetry forbid it?
+Status **OPEN / NOT_STARTED**; first step proposed but not executed: a
+bounded primary-source preflight. See the
+[imported question](../reports/2026-10-26--interaction-renormalized-species-speed.md).
+No gate opened or promoted.
+
 ### B_infty^* — strict asymptotic matching (supersedes B* / inradius matching)
 
 Candidate:
