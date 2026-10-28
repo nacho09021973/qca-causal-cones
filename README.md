@@ -21,18 +21,24 @@ verification, and restoring the git-ignored local library.
 
 Read [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) before doing new work. It is the single source of truth for project status, gates, rejected claims, and the next allowed calculation.
 
-## Current reading order — 2026-09-28
+## Current reading order — 2026-10-28
 
-1. [State and synchronization summary](state/CURRENT_STATE.md#reading-guide-and-synchronization--2026-09-28):
-   accepted scopes, preliminary work, paused fronts, and missing local commits.
+Status on branch `research/inverse-gravity-design`; `main` may differ.
+
+1. [Current reading guide](state/CURRENT_STATE.md#current-reading-guide--2026-10-28):
+   one row per front, with status and where to resume.
 2. [Flat CJWW manuscript](papers/ir-corona/ir-corona.tex): the model result.
 3. [Independent-use discrimination cost](reports/2026-09-28--iid-message-discrimination-cost.md):
-   supplied preliminary derivation, independent review pending.
-4. [Existing 4B execution](reports/2026-09-25--physical-realization-absolute-scale-gate.md):
-   negative absolute-scale result, with its recorded evidence limitations.
+   reviewed (Astra PASS_WITH_REPAIRS, Gemini PASS); the repaired version was
+   re-reviewed by Grok (PASS) on 2026-10-28. It does not establish a universal
+   operational boundary at c.
+4. [Interaction-renormalized species speed](reports/2026-10-26--interaction-renormalized-species-speed.md):
+   the open question now being worked on (A.int), currently at the stage of
+   fixing a reference state for the Eon v4 QED QCA. No calculation contract yet.
 
-The immediate task is synchronization and review before further research.
-The new report does not establish a universal operational boundary at c.
+The September 28 synchronization tasks (missing local commits, review of the
+discrimination cost) are complete. The document reconstruction after the
+escape-corruption audit is complete as well.
 
 ## Literature library
 

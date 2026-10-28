@@ -1,5 +1,7 @@
 # Hoja de ruta — frente E
 
+> **Nota — 2026-10-28.** Hoja de ruta histórica. Planificación vigente: [hoja de trabajo 28 oct 2026](../hoja%20de%20trabajo%2028%20oct%202026.md) y la guía de lectura al principio de `state/CURRENT_STATE.md`.
+
 > **Typographic reconstruction — 2026-10-26.** Barras invertidas restauradas
 > a mano, sin cambiar palabras ni criterios. Es una hoja histórica: el estado
 > canónico posterior prevalece y esta restauración no reabre E/H1.

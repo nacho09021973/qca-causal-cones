@@ -1,5 +1,7 @@
 # Hoja de trabajo — 22 de octubre de 2026
 
+> **Superada — 2026-10-28.** Ver [hoja de trabajo 28 oct 2026](hoja%20de%20trabajo%2028%20oct%202026.md). Se conserva como registro.
+
 Rama: `research/inverse-gravity-design`, subida hasta `8986cfc` (más el commit de esta hoja).
 La fuente de verdad sigue siendo `state/CURRENT_STATE.md`. Esta hoja ordena los próximos pasos,
 pero no autoriza nada por sí misma.

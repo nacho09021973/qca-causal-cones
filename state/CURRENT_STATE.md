@@ -11,6 +11,26 @@
 > User authorization "1 y despues 2" next covers strengthening W3–W6
 > certificates, without reopening W1–W12 or promoting scientific evidence.
 
+## Current reading guide — 2026-10-28
+
+Branch `research/inverse-gravity-design`. Documentary summary of the dated entries
+below and of the canonical sections; it changes no status. Where it disagrees
+with a dated entry, the dated entry wins.
+
+| Front | Status | Where |
+| --- | --- | --- |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; NOVELTY OPEN | Sections 4–7 |
+| Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1 | Section 8.20; `papers/ir-corona/` |
+| Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
+| Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
+| 4B absolute scale | `NO_ABSOLUTE_SCALE_DERIVABLE` closed in the frozen class; Sept 28 commits reconciled (`94071db`) | Reconciliation entry of 2026-10-22 |
+| H1 / inhomogeneous | OPEN and paused; L2 `B / OPEN_BLOCKED_METHOD` | Section 9.7 |
+| Integrity | Documentary reconstruction complete; `text_integrity --check` reports zero problems | Entries of 2026-10-22 and 2026-10-26 |
+| W1–W12 gravity line | CLOSED_BY_CONTRACT. W3–W6 REVIEWED_ACCEPT_WITH_REPAIRS (reduced scope); strengthened W3/W5/W6 certificates NEW_INDEPENDENT_REVIEW_PENDING; W1, W2, W7 and the CJWW bridges reconstructed, independent review pending | Entries of 2026-10-22 and 2026-10-26 |
+| W4 long-wavelength spectrum | OPEN_AFTER_AUDIT; DeepSeek ACCEPT_WITH_REPAIRS; author repairs not re-reviewed | Entry of 2026-10-26 |
+| Inverse-gravity successor (IG-S0 to IG-S2) | `BOUNDED_TRANSFER_ATTEMPT_STOPPED_OPEN`; direct transfer paused | Entries of 2026-10-08 and 2026-10-10 |
+| A.int, interaction-renormalized species speed | OPEN sub-question of A; no calculation contract; Eon v4 reference-state work in progress | Section 4, A — IR universality |
+
 ## W4 full-spectrum audit and review preparation — 2026-10-26
 
 Direct user instruction authorizes this focused audit and preparation of an
@@ -347,9 +367,10 @@ l.462; the rate bound at l.576) and it agrees. Non-mandatory notes: the polynomi
 bound on C is sufficient, not necessary (log|C| = o(N) suffices); the report header
 still reads "without independent review" and is superseded by its addendum.
 Status: `REVIEWED_PASS_WITH_REPAIRS; repaired version REVIEWED_PASS`. Inherited
-corona premises remain outside all three reviews. The reconciliation of `13d398a`
-and `16c4f0f` remains undone. No gate is promoted, and no operational frontier at
-c is claimed.
+corona premises remain outside all three reviews. No gate is promoted, and no
+operational frontier at c is claimed. Correction (2026-10-28): the sentence above
+in the 2026-10-22 entry saying the reconciliation of `13d398a`/`16c4f0f` "remains
+undone" was superseded the same day by the reconciliation section above (`94071db`).
 
 ## IG-S2 bounded mixed-cost transfer attempt — 2026-10-10
 
@@ -828,6 +849,10 @@ successor; it was not substituted or executed after the failure.
 
 ## Reading guide and synchronization — 2026-09-28
 
+> Historical snapshot. Several rows below (W3–W6, W4 spectrum, discrimination
+> cost, local-versus-remote evidence) were overtaken by later dated entries.
+> Use the current reading guide of 2026-10-28 at the top of this file.
+
 This branch was created from the documentation-only checkpoint of 2026-09-28.
 That checkpoint's inventory remains unchanged below. On 2026-09-29 the user
 directly authorized a separately chartered successor,
@@ -881,10 +906,11 @@ existing record on the basis of the different, unavailable September 28
 report. Reconcile the local history against these records when it is synced;
 no new 4B closure or evidence-level promotion is performed here.
 
-**Next step before new research.** Reconcile the unavailable local commits.
-The independent review of the imported discrimination-cost report is done
-(2026-10-22, repairs re-reviewed 2026-10-28; see the dated sections above);
-its inherited sixteen-pair asymptotic was outside those reviews. A universal operational boundary at c, viable
+**Next step before new research.** Superseded: both items are done. The local
+commits were reconciled on 2026-10-22 (`94071db`), and the discrimination-cost
+report was reviewed on 2026-10-22, with its repairs re-reviewed on 2026-10-28;
+its inherited sixteen-pair asymptotic was outside those reviews. See the current
+reading guide at the top of this file. A universal operational boundary at c, viable
 communication inside it, other geometries, correlated uses, and stability
 under perturbations remain unproved and are not opened by this checkpoint.
 

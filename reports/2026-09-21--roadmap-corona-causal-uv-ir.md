@@ -1,5 +1,7 @@
 # Hoja de ruta — corona causal: IR, UV y frente inhomogéneo
 
+> **Nota — 2026-10-28.** Hoja de ruta histórica. Planificación vigente: [hoja de trabajo 28 oct 2026](../hoja%20de%20trabajo%2028%20oct%202026.md) y la guía de lectura al principio de `state/CURRENT_STATE.md`.
+
 Fecha: 2026-09-21  
 Inicio operativo: 2026-09-22  
 Rama: `research/b-infinity-post-s4-gate`
