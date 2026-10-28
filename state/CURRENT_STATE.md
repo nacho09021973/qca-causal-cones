@@ -336,6 +336,21 @@ reading-guide row. The reconciliation of the unavailable local commits (`13d398a
 `16c4f0f`) remains undone. No gate is promoted, and no operational frontier at c
 is claimed. Same-day documentary commit: the 2026-10-08 elastic atlas audit.
 
+**Addendum re-review — 2026-10-28.** Direct user instruction "sigamos con la
+revisión del coste de discriminación", then "Re-revisar el addendum". Sealed
+single-round review of the repaired report (sha256 `9838662a…`, last commit
+`262ce03`) by Grok (grok-4.7), a house that did not take part in the
+2026-10-22 round: `PASS`, no mandatory repairs
+([review and author reading](../debates/2026-10-28--iid-discrimination-cost-addendum-review-grok/verificacion_autor.md)).
+The author re-derived R1 independently from `ir-corona.tex` (D_B >= delta at
+l.462; the rate bound at l.576) and it agrees. Non-mandatory notes: the polynomial
+bound on C is sufficient, not necessary (log|C| = o(N) suffices); the report header
+still reads "without independent review" and is superseded by its addendum.
+Status: `REVIEWED_PASS_WITH_REPAIRS; repaired version REVIEWED_PASS`. Inherited
+corona premises remain outside all three reviews. The reconciliation of `13d398a`
+and `16c4f0f` remains undone. No gate is promoted, and no operational frontier at
+c is claimed.
+
 ## IG-S2 bounded mixed-cost transfer attempt — 2026-10-10
 
 Direct user instruction "Intentalo"; the existing sufficiency contract's
@@ -849,7 +864,7 @@ reopened or promoted by that successor.
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
 | H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
-| Independent-use discrimination cost | PRELIMINARY, independent review pending: fixed-detector Theta(delta_N^-2); uniform one-particle lower bound Omega(N^-4 exp(K_* N)) for independent uses in the same regions | [September 28 supplied report](../reports/2026-09-28--iid-message-discrimination-cost.md) |
+| Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (Astra; Gemini PASS, 2026-10-22); repaired version REVIEWED_PASS (Grok, 2026-10-28); inherited corona premises not reviewed: fixed-detector Theta(delta_N^-2); uniform one-particle lower bound Omega(N^-4 exp(K_* N)) for independent uses in the same regions | [September 28 supplied report](../reports/2026-09-28--iid-message-discrimination-cost.md) |
 
 **Local versus remote evidence.** At this checkpoint, the remote
 `claude/endpoint-transfer-partial` points to `a19c6478`, 25 commits behind
@@ -866,10 +881,10 @@ existing record on the basis of the different, unavailable September 28
 report. Reconcile the local history against these records when it is synced;
 no new 4B closure or evidence-level promotion is performed here.
 
-**Next step before new research.** Reconcile the unavailable local commits,
-then independently review the imported discrimination-cost report, including
-its declared baseline and inherited sixteen-pair asymptotic. Until then the
-cost remains PRELIMINARY. A universal operational boundary at c, viable
+**Next step before new research.** Reconcile the unavailable local commits.
+The independent review of the imported discrimination-cost report is done
+(2026-10-22, repairs re-reviewed 2026-10-28; see the dated sections above);
+its inherited sixteen-pair asymptotic was outside those reviews. A universal operational boundary at c, viable
 communication inside it, other geometries, correlated uses, and stability
 under perturbations remain unproved and are not opened by this checkpoint.
 
