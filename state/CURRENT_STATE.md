@@ -1070,7 +1070,52 @@ The checked covariance papers do not establish interacting 3+1 protection;
 this does not prove its absence. Number-preserving Thirring has exactly free
 one-particle evolution over the empty vacuum, so that sector is not a witness
 of the proposed radiative effect. QCA-specific loop matching and Q3 remain
-open; no calculation contract was opened. See the
+open; no calculation contract was opened.
+User-authorized step 1 (2026-10-27), the
+[Eon v4 feasibility audit](../reports/2026-10-27--eon-v4-interaction-speed-feasibility.md),
+is complete: `REFERENCE_AND_OBSERVABLE_OPEN / NOT_READY_FOR_ONE_LOOP`.
+The physical half-filled Gauss sector is identified, but a stationary vacuum,
+charged dressing/boundaries, a controlled weak-coupling expansion and the
+free fermion/photon speed calibration remain unestablished. This is not a
+rejection of Eon's model.
+The user then authorized specification and checking of one reference.
+The [fixed specification](../theory/A_INT_EON_REFERENCE_CHECK.md) and
+[exact reference check](../reports/2026-10-27--eon-reference-state-check.md)
+give `GAUSS_PASS / OCCUPATION_REFERENCE_STATIONARITY_FAIL / STOP_THIS_CANDIDATE`.
+For the declared product with modes 2,3 filled and integer E=0, the full-step
+occupation witness changes by `2 sin²(m epsilon)` per site. A separate
+massless full-step magnetic bound rejects it in a declared small-angle
+interval. L=3,4 finite controls and two exact local mass constructions pass;
+the analytic proof states the L>=3 scope. Evidence is author-checked, with
+independent review pending. No alternative vacuum, loop calculation or
+evidence promotion; the model itself is not rejected and A.int stays open.
+After a user-supplied reply, an
+[author-side audit](../reports/2026-10-27--eon-received-answer-audit.md)
+finds its failure explanation compatible but its vacuum shortcuts insufficient.
+Fixed E=0 requires sharp local number, not only mean two: a negative-band
+Slater control on a four-site free directional slice is stationary freely
+but has local number variance one and fails the proposed Gauss sector.
+A two-mode counterexample also shows that principal-log minimization can
+select a different state from the known additive-energy vacuum. These are
+bounded algebra controls, not a construction or simulation of the interacting
+3D gauge vacuum. No replacement candidate, independent-review promotion or
+loop execution is recorded.
+The subsequent user instruction "hazlo" authorizes a new explicit
+matter/gauge reference attempt. The
+[fixed projected-Gaussian specification](../theory/A_INT_EON_PROJECTED_GAUSSIAN_REFERENCE.md)
+and [construction/check](../reports/2026-10-27--eon-projected-gaussian-reference.md)
+give `EXPLICIT_NORMALIZABLE_GAUSS_STATE_CONSTRUCTED /
+GAUSSIAN_TAIL_STATIONARITY_FAIL`. A Gauss-projected auxiliary Dirac Slater
+with electric heat-kernel weights has exact Gauss, finite norm and finite
+electric expectation. Its preparation criterion is an explicit auxiliary
+choice, not a conserved energy derived from U. An author-written Fourier/
+Jensen argument excludes stationary pure states with these Gaussian electric
+tails for the declared finite-volume, untruncated, exact-exponential magnetic
+step with nonzero angle. Ingredient checks are executable; the analytic
+argument still needs independent review. This does not exclude other tails
+or all Eon vacua. The requested physical vacuum has NOT been obtained;
+no correlator, speed, loop or evidence-promotion gate is opened.
+See the
 [imported question](../reports/2026-10-26--interaction-renormalized-species-speed.md).
 No gate opened or promoted.
 

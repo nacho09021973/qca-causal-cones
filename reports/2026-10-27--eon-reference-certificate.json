@@ -1,0 +1,80 @@
+{
+  "candidate": "Omega_occ: modes 2,3 filled; integer E=0; f=2",
+  "status": "CANDIDATE_REJECTED_AS_STATIONARY_REFERENCE",
+  "scope": "Eon v4 exact exponential magnetism; periodic L>=3; no rotor truncation",
+  "transport": [
+    {
+      "L": 3,
+      "axis": 2,
+      "gauss_gate_checks": 54,
+      "restored_occupations": true,
+      "restored_flux": true
+    },
+    {
+      "L": 3,
+      "axis": 1,
+      "gauss_gate_checks": 54,
+      "restored_occupations": true,
+      "restored_flux": true
+    },
+    {
+      "L": 3,
+      "axis": 0,
+      "gauss_gate_checks": 54,
+      "restored_occupations": true,
+      "restored_flux": true
+    },
+    {
+      "L": 4,
+      "axis": 2,
+      "gauss_gate_checks": 128,
+      "restored_occupations": true,
+      "restored_flux": true
+    },
+    {
+      "L": 4,
+      "axis": 1,
+      "gauss_gate_checks": 128,
+      "restored_occupations": true,
+      "restored_flux": true
+    },
+    {
+      "L": 4,
+      "axis": 0,
+      "gauss_gate_checks": 128,
+      "restored_occupations": true,
+      "restored_flux": true
+    }
+  ],
+  "mass": {
+    "occupation_per_site": "2*sin(t)**2",
+    "original_local_pattern_probability": "cos(t)**4",
+    "t_pi_over_4_occupation_per_site": 1,
+    "t_pi_over_4_original_local_pattern_probability": "1/4",
+    "all_sector_mass_matrix_agreement": true
+  },
+  "massless_magnetic": [
+    {
+      "L": 3,
+      "N_plaquettes": 81,
+      "orthogonal_one_loop_targets": 162,
+      "theta": "1/52488",
+      "target_amplitude_lower_bound": "1/69984",
+      "reference_leakage_probability_lower_bound": "1/4897760256"
+    },
+    {
+      "L": 4,
+      "N_plaquettes": 192,
+      "orthogonal_one_loop_targets": 384,
+      "theta": "1/294912",
+      "target_amplitude_lower_bound": "1/393216",
+      "reference_leakage_probability_lower_bound": "1/154618822656"
+    }
+  ],
+  "exclusions": [
+    "not a proof that every Eon vacuum fails",
+    "not a full gauge circuit simulator",
+    "massless failure only in the declared small-angle interval",
+    "no continuum, thermodynamic-spectrum or radiative-speed result"
+  ]
+}

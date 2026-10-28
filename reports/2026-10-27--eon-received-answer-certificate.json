@@ -1,0 +1,81 @@
+{
+  "status": "RECEIVED_VACUUM_SHORTCUTS_NOT_VALIDATED",
+  "slater_gauss": {
+    "scope": "four-site one-direction free slice; NOT interacting 3D QCA",
+    "stationary_free_Slater": true,
+    "E_zero_Gauss_pass": false,
+    "local_records": [
+      {
+        "site": 0,
+        "mean_N": 2,
+        "variance_N": 1,
+        "expectation_G_squared_at_E_zero": 1,
+        "probability_N_equals_2": "3/8"
+      },
+      {
+        "site": 1,
+        "mean_N": 2,
+        "variance_N": 1,
+        "expectation_G_squared_at_E_zero": 1,
+        "probability_N_equals_2": "3/8"
+      },
+      {
+        "site": 2,
+        "mean_N": 2,
+        "variance_N": 1,
+        "expectation_G_squared_at_E_zero": 1,
+        "probability_N_equals_2": "3/8"
+      },
+      {
+        "site": 3,
+        "mean_N": 2,
+        "variance_N": 1,
+        "expectation_G_squared_at_E_zero": 1,
+        "probability_N_equals_2": "3/8"
+      }
+    ],
+    "zero_mass_projector_mismatch_squared": 2
+  },
+  "principal_log": {
+    "additive_energies_in_pi_units": [
+      "0",
+      "3/4",
+      "3/4",
+      "3/2"
+    ],
+    "principal_energies_in_pi_units": [
+      "0",
+      "3/4",
+      "3/4",
+      "-1/2"
+    ],
+    "same_unitary": true,
+    "same_ground_state": false,
+    "admits_same_sharp_local_charge_encoding": true,
+    "induced_cross_term": "-2*pi*n1*n2"
+  },
+  "long_time": {
+    "scope": "mass-only control, not full Eon evolution",
+    "records": [
+      {
+        "steps": 8,
+        "angle": "pi/16",
+        "one_step_occupation": "2*sin(pi/16)**2",
+        "occupation_after_n_steps": 2
+      },
+      {
+        "steps": 16,
+        "angle": "pi/32",
+        "one_step_occupation": "2*sin(pi/32)**2",
+        "occupation_after_n_steps": 2
+      },
+      {
+        "steps": 32,
+        "angle": "pi/64",
+        "one_step_occupation": "2*sin(pi/64)**2",
+        "occupation_after_n_steps": 2
+      }
+    ]
+  },
+  "evidence": "AUTHOR_CHECKED_ONLY"
+}

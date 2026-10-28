@@ -94,6 +94,12 @@
       "Bash(python3 -B scripts/verify_w8_tt_gauge_reduction.py)",
       "Bash(python3 scripts/verify_w9_continuum_gauge_bridge.py)",
       "Bash(python3 -B scripts/verify_w9_continuum_gauge_bridge.py)",
+      "Bash(python3 scripts/verify_eon_projected_gaussian_reference.py)",
+      "Bash(python3 -B scripts/verify_eon_projected_gaussian_reference.py)",
+      "Bash(python3 scripts/verify_eon_received_answer_audit.py)",
+      "Bash(python3 -B scripts/verify_eon_received_answer_audit.py)",
+      "Bash(python3 scripts/verify_eon_reference_state.py)",
+      "Bash(python3 -B scripts/verify_eon_reference_state.py)",
       "Bash(lake build)",
       "Bash(lake exe cache get)"
     ]

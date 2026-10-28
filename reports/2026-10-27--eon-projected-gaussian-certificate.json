@@ -1,0 +1,81 @@
+{
+  "status": "PROJECTED_GAUSSIAN_GAUSS_PASS_STATIONARITY_FAIL",
+  "accepted_physical_vacuum": false,
+  "construction": "P_G (FS_D tensor electric heat kernels), normalized; beta=log(2)",
+  "model": "Eon v4 original U, exact magnetic exponential, untruncated integer rotors",
+  "seed": {
+    "criterion": "auxiliary additive Dirac Hamiltonian; NOT log(U)",
+    "rank_per_momentum": 2,
+    "number_of_filled_modes": "2*V",
+    "gapped_for_positive_mass": true,
+    "nonconstant_projector": true
+  },
+  "integer_Gauss": [
+    {
+      "L": 3,
+      "transported_positive_charge": 1,
+      "exact_divergence_match": true
+    },
+    {
+      "L": 3,
+      "transported_positive_charge": 26,
+      "exact_divergence_match": true
+    },
+    {
+      "L": 4,
+      "transported_positive_charge": 1,
+      "exact_divergence_match": true
+    },
+    {
+      "L": 4,
+      "transported_positive_charge": 64,
+      "exact_divergence_match": true
+    }
+  ],
+  "infinite_support_control": {
+    "scope": "two-configuration, one-loop control; not full projected 3D state",
+    "beta": "log(2)",
+    "Gauss_all_integer_loop_numbers": true,
+    "matter_reduced_purity": "1/2",
+    "partial_sum_controls": [
+      {
+        "cutoff": 0,
+        "unnormalized_norm_lower": "1/4",
+        "unnormalized_tail_upper": "128/4095",
+        "normalized_tail_probability_upper": "512/4095"
+      },
+      {
+        "cutoff": 1,
+        "unnormalized_norm_lower": "4353/16384",
+        "unnormalized_tail_upper": "8/1048575",
+        "normalized_tail_probability_upper": "131072/4564446975"
+      },
+      {
+        "cutoff": 2,
+        "unnormalized_norm_lower": "1168499605505/4398046511104",
+        "unnormalized_tail_upper": "1/137438952960",
+        "normalized_tail_probability_upper": "8589934592/313666723271055179775"
+      }
+    ]
+  },
+  "obstruction_ingredients": {
+    "Gaussian_growth_identity": true,
+    "magnetic_harmonic_counts": [
+      {
+        "L": 3,
+        "z_coefficient_at_other_angles_zero": 4,
+        "inverse_z_coefficient_at_other_angles_zero": 4
+      },
+      {
+        "L": 4,
+        "z_coefficient_at_other_angles_zero": 4,
+        "inverse_z_coefficient_at_other_angles_zero": 4
+      }
+    ],
+    "universal_stationarity_obstruction": "author-written Fourier/Jensen proof in report",
+    "outside_Gaussian_class_inverse_kick_control": true,
+    "not_a_numerical_proof_of_complex_analysis": true
+  },
+  "scope": "finite volume L>=3; magnetic angle nonzero; Gaussian electric tails",
+  "evidence": "AUTHOR_ANALYTIC_PROOF_AND_EXACT_INGREDIENT_CHECKS / INDEPENDENT_REVIEW_PENDING"
+}

@@ -97,8 +97,22 @@ script itself; consult the report and `state/CURRENT_STATE.md` for review status
 | `verify_inverse_gravity_dressed_parent.py` | `theory/INVERSE_GRAVITY_DRESSED_PARENT_GATE.md`; `2026-10-08--inverse-gravity-dressed-parent.md` | 4 | `DRESSED_PARENT_ALGEBRA_PASS_AUTHOR_SIDE`; gap interval uniform on admitted tori | That either endpoint is the exact gap; spatial claims (proved in the report) |
 | `verify_inverse_gravity_state_first.py` | `theory/INVERSE_GRAVITY_STATE_FIRST_GATE.md`; `2026-10-08--inverse-gravity-state-first.md` | 5 | `STATE_FIRST_AUXILIARY_CONTROLS_PASS` | A new QCA rule, physical IR state, spin-2 spectrum or gravity (`NOT_COMPUTED`) |
 
-The three `verify_eon_*.py` scripts of 2026-10-27 are not yet committed and are
-not listed here.
+## A.int Eon v4 reference-state controls (2026-10-27)
+
+Run each as `python3 -B scripts/<name>` from the repository root. Each prints a
+single summary `PASS` line after its internal exact checks; the counts in the
+table above do not apply. Source model: Eon, Di Molfetta, Magnifico, Arrighi,
+arXiv:2205.03148v4 (`biblioteca/`, sha256 in
+`reports/2026-10-27--interaction-speed-primary-sources.sha256`).
+
+| Script | Specification; report | Certified verdict | Does not certify |
+| --- | --- | --- | --- |
+| `verify_eon_reference_state.py` | `theory/A_INT_EON_REFERENCE_CHECK.md`; `2026-10-27--eon-reference-state-check.md` | Gauss and exact witness checks; the occupation-product candidate fails stationarity in the declared cases (`STOP_THIS_CANDIDATE`) | Rotor truncation, full gauge simulation, any vacuum construction, IR limit or loop; the full-step conclusions also rely on analytic arguments in the report |
+| `verify_eon_received_answer_audit.py` | Report `2026-10-27--eon-received-answer-audit.md` | Exact algebra controls on two proposed shortcuts (sharp local number for E=0; principal-log selection) and a mass-only long-time control | The interacting 3D gauge QCA; it uses a four-site one-directional free slice and two-mode controls only; no vacuum construction |
+| `verify_eon_projected_gaussian_reference.py` | `theory/A_INT_EON_PROJECTED_GAUSSIAN_REFERENCE.md`; `2026-10-27--eon-projected-gaussian-reference.md` | Construction ingredients of the Gauss-projected Gaussian reference (Dirac projector, integer Gauss solutions at L=3,4, tail control, magnetic harmonic counts, finite-Laurent and inverse-kick identities) | The Fourier/Jensen stationarity lemma, which is analytic; the harmonic count ignores JW/rishon plaquette signs (see the 2026-10-28 DeepSeek review, G-R1-04) |
+
+`verify_eon_projected_gaussian_reference.py` imports helpers from
+`verify_eon_reference_state.py`.
 
 ## IR projection leakage algebra (2026-09-22)
 
