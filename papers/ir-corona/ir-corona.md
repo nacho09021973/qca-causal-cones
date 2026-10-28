@@ -1,7 +1,8 @@
 # An infrared operational response outside the emergent light cone of a three-dimensional Weyl quantum walk
 
 > **Markdown transcription for review.** Source: `papers/ir-corona/ir-corona.tex`
-> (pre-publication revision of 2026-09-18). Section, theorem, equation and
+> (pre-publication revision of 2026-09-18; Lemma 7.4, the proof of Theorem 7.5
+> and the caption of Table 1 updated 2026-10-28). Section, theorem, equation and
 > reference numbers match the compiled PDF. If this file and the `.tex`
 > disagree, the `.tex` is authoritative. The prior art of the revised Markdown
 > draft (`papers/ir-corona-operational-response-draft.md`, commit `9812cbc`) is
@@ -620,9 +621,11 @@ explicit, and neither is $N_*$. Theorem 4.4 therefore does not assert
 $\delta_{M,M_B}(N)>0$ at any specified $N$. It also does not say from which
 $N$ on the leading term is numerically accurate (Section 8).
 
-**Table 1.** Mean leading coefficients
+**Table 1.** Reference coefficients
 $\overline{C}_{M,M_B}=\mathcal K c_r\overline\Gamma\ell_0$ and the uniform
-bound on their relative oscillation in $\theta$. Values are certified by
+bound on $|C(\theta)/\overline C-1|$. $\overline C$ is not the average of
+$C(\theta)$ over $\theta$: the average of $\Gamma_+$ exceeds $\overline\Gamma$
+and that of $\Gamma_-$ is positive. Values are certified by
 interval arithmetic (Appendix A). Rows with $M=I$ are reference controls.
 
 | $M$ | $M_B$ | $\overline{C}_{M,M_B}$ | $\sup_\theta \lvert C/\overline{C}-1\rvert$ |
@@ -1159,14 +1162,18 @@ $\eta=\eta_n\hat u+\eta_t$ with $\eta_t\perp\hat u$.
 
   $$
   \mathfrak A_f(\eta)=N^{-5/2}\tfrac{16\pi}{\sqrt3}\varphi_\partial\bigl[\mathcal S_+(\tau;\theta_N)+\mathcal E_A\bigr]\chi,\qquad
-  \mathfrak B_w(\eta)=N^{-5/2}\tfrac{32}{\sqrt3}\,R_0(w_*)^\dagger M_B\bigl[\mathcal S_+(\tau;\theta_N)+\mathcal E_B\bigr],
+  \mathfrak B_w(\eta)=N^{-5/2}\tfrac{32}{\sqrt3}\bigl[R_0(w_*)^\dagger M_B\,\mathcal S_+(\tau;\theta_N)+\mathbf E_B\bigr],
   $$
 
-  with $|\mathcal E_{A,B}|\le C(N^{-1/2}+|\eta_n|)$.
-- (c) Near $\pi u$ the same holds with $\mathcal S_-$ in place of
-  $\mathcal S_+$. The alternating sign comes from the parity
-  $(-1)^{N+u\cdot(y-x)}=(-1)^{j+j'}$, combined with
-  $S^N\mapsto(-1)^N(S^N)^T$.
+  where $\mathcal E_A$ is a scalar, $\mathbf E_B$ is a row vector, and
+  $|\mathcal E_A|,\ \|\mathbf E_B\|\le C(N^{-1/2}+|\eta_n|)$ uniformly in
+  $\theta_N$.
+- (c) Near $\pi u$ the same holds with $\mathcal S_-$ in place of $\mathcal S_+$, each
+  expansion multiplied by the global phase $e^{-i\pi\theta_N}$:
+  $e^{i\pi u\cdot(x-x_*)}=e^{-i\pi\theta_N}(-1)^j$ and
+  $e^{-i\pi u\cdot(y-y_*)}=e^{-i\pi\theta_N}(-1)^{j'}$. The alternating
+  sign gives $\mathcal S_-$. The residuals obey the same bounds.
+
 - (d) For $\eta_0\in\Sigma\setminus\{0,\pi u\}$ and $|\eta|\le r_0$,
   $|\mathfrak A_f(\eta_0+\eta)|\le CN^{-4}$.
 
@@ -1194,12 +1201,79 @@ $$
 
 Collecting the factors
 $\frac1{\sqrt3}\cdot\frac{32\pi}{N^2}\cdot N^{-3/2}\varphi_\partial\cdot2R$
-gives the prefactor of $\mathfrak A_f$. For $\mathfrak B_w$ the factors are
-$\frac1{\sqrt3}\cdot\frac{64}{N^2}\cdot N^{-3/2}R_0(w_*)^\dagger\cdot2R$,
-using Lemma 7.2, the smoothness of $R_0$ and $M_B^\dagger=M_B$. (c) follows
-from Lemma 7.1(b) and the parity identity. (d): by Lemma 7.1(c), the
-character is non-trivial on each plane. The Poisson sum therefore has no
-$m=0$ term, and the remaining terms are $O(N^{-4})$. ∎
+gives the prefactor of $\mathfrak A_f$.
+
+For $\mathfrak B_w$, the spinor direction of $r$ varies across $\mathcal B_N$, so
+we split it off before summing. Note that $y_*=Nw_*$. On $\mathcal B_N$,
+$|y/N|\ge\sqrt3-\frac14$, and $R_0$ is smooth there. On the plane at depth
+$\delta'$, $|y/N-w_*|\le C(1+\delta')N^{-1/2}$. With Lemma 7.2,
+
+$$
+r(y)=N^{-3/2}R_0(w_*)+\rho(y),\qquad\|\rho(y)\|\le CN^{-2}(1+\delta').
+$$
+
+The term with $R_0(w_*)$ is a fixed spinor times a scalar layer sum of $h_N$.
+That sum is treated as for $\mathfrak A_f$, with the factors
+$\frac1{\sqrt3}\cdot\frac{64}{N^2}\cdot2R$, and gives
+$R_0(w_*)^\dagger M_B[\mathcal S_++\mathcal E]$ with a scalar
+$|\mathcal E|\le C(N^{-1/2}+|\eta_n|)$; here $M_B^\dagger=M_B$. The term with
+$\rho$ is bounded in norm without using oscillation. The plane at depth
+$\delta'$ carries the weight $e^{-t_*(\theta_N+j')}$, has $O(1+N\delta')$ sites
+in the support of $h_N$, and there $h_N\le64\delta'^2/N^2$. Hence the term
+is at most $C\sum_{j'}e^{-t_*(\theta_N+j')}N^{-3}(1+\delta')^4\le CN^{-3}$,
+uniformly in $\theta_N$ and $\eta$. Put $\mathbf E_B$ equal to
+$\mathcal E\,R_0(w_*)^\dagger M_B$ plus this term divided by
+$N^{-5/2}\frac{32}{\sqrt3}$. Then
+$\|\mathbf E_B\|\le C(N^{-1/2}+|\eta_n|)$.
+
+(c): the two phase identities follow from $u\cdot(x-x_*)=-(\theta_N+j)$ and
+$u\cdot(y-y_*)=\theta_N+j'$. The
+bound on the $\rho$ term in (b) does not use the phases, so it holds near
+$\pi u$ unchanged.
+
+(d): write $\eta_{0,t}$ for the projection of $\eta_0$ onto the plane
+$\hat u^\perp$. On a plane, the phase $e^{i(\eta_0+\eta)\cdot x}$ restricted
+to the translates by $\Lambda_0$ depends only on $\eta_{0,t}+\eta_t$. Poisson
+summation on the plane gives the frequencies $2\pi m-\eta_{0,t}-\eta_t$,
+$m\in\Lambda_0^*$, and the term $m=0$ is present. By
+Lemma 7.1(c) the character $e^{i\eta_0\cdot x}$ is non-trivial
+on $\Lambda_0$. So $\eta_{0,t}\notin2\pi\Lambda_0^*$, and
+$d_0=\min_{\eta_0}\operatorname{dist}(\eta_{0,t},2\pi\Lambda_0^*)>0$, where
+the minimum is over the six points. Decreasing $r_0$ if necessary,
+$r_0\le d_0/2$. This keeps Lemma 7.1(d), and (e) holds for every
+$r_0>0$ by the same compactness argument. Then every frequency, including
+$m=0$, has modulus at least $d_0/2$. Each term is bounded by
+$\|\partial^3G_\delta\|_{\mathcal M}|2\pi m-\eta_{0,t}-\eta_t|^{-3}$, and
+$\sup_{|\eta_t|\le r_0}\sum_{m\in\Lambda_0^*}|2\pi m-\eta_{0,t}-\eta_t|^{-3}<\infty$,
+because $\Lambda_0^*$ is two-dimensional. Hence the plane contributes at
+most $C\|\partial^3G_\delta\|_{\mathcal M}$, where $G_\delta=s_N\varphi_N$ on
+the plane.
+
+It remains to bound $\|\partial^3G_\delta\|_{\mathcal M}$ for $\delta\le R/2$.
+Write $s_N=S(\varepsilon_\perp)$ with $S(e)=\sin(\kappa e^2)\mathbf 1_{e\ge0}$
+and $\kappa=32\pi/N^2$. On the support, $\varepsilon_\perp\le\delta$,
+$|u_\perp|^2\le2R\delta$, $|\nabla\varepsilon_\perp|\le(2\delta/R)^{1/2}$,
+$|\nabla^2\varepsilon_\perp|\le1/R$ and $\nabla^3\varepsilon_\perp=0$. Also
+$|S'|\le C\kappa e$, $|S''|\le C\kappa$ and $|S'''|\le C\kappa^2e$. The
+second derivative of $s_N$ jumps across the rim by at most
+$2\kappa|\nabla\varepsilon_\perp|^2\le4\kappa\delta/R$, on a circle of length
+$O((R\delta)^{1/2})$. The interior third derivative is at most
+$C(\kappa^2\delta^{5/2}R^{-3/2}+\kappa\delta^{1/2}R^{-3/2})$, on an area
+$O(R\delta)$. Hence
+$\|\partial^3s_N\|_{\mathcal M}\le C(\kappa\delta^{3/2}R^{-1/2}+\kappa^2\delta^{7/2}R^{-1/2})\le CN^{-5/2}(1+\delta)^{3/2}$,
+since $\delta\le N$. In the same way,
+$\|\partial^as_N\|_{L^1}\le C\kappa\,\delta^{3-a/2}R^{1-a/2}$ for
+$a\le2$. Moreover $\|\partial^b\varphi_N\|_\infty\le CN^{-3/2-b}$, because
+$|\partial^b\Phi_0|\le c_r\int|g||q|^b$. By Leibniz,
+
+$$
+\|\partial^3G_\delta\|_{\mathcal M}\le CN^{-4}(1+\delta)^3 .
+$$
+
+With the plane weight $e^{-t_*(\theta_N+j)}$, the planes $\delta\le R/2$
+sum to $CN^{-4}\sum_je^{-t_*(\theta_N+j)}(1+\theta_N+j)^3\le CN^{-4}$,
+uniformly in $\theta_N$. The planes with $\delta>R/2$ contribute
+$O(e^{-cN})$, as in (a). ∎
 
 ### 7.7. Assembly
 
@@ -1224,9 +1298,20 @@ of $\widetilde S_N$. Near $\eta_0\in\{0,\pi u\}$ we make three replacements.
 First, $\widetilde S_Ne^{-iN\eta\cdot v_*}$ is replaced by
 $e^{-N\eta^TQ\eta/2}P$ (respectively $\overline P$), at cost
 $N^{-5}\int(c_P|\eta|+Nc_3|\eta|^3)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$.
-Second, the layers are replaced by their leading forms, at cost
-$N^{-5}\int(N^{-1/2}+|\eta_n|)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$. Third, the
-integral is extended to $\mathbb R^3$, at cost $O(e^{-cNr_0^2})$. What
+Second, the layers are replaced by their leading forms. The difference is
+bounded in norm by $\|\mathfrak B_w-\mathfrak B^{(0)}\|\,\|\widetilde S_N\|\,|\mathfrak A_f|+\|\mathfrak B^{(0)}\|\,\|\widetilde S_N\|\,|\mathfrak A_f-\mathfrak A^{(0)}|$,
+where $\mathfrak A^{(0)},\mathfrak B^{(0)}$ are the leading forms of
+Lemma 7.4(b)--(c). Since $\mathcal S_\pm$ are bounded
+(Lemma 7.3), $\|\mathfrak B^{(0)}\|\le CN^{-5/2}$, and
+Lemma 7.4(a)--(c) bound the cost. Here $\widetilde S_N$ may be
+the symbol or its Gaussian replacement: by Lemma 7.1(d) both
+are bounded by $Ce^{-N\eta^TQ\eta/4}$. The cost is
+$N^{-5}\int(N^{-1/2}+|\eta_n|)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$. Third,
+the integral is extended to $\mathbb R^3$, at cost $O(e^{-cNr_0^2})$. Near
+$\pi u$, the phases of Lemma 7.4(c), the factor $(-1)^N$ from
+$S^N\mapsto(-1)^N(S^N)^T$ and $e^{-iN\pi u\cdot v_*}$ cancel:
+$u\cdot Nv_*=3N-\sqrt3N/2$, so the product is
+$e^{-2\pi i\theta_N}e^{i\pi\sqrt3N/2}=1$. What
 remains is
 
 $$
