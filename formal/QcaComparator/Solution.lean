@@ -11,6 +11,9 @@ the same terms as those in `QcaFormal`.
 
 namespace QcaComparator
 
+-- With the default 200000 a mismatched `regA` filter ends in a `whnf` timeout
+-- instead of a `Type mismatch`; 1000000 gives the clean error (2026-10-28).
+set_option maxHeartbeats 1000000 in
 theorem tn_bound : QcaChallenge.TNBound :=
   fun N hN ψ => QcaFormal.TN_bound N hN ψ
 

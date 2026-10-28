@@ -52,8 +52,9 @@ Pattern from `Comparator/` in AxiomMath/CFSG (commit `69cb972`). The external
 
 Checked 2026-10-28 by mutation: changing the constant `4` to `3` in
 `TNBound` gives a type mismatch in `Solution`; adding a condition to the
-`regA` filter makes `Solution` fail (heartbeat timeout in `whnf`, not a clean
-mismatch); replacing a proof with `sorry` makes `Axioms` fail.
+`regA` filter also gives a type mismatch (with the default heartbeat limit it
+was a `whnf` timeout, hence `maxHeartbeats 1000000` on `tn_bound`); replacing a
+proof with `sorry` makes `Axioms` fail.
 
 ## What is not formalized
 
