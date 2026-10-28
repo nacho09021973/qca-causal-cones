@@ -24,11 +24,36 @@ envió nada. Se añadió y se relanzó.
 En Assembly la cota del segundo reemplazo usaba S̃_N aunque el primero ya lo había sustituido.
 Añadido que vale para los dos, pues ambos están acotados por Ce^{−Nη^TQη/4} (Lemma symbol(d)).
 
-## Lo que no he comprobado
+## Otras afirmaciones del informe, comprobadas después (2026-10-28)
 
-La parte del informe sobre la Tabla 1 que va más allá de la leyenda (b/a > 13.5 y |ℓ₀/ℓ_π| < 3 en
-las filas de signo opuesto, de donde ⟨C⟩ ≠ C̄ en las dieciséis filas) no la he rehecho:
-`[UNVERIFIED]`. La leyenda no depende de ello.
+A petición del usuario («los avisos de Astra revísalos tú»).
+
+- **⟨C⟩ ≠ C̄ en las dieciséis filas.** Rehecho.
+  - Expresión de W(ω). Con s = t_* + iω y Re(1/s) = t_*/|s|², se tiene
+    |ĝ_τ(ω)|² = c_g² e^{−|τ|² t_*/(2√3|s|²)}/|s|⁸. La integral gaussiana da
+    W(ω) = π c_g² / (|s|⁶ (q_t|s|² + t_*/(2√3))), igual que en el informe. Por Parseval, al ser
+    𝒮_± reales, a = ⟨Γ₊⟩ − Γ̄ = 2Σ_{n≥1} W(2πn) y b = ⟨Γ₋⟩ = 2Σ_{n≥0} W(π(2n+1)).
+  - Cociente b/a. W es decreciente en ω. Por tanto
+    W(2πn)/W(π) ≤ [(t_*²+π²)/(4π²n²)]³ ≤ 0.0209/n⁶ < 1/(27n⁶), usando t_* = 0.7357… < 1 (salida
+    de `verify_regional_directional_asymptotics_gate.py`). Como b ≥ 2W(π), queda
+    b/a ≥ 27/ζ(6) ≈ 26.5. El informe da > 13.5; la cota es correcta pero conservadora.
+  - |ℓ₀/ℓ_π|. Evalué en coma flotante las fórmulas cerradas del Apéndice A (inspección con
+    `python3 -c`; no es un certificado). Datos: t_* = 0.73575281442, 𝓘₀ = 0.716577,
+    𝓘₁ = 0.132252. Los C̄ reproducen la Tabla 1 con 5 cifras. En las filas de signo opuesto,
+    |ℓ₀/ℓ_π| vale 0.124 (I,I), 0.605 (I,P₁), 1.106 (σ₁,I), 0.946 (σ₁,P₁) y 2.651 (σ₁,P₂). Las
+    filas de σ₃ y P₃ repiten esos valores. Su máximo es 2.651 < 3. El margen frente a 26.5 hace
+    irrelevante el error de coma flotante.
+  - Conclusión. ⟨C⟩ − C̄ = 𝒦c_r(aℓ₀ + bℓ_π) ≠ 0 en todas las filas. La leyenda nueva no depende
+    de esto.
+- **θ_N ≥ 1/(8√3N)** (nota de astra; no se usa en el texto). Comprobado. Sea k = ⌊√3N/4⌋.
+  Entonces θ_N = (3N² − 16k²)/(16(√3N/4 + k)). El numerador es un entero positivo, porque
+  3N² = 16k² no tiene solución entera con N ≥ 1, y el denominador es ≤ 8√3N.
+- **(e) con r₀ menor.** El informe precisa que la constante c de Lemma symbol(e) puede cambiar.
+  Correcto, y compatible con el texto: «(e) holds for every r₀>0 by the same compactness
+  argument» no fija c.
+- **Cotas de S′, S″, S‴.** El informe precisa que valen para e > 0 y que la parte singular de la
+  tercera derivada se cuenta aparte, en el borde. Es lo que hace el texto. Además
+  |S‴| ≤ 12κ²e·κe² + 8κ³e³ ≤ Cκ²e, usando κe² ≤ π/2.
 
 El revisor es de otra familia, pero los arreglos de esta segunda vuelta los escribió de nuevo una
 sesión Claude; no han sido revisados.
