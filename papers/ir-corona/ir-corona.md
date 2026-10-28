@@ -1436,7 +1436,7 @@ Theorem 4.1, together with Lemma 5.1, is formally verified in Lean 4/Mathlib
 (`formal/` in [17]). The asymptotic results (Theorems 4.3 and 4.4) are not.
 The analytic arguments above are complete up to the following verified
 computations. All of them are performed by the certificate scripts listed in
-[17], at the commit given there, with Python 3.12.3, SymPy 1.14.0 and mpmath
+[17], at the tag given there, with Python 3.12.3, SymPy 1.14.0 and mpmath
 1.3.0. Exact identities use SymPy. Enclosures use the interval context
 `mpmath.iv` with 50 digits, and only its elementary operations: the four
 arithmetic operations, integer powers by repeated multiplication,
@@ -1533,8 +1533,8 @@ $N=40$ and $8\cdot10^{-9}$ at $N=640$.
     Variables*, 2nd ed., Cambridge University Press (2024),
     doi:10.1017/9781108874144.
 17. Repository `nacho09021973/qca-causal-cones`,
-    <https://github.com/nacho09021973/qca-causal-cones>, commit
-    `551addabe28b` (branch `research/b-infinity-post-s4-gate`). Certificates
+    <https://github.com/nacho09021973/qca-causal-cones>, tag
+    `ir-corona-v1`. Certificates
     `scripts/verify_scaled_ir_gate.py`,
     `scripts/verify_regional_directional_asymptotics_gate.py`,
     `scripts/verify_regional_laplace_coefficient_gate.py`,

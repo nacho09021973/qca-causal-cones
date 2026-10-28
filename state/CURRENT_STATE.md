@@ -65,7 +65,8 @@ Status of the manuscript proof of Thm 4.3: `REPAIRED; REPAIRS_REVIEWED`. The
 statements of Theorems 4.1–4.4, `K_*`, the exponent 13/2 and Table 1 values are
 unchanged. Open before submission: the short author lines of `f85f429`/`951bbe3`
 are unreviewed; bibliographic priority is unverified (NOVELTY OPEN); the `Repo`
-bibitem needs an archived release (tag and DOI). The manuscript is not submitted;
+bibitem now cites the tag `ir-corona-v1` (user decision "Solo el tag por ahora");
+the DOI is pending because the repository is private. The manuscript is not submitted;
 submission is a separate user decision.
 
 ## W4 full-spectrum audit and review preparation — 2026-10-26
