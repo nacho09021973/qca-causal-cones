@@ -56,12 +56,12 @@ beyond.
 ## 1. Introduction
 
 Quantum cellular automata and quantum walks are unitary dynamics on a lattice
-with a strict bound on the speed of propagation [18, 2, 12]. After $N$ steps
+with a strict bound on the speed of propagation [20, 2, 14]. After $N$ steps
 of a finite-range walk, the propagator vanishes identically outside
 $N C_{\mathrm{micro}}$. Here $C_{\mathrm{micro}}=\operatorname{conv}F$ is the
 convex hull of the one-step jumps. Many such walks have a conical point in
 their dispersion relation. Near it, the long-wavelength dynamics is that of a
-Weyl or Dirac equation with a speed of light $c_{\mathrm{IR}}$ [4, 11, 5, 10].
+Weyl or Dirac equation with a speed of light $c_{\mathrm{IR}}$ [4, 13, 5, 12].
 
 In spatial dimension $d\ge2$ the two causal structures cannot coincide. The
 infrared cone of a Weyl node is a Euclidean ball, and $C_{\mathrm{micro}}$ is
@@ -81,7 +81,7 @@ Three questions must be kept apart.
   $4^{-N}$ (Proposition 2.2). One-step Alice/Bob protocols built from
   localized operations turn this into a finite distinguishability (for
   instance $3/128$ after one step for a suitable localized preparation, as
-  recorded in [17]). Such protocols are broadband: their operations are not
+  recorded in [19]). Such protocols are broadband: their operations are not
   concentrated near the Weyl node.
 - **(I) Infrared operational response.** Require the preparation, the encoder
   and the detector to be infrared-admissible, and put Bob outside the
@@ -180,7 +180,7 @@ is a flat direction of the exponent that is confined only by the profiles.
 ### Relation to the literature
 
 Ballistic scaling and weak limit theorems for translation-invariant quantum
-walks are classical [14, 13, 1]: $Q(t)/t$ converges in distribution to the
+walks are classical [16, 15, 1]: $Q(t)/t$ converges in distribution to the
 group velocity distributed by the initial state. Cedzich, Joye, Werner and
 Werner [9] proved that the probability of velocities outside the support of
 this limit decays exponentially. They gave a method for bounding the rate
@@ -191,21 +191,30 @@ Jordan-safe bound on matrix powers. Their method bounds rates; it does not
 give prefactor-level asymptotics.
 
 Sharp asymptotics with prefactors outside the propagation region are known in
-one dimension. Sunada and Tate [19] obtained exact local asymptotics of
+one dimension. Sunada and Tate [21] obtained exact local asymptotics of
 transition probabilities, including exponential decay with an explicit
 prefactor in the region hidden from the weak limit. Carteret, Richmond and
 Temme [8] obtained uniformly convergent asymptotics in the exponentially
 decaying regions of coined walks on the line. These are the closest
-precursors of the saddle-point analysis of Section 7. In two dimensions,
+precursors of the saddle-point analysis of Section 7. Cedzich et al. note
+that, to their knowledge, these two studies are the only asymptotic analyses
+outside the propagation region [9, Sec. 5.1]; their own estimates are upper
+bounds, and they leave lower bounds aside because these would depend on the
+state. In two dimensions,
 Baryshnikov, Brady, Bressler and Pemantle [3] analysed quantum walks through
 multivariate generating functions and determined the limiting profile in the
 feasible region, outside of which the probability is exponentially small.
-Analytic combinatorics in several variables [16] provides general transfer
+They note that explicit amplitudes at specific points outside the feasible set
+can be obtained by their method instance by instance, and that the extension
+to dimension three should be modest.
+Analytic combinatorics in several variables [18] provides general transfer
 theorems for multivariate coefficient asymptotics, whose standard sharp forms
 assume minimality hypotheses on the critical points. We do not claim that
 these methods cannot reproduce the present result. We are not aware of a
 transfer theorem that yields it directly, and we carry out the model-specific
-saddle-point analysis explicitly.
+saddle-point analysis explicitly. Exact path-sum solutions of Weyl walks in
+$2+1$ and $3+1$ dimensions are known [10, 11]; they do not analyse the
+asymptotics outside the cone.
 
 What we add is a *lower* bound, in the strong form of exact leading
 asymptotics. It concerns an *operational* quantity: the distinguishability
@@ -222,7 +231,7 @@ multi-component quantum walk. Exponential decay outside the propagation
 region, large-deviation rates, Weyl-cone dispersion and microscopic support
 outside an emergent cone all have prior art, cited above.
 
-Lieb–Robinson bounds [15, 7] give exponentially small leakage outside a
+Lieb–Robinson bounds [17, 7] give exponentially small leakage outside a
 linear cone for continuous-time lattice dynamics. For quantum walks the
 strict cone $C_{\mathrm{micro}}$ plays that role exactly, and the question
 here is the one *inside* it.
@@ -528,7 +537,7 @@ $$
 $$
 
 **Remark 4.2 (Formal verification).** Theorem 4.1 is machine-checked in
-Lean 4 with Mathlib (`formal/` in [17]), for every $N\ge2$ and without
+Lean 4 with Mathlib (`formal/` in [19]), for every $N\ge2$ and without
 additional axioms. This covers the kernel bound, the geometry (6), the
 counting of lattice points, the operator bound on $T_N$, and the step
 $\delta\le4T_N$. The formal proof bounds the matrix powers through
@@ -1426,17 +1435,17 @@ control.
    effective at finite $N$.
 4. Many-particle and second-quantized versions. The upper bound extends to
    even local unitaries on the full CAR algebra, with prefactor $288N^7$ in
-   place of $36N^4$ [17], but no lower bound is available there.
+   place of $36N^4$ [19], but no lower bound is available there.
 
 ---
 
 ## Appendix A. Computer-assisted parts and diagnostics
 
 Theorem 4.1, together with Lemma 5.1, is formally verified in Lean 4/Mathlib
-(`formal/` in [17]). The asymptotic results (Theorems 4.3 and 4.4) are not.
+(`formal/` in [19]). The asymptotic results (Theorems 4.3 and 4.4) are not.
 The analytic arguments above are complete up to the following verified
 computations. All of them are performed by the certificate scripts listed in
-[17], at the tag given there, with Python 3.12.3, SymPy 1.14.0 and mpmath
+[19], at the tag given there, with Python 3.12.3, SymPy 1.14.0 and mpmath
 1.3.0. Exact identities use SymPy. Enclosures use the interval context
 `mpmath.iv` with 50 digits, and only its elementary operations: the four
 arithmetic operations, integer powers by repeated multiplication,
@@ -1474,7 +1483,7 @@ $\sigma_3$ are the negatives of the rows for $I$.
 
 **Finite-$N$ diagnostics.** These are floating-point and not used in any
 proof; they use NumPy 1.26.4 and are produced by the `--diagnostics` option
-of the coefficient certificate [17]. A floating-point FFT evaluation of the
+of the coefficient certificate [19]. A floating-point FFT evaluation of the
 exact discrete convolution formula in tilted variables ("brute") was compared
 with a reference that keeps the exact lattice geometry but replaces the
 kernel by its Gaussian form at the eight points of $\Sigma$. Their ratio
@@ -1515,24 +1524,30 @@ $N=40$ and $8\cdot10^{-9}$ at $N=640$.
 9. C. Cedzich, A. Joye, A. H. Werner, R. F. Werner, *Exponential tail
    estimates for quantum lattice dynamics*, Ann. Henri Poincaré **27**,
    2843–2870 (2026), doi:10.1007/s00023-025-01598-4, arXiv:2408.02108.
-10. G. M. D'Ariano, M. Erba, P. Perinotti, *Isotropic quantum walks on
+10. G. M. D'Ariano, N. Mosco, P. Perinotti, A. Tosini, *Discrete Feynman
+    propagator for the Weyl quantum walk in 2+1 dimensions*, EPL **109**,
+    40012 (2015), arXiv:1410.6032.
+11. G. M. D'Ariano, N. Mosco, P. Perinotti, A. Tosini, *Path-sum solution of
+    the Weyl quantum walk in 3+1 dimensions*, Phil. Trans. R. Soc. A **375**,
+    20160394 (2017), arXiv:1705.08552.
+12. G. M. D'Ariano, M. Erba, P. Perinotti, *Isotropic quantum walks on
     lattices and the Weyl equation*, Phys. Rev. A **96**, 062101 (2017),
     arXiv:1708.00826.
-11. G. M. D'Ariano, P. Perinotti, *Derivation of the Dirac equation from
+13. G. M. D'Ariano, P. Perinotti, *Derivation of the Dirac equation from
     principles of information processing*, Phys. Rev. A **90**, 062106
     (2014), arXiv:1306.1934.
-12. T. Farrelly, *A review of quantum cellular automata*, Quantum **4**, 368
+14. T. Farrelly, *A review of quantum cellular automata*, Quantum **4**, 368
     (2020), arXiv:1904.13318.
-13. G. Grimmett, S. Janson, P. F. Scudo, *Weak limits for quantum random
+15. G. Grimmett, S. Janson, P. F. Scudo, *Weak limits for quantum random
     walks*, Phys. Rev. E **69**, 026119 (2004), arXiv:quant-ph/0309135.
-14. N. Konno, *Quantum random walks in one dimension*, Quantum Inf. Process.
+16. N. Konno, *Quantum random walks in one dimension*, Quantum Inf. Process.
     **1**, 345–354 (2002).
-15. E. H. Lieb, D. W. Robinson, *The finite group velocity of quantum spin
+17. E. H. Lieb, D. W. Robinson, *The finite group velocity of quantum spin
     systems*, Commun. Math. Phys. **28**, 251–257 (1972).
-16. R. Pemantle, M. C. Wilson, S. Melczer, *Analytic Combinatorics in Several
+18. R. Pemantle, M. C. Wilson, S. Melczer, *Analytic Combinatorics in Several
     Variables*, 2nd ed., Cambridge University Press (2024),
     doi:10.1017/9781108874144.
-17. Repository `nacho09021973/qca-causal-cones`,
+19. Repository `nacho09021973/qca-causal-cones`,
     <https://github.com/nacho09021973/qca-causal-cones>, tag
     `ir-corona-v1`. Certificates
     `scripts/verify_scaled_ir_gate.py`,
@@ -1540,7 +1555,7 @@ $N=40$ and $8\cdot10^{-9}$ at $N=640$.
     `scripts/verify_regional_laplace_coefficient_gate.py`,
     `scripts/verify_directional_saturation.py`; Lean formalization in
     `formal/`.
-18. B. Schumacher, R. F. Werner, *Reversible quantum cellular automata*,
+20. B. Schumacher, R. F. Werner, *Reversible quantum cellular automata*,
     arXiv:quant-ph/0405174.
-19. T. Sunada, T. Tate, *Asymptotic behavior of quantum walks on the line*,
+21. T. Sunada, T. Tate, *Asymptotic behavior of quantum walks on the line*,
     J. Funct. Anal. **262**, 2608–2645 (2012), arXiv:1108.1878.

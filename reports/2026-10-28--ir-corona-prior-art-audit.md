@@ -82,7 +82,8 @@ the light cone (full-text search for asymptotic / outside / decay / saddle / sta
 ## Assessment
 
 No anticipating result was found. The novelty paragraph is consistent with the sources read and
-is already narrow. Optional text improvements (not applied; author decision):
+is already narrow. Optional text improvements, applied on 2026-10-28 at the user's request
+("si"), in `.tex` and `.md`, with two new bibitems (DMPT15, DMPT17):
 
 1. Support "the closest precursors" with CJWW's own statement (p.13) that the only
    outside-region asymptotics are the two 1D studies, and with its remark that lower bounds are
