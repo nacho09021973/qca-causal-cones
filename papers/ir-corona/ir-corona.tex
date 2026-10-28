@@ -1132,9 +1132,11 @@ $\eta_t\perp\uhat$.
   where $\mathcal E_A$ is a scalar, $\mathbf E_B$ is a row vector, and
   $|\mathcal E_A|,\ \|\mathbf E_B\|\le C(N^{-1/2}+|\eta_n|)$ uniformly in
   $\theta_N$.
-\item Near $\pi u$ the same holds with $\cS_-$ in place of $\cS_+$.  The
-  alternating sign comes from the parity $(-1)^{N+u\cdot(y-x)}=(-1)^{j+j'}$,
-  combined with $S^N\mapsto(-1)^N(S^N)^T$.
+\item Near $\pi u$ the same holds with $\cS_-$ in place of $\cS_+$, each
+  expansion multiplied by the global phase $e^{-i\pi\theta_N}$:
+  $e^{i\pi u\cdot(x-x_*)}=e^{-i\pi\theta_N}(-1)^j$ and
+  $e^{-i\pi u\cdot(y-y_*)}=e^{-i\pi\theta_N}(-1)^{j'}$.  The alternating
+  sign gives $\cS_-$.  The residuals obey the same bounds.
 \item For $\eta_0\in\Sigma\setminus\{0,\pi u\}$ and $|\eta|\le r_0$,
   $|\mathfrak A_f(\eta_0+\eta)|\le CN^{-4}$.
 \end{enumerate}
@@ -1176,7 +1178,7 @@ $\frac1{\sqrt3}\cdot\frac{64}{N^2}\cdot2R$, and gives
 $R_0(w_*)^\dagger M_B[\cS_++\mathcal E]$ with a scalar
 $|\mathcal E|\le C(N^{-1/2}+|\eta_n|)$; here $M_B^\dagger=M_B$.  The term with
 $\rho$ is bounded in norm without using oscillation.  The plane at depth
-$\delta'$ carries the weight $e^{-t_*(\theta_N+j')}$, has $O(N\delta')$ sites
+$\delta'$ carries the weight $e^{-t_*(\theta_N+j')}$, has $O(1+N\delta')$ sites
 in the support of $h_N$, and there $h_N\le64\delta'^2/N^2$.  Hence the term
 is at most $C\sum_{j'}e^{-t_*(\theta_N+j')}N^{-3}(1+\delta')^4\le CN^{-3}$,
 uniformly in $\theta_N$ and $\eta$.  Put $\mathbf E_B$ equal to
@@ -1184,7 +1186,8 @@ $\mathcal E\,R_0(w_*)^\dagger M_B$ plus this term divided by
 $N^{-5/2}\frac{32}{\sqrt3}$.  Then
 $\|\mathbf E_B\|\le C(N^{-1/2}+|\eta_n|)$.
 
-(c) follows from Lemma~\ref{lem:symbol}(b) and the parity identity.  The
+(c): the two phase identities follow from $u\cdot(x-x_*)=-(\theta_N+j)$ and
+$u\cdot(y-y_*)=\theta_N+j'$.  The
 bound on the $\rho$ term in (b) does not use the phases, so it holds near
 $\pi u$ unchanged.
 
@@ -1258,9 +1261,15 @@ bounded in norm by $\|\mathfrak B_w-\mathfrak B^{(0)}\|\,\|\widetilde S_N\|\,|\m
 where $\mathfrak A^{(0)},\mathfrak B^{(0)}$ are the leading forms of
 Lemma~\ref{lem:layers}(b)--(c).  Since $\cS_\pm$ are bounded
 (Lemma~\ref{lem:depth}), $\|\mathfrak B^{(0)}\|\le CN^{-5/2}$, and
-Lemma~\ref{lem:layers}(a)--(c) bound the cost by
+Lemma~\ref{lem:layers}(a)--(c) bound the cost.  Here $\widetilde S_N$ may be
+the symbol or its Gaussian replacement: by Lemma~\ref{lem:symbol}(d) both
+are bounded by $Ce^{-N\eta^TQ\eta/4}$.  The cost is
 $N^{-5}\int(N^{-1/2}+|\eta_n|)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$.  Third,
-the integral is extended to $\R^3$, at cost $O(e^{-cNr_0^2})$.  What
+the integral is extended to $\R^3$, at cost $O(e^{-cNr_0^2})$.  Near
+$\pi u$, the phases of Lemma~\ref{lem:layers}(c), the factor $(-1)^N$ from
+$S^N\mapsto(-1)^N(S^N)^T$ and $e^{-iN\pi u\cdot v_*}$ cancel:
+$u\cdot Nv_*=3N-\sqrt3N/2$, so the product is
+$e^{-2\pi i\theta_N}e^{i\pi\sqrt3N/2}=1$.  What
 remains is
 \[
 N^{-5}\,\frac{512\pi}{3}\,\varphi_\partial\,c_r\,x_{0,\pi}\,\sqrt{\frac{2\pi}{Nq_n}}\;\frac2N\;(2\pi)^{-3}\int_{\R^2}e^{-q_t|\tau|^2}\cS_\pm^2\,d^2\tau .
