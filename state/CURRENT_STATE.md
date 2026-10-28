@@ -20,7 +20,7 @@ with a dated entry, the dated entry wins.
 | Front | Status | Where |
 | --- | --- | --- |
 | Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; NOVELTY OPEN | Sections 4–7 |
-| Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1 | Section 8.20; `papers/ir-corona/` |
+| Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
 | 4B absolute scale | `NO_ABSOLUTE_SCALE_DERIVABLE` closed in the frozen class; Sept 28 commits reconciled (`94071db`) | Reconciliation entry of 2026-10-22 |
@@ -30,6 +30,43 @@ with a dated entry, the dated entry wins.
 | W4 long-wavelength spectrum | OPEN_AFTER_AUDIT; DeepSeek ACCEPT_WITH_REPAIRS; author repairs not re-reviewed | Entry of 2026-10-26 |
 | Inverse-gravity successor (IG-S0 to IG-S2) | `BOUNDED_TRANSFER_ATTEMPT_STOPPED_OPEN`; direct transfer paused | Entries of 2026-10-08 and 2026-10-10 |
 | A.int, interaction-renormalized species speed | OPEN sub-question of A; no calculation contract; Eon v4 reference-state work in progress | Section 4, A — IR universality |
+
+## ir-corona manuscript: sanedrin, repairs and two reviews — 2026-10-28
+
+Direct user instructions: "lanza el sanedrín con el paper de la corona", "hazlo todo
+en orden", "revision ciega con codex", "si que lo revise Deep", "el push y el
+current_state". Documentary entry. It changes no gate and no frozen claim.
+
+- **Sanedrin** (Astra, Ciro, Abner, Gemini; 2 rounds; Opus excluded as the
+  manuscript's family): `DEGRADED_NO_CONSENSUS` (Gemini round 1 `MAX_TOKENS`); all
+  four verdicts `ENVIABLE_CON_REPARACIONES`
+  ([record](../debates/2026-10-28--ir-corona-sanedrin.md); tools: herramientas
+  `0c150e8`, sanedrin `7e011a4`). Three mandatory repairs: Lemma Layers(b) wrote
+  Bob's correction as a scalar times a fixed row, which is false because R_0 rotates;
+  Layers(d) claimed "no m=0 term", which is false: that term sits at a shifted
+  non-zero frequency; Table 1 called the reference coefficient `C-bar` a mean.
+- **Certificates of Appendix A** re-run at `929fd44`, identical to the cited
+  `551addabe28b`: 53/53, 18/18, 58/58, 27/27
+  ([record](../papers/ir-corona/certificados/2026-10-28/README.md)).
+- **Repairs** (`cd8ff54`): a norm-bounded residual row `E_B`, propagated with norms
+  through Assembly; a bound on all shifted frequencies with
+  `||d^3 G_delta||_M <= C N^-4 (1+delta)^3`, summable in depth; Table 1 caption
+  "Reference coefficients".
+- **Review 1**, Astra (sealed, `revision-ciega`): `CERRADA_CON_ARREGLOS`. Two
+  fixes were applied in `f85f429`: the site count `O(1+N delta')`, and the global phase
+  `e^{-i pi theta_N}` near `pi u` with its cancellation in Assembly (a defect older
+  than the repairs) ([author reading](../debates/2026-10-28--ir-corona-repairs-review-astra/verificacion_autor.md)).
+- **Review 2**, DeepSeek (sealed; herramientas `83c04f9`, third attempt;
+  earlier attempts archived): `CERRADA`, no mandatory repairs. Its two minor remarks
+  and the undefined `G_0` were applied in `951bbe3`
+  ([author reading](../debates/2026-10-28--ir-corona-repairs-review-deepseek/verificacion_autor.md)).
+
+Status of the manuscript proof of Thm 4.3: `REPAIRED; REPAIRS_REVIEWED`. The
+statements of Theorems 4.1–4.4, `K_*`, the exponent 13/2 and Table 1 values are
+unchanged. Open before submission: the short author lines of `f85f429`/`951bbe3`
+are unreviewed; bibliographic priority is unverified (NOVELTY OPEN); the `Repo`
+bibitem needs an archived release (tag and DOI). The manuscript is not submitted;
+submission is a separate user decision.
 
 ## W4 full-spectrum audit and review preparation — 2026-10-26
 
