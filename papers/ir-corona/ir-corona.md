@@ -1185,9 +1185,12 @@ $O(N^{-7/2}\delta^2)$. Planes with $\delta>R/2$ contribute $O(e^{-cN})$. This
 gives (a).
 
 For (b), apply Poisson summation on each plane. The $m=0$ term is
-$\frac1{\sqrt3}\int e^{i\eta_t\cdot u_\perp}G_0(u_\perp)\,d^2u_\perp$. The
+$\frac1{\sqrt3}\int e^{i\eta_t\cdot u_\perp}G_\delta(u_\perp)\,d^2u_\perp$, where
+$G_\delta=s_N\varphi_N$ on the plane. Decreasing $r_0$ if necessary,
+$r_0\le\frac12\min_{m\ne0}|2\pi m|$ over $m\in\Lambda_0^*$, so
+$|2\pi m-\eta_t|\ge\pi|m|$ for $m\ne0$. The
 terms $m\ne0$ are bounded by
-$\|\partial^3G_0\|_{\mathcal M}|2\pi m-\eta_t|^{-3}$, since the profile
+$\|\partial^3G_\delta\|_{\mathcal M}|2\pi m-\eta_t|^{-3}$, since the profile
 vanishes quadratically on the rim and its third derivative is a finite
 measure. After the weighted depth sum, they give a relative error
 $O(N^{-3/2})$. In the $m=0$ term, use the profile expansions,
@@ -1294,7 +1297,8 @@ $$
 $B(\eta_0,r_0)$ the contribution is $O(Ne^{-cN}N^{-5})$. The six points of
 $\Sigma$ with non-trivial characters give
 $O(N^{-4}\cdot N^{-5/2}\cdot N^{-3/2})=O(N^{-8})$, using the Gaussian decay
-of $\widetilde S_N$. Near $\eta_0\in\{0,\pi u\}$ we make three replacements.
+of $\widetilde S_N$ near those points, which Lemma 7.1(b) transfers from the
+ball at $0$ of Lemma 7.1(d). Near $\eta_0\in\{0,\pi u\}$ we make three replacements.
 First, $\widetilde S_Ne^{-iN\eta\cdot v_*}$ is replaced by
 $e^{-N\eta^TQ\eta/2}P$ (respectively $\overline P$), at cost
 $N^{-5}\int(c_P|\eta|+Nc_3|\eta|^3)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$.
