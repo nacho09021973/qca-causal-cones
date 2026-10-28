@@ -1,0 +1,19 @@
+[PASS] frozen regional-asymptotics charter SHA256
+[PASS] inherited cancellation-gate charter SHA256
+[PASS] inherited scaled-IR charter SHA256
+[PASS] holomorphic f(-i xi) = prod_j cosh(xi_j)
+[PASS] det S(-i xi) = 1, entire unimodular
+[PASS] facing v* = alpha (1,1,1) with 3 alpha = 3-sqrt(3)/2
+[PASS] |v*|_2 = sqrt(3)-1/2
+[PASS] alpha > 1/sqrt(3): 1-1/(2sqrt3) > 1/sqrt(3) iff 2>sqrt(3) iff 4>3
+[PASS] alpha < 1, so v* is not the cube vertex
+[PASS] min |v|_2 > 1, so I(v*)>0
+[PASS] acosh(125/64)<log 4, hence the log2 tilt lower-bounds I(v*) strictly above J
+[PASS] tilted S_{12} = -(i cosh t + 1) sinh t
+[PASS] mixing vanishes at sinh t = 0, i.e. only at zero tilt
+[PASS] mixing turns on linearly in t: leading eigenvector is not spin-aligned
+[PASS] c_N = O(F^2)
+[PASS] s_N = O(F)
+[PASS] profiles vanish on the Euclidean spheres
+[PASS] layer critical depth eps=p/kappa is O(1) for kappa,p = O(1)
+18/18 exact identity checks passed; C, beta and remainder control remain analytic.

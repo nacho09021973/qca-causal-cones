@@ -1,0 +1,59 @@
+[PASS] frozen Laplace-coefficient charter SHA256 (git blob 18d1f65)
+[PASS] inherited Sec. 8.19 charter and certificate bytes unchanged
+[PASS] S(-i xi) is Hermitian for every real xi
+[PASS] det S(-i xi) = 1
+[PASS] W(p+pi e1) = -W(p) (Laurent identity, valid for complex p)
+[PASS] W(p+pi e3) = -s3 W(p) s3 (Laurent identity, valid for complex p)
+[PASS] W(p+pi e2) = -s3 W(p)^T s3 (Laurent identity, valid for complex p)
+[PASS] W(p+pi(e2+e3)) = W(p)^T (Laurent identity, valid for complex p)
+[PASS] W(p+pi(1,1,1)) = -W(p)^T (Laurent identity, valid for complex p)
+[PASS] half-period characters are trivial on the planes x1+x2+x3=k only for eta0 in {0, pi(1,1,1)}
+[PASS] dual relation on xi=t(1,1,1): alpha^2 = C^4/(C^4+C^2+1), C=cosh t
+[PASS] C*^2 = alpha(alpha+sqrt(4-3alpha^2))/(2(1-alpha^2)) solves (1-a^2)C^4 - a^2 C^2 - a^2 = 0
+[PASS] Hermitian 2x2: P=(I+(M-m)/Delta)/2 is the top spectral projector
+[PASS] S(-i t(1,1,1)) = [[C^2 e^-t, -(1+iC)S], [-(1-iC)S, C^2 e^t]]
+[PASS] Delta = S sqrt(C^4+C^2+1) = sqrt(C^6-1), tr/2 = C^3: top eigenvalue e^{phi*}
+[PASS] Perron projector P = (1/2)[[1-alpha, -(1+iC)alpha/C^2], [-(1-iC)alpha/C^2, 1+alpha]]
+[PASS] Hess phi = (Pi/D) sech^2 delta_ij - (Pi/D^3) tanh_i tanh_j, phi = arccosh(Pi)
+[PASS] q_t = C/D*, q_n = (C/D*)(C^2-1)(C^2+2)/(C^4+C^2+1) > 0: Hessian nondegenerate
+[PASS] holomorphy: d_p f(-i xi) = i d_xi f, hence d_eta omega = i v*, d_eta^2 omega = -Hess phi
+[PASS] S(p) = I - i H_W(p) + O(p^2), H_W = p1 s1 - p2 s2 + p3 s3
+[PASS] H_W^2 = |p|^2 I, so e^{-iH_W(q)} = cos|q| - i sin|q| H_W(q)/|q|
+[PASS] H_W(u_hat) down = (1+i, -1)/sqrt(3)
+[PASS] angular integrals: 4 pi j0 and -4 pi i j1 w_hat (plane-wave l=0,1)
+[PASS] rho* = sqrt3-1/4 < pi: j0(k rho*), j1(k rho*), cos k, sin k > 0 on (0,1], so A,B > 0
+[PASS] moment recursions int_0^1 k^m {sin,cos}(omega k) dk, m <= 5
+[PASS] product-to-sum reductions for A(rho*), B(rho*), b-profile integral
+[PASS] H(delta)=int_0^delta (delta-s)^2 J0(tau sqrt s) ds has H''' = 2 J0(tau sqrt delta), H(0)=H'(0)=H''(0)=0
+[PASS] L[J0(tau sqrt s)](p) = exp(-tau^2/4p)/p (termwise), so L[H](p) = 2 exp(-tau^2/4p)/p^4
+[PASS] depth x = sqrt3 delta: ghat(omega) = c_g exp(-tau^2/(4 sqrt3 s)) / s^4, s = t*+i omega, c_g = 2pi/(3sqrt3)
+[PASS] tau=0 consistency: Psi_delta(0) = pi delta^3/3 and its Laplace transform 2pi/p^4
+[PASS] Poisson tails: sum_{n!=0} (2 pi n)^-4 = 1/720; sum_n (pi(2n+1))^-4 = 1/48
+[PASS] Gaussian: int_{R^2} exp(-a|tau|^2) = pi/a (Gamma-bar, epsilon_+-, epsilon_- closed forms)
+[PASS] prefactor K = (128/(3 pi^2)) sqrt(2pi/q_n) Bhat from A-layer 16pi/sqrt3, B-layer 32/sqrt3, 2/N, (2pi)^-3
+[PASS] power count: b_N, r, s_N, h_B, two in-plane areas, eta_n Gaussian, eta_t scale -> beta = 13/2; c_N-term 17/2
+[PASS] parity: (-1)^{N + k_y - k_x} = (-1)^{j+j'} with k_y-k_x = 3N - 2 floor(sqrt3 R) + j + j'
+[PASS] K* = 3 alpha t* - arccosh(C*^3) in [0.190518929584, 0.190518929584], t* in [0.73575281442, 0.73575281442]; J < K* < log 4 (consistency with Sec. 8.19)
+[PASS] q_n in [0.303383821276, 0.303383821276], q_t in [0.689567486595, 0.689567486595]; det Q = q_n q_t^2 > 0
+[PASS] A(rho*) in [0.716577583139, 0.716577583139], B(rho*) in [0.132252374571, 0.132252374571], I_b in [0.954118042853, 0.954118042853] (all > 0)
+[PASS] Gamma-bar in [49.4418684782, 49.4418684782]; |Gamma_+(theta)-Gamma-bar| <= eps_+ (eps_+/Gamma-bar < 1.1e-3); 0 <= Gamma_- <= eps_- (< 6e-5 Gamma-bar)
+[PASS] K in [1.7492694193, 1.7492694193] > 0, c_r in [0.0931905554083, 0.0931905554083]
+[PASS] C(I,I)(theta) sign-definite for all theta: C-bar in [-0.0752752092811, -0.0752752092811], |C(theta)/C-bar - 1| <= 0.001466
+[PASS] C(I,P1)(theta) sign-definite for all theta: C-bar in [1.20726506833, 1.20726506833], |C(theta)/C-bar - 1| <= 0.001091
+[PASS] C(I,P2)(theta) sign-definite for all theta: C-bar in [0.816409857634, 0.816409857634], |C(theta)/C-bar - 1| <= 0.001077
+[PASS] C(I,P3)(theta) sign-definite for all theta: C-bar in [-0.0752752092811, -0.0752752092811], |C(theta)/C-bar - 1| <= 0.001466
+[PASS] C(s1,I)(theta) sign-definite for all theta: C-bar in [-3.72063039375, -3.72063039375], |C(theta)/C-bar - 1| <= 0.001047
+[PASS] C(s1,P1)(theta) sign-definite for all theta: C-bar in [-1.5567800857, -1.5567800857], |C(theta)/C-bar - 1| <= 0.001056
+[PASS] C(s1,P2)(theta) sign-definite for all theta: C-bar in [-2.82039601822, -2.82039601822], |C(theta)/C-bar - 1| <= 0.001017
+[PASS] C(s1,P3)(theta) sign-definite for all theta: C-bar in [-0.177654293171, -0.177654293171], |C(theta)/C-bar - 1| <= 0.001053
+[PASS] C(s2,I)(theta) sign-definite for all theta: C-bar in [-2.93891997237, -2.93891997237], |C(theta)/C-bar - 1| <= 0.001053
+[PASS] C(s2,P1)(theta) sign-definite for all theta: C-bar in [-0.584654374118, -0.584654374118], |C(theta)/C-bar - 1| <= 0.001019
+[PASS] C(s2,P2)(theta) sign-definite for all theta: C-bar in [-1.77299509737, -1.77299509737], |C(theta)/C-bar - 1| <= 0.001042
+[PASS] C(s2,P3)(theta) sign-definite for all theta: C-bar in [-0.177654293171, -0.177654293171], |C(theta)/C-bar - 1| <= 0.001053
+[PASS] C(s3,I)(theta) sign-definite for all theta: C-bar in [0.0752752092811, 0.0752752092811], |C(theta)/C-bar - 1| <= 0.001466
+[PASS] C(s3,P1)(theta) sign-definite for all theta: C-bar in [-1.20726506833, -1.20726506833], |C(theta)/C-bar - 1| <= 0.001091
+[PASS] C(s3,P2)(theta) sign-definite for all theta: C-bar in [-0.816409857634, -0.816409857634], |C(theta)/C-bar - 1| <= 0.001077
+[PASS] C(s3,P3)(theta) sign-definite for all theta: C-bar in [0.0752752092811, 0.0752752092811], |C(theta)/C-bar - 1| <= 0.001466
+[PASS] leading coefficients satisfy C(sigma3,M_B) = -C(I,M_B) exactly (r x d interference)
+[PASS] C(I,I) = C(I,P3) proportional to -B alpha (C-1)/C^2: vanishes only if B=0 or C=1 (neither)
+58/58 exact checks passed. The analytic remainder O(N^-1/2) and the saddle-point lemmas are report [A], not encoded here.

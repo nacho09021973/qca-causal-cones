@@ -1,0 +1,56 @@
+[PASS] source byte identity                                                                           ESTABLISHED
+        25e2b03ff056fc78a7105fb81a6859be326ae2ee5717b35f7fc664b89ae7bdf8
+[PASS] both symbols unitary with det 1                                                                ESTABLISHED
+        5.12: W^dag W = I, det W = 1; 5.15: W^dag W = I, det W = 1
+[PASS] tr W(5.12)/2 = ccc + sss  (NOT the printed ccc - sss of (5.13))                                ESTABLISHED
+        matches ccc+sss; the printed (5.13) ccc-sss is the trace of exp(-i p1 s1) exp(-i p2 s2) exp(-i p3 s3), i.e. the image under p -> -p
+[PASS] tr W(5.15)/2 = ccc, i.e. CJWW (5.16)                                                           ESTABLISHED
+        omega = arccos(c1 c2 c3)
+[PASS] jump set of (5.12) is exactly the 8 cube vertices                                              ESTABLISHED
+        8 vectors: [(-1, -1, -1), (-1, -1, 1), (-1, 1, -1), (-1, 1, 1), (1, -1, -1), (1, -1, 1), (1, 1, -1), (1, 1, 1)]
+[PASS] jump set of (5.15) has 14 vectors and contains the 8 cube vertices                             ESTABLISHED
+        14 vectors: [(-1, -1, -1), (-1, -1, 0), (-1, -1, 1), (-1, 0, 0), (-1, 1, -1), (-1, 1, 0), (-1, 1, 1), (1, -1, -1), (1, -1, 0), (1, -1, 1), (1, 0, 0), (1, 1, -1), (1, 1, 0), (1, 1, 1)]
+[PASS] conv F = [-1,1]^3 for both walks, so v_sub(n) = ||n||_1                                        ESTABLISHED
+        5.12: ok; 5.15: ok; r_in=1, V_causal^max=sqrt(3)
+[PASS] every cube vertex stays in the strict support of W^n, for all n                                ESTABLISHED
+        5.12: all 8 vertices rank 1 with nonzero trace; 5.15: all 8 vertices rank 1 with nonzero trace  => (W^n)_{n sigma} != 0 for EVERY n >= 1
+[PASS] (5.12): exact SOS identity (1-f^2) - (v_i^2+v_j^2)|scaled = (c_i c_j s_k + s_i s_j c_k)^2      ESTABLISHED
+        all three pairs: Gamma_1 is contained in the tricylinder v_i^2+v_j^2 <= 1
+[PASS] (5.15): exact SOS identity (1-f^2) - |grad f|^2 = s2^2 s3^2 + s1^2 s2^2 c3^2 + s1^2 c2^2 s3^2  ESTABLISHED
+        hence |grad omega| <= 1 everywhere, with equality iff all three terms vanish
+[PASS] (5.15): |grad omega| = 1 on the whole axis line, not only at the cone tips                     ESTABLISHED
+        |grad omega|^2 = 1 for all q, refining CJWW's 'maximum at the conical points'
+[PASS] (5.12): max |v_g| = sqrt(3/2), attained exactly at p = (-pi/4,-pi/4,-pi/4)                     ESTABLISHED
+        v = [-sqrt(2)/2, -sqrt(2)/2, -sqrt(2)/2], |v|^2 = 3/2
+[PASS] axis direction: omega = |q| and v_g = (1,0,0) for BOTH walks                                   ESTABLISHED
+        5.12: omega=|q|, v_g=(1,0,0)=v_sub(e1); 5.15: omega=|q|, v_g=(1,0,0)=v_sub(e1)  [c_IR = |v_g| = v_sub all equal 1 on the axes]
+[PASS] conical expansion: omega^2 = |p|^2 + O(p^3), so c_IR = 1                                       ESTABLISHED
+        5.12: omega^2 = |p|^2 - 2abc t^3 + O(t^4); 5.15: omega^2 = |p|^2 + O(t^4) exactly (no cubic); so c_IR = 1 for both, in lattice-step units
+[PASS] velocity sets fill the tricylinder / the ball                                                  SUPPORTED (numerical)
+        tricylinder cells missed: 0; ball cells missed: 0
+[PASS] CJWW (5.21) is exact at their stated maximizer p=0, lambda = l(1,1,1)/sqrt(3)                  ESTABLISHED
+        R~(l) = 2 arccosh(cosh(l/2sqrt3)^3); the LOCATION of the maximizer is CJWW's numerical finding, the VALUE there is exact
+[PASS] the two slopes of R~ are exactly c_IR = 1 and max_n v_sub(n) = sqrt(3)                         ESTABLISHED
+        R~'(0) = 1 = c_IR = h_B(n); R~'(oo) = sqrt(3) = ||(1,1,1)/sqrt(3)||_1 = v_sub(body diagonal)
+[PASS] dual transform gives exactly three regimes, with CJWW's control value                          ESTABLISHED
+        ballistic/emergent (r<=1) | causal but exponentially suppressed (1<r<sqrt3) | causally forbidden (r>sqrt3); I~(1.1)=0.1050
+[PASS] declared limitation: the radial rate function is coarse on the axes                            ESTABLISHED
+        at r=1.1 the axial ray is outside C_micro (exact zero) while I~ reports a finite rate => the angular structure of I is NOT resolved here
+[PASS] lift: strict support of W^t never leaves t*C_micro, and reaches its vertices                   ESTABLISHED
+        t=1: |supp|=14, vertex block=(1+0j)/4^1; t=2: |supp|=47, vertex block=(1+0j)/4^2; t=3: |supp|=148, vertex block=(1+0j)/4^3; t=4: |supp|=261, vertex block=(1+0j)/4^4  [H4: C_micro is the exact outer boundary]
+[PASS] lift H2: nonzero commutator strictly OUTSIDE the light cone, off-axis                          ESTABLISHED
+        vertex ray |y| = sqrt(3) t > ct is in the strict support with nonzero (y,y') block => signalling possible outside B(c); magnitude ||(W_sigma)^t|| = 4^-t
+[PASS] lift H3: EXACTLY zero commutator along the six axial directions beyond ct                      ESTABLISHED
+        v_sub(e_i) = c, so every axial site beyond ct lies outside C_micro: kernel exactly zero, commutator exactly zero, no superluminal tail on-axis
+[PASS] lift: the accessible region is exactly C_micro*t minus the light cone                          ESTABLISHED
+        t=3: 108 sites strictly outside B(c)t, all inside C_micro*t, none axial
+[PASS] coupling map: axial control gives D = 0 for EVERY state and operation                          ESTABLISHED
+        K_0y = 0 excludes Alice from evolved Bob algebra, at t = 2,3,4
+[PASS] coupling map: phase gate exp(i pi n_0) kills the local term and doubles the coherence term     ESTABLISHED
+        Delta_00 = 0, Delta_0w = -2 P_0w: phase-gate occupation identity; no optimality claim
+[PASS] coupling map: finite occupation-witness ratios (not D optimization or asymptotics)             SUPPORTED
+        finite occupation diagnostics: t=2: gain=24x, t=3: gain=48x, t=4: gain=216x; sampled local rotations, no exact maximum or asymptotic claim
+[PASS] coupling map: sampled off-vertex local occupation response vanishes                            SUPPORTED
+        sampled occupation responses vanish at face-diag and nearest-off-axis; this does not imply equality of Bob's full reduced states
+
+27/27 checks passed
