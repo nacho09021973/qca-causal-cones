@@ -44,17 +44,20 @@ Mathlib and nothing from `QcaFormal`, restates the definitions it needs
 `delta_le_four_T` as `Prop`s. `QcaComparator/Solution.lean` proves them with
 the `QcaFormal` theorems, so it compiles only if the restated definitions unfold
 to the originals. `QcaComparator/Axioms.lean` fails the build unless both
-depend on exactly `propext`, `Classical.choice`, `Quot.sound`.
+depend on exactly `propext`, `Classical.choice`, `Quot.sound`, using
+`#assert_standard_axioms` from `QcaComparator/AssertAxioms.lean` (a copy of
+`~/herramientas/lean/HerramientasLean/AssertAxioms.lean`, commit in its header).
 
-Pattern from `Comparator/` in AxiomMath/CFSG (commit `69cb972`). The external
-`leanprover/comparator` (needs `landrun`, `lean4export`; in core as
-`lake comparator` from v4.35.0) is not used on v4.31.0.
+Pattern and tooling: `~/herramientas/lean/README.md`, after `Comparator/` in
+AxiomMath/CFSG (commit `69cb972`).
 
-Checked 2026-10-28 by mutation: changing the constant `4` to `3` in
-`TNBound` gives a type mismatch in `Solution`; adding a condition to the
-`regA` filter also gives a type mismatch (with the default heartbeat limit it
-was a `whnf` timeout, hence `maxHeartbeats 1000000` on `tn_bound`); replacing a
-proof with `sorry` makes `Axioms` fail.
+Mutation checks are versioned in `QcaComparator/mutaciones.toml` and run with
+`lean-mutar formal formal/QcaComparator/mutaciones.toml --salida <record>` from
+the repo root; records are in `QcaComparator/registros/`. Each mutation (the two
+statements, the copied `regA` and `Ssym`, a `sorry`) must be rejected with the
+expected error. With the default heartbeat limit the `regA` mutation was a
+`whnf` timeout instead of a type mismatch, hence `maxHeartbeats 1000000` on
+`tn_bound`.
 
 ## What is not formalized
 

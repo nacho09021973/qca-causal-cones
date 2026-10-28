@@ -1,0 +1,40 @@
+# Mutation checks for QcaComparator. Run from the repo root:
+#   lean-mutar formal formal/QcaComparator/mutaciones.toml --salida formal/QcaComparator/registros/<date>.json
+# Tool: ~/herramientas/lean/mutar.py (see ~/herramientas/lean/README.md).
+objetivo = "QcaComparator"
+timeout = 900
+
+[[mutacion]]
+nombre = "TNBound: constant 4 -> 3"
+fichero = "QcaComparator/Challenge.lean"
+antes = "      ≤ (4 * (N : ℝ) ^ 4 * (2 : ℝ)"
+despues = "      ≤ (3 * (N : ℝ) ^ 4 * (2 : ℝ)"
+espera = "Solution\\.lean.*Type mismatch"
+
+[[mutacion]]
+nombre = "DeltaLeFourT: 4T -> 3T"
+fichero = "QcaComparator/Challenge.lean"
+antes = "‖ ≤ 4 * T"
+despues = "‖ ≤ 3 * T"
+espera = "Solution\\.lean.*Type mismatch"
+
+[[mutacion]]
+nombre = "copied regA: extra filter condition x 0 ≠ 7"
+fichero = "QcaComparator/Challenge.lean"
+antes = "(Fintype.piFinset fun _ => Finset.Icc (-(N : ℤ)) N).filter (inA N)"
+despues = "(Fintype.piFinset fun _ => Finset.Icc (-(N : ℤ)) N).filter (fun x => inA N x ∧ x 0 ≠ 7)"
+espera = "Solution\\.lean.*Type mismatch"
+
+[[mutacion]]
+nombre = "copied Ssym: jump X(-e3) -> X(e3) in the (0,0) entry"
+fichero = "QcaComparator/Challenge.lean"
+antes = "cL 0 * cL 1 * X (-ej 2)"
+despues = "cL 0 * cL 1 * X (ej 2)"
+espera = "Solution\\.lean.*Type mismatch"
+
+[[mutacion]]
+nombre = "tn_bound proof replaced by sorry"
+fichero = "QcaComparator/Solution.lean"
+antes = "  fun N hN ψ => QcaFormal.TN_bound N hN ψ"
+despues = "  sorry"
+espera = "Axioms\\.lean.*non-standard axioms: \\[sorryAx\\]"
