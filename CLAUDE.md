@@ -146,8 +146,12 @@ Scientific:
   point in a certified quantity.
 - No rigidity from a failed search, a finite scan or local isolation. No family
   identity promoted to a general QCA law without a separate proof.
-- Do not broaden scope: no causal sets, random lattices, interacting QCA, quantum
-  gravity, new substrate classes, or anisotropic detours, absent a new charter.
+- Scope (revised 2026-10-28, `PROJECT_INSTRUCTIONS.md` §1): finite-range,
+  translation-invariant QCA on periodic lattices in d ≤ 3, free or interacting.
+  Other lattices, neighbourhoods and internal structures are in scope, each with
+  its own charter. Anisotropic substrates only as controls of a stated hypothesis.
+  Out of scope without a successor charter: causal sets, random lattices, quantum
+  gravity, and model searches without a frozen class and hypothesis.
 - Bernstein's inequality and its equality theory are prior art. `NOVELTY = OPEN`.
 - Negative results are first-class outcomes.
 

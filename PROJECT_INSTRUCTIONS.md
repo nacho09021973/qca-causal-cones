@@ -9,7 +9,9 @@ The central scientific question is not whether locality gives a finite propagati
 - **A — IR universality:** why different low-energy species would share one relativistic causal cone;
 - **B_infty^* — strict asymptotic matching:** under which explicitly stated structural hypotheses the massless relativistic speed `c_0` equals the strict asymptotic isotropic speed `c_strict^iso` of the same dynamics. This supersedes B* against the one-step inradius. The strong form, where locality, unitarity, homogeneity and discrete isotropy alone force the equality, is **REJECTED IN THE DECLARED s=4 CLASS**; see `state/CURRENT_STATE.md`.
 
-Do not broaden the project to causal sets, random lattices, interacting QCA, quantum gravity, or other substrate classes except under a separately chartered successor gate.
+**Scope (revised 2026-10-28, user instruction).** The substrate is a finite-range, translation-invariant QCA on a periodic lattice in d ≤ 3: one-particle or many-particle, free or interacting. Within that class, varying the lattice, the neighbourhood (including on-site terms) and the internal structure is in scope, because the question is which properties of the substrate fix `c`. Each variation still needs its own frozen charter. Anisotropic substrates are admitted only as controls of a stated hypothesis, never as a line of their own. Out of scope unless a successor charter explicitly opens it: substrates without translation invariance (causal sets, random lattices), quantum gravity, and model searches not tied to a frozen class and a stated hypothesis.
+
+The previous rule ("do not broaden the project to causal sets, random lattices, interacting QCA, quantum gravity, or other substrate classes") dates from the opening of the project. It is replaced because the question now requires comparing substrates. Interacting QCA were already chartered on 2026-10-08.
 
 ## 2. Canonical authority
 
@@ -72,9 +74,8 @@ opens inverse design on `research/inverse-gravity-design`, governed by
 `theory/INVERSE_GRAVITY_DESIGN_CHARTER.md` and the newest entry of
 `state/CURRENT_STATE.md`. Within that charter, fixed-lattice interacting QCA
 construction and collective geometry are allowed; exact CJWW recovery is not
-required. Historical statements below that only point (3) is authorized or
-that no new class may be studied do not prohibit this separately authorized
-line. All prior evidence levels, closures and paused fronts retain their scope.
+required. Historical statements below that only point (3) is authorized do
+not prohibit this separately authorized line. All prior evidence levels, closures and paused fronts retain their scope.
 The opening authorizes investigation, not a gravity or novelty result.
 
 The **STANDARD WEYL/DIRAC EXACT GATE is PASS** for its declared cases, on the
@@ -113,7 +114,8 @@ Rules that carry over to any successor gate:
 - Do not infer rigidity from a failed search, a finite scan or local isolation.
 - Do not promote a family identity (such as the s=4 projector-metric rule) to
   a general QCA law without a separate proof.
-- No anisotropic detour, broad model search, causal sets or new substrate class.
+- Stay within the scope of Sec. 1. Anisotropic substrates only as controls of a stated
+  hypothesis. No model search without a frozen class and a stated hypothesis.
 - Check primary classification assumptions before claiming a new rigidity theorem.
 
 Negative results are valid project outcomes.

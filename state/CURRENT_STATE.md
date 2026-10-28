@@ -31,6 +31,25 @@ with a dated entry, the dated entry wins.
 | Inverse-gravity successor (IG-S0 to IG-S2) | `BOUNDED_TRANSFER_ATTEMPT_STOPPED_OPEN`; direct transfer paused | Entries of 2026-10-08 and 2026-10-10 |
 | A.int, interaction-renormalized species speed | OPEN sub-question of A; no calculation contract; Eon v4 reference-state work in progress | Section 4, A — IR universality |
 
+## Scope rule revised — 2026-10-28
+
+User instruction: "esa regla del repo de no cambiar el sustrato se hizo al principio, creo que hoy ya
+no tiene sentido, revisa las reglas teniendo en cuenta el objetivo que tenemos ahora". Then "sí,
+aplícalo con anisótropos solo como controles". `PROJECT_INSTRUCTIONS.md` §1 and §7,
+`CLAUDE.md` and the committee guardrail (`comite/config.toml`, now `NO_UNTARGETED_SEARCH`) were
+revised.
+
+- **In scope:** finite-range, translation-invariant QCA on periodic lattices in d ≤ 3, free or
+  interacting. Other lattices, neighbourhoods (including on-site terms) and internal structures
+  are in scope, each with its own frozen charter.
+- **Anisotropic substrates:** only as controls of a stated hypothesis.
+- **Out of scope without a successor charter:** causal sets, random lattices, quantum gravity,
+  and model searches without a frozen class and hypothesis.
+
+Charters, frozen quantifiers and every existing gate scope are unchanged. Reason: the live
+question (which substrate properties fix `c`) needs substrate comparison. Interacting QCA were
+already chartered on 2026-10-08.
+
 ## Irreducible isotropy matching charter — 2026-10-28
 
 User instruction: "prepara la carta para la hipótesis 3". Charter

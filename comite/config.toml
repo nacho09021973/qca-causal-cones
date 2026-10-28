@@ -13,7 +13,7 @@ guardarrailes = [
   "NO_EVIDENCE_PROMOTION — nada sube de PRELIMINARY a ESTABLISHED por encajar en la narrativa (§4)",
   "NO_RIGIDITY_FROM_FINITE_SCAN — una búsqueda fallida, un barrido finito o un aislamiento local no prueban rigidez (§7)",
   "NO_UNCHARTERED_GATE — sólo se trabaja en gates autorizados en state/CURRENT_STATE.md (§§2, 7)",
-  "NO_SCOPE_BROADENING — nada de causal sets, redes aleatorias, QCA interactuantes ni nuevas clases de sustrato (§1)",
+  "NO_UNTARGETED_SEARCH — QCA de alcance finito e invariantes por traslación en redes periódicas (d ≤ 3); otras redes, vecindades y estructuras internas sí, cada una con su carta; anisótropos solo como controles; nada de causal sets, redes aleatorias, gravedad cuántica ni búsquedas sin clase congelada e hipótesis (§1, revisado 2026-10-28)",
   "NO_NOVELTY_WITHOUT_PRIOR_ART — Bernstein y su teoría de igualdad son prior art; la novedad sigue OPEN (§6)",
   "KEEP_QUANTIFIERS — dimensión interna, grupo/acción, representación, nodo/sector e irreducibilidad se congelan antes y se conservan en toda conclusión (§7)",
 ]

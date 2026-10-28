@@ -40,7 +40,7 @@ Si DeepSeek no termina, se archiva el intento y se repite una vez, como permite 
 
 ### 2. Decidir la siguiente condición para B∞\* (la decide el usuario)
 
-Las candidatas, todas con la simetría débil D2 y la red de los 8 vértices fija:
+Las candidatas. Las cuatro primeras mantienen la simetría débil D2 y la red de los 8 vértices fija:
 
 | # | Condición | Por qué |
 |---|---|---|
@@ -48,7 +48,7 @@ Las candidatas, todas con la simetría débil D2 y la red de los 8 vértices fij
 | 2 | s = 2 sin la ecuación (2) de P17 | Cerraría el caso mínimo |
 | 3 | Todas las bandas comparten el mismo cono | Más fuerte que la 1; probablemente la implica |
 | 4 | D2 más paridad o inversión temporal | Sin mirar; podría separar Pavia de s = 4 |
-| 5 | Cambiar la geometría (término en el sitio, más vecinos, otra red) | Cambia el sustrato; las reglas lo excluyen salvo con una carta propia. Para el final |
+| 5 | Cambiar la geometría (término en el sitio, más vecinos, otra red periódica) | Desde el 28-10 está dentro del alcance (`PROJECT_INSTRUCTIONS.md` §1 revisado), con su propia carta. Permite comparar sustratos, que es lo que pide la pregunta |
 
 Si se elige la 1:
 - Escribir su carta, con la clase congelada, la definición exacta de «sin mezcla» y sus resultados posibles.
