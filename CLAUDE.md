@@ -32,11 +32,12 @@ the index only *locates* papers, it proves nothing — read the PDF and cite
 `file.pdf p.N`, otherwise tag the claim `[UNVERIFIED]`. Tags marked `proposed`
 were written by an AI. Never hand-edit `INDICE.md`; edit
 `scripts/biblioteca_catalog/curated.csv` (versioned, with `tags.csv`) and
-regenerate. Verified 2026-09-26: `biblioteca/` is **not present in this
-checkout**, and the generator `~/herramientas/biblioteca_catalog/build_catalog.py`
-named by `README.md` and `AGENTS.md` does not exist on this machine. Ask the
-user rather than inventing a path; fall back to `sources/` (versioned PDFs with
-recorded SHA256) as primary literature.
+regenerate with `python3 ~/herramientas/biblioteca_catalog/build_catalog.py --repo .`.
+Verified 2026-10-28: `biblioteca/` (with `INDICE.md`) and the generator are both
+present on this machine. On a fresh checkout they may not be; `docs/PORTABILIDAD.md`
+explains how to restore them. If either is missing, ask the user rather than
+inventing a path, and fall back to `sources/` (versioned PDFs with recorded
+SHA256) as primary literature.
 
 ## Commands
 
@@ -186,11 +187,13 @@ Epistemic (from `~/herramientas/REGLAS.md`):
   if the symlink goes missing) — adversarial debate across model families. Use
   for "is this true?" before promoting or publishing. It sees only what is
   attached with `-c`. Output to `debates/`. See `~/sanedrin/README.md`.
-  Check the census first: `sanedrin --listar`. As of 2026-09-26 `opus`, `astra`
-  and `ciro` (Grok, logged in via the `grok` CLI) are `ok`; `gemini` is `ausente`
-  for lack of `GEMINI_API_KEY`; and `abner` (DeepSeek) reports `ok` only because
-  the key is *defined* — the value in `~/.config/sanedrin/env` is still the
-  `sk-PON…` placeholder, so it does not authenticate. Read a first `ausente` for
+  Check the census first: `sanedrin --listar`. On 2026-10-28 all five houses
+  (`opus`, `astra`, `ciro`, `abner`, `gemini`) report `ok`. The census only checks
+  that a key or CLI is present, not that a call succeeds. Last real calls:
+  DeepSeek completed a review on 2026-10-26, Grok on 2026-10-28, and the latest
+  Gemini API attempt (2026-10-27) failed on DNS before reaching the provider.
+  For single sealed reviews outside a debate, `revision-ciega <astra|opus|deepseek|grok|gemini>
+  <folder> <docs>...` takes `prompt.md` from the folder. Read a first `ausente` for
   `ciro` with suspicion: the check is `timeout 15 grok models`, and a cold
   `grok` can exceed it; rerun before recording the house as unavailable. Record a
   genuine failure rather than substituting a same-family review.

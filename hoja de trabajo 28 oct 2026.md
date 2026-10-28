@@ -69,11 +69,13 @@ Por orden de uso:
 
 Ninguna promueve evidencia por sí sola.
 
-### 4. Deuda documental de verificadores
+### 4. Deuda documental de verificadores — hecho el 28-10, salvo Eon
 
-- 27 de 46 `verify_*.py` no tienen entrada en `scripts/README.md` (24 con commit y los tres de Eon). Cada
-  entrada debe decir qué informe y contrato certifica, cuántas comprobaciones hace y **qué no certifica**.
-- `.claude/settings.json` solo permite 14 de los 46 en sus dos formas exactas.
+- Los 24 verificadores con commit que faltaban ya tienen entrada en `scripts/README.md` («Previously
+  undocumented verifiers»). Faltan los tres `verify_eon_*.py`, que se documentan al hacer su commit (punto 1).
+- `.claude/settings.json` permite ya los 43 verificadores con commit en sus dos formas exactas. Los de Eon se
+  añaden con su commit.
+- Barrido completo el 28-10 en `233a553`: 46/46 pasan.
 
 ### 5. Comité sobre la línea de gravedad inversa
 
@@ -83,9 +85,8 @@ obstrucciones? IG-S2 terminó en `BOUNDED_TRANSFER_ATTEMPT_STOPPED_OPEN`, con la
 ### 6. Mantenimiento
 
 - Push de la rama: hay commits locales por delante de `origin`.
-- `CLAUDE.md` tiene dos notas que ya no son ciertas en este equipo:
-  - dice que `biblioteca/` y `~/herramientas/biblioteca_catalog/build_catalog.py` no existen, y ahora existen;
-  - el censo de `sanedrin` da `gemini` y `abner` como `ok`.
+- `CLAUDE.md`: corregidas el 28-10 las notas sobre `biblioteca/`, el generador del índice y el censo de
+  `sanedrin`.
 
 ## Comprobaciones antes de cada sesión
 

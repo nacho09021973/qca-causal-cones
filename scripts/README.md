@@ -57,6 +57,49 @@ The sweep uses the existing glob, so the inventory remains 42 verifiers.
 The modified certificates are author-checked versions; the earlier independent
 reviews do not automatically review their new bytes.
 
+## Previously undocumented verifiers (inventory of 2026-10-28)
+
+Twenty-four committed verifiers had no entry here. Each row is taken from the
+script's own docstring and its printed `Scope`/`VERDICT` lines, cross-checked
+against the contract and report it names; it adds no scientific claim. All
+passed (exit 0) in a full sweep of 46 verifiers at `233a553` (SymPy 1.14.0).
+"Printed PASS lines" counts output lines starting with `PASS`/`[PASS]`/`OK`; it
+is an inventory figure, not a count of independent theorems. Several scripts
+certify a negative verdict: exit 0 means the declared outcome was reproduced,
+not that a hypothesis survived. Run each as `python3 -B scripts/<name>` from
+the repository root. None of these rows records an independent review of the
+script itself; consult the report and `state/CURRENT_STATE.md` for review status.
+
+| Script | Contract; report | Printed PASS lines | Certified verdict | Does not certify |
+| --- | --- | --- | --- | --- |
+| `verify_signaling_witness.py` | `theory/COUPLING_MAP_SIGNALING_WITNESS.md`; `2026-09-16--noncorner-signaling-gate.md`, `2026-09-16--alice-local-preparation.md` | 17 | 17/17 exact checks: finite signalling existence witness | Any optimum, asymptotic rate, state search or trace-distance optimization |
+| `verify_irreducible_d2_pavia.py` | `2026-09-23--irreducible-d2-pavia-checks.md`; writes `2026-09-23--irreducible-d2-pavia-verification.md` with `--output` | — (writes a checklist record) | Exact checks for the scoped irreducible-D2 application of P17 | The analytic completeness and all-time support arguments, which live in the companion report |
+| `verify_cjww_coordinate_factorization.py` | `theory/CJWW_SINGLE_COORDINATE_FACTORIZATION_AUDIT.md`; `2026-09-30--cjww-coordinate-factorization-audit.md` | 8 | Scoped factorization audit (frozen at `f9dcb46`) | Grouping, ancillas, repeated coordinate factors, powers of W, coordinate mixing; more than one tick or other cells. Prints `AUTHOR_SIDE_CERTIFICATE / INDEPENDENT_REVIEW_PENDING` |
+| `verify_w1_geometricity.py` | `theory/W1_GEOMETRICITY_GATE.md`; `2026-09-29--w1-geometricity.md` | 5 | Two-step exact matter support depends on the link-register state; one-step adjacency and outer CJWW body unchanged | Any continuum or gravity interpretation |
+| `verify_w4_geometry_stiffness.py` | `theory/W4_GEOMETRY_STIFFNESS_GATE.md`; `2026-09-30--w4-geometry-stiffness.md` | 5 | Geometry-only partial-SWAP transports the tetrad-control variable in vacuum | The corrected long-wavelength spectrum reading (see the W4 audit section above) |
+| `verify_w5_spatial_tetrad_rank.py` | `theory/W5_SPATIAL_TETRAD_COMPLETENESS_GATE.md`; `2026-09-30--w5-spatial-tetrad-completeness.md` | 2 | W3–W5 geometry spans only a restricted spatial-metric submanifold | Gauge completion |
+| `verify_w7_spin2_kinematics.py` | `theory/W7_SPIN2_KINEMATICS_GATE.md`; `2026-09-30--w7-spin2-kinematics.md` | 4 | W6 contains a 5-component kinematic spin-2 sector | Any TT reduction or dynamics |
+| `verify_w8_tt_gauge_reduction.py` | `theory/W8_TT_GAUGE_COMPLETION_GATE.md`; `2026-09-30--w8-tt-gauge-completion.md` | 2 | A proposed local vector gauge symmetry would reduce 5 components to 2 TT components | That W6 realizes this redundancy microscopically |
+| `verify_w9_continuum_gauge_bridge.py` | `2026-09-30--w9-cjww-graviton-matter-bridge.md` (repair D1) | 3 | Algebraic on-shell O(lambda) gauge-variation consistency | Weyl stress conservation and microscopic matching (inputs), local-Lorentz Ward identity, W6 source matching |
+| `verify_w10_linearized_constraints.py` | `2026-09-30--w10-sourced-gu-wen-constraints.md` (repairs B1–B3) | 4 | Continuum test-source consistency at O(lambda) for linearized Einstein | A lattice Gu–Wen L-model calculation, coupled Ward identity, microscopic and reciprocal completion |
+| `verify_w11_ir_stress_source.py` | `2026-09-30--w11-cjww-floquet-stress-tensor.md` (repairs A1/A2) | 6 | Free-walk integrated-charge conservation at all eight nodes, in Bloch space and by real-space convolution | q≠0 Belinfante stress kernel, interacting constraint identity, Floquet-logarithm no-go |
+| `verify_w12_four_species_metric_universality.py` | `theory/W12_FOUR_SPECIES_METRIC_UNIVERSALITY_GATE.md`; `2026-09-30--w12-four-species-metric-universality.md` | 3 | `UNIVERSAL_SUBFAMILY_DEFICIENT` at first order in g and k, four +I nodes | Emergent gravity, higher orders, −I universality (diagnostic only), dynamics/backreaction of Z |
+| `verify_elastic_graph_species_universality.py` | `theory/ELASTIC_GRAPH_SPECIES_UNIVERSALITY_GATE.md`; `2026-09-30--elastic-graph-species-universality.md` | 5 | `KINEMATIC_COMMON_EMBEDDING_UNIVERSAL / ELASTIC_HOPPING_RESPONSE_OPEN` | Strain-dependent hopping rules, backreaction, curvature, gravity |
+| `verify_elastic_hopping_orientation_obstruction.py` | `theory/ELASTIC_HOPPING_UNITARY_RESPONSE_GATE.md`; `2026-09-30--elastic-hopping-unitary-response.md` | 3 | `UNITARY_ELASTIC_RESPONSE_INCONSISTENT` (orientation-independence premise fails) | Any four-species metric calculation, which the obstruction precedes |
+| `verify_elastic_hopping_hermitian_response.py` | `theory/ELASTIC_HOPPING_HERMITIAN_RESPONSE_GATE.md`; `2026-09-30--elastic-hopping-hermitian-response.md` | 6 | `HERMITIAN_ELASTIC_METRIC_UNIVERSAL_EMBEDDING_ONLY`, first order in epsilon and momentum, four +I nodes | Dynamical strain or gravity; no coefficient search was performed |
+| `verify_inverse_gravity_constraint_module.py` | `theory/INVERSE_GRAVITY_CONSTRAINT_PREFLIGHT.md`; `2026-10-08--inverse-gravity-constraint-mechanism.md` | 7 | Finite commuting tensor-constraint algebra (IG1a) | Any QCA tick, spectrum, IR modes or gravity |
+| `verify_inverse_gravity_local_gates.py` | `theory/INVERSE_GRAVITY_LOCAL_GATE_GATE.md`; `2026-10-08--inverse-gravity-local-gate.md` | 6 | Local constraint-preserving non-scalar gate (IG1b) | Tick locality and state (argued in the report), modes, IR |
+| `verify_inverse_gravity_full_tick_dynamics.py` | `theory/INVERSE_GRAVITY_FULL_TICK_DYNAMICS_GATE.md`; `2026-10-08--inverse-gravity-full-tick-dynamics.md` | 2 | One-step physical influence of the frozen tick (IG1c) | IR, modes, gravity, many-body diagonalization |
+| `verify_inverse_gravity_ir_reference.py` | `theory/INVERSE_GRAVITY_IR_REFERENCE_GATE.md`; `2026-10-08--inverse-gravity-ir-reference.md` | 6 | `TRACIAL_REFERENCE_RESPONSE_NULL / TERMWISE_VACUUM_INCOMPATIBLE` (IG1d algebra controls) | The general sector proof (in the report), QCA modes, IR spectrum |
+| `verify_inverse_gravity_ir_options_ab.py` | `theory/INVERSE_GRAVITY_IR_OPTIONS_AB.md`; `2026-10-08--inverse-gravity-ir-options-ab.md` | 4 | `AB_ALGEBRA_CONTROLS_PASS / SPATIAL_A_AND_B_OPEN` (IG1e) | Any verdict on the spatial QCA options |
+| `verify_inverse_gravity_a0_conservation.py` | `theory/INVERSE_GRAVITY_A0_CONSERVATION_GATE.md`; `2026-10-08--inverse-gravity-a0-and-b0.md` | 1 | `A0_FAIL_NONCONSERVED_PHYSICAL_PARENT` via an exact energy witness | A Gibbs state or IR spectrum |
+| `verify_inverse_gravity_b0_error_control.py` | `theory/INVERSE_GRAVITY_B0_ACCESS_GATE.md`; `2026-10-08--inverse-gravity-b0-access-audit.md` | 4 | `STATIONARITY_DEFECT_NOT_AN_ENSEMBLE_ERROR_BOUND` on an auxiliary two-level family | B-state convergence of the fixed QCA (`NOT_TESTED`) |
+| `verify_inverse_gravity_dressed_parent.py` | `theory/INVERSE_GRAVITY_DRESSED_PARENT_GATE.md`; `2026-10-08--inverse-gravity-dressed-parent.md` | 4 | `DRESSED_PARENT_ALGEBRA_PASS_AUTHOR_SIDE`; gap interval uniform on admitted tori | That either endpoint is the exact gap; spatial claims (proved in the report) |
+| `verify_inverse_gravity_state_first.py` | `theory/INVERSE_GRAVITY_STATE_FIRST_GATE.md`; `2026-10-08--inverse-gravity-state-first.md` | 5 | `STATE_FIRST_AUXILIARY_CONTROLS_PASS` | A new QCA rule, physical IR state, spin-2 spectrum or gravity (`NOT_COMPUTED`) |
+
+The three `verify_eon_*.py` scripts of 2026-10-27 are not yet committed and are
+not listed here.
+
 ## IR projection leakage algebra (2026-09-22)
 
 `verify_ir_projection_leakage.py` checks exact algebra for the
