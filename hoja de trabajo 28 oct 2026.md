@@ -38,7 +38,17 @@ Además:
 
 ## Próximos pasos, por orden
 
-### 1. Cerrar la revisión de Eon con DeepSeek
+### 1. Cerrar la revisión de Eon con DeepSeek — hecho el 28-10
+
+Hecho:
+- **`5dbd843`:** commit del bloque de Eon con los bytes revisados.
+- **`f64d0c7`:** DeepSeek da ACCEPT_WITH_REPAIRS. G-R1-01 y G-R1-06 se rechazan como errores, porque el
+  revisor intercambió f y g. G-R1-04 tiene contenido.
+- **Commit siguiente:** adenda de reparación del informe, que nadie ha vuelto a revisar.
+
+Queda abierto que el argumento del autor para G-R1-04 (base `|E>'` y coeficiente `a` con signos) no lo ha visto
+ningún revisor. Si interesa, se puede certificar el signo real de las plaquetas con el orden JW de Eon. Eso
+exigiría un contrato nuevo o una ampliación del existente, con un verificador aparte. El plan original era:
 
 1. Leer el informe sin editarlo.
 2. Contrastar cada objeción contra el PDF primario y los certificados.

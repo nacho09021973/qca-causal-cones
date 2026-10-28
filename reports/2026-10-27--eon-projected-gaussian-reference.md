@@ -299,3 +299,59 @@ textual devuelve cero problemas y `git diff --check` pasa. El barrido
 registra el HEAD de base porque el código nuevo aún no está en un commit;
 el manifiesto fija todos los verificadores, helper, runner, especificación,
 PDF y JSON de esta ronda. No se invocó revisión externa.
+
+## Adenda de reparación — 2026-10-28
+
+Revisión independiente sellada: DeepSeek **ACCEPT_WITH_REPAIRS**
+([registro y lectura del autor](../debates/2026-10-28--eon-gaussian-review-deepseek/verificacion_autor.md)),
+sobre los bytes de `5dbd843`. Esta adenda la escribe Claude Opus 5.5. El texto
+anterior se conserva; estas reparaciones lo sustituyen donde lo contradicen.
+El certificado y el JSON no cambian.
+
+1. **§3.C, notación (G-R1-01, G-R1-06).** Se fija: f es la serie de Fourier de
+   la componente elegida de `phi=D_E D_F psi`, y g la de la misma componente
+   de psi. `U psi=lambda psi` con `abs(lambda)=1` se escribe
+   `exp[i theta B(z)] f(z) = lambda g(z)`, es decir
+   `f(z)=lambda exp[-i theta B(z)] g(z)`. En el arco donde
+   `Re(i theta a z) >= abs(theta a) r/2`, que ocupa 1/3 del círculo, se tiene
+   `abs(f) <= exp[-abs(theta a) r/2 + O(1)] abs(g)`. Es la cota que ya usaba
+   el texto; el revisor había intercambiado f y g. El control de §3.D
+   (`f=exp[-i theta(z+1/z)]`, `g=1`) es coherente con esta convención.
+2. **§3.C, convexidad (G-R1-02).** Enunciado preciso: si f es holomorfa y no
+   idénticamente nula en `R_0<abs(z)<infinito`, `log abs(f)` es subarmónica.
+   La media `M_f(r)=(2 pi)^-1 integral log abs(f(r e^{i t})) dt` es finita
+   salvo en radios aislados con ceros sobre la circunferencia, y es convexa en
+   `log r`. Una recta de apoyo da `M_f(r) >= A+B log r`.
+3. **§3.A, cotas gaussianas (G-R1-03).** En volumen finito, D_F desplaza E por
+   vectores de un conjunto finito S y mezcla un número finito de componentes
+   fermiónicas con coeficientes acotados. Para `0<beta'<beta` y cada `delta`
+   en S, `exp(-beta abs(E+delta)²) <= C exp(-beta' abs(E)²)`. D_E solo
+   multiplica por fases. La cota con `beta/2` del texto es un caso de esto.
+4. **§3.B, operadores V y coeficiente a (G-R1-04). Reparación de contenido.**
+   En Eon v4 los `V_{x:eta}` llevan cadenas JW y la paridad gauge se trata
+   como fermión (PDF p.7, §§2.2–2.3); conmutan por la ec. (4). Para una
+   configuración fermiónica fija, que D_M no cambia, se define
+   `|E>' := V_1^{E_1}···V_M^{E_M}|0>`. Por la conmutación está bien definido
+   y difiere de `|E>` solo en una fase. En esa base cada V_ℓ es un
+   desplazamiento puro, D_M multiplica la serie de Fourier por
+   `exp[i theta B(z)]` y los módulos de los coeficientes no cambian. Así
+   pasan las cotas gaussianas. El precio es que, en esa base, cada monomio de
+   plaqueta puede llevar un signo ±1 fijo. Por eso **se retira** «al fijar los
+   otros ángulos a cero, las cuatro plaquetas adyacentes dan a=4». El recuento
+   del certificado (`magnetic_harmonic_counts`) cuenta flujos sin esos signos y
+   no certifica el valor de a. Lo que vale es que a es una suma de cuatro
+   monomios de Laurent en los otros enlaces, con coeficientes no nulos. Para
+   L>=3 los cuatro usan conjuntos distintos de enlaces, son linealmente
+   independientes y a no es idénticamente nulo, con cualquier signo. La
+   reducción del registro de enlace a un entero E_ℓ por enlace se toma de §1
+   y no se vuelve a derivar aquí.
+5. **§3.B, elección genérica (G-R1-05).** La restricción de la componente
+   elegida a z_e, y a como función de `z_{≠e}`, son no nulas fuera de
+   conjuntos de ceros propios. Se fijan `z_{≠e}` en el toro unidad fuera de
+   ambos.
+
+Estado: `REVIEWED_ACCEPT_WITH_REPAIRS`; reparaciones aplicadas por el autor de
+esta adenda y **no revisadas de nuevo**. La reparación 4 descansa en un
+argumento del autor que DeepSeek no ha visto. No cambia el veredicto
+`GAUSSIAN_TAIL_STATIONARITY_FAIL` en su clase ni promueve evidencia. No hay
+vacío físico, correladores, velocidades ni lazo.

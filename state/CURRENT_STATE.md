@@ -1126,7 +1126,9 @@ The author rejects G-R1-01/06 as errors, since the reviewer swapped the series f
 JW/rishon strings (PDF p.7). They are diagonally equivalent to pure shifts because
 they commute, but plaquette monomials may then carry ±1 signs, so the report's
 `a=4` is not guaranteed. `a≢0` still follows from four distinct monomials at L>=3.
-Repairs are not yet applied. Status: `REVIEWED_ACCEPT_WITH_REPAIRS / REPAIRS_PENDING`.
+The repairs were applied as a dated addendum to the report on 2026-10-28 and
+have not been re-reviewed. Repair 4 rests on an author argument that DeepSeek
+has not seen. Status: `REVIEWED_ACCEPT_WITH_REPAIRS; repaired version not re-reviewed`.
 No vacuum, correlator, speed or loop is opened.
 See the
 [imported question](../reports/2026-10-26--interaction-renormalized-species-speed.md).
