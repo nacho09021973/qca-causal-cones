@@ -64,7 +64,8 @@ current_state". Documentary entry. It changes no gate and no frozen claim.
 Status of the manuscript proof of Thm 4.3: `REPAIRED; REPAIRS_REVIEWED`. The
 statements of Theorems 4.1–4.4, `K_*`, the exponent 13/2 and Table 1 values are
 unchanged. Open before submission: the short author lines of `f85f429`/`951bbe3`
-are unreviewed; bibliographic priority is unverified (NOVELTY OPEN); the `Repo`
+are unreviewed; bibliographic priority: `NO_ANTICIPATION_FOUND / NOVELTY OPEN`, with four
+[UNVERIFIED] items ([prior-art audit](../reports/2026-10-28--ir-corona-prior-art-audit.md)); the `Repo`
 bibitem now cites the tag `ir-corona-v1` (user decision "Solo el tag por ahora");
 the DOI is pending because the repository is private. The manuscript is not submitted;
 submission is a separate user decision.

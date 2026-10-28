@@ -10,7 +10,7 @@ path,title,tags,purpose,status
 1708.00826v2.pdf,,qw-dirac-weyl,,proposed
 Derivation of the Dirac Equation from Principles of Information Processing.pdf,,qw-dirac-weyl;info-cuantica,,proposed
 Dirac and Weyl Equations on a Lattice as Quantum Cellular Automata.pdf,,qw-dirac-weyl;qca-fundamentos,,proposed
-EXPONENTIAL_TAIL_ESTIMATES_FOR_QUANTUM_LATTICE_DYNAMICS.pdf,,lieb-robinson,,proposed
+EXPONENTIAL_TAIL_ESTIMATES_FOR_QUANTUM_LATTICE_DYNAMICS.pdf,,lieb-robinson;asintotica-qw,"ir-corona [CJWW] v1; pp.3 y 13 leidas en reports/2026-10-28--ir-corona-prior-art-audit.md",proposed
 Lieb-Robinson bounds and the generation of correlations.pdf,,lieb-robinson,,proposed
 Maximal-velocity deficit under a finite-support_cn.pdf,,lieb-robinson,,proposed
 Quantum Cellular Automaton Theory of Light.pdf,,qca-fundamentos;qw-dirac-weyl,,proposed
@@ -38,3 +38,6 @@ arXiv-1806.02313v1.pdf,,espaciotiempo-curvo-lorentz;floquet-energia-local,"A.int
 arXiv-2205.03148v4.pdf,,qca-fundamentos;qw-dirac-weyl,"A.int preflight; PDF pp.1-3 y 29-30; construccion QED; v4 corrige transporte 3D; reports/2026-10-27--interaction-speed-primary-preflight.md",proposed
 arXiv-gr-qc_0403053v4.pdf,,espaciotiempo-curvo-lorentz,"A.int preflight; PDF pp.2-4; ejemplo Yukawa de Collins no calculo QCA; reports/2026-10-27--interaction-speed-primary-preflight.md",proposed
 entropy-27-00198.pdf,,qca-fundamentos;qw-dirac-weyl,"A.int preflight; PDF pp.3-4 y 8 y 12-13 y 21-22; amplitudes Thirring no autoenergia multiespecie; reports/2026-10-27--interaction-speed-primary-preflight.md",proposed
+arXiv-1108.1878.pdf,Asymptotic behavior of quantum walks on the line (Sunada & Tate),asintotica-qw,"ir-corona [SunadaTate]; Thm 1.4 p.4 leido en reports/2026-10-28--ir-corona-prior-art-audit.md",proposed
+arXiv-quant-ph_0506048.pdf,Evanescence in coined quantum walks (Carteret; Richmond; Temme),asintotica-qw,"ir-corona [CRT]; abstract p.1 leido en reports/2026-10-28--ir-corona-prior-art-audit.md",proposed
+arXiv-0810.5495.pdf,Two-dimensional quantum random walk (Baryshnikov; Brady; Bressler; Pemantle),asintotica-qw;qw-dirac-weyl,"ir-corona [BBBP]; pp.1-2 y 4 leidas en reports/2026-10-28--ir-corona-prior-art-audit.md",proposed
