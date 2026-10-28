@@ -1,0 +1,3181 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente el candidato materia–gauge y, sobre todo, la prueba
+de obstrucción de estacionariedad en el informe adjunto. Reconstruye los
+argumentos desde las definiciones: ni los nombres de estados de los archivos,
+ni un PASS de scripts, ni las conclusiones del autor son evidencia adicional.
+
+Objetivo: determinar si la construcción tiene Gauss exacta, norma y energía
+eléctrica esperada finitas, y si la prueba Fourier/Jensen excluye realmente
+autoestados con colas eléctricas gaussianas bajo el paso Eon v4 declarado.
+No se pide construir otro vacío, decidir novedad o resolver QED.
+
+Resultado esperado: informe en español con veredicto ACCEPT, ACCEPT_WITH_REPAIRS,
+REVISE o REJECT, separando construcción, hipótesis de modelo y prueba de
+obstrucción. Usa identificadores G-R1-01, etc., para cada objeción, indica
+gravedad, localización y reparación o contraejemplo preciso. Distingue
+objeciones demostradas de dudas. Indica explícitamente si hay un error fatal,
+un paso justificable pero omitido, o solo una mejora de exposición.
+
+Comprueba prioritariamente:
+
+1. Que el proyector de Gauss y el Slater auxiliar definen un estado no nulo
+   y normalizable, con energía eléctrica finita. Revisa el carácter auxiliar
+   del criterio de preparación y qué no autoriza llamarlo vacío físico.
+2. Que las definiciones de V del PDF primario permiten, con las restricciones
+   de extremos de enlace y signos JW, la base de traslaciones/Fourier usada.
+   Revisa unitariedad, conmutatividad y acción dentro del sector de Gauss;
+   no presupongas que eliminar fases sea inocuo para el circuito completo.
+3. Que D_F y D_E preservan una cota gaussiana en coeficientes eléctricos
+   en volumen finito, incluso al cambiar de componente fermiónica.
+4. Que D_M original se convierte en el multiplicador declarado y que,
+   tras fijar los otros ángulos, puede elegirse una componente no nula y
+   un coeficiente a no nulo simultáneamente. Examina la posible dependencia
+   de las variables de Fourier debida a Gauss y los ceros de las series.
+5. La estimación uniforme de crecimiento de las series en C*, la igualdad
+   de autoestado tras complejificar una variable, el arco angular y la
+   contradicción con Jensen/convexidad. Busca contraejemplos; si la prueba
+   falla, identifica el primer paso que no se sigue.
+6. El alcance real del resultado: volumen finito, rotores sin truncar,
+   implementación magnética exponencial exacta, ángulo no cero y clase
+   de colas. Señala cualquier extrapolación indebida a otros vacíos, al
+   límite continuo/termodinámico, a (26), o a velocidades radiativas.
+7. Qué verifican de verdad los scripts y qué parte de la prueba sigue
+   siendo analítica. No puedes ejecutarlos ni afirmar que los ejecutaste.
+
+El PDF original se incluye como texto extraído, con páginas numeradas;
+las fórmulas pueden tener defectos de extracción. Si una comprobación
+depende de una fórmula ilegible, declárala no comprobada. El artículo es
+fuente primaria; el informe, la especificación, el JSON y el código son
+artefactos del autor que deben ser contrastados, no revisiones independientes.
+
+Máximo: UNA ronda científica, sin réplicas automáticas ni nuevos modelos.
+El encargo se cierra al recibir un informe completo con veredicto y
+objeciones, o un fallo operativo documentado. Un informe completo no
+promueve por sí solo la evidencia. No se pide ejecutar herramientas,
+buscar en la web ni acceder a ficheros fuera de los adjuntos.
+
+=== DOCUMENT 1: 2026-10-27--eon-projected-gaussian-reference.md ===
+
+# A.int — construcción y comprobación de un estado materia–gauge
+
+Fecha: 2026-10-27. Autor: Codex. Encargo del usuario: «hazlo».
+Especificación previa:
+[A_INT_EON_PROJECTED_GAUSSIAN_REFERENCE.md](../theory/A_INT_EON_PROJECTED_GAUSSIAN_REFERENCE.md).
+
+## Resultado y objetivo pendiente
+
+`EXPLICIT_NORMALIZABLE_GAUSS_STATE_CONSTRUCTED / GAUSSIAN_TAIL_STATIONARITY_FAIL`.
+**No se ha conseguido un vacío físico aceptado del QCA original.**
+Se ha construido un estado puro materia–gauge con Gauss exacta, norma
+finita, energía eléctrica esperada finita y un criterio auxiliar explícito
+de preparación. El intento no cierra el objetivo: la demostración analítica
+de abajo excluye su estacionariedad exacta bajo las hipótesis declaradas.
+
+Evidencia: `AUTHOR_ANALYTIC_PROOF_AND_EXACT_INGREDIENT_CHECKS /
+INDEPENDENT_REVIEW_PENDING`. El código no es una segunda revisión de
+la demostración de análisis complejo. No se registra un no-go para todo
+vacío de Eon, ni un resultado sobre velocidades o lazos.
+
+## 1. Modelo y criterio de selección que se han fijado
+
+Se conserva Eon v4, `U=D_M D_E D_F`, sobre el toro cúbico L=3,
+epsilon=1, m=pi/4, g_E=g_M=1, en el sector `div E+N-2=0`.
+Los registros eléctricos son enteros, no cíclicos ni truncados.
+Se utiliza la exponencial magnética exacta (21)/(36), con ángulo 1/2.
+
+Fuente primaria: `biblioteca/arXiv-2205.03148v4.pdf`, pp.6–9
+(rotores, V conmutativos, localidad y plaquetas), pp.11–13 (Gauss),
+pp.18–23 y 28–29 (paso gauge) y pp.24–26 (matrices de Dirac y transporte).
+Se comprobó primero el índice local y después estos objetos directamente
+en el PDF. Su hash es el del manifiesto primario anterior.
+
+Como criterio **auxiliar de preparación** se toma el Hamiltoniano
+fermiónico aditivo con símbolo
+
+`h_D(k)=m gamma_0 - sum_a sin(k_a) gamma_a`.
+
+Es local, gapped para m>0 y coincide con el primer jet Dirac usado en el
+walk. Su extensión a toda la zona de Brillouin es una elección adicional,
+no una energía exacta o conservada que se haya deducido de U. En concreto,
+no se reemplaza el circuito por `exp(-i h_D)` ni se minimiza `log U`.
+Los gamma son los del PDF p.24. Sus anticomutadores dan
+
+`h_D(k)²=[m²+sum_a sin²(k_a)] I`.
+
+El estado |FS_D> llena las dos bandas negativas de cada momento;
+es el mínimo fermiónico de esa energía aditiva con N_total=2V.
+El subespacio ocupado y el Slater quedan determinados salvo una fase
+global. El código comprueba el proyector
+`P_-(k)=[I-h_D(k)/sqrt(m²+sum sin²(k_a))]/2`, su rango 2 y su ecuación
+espectral. No se le atribuye estacionariedad bajo D_F original.
+
+El campo se prepara con pesos eléctricos gaussianos, beta=log(2), y
+se impone Gauss por proyección. El criterio es una preparación Dirac
+con amortiguamiento de energía eléctrica y Gauss; es físicamente motivado
+como candidato, pero **no demuestra selección del vacío del QCA**.
+La prueba de estacionariedad es un requisito separado que no supera.
+
+## 2. Estado explícito, incluyendo materia y campo
+
+Se usan la base de ocupaciones fermiónicas y la base de rotor definida
+por las traslaciones V de las ecuaciones (4)–(6). Al ser V unitarios,
+conmutativos y con acción de desplazamiento sobre los enteros, sus potencias
+fijan las fases de esa base. En la realización local JW del artículo puede
+haber fases diagonales adicionales: se transporta la preparación mediante
+esa equivalencia, no se borra su efecto sobre U. Las cotas de módulos
+eléctricos usadas después no cambian por esas fases.
+
+Para un enlace,
+
+`|g_beta> = Theta(2 beta)^(-1/2) sum_(E in Z) exp(-beta E²)|E>`;
+`Theta(2 beta)=sum_(E in Z) exp(-2 beta E²)`.
+
+Sean P_G los proyectores conjuntos de todos los `G_x=div E_x+N_x-2`.
+La propuesta completa es
+
+`|Omega_beta> = Z^(-1/2) P_G (|FS_D> tensor tensor_links |g_beta>)`;
+`Z=||P_G (|FS_D> tensor tensor_links |g_beta>)||²`.
+
+En términos de configuraciones, si A(n) es el determinante de Slater
+para la ocupación n, su coeficiente es proporcional a
+
+`A(n) exp[-beta sum_links E_l²] 1_(div E=2-N(n))`.
+
+El orden de sitios y modos está fijado en la especificación. Es una
+fórmula explícita en un volumen finito con rotores enteros infinitos,
+no un «autoestado de U» definido circularmente por el problema a resolver.
+
+### Gauss, existencia y normalización
+
+Cada término retenido satisface G_x=0 como identidad de operador. Para
+cualquier configuración n del Slater, `sum_x [2-N_x(n)]=0`. En una red
+conexa existe un flujo entero con esa divergencia: se elige un árbol,
+se acumula la carga de cada subárbol y se envía al padre, desde las hojas
+hasta la raíz. La neutralidad anula el remanente en la raíz.
+Ese procedimiento solo demuestra existencia; no elige un árbol privilegiado
+en el estado, que suma sobre todos los flujos admitidos.
+
+Hay al menos un A(n) no nulo. Como el peso gaussiano es positivo para
+todo E entero, la proyección no puede anular todo el estado: Z>0.
+Por ser P_G una proyección sobre un vector normalizado, Z<=1.
+Así, el estado está definido y normalizado exactamente.
+
+Además, la suma de `sum E_l² exp(-2 beta sum E_l²)` sobre los enteros
+converge para beta>0. Hay un número finito de configuraciones fermiónicas
+y de enlaces. Restringir la suma a Gauss y dividir por Z>0 conserva la
+finitud de la energía eléctrica esperada. No se usa un corte de E.
+
+El Slater tiene fluctuaciones locales de número, porque su proyector
+depende del momento. Gauss correlaciona cada patrón de carga con una
+divergencia eléctrica distinta. Los estados de campo de dos divergencias
+distintas son ortogonales: la proyección produce entrelazamiento, en vez
+de dejar un producto con E=0. Todos los patrones de carga con amplitud
+inicial no nula siguen teniendo algún flujo de peso no nulo.
+
+En la representación abstracta de fermiones y rotores, el Slater es
+homogéneo hasta fase, los pesos de enlace son homogéneos y P_G es
+covariante bajo traslaciones. La densidad resultante es homogénea.
+Esto no afirma invariancia bajo rotaciones que no sean simetrías exactas
+del orden de capas del QCA.
+
+### Segunda vía de control, con cola infinita acotada
+
+El certificado implementa el algoritmo de flujo entero en L=3,4 para
+configuraciones neutras de control, y contrasta su divergencia exactamente.
+También conserva un control de dos patrones opuestos de carga en un enlace
+y un número entero n de vueltas alrededor de una plaqueta. Es un control
+algebraico de la construcción, **no la evaluación del Slater 3D completo**.
+
+Sus dos energías eléctricas son `4n²+2n+1` y `4n²-2n+1`. Con beta=log(2),
+los pesos cuadrados son `4^(-energia)`. Ambas series tienen la misma
+norma por n -> -n; los sectores de divergencia son ortogonales. La
+pureza reducida de materia es 1/2: el control está entrelazado y es normalizable.
+
+Para |n|>=1, ambas energías son al menos `2n²+1`. Tras conservar
+|n|<=K, la cola de la norma no normalizada está acotada por
+
+`T_K <= [16^(-(K+1)²)/2]/[1-16^(-(2K+3))]`.
+
+La norma parcial S_K es una cota inferior estrictamente positiva; la
+probabilidad de la cola normalizada es <=T_K/S_K. El JSON conserva los
+valores racionales K=0,1,2. Esto controla las sumas de ese ejemplo sin
+sustituir el rotor del modelo por un registro finito.
+
+## 3. Prueba de estacionariedad: obstrucción para colas gaussianas
+
+### Alcance del argumento
+
+Volumen finito L>=3; número finito de modos fermiónicos; flujos enteros;
+magnetismo exponencial exacto con ángulo real no nulo. Supóngase un
+vector no nulo con coeficientes en la base eléctrica que satisfacen
+
+`|psi_n(E)| <= C exp[-beta sum_l E_l²]`, beta>0.
+
+Se demuestra que **no puede ser autoestado de U** en esta clase.
+Para un vector puro, estacionariedad de la densidad equivale a ser
+autoestado hasta fase. La propuesta anterior pertenece a esta clase,
+incluso después de Gauss y normalización: la proyección solo anula
+coeficientes y Z es una constante positiva en el volumen fijado.
+
+Este es un argumento analítico del autor, pendiente de revisión
+independiente. El certificado comprueba sus ingredientes algebraicos;
+no pretende certificar por un muestreo la conclusión universal.
+
+### A. Antes del magnetismo las colas siguen siendo gaussianas
+
+D_F consta de un número finito de gates en el volumen fijado. Sus
+transportes desplazan los E enteros un número acotado de unidades;
+sus monedas mezclan un número finito de componentes. Los factores JW
+solo añaden fases. Una combinación finita de gaussianas desplazadas
+sigue acotada por otra gaussiana, por ejemplo con beta/2 y una constante
+mayor. D_E multiplica por fases `exp(i alpha_E sum E²)` y no cambia
+sus módulos. Por tanto `phi=D_E D_F psi` tiene también esa cota.
+
+Esto no aproxima D_F ni D_E. Las constantes pueden depender del volumen;
+no se afirma una cota termodinámica uniforme.
+
+### B. El magnetismo en la representación de Fourier
+
+Los V de enlaces distintos conmutan (PDF pp.7–8). Los operadores de
+plaqueta son productos de V y V†, de modo que sus exponenciales exactas
+se diagonalizan simultáneamente en Fourier eléctrico. En cada componente
+fermiónica, D_M multiplica por
+
+`exp[i theta B(z_1,...,z_M)]`,
+
+donde B es la suma de los monomios de plaqueta y sus inversos. No se
+están diagonalizando los subpasos fermiónicos. Elegido un enlace e y
+fijados los otros ángulos, B tiene la forma
+
+`B(z)=a z+b/z+c`.
+
+a no es idénticamente cero: al fijar los otros ángulos a cero, las
+cuatro plaquetas adyacentes dan coeficiente a=4. El código comprueba
+ese recuento en L=3,4. Para ángulos genéricos de los otros enlaces se
+tiene a!=0, y puede elegirse a la vez una componente no nula de phi.
+Si la componente desapareciese para todo un abierto de esos ángulos,
+la unicidad de sus series analíticas la haría idénticamente nula.
+
+### C. Crecimiento de Fourier y contradicción
+
+Las colas gaussianas hacen holomorfas las series en z!=0. Al sumar los
+otros índices, y con r=|z|, la identidad
+
+`-beta n²+n log r = -beta[n-log r/(2 beta)]² + (log r)²/(4 beta)`
+
+da, uniformemente en el ángulo de z,
+
+`log |f(z)| <= C_0+C_1(log r)²`.
+
+La suma gaussiana trasladada está uniformemente acotada, por ejemplo
+por `1+sqrt(pi/beta)`. La misma estimación vale para la serie g de psi.
+Si U psi=lambda psi, en la componente elegida se tendría
+
+`g(z)=exp[i theta(a z+b/z+c)] f(z)`
+
+(absorbiendo en g la fase lambda). f no es idénticamente nula.
+En un arco de fracción 1/3 del círculo puede imponerse
+`Re(i theta a z) >= |theta a|r/2`. Allí, usando la cota de g,
+
+`log |f(z)| <= C_0+C_1(log r)²-|theta a|r/2+O(1)`.
+
+En el resto del círculo se conserva la cota propia de f.
+Por tanto su media angular satisface
+
+`M_f(r) <= C_2+C_3(log r)²-|theta a|r/6`.
+
+Pero para una función holomorfa no nula en un anillo exterior,
+la media angular de log|f| es convexa en log r (fórmula de Jensen
+en anillos). En particular tiene una cota inferior afín
+`M_f(r)>=A+B log r` para r suficientemente grande. Los ceros aislados
+son integrables en la media; no invalidan esta propiedad.
+Las dos cotas son incompatibles al crecer r. Contradicción.
+
+### D. Controles alternativos y límites
+
+Para series de Laurent finitas la obstrucción tiene una segunda prueba
+puramente algebraica. Derivar la misma igualdad exige
+
+`f g' - g f' = i theta(a-b/z²) f g`.
+
+Si los grados máximos de f y g son p y q, la izquierda tiene grado
+<=p+q-1; la derecha contiene un término no nulo de grado p+q cuando
+theta a!=0. El certificado contrasta ejemplos de grados positivos y
+negativos; el argumento general es el de grados escrito aquí.
+
+Un control fuera de la hipótesis de colas gaussianas es
+`f=exp[-i theta(z+1/z)]`, `g=1`, que sí cancela el multiplicador.
+El código verifica esa identidad. Su crecimiento logarítmico en una
+dirección compleja es lineal en r, no cuadrático en log r. No es un
+autoestado del QCA: solo muestra por qué la hipótesis de crecimiento
+es esencial y por qué no se ha demostrado ausencia de todos sus estados.
+
+El argumento no se aplica a una red sin plaquetas, a ángulo magnético
+cero, a rotores cíclicos finitos ni automáticamente a la implementación
+magnética aproximada (26). Tampoco compara límites continuos o
+termodinámicos. No se afirma que una cota gaussiana sea necesaria para
+un vacío físico; aquí es una propiedad del candidato que se ha probado
+incompatible con su estacionariedad exacta.
+
+## 4. Qué se ha logrado y qué no
+
+El problema de Gauss del producto Slater tensor E=0 sí se ha reparado:
+hay una fórmula explícita, normalizable y materia–gauge entrelazada,
+con energía eléctrica esperada finita y sin cambio de circuito.
+También se ha declarado, sin ocultarlo, el criterio auxiliar que la
+selecciona como preparación de referencia.
+
+**No se ha satisfecho el requisito de estacionariedad y, por tanto,
+no hay vacío aceptado para los correladores.** El rechazo no se basa
+en un error numérico de una caja ni en el logaritmo principal de U,
+sino en la obstrucción analítica anterior, con su alcance limitado.
+Una revisión independiente de esa prueba sigue pendiente.
+
+Variar beta>0 o aumentar un corte eléctrico no evita esta obstrucción
+del ansatz. Tampoco autoriza a cambiar el modelo por el Hamiltoniano
+de preparación. Un candidato distinto tendría que justificar otra
+estructura de colas y una selección física, y resolver su propia
+ecuación de estacionariedad. Que esos estados puedan existir no se
+ha probado ni refutado aquí. No se inicia un nuevo ensayo ni un lazo
+como continuación automática de este fallo.
+
+## Artefactos y validación
+
+* Especificación previa: [candidato proyectado](../theory/A_INT_EON_PROJECTED_GAUSSIAN_REFERENCE.md).
+* Código permanente: [verify_eon_projected_gaussian_reference.py](../scripts/verify_eon_projected_gaussian_reference.py).
+* Resultados de controles: [JSON](2026-10-27--eon-projected-gaussian-certificate.json).
+* Barrido: `2026-10-27--eon-projected-gaussian-verifier-sweep.tsv`.
+* Manifiesto: `2026-10-27--eon-projected-gaussian-inputs.sha256`.
+
+El comando del certificado consta en su `--help`. Los objetos grandes
+de volumen 3D se definen analíticamente; no se afirma haber enumerado
+todos los determinantes o todos los flujos. El JSON distingue los
+controles pequeños de la construcción general y de la prueba analítica.
+Ningún PASS de esos controles convierte este intento en un vacío válido.
+El barrido final pasa los 46 verificadores, con cero fallos. La integridad
+textual devuelve cero problemas y `git diff --check` pasa. El barrido
+registra el HEAD de base porque el código nuevo aún no está en un commit;
+el manifiesto fija todos los verificadores, helper, runner, especificación,
+PDF y JSON de esta ronda. No se invocó revisión externa.
+
+=== DOCUMENT 2: A_INT_EON_PROJECTED_GAUSSIAN_REFERENCE.md ===
+
+# A.int — candidato materia–gauge con proyección de Gauss
+
+Fecha: 2026-10-27. Autorización nueva: «hazlo», al requisito de un estado
+explícito con Gauss, estacionariedad y criterio de selección física.
+No sustituye ni reescribe los rechazos de candidatos anteriores.
+Especificación escrita antes de ejecutar el certificado de esta ronda.
+
+## Regla microscópica que se conserva
+
+Eon arXiv:2205.03148v4, ecuaciones (34)–(37). Toro cúbico L=3,
+epsilon=1, m=pi/4, g_E=g_M=1; rotores enteros sin truncar.
+Magnetismo exponencial exacto (21), orden de (36), seguido en la fórmula
+`U=D_M D_E D_F`. Sector `G_x=div E_x+N_x-2=0`.
+No se reemplaza U por la exponencial de un Hamiltoniano auxiliar.
+
+## Candidato fijado
+
+Se introduce explícitamente un **criterio auxiliar de preparación**, no
+una energía conservada derivada del QCA:
+
+`h_D(k)=m gamma_0 - sum_a sin(k_a) gamma_a`;
+`P_-(k)=[I-h_D(k)/sqrt(m²+sum_a sin²(k_a))]/2`.
+
+Los gamma son los de p.24 del PDF. El Slater |FS_D> ocupa las dos bandas
+negativas en cada momento del toro. Es el mínimo de la energía fermiónica
+aditiva de ese h_D a número total 2V. El criterio coincide con Dirac a
+primer orden en momento; su extensión ultravioleta es una hipótesis
+auxiliar explícita, no la energía exacta del paso ni un resultado de Lorentz.
+
+Se fija beta=log(2). En cada enlace, el vector de rotor normalizado es
+`|g_beta> = [sum_l exp(-2 beta l²)]^(-1/2) sum_E exp(-beta E²)|E>`.
+Los V de las ecuaciones (4)–(6) fijan la base de traslaciones de rotor;
+las posibles fases de su implementación JW se mantienen mediante esa
+elección de base. No se presume un producto de fases incorrecto en otra
+representación. La regla de evolución sigue siendo la original.
+
+Sea P_G el proyector ortogonal conjunto sobre todos los G_x=0. El estado es
+
+`|Omega_beta> = P_G (|FS_D> tensor tensor_links |g_beta>) / sqrt(Z)`;
+`Z=||P_G (|FS_D> tensor tensor_links |g_beta>)||²`.
+
+Equivalente en la base de ocupaciones y flujos: el coeficiente es
+proporcional a `det(FS_D[n]) exp(-beta sum_links E²)` si
+`div E=2-N[n]`, y cero en caso contrario. Los determinantes del subespacio
+ocupado definen el Slater salvo una fase global. El orden de sitios es
+lexicográfico y el de modos es 0,1,2,3.
+
+La proyección entrelaza materia y flujo, conserva el número total y no
+identifica medias locales con autovalores de Gauss. El peso gaussiano es
+una preparación por amortiguamiento eléctrico; **no se afirma que sea
+el fundamental del QCA ni de su logaritmo principal**.
+
+## Comprobaciones y criterio de cierre
+
+1. Demostrar Z>0 y normalización, existencia de soluciones enteras de
+   Gauss para cada configuración neutral y energía eléctrica esperada finita.
+2. Contrastar por segunda vía el criterio de bandas auxiliares y un
+   control explícito de dos configuraciones de carga con bucles de flujo
+   infinitos. Cualquier corte para verificar ese control necesita cota de
+   cola y no se convierte en una truncación del modelo.
+3. Comprobar estacionariedad para U completo. Puede usarse una obstrucción
+   analítica de clases de colas eléctricas si se demuestran sus hipótesis:
+   tras D_F y D_E una cota gaussiana sigue siendo gaussiana; D_M se
+   diagonaliza con los V conmutativos como una exponencial de cosenos de
+   plaqueta. No confundir la prueba analítica con verificaciones finitas.
+4. Si falla, declarar que el objetivo de construir un vacío aceptado no
+   se ha logrado. No adoptar la preparación auxiliar como cambio de modelo
+   ni sustituir el candidato por una mezcla estacionaria.
+
+Código permanente: `scripts/verify_eon_projected_gaussian_reference.py`.
+Se conservarán JSON, demostración, manifiesto y barrido de verificadores.
+No se calculan velocidades o lazos, ni se reclama novedad o revisión
+independiente. La selección auxiliar solo sería un candidato de vacío;
+la estacionariedad es un requisito imprescindible adicional.
+
+=== DOCUMENT 3: verify_eon_projected_gaussian_reference.py ===
+
+"""Permanent algebra controls for a Gauss-projected Gaussian reference.
+
+Fixed specification: theory/A_INT_EON_PROJECTED_GAUSSIAN_REFERENCE.md.
+This does NOT diagonalize the full interacting QCA, compute its vacuum or
+approximate its rotor by a finite cyclic group. The projected state is given
+analytically; an author-written Fourier/Jensen lemma tests stationarity.
+These checks validate ingredients, NOT an independent proof of that lemma.
+"""
+
+import argparse
+import collections
+import json
+from pathlib import Path
+
+import sympy as sp
+
+from certificate_utils import assert_sym_equal
+from verify_eon_reference_state import initial_state, neighbor, gauss_residuals, plaquette_flow
+
+
+def dirac_seed_checks():
+    x = sp.Matrix([[0, 1], [1, 0]])
+    y = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+    z = sp.diag(1, -1)
+    ident = sp.eye(4)
+    gamma0 = sp.kronecker_product(y, sp.eye(2))
+    gammas = [sp.kronecker_product(z, y), sp.kronecker_product(z, x),
+              sp.kronecker_product(z, z)]
+    mass = sp.symbols('m', positive=True)
+    sines = sp.symbols('s0:3', real=True)
+    h = mass*gamma0 - sum((s*g for s, g in zip(sines, gammas)), sp.zeros(4))
+    energy2 = mass**2 + sum(s*s for s in sines)
+    assert_sym_equal(h.H, h, 'auxiliary Dirac Hermiticity')
+    assert_sym_equal(h*h, energy2*ident, 'auxiliary gapped spectrum')
+    energy = sp.sqrt(energy2)
+    p = (ident-h/energy)/2
+    assert_sym_equal(p*p, p, 'negative energy projection')
+    assert_sym_equal(p.H, p, 'projection Hermiticity')
+    assert_sym_equal(sp.trace(p), 2, 'rank two per momentum')
+    assert_sym_equal(h*p, -energy*p, 'negative additive energy selection')
+    # At L=3 there are nonzero momenta: this seed is not local fixed filling.
+    p0 = p.subs(dict(zip(sines, (0, 0, 0))))
+    p1 = p.subs(dict(zip(sines, (sp.sqrt(3)/2, 0, 0))))
+    assert_sym_equal(sp.trace(gammas[0]*p0), 0, 'zero-momentum seed component')
+    assert_sym_equal(sp.trace(gammas[0]*p1),
+                     sp.sqrt(3)/sp.sqrt(mass**2+sp.Rational(3, 4)),
+                     'nonconstant occupied subspace')
+    return dict(criterion='auxiliary additive Dirac Hamiltonian; NOT log(U)',
+                rank_per_momentum=2, number_of_filled_modes='2*V',
+                gapped_for_positive_mass=True, nonconstant_projector=True)
+
+
+def tree_flow(length, charge):
+    """Integer solution div E=charge on a connected periodic graph."""
+    sites, _, flux = initial_state(length)
+    assert sum(charge.values()) == 0
+    root = sites[0]
+    parent = {root: None}
+    order = [root]
+    for site in order:
+        for axis in range(3):
+            for sign in (1, -1):
+                dest = neighbor(site, axis, sign, length)
+                if dest not in parent:
+                    parent[dest] = (site, axis, sign)
+                    order.append(dest)
+    subtotal = dict(charge)
+    for child in reversed(order[1:]):
+        par, axis, sign = parent[child]
+        current = subtotal[child]
+        if sign == 1:  # parent -> child is the positive canonical edge.
+            flux[par, axis] -= current
+        else:
+            flux[child, axis] += current
+        subtotal[par] += current
+    assert subtotal[root] == 0
+    return flux
+
+
+def divergence(flux, sites, length):
+    return {site: sum(flux[site, a]-flux[neighbor(site, a, -1, length), a]
+                      for a in range(3)) for site in sites}
+
+
+def gauss_solvability_checks():
+    records = []
+    for length in (3, 4):
+        sites, _, _ = initial_state(length)
+        configs = []
+        unit_pair = {x: 0 for x in sites}
+        unit_pair[sites[0]] = 1
+        unit_pair[sites[-1]] = -1
+        configs.append(unit_pair)
+        extreme = {x: 0 for x in sites}
+        half = len(sites)//2
+        for site in sites[:half]:
+            extreme[site] = 2
+        for site in sites[half:2*half]:
+            extreme[site] = -2
+        configs.append(extreme)
+        for charge in configs:
+            flow = tree_flow(length, charge)
+            assert divergence(flow, sites, length) == charge
+            qplus = sum(max(q, 0) for q in charge.values())
+            assert max(abs(e) for e in flow.values()) <= qplus
+            records.append(dict(L=length, transported_positive_charge=qplus,
+                                exact_divergence_match=True))
+    return records
+
+
+def infinite_loop_control():
+    """Two charge patterns and an infinite loop coordinate: algebra control.
+
+    NOT the complete 3D Slater-projected state. Partial sums have rigorous
+    tails; no cutoff is substituted into the QCA evolution.
+    """
+    length = 3
+    sites, occ, flux = initial_state(length)
+    source = sites[0]
+    sink = neighbor(source, 0, 1, length)
+    loop = plaquette_flow(source, 0, 1, length, list(flux))
+    assert divergence(loop, sites, length) == {x: 0 for x in sites}
+    for sign in (1, -1):
+        bits = {site: list(n) for site, n in occ.items()}
+        if sign == 1:
+            bits[source][3] = 0
+            bits[sink][0] = 1
+        else:
+            bits[source][0] = 1
+            bits[sink][3] = 0
+        base = dict(flux)
+        base[source, 0] = sign
+        assert not any(gauss_residuals(bits, base, length))
+        n = sp.symbols('n', integer=True)
+        energy = sum((base[e]+n*loop[e])**2 for e in flux)
+        assert_sym_equal(energy, 4*n**2+2*sign*n+1, 'loop electric energy')
+    records = []
+    for cutoff in (0, 1, 2):
+        partial_plus = sum((sp.Rational(1, 4)**(4*n*n+2*n+1)
+                            for n in range(-cutoff, cutoff+1)), sp.S.Zero)
+        partial_minus = sum((sp.Rational(1, 4)**(4*n*n-2*n+1)
+                             for n in range(-cutoff, cutoff+1)), sp.S.Zero)
+        assert_sym_equal(partial_plus, partial_minus, 'opposite-charge norm equality')
+        assert partial_plus >= sp.Rational(1, 4)
+        # E(n)>=2*n^2+1 for |n|>=1; ratios of 16^(-n^2) bound each tail.
+        tail = sp.Rational(1, 2)*sp.Rational(1, 16)**((cutoff+1)**2) / (
+            1-sp.Rational(1, 16)**(2*cutoff+3))
+        records.append(dict(cutoff=cutoff, unnormalized_norm_lower=str(partial_plus),
+                            unnormalized_tail_upper=str(tail),
+                            normalized_tail_probability_upper=str(tail/partial_plus)))
+    return dict(scope='two-configuration, one-loop control; not full projected 3D state',
+                beta='log(2)', Gauss_all_integer_loop_numbers=True,
+                matter_reduced_purity='1/2', partial_sum_controls=records)
+
+
+def fourier_obstruction_ingredients():
+    beta = sp.symbols('beta', positive=True)
+    number, logradius = sp.symbols('n s', real=True)
+    assert_sym_equal(-beta*number**2+logradius*number,
+                     -beta*(number-logradius/(2*beta))**2+logradius**2/(4*beta),
+                     'Gaussian generating-function growth')
+    counts = []
+    for length in (3, 4):
+        sites, _, flux = initial_state(length)
+        edge = (sites[0], 0)
+        harmonics = collections.Counter()
+        for site in sites:
+            for a, b in ((0, 1), (0, 2), (1, 2)):
+                flow = plaquette_flow(site, a, b, length, list(flux))
+                harmonics[flow[edge]] += 1
+                harmonics[-flow[edge]] += 1
+        assert harmonics[1] == 4 and harmonics[-1] == 4
+        counts.append(dict(L=length, z_coefficient_at_other_angles_zero=4,
+                           inverse_z_coefficient_at_other_angles_zero=4))
+    # Finite-Laurent special case, checked independently of the analytic
+    # Jensen argument: the polynomial identity has incompatible top degrees.
+    zvar = sp.symbols('z', nonzero=True)
+    a, theta = sp.symbols('a theta', nonzero=True)
+    for p, q in ((0, 0), (2, 3), (-2, -1), (-3, 4)):
+        f = zvar**p
+        g = zvar**q
+        residual = f*sp.diff(g, zvar)-g*sp.diff(f, zvar)-sp.I*theta*(a-zvar**-2)*f*g
+        shifted = sp.expand(residual*zvar**(-p-q))
+        assert_sym_equal(shifted.coeff(zvar, 0), -sp.I*theta*a,
+                         'uncancellable leading Laurent coefficient')
+    # A control outside the Gaussian-tail growth class can cancel the kick.
+    # This is an inverse-kick wavefunction identity, NOT a QCA eigenstate.
+    h = zvar+1/zvar
+    f = sp.exp(-sp.I*theta*h)
+    assert_sym_equal(-sp.diff(f, zvar)-sp.I*theta*sp.diff(h, zvar)*f, 0,
+                     'inverse-kick identity outside the growth hypothesis')
+    radius = sp.symbols('R', positive=True)
+    assert_sym_equal((-sp.I*h).subs(zvar, sp.I*radius), radius-1/radius,
+                     'inverse kick has linear-radius logarithmic growth')
+    return dict(Gaussian_growth_identity=True, magnetic_harmonic_counts=counts,
+                universal_stationarity_obstruction='author-written Fourier/Jensen proof in report',
+                outside_Gaussian_class_inverse_kick_control=True,
+                not_a_numerical_proof_of_complex_analysis=True)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path)
+    args = parser.parse_args()
+    result = dict(
+        status='PROJECTED_GAUSSIAN_GAUSS_PASS_STATIONARITY_FAIL',
+        accepted_physical_vacuum=False,
+        construction='P_G (FS_D tensor electric heat kernels), normalized; beta=log(2)',
+        model='Eon v4 original U, exact magnetic exponential, untruncated integer rotors',
+        seed=dirac_seed_checks(), integer_Gauss=gauss_solvability_checks(),
+        infinite_support_control=infinite_loop_control(),
+        obstruction_ingredients=fourier_obstruction_ingredients(),
+        scope='finite volume L>=3; magnetic angle nonzero; Gaussian electric tails',
+        evidence='AUTHOR_ANALYTIC_PROOF_AND_EXACT_INGREDIENT_CHECKS / INDEPENDENT_REVIEW_PENDING')
+    if args.output:
+        args.output.write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
+    print('PASS: construction ingredients; projected Gaussian reference FAILS stationarity by stated analytic lemma.')
+
+
+if __name__ == '__main__':
+    main()
+
+=== DOCUMENT 4: verify_eon_reference_state.py ===
+
+"""Exact checks of ONE occupation-product candidate in Eon arXiv:2205.03148v4.
+
+Specification: theory/A_INT_EON_REFERENCE_CHECK.md. No rotor truncation,
+full gauge simulation, vacuum construction, IR limit or loop calculation.
+The transport routine tracks ONLY deterministic occupations and fluxes on
+the specified input. JW phases cannot change these; B is separately checked
+to preserve that input ray. Mass amplitudes use exact fermionic gates and an
+independent exterior-power construction. The full-step conclusions also use
+the analytic occupation-conservation and Taylor-bound arguments in the report.
+"""
+
+import argparse
+import itertools
+import json
+from pathlib import Path
+
+import sympy as sp
+
+from certificate_utils import assert_sym_equal
+
+
+def neighbor(x, axis, amount, length):
+    y = list(x)
+    y[axis] = (y[axis] + amount) % length
+    return tuple(y)
+
+
+def initial_state(length):
+    sites = list(itertools.product(range(length), repeat=3))
+    occ = {x: [0, 0, 1, 1] for x in sites}
+    flux = {(x, axis): 0 for x in sites for axis in range(3)}
+    return sites, occ, flux
+
+
+def gauss_residuals(occ, flux, length):
+    return [sum(occ[x]) - 2 + sum(
+        flux[x, a] - flux[neighbor(x, a, -1, length), a]
+        for a in range(3)) for x in occ]
+
+
+def swap_on_site(occ, x, j, k):
+    occ[x][j], occ[x][k] = occ[x][k], occ[x][j]
+
+
+def dressed_swap(occ, flux, x, axis, length, flux_sign=1):
+    """Eq.(18) occupation/flux action, j=3 and neighbor k=0.
+
+    Leaving x raises its outgoing E. All omitted K/JW factors are phases
+    on this deterministic input. They are NOT discarded in mass amplitudes.
+    """
+    y = neighbor(x, axis, 1, length)
+    leaving, entering = occ[x][3], occ[y][0]
+    flux[x, axis] += flux_sign * (leaving - entering)
+    occ[x][3], occ[y][0] = entering, leaving
+
+
+def transport_layer(length, axis, omit_second_swap=False):
+    sites, occ, flux = initial_state(length)
+    checks = 0
+    for x in sites:  # S1, rightmost gate first, Eq.(34).
+        swap_on_site(occ, x, 0, 1)
+        swap_on_site(occ, x, 1, 2)
+    for x in sites:  # Each four-mode bond block in Eq.(27) / Fig.7.
+        y = neighbor(x, axis, 1, length)
+        dressed_swap(occ, flux, x, axis, length)
+        assert not any(gauss_residuals(occ, flux, length))
+        swap_on_site(occ, x, 2, 3)
+        swap_on_site(occ, y, 0, 1)
+        if not omit_second_swap:
+            dressed_swap(occ, flux, x, axis, length)
+        assert not any(gauss_residuals(occ, flux, length))
+        checks += 2
+    for x in sites:  # S2.
+        swap_on_site(occ, x, 1, 2)
+        swap_on_site(occ, x, 2, 3)
+    return occ, flux, checks
+
+
+def transport_checks():
+    records = []
+    for length in (3, 4):
+        for axis in (2, 1, 0):  # kappa, nu, mu: temporal order of Eq.(34).
+            occ, flux, checks = transport_layer(length, axis)
+            assert all(bits == [0, 0, 1, 1] for bits in occ.values())
+            assert all(e == 0 for e in flux.values())
+            records.append(dict(L=length, axis=axis, gauss_gate_checks=checks,
+                                restored_occupations=True, restored_flux=True))
+    # Mutation controls: MUST detect missing transport or wrong flux sign.
+    occ, flux, _ = transport_layer(3, 0, omit_second_swap=True)
+    assert (any(bits != [0, 0, 1, 1] for bits in occ.values())
+            or any(flux.values()))
+    _, occ, flux = initial_state(3)
+    dressed_swap(occ, flux, (0, 0, 0), 0, 3, flux_sign=-1)
+    assert any(gauss_residuals(occ, flux, 3))
+    return records
+
+
+def fock_lift(one_body):
+    """Exterior powers with ascending mode order; vacuum amplitude 1."""
+    modes = one_body.rows
+    result = sp.zeros(2**modes)
+    for row in range(2**modes):
+        out_modes = [j for j in range(modes) if row & (1 << j)]
+        for col in range(2**modes):
+            in_modes = [j for j in range(modes) if col & (1 << j)]
+            if len(out_modes) == len(in_modes):
+                result[row, col] = (one_body.extract(out_modes, in_modes).det()
+                                    if out_modes else 1)
+    return result
+
+
+def local_amplitude_checks():
+    t = sp.symbols('t', real=True)
+    c, s = sp.cos(t), sp.sin(t)
+    identity = sp.eye(2)
+    fswap = sp.Matrix([[1, 0, 0, 0], [0, 0, 1, 0],
+                       [0, 1, 0, 0], [0, 0, 0, -1]])
+    c2 = sp.Matrix([[1, 0, 0, 0], [0, c, -s, 0],
+                   [0, s, c, 0], [0, 0, 0, 1]])
+    middle = sp.kronecker_product(identity, fswap, identity)
+    circuit = middle * sp.kronecker_product(c2, c2) * middle
+    # Eq.(31) in ordered one-particle basis 0,1,2,3.
+    one_body = sp.Matrix([[c, 0, -s, 0], [0, c, 0, -s],
+                          [s, 0, c, 0], [0, s, 0, c]])
+    independent = fock_lift(one_body)
+    assert_sym_equal(circuit, independent, 'mass circuit vs all exterior powers')
+    assert_sym_equal(circuit.H * circuit, sp.eye(16), 'mass unitarity')
+    n_total = sp.diag(*[i.bit_count() for i in range(16)])
+    assert_sym_equal(circuit * n_total, n_total * circuit, 'mass local Gauss')
+    state = circuit[:, 12]  # |1100>_(3,2,1,0).
+    norm = sum(sp.conjugate(a) * a for a in state)
+    occupation = sum((int(bool(i & 1)) + int(bool(i & 2)))
+                     * sp.conjugate(a) * a for i, a in enumerate(state))
+    survival = sp.conjugate(state[12]) * state[12]
+    assert_sym_equal(norm, 1, 'mass output norm')
+    assert_sym_equal(occupation, 2 * s**2, 'low-mode occupation after full DF')
+    assert_sym_equal(survival, c**4, 'probability of original local pattern')
+    assert_sym_equal(occupation.subs(t, sp.pi/4), 1, 'massive witness')
+    assert_sym_equal(survival.subs(t, sp.pi/4), sp.Rational(1, 4), 'survival witness')
+    assert_sym_equal(state.subs(t, 0), sp.eye(16)[:, 12], 'zero-mass control')
+    # Eq.(33): B has no mixing on a pair which is empty or full.
+    p = sp.exp(-sp.I * sp.pi/12)
+    q = sp.exp(-sp.I * 7 * sp.pi/12)
+    b2 = sp.Matrix([[1, 0, 0, 0],
+                    [0, p/sp.sqrt(2), sp.I*q/sp.sqrt(2), 0],
+                    [0, sp.I*p/sp.sqrt(2), q/sp.sqrt(2), 0],
+                    [0, 0, 0, sp.exp(-2*sp.I*sp.pi/3)]])
+    assert_sym_equal(b2.H*b2, sp.eye(4), 'B unitarity')
+    b4 = sp.kronecker_product(b2, b2)
+    basis = sp.eye(16)[:, 12]
+    assert_sym_equal(b4*basis, sp.exp(-2*sp.I*sp.pi/3)*basis, 'B candidate ray')
+    return dict(occupation_per_site='2*sin(t)**2',
+                original_local_pattern_probability='cos(t)**4',
+                t_pi_over_4_occupation_per_site=1,
+                t_pi_over_4_original_local_pattern_probability='1/4',
+                all_sector_mass_matrix_agreement=True)
+
+
+def plaquette_flow(x, a, b, length, edges):
+    """Oriented boundary of an elementary a,b plaquette, Eq.(12)/(15)."""
+    flow = {edge: 0 for edge in edges}
+    flow[x, a] += 1
+    flow[neighbor(x, a, 1, length), b] += 1
+    flow[neighbor(x, b, 1, length), a] -= 1
+    flow[x, b] -= 1
+    return flow
+
+
+def magnetic_checks():
+    records = []
+    for length in (3, 4):
+        sites, occ, flux = initial_state(length)
+        edges = list(flux)
+        targets = set()
+        for x in sites:
+            for a, b in ((0, 1), (0, 2), (1, 2)):
+                loop = plaquette_flow(x, a, b, length, edges)
+                for sign in (1, -1):
+                    signed = {edge: sign*e for edge, e in loop.items()}
+                    assert not any(gauss_residuals(occ, signed, length))
+                    key = tuple(signed[edge] for edge in edges)
+                    assert any(key) and key not in targets
+                    targets.add(key)
+        np = 3 * length**3
+        assert len(targets) == 2*np
+        # Analytic bound: ||D_M''(theta)|| <= (2*N_p)^2, also for
+        # ordered noncommuting factors. Taylor remainder <= 2*N_p^2*theta^2.
+        theta = sp.Rational(1, 8*np**2)
+        remainder = 2 * np**2 * theta**2
+        amplitude_lower = theta - remainder
+        assert_sym_equal(amplitude_lower, 3*theta/4, 'full magnetic remainder')
+        assert amplitude_lower > 0
+        assert_sym_equal((sp.Rational(1, 1)/(2*theta))/2 * theta,
+                         sp.Rational(1, 4), 'epsilon=1 coupling product')
+        records.append(dict(L=length, N_plaquettes=np,
+                            orthogonal_one_loop_targets=len(targets),
+                            theta=str(theta),
+                            target_amplitude_lower_bound=str(amplitude_lower),
+                            reference_leakage_probability_lower_bound=str(amplitude_lower**2)))
+    return records
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path)
+    args = parser.parse_args()
+    result = dict(
+        candidate='Omega_occ: modes 2,3 filled; integer E=0; f=2',
+        status='CANDIDATE_REJECTED_AS_STATIONARY_REFERENCE',
+        scope='Eon v4 exact exponential magnetism; periodic L>=3; no rotor truncation',
+        transport=transport_checks(), mass=local_amplitude_checks(),
+        massless_magnetic=magnetic_checks(),
+        exclusions=['not a proof that every Eon vacuum fails',
+                    'not a full gauge circuit simulator',
+                    'massless failure only in the declared small-angle interval',
+                    'no continuum, thermodynamic-spectrum or radiative-speed result'])
+    if args.output:
+        args.output.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    print('PASS: Gauss and exact witness checks; candidate FAILS stationarity in declared cases.')
+
+
+if __name__ == '__main__':
+    main()
+
+=== DOCUMENT 5: certificate_utils.py ===
+
+"""Shared helpers for exact symbolic certificates.
+
+Structural equality (`a == b`) on SymPy expressions compares syntax trees, not
+mathematical values: `simplify` may return an algebraically equal but
+differently written form. Two certificates (W2, W5) failed under the pinned
+SymPy 1.14.0 for this reason (reports/2026-10-22--escape-corruption-audit.md).
+Use `sym_zero` / `assert_sym_equal` for value identities.
+"""
+
+import sympy as sp
+
+
+def sym_zero(expr):
+    """True iff expr simplifies to exactly zero (trig/exp forms normalized)."""
+    if isinstance(expr, sp.MatrixBase):
+        return all(sym_zero(e) for e in expr)
+    e = sp.expand(sp.sympify(expr).rewrite(sp.exp))
+    return sp.simplify(e) == 0
+
+
+def assert_sym_equal(a, b, what=""):
+    """Assert a and b are equal as values; report the residual on failure."""
+    residual = (sp.Matrix(a) - sp.Matrix(b)) if isinstance(a, sp.MatrixBase) \
+        else sp.sympify(a) - sp.sympify(b)
+    assert sym_zero(residual), f"{what}: nonzero residual {sp.simplify(residual)}"
+
+=== DOCUMENT 6: arXiv-2205.03148v4.pdf (plain text extracted from the PDF; formulas may be garbled, the PDF is authoritative) ===
+
+                                            A relativistic discrete spacetime formulation of 3+1
+                                            QED
+                                            Nathanaël Eon1 , Giuseppe Di Molfetta1 , Giuseppe Magnifico2,3,4,5 , and Pablo Arrighi6
+
+                                            1
+                                                Aix-Marseille Université, Université de Toulon, CNRS, LIS, Marseille, France
+                                            2
+                                                Dipartimento di Fisica e Astronomia “G. Galilei”, Universita‘ di Padova, I-35131 Padova, Italy
+                                            3
+                                                Padua Quantum Technologies Research Center, Universita‘ degli Studi di Padova
+                                            4
+                                                Istituto Nazionale di Fisica Nucleare (INFN), Sezione di Padova, I-35131 Padova, Italy
+                                            5
+                                                Dipartimento di Fisica, Universita‘ di Bari, I-70126 Bari, Italy
+arXiv:2205.03148v4 [quant-ph] 29 Oct 2024
+
+
+
+
+                                            6
+                                                Université Paris-Saclay, Inria, CNRS, LMF, 91190 Gif-sur-Yvette, France
+
+
+
+                                                          This work provides a relativistic, digital quantum simulation scheme for
+                                                      both 2 + 1 and 3 + 1 dimensional quantum electrodynamics (QED), based on
+                                                      a discrete spacetime formulation of theory. It takes the form of a quantum
+                                                      circuit, infinitely repeating across space and time, parametrised by the dis-
+                                                      cretization step ∆t = ∆x . Strict causality at each step is ensured as circuit
+                                                      wires coincide with the lightlike worldlines of QED; simulation time under deco-
+                                                      herence is optimized. The construction replays the logic that leads to the QED
+                                                      Lagrangian. Namely, it starts from the Dirac quantum walk, well-known to con-
+                                                      verge towards free relativistic fermions. It then extends the quantum walk into
+                                                      a multi-particle sector quantum cellular automata in a way which respects the
+                                                      fermionic anti-commutation relations and the discrete gauge invariance symme-
+                                                      try. Both requirements can only be achieved at cost of introducing the gauge
+                                                      field. Lastly the gauge field is given its own electromagnetic dynamics, which
+                                                      can be formulated as a quantum walk at each plaquette.
+
+
+
+                                            1 Introduction
+                                            The simulation of quantum phenomena, in order to scale in size, requires the use of a
+                                            quantum mechanical device. A short term application is to find ground states of Hamil-
+                                            tonians, that hold the key to certain molecular structures or condensed matter properties
+                                            [1]. In the longer term, however, it may even be used to simulate the dynamics of these
+                                            from first principles, based on their constituent fundamental particles’ dynamics. This has
+                                            motivated a strand of works on the quantum simulation of quantum field theories (QFT)
+                                            [2, 3, 4]. All of them rely on a prior spatial discretization, but some are actually based on
+                                            a spacetime discretization, allowing for a natively discrete account of both the relativis-
+                                            tic and gauge symmetries. This work provides a quantum simulation scheme based on a
+                                            discrete spacetime formulation of 3 + 1-quantum electrodynamics.
+                                                Lattice QFT. Lattice gauge theories appear for instance in quantum error correction
+                                            theory (e.g. Kitaev’s toric code [5, 6, 7]) and condensed matter (e.g. through their appli-
+                                            cations in spin liquids). But they originate from particle physics, where lattice quantum
+                                            Nathanaël Eon: nathanael.eon@lis-lab.fr
+                                            Giuseppe Di Molfetta: giuseppe.dimolfetta@lis-lab.fr
+
+
+
+                                                                                                       1
+chromodynamics [8] has extensively been used in order to obtain numerical values, to then
+be compared against experimental values from particle accelerators. This procedure is
+paradigmatic of the way new physics is discovered, making simulation take a central role.
+However, these techniques are computationally heavy. Finding a way to simulate lattice
+QFT efficiently and accurately through a quantum device would be a game changer.
+    Non-relativistic, analogue simulation of QFT. The standard ways to quantum simu-
+late QFT are fundamentally non-relativistic, as they begin asymmetrically by discretizing
+space but not time, by means of a Kogut-Susskind Hamiltonian [9, 10]. Next the matter
+(fermions) and the gauge field (bosons) degrees of freedom are encoded as quantum sys-
+tems on the simulating device, whose interactions will mimic those of the Hamiltonian [3].
+These interactions are sometimes implemented as discrete-time unitaries, but even then
+these are short-time approximations of the Hamiltonian, as obtained by the Trotter for-
+mula under the non-relativistic ∆t ≪ ∆x assumption. This approach was recently realized
+experimentally using an ion trap architecture [11]. Recent, classical but quantum-inspired
+tensor networks techniques, come to complement this standard approach [12]. These use
+compact, approximate description of quantum states [13] such as the multiscale entangle-
+ment renormalization ansatz (MERA) [14, 15], discarding hopefully unwanted information
+about the states as they evolve, so that the description keeps a manageable size, whilst at-
+tempting to keep track of interesting ingredients, including entanglement. Tensor network
+techniques, however, mainly focus on finding low energy states and will inevitably hit a
+scalability and precision barrier when dealing with many-body states and their dynamics.
+    Relativistic, digital simulation of QFT. In order to quantum simulate QFT in a rel-
+ativistic manner, we must place space and time on an equal footing, discretizing both
+simultaneously, with parameter ∆t = ∆x . This leads of an infinitely repeating quantum
+circuit, across space and time, namely a quantum cellular automata (QCA). The speed of
+light in the simulated QFT will then, at each step, strictly correspond with the ‘circuit
+speed’, i.e. the maximal speed allowed by the wires. And whilst it is true that after multiple
+steps the circuit speed could potentially produce square lightcones instead of round light-
+cones, a robust continuum limit argument shows that this does not happen for Dirac QCA
+[16]. In fact such schemes have been shown to recover discrete counterparts to Lorentz
+covariance in three different ways [17, 18, 19]. This is in stark contrast with the earlier
+mentioned analogue simulation paradigm, where the ∆t ≪ ∆x assumption kills off Lorentz
+covariance and yields a non-strict and much lower speed of light for the simulated QFT,
+hopefully matching the Lieb-Robinson bound [20]—a fragile process however [21, 22]. Fig.
+1 illustrates the circuit and light speed under both simulation paradigms. From a theo-
+retical standpoint, relativistic, digital quantum simulation is therefore advantageous: (i)
+strict causality at each step is ensured as the circuit wires match the lightlike worldlines
+of the simulated QFT ; (ii) space and time are treated on an equal footing as demanded
+by relativity. From a practical standpoint these advantages are expected to translate into
+longer simulation times. For instance, where a quantum simulation device suffers from a
+given typical decoherence time τ , we could still simulate the QFT over a period of logical
+time of about τ .
+    A natively discrete approach to QFT. In the continuous, relativistic settings, the stan-
+dard way to express a QFT is by means of a Lagrangian, i.e. a ‘local cost function’, which
+integrated over a possible history provides the action. The action is to be minimized in
+the classical theory, or to serve as phase in the quantum theory. The use of a particular
+Lagrangian is justified by means of relativistic and gauge symmetries. But the way it is
+then brought to quantum theory is only through regularization, typically through an energy
+cut-off, which is essentially a discretization of spacetime. Then a continuum limit is worked
+
+
+                                              2
+               Light speed = circuit speed
+                                                                     Circuit speed         Effective light speed
+
+                                                         Decoherence
+                  C         C         C      C
+                                                                              C        C             C         C
+
+
+
+   ∆t = ∆x        C         C         C      C             ∆t ≪ ∆x            C        C             C         C
+
+
+
+
+                  ∆x                                                         ∆x
+
+                           (a)                                                       (b)
+
+Figure 1: (a) In relativistic, digital quantum simulation, the light-like worldlines of the simulated
+theory coincides with circuit wires, yielding strict causality. (b) In non-relativistic, Trotterized analogue
+quantum simulation, light-like worldlines are approximately recovered through a Lieb-Robinson bound,
+and are slower. Thus, the simulation is running slower. As typical decoherence times match the depth
+of the circuit, the QFT is simulated over a shorter period.
+
+
+out on a per-case basis through renormalization, a process which is heavily dependent on
+the cut-off parameters. Hence, even though the Lagrangian approach starts as continuous,
+it does not actually solve the problem of obtaining a well-defined quantum theory in the
+continuum—that is except in the case of non-interactive theories. In general, given some
+Lagrangian, an elaborate continuum limiting process still needs to be worked out. Our aim
+is to acknowledge this fact, and instead express the QFT directly as a family of infinitely
+repeating circuits of local quantum gates, parametrised by the discretization step. In order
+to justify the use of a particular QCA we must then, just like in the Lagrangian approach,
+begin with a quantum walk (QW) accounting for free relativistic fermions and then extend
+it to the multi-particle sector QCA by imposing the fermionic anti-commutation relations
+as well as discrete gauge invariance, thereby deducing the need for a gauge field. We can
+then ‘turn on’ the interaction by providing the gauge field with a simple dynamics. That
+is, we must transpose the logics of construction that leads to a particular QFT in the La-
+grangian approach, to a natively discrete setting, whose discretization parameter can then
+be made arbitrary small. This ought to provide a rigorous, natively discrete formulation
+of QFT.
+    Closest work. 1 + 1 quantum electrodynamics (QED), also known as the Schwinger
+model [23], has been recovered under the relativistic, digital quantum simulation paradigm,
+by discretizing through ∆t = ∆x and following gauge theoretical justifications in [24].
+Next, this was generalized by [25, 26, 27] in order to allow for arbitrary ∆t ≤ ∆x , so that
+both the continuous spacetime limits (which exists when the interaction is turned off) and
+the continuous time discrete space limits (which always exists) may be taken, the latter
+coinciding with the Kogut-Susskind Hamiltonian. The aim of the present paper is to take
+the work of [24] to two and three spatial dimensions, yielding the first natively discrete
+spacetime formulation of a ‘real-life’ QFT, namely 3 + 1 QED.
+    Implementing the anti-commutation of fermions. Digital quantum simulation has been
+very successful at describing relativistic particles in different fields [28, 29, 30], but only
+a handful of works deal with interacting QFT with more than one particle [31, 32, 24,
+27]. One of the difficulties is that in order to encode multiple fermions as qubits, one
+must enforce the anti-commutation of their creation/annihilation operators, e.g. through
+the Jordan-Wigner transformation. However, this method has all the looks of breaking
+locality, especially as soon as one considers more than one dimension of space. This was
+even formulated as a no-go result [33], stating that any QCA implementing the fermionic
+
+                                                     3
+anti-commutation relations in two spatial dimensions would have very high internal space
+dimension, as in [34, 35]. In the tensor network community, anti-commutation, locality
+and low internal space dimensions do coexist, at the cost of introducing a cut-off for the
+gauge field and two extra fermions per links, called rishons. Moreover, in lattice gauge
+theory, a solution where the fermionic degrees of freedom are replaced by bosonic ones, at
+the cost of introducing two new fermionic degrees of freedom, has been developed [36]. A
+similar idea, where just the parity of the gauge field is treated as a fermion, was sketched
+in Farrelly’s PhD thesis [37]. The first main contribution of this paper is to combine these
+ideas and formalize them in the discrete spacetime setting. We introduce no extra field,
+but replicate the gauge field information once for each direction. For each direction, its
+parity provides a rishon. Then the Jordan-Wigner transform needs only be implemented
+locally, at the level of each site. This does allow for a QCA of low internal space dimension,
+while enforcing fermionic anti-commutation. Ultimately, the reason why the no-go result
+[33] is circumvented is the presence of the gauge field, as well as our focus on expressing
+the actual dynamics in local manner—rather than the creation/annihilation operators.
+    Fully discrete magnetic contribution. In QED’s gauge invariant states, the fermions are
+the sources of the gauge field lines. In one spatial dimension there is no magnetic term,
+lines are confined to the unique dimension, and thus they have no dynamics [24]. But in
+two and three spatial dimension, the Hamiltonian has an added magnetic term, a.k.a. the
+plaquette term. The second main contribution of this paper is to introduce two possible
+discrete spacetime counterparts to the plaquette term. The first proposition works by
+simply integrating the plaquette term in the Fourier basis. But it requires a prior cut-off
+in the gauge field degrees of freedom, and allows for arbitrary changes in values within that
+cut-off, even in one time step. The second proposition takes the form of a local quantum
+walk (QW)-like evolution in the local gauge field degrees of freedom of each plaquette. It
+does not require a prior cut-off and ensures that gauge field values only change one step
+at a time. Both constructions agree in the continuum limit.
+    Further spin-dimensions. In one and two spatial dimensions, the Dirac equation is a
+PDE on a wave function having two complex amplitudes at each site, corresponding to the
+presence of a particle or an antiparticle. In the multi-particle settings, and because there
+can be no more than one particle in a given state and site, the four occupation numbers
+of a site are thus: no fermion, one particle, one antiparticle, and, both a particle and an
+antiparticle. This can be encoded as 2 qubits in the 2 + 1 Dirac QCA. Moving on to
+three spatial dimensions, the Dirac equation is a PDE having four complex amplitudes
+at each site, corresponding to the presence of a particle spin up, a particle spin down, an
+antiparticle spin down or an antiparticle spin up. In the multi-particle settings, the number
+of qubits per site has then to be increased from 2 to 4 qubits, which makes the 3 + 1 QCA
+more involved. The third main contribution is therefore to provide a construction of the
+3 + 1 QED QCA in spite of this added complexity.
+    The paper is organized as follows. In Sec. 2 we set the conventions and show how
+to enforce the fermionic anti-commutation relations while allowing for a local definition
+of the gauge invariant operators that govern the dynamics of the theory. In Sec. 3, we
+gradually derive the gauge invariant dynamics of the 2 + 1 QED QCA starting from the
+2 + 1 Dirac QCA and adding the electric and magnetic contributions—the simpler, two
+spatial dimensional case makes the argument clearer. In Sec. 4, we reach the 3 + 1 QED
+QCA. Finally, we provide some perspectives.
+
+
+
+
+                                              4
+2 Enforcing anti-commutation, locality and gauge invariance
+In QFT, fermionic particles are represented by means of operators that annihilate them
+or create them at position x. These are denoted ax and a†x respectively. Applying the
+annihilator on quantum states takes occupation number |1⟩x to |0⟩x and produces the null
+vector otherwise. The creator takes |0⟩x to |1⟩x and produces the null vector otherwise.
+Moreover, these operators are required to have the specific anti-commutation relations
+{ax , a†y } = δx,y where {·, ·} denotes the anti-commutator and δ the Kronecker delta.
+    In order to obtain a quantum numerical scheme for a QFT, to be run on a generic
+quantum computer or some specific-purpose quantum simulation device, we need to encode
+the QFT degrees of freedom as a lattice of qubits. The natural point of departure is to
+interpret the occupation number degrees of freedom at each site (i.e. |1⟩x vs |0⟩x ), as qubits,
+thereby obtaining a lattice of qubits. But enforcing the fermionic anti-commutation whilst
+remaining local is non-trivial.
+    In Subsec. 2.2, the impact of the fermionic anti-commutation relations upon the local
+operators that are needed to express the discrete time dynamics, will be carefully worked
+out. In order to obtain them, however, we crucially rely on there being a gauge field, as
+demanded by gauge invariance.
+
+2.1 Introducing the gauge field
+The QED Lagrangian is built by considering the Dirac Lagrangian for free fermions, and
+then demanding that it be gauge invariant, under U (1) gauge-transformations. This is
+impossible without introducing a new field, the gauge field, which in the case of QED
+turns out to be the electromagnetic field.
+    We will proceed in the same manner in the discrete. One reason for that is that in
+numerical analysis, the fact that a numerical scheme conserves the original symmetries
+is desirable and seen as a good sign of numerical stability. The other reason is more
+fundamental, as we aim to show that a natively discrete spacetime formulation of QED
+is just as legitimate at the Lagrangian formulation, in terms of its justification through
+symmetries.
+    Discrete gauge invariance in the context of classical cellular automata has been formal-
+ized in [38, 39, 40]. Together with the treatment of gauge invariance upon quantum walks
+[41] and in lattice gauge theories in general [3], it inspired [24] to formulate discrete gauge
+transformations in the context of QED QCA in the following manner.
+    Let φ : Z → R. We call discrete gauge transformation the global operator gφ =
+   x g(φ(x)) which associates, to each position x, an on-site gauge transformation g(φ(x))
+N
+
+parametrized by φ(x) and defined as
+
+                              g(φ(x)) : |l⟩x 7→ eilφ(x) |l⟩x
+                                        |l⟩y 7→ |l⟩y      if x ̸= y.
+
+Thus, a discrete gauge transformation gφ is essentially a space-dependent phase, exempt
+of any regularity requirement, applied at every point of the lattice in accordance to the
+occupation number at that point. To be gauge invariant, the evolution of a QCA must
+commute with every possible gauge transformation.
+    The Dirac QCA, which solely describes moving fermions, is not gauge invariant unless
+we introduce the gauge field. The argument boils down to the elementary fact that, as a
+particle moves from position x to the adjacent position x + η,
+
+                               |1⟩x ⊗ |0⟩x+η 7−→ |0⟩x ⊗ |1⟩x+η
+
+                                                5
+the discrete gauge transformation will trigger a phase φ(x) applied beforehand, or a phase
+φ(x + η) applied afterwards. It follows that fermionic transport does not commute with
+gauge transformations.
+    In order to fix this, one needs to introduce a gauge field on the links. Consider a link
+between sites x and x + η. A gauge field is much like a doorman/bouncer counter standing
+on the link. It adds one whenever a particle crosses the link. Actually, in the present
+paper, we will not place just one bouncer per link, but two—one at each end, where the
+ends are denoted x : η and x + η : −η respectively. The bouncer at x : η counts positively
+the number of fermions leaving x towards the link, and negatively those entering x from
+the link. The bouncer at (x + η) : −η counts negatively the number entering x + η from
+the link, and positively those leaving x + η towards the link. Now fermionic transport acts
+as
+         |1⟩x |l⟩x:η ⊗ |−l⟩(x+η):−η |0⟩x+η 7−→ |0⟩x |l + 1⟩x:η ⊗ |−l − 1⟩(x+η):−η |1⟩x+η
+and the discrete gauge transformation triggers a phase (l + 1)φ(x) − lφ(x + η) regardless
+of whether it is applied before of after the move.
+    The restriction that the two gauge fields of a link be opposite of signs, as in |l⟩x:η and
+|−l⟩(x+η):−η , is quite natural if we think of them as holding the total number of fermions
+that went through the link, ever, and nothing else. Still, this restriction is not a necessity
+for gauge invariance. However, lifting it would allow for unnecessary degrees of freedom,
+that are not demanded by gauge invariance and seem to be unphysical in practice. So, we
+must not just ask for gauge invariance, but for ‘minimal’ gauge invariance, i.e. the demand
+the gauge field be obtained as a relative gauge extension [40], making this restriction a
+necessity. We therefore impose this restriction across the grid, except of course at the
+boundaries, where it becomes vacuous.
+    Placing two gauge fields per link is non-standard but has several advantages: (i) each
+gauge field is well-localised on a site, (ii) it gauge transforms in the same way as the
+fermions on that site, (iii) this is number conserving, (iv) it will help to implement the
+fermionic anti-commutation relations in a local manner as we will now see.
+
+2.2 (Anti-)commuting annihilation and lowering operators
+Consider the lattice generated by unit vectors describing the space directions. These vectors
+are denoted µ, ν and κ, in two spatial dimensions, only µ and ν are used.
+     At each lattice site x lies a group of d qubits, each stating whether a fermion in mode
+j ∈ 0 . . . (d − 1) is present at the site. The possible modes correspond to the number of
+internal degrees of freedom (e.g. the spin) of the fermions. This encoding captures the
+Pauli exclusion principle as there cannot be two fermions in the same mode at the same
+site.
+     Each link between x and x + η (where η ∈ {±µ, ±ν, ±κ}) has a gauge field attached at
+both ends: one at x : η and the other a (x + η) : −η. Each gauge field lives in the Hilbert
+space of integers HZ .
+     The local electric counting operator, denoted Ex:η , is the local observable of the gauge
+fields, i.e. it acts as
+
+                                     Ex:η |l⟩x:η = l |l⟩x:η                               (1)
+
+and as the identity elsewhere. Following the restriction that the two gauge fields of a link
+be of opposite signs, one has Ex:η = −Ex+η:−η .
+
+
+
+
+                                               6
+    The lowering operator of the gauge fields is rx:η . It acts as rx:η |l⟩x:η = |l − 1⟩x:η and as
+the identity elsewhere. Most often we need to act on both the gauge fields of a link with
+                                                   †
+                                      Ux:η = rx:η rx+η:−η .                                   (2)
+                    †
+One has Ux:η = Ux+η:−η    —i.e. lowering the gauge field value attached to one site corre-
+sponds to raising on the other site.
+    The local parity observable, denoted Zx , is defined by acting with the on-site operator
+Z at site x, and as the identity elsewhere. On each qubit at the site, Z acts like the
+third Pauli matrix σ3 . On each gauge field at the site, it acts as Z |2l⟩x:η = |2l⟩x:η and
+Z |2l + 1⟩x:η = − |2l + 1⟩x:η .
+    All the operators described so far were ‘local’ operators, by which we mean that they
+were of the form Lx = Mx ⊗ I with Mx acting just at site x (and sometimes direct
+neighbours of x). We will now represent the fermionic annihilation ax,j and gauge lowering
+operators Vx:η of the QFT as products of these local operators. These implementations
+will not be local, as we must meet the desired (anti-)commutation relations:
+                                     {ax,j , a†y,k } = δx,y δj,k                              (3)
+                                      [Vx:η , Vy:ζ ] = 0                                      (4)
+                                      [Vx:η , ay,j ] = 0                                      (5)
+with {·, ·} the anti-commutator, [·, ·] the commutator and δx,y corresponding to Kronecker
+delta.
+    These commutation relations are commonly implemented by means of the Jordan-
+Wigner (JW) transform. This will be the basis for the redefined version of the operators.
+However, in 2 + 1 and 3 + 1 dimensions, it leads to non-locality of the operators expressing
+dynamics if used as is [33]. In order to fix this we use the idea hinted in [37] and treat the
+parity of the gauge fields as a fermion. Moreover, we use two gauge fields per link, so that
+this parity plays the role of the rishons of lattice gauge theories.
+    Let ≺ denote a so-called JW order between all the fermionic occupation number qubits
+and gauge fields present in the model. The sole requirement to make this work is that
+the degrees of freedom at any given site be contiguous in the JW order, i.e. that they
+follow each other. In what follows we will use, quite arbitrarily, that for a given site x, the
+fermionic modes and the gauge fields are ordered as (x, 0) ≺ . . . ≺ (x, d − 1) ≺ x : −µ ≺
+x : µ ≺ x : −ν ≺ x : ν ≺ x : −κ ≺ x : κ.
+    We define fermionic creation and gauge lowering operators based on this order. Let x
+be a position, j a mode and η a direction:
+                                   a†x,j = |1⟩x,j ⟨0|
+                                                           Y
+                                                                  Zy
+                                                        y≺(x,j)
+                                                   Y
+                                   sx:η = rx:η            Zy
+                                                  y≺x:η
+
+
+                            Vx:η =sx:η s†x+η:−η
+                                                                 
+                                                                     †
+                                                 Y
+                                 =rx:η                        Zy  rx+η:−η
+                                           y∈Jx:η,x+η:−ηJ
+
+where Ja, bJ is short for [min{a, b}, max{a, b}[. When x : η ≺ x + η : −η, this interval does
+not contain x + η : −η and rx+η:−η commutes the Zy s leading to the simplification:
+                                                        Y
+                                  Vx:η = Ux:η                      Zy                         (6)
+                                                y∈Jx:η,x+η:−ηJ
+
+
+                                                  7
+   The following fermionic anti-commutation relations are ensured by the JW transform:
+
+                                    {ax,j , a†y,k } = δx,y δj,k
+                                    {sx:η , s†y:ζ } = δx,y δη,ζ                           (7)
+                                    {ax,j , s†y:η } = 0.                                  (8)
+
+   Since Vx:η is composed of two fermion-like operators, Eqs. (7) and (8) yield:
+
+                                        [Vx:η , Vy:ζ ] = 0
+                                            [Vx:η , ay ] = 0.
+
+Hence, the (anti-)commutation of Eqs. (3), (4) and (5) are ensured.
+
+2.3 Local evolution operators
+The annihilator operators ax,j are not local since they have an infinite trail of Z on-site
+operators. The lowering operators Vx:η can also be non-local as soon as both ends of the link
+are far apart in the JW order. However, these operators are never used by themselves in
+the evolution. They may perhaps be used by themselves for some initial state preparation.
+But Physics does not require that initial state preparation be local. Moreover, in the
+context of initial state preparation, a†x,j could be interpreted as a one-step implementation
+of having the particle come from infinity (or from the lattice border) to its current position
+through a product of local steps.
+     What matters physically is the evolution be local. One can then consider the operators
+allowing to express that: (i) the movement of fermions be that of free fermionic QCA, (ii)
+the gauge field induce an interaction between fermions—through the electric contribution,
+(iii) the gauge field vibrates—through the magnetic contribution. From these requirements,
+we can define the simplest local gauge invariant operators (checking for gauge invariance
+is postponed till Subsec. 2.4):
+
+                               a†x,j ax,k                                                 (9)
+                               a†x+η,j Vx:η
+                                         †
+                                            ax,k                                         (10)
+                                  2
+                               Ex:η                                                      (11)
+                                                      †      †
+                               Px:η,ζ = Vx:η Vx+η:ζ Vx+ζ:η Vx:ζ                          (12)
+
+with η, ζ ∈ {µ, ν, κ} and η ̸= ζ. Eq. (9) represents a mass term (i.e. a fermionic only
+operation, local to a site, changing the mode), Eq. (10) corresponds to a fermion hopping
+term (i.e. a transport), Eq. (11) is the squared electric operator defined previously, and
+Eq. (12) is a plaquette term (i.e. a local vibration of the gauge field). The QED QCA
+evolutions will be defined based upon these local operators.
+    The mass term is indeed local because it involves a pair of fermionic operators acting
+on the same site, cancelling out the trail of Z outside this site. The electric term is local
+by definition.
+    For the locality of the hopping term, developing the gauge field operators Vx:η as pairs
+sx:η and s†x+η:−η on each side of the link, allows for the pairing of an annihilator a with an
+
+
+
+
+                                                   8
+s on each site, thus cancelling out the Z outside the sites:
+
+    a†x+η,j Vx:η
+              †
+                 ax,k = a†x+η,j (sx+η:−η s†x,η )ax,k
+                          = (a†x+η,j sx+η:−η )(s†x:η ax,k )
+                                                                                                                  
+
+                  = |1⟩x+η,j ⟨0|                                                   † 
+                                                                                                                Zy  |0⟩x,k ⟨1|
+                                                   Y                                                 Y
+                                                                      Zy  rx+η:−η rx:η
+                                         y∈J(x+η,j),x+η:−ηJ                                     y∈J(x,k),x:ηJ
+                                                                                                      
+
+                  = |1⟩x+η,j ⟨0|                                           † 
+                                                                                                     Zy  |0⟩x,k ⟨1| .
+                                                   Y                                     Y
+                                                                      Zy  Ux:η                                                     (13)
+                                         y∈J(x+η,j),x+η:−ηJ                          y∈J(x,k),x:ηJ
+
+
+The remaining Zs are local to sites x and x + η. The locality of the pair s†x:η ax,k , which is
+the local brick from which the hopping term is built, is illustrated in Fig. 2.
+
+
+
+                                                                  s†x,ν                                             s†x,ν a†x
+                     ax                                       x                                                 x
+                 x
+
+
+
+
+ν
+    µ
+
+             (a) ax+ν                                    (b) s†x:ν                                           (c) s†x,ν ax
+
+Figure 2: Visualization of locality for s†x:ν ax . The coloured dots and lines corresponds to Z operators
+acting on fermions and gauge fields respectively. Each operator Zy is applied exactly twice which
+cancels them out except on site x. Here, only one fermionic mode per site is represented, for clarity.
+
+    For the locality of plaquette term—i.e. Eq. (12)—notice that it forms a small loop
+of four gauge field links. Developing each gauge operator Vx:η as a pair sx:η and s†x+η:−η ,
+and reordering the resulting product of s, one gets two anti-commuting operators per site.
+Hence, the string of Z cancels out outside the site they act on:
+                                 †      †
+          Px:η,ζ = Vx:η Vx+η:ζ Vx+ζ:η Vx:ζ
+                                                                                                                   
+                 = sx:η s†x+η:−η             sx+η:ζ s†x+η+ζ:−ζ             sx+η+ζ:−η s†x+ζ:η          sx+ζ:−ζ s†x:ζ
+                                                                                                           
+                 = −s†x+η:−η sx+η:ζ s†x+η+ζ:−ζ                    sx+η+ζ:−η s†x+ζ:η             sx+ζ:−ζ s†x:ζ sx:η
+                                                                                                                         
+                 = − s†x+η:−η sx+η:ζ             s†x+η+ζ:−ζ sx+η+ζ:−η                 s†x+ζ:η sx+ζ:−ζ          s†x:ζ sx:η
+
+where the minus sign that appears between the second and third line comes from the
+anti-commutation of sx:η with the other 7 operators. In order to better understand the
+structure of the local, minus signs in this term, it is helpful to break down the plaquette
+term into constituent, smaller local operators. Indeed, let us define the corner operators
+cx:η,ζ as
+
+                                         cx:η,ζ = s†x:ζ sx:η                                                                        (14)
+                                                                                
+                                                   † 
+                                                                      Y
+                                                = rx:ζ                        Zy  rx:η .
+                                                          y∈Jx:η,x:ζJ
+
+
+
+
+                                                                  9
+These are local to x since the remainder Z is on-site x. A corner operator would be the
+result of a fermion having come from direction η, passed through site x, and left in the
+direction ζ. The plaquette operator can then be redefined as:
+                      Px:η,ζ = −cx+η:ζ,−η cx+η+ζ:−η,−ζ cx+ζ:−ζ,η cx:η,ζ .            (15)
+Thus, Eqs. (13) and (15) allow the fermionic and bosonic dynamics terms (left-hand-side
+of the equations) to be expressed into simpler local dynamics (right-hand-side).
+    Notice that the only dependency of the definition of these local evolution operators
+w.r.t the JW order, is per-site. In fact the per-site JW order could even have been chosen
+different from one site to the other.
+
+2.4 Gauge invariance
+Gauge invariance was introduced in Sec. 2.1 to motivate the need for a gauge field. It
+remains to be checked that above-defined local evolution operators are gauge invariant.
+
+2.4.1   Gauge invariant operators
+Gauge invariance is the commutation with gauge transformations, i.e. space-dependent
+phases proportional to the occupation number. Because the annihilation and lowering op-
+erators act on the occupation number, they individually are not gauge invariant. However,
+the local evolution operators combine multiple annihilation and lowering operators so that
+the total occupation number of a site is unchanged (only the distribution inside the site
+is modified)—e.g. a fermion leaving site x will reduce the number of fermions by one, but
+increase one of the gauge fields at x by one.
+    In order to formally show this, let us first write the commutation relations for the
+individual annihilation operators ax,j
+
+                                      ax,j gφ = eiφ(x) gφ ax,j
+                                      a†x,j gφ = e−iφ(x) gφ a†x,j ,
+the gauge field operators on half-links sx,η
+
+                                      sx:η gφ = eiφ(x) gφ sx:η
+                                      s†x:η gφ = e−iφ(x) gφ s†x:η ,
+and the gauge field operators Vx:η
+
+                                 Vx:η gφ = ei(φ(x)−φ(x+η)) gφ Vx:η
+                                   †                             †
+                                 Vx:η gφ = ei(−φ(x)+φ(x+η)) gφ Vx:η .
+   Based on these commutation relations, we derive those of the local evolution operators.
+For the mass term:
+                                    
+                             a†x,j ax,k gφ = a†x,j (ax,k gφ )
+                                                                     
+                                           = a†x,j eiφ(x) gφ ax,k
+                                                                
+                                           = eiφ(x) a†x,j gφ ax,k
+                                                                         
+                                           = eiφ(x) e−iφ(x) gφ a†x,j ax,k
+                                                            
+                                           = gφ a†x,j ax,k .
+
+
+                                                   10
+Hence, the mass term is gauge invariant.
+   For the hopping term:
+                                   
+                    a†x+η,j Vx:η
+                              †
+                                 ax,j gφ = a†x+η,j Vx:η
+                                                     †
+                                                        (ax,j gφ )
+                                                                               
+                                         = a†x+η,j Vx:η
+                                                     †
+                                                        eiφ(x) gφ ax,j
+                                                                           
+                                         = a†x+η,j eiφ(x) Vx:η
+                                                            †
+                                                               gφ ax,j
+                                                                                       
+                                         = a†x+η,j eiφ(x) ei(−φ(x)+φ(x+η)) gφ Vx:η
+                                                                                †
+                                                                                   ax,j
+                                                                       
+                                         = eiφ(x+η) a†x+η,j gφ Vx:η
+                                                                 †
+                                                                    ax,j
+                                                                                   
+                                         = eiφ(x+η) e−iφ(x+η) gφ a†x+η,j Vx:η
+                                                                           †
+                                                                              ax,j
+                                                                       
+                                         = gφ a†x+η,j Vx:η
+                                                        †
+                                                           ax,j .
+
+Hence, the hopping term is gauge invariant.
+    The electric term does not change the occupation number, hence it is directly gauge
+invariant:
+
+                                             Ex:η gφ = gφ Ex:η .
+
+   As for the plaquette term, we start by showing the gauge invariance of the corner
+operator:
+
+                                  cx:η,ζ gφ = s†x:ζ sx:η gφ
+                                                                       
+                                            = s†x:ζ eiφ(x) gφ sx:η
+                                                                   
+                                            = eiφ(x) s†x:ζ gφ sx:η
+                                                                               
+                                            = eiφ(x) e−iφ(x) gφ s†x:ζ sx:η
+                                                               
+                                            = gφ s†x:ζ sx:η
+                                            = gφ cx:η,ζ .
+
+Since the plaquette term is a product of four corner operators, its gauge invariance is
+ensured.
+    The QCA operators that will be defined in the next sections are linear combination or
+exponentials of the hopping, electric and magnetic terms. Therefore, their gauge invariance
+is ensured by the individual gauge invariance of those terms.
+
+2.4.2   Gauge invariant states
+In a gauge theory, gauge transformations should not be observable. Let O be an ob-
+servable, ρ a density matrix representing a state and gφ a gauge transformation.
+                                                                                   That
+                                                                                      
+gauge transformations should not be observable amounts to asking that Tr Ogφ ρgφ =  †
+
+Tr(Oρ). There are two common ways to enforce this: namely      to restrict
+                                                                           the
+                                                                              set of ob-
+servables to the gauge invariant ones [O, gφ ] = 0, so that Tr Ogφ ρgφ = Tr gφ Oρgφ† =
+                                                                     †
+           
+Tr gφ† gφ Oρ = Tr(Oρ) or to restrict the set of states to the gauge invariant ones, so that
+                               
+Tr Ogφ ρgφ† = Tr Oρgφ gφ† = Tr(Oρ). We opt for the second, demanding that for every
+gauge transformation,
+                                   gφ ρ = ρgφ .
+
+                                                        11
+Let us draw the consequences of this demand that the states be gauge-invariant. Any
+density matrix ρ is a convex linear distribution over pure states. In the case of a pure
+state |ψ⟩ ⟨ψ|, this commutation relation amounts to forbidding superposition across any
+two eigenspaces of a gauge transformation, so that gφ |ψ⟩ ⟨ψ| = eiλ |ψ⟩ ⟨ψ| = |ψ⟩ ⟨ψ| eiλ =
+|ψ⟩ ⟨ψ| gφ with eiλ the eigenvalue of the eigenspace of gφ to which |ψ⟩ pertains. In other
+words, |ψ⟩ = c∈S αc |c⟩ is a superposition of particular basis states |c⟩, i.e. taken in some
+              P
+
+subset S such that for all φ there exists λ, such that for all c ∈ S, gφ |c⟩ = eiλ |c⟩. Let f (x)
+denote the sum of the occupation numbers, for both the fermions and the gauge fields, at
+each site x of c. Because the λ = x φ(x)f (x) and φ(x) is arbitrary, the gauge-invariance
+                                   P
+
+therefore imposes that f (x) be the same for c ∈ S. Thus, gauge-invariance demands that
+there exists some fixed, classical occupation number function f (x), and that pure states
+be considered physical if and only if, at each position x, the occupation number operator
+yields f (x):
+                                                                    
+
+                                                        |1⟩x,j ⟨1| |ψphys ⟩ = f (x) |ψphys ⟩ .
+                      X                      X
+                                Ex:η +
+                  η∈{±µ,±ν,±κ}            j∈0...(d−1)
+
+The physical pure states then form a subspace, call it the f (x)-subspace. The choice of
+a particular f (x) can be interpreted physically as the choice of a classical fixed, external
+electromagnetic field.
+    Having fixed f (x) and thus S, one may wonder about the operators which allow us
+to prepare some basic state c′ ∈ S given initial basic state c ∈ S, e.g. by creating a
+fermion. As seen previously, the fermionic annihilators ax,j is not gauge invariant; it does
+not preserve occupation numbers and will take us out of S. Following ideas from [42], each
+fermion creation operator a†x,j could be turned into a gauge invariant state preparation by
+accompanying it with a gauge field lowering operator Vx:η , but this changes the occupation
+number at position x + η, which in turn has to be compensated by a Vx+η:ζ , and so on
+until a boundary (possibly infinitely far) is reached. The following defined a gauge invariant
+state preparation:
+                                    a†x,j,p = a†x,j
+                                                    Y
+                                                       Vy:η
+                                                             y:η∈p
+
+where p is a gauge field path from position x to the space boundary (possibly infinite).
+If the lattice is finite, the last operator is understood to be a half-link transformation s,
+instead of V , since there would be no end to the last link. (Notice that a†x,j sx:η is also
+gauge invariant operator, but disallowed as it breaks the restriction that Ex:η = −Ex+η:−η ,
+except at the boundary.)
+    The state preparation a†x,j,p follows the prescribed anti-commutation relations. Indeed,
+recalling Eq. (5), we have that ax,j commutes with any Vy:η , hence a†x,j,p also does. More-
+over, within two operators ax,j,p and ay,k,q , the fermionic parts ax,j and ay,k anti-commute,
+while every other pair of operators commutes, enforcing the fermionic anti-commutation
+relation (3).
+    Another gauge invariant state preparation is the creation of a gauge field loop, i.e.
+  y:η∈p Vy:η where p is a cyclic gauge field path, or one that begins and ends at a boundary.
+Q         †
+
+
+
+Pair creation. Our construction is completely general and offers the possibility of work-
+ing in specific subspaces to mimic physically-relevant phenomena, such the pair production,
+i.e., the spontaneous creation of electrons and positrons from the QED vacuum [3, 43]. For
+this purpose, let us consider the sector in which for all site x, f (x) = d/2. In this subspace,
+
+
+                                                        12
+a natural choice for representing the canonical vacuum is the state in which all the antipar-
+ticle degrees of freedom are populated, whereas no particle and gauge fields are present
+(this state can be viewed as the reference “Dirac sea”). For instance in 2 + 1 dimensions,
+when d = 2, the canonical vacuum would have |10⟩(x,1)(x,0) at each site x, with all gauge
+fields set to |0⟩x:η . Acting on such a state, a term like ax,1 a†x,0 yields |01⟩(x,1)(x,0) . This can
+be understood as ‘creating particle, namely an electron, at (x, 0)’ at the cost of ‘creating
+an antiparticle hole, namely a positron, at (x, 0)’. This evolution describes the process of
+electron-positron pair creation from the reference vacuum. More precisely it models the
+very moment when, at site x, the two particles are created : it is only once they move away
+from each other that the gauge fields will get updated, so as to account for a gauge field
+line between them two. The reverse evolution describes electron-positron pair annihilation.
+
+
+3 2 + 1 Quantum Cellular Automaton
+Using the previously defined local, gauge invariant operators, it is possible to define a QCA
+that accounts for QED in 2 + 1 dimensions. We proceed in three steps, following the same
+principles as that leading to the QED Lagrangian. First, a gauge invariant free dynamics
+for the fermions is defined through a generalization of a Dirac quantum walk (QW) to
+multiple walkers. Second, the electric contribution is defined as one of the simplest gauge
+invariant operator acting on the gauge field based on the electric operator, following ideas
+from [24]. It is found to match the Trotterization of the electric part of the Kogut-Susskind
+Hamiltonian [9]. Third, the magnetic part is added as one the simplest gauge invariant
+operator acting on the gauge field with the lowering and raising operators. In fact, two
+constructions are provided for this magnetic term, both agreeing in the limit and matching
+a Trotterization of the magnetic Kogut-Susskind Hamiltonian.
+
+3.1 Fermionic dynamics
+Let us first recall the 2 + 1 dynamics of the fermionic field, without any electromagnetic
+contribution, without any gauge field even, and restricting to the one particle sector. This
+is the well-known Dirac quantum walk (QW) [44, 16].
+    At each lattice site x lies a group of 2 qubits, each stating whether a fermion in mode
+j ∈ 0 . . . 1 is present at the site (remember that in 2 + 1 dimensions the Dirac Eq. is a PDE
+on a wave function having two complex amplitudes). Again, this encoding captures the
+Pauli exclusion principle as there cannot be two fermions in the same mode at the same
+site. Moreover, as we focus on the one particle sector first, we temporarily look at the case
+where only one of the qubits can be in the state |1⟩.
+    One time-step is divided in three sub steps: a vertical translation, a horizontal trans-
+lation and a mass term. Moreover, each translation is decomposed into two swaps. Each
+of these terms thus acts on a pair of qubits: on a single site for the mass and the first
+swap (S), and across two neighbouring sites for the second swaps (T ). In the one particle
+sector, the possible input states are |00⟩, |01⟩ and |10⟩. Number conservation forces |00⟩
+to be mapped to itself. Without loss of generality we can assume that this absence of
+particle triggers no phase. Hence, our on-site (or across-two-sites), two qubit operators for
+the Dirac QW are of the form W = 1 ⊕ M where 1 leaves |00⟩ unchanged and M is the
+unitary acting on the subspace spanned by |01⟩ and |10⟩. The Dirac QW is a global op-
+erator expressed in terms of a large product of such on-sites operators (which individually
+
+
+
+
+                                                 13
+are independent of x):
+          "        #                                       !                                         !
+ QW =                                                                                                  Hµ† 
+           O               O                O          O                O               O         O
+                 Cϵ                   Tν       S         Hµ                    Tµ       S
+             x         (x,1),(x+ν,0)        x           x          (x,1),(x+µ,0)        x          x
+
+
+where Cϵ = 1 ⊕ e−imϵY is the mass term, Hµ = 1 ⊕ H with H the Hadamard operator
+(such that HZH = X), S swaps qubits (x, 0) and (x, 1), and Tη swaps qubits (x, 1) and
+(x+η, 0). It follows that (x,1),(x+η,0) Tη x S = 1⊕eϵZ∂η is the displacement operators in
+                             N                    N
+
+the η direction by a factor ϵ, moving the first qubit in the positive direction and the second
+in the negative direction. The X, Y, Z are Pauli matrices and ∂η the partial derivatives.
+Convergence towards the Dirac Eq. is rigorously proven in [44, 16]. Again this was without
+any electromagnetic contribution, without any gauge field even, and restricting to the one
+particle sector.
+    Moving on to multiple walkers, the Dirac QW becomes the Dirac QCA. The dynamics
+needs to be extended to take into account the case where multiple qubits are in state
+|1⟩. Since the QW on-sites operator acted on at most two qubits, and due to number
+conservation, only the input state |11⟩ requires our attention, and it can only be sent to
+itself, up to a phase. To find out exactly which phase has to be applied, let us move to the
+Heisenberg picture.
+    The Heisenberg picture tells about the future impact of our past actions. For instance,
+say that the overall evolution from time t to time t + 1 is governed by a unitary operator
+W, e.g. mapping |ψ⟩ to |ψ ′ ⟩. Then, the past action of creating a fermion at (x, 0) at time
+t, as implemented by a†x,0 , e.g. mapping |ψ⟩ to a†x,0 |ψ⟩, will have future impact Wa†x,0 W†
+at time t + 1, i.e. |ψ ′ ⟩ to Wa†x,0 W† |ψ ′ ⟩.
+    More specifically consider S the multi-particle sector extension of S which is such that
+Sx a†x,0 S†x = a†x,1 and Sx a†x,1 S†x = a†x,0 , with Sx acting as S on site x and as the identity
+elsewhere. Such an S is called ‘fermionic swap’. Notice there exists S′ which coincide with
+S (and thus with S) in the one-particle sector, but that do not obey these two equations.
+We discard them on the basis that S is the ‘rightful non-interacting extension’ of S, as the
+future impact of a†x,0 ought to be a†x,1 regardless of there being other particles or not.
+    It follows that Sx a†x,0 a†x,1 S†x = Sx a†x,0 Sx S†x a†x,1 S†x = a†x,1 a†x,0 = −a†x,0 a†x,1 . In particular,
+if we had |ψ⟩(x,1)(x,0) = |00⟩(x,1)(x,0) at time t evolving into |ψ ′ ⟩(x,1)(x,0) = S |ψ⟩(x,1)(x,0) =
+|00⟩(x,1)(x,0) at time t + 1, we realize that the past action of creating two fermions a†x,0 a†x,1 ,
+e.g. mapping |00⟩(x,1)(x,0) to |11⟩(x,1)(x,0) , will have future impact −a†x,0 a†x,1 , i.e. map-
+ping |00⟩(x,1)(x,0) to − |11⟩(x,1)(x,0) . Thus, S |11⟩(x,1)(x,0) = − |11⟩(x,1)(x,0) is the rightful
+qubit implementation of the fermionic swap, meeting the specifications imposed by the
+(anti-)commutation relations hypothesis. In order to build the Dirac QCA from the Dirac
+QW, we must proceed in the same manner for the different on-sites operator making up
+the Dirac QW, as done in Appendix A.
+    We see that this phase got determined as a consequence of the (anti-)commutation
+relations hypothesis discussed in Sec. 2, as well as the way we chose to implement the
+annihilation operators, under which Jordan-Wigner transform etc., as defined in that same
+section. This requires the presence of gauge field, which we had temporarily ignored for
+describing the Dirac QW, but we now restore for describing the Dirac QCA. We use bold
+fonts to denote the Dirac QCA counterparts of the Dirac QW operators.
+
+The mass sub-step acts at each site x with on-site operator Cϵ over |00⟩(x,1)(x,0) ,
+|01⟩(x,1)(x,0) and |10⟩(x,1)(x,0) . It applies a phase to the state |11⟩x , which is just c2 + s2 = 1
+
+                                                       14
+(using Appendix A). Therefore, the corresponding QCA on-site operator Cϵ is:
+                                                                                  
+                                                      1         0 0 0
+                                                    0          c −s 0
+                                               Cϵ =                                                                              (16)
+                                                                     
+                                                    0          s c 0
+                                                                      
+
+                                                      0         0 0 1
+                                                       =Cϵ ⊕ 1
+
+where the matrix is expressed as acting on some |ψ⟩(x,1)(x,0) , i.e. with respect to the
+canonical basis {|00⟩(x,1)(x,0) , |01⟩(x,1)(x,0) , |10⟩(x,1)(x,0) , |11⟩(x,1)(x,0) }, in this order. Let
+Cx,ϵ be the local operator which acts as Cϵ on site x, and as the identity elsewhere. We
+have
+                                                                            
+     Cx,ϵ = ax,1 a†x,1           ax,0 a†x,0 + a†x,1 ax,1             a†x,0 ax,0
+                   h                                                                  i
+              +c        ax,1 a†x,1     a†x,0 ax,0 + a†x,1 ax,1                  ax,0 a†x,0        + s(a†x,1 ax,0 − a†x,0 ax,1 )
+
+where c = cos(ϵm) and s = sin(ϵm), and the last line is Cϵ expressed in terms of the local
+evolution operator from Eq. (9).
+
+The transport sub-step takes a right-moving (resp. left-moving) qubit at position x
+(resp. x + η) and maps it to the right-moving (resp. left-moving) qubit at position x + η
+(resp. x). It does so by first swapping the qubits on each site using the on-site operator
+S, and then moving them through an across-two-sites operator Tη , whilst changing the
+gauge field accordingly. Here is S as acting on some |ψ⟩(x,1)(x,0) ,
+                                                                                 
+                                                    1           0       0 0
+                                                  0            0       1 0
+                                               S =                                                                               (17)
+                                                                            
+                                                  0            1       0 0
+                                                                             
+
+                                                    0           0       0 −1
+Thus,
+                                                                                 
+           Sx = ax,1 a†x,1            ax,0 a†x,0 − a†x,1 ax,1                a†x,0 ax,0 + a†x,1 ax,0 + a†x,0 ax,1
+
+Here is Tη as acting on some |ψ⟩(x+η,0)(x,1) ,
+                                                                                      
+                                                  1 0   0  0
+                                                0 0 K     0
+                                                         η
+                                           Tη =                                                                                  (18)
+                                                            
+                                                0 Kη † 0  0
+                                                             
+
+                                                  0 0   0 −1
+where Kη is
+                                                                                                       
+                                          O                                            O
+                         Kη =                         Zy  Ux:η                                      Zy 
+                                      y∈J(x,j),x:ηJ                      y∈J(x+η,k),x+η:−ηJ
+
+with j = 1, k = 0, and Ux:η the action of the gauge field lowering operator on (x : η)(x + η :
+−η). Let Tx,η be the local operator which acts as Tη across sites x and x + η and as the
+identity elsewhere. We have
+                                                                                                            
+                  Tx,η = ax,1 a†x,1           ax+η,0 a†x+η,0 − a†x,1 ax,1                         a†x+η,0 ax+η,0
+                             + a†x,1 Vx:η ax+η,0 + a†x+η,0 Vx:η
+                                                             †
+                                                                ax,1
+
+
+                                                                15
+The equations using fermionic annihilators and creators are based on the local evolution
+operators from Eqs. (9) and (10). The product of Zy comes from the hopping term defined
+in Eq. (13), with x : η the link along which the swap takes place. The minus one, when
+the input qubits are in state |11⟩(x+η,0)(x,1) , is the exchange phase for crossing fermions.
+Again full justification is given in Appendix A.
+    The transport sub-step of the Dirac QCA is illustrated in Fig. 3.
+
+                             0          1 x : −η         0          1     x:η          0       1
+
+
+                                               Tη                             Tη
+
+
+
+                                 S                            S                            S
+
+                             0          1 x : −η         0          1     x:η          0       1
+
+Figure 3: Transport with qubit (x, 0) moving right (and (x, 1) moving left) and T updating the gauge
+fields accordingly (as represented as a single wiggly line for conciseness).
+
+
+
+The basis change H is similar to the mass term in that it is an on-site operator that
+can be written as a direct sum for the case with 0, 1 or 2 particles as follows (as acting on
+some |ψ⟩(x,1)(x,0) ):
+
+                                     H = Hµ ⊕ −1 = 1 ⊕ H ⊕ −1
+                                           1         0             0           0
+                                                                                  
+                                          0         √1            √1          0
+                                         =
+                                                      2             2           
+                                          0         √1           − √12        0
+                                                                                 
+                                                       2
+                                           0         0             0          −1
+
+Let Hx be the local operator acting as H on site x and as the identity elsewhere. We have
+                                                                   
+    Hx = ax,1 a†x,1     ax,0 a†x,0 − a†x,1 a1                a†x,0 ax,0
+              1 h                                                                    i
+            +√     ax,1 a†x,1 a†x,0 ax,0 + a†x,1 ax,1 ax,0 a†x,0 + (a†x,1 ax,0 − a†x,0 ax,1 ) .
+               2
+This last equation corresponds to the basis change expressed using the local evolution
+operator (9);
+   The minus one is justified in Appendix A. Since H † = H, we have H† = H.
+   The complete Dirac QCA is:
+
+        "        #                                                     !                                      !
+                                                                                                                 H†µ 
+            O           O                 O                  O                         O            O        O
+ DF =           Cϵ                 Tν          S                Hµ                         Tµ       S
+            x       (x,1),(x+ν,0)          x                  x                (x,1),(x+µ,0)        x        x
+                                                                                                                   (19)
+
+   It is represented in Fig. 4.
+
+
+
+
+                                                             16
+      t+ϵ
+
+                                  Cϵ                           Cϵ                            Cϵ
+                   Cϵ                           Cϵ                            Cϵ
+
+      t + 2ϵ3
+
+                           Tν                           Tν                            Tν
+
+
+                                   S                            S                             S
+      t + 3ϵ        S                            S                             S
+                                  H                             H                            H
+                   H                             H                            H
+                                                Tµ                            Tµ
+                                  Tµ                           Tµ
+                                  S                             S                            S
+                   S              H              S              H             S              H
+                   H                             H                            H
+         t
+
+Figure 4: The 3 steps of the free evolution in the multi-particle sector. The gauge field is omitted for
+clarity.
+
+
+Gauge invariance. Each of the operators constitutive of the Dirac QCA has been ex-
+pressed as a linear combination of the local evolution operators given in Subsec. 2.3, which
+were proven to be gauge invariant in Subsec. 2.4. Therefore, the Dirac QCA is gauge
+invariant.
+
+3.2 Electric contribution
+Let us now define the electric contribution. To do so, we follow the same idea as in the
+Lagrangian formalism, which is to take some of the simplest gauge invariant electric term.
+We then check that it matches the Trotterization of the Kogut-Susskind Hamiltonian. The
+construction proposed here is highly inspired by [24].
+    A simple electric contribution ought to act on the gauge field according to a functional
+of the local electric counting operator Ex:η for η ∈ {µ, ν}, as defined in (1). We could also
+demand invariance under Ex+η:−η instead. However, the electric operator itself does not
+match this requirement because Ex:η = −Ex+η:−η . The squared electric term Ex:η     2 , does.
+                                                                         2
+The squared electric term itself is not unitary, but its exponential eiEx:η , is.
+    Notice also that the spacetime discretization should impact the amplitude of the phase:
+
+
+                                                  17
+when any of the space or the time discretization parameter goes to zero, the exponential
+should tend towards the identity. Taking these considerations into account, one obtains:
+                                               O         i 2 2    2
+                                     DE =               e 2 ϵ gE Ex:η                             (20)
+                                            x,η∈{µ,ν}
+
+
+where the ϵ2 comes from the simultaneous discretization in space and time with ∆x =
+∆t = ϵ, and gE is the coupling constant as determined experimentally.
+   Without the electric contribution, the gauge field just keeps track of fermions passing by,
+but has no influence upon them. With the electric contribution, the gauge-field dependent
+phase, mediates the interaction.
+   Let us compare the electric contribution with the electric part of the Kogut-Susskind
+Hamiltonian [9] for QED:
+                                       2
+                                      gE       X
+                                                        2      2
+                               HE =      ∆x           (Ex:µ + Ex:ν ).
+                                       2    x,η∈{µ,ν}
+
+
+Integration over a ∆t period of time—i.e. computing ei∆t HE —and Trotterizing to separate
+the spatial sum into a product of exponentials, yield DE .
+
+Remark 1 (Truncation of the electric field). If 21 ϵ2 gE    2 = 2π exactly, with k an integer,
+                                                                   k
+                                                                                        2
+                          q contribution will wrap up around 2π as soon as E reaches k.
+then the phase of the electric
+                             4π
+This happens when ϵ = kg      2 . If we restrict ourselves to such values of ϵ, i.e. decreasing
+                              E
+it by augmenting k, then, as far as the electric contribution is concerned, the gauge field
+can equally well be represented with a k-dimensional Hilbert space Hk . Indeed, when E
+                                                                      2 E 2 simplifies into 1 ϵ2 g 2 l2
+outputs k + l, its square gives k 2 + 2kl + l2 , and the phase 21 ϵ2 gE                     2     E
+          2 2
+because ϵ gE k(k + 2l)/2 is proportional to 2π. Notice that this k still goes to infinity when
+taking ϵ to zero, augmenting proportionally to 1/ϵ2 . This idea of restricting the gauge field
+to finite-dimensions labelling roots of unity was suggested in [24]. Truncations in lattice
+gauge theory simulations were evaluated in [45].
+
+Gauge invariance. The electric contribution is gauge invariant as an exponential of a
+gauge invariant operator.
+
+3.3 Magnetic contribution
+In order to define the magnetic contribution, we follow the same path as for the electric
+contribution, that is to say define some of the simplest gauge field-only term that is local,
+unitary and gauge invariant.
+
+Formulation of the magnetic contribution. The magnetic contribution acts by low-
+ering or raising the gauge field.
+    As discussed in Sec. 2 operators that are defined solely using the lowering and raising
+operators need to form a loop (spatially) in order to both be local and ensure gauge
+invariance. Indeed, raising the gauge field at one end of a link, implies lowering it at
+the other, hence imposing that the magnetic contribution be a loop; the smallest loop is
+realized by the plaquette local evolution operator Px:η,ζ of Eq. (15).
+    Since the loop is oriented, one may wish to symmetrize. This is done through a sum
+          †
+Px:η,ζ + Px:η,ζ , but this breaks unitarity. Just like for the electric field, unitarity is restored
+through exponentiation, and the space and time discretization parameters need be used in
+
+
+                                                  18
+the exponential to ensure that it goes to the identity when these go to zero. Taking these
+considerations into account, one obtains:
+                                       O     i 2 2              †
+                               DM =         e 2 ϵ gM (Px:µ,ν +Px:µ,ν )                    (21)
+                                        x
+
+with ϵ = ∆t = ∆x and gM
+                      2 /2 a constant. Taking the limit of D
+                                                              M when ϵ goes to zero
+yields:
+                               g2 X             †
+                                                            
+                 DM = Id + iϵ2 M       Px:µ,ν + Px:µ,ν   + O ϵ4 .              (22)
+                                2 x
+   Let us compare the obtained magnetic contribution with magnetic part of the Kogut-
+Susskind Hamiltonian:
+                                g2     X
+                                                     †
+                          Hm = M ∆ x      (Px:µ,ν + Px:µ,ν )
+                                 2      x
+
+where gM = ∆x1gE . Integrating this Hamiltonian over a ∆t period of time—i.e. computing
+ei∆t HM —and Trotterizing to separate the spatial sum leads to the same local operator
+DM .
+
+Two formulations in terms of gates. In order to define DM in terms of quantum
+gates, one needs to explicitly compute or closely approximate the exponential. We provide
+two constructions in order to do so. The first construction is to diagonalize the plaquette
+term so that taking its exponential simply amounts to exponentiating the eigenvalues,
+that is to say, we go from an electric basis to a magnetic one [46]. The quantum Fourier
+transform is used in the diagonalization. The second construction consist in a more subtle
+approach were the term Px:µ,ν + Px:µ,ν
+                                     †     is written as the sum of two terms Pex:µ,ν and
+Qe x:µ,ν whose exponentials are simple to compute. This second construction yields a gate
+formalism reminiscent to that of a QW.
+
+Ordering the operators. Two neighbouring plaquette local evolution operators Px:µ,ν
+and Px+µ:µ,ν both act on the two gauge fields of the link between sites x + µ and x + µ + ν.
+Therefore, the order of the operations could have been relevant. However, the plaquette
+local evolution operators actually commute. If one insists on not acting simultaneously
+with two different operators on a same system, then any arbitrary ordering can be chosen,
+such as applying the plaquette local evolution operators at even positions (x1 + x2 + x3
+mod 2 = 0) first, and then at odd positions.
+
+Redefining the states. Before diving into the two constructions, let us introduce a new
+way of representing the gauge field around a plaquette. Forgetting to denote the second
+gauge field of each link, which is just the opposite of the first, the gauge fields of the four
+links of the plaquette are
+
+                       |−a − n, −b − n, c + n, n⟩(x:µ)(x+µ:ν)(x+ν:µ)(x:ν)
+
+Let us introduce ‘plaquette-like’ states:
+
+                             |abcn⟩ = |−a − n, −b − n, c + n, n⟩
+
+and see how these may be affected by a loop of lowering operators, first using U operators
+of (2) instead of the V , i.e.
+                                              †      †
+                                 Ux:µ Ux+µ:ν Ux+ν:µ Ux:ν .
+
+                                                19
+This will just act as a shift on the fourth number
+
+                                      |abcn⟩ 7→ |abc, n + 1⟩                                     (23)
+
+and as the identity elsewhere.
+    The plaquette local evolution operator of (6) and (12), is a loop of V however, i.e. a
+loop of U combined with Z operators. These Z operators only add a plus or minus sign to
+the state |abcn⟩. This sign may be influenced by the other gauge fields and qubits present
+at the four sites where the plaquette term is applied, but not beyond, cf. the locality
+stated in (15). In order to be able to determine this sign, we extend the plaquette-like
+states to encompass the states of all the qubits and gauge fields of the plaquette that were
+not already accounted for in |abcn⟩. More specifically, we now take as plaquette states
+|abcno⟩ where |o⟩ is a canonical basis state of the systems
+
+  {x + η : η ′ }η∈{0,µ,ν,µ+ν}, η′ ∈{±µ,±ν}, η+η′ ∈{0,µ,ν,µ+ν}
+                                                 /            ∪ {(x + η, j)}η∈{0,µ,ν,µ+ν},j∈{0,1} .
+
+We can then let φabcno ∈ {0, 1} be such that
+
+                             P |abcno⟩ = (−1)φabcno |abc, n + 1, o⟩
+
+where P is the on-plaquette operator such that Px:µ,ν acts as P on the four sites of the
+x : µ, ν plaquette, and as the identity elsewhere. Starting from state |abc, 0, o⟩, one reaches
+state |abc, n, o⟩ by applying the plaquette operator n times. We can then let ψabcno ∈ {0, 1}
+be such
+                              (−1)ψabcno |abcno⟩ = P n |abc, 0, o⟩ .
+The ψabcno can be given explicitly in terms of φabcno , so that ψabcno + φabcno = ψabc,n+1,o :
+
+                                                            when n > 0
+                                     (   P
+                                            0≤k<n φabcko
+                          ψabcno =
+                                                            when n < 0
+                                         P
+                                            n≤k<0 φabcko
+
+This leads to the definition of ‘plaquette states’
+
+                                   ^ = (−1)ψabcno |abcno⟩
+                                  |abcno⟩
+
+which verify the same relation as that of Eq. (23), with V operators instead of U :
+
+                                   P |abcno⟩
+                                      ^ = |abc,^
+                                               n + 1, o⟩ .                                       (24)
+
+Again, these plaquette states help understand the plaquette local evolution operator as a
+shift, which will be useful for both decompositions of the magnetic contribution in terms
+of quantum gates.
+    The state and plaquette operator are illustrated in Fig. 5.
+
+Gauge field truncation. If truncating the gauge field to Hk , one needs |abc,  ^   k, o⟩ =
+|abc,
+  ^   0, o⟩ so that any sign discrepancy in Eq. (24) is avoided. This paragraph is just to
+overcome this technicality. In terms of phase the condition is that ψabcko = ψabc0o = 0,
+i.e. that ψabcko = 0≤n<k φabcno be even. Each term φabcno is actually a sum φabcn + φo ,
+                    P
+
+where φabcn depends on the four links under transformation, whereas φo depends on the
+other gauge fields and qubits at the four sites, which are not modified by the plaquette
+operator. Both of these depend on the JW order chosen. Since φo is constant when acting
+only using the plaquette term, for an even k its contribution to the sum 0≤n<k φo is even.
+                                                                        P
+
+
+                                                 20
+                                                   (x, µ)              (x + µ, ν)
+   (x, µ)               (x + µ, ν)
+
+               n                     n                            +1
+                                         c                                               +1 Px
+  −n                    −n
+   a                     b                                               -1
+                                                  -1
+
+               (x, ν)            (x + ν, µ)                   (x, ν)               (x + ν, µ)
+            (a) State |abcn⟩
+                       g simplified.                           (b) Plaquette operator.
+
+Figure 5: Plaquette states and operator represented in the subspace Z4 containing four gauge field
+values.
+
+
+Additionally, for any n, we have that φabc,n = φabc,n+2 as all the parities are equal. As a
+consequence φabc,n + φabc,n+1 + φabc,n+2 + φabc,n+3 is even. It follows that for k a multiple
+of 4, the sum 0≤n<k φabcn is even. Hence, for k = 4q, with q an integer, the truncation
+               P
+
+is valid.
+    Relying on a specific JW order actually allows for any even k. Indeed, we can enforce
+that φabcn always be equal to 0: this is the case when (x : −η) and x : η are both inferior
+(or both superior) to (x : −ζ) and (x : ζ) for η and ζ two distinct directions. In this case,
+the four corner operators that form a plaquette defined in Eq. (14) will induce a phase
+(−1)φabcn through the following Z operators (disregarding the part which contributes to
+φo ):
+                               Zx:η Zx+η:−η Zx+η+ζ:−η Zx+ζ:η .
+Notice that each link appear twice, hence they do not induce any phase, i.e. we have that
+   ^ = (−1)φo |abc,^
+P |abcno⟩               n + 1, o⟩. Thus, the truncation is well-defined for k even for that
+specific JW orders.
+
+3.3.1   Derivation through diagonalization
+The first construction moves from the electric to the magnetic basis [46]. In other words,
+it works by computing the eigenvectors and eigenvalues of the plaquette operator, so that
+taking the exponential of the operator simply amounts to exponentiating the eigenvalues.
+    A single plaquette local evolution can be seen as a shift operator upon plaquette states
+as illustrated Fig. 5b. That shift amounts to a phase in the Fourier basis, therefore the
+Fourier transform diagonalizes the plaquette. To define this Fourier transform, the state
+space of the gauge field needs be truncated to Zk , for instance according to Remark 1, and
+in accordance with the restriction of Subsec. (3.3). Then the eigenvectors of a plaquette
+local evolution are
+                                         1 k−1
+                                            X
+                              |abcp⟩□ = √       e2πinp/k |abc,
+                                                          ^    n⟩
+                                          k n=0
+
+for a, b, c and p integers in 0, ..., k − 1. These are the Fourier transform of the |abc,
+                                                                                     ^    n⟩
+states, that can be obtained through a quantum Fourier transform (FT) whose circuit
+representation is well-known [47]. The corresponding eigenvalues are
+
+                                             λp = e2πip/k .
+
+                                                  21
+The eigenvectors of the hermitian conjugate of the plaquette operator are the same but with
+eigenvalues λ−p . For the sum of the plaquette and its hermitian conjugate, the eigenvalues
+are:
+                             e2πip/k + e−2πip/k = 2 cos(2πp/k).
+   Having found an eigenbasis of the plaquette term, it is now easy to exponentiate it.
+Doing so one gets the eigenvalue equation:
+                                       !
+                   g2                                          
+            exp iϵ2 M (P + P † ) |abcp⟩□ = exp iϵ2 gM
+                                                    2
+                                                      cos(2πp/k) |abcp⟩□ .
+                    2
+
+This defines a diagonal operator Diag that contains the eigenvalues exp iϵ2 gM
+                                                                             2 cos(2πp/k) .
+                                                                                           
+
+The magnetic evolution for the QCA can thus be written as:
+                                       (0)
+                                                      (FT† Diag FT)
+                                                 O
+                                     DM =                                                (25)
+                                                  x
+
+where FT is the quantum Fourier transform. Hence, Eq. (25) thus defines a circuit of
+quantum gates for the magnetic term. In this construction, no approximation has been
+done, hence the limit is exactly the one given in Eq. (22).
+
+3.3.2   Quantum walk-like derivation
+The second construction uses a reformulation of the plaquette operators to make it look
+like a quantum walk. Here we sometime abuse notations and write |abcn⟩ ] or even just
+ e ⟩ to talk about a state |abcno⟩.
+|n                          ^         Indeed, the plaquette term can be divided into two
+operators, one which acts as |2n⟩ ⟨2n
+                              f    ^  + 1|+|2n
+                                             ^       f and the other as |2n
+                                               + 1⟩ ⟨2n|                 ^  + 1⟩ ⟨2n
+                                                                                  ^  + 2|+
+|2n + 2⟩ ⟨2n + 1|—i.e. the two operators act as shifted swaps between pairs of sites. Let
+  ^        ^
+Pe and Q e denote those operators:
+                        X     X
+                Pe =                 |abc,
+                                        ^  n + 1⟩ ⟨abc,
+                                                   ^    n| + |abc,
+                                                              ^    n⟩ ⟨abc,
+                                                                         ^  n + 1|
+                       abc∈Z3 n∈2Z
+                        X      X
+                Q
+                e=                     |abc,
+                                          ^  n + 1⟩ ⟨abc,
+                                                     ^    n| + |abc,
+                                                                ^    n⟩ ⟨abc,
+                                                                           ^  n + 1| .
+                       abc∈Z3 n∈2Z+1
+
+We have that
+                                                  e = P + P †.
+                                             Pe + Q
+   Pe and Q
+          e are hermitian, unitary and their eigenvectors are
+
+                                              1
+                                      |+n ⟩ = √ (|n
+                                                  e ⟩ + |n]
+                                                          + 1⟩)
+                                               2
+                                              1
+                                      |−n ⟩ = √ (|n
+                                                  e ⟩ − |n]
+                                                          + 1⟩)
+                                               2
+
+with n even for Pe and odd for Q.
+                               e The corresponding eigenvalues are plus and minus one.
+   Now taking the exponential of Pe , we have, with n even:
+                                             !                          !
+                                     2                              2
+                                  2 gM e                         2 gM
+                          exp iϵ √ P             |+n ⟩ = exp iϵ √           |+n ⟩
+                                  2                                 2
+                                             !                              !
+                                  g2                     g2
+                          exp iϵ2 √M Pe |−n ⟩ = exp −iϵ2 √M                     |−n ⟩
+                                    2                      2
+
+
+                                                      22
+                                  !                                           !                                    !       !
+                         2                             g2                                                      2
+                      2 gM e                 1                                                              2 gM
+           exp iϵ             P        e⟩ = √
+                                      |n        exp iϵ2 M                         |+n ⟩ + exp −iϵ                      |−n ⟩
+                          2                   2         2                                                     2
+                                                                 !                               !
+                                                  g2                                g2
+                                          = cos ϵ2 M                  e ⟩ + i sin ϵ2 M
+                                                                     |n                              |n]
+                                                                                                       + 1⟩
+                                                   2                                 2
+                          !                                       !                              !
+                   2                                          2                              2
+                2 gM e                                     2 gM                           2 gM
+       exp iϵ         P       |n]
+                                + 1⟩ = i sin ϵ                         e ⟩ + cos ϵ
+                                                                      |n                             |n]
+                                                                                                       + 1⟩ .
+                  2                                          2                              2
+                                                                         
+                                                                g e   2
+   These equations are identical for exp                     iϵ2 2M Q         when taking n odd.
+   This is reminiscent of a one dimensional quantum walk with coin
+                                                                              !
+                                                     cos(θ) i sin(θ)
+                                                                     .
+                                                    i sin(θ) cos(θ)
+
+Such QW is homogeneous in the ‘tilde’ basis, but at first glance, it seems inhomogeneous
+in the canonical basis because of the operator
+
+                |abc,^
+                     n + 1, o⟩ ⟨abc,
+                                 ^   n, o| = (−1)φabcno |abc, n + 1, o⟩ ⟨abc, n, o|
+
+which induces a phase φabcno , dependent upon n, in the canonical basis. However, as
+explained in Subsec. 3.3, this phase can be made independent of n through a specific
+choice of JW order, recovering a homogeneous QW even in the canonical basis.
+Consider
+                                                                                      !
+                                                      O      g2
+                                              DPe =   exp iϵ2 M Pe
+                                                    x         2
+                                                                                      !
+                                                                             2
+                                                                          2 gM e
+                                                      O
+                                              DQe =         exp iϵ                Q .
+                                                       x                      2
+
+A way to implement the plaquette term is to apply those successively in one time step:
+                                                     (1)
+                                                   DM | n
+                                                        e ⟩ = DQ  e.
+                                                               e DP                                                                 (26)
+
+   Indeed, taking the limit when ϵ goes to zero after applying both the exponentials of Pe
+and Q
+    e to |n
+          e ⟩ (where n is even) gives:
+                  !                           !                                   !                                                  !
+            2                        2                                   2                              2
+         2 gM e                   2 gM e                              2 gM e                         2 gM
+                                                                                                                                
+                                                                                                                                4
+  exp iϵ       Q exp iϵ                   P       |n
+                                                   e ⟩ = exp iϵ               Q       |n
+                                                                                       e ⟩ + iϵ             |n]
+                                                                                                              + 1⟩ + O ϵ
+           2                          2                                   2                            2
+                                                                 g2                       
+                                                        e ⟩ + iϵ2 M |n]
+                                                     = |n              − 1⟩ + |n]+ 1⟩ + O ϵ4
+                                                                  2          !
+                                                                 g 2                   
+                                                     = I + iϵ2 M P † + P        e ⟩ + O ϵ4
+                                                                               |n
+                                                                  2
+
+    For n odd, the exponential of Pe would yield the state |n]
+                                                             − 1⟩ instead of |n]
+                                                                               + 1⟩ (in the
+second line of the equation) and the exponential of Q the state |n + 1⟩ instead of |n]
+                                                      e            ]                   − 1⟩
+(in the third line). Therefore, the same limit would be reached.
+         (1)
+    In DM this is done at every plaquette, matching Eq. (22). Thus, both quantum gate
+                                         (0)     (1)
+implementations agree in the limit as DM = DM + O(ϵ4 ).
+
+
+                                                                 23
+Gauge invariance. Gauge invariance of the plaquette term has been verified in Sec.
+2.4.1. Its exponentiation is a linear combination of them, thus still gauge invariant.
+
+3.4 Complete dynamics
+Combining the fermionic dynamics, the electric and magnetic contribution, one obtains
+the following complete dynamics for the 2 + 1 QED QCA:
+
+                                   QCA = DM DE DF                                      (27)
+
+where DF (fermionic term) refers to Eq. (19), DE (electric term) refers to Eq. (20) and DM
+(magnetic term) refers to Eq. (21) or (26) depending on the quantum gate implementation
+chosen.
+
+
+4 3+1 Quantum Cellular Automaton
+This section extends the previous 2 + 1 QED QCA construction, to reach a 3 + 1 QED
+QCA. In 3 + 1 dimensions, the Dirac Eq. is a PDE on a wave function having four complex
+amplitudes, i.e. there are four fermionic modes instead of two. As for the gauge field, no
+additional degree of freedom is required, but the third dimension needs to be taken into
+account when considering the electronic and plaquette terms.
+    In the following, to avoid mixing notations, every operator referring to the 3 + 1 case
+will be overlined, e.g. the on-site operator modelling the mass in the 3 + 1 Dirac QW will
+be denoted C ϵ . Again the operators of the multi-particle sector QCA are in bold, e.g. Cϵ .
+
+4.1 Fermionic dynamics
+The procedure is the same here as in the 2 + 1 case: (i) define the 3 + 1 Dirac QW, (ii)
+extend each on-site operator using the Heisenberg picture so that it acts on the full state
+space and not just in the one-particle sector—cf. Appendix A.
+   Let γj be the following generalized Pauli matrix:
+
+                                     γ0 = Y ⊗ I
+                                     γ1 = γν = Z ⊗ X
+                                     γ2 = γµ = Z ⊗ Y
+                                     γ3 = γκ = Z ⊗ Z.
+
+They respect the anti-commutation relation
+
+                                     {γj , γk } = 2δj,k I4
+
+with δj,k the Kronecker delta.
+    The state space for the Dirac QW is that of 4 qubits restricted to the one-particle
+sector, i.e. there are 5 possible states: |0000⟩, |0001⟩, |0010⟩, |0100⟩ and |1000⟩. As in
+the 2 + 1 case, state |0000⟩ is mapped to itself because of number conservation. Hence,
+every on-site operator is of the form 1 ⊕ U where U acts on the remaining four dimensional
+subspace. The 3 + 1 Dirac QW has the same structure as that in 2 + 1: transport sub-steps
+in each direction, each of these being surrounded by a basis change, and lastly a mass
+
+
+
+
+                                              24
+sub-step [44, 16, 48]:
+                                           !               !
+                QW =
+                           O                     O
+                                   Cϵ                  B
+                              x                   x
+                                                                                                   !
+                              O                            O                    O            O
+                                     S2                                   Tµ        S1         B
+                               x               (x,2)(x,3)(x+µ,0)(x+µ,1)          x           x
+                                                                                                   !
+                              O                            O                    O            O
+                                     S2                                   Tν        S1         B
+                               x               (x,2)(x,3)(x+ν,0)(x+ν,1)         x            x
+                                                                                        
+                              O                            O                    O
+                                     S2                                   Tκ        S1                 (28)
+                               x               (x,2)(x,3)(x+κ,0)(x+κ,1)          x
+
+where
+   • S 1 swaps qubits (x, 0) with (x, 1), and then (x, 1) with (x, 2).
+
+   • S 2 swaps qubits (x, 1) with (x, 2), and then (x, 2) with (x, 3),
+
+   • T η swaps qubits (x, 2) and (x, 3) with (x + η, 0) and (x + η, 1)
+so that            O                            O                     O
+                         S2                                     Tη         S 1 = 1 ⊕ eϵ(Z⊗Z)∂η           (29)
+                    x          (x,2)(x,3)(x+η,0)(x+η,1)                x
+
+transporting the first and last qubits in the positive direction and the middle two qubits
+in the opposite one.
+    The operators B is defined so that, as acting on some |ψ⟩(x,3)(x,2)(x,1)(x,0) :
+                                       †
+                                   B (1 ⊕ γη )B = 1 ⊕ γ(η+1                 mod 3)+1 ,                   (30)
+
+ i.e. cycling from γκ to γµ , from γµ to γν , and back. One possible choice is given in [49].
+First, one notices that Rσz (θ)Rσx (θ), with θ = π/2, maps the Bloch vector of the Pauli
+matrix ση into that of σ(η+1 mod 3)+1 with µ = 1, 2, 3, i.e:
+                                                                   †      †
+                         σ(η+1        mod 3)+1 = Rσz (θ)Rσx (θ)ση Rσx (θ)Rσz (θ)
+
+since (Rσz (θ)Rσx (θ))3 = −I, and we want it to be the identity, we define
+                                                                                             !
+                              −i π3                         1         e−iπ/12 ie−i7π/12
+                   B=e                Rσ† x (θ)Rσ† z (θ) = √                            .
+                                                                    2 ie−iπ/12 e−i7π/12
+Lastly we carry this though to the γη by letting
+
+                                                      B = 1 ⊕ (I ⊗ B).
+
+   The whole point of Eqs. (28) and (30) is to approach the ϵ time evolution of the
+3 + 1-Dirac Hamiltonian D = mγ0 + iγµ ∂µ + iγν ∂ν + iγκ ∂κ as follows:
+
+   exp(ϵ(−imγ0 + γµ ∂µ + γν ∂ν + γκ ∂κ ))
+   ≈ exp(−imϵγ0 ) exp(γµ ϵ∂µ ) exp(γν ϵ∂ν ) exp(γκ ϵ∂κ )
+                                   †
+   = exp(−imϵγ0 )(I ⊗ B)2 exp(γκ ϵ∂µ )(I ⊗ B)2 (I ⊗ B)† exp(γκ ϵ∂ν )(I ⊗ B) exp(γκ ϵ∂κ )
+   = exp(−imϵγ0 )(I ⊗ B) exp(γκ ϵ∂µ )(I ⊗ B) exp(γκ ϵ∂ν )(I ⊗ B) exp(γκ ϵ∂κ ).
+
+
+                                                               25
+Adding the trivial zero particle sector indeed gives:
+
+         (1 ⊕ exp(−ϵimϵγ0 ))B(1 ⊕ eϵ(Z⊗Z)∂µ ) B(1 ⊕ eϵ(Z⊗Z)∂ν ) B(1 ⊕ eϵ(Z⊗Z)∂κ ).
+
+We see that the on-site operator for the mass in 3 + 1 dimensions is quite similar to that
+of the 2 + 1 dimensional case. We have, as acting on some |ψ⟩(x,3)(x,2)(x,1)(x,0) :
+
+                        C ϵ = 1 ⊕ e−imϵγ0
+                           = 1 ⊕ (cI4 − isγ0 )
+                                                                
+                                c         0 −s 0
+                              0          c 0 −s
+                           =1⊕
+                                                
+                              s          0 c  0
+                                                 
+
+                               0          s 0  c
+                           = 1 ⊕ (1 ⊕ X ⊕ 1)(Cϵ ⊕ Cϵ )(1 ⊕ X ⊕ 1)                       (31)
+
+with c = cos(mϵ) and s = sin(mϵ).
+    Next we must convert this 3 + 1 Dirac QW into a 3 + 1 Dirac QCA. The derivation of
+the operators making up the 3 + 1 Dirac QCA requires us to extend the on-site operators
+any configuration for the 4 qubits, hence possibly more than two fermions crossing. In
+general this could be complicated to analyse. Fortunately, all of the above 4-qubit on-site
+operators can be reexpressed as products of 2-qubit on-site gates, with the 2 qubits being
+adjacent in the JW order. Thanks to this, the 2 + 1 methodology and results readily apply,
+see Appendix A for details.
+
+The mass sub-step of the 3 + 1 Dirac QCA is reached by: 1/ Seeking to represent C ϵ
+as a circuit of one-particle-sector 2-qubit gates, as done in Eq. (31). 2/ Replacing each
+2-qubit gate of this circuit by its multi-particle sector extension, and the direct sums by
+tensor products, so as to obtain the 3 + 1 Dirac QCA on-site operator Cϵ . 3/ Repeating
+Cϵ across space.
+This procedure is justified in Appendix A, essentially on the basis that the QCA should
+act as the QW in the one-particle sector. We get, as acting on some |ψ⟩(x,3)(x,2)(x,1)(x,0) :
+
+                          Cϵ = (I ⊗ S ⊗ I)(Cϵ ⊗ Cϵ )(I ⊗ S ⊗ I)
+
+where S is the swap defined in Eq. (17) and Cϵ is the 2+1D mass term defined in Eq.
+(16). This is represented in Fig. 6.
+
+                                      0        1       2         3
+
+                                                   S
+
+                                          Cϵ                Cϵ       Cϵ
+
+                                                   S
+
+                                      0        1       2         3
+
+                 Figure 6: Representation of the mass term of 3 + 1 QED QCA.
+
+
+
+
+                                                       26
+The basis changes substep of the 3 + 1 Dirac QCA is obtained by following the same
+procedure. 1/ The 3 + 1 Dirac QW can again be expressed as a direct sum of two qubit
+gates
+                                B = 1 ⊕ (B ⊕ B).                                (32)
+2/ We build the QCA version of B as prescribed by (38), yielding, as acting on some
+|ψ⟩(x,1)(x,0) ,                                            
+                          1     0           0          0
+                       0 √12 e−iπ/12 √i2 e−i7π/12     0 
+                                                           
+                   B=                                      .                  (33)
+                       0 √i e−iπ/12 √1 e−i7π/12       0 
+                             2          2                  
+                          0     0           0       e−i2π/3
+and replace B by B and ⊕ by ⊗ in (32) to get:
+
+                                          B=B⊗B
+
+3/ This is what needs be applied across space to make up the basis changes substep of the
+3 + 1 Dirac QCA.
+
+The transport sub-step of the 3 + 1 Dirac QCA is recovered from that of the 3 + 1
+Dirac QW in a similar fashion. It moves the first and last qubits in the η direction while
+moving the middle two qubits in the direction −η. This is done by first swapping the
+first two qubits with one another, and then the middle qubits with one another, using a
+on-site operator S1 , second by applying a transport operator which will swap these pairs
+of qubits with neighbouring ones in the η direction using an across-two-sites operator Tη ,
+and finally by first swapping the middle two qubits with one another, and then the last
+two qubits with one another, using a on-site operator S2 . Again each of these is obtained
+by decomposing the corresponding 3 + 1 Dirac QW on-sites operators into two qubit-gates,
+and replacing them by their multi-particle sector extensions, as illustrated in Fig. 7.
+For S1 we get, as acting on some |ψ⟩(x,3)(x,2)(x,1)(x,0) :
+
+                                 S1 = (I ⊗ S ⊗ I)(I ⊗ I ⊗ S)
+
+For S2 we get, as acting on some |ψ⟩(x,3)(x,2)(x,1)(x,0) :
+
+                                 S2 = (S ⊗ I ⊗ I)(I ⊗ S ⊗ I)
+
+For Tη we get, as acting on some |ψ⟩(x+η,1)(x+η,0)(x,3)(x,2) :
+
+                           Tη = (I ⊗ Tη ⊗ I)(S ⊗ S)(I ⊗ Tη ⊗ I)
+
+where S is defined as in Eq. (17), and Tη is defined as in (18) but with j = 3.
+
+
+
+
+                                                27
+  0       1       2       3                              0        1        2         3                              0           1        2         3
+
+                      S                                                         S                                                             S
+
+              S                                                        S                                                             S
+
+                                                                                                                                         S2
+
+                                           Tη                                                  Tη
+
+                                  S                  S                                     S                    S                        Tη
+
+                                           Tη                                                  Tη
+
+                                                                                                                                         S1
+
+              S                                                        S                                                             S
+
+      S                                                       S                                                             S
+
+  0       1       2       3                              0        1        2         3                              0           1        2         3
+
+                                           Figure 7: Representation of the transport
+
+
+The full fermionic dynamics is therefore:
+                      "                    !             !#
+                          O                     O
+              DF =                    Cϵ             B
+                              x                  x
+                                          !                                                              !                   !
+                          O                                   O                                O                    O
+                                     S2                                       Tµ                    S1                   B 
+                              x                 (x,2)(x,3)(x+µ,0)(x+µ,1)                       x                    x
+                                           !                                                             !                   !
+                          O                                    O                               O                    O
+                                     S2                                           Tν                S1                   B 
+                              x                  (x,2)(x,3)(x+ν,0)(x+ν,1)                          x                    x
+                                           !                                                             !
+                          O                                    O                               O
+                                     S2                                           Tκ                 S1                                       (34)
+                              x                  (x,2)(x,3)(x+κ,0)(x+κ,1)                          x
+
+
+4.2 Electric and magnetic contribution
+The electric contribution works in the same way as in the 2 + 1 dimensional case, i.e. the
+exponentiated squared electric operator is applied at every link:
+                                                                  O            i 2 2     2
+                                                 DE =                      e 2 ϵ gE Ex:η                                                          (35)
+                                                             x,η∈{µ,ν,κ}
+
+    The magnetic contribution needs to be generalized to take into account the three di-
+mensions, and thus the three possible directions for the plaquettes. Therefore, the magnetic
+contribution of the 3 + 1 QED QCA is the same as in the 2 + 1 case, but it is applied
+three times: one for each pair of directions. Let DM,η,ζ from Eq. (21) or (26) (depending
+
+
+                                                                      28
+on the formulation one chooses) denote the magnetic contribution along the two spatial
+dimension η and ζ. We now have:
+
+                                   DM = DM,µ,ν DM,µ,κ DM,ν,κ .                           (36)
+
+   Again this evolution coincides, in the limit, with the magnetic part of the Kogut-
+Susskind Hamiltonian:
+      g2       X
+  Hm = M                  Px:η,ζ
+       2          x
+            η,ζ∈{µ,ν,κ}
+                η̸=ζ
+       g2 X            †
+                                         2 X
+                                         gM              †
+                                                                g2 X 
+                                                                                  †
+                                                                                        
+      = M     Px:µ,ν + Px:µ,ν   +              Px:µ,κ + Px:µ,κ  + M     Px:ν,κ + Px:ν,κ   .
+        2 x                               2 x                     2 x
+
+4.3 Complete dynamics
+Combining the 3 + 1 Dirac QCA of (34) with the electric (35) and magnetic (36) contri-
+butions, one obtains the 3 + 1 QED QCA:
+
+                                      QCA = DM DE DF .                                   (37)
+
+   Its gauge invariance is ensured by the same arguments as in the 2 + 1 case.
+
+
+5 Conclusion
+Summary of contributions. In this paper we constructed a quantum cellular automata
+(QCA) accounting for QED in 2+1 and 3+1 dimensions. The construction follows the same
+principles used to build the Lagrangian formulation of QED—i.e. free anti-commuting
+fermions, gauge invariant, simplest electric and magnetic term. But here spacetime is
+discrete, and space and time are treated on equal footing. The evolution is described in
+terms of local quantum gates, whose wirings coincide exactly with the speed of light of the
+QED. To reach our goal, we needed three contributions.
+     The first contribution was the formulation of gauge invariant local evolution operators—
+Eqs. (13) and (15)—that meet the specifications imposed by the (anti-)commutation
+relations (3), (4) and (5) of the fermionic and bosonic annihilators/lowering operators they
+are made of. It was, to us, a surprise that this could be achieved since it is in apparent
+contradiction with the no-go result of [33]. But, following ideas of [37, 12] the gauge field
+came to the rescue. This was used to obtain a 2 + 1 Dirac QCA, i.e. a generalization of
+the 2 + 1 Dirac QW to multiple walkers, recovering the free fermionic dynamics DF (19)
+which is represented in Fig. 4.
+     The second contribution was to derive the electric DE (20) and magnetic DM (21) con-
+tributions, leading to the 2+1 QED QCA in Eq. (27). The magnetic contributions was the
+most challenging, but in the end two possible quantum circuit representations were found.
+The first uses a diagonalization, through a Fourier transform, in order to exponentiate
+plaquette terms (25), albeit up to truncation. The second approach formulates the mag-
+netic contribution in terms of a quantum walk over the gauge field Hilbert space HZ (26).
+Both approaches lead to the same continuum limit (22) and were checked to correspond
+to integration of the magnetic part of the Kogut-Susskind Hamiltonian. This provides a
+first—to the authors’ knowledge—discrete spacetime formulation of the magnetic term.
+     The third contribution was the extension of the QCA to a 3 + 1 QED QCA (37)
+which required raising the state space from 2 to 4 qubits per sites to represent fermions.
+
+                                               29
+On paper, this meant working out the consequences of the anti-commutation relations
+for up to four fermions, under sophisticated changes of basis. Fortunately, these 4-qubit
+gates were decomposable as 2-qubit gates. The electric and magnetic contribution were
+straightforwardly extended from the 2 + 1 case. Altogether, the 3 + 1 QED QCA provides
+a first, relativistic discrete spacetime formulation of a real-life quantum field theory.
+    It is not clear whether the proposed 2 + 1 QED QCA and 3 + 1 QED QCA hereby
+constructed are ‘staggered’ in the traditional sense, because particles and antiparticles live
+at the same positions. But they are at least staggered-like in the sense of the 1 + 1 QED
+QCA of [24]. In 1 + 1, this suffices to escape the fermion-doubling problem, whereby
+high momentum wavepackets result in low energy states. We leave it as an open question
+whether fermion-doubling is escaped in a similar way in the proposed 2 + 1 and 3 + 1
+models.
+
+Perspectives. These two and three-dimensional QED QCA are quantum circuits. DF ,
+DE and DM can be expressed in terms of standard universal gates such as CNot, Phase,
+Hadamard. Thus, the QCA is directly interpretable as a digital quantum simulation
+algorithm, to be run on a Quantum Computer. A first perspective is the implementation
+of this QCA on quantum computers. This simulation scheme is efficient, in that it requires
+O(sd /∆dx t/∆t ) gates in order to simulate a chunk of space of size s, over t time steps
+with ∆x the space resolution, ∆t the time resolution, and d the space dimension. The
+output of this is a quantum state and the simulation may need to be run multiple times
+in order to obtain meaningful statistics. However, classically just the state space itself
+            d  d
+is an O(es /∆x ) as it grows exponentially with the number of quantum systems to be
+                                                         d   d
+simulated. The classical time complexity is thus O(es /∆x t/∆t ). The exponential gain
+here clearly comes from the fact that the scheme simulates a multi-particle systems, just
+like in Hamiltonian-based multi-particle quantum simulation schemes. Quantum walk-
+based simulation schemes on the other hand, are by definition in the one-particle sector,
+and thus can only yield polynomial gains.
+    An immediate continuation of this work would be to further parametrize the QED QCA,
+so as to make it ‘plastic’ enough so that we may be able to take a discrete space continuous
+time limit of the model, and prove that one recovers the Kogut-Susskind Hamiltonian, as
+was done for 1 + 1-QED in [27]. In this paper, the QFT considered is an abelian gauge
+theory. Another extension of this work is to consider non-abelian gauge transformations
+so as to recover the quantum chromodynamics (QCD). Looking at different geometries for
+the underlying space, another extension would be to define the QCA over a triangular or
+tetrahedral spatial discretization of space, as was done for quantum walks [50]. Finally,
+notice that the distinction between fermions and interacting-hardcore-bosons [51, 52] is
+wearing thin with this local model, and yet seems to persist as embodied by the Z terms
+of Eqs. (13) and (14). This is intriguing, and one truly wonders whether the distinction is
+physically observable, or can be proven otherwise.
+
+Acknowledgements. We warmly thank Dogukan Bakircioglu for pointing out an earlier
+mistake at Eq. (29), now patched in this v4. The authors would like to thank Pablo
+Arnault, Cédric Bény, Terry Farrelly and Simone Montangero for helpful conversations.
+This project/publication was made possible through the support of the ID# 62312 grant
+from the John Templeton Foundation, as part of the ‘The Quantum Information Structure
+of Spacetime’ Project (QISS) . The opinions expressed in this project/publication are
+those of the author(s) and do not necessarily reflect the views of the John Templeton
+Foundation. It is also supported by the PEPR integrated project EPiQ ANR-22-PETQ-
+
+
+                                             30
+0007 part of Plan France 2030. G. M. is partially supported by the Italian PRIN2017,
+the Horizon 2020 research and innovation programme under grant agreement No 817482
+(Quantum Flagship - PASQuanS), the INFN project QUANTUM, and by European Union
+- NextGenerationEU project CN00000013 - Italian Research Center on HPC, Big Data and
+Quantum Computing.
+
+
+References
+ [1] Seth Lloyd. “Universal quantum simulators”. Science 273, 1073–1078 (1996).
+ [2] Stephen P Jordan, Keith SM Lee, and John Preskill. “Quantum algorithms for quan-
+     tum field theories”. Science 336, 1130–1133 (2012).
+ [3] Mari Carmen Banuls, Rainer Blatt, Jacopo Catani, Alessio Celi, Juan Ignacio Cirac,
+     Marcello Dalmonte, Leonardo Fallani, Karl Jansen, Maciej Lewenstein, Simone Mon-
+     tangero, et al. “Simulating lattice gauge theories within quantum technologies”. The
+     European physical journal D 74, 1–42 (2020).
+ [4] John Preskill. “Simulating quantum field theory with a quantum computer”. Pro-
+     ceedings of The 36th Annual International Symposium on Lattice Field Theory —
+     PoS(LATTICE2018) (2019).
+ [5] Alexei Y. Kitaev. “Fault tolerant quantum computation by anyons”. Annals of Physics
+     303, 2–30 (2003).
+ [6] Lucile Savary and Leon Balents. “Quantum spin liquids: a review.”. Reports on
+     progress in physics. Physical Society 80 1, 016502 (2017).
+ [7] Daniel González-Cuadra, Torsten V. Zache, Jose Carrasco, Barbara Kraus, and Peter
+     Zoller. “Hardware efficient quantum simulation of non-abelian gauge theories with
+     qudits on rydberg platforms”. Phys. Rev. Lett. 129, 160501 (2022).
+ [8] Francesco Knechtli, Michael Günther, and Michael Peardon. “Lattice quantum chro-
+     modynamics: practical essentials”. Springer. (2017).
+ [9] J. B. Kogut and Leonard Susskind. “Hamiltonian formulation of wilson’s lattice gauge
+     theories”. Physical Review D 11, 395–408 (1975).
+[10] Thomas Banks, Leonard Susskind, and J. B. Kogut. “Strong coupling calculations of
+     lattice gauge theories: (1+1)-dimensional exercises”. Physical Review D 13, 1043–
+     1053 (1976).
+[11] Esteban A. Martinez, Christine A. Muschik, Philipp Schindler, Daniel Nigg, Alexander
+     Erhard, Markus Heyl, Philipp Hauke, Marcello Dalmonte, Thomas Monz, Peter Zoller,
+     and Rainer Blatt. “Real-time dynamics of lattice gauge theories with a few-qubit
+     quantum computer”. Nature 534, 516–519 (2016).
+[12] Giuseppe Magnifico, Timo Felser, Pietro Silvi, and Simone Montangero. “Lattice
+     quantum electrodynamics in (3+1)-dimensions at finite density with tensor networks”.
+     Nature Communications12 (2021).
+[13] Román Orús. “A practical introduction to tensor networks: Matrix product states
+     and projected entangled pair states”. Annals of Physics 349, 117–158 (2013).
+[14] Tim Byrnes, Pranav Sriganesh, Robert J. Bursill, and Chris J. Hamer. “Density matrix
+     renormalization group approach to the massive schwinger model”. Physical Review D
+     66, 013002 (2002).
+[15] Kai Zapp and Román Orús. “Tensor network simulation of qed on infinite lattices:
+     Learning from (1+1)d , and prospects for (2+1)d”. Physical Review D95 (2017).
+[16] Pablo Arrighi, M. Forets, and Vincent Nesme. “The dirac equation as a quan-
+     tum walk: higher dimensions, observational convergence”. Journal of Physics A 47,
+     465302 (2014).
+
+
+                                           31
+[17] P. Arrighi, Stefano Facchini, and Marcelo Forets. “Discrete lorentz covariance for quan-
+     tum walks and quantum cellular automata”. New Journal of Physics 16, 093007 (2014).
+[18] Alessandro Bisio, Giacomo Mauro D’Ariano, and Paolo Perinotti. “Quantum walks,
+     weyl equation and the lorentz group”. Foundations of Physics 47, 1065–1076 (2017).
+[19] Fabrice Debbasch. “Action principles for quantum automata and lorentz invariance of
+     discrete time quantum walks”. Annals of Physics 405, 340–364 (2019).
+[20] Tobias J Osborne. “Continuum limits of quantum lattice systems” (2019).
+[21] Jens Eisert and David Gross. “Supersonic quantum communication”. Physical review
+     letters 102, 240501 (2009).
+[22] Marc Cheneau and Laurent Sanchez-Palencia. “A speed test for ripples in a quantum
+     system”. Physics 13, 109 (2020).
+[23] Julian Seymour Schwinger. “Gauge invariance and mass”. Physical Review 125, 2425–
+     2429 (1962).
+[24] Pablo Arrighi, Cédric Bény, and Terry Farrelly. “A quantum cellular automaton for
+     one-dimensional qed”. Quantum Information Processing 19, 1–28 (2020).
+[25] Giuseppe Di Molfetta and Pablo Arrighi. “A quantum walk with both a continuous-
+     time limit and a continuous-spacetime limit”. Quantum Information Processing 19,
+     1–16 (2020).
+[26] Michael Manighalam and Giuseppe Di Molfetta. “Continuous time limit of the dtqw
+     in 2d+ 1 and plasticity”. Quantum Information Processing 20, 1–24 (2021).
+[27] Kevissen Sellapillay, Pablo Arrighi, and Giuseppe Di Molfetta. “A discrete relativistic
+     spacetime formalism for 1 + 1-qed with continuum limits”. Scientific Reports12 (2022).
+[28] Giuseppe Di Molfetta, Marc Brachet, and Fabrice Debbasch. “Quantum walks as
+     massless dirac fermions in curved space-time”. Physical Review A 88, 042301 (2013).
+[29] Giuseppe Di Molfetta and Armando Pérez. “Quantum walks as simulators of neutrino
+     oscillations in a vacuum and matter”. New Journal of Physics 18, 103038 (2016).
+[30] Mohamed Hatifi, Giuseppe Di Molfetta, Fabrice Debbasch, and Marc Brachet. “Quan-
+     tum walk hydrodynamics”. Scientific reports 9, 1–7 (2019).
+[31] Andre Ahlbrecht, Andrea Alberti, Dieter Meschede, Volkher B Scholz, Albert H
+     Werner, and Reinhard F Werner. “Molecular binding in interacting quantum walks”.
+     New Journal of Physics 14, 073050 (2012).
+[32] Alessandro Bisio, Giacomo Mauro D’Ariano, Paolo Perinotti, and Alessandro Tosini.
+     “Thirring quantum cellular automaton”. Physical Review A 97, 032132 (2018).
+[33] Leonard D. Mlodinow and Todd A. Brun. “Quantum field theory from a quantum cel-
+     lular automaton in one spatial dimension and a no-go theorem in higher dimensions”.
+     Physical Review A (2020).
+[34] Todd A Brun and Leonard Mlodinow. “Quantum cellular automata and quantum field
+     theory in two spatial dimensions”. Physical Review A 102, 062222 (2020).
+[35] Leonard Mlodinow and Todd A Brun. “Fermionic and bosonic quantum field theories
+     from quantum cellular automata in three spatial dimensions”. Physical Review A 103,
+     052203 (2021).
+[36] Erez Zohar and Juan Ignacio Cirac. “Eliminating fermionic matter fields in lattice
+     gauge theories”. Physical Review B (2018).
+[37] Terry Farrelly. “Insights from quantum information into fundamental physics” (2017).
+[38] Pablo Arrighi, Giuseppe Di Molfetta, and Nathanaël Eon. “A gauge invariant re-
+     versible cellular automaton”. In International Workshop on Cellular Automata and
+     Discrete Complex Systems. Pages 1–12. Springer (2018).
+[39] Pablo Arrighi, Giuseppe Di Molfetta, and Nathanael Eon. “Gauge invariance in cellular
+     automata”. Natural ComputingPages 1–13 (2022).
+
+
+                                             32
+[40] Pablo Arrighi, Marin Costes, and Nathanaël Eon. “Universal Gauge invariant Cellu-
+     lar Automata”. In Filippo Bonchi and Simon J. Puglisi, editors, 46th International
+     Symposium on Mathematical Foundations of Computer Science (MFCS 2021). Vol-
+     ume 202 of Leibniz International Proceedings in Informatics (LIPIcs), pages 9:1–9:14.
+     Dagstuhl, Germany (2021). Schloss Dagstuhl – Leibniz-Zentrum für Informatik.
+[41] Giuseppe Di Molfetta, Marc Brachet, and Fabrice Debbasch. “Quantum walks in
+     artificial electric and gravitational fields”. Physica A: Statistical Mechanics and its
+     Applications 397, 157–168 (2014).
+[42] Kirill Melnikov and Marvin Weinstein. “Lattice schwinger model: Confinement,
+     anomalies, chiral fermions, and all that”. Physical Review D 62, 094504 (2000).
+[43] Giuseppe Magnifico, Marcello Dalmonte, Paolo Facchi, Saverio Pascazio, Francesco V.
+     Pepe, and Elisa Ercolessi. “Real Time Dynamics and Confinement in the Zn Schwinger-
+     Weyl lattice model for 1+1 QED”. Quantum 4, 281 (2020).
+[44] Giuseppe Di Molfetta and Fabrice Debbasch. “Discrete-time quantum walks: Contin-
+     uous limit and symmetries”. Journal of Mathematical Physics 53, 123302 (2012).
+[45] Elisa Ercolessi, Paolo Facchi, Giuseppe Magnifico, Saverio Pascazio, and Francesco V
+     Pepe. “Phase transitions in z n gauge models: towards quantum simulations of the
+     schwinger-weyl qed”. Physical Review D 98, 074503 (2018).
+[46] Jan F. Haase, Luca Dellantonio, Alessio Celi, Danny Paulson, Angus Kan, Karl
+     Jansen, and Christine A. Muschik. “A resource efficient approach for quantum and
+     classical simulations of gauge theories in particle physics”. Quantum 5, 393 (2021).
+[47] Peter W Shor. “Polynomial-time algorithms for prime factorization and discrete log-
+     arithms on a quantum computer”. SIAM review 41, 303–332 (1999).
+[48] Ivan Márquez-Martín, Giuseppe Di Molfetta, and Armando Pérez. “Fermion confine-
+     ment via quantum walks in (2+ 1)-dimensional and (3+ 1)-dimensional space-time”.
+     Physical Review A 95, 042112 (2017).
+[49] Ugo Nzongani, Nathanaël Eon, Iván Márquez-Martín, Armando Pérez, Giuseppe
+     Di Molfetta, and Pablo Arrighi. “Dirac quantum walk on tetrahedra”. Phys. Rev.
+     A 110, 042418 (2024).
+[50] Pablo Arrighi, Giuseppe Di Molfetta, Iván Márquez, and Armando Pérez. “Dirac
+     equation as a quantum walk over the honeycomb and triangular lattices”. Physical
+     Review A 97, 062111 (2018).
+[51] Matteo Lugli, Paolo Perinotti, and Alessandro Tosini. “Fermionic state discrimina-
+     tion by local operations and classical communication”. Physical Review Letters 125,
+     110403 (2020).
+[52] Chiara Marletto and Vlatko Vedral. “Spin, statistics, spacetime and quantum grav-
+     ity” (2021).
+
+
+
+A From quantum walk to quantum cellular automata operators
+We explain the process of extending a one-particle sector on-site operator making up a
+quantum walk, into a multi-particle sector on-site operator making up a quantum cellular
+automata. We start with the 2 + 1 dimensional case.
+    The QCA on-site operators act on 2 qubits and are number conserving, which constrains
+them. Indeed, the evolution for the input |00⟩(x,1)(x,0) will always be the identity without
+loss of generality, and the evolution for the input |11⟩(x,1)(x,0) is only a phase since it is the
+only state with occupation number equal to 2. Therefore, any QCA on-site operator W
+can be written as a direct sum W = W ⊕ eiφ with W = 1 ⊕ M the quantum walk on-site
+
+
+                                               33
+operator for the one-particle sector and φ a phase to be determined. To find out this phase
+exactly, we use the Heisenberg picture.
+   Let W = 1 ⊕ M ⊕ eiφ be a QCA on-site operator as acting over some |ψ⟩(x,0),(x,1) with:
+                               !                          !
+                    M00 M01             M00 −eiθ M10∗
+            M=                     =         iθ   ∗           without loss of generality.
+                    M10 M11             M10 e M00
+
+The Heisenberg picture describes the future impact of our past actions. Consider the past
+action a†x,1 at t:
+
+                             a†x,1 = |1⟩x,1 ⟨0| ⊗ Zx,0
+                                                          O
+                                                                   Zy
+                                                         y≺(x,0)
+                                                                   O
+                                   = (|10⟩ ⟨00| − |11⟩ ⟨01|)             Zy .
+                                                               y≺(x,0)
+
+Its future impact at time t + 1 is
+               h                                                                     i O
+Wa†x,1 W† = (M11 |10⟩ + M01 |01⟩) ⟨00| − eiφ |11⟩ (⟨01| M00
+                                                         ∗          ∗
+                                                            + ⟨10| M10 ))                          Zy
+                                                                                         y≺(x,0)
+               "                                !                           !              #
+                           M11    0       M01    0
+            = |1⟩x,1 ⟨0| ⊗                             ⊗ |1⟩x,0 ⟨0|
+                                                                                                O
+                                     ∗  +           ∗                                                    Zy .
+                            0  −eiφ M00    0  −eiφ M10
+                                                                                               y≺(x,0)
+
+               "                                    !                                !                  #
+                                 ∗
+                           eiθ M00    0           ∗
+                                            −eiθ M10    0
+            = |1⟩x,1 ⟨0| ⊗                                  ⊗ |1⟩x,0 ⟨0|
+                                                                                                             O
+                                     iφ ∗ +            iφ ∗                                                           Zy .
+                               0   −e M00      0     −e M10
+                                                                                                            y≺(x,0)
+
+
+
+Suppose that the φ we seek to determine, is equal to θ. With this supposition, the above
+simplifies and we have that the future impact of a†x,1 is just Wa†x,1 W† = M11 a†1 + M01 a†x,0 .
+A contrario, with any other choice of φ we would be constructing some W′ which, albeit
+coinciding with W and thus W in the one-particle sector, would for instance leave a phase
+between a†x,1 a†x,0 ax,0 and a†x,1 ax,0 a†x,0 in the future impact of a†x,1 . The future impact of
+a†x,1 would again yield a superposition of a particle at (x, 0) or at (x, 1), but with a phase
+depending on another particle being there or not. Such a W′ would not, therefore, be the
+‘rightful non-interacting extensions of W ’ to the multi-particle sector. Only W is. In other
+words, we were seeking to determine the φ of the last entry of W; setting it to θ fixes it
+to its non-interactive value.
+     The same process can be applied to the evolution a†x,0 leading to
+
+                                Wa†x,0 W† = M00 a†x,0 + M10 a†x,1
+                                Wa†x,1 W† = M01 a†x,0 + M11 a†x,1 .
+
+     Considering as past action the product of these two operators a†x,0 a†x,1 . Its future impact
+is
+
+               Wa†x,0 W† Wa†x,1 W† = (M00 a†x,0 + M10 a†x,1 )(M01 a†x,0 + M11 a†x,1 )
+                                       = M00 M11 a†x,0 a†x,1 + M01 M10 a†x,1 a†x,0
+                                       = (M00 M11 − M01 M10 )a†x,0 a†x,1 .
+
+
+                                                  34
+    Now, because state |00⟩(x,1)(x,0) evolves into |00⟩(x,1)(x,0) , and because a†x,0 a†x,1 changes
+|00⟩(x,1)(x,0) into |11⟩(x,1)(x,0) , it must be that |11⟩(x,1)(x,0) evolves into (M00 M11 −M01 M10 ) |11⟩(x,1)(x,0) .
+Hence, the phase eiφ = eiθ applied to |11⟩(x,1)(x,0) can simply be written M00 M11 −M01 M10 .
+    In other words we have that for any QW on-site operator W = 1 ⊕ M acting on qubits,
+the corresponding non-interactive multi-particle extension QCA on-site operator is
+                                                                               
+                            1  0    0           0
+                           0 M    M            0         
+                                00   01
+                         W=                              .                                       (38)
+                                                         
+                           0 M10 M11           0         
+                            0  0    0   M00 M11 − M01 M10
+
+Let us now use this to define the on-site and transport gates of the QCA.
+
+A.1 On-site operators
+First consider S = 1 ⊕ X ⊕ eiφ with X01 = X10 = 1 and X00 = X11 = 0. We justified in
+Subsec. 3.1 that φ needs be π. With the above this readily follows from X00 X11 −X01 X10 =
+−1. Therefore S as acting over some |ψ⟩(x,0),(x,1) is:
+                                                                
+                                           1           0    0 0
+                                         0            0    1 0
+                                       S=                       .
+                                                                
+                                         0            1    0 0
+                                           0           0    0 −1
+
+   On-site QW gates that are mere permutations of qubits in the one-particle sector, can
+then be extended to the multi-particle sector directly by means of products of S, in the
+same way that any permutation can be obtained from local transpositions.
+   For the mass term and the basis changes, this is not the case, but Eq. (38) again readily
+applies. As an example, the mass term Cϵ = 1 ⊕ C has C00 C11 − C01 C10 = c2 + s2 = 1,
+which results in the following mass on-site operator for the QCA, expressed as acting over
+some |ψ⟩(x,0),(x,1) :                                 
+                                          1 0 0 0
+                                        0 c −s 0
+                                 Cϵ =                 .
+                                                      
+                                        0 s c 0
+                                          0 0 0 1
+
+A.2 Transport operators
+In this paper the transport is implemented in two steps: first swap the qubits on-site so
+that the right-moving qubit is on the right-hand side of the site (S), then hop qubits across
+adjacent sites (Tη ) whilst changing the gauge field accordingly.
+In the one particle sector, the across-two-sites operator Tη , as acting on some |ψ⟩(x+η,0)(x,1) ,
+is given by:                                                     !
+                                                        0 Kη
+                              Tη = 1 ⊕ T with T =
+                                                       Kη† 0
+with                                                                             
+                                    O                                O
+                        Kη =                  Zy  Ux:η                       Zy 
+                                 y∈Jx,(x,η)J                 y∈Jx+η,(x+η,−η)J
+
+
+
+
+                                                       35
+and Ux:η the action of the gauge field lowering operator on (x : η)(x + η : −η). We see
+that T plays the same role as M in Eq. (38). The same reasoning applies. Since
+                                  T00 T11 − T01 T10 = −Kη Kη† = −I
+
+we have, as acting on some |ψ⟩(x+η,0)(x,1) :
+                                                                   
+                                            1 0   0  0
+                                          0 0 K     0 
+                                                   η
+                                     Tη =             .
+                                                      
+                                          0 Kη † 0  0
+                                            0 0   0 −1
+
+A.3 3+1 dimensions
+In 3 + 1 dimensions, there are four qubits per site instead of two. A QW operators W
+that acted in the one particle sector |0001⟩(x,3)(x,2)(x,1)(x,0) , |0010⟩(x,3)(x,2)(x,1)(x,0) , . . ., now
+needs to be extended to a QCA operator W that can handle the multi-particle sector
+|0011⟩(x,3)(x,2)(x,1)(x,0) , |1110⟩(x,3)(x,2)(x,1)(x,0) , . . ., which seems to leave open many more
+possibilities than in the 2 + 1 case. However, the 3 + 1 QW operators we are dealing with
+can easily be decomposed as circuits of 2-qubit gates, with the qubits following each other
+in the JW order. So, we extend these two qubit gates instead, through the same process
+as in 2 + 1 dimensions, and then recombine them to form the extension of the 3 + 1 QW
+operator.
+    The 2-qubit QW operators used will turn out to be same as those of the 2 + 1 case,
+except for 1 ⊕ B which was not defined previously. Its QCA version B is given through
+Eq. (38), yielding, as acting on some |ψ⟩(x,1)(x,0) , Eq. (33).
+    Let us first decompose the 4-qubit operators for the 3 + 1 QW that was given in Eq.
+(28), as circuits of 2-qubit gates.
+
+
+                            C ϵ = 1 ⊕ (1 ⊕ X ⊕ 1)(Cϵ ⊕ Cϵ )(1 ⊕ X ⊕ 1)
+                              S = 1 ⊕ (I ⊕ X ⊕ I)(X ⊕ X)(I ⊕ X ⊕ I)
+                           T η,ϵ = 1 ⊕ (I ⊕ Tη ⊕ I)(X ⊕ X)(I ⊕ Tη ⊕ I)
+                             B = 1 ⊕ (B ⊕ B)
+These operators are written as a product of direct sums of gates. The direct sum is used
+for spatial composition and not the tensor, because we are in the one-particle sector. The
+matrices are expressed as acting upon |ψ⟩(x,3)(x,2)(x,1)(x,0) , i.e. w.r.t the canonical basis
+
+           { |0000⟩(x,3)(x,2)(x,1)(x,0) , |0001⟩(x,3)(x,2)(x,1)(x,0) , |0010⟩(x,3)(x,2)(x,1)(x,0) ,
+             |0100⟩(x,3)(x,2)(x,1)(x,0) , |1000⟩(x,3)(x,2)(x,1)(x,0) }
+
+in this order, and with |0000⟩(x,3)(x,2)(x,1)(x,0) acted upon trivially. Notice that each on-site
+operator on the right-hand-side acts on neighbouring qubits, e.g. in C ϵ the rightmost Cϵ
+acts on (x, 1)(x, 0) etc. Indeed, whenever some 4 qubit operator needed to act on non-
+adjacent qubits in the JW order, a prior reordering using X was introduced. For instance,
+the mass term on-site operator, as acting on some |ψ⟩(x,3)(x,2)(x,1)(x,0) , is given by:
+                                                                    
+                                               c       0 −s 0
+                                             0        c 0 −s
+                                    Cϵ = 1 ⊕                 .
+                                                             
+                                             s        0 c  0
+                                               0       s 0  c
+
+                                                     36
+One notices that it acts on the zeroth and second qubits on the one hand, and on the first
+and third qubits on the other. In order to obtain a circuit of adjacent gates in the JW
+order, The first and second qubits are swapped, using the operation 1 ⊕ X ⊕ 1, allowing
+for the application of the 2-qubit mass term on the leading and last two qubits separately
+through Cϵ ⊕ Cϵ . The swap is then reapplied such that the initial order is recovered. These
+swaps can be understood as crossing of wires in a circuit so that the 2-qubit gates have
+the correct inputs and outputs. Such swaps correspond, in the multi-particle sector, to the
+QCA operator S. Hence, we can extend 1 ⊕ X ⊕ 1 into 1 ⊗ S ⊗ 1, as this again swaps
+the two middle qubits while leaving the rest unchanged. Notice that the operator ⊗ is
+used instead of ⊕ since we are no longer in the one particle sector. Similarly, the second
+step of the circuit for the mass term is extended into Cϵ ⊗ Cϵ . In the end, one obtains
+the following multi-particle sector, QCA operator for the mass term, as acting on some
+|ψ⟩(x,3)(x,2)(x,1)(x,0) , (i.e. w.r.t the canonical basis
+
+                   { |0000⟩(x,3)(x,2)(x,1)(x,0) , |0001⟩(x,3)(x,2)(x,1)(x,0) ,
+                     |0010⟩(x,3)(x,2)(x,1)(x,0) , |0011⟩(x,3)(x,2)(x,1)(x,0) , . . .}
+
+in this order):
+                          Cϵ = (1 ⊗ S ⊗ 1) (Cϵ ⊗ Cϵ ) (1 ⊗ S ⊗ 1) .
+The same procedure readily yields the gates that compose the 3 + 1 QED QCA of Sec. 4.1.
+
+
+
+
+                                                  37
+
+=== DOCUMENT 7: 2026-10-27--eon-projected-gaussian-certificate.json ===
+
+{
+  "status": "PROJECTED_GAUSSIAN_GAUSS_PASS_STATIONARITY_FAIL",
+  "accepted_physical_vacuum": false,
+  "construction": "P_G (FS_D tensor electric heat kernels), normalized; beta=log(2)",
+  "model": "Eon v4 original U, exact magnetic exponential, untruncated integer rotors",
+  "seed": {
+    "criterion": "auxiliary additive Dirac Hamiltonian; NOT log(U)",
+    "rank_per_momentum": 2,
+    "number_of_filled_modes": "2*V",
+    "gapped_for_positive_mass": true,
+    "nonconstant_projector": true
+  },
+  "integer_Gauss": [
+    {
+      "L": 3,
+      "transported_positive_charge": 1,
+      "exact_divergence_match": true
+    },
+    {
+      "L": 3,
+      "transported_positive_charge": 26,
+      "exact_divergence_match": true
+    },
+    {
+      "L": 4,
+      "transported_positive_charge": 1,
+      "exact_divergence_match": true
+    },
+    {
+      "L": 4,
+      "transported_positive_charge": 64,
+      "exact_divergence_match": true
+    }
+  ],
+  "infinite_support_control": {
+    "scope": "two-configuration, one-loop control; not full projected 3D state",
+    "beta": "log(2)",
+    "Gauss_all_integer_loop_numbers": true,
+    "matter_reduced_purity": "1/2",
+    "partial_sum_controls": [
+      {
+        "cutoff": 0,
+        "unnormalized_norm_lower": "1/4",
+        "unnormalized_tail_upper": "128/4095",
+        "normalized_tail_probability_upper": "512/4095"
+      },
+      {
+        "cutoff": 1,
+        "unnormalized_norm_lower": "4353/16384",
+        "unnormalized_tail_upper": "8/1048575",
+        "normalized_tail_probability_upper": "131072/4564446975"
+      },
+      {
+        "cutoff": 2,
+        "unnormalized_norm_lower": "1168499605505/4398046511104",
+        "unnormalized_tail_upper": "1/137438952960",
+        "normalized_tail_probability_upper": "8589934592/313666723271055179775"
+      }
+    ]
+  },
+  "obstruction_ingredients": {
+    "Gaussian_growth_identity": true,
+    "magnetic_harmonic_counts": [
+      {
+        "L": 3,
+        "z_coefficient_at_other_angles_zero": 4,
+        "inverse_z_coefficient_at_other_angles_zero": 4
+      },
+      {
+        "L": 4,
+        "z_coefficient_at_other_angles_zero": 4,
+        "inverse_z_coefficient_at_other_angles_zero": 4
+      }
+    ],
+    "universal_stationarity_obstruction": "author-written Fourier/Jensen proof in report",
+    "outside_Gaussian_class_inverse_kick_control": true,
+    "not_a_numerical_proof_of_complex_analysis": true
+  },
+  "scope": "finite volume L>=3; magnetic angle nonzero; Gaussian electric tails",
+  "evidence": "AUTHOR_ANALYTIC_PROOF_AND_EXACT_INGREDIENT_CHECKS / INDEPENDENT_REVIEW_PENDING"
+}

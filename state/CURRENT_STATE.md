@@ -1115,6 +1115,19 @@ step with nonzero angle. Ingredient checks are executable; the analytic
 argument still needs independent review. This does not exclude other tails
 or all Eon vacua. The requested physical vacuum has NOT been obtained;
 no correlator, speed, loop or evidence-promotion gate is opened.
+Independent review, 2026-10-28 (user: "mandale a DeepSeek"): the Gemini attempt
+of 2026-10-27 never completed (DNS), so the same sealed brief went to DeepSeek
+(deepseek-v4-pro, one round) on the bytes committed in `5dbd843`. Verdict:
+`ACCEPT_WITH_REPAIRS`, with construction ACCEPT, scope ACCEPT and obstruction proof
+ACCEPT_WITH_REPAIRS; no fatal error
+([review and author reading](../debates/2026-10-28--eon-gaussian-review-deepseek/verificacion_autor.md)).
+The author rejects G-R1-01/06 as errors, since the reviewer swapped the series f
+(of phi) and g (of psi). G-R1-04 is accepted with content: Eon's V operators carry
+JW/rishon strings (PDF p.7). They are diagonally equivalent to pure shifts because
+they commute, but plaquette monomials may then carry ±1 signs, so the report's
+`a=4` is not guaranteed. `a≢0` still follows from four distinct monomials at L>=3.
+Repairs are not yet applied. Status: `REVIEWED_ACCEPT_WITH_REPAIRS / REPAIRS_PENDING`.
+No vacuum, correlator, speed or loop is opened.
 See the
 [imported question](../reports/2026-10-26--interaction-renormalized-species-speed.md).
 No gate opened or promoted.
