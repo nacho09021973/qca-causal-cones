@@ -66,10 +66,6 @@ the light cone (full-text search for asymptotic / outside / decay / saddle / sta
 
 ## Not verified
 
-- Andrew Bressler's PhD thesis (Penn, 2009, advisor Pemantle) has a section titled "QRWs on Z^d
-  for d > 2" whose content could not be read. The server refused the download (HTTP 403), and a
-  workaround was not attempted. Its date precedes BBBP v4 (2010), which still says no
-  d ≥ 3 family had been analysed. **[UNVERIFIED]**
 - The quantum-walk material of the ACSV book (Pemantle–Wilson–Melczer, 2nd ed., 2024), which is
   not available locally. **[UNVERIFIED]**
 - T. Tate, "Quantum walks in low dimension" (Geometric Methods in Physics, 2016). Its abstract, as
@@ -78,6 +74,23 @@ the light cone (full-text search for asymptotic / outside / decay / saddle / sta
 - Whether the published AHP version of CJWW keeps the "only two studies" sentence. Only arXiv v1
   exists, and the journal page needs authentication. **[UNVERIFIED]**
 - Citation search of CJWW for 2025–2026 follow-ups was attempted. No citing list was obtained.
+
+**Addendum, 2026-10-28: Bressler thesis read.** The user downloaded it into `biblioteca/`
+(`Bressler090423.pdf`, 153 pp., SHA-256 prefix `7ef9b33a58f31f30`): A. E. Bressler,
+*Quantum random walks on the integer lattice via generating functions*, PhD thesis, University of
+Pennsylvania (2009), supervisor R. Pemantle.
+- In 1D it gives outside-interval asymptotics from a single critical point on a shifted torus
+  (PDF p.59, Theorem 2.7 applied to the walk of §4). This belongs with Sunada–Tate and CRT.
+- In 2D it proves only "uniform exponential decay of amplitudes for r bounded outside the image of
+  the Gauss map" (PDF p.111, proof of Theorem 5.11), an upper statement without a prefactor.
+- §5.6 "QRWs on Z^d for d > 2" (PDF pp.142–146) is preliminary. It says "Even walks on Z3 are in
+  uncharted territory" (p.142). It studies when the variety V1 is smooth (Prop. 5.27–5.29,
+  Conj. 5.28) and shows that the Hadamard walk on Z^d, d > 2, has |E| = ∞, so its asymptotics
+  cannot be recovered with the thesis' theorem (p.145). It contains no outside-region asymptotics
+  in d ≥ 3.
+
+The thesis does not anticipate the claim. The item is closed. Three `[UNVERIFIED]` items remain
+(ACSV book, Tate 2016, the published CJWW wording).
 
 ## Assessment
 
@@ -93,6 +106,5 @@ is already narrow. Optional text improvements, applied on 2026-10-28 at the user
 3. Optionally cite the exact path-sum solutions of the 3+1 Weyl walk (arXiv:1705.08552) as
    related exact work without asymptotics outside the cone.
 
-Status: `PRIOR_ART_AUDIT: NO_ANTICIPATION_FOUND / NOVELTY OPEN`. The four `[UNVERIFIED]` items
-should be closed, or acknowledged, before submission. The Bressler thesis is the most relevant of
-them.
+Status: `PRIOR_ART_AUDIT: NO_ANTICIPATION_FOUND / NOVELTY OPEN`. The remaining `[UNVERIFIED]` items
+should be closed, or acknowledged, before submission.
