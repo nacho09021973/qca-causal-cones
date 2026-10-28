@@ -1,6 +1,6 @@
 name = "QcaFormal"
 version = "0.1.0"
-defaultTargets = ["QcaFormal"]
+defaultTargets = ["QcaFormal", "QcaComparator"]
 
 [[require]]
 name = "mathlib"
@@ -9,3 +9,7 @@ rev = "v4.31.0"
 
 [[lean_lib]]
 name = "QcaFormal"
+
+[[lean_lib]]
+name = "QcaComparator"
+globs = ["QcaComparator.+"]

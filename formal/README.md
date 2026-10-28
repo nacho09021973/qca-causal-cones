@@ -36,6 +36,25 @@ Cayley–Hamilton with the complete homogeneous polynomials `h_n(λ, λ⁻¹)` a
 entrywise bounds, instead of a Schur form and `Σ‖S_d‖ = 4`.  This yields the
 sharper constant `4` in place of `9`.
 
+## Statement apart from proof (`QcaComparator`)
+
+To know what is claimed, read only `QcaComparator/Challenge.lean`. It imports
+Mathlib and nothing from `QcaFormal`, restates the definitions it needs
+(`Ssym`, `kernel`, `regA`, `regB`, `Kop`, `l2sq`) and states `TN_bound` and
+`delta_le_four_T` as `Prop`s. `QcaComparator/Solution.lean` proves them with
+the `QcaFormal` theorems, so it compiles only if the restated definitions unfold
+to the originals. `QcaComparator/Axioms.lean` fails the build unless both
+depend on exactly `propext`, `Classical.choice`, `Quot.sound`.
+
+Pattern from `Comparator/` in AxiomMath/CFSG (commit `69cb972`). The external
+`leanprover/comparator` (needs `landrun`, `lean4export`; in core as
+`lake comparator` from v4.35.0) is not used on v4.31.0.
+
+Checked 2026-10-28 by mutation: changing the constant `4` to `3` in
+`TNBound` gives a type mismatch in `Solution`; adding a condition to the
+`regA` filter makes `Solution` fail (heartbeat timeout in `whnf`, not a clean
+mismatch); replacing a proof with `sorry` makes `Axioms` fail.
+
 ## What is not formalized
 
 * The identification `v₁ − v₀ = P_ℬ S^N P_𝒜 (U − I)ψ` with `‖(U − I)ψ‖ ≤ 2`, and
