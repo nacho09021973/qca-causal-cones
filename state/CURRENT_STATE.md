@@ -19,7 +19,7 @@ with a dated entry, the dated entry wins.
 
 | Front | Status | Where |
 | --- | --- | --- |
-| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy charter OPEN, Steps 0–1 authorized (2026-10-28); NOVELTY OPEN | Sections 4–7; entry of 2026-10-28 |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS (PRELIMINARY, 2026-10-28); NOVELTY OPEN | Sections 4–7; entry of 2026-10-28 |
 | Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
@@ -44,6 +44,16 @@ therefore declares three separate classes:
 - T3: tetrahedral group, `s = 3`;
 - O3: cube rotation group, `s = 3`;
 - O4: cube rotation group, `s = 4`, spinorial.
+
+**Steps 0–1 executed (same day, PRELIMINARY; independent review pending).**
+[Report](../reports/2026-10-28--irreducible-isotropy-step01.md), certificate
+`scripts/verify_irreducible_isotropy_step01.py` (31/31 exact checks; sweep 47/47 verifiers).
+T3, O3 and O4 are `EMPTY_CLASS`: no unitary full-`N_3` symbol (no on-site term) is covariant
+under `T` or `O` with an irreducible `R` of dimension 3 or 4. The same holds for the `s = 2`
+spin-1/2 controls. The Pavia symbols are `D2`-isotropic but not `T`/`O`-isotropic. The
+`D2`/Q8 positive control is non-empty. Hypothesis 3 is therefore vacuous in these classes,
+neither refuted nor confirmed. The canonical `B_infty^*` rows of Sec. 4 are unchanged pending
+review.
 
 Its first decisive test is whether the known s=4 family is `O`-covariant with the
 irreducible 4-dimensional `R`. No computation has been run. The group-orbit facts in its

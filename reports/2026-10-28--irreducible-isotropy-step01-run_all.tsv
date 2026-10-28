@@ -1,0 +1,53 @@
+# git_head	43fd00e3232dc142ef06967d6cc2418314e53239
+# python	3.12.3
+# sympy	1.14.0
+# numpy	1.26.4
+# timeout_s	900
+script	exit	seconds	last_line
+verify_cjww_coordinate_factorization.py	0	0.8	Evidence: AUTHOR_SIDE_CERTIFICATE / INDEPENDENT_REVIEW_PENDING
+verify_directional_saturation.py	0	12.1	27/27 checks passed
+verify_elastic_graph_species_universality.py	0	1.3	Scope: homogeneous affine shared embedding only; no strain-dependent CJWW hopping-amplitude rule, backreaction, curvature, or gravity claim.
+verify_elastic_hopping_hermitian_response.py	0	6.7	Scope: first order in epsilon and species momentum, four +I nodes, common physical coordinates. No dynamical-strain/gravity claim.
+verify_elastic_hopping_orientation_obstruction.py	0	0.5	VERDICT: UNITARY_ELASTIC_RESPONSE_INCONSISTENT
+verify_eon_projected_gaussian_reference.py	0	0.4	PASS: construction ingredients; projected Gaussian reference FAILS stationarity by stated analytic lemma.
+verify_eon_received_answer_audit.py	0	0.6	PASS: exact audit controls; no gauge-invariant vacuum construction established.
+verify_eon_reference_state.py	0	0.3	PASS: Gauss and exact witness checks; candidate FAILS stationarity in declared cases.
+verify_inverse_gravity_a0_conservation.py	0	0.3	Scope: exact physical state energy witness; not a Gibbs or IR spectrum computation.
+verify_inverse_gravity_b0_error_control.py	0	0.4	Scope: auxiliary family only; B-state convergence of fixed QCA NOT_TESTED.
+verify_inverse_gravity_constraint_module.py	0	0.3	Scope: commuting finite tensor constraints only; no tick, IR, modes, or gravity.
+verify_inverse_gravity_curvature_probes.py	0	0.4	No true-ground correlations, physical mode count or dispersion certified.
+verify_inverse_gravity_dressed_parent.py	0	2.6	VERDICT: DRESSED_PARENT_ALGEBRA_PASS_AUTHOR_SIDE
+verify_inverse_gravity_full_tick_dynamics.py	0	0.2	Scope: frozen tick, physical sector, one step; no IR, modes, or gravity.
+verify_inverse_gravity_ground_sum_rules.py	0	0.2	N-type ground moments, degeneracy and tensor spectral gate remain OPEN.
+verify_inverse_gravity_ir_options_ab.py	0	0.5	VERDICT: AB_ALGEBRA_CONTROLS_PASS / SPATIAL_A_AND_B_OPEN
+verify_inverse_gravity_ir_reference.py	0	1.5	Scope: algebra controls; general sector proof in report; no QCA modes or IR.
+verify_inverse_gravity_local_gates.py	0	0.5	Scope: local gate algebra only; tick locality/state argued separately; no modes or IR.
+verify_inverse_gravity_mixed_ground_test.py	0	0.3	No true-ground correlations, tensor cost or spectrum computed.
+verify_inverse_gravity_mixed_test_sufficiency.py	0	0.3	No true-ground numerator, Gram or spectrum computed.
+verify_inverse_gravity_sma_commutator.py	0	0.8	No true-ground Gram matrix, mode count, dispersion, QCA or gravity certified.
+verify_inverse_gravity_state_first.py	0	0.5	New QCA rule, physical IR state, spin-2 spectrum and gravity: NOT_COMPUTED
+verify_ir_projection_leakage.py	0	0.7	Python 3.12.3; SymPy 1.14.0
+verify_irreducible_d2_pavia.py	0	0.8	- P17 epsilon=-1: Fourier convention inversion
+verify_irreducible_isotropy_step01.py	0	512.9	31/31 exact checks passed in 512 s. Steps 2-3 and reducible representations are not covered.
+verify_lower_bound_no_cancellation_gate.py	0	0.8	24/24 exact identity checks passed; leader identification and remainder control are analytic and open.
+verify_narrow_band_gate.py	0	0.9	Verdict: NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS (reason: encoder incompatible with the IR criterion). D_B not computed.
+verify_regional_directional_asymptotics_gate.py	0	0.6	18/18 exact identity checks passed; C, beta and remainder control remain analytic.
+verify_regional_laplace_coefficient_gate.py	0	2.9	58/58 exact checks passed. The analytic remainder O(N^-1/2) and the saddle-point lemmas are report [A], not encoded here.
+verify_scaled_ir_gate.py	0	0.7	53/53 exact identity checks passed; analytic proof coverage is separate.
+verify_signaling_witness.py	0	0.8	17/17 exact checks passed. Existence witness only; no optimum or asymptotic claim.
+verify_w10_linearized_constraints.py	0	0.4	VERDICT: continuum test-source consistency at O(lambda); microscopic and reciprocal completion OPEN.
+verify_w11_ir_stress_source.py	0	3.7	VERDICT: A1/A2 checks pass for free integrated charges; full local stress and coupled gate OPEN.
+verify_w12_four_species_metric_universality.py	0	2.0	No claim: emergent gravity, higher orders, -I universality, or dynamics/backreaction of Z.
+verify_w1_geometricity.py	0	0.5	VERDICT: finite-time exact matter support depends on the link-register state; one-step adjacency and the outer CJWW causal body are unchanged.
+verify_w2_transport_tetrad.py	0	0.5	VERDICT: W2 has an explicit geometry-dependent principal-symbol deformation.
+verify_w3_backreacting_tetrad.py	0	0.7	VERDICT: W3 transport jet derived; feedback remains mean-field, not a full correlated coefficient.
+verify_w4_geometry_stiffness.py	0	0.3	VERDICT: geometry-only partial-SWAP transports the tetrad-control variable in vacuum.
+verify_w4_long_wavelength_spectrum.py	0	0.6	VERDICT: full same-sign smooth branch quadratic for 0<kappa<pi/2; opposite-sign control linear in 1D. AUTHOR_CHECKED; metric interpretation open.
+verify_w4_spectrum_observables.py	0	0.7	VERDICT: 12 exact finite-ring controls and Z-observable identities pass; one-defect amplitude spectrum alone does not establish a linear metric wave.
+verify_w5_spatial_tetrad_rank.py	0	0.3	VERDICT: current W3-W5 geometry spans only a restricted spatial-metric submanifold.
+verify_w5_tetrad_source.py	0	0.8	VERDICT: all three W5 sources derived; variational identity is transport-first-order only.
+verify_w6_full_spatial_tetrad.py	0	0.9	VERDICT: W6 F1/F5/F6 operator witnesses and bounded-depth schedule; no metric-wave or gauge proof.
+verify_w7_spin2_kinematics.py	0	0.5	VERDICT: W6 contains a 5-component kinematic spin-2 sector; TT reduction is not supplied.
+verify_w8_tt_gauge_reduction.py	0	0.2	VERDICT: proposed local vector gauge symmetry would reduce the 5-component spin-2 tensor to 2 TT components.
+verify_w9_continuum_gauge_bridge.py	0	0.3	VERDICT: algebraic on-shell O(lambda) consistency only; conservation and microscopic matching are inputs.
+verify_weyl_dirac_gate.py	0	3.2	- Baseline: 44ad178; fixed cases and semantics are specified by the contract.

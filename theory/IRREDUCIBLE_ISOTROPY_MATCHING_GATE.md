@@ -2,7 +2,12 @@
 
 **Status: OPEN — charter written 2026-10-28 (preregistration commit `d112bb0`); Steps 0–1
 authorized by the user the same day ("si, autorizo los pasos 0-1"); Steps 2–3 NOT
-authorized.** Only the
+authorized.**
+
+**Steps 0–1 executed 2026-10-28 (PRELIMINARY, review pending):** T3, O3 and O4 are
+`EMPTY_CLASS`, and Control B gives `S4_FAMILY_OUTSIDE_O4`
+([report](../reports/2026-10-28--irreducible-isotropy-step01.md)). Steps 2–3 have no object in
+these classes. Only the
 user authorizes execution, and the authorization is recorded in
 [CURRENT_STATE](../state/CURRENT_STATE.md). This charter records no computation,
 candidate or theorem.
