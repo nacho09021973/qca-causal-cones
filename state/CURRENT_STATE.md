@@ -19,7 +19,7 @@ with a dated entry, the dated entry wins.
 
 | Front | Status | Where |
 | --- | --- | --- |
-| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy charter OPEN, execution not authorized (2026-10-28); NOVELTY OPEN | Sections 4–7; entry of 2026-10-28 |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy charter OPEN, Steps 0–1 authorized (2026-10-28); NOVELTY OPEN | Sections 4–7; entry of 2026-10-28 |
 | Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
@@ -35,7 +35,8 @@ with a dated entry, the dated entry wins.
 
 User instruction: "prepara la carta para la hipótesis 3". Charter
 [`IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md`](../theory/IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md),
-status `OPEN`. **Execution is not authorized.** It asks whether an irreducible
+status `OPEN`. **Steps 0–1 authorized** by the user on 2026-10-28 ("si, autorizo los pasos
+0-1"). Steps 2–3 are not authorized. It asks whether an irreducible
 internal representation forces `c_0 = c_strict^iso` (B_infty^* rigidity (i)) in d=3 with the
 cubic `N_3`. `D2` admits no irreducible `R` with `s > 2`, because it is abelian. The charter
 therefore declares three separate classes:

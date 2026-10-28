@@ -1,6 +1,8 @@
 # IRREDUCIBLE ISOTROPY MATCHING GATE
 
-**Status: OPEN — charter written 2026-10-28; execution NOT authorized.** Only the
+**Status: OPEN — charter written 2026-10-28 (preregistration commit `d112bb0`); Steps 0–1
+authorized by the user the same day ("si, autorizo los pasos 0-1"); Steps 2–3 NOT
+authorized.** Only the
 user authorizes execution, and the authorization is recorded in
 [CURRENT_STATE](../state/CURRENT_STATE.md). This charter records no computation,
 candidate or theorem.
