@@ -1,0 +1,29 @@
+{
+  "upstream_commit": "1de1dbc1f4ee2c5f61e9c94348d55eb51d7fa2eb",
+  "tools_commit": "352f6c8aacaefa57b9aeee415dbecc3f6249f01e",
+  "project_commit": "3395c1c27426f06f2d073cae806dd289e782c674",
+  "input_sha256": {
+    "PROJECT_INSTRUCTIONS.md": "92d67677a5c2e70616340bffa7fa1a4487c13f21e27987d17e5ab810fbb45696",
+    "AGENTS.md": "83512ecc5b55a10e9ca682ec5954d88d95f57452f74c7018ba984621d42c301f",
+    "CLAUDE.md": "25dfb13970b87280bdd385d601c928251fa2da4140b80edabac6e5195132003b",
+    "state/CURRENT_STATE.md": "e040cf9e6777c6b46fab1c213f82d6c2407485fdd1e876c67d6871d0bba2f598",
+    "theory/A_INT_EON_REFERENCE_CHECK.md": "f54f1f05fcc17e19153dea0a271f82b23b383eee5350522cf0887c2066445531",
+    "theory/A_INT_EON_PROJECTED_GAUSSIAN_REFERENCE.md": "8dcc2f30a5796edbdf20ecd832ebd969de7c2245e37267e7351372a7be93ecd0",
+    "reports/2026-10-27--eon-projected-gaussian-reference.md": "9539e275b1438daab3ebe86c2b024a98420d047761a9562935e81e847d36400f",
+    "/home/ignac/qca-causal-cones/biblioteca/arXiv-2205.03148v4.pdf": "c366b8a8482a762c93e534e43d6572323737df4677556b1a764e02a1389d2d02"
+  },
+  "code_sha256": {
+    "/home/ignac/herramientas/pruebas/ai_scientist/qca.py": "bf1b997d340c0dd13f0453b6d34ebc295664722db59acc95f1e082486d53f5b8",
+    "/home/ignac/herramientas/AI-Scientist/ai_scientist/generate_ideas.py": "3d0404f6b25b6e0de80dd009351cbbd58526f43f10aae830d7b0d22790bcd224",
+    "/home/ignac/herramientas/AI-Scientist/ai_scientist/llm.py": "f9d5e4591dccbfc3865ce670ffd9a42a3c39567b8311312038fa8f9394a6b2f6",
+    "/home/ignac/herramientas/pruebas/ai_scientist/qca_task.md": "294d3e3636e9b675a13907f0303eb612cc1b264e4f86383eda67a3374d408536"
+  },
+  "status": "PARSED_UNVERIFIED",
+  "scope": "documentary proposal only; no scientific execution",
+  "user_instruction": "perfecto ahora vamos a probarlo en cd ~/qca-causal-cones",
+  "parsed_records": 1,
+  "calls": [
+    "/home/ignac/herramientas/pruebas/ai_scientist/qca_2026-10-28/call_01",
+    "/home/ignac/herramientas/pruebas/ai_scientist/qca_2026-10-28/call_02"
+  ]
+}
