@@ -1,0 +1,84 @@
+{
+  "herramienta": "lean-mutar",
+  "herramientas_commit": "25cac80",
+  "mutar_sha256": "6750fa3315226d205fc4a138cb9010ce536d3c7262edbf5ad296c2e934b99fa3",
+  "proyecto": "/home/ignac/qca-causal-cones/formal",
+  "proyecto_commit": "f7659c5",
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mutaciones_fichero": "/home/ignac/qca-causal-cones/formal/QcaComparator/mutaciones.toml",
+  "mutaciones_sha256": "14842e6084474bcf9a4db6ce41d3de4d79d7557ff1b2f2c42a7e2d3c9ab49802",
+  "build_cmd": [
+    "lake",
+    "build",
+    "QcaComparator"
+  ],
+  "timeout": 900,
+  "inicio": "2026-10-28T12:29:30.367103+00:00",
+  "ficheros": {
+    "QcaComparator/Challenge.lean": {
+      "sha256": "1e9838eb26004020325166203d108968af882059fdba1f0ac6d72adb7fcf5e3c",
+      "cambios_sin_commit": false
+    },
+    "QcaComparator/Solution.lean": {
+      "sha256": "8f990d1ef2832279a520da0e22f2693cf617aa5cee9f259a4436fdb9605f81f5",
+      "cambios_sin_commit": false
+    }
+  },
+  "resultados": [
+    {
+      "nombre": "TNBound: constant 4 -> 3",
+      "fichero": "QcaComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.5,
+      "coincidencia": "error: QcaComparator/Solution.lean:18:16: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "DeltaLeFourT: 4T -> 3T",
+      "fichero": "QcaComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.4,
+      "coincidencia": "error: QcaComparator/Solution.lean:21:39: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "copied regA: extra filter condition x 0 ≠ 7",
+      "fichero": "QcaComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 36.8,
+      "coincidencia": "error: QcaComparator/Solution.lean:18:16: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "copied Ssym: jump X(-e3) -> X(e3) in the (0,0) entry",
+      "fichero": "QcaComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 42.1,
+      "coincidencia": "error: QcaComparator/Solution.lean:18:16: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "tn_bound proof replaced by sorry",
+      "fichero": "QcaComparator/Solution.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 10.0,
+      "coincidencia": "error: QcaComparator/Axioms.lean:14:24: 'QcaComparator.tn_bound' depends on non-standard axioms: [sorryAx]",
+      "errores": []
+    }
+  ],
+  "limpia_inicial": {
+    "codigo": 0,
+    "segundos": 2.6
+  },
+  "limpia_final": {
+    "codigo": 0,
+    "segundos": 7.4
+  },
+  "veredicto": "PASA",
+  "fin": "2026-10-28T12:31:24.266993+00:00"
+}
