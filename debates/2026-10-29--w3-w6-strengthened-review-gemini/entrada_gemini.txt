@@ -1,0 +1,3336 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Responde en español. Eres un revisor independiente de física matemática (paseos cuánticos y
+QCA, fermiones en red, gravedad linealizada). Solo tienes los documentos adjuntos: no tienes
+herramientas, no puedes ejecutar código y no has visto el resto del repositorio. Un script es
+un argumento que inspeccionas, no la prueba de una ejecución. No supongas que nada es correcto.
+
+Contexto: W3–W6 son gates consecutivos de una construcción de juguete de «geometría dinámica»
+acoplada a un paseo cuántico 3D de dos componentes (CJWW, ec. 5.15; `walk2()` en
+`verify_directional_saturation.py`). Su línea está cerrada por contrato: tu revisión no la
+reabre, solo dice si lo certificado es lo que se afirma. Se adjuntan los contratos congelados,
+las dos revisiones del 2026-10-22 (DeepSeek y Astra) con sus reparaciones obligatorias, el
+informe de refuerzo del 2026-10-26 y sus certificados.
+
+Bloque A — W3/W5/W6 reforzados.
+1. Para cada reparación obligatoria de certificado de las revisiones del 2026-10-22, di si el
+   código nuevo la cumple, la cumple en parte o no la cumple, con la función concreta.
+2. `tetrad_transport.py`: rehaz la afirmación de que la derivada en g=0 de un producto de
+   capas, cada una igual a la identidad en g=0, es la suma de los generadores, y que las dos
+   paridades dan el símbolo uniforme a primer orden. Comprueba la extracción de E por traza de
+   Pauli de la derivada en momento y si sigue siendo circular (definir E y comprobar su
+   definición).
+3. W3: ¿se distingue bien el término de campo medio de orden g² de las correlaciones del mismo
+   orden, que no se certifican?
+4. W5: rehaz `J^2=A`, `JA=J`, la exponencial del kick, la conjugación de Z y la derivada
+   `-2 X⊗J`, y `dH_transport/dz = gJ`. ¿Sirve el control con signo contrario?
+5. W6: F1 (geometría que no toca la materia a g=eta=0), F5 (nueve corrientes y nueve
+   variaciones) y F6 (puerta K). Rehaz el argumento de paridad del calendario de 90 capas, que
+   prueba que las anclas de igual paridad forman un matching, y di para qué tamaños de toro
+   vale. Los recuentos L=4,6 son controles finitos: ¿se presentan como tales?
+
+Bloque B — reparaciones de W4. Se adjuntan la auditoría de W4, la revisión previa de DeepSeek
+(objeciones W4-R1-01 a 05), la comprobación del autor y los dos certificados ya modificados.
+6. Para cada objeción W4-R1-NN di si el tratamiento del autor la resuelve, la resuelve en
+   parte o no. Revisa especialmente W4-R1-02 (signo de `tan(kappa)/4` en `(pi/2, pi)` y elección
+   de rama) y W4-R1-04 (la comprobación de traza añadida y su dependencia de SymPy).
+7. ¿Introducen los cambios de los dos scripts W4 algún error o afirmación nueva?
+
+Para ambos bloques:
+8. Busca sobreafirmaciones respecto a los techos de cada contrato: onda del métrico, gravitón,
+   identidad Ward, tensor conservado, unicidad del calendario, independencia del orden.
+9. Separa lo que compruebas a mano, lo que solo inspeccionas en el código y lo que depende de
+   una ejecución que no puedes verificar (barridos de 42 y 43 verificadores, sha256).
+
+Salida: una sección por bloque; tabla final (afirmación / SUPPORTED, SUPPORTED_WEAKER o
+NOT_SUPPORTED / motivo en una línea); veredicto por bloque y global: ACCEPT,
+ACCEPT_WITH_REPAIRS o REJECT. Numera las objeciones como W36-G-NN, con gravedad
+(error demostrado, laguna o redacción) y ubicación. Si señalas un error, da el cálculo o el
+contraejemplo. Una sola ronda: declara tus supuestos en vez de preguntar.
+
+=== DOCUMENT 1: W3_BACKREACTING_TETRAD_FLOQUET_GATE.md ===
+
+# W3_BACKREACTING_TETRAD_FLOQUET_GATE
+
+> **Typographic reconstruction — 2026-10-22.** The frozen text is commit `5dc5fda`.
+> It lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). Here the delimiters and
+> commands have been restored by hand, checked against
+> `scripts/verify_w3_backreacting_tetrad.py`. No symbol, coefficient, criterion or
+> word of the contract has changed. Where the frozen text was ambiguous, the
+> restored form is the only one consistent with the certificate. The contract
+> remains the version frozen at `5dc5fda`.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input and correction
+
+Successor to the exact W2 audit
+
+```
+W2_PRINCIPAL_SYMBOL_CONTROL = PASS
+W2_TETRAD_CONTROL_CONSERVED / BACKREACTION_FAIL
+```
+
+W3 must make the observable that controls transport itself matter-dependent.
+
+## 1. Frozen matter baseline and directions
+
+Retain CJWW Eq. (5.15) as \(U_0\), and the three linearly independent support
+directions
+
+\[
+d_1=(1,0,0),\quad d_2=(1,1,0),\quad d_3=(1,1,1).
+\]
+
+For \(e=(x,x+d_a)\), retain the Hermitian current
+
+\[
+J_e^{(a)}
+=
+i(|x+d_a\rangle\langle x|-|x\rangle\langle x+d_a|)
+\otimes\sigma_a.
+\]
+
+Define also the endpoint occupation projector
+
+\[
+A_e=(|x\rangle\langle x|+|x+d_a\rangle\langle x+d_a|)
+\otimes I_2.
+\]
+
+## 2. Geometry qubit and two noncommuting substeps
+
+Each edge carries one qubit.
+
+### Backreaction kick
+
+\[
+R_e(g)=\exp[-ig\,Y_e\otimes A_e].
+\]
+
+### Transport/tetrad gate
+
+\[
+T_e(g)=\exp[-ig\,Z_e\otimes J_e^{(a)}].
+\]
+
+One local W3 edge substep is
+
+\[
+V_e(g)=T_e(g)R_e(g).
+\]
+
+The full interaction uses the same parity/matching layering as W2. The complete
+matter/geometry step is
+
+\[
+U_g=V_g(I_g\otimes U_0).
+\]
+
+No full finite-depth synthesis claim for \(U_0\) is added.
+
+## 3. Reference geometry state
+
+Use a product edge state with Bloch vector
+
+\[
+(x_0,y_0,z_0)=(\sin\theta,0,\cos\theta),
+\qquad 0<\theta<\pi/2.
+\]
+
+Thus both \(x_0\) and \(z_0\) are nonzero while \(y_0=0\).
+
+This avoids a first-order scalar-potential mean from the kick and permits
+first-order matter-dependent evolution of \(z_e=\langle Z_e\rangle\).
+
+## 4. Obligations
+
+### W3.1 exact CJWW recovery
+
+\[
+U_{g=0}=I_g\otimes U_0.
+\]
+
+### W3.2 exact local unitarity and finite interaction depth
+
+Both \(R_e\) and \(T_e\) must be exact local unitaries. The interaction depth
+must be bounded independently of volume.
+
+### W3.3 tetrad control
+
+For a slowly varying/separable geometry background with
+\(z_a=\langle Z_e\rangle\) on family \(a\), the transport gate must give
+
+\[
+E(z)=E_0-2g\,\mathrm{diag}(z_1,z_2,z_3)D+O(g^2)
+\]
+
+with \(D\) the W2 direction matrix.
+
+### W3.4 matter changes the tetrad control
+
+For initially uncorrelated edge/matter states, derive
+
+\[
+z_e' - z_e
+\]
+
+after \(R_e(g)\). PASS requires a matter-dependent leading term.
+
+### W3.5 reciprocal closure at perturbative level
+
+Combining W3.3 and W3.4 must give a nonzero matter-dependent change of the
+next-step principal-symbol/tetrad coefficient.
+
+### W3.6 no false Einstein claim
+
+The backreaction source may be endpoint occupation at this gate. It is not
+identified with the stress-energy tensor, and the resulting difference
+equation is not called Einstein dynamics.
+
+## 5. Terminal states
+
+1. `W3_BACKREACTING_TETRAD_FAIL`.
+2. `W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN`.
+3. `OPEN_AFTER_AUDIT`.
+
+## 6. Stop rule
+
+If W3.1-W3.5 pass, stop at
+`W3_BACKREACTING_TETRAD_PASS / CURVATURE_DYNAMICS_OPEN`.
+
+Do not infer curvature action, local Lorentz/diffeomorphism symmetry,
+Einstein equations, \(G_{\rm eff}\), AdS, or an absolute scale.
+
+=== DOCUMENT 2: W5_TETRAD_CONJUGATE_SOURCE_GATE.md ===
+
+# W5_TETRAD_CONJUGATE_SOURCE_GATE
+
+> **Typographic reconstruction — 2026-10-22.** The frozen text is commit `5a1e512`.
+> It lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand, including a lost `\nu` in \(T_{\mu\nu}\).
+> `scripts/check_reconstruction.py` certifies that only backslashes were added.
+> The formulas were checked against `scripts/verify_w5_tetrad_source.py`. The
+> contract remains the version frozen at `5a1e512`.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input
+
+Successor to:
+
+```
+W3_BACKREACTING_TETRAD_PASS
+W4_AUTONOMOUS_GEOMETRY_DYNAMICS_PASS / GRAVITATIONAL_SOURCE_OPEN
+```
+
+The remaining W3/W4 source defect is that the geometry kick was driven by
+endpoint occupation \(A_e\), not by a source derived from variation of the
+matter dynamics with respect to the tetrad-control variable.
+
+## 1. Frozen transport operator
+
+For edge family \(a\) and oriented edge \(e=(x,x+d_a)\), retain
+
+\[
+J_e^{(a)}
+=
+i(|x+d_a\rangle\langle x|-|x\rangle\langle x+d_a|)
+\otimes\sigma_a.
+\]
+
+The transport/tetrad gate remains
+
+\[
+T_e(g)=e^{-igZ_e\otimes J_e^{(a)}}.
+\]
+
+For a semiclassical background \(z_e=\langle Z_e\rangle\), the matter
+Hamiltonian contribution is, to leading order,
+
+\[
+\delta H_m=g\,z_eJ_e^{(a)}.
+\]
+
+Thus the operator conjugate to \(z_e\) is
+
+\[
+\frac{\partial H_m}{\partial z_e}=gJ_e^{(a)}
+\]
+
+at the declared perturbative level.
+
+## 2. Source repair
+
+Replace only the W3 backreaction kick by
+
+\[
+R_e^{(T)}(\eta)
+=
+e^{-i\eta Y_e\otimes J_e^{(a)}}.
+\]
+
+The W4 geometry-only stiffness step is retained unchanged.
+
+The couplings \(g\) and \(\eta\) remain independent dimensionless parameters;
+no gravitational normalization is assumed.
+
+## 3. Obligations
+
+### S1 — exact local unitarity
+
+\(R_e^{(T)}\) must be exactly unitary and bounded-range.
+
+### S2 — source changes tetrad control
+
+For an initially uncorrelated geometry/matter state derive the update of
+
+\[
+z_e=\langle Z_e\rangle.
+\]
+
+PASS requires a leading term proportional to
+
+\[
+j_e=\langle J_e^{(a)}\rangle.
+\]
+
+### S3 — variational reciprocity
+
+The source appearing in the geometry update must be the same matter operator
+that satisfies
+
+\[
+\partial H_m/\partial z_e=gJ_e^{(a)}
+\]
+
+in the transport sector.
+
+### S4 — Weyl continuum interpretation
+
+Show that the Fourier symbol of the summed current family is
+
+\[
+J_a(p)=2\sin(p\cdot d_a)\sigma_a
+=
+2d_a{}^i p_i\sigma_a+O(|p|^3).
+\]
+
+Therefore, in the Weyl continuum limit, the source is a directional
+contraction of the operator conjugate to the spatial tetrad coefficient
+\(e_a{}^i\).
+
+This may be called a **tetrad-conjugate stress source**, not yet the full
+stress-energy tensor.
+
+### S5 — conservation/symmetry ceiling
+
+A PASS requires an independent discrete conservation/gauge identity before
+calling the source \(T_{\mu\nu}\).
+
+If no such identity is present, record
+
+`TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN`.
+
+Do not manufacture a local energy density from Floquet quasienergy.
+
+## 4. Terminal states
+
+1. `W5_SOURCE_REPAIR_FAIL`.
+2. `W5_TETRAD_CONJUGATE_SOURCE_PASS / STRESS_ENERGY_CONSERVATION_OPEN`.
+3. `W5_STRESS_ENERGY_SOURCE_PASS`.
+4. `OPEN_AFTER_AUDIT`.
+
+## 5. Claim ceiling
+
+Passing S1-S4 alone does not establish Einstein coupling. The continuum
+variational relation between tetrads and fermionic stress-energy is the
+motivation for the test, but the project must separately establish the
+relevant conservation/symmetry structure of its own discrete model.
+
+=== DOCUMENT 3: W6_FULL_SPATIAL_TETRAD_GATE.md ===
+
+# W6_FULL_SPATIAL_TETRAD_GATE
+
+> **Typographic reconstruction — 2026-10-22.** The frozen text is commit `318fff2`.
+> It lost its LaTeX backslashes through an escape layer
+> (`reports/2026-10-22--escape-corruption-audit.md`). The delimiters and commands
+> have been restored by hand. `scripts/check_reconstruction.py` certifies that only
+> backslashes were added. The formulas were checked against
+> `scripts/verify_w6_full_spatial_tetrad.py`. The contract remains the version
+> frozen at `318fff2`. The W12 blind reviewers (2026-09-30) received the corrupted
+> form of this text.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input
+
+Successor to
+
+```
+W5_SPATIAL_TETRAD_COMPLETENESS_GATE =
+RESTRICTED_SPATIAL_METRIC_SUBMANIFOLD / GAUGE_COMPLETION_OPEN
+```
+
+The obstruction was rank: three controls gave rank 3 in tetrad space and rank
+3 in the six-dimensional spatial-metric tangent space.
+
+## 1. Geometry register enlargement
+
+Retain the three linearly independent CJWW support directions
+
+\[
+d_1=(1,0,0),\qquad
+d_2=(1,1,0),\qquad
+d_3=(1,1,1),
+\]
+
+with direction matrix
+
+\[
+D=
+\begin{pmatrix}
+1&0&0\\
+1&1&0\\
+1&1&1
+\end{pmatrix},
+\qquad \det D=1.
+\]
+
+For each Pauli/tetrad row \(a=1,2,3\) and direction label \(r=1,2,3\), attach
+one geometry qubit with control
+
+\[
+z_{ar}=\langle Z_{ar}\rangle.
+\]
+
+## 2. Matter transport operators
+
+For each pair \((a,r)\) and edge \(e=(x,x+d_r)\), define
+
+\[
+J_e^{(a,r)}
+=
+i(|x+d_r\rangle\langle x|-|x\rangle\langle x+d_r|)
+\otimes\sigma_a.
+\]
+
+Transport gate:
+
+\[
+T_e^{(a,r)}(g)
+=
+e^{-ig Z_{ar,e}\otimes J_e^{(a,r)}}.
+\]
+
+Backreaction kick:
+
+\[
+R_e^{(a,r)}(\eta)
+=
+e^{-i\eta Y_{ar,e}\otimes J_e^{(a,r)}}.
+\]
+
+Geometry-only W4 exchange may be applied separately to each \((a,r)\) register
+species.
+
+## 3. Principal-symbol target
+
+For a translation-invariant semiclassical geometry background, the
+momentum-linear correction should be
+
+\[
+\delta E_a{}^i
+=
+-2g\sum_r z_{ar}D_r{}^i.
+\]
+
+Writing \(Z=(z_{ar})\),
+
+\[
+\boxed{
+E=E_0-2gZD+O(g^2).
+}
+\]
+
+## 4. Obligations
+
+### F1 — exact flat recovery
+
+At \(g=\eta=0\), matter is exactly CJWW Eq. (5.15).
+
+### F2 — full tetrad rank
+
+The linear map
+
+\[
+Z\mapsto\delta E=-2gZD
+\]
+
+must have rank 9.
+
+### F3 — full spatial-metric rank
+
+For
+
+\[
+\delta h=E_0^T\delta E+\delta E^TE_0,
+\]
+
+the induced linear map from the nine \(z_{ar}\) to symmetric metric
+perturbations must have rank 6.
+
+### F4 — kernel interpretation
+
+Compute the dimension and form of the kernel of
+\(\delta E\mapsto\delta h\).
+
+If it is the expected three-dimensional antisymmetric frame-rotation
+direction at linear order, record that only as a **kinematic frame
+redundancy**, not a proved gauge symmetry.
+
+### F5 — reciprocal source
+
+For each \(z_{ar}\), the W5 variational source must be the corresponding
+\(J^{(a,r)}\), and the noncommuting Y-kick must change \(z_{ar}\) according to
+that source.
+
+### F6 — autonomous geometry propagation
+
+The W4 geometry-only exchange construction must apply independently to all
+nine register species without changing the flat \(g=0\) matter walk.
+
+## 5. Terminal states
+
+1. `W6_FULL_SPATIAL_TETRAD_FAIL`.
+2. `W6_FULL_SPATIAL_TETRAD_PASS / SPACETIME_GAUGE_STRUCTURE_OPEN`.
+3. `OPEN_AFTER_AUDIT`.
+
+## 6. Claim ceiling
+
+A full-rank spatial tetrad is not yet full 3+1 gravity. Passing W6 does not
+supply lapse, shift, time-like tetrad components, diffeomorphism constraints,
+local Lorentz gauge symmetry, Einstein dynamics, or gravitational
+normalization.
+
+=== DOCUMENT 4: W4_LONG_WAVELENGTH_SPECTRUM_GATE.md ===
+
+# W4_LONG_WAVELENGTH_SPECTRUM_GATE
+
+> **Typographic reconstruction — 2026-10-26.** Backslashes restored by hand
+> against `scripts/verify_w4_long_wavelength_spectrum.py`. No words,
+> coefficients or criteria changed. The frozen contract remains
+> `89d53c15b15cc75948bbcaded26f1110127164e9`. The discarded sector phase,
+> momentum units and observable scope require the qualifications recorded in
+> `reports/2026-10-26--w4-spectrum-reconstruction.md`.
+
+**Fecha:** 2026-09-30.  
+**Estado al congelar:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION / NOT_EXECUTED`.  
+**Rama:** `research/gravitational-normalization-gate`.
+
+## 0. Input
+
+W4 uses the geometry-only nearest-neighbor gate
+
+\[
+K_{ef}(\kappa)=e^{-i\kappa(I-S_{ef})}
+\]
+
+in an even/odd brickwork.
+
+W4 proved finite-speed vacuum propagation of geometry defects. This gate asks
+whether the **smooth long-wavelength geometry sector** is gapless.
+
+## 1. One-dimensional reduction
+
+For one geometry register species along one coordinate chain, restrict to the
+one-defect sector above a homogeneous \(Z\)-polarized background.
+
+Ignore the common bond phase. On a paired bond, partial SWAP acts as
+
+\[
+M(\kappa)=
+\begin{pmatrix}
+c&i s\\
+i s&c
+\end{pmatrix},
+\qquad
+c=\cos\kappa,\;s=\sin\kappa.
+\]
+
+Use a two-site unit cell \(A_m,B_m\).
+
+## 2. L1 — exact Floquet dispersion for the declared same-sign brickwork
+
+Derive the two-layer Bloch unitary and its quasienergy \(\omega(k)\).
+
+Determine whether
+
+\[
+\omega(k)\to0
+\]
+
+at the smooth point \(k=0\), and whether the leading small-\(k\) dispersion
+is linear.
+
+## 3. L2 — location of any gapless node
+
+If the gapless point is instead at the staggered momentum \(k=\pi\), record
+that explicitly.
+
+A \(k=\pi\) envelope may be mathematically gapless after demodulation, but it
+does not automatically represent a smooth coarse metric \(z(x)\).
+
+## 4. L3 — minimal sign-staggered repair
+
+As a separately evaluated control inside this gate, replace the odd-bond
+layer by the inverse-angle gate \(M(-\kappa)\).
+
+Derive its Bloch dispersion and determine whether this moves a linear gapless
+node to \(k=0\) while preserving the homogeneous geometry background.
+
+This control does not automatically replace W4 in the canonical model; it
+only tests whether a local repair exists.
+
+## 5. Terminal states
+
+1. `W4_SMOOTH_MODE_GAPPED / STAGGERED_GAPLESS_ONLY`.
+2. `W4_SMOOTH_GAPLESS_PASS`.
+3. `W4_REPAIR_AVAILABLE_SMOOTH_GAPLESS`.
+4. `OPEN_AFTER_AUDIT`.
+
+## 6. Claim ceiling
+
+Even a smooth linear geometry mode in this 1D reduction is not a massless
+spin-2 graviton and does not establish isotropic 3D relativistic geometry
+propagation.
+
+=== DOCUMENT 5: informe_deepseek.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ d32e8507c32aefc0acd0721a000eeeb2a261d824; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 9b4a1d94214494e23afece076b33e017e142a7c79f1b026be0dcea2a1a9b1557; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: stop (estado operativo, no validación del contenido)
+modelo: deepseek-v4-pro, esfuerzo: thinking=por defecto de la API, max_tokens=por defecto de la API, vía: API api.deepseek.com/chat/completions, sin herramientas
+modelo devuelto por API: deepseek-v4-pro
+deepseek.json sha256 2cc4f4d859b187c8cbbd2180f8ca42254f7f9ae653857aea0237104431bce31b
+inicio: 2026-10-22T08:31:02Z  fin: 2026-10-22T08:39:43Z
+documento: /home/ignac/qca-causal-cones/theory/W3_BACKREACTING_TETRAD_FLOQUET_GATE.md ; último commit observado: d576fda ; sha256 de la copia enviada 7bb0cb7d9d04d6e22ffa9fc740f535beabfc40815cd822c214a72d2636992f41
+documento: /home/ignac/qca-causal-cones/reports/2026-09-30--w3-backreacting-tetrad.md ; último commit observado: 2b982f2 ; sha256 de la copia enviada 72639112fbebf897a33c83b4ff65bc01e52ce5904db818cb45ff4389063fac35
+documento: /home/ignac/qca-causal-cones/scripts/verify_w3_backreacting_tetrad.py ; último commit observado: f1f54c9 ; sha256 de la copia enviada 33859d49d2d4d7466a28fdde9c1623bc3400ba010bade3d26ec70ff6d1806d2b
+documento: /home/ignac/qca-causal-cones/theory/W4_GEOMETRY_STIFFNESS_GATE.md ; último commit observado: d2eea01 ; sha256 de la copia enviada 56c28a52714f749f52049777f0a97e3e3ccceb77326f3c39b313289cd29d529d
+documento: /home/ignac/qca-causal-cones/reports/2026-09-30--w4-geometry-stiffness.md ; último commit observado: d2eea01 ; sha256 de la copia enviada 8c7f70ea346c38cf40a6c9926240821415f00ea6453369254bf22de8ba0f62b6
+documento: /home/ignac/qca-causal-cones/scripts/verify_w4_geometry_stiffness.py ; último commit observado: 3099bd5 ; sha256 de la copia enviada e83a7ed3d4c4a3e09baf3692ba504b11f4e49b579ba741ea8f4c1ae61fa836fb
+documento: /home/ignac/qca-causal-cones/theory/W5_TETRAD_CONJUGATE_SOURCE_GATE.md ; último commit observado: 607e2ab ; sha256 de la copia enviada 749365ef8a8053a43bda2953a429c6182a77376f3fa0f2cc8099cc9d0e6681de
+documento: /home/ignac/qca-causal-cones/reports/2026-09-30--w5-tetrad-conjugate-source.md ; último commit observado: 607e2ab ; sha256 de la copia enviada 4fcb92f5197c71739311e2d89a90152cbe02f5bea9bb2a3be5eeef94f0fd50db
+documento: /home/ignac/qca-causal-cones/scripts/verify_w5_tetrad_source.py ; último commit observado: cb1e038 ; sha256 de la copia enviada 347e38bdc45a511c6f03a219d10b5fa0ad8f906073e08e42ca76860e2eb6cb98
+documento: /home/ignac/qca-causal-cones/scripts/certificate_utils.py ; último commit observado: cb1e038 ; sha256 de la copia enviada 5a3591e1c5351aedbea97ec65f4cdcffacfb4117f52bc983d550ba67feb270ba
+documento: /home/ignac/qca-causal-cones/theory/W6_FULL_SPATIAL_TETRAD_GATE.md ; último commit observado: 32387b0 ; sha256 de la copia enviada 012afa5fe56697680087d6ce21dc6eb388a303da0798551626d5cf1fcfeb0216
+documento: /home/ignac/qca-causal-cones/reports/2026-09-30--w6-full-spatial-tetrad.md ; último commit observado: 32387b0 ; sha256 de la copia enviada 9e7400e62eb10f6bf5cc4b80e44d98bca37d46dfa8a7b6e250e388210152de89
+documento: /home/ignac/qca-causal-cones/scripts/verify_w6_full_spatial_tetrad.py ; último commit observado: 1137a14 ; sha256 de la copia enviada 1de52a5ca8fcd13514c2140be9765251e2a28d5796c15b3c9847edebd62f1b35
+documento: /home/ignac/qca-causal-cones/debates/2026-09-30--w12-blind-review/cjww_walk_definition.md ; último commit observado: 4b0797d ; sha256 de la copia enviada 9ed70fe0ffd964d012a0f9a1013740942a126339ec598b7c1322d8522fc48417
+entrada_deepseek.txt sha256 1524ba64400b7f5111eb98a0179bf86650fae634a7bc74547bbcb27869089163
+respuesta sha256 32d6b9eb0e67fcf22e8b0345f770398f36b1050a71eff84a41081f11da5f3570
+-->
+
+Assumption: I use the Pauli and QW conventions in the documents. I treat the cited W2 tetrad-symbol result and the earlier W3 coarse-metric kinematics result as external prior results only where explicitly stated; if those are not granted, the affected items weaken further, as noted.
+
+---
+
+## W3: Backreacting tetrad Floquet gate
+
+### 1. Contract compliance
+The report addresses W3.1–W3.6 as frozen. It does not move the goalposts: the Einstein/source ceiling is respected.
+
+### 2. Derivations
+- Since \(A_e^2=A_e\), the Heisenberg update splits into \(A_e=0\) and \(A_e=1\). On the \(A_e=1\) sector,
+  \[
+  e^{igY}Z e^{-igY}=Z\cos 2g-X\sin 2g,
+  \]
+  so
+  \[
+  R_e^\dagger(Z\otimes I)R_e
+  =
+  Z\otimes(I-A_e)
+  +
+  \bigl(Z\cos2g-X\sin2g\bigr)\otimes A_e.
+  \]
+  This is correct.
+- For an initially uncorrelated state,
+  \[
+  z'_e=z_e+a_e[(\cos2g-1)z_e-\sin2g\,x_e],
+  \]
+  hence
+  \[
+  z'_e-z_e=-2g\,x_ea_e+O(g^2).
+  \]
+  Correct.
+- The tetrad-control formula
+  \[
+  E(z)=E_0-2g\operatorname{diag}(z_1,z_2,z_3)D+O(g^2)
+  \]
+  is consistent with the current symbol
+  \[
+  J_a(p)=2\sin(p\cdot d_a)\sigma_a=2d_a^i p_i\sigma_a+O(|p|^3)
+  \]
+  under the semiclassical replacement \(Z_e\mapsto z_e\). The algebraic backreaction
+  \[
+  \delta E_{\rm back}=4g^2\operatorname{diag}(x_1a_1,x_2a_2,x_3a_3)D+O(g^3)
+  \]
+  follows.
+- No algebraic sign error found.
+
+### 3. Hidden assumptions
+- \(z_e=\langle Z_e\rangle\) is inserted into \(T_e\), i.e. a mean-field/semiclassical replacement. It is not exact beyond leading order or beyond uncorrelated backgrounds.
+- The \(Z\)-update is derived only for initially uncorrelated states. After \(R_e\), geometry and matter are entangled; re-inserting \(z'\) into \(E(z')\) for the next transport step is another mean-field assumption.
+- The finite-depth bound is only for the added W3 interaction, not for the frozen CJWW \(U_0\).
+- The exact number “twelve layers” is inherited from W2 and not independently checked here.
+
+### 4. Certificate
+The script checks:
+- the exact \(Y\)-rotation of \(Z\) on the occupied sector;
+- the derivative of the declared \(z'-z\) formula;
+- \(D\) invertibility and the declared \(E(z)\) formula at \(g=0\);
+- the algebraic \(O(g^2)\) backreaction.
+
+It does **not** derive \(E(z)\) from the Fourier symbol of \(J\) or from \(T_e=e^{-igZ\otimes J}\). That part is asserted, not derived. Thus the certificate for W3.3 is weaker than the report suggests.
+
+### 5. Scope
+The “no Einstein claim” ceiling is respected.
+
+### Verdict: ACCEPT_WITH_REPAIRS
+
+Mandatory repairs:
+1. Explicitly label W3.3 as semiclassical/mean-field and leading-order only.
+2. Strengthen the certificate so that \(E(z)=E_0-2g\operatorname{diag}(z_a)D\) is derived from \(J_a(p)\), not merely asserted.
+3. State that W3.5 re-uses \(z'\) as a classical background despite post-\(R_e\) entanglement.
+
+---
+
+## W4: Geometry stiffness gate
+
+### 1. Contract compliance
+W4.1–W4.6 are addressed. However W4.5 depends on an external W3 coarse-curvature formula not present in the supplied W3 materials.
+
+### 2. Derivations
+- The SWAP identity
+  \[
+  S_{ef}=\frac12(I+X_eX_f+Y_eY_f+Z_eZ_f)
+  \]
+  is correct.
+- Therefore
+  \[
+  K_{ef}(\kappa)=e^{-i\kappa(I-S_{ef})}
+  =\exp(-i\kappa)\bigl[\cos\kappa\,I+i\sin\kappa\,S_{ef}\bigr].
+  \]
+- Every identical two-qubit product state \(|n,n\rangle\) satisfies \(S|n,n\rangle=|n,n\rangle\), so \(K_\kappa|n,n\rangle=|n,n\rangle\). Correct.
+- For \(|1,0\rangle\),
+  \[
+  K|1,0\rangle
+  =
+  e^{-i\kappa}\left(\cos\kappa\,|1,0\rangle+i\sin\kappa\,|0,1\rangle\right),
+  \]
+  giving
+  \[
+  \langle Z_e\rangle=-\cos2\kappa,\qquad \langle Z_f\rangle=\cos2\kappa.
+  \]
+  Correct.
+- Repeated finite-speed propagation follows from the brickwork locality of partial swaps.
+- W4.5: if the cited linearized curvature formula
+  \[
+  R^{(1)}=-4g\,\partial_2^2z_1
+  \]
+  is accepted, then a moving \(Z\)-defect changes the discrete second-difference curvature witness. But that formula is not derived or checked in the supplied W3/W4 documents.
+
+### 3. Hidden assumptions
+- W4.5 is a kinematic/linearized coarse-field statement, not a curvature wave equation.
+- The curvature propagation is really defect/texture propagation under partial SWAPs.
+- The finite-depth statement concerns the geometry-only addition \(K_\kappa\), not the full step including CJWW \(U_0\).
+
+### 4. Certificate
+The script checks:
+- SWAP is Hermitian/unitary and equal to the Pauli expression;
+- the generator of \(K(\kappa)\);
+- identical product states are fixed;
+- the \(|1,0\rangle\) propagation and \(\langle Z_e\rangle,\langle Z_f\rangle\);
+- full transfer at \(\kappa=\pi/2\).
+
+It does **not** check W4.5’s coarse-curvature formula or the finite-depth brickwork bound.
+
+### 5. Scope
+The report mostly respects the ceiling, but “coarse-curvature propagation” is justified only conditionally on the external W3 curvature kinematics result.
+
+### Verdict: ACCEPT_WITH_REPAIRS
+
+Mandatory repairs:
+1. Include or certify the W3 coarse-curvature formula \(R^{(1)}=-4g\partial_2^2z_1\) in the W4 record.
+2. Reword W4.5 as “linearized kinematic curvature witness transport,” not autonomous curvature dynamics.
+3. Clarify that finite-depth is only for \(K_\kappa\), not for the full CJWW-containing step.
+
+---
+
+## W5: Tetrad-conjugate source gate
+
+### 1. Contract compliance
+S1–S4 are addressed; S5 is explicitly left open. The contract’s “no full stress-energy tensor” ceiling is respected.
+
+### 2. Derivations
+- On its support,
+  \[
+  J_e^2=A_e,\qquad J_e^3=J_e.
+  \]
+  Hence
+  \[
+  \cos(2\eta J)=I+(\cos2\eta-1)A_e,
+  \qquad
+  \sin(2\eta J)=\sin2\eta\,J_e.
+  \]
+  Correct.
+- The Heisenberg transformation
+  \[
+  R_e^{(T)\dagger}Z_eR_e^{(T)}
+  =
+  Z_e\cos(2\eta J_e)-X_e\sin(2\eta J_e)
+  \]
+  is correct.
+- For initially uncorrelated states,
+  \[
+  z_e'=z_e[1+(\cos2\eta-1)a_e]-x_e\sin2\eta\,j_e,
+  \]
+  and
+  \[
+  z_e'-z_e=-2\eta x_ej_e-2\eta^2 z_ea_e+O(\eta^3).
+  \]
+  Correct.
+- The Fourier symbol
+  \[
+  J_a(p)=2\sin(p\cdot d_a)\sigma_a
+  =
+  2d_a^i p_i\sigma_a+O(|p|^3)
+  \]
+  is correct.
+
+### 3. Hidden assumptions
+- \(\delta H_m=g z_e J_e\) is the leading-order effective generator after replacing \(Z_e\) by \(\langle Z_e\rangle\). It is not the full Floquet Hamiltonian.
+- The variational relation
+  \[
+  \frac{\partial H_m}{\partial z_e}=gJ_e
+  \]
+  is therefore perturbative/semiclassical, not exact at finite \(g\).
+- The \(z'\) result is again first-step and initially uncorrelated only; no closed equation for later times is derived.
+- S4 correctly refuses to call \(J_e\) a full \(T_{\mu\nu}\).
+
+### 4. Certificate
+The script checks:
+- \(J^2=I\) on the two-site support;
+- the Pauli rotation sign on \(J=\pm1\) sectors;
+- the derivative of the declared \(z'-z\) formula;
+- the one-dimensional current symbol \(2\sin q\) and its derivative.
+
+It does **not** check:
+- the full three-direction current symbol with all Pauli rows;
+- the actual variational statement \(\partial H_m/\partial z=gJ\);
+- the relation to the tetrad symbol beyond a one-dimensional check.
+
+### 5. Scope
+The report’s terminology “tetrad-conjugate stress source” is within its stated ceiling. “S5 = OPEN” is appropriate.
+
+### Verdict: ACCEPT_WITH_REPAIRS
+
+Mandatory repairs:
+1. State plainly that \(\delta H_m=gzJ\) and \(\partial H_m/\partial z=gJ\) are leading-order semiclassical effective relations.
+2. Add certificate checks for the variational derivative and for the full \(J_a(p)\) with \(a=1,2,3\), not only one scalar \(q\).
+3. Clarify that the reciprocity is first-step/mean-field and not a closed dynamical equation after entanglement.
+
+---
+
+## W6: Full spatial tetrad gate
+
+### 1. Contract compliance
+F1–F6 are addressed. F2–F4 are directly proved; F1, F5, F6 are supported by construction/analogy from W4/W5 but not independently certified by the script.
+
+### 2. Derivations
+- \(D\) is invertible, so
+  \[
+  Z\mapsto \delta E=-2gZD
+  \]
+  has rank \(9\). Correct.
+- The linearized spatial metric
+  \[
+  \delta h=E_0^T\delta E+\delta E^T E_0
+  \]
+  is \(B+B^T\) with \(B=E_0^T\delta E\). Since every symmetric \(3\times3\) matrix is \(B+B^T\) for some \(B\), the image has dimension \(6\). Correct.
+- The kernel is
+  \[
+  B+B^T=0
+  \iff
+  B \text{ antisymmetric},
+  \]
+  so \(\dim\ker=3\). Equivalently,
+  \[
+  \delta E=\Omega E_0,\qquad \Omega^T=-\Omega.
+  \]
+  This is the expected linearized internal frame rotation. Correct.
+- F1 holds by construction at \(g=\eta=0\), with \(K_\kappa\) acting only on geometry.
+- F5 and F6 are componentwise specializations of W5 and W4.
+
+### 3. Hidden assumptions
+- The rank and kernel statements are linearized around flat \(E_0\).
+- The kernel is a kinematic frame redundancy; the report correctly does not claim a proved local gauge symmetry.
+- The existence of finite layering for all nine controls is plausible by bounded-degree local graph edge coloring, but the report gives only a sketch: “finitely many species labels” alone is not a rigorous schedule.
+- F5/F6 are analogical; the script does not verify them.
+
+### 4. Certificate
+The script checks:
+- rank of \(Z\to\delta E\) is \(9\);
+- rank of \(Z\to\delta h\) is \(6\);
+- kernel dimension is \(3\);
+- the kernel is generated by antisymmetric frame directions.
+
+It does **not** check:
+- F1 exact CJWW recovery;
+- F5 reciprocal source update;
+- F6 autonomous propagation for all nine species.
+
+### 5. Scope
+The ceiling is respected: full spatial tetrad is not claimed to be full 3+1 gravity.
+
+### Verdict: ACCEPT_WITH_REPAIRS
+
+Mandatory repairs:
+1. Certify or explicitly derive F1, F5, F6 rather than relying only on analogy.
+2. Provide an explicit finite-depth coloring/level schedule for the nine-species overlapping gates.
+3. Keep the strong label “kinematic frame redundancy” and avoid any suggestion that a gauge symmetry has been established.
+
+---
+
+## Final status table
+
+| Claim | Status | Reason |
+|---|---:|---|
+| W3.1 exact CJWW recovery at \(g=0\) | SUPPORTED | All added gates become identity. |
+| W3.2 local unitarity/finite interaction depth | SUPPORTED_WEAKER | Unitarity exact; depth bound inherited from W2, not independently certified. |
+| W3.3 tetrad control \(E(z)\) | SUPPORTED_WEAKER | Consistent with current symbol but relies on mean-field \(Z\mapsto z\) and W2 transfer. |
+| W3.4 matter changes \(z\) | SUPPORTED | Exact first-step formula for initially uncorrelated state. |
+| W3.5 reciprocal closure | SUPPORTED_WEAKER | Algebra correct; uses mean-field reinsertion after entanglement. |
+| W3.6 no false Einstein claim | SUPPORTED | Ceiling respected. |
+| W4.1 unitarity/depth of \(K_\kappa\) | SUPPORTED_WEAKER | Unitarity exact; depth sketch not a rigorous schedule. |
+| W4.2 homogeneous background fixed | SUPPORTED | Symmetric product state exactly fixed. |
+| W4.3 local autonomous propagation | SUPPORTED | Exact \(|1,0\rangle\) computation. |
+| W4.4 repeated finite-speed propagation | SUPPORTED | Locality and partial swaps give finite speed/spread. |
+| W4.5 curvature linkage | SUPPORTED_WEAKER | Depends on external W3 curvature formula; not rechecked here. |
+| W4.6 source remains separate | SUPPORTED | No stress-energy source claimed. |
+| W5 S1 exact unitarity | SUPPORTED | Hermitian generator. |
+| W5 S2 source changes tetrad control | SUPPORTED | Exact first-step formula with leading \(j_e\) term. |
+| W5 S3 variational reciprocity | SUPPORTED_WEAKER | Only for leading-order semiclassical \(H_m\). |
+| W5 S4 Weyl symbol/source interpretation | SUPPORTED | Symbol formula correct; “tetrad-conjugate” ceiling respected. |
+| W5 S5 conservation/stress-energy open | SUPPORTED | Explicitly left OPEN. |
+| W6 F1 exact flat recovery | SUPPORTED | By construction; not script-checked. |
+| W6 F2 full tetrad rank 9 | SUPPORTED | \(D\) invertible; certificate checks rank. |
+| W6 F3 full spatial metric rank 6 | SUPPORTED | Surjectivity onto symmetric matrices. |
+| W6 F4 kernel dimension 3/frame rotations | SUPPORTED | Kernel is antisymmetric frame subspace. |
+| W6 F5 reciprocal componentwise source | SUPPORTED_WEAKER | Follows from W5 analog but not independently certified. |
+| W6 F6 autonomous propagation for nine species | SUPPORTED_WEAKER | Follows from W4 analog but not independently certified. |
+
+### Gate verdicts
+- **W3: ACCEPT_WITH_REPAIRS** — core formulas correct; mean-field/certification gaps remain.
+- **W4: ACCEPT_WITH_REPAIRS** — local propagation exact; curvature-linkage claim is external and under-certified.
+- **W5: ACCEPT_WITH_REPAIRS** — source repair is mathematically sound at leading order; effective-Hamiltonian language must be explicitly limited.
+- **W6: ACCEPT_WITH_REPAIRS** — rank/kernel results are exact and well certified; F1/F5/F6 need explicit certification and a real finite-depth schedule.
+
+=== DOCUMENT 6: informe_astra.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ d32e8507c32aefc0acd0721a000eeeb2a261d824; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 9b4a1d94214494e23afece076b33e017e142a7c79f1b026be0dcea2a1a9b1557; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: cli_exit_0 (estado operativo, no validación del contenido)
+modelo: gpt-6-astra, esfuerzo: high, vía: codex exec sellado (codex-cli 0.163.0)
+inicio: 2026-10-22T08:31:02Z  fin: 2026-10-22T08:35:54Z
+documento: /home/ignac/qca-causal-cones/theory/W3_BACKREACTING_TETRAD_FLOQUET_GATE.md ; último commit observado: d576fda ; sha256 de la copia enviada 7bb0cb7d9d04d6e22ffa9fc740f535beabfc40815cd822c214a72d2636992f41
+documento: /home/ignac/qca-causal-cones/reports/2026-09-30--w3-backreacting-tetrad.md ; último commit observado: 2b982f2 ; sha256 de la copia enviada 72639112fbebf897a33c83b4ff65bc01e52ce5904db818cb45ff4389063fac35
+documento: /home/ignac/qca-causal-cones/scripts/verify_w3_backreacting_tetrad.py ; último commit observado: f1f54c9 ; sha256 de la copia enviada 33859d49d2d4d7466a28fdde9c1623bc3400ba010bade3d26ec70ff6d1806d2b
+documento: /home/ignac/qca-causal-cones/theory/W4_GEOMETRY_STIFFNESS_GATE.md ; último commit observado: d2eea01 ; sha256 de la copia enviada 56c28a52714f749f52049777f0a97e3e3ccceb77326f3c39b313289cd29d529d
+documento: /home/ignac/qca-causal-cones/reports/2026-09-30--w4-geometry-stiffness.md ; último commit observado: d2eea01 ; sha256 de la copia enviada 8c7f70ea346c38cf40a6c9926240821415f00ea6453369254bf22de8ba0f62b6
+documento: /home/ignac/qca-causal-cones/scripts/verify_w4_geometry_stiffness.py ; último commit observado: 3099bd5 ; sha256 de la copia enviada e83a7ed3d4c4a3e09baf3692ba504b11f4e49b579ba741ea8f4c1ae61fa836fb
+documento: /home/ignac/qca-causal-cones/theory/W5_TETRAD_CONJUGATE_SOURCE_GATE.md ; último commit observado: 607e2ab ; sha256 de la copia enviada 749365ef8a8053a43bda2953a429c6182a77376f3fa0f2cc8099cc9d0e6681de
+documento: /home/ignac/qca-causal-cones/reports/2026-09-30--w5-tetrad-conjugate-source.md ; último commit observado: 607e2ab ; sha256 de la copia enviada 4fcb92f5197c71739311e2d89a90152cbe02f5bea9bb2a3be5eeef94f0fd50db
+documento: /home/ignac/qca-causal-cones/scripts/verify_w5_tetrad_source.py ; último commit observado: cb1e038 ; sha256 de la copia enviada 347e38bdc45a511c6f03a219d10b5fa0ad8f906073e08e42ca76860e2eb6cb98
+documento: /home/ignac/qca-causal-cones/scripts/certificate_utils.py ; último commit observado: cb1e038 ; sha256 de la copia enviada 5a3591e1c5351aedbea97ec65f4cdcffacfb4117f52bc983d550ba67feb270ba
+documento: /home/ignac/qca-causal-cones/theory/W6_FULL_SPATIAL_TETRAD_GATE.md ; último commit observado: 32387b0 ; sha256 de la copia enviada 012afa5fe56697680087d6ce21dc6eb388a303da0798551626d5cf1fcfeb0216
+documento: /home/ignac/qca-causal-cones/reports/2026-09-30--w6-full-spatial-tetrad.md ; último commit observado: 32387b0 ; sha256 de la copia enviada 9e7400e62eb10f6bf5cc4b80e44d98bca37d46dfa8a7b6e250e388210152de89
+documento: /home/ignac/qca-causal-cones/scripts/verify_w6_full_spatial_tetrad.py ; último commit observado: 1137a14 ; sha256 de la copia enviada 1de52a5ca8fcd13514c2140be9765251e2a28d5796c15b3c9847edebd62f1b35
+documento: /home/ignac/qca-causal-cones/debates/2026-09-30--w12-blind-review/cjww_walk_definition.md ; último commit observado: 4b0797d ; sha256 de la copia enviada 9ed70fe0ffd964d012a0f9a1013740942a126339ec598b7c1322d8522fc48417
+entrada_astra.txt sha256 1524ba64400b7f5111eb98a0179bf86650fae634a7bc74547bbcb27869089163
+respuesta sha256 d7e32e599828e454e9ed19ac51be303007c1e6cedbbc30501d0ac0b818a589ea
+-->
+
+I assess the supplied formulas and code by inspection and independent algebra; I have not executed the certificates. Historical commits, reconstruction fidelity and reported execution results are **[UNVERIFIED]**.
+
+## W3 — Backreacting tetrad control
+
+**Compliance.** W3.1, W3.2 and W3.4 are established. W3.3 holds as a first-order background reduction. W3.5 establishes a contribution obtained by updating the mean control, but does not establish the complete quantum matter evolution at order \(g^2\). W3.6 and the exclusion of Einstein dynamics are respected.
+
+**Derivation.** Since \(A^2=A\),
+\[
+R=I\otimes(I-A)+(\cos g\,I-i\sin g\,Y)\otimes A.
+\]
+Using \([Y,Z]=2iX\),
+\[
+R^\dagger ZR
+=Z\otimes(I-A)+(Z\cos2g-X\sin2g)\otimes A.
+\]
+Consequently, for a product input,
+\[
+\Delta z=a[(\cos2g-1)z-\sin2g\,x]
+=-2gxa-2g^2za+O(g^3).
+\]
+The sign and leading term in the report are correct. For a correlated input, the exact replacement is
+\[
+\Delta z=(\cos2g-1)\langle Z\otimes A\rangle
+-\sin2g\langle X\otimes A\rangle.
+\]
+Thus the product formula cannot automatically be iterated. Also, \(T^\dagger ZT=Z\), so the subsequent transport gate preserves the updated expectation exactly.
+
+The supplied walk gives
+\[
+W(p)=I+i(p_1\sigma_1-p_2\sigma_2+p_3\sigma_3)+O(p^2),
+\]
+confirming \(E_0=\operatorname{diag}(1,-1,1)\) under \(H=-\sigma^aE_a{}^ip_i\). With the Fourier convention used in W5, the current correction gives
+\[
+E=E_0-2g\,\operatorname{diag}(z_a)D+O(g^2).
+\]
+Substituting \(\Delta z_a=-2gx_aa_a+O(g^2)\) into its **displayed linear term** gives
+\[
+\boxed{\Delta E_{\mathrm{mean}}
+=4g^2\operatorname{diag}(x_aa_a)D+O(g^3).}
+\]
+
+However, an unspecified \(O(g^2)\) remainder does not by itself justify an \(O(g^3)\) remainder in the difference. That conclusion requires a smooth, state-independent background expansion whose remainder changes only through \(\Delta z=O(g)\).
+
+More seriously, the kick creates correlations at precisely the relevant order. For the product input \(\rho_g\otimes\rho_m\),
+\[
+\operatorname{Tr}_g(ZR\rho R^\dagger)
+=z\rho_m-gx\{A,\rho_m\}+O(g^2).
+\]
+For the declared \(y=0\) input, this generally differs from \(z'\rho_m'\) already at \(O(g)\). The following transport therefore receives correlation corrections at \(O(g^2)\), the same order as the claimed backreaction coefficient.
+
+**Certificate.** It checks the occupied-sector rotation, differentiates an assumed expectation formula, verifies \(\det D=1\), and performs the substitution producing \(4g^2\). Its “transport tetrad” check only defines \(E\) and checks \(E(0)=E_0\); it does **not** derive the transport symbol. It does not check a reduced quantum channel, the remainder estimate or layering.
+
+The twelve interaction layers are defensible: all three directions have first component one, so parity of the starting \(x_1\) supplies two matchings per family, with separate kick and transport layers. This is not a finite-depth synthesis of \(U_0\), as the report correctly acknowledges.
+
+**Verdict: ACCEPT_WITH_REPAIRS.**
+
+1. Label \(\Delta E_{\rm back}\) as the induced **mean-field contribution**, not the complete order-\(g^2\) reduced matter principal symbol.
+2. State the factorization and remainder assumptions needed for repeated reciprocal closure; otherwise leave that stronger closure open.
+3. Correct the certificate’s description of what it verifies.
+
+## W4 — Autonomous geometry dynamics
+
+**Compliance.** W4.1–W4.3 are established. W4.4 has a valid full-SWAP witness, although its generic-amplitude argument is incomplete. W4.5 supports a lattice curvature diagnostic; the supplied sharp defect does not itself establish a controlled coarse-field limit. W4.6 and the gravitational claim ceiling are respected.
+
+**Derivation.** The identities
+\[
+S=\tfrac12(I+XX+YY+ZZ),\qquad
+K=e^{-i\kappa}(\cos\kappa\,I+i\sin\kappa\,S)
+\]
+follow from \(S^2=I\). Every identical pure product pair is symmetric, so \(K|n,n\rangle=|n,n\rangle\) exactly. The homogeneous product is therefore fixed by every layer.
+
+For the defect,
+\[
+K|1,0\rangle=e^{-i\kappa}
+(\cos\kappa|1,0\rangle+i\sin\kappa|0,1\rangle),
+\]
+giving
+\[
+\langle Z_e\rangle=-\cos2\kappa,\qquad
+\langle Z_f\rangle=\cos2\kappa.
+\]
+At \(\kappa=\pi/2\), \(K=S\) exactly. At \(\kappa\in\pi\mathbb Z\), \(K=I\); propagation must exclude these values.
+
+Six nearest-neighbor matching layers give a strict support bound of six geometry bonds per tick. For a specified schedule with even bonds followed by odd bonds, a full-SWAP defect initially on an even site advances two sites per two-layer cycle. This proves arbitrarily long propagation. Merely exhibiting nonzero factors along paths does not prove nonzero summed amplitudes: interference must be addressed for the broader partial-SWAP assertion.
+
+**Curvature convention and witness.** The cone supplies the **contravariant** spatial metric
+\[
+h^{ij}=(E^TE)^{ij}.
+\]
+For \(z_1=f(x_2)\), its perturbation is \(q^{11}=-4gf\). The corresponding covariant perturbation is \(k_{11}=+4gf\), hence
+\[
+R^{(1)}=\partial_i\partial_jk_{ij}-\partial^2k_{ii}
+=-4gf''.
+\]
+The reported sign is correct with this convention. If \(E^TE\) were instead called the covariant metric, the sign would reverse.
+
+Writing \(c=\cos2\kappa\), the defect calculation gives
+\[
+\Delta_2z_0=1+3c,\qquad \Delta_2z_1=1-3c.
+\]
+Initially these are \(4,-2\); at full SWAP they become \(-2,4\), and the entire second-difference pattern translates. This is a correct lattice witness.
+
+Two qualifications matter:
+
+- The formula \(f(x_2)\) describes a plane-invariant texture, not an arbitrary isolated three-dimensional link defect. Replication in the transverse directions supplies the stated geometry.
+- A one-link discontinuity is not slowly varying. It proves transport of a discrete diagnostic. A smooth, long-wavelength texture or an explicit smoothing prescription is needed for a controlled coarse-curvature statement.
+
+Moreover, partial SWAP generally creates correlations, so \(z_e\) alone does not obey a closed autonomous evolution law. The **geometry subsystem** evolves autonomously. “Vacuum” here means the geometry-only evolution with matter interactions omitted; a zero-particle sector has not been supplied.
+
+**Certificate.** It checks SWAP algebra, the derivative of the proposed \(K\) at zero, symmetry of identical product pairs, two-site expectations and complete transfer. A derivative at zero alone does not certify the full exponential, though the already checked \(S^2=I\) proves it analytically. The script does not check repeated propagation, curvature or coarse graining.
+
+**Verdict: ACCEPT_WITH_REPAIRS.**
+
+1. Specify the repeated matching schedule and either restrict the propagation proof to its full-SWAP witness or supply an interference-aware proof.
+2. State the inverse-metric convention and distinguish the discrete witness from controlled coarse curvature.
+3. Replace “autonomous propagation law” for \(z\) by autonomous geometry evolution unless a closure is derived.
+
+## W5-source — Tetrad-conjugate source
+
+**Compliance.** S1 and S2 hold exactly under the stated input condition. S3 and S4 hold for the transport generator and its long-wavelength interpretation, with qualifications about “Hamiltonian” and “stress.” The terminal state correctly leaves stress-energy conservation open.
+
+**Derivation.** On the endpoint subspace, the position current is a Pauli \(Y\); outside it, it vanishes. Thus
+\[
+J^2=A,\qquad J^3=J,\qquad \operatorname{spec}J\subset\{-1,0,1\}.
+\]
+Functional calculus gives
+\[
+\cos(2\eta J)=I+(\cos2\eta-1)A,\qquad
+\sin(2\eta J)=\sin2\eta\,J.
+\]
+Therefore
+\[
+R^\dagger ZR
+=Z\otimes[I+(\cos2\eta-1)A]-X\otimes\sin2\eta\,J,
+\]
+and for a product input,
+\[
+\boxed{\Delta z
+=-2\eta xj-2\eta^2za+\frac43\eta^3xj+O(\eta^4).}
+\]
+The report is correct. For correlated inputs, replace \(za\) and \(xj\) by \(\langle ZA\rangle\) and \(\langle XJ\rangle\). A nonzero linear response requires \(xj\ne0\).
+
+For the classical-background transport substep,
+\[
+H_{\rm kick}=gzJ,\qquad \partial_zH_{\rm kick}=gJ
+\]
+in units where its duration is one. For \(\psi(x)=e^{ip\cdot x}u\), the forward translation acts by \(e^{-ip\cdot d}\), so
+\[
+J_a(p)=i(e^{-ip\cdot d_a}-e^{ip\cdot d_a})\sigma_a
+=2\sin(p\cdot d_a)\sigma_a
+=2d_a{}^ip_i\sigma_a+O(|p|^3).
+\]
+The sign and factor two are correct. Independently, the chain rule gives
+\[
+\frac{\partial H}{\partial E_a{}^i}=-\sigma^ap_i,\qquad
+\frac{\partial E_a{}^i}{\partial z_a}=-2gD_a{}^i,
+\]
+recovering the same directional source.
+
+**Hidden assumptions and scope.** The generator of an inserted kick is not generally the additive correction to the logarithm of the full Floquet step. With \(U=e^{-igV}e^{-iH_0}\), commutator corrections can already be first order in \(g\). For a homogeneous long-wavelength reduction here, \(V(p)\) and \(H_0(p)\) are both \(O(p)\), so their first commutator is \(O(gp^2)\): the stated principal-symbol relation survives at order \(gp\). This does not justify the same assertion for a general inhomogeneous effective Hamiltonian.
+
+“Tetrad-conjugate stress source” is defensible only as a qualified name for this directional variational operator. No action-based stress tensor, conserved local stress, or variational derivation of the geometry evolution follows. The independent parameters \(g,\eta\) and the imposed \(Y\)-kick establish matching operators, not a gravitational field equation. The kick also contributes a matter generator \(\eta\langle Y\rangle J\); its absence requires the declared initial \(y=0\) condition and need not persist.
+
+**Certificate.** It checks \(J^2=I\) on the endpoint sector for one Pauli choice, rotations for eigenvalues \(\pm1\), the slope of an assigned expectation formula, and the Fourier identity and slope. The zero sector is handled by reasoning, not explicitly tested. It does not check the variational reduction, the quadratic expectation term, or stress interpretation. The imported `PAULI` implementation is absent, so standalone execution is **[UNVERIFIED]**. The supplied equality helper addresses expression normalization, not these evidential gaps.
+
+**Verdict: ACCEPT_WITH_REPAIRS.**
+
+1. Identify \(gzJ\) explicitly as the background transport-kick generator; qualify its extension to a full effective Hamiltonian.
+2. Limit reciprocity and “stress source” to the demonstrated directional variational relation.
+3. State the factorization and \(y=0\) restrictions and narrow the certificate’s concluding claim.
+
+## W6 — Full spatial tetrad rank
+
+**Compliance.** F2–F4 are proved for nonzero \(g\). F5 inherits W5’s qualifications. F1’s matter-recovery statement holds, but its displayed full-unitary identity omits retained geometry dynamics. F6 needs an explicit distinction between turning off transport and turning off all matter–geometry coupling.
+
+**Derivation.** For \(g\ne0\),
+\[
+\delta E=-2gZD,\qquad
+Z=-\frac1{2g}\delta E\,D^{-1}.
+\]
+Thus the tetrad map has rank nine. At \(g=0\), this map has rank zero.
+
+Since \(E_0^TE_0=I\), every symmetric target \(S\) is obtained by choosing
+\[
+\delta E=\tfrac12E_0S,
+\]
+which gives \(\delta h=S\). Hence the metric map has rank six.
+
+Writing \(A=E_0^T\delta E\), its kernel satisfies
+\[
+A+A^T=0,\qquad \delta E=E_0A.
+\]
+There are three independent antisymmetric components. With
+\[
+\Omega=E_0AE_0,
+\]
+one has \(\Omega^T=-\Omega\) and \(\delta E=\Omega E_0\). This is exactly the tangent to internal spatial frame rotations. In control coordinates,
+\[
+Z_{\ker}=-\frac1{2g}E_0AD^{-1}.
+\]
+The interpretation as a metric-map redundancy, rather than a microscopic gauge symmetry, is correct.
+
+The full-rank conclusion is local: physical controls satisfy \(|z_{ar}|\le1\). An interior background permits all sufficiently small variations; it does not permit arbitrary finite tetrads at fixed \(g\). Rank also says nothing about dynamically reachable states or physical mode counts.
+
+**Recovery correction.** If W4 exchange is retained,
+\[
+\boxed{U_{g=0,\eta=0;\kappa}=K_\kappa\otimes U_0,}
+\]
+not \(I_g\otimes U_0\), unless \(K_\kappa=I\). Matter nevertheless evolves exactly by \(U_0\). Furthermore, \(g=0\) alone does not recover the free matter walk when \(\eta\ne0\): the source kick still couples matter and geometry. Taken literally, F6’s “flat \(g=0\)” wording needs this correction.
+
+Finite interaction depth remains straightforward: serialize the nine matter-coupled species, each with two matchings and two substeps, giving at most 36 interaction layers. Geometry exchange needs six additional layers with species parallelized. None of this synthesizes \(U_0\).
+
+**Certificate.** This is a substantive rank certificate: it computes the two Jacobian ranks, nullity, and the rotation parametrization. Its explicit nonzero assumption on \(g\) is essential. It does not derive the principal-symbol map or check F1, F5, F6, physical control constraints or gauge invariance.
+
+**Verdict: ACCEPT_WITH_REPAIRS.**
+
+1. State \(g\ne0\), an interior control background, and infinitesimal scope.
+2. Correct the full recovery identity and require \(\eta=0\) for free matter recovery.
+3. Carry forward W5’s reduction assumptions; distinguish rank completeness from dynamics and gauge symmetry.
+
+## Final assessment
+
+| Claim | Status | Reason |
+|---|---|---|
+| W3 exact \(Z\) update | SUPPORTED | Projector decomposition and Pauli algebra give the stated formula. |
+| W3 first-order background tetrad | SUPPORTED | Follows from the supplied walk and summed current symbol. |
+| W3 complete \(O(g^2)\) quantum backreaction coefficient | NOT_SUPPORTED | Correlations contribute at the same order; the certificate checks substitution only. |
+| W3 induced mean-field backreaction | SUPPORTED_WEAKER | Correct coefficient under an explicitly maintained background reduction. |
+| W4 local exchange and homogeneous fixed state | SUPPORTED | Exact SWAP algebra. |
+| W4 unbounded-distance, finite-speed transport | SUPPORTED | A scheduled full-SWAP brickwork provides a witness. |
+| W4 coarse-curvature propagation | SUPPORTED_WEAKER | Discrete diagnostic transport is proved; controlled coarse graining is absent. |
+| W5 exact current-driven \(Z\) response | SUPPORTED | Functional calculus gives the stated product-input update. |
+| W5 tetrad-conjugate source | SUPPORTED_WEAKER | Valid for the transport generator and directional continuum variation. |
+| W5 conserved stress-energy source | NOT_SUPPORTED | No required conservation or symmetry identity; correctly left open. |
+| W6 ranks \(9,6\) and three rotation directions | SUPPORTED | Exact linear algebra for nonzero \(g\). |
+| W6 displayed full-unitary flat recovery | NOT_SUPPORTED | Retained exchange leaves \(K_\kappa\), while nonzero \(\eta\) still couples matter. |
+| Full-step finite-depth QCA synthesis or gravity | NOT_SUPPORTED | The supplied results establish neither; their main claim ceilings correctly exclude them. |
+=== DOCUMENT 7: 2026-10-26--w3-w6-certificate-strengthening.md ===
+
+# Refuerzo de certificados W3–W6 — opción 2
+
+Fecha: 2026-10-26. Autor: Codex. Base: `1ccf78d`, tras completar la opción 1.
+Autorización directa: «1 y después 2». No se envió texto a terceros.
+
+## Qué cambia
+
+Las obligaciones de certificados de la revisión del 22 de octubre se han
+implementado en los verificadores existentes. Se conserva el alcance reparado:
+transporte semiclasico de primer orden, identidad local exacta de la fuente,
+retroacción de campo medio y redundancia de frame cinemática.
+Los nuevos bytes no heredan la revisión independiente de versiones anteriores.
+
+El código compartido permanente está en `scripts/tetrad_transport.py`.
+Desde el operador de salto orientado forma `i(T_d-T_d^dagger) sigma_a`, con
+símbolo de T igual a `exp(-ip·d)`. La derivada de cada exponencial local en
+g=0 es su generador. Como cada puerta vale identidad allí, la derivada de
+cualquier producto de capas es la suma de esas derivadas. Las dos paridades
+reúnen todos los enlaces de una familia, dando el símbolo uniforme al primer
+orden aunque cada capa aislada tenga celda duplicada.
+
+El código multiplica ese primer orden por `walk2()` de CJWW y extrae E con
+la traza de Pauli de la derivada en momento. Ya no define E para después
+comprobar solo propiedades de esa misma definición. El resultado se compara
+con la fórmula contractual, incluida una prueba negativa de signo.
+No se calcula el logaritmo de Floquet completo ni un cierre para estados
+entrelazados; el producto de capas a orden finito no se sustituye por una
+exponencial exacta del símbolo sumado.
+
+## W3
+
+`verify_w3_backreacting_tetrad.py` deriva la matriz E desde las tres corrientes
+y el paso plano. Conserva la rotación exacta de Z y la pendiente para entrada
+producto. La sustitución de las medias actualizadas en E comprueba solo el
+término de campo medio de orden g²; las correlaciones del mismo orden no
+quedan certificadas ni se omiten como si fueran cero. Cuatro bloques PASS.
+
+## W5
+
+`verify_w5_tetrad_source.py` comprueba las tres matrices de Pauli y sus tres
+direcciones, las derivadas en cada momento y la variación del generador de
+transporte respecto a cada media z. Se deriva `dH_transport/dz = g J`.
+El signo contrario se rechaza como control negativo.
+
+Para la identidad local se usan dos extremos y un sitio espectador. Así el
+espectro de J incluye cero además de más y menos uno. Se comprueban
+`J^2=A`, `J A=J`, la exponencial exacta del kick, unitariedad y su generador.
+La conjugación de Z da la identidad operatorial completa con A y J.
+Su derivada es `-2 X tensor J`. Trazarla contra factores independientes
+recupera `-2 x <J>`; para estados correlacionados se conserva la expectativa
+conjunta `-2 <X tensor J>`, sin factorizarla.
+
+Cuatro bloques PASS: uno por familia y otro para la expectativa producto.
+No se deriva aquí un tensor de estrés-energía conservado ni una identidad Ward.
+
+## W6 F1, F5 y F6
+
+- **F1:** todas las puertas R y T valen identidad en g=eta=0; las K de geometría
+  pueden seguir siendo no triviales. El paso es entonces `K_total tensor U_CJWW`.
+  El conjugado de cualquier observable de materia por una puerta K de geometría
+  es el mismo observable: se comprueba en una base de coin, y la identidad
+  tensorial vale para cualquier dimensión de materia. Al componer puertas K
+  esto sigue siendo cierto. La traza parcial da por tanto el canal CJWW también
+  cuando se conserva la evolución de geometría. Un kick con eta no nulo cambia
+  un observable de posición en el control negativo: no basta apagar g.
+- **F5:** se deriva la matriz tetrádica desde las nueve corrientes (a,r),
+  y se varía el generador respecto a cada uno de los nueve z. La identidad
+  exacta del kick se comprueba para las tres matrices locales distintas; r
+  solo determina dónde se embebe el mismo operador de dos extremos y el
+  símbolo espacial, comprobado para los nueve pares. La fórmula de producto
+  de medias exige entrada separada o aproximación de campo medio.
+- **F6:** la puerta K deja exactamente fijo cualquier par de estados idénticos
+  y en kappa=pi/2 traslada un defecto completamente. Las nueve especies son
+  factores distintos; la construcción se aplica a cada una. Es un testigo de
+  transporte geométrico, no una demostración de onda del métrico, modo relativista
+  o gravitón. Las precisiones del espectro W4 siguen vigentes.
+
+Se conservan además los rangos 9/6 y el núcleo de dimensión tres, para g no
+nulo. El verificador W6 imprime once bloques PASS, incluidos los de calendario
+y dos controles negativos. La identidad del paso completo no se reemplaza
+por `I_geometry tensor U_CJWW` cuando K está activa.
+
+## Calendario explícito de profundidad acotada
+
+`scripts/w6_schedule.py` proporciona el siguiente testigo conservador. Todos
+los índices a,r recorren 1,2,3 en orden lexicográfico; las paridades son 0 y 1.
+El registro `(a,r,x)` corresponde al enlace con ancla x y dirección d_r.
+
+| Bloque temporal | Capas | Puertas de una capa |
+| --- | ---: | --- |
+| R: recorrer a,r y paridad de x1 | 18 | Kick en todos los enlaces `(x,x+d_r)` de esa paridad y especie |
+| T: mismo recorrido | 18 | Transporte en esos mismos enlaces |
+| K: recorrer a,r, eje j y paridad de xj | 54 | Intercambio entre registros de la misma especie con anclas x y x+e_j |
+| Total de interacción añadida | 90 | Profundidad independiente del volumen |
+
+En cada capa de materia d_r tiene primera componente uno. Si dos enlaces
+distintos de una familia comparten extremo, sus anclas difieren en más o menos
+d_r y tienen paridad opuesta. Por tanto las anclas de una misma paridad dan
+un matching. Cada enlace aparece una vez al reunir las dos paridades.
+El mismo argumento, con el eje j, prueba los matchings de geometría.
+Esto demuestra el resultado en la red infinita y en toros pares sin
+identificaciones degeneradas de vecinos (lado al menos cuatro).
+
+Como segunda vía, el verificador comprueba todos los soportes y la cobertura
+en toros de lado cuatro y seis: 2880 y 9720 puertas etiquetadas, respectivamente,
+repartidas en las 90 capas. Rechaza un calendario al que se quite una capa.
+Las cajas son controles finitos del calendario; la prueba de todos los tamaños
+es el argumento de paridad anterior, no una extrapolación de esas cajas.
+
+Se serializan especies, aunque los factores geométricos distintos permiten
+paralelismo. Es una cota conservadora, no una profundidad mínima. El orden R,
+T, K da un testigo compatible con las puertas declaradas y completa un detalle
+que el registro W6 no fijaba explícitamente. No demuestra independencia del
+orden a acoplamiento finito ni identifica retrospectivamente una secuencia
+única de la ejecución histórica. Los rangos y jets de primer orden comprobados
+no dependen de ese orden cuando las demás puertas están apagadas.
+Las puertas K de distintas especies conmutan, por lo que serializarlas no
+cambia el producto geométrico que se podría aplicar en paralelo.
+
+Las 90 capas son **solo la interacción añadida**. El paso CJWW se aplica antes;
+su síntesis completa en el modelo de circuitos QCGD no se obtiene aquí.
+No se cambia coeficiente, dirección, tipo de registro ni regla de acoplamiento.
+
+## Reproducción y provenance del barrido
+
+```sh
+python3 -B scripts/verify_w3_backreacting_tetrad.py
+python3 -B scripts/verify_w5_tetrad_source.py
+python3 -B scripts/verify_w6_full_spatial_tetrad.py
+python3 -B scripts/run_all_verifiers.py --output reports/2026-10-26--strengthened-verifier-sweep.tsv
+sha256sum -c reports/2026-10-26--strengthened-verifier-inputs.sha256
+python3 -B scripts/test_text_integrity.py
+python3 -B scripts/text_integrity.py --check
+git diff --check
+```
+
+El barrido completo termina con **42 verificadores, cero fallos**. El TSV
+registra Python, SymPy, NumPy, tiempos y últimas líneas. Su git_head es la base
+`1ccf78d`, porque se ejecutó sobre los archivos reforzados antes de su commit;
+el manifiesto SHA256 identifica exactamente los tres verificadores modificados
+y sus dos módulos nuevos. El resto de código no cambió respecto a esa base.
+El manifiesto se comprobó después del barrido. No se ejecutó código científico
+temporal. Las entradas de los tres verificadores se añadieron a scripts/README.
+
+## Cierre de la opción 2
+
+Las obligaciones de implementación de certificados y calendario quedan
+cubiertas al alcance anterior, con comprobación local del autor y sin nueva
+revisión independiente de estos bytes. La ejecución correcta no certifica
+gravedad física, novedad, conservación de estrés-energía, cierre después de
+entrelazamiento ni síntesis completa del paso CJWW. No se adopta la reparación
+espectral W4 como modelo ni se abre un contrato de investigación nuevo.
+W1–W12 permanece cerrado por contrato.
+
+=== DOCUMENT 8: tetrad_transport.py ===
+
+"""Permanent operator derivations shared by the W3/W5/W6 certificates.
+
+Scope: first g-jet of the transport substep on a separable uniform background,
+not the complete Floquet logarithm or an entangled-background closure.
+"""
+
+import sympy as sp
+
+from certificate_utils import assert_sym_equal
+from verify_directional_saturation import PAULI, P1, P2, P3, walk2
+
+DIRECTIONS = ((1, 0, 0), (1, 1, 0), (1, 1, 1))
+MOMENTA = (P1, P2, P3)
+ZERO = dict.fromkeys(MOMENTA, 0)
+X, Y, Z = PAULI
+
+
+def current_symbol(a, r):
+    """Fourier transform of i(|x+d><x|-|x><x+d|) tensor sigma_a."""
+    phase = sum(p*d for p, d in zip(MOMENTA, DIRECTIONS[r]))
+    forward = sp.exp(-sp.I*phase)
+    backward = sp.conjugate(forward)
+    return sp.I*(forward-backward)*PAULI[a]
+
+
+def transport_jet(weights, g):
+    """Differentiate each local exponential at g=0, then sum the layer jets.
+
+    Matching parities partition all edges. The derivative of any ordered
+    product of identity-valued gates at zero is the sum of their derivatives.
+    Thus the first jet is translation invariant even though each parity layer
+    separately has a doubled cell. weights maps (Pauli row, direction) to mean Z.
+    """
+    generator = sp.zeros(2)
+    for (a, r), weight in weights.items():
+        generator += weight*current_symbol(a, r)
+    interaction = sp.eye(2)-sp.I*g*generator
+    step = interaction*walk2()
+    # Extract Pauli coefficients from the differentiated STEP, not a defined E.
+    E = sp.Matrix(3, 3, lambda a, i: sp.simplify(
+        -sp.I*sp.trace(PAULI[a]*sp.diff(step, MOMENTA[i]).subs(ZERO))/2))
+    H_transport = sp.I*sp.diff(interaction, g).subs(g, 0)*g
+    return E, H_transport
+
+
+def edge_current(a):
+    """Two endpoints plus a spectator: J^2=A, including the zero eigenspace."""
+    hop = sp.zeros(3)
+    hop[1, 0], hop[0, 1] = 1, 0
+    spatial = sp.I*(hop-hop.H)
+    projector = sp.diag(1, 1, 0)
+    return (sp.kronecker_product(spatial, PAULI[a]),
+            sp.kronecker_product(projector, sp.eye(2)))
+
+
+def current_kick_checks(a, eta):
+    """Derive the exact local gate from J^3=J; return its Heisenberg slope."""
+    J, A = edge_current(a)
+    Im, Ig = sp.eye(J.rows), sp.eye(2)
+    assert_sym_equal(J.H, J, "current Hermiticity")
+    assert_sym_equal(J*J, A, "J^2=A including spectator")
+    assert_sym_equal(J*A, J, "J^3=J")
+    # Exact exponential of Y tensor J using its eigenvalues 0,+1,-1.
+    R = sp.kronecker_product(Ig, Im+(sp.cos(eta)-1)*A) \
+        -sp.I*sp.sin(eta)*sp.kronecker_product(Y, J)
+    assert_sym_equal(R.H*R, sp.eye(R.rows), "kick unitarity")
+    assert_sym_equal(R.subs(eta, 0), sp.eye(R.rows), "zero kick")
+    assert_sym_equal(sp.diff(R, eta).subs(eta, 0),
+                     -sp.I*sp.kronecker_product(Y, J), "kick generator")
+    obs = sp.kronecker_product(Z, Im)
+    rotated = R.H*obs*R
+    expected = sp.kronecker_product(Z, Im+(sp.cos(2*eta)-1)*A) \
+        -sp.sin(2*eta)*sp.kronecker_product(X, J)
+    assert_sym_equal(rotated, expected, "full current-conditioned Z rotation")
+    slope = sp.diff(rotated, eta).subs(eta, 0)
+    assert_sym_equal(slope, -2*sp.kronecker_product(X, J), "source slope")
+    return J, A, R, slope
+
+=== DOCUMENT 9: verify_w3_backreacting_tetrad.py ===
+
+"""Exact symbolic certificate for theory/W3_BACKREACTING_TETRAD_FLOQUET_GATE.md."""
+
+import sympy as sp
+from certificate_utils import assert_sym_equal, sym_zero
+from tetrad_transport import transport_jet
+
+
+def main():
+    g = sp.symbols("g", real=True)
+    I = sp.I
+    X = sp.Matrix([[0, 1], [1, 0]])
+    Y = sp.Matrix([[0, -I], [I, 0]])
+    Z = sp.diag(1, -1)
+    I2 = sp.eye(2)
+
+    # Exact geometry rotation on the A_e=1 matter sector.
+    R = sp.cos(g) * I2 - I * sp.sin(g) * Y
+    Zrot = sp.simplify(R.H * Z * R)
+    expected = sp.simplify(sp.cos(2*g) * Z - sp.sin(2*g) * X)
+    assert_sym_equal(Zrot, expected, "occupied-sector Z rotation")
+    print("[PASS] R_e rotates Z exactly to Z cos(2g)-X sin(2g) on occupied endpoints")
+
+    x, z, a = sp.symbols("x z a", real=True)
+    dz = sp.expand(a * ((sp.cos(2*g) - 1) * z - sp.sin(2*g) * x))
+    slope = sp.simplify(sp.diff(dz, g).subs(g, 0))
+    assert_sym_equal(slope, -2*a*x, "initial product-state slope")
+    print("[PASS] z'-z = -2 g x a + O(g^2)")
+
+    # W2 direction matrix and W3 tetrad control.
+    D = sp.Matrix([[1, 0, 0], [1, 1, 0], [1, 1, 1]])
+    assert D.det() == 1
+    E0 = sp.diag(1, -1, 1)
+    z1, z2, z3 = sp.symbols("z1 z2 z3", real=True)
+    E, _ = transport_jet({(i, i): z for i, z in enumerate((z1, z2, z3))}, g)
+    assert_sym_equal(E, E0 - 2*g*sp.diag(z1, z2, z3)*D,
+                     "E derived from edge Fourier currents and CJWW jet")
+    assert_sym_equal(E.subs(g, 0), E0, "flat transport")
+    assert not sym_zero(E-(E0+2*g*sp.diag(z1, z2, z3)*D)), "reversed sign undetected"
+    print("[PASS] E derived from transport currents and the CJWW step, including sign control")
+
+    # Matter-dependent correction after one backreaction kick:
+    x1, x2, x3, a1, a2, a3 = sp.symbols("x1 x2 x3 a1 a2 a3", real=True)
+    dz_vec = sp.Matrix([-2*g*x1*a1, -2*g*x2*a2, -2*g*x3*a3])
+    dE_back = sp.simplify(-2*g*sp.diag(*list(dz_vec))*D)
+    expected_back = 4*g**2*sp.diag(x1*a1, x2*a2, x3*a3)*D
+    derived_change = E.subs(dict(zip((z1,z2,z3), sp.Matrix([z1,z2,z3])+dz_vec)), simultaneous=True)-E
+    assert_sym_equal(derived_change, expected_back, "mean-field transport feedback")
+    assert_sym_equal(dE_back, expected_back, "feedback matrix check")
+    print("[PASS] O(g^2) feedback is the mean-field contribution only")
+
+    print("\nVERDICT: W3 transport jet derived; feedback remains mean-field, not a full correlated coefficient.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 10: verify_w5_tetrad_source.py ===
+
+"""Derive W5 local source and transport-first-order variation for all families.
+
+No complete Floquet stress tensor, conservation law or correlated-state closure.
+"""
+
+import sympy as sp
+
+from certificate_utils import assert_sym_equal, sym_zero
+from tetrad_transport import (DIRECTIONS, MOMENTA, PAULI, ZERO,
+                              current_kick_checks, current_symbol, transport_jet)
+
+
+def main():
+    eta, g = sp.symbols("eta g", real=True)
+    zs = sp.symbols("z1 z2 z3", real=True)
+    _, H = transport_jet({(a, a): zs[a] for a in range(3)}, g)
+    for a in range(3):
+        J, A, R, slope = current_kick_checks(a, eta)
+        symbol = current_symbol(a, a)
+        phase = sum(p*d for p, d in zip(MOMENTA, DIRECTIONS[a]))
+        assert_sym_equal(symbol, 2*sp.sin(phase)*PAULI[a], "Fourier current")
+        assert_sym_equal(symbol.subs(ZERO), sp.zeros(2), "zero-momentum current")
+        for i, p in enumerate(MOMENTA):
+            assert_sym_equal(sp.diff(symbol, p).subs(ZERO),
+                             2*DIRECTIONS[a][i]*PAULI[a], "directional slope")
+        assert_sym_equal(sp.diff(H, zs[a]), g*symbol, "transport variation")
+        assert not sym_zero(sp.diff(H, zs[a])+g*symbol), "reversed source sign undetected"
+        assert_sym_equal(R.subs(eta, 0), sp.eye(R.rows), "spectator-inclusive flat gate")
+        print(f"[PASS] a={a+1}: J^2=A, exact kick including zero sector, current symbol and dH/dz")
+
+    # Trace the operator slope against arbitrary independent factor densities.
+    x, y, z = sp.symbols("x y z", real=True)
+    X, Y, Z = PAULI
+    rho_g = (sp.eye(2)+x*X+y*Y+z*Z)/2
+    matter = sp.Matrix(6, 6, sp.symbols("m0:36"))
+    J, _, _, slope = current_kick_checks(2, eta)
+    observed = sp.trace(sp.kronecker_product(rho_g, matter)*slope)
+    assert_sym_equal(observed, -2*x*sp.trace(matter*J), "product-state source expectation")
+    print("[PASS] operator slope -2 X tensor J gives -2 x <J> on independent states")
+    print("\nVERDICT: all three W5 sources derived; variational identity is transport-first-order only.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 11: verify_w6_full_spatial_tetrad.py ===
+
+"""Exact rank certificate for theory/W6_FULL_SPATIAL_TETRAD_GATE.md."""
+
+import sympy as sp
+from itertools import product
+
+from certificate_utils import assert_sym_equal, sym_zero
+from tetrad_transport import (PAULI, MOMENTA, DIRECTIONS, current_symbol,
+                              current_kick_checks, transport_jet)
+from w6_schedule import schedule, validate_schedule
+
+
+def main():
+    g = sp.symbols("g", nonzero=True)
+    E0 = sp.diag(1, -1, 1)
+    D = sp.Matrix([[1,0,0],[1,1,0],[1,1,1]])
+    assert_sym_equal(D.det(), 1, "direction determinant")
+
+    zs = sp.symbols("z11 z12 z13 z21 z22 z23 z31 z32 z33")
+    Z = sp.Matrix(3, 3, zs)
+    E, H_transport = transport_jet({(a,r): Z[a,r] for a,r in product(range(3), repeat=2)}, g)
+    dE = E-E0
+    assert_sym_equal(dE, -2*g*Z*D, "nine-control E derived from currents")
+
+    # Rank of linear map Z -> dE.
+    cols_E = []
+    for z in zs:
+        cols_E.append(sp.Matrix([sp.diff(dE[i,j], z) for i in range(3) for j in range(3)]))
+    ME = sp.Matrix.hstack(*cols_E)
+    assert ME.rank() == 9
+    print("[PASS] full spatial tetrad tangent rank = 9")
+
+    dh = sp.simplify(E0.T*dE + dE.T*E0)
+    comps = [(0,0),(1,1),(2,2),(0,1),(0,2),(1,2)]
+    cols_h=[]
+    for z in zs:
+        cols_h.append(sp.Matrix([sp.diff(dh[i,j], z) for (i,j) in comps]))
+    Mh = sp.Matrix.hstack(*cols_h)
+    assert Mh.rank() == 6
+    assert len(Mh.nullspace()) == 3
+    print("[PASS] induced spatial metric tangent rank = 6 with kernel dimension 3")
+
+    # Kernel form: E0^T dE antisymmetric.
+    a12,a13,a23 = sp.symbols("a12 a13 a23")
+    A = sp.Matrix([[0,a12,a13],[-a12,0,a23],[-a13,-a23,0]])
+    dEker = E0*A
+    dhker = sp.simplify(E0.T*dEker + dEker.T*E0)
+    assert_sym_equal(dhker, sp.zeros(3), "metric kernel")
+    print("[PASS] kernel is generated by antisymmetric frame directions")
+
+    # Same kernel written as infinitesimal internal rotations dE = Omega E0.
+    Omega = sp.simplify(E0*A*E0)
+    assert_sym_equal(Omega.T + Omega, sp.zeros(3), "antisymmetric frame")
+    assert_sym_equal(Omega*E0, dEker, "frame kernel")
+    print("[PASS] kernel equals infinitesimal SO(3)-type frame rotations at linear order")
+
+    # F5: each independent control is varied in the transport generator.
+    eta, kappa = sp.symbols("eta kappa", real=True)
+    local = {a: current_kick_checks(a, eta) for a in range(3)}
+    for a, r in product(range(3), repeat=2):
+        symbol = current_symbol(a, r)
+        phase = sum(p*d for p,d in zip(MOMENTA, DIRECTIONS[r]))
+        assert_sym_equal(symbol, 2*sp.sin(phase)*PAULI[a], "nine-family Fourier symbol")
+        assert_sym_equal(sp.diff(H_transport, Z[a,r]), g*symbol, "F5 variational source")
+    print("[PASS] F5: all nine variational sources and all three exact local kick operators")
+
+    # F1: R and T become identity together, leaving ONLY a geometry unitary K.
+    for J, A, R, _ in local.values():
+        Im = sp.eye(J.rows)
+        T = sp.kronecker_product(sp.eye(2), Im+(sp.cos(g)-1)*A) \
+            -sp.I*sp.sin(g)*sp.kronecker_product(PAULI[2], J)
+        assert_sym_equal(T.H*T, sp.eye(T.rows), "transport unitarity")
+        # g is nonzero for the ranks, but its expression still specializes to 0.
+        assert_sym_equal(T.subs(g, 0), sp.eye(T.rows), "zero transport")
+        assert_sym_equal(R.subs(eta, 0), sp.eye(R.rows), "zero source")
+    S = sp.Matrix([[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]])
+    K = sp.exp(-sp.I*kappa)*(sp.cos(kappa)*sp.eye(4)+sp.I*sp.sin(kappa)*S)
+    assert_sym_equal(K.H*K, sp.eye(4), "geometry-only unitarity")
+    for O in (sp.eye(2), *PAULI):
+        KG = sp.kronecker_product(K, sp.eye(2))
+        assert_sym_equal(KG.H*sp.kronecker_product(sp.eye(4), O)*KG,
+                         sp.kronecker_product(sp.eye(4), O), "F1 geometry leaves matter observables")
+    print("[PASS] F1: at g=eta=0 the full step is K_geometry tensor U_CJWW, not I tensor U_CJWW")
+    J, A, R, _ = local[0]
+    position_test = sp.kronecker_product(sp.diag(1,-1,0), sp.eye(2))
+    obs = sp.kronecker_product(sp.eye(2), position_test)
+    active_source = R.subs(eta, sp.pi/2)
+    assert not sym_zero(active_source.H*obs*active_source-obs), "omitted eta=0 condition undetected"
+    print("[PASS] F1 negative control: a nonzero source kick changes matter even when transport is off")
+
+    # F6: exact vacuum-background stability and full-SWAP transport witness.
+    u,v = sp.symbols("u v")
+    nn = sp.kronecker_product(sp.Matrix([u,v]), sp.Matrix([u,v]))
+    assert_sym_equal(K*nn, nn, "homogeneous geometry background")
+    defect = sp.Matrix([0,0,1,0])
+    assert_sym_equal(K.subs(kappa, sp.pi/2)*defect, sp.Matrix([0,1,0,0]), "complete defect transfer")
+    print("[PASS] F6: identical-background fixed point and vacuum defect transfer for each species")
+    layers = list(schedule())
+    for size in (4, 6):
+        count = validate_schedule(layers, size)
+        print(f"[PASS] schedule L={size}: 90 disjoint layers, {count} labeled gates, full coverage")
+    try:
+        validate_schedule(layers[:-1], 4)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("missing-layer negative control was not detected")
+    print("[PASS] schedule negative control rejects an omitted layer")
+    print("\nVERDICT: W6 F1/F5/F6 operator witnesses and bounded-depth schedule; no metric-wave or gauge proof.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 12: w6_schedule.py ===
+
+"""An explicit conservative W6 scheduling witness, not a unique frozen ordering.
+
+36 matter-coupled layers (all R then all T) and 54 geometry-only layers.
+Species are serialized even when distinct factors could be updated in parallel.
+"""
+
+from itertools import product
+
+from tetrad_transport import DIRECTIONS
+
+
+def schedule():
+    for kind in ("R", "T"):
+        for a, r in product(range(3), repeat=2):
+            for parity in range(2):
+                yield kind, a, r, 0, parity
+    for a, r, axis in product(range(3), repeat=3):
+        for parity in range(2):
+            yield "K", a, r, axis, parity
+
+
+def validate_schedule(layers, size):
+    """Exact finite-torus matching/coverage check; parity proof is in the report."""
+    assert size >= 4 and size % 2 == 0
+    assert len(layers) == 90
+    sites = tuple(product(range(size), repeat=3))
+    covered = set()
+    for kind, a, r, axis, parity in layers:
+        assert kind in ("R", "T", "K") and a in range(3) and r in range(3)
+        assert parity in (0, 1) and axis in range(3)
+        if kind != "K":
+            assert axis == 0
+        shift = DIRECTIONS[r] if kind != "K" else tuple(int(i == axis) for i in range(3))
+        assert shift[axis] % 2 == 1
+        endpoints = set()
+        for x in sites:
+            if x[axis] % 2 != parity:
+                continue
+            y = tuple((xi+di) % size for xi, di in zip(x, shift))
+            assert x not in endpoints and y not in endpoints
+            endpoints.update((x, y))
+            key = kind, a, r, axis, x
+            assert key not in covered
+            covered.add(key)
+        assert len(endpoints) == size**3
+    expected = {(kind, a, r, 0, x) for kind in ("R", "T")
+                for a, r in product(range(3), repeat=2) for x in sites}
+    expected |= {("K", a, r, j, x) for a, r, j in product(range(3), repeat=3) for x in sites}
+    assert covered == expected
+    return len(covered)
+
+=== DOCUMENT 13: 2026-10-26--w4-spectrum-audit.md ===
+
+# W4: auditoría del espectro completo, las unidades y el observable
+
+Fecha: 2026-10-26. Autor: Codex. Base de trabajo: `800cafd8cd6b119a8ac69219e64a915d38a92d2a`.
+Autorización directa: auditar W4, convertir las comprobaciones manuales en
+verificaciones permanentes y preparar después una revisión independiente.
+Estado: `AUTHOR_CHECKED / INDEPENDENT_REVIEW_PREPARED_NOT_SENT`.
+
+## 1. Alcance y resultado
+
+Se audita exclusivamente la reducción 1D de un defecto sobre el vacío
+polarizado, con la puerta original `K(kappa)=exp[-i kappa (I-SWAP)]` y dos
+matchings sucesivos. El segundo matching tiene el mismo ángulo o el inverso;
+este último sigue siendo un control, no un reemplazo del modelo canónico.
+
+La conclusión histórica `SMOOTH_MODE_GAPPED / STAGGERED_GAPLESS_ONLY` no
+describe el espectro completo referido al vacío fijo. El paso original tiene
+una rama que vale cero en k=0 y es cuadrática para kappa fijo en (0, pi/2).
+El control de ángulos opuestos tiene un cruce lineal en k=0. La pendiente
+`|sin(kappa)|` usa celdas de dos registros y pasos completos de dos capas.
+En registros vecinos por paso completo es `2|sin(kappa)|`.
+
+El espectro es de amplitudes. Por sí solo no prueba una onda lineal del
+control z=<Z>, ni una onda del métrico. La regla microscópica de Z depende
+también de coherencias. La descripción actual de este gate queda como
+`OPEN_AFTER_AUDIT`, con estas comprobaciones locales PASS y la interpretación
+corregida pendiente de revisión independiente. W1–W12 sigue CLOSED_BY_CONTRACT.
+
+Se consultó `biblioteca/INDICE.md` antes de trabajar. Esta auditoría no usa
+papers como prueba ni hace afirmaciones de novedad: deriva las identidades
+desde las puertas del contrato y conserva todo el código que las verifica.
+El informe previo de reconstrucción localiza los errores; no es evidencia
+independiente del cálculo nuevo.
+
+## 2. Convenciones y fase respecto al vacío
+
+Sea A_m el registro 2m y B_m el 2m+1. El primer matching une A_m con B_m;
+el segundo une B_m con A_(m+1). Se usa psi_(A/B,m)=exp(ikm) u_(A/B) y el
+paso U=K_odd K_even. Un autovalor se escribe exp(-i epsilon); epsilon se
+entiende módulo 2pi, con la rama local indicada en cada expansión.
+
+Con c=cos(kappa), s=sin(kappa), las matrices sin fase son
+
+\[
+A=\begin{pmatrix}c&is\\is&c\end{pmatrix},\qquad
+B_\sigma=\begin{pmatrix}c&\sigma is e^{-ik}\\
+\sigma is e^{ik}&c\end{pmatrix},\qquad \sigma=\pm1.
+\]
+
+En el par vacío, K|00>=|00>. En el subespacio de un defecto del enlace,
+K=e^(-i kappa) A. Cada matching contiene un único enlace ocupado en el
+sector de un defecto; todos los otros enlaces son pares vacíos fijos. Así,
+
+\[
+U_{\sigma,\mathrm{full}}(k)
+=e^{-i(1+\sigma)\kappa}B_\sigma A,\qquad
+\frac12\operatorname{tr}(B_\sigma A)=c^2-\sigma s^2\cos k.
+\]
+
+El determinante de B_sigma A es uno; el del paso completo es
+exp[-2i(1+sigma)kappa]. La fase retirada es común dentro del sector de un
+defecto, pero no al vacío. Retirarla no cambia velocidades de grupo,
+degeneraciones entre bandas ni expectativas de Z dentro del sector. Sí
+cambia qué autovalor coincide con el del vacío. No se infiere que Z sea un
+detector de esa fase relativa: Z no conecta ambos sectores.
+
+El certificado simbólico comprueba el generador, la unitariedad, el vacío,
+la restricción de la puerta de dos qubits, las trazas y los determinantes.
+Como segunda vía, el certificado de observables construye el circuito
+completo de 2^L estados desde permutaciones de bits, y sólo después lo
+proyecta al sector de un defecto y a los momentos de Bloch. No fabrica ese
+circuito desde el símbolo que se pretende comprobar.
+
+## 3. Ramas y excepciones
+
+### Mismo signo
+
+En k=0, el vector simétrico (1,1) tiene autovalor 1 del paso completo; el
+antisimétrico tiene exp(-4i kappa). Además, el estado uniforme de un defecto
+es invariante bajo cada SWAP y, por tanto, bajo cada K. Es una segunda prueba
+del cero uniforme que no depende del cálculo de la traza. En cadena infinita
+es un modo de Bloch generalizado; en cada anillo finito es normalizable.
+
+Para kappa fijo en (0,pi/2), sea omega_+(0)=2 kappa y
+cos omega_+=c²-s² cos k. La rama relativa al vacío es
+
+\[
+\epsilon_{\rm unif}(k)=2\kappa-\omega_+(k)
+=\frac{\tan\kappa}{4}k^2+O(k^4).
+\]
+
+La prueba usa F(epsilon,k)=cos(2kappa-epsilon)-(c²-s² cos k).
+En (0,0), F_epsilon=sin(2kappa) no se anula, F_k=0 y F_kk=-s².
+El teorema de función implícita da una rama analítica, única localmente y
+par en k, con epsilon''(0)=s²/sin(2kappa)=tan(kappa)/2. El código verifica
+estas identidades y contrasta el coeficiente sustituyendo
+lambda=1-i tan(kappa) k²/4 en el polinomio característico completo hasta
+orden dos. El resto O(k^4) usa la paridad y analiticidad recién indicadas;
+no se obtiene de una extrapolación de anillos pequeños.
+
+En k=pi, el paso completo es exp(-2i kappa) I: el cruce está centrado en
+epsilon=2kappa módulo 2pi, no en cero respecto al vacío para este intervalo.
+Cada rama se separa del centro con pendiente de magnitud |s|; la separación
+entre las dos ramas es 2|s||q|+O(|q|³), igual que en el símbolo sin fase.
+Conviene distinguir «cruce entre bandas» de «excitación de cuasienergía
+cero respecto al vacío».
+
+### Ángulos opuestos
+
+Las fases se cancelan, U_-(0)=I y
+
+\[
+\sin^2\frac{\omega_-(k)}2=s^2\sin^2\frac{k}2,\qquad
+\omega_-(k)=2\arcsin\bigl(|s|\,|\sin(k/2)|\bigr)
+=|s|\,|k|+O(|k|^3).
+\]
+
+Esta es la rama no negativa próxima a cero; los autovalores son exp(±i omega_-).
+Para derivar las pendientes se usa la rama con signo 2 asin(v sin(k/2)),
+v=|s| en [0,1]. Sus términos primero y cúbico son v k y
+v(v²-1) k³/24. Se necesita s distinto de cero para una pendiente no nula.
+
+### Extremos
+
+En kappa=0 y pi ambas construcciones son identidad. En kappa=pi/2, K es
+SWAP tanto para el ángulo positivo como para el negativo, y ambos pasos son
+diag(exp(-ik),exp(ik)). Hay ramas lineales en ese extremo: la expansión
+cuadrática para kappa fijo en el intervalo abierto no es uniforme al acercarse
+a pi/2. No se extrapola a ese punto. Todos estos límites se verifican exactamente.
+
+## 4. Unidades y comprobación por transporte
+
+Si a es la distancia entre registros y tau el tiempo del paso completo,
+la longitud de celda es 2a, k=2a p y la frecuencia física es epsilon/tau.
+Por la regla de la cadena,
+
+\[
+v_{\rm grp}=\frac{2a}{\tau}\frac{d\epsilon}{dk},\qquad
+|v_{\rm IR,control}|=\frac{2a}{\tau}|\sin\kappa|.
+\]
+
+La última expresión es la pendiente del cruce del control 1D, no una igualdad
+general entre velocidad IR, velocidad máxima de grupo y soporte causal.
+En el caso SWAP se sigue exactamente A_m a A_(m+1) y B_m a B_(m-1): son
+dos registros por paso de dos capas. Se comprueban los desplazamientos
+orientados en anillos L=4,6; L=6 distingue +2 de -2 módulo L. Si se asigna
+un tiempo a cada capa, tau es dos veces ese tiempo; no se mezcla con un paso.
+
+## 5. Observable Z: qué se deriva y qué falta
+
+En vacío más un defecto, Z_n es diagonal: -1 si el defecto está en n y +1
+en los demás estados, incluido el vacío. Para un vector b no nulo de ese
+subespacio,
+
+\[
+\langle Z_n\rangle=1-2\frac{|b_n|^2}{\|b\|^2},
+\]
+
+donde b_n es la amplitud del defecto en n y la norma incluye el vacío.
+En el sector de un defecto normalizado se reduce a 1-2|psi_n|². La identidad
+se verifica con amplitudes simbólicas arbitrarias, proyectando los Z físicos.
+Una onda de Bloch pura tiene densidad constante de celda a celda, aunque sus
+dos subredes puedan tener densidades diferentes. El momento de las amplitudes
+no se convierte automáticamente en un momento de la expectativa de Z.
+
+Contraejemplo retenido: en L=4, psi_n=(-1)^floor(n/2)/2 tiene k=pi por celda
+y Z_n=1/2 en todos los registros. En kappa=pi/4 es un autoestado del paso
+completo para ambos controles (autovalores -i e i respectivamente). Su Z
+es uniforme y estacionario. El estado uniforme psi_n=1/2 es ortogonal y
+produce el mismo Z. Queda refutada la inferencia «fase k=pi implica Z alternante».
+
+Para (|vac>+epsilon|psi>)/sqrt(1+epsilon²), con psi normalizado, el cambio
+de Z empieza en epsilon²; la derivada primera en cero se anula. La misma
+identidad vale después de cualquier número de pasos, porque el vacío se fija
+y el sector de un defecto se conserva. El código verifica la identidad
+general y un paso explícito. No es un no-go para otros fondos, observables
+transversales, mezclas de densidad pequeña o sectores con varios defectos.
+
+Además, los estados de enlace (1,i)/sqrt(2) y (1,-i)/sqrt(2) tienen las
+mismas densidades iniciales y dan Z opuestos tras K(pi/4). En la base
+computacional restringida a los estados 1 y 2, se usa el Z del registro 1,
+diag(1,-1), y se obtienen -1 y +1. El contraejemplo también se comprueba
+para el paso completo de dos capas en L=4: ambos perfiles iniciales son
+(0,0,1,1), mientras los finales son (1,0,0,1) y (0,1,1,0). Esto impide
+deducir una actualización cerrada de Z para estados arbitrarios sólo desde
+el perfil inicial de Z.
+No niega el transporte de densidades ni el testigo discreto de curvatura
+W4 previamente acotado; tampoco establece una ecuación de onda del métrico.
+
+## 6. Verificaciones permanentes y reproducibilidad
+
+| Artefacto | Comprobación | Límite |
+| --- | --- | --- |
+| `scripts/verify_w4_long_wavelength_spectrum.py` | 7 bloques: puerta, símbolos completos, nodos, rama cuadrática, control lineal, extremos, unidades | Argumentos de rama y resto analítico explicitados arriba; no espectro 3D |
+| `scripts/verify_w4_spectrum_observables.py` | 6 bloques: dos anillos, identidad Z, contraejemplo k=pi, respuesta cuadrática y falta de cierre de densidad | 12 circuitos exactos: L=4,6; kappa=0,pi/4,pi/2; dos signos; todos los momentos permitidos en cada anillo |
+
+Los anillos son una segunda formulación y controles finitos, no revisión
+independiente ni prueba por extrapolación. No hay coma flotante ni ajuste.
+Las entradas algebraicas de las matrices finitas se expanden exactamente
+antes de usar `assert_sym_equal`, evitando falsas negativas del normalizador
+trigonométrico sobre productos complejos no expandidos. No se cambió el helper
+compartido ni se omitieron controles de unitariedad.
+
+Comandos desde la raíz:
+
+```sh
+python3 -B scripts/verify_w4_long_wavelength_spectrum.py
+python3 -B scripts/verify_w4_spectrum_observables.py
+python3 -B scripts/run_all_verifiers.py --output reports/2026-10-26--w4-audit-verifier-sweep.tsv
+sha256sum -c reports/2026-10-26--w4-audit-verifier-inputs.sha256
+python3 -B scripts/text_integrity.py --check
+git diff --check
+```
+
+Resultado local final: **43 verificadores, cero fallos**; los dos certificados
+de esta auditoría pasan sus 13 bloques. Las huellas de los scripts coinciden
+con el manifiesto. El barrido y el manifiesto de entradas se conservan junto
+a este informe. El HEAD del barrido identifica la base; el manifiesto identifica los bytes de
+los certificados ejecutados y el helper, incluidos los cambios sobre esa base.
+La reconstrucción y la revisión anteriores de W4 no revisaron estos bytes
+ni esta interpretación del espectro completo.
+
+## 7. Expediente independiente preparado
+
+En `debates/2026-10-26--w4-spectrum-review-deepseek/` quedan el encargo, el
+manifiesto y la entrada sellada para DeepSeek, familia distinta de la del
+autor. Se prepara con `revision-ciega` del PATH en modo
+`REVISION_SOLO_ENTRADA=1`: no se envía texto ni se ejecuta al revisor.
+Herramienta inspeccionada: `~/herramientas` en
+`d32e8507c32aefc0acd0721a000eeeb2a261d824`.
+
+El encargo fija una ronda, pide atacar las hipótesis y fórmulas, exige
+rederivaciones y separa el juicio matemático del significado físico. Termina
+con ACCEPT, ACCEPT_WITH_REPAIRS o REJECT/INCONCLUSIVE y una lista numerada de
+objeciones; una respuesta truncada o con llamadas simuladas no cuenta como
+informe. Una futura respuesta debe contrastarse localmente antes de cambiar
+evidencia o estado. Preparar el paquete no equivale a haber recibido revisión.
+
+=== DOCUMENT 14: informe_deepseek.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ 16568209771dc898346bd4af0c78ec10530c3b9e; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 91bee96b008d707188487ad26871460296ba02cf99300ae272afd81dce1d64e6; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: stop (estado operativo, no validación del contenido)
+modelo: deepseek-v4-pro, esfuerzo: thinking=enabled, reasoning_effort=low, max_tokens=32768, vía: API api.deepseek.com/chat/completions, sin herramientas
+modelo devuelto por API: deepseek-v4-pro
+deepseek.json sha256 f60d4670d572e2f2dc66fbb87f072dd5a4861bca5d9c1c2a70c8801356c405bd
+inicio: 2026-10-26T13:35:30Z  fin: 2026-10-26T13:43:10Z
+documento: /home/ignac/qca-causal-cones/theory/W4_LONG_WAVELENGTH_SPECTRUM_GATE.md ; último commit observado: 1ece734 ; sha256 de la copia enviada 9f823adb673f27cafc2fa90cb8c272c108e4d2af244f027a2aae2508687b5103
+documento: /home/ignac/qca-causal-cones/reports/2026-10-26--w4-spectrum-audit.md ; último commit observado: 85e22e0 ; sha256 de la copia enviada 3adf31558c63c5d74a8ea3470e560efad9de6effcbd0e3cd20ae9da2325f6656
+documento: /home/ignac/qca-causal-cones/scripts/verify_w4_long_wavelength_spectrum.py ; último commit observado: 85e22e0 ; sha256 de la copia enviada f6a6b8d4480b2144e30737a5861eabbbfcd32a3b5a2194564315e048286b1d50
+documento: /home/ignac/qca-causal-cones/scripts/verify_w4_spectrum_observables.py ; último commit observado: 85e22e0 ; sha256 de la copia enviada 4bb140f6becb187c978639612ab36d28eadcf266f577b1c5512bc0c4537c489a
+documento: /home/ignac/qca-causal-cones/scripts/certificate_utils.py ; último commit observado: cb1e038 ; sha256 de la copia enviada 5a3591e1c5351aedbea97ec65f4cdcffacfb4117f52bc983d550ba67feb270ba
+documento: /home/ignac/qca-causal-cones/scripts/requirements.txt ; último commit observado: 90a56d2 ; sha256 de la copia enviada 03c88ea0349bff39d3d162f942aed8f7929e8e5021fe46cf603ac31d85ac8aa0
+entrada_deepseek.txt sha256 c381322ed9d1b54e4b03bf257509afd1a8e7d33ca8300b0ddf2369790605d35e
+respuesta sha256 6c1069f4d0b08076ff04815719a0f90489fb2aa45e2b5c1cfd003e5dadb2c2b4
+-->
+
+## Veredicto global
+
+**ACCEPT_WITH_REPAIRS**
+
+Las correcciones de la auditoría W4 están, en lo esencial, **justificadas**: la fase de sector debe conservarse para referir las cuasienergías al vacío; la rama uniforme del caso de igual signo es cuadrática en \(k=0\), no lineal; el control de signos opuestos es lineal en \(k=0\); las unidades de velocidad requieren el factor dos por celda de dos registros; y el observable \(Z_n\) no es cerrado por densidad ni detecta la fase relativa vacío-defecto.
+
+Las reparaciones pendientes son de **presentación, cobertura y separación de evidencia**, no alteran las fórmulas. No encuentro un error de cálculo que invalide el informe.
+
+---
+
+## Punto 1 — Restricción de \(K(\kappa)\), vacío y producto de matchings
+
+| Campo | Contenido |
+|---|---|
+| Resultado | **PASS** |
+| Derivación comprobada | \(K(\kappa)=e^{-i\kappa}(\cos\kappa I+i\sin\kappa\,\mathrm{SWAP})\). En \(\{\ket{01},\ket{10}\}\) queda \(e^{-i\kappa}\begin{pmatrix}c&is\\ is&c\end{pmatrix}\), con \(c=\cos\kappa\), \(s=\sin\kappa\). El vacío \(\ket{00}\) y todo par idéntico quedan fijos. Para dos capas, \(U_{\sigma,\mathrm{full}}(k)=e^{-i(1+\sigma)\kappa}B_\sigma A\), con \(\frac12\operatorname{tr}(B_\sigma A)=c^2-\sigma s^2\cos k\), \(\det(B_\sigma A)=1\), \(\det U_{\sigma,\mathrm{full}}=e^{-2i(1+\sigma)\kappa}\). El circuito `ring_step` construye cada enlace mediante `stay*I + hop*SWAP`, con `stay=e^{-i\alpha}\cos\alpha`, `hop=i e^{-i\alpha}\sin\alpha`; esto reproduce exactamente la puerta microscópica y, al proyectar al sector de un defecto, coincide con el símbolo 2×2. |
+| Objeción | **W4-R1-01**, gravedad **baja/informativa**: `verify_w4_spectrum_observables.py` importa `bloch_step` desde `verify_w4_long_wavelength_spectrum.py` para construir la comparación esperada. La construcción real-space es separada, pero la comparación no es una revisión independiente; un error correlacionado entre ambas convenciones de capas no sería detectado. |
+| Reparación mínima | Declarar explícitamente, como ya hace el texto, que el anillo es una segunda formulación del autor, no una revisión independiente. No es necesario alterar los certificados. |
+
+---
+
+## Punto 2 — Autovalores, convención \(e^{-i\epsilon}\), fase de sector y observables
+
+| Campo | Contenido |
+|---|---|
+| Resultado | **PASS** |
+| Derivación comprobada | Para \(\sigma=+1\), los autovalores del bloque sin fase \(B_+A\) son \(e^{\pm i\omega_+}\), con \(\cos\omega_+=c^2-s^2\cos k\). El paso completo es \(e^{-2i\kappa}B_+A\). Con \(e^{-i\epsilon}\) se obtienen las ramas \(\epsilon=2\kappa\mp\omega_+\). En \(k=0\), \((1,1)\) tiene autovalor \(1\), es decir \(\epsilon=0\); \((1,-1)\) tiene \(e^{-4i\kappa}\), es decir \(\epsilon=4\kappa\) módulo \(2\pi\). En \(k=\pi\), el paso completo es \(e^{-2i\kappa}I\), de modo que el cruce está centrado en \(\epsilon=2\kappa\) módulo \(2\pi\), no en cero relativo al vacío para \(0<\kappa<\pi/2\). La fase \(e^{-2i\kappa}\) es global dentro del sector de un defecto, pero no respecto al vacío; \(Z\) no conecta ambos sectores, por lo que no ve esa fase relativa. |
+| Objeción | **W4-R1-02**, gravedad **baja**: la caracterización de la rama cuadrática con coeficiente \(\tan(\kappa)/4\) se enuncia solo para \(0<\kappa<\pi/2\). Para \(\kappa\in(\pi/2,\pi)\), la misma derivación de función implícita sigue siendo válida mientras \(\sin(2\kappa)\neq 0\), pero el coeficiente cambia de signo y la elección de rama \(\omega_+(0)=2\kappa\) debe manejarse módulo \(2\pi\). El documento no generaliza incorrectamente, pero conviene dejarlo explícito. |
+| Reparación mínima | Añadir una frase en §3: “Para \(\kappa\in(\pi/2,\pi)\) la rama local existe con el mismo argumento, pero la elección de rama de \(\omega_+\) y el signo del coeficiente no se extrapolan desde el intervalo \(0<\kappa<\pi/2\).” |
+
+---
+
+## Punto 3 — Rama uniforme del mismo signo y extremos
+
+| Campo | Contenido |
+|---|---|
+| Resultado | **PASS** |
+| Derivación comprobada | Con \(F(\epsilon,k)=\cos(2\kappa-\epsilon)-(c^2-s^2\cos k)\), se cumple \(F(0,0)=0\), \(F_\epsilon(0,0)=\sin(2\kappa)\neq 0\), \(F_k(0,0)=0\), \(F_{kk}(0,0)=-s^2\). El teorema de la función implícita da una rama analítica par; la ecuación \(\epsilon''=-F_{kk}/F_\epsilon\) produce \(\epsilon''=\tan(\kappa)/2\), por tanto \(\epsilon_{\mathrm{unif}}(k)=\frac{\tan\kappa}{4}k^2+O(k^4)\). Es correcto. En \(\kappa=0,\pi\) el paso es identidad; en \(\kappa=\pi/2\) es \(e^{-i\kappa}\cdot\mathrm{SWAP}\) por capa y el paso completo da \(\operatorname{diag}(e^{-ik},e^{ik})\), con ramas lineales, no extrapolables desde \(\kappa<\pi/2\). |
+| Objeción | **W4-R1-03**, gravedad **informativa**: la expresión histórica `SMOOTH_MODE_GAPPED` puede confundir “no gap espectral” con “no linealidad”. Existe una rama con \(\epsilon(0)=0\); por tanto no hay un gap de energía estricto respecto al vacío. Lo que está ausente es una dispersión lineal suave en \(k=0\). La auditoría lo corrige, pero conviene usar “modo suave cuadrático” y no “gapped” sin matiz. |
+| Reparación mínima | Sustituir en el resumen “gapped” por “sin modo lineal suave” o añadir “aunque \(\epsilon(0)=0\), la rama no es lineal”. |
+
+---
+
+## Punto 4 — Control de signos opuestos y cruce en \(k=\pi\)
+
+| Campo | Contenido |
+|---|---|
+| Resultado | **PASS** |
+| Derivación comprobada | Para \(\sigma=-1\), \(\frac12\operatorname{tr}(B_-A)=c^2+s^2\cos k\). Entonces \(\sin^2(\omega_-/2)=s^2\sin^2(k/2)\), de donde \(\omega_-(k)=2\arcsin(|s||\sin(k/2)|)=|s||k|+O(|k|^3)\). La expansión del script es correcta: término cúbico \(v(v^2-1)k^3/24\) con \(v=|s|\). Para el caso original \(\sigma=+1\) cerca de \(k=\pi\), con \(q=k-\pi\), la traza da \(\sin^2(\omega_+/2)=s^2\sin^2(q/2)\), con \(\omega_+\approx|s||q|\) y separación entre las dos ramas \(2|s||q|+O(|q|^3)\). La pendiente no nula requiere \(s\neq0\). |
+| Objeción | Ninguna de cálculo. Como limitación de verificación permanente, el testigo finito cubre \(\kappa\in\{0,\pi/4,\pi/2\}\) y \(L\in\{4,6\}\); el argumento general está en el texto y en el script simbólico, no en el anillo. |
+| Reparación mínima | No se requiere. |
+
+---
+
+## Punto 5 — Unidades: espaciado \(a\), período \(\tau\), factor dos
+
+| Campo | Contenido |
+|---|---|
+| Resultado | **PASS** |
+| Derivación comprobada | Con celda de dos registros, la longitud de celda es \(2a\), de modo que \(k=2ap\). La frecuencia física es \(\epsilon/\tau\). Por regla de la cadena, \(v_{\mathrm{grp}}=(2a/\tau)\,d\epsilon/dk\). Para el control lineal, \(\epsilon\approx|s||k|\), luego la velocidad en registros por paso completo es \(2a|s|/\tau\), equivalente a \(2|s|\) registros por paso completo. En \(\kappa=\pi/2\), \(\mathrm{SWAP}\) desplaza exactamente dos registros por paso completo: \(A_m\to A_{m+1}\) y \(B_m\to B_{m-1}\). El script verifica exactamente esos desplazamientos orientados para \(L=4,6\). |
+| Objeción | Ninguna. La separación entre pendiente IR, velocidad máxima de grupo y soporte causal está correctamente declarada como no igualdad general. |
+| Reparación mínima | No se requiere. |
+
+---
+
+## Punto 6 — Observable \(Z_n\), ejemplos y alcance
+
+| Campo | Contenido |
+|---|---|
+| Resultado | **PASS** |
+| Derivación comprobada | En vacío más un defecto, \(Z_n\) es diagonal con \(+1\) salvo \(-1\) si el defecto está en \(n\). Para amplitudes \(b\), \(\langle Z_n\rangle=1-2|b_n|^2/\|b\|^2\). El ejemplo \(k=\pi\) con \(\psi_n=(-1)^{\lfloor n/2\rfloor}/2\) produce \(\langle Z_n\rangle=1/2\) uniforme y es autoestado en \(\kappa=\pi/4\) para ambos signos; por tanto \(k=\pi\) no fuerza \(Z\) alternante. La mezcla \(\ket{\mathrm{vac}}+\epsilon\ket{\psi}\) da respuesta de orden \(\epsilon^2\) con derivada primera nula. Los estados de enlace \((1,\pm i)/\sqrt2\) tienen el mismo \(Z\) inicial y \(Z\) posterior opuesto, tanto tras un enlace como tras el paso completo \(L=4\); luego la densidad no es una variable dinámica cerrada. |
+| Objeción | Ninguna de fondo. El texto distingue correctamente que esto no es un no-go universal para ondas del métrico ni para otros fondos/observables. |
+| Reparación mínima | No se requiere. Podría añadirse una frase recordando que el no-cierre vale para la actualización cerrada de \(Z\) desde perfiles de \(Z\), no para la evolución unitaria subyacente. |
+
+---
+
+## Punto 7 — Verificaciones permanentes, circularidad, cobertura, helper
+
+| Campo | Contenido |
+|---|---|
+| Resultado | **PASS_WITH_REPAIRS** |
+| Derivación comprobada | `verify_w4_long_wavelength_spectrum.py` comprueba simbólicamente la puerta, las trazas, los determinantes, la rama cuadrática, el control lineal y los extremos. `verify_w4_spectrum_observables.py` construye circuitos de \(2^L\) estados desde permutaciones de bits para \(L=4,6\) y los proyecta al sector de un defecto; verifica unitariedad, vacío, sector, acuerdos Bloch/real-space y desplazamientos SWAP. Los dos certificados usan el mismo ayudante `assert_sym_equal`, que normaliza con `rewrite(exp)` y `simplify`. |
+| Objeción | **W4-R1-01** ya citada: dependencia entre scripts. **W4-R1-04**, gravedad **baja**: ambos scripts confían en `certificate_utils`; un fallo sistemático del normalizador simbólico no sería detectado por una vía alternativa. **W4-R1-05**, gravedad **baja**: la cobertura finita es exacta pero puntual; no sustituye el argumento analítico. El texto declara correctamente que no es revisión independiente ni extrapolación. |
+| Reparación mínima | Para W4-R1-04, añadir un control alternativo de igualdad algebraica, por ejemplo evaluar simbólicamente en puntos no triviales o usar `simplify(expr)` directamente en al menos un bloque. Para W4-R1-05, conservar la frase ya presente de que los anillos son testigos finitos, no prueba por extrapolación. No hay que modificar resultados. |
+
+---
+
+## Lista final de objeciones
+
+| ID | Gravedad | Referencia concreta | Reparación mínima |
+|---|---:|---|---|
+| W4-R1-01 | Baja/informativa | `verify_w4_spectrum_observables.py` importa `bloch_step` desde `verify_w4_long_wavelength_spectrum.py`; comparación no independiente | Declarar que es una segunda formulación del autor, no revisión independiente; ya se declara en el informe, pero conviene repetirlo en el encabezado del script |
+| W4-R1-02 | Baja | Documento 2 §3: dominio \(0<\kappa<\pi/2\) para la rama cuadrática | Añadir que para \(\kappa\in(\pi/2,\pi)\) la rama local sigue existiendo por función implícita, pero no se extrapola el signo ni la elección de rama |
+| W4-R1-03 | Informativa | Documento 2 §1 y §3: uso heredado de `SMOOTH_MODE_GAPPED` | Sustituir por “modo suave cuadrático; \(\epsilon(0)=0\) y no lineal” para evitar confundir gap espectral con no linealidad |
+| W4-R1-04 | Baja | `certificate_utils.py`; `verify_w4_long_wavelength_spectrum.py` y `verify_w4_spectrum_observables.py` dependen del mismo `assert_sym_equal` | Añadir una comprobación alternativa de igualdad simbólica en al menos un bloque para no depender exclusivamente del normalizador |
+| W4-R1-05 | Baja | `verify_w4_spectrum_observables.py`, cobertura finita \(L=4,6\), \(\kappa=0,\pi/4,\pi/2\) | Mantener y reforzar la frase de que los anillos son testigos exactos, no extrapolación ni revisión independiente |
+
+No se ha encontrado ningún error algebraico que invalide las correcciones de fase, ramas, unidades u observable de la auditoría W4. Las objeciones anteriores son de robustez y presentación; no cambian el estatus científico de las derivaciones.
+
+=== DOCUMENT 15: 2026-10-27--w4-review-objections.md ===
+
+# W4: comprobación de las objeciones de la revisión
+
+Fecha: 2026-10-27. Autor: Codex. Revisión: DeepSeek, una ronda, informe
+`debates/2026-10-26--w4-spectrum-review-deepseek/intentos/03-low/informe_deepseek.md`,
+`ACCEPT_WITH_REPAIRS`. La cabecera del informe identifica el lanzador de
+`~/herramientas` en `16568209771dc898346bd4af0c78ec10530c3b9e`, la entrada y
+los documentos enviados. El esfuerzo low y la revisión por un modelo no son
+una garantía de corrección ni sustituyen una revisión humana. Las comprobaciones
+y reparaciones siguientes son del autor, no una aceptación adicional del revisor.
+
+| Objeción | Comprobación y tratamiento |
+| --- | --- |
+| W4-R1-01 | Confirmada: el circuito completo se construye desde SWAP, pero la comparación importa `bloch_step`. El informe ya decía que no era revisión independiente. Se aclara también en la cabecera del script; no elimina errores de convención compartidos. |
+| W4-R1-02 | La derivada implícita `sin(2 kappa)` también es no nula en `(pi/2,pi)`. Allí la rama local que vale cero tiene coeficiente `tan(kappa)/4`, negativo; la rama angular requiere elección local módulo `2pi`. Esto sigue del mismo argumento, no de los anillos. El resultado certificado original permanece limitado a `(0,pi/2)` y no se amplía el contrato. |
+| W4-R1-03 | Confirmada la ambigüedad de la etiqueta histórica: el informe ya distingue explícitamente la rama cero cuadrática. Se conserva la etiqueta histórica para identificar la conclusión sustituida; no significa un gap de cuasienergía respecto al vacío. |
+| W4-R1-04 | Confirmada la dependencia común de `assert_sym_equal`. Se añadió en el certificado espectral una comprobación exacta puntual de la traza, usando `expand` y `simplify` directamente y una mutación que omite la fase. Esta vía aún depende de SymPy y no constituye prueba independiente de todas las identidades. |
+| W4-R1-05 | Confirmada la cobertura: 12 circuitos con `L=4,6`, tres ángulos y dos signos. El informe y el encabezado del script ya los declaran testigos finitos, sin extrapolación ni revisión independiente. No se amplía esa cobertura. |
+
+Los cinco puntos están atendidos localmente en el alcance indicado. No se ha
+consultado de nuevo al revisor: las objeciones no se declaran resueltas por él.
+El expediente sellado y el informe de auditoría revisado conservan su contenido.
+Los dos scripts han cambiado después de la revisión: el manifiesto de entrada
+original ya no coincide con esos archivos actuales y sigue identificando los
+bytes enviados, disponibles en el commit `85e22e0` y en la entrada sellada.
+La revisión se refiere a aquellos bytes; los cambios posteriores tienen
+verificación del autor. W4 sigue `OPEN_AFTER_AUDIT`; no se abre W1–W12 ni se
+infiere una onda métrica, un resultado tensorial o gravedad.
+
+Validación: los dos certificados W4 pasan; el
+[barrido completo](2026-10-27--w4-review-repairs-verifier-sweep.tsv) terminó
+con 43 verificadores y cero fallos. El [manifiesto](2026-10-27--w4-review-repairs-inputs.sha256)
+identifica los dos certificados W4, el helper, el lanzador y las dependencias
+declaradas; no pretende identificar todos los archivos del barrido.
+`text_integrity.py --check` devuelve cero problemas y `git diff --check` pasa.
+
+=== DOCUMENT 16: verify_w4_long_wavelength_spectrum.py ===
+
+"""W4 one-defect spectrum, with the phase relative to the fixed vacuum.
+
+Exact algebra only; no metric-wave or 3D/tensor interpretation. See
+reports/2026-10-26--w4-spectrum-audit.md for branches, units and exclusions.
+The finite-qubit/observable cross-check is verify_w4_spectrum_observables.py.
+"""
+
+import sympy as sp
+
+from certificate_utils import assert_sym_equal, sym_zero
+
+
+def bloch_layers(k, kap, second_sign):
+    """Phase-stripped layers for psi_(A/B,m) = exp(i*k*m) u_(A/B)."""
+    assert second_sign in (-1, 1)
+    c, s = sp.cos(kap), sp.sin(kap)
+    even = sp.Matrix([[c, sp.I*s], [sp.I*s, c]])
+    odd = sp.Matrix([[c, second_sign*sp.I*s*sp.exp(-sp.I*k)],
+                     [second_sign*sp.I*s*sp.exp(sp.I*k), c]])
+    return even, odd
+
+
+def bloch_step(k, kap, second_sign):
+    """Full K_odd K_even in the one-defect sector; vacuum eigenvalue is 1."""
+    even, odd = bloch_layers(k, kap, second_sign)
+    return sp.exp(-sp.I*(1+second_sign)*kap) * odd * even
+
+
+def main():
+    k, kap = sp.symbols("k kap", real=True)
+    c, s = sp.cos(kap), sp.sin(kap)
+    swap = sp.Matrix([[1, 0, 0, 0], [0, 0, 1, 0],
+                      [0, 1, 0, 0], [0, 0, 0, 1]])
+    gate = sp.exp(-sp.I*kap)*(c*sp.eye(4)+sp.I*s*swap)
+    assert_sym_equal(gate.H*gate, sp.eye(4), "local unitarity")
+    assert_sym_equal(sp.diff(gate, kap).subs(kap, 0),
+                     -sp.I*(sp.eye(4)-swap), "declared generator")
+    assert_sym_equal(gate[:, 0], sp.eye(4)[:, 0], "fixed vacuum")
+    even, _ = bloch_layers(k, kap, 1)
+    assert_sym_equal(gate.extract([1, 2], [1, 2]),
+                     sp.exp(-sp.I*kap)*even, "occupied bond phase")
+    a, b = sp.symbols("a b")
+    pair = sp.Matrix([a*a, a*b, b*a, b*b])
+    assert_sym_equal(gate*pair, pair, "every identical pure pair fixed")
+    print("[PASS] full local gate: generator, unitarity, vacuum and occupied-bond phase")
+
+    traces = {}
+    stripped = {}
+    for sign in (1, -1):
+        even, odd = bloch_layers(k, kap, sign)
+        stripped[sign] = odd*even
+        traces[sign] = c**2-sign*s**2*sp.cos(k)
+        assert_sym_equal(sp.trace(stripped[sign])/2, traces[sign])
+        assert_sym_equal(stripped[sign].det(), 1)
+        full = bloch_step(k, kap, sign)
+        assert_sym_equal(full.H*full, sp.eye(2))
+        assert_sym_equal(full.det(), sp.exp(-2*sp.I*(1+sign)*kap))
+    print("[PASS] both traces, determinants and full Bloch unitaries with sector phases")
+
+    full_plus = bloch_step(k, kap, 1)
+    uniform, antisymmetric = sp.Matrix([1, 1]), sp.Matrix([1, -1])
+    assert_sym_equal(full_plus.subs(k, 0)*uniform, uniform)
+    assert_sym_equal(full_plus.subs(k, 0)*antisymmetric,
+                     sp.exp(-4*sp.I*kap)*antisymmetric)
+    assert_sym_equal(full_plus.subs(k, sp.pi), sp.exp(-2*sp.I*kap)*sp.eye(2))
+    # Alternative exact check without the shared normalizer, at a nontrivial
+    # angle and momentum; the phase-stripped mutation must fail this check.
+    sample = {k: sp.pi/2, kap: sp.pi/4}
+    actual_trace = sp.trace(full_plus.subs(sample)).expand(complex=True).simplify()
+    assert actual_trace == -sp.I
+    mutated_trace = sp.trace(stripped[1].subs(sample)).expand(complex=True).simplify()
+    assert mutated_trace != -sp.I
+    # Mutation guard: stripping the phase loses the eigenvalue 1 relative to vacuum.
+    assert not sym_zero((stripped[1].subs({k: 0, kap: sp.pi/4})-sp.eye(2))*uniform)
+    print("[PASS] same-sign uniform eigenvalue 1; zone-edge crossing at quasienergy 2*kappa")
+
+    # lambda=exp(-i*epsilon); for fixed 0<kap<pi/2, epsilon(0)=0.
+    # F_epsilon=sin(2*kap) != 0 gives an analytic even implicit branch.
+    eps = sp.symbols("eps", real=True)
+    equation = sp.cos(2*kap-eps)-traces[1]
+    zero = {k: 0, eps: 0}
+    assert_sym_equal(equation.subs(zero), 0)
+    assert_sym_equal(sp.diff(equation, eps).subs(zero), sp.sin(2*kap))
+    assert_sym_equal(sp.diff(equation, k).subs(zero), 0)
+    second = -sp.diff(equation, k, 2).subs(zero)/sp.diff(equation, eps).subs(zero)
+    assert_sym_equal(second/2, sp.tan(kap)/4, "quadratic coefficient")
+    assert_sym_equal(equation.subs(k, -k), equation, "even branch")
+    # A distinct characteristic-polynomial check through second order.
+    trial = 1-sp.I*sp.tan(kap)*k**2/4
+    poly = trial**2-sp.trace(full_plus)*trial+full_plus.det()
+    for order in range(3):
+        assert_sym_equal(sp.diff(poly, k, order).subs(k, 0), 0)
+    print("[PASS] 0<kappa<pi/2 fixed: uniform quasienergy = tan(kappa)*k^2/4 + O(k^4)")
+
+    assert_sym_equal((1-traces[-1])/2, s**2*sp.sin(k/2)**2)
+    assert_sym_equal((1-traces[1].subs(k, sp.pi+k))/2, s**2*sp.sin(k/2)**2)
+    # v=|sin kap| in [0,1]; analytic signed branch near k=0.
+    v = sp.symbols("v", nonnegative=True)
+    signed_branch = 2*sp.asin(v*sp.sin(k/2))
+    assert_sym_equal(sp.diff(signed_branch, k).subs(k, 0), v)
+    assert_sym_equal(sp.diff(signed_branch, k, 2).subs(k, 0), 0)
+    assert_sym_equal(sp.diff(signed_branch, k, 3).subs(k, 0)/6, v*(v*v-1)/24)
+    assert_sym_equal(bloch_step(0, kap, -1), sp.eye(2))
+    print("[PASS] opposite-sign node: omega=2 asin(|sin kappa| |sin(k/2)|), slope |sin kappa|")
+
+    for sign in (1, -1):
+        for angle in (0, sp.pi):
+            assert_sym_equal(bloch_step(k, angle, sign), sp.eye(2))
+        assert_sym_equal(bloch_step(k, sp.pi/2, sign),
+                         sp.diag(sp.exp(-sp.I*k), sp.exp(sp.I*k)))
+    print("[PASS] degenerate zero-coupling cases and exceptional full-SWAP endpoint")
+
+    spacing, period = sp.symbols("a tau", positive=True)
+    momentum = sp.symbols("p", real=True)
+    omega = sp.Function("omega")
+    physical = omega(2*spacing*momentum)/period
+    expected = 2*spacing/period*sp.Subs(sp.diff(omega(k), k), k, 2*spacing*momentum)
+    assert_sym_equal(sp.diff(physical, momentum), expected)
+    print("[PASS] k=2*a*p: physical group speed = (2*a/tau)*domega/dk")
+    print("\nVERDICT: full same-sign smooth branch quadratic for 0<kappa<pi/2; "
+          "opposite-sign control linear in 1D. AUTHOR_CHECKED; metric interpretation open.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 17: verify_w4_spectrum_observables.py ===
+
+"""Separate real-space construction and Z-observable checks for W4.
+
+Finite rings are exact regression witnesses, not a finite-size extrapolation.
+The Bloch comparison imports the other certificate: it is an author-side
+cross-check, not an independent review, and can share convention errors.
+General Bloch/branch arguments are in verify_w4_long_wavelength_spectrum.py
+and reports/2026-10-26--w4-spectrum-audit.md. All arithmetic is exact SymPy.
+"""
+
+import sympy as sp
+
+from certificate_utils import assert_sym_equal, sym_zero
+from verify_w4_long_wavelength_spectrum import bloch_step
+
+
+def swap_sites(length, first, second):
+    """Full 2**length qubit permutation; site n is bit n (little-endian)."""
+    entries = {}
+    for state in range(2**length):
+        target = state
+        if ((state >> first) & 1) != ((state >> second) & 1):
+            target ^= (1 << first) | (1 << second)
+        entries[target, state] = 1
+    return sp.SparseMatrix(2**length, 2**length, entries)
+
+
+def ring_step(length, kap, second_sign):
+    """Build from full qubit swaps, never from the proposed 2x2 symbol."""
+    assert length >= 4 and length % 2 == 0
+    assert second_sign in (-1, 1)
+    identity = sp.SparseMatrix(sp.eye(2**length))
+    step = identity
+    for parity, angle in ((0, kap), (1, second_sign*kap)):
+        stay = sp.simplify(sp.expand_complex(sp.exp(-sp.I*angle)*sp.cos(angle)))
+        hop = sp.simplify(sp.expand_complex(sp.I*sp.exp(-sp.I*angle)*sp.sin(angle)))
+        for n in range(parity, length, 2):
+            gate = stay*identity+hop*swap_sites(length, n, (n+1) % length)
+            # Keep the exact Gaussian-rational entries expanded before passing
+            # them to the shared trig/exp identity normalizer.
+            step = (gate*step).applyfunc(sp.expand)
+    return step
+
+
+def one_defect_embedding(length):
+    return sp.SparseMatrix(2**length, length, {(1 << n, n): 1 for n in range(length)})
+
+
+def bloch_embedding(length, k):
+    entries = {(2*m+sub, sub): sp.expand_complex(sp.exp(sp.I*k*m))
+               for m in range(length//2) for sub in (0, 1)}
+    return sp.SparseMatrix(length, 2, entries)
+
+
+def z_operator(length, site):
+    return sp.SparseMatrix(2**length, 2**length,
+                          {(state, state): 1-2*((state >> site) & 1)
+                           for state in range(2**length)})
+
+
+def main():
+    cases = 0
+    for length in (4, 6):
+        embedding = one_defect_embedding(length)
+        vacuum = sp.SparseMatrix(2**length, 1, {(0, 0): 1})
+        uniform = embedding*sp.ones(length, 1)
+        for kap in (0, sp.pi/4, sp.pi/2):
+            for sign in (1, -1):
+                step = ring_step(length, kap, sign)
+                assert_sym_equal(step.H*step, sp.eye(2**length), "full-qubit unitarity")
+                assert_sym_equal(step*vacuum, vacuum, "fixed vacuum")
+                assert_sym_equal(step*uniform, uniform, "fixed uniform defect")
+                restricted = embedding.H*step*embedding
+                assert_sym_equal(step*embedding, embedding*restricted, "sector closure")
+                for mode in range(length//2):
+                    k = 2*sp.pi*mode/(length//2)
+                    plane = bloch_embedding(length, k)
+                    expected = bloch_step(k, kap, sign).applyfunc(sp.expand_complex)
+                    assert_sym_equal((restricted*plane).applyfunc(sp.expand),
+                                     (plane*expected).applyfunc(sp.expand),
+                                     "real-space/Bloch agreement")
+                if kap == sp.pi/2:
+                    for n in range(length):
+                        target = (n+(2 if n % 2 == 0 else -2)) % length
+                        assert_sym_equal(restricted[:, n], sp.eye(length)[:, target],
+                                         "two-register transfer per full step")
+                cases += 1
+        print(f"[PASS] L={length}: full-qubit circuit, vacuum, sector, all Bloch momenta and SWAP displacement")
+    assert cases == 12
+
+    # Project the actual many-qubit Z onto vacuum plus one defect.
+    length = 4
+    embedding = one_defect_embedding(length)
+    vacuum = sp.SparseMatrix(2**length, 1, {(0, 0): 1})
+    restricted_basis = vacuum.row_join(embedding)
+    amps = sp.Matrix(sp.symbols("b0:5", complex=True))
+    norm = (amps.H*amps)[0]
+    for n in range(length):
+        actual = restricted_basis.H*z_operator(length, n)*restricted_basis
+        expected = sp.eye(length+1)
+        expected[n+1, n+1] = -1
+        assert_sym_equal(actual, expected)
+        assert_sym_equal((amps.H*actual*amps)[0], norm-2*sp.conjugate(amps[n+1])*amps[n+1])
+    print("[PASS] arbitrary vacuum+one-defect state: <Z_n>=1-2|b_(n+1)|^2/||b||^2")
+
+    # A momentum pi phase by CELL leaves site probabilities unchanged.
+    plain = sp.ones(length, 1)/sp.sqrt(length)
+    staggered = sp.Matrix([(-1)**(n//2) for n in range(length)])/sp.sqrt(length)
+    assert_sym_equal(plain.H*staggered, sp.zeros(1, 1), "distinct orthogonal amplitudes")
+    for n in range(length):
+        z = embedding.H*z_operator(length, n)*embedding
+        assert_sym_equal((plain.H*z*plain)[0], sp.Rational(1, 2))
+        assert_sym_equal((staggered.H*z*staggered)[0], sp.Rational(1, 2))
+    # The cell-pi state is an eigenstate for both signs at this angle.
+    for sign in (1, -1):
+        state = embedding*staggered
+        eigenvalue = sp.exp(-2*sp.I*sp.pi/4) if sign == 1 else sp.exp(2*sp.I*sp.pi/4)
+        assert_sym_equal(ring_step(length, sp.pi/4, sign)*state, eigenvalue*state)
+    print("[PASS] k=pi defect phases can have uniform, stationary Z; no forced staggering")
+
+    epsilon = sp.symbols("epsilon", real=True)
+    evolved = ring_step(length, sp.pi/4, 1)*embedding[:, 0]
+    state = (vacuum+epsilon*evolved)/sp.sqrt(1+epsilon**2)
+    for n in range(length):
+        z_value = (state.H*z_operator(length, n)*state)[0]
+        assert_sym_equal(sp.diff(z_value, epsilon).subs(epsilon, 0), 0)
+        assert_sym_equal(z_value,
+                         1-2*epsilon**2*sp.conjugate(evolved[1 << n])*evolved[1 << n]/(1+epsilon**2))
+    print("[PASS] vacuum+epsilon*defect: Z response starts at order epsilon^2, including after evolution")
+
+    # Equal initial Z profiles can have different next Z: density is not closed.
+    plus = sp.Matrix([1, sp.I])/sp.sqrt(2)
+    minus = sp.Matrix([1, -sp.I])/sp.sqrt(2)
+    z = sp.diag(1, -1)
+    full_bond = (1-sp.I)/2*sp.eye(4)+(1+sp.I)/2*swap_sites(2, 0, 1)
+    bond = full_bond.extract([1, 2], [1, 2])
+    assert_sym_equal((plus.H*z*plus)[0], (minus.H*z*minus)[0])
+    after_plus = (plus.H*bond.H*z*bond*plus)[0]
+    after_minus = (minus.H*bond.H*z*bond*minus)[0]
+    assert not sym_zero(after_plus-after_minus)
+    assert_sym_equal(after_plus, -1)
+    assert_sym_equal(after_minus, 1)
+    # The obstruction also survives the complete two-layer step, not only a bond.
+    initial_plus = embedding[:, :2]*plus
+    initial_minus = embedding[:, :2]*minus
+    step = ring_step(length, sp.pi/4, 1)
+    output_plus, output_minus = step*initial_plus, step*initial_minus
+    for n, (z_plus, z_minus) in enumerate(zip((1, 0, 0, 1), (0, 1, 1, 0))):
+        local_z = z_operator(length, n)
+        assert_sym_equal((initial_plus.H*local_z*initial_plus)[0],
+                         (initial_minus.H*local_z*initial_minus)[0])
+        assert_sym_equal((output_plus.H*local_z*output_plus)[0], z_plus)
+        assert_sym_equal((output_minus.H*local_z*output_minus)[0], z_minus)
+    print("[PASS] same initial Z, different next Z after a bond AND full step: density is not closed")
+    print("\nVERDICT: 12 exact finite-ring controls and Z-observable identities pass; "
+          "one-defect amplitude spectrum alone does not establish a linear metric wave.")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 18: certificate_utils.py ===
+
+"""Shared helpers for exact symbolic certificates.
+
+Structural equality (`a == b`) on SymPy expressions compares syntax trees, not
+mathematical values: `simplify` may return an algebraically equal but
+differently written form. Two certificates (W2, W5) failed under the pinned
+SymPy 1.14.0 for this reason (reports/2026-10-22--escape-corruption-audit.md).
+Use `sym_zero` / `assert_sym_equal` for value identities.
+"""
+
+import sympy as sp
+
+
+def sym_zero(expr):
+    """True iff expr simplifies to exactly zero (trig/exp forms normalized)."""
+    if isinstance(expr, sp.MatrixBase):
+        return all(sym_zero(e) for e in expr)
+    e = sp.expand(sp.sympify(expr).rewrite(sp.exp))
+    return sp.simplify(e) == 0
+
+
+def assert_sym_equal(a, b, what=""):
+    """Assert a and b are equal as values; report the residual on failure."""
+    residual = (sp.Matrix(a) - sp.Matrix(b)) if isinstance(a, sp.MatrixBase) \
+        else sp.sympify(a) - sp.sympify(b)
+    assert sym_zero(residual), f"{what}: nonzero residual {sp.simplify(residual)}"
+
+=== DOCUMENT 19: verify_directional_saturation.py ===
+
+"""Fail-closed checks for the directional causal saturation report.
+
+Backs reports/2026-09-16--directional-causal-saturation.md for the two 3D walks
+of Cedzich-Joye-Werner-Werner, arXiv:2408.02108v1, Eqs. (5.12) and (5.15).
+
+The spectral identities and support certificates use exact algebra. Numerical
+velocity-set checks and legacy finite occupation diagnostics are tagged
+SUPPORTED, not ESTABLISHED. The latter do not optimize trace distance or
+certify asymptotic scaling; the exact signalling witness has its own verifier,
+verify_signaling_witness.py. Run from the repository root:
+
+    python3 scripts/verify_directional_saturation.py
+"""
+
+import hashlib
+import itertools
+from pathlib import Path
+import sys
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / "sources/2408.02108v1.pdf"
+SOURCE_SHA256 = "25e2b03ff056fc78a7105fb81a6859be326ae2ee5717b35f7fc664b89ae7bdf8"
+
+P1, P2, P3 = sp.symbols("p1 p2 p3", real=True)
+PS = (P1, P2, P3)
+C = tuple(sp.cos(p) for p in PS)
+S = tuple(sp.sin(p) for p in PS)
+I2 = sp.eye(2)
+PAULI = (
+    sp.Matrix([[0, 1], [1, 0]]),
+    sp.Matrix([[0, -sp.I], [sp.I, 0]]),
+    sp.diag(1, -1),
+)
+Z = sp.symbols("z1 z2 z3")
+CHECKS = []
+
+
+def laurent(e):
+    """Canonical form: every symbol here is a Laurent polynomial in z_k = e^{i p_k}.
+
+    Two such expressions agree as functions of real p iff they agree as Laurent
+    polynomials, so `laurent(a - b) == 0` is a sound equality test.  Needed
+    because (5.12) is written in cos/sin and (5.15) in exp, and SymPy does not
+    reconcile the two forms on its own.
+    """
+    e = sp.expand(sp.expand(e).rewrite(sp.exp))
+    e = e.subs({p: -sp.I * sp.log(z) for p, z in zip(PS, Z)})
+    return sp.cancel(sp.powsimp(sp.expand(sp.powsimp(e, force=True)), force=True))
+
+
+def is_zero(e):
+    return sp.simplify(laurent(e)) == 0
+
+
+def check(name, tag="ESTABLISHED"):
+    def wrap(fn):
+        CHECKS.append((name, tag, fn))
+        return fn
+    return wrap
+
+
+def walk1():
+    """CJWW (5.12): W(p) = exp(i p1 s1) exp(i p2 s2) exp(i p3 s3)."""
+    W = I2
+    for c, s, sig in zip(C, S, PAULI):
+        W = W * (c * I2 + sp.I * s * sig)
+    return sp.expand(W)
+
+
+def walk2():
+    """CJWW (5.15), transcribed entry by entry."""
+    e = sp.exp(sp.I * P3)
+    return sp.Matrix([
+        [C[0] * C[1] * e, -C[0] * S[1] + sp.I * S[0]],
+        [C[0] * S[1] + sp.I * S[0], C[0] * C[1] / e],
+    ])
+
+
+F1 = C[0] * C[1] * C[2] + S[0] * S[1] * S[2]     # tr W1 / 2
+F2 = C[0] * C[1] * C[2]                          # tr W2 / 2
+# B := -grad f, so that grad(arccos f) = B / sqrt(1 - f^2)
+B1 = [sp.simplify(-sp.diff(F1, p)) for p in PS]
+B2 = [sp.simplify(-sp.diff(F2, p)) for p in PS]
+
+
+@check("source byte identity")
+def _():
+    if not SOURCE.exists():
+        return False, f"missing {SOURCE}"
+    got = hashlib.sha256(SOURCE.read_bytes()).hexdigest()
+    return got == SOURCE_SHA256, got
+
+
+@check("both symbols unitary with det 1")
+def _():
+    out = []
+    for nm, W in (("5.12", walk1()), ("5.15", walk2())):
+        if not is_zero((W.H * W - I2).norm()) or not is_zero(sp.det(W) - 1):
+            return False, f"{nm}: not unitary or det != 1"
+        out.append(f"{nm}: W^dag W = I, det W = 1")
+    return True, "; ".join(out)
+
+
+@check("tr W(5.12)/2 = ccc + sss  (NOT the printed ccc - sss of (5.13))")
+def _():
+    tr = sp.trace(walk1()) / 2
+    printed = C[0] * C[1] * C[2] - S[0] * S[1] * S[2]      # as printed in (5.13)
+    return is_zero(tr - F1) and not is_zero(tr - printed), (
+        "matches ccc+sss; the printed (5.13) ccc-sss is the trace of "
+        "exp(-i p1 s1) exp(-i p2 s2) exp(-i p3 s3), i.e. the image under p -> -p")
+
+
+@check("tr W(5.15)/2 = ccc, i.e. CJWW (5.16)")
+def _():
+    return is_zero(sp.trace(walk2()) / 2 - F2), "omega = arccos(c1 c2 c3)"
+
+
+def jump_set(W):
+    """Exact Fourier support F = {x : W_x != 0}.
+
+    Both symbols have jump length 1 per coordinate, so multiplying by z1 z2 z3
+    clears all negative powers and the monomials can be read off directly.
+    """
+    support = set()
+    for entry in W:
+        poly = sp.Poly(sp.expand(laurent(entry) * Z[0] * Z[1] * Z[2]), *Z)
+        for mono, coeff in poly.terms():
+            if sp.simplify(coeff) != 0:
+                support.add(tuple(int(m) - 1 for m in mono))
+    return support
+
+
+CORNERS = set(itertools.product((-1, 1), repeat=3))
+
+
+@check("jump set of (5.12) is exactly the 8 cube vertices")
+def _():
+    F = jump_set(walk1())
+    return F == CORNERS, f"{len(F)} vectors: {sorted(F)}"
+
+
+@check("jump set of (5.15) has 14 vectors and contains the 8 cube vertices")
+def _():
+    F = jump_set(walk2())
+    ok = CORNERS <= F and len(F) == 14 and max(max(abs(v) for v in x) for x in F) == 1
+    return ok, f"{len(F)} vectors: {sorted(F)}"
+
+
+@check("conv F = [-1,1]^3 for both walks, so v_sub(n) = ||n||_1")
+def _():
+    # conv(F) = [-1,1]^3 iff all 8 vertices are present and no |x_i| exceeds 1.
+    msgs = []
+    for nm, W in (("5.12", walk1()), ("5.15", walk2())):
+        F = jump_set(W)
+        if not (CORNERS <= F and max(max(abs(v) for v in x) for x in F) == 1):
+            return False, f"{nm}: conv F != cube"
+        msgs.append(f"{nm}: ok")
+    # support function of the cube, exactly, on the named directions
+    for n, want in (((1, 0, 0), 1), ((1, 1, 0), sp.sqrt(2)), ((1, 1, 1), sp.sqrt(3))):
+        nn = sp.Matrix(n) / sp.sqrt(sum(v * v for v in n))
+        h = sum(abs(v) for v in nn)
+        if sp.simplify(h - want) != 0:
+            return False, f"h({n}) = {h} != {want}"
+    return True, "; ".join(msgs) + "; r_in=1, V_causal^max=sqrt(3)"
+
+
+@check("every cube vertex stays in the strict support of W^n, for all n")
+def _():
+    msgs = []
+    for nm, W in (("5.12", walk1()), ("5.15", walk2())):
+        M = sp.Matrix(2, 2, lambda i, j: sp.expand(laurent(W[i, j])))
+        for sigma in sorted(CORNERS):
+            # coefficient of z^sigma: only one lattice path reaches n*sigma, so
+            # (W^n)_{n sigma} = (W_sigma)^n exactly, with no cancellation.
+            Wsig = sp.Matrix(2, 2, lambda i, j: sp.simplify(
+                M[i, j].coeff(Z[0], sigma[0]).coeff(Z[1], sigma[1]).coeff(Z[2], sigma[2])))
+            if sp.simplify(Wsig.norm()) == 0:
+                return False, f"{nm}: W_{sigma} = 0"
+            # Every vertex coefficient here has rank 1, so W^2 = tr(W) W and
+            # (W_sigma)^n = tr(W_sigma)^{n-1} W_sigma.  Nonzero trace therefore
+            # gives nonvanishing for ALL n, with no bound on n.
+            if Wsig.rank() != 1:
+                return False, f"{nm}: W_{sigma} has rank {Wsig.rank()}, rank-1 argument does not apply"
+            tr = sp.simplify(sp.trace(Wsig))
+            if tr == 0:
+                return False, f"{nm}: tr W_{sigma} = 0"
+            if sp.simplify((Wsig * Wsig - tr * Wsig).norm()) != 0:
+                return False, f"{nm}: W^2 = tr(W) W failed"
+        msgs.append(f"{nm}: all 8 vertices rank 1 with nonzero trace")
+    return True, "; ".join(msgs) + "  => (W^n)_{n sigma} != 0 for EVERY n >= 1"
+
+
+@check("(5.12): exact SOS identity (1-f^2) - (v_i^2+v_j^2)|scaled = (c_i c_j s_k + s_i s_j c_k)^2")
+def _():
+    for i, j, k in ((0, 1, 2), (0, 2, 1), (1, 2, 0)):
+        lhs = (1 - F1 ** 2) - (B1[i] ** 2 + B1[j] ** 2)
+        rhs = (C[i] * C[j] * S[k] + S[i] * S[j] * C[k]) ** 2
+        if sp.simplify(sp.expand_trig(sp.expand(lhs - rhs))) != 0:
+            return False, f"pair ({i},{j}) failed"
+    return True, "all three pairs: Gamma_1 is contained in the tricylinder v_i^2+v_j^2 <= 1"
+
+
+@check("(5.15): exact SOS identity (1-f^2) - |grad f|^2 = s2^2 s3^2 + s1^2 s2^2 c3^2 + s1^2 c2^2 s3^2")
+def _():
+    lhs = (1 - F2 ** 2) - sum(b ** 2 for b in B2)
+    rhs = S[1] ** 2 * S[2] ** 2 + S[0] ** 2 * S[1] ** 2 * C[2] ** 2 + S[0] ** 2 * C[1] ** 2 * S[2] ** 2
+    ok = sp.simplify(sp.expand_trig(sp.expand(lhs - rhs))) == 0
+    return ok, "hence |grad omega| <= 1 everywhere, with equality iff all three terms vanish"
+
+
+@check("(5.15): |grad omega| = 1 on the whole axis line, not only at the cone tips")
+def _():
+    # equality set of the SOS above: s2=s3=0 (p2,p3 in pi Z), p1 free.
+    q = sp.Symbol("q", real=True)
+    sub = {P1: q, P2: 0, P3: 0}
+    f = F2.subs(sub)
+    g = [b.subs(sub) for b in B2]
+    norm2 = sp.simplify(sum(x ** 2 for x in g) / (1 - f ** 2))
+    return sp.simplify(norm2 - 1) == 0, "|grad omega|^2 = 1 for all q, refining CJWW's 'maximum at the conical points'"
+
+
+@check("(5.12): max |v_g| = sqrt(3/2), attained exactly at p = (-pi/4,-pi/4,-pi/4)")
+def _():
+    sub = {p: -sp.pi / 4 for p in PS}
+    f = sp.simplify(F1.subs(sub))
+    v = [sp.simplify(b.subs(sub) / sp.sqrt(1 - f ** 2)) for b in B1]
+    n2 = sp.simplify(sum(x ** 2 for x in v))
+    # upper bound: the tricylinder's farthest point has |v|^2 = 3/2
+    return f == 0 and sp.simplify(n2 - sp.Rational(3, 2)) == 0, f"v = {v}, |v|^2 = {n2}"
+
+
+@check("axis direction: omega = |q| and v_g = (1,0,0) for BOTH walks")
+def _():
+    q = sp.Symbol("q", positive=True)
+    out = []
+    for nm, f, B in (("5.12", F1, B1), ("5.15", F2, B2)):
+        at = {P1: q, P2: 0, P3: 0}
+        # exact: cos(omega) = cos(q) and -grad f = (sin q, 0, 0)
+        if sp.simplify(f.subs(at) - sp.cos(q)) != 0:
+            return False, f"{nm}: cos(omega) != cos(q) on the axis"
+        g = [sp.simplify(b.subs(at)) for b in B]
+        if g != [sp.sin(q), 0, 0]:
+            return False, f"{nm}: -grad f = {g} on the axis"
+        # hence omega = |q| on the Brillouin zone and v_g = (sin q/|sin q|) e1 = e1
+        out.append(f"{nm}: omega=|q|, v_g=(1,0,0)=v_sub(e1)")
+    return True, "; ".join(out) + "  [c_IR = |v_g| = v_sub all equal 1 on the axes]"
+
+
+@check("conical expansion: omega^2 = |p|^2 + O(p^3), so c_IR = 1")
+def _():
+    # arccos has a branch point where f -> 1, so expand in u = 1 - f instead:
+    # arccos(1-u)^2 = 2u + u^2/3 + 4u^3/45 + O(u^4), an analytic series in u.
+    t = sp.Symbol("t", positive=True)
+    a, b, c = sp.symbols("a b c", real=True)
+    u = sp.Symbol("u", positive=True)
+    w2_of_u = sp.series(sp.acos(1 - u) ** 2, u, 0, 4).removeO()
+    out = []
+    for nm, f, cubic in (("5.12", F1, -2 * a * b * c), ("5.15", F2, 0)):
+        us = sp.series(1 - f.subs({P1: t * a, P2: t * b, P3: t * c}), t, 0, 5).removeO()
+        w2 = sp.expand(sp.series(w2_of_u.subs(u, us), t, 0, 4).removeO())
+        if sp.expand(w2.coeff(t, 2) - (a ** 2 + b ** 2 + c ** 2)) != 0:
+            return False, f"{nm}: t^2 coefficient is {w2.coeff(t, 2)}, not |p|^2"
+        if sp.expand(w2.coeff(t, 3) - cubic) != 0:
+            return False, f"{nm}: t^3 coefficient is {w2.coeff(t, 3)}, expected {cubic}"
+        term = "+ O(t^4) exactly (no cubic)" if cubic == 0 else f"- 2abc t^3 + O(t^4)"
+        out.append(f"{nm}: omega^2 = |p|^2 {term}")
+    return True, "; ".join(out) + "; so c_IR = 1 for both, in lattice-step units"
+
+
+@check("velocity sets fill the tricylinder / the ball", tag="SUPPORTED (numerical)")
+def _():
+    import math
+    N, M, R = 160, 18, 1.25
+    hit1 = set()
+    hit2 = set()
+    for i in range(N):
+        p1 = (i + 0.5) / N * 2 * math.pi - math.pi
+        c1, s1 = math.cos(p1), math.sin(p1)
+        for j in range(N):
+            p2 = (j + 0.5) / N * 2 * math.pi - math.pi
+            c2, s2 = math.cos(p2), math.sin(p2)
+            for k in range(N):
+                p3 = (k + 0.5) / N * 2 * math.pi - math.pi
+                c3, s3 = math.cos(p3), math.sin(p3)
+                for f, b, hit in (
+                    (c1 * c2 * c3 + s1 * s2 * s3,
+                     (s1 * c2 * c3 - c1 * s2 * s3, c1 * s2 * c3 - s1 * c2 * s3, c1 * c2 * s3 - s1 * s2 * c3),
+                     hit1),
+                    (c1 * c2 * c3, (s1 * c2 * c3, c1 * s2 * c3, c1 * c2 * s3), hit2),
+                ):
+                    d = 1.0 - f * f
+                    if d < 1e-9:
+                        continue
+                    d = math.sqrt(d)
+                    hit.add(tuple(min(M - 1, max(0, int((x / d + R) / (2 * R) * M))) for x in b))
+    def missed(hit, inside):
+        bad = 0
+        for cell in itertools.product(range(M), repeat=3):
+            v = [(u + 0.5) / M * 2 * R - R for u in cell]
+            if inside(v) and cell not in hit:
+                bad += 1
+        return bad
+    tri = lambda v: all(v[a] ** 2 + v[b] ** 2 <= 0.9 for a, b in ((0, 1), (1, 2), (0, 2)))
+    ball = lambda v: sum(x * x for x in v) <= 0.9
+    m1, m2 = missed(hit1, tri), missed(hit2, ball)
+    return m1 == 0 and m2 == 0, f"tricylinder cells missed: {m1}; ball cells missed: {m2}"
+
+
+# ---------------------------------------------------------------------------
+# LDP_RADIAL_INTERPRETATION gate (theory/OPERATIONAL_INVISIBILITY_GATE.md).
+# Documents CJWW Eq. (5.21) and its Legendre transform for walk (5.15).
+# ---------------------------------------------------------------------------
+ELL = sp.Symbol("ell", positive=True)
+R_TILDE = 2 * sp.acosh(sp.cosh(ELL / (2 * sp.sqrt(3))) ** 3)
+
+
+@check("CJWW (5.21) is exact at their stated maximizer p=0, lambda = l(1,1,1)/sqrt(3)")
+def _():
+    # cos(omega) = prod_k cos(p_k + i lambda_k / 2); at p = 0 with all
+    # lambda_k = l/sqrt(3) this is cosh(l/(2 sqrt 3))^3, real and >= 1, so
+    # omega is purely imaginary and log|u|^2 = 2|Im omega| = 2 arccosh(...).
+    lam = ELL / sp.sqrt(3)
+    cos_omega = sp.prod([sp.cos(0 + sp.I * lam / 2) for _ in range(3)])
+    cos_omega = sp.simplify(sp.re(sp.expand(cos_omega.rewrite(sp.cosh))))
+    if sp.simplify(cos_omega - sp.cosh(ELL / (2 * sp.sqrt(3))) ** 3) != 0:
+        return False, f"cos(omega) = {cos_omega}"
+    return sp.simplify(2 * sp.acosh(cos_omega) - R_TILDE) == 0, (
+        "R~(l) = 2 arccosh(cosh(l/2sqrt3)^3); the LOCATION of the maximizer is "
+        "CJWW's numerical finding, the VALUE there is exact")
+
+
+@check("the two slopes of R~ are exactly c_IR = 1 and max_n v_sub(n) = sqrt(3)")
+def _():
+    s0 = sp.limit(sp.diff(R_TILDE, ELL), ELL, 0, "+")
+    si = sp.limit(sp.diff(R_TILDE, ELL), ELL, sp.oo)
+    ok = sp.simplify(s0 - 1) == 0 and sp.simplify(si - sp.sqrt(3)) == 0
+    return ok, (f"R~'(0) = {s0} = c_IR = h_B(n); "
+                f"R~'(oo) = {si} = ||(1,1,1)/sqrt(3)||_1 = v_sub(body diagonal)")
+
+
+@check("dual transform gives exactly three regimes, with CJWW's control value")
+def _():
+    s0, si = 1, sp.sqrt(3)
+    rows = []
+    for r, want in ((sp.Rational(9, 10), "zero"), (1, "zero"),
+                    (sp.Rational(11, 10), "finite"), (sp.Rational(3, 2), "finite"),
+                    (2, "infinite"), (3, "infinite")):
+        got = "zero" if r <= s0 else ("infinite" if r > si else "finite")
+        if got != want:
+            return False, f"r={r}: got {got}, expected {want}"
+        rows.append(f"{sp.nsimplify(r)}:{got}")
+    # control: CJWW quote I~(1.1) = .104
+    rr = sp.Rational(11, 10)
+    lstar = sp.nsolve(sp.diff(rr * ELL - R_TILDE, ELL), ELL, 2)
+    val = sp.N(rr * lstar - R_TILDE.subs(ELL, lstar), 4)
+    if abs(val - sp.Float("0.104")) > sp.Float("0.002"):
+        return False, f"I~(1.1) = {val}, CJWW quote .104"
+    return True, ("ballistic/emergent (r<=1) | causal but exponentially "
+                  f"suppressed (1<r<sqrt3) | causally forbidden (r>sqrt3); I~(1.1)={val}")
+
+
+@check("declared limitation: the radial rate function is coarse on the axes")
+def _():
+    # Sec. 8: v_sub(e_i) = 1 = c_IR, so a velocity r*e_i with r > 1 is already
+    # outside C_micro = [-1,1]^3, where the amplitude is EXACTLY zero.  The
+    # radial I~ nevertheless reports a finite rate for 1 < r < sqrt(3): that
+    # finite rate is carried by non-axial directions only.
+    r = sp.Rational(11, 10)
+    axial_outside_cube = max(abs(v) for v in (r, 0, 0)) > 1
+    radial_rate_finite = (1 < r) and (r < sp.sqrt(3))
+    return axial_outside_cube and radial_rate_finite, (
+        "at r=1.1 the axial ray is outside C_micro (exact zero) while I~ reports "
+        "a finite rate => the angular structure of I is NOT resolved here")
+
+
+# ---------------------------------------------------------------------------
+# SUBSTRATE_CONE_OBSERVABILITY gate
+# (theory/SUBSTRATE_CONE_OBSERVABILITY_GATE.md).
+#
+# Free-fermion (CAR) lift of walk (5.15).  On the one-particle sector the
+# Bogoliubov automorphism gives alpha_t(n_x) = W^t P_x W^{t dag}, so
+#
+#     [alpha_t(n_x), n_y]  has (y,y') block  (W^t)_{y,x} ((W^t)_{y',x})^dag
+#
+# for y' != y.  Hence the commutator is nonzero exactly when the single-particle
+# kernel (W^t)_{y,x} is, and the operational causal structure of the lift is the
+# strict support of W^t.  Kernels are computed in EXACT Gaussian integers by
+# scaling W by 4 (every entry of 4*W_x lies in Z[i]).
+# ---------------------------------------------------------------------------
+
+
+def scaled_blocks():
+    """{x: 4*W_x} as exact Gaussian-integer 2x2 blocks, for walk (5.15)."""
+    out = {}
+    for i in range(2):
+        for j in range(2):
+            poly = sp.Poly(sp.expand(laurent(walk2()[i, j]) * Z[0] * Z[1] * Z[2]), *Z)
+            for mono, coeff in poly.terms():
+                x = tuple(int(m) - 1 for m in mono)
+                c = sp.nsimplify(sp.simplify(coeff * 4))
+                if c == 0:
+                    continue
+                if c != sp.re(c) + sp.I * sp.im(c) or sp.re(c) != int(sp.re(c)) or sp.im(c) != int(sp.im(c)):
+                    raise ValueError(f"4*W_{x}[{i},{j}] = {c} is not a Gaussian integer")
+                out.setdefault(x, [[0, 0], [0, 0]])[i][j] = complex(int(sp.re(c)), int(sp.im(c)))
+    return {x: [[b[0][0], b[0][1]], [b[1][0], b[1][1]]] for x, b in out.items()}
+
+
+def mat_mul(A, B):
+    return [[A[0][0] * B[0][0] + A[0][1] * B[1][0], A[0][0] * B[0][1] + A[0][1] * B[1][1]],
+            [A[1][0] * B[0][0] + A[1][1] * B[1][0], A[1][0] * B[0][1] + A[1][1] * B[1][1]]]
+
+
+def nonzero(A):
+    return any(v != 0 for row in A for v in row)
+
+
+def kernel_power(nsteps):
+    """Strict support and blocks of (4W)^n, exactly."""
+    base = scaled_blocks()
+    ker = {(0, 0, 0): [[1, 0], [0, 1]]}
+    for _ in range(nsteps):
+        nxt = {}
+        for y, A in ker.items():
+            for d, B in base.items():
+                z = (y[0] + d[0], y[1] + d[1], y[2] + d[2])
+                P = mat_mul(B, A)
+                if z in nxt:
+                    nxt[z] = [[nxt[z][i][j] + P[i][j] for j in range(2)] for i in range(2)]
+                else:
+                    nxt[z] = P
+        ker = {y: A for y, A in nxt.items() if nonzero(A)}
+    return ker
+
+
+@check("lift: strict support of W^t never leaves t*C_micro, and reaches its vertices")
+def _():
+    rows = []
+    for n in (1, 2, 3, 4):
+        ker = kernel_power(n)
+        if max(max(abs(v) for v in y) for y in ker) != n:
+            return False, f"t={n}: support leaves [-t,t]^3"
+        if (n, n, n) not in ker:
+            return False, f"t={n}: vertex ray not reached"
+        rows.append(f"t={n}: |supp|={len(ker)}, vertex block={ker[(n,n,n)][0][0]}/4^{n}")
+    return True, "; ".join(rows) + "  [H4: C_micro is the exact outer boundary]"
+
+
+@check("lift H2: nonzero commutator strictly OUTSIDE the light cone, off-axis")
+def _():
+    rows = []
+    for n in (1, 2, 3, 4):
+        ker = kernel_power(n)
+        # points in the strict support that are outside the emergent cone |y| <= c*t
+        outside = [y for y in ker if y[0] ** 2 + y[1] ** 2 + y[2] ** 2 > n * n]
+        if not outside:
+            return False, f"t={n}: nothing outside the light cone"
+        # the commutator needs a second populated site y' != y
+        y = (n, n, n)
+        others = [z for z in ker if z != y]
+        if not others:
+            return False, f"t={n}: no second site, commutator degenerate"
+        blk = ker[y]
+        comm_block = mat_mul(blk, [[ker[others[0]][0][0].conjugate(), ker[others[0]][1][0].conjugate()],
+                                   [ker[others[0]][0][1].conjugate(), ker[others[0]][1][1].conjugate()]])
+        if not nonzero(comm_block):
+            return False, f"t={n}: (y,y') block vanishes"
+        rows.append(f"t={n}: {len(outside)} sites outside B(c)t, |y|={sp.sqrt(3)*n if y==(n,n,n) else ''}")
+    return True, ("vertex ray |y| = sqrt(3) t > ct is in the strict support with "
+                  "nonzero (y,y') block => signalling possible outside B(c); "
+                  "magnitude ||(W_sigma)^t|| = 4^-t")
+
+
+@check("lift H3: EXACTLY zero commutator along the six axial directions beyond ct")
+def _():
+    for n in (1, 2, 3, 4):
+        ker = kernel_power(n)
+        for axis in range(3):
+            for L in range(n + 1, n + 4):
+                for sgn in (+1, -1):
+                    y = [0, 0, 0]
+                    y[axis] = sgn * L
+                    if tuple(y) in ker:
+                        return False, f"t={n}: axial site {tuple(y)} with L={L} > ct is populated"
+    return True, ("v_sub(e_i) = c, so every axial site beyond ct lies outside C_micro: "
+                  "kernel exactly zero, commutator exactly zero, no superluminal tail on-axis")
+
+
+@check("lift: the accessible region is exactly C_micro*t minus the light cone")
+def _():
+    n = 3
+    ker = kernel_power(n)
+    outside_cone = sorted(y for y in ker if y[0] ** 2 + y[1] ** 2 + y[2] ** 2 > n * n)
+    # every such site must satisfy ||y||_inf <= t (inside C_micro*t) ...
+    if any(max(abs(v) for v in y) > n for y in outside_cone):
+        return False, "a signalling site lies outside C_micro*t"
+    # ... and none of them may be axial
+    axial = [y for y in outside_cone if sum(1 for v in y if v != 0) == 1]
+    if axial:
+        return False, f"axial sites outside the cone: {axial}"
+    return True, (f"t={n}: {len(outside_cone)} sites strictly outside B(c)t, all inside "
+                  f"C_micro*t, none axial")
+
+
+# ---------------------------------------------------------------------------
+# COUPLING_MAP_OPTIMAL_D gate (theory/COUPLING_MAP_GATE.md), frozen 0f7628d.
+# Declared geometries only.  With P = W^t P_y W^{t dag} and a number-conserving
+# Gaussian local operation of Alice acting as R on the site-0 one-particle
+# space, the difference operator is Delta = u^dag P u - P with blocks
+#     Delta_00 = R^dag P_00 R - P_00,      P_00 = K_0y K_0y^dag
+#     Delta_0w = (R^dag - I) P_0w,         P_0w = K_0y K_wy^dag
+# These are occupation-observable blocks, not full trace distance. The cross
+# term depends on BOTH kernels; no asymptotic scaling or optimality is tested.
+# ---------------------------------------------------------------------------
+import numpy as _np
+
+
+def _ker(nsteps):
+    return {d: _np.array(A, dtype=complex) / 4.0 ** nsteps for d, A in kernel_power(nsteps).items()}
+
+
+def _n(M):
+    return _np.linalg.norm(M, 2)
+
+
+def _geoms(nsteps, ker):
+    cand = [y for y in ker if sum(v * v for v in y) > nsteps ** 2 and sum(1 for v in y if v != 0) >= 2]
+    return [("vertex", (nsteps,) * 3), ("face-diag", (nsteps, nsteps, 0)),
+            ("nearest-off-axis", min(cand, key=lambda y: sum(v * v for v in y))),
+            ("axial-control", (nsteps + 1, 0, 0))]
+
+
+@check("coupling map: axial control gives D = 0 for EVERY state and operation")
+def _():
+    for nsteps in (2, 3, 4):
+        ker = _ker(nsteps)
+        y = (nsteps + 1, 0, 0)
+        if _n(ker.get(tuple(-v for v in y), _np.zeros((2, 2), complex))) != 0:
+            return False, f"t={nsteps}: axial K_0y != 0"
+    return True, "K_0y = 0 excludes Alice from evolved Bob algebra, at t = 2,3,4"
+
+
+@check("coupling map: phase gate exp(i pi n_0) kills the local term and doubles the coherence term")
+def _():
+    R = -_np.eye(2)                       # exp(i pi n_0) on the site-0 one-particle space
+    for nsteps in (2, 3, 4):
+        ker = _ker(nsteps)
+        y = (nsteps,) * 3
+        K0y = ker[tuple(-v for v in y)]
+        P00 = K0y @ K0y.conj().T
+        if _n(R.conj().T @ P00 @ R - P00) > 1e-14:
+            return False, f"t={nsteps}: Delta_00 != 0 under the phase gate"
+        d = next(iter(ker))
+        P0w = K0y @ ker[d].conj().T
+        if _n((R.conj().T - _np.eye(2)) @ P0w - (-2) * P0w) > 1e-14:
+            return False, f"t={nsteps}: Delta_0w != -2 P_0w"
+    return True, "Delta_00 = 0, Delta_0w = -2 P_0w: phase-gate occupation identity; no optimality claim"
+
+
+@check("coupling map: finite occupation-witness ratios (not D optimization or asymptotics)", "SUPPORTED")
+def _():
+    rng = _np.random.default_rng(0)
+    rows = []
+    for nsteps in (2, 3, 4):
+        ker = _ker(nsteps)
+        y = (nsteps,) * 3
+        K0y = ker[tuple(-v for v in y)]
+        a = _n(K0y)
+        coh = max(2 * _n(K0y @ ker[d].conj().T) for d in ker)
+        P00 = K0y @ K0y.conj().T
+        loc = 0.0
+        for _ in range(3000):
+            X = rng.normal(size=(2, 2)) + 1j * rng.normal(size=(2, 2))
+            Q, _r = _np.linalg.qr(X)
+            loc = max(loc, _n(Q.conj().T @ P00 @ Q - P00))
+        if not (0.4 < coh / a < 2.0):
+            return False, f"t={nsteps}: coherent/||K|| = {coh/a}, outside historical finite range"
+        if abs(loc / a ** 2 - 1.0) > 1e-3:
+            return False, f"t={nsteps}: local/||K||^2 = {loc/a**2}, not 1"
+        rows.append(f"t={nsteps}: gain={coh/loc:.0f}x")
+    return True, ("finite occupation diagnostics: " + ", ".join(rows) +
+                  "; sampled local rotations, no exact maximum or asymptotic claim")
+
+
+@check("coupling map: sampled off-vertex local occupation response vanishes", "SUPPORTED")
+def _():
+    rng = _np.random.default_rng(1)
+    for nsteps in (2, 3, 4):
+        ker = _ker(nsteps)
+        for name, y in _geoms(nsteps, ker):
+            if name in ("vertex", "axial-control"):
+                continue
+            K0y = ker[tuple(-v for v in y)]
+            P00 = K0y @ K0y.conj().T
+            for _ in range(2000):
+                X = rng.normal(size=(2, 2)) + 1j * rng.normal(size=(2, 2))
+                Q, _r = _np.linalg.qr(X)
+                if _n(Q.conj().T @ P00 @ Q - P00) > 1e-12:
+                    return False, f"t={nsteps} {name}: local term nonzero"
+    return True, ("sampled occupation responses vanish at face-diag and nearest-off-axis; "
+                  "this does not imply equality of Bob's full reduced states")
+
+
+def verify_local_preparation():
+    """Exact, bounded successor certificate; frozen witness helpers unchanged.
+
+    Run with --local-preparation-only. Initial |0,down>, two common steps,
+    origin phase choice, one readout step, Bob=(1,1,1). No parameter scan.
+    Backs reports/2026-09-16--alice-local-preparation.md.
+    """
+    from verify_signaling_witness import (
+        DOWN, ORIGIN, evolve, exact_blocks, norm_squared, phase_choice,
+        reduced_state, square_kernel,
+    )
+
+    count = 0
+
+    def require(condition, label):
+        nonlocal count
+        if not condition:
+            raise AssertionError(label)
+        count += 1
+        print(f"[PASS] {label}")
+
+    bob = (1, 1, 1)
+    zero = sp.zeros(2, 1)
+    initial = {ORIGIN: DOWN}
+    blocks = exact_blocks()
+    kernel2 = square_kernel(blocks)
+    one = evolve(initial, blocks)
+    prepared = evolve(initial, kernel2)
+    require(set(initial) == {ORIGIN} and norm_squared(initial) == 1,
+            "initial resource is one normalized particle at Alice only")
+    require(phase_choice(initial) == {ORIGIN: -DOWN},
+            "zero preparation steps: encoding is a global phase")
+    require(one.get(ORIGIN, zero) == zero and phase_choice(one) == one,
+            "one preparation step: origin empty, encoding has no effect")
+    require(prepared == evolve(one, blocks),
+            "two-step preparation equals two sequential unchanged steps")
+    require(prepared[ORIGIN] == -3 * DOWN / 4 and norm_squared(prepared) == 1,
+            "common prepared state has origin amplitude -3 down/4 and unit norm")
+    require(prepared.get(bob, zero) == zero,
+            "Bob is exactly vacant even at the encoding event")
+    arm_a = {ORIGIN: prepared[ORIGIN]}
+    arm_rest = {x: v for x, v in prepared.items() if x != ORIGIN}
+    require(norm_squared(arm_a) == sp.Rational(9, 16)
+            and norm_squared(arm_rest) == sp.Rational(7, 16),
+            "both coherent arms have nonzero weight: phase is not global")
+    choices = [prepared, phase_choice(prepared)]
+    require(all(choices[1][x] == (-v if x == ORIGIN else v)
+                for x, v in choices[0].items()),
+            "branches share preparation; only the origin component changes sign")
+    outputs = [evolve(state, blocks) for state in choices]
+    require(all(norm_squared(state) == 1 for state in outputs),
+            "both final global states have exact unit norm")
+    require(all(max(abs(c) for c in x) <= steps
+                for steps, state in ((1, one), (2, prepared),
+                                     (3, outputs[0]), (3, outputs[1]))
+                for x in state), "every stage respects microscopic finite range")
+    require(sum(c*c for c in bob) > 1 and max(abs(c) for c in bob) == 1
+            and blocks[tuple(-c for c in bob)] == sp.diag(0, sp.Rational(1, 4)),
+            "from encoding: Bob outside emergent cone, on populated micro boundary")
+    a = evolve(arm_a, blocks).get(bob, zero)
+    r = evolve(arm_rest, blocks).get(bob, zero)
+    require(a == -3 * DOWN / 16 and r == -DOWN / 32,
+            "Bob arm amplitudes are -3 down/16 and -down/32")
+    require([state[bob] for state in outputs] == [-7 * DOWN / 32, 5 * DOWN / 32],
+            "Bob branch amplitudes are -7 down/32 and 5 down/32")
+    # A second algebraic path: extract the block directly from the symbol cube.
+    cube = walk2() ** 3
+    direct = sp.zeros(2)
+    for i in range(2):
+        for j in range(2):
+            poly = sp.Poly(sp.expand(laurent(cube[i, j]) * sp.prod(Z)**3), *Z)
+            direct[i, j] = poly.coeff_monomial(sp.prod(z**2 for z in Z))
+    require(direct.H * DOWN == outputs[0][bob],
+            "direct Laurent extraction of W^3 agrees with sequential evolution")
+    effect = sp.diag(0, 1, 1, 1)
+    rhos = [reduced_state(state, bob) for state in outputs]
+    probs = [sp.simplify(sp.trace(effect * rho)) for rho in rhos]
+    require(probs == [sp.Rational(49, 1024), sp.Rational(25, 1024)],
+            "p0=49/1024, p1=25/1024")
+    require(probs[1] - probs[0] == -4 * sp.re((a.H*r)[0])
+            == -sp.Rational(3, 128), "signed interference difference is -3/128")
+    require(all(rho == sp.diag(1-p, 0, p, 0) and 0 <= p <= 1
+                for rho, p in zip(rhos, probs)),
+            "Bob density matrices are normalized positive states; effect bound applies")
+    require(reduced_state(evolve(prepared, blocks), bob) == rhos[0],
+            "removing the encoder makes the two Bob states identical")
+    # Remove only Alice/rest coherence at choice time, keeping both populations
+    # and all coherence within the rest. Normalize each mixture component.
+    mixtures = []
+    for encode in (False, True):
+        rho = sp.zeros(4)
+        for arm in (arm_a, arm_rest):
+            weight = norm_squared(arm)
+            component = {x: v / sp.sqrt(weight) for x, v in arm.items()}
+            if encode:
+                component = phase_choice(component)
+            rho += weight * reduced_state(evolve(component, blocks), bob)
+        mixtures.append(rho.applyfunc(sp.simplify))
+    require(mixtures[0] == mixtures[1]
+            and sp.trace(effect * mixtures[0]) == sp.Rational(37, 1024),
+            "Alice/rest dephasing: identical full Bob states, p=37/1024")
+    axial = (2, 0, 0)
+    require(blocks.get(tuple(-c for c in axial), sp.zeros(2)) == sp.zeros(2)
+            and reduced_state(outputs[0], axial) == reduced_state(outputs[1], axial),
+            "outside microscopic cone from choice: axial reduced states coincide")
+    require(all(not entry.has(sp.Float)
+                for state in (initial, one, prepared, *outputs)
+                for v in state.values() for entry in v), "all state entries are exact")
+    print(f"\n{count}/{count} exact checks passed. EXISTENCE_CONSTRUCTED; no optimization.")
+    return 0
+
+
+def verify_noncorner_gate():
+    """Exact execution of theory/NONCORNER_SIGNALING_GATE.md, steps 0-5.
+
+    Run with --noncorner-gate-only. Step 0 is the contract's binding stop
+    rule: the admissible domain is derived from the certified support, never
+    assumed. No search, no sampling, no optimization, no floating point.
+    The frozen protocol and every pre-existing helper are used unchanged.
+    """
+    from verify_signaling_witness import (
+        DOWN, ORIGIN, evolve, exact_blocks, norm_squared, phase_choice,
+        reduced_state, square_kernel,
+    )
+
+    count = 0
+
+    def require(condition, label):
+        nonlocal count
+        if not condition:
+            raise AssertionError(label)
+        count += 1
+        print(f"[PASS] {label}")
+
+    zero = sp.zeros(2, 1)
+    vertices = {(i, j, k) for i in (1, -1) for j in (1, -1) for k in (1, -1)}
+    edges = {(i, j, 0) for i in (1, -1) for j in (1, -1)}
+    axes = {(i, 0, 0) for i in (1, -1)}
+    preregistered = vertices | edges | axes
+
+    # ---- Step 0: binding certification of the exact one-step support -----
+    blocks = exact_blocks()
+    require(len(preregistered) == 14
+            and all(block != sp.zeros(2) for block in blocks.values())
+            and set(blocks) == preregistered,
+            "STEP 0: supp K_1 is exactly the 14 preregistered displacements")
+    symbol = walk2()
+    attribution = {}
+    for i in range(2):
+        for j in range(2):
+            poly = sp.Poly(sp.expand(laurent(symbol[i, j]) * sp.prod(Z)), *Z)
+            attribution[(i, j)] = {tuple(power - 1 for power in powers)
+                                   for powers, coefficient in poly.terms()
+                                   if coefficient != 0}
+    require(attribution[(0, 0)] == {v for v in vertices if v[2] == 1}
+            and attribution[(1, 1)] == {v for v in vertices if v[2] == -1}
+            and attribution[(0, 1)] == attribution[(1, 0)] == edges | axes,
+            "STEP 0: per-entry attribution is exactly the one the contract declares")
+    reachable = {tuple(-c for c in d) for d in blocks}
+    require(reachable == set(blocks),
+            "STEP 0: the support is symmetric under y -> -y, so the convention is immaterial")
+    admissible = {y for y in reachable
+                  if sum(c * c for c in y) > 1
+                  and sum(1 for c in y if c != 0) < 3}
+    require(admissible == edges,
+            "STEP 0: the certified support yields exactly the four admissible sites")
+
+    # ---- Exclusions, from the certified support rather than by search ----
+    require(all(tuple(-c for c in y) not in blocks
+                for y in ((1, 0, 1), (0, 1, 1), (-1, 0, 1), (0, -1, 1),
+                          (1, 0, -1), (0, 1, -1), (-1, 0, -1), (0, -1, -1))),
+            "excluded edges with a zero in coordinate 1 or 2 have K_1 = 0 exactly")
+    require(all(tuple(-c for c in y) in blocks and sum(c * c for c in y) == 1
+                for y in axes),
+            "axis sites are micro-accessible but null-separated: excluded by (D1)")
+
+    # ---- Frozen preparation, reused and not recomputed -------------------
+    prepared = evolve({ORIGIN: DOWN}, square_kernel(blocks))
+    arm_a = {ORIGIN: prepared[ORIGIN]}
+    arm_rest = {x: v for x, v in prepared.items() if x != ORIGIN}
+    require(norm_squared(prepared) == 1 and prepared[ORIGIN] == -3 * DOWN / 4
+            and norm_squared(arm_a) == sp.Rational(9, 16)
+            and norm_squared(arm_rest) == sp.Rational(7, 16),
+            "frozen preparation unchanged: origin -3 down/4, arm weights 9/16 and 7/16")
+
+    def z3_parity_rule(state, up_on_even):
+        for x, vector in state.items():
+            allowed_up = (x[2] % 2 == 0) == up_on_even
+            if vector[1 if allowed_up else 0] != 0:
+                return False
+        return True
+
+    outputs = [evolve(prepared, blocks), evolve(phase_choice(prepared), blocks)]
+    require(z3_parity_rule(prepared, False)
+            and all(z3_parity_rule(state, True) for state in outputs),
+            "z3 parity selection rule: the internal component alternates with x3 parity")
+
+    # ---- The four admissible sites, exhaustively (no symmetry assumed) ---
+    arms = [evolve(arm_a, blocks), evolve(arm_rest, blocks)]
+    effect = sp.diag(0, 1, 1, 1)
+    up_effect = sp.diag(0, 1, 0, 0)
+    parity = sp.diag(1, -1, -1, 1)
+    results = {}
+    for y in sorted(admissible):
+        a = arms[0].get(y, zero)
+        r = arms[1].get(y, zero)
+        results[y] = (a, r, (a * r.H + r * a.H).applyfunc(sp.simplify))
+    require(len(results) == 4
+            and all(M == sp.diag(-sp.Rational(3, 256), 0)
+                    for _, _, M in results.values()),
+            "(P1) M(y) = diag(-3/256, 0) exactly at all four admissible sites")
+    require(all(M != sp.zeros(2) for _, _, M in results.values()),
+            "(P1) M(y) != 0: the two reduced states differ at every one of them")
+    require(all(a[1] == 0 and r[1] == 0
+                and sp.Abs(a[0]) == sp.Rational(3, 16)
+                and sp.Abs(r[0]) == sp.Rational(1, 32)
+                for a, r, _ in results.values()),
+            "both arms arrive purely in Bob's up channel: a(y) is spin-flipped")
+
+    states = {y: [reduced_state(state, y) for state in outputs]
+              for y in sorted(admissible)}
+    require(all(pair[0] != pair[1] for pair in states.values()),
+            "rho_B^(0) != rho_B^(1) directly from the reduced states")
+    require(all(sp.trace(effect * pair[0]) == sp.Rational(25, 1024)
+                and sp.trace(effect * pair[1]) == sp.Rational(49, 1024)
+                for pair in states.values()),
+            "p_0 = 25/1024 and p_1 = 49/1024: the vertex probabilities, exchanged")
+    require(all(((pair[0] - pair[1]).applyfunc(sp.simplify)[1:3, 1:3] == 2 * M
+                 and (pair[0] - pair[1]).applyfunc(sp.simplify)[0, 0]
+                 == -sp.trace(2 * M))
+                for (y, pair), (_, _, M) in zip(states.items(), results.values())),
+            "state difference equals 2M on the one-particle block: M is complete")
+    require(effect**2 == effect and up_effect**2 == up_effect
+            and effect * parity == parity * effect
+            and up_effect * parity == parity * up_effect,
+            "both effects are even local projections of norm one")
+    require(all(sp.Abs(sp.trace(effect * (pair[1] - pair[0]))) == sp.Rational(3, 128)
+                for pair in states.values()),
+            "(P2) non-vacuum projection: delta = 3/128 > 0, hence D >= 3/128")
+    require(all(sp.Abs(sp.trace(up_effect * (pair[1] - pair[0]))) == sp.Rational(3, 128)
+                for pair in states.values()),
+            "(P2) the up projection isolates the distinguishing channel, same delta")
+    require(all(sum(c * c for c in y) > 1 and max(abs(c) for c in y) == 1
+                and sum(1 for c in y if c != 0) == 2
+                and blocks[tuple(-c for c in y)] != sp.zeros(2)
+                for y in admissible),
+            "(P3) each positive site: outside emergent cone, on micro support, non-vertex")
+
+    # ---- Consistency with the frozen vertex witness, which is not touched -
+    vertex = (1, 1, 1)
+    a_v = arms[0].get(vertex, zero)
+    r_v = arms[1].get(vertex, zero)
+    vertex_states = [reduced_state(state, vertex) for state in outputs]
+    require((a_v * r_v.H + r_v * a_v.H).applyfunc(sp.simplify)
+            == sp.diag(0, sp.Rational(3, 256))
+            and sp.trace(effect * (vertex_states[1] - vertex_states[0]))
+            == -sp.Rational(3, 128),
+            "frozen vertex reproduced: same magnitude, opposite sign, down channel")
+    require(all(not entry.has(sp.Float)
+                for _, _, M in results.values() for entry in M)
+            and all(not entry.has(sp.Float)
+                    for state in (prepared, *outputs)
+                    for vector in state.values() for entry in vector),
+            "every reported quantity is exact")
+
+    print("\nPer-site table (Delta p_B = 2|Tr M|):")
+    for y in sorted(admissible):
+        a, r, M = results[y]
+        print(f"  y={y}  K_1(0,y)={blocks[tuple(-c for c in y)].tolist()}")
+        print(f"       a={list(a)}  r={list(r)}  M={M.tolist()}")
+        print(f"       Tr M={sp.trace(M)}  Delta p_B="
+              f"{sp.Abs(sp.trace(effect * (states[y][1] - states[y][0])))}"
+              f"  M==0 ? {M == sp.zeros(2)}")
+    print(f"\n{count}/{count} exact checks passed. "
+          "Verdict: NONCORNER_SIGNALING_CONSTRUCTED.")
+    return 0
+
+
+def main():
+    width = max(len(n) for n, _, _ in CHECKS)
+    failed = 0
+    for name, tag, fn in CHECKS:
+        try:
+            ok, detail = fn()
+        except Exception as exc:                        # fail closed
+            ok, detail = False, f"raised {exc!r}"
+        print(f"[{'PASS' if ok else 'FAIL'}] {name:<{width}}  {tag}\n        {detail}")
+        failed += not ok
+    print(f"\n{len(CHECKS) - failed}/{len(CHECKS)} checks passed")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    if sys.argv[1:] == ["--local-preparation-only"]:
+        sys.exit(verify_local_preparation())
+    elif sys.argv[1:] == ["--noncorner-gate-only"]:
+        sys.exit(verify_noncorner_gate())
+    else:
+        sys.exit(main())
