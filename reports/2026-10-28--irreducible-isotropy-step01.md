@@ -6,9 +6,11 @@ pasos 0-1"). Certificate: `scripts/verify_irreducible_isotropy_step01.py`
 (SHA-256 `d414b446d476c646…`), 31/31 exact checks, 518 s, Python 3.12.3, SymPy 1.14.0.
 Full verifier sweep before commit: 47/47 pass at `43fd00e` plus this certificate
 ([record](2026-10-28--irreducible-isotropy-step01-run_all.tsv)). These figures describe
-the original certificate bytes, not the subsequent repair. Evidence level: **PRELIMINARY**.
-DeepSeek reviewed the original and returned ACCEPT_WITH_REPAIRS; the repaired certificate
-and text await independent review.
+the original certificate bytes, not the subsequent repair. Evidence level when first
+written: **PRELIMINARY**. DeepSeek reviewed the original and returned ACCEPT_WITH_REPAIRS.
+Current evidence level (2026-10-29, after the reviews below): T3/O3/O4 `EMPTY_CLASS`,
+**ESTABLISHED IN THE DECLARED CLASSES**; see `state/CURRENT_STATE.md`, entry "Independent
+review queue closed — 2026-10-29", which prevails.
 
 Repair verification, 2026-10-29: certificate SHA-256
 `d4b3d242bdd259aa45aa532b6b212bfe75eb0009097f85883805507857f1bfe4`,

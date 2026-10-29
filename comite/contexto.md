@@ -7,8 +7,9 @@ dinámica (`B_infty^*`), y por qué especies distintas compartirían un mismo co
 - **Autoridad canónica:** `state/CURRENT_STATE.md` es la única fuente de verdad del estado del
   proyecto, de los gates y de lo que está autorizado. Si otro fichero lo contradice, gana
   `CURRENT_STATE.md`. Reglas del proyecto: `PROJECT_INSTRUCTIONS.md`.
-- **Estado branch-local:** el trabajo vive en `research/b-infinity-post-s4-gate`; `main` no se
-  promociona sin decisión explícita.
+- **Estado branch-local:** desde octubre de 2026 el trabajo vive en
+  `research/inverse-gravity-design` (antes, `research/b-infinity-post-s4-gate`); `main` no se
+  promociona sin decisión explícita. Comprobar la rama activa con `git branch --show-current`.
 - **Niveles de evidencia:** ESTABLISHED, SUPPORTED, PRELIMINARY, OPEN, REJECTED
   (`PROJECT_INSTRUCTIONS.md` §4). Toda afirmación no trivial lleva el suyo.
 - **Método:** álgebra y geometría exactas antes que ajuste numérico; seguir los seis pasos de
