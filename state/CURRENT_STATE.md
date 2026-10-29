@@ -97,6 +97,20 @@ review is pending.
 - **Still required.** Charter Sec. 6 requires a different-family review of the Step 0′
   enumeration before Steps 4a and 4b use it.
 
+**Stage 4b-1 (exact class derivation): AUTHORIZED** by the user ("Autorizo 4b-1", 2026-10-29).
+The user gave no budget, so Claude applies the one the user set for stage (a); the user can
+change it.
+- **Time:** at most 1 hour of wall time, including the audit of DEP19 (A30). Start recorded at
+  launch. If exceeded, stop with the partial result as `OPEN_AFTER_CLASS_DERIVATION`.
+- **Scope:** the five surviving classes of stage (a).
+- **Deliverable:**
+  - first, a written audit of whether the DEP19 family (A30) is the general unitary `s=2`
+    symbol on `N_3`, with the left unitary `V` kept as a free parameter;
+  - then, per class, either `EMPTY_CLASS` or `UNITARY_SYMBOLS_EXIST` with a certified real
+    point, or `OPEN_AFTER_CLASS_DERIVATION`;
+  - an exact verifier, a report and a full sweep.
+- **Closure:** a different-family review before anything is promoted.
+
 ## Independent review queue closed — 2026-10-29
 
 User instructions: "empezamos por la cola de revisiones", "si, autorizo a y b",
