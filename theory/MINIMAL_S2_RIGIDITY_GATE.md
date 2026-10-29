@@ -1,6 +1,11 @@
-# MINIMAL S=2 RIGIDITY GATE (DRAFT v4)
+# MINIMAL S=2 RIGIDITY GATE
 
-**Status: DRAFT v4 — not chartered, nothing authorized.**
+**Status: OPEN — charter frozen 2026-10-29 from draft v4, by user instruction ("congelar el
+charter con la v4"). This commit is the preregistration commit.** Execution is authorized stage
+by stage only, and each authorization is recorded in [CURRENT_STATE](../state/CURRENT_STATE.md)
+with its budget (Sec. 4). The charter body below is the v4 text, unchanged.
+
+Drafting history:
 - **v4** applies the round-3 Astra repairs. Round 3 found v3 NOT_READY for one blocking repair,
   A-R3-01, plus one wording repair, A-R3-02:
   [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-v3-review-astra/verificacion_autor.md).
@@ -16,9 +21,7 @@
   [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-review-astra/verificacion_autor.md).
 - **v2** applies those repairs. It also adds a second isotropy family (Sec. 2, family F) by user
   decision («Ampliar la definición», 2026-10-29).
-- The charter is frozen only when the user approves it, commits it with status `OPEN`, and the
-  authorization is recorded in [CURRENT_STATE](../state/CURRENT_STATE.md).
-- This draft records no computation, candidate or theorem.
+- This charter records no computation, candidate or theorem.
 
 **Authority:** [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 4 (`B_infty^*`):
 - the P17 minimal `s=2` class with its Eq. (2) is NOT REFUTED, and rigidity there is OPEN as an
