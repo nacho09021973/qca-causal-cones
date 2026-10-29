@@ -1,6 +1,7 @@
 # MASSIVE RIGIDITY GATE
 
-**Status: DRAFT v1 (2026-10-29), not frozen, not reviewed.** Requested by the user: "si, prepara
+**Status: DRAFT v1 (2026-10-29), not frozen, not reviewed; user decisions D1–D4 recorded in
+Sec. 7.** Requested by the user: "si, prepara
 el borrador del charter con masa". Nothing here is authorized for execution. The charter is
 frozen only by an explicit user instruction after a different-family review; that commit becomes
 the preregistration commit. This draft records no computation, candidate or theorem.
@@ -41,7 +42,7 @@ on species universality (question A) without deciding it: A is not chartered her
   `k`-independent, so the support is `N_3 ∪ {0}` (checked in
   `scripts/verify_weyl_dirac_gate.py`, "massive support"). A massive class on `N_3` without
   on-site term is not excluded by this, but none is known.
-- C2. **Mass needs internal multiplicity (Schur).** If `k_*` is `G`-invariant
+- C2. **Mass needs internal multiplicity at invariant nodes (Schur).** If `k_*` is `G`-invariant
   (`g k_* − k_* ∈ Λ^*` for every `g ∈ G`), covariance gives `R_g U(k_*) R_g^† = U(k_*)`. If `R` is
   projectively irreducible, `U(k_*)` is scalar and no gap opens at `k_*`. So a gapped sector at an
   invariant node needs a reducible `R` with a nontrivial commutant. For the `s=2` Pauli class
@@ -91,10 +92,10 @@ coupling parameters of particular families are not used to compare symbols.
 | --- | --- |
 | Geometry | d=3; support `N_3 ∪ {0}`; all eight `T_h != 0` for `h ∈ N_3`; `T_0` free (possibly zero); one complete update per time unit |
 | Internal dimension | `s = 4` |
-| Symmetry (main class M4) | the axial `V4 = D2`, `R_i = σ_i ⊗ I_2` (the declared `s=4` class of the massless counterexample); `T_{gh} = R_g T_h R_g^†`, including `h = 0`. **User decision D1** on enlargements (families P and F with every 4-dimensional projective `R`) |
+| Symmetry (class M4) | the axial `V4 = D2`, `R_i = σ_i ⊗ I_2` (the declared `s=4` class of the massless counterexample); `T_{gh} = R_g T_h R_g^†`, including `h = 0`. Only this class (D1) |
 | Control class C2 | `s = 2`, support `N_3 ∪ {0}`, `(V4, Pauli)`: used only to check C2 |
 | Control family | the standard Dirac family of the Weyl/Dirac gate: reproduce `c_H = r_in F`, `c_{ω^2} = r_in sqrt(F)` |
-| Nodes | **User decision D2**: `G`-invariant nodes only, or every admissible node |
+| Nodes | Every admissible massive node (D2), invariant or not. C2 constrains only the invariant ones |
 | Coefficient domain | real variables over all reals; exact algebra |
 
 ## 3. Questions and outcomes (per class)
@@ -130,7 +131,7 @@ Reading rules:
 
 ## 5. Ceilings
 
-No statement about interactions, `s != 4` (unless D1 enlarges), other supports, reflections or
+No statement about interactions, `s != 4`, other symmetry classes, other supports, reflections or
 antiunitaries as symmetries, the absolute scale, or nature. No definition of species and no
 claim about question A; results may be cited in the A preflight note only with this ceiling.
 `v_max` is never written unqualified. Novelty: OPEN. The literature step of the minimal charter
@@ -140,11 +141,9 @@ applies: local `biblioteca/` first; external search needs separate permission.
 
 As in the minimal charter, Sec. 6. The draft gets a different-family review before freezing.
 
-## 7. Decisions for the user before freezing
+## 7. User decisions (2026-10-29: "D1 solo Pauli, D2 todos los nodos, D3 después, D4 Grok")
 
-- **D1.** Symmetry: only M4 (`V4`, `σ_i ⊗ I_2`), or also families P and F with every
-  4-dimensional projective `R`.
-- **D2.** Nodes: `G`-invariant only, or every admissible node.
-- **D3.** Order with the `s=3` charter: run this one after `s=3` (so that a nonempty reducible
-  `s=3` class can be added as a successor), or in parallel.
-- **D4.** Reviewer of this draft (Grok, DeepSeek or Gemini; not Claude).
+- **D1.** Symmetry: only class M4 (`V4`, `σ_i ⊗ I_2`).
+- **D2.** Nodes: every admissible massive node.
+- **D3.** Order: after the `s=3` charter.
+- **D4.** Reviewer of this draft: Grok (xAI family).
