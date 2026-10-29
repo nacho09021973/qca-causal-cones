@@ -1,0 +1,1013 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Responde en español. Eres un revisor independiente de física matemática (grupos finitos y
+representaciones proyectivas). Solo tienes los documentos adjuntos; no tienes herramientas y no
+puedes ejecutar código. El script es un argumento que inspeccionas. No supongas que nada es
+correcto.
+
+Documento 1: el informe reparado. Documento 2: el certificado reparado. Documento 3: tu informe
+de la ronda 2, con las objeciones. Documento 4: el charter.
+
+Comprueba:
+1. ¿Es ahora completa y correcta la prueba por órdenes de que todo subgrupo de `S4` está
+   generado por a lo sumo dos elementos (sección Method, «Group»)? Revisa la exclusión de `C2³`
+   por el centralizador de `(12)`, el caso de orden 8 vía 2-Sylow, las conjugaciones para `A4` y
+   `S4`, y la observación del monoide generado.
+2. ¿Usa ahora correctamente el certificado la traza de `ρ_E`, tomada de la enumeración, en la
+   comprobación sobre `D4` y en la tabla de trazas por el orden de `sigma(g)`? ¿Es correcta la
+   fórmula del orden de `sigma` en el código?
+3. ¿Son correctas y suficientes las demás correcciones de redacción: la órbita de tres tuplas,
+   que `Q8` no se calcula y la fila A2/A7?
+4. ¿Hay errores nuevos, o afirmaciones que excedan lo certificado?
+
+Salida: una tabla de los puntos de la ronda 2 con su veredicto; una sección por punto; los
+errores nuevos con ubicación y gravedad; un veredicto global. Si señalas un error, da el
+cálculo. Una sola ronda: declara tus supuestos.
+
+=== DOCUMENT 1: 2026-10-29--minimal-s2-step00.md ===
+
+# Minimal s=2 rigidity gate: stage (a), Steps 0′ and 0 — 2026-10-29
+
+## Provenance
+
+- **Charter:** [`MINIMAL_S2_RIGIDITY_GATE.md`](../theory/MINIMAL_S2_RIGIDITY_GATE.md), preregistration
+  commit `785565c`.
+- **Authorization:** stage (a) recorded in `ef0ed24` ("autorizo la etapa a"). The user reduced the
+  budget to 1 hour ("reduce el presupuesto a 1 hora y a ver que pasa").
+- **Timing:** started 11:09 UTC. The certificate was written and passing by 11:11 UTC; the full
+  sweep ran after that.
+- **Certificate:** `scripts/verify_minimal_s2_step00.py`, SHA-256 `d6bf4189357f62fa…`. 16/16
+  exact checks, under 1 s, Python 3.12.3, SymPy 1.14.0.
+- **Full sweep:** 48/48 verifiers pass at base `3c7a98c` plus these uncommitted files
+  ([record](2026-10-29--minimal-s2-step00-run_all.tsv)). The stage ended at 11:24 UTC, about
+  15 minutes of the 1-hour budget.
+- **Evidence level:** **PRELIMINARY**. Author-side computation. Charter Sec. 6 requires a
+  different-family review of the Step 0′ enumeration before any later stage uses it.
+- **Grok review, 2026-10-29**, of the bytes in `dc4a6f7`. Verdict: mathematically correct, not
+  promotable as written, three repairs
+  ([review and author reading](../debates/2026-10-29--minimal-s2-step00-review-grok/verificacion_autor.md)).
+  The repairs are applied here:
+  - G-S0-01: `E` is now built in the certificate.
+  - G-S0-02: proof of 2-generation added below.
+  - G-S0-03: class counts and survivors are now required.
+
+  The repaired certificate has SHA-256 `a2abbe32a98ac005…` and passes 22/22 exact checks.
+  Grok round 2 ([review](../debates/2026-10-29--minimal-s2-step00-review-grok-r2/verificacion_autor.md))
+  accepted G-S0-01 and G-S0-03, found the G-S0-02 proof incomplete, and raised three new points:
+  - the trace of `ρ_E` on `D4`;
+  - the wording «single tuple»;
+  - `Q8` not computed.
+
+  All of them are repaired. The certificate (SHA-256 `adeb8afc4d4be5ed…`) now passes 23/23;
+  full sweep 48/48 ([record](2026-10-29--minimal-s2-step00-repair2-run_all.tsv)).
+  Full sweep 48/48 ([record](2026-10-29--minimal-s2-step00-repair-run_all.tsv)). It awaits a
+  second review.
+
+## Result
+
+| Item | Outcome |
+| --- | --- |
+| Step 0′, family P | Three classes up to conjugation in `O`: `(V4, tetrahedron)`, `(T, tetrahedron)` and `(C4, face)`. `C4` does not contain the axial `V4`. |
+| Step 0′, family F | `{D4, O}` up to conjugation; both contain the axial `V4`. |
+| Step 0′, representations | Projective classes of 2-dimensional `R` per group: `V4`: 5; `T`: 3; `C4` (face): 3; `D4`: 6; `O`: 4. These count characters of the fixed representative group, not orbits of tuples `(G, S, R)`. In `(V4, tetrahedron)` the three characters with kernel of order 2 form a single orbit (of three tuples) under the stabilizer `T`. Survivors are unaffected (G-S0-03). |
+| Step 0, kernel lemma | Every class with a nontrivial projective kernel is `EMPTY_CLASS`. Each certificate is a single shift whose pairs stay inside kernel orbits. The certificates do not depend on `s`. |
+| Survivors (to Step 4b, not authorized) | Exactly one class per group: the faithful `ρ` (trivial projective kernel). These are `(V4, tet, Pauli)`, `(T, tet, image A4)`, `(C4, face, image C4, reducible)`, `(D4, image D4)` and `(O, image O)`. |
+| A1 (tetrahedron and face) | VERIFIED |
+| A2 / A7 (`E` of `2O`) | VERIFIED after repair G-S0-01. The certificate builds `E` as the standard representation of `S3` composed with the axis permutation `O → S3`. Its projective kernel is exactly the axial `V4`, and it is the unique `O` class with that kernel, the one emptied. Its restriction to `D4` has projective kernel containing `V4`, so it is also emptied. Round-2 repair: the restriction is checked with the trace of `ρ_E: O → SO(3)` (3, −1, 0 by the order of the axis permutation), giving `ρ_E|D4 = 1 ⊕ α ⊕ α`, where `α` is the sign of `D4/V4`. v2 had summed the character of the 2-dim irrep instead, which coincides here but not in general (for example on `C3`). The preimage `Q8` of `V4` in `2O`, mentioned in the charter's A2, is **not** computed. The original v1 certificate (`d6bf4189…`) did not build `E`. |
+| A3 (s = 1) | VERIFIED |
+| A4 (`C4` on a face, without `V4`) | VERIFIED |
+| A5 (F = `{D4, O}`) | VERIFIED |
+| A6 (kernel transitive on `N_3`) | VERIFIED |
+| A8 (rank one; non-nilpotent iff `tr T_h != 0`) | VERIFIED |
+| Step 0.4 (ceiling scope) | The general ceiling's `D2` hypothesis holds for the `V4`, `T`, `D4` and `O` classes. It does **not** hold for `(C4, face)`. Node transport is not examined at this stage, since no nodes are computed yet. |
+
+**What this changes:** the open row "`s=2` without Eq. (2)" is reduced to five classes, all with
+a faithful projective action. Every non-faithful class in the declared families is empty. That
+includes the linear `E` of `2O` at `s=2`, an open row of CURRENT_STATE Sec. 4.
+
+**What it does not change:** nothing is said about `c_0`, `c_strict^iso`, Q-a or Q-b. The
+equality question is untouched.
+
+## Method
+
+**Group.**
+- `O` is the set of 24 proper signed permutation matrices. All arithmetic is with integers.
+- Every subgroup of `S4 ≅ O` is generated by at most two elements, so closing all ordered pairs
+  gives every subgroup. The closure of a pair is the subgroup it generates: in a finite group,
+  `g^{-1} = g^{n-1}` when `g^n = 1`, so the generated monoid is a subgroup. The proof is by order
+  (G-S0-02, completed after the Grok round-2 review, which supplied the arguments). By Lagrange a
+  subgroup has order 1, 2, 3, 4, 6, 8, 12 or 24. Element orders in `S4` are 1, 2 (transpositions,
+  double transpositions), 3 (3-cycles) and 4 (4-cycles).
+  - **No `C2³`.** The 6 transpositions form one class, so the centralizer of `(12)` has order
+    `24/6 = 4`: it is `{1, (12), (34), (12)(34)}`. An elementary abelian 2-subgroup containing a
+    transposition therefore has order ≤ 4. One without transpositions lies in
+    `{1} ∪ {double transpositions}`, which is the normal `V4`, of order 4.
+  - **Orders 1–4:** cyclic or `C2×C2`, both 2-generated.
+  - **Order 6:** a group of order 6 is `C6` or `S3`. There is no element of order 6, so it is
+    `S3 = ⟨(12),(13)⟩`, since `(12)(13)(12) = (23)`.
+  - **Order 8:** it is a 2-Sylow. The 2-Sylows are conjugate, and one of them is the dihedral
+    `⟨r, s⟩` (`r⁴ = s² = 1`, `srs = r⁻¹`), which is 2-generated. Equivalently: of the five groups
+    of order 8, only `C2³` is not 2-generated, and it is excluded above.
+  - **Order 12:** index 2, hence normal. The only index-2 subgroup is the kernel of the sign,
+    `A4`. Conjugating `(124)` by `(123)` gives `(234)`; further conjugations give all eight
+    3-cycles, which generate `A4`. So `A4 = ⟨(123),(124)⟩`.
+  - **Order 24:** with `b = (1234)` and `a = (12)`, `bab⁻¹ = (23)` and `b(23)b⁻¹ = (34)`. The
+    transpositions `(12), (23), (34)` generate `S4`, so `S4 = ⟨(12),(1234)⟩`.
+
+  The certificate finds 30 subgroups. That number is a cross-check, not the proof.
+
+**Family P.**
+- All 30 subgroups are crossed with all 16 choices of `S_+`, keeping the pairs where `G`
+  stabilizes `S_+` and is transitive on it.
+- Classes are taken up to `O`-conjugation of the pair.
+- The 16 choices of `S_+` are 2 tetrahedra, 6 faces and 8 "vertex plus three neighbours" sets.
+
+**Family F.** The subgroups transitive on all eight vertices, up to conjugation.
+
+**Representations.**
+- A 2-dimensional projective unitary `R`, up to projective equivalence `R' = c W R W^†`, is a
+  homomorphism `ρ: G → PU(2) ≅ SO(3)` up to `SO(3)` conjugation. Covariance
+  `T_{gh} = R_g T_h R_g^†` depends only on `ρ`.
+- Every image type that occurs (1, `C2`, `C3`, `C4`, `V4`, `D3`, `D4`, `A4`, `S4`) is
+  `SO(3)`-conjugate to a subgroup of `O`, so enumerating homomorphisms into `O` is exhaustive.
+  For these five domains the counts do not need the general classification of finite subgroups
+  of `SO(3)`:
+  - the images are quotients of the domain;
+  - the trace of a rotation is fixed by its order: 3, −1, 0, 1 for orders 1, 2, 3, 4.
+
+  This enumerates the possible characters directly; the Grok review carries it out group by
+  group.
+- Two classes are identified iff their 3-dimensional characters agree. Equal real characters
+  give orthogonal equivalence, and replacing `M` by `−M` makes it `SO(3)`.
+- `R` is reducible iff the trivial multiplicity of `ρ` is at least 1, meaning a fixed axis.
+- The projective kernel of `R` is `ker ρ`.
+
+**Kernel lemma (A1, A6, A7).**
+- If `R` is scalar on `K = ker ρ`, then `T` is constant on `K`-orbits.
+- Take a shift `ℓ != 0` whose pairs `(h, h+ℓ)` all lie inside `K`-orbits. Its unitarity identity
+  `Σ T_h^† T_{h+ℓ} = 0` becomes a sum of positive semidefinite terms `T_h^† T_h`.
+- So every `T_h` that appears vanishes, which contradicts `T_h != 0`.
+- The certificate prints the shift and the pairs for every emptied class.
+
+**A3, A8.**
+- The shift `(2,2,2)` has the single pair `((−1,−1,−1), (1,1,1))`.
+- Each shift `2h` has the single pair `(−h, h)`. With `T_{−h}^† T_h = 0` and both nonzero, both
+  have rank one.
+- Cayley–Hamilton, `T^2 = tr(T) T − det(T) I`, is checked symbolically.
+
+**Controls.**
+- Negative: the Pauli class `(V4, tetrahedron, faithful)` gets no certificate.
+- Positive: both Pavia chiralities satisfy all unitarity identities with all eight `T_h != 0`.
+  This reuses the step-01 extraction read-only.
+
+## Cross-reference, not a result of this stage
+
+Two survivors coincide, as projective classes, with **controls** of the reviewed irreducible
+isotropy certificate:
+- `(T, tetrahedron, faithful)` is the step-01 `T2s` control (spin 1/2 under `T`).
+- `(O, faithful)` is the step-01 `O2s` control.
+
+Both gave unit Groebner ideals there
+([report](2026-10-28--irreducible-isotropy-step01.md)). They were controls, not declared classes.
+The charter does not let them settle anything here. They are recorded as **anticipations for
+Step 4b-1**, `[UNVERIFIED in this charter]`.
+
+The genuinely new survivors are:
+- `(V4, tet, Pauli)` without Eq. (2), the class that contains Pavia;
+- `(C4, face)`, which the ceiling does not cover;
+- `(D4, image D4)`.
+
+## Scope and limits
+
+- **Frozen classes only:** d=3, `N_3` with all eight `T_h != 0`, no on-site term, proper cube
+  rotations, the families of the charter. Emptiness results hold for any internal dimension `s`,
+  but this charter states them at `s=2` and `s=1`.
+- **Exhaustiveness of Step 0′** rests on the 2-generation of the subgroups of `S4`, proved above
+  by order, and on the order/trace argument for the characters. The exact enumeration covers the
+  rest. Grok reviewed the enumeration (first round). The repaired certificate needs a second
+  review before Steps 4a and 4b use it.
+- **Not done:** nodes, `c_0`, `c_strict^iso`, Q-a, Q-b, and the transport of the ceiling to
+  nonzero nodes.
+- **No novelty claim.**
+
+=== DOCUMENT 2: verify_minimal_s2_step00.py ===
+
+"""Exact certificate for Steps 0' and 0 of theory/MINIMAL_S2_RIGIDITY_GATE.md (stage (a)).
+
+Charter: preregistration commit 785565c; stage (a) authorized in ef0ed24 (1 h budget).
+
+What it certifies (integer arithmetic for the group theory, SymPy only for the controls):
+  Step 0'  - O = the 24 proper signed permutation matrices; all 30 subgroups of O (every
+             subgroup of S4 is generated by at most two elements, so pair closures are
+             exhaustive); family P = pairs (G, S_+) with |S_+| = 4, S_+ disjoint from -S_+,
+             G stabilizing S_+ and transitive on it; family F = subgroups transitive on N_3;
+             both up to conjugation in O.
+           - 2-dim projective unitary representations up to projective equivalence are
+             homomorphisms rho: G -> PU(2) = SO(3) up to SO(3) conjugation. Every finite
+             subgroup of SO(3) of the image types that occur is SO(3)-conjugate to a subgroup
+             of O, so homomorphisms into O, classified by the character tr rho, are
+             exhaustive. Two real orthogonal representations with equal character are
+             conjugate by an orthogonal matrix, hence (using -M if needed) by SO(3).
+             R is reducible iff rho(G) fixes an axis, i.e. iff the trivial multiplicity of rho
+             is >= 1. ker_proj R = ker rho.
+  Step 0   - A1/A6/A7 kernel lemma: if R is scalar on K = ker rho, then T is constant on
+             K-orbits. If a shift l != 0 has all its pairs (h, h+l) inside K-orbits, the
+             identity sum_h T_h^dagger T_{h+l} = 0 is a sum of positive semidefinite terms,
+             so the T_h involved vanish, contradicting T_h != 0. The class is EMPTY, for any
+             internal dimension s.
+           - A3 (s=1): the shift (2,2,2) has a single pair, so a scalar T_(-1,-1,-1)^* T_(1,1,1)
+             = 0, contradicting active support.
+           - A8: every shift 2h has the single pair (-h, h), and T^2 = tr(T) T - det(T) I.
+           - Ceiling scope: which classes contain the axial half-turn group D2 = V4.
+           - Controls: the Pauli class (V4, tetrahedron, rho faithful) gets no certificate;
+             the Pavia symbols satisfy the unitarity identities with all eight T_h != 0.
+  Repairs after the Grok review (G-S0-01, G-S0-03):
+           - E is built explicitly as the standard rep of S3 composed with the axis
+             permutation O -> S3; its projective kernel is the axial V4, it is the unique O
+             class with that kernel. Round 2: the D4 check uses the trace of rho_E: O -> SO(3)
+             (3, -1, 0 by the order of sigma(g)), giving rho_E|D4 = 1 + alpha + alpha.
+             The preimage Q8 in 2O is not computed.
+           - The per-group class counts (5, 3, 3, 6, 4) and the five survivors are required,
+             not only printed. Counts are characters of the fixed representative G, not
+             orbits of tuples (G, S, R).
+
+What it does NOT certify: anything about classes the kernel lemma does not empty (they are
+listed for Step 4b), nodes, c_0, c_strict^iso, Q-a, Q-b, or the general ceiling.
+"""
+
+import itertools
+import sys
+import time
+
+import sympy as sp
+
+sys.path.insert(0, "scripts")
+import verify_irreducible_isotropy_step01 as S1  # reviewed certificate, read-only helpers
+from certificate_utils import assert_sym_equal, sym_zero
+
+CHECKS = 0
+N3 = [tuple(v) for v in itertools.product((1, -1), repeat=3)]
+
+
+def require(cond, label):
+    global CHECKS
+    if not cond:
+        print(f"[FAIL] {label}")
+        raise SystemExit(1)
+    CHECKS += 1
+    print(f"[PASS] {label}")
+
+
+# ------------------------------------------------------------------ the group O
+def det3(M):
+    (a, b, c), (d, e, f), (g, h, i) = M
+    return a * (e * i - f * h) - b * (d * i - f * g) + c * (d * h - e * g)
+
+
+def mul(A, B):
+    return tuple(tuple(sum(A[i][k] * B[k][j] for k in range(3)) for j in range(3))
+                 for i in range(3))
+
+
+def act(M, v):
+    return tuple(sum(M[i][k] * v[k] for k in range(3)) for i in range(3))
+
+
+def inv(M):
+    return tuple(tuple(M[j][i] for j in range(3)) for i in range(3))  # orthogonal
+
+
+def trace(M):
+    return M[0][0] + M[1][1] + M[2][2]
+
+
+O = []
+for perm in itertools.permutations(range(3)):
+    for sg in itertools.product((1, -1), repeat=3):
+        M = tuple(tuple(sg[i] if j == perm[i] else 0 for j in range(3)) for i in range(3))
+        if det3(M) == 1:
+            O.append(M)
+I3 = ((1, 0, 0), (0, 1, 0), (0, 0, 1))
+V4 = frozenset(M for M in O if all(M[i][j] == 0 for i in range(3) for j in range(3) if i != j))
+
+
+def closure(gens):
+    S = {I3}
+    frontier = [I3]
+    while frontier:
+        x = frontier.pop()
+        for g in gens:
+            y = mul(x, g)
+            if y not in S:
+                S.add(y)
+                frontier.append(y)
+    return frozenset(S)
+
+
+def conj(g, H):
+    return frozenset(mul(mul(g, h), inv(g)) for h in H)
+
+
+def orbits(H, pts):
+    left, out = set(pts), []
+    while left:
+        p = min(left)
+        orb = {act(h, p) for h in H}
+        out.append(frozenset(orb))
+        left -= orb
+    return out
+
+
+def generators(H):
+    for a in sorted(H):
+        if closure([a]) == H:
+            return [a]
+    for a, b in itertools.combinations(sorted(H), 2):
+        if closure([a, b]) == H:
+            return [a, b]
+    raise AssertionError("not 2-generated")
+
+
+def homs_into_O(G):
+    gens = generators(G)
+    out = []
+    for imgs in itertools.product(O, repeat=len(gens)):
+        phi, frontier, ok = {I3: I3}, [I3], True
+        while frontier and ok:
+            x = frontier.pop()
+            for g, im in zip(gens, imgs):
+                y, iy = mul(x, g), mul(phi[x], im)
+                if y in phi:
+                    ok = phi[y] == iy
+                    if not ok:
+                        break
+                else:
+                    phi[y] = iy
+                    frontier.append(y)
+        if ok and len(phi) == len(G):
+            out.append(phi)
+    return out
+
+
+def emptying_shift(K):
+    """A shift l != 0 whose pairs all lie inside K-orbits, or None."""
+    orb = {p: o for o in orbits(K, N3) for p in o}
+    shifts = {tuple(b - a for a, b in zip(h, hp)) for h in N3 for hp in N3} - {(0, 0, 0)}
+    for ell in sorted(shifts):
+        pairs = [(h, act(I3, tuple(a + b for a, b in zip(h, ell)))) for h in N3
+                 if tuple(a + b for a, b in zip(h, ell)) in orb]
+        if pairs and all(orb[h] == orb[hp] for h, hp in pairs):
+            return ell, pairs
+    return None
+
+
+def kind(S):
+    prods = {v[0] * v[1] * v[2] for v in S}
+    if len(prods) == 1:
+        return "tetrahedron"
+    for i in range(3):
+        if len({v[i] for v in S}) == 1:
+            return "face"
+    return "vertex+3 neighbours"
+
+
+def main():
+    t0 = time.time()
+    require(len(O) == 24 and len(V4) == 4 and closure(list(O)) == frozenset(O),
+            "O: 24 proper signed permutation matrices, closed; axial V4 = diagonal half-turns")
+
+    subs = {closure([a, b]) for a in O for b in O}
+    require(len(subs) == 30, "O has exactly 30 subgroups (pair closures; S4 is 2-generated)")
+
+    # Step 0' family P
+    pairs_pm = [(v, tuple(-x for x in v)) for v in N3 if v[0] == 1]
+    choices = [frozenset(c) for c in itertools.product(*pairs_pm)]
+    require(len(choices) == 16, "16 choices of S_+ (one vertex per antipodal pair)")
+    kinds = sorted(kind(S) for S in choices)
+    require(kinds.count("tetrahedron") == 2 and kinds.count("face") == 6
+            and kinds.count("vertex+3 neighbours") == 8,
+            "S_+ choices: 2 tetrahedra, 6 faces, 8 vertex+3-neighbour sets")
+    famP = []
+    for G in subs:
+        for S in choices:
+            if all(act(g, v) in S for g in G for v in S) and len(orbits(G, S)) == 1:
+                famP.append((G, S))
+    classesP = []
+    for G, S in famP:
+        if not any(any(conj(g, G) == H and frozenset(act(g, v) for v in S) == T for g in O)
+                   for H, T in classesP):
+            classesP.append((G, S))
+    desc = sorted((len(G), kind(S), V4 <= G) for G, S in classesP)
+    print("      family P classes (|G|, S_+, contains axial V4):", desc)
+    require(desc == [(4, "face", False), (4, "tetrahedron", True), (12, "tetrahedron", True)],
+            "A4/Step 0': family P = (V4, tetrahedron), (C4, face), (T, tetrahedron) up to "
+            "conjugation; C4 does not contain the axial V4")
+    require(all(len(G) == 4 and len(closure([generators(G)[0]])) == 4
+                for G, S in classesP if kind(S) == "face"),
+            "the face class group is cyclic of order 4")
+
+    # Step 0' family F
+    famF = [G for G in subs if len(orbits(G, N3)) == 1]
+    classesF = []
+    for G in famF:
+        if not any(any(conj(g, G) == H for g in O) for H in classesF):
+            classesF.append(G)
+    require(sorted(len(G) for G in classesF) == [8, 24] and all(V4 <= G for G in classesF),
+            "A5/Step 0': family F = {D4, O} up to conjugation; both contain the axial V4")
+
+    # Step 0' representations, and Step 0 kernel lemma
+    # Counts are characters of the fixed representative G (not orbits of tuples (G, S, R)).
+    survivors, counts, kernels_O = [], {}, []
+    for fam, G, S in ([("P", G, S) for G, S in classesP] + [("F", G, None) for G in classesF]):
+        reps = {}
+        for phi in homs_into_O(G):
+            chi = tuple(trace(phi[g]) for g in sorted(G))
+            reps.setdefault(chi, phi)
+        label = f"{fam}: |G|={len(G)}" + (f", {kind(S)}" if S else "")
+        counts[label] = len(reps)
+        if fam == "F" and len(G) == 24:
+            kernels_O = [frozenset(g for g in G if phi[g] == I3) for phi in reps.values()]
+            reps_O = list(reps.values())
+        print(f"      {label}: {len(reps)} projective classes of 2-dim R")
+        for chi, phi in sorted(reps.items()):
+            ker = frozenset(g for g in G if phi[g] == I3)
+            image = len(G) // len(ker)
+            triv = sp.Rational(sum(chi), len(G))
+            red = "reducible" if triv >= 1 else "irreducible"
+            cert = emptying_shift(ker)
+            tag = f"|ker|={len(ker)}, |image|={image}, {red}"
+            if cert:
+                ell, prs = cert
+                print(f"        {tag}: EMPTY_CLASS by shift {ell}, pairs {prs}")
+            else:
+                print(f"        {tag}: not emptied by the kernel lemma -> Step 4b")
+                survivors.append((label, tag))
+    print(f"      surviving classes: {survivors}")
+    require(counts == {"P: |G|=4, tetrahedron": 5, "P: |G|=12, tetrahedron": 3,
+                       "P: |G|=4, face": 3, "F: |G|=8": 6, "F: |G|=24": 4},
+            "G-S0-03: projective classes per representative group: V4 5, T 3, C4 3, D4 6, O 4")
+    require(sorted(survivors) == sorted([
+        ("P: |G|=4, tetrahedron", "|ker|=1, |image|=4, irreducible"),
+        ("P: |G|=12, tetrahedron", "|ker|=1, |image|=12, irreducible"),
+        ("P: |G|=4, face", "|ker|=1, |image|=4, reducible"),
+        ("F: |G|=8", "|ker|=1, |image|=8, irreducible"),
+        ("F: |G|=24", "|ker|=1, |image|=24, irreducible")]),
+            "G-S0-03: exactly five survivors, one per group, each with trivial projective kernel")
+
+    # G-S0-01: construct the linear irrep E of O explicitly and identify its class.
+    # O permutes the three coordinate axes: sigma(M) is the permutation pattern of M.
+    def sigma(M):
+        return tuple(next(j for j in range(3) if M[i][j] != 0) for i in range(3))
+
+    def perm_matrix(p):
+        return tuple(tuple(1 if p[j] == i else 0 for j in range(3)) for i in range(3))
+
+    # With this convention sigma(AB) = sigma(B) o sigma(A) (an anti-homomorphism); M -> sigma(M)^-1
+    # is then a homomorphism. Kernel, image and fixed-point counts are the same for both.
+    sig_ok = all(sigma(mul(A, B)) == tuple(sigma(B)[sigma(A)[i]] for i in range(3))
+                 for A in O for B in O)
+    require(sig_ok and len({sigma(M) for M in O}) == 6
+            and frozenset(M for M in O if sigma(M) == (0, 1, 2)) == V4,
+            "G-S0-01: axis permutation gives O -> S3 onto, with kernel the axial V4")
+    # E(g) = standard rep of S3 = permutation matrix on the sum-zero plane, basis u1, u2.
+    u = [(1, -1, 0), (0, 1, -1)]
+
+    def E_is_scalar(M):
+        P = perm_matrix(sigma(M))
+        imgs = [act(P, v) for v in u]
+        # scalar iff P u_k = lam u_k for both basis vectors with the same lam (lam = +-1)
+        return any(all(w == tuple(lam * x for x in v) for w, v in zip(imgs, u)) for lam in (1, -1))
+
+    kerE = frozenset(M for M in O if E_is_scalar(M))
+    require(kerE == V4, "G-S0-01: the projective kernel of E is exactly the axial V4 "
+            "(the standard rep of S3 is scalar only at the identity)")
+    require([K for K in kernels_O if K == V4] == [V4],
+            "G-S0-01: exactly one projective class of O has kernel the axial V4, so it is E's class "
+            "(the class with |image| = 6 emptied above)")
+    D4 = [G for G in classesF if len(G) == 8][0]
+    # Round-2 repair: use the trace of rho_E: O -> SO(3) itself (the enumerated class with
+    # kernel V4), not the character of the 2-dim irrep (fixed points - 1); they differ, e.g. on C3.
+    rhoE = [phi for phi in reps_O if frozenset(g for g in O if phi[g] == I3) == V4][0]
+    order_of_sigma = {M: (1 if sigma(M) == (0, 1, 2) else
+                          3 if all(sigma(M)[i] != i for i in range(3)) else 2) for M in O}
+    trace_by_order = {1: 3, 2: -1, 3: 0}
+    require(all(trace(rhoE[g]) == trace_by_order[order_of_sigma[g]] for g in O),
+            "G-S0-01 (r2): tr rho_E(g) = 3, -1, 0 as sigma(g) has order 1, 2, 3 (image S3 in SO(3))")
+    triv_mult = sp.Rational(sum(trace(rhoE[g]) for g in D4), len(D4))
+    require(V4 <= D4 and triv_mult == 1 and emptying_shift(V4) is not None,
+            "G-S0-01 / A7 (r2): rho_E restricted to D4 has trivial multiplicity 1 (rho_E|D4 = "
+            "1 + alpha + alpha, alpha the sign of D4/V4); its kernel contains the axial V4, and "
+            "the kernel lemma empties it")
+
+    # controls and named anticipations
+    pauli = [s for s in survivors if s[0].startswith("P: |G|=4, tetrahedron") and "|ker|=1" in s[1]]
+    require(len(pauli) == 1, "negative control: the Pauli class (V4, tetrahedron, faithful) "
+            "is not emptied by the kernel lemma")
+    require(emptying_shift(V4) is not None and emptying_shift(V4)[0] in
+            {(0, 2, 2), (0, 2, -2), (0, -2, 2), (0, -2, -2), (2, 0, 2), (2, 0, -2), (-2, 0, 2),
+             (-2, 0, -2), (2, 2, 0), (2, -2, 0), (-2, 2, 0), (-2, -2, 0)},
+            "A1: any kernel containing the axial V4 is emptied by a (0,2,2)-type shift, one pair "
+            "in each tetrahedron")
+    face_C4, face_S = [(G, S) for G, S in classesP if kind(S) == "face"][0]
+    axis = [i for i in range(3) if len({v[i] for v in face_S}) == 1][0]
+    ec = emptying_shift(face_C4)
+    require(ec is not None and ec[0][axis] == 0,
+            "A1 (face): kernel containing the face C4 is emptied by a shift tangential to the face")
+    require(all(emptying_shift(G) is not None for G in classesF),
+            "A6: kernel transitive on N_3 empties the class")
+    for h in N3:
+        two_h = tuple(2 * x for x in h)
+        prs = [(a, b) for a in N3 for b in N3 if tuple(y - x for x, y in zip(a, b)) == two_h]
+        if prs != [(tuple(-x for x in h), h)]:
+            require(False, f"shift 2h has the single pair (-h, h) for h={h}")
+    require(True, "A8: every shift 2h has exactly one pair (-h, h)")
+    a, b, c, d = sp.symbols("a b c d")
+    T = sp.Matrix([[a, b], [c, d]])
+    assert_sym_equal(T * T, T.trace() * T - T.det() * sp.eye(2), "Cayley-Hamilton 2x2")
+    require(True, "A8: T^2 = tr(T) T - det(T) I, so rank one gives T^n = tr(T)^(n-1) T")
+    one = [(x, y) for x in N3 for y in N3 if tuple(q - p for p, q in zip(x, y)) == (2, 2, 2)]
+    require(one == [((-1, -1, -1), (1, 1, 1))],
+            "A3: shift (2,2,2) has a single pair, so s=1 with eight active coefficients is empty")
+
+    # positive control: Pavia symbols (reuses the reviewed step-01 extraction)
+    z = sp.symbols("z1:4")
+    for ch in (1, -1):
+        M, _ = S1.WD.published_symbol(3, ch, z)
+        T2 = {}
+        for v in N3:
+            mono = sp.prod([zi ** (vi + 1) for zi, vi in zip(z, v)])
+            T2[tuple(-x for x in v)] = M.applyfunc(
+                lambda e: sp.Poly(sp.expand(e * sp.prod(z)), *z).coeff_monomial(mono))
+        require(all(sym_zero(e) for e in S1.unitarity_equations(T2, 2))
+                and all(not sym_zero(t) for t in T2.values()),
+                f"positive control: Pavia chirality {ch} satisfies the identities, all T_h != 0")
+
+    print(f"VERDICT: {CHECKS}/{CHECKS} exact checks passed in {time.time() - t0:.0f} s. "
+          "Kernel-lemma closures only; surviving classes go to Step 4b (not authorized).")
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 3: informe_grok.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ a32e18975abd59f30d66e7515944fa2ba97cf98b; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: cli_exit_0 (estado operativo, no validación del contenido)
+modelo: grok-4.7, esfuerzo: por defecto del CLI, vía: grok CLI sellado como CIRO de Sanedrín (grok 1.0.34 (3736acbc8658) [stable])
+grok.json sha256 cb818a0acfc0675274a5d2356879ecd678c8d48ffe4c91a7a71042979dbf0222
+llamadas a herramienta intentadas (denegadas): 0
+inicio: 2026-10-29T12:02:21Z  fin: 2026-10-29T12:18:13Z
+documento: /home/ignac/qca-causal-cones/reports/2026-10-29--minimal-s2-step00.md ; último commit observado: 3bcf7b6 ; sha256 de la copia enviada 3f1b9e4bdc3b0fad1934b07b225627146c2ae143c07149e4dfcbd231faec49d3
+documento: /home/ignac/qca-causal-cones/scripts/verify_minimal_s2_step00.py ; último commit observado: 3bcf7b6 ; sha256 de la copia enviada a2abbe32a98ac005f3cc8c90bdc1aac37a97b436d41559cea942c719f253b4d7
+documento: /home/ignac/qca-causal-cones/debates/2026-10-29--minimal-s2-step00-review-grok/informe_grok.md ; último commit observado: 3bcf7b6 ; sha256 de la copia enviada f0118b7103347901104f284732bc04e3c81ad88d1a591b465f17c82a84a686a2
+documento: /home/ignac/qca-causal-cones/theory/MINIMAL_S2_RIGIDITY_GATE.md ; último commit observado: 785565c ; sha256 de la copia enviada 657fa6d3e9f17b69fedfde5d592d038b1eca90e90c496a8da1b43ffaa5ae8ea5
+documento: /home/ignac/qca-causal-cones/scripts/certificate_utils.py ; último commit observado: cb1e038 ; sha256 de la copia enviada 5a3591e1c5351aedbea97ec65f4cdcffacfb4117f52bc983d550ba67feb270ba
+entrada_grok.txt sha256 70efcaff2c6dad94fe36d10a2bbde67df89fe94e9b261e47194a07bff723ae3d
+respuesta sha256 51afffef28741b5aaae6fbd14a56246d8ea7dedcead5aa48cedfa5489999a471
+-->
+
+La identificación de la clase vaciada con `E` queda hecha y no la estropea que `sigma` sea antihomomorfismo. La prueba de 2-generación, tal como está escrita, no es completa. Los `require` de 5/3/3/6/4 y de los cinco supervivientes son correctos, y son caracteres de un representante fijo.
+
+Supuestos: no ejecuté el script; el código se lee como argumento. No está `verify_irreducible_isotropy_step01.py`, así que no recomprobé las matrices de Pavia. La traza de una rotación de ángulo θ en `SO(3)` es `1+2cos θ`. Una involución de `SO(3)` es la identidad (traza 3) o un giro de 180° (traza −1). En dimensión 3, traza 3 ocurre solo en la identidad.
+
+| Ítem | Veredicto |
+| --- | --- |
+| G-S0-01 | Reparado en lo que bloqueaba: la clase de `O` con núcleo el `V4` axial es la de `E`, y es la vaciada. El antihomomorfismo no cambia núcleo, imagen ni puntos fijos. «Puntos fijos − 1» es el carácter de la irrep 2-dimensional, no el de `ρ: O → SO(3)`. En `D4` las dos multiplicidades valen 1; no son la misma función. |
+| G-S0-02 | Los enunciados son verdaderos. La prueba escrita no es completa: la exclusión de `C2³` es circular y el caso de orden 8 no se prueba. |
+| G-S0-03 | Correcto. Los `require` fijan 5, 3, 3, 6, 4 y exactamente esos cinco supervivientes. La nota de caracteres, no de órbitas de tuplas, es correcta. |
+
+## 1. G-S0-01
+
+Basta con el núcleo. `E`, la irrep lineal 2-dimensional de `O ≅ S4`, factoriza por `O/V4 ≅ S3` y el núcleo proyectivo es exactamente el `V4` axial: en `S3` el carácter de la irrep estándar vale 2, 0 y −1 en la identidad, las transposiciones y los 3-ciclos, y solo la identidad es escalar. El certificado hace eso por álgebra lineal, no por el carácter. Con la base `u1=(1,−1,0)`, `u2=(0,1,−1)` del plano de suma cero, `P` actúa por la permutación de ejes y se comprueba si `Puk = λ uk` para el mismo `λ ∈ {±1}`. Eso es `±I` en el plano. Como `P` conserva el plano, el criterio es necesario y suficiente. Solo la permutación identidad lo cumple: `−I` en el plano exigiría carácter de permutación `−1`, imposible. Por tanto `ker E = {M : sigma(M) = id}`.
+
+Ese conjunto es el `V4` axial. `sigma(M)[i]` es la columna no nula de la fila `i`, así que `sigma(M) = (0,1,2)` significa matriz diagonal. Dentro de `O` (determinante 1) eso es `{I, diag(1,−1,−1), diag(−1,1,−1), diag(−1,−1,1)}`. El `require` lo iguala al `V4` del código y comprueba que la imagen tiene 6 elementos. Orden: `|O|/4 = 6`.
+
+La identidad de antihomomorfismo es correcta y el código la recorre. Si `k = sigma(A)[i]` es el único índice con `A[i][k] ≠ 0`, el único `j` con `(AB)[i][j] ≠ 0` es `j = sigma(B)[k]`. Luego `sigma(AB) = sigma(B) ∘ sigma(A)`. No afecta a la identificación:
+
+- `sigma(M) = id` si y solo si `sigma(M)^{−1} = id`, mismo núcleo;
+- invertir recorre todo `S3`, misma imagen;
+- una permutación y su inversa tienen los mismos puntos fijos;
+- `π(sigma(M))` es escalar si y solo si `π(sigma(M)^{−1})` lo es.
+
+`g ↦ π(sigma(g)^{−1})` es el homomorfismo; el código lo dice. El informe dice solo «composed with». Para el núcleo da igual.
+
+Hay una sola clase de `O` con ese núcleo, y el carácter tridimensional queda forzado, así que es la de `E`. Los normales de `S4` son `1`, el `V4` de las dobles transposiciones, `A4` y `S4`. Un núcleo de orden 4 tiene que ser ese `V4`, no un `V4` no normal. Traza según el orden: 3, −1, 0, 1 para órdenes 1, 2, 3, 4. Con núcleo exactamente el `V4`:
+
+- los cuatro elementos del `V4` van a la identidad, traza 3;
+- un 3-ciclo no puede ir a la identidad ni a un orden 2, luego traza 0 (hay 8);
+- una transposición, orden 2 y fuera del núcleo, traza −1;
+- un 4-ciclo cumple `ρ(g)² = ρ(g²) = I` porque `g²` es una doble transposición, y `ρ(g) ≠ I`, luego orden 2 y traza −1 (6+6 = 12).
+
+Ese es el carácter de la clase de imagen de orden 6. El `require` de unicidad mira los núcleos de los cuatro caracteres de `O` y exige que solo uno sea el `V4` axial. El vaciado es el de `emptying_shift(V4)`, ya comprobado: cualquier núcleo que contenga a ese `V4` hereda el desplazamiento. Con esto la fila de `E` en `O` queda identificada con la clase vaciada.
+
+La fórmula del carácter no es la traza de `ρ`. El código pone
+
+`chiE(M) = #{i : sigma(M)[i] = i} − 1`
+
+y suma eso sobre `D4`. Es el carácter de la irrep 2-dimensional: `χ_perm − 1`. En la identidad vale 2, no 3. No es una traza de `SO(3)` salvo en la identidad del grupo: un giro no trivial tiene traza 3, −1, 0 o 1, nunca 2.
+
+En el `D4` geométrico generado por `r: (x,y,z) ↦ (−y, x, z)` y `s: (x,y,z) ↦ (x, −y, −z)`, el cociente `D4/V4` tiene orden 2. Cuatro elementos caen en el `V4` y cuatro fuera.
+
+| Elementos | `χ` 2-dimensional | traza de `ρ_E` |
+| --- | --- | --- |
+| 4 del `V4` | 2 | 3 |
+| 4 de fuera | 0 | −1 |
+| Suma | 8 | 8 |
+| Multiplicidad | 1 | 1 |
+
+El `require` `triv_mult == 1` pasa, y la multiplicidad trivial de `ρ_E` restringida a `D4` es realmente 1. No es lo que la suma calcula. Para `r` concreto, `sigma(r) = (1,0,2)`, un punto fijo, así que la fórmula da 0; la traza de la matriz es 1; la traza de `ρ_E(r)` es −1, porque la imagen en `S3` es una transposición y el giro correspondiente es de 180°. Tres valores distintos.
+
+El acuerdo es particular de este subgrupo. En un `C3 = ⟨3-ciclo⟩` la irrep 2-dimensional tiene carácter `2, −1, −1`, multiplicidad `(2−1−1)/3 = 0`. El `ρ_E` manda el generador a un giro de 120°, carácter `3, 0, 0`, multiplicidad `3/3 = 1`. La misma fórmula ya no es la multiplicidad de `ρ`.
+
+`ρ_E` restringida a `D4` es `1 ⊕ α ⊕ α`, con `α` el signo de `D4/V4`: traza `3` en el `V4` y `−1` fuera, de modo que al restar la trivial queda `2α`. Se puede escribir `1 ⊕ χ` con `χ = α ⊕ α`. La irrep 2-dimensional restringida es `1 ⊕ α`. Las dos lecturas de «`1 ⊕ χ`» son verdaderas y tienen multiplicidad trivial 1. El certificado prueba la segunda. El vaciado de la restricción no usa esa suma: usa `V4 ≤ D4` y `emptying_shift(V4)`.
+
+`Q8` no se toca. El enunciado A2 del charter dice que en `2O` el núcleo es la preimagen `Q8`. El certificado no construye el recubrimiento doble. La celda de la tabla no afirma `Q8`; el rótulo «A2 verificado» es más ancho que el cálculo. El vaciado no depende de esa frase.
+
+## 2. G-S0-02
+
+La distinción por órdenes es el argumento correcto, y cada igualdad que se afirma es verdadera. Como prueba, el texto no cierra.
+
+Faltan los órdenes. Por Lagrange, un subgrupo de `S4` tiene orden 1, 2, 3, 4, 6, 8, 12 o 24. El informe no lo dice; el reparto de casos sí los cubre todos. El código cierra pares ordenados de `O`, incluidos `(a,a)`. En un grupo finito el monoide generado es el subgrupo, porque `g^{−1} = g^{n−1}` si `g^n = 1`. Eso tampoco está escrito y hace falta para que `closure` sea exhaustivo.
+
+Órdenes 1 a 4. Cíclico o `C2×C2`, ambos generados por a lo más dos elementos. Correcto. La frase que excluye `C2³` no es una prueba: «no hay `C2³` porque un 2-subgrupo abeliano elemental máximo tiene orden 4» repite el enunciado.
+
+La exclusión sí sale por involuciones. Las involuciones de `S4` son transposiciones y dobles transposiciones. La clase de las transposiciones tiene 6 elementos, luego el centralizador de `(12)` tiene orden `24/6 = 4` y es `{1, (12), (34), (12)(34)}`. Cualquier 2-subgrupo abeliano elemental que contenga una transposición tiene orden ≤ 4. Si no contiene ninguna, solo quedan las tres dobles transposiciones, y junto con la identidad forman el `V4` normal, orden 4. No hay un quinto elemento. Por tanto no hay `C2³`.
+
+Orden 6. No hay elemento de orden 6: los tipos de ciclo son 1, transposición (orden 2), doble transposición (orden 2), 3-ciclo (orden 3) y 4-ciclo (orden 4). Un grupo de orden 6 es `C6` o `S3`. Sin elemento de orden 6 es `S3`, y `S3 = ⟨(12),(13)⟩` porque `(12)(13)(12) = (23)`. El paso es correcto; el informe no escribe los tipos de ciclo ni por qué solo hay dos grupos de orden 6.
+
+Orden 8. «Todo grupo de orden 8 salvo `C2³` es 2-generado» es verdadero y no está probado. Los cinco grupos son `C8 = ⟨x⟩`, `C4×C2 = ⟨(a,0),(0,b)⟩`, `D4 = ⟨r,s⟩`, `Q8 = ⟨i,j⟩` y `C2³`, el único que necesita tres generadores. Sin esa lista, o sin el argumento de Frattini (`d(G) ≥ 3` y `|G| = 8` fuerzan `G ≅ C2³`), la frase no prueba nada. Encadenada con la exclusión circular de `C2³`, el caso de orden 8 queda sin justificación. Hay un atajo que el informe tampoco da: todo subgrupo de orden 8 es un 2-Sylow, los tres son conjugados y uno es el diedral `⟨r, s⟩`.
+
+Orden 12. Índice 2 implica normal, y el único subgrupo de índice 2 es el núcleo del signo, `A4`. Hasta ahí, bien, aunque la unicidad no se escribe. «Luego `A4 = ⟨(123),(124)⟩`» no se sigue del índice: la generación es otra afirmación, y no se demuestra. El cálculo que falta: conjugando, `(123)(124)(123)^{−1} = (234)`. Conjugando otra vez se obtienen `(243)`, `(134)`, `(142)` y `(143)`. Con los inversos están los ocho 3-ciclos, y generan `A4`.
+
+Orden 24. `S4 = ⟨(12),(1234)⟩` es verdadero y no se deduce en el texto. Con `b = (1234)` y `a = (12)`, `bab^{−1} = (23)`, `b(23)b^{−1} = (34)`, y `(12),(23),(34)` generan `S4`.
+
+El `require` de 30 subgrupos sigue siendo un contraste, no una prueba. El censo `1+9+4+4+3+4+3+1+1` cuadra con lo de arriba y no tapa el hueco.
+
+## 3. G-S0-03
+
+Los dos `require` fijan lo que la ronda 1 solo veía impreso. Las claves salen de las tres clases de P y las dos de F, y no colisionan. Recuento a mano, por caracteres del representante, no por ejecutar el bucle.
+
+`V4 = {1,a,b,c}`. El núcleo es un subgrupo y la traza de cada no identidad es 3 o −1. Cinco caracteres: el trivial `(3,3,3,3)`; tres de núcleo de orden 2, según cuál elemento conserve traza 3; el fiel `(3,−1,−1,−1)`, multiplicidad `(3−1−1−1)/4 = 0`. El superviviente es ese fiel, irreducible.
+
+`T ≅ A4`. Normales: `1`, `V4`, `A4`. Tres cocientes y tres caracteres: trivial; núcleo `V4` e imagen `C3` (los cuatro del `V4` a traza 3, los ocho 3-ciclos a traza 0); fiel (los tres orden 2 a traza −1, los orden 3 a traza 0), multiplicidad 0. Superviviente: fiel, irreducible, imagen de orden 12.
+
+`C4 = ⟨r⟩`. La imagen de `r` es la identidad, un 180° o un 90°. Tres caracteres, y los tres fijan un eje: multiplicidades 3, 1 y 1. El fiel es el de 90°, `|ker| = 1`, `|imagen| = 4`, reducible. Es el tercer superviviente del `require`.
+
+`D4 = ⟨r,s | r⁴ = s² = 1, srs^{−1} = r^{−1}⟩`. Seis caracteres, ya separados por `(χ(r), χ(r²), χ(s), χ(rs))`:
+
+- trivial, `(3,3,3,3)`;
+- núcleo `⟨r⟩`, imagen `C2`, `(3,3,−1,−1)`;
+- núcleo `⟨r²,s⟩`, `(−1,3,3,−1)`;
+- núcleo `⟨r²,rs⟩`, `(−1,3,−1,3)`;
+- núcleo `⟨r²⟩`, imagen `V4`, `(−1,3,−1,−1)`;
+- fiel, imagen `D4`, `(1,−1,−1,−1)`, multiplicidad 0.
+
+No hay un séptimo: si `r` va a un orden 4, `s` no puede ir a la identidad, porque tiene que invertir `r` por conjugación, y toda involución no trivial de `SO(3)` tiene traza −1. El único de núcleo trivial es el fiel. Los otros cinco tienen un desplazamiento que los vacía. Para el núcleo no axial `{1, r², rs, r³s}`, con `rs: (x,y,z) ↦ (y, x, −z)`, las órbitas sobre `N3` tienen tamaño 4 y el desplazamiento `(2,2,0)` mete sus dos pares dentro de órbitas: `(−1,−1,1) → (1,1,1)` y `(−1,−1,−1) → (1,1,−1)`. El superviviente de `D4` es solo el fiel, irreducible, imagen de orden 8.
+
+`O`. Cuatro normales, cuatro caracteres forzados por órdenes: trivial; núcleo `A4` e imagen `C2`; núcleo el `V4` e imagen de orden 6; fiel, traza 3 solo en la identidad, multiplicidad 0. Imagen fiel de orden 24. Los tres de núcleo no trivial contienen al `V4` axial o son transitivos, y el lema los vacía.
+
+Eso es exactamente la lista del segundo `require`: un superviviente por grupo, núcleo proyectivo trivial, y reducible solo el `C4` de la cara.
+
+La nota es correcta. `len(reps)` cuenta tuplas de trazas de un `G` fijo. No son órbitas de `(G,S,R)`. En `(V4, tetraedro)` los tres núcleos de orden 2 son tres caracteres, y `T` los funde en una sola órbita: `(123)` conjuga `(12)(34)` a `(14)(23)` y esta a `(13)(24)`. El fiel no se funde con nadie. Los supervivientes no cambian. «A single tuple» en el informe sobra una palabra: es una órbita de tres tuplas, no una tupla.
+
+## 4. Errores nuevos, y lo que no excede
+
+El párrafo de `SO(3)` no reintroduce la clasificación general como hipótesis del recuento. La lista de trazas por orden es correcta, y un cociente de un subgrupo de `S4` no puede tener orden divisible por 5 ni por 60. La frase «enumerar homomorfismos hacia `O` es exhaustivo» sigue apoyada en que cada imagen de esos tipos es conjugada dentro de `O`. Eso es verdad y sigue sin demostrarse en el informe; no es una afirmación falsa, y es la misma hipótesis que ya usaba el resto de la enumeración. Citar el desglose de la ronda 1 no sustituye a tenerlo escrito, pero no altera los números: ahora están exigidos por el certificado.
+
+Errores nuevos:
+
+1. Carácter de `E` en la restricción a `D4`. Certificado, asignación `chiE` y el `require` «G-S0-01 / A7»; informe, fila A2/A7, «`1 ⊕ χ`». Gravedad media. No borra la identificación ni el vaciado. La función sumada es `χ(E_2) = puntos fijos − 1`. La traza de `ρ_E` es otra: en `r` valen 0 y −1, como arriba. En `D4` las sumas coinciden (8 y 8) porque las diferencias `+1` en el `V4` y `−1` fuera se cancelan. En un `C3` dan multiplicidades 0 y 1. El `require` no calcula la multiplicidad de la clase tridimensional.
+
+2. «Form a single tuple». Informe, fila de representaciones. Gravedad baja. Son tres caracteres y una órbita bajo `T`. El `require` no hereda esa frase: cuenta 5 caracteres.
+
+3. El rótulo A2 incluye, en el charter, la preimagen `Q8` en `2O`. Informe, fila A2/A7. Gravedad baja. No está calculada. La celda misma solo afirma lo que el certificado hace sobre `O`.
+
+No veo otro exceso. El lema del núcleo, A3 y A8 no cambian, y al releerlos el desplazamiento `(2,2,2)` sigue teniendo el único par `((−1,−1,−1),(1,1,1))`, cada `2h` el único par `(−h,h)`, y Cayley–Hamilton en 2×2 es la identidad que el certificado pide. `T2s` y `O2s` siguen marcados como anticipación no verificada. El techo se afirma solo donde el grupo contiene al `V4` axial y se niega en la cara. El control positivo de Pavia sigue fuera de estos documentos.
+
+## Veredicto global
+
+**No promocionable.** La clase vaciada de imagen de orden 6 es la de `E`, los recuentos 5/3/3/6/4 y los cinco fieles están fijados, y el antihomomorfismo no abre otro núcleo. La condición de parada del Paso 0′ pide una prueba escrita de exhaustividad, y la de 2-generación sigue sin probar que no hay `C2³` ni que todo grupo de orden 8 distinto de `C2³` es 2-generado. A eso se añade que el test de «`1 ⊕ χ`» suma el carácter 2-dimensional, no la traza de `ρ`.
+
+=== DOCUMENT 4: MINIMAL_S2_RIGIDITY_GATE.md ===
+
+# MINIMAL S=2 RIGIDITY GATE
+
+**Status: OPEN — charter frozen 2026-10-29 from draft v4, by user instruction ("congelar el
+charter con la v4"). This commit is the preregistration commit.** Execution is authorized stage
+by stage only, and each authorization is recorded in [CURRENT_STATE](../state/CURRENT_STATE.md)
+with its budget (Sec. 4). The charter body below is the v4 text, unchanged.
+
+Drafting history:
+- **v4** applies the round-3 Astra repairs. Round 3 found v3 NOT_READY for one blocking repair,
+  A-R3-01, plus one wording repair, A-R3-02:
+  [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-v3-review-astra/verificacion_autor.md).
+  v4 also adds the reviewer's editorial precisions.
+- **v3** applies the round-2 Astra repairs A-R2-01..06, which found v2 NOT_READY:
+  [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-v2-review-astra/verificacion_autor.md).
+  It also applies two user decisions of 2026-10-29: keep the `C4` face class, and let Q-a range
+  over symbols with an admissible cone.
+- **v1** (sha256 `8541cf72…`) was drafted on 2026-10-29 from the committee recommendation
+  [`comite_decision_002`](../reports/comite/comite_decision_002_siguiente-charter-tras-cola.md).
+  It was reviewed blind by Astra (OpenAI family), which returned **NOT_READY** with 14 repairs
+  (A-R1-01..14):
+  [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-review-astra/verificacion_autor.md).
+- **v2** applies those repairs. It also adds a second isotropy family (Sec. 2, family F) by user
+  decision («Ampliar la definición», 2026-10-29).
+- This charter records no computation, candidate or theorem.
+
+**Authority:** [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 4 (`B_infty^*`):
+- the P17 minimal `s=2` class with its Eq. (2) is NOT REFUTED, and rigidity there is OPEN as an
+  in-repo claim;
+- `s=2` without Eq. (2) is OPEN;
+- the linear `2O` irrep `E` at `s=2` is OPEN and unchartered;
+- Sec. 7.1 leaves open whether Eq. (2) is derivable.
+
+**Predecessors:**
+- [`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](MASSLESS_INRADIUS_RIGIDITY_GATE.md). Its Sec. 0
+  definitions (`S_n`, `h_infty`, `c_strict^iso`, `rho_micro`, rigidity (i), saturation (ii)),
+  Sec. 3 admission checks and Sec. 5 vocabulary are inherited unless amended below.
+- [`IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md`](IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md), closed for
+  T3/O3/O4 and not amended here.
+- The general ceiling `c_0 <= c_strict^iso`:
+  [`STRICT_CONE_CEILING_N3_GATE.md`](STRICT_CONE_CEILING_N3_GATE.md) and
+  [report](../reports/2026-09-16--point-3-strict-cone-ceiling.md), PROVED_UNDER_FROZEN_CONTRACT.
+  Its frozen scope uses normalized `N_3`, node `k_star = 0`, any fixed eigenphase, a local
+  unwrapped phase, and rank `2 <= r <= s` (contract lines 30–36). Whether it covers every node
+  of this charter is checked in Step 0 (A-R1-11).
+
+**Primary source:** P17 = D'Ariano–Erba–Perinotti, PRA 96, 062101 (2017), inspected as
+`biblioteca/1708.00826v2.pdf`. All pages below refer to that arXiv v2 PDF. They must not be mixed
+with the published-page coordinates of `reports/2026-09-14--massless-rigidity-source-audit.md`.
+Locations confirmed by the Astra review:
+- Definition 1 and Eq. (2), p.2. Distinguishability, supplemented by note [23] (p.15, published
+  in the paper), which refers to ref. [31] (p.16, "Unpublished").
+- s=1 "trivial", p.4, citing [24].
+- Eqs. (12)–(13), p.4: rank one for nonzero transitions at `s=2`.
+- Pauli isotropy image: Fig. 1(c) caption p.6, and Sec. V pp.5–6.
+- Prop. 5, p.7, including (c) `A_e = 0` for d=3.
+- The exchange `h_1 ↔ h_4`, used by P17 on p.7.
+
+## 0. Why this gate, and what is already anticipated
+
+Only one equality is certified: `c_0 = c_strict^iso` for the Pavia symbols `A±,B±`. In P17's
+class, matching is a conditional application of P17's classification plus that certificate.
+Without Eq. (2), no classification is held in the repo or was found in the local literature.
+
+**Anticipations (not results).** These were stated before any computation under this charter.
+None is certified. Step 0 must verify or refute each one.
+
+*Retrospective, from the committee of 2026-10-29 (all members Claude):*
+- A1. Suppose `R` is scalar on a subgroup transitive on each half `S_±`. Then covariance makes
+  `T_h = A` on `S_+` and `B` on `−S_+`. The zero-shift identity gives `4(A^†A + B^†B) = I`. A
+  displacement whose only pairs are one inside `S_+` and one inside `−S_+` gives
+  `A^†A + B^†B = 0`, a contradiction.
+- A2. The linear irrep `E` of `2O` is trivial on the axial half-turns: their image in
+  `O ≅ S4` is the `V4` kernel of `S4 → S3`, and in `2O` the corresponding kernel is the
+  preimage `Q8`.
+- A3. A unimodular scalar Laurent polynomial on the torus is a monomial, so s=1 with eight active
+  coefficients is empty.
+- A4. Without Eq. (2), `S_+` can be a face, and `C4` acts transitively on it without containing
+  `V4`.
+
+*Corrections from the Astra review (2026-10-29):*
+- A1 holds for the tetrahedron with `ε-shift (0,2,2)`.
+- For a face, the displacement must be **tangential** to the face. Example: for
+  `S_+ = {ε_x = +1}`, use `(0,2,2)`. The normal shift `(2,0,0)` only gives `4 B^†A = 0`; the v1
+  note was wrong here.
+- A2 is correct with the `Q8` precision.
+- A3 is correct, with the extremal-exponent proof.
+- A4 is correct as a geometric pair only. It says nothing yet about unitary symbols.
+
+*From the Astra round-2 review (2026-10-29), reviewer derivations, `[UNVERIFIED]`:*
+- A5. Family F, up to conjugation in `O`, is exactly `{D4, O}`: a transitive subgroup has order 8
+  or 24.
+- A6. If `R` is scalar on a subgroup transitive on all eight vertices, all `T_h` equal one `A`.
+  The shift `ε = (2,2,2)` has a single pair and gives `A^†A = 0`, against `8A^†A = I`. The class
+  is empty.
+- A7. `E` under `O` or `D4` is scalar on `V4`. `V4` has two tetrahedral orbits, so A1 on the
+  tetrahedron decides it.
+- A8. Without Eq. (2), `s=2` coefficients have rank one: the shift `2h` has a single antipodal
+  pair. Non-nilpotency of `T_h` is then equivalent to `tr T_h != 0`.
+
+*Prospective:* everything in Secs. 3–5.
+
+## 1. Question
+
+Units and lattice:
+- `N_3 = {ε/sqrt(3) : ε ∈ {±1}^3}` (normalized, as in the predecessors). Displacements are
+  labelled by their `ε` differences.
+- The generated lattice is BCC, `Λ = (1/sqrt(3)) {m ∈ Z^3 : m_1 ≡ m_2 ≡ m_3 mod 2}`.
+- With the convention `e^{-ik.h}`, its reciprocal lattice is
+  `Λ^* = π sqrt(3) {m ∈ Z^3 : m_1 + m_2 + m_3 even}`, and the Brillouin torus is `R^3 / Λ^*`.
+- In these units the Pavia baseline value is `1/sqrt(3)`. With unnormalized `ε` both velocities
+  scale by `sqrt(3)` and the baseline becomes `1`; the equality is unaffected (A-R1-02).
+
+Main question:
+
+\[
+\forall \mathcal C,\ \forall U \in \mathcal C,\ \forall (k_\star,\omega_\star)\ \text{admissible}:\quad
+c_0(U,k_\star) = c_{\rm strict}^{\rm iso}(U)\ ?
+\]
+
+- A class `𝒞` is a tuple `(P, G, S_±, [R])` in family P, or `(F, G, [R])` in family F. Family F
+  has no partition (A-R2-01).
+- `(k_star, ω_star)` ranges over **every** admissible node and eigenphase of `U`. The sector is
+  the full two-band space, and the local quasienergy branch is the one fixed by the predecessor's
+  Sec. 3.
+- One admissible tuple with `c_0 != c_strict^iso` is a counterexample. Its direction is recorded
+  (A-R2-04).
+  - Where the general ceiling is certified for that class and node (Step 0.4), only
+    `c_0 < c_strict^iso` is possible.
+  - Where it is not certified, for example in the `C4` face class, both directions are admitted.
+  - A `c_0 > c_strict^iso` witness inside a certified class would contradict the ceiling. It is
+    recorded as a conflict and reviewed before anything else.
+
+Subsidiary questions:
+- **Q-a.** Does every symbol of a class **with at least one admissible node** satisfy P17
+  Eq. (2)? User decision, A-R2-05. In family F, Eq. (2) is interpreted with `h ∈ N_3`
+  (`S_+ = S_− = N_3` for this purpose only, as in P17 p.3).
+- **Q-b.** Does the `A±,B±` certificate transport along every listed P17 equivalence?
+
+## 2. Frozen class declaration
+
+| Item | Declaration |
+| --- | --- |
+| Geometry | d=3; `N_3` as in Sec. 1, all eight `T_h != 0`; no on-site term; one complete update per time unit; `U(k) = sum_h e^{-i k.h} T_h` |
+| Internal dimension | `s = 2` (main); `s = 1` only in Step 0 |
+| Family P (partitioned) | `G ⊂ O`, proper rotations of the cube by their 3x3 matrices. `S_+ ⊂ N_3` with `|S_+| = 4` and `S_+ ∩ (−S_+) = ∅`. `G` permutes `S_+` transitively. This is a restriction of P17's setting: proper cube rotations and an oriented four-generator presentation, without Eq. (2). It is **not** "P17 minus Eq. (2)" (A-R1-03) |
+| Family F (full) | `G ⊂ O` acting transitively on all eight vertices of `N_3`, with no partition. Classes are `(F, G, [R])`. Contains `O` |
+| Overlap of P and F (A-R2-02) | Every `G` in F contains the axial `V4`, so every F-symbol, restricted to `V4`, belongs to a tetrahedral P class. A `D4`-covariant symbol also restricts to the `C4` face class. F adds stronger declared symmetry, not new symbols. **Automatic transfer only for properties of the symbol itself, which do not depend on the declared symmetry: the main equality and saturation** (A-R3-01). For these, universal proofs transfer from a P class to its F subclasses and counterexamples from F to P, never the reverse. **Q-a does not transfer automatically.** Its predicate checks pairs `(g, h)` in `G × D_𝒞`, with `D_𝒞 = S_+` in P and `N_3` in F. Hence `E_F(U) ⇒ E_P(U)` but not conversely, and a violation in F need not lie in the restricted pairs. Q-a is decided separately in each class. The same symbol appearing in several rows is not independent evidence. Reports count declared classes and distinct symbols separately |
+| Covariance | `T_{gh} = R_g T_h R_g^†` for all `g ∈ G`, with `R` a projective unitary representation; equivalently `U(gk) = R_g U(k) R_g^†`. No reflections, parity or antiunitaries are required as symmetries |
+| Representations | **Every** 2-dimensional projective unitary `R`, irreducible or reducible, up to projective equivalence `R'_g = c_g W R_g W^†` (`|c_g| = 1`, `W` unitary). The multiplier class alone does not identify `R` (A-R1-07) |
+| Fidelity | Not assumed. The projective kernel `ker_proj R = {g : R_g scalar}` is recorded. A `g ≠ e` in it that moves a generator forces equal coefficients and violates Eq. (2) |
+| Class identification | For `Q ∈ O`: in P, `(G, S_±, R) ~ (QGQ^{-1}, QS_±, R∘Ad_{Q^{-1}})`; in F, `(G, R) ~ (QGQ^{-1}, R∘Ad_{Q^{-1}})`. Classes are counted up to this conjugation |
+| Eq. (2) | Not assumed; recorded per candidate. In F it is read with `h ∈ N_3` (Q-a) |
+| Node and sector | All admissible nodes, full two-band sector, local branch (Sec. 1) |
+| Coefficient domain | Real variables for the real and imaginary parts of the coefficients, ranging over all reals. "Exact algebra" is a method, not a restriction to algebraic points (A-R1-01, A-R1-09) |
+| Group arithmetic | Exact canonical form. No numerical identification such as `nsimplify` |
+
+## 3. Sequence
+
+**Step 0′ — enumeration of isotropy classes.**
+1. Family P. Enumerate the `2^4 = 16` choices of `S_+` (one vertex per antipodal pair):
+   - two tetrahedra;
+   - six faces;
+   - eight "vertex plus its three neighbours" sets.
+
+   For each choice, determine the transitive subgroups of its rotation stabilizer. The review
+   anticipates three geometric pairs up to conjugation, `(V4, tetrahedron)`,
+   `(T, tetrahedron)` and `(C4, face)` `[UNVERIFIED]`.
+2. Family F. Enumerate the subgroups of `O` transitive on the eight vertices. A5 anticipates
+   `{D4, O}`; the step verifies or refutes it.
+3. For each group, enumerate every 2-dimensional projective unitary `R` up to the equivalence of
+   Sec. 2, and record `ker_proj R`.
+4. Give a written proof that the enumeration is exhaustive, plus an exact script. **The
+   enumeration and its conventions are reviewed (Sec. 6) before Steps 0, 4a and 4b use it as
+   their universe.**
+
+**Step 0 — verify or refute the anticipations (A-R1-06).**
+1. A1 for every class from Step 0′ in which `R` is scalar on a subgroup transitive on each half
+   (family P) or on all eight vertices (family F; A6). Record the displacement and the pairs used.
+   - Negative control: the `V4`/Q8 Pauli class must not become empty.
+   - Positive control: `A±,B±` satisfy the identities.
+2. A2 and A7 as statements about `E` restricted to the groups of Step 0′. Rows are stated under
+   their own group: `E` under `O` (family F), and `E` restricted to `D4` (`≃ 1 ⊕ χ`, reducible).
+3. A3: in-repo analytic proof for s=1 (extremal-exponent argument), with P17 p.4 [24] cited as
+   context. Meyer (1996) is not in the repo and stays `[UNVERIFIED]`.
+4. Ceiling scope (A-R1-11, A-R2-03). The general ceiling's frozen class
+   (`STRICT_CONE_CEILING_N3_GATE.md`, lines 30–36) requires:
+   - normalized `N_3`;
+   - covariance under the Cartesian half-turn `D2` (= the axial `V4`);
+   - node `k_star = 0`.
+
+   Record per class and node whether the ceiling applies:
+   - **Groups.** `V4` and `T` (tetrahedron) and `D4` and `O` (F) contain `D2`. The `C4` face
+     class does not, so the ceiling does not cover it unless a `D2` covariance is proved for
+     its symbols.
+   - **Nodes.** A node `k_star != 0` is moved to `0` by `T'_h = e^{-i k_star.h} T_h`. This
+     preserves `S_n`, the strict body and the slope. It keeps covariance with the same `R` on
+     `D2` iff `g^{-1} k_star − k_star ∈ Λ^*` for every `g ∈ D2`.
+   - The ceiling's proof is not re-read here. Any wider scope it might support is
+     `[UNVERIFIED]` and is not used.
+
+5. A8 (rank one without Eq. (2), and non-nilpotency equivalent to `tr T_h != 0`), from the
+   `2h` identity and Cayley–Hamilton. A4 and A5 are checked in Step 0′.
+
+Each item has the outcomes VERIFIED, REFUTED (with witness) or INCONCLUSIVE. An anticipation that
+ends INCONCLUSIVE does not remove its class from the later steps.
+
+**Step 4a — transport within P17's class (A-R1-08).** Use transport laws, not literal
+invariance. For each listed operation, state its effect on `S_n` and `c_0`, and re-verify
+covariance and admission afterwards:
+- constant unitary conjugation compatible with `R`: preserves `S_n`;
+- global phase: preserves `S_n`;
+- momentum shift: preserves `S_n`. It moves the node, and covariance with the same `R` must be
+  re-checked;
+- spatial inversion `h -> −h`: `S_n -> −S_n`;
+- rotation `Q`: `S_n -> Q S_n`. The spherical minimum of the support function is preserved;
+- complex conjugation of coefficients, `T_h -> T̄_h` (i.e. `U(k) -> conj(U(−k))`);
+- P17's exchange `h_1 ↔ h_4` (p.7), with its geometric realization identified. Allowing a
+  reflection as an equivalence between models is distinct from requiring it as a symmetry.
+
+Left multiplication by a uniform local unitary is **excluded**. Astra's witness
+`U = diag(e^{-ik}, e^{ik})`, `V = σ_x`, `(VU)^2 = I` shows it changes the strict velocity.
+Unlisted or excluded operations leave Q-b `CONDITIONAL`.
+
+**Step 4b-1 — exact class derivation (A-R1-09).**
+- For each class from Step 0′ not emptied in Step 0: real variables, the unitarity identities
+  split into real and imaginary parts, and active-support conditions `T_h != 0`.
+- Groebner or primary decomposition over an exact field.
+- Separately, a **real existence certificate**: an explicit real point, or a real
+  infeasibility certificate such as a Positivstellensatz or SOS certificate.
+- An ideal other than `(1)` is not existence.
+- Complex algebraic components are kept distinct from components of the real admissible set.
+- Admissible encodings, each to be verified exactly:
+  - active support by an extra variable `y` with `y ∏_h ||T_h||_F^2 − 1 = 0`;
+  - real emptiness by an identity `−1 = Σ a_i f_i + Σ b_j^2`.
+  A bounded SOS search that fails is not existence, and a numerical approximation is not a
+  certificate.
+- 4b-1 decides only `EMPTY_CLASS` versus the existence of unitary symbols. Sectors are decided
+  in 4b-2 (A-R2-05).
+
+**Step 4b-2 — sectors, strict body, comparison.**
+- Find every admissible node. One admissible encoding: `U(k_star) = aI`, `|a| = 1`,
+  `H_j = i ā ∂_j U(k_star)`, `tr H_j = 0`, `½ tr(H_j H_l) = c_0^2 δ_jl`, `c_0 > 0`.
+- Decide `NO_ADMISSIBLE_SECTOR` versus admissible sectors, and Q-a on the symbols that have one.
+- Compute `c_0` exactly.
+- Determine `c_strict^iso`: by the vertex lemma when every vertex coefficient is
+  non-nilpotent (rank one `T_h = |u><v|` with `<v|u> != 0`), otherwise by an exact computation.
+- If the strict body cannot be determined exactly within budget, stop with
+  `OPEN_AFTER_STRICT_BODY` for that class.
+
+## 4. Admission, budget and stop rules (A-R1-13)
+
+- **Admission:** the predecessor's Sec. 3 checks, re-run after every transport in 4a. The first
+  failure gives `INADMISSIBLE_CANDIDATE`.
+- **Methods:** exact algebra only. A finite scan, a parameter sweep or a least-squares search
+  certifies nothing (NO_RIGIDITY_FROM_FINITE_SCAN). Every retained computation is a versioned
+  script in `scripts/`, run through `run_all_verifiers.py`.
+- **Stage authorizations,** each requested separately and reported before the next:
+  (a) Steps 0′ and 0; (b) 4a; (c) 4b-1; (d) 4b-2.
+- **Before each stage runs,** its authorization fixes: a wall-time and resource budget, the
+  scope (which classes), the deliverable, and the closure condition.
+- **Explicit stops:**
+  - 0′: exhaustiveness proof not completed.
+  - 4a: an operation whose transport law cannot be established.
+  - 4b-1: system not tractable → `OPEN_AFTER_CLASS_DERIVATION`.
+  - 4b-2: strict body not determinable → `OPEN_AFTER_STRICT_BODY`.
+- **Exhausted budget:** gives a partial or OPEN result, never rigidity.
+- **Literature:** before any Q-a outcome is described beyond its class, search externally for
+  P17 [31] and later work citing P17. That search sends text to third parties and needs
+  separate permission.
+
+## 5. Outcomes by question (A-R1-10)
+
+Outcomes answer different questions and may coexist. "Equal standing" means equal editorial
+acceptance; none is expected or preferred. A1–A8 are not results.
+
+| Question | Outcomes (per class) | Closes |
+| --- | --- | --- |
+| Unitary symbols | `EMPTY_CLASS` (no unitary symbol); `UNITARY_SYMBOLS_EXIST` (certified real point); `OPEN_AFTER_CLASS_DERIVATION` | 4b-1 |
+| Sectors | `NO_ADMISSIBLE_SECTOR` (unitary symbols exist, none has an admissible cone); `ADMISSIBLE_SECTORS_EXIST`; `OPEN` | 4b-2 |
+| Main (rigidity, ∀ tuples) | `COUNTEREXAMPLE_VERIFIED_BELOW` (an admissible tuple with `0 < c_0 < c_strict^iso`); `COUNTEREXAMPLE_VERIFIED_ABOVE` (`c_0 > c_strict^iso`, only where the ceiling is not certified for that tuple and node; where the ceiling is certified and applies to that tuple, node included, it is a conflict, Sec. 1; `c_strict^iso` need not be positive); `RIGIDITY_PROVED_FOR_FROZEN_CLASS` (equality for every admissible tuple); `VACUOUS` (class empty or without admissible sector); `OPEN_AFTER_STRICT_BODY` / `INCONCLUSIVE` | 4b-2 |
+| Saturation (separate, A-R2-06) | `SATURATION_PROVED_FOR_CLASS` (∀ admissible `U`: `c_strict^iso(U) = rho_micro`); `SATURATION_FAILURE_WITNESS` (∃ admissible `U` with `c_strict^iso(U) < rho_micro`); `OPEN`. This replaces the predecessor's `INADMISSIBLE_SATURATION` and v2's `RIGIDITY_HOLDS_SATURATION_FAILS` | 4b-2 |
+| Q-a (symbols with an admissible node) | `DISTINGUISHABILITY_IMPLIED_IN_CLASS`; `DISTINGUISHABILITY_REFUTED_BY_WITNESS` (the witness must have an admissible node); `OPEN` | 4b-2 |
+| Q-b | `TRANSFER_CERTIFIED_FOR_LISTED_EQUIVALENCES`; `CONDITIONAL` (with the unlisted operations named) | 4a |
+| Anticipations | VERIFIED / REFUTED / INCONCLUSIVE per item | Step 0 |
+
+`INADMISSIBLE_CANDIDATE` concerns a single candidate and never decides a class.
+
+Reading rules (round 3):
+- `UNITARY_SYMBOLS_EXIST` is an existence result. It authorizes no universal outcome.
+- One question can close while another stays open. A stop in 4b-2 does not erase outcomes
+  already certified, for example a Q-a refutation witness.
+- On an empty domain, Q-a and saturation hold vacuously. That is recorded as vacuous, not as a
+  substantive result. A class already `EMPTY_CLASS` skips the sector row.
+- 4a transports only the nodes of the starting certificate. Coverage of every node remains a
+  4b-2 obligation.
+
+**Ceilings:** no statement about `s > 2`, other supports or on-site terms, reflections or
+antiunitaries as symmetries, masses, interactions, species universality (A), the absolute scale,
+or nature. `RIGIDITY_PROVED_FOR_FROZEN_CLASS` is not a general QCA law. No novelty wording: the
+`s=2` classification with Eq. (2) is P17's. Any statement without Eq. (2) is "not located in the
+sources checked", and those sources are named. `v_max` is never written unqualified. A result
+over this union of `s=2` classes is not general QCA rigidity, in titles and summaries as well as
+in the body. A symbol counted under both P and F is one symbol.
+
+## 6. Review (A-R1-14)
+
+- The Step 0′ enumeration, with its exhaustiveness proof and conventions, is reviewed by a model
+  of a different family before it is used as the classification universe.
+- Every Step 0 certificate and every terminal outcome is reviewed the same way before entering
+  CURRENT_STATE as more than PRELIMINARY.
+- Each review gets one sealed round and one operational retry if transport fails.
+- Open mandatory objections block promotion.
+- Any change to certified content after review needs a new review of the changed files.
+- Every review record cites:
+  - the SHA-256 of the reviewed report and certificate;
+  - the base commit;
+  - the `~/herramientas` commit;
+  - the user's authorization for sending text externally;
+  - the model family that wrote the reviewed content, so that independence can be checked.
+- A review is an additional check, not a substitute for the exact certificate.

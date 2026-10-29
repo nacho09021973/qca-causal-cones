@@ -23,17 +23,24 @@
   - G-S0-02: proof of 2-generation added below.
   - G-S0-03: class counts and survivors are now required.
 
-  The repaired certificate has SHA-256 `a2abbe32a98ac005…` and passes 22/22 exact checks.
-  Grok round 2 ([review](../debates/2026-10-29--minimal-s2-step00-review-grok-r2/verificacion_autor.md))
-  accepted G-S0-01 and G-S0-03, found the G-S0-02 proof incomplete, and raised three new points:
-  - the trace of `ρ_E` on `D4`;
-  - the wording «single tuple»;
-  - `Q8` not computed.
+  That repaired certificate had SHA-256 `a2abbe32a98ac005…` and passed 22/22 exact checks, with
+  a full sweep of 48/48 ([record](2026-10-29--minimal-s2-step00-repair-run_all.tsv)).
+- **Grok round 2**, of the bytes in `3bcf7b6`
+  ([review](../debates/2026-10-29--minimal-s2-step00-review-grok-r2/verificacion_autor.md)).
+  - Accepted G-S0-01 and G-S0-03.
+  - Found the G-S0-02 proof incomplete.
+  - Raised three new points: the trace of `ρ_E` on `D4`, the wording «single tuple», and that
+    `Q8` is not computed.
 
-  All of them are repaired. The certificate (SHA-256 `adeb8afc4d4be5ed…`) now passes 23/23;
-  full sweep 48/48 ([record](2026-10-29--minimal-s2-step00-repair2-run_all.tsv)).
-  Full sweep 48/48 ([record](2026-10-29--minimal-s2-step00-repair-run_all.tsv)). It awaits a
-  second review.
+  All were repaired. The current certificate has SHA-256 `adeb8afc4d4be5ed…` and passes 23/23,
+  with a full sweep of 48/48 ([record](2026-10-29--minimal-s2-step00-repair2-run_all.tsv)).
+- **Grok round 3**, of the bytes in `ebebca7`
+  ([review](../debates/2026-10-29--minimal-s2-step00-review-grok-r3/verificacion_autor.md)).
+  - No mandatory objection open.
+  - The 2-generation proof is complete.
+  - The `D4` check uses the trace of `ρ_E`.
+  - The wording repairs suffice.
+  - The only remark was this duplicated provenance sentence, now fixed.
 
 ## Result
 
