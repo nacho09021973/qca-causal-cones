@@ -1,6 +1,6 @@
 # S=3 ISOTROPIC RIGIDITY GATE
 
-**Status: DRAFT v2 (2026-10-29), not frozen.** Requested by the user: "prepara el charter para
+**Status: DRAFT v3 (2026-10-29), not frozen.** Requested by the user: "prepara el charter para
 s=3". Nothing here is authorized for execution. The charter is frozen only by an explicit user
 instruction; that commit becomes the preregistration commit. This draft records no computation,
 candidate or theorem.
@@ -11,6 +11,9 @@ Drafting history:
   ([review and author reading](../debates/2026-10-29--s3-charter-draft-review-grok/verificacion_autor.md)).
 - **v2** applies G-S3-01..05 and 07..10. G-S3-06 is rejected (the explicit `s=2` witness is
   supported on `N_3`, as the 4b-1 certificate checks); its control is replaced anyway.
+- **v3** applies the round-2 Grok objections G-S3-R2-01..04 (wording; round 2 found every
+  round-1 repair resolved except G-S3-08, partial, and confirmed the G-S3-06 rejection)
+  ([review and author reading](../debates/2026-10-29--s3-charter-draft-v2-review-grok/verificacion_autor.md)).
 - User decisions recorded in v1 and kept: D1 both sector ranks; D2 keep family F; D3 Grok as
   reviewer.
 
@@ -58,8 +61,8 @@ certified in Step 0.
   axis, whose vectors have two zero coordinates. **If certified, all five classes are
   `EMPTY_CLASS`, uniformly in `R`.** The argument uses `s` odd and no on-site term.
 - B1. **Projective classes in dimension 3.** For a cocycle `ω` of `R`, `det` gives `[ω]^3 = 1`.
-  If the exponent of `[ω]` in the Schur multiplier of `G` is prime to 3, `[ω] = 1`. Step 0 checks
-  the multiplier exponent per subgroup type of `O` (cyclic, `V4`, `S3`, `D4`, `A4`, `S4`); the
+  If the exponent of `[ω]` in the Schur multiplier of `G` is prime to 3, `[ω] = 1`. Step 0′ (only
+  if Step 0 does not close) checks the multiplier exponent per subgroup type of `O` (cyclic, `V4`, `S3`, `D4`, `A4`, `S4`); the
   exponent is that of the cohomology class, not of a representative cocycle.
 - B2. **Rank bound.** The shift `2h` has the single pair `(−h, h)`, so `T_{−h}^† T_h = 0` and
   `T_h T_{−h}^† = 0`; hence `rank T_h + rank T_{−h} <= 3`, with pairs `(1,1)`, `(1,2)`, `(2,1)`.
@@ -92,12 +95,12 @@ c_0(U,k_\star,P) = c_{\rm strict}^{\rm iso}(U)\ ?
 
 **Sector encodings (G-S3-02), one per rank (D1: both):**
 - `r = 2`: `P` is the spectral projector of `U(k_star)` onto an isolated eigenvalue
-  `e^{-iω_star}` of multiplicity 2. In every direction `q`, the branches of the compression of
-  `U(k_star + q)` to the image of `P` have linear slopes `+c_0|q|` and `−c_0|q|`, with the same
-  `c_0 > 0`, untilted. The third (spectator) eigenvalue is isolated at the node; its slope is not
-  `c_0`.
-- `r = 3`: `U(k_star) = aI`, `|a| = 1`. In every direction `q`, the linear slopes include
-  `+c_0|q|` and `−c_0|q|` with the same `c_0 > 0`, untilted. The third slope is a function of the
+  `e^{-iω_star}` of multiplicity 2. In every unit direction `q̂`, the two branches emerging from
+  `P` have phases `ω_star ± c_0 |q| + o(|q|)` along `q = |q| q̂`, with the same `c_0 > 0`,
+  untilted. The third (spectator) eigenvalue is isolated at the node; it is outside `P`, and its
+  slope is not constrained.
+- `r = 3`: `U(k_star) = aI`, `|a| = 1`. In every unit direction `q̂`, the branches include phases
+  `ω_star ± c_0 |q| + o(|q|)`, with the same `c_0 > 0`, untilted. The third slope is a function of the
   direction, recorded, never counted as a cone (it may be 0, a flat branch).
 - These follow the ceiling's rows "Selected cone" and "Other slopes". The 4b-2 identities
   `tr H_j = 0`, `½ tr(H_j H_l) = c_0^2 δ_jl` are **not** used as definitions.
@@ -138,7 +141,9 @@ solution set of each class; a certified point never authorizes a universal state
    (symbolic expansion with generic coefficients, and the parity argument);
 2. A3 (a unimodular Laurent polynomial on the torus is a monomial), reused from the minimal
    charter's stage (a);
-3. for each of the five groups, the fixed vectors of `g^T` in the odd coset are empty;
+3. for each of the five groups, the **common** fixed space `{m : g^T m = m for every g ∈ G}`
+   meets the odd coset trivially (the intersection over the whole group, not element by element:
+   a 3-fold rotation of `T` or `O` alone fixes the odd vector `(1,1,1)`);
 4. negative control: the same computation at `s = 2` and `s = 4` does produce the constant
    frequency (where unitary symbols exist);
 5. positive control: the certified Pavia symbols (`s=2`) satisfy `det U = const` in their class.
@@ -185,11 +190,15 @@ Per class: the minimal charter's vocabulary, with Q-a3 for Q-a and no Q-b row. O
 
 | Union outcome | Meaning |
 | --- | --- |
+| `S3_CONFLICT_UNDER_REVIEW` | some covered tuple has `c_0 > c_strict^iso` (Sec. 1); takes precedence over every other row until reviewed |
+| `S3_COUNTEREXAMPLE_IN_DECLARED_FAMILIES` | some class has a verified counterexample (rank and direction stated); takes precedence over `OPEN`, since one counterexample decides the universal question |
 | `S3_VACUOUS_IN_DECLARED_FAMILIES` | every class `EMPTY_CLASS` (may close at Step 0) |
-| `S3_NO_ADMISSIBLE_SECTOR_IN_DECLARED_FAMILIES` | some class has unitary symbols, none has an admissible sector |
-| `S3_RIGID_IN_DECLARED_FAMILIES` | every class is `EMPTY_CLASS`, `VACUOUS` or `RIGIDITY_PROVED_FOR_FROZEN_CLASS`, and at least one is rigid |
-| `S3_COUNTEREXAMPLE_IN_DECLARED_FAMILIES` | some class has a verified counterexample (rank and direction stated) |
-| `OPEN` | some class undecided |
+| `S3_NO_ADMISSIBLE_SECTOR_IN_DECLARED_FAMILIES` | every class decided; at least one has unitary symbols; none has an admissible sector |
+| `S3_RIGID_IN_DECLARED_FAMILIES` | every class decided, each `EMPTY_CLASS`, without admissible sector (the per-class `VACUOUS` of the minimal charter, not `S3_VACUOUS`) or `RIGIDITY_PROVED_FOR_FROZEN_CLASS`, and at least one rigid |
+| `OPEN` | no row above applies (some class undecided and no counterexample or conflict) |
+
+The rows are checked in this order and the first that applies is the union outcome; the
+per-class outcomes are always recorded as well.
 
 Reading rules: the minimal charter's, plus: every rigidity or counterexample statement names its
 sector rank; if a class has a counterexample in one rank and equality in the other, both are
