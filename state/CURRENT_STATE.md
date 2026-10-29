@@ -73,11 +73,15 @@ presupuesto a 1 hora y a ver que pasa", 2026-10-29). The budget is:
 
 **Stage (a) executed 2026-10-29 (PRELIMINARY, review pending).**
 [Report](../reports/2026-10-29--minimal-s2-step00.md); certificate
-`scripts/verify_minimal_s2_step00.py`, 16/16 exact checks.
+`scripts/verify_minimal_s2_step00.py`, now 22/22 exact checks. Grok reviewed v1 (16 checks)
+as mathematically correct but not promotable, with three repairs
+([review](../debates/2026-10-29--minimal-s2-step00-review-grok/verificacion_autor.md)).
+The repairs are applied; the second review is pending.
 - **Step 0′.** Family P = `(V4, tetrahedron)`, `(T, tetrahedron)`, `(C4, face)`; family F =
   `{D4, O}`.
 - **Step 0.** Every class with a nontrivial projective kernel is `EMPTY_CLASS`, by the kernel
-  lemma with a single-shift certificate. This includes the linear `E` of `2O` at `s=2`.
+  lemma with a single-shift certificate. This includes the linear `E` of `2O` at `s=2`, built
+  explicitly in the repaired certificate (G-S0-01).
 - **Anticipations.** A1 and A3–A8 are VERIFIED.
 - **Survivors.** Five classes remain, one per group, all with a faithful `ρ`. They go to Step 4b,
   which is not authorized.

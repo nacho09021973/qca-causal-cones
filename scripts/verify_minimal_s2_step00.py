@@ -27,6 +27,13 @@ What it certifies (integer arithmetic for the group theory, SymPy only for the c
            - Ceiling scope: which classes contain the axial half-turn group D2 = V4.
            - Controls: the Pauli class (V4, tetrahedron, rho faithful) gets no certificate;
              the Pavia symbols satisfy the unitarity identities with all eight T_h != 0.
+  Repairs after the Grok review (G-S0-01, G-S0-03):
+           - E is built explicitly as the standard rep of S3 composed with the axis
+             permutation O -> S3; its projective kernel is the axial V4, it is the unique O
+             class with that kernel, and E restricted to D4 is 1 + chi.
+           - The per-group class counts (5, 3, 3, 6, 4) and the five survivors are required,
+             not only printed. Counts are characters of the fixed representative G, not
+             orbits of tuples (G, S, R).
 
 What it does NOT certify: anything about classes the kernel lemma does not empty (they are
 listed for Step 4b), nodes, c_0, c_strict^iso, Q-a, Q-b, or the general ceiling.
@@ -213,13 +220,17 @@ def main():
             "A5/Step 0': family F = {D4, O} up to conjugation; both contain the axial V4")
 
     # Step 0' representations, and Step 0 kernel lemma
-    survivors = []
+    # Counts are characters of the fixed representative G (not orbits of tuples (G, S, R)).
+    survivors, counts, kernels_O = [], {}, []
     for fam, G, S in ([("P", G, S) for G, S in classesP] + [("F", G, None) for G in classesF]):
         reps = {}
         for phi in homs_into_O(G):
             chi = tuple(trace(phi[g]) for g in sorted(G))
             reps.setdefault(chi, phi)
         label = f"{fam}: |G|={len(G)}" + (f", {kind(S)}" if S else "")
+        counts[label] = len(reps)
+        if fam == "F" and len(G) == 24:
+            kernels_O = [frozenset(g for g in G if phi[g] == I3) for phi in reps.values()]
         print(f"      {label}: {len(reps)} projective classes of 2-dim R")
         for chi, phi in sorted(reps.items()):
             ker = frozenset(g for g in G if phi[g] == I3)
@@ -235,6 +246,53 @@ def main():
                 print(f"        {tag}: not emptied by the kernel lemma -> Step 4b")
                 survivors.append((label, tag))
     print(f"      surviving classes: {survivors}")
+    require(counts == {"P: |G|=4, tetrahedron": 5, "P: |G|=12, tetrahedron": 3,
+                       "P: |G|=4, face": 3, "F: |G|=8": 6, "F: |G|=24": 4},
+            "G-S0-03: projective classes per representative group: V4 5, T 3, C4 3, D4 6, O 4")
+    require(sorted(survivors) == sorted([
+        ("P: |G|=4, tetrahedron", "|ker|=1, |image|=4, irreducible"),
+        ("P: |G|=12, tetrahedron", "|ker|=1, |image|=12, irreducible"),
+        ("P: |G|=4, face", "|ker|=1, |image|=4, reducible"),
+        ("F: |G|=8", "|ker|=1, |image|=8, irreducible"),
+        ("F: |G|=24", "|ker|=1, |image|=24, irreducible")]),
+            "G-S0-03: exactly five survivors, one per group, each with trivial projective kernel")
+
+    # G-S0-01: construct the linear irrep E of O explicitly and identify its class.
+    # O permutes the three coordinate axes: sigma(M) is the permutation pattern of M.
+    def sigma(M):
+        return tuple(next(j for j in range(3) if M[i][j] != 0) for i in range(3))
+
+    def perm_matrix(p):
+        return tuple(tuple(1 if p[j] == i else 0 for j in range(3)) for i in range(3))
+
+    # With this convention sigma(AB) = sigma(B) o sigma(A) (an anti-homomorphism); M -> sigma(M)^-1
+    # is then a homomorphism. Kernel, image and fixed-point counts are the same for both.
+    sig_ok = all(sigma(mul(A, B)) == tuple(sigma(B)[sigma(A)[i]] for i in range(3))
+                 for A in O for B in O)
+    require(sig_ok and len({sigma(M) for M in O}) == 6
+            and frozenset(M for M in O if sigma(M) == (0, 1, 2)) == V4,
+            "G-S0-01: axis permutation gives O -> S3 onto, with kernel the axial V4")
+    # E(g) = standard rep of S3 = permutation matrix on the sum-zero plane, basis u1, u2.
+    u = [(1, -1, 0), (0, 1, -1)]
+
+    def E_is_scalar(M):
+        P = perm_matrix(sigma(M))
+        imgs = [act(P, v) for v in u]
+        # scalar iff P u_k = lam u_k for both basis vectors with the same lam (lam = +-1)
+        return any(all(w == tuple(lam * x for x in v) for w, v in zip(imgs, u)) for lam in (1, -1))
+
+    kerE = frozenset(M for M in O if E_is_scalar(M))
+    require(kerE == V4, "G-S0-01: the projective kernel of E is exactly the axial V4 "
+            "(the standard rep of S3 is scalar only at the identity)")
+    require([K for K in kernels_O if K == V4] == [V4],
+            "G-S0-01: exactly one projective class of O has kernel the axial V4, so it is E's class "
+            "(the class with |image| = 6 emptied above)")
+    D4 = [G for G in classesF if len(G) == 8][0]
+    chiE = {M: sum(1 for i in range(3) if sigma(M)[i] == i) - 1 for M in O}  # fixed points - 1
+    triv_mult = sp.Rational(sum(chiE[g] for g in D4), len(D4))
+    require(V4 <= D4 and triv_mult == 1 and emptying_shift(V4) is not None,
+            "G-S0-01 / A7: E restricted to D4 is 1 + chi (trivial multiplicity 1), its projective "
+            "kernel contains the axial V4, and the kernel lemma empties it")
 
     # controls and named anticipations
     pauli = [s for s in survivors if s[0].startswith("P: |G|=4, tetrahedron") and "|ker|=1" in s[1]]
@@ -243,8 +301,8 @@ def main():
     require(emptying_shift(V4) is not None and emptying_shift(V4)[0] in
             {(0, 2, 2), (0, 2, -2), (0, -2, 2), (0, -2, -2), (2, 0, 2), (2, 0, -2), (-2, 0, 2),
              (-2, 0, -2), (2, 2, 0), (2, -2, 0), (-2, 2, 0), (-2, -2, 0)},
-            "A1/A7: kernel containing the axial V4 (e.g. E of 2O) is emptied by a (0,2,2)-type "
-            "shift, one pair in each tetrahedron")
+            "A1: any kernel containing the axial V4 is emptied by a (0,2,2)-type shift, one pair "
+            "in each tetrahedron")
     face_C4, face_S = [(G, S) for G, S in classesP if kind(S) == "face"][0]
     axis = [i for i in range(3) if len({v[i] for v in face_S}) == 1][0]
     ec = emptying_shift(face_C4)

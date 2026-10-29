@@ -144,7 +144,7 @@ scope. DeepSeek reviewed the original with repairs required. Gemini (ACCEPT) and
 
 `verify_minimal_s2_step00.py` checks Steps 0′ and 0 of the
 [charter](../theory/MINIMAL_S2_RIGIDITY_GATE.md), as recorded in the
-[report](../reports/2026-10-29--minimal-s2-step00.md). It runs 16 exact checks, with integer
+[report](../reports/2026-10-29--minimal-s2-step00.md). It runs 22 exact checks (16 originally, 6 added after the Grok review), with integer
 group arithmetic and no numerical identification.
 
 What it certifies:
@@ -152,12 +152,14 @@ What it certifies:
 - the projective classes of 2-dimensional `R` as homomorphisms into `SO(3)`, classified by
   character;
 - emptiness by the kernel lemma of every class with a nontrivial projective kernel;
-- the anticipations A1 and A3–A8;
+- the anticipations A1–A8, with `E` built explicitly as the standard rep of `S3` composed
+  with the axis permutation (A2/A7);
+- the per-group class counts and the five survivors;
 - a negative control (the Pauli class is not emptied) and a positive control (the Pavia
   identities).
 
-What it does not certify: the standard classification of finite subgroups of `SO(3)` it relies
-on; the five surviving classes; nodes, `c_0`, `c_strict^iso`, Q-a or Q-b.
+What it does not certify: the written exhaustiveness arguments (2-generation, order/trace), which
+are in the report; the five surviving classes; nodes, `c_0`, `c_strict^iso`, Q-a or Q-b.
 
 ## Exact standard Weyl/Dirac battery
 
