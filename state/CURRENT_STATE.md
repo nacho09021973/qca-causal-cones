@@ -19,7 +19,7 @@ with a dated entry, the dated entry wins.
 
 | Front | Status | Where |
 | --- | --- | --- |
-| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`): stage (a) REVIEWED (Grok, three rounds), five faithful classes survive and all others are EMPTY_CLASS; stage 4b-1 ESTABLISHED IN THE DECLARED FAMILIES (Astra, Grok): only `(V4, Pauli)` is nonempty; stage 4b-2 ESTABLISHED IN THE DECLARED CLASS (Grok): `c_0 = c_strict^iso = rho_micro = 1/sqrt(3)` at every node, Eq. (2) implied; s=3 charter DRAFT v1 (`5fe04ae`) under review; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`): stage (a) REVIEWED (Grok, three rounds), five faithful classes survive and all others are EMPTY_CLASS; stage 4b-1 ESTABLISHED IN THE DECLARED FAMILIES (Astra, Grok): only `(V4, Pauli)` is nonempty; stage 4b-2 ESTABLISHED IN THE DECLARED CLASS (Grok): `c_0 = c_strict^iso = rho_micro = 1/sqrt(3)` at every node, Eq. (2) implied; s=3 charter OPEN (`58ea188`), stage (a) authorized; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
 | Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
@@ -171,6 +171,22 @@ imported certificate code. Started 15:52 UTC, certificate passed 16:32 UTC (budg
   nonzero trace).
 - **Not covered:** Q-b (Step 4a, not authorized); anything outside the class; novelty (OPEN);
   the P17 [31] literature search (needs separate permission).
+
+## s=3 isotropic rigidity charter — 2026-10-29
+
+[`S3_ISOTROPIC_RIGIDITY_GATE.md`](../theory/S3_ISOTROPIC_RIGIDITY_GATE.md), **OPEN**, frozen from
+draft v3; preregistration commit `58ea188`. Two Grok review rounds
+([round 1](../debates/2026-10-29--s3-charter-draft-review-grok/verificacion_autor.md),
+[round 2](../debates/2026-10-29--s3-charter-draft-v2-review-grok/verificacion_autor.md)); the
+round-2 objections were applied in v3 and not re-reviewed. Families P and F, `s = 3`, `N_3`
+without on-site term; T3/O3 reused as empty. Main anticipation B5: the determinant parity lemma
+would make all five classes `EMPTY_CLASS` uniformly in `R` (`[UNVERIFIED]`).
+
+**Stage (a), Step 0 (parity lemma): AUTHORIZED** by the user ("si a ambas", 2026-10-29).
+- **Time:** at most 1 hour of wall time (proposed by Claude, accepted by the user).
+- **Scope:** Step 0 only (points 1–5 of the charter). Steps 0′, 0″, 1 and 2 are not authorized.
+- **Deliverable:** an exact verifier, a report, a full sweep.
+- **Closure:** a different-family review before anything is promoted.
 
 ## Independent review queue closed — 2026-10-29
 
