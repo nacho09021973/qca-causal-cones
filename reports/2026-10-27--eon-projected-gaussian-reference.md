@@ -198,6 +198,10 @@ tiene a!=0, y puede elegirse a la vez una componente no nula de phi.
 Si la componente desapareciese para todo un abierto de esos ángulos,
 la unicidad de sus series analíticas la haría idénticamente nula.
 
+> Nota 2026-10-29: «a=4» y la frase sobre el código están **retiradas**
+> (Adenda 2026-10-28, reparación 4; Adenda 2026-10-29, D1–D2). a es una suma de cuatro
+> monomios de Laurent distintos con signos ±1 y no es idénticamente nulo.
+
 ### C. Crecimiento de Fourier y contradicción
 
 Las colas gaussianas hacen holomorfas las series en z!=0. Al sumar los
@@ -216,6 +220,10 @@ Si U psi=lambda psi, en la componente elegida se tendría
 `g(z)=exp[i theta(a z+b/z+c)] f(z)`
 
 (absorbiendo en g la fase lambda). f no es idénticamente nula.
+
+> Nota 2026-10-29: la forma correcta es `exp[i theta B(z)] f(z) = lambda g(z)`,
+> con f la serie de `phi=D_E D_F psi` y g la de psi (Adenda 2026-10-28, reparación 1).
+
 En un arco de fracción 1/3 del círculo puede imponerse
 `Re(i theta a z) >= |theta a|r/2`. Allí, usando la cota de g,
 
@@ -355,3 +363,47 @@ esta adenda y **no revisadas de nuevo**. La reparación 4 descansa en un
 argumento del autor que DeepSeek no ha visto. No cambia el veredicto
 `GAUSSIAN_TAIL_STATIONARITY_FAIL` en su clase ni promueve evidencia. No hay
 vacío físico, correladores, velocidades ni lazo.
+
+## Adenda 2026-10-29 — formalización tras la re-revisión
+
+Re-revisión independiente sellada de la adenda anterior: DeepSeek **PASS_WITH_REPAIRS**
+([registro y lectura del autor](../debates/2026-10-28--eon-addendum-review-deepseek/verificacion_autor.md)).
+Revisó este informe con sha256 `9539e275…400f`, que es el de `3395c1c`. No encuentra ningún
+error en la adenda. Pide siete reparaciones de redacción o formalización (D1–D7). Las escribe
+Claude Opus 5.5. El certificado y el JSON no cambian.
+
+- **D1–D3.** Las frases de §3.B («a=4», «el código comprueba ese recuento») y la forma de §3.C
+  sin `lambda` se conservan. Llevan ahora una nota que remite a las reparaciones 1 y 4 de la
+  adenda anterior.
+- **D4. Un entero por enlace.** En Eon v4 cada enlace tiene un campo en cada extremo, `x:eta` y
+  `(x+eta):-eta`, y se impone `E_{x:eta} = -E_{x+eta:-eta}` (PDF p.6). El PDF lo presenta como
+  una restricción que elimina grados de libertad no exigidos por la invariancia gauge, no como
+  una consecuencia de ella. Este informe trabaja dentro de esa restricción. Para cada enlace se
+  fija la orientación positiva `eta` y se toma `E_l := E_{x:eta}`.
+  - `U_{x:eta} = r_{x:eta} r^dagger_{x+eta:-eta}` (ec. (2), PDF p.7) baja `E_{x:eta}` en uno y sube el
+    otro extremo, así que conserva la restricción.
+  - `V_{x:eta} = U_{x:eta} prod_y Z_y` (ec. (6), PDF p.7). Las `Z_y` son paridades diagonales
+    en la base eléctrica y de ocupación (PDF p.7).
+  - Por tanto, en esa base `V_l` es un desplazamiento `E_l -> E_l - 1` multiplicado por un
+    signo diagonal. No cambia las ocupaciones fermiónicas.
+- **D5. Ortonormalidad.** Como cada `V_l` desplaza un solo entero y multiplica por un signo
+  diagonal, `V_1^{n_1}···V_M^{n_M}|0>` está soportado en una única configuración eléctrica
+  estándar, con un signo. Los vectores de distintas `n` son ortogonales y de norma uno. El
+  estabilizador es trivial y la etiqueta es inyectiva.
+- **D7. Convención de signo.** Por D4, `V_l` baja `E_l`, así que la definición de la adenda
+  anterior, `V_1^{E_1}···V_M^{E_M}|0>`, está soportada en la configuración `-E`. Se fija
+  `|E>' := V_1^{-E_1}···V_M^{-E_M}|0>`, soportado en `E`. El cambio `E -> -E` solo intercambia
+  `z` y `1/z` en las series, y `a` con `b` en `B(z)=a z+b/z+c`. Tanto `a` como `b` son sumas de
+  cuatro monomios de plaqueta, así que el argumento no depende de esta convención.
+- **D6. Las cuatro plaquetas.** En el toro cúbico 3D, un enlace e en la dirección `mu` está en
+  dos plaquetas de cada uno de los dos planos que lo contienen (`mu-nu`, `mu-kappa`), una a
+  cada lado. Cada plaqueta contribuye a `a` con el producto de sus otros tres enlaces (o sus
+  inversos), con un signo ±1 fijo. Para `L >= 3`, las dos plaquetas de un plano usan enlaces
+  paralelos distintos, y las de planos distintos usan enlaces en direcciones distintas. Los
+  cuatro conjuntos de otros enlaces son distintos, así que los cuatro monomios de Laurent son
+  distintos y linealmente independientes. Con coeficientes no nulos, `a` no es idénticamente
+  nulo, sean cuales sean los signos.
+
+Estado: `REVIEWED_PASS_WITH_REPAIRS`; D1–D7 aplicadas por el autor y **no revisadas de
+nuevo**. D4 se apoya en el PDF primario (p.6, ec. (1) y la restricción de signos; p.7, ecs. (2) y (6) y la paridad Z), leído en texto
+extraído. No cambia `GAUSSIAN_TAIL_STATIONARITY_FAIL` en su clase ni promueve evidencia.
