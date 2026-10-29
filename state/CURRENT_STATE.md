@@ -19,7 +19,7 @@ with a dated entry, the dated entry wins.
 
 | Front | Status | Where |
 | --- | --- | --- |
-| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`): stage (a) REVIEWED (Grok, three rounds), five faithful classes survive and all others are EMPTY_CLASS; stage 4b-1 ESTABLISHED IN THE DECLARED FAMILIES (Astra, Grok): only `(V4, Pauli)` is nonempty; stage 4b-2 authorized; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`): stage (a) REVIEWED (Grok, three rounds), five faithful classes survive and all others are EMPTY_CLASS; stage 4b-1 ESTABLISHED IN THE DECLARED FAMILIES (Astra, Grok): only `(V4, Pauli)` is nonempty; stage 4b-2 ESTABLISHED IN THE DECLARED CLASS (Grok): `c_0 = c_strict^iso = rho_micro = 1/sqrt(3)` at every node, Eq. (2) implied; s=3 charter DRAFT v1 (`5fe04ae`) under review; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
 | Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
@@ -151,7 +151,12 @@ the user set for 4b-1; the user can change it.
   is described beyond the class.
 - **Order:** 4b-2 builds on 4b-1, which is promoted only after its second review round.
 
-**Stage 4b-2 executed 2026-10-29 (PRELIMINARY, review pending).**
+**Stage 4b-2: ESTABLISHED IN THE DECLARED CLASS** (promoted 2026-10-29 after the Grok review,
+[review and author reading](../debates/2026-10-29--minimal-s2-step4b2-review-grok/verificacion_autor.md);
+user: "permiso concedido, y si, lanza a GRok"). Grok re-derived the 48 families, the nodes and the
+speeds by hand. Its five repairs G-4B2-01..05 are text only and were applied to the report
+without changing the certificate; they were not re-reviewed. G-4B2-01 corrected a gap in the
+hand argument of Q-a route (ii); Q-a also follows from route (i).
 [Report](../reports/2026-10-29--minimal-s2-step4b2.md); certificate
 `scripts/verify_minimal_s2_step4b2.py`, SHA-256 `8849e87a…`, 20/20 exact checks, about 240 s, no
 imported certificate code. Started 15:52 UTC, certificate passed 16:32 UTC (budget 3 h).
@@ -166,7 +171,6 @@ imported certificate code. Started 15:52 UTC, certificate passed 16:32 UTC (budg
   nonzero trace).
 - **Not covered:** Q-b (Step 4a, not authorized); anything outside the class; novelty (OPEN);
   the P17 [31] literature search (needs separate permission).
-- **Promotion** requires a different-family review. Astra is out of credit; not yet sent.
 
 ## Independent review queue closed — 2026-10-29
 
@@ -1431,7 +1435,7 @@ with equality only where separately certified (see the d=3 row below).
 | B_infty^*, d=3 Pavia baseline (`C_infty^strict=C_micro`, full nonlinear order) | **CERTIFIED for the standard Weyl family `A+,B+,A-,B-`** (`s=2`): `c_0 = c_strict^iso = 1/sqrt(3)`; d=1,2 not checked; unaffected by the s=4 result |
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
 | B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
-| B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN**, except: under `T` or `O` with irreducible `R` of dimension 3 or 4 on the full `N_3` support without on-site term (classes T3, O3, O4) there is no unitary covariant symbol (**EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES**, 2026-10-29). The hypothesis is vacuous there, neither refuted nor confirmed. Minimal s=2 charter, stage (a) (2026-10-29, ESTABLISHED IN THE DECLARED FAMILIES): within families P and F every `s=2` class with a nontrivial projective kernel is EMPTY_CLASS, including the linear `2O` irrep `E` on the full `N_3`; `s=1` with eight active coefficients is empty; five classes with faithful `R` remain OPEN (Step 4b). Reducible `R` in other settings, other groups and other supports stay OPEN |
+| B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN**, except: under `T` or `O` with irreducible `R` of dimension 3 or 4 on the full `N_3` support without on-site term (classes T3, O3, O4) there is no unitary covariant symbol (**EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES**, 2026-10-29). The hypothesis is vacuous there, neither refuted nor confirmed. Minimal s=2 charter, stage (a) (2026-10-29, ESTABLISHED IN THE DECLARED FAMILIES): within families P and F every `s=2` class with a nontrivial projective kernel is EMPTY_CLASS, including the linear `2O` irrep `E` on the full `N_3`; `s=1` with eight active coefficients is empty; four of the five faithful classes are EMPTY_CLASS and `(V4, tetrahedron, Pauli)` is `RIGIDITY_PROVED_FOR_FROZEN_CLASS` with `SATURATION_PROVED_FOR_CLASS` and Eq. (2) implied (Steps 4b-1 and 4b-2, ESTABLISHED, 2026-10-29). This closes `B_infty^*` for `s=2` without Eq. (2) in families P and F only. Reducible `R` in other settings, other groups and other supports stay OPEN |
 | Novelty of the s=4 family and its strict-support statement | **OPEN** — no equivalent found in eleven checked primary sources; not a novelty certificate |
 
 The restricted statements are established for the declared cases below.

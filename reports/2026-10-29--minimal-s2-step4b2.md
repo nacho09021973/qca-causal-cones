@@ -5,14 +5,17 @@
 - **Charter:** [`MINIMAL_S2_RIGIDITY_GATE.md`](../theory/MINIMAL_S2_RIGIDITY_GATE.md),
   preregistration commit `785565c`, Step 4b-2 and Sec. 5.
 - **Starting point:** Step 4b-1 ([report](2026-10-29--minimal-s2-step4b1.md), repaired in
-  `4646be5`, second review round pending). Only `(V4, tetrahedron, Pauli)` is nonempty.
+  `4646be5`, reviewed in two rounds and promoted in `014753e`). Only `(V4, tetrahedron, Pauli)`
+  is nonempty.
 - **Authorization:** "si a todo" (2026-10-29), recorded in `CURRENT_STATE` in `4646be5`. Budget
   3 hours of wall time, scope the `(V4, Pauli)` class only. Step 4a (Q-b) is not authorized.
 - **Timing:** started 15:52 UTC. Certificate passed at 16:32 UTC (about 40 minutes of the budget).
 - **Certificate:** `scripts/verify_minimal_s2_step4b2.py`, SHA-256 `8849e87a0041205f…`. 20/20 exact
   checks, about 240 s, Python 3.12.3, SymPy 1.14.0. It imports no certificate code.
 - **Full sweep:** 50/50 verifiers pass ([record](2026-10-29--minimal-s2-step4b2-run_all.tsv)).
-- **Evidence level:** **PRELIMINARY**. Author-side computation, not yet reviewed.
+- **Evidence level:** see `CURRENT_STATE`. Reviewed by Grok
+  ([review and author reading](../debates/2026-10-29--minimal-s2-step4b2-review-grok/verificacion_autor.md));
+  repairs G-4B2-01..05 applied to this text, certificate bytes unchanged.
 
 ## Result
 
@@ -27,9 +30,12 @@ term, `s=2`, all eight `T_h != 0`, Eq. (2) not assumed):
 | Main | `RIGIDITY_PROVED_FOR_FROZEN_CLASS`: `c_0 = c_strict^iso = 1/sqrt(3)` at every admissible node of every symbol |
 | Saturation | `SATURATION_PROVED_FOR_CLASS`: `c_strict^iso = rho_micro = 1/sqrt(3)` for every symbol |
 
-**Consequence.** In the frozen class, Eq. (2) of P17 does not restrict anything: unitarity,
-`V4` covariance and active support already imply it. The class then sits inside P17's setting
-with Eq. (2), and its speed is fixed at the substrate value `1/sqrt(3)` (normalized units).
+**Consequence.** In the frozen class, unitarity, `V4` covariance and active support imply P17's
+Eq. (2) on `S_+` (and the stronger statement on all of `N_3`), and every admissible node has speed
+`1/sqrt(3)` (normalized units), equal to `c_strict^iso` and `rho_micro`. This does not say that the
+class is P17's class: P17's normalization `Σ_h A_h = I` (a quotient the charter excludes from
+transport) is not imposed, and the 48 families are not identified with P17's walks up to its
+equivalences.
 
 Combined with Step 4b-1 and stage (a), every class of the two frozen families is now decided:
 all classes other than `(V4, Pauli)` are `EMPTY_CLASS`, hence `VACUOUS` for the main question.
@@ -78,13 +84,19 @@ these 48 pass. The 4b-1 witness `e^{-iq_x σ_x} e^{-iq_y σ_y} e^{-iq_z σ_z}` i
 
 **4. Q-a, two routes.**
 - (i) On the 48 families, `T_{gh} != T_h` for every `g ∈ V4 \ {e}` and `h ∈ N_3`. Since `V4`
-  moves every vertex, this is P17's Eq. (2), `[R_g, T_h] != 0` whenever `g h != h`, on all of
-  `N_3`.
+  moves every vertex, this implies P17's Eq. (2), `[R_g, T_h] != 0` whenever `g h != h` for
+  `h ∈ S_+` (the domain of P17 and of the charter's family P). The check on all of `N_3` is
+  stronger than the literal statement.
 - (ii) Without the classification (the argument of the Astra review of 4b-1): for each `g ≠ e`
   and each orbit representative `h`, unitarity plus `T_{gh} = T_h` plus `y ||T_h||^2 = 1` has
-  unit ideal. By hand: `T_{gh} = T_h` makes the rank-one `T_h` a multiple of a `σ_g`
-  eigenprojector `P`. The shift `2h` forces `T_{−h} ∝ I − P`, and the shift `gh − h` has
-  exactly the pairs `(h, gh)` and `(−gh, −h)`, giving `T_h^†T_h + T_{−h}^†T_{−h} = 0`.
+  unit ideal. By hand (repaired after the Grok review, G-4B2-01):
+  - `T_h` has rank one (the shift `2h` has the single pair `(−h, h)`, A8). `T_{gh} = T_h` means
+    `T_h` commutes with `R_g`, so `T_h = λ P` with `P` a `σ_g` eigenprojector.
+  - The shift `2h` gives `T_{−h}^† T_h = 0` and `T_h T_{−h}^† = 0`, so `T_{−h} = μ(I − P)`.
+  - Then `T_{−h}` also commutes with `R_g`, and covariance gives `T_{−gh} = R_g T_{−h} R_g^† = T_{−h}`.
+  - The shift `gh − h` has exactly the pairs `(h, gh)` and `(−gh, −h)`:
+    `T_h^† T_{gh} + T_{−gh}^† T_{−h} = |λ|^2 P + |μ|^2 (I − P) = 0`, so `λ = 0`, against
+    `T_h != 0`.
 
 **5. Nodes.** `U = α W` with `W = (C_0 + κ S_0) I + i Σ_j σ_j (ε_j κ C_j + η_j S_j)`, so `U` is
 scalar iff `ε_j κ c_j s_k s_l + η_j s_j c_k c_l = 0` for `j = 1, 2, 3`.
@@ -106,8 +118,9 @@ untilted, so each node is admissible with the full two-band sector and `c_0 = 1/
 **6. Strict body.** Every `T_h` has rank one, `T_h^2 = tr(T_h) T_h` and `tr T_h != 0`. The
 coefficient of `U^n` at the vertex `n h` is `T_h^n = tr(T_h)^{n−1} T_h != 0`. By the vertex lemma
 ([`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md), erratum,
-lines 24–29), the strict body equals `C_micro = conv(N_3)`. Then `h_infty(q̂) = max_h q̂·h`, its
-minimum over unit `q̂` is `1/sqrt(3)` (axis directions), and
+lines 24–29), the strict body equals `C_micro = conv(N_3)`. With the normalized vertices
+`h = ε/sqrt(3)` (not the sign vectors `ε` used in Secs. 1–5), `h_infty(q̂) = |q̂|_1 / sqrt(3)`. Its
+minimum over unit `q̂` is `1/sqrt(3)`, on the axes (`|q|_1 >= |q|_2`), and
 `c_strict^iso = rho_micro = 1/sqrt(3) = c_0`.
 
 ## Scope and limits
@@ -117,7 +130,7 @@ minimum over unit `q̂` is `1/sqrt(3)` (axis directions), and
 - **Nothing about** `s > 2`, other supports, on-site terms, masses, interactions or species (A).
 - **Q-b** (transport of the Pavia certificate along P17's equivalences) stays open; it is not
   needed here, because every symbol of the class is computed directly.
-- **Relation to P17.** The class now sits inside P17's setting with Eq. (2). The repo does not
+- **Relation to P17.** Every symbol satisfies P17's Definition 1 and Eq. (2) on `S_+`. The repo does not
   re-derive P17's classification and does not claim to; the computation above is independent of
   it. Whether the 48 families coincide with P17's list up to its equivalences is not checked.
 - **Literature.** Charter Sec. 4: before Q-a is described beyond this class, the external search
