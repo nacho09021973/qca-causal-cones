@@ -74,3 +74,10 @@ Duplicados comprobados por sha256 contra `biblioteca/` y `sources/`:
 
 Catalogados en `scripts/biblioteca_catalog/curated.csv` (`proposed`). Índice regenerado: 73 PDF,
 sin duplicados.
+
+## PDF versionados (2026-10-29, «versionala»)
+
+Los siete PDF que descargó Codex se versionan en `pdf/` por instrucción del usuario, con sus
+sha256 en `pdf/SHA256SUMS`. Cuatro duplican ficheros que ya están en `biblioteca/` o en
+`sources/` (ver la tabla anterior). No se han borrado esos duplicados para conservar intacto lo
+que entregó Codex.
