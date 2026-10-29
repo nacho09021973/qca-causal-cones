@@ -11,9 +11,14 @@ Parametrization (exact, no numerical group identification):
 
 Per class it computes the reduced Groebner basis (grevlex, exact) of the real unitarity system.
   basis == [1]   -> EMPTY_CLASS (no complex, hence no real, solution);
-  otherwise      -> a real point is sought among the reviewed Pavia symbols, transported to the
-                    class convention; if found -> UNITARY_SYMBOLS_EXIST; else the class is
-                    OPEN_AFTER_CLASS_DERIVATION (an ideal different from (1) is not existence).
+  otherwise      -> a real point is sought: the explicit witness
+                    U(q) = exp(-i q_x sigma_x) exp(-i q_y sigma_y) exp(-i q_z sigma_z), i.e.
+                    T_(x,y,z) = P_x^x P_y^y P_z^z with P_j^(+-1) = (I +- sigma_j)/2 (proposed by the
+                    Astra review of 4b-1), whose covariance, eight nonzero coefficients and
+                    Laurent unitarity are checked here without imported code; if it lies in the
+                    class -> UNITARY_SYMBOLS_EXIST; else OPEN_AFTER_CLASS_DERIVATION (an ideal
+                    different from (1) is not existence). The reviewed Pavia symbol is kept as a
+                    secondary control (it relies on the step-01 certificate).
 A per-class time limit implements the stage budget; a timeout gives OPEN_AFTER_CLASS_DERIVATION.
 
 What it does NOT certify: completeness of the dimension/components of nonempty classes, nodes,
@@ -117,6 +122,37 @@ def _alarm(signum, frame):
     raise Timeout
 
 
+def witness_symbol():
+    """Explicit witness T_(x,y,z) = P_x^x P_y^y P_z^z, P_j^(+-1) = (I +- sigma_j)/2."""
+    P = {(j, e): (sp.eye(2) + e * PAULI[j]) / 2 for j in range(3) for e in (1, -1)}
+    return {h: sp.expand(P[(0, h[0])] * P[(1, h[1])] * P[(2, h[2])]) for h in N3}
+
+
+def laurent_unitary(T):
+    """sum_{h'-h=l} T_h^dagger T_h' = delta_{l0} I and sum_{h'-h=l} T_h' T_h^dagger = delta_{l0} I,
+    exactly, for every displacement l (both U^dagger U = I and U U^dagger = I)."""
+    diffs = {}
+    for h in N3:
+        for hp in N3:
+            diffs.setdefault(tuple(a - b for a, b in zip(hp, h)), []).append((h, hp))
+    for ell, pairs in diffs.items():
+        target = sp.eye(2) if ell == (0, 0, 0) else sp.zeros(2)
+        A = sum((T[h].H * T[hp] for h, hp in pairs), sp.zeros(2))
+        B = sum((T[hp] * T[h].H for h, hp in pairs), sp.zeros(2))
+        if not (sym_zero(A - target) and sym_zero(B - target)):
+            return False
+    return True
+
+
+def covariant(T, G):
+    """a_{gh} = a_h and b_{gh} = g b_h for every g in G and h in N_3 (rho = inclusion)."""
+    def coeffs(X):
+        return [sp.expand((X * P).trace() / 2) for P in PAULI]
+    return all(sym_zero(sp.Matrix(coeffs(T[S0.act(g, h)])) - sp.Matrix(matvec(g, coeffs(T[h]))))
+               and sym_zero(T[S0.act(g, h)].trace() - T[h].trace())
+               for g in G for h in N3)
+
+
 def pavia_point(G):
     """Return a Pavia chirality covariant under G with rho = inclusion, or None."""
     z = sp.symbols("z1:4")
@@ -201,13 +237,17 @@ def main():
             require(len(p2) == len(params),
                     f"{name}: second construction has the same number of real parameters "
                     f"({len(p2)})")
-            ch = pavia_point(G)
-            results[name] = (f"UNITARY_SYMBOLS_EXIST (Pavia chirality {ch})" if ch
+            W = witness_symbol()
+            ok = (all(not sym_zero(W[h]) for h in N3) and laurent_unitary(W) and covariant(W, G))
+            results[name] = ("UNITARY_SYMBOLS_EXIST (explicit witness)" if ok
                              else "OPEN_AFTER_CLASS_DERIVATION (ideal != (1), no certified real point)")
             print(f"      {name}: ideal != (1) ({time.time() - t1:.0f} s); {results[name]}", flush=True)
-            if ch:
-                require(True, f"{name}: real point = Pavia chirality {ch}, covariant with rho = "
-                        "inclusion and unitary (step-01 control)")
+            require(ok, f"{name}: explicit witness exp(-iq_x s_x) exp(-iq_y s_y) exp(-iq_z s_z) has "
+                    "eight nonzero coefficients, is Laurent-unitary and covariant with rho = "
+                    "inclusion (checked here, no imported code)")
+            ch = pavia_point(G)
+            require(ch == 1, f"{name}: secondary control, Pavia chirality {ch} is also covariant "
+                    "with rho = inclusion (unitarity from the step-01 certificate)")
     print(f"      results: {results}")
     print(f"VERDICT: {CHECKS}/{CHECKS} exact checks passed in {time.time() - t0:.0f} s. "
           f"Per class: {results}")

@@ -165,14 +165,18 @@ are in the report; the five surviving classes; nodes, `c_0`, `c_strict^iso`, Q-a
 
 `verify_minimal_s2_step4b1.py` runs the exact class derivation of the
 [charter](../theory/MINIMAL_S2_RIGIDITY_GATE.md) for the five faithful classes of stage (a), as
-recorded in the [report](../reports/2026-10-29--minimal-s2-step4b1.md). It runs 16 checks in
+recorded in the [report](../reports/2026-10-29--minimal-s2-step4b1.md). It runs 17 checks in
 about 110 s, with a `--limit` timeout per class (600 s by default).
 
 How it works:
-- each covariant symbol is built two ways: by filling orbits, and by linear covariance on free
-  `T_h`;
-- the Groebner basis of the unitarity system is computed exactly;
-- for the nonempty class, the Pavia symbol is checked as a real covariant point.
+- each covariant symbol is built two ways, with shared infrastructure: by filling orbits, and by
+  linear covariance on free `T_h`. For the empty classes both give the unit ideal; for
+  `(V4, Pauli)` the second construction is only compared by parameter count;
+- the Groebner basis of the unitarity system is computed exactly (orbit construction);
+- for the nonempty class, the explicit witness
+  `e^{-iq_x σ_x} e^{-iq_y σ_y} e^{-iq_z σ_z}` is checked in the script itself (eight nonzero
+  coefficients, Laurent unitarity both ways, covariance); the Pavia symbol is a secondary control
+  whose unitarity comes from the step-01 certificate.
 
 What it certifies:
 - `O`, `(T, tetrahedron)`, `D4` and `(C4, face)` are empty;

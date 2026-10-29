@@ -112,9 +112,15 @@ change it.
   - an exact verifier, a report and a full sweep.
 - **Closure:** a different-family review before anything is promoted.
 
-**Stage 4b-1 executed 2026-10-29 (PRELIMINARY, review pending).**
+**Stage 4b-1 executed 2026-10-29 (PRELIMINARY, second review round pending).**
 [Report](../reports/2026-10-29--minimal-s2-step4b1.md); certificate
 `scripts/verify_minimal_s2_step4b1.py`, 16/16 exact checks, about 110 s.
+- **Review round 1 (Astra):** per-class results accepted with independent proofs; six report
+  repairs A-4B1-01..06 ([review](../debates/2026-10-29--minimal-s2-step4b1-review-astra/informe_astra.md)).
+- **Repairs applied** at the user's instruction ("si a todo", 2026-10-29): the certificate now
+  checks Astra's explicit witness `e^{-iq_x σ_x} e^{-iq_y σ_y} e^{-iq_z σ_z}` itself (17/17,
+  `5b0122f1…`); the report text is corrected. The bullets below are the pre-repair summary;
+  the report is authoritative until promotion.
 - **Empty classes:** `O`, `(T, tetrahedron)`, `D4` and `(C4, face)` are `EMPTY_CLASS`. Each gives
   a unit Groebner ideal, by two independent constructions of the covariant symbol.
 - **Surviving class:** `(V4, tetrahedron, Pauli)` is `UNITARY_SYMBOLS_EXIST`, with the Pavia
@@ -126,6 +132,20 @@ change it.
   - Q-a;
   - nodes and speeds (Step 4b-2, not authorized);
   - Q-b (Step 4a, not authorized).
+
+**Stage 4b-2 (sectors, strict body, comparison): AUTHORIZED** by the user ("si a todo",
+2026-10-29, in answer to "¿Autorizas 4b-2?"). The user gave no budget, so Claude applies the one
+the user set for 4b-1; the user can change it.
+- **Time:** at most 3 hours of wall time. Start recorded at launch. If exceeded, stop with the
+  partial result (`OPEN_AFTER_STRICT_BODY` or `OPEN` per question).
+- **Scope:** the `(V4, tetrahedron, Pauli)` class only. Step 4a (Q-b) is not authorized.
+- **Deliverable:** per charter Step 4b-2: Q-a; admissible nodes; `c_0`; `c_strict^iso`; the
+  rigidity and saturation outcomes, or the stop outcome; an exact verifier, a report and a full
+  sweep.
+- **Closure:** a different-family review before anything is promoted. The external literature
+  search for P17 [31] (charter Sec. 4) still needs separate permission before any Q-a outcome
+  is described beyond the class.
+- **Order:** 4b-2 builds on 4b-1, which is promoted only after its second review round.
 
 ## Independent review queue closed — 2026-10-29
 
