@@ -1,6 +1,10 @@
-# MINIMAL S=2 RIGIDITY GATE (DRAFT v2)
+# MINIMAL S=2 RIGIDITY GATE (DRAFT v3)
 
-**Status: DRAFT v2 — not committed, not chartered, nothing authorized.**
+**Status: DRAFT v3 — not chartered, nothing authorized.**
+- **v3** applies the round-2 Astra repairs A-R2-01..06, which found v2 NOT_READY:
+  [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-v2-review-astra/verificacion_autor.md).
+  It also applies two user decisions of 2026-10-29: keep the `C4` face class, and let Q-a range
+  over symbols with an admissible cone.
 - **v1** (sha256 `8541cf72…`) was drafted on 2026-10-29 from the committee recommendation
   [`comite_decision_002`](../reports/comite/comite_decision_002_siguiente-charter-tras-cola.md).
   It was reviewed blind by Astra (OpenAI family), which returned **NOT_READY** with 14 repairs
@@ -75,6 +79,17 @@ None is certified. Step 0 must verify or refute each one.
 - A3 is correct, with the extremal-exponent proof.
 - A4 is correct as a geometric pair only. It says nothing yet about unitary symbols.
 
+*From the Astra round-2 review (2026-10-29), reviewer derivations, `[UNVERIFIED]`:*
+- A5. Family F, up to conjugation in `O`, is exactly `{D4, O}`: a transitive subgroup has order 8
+  or 24.
+- A6. If `R` is scalar on a subgroup transitive on all eight vertices, all `T_h` equal one `A`.
+  The shift `ε = (2,2,2)` has a single pair and gives `A^†A = 0`, against `8A^†A = I`. The class
+  is empty.
+- A7. `E` under `O` or `D4` is scalar on `V4`. `V4` has two tetrahedral orbits, so A1 on the
+  tetrahedron decides it.
+- A8. Without Eq. (2), `s=2` coefficients have rank one: the shift `2h` has a single antipodal
+  pair. Non-nilpotency of `T_h` is then equivalent to `tr T_h != 0`.
+
 *Prospective:* everything in Secs. 3–5.
 
 ## 1. Question
@@ -82,26 +97,36 @@ None is certified. Step 0 must verify or refute each one.
 Units and lattice:
 - `N_3 = {ε/sqrt(3) : ε ∈ {±1}^3}` (normalized, as in the predecessors). Displacements are
   labelled by their `ε` differences.
-- The generated lattice is BCC (`ε`-coordinates `x_1 ≡ x_2 ≡ x_3 mod 2`), with Brillouin torus
-  the dual cell.
+- The generated lattice is BCC, `Λ = (1/sqrt(3)) {m ∈ Z^3 : m_1 ≡ m_2 ≡ m_3 mod 2}`.
+- With the convention `e^{-ik.h}`, its reciprocal lattice is
+  `Λ^* = π sqrt(3) {m ∈ Z^3 : m_1 + m_2 + m_3 even}`, and the Brillouin torus is `R^3 / Λ^*`.
 - In these units the Pavia baseline value is `1/sqrt(3)`. With unnormalized `ε` both velocities
   scale by `sqrt(3)` and the baseline becomes `1`; the equality is unaffected (A-R1-02).
 
 Main question:
 
 \[
-\forall (\mathcal F, G, S_\pm, [R]),\ \forall U,\ \forall (k_\star,\omega_\star)\ \text{admissible}:\quad
+\forall \mathcal C,\ \forall U \in \mathcal C,\ \forall (k_\star,\omega_\star)\ \text{admissible}:\quad
 c_0(U,k_\star) = c_{\rm strict}^{\rm iso}(U)\ ?
 \]
 
-- `𝓕` is the isotropy family of Sec. 2.
+- A class `𝒞` is a tuple `(P, G, S_±, [R])` in family P, or `(F, G, [R])` in family F. Family F
+  has no partition (A-R2-01).
 - `(k_star, ω_star)` ranges over **every** admissible node and eigenphase of `U`. The sector is
   the full two-band space, and the local quasienergy branch is the one fixed by the predecessor's
   Sec. 3.
-- One admissible tuple violating the equality is a counterexample.
+- One admissible tuple with `c_0 != c_strict^iso` is a counterexample. Its direction is recorded
+  (A-R2-04).
+  - Where the general ceiling is certified for that class and node (Step 0.4), only
+    `c_0 < c_strict^iso` is possible.
+  - Where it is not certified, for example in the `C4` face class, both directions are admitted.
+  - A `c_0 > c_strict^iso` witness inside a certified class would contradict the ceiling. It is
+    recorded as a conflict and reviewed before anything else.
 
 Subsidiary questions:
-- **Q-a.** Does every admissible member of a class satisfy P17 Eq. (2)?
+- **Q-a.** Does every symbol of a class **with at least one admissible node** satisfy P17
+  Eq. (2)? User decision, A-R2-05. In family F, Eq. (2) is interpreted with `h ∈ N_3`
+  (`S_+ = S_− = N_3` for this purpose only, as in P17 p.3).
 - **Q-b.** Does the `A±,B±` certificate transport along every listed P17 equivalence?
 
 ## 2. Frozen class declaration
@@ -111,12 +136,13 @@ Subsidiary questions:
 | Geometry | d=3; `N_3` as in Sec. 1, all eight `T_h != 0`; no on-site term; one complete update per time unit; `U(k) = sum_h e^{-i k.h} T_h` |
 | Internal dimension | `s = 2` (main); `s = 1` only in Step 0 |
 | Family P (partitioned) | `G ⊂ O`, proper rotations of the cube by their 3x3 matrices. `S_+ ⊂ N_3` with `|S_+| = 4` and `S_+ ∩ (−S_+) = ∅`. `G` permutes `S_+` transitively. This is a restriction of P17's setting: proper cube rotations and an oriented four-generator presentation, without Eq. (2). It is **not** "P17 minus Eq. (2)" (A-R1-03) |
-| Family F (full) | `G ⊂ O` acting transitively on all eight vertices of `N_3`, with no partition. Contains `O` |
+| Family F (full) | `G ⊂ O` acting transitively on all eight vertices of `N_3`, with no partition. Classes are `(F, G, [R])`. Contains `O` |
+| Overlap of P and F (A-R2-02) | Every `G` in F contains the axial `V4`, so every F-symbol, restricted to `V4`, belongs to a tetrahedral P class. A `D4`-covariant symbol also restricts to the `C4` face class. F adds stronger declared symmetry, not new symbols. Results transfer from a P class to its F subclasses (universal proofs) and from F to P (counterexamples), never the reverse. The same symbol appearing in several rows is not independent evidence. Reports count declared classes and distinct symbols separately |
 | Covariance | `T_{gh} = R_g T_h R_g^†` for all `g ∈ G`, with `R` a projective unitary representation; equivalently `U(gk) = R_g U(k) R_g^†`. No reflections, parity or antiunitaries are required as symmetries |
 | Representations | **Every** 2-dimensional projective unitary `R`, irreducible or reducible, up to projective equivalence `R'_g = c_g W R_g W^†` (`|c_g| = 1`, `W` unitary). The multiplier class alone does not identify `R` (A-R1-07) |
 | Fidelity | Not assumed. The projective kernel `ker_proj R = {g : R_g scalar}` is recorded. A `g ≠ e` in it that moves a generator forces equal coefficients and violates Eq. (2) |
-| Class identification | `(G, S_±, R) ~ (QGQ^{-1}, QS_±, R∘Ad_{Q^{-1}})` for `Q ∈ O`; classes are counted up to this conjugation |
-| Eq. (2) | Not assumed; recorded per candidate (Q-a) |
+| Class identification | For `Q ∈ O`: in P, `(G, S_±, R) ~ (QGQ^{-1}, QS_±, R∘Ad_{Q^{-1}})`; in F, `(G, R) ~ (QGQ^{-1}, R∘Ad_{Q^{-1}})`. Classes are counted up to this conjugation |
+| Eq. (2) | Not assumed; recorded per candidate. In F it is read with `h ∈ N_3` (Q-a) |
 | Node and sector | All admissible nodes, full two-band sector, local branch (Sec. 1) |
 | Coefficient domain | Real variables for the real and imaginary parts of the coefficients, ranging over all reals. "Exact algebra" is a method, not a restriction to algebraic points (A-R1-01, A-R1-09) |
 | Group arithmetic | Exact canonical form. No numerical identification such as `nsimplify` |
@@ -132,8 +158,8 @@ Subsidiary questions:
    For each choice, determine the transitive subgroups of its rotation stabilizer. The review
    anticipates three geometric pairs up to conjugation, `(V4, tetrahedron)`,
    `(T, tetrahedron)` and `(C4, face)` `[UNVERIFIED]`.
-2. Family F. Enumerate the subgroups of `O` transitive on the eight vertices. `O` is one;
-   `D4` about a coordinate axis is anticipated `[UNVERIFIED]`.
+2. Family F. Enumerate the subgroups of `O` transitive on the eight vertices. A5 anticipates
+   `{D4, O}`; the step verifies or refutes it.
 3. For each group, enumerate every 2-dimensional projective unitary `R` up to the equivalence of
    Sec. 2, and record `ker_proj R`.
 4. Give a written proof that the enumeration is exhaustive, plus an exact script. **The
@@ -142,21 +168,31 @@ Subsidiary questions:
 
 **Step 0 — verify or refute the anticipations (A-R1-06).**
 1. A1 for every class from Step 0′ in which `R` is scalar on a subgroup transitive on each half
-   (family P) or on all eight vertices (family F). Record the displacement and the pairs used.
-   Family F with `R` scalar on a vertex-transitive subgroup forces all `T_h` equal. Whether that
-   is empty is to be checked; it is not assumed.
+   (family P) or on all eight vertices (family F; A6). Record the displacement and the pairs used.
    - Negative control: the `V4`/Q8 Pauli class must not become empty.
    - Positive control: `A±,B±` satisfy the identities.
-2. A2 as a statement about `E` restricted to the groups of Step 0′. Rows are stated under their
-   own group: `E` under `O` (family F), and its restriction to `D4` if `D4` occurs.
+2. A2 and A7 as statements about `E` restricted to the groups of Step 0′. Rows are stated under
+   their own group: `E` under `O` (family F), and `E` restricted to `D4` (`≃ 1 ⊕ χ`, reducible).
 3. A3: in-repo analytic proof for s=1 (extremal-exponent argument), with P17 p.4 [24] cited as
    context. Meyer (1996) is not in the repo and stays `[UNVERIFIED]`.
-4. Ceiling scope (A-R1-11): check whether the general ceiling covers every node and unit used
-   here. The ceiling is stated at `k_star = 0`, so other nodes must be reached by a transport
-   that keeps covariance. If it does not cover them, record that and drop any use of the
-   ceiling for those nodes.
+4. Ceiling scope (A-R1-11, A-R2-03). The general ceiling's frozen class
+   (`STRICT_CONE_CEILING_N3_GATE.md`, lines 30–36) requires:
+   - normalized `N_3`;
+   - covariance under the Cartesian half-turn `D2` (= the axial `V4`);
+   - node `k_star = 0`.
 
-Each item has the outcomes VERIFIED, REFUTED (with witness) or INCONCLUSIVE.
+   Record per class and node whether the ceiling applies:
+   - **Groups.** `V4` and `T` (tetrahedron) and `D4` and `O` (F) contain `D2`. The `C4` face
+     class does not, so the ceiling does not cover it unless a `D2` covariance is proved for
+     its symbols.
+   - **Nodes.** A node `k_star != 0` is moved to `0` by `T'_h = e^{-i k_star.h} T_h`. This
+     preserves `S_n`, the strict body and the slope. It keeps covariance with the same `R` on
+     `D2` iff `g^{-1} k_star − k_star ∈ Λ^*` for every `g ∈ D2`.
+   - The ceiling's proof is not re-read here. Any wider scope it might support is
+     `[UNVERIFIED]` and is not used.
+
+Each item has the outcomes VERIFIED, REFUTED (with witness) or INCONCLUSIVE. An anticipation that
+ends INCONCLUSIVE does not remove its class from the later steps.
 
 **Step 4a — transport within P17's class (A-R1-08).** Use transport laws, not literal
 invariance. For each listed operation, state its effect on `S_n` and `c_0`, and re-verify
@@ -183,10 +219,18 @@ Unlisted or excluded operations leave Q-b `CONDITIONAL`.
   infeasibility certificate such as a Positivstellensatz or SOS certificate.
 - An ideal other than `(1)` is not existence.
 - Complex algebraic components are kept distinct from components of the real admissible set.
-- Q-a is recorded per class.
+- Admissible encodings, each to be verified exactly:
+  - active support by an extra variable `y` with `y ∏_h ||T_h||_F^2 − 1 = 0`;
+  - real emptiness by an identity `−1 = Σ a_i f_i + Σ b_j^2`.
+  A bounded SOS search that fails is not existence, and a numerical approximation is not a
+  certificate.
+- 4b-1 decides only `EMPTY_CLASS` versus the existence of unitary symbols. Sectors are decided
+  in 4b-2 (A-R2-05).
 
 **Step 4b-2 — sectors, strict body, comparison.**
-- Find every admissible node.
+- Find every admissible node. One admissible encoding: `U(k_star) = aI`, `|a| = 1`,
+  `H_j = i ā ∂_j U(k_star)`, `tr H_j = 0`, `½ tr(H_j H_l) = c_0^2 δ_jl`, `c_0 > 0`.
+- Decide `NO_ADMISSIBLE_SECTOR` versus admissible sectors, and Q-a on the symbols that have one.
 - Compute `c_0` exactly.
 - Determine `c_strict^iso`: by the vertex lemma when every vertex coefficient is
   non-nilpotent (rank one `T_h = |u><v|` with `<v|u> != 0`), otherwise by an exact computation.
@@ -217,13 +261,15 @@ Unlisted or excluded operations leave Q-b `CONDITIONAL`.
 ## 5. Outcomes by question (A-R1-10)
 
 Outcomes answer different questions and may coexist. "Equal standing" means equal editorial
-acceptance; none is expected or preferred. A1–A4 are not results.
+acceptance; none is expected or preferred. A1–A8 are not results.
 
 | Question | Outcomes (per class) | Closes |
 | --- | --- | --- |
-| Classification | `EMPTY_CLASS` (no unitary symbol); `NO_ADMISSIBLE_SECTOR` (unitary symbols exist, no admissible cone); `NONEMPTY_WITH_ADMISSIBLE_SECTORS`; `OPEN_AFTER_CLASS_DERIVATION` | 4b-1 for that class |
-| Main (rigidity) | `COUNTEREXAMPLE_VERIFIED` (one admissible tuple with `0 < c_0 < c_strict^iso`); `RIGIDITY_PROVED_FOR_FROZEN_CLASS` (equality for every admissible tuple); `RIGIDITY_HOLDS_SATURATION_FAILS` (equality holds but `c_strict^iso < rho_micro`; renamed from the predecessor's `INADMISSIBLE_SATURATION`); `VACUOUS` (class empty or without admissible sector); `OPEN_AFTER_STRICT_BODY` / `INCONCLUSIVE` | 4b-2 for that class |
-| Q-a | `DISTINGUISHABILITY_IMPLIED_IN_CLASS`; `DISTINGUISHABILITY_REFUTED_BY_WITNESS`; `OPEN` | 4b-1 |
+| Unitary symbols | `EMPTY_CLASS` (no unitary symbol); `UNITARY_SYMBOLS_EXIST` (certified real point); `OPEN_AFTER_CLASS_DERIVATION` | 4b-1 |
+| Sectors | `NO_ADMISSIBLE_SECTOR` (unitary symbols exist, none has an admissible cone); `ADMISSIBLE_SECTORS_EXIST`; `OPEN` | 4b-2 |
+| Main (rigidity, ∀ tuples) | `COUNTEREXAMPLE_VERIFIED_BELOW` (an admissible tuple with `0 < c_0 < c_strict^iso`); `COUNTEREXAMPLE_VERIFIED_ABOVE` (`c_0 > c_strict^iso`, only where the ceiling is not certified; inside a certified class it is a conflict, Sec. 1); `RIGIDITY_PROVED_FOR_FROZEN_CLASS` (equality for every admissible tuple); `VACUOUS` (class empty or without admissible sector); `OPEN_AFTER_STRICT_BODY` / `INCONCLUSIVE` | 4b-2 |
+| Saturation (separate, A-R2-06) | `SATURATION_PROVED_FOR_CLASS` (∀ admissible `U`: `c_strict^iso(U) = rho_micro`); `SATURATION_FAILURE_WITNESS` (∃ admissible `U` with `c_strict^iso(U) < rho_micro`); `OPEN`. This replaces the predecessor's `INADMISSIBLE_SATURATION` and v2's `RIGIDITY_HOLDS_SATURATION_FAILS` | 4b-2 |
+| Q-a (symbols with an admissible node) | `DISTINGUISHABILITY_IMPLIED_IN_CLASS`; `DISTINGUISHABILITY_REFUTED_BY_WITNESS` (the witness must have an admissible node); `OPEN` | 4b-2 |
 | Q-b | `TRANSFER_CERTIFIED_FOR_LISTED_EQUIVALENCES`; `CONDITIONAL` (with the unlisted operations named) | 4a |
 | Anticipations | VERIFIED / REFUTED / INCONCLUSIVE per item | Step 0 |
 
@@ -233,7 +279,9 @@ acceptance; none is expected or preferred. A1–A4 are not results.
 antiunitaries as symmetries, masses, interactions, species universality (A), the absolute scale,
 or nature. `RIGIDITY_PROVED_FOR_FROZEN_CLASS` is not a general QCA law. No novelty wording: the
 `s=2` classification with Eq. (2) is P17's. Any statement without Eq. (2) is "not located in the
-sources checked", and those sources are named. `v_max` is never written unqualified.
+sources checked", and those sources are named. `v_max` is never written unqualified. A result
+over this union of `s=2` classes is not general QCA rigidity, in titles and summaries as well as
+in the body. A symbol counted under both P and F is one symbol.
 
 ## 6. Review (A-R1-14)
 
@@ -248,5 +296,6 @@ sources checked", and those sources are named. `v_max` is never written unqualif
   - the SHA-256 of the reviewed report and certificate;
   - the base commit;
   - the `~/herramientas` commit;
-  - the user's authorization for sending text externally.
+  - the user's authorization for sending text externally;
+  - the model family that wrote the reviewed content, so that independence can be checked.
 - A review is an additional check, not a substitute for the exact certificate.
