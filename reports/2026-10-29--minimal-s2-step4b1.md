@@ -39,8 +39,8 @@ rotations and an oriented four-generator presentation.
   `C4` class the outcome `COUNTEREXAMPLE_VERIFIED_ABOVE` therefore has no object. In the
   surviving class it is still open: it depends on which nodes an admissible transport reaches
   (Step 4b-2).
-- The `T` and `O` results match the step-01 `T2s`/`O2s` controls, which were anticipations
-  there.
+- The `T` and `O` results match the step-01 `T2s`/`O2s` controls, which that certificate
+  certifies.
 
 **Not decided here:**
 - the dimension and components of the `(V4, Pauli)` class;
@@ -80,14 +80,13 @@ means no complex solution, and hence no real solution.
 explicit witness proposed in the Astra review:
 `U(q) = e^{-iq_x σ_x} e^{-iq_y σ_y} e^{-iq_z σ_z}`, that is
 `T_{(x,y,z)} = P_x^x P_y^y P_z^z` with `P_j^{±1} = (I ± σ_j)/2`. The certificate checks, without
-imported code:
+the imported unitarity generator or Groebner code (it still uses `S0.act` and `sym_zero`):
 - all eight `T_h` are nonzero;
 - Laurent unitarity in both orders, `Σ_{h'−h=ℓ} T_h^† T_{h'} = δ_{ℓ0} I` and
   `Σ_{h'−h=ℓ} T_{h'} T_h^† = δ_{ℓ0} I`, for every displacement `ℓ`;
 - covariance `a_{gh} = a_h`, `b_{gh} = g b_h` for every `g ∈ V4` and `h ∈ N_3`.
 
-Negative controls run during the repair: doubling one coefficient fails the unitarity check, and
-the witness is not covariant under a `C4` generator. The reviewed Pavia symbol of chirality 1
+The reviewed Pavia symbol of chirality 1
 passes the same covariance check as a secondary control; its unitarity comes from
 `verify_irreducible_isotropy_step01.py`.
 
@@ -118,6 +117,15 @@ passes the same covariance check as a secondary control; its unitarity comes fro
 | A-4B1-04 (identification with P17) | Class named exactly; coincidence of group and representation with P17 only. |
 | A-4B1-05 (`..._ABOVE`) | Restricted to the `C4` class. |
 | A-4B1-06 (DEP19 Eq. (14)) | Corrected: (14) is the normalization `Σ_h A_h = I_s`. |
+
+Second round (Grok, [review](../debates/2026-10-29--minimal-s2-step4b1-review-grok/informe_grok.md)):
+all six repairs resolved and the five per-class conclusions confirmed by direct proofs. Its two
+new objections are closed in the text: A-4B1-R2-01 by removing the uncertified sentence on
+negative controls; A-4B1-R2-02 by qualifying "no imported code" (the certificate's own label
+keeps that wording; it means no imported unitarity or Groebner code) and by not calling the
+step-01 `T2s`/`O2s` controls anticipations. The certificate bytes are unchanged since the review.
+Grok also notes that the witness is Pavia chirality `−1` in the convention of
+`verify_weyl_dirac_gate.py`; chirality `1`, the secondary control, is a different point.
 
 Not adopted as a result here: Astra's argument that every active unitary symbol of the
 `(V4, Pauli)` class satisfies Eq. (2). It is an anticipation for Q-a, decided in Step 4b-2 with a

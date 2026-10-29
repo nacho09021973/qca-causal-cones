@@ -19,7 +19,7 @@ with a dated entry, the dated entry wins.
 
 | Front | Status | Where |
 | --- | --- | --- |
-| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`): stage (a) REVIEWED (Grok, three rounds), five faithful classes survive and all others are EMPTY_CLASS; stage 4b-1 authorized; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`): stage (a) REVIEWED (Grok, three rounds), five faithful classes survive and all others are EMPTY_CLASS; stage 4b-1 ESTABLISHED IN THE DECLARED FAMILIES (Astra, Grok): only `(V4, Pauli)` is nonempty; stage 4b-2 authorized; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
 | Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
@@ -112,26 +112,30 @@ change it.
   - an exact verifier, a report and a full sweep.
 - **Closure:** a different-family review before anything is promoted.
 
-**Stage 4b-1 executed 2026-10-29 (PRELIMINARY, second review round pending).**
+**Stage 4b-1 (exact class derivation): ESTABLISHED IN THE DECLARED FAMILIES** (promoted
+2026-10-29 at the user's instruction "si a todo", after two different-family review rounds).
 [Report](../reports/2026-10-29--minimal-s2-step4b1.md); certificate
-`scripts/verify_minimal_s2_step4b1.py`, 16/16 exact checks, about 110 s.
-- **Review round 1 (Astra):** per-class results accepted with independent proofs; six report
-  repairs A-4B1-01..06 ([review](../debates/2026-10-29--minimal-s2-step4b1-review-astra/informe_astra.md)).
-- **Repairs applied** at the user's instruction ("si a todo", 2026-10-29): the certificate now
-  checks Astra's explicit witness `e^{-iq_x σ_x} e^{-iq_y σ_y} e^{-iq_z σ_z}` itself (17/17,
-  `5b0122f1…`); the report text is corrected. The bullets below are the pre-repair summary;
-  the report is authoritative until promotion.
-- **Empty classes:** `O`, `(T, tetrahedron)`, `D4` and `(C4, face)` are `EMPTY_CLASS`. Each gives
-  a unit Groebner ideal, by two independent constructions of the covariant symbol.
-- **Surviving class:** `(V4, tetrahedron, Pauli)` is `UNITARY_SYMBOLS_EXIST`, with the Pavia
-  symbol as a certified real point.
-- **Consequence:** in the frozen families without Eq. (2), only P17's isotropy setting is
-  nonempty.
-- **Not yet determined:**
-  - its components;
-  - Q-a;
-  - nodes and speeds (Step 4b-2, not authorized);
-  - Q-b (Step 4a, not authorized).
+`scripts/verify_minimal_s2_step4b1.py`, SHA-256 `5b0122f1…`, 17/17 exact checks, about 110 s.
+- **Empty classes:** `O`, `(T, tetrahedron)`, `D4` and `(C4, face)` are `EMPTY_CLASS` (unit
+  Groebner ideal by the orbit construction, matched by the linear construction; short proofs
+  without Groebner by both reviewers).
+- **Surviving class:** `(V4, tetrahedron, Pauli)` is `UNITARY_SYMBOLS_EXIST`. Real point: the
+  explicit witness `e^{-iq_x σ_x} e^{-iq_y σ_y} e^{-iq_z σ_z}`, checked inside the certificate
+  (it is Pavia chirality `−1` in the convention of `verify_weyl_dirac_gate.py`).
+- **Scope:** group and representation coincide with P17's; the class is not "P17 minus
+  Eq. (2)" (charter, family P row). Within the `C4` class `COUNTEREXAMPLE_VERIFIED_ABOVE` has no
+  object.
+- **Reviews:**
+  - Astra round 1: per-class results accepted, six report repairs A-4B1-01..06
+    ([review](../debates/2026-10-29--minimal-s2-step4b1-review-astra/informe_astra.md));
+    repairs applied in `4646be5`.
+  - Astra round 2 failed on the provider's usage limit
+    ([record](../debates/2026-10-29--minimal-s2-step4b1-review-astra-r2/verificacion_autor.md)).
+  - Grok round 2 (in its place, user: "astra no tiene credito, tendras que buscar otro agente"):
+    the six repairs resolved, the five conclusions confirmed by its own direct proofs; two new
+    text objections, closed in the report without changing certificate bytes
+    ([review and author reading](../debates/2026-10-29--minimal-s2-step4b1-review-grok/verificacion_autor.md)).
+- **Not reviewed as executions:** check counts, timings and sweeps are author declarations.
 
 **Stage 4b-2 (sectors, strict body, comparison): AUTHORIZED** by the user ("si a todo",
 2026-10-29, in answer to "¿Autorizas 4b-2?"). The user gave no budget, so Claude applies the one
