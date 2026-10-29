@@ -151,6 +151,23 @@ the user set for 4b-1; the user can change it.
   is described beyond the class.
 - **Order:** 4b-2 builds on 4b-1, which is promoted only after its second review round.
 
+**Stage 4b-2 executed 2026-10-29 (PRELIMINARY, review pending).**
+[Report](../reports/2026-10-29--minimal-s2-step4b2.md); certificate
+`scripts/verify_minimal_s2_step4b2.py`, SHA-256 `8849e87a…`, 20/20 exact checks, about 240 s, no
+imported certificate code. Started 15:52 UTC, certificate passed 16:32 UTC (budget 3 h).
+- **Class description:** every unitary symbol of `(V4, Pauli)` is `α W_σ` with `|α| = 1` and
+  `W_σ` one of 48 fixed symbols (the unitarity ideal equals a hand-reduced ideal; the 48 sign
+  families are checked exactly).
+- **Q-a:** `DISTINGUISHABILITY_IMPLIED_IN_CLASS`, for every unitary symbol of the class, by two
+  routes (per family, and by unit ideals without the classification).
+- **Sectors:** `ADMISSIBLE_SECTORS_EXIST`; four admissible nodes per symbol on the Brillouin torus.
+- **Main:** `RIGIDITY_PROVED_FOR_FROZEN_CLASS`, `c_0 = c_strict^iso = 1/sqrt(3)` at every node.
+- **Saturation:** `SATURATION_PROVED_FOR_CLASS`, via the vertex lemma (every `T_h` rank one with
+  nonzero trace).
+- **Not covered:** Q-b (Step 4a, not authorized); anything outside the class; novelty (OPEN);
+  the P17 [31] literature search (needs separate permission).
+- **Promotion** requires a different-family review. Astra is out of credit; not yet sent.
+
 ## Independent review queue closed — 2026-10-29
 
 User instructions: "empezamos por la cola de revisiones", "si, autorizo a y b",

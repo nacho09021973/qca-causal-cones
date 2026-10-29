@@ -185,6 +185,30 @@ What it certifies:
 What it does not certify: the components or dimension of the `(V4, Pauli)` class, Eq. (2) (Q-a),
 nodes, `c_0`, `c_strict^iso`, or anything taken from DEP19.
 
+## Minimal s=2 rigidity, Step 4b-2
+
+`verify_minimal_s2_step4b2.py` decides Step 4b-2 of the
+[charter](../theory/MINIMAL_S2_RIGIDITY_GATE.md) for the `(V4, tetrahedron, Pauli)` class, as
+recorded in the [report](../reports/2026-10-29--minimal-s2-step4b2.md). It runs 20 checks in
+about 240 s and imports no certificate code (SymPy only).
+
+How it works:
+- writes the covariant symbol as `α C_0 + β S_0 + Σ σ_j (γ_j C_j + δ_j S_j)` and checks it as a
+  Laurent identity;
+- shows the unitarity ideal equals the hand-reduced ideal (equal reduced Groebner bases);
+- checks all 128 sign families against unitarity (exactly 48 pass) and the identities that force
+  the sign form;
+- Q-a per family and, independently, by unit ideals;
+- solves the node system exactly per family and computes `H_j` at every node;
+- checks rank one and nonzero trace of every `T_h` for the vertex lemma.
+
+What it certifies: Q-a `DISTINGUISHABILITY_IMPLIED_IN_CLASS`, `ADMISSIBLE_SECTORS_EXIST`,
+`c_0 = 1/sqrt(3)` at every node, and the inputs of the vertex lemma.
+
+What it does not certify: the written step from the reduced system to the 48 families beyond the
+listed identities, the vertex lemma itself, the inequality `|q|_1 >= |q|_2`, Q-b, or anything
+outside this class.
+
 ## Exact standard Weyl/Dirac battery
 
 `verify_weyl_dirac_gate.py` implements the
