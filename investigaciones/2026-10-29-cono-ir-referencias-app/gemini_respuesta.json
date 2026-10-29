@@ -1,0 +1,2016 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "### Primary Sources Summary Table\n\n| # | Authors | Exact Title | Year | Journal, Volume, Pages | arXiv / DOI | Open-Access URL |\n|---|---|---|---|---|---|---|\n| **1** | S. Chadha, H. B. Nielsen | *Lorentz invariance as a low energy phenomenon* | 1983 (Preprint 1982) | *Nucl. Phys. B* **217** (1), 125–144 | No arXiv (`NBI-HE-82-42`)\u003cbr\u003eDOI: `10.1016/0550-3213(83)90081-0` | None verified (paywalled at Elsevier; KEK scan URLs unverified) |\n| **2** | G. E. Volovik | Book: *The Universe in a Helium Droplet*\u003cbr\u003eReview: *Superfluid analogies of cosmological phenomena* | 2003\u003cbr\u003e\u003cbr\u003e2001 | Oxford Univ. Press, Int. Ser. Monogr. Phys. **117**, pp. 1–507\u003cbr\u003e*Phys. Rept.* **351** (4), 195–348 | Book DOI: `10.1093/acprof:oso/9780199564842.001.0001`\u003cbr\u003earXiv: `gr-qc/0005091`\u003cbr\u003eDOI: `10.1016/S0370-1573(00)00139-3` | https://arxiv.org/abs/gr-qc/0005091 |\n| **3** | J. Collins, A. Perez, D. Sudarsky, L. Urrutia, H. Vucetich | *Lorentz invariance and quantum gravity: an additional fine-tuning problem?* | 2004 | *Phys. Rev. Lett.* **93** (19), 191301 (4 pp.) | arXiv: `gr-qc/0403053`\u003cbr\u003eDOI: `10.1103/PhysRevLett.93.191301` | https://arxiv.org/abs/gr-qc/0403053 |\n| **4** | P. Hořava\u003cbr\u003e\u003cbr\u003eR. Iengo, J. G. Russo, M. Serone | *Quantum gravity at a Lifshitz point*\u003cbr\u003e\u003cbr\u003e*Renormalization group in Lifshitz-type theories* | 2009\u003cbr\u003e\u003cbr\u003e2009 | *Phys. Rev. D* **79** (8), 084008 (29 pp.)\u003cbr\u003e\u003cbr\u003e*JHEP* **0911** (2009), 020 | arXiv: `0901.3775`\u003cbr\u003eDOI: `10.1103/PhysRevD.79.084008`\u003cbr\u003earXiv: `0906.3477`\u003cbr\u003eDOI: `10.1088/1126-6708/2009/11/020` | https://arxiv.org/abs/0901.3775\u003cbr\u003e\u003cbr\u003ehttps://arxiv.org/abs/0906.3477 |\n| **5** | W. G. Unruh\u003cbr\u003e\u003cbr\u003eC. Barceló, S. Liberati, M. Visser | *Experimental Black-Hole Evaporation?*\u003cbr\u003e\u003cbr\u003e*Analogue Gravity* | 1981\u003cbr\u003e\u003cbr\u003e2005 (rev. 2011, 2026) | *Phys. Rev. Lett.* **46** (21), 1351–1353\u003cbr\u003e\u003cbr\u003e*Living Rev. Relativ.* **8**, 12 (2005); **14**, 3 (2011); **29**, 2 (2026) | No arXiv\u003cbr\u003eDOI: `10.1103/PhysRevLett.46.1351`\u003cbr\u003earXiv: `gr-qc/0505065`\u003cbr\u003eDOI: `10.12942/lrr-2005-12` / `10.1007/s41114-026-00064-9` | https://arxiv.org/abs/gr-qc/0505065 (and Springer Open) |\n| **6** | B. P. Abbott *et al.* (LIGO Scientific, Virgo, Fermi-GBM, and INTEGRAL Collaborations) | *Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A* | 2017 | *Astrophys. J. Lett.* **848** (2), L13 (27 pp.) | arXiv: `1710.05834`\u003cbr\u003eDOI: `10.3847/2041-8213/aa920c` | https://arxiv.org/abs/1710.05834\u003cbr\u003ehttps://doi.org/10.3847/2041-8213/aa920c |\n| **7** | A. A. Abdo *et al.* (Fermi GBM/LAT Collaborations) | *A limit on the variation of the speed of light arising from quantum gravity effects* | 2009 | *Nature* **462** (7271), 331–334 | arXiv: `0908.1832`\u003cbr\u003eDOI: `10.1038/nature08574` | https://arxiv.org/abs/0908.1832 |\n| **8** | A. G. Cohen, S. L. Glashow\u003cbr\u003eE. Borriello *et al.*\u003cbr\u003eF. W. Stecker, S. T. Scully | *Pair Creation Constrains Superluminal Neutrino Propagation*\u003cbr\u003e*Stringent constraint on neutrino Lorentz-invariance violation from the two IceCube PeV neutrinos*\u003cbr\u003e*Propagation of superluminal PeV IceCube neutrinos: A high energy spectral cutoff or new constraints on Lorentz invariance violation* | 2011\u003cbr\u003e2013\u003cbr\u003e2014 | *Phys. Rev. Lett.* **107** (18), 181803\u003cbr\u003e*Phys. Rev. D* **87** (11), 116009\u003cbr\u003e*Phys. Rev. D* **90** (4), 043012 | arXiv: `1109.6562` / DOI: `10.1103/PhysRevLett.107.181803`\u003cbr\u003earXiv: `1303.5843` / DOI: `10.1103/PhysRevD.87.116009`\u003cbr\u003earXiv: `1404.7025` / DOI: `10.1103/PhysRevD.90.043012` | https://arxiv.org/abs/1109.6562\u003cbr\u003ehttps://arxiv.org/abs/1303.5843\u003cbr\u003ehttps://arxiv.org/abs/1404.7025 |\n| **9** | T. Jacobson, S. Liberati, D. Mattingly\u003cbr\u003e\u003cbr\u003e(Also: P. Satunin) | *A strong astrophysical constraint on the violation of special relativity by quantum gravity*\u003cbr\u003e(*New constraints on Lorentz Invariance violation from Crab Nebula spectrum beyond 100 TeV*) | 2003\u003cbr\u003e\u003cbr\u003e(2019) | *Nature* **424** (6952), 1019–1021\u003cbr\u003e\u003cbr\u003e(*Eur. Phys. J. C* **79**, 1011) | arXiv: `astro-ph/0212190`\u003cbr\u003eDOI: `10.1038/nature01882`\u003cbr\u003e(arXiv: `1906.08221` / DOI: `10.1140/epjc/s10052-019-7520-y`) | https://arxiv.org/abs/astro-ph/0212190\u003cbr\u003e\u003cbr\u003e(https://arxiv.org/abs/1906.08221) |\n| **10** | D. Mattingly\u003cbr\u003eS. Liberati\u003cbr\u003eV. A. Kostelecký, N. Russell | *Modern Tests of Lorentz Invariance*\u003cbr\u003e*Tests of Lorentz invariance: a 2013 update*\u003cbr\u003e*Data Tables for Lorentz and CPT Violation* | 2005\u003cbr\u003e2013\u003cbr\u003e2011 (annual arXiv rev.) | *Living Rev. Relativ.* **8**, 5\u003cbr\u003e*Class. Quant. Grav.* **30** (13), 133001\u003cbr\u003e*Rev. Mod. Phys.* **83** (1), 11–31 | arXiv: `gr-qc/0502097` / DOI: `10.12942/lrr-2005-5`\u003cbr\u003earXiv: `1304.5795` / DOI: `10.1088/0264-9381/30/13/133001`\u003cbr\u003earXiv: `0801.0287` / DOI: `10.1103/RevModPhys.83.11` | https://arxiv.org/abs/gr-qc/0502097\u003cbr\u003ehttps://arxiv.org/abs/1304.5795\u003cbr\u003ehttps://arxiv.org/abs/0801.0287 |\n\n---\n\n### Detailed Verification and Fidelity Notes\n\n#### 1. Chadha and Nielsen (1983)\n* **What the source establishes:** Published in *Nuclear Physics B* in **1983** (from a 1982 Niels Bohr Institute preprint `NBI-HE-82-42`). The authors analyze 3+1D Quantum Electrodynamics (QED)—both for a single charged fermion coupled to an electromagnetic field and for multiple fermion species with distinct limiting velocities—broken explicitly by non-covariant kinetic tensors ($\\eta^{\\mu\\nu}$). Using a **one-loop renormalization group (RG) approximation** in the weak gauge coupling $e$ (specifically $\\alpha = e^2/4\\pi$) and expanding to first order in the Lorentz-violating parameters, they show that the velocity differences (and spatial anisotropies) run toward zero in the infrared (IR) as a power law of the energy scale $\\mu$: $\\Delta c(\\mu) \\propto (\\mu/\\Lambda)^{\\beta}$ with a positive anomalous dimension $\\beta = \\frac{8\\alpha}{3\\pi} \u003e 0$.\n* **Fidelity of the app's claim:**\n  * **Year:** **Incorrect.** The paper is from **1983** (preprint 1982), not 1976. *(Inference: The app likely confused the date with Nielsen and Ninomiya's 1978 work $\\beta$-functions in non-covariant Yang-Mills, Nucl. Phys. B 141, 153).*\n  * **Physics claim:** **Faithful regarding the IR attractor, with an important caveat on the speed of running.** The paper indeed establishes that gauge interactions drive velocity differences between species to zero in the IR. However, because the running is logarithmic (or a very slow power law $\\sim (\\mu/\\Lambda)^{\\mathcal{O}(\\alpha)}$), the authors themselves note (and later literature emphasizes) that starting from $\\mathcal{O}(1)$ Lorentz violation at the Planck scale, this one-loop QED flow is far too slow to reach experimental bounds ($\\Delta c \\lesssim 10^{-21}$) at accessible energies without additional mechanisms or strong coupling.\n\n#### 2. Volovik on Fermi Points and Emergent Lorentz Invariance\n* **What the source establishes:** In *The Universe in a Helium Droplet* (2003, especially Chapters 7–9; also available open-access on Volovik's institutional homepage and summarized in *Phys. Rept.* **351**, 195, 2001), Volovik formulates momentum-space topology for gapless fermionic systems. A Fermi point (Weyl node) in 3D momentum space is a point singularity of the two-point Green's function $G(\\omega, \\mathbf{p})$ protected by the topological winding number:\n  $$N_3 = \\frac{1}{24\\pi^2} \\epsilon_{\\mu\\nu\\lambda\\gamma}\\,\\text{tr} \\oint_{\\Sigma_3} dS^\\gamma\\, G\\partial_\\mu G^{-1} G\\partial_\\nu G^{-1} G\\partial_\\lambda G^{-1} \\in \\mathbb{Z}$$\n  Because $N_3$ is a topological invariant, small perturbations cannot open a gap (unless two nodes of opposite charge annihilate). Expanding $G^{-1}(p_\\mu)$ linearly around the node $p_\\mu^{(0)}$ automatically yields a relativistic Weyl spectrum $g^{\\mu\\nu}(p_\\mu - p_\\mu^{(0)})(p_\\nu - p_\\nu^{(0)}) = 0$, where the linear expansion coefficients form an emergent vierbein $e^\\mu_a$ (and effective metric $g^{\\mu\\nu}$) and the shift of the node acts as an emergent gauge field $A_\\mu$.\n* **Fidelity of the app's claim:** **Partially faithful, but overstates \"absolute rigidity\" and cross-species universality.**\n  * *What topology protects:* $N_3$ strictly protects the **existence of the gapless node** and the **linear (conical) dispersion** $\\omega \\sim v_{ij}\\delta p^j$ in the limit $p \\to p^{(0)}$. For a *single* irreducible Fermi point (or a degenerate one protected by an internal symmetry), the effective metric $g^{\\mu\\nu}$ defines an exact emergent Lorentz symmetry in the asymptotic IR limit ($E \\to 0$).\n  * *What topology does NOT protect:* First, topology alone does **not** force different fermion species (or separated Fermi points without a connecting discrete/internal symmetry) to share the **same** emergent vierbein or a common limiting speed $c$. As Volovik explicitly discusses, in general condensed-matter realizations (such as $^3\\text{He-A}$), different quasiparticle branches or collective bosonic modes (like orbital waves vs. sound waves) have different propagation speeds; sharing a single common metric requires either an exact underlying symmetry linking the species or an additional RG mechanism (like Chadha–Nielsen). Second, Lorentz invariance is **not** \"absolutely rigid\" at finite low energies: higher-order non-relativistic gradient terms in the expansion around the Fermi point break Lorentz symmetry at any non-zero energy, and in the deep IR, non-analytic one-loop corrections from interactions among modes with different speeds can cause a \"reentrant violation of special relativity\" (which Volovik explicitly analyzed in *JETP Lett.* **73**, 161, 2001, `hep-ph/0101286`).\n\n#### 3. Collins, Perez, Sudarsky, Urrutia, and Vucetich (2004)\n* **What the source establishes:** In *Phys. Rev. Lett.* **93**, 191301 (2004) (`gr-qc/0403053`), the authors study a Yukawa theory (a fermion coupled to a scalar with coupling $g$) in which Lorentz invariance is broken only at the UV cutoff scale $\\Lambda$ (taken to be $\\sim M_{\\text{Pl}}$) via a modified propagator cutoff function $f(|\\mathbf{k}|/\\Lambda)$ in a preferred frame. Computing the one-loop self-energy $\\Sigma(p)$, they expand for small external four-momentum:\n  $$\\Sigma(p) = A + p^2 B + m\\,\\not\\!p\\, C + (p\\cdot W)^2 \\tilde{B} + (p\\cdot W)(\\not\\!W)\\,m\\,\\tilde{C} + \\mathcal{O}(p^4/\\Lambda^2)$$\n  where $W^\\mu = (1,\\mathbf{0})$ is the preferred-frame four-vector. While tree-level dispersion modifications are suppressed by $(E/\\Lambda)^2$, the radiative correction to the dimension-4 kinetic term (the velocity shift $\\xi$ or $\\tilde{B}, \\tilde{C}$) is **unsuppressed** by powers of $\\Lambda$:\n  $$\\xi = \\frac{g^2}{4\\pi^2} \\left[ d_1 + d_2 \\ln\\left(\\frac{\\Lambda^2}{m^2}\\right) \\right] \\sim \\mathcal{O}\\left(\\frac{g^2}{4\\pi^2}\\right)$$\n  That is, the quadratically divergent loop integrals $\\int^\\Lambda d^4k \\, k^\\mu k^\\nu / k^6$ cancel the $1/\\Lambda^2$ suppression of the UV cutoff modification, leaving an $\\mathcal{O}(g^2)$ (\"percent level\") Lorentz violation at low energies. Because clock-comparison and astrophysical experiments bound dimension-4 velocity differences to $|\\delta c / c| \\lesssim 10^{-20}\\text{--}10^{-22}$ (the abstract states *\"at the percent level, some 20 orders of magnitude higher than earlier estimates\"*), bare parameters must be fine-tuned to roughly 1 part in $10^{20}$.\n* **Fidelity of the app's claim:**\n  * **Formula $g^2(\\Lambda_{\\text{UV}}/M_{\\text{Pl}})^2$:** **Faithful as a parametric EFT scaling, though not the exact notation of CPSU.** In CPSU (2004), the UV cutoff scale *is* identified with the Planck scale ($\\Lambda \\sim M_{\\text{Pl}}$), so the ratio $(\\Lambda/M_{\\text{Pl}})^2$ is simply $1$, and CPSU write the result directly as $\\xi \\sim \\mathcal{O}(g^2/4\\pi^2)$. *(Note: Writing the quadratic divergence explicitly as $\\delta c \\sim g^2 (\\Lambda_{\\text{UV}}/M_{\\text{Pl}})^2$ is the standard parameterization introduced in subsequent literature—e.g., Polchinski, Class. Quant. Grav. 29, 088001, 2012, `arXiv:1106.6346`—to show that lowering $\\Lambda_{\\text{UV}} \\ll M_{\\text{Pl}}$, such as via low-scale SUSY or string scales, suppresses the loop correction).*\n  * **\"1 part in $10^{23}$\":** **Slightly inflated relative to the text of CPSU.** CPSU explicitly state *\"at the percent level [$10^{-2}$], some 20 orders of magnitude higher\"* in the abstract and cite experimental bounds down to $10^{-21}\\text{--}10^{-22}$ in the body, which corresponds to fine-tuning of 1 part in $10^{19}\\text{--}10^{20}$. *(Inference: $10^{23}$ is obtained if one compares a tree-level $\\mathcal{O}(1)$ bare parameter directly against the tightest atomic clock bounds $\\sim 10^{-23}$, rather than comparing CPSU's $10^{-2}$ loop estimate against $10^{-22}$).*\n\n#### 4. Hořava–Lifshitz Gravity and IR Recovery of Lorentz Invariance\n* **What the sources establish:**\n  1. **Hořava (2009), *Phys. Rev. D* 79, 084008 (`arXiv:0901.3775`):** Formulates a power-counting renormalizable theory of gravity in 3+1 dimensions with anisotropic scaling $\\mathbf{x} \\to b\\mathbf{x}$, $t \\to b^z t$ with dynamical critical exponent $z=3$ in the UV (6th-order spatial derivatives formed from the Cotton tensor $C_{ij}$). In the IR, relevant lower-derivative deformations ($\\mathcal{L}_{\\text{IR}} \\propto R - 2\\Lambda_W$) dominate over the $z=3$ terms, causing the classical dispersion relation to flow naturally to $z=1$ with an emergent speed of light $c = \\frac{\\kappa^2 \\mu}{4} \\sqrt{\\frac{\\Lambda_W}{1-3\\lambda}}$.\n  2. **Iengo, Russo, and Serone (2009), *JHEP* 0911, 020 (`arXiv:0906.3477`):** Analyzes the one-loop RG flow of Lifshitz-type field theories ($z\u003e1$) containing multiple coupled fields with speed parameters $c_{\\phi_1}^2$ and $c_{\\phi_2}^2$. They show that while each field classically transitions to a $z=1$ dispersion at low momenta, quantum loops cause the speed difference $\\delta c^2 \\equiv c_{\\phi_1}^2 - c_{\\phi_2}^2$ to run logarithmically in the UV and freeze at different IR values unless fine-tuned. Even if $\\delta c^2 = 0$ is set at one scale, unequal high-energy Lifshitz couplings regenerate $\\delta c^2 \\neq 0$ at low energies through loop effects, violating experimental bounds by many orders of magnitude. *(See also Pospelov and Shang, Phys. Rev. D 85, 105001, 2012, `arXiv:1010.5249`, on suppression via supersymmetry or scale separation).*\n* **Fidelity of the app's claim:** **Faithful.** Hořava (2009) establishes the $z=3 \\to z=1$ classical IR flow via relevant operators, and the follow-up RG literature (most notably Iengo, Russo, and Serone 2009) rigorously demonstrates the \"different IR speeds for different species\" obstruction.\n\n#### 5. Unruh (1981) and Analogue Gravity Review (Barceló, Liberati, Visser)\n* **What the sources establish:**\n  1. **Unruh (1981), *Phys. Rev. Lett.* 46, 1351:** Derives that linearized sound waves (velocity potential $\\delta\\phi$) in an irrotational, barotropic, inviscid fluid propagate according to the covariant Klein-Gordon equation $\\frac{1}{\\sqrt{-g}}\\partial_\\mu (\\sqrt{-g} g^{\\mu\\nu}\\partial_\\nu \\delta\\phi) = 0$ in an effective \"acoustic metric\" $g_{\\mu\\nu}$ whose null cone is set by the local speed of sound $c_s$ and background flow velocity $\\mathbf{v}_0$. A transonic horizon ($v_0 = c_s$) emits a thermal Hawking spectrum of phonons at $T_H = \\frac{\\hbar}{2\\pi k_B} \\left|\\frac{\\partial (c_s - v_0)}{\\partial n}\\right|$.\n  2. **Barceló, Liberati, and Visser (2005/2011/2026), *Living Rev. Relativ.* (`gr-qc/0505065`):** Provides a comprehensive survey of analogue gravity models (fluids, BECs, slow light, superfluids, nonlinear electrodynamics). In Sections on multiple fields / \"refringence\" and \"bi-metricity\" (citing also Barceló, Liberati, Visser, *Class. Quant. Grav.* **19**, 2961, 2002, `gr-qc/0111059`), the authors emphasize a central structural problem for emergent gravity: when a condensed-matter medium supports multiple quasi-particle excitations (e.g., longitudinal vs. transverse phonons, or two-component BECs), each mode generically couples to its own distinct acoustic metric with its own propagation speed (birefringence/multi-metricity). Recovering a single universal Einstein equivalence principle requires either an underlying symmetry enforcing degenerate speeds or an additional dynamical mechanism.\n* **Fidelity of the app's claim:** **Faithful.** The review explicitly highlights that distinct excitations generically experience distinct acoustic metrics (no automatic common light cone), which is one of the primary theoretical hurdles separating simple analogue models from General Relativity. *(Note: The specific clause \"without a coupling gauge field\" connects the analogue-gravity multi-metric problem back to the Chadha–Nielsen gauge-averaging mechanism from Item 1; Barceló et al. discuss internal symmetries in the multi-component condensate, while Volovik and Chadha–Nielsen discuss gauge-mediated velocity equalization).*\n\n#### 6. GW170817 and GRB 170817A: Speed of Gravity Bound\n* **What the source establishes:** In *Astrophys. J. Lett.* **848**, L13 (2017) (`arXiv:1710.05834`), the LIGO, Virgo, Fermi-GBM, and INTEGRAL collaborations report the joint detection of gravitational waves from the binary neutron star merger GW170817 and the short gamma-ray burst GRB 170817A.\n  * **Observed delay:** $\\Delta t = +1.74 \\pm 0.05\\text{ s}$ (GRB 170817A arrived $1.74\\text{ s}$ after the GW merger peak).\n  * **Distance:** The luminosity distance from the GW signal is $D_L = 40^{+8}_{-14}\\text{ Mpc}$ (approx. $130\\text{ million light years}$); to get a conservative lower bound on the propagation distance, the authors adopt the $1\\sigma$ lower limit $D = 26\\text{ Mpc}$ ($\\approx 85\\text{ million light years}$).\n  * **Stated bound on fractional speed difference:** Assuming the photons were emitted between $0\\text{ s}$ and $10\\text{ s}$ after the GW peak (i.e., intrinsic emission lag $\\Delta t_{\\text{int}} \\in [0, +10]\\text{ s}$), Equation (5) of Section 4.1 gives:\n    $$-3 \\times 10^{-15} \\le \\frac{\\Delta v}{v_{\\text{EM}}} \\le +7 \\times 10^{-16}$$\n    where $\\Delta v = v_{\\text{GW}} - v_{\\text{EM}}$ (with $v_{\\text{EM}} = c$).\n* **Fidelity of the app's claim:** **Faithful.** The arrival time difference ($1.74\\text{ s} \\approx 1.7\\text{ s}$), nominal distance ($40\\text{ Mpc} \\approx 130\\text{ Mly}$), and the resulting $\\sim 10^{-15}$ fractional bound match the paper directly.\n\n#### 7. Fermi-LAT, GRB 090510 (Abdo et al., 2009)\n* **What the source establishes:** In *Nature* **462**, 331–334 (2009) (`arXiv:0908.1832`), the Fermi GBM/LAT collaborations report the observation of the short gamma-ray burst GRB 090510.\n  * **Photon energy:** Highest-energy photon detected at $E = 30.5^{+5.8}_{-2.6}\\text{ GeV}$ (referred to throughout the text and abstract as **$\\sim 31\\text{ GeV}$**).\n  * **Distance / Redshift:** Measured spectroscopic redshift $z = 0.903 \\pm 0.003$, which corresponds to a light-travel time (lookback distance) of **$\\approx 7.3\\text{ billion light years}$**.\n  * **Arrival time delay:** The $31\\text{ GeV}$ photon arrived **$0.829\\text{ s}$** after the Fermi-GBM trigger (which defines $t=0$ at the onset of the low-energy precursor; it arrived $\\sim 0.30\\text{ s}$ after the onset of the main GBM pulse).\n  * **Stated limits on linear LIV ($|\\Delta v/c| = E / M_{\\text{QG},1}c^2$):** In the abstract, the authors highlight a conservative lower limit of $M_{\\text{QG},1} \u003e 1.2\\,M_{\\text{Planck}}$ (or $E_{\\text{QG},1} \u003e 1.2\\,E_{\\text{Planck}}$) across standard emission assumptions. Specifically, in their Table 1, assuming the $31\\text{ GeV}$ photon was not emitted before the trigger ($\\Delta t \u003c 0.829\\text{ s}$, Method A1), they obtain **$M_{\\text{QG},1} \u003e 1.19\\,M_{\\text{Planck}}$** ($1.45 \\times 10^{19}\\text{ GeV}/c^2$). Other association assumptions in Table 1 yield bounds ranging from $1.2\\,M_{\\text{Planck}}$ up to $102\\,M_{\\text{Planck}}$ (the latter from DisCan sharp-feature alignment).\n* **Fidelity of the app's claim:** **Faithful.** The numbers ($31\\text{ GeV}$ photon, delay $\u003c 0.829\\text{ s} \\approx 0.82\\text{--}0.83\\text{ s}$ after trigger, distance $\\sim 7\\text{ billion light years}$) accurately reflect the primary data used for Method A1 in Abdo *et al.* (2009).\n\n#### 8. IceCube PeV Neutrinos and Cohen–Glashow Constraints\n* **What the sources establish:**\n  1. **Cohen and Glashow (2011), *Phys. Rev. Lett.* 107, 181803 (`arXiv:1109.6562`):** Originally written in response to the OPERA anomaly, this paper shows that if neutrinos are superluminal with $v_\\nu^2 - c^2 = \\delta_\\nu \u003e 0$ (assuming standard electron dispersion, or defining $\\delta_{\\nu e} = \\delta_\\nu - \\delta_e \u003e 0$), three vacuum decay channels become kinematically allowed above threshold: vacuum Cherenkov ($\\nu \\to \\nu \\gamma$), neutrino splitting ($\\nu \\to \\nu \\nu \\bar{\\nu}$), and—most stringently—**vacuum electron-positron pair emission (VPE)**, $\\nu \\to \\nu e^+ e^-$. The energy threshold is $E_{\\text{th}} \\simeq 2 m_e / \\sqrt{\\delta_{\\nu e}}$, and the energy-loss rate above threshold scales as $dE/dx \\propto G_F^2 E^6 \\delta_{\\nu e}^3$, causing rapid terminal energy degradation over short baselines.\n  2. **Borriello, Chakraborty, Mirizzi, and Serpico (2013), *Phys. Rev. D* 87, 116009 (`arXiv:1303.5843`):** Applies the Cohen–Glashow VPE mechanism (plus constraints on the resulting $e^+e^-$ electromagnetic cascades from the Fermi-LAT diffuse $\\gamma$-ray background) to the first two $\\sim 1\\text{ PeV}$ cascade events (\"Bert\" and \"Ernie\", $1.04\\text{ PeV}$ and $1.14\\text{ PeV}$) detected by IceCube. Assuming extragalactic origin, they obtain $\\delta_\\nu = (v_\\nu^2 - 1) \u003c \\mathcal{O}(10^{-18})$ in the abstract, and down to $\\delta_\\nu \\lesssim \\text{few} \\times 10^{-20}$ from the survival of a $1\\text{ PeV}$ neutrino over cosmological distances ($E_{\\text{th}} \\gtrsim 1\\text{ PeV} \\implies \\delta_{\\nu e} \\le 4 m_e^2 / E_\\nu^2 \\simeq 10^{-18}$ just to cross threshold, and $\\sim 10^{-20}$ when comparing the VPE decay length against extragalactic propagation).\n  3. **Stecker (2014), *Astropart. Phys.* 56, 16 (`arXiv:1306.6095`) & Stecker and Scully (2014), *Phys. Rev. D* 90, 043012 (`arXiv:1404.7025`):** Performs Monte Carlo cosmological propagation of IceCube PeV neutrinos accounting for VPE and redshifting. They establish the standard benchmark bound **$\\delta_{\\nu e} \\le 5.2 \\times 10^{-21}$**. Combining this with the independent bound on superluminal electrons ($\\delta_e \\le 5 \\times 10^{-21}$ from the Crab Nebula), they bound the absolute neutrino superluminal velocity fraction to **$\\delta_\\nu = (v_\\nu - c)/c \\le 1.0 \\times 10^{-20}$** (and note that if $\\delta_{\\nu e} \\approx 5.2 \\times 10^{-21}$, VPE produces a spectral cutoff just above $2\\text{ PeV}$). *(Later IceCube multi-PeV events and KM3NeT observations push this threshold even further).*\n* **Fidelity of the app's claim:** **Faithful.** The IceCube PeV neutrino bounds on superluminal neutrino velocity directly rely on the absence of Cohen–Glashow vacuum pair emission ($\\nu \\to \\nu e^+ e^-$) over extragalactic baselines.\n\n#### 9. Vacuum Cherenkov Bound on Electron Lorentz Violation from ~100 TeV Electrons (Crab Nebula)\n* **What the sources establish:**\n  * **Primary foundational paper on Crab Nebula QED bounds:** **T. Jacobson, S. Liberati, and D. Mattingly (2003), *Nature* 424, 1019–1021 (`astro-ph/0212190`)** (expanded in *Phys. Rev. D* **67**, 124011, 2003, `hep-ph/0209264`, and *Annals Phys.* **321**, 150–196, 2006, `astro-ph/0505267`).\n  * **What it establishes (and the distinction between Vacuum Cherenkov and Synchrotron):** For a modified dispersion relation $E^2 = p^2 + m_e^2 + \\eta (p^3 / M_{\\text{Pl}})$ (or dimension-4 velocity shift $\\delta_e = c_e - c_\\gamma$):\n    1. **Superluminal electrons ($\\eta_e \u003e 0$ or $\\delta_e \u003e 0$): Vacuum Cherenkov ($e^- \\to e^- \\gamma$).** Because inverse-Compton (IC) gamma rays from the Crab Nebula were observed up to $E_\\gamma \\approx 50\\text{ TeV}$ (by HEGRA in 2003, and later $\u003e100\\text{ TeV}$ by HAWC/Tibet AS$\\gamma$ in 2019 and $\\sim 1\\text{ PeV}$ by LHAASO in 2021), uninhibited electrons of energy $E_e \\gtrsim 50\\text{--}100\\text{ TeV}$ must exist in the nebula without losing energy via instantaneous vacuum Cherenkov radiation. The vacuum Cherenkov threshold for dimension-4 Lorentz violation is $E_{\\text{th}} = m_e / \\sqrt{2\\delta_e}$, so for $E_e \\sim 100\\text{ TeV}$, one obtains:\n       $$\\delta_e = \\frac{v_e - c}{c} \u003c \\frac{m_e^2}{2 E_e^2} \\simeq \\frac{(0.511 \\times 10^{-6}\\text{ TeV})^2}{2 \\times (100\\text{ TeV})^2} \\simeq 1.3 \\times 10^{-17}$$\n       For linear Planck-suppressed ($n=1$, dimension-5) Lorentz violation, $E_e \\sim 50\\text{--}100\\text{ TeV}$ yields $\\eta_e \\lesssim 10^{-2}\\text{--}10^{-3}$ ($M_{\\text{QG}} \\gtrsim 10^2\\text{--}10^3\\,M_{\\text{Pl}}$).\n    2. **Subluminal electrons ($\\eta_e \u003c 0$): Synchrotron cutoff.** Jacobson, Liberati, and Mattingly (2003) showed that for $\\eta_e \u003c 0$, electrons have a maximum attainable velocity, which imposes a sharp upper cutoff on the **synchrotron** frequency $\\omega_c$. Observing $100\\text{ MeV}$ synchrotron emission from the Crab Nebula requires electrons up to $E_e \\sim 1500\\text{ TeV}$ ($1.5\\text{ PeV}$) and bounds subluminal linear LV to $|\\eta_e| \\lesssim 10^{-7}$ ($E_{\\text{QG}} \u003e 10^{26}\\text{ eV} \\approx 10^7 M_{\\text{Pl}}$).\n  * *(Note on \u003e100 TeV updates: When Tibet AS$\\gamma$ and HAWC observed $\u003e100\\text{ TeV}$ IC photons from the Crab in 2019, **P. Satunin, Eur. Phys. J. C 79, 1011, 2019, `arXiv:1906.08221`**, updated the Crab vacuum Cherenkov and photon decay bounds specifically for $\u003e100\\text{ TeV}$ electrons/photons; Stecker 2014, `arXiv:1306.6095`, also derived $\\delta_e \\le 5 \\times 10^{-21}$ from the 2010 Crab flare).*\n* **Fidelity of the app's claim:** **Faithful.** Using $\\sim 100\\text{ TeV}$ electrons inferred from the Crab Nebula inverse-Compton spectrum to set a vacuum Cherenkov upper bound on superluminal electron Lorentz violation ($\\delta_e \\lesssim 1.3 \\times 10^{-17}$ for dim-4, or $\\eta_e \\lesssim 10^{-3}$ for dim-5) is standard and explicitly established in the Jacobson–Liberati–Mattingly papers (2003/2006) and their $\u003e100\\text{ TeV}$ updates (Satunin 2019).\n\n#### 10. Standard Reviews of Experimental and Astrophysical Bounds on Lorentz Violation\n* **What the sources establish:**\n  1. **D. Mattingly (2005), *Living Rev. Relativ.* 8, 5 (`gr-qc/0502097`):** The foundational comprehensive review of modern tests of Lorentz invariance, systematically cataloging terrestrial (atomic clocks, Hughes–Drever, Penning traps, cavity resonators) and astrophysical (time-of-flight, vacuum Cherenkov, photon decay, synchrotron, GZK) bounds on modified dispersion relations and the Standard-Model Extension (SME).\n  2. **S. Liberati (2013), *Class. Quant. Grav.* 30, 133001 (`arXiv:1304.5795`):** An extensive 62-page topical review updating the EFT frameworks for Lorentz violation (both mass-dimension 3/4 SME terms and higher-dimension UV-suppressed operators in QED, gravity, and neutrinos), along with detailed case studies of the OPERA neutrino anomaly and Hořava–Lifshitz gravity (including the CPSU and Iengo–Russo–Serone radiative fine-tuning problems).\n  3. **V. A. Kostelecký and N. Russell (2011–2026), *Rev. Mod. Phys.* 83, 11 (`arXiv:0801.0287`):** The authoritative reference compilation of experimental bounds on all coefficients for Lorentz and CPT violation in the minimal and nonminimal SME across photon, electron, proton, neutron, meson, muon, neutrino, and gravitational sectors. It is updated annually on the arXiv.\n* **Fidelity of the app's claim:** **Faithful.** All three citations are exact, standard, open-access benchmarks in the field.",
+            "thoughtSignature": "ElkKVwFpFH0Th+8n4lxIuk4vh0goV0uP7MI7u1BGQ2/MYJHxePsCeZRQMo3LrAffmjz5kIU1PbR4wEgZQBY7m1ASQX0h+mnX/MY2ykOyohg5B8tS0fVSy9iStA=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0,
+      "groundingMetadata": {
+        "searchEntryPoint": {
+          "renderedContent": "\u003cstyle\u003e\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n\u003c/style\u003e\n\u003cdiv class=\"container\"\u003e\n  \u003cdiv class=\"headline\"\u003e\n    \u003csvg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/\u003e\n    \u003c/svg\u003e\n    \u003csvg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n      \u003ccircle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/\u003e\n      \u003cpath d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/\u003e\n      \u003cpath d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/\u003e\n      \u003cpath d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/\u003e\n      \u003cpath d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/\u003e\n    \u003c/svg\u003e\n    \u003cdiv class=\"gradient-container\"\u003e\u003cdiv class=\"gradient\"\u003e\u003c/div\u003e\u003c/div\u003e\n  \u003c/div\u003e\n  \u003cdiv class=\"carousel\"\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Collins%22+%22Perez%22+%22Sudarsky%22+%22Lorentz+invariance+and+quantum+gravity%22+%220403053%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Collins&quot; &quot;Perez&quot; &quot;Sudarsky&quot; &quot;Lorentz invariance and quantum gravity&quot; &quot;0403053&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Chadha%22+%22Nielsen%22+%22125%22+%22140%22+%221983%22+%22Lorentz+invariance%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Chadha&quot; &quot;Nielsen&quot; &quot;125&quot; &quot;140&quot; &quot;1983&quot; &quot;Lorentz invariance&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Chadha%22+%22Nielsen%22+%22Lorentz+invariance+as+a+low-energy+phenomenon%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Chadha&quot; &quot;Nielsen&quot; &quot;Lorentz invariance as a low-energy phenomenon&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Jacobson%22+%22Liberati%22+%22Mattingly%22+%22Nature%22+2003+%22Crab%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Jacobson&quot; &quot;Liberati&quot; &quot;Mattingly&quot; &quot;Nature&quot; 2003 &quot;Crab&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Horava%22+%22Quantum+Gravity+at+a+Lifshitz+Point%22+2009&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Horava&quot; &quot;Quantum Gravity at a Lifshitz Point&quot; 2009\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Abdo%22+%22GRB+090510%22+%22Nature%22+2009+%2231+GeV%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Abdo&quot; &quot;GRB 090510&quot; &quot;Nature&quot; 2009 &quot;31 GeV&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Volovik%22+%22Fermi+point%22+%22Physics+Reports%22+2001&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Volovik&quot; &quot;Fermi point&quot; &quot;Physics Reports&quot; 2001\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Unruh%22+%22Experimental+Black-Hole+Evaporation%3F%22+1981&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Unruh&quot; &quot;Experimental Black-Hole Evaporation?&quot; 1981\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%221304.5795%22+%22Liberati%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;1304.5795&quot; &quot;Liberati&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22vacuum+Cherenkov%22+%22Crab%22+%22100+TeV%22+electron+Lorentz+violation&client=app-vertex-grounding&safesearch=active\"\u003e&quot;vacuum Cherenkov&quot; &quot;Crab&quot; &quot;100 TeV&quot; electron Lorentz violation\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Stecker%22+%22Scully%22+%22Glashow%22+%22IceCube%22+neutrino+Lorentz&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Stecker&quot; &quot;Scully&quot; &quot;Glashow&quot; &quot;IceCube&quot; neutrino Lorentz\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%221303.5843%22+%22Borriello%22+%22Chakraborty%22+%22Mirizzi%22+%22Serpico%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;1303.5843&quot; &quot;Borriello&quot; &quot;Chakraborty&quot; &quot;Mirizzi&quot; &quot;Serpico&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Iengo%22+%22Russo%22+%22Serone%22+%22Lifshitz%22+%222009%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Iengo&quot; &quot;Russo&quot; &quot;Serone&quot; &quot;Lifshitz&quot; &quot;2009&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Gravitational+Waves+and+Gamma-Rays+from+a+Binary+Neutron+Star+Merger:+GW170817+and+GRB+170817A%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22GW170817%22+%22GRB+170817A%22+%22848%22+%22L13%22+%2210%5E-15%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;GW170817&quot; &quot;GRB 170817A&quot; &quot;848&quot; &quot;L13&quot; &quot;10^-15&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Barcelo%22+%22Liberati%22+%22Visser%22+%22Analogue+Gravity%22+%22Living+Reviews%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Barcelo&quot; &quot;Liberati&quot; &quot;Visser&quot; &quot;Analogue Gravity&quot; &quot;Living Reviews&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Mattingly%22+%22Modern+Tests+of+Lorentz+Invariance%22+%22Living+Reviews%22+%22Liberati%22+%222013%22+%22Kostelecky%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Mattingly&quot; &quot;Modern Tests of Lorentz Invariance&quot; &quot;Living Reviews&quot; &quot;Liberati&quot; &quot;2013&quot; &quot;Kostelecky&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22IceCube%22+%22superluminal%22+%22Cohen%22+%22Glashow%22+%22PeV%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;IceCube&quot; &quot;superluminal&quot; &quot;Cohen&quot; &quot;Glashow&quot; &quot;PeV&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22gr-qc/0502097%22+%22Mattingly%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;gr-qc/0502097&quot; &quot;Mattingly&quot;\u003c/a\u003e\n  \u003c/div\u003e\n\u003c/div\u003e"
+        },
+        "groundingChunks": [
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFsWvAX9XlDLBKcBJnQmcPWybl01cmFSX3FdWhzqPrOSdPuAZLO4Aa6gZm10aNlwTtnkI8shYDev_tB9fi4jY6a2eMTzTsbHLyF1CR4i82O_pxQD3147kgLo36Q6QoyPIbrFPQ2h69YHCKiQG-QdxHIXZXw3SqOVKop5lB5oM_efzATD4E9Z8kxXGzLIerDwXpTOATTpq4CKBk80Y5Mr3CRp9DLUTa-qoaThslly421HDx9qXSCL-NmYp1TQouhBmPyFw==",
+              "title": "semanticscholar.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFBuSZtK9NTvH-6BoAmkMVF85riHBSS87HjoQ-NyGL4zfM1N9L3hKFXMnBMuPhH0CQ_jmrBLuCUMEwDNV-o-73E0ESor-RjigKJqhZp5o17WpD2kirwNn8W0T_WsOzs2kEDm8lZo83IgbyMj3VddvibcSjrP6_qcQ4cCWgud-zYRHllsGxEV_NHaf9cCh_IIf4=",
+              "title": "royalsocietypublishing.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFB7loasS4RdWanACH2N3WQ0229bg3Af7NMURRriGR3tx24NNuTaAYVTwasvNLXYQrIUd0A6D1OsXXencaEJ41Avv0zBhXcZ6BijDCM-XXiU5UCRJyb",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH1lO9a5pQ3hZLiqxOvg6ePTUVsXhnDUPQ7FbgfGYYcFRuBCwyzd_g2zZiSwSTcziaBJCRYvsmWvFsAjWj5hnI5NBqIsgdnVgMKrrflv6DXWecg7l-dhX5LNrgqJjBYZGWniqBhYJMpqTSmVHsczYKlMZBKOw==",
+              "title": "uab.cat"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFh9n8yl9XsJZvD9taCoY92MzovPCj-mWrtS-rI_4q_L1siH6VpdQm4PTv4BE1WUZfJMuYFy3li7WlImn7U2d6oAorU0z9Kx_QhJM298q3uA_sek-5kKFh6JwmwIqfZidhl_rN116u1",
+              "title": "nih.gov"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF1lzfG9etqxfY2B-pp-5uzpnB0NAzWLjHWDlwtjzGxiC8WLK948wPeARPuvC5xTfSBPoDeVS_9ZPsWiPZHiTqp7xlfn4S75H_Rqb0JSczkgDV_OaMqhtPYpFbGv3ltCKxIA3ZTgombO7Xk0jhdj4jYwO5Xz8dxOE_e5KUkpLfLkFJGMXZgAPuhoFLZR70HMP7otA==",
+              "title": "cern.ch"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5cs62dTB6m4lZkTnVay_TRZyY-O9zhYm9glz2omLs_DxymsHl70VyW2HtGe0sErk3DsgfsbY0Yu2Tt7IwRxwOzUjvnRdFXc_Bh5nllZz1NO_NJpGLO_Il0CAZUY1HEqwr5P-HaQ==",
+              "title": "wikipedia.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHevaXdyZBom9ZJl_8da2muaYHImRAIWxI4XhwrKYrKVUMRt-f0iAM7cQde0PFv0sI0MUu_FmK1ioaWHLuRptPpbI9CzspbGjFFxO6s1-oN3O6QWG_40bhPHw==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHU0K5VVfy2WLDQ3sdyuQGNAzvCRj5xmVpSaHlntF9WGlSdtlRJEMWDU7tEjqMMalF9gxOAJfgahZnrklRh8VURTQSiuE9le4BIRAe5nVfGBYthV-YSMl3ogwZHd4Hw52ANdMc=",
+              "title": "alphaxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHaQV5hUErkj38vqqZs7sVIhM0K4Iz8JTFZFp9FgM1y0NxWaIl4Zowel7rKgOglvvjRuiQh9EEH5G2qE41nx2vOuLG2H9n9oDPVGROUkzQF0E8ri2q09HRrFQ==",
+              "title": "sigma-journal.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZwNhw0rd7I7l-JPP_VTlgXK2vl0fLULZjP-08j3jz5u2uPRNTvBQz-YzfI3mksqKU_iUtVwf4w4dtiscebAZVt3tyuEJ6kKmYRVq-ZBgfABxP_dGxMqeLbcwJBuMYneSFO6-hgs0Mkh4=",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_R786WgesdU94VArincLuU70KHakWqr5Zv4PYSFoBoBRixJqUpwcUJ7Xi4d3JSmRDmvzfEqoK3s6KaDn1yOCGThATsel1SbHFKvKyCpdB8wbIb_o=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHh2XDDCPHp6TLD2sS2Vfrysmfe-_UgBNNaWQrBGT3gz715tWRuM1hLd-hjWJ_2IFiGn0U6o7HmYkgMzG1ZrgOA3gG4qNRwVd5bFra970MTdaUteVqQ",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHk8AtXxORvhZQURA2weM6fPsMtZmme1LbCvotIofron2SUuay-wxxcSKCfTr6dD76P4W7LxGexoiVSnMILYqdKz0ZI_-WDeRUih3H6u_tvmAgt-mZQeColVOVey7T7ATy33WcvuG0YGAkFPyVKBxWd5LzY7fG_lS4=",
+              "title": "wikipedia.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEr792m4n_8LKb0g8qSdJofmzZH5avNPgssBo67y2rbGJXs9mLd979U84L_cdMWIeL0c81eW0DKOR-dM1V_m5u8fN9q50_S2uC0d4Jjt1nDqhb6d8sqy6E=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEW53jr6tWlNoojRkb1K03bQGNnMZurDR_oFaWWa5LbOs7iX2UZ2cYpjlkhzJn7E3v-ombzUIB6SmXHP8AATqoMS_1kqncgP9YHOFDQuuaaEWMHeojn69u8KDjTLSECJvfs09TKjwxAIo-VXjgNwzojdA==",
+              "title": "google.cat"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFRad8FsCtX4brxWSk8C5vXQn9tvBhKloVOQZ6XLUJE14CMUEElygPhPazj1a8kQTZ-g-PhLCt2TytVZoPGyvMwq-nXu5iJr8NRYuMI-nxe-wnGdBPf6RCK7P-_4gnYPUEuGrkppL7PpYUz",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGdKz6opU204kQ6LN2UTHlzZVQXPmZXA_6UyoCLhoup29w0pMEaopFMvEiP4-FkhogHYHSBKRT9b2hizaP8nC5ZyngZQI-jGLVPnIy9ZPwSnHzQoF6ObxbHW_68C0aB7XeVlDhRkpYv6TTO13XGeHjaorKkkeBw7D-DOM0WvTK4DZnH0f1rXdxWVmGu_CcN",
+              "title": "the-center-of-gravity.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG-pPzRZBJ22653qpJtEnR1q9dl3-llru1xzWGMm5Krp4LEpYdIuvULS62muBa5R4m9DKaMYU3SWpGfez_WV6KLC75NGc14ZwBlyTRjO9erGA1rpAQ-VyG42E1LWTE7xLaA_nmRLIID8nZUmELPmyXfCbaC1r8ZGbXTFsZUmwxuZFFYOi_ZyFvnmyoehi07oFgWgCs=",
+              "title": "uni-frankfurt.de"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZifDixOgV-p7Iz3yK2tdUd2ELCkOvS-cBHeceP6w2ejoulqoQU3ud1JAjIcknXeKsrE144FcDuzAJYAKs6ZZycQp5bhUrysEhF-GV1Wu58zXGmZjAowiWM2GqLZbcTM-mSTAprPj0qsNu5p2bFhNBosea3IvIlejV6xHg5tS7rJEyrfC43ojW8_FNGfU=",
+              "title": "scienceopen.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbZF7-TBjiv70nJC48FUTR-spWONMeZgyZODn6Am6TIMVKGN-VodeBVlh7Cnp5oLjIk46boLwfsdz7iPP2u1ltC_-YOvC1mTywyzUgDoPAJXMfoyMxwdCHRg==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4KYMxE0dH3wkGCxEIcMSDcoNv_76BAxwM2AkZ5NErGsuPNfpojBeHqmNmYgFLy2VI1574x1XmEWu3SHloKbT5uaYvS1xTjL9FVQwnqLwTBHiBoRpqSYpL6qYAq5zPKW8LfKcNV4e2k2CByC5dTSxttQ0=",
+              "title": "google.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMvitKeExQk3dTsE24VABeJ6kJrYFT23sjnoBoAbK1K00FAGHG8ZKPpoSWIsN10zulX3w9Q8JvSmxJMfCNMyr-li0EGopNxKkNv8CCAaYi5zDT9OzrhCrtpIsLsuoVwmnW",
+              "title": "dntb.gov.ua"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEA9Y4QzhkrkxrTTmIfIAFTxI0MGq3SYfj_uC5lgGltN16BunG61OBWEQ5Y58OKO-OJEHwV-O9gwh4Qh5T2JMgWiT8SboOMilxt4-PvUUT0pOvztCjd9a9CSajTUAAg-bOvo2Of",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHyWETZFR9vx8qDlQGU8HoBwDuwcfaLqmotLbUTOsLaRpwB3XH79VJ2WfYWVbZRtihkGD519CQDy8kgQDJC3FT2lGX6bxfTWiWd9c_qpfX-I7aZsr5kqHZjBJmMcKrjgZkMUWPusQIb5mQl-AKGGzsBDiqRPaXG3o_qd8P7aBHB",
+              "title": "cardiff.ac.uk"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoBBpnHMHAr8L634emebmZWN1gMId5wxS3uvNiv9VbU57sA7W1yE9ZN6TMqzGwxT2wnDw0SXxP1gLA3B-SML29FwgvxYeBPdD7gT5qnADi_OC4EhRUm7GgfhHLf9QAv9RYJ7hNYEeIiDSO4HZcnau-QSFrCJTuhjAoqHDFglw-Rouvv1RSXV6AJR3qIyKh-GA7oZtF7mHISZYoP4Eb5n1PvYlGTyvNmSwNyaWbYw==",
+              "title": "anu.edu.au"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE25SHHQJC52KMmBSpc2nfY79cvYlBjn_O4h6O-5tbFk9DuyjCyN22G_YUC8Xkil4XCR9NZZw10sxMLMwJ0n1UbPs3xqEE3VIC5_r8j4Cctuiir8O5q1A==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFo6h02dMvsCfP0QxSEF57SYdUmUl-Bqq6v_PUoH7AdVcihro9ZJyjYCGzafsrcxuI-wUDu5wB_KwUMS4Farw9iBRNUI5qJCB5JXxZWMBPwCDR14mk7nnqzgKvy0mxdQA==",
+              "title": "nih.gov"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEMwKEfl_5mqFaspghtIwNgInw2Vp76_ppP7Fhsxd65_cMLw9K4PQu1TAyTNFR13uF4G4AKARxjw7pcvSMwPZoA6TdPf69WKSx9_QIdH11HkH7O7pWlV7dwGJU-EjVGzY4b8yHQV9ejv-Nt-QxwlU-JeIy121RbJIA6pe4-iDZEuJE4nGdF9Bqcq1jvKeduS0SfkTVx4_2Z4wSyJgIq0gcW0xdyX2GqUBzN3TDlejzidd9e7oKGbv1FQgdiVaRzIZLH8C0GN6JrFeqC8VVKZazGyv1PYat4sTcuqVzqEVTQ_Z5VNbE=",
+              "title": "naukas.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGpT5sQWgr54gF_zdlQIbh4qOFqGcxiLRkYmB_QY5xAycrP6WXw7g1Mv-xh9hQ9eokIsk3zNF9u65W1fXGy_4F1_yG4AcC2jpWyN05W01o_ZMWE6X_6dHO7",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9U4mB23wTW4HPRiv9aPklaqst_ELmjC9llPVr9hUYLceY5RePtNU1Ts-GGIv2oNZ-1AN8SsEHKMvQe60ttWifCyJXHmYSJzqS_HIcp38pXLoeYrjcT6ElUA==",
+              "title": "osti.gov"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGIjfCfqvsAfoJENHNNZmLZt6PZADH9KihU74653dHY8xOd8JKwoZ_lAID0Q2WssPg18lL4LU8dsq4skztG4C7zEeK0O7iBFq6Zr342vdpKvQBbptE3",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWoIFDa1nnoiXue2Z4zKuhHMK_QaPz2OrAu8Wf3AGTbGR2fpqBbP80zcgAF3g8YT0HTZMqT5whyW48nu4HlOmTkWfatYDBYbpZx1AWS_gCsTO-entX2DJlYXNuI-Uo_BYN634dldvtPm0=",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGECa_Qfceg7I5l9qMHv-04-rbL32tYIYCLup-H4frEYerCMVq0dB3RhaHFz-jDnkqd2izbbYhufZ7YMuFByCXKFTBO4p1JZohwYYAITAYs07qbDWpcRUAkUyrDDhrVAufIdeCvr1BONY1-OnHcuNwY7HZWhqtcMTcc3C706ENzBnI=",
+              "title": "csic.es"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFh_uQLJ1WFvRbtt0pWoUxwX8fGmglm7qptmI7cI8z6HjGCffiDp15AFgAjSP9QKbFucS4HIj-9CnecLuQv63MpZ6AAeSP_RIGtrTSIxPmx7nbe1WmpmoLT1UBgrtC9XyiXFmQbnbQVt8Ws_Am3dnihT2NAp8QEiQ4sK2hnj21Kao4=",
+              "title": "csic.es"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFBKUd50g2yCfJPkT8DcLdUeKzPvGA5Y4TmDgsnxdmJaacxWECldplFYKCgp7n-He6s7xjXaxU2C49CxzblFg-n8WK1z5Zn4WDKR6zJ6pjaDgXfbSZ5",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWoIFDa1nnoiXue2Z4zKuhHMK_QaPz2OrAu8Wf3AGTbGR2fpqBbP80zcgAF3g8YT0HTZMqT5whyW48nu4HlOmTkWfatYDBYbpZx1AWS_gCsTO-entX2DJlYXNuI-Uo_BYN634dldvtPm0=",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcAh_U6gt6Dha6M6GgUmJYpevSSOF-6u0nY6fcAwJ78_kU844zH7fi3BfXZkqvQOkVNRXM-gG8DyVen9xy_zR2K6E5jJf95QVbT7OALZgl3QuAFoQCjM2IvRXvXaVf",
+              "title": "nih.gov"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEx5f4SHO0yyT12eqad5fK2o2TeKXjh0LDOeKrMfCt8slDj4lTtp-XRZ_K7XBC32xiamdsE1Zk3JPw38XWpqHFvv3U1cOxPpwP5Ri5g3OzL2qEKSZCGA_0xcRNdTaNIBPOsAcG6E_27NLkNOPcf4A0CEhsrHxzKoYBk5L5_-lS3XoVhapJ_njL5YYcJjsrAcu0mA7GeeadLs6QbpN6HdqCeY5Tb4s2Gml6ZqLO39QCk5U0TWB09Jg8M54k_Ha3s4MU7jg==",
+              "title": "researchgate.net"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhKTY21NU1amerIycz-b1v0GogUbACS0qxc_wz4vm2PZCsScto55MHMIl9oNq8cjV8GrLUJEUZw9CBBDJNku1ucd7P14qPOLCSQ7lTTzOLzGRv9qiNJXV4jnVmnxpj",
+              "title": "mdpi.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHGAXeun6NUmOEio_G4nV9PKwBCeAHSd3T1Chh2d8ybwrm8XNfVPcXXih1gpnbFYHs1MMhVsgL5O043fcOaQFiU5_v3vc39ZGm4WuHAnMnBvCuwd6tJ4LDakLIl",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGh2dyTdmbOEfuPQ1_txWvpY7_o6UQzKAnuMsgeSg63u0ar7PuELXJMNM2xfWYPW6RIXUjNa0-IibVDfA_la02hdi1v2_2_RfRKJvAFqyhAFJ1HzCpREI283hdcYKghYfA_9ilZzzQinnrNmqmQT-SUEz5uUMo5u9gmXw==",
+              "title": "preprints.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHv55mQpuRIX2u4P8_IssGEm2IdEHiDfb_L62JTy4bCgoB7MZ7o9QGKv0l8sEgmAzetWPyFBC2uPpfWVI-9WZu7k2hBYvEK4KxtePQCSqnVy1IivIKuPIEl1jxjKt6gv-xvVovS7wUfjp2FtNbLj5N_",
+              "title": "wikipedia.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLc3mfY4lcWDiJl3gWt2ccgTMsazqVAcVMbDmI97ZTyfYZ4zketIGECglLdy0hb-d1w7J7OKDyxPOfoMNoxlI2UKjmQkf8gHCvUsfskBQig1MmpjCO",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZUv8BDUUoCYTZ4p8xTLYACmUuWgovocjjJsfTmd2C95eD18oWFTxBH0c8C1f536FiQr-ES5EJYsItSa00-ozBvAjCb3niL5MJrDih_Y3nwv6QwdEm5flEsA==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFt0RgwDQaw_DcEddzCRQR0FaPPUFuXh7HU4qN0b0n0_aMVbNHvq5_FuwFRRUijAH5qW8Sp19CB-aTEqvCgoOGBg_hNdwPvnHe2VaqCTFQrnpqtd_Nc4CLS1A==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFH8h-LnwZh1GmY10F3uI2yIgE8g1fEDT9NxKLC4Oy_Jd4UAR-8B-CJEGUxCN6fSOHUAHgKo_zEyv4b8KOwN--Rj4bWk78VOVxRx2C5Ntg4uH08OiIVOrcZKH-55sW-fOTsjcAlLqR6Ab_Y9mdcIuFhYZAhzKaLi15XqT_HMl-YpDs1_E5SrWfhhKb8eXBBrS2MFAA5ZA0-i3AzvZ7y-iC6ZDsyuabC6Z3yBt92BBouQ3IQOFwHC3XPXe6jwQvYOeIS0G9t83IDWfjVGcHDbb052LZtFKj1BU2YKMNRZuKdKekbDogoeUFj",
+              "title": "researchgate.net"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFwFQ8h1KqiT804tdlIB6-3pwDaoXqsCDNYoRhsZtWhPqn9Z5_GZV2dqg1Btxn5ZVsnRYkHyYBQPkO4ScKXS-T1KsB_oQwrbHsn5Ixu0F4H5tl_y6xbVWGhIzVDD72ygU-OvEXcKcF17bgnBbxuZS6e8Yn8PIZ7aorJ47XGFsI=",
+              "title": "researchgate.net"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4AFYre2tMWx6RSPYH23k3VVYMpbMtLTyh5En06DChh8TEgmTwggEeYeCCGF9woO_ZTEBuNsH7loMGtyRidpwozpFSNMblWhHc0wXZkOAnU6mSOT9GnM0f81AP_2PLNIsD_EBlhaa3e89DQg8a4H6FAZmQ9gKEQuVok0DCdLnweBx3_EehqV1wuiDu_Fg=",
+              "title": "the-center-of-gravity.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFeYKqCNeMtjykVL-97tSxdwiRFPo0bHZ7sfclv1E1UhVer5MD33LLdFJm4gzvBHndq_sSeabt49cvZtLKUfFn6CXzlb_1ukblG1eJiCfVAn9jYpVuKWpf0STOmzv4CaHRpDiKg4Jk_YoNF7g-z5pBPlg==",
+              "title": "itp.ac.ru"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEzzOVMfmMJkG4tTHcZRJIFH5JruMJFVRS1M6p3uE95riSB-7vHiROil3nN2ssx6QMQskJ1_GP8W2wIeLe-ZvvSRv2sa-tzPB31vNbpMhPBxPvxP9rMuRUkksCvQxx_WhRMpAaB2p9ar8yV",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFDKjo4PpAfQZzve69bZkBHEpO7N6S0ck9svjIZFRVYBe2YxPAaDaR0jBOBEpp_uhuUO5jezqC8sW90_5Q4OMkk5WFW-HMsYwqp1rvTEDY4EkfLk7QOuZ49oX0BeMzFAVnwjoyiMFQeHTIApNcCSPTTaPB35Bk71Ck=",
+              "title": "researchgate.net"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEoUYICDAWapNKJYJvvij0wvxQQAXmafyF_Tcz_-6YwiKqA99oobKgQNDgfb2jsIARqPlJhFiOtf4PHm6l1NydflZ0nwnzAscdq9E41xW1RTHVnqWJgYxTjYfmqG_czIMARsHesYaxhM2hhCcSPShWJh9ovJpCIWWvBzok6bsd_J5TESXZ8R7LJxk-NrjnMBZ0Wbtv6zrA7AukWJF0m4Wgct1Ud",
+              "title": "monash.edu"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZL_Qmhhin4HbqMLUHP9WY8ShJsF6RXD-UaDyoy8SiCi0n3jDv80vxaqDmwl6ZGr9r8C8YP88LP7MXH_v8YuSHapTw_mB-LyE7KdnC1qG4mrRRjr4m4oG-JlA0Q0TGplR71WMpTqs1npI_LmI0l8v-EVC37nTSRocsi64JAsdI-6-A8uFB4gC_PbYNsqEZZmxMreUBp_pIcUfIi5l6",
+              "title": "cern.ch"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbZONoF-IFnqe8apGYfJbYrRR2bbRjaJhpY1Pn75EtbZBVTUcongw79qZ6oBjGeAGioRqRLGuplkkmjyqE6UuRWijxSt0M1NGdfWiZMiXiXZmwdyiWE10KBIqFWZ_X7QW_Lu9at3bvwEBjNmHYkvvXY7yJEMeREnFauqaDmak1CBZ7t3rEao4zSKb8A93y4ZtKLWsT8xsGcUSbS8Ybva7AMMRthr3Az6md",
+              "title": "port.ac.uk"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFjlh8vW4ouPINZDSOw6zNBvP9hQw8k7_lrVs7BBhZ1xXrQEua9dSYhRMstX-N2UI5_5gWQuxfAsI5w1Ll-xZJpCDIzR5V93vSmh3BSXmT1q_t6hPhrDfvP",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvqXT-d9jNSKjO9U0W8oz2pjU-Jx4GYyBqTmIx2a3GcidYLm6OF1RsrFDzvhW3wKCJyYjqrjI0S2cVZN2GBRzSHRFLZTGCA3YRpKN6w6bRyAhsHTgUYsEMzE_P3Y-Fknc67ed_1uDAPwRF24WsbBQwnUxxKH_SjgkL9n6g8hTMpfwzM_QxGrELVjcReJwD_5lVQJjSDk6xQi5Ya0A=",
+              "title": "su.se"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFk85v3YS6sQDGst9ihe4slGcF5mhg30rD4Zml_vLnzkeo0J9GA4tqM7DZDmKUhix4rAIyfFfkzS74p53xeQSwPXkxfohoQ8Tn2zYecSca9qYaGvjJftDmi",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPrzPxEiaWhHkaYDZYE-guxDLeiK_q_bcqLBiZLC69I52VAtjV1iwYmj9_HhVWqjGxs7L8p8o8yYyn2VfJ_QojqkUpfvoRxLsJcXu1fs4q5lZD-lZmySlmhbC98YWCNdkDYH_I_ZfXqvPMLkZXcZyk3_jR0b-nG5LscaiwdFSATj3d62rQfDoh5UfxF12K4cC4A4rqNnLPqPqG",
+              "title": "infn.it"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEbIHTCjYmFWXljqImk9G4Zdsd-NHk-F8zLbrODXTUY4h_JaeYxmnn3RGPIU9cgy9Tvh9szmJkEBzLz55vvYu37h-1AvLb7eVWN3G6eriSryzwsXed87yy65qJhm3BqkffVk3l-zp8EuL4HKegXcy4CYHEJoL3QSCR-D5saP47_",
+              "title": "nasa.gov"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzDhXnlKKADE6jqWakIUA_TQ20xH8CNdi-qlvt1CDGq9ASk11956NqNnNie-s6CE5efMNentT46CKm3wJi1HL9Sxu3Yy-azmKwycsbeDwms3M8rmnr7B8S1cjJBHNeURdjHWKV2AhoFw0JcRF2PbKHBbb6tnj3WYkxvGVzSOGQyfn3Mx1n-YwBR0uWtVDkId4OQeF9qlUUiXs=",
+              "title": "in2p3.fr"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEgQwgaxm9a9UL_86CVL-287pFDVn2ugrq9tY8qYXt442L1pVVn3luj3GQ899Vl3LnTW_u3A5erGJrirBjjNZUGOHIw0peztoEcwMpod17gq5hIuOnpoJgK4NYLHmM=",
+              "title": "mdpi.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFOHLZKnJdFMojuJM9L8ZfZDtUpEw9arQY0nlQi3kefe21YgdkvFGLTpCLXg_FfVnkNpIIv4CRal0uEJS1Zx0rRmpaqisHEB9Za7Ov26dfOb-vMKw8adfFvvnHC-AgHN0b32b7WtK7KAgJapULGG8V-FtmjSb9I29oLnLQpBt-nr6iNIq23D_wUCfZ3UNYGwmZVTa3E_EsaJ_5yYpwxkg==",
+              "title": "archive.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFloG1FCvL5FezHEpvYGdmX7ihfu84nUNW5ho_Zfn0g94ivwjlOp2kWi0uLDkhE9rOhHzgq2CYY7Why0sy--OtvVe6UdrUJSndD2XM8P4562wn9jYwEhpPkEA==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPrzPxEiaWhHkaYDZYE-guxDLeiK_q_bcqLBiZLC69I52VAtjV1iwYmj9_HhVWqjGxs7L8p8o8yYyn2VfJ_QojqkUpfvoRxLsJcXu1fs4q5lZD-lZmySlmhbC98YWCNdkDYH_I_ZfXqvPMLkZXcZyk3_jR0b-nG5LscaiwdFSATj3d62rQfDoh5UfxF12K4cC4A4rqNnLPqPqG",
+              "title": "infn.it"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEvo5QMPXQNBn9GmlFa6OB2wdeNDP_8mSx0hTt9--hXP7JPz-aaSwH7cPXnEMGQF_gW4Zr8zo-ccgNtzwinTyvjyG_kXjE9kOuJoJlS-JY-BF0__4tUb--rLA==",
+              "title": "arxiv.org"
+            }
+          }
+        ],
+        "groundingSupports": [
+          {
+            "segment": {
+              "startIndex": 172,
+              "endIndex": 243,
+              "text": "Chadha, H. B. Nielsen | *Lorentz invariance as a low energy phenomenon*"
+            },
+            "groundingChunkIndices": [
+              0
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 172,
+              "endIndex": 266,
+              "text": "Chadha, H. B. Nielsen | *Lorentz invariance as a low energy phenomenon* | 1983 (Preprint 1982)"
+            },
+            "groundingChunkIndices": [
+              0,
+              1
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 282,
+              "endIndex": 307,
+              "text": "B* **217** (1), 125–144"
+            },
+            "groundingChunkIndices": [
+              2,
+              3
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 282,
+              "endIndex": 335,
+              "text": "B* **217** (1), 125–144 | No arXiv (`NBI-HE-82-42`)"
+            },
+            "groundingChunkIndices": [
+              1
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 282,
+              "endIndex": 374,
+              "text": "B* **217** (1), 125–144 | No arXiv (`NBI-HE-82-42`)\u003cbr\u003eDOI: `10.1016/0550-3213(83)90081-0`"
+            },
+            "groundingChunkIndices": [
+              4
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 443,
+              "endIndex": 509,
+              "text": "| **2** | G. E. Volovik | Book: *The Universe in a Helium Droplet*"
+            },
+            "groundingChunkIndices": [
+              5
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 443,
+              "endIndex": 569,
+              "text": "| **2** | G. E. Volovik | Book: *The Universe in a Helium Droplet*\u003cbr\u003eReview: *Superfluid analogies of cosmological phenomena*"
+            },
+            "groundingChunkIndices": [
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 443,
+              "endIndex": 588,
+              "text": "| **2** | G. E. Volovik | Book: *The Universe in a Helium Droplet*\u003cbr\u003eReview: *Superfluid analogies of cosmological phenomena* | 2003\u003cbr\u003e\u003cbr\u003e2001"
+            },
+            "groundingChunkIndices": [
+              6,
+              5
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 648,
+              "endIndex": 655,
+              "text": "1–507"
+            },
+            "groundingChunkIndices": [
+              5
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 671,
+              "endIndex": 695,
+              "text": "* **351** (4), 195–348"
+            },
+            "groundingChunkIndices": [
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 671,
+              "endIndex": 777,
+              "text": "* **351** (4), 195–348 | Book DOI: `10.1093/acprof:oso/9780199564842.001.0001`\u003cbr\u003earXiv: `gr-qc/0005091`"
+            },
+            "groundingChunkIndices": [
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 671,
+              "endIndex": 817,
+              "text": "* **351** (4), 195–348 | Book DOI: `10.1093/acprof:oso/9780199564842.001.0001`\u003cbr\u003earXiv: `gr-qc/0005091`\u003cbr\u003eDOI: `10.1016/S0370-1573(00)00139-3`"
+            },
+            "groundingChunkIndices": [
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 671,
+              "endIndex": 855,
+              "text": "* **351** (4), 195–348 | Book DOI: `10.1093/acprof:oso/9780199564842.001.0001`\u003cbr\u003earXiv: `gr-qc/0005091`\u003cbr\u003eDOI: `10.1016/S0370-1573(00)00139-3` | https://arxiv.org/abs/gr-qc/0005091"
+            },
+            "groundingChunkIndices": [
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1004,
+              "endIndex": 1005,
+              "text": "*"
+            },
+            "groundingChunkIndices": [
+              7
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1004,
+              "endIndex": 1012,
+              "text": "* | 2004"
+            },
+            "groundingChunkIndices": [
+              8
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1032,
+              "endIndex": 1061,
+              "text": "* **93** (19), 191301 (4 pp.)"
+            },
+            "groundingChunkIndices": [
+              8,
+              9
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1062,
+              "endIndex": 1086,
+              "text": "| arXiv: `gr-qc/0403053`"
+            },
+            "groundingChunkIndices": [
+              7
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1116,
+              "endIndex": 1126,
+              "text": "93.191301`"
+            },
+            "groundingChunkIndices": [
+              8
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1116,
+              "endIndex": 1164,
+              "text": "93.191301` | https://arxiv.org/abs/gr-qc/0403053"
+            },
+            "groundingChunkIndices": [
+              8
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1221,
+              "endIndex": 1267,
+              "text": "Serone | *Quantum gravity at a Lifshitz point*"
+            },
+            "groundingChunkIndices": [
+              10
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1221,
+              "endIndex": 1324,
+              "text": "Serone | *Quantum gravity at a Lifshitz point*\u003cbr\u003e\u003cbr\u003e*Renormalization group in Lifshitz-type theories*"
+            },
+            "groundingChunkIndices": [
+              11
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1221,
+              "endIndex": 1331,
+              "text": "Serone | *Quantum gravity at a Lifshitz point*\u003cbr\u003e\u003cbr\u003e*Renormalization group in Lifshitz-type theories* | 2009"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1221,
+              "endIndex": 1343,
+              "text": "Serone | *Quantum gravity at a Lifshitz point*\u003cbr\u003e\u003cbr\u003e*Renormalization group in Lifshitz-type theories* | 2009\u003cbr\u003e\u003cbr\u003e2009"
+            },
+            "groundingChunkIndices": [
+              11
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1358,
+              "endIndex": 1388,
+              "text": "D* **79** (8), 084008 (29 pp.)"
+            },
+            "groundingChunkIndices": [
+              12,
+              13
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1388,
+              "endIndex": 1423,
+              "text": "\u003cbr\u003e\u003cbr\u003e*JHEP* **0911** (2009), 020"
+            },
+            "groundingChunkIndices": [
+              14,
+              15
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1388,
+              "endIndex": 1444,
+              "text": "\u003cbr\u003e\u003cbr\u003e*JHEP* **0911** (2009), 020 | arXiv: `0901.3775`"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1471,
+              "endIndex": 1481,
+              "text": "79.084008`"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1471,
+              "endIndex": 1503,
+              "text": "79.084008`\u003cbr\u003earXiv: `0906.3477`"
+            },
+            "groundingChunkIndices": [
+              11
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1471,
+              "endIndex": 1577,
+              "text": "79.084008`\u003cbr\u003earXiv: `0906.3477`\u003cbr\u003eDOI: `10.1088/1126-6708/2009/11/020` | https://arxiv.org/abs/0901.3775"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1471,
+              "endIndex": 1616,
+              "text": "79.084008`\u003cbr\u003earXiv: `0906.3477`\u003cbr\u003eDOI: `10.1088/1126-6708/2009/11/020` | https://arxiv.org/abs/0901.3775\u003cbr\u003e\u003cbr\u003ehttps://arxiv.org/abs/0906.3477"
+            },
+            "groundingChunkIndices": [
+              11
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1723,
+              "endIndex": 1724,
+              "text": "*"
+            },
+            "groundingChunkIndices": [
+              16
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1723,
+              "endIndex": 1750,
+              "text": "*\u003cbr\u003e\u003cbr\u003e*Analogue Gravity*"
+            },
+            "groundingChunkIndices": [
+              17
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1723,
+              "endIndex": 1757,
+              "text": "*\u003cbr\u003e\u003cbr\u003e*Analogue Gravity* | 1981"
+            },
+            "groundingChunkIndices": [
+              16
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1776,
+              "endIndex": 1787,
+              "text": "2011, 2026)"
+            },
+            "groundingChunkIndices": [
+              18,
+              17
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1807,
+              "endIndex": 1833,
+              "text": "* **46** (21), 1351–1353"
+            },
+            "groundingChunkIndices": [
+              16,
+              19
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1862,
+              "endIndex": 1916,
+              "text": "* **8**, 12 (2005); **14**, 3 (2011); **29**, 2 (2026)"
+            },
+            "groundingChunkIndices": [
+              18,
+              17,
+              20
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1957,
+              "endIndex": 1965,
+              "text": "46.1351`"
+            },
+            "groundingChunkIndices": [
+              16
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1957,
+              "endIndex": 1991,
+              "text": "46.1351`\u003cbr\u003earXiv: `gr-qc/0505065`"
+            },
+            "groundingChunkIndices": [
+              21
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1957,
+              "endIndex": 2053,
+              "text": "46.1351`\u003cbr\u003earXiv: `gr-qc/0505065`\u003cbr\u003eDOI: `10.12942/lrr-2005-12` / `10.1007/s41114-026-00064-9`"
+            },
+            "groundingChunkIndices": [
+              18,
+              22
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1957,
+              "endIndex": 2111,
+              "text": "46.1351`\u003cbr\u003earXiv: `gr-qc/0505065`\u003cbr\u003eDOI: `10.12942/lrr-2005-12` / `10.1007/s41114-026-00064-9` | https://arxiv.org/abs/gr-qc/0505065 (and Springer Open)"
+            },
+            "groundingChunkIndices": [
+              18,
+              23
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2144,
+              "endIndex": 2309,
+              "text": "* (LIGO Scientific, Virgo, Fermi-GBM, and INTEGRAL Collaborations) | *Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A*"
+            },
+            "groundingChunkIndices": [
+              24,
+              25
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2144,
+              "endIndex": 2316,
+              "text": "* (LIGO Scientific, Virgo, Fermi-GBM, and INTEGRAL Collaborations) | *Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A* | 2017"
+            },
+            "groundingChunkIndices": [
+              24
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2339,
+              "endIndex": 2366,
+              "text": "* **848** (2), L13 (27 pp.)"
+            },
+            "groundingChunkIndices": [
+              24,
+              25
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2367,
+              "endIndex": 2388,
+              "text": "| arXiv: `1710.05834`"
+            },
+            "groundingChunkIndices": [
+              26
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2367,
+              "endIndex": 2423,
+              "text": "| arXiv: `1710.05834`\u003cbr\u003eDOI: `10.3847/2041-8213/aa920c`"
+            },
+            "groundingChunkIndices": [
+              25
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2367,
+              "endIndex": 2458,
+              "text": "| arXiv: `1710.05834`\u003cbr\u003eDOI: `10.3847/2041-8213/aa920c` | https://arxiv.org/abs/1710.05834"
+            },
+            "groundingChunkIndices": [
+              26
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2367,
+              "endIndex": 2502,
+              "text": "| arXiv: `1710.05834`\u003cbr\u003eDOI: `10.3847/2041-8213/aa920c` | https://arxiv.org/abs/1710.05834\u003cbr\u003ehttps://doi.org/10.3847/2041-8213/aa920c"
+            },
+            "groundingChunkIndices": [
+              25
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2533,
+              "endIndex": 2653,
+              "text": "* (Fermi GBM/LAT Collaborations) | *A limit on the variation of the speed of light arising from quantum gravity effects*"
+            },
+            "groundingChunkIndices": [
+              27,
+              28
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2533,
+              "endIndex": 2660,
+              "text": "* (Fermi GBM/LAT Collaborations) | *A limit on the variation of the speed of light arising from quantum gravity effects* | 2009"
+            },
+            "groundingChunkIndices": [
+              27
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2533,
+              "endIndex": 2697,
+              "text": "* (Fermi GBM/LAT Collaborations) | *A limit on the variation of the speed of light arising from quantum gravity effects* | 2009 | *Nature* **462** (7271), 331–334"
+            },
+            "groundingChunkIndices": [
+              29
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2871,
+              "endIndex": 2940,
+              "text": "Scully | *Pair Creation Constrains Superluminal Neutrino Propagation*"
+            },
+            "groundingChunkIndices": [
+              30
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2871,
+              "endIndex": 3042,
+              "text": "Scully | *Pair Creation Constrains Superluminal Neutrino Propagation*\u003cbr\u003e*Stringent constraint on neutrino Lorentz-invariance violation from the two IceCube PeV neutrinos*"
+            },
+            "groundingChunkIndices": [
+              31
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2871,
+              "endIndex": 3179,
+              "text": "Scully | *Pair Creation Constrains Superluminal Neutrino Propagation*\u003cbr\u003e*Stringent constraint on neutrino Lorentz-invariance violation from the two IceCube PeV neutrinos*\u003cbr\u003e*Propagation of superluminal PeV IceCube neutrinos: A high energy spectral cutoff or new constraints on Lorentz invariance violation*"
+            },
+            "groundingChunkIndices": [
+              32
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2871,
+              "endIndex": 3186,
+              "text": "Scully | *Pair Creation Constrains Superluminal Neutrino Propagation*\u003cbr\u003e*Stringent constraint on neutrino Lorentz-invariance violation from the two IceCube PeV neutrinos*\u003cbr\u003e*Propagation of superluminal PeV IceCube neutrinos: A high energy spectral cutoff or new constraints on Lorentz invariance violation* | 2011"
+            },
+            "groundingChunkIndices": [
+              33
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2871,
+              "endIndex": 3194,
+              "text": "Scully | *Pair Creation Constrains Superluminal Neutrino Propagation*\u003cbr\u003e*Stringent constraint on neutrino Lorentz-invariance violation from the two IceCube PeV neutrinos*\u003cbr\u003e*Propagation of superluminal PeV IceCube neutrinos: A high energy spectral cutoff or new constraints on Lorentz invariance violation* | 2011\u003cbr\u003e2013"
+            },
+            "groundingChunkIndices": [
+              31
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2871,
+              "endIndex": 3202,
+              "text": "Scully | *Pair Creation Constrains Superluminal Neutrino Propagation*\u003cbr\u003e*Stringent constraint on neutrino Lorentz-invariance violation from the two IceCube PeV neutrinos*\u003cbr\u003e*Propagation of superluminal PeV IceCube neutrinos: A high energy spectral cutoff or new constraints on Lorentz invariance violation* | 2011\u003cbr\u003e2013\u003cbr\u003e2014"
+            },
+            "groundingChunkIndices": [
+              32
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3222,
+              "endIndex": 3244,
+              "text": "* **107** (18), 181803"
+            },
+            "groundingChunkIndices": [
+              33,
+              30
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3260,
+              "endIndex": 3282,
+              "text": "D* **87** (11), 116009"
+            },
+            "groundingChunkIndices": [
+              34
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3298,
+              "endIndex": 3319,
+              "text": "D* **90** (4), 043012"
+            },
+            "groundingChunkIndices": [
+              32
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3369,
+              "endIndex": 3380,
+              "text": "107.181803`"
+            },
+            "groundingChunkIndices": [
+              33
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3428,
+              "endIndex": 3438,
+              "text": "87.116009`"
+            },
+            "groundingChunkIndices": [
+              34
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3486,
+              "endIndex": 3496,
+              "text": "90.043012`"
+            },
+            "groundingChunkIndices": [
+              35,
+              36
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3669,
+              "endIndex": 3773,
+              "text": "Satunin) | *A strong astrophysical constraint on the violation of special relativity by quantum gravity*"
+            },
+            "groundingChunkIndices": [
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3669,
+              "endIndex": 3869,
+              "text": "Satunin) | *A strong astrophysical constraint on the violation of special relativity by quantum gravity*\u003cbr\u003e(*New constraints on Lorentz Invariance violation from Crab Nebula spectrum beyond 100 TeV*)"
+            },
+            "groundingChunkIndices": [
+              38
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3669,
+              "endIndex": 3876,
+              "text": "Satunin) | *A strong astrophysical constraint on the violation of special relativity by quantum gravity*\u003cbr\u003e(*New constraints on Lorentz Invariance violation from Crab Nebula spectrum beyond 100 TeV*) | 2003"
+            },
+            "groundingChunkIndices": [
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3669,
+              "endIndex": 3890,
+              "text": "Satunin) | *A strong astrophysical constraint on the violation of special relativity by quantum gravity*\u003cbr\u003e(*New constraints on Lorentz Invariance violation from Crab Nebula spectrum beyond 100 TeV*) | 2003\u003cbr\u003e\u003cbr\u003e(2019)"
+            },
+            "groundingChunkIndices": [
+              38
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3669,
+              "endIndex": 3929,
+              "text": "Satunin) | *A strong astrophysical constraint on the violation of special relativity by quantum gravity*\u003cbr\u003e(*New constraints on Lorentz Invariance violation from Crab Nebula spectrum beyond 100 TeV*) | 2003\u003cbr\u003e\u003cbr\u003e(2019) | *Nature* **424** (6952), 1019–1021"
+            },
+            "groundingChunkIndices": [
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3953,
+              "endIndex": 3969,
+              "text": "C* **79**, 1011)"
+            },
+            "groundingChunkIndices": [
+              39
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3953,
+              "endIndex": 3997,
+              "text": "C* **79**, 1011) | arXiv: `astro-ph/0212190`"
+            },
+            "groundingChunkIndices": [
+              40
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3953,
+              "endIndex": 4027,
+              "text": "C* **79**, 1011) | arXiv: `astro-ph/0212190`\u003cbr\u003eDOI: `10.1038/nature01882`"
+            },
+            "groundingChunkIndices": [
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3953,
+              "endIndex": 4092,
+              "text": "C* **79**, 1011) | arXiv: `astro-ph/0212190`\u003cbr\u003eDOI: `10.1038/nature01882`\u003cbr\u003e(arXiv: `1906.08221` / DOI: `10.1140/epjc/s10052-019-7520-y`)"
+            },
+            "groundingChunkIndices": [
+              41
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4242,
+              "endIndex": 4288,
+              "text": "Russell | *Modern Tests of Lorentz Invariance*"
+            },
+            "groundingChunkIndices": [
+              42
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4242,
+              "endIndex": 4336,
+              "text": "Russell | *Modern Tests of Lorentz Invariance*\u003cbr\u003e*Tests of Lorentz invariance: a 2013 update*"
+            },
+            "groundingChunkIndices": [
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4242,
+              "endIndex": 4383,
+              "text": "Russell | *Modern Tests of Lorentz Invariance*\u003cbr\u003e*Tests of Lorentz invariance: a 2013 update*\u003cbr\u003e*Data Tables for Lorentz and CPT Violation*"
+            },
+            "groundingChunkIndices": [
+              44
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4242,
+              "endIndex": 4390,
+              "text": "Russell | *Modern Tests of Lorentz Invariance*\u003cbr\u003e*Tests of Lorentz invariance: a 2013 update*\u003cbr\u003e*Data Tables for Lorentz and CPT Violation* | 2005"
+            },
+            "groundingChunkIndices": [
+              42
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4242,
+              "endIndex": 4398,
+              "text": "Russell | *Modern Tests of Lorentz Invariance*\u003cbr\u003e*Tests of Lorentz invariance: a 2013 update*\u003cbr\u003e*Data Tables for Lorentz and CPT Violation* | 2005\u003cbr\u003e2013"
+            },
+            "groundingChunkIndices": [
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4242,
+              "endIndex": 4426,
+              "text": "Russell | *Modern Tests of Lorentz Invariance*\u003cbr\u003e*Tests of Lorentz invariance: a 2013 update*\u003cbr\u003e*Data Tables for Lorentz and CPT Violation* | 2005\u003cbr\u003e2013\u003cbr\u003e2011 (annual arXiv rev.)"
+            },
+            "groundingChunkIndices": [
+              44
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4450,
+              "endIndex": 4460,
+              "text": "* **8**, 5"
+            },
+            "groundingChunkIndices": [
+              42
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4484,
+              "endIndex": 4505,
+              "text": "* **30** (13), 133001"
+            },
+            "groundingChunkIndices": [
+              21
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4525,
+              "endIndex": 4546,
+              "text": "* **83** (1), 11–31"
+            },
+            "groundingChunkIndices": [
+              44
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4525,
+              "endIndex": 4600,
+              "text": "* **83** (1), 11–31 | arXiv: `gr-qc/0502097` / DOI: `10.12942/lrr-2005-5`"
+            },
+            "groundingChunkIndices": [
+              45
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4525,
+              "endIndex": 4662,
+              "text": "* **83** (1), 11–31 | arXiv: `gr-qc/0502097` / DOI: `10.12942/lrr-2005-5`\u003cbr\u003earXiv: `1304.5795` / DOI: `10.1088/0264-9381/30/13/133001`"
+            },
+            "groundingChunkIndices": [
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4712,
+              "endIndex": 4718,
+              "text": "83.11`"
+            },
+            "groundingChunkIndices": [
+              44
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4917,
+              "endIndex": 5053,
+              "text": "**What the source establishes:** Published in *Nuclear Physics B* in **1983** (from a 1982 Niels Bohr Institute preprint `NBI-HE-82-42`)"
+            },
+            "groundingChunkIndices": [
+              0,
+              1
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 5840,
+              "endIndex": 5895,
+              "text": "** The paper is from **1983** (preprint 1982), not 1976"
+            },
+            "groundingChunkIndices": [
+              0,
+              1
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 6165,
+              "endIndex": 6281,
+              "text": "** The paper indeed establishes that gauge interactions drive velocity differences between species to zero in the IR"
+            },
+            "groundingChunkIndices": [
+              46
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 6972,
+              "endIndex": 6993,
+              "text": "* **351**, 195, 2001)"
+            },
+            "groundingChunkIndices": [
+              6,
+              5
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 7557,
+              "endIndex": 7909,
+              "text": "Expanding $G^{-1}(p_\\mu)$ linearly around the node $p_\\mu^{(0)}$ automatically yields a relativistic Weyl spectrum $g^{\\mu\\nu}(p_\\mu - p_\\mu^{(0)})(p_\\nu - p_\\nu^{(0)}) = 0$, where the linear expansion coefficients form an emergent vierbein $e^\\mu_a$ (and effective metric $g^{\\mu\\nu}$) and the shift of the node acts as an emergent gauge field $A_\\mu$"
+            },
+            "groundingChunkIndices": [
+              47,
+              48
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9505,
+              "endIndex": 9543,
+              "text": "* **73**, 161, 2001, `hep-ph/0101286`)"
+            },
+            "groundingChunkIndices": [
+              49
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9664,
+              "endIndex": 9705,
+              "text": "* **93**, 191301 (2004) (`gr-qc/0403053`)"
+            },
+            "groundingChunkIndices": [
+              7,
+              8
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10665,
+              "endIndex": 10907,
+              "text": "That is, the quadratically divergent loop integrals $\\int^\\Lambda d^4k \\, k^\\mu k^\\nu / k^6$ cancel the $1/\\Lambda^2$ suppression of the UV cutoff modification, leaving an $\\mathcal{O}(g^2)$ (\"percent level\") Lorentz violation at low energies"
+            },
+            "groundingChunkIndices": [
+              7
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10909,
+              "endIndex": 11163,
+              "text": "Because clock-comparison and astrophysical experiments bound dimension-4 velocity differences to $|\\delta c / c| \\lesssim 10^{-20}\\text{--}10^{-22}$ (the abstract states *\"at the percent level, some 20 orders of magnitude higher than earlier estimates\"*)"
+            },
+            "groundingChunkIndices": [
+              7
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10909,
+              "endIndex": 11230,
+              "text": "Because clock-comparison and astrophysical experiments bound dimension-4 velocity differences to $|\\delta c / c| \\lesssim 10^{-20}\\text{--}10^{-22}$ (the abstract states *\"at the percent level, some 20 orders of magnitude higher than earlier estimates\"*), bare parameters must be fine-tuned to roughly 1 part in $10^{20}$"
+            },
+            "groundingChunkIndices": [
+              7
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 12126,
+              "endIndex": 12389,
+              "text": "** CPSU explicitly state *\"at the percent level [$10^{-2}$], some 20 orders of magnitude higher\"* in the abstract and cite experimental bounds down to $10^{-21}\\text{--}10^{-22}$ in the body, which corresponds to fine-tuning of 1 part in $10^{19}\\text{--}10^{20}$"
+            },
+            "groundingChunkIndices": [
+              7
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 12772,
+              "endIndex": 12805,
+              "text": "D* 79, 084008 (`arXiv:0901.3775`)"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 12772,
+              "endIndex": 13076,
+              "text": "D* 79, 084008 (`arXiv:0901.3775`):** Formulates a power-counting renormalizable theory of gravity in 3+1 dimensions with anisotropic scaling $\\mathbf{x} \\to b\\mathbf{x}$, $t \\to b^z t$ with dynamical critical exponent $z=3$ in the UV (6th-order spatial derivatives formed from the Cotton tensor $C_{ij}$)"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13078,
+              "endIndex": 13375,
+              "text": "In the IR, relevant lower-derivative deformations ($\\mathcal{L}_{\\text{IR}} \\propto R - 2\\Lambda_W$) dominate over the $z=3$ terms, causing the classical dispersion relation to flow naturally to $z=1$ with an emergent speed of light $c = \\frac{\\kappa^2 \\mu}{4} \\sqrt{\\frac{\\Lambda_W}{1-3\\lambda}}$"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13382,
+              "endIndex": 13453,
+              "text": "**Iengo, Russo, and Serone (2009), *JHEP* 0911, 020 (`arXiv:0906.3477`)"
+            },
+            "groundingChunkIndices": [
+              11,
+              14
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13382,
+              "endIndex": 13617,
+              "text": "**Iengo, Russo, and Serone (2009), *JHEP* 0911, 020 (`arXiv:0906.3477`):** Analyzes the one-loop RG flow of Lifshitz-type field theories ($z\u003e1$) containing multiple coupled fields with speed parameters $c_{\\phi_1}^2$ and $c_{\\phi_2}^2$"
+            },
+            "groundingChunkIndices": [
+              11
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13619,
+              "endIndex": 13886,
+              "text": "They show that while each field classically transitions to a $z=1$ dispersion at low momenta, quantum loops cause the speed difference $\\delta c^2 \\equiv c_{\\phi_1}^2 - c_{\\phi_2}^2$ to run logarithmically in the UV and freeze at different IR values unless fine-tuned"
+            },
+            "groundingChunkIndices": [
+              11
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13888,
+              "endIndex": 14099,
+              "text": "Even if $\\delta c^2 = 0$ is set at one scale, unequal high-energy Lifshitz couplings regenerate $\\delta c^2 \\neq 0$ at low energies through loop effects, violating experimental bounds by many orders of magnitude"
+            },
+            "groundingChunkIndices": [
+              11
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 14284,
+              "endIndex": 14372,
+              "text": "** Hořava (2009) establishes the $z=3 \\to z=1$ classical IR flow via relevant operators"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 14284,
+              "endIndex": 14534,
+              "text": "** Hořava (2009) establishes the $z=3 \\to z=1$ classical IR flow via relevant operators, and the follow-up RG literature (most notably Iengo, Russo, and Serone 2009) rigorously demonstrates the \"different IR speeds for different species\" obstruction"
+            },
+            "groundingChunkIndices": [
+              11
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 14687,
+              "endIndex": 14697,
+              "text": "* 46, 1351"
+            },
+            "groundingChunkIndices": [
+              16
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15110,
+              "endIndex": 15274,
+              "text": "A transonic horizon ($v_0 = c_s$) emits a thermal Hawking spectrum of phonons at $T_H = \\frac{\\hbar}{2\\pi k_B} \\left|\\frac{\\partial (c_s - v_0)}{\\partial n}\\right|$"
+            },
+            "groundingChunkIndices": [
+              16,
+              50
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15353,
+              "endIndex": 15372,
+              "text": "* (`gr-qc/0505065`)"
+            },
+            "groundingChunkIndices": [
+              18,
+              17,
+              21
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15353,
+              "endIndex": 15501,
+              "text": "* (`gr-qc/0505065`):** Provides a comprehensive survey of analogue gravity models (fluids, BECs, slow light, superfluids, nonlinear electrodynamics)"
+            },
+            "groundingChunkIndices": [
+              18,
+              17,
+              21
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15630,
+              "endIndex": 15668,
+              "text": "* **19**, 2961, 2002, `gr-qc/0111059`)"
+            },
+            "groundingChunkIndices": [
+              51
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 16939,
+              "endIndex": 16981,
+              "text": "* **848**, L13 (2017) (`arXiv:1710.05834`)"
+            },
+            "groundingChunkIndices": [
+              26,
+              24
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 16939,
+              "endIndex": 17175,
+              "text": "* **848**, L13 (2017) (`arXiv:1710.05834`), the LIGO, Virgo, Fermi-GBM, and INTEGRAL collaborations report the joint detection of gravitational waves from the binary neutron star merger GW170817 and the short gamma-ray burst GRB 170817A"
+            },
+            "groundingChunkIndices": [
+              52
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17181,
+              "endIndex": 17300,
+              "text": "**Observed delay:** $\\Delta t = +1.74 \\pm 0.05\\text{ s}$ (GRB 170817A arrived $1.74\\text{ s}$ after the GW merger peak)"
+            },
+            "groundingChunkIndices": [
+              52
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17959,
+              "endIndex": 18034,
+              "text": "where $\\Delta v = v_{\\text{GW}} - v_{\\text{EM}}$ (with $v_{\\text{EM}} = c$)"
+            },
+            "groundingChunkIndices": [
+              53
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18082,
+              "endIndex": 18151,
+              "text": "** The arrival time difference ($1.74\\text{ s} \\approx 1.7\\text{ s}$)"
+            },
+            "groundingChunkIndices": [
+              52
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18082,
+              "endIndex": 18287,
+              "text": "** The arrival time difference ($1.74\\text{ s} \\approx 1.7\\text{ s}$), nominal distance ($40\\text{ Mpc} \\approx 130\\text{ Mly}$), and the resulting $\\sim 10^{-15}$ fractional bound match the paper directly"
+            },
+            "groundingChunkIndices": [
+              54,
+              53
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18342,
+              "endIndex": 18529,
+              "text": "**What the source establishes:** In *Nature* **462**, 331–334 (2009) (`arXiv:0908.1832`), the Fermi GBM/LAT collaborations report the observation of the short gamma-ray burst GRB 090510"
+            },
+            "groundingChunkIndices": [
+              27,
+              29
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18535,
+              "endIndex": 18698,
+              "text": "**Photon energy:** Highest-energy photon detected at $E = 30.5^{+5.8}_{-2.6}\\text{ GeV}$ (referred to throughout the text and abstract as **$\\sim 31\\text{ GeV}$**)"
+            },
+            "groundingChunkIndices": [
+              27
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18704,
+              "endIndex": 18782,
+              "text": "**Distance / Redshift:** Measured spectroscopic redshift $z = 0.903 \\pm 0.003$"
+            },
+            "groundingChunkIndices": [
+              55
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18898,
+              "endIndex": 19139,
+              "text": "**Arrival time delay:** The $31\\text{ GeV}$ photon arrived **$0.829\\text{ s}$** after the Fermi-GBM trigger (which defines $t=0$ at the onset of the low-energy precursor; it arrived $\\sim 0.30\\text{ s}$ after the onset of the main GBM pulse)"
+            },
+            "groundingChunkIndices": [
+              56
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 19145,
+              "endIndex": 19416,
+              "text": "**Stated limits on linear LIV ($|\\Delta v/c| = E / M_{\\text{QG},1}c^2$):** In the abstract, the authors highlight a conservative lower limit of $M_{\\text{QG},1} \u003e 1.2\\,M_{\\text{Planck}}$ (or $E_{\\text{QG},1} \u003e 1.2\\,E_{\\text{Planck}}$) across standard emission assumptions"
+            },
+            "groundingChunkIndices": [
+              27
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 19663,
+              "endIndex": 19834,
+              "text": "Other association assumptions in Table 1 yield bounds ranging from $1.2\\,M_{\\text{Planck}}$ up to $102\\,M_{\\text{Planck}}$ (the latter from DisCan sharp-feature alignment)"
+            },
+            "groundingChunkIndices": [
+              28
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20113,
+              "endIndex": 20121,
+              "text": "* (2009)"
+            },
+            "groundingChunkIndices": [
+              27,
+              55,
+              56
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20270,
+              "endIndex": 20303,
+              "text": "* 107, 181803 (`arXiv:1109.6562`)"
+            },
+            "groundingChunkIndices": [
+              33
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20270,
+              "endIndex": 20358,
+              "text": "* 107, 181803 (`arXiv:1109.6562`):** Originally written in response to the OPERA anomaly"
+            },
+            "groundingChunkIndices": [
+              32
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20270,
+              "endIndex": 20810,
+              "text": "* 107, 181803 (`arXiv:1109.6562`):** Originally written in response to the OPERA anomaly, this paper shows that if neutrinos are superluminal with $v_\\nu^2 - c^2 = \\delta_\\nu \u003e 0$ (assuming standard electron dispersion, or defining $\\delta_{\\nu e} = \\delta_\\nu - \\delta_e \u003e 0$), three vacuum decay channels become kinematically allowed above threshold: vacuum Cherenkov ($\\nu \\to \\nu \\gamma$), neutrino splitting ($\\nu \\to \\nu \\nu \\bar{\\nu}$), and—most stringently—**vacuum electron-positron pair emission (VPE)**, $\\nu \\to \\nu e^+ e^-$"
+            },
+            "groundingChunkIndices": [
+              57,
+              58
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20812,
+              "endIndex": 20888,
+              "text": "The energy threshold is $E_{\\text{th}} \\simeq 2 m_e / \\sqrt{\\delta_{\\nu e}}$"
+            },
+            "groundingChunkIndices": [
+              58
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 21121,
+              "endIndex": 21154,
+              "text": "D* 87, 116009 (`arXiv:1303.5843`)"
+            },
+            "groundingChunkIndices": [
+              34
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 21121,
+              "endIndex": 21454,
+              "text": "D* 87, 116009 (`arXiv:1303.5843`):** Applies the Cohen–Glashow VPE mechanism (plus constraints on the resulting $e^+e^-$ electromagnetic cascades from the Fermi-LAT diffuse $\\gamma$-ray background) to the first two $\\sim 1\\text{ PeV}$ cascade events (\"Bert\" and \"Ernie\", $1.04\\text{ PeV}$ and $1.14\\text{ PeV}$) detected by IceCube"
+            },
+            "groundingChunkIndices": [
+              59,
+              60,
+              31
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 21456,
+              "endIndex": 21567,
+              "text": "Assuming extragalactic origin, they obtain $\\delta_\\nu = (v_\\nu^2 - 1) \u003c \\mathcal{O}(10^{-18})$ in the abstract"
+            },
+            "groundingChunkIndices": [
+              31
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22032,
+              "endIndex": 22065,
+              "text": "D* 90, 043012 (`arXiv:1404.7025`)"
+            },
+            "groundingChunkIndices": [
+              57,
+              61,
+              35,
+              36
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22032,
+              "endIndex": 22174,
+              "text": "D* 90, 043012 (`arXiv:1404.7025`):** Performs Monte Carlo cosmological propagation of IceCube PeV neutrinos accounting for VPE and redshifting"
+            },
+            "groundingChunkIndices": [
+              35
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22176,
+              "endIndex": 22264,
+              "text": "They establish the standard benchmark bound **$\\delta_{\\nu e} \\le 5.2 \\times 10^{-21}$**"
+            },
+            "groundingChunkIndices": [
+              35
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22266,
+              "endIndex": 22636,
+              "text": "Combining this with the independent bound on superluminal electrons ($\\delta_e \\le 5 \\times 10^{-21}$ from the Crab Nebula), they bound the absolute neutrino superluminal velocity fraction to **$\\delta_\\nu = (v_\\nu - c)/c \\le 1.0 \\times 10^{-20}$** (and note that if $\\delta_{\\nu e} \\approx 5.2 \\times 10^{-21}$, VPE produces a spectral cutoff just above $2\\text{ PeV}$)"
+            },
+            "groundingChunkIndices": [
+              32,
+              35
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22777,
+              "endIndex": 22967,
+              "text": "** The IceCube PeV neutrino bounds on superluminal neutrino velocity directly rely on the absence of Cohen–Glashow vacuum pair emission ($\\nu \\to \\nu e^+ e^-$) over extragalactic baselines"
+            },
+            "groundingChunkIndices": [
+              32,
+              57,
+              31
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 23200,
+              "endIndex": 23266,
+              "text": "Mattingly (2003), *Nature* 424, 1019–1021 (`astro-ph/0212190`)**"
+            },
+            "groundingChunkIndices": [
+              40,
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 23352,
+              "endIndex": 23399,
+              "text": "* **321**, 150–196, 2006, `astro-ph/0505267`)"
+            },
+            "groundingChunkIndices": [
+              21,
+              62
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 23744,
+              "endIndex": 23940,
+              "text": "** Because inverse-Compton (IC) gamma rays from the Crab Nebula were observed up to $E_\\gamma \\approx 50\\text{ TeV}$ (by HEGRA in 2003, and later $\u003e100\\text{ TeV}$ by HAWC/Tibet AS$\\gamma$ in 2019"
+            },
+            "groundingChunkIndices": [
+              38
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 23744,
+              "endIndex": 23982,
+              "text": "** Because inverse-Compton (IC) gamma rays from the Crab Nebula were observed up to $E_\\gamma \\approx 50\\text{ TeV}$ (by HEGRA in 2003, and later $\u003e100\\text{ TeV}$ by HAWC/Tibet AS$\\gamma$ in 2019 and $\\sim 1\\text{ PeV}$ by LHAASO in 2021"
+            },
+            "groundingChunkIndices": [
+              63
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 24484,
+              "endIndex": 24697,
+              "text": "For linear Planck-suppressed ($n=1$, dimension-5) Lorentz violation, $E_e \\sim 50\\text{--}100\\text{ TeV}$ yields $\\eta_e \\lesssim 10^{-2}\\text{--}10^{-3}$ ($M_{\\text{QG}} \\gtrsim 10^2\\text{--}10^3\\,M_{\\text{Pl}}$)"
+            },
+            "groundingChunkIndices": [
+              64
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 24964,
+              "endIndex": 25231,
+              "text": "Observing $100\\text{ MeV}$ synchrotron emission from the Crab Nebula requires electrons up to $E_e \\sim 1500\\text{ TeV}$ ($1.5\\text{ PeV}$) and bounds subluminal linear LV to $|\\eta_e| \\lesssim 10^{-7}$ ($E_{\\text{QG}} \u003e 10^{26}\\text{ eV} \\approx 10^7 M_{\\text{Pl}}$)"
+            },
+            "groundingChunkIndices": [
+              40,
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 25385,
+              "endIndex": 25423,
+              "text": "C 79, 1011, 2019, `arXiv:1906.08221`**"
+            },
+            "groundingChunkIndices": [
+              38,
+              39,
+              41
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 25385,
+              "endIndex": 25640,
+              "text": "C 79, 1011, 2019, `arXiv:1906.08221`**, updated the Crab vacuum Cherenkov and photon decay bounds specifically for $\u003e100\\text{ TeV}$ electrons/photons; Stecker 2014, `arXiv:1306.6095`, also derived $\\delta_e \\le 5 \\times 10^{-21}$ from the 2010 Crab flare"
+            },
+            "groundingChunkIndices": [
+              57,
+              35
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 25690,
+              "endIndex": 26106,
+              "text": "** Using $\\sim 100\\text{ TeV}$ electrons inferred from the Crab Nebula inverse-Compton spectrum to set a vacuum Cherenkov upper bound on superluminal electron Lorentz violation ($\\delta_e \\lesssim 1.3 \\times 10^{-17}$ for dim-4, or $\\eta_e \\lesssim 10^{-3}$ for dim-5) is standard and explicitly established in the Jacobson–Liberati–Mattingly papers (2003/2006) and their $\u003e100\\text{ TeV}$ updates (Satunin 2019)"
+            },
+            "groundingChunkIndices": [
+              21,
+              38,
+              64,
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 26280,
+              "endIndex": 26304,
+              "text": "* 8, 5 (`gr-qc/0502097`)"
+            },
+            "groundingChunkIndices": [
+              45
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 26280,
+              "endIndex": 26653,
+              "text": "* 8, 5 (`gr-qc/0502097`):** The foundational comprehensive review of modern tests of Lorentz invariance, systematically cataloging terrestrial (atomic clocks, Hughes–Drever, Penning traps, cavity resonators) and astrophysical (time-of-flight, vacuum Cherenkov, photon decay, synchrotron, GZK) bounds on modified dispersion relations and the Standard-Model Extension (SME)"
+            },
+            "groundingChunkIndices": [
+              45
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 26702,
+              "endIndex": 26734,
+              "text": "* 30, 133001 (`arXiv:1304.5795`)"
+            },
+            "groundingChunkIndices": [
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 26702,
+              "endIndex": 27109,
+              "text": "* 30, 133001 (`arXiv:1304.5795`):** An extensive 62-page topical review updating the EFT frameworks for Lorentz violation (both mass-dimension 3/4 SME terms and higher-dimension UV-suppressed operators in QED, gravity, and neutrinos), along with detailed case studies of the OPERA neutrino anomaly and Hořava–Lifshitz gravity (including the CPSU and Iengo–Russo–Serone radiative fine-tuning problems)"
+            },
+            "groundingChunkIndices": [
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 27182,
+              "endIndex": 27210,
+              "text": "* 83, 11 (`arXiv:0801.0287`)"
+            },
+            "groundingChunkIndices": [
+              44
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 27182,
+              "endIndex": 27451,
+              "text": "* 83, 11 (`arXiv:0801.0287`):** The authoritative reference compilation of experimental bounds on all coefficients for Lorentz and CPT violation in the minimal and nonminimal SME across photon, electron, proton, neutron, meson, muon, neutrino, and gravitational sectors"
+            },
+            "groundingChunkIndices": [
+              44,
+              65
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 27453,
+              "endIndex": 27488,
+              "text": "It is updated annually on the arXiv"
+            },
+            "groundingChunkIndices": [
+              44
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 27536,
+              "endIndex": 27615,
+              "text": "** All three citations are exact, standard, open-access benchmarks in the field"
+            },
+            "groundingChunkIndices": [
+              44,
+              45,
+              43
+            ]
+          }
+        ],
+        "webSearchQueries": [
+          "\"Collins\" \"Perez\" \"Sudarsky\" \"Lorentz invariance and quantum gravity\" \"0403053\"",
+          "\"Chadha\" \"Nielsen\" \"125\" \"140\" \"1983\" \"Lorentz invariance\"",
+          "\"Chadha\" \"Nielsen\" \"Lorentz invariance as a low-energy phenomenon\"",
+          "\"Jacobson\" \"Liberati\" \"Mattingly\" \"Nature\" 2003 \"Crab\"",
+          "\"Horava\" \"Quantum Gravity at a Lifshitz Point\" 2009",
+          "\"Abdo\" \"GRB 090510\" \"Nature\" 2009 \"31 GeV\"",
+          "\"Volovik\" \"Fermi point\" \"Physics Reports\" 2001",
+          "\"Unruh\" \"Experimental Black-Hole Evaporation?\" 1981",
+          "\"1304.5795\" \"Liberati\"",
+          "\"vacuum Cherenkov\" \"Crab\" \"100 TeV\" electron Lorentz violation",
+          "\"Stecker\" \"Scully\" \"Glashow\" \"IceCube\" neutrino Lorentz",
+          "\"1303.5843\" \"Borriello\" \"Chakraborty\" \"Mirizzi\" \"Serpico\"",
+          "\"Iengo\" \"Russo\" \"Serone\" \"Lifshitz\" \"2009\"",
+          "\"Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A\"",
+          "\"GW170817\" \"GRB 170817A\" \"848\" \"L13\" \"10^-15\"",
+          "\"Barcelo\" \"Liberati\" \"Visser\" \"Analogue Gravity\" \"Living Reviews\"",
+          "\"Mattingly\" \"Modern Tests of Lorentz Invariance\" \"Living Reviews\" \"Liberati\" \"2013\" \"Kostelecky\"",
+          "\"IceCube\" \"superluminal\" \"Cohen\" \"Glashow\" \"PeV\"",
+          "\"gr-qc/0502097\" \"Mattingly\""
+        ]
+      }
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 1197,
+    "candidatesTokenCount": 11375,
+    "totalTokenCount": 12572,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1197
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 11375
+      }
+    ]
+  },
+  "modelVersion": "gemini-4-argon",
+  "responseId": "FCTjarvyFeWC3boPgryZkQ0"
+}

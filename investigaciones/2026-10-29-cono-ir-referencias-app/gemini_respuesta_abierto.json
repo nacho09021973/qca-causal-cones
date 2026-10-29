@@ -1,0 +1,1990 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "In theories where Lorentz invariance (LI) is not a fundamental microscopic symmetry, the question of why all low-energy (infrared, IR) species share a universal limiting speed $c$—to within strict experimental bounds of $\\Delta c / c \\lesssim 10^{-15}$ to $10^{-21}$—is known as the **velocity-equalization problem** or the **Lorentz fine-tuning problem**. \n\nThis review presents a categorized literature search of primary theoretical sources addressing both sides of the problem: mechanisms that dynamically or structurally enforce a common IR limiting speed, and counter-arguments demonstrating that species-dependent speeds are generic without fine-tuning or additional protective symmetries.\n\n---\n\n### 1. Renormalization-Group (RG) Flow of Velocity Differences\n\n#### Works establishing IR velocity equalization\n*   **S. Chadha and H. B. Nielsen**, *\"Lorentz invariance as a low energy phenomenon\"*, Nuclear Physics B **217**, 125–144 (1983). \n    *   **Identifiers:** DOI: `10.1016/0550-3213(83)90081-0`.\n    *   **What it establishes & assumptions:** In continuum $(3+1)$D non-covariant Quantum Electrodynamics (QED) and Yang–Mills theories with a spatial metric tensor that differs between species, the authors compute the one-loop perturbative RG $\\beta$-functions for the velocity differences $\\Delta v$. They show that $\\Delta v = 0$ is an IR-attractive fixed point, though in weak-coupling perturbation theory the flow toward universality is only logarithmic in the energy scale, $\\Delta v(\\mu) \\propto (\\mu / \\Lambda_{\\text{UV}})^{b g^2}$.\n*   **M. M. Anber and J. F. Donoghue**, *\"The Emergence of a universal limiting speed\"*, Physical Review D **83**, 105027 (2011).\n    *   **Identifiers:** arXiv:`1102.0789` [hep-th]; DOI: `10.1103/PhysRevD.83.105027`; Open-access URL: https://arxiv.org/abs/1102.0789.\n    *   **What it establishes & assumptions:** Assuming multiple fermion or boson species share a common interaction (such as a shared gauge group or a portal with a large coupling), one-loop RG evolution drives their limiting velocities toward a single common value in the IR. However, the authors explicitly demonstrate that to satisfy experimental bounds starting from order-unity UV velocity differences over a Planck-to-electroweak hierarchy, the shared coupling must become non-perturbatively strong in the UV, since standard perturbative running is too slow.\n*   **I. F. Herbut, V. Juričić, and O. Vafek**, *\"Relativistic Mott criticality in graphene\"*, Physical Review B **80**, 075432 (2009).\n    *   **Identifiers:** arXiv:`0904.1019` [cond-mat.str-el]; DOI: `10.1103/PhysRevB.80.075432`; Open-access URL: https://arxiv.org/abs/0904.1019.\n    *   **What it establishes & assumptions:** Studying the semimetal-to-insulator quantum phase transition of interacting electrons on a honeycomb lattice via a Gross–Neveu–Yukawa (GNY) effective field theory in $d=4-\\epsilon$ spacetime dimensions at one loop, the authors show that the velocity of the collective order-parameter boson and the Fermi velocity of the Dirac electrons flow to a single common value at the strongly coupled Wilson–Fisher IR fixed point.\n*   **B. Roy, V. Juričić, and I. F. Herbut**, *\"Emergent Lorentz symmetry near fermionic quantum critical points in two and three dimensions\"*, Journal of High Energy Physics **2016** (04), 018 (2016).\n    *   **Identifiers:** arXiv:`1510.07650` [hep-th]; DOI: `10.1007/JHEP04(2016)018`; Open-access URL: https://arxiv.org/abs/1510.07650.\n    *   **What it establishes & assumptions:** Using a one-loop $\\epsilon$-expansion around $d=3$ spatial dimensions for massless Dirac fermions coupled via Yukawa interactions to scalars and a fluctuating $U(1)$ gauge field, this work proves that all three distinct bare velocities ($v_F, v_B, c$) flow to a single terminal velocity in the deep IR, independent of initial conditions or flavor numbers.\n*   **G. Bednik, O. Pujolàs, and S. Sibiryakov**, *\"Emergent Lorentz invariance from Strong Dynamics: Holographic examples\"*, Journal of High Energy Physics **2013** (11), 064 (2013).\n    *   **Identifiers:** arXiv:`1305.0011` [hep-th]; DOI: `10.1007/JHEP11(2013)064`; Open-access URL: https://arxiv.org/abs/1305.0011.\n    *   **What it establishes & assumptions:** To overcome the slowness of perturbative Chadha–Nielsen running, the authors use the AdS/CFT correspondence (a $(4+1)$D Lifshitz/Randall–Sundrum bulk dual to a strongly coupled 4D QFT) to model strong RG dynamics. They prove that strong coupling suppresses velocity differences among bound states and elementary probes hooked to the CFT by a power law $(\\Lambda_{\\text{IR}}/\\Lambda_{\\text{UV}})^{\\Delta}$ with a large anomalous dimension $\\Delta \\sim \\mathcal{O}(1)$, rapidly equalizing speeds in the IR.\n*   **I. Kharuk and S. M. Sibiryakov**, *\"Emergent Lorentz invariance with chiral fermions\"*, Theoretical and Mathematical Physics **189**, 1755–1774 (2016).\n    *   **Identifiers:** arXiv:`1505.04130` [hep-th]; DOI: `10.1134/S0040577916120084`; Open-access URL: https://arxiv.org/abs/1505.04130.\n    *   **What it establishes & assumptions:** Extending the holographic strong-dynamics mechanism of Bednik et al. to include chiral fermions coupled to a strongly interacting Lifshitz sector, the authors show that the chiral fermion speeds are dragged into alignment with the emergent speed of light of the strongly coupled sector via power-law RG running.\n\n---\n\n### 2. Fine-Tuning Arguments & Generic Species-Dependent Speeds\n\n#### Works arguing that species-dependent speeds are generic\n*   **J. Collins, A. Perez, D. Sudarsky, L. Urrutia, and H. Vucetich**, *\"Lorentz invariance and quantum gravity: an additional fine-tuning problem?\"*, Physical Review Letters **93**, 191301 (2004).\n    *   **Identifiers:** arXiv:`gr-qc/0403053`; DOI: `10.1103/PhysRevLett.93.191301`; Open-access URL: https://arxiv.org/abs/gr-qc/0403053.\n    *   **What it establishes & assumptions:** In a perturbative Yukawa/gauge model where Lorentz invariance is broken only at the Planck scale $M_P$ (modeled via a physical momentum cutoff or modified UV dispersion relations), one-loop self-energy diagrams convert Planck-suppressed UV Lorentz violation into unsuppressed, dimension-4 kinetic velocity shifts in the IR: $\\Delta c \\sim g^2 / (16\\pi^2)$. Because different Standard Model species have different couplings $g_i$, they generically acquire percent-level velocity differences unless bare parameters are fine-tuned to better than 1 part in $10^{20}$.\n*   **R. Iengo, J. G. Russo, and M. Serone**, *\"Renormalization group in Lifshitz-type theories\"*, Journal of High Energy Physics **2009** (11), 020 (2009).\n    *   **Identifiers:** arXiv:`0906.3477` [hep-th]; DOI: `10.1088/1126-6708/2009/11/020`; Open-access URL: https://arxiv.org/abs/0906.3477.\n    *   **What it establishes & assumptions:** Analyzing one-loop RG flows in renormalizable $z\u003e1$ Lifshitz scalar and Yukawa field theories with multiple interacting fields, the authors prove that the RG trajectories generically do *not* converge to a common IR speed. Instead, the IR speed ratios depend continuously on the arbitrary UV boundary conditions and couplings, requiring severe fine-tuning to recover Lorentz invariance at low energies.\n*   **G. F. Giudice, M. Raidal, and A. Strumia**, *\"Lorentz Violation from the Higgs Portal\"*, Physics Letters B **690**, 272–279 (2010).\n    *   **Identifiers:** arXiv:`1003.2364` [hep-ph]; DOI: `10.1016/j.physletb.2010.05.029`; Open-access URL: https://arxiv.org/abs/1003.2364.\n    *   **What it establishes & assumptions:** Assuming the Standard Model is coupled via the Higgs portal to a hidden sector with a different limiting speed, perturbative loop corrections transmit Lorentz violation into the Standard Model. Because the Higgs couples to different fermions with vastly different Yukawa couplings $y_f$, the induced IR limiting speeds are non-universal ($\\delta c_f \\propto y_f^2$), demonstrating that portal couplings generally ruin speed universality rather than enforcing it.\n\n---\n\n### 3. Protective Symmetries: Supersymmetry, Scale Separation, and Topology\n\n#### Works using extra symmetries or topology to protect or equalize speeds\n*   **S. Groot Nibbelink and M. Pospelov**, *\"Lorentz Violation in Supersymmetric Field Theories\"*, Physical Review Letters **94**, 081601 (2005).\n    *   **Identifiers:** arXiv:`hep-ph/0404271`; DOI: `10.1103/PhysRevLett.94.081601`; Open-access URL: https://arxiv.org/abs/hep-ph/0404271.\n    *   **What it establishes & assumptions:** In the framework of the Supersymmetric Standard Model (MSSM) with exact $\\mathcal{N}=1$ supersymmetry and gauge invariance, the authors prove algebraically that no Lorentz-violating operators of mass dimension $d \\le 4$ exist. Consequently, all renormalizable kinetic terms are strictly forced to share the same speed of light, and any UV Lorentz violation is suppressed by at least $\\mathcal{O}(E/\\Lambda_{\\text{UV}})$ (dimension 5 or higher).\n*   **P. Jain and J. P. Ralston**, *\"Supersymmetry and the Lorentz Fine Tuning Problem\"*, Physics Letters B **621**, 213–218 (2005).\n    *   **Identifiers:** arXiv:`hep-ph/0502106`; DOI: `10.1016/j.physletb.2005.06.055`; Open-access URL: https://arxiv.org/abs/hep-ph/0502106.\n    *   **What it establishes & assumptions:** Evaluating one-loop self-energy diagrams in the $(3+1)$D Wess–Zumino model with a Lorentz-violating UV cutoff, the authors show that the logarithmic loop divergences that cause the Collins et al. fine-tuning problem cancel between bosonic and fermionic loops, protecting the equality of the scalar and fermion speeds.\n*   **S.-S. Lee**, *\"Emergence of supersymmetry at a critical point of a lattice model\"*, Physical Review B **76**, 075103 (2007).\n    *   **Identifiers:** arXiv:`cond-mat/0611658` [cond-mat.str-el]; DOI: `10.1103/PhysRevB.76.075103`; Open-access URL: https://arxiv.org/abs/cond-mat/0611658.\n    *   **What it establishes & assumptions:** For a non-relativistic $(2+1)$D lattice model of fermions and bosons without microscopic Lorentz invariance or supersymmetry, an $\\epsilon$-expansion around the quantum critical point shows that the system flows to an emergent $\\mathcal{N}=2$ Wess–Zumino superconformal fixed point. The emergent spacetime supersymmetry locks the fermion and boson velocities to be identical in the IR. *(See also **T. Grover, D. N. Sheng, and A. Vishwanath**, Science **344**, 280–283 (2014), arXiv:`1301.7449`, for the analogous mechanism on topological insulator boundaries).*\n*   **M. Pospelov and Y. Shang**, *\"On Lorentz violation in Horava-Lifshitz type theories\"*, Physical Review D **85**, 105001 (2012).\n    *   **Identifiers:** arXiv:`1010.5249` [hep-th]; DOI: `10.1103/PhysRevD.85.105001`; Open-access URL: https://arxiv.org/abs/1010.5249.\n    *   **What it establishes & assumptions:** In Hořava–Lifshitz gravity coupled to a Lorentz-invariant matter sector, the Collins et al. loop corrections are tamed without fine-tuning if the Lifshitz crossover scale $\\Lambda_{\\text{HL}}$ is much smaller than the Planck scale $M_P$. Under this scale-separation assumption, the Lifshitz $z=3$ propagators soften the UV loop integrals above $\\Lambda_{\\text{HL}}$, suppressing radiatively induced velocity differences by $(\\Lambda_{\\text{HL}}/M_P)^2$.\n*   **G. E. Volovik**, *\"The Universe in a Helium Droplet\"*, International Series of Monographs on Physics **117**, Clarendon Press / Oxford University Press (2003). *(See also **P. Hořava**, \"Stability of Fermi Surfaces and K-Theory\", Physical Review Letters **95**, 016405 (2005), arXiv:`hep-th/0503006`, DOI: `10.1103/PhysRevLett.95.016405`).*\n    *   **Identifiers:** DOI: `10.1093/acprof:oso/9780199564842.001.0001`.\n    *   **What it establishes & assumptions:** In $(3+1)$D fermionic quantum liquids (such as superfluid $^3\\text{He-A}$), zeroes of the inverse Green's function (Fermi/Weyl points) are topologically protected by momentum-space topological invariants ($\\pi_3$ homotopy or $K$-theory charges). Expanding around a topologically stable node automatically yields a linear relativistic Weyl dispersion $g^{\\mu\\nu}(p_\\mu - eA_\\mu)(p_\\nu - eA_\\nu) = 0$. Collective gauge and gravitational modes arise as shifts of the node position $eA_\\mu$ and deformations of the slope matrix $e^\\mu_a$ (vielbein); consequently, when multiple fermion species arise from a single degenerate Fermi point, they inherently couple to the same emergent metric $g^{\\mu\\nu}$ and share a universal limiting speed, whereas independent or split Fermi points generically produce birefringence and species-dependent speeds.\n\n---\n\n### 4. Emergent Gauge Fields and Common Couplings in Condensed Matter\n\n*   **X.-G. Wen**, *\"Origin of Light\"*, Physical Review Letters **88**, 011602 (2002); and **X.-G. Wen**, *\"Quantum order from string-net condensations and origin of light and massless fermions\"*, Physical Review D **68**, 065003 (2003).\n    *   **Identifiers:** arXiv:`hep-th/0109120` (DOI: `10.1103/PhysRevLett.88.011602`, URL: https://arxiv.org/abs/hep-th/0109120) and arXiv:`hep-th/0302201` (DOI: `10.1103/PhysRevD.68.065003`, URL: https://arxiv.org/abs/hep-th/0302201).\n    *   **What it establishes & assumptions:** In local lattice bosonic/spin models exhibiting string-net condensation (quantum topological order), closed string-net fluctuations yield gapless $U(1)$ or $SU(N)$ gauge bosons, while the ends of open strings yield gapless fermionic matter protected by projective symmetry groups (PSG).\n    *   **Note on what is found vs. inferred:** While Wen proves that both gauge bosons and chiral fermions emerge from the *same* underlying string-net degrees of freedom without fine-tuning their masses to zero, the bare lattice dispersion velocity of the emergent photon ($c_{\\text{art}}$, determined by string tension/loop flip amplitudes) and the Fermi velocity of the string-end fermions ($v_F$, determined by end-hopping amplitudes) are *not* automatically equal at the bare lattice level; equalizing them in the deep IR relies on the strong-coupling RG flow of the emergent gauge theory (as analyzed in the QED$_3$ / GNY literature by Herbut, Roy, and Juričić cited in Section 1).\n*   **T. Senthil, L. Balents, S. Sachdev, A. Vishwanath, and M. P. A. Fisher**, *\"Quantum criticality beyond the Landau-Ginzburg-Wilson paradigm\"*, Physical Review B **70**, 144407 (2004).\n    *   **Identifiers:** arXiv:`cond-mat/0312617`; DOI: `10.1103/PhysRevB.70.144407`; Open-access URL: https://arxiv.org/abs/cond-mat/0312617.\n    *   **What it establishes & assumptions:** At deconfined quantum critical points (e.g., between Néel and valence-bond-solid phases on a 2D square lattice), fractionalized spinons and an emergent non-compact $U(1)$ gauge field become simultaneously gapless. Because both excitations are collective modes of the same critical spin network governed by a single dynamical critical exponent $z=1$, they share a common emergent relativistic light cone at the IR fixed point.\n\n---\n\n### 5. Discrete Models: Quantum Walks (QWs) and Quantum Cellular Automata (QCA)\n\nIn discrete-time, discrete-space unitary models, a common limiting speed across species is achieved not through perturbative loop running, but through **architectural wiring** (a universal causal circuit speed) or **composite-particle constructions**.\n\n*   **G. M. D'Ariano and P. Perinotti**, *\"Derivation of the Dirac equation from principles of information processing\"*, Physical Review A **90**, 062106 (2014).\n    *   **Identifiers:** arXiv:`1306.1934` [quant-ph]; DOI: `10.1103/PhysRevA.90.062106`; Open-access URL: https://arxiv.org/abs/1306.1934.\n    *   **What it establishes & assumptions:** Assuming unitarity, locality, homogeneity, and discrete isotropy on a Cayley graph (specifically the body-centered cubic lattice in 3D), the authors prove that the minimal two-component QCA reduces to the Weyl equation in the low-momentum $(k \\to 0)$ IR limit, and coupling two such Weyl modes yields the Dirac QCA. The maximum speed of propagation is identically $c = a/\\tau$ (one lattice step $a$ per time step $\\tau$), which is fixed by the graph geometry rather than particle mass or internal coupling.\n*   **A. Bisio, G. M. D'Ariano, and P. Perinotti**, *\"Quantum Cellular Automaton Theory of Light\"*, Annals of Physics **368**, 177–190 (2016).\n    *   **Identifiers:** arXiv:`1407.6928` [quant-ph]; DOI: `10.1016/j.aop.2016.02.009`; Open-access URL: https://arxiv.org/abs/1407.6928.\n    *   **What it establishes & assumptions:** To guarantee that photons and fermions share the exact same limiting speed in a QCA without fine-tuning two independent lattices, the authors construct the Maxwell field as a *composite boson* formed by a correlated pair of massless Weyl QCA fermions (a discrete realization of the de Broglie–Jordan neutrino theory of light). In the low-momentum and low-photon-density regime, the composite states obey free Maxwell electrodynamics and automatically inherit the exact causal speed $c=a/\\tau$ of the underlying Weyl automaton.\n*   **P. Arrighi, S. Facchini, and M. Forets**, *\"Discrete Lorentz covariance for Quantum Walks and Quantum Cellular Automata\"*, New Journal of Physics **16**, 093007 (2014).\n    *   **Identifiers:** arXiv:`1404.4499` [quant-ph]; DOI: `10.1088/1367-2630/16/9/093007`; Open-access URL: https://arxiv.org/abs/1404.4499.\n    *   **What it establishes & assumptions:** In $(1+1)$D discrete spacetime, the authors define exact discrete Lorentz transformations via local circuit-equivalence (rewiring) rules and construct the \"Clock QW\" and \"Clock QCA\". They prove that any species coupled into this causal circuit architecture shares the same invariant light-cone structure because the causal cone is a property of the wiring diagram itself.\n*   **P. Arrighi, C. Bény, and T. Farrelly**, *\"A quantum cellular automaton for one-dimensional QED\"*, Quantum Information Processing **19**, 88 (2020).\n    *   **Identifiers:** arXiv:`1903.07007` [quant-ph]; DOI: `10.1007/s11128-019-2555-4`; Open-access URL: https://arxiv.org/abs/1903.07007.\n    *   **What it establishes & assumptions:** Formulating the $(1+1)$D interacting Schwinger model (Dirac fermions coupled to a $U(1)$ gauge field) as a gauge-covariant QCA made of local quantum gates, the authors show that the maximum speed of information propagation for all interacting sectors is strictly bounded and set by the shared elementary gate-update speed of the quantum circuit.\n*   **L. Mlodinow and T. A. Brun**, *\"Fermionic and bosonic quantum field theories from quantum cellular automata in three spatial dimensions\"*, Physical Review A **103**, 052203 (2021); and **L. Mlodinow and T. A. Brun**, *\"Bounds on quantum cellular automaton lattice spacing from data on Lorentz violation\"*, Physical Review D **112**, 074513 (2025).\n    *   **Identifiers:** \n        1. arXiv:`2011.05597` [quant-ph]; DOI: `10.1103/PhysRevA.103.052203`; URL: https://arxiv.org/abs/2011.05597.\n        2. arXiv:`2506.20136` [quant-ph]; DOI: `10.1103/PhysRevD.112.074513`; URL: https://arxiv.org/abs/2506.20136. *(See also **T. A. Brun and L. Mlodinow**, Entropy **27**(5), 492 (2025), arXiv:`2503.05998`, DOI: `10.3390/e27050492`).*\n    *   **What they establish & assumptions:** In the 2021 and May 2025 works, the authors construct 3D multiparticle QCAs for both Dirac fermions (4D internal space) and Maxwell photons (6D internal space reduced to 2 helicities upon restricting to positive energy) on the same lattice. By imposing the *same* discrete lattice-rotation and reflection symmetries and the same clock step $\\Delta x / \\Delta t = c$ on both walks, both species recover an identical isotropic speed $c$ in the $k \\to 0$ continuum limit. However, in the October 2025 PRD paper, they show that at finite momentum $k$, the QCA dispersion relations exhibit $\\mathcal{O}(k^2 a^2)$ Lorentz-violating velocity shifts and spatial anisotropies that differ from continuum QED, allowing astrophysical time-of-flight and birefringence data to constrain the QCA lattice spacing.\n\n---\n\n### Summary of Findings vs. Inferences\n\n*   **Directly Established in the Literature (Found):**\n    1.  *Perturbative QFT / Lifshitz / QG Phenomenology:* Without an exact protective symmetry, loop corrections from UV Lorentz violation generically induce $\\mathcal{O}(g_i^2)$ species-dependent IR velocity differences (Collins et al. 2004; Iengo et al. 2009; Giudice et al. 2010). Perturbative RG running toward equal velocities exists (Chadha & Nielsen 1983) but is logarithmically slow.\n    2.  *Mechanisms that successfully equalize speeds in QFT/Condensed Matter:* (a) **Strong coupling / large anomalous dimensions** near a conformal or holographic IR fixed point, which upgrades logarithmic running to power-law suppression (Anber & Donoghue 2011; Bednik et al. 2013; Herbut et al. 2009; Roy et al. 2016); (b) **Supersymmetry** (fundamental or emergent), which forbids $d \\le 4$ Lorentz-violating operators and cancels loop velocity shifts between bosons and fermions (Groot Nibbelink & Pospelov 2005; Jain & Ralston 2005; Lee 2007); (c) **Scale separation** $\\Lambda_{\\text{HL}} \\ll M_P$ in Lifshitz gravity (Pospelov & Shang 2012); and (d) **Shared momentum-space topology**, where multiple species emerge from a single unsplit Fermi point and thus share the same emergent vielbein (Volovik 2003).\n    3.  *Discrete QCA / QW Models:* Speed universality in the $k \\to 0$ limit is achieved kinematically either by constructing bosons as **composite states of the fundamental fermionic walk** (Bisio, D'Ariano, & Perinotti 2016) or by embedding all species into a **single synchronous quantum circuit** whose gate topology and discrete spatial isotropy fix the ratio $\\Delta x / \\Delta t = c$ identically across sectors (Arrighi et al. 2014, 2020; Mlodinow & Brun 2021, 2025).\n*   **Synthesized Comparison (Inferred across subfields):**\n    In QCA and quantum-walk models, the equality of bare speeds $c_{\\text{fermion}} = c_{\\text{boson}} = \\Delta x / \\Delta t$ is built into the discrete synchronous update rule (one lattice link per clock cycle). However, most QCA models in $(3+1)$D have thus far been analyzed in the *free* or tree-level continuum limit. If a $(3+1)$D QCA is extended to include full multi-species Standard Model interactions without supersymmetry or composite-boson constraints, the radiative loop effects identified by Collins et al. (2004) imply that the *renormalized* IR speeds of different species on the QCA lattice would still diverge at $\\mathcal{O}(\\alpha)$ unless the QCA either incorporates one of the QFT protection mechanisms (e.g., exact discrete Lorentz covariance as in Arrighi et al. 2014, or strong IR fixed-point attraction) or has its bare hopping parameters fine-tuned to compensate for loop self-energies.",
+            "thoughtSignature": "ElkKVwFpFH0Tx+gEvHl0V2O6DvZ1xUxlRb2dSJj2ebFW5CaM6Wa4ByfkuZOfRSeSwAl7PJXb0HgkX3NdSbfCkjpHlePVt5R1Qa44tvmJd3ChgRjBvWXBQWr0YQ=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0,
+      "groundingMetadata": {
+        "searchEntryPoint": {
+          "renderedContent": "\u003cstyle\u003e\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n\u003c/style\u003e\n\u003cdiv class=\"container\"\u003e\n  \u003cdiv class=\"headline\"\u003e\n    \u003csvg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/\u003e\n    \u003c/svg\u003e\n    \u003csvg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n      \u003ccircle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/\u003e\n      \u003cpath d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/\u003e\n      \u003cpath d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/\u003e\n      \u003cpath d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/\u003e\n      \u003cpath d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/\u003e\n    \u003c/svg\u003e\n    \u003cdiv class=\"gradient-container\"\u003e\u003cdiv class=\"gradient\"\u003e\u003c/div\u003e\u003c/div\u003e\n  \u003c/div\u003e\n  \u003cdiv class=\"carousel\"\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Arrighi%22+%22B%C3%A9ny%22+%22Farrelly%22+%22A+quantum+cellular+automaton+for+one-dimensional+QED%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Arrighi&quot; &quot;Bény&quot; &quot;Farrelly&quot; &quot;A quantum cellular automaton for one-dimensional QED&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Grover%22+%22Sheng%22+%22Vishwanath%22+2014+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Grover&quot; &quot;Sheng&quot; &quot;Vishwanath&quot; 2014 arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Bounds+on+quantum+cellular+automaton+lattice+spacing+from+data+on+Lorentz+violation%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Bounds on quantum cellular automaton lattice spacing from data on Lorentz violation&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=Groot+Nibbelink+Pospelov+2005+Lorentz+violation&client=app-vertex-grounding&safesearch=active\"\u003eGroot Nibbelink Pospelov 2005 Lorentz violation\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Jain%22+%22Ralston%22+2005+%22Supersymmetry+and+the+Lorentz+fine+tuning+problem%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Jain&quot; &quot;Ralston&quot; 2005 &quot;Supersymmetry and the Lorentz fine tuning problem&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Lee%22+%222007%22+%22Emergence+of+supersymmetry+at+a+critical+point+of+a+lattice+model%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Lee&quot; &quot;2007&quot; &quot;Emergence of supersymmetry at a critical point of a lattice model&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Volovik%22+%22The+Universe+in+a+Helium+Droplet%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Volovik&quot; &quot;The Universe in a Helium Droplet&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22D%27Ariano%22+%22Perinotti%22+%22quantum+cellular+automata%22+Dirac+2014&client=app-vertex-grounding&safesearch=active\"\u003e&quot;D&#39;Ariano&quot; &quot;Perinotti&quot; &quot;quantum cellular automata&quot; Dirac 2014\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Arrighi%22+%22Facchini%22+%22Forets%22+%22Discrete+Lorentz+covariance%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Arrighi&quot; &quot;Facchini&quot; &quot;Forets&quot; &quot;Discrete Lorentz covariance&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Herbut%22+%22Juricic%22+%22Vafek%22+2009+graphene+velocity+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Herbut&quot; &quot;Juricic&quot; &quot;Vafek&quot; 2009 graphene velocity arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Quantum+Electrodynamics+from+Quantum+Cellular+Automata%22&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Quantum Electrodynamics from Quantum Cellular Automata&quot;\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%222503.05998%22+%22Mlodinow%22+%22Brun%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;2503.05998&quot; &quot;Mlodinow&quot; &quot;Brun&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22quantum+cellular+automata%22+%22Lorentz+invariance%22+species+speed+OR+velocity&client=app-vertex-grounding&safesearch=active\"\u003e&quot;quantum cellular automata&quot; &quot;Lorentz invariance&quot; species speed OR velocity\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Roy%22+%22Juricic%22+%22Herbut%22+2016+%22Emergent+Lorentz+symmetry%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Roy&quot; &quot;Juricic&quot; &quot;Herbut&quot; 2016 &quot;Emergent Lorentz symmetry&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Wen%22+%22Origin+of+light%22+2002+OR+2003+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Wen&quot; &quot;Origin of light&quot; 2002 OR 2003 arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Pospelov%22+%22Shang%22+2012+%22On+Lorentz+violation+in+Horava-Lifshitz%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Pospelov&quot; &quot;Shang&quot; 2012 &quot;On Lorentz violation in Horava-Lifshitz&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Senthil%22+%22Vishwanath%22+%22Balents%22+%22Fisher%22+%22Deconfined%22+2004+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Senthil&quot; &quot;Vishwanath&quot; &quot;Balents&quot; &quot;Fisher&quot; &quot;Deconfined&quot; 2004 arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Action+principles+for+quantum+automata+and+lorentz+invariance%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Action principles for quantum automata and lorentz invariance&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Bisio%22+%22D%27Ariano%22+%22Perinotti%22+%22Quantum+cellular+automaton+theory+of+light%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Bisio&quot; &quot;D&#39;Ariano&quot; &quot;Perinotti&quot; &quot;Quantum cellular automaton theory of light&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Mlodinow%22+%22Brun%22+%22Fermionic+and+bosonic+quantum+field+theories+from+quantum+cellular+automata%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Mlodinow&quot; &quot;Brun&quot; &quot;Fermionic and bosonic quantum field theories from quantum cellular automata&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Pujolas%22+%22Sibiryakov%22+%22Emergent+Lorentz+invariance%22+%221109.4495%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Pujolas&quot; &quot;Sibiryakov&quot; &quot;Emergent Lorentz invariance&quot; &quot;1109.4495&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%220904.1019%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;0904.1019&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Bednik%22+%22+Pujol%22+%22Sibiryakov%22+2013&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Bednik&quot; &quot; Pujol&quot; &quot;Sibiryakov&quot; 2013\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Collins%22+%22Perez%22+%22Sudarsky%22+%22Urrutia%22+%22Vucetich%22+2004&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Collins&quot; &quot;Perez&quot; &quot;Sudarsky&quot; &quot;Urrutia&quot; &quot;Vucetich&quot; 2004\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Horava%22+2005+%22Stability+of+Fermi+Surfaces+and+K+Theory%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Horava&quot; 2005 &quot;Stability of Fermi Surfaces and K Theory&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Kharuk%22+%22Sibiryakov%22+%221505.04130%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Kharuk&quot; &quot;Sibiryakov&quot; &quot;1505.04130&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=Anber+Donoghue+2011+emergence+of+Lorentz+invariance&client=app-vertex-grounding&safesearch=active\"\u003eAnber Donoghue 2011 emergence of Lorentz invariance\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=Chadha+Nielsen+1983+Lorentz+invariance&client=app-vertex-grounding&safesearch=active\"\u003eChadha Nielsen 1983 Lorentz invariance\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Volovik%22+%22Fermi+point%22+%22Lorentz+invariance%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Volovik&quot; &quot;Fermi point&quot; &quot;Lorentz invariance&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Giudice%22+%22Raidal%22+%22Strumia%22+2012+%22Lorentz+invariance%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Giudice&quot; &quot;Raidal&quot; &quot;Strumia&quot; 2012 &quot;Lorentz invariance&quot; arXiv\u003c/a\u003e\n\u003ca class=\"chip\" href=\"https://www.google.com/search?q=%22Iengo%22+%22Russo%22+%22Serone%22+%222009%22+arXiv&client=app-vertex-grounding&safesearch=active\"\u003e&quot;Iengo&quot; &quot;Russo&quot; &quot;Serone&quot; &quot;2009&quot; arXiv\u003c/a\u003e\n  \u003c/div\u003e\n\u003c/div\u003e"
+        },
+        "groundingChunks": [
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEm3DT9iDBnpRjmv7rxs6dZhtgS9x3itPzLowojNAKOP71c8-hZ98yoVQR6D_HXz4YaKEz_IXylO4wy288annruwS4_CKoMnum2l6kJzLMRtAVZM_KbbaqVqCtj1S-KOFcMDFPxjbIxsC6Opi8CEzL1MYDr2gHAQM1wZrkQjdFsIQYRQ60c4JvPCk19iiU5qbxxRSHYdrNkIsDWHLrsvN82jgOjRhLyopU8mQQ7hH4ntBoxSdF2tOn4qy44M3l4KP823A==",
+              "title": "semanticscholar.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGaUwIGBdhTOyCnagIuW9hOIvQLLaexV4yIQaz66zSjq1RAeJiTfRwBrRimqLYp6gHn4sPZMzqJWIQZz-UUfGB8aWWcy0O3cOWDQeNezYV8V1_2_QAyqqmtvAcovj3gOWfnGMFOiBxd9Gm_3922YuUond8sBybc-g==",
+              "title": "tandfonline.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGoPV9pe4GiOAAKPmd6e60EDo-wzZaS4_c7UwvMw1K9CBJZPVxCRA4994Q8z8g5fcJuVYwK2qD2VR-7q9aeFvYKkZ65kI1EMn7WElZkzaBIDt_V4Tu8Rn8mg-gSbwtYkRG4HNHny--8",
+              "title": "nih.gov"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHJPxJ83HY1AsS5Rs3PvJO-BY_F9dS2iRlYEXtEyAzP0x9PrxyPf9XBfn0M-hT__tWpeZsak7w_R__VxpxpiCTSAOv2yP90U-PF5AQXAKAyiWb_g-D-h8EtpreKtjs-Bs77NUvvTsMO9Maj80V_XTFqHU_afRCpxPbdgQ_rOqYh5X9nyVXIYsu7Z6n2K3pZ--GP0BCLkHsjajvoN-QKs6y4N3lKqd48FIfhUsoq_5OhcyzGC16FswnhhJ6oUy-DyBLn_O3CCNViY93zhbh-d9bRg3vD1GHDeTZn9C_pXXpYUqUQrh5HKnJj",
+              "title": "researchgate.net"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE1H4DXBbQ71EfejunZUSuaBivw_ewY2AzPJKC7TYGTbLeMV7afZQ8JFqCjrhp0CqqoUW1-R7YF3UgbXhKH5wV2ELUNivRCBcuxWP9FWeIS6IzTKDtntXFytE2P2kCKS447XfsdvJe-1p2C-3Y22ZHN7j9gCfgRf39ZS5JAq1xwHwSrr8qjvQ==",
+              "title": "infn.it"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFILjAahFo85me8fqMgUe2PeBARRq8-KdFaD0Z-DYcF12mxk3kFdMcpPpZ5SXmuCcE-X7iIgL1jXFC125MWfGTLgOnkRqmESX2f4tN_FqiMY6tWo1p1",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtozpF3tC8PUfvGn3MQ9FXuWYsr6ATMaASwMlenxXOOxJeefVViak87ArpxvsjvaY3bNDqAZe6HbZbTlJZ67tGwlbJk2HXUtktizdKUaljVIsAUyrV",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFOqmF8QGCFfElfuFtLLIHpF72VRma4hIKLDH12YNADJMX0mMSnjeF2qKVngcPa9dpriomj_L4cZVGf43_NoomTkS6TBL8WlJIyWdAYogeFOMy-UTSP",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEadLdfS3PjyWE4YnY47oEN7j8FoiuXMXshR5ajsQ7mUcobhNF56lLyzIHBW5paarqi-VEmldzNQuIL3r_w69Y6vDjsoaIthFdZ2Umth14yeAZfHAtcFw==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG-IA1zyvsl5L7pZeffrmtcNf2WeRZZWaOBl-7_iL0TAJacZmy-0EWnD2iJrJSkB5PZMJDEs5hjBs2jDdpCGnHgKVoJELfcIwP98X75Lz8TVuvg4tF8MXKTb2w2RQ==",
+              "title": "alphaxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQETvYOCkr1Og1rgSXWSnSXqHBz0a4YdtfR9DUswvJHKTY2hA1JQzmXvUbQXOtii54jD8ptnvIZzFa6Pvq8SyP_ITMmBcck1G1lHWCBlwmJgsiAPu_45Mw==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHXLAZfP_soMe2kKMSVE8dt2QATpg39DzOqYPzMAxfQUCTj1XjZQyc4jCjIsDB1C85ek0xJdFBh-2ko7k4l4N1htkM_UQJgffeiSvbTwVw4djjXkq7",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFY_w4lLuoMOod4hTQUmgwWUFTyJsMwSjwuR3GkhXHuH8DfuY0SGMGfgZX8oBtah9GbK_tgOvDuQaVSbcdhdi_fMsD_iJmMWYRXSVPKaxb25tjhOYZk",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGD7U528WZLLF6H6JLXLpRT-KG_wKyoMcwHZNjtqMEOLNkzCefS2kZ4ZUDCjE78zCS2tf5ick_izBgjuQwjI-wBAD6MYAPht2wOwYpglN1HUkoSikr-lg==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHGrmeK2LAGKTI3vaaeLvcCyIOONNh014MEp09j_8Y32MJHuBpkF3yNF2kQs5rRy_ARDMk25fEe-37kdkgdkONTwQK_OMKrANC7y9UtBjFBEUkvaeYVfA==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHplzV0yPf3e-spkDJ9f2R11wYkXQ1YKnpMl0ueypEKNYiYDdciCCxNZc321dOc1guq7dO2c5XcuOhCjaLsYq6-SapiMdEKdPJUTbjaj3HZqBbNIECy1kKZVQ==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEVG6Hzh0-R6BhacvNPTmlvKzzaV39H9g1SScEMw1bT-pcRSSSiXO_QEcAWWrx6s76YKkDQNF4UK9rk8jRLzYdMNXlBeohIH6ZJquYBXa1PNfQs0CrbFZ-0ssEMz_FV5Ad64A4kCSxfHns2F6EvnVjGRjILCMNRmzUujlL3r9Us1A3szdN8JwpLiugk_Q==",
+              "title": "ugr.es"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuNac_e5m--mm3lBbPjDBwvJ8hGtMBdUMX2Y9XNxbiHZ47rz9BkqNoD_qrLDjh8qNjBzG_BtFIUggJXDXbEesp9gwOVtoVlJ7b6pZsZXAV8N4Eutc=",
+              "title": "d-nb.info"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGMTmypbYfhHeIlnbw1vSgBH45Q-5dk2yKtkJnOwff8Abhqt96Ur8J9zfasM3wLbnhCsu3c9yUrgE3kAdtrMXyfhOl6BT9zppZjyoy-duOZP36BZrE=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9vV1KdmxmObtuuASzH1hKGeEr08zhOmhz0__PAIlOLBPfq1I71s-2Jw7gPUdVMB7f8KmUbFx_HiqPXkycwqrY5m1cLESqCCIF8JGx1HESXbSzq51U_Sw=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFILjAahFo85me8fqMgUe2PeBARRq8-KdFaD0Z-DYcF12mxk3kFdMcpPpZ5SXmuCcE-X7iIgL1jXFC125MWfGTLgOnkRqmESX2f4tN_FqiMY6tWo1p1",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5yFHSFSoOqi0OdmR7z8g7FUEavc61sFG3_CLVTsbqvWavLo88Jgslp4L81oqiUcZjALnxc8OG4rRguKpOuVWHLg2uqcr6gJLQW_1zjO4Uc4xj_l4j6w==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQyMlqZvMeL6r15YaiT4TIQdQQ_xqXqgD0-JSNT1yTzw-zWdvYntlz3mkSESEBTupMdhFabbPPi02G55vhhhzcHQQ7_UDOdUL8saqQrMTNgse8BWHE",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4v8-dO6zmuOAFzeLeEl2UBh2rfOLcoCAnrOm9Lt2iXtEbKqcdvioPrzr2JNUGjDrHztgRZYt3qd_JB4pUC2_2QiR7G-cw1RwZDrA0hMVuZJE6gCQ=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0hKHIEyPLdzlhuRwY0VT5JROs96L_M86z5oZxHNvo_xJfRenLB_a-AVtv0nTfseIz_sV8ynxshnwqTfTi__gYY1WROYFj9BA9zbCeJwKOfoLJnumhYb5M",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-U-8izGJfbAXK4rTOAQ3SfmP7uS3EsIIIUj_38tYTFY8DUEe2-9jwsLGWHklrcUmH_zvbvxHW-ANXPOMf9Q-Zzew6EK8mptqmBRCjQykcifChQ3jCwOioAh2aLSqY5qaKlvJ3LxCa0ObhB7EQuHr-JgyJMIno2D0SwBRhQ3gS6RineX2ZjitU_b14VRLuUZVNQztxlDQ9IDCmui91rm0bxOSOoP7H5t6VhUUqaY_2UirPqPggFN5N8S-eocrTvaJ-A_4bmBtg",
+              "title": "semanticscholar.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJYzmSTreOI6t7ln-ELz2LQqY3ozF1aqnlnJ_BzytRNqA_oauHnBB0kvx11Unc7rOEEnQn-d6GdlLauul-X2z97UkMxdnVBnr1fO0rVmlS6h3_swsbe-M=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCPggL0CvFfw_7cYUAwzlsXg4F9MCCjt8AXy_gYumpYFZAh3F4avl7ANRkwsu0mD7228utzD8p6_EUeS8Eu2cuZkmFQ8jGhtCMAtz1-UNv8vloPf4=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEelE_W3kwzW0H_TSX9Mpvl1DCX4x5buhlEbVgrmLBoUfCjMBPeEnwSLDyUGQa366gjUdKtdQSPfNqFaf4vQ0OcQfDOyW5wGLK0wOSxldb2alCdJpE=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEpNmhIWLovySxeZeMD0RWVrbstIcWgg98BRuiJJXxWiPX7z5T-D9kMSpwQKVc8M40bXQW4OgLl1-nkphOuRb1QlUyR5MrbL1oh6rxeWWR9fDmJXya_BsbX",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEnzjm5RWCobeXe7IGCl78TetUEi4VKfPo9r8ua7NA3O2kkQjUKgnSnsuxmxHQw1oHX22eLUe0F8PFwGJG2oB2P0q3t9dvwc-5tOiKqHsCj8YbHmwsaqZF0C-QzqiXvT-MG63nxh-h-txU=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEWtT7skfXSe8pLf-VTwC-nyEfyrkCl06bGMRAGpIgCHyc2sRc0BQoQFOaTOULpSYPUQXXSEjqq_gDoLTXviAIA4Bctl0dhUQ_I0LDHsEQkn5erFSo=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH6oXgx8bM3-g13qsztl-YJ8ACJQCcWvxT2CcF5ATqFFmemRBO4C6dynaJxUTyZ6RQ8U8PszPqpYRBy9DRXj6tPooTfQumiXYT_Zv7CQsnDISgGj1I=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3t3AVj0XnUVUt4rFTAZiO0WrYtff6HQLPTBVl2XEnIXcSRtpzYSIuko_q7kWbmCThW-TQAZu0Z5opt4vdZYkYToqzRVdjcbu5r4bygMbI6cQXr6v9",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGkqaLbYwj5h2vhXOqAS9Q1aaW8azRndn_-eMnAk1zsz7x4rUDHde-HMjnv6pT3iabjjsdqQF4c6hqi8bfLYMcrc9RcPjlK-23ny0SsHrQza1CaYaXufqPjgNo=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQ_FZ4omJ5zp71c43pqw9x0n1P4cYSu9UDa_Ulh5yjUT4d425-Xb10OR1ZfKNotXqZbOMOOW3GIkK1frbN7rjCizBc1j3uMQ8tIEK9lhOaDIjuYql9b-Hglf8F1IeoHg==",
+              "title": "nih.gov"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_gqZPV0juzf41csUhTjd7DiYoHOom4wNtT4dgwgsZy8JZQXHmww7s7XTLO5ZNVba7MM5kcjAhERYdFKWWZoq5s-d7CII-iIEq8i5QfLGghyQR-IBeo8rz03U=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHR-fRsZnbzhLy3ORRnuMYJfAUxauS-Le5WRt0s_CqrL6pkUs_TgtaIrdDg7iX-qzVO9YSv4KwwkiBizK6MSrhK2KM4cy_tRUQALFdRaJbknsERy5I-tSyKt5rqhDC1UX-Bytup5LZnonXlzuqubC3Tk_zCrHznoqp7FumK56ESYP2VzUjYuQs=",
+              "title": "lockmancyber.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGBhGC190PR4u10O3q-5wQ69aG-UfeBB59tEBFfQCInuerKggedIqP1aHQG0IF6P-DSnqkQrzsWPexSSQINESkNh4cKG9WgFZiDTip_xYquZTGElFX87DFJdQ9qwkfeuSNb6OF4T0g=",
+              "title": "arxivdaily.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHZJb2mYGkWBH-J5iJdHg1eR3j9zaOVtDeDNKYVzQyHxLLBHXEPBZ9immFAlP8GSSrKVQ1eVdcTDhAFh6Is6SIGOoc7Vdw6sqp3bDkSdVXAYa_PsneX2I-F7gxi",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQ9H2zOG0oFmyppoYH_BPkyebycWVW07ZH0QFg138Oqbgyv1nPBzMz1LSet1MaFSMXLZTAqmR0RaSVVrKsMnAqx_TZokqS1DZKHVsOnz6u4baD5gR04s2L5ol56HhWK2T5RUSuwYvxFw==",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFob3keDG_y-lzhtSbsZW5S35CK2dd5as2lkAa5FFk41g-XwFjQxIAieABVPM3mi6jiGdaE4sAvKmD0wZjKbEWan1LIBkVAFRgwm5VStuFwPROdfZeM",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYOMy-nvVpwPb9baAw8vRVRjTi92sfCgUaYbfz3qHZWTSgKBkvU-mgqZ3YzcmfGVz1qjBHPEk4MPIuA8LE9h6iEJhoQY98Ob__KTPxV_Xm0ghlr58lG9o9jVG2bznKtcD0kPo8rH8=",
+              "title": "nih.gov"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGadpzt_Ajeh7cmgZhC7SrElKscoq3eekRC1Eb7IodXsgtigTRhiTyVt_Fy5tsXcvQFB4uWdxavoS-YD24h4UDqI9a2DYdD1gV4ZCsRABlrfHocDdSf",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGdYJFybvIQqxNCOz-BHUiZXOQpMez_GwyJ1pJupsAyjdoVArpAoMCy91KtwFYOLENzlIObal80JeX_-xZ_C_b2OErh92t6uuftULwtMyWPaMGfAC8vrItxz4iJdGGip_tazCa4QdPbFWVLMDQPjIoygWJNYmk51pZfDzMNoBgpDf4flnWe9mmq",
+              "title": "researchgate.net"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF1dzTIcPZenYSYqEP0RlYtcxWNtULbQU-sgsJisXshIRt833lywJbvxAJOpithJBwkAzuwQn0j79U3cfBaquOH0AxwuvXV0xa3egYaw9NJfAkeG7U0Vru812fTZeSv2rwIDflbWvEHQ1BvnuG6IQrp3hwEmm2kNb-1N4qgh80g-ZH0OZ-36BirGygy5yFWBQ==",
+              "title": "google.es"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEwP9Lx64k9T1byV-zPcmuP04SDWDrvj4DIwLBgJYjSrzfHcSS5QSFONY-oQq-WPNrlSI9VvKtmu8zzdlZh_lfevOC43wXKdDo6pv7RXf365ifu71j3T-Hml4_Kxfq7YHdn3APZynkzVa-B5iiT7hSaij_UPOmuLFchBeWmxq1O2KBxOs78e56BZ41F",
+              "title": "oup.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFim0i1fd49Ol4EeqTGxv7YMAciNysgrnbww5fXE8utEwXpO8Rgx6JIFQ91IKTipSSkiDEWiUomAhvGIN3W6FLbIOuCTushMNV1CCLIpHq2Ov1FdZE_CG3IP8A=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFss2LSmNt82FK7vTWl0Gl6cUKeNFZScp-CUkwSTlg7N08KOXSwBeLjg0CHihUiSsx_XHmE8utL8o9bRIELRf6rxIaqrvPF_rrVVG-G8vzMHn75RVkq8WoNm9LlERZW-hZDtx0hU90UZNMqm2on-ZlmFati73eo4Eg_",
+              "title": "scirp.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFe8EoHZam77DGVrfeSkoh0n0oeQsbMXUpinOBfncuT1O-5AXDqLVt3LNQHMXr8UmdPYgUBkp8sABpLZG77-i8Cwn-xWOZuThy4VSoYQZ8kIeCPkf-J",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEfSmNrIMCRPmV5Cbs0Z2hSer4_O1zs2f_NMWkxE9-5FdkzFOyCHmD7VvdEhnLrz8IySIZ1PKaPxZZl59mc6GFMy_VPexqfQVQSr5BjeA-cquyNr_nY",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHlitJ25MNecIv7O_5MEK-GARjBdUe9hEqZWo5iMvHDBTioWle2Ce_adp-FyLWvZLN-kJxwc6RFKyiRwj1x7NHwQPLVCYAWQEmRKV-IUrojTnsfs3lN5dg",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQExqJK_AFcBUZ25Dot9Gx_V-x7azf0wrroLdfVecSOhGu5K8_h24QrweRknWeJAR885uVNuBVjmNFH-zCOH2RJKLkZxQKoBvziyiSYk3vQQz5ki_BbnEScf2Jws_Q==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPTKfq-T_SQz2vTasI5Fa6b-G6F9rVZZqZLFiV1g2d0qOvjsTPEnwC1a5gk5IH9KfOkQvwh0mBPxL8QpkKbpfDMJZAL-igaKuttXVgqDFr4ncyEmfP7a_3LP8=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHvtynXcZKM5B_4FMrRNmlPpHJrEmD7ol6WpTErCzKx8kCcXSE8vnfDhRftvjgD_nbWg7oqp6PYE93Qpv3hj2KOnqHe-qSRjggRaKcP36_eM0SH3ueSUAXw6K8=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFgU6wKAJat78Nh1ACjhaIHr_y48qX2MfNa9cJsy-qElXpy1UXHKVS9Es1TwHgGXwz7e0ep0hdPmFfojKiXTZlxTDM5bUo1ioOyZ12Q0pINN_dxFS_3ovzi0oI=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUZwBzrC8PQL9kdV8Z82qbox_jJYjixVM20FbuS5K-Mq6EjuIPB8VXME_2BNY1CyqmQap1RnMzMHe4oTgbtQP9NCkO2MoXh-Ejahh_F3xDU8yc8RkwKTBbkA==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEebv89SN8zKQRrh6QMgkJNgL50dUdGFstGrzejCqgCLTyeTKSHsiWSlVbAnisrMC20rIi_ofw3P-MdHgOa30opq9iqFu_p8rC_0eln7xgJzZmY8sPSHHiROA==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGl9yKHARiGa2UErsizfgTWS6ZI250Bb_HdlILCmLWlRx6YtwfKneQDLar1wetmgeCZ78ngD8upgiYmshb5z11y6EoiQ6Exb3jBn6E-ERfZupXXnAwu5IQrSdiIYQ==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFIPAmv5Sm0KFsCCmbKMnOuDFM38ko1q-aB6bJJr-mjFc_W1WmQlhEhMfvM8j6c8e5FNzofMkieVLF-83Se-NcMX9KKUjHhqgUxAJFXFKzSp3SEK1z9gRXbOvdRig==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHVvlxireG_NsLlzJuK44GTk7X67hZ1YBwuuamdZdYluXV2T6-CHbcUBygrzTTuBrGf7xPbkUDnqH_-MFkYujacRE3Q3iOZqdMajNbpXaqwALHpReYdESEMz421-V90km4vExIfv_LfKYnFrwN-qA==",
+              "title": "quantum-journal.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPseXiIbOBR3zlDX2PZURu6dYHTUxs2Gq3LEKPFsXSBzrxpR973xXjIWP9lsKWFtcHoqXrZrSWxPjBs5Nbr-YZptiBteFEjn1j4UkzbeUsOF_Tf7QC",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEuoSPM5BiDrtBzYx8g2TozXOQI4PF7I4oSksdU9o3VpUwZlqhGg5Lil8sHG3BY4dlDSwJEw_ooi6I5kGgvz15WRA0BoAab6Mj7ZoccHW1zKrw8yVi-W0WHGxJXCCkkBKRXB03X5NfogQ==",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGOWWznvFM_e4jbuLaVNRtZ552j8VJ-meCgeqT0sz23S7TOBcwoS_gjlid4i89UYGh-hDSvivZqTHyfqcKF-rgtev7s2MYhlni5WeYR3Vu1TfcrdjJWNDjZKnwU",
+              "title": "alphaxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEXcWWpYVTwn4ErWh4v-yZcqPEb83_wEI75wy88COsenJ8Gj7uWkV1RTQtf2wEqJLT9QcBdNR0gZHvgBTt8xI6UdqEVyjX2dk70n_ZhJYEllbj1H9ua",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEw0rRCBUd0Ch92W0Sx5g_bP-ovu_hiuMGHFCRYexeywdp85YUDhm9ofgyEzPKcioN00tgOwAC1ttWeOoPcFtHuR0xId5hYoml_xUMJlL0M-b1CjIY1",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHsKheJA8hMHMFT8ZhWQ0VVI4LYFrmtBIKqPLN1sgCJi0llxkhQZUEWNPHKmCS4y9pA2Sj41YfIDp2L4jnd6VDLQDnpUaNEEIIdZHM-68XY-BR26921OxSNzUXE-Zn-i1OPupi-LUYpMs2f3gHVWxBoLDs=",
+              "title": "google.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFCB-PfDh9a-GWsGwZ491itPx0C1iC6Bl0zxwY8VqFu0T5LbkIFgXpZ_bSAwwBWI-P9lcYjREPeBA851I8u6Kf1BmV9tiOiVg_8JXPBcMdQKuynQjbOO-1SdlwgBaWd570AXaH7Q3_g0WyS5vt-WA==",
+              "title": "wikipedia.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHzHk_AHKc3OnlL-0QmTwbdKAM3gA1LyZtg78TLVwy9ydeTN8eJz-I5afLIPNh15utTsC5OLxNY14Q1sD_IjiLQrR5HCumCxMAhWqyINbl4FMofHoY4EjfYfRjCFncRVHG2z2HlLp6ylA_cDA==",
+              "title": "quantum-journal.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGq41UCo64fqF1bN3WuijqN25rRBKptY0dVG6RaeunTHT8brEYpW-vRSj-_JxnnI-EeM51Fwi9oBqZJhpETQFr6prjToFgcKYzOomUDgX0W9yBBcFo376jW3w==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0f_-XEcr291GZCCnHLntS4mZ6STcGaSgy3nle-at-4Yegwc87s7uH9_r4TYfWEZxxVinF1yK77tfk4pQTjoexdVCd-dgZYR54LkdgGIyhCjE4G_bKF9u2Z6NhwXZl3yrxYvIMqppuaSj84hsAkqeATmE=",
+              "title": "google.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGqFm7jcjbglmYC6zlmY8_6I0meXmg2w_QrnR3PkktR2OgEEoJb7SZLYxyEO_BsoG4tOpDyWvr396u7yTQcH4ggmm5zExPZm2pxRquvtiZJAXEsq9b",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-nPJuWEeA41OEhOYVDrflD7Xg-mEa9ceK8YyCwh4BIey8Z6iOICDZ8YVy8_Lo52HDe5KiUgkwqlGLRqrHanuQk3PKOtc-8_9wf_xYg5cv3Swci8h5LOZz",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8YkJNBbinB2XDzKxvr4Fj-NqtnOFJjnD-aoBvmn69gIaVZIFoxtInklJk2_3-pdkD3IrfIQX17zOkKO6lQ82BWsDcsDwCjdD2_BsIPQEsO-Ly4TmpZFDMcgm84axveSHYQmA0SFwxPTtQNqmNzcqZUqK0cucH8NGusRc7ZRx2ge6anTXAk0LbebbNsgWYig3gwdZxm20cuLkDMMPS",
+              "title": "researchgate.net"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_3g3Jc_fim-xzb_hKemUJv4HmWSibmAaO5kTvfWa901vTsC7LeYJwd9pYOmu_bnOA_L2NLaS3ZLzEtmj3kwLvOgx1t6qTykOglVY_0_sXvfOj9aHaQLSANHy1SbIzeCDtI9WTsklRG-BpgTINVA_BB3I=",
+              "title": "google.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMri1OcFVzmLKRswAM6W1N8gXiMLpd20r23lCGS6iVZOe6V6yRtCgJp5QoEiowqp1HknAyZbfRzbe5ACMUtaYR_yWZDyGR6MtU_9pJaCZAJXgJPbHiHg==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFyPpOmiRmhO418mg98e4Cs7bv0y3Hkzlwqk70GYWTM8rGaMpHufAispg7-7KLhJW_oZ5TNSym_v-g-3bVy9ukJ_RLGwRk_3JtgU1XkJZIpkm6d18qxG7HabSRbEdk=",
+              "title": "alphaxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHLtI38QDUghpC-09dzEPZAm8KBLEZK5au1pz8hkmB3CsxuqJ-cAtJH2SdLhnF0z46FOg1rfeBgrUI_5elrT_uHvTMAeWEDqFyhj6ECLZSR0r1ac4fEYQkhZFh322UGIlwfRQsAJCrCo6Zo0g==",
+              "title": "mardi4nfdi.de"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH25-bgrIJQvs3LjRNMinCZWuYwHD5UBKMGqtCdc04H49pEbv6kM922R9lmWhhyAfMXSAyPm3LQTepFWoHeitLJP9p7Ka-SrmTX4qwnXYPqrZhRX1Zaaw==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHKs90xzWmM3T1xycZhpgglEatCFW9GBP44YwOvW-o_qf4vSzuxqCdYjsu14l4plWn0JODxCZw_Qqip_toydwV1FY-kN9hojuPLFulCLrMw1djIz_PxVKXE7NWw0pxnlVLmvxRjbHnXdSlE",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFVuASO5WZSv1tpaiHdcymi6u62AAznet-OoNGVuzgZLuY_mUhZb7UFTkROq2Rf6JN96hYpXiFmD3WRhFDiYXe5oePWrXRCPdJPuvCBK0EGbH5t",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAI5aybeQ1T_DgmKxYZ13SsD5ezm2jZhVO9-fYRgRaIOjpoV4tRMJ9ZoJFEGe_AemL9EeVzS8bSIYvZARmVxHp7HcEl7bBqL75mEa3FKFTQrFXKFWBP6ObwaXtnpfjTxTO105EO2Rah7pXYQ==",
+              "title": "quantum-journal.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHq3mfuGeLu6Q5njii2H5CMFrBqRVOscsBafizEnnSOpmH5Dakx5CBtrTNk2t3_XDphq5fr9b5fBiZx0E_cMSIWf_Be4m4i7WAQxqnRsLq_cz2t9FcQlnWJJnB5eite0VvprsuzUtwjGQ==",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtRein0HB_5-k3J22LsOPZeTF-IwqdrPskBxwX7_Czg4yl3jIMdsJLXjcyN_WGj29o_qadIKm3n8P_19OBSRrF7Rfz0xCpe8ioeg0iHmFfzBiwo6e2jYd3HbBDeCY=",
+              "title": "mdpi.com"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE1oNMGgguXp1E4-zNrvN6YcZE3xFizljuTFt721TqEFj5qSr9QKGAAEMi9sqbIvDbDMH-Ie7nMyhyEAa8HlOuJVZfSHP6dXdM_DVs-9OhNpDlVpBaHSCHTKM3RnIthdBfrEtVD3NxwBn0FA4Q=",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHYO-gMn1fCK02OOPosLtOgVWy9ddshvVafvtSmke9IZL99jhRiIWMS8FbUWXddlv4eX0xbc5ID33RvC2GFz-Dn9PeIxbpUAFCx-VgRpfeyP2QYXETpdw==",
+              "title": "arxiv.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFnBcYe5ErjQ0hI2OTQPe6d4u1ExK80nI7Yg7b9e-sY1kMDKKW-FMXT4UlEbbgT51vmtoJCjnRXAPRLExIe6nuDYsfSz7EN75gyjf-1QPmQunvCig2ifPExzs4fBGhXGQ==",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPf8zs3CDOCRj1rXOy9r7iMbvoQm3O5s8TrlvMqgpf_wCCBoFDGcYYmIFsGS6e3MolQOzD830A9cAUojWDEnaivZCDWcdSANe6ySVAAuDTiIlLCtj5xtetly6xvlqxBSk=",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPf8zs3CDOCRj1rXOy9r7iMbvoQm3O5s8TrlvMqgpf_wCCBoFDGcYYmIFsGS6e3MolQOzD830A9cAUojWDEnaivZCDWcdSANe6ySVAAuDTiIlLCtj5xtetly6xvlqxBSk=",
+              "title": "aps.org"
+            }
+          },
+          {
+            "web": {
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHJPxJ83HY1AsS5Rs3PvJO-BY_F9dS2iRlYEXtEyAzP0x9PrxyPf9XBfn0M-hT__tWpeZsak7w_R__VxpxpiCTSAOv2yP90U-PF5AQXAKAyiWb_g-D-h8EtpreKtjs-Bs77NUvvTsMO9Maj80V_XTFqHU_afRCpxPbdgQ_rOqYh5X9nyVXIYsu7Z6n2K3pZ--GP0BCLkHsjajvoN-QKs6y4N3lKqd48FIfhUsoq_5OhcyzGC16FswnhhJ6oUy-DyBLn_O3CCNViY93zhbh-d9bRg3vD1GHDeTZn9C_pXXpYUqUQrh5HKnJj",
+              "title": "researchgate.net"
+            }
+          }
+        ],
+        "groundingSupports": [
+          {
+            "segment": {
+              "startIndex": 828,
+              "endIndex": 950,
+              "text": "Chadha and H. B. Nielsen**, *\"Lorentz invariance as a low energy phenomenon\"*, Nuclear Physics B **217**, 125–144 (1983)"
+            },
+            "groundingChunkIndices": [
+              0,
+              1
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 961,
+              "endIndex": 1013,
+              "text": "**Identifiers:** DOI: `10.1016/0550-3213(83)90081-0`"
+            },
+            "groundingChunkIndices": [
+              2
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1023,
+              "endIndex": 1319,
+              "text": "**What it establishes & assumptions:** In continuum $(3+1)$D non-covariant Quantum Electrodynamics (QED) and Yang–Mills theories with a spatial metric tensor that differs between species, the authors compute the one-loop perturbative RG $\\beta$-functions for the velocity differences $\\Delta v$"
+            },
+            "groundingChunkIndices": [
+              3
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1321,
+              "endIndex": 1557,
+              "text": "They show that $\\Delta v = 0$ is an IR-attractive fixed point, though in weak-coupling perturbation theory the flow toward universality is only logarithmic in the energy scale, $\\Delta v(\\mu) \\propto (\\mu / \\Lambda_{\\text{UV}})^{b g^2}$"
+            },
+            "groundingChunkIndices": [
+              4
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1587,
+              "endIndex": 1687,
+              "text": "Donoghue**, *\"The Emergence of a universal limiting speed\"*, Physical Review D **83**, 105027 (2011)"
+            },
+            "groundingChunkIndices": [
+              5,
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1697,
+              "endIndex": 1740,
+              "text": "**Identifiers:** arXiv:`1102.0789` [hep-th]"
+            },
+            "groundingChunkIndices": [
+              5,
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 1765,
+              "endIndex": 1775,
+              "text": "83.105027`"
+            },
+            "groundingChunkIndices": [
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2434,
+              "endIndex": 2529,
+              "text": "Vafek**, *\"Relativistic Mott criticality in graphene\"*, Physical Review B **80**, 075432 (2009)"
+            },
+            "groundingChunkIndices": [
+              7,
+              8
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2584,
+              "endIndex": 2591,
+              "text": "str-el]"
+            },
+            "groundingChunkIndices": [
+              9,
+              10
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2616,
+              "endIndex": 2626,
+              "text": "80.075432`"
+            },
+            "groundingChunkIndices": [
+              9
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2616,
+              "endIndex": 2676,
+              "text": "80.075432`; Open-access URL: https://arxiv.org/abs/0904.1019"
+            },
+            "groundingChunkIndices": [
+              9
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 2686,
+              "endIndex": 3149,
+              "text": "**What it establishes & assumptions:** Studying the semimetal-to-insulator quantum phase transition of interacting electrons on a honeycomb lattice via a Gross–Neveu–Yukawa (GNY) effective field theory in $d=4-\\epsilon$ spacetime dimensions at one loop, the authors show that the velocity of the collective order-parameter boson and the Fermi velocity of the Dirac electrons flow to a single common value at the strongly coupled Wilson–Fisher IR fixed point"
+            },
+            "groundingChunkIndices": [
+              11,
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3189,
+              "endIndex": 3353,
+              "text": "Herbut**, *\"Emergent Lorentz symmetry near fermionic quantum critical points in two and three dimensions\"*, Journal of High Energy Physics **2016** (04), 018 (2016)"
+            },
+            "groundingChunkIndices": [
+              13,
+              14
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3363,
+              "endIndex": 3407,
+              "text": "**Identifiers:** arXiv:`1510.07650` [hep-th]"
+            },
+            "groundingChunkIndices": [
+              13,
+              15
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3363,
+              "endIndex": 3439,
+              "text": "**Identifiers:** arXiv:`1510.07650` [hep-th]; DOI: `10.1007/JHEP04(2016)018`"
+            },
+            "groundingChunkIndices": [
+              14
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3500,
+              "endIndex": 3893,
+              "text": "**What it establishes & assumptions:** Using a one-loop $\\epsilon$-expansion around $d=3$ spatial dimensions for massless Dirac fermions coupled via Yukawa interactions to scalars and a fluctuating $U(1)$ gauge field, this work proves that all three distinct bare velocities ($v_F, v_B, c$) flow to a single terminal velocity in the deep IR, independent of initial conditions or flavor numbers"
+            },
+            "groundingChunkIndices": [
+              13
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 3932,
+              "endIndex": 4078,
+              "text": "Sibiryakov**, *\"Emergent Lorentz invariance from Strong Dynamics: Holographic examples\"*, Journal of High Energy Physics **2013** (11), 064 (2013)"
+            },
+            "groundingChunkIndices": [
+              16,
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4088,
+              "endIndex": 4131,
+              "text": "**Identifiers:** arXiv:`1305.0011` [hep-th]"
+            },
+            "groundingChunkIndices": [
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4088,
+              "endIndex": 4163,
+              "text": "**Identifiers:** arXiv:`1305.0011` [hep-th]; DOI: `10.1007/JHEP11(2013)064`"
+            },
+            "groundingChunkIndices": [
+              17,
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4223,
+              "endIndex": 4478,
+              "text": "**What it establishes & assumptions:** To overcome the slowness of perturbative Chadha–Nielsen running, the authors use the AdS/CFT correspondence (a $(4+1)$D Lifshitz/Randall–Sundrum bulk dual to a strongly coupled 4D QFT) to model strong RG dynamics"
+            },
+            "groundingChunkIndices": [
+              18,
+              19
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4480,
+              "endIndex": 4769,
+              "text": "They prove that strong coupling suppresses velocity differences among bound states and elementary probes hooked to the CFT by a power law $(\\Lambda_{\\text{IR}}/\\Lambda_{\\text{UV}})^{\\Delta}$ with a large anomalous dimension $\\Delta \\sim \\mathcal{O}(1)$, rapidly equalizing speeds in the IR"
+            },
+            "groundingChunkIndices": [
+              20,
+              19
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4797,
+              "endIndex": 4929,
+              "text": "Sibiryakov**, *\"Emergent Lorentz invariance with chiral fermions\"*, Theoretical and Mathematical Physics **189**, 1755–1774 (2016)"
+            },
+            "groundingChunkIndices": [
+              17,
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4939,
+              "endIndex": 4983,
+              "text": "**Identifiers:** arXiv:`1505.04130` [hep-th]"
+            },
+            "groundingChunkIndices": [
+              6,
+              21
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 4939,
+              "endIndex": 5017,
+              "text": "**Identifiers:** arXiv:`1505.04130` [hep-th]; DOI: `10.1134/S0040577916120084`"
+            },
+            "groundingChunkIndices": [
+              17,
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 5078,
+              "endIndex": 5427,
+              "text": "**What it establishes & assumptions:** Extending the holographic strong-dynamics mechanism of Bednik et al. to include chiral fermions coupled to a strongly interacting Lifshitz sector, the authors show that the chiral fermion speeds are dragged into alignment with the emergent speed of light of the strongly coupled sector via power-law RG running"
+            },
+            "groundingChunkIndices": [
+              22,
+              21
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 5621,
+              "endIndex": 5758,
+              "text": "Vucetich**, *\"Lorentz invariance and quantum gravity: an additional fine-tuning problem?\"*, Physical Review Letters **93**, 191301 (2004)"
+            },
+            "groundingChunkIndices": [
+              23,
+              24
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 5768,
+              "endIndex": 5806,
+              "text": "**Identifiers:** arXiv:`gr-qc/0403053`"
+            },
+            "groundingChunkIndices": [
+              23,
+              24
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 5834,
+              "endIndex": 5844,
+              "text": "93.191301`"
+            },
+            "groundingChunkIndices": [
+              25
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 5908,
+              "endIndex": 6302,
+              "text": "**What it establishes & assumptions:** In a perturbative Yukawa/gauge model where Lorentz invariance is broken only at the Planck scale $M_P$ (modeled via a physical momentum cutoff or modified UV dispersion relations), one-loop self-energy diagrams convert Planck-suppressed UV Lorentz violation into unsuppressed, dimension-4 kinetic velocity shifts in the IR: $\\Delta c \\sim g^2 / (16\\pi^2)$"
+            },
+            "groundingChunkIndices": [
+              24,
+              26
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 6304,
+              "endIndex": 6509,
+              "text": "Because different Standard Model species have different couplings $g_i$, they generically acquire percent-level velocity differences unless bare parameters are fine-tuned to better than 1 part in $10^{20}$"
+            },
+            "groundingChunkIndices": [
+              24
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 6547,
+              "endIndex": 6666,
+              "text": "Serone**, *\"Renormalization group in Lifshitz-type theories\"*, Journal of High Energy Physics **2009** (11), 020 (2009)"
+            },
+            "groundingChunkIndices": [
+              27,
+              28
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 6676,
+              "endIndex": 6719,
+              "text": "**Identifiers:** arXiv:`0906.3477` [hep-th]"
+            },
+            "groundingChunkIndices": [
+              27,
+              29
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 6676,
+              "endIndex": 6757,
+              "text": "**Identifiers:** arXiv:`0906.3477` [hep-th]; DOI: `10.1088/1126-6708/2009/11/020`"
+            },
+            "groundingChunkIndices": [
+              27
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 6817,
+              "endIndex": 7077,
+              "text": "**What it establishes & assumptions:** Analyzing one-loop RG flows in renormalizable $z\u003e1$ Lifshitz scalar and Yukawa field theories with multiple interacting fields, the authors prove that the RG trajectories generically do *not* converge to a common IR speed"
+            },
+            "groundingChunkIndices": [
+              27,
+              30
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 7079,
+              "endIndex": 7257,
+              "text": "Instead, the IR speed ratios depend continuously on the arbitrary UV boundary conditions and couplings, requiring severe fine-tuning to recover Lorentz invariance at low energies"
+            },
+            "groundingChunkIndices": [
+              31
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 7298,
+              "endIndex": 7397,
+              "text": "Strumia**, *\"Lorentz Violation from the Higgs Portal\"*, Physics Letters B **690**, 272–279 (2010)"
+            },
+            "groundingChunkIndices": [
+              32,
+              33
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 7407,
+              "endIndex": 7450,
+              "text": "**Identifiers:** arXiv:`1003.2364` [hep-ph]"
+            },
+            "groundingChunkIndices": [
+              32,
+              33
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 7549,
+              "endIndex": 7780,
+              "text": "**What it establishes & assumptions:** Assuming the Standard Model is coupled via the Higgs portal to a hidden sector with a different limiting speed, perturbative loop corrections transmit Lorentz violation into the Standard Model"
+            },
+            "groundingChunkIndices": [
+              33
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 8242,
+              "endIndex": 8355,
+              "text": "Pospelov**, *\"Lorentz Violation in Supersymmetric Field Theories\"*, Physical Review Letters **94**, 081601 (2005)"
+            },
+            "groundingChunkIndices": [
+              34,
+              35
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 8365,
+              "endIndex": 8404,
+              "text": "**Identifiers:** arXiv:`hep-ph/0404271`"
+            },
+            "groundingChunkIndices": [
+              34
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 8432,
+              "endIndex": 8442,
+              "text": "94.081601`"
+            },
+            "groundingChunkIndices": [
+              34,
+              35
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 8507,
+              "endIndex": 8771,
+              "text": "**What it establishes & assumptions:** In the framework of the Supersymmetric Standard Model (MSSM) with exact $\\mathcal{N}=1$ supersymmetry and gauge invariance, the authors prove algebraically that no Lorentz-violating operators of mass dimension $d \\le 4$ exist"
+            },
+            "groundingChunkIndices": [
+              34
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 8773,
+              "endIndex": 8989,
+              "text": "Consequently, all renormalizable kinetic terms are strictly forced to share the same speed of light, and any UV Lorentz violation is suppressed by at least $\\mathcal{O}(E/\\Lambda_{\\text{UV}})$ (dimension 5 or higher)"
+            },
+            "groundingChunkIndices": [
+              34,
+              35
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9000,
+              "endIndex": 9124,
+              "text": "Jain and J. P. Ralston**, *\"Supersymmetry and the Lorentz Fine Tuning Problem\"*, Physics Letters B **621**, 213–218 (2005)"
+            },
+            "groundingChunkIndices": [
+              36,
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9134,
+              "endIndex": 9173,
+              "text": "**Identifiers:** arXiv:`hep-ph/0502106`"
+            },
+            "groundingChunkIndices": [
+              36,
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9200,
+              "endIndex": 9212,
+              "text": "2005.06.055`"
+            },
+            "groundingChunkIndices": [
+              36,
+              38
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9514,
+              "endIndex": 9634,
+              "text": "fine-tuning problem cancel between bosonic and fermionic loops, protecting the equality of the scalar and fermion speeds"
+            },
+            "groundingChunkIndices": [
+              36,
+              38,
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9644,
+              "endIndex": 9765,
+              "text": "-S. Lee**, *\"Emergence of supersymmetry at a critical point of a lattice model\"*, Physical Review B **76**, 075103 (2007)"
+            },
+            "groundingChunkIndices": [
+              39,
+              40
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9827,
+              "endIndex": 9834,
+              "text": "str-el]"
+            },
+            "groundingChunkIndices": [
+              39
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9859,
+              "endIndex": 9869,
+              "text": "76.075103`"
+            },
+            "groundingChunkIndices": [
+              39
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 9936,
+              "endIndex": 10258,
+              "text": "**What it establishes & assumptions:** For a non-relativistic $(2+1)$D lattice model of fermions and bosons without microscopic Lorentz invariance or supersymmetry, an $\\epsilon$-expansion around the quantum critical point shows that the system flows to an emergent $\\mathcal{N}=2$ Wess–Zumino superconformal fixed point"
+            },
+            "groundingChunkIndices": [
+              39
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10407,
+              "endIndex": 10473,
+              "text": "Vishwanath**, Science **344**, 280–283 (2014), arXiv:`1301.7449`"
+            },
+            "groundingChunkIndices": [
+              41
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10407,
+              "endIndex": 10538,
+              "text": "Vishwanath**, Science **344**, 280–283 (2014), arXiv:`1301.7449`, for the analogous mechanism on topological insulator boundaries"
+            },
+            "groundingChunkIndices": [
+              42
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10567,
+              "endIndex": 10674,
+              "text": "Shang**, *\"On Lorentz violation in Horava-Lifshitz type theories\"*, Physical Review D **85**, 105001 (2012)"
+            },
+            "groundingChunkIndices": [
+              6,
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10684,
+              "endIndex": 10727,
+              "text": "**Identifiers:** arXiv:`1010.5249` [hep-th]"
+            },
+            "groundingChunkIndices": [
+              6,
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10752,
+              "endIndex": 10762,
+              "text": "85.105001`"
+            },
+            "groundingChunkIndices": [
+              6
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 10956,
+              "endIndex": 11100,
+              "text": "loop corrections are tamed without fine-tuning if the Lifshitz crossover scale $\\Lambda_{\\text{HL}}$ is much smaller than the Planck scale $M_P$"
+            },
+            "groundingChunkIndices": [
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 11102,
+              "endIndex": 11316,
+              "text": "Under this scale-separation assumption, the Lifshitz $z=3$ propagators soften the UV loop integrals above $\\Lambda_{\\text{HL}}$, suppressing radiatively induced velocity differences by $(\\Lambda_{\\text{HL}}/M_P)^2$"
+            },
+            "groundingChunkIndices": [
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 11322,
+              "endIndex": 11482,
+              "text": "**G. E. Volovik**, *\"The Universe in a Helium Droplet\"*, International Series of Monographs on Physics **117**, Clarendon Press / Oxford University Press (2003)"
+            },
+            "groundingChunkIndices": [
+              44,
+              45,
+              46
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 11500,
+              "endIndex": 11624,
+              "text": "Hořava**, \"Stability of Fermi Surfaces and K-Theory\", Physical Review Letters **95**, 016405 (2005), arXiv:`hep-th/0503006`"
+            },
+            "groundingChunkIndices": [
+              47
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 11652,
+              "endIndex": 11662,
+              "text": "95.016405`"
+            },
+            "groundingChunkIndices": [
+              47
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 11674,
+              "endIndex": 11739,
+              "text": "**Identifiers:** DOI: `10.1093/acprof:oso/9780199564842.001.0001`"
+            },
+            "groundingChunkIndices": [
+              44,
+              48
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 11749,
+              "endIndex": 12032,
+              "text": "**What it establishes & assumptions:** In $(3+1)$D fermionic quantum liquids (such as superfluid $^3\\text{He-A}$), zeroes of the inverse Green's function (Fermi/Weyl points) are topologically protected by momentum-space topological invariants ($\\pi_3$ homotopy or $K$-theory charges)"
+            },
+            "groundingChunkIndices": [
+              49,
+              47
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 12034,
+              "endIndex": 12186,
+              "text": "Expanding around a topologically stable node automatically yields a linear relativistic Weyl dispersion $g^{\\mu\\nu}(p_\\mu - eA_\\mu)(p_\\nu - eA_\\nu) = 0$"
+            },
+            "groundingChunkIndices": [
+              50,
+              51
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 12188,
+              "endIndex": 12332,
+              "text": "Collective gauge and gravitational modes arise as shifts of the node position $eA_\\mu$ and deformations of the slope matrix $e^\\mu_a$ (vielbein)"
+            },
+            "groundingChunkIndices": [
+              51,
+              52
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 12188,
+              "endIndex": 12628,
+              "text": "Collective gauge and gravitational modes arise as shifts of the node position $eA_\\mu$ and deformations of the slope matrix $e^\\mu_a$ (vielbein); consequently, when multiple fermion species arise from a single degenerate Fermi point, they inherently couple to the same emergent metric $g^{\\mu\\nu}$ and share a universal limiting speed, whereas independent or split Fermi points generically produce birefringence and species-dependent speeds"
+            },
+            "groundingChunkIndices": [
+              53
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 12719,
+              "endIndex": 12792,
+              "text": "Wen**, *\"Origin of Light\"*, Physical Review Letters **88**, 011602 (2002)"
+            },
+            "groundingChunkIndices": [
+              54
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 12806,
+              "endIndex": 12943,
+              "text": "Wen**, *\"Quantum order from string-net condensations and origin of light and massless fermions\"*, Physical Review D **68**, 065003 (2003)"
+            },
+            "groundingChunkIndices": [
+              55
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13020,
+              "endIndex": 13074,
+              "text": "88.011602`, URL: https://arxiv.org/abs/hep-th/0109120)"
+            },
+            "groundingChunkIndices": [
+              54
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13126,
+              "endIndex": 13180,
+              "text": "68.065003`, URL: https://arxiv.org/abs/hep-th/0302201)"
+            },
+            "groundingChunkIndices": [
+              55
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13190,
+              "endIndex": 13514,
+              "text": "**What it establishes & assumptions:** In local lattice bosonic/spin models exhibiting string-net condensation (quantum topological order), closed string-net fluctuations yield gapless $U(1)$ or $SU(N)$ gauge bosons, while the ends of open strings yield gapless fermionic matter protected by projective symmetry groups (PSG)"
+            },
+            "groundingChunkIndices": [
+              55
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13552,
+              "endIndex": 13728,
+              "text": "inferred:** While Wen proves that both gauge bosons and chiral fermions emerge from the *same* underlying string-net degrees of freedom without fine-tuning their masses to zero"
+            },
+            "groundingChunkIndices": [
+              54,
+              55
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 13552,
+              "endIndex": 14204,
+              "text": "inferred:** While Wen proves that both gauge bosons and chiral fermions emerge from the *same* underlying string-net degrees of freedom without fine-tuning their masses to zero, the bare lattice dispersion velocity of the emergent photon ($c_{\\text{art}}$, determined by string tension/loop flip amplitudes) and the Fermi velocity of the string-end fermions ($v_F$, determined by end-hopping amplitudes) are *not* automatically equal at the bare lattice level; equalizing them in the deep IR relies on the strong-coupling RG flow of the emergent gauge theory (as analyzed in the QED$_3$ / GNY literature by Herbut, Roy, and Juričić cited in Section 1"
+            },
+            "groundingChunkIndices": [
+              13
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 14277,
+              "endIndex": 14394,
+              "text": "Fisher**, *\"Quantum criticality beyond the Landau-Ginzburg-Wilson paradigm\"*, Physical Review B **70**, 144407 (2004)"
+            },
+            "groundingChunkIndices": [
+              56,
+              57
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 14404,
+              "endIndex": 14445,
+              "text": "**Identifiers:** arXiv:`cond-mat/0312617`"
+            },
+            "groundingChunkIndices": [
+              58,
+              59
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 14470,
+              "endIndex": 14480,
+              "text": "70.144407`"
+            },
+            "groundingChunkIndices": [
+              56
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 14547,
+              "endIndex": 14799,
+              "text": "**What it establishes & assumptions:** At deconfined quantum critical points (e.g., between Néel and valence-bond-solid phases on a 2D square lattice), fractionalized spinons and an emergent non-compact $U(1)$ gauge field become simultaneously gapless"
+            },
+            "groundingChunkIndices": [
+              58,
+              57
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15100,
+              "endIndex": 15350,
+              "text": "In discrete-time, discrete-space unitary models, a common limiting speed across species is achieved not through perturbative loop running, but through **architectural wiring** (a universal causal circuit speed) or **composite-particle constructions**"
+            },
+            "groundingChunkIndices": [
+              60,
+              61
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15381,
+              "endIndex": 15513,
+              "text": "Perinotti**, *\"Derivation of the Dirac equation from principles of information processing\"*, Physical Review A **90**, 062106 (2014)"
+            },
+            "groundingChunkIndices": [
+              62,
+              63
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15523,
+              "endIndex": 15568,
+              "text": "**Identifiers:** arXiv:`1306.1934` [quant-ph]"
+            },
+            "groundingChunkIndices": [
+              64,
+              63
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15593,
+              "endIndex": 15603,
+              "text": "90.062106`"
+            },
+            "groundingChunkIndices": [
+              63
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15593,
+              "endIndex": 15653,
+              "text": "90.062106`; Open-access URL: https://arxiv.org/abs/1306.1934"
+            },
+            "groundingChunkIndices": [
+              63
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 15663,
+              "endIndex": 16016,
+              "text": "**What it establishes & assumptions:** Assuming unitarity, locality, homogeneity, and discrete isotropy on a Cayley graph (specifically the body-centered cubic lattice in 3D), the authors prove that the minimal two-component QCA reduces to the Weyl equation in the low-momentum $(k \\to 0)$ IR limit, and coupling two such Weyl modes yields the Dirac QCA"
+            },
+            "groundingChunkIndices": [
+              65,
+              62
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 16248,
+              "endIndex": 16352,
+              "text": "Perinotti**, *\"Quantum Cellular Automaton Theory of Light\"*, Annals of Physics **368**, 177–190 (2016)"
+            },
+            "groundingChunkIndices": [
+              66,
+              67
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 16362,
+              "endIndex": 16407,
+              "text": "**Identifiers:** arXiv:`1407.6928` [quant-ph]"
+            },
+            "groundingChunkIndices": [
+              61,
+              67
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 16429,
+              "endIndex": 16441,
+              "text": "2016.02.009`"
+            },
+            "groundingChunkIndices": [
+              67,
+              68
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 16501,
+              "endIndex": 16867,
+              "text": "**What it establishes & assumptions:** To guarantee that photons and fermions share the exact same limiting speed in a QCA without fine-tuning two independent lattices, the authors construct the Maxwell field as a *composite boson* formed by a correlated pair of massless Weyl QCA fermions (a discrete realization of the de Broglie–Jordan neutrino theory of light)"
+            },
+            "groundingChunkIndices": [
+              61
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 16869,
+              "endIndex": 17067,
+              "text": "In the low-momentum and low-photon-density regime, the composite states obey free Maxwell electrodynamics and automatically inherit the exact causal speed $c=a/\\tau$ of the underlying Weyl automaton"
+            },
+            "groundingChunkIndices": [
+              61
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17107,
+              "endIndex": 17242,
+              "text": "Forets**, *\"Discrete Lorentz covariance for Quantum Walks and Quantum Cellular Automata\"*, New Journal of Physics **16**, 093007 (2014)"
+            },
+            "groundingChunkIndices": [
+              69,
+              70
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17252,
+              "endIndex": 17297,
+              "text": "**Identifiers:** arXiv:`1404.4499` [quant-ph]"
+            },
+            "groundingChunkIndices": [
+              71,
+              72
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17395,
+              "endIndex": 17615,
+              "text": "**What it establishes & assumptions:** In $(1+1)$D discrete spacetime, the authors define exact discrete Lorentz transformations via local circuit-equivalence (rewiring) rules and construct the \"Clock QW\" and \"Clock QCA\""
+            },
+            "groundingChunkIndices": [
+              71,
+              72
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17617,
+              "endIndex": 17804,
+              "text": "They prove that any species coupled into this causal circuit architecture shares the same invariant light-cone structure because the causal cone is a property of the wiring diagram itself"
+            },
+            "groundingChunkIndices": [
+              60,
+              71
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17841,
+              "endIndex": 17959,
+              "text": "Farrelly**, *\"A quantum cellular automaton for one-dimensional QED\"*, Quantum Information Processing **19**, 88 (2020)"
+            },
+            "groundingChunkIndices": [
+              73,
+              74
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17969,
+              "endIndex": 18015,
+              "text": "**Identifiers:** arXiv:`1903.07007` [quant-ph]"
+            },
+            "groundingChunkIndices": [
+              75,
+              76
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17969,
+              "endIndex": 18049,
+              "text": "**Identifiers:** arXiv:`1903.07007` [quant-ph]; DOI: `10.1007/s11128-019-2555-4`"
+            },
+            "groundingChunkIndices": [
+              73,
+              76
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 17969,
+              "endIndex": 18100,
+              "text": "**Identifiers:** arXiv:`1903.07007` [quant-ph]; DOI: `10.1007/s11128-019-2555-4`; Open-access URL: https://arxiv.org/abs/1903.07007"
+            },
+            "groundingChunkIndices": [
+              76,
+              77
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18110,
+              "endIndex": 18493,
+              "text": "**What it establishes & assumptions:** Formulating the $(1+1)$D interacting Schwinger model (Dirac fermions coupled to a $U(1)$ gauge field) as a gauge-covariant QCA made of local quantum gates, the authors show that the maximum speed of information propagation for all interacting sectors is strictly bounded and set by the shared elementary gate-update speed of the quantum circuit"
+            },
+            "groundingChunkIndices": [
+              60,
+              75,
+              73
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18504,
+              "endIndex": 18680,
+              "text": "Mlodinow and T. A. Brun**, *\"Fermionic and bosonic quantum field theories from quantum cellular automata in three spatial dimensions\"*, Physical Review A **103**, 052203 (2021)"
+            },
+            "groundingChunkIndices": [
+              78,
+              79
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18691,
+              "endIndex": 18847,
+              "text": "Mlodinow and T. A. Brun**, *\"Bounds on quantum cellular automaton lattice spacing from data on Lorentz violation\"*, Physical Review D **112**, 074513 (2025)"
+            },
+            "groundingChunkIndices": [
+              80,
+              81
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 18940,
+              "endIndex": 18990,
+              "text": "103.052203`; URL: https://arxiv.org/abs/2011.05597"
+            },
+            "groundingChunkIndices": [
+              78
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 19003,
+              "endIndex": 19032,
+              "text": "arXiv:`2506.20136` [quant-ph]"
+            },
+            "groundingChunkIndices": [
+              80,
+              82
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 19057,
+              "endIndex": 19068,
+              "text": "112.074513`"
+            },
+            "groundingChunkIndices": [
+              80,
+              81
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 19140,
+              "endIndex": 19227,
+              "text": "Mlodinow**, Entropy **27**(5), 492 (2025), arXiv:`2503.05998`, DOI: `10.3390/e27050492`"
+            },
+            "groundingChunkIndices": [
+              83,
+              84
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 19239,
+              "endIndex": 19517,
+              "text": "**What they establish & assumptions:** In the 2021 and May 2025 works, the authors construct 3D multiparticle QCAs for both Dirac fermions (4D internal space) and Maxwell photons (6D internal space reduced to 2 helicities upon restricting to positive energy) on the same lattice"
+            },
+            "groundingChunkIndices": [
+              85,
+              78
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 19519,
+              "endIndex": 19745,
+              "text": "By imposing the *same* discrete lattice-rotation and reflection symmetries and the same clock step $\\Delta x / \\Delta t = c$ on both walks, both species recover an identical isotropic speed $c$ in the $k \\to 0$ continuum limit"
+            },
+            "groundingChunkIndices": [
+              86,
+              85,
+              78
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 19747,
+              "endIndex": 20074,
+              "text": "However, in the October 2025 PRD paper, they show that at finite momentum $k$, the QCA dispersion relations exhibit $\\mathcal{O}(k^2 a^2)$ Lorentz-violating velocity shifts and spatial anisotropies that differ from continuum QED, allowing astrophysical time-of-flight and birefringence data to constrain the QCA lattice spacing"
+            },
+            "groundingChunkIndices": [
+              86,
+              87,
+              88
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20415,
+              "endIndex": 20419,
+              "text": "2004"
+            },
+            "groundingChunkIndices": [
+              24
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20434,
+              "endIndex": 20438,
+              "text": "2009"
+            },
+            "groundingChunkIndices": [
+              27
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20455,
+              "endIndex": 20459,
+              "text": "2010"
+            },
+            "groundingChunkIndices": [
+              33
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20462,
+              "endIndex": 20539,
+              "text": "Perturbative RG running toward equal velocities exists (Chadha & Nielsen 1983"
+            },
+            "groundingChunkIndices": [
+              0,
+              3
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20462,
+              "endIndex": 20568,
+              "text": "Perturbative RG running toward equal velocities exists (Chadha & Nielsen 1983) but is logarithmically slow"
+            },
+            "groundingChunkIndices": [
+              3,
+              4
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20578,
+              "endIndex": 20833,
+              "text": "*Mechanisms that successfully equalize speeds in QFT/Condensed Matter:* (a) **Strong coupling / large anomalous dimensions** near a conformal or holographic IR fixed point, which upgrades logarithmic running to power-law suppression (Anber & Donoghue 2011"
+            },
+            "groundingChunkIndices": [
+              5,
+              89
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20849,
+              "endIndex": 20853,
+              "text": "2013"
+            },
+            "groundingChunkIndices": [
+              19
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20869,
+              "endIndex": 20873,
+              "text": "2009"
+            },
+            "groundingChunkIndices": [
+              12
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20886,
+              "endIndex": 20890,
+              "text": "2016"
+            },
+            "groundingChunkIndices": [
+              13
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20886,
+              "endIndex": 21087,
+              "text": "2016); (b) **Supersymmetry** (fundamental or emergent), which forbids $d \\le 4$ Lorentz-violating operators and cancels loop velocity shifts between bosons and fermions (Groot Nibbelink & Pospelov 2005"
+            },
+            "groundingChunkIndices": [
+              34
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20886,
+              "endIndex": 21108,
+              "text": "2016); (b) **Supersymmetry** (fundamental or emergent), which forbids $d \\le 4$ Lorentz-violating operators and cancels loop velocity shifts between bosons and fermions (Groot Nibbelink & Pospelov 2005; Jain & Ralston 2005"
+            },
+            "groundingChunkIndices": [
+              36,
+              37
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20886,
+              "endIndex": 21118,
+              "text": "2016); (b) **Supersymmetry** (fundamental or emergent), which forbids $d \\le 4$ Lorentz-violating operators and cancels loop velocity shifts between bosons and fermions (Groot Nibbelink & Pospelov 2005; Jain & Ralston 2005; Lee 2007"
+            },
+            "groundingChunkIndices": [
+              39
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20886,
+              "endIndex": 21218,
+              "text": "2016); (b) **Supersymmetry** (fundamental or emergent), which forbids $d \\le 4$ Lorentz-violating operators and cancels loop velocity shifts between bosons and fermions (Groot Nibbelink & Pospelov 2005; Jain & Ralston 2005; Lee 2007); (c) **Scale separation** $\\Lambda_{\\text{HL}} \\ll M_P$ in Lifshitz gravity (Pospelov & Shang 2012"
+            },
+            "groundingChunkIndices": [
+              43
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 20886,
+              "endIndex": 21384,
+              "text": "2016); (b) **Supersymmetry** (fundamental or emergent), which forbids $d \\le 4$ Lorentz-violating operators and cancels loop velocity shifts between bosons and fermions (Groot Nibbelink & Pospelov 2005; Jain & Ralston 2005; Lee 2007); (c) **Scale separation** $\\Lambda_{\\text{HL}} \\ll M_P$ in Lifshitz gravity (Pospelov & Shang 2012); and (d) **Shared momentum-space topology**, where multiple species emerge from a single unsplit Fermi point and thus share the same emergent vielbein (Volovik 2003"
+            },
+            "groundingChunkIndices": [
+              44,
+              49,
+              53
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 21423,
+              "endIndex": 21613,
+              "text": "Speed universality in the $k \\to 0$ limit is achieved kinematically either by constructing bosons as **composite states of the fundamental fermionic walk** (Bisio, D'Ariano, & Perinotti 2016"
+            },
+            "groundingChunkIndices": [
+              61
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 21822,
+              "endIndex": 21832,
+              "text": "2014, 2020"
+            },
+            "groundingChunkIndices": [
+              71,
+              75
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 21822,
+              "endIndex": 21860,
+              "text": "2014, 2020; Mlodinow & Brun 2021, 2025"
+            },
+            "groundingChunkIndices": [
+              85,
+              78
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 21927,
+              "endIndex": 22134,
+              "text": "In QCA and quantum-walk models, the equality of bare speeds $c_{\\text{fermion}} = c_{\\text{boson}} = \\Delta x / \\Delta t$ is built into the discrete synchronous update rule (one lattice link per clock cycle)"
+            },
+            "groundingChunkIndices": [
+              60
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22136,
+              "endIndex": 22244,
+              "text": "However, most QCA models in $(3+1)$D have thus far been analyzed in the *free* or tree-level continuum limit"
+            },
+            "groundingChunkIndices": [
+              86,
+              85,
+              78
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22444,
+              "endIndex": 22450,
+              "text": "(2004)"
+            },
+            "groundingChunkIndices": [
+              24
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22710,
+              "endIndex": 22714,
+              "text": "2014"
+            },
+            "groundingChunkIndices": [
+              71
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22710,
+              "endIndex": 22751,
+              "text": "2014, or strong IR fixed-point attraction"
+            },
+            "groundingChunkIndices": [
+              19
+            ]
+          },
+          {
+            "segment": {
+              "startIndex": 22710,
+              "endIndex": 22835,
+              "text": "2014, or strong IR fixed-point attraction) or has its bare hopping parameters fine-tuned to compensate for loop self-energies"
+            },
+            "groundingChunkIndices": [
+              24
+            ]
+          }
+        ],
+        "webSearchQueries": [
+          "\"Arrighi\" \"Bény\" \"Farrelly\" \"A quantum cellular automaton for one-dimensional QED\" arXiv",
+          "\"Grover\" \"Sheng\" \"Vishwanath\" 2014 arXiv",
+          "\"Bounds on quantum cellular automaton lattice spacing from data on Lorentz violation\" arXiv",
+          "Groot Nibbelink Pospelov 2005 Lorentz violation",
+          "\"Jain\" \"Ralston\" 2005 \"Supersymmetry and the Lorentz fine tuning problem\" arXiv",
+          "\"Lee\" \"2007\" \"Emergence of supersymmetry at a critical point of a lattice model\"",
+          "\"Volovik\" \"The Universe in a Helium Droplet\"",
+          "\"D'Ariano\" \"Perinotti\" \"quantum cellular automata\" Dirac 2014",
+          "\"Arrighi\" \"Facchini\" \"Forets\" \"Discrete Lorentz covariance\" arXiv",
+          "\"Herbut\" \"Juricic\" \"Vafek\" 2009 graphene velocity arXiv",
+          "\"Quantum Electrodynamics from Quantum Cellular Automata\"",
+          "\"2503.05998\" \"Mlodinow\" \"Brun\" arXiv",
+          "\"quantum cellular automata\" \"Lorentz invariance\" species speed OR velocity",
+          "\"Roy\" \"Juricic\" \"Herbut\" 2016 \"Emergent Lorentz symmetry\" arXiv",
+          "\"Wen\" \"Origin of light\" 2002 OR 2003 arXiv",
+          "\"Pospelov\" \"Shang\" 2012 \"On Lorentz violation in Horava-Lifshitz\" arXiv",
+          "\"Senthil\" \"Vishwanath\" \"Balents\" \"Fisher\" \"Deconfined\" 2004 arXiv",
+          "\"Action principles for quantum automata and lorentz invariance\" arXiv",
+          "\"Bisio\" \"D'Ariano\" \"Perinotti\" \"Quantum cellular automaton theory of light\" arXiv",
+          "\"Mlodinow\" \"Brun\" \"Fermionic and bosonic quantum field theories from quantum cellular automata\" arXiv",
+          "\"Pujolas\" \"Sibiryakov\" \"Emergent Lorentz invariance\" \"1109.4495\" arXiv",
+          "\"0904.1019\" arXiv",
+          "\"Bednik\" \" Pujol\" \"Sibiryakov\" 2013",
+          "\"Collins\" \"Perez\" \"Sudarsky\" \"Urrutia\" \"Vucetich\" 2004",
+          "\"Horava\" 2005 \"Stability of Fermi Surfaces and K Theory\" arXiv",
+          "\"Kharuk\" \"Sibiryakov\" \"1505.04130\" arXiv",
+          "Anber Donoghue 2011 emergence of Lorentz invariance",
+          "Chadha Nielsen 1983 Lorentz invariance",
+          "\"Volovik\" \"Fermi point\" \"Lorentz invariance\" arXiv",
+          "\"Giudice\" \"Raidal\" \"Strumia\" 2012 \"Lorentz invariance\" arXiv",
+          "\"Iengo\" \"Russo\" \"Serone\" \"2009\" arXiv"
+        ]
+      }
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 451,
+    "candidatesTokenCount": 9202,
+    "totalTokenCount": 9653,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 451
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 9202
+      }
+    ]
+  },
+  "modelVersion": "gemini-4-argon",
+  "responseId": "AyXjasqhIefLvdIP3pGT0AQ"
+}

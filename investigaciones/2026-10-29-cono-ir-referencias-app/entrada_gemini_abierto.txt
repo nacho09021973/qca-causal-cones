@@ -1,0 +1,20 @@
+I need a literature search in theoretical physics. Give primary sources with exact bibliographic
+data (authors, title, year, journal, arXiv id or DOI) and open-access URLs where available.
+Distinguish what you found from what you infer, and do not guess identifiers.
+
+Question: in theories where Lorentz invariance is not fundamental (lattice models, quantum
+cellular automata or quantum walks, condensed-matter emergent relativity, Lifshitz-type field
+theories, quantum-gravity phenomenology), which mechanisms have been proposed or proved to make
+different particle species share the same limiting speed in the infrared? Which works argue the
+opposite, that species-dependent speeds are generic or require fine-tuning?
+
+Cover in particular:
+- renormalization-group flow of velocity differences;
+- topological protection of nodes;
+- emergent gauge fields and common couplings;
+- fine-tuning arguments;
+- results specific to discrete models (quantum walks or QCA with several species or internal
+  degrees of freedom).
+
+For each work, state in one or two sentences what it establishes, and under which assumptions
+(approximation, model class).

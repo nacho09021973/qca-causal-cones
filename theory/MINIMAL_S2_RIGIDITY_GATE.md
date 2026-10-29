@@ -1,6 +1,10 @@
-# MINIMAL S=2 RIGIDITY GATE (DRAFT v3)
+# MINIMAL S=2 RIGIDITY GATE (DRAFT v4)
 
-**Status: DRAFT v3 — not chartered, nothing authorized.**
+**Status: DRAFT v4 — not chartered, nothing authorized.**
+- **v4** applies the round-3 Astra repairs. Round 3 found v3 NOT_READY for one blocking repair,
+  A-R3-01, plus one wording repair, A-R3-02:
+  [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-v3-review-astra/verificacion_autor.md).
+  v4 also adds the reviewer's editorial precisions.
 - **v3** applies the round-2 Astra repairs A-R2-01..06, which found v2 NOT_READY:
   [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-v2-review-astra/verificacion_autor.md).
   It also applies two user decisions of 2026-10-29: keep the `C4` face class, and let Q-a range
@@ -137,7 +141,7 @@ Subsidiary questions:
 | Internal dimension | `s = 2` (main); `s = 1` only in Step 0 |
 | Family P (partitioned) | `G ⊂ O`, proper rotations of the cube by their 3x3 matrices. `S_+ ⊂ N_3` with `|S_+| = 4` and `S_+ ∩ (−S_+) = ∅`. `G` permutes `S_+` transitively. This is a restriction of P17's setting: proper cube rotations and an oriented four-generator presentation, without Eq. (2). It is **not** "P17 minus Eq. (2)" (A-R1-03) |
 | Family F (full) | `G ⊂ O` acting transitively on all eight vertices of `N_3`, with no partition. Classes are `(F, G, [R])`. Contains `O` |
-| Overlap of P and F (A-R2-02) | Every `G` in F contains the axial `V4`, so every F-symbol, restricted to `V4`, belongs to a tetrahedral P class. A `D4`-covariant symbol also restricts to the `C4` face class. F adds stronger declared symmetry, not new symbols. Results transfer from a P class to its F subclasses (universal proofs) and from F to P (counterexamples), never the reverse. The same symbol appearing in several rows is not independent evidence. Reports count declared classes and distinct symbols separately |
+| Overlap of P and F (A-R2-02) | Every `G` in F contains the axial `V4`, so every F-symbol, restricted to `V4`, belongs to a tetrahedral P class. A `D4`-covariant symbol also restricts to the `C4` face class. F adds stronger declared symmetry, not new symbols. **Automatic transfer only for properties of the symbol itself, which do not depend on the declared symmetry: the main equality and saturation** (A-R3-01). For these, universal proofs transfer from a P class to its F subclasses and counterexamples from F to P, never the reverse. **Q-a does not transfer automatically.** Its predicate checks pairs `(g, h)` in `G × D_𝒞`, with `D_𝒞 = S_+` in P and `N_3` in F. Hence `E_F(U) ⇒ E_P(U)` but not conversely, and a violation in F need not lie in the restricted pairs. Q-a is decided separately in each class. The same symbol appearing in several rows is not independent evidence. Reports count declared classes and distinct symbols separately |
 | Covariance | `T_{gh} = R_g T_h R_g^†` for all `g ∈ G`, with `R` a projective unitary representation; equivalently `U(gk) = R_g U(k) R_g^†`. No reflections, parity or antiunitaries are required as symmetries |
 | Representations | **Every** 2-dimensional projective unitary `R`, irreducible or reducible, up to projective equivalence `R'_g = c_g W R_g W^†` (`|c_g| = 1`, `W` unitary). The multiplier class alone does not identify `R` (A-R1-07) |
 | Fidelity | Not assumed. The projective kernel `ker_proj R = {g : R_g scalar}` is recorded. A `g ≠ e` in it that moves a generator forces equal coefficients and violates Eq. (2) |
@@ -190,6 +194,9 @@ Subsidiary questions:
      `D2` iff `g^{-1} k_star − k_star ∈ Λ^*` for every `g ∈ D2`.
    - The ceiling's proof is not re-read here. Any wider scope it might support is
      `[UNVERIFIED]` and is not used.
+
+5. A8 (rank one without Eq. (2), and non-nilpotency equivalent to `tr T_h != 0`), from the
+   `2h` identity and Cayley–Hamilton. A4 and A5 are checked in Step 0′.
 
 Each item has the outcomes VERIFIED, REFUTED (with witness) or INCONCLUSIVE. An anticipation that
 ends INCONCLUSIVE does not remove its class from the later steps.
@@ -267,13 +274,22 @@ acceptance; none is expected or preferred. A1–A8 are not results.
 | --- | --- | --- |
 | Unitary symbols | `EMPTY_CLASS` (no unitary symbol); `UNITARY_SYMBOLS_EXIST` (certified real point); `OPEN_AFTER_CLASS_DERIVATION` | 4b-1 |
 | Sectors | `NO_ADMISSIBLE_SECTOR` (unitary symbols exist, none has an admissible cone); `ADMISSIBLE_SECTORS_EXIST`; `OPEN` | 4b-2 |
-| Main (rigidity, ∀ tuples) | `COUNTEREXAMPLE_VERIFIED_BELOW` (an admissible tuple with `0 < c_0 < c_strict^iso`); `COUNTEREXAMPLE_VERIFIED_ABOVE` (`c_0 > c_strict^iso`, only where the ceiling is not certified; inside a certified class it is a conflict, Sec. 1); `RIGIDITY_PROVED_FOR_FROZEN_CLASS` (equality for every admissible tuple); `VACUOUS` (class empty or without admissible sector); `OPEN_AFTER_STRICT_BODY` / `INCONCLUSIVE` | 4b-2 |
+| Main (rigidity, ∀ tuples) | `COUNTEREXAMPLE_VERIFIED_BELOW` (an admissible tuple with `0 < c_0 < c_strict^iso`); `COUNTEREXAMPLE_VERIFIED_ABOVE` (`c_0 > c_strict^iso`, only where the ceiling is not certified for that tuple and node; where the ceiling is certified and applies to that tuple, node included, it is a conflict, Sec. 1; `c_strict^iso` need not be positive); `RIGIDITY_PROVED_FOR_FROZEN_CLASS` (equality for every admissible tuple); `VACUOUS` (class empty or without admissible sector); `OPEN_AFTER_STRICT_BODY` / `INCONCLUSIVE` | 4b-2 |
 | Saturation (separate, A-R2-06) | `SATURATION_PROVED_FOR_CLASS` (∀ admissible `U`: `c_strict^iso(U) = rho_micro`); `SATURATION_FAILURE_WITNESS` (∃ admissible `U` with `c_strict^iso(U) < rho_micro`); `OPEN`. This replaces the predecessor's `INADMISSIBLE_SATURATION` and v2's `RIGIDITY_HOLDS_SATURATION_FAILS` | 4b-2 |
 | Q-a (symbols with an admissible node) | `DISTINGUISHABILITY_IMPLIED_IN_CLASS`; `DISTINGUISHABILITY_REFUTED_BY_WITNESS` (the witness must have an admissible node); `OPEN` | 4b-2 |
 | Q-b | `TRANSFER_CERTIFIED_FOR_LISTED_EQUIVALENCES`; `CONDITIONAL` (with the unlisted operations named) | 4a |
 | Anticipations | VERIFIED / REFUTED / INCONCLUSIVE per item | Step 0 |
 
 `INADMISSIBLE_CANDIDATE` concerns a single candidate and never decides a class.
+
+Reading rules (round 3):
+- `UNITARY_SYMBOLS_EXIST` is an existence result. It authorizes no universal outcome.
+- One question can close while another stays open. A stop in 4b-2 does not erase outcomes
+  already certified, for example a Q-a refutation witness.
+- On an empty domain, Q-a and saturation hold vacuously. That is recorded as vacuous, not as a
+  substantive result. A class already `EMPTY_CLASS` skips the sector row.
+- 4a transports only the nodes of the starting certificate. Coverage of every node remains a
+  4b-2 obligation.
 
 **Ceilings:** no statement about `s > 2`, other supports or on-site terms, reflections or
 antiunitaries as symmetries, masses, interactions, species universality (A), the absolute scale,
