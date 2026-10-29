@@ -19,7 +19,7 @@ with a dated entry, the dated entry wins.
 
 | Front | Status | Where |
 | --- | --- | --- |
-| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`), stage (a) authorized, not executed; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`): stage (a) REVIEWED (Grok, three rounds), five faithful classes survive and all others are EMPTY_CLASS; stage 4b-1 authorized; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
 | Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
@@ -71,7 +71,13 @@ presupuesto a 1 hora y a ver que pasa", 2026-10-29). The budget is:
   - then a blind review of the Step 0′ enumeration by a different family, before any later
     stage uses it (charter Sec. 6).
 
-**Stage (a) executed 2026-10-29 (PRELIMINARY, review pending).**
+**Stage (a) executed 2026-10-29. Promoted after review (user: "si").** Grok reviewed it in three
+blind rounds; round 3 left no mandatory objection open
+([round 3](../debates/2026-10-29--minimal-s2-step00-review-grok-r3/verificacion_autor.md)).
+Evidence: the emptiness of every class with a nontrivial projective kernel, and the Step 0′
+enumeration, are **ESTABLISHED IN THE DECLARED FAMILIES**. Exact integer certificate `adeb8afc…`,
+23/23. Limits: the reviewer did not run the certificate, and the exhaustiveness of homomorphisms
+into `O` rests on the per-group character breakdown in the round-2 review.
 [Report](../reports/2026-10-29--minimal-s2-step00.md); certificate
 `scripts/verify_minimal_s2_step00.py`, now 23/23 exact checks, after two Grok rounds. Grok reviewed v1 (16 checks)
 as mathematically correct but not promotable, with three repairs
@@ -1354,7 +1360,13 @@ with equality only where separately certified (see the d=3 row below).
 | B_infty^*, d=3 Pavia baseline (`C_infty^strict=C_micro`, full nonlinear order) | **CERTIFIED for the standard Weyl family `A+,B+,A-,B-`** (`s=2`): `c_0 = c_strict^iso = 1/sqrt(3)`; d=1,2 not checked; unaffected by the s=4 result |
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
 | B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
-| B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN**, except: under `T` or `O` with irreducible `R` of dimension 3 or 4 on the full `N_3` support without on-site term (classes T3, O3, O4) there is no unitary covariant symbol (**EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES**, 2026-10-29). The hypothesis is vacuous there, neither refuted nor confirmed. The linear `2O` irrep `E` (`s=2`), `s=1`, reducible `R`, other groups and other supports stay OPEN |
+| B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN**, except: under `T` or `O` with irreducible `R` of dimension 3 or 4 on the full `N_3` support without on-site term (classes T3, O3, O4) there is no unitary covariant symbol (**EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES**, 2026-10-29). The hypothesis is vacuous there, neither refuted nor confirmed. Minimal s=2 charter, stage (a) (2026-10-29, ESTABLISHED IN THE DECLARED FAMILIES):
+- within families P and F, every `s=2` class with a nontrivial projective kernel is EMPTY_CLASS,
+  including the linear `2O` irrep `E` on the full `N_3`;
+- `s=1` with eight active coefficients is empty;
+- five classes with faithful `R` remain OPEN (Step 4b).
+
+Reducible `R` in other settings, other groups and other supports stay OPEN |
 | Novelty of the s=4 family and its strict-support statement | **OPEN** — no equivalent found in eleven checked primary sources; not a novelty certificate |
 
 The restricted statements are established for the declared cases below.
