@@ -73,10 +73,12 @@ presupuesto a 1 hora y a ver que pasa", 2026-10-29). The budget is:
 
 **Stage (a) executed 2026-10-29 (PRELIMINARY, review pending).**
 [Report](../reports/2026-10-29--minimal-s2-step00.md); certificate
-`scripts/verify_minimal_s2_step00.py`, now 22/22 exact checks. Grok reviewed v1 (16 checks)
+`scripts/verify_minimal_s2_step00.py`, now 23/23 exact checks, after two Grok rounds. Grok reviewed v1 (16 checks)
 as mathematically correct but not promotable, with three repairs
 ([review](../debates/2026-10-29--minimal-s2-step00-review-grok/verificacion_autor.md)).
-The repairs are applied; the second review is pending.
+Round 2 ([review](../debates/2026-10-29--minimal-s2-step00-review-grok-r2/verificacion_autor.md)) left
+the 2-generation proof incomplete and one trace check misdirected. Both are repaired; a third
+review is pending.
 - **Step 0′.** Family P = `(V4, tetrahedron)`, `(T, tetrahedron)`, `(C4, face)`; family F =
   `{D4, O}`.
 - **Step 0.** Every class with a nontrivial projective kernel is `EMPTY_CLASS`, by the kernel

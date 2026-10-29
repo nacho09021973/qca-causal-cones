@@ -144,7 +144,7 @@ scope. DeepSeek reviewed the original with repairs required. Gemini (ACCEPT) and
 
 `verify_minimal_s2_step00.py` checks Steps 0′ and 0 of the
 [charter](../theory/MINIMAL_S2_RIGIDITY_GATE.md), as recorded in the
-[report](../reports/2026-10-29--minimal-s2-step00.md). It runs 22 exact checks (16 originally, 6 added after the Grok review), with integer
+[report](../reports/2026-10-29--minimal-s2-step00.md). It runs 23 exact checks (16 originally, 7 added after two Grok review rounds), with integer
 group arithmetic and no numerical identification.
 
 What it certifies:

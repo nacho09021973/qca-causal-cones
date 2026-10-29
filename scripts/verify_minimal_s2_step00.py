@@ -30,7 +30,9 @@ What it certifies (integer arithmetic for the group theory, SymPy only for the c
   Repairs after the Grok review (G-S0-01, G-S0-03):
            - E is built explicitly as the standard rep of S3 composed with the axis
              permutation O -> S3; its projective kernel is the axial V4, it is the unique O
-             class with that kernel, and E restricted to D4 is 1 + chi.
+             class with that kernel. Round 2: the D4 check uses the trace of rho_E: O -> SO(3)
+             (3, -1, 0 by the order of sigma(g)), giving rho_E|D4 = 1 + alpha + alpha.
+             The preimage Q8 in 2O is not computed.
            - The per-group class counts (5, 3, 3, 6, 4) and the five survivors are required,
              not only printed. Counts are characters of the fixed representative G, not
              orbits of tuples (G, S, R).
@@ -231,6 +233,7 @@ def main():
         counts[label] = len(reps)
         if fam == "F" and len(G) == 24:
             kernels_O = [frozenset(g for g in G if phi[g] == I3) for phi in reps.values()]
+            reps_O = list(reps.values())
         print(f"      {label}: {len(reps)} projective classes of 2-dim R")
         for chi, phi in sorted(reps.items()):
             ker = frozenset(g for g in G if phi[g] == I3)
@@ -288,11 +291,19 @@ def main():
             "G-S0-01: exactly one projective class of O has kernel the axial V4, so it is E's class "
             "(the class with |image| = 6 emptied above)")
     D4 = [G for G in classesF if len(G) == 8][0]
-    chiE = {M: sum(1 for i in range(3) if sigma(M)[i] == i) - 1 for M in O}  # fixed points - 1
-    triv_mult = sp.Rational(sum(chiE[g] for g in D4), len(D4))
+    # Round-2 repair: use the trace of rho_E: O -> SO(3) itself (the enumerated class with
+    # kernel V4), not the character of the 2-dim irrep (fixed points - 1); they differ, e.g. on C3.
+    rhoE = [phi for phi in reps_O if frozenset(g for g in O if phi[g] == I3) == V4][0]
+    order_of_sigma = {M: (1 if sigma(M) == (0, 1, 2) else
+                          3 if all(sigma(M)[i] != i for i in range(3)) else 2) for M in O}
+    trace_by_order = {1: 3, 2: -1, 3: 0}
+    require(all(trace(rhoE[g]) == trace_by_order[order_of_sigma[g]] for g in O),
+            "G-S0-01 (r2): tr rho_E(g) = 3, -1, 0 as sigma(g) has order 1, 2, 3 (image S3 in SO(3))")
+    triv_mult = sp.Rational(sum(trace(rhoE[g]) for g in D4), len(D4))
     require(V4 <= D4 and triv_mult == 1 and emptying_shift(V4) is not None,
-            "G-S0-01 / A7: E restricted to D4 is 1 + chi (trivial multiplicity 1), its projective "
-            "kernel contains the axial V4, and the kernel lemma empties it")
+            "G-S0-01 / A7 (r2): rho_E restricted to D4 has trivial multiplicity 1 (rho_E|D4 = "
+            "1 + alpha + alpha, alpha the sign of D4/V4); its kernel contains the axial V4, and "
+            "the kernel lemma empties it")
 
     # controls and named anticipations
     pauli = [s for s in survivors if s[0].startswith("P: |G|=4, tetrahedron") and "|ker|=1" in s[1]]
