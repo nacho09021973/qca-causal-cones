@@ -1,9 +1,10 @@
 # S=3 ISOTROPIC RIGIDITY GATE
 
-**Status: DRAFT v3 (2026-10-29), not frozen.** Requested by the user: "prepara el charter para
-s=3". Nothing here is authorized for execution. The charter is frozen only by an explicit user
-instruction; that commit becomes the preregistration commit. This draft records no computation,
-candidate or theorem.
+**Status: OPEN — charter frozen 2026-10-29 from draft v3, by user instruction ("si a ambas", in
+answer to "¿congelo el v3 y autorizo la etapa (a)?"). This commit is the preregistration
+commit.** Execution is authorized stage by stage only, each authorization recorded in
+[CURRENT_STATE](../state/CURRENT_STATE.md) with its budget (Sec. 4). The body below is the v3
+text, unchanged. It records no computation, candidate or theorem.
 
 Drafting history:
 - **v1** (`5fe04ae`) was reviewed blind by Grok (xAI family), which returned **NOT_READY** with ten
