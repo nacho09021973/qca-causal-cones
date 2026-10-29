@@ -99,3 +99,26 @@ no se ha contrastado todavía.
 `informe_gemini_abierto.md` lista unas 25 referencias más sobre mecanismos de universalidad,
 incluidos trabajos de QCA y quantum walks. **No se han descargado ni comprobado.** Hacerlo
 quedaría para la nota preliminar de A, si el usuario lo pide.
+
+## Vía abierta: descarga (2026-10-29, «descarga tambien las referencias»)
+
+- Se descargaron de arXiv 22 PDF del `informe_gemini_abierto.md`. Antes de copiarlos se
+  comprobó la identidad de cada uno por su p.1, y los 22 títulos coinciden con los que da
+  Gemini.
+- 21 se copiaron a `biblioteca/` y se catalogaron (`proposed`). El índice se regeneró: 72 PDF.
+- `1306.1934` (P14) ya estaba en la biblioteca, con sha256 idéntico (`940dde86…`). No se
+  duplica.
+- `0906.3477` ya estaba desde la primera vía.
+- Chadha y Nielsen (1983) y el libro de Volovik, citados también aquí, siguen sin copia
+  abierta.
+
+**Contenido no contrastado.** Lo que Gemini dice que establece cada artículo («What it
+establishes») es texto de IA. Ninguna de esas afirmaciones se ha contrastado todavía con el
+original; quedan `[UNVERIFIED]` hasta la nota preliminar de A.
+
+Para A parecen especialmente relevantes estos trabajos, según el resumen de Gemini, que es
+texto de IA sin contrastar:
+- Anber y Donoghue (1102.0789), velocidad límite universal por flujo del RG.
+- Bisio, D'Ariano y Perinotti (1407.6928), fotones como estados compuestos de fermiones en un
+  QCA, con velocidad común por construcción.
+- Mlodinow y Brun (2011.05597, 2506.20136), QCA 3D multipartícula.
