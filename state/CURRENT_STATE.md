@@ -11,7 +11,7 @@
 > User authorization "1 y despues 2" next covers strengthening W3–W6
 > certificates, without reopening W1–W12 or promoting scientific evidence.
 
-## Current reading guide — 2026-10-28
+## Current reading guide — 2026-10-29
 
 Branch `research/inverse-gravity-design`. Documentary summary of the dated entries
 below and of the canonical sections; it changes no status. Where it disagrees
@@ -19,17 +19,66 @@ with a dated entry, the dated entry wins.
 
 | Front | Status | Where |
 | --- | --- | --- |
-| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS (PRELIMINARY, 2026-10-28); NOVELTY OPEN | Sections 4–7; entry of 2026-10-28 |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
 | Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
 | 4B absolute scale | `NO_ABSOLUTE_SCALE_DERIVABLE` closed in the frozen class; Sept 28 commits reconciled (`94071db`) | Reconciliation entry of 2026-10-22 |
 | H1 / inhomogeneous | OPEN and paused; L2 `B / OPEN_BLOCKED_METHOD` | Section 9.7 |
 | Integrity | Documentary reconstruction complete; `text_integrity --check` reports zero problems | Entries of 2026-10-22 and 2026-10-26 |
-| W1–W12 gravity line | CLOSED_BY_CONTRACT. W3–W6 REVIEWED_ACCEPT_WITH_REPAIRS (reduced scope); strengthened W3/W5/W6 certificates NEW_INDEPENDENT_REVIEW_PENDING; W1, W2, W7 and the CJWW bridges reconstructed, independent review pending | Entries of 2026-10-22 and 2026-10-26 |
-| W4 long-wavelength spectrum | OPEN_AFTER_AUDIT; DeepSeek ACCEPT_WITH_REPAIRS; author repairs not re-reviewed | Entry of 2026-10-26 |
+| W1–W12 gravity line | CLOSED_BY_CONTRACT. W3–W6 REVIEWED_ACCEPT_WITH_REPAIRS (reduced scope); strengthened W3/W5/W6 certificates REVIEWED_ACCEPT (Gemini, 2026-10-29); W1, W2, W7 and the CJWW bridges reconstructed, independent review pending | Entries of 2026-10-22, 2026-10-26 and 2026-10-29 |
+| W4 long-wavelength spectrum | OPEN_AFTER_AUDIT; DeepSeek ACCEPT_WITH_REPAIRS; author repairs REVIEWED_ACCEPT (Gemini, 2026-10-29) | Entries of 2026-10-26 and 2026-10-29 |
 | Inverse-gravity successor (IG-S0 to IG-S2) | `BOUNDED_TRANSFER_ATTEMPT_STOPPED_OPEN`; direct transfer paused | Entries of 2026-10-08 and 2026-10-10 |
-| A.int, interaction-renormalized species speed | OPEN sub-question of A; no calculation contract; Eon v4 reference-state work in progress | Section 4, A — IR universality |
+| A.int, interaction-renormalized species speed | OPEN sub-question of A; no calculation contract; Eon projected-Gaussian candidate `GAUSSIAN_TAIL_STATIONARITY_FAIL`, addendum re-reviewed PASS_WITH_REPAIRS (2026-10-29), final formalization not re-reviewed | Section 4, A — IR universality; entry of 2026-10-29 |
+
+## Independent review queue closed — 2026-10-29
+
+User instructions: "empezamos por la cola de revisiones", "si, autorizo a y b",
+"si a las 3 preguntas", "adelante con todo". Every review was sealed, one round, by a model
+family different from the authors (Claude, Codex). Tool: `revision-ciega`,
+`~/herramientas` `a32e189`. Each folder holds an author reading (`verificacion_autor.md`)
+that checks every objection locally. Those readings are not independent.
+
+| Item | Review | Status now |
+| --- | --- | --- |
+| Irreducible isotropy Steps 0–1, repaired certificate (`d4b3d242…`) and report | Gemini ACCEPT; Grok ACCEPT_WITH_REPAIRS (wording only); DeepSeek's earlier ACCEPT_WITH_REPAIRS cherry-picked as `7c05b56` | T3/O3/O4 **EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES**; Grok's three wording repairs applied (`5bb09df`), not re-reviewed |
+| Eon projected-Gaussian addendum | DeepSeek re-review PASS_WITH_REPAIRS, no error found | D1–D7 applied as a second addendum (`3f4c972`), not re-reviewed |
+| Strengthened W3/W5/W6 certificates | Gemini ACCEPT, no mandatory repair | `IMPLEMENTED_AUTHOR_CHECKED / REVIEWED_ACCEPT` |
+| W4 author repairs (W4-R1-01..05) | Gemini ACCEPT | `AUTHOR_REPAIRS_REVIEWED_ACCEPT`; W4 spectrum stays `OPEN_AFTER_AUDIT` |
+
+Irreducible isotropy. Charter Sec. 6 requires a different-family review before a terminal
+outcome enters this file as more than PRELIMINARY; that is now met
+([Gemini](../debates/2026-10-29--irreducible-isotropy-repairs-review-gemini/verificacion_autor.md),
+[Grok](../debates/2026-10-29--irreducible-isotropy-repairs-review-grok/verificacion_autor.md),
+[DeepSeek](../debates/2026-10-28--irreducible-isotropy-step01-review-deepseek/verificacion_autor.md)).
+The certificate runs 33 exact checks: Groebner unit ideals over an algebraic extension of
+`Q`, 686 s in the retained
+[sweep](../reports/2026-10-29--irreducible-isotropy-repair-verifier-sweep.tsv). Stated limits:
+- group elements are identified via `nsimplify`, backed by order and homomorphism checks;
+- the spin-1 commutant (T3, O3) has no dimension control;
+- the Pavia membership of the positive control comes from P17.
+
+Outcome: the hypothesis is vacuous in T3, O3 and O4. Steps 2–3 of the charter have no object
+in these classes; the charter is closed for them. Uncovered rows (linear `2O` irrep `E` at
+`s=2`, `s=1`, reducible `R`, other groups or supports) are not chartered.
+
+Eon addendum ([review and author reading](../debates/2026-10-28--eon-addendum-review-deepseek/verificacion_autor.md)).
+DeepSeek confirms that G-R1-01 was a convention ambiguity, not an error. D4 (one integer per
+link) is now cited from the primary PDF: p.6 gives the opposite-sign restriction; p.7 gives
+Eqs. (2) and (6) and the parity Z. Formalizing D7 found a sign: `V_l` lowers `E_l`, so the
+basis is `|E>' := V^{-E}|0>`. The argument is invariant under `E -> -E`. Status:
+`GAUSSIAN_TAIL_STATIONARITY_FAIL` in its class, `REVIEWED_PASS_WITH_REPAIRS` (two rounds),
+final formalization not re-reviewed. No vacuum, correlator, speed or loop.
+
+W3/W5/W6 and W4 ([review and author reading](../debates/2026-10-29--w3-w6-strengthened-review-gemini/verificacion_autor.md)).
+The 19 documents matched their manifest before sending. Gemini returned ACCEPT on both blocks
+in about two minutes at medium effort. The author reading records this as a caution: one
+all-accepting reviewer does not exclude errors it did not look for. The W4 mutation control
+uses a structural `!=` (`scripts/verify_w4_long_wavelength_spectrum.py:72`); it does not fail
+at the actual value. W1–W12 stays CLOSED_BY_CONTRACT; no metric-wave, gauge or graviton claim.
+
+Not in the queue: the typographic reconstructions of W1, W2, W3 curvature, W4, W5, W7 and the
+CJWW bridge remain without independent review, by user decision.
 
 ## Scope rule revised — 2026-10-28
 
@@ -1245,7 +1294,7 @@ with equality only where separately certified (see the d=3 row below).
 | B_infty^*, d=3 Pavia baseline (`C_infty^strict=C_micro`, full nonlinear order) | **CERTIFIED for the standard Weyl family `A+,B+,A-,B-`** (`s=2`): `c_0 = c_strict^iso = 1/sqrt(3)`; d=1,2 not checked; unaffected by the s=4 result |
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
 | B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
-| B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN** |
+| B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN**, except: under `T` or `O` with irreducible `R` of dimension 3 or 4 on the full `N_3` support without on-site term (classes T3, O3, O4) there is no unitary covariant symbol (**EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES**, 2026-10-29). The hypothesis is vacuous there, neither refuted nor confirmed. The linear `2O` irrep `E` (`s=2`), `s=1`, reducible `R`, other groups and other supports stay OPEN |
 | Novelty of the s=4 family and its strict-support statement | **OPEN** — no equivalent found in eleven checked primary sources; not a novelty certificate |
 
 The restricted statements are established for the declared cases below.
