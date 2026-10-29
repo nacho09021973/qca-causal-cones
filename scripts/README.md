@@ -128,12 +128,17 @@ arguments; the script does not certify the asymptotics of the PP observable.
 
 `verify_irreducible_isotropy_step01.py` checks the [charter](../theory/IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md)
 with exact group and unitarity calculations and controls. The [report](../reports/2026-10-28--irreducible-isotropy-step01.md)
-records 31 checks on the original certificate, with a runtime of 518 seconds; the repaired
-version adds stabilizer controls. Its preliminary empty-class results concern T3, O3,
-O4 and specified spin-1/2 controls on the eight-vertex support without an on-site term.
-The spin-1/2 O control does not cover the linear `2O` irrep `E`. Reducible representations,
-other groups or supports, s=1 and Steps 2–3 are outside its scope. DeepSeek reviewed the
-original with repairs required; the repaired certificate awaits independent review.
+records 31 checks on the original certificate, with a runtime of 518 seconds. The repaired
+version (33 checks) adds commutant-dimension controls for `O` at spin 1/2 and spin 3/2 only.
+Spin 1, which covers T3 and O3, has no dimension control. The controls count parameters and do
+not prove that the parametrization is complete. Arithmetic is exact over an algebraic extension
+of `Q` (`√2`, `√3`). Group elements are identified with `nsimplify` in `key()`; that step is
+numerical and is backed by the group-order and homomorphism checks. Its preliminary
+empty-class results concern T3, O3, O4 and specified spin-1/2 controls on the eight-vertex
+support without an on-site term. The spin-1/2 O control does not cover the linear `2O` irrep
+`E`. Reducible representations, other groups or supports, s=1 and Steps 2–3 are outside its
+scope. DeepSeek reviewed the original with repairs required. Gemini (ACCEPT) and Grok
+(ACCEPT_WITH_REPAIRS, wording only) reviewed the repaired certificate.
 
 ## Exact standard Weyl/Dirac battery
 

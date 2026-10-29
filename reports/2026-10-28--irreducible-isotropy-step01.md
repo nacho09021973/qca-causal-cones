@@ -16,6 +16,15 @@ Repair verification, 2026-10-29: certificate SHA-256
 ([record](2026-10-29--irreducible-isotropy-repair-verifier-sweep.tsv)). These runs
 verify execution of the repaired bytes, not independent mathematical review.
 
+Independent review of the repairs, 2026-10-29: Gemini ACCEPT; Grok ACCEPT_WITH_REPAIRS
+([Gemini](../debates/2026-10-29--irreducible-isotropy-repairs-review-gemini/verificacion_autor.md),
+[Grok](../debates/2026-10-29--irreducible-isotropy-repairs-review-grok/verificacion_autor.md)).
+Both reviewed this report at SHA-256 `01db8e84…c9a1`, with the certificate above, at base
+`57b8564`. Grok's three mandatory repairs only change wording, and Claude applied them to
+"Step 1: method and controls" afterwards. They state that the Groebner basis uses an algebraic
+extension of `Q`, that `key()` uses `nsimplify`, and which spins the dimension controls cover.
+The certificate bytes are unchanged. Those wording repairs have not been re-reviewed.
+
 ## Result
 
 | Class | Group, internal dimension, irreducible `R` | Outcome |
@@ -73,20 +82,30 @@ For each class:
   independent of the coset representative;
 - the coefficient unitarity identities `sum_{h'-h=ℓ} T_h^dagger T_{h'} = δ_{ℓ0} I` for all 27
   differences `ℓ` are split into real and imaginary parts;
-- SymPy's exact Groebner basis (grevlex, rational arithmetic) is computed.
+- SymPy's Groebner basis (grevlex) is computed with exact arithmetic over an algebraic
+  extension of `Q`: the spin representations bring in `√2` and `√3`, and the elements of `2O`
+  bring in `√2/2`. Group elements are identified through `key()`, which canonicalizes entries
+  with `sp.nsimplify`. That step is numerical, so the identity of group elements is not
+  zero-tolerance; it is backed by the checks `|2O| = 48`, `|2T| = 24` and the homomorphism test
+  on all pairs.
 
 A basis equal to [1] means the system has no solution, even over C.
 
 Controls in the certificate:
 
 - the equation generator vanishes identically on the s=4 family and on both Pavia symbols;
-- without the normalization `sum T^dagger T = I`, every class system is homogeneous, so the
-  unit ideal comes from the normalization alone;
+- without the normalization `sum T^dagger T = I`, every equation of each class system has zero
+  constant term, so the relaxed ideal is proper and the unit ideal comes from the
+  normalization;
 - **positive control:** the same pipeline with `D2` (lifted to Q8), spin 1/2 and two free
-  orbit coefficients gives a non-unit ideal. That class contains the Pavia symbols. Its
+  orbit coefficients gives a non-unit ideal. That the Pavia symbols lie in this class is taken
+  from P17; the certificate does not substitute them into this system. Its
   vertex stabilizer is trivial and this control does not exercise the nontrivial
-  stabilizer commutant. The repaired verifier adds dimension controls for that branch;
-  these do not independently prove completeness of its parametrization.
+  stabilizer commutant. The repaired verifier adds dimension controls for the commutant branch
+  under `O` only: spin 1/2 (complex dimension 2) and spin 3/2 (complex dimension 6, class O4).
+  Spin 1, used by T3 and O3, has no such control; its expected complex dimension is 3. The
+  controls count parameters and do not exhibit a basis of the commutant, so they do not prove
+  completeness of the parametrization used in the Groebner computation.
 
 Exploration before the certificate (scratch, not retained as evidence): a 200-start
 least-squares search on the T3 system stayed bounded away from zero. It is mentioned only
