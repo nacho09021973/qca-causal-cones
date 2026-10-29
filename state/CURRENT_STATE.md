@@ -19,7 +19,7 @@ with a dated entry, the dated entry wins.
 
 | Front | Status | Where |
 | --- | --- | --- |
-| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
+| Central question (c and the substrate) | Standard Weyl/Dirac gate PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; minimal `s=2` rigidity and species universality OPEN; irreducible-isotropy Steps 0–1: T3/O3/O4 EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES after independent review (2026-10-29); minimal s=2 rigidity charter OPEN (`785565c`), stage (a) authorized, not executed; NOVELTY OPEN | Sections 4–7; entries of 2026-10-28 and 2026-10-29 |
 | Flat CJWW corona | CLOSED in its frozen class; manuscript and Lean Thm 4.1; proof of Thm 4.3 repaired after sanedrin, repairs REVIEWED (Astra, DeepSeek); not submitted | Section 8.20; `papers/ir-corona/`; entry of 2026-10-28 |
 | Spectral attribution C1–C3 | PASS in their frozen scopes | Section 10.1 |
 | Independent-use discrimination cost | REVIEWED_PASS_WITH_REPAIRS (2026-10-22); repaired version REVIEWED_PASS (2026-10-28); corona premises not reviewed; no operational frontier at c | Entry of 2026-10-22 and its addendum |
@@ -30,6 +30,48 @@ with a dated entry, the dated entry wins.
 | W4 long-wavelength spectrum | OPEN_AFTER_AUDIT; DeepSeek ACCEPT_WITH_REPAIRS; author repairs REVIEWED_ACCEPT (Gemini, 2026-10-29) | Entries of 2026-10-26 and 2026-10-29 |
 | Inverse-gravity successor (IG-S0 to IG-S2) | `BOUNDED_TRANSFER_ATTEMPT_STOPPED_OPEN`; direct transfer paused | Entries of 2026-10-08 and 2026-10-10 |
 | A.int, interaction-renormalized species speed | OPEN sub-question of A; no calculation contract; Eon projected-Gaussian candidate `GAUSSIAN_TAIL_STATIONARITY_FAIL`, addendum re-reviewed PASS_WITH_REPAIRS (2026-10-29), final formalization not re-reviewed | Section 4, A — IR universality; entry of 2026-10-29 |
+
+## Minimal s=2 rigidity charter — 2026-10-29
+
+User instruction: "congelar el charter con la v4, autorizo la etapa a". Charter
+[`MINIMAL_S2_RIGIDITY_GATE.md`](../theory/MINIMAL_S2_RIGIDITY_GATE.md), status `OPEN`,
+preregistration commit `785565c`.
+
+The charter comes from committee decision
+[`002`](../reports/comite/comite_decision_002_siguiente-charter-tras-cola.md). Astra reviewed the
+draft in three blind rounds:
+[round 1](../debates/2026-10-29--minimal-s2-charter-draft-review-astra/verificacion_autor.md),
+[round 2](../debates/2026-10-29--minimal-s2-charter-draft-v2-review-astra/verificacion_autor.md),
+[round 3](../debates/2026-10-29--minimal-s2-charter-draft-v3-review-astra/verificacion_autor.md).
+Each round returned NOT_READY. The single blocking repair left by round 3, A-R3-01, was applied
+in v4 and was not re-reviewed before freezing.
+
+Question: in d=3, `N_3` without on-site term, `s=2`, without assuming P17 Eq. (2), does
+`c_0 = c_strict^iso` hold for every admissible tuple?
+- Two isotropy families: P (`G` transitive on a four-vertex `S_+`) and F (`G` transitive on
+  all eight vertices).
+- Subsidiary questions: Q-a (does Eq. (2) hold on symbols with an admissible node?) and Q-b
+  (transport of the Pavia certificate along P17's equivalences).
+- Anticipations A1–A8 are recorded in the charter as unverified, not as results.
+
+**Stage (a), Steps 0′ and 0: AUTHORIZED** by the user. Steps 4a, 4b-1 and 4b-2 are **not**
+authorized. Charter Sec. 4 requires the budget to be fixed before the stage runs. The user did
+not state one. The budget below was set by Claude under that authorization, and the user can
+change it before execution:
+- **Scope:** all classes of families P and F from the Step 0′ enumeration, and Step 0 items 1–5.
+- **Compute:** at most 4 hours of wall time in total for the exact verifiers. If they exceed it,
+  stop with the partial result as OPEN.
+- **Deliverables:**
+  - `scripts/verify_minimal_s2_step00.py`, an exact certificate added to `.claude/settings.json`;
+  - a report in `reports/`;
+  - a full `run_all_verifiers.py` sweep before commit.
+- **Closure:**
+  - the exhaustiveness proof of Step 0′;
+  - a VERIFIED/REFUTED/INCONCLUSIVE outcome for every anticipation;
+  - then a blind review of the Step 0′ enumeration by a different family, before any later
+    stage uses it (charter Sec. 6).
+
+Evidence level: none yet. No calculation has been run under this charter.
 
 ## Independent review queue closed — 2026-10-29
 
