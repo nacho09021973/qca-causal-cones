@@ -105,7 +105,15 @@ quedaría para la nota preliminar de A, si el usuario lo pide.
 - Se descargaron de arXiv 22 PDF del `informe_gemini_abierto.md`. Antes de copiarlos se
   comprobó la identidad de cada uno por su p.1, y los 22 títulos coinciden con los que da
   Gemini.
-- 21 se copiaron a `biblioteca/` y se catalogaron (`proposed`). El índice se regeneró: 72 PDF.
+- 19 se copiaron a `biblioteca/` y se catalogaron (`proposed`). El índice se regeneró: 70 PDF,
+  sin duplicados.
+- Al principio se copiaron 21. Dos resultaron ser duplicados por contenido, con el mismo sha256,
+  de ficheros que ya estaban con otro nombre:
+  - `1404.4499`, ya presente como `arXiv-1404.4499v1.pdf`;
+  - `1407.6928`, ya presente como `Quantum Cellular Automaton Theory of Light.pdf`.
+
+  Se retiraron las copias y sus filas del catálogo. La comprobación previa solo miraba el nombre
+  del fichero.
 - `1306.1934` (P14) ya estaba en la biblioteca, con sha256 idéntico (`940dde86…`). No se
   duplica.
 - `0906.3477` ya estaba desde la primera vía.
