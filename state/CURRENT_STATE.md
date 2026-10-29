@@ -100,8 +100,9 @@ review is pending.
 **Stage 4b-1 (exact class derivation): AUTHORIZED** by the user ("Autorizo 4b-1", 2026-10-29).
 The user gave no budget, so Claude applies the one the user set for stage (a); the user can
 change it.
-- **Time:** at most 1 hour of wall time, including the audit of DEP19 (A30). Start recorded at
-  launch. If exceeded, stop with the partial result as `OPEN_AFTER_CLASS_DERIVATION`.
+- **Time:** at most 3 hours of wall time, including the audit of DEP19 (A30). Raised from 1 hour
+  by the user ("estamos a tiempo de modificar el tiempo a 3 horas?", 2026-10-29). Started
+  13:06 UTC. If exceeded, stop with the partial result as `OPEN_AFTER_CLASS_DERIVATION`.
 - **Scope:** the five surviving classes of stage (a).
 - **Deliverable:**
   - first, a written audit of whether the DEP19 family (A30) is the general unitary `s=2`
@@ -110,6 +111,21 @@ change it.
     point, or `OPEN_AFTER_CLASS_DERIVATION`;
   - an exact verifier, a report and a full sweep.
 - **Closure:** a different-family review before anything is promoted.
+
+**Stage 4b-1 executed 2026-10-29 (PRELIMINARY, review pending).**
+[Report](../reports/2026-10-29--minimal-s2-step4b1.md); certificate
+`scripts/verify_minimal_s2_step4b1.py`, 16/16 exact checks, about 110 s.
+- **Empty classes:** `O`, `(T, tetrahedron)`, `D4` and `(C4, face)` are `EMPTY_CLASS`. Each gives
+  a unit Groebner ideal, by two independent constructions of the covariant symbol.
+- **Surviving class:** `(V4, tetrahedron, Pauli)` is `UNITARY_SYMBOLS_EXIST`, with the Pavia
+  symbol as a certified real point.
+- **Consequence:** in the frozen families without Eq. (2), only P17's isotropy setting is
+  nonempty.
+- **Not yet determined:**
+  - its components;
+  - Q-a;
+  - nodes and speeds (Step 4b-2, not authorized);
+  - Q-b (Step 4a, not authorized).
 
 ## Independent review queue closed — 2026-10-29
 

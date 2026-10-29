@@ -161,6 +161,26 @@ What it certifies:
 What it does not certify: the written exhaustiveness arguments (2-generation, order/trace), which
 are in the report; the five surviving classes; nodes, `c_0`, `c_strict^iso`, Q-a or Q-b.
 
+## Minimal s=2 rigidity, Step 4b-1
+
+`verify_minimal_s2_step4b1.py` runs the exact class derivation of the
+[charter](../theory/MINIMAL_S2_RIGIDITY_GATE.md) for the five faithful classes of stage (a), as
+recorded in the [report](../reports/2026-10-29--minimal-s2-step4b1.md). It runs 16 checks in
+about 110 s, with a `--limit` timeout per class (600 s by default).
+
+How it works:
+- each covariant symbol is built two ways: by filling orbits, and by linear covariance on free
+  `T_h`;
+- the Groebner basis of the unitarity system is computed exactly;
+- for the nonempty class, the Pavia symbol is checked as a real covariant point.
+
+What it certifies:
+- `O`, `(T, tetrahedron)`, `D4` and `(C4, face)` are empty;
+- `(V4, tetrahedron, Pauli)` has a real unitary point.
+
+What it does not certify: the components or dimension of the `(V4, Pauli)` class, Eq. (2) (Q-a),
+nodes, `c_0`, `c_strict^iso`, or anything taken from DEP19.
+
 ## Exact standard Weyl/Dirac battery
 
 `verify_weyl_dirac_gate.py` implements the
