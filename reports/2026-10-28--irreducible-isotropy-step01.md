@@ -5,8 +5,16 @@ Charter: [`IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md`](../theory/IRREDUCIBLE_ISOTROP
 pasos 0-1"). Certificate: `scripts/verify_irreducible_isotropy_step01.py`
 (SHA-256 `d414b446d476c646…`), 31/31 exact checks, 518 s, Python 3.12.3, SymPy 1.14.0.
 Full verifier sweep before commit: 47/47 pass at `43fd00e` plus this certificate
-([record](2026-10-28--irreducible-isotropy-step01-run_all.tsv)). Evidence level: **PRELIMINARY**. These are author-side computations; independent review is
-pending, as the charter (Sec. 6) requires.
+([record](2026-10-28--irreducible-isotropy-step01-run_all.tsv)). These figures describe
+the original certificate bytes, not the subsequent repair. Evidence level: **PRELIMINARY**.
+DeepSeek reviewed the original and returned ACCEPT_WITH_REPAIRS; the repaired certificate
+and text await independent review.
+
+Repair verification, 2026-10-29: certificate SHA-256
+`d4b3d242bdd259aa45aa532b6b212bfe75eb0009097f85883805507857f1bfe4`,
+33/33 local checks in 683 seconds; full sweep 47/47
+([record](2026-10-29--irreducible-isotropy-repair-verifier-sweep.tsv)). These runs
+verify execution of the repaired bytes, not independent mathematical review.
 
 ## Result
 
@@ -37,9 +45,11 @@ It is not refuted, and it is not confirmed. Steps 2–3 of the charter have no o
 2. **Character tables** (certificate). `2T` (order 24) and `2O` (order 48) are generated
    exactly in SU(2), and their maps onto `T` and `O` are checked homomorphisms. The 7 and 8
    listed characters are orthonormal and complete. Irreducible dimensions:
-   `2T`: 1, 1, 1, 2, 2, 2, 3; `2O`: 1, 1, 2, 2, 2, 3, 3, 4. Irreducible representations of
-   equal dimension differ by a one-dimensional character. Conjugation sees `R` only up to that
-   scalar, so spin 1/2, 1 and 3/2 cover every irreducible `R` of dimension 2, 3 and 4. `O`
+   `2T`: 1, 1, 1, 2, 2, 2, 3; `2O`: 1, 1, 2, 2, 2, 3, 3, 4. The declared
+   spin-1 and spin-3/2 cases cover T3, O3 and O4 up to one-dimensional
+   characters, which cancel in conjugation. The two spinorial `2O` irreps of dimension 2
+   are covered by the spin-1/2 control up to a character; the distinct linear irrep `E`
+   is not. `O`
    is transitive on `N_3`; `T` and `D2` have two orbits of size 4.
 3. **Control A** (certificate). Both published Pavia d=3 Weyl symbols (both chiralities):
    - the half-turns of `D2` have nonzero intertwiners (σz, σx);
@@ -73,7 +83,10 @@ Controls in the certificate:
 - without the normalization `sum T^dagger T = I`, every class system is homogeneous, so the
   unit ideal comes from the normalization alone;
 - **positive control:** the same pipeline with `D2` (lifted to Q8), spin 1/2 and two free
-  orbit coefficients gives a non-unit ideal. That class contains the Pavia symbols.
+  orbit coefficients gives a non-unit ideal. That class contains the Pavia symbols. Its
+  vertex stabilizer is trivial and this control does not exercise the nontrivial
+  stabilizer commutant. The repaired verifier adds dimension controls for that branch;
+  these do not independently prove completeness of its parametrization.
 
 Exploration before the certificate (scratch, not retained as evidence): a 200-start
 least-squares search on the T3 system stayed bounded away from zero. It is mentioned only
@@ -84,9 +97,8 @@ because it led to the certificate. It is not cited as a result.
 - Only the frozen classes: d=3, support exactly `N_3` with no on-site term, rotation groups
   `T` or `O` (no reflections or antiunitaries), covariance by conjugation as in P17
   Definition 1, irreducible `R` of dimension 2–4.
-- Since `2T` and `2O` have no irreducible representation of dimension above 4, every
-  irreducible-`R` class with `s ≥ 2` under `T` or `O` on `N_3` is covered by T3, O3, O4 and
-  the two `s = 2` controls. The `s = 1` case (scalar walks, which P17 cites as trivial) is not
+- The linear irrep `E` of `2O` at `s = 2` is not covered by the spin-1/2 control. The
+  `s = 1` case (scalar walks, which P17 cites as trivial) is not
   certified here. `[UNVERIFIED]`
 - Not covered: reducible `R` under `T`/`O`; other groups; other supports (on-site terms,
   larger neighbourhoods); `D2`-isotropic classes, where the s=4 counterexample lives.
@@ -95,8 +107,9 @@ because it led to the certificate. It is not cited as a result.
 
 ## Consequence for the question
 
-With the cubic-vertex geometry, isotropy under the full tetrahedral or octahedral rotation
-group with an irreducible internal representation is incompatible with unitarity. The
+In the declared T3, O3 and O4 classes, with the cubic-vertex geometry, the stated
+irreducible covariance is incompatible with unitarity, subject to the preliminary evidence
+and review limitations above. The
 `B_infty^*` question stays where it was. The repo's established cases (Pavia `s = 2`, the s=4
 counterexample) are all `D2`-isotropic with reducible or `D2`-irreducible `R`. The live
 rows are now `s = 2` without P17 Eq. (2), and representation conditions formulated for `D2`,

@@ -124,6 +124,17 @@ Run `python3 -B scripts/verify_ir_projection_leakage.py` (SymPy 1.14.0).
 Fourier/Poisson error estimates remain written, independently unreviewed
 arguments; the script does not certify the asymptotics of the PP observable.
 
+## Irreducible isotropy, Steps 0–1
+
+`verify_irreducible_isotropy_step01.py` checks the [charter](../theory/IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md)
+with exact group and unitarity calculations and controls. The [report](../reports/2026-10-28--irreducible-isotropy-step01.md)
+records 31 checks on the original certificate, with a runtime of 518 seconds; the repaired
+version adds stabilizer controls. Its preliminary empty-class results concern T3, O3,
+O4 and specified spin-1/2 controls on the eight-vertex support without an on-site term.
+The spin-1/2 O control does not cover the linear `2O` irrep `E`. Reducible representations,
+other groups or supports, s=1 and Steps 2–3 are outside its scope. DeepSeek reviewed the
+original with repairs required; the repaired certificate awaits independent review.
+
 ## Exact standard Weyl/Dirac battery
 
 `verify_weyl_dirac_gate.py` implements the

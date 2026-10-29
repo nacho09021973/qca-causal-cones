@@ -1,0 +1,1090 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Responde en español. Revisa de forma adversarial e independiente exclusivamente los
+documentos adjuntos; no tienes herramientas y no puedes ejecutar código. El informe previo
+de DeepSeek identifica R1–R4; el informe y certificado adjuntos son las versiones reparadas.
+
+1. Comprueba si el texto corrige realmente la cobertura de la representación lineal E de
+2O y si conserva los cuantificadores de T3, O3 y O4 sin extender el resultado.
+2. Comprueba el mensaje corregido y el uso de igualdad simbólica; busca errores nuevos,
+incluidos falsos positivos o negativos y cambios en la generación de ecuaciones.
+3. Examina los nuevos controles de dimensiones 2 y 6 del conmutante del estabilizador:
+deriva las dimensiones por una segunda vía y explica exactamente qué prueban y qué no,
+incluida la completitud de la parametrización. Contrástalos con el control positivo Q8.
+4. Examina si la conclusión EMPTY_CLASS sigue justificada para las clases declaradas,
+si existen errores de código o sobreafirmaciones, y si quedan reparaciones obligatorias.
+5. Distingue revisión de código sin ejecución, verificaciones locales informadas y
+demostración matemática; no consideres 33/33 ni 47/47 como comprobados por ti.
+
+Da veredicto por punto y global (ACCEPT, ACCEPT_WITH_REPAIRS o REJECT), cita secciones y
+funciones, enumera reparaciones obligatorias y marca como NO VERIFICADO lo que corresponda.
+
+=== DOCUMENT 1: IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md ===
+
+# IRREDUCIBLE ISOTROPY MATCHING GATE
+
+**Status: OPEN — charter written 2026-10-28 (preregistration commit `d112bb0`); Steps 0–1
+authorized by the user the same day ("si, autorizo los pasos 0-1"); Steps 2–3 NOT
+authorized.**
+
+**Steps 0–1 executed 2026-10-28 (PRELIMINARY, review pending):** T3, O3 and O4 are
+`EMPTY_CLASS`, and Control B gives `S4_FAMILY_OUTSIDE_O4`
+([report](../reports/2026-10-28--irreducible-isotropy-step01.md)). Steps 2–3 have no object in
+these classes. Only the
+user authorizes execution, and the authorization is recorded in
+[CURRENT_STATE](../state/CURRENT_STATE.md). This charter records no computation,
+candidate or theorem.
+
+Authority: [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 4 (`B_infty^*`, row
+"irreducible internal symmetry representation `R` for `s>2`: OPEN").
+Predecessor: [`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](MASSLESS_INRADIUS_RIGIDITY_GATE.md),
+completed by counterexample in the declared s=4 class
+([`S4_STRICT_CONE_COUNTEREXAMPLE.md`](S4_STRICT_CONE_COUNTEREXAMPLE.md)). Its Sec. 0 (definitions of
+`S_n`, `h_infty`, `c_strict^iso`, `rho_micro`, and the split into rigidity (i) and
+saturation (ii)), Sec. 3 (exact admission checks) and Sec. 5 (outcome vocabulary) are
+inherited unchanged unless amended below.
+User instruction: "prepara la carta para la hipótesis 3" (2026-10-28).
+
+## 0. Why this gate, and a fact that fixes its shape
+
+The s=4 counterexample keeps `C_infty^strict = C_micro`, `c_strict^iso = 1/sqrt(3)`, and
+has `c_0(a) = a/sqrt(3)`. Its declared isotropy is the group `D2` of half-turns, with
+`R_i = sigma_i (x) I_2`, which is **reducible** (two copies of the Pauli projective class).
+The question is whether requiring an **irreducible** internal representation restores
+`c_0 = c_strict^iso`.
+
+Checked before writing this charter (an inspection command, not a certificate): with
+`N_3 = {(+/-1,+/-1,+/-1)/sqrt(3)}`,
+
+- `D2` (order 4) splits `N_3` into two orbits of size 4;
+- the tetrahedral rotation group `T` (order 12) also splits it into two orbits of size 4;
+- the cube rotation group `O` (order 24) acts transitively (one orbit of size 8), and the
+  stabilizer of a vertex has order 3.
+
+`D2` is abelian, so its projective irreducible representations have dimension at most 2.
+Under `D2`, "irreducible `R` with `s > 2`" is an empty requirement, and the hypothesis would
+reduce to the open `s = 2` rows. The isotropy group must therefore be enlarged. Two
+enlargements are declared, as separate classes:
+
+- `T`, the tetrahedral rotation group (order 12). Like `D2`, it is transitive on each of the
+  two tetrahedra `S_+` and `S_- = -S_+`. That is the transitivity used in the P17
+  classification (transitivity on `S_+`; source audit
+  [`2026-09-14--massless-rigidity-source-audit.md`](../reports/2026-09-14--massless-rigidity-source-audit.md)).
+  Its projective irreducible representations (linear representations of the binary
+  tetrahedral group `2T`, order 24) have dimensions 1, 1, 1, 3 (linear) and 2, 2, 2
+  (spinorial). So `s = 3` is possible and `s = 4` is not.
+- `O`, the cube rotation group (order 24), the smallest of the groups checked that is
+  transitive on all of `N_3`. Its projective irreducible representations (linear
+  representations of the binary octahedral group `2O`, order 48) have dimensions
+  1, 1, 2, 3, 3 (linear) and 2, 2, 4 (spinorial). So `s = 3` and `s = 4` are possible.
+
+These dimensions are standard and pass the sum-of-squares check (12+12 = 24, 24+24 = 48).
+Their check against a primary source or an explicit character table is an item of Step 0.
+
+Changing the group from `D2` to `T` or `O` is an additional hypothesis. A result for one
+group does not speak to another, and none speaks to `D2`-isotropic classes.
+
+## 1. Question
+
+In d=3, with the cubic baseline geometry, does every admissible massless symbol whose
+internal representation of `O` is irreducible satisfy rigidity (i):
+
+\[
+c_0 = c_{\rm strict}^{\rm iso}
+\]
+
+for its own strict asymptotic body? Or is there an admissible symbol with
+`0 < c_0 < c_strict^iso`?
+
+Three separate quantified classes, each judged on its own:
+
+- **Class T3:** group `T`, `s = 3`, `R` the irreducible 3-dimensional linear
+  representation of `T`.
+- **Class O3:** group `O`, `s = 3`, `R` an irreducible 3-dimensional linear representation
+  of `O` (either of the two, declared).
+- **Class O4:** group `O`, `s = 4`, `R` the irreducible 4-dimensional spinorial (projective)
+  representation of `O`.
+
+A result in one class says nothing about the others. Since `T` is a subgroup of `O` and
+the 3-dimensional irreducible representations of `O` restrict to the one of `T`, every O3
+symbol is also a T3 symbol. A T3 counterexample therefore does not transfer to O3, while an
+O3 counterexample is also one for T3.
+
+## 2. Frozen class declaration (all classes)
+
+| Item | Declaration |
+| --- | --- |
+| Geometry | d=3; `N_3` as above, all eight displacements active (`T_h != 0` for every `h` in `N_3`); no on-site term; one complete update per time unit; Fourier convention `U(k) = sum_h e^{-i k.h} T_h`, as in the predecessor |
+| Isotropy | The declared group `G` in {`T`, `O`} acting on `N_3` and on `k` by its defining 3x3 matrices; covariance `T_{gh} = R_g T_h R_g^dagger` for every `g` in `G`, equivalently `U(gk) = R_g U(k) R_g^dagger`. No reflections, parity or antiunitary symmetry are required or assumed |
+| Internal symmetry | `R` fixed per class as in Sec. 1, irreducible, up to unitary equivalence; projective phases are allowed in O4 and must be declared explicitly |
+| Dynamics irreducibility | Recorded, not assumed: the joint commutant of `{T_h}` is computed for every candidate. Irreducible `R` implies it, by Schur's lemma, only for `O`-commuting operators; the record keeps the two notions apart |
+| Gapless sector | Node `k_star`, quasienergy origin, sector dimension and isolation declared per candidate. The node must be `O`-invariant or its orbit must be declared; an isotropic, untilted, linear cone in every direction is required (predecessor Sec. 3) |
+| Coverage | Declared per step: the full `O`-covariant coefficient class, or an explicit ansatz with its coverage ceiling |
+| Equivalences | Constant basis changes commuting with `R` up to the declared projective class, global phases, node relabelings within an orbit |
+
+Consequences of the declaration, to be derived exactly in Step 1 and not assumed. Under
+`O`, which is transitive on `N_3`, the eight coefficients are fixed by one `T_{h0}`. Under
+`T`, they are fixed by one coefficient on each tetrahedron, `T_{h0}` and `T_{-h0}`. In both
+cases each fixed coefficient must commute with `R` restricted to the order-3 stabilizer of
+its vertex.
+
+## 3. Sequence
+
+**Step 0 — sources and controls (no new scientific claim).**
+
+1. Read the isotropy definitions and classification assumptions in the primary sources
+   already used for the Pavia baseline. These include D'Ariano–Erba–Perinotti,
+   arXiv:1708.00826 (local copy in `biblioteca/`), and the source of the "P17
+   classification" cited in CURRENT_STATE Sec. 4. Record which group, which `s` and which
+   representation they quantify over. Check whether the question of Sec. 1 is already
+   answered there. Unread items stay `[UNVERIFIED]`.
+2. Verify the irreducible dimensions of `2T` and `2O` from a primary source or from an
+   exact character-table computation kept in `scripts/`.
+3. **Control A:** determine exactly whether the standard Pavia `s=2` Weyl symbols are `T`-
+   and `O`-covariant with a 2-dimensional spinorial irreducible representation. This is a
+   consistency control of the classes, not a result.
+4. **Control B (decisive first test for O4):** determine exactly whether the s=4 family
+   `A_a` admits `O`-covariance for some `R` and, if so, whether that `R` can be the
+   irreducible 4-dimensional one.
+   - If yes for some `0 < a < 1`, with all O4 admission checks passing and the existing
+     `c_strict^iso` certificate applying unchanged, the outcome is
+     `COUNTEREXAMPLE_VERIFIED` for class O4 and the gate stops for O4.
+   - If `A_a` is not `O`-covariant with that `R`, record `S4_FAMILY_OUTSIDE_O4` and
+     continue. This is not evidence for rigidity.
+   - The family has `s = 4` and is therefore outside T3 and O3 by definition.
+
+**Step 1 — exact class derivation.** For each class, derive the constraints on `T_{h0}`
+from stabilizer covariance and the unitarity identities of the predecessor's Sec. 3, before
+choosing any ansatz. Record the dimension and connected components of the solution set if
+they can be determined exactly. If the class is empty, the outcome is `EMPTY_CLASS` for
+that class.
+
+**Step 2 — massless sectors.** Within the derived class, find the admissible gapless
+sectors and their linear slopes `c_0`, exactly.
+
+**Step 3 — strict body and comparison.** For each admissible candidate, certify
+`c_strict^iso` exactly. Use the vertex lemma when every vertex coefficient is
+non-nilpotent; otherwise compute it, because vertex nilpotency alone decides nothing
+(predecessor erratum). Then compare it with `c_0`.
+
+## 4. Admission, stop rules and budget
+
+- Admission checks are those of the predecessor's Sec. 3, with `O` and the declared
+  irreducible `R`. The first failed check makes a candidate `INADMISSIBLE_CANDIDATE`, and its
+  certification stops there.
+- Exact algebra only. A finite scan or a numerical search may suggest candidates but
+  certifies nothing. Every retained computation is a versioned script in `scripts/`, run
+  through `run_all_verifiers.py` before commit.
+- Stop for a class at its first terminal outcome (Sec. 5).
+- Budget: Steps 0–1 for the three classes are one authorization. Steps 2–3 need a separate
+  user authorization after Step 1 is reported, because their cost depends on the dimension
+  of the class found there.
+- If Step 1 shows the constraint system is not tractable exactly within that
+  authorization, stop with `OPEN_AFTER_CLASS_DERIVATION` and report what was derived.
+
+## 5. Outcomes and claim ceilings (per class)
+
+| Outcome | Meaning |
+| --- | --- |
+| `COUNTEREXAMPLE_VERIFIED` | An admissible symbol in the class with `0 < c_0 < c_strict^iso`, exactly certified. Irreducibility under `O` does not force matching for that `s`. |
+| `RIGIDITY_PROVED_FOR_FROZEN_CLASS` | `c_0 = c_strict^iso` proved for every admissible member, with every restriction retained. Says nothing about other `s`, other groups or reducible `R`. |
+| `EMPTY_CLASS` | No symbol satisfies the class constraints. The hypothesis is vacuous for that `s`, which is a first-class negative result. |
+| `INADMISSIBLE_SATURATION` | As in the predecessor: (i) holds but `c_strict^iso < rho_micro`. Not a rigidity counterexample. |
+| `S4_FAMILY_OUTSIDE_O4` | Control B only: the known s=4 family is not `O`-covariant with the irreducible 4-dimensional `R`. It decides nothing by itself. |
+| `OPEN_AFTER_CLASS_DERIVATION` / `INCONCLUSIVE` | No certified counterexample, no exhaustive proof. |
+
+Ceilings retained: no result here establishes A (species universality), matching under
+`D2`, or any statement about nature. A rigidity result would mean that, under the declared
+group and irreducible `R` at that `s`, `c_0` is fixed by the strict causal geometry. It would not
+derive the numerical value of `c`, since the absolute scale is not derivable
+(`NO_ABSOLUTE_SCALE_DERIVABLE`, Sec. 8.21). Novelty requires a separate source comparison.
+No causal sets, random lattices, interactions, anisotropic detours or new substrate classes
+are authorized by this charter.
+
+## 6. Review
+
+Any terminal outcome is reviewed by a model of a different family (`sanedrin` or
+`revision-ciega`) before it enters CURRENT_STATE as more than PRELIMINARY. The review
+record cites the SHA-256 of the reviewed report and the base commit.
+
+=== DOCUMENT 2: 2026-10-28--irreducible-isotropy-step01.md ===
+
+# Irreducible isotropy matching gate: Steps 0–1 — 2026-10-28
+
+Charter: [`IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md`](../theory/IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md)
+(preregistration commit `d112bb0`; Steps 0–1 authorized in `43fd00e`, user: "si, autorizo los
+pasos 0-1"). Certificate: `scripts/verify_irreducible_isotropy_step01.py`
+(SHA-256 `d414b446d476c646…`), 31/31 exact checks, 518 s, Python 3.12.3, SymPy 1.14.0.
+Full verifier sweep before commit: 47/47 pass at `43fd00e` plus this certificate
+([record](2026-10-28--irreducible-isotropy-step01-run_all.tsv)). These figures describe
+the original certificate bytes, not the subsequent repair. Evidence level: **PRELIMINARY**.
+DeepSeek reviewed the original and returned ACCEPT_WITH_REPAIRS; the repaired certificate
+and text await independent review.
+
+Repair verification, 2026-10-29: certificate SHA-256
+`d4b3d242bdd259aa45aa532b6b212bfe75eb0009097f85883805507857f1bfe4`,
+33/33 local checks in 683 seconds; full sweep 47/47
+([record](2026-10-29--irreducible-isotropy-repair-verifier-sweep.tsv)). These runs
+verify execution of the repaired bytes, not independent mathematical review.
+
+## Result
+
+| Class | Group, internal dimension, irreducible `R` | Outcome |
+|---|---|---|
+| T3 | `T`, `s = 3`, spin 1 | `EMPTY_CLASS` |
+| O3 | `O`, `s = 3`, spin 1 (equivalently T1 or T2) | `EMPTY_CLASS` |
+| O4 | `O`, `s = 4`, spin 3/2 (G3/2) | `EMPTY_CLASS` |
+| Control B | s=4 family `A_a` against `O`/spin 3/2 | `S4_FAMILY_OUTSIDE_O4` (for every `a`, since O4 is empty) |
+
+In all three classes, no unitary symbol `U(k) = sum_{h in N_3} e^{-ik.h} T_h` (all eight cube
+vertices, no on-site term) is covariant, `T_{gh} = R_g T_h R_g^dagger`, with the stated
+irreducible `R`. The same holds for the `s = 2` spin-1/2 controls under `T` and under `O`.
+The hypothesis "an irreducible internal representation restores `c_0 = c_strict^iso`" is
+therefore **vacuous** in these classes: there is no admissible symbol to which it applies.
+It is not refuted, and it is not confirmed. Steps 2–3 of the charter have no object.
+
+## Step 0
+
+1. **Sources.** P17 (D'Ariano–Erba–Perinotti, arXiv:1708.00826v2, local
+   `biblioteca/1708.00826v2.pdf`, SHA-256 `dc4107946e601364…`), Definition 1 (arXiv PDF p.2):
+   the isotropy group `L` permutes `S_+` transitively, with a projective unitary
+   representation on `C^s`; irreducibility is not required. The classification is restricted
+   to `s = 2` ("From now on we will restrict to s = 2", p.4). The question of the charter is
+   not answered there. The repo's earlier audit records P17's d=3 projective image as the Pauli
+   group {I, iσX, iσY, iσZ}, a `D2` image
+   ([source audit](2026-09-14--massless-rigidity-source-audit.md), P17 Prop. 4).
+2. **Character tables** (certificate). `2T` (order 24) and `2O` (order 48) are generated
+   exactly in SU(2), and their maps onto `T` and `O` are checked homomorphisms. The 7 and 8
+   listed characters are orthonormal and complete. Irreducible dimensions:
+   `2T`: 1, 1, 1, 2, 2, 2, 3; `2O`: 1, 1, 2, 2, 2, 3, 3, 4. The declared
+   spin-1 and spin-3/2 cases cover T3, O3 and O4 up to one-dimensional
+   characters, which cancel in conjugation. The two spinorial `2O` irreps of dimension 2
+   are covered by the spin-1/2 control up to a character; the distinct linear irrep `E`
+   is not. `O`
+   is transitive on `N_3`; `T` and `D2` have two orbits of size 4.
+3. **Control A** (certificate). Both published Pavia d=3 Weyl symbols (both chiralities):
+   - the half-turns of `D2` have nonzero intertwiners (σz, σx);
+   - the 3-fold rotation about (1,1,1) and the 4-fold rotation about z have only the zero
+     intertwiner.
+
+   So the Pavia symbols are `D2`-isotropic and not `T`- or `O`-isotropic, consistent with
+   P17's Pauli image.
+4. **Control B** (certificate). The s=4 family `A_a` (θ = π/4) has only the zero
+   intertwiner for the 3-fold rotation, for generic `a`. For special values of `a` the
+   conclusion follows from O4 being empty, because `A_a` is unitary with full `N_3`
+   support.
+
+## Step 1: method and controls
+
+For each class:
+
+- one coefficient per orbit (`T_{h0}`, plus `T_{-h0}` for `T`) is restricted to the commutant
+  of `R` on the vertex stabilizer (order 3, lifted to order 6);
+- the other vertices follow by covariance, and the certificate checks that this is
+  independent of the coset representative;
+- the coefficient unitarity identities `sum_{h'-h=ℓ} T_h^dagger T_{h'} = δ_{ℓ0} I` for all 27
+  differences `ℓ` are split into real and imaginary parts;
+- SymPy's exact Groebner basis (grevlex, rational arithmetic) is computed.
+
+A basis equal to [1] means the system has no solution, even over C.
+
+Controls in the certificate:
+
+- the equation generator vanishes identically on the s=4 family and on both Pavia symbols;
+- without the normalization `sum T^dagger T = I`, every class system is homogeneous, so the
+  unit ideal comes from the normalization alone;
+- **positive control:** the same pipeline with `D2` (lifted to Q8), spin 1/2 and two free
+  orbit coefficients gives a non-unit ideal. That class contains the Pavia symbols. Its
+  vertex stabilizer is trivial and this control does not exercise the nontrivial
+  stabilizer commutant. The repaired verifier adds dimension controls for that branch;
+  these do not independently prove completeness of its parametrization.
+
+Exploration before the certificate (scratch, not retained as evidence): a 200-start
+least-squares search on the T3 system stayed bounded away from zero. It is mentioned only
+because it led to the certificate. It is not cited as a result.
+
+## Scope and limits
+
+- Only the frozen classes: d=3, support exactly `N_3` with no on-site term, rotation groups
+  `T` or `O` (no reflections or antiunitaries), covariance by conjugation as in P17
+  Definition 1, irreducible `R` of dimension 2–4.
+- The linear irrep `E` of `2O` at `s = 2` is not covered by the spin-1/2 control. The
+  `s = 1` case (scalar walks, which P17 cites as trivial) is not
+  certified here. `[UNVERIFIED]`
+- Not covered: reducible `R` under `T`/`O`; other groups; other supports (on-site terms,
+  larger neighbourhoods); `D2`-isotropic classes, where the s=4 counterexample lives.
+- No statement about Steps 2–3 (slopes, strict bodies). They have no object in these
+  classes.
+
+## Consequence for the question
+
+In the declared T3, O3 and O4 classes, with the cubic-vertex geometry, the stated
+irreducible covariance is incompatible with unitarity, subject to the preliminary evidence
+and review limitations above. The
+`B_infty^*` question stays where it was. The repo's established cases (Pavia `s = 2`, the s=4
+counterexample) are all `D2`-isotropic with reducible or `D2`-irreducible `R`. The live
+rows are now `s = 2` without P17 Eq. (2), and representation conditions formulated for `D2`,
+or for `T`/`O` with reducible `R`. Either would need its own charter.
+
+=== DOCUMENT 3: verify_irreducible_isotropy_step01.py ===
+
+#!/usr/bin/env python3
+"""Steps 0-1 of theory/IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md (exact, fail-closed).
+
+Run from the repository root:
+    python3 -B scripts/verify_irreducible_isotropy_step01.py
+
+What it certifies (SymPy, exact rational/algebraic arithmetic, zero tolerance):
+  0.2  Binary groups 2T (24) and 2O (48), their maps to the rotation groups T and O,
+       orbit structure on N_3, and complete character tables (irreducible dimensions).
+  0.3  Control A: the two published Pavia d=3 Weyl symbols are D2-covariant (Pauli
+       image) and are not covariant under the 3-fold or 4-fold cube rotations.
+  0.4  Control B: the s=4 family A_a (theta=pi/4) has no nonzero intertwiner for the
+       3-fold rotation, for generic a (all a follows from the O4 result below).
+  1    Class derivation: for T3, O3, O4 (and the s=2 controls T2s, O2s) the
+       unitarity identities of a full-support N_3 symbol with irreducible covariance
+       generate the unit ideal (Groebner basis [1]): no such symbol exists.
+  Controls: the equation generator vanishes on the s=4 family and on the Pavia
+       symbols; without the normalization every system is homogeneous (so the unit ideal
+       comes from the normalization alone); the D2/Q8 spin-1/2 class on N_3 (where the
+       Pavia symbols are covariant) gives a non-unit ideal.
+       For O, the vertex-stabilizer commutant has the independently expected
+       complex dimensions 2 (spin 1/2) and 6 (spin 3/2).
+
+What it does NOT certify: the linear 2O irrep E, reducible representations, other groups,
+supports other than N_3, symbols with an on-site term, or Steps 2-3 of the charter.
+"""
+
+import itertools
+import sys
+import time
+
+import sympy as sp
+from sympy.combinatorics import Permutation
+
+sys.path.insert(0, "scripts")
+import cert_Aa_s4_counterexample as C4  # reviewed helper, read-only
+import verify_weyl_dirac_gate as WD  # reviewed helper, read-only
+from certificate_utils import assert_sym_equal, sym_zero
+
+I = sp.I
+SX = sp.Matrix([[0, 1], [1, 0]])
+SY = sp.Matrix([[0, -I], [I, 0]])
+SZ = sp.Matrix([[1, 0], [0, -1]])
+PAULI = (SX, SY, SZ)
+N3 = [tuple(v) for v in itertools.product((1, -1), repeat=3)]
+H0 = sp.Matrix([1, 1, 1])
+CHECKS = 0
+
+
+def require(cond, label):
+    global CHECKS
+    if not cond:
+        print(f"[FAIL] {label}")
+        sys.exit(1)
+    CHECKS += 1
+    print(f"[PASS] {label}", flush=True)
+
+
+def simp(e):
+    return sp.simplify(sp.expand_complex(e))
+
+
+def key(m):
+    return tuple(sp.nsimplify(simp(x)) for x in m)
+
+
+def is_zero(m):
+    return sym_zero(m)
+
+
+# ---------------------------------------------------------------- groups
+G1 = sp.diag(sp.exp(-I * sp.pi / 4), sp.exp(I * sp.pi / 4)).applyfunc(simp)  # pi/2 about z
+G2 = (sp.eye(2) - I * (SX + SY + SZ)) / 2  # 2pi/3 about (1,1,1)
+C2 = -I * SZ  # pi about z
+GENERATORS = {"2O": [G1, G2], "2T": [G2, C2], "Q8": [-I * SX, -I * SY]}
+
+
+def generate(gens):
+    elems, seen, front = [sp.eye(2)], {key(sp.eye(2))}, [sp.eye(2)]
+    while front:
+        new = []
+        for x in front:
+            for g in gens:
+                y = (x * g).applyfunc(simp)
+                k = key(y)
+                if k not in seen:
+                    seen.add(k)
+                    elems.append(y)
+                    new.append(y)
+        front = new
+    return elems
+
+
+def rotation(u):
+    return sp.Matrix(3, 3, lambda i, j: simp((u * PAULI[j] * u.H * PAULI[i]).trace() / 2))
+
+
+def spin(u, n):
+    """Spin-n/2 representation by symmetric powers, orthonormal monomial basis."""
+    x, y = sp.symbols("x y")
+    norm = [sp.sqrt(sp.binomial(n, k)) for k in range(n + 1)]
+    X = u[0, 0] * x + u[1, 0] * y
+    Y = u[0, 1] * x + u[1, 1] * y
+    m = sp.zeros(n + 1)
+    for k in range(n + 1):
+        p = sp.Poly(sp.expand(X ** (n - k) * Y ** k), x, y)
+        for r in range(n + 1):
+            m[r, k] = p.coeff_monomial(x ** (n - r) * y ** r) * norm[k] / norm[r]
+    return m.applyfunc(simp)
+
+
+def orbits(rots):
+    seen, sizes = set(), []
+    for v in N3:
+        if v in seen:
+            continue
+        orb = {tuple(r * sp.Matrix(v)) for r in rots}
+        seen |= orb
+        sizes.append(len(orb))
+    return sorted(sizes)
+
+
+def conj_classes(elems):
+    keys = [key(g) for g in elems]
+    idx = {k: i for i, k in enumerate(keys)}
+    left = set(range(len(elems)))
+    classes = []
+    while left:
+        i = min(left)
+        cl = {idx[key((h * elems[i] * h.H).applyfunc(simp))] for h in elems}
+        classes.append(sorted(cl))
+        left -= cl
+    return classes
+
+
+def diagonal_sign(rot):
+    """Sign of the permutation of the four body diagonals (A2 of O)."""
+    diags = [sp.Matrix(d) for d in ((1, 1, 1), (1, 1, -1), (1, -1, 1), (-1, 1, 1))]
+    perm = []
+    for d in diags:
+        img = rot * d
+        perm.append(next(j for j, e in enumerate(diags) if img == e or img == -e))
+    return Permutation(perm).signature()
+
+
+def z3_label(rot, rot_gen3):
+    """Index k with rot in g3^k V4 for T = A4 acting on S_+ (T -> Z3)."""
+    v4 = [sp.eye(3), sp.diag(1, -1, -1), sp.diag(-1, 1, -1), sp.diag(-1, -1, 1)]
+    for k in range(3):
+        if any(sym_zero(rot - rot_gen3 ** k * v) for v in v4):
+            return k
+    raise AssertionError("not in T")
+
+
+def character_table_checks(name, elems, rots, chars, order, n_classes):
+    classes = conj_classes(elems)
+    require(len(classes) == n_classes, f"{name}: {n_classes} conjugacy classes")
+    gram = [[simp(sum(c1[i] * sp.conjugate(c2[i]) for i in range(len(elems))) / order)
+             for c2 in chars.values()] for c1 in chars.values()]
+    require(all(sym_zero(gram[i][j] - (1 if i == j else 0)) for i in range(len(chars))
+                for j in range(len(chars))),
+            f"{name}: the {len(chars)} listed characters are orthonormal (each irreducible)")
+    dims = [simp(c[0]) for c in chars.values()]
+    require(sum(d ** 2 for d in dims) == order and len(chars) == n_classes,
+            f"{name}: complete; irreducible dimensions {sorted(dims)}")
+
+
+# ------------------------------------------------------- class equations
+def unitarity_equations(T, s, normalize=True):
+    diffs = {}
+    for h in N3:
+        for hp in N3:
+            diffs.setdefault(tuple(a - b for a, b in zip(hp, h)), []).append((h, hp))
+    eqs = set()
+    for ell, pairs in diffs.items():
+        S = sp.zeros(s)
+        for h, hp in pairs:
+            S += T[h].H * T[hp]
+        if normalize and ell == (0, 0, 0):
+            S -= sp.eye(s)
+        for x in S:
+            x = sp.expand(sp.expand_complex(x))
+            for part in (sp.expand(sp.re(x)), sp.expand(sp.im(x))):
+                if not sym_zero(part):
+                    eqs.add(part)
+    return list(eqs)
+
+
+def covariant_class(group, n, bases, commutant=True):
+    """Symbols on N_3 with T_{gh} = D(u) T_h D(u)^dagger, one free coefficient per orbit."""
+    elems = generate(GENERATORS[group])
+    s = n + 1
+    D = {key(u): spin(u, n) for u in elems}
+    R = {key(u): rotation(u) for u in elems}
+    params, T = [], {}
+    for bi, base in enumerate(bases):
+        xs = sp.symbols(f"x{bi}_0:{s * s}")
+        X = sp.Matrix(s, s, xs)
+        eqs = []
+        if commutant:
+            for u in elems:
+                if sym_zero(R[key(u)] * base - base):
+                    eqs += list(D[key(u)] * X - X * D[key(u)])
+        sol = list(sp.linsolve(eqs, xs))[0] if eqs else xs
+        free = sorted(sp.Matrix(sol).free_symbols, key=str)
+        re = sp.symbols(f"q{bi}_0:{2 * len(free)}", real=True)
+        params += list(re)
+        A = sp.Matrix(s, s, list(sol)).subs({f: re[2 * i] + I * re[2 * i + 1]
+                                             for i, f in enumerate(free)})
+        for v in N3:
+            reps = [u for u in elems if sym_zero(R[key(u)] * base - sp.Matrix(v))]
+            if reps:
+                cands = [sp.expand(D[key(u)] * A * D[key(u)].H) for u in reps]
+                for c in cands:
+                    assert_sym_equal(c, cands[0], "ill-defined orbit map")
+                T[v] = cands[0]
+    return T, params, s
+
+
+def groebner_is_unit(eqs, params):
+    basis = sp.groebner(eqs, *params, order="grevlex").exprs
+    return len(basis) == 1 and sym_zero(basis[0] - 1)
+
+
+# ------------------------------------------------------------------ main
+def main():
+    t0 = time.time()
+    # 0.2 groups and character tables
+    g2O, g2T = generate(GENERATORS["2O"]), generate(GENERATORS["2T"])
+    require(len(g2O) == 48 and len(g2T) == 24, "|2O| = 48, |2T| = 24")
+    for name, elems, order in (("2O", g2O, 24), ("2T", g2T, 12)):
+        rots = {key(u): rotation(u) for u in elems}
+        ok = all(sym_zero(rots[key(u)] * rots[key(v)] - rots[key((u * v).applyfunc(simp))])
+                 for u in elems for v in elems)
+        require(ok and len({tuple(r) for r in rots.values()}) == order
+                and all(sym_zero(r.det() - 1) for r in rots.values()),
+                f"{name} -> rotation map is a homomorphism onto a group of order {order}")
+    rotO = [rotation(u) for u in g2O]
+    rotT = [rotation(u) for u in g2T]
+    rotD2 = [sp.eye(3), sp.diag(1, -1, -1), sp.diag(-1, 1, -1), sp.diag(-1, -1, 1)]
+    require(orbits(rotO) == [8], "O is transitive on N_3")
+    require(orbits(rotT) == [4, 4] and orbits(rotD2) == [4, 4],
+            "T and D2 each have two orbits of size 4 on N_3")
+    require(all(is_zero(spin(u, 3) * spin(v, 3) - spin((u * v).applyfunc(simp), 3))
+                for u in g2O[:12] for v in g2O),
+            "spin-3/2 map is multiplicative on 2O (12 x 48 products)")
+
+    chi = {j: [simp(spin(u, j).trace()) for u in g2O] for j in (0, 1, 2, 3, 4)}
+    a2 = [diagonal_sign(rotation(u)) for u in g2O]
+    t2 = [chi[2][i] * a2[i] for i in range(48)]
+    chars_O = {"A1": chi[0], "A2": a2, "E": [chi[4][i] - t2[i] for i in range(48)],
+               "T1": chi[2], "T2": t2, "E1/2": chi[1],
+               "E5/2": [chi[1][i] * a2[i] for i in range(48)], "G3/2": chi[3]}
+    character_table_checks("2O", g2O, rotO, chars_O, 48, 8)
+
+    w = sp.exp(2 * sp.pi * I / 3)
+    r3 = rotation(G2)
+    lab = [z3_label(rotation(u), r3) for u in g2T]
+    chiT = {j: [simp(spin(u, j).trace()) for u in g2T] for j in (0, 1, 2)}
+    chars_T = {"A": chiT[0], "A'": [w ** k for k in lab], "A''": [w ** (2 * k) for k in lab],
+               "T": chiT[2], "E": chiT[1], "E'": [chiT[1][i] * w ** lab[i] for i in range(24)],
+               "E''": [chiT[1][i] * w ** (2 * lab[i]) for i in range(24)]}
+    character_table_checks("2T", g2T, rotT, chars_T, 24, 7)
+    print("NOTE  Spin-1 and spin-3/2 cover the declared T3/O3/O4 classes up to "
+          "characters. The spin-1/2 O control does not cover the linear 2O irrep E.")
+
+    # The threefold stabilizer has distinct eigenvalue multiplicities (1, 1)
+    # for spin 1/2 and (1, 1, 2) for spin 3/2. Its commutant dimensions
+    # are therefore 1²+1²=2 and 1²+1²+2²=6, respectively.
+    for n, expected in ((1, 2), (3, 6)):
+        _, params, _ = covariant_class("2O", n, [H0])
+        require(len(params) == 2 * expected,
+                f"O vertex stabilizer: spin {sp.Rational(n, 2)} commutant "
+                f"has expected complex dimension {expected}")
+
+    # controls on the equation generator
+    a = sp.Rational(3, 5)
+    _, _, _, _, _, coeffs = C4.coefficients(a, sp.pi / 4)
+    T4 = {tuple(-x for x in k): v for k, v in coeffs.items()}
+    require(all(sym_zero(e) for e in unitarity_equations(T4, 4)),
+            "unitarity equations vanish on the s=4 family (a=3/5, theta=pi/4)")
+    z = sp.symbols("z1:4")
+    pavia = {}
+    for ch in (1, -1):
+        M, _ = WD.published_symbol(3, ch, z)
+        T2 = {}
+        for v in N3:
+            mono = sp.prod([zi ** (vi + 1) for zi, vi in zip(z, v)])
+            T2[tuple(-x for x in v)] = M.applyfunc(
+                lambda e: sp.Poly(sp.expand(e * sp.prod(z)), *z).coeff_monomial(mono))
+        pavia[ch] = T2
+        require(all(sym_zero(e) for e in unitarity_equations(T2, 2))
+                and all(not is_zero(t) for t in T2.values()),
+                f"unitarity equations vanish on Pavia chirality {ch}; full N_3 support")
+
+    # 0.3 Control A
+    def intertwiners(T, rot, s):
+        X = sp.Matrix(s, s, sp.symbols(f"v0:{s * s}"))
+        eqs = []
+        for h, Th in T.items():
+            eqs += [sp.expand(e) for e in (X * Th - T[tuple(rot * sp.Matrix(h))] * X)]
+        return list(sp.linsolve(eqs, list(X)))[0]
+
+    rz, rx = sp.diag(-1, -1, 1), sp.diag(1, -1, -1)
+    rq = sp.Matrix([[0, -1, 0], [1, 0, 0], [0, 0, 1]])
+    for ch, T2 in pavia.items():
+        require(any(not sym_zero(x) for x in intertwiners(T2, rz, 2))
+                and any(not sym_zero(x) for x in intertwiners(T2, rx, 2)),
+                f"Control A: Pavia chirality {ch} has nonzero intertwiners for the D2 half-turns")
+        require(all(sym_zero(x) for x in intertwiners(T2, r3, 2))
+                and all(sym_zero(x) for x in intertwiners(T2, rq, 2)),
+                f"Control A: Pavia chirality {ch} is not covariant under the 3-fold or 4-fold "
+                "rotation (only the zero intertwiner)")
+
+    # 0.4 Control B (generic a)
+    asym = sp.symbols("a", positive=True)
+    _, _, _, _, _, coeffs = C4.coefficients(asym, sp.pi / 4)
+    T4a = {tuple(-x for x in k): v for k, v in coeffs.items()}
+    require(all(sym_zero(x) for x in intertwiners(T4a, r3, 4)),
+            "Control B: s=4 family has only the zero intertwiner for the 3-fold rotation "
+            "(generic a)")
+
+    # Step 1 classes
+    cases = [("T3", "2T", 2, [H0, -H0]), ("O3", "2O", 2, [H0]), ("O4", "2O", 3, [H0]),
+             ("T2s (control)", "2T", 1, [H0, -H0]), ("O2s (control)", "2O", 1, [H0])]
+    for name, group, n, bases in cases:
+        T, params, s = covariant_class(group, n, bases)
+        eqs = unitarity_equations(T, s)
+        require(groebner_is_unit(eqs, params),
+                f"{name}: s={s}, irreducible spin-{sp.Rational(n, 2)} covariance under "
+                f"{group[1:]}, {len(params)} real parameters: unitarity ideal is (1) "
+                "-> EMPTY_CLASS")
+        relaxed = unitarity_equations(T, s, normalize=False)
+        require(all(sym_zero(sp.Poly(e, *params).coeff_monomial(1)) for e in relaxed),
+                f"{name}: without the normalization the equations are homogeneous, so the "
+                "unit ideal comes from sum T^dagger T = I alone")
+        print(f"      ({time.time() - t0:.0f} s elapsed)", flush=True)
+
+    T, params, s = covariant_class("Q8", 1, [H0, -H0], commutant=False)
+    require(not groebner_is_unit(unitarity_equations(T, s), params),
+            "positive control: D2 (Q8) spin-1/2 class on N_3 is non-empty")
+
+    print(f"{CHECKS}/{CHECKS} exact checks passed in {time.time() - t0:.0f} s. "
+          "Steps 2-3 and reducible representations are not covered.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+=== DOCUMENT 4: certificate_utils.py ===
+
+"""Shared helpers for exact symbolic certificates.
+
+Structural equality (`a == b`) on SymPy expressions compares syntax trees, not
+mathematical values: `simplify` may return an algebraically equal but
+differently written form. Two certificates (W2, W5) failed under the pinned
+SymPy 1.14.0 for this reason (reports/2026-10-22--escape-corruption-audit.md).
+Use `sym_zero` / `assert_sym_equal` for value identities.
+"""
+
+import sympy as sp
+
+
+def sym_zero(expr):
+    """True iff expr simplifies to exactly zero (trig/exp forms normalized)."""
+    if isinstance(expr, sp.MatrixBase):
+        return all(sym_zero(e) for e in expr)
+    e = sp.expand(sp.sympify(expr).rewrite(sp.exp))
+    return sp.simplify(e) == 0
+
+
+def assert_sym_equal(a, b, what=""):
+    """Assert a and b are equal as values; report the residual on failure."""
+    residual = (sp.Matrix(a) - sp.Matrix(b)) if isinstance(a, sp.MatrixBase) \
+        else sp.sympify(a) - sp.sympify(b)
+    assert sym_zero(residual), f"{what}: nonzero residual {sp.simplify(residual)}"
+
+=== DOCUMENT 5: informe_deepseek.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ a32e18975abd59f30d66e7515944fa2ba97cf98b; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: stop (estado operativo, no validación del contenido)
+modelo: deepseek-v4-pro, esfuerzo: thinking=por defecto de la API, reasoning_effort=por defecto de la API, max_tokens=393216, vía: API api.deepseek.com/chat/completions, sin herramientas
+modelo devuelto por API: deepseek-v4-pro
+deepseek.json sha256 eb2449a02ea38c12b4aedae96ece00b1530034a1aee85f08fe872431076aff72
+inicio: 2026-10-29T07:35:30Z  fin: 2026-10-29T07:52:14Z
+documento: /home/ignac/qca-causal-cones/theory/IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md ; último commit observado: 88b07ed ; sha256 de la copia enviada bb12375faff7b16fcd5e40c85995dc9fe8f374f6d26b51c60819fa94bba176a6
+documento: /home/ignac/qca-causal-cones/reports/2026-10-28--irreducible-isotropy-step01.md ; último commit observado: 88b07ed ; sha256 de la copia enviada d251ba224f913085215bef4f0077701af51baf1a1e9b7384230c784f6177748c
+documento: /home/ignac/qca-causal-cones/scripts/verify_irreducible_isotropy_step01.py ; último commit observado: 88b07ed ; sha256 de la copia enviada d414b446d476c646b1955c6c1260c2e818ffe95b5a7d302fd0ab0e4fefb03b94
+documento: /home/ignac/qca-causal-cones/scripts/cert_Aa_s4_counterexample.py ; último commit observado: 1dae941 ; sha256 de la copia enviada 635a24706df763efda1458e6742a1c43763f6a7ff7c22ddc7c6637f78ea5787a
+documento: /home/ignac/qca-causal-cones/scripts/verify_weyl_dirac_gate.py ; último commit observado: 95f423f ; sha256 de la copia enviada 6c555cef8db0d8a7307a08e0251fa9278773aceeea8bf2bdb956ba2c3ca06597
+entrada_deepseek.txt sha256 36df225f56efae36b45556a6f232ac52642e982369cc56d5c21bd1fdeb24e910
+respuesta sha256 86f0f5b21ae374c21dc9c662da4f3aae26ca1cc9ac56172d9c36c398a6195058
+-->
+
+## Veredicto global
+
+**ACCEPT_WITH_REPAIRS.** El resultado principal —que las clases T3, O3 y O4 declaradas son vacías— es matemáticamente plausible y el diseño del certificado es, en lo esencial, correcto. No veo un error que invalide esa conclusión. Sí hay una **sobreafirmación de cobertura** que debe repararse: la representación lineal irreducible de dimensión 2 de \(2O\) (la `E` lineal) no está cubierta por el control de espín 1/2, y el informe la incluye implícitamente en su afirmación de cobertura total.
+
+No he podido ejecutar el código ni verificar los 31/31 checks exactos; eso queda **NO VERIFICADO por ejecución**.
+
+---
+
+## 1. Corrección del planteamiento
+
+**Veredicto: ACCEPT.**
+
+La covarianza usada es la correcta y coincide con la carta:
+
+\[
+T_{gh}=R_g T_h R_g^\dagger
+\]
+
+es equivalente a
+
+\[
+U(gk)=R_g U(k)R_g^\dagger,
+\]
+
+pues
+
+\[
+U(gk)=\sum_h e^{-i(gk)\cdot h}T_h
+=\sum_{\tilde h} e^{-ik\cdot \tilde h}T_{g\tilde h},
+\]
+
+mientras
+
+\[
+R_gU(k)R_g^\dagger
+=\sum_{\tilde h} e^{-ik\cdot \tilde h} R_gT_{\tilde h}R_g^\dagger.
+\]
+
+La reducción a un coeficiente por órbita restringido al conmutante del estabilizador del vértice es correcta. Si \(g\) fija \(h\), entonces
+
+\[
+T_h=T_{gh}=R_g T_h R_g^\dagger,
+\]
+
+es decir
+
+\[
+[R_g,T_h]=0.
+\]
+
+La restricción al estabilizador es exacta y no hay una fase proyectiva adicional.
+
+**Fase proyectiva explícita.**  
+Si \(R\) es una representación proyectiva, la acción adjunta
+
+\[
+g\mapsto \operatorname{Ad}_{R_g}
+\]
+
+es un homomorfismo genuino: las fases de \(R_g\) se cancelan en \(R_g(\cdot)R_g^\dagger\). Por tanto, la covarianza exacta de la carta no deja libertad para pedir
+
+\[
+R_g T_h R_g^\dagger=\lambda_g T_h
+\]
+
+con \(\lambda_g\neq 1\). Para estabilizador, \(T_h=T_{gh}\) impone \(\lambda_g=1\).
+
+Concretamente:
+
+- En espín 1/2, un levantamiento de una rotación triple alrededor del vértice es conjugable a
+
+\[
+\operatorname{diag}(e^{i\pi/3}, e^{-i\pi/3}).
+\]
+
+Su conmutante exacto es diagonal. Si se permitiera fase, habría soluciones con entradas no diagonales y \(\lambda=e^{2\pi i/3}\), pero eso correspondería a otra convención de covarianza, no a la de la carta.
+
+- En espín 3/2, la restricción al levantamiento del estabilizador es conjugable a
+
+\[
+\operatorname{diag}(e^{i\pi/3}, e^{-i\pi/3}, -1, -1).
+\]
+
+El conmutante exacto es por bloques, no diagonal genérico. También aquí podrían aparecer soluciones “salvo carácter” si se modificara la ecuación de covarianza, pero no son admisibles bajo la covarianza declarada.
+
+Por tanto, no falta ninguna solución por no permitir fases proyectivas extra.
+
+---
+
+## 2. Identidades de unitariedad
+
+**Veredicto: ACCEPT.**
+
+Las identidades usadas son correctas. Para
+
+\[
+U(k)=\sum_h e^{-ik\cdot h}T_h,
+\]
+
+se tiene
+
+\[
+U(k)^\dagger U(k)
+=\sum_{h,h'} e^{ik\cdot(h-h')} T_h^\dagger T_{h'}
+=\sum_{\ell} e^{-ik\cdot \ell}
+\left(\sum_{h'-h=\ell} T_h^\dagger T_{h'}\right).
+\]
+
+Las exponenciales \(e^{-ik\cdot \ell}\) con \(\ell\in\{-2,0,2\}^3\) son caracteres linealmente independientes sobre \(k\). Por tanto,
+
+\[
+\sum_{h'-h=\ell} T_h^\dagger T_{h'}=\delta_{\ell 0}I
+\]
+
+es una condición necesaria y suficiente para \(U^\dagger U=I\).
+
+No hace falta imponer por separado \(UU^\dagger=I\), porque para matrices cuadradas finitas \(U^\dagger U=I\) ya implica que \(U^\dagger\) es inversa por ambos lados.
+
+La división en parte real e imaginaria y una base de Gröbner igual a \([1]\) demuestra, si SymPy simplifica bien los coeficientes algebraicos, que no hay solución real; como los parámetros reales son exactamente las partes real e imaginaria de los coeficientes complejos, tampoco hay solución compleja.
+
+No veo error aquí. Lo que no puedo verificar sin ejecutar es que SymPy no haya producido ceros espurios por simplificación de expresiones algebraicas.
+
+---
+
+## 3. Cobertura de representaciones irreducibles
+
+**Veredicto: REJECT en la afirmación de cobertura; las dimensiones de las tablas son correctas.**
+
+Las dimensiones listadas son correctas:
+
+\[
+2T:\quad 1,1,1,2,2,2,3 \qquad \sum d^2=24,
+\]
+
+\[
+2O:\quad 1,1,2,2,2,3,3,4 \qquad \sum d^2=48.
+\]
+
+También es cierto que, dentro de una misma **clase central**, representaciones de igual dimensión suelen diferir en un carácter unidimensional, y la conjugación \(R_g T_h R_g^\dagger\) ve ese carácter solo como una fase que se cancela.
+
+Pero la afirmación
+
+> “spin 1/2, 1 y 3/2 cubren todas las \(R\) irreducibles de dimensión 2, 3 y 4 de \(2T\) y \(2O\)”
+
+es **falsa para dimensión 2 de \(2O\)**.
+
+En \(2O\) hay:
+
+- dos representaciones espinoriales de dimensión 2: \(E_{1/2}\) y \(E_{5/2}\);
+- una representación **lineal** de dimensión 2: \(E\), que proviene de la representación irreducible bidimensional de \(O\) y tiene carácter central \(+1\) sobre \(-I\in 2O\).
+
+La representación de espín 1/2 restringida a \(2O\) es \(E_{1/2}\), con carácter central \(-1\) sobre \(-I\). Multiplicar por un carácter unidimensional de \(2O\) no cambia ese carácter central, porque los caracteres unidimensionales de \(2O\) son triviales sobre \(-I\). Por tanto, la \(E\) lineal **no** es equivalente a espín 1/2 multiplicado por un carácter.
+
+El control `O2s (control)` del código usa `n=1`, es decir, espín 1/2. Por tanto cubre \(E_{1/2}\) y \(E_{5/2}\), pero no la \(E\) lineal de \(O\).
+
+La afirmación final del informe:
+
+> “every irreducible-\(R\) class with \(s\ge 2\) under \(T\) or \(O\) on \(N_3\) is covered by T3, O3, O4 and the two \(s=2\) controls”
+
+es, por tanto, incorrecta. Debe corregirse para excluir, o tratar explícitamente, la clase \(O\), \(s=2\), \(R=E\) lineal.
+
+Esto no afecta a las clases principales T3, O3, O4, porque dimensión 3 y 4 sí están cubiertas.
+
+---
+
+## 4. Revisión del código
+
+**Veredicto: ACCEPT_WITH_REPAIRS.**  
+No veo un error que invalide la conclusión principal, pero hay una laguna de control y una afirmación impresa falsa.
+
+### Convención de signos \(h\leftrightarrow -h\)
+
+No invalida. En los controles se usa
+
+```python
+T4 = {tuple(-x for x in k): v ...}
+T2[tuple(-x for x in v)] = ...
+```
+
+Eso es un reetiquetado global \(T'_h=T_{-h}\). Si \(T_h\) produce un símbolo unitario, también lo produce \(T'_h\), porque corresponde a \(U(-k)\). La covarianza no se pierde, ya que \(T'_{gh}=T_{-gh}=T_{g(-h)}\). Por tanto, los controles siguen siendo válidos.
+
+En la derivación principal de Step 1, `covariant_class` no usa esa inversión; usa directamente
+
+\[
+T_{R(u)h_0}=D(u) A D(u)^\dagger.
+\]
+
+Eso es correcto.
+
+### Homomorfismo / antihomomorfismo
+
+Correcto. `rotation(u)` es la representación adjunta estándar:
+
+\[
+R_{ij}(u)=\frac12 \operatorname{Tr}(\sigma_i u\sigma_j u^\dagger).
+\]
+
+Esto da
+
+\[
+R(uv)=R(u)R(v),
+\]
+
+y el código comprueba homomorfismo. La matriz `spin(u,n)` construida por potencias simétricas también es un homomorfismo. La comprobación de espín 3/2 solo se hace para \(12\times 48\) productos, no todos, pero la construcción es polinomial y define un homomorfismo global de \(SU(2)\); no es un bug.
+
+### Construcción del conmutante
+
+Correcta. Se resuelve
+
+\[
+D(u)X-XD(u)=0
+\]
+
+para todos los levantamientos \(u\) del estabilizador del vértice. Como \(D(u)\) es unitario, no hace falta añadir \(D(u)^\dagger X-XD(u)^\dagger\).
+
+El uso de `sp.linsolve` sobre variables complejas y luego sustituir cada variable libre compleja por \(q_{2i}+i q_{2i+1}\) con \(q\) reales cubre todas las soluciones complejas. No veo error.
+
+**Laguna de control:** el control positivo Q8/D2 usa `commutant=False`, por lo que no ejercita el solucionador del conmutante. Es decir, si `covariant_class(..., commutant=True)` tuviera un error que restringiera de más, el control positivo no lo detectaría. No es evidencia de error, pero es una laguna de justificación.
+
+### Asignación de vértices por covarianza
+
+Correcta. Para cada `v` se buscan los `u` con `R(u)*base=v` y se define
+
+\[
+T_v=D(u)AD(u)^\dagger.
+\]
+
+La comprobación
+
+```python
+assert all(is_zero(c - cands[0]) for c in cands)
+```
+
+garantiza que la asignación no depende del representante de coset. Eso es exactamente lo que se necesita.
+
+### Generador de ecuaciones
+
+Correcto. `unitarity_equations` agrupa por \(\ell=h'-h\) y construye
+
+\[
+\sum_{h'-h=\ell} T_h^\dagger T_{h'},
+\]
+
+restando \(I\) solo para \(\ell=0\). Eso es el sistema correcto.
+
+### Comparaciones estructurales `==`
+
+Hay comparaciones estructurales como
+
+```python
+R_1 * R_2 == R_3
+x == 0
+exprs == [1]
+```
+
+En este contexto, con matrices algebraicas exactas, es probablemente suficiente. Para robustez sería mejor comparar diferencias simplificadas con cero. No creo que invalide el certificado, pero es una mejora recomendable.
+
+### ¿Los controles descartan un generador que dé \([1]\) siempre?
+
+No completamente. El control positivo Q8/D2 descarta un fallo absolutamente universal “todo da \([1]\)”. La anulación sobre los paseos conocidos muestra que el generador no impone ecuaciones espurias para esos paseos. La homogeneidad sin normalización muestra que el sistema relajado es homogéneo y no unitario.
+
+Pero no descartan un error que afecte específicamente a las clases con `commutant=True`, ni un error de Gröbner que produzca \([1]\) solo para estos sistemas algebraicos de dimensión mayor. Son controles buenos, pero no son una prueba de que el generador es correcto para T3/O3/O4.
+
+---
+
+## 5. Segunda vía analítica independiente
+
+**Veredicto: NO VERIFICADO; observación parcial.**
+
+Puedo dar una observación útil, pero no una prueba analítica completa sin hacer cálculos largos.
+
+Para \(O\) u \(T\) con \(R\) irreducible, en \(k=0\):
+
+\[
+U(0)=R_g U(0) R_g^\dagger
+\]
+
+para todo \(g\), luego por Schur
+
+\[
+U(0)=\lambda I,\qquad |\lambda|=1.
+\]
+
+Para O3, con un coeficiente \(A=T_{h_0}\) en el conmutante del estabilizador, la suma sobre la órbita da
+
+\[
+\sum_h T_h=\frac{8}{3}(\operatorname{Tr} A)I,
+\]
+
+y la normalización da
+
+\[
+\sum_h T_h^\dagger T_h
+=\frac{8}{3}\operatorname{Tr}(A^\dagger A)I
+=I,
+\]
+
+por lo que
+
+\[
+\operatorname{Tr}(A^\dagger A)=\frac38.
+\]
+
+Además, de \(U(0)=\lambda I\),
+
+\[
+|\operatorname{Tr}A|=\frac38.
+\]
+
+Estas condiciones no son contradictorias por Cauchy.
+
+Para T3 hay condiciones análogas con dos coeficientes y una traza total.
+
+Una prueba analítica completa requeriría imponer las identidades \(\ell\neq 0\), probablemente evaluando \(U(k)\) en direcciones invariantes por el estabilizador del vértice. No es imposible, pero no es un argumento corto. No he verificado una demostración de ese tipo.
+
+---
+
+## 6. Alcance y conclusiones del informe
+
+**Veredicto: ACCEPT_WITH_REPAIRS.**
+
+Las limitaciones principales están bien declaradas:
+
+- `EMPTY_CLASS` es vacío, no refutación ni confirmación de la hipótesis;
+- \(s=1\) queda `[UNVERIFIED]`;
+- no se cubren representaciones reducibles, otros grupos u otros soportes;
+- no hay objeciones de Steps 2–3.
+
+La redacción es cuidadosa en general.
+
+El problema es la **sobreafirmación de cobertura** ya señalada. El informe dice que todas las clases \(s\ge 2\) bajo \(T\) u \(O\) están cubiertas por T3, O3, O4 y los dos controles \(s=2\). Eso es falso para la representación lineal \(E\) de dimensión 2 de \(O\). Hay que corregirlo.
+
+---
+
+## Reparaciones obligatorias
+
+1. **[Error matemático / cobertura]**  
+   Documento `2026-10-28--irreducible-isotropy-step01.md`, sección “Scope and limits”.  
+   Corregir o matizar la frase:
+
+   > “Since 2T and 2O have no irreducible representation of dimension above 4, every irreducible-\(R\) class with \(s\ge 2\) under \(T\) or \(O\) on \(N_3\) is covered by T3, O3, O4 and the two \(s=2\) controls.”
+
+   Debe excluirse explícitamente la representación lineal bidimensional \(E\) de \(2O\), o añadirse un control/derivación para \(O\), \(s=2\), \(R=E\) lineal.
+
+2. **[Error de código / redacción]**  
+   `verify_irreducible_isotropy_step01.py`, cerca del mensaje:
+
+   ```python
+   print("NOTE  irreps of equal dimension above are built as (spin rep) x (1-dim "
+         "character); T -> R T R^dagger sees R only up to that scalar, so spin 1/2, 1, "
+         "3/2 cover every irreducible R of dimension 2, 3, 4.")
+   ```
+
+   Ese mensaje es falso para dimensión 2 de \(2O\). Debe corregirse.
+
+3. **[Laguna de justificación]**  
+   Documento `2026-10-28--irreducible-isotropy-step01.md`, sección “Controls in the certificate”.  
+   Indicar que el control positivo Q8/D2 usa `commutant=False` y por tanto no valida el solucionador del conmutante. Conviene añadir un control que ejercite `commutant=True` con estabilizador no trivial, o justificar por qué la solución del conmutante es completa por inspección analítica.
+
+4. **[Redacción / robustez]**  
+   En el código, reemplazar comparaciones estructurales `==` por diferencias simplificadas iguales a cero en puntos críticos: homomorfismo de rotaciones, intertwiners y base de Gröbner. No cambia la conclusión si SymPy ya simplifica, pero evita falsos fallos o falsos positivos ante cambios de versión.
+
+5. **[NO VERIFICADO por ejecución]**  
+   Los hashes, los 31/31 checks, el tiempo de ejecución y la base de Gröbner exacta no pueden ser verificados sin ejecutar el certificado. El resultado principal queda como altamente plausible, pero no verificado por mí en esta sesión.

@@ -18,8 +18,10 @@ What it certifies (SymPy, exact rational/algebraic arithmetic, zero tolerance):
        symbols; without the normalization every system is homogeneous (so the unit ideal
        comes from the normalization alone); the D2/Q8 spin-1/2 class on N_3 (where the
        Pavia symbols are covariant) gives a non-unit ideal.
+       For O, the vertex-stabilizer commutant has the independently expected
+       complex dimensions 2 (spin 1/2) and 6 (spin 3/2).
 
-What it does NOT certify: anything about reducible representations, other groups,
+What it does NOT certify: the linear 2O irrep E, reducible representations, other groups,
 supports other than N_3, symbols with an on-site term, or Steps 2-3 of the charter.
 """
 
@@ -33,6 +35,7 @@ from sympy.combinatorics import Permutation
 sys.path.insert(0, "scripts")
 import cert_Aa_s4_counterexample as C4  # reviewed helper, read-only
 import verify_weyl_dirac_gate as WD  # reviewed helper, read-only
+from certificate_utils import assert_sym_equal, sym_zero
 
 I = sp.I
 SX = sp.Matrix([[0, 1], [1, 0]])
@@ -62,7 +65,7 @@ def key(m):
 
 
 def is_zero(m):
-    return all(simp(x) == 0 for x in m)
+    return sym_zero(m)
 
 
 # ---------------------------------------------------------------- groups
@@ -144,7 +147,7 @@ def z3_label(rot, rot_gen3):
     """Index k with rot in g3^k V4 for T = A4 acting on S_+ (T -> Z3)."""
     v4 = [sp.eye(3), sp.diag(1, -1, -1), sp.diag(-1, 1, -1), sp.diag(-1, -1, 1)]
     for k in range(3):
-        if any(rot == rot_gen3 ** k * v for v in v4):
+        if any(sym_zero(rot - rot_gen3 ** k * v) for v in v4):
             return k
     raise AssertionError("not in T")
 
@@ -154,7 +157,7 @@ def character_table_checks(name, elems, rots, chars, order, n_classes):
     require(len(classes) == n_classes, f"{name}: {n_classes} conjugacy classes")
     gram = [[simp(sum(c1[i] * sp.conjugate(c2[i]) for i in range(len(elems))) / order)
              for c2 in chars.values()] for c1 in chars.values()]
-    require(all(gram[i][j] == (1 if i == j else 0) for i in range(len(chars))
+    require(all(sym_zero(gram[i][j] - (1 if i == j else 0)) for i in range(len(chars))
                 for j in range(len(chars))),
             f"{name}: the {len(chars)} listed characters are orthonormal (each irreducible)")
     dims = [simp(c[0]) for c in chars.values()]
@@ -178,7 +181,7 @@ def unitarity_equations(T, s, normalize=True):
         for x in S:
             x = sp.expand(sp.expand_complex(x))
             for part in (sp.expand(sp.re(x)), sp.expand(sp.im(x))):
-                if part != 0:
+                if not sym_zero(part):
                     eqs.add(part)
     return list(eqs)
 
@@ -196,7 +199,7 @@ def covariant_class(group, n, bases, commutant=True):
         eqs = []
         if commutant:
             for u in elems:
-                if R[key(u)] * base == base:
+                if sym_zero(R[key(u)] * base - base):
                     eqs += list(D[key(u)] * X - X * D[key(u)])
         sol = list(sp.linsolve(eqs, xs))[0] if eqs else xs
         free = sorted(sp.Matrix(sol).free_symbols, key=str)
@@ -205,16 +208,18 @@ def covariant_class(group, n, bases, commutant=True):
         A = sp.Matrix(s, s, list(sol)).subs({f: re[2 * i] + I * re[2 * i + 1]
                                              for i, f in enumerate(free)})
         for v in N3:
-            reps = [u for u in elems if R[key(u)] * base == sp.Matrix(v)]
+            reps = [u for u in elems if sym_zero(R[key(u)] * base - sp.Matrix(v))]
             if reps:
                 cands = [sp.expand(D[key(u)] * A * D[key(u)].H) for u in reps]
-                assert all(is_zero(c - cands[0]) for c in cands), "ill-defined orbit map"
+                for c in cands:
+                    assert_sym_equal(c, cands[0], "ill-defined orbit map")
                 T[v] = cands[0]
     return T, params, s
 
 
 def groebner_is_unit(eqs, params):
-    return sp.groebner(eqs, *params, order="grevlex").exprs == [1]
+    basis = sp.groebner(eqs, *params, order="grevlex").exprs
+    return len(basis) == 1 and sym_zero(basis[0] - 1)
 
 
 # ------------------------------------------------------------------ main
@@ -225,10 +230,10 @@ def main():
     require(len(g2O) == 48 and len(g2T) == 24, "|2O| = 48, |2T| = 24")
     for name, elems, order in (("2O", g2O, 24), ("2T", g2T, 12)):
         rots = {key(u): rotation(u) for u in elems}
-        ok = all(rots[key(u)] * rots[key(v)] == rots[key((u * v).applyfunc(simp))]
+        ok = all(sym_zero(rots[key(u)] * rots[key(v)] - rots[key((u * v).applyfunc(simp))])
                  for u in elems for v in elems)
         require(ok and len({tuple(r) for r in rots.values()}) == order
-                and all(r.det() == 1 for r in rots.values()),
+                and all(sym_zero(r.det() - 1) for r in rots.values()),
                 f"{name} -> rotation map is a homomorphism onto a group of order {order}")
     rotO = [rotation(u) for u in g2O]
     rotT = [rotation(u) for u in g2T]
@@ -256,15 +261,23 @@ def main():
                "T": chiT[2], "E": chiT[1], "E'": [chiT[1][i] * w ** lab[i] for i in range(24)],
                "E''": [chiT[1][i] * w ** (2 * lab[i]) for i in range(24)]}
     character_table_checks("2T", g2T, rotT, chars_T, 24, 7)
-    print("NOTE  irreps of equal dimension above are built as (spin rep) x (1-dim "
-          "character); T -> R T R^dagger sees R only up to that scalar, so spin 1/2, 1, "
-          "3/2 cover every irreducible R of dimension 2, 3, 4.")
+    print("NOTE  Spin-1 and spin-3/2 cover the declared T3/O3/O4 classes up to "
+          "characters. The spin-1/2 O control does not cover the linear 2O irrep E.")
+
+    # The threefold stabilizer has distinct eigenvalue multiplicities (1, 1)
+    # for spin 1/2 and (1, 1, 2) for spin 3/2. Its commutant dimensions
+    # are therefore 1²+1²=2 and 1²+1²+2²=6, respectively.
+    for n, expected in ((1, 2), (3, 6)):
+        _, params, _ = covariant_class("2O", n, [H0])
+        require(len(params) == 2 * expected,
+                f"O vertex stabilizer: spin {sp.Rational(n, 2)} commutant "
+                f"has expected complex dimension {expected}")
 
     # controls on the equation generator
     a = sp.Rational(3, 5)
     _, _, _, _, _, coeffs = C4.coefficients(a, sp.pi / 4)
     T4 = {tuple(-x for x in k): v for k, v in coeffs.items()}
-    require(all(simp(e) == 0 for e in unitarity_equations(T4, 4)),
+    require(all(sym_zero(e) for e in unitarity_equations(T4, 4)),
             "unitarity equations vanish on the s=4 family (a=3/5, theta=pi/4)")
     z = sp.symbols("z1:4")
     pavia = {}
@@ -276,7 +289,7 @@ def main():
             T2[tuple(-x for x in v)] = M.applyfunc(
                 lambda e: sp.Poly(sp.expand(e * sp.prod(z)), *z).coeff_monomial(mono))
         pavia[ch] = T2
-        require(all(simp(e) == 0 for e in unitarity_equations(T2, 2))
+        require(all(sym_zero(e) for e in unitarity_equations(T2, 2))
                 and all(not is_zero(t) for t in T2.values()),
                 f"unitarity equations vanish on Pavia chirality {ch}; full N_3 support")
 
@@ -291,11 +304,11 @@ def main():
     rz, rx = sp.diag(-1, -1, 1), sp.diag(1, -1, -1)
     rq = sp.Matrix([[0, -1, 0], [1, 0, 0], [0, 0, 1]])
     for ch, T2 in pavia.items():
-        require(any(x != 0 for x in intertwiners(T2, rz, 2))
-                and any(x != 0 for x in intertwiners(T2, rx, 2)),
+        require(any(not sym_zero(x) for x in intertwiners(T2, rz, 2))
+                and any(not sym_zero(x) for x in intertwiners(T2, rx, 2)),
                 f"Control A: Pavia chirality {ch} has nonzero intertwiners for the D2 half-turns")
-        require(all(x == 0 for x in intertwiners(T2, r3, 2))
-                and all(x == 0 for x in intertwiners(T2, rq, 2)),
+        require(all(sym_zero(x) for x in intertwiners(T2, r3, 2))
+                and all(sym_zero(x) for x in intertwiners(T2, rq, 2)),
                 f"Control A: Pavia chirality {ch} is not covariant under the 3-fold or 4-fold "
                 "rotation (only the zero intertwiner)")
 
@@ -303,7 +316,7 @@ def main():
     asym = sp.symbols("a", positive=True)
     _, _, _, _, _, coeffs = C4.coefficients(asym, sp.pi / 4)
     T4a = {tuple(-x for x in k): v for k, v in coeffs.items()}
-    require(all(x == 0 for x in intertwiners(T4a, r3, 4)),
+    require(all(sym_zero(x) for x in intertwiners(T4a, r3, 4)),
             "Control B: s=4 family has only the zero intertwiner for the 3-fold rotation "
             "(generic a)")
 
@@ -318,7 +331,7 @@ def main():
                 f"{group[1:]}, {len(params)} real parameters: unitarity ideal is (1) "
                 "-> EMPTY_CLASS")
         relaxed = unitarity_equations(T, s, normalize=False)
-        require(all(sp.Poly(e, *params).coeff_monomial(1) == 0 for e in relaxed),
+        require(all(sym_zero(sp.Poly(e, *params).coeff_monomial(1)) for e in relaxed),
                 f"{name}: without the normalization the equations are homogeneous, so the "
                 "unit ideal comes from sum T^dagger T = I alone")
         print(f"      ({time.time() - t0:.0f} s elapsed)", flush=True)

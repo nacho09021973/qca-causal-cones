@@ -1,0 +1,4 @@
+Error: Couldn't create session: An unexpected I/O error occurred.: {
+  "detail": "Read-only file system (os error 30)",
+  "code": "FS_OTHER"
+}

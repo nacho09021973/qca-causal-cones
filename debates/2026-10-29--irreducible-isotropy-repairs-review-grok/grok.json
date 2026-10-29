@@ -1,0 +1,1 @@
+{"type":"error","message":"Couldn't create session: An unexpected I/O error occurred.: {\n  \"detail\": \"Read-only file system (os error 30)\",\n  \"code\": \"FS_OTHER\"\n}"}
