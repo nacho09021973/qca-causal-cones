@@ -56,11 +56,11 @@ Question: in d=3, `N_3` without on-site term, `s=2`, without assuming P17 Eq. (2
 
 **Stage (a), Steps 0′ and 0: AUTHORIZED** by the user. Steps 4a, 4b-1 and 4b-2 are **not**
 authorized. Charter Sec. 4 requires the budget to be fixed before the stage runs. The user did
-not state one. The budget below was set by Claude under that authorization, and the user can
-change it before execution:
+not state one. Claude first set a 4-hour budget; the user then reduced it ("reduce el
+presupuesto a 1 hora y a ver que pasa", 2026-10-29). The budget is:
 - **Scope:** all classes of families P and F from the Step 0′ enumeration, and Step 0 items 1–5.
-- **Compute:** at most 4 hours of wall time in total for the exact verifiers. If they exceed it,
-  stop with the partial result as OPEN.
+- **Time:** at most 1 hour of wall time for the whole stage, including writing the verifier.
+  Started 11:09 UTC. If exceeded, stop with the partial result as OPEN.
 - **Deliverables:**
   - `scripts/verify_minimal_s2_step00.py`, an exact certificate added to `.claude/settings.json`;
   - a report in `reports/`;
@@ -71,7 +71,19 @@ change it before execution:
   - then a blind review of the Step 0′ enumeration by a different family, before any later
     stage uses it (charter Sec. 6).
 
-Evidence level: none yet. No calculation has been run under this charter.
+**Stage (a) executed 2026-10-29 (PRELIMINARY, review pending).**
+[Report](../reports/2026-10-29--minimal-s2-step00.md); certificate
+`scripts/verify_minimal_s2_step00.py`, 16/16 exact checks.
+- **Step 0′.** Family P = `(V4, tetrahedron)`, `(T, tetrahedron)`, `(C4, face)`; family F =
+  `{D4, O}`.
+- **Step 0.** Every class with a nontrivial projective kernel is `EMPTY_CLASS`, by the kernel
+  lemma with a single-shift certificate. This includes the linear `E` of `2O` at `s=2`.
+- **Anticipations.** A1 and A3–A8 are VERIFIED.
+- **Survivors.** Five classes remain, one per group, all with a faithful `ρ`. They go to Step 4b,
+  which is not authorized.
+- **Ceiling scope.** The `C4` face class lacks the ceiling's `D2` hypothesis.
+- **Still required.** Charter Sec. 6 requires a different-family review of the Step 0′
+  enumeration before Steps 4a and 4b use it.
 
 ## Independent review queue closed — 2026-10-29
 
