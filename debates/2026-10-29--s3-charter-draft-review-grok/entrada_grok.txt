@@ -1,0 +1,1320 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Responde en español. Eres un revisor independiente de física matemática (QCA en red,
+representaciones proyectivas de grupos finitos, símbolos de Laurent unitarios, cuerpos causales).
+Solo tienes los documentos adjuntos; no tienes herramientas y no puedes ejecutar código. No
+supongas que nada es correcto.
+
+Documento 1: el borrador del charter s=3. Documento 2: el charter s=2 del que hereda casi todo.
+Documento 3: el informe de la etapa (a) de s=2, con la enumeración geométrica que el borrador
+reutiliza. Documento 4: el charter de la cota general `c_0 <= c_strict^iso`. Documento 5: el
+charter predecesor con las definiciones (`S_n`, `h_infty`, `c_strict^iso`, `rho_micro`, lema del
+vértice). Documento 6: el charter de isotropía irreducible (clases T3 y O3, ya vacías).
+
+Comprueba:
+1. Pregunta y cuantificadores: ¿están bien fijados? ¿Es correcta y suficiente la definición del
+   sector de rango 2 y de rango 3, incluida la rama plana? ¿Es coherente con la cota general?
+2. Anticipaciones B1–B7, una por una. En particular B1 (multiplicadores de Schur de los
+   subgrupos de `O` y el argumento del determinante), B2 (cota de rangos), B4 (no hay símbolos
+   diagonales por bloques) y B5 (determinante constante).
+3. ¿Es legítimo reutilizar sin rehacerla la enumeración geométrica de s=2? ¿Hay algo en ella que
+   dependa de `s`?
+4. Clases: ¿falta alguna representación de dimensión 3, o alguna identificación de clases bajo
+   conjugación que haya que fijar antes de calcular?
+5. Secuencia, paradas y resultados: ¿pueden coexistir? ¿Hay resultados sin pregunta o preguntas
+   sin resultado? ¿Es correcto que no haya Q-b?
+6. Alcance: ¿alguna frase promete más de lo que el charter puede decidir?
+
+Salida: veredicto global; tabla B1–B7; una sección por punto; reparaciones obligatorias G-S3-NN
+con ubicación y gravedad (error demostrado, laguna o redacción). Una sola ronda: declara tus
+supuestos.
+
+=== DOCUMENT 1: S3_ISOTROPIC_RIGIDITY_GATE.md ===
+
+# S=3 ISOTROPIC RIGIDITY GATE
+
+**Status: DRAFT v1 (2026-10-29), not frozen, not reviewed.** Requested by the user: "prepara el
+charter para s=3". Nothing here is authorized for execution. The charter is frozen only by an
+explicit user instruction after a different-family review; that commit becomes the
+preregistration commit. This draft records no computation, candidate or theorem.
+
+**Authority:** [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 4 (`B_infty^*`) and the entries
+of 2026-10-29:
+- `s=2`, families P and F of the minimal charter: only `(V4, tetrahedron, Pauli)` is nonempty
+  (Step 4b-1, ESTABLISHED IN THE DECLARED FAMILIES). There Step 4b-2 gives
+  `RIGIDITY_PROVED_FOR_FROZEN_CLASS` at `1/sqrt(3)` (**PRELIMINARY**, review pending).
+- `s=4`: strong `B_infty^*` REJECTED IN THE DECLARED s=4 CLASS
+  ([`S4_STRICT_CONE_COUNTEREXAMPLE.md`](S4_STRICT_CONE_COUNTEREXAMPLE.md)).
+- `s=3` with an irreducible `R` under `T` or `O` (classes T3, O3): EMPTY_CLASS, ESTABLISHED IN
+  THE DECLARED CLASSES ([`IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md`](IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md)).
+- Every other `s=3` isotropy class on `N_3` is OPEN and unchartered.
+
+**Predecessors, inherited unless amended below:**
+- [`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](MASSLESS_INRADIUS_RIGIDITY_GATE.md): Sec. 0
+  definitions (`S_n`, `h_infty`, `c_strict^iso`, `rho_micro`, rigidity (i), saturation (ii)),
+  the erratum on the vertex lemma, Sec. 3 admission checks, Sec. 5 vocabulary.
+- [`MINIMAL_S2_RIGIDITY_GATE.md`](MINIMAL_S2_RIGIDITY_GATE.md) (`785565c`): units and lattice
+  (Sec. 1), families P and F, covariance, class identification and Eq. (2) reading (Sec. 2), the
+  4b-1/4b-2 encodings (Sec. 3), stop rules (Sec. 4), outcome vocabulary (Sec. 5), review
+  (Sec. 6). Everything there that says `s = 2` reads `s = 3` here unless stated.
+- The general ceiling `c_0 <= c_strict^iso`
+  ([`STRICT_CONE_CEILING_N3_GATE.md`](STRICT_CONE_CEILING_N3_GATE.md),
+  PROVED_UNDER_FROZEN_CONTRACT). Its frozen class allows any fixed `s >= 2`, `D2` covariance,
+  node `k_star = 0`, sector rank `2 <= r <= s`, and other slopes in the same eigenspace.
+
+## 0. Why this gate, and what is already anticipated
+
+`s=2` is rigid in the only nonempty class; `s=4` is not rigid. `s=3` is the only internal
+dimension between them. The gate asks whether the break happens already at `s=3`, or whether
+`s=3` is rigid, or whether it is vacuous. **All three outcomes have equal standing.** A vacuous
+`s=3` (every class `EMPTY_CLASS`) is a first-class result: it would mean the minimal isotropic
+non-rigid dimension on `N_3` is 4.
+
+**Anticipations (not results).** Written by Claude before any computation under this charter,
+`[UNVERIFIED]`. Step 0 verifies or refutes each one.
+- B1. **Every 3-dimensional projective representation of a subgroup `G ⊂ O` is equivalent to a
+  linear one.** Sketch: for a cocycle `ω` of `R`, `det` gives `ω^3` a coboundary. The Schur
+  multiplier of every subgroup of `O` has exponent at most 2, so `ω` is a coboundary. The spin
+  (Pauli-type) projective classes used at `s=2` therefore do not exist at `s=3`.
+- B2. **Rank bound.** The shift `2h` has the single pair `(−h, h)`, so `T_{−h}^† T_h = 0` and
+  `T_h T_{−h}^† = 0`. Then `rank T_h + rank T_{−h} <= 3`. Every antipodal pair has ranks
+  `(1, 1)`, `(1, 2)` or `(2, 1)`. (At `s=2` this forced rank one, A8.)
+- B3. **Scalar kernel.** If `R` is scalar on a subgroup transitive on each half `S_±`, the A1
+  argument of the minimal charter applies unchanged (it uses no dimension): `EMPTY_CLASS`. For
+  `V4`, any `R = χ ⊕ χ ⊕ χ` is of this kind.
+- B4. **No block-diagonal symbols.** For `R = R_2 ⊕ χ` and a symbol that preserves the blocks,
+  the 1-dimensional block `t_h` is `G`-invariant. If it is nonzero somewhere, it is nonzero on a
+  whole orbit of at least four vertices, and a unimodular scalar Laurent polynomial is a
+  monomial (A3 of the minimal charter): contradiction. So `t ≡ 0` and the symbol is not unitary.
+  Every unitary symbol of a reducible class, if any, mixes the blocks. In particular the `s=2`
+  Weyl symbol plus a spectator does not embed as a direct sum.
+- B5. **Determinant.** `det U` is a unimodular Laurent polynomial, hence `ζ e^{-ik·m}`.
+  Covariance gives `det U(gk) = det U(k)`, so `g m = m` for every `g ∈ G`. For every `G`
+  containing `V4`, `m = 0` and `det U` is constant.
+- B6. **Ceiling scope.** Every class whose group contains the axial `D2` (`V4`, `T`, `D4`, `O`)
+  is inside the ceiling's frozen class at node `k_star = 0`, so only `c_0 <= c_strict^iso` can
+  occur there. The `C4` face class is not covered.
+- B7. **Possibly vacuous.** B2–B5 together suggest, without proof, that many or all `s=3` classes
+  may be empty. No outcome is expected or preferred.
+
+## 1. Question
+
+Units, lattice, Brillouin torus and the main quantified statement are those of the minimal
+charter, Sec. 1, with `s = 3`:
+
+\[
+\forall \mathcal C,\ \forall U \in \mathcal C,\ \forall (k_\star,\omega_\star,P)\ \text{admissible}:\quad
+c_0(U,k_\star,P) = c_{\rm strict}^{\rm iso}(U)\ ?
+\]
+
+- `𝒞` ranges over the classes of Sec. 2, excluding T3 and O3 (already EMPTY_CLASS, reused, not
+  recomputed).
+- **Sector (new at `s=3`).** `P` is the full spectral projector of `U(k_star)` at
+  `e^{-iω_star}`, of rank `r ∈ {2, 3}`, isolated from the other eigenvalues at the node.
+  - `r = 2`: the sector is a two-band cone; the third band is a spectator.
+  - `r = 3`: `U(k_star) = aI`. The cone is admitted if, in every direction `q`, the linearized
+    branches include `+c_0|q|` and `−c_0|q|` with the same `c_0 > 0`, untilted. A third branch
+    may have another slope, including `0` (a flat branch, as for a spin-1 node). It is recorded,
+    never mistaken for a cone.
+  - This follows the ceiling gate's "Other slopes" row. **D1 (user, 2026-10-29): both ranks.**
+- A counterexample is one admissible tuple with `c_0 != c_strict^iso`; its direction is
+  recorded. Where the ceiling applies (B6), only `c_0 < c_strict^iso` is possible.
+- **Saturation** (`c_strict^iso = rho_micro`) is a separate question, as at `s=2`.
+
+Subsidiary question:
+- **Q-a3.** On symbols with an admissible node, does P17's Eq. (2) hold, read as
+  `T_{gh} != T_h` whenever `g h != h`? (Same predicate as Q-a, with the same family-dependent
+  domain `D_𝒞`.)
+
+There is no Q-b: no `s=3` certificate exists to transport.
+
+## 2. Frozen class declaration
+
+| Item | Declaration |
+| --- | --- |
+| Geometry | d=3; `N_3`, all eight `T_h != 0`; no on-site term; one complete update per time unit; `U(k) = Σ_h e^{-ik·h} T_h` |
+| Internal dimension | `s = 3` only. No statement about any other `s` |
+| Families | P and F exactly as in the minimal charter, Sec. 2. The geometric pairs are those of its reviewed stage (a): family P = `(V4, tetrahedron)`, `(T, tetrahedron)`, `(C4, face)`; family F = `D4`, `O`. This enumeration does not depend on `s` and is reused, not redone |
+| Representations | **Every** 3-dimensional projective unitary `R` of `G`, irreducible or reducible, up to projective equivalence. By B1, if verified, these are linear up to equivalence. Irreducible `R` under `T` or `O` is T3 or O3 and is excluded as already decided |
+| Fidelity | Not assumed. `ker_proj R` is recorded. B3 decides classes whose kernel contains a subgroup transitive on `S_±` (P) or on `N_3` (F) |
+| Covariance | `T_{gh} = R_g T_h R_g^†` for every `g ∈ G`. No reflections, parity or antiunitaries required |
+| Eq. (2) | Not assumed; recorded (Q-a3) |
+| Node and sector | Sec. 1: every admissible node, rank `r ∈ {2, 3}` (D1), local branch |
+| Coefficient domain | Real variables for real and imaginary parts, over all reals |
+| Group arithmetic | Exact canonical forms, as in the minimal charter |
+
+## 3. Sequence
+
+**Step 0′ — representations.** For each of the five geometric classes:
+1. List every 3-dimensional linear representation up to equivalence: sums of irreducibles of
+   total dimension 3 (for abelian `G`, triples of characters up to permutation).
+2. Prove B1, or list the projective classes that survive it.
+3. Record `ker_proj R`, and the class identification under conjugation in `O` (minimal charter,
+   Sec. 2), including the normalizer action that permutes characters.
+4. Give a written exhaustiveness proof and an exact script. The list is reviewed (Sec. 6) before
+   later steps use it as their universe.
+
+**Step 0 — anticipations.** Verify or refute B1–B6 with exact certificates or written proofs,
+and close every class that B3 or B4 empties. Controls:
+- Positive: the `s=2` witness `e^{-iq_x σ_x} e^{-iq_y σ_y} e^{-iq_z σ_z}` satisfies the B2 and
+  B5 identities at `s=2`.
+- Negative: a block-diagonal `s=3` candidate built from the `s=2` witness plus any scalar block
+  must fail unitarity or covariance, as B4 states.
+
+**Step 1 — exact class derivation** (as 4b-1 in the minimal charter). For each class not closed in
+Step 0: covariant parametrization, unitarity identities in real variables, Groebner basis over an
+exact field, active support by `y Π_h ||T_h||_F^2 = 1` where needed. `EMPTY_CLASS` by a unit
+ideal, or by a real infeasibility certificate; `UNITARY_SYMBOLS_EXIST` only with an explicit
+certified real point. An ideal other than `(1)` is not existence. A class too large for the
+budget stops as `OPEN_AFTER_CLASS_DERIVATION`. Reductions that lower the variable count (for
+example B2's rank structure, or B5) are allowed only after they are certified in Step 0.
+
+**Step 2 — sectors, strict body, comparison** (as 4b-2). For each nonempty class: the
+description of the class as far as it is determined exactly; every admissible node for both
+ranks (D1); `c_0` exactly; `c_strict^iso` by the vertex lemma when every vertex
+coefficient is non-nilpotent, otherwise by exact computation (rank two `T_h` can be nilpotent in
+new ways at `s=3`; this is checked, not assumed); Q-a3; saturation.
+
+**Literature step** (before any outcome is described beyond its class). Local: `biblioteca/`
+has no entry on `s=3` QCA on BCC (checked 2026-10-29 with `grep -i "s=3\|s = 3\|spin-1\|qutrit"`
+on `INDICE.md`). External search for `s=3` or spin-1 quantum walk classifications sends text to
+third parties and needs separate permission.
+
+## 4. Admission, budget and stop rules
+
+Inherited from the minimal charter, Sec. 4, with:
+- **Stage authorizations,** each requested separately and reported before the next:
+  (a) Steps 0′ and 0; (b) Step 1; (c) Step 2.
+- **Budget** fixed by the user at each authorization (wall time, scope, deliverable, closure).
+- **Explicit stops:** 0′ exhaustiveness not completed; Step 1 not tractable →
+  `OPEN_AFTER_CLASS_DERIVATION`; Step 2 strict body not determinable → `OPEN_AFTER_STRICT_BODY`.
+- No rigidity from a finite scan, a numerical search or local isolation.
+
+## 5. Outcomes by question
+
+The vocabulary of the minimal charter, Sec. 5, per class, with Q-a3 for Q-a and no Q-b row. In
+addition, over the union of classes:
+
+| Question | Outcomes | Closes |
+| --- | --- | --- |
+| Union | `S3_VACUOUS_IN_DECLARED_FAMILIES` (every class `EMPTY_CLASS`); `S3_RIGID_IN_DECLARED_FAMILIES` (every nonempty class `RIGIDITY_PROVED_FOR_FROZEN_CLASS`); `S3_COUNTEREXAMPLE_IN_DECLARED_FAMILIES` (some class has a verified counterexample); `OPEN` | Step 2 |
+
+Reading rules: the minimal charter's, plus:
+- The sector rank of every counterexample or rigidity statement is stated (`r = 2` or `r = 3`).
+- A flat branch at an `r = 3` node is reported, never counted as a cone.
+
+**Ceilings:** no statement about `s != 3`, other supports, on-site terms, reflections or
+antiunitaries as symmetries, masses, interactions, species universality (A), the absolute scale
+or nature. A result over these classes is not general QCA rigidity. Novelty: OPEN; no
+classification wording until the literature step is done. `v_max` is never written unqualified.
+
+## 6. Review
+
+As in the minimal charter, Sec. 6. The draft itself gets a different-family review before it is
+frozen. Astra was unavailable on 2026-10-29 (provider usage limit); the user chose Grok (D3).
+
+## 7. User decisions (2026-10-29: "D1 ambos rangos, D2 mantener F, D3 Grok, commit")
+
+- **D1.** Sector ranks: both `r = 2` and `r = 3`.
+- **D2.** Family F is kept at `s=3`.
+- **D3.** Reviewer of this draft: Grok (xAI family).
+
+=== DOCUMENT 2: MINIMAL_S2_RIGIDITY_GATE.md ===
+
+# MINIMAL S=2 RIGIDITY GATE
+
+**Status: OPEN — charter frozen 2026-10-29 from draft v4, by user instruction ("congelar el
+charter con la v4"). This commit is the preregistration commit.** Execution is authorized stage
+by stage only, and each authorization is recorded in [CURRENT_STATE](../state/CURRENT_STATE.md)
+with its budget (Sec. 4). The charter body below is the v4 text, unchanged.
+
+Drafting history:
+- **v4** applies the round-3 Astra repairs. Round 3 found v3 NOT_READY for one blocking repair,
+  A-R3-01, plus one wording repair, A-R3-02:
+  [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-v3-review-astra/verificacion_autor.md).
+  v4 also adds the reviewer's editorial precisions.
+- **v3** applies the round-2 Astra repairs A-R2-01..06, which found v2 NOT_READY:
+  [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-v2-review-astra/verificacion_autor.md).
+  It also applies two user decisions of 2026-10-29: keep the `C4` face class, and let Q-a range
+  over symbols with an admissible cone.
+- **v1** (sha256 `8541cf72…`) was drafted on 2026-10-29 from the committee recommendation
+  [`comite_decision_002`](../reports/comite/comite_decision_002_siguiente-charter-tras-cola.md).
+  It was reviewed blind by Astra (OpenAI family), which returned **NOT_READY** with 14 repairs
+  (A-R1-01..14):
+  [review and author reading](../debates/2026-10-29--minimal-s2-charter-draft-review-astra/verificacion_autor.md).
+- **v2** applies those repairs. It also adds a second isotropy family (Sec. 2, family F) by user
+  decision («Ampliar la definición», 2026-10-29).
+- This charter records no computation, candidate or theorem.
+
+**Authority:** [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 4 (`B_infty^*`):
+- the P17 minimal `s=2` class with its Eq. (2) is NOT REFUTED, and rigidity there is OPEN as an
+  in-repo claim;
+- `s=2` without Eq. (2) is OPEN;
+- the linear `2O` irrep `E` at `s=2` is OPEN and unchartered;
+- Sec. 7.1 leaves open whether Eq. (2) is derivable.
+
+**Predecessors:**
+- [`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](MASSLESS_INRADIUS_RIGIDITY_GATE.md). Its Sec. 0
+  definitions (`S_n`, `h_infty`, `c_strict^iso`, `rho_micro`, rigidity (i), saturation (ii)),
+  Sec. 3 admission checks and Sec. 5 vocabulary are inherited unless amended below.
+- [`IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md`](IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md), closed for
+  T3/O3/O4 and not amended here.
+- The general ceiling `c_0 <= c_strict^iso`:
+  [`STRICT_CONE_CEILING_N3_GATE.md`](STRICT_CONE_CEILING_N3_GATE.md) and
+  [report](../reports/2026-09-16--point-3-strict-cone-ceiling.md), PROVED_UNDER_FROZEN_CONTRACT.
+  Its frozen scope uses normalized `N_3`, node `k_star = 0`, any fixed eigenphase, a local
+  unwrapped phase, and rank `2 <= r <= s` (contract lines 30–36). Whether it covers every node
+  of this charter is checked in Step 0 (A-R1-11).
+
+**Primary source:** P17 = D'Ariano–Erba–Perinotti, PRA 96, 062101 (2017), inspected as
+`biblioteca/1708.00826v2.pdf`. All pages below refer to that arXiv v2 PDF. They must not be mixed
+with the published-page coordinates of `reports/2026-09-14--massless-rigidity-source-audit.md`.
+Locations confirmed by the Astra review:
+- Definition 1 and Eq. (2), p.2. Distinguishability, supplemented by note [23] (p.15, published
+  in the paper), which refers to ref. [31] (p.16, "Unpublished").
+- s=1 "trivial", p.4, citing [24].
+- Eqs. (12)–(13), p.4: rank one for nonzero transitions at `s=2`.
+- Pauli isotropy image: Fig. 1(c) caption p.6, and Sec. V pp.5–6.
+- Prop. 5, p.7, including (c) `A_e = 0` for d=3.
+- The exchange `h_1 ↔ h_4`, used by P17 on p.7.
+
+## 0. Why this gate, and what is already anticipated
+
+Only one equality is certified: `c_0 = c_strict^iso` for the Pavia symbols `A±,B±`. In P17's
+class, matching is a conditional application of P17's classification plus that certificate.
+Without Eq. (2), no classification is held in the repo or was found in the local literature.
+
+**Anticipations (not results).** These were stated before any computation under this charter.
+None is certified. Step 0 must verify or refute each one.
+
+*Retrospective, from the committee of 2026-10-29 (all members Claude):*
+- A1. Suppose `R` is scalar on a subgroup transitive on each half `S_±`. Then covariance makes
+  `T_h = A` on `S_+` and `B` on `−S_+`. The zero-shift identity gives `4(A^†A + B^†B) = I`. A
+  displacement whose only pairs are one inside `S_+` and one inside `−S_+` gives
+  `A^†A + B^†B = 0`, a contradiction.
+- A2. The linear irrep `E` of `2O` is trivial on the axial half-turns: their image in
+  `O ≅ S4` is the `V4` kernel of `S4 → S3`, and in `2O` the corresponding kernel is the
+  preimage `Q8`.
+- A3. A unimodular scalar Laurent polynomial on the torus is a monomial, so s=1 with eight active
+  coefficients is empty.
+- A4. Without Eq. (2), `S_+` can be a face, and `C4` acts transitively on it without containing
+  `V4`.
+
+*Corrections from the Astra review (2026-10-29):*
+- A1 holds for the tetrahedron with `ε-shift (0,2,2)`.
+- For a face, the displacement must be **tangential** to the face. Example: for
+  `S_+ = {ε_x = +1}`, use `(0,2,2)`. The normal shift `(2,0,0)` only gives `4 B^†A = 0`; the v1
+  note was wrong here.
+- A2 is correct with the `Q8` precision.
+- A3 is correct, with the extremal-exponent proof.
+- A4 is correct as a geometric pair only. It says nothing yet about unitary symbols.
+
+*From the Astra round-2 review (2026-10-29), reviewer derivations, `[UNVERIFIED]`:*
+- A5. Family F, up to conjugation in `O`, is exactly `{D4, O}`: a transitive subgroup has order 8
+  or 24.
+- A6. If `R` is scalar on a subgroup transitive on all eight vertices, all `T_h` equal one `A`.
+  The shift `ε = (2,2,2)` has a single pair and gives `A^†A = 0`, against `8A^†A = I`. The class
+  is empty.
+- A7. `E` under `O` or `D4` is scalar on `V4`. `V4` has two tetrahedral orbits, so A1 on the
+  tetrahedron decides it.
+- A8. Without Eq. (2), `s=2` coefficients have rank one: the shift `2h` has a single antipodal
+  pair. Non-nilpotency of `T_h` is then equivalent to `tr T_h != 0`.
+
+*Prospective:* everything in Secs. 3–5.
+
+## 1. Question
+
+Units and lattice:
+- `N_3 = {ε/sqrt(3) : ε ∈ {±1}^3}` (normalized, as in the predecessors). Displacements are
+  labelled by their `ε` differences.
+- The generated lattice is BCC, `Λ = (1/sqrt(3)) {m ∈ Z^3 : m_1 ≡ m_2 ≡ m_3 mod 2}`.
+- With the convention `e^{-ik.h}`, its reciprocal lattice is
+  `Λ^* = π sqrt(3) {m ∈ Z^3 : m_1 + m_2 + m_3 even}`, and the Brillouin torus is `R^3 / Λ^*`.
+- In these units the Pavia baseline value is `1/sqrt(3)`. With unnormalized `ε` both velocities
+  scale by `sqrt(3)` and the baseline becomes `1`; the equality is unaffected (A-R1-02).
+
+Main question:
+
+\[
+\forall \mathcal C,\ \forall U \in \mathcal C,\ \forall (k_\star,\omega_\star)\ \text{admissible}:\quad
+c_0(U,k_\star) = c_{\rm strict}^{\rm iso}(U)\ ?
+\]
+
+- A class `𝒞` is a tuple `(P, G, S_±, [R])` in family P, or `(F, G, [R])` in family F. Family F
+  has no partition (A-R2-01).
+- `(k_star, ω_star)` ranges over **every** admissible node and eigenphase of `U`. The sector is
+  the full two-band space, and the local quasienergy branch is the one fixed by the predecessor's
+  Sec. 3.
+- One admissible tuple with `c_0 != c_strict^iso` is a counterexample. Its direction is recorded
+  (A-R2-04).
+  - Where the general ceiling is certified for that class and node (Step 0.4), only
+    `c_0 < c_strict^iso` is possible.
+  - Where it is not certified, for example in the `C4` face class, both directions are admitted.
+  - A `c_0 > c_strict^iso` witness inside a certified class would contradict the ceiling. It is
+    recorded as a conflict and reviewed before anything else.
+
+Subsidiary questions:
+- **Q-a.** Does every symbol of a class **with at least one admissible node** satisfy P17
+  Eq. (2)? User decision, A-R2-05. In family F, Eq. (2) is interpreted with `h ∈ N_3`
+  (`S_+ = S_− = N_3` for this purpose only, as in P17 p.3).
+- **Q-b.** Does the `A±,B±` certificate transport along every listed P17 equivalence?
+
+## 2. Frozen class declaration
+
+| Item | Declaration |
+| --- | --- |
+| Geometry | d=3; `N_3` as in Sec. 1, all eight `T_h != 0`; no on-site term; one complete update per time unit; `U(k) = sum_h e^{-i k.h} T_h` |
+| Internal dimension | `s = 2` (main); `s = 1` only in Step 0 |
+| Family P (partitioned) | `G ⊂ O`, proper rotations of the cube by their 3x3 matrices. `S_+ ⊂ N_3` with `|S_+| = 4` and `S_+ ∩ (−S_+) = ∅`. `G` permutes `S_+` transitively. This is a restriction of P17's setting: proper cube rotations and an oriented four-generator presentation, without Eq. (2). It is **not** "P17 minus Eq. (2)" (A-R1-03) |
+| Family F (full) | `G ⊂ O` acting transitively on all eight vertices of `N_3`, with no partition. Classes are `(F, G, [R])`. Contains `O` |
+| Overlap of P and F (A-R2-02) | Every `G` in F contains the axial `V4`, so every F-symbol, restricted to `V4`, belongs to a tetrahedral P class. A `D4`-covariant symbol also restricts to the `C4` face class. F adds stronger declared symmetry, not new symbols. **Automatic transfer only for properties of the symbol itself, which do not depend on the declared symmetry: the main equality and saturation** (A-R3-01). For these, universal proofs transfer from a P class to its F subclasses and counterexamples from F to P, never the reverse. **Q-a does not transfer automatically.** Its predicate checks pairs `(g, h)` in `G × D_𝒞`, with `D_𝒞 = S_+` in P and `N_3` in F. Hence `E_F(U) ⇒ E_P(U)` but not conversely, and a violation in F need not lie in the restricted pairs. Q-a is decided separately in each class. The same symbol appearing in several rows is not independent evidence. Reports count declared classes and distinct symbols separately |
+| Covariance | `T_{gh} = R_g T_h R_g^†` for all `g ∈ G`, with `R` a projective unitary representation; equivalently `U(gk) = R_g U(k) R_g^†`. No reflections, parity or antiunitaries are required as symmetries |
+| Representations | **Every** 2-dimensional projective unitary `R`, irreducible or reducible, up to projective equivalence `R'_g = c_g W R_g W^†` (`|c_g| = 1`, `W` unitary). The multiplier class alone does not identify `R` (A-R1-07) |
+| Fidelity | Not assumed. The projective kernel `ker_proj R = {g : R_g scalar}` is recorded. A `g ≠ e` in it that moves a generator forces equal coefficients and violates Eq. (2) |
+| Class identification | For `Q ∈ O`: in P, `(G, S_±, R) ~ (QGQ^{-1}, QS_±, R∘Ad_{Q^{-1}})`; in F, `(G, R) ~ (QGQ^{-1}, R∘Ad_{Q^{-1}})`. Classes are counted up to this conjugation |
+| Eq. (2) | Not assumed; recorded per candidate. In F it is read with `h ∈ N_3` (Q-a) |
+| Node and sector | All admissible nodes, full two-band sector, local branch (Sec. 1) |
+| Coefficient domain | Real variables for the real and imaginary parts of the coefficients, ranging over all reals. "Exact algebra" is a method, not a restriction to algebraic points (A-R1-01, A-R1-09) |
+| Group arithmetic | Exact canonical form. No numerical identification such as `nsimplify` |
+
+## 3. Sequence
+
+**Step 0′ — enumeration of isotropy classes.**
+1. Family P. Enumerate the `2^4 = 16` choices of `S_+` (one vertex per antipodal pair):
+   - two tetrahedra;
+   - six faces;
+   - eight "vertex plus its three neighbours" sets.
+
+   For each choice, determine the transitive subgroups of its rotation stabilizer. The review
+   anticipates three geometric pairs up to conjugation, `(V4, tetrahedron)`,
+   `(T, tetrahedron)` and `(C4, face)` `[UNVERIFIED]`.
+2. Family F. Enumerate the subgroups of `O` transitive on the eight vertices. A5 anticipates
+   `{D4, O}`; the step verifies or refutes it.
+3. For each group, enumerate every 2-dimensional projective unitary `R` up to the equivalence of
+   Sec. 2, and record `ker_proj R`.
+4. Give a written proof that the enumeration is exhaustive, plus an exact script. **The
+   enumeration and its conventions are reviewed (Sec. 6) before Steps 0, 4a and 4b use it as
+   their universe.**
+
+**Step 0 — verify or refute the anticipations (A-R1-06).**
+1. A1 for every class from Step 0′ in which `R` is scalar on a subgroup transitive on each half
+   (family P) or on all eight vertices (family F; A6). Record the displacement and the pairs used.
+   - Negative control: the `V4`/Q8 Pauli class must not become empty.
+   - Positive control: `A±,B±` satisfy the identities.
+2. A2 and A7 as statements about `E` restricted to the groups of Step 0′. Rows are stated under
+   their own group: `E` under `O` (family F), and `E` restricted to `D4` (`≃ 1 ⊕ χ`, reducible).
+3. A3: in-repo analytic proof for s=1 (extremal-exponent argument), with P17 p.4 [24] cited as
+   context. Meyer (1996) is not in the repo and stays `[UNVERIFIED]`.
+4. Ceiling scope (A-R1-11, A-R2-03). The general ceiling's frozen class
+   (`STRICT_CONE_CEILING_N3_GATE.md`, lines 30–36) requires:
+   - normalized `N_3`;
+   - covariance under the Cartesian half-turn `D2` (= the axial `V4`);
+   - node `k_star = 0`.
+
+   Record per class and node whether the ceiling applies:
+   - **Groups.** `V4` and `T` (tetrahedron) and `D4` and `O` (F) contain `D2`. The `C4` face
+     class does not, so the ceiling does not cover it unless a `D2` covariance is proved for
+     its symbols.
+   - **Nodes.** A node `k_star != 0` is moved to `0` by `T'_h = e^{-i k_star.h} T_h`. This
+     preserves `S_n`, the strict body and the slope. It keeps covariance with the same `R` on
+     `D2` iff `g^{-1} k_star − k_star ∈ Λ^*` for every `g ∈ D2`.
+   - The ceiling's proof is not re-read here. Any wider scope it might support is
+     `[UNVERIFIED]` and is not used.
+
+5. A8 (rank one without Eq. (2), and non-nilpotency equivalent to `tr T_h != 0`), from the
+   `2h` identity and Cayley–Hamilton. A4 and A5 are checked in Step 0′.
+
+Each item has the outcomes VERIFIED, REFUTED (with witness) or INCONCLUSIVE. An anticipation that
+ends INCONCLUSIVE does not remove its class from the later steps.
+
+**Step 4a — transport within P17's class (A-R1-08).** Use transport laws, not literal
+invariance. For each listed operation, state its effect on `S_n` and `c_0`, and re-verify
+covariance and admission afterwards:
+- constant unitary conjugation compatible with `R`: preserves `S_n`;
+- global phase: preserves `S_n`;
+- momentum shift: preserves `S_n`. It moves the node, and covariance with the same `R` must be
+  re-checked;
+- spatial inversion `h -> −h`: `S_n -> −S_n`;
+- rotation `Q`: `S_n -> Q S_n`. The spherical minimum of the support function is preserved;
+- complex conjugation of coefficients, `T_h -> T̄_h` (i.e. `U(k) -> conj(U(−k))`);
+- P17's exchange `h_1 ↔ h_4` (p.7), with its geometric realization identified. Allowing a
+  reflection as an equivalence between models is distinct from requiring it as a symmetry.
+
+Left multiplication by a uniform local unitary is **excluded**. Astra's witness
+`U = diag(e^{-ik}, e^{ik})`, `V = σ_x`, `(VU)^2 = I` shows it changes the strict velocity.
+Unlisted or excluded operations leave Q-b `CONDITIONAL`.
+
+**Step 4b-1 — exact class derivation (A-R1-09).**
+- For each class from Step 0′ not emptied in Step 0: real variables, the unitarity identities
+  split into real and imaginary parts, and active-support conditions `T_h != 0`.
+- Groebner or primary decomposition over an exact field.
+- Separately, a **real existence certificate**: an explicit real point, or a real
+  infeasibility certificate such as a Positivstellensatz or SOS certificate.
+- An ideal other than `(1)` is not existence.
+- Complex algebraic components are kept distinct from components of the real admissible set.
+- Admissible encodings, each to be verified exactly:
+  - active support by an extra variable `y` with `y ∏_h ||T_h||_F^2 − 1 = 0`;
+  - real emptiness by an identity `−1 = Σ a_i f_i + Σ b_j^2`.
+  A bounded SOS search that fails is not existence, and a numerical approximation is not a
+  certificate.
+- 4b-1 decides only `EMPTY_CLASS` versus the existence of unitary symbols. Sectors are decided
+  in 4b-2 (A-R2-05).
+
+**Step 4b-2 — sectors, strict body, comparison.**
+- Find every admissible node. One admissible encoding: `U(k_star) = aI`, `|a| = 1`,
+  `H_j = i ā ∂_j U(k_star)`, `tr H_j = 0`, `½ tr(H_j H_l) = c_0^2 δ_jl`, `c_0 > 0`.
+- Decide `NO_ADMISSIBLE_SECTOR` versus admissible sectors, and Q-a on the symbols that have one.
+- Compute `c_0` exactly.
+- Determine `c_strict^iso`: by the vertex lemma when every vertex coefficient is
+  non-nilpotent (rank one `T_h = |u><v|` with `<v|u> != 0`), otherwise by an exact computation.
+- If the strict body cannot be determined exactly within budget, stop with
+  `OPEN_AFTER_STRICT_BODY` for that class.
+
+## 4. Admission, budget and stop rules (A-R1-13)
+
+- **Admission:** the predecessor's Sec. 3 checks, re-run after every transport in 4a. The first
+  failure gives `INADMISSIBLE_CANDIDATE`.
+- **Methods:** exact algebra only. A finite scan, a parameter sweep or a least-squares search
+  certifies nothing (NO_RIGIDITY_FROM_FINITE_SCAN). Every retained computation is a versioned
+  script in `scripts/`, run through `run_all_verifiers.py`.
+- **Stage authorizations,** each requested separately and reported before the next:
+  (a) Steps 0′ and 0; (b) 4a; (c) 4b-1; (d) 4b-2.
+- **Before each stage runs,** its authorization fixes: a wall-time and resource budget, the
+  scope (which classes), the deliverable, and the closure condition.
+- **Explicit stops:**
+  - 0′: exhaustiveness proof not completed.
+  - 4a: an operation whose transport law cannot be established.
+  - 4b-1: system not tractable → `OPEN_AFTER_CLASS_DERIVATION`.
+  - 4b-2: strict body not determinable → `OPEN_AFTER_STRICT_BODY`.
+- **Exhausted budget:** gives a partial or OPEN result, never rigidity.
+- **Literature:** before any Q-a outcome is described beyond its class, search externally for
+  P17 [31] and later work citing P17. That search sends text to third parties and needs
+  separate permission.
+
+## 5. Outcomes by question (A-R1-10)
+
+Outcomes answer different questions and may coexist. "Equal standing" means equal editorial
+acceptance; none is expected or preferred. A1–A8 are not results.
+
+| Question | Outcomes (per class) | Closes |
+| --- | --- | --- |
+| Unitary symbols | `EMPTY_CLASS` (no unitary symbol); `UNITARY_SYMBOLS_EXIST` (certified real point); `OPEN_AFTER_CLASS_DERIVATION` | 4b-1 |
+| Sectors | `NO_ADMISSIBLE_SECTOR` (unitary symbols exist, none has an admissible cone); `ADMISSIBLE_SECTORS_EXIST`; `OPEN` | 4b-2 |
+| Main (rigidity, ∀ tuples) | `COUNTEREXAMPLE_VERIFIED_BELOW` (an admissible tuple with `0 < c_0 < c_strict^iso`); `COUNTEREXAMPLE_VERIFIED_ABOVE` (`c_0 > c_strict^iso`, only where the ceiling is not certified for that tuple and node; where the ceiling is certified and applies to that tuple, node included, it is a conflict, Sec. 1; `c_strict^iso` need not be positive); `RIGIDITY_PROVED_FOR_FROZEN_CLASS` (equality for every admissible tuple); `VACUOUS` (class empty or without admissible sector); `OPEN_AFTER_STRICT_BODY` / `INCONCLUSIVE` | 4b-2 |
+| Saturation (separate, A-R2-06) | `SATURATION_PROVED_FOR_CLASS` (∀ admissible `U`: `c_strict^iso(U) = rho_micro`); `SATURATION_FAILURE_WITNESS` (∃ admissible `U` with `c_strict^iso(U) < rho_micro`); `OPEN`. This replaces the predecessor's `INADMISSIBLE_SATURATION` and v2's `RIGIDITY_HOLDS_SATURATION_FAILS` | 4b-2 |
+| Q-a (symbols with an admissible node) | `DISTINGUISHABILITY_IMPLIED_IN_CLASS`; `DISTINGUISHABILITY_REFUTED_BY_WITNESS` (the witness must have an admissible node); `OPEN` | 4b-2 |
+| Q-b | `TRANSFER_CERTIFIED_FOR_LISTED_EQUIVALENCES`; `CONDITIONAL` (with the unlisted operations named) | 4a |
+| Anticipations | VERIFIED / REFUTED / INCONCLUSIVE per item | Step 0 |
+
+`INADMISSIBLE_CANDIDATE` concerns a single candidate and never decides a class.
+
+Reading rules (round 3):
+- `UNITARY_SYMBOLS_EXIST` is an existence result. It authorizes no universal outcome.
+- One question can close while another stays open. A stop in 4b-2 does not erase outcomes
+  already certified, for example a Q-a refutation witness.
+- On an empty domain, Q-a and saturation hold vacuously. That is recorded as vacuous, not as a
+  substantive result. A class already `EMPTY_CLASS` skips the sector row.
+- 4a transports only the nodes of the starting certificate. Coverage of every node remains a
+  4b-2 obligation.
+
+**Ceilings:** no statement about `s > 2`, other supports or on-site terms, reflections or
+antiunitaries as symmetries, masses, interactions, species universality (A), the absolute scale,
+or nature. `RIGIDITY_PROVED_FOR_FROZEN_CLASS` is not a general QCA law. No novelty wording: the
+`s=2` classification with Eq. (2) is P17's. Any statement without Eq. (2) is "not located in the
+sources checked", and those sources are named. `v_max` is never written unqualified. A result
+over this union of `s=2` classes is not general QCA rigidity, in titles and summaries as well as
+in the body. A symbol counted under both P and F is one symbol.
+
+## 6. Review (A-R1-14)
+
+- The Step 0′ enumeration, with its exhaustiveness proof and conventions, is reviewed by a model
+  of a different family before it is used as the classification universe.
+- Every Step 0 certificate and every terminal outcome is reviewed the same way before entering
+  CURRENT_STATE as more than PRELIMINARY.
+- Each review gets one sealed round and one operational retry if transport fails.
+- Open mandatory objections block promotion.
+- Any change to certified content after review needs a new review of the changed files.
+- Every review record cites:
+  - the SHA-256 of the reviewed report and certificate;
+  - the base commit;
+  - the `~/herramientas` commit;
+  - the user's authorization for sending text externally;
+  - the model family that wrote the reviewed content, so that independence can be checked.
+- A review is an additional check, not a substitute for the exact certificate.
+
+=== DOCUMENT 3: 2026-10-29--minimal-s2-step00.md ===
+
+# Minimal s=2 rigidity gate: stage (a), Steps 0′ and 0 — 2026-10-29
+
+## Provenance
+
+- **Charter:** [`MINIMAL_S2_RIGIDITY_GATE.md`](../theory/MINIMAL_S2_RIGIDITY_GATE.md), preregistration
+  commit `785565c`.
+- **Authorization:** stage (a) recorded in `ef0ed24` ("autorizo la etapa a"). The user reduced the
+  budget to 1 hour ("reduce el presupuesto a 1 hora y a ver que pasa").
+- **Timing:** started 11:09 UTC. The certificate was written and passing by 11:11 UTC; the full
+  sweep ran after that.
+- **Certificate:** `scripts/verify_minimal_s2_step00.py`, SHA-256 `d6bf4189357f62fa…`. 16/16
+  exact checks, under 1 s, Python 3.12.3, SymPy 1.14.0.
+- **Full sweep:** 48/48 verifiers pass at base `3c7a98c` plus these uncommitted files
+  ([record](2026-10-29--minimal-s2-step00-run_all.tsv)). The stage ended at 11:24 UTC, about
+  15 minutes of the 1-hour budget.
+- **Evidence level:** **PRELIMINARY**. Author-side computation. Charter Sec. 6 requires a
+  different-family review of the Step 0′ enumeration before any later stage uses it.
+- **Grok review, 2026-10-29**, of the bytes in `dc4a6f7`. Verdict: mathematically correct, not
+  promotable as written, three repairs
+  ([review and author reading](../debates/2026-10-29--minimal-s2-step00-review-grok/verificacion_autor.md)).
+  The repairs are applied here:
+  - G-S0-01: `E` is now built in the certificate.
+  - G-S0-02: proof of 2-generation added below.
+  - G-S0-03: class counts and survivors are now required.
+
+  That repaired certificate had SHA-256 `a2abbe32a98ac005…` and passed 22/22 exact checks, with
+  a full sweep of 48/48 ([record](2026-10-29--minimal-s2-step00-repair-run_all.tsv)).
+- **Grok round 2**, of the bytes in `3bcf7b6`
+  ([review](../debates/2026-10-29--minimal-s2-step00-review-grok-r2/verificacion_autor.md)).
+  - Accepted G-S0-01 and G-S0-03.
+  - Found the G-S0-02 proof incomplete.
+  - Raised three new points: the trace of `ρ_E` on `D4`, the wording «single tuple», and that
+    `Q8` is not computed.
+
+  All were repaired. The current certificate has SHA-256 `adeb8afc4d4be5ed…` and passes 23/23,
+  with a full sweep of 48/48 ([record](2026-10-29--minimal-s2-step00-repair2-run_all.tsv)).
+- **Grok round 3**, of the bytes in `ebebca7`
+  ([review](../debates/2026-10-29--minimal-s2-step00-review-grok-r3/verificacion_autor.md)).
+  - No mandatory objection open.
+  - The 2-generation proof is complete.
+  - The `D4` check uses the trace of `ρ_E`.
+  - The wording repairs suffice.
+  - The only remark was this duplicated provenance sentence, now fixed.
+
+## Result
+
+| Item | Outcome |
+| --- | --- |
+| Step 0′, family P | Three classes up to conjugation in `O`: `(V4, tetrahedron)`, `(T, tetrahedron)` and `(C4, face)`. `C4` does not contain the axial `V4`. |
+| Step 0′, family F | `{D4, O}` up to conjugation; both contain the axial `V4`. |
+| Step 0′, representations | Projective classes of 2-dimensional `R` per group: `V4`: 5; `T`: 3; `C4` (face): 3; `D4`: 6; `O`: 4. These count characters of the fixed representative group, not orbits of tuples `(G, S, R)`. In `(V4, tetrahedron)` the three characters with kernel of order 2 form a single orbit (of three tuples) under the stabilizer `T`. Survivors are unaffected (G-S0-03). |
+| Step 0, kernel lemma | Every class with a nontrivial projective kernel is `EMPTY_CLASS`. Each certificate is a single shift whose pairs stay inside kernel orbits. The certificates do not depend on `s`. |
+| Survivors (to Step 4b, not authorized) | Exactly one class per group: the faithful `ρ` (trivial projective kernel). These are `(V4, tet, Pauli)`, `(T, tet, image A4)`, `(C4, face, image C4, reducible)`, `(D4, image D4)` and `(O, image O)`. |
+| A1 (tetrahedron and face) | VERIFIED |
+| A2 / A7 (`E` of `2O`) | VERIFIED after repair G-S0-01. The certificate builds `E` as the standard representation of `S3` composed with the axis permutation `O → S3`. Its projective kernel is exactly the axial `V4`, and it is the unique `O` class with that kernel, the one emptied. Its restriction to `D4` has projective kernel containing `V4`, so it is also emptied. Round-2 repair: the restriction is checked with the trace of `ρ_E: O → SO(3)` (3, −1, 0 by the order of the axis permutation), giving `ρ_E|D4 = 1 ⊕ α ⊕ α`, where `α` is the sign of `D4/V4`. v2 had summed the character of the 2-dim irrep instead, which coincides here but not in general (for example on `C3`). The preimage `Q8` of `V4` in `2O`, mentioned in the charter's A2, is **not** computed. The original v1 certificate (`d6bf4189…`) did not build `E`. |
+| A3 (s = 1) | VERIFIED |
+| A4 (`C4` on a face, without `V4`) | VERIFIED |
+| A5 (F = `{D4, O}`) | VERIFIED |
+| A6 (kernel transitive on `N_3`) | VERIFIED |
+| A8 (rank one; non-nilpotent iff `tr T_h != 0`) | VERIFIED |
+| Step 0.4 (ceiling scope) | The general ceiling's `D2` hypothesis holds for the `V4`, `T`, `D4` and `O` classes. It does **not** hold for `(C4, face)`. Node transport is not examined at this stage, since no nodes are computed yet. |
+
+**What this changes:** the open row "`s=2` without Eq. (2)" is reduced to five classes, all with
+a faithful projective action. Every non-faithful class in the declared families is empty. That
+includes the linear `E` of `2O` at `s=2`, an open row of CURRENT_STATE Sec. 4.
+
+**What it does not change:** nothing is said about `c_0`, `c_strict^iso`, Q-a or Q-b. The
+equality question is untouched.
+
+## Method
+
+**Group.**
+- `O` is the set of 24 proper signed permutation matrices. All arithmetic is with integers.
+- Every subgroup of `S4 ≅ O` is generated by at most two elements, so closing all ordered pairs
+  gives every subgroup. The closure of a pair is the subgroup it generates: in a finite group,
+  `g^{-1} = g^{n-1}` when `g^n = 1`, so the generated monoid is a subgroup. The proof is by order
+  (G-S0-02, completed after the Grok round-2 review, which supplied the arguments). By Lagrange a
+  subgroup has order 1, 2, 3, 4, 6, 8, 12 or 24. Element orders in `S4` are 1, 2 (transpositions,
+  double transpositions), 3 (3-cycles) and 4 (4-cycles).
+  - **No `C2³`.** The 6 transpositions form one class, so the centralizer of `(12)` has order
+    `24/6 = 4`: it is `{1, (12), (34), (12)(34)}`. An elementary abelian 2-subgroup containing a
+    transposition therefore has order ≤ 4. One without transpositions lies in
+    `{1} ∪ {double transpositions}`, which is the normal `V4`, of order 4.
+  - **Orders 1–4:** cyclic or `C2×C2`, both 2-generated.
+  - **Order 6:** a group of order 6 is `C6` or `S3`. There is no element of order 6, so it is
+    `S3 = ⟨(12),(13)⟩`, since `(12)(13)(12) = (23)`.
+  - **Order 8:** it is a 2-Sylow. The 2-Sylows are conjugate, and one of them is the dihedral
+    `⟨r, s⟩` (`r⁴ = s² = 1`, `srs = r⁻¹`), which is 2-generated. Equivalently: of the five groups
+    of order 8, only `C2³` is not 2-generated, and it is excluded above.
+  - **Order 12:** index 2, hence normal. The only index-2 subgroup is the kernel of the sign,
+    `A4`. Conjugating `(124)` by `(123)` gives `(234)`; further conjugations give all eight
+    3-cycles, which generate `A4`. So `A4 = ⟨(123),(124)⟩`.
+  - **Order 24:** with `b = (1234)` and `a = (12)`, `bab⁻¹ = (23)` and `b(23)b⁻¹ = (34)`. The
+    transpositions `(12), (23), (34)` generate `S4`, so `S4 = ⟨(12),(1234)⟩`.
+
+  The certificate finds 30 subgroups. That number is a cross-check, not the proof.
+
+**Family P.**
+- All 30 subgroups are crossed with all 16 choices of `S_+`, keeping the pairs where `G`
+  stabilizes `S_+` and is transitive on it.
+- Classes are taken up to `O`-conjugation of the pair.
+- The 16 choices of `S_+` are 2 tetrahedra, 6 faces and 8 "vertex plus three neighbours" sets.
+
+**Family F.** The subgroups transitive on all eight vertices, up to conjugation.
+
+**Representations.**
+- A 2-dimensional projective unitary `R`, up to projective equivalence `R' = c W R W^†`, is a
+  homomorphism `ρ: G → PU(2) ≅ SO(3)` up to `SO(3)` conjugation. Covariance
+  `T_{gh} = R_g T_h R_g^†` depends only on `ρ`.
+- Every image type that occurs (1, `C2`, `C3`, `C4`, `V4`, `D3`, `D4`, `A4`, `S4`) is
+  `SO(3)`-conjugate to a subgroup of `O`, so enumerating homomorphisms into `O` is exhaustive.
+  For these five domains the counts do not need the general classification of finite subgroups
+  of `SO(3)`:
+  - the images are quotients of the domain;
+  - the trace of a rotation is fixed by its order: 3, −1, 0, 1 for orders 1, 2, 3, 4.
+
+  This enumerates the possible characters directly; the Grok review carries it out group by
+  group.
+- Two classes are identified iff their 3-dimensional characters agree. Equal real characters
+  give orthogonal equivalence, and replacing `M` by `−M` makes it `SO(3)`.
+- `R` is reducible iff the trivial multiplicity of `ρ` is at least 1, meaning a fixed axis.
+- The projective kernel of `R` is `ker ρ`.
+
+**Kernel lemma (A1, A6, A7).**
+- If `R` is scalar on `K = ker ρ`, then `T` is constant on `K`-orbits.
+- Take a shift `ℓ != 0` whose pairs `(h, h+ℓ)` all lie inside `K`-orbits. Its unitarity identity
+  `Σ T_h^† T_{h+ℓ} = 0` becomes a sum of positive semidefinite terms `T_h^† T_h`.
+- So every `T_h` that appears vanishes, which contradicts `T_h != 0`.
+- The certificate prints the shift and the pairs for every emptied class.
+
+**A3, A8.**
+- The shift `(2,2,2)` has the single pair `((−1,−1,−1), (1,1,1))`.
+- Each shift `2h` has the single pair `(−h, h)`. With `T_{−h}^† T_h = 0` and both nonzero, both
+  have rank one.
+- Cayley–Hamilton, `T^2 = tr(T) T − det(T) I`, is checked symbolically.
+
+**Controls.**
+- Negative: the Pauli class `(V4, tetrahedron, faithful)` gets no certificate.
+- Positive: both Pavia chiralities satisfy all unitarity identities with all eight `T_h != 0`.
+  This reuses the step-01 extraction read-only.
+
+## Cross-reference, not a result of this stage
+
+Two survivors coincide, as projective classes, with **controls** of the reviewed irreducible
+isotropy certificate:
+- `(T, tetrahedron, faithful)` is the step-01 `T2s` control (spin 1/2 under `T`).
+- `(O, faithful)` is the step-01 `O2s` control.
+
+Both gave unit Groebner ideals there
+([report](2026-10-28--irreducible-isotropy-step01.md)). They were controls, not declared classes.
+The charter does not let them settle anything here. They are recorded as **anticipations for
+Step 4b-1**, `[UNVERIFIED in this charter]`.
+
+The genuinely new survivors are:
+- `(V4, tet, Pauli)` without Eq. (2), the class that contains Pavia;
+- `(C4, face)`, which the ceiling does not cover;
+- `(D4, image D4)`.
+
+## Scope and limits
+
+- **Frozen classes only:** d=3, `N_3` with all eight `T_h != 0`, no on-site term, proper cube
+  rotations, the families of the charter. Emptiness results hold for any internal dimension `s`,
+  but this charter states them at `s=2` and `s=1`.
+- **Exhaustiveness of Step 0′** rests on the 2-generation of the subgroups of `S4`, proved above
+  by order, and on the order/trace argument for the characters. The exact enumeration covers the
+  rest. Grok reviewed the enumeration (first round). The repaired certificate needs a second
+  review before Steps 4a and 4b use it.
+- **Not done:** nodes, `c_0`, `c_strict^iso`, Q-a, Q-b, and the transport of the ceiling to
+  nonzero nodes.
+- **No novelty claim.**
+
+=== DOCUMENT 4: STRICT_CONE_CEILING_N3_GATE.md ===
+
+# Point (3): strict asymptotic cone ceiling on N3
+
+**Date:** 2026-09-16. **Scope:** branch-local,
+`research/b-infinity-post-s4-gate`.
+**Authorization:** `AUTHORIZED_BY_DIRECT_USER_INSTRUCTION`.
+The user's instruction was: "pues adelante, punto (3)".
+This authorizes investigating point (3) only; it is not a five-member
+ratification of `GATE_COMPLETITUD_AXIAL_N3`. The attempted ratification
+remains `ABORTED_OR_INCOMPLETE` (Gemini absent; no final verdict).
+
+**Initial evidence status:** OPEN. This contract is frozen before the new
+derivation. No claim of a proof, counterexample or novelty is recorded here.
+
+## 1. Frozen question
+
+Does every admitted symbol and selected isotropic, untilted cone satisfy
+
+`c_0 <= c_strict^iso`,
+
+where the right-hand side uses the exact Fourier support of the **full same
+symbol** at arbitrarily many complete updates? The claim is an upper bound,
+not equality or saturation of the microscopic body.
+
+## 2. Quantifiers and admission
+
+Fix the following data before considering coefficients:
+
+| Item | Frozen declaration |
+| --- | --- |
+| Geometry | d=3, `N_3 = {(+/-1,+/-1,+/-1)/sqrt(3)}`, Cartesian Euclidean coordinates, one complete update per unit time |
+| Symbol | `U(k)=sum_{h in N_3} exp(-i k.h) T_h`, every `T_h != 0`, no other Fourier modes, no on-site mode |
+| Internal space | Any prescribed finite integer `s >= 2`, held fixed in each quantified class; no scan or change of s in a calculation |
+| Unitarity | `U(k)` unitary for every real k; exact coefficient identities, not a mesh condition |
+| Symmetry | D2 acts by Cartesian half-turns; any prescribed unitary/projective representation R on `C^s`, fixed within the class; `T_{g h}=R_g T_h R_g^dagger` |
+| Node and phase | `k_star=0`; any fixed eigenphase `omega_star` of U(0), including nonzero Floquet phases; a local unwrapped phase is used |
+| Eigenspace | P is the full spectral projector of U(0) at `exp(-i omega_star)`, any fixed rank `2 <= r <= s`; isolated from distinct eigenvalues at the node; r=s is allowed |
+| Selected cone | In every unit direction q, eigenphases emerging from P include slopes `+c_0` and `-c_0`, with the same `c_0>0`; equivalently the selected cone is isotropic and untilted to first order |
+| Other slopes | Other branches in the same eigenspace may have other slopes; the whole eigenspace need not be purely conical |
+| Reducibility | No dynamical irreducibility, minimality, irreducibility of R, scalar-node or vertex-survival assumption is imposed |
+| Coverage | Full coefficient class satisfying these conditions, for every fixed s and R, including disconnected components; no product ansatz |
+| Equivalences | Constant unitary basis changes and simultaneous D2 relabelings preserve the question; no change of embedding, origin, time unit or support is used to compare speeds |
+
+The quantified statement is for every fixed choice of these data and every
+admitted symbol. A proof uniform in s and R is permitted; no classification
+or search in larger internal spaces is authorized. The full-symbol support
+is intentional: no claim about support intrinsic to a selected sector is
+made, and spectator sectors are not silently removed.
+
+## 3. Exact output and convergence
+
+For integer `n >= 1`, define `S_n` from the nonzero matrix Fourier
+coefficients of `U(k)^n`, including all cancellations. For every real q,
+
+`H_n(q)=max_{x in S_n} q.x`,
+
+`h_infty(q)=lim_{n -> infinity} H_n(q)/n`,
+
+`c_strict^iso=min_{||q||=1} h_infty(q)`.
+
+The limit, originally defined as a limsup, must be justified using exact
+support subadditivity. Existence of the minimum must also be justified.
+No assumption of positivity of `c_strict^iso` is made in advance.
+
+The desired intermediate bound is directional: every selected positive
+cone slope is at most `H_n(q)/n` for every n and every unit q. A sufficient
+route is a finite-time operator bound for
+`J_n(q)=i (U^n)^dagger partial_q(U^n)` and its compression to P.
+Any argument must remain valid when distinct eigenvalues of U(0) coincide
+after taking the n-th power. No global smooth eigenbasis over the sphere
+may be assumed at a conical node.
+
+## 4. Frozen acceptance and stop rules
+
+- **PASS_ANALYTIC:** a complete analytic proof under all the quantified
+  conditions, with the directional, degeneracy, Floquet, power-collision
+  and support-limit obligations discharged. Any invoked spectral or
+  derivative theorem needs a checked source or a supplied proof.
+- **FAIL_COUNTEREXAMPLE:** an exact admitted symbol with a certified
+  `c_strict^iso < c_0`. This includes a zero or negative strict isotropic
+  value; positivity of that value is not an extra FAIL requirement.
+- **INCONCLUSIVE:** a missing lemma, unverified external theorem, proof
+  restricted to the coordinate axes, extra undeclared hypothesis, or only
+  a finite numerical check. Failure of a proof strategy is not a falsifier.
+- **Review level:** a completed author derivation remains PRELIMINARY until
+  independently reviewed. Record proof completeness and independent review
+  separately; do not call a self-check independent certification.
+
+Stop at a genuine failure or unclosed obligation. Do not replace a missing
+ceiling proof with L1 or a metric identity. Do not begin those other steps.
+
+## 5. Verification obligations fixed before derivation
+
+Inspect the sign convention with a scalar shift; treat rational and
+irrational directions; do not exchange a direction minimum and a time
+limit without proof; retain exact cancellations in S_n; handle r=s and
+spectator slopes; handle eigenvalue collisions of U^n using the original
+P; compare the final inequality with the already certified Pavia equality
+and strict s=4 inequality without rerunning their scientific scripts.
+
+These are mathematical checks, not numerical tolerances. No solver,
+simulation, new family search or ephemeral scientific script is needed.
+
+## 6. Claim ceiling
+
+Only point (3) is authorized. L1 remains a manual candidate derivation;
+the defect identity remains established only in its previously certified
+family. The s=4 example refutes the strong equality, not this ceiling.
+Vertex nilpotency alone still does not imply a decrease of `c_strict^iso`.
+`NOVELTY = OPEN`. A proof of this bound would establish neither equality,
+microscopic saturation, inter-species universality nor a ballistic-front
+claim. `main` and the frozen branches are outside the scope of this work.
+
+=== DOCUMENT 5: MASSLESS_INRADIUS_RIGIDITY_GATE.md ===
+
+# MASSLESS INRADIUS RIGIDITY GATE
+
+> **Status: HISTORICAL / COMPLETED BY COUNTEREXAMPLE FOR THE DECLARED s=4
+> CLASS** (2026-09-15, branch-local). This file is kept as the charter under
+> which the counterexample was judged, and it is no longer the sole authorized
+> next front. The outcome is `COUNTEREXAMPLE_VERIFIED` (Sec. 5) for the class
+> declared in
+> [`S4_STRICT_CONE_COUNTEREXAMPLE.md`](S4_STRICT_CONE_COUNTEREXAMPLE.md),
+> with an [independent review](../reports/2026-09-15--s4-independent-review.md)
+> and a [prior-art audit](../reports/2026-09-15--s4-family-prior-art-audit.md).
+> The standard Pavia `s=2`, d=3 certificate (Sec. 0) is not affected. Rigidity
+> in the published minimal `s=2` class, and in stronger classes with
+> additional representation assumptions, remains OPEN, and NOVELTY remains
+> OPEN. No successor gate is chartered; current status is in
+> [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 7. The body below is
+> unchanged from the pre-counterexample charter, except for the erratum
+> below.
+
+> **ERRATUM 2026-09-15 — vertex nilpotency does not decide saturation.**
+> Earlier wording in Sec. 0(ii) and in the Sec. 5 `INADMISSIBLE_SATURATION`
+> row presented a nilpotent one-step vertex coefficient as the reason for
+> `c_strict^iso < \rho_{\rm micro}`. That causal reading is withdrawn. What is
+> established:
+>
+> - For an extreme vertex `h`, the coefficient of `U^n` at `n.h` is exactly
+>   `T_h^n`. If `T_h` is nilpotent, `n.h` is not in `S_n` for large `n`.
+> - By the vertex lemma, if every vertex coefficient is non-nilpotent, then
+>   `C_infty^strict = C_micro` and (ii) holds. So a saturation failure
+>   requires at least one nilpotent vertex coefficient.
+>
+> The converse is **not established**. Losing the exact ray `n.h` does not
+> by itself determine `h_infty` or `c_strict^iso`: mixed words can still
+> reach near the vertex, and a body truncated near a vertex need not have a
+> smaller minimal support. Saturation (ii) must be computed or proved for
+> each candidate. Vertex nilpotency alone is neither a certificate of
+> `c_strict^iso < \rho_{\rm micro}` nor an admissible explanation of one.
+
+**Original status: OPEN — charter fixed; an executable admissible-class contract is
+the next step.** Authority: [CURRENT_STATE](../state/CURRENT_STATE.md).
+Predecessor: STANDARD WEYL/DIRAC EXACT GATE, PASS on evidence at `2c7c2c9`.
+
+This charter defines the sole next scientific front. It records no new
+counterexample, search result or rigidity theorem. The file name is kept for
+continuity of cross-references; the object it is written against has been
+corrected (Sec. 0-1 below, 2026-09-14).
+
+## 0. Correction and baseline certificate (2026-09-14)
+
+The gate was originally written as a comparison against the inradius of the
+*one-step* microscopic causal body. That object is only an upper bound on the
+speed actually reachable by strict propagation after repeated updates, and
+the inradius notation is not the right general comparison for a long-run
+support body. The correct comparison target is the **strict asymptotic
+isotropic speed** `c_strict^iso = min_{n̂} h_infty(n̂)`, defined in
+[`CAUSAL_BODY_GEOMETRY.md`](CAUSAL_BODY_GEOMETRY.md) Sec. 6 from
+`S_n = {x : the Fourier coefficient of U^n at x is nonzero}`.
+
+For every direction `q`, define
+
+\[
+H_n(q)=\max_{x\in S_n}q\cdot x.
+\]
+
+The convolution formula for the Fourier coefficients gives
+
+\[
+S_{n+m}\subseteq S_n+S_m
+\quad\Longrightarrow\quad
+H_{n+m}(q)\le H_n(q)+H_m(q).
+\]
+
+Thus `(H_n(q))_n` is subadditive, and Fekete's lemma gives
+
+\[
+h_\infty(q)
+=\lim_{n\to\infty}\frac{H_n(q)}n
+=\inf_n\frac{H_n(q)}n.
+\]
+
+In particular, grouping `m` updates into one coarse-grained temporal step
+does not change the normalized asymptotic support function:
+
+\[
+\lim_{r\to\infty}\frac{H_{mr}(q)}{mr}=h_\infty(q).
+\]
+
+This proves the coarse-graining invariance of `c_strict^iso` and is the
+mathematical reason for using the `B_\infty^*` observable. Since
+`S_n/n\subseteq C_{\rm micro}`, the general comparison is instead
+
+\[
+h_\infty(\hat q)\le h_{C_{\rm micro}}(\hat q),
+\qquad
+\rho_{\rm micro}:=
+\min_{\|\hat q\|=1}h_{C_{\rm micro}}(\hat q),
+\qquad
+\boxed{
+c_{\rm strict}^{\rm iso}
+\le
+\rho_{\rm micro}
+}.
+\]
+
+Only when the relevant `C_micro` is centered does this last number coincide
+with its usual inradius. For the centered cubic baseline used below it is
+`1/\sqrt d`.
+
+This gate's admissible class already fixes one shared `N_d` for every
+candidate symbol, so `\rho_{\rm micro}` is the same fixed number for all of
+them; correcting the target does not change that number. What the
+correction changes is which question is actually being asked, by splitting
+what used to be a single comparison into two logically independent ones for
+any candidate symbol with linear massless slope `c_0`:
+
+- **(i) genuine rigidity:** does `c_0 = c_strict^iso` for *that symbol's own*
+  strict asymptotic body — does the linear IR slope match the full nonlinear
+  strict propagation speed of the same dynamics?
+- **(ii) saturation:** does `c_strict^iso = \rho_{\rm micro}` for that symbol —
+  does its strict asymptotic body fill the entire shared one-step polytope,
+  or does it fall short? (An admissible symbol only needs `T_h != 0`, not
+  non-nilpotent powers of `T_h`. A nilpotent vertex coefficient is necessary
+  for falling short but does not by itself imply it; see the erratum above.)
+
+A candidate with `c_0 < \rho_{\rm micro}` that fails only (ii) — its own
+`c_strict^iso` is already below `\rho_{\rm micro}` — is **not** a counterexample to `B_infty^*` and is not the kind of
+result this gate is looking for; it would only have refuted the old,
+superseded comparison against the one-step body. Only a failure of (i) is a
+genuine rigidity counterexample. See
+[`B_STAR_HYPOTHESIS.md`](B_STAR_HYPOTHESIS.md) Sec. 9.
+
+**Established baseline fact (certified, not open):** for the standard Pavia
+Weyl family in d=3 (`A+, B+, A-, B-`), both (i) and (ii) hold exactly:
+`c_0 = \rho_{\rm micro} = r_{\rm in}(C_{\rm micro}) = 1/\sqrt3`
+(because this is the centered cubic case; linear slope, prior exact gate) and
+`C_infty^strict = C_micro` exactly, hence
+`c_strict^iso = \rho_{\rm micro}`
+(indeed, `\operatorname{conv}(S_n/n)=C_{\rm micro}` for every `n\ge1`)
+(new vertex certificate: every one-step corner's Fourier coefficient is
+rank-one and not nilpotent, so it survives at `n.h` for every `n`). Full
+derivation:
+[`2026-09-14--strict-asymptotic-pavia-baseline.md`](../reports/2026-09-14--strict-asymptotic-pavia-baseline.md);
+machine record:
+[`2026-09-14--vertex-idempotency-verification.md`](../reports/2026-09-14--vertex-idempotency-verification.md),
+375 exact checks. **This is a fact about the standard baseline itself, not
+an answer to Sec. 1's question about *other* admissible symbols**, and it
+covers d=3 only — d=1, d=2 are not checked by this certificate.
+
+## 1. Question and invariant comparison
+
+For a selected standard baseline in d=1,2,3, can another admissible unitary
+massless symbol have, in the sense of (i) above,
+
+\[
+0<c_0<c_{\rm strict}^{\rm iso}
+\]
+
+for its own strict asymptotic body — while keeping the same active one-step
+neighborhood, causal body, Euclidean embedding, time normalization,
+homogeneity and discrete isotropy as the selected standard baseline? (A
+candidate additionally failing saturation (ii) is a separate, weaker
+observation; see Sec. 0.)
+
+The baseline geometries are
+
+\[
+N_d=\{(\epsilon_1,\ldots,\epsilon_d)/\sqrt d:\epsilon_j=\pm1\},
+\quad C_d=[-1/\sqrt d,1/\sqrt d]^d,\quad r_d=1/\sqrt d.
+\]
+
+Choose the baseline before solving. Comparisons are within that fixed
+geometry, not between dimensions. Every h in N_d must retain a nonzero
+Fourier coefficient matrix, with none outside N_d. Merely retaining a
+declared allowed neighborhood while actual support shrinks is insufficient.
+Adding an on-site Fourier term changes N_d even if its hull would not change.
+
+A common change of units, a different number of updates per time unit, or a
+different spatial embedding cannot be used to manufacture a smaller ratio.
+
+## 2. Mandatory class declaration before solving
+
+Each calculation must freeze a permanent case contract containing:
+
+| Item | Required declaration |
+| --- | --- |
+| Geometry | d, explicit N_d, embedding, one complete time step and Fourier convention |
+| Internal degrees of freedom | Fixed finite dimension s and coefficient parameter domain |
+| Discrete isotropy | The same baseline group/action L on N_d, its positive generating set if relevant, and exact covariance requirements |
+| Internal symmetry | A specified unitary/projective representation R of L, fixed within the calculation |
+| Gapless sector | Node k_star, quasienergy origin, branch convention, sector dimension and isolation from other bands |
+| Relativistic cone | Nonzero, untilted, isotropic linear speed in the fixed Euclidean coordinates; an axis slope alone is insufficient |
+| Reducibility/minimality | Whether assumed; sector support and the role of any spectator blocks |
+| Coverage | Full coefficient class versus a particular ansatz, including any disconnected components not covered |
+| Equivalences | Constant basis conjugations, symmetry relabelings, transposes/chiralities and node relabelings identified explicitly |
+
+Fixing the causal body and saying "discrete isotropy" does not specify s,
+the symmetry representation or the relevant massless sector. A trivial or
+weaker symmetry group cannot replace the baseline's isotropy. Discrete
+covariance and an isotropic IR cone are separate admission requirements.
+
+Begin with source and class-definition work, not a solver run. Minimal s=2
+and enlarged internal spaces are different quantified classes. No result
+proved only with minimality may be presented as following from locality,
+unitarity, homogeneity and discrete isotropy alone. A change of s or R needs
+its own declared class before calculation, with the same geometric and group
+action constraints; it cannot silently alter an existing comparison.
+
+For a selected sector, document how its support relates to the full active
+support. A reducible/direct-sum example must be identified as such and judged
+against the declared quantifiers. Do not silently rule it out or present
+spectator-supported geometry as intrinsic to the selected sector. If one
+instead requires irreducibility or a common cone for the whole symbol, that
+is an additional hypothesis and limits any rigidity conclusion.
+
+## 3. Exact admission checks
+
+Write the homogeneous finite-range symbol as
+
+\[
+U(\mathbf k)=\sum_{h\in N_d}e^{-i\mathbf k\cdot h}T_h,
+\qquad T_h\in\mathbb C^{s\times s},\quad T_h\ne0.
+\]
+
+For every displacement difference ell, verify the coefficient identities
+
+\[
+\sum_{h'-h=\ell}T_h^\dagger T_{h'}=\delta_{\ell0}I_s,
+\qquad
+\sum_{h-h'=\ell}T_h T_{h'}^\dagger=\delta_{\ell0}I_s.
+\]
+
+These certify unitarity for every momentum rather than on a finite mesh.
+For every group element g, verify
+
+\[
+T_{gh}=R_gT_hR_g^\dagger,
+\qquad U(g\mathbf k)=R_gU(\mathbf k)R_g^\dagger.
+\]
+
+Check the declared representation, active support and node exactly. In the
+specified gapless sector derive the full linearized spectrum, requiring
+
+\[
+\omega_\pm(\mathbf k_\star+\mathbf p)-\omega_\star
+=\pm c_0|\mathbf p|+O(|\mathbf p|^2),\qquad c_0>0,
+\]
+
+in every direction. Rule out a residual mass gap, tilt, flat band mistaken
+for a cone, or anisotropic linear metric before comparing c_0 with the
+candidate's own `c_strict^iso` (Sec. 0); comparing only against r_d checks
+saturation (ii), not genuine rigidity (i), and the two must not be conflated.
+If there are multiple cone sectors, identify exactly which are quantified.
+
+These are admission criteria, not assertions that a new admissible symbol
+exists. Any scientific code implementing them must be retained in the repo.
+
+## 4. Adversarial sequence and acceptance
+
+1. Read the primary classification results and list their actual assumptions:
+   support, s, isotropy action/representation, minimality, node and equivalences.
+   The prior battery did not establish an exhaustive classification. Check
+   whether a proposed rigidity statement is already covered by existing work.
+2. Freeze one admissible-class contract and its quantified target. Derive the
+   coefficient constraints before choosing a special product/coin ansatz;
+   if an ansatz is used, state its coverage ceiling.
+3. Seek a structural counterexample while retaining all admission conditions.
+   A failed condition makes a candidate inadmissible, not a falsifier of
+   B_infty^*. Stop its certification at the first failed condition and
+   record the reason.
+4. Accept a counterexample only with exact support, unitary and covariance
+   certificates, a massless isotropic linearization, and a proved strict
+   inequality `0 < c_0 < c_strict^iso` for that candidate's own strict
+   asymptotic body, in the same units (Sec. 0(i)). A candidate satisfying
+   only `0 < c_0 < r_d` while `c_strict^iso < r_d` for the same candidate
+   (saturation failure, Sec. 0(ii)) is not this counterexample; record it
+   separately as INADMISSIBLE_SATURATION (Sec. 5). Numerical suggestions
+   need exact certification; no finite scan or tolerance establishes the
+   claim.
+5. If no counterexample is obtained, retain OPEN unless an exhaustive analytic
+   argument proves matching for every member of the declared class. Local
+   absence of deformations does not exclude disconnected solutions.
+
+The seven old symbols may serve as controls. Repeating related representatives
+does not increase the number of independent geometries or establish coverage
+of structural degrees of freedom.
+
+## 5. Outcomes and claim ceilings
+
+| Outcome | Meaning |
+| --- | --- |
+| COUNTEREXAMPLE_VERIFIED | `0 < c_0 < c_strict^iso` proved for that candidate's own strict body (Sec. 0(i)): B_infty^* is false for the declared class and any broader claim including this admissible example |
+| RIGIDITY_PROVED_FOR_FROZEN_CLASS | `c_0 = c_strict^iso` is proved for every member with every class restriction retained; wider classes remain open |
+| INADMISSIBLE_SATURATION | Candidate is admissible and `c_0 = c_strict^iso` (i) holds, but `c_strict^iso < r_d` (ii) fails — a saturation failure, certified by computing `c_strict^iso` and not inferred from vertex nilpotency (erratum above); not a rigidity counterexample; B_infty^* is not decided by this candidate |
+| INADMISSIBLE_CANDIDATE | At least one invariant or cone condition fails; B_infty^* is not decided |
+| INCONCLUSIVE / OPEN | No certified counterexample or exhaustive proof; a solver failure or unsuccessful search is not rigidity |
+
+Even a rigidity result here would not establish inter-species universality A
+or general continuum matching for other couplings. Novelty requires the
+separate source comparison. No anisotropic-QCA detour, broad model search,
+causal sets or new substrate class is authorized by this charter.
+
+=== DOCUMENT 6: IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md ===
+
+# IRREDUCIBLE ISOTROPY MATCHING GATE
+
+**Status: OPEN — charter written 2026-10-28 (preregistration commit `d112bb0`); Steps 0–1
+authorized by the user the same day ("si, autorizo los pasos 0-1"); Steps 2–3 NOT
+authorized.**
+
+**Steps 0–1 executed 2026-10-28 (PRELIMINARY, review pending):** T3, O3 and O4 are
+`EMPTY_CLASS`, and Control B gives `S4_FAMILY_OUTSIDE_O4`
+([report](../reports/2026-10-28--irreducible-isotropy-step01.md)). Steps 2–3 have no object in
+these classes. Only the
+user authorizes execution, and the authorization is recorded in
+[CURRENT_STATE](../state/CURRENT_STATE.md). This charter records no computation,
+candidate or theorem.
+
+Authority: [CURRENT_STATE](../state/CURRENT_STATE.md) Sec. 4 (`B_infty^*`, row
+"irreducible internal symmetry representation `R` for `s>2`: OPEN").
+Predecessor: [`MASSLESS_INRADIUS_RIGIDITY_GATE.md`](MASSLESS_INRADIUS_RIGIDITY_GATE.md),
+completed by counterexample in the declared s=4 class
+([`S4_STRICT_CONE_COUNTEREXAMPLE.md`](S4_STRICT_CONE_COUNTEREXAMPLE.md)). Its Sec. 0 (definitions of
+`S_n`, `h_infty`, `c_strict^iso`, `rho_micro`, and the split into rigidity (i) and
+saturation (ii)), Sec. 3 (exact admission checks) and Sec. 5 (outcome vocabulary) are
+inherited unchanged unless amended below.
+User instruction: "prepara la carta para la hipótesis 3" (2026-10-28).
+
+## 0. Why this gate, and a fact that fixes its shape
+
+The s=4 counterexample keeps `C_infty^strict = C_micro`, `c_strict^iso = 1/sqrt(3)`, and
+has `c_0(a) = a/sqrt(3)`. Its declared isotropy is the group `D2` of half-turns, with
+`R_i = sigma_i (x) I_2`, which is **reducible** (two copies of the Pauli projective class).
+The question is whether requiring an **irreducible** internal representation restores
+`c_0 = c_strict^iso`.
+
+Checked before writing this charter (an inspection command, not a certificate): with
+`N_3 = {(+/-1,+/-1,+/-1)/sqrt(3)}`,
+
+- `D2` (order 4) splits `N_3` into two orbits of size 4;
+- the tetrahedral rotation group `T` (order 12) also splits it into two orbits of size 4;
+- the cube rotation group `O` (order 24) acts transitively (one orbit of size 8), and the
+  stabilizer of a vertex has order 3.
+
+`D2` is abelian, so its projective irreducible representations have dimension at most 2.
+Under `D2`, "irreducible `R` with `s > 2`" is an empty requirement, and the hypothesis would
+reduce to the open `s = 2` rows. The isotropy group must therefore be enlarged. Two
+enlargements are declared, as separate classes:
+
+- `T`, the tetrahedral rotation group (order 12). Like `D2`, it is transitive on each of the
+  two tetrahedra `S_+` and `S_- = -S_+`. That is the transitivity used in the P17
+  classification (transitivity on `S_+`; source audit
+  [`2026-09-14--massless-rigidity-source-audit.md`](../reports/2026-09-14--massless-rigidity-source-audit.md)).
+  Its projective irreducible representations (linear representations of the binary
+  tetrahedral group `2T`, order 24) have dimensions 1, 1, 1, 3 (linear) and 2, 2, 2
+  (spinorial). So `s = 3` is possible and `s = 4` is not.
+- `O`, the cube rotation group (order 24), the smallest of the groups checked that is
+  transitive on all of `N_3`. Its projective irreducible representations (linear
+  representations of the binary octahedral group `2O`, order 48) have dimensions
+  1, 1, 2, 3, 3 (linear) and 2, 2, 4 (spinorial). So `s = 3` and `s = 4` are possible.
+
+These dimensions are standard and pass the sum-of-squares check (12+12 = 24, 24+24 = 48).
+Their check against a primary source or an explicit character table is an item of Step 0.
+
+Changing the group from `D2` to `T` or `O` is an additional hypothesis. A result for one
+group does not speak to another, and none speaks to `D2`-isotropic classes.
+
+## 1. Question
+
+In d=3, with the cubic baseline geometry, does every admissible massless symbol whose
+internal representation of `O` is irreducible satisfy rigidity (i):
+
+\[
+c_0 = c_{\rm strict}^{\rm iso}
+\]
+
+for its own strict asymptotic body? Or is there an admissible symbol with
+`0 < c_0 < c_strict^iso`?
+
+Three separate quantified classes, each judged on its own:
+
+- **Class T3:** group `T`, `s = 3`, `R` the irreducible 3-dimensional linear
+  representation of `T`.
+- **Class O3:** group `O`, `s = 3`, `R` an irreducible 3-dimensional linear representation
+  of `O` (either of the two, declared).
+- **Class O4:** group `O`, `s = 4`, `R` the irreducible 4-dimensional spinorial (projective)
+  representation of `O`.
+
+A result in one class says nothing about the others. Since `T` is a subgroup of `O` and
+the 3-dimensional irreducible representations of `O` restrict to the one of `T`, every O3
+symbol is also a T3 symbol. A T3 counterexample therefore does not transfer to O3, while an
+O3 counterexample is also one for T3.
+
+## 2. Frozen class declaration (all classes)
+
+| Item | Declaration |
+| --- | --- |
+| Geometry | d=3; `N_3` as above, all eight displacements active (`T_h != 0` for every `h` in `N_3`); no on-site term; one complete update per time unit; Fourier convention `U(k) = sum_h e^{-i k.h} T_h`, as in the predecessor |
+| Isotropy | The declared group `G` in {`T`, `O`} acting on `N_3` and on `k` by its defining 3x3 matrices; covariance `T_{gh} = R_g T_h R_g^dagger` for every `g` in `G`, equivalently `U(gk) = R_g U(k) R_g^dagger`. No reflections, parity or antiunitary symmetry are required or assumed |
+| Internal symmetry | `R` fixed per class as in Sec. 1, irreducible, up to unitary equivalence; projective phases are allowed in O4 and must be declared explicitly |
+| Dynamics irreducibility | Recorded, not assumed: the joint commutant of `{T_h}` is computed for every candidate. Irreducible `R` implies it, by Schur's lemma, only for `O`-commuting operators; the record keeps the two notions apart |
+| Gapless sector | Node `k_star`, quasienergy origin, sector dimension and isolation declared per candidate. The node must be `O`-invariant or its orbit must be declared; an isotropic, untilted, linear cone in every direction is required (predecessor Sec. 3) |
+| Coverage | Declared per step: the full `O`-covariant coefficient class, or an explicit ansatz with its coverage ceiling |
+| Equivalences | Constant basis changes commuting with `R` up to the declared projective class, global phases, node relabelings within an orbit |
+
+Consequences of the declaration, to be derived exactly in Step 1 and not assumed. Under
+`O`, which is transitive on `N_3`, the eight coefficients are fixed by one `T_{h0}`. Under
+`T`, they are fixed by one coefficient on each tetrahedron, `T_{h0}` and `T_{-h0}`. In both
+cases each fixed coefficient must commute with `R` restricted to the order-3 stabilizer of
+its vertex.
+
+## 3. Sequence
+
+**Step 0 — sources and controls (no new scientific claim).**
+
+1. Read the isotropy definitions and classification assumptions in the primary sources
+   already used for the Pavia baseline. These include D'Ariano–Erba–Perinotti,
+   arXiv:1708.00826 (local copy in `biblioteca/`), and the source of the "P17
+   classification" cited in CURRENT_STATE Sec. 4. Record which group, which `s` and which
+   representation they quantify over. Check whether the question of Sec. 1 is already
+   answered there. Unread items stay `[UNVERIFIED]`.
+2. Verify the irreducible dimensions of `2T` and `2O` from a primary source or from an
+   exact character-table computation kept in `scripts/`.
+3. **Control A:** determine exactly whether the standard Pavia `s=2` Weyl symbols are `T`-
+   and `O`-covariant with a 2-dimensional spinorial irreducible representation. This is a
+   consistency control of the classes, not a result.
+4. **Control B (decisive first test for O4):** determine exactly whether the s=4 family
+   `A_a` admits `O`-covariance for some `R` and, if so, whether that `R` can be the
+   irreducible 4-dimensional one.
+   - If yes for some `0 < a < 1`, with all O4 admission checks passing and the existing
+     `c_strict^iso` certificate applying unchanged, the outcome is
+     `COUNTEREXAMPLE_VERIFIED` for class O4 and the gate stops for O4.
+   - If `A_a` is not `O`-covariant with that `R`, record `S4_FAMILY_OUTSIDE_O4` and
+     continue. This is not evidence for rigidity.
+   - The family has `s = 4` and is therefore outside T3 and O3 by definition.
+
+**Step 1 — exact class derivation.** For each class, derive the constraints on `T_{h0}`
+from stabilizer covariance and the unitarity identities of the predecessor's Sec. 3, before
+choosing any ansatz. Record the dimension and connected components of the solution set if
+they can be determined exactly. If the class is empty, the outcome is `EMPTY_CLASS` for
+that class.
+
+**Step 2 — massless sectors.** Within the derived class, find the admissible gapless
+sectors and their linear slopes `c_0`, exactly.
+
+**Step 3 — strict body and comparison.** For each admissible candidate, certify
+`c_strict^iso` exactly. Use the vertex lemma when every vertex coefficient is
+non-nilpotent; otherwise compute it, because vertex nilpotency alone decides nothing
+(predecessor erratum). Then compare it with `c_0`.
+
+## 4. Admission, stop rules and budget
+
+- Admission checks are those of the predecessor's Sec. 3, with `O` and the declared
+  irreducible `R`. The first failed check makes a candidate `INADMISSIBLE_CANDIDATE`, and its
+  certification stops there.
+- Exact algebra only. A finite scan or a numerical search may suggest candidates but
+  certifies nothing. Every retained computation is a versioned script in `scripts/`, run
+  through `run_all_verifiers.py` before commit.
+- Stop for a class at its first terminal outcome (Sec. 5).
+- Budget: Steps 0–1 for the three classes are one authorization. Steps 2–3 need a separate
+  user authorization after Step 1 is reported, because their cost depends on the dimension
+  of the class found there.
+- If Step 1 shows the constraint system is not tractable exactly within that
+  authorization, stop with `OPEN_AFTER_CLASS_DERIVATION` and report what was derived.
+
+## 5. Outcomes and claim ceilings (per class)
+
+| Outcome | Meaning |
+| --- | --- |
+| `COUNTEREXAMPLE_VERIFIED` | An admissible symbol in the class with `0 < c_0 < c_strict^iso`, exactly certified. Irreducibility under `O` does not force matching for that `s`. |
+| `RIGIDITY_PROVED_FOR_FROZEN_CLASS` | `c_0 = c_strict^iso` proved for every admissible member, with every restriction retained. Says nothing about other `s`, other groups or reducible `R`. |
+| `EMPTY_CLASS` | No symbol satisfies the class constraints. The hypothesis is vacuous for that `s`, which is a first-class negative result. |
+| `INADMISSIBLE_SATURATION` | As in the predecessor: (i) holds but `c_strict^iso < rho_micro`. Not a rigidity counterexample. |
+| `S4_FAMILY_OUTSIDE_O4` | Control B only: the known s=4 family is not `O`-covariant with the irreducible 4-dimensional `R`. It decides nothing by itself. |
+| `OPEN_AFTER_CLASS_DERIVATION` / `INCONCLUSIVE` | No certified counterexample, no exhaustive proof. |
+
+Ceilings retained: no result here establishes A (species universality), matching under
+`D2`, or any statement about nature. A rigidity result would mean that, under the declared
+group and irreducible `R` at that `s`, `c_0` is fixed by the strict causal geometry. It would not
+derive the numerical value of `c`, since the absolute scale is not derivable
+(`NO_ABSOLUTE_SCALE_DERIVABLE`, Sec. 8.21). Novelty requires a separate source comparison.
+No causal sets, random lattices, interactions, anisotropic detours or new substrate classes
+are authorized by this charter.
+
+## 6. Review
+
+Any terminal outcome is reviewed by a model of a different family (`sanedrin` or
+`revision-ciega`) before it enters CURRENT_STATE as more than PRELIMINARY. The review
+record cites the SHA-256 of the reviewed report and the base commit.
