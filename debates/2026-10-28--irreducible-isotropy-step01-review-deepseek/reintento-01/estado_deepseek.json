@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "FAILED",
+  "exit_code": 6,
+  "finish_reason": "",
+  "requested_model": "deepseek-v4-pro",
+  "input_sha256": "36df225f56efae36b45556a6f232ac52642e982369cc56d5c21bd1fdeb24e910",
+  "started": "2026-10-29T07:34:02Z",
+  "finished": "2026-10-29T07:34:02Z",
+  "tool_commit": "a32e18975abd59f30d66e7515944fa2ba97cf98b",
+  "script_sha256": "0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0",
+  "library_sha256": "af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c"
+}
