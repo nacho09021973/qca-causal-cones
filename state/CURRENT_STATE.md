@@ -1771,6 +1771,16 @@ under F. The bridge does not by itself control the change of its retained
 reference functional from the flat one, so it supplies no signal-survival
 claim or resolution of the full paused H1 problem.
 
+### 9.8 Small fixed Gaussian profile — authorized 2026-10-31
+
+Direct user instruction «1 y despues 3» authorizes the limited perturbative
+step after bridge consolidation at `2e6af3a`. Contract:
+[`H1_SMALL_GAUSSIAN_PROFILE_GATE`](../theory/H1_SMALL_GAUSSIAN_PROFILE_GATE.md).
+Initial status: `OPEN / NOT_EXECUTED`. Fix `vartheta(X)=epsilon exp(-|X|^2)`,
+encoder sigma_2, detector I, and the current two-channel functional.
+Only this subproblem is reopened; the broad H1/H1c localization program
+remains paused. No survival statement is installed before execution/review.
+
 ### 9.7 Physical reconstruction operator norms — 2026-09-24
 
 The initial endpoint-transfer audit is recorded in
