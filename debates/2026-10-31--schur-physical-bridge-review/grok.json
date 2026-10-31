@@ -1,0 +1,1773 @@
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","session-info","feedback","goal","foro","artifact-emulator","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","session-info","feedback","goal","foro","artifact-emulator","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":"I will adversarially"}
+{"type":"thought","data":" review the Schur bridge"}
+{"type":"thought","data":" document toward physical"}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","session-info","feedback","goal","foro","artifact-emulator","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","session-info","feedback","goal","foro","artifact-emulator","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":" endpoints."}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","session-info","feedback","goal","foro","artifact-emulator","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","session-info","feedback","goal","foro","artifact-emulator","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":"\n\nI am reconstructing"}
+{"type":"thought","data":" inequalities from the"}
+{"type":"thought","data":" attached sources. The"}
+{"type":"thought","data":" candidate report claims"}
+{"type":"thought","data":" a Schur-to-physical"}
+{"type":"thought","data":" bridge with four linear"}
+{"type":"thought","data":" terms and an O(N^{-7}"}
+{"type":"thought","data":" exp(-K_* N)) error "}
+{"type":"thought","data":"bound. I will evaluate"}
+{"type":"thought","data":" five gates as PASS,"}
+{"type":"thought","data":" REPAIR_REQUIRED, or"}
+{"type":"thought","data":" OPEN."}
+{"type":"thought","data":"\n\nI am now examining"}
+{"type":"thought","data":" the five gates in detail."}
+{"type":"thought","data":" Physical endpoints "}
+{"type":"thought","data":"involve L2 norms of "}
+{"type":"thought","data":"s and v_c. Propagator"}
+{"type":"thought","data":" error uses the first"}
+{"type":"thought","data":" Fourier moment with"}
+{"type":"thought","data":" discontinuous projection"}
+{"type":"thought","data":" outside W. Signed reduction"}
+{"type":"thought","data":" checks exponents, powers,"}
+{"type":"thought","data":" and channels. Claim"}
+{"type":"thought","data":" ceiling compares hypothesis"}
+{"type":"thought","data":" B against F and tests"}
+{"type":"thought","data":" independence in N versus"}
+{"type":"thought","data":" W or profile. A key"}
+{"type":"thought","data":" attack point is whether"}
+{"type":"thought","data":" the kernel P(p') β "}
+{"type":"thought","data":"P(p) remains Lipschitz"}
+{"type":"thought","data":" when both points are"}
+{"type":"thought","data":" inside W despite a "}
+{"type":"thought","data":"non-Lipschitz zero extension."}
+{"type":"thought","data":"\n\nI am probing specific"}
+{"type":"thought","data":" mathematical claims."}
+{"type":"thought","data":" I am checking whether"}
+{"type":"thought","data":" interfaces invalidate"}
+{"type":"thought","data":" the Young inequality."}
+{"type":"thought","data":" I am verifying if the"}
+{"type":"thought","data":" Fourier L1 norm of "}
+{"type":"thought","data":"the physical reference"}
+{"type":"thought","data":" can be bounded by e^{a0}"}
+{"type":"thought","data":" N^{-3/2}. I am testing"}
+{"type":"thought","data":" whether layer counts"}
+{"type":"thought","data":" yield tilted norms "}
+{"type":"thought","data":"N^{-3}. I am assessing"}
+{"type":"thought","data":" if an order-one initial"}
+{"type":"thought","data":" Q datum prevents T^N"}
+{"type":"thought","data":" - R^N = O(1/N). I am"}
+{"type":"thought","data":" questioning whether"}
+{"type":"thought","data":" A_{-P}, A_{+Q}, and"}
+{"type":"thought","data":" A_{-Q} remain in the"}
+{"type":"thought","data":" N^{-7} remainder. I"}
+{"type":"thought","data":" am also looking for"}
+{"type":"thought","data":" confusion between E"}
+{"type":"thought","data":" and E^{1/2} or projections"}
+{"type":"thought","data":" and their adjoints."}
+{"type":"thought","data":"\n\nI am reconstructing"}
+{"type":"thought","data":" the exact object definitions"}
+{"type":"thought","data":" from T1 and the candidate."}
+{"type":"thought","data":" The setup includes "}
+{"type":"thought","data":"f = J(U_M - I) φ_N, "}
+{"type":"thought","data":"r = U_N^N J φ_N, r_c"}
+{"type":"thought","data":" = 1_{B_N} π_c r, s "}
+{"type":"thought","data":"= F H_ξ f, t_j = T^j"}
+{"type":"thought","data":" s, and R = D_ξ / Λ."}
+{"type":"thought","data":" I am verifying the "}
+{"type":"thought","data":"flat control, the tilt"}
+{"type":"thought","data":" sign, and the Θ(N^{-1})"}
+{"type":"thought","data":" reconstruction constant."}
+{"type":"thought","data":" I will not close H1/H1c"}
+{"type":"thought","data":" or AdS or attribute"}
+{"type":"thought","data":" novelty."}
+{"type":"thought","data":"\n\nP and Q are bounded"}
+{"type":"thought","data":" idempotents from T1,"}
+{"type":"thought","data":" not orthogonal projections."}
+{"type":"thought","data":" P is zero outside W"}
+{"type":"thought","data":" and selects the two"}
+{"type":"thought","data":" dominant roots inside"}
+{"type":"thought","data":" W.\n\nHypothesis B assumes"}
+{"type":"thought","data":" a real fixed bounded"}
+{"type":"thought","data":" profile with finite"}
+{"type":"thought","data":" norm. Hypothesis F "}
+{"type":"thought","data":"adds finite Fourier "}
+{"type":"thought","data":"integrals for a0 and"}
+{"type":"thought","data":" a1. Constants O may"}
+{"type":"thought","data":" depend on the profile"}
+{"type":"thought","data":" and W but never on "}
+{"type":"thought","data":"N.\n\nThe Schur stability"}
+{"type":"thought","data":" condition (3) states"}
+{"type":"thought","data":" that ρ(R(p)) ≤ 1, with"}
+{"type":"thought","data":" equality only at p "}
+{"type":"thought","data":"= {0, π}³. The manuscript"}
+{"type":"thought","data":" cites a lemma on the"}
+{"type":"thought","data":" spectral radius of "}
+{"type":"thought","data":"S(η − iξ), which is "}
+{"type":"thought","data":"bounded by exp(Φ(ξ)),"}
+{"type":"thought","data":" achieving equality "}
+{"type":"thought","data":"when all ξ_j ≠ 0 and"}
+{"type":"thought","data":" η lies in Σ = {0,π}³."}
+{"type":"thought","data":" R is defined as D_ξ"}
+{"type":"thought","data":" / Λ where D_ξ(p) = "}
+{"type":"thought","data":"D(p − iξ_*), Λ = exp(Φ_*),"}
+{"type":"thought","data":" and D = S ⊕ S"}
+{"type":"thought","data":"\n\nI am verifying the"}
+{"type":"thought","data":" spectral radius bound"}
+{"type":"thought","data":" for D_ξ/Λ. Since S "}
+{"type":"thought","data":"has determinant 1, its"}
+{"type":"thought","data":" eigenvalues are λ and"}
+{"type":"thought","data":" λ^{-1}. Because ρ(S)"}
+{"type":"thought","data":" ≤ Λ, the larger eigenvalue"}
+{"type":"thought","data":" satisfies |λ| ≤ Λ and"}
+{"type":"thought","data":" the smaller satisfies"}
+{"type":"thought","data":" |λ^{-1}| ≥ 1/Λ. The"}
+{"type":"thought","data":" inverse block S^{-1}"}
+{"type":"thought","data":" therefore also has "}
+{"type":"thought","data":"ρ ≤ Λ. Both blocks of"}
+{"type":"thought","data":" D are bounded by Λ,"}
+{"type":"thought","data":" so ρ(D_ξ/Λ) ≤ 1."}
+{"type":"thought","data":"\n\nThe trace argument"}
+{"type":"thought","data":" for the free symbol"}
+{"type":"thought","data":" is solid. The trace"}
+{"type":"thought","data":" of S divided by two"}
+{"type":"thought","data":" equals the product "}
+{"type":"thought","data":"of cosines over the "}
+{"type":"thought","data":"ellipses, which is strict"}
+{"type":"thought","data":" unless all factors "}
+{"type":"thought","data":"are at real vertices."}
+{"type":"thought","data":" This follows from the"}
+{"type":"thought","data":" ellipse and spectral"}
+{"type":"thought","data":" radius lemmas.\n\nInside"}
+{"type":"thought","data":" W, P acts as a scalar"}
+{"type":"thought","data":" multiplication by λ/Λ."}
+{"type":"thought","data":" This makes it a contraction"}
+{"type":"thought","data":" in the L2 norm."}
+{"type":"thought","data":"\n\nThe dominant root "}
+{"type":"thought","data":"inside W yields |λ/Λ|"}
+{"type":"thought","data":" ≤ 1, with equality "}
+{"type":"thought","data":"only at the eight saddles."}
+{"type":"thought","data":" This is a non-strict"}
+{"type":"thought","data":" contraction, consistent"}
+{"type":"thought","data":" with the candidate's"}
+{"type":"thought","data":" later bound ||A|| ≤"}
+{"type":"thought","data":" 1 + a/N. The subdominant"}
+{"type":"thought","data":" root inside W has |λ^{-1}/Λ|"}
+{"type":"thought","data":" = 1/|λ|·1/Λ, which "}
+{"type":"thought","data":"is strictly less than"}
+{"type":"thought","data":" one."}
+{"type":"thought","data":"\n\nI am now questioning"}
+{"type":"thought","data":" whether the subdominant"}
+{"type":"thought","data":" root is uniformly strictly"}
+{"type":"thought","data":" less than one on the"}
+{"type":"thought","data":" closure of W. The candidate"}
+{"type":"thought","data":" claims it is, but I"}
+{"type":"thought","data":" am checking if this"}
+{"type":"thought","data":" holds everywhere on"}
+{"type":"thought","data":" the torus."}
+{"type":"thought","data":"\n\nI am checking whether"}
+{"type":"thought","data":" the subdominant root"}
+{"type":"thought","data":" is uniformly strictly"}
+{"type":"thought","data":" less than one on the"}
+{"type":"thought","data":" closure of W. The candidate"}
+{"type":"thought","data":" claims it is, but I"}
+{"type":"thought","data":" am verifying if this"}
+{"type":"thought","data":" holds everywhere on"}
+{"type":"thought","data":" the torus."}
+{"type":"thought","data":"\n\nThe minus channel "}
+{"type":"thought","data":"of P projects onto the"}
+{"type":"thought","data":" subdominant eigenspace"}
+{"type":"thought","data":" of S. This is exactly"}
+{"type":"thought","data":" the dominant eigenspace"}
+{"type":"thought","data":" of S^{-1}. Thus P on"}
+{"type":"thought","data":" that channel selects"}
+{"type":"thought","data":" the dominant eigenvalue"}
+{"type":"thought","data":" λ_dom of S^{-1}, which"}
+{"type":"thought","data":" has modulus |λ_dom|."}
+{"type":"thought","data":" The analysis of R ="}
+{"type":"thought","data":" D_ξ / Λ on Ran P is"}
+{"type":"thought","data":" now underway."}
+{"type":"thought","data":"\n\nThe eigenvalue analysis"}
+{"type":"thought","data":" is complete. Both channels"}
+{"type":"thought","data":" of P on Ran P yield"}
+{"type":"thought","data":" λ_dom/Λ with modulus"}
+{"type":"thought","data":" ≤ 1. Both channels "}
+{"type":"thought","data":"of Q on Ran Q yield "}
+{"type":"thought","data":"λ_sub/Λ = 1/(|λ_dom|"}
+{"type":"thought","data":" Λ), which is strictly"}
+{"type":"thought","data":" less than one. Outside"}
+{"type":"thought","data":" W, P vanishes and Q"}
+{"type":"thought","data":" equals the identity,"}
+{"type":"thought","data":" so the spectral radius"}
+{"type":"thought","data":" stays uniformly below"}
+{"type":"thought","data":" one on the compact "}
+{"type":"thought","data":"exterior."}
+{"type":"thought","data":"\n\nThe exterior of W "}
+{"type":"thought","data":"is compact and contains"}
+{"type":"thought","data":" no saddles. The spectral"}
+{"type":"thought","data":" radius is upper semicontinuous,"}
+{"type":"thought","data":" so it attains a maximum"}
+{"type":"thought","data":" strictly below one "}
+{"type":"thought","data":"on that compact set."}
+{"type":"thought","data":" Whether it is continuous"}
+{"type":"thought","data":" there remains to be"}
+{"type":"thought","data":" checked."}
+{"type":"thought","data":"\n\nSpectral radius is"}
+{"type":"thought","data":" continuous because "}
+{"type":"thought","data":"eigenvalues are roots"}
+{"type":"thought","data":" of the characteristic"}
+{"type":"thought","data":" polynomial. On compact"}
+{"type":"thought","data":" sets away from the "}
+{"type":"thought","data":"saddle set Σ, the maximum"}
+{"type":"thought","data":" spectral radius stays"}
+{"type":"thought","data":" strictly below one."}
+{"type":"thought","data":"\n\nThe non-normal Schur"}
+{"type":"thought","data":" triangularization bounds"}
+{"type":"thought","data":" powers by r_0^h + C"}
+{"type":"thought","data":" h r_0^{h-1}. This matches"}
+{"type":"thought","data":" the manuscript's Lemma"}
+{"type":"thought","data":" schur. Choosing ρ between"}
+{"type":"thought","data":" r_0 and 1 yields ||R_Q^h||"}
+{"type":"thought","data":" ≤ C_0 ρ^h. The full"}
+{"type":"thought","data":" operator norm remains"}
+{"type":"thought","data":" uniformly bounded."}
+{"type":"thought","data":"\n\nR_Q is a block-diagonal"}
+{"type":"thought","data":" Fourier multiplier,"}
+{"type":"thought","data":" not a single matrix."}
+{"type":"thought","data":" Its operator norm equals"}
+{"type":"thought","data":" the essential supremum"}
+{"type":"thought","data":" of fiber norms. The"}
+{"type":"thought","data":" Schur bound applies"}
+{"type":"thought","data":" fiberwise, so a uniform"}
+{"type":"thought","data":" constant and decay "}
+{"type":"thought","data":"rate are required across"}
+{"type":"thought","data":" all fibers. On the "}
+{"type":"thought","data":"exterior compact set,"}
+{"type":"thought","data":" the spectral radius"}
+{"type":"thought","data":" stays strictly below"}
+{"type":"thought","data":" one and the symbol "}
+{"type":"thought","data":"remains continuous."}
+{"type":"thought","data":"\n\nThe symbol S(p − iξ)"}
+{"type":"thought","data":" is continuous on the"}
+{"type":"thought","data":" real torus, so ||R(p)||"}
+{"type":"thought","data":" remains uniformly bounded."}
+{"type":"thought","data":" The Schur constant "}
+{"type":"thought","data":"is uniform across fibers."}
+{"type":"thought","data":" Inside W, the subdominant"}
+{"type":"thought","data":" root satisfies |λ_sub/Λ|"}
+{"type":"thought","data":" ≤ 1/Λ < 1 uniformly."}
+{"type":"thought","data":" Because the two roots"}
+{"type":"thought","data":" are distinct in O_α,"}
+{"type":"thought","data":" the Riesz denominator"}
+{"type":"thought","data":" λ − λ^{−1} stays separated"}
+{"type":"thought","data":" from zero on the closure"}
+{"type":"thought","data":" of W. This guarantees"}
+{"type":"thought","data":" that the subdominant"}
+{"type":"thought","data":" block is a scalar or"}
+{"type":"thought","data":" an analytic projector"}
+{"type":"thought","data":" multiplied by a factor"}
+{"type":"thought","data":" of modulus at most "}
+{"type":"thought","data":"1/Λ."}
+{"type":"thought","data":"\n\nThe Q part inside "}
+{"type":"thought","data":"W is multiplication "}
+{"type":"thought","data":"by a scalar of modulus"}
+{"type":"thought","data":" at most ρ_int < 1 on"}
+{"type":"thought","data":" the range of the complementary"}
+{"type":"thought","data":" projector. Even if "}
+{"type":"thought","data":"Q is an oblique projector,"}
+{"type":"thought","data":" its norm can exceed"}
+{"type":"thought","data":" one, but the power "}
+{"type":"thought","data":"decays geometrically"}
+{"type":"thought","data":" with rate |λ_sub/Λ|"}
+{"type":"thought","data":" because Q^h = Q."}
+{"type":"thought","data":"\n\nThe candidate introduces"}
+{"type":"thought","data":" the renormalized norm"}
+{"type":"thought","data":" |y|_* = sup_{h≥0} ρ^{-h}"}
+{"type":"thought","data":" ||R_Q^h y||_2 on Ran"}
+{"type":"thought","data":" Q. This satisfies ||y||_2"}
+{"type":"thought","data":" ≤ |y|_* ≤ C_0 ||y||_2"}
+{"type":"thought","data":" and |R_Q y|_* ≤ ρ |y|_*."}
+{"type":"thought","data":" The construction requires"}
+{"type":"thought","data":" uniform Schur bounds"}
+{"type":"thought","data":" on the off-diagonal"}
+{"type":"thought","data":" term across fibers."}
+{"type":"thought","data":"\n\nThe free tilted symbol"}
+{"type":"thought","data":" satisfies condition"}
+{"type":"thought","data":" (4). The operator norm"}
+{"type":"thought","data":" is uniformly bounded"}
+{"type":"thought","data":" because the tilt is"}
+{"type":"thought","data":" constant and independent"}
+{"type":"thought","data":" of the coin. The Schur"}
+{"type":"thought","data":" lemma therefore yields"}
+{"type":"thought","data":" a uniform exponential"}
+{"type":"thought","data":" decay rate."}
+{"type":"thought","data":"\n\nThe coin perturbation"}
+{"type":"thought","data":" is now under review."}
+{"type":"thought","data":" The candidate claims"}
+{"type":"thought","data":" the coin operator commutes"}
+{"type":"thought","data":" with the position weight"}
+{"type":"thought","data":" H_ξ because both are"}
+{"type":"thought","data":" multiplication operators"}
+{"type":"thought","data":" in position space. "}
+{"type":"thought","data":"This would imply T ="}
+{"type":"thought","data":" C_N R in the Fourier"}
+{"type":"thought","data":" representation. The"}
+{"type":"thought","data":" bound ||T − R|| ≤ b"}
+{"type":"thought","data":" ||R|| / N follows from"}
+{"type":"thought","data":" this commutativity."}
+{"type":"thought","data":"\n\nThe Fourier representation"}
+{"type":"thought","data":" is being checked. In"}
+{"type":"thought","data":" position space, the"}
+{"type":"thought","data":" coin C_N and the exponential"}
+{"type":"thought","data":" weight H_ξ commute,"}
+{"type":"thought","data":" so the tilted operator"}
+{"type":"thought","data":" becomes Λ^{-1} C_N "}
+{"type":"thought","data":"H_ξ D H_ξ^{-1}. Conjugating"}
+{"type":"thought","data":" a convolution by an"}
+{"type":"thought","data":" exponential weight "}
+{"type":"thought","data":"shifts the symbol, and"}
+{"type":"thought","data":" Λ^{-1} D_ξ equals R."}
+{"type":"thought","data":"\n\nThe candidate's bound"}
+{"type":"thought","data":" ||T − R|| ≤ b ||R||"}
+{"type":"thought","data":" / N is being verified."}
+{"type":"thought","data":" Because C_N = exp(−i"}
+{"type":"thought","data":" θ β / N) and ||β|| "}
+{"type":"thought","data":"= 1, the phase satisfies"}
+{"type":"thought","data":" |θ|/N ≤ b/N. The coin"}
+{"type":"thought","data":" operator is a self-adjoint"}
+{"type":"thought","data":" unitary involution,"}
+{"type":"thought","data":" so its exponential "}
+{"type":"thought","data":"expansion is cos(φ) "}
+{"type":"thought","data":"I − i sin(φ) β. This"}
+{"type":"thought","data":" structure is being "}
+{"type":"thought","data":"checked to confirm that"}
+{"type":"thought","data":" ||exp(iA) − I|| behaves"}
+{"type":"thought","data":" like ||A||."}
+{"type":"thought","data":"\n\nThe coin perturbation"}
+{"type":"thought","data":" bound is confirmed:"}
+{"type":"thought","data":" ||C_N − I|| ≤ b/N, "}
+{"type":"thought","data":"so ||T − R|| ≤ (b/N)"}
+{"type":"thought","data":" ||R|| under hypothesis"}
+{"type":"thought","data":" B. The block decomposition"}
+{"type":"thought","data":" T = C_N R is now being"}
+{"type":"thought","data":" checked. Because C_N"}
+{"type":"thought","data":" is a position-space"}
+{"type":"thought","data":" multiplication operator,"}
+{"type":"thought","data":" it acts as convolution"}
+{"type":"thought","data":" in momentum space, "}
+{"type":"thought","data":"which complicates the"}
+{"type":"thought","data":" analysis of the oblique"}
+{"type":"thought","data":" projectors P and Q."}
+{"type":"thought","data":"\n\nThe coin operator "}
+{"type":"thought","data":"does not preserve momentum,"}
+{"type":"thought","data":" so the block decomposition"}
+{"type":"thought","data":" is not a simple fiberwise"}
+{"type":"thought","data":" compression. The candidate"}
+{"type":"thought","data":" uses L2 on Ran P and"}
+{"type":"thought","data":" the star norm on Ran"}
+{"type":"thought","data":" Q. Because ||T − R||"}
+{"type":"thought","data":" ≤ b||R||/N, the deviation"}
+{"type":"thought","data":" ||A − R_P|| is at most"}
+{"type":"thought","data":" O(1/N). The next step"}
+{"type":"thought","data":" is to verify whether"}
+{"type":"thought","data":" ||R_P|| ≤ 1 on the "}
+{"type":"thought","data":"L2 norm of Ran P. On"}
+{"type":"thought","data":" each fiber, R(p) acts"}
+{"type":"thought","data":" as λ(p)/Λ on Ran P(p).\n\nThe candidate claims"}
+{"type":"thought","data":" R_P is a scalar contraction"}
+{"type":"thought","data":" on Ran P. This is wrong"}
+{"type":"thought","data":" because ||P(p)|| can"}
+{"type":"thought","data":" exceed one for oblique"}
+{"type":"thought","data":" projectors, so the "}
+{"type":"thought","data":"operator norm of P R"}
+{"type":"thought","data":" P may be larger than"}
+{"type":"thought","data":" one. The closure of"}
+{"type":"thought","data":" Ran P and whether R"}
+{"type":"thought","data":" maps it into itself"}
+{"type":"thought","data":" are now being checked."}
+{"type":"thought","data":"\n\nR_P is multiplication"}
+{"type":"thought","data":" by the function λ(p)/Λ"}
+{"type":"thought","data":" on the bundle Ran P(p)."}
+{"type":"thought","data":" The L2 operator norm"}
+{"type":"thought","data":" is the integral of "}
+{"type":"thought","data":"|λ(p)/Λ|² over the fiber"}
+{"type":"thought","data":" measure."}
+{"type":"thought","data":"\n\nThe operator norm "}
+{"type":"thought","data":"of R_P on Ran P is at"}
+{"type":"thought","data":" most one. The scalar"}
+{"type":"thought","data":" factor λ(p)/Λ has modulus"}
+{"type":"thought","data":" at most one, so the"}
+{"type":"thought","data":" contraction property"}
+{"type":"thought","data":" holds even when P is"}
+{"type":"thought","data":" oblique. Therefore "}
+{"type":"thought","data":"||A|| ≤ 1 + O(1/N). "}
+{"type":"thought","data":"The constant depends"}
+{"type":"thought","data":" on the projector norms"}
+{"type":"thought","data":" between ranges."}
+{"type":"thought","data":"\n\nThe off-diagonal blocks"}
+{"type":"thought","data":" are now bounded. Because"}
+{"type":"thought","data":" R leaves the P and "}
+{"type":"thought","data":"Q bundles invariant,"}
+{"type":"thought","data":" P R Q vanishes, so "}
+{"type":"thought","data":"||B|| = O_W(1/N). The"}
+{"type":"thought","data":" same holds for ||C||."}
+{"type":"thought","data":" For D = Q T Q, the "}
+{"type":"thought","data":"star norm of Q R Q is"}
+{"type":"thought","data":" being checked against"}
+{"type":"thought","data":" the claimed bound ρ"}
+{"type":"thought","data":" + a/N."}
+{"type":"thought","data":"\n\nThe star-norm bound"}
+{"type":"thought","data":" for D is now established."}
+{"type":"thought","data":" The perturbation term"}
+{"type":"thought","data":" Q(T−R)Q satisfies |Q(T−R)Q"}
+{"type":"thought","data":" y|_* ≤ (C′/N)|y|_*,"}
+{"type":"thought","data":" so ||D||_* ≤ ρ + a/N"}
+{"type":"thought","data":" for large N. This requires"}
+{"type":"thought","data":" the star norm to be"}
+{"type":"thought","data":" equivalent to L2, which"}
+{"type":"thought","data":" is guaranteed by the"}
+{"type":"thought","data":" uniform Schur bound"}
+{"type":"thought","data":" ||R_Q^h|| ≤ C_0 ρ^h."}
+{"type":"thought","data":"\n\nTwo subtleties remain."}
+{"type":"thought","data":" First, R_Q acts on "}
+{"type":"thought","data":"the whole space but "}
+{"type":"thought","data":"the star norm is defined"}
+{"type":"thought","data":" on Ran Q, so the restriction"}
+{"type":"thought","data":" must be checked. Second,"}
+{"type":"thought","data":" in the exterior region"}
+{"type":"thought","data":" where Q equals the "}
+{"type":"thought","data":"identity, the operator"}
+{"type":"thought","data":" is non-normal yet its"}
+{"type":"thought","data":" spectral radius stays"}
+{"type":"thought","data":" below one, and condition"}
+{"type":"thought","data":" (4) already covers "}
+{"type":"thought","data":"this case."}
+{"type":"thought","data":"\n\nThe star-norm bound"}
+{"type":"thought","data":" for D is confirmed."}
+{"type":"thought","data":" The proof sketch for"}
+{"type":"thought","data":" (6) uses the block "}
+{"type":"thought","data":"decomposition Tz = A"}
+{"type":"thought","data":" Pz + B Qz + C Pz + "}
+{"type":"thought","data":"D Qz. In the combined"}
+{"type":"thought","data":" norm ||Pz||_2 + |Qz|_*,"}
+{"type":"thought","data":" the estimate gives "}
+{"type":"thought","data":"|Tz|_⊕ ≤ (1 + 2a/N) "}
+{"type":"thought","data":"|z|_⊕. This yields sup_{j≤N}"}
+{"type":"thought","data":" ||T^j|| ≤ C_W and ||Q"}
+{"type":"thought","data":" t_N|| ≤ C_W (ρ_2^N "}
+{"type":"thought","data":"+ N^{-1}) ||s||."}
+{"type":"thought","data":"\n\nThe recurrence for"}
+{"type":"thought","data":" ||Q t_N|| is being "}
+{"type":"thought","data":"estimated. The sum over"}
+{"type":"thought","data":" k of ρ_2^{N−1−k} (a/N)"}
+{"type":"thought","data":" is bounded by O(1/N),"}
+{"type":"thought","data":" so the total norm remains"}
+{"type":"thought","data":" controlled."}
+{"type":"thought","data":"\n\nThe candidate’s second"}
+{"type":"thought","data":" proof route for (6)"}
+{"type":"thought","data":" uses Duhamel and discrete"}
+{"type":"thought","data":" Gronwall. It yields"}
+{"type":"thought","data":" a uniform bound on "}
+{"type":"thought","data":"sup_j ||T^j|| but does"}
+{"type":"thought","data":" not give the Q decay"}
+{"type":"thought","data":" of ||Q t_N||. The Schur"}
+{"type":"thought","data":" double sum is now being"}
+{"type":"thought","data":" examined."}
+{"type":"thought","data":"\n\nThe Schur double sum"}
+{"type":"thought","data":" is now estimated. The"}
+{"type":"thought","data":" sum over m and k of"}
+{"type":"thought","data":" ρ_2^{m−k−1} is bounded"}
+{"type":"thought","data":" by N/(1−ρ_2), so the"}
+{"type":"thought","data":" norm of the operator"}
+{"type":"thought","data":" is at most e^a a²/(N(1−ρ_2))."}
+{"type":"thought","data":" This yields the required"}
+{"type":"thought","data":" bound on the operator"}
+{"type":"thought","data":" norm in the ℓ^∞_t L²"}
+{"type":"thought","data":" space over Ran P. The"}
+{"type":"thought","data":" initial Q entry contributes"}
+{"type":"thought","data":" an extra O_W(N^{-1})"}
+{"type":"thought","data":" factor."}
+{"type":"thought","data":"\n\nThe inverse operator"}
+{"type":"thought","data":" norm is bounded by "}
+{"type":"thought","data":"(1 − C_W/N)^{−1}, confirming"}
+{"type":"thought","data":" the standard Volterra"}
+{"type":"thought","data":" memory bound. The Schur"}
+{"type":"thought","data":" stability condition"}
+{"type":"thought","data":" is largely satisfied."}
+{"type":"thought","data":" Two points remain: "}
+{"type":"thought","data":"the constant a depends"}
+{"type":"thought","data":" on W and ||R||, and"}
+{"type":"thought","data":" the uniform Schur bound"}
+{"type":"thought","data":" on the closure of W"}
+{"type":"thought","data":" relies on the spectral"}
+{"type":"thought","data":" gap."}
+{"type":"thought","data":"\n\nThe uniform Schur "}
+{"type":"thought","data":"bound on the exterior"}
+{"type":"thought","data":" is confirmed because"}
+{"type":"thought","data":" ||R(p)|| is uniformly"}
+{"type":"thought","data":" bounded there. The "}
+{"type":"thought","data":"decay rate remains uniform"}
+{"type":"thought","data":" even near the boundary"}
+{"type":"thought","data":" of W, since the subdominant"}
+{"type":"thought","data":" eigenvalue stays well"}
+{"type":"thought","data":" below one. A specific"}
+{"type":"thought","data":" claim about R_P being"}
+{"type":"thought","data":" a scalar contraction"}
+{"type":"thought","data":" in Ran P is flagged"}
+{"type":"thought","data":" for review."}
+{"type":"thought","data":"\n\nThe candidate correctly"}
+{"type":"thought","data":" notes that ||A|| ≤ "}
+{"type":"thought","data":"1 + a/N because the "}
+{"type":"thought","data":"saddle point |λ/Λ| ="}
+{"type":"thought","data":" 1 prevents strict contraction"}
+{"type":"thought","data":" on P. The double sum"}
+{"type":"thought","data":" indices and step-length"}
+{"type":"thought","data":" bounds are verified"}
+{"type":"thought","data":" against the expansion"}
+{"type":"thought","data":" (14). The Schur stability"}
+{"type":"thought","data":" condition is therefore"}
+{"type":"thought","data":" satisfied."}
+{"type":"thought","data":"\n\nThe exterior fiber"}
+{"type":"thought","data":" is 4×4, not 2×2. The"}
+{"type":"thought","data":" operator D = S ⊕ S^{-1}"}
+{"type":"thought","data":" splits into two 2×2"}
+{"type":"thought","data":" blocks, so the Schur"}
+{"type":"thought","data":" argument applies to"}
+{"type":"thought","data":" each block separately"}
+{"type":"thought","data":" and the full norm is"}
+{"type":"thought","data":" the maximum of the "}
+{"type":"thought","data":"two block norms. Outside"}
+{"type":"thought","data":" W, Q equals the identity,"}
+{"type":"thought","data":" so R_Q(p) is simply"}
+{"type":"thought","data":" R(p). Inside W, Q(p)"}
+{"type":"thought","data":" selects the subdominant"}
+{"type":"thought","data":" eigenvalue on the +"}
+{"type":"thought","data":" side."}
+{"type":"thought","data":"\n\nThe block structure"}
+{"type":"thought","data":" is now verified. On"}
+{"type":"thought","data":" the plus block, P selects"}
+{"type":"thought","data":" the dominant eigenvalue"}
+{"type":"thought","data":" of S while Q selects"}
+{"type":"thought","data":" the subdominant. On"}
+{"type":"thought","data":" the minus block, P "}
+{"type":"thought","data":"selects the subdominant"}
+{"type":"thought","data":" eigenvalue of S and"}
+{"type":"thought","data":" Q selects the dominant"}
+{"type":"thought","data":" eigenvalue of S^{-1},"}
+{"type":"thought","data":" which is the subdominant"}
+{"type":"thought","data":" eigenvalue of S. This"}
+{"type":"thought","data":" confirms consistency"}
+{"type":"thought","data":" with the earlier claim."}
+{"type":"thought","data":" The commutativity relation"}
+{"type":"thought","data":" βP = Qβ inside W is"}
+{"type":"thought","data":" also confirmed."}
+{"type":"thought","data":"\n\nThe bound ||T−R|| "}
+{"type":"thought","data":"≤ b||R||/N is acceptable"}
+{"type":"thought","data":" because ||R|| is a "}
+{"type":"thought","data":"finite constant. A potential"}
+{"type":"thought","data":" gap remains: the coin"}
+{"type":"thought","data":" operator C_N acts as"}
+{"type":"thought","data":" a position-space multiplication,"}
+{"type":"thought","data":" so after Fourier transform"}
+{"type":"thought","data":" T becomes a PDO rather"}
+{"type":"thought","data":" than a simple composition"}
+{"type":"thought","data":" of R and C_N. T1 (4)"}
+{"type":"thought","data":" is being re-examined"}
+{"type":"thought","data":" to verify this."}
+{"type":"thought","data":"\n\nT1 (4) is now verified."}
+{"type":"thought","data":" Because C_N commutes"}
+{"type":"thought","data":" with H_ξ, the conjugation"}
+{"type":"thought","data":" U_N = C_N D becomes"}
+{"type":"thought","data":" C_N H_ξ D H_ξ^{-1}."}
+{"type":"thought","data":" After Fourier transform,"}
+{"type":"thought","data":" T equals the Fourier-conjugation"}
+{"type":"thought","data":" of C_N composed with"}
+{"type":"thought","data":" the multiplier R(p)."}
+{"type":"thought","data":" This confirms the candidate’s"}
+{"type":"thought","data":" block decomposition."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"suspects the bound ||T−R||"}
+{"type":"thought","data":" ≤ b||R||/N may fail"}
+{"type":"thought","data":" because H_ξ is unbounded"}
+{"type":"thought","data":" on the infinite lattice."}
+{"type":"thought","data":" This would invalidate"}
+{"type":"thought","data":" the norm estimate for"}
+{"type":"thought","data":" the tilted walk operator."}
+{"type":"thought","data":"\n\nThe conjugation by"}
+{"type":"thought","data":" the unbounded exponential"}
+{"type":"thought","data":" weight is harmless "}
+{"type":"thought","data":"because D has finite"}
+{"type":"thought","data":" range, so the operator"}
+{"type":"thought","data":" norm of the tilted "}
+{"type":"thought","data":"walk remains finite."}
+{"type":"thought","data":" This confirms the bound"}
+{"type":"thought","data":" ||T−R|| ≤ (b/N) ||R||."}
+{"type":"thought","data":"\n\nSCHUR_STABILITY is"}
+{"type":"thought","data":" now judged conditionally"}
+{"type":"thought","data":" PASS. The next adversarial"}
+{"type":"thought","data":" check targets the claim"}
+{"type":"thought","data":" sup_{h≥0} ||R^h|| ≤"}
+{"type":"thought","data":" C_R: at saddles the"}
+{"type":"thought","data":" spectral radius ρ equals"}
+{"type":"thought","data":" one, and non-normality"}
+{"type":"thought","data":" could make ||R(p)^h||"}
+{"type":"thought","data":" grow polynomially in"}
+{"type":"thought","data":" h even when ρ = 1."}
+{"type":"thought","data":"\n\nThe eigenvalues Λ "}
+{"type":"thought","data":"and Λ^{-1} are distinct"}
+{"type":"thought","data":" at the saddle, so R"}
+{"type":"thought","data":" is diagonalizable there"}
+{"type":"thought","data":" with no Jordan blocks."}
+{"type":"thought","data":" The operator norm ||R(p)^h||"}
+{"type":"thought","data":" therefore stays uniformly"}
+{"type":"thought","data":" bounded for all h, "}
+{"type":"thought","data":"because the unit-modulus"}
+{"type":"thought","data":" eigenvalue oscillates"}
+{"type":"thought","data":" rather than growing"}
+{"type":"thought","data":" polynomially."}
+{"type":"thought","data":"\n\nThe uniformity of "}
+{"type":"thought","data":"the bound on ||R(p)^h||"}
+{"type":"thought","data":" is now in question."}
+{"type":"thought","data":" The essential supremum"}
+{"type":"thought","data":" over all p may not "}
+{"type":"thought","data":"be finite because ||P(p)||"}
+{"type":"thought","data":" is only defined inside"}
+{"type":"thought","data":" W, and the eight saddle"}
+{"type":"thought","data":" points where ρ = 1 "}
+{"type":"thought","data":"are included in that"}
+{"type":"thought","data":" region."}
+{"type":"thought","data":"\n\nNear the saddle the"}
+{"type":"thought","data":" eigenvalue modulus "}
+{"type":"thought","data":"is strictly less than"}
+{"type":"thought","data":" one, so the projector"}
+{"type":"thought","data":" stays bounded and the"}
+{"type":"thought","data":" condition number of"}
+{"type":"thought","data":" the eigenbasis remains"}
+{"type":"thought","data":" finite due to the gap."}
+{"type":"thought","data":" Far away the spectral"}
+{"type":"thought","data":" radius is below one"}
+{"type":"thought","data":" and decays. Therefore"}
+{"type":"thought","data":" the essential supremum"}
+{"type":"thought","data":" over all p is finite."}
+{"type":"thought","data":" The manuscript’s Lemma"}
+{"type":"thought","data":" schur gives a linear-in-h"}
+{"type":"thought","data":" factor when ρ < e^κ,"}
+{"type":"thought","data":" but the exact ρ = 1"}
+{"type":"thought","data":" case with a gap requires"}
+{"type":"thought","data":" a separate argument."}
+{"type":"thought","data":"\n\nThe candidate’s triangularization"}
+{"type":"thought","data":" argument only bounds"}
+{"type":"thought","data":" the subdominant block"}
+{"type":"thought","data":" R_Q by r_0^h with a"}
+{"type":"thought","data":" linear correction. "}
+{"type":"thought","data":"The dominant block is"}
+{"type":"thought","data":" not contracted, so "}
+{"type":"thought","data":"the full operator R "}
+{"type":"thought","data":"cannot be bounded uniformly"}
+{"type":"thought","data":" in h. The claim sup_h"}
+{"type":"thought","data":" ||R^h|| ≤ C_R therefore"}
+{"type":"thought","data":" remains unproven."}
+{"type":"thought","data":"\n\nThe Schur bound ||T^N||"}
+{"type":"thought","data":" ≤ 1 + β N is sharp "}
+{"type":"thought","data":"when the off-diagonal"}
+{"type":"thought","data":" term b is nonzero and"}
+{"type":"thought","data":" both eigenvalues have"}
+{"type":"thought","data":" modulus exactly ρ. "}
+{"type":"thought","data":"This implies ||R^h||"}
+{"type":"thought","data":" can grow linearly in"}
+{"type":"thought","data":" h, so sup_h ||R^h||"}
+{"type":"thought","data":" may be infinite."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"examines the Schur form"}
+{"type":"thought","data":" T = V [λ1, b; 0, λ2]"}
+{"type":"thought","data":" V* for distinct eigenvalues."}
+{"type":"thought","data":" This decomposition "}
+{"type":"thought","data":"is intended to determine"}
+{"type":"thought","data":" whether ||R(p)^h|| "}
+{"type":"thought","data":"can grow with h."}
+{"type":"thought","data":"\n\nThe Schur decomposition"}
+{"type":"thought","data":" T = V [λ1, b; 0, λ2]"}
+{"type":"thought","data":" V* is now used to bound"}
+{"type":"thought","data":" T^h. The upper-right"}
+{"type":"thought","data":" entry is b times a "}
+{"type":"thought","data":"sum over j of λ1^j λ2^{h−1−j}."}
+{"type":"thought","data":" If both eigenvalues"}
+{"type":"thought","data":" have modulus at most"}
+{"type":"thought","data":" r < 1, the sum is bounded"}
+{"type":"thought","data":" by 1/(1−r). If one "}
+{"type":"thought","data":"eigenvalue has modulus"}
+{"type":"thought","data":" 1 and the other is "}
+{"type":"thought","data":"strictly smaller, the"}
+{"type":"thought","data":" sum is bounded by 1/(1−|λ2|)."}
+{"type":"thought","data":" The dangerous case "}
+{"type":"thought","data":"where both eigenvalues"}
+{"type":"thought","data":" are near 1 with large"}
+{"type":"thought","data":" off-diagonal term is"}
+{"type":"thought","data":" not applicable here,"}
+{"type":"thought","data":" because each 2×2 block"}
+{"type":"thought","data":" of D/Λ pairs the dominant"}
+{"type":"thought","data":" and subdominant eigenvalues"}
+{"type":"thought","data":" of that same block."}
+{"type":"thought","data":"\n\nThe Schur decomposition"}
+{"type":"thought","data":" now settles the uniform"}
+{"type":"thought","data":" bound on powers. Because"}
+{"type":"thought","data":" one eigenvalue of each"}
+{"type":"thought","data":" 2×2 block has modulus"}
+{"type":"thought","data":" at most 1/Λ < 1, the"}
+{"type":"thought","data":" off-diagonal contribution"}
+{"type":"thought","data":" is bounded by |b|/(1−1/Λ)"}
+{"type":"thought","data":" uniformly in h. This"}
+{"type":"thought","data":" yields a finite bound"}
+{"type":"thought","data":" independent of h and"}
+{"type":"thought","data":" p. The candidate’s "}
+{"type":"thought","data":"claim sup_h ||R^h|| "}
+{"type":"thought","data":"≤ C_R is therefore true."}
+{"type":"thought","data":" Their cited exterior"}
+{"type":"thought","data":" estimate applies to"}
+{"type":"thought","data":" the subdominant block,"}
+{"type":"thought","data":" while the interior "}
+{"type":"thought","data":"dominant block relies"}
+{"type":"thought","data":" on the gap argument."}
+{"type":"thought","data":"\n\nSCHUR_STABILITY is"}
+{"type":"thought","data":" now marked PASS. The"}
+{"type":"thought","data":" spectral gap between"}
+{"type":"thought","data":" the unit-circle eigenvalues"}
+{"type":"thought","data":" and the smaller eigenvalue"}
+{"type":"thought","data":" is uniform across the"}
+{"type":"thought","data":" entire torus, which"}
+{"type":"thought","data":" is stronger than the"}
+{"type":"thought","data":" candidate claimed. "}
+{"type":"thought","data":"The physical endpoints"}
+{"type":"thought","data":" are being checked next:"}
+{"type":"thought","data":" Alice’s state is s "}
+{"type":"thought","data":"= F H_ξ f with f = J(U_M"}
+{"type":"thought","data":" − I) φ_N, and ||φ_N(x)||"}
+{"type":"thought","data":" ≤ C N^{−3/2}."}
+{"type":"thought","data":"\n\nThe constant in ||φ_N||"}
+{"type":"thought","data":" ≤ C N^{−3/2} is uniform"}
+{"type":"thought","data":" because Φ_0 is bounded."}
+{"type":"thought","data":" Alice’s radius is R_b"}
+{"type":"thought","data":" = N/4. The candidate’s"}
+{"type":"thought","data":" point x = x_* − δû "}
+{"type":"thought","data":"+ v with û = u/√3 and"}
+{"type":"thought","data":" x_* = Rû is being checked"}
+{"type":"thought","data":" against the manuscript’s"}
+{"type":"thought","data":" F_N(x) = (1 − 16|x|²/N²)_+²"}
+{"type":"thought","data":" supported in A_N."}
+{"type":"thought","data":"\n\nThe candidate’s bound"}
+{"type":"thought","data":" F_N ≤ 64 δ²/N² is confirmed"}
+{"type":"thought","data":" against the manuscript’s"}
+{"type":"thought","data":" exact formula F_N ="}
+{"type":"thought","data":" (64/N²) ε_⊥², where"}
+{"type":"thought","data":" ε_⊥ = δ − δ²/(2R) −"}
+{"type":"thought","data":" |u_⊥|²/(2R). The next"}
+{"type":"thought","data":" step is to verify the"}
+{"type":"thought","data":" bound ||f(x)|| ≤ (π/2)"}
+{"type":"thought","data":" F_N(x) ||φ_N(x)|| using"}
+{"type":"thought","data":" the explicit decomposition"}
+{"type":"thought","data":" U_M − I = c_N I + i"}
+{"type":"thought","data":" s_N M."}
+{"type":"thought","data":"\n\nThe bound ||f(x)||"}
+{"type":"thought","data":" ≤ (π/2) F_N(x) ||φ_N(x)||"}
+{"type":"thought","data":" is now verified. The"}
+{"type":"thought","data":" pointwise operator "}
+{"type":"thought","data":"norm of U_M − I is bounded"}
+{"type":"thought","data":" by π F_N/2, which absorbs"}
+{"type":"thought","data":" both the cosine and"}
+{"type":"thought","data":" sine contributions."}
+{"type":"thought","data":"\n\nThe layer spacing "}
+{"type":"thought","data":"δ_j = (θ_N + j)/√3 matches"}
+{"type":"thought","data":" the manuscript’s definition"}
+{"type":"thought","data":" exactly.\n\nThe candidate’s"}
+{"type":"thought","data":" claim that the number"}
+{"type":"thought","data":" of sites is at most"}
+{"type":"thought","data":" C(1 + N δ_j) is being"}
+{"type":"thought","data":" examined next."}
+{"type":"thought","data":"\n\nThe bound on the number"}
+{"type":"thought","data":" of lattice sites is"}
+{"type":"thought","data":" confirmed. The disc"}
+{"type":"thought","data":" radius squared is at"}
+{"type":"thought","data":" most N δ_j / 2, so "}
+{"type":"thought","data":"the area is at most "}
+{"type":"thought","data":"C(1 + N δ_j). The candidate’s"}
+{"type":"thought","data":" explanation via packing"}
+{"type":"thought","data":" cells of the fixed "}
+{"type":"thought","data":"planar lattice is correct."}
+{"type":"thought","data":"\n\nThe next step is to"}
+{"type":"thought","data":" examine the squared"}
+{"type":"thought","data":" norm ||s||_2² = sum_{x∈A_N}"}
+{"type":"thought","data":" exp(2 ξ_* · (x − x_*))"}
+{"type":"thought","data":" ||f(x)||²."}
+{"type":"thought","data":"\n\nThe inner product "}
+{"type":"thought","data":"ξ_* · (x − x_*) equals"}
+{"type":"thought","data":" −t_* (θ_N + j), so "}
+{"type":"thought","data":"the exponential factor"}
+{"type":"thought","data":" is exp(−2 t_* (θ_N "}
+{"type":"thought","data":"+ j)). The squared norm"}
+{"type":"thought","data":" of f is bounded by "}
+{"type":"thought","data":"C δ^4 N^{−7}. Summing"}
+{"type":"thought","data":" over layer j gives "}
+{"type":"thought","data":"||s||² ≤ C N^{−7} sum_j"}
+{"type":"thought","data":" exp(−2 t_* (θ_N+j))"}
+{"type":"thought","data":" δ_j^4 (1 + N δ_j)."}
+{"type":"thought","data":"\n\nThe candidate’s claim"}
+{"type":"thought","data":" that ||s|| = O(N^{−3})"}
+{"type":"thought","data":" is confirmed. The sum"}
+{"type":"thought","data":" over layers is O(N),"}
+{"type":"thought","data":" so the squared norm"}
+{"type":"thought","data":" is O(N^{−6}), giving"}
+{"type":"thought","data":" ||s|| = O(N^{−3}). "}
+{"type":"thought","data":"The exponential decay"}
+{"type":"thought","data":" in j ensures this bound"}
+{"type":"thought","data":" holds uniformly in "}
+{"type":"thought","data":"the fractional depth"}
+{"type":"thought","data":" θ_N."}
+{"type":"thought","data":"\n\nThe candidate notes"}
+{"type":"thought","data":" that the untilted source"}
+{"type":"thought","data":" f has norm O(1), not"}
+{"type":"thought","data":" O(N^{−3/2}), because"}
+{"type":"thought","data":" its support is localized"}
+{"type":"thought","data":" on Alice’s ball. The"}
+{"type":"thought","data":" exponential tilt exp(ξ·(x−x_*))"}
+{"type":"thought","data":" suppresses the bulk"}
+{"type":"thought","data":" contribution by order"}
+{"type":"thought","data":" exp(−c N) while remaining"}
+{"type":"thought","data":" order 1 only near the"}
+{"type":"thought","data":" facing boundary."}
+{"type":"thought","data":"\n\nThe uniform bound "}
+{"type":"thought","data":"||φ_N|| ≤ C N^{−3/2}"}
+{"type":"thought","data":" is sharp because near"}
+{"type":"thought","data":" the boundary Φ_0(x/N)"}
+{"type":"thought","data":" remains order 1, matching"}
+{"type":"thought","data":" the manuscript’s φ_∂"}
+{"type":"thought","data":" = c_r I_b > 0 at the"}
+{"type":"thought","data":" sphere.\n\nThe candidate"}
+{"type":"thought","data":" now turns to Bob’s "}
+{"type":"thought","data":"Fourier L1 norm of the"}
+{"type":"thought","data":" reference. The critical"}
+{"type":"thought","data":" question is whether"}
+{"type":"thought","data":" this norm can be bounded"}
+{"type":"thought","data":" by e^{a0} N^{−3/2} "}
+{"type":"thought","data":"when iterating exactly"}
+{"type":"thought","data":" over the coin and the"}
+{"type":"thought","data":" real unitary symbol."}
+{"type":"thought","data":"\n\nThe candidate is now"}
+{"type":"thought","data":" checking whether multiplication"}
+{"type":"thought","data":" by θ(x/N) is exactly"}
+{"type":"thought","data":" convolution with the"}
+{"type":"thought","data":" pushforward measure"}
+{"type":"thought","data":" μ_N. They are verifying"}
+{"type":"thought","data":" this by examining the"}
+{"type":"thought","data":" Fourier transform convention"}
+{"type":"thought","data":" on the torus."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" the Fourier convention"}
+{"type":"thought","data":" is unitary with Plancherel"}
+{"type":"thought","data":" measure dμ = d³p/(2π)³."}
+{"type":"thought","data":" They verify that multiplication"}
+{"type":"thought","data":" by m(x) = θ(x/N) corresponds"}
+{"type":"thought","data":" to convolution with"}
+{"type":"thought","data":" μ_N in Fourier space,"}
+{"type":"thought","data":" and begin computing"}
+{"type":"thought","data":" the exact periodization"}
+{"type":"thought","data":" formula for μ_N."}
+{"type":"thought","data":"\n\nThe candidate derives"}
+{"type":"thought","data":" the exact periodization"}
+{"type":"thought","data":" formula for μ_N by "}
+{"type":"thought","data":"substituting q = k/N"}
+{"type":"thought","data":" into the Fourier integral."}
+{"type":"thought","data":" They verify that the"}
+{"type":"thought","data":" total variation norm"}
+{"type":"thought","data":" is exactly a_0, and"}
+{"type":"thought","data":" they bound the torus"}
+{"type":"thought","data":" distance integral by"}
+{"type":"thought","data":" a_1/N with a_1 = ∫ "}
+{"type":"thought","data":"|k| |θ̂(k)| d³k/(2π)³."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"verifies that the torus"}
+{"type":"thought","data":" distance integral is"}
+{"type":"thought","data":" exactly a_1/N. Because"}
+{"type":"thought","data":" D is unitary fiberwise"}
+{"type":"thought","data":" on the real torus, "}
+{"type":"thought","data":"it does not increase"}
+{"type":"thought","data":" the L1 norm of the "}
+{"type":"thought","data":"Fourier transform. The"}
+{"type":"thought","data":" next step is to bound"}
+{"type":"thought","data":" ||ψ̂||_{L1(dμ)}."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" that unitary D(p) preserves"}
+{"type":"thought","data":" the L1 norm of the "}
+{"type":"thought","data":"Fourier transform. They"}
+{"type":"thought","data":" now examine the coin"}
+{"type":"thought","data":" operator C_N = exp(−i"}
+{"type":"thought","data":" θ(x/N) β / N), expanding"}
+{"type":"thought","data":" it as a power series"}
+{"type":"thought","data":" in θ(x/N)."}
+{"type":"thought","data":"\n\nThe candidate derives"}
+{"type":"thought","data":" the L1 norm bound for"}
+{"type":"thought","data":" C_N in Fourier space."}
+{"type":"thought","data":" Multiplication by θ(x/N)"}
+{"type":"thought","data":" convolves with μ_N,"}
+{"type":"thought","data":" so ||θ(·/N) ψ̂||_{L1}"}
+{"type":"thought","data":" ≤ a_0 ||ψ̂||_{L1}. "}
+{"type":"thought","data":"The coin operator C_N"}
+{"type":"thought","data":" = exp(−i θ(x/N) β /"}
+{"type":"thought","data":" N) then yields ||C_N"}
+{"type":"thought","data":" ψ̂||_{L1} ≤ exp(a_0/N)"}
+{"type":"thought","data":" ||ψ̂||_{L1}. They are"}
+{"type":"thought","data":" now checking whether"}
+{"type":"thought","data":" this convolution inequality"}
+{"type":"thought","data":" holds correctly under"}
+{"type":"thought","data":" the unitary Fourier"}
+{"type":"thought","data":" convention."}
+{"type":"thought","data":"\n\nThe candidate is now"}
+{"type":"thought","data":" verifying the convolution"}
+{"type":"thought","data":" inequality for multiplication"}
+{"type":"thought","data":" by θ(x/N) under the"}
+{"type":"thought","data":" unitary Fourier convention."}
+{"type":"thought","data":" They write out the "}
+{"type":"thought","data":"double integral m(x)"}
+{"type":"thought","data":" ψ(x) = ∫∫ e^{−i(p+q)·x}"}
+{"type":"thought","data":" ψ̂(p) [θ̂(Nq) N^3 d³q/(2π)³]"}
+{"type":"thought","data":" d³p/(2π)³ and note "}
+{"type":"thought","data":"that this is subtle "}
+{"type":"thought","data":"with distributions. "}
+{"type":"thought","data":"They recall that if "}
+{"type":"thought","data":"both transforms use "}
+{"type":"thought","data":"the same convention "}
+{"type":"thought","data":"consistently, multiplication"}
+{"type":"thought","data":" by a function whose"}
+{"type":"thought","data":" Fourier coefficients"}
+{"type":"thought","data":" form a measure of total"}
+{"type":"thought","data":" variation norm M gives"}
+{"type":"thought","data":" ||ĝ||_{L1(dμ)} ≤ M "}
+{"type":"thought","data":"||ψ̂||_{L1(dμ)} only"}
+{"type":"thought","data":" if the convolution "}
+{"type":"thought","data":"is performed correctly."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"derives the precise "}
+{"type":"thought","data":"convolution inequality"}
+{"type":"thought","data":" under the unitary Fourier"}
+{"type":"thought","data":" convention. If the "}
+{"type":"thought","data":"multiplier m(x) is written"}
+{"type":"thought","data":" as ∫ e^{−iq·x} dν(q),"}
+{"type":"thought","data":" then multiplication"}
+{"type":"thought","data":" by m(x) corresponds"}
+{"type":"thought","data":" to convolution with"}
+{"type":"thought","data":" ψ̂ in Fourier space."}
+{"type":"thought","data":" When the measure ν "}
+{"type":"thought","data":"is absolutely continuous"}
+{"type":"thought","data":" with respect to the"}
+{"type":"thought","data":" Plancherel measure "}
+{"type":"thought","data":"dμ = d³p/(2π)³, so that"}
+{"type":"thought","data":" dν = ρ(q) dμ(q), the"}
+{"type":"thought","data":" resulting operator "}
+{"type":"thought","data":"norm satisfies ||g||_{L1(dμ)}"}
+{"type":"thought","data":" ≤ ||ρ||_{L1(dμ)} ||ψ̂||_{L1(dμ)}."}
+{"type":"thought","data":" The total variation"}
+{"type":"thought","data":" norm of ν therefore"}
+{"type":"thought","data":" equals the L1 norm "}
+{"type":"thought","data":"of ρ against dμ."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" the operator norm bound"}
+{"type":"thought","data":" for the coin C_N is"}
+{"type":"thought","data":" exp(a_0/N). Because"}
+{"type":"thought","data":" D preserves the L1 "}
+{"type":"thought","data":"Fourier norm, the full"}
+{"type":"thought","data":" step U_N = C_N D satisfies"}
+{"type":"thought","data":" ||F(U_N^N ψ)||_{L1}"}
+{"type":"thought","data":" ≤ exp(a_0) ||F ψ||_{L1}."}
+{"type":"thought","data":" They then examine the"}
+{"type":"thought","data":" Fourier transform of"}
+{"type":"thought","data":" φ_N, writing φ̂_N(p)"}
+{"type":"thought","data":" = Z_N^{-1/2} g(Np) "}
+{"type":"thought","data":"|↓> with Z_N = 64/(3465"}
+{"type":"thought","data":" π² N³). The function"}
+{"type":"thought","data":" g(Np) is supported "}
+{"type":"thought","data":"on |p| ≤ 1/N and bounded"}
+{"type":"thought","data":" by one."}
+{"type":"thought","data":"\n\nThe candidate computes"}
+{"type":"thought","data":" the L1 norm of φ̂_N."}
+{"type":"thought","data":" The factor Z_N^{-1/2}"}
+{"type":"thought","data":" scales as N^{3/2} and"}
+{"type":"thought","data":" the integration volume"}
+{"type":"thought","data":" is C N^{-3}, so ||φ̂_N||_{L1}"}
+{"type":"thought","data":" = O(N^{-3/2}). They"}
+{"type":"thought","data":" then bound the Fourier"}
+{"type":"thought","data":" transform of the iterated"}
+{"type":"thought","data":" operator: ||F(U_N^N"}
+{"type":"thought","data":" J φ_N)||_{L1} ≤ exp(a_0)"}
+{"type":"thought","data":" O(N^{-3/2}) = O_θ(N^{-3/2})."}
+{"type":"thought","data":" Finally, the inverse"}
+{"type":"thought","data":" Fourier transform gives"}
+{"type":"thought","data":" a uniform pointwise"}
+{"type":"thought","data":" bound sup_y ||π_c U_N^N"}
+{"type":"thought","data":" J φ_N(y)|| ≤ ||r̂||_{L1}"}
+{"type":"thought","data":" = O(N^{-3/2}), which"}
+{"type":"thought","data":" requires the hypothesis"}
+{"type":"thought","data":" that a_0 < ∞.\n\nThe candidate correctly"}
+{"type":"thought","data":" notes that the L1 Fourier"}
+{"type":"thought","data":" bound for the coin "}
+{"type":"thought","data":"operator requires hypothesis"}
+{"type":"thought","data":" F; under only B (L^∞),"}
+{"type":"thought","data":" a discontinuous θ could"}
+{"type":"thought","data":" spread Fourier mass"}
+{"type":"thought","data":" and destroy uniform"}
+{"type":"thought","data":" control. They also "}
+{"type":"thought","data":"verify that β is a constant"}
+{"type":"thought","data":" matrix, confirming "}
+{"type":"thought","data":"the power-series expansion"}
+{"type":"thought","data":" of the coin operator"}
+{"type":"thought","data":" yields the claimed "}
+{"type":"thought","data":"exp(a_0/N) factor per"}
+{"type":"thought","data":" step."}
+{"type":"thought","data":"\n\nThe candidate verifies"}
+{"type":"thought","data":" that the inverse walk"}
+{"type":"thought","data":" S^{-1}(p) is unitary"}
+{"type":"thought","data":" for real p, since S(p)^{-1}"}
+{"type":"thought","data":" = S(p)^*. They also"}
+{"type":"thought","data":" confirm that applying"}
+{"type":"thought","data":" U_N^N to J φ_N yields"}
+{"type":"thought","data":" the physical reference"}
+{"type":"thought","data":" state r, because J "}
+{"type":"thought","data":"φ_N embeds into the "}
+{"type":"thought","data":"+ channel without tilting."}
+{"type":"thought","data":" They are now checking"}
+{"type":"thought","data":" whether J φ_N is exactly"}
+{"type":"thought","data":" that embedding."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" that J φ_N embeds into"}
+{"type":"thought","data":" the + channel, and "}
+{"type":"thought","data":"the coin operator mixes"}
+{"type":"thought","data":" both channels. The "}
+{"type":"thought","data":"bound on the full spinor"}
+{"type":"thought","data":" therefore covers each"}
+{"type":"thought","data":" π_c.\n\nThey judge claim"}
+{"type":"thought","data":" (11) correct under "}
+{"type":"thought","data":"hypothesis F. The constant"}
+{"type":"thought","data":" in the O(N^{-3/2}) "}
+{"type":"thought","data":"pointwise bound depends"}
+{"type":"thought","data":" on a_0 and on ||φ̂||_1"}
+{"type":"thought","data":" ~ N^{-3/2}, which matches"}
+{"type":"thought","data":" the manuscript’s Θ(N^{-3/2})"}
+{"type":"thought","data":" scaling.\n\nThey now "}
+{"type":"thought","data":"begin checking claim"}
+{"type":"thought","data":" (12), writing v_c ="}
+{"type":"thought","data":" V_c^* E r_c and ℓ_c(z)"}
+{"type":"thought","data":" = ⟨r_c, E V_c z⟩ = "}
+{"type":"thought","data":"⟨v_c, z⟩, and note they"}
+{"type":"thought","data":" must verify adjoints"}
+{"type":"thought","data":" carefully.\n\nThe candidate is now"}
+{"type":"thought","data":" scrutinizing the adjoint"}
+{"type":"thought","data":" relationship in claim"}
+{"type":"thought","data":" (12). They note that"}
+{"type":"thought","data":" T1 defines the inner"}
+{"type":"thought","data":" product as antilinear"}
+{"type":"thought","data":" in the first argument,"}
+{"type":"thought","data":" so ⟨V_c^* E r_c, z⟩"}
+{"type":"thought","data":" = ⟨E r_c, V_c z⟩. This"}
+{"type":"thought","data":" conflicts with the "}
+{"type":"thought","data":"definition of ℓ_c(z)"}
+{"type":"thought","data":" = ⟨r_c, E V_c z⟩, which"}
+{"type":"thought","data":" would require the opposite"}
+{"type":"thought","data":" linearity. The candidate"}
+{"type":"thought","data":" flags this as a potential"}
+{"type":"thought","data":" point of confusion "}
+{"type":"thought","data":"between E and E^{1/2}"}
+{"type":"thought","data":" or between projections"}
+{"type":"thought","data":" and their adjoints."}
+{"type":"thought","data":"\n\nThe candidate resolves"}
+{"type":"thought","data":" the adjoint concern"}
+{"type":"thought","data":" in claim (12). Because"}
+{"type":"thought","data":" E = h_N ⊗ M_B is self-adjoint,"}
+{"type":"thought","data":" ⟨E r_c, V_c z⟩ equals"}
+{"type":"thought","data":" ⟨r_c, E V_c z⟩. Thus"}
+{"type":"thought","data":" v_c = V_c^* E r_c and"}
+{"type":"thought","data":" ⟨v_c, z⟩ = ℓ_c(z) are"}
+{"type":"thought","data":" correct. They also "}
+{"type":"thought","data":"note that E^{1/2} is"}
+{"type":"thought","data":" not used here; the "}
+{"type":"thought","data":"norm bound relies on"}
+{"type":"thought","data":" E directly.\n\nThey now"}
+{"type":"thought","data":" begin deriving claim"}
+{"type":"thought","data":" (13). They write out"}
+{"type":"thought","data":" V z (y) = 1_{B_N}(y)"}
+{"type":"thought","data":" exp(-ξ_* · (y - y_*))"}
+{"type":"thought","data":" (F^{-1} z)(y) and note"}
+{"type":"thought","data":" that V_c = π_c V."}
+{"type":"thought","data":"\n\nThe candidate is computing"}
+{"type":"thought","data":" ||v_c||_{L2(torus)}"}
+{"type":"thought","data":" for claim (13). They"}
+{"type":"thought","data":" write v_c = V_c^* E"}
+{"type":"thought","data":" r_c and try to expand"}
+{"type":"thought","data":" the norm as ⟨E r_c,"}
+{"type":"thought","data":" V_c V_c^* E r_c⟩. This"}
+{"type":"thought","data":" does not immediately"}
+{"type":"thought","data":" yield the desired expression."}
+{"type":"thought","data":" They then reconsider"}
+{"type":"thought","data":" the adjoint V^* by "}
+{"type":"thought","data":"writing out the physical-space"}
+{"type":"thought","data":" representative of V."}
+{"type":"thought","data":"\n\nThe candidate derives"}
+{"type":"thought","data":" the adjoint V^* by "}
+{"type":"thought","data":"evaluating the inner"}
+{"type":"thought","data":" product ⟨w, V z⟩ in"}
+{"type":"thought","data":" physical space. They"}
+{"type":"thought","data":" write out the sum over"}
+{"type":"thought","data":" y and use the Fourier"}
+{"type":"thought","data":" inversion formula to"}
+{"type":"thought","data":" obtain an integral "}
+{"type":"thought","data":"over p. Because the "}
+{"type":"thought","data":"inner product on H is"}
+{"type":"thought","data":" antilinear in the first"}
+{"type":"thought","data":" argument, they identify"}
+{"type":"thought","data":" that ⟨w, V z⟩ equals"}
+{"type":"thought","data":" ⟨F(e^{−ξ·(·−y_*)} w),"}
+{"type":"thought","data":" z⟩. This yields the"}
+{"type":"thought","data":" adjoint formula V^*"}
+{"type":"thought","data":" w = F(exp(−ξ·(·−y_*))"}
+{"type":"thought","data":" w)."}
+{"type":"thought","data":"\n\nThe candidate is now"}
+{"type":"thought","data":" examining the dimensional"}
+{"type":"thought","data":" structure of claim "}
+{"type":"thought","data":"(13). They write v_c"}
+{"type":"thought","data":" = V_c^* E r_c and note"}
+{"type":"thought","data":" that V_c^* = V^* π_c^*."}
+{"type":"thought","data":" They observe a potential"}
+{"type":"thought","data":" tension between the"}
+{"type":"thought","data":" physical one-particle"}
+{"type":"thought","data":" space H_phys = ℓ²(Z³,"}
+{"type":"thought","data":" C²) on which E acts"}
+{"type":"thought","data":" and the channel-restricted"}
+{"type":"thought","data":" space where r_c lives."}
+{"type":"thought","data":" They are checking whether"}
+{"type":"thought","data":" r = U_N^N J φ_N resides"}
+{"type":"thought","data":" in the doubled space."}
+{"type":"thought","data":"\n\nThe candidate resolves"}
+{"type":"thought","data":" the dimensional tension"}
+{"type":"thought","data":" in claim (13). The "}
+{"type":"thought","data":"reference state r = "}
+{"type":"thought","data":"U_N^N J φ_N is a four-component"}
+{"type":"thought","data":" spinor living in the"}
+{"type":"thought","data":" doubled Hilbert space."}
+{"type":"thought","data":" After extracting channel"}
+{"type":"thought","data":" c and restricting to"}
+{"type":"thought","data":" Bob, r_c becomes a "}
+{"type":"thought","data":"C²-valued spinor supported"}
+{"type":"thought","data":" on Bob. The operator"}
+{"type":"thought","data":" E = h_N ⊗ M_B acts "}
+{"type":"thought","data":"directly on these C²"}
+{"type":"thought","data":" spinors. This confirms"}
+{"type":"thought","data":" that v_c = V_c^* E "}
+{"type":"thought","data":"r_c and the inner product"}
+{"type":"thought","data":" ℓ_c(z) = ⟨r_c, E V_c"}
+{"type":"thought","data":" z⟩ are well-defined."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"derives claim (13) explicitly."}
+{"type":"thought","data":" They compute ||v_c||_H²"}
+{"type":"thought","data":" by applying the unitary"}
+{"type":"thought","data":" Fourier transform to"}
+{"type":"thought","data":" the weighted inverse"}
+{"type":"thought","data":" Fourier image of π_c^*"}
+{"type":"thought","data":" E r_c, obtaining the"}
+{"type":"thought","data":" sum over y of exp(−2"}
+{"type":"thought","data":" ξ·(y−y_*)) times ||E"}
+{"type":"thought","data":" r_c(y)||². Because "}
+{"type":"thought","data":"E = h_N ⊗ M_B, this "}
+{"type":"thought","data":"becomes the sum over"}
+{"type":"thought","data":" y of exp(−2 ξ·(y−y_*))"}
+{"type":"thought","data":" times h_N(y)² times"}
+{"type":"thought","data":" ||M_B r_c(y)||², which"}
+{"type":"thought","data":" matches the formula"}
+{"type":"thought","data":" in (13). They also "}
+{"type":"thought","data":"verify that h_N(y) ≤"}
+{"type":"thought","data":" 64 δ²/N², consistent"}
+{"type":"thought","data":" with the manuscript’s"}
+{"type":"thought","data":" definition."}
+{"type":"thought","data":"\n\nThe candidate verifies"}
+{"type":"thought","data":" that h_N² ≤ C δ⁴/N⁴"}
+{"type":"thought","data":" and ||M_B r_c||² ≤ "}
+{"type":"thought","data":"C N⁻³, so their sum "}
+{"type":"thought","data":"over sites scales as"}
+{"type":"thought","data":" O(N⁻⁷). After multiplying"}
+{"type":"thought","data":" by the exponential "}
+{"type":"thought","data":"tilt factor exp(−2 t_*(θ_N+j))"}
+{"type":"thought","data":" and summing over O(N)"}
+{"type":"thought","data":" sites, the total norm"}
+{"type":"thought","data":" is O(N⁻⁶), which is"}
+{"type":"thought","data":" consistent with ||v_c||"}
+{"type":"thought","data":" = O(N⁻³). They also"}
+{"type":"thought","data":" confirm that the tilt"}
+{"type":"thought","data":" ξ_* · (y − y_*) equals"}
+{"type":"thought","data":" t_*(θ_N+j) > 0."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" the exponential weight"}
+{"type":"thought","data":" decays correctly as"}
+{"type":"thought","data":" one moves deeper into"}
+{"type":"thought","data":" Bob, since the reconstruction"}
+{"type":"thought","data":" V includes the tilt"}
+{"type":"thought","data":" factor e^{−ξ·(y−y_*)}"}
+{"type":"thought","data":" and the dominant saddle"}
+{"type":"thought","data":" contribution is largest"}
+{"type":"thought","data":" near the facing boundary."}
+{"type":"thought","data":"\n\nThey judge PHYSICAL_ENDPOINTS"}
+{"type":"thought","data":" as passing. The bound"}
+{"type":"thought","data":" on Bob depends on θ"}
+{"type":"thought","data":" through a_0, while "}
+{"type":"thought","data":"the Alice bound holds"}
+{"type":"thought","data":" under hypothesis B "}
+{"type":"thought","data":"alone without requiring"}
+{"type":"thought","data":" F.\n\nThey flag a potential"}
+{"type":"thought","data":" issue with the layer"}
+{"type":"thought","data":" count: the encoder "}
+{"type":"thought","data":"norm bound ||f|| ≤ (π/2)"}
+{"type":"thought","data":" F ||φ|| involves both"}
+{"type":"thought","data":" c_N and s_N."}
+{"type":"thought","data":"\n\nThe leading encoder"}
+{"type":"thought","data":" coefficient near the"}
+{"type":"thought","data":" boundary is s_N ~ δ²/N²,"}
+{"type":"thought","data":" while c_N ~ δ⁴/N⁴ is"}
+{"type":"thought","data":" smaller. The linear"}
+{"type":"thought","data":" bound (π/2)F therefore"}
+{"type":"thought","data":" covers both terms, "}
+{"type":"thought","data":"and the layer sum remains"}
+{"type":"thought","data":" O(N⁻³). A possible "}
+{"type":"thought","data":"off-by-power concern"}
+{"type":"thought","data":" was noted: the manuscript’s"}
+{"type":"thought","data":" sharp oscillatory asymptotics"}
+{"type":"thought","data":" yield N⁻¹³/² for the"}
+{"type":"thought","data":" product of profiles,"}
+{"type":"thought","data":" but this applies to"}
+{"type":"thought","data":" the oscillatory integral"}
+{"type":"thought","data":" rather than the L2 "}
+{"type":"thought","data":"norms. The weighted "}
+{"type":"thought","data":"L2 norm of the source"}
+{"type":"thought","data":" is ||s|| = O(N⁻³)."}
+{"type":"thought","data":"\n\nThe candidate re-examines"}
+{"type":"thought","data":" the manuscript’s layer"}
+{"type":"thought","data":" estimate |A_f(η)| ≤"}
+{"type":"thought","data":" C N^{−5/2}. They suspect"}
+{"type":"thought","data":" a power mismatch: if"}
+{"type":"thought","data":" A_f is spread over "}
+{"type":"thought","data":"momentum width N^{−1/2}"}
+{"type":"thought","data":" with volume N^{−3/2},"}
+{"type":"thought","data":" its L2 norm should "}
+{"type":"thought","data":"scale as N^{−13/4}, "}
+{"type":"thought","data":"not O(N^{−3}). They "}
+{"type":"thought","data":"realize the manuscript’s"}
+{"type":"thought","data":" A_f may actually be"}
+{"type":"thought","data":" only the s_N boundary"}
+{"type":"thought","data":" contribution, and they"}
+{"type":"thought","data":" begin recalculating"}
+{"type":"thought","data":" ||s||² = ∫ ||ŝ(p)||²"}
+{"type":"thought","data":" dμ."}
+{"type":"thought","data":"\n\nThe candidate recalculates"}
+{"type":"thought","data":" the source norm using"}
+{"type":"thought","data":" the manuscript’s layer"}
+{"type":"thought","data":" estimate. If |A_f(η)|"}
+{"type":"thought","data":" scales as N^{−5/2} "}
+{"type":"thought","data":"over a momentum volume"}
+{"type":"thought","data":" of order N^{−3/2}, "}
+{"type":"thought","data":"then ||s||² would scale"}
+{"type":"thought","data":" as N^{−6.5} and ||s||"}
+{"type":"thought","data":" as N^{−3.25}. They "}
+{"type":"thought","data":"note that A_f(η) = N^{−5/2}"}
+{"type":"thought","data":" times a boundary profile"}
+{"type":"thought","data":" S_+ with τ = O(1), "}
+{"type":"thought","data":"while the normal Gaussian"}
+{"type":"thought","data":" factor belongs to the"}
+{"type":"thought","data":" propagator rather than"}
+{"type":"thought","data":" the symbol."}
+{"type":"thought","data":"\n\nThe candidate resolves"}
+{"type":"thought","data":" the power mismatch."}
+{"type":"thought","data":" A_f varies on the scale"}
+{"type":"thought","data":" η_n = O(1), not N^{-1/2}."}
+{"type":"thought","data":" The layer region has"}
+{"type":"thought","data":" volume O(N^{-1}), so"}
+{"type":"thought","data":" ||s||² scales as (N^{-5/2})²"}
+{"type":"thought","data":" × N^{-1} = N^{-6}, "}
+{"type":"thought","data":"giving ||s|| = O(N^{-3})."}
+{"type":"thought","data":" This confirms the crude"}
+{"type":"thought","data":" layer count is correct."}
+{"type":"thought","data":" They also note that"}
+{"type":"thought","data":" the reference r is "}
+{"type":"thought","data":"not concentrated at "}
+{"type":"thought","data":"scale N^{-1/2}."}
+{"type":"thought","data":"\n\nThe free tail r(y)"}
+{"type":"thought","data":" ~ N^{-3/2} is spread"}
+{"type":"thought","data":" over the whole ball"}
+{"type":"thought","data":" of radius N/4, while"}
+{"type":"thought","data":" h_N is sharply localized"}
+{"type":"thought","data":" in a boundary layer"}
+{"type":"thought","data":" of depth O(1). This"}
+{"type":"thought","data":" confirms the norm scaling"}
+{"type":"thought","data":" as N^{-6}. The constant"}
+{"type":"thought","data":" C(1+N δ_j) remains "}
+{"type":"thought","data":"uniform even when the"}
+{"type":"thought","data":" disc radius is small."}
+{"type":"thought","data":" Lower bound issues "}
+{"type":"thought","data":"for claim (14) are deferred"}
+{"type":"thought","data":" to section 5."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"turns to claim (14),"}
+{"type":"thought","data":" which concerns the "}
+{"type":"thought","data":"endpoint geometry and"}
+{"type":"thought","data":" the constant Θ(N^{-1})."}
+{"type":"thought","data":" They verify that ||E^{1/2}"}
+{"type":"thought","data":" V_c|| equals max_{y∈B_N}"}
+{"type":"thought","data":" sqrt(h_N(y)) exp(-γ"}
+{"type":"thought","data":" δ) with γ = |ξ_*| ="}
+{"type":"thought","data":" √3 t_*. They note that"}
+{"type":"thought","data":" ||E^{1/2} V_c||_{op}²"}
+{"type":"thought","data":" is exactly ||H_c||,"}
+{"type":"thought","data":" and they write out "}
+{"type":"thought","data":"the physical-space representative"}
+{"type":"thought","data":" of V_c z."}
+{"type":"thought","data":"\n\nThe candidate derives"}
+{"type":"thought","data":" the operator norm bound"}
+{"type":"thought","data":" for claim (14). They"}
+{"type":"thought","data":" write ||E^{1/2} V_c||²"}
+{"type":"thought","data":" as a sum over y of "}
+{"type":"thought","data":"h_N(y) exp(−2 ξ·(y−y_*))"}
+{"type":"thought","data":" times the squared norm"}
+{"type":"thought","data":" of π_c(F^{-1} z)(y)."}
+{"type":"thought","data":" Using the maximum of"}
+{"type":"thought","data":" the exponential weight,"}
+{"type":"thought","data":" they bound this by "}
+{"type":"thought","data":"max(...) ||z||². They"}
+{"type":"thought","data":" confirm that γ = |ξ_*|"}
+{"type":"thought","data":" = √3 t_*, and note "}
+{"type":"thought","data":"that equality is approached"}
+{"type":"thought","data":" when F^{-1} z is concentrated"}
+{"type":"thought","data":" at the site maximizing"}
+{"type":"thought","data":" sqrt(h_N) exp(−γ δ)."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" the operator norm in"}
+{"type":"thought","data":" claim (14) equals the"}
+{"type":"thought","data":" maximum, not merely"}
+{"type":"thought","data":" an upper bound. They"}
+{"type":"thought","data":" verify that sqrt(h_N)"}
+{"type":"thought","data":" ≤ 8δ/N by substituting"}
+{"type":"thought","data":" R = N/4 into the expression"}
+{"type":"thought","data":" for ε_⊥."}
+{"type":"thought","data":"\n\nThe candidate verifies"}
+{"type":"thought","data":" that sqrt(h_N) equals"}
+{"type":"thought","data":" (2 R δ − δ² − |v|²)/R²,"}
+{"type":"thought","data":" confirming the algebraic"}
+{"type":"thought","data":" identity. They then"}
+{"type":"thought","data":" bound the product sqrt(h_N)"}
+{"type":"thought","data":" e^{−γ δ} by 8/(e γ "}
+{"type":"thought","data":"N), using the fact that"}
+{"type":"thought","data":" the maximum of δ e^{−γ"}
+{"type":"thought","data":" δ} over positive δ "}
+{"type":"thought","data":"is 1/(e γ)."}
+{"type":"thought","data":"\n\nThe candidate checks"}
+{"type":"thought","data":" that the maximum depth"}
+{"type":"thought","data":" δ = 1/γ lies inside"}
+{"type":"thought","data":" the ball, since γ ≈"}
+{"type":"thought","data":" 1.27 and the radius"}
+{"type":"thought","data":" is N/4. They then begin"}
+{"type":"thought","data":" constructing a lower"}
+{"type":"thought","data":" bound by locating the"}
+{"type":"thought","data":" lattice site nearest"}
+{"type":"thought","data":" to y_* + 2û, noting"}
+{"type":"thought","data":" that y_* itself is "}
+{"type":"thought","data":"not necessarily a lattice"}
+{"type":"thought","data":" point."}
+{"type":"thought","data":"\n\nThe nearest lattice"}
+{"type":"thought","data":" site to y_* + 2û lies"}
+{"type":"thought","data":" within √3/2 of that"}
+{"type":"thought","data":" point. The depth δ "}
+{"type":"thought","data":"therefore ranges from"}
+{"type":"thought","data":" about 1.134 to 2.866,"}
+{"type":"thought","data":" and the tangential "}
+{"type":"thought","data":"displacement is also"}
+{"type":"thought","data":" bounded by √3/2."}
+{"type":"thought","data":"\n\nFor large N, ε_⊥ is"}
+{"type":"thought","data":" bounded below by a "}
+{"type":"thought","data":"positive constant, so"}
+{"type":"thought","data":" sqrt(h_N) is bounded"}
+{"type":"thought","data":" below by c/N. The exponential"}
+{"type":"thought","data":" factor exp(−γ δ) stays"}
+{"type":"thought","data":" strictly positive over"}
+{"type":"thought","data":" the depth interval "}
+{"type":"thought","data":"[2−√3/2, 2+√3/2]. The"}
+{"type":"thought","data":" nearest lattice site"}
+{"type":"thought","data":" therefore lies inside"}
+{"type":"thought","data":" Bob, and the lower "}
+{"type":"thought","data":"bound ||E^{1/2} V_c||"}
+{"type":"thought","data":" ≥ c/N holds. Combined"}
+{"type":"thought","data":" with the upper bound"}
+{"type":"thought","data":" O(1/N), this confirms"}
+{"type":"thought","data":" the Θ(N^{-1}) scaling"}
+{"type":"thought","data":" in claim (14)."}
+{"type":"thought","data":"\n\nThe candidate notes"}
+{"type":"thought","data":" that the exact h_N "}
+{"type":"thought","data":"formula uses Euclidean"}
+{"type":"thought","data":" distance to Nu rather"}
+{"type":"thought","data":" than depth alone. For"}
+{"type":"thought","data":" a point near y_* + "}
+{"type":"thought","data":"2û, |y − Nu|² ≈ (R −"}
+{"type":"thought","data":" δ)² + |v_tangential|²,"}
+{"type":"thought","data":" so the depth approximation"}
+{"type":"thought","data":" is only approximate."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" the exact algebraic"}
+{"type":"thought","data":" identity for sqrt(h_N):"}
+{"type":"thought","data":" it equals |2Rδ − δ²"}
+{"type":"thought","data":" − |v|²|/R², which is"}
+{"type":"thought","data":" consistent with the"}
+{"type":"thought","data":" earlier expression."}
+{"type":"thought","data":" They note that for "}
+{"type":"thought","data":"large N, the depth term"}
+{"type":"thought","data":" 2Rδ dominates over "}
+{"type":"thought","data":"the corrections, so "}
+{"type":"thought","data":"sqrt(h_N) remains bounded"}
+{"type":"thought","data":" below by a positive"}
+{"type":"thought","data":" constant times 1/N."}
+{"type":"thought","data":" They also observe that"}
+{"type":"thought","data":" the lower bound is "}
+{"type":"thought","data":"established using a "}
+{"type":"thought","data":"concrete vector P t_N."}
+{"type":"thought","data":"\n\nClaim (14) is correct."}
+{"type":"thought","data":" The operator norm lower"}
+{"type":"thought","data":" bound does not lower-bound"}
+{"type":"thought","data":" a matrix element against"}
+{"type":"thought","data":" a specific state.\n\n"}
+{"type":"thought","data":"Claim (15) follows from"}
+{"type":"thought","data":" claims (6), (9), and"}
+{"type":"thought","data":" (14) under hypothesis"}
+{"type":"thought","data":" B. The bounds are ||P"}
+{"type":"thought","data":" t_N|| = O_W(N^{-3}),"}
+{"type":"thought","data":" ||Q t_N|| = O_W(N^{-4}),"}
+{"type":"thought","data":" ||E^{1/2} d_{c,P}||"}
+{"type":"thought","data":" = O_W(N^{-4} e^{-K_*"}
+{"type":"thought","data":" N}), and ||E^{1/2} "}
+{"type":"thought","data":"d_{c,Q}|| = O_W(N^{-5}"}
+{"type":"thought","data":" e^{-K_* N}). The candidate"}
+{"type":"thought","data":" notes that d_{c,P} "}
+{"type":"thought","data":"= e^{-K_* N} V_c P t_N."}
+{"type":"thought","data":"\n\nThe candidate verifies"}
+{"type":"thought","data":" the operator-norm bounds"}
+{"type":"thought","data":" for claim (15). The"}
+{"type":"thought","data":" estimate ||E^{1/2} "}
+{"type":"thought","data":"d_{c,P}|| = O(N^{-4}"}
+{"type":"thought","data":" e^{-K_* N}) follows"}
+{"type":"thought","data":" from the product of"}
+{"type":"thought","data":" the operator norm, "}
+{"type":"thought","data":"the P t_N bound, and"}
+{"type":"thought","data":" the exponential factor."}
+{"type":"thought","data":" The Q t_N bound is "}
+{"type":"thought","data":"O(N^{-4}), and the corresponding"}
+{"type":"thought","data":" E^{1/2} d_{c,Q} bound"}
+{"type":"thought","data":" is O(N^{-5} e^{-K_*"}
+{"type":"thought","data":" N}). They also note"}
+{"type":"thought","data":" that |A_{cP}| = O(N^{-4}"}
+{"type":"thought","data":" e^{-K_* N}) under hypothesis"}
+{"type":"thought","data":" B, using ||r_c|| ≤ "}
+{"type":"thought","data":"1."}
+{"type":"thought","data":"\n\nThe candidate verifies"}
+{"type":"thought","data":" the Cauchy-Schwarz "}
+{"type":"thought","data":"bound |A_{cP}| ≤ 2 ||r_c||"}
+{"type":"thought","data":" ||E^{1/2} d_{c,P}||"}
+{"type":"thought","data":" under hypothesis B."}
+{"type":"thought","data":" They note that ||E^{1/2}"}
+{"type":"thought","data":" r_c|| ≤ ||r_c|| ≤ 1"}
+{"type":"thought","data":" because U_N is unitary"}
+{"type":"thought","data":" and r_c is a projection."}
+{"type":"thought","data":" They then begin analyzing"}
+{"type":"thought","data":" hypothesis F, using"}
+{"type":"thought","data":" ||v_c|| = O(N^{-3})."}
+{"type":"thought","data":"\n\nUnder hypothesis F,"}
+{"type":"thought","data":" the candidate derives"}
+{"type":"thought","data":" the table’s scaling"}
+{"type":"thought","data":" for A_{cP} and A_{cQ}."}
+{"type":"thought","data":" They write A_{cP} ="}
+{"type":"thought","data":" 2 e^{-KN} ⟨v_c, P t_N⟩"}
+{"type":"thought","data":" and bound its norm "}
+{"type":"thought","data":"by 2 e^{-KN} ||v_c||"}
+{"type":"thought","data":" ||P t_N||, yielding"}
+{"type":"thought","data":" O(N^{-6} e^{-K N})."}
+{"type":"thought","data":" A_{cQ} scales as O(N^{-7}"}
+{"type":"thought","data":" e^{-K N}) via the same"}
+{"type":"thought","data":" argument. For the quadratic"}
+{"type":"thought","data":" pieces under B, they"}
+{"type":"thought","data":" compute B_{cPP} = ||E^{1/2}"}
+{"type":"thought","data":" d_P||² = O(N^{-8} e^{-2K"}
+{"type":"thought","data":" N}), B_{cQQ} = O(N^{-10}"}
+{"type":"thought","data":" e^{-2K N}), and B_{cPQ}"}
+{"type":"thought","data":" = O(N^{-9} e^{-2K N}),"}
+{"type":"thought","data":" confirming the table’s"}
+{"type":"thought","data":" entries.\n\nThe candidate counts"}
+{"type":"thought","data":" the propagator error"}
+{"type":"thought","data":" terms: six quadratic"}
+{"type":"thought","data":" pieces and four linear"}
+{"type":"thought","data":" terms, for a total "}
+{"type":"thought","data":"of ten. They then examine"}
+{"type":"thought","data":" claim (16), which bounds"}
+{"type":"thought","data":" the operator norm of"}
+{"type":"thought","data":" [P(p') − P(p)] β P(p)"}
+{"type":"thought","data":" by C_W d_T(p', p). "}
+{"type":"thought","data":"They verify that β P(p)"}
+{"type":"thought","data":" = Q(p) β and that P(p)"}
+{"type":"thought","data":" β P(p) = 0 because "}
+{"type":"thought","data":"PQ = 0."}
+{"type":"thought","data":"\n\nThe identity P(p')"}
+{"type":"thought","data":" β P(p) = [P(p') − P(p)]"}
+{"type":"thought","data":" β P(p) holds globally,"}
+{"type":"thought","data":" not merely inside W,"}
+{"type":"thought","data":" because both sides "}
+{"type":"thought","data":"vanish whenever p or"}
+{"type":"thought","data":" p' lies outside W. "}
+{"type":"thought","data":"The Lipschitz bound "}
+{"type":"thought","data":"on the operator norm"}
+{"type":"thought","data":" is therefore valid "}
+{"type":"thought","data":"only for points inside"}
+{"type":"thought","data":" W, since P jumps across"}
+{"type":"thought","data":" ∂W."}
+{"type":"thought","data":"\n\nThe candidate invokes"}
+{"type":"thought","data":" the analytic Riesz "}
+{"type":"thought","data":"formula in local neighborhoods"}
+{"type":"thought","data":" of each window closure."}
+{"type":"thought","data":" Because closures lie"}
+{"type":"thought","data":" inside O_α, where the"}
+{"type":"thought","data":" dominant branch is "}
+{"type":"thought","data":"continuous and the spectral"}
+{"type":"thought","data":" gap persists, P(p) "}
+{"type":"thought","data":"is analytic there. This"}
+{"type":"thought","data":" justifies the Lipschitz"}
+{"type":"thought","data":" bound on the operator"}
+{"type":"thought","data":" norm."}
+{"type":"thought","data":"\n\nThe candidate notes"}
+{"type":"thought","data":" that the Lipschitz "}
+{"type":"thought","data":"bound on the operator"}
+{"type":"thought","data":" norm is uniform across"}
+{"type":"thought","data":" all of W because the"}
+{"type":"thought","data":" distance between any"}
+{"type":"thought","data":" two windows is bounded"}
+{"type":"thought","data":" below by d_min. They"}
+{"type":"thought","data":" also confirm that if"}
+{"type":"thought","data":" either endpoint lies"}
+{"type":"thought","data":" outside W, the kernel"}
+{"type":"thought","data":" vanishes since P is"}
+{"type":"thought","data":" zero there."}
+{"type":"thought","data":"\n\nThe kernel is exactly"}
+{"type":"thought","data":" zero whenever either"}
+{"type":"thought","data":" argument lies outside"}
+{"type":"thought","data":" W. Therefore the Lipschitz"}
+{"type":"thought","data":" constant across the"}
+{"type":"thought","data":" discontinuity is never"}
+{"type":"thought","data":" needed. The product"}
+{"type":"thought","data":" is nonzero only inside"}
+{"type":"thought","data":" W, where it is Lipschitz"}
+{"type":"thought","data":" in the distance between"}
+{"type":"thought","data":" points."}
+{"type":"thought","data":"\n\nThe candidate notes"}
+{"type":"thought","data":" that the kernel is "}
+{"type":"thought","data":"discontinuous at the"}
+{"type":"thought","data":" boundary, but the Lipschitz"}
+{"type":"thought","data":" bound still holds for"}
+{"type":"thought","data":" all pairs on the torus"}
+{"type":"thought","data":" because the kernel "}
+{"type":"thought","data":"vanishes whenever either"}
+{"type":"thought","data":" point lies outside "}
+{"type":"thought","data":"W. They then raise a"}
+{"type":"thought","data":" concern about whether"}
+{"type":"thought","data":" the bound remains valid"}
+{"type":"thought","data":" for two points just"}
+{"type":"thought","data":" inside the boundary"}
+{"type":"thought","data":" that are far apart "}
+{"type":"thought","data":"in value."}
+{"type":"thought","data":"\n\nThe candidate resolves"}
+{"type":"thought","data":" the earlier concern:"}
+{"type":"thought","data":" the global Lipschitz"}
+{"type":"thought","data":" bound holds because"}
+{"type":"thought","data":" the kernel vanishes"}
+{"type":"thought","data":" outside W, so the identity"}
+{"type":"thought","data":" reduces to a local "}
+{"type":"thought","data":"increment of P. This"}
+{"type":"thought","data":" is correct."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"verifies the application"}
+{"type":"thought","data":" of the Young estimate."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"examines the operator"}
+{"type":"thought","data":" P θ(x/N) β P. In Fourier"}
+{"type":"thought","data":" space, multiplication"}
+{"type":"thought","data":" by θ becomes convolution"}
+{"type":"thought","data":" with μ_N. The operator"}
+{"type":"thought","data":" ordering is being checked"}
+{"type":"thought","data":" because the coin perturbation"}
+{"type":"thought","data":" involves C_N, which"}
+{"type":"thought","data":" depends on θ β rather"}
+{"type":"thought","data":" than θ alone. The goal"}
+{"type":"thought","data":" is to bound this operator"}
+{"type":"thought","data":" norm by C_W a_1 / N."}
+{"type":"thought","data":"\n\nThe candidate derives"}
+{"type":"thought","data":" the convolution kernel"}
+{"type":"thought","data":" for P θ(x/N) β P as"}
+{"type":"thought","data":" P(p') β P(p) dμ_N(p'-p)."}
+{"type":"thought","data":" They bound this kernel"}
+{"type":"thought","data":" by C d(p',p) and apply"}
+{"type":"thought","data":" a standard L2 integral"}
+{"type":"thought","data":" operator estimate to"}
+{"type":"thought","data":" obtain the desired "}
+{"type":"thought","data":"operator norm bound."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"treats the kernel as"}
+{"type":"thought","data":" a convolution with "}
+{"type":"thought","data":"a scalar measure. They"}
+{"type":"thought","data":" bound the operator "}
+{"type":"thought","data":"norm by C times the "}
+{"type":"thought","data":"total variation of d(q,0)"}
+{"type":"thought","data":" d|μ_N|(q), which is"}
+{"type":"thought","data":" at most C a_1/N."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" that the torus carries"}
+{"type":"thought","data":" a normalized Haar probability"}
+{"type":"thought","data":" measure. Standard Young’s"}
+{"type":"thought","data":" inequality therefore"}
+{"type":"thought","data":" applies directly: the"}
+{"type":"thought","data":" operator norm of convolution"}
+{"type":"thought","data":" with measure ν is bounded"}
+{"type":"thought","data":" by the total variation"}
+{"type":"thought","data":" of ν times the L² norm"}
+{"type":"thought","data":" of the function. This"}
+{"type":"thought","data":" yields the desired "}
+{"type":"thought","data":"bound C_W a_1 / N."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" the operator-norm bound"}
+{"type":"thought","data":" for P θ(x/N) β P is"}
+{"type":"thought","data":" C_W a_1 / N. The interfaces"}
+{"type":"thought","data":" do not invalidate this"}
+{"type":"thought","data":" estimate because the"}
+{"type":"thought","data":" pointwise kernel bound"}
+{"type":"thought","data":" holds globally.\n\nThey"}
+{"type":"thought","data":" then examine the remainder"}
+{"type":"thought","data":" term in the Taylor "}
+{"type":"thought","data":"expansion of the coin"}
+{"type":"thought","data":" perturbation C_N = "}
+{"type":"thought","data":"exp(-i θ β / N). Using"}
+{"type":"thought","data":" ||exp(iA) − I − iA||"}
+{"type":"thought","data":" ≤ ||A||²/2 · exp(||A||),"}
+{"type":"thought","data":" they derive ||R_2||"}
+{"type":"thought","data":" ≤ (b/N)²/2 · e^{b/N}."}
+{"type":"thought","data":" They note that the "}
+{"type":"thought","data":"claim states this remainder"}
+{"type":"thought","data":" norm is bounded by "}
+{"type":"thought","data":"b²/(2N²)."}
+{"type":"thought","data":"\n\nThe candidate confirms"}
+{"type":"thought","data":" the sharper bound for"}
+{"type":"thought","data":" the coin perturbation"}
+{"type":"thought","data":" remainder. Because "}
+{"type":"thought","data":"β is an involution, "}
+{"type":"thought","data":"C_N − I + i(θ/N)β has"}
+{"type":"thought","data":" eigenvalues e^{−iφ}"}
+{"type":"thought","data":" − 1 + iφ and e^{iφ}"}
+{"type":"thought","data":" − 1 − iφ with φ = θ/N."}
+{"type":"thought","data":" The estimate |e^{iφ}"}
+{"type":"thought","data":" − 1 − iφ| ≤ φ²/2 gives"}
+{"type":"thought","data":" ||R_2|| ≤ b²/(2N²),"}
+{"type":"thought","data":" which matches the claim"}
+{"type":"thought","data":" exactly."}
+{"type":"thought","data":"\n\nThe candidate verifies"}
+{"type":"thought","data":" that R and P commute"}
+{"type":"thought","data":" because both are Fourier"}
+{"type":"thought","data":" multipliers. They decompose"}
+{"type":"thought","data":" A = P C_N R P into "}
+{"type":"thought","data":"P R P, the term −(i/N)"}
+{"type":"thought","data":" P θ β R P, and P R_2"}
+{"type":"thought","data":" R P. They note that"}
+{"type":"thought","data":" R_P equals P R P and"}
+{"type":"thought","data":" that β R_P = β R_P."}
+{"type":"thought","data":" However, they observe"}
+{"type":"thought","data":" that P θ β R P does"}
+{"type":"thought","data":" not factor out of the"}
+{"type":"thought","data":" convolution because"}
+{"type":"thought","data":" R_P is a variable scalar"}
+{"type":"thought","data":" multiplier in Fourier"}
+{"type":"thought","data":" space."}
+{"type":"thought","data":"\n\nThe candidate resolves"}
+{"type":"thought","data":" the earlier concern"}
+{"type":"thought","data":" about whether P M_θ"}
+{"type":"thought","data":" β R_P factors through"}
+{"type":"thought","data":" the projection. Because"}
+{"type":"thought","data":" R_P maps into Ran P,"}
+{"type":"thought","data":" applying P to R_P z"}
+{"type":"thought","data":" yields R_P z itself."}
+{"type":"thought","data":" Thus P M_θ β R_P equals"}
+{"type":"thought","data":" (P M_θ β P) R_P. The"}
+{"type":"thought","data":" operator norm bound"}
+{"type":"thought","data":" follows directly: ||P"}
+{"type":"thought","data":" M_θ β R_P|| ≤ C a_1/N."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"derives the second part"}
+{"type":"thought","data":" of claim (17). They"}
+{"type":"thought","data":" write A^N − R_P^N as"}
+{"type":"thought","data":" a telescoping sum over"}
+{"type":"thought","data":" j from 0 to N−1, with"}
+{"type":"thought","data":" each term being A^{N−1−j}(A−R_P)R_P^j."}
+{"type":"thought","data":" This decomposition "}
+{"type":"thought","data":"is the next step in "}
+{"type":"thought","data":"bounding the propagator"}
+{"type":"thought","data":" error."}
+{"type":"thought","data":"\n\nThe candidate bounds"}
+{"type":"thought","data":" the propagator error."}
+{"type":"thought","data":" They estimate ||A||"}
+{"type":"thought","data":" ≤ 1 + a/N and ||R_P||"}
+{"type":"thought","data":" ≤ 1, so each term in"}
+{"type":"thought","data":" the telescoping sum"}
+{"type":"thought","data":" is O(1/N²). The sum"}
+{"type":"thought","data":" over N terms gives "}
+{"type":"thought","data":"O(1/N).\n\nThey then prove"}
+{"type":"thought","data":" claim (18). Because"}
+{"type":"thought","data":" the blocks are time-independent,"}
+{"type":"thought","data":" Φ_P(N,0) = A^N. The"}
+{"type":"thought","data":" error P t_N − A^N P"}
+{"type":"thought","data":" s splits into an initial"}
+{"type":"thought","data":" Q contribution and "}
+{"type":"thought","data":"a memory return. The"}
+{"type":"thought","data":" memory term is O(1/N)||s||"}
+{"type":"thought","data":" because ||M_N|| = O(1/N)"}
+{"type":"thought","data":" and ||x||_∞ ≤ C||s||."}
+{"type":"thought","data":" The initial Q term "}
+{"type":"thought","data":"is also O(1/N)||s|| "}
+{"type":"thought","data":"because the sum over"}
+{"type":"thought","data":" m of ρ_2^m (a/N) is"}
+{"type":"thought","data":" bounded by O(1/N)."}
+{"type":"thought","data":"\n\nClaim (19) is proved"}
+{"type":"thought","data":" by bounding the Q block."}
+{"type":"thought","data":" The operator D = Q "}
+{"type":"thought","data":"T Q satisfies ||D − "}
+{"type":"thought","data":"R_Q||_* ≤ O(1/N), because"}
+{"type":"thought","data":" the coin perturbation"}
+{"type":"thought","data":" does not cancel at "}
+{"type":"thought","data":"first order in this "}
+{"type":"thought","data":"block. The star-norm"}
+{"type":"thought","data":" error ||D^N − R_Q^N||"}
+{"type":"thought","data":" is then estimated via"}
+{"type":"thought","data":" a telescoping sum over"}
+{"type":"thought","data":" j, yielding O_W(N^{-1})."}
+{"type":"thought","data":"\n\nThe candidate now "}
+{"type":"thought","data":"evaluates the exact "}
+{"type":"thought","data":"sum for the Q block "}
+{"type":"thought","data":"error. They bound ||D^k||_*"}
+{"type":"thought","data":" by ρ_2^k and ||R_Q^j||"}
+{"type":"thought","data":" by ρ^j. The telescoping"}
+{"type":"thought","data":" sum becomes (C/N)ρ_2^{N-1}"}
+{"type":"thought","data":" times a geometric series"}
+{"type":"thought","data":" in (ρ/ρ_2)^j. They "}
+{"type":"thought","data":"estimate this sum as"}
+{"type":"thought","data":" O(N) when ρ < ρ_2, "}
+{"type":"thought","data":"yielding the claimed"}
+{"type":"thought","data":" O(1/N) bound."}
+{"type":"thought","data":"\n\nThe candidate derives"}
+{"type":"thought","data":" the exact sum for the"}
+{"type":"thought","data":" Q block error. They"}
+{"type":"thought","data":" write the geometric"}
+{"type":"thought","data":" series as ρ_2^{N-1}(1"}
+{"type":"thought","data":" − (ρ/ρ_2)^N)/(1 − ρ/ρ_2)"}
+{"type":"thought","data":" and simplify it to "}
+{"type":"thought","data":"ρ_2^N/(ρ_2 − ρ). This"}
+{"type":"thought","data":" confirms the O(1/N)"}
+{"type":"thought","data":" bound on ||D^N − R_Q^N||."}

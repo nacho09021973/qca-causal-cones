@@ -91,3 +91,30 @@ The user must complete authentication before a review can be sent. Its
 temporary code and any credentials are deliberately not stored here.
 Independent review remains pending; none of these access checks is a pass
 or rejection of the mathematical proof.
+
+## Continuation — 2026-10-31
+
+The pending status above is historical. On continuation, a sealed Grok
+execution was interrupted by the Codex server restart without final response.
+The authorized Gemini fallback completed (`gemini-4-argon`, `STOP`), with
+four block verdicts PASS and SIGNED_REDUCTION REPAIR_REQUIRED. The
+[disposition record](2026-10-31--schur-physical-bridge-review-disposition.md)
+preserves the unedited review, identifies its incorrect objection to
+geometric absorption, and records explicit clarifications applied to the
+candidate. Status: `INDEPENDENT_REVIEW_COMPLETED /
+CLARIFICATIONS_APPLIED_NOT_REREVIEWED`. No global PASS, H1 promotion or
+canonical gate-ledger change is made.
+
+## Bounded closure review — 2026-10-31
+
+Following the user's next-step instruction, Gemini reviewed the clarified
+candidate and current primary definitions in a separate sealed execution.
+It returns PASS on all four closure questions and SIGNED_REDUCTION, explicitly
+withdraws its erroneous absorption objection, and corrects its earlier
+subdominant-root inequality. No mandatory repairs remain for this bridge
+under B/F and fixed admissible W. See the
+[closure record](2026-10-31--schur-physical-bridge-review-closure.md) for the
+reviewed hashes and exact scope. This is a bounded follow-up by the same
+reviewer family, not a second independent reviewer or a canonical promotion.
+The candidate's historical header is retained so the reviewed bytes remain
+unchanged. H1 remains OPEN and paused; no signed nonzero leader is certified.

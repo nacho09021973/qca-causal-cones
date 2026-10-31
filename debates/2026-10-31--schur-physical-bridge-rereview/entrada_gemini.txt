@@ -1,0 +1,2715 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Comprueba las aclaraciones del puente Schur de Codex (OpenAI). Sólo usa los
+documentos adjuntos. El informe previo y su disposición son material que
+debes examinar críticamente, no premisas. El candidato aclarado, T1 y el
+manuscrito actual se adjuntan completos.
+
+Alcance concreto:
+1. Recalcula desde cero si para 0<rho(W)<1 fijo existe una constante
+independiente de N con rho(W)^N <= C(W)/N. Evalúa la objeción de tu revisión
+anterior, no la defiendas por continuidad con ese dictamen.
+2. Comprueba la identidad exacta de reconstrucción libre P+Q añadida antes
+de (21), con Bob físico actual; comprueba que su Q libre se absorbe en
+O_(W,perfil)(N^-7 exp(-K_*N)), y que (21)-(22) conservan su alcance.
+3. Corrige o confirma la cota interior de la raíz subdominante usada en el
+informe previo: |lambda|<=Lambda no implica |lambda|^-1/Lambda<=Lambda^-2.
+Usa las hipótesis efectivas de T1 para decidir si hay separación uniforme.
+4. Determina si las aclaraciones alteran las hipótesis o invalidan alguno de
+los cuatro bloques antes aceptados. No asumas que un PASS previo es prueba.
+
+Entrega hasta 1800 palabras en español: dictamen PASS / REPAIR_REQUIRED /
+OPEN para cada punto y SIGNED_REDUCTION; después indica si queda alguna
+reparación obligatoria para el puente bajo B/F y W fijo. Diferencia el
+dictamen de cierre acotado de una nueva revisión integral. Si mantienes una
+objeción, proporciona ecuación, contraejemplo o desigualdad precisa y
+condición de cierre. No exijas uniformidad en W que el contrato no promete.
+No certifiques líder firmado no nulo, H1/H1c, AdS o novedad. Sin herramientas,
+web, edición de archivos ni delegación.
+
+=== DOCUMENT 1: 2026-09-24--schur-stability-physical-transfer.md ===
+
+# Auditoría del puente Schur → extremos físicos → cuatro términos lineales
+
+Fecha: 2026-09-24. Base: 7f68fa7554c927c23c12c69591d49915b53ee5ab.
+Autor: Codex (OpenAI).
+Estado: **INDEPENDENT_REVIEW_COMPLETED / CLARIFICATIONS_APPLIED_NOT_REREVIEWED**.
+
+Los primeros dos intentos externos terminaron sin dictamen. Véase el
+[registro de ejecución](2026-09-25--schur-physical-bridge-review-status.md).
+Gemini revisó el expediente congelado el 2026-10-31: cuatro bloques PASS y
+SIGNED_REDUCTION REPAIR_REQUIRED. La objeción y su disposición, incluida
+una desigualdad incorrecta del revisor, quedan registradas en la
+[nota de revisión](2026-10-31--schur-physical-bridge-review-disposition.md).
+Se explicita abajo la absorción geométrica solicitada; esta versión aclarada
+no ha sido revisada de nuevo. No se registra un PASS global ni promoción de H1.
+
+La instrucción es reparar el cuello de botella y continuar; la precisión
+posterior del usuario exige comprobar, línea por línea, que los extremos
+sean los del contrato actual. Este informe propone reparar ese puente.
+No presenta la subordinación como una idea nueva ni reutiliza el extremo
+de Bob plano sin demostrar su transferencia.
+
+## 1. Objetos y dos niveles de hipótesis
+
+Se conservan la preparación, fuente completa, referencia, observable y W
+admisible fijo de [T1](2026-09-24--two-channel-t1-exact-signed-pq.md):
+\[
+f=J(U_M-I)\phi_N,\quad r=U_N^NJ\phi_N,\quad
+r_c=\mathbf1_{\mathcal B_N}\pi_cr,\quad
+s=\mathcal F H_\xi f,\quad t_j=T^js,\quad R=D_\xi/\Lambda.
+\tag{1}
+\]
+Aquí \(T=C_NR\), \(D=S\oplus S^{-1}\),
+\(C_N(x)=e^{-i\vartheta(x/N)\beta/N}\), \(\beta=\sigma_x\otimes I_2\),
+y \(H_\xi f(x)=e^{\xi_*\cdot(x-x_*)}f(x)\).
+La transformada de Fourier es unitaria con medida normalizada del toro.
+P,Q son los idempotentes acotados de T1, no proyecciones ortogonales.
+P es cero fuera de W; dentro de W selecciona las dos raíces dominantes.
+
+Para no introducir hipótesis implícitas se distinguen:
+
+- **B:** perfil real fijo y acotado, \(b=\|\vartheta\|_\infty<\infty\).
+- **F:** además, con
+  \(\vartheta(X)=\int e^{-ik\cdot X}\widehat\vartheta(k)d^3k/(2\pi)^3\),
+  \[
+  a_0=\int|\widehat\vartheta(k)|\,d^3k/(2\pi)^3<\infty,\qquad
+  a_1=\int|k||\widehat\vartheta(k)|\,d^3k/(2\pi)^3<\infty.
+  \tag{2}
+  \]
+  Es la hipótesis de momento Fourier de CURRENT_STATE §9.4.
+  No se deduce de B ni de regularidad meramente \(C^1\).
+
+Constantes O pueden depender del perfil y de W, nunca de N. Los encoders,
+detectores y canales pertenecen a las familias finitas congeladas.
+No se elige \(W=W_N\).
+
+## 2. Estabilidad Schur en el espacio auxiliar, bajo B
+
+Las identidades del símbolo en ir-corona.tex, lemas de radio espectral y
+símbolo inclinado, dan
+\[
+\rho(R(p))\le1,\qquad \rho(R(p))=1
+ \Longleftrightarrow p\in\{0,\pi\}^3.
+\tag{3}
+\]
+Se comprueba la extensión de S a D: S es unimodular, con raíces recíprocas,
+y ambos bloques S y su inversa tienen el mismo radio espectral. La traza
+de S dividida por dos es \(\prod_j\cos(p_j-i\xi_{*,j})\).
+El producto de elipses que acota esa traza es estricto salvo que todos
+los factores estén en sus vértices reales, es decir, los ocho saddles.
+
+En Ran P, \(R_P\) es multiplicación escalar por \(\lambda/\Lambda\),
+luego es contracción en la norma L2 inducida. En Ran Q dentro de W
+la raíz es \(\lambda^{-1}/\Lambda\), uniformemente menor que uno.
+En el compacto exterior a W, que no contiene saddles, ambas raíces
+son uniformemente menores que uno. Los saltos de P se tratan usando
+por separado los cierres interiores y el exterior.
+
+La posible no normalidad exterior no invalida el argumento: una
+triangularización unitaria 2×2 acota las potencias por
+\(r_0^h+C h r_0^{h-1}\), con \(r_0<1\), también para raíces repetidas.
+Escogiendo \(\rho\in(r_0,1)\), e incluyendo el bloque interior, resulta
+\[
+\|R_Q^h\|\le C_0\rho^h,\qquad \sup_{h\ge0}\|R^h\|\le C_R.
+\tag{4}
+\]
+Las normas son las inducidas en cada rango; la potencia cero allí es
+la identidad del rango. La norma equivalente
+\[
+|y|_*=\sup_{h\ge0}\rho^{-h}\|R_Q^hy\|_2
+\]
+satisface \(\|y\|_2\le|y|_*\le C_0\|y\|_2\) y
+\(|R_Qy|_*\le\rho|y|_*\).
+
+Como la moneda conmuta con el peso de posición,
+\(\|T-R\|\le b\|R\|/N\).
+Para los bloques de T, escritos \(\mathsf A,\mathsf B,\mathsf C,\mathsf D\)
+para distinguirlos de los observables, se obtiene
+\[
+\|\mathsf A\|\le1+a/N,\quad
+\|\mathsf B\|,\|\mathsf C\|\le a/N,\quad
+\|\mathsf D\|_*\le\rho+a/N\le\rho_2<1
+\tag{5}
+\]
+para N suficientemente grande. Todas las normas entre rangos usan
+L2 en P y la norma estrella en Q. En particular,
+\[
+\sup_{j\le N}\|T^j\|\le C_W,\qquad
+\|Qt_N\|\le C_W(\rho_2^N+N^{-1})\|s\|.
+\tag{6}
+\]
+La primera desigualdad se prueba sumando las dos recurrencias en la
+norma \(\|Pz\|_2+|Qz|_*\), en la que
+\(|Tz|_\oplus\le(1+2a/N)|z|_\oplus\).
+
+La suma Schur correcta conserva ambos tiempos:
+\[
+\begin{split}
+\|\mathbb M_N\|
+&\le \sup_{n\le N}\sum_{m<n}\sum_{k<m}
+ \|\Phi_P(n,m+1)\mathsf B G_Q(m,k+1)\mathsf C\|\\
+&\le {e^a a^2\over N^2}
+       \sup_{n\le N}\sum_{m<n}\sum_{k<m}\rho_2^{m-k-1}
+ \le {e^a a^2\over N(1-\rho_2)}.
+\end{split}
+\tag{7}
+\]
+La norma es \(\ell^\infty_tL^2\to\ell^\infty_tL^2\) sobre Ran P.
+La entrada inicial Q cuesta igualmente \(O_W(N^{-1})\|Qs\|\).
+Para N grande la norma del inverso de \(I-\mathbb M_N\) queda
+acotada por \((1-C_W/N)^{-1}\).
+
+**Segunda vía para (6):** la identidad de Duhamel y (4) dan
+\[
+T^js=R^js+\sum_{k<j}R^{j-1-k}(T-R)T^ks.
+\]
+Gronwall discreto produce
+\(\|T^js\|\le C_R e^{C_Rb\|R\|j/N}\|s\|\).
+No requiere invertir la memoria. La estabilidad tampoco presupone
+conservación del momento: la moneda sigue siendo convolución completa.
+
+## 3. Auditoría de Alice: fuente física completa, después inclinada
+
+El extremo entrante es exactamente s de (1). No es la fuente seno
+del modelo viejo. La fórmula exacta del recurso da
+\(\|\phi_N(x)\|\le C N^{-3/2}\).
+En Alice, de radio \(R_b=N/4\), escribimos
+\(x=x_*-\delta\widehat u+v\), \(v\perp\widehat u\),
+\(u=(1,1,1)\), \(\widehat u=u/\sqrt3\). Entonces
+\[
+F_N(x)\le64\delta^2/N^2,\qquad
+\|f(x)\|\le(\pi/2)F_N(x)\|\phi_N(x)\|.
+\tag{8}
+\]
+Esto incluye tanto \(\cos(\pi F_N/2)-1\) como \(\sin(\pi F_N/2)\).
+
+La capa \(\delta_j=(\theta_N+j)/\sqrt3\),
+\(\theta_N=\{\sqrt3N/4\}\), tiene a lo sumo \(C(1+N\delta_j)\)
+sitios. Su disco tiene radio cuadrado
+\(2R_b\delta_j-\delta_j^2\le N\delta_j/2\); el conteo se obtiene
+empaquetando celdas de la red planar fija, uniformemente en su traslación.
+Con \(\xi_*=t_*u\), Plancherel da
+\[
+\|s\|_2^2
+=\sum_{x\in\mathcal A_N}e^{2\xi_*\cdot(x-x_*)}\|f(x)\|^2
+\le C N^{-7}\sum_{j\ge0}e^{-2t_*(\theta_N+j)}
+     \delta_j^4(1+N\delta_j)
+=O(N^{-6}).
+\tag{9}
+\]
+Por tanto \(\|s\|=O(N^{-3})\), uniformemente en la profundidad
+fraccional. **No se afirma que la fuente física sin inclinar tenga esa
+norma.** Esta cota se obtiene directamente del encoder actual.
+
+## 4. Auditoría de Bob: referencia física actual, bajo F
+
+Ahora se demuestra la estimación que faltaba, sin usar la cola libre
+plana. Sea \(\mu_N\) la imagen en el toro de la medida
+\(\widehat\vartheta(k)d^3k/(2\pi)^3\) por \(k\mapsto k/N\) módulo
+\(2\pi\), con el signo ajustado a Fourier. La multiplicación por
+\(\vartheta(x/N)\) es exactamente convolución por \(\mu_N\), y
+\[
+\|\mu_N\|_{\rm TV}\le a_0,\qquad
+\int d_{\mathbb T}(q,0)d|\mu_N|(q)\le a_1/N.
+\tag{10}
+\]
+La representación incluye todas las imágenes periódicas.
+
+En el toro real, D es unitario por fibra. Por ello no aumenta la
+norma L1 de la transformada de Fourier. La expansión exponencial
+de la moneda en convoluciones acota su norma L1 por \(e^{a_0/N}\).
+Aplicándolo N veces a la preparación real \(J\phi_N\), cuya
+transformada tiene norma L1 \(O(N^{-3/2})\), se obtiene
+\[
+\|\widehat{U_N^NJ\phi_N}\|_{L^1}
+ \le e^{a_0}\|\widehat{J\phi_N}\|_{L^1}
+ =O_\vartheta(N^{-3/2}),\qquad
+\sup_y\|\pi_cU_N^NJ\phi_N(y)\|=O_\vartheta(N^{-3/2}).
+\tag{11}
+\]
+Aquí basta \(a_0<\infty\); el momento \(a_1\) se usará en §6.
+No se ha inclinado la preparación ni la referencia de cola infinita.
+
+El extremo saliente exacto del funcional lineal es
+\[
+v_c=\mathcal V_c^*E r_c,\qquad
+\ell_c(z)=\langle r_c,E\mathcal V_cz\rangle=\langle v_c,z\rangle.
+\tag{12}
+\]
+Con \(y=y_*+\delta\widehat u+v\), \(y_*=Nu-R_b\widehat u\),
+el mismo conteo de capas y \(h_N(y)\le64\delta^2/N^2\) dan
+\[
+\begin{split}
+\|v_c\|_2^2
+&=\sum_{y\in\mathcal B_N}e^{-2\xi_*\cdot(y-y_*)}
+           h_N(y)^2\|M_Br_c(y)\|^2\\
+&\le C_\vartheta N^{-7}\sum_{j\ge0}
+       e^{-2t_*(\theta_N+j)}\delta_j^4(1+N\delta_j)
+=O_\vartheta(N^{-6}).
+\end{split}
+\tag{13}
+\]
+Por tanto \(\|v_c\|=O_\vartheta(N^{-3})\).
+Es la norma del extremo **con efecto e inclinación**; la norma global
+de r es 1. El spinor de (13) es el del walk doblado inhomogéneo.
+
+## 5. Reconstrucción ponderada y cotas de las diez piezas
+
+La norma exacta de la reconstrucción es
+\[
+\|E^{1/2}\mathcal V_c\|
+ =\max_{y\in\mathcal B_N}
+      \sqrt{h_N(y)}e^{-\gamma\delta},\qquad
+\gamma=|\xi_*|=\sqrt3t_*,
+\]
+pues Fourier es unitario, el canal puede escogerse libremente y todos
+los detectores congelados tienen un autovalor 1.
+La geometría da
+\[
+\sqrt{h_N(y)}
+ ={2R_b\delta-\delta^2-|v|^2\over R_b^2}
+ \le8\delta/N,\qquad
+\|E^{1/2}\mathcal V_c\|\le8/(e\gamma N).
+\tag{14}
+\]
+Para la cota inferior, tomar el sitio más próximo a
+\(y_*+2\widehat u\). Su error de red tiene norma \(\le\sqrt3/2\);
+la profundidad está en \([2-\sqrt3/2,2+\sqrt3/2]\) y el desplazamiento
+tangencial es acotado. Para N grande está dentro de Bob y
+\(\sqrt{h_N}\ge c/N\), mientras la exponencial está acotada por
+debajo. Un vector localizado en ese sitio prueba
+\(\|E^{1/2}\mathcal V_c\|=\Theta(N^{-1})\).
+No da una cota inferior sobre un vector concreto \(Pt_N\).
+
+De (6),(9),(14), ya bajo B,
+\[
+\|Pt_N\|=O_W(N^{-3}),\qquad \|Qt_N\|=O_W(N^{-4}),
+\]
+\[
+\|E^{1/2}d_{c,P}\|=O_W(N^{-4}e^{-K_*N}),\quad
+\|E^{1/2}d_{c,Q}\|=O_W(N^{-5}e^{-K_*N}).
+\tag{15}
+\]
+Se ha absorbido \(\rho_2^N\) en \(O_W(N^{-1})\). Explícitamente, para
+cualquier \(0<r<1\) fijo,
+\[
+\sup_{N\ge2}Nr^N\le\sup_{x\ge0}xe^{-x|\log r|}
+=\frac1{e|\log r|}<\infty.
+\]
+Se aplica con \(r=\rho_2(W,\vartheta)\); las constantes y el umbral
+pueden depender de W y del perfil fijo. No se afirma uniformidad al variar W.
+La cota \(\|r_c\|\le1\) da bajo B
+\(|A_{cP}|=O_W(N^{-4}e^{-K_*N})\),
+\(|A_{cQ}|=O_W(N^{-5}e^{-K_*N})\).
+Bajo F, usar el extremo (13) mejora las cotas lineales:
+
+| Pieza, para cada c | Cota absoluta | Hipótesis |
+| --- | --- | --- |
+| \(A_{cP}\) | \(O_W(N^{-6}e^{-K_*N})\) | F |
+| \(A_{cQ}\) | \(O_W(N^{-7}e^{-K_*N})\) | F |
+| \(B_{cPP}\) | \(O_W(N^{-8}e^{-2K_*N})\) | B |
+| \(B_{cQQ}\) | \(O_W(N^{-10}e^{-2K_*N})\) | B |
+| \(B_{cPQ}\) | \(O_W(N^{-9}e^{-2K_*N})\) | B |
+
+Hay tres piezas cuadráticas por canal, seis en total. Su suma en un
+canal es \(\|E^{1/2}(d_{c,P}+d_{c,Q})\|^2\ge0\), y es
+\(O_W(N^{-8}e^{-2K_*N})\). Comparar estos techos no demuestra
+dominancia real sobre términos lineales que podrían ser mucho menores.
+
+## 6. Qué operador intermedio es realmente \(O(N^{-1})\)
+
+La cota de memoria (7) ya acota el retorno contra los extremos (9),(13)
+por \(O_W(N^{-7}e^{-K_*N})\). No basta sola para comparar todo el
+propagador con el libre: falta controlar el transporte siempre P.
+
+Bajo F, para p,p' dentro de W,
+\[
+P(p')\beta P(p)=[P(p')-P(p)]\beta P(p),\qquad
+\|P(p')\beta P(p)\|\le C_Wd_{\mathbb T}(p',p).
+\tag{16}
+\]
+La primera identidad usa \(\beta P(p)=Q(p)\beta\).
+La segunda usa la fórmula Riesz analítica en vecindades de los cierres
+de cada ventana; puntos de distintas ventanas tienen separación
+positiva y P está acotado. Si algún extremo está fuera de W, el
+kernel doblemente comprimido es cero. **No se deriva ni se estima el
+conmutador del proyector extendido discontinuamente.**
+
+La medida (10), Young y (16) dan
+\(\|P\vartheta(x/N)\beta P\|\le C_Wa_1/N\).
+Además el resto de Taylor de la moneda tiene norma \(\le b^2/(2N^2)\).
+Como R conmuta con P,
+\[
+\|\mathsf A-R_P\|\le C_W/N^2,\qquad
+\|\mathsf A^N-R_P^N\|\le C_W/N.
+\tag{17}
+\]
+El segundo paso es la suma telescópica, usando (5).
+Ahora T1 (14), (6) y (7) sí controlan todas las partes:
+\[
+\|Pt_N-R_P^NPs\|\le C_WN^{-1}\|s\|.
+\tag{18}
+\]
+Incluye la corrección siempre P, la entrada inicial Q y todos los
+retornos, no sólo la primera excursión.
+
+Para Q, restar el término homogéneo libre da
+\[
+\|\mathsf D^N-R_Q^N\|
+\le {C_W\over N}\sum_{j=0}^{N-1}\rho_2^{N-1-j}\rho^j
+\le C'_W/N.
+\]
+El término forzado por P está acotado por la suma geométrica en (6).
+Por tanto, para cualquier dato s,
+\[
+\boxed{\|T^N-R^N\|_{\mathscr H\to\mathscr H}=O_W(N^{-1}).}
+\tag{19}
+\]
+Se ha tratado Q inicial y final, no normalidad, cambio de momento e
+interfaces de W. Sólo (16)–(19), no la mera estabilidad (6),
+permiten reemplazar el transporte completo por el libre.
+
+## 7. Veredicto del chequeo de extremos, línea por línea
+
+Sea \(\mathcal E_N=T^N-R^N\). La cadena completa es
+\[
+\begin{split}
+&2e^{-K_*N}\Re\langle r_c,E\mathcal V_c\mathcal E_Ns\rangle\\
+&\quad=2e^{-K_*N}\Re\langle
+ \underbrace{\mathcal V_c^*E\mathbf1_{\mathcal B_N}\pi_cU_N^NJ\phi_N}
+ _{v_c:\ {\rm Bob\ actual}},
+ \mathcal E_N
+ \underbrace{\mathcal F H_\xi J(U_M-I)\phi_N}_{s:\ {\rm Alice\ actual}}
+ \rangle,\\
+&\left|\,\cdot\,\right|
+ \le 2e^{-K_*N}
+   \underbrace{\|v_c\|}_{O_\vartheta(N^{-3}),\ (13)}
+   \underbrace{\|\mathcal E_N\|}_{O_W(N^{-1}),\ (19)}
+   \underbrace{\|s\|}_{O(N^{-3}),\ (9)}
+ =O_W(N^{-7}e^{-K_*N}).
+\end{split}
+\tag{20}
+\]
+
+| Línea | Objeto usado | ¿Sobrevive el extremo nuevo? |
+| --- | --- | --- |
+| (8)–(9) | \(J(U_M-I)\phi_N\), encoder completo inclinado | Sí; no se omite el coseno |
+| (11) | \(U_N^NJ\phi_N\), evolución física real sin inclinar | Sí; moneda y canales incluidos |
+| (12)–(13) | \(\mathcal V_c^*E r_c\) | Sí; efecto, adjunto y Bob actual explícitos |
+| (17)–(19) | Error del propagador exacto frente al libre | Sí, bajo F; incluye memoria y transporte P |
+| (20) | Funcional lineal con r actual en ambos lados de la comparación | Sí; nunca se sustituye por la referencia plana |
+
+El resultado de esta derivación es que **ambos extremos actuales
+sobreviven**, sujeto a F y a la revisión independiente. La escala
+\(N^{-7}=o(N^{-13/2})\) se compara con la escala plana como referencia;
+no prueba que el nuevo término principal tenga una cota inferior
+de ese orden. No autoriza escribir error relativo al nuevo observable
+si éste puede anularse.
+
+## 8. Continuación sobre las cuatro piezas firmadas
+
+R, P y Q son diagonales en canal, y s empieza en +.
+De (18), el componente minus de \(Pt_N\) es \(O_W(N^{-4})\).
+De (6), todo \(Qt_N\) es \(O_W(N^{-4})\).
+El Q libre terminal es exponencialmente pequeño por (4).
+En concreto, bajo F, (4),(9),(13) dan
+\[
+\left|2e^{-K_*N}\Re\langle v_+,R_Q^NQs\rangle\right|
+\le C_{W,\vartheta}N^{-6}\rho(W)^N e^{-K_*N}
+=O_{W,\vartheta}(N^{-7}e^{-K_*N}),
+\]
+por la cota explícita anterior, ahora con \(r=\rho(W)\). Con
+\(f_0=(U_M-I)\phi_N\), la identidad
+de reconstrucción libre de T1 implica
+\[
+2\Re\langle r_+,ES^N f_0\rangle
+=2e^{-K_*N}\Re\langle v_+,R_P^NPs\rangle
+ +2e^{-K_*N}\Re\langle v_+,R_Q^NQs\rangle.
+\]
+Así se reemplaza el término libre proyectado por el libre completo,
+conservando la referencia física actual \(r_+\). El término completo no
+depende de W; su comparación con la pieza P sí tiene constantes dependientes
+de W y del perfil. Esto no permite tomar \(W=W_N\).
+Emparejando con el extremo actual (13), se obtiene
+\[
+\begin{aligned}
+A_{+P}
+ &=2\Re\langle r_+,ES^N f_0\rangle
+       +O_W(N^{-7}e^{-K_*N}),\\
+A_{+Q},\ A_{-P},\ A_{-Q}
+ &=O_W(N^{-7}e^{-K_*N}).
+\end{aligned}
+\tag{21}
+\]
+Así se aísla un funcional firmado concreto, conservando la nueva
+referencia. La respuesta completa satisface
+\[
+\begin{aligned}
+L_+&=2\Re\langle r_+,ES^N(U_M-I)\phi_N\rangle
+ +O_W(N^{-7}e^{-K_*N})+O_W(N^{-8}e^{-2K_*N}),\\
+L_-&=O_W(N^{-7}e^{-K_*N})+O_W(N^{-8}e^{-2K_*N}).
+\end{aligned}
+\tag{22}
+\]
+No se ha identificado el signo ni la no anulación del funcional en
+la primera línea. Su referencia sigue siendo
+\(r_+=\mathbf1_{\mathcal B_N}\pi_+U_N^NJ\phi_N\).
+
+**Caso límite:** si \(\vartheta=0\), entonces T=R,
+\(r_+=BS^N\phi_N\), \(r_-=0\) y todas las amplitudes minus son cero.
+La comparación es exacta y se recupera el protocolo plano.
+**Control de fuente cero:** si se prueba con encoder identidad,
+s=0 y todos los términos desaparecen; M=I no es ese encoder identidad.
+
+## 9. Alcance y procedencia
+
+Esto repara un puente de estimación; no demuestra novedad, no calcula
+el coeficiente del nuevo funcional y no cierra automáticamente H1/H1c,
+POWER_13/2_STABILITY, E0 o AdS. En particular, boundedness sin F
+no basta para justificar (11),(16)–(22) por esta ruta.
+
+La próxima cantidad a estudiar es el extremo de referencia
+\(\pi_+U_N^NJ\phi_N\) dentro del funcional firmado (21).
+La forma general de \(\vartheta\) no está seleccionada por esta
+conversación: cualquier coeficiente o afirmación de signo deberá
+conservar esa dependencia o declarar una familia de perfiles.
+
+El índice biblioteca/INDICE.md no está presente en esta copia.
+Se han leído las definiciones, geometría y pruebas primarias locales
+de papers/ir-corona/ir-corona.tex y el T1 revisado en la base indicada.
+No se invoca literatura nueva ni se usa un resumen de IA como prueba.
+La estabilidad se comprueba por las dos derivaciones de §2 y por
+los casos límite; ningún ajuste numérico prueba las estimaciones.
+La revisión independiente y los hashes del snapshot se registran
+en un expediente separado.
+
+=== DOCUMENT 2: 2026-09-24--two-channel-t1-exact-signed-pq.md ===
+
+# T1: lift exacto firmado de los dos canales al P/Q inclinado
+
+Fecha: 2026-09-24. Base inspeccionada: `d8ca7b285129b8b29a304e232195e29f20095526`.
+Estado: `T1: PASS`.
+Review status: `INDEPENDENT_ADVERSARIAL_REVIEW_PASS`.
+La revisión reparada de Claude Opus y DeepSeek V4-Pro acepta T1 en el
+contrato y el W fijado aquí. El expediente y sus límites están en
+`debates/2026-09-24--two-channel-t1-rereview.md`. El primer intento quedó
+degradado porque Gemini falló por falta de crédito; no se cuenta como
+consenso ni como evidencia a favor o en contra.
+El snapshot matemático adjunto a la re-revisión tiene SHA256
+`dc076059935d9b814c17f69390f202187768f75dfad30c9d912033c4c6d487ee`.
+Después del dictamen se incorporó a este informe la relación local
+\(\beta P=Q\beta\), recomendada y derivada en los turnos de revisión.
+
+Los revisores comprobaron de forma separada el signo \(p-i\xi_*\), el
+factor exacto \(e^{-K_*N}\), la fórmula de cinco piezas, los adjuntos,
+la recurrencia Volterra y el control acoplado. No encontraron error en
+las identidades de T1. Opus retiró sus reparaciones obligatorias iniciales
+tras verificar la versión reparada; DeepSeek discrepó de su objeción
+residual sobre una supuesta independencia necesaria de las etiquetas.
+El acuerdo es `T1_PASS` dentro del contrato explícito y para cada W
+admisible fijo de §2. El pase no evalúa escalas, uniformidad en W ni
+las afirmaciones analíticas preliminares. Los controles (17)–(18) sólo
+verifican las identidades de bloques en una fibra; no controlan
+\(P(p')Q(p)\) a momentos distintos ni las interfaces con \(W^c\).
+Ambos revisores recomiendan dejar ese límite registrado para T2.
+
+La re-revisión fue un sanedrín deliberativo de una ronda, Claude Opus
+(Anthropic) y DeepSeek V4-Pro (DeepSeek); el segundo tuvo acceso al turno
+de Opus. Es revisión independiente del autor por dos familias, no dos
+juicios ciegos ni revisión humana. Commit de la herramienta sanedrín:
+`8162508e3bd0e3d05770b4dd544fe7c962d0272c`.
+Alcance: T1 de `state/CURRENT_STATE.md`, §9.6, por instrucción del usuario.
+No se ejecutan T2 ni T3. No se modifica el estado canónico.
+
+## 1. Definiciones y procedencia
+
+Se usan como definiciones del problema el contrato de dos canales de
+`reports/2026-09-24--h1c-return-kernel-schur-audit.md`, §6, y la partición
+auxiliar de su §2. Las identidades siguientes se derivan aquí; no se toman
+las conclusiones analíticas de los prechecks como premisas probadas.
+El índice `biblioteca/INDICE.md` fue inspeccionado; no se utiliza ningún
+resultado bibliográfico para esta expansión algebraica.
+
+Sean
+\[
+Jv=(v,0),\qquad D=S\oplus S^{-1},\qquad
+U_N=C_ND,\quad C_N(x)=e^{-i\vartheta(x/N)\beta/N},
+\quad \beta=\sigma_x\otimes I_2.
+\]
+Los perfiles, la preparación y los efectos son los de
+`papers/ir-corona/ir-corona.tex`, §3. Se fija cualquier entero \(N\ge2\),
+cualquiera de los cuatro encoders \(M\) y cualquiera de los cuatro
+detectores \(M_B\) del contrato. El perfil real \(\vartheta\) conserva
+las hipótesis del contrato H1. El producto interno es antilineal en el
+primer argumento. Para \(c\in\{+,-\}\), \(\pi_c\) extrae el canal y
+\[
+F_c=\pi_c^*E\pi_c,\qquad E=h_N\otimes M_B.
+\]
+Definimos la referencia física y la perturbación de Alice **completas**:
+\[
+r=U_N^NJ\phi_N=\Psi_0,\qquad
+f=J(U_M-I)\phi_N,\qquad d=U_N^Nf.
+\tag{1}
+\]
+Así \(\Psi_b=r+b d\) para ambos bits \(b=0,1\). No se sustituye
+\(r\) por la referencia plana. En particular,
+\[
+f=J\bigl(c_N\phi_N+i s_N M\phi_N\bigr),\quad
+c_N=\cos(\pi F_N/2)-1,\quad s_N=\sin(\pi F_N/2).
+\]
+No se descarta la parte \(c_N\), ni ninguna contribución cuadrática.
+Como \(U_M-I\) está soportado en Alice, \(f\) tiene soporte finito.
+
+La expansión directa del POVM da, sin aproximaciones,
+\[
+\boxed{L_c=2\operatorname{Re}\langle r,F_cd\rangle
+                 +\langle d,F_cd\rangle.}
+\tag{2}
+\]
+Esto ya incluye la sustracción exacta de la probabilidad del bit cero.
+
+## 2. La partición existente y el lift bien definido
+
+Se mantiene la construcción de ventanas del precheck de Schur,
+explicitando su cuantificador. Sean \(O_\alpha\) vecindades espectrales
+de los ocho saddles \(\alpha\in\Sigma=\{0,\pi\}^3\), en el toro,
+en las que existe una rama continua dominante \(\lambda_\alpha\),
+con \(|\lambda_\alpha|>1\). Se fija, una vez para T1–T3, una familia
+de vecindades abiertas \(W_\alpha\ni\alpha\) con cierres disjuntos
+y \(\overline{W_\alpha}\subset O_\alpha\). Se define
+\(W=\bigcup_\alpha W_\alpha\), independiente de N, del encoder,
+del detector y del perfil de moneda.
+
+Estas vecindades existen directamente para el símbolo explícito del
+TeX: en cada saddle \(\tfrac12\operatorname{tr}S\) es
+\(\pm\prod_j\cosh(\xi_{*,j})\), de módulo mayor que uno, mientras
+\(\det S=1\). Las dos raíces del polinomio característico son
+distintas y una tiene módulo mayor que uno. Por continuidad, la
+separación persiste en vecindades pequeñas con cierres en ese dominio.
+Ésta es la condición de admisibilidad de W usada aquí.
+
+Para cada W así fijado, las identidades siguientes son exactas. Las
+piezas se entienden como \(A_{cP}^{(W)},\ldots,B_{cPQ}^{(W)}\), aunque
+se suprima el superíndice. No se fija un radio numérico ni se afirma
+independencia de las piezas respecto de W: es una descomposición relativa
+a un parámetro auxiliar fijo. Toda cota posterior deberá retener esa
+dependencia, salvo prueba separada de uniformidad. No se permite elegir
+\(W=W_N\) ni reajustarlo para mejorar una pieza.
+
+Si \(p_S(p)\) es el Riesz idempotente de \(S(p-i\xi_*)\)
+para la raíz dominante \(\lambda(p)\) en una ventana, entonces
+\[
+P(p)=
+\begin{cases}
+\operatorname{diag}(p_S(p),I_2-p_S(p)),&p\in W,\\
+0,&p\notin W,
+\end{cases}
+\qquad Q=I-P.
+\tag{3}
+\]
+En efecto, \(S^{-1}\) tiene autovalor \(\lambda\) en el subespacio
+de \(S\) con autovalor \(\lambda^{-1}\). Se entiende (3) como
+multiplicadores acotados en \(\mathscr H=L^2(\mathbb T^3;\mathbb C^4)\).
+Sólo se usa \(P^2=P\), \(Q^2=Q\), \(P+Q=I\) y \(PQ=QP=0\).
+No se presupone \(P^*=P\).
+
+La acotación no requiere un radio efectivo. En cada cierre de ventana,
+\[
+p_S(p)=\frac{S(p-i\xi_*)-\lambda_\alpha(p)^{-1}I_2}
+                    {\lambda_\alpha(p)-\lambda_\alpha(p)^{-1}}.
+\tag{3a}
+\]
+El numerador es continuo y el denominador está separado de cero en
+ese compacto. Hay sólo ocho ventanas; fuera de ellas P=0. Por tanto
+\(\operatorname*{ess\,sup}_p\|P(p)\|\le C_P(W)<\infty\), y lo
+mismo vale para Q=I-P. Los saltos en la frontera no afectan a esta
+acotación de multiplicadores L2, y siguen presentes en los bloques.
+
+Estos P/Q son los del símbolo **inclinado**. No son los canales
+\(+/-\), ni el corte IR \(\Pi'\) del frente C2/C3. Ambos canales
+tienen componentes en P y en Q dentro de las ventanas. El exterior
+permanece en Q, con todas sus transiciones.
+
+Hay, sin embargo, una relación entre las transiciones locales y los
+canales que conviene dejar a la vista. En W, usando la convención del
+contrato \(\beta=\sigma_x\otimes I_2\),
+\[
+\beta P(p)=Q(p)\beta,\qquad P(p)\beta=\beta Q(p),
+\qquad p\in W.
+\tag{3b}
+\]
+Se comprueba por bloques a partir de (3); requiere que W use la misma
+ventana para los dos bloques recíprocos, como se ha fijado aquí.
+Así, para moneda constante y una fibra individual, una transición
+P\(\leftrightarrow\)Q mediante \(\beta\) conmuta los canales
+\(+\leftrightarrow-\) a la vez. Fuera de W esta identidad no se afirma:
+P=0 y Q=I allí. La identidad de cinco piezas no requiere que esos
+mecanismos sean independientes; el control (18) comprueba la recurrencia
+con acoplamiento en una fibra, pero no prueba el efecto de \(P(p')Q(p)\)
+para \(p'\ne p\) ni los cruces con el exterior de W. Esas cantidades
+quedan para el trazado de T2, no se estiman aquí.
+
+Para justificar el lift sin inclinar la preparación de cola espacial
+infinita, basta inclinar \(f\). Con la convención de Fourier del TeX,
+\[
+(\mathcal Fv)(p)=\sum_xe^{ip\cdot x}v(x),\qquad
+(\mathcal F^{-1}z)(y)=\int e^{-ip\cdot y}z(p)\,d\mu(p),
+\]
+sean
+\[
+(H_\xi v)(x)=e^{\xi_*\cdot(x-x_*)}v(x),\quad
+s=\mathcal F H_\xi f,\quad \Lambda=e^{\Phi_*},\quad
+T=\Lambda^{-1}\mathcal F H_\xi U_NH_\xi^{-1}\mathcal F^{-1}.
+\tag{4}
+\]
+La conjugación se define primero en vectores de soporte finito.
+Como \(U_N\) tiene alcance finito y moneda local acotada, el operador
+inclinado así obtenido tiene una extensión acotada en \(\mathscr H\).
+La moneda conmuta con \(H_\xi\); el bloque libre es
+\(D_\xi(p)=D(p-i\xi_*)\). Por tanto T es precisamente el paso
+normalizado del precheck, con sus saltos de momento, no otro propagador.
+
+Para cada \(0\le j\le N\),
+\[
+t_j=T^js=\Lambda^{-j}\mathcal F H_\xi U_N^jf.
+\tag{5}
+\]
+Esta identidad se comprueba por inducción. Todos los \(U_N^jf\)
+tienen soporte finito. No se necesita que \(H_\xi r\) o
+\(H_\xi\phi_N\) pertenezcan a \(\ell^2\).
+
+Sean \(B\) la restricción espacial a Bob y
+\[
+(\mathcal Vz)(y)=\mathbf1_{\mathcal B_N}(y)
+ e^{-\xi_*\cdot(y-y_*)}(\mathcal F^{-1}z)(y),\qquad
+\mathcal V_c=\pi_c\mathcal V.
+\tag{6}
+\]
+Para cada N fijo esta aplicación está bien definida sobre \(L^2\),
+pues Bob tiene soporte finito. Más explícitamente, \(\mathcal V\) es
+la composición de la inversa de Fourier unitaria con el multiplicador
+\(\mathbf1_{\mathcal B_N}(y)e^{-\xi_*\cdot(y-y_*)}\), cuyo máximo
+es finito. Como \(0\le E\le I\) y \(\pi_c\) es acotado,
+\(\mathcal H_c=\mathcal V_c^*E\mathcal V_c\) es un operador
+acotado, positivo y autoadjunto. Este argumento sólo asegura que
+los objetos existen para N fijo; no transfiere cotas asintóticas.
+Con los centros y escala ya fijados,
+\(y_*-x_*=Nv_*\) y \(K_*=\xi_*\cdot v_*-\Phi_*\), (5) da
+\[
+Bd=e^{-K_*N}\mathcal Vt_N.
+\tag{7}
+\]
+El factor se obtiene exactamente de
+\(\Lambda^Ne^{-\xi_*\cdot(y-x_*)}
+=e^{-K_*N}e^{-\xi_*\cdot(y-y_*)}\).
+Extraerlo no es una estimación del tamaño de los factores restantes.
+
+Definimos las dos contribuciones de **salida**:
+\[
+d_{c,P}=e^{-K_*N}\mathcal V_cPt_N,\qquad
+d_{c,Q}=e^{-K_*N}\mathcal V_cQt_N,\qquad
+B\pi_cd=d_{c,P}+d_{c,Q}.
+\tag{8}
+\]
+Son amplitudes en Bob. No se afirma que desinclinar por separado
+P y Q produzca vectores globales en el Hilbert físico. La restricción
+en (6) evita exigir esa propiedad, innecesaria para el efecto local.
+
+## 3. Expresión firmada completa para cada canal
+
+Escribiendo \(r_c=B\pi_cr\), las probabilidades de ambos bits son
+\[
+p_{c,0}=\langle r_c,Er_c\rangle,
+\qquad
+p_{c,1}=\langle r_c+d_{c,P}+d_{c,Q},
+                 E(r_c+d_{c,P}+d_{c,Q})\rangle.
+\tag{9}
+\]
+Al restarlas:
+\[
+\boxed{\begin{aligned}
+L_c={}&2\operatorname{Re}\langle r_c,E d_{c,P}\rangle
+      +2\operatorname{Re}\langle r_c,E d_{c,Q}\rangle\\
+ &+\langle d_{c,P},E d_{c,P}\rangle
+  +\langle d_{c,Q},E d_{c,Q}\rangle
+  +2\operatorname{Re}\langle d_{c,P},E d_{c,Q}\rangle,
+\quad c=+,-.
+\end{aligned}}
+\tag{10}
+\]
+Ésta es la fórmula de T1. No contiene normas ni valores absolutos de
+las respuestas. Los dos términos cuadráticos diagonales son reales
+y no negativos; los términos de interferencia conservan sus signos.
+
+Por indicación del usuario, se congela el siguiente vocabulario para T2,
+con cinco contribuciones por canal:
+\[
+\begin{aligned}
+A_{cP}&=2\operatorname{Re}\langle r_c,E d_{c,P}\rangle,\\
+A_{cQ}&=2\operatorname{Re}\langle r_c,E d_{c,Q}\rangle,\\
+B_{cPP}&=\langle d_{c,P},E d_{c,P}\rangle,\\
+B_{cQQ}&=\langle d_{c,Q},E d_{c,Q}\rangle,\\
+B_{cPQ}&=2\operatorname{Re}\langle d_{c,P},E d_{c,Q}\rangle,
+\end{aligned}
+\qquad
+\boxed{L_c=A_{cP}+A_{cQ}+B_{cPP}+B_{cQQ}+B_{cPQ}.}
+\tag{10a}
+\]
+Estas etiquetas designan escalares del observable. No son los bloques
+de transporte \(A_j,B_j\) de §4 ni nuevos proyectores.
+
+Si se llama
+\[
+L_{c,A}=2\operatorname{Re}\langle r_c,E d_{c,A}\rangle
+              +\langle d_{c,A},E d_{c,A}\rangle\quad(A=P,Q),
+\]
+entonces la identidad es
+\[
+L_c=L_{c,P}+L_{c,Q}+L_{c,\mathrm{cross}},\qquad
+L_{c,\mathrm{cross}}=2\operatorname{Re}\langle d_{c,P},E d_{c,Q}\rangle.
+\tag{11}
+\]
+La aditividad de sólo dos términos requiere que este último escalar
+sea cero para los datos considerados; T1 no establece tal anulación.
+Repartirlo por convenio entre P y Q no demostraría una separación física.
+
+En la representación auxiliar, sea
+\[
+\mathcal H_c=\mathcal V_c^*E\mathcal V_c,\qquad
+\ell_c(z)=\langle r_c,E\mathcal V_cz\rangle.
+\]
+La misma fórmula, antes de agrupar términos conjugados, es
+\[
+\begin{aligned}
+L_c={}&e^{-K_*N}\{
+\ell_c(Pt_N)+\overline{\ell_c(Pt_N)}
++\ell_c(Qt_N)+\overline{\ell_c(Qt_N)}\}\\
+&+e^{-2K_*N}\sum_{A,B\in\{P,Q\}}
+  \langle t_N,A^*\mathcal H_c B t_N\rangle.
+\end{aligned}
+\tag{12}
+\]
+Aquí \(PQ=0\) no elimina \(P^*\mathcal H_cQ\). El efecto de Bob,
+la reconstrucción y los adjuntos permanecen en su lugar. Incluso una
+partición ortogonal no permitiría ese paso sin una condición adicional
+sobre el efecto. El extremo lineal es exactamente el determinado por
+\(w_c=F_cr\), soportado en Bob y dependiente de \(U_N\).
+
+## 4. Compatibilidad con los bloques temporales existentes
+
+No se estima ni se reabre la vía Volterra. Sólo se sustituyen los datos
+de (4) en sus identidades finitas. Con \(x_j=Pt_j\), \(y_j=Qt_j\),
+\[
+A_j=PTP,\quad B_j=PTQ,\quad C_j=QTP,\quad D_j=QTQ,
+\]
+\[
+x_{j+1}=A_jx_j+B_jy_j,\qquad
+y_{j+1}=C_jx_j+D_jy_j,\qquad (x_0,y_0)=(Ps,Qs).
+\tag{13}
+\]
+Los subíndices se conservan para coincidir con el precheck; en este
+protocolo el paso T es el mismo en todas las capas. Los productos
+vacíos son las identidades de los respectivos rangos.
+
+Con \(\Phi_P(j,k)=A_{j-1}\cdots A_k\) y
+\(G_Q(j,k)=D_{j-1}\cdots D_k\), la sustitución sucesiva de (13) da
+\[
+\begin{aligned}
+x_N={}&\underbrace{\Phi_P(N,0)Ps}_{\text{trayectoria siempre en P}}\\
+ &+\underbrace{\sum_{m=0}^{N-1}
+ \Phi_P(N,m+1)B_mG_Q(m,0)Qs}_{f_{Q,N}}\\
+ &+\underbrace{\sum_{m=0}^{N-1}\sum_{k=0}^{m-1}
+ \Phi_P(N,m+1)B_mG_Q(m,k+1)C_kx_k}_{(\mathbb M_Nx)_N},\\
+y_N={}&G_Q(N,0)Qs+
+ \sum_{k=0}^{N-1}G_Q(N,k+1)C_kx_k.
+\end{aligned}
+\tag{14}
+\]
+Se verifica (14) primero resolviendo la segunda recurrencia de (13),
+y sustituyéndola en la primera con su transporte \(\Phi_P\).
+Así, los objetos de (8) son exactamente
+\[
+d_{c,P}=e^{-K_*N}\mathcal V_c x_N,\qquad
+d_{c,Q}=e^{-K_*N}\mathcal V_c y_N.
+\tag{15}
+\]
+La contribución que termina en P incluye retornos y entradas desde Q:
+no es la contribución que permaneció siempre en P. Esta última es
+únicamente el primer sumando de \(x_N\) en (14).
+
+Si \(d_{c,0}\) denota la reconstrucción de ese primer sumando y
+\(\delta d_c=d_{c,P}+d_{c,Q}-d_{c,0}\), la respuesta respecto de
+esa amplitud, **manteniendo la referencia física r**, satisface
+\[
+\begin{aligned}
+L_{c,0}&=2\operatorname{Re}\langle r_c,E d_{c,0}\rangle
+                 +\langle d_{c,0},E d_{c,0}\rangle,\\
+L_c-L_{c,0}&=2\operatorname{Re}\langle r_c+d_{c,0},E\delta d_c\rangle
+                      +\langle\delta d_c,E\delta d_c\rangle.
+\end{aligned}
+\tag{16}
+\]
+Esto identifica el funcional exacto al que entrarían las correcciones
+de (14); no les asigna potencia, pequeñez ni dominancia relativa.
+Tampoco define una dinámica alternativa para el bit cero.
+
+## 5. Comprobaciones internas por otra formulación y caso límite
+
+**Segunda derivación, mediante la diferencia de estados.** Si
+\(v=J\phi_N\), la diferencia inicial es exactamente
+\[
+\Delta=|v+f\rangle\langle v+f|-|v\rangle\langle v|
+=|f\rangle\langle v|+|v\rangle\langle f|+|f\rangle\langle f|.
+\]
+Al conjugar por \(U_N^N\) y tomar la traza contra \(F_c\), los
+dos primeros sumandos dan los términos lineales de (2) y el tercero
+da su término cuadrático. Sustituir (8) genera las cuatro parejas
+\(PP,PQ,QP,QQ\) de (12), incluidos ambos adjuntos cruzados.
+Es la misma identidad obtenida desde las probabilidades (9).
+
+**Control plano.** Si \(\vartheta=0\), T es diagonal por canales,
+y también lo son P y Q de (3). Como \(f=J(U_M-I)\phi_N\),
+\(r_-=d_{-,P}=d_{-,Q}=0\). Por (10), \(L_-=0\). En el canal
+positivo \(r_+=BS^N\phi_N\) y
+\(d_{+,P}+d_{+,Q}=BS^N(U_M-I)\phi_N\), por lo que (10) recupera
+exactamente \(L_+=L_{\rm plano}\), para los dieciséis pares.
+Este control verifica la reconstrucción, sin afirmar que se anule
+el cruce P/Q dentro del canal positivo.
+
+**Control acoplado de las recurrencias.** Para N=2 y bloques genéricos,
+la multiplicación directa de dos matrices de bloques da
+\[
+\begin{aligned}
+x_2&=A_1A_0x_0+A_1B_0y_0+B_1C_0x_0+B_1D_0y_0,\\
+y_2&=C_1A_0x_0+C_1B_0y_0+D_1C_0x_0+D_1D_0y_0.
+\end{aligned}
+\tag{17}
+\]
+Por otra vía, (14) da
+\(f_{Q,2}=A_1B_0y_0+B_1D_0y_0\),
+\((\mathbb M_2x)_2=B_1C_0x_0\) y
+\(y_2=D_1D_0y_0+D_1C_0x_0+C_1x_1\), con
+\(x_1=A_0x_0+B_0y_0\). Esto reproduce (17) sin suponer que los
+acoplamientos se anulen.
+
+Un caso concreto con retorno no nulo es la fibra del saddle p=0,
+restringida a un par intercambiado por beta, con moneda constante.
+En la base donde \(D_\xi=\operatorname{diag}(\Lambda,\Lambda^{-1})\)
+y \(\beta=\sigma_x\), para \(a=\theta/2\),
+\[
+T=\begin{pmatrix}
+\cos a&-i\sin a\,\Lambda^{-2}\\
+-i\sin a&\cos a\,\Lambda^{-2}
+\end{pmatrix},\qquad P=\operatorname{diag}(1,0).
+\tag{18}
+\]
+Si \(\sin a\ne0\), B y C son no nulos y
+\(BC=-\sin^2a\,\Lambda^{-2}\). Para \((x_0,y_0)=(1,0)\),
+\[
+x_2=\cos^2a-\sin^2a\,\Lambda^{-2},\qquad
+y_2=-i\sin a\cos a\,(1+\Lambda^{-2}),
+\]
+tanto por \(T^2\) como por (17). La diferencia de \(x_2\) respecto
+de la trayectoria siempre P es exactamente BC. Es un test algebraico
+de fibra; no se identifica un estado de una sola fibra con la preparación
+normalizada del protocolo ni se amplía la clase de perfiles físicos.
+
+**Control nulo.** Si en un test se toma \(U_{\rm enc}=I\), entonces
+\(f=s=0\) y ambos bits preparan el mismo estado; todos los términos
+de (10) son cero para cualquier moneda. No confundirlo con M=I:
+el encoder congelado correspondiente es \(e^{i\pi F_N/2}I\ne I\).
+Es un control algebraico, no una ampliación de la familia de encoders.
+
+**POVM completo.** La unitariedad física y la normalización de ambos
+bits dan \(L_\varnothing=-L_+-L_-\). La suma inclusiva conserva los
+términos cruzados de (10) para ambos canales; T1 no demuestra que
+se anulen en esa suma. No se infiere \(L_++L_-=0\).
+
+## 6. Resultado y techo
+
+T1 produce un observable firmado exacto compatible con el P/Q existente:
+(10), con datos físicos (1), lift (4)–(8) y bloques (13)–(15).
+La referencia y los dos bits están incluidos sin imponer una nueva
+hipótesis de decaimiento exponencial a la preparación. El STOP por
+incompatibilidad algebraica de T1 no se activa en esta derivación.
+
+La derivación y sus controles son internos: no constituyen revisión
+independiente ni promoción de un gate canónico. Sigue pendiente T2:
+este documento no identifica un coeficiente de orden \(N^{-6}\),
+no transfiere cotas de extremos y no demuestra una relación entre
+los dos canales. T3 tampoco se ejecuta. H1/H1c, la justificación física,
+E0, POWER_13/2_STABILITY, E/AdS y el manuscrito conservan su estado.
+
+No se ha ejecutado código científico ni generado datos numéricos.
+La procedencia de las fórmulas nuevas es su derivación explícita en
+este archivo; los prechecks aportan la notación y el contrato, no una
+certificación de sus estimaciones previas.
+
+## 7. T2: alcance fijado, ejecución pendiente
+
+Orden obligatorio por instrucción del usuario:
+T1 → revisión independiente y cierre de sus reparaciones → T2 → T3.
+No se ejecuta T2 mientras la versión reparada esté pendiente de revisión.
+
+La pregunta es qué contribución, o sub-contribución identificada, hereda
+realmente el techo previo \(O(N^{-6})\). No se asigna de antemano ese
+orden a ninguna de las diez piezas de (10a).
+
+T2 deberá producir diez filas, una por cada
+\(A_{+P},A_{+Q},B_{+PP},B_{+QQ},B_{+PQ}\) y
+\(A_{-P},A_{-Q},B_{-PP},B_{-QQ},B_{-PQ}\), con estos campos:
+
+| Campo | Contenido requerido |
+| --- | --- |
+| Objeto previo | Fórmula y localización precisa del bloque o extremo que se pretende usar; distinguir pieza completa y sub-contribución. |
+| Cota disponible | Enunciado, hipótesis, ámbito, dependencia en W fijo y nivel de revisión; marcar explícitamente cuando no haya transferencia justificada o uniformidad en W. |
+| Información perdida | Signos, fases, interferencias o dependencia de la referencia que desaparecieron al tomar normas. |
+| Escala resultante | Factores exponenciales y potencias de N, indicando si se trata del observable físico o de una cantidad normalizada; distinguir cota superior y término asintótico identificado. |
+
+El producto \(N^{-5/2}N^{-1}N^{-5/2}=N^{-6}\) sólo proporciona
+un recuento de cotas hasta que se identifique el elemento bilineal,
+sus extremos físicos y su lugar exacto en (10a). Las cotas heredadas
+para extremos planos no se transfieren automáticamente a \(r_c\).
+P/Q final tampoco etiqueta el número de excursiones: se conserva (14).
+
+No se introduce ninguna técnica nueva. Si una transferencia no está
+justificada por lo ya disponible, se registra esa carencia sin abrir
+una nueva vía de estimación. T2 no busca simetrías ni ejecuta T3.
+
+Para cualquier posterior afirmación de cancelación, se mantendrán
+separados estos tres niveles:
+
+1. Dentro de una pieza de (10a).
+2. Entre piezas de un mismo canal.
+3. Entre canales, en \(L_++L_-\).
+
+El tercer nivel no prueba cancelación en ninguno de los dos canales
+por separado. El número de piezas que reciban una misma cota tampoco
+decide por sí solo si hay una relación estructural.
+
+Si T2 sólo recupera una cota gruesa sin coeficiente identificado, la
+conclusión será que \(N^{-6}\) sigue siendo un techo sin término
+asintótico aislado. Eso no prueba que un término de ese orden sea
+inexistente, ni que su coeficiente sea cero. En ese caso se aplica el
+STOP previsto: no buscar simetrías de un coeficiente no identificado.
+
+=== DOCUMENT 3: ir-corona.tex ===
+
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\up}{{\uparrow}}
+\newcommand{\dn}{{\downarrow}}
+\newcommand{\Cmicro}{C_{\mathrm{micro}}}
+\newcommand{\cIR}{c_{\mathrm{IR}}}
+\newcommand{\arcosh}{\operatorname{arcosh}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Hess}{\operatorname{Hess}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\vstar}{v_*}
+\newcommand{\xistar}{\xi_*}
+\newcommand{\uhat}{\hat u}
+
+\begin{document}
+
+\title[Infrared response outside the emergent light cone]{An infrared operational response outside the emergent light cone of a three-dimensional Weyl quantum walk}
+
+% TODO(author): any AI-assistance disclosure required by the target journal.
+\author{Jos\'e Ignacio Mart\'in Gandul}
+\address{Independent Researcher, Seville, Spain}
+\email{adnacho@gmail.com}
+
+\date{\today}
+
+\begin{abstract}
+In a finite-range quantum walk the relativistic light cone that emerges at
+long wavelength need not exhaust the strict microscopic causal support.  We
+study the three-dimensional Weyl walk introduced by Cedzich, Joye, Werner and
+Werner as a model with a spherical propagation region.  All of its group
+velocities lie in the closed Euclidean unit ball, which is also the light
+cone of its Weyl node.  Its one-step causal support is the cube $[-1,1]^3$.
+Velocities in the cube but outside the ball form a \emph{corona}.  There,
+propagation is non-ballistic but not causally forbidden.
+
+We ask whether the corona carries an operational response that survives
+infrared control.  Alice prepares a narrow-band state and applies a local
+encoding, and Bob reads out with a local detector.  All three operations are
+required to be infrared-admissible: acting on the band $|p|\le N^{-1}$, each
+produces only a vanishing fraction of its output outside the wider band
+$|p|\le N^{-1/2}$.  Bob's
+region lies outside the emergent light cone of every site of Alice's region.
+After $N$ steps, Bob's distinguishability $\delta(N)$ obeys the explicit
+bound $\delta(N)\le 36N^4e^{-JN}$ with $J=(1-\sqrt3/2)\log 2$.  For the twelve
+Pauli encoder--detector pairs of a concrete family, it has the exact leading
+asymptotics
+\[
+\delta(N)=\bigl|C(\theta_N)\bigr|\,N^{-13/2}\,e^{-K_*N}\bigl(1+O(N^{-1/2})\bigr),
+\qquad \theta_N=\{\sqrt3N/4\}.
+\]
+Here $K_*\approx0.1905$ is the value of a Legendre rate function at a unique
+regional minimiser.  The coefficient $C(\theta)$ is given in closed form, and
+interval arithmetic shows that it does not vanish for any $\theta$ in any of
+these pairs; four further pairs with $M=I$ serve as reference controls.  The emergent cone is therefore not operationally sharp,
+even for infrared-admissible operations.  The response is non-perturbatively
+small, invisible to every power of the infrared scale, and it lies strictly
+inside the microscopic causal support.  The result is purely asymptotic: the
+remainder constants are not explicit, and numerical diagnostics indicate
+that the leading term is quantitatively accurate only for $N$ of order
+$10^3$ and beyond.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Quantum cellular automata and quantum walks are unitary dynamics on a lattice
+with a strict bound on the speed of propagation
+\cite{SchumacherWerner,Arrighi,Farrelly}.  After $N$ steps of a finite-range
+walk, the propagator vanishes identically outside $N\Cmicro$.  Here
+$\Cmicro=\operatorname{conv}F$ is the convex hull of the one-step jumps.
+Many such walks have a conical point in their dispersion relation.  Near it,
+the long-wavelength dynamics is that of a Weyl or Dirac equation with a
+speed of light $\cIR$
+\cite{BialynickiBirula,DArianoPerinotti,BDPT,DArianoErbaPerinotti}.
+
+In spatial dimension $d\ge2$ the two causal structures cannot coincide.  The
+infrared cone of a Weyl node is a Euclidean ball, and $\Cmicro$ is a
+polytope.  Exact isotropy of the microscopic causal structure is incompatible
+with a regular lattice.  It can be compatible with random discreteness, as in
+the causal-set theorem of Bombelli, Henson and Sorkin \cite{BHS}, but that
+setting lies outside the scope of this paper.  For a lattice walk, some
+velocities are therefore causally allowed but not relativistic.  How much
+physics can be sent through them?
+
+Three questions must be kept apart.
+
+\begin{description}
+\item[(U) Ultraviolet propagator] Does the exact kernel assign non-zero
+  amplitude to sites outside the infrared ball but inside $N\Cmicro$?  For
+  the walk studied here it does: along the eight vertex rays a single
+  lattice path contributes, with amplitude of norm $4^{-N}$
+  (Proposition~\ref{prop:geometry}).  One-step Alice/Bob protocols built
+  from localized operations turn this into a finite distinguishability
+  (for instance $3/128$ after one step for a suitable localized
+  preparation, as recorded in~\cite{Repo}).  Such protocols are broadband:
+  their operations are not concentrated near the Weyl node.
+\item[(I) Infrared operational response] Require the preparation, the
+  encoder and the detector to be infrared-admissible, and put Bob outside
+  the infrared cone of \emph{every} site of Alice.  Does Bob's
+  distinguishability still fail to vanish as the infrared scale goes to
+  zero, and at what rate?
+\item[(N) Nature] Is there a physical system in which the lattice scale and
+  the operations are given rather than engineered?  This question is not
+  addressed here.
+\end{description}
+
+A non-zero ultraviolet kernel does not answer (I).  Infrared admissibility
+could in principle force exact cancellations, and conversely an exponentially
+small infrared response is compatible with (U).  This paper answers (I), for
+one walk and one explicit protocol.
+
+\subsection*{The walk}
+We work with the Weyl walk of Cedzich, Joye, Werner and Werner
+\cite[Eq.~(5.15)]{CJWW}.  They introduced it as a modification of the
+Bialynicki-Birula Weyl automaton \cite[Eq.~(5.12)]{CJWW},
+\cite{BialynickiBirula}, with the same conical points and with a
+\emph{spherical} propagation region.  For this walk the three velocity sets
+are nested as
+\begin{equation}\label{eq:three-bodies}
+\Gamma\;\subseteq\;B(1)\;\subsetneq\;\Cmicro=[-1,1]^3,
+\qquad \sup_{v\in\Gamma}|v|=\cIR=1 .
+\end{equation}
+Here $B(1)=\overline B(0,1)$ is the closed infrared light cone ($\cIR=1$),
+$\Gamma$ is the closed set of group velocities, and $\Cmicro$ is the strict
+causal body.  Both statements in \eqref{eq:three-bodies} are exact, and
+moreover $\partial B(1)\subseteq\Gamma$ (Proposition~\ref{prop:geometry}).
+Numerically, $\Gamma$ fills the ball; this is not proved and not used.
+Every ballistic mode, at every energy, therefore respects the emergent light
+speed.  Nevertheless, in every non-axial direction $\hat n$ the causal
+support extends to $\|\hat n\|_1\in(1,\sqrt3\,]$ times the light speed.
+Probability outside $\Gamma$ is exponentially small in $N$ \cite{CJWW}.  The
+question is whether it can be \emph{used} under infrared control.
+
+\subsection*{Main results}
+Section~\ref{sec:protocol} gives the precise definitions.  In outline,
+Alice's region is the lattice ball $\cA_N$ of radius $N/4$ at the origin,
+and Bob's region is the lattice ball $\cB_N$ of radius $N/4$ at $N(1,1,1)$.
+After $N$ steps, every pair $(x,y)\in\cA_N\times\cB_N$ is separated by more
+than $N+N/5$.  Bob is thus outside the emergent cone of every site of
+Alice, with a margin of order $N$.  The resource is a narrow-band packet of
+momentum width $\Lambda=1/N$.  Alice's encoder is a smooth local unitary
+$\exp(i\frac\pi2F_N(x)M)$ with $M\in\{I,\sigma_1,\sigma_2,\sigma_3\}$.  Bob's
+effect is $h_N(y)\otimes M_B$ with $M_B\in\{I,(I+\sigma_j)/2\}$.  The
+profiles $F_N,h_N$ are smooth bumps of width $N/4$ that vanish quadratically
+on the spheres.
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Infrared admissibility} (Theorem~\ref{thm:admissible}).  All
+  eight operations map the band $|p|\le N^{-1}$ into the band
+  $|p|\le N^{-1/2}$, up to relative errors $O(N^{-1/2})$ with explicit
+  constants.  Single-site operations fail this criterion maximally
+  (Lemma~\ref{lem:point}).
+\item \emph{Explicit upper bound} (Theorem~\ref{thm:upper}).  For every
+  $N\ge2$, every unitary acting in $\cA_N$, every one-particle state and
+  every effect in $\cB_N$, Bob's distinguishability is at most
+  $36N^4e^{-JN}$, with $J=(1-\tfrac{\sqrt3}{2})\log2$.  Polynomial infrared
+  signalling is excluded.
+\item \emph{Regional rate} (Theorem~\ref{thm:rate}).  The kernel between
+  the two regions is $O(N^4)\,e^{-K_*N}$, where $K_*=I(v_*)$ is the minimal
+  regional value of a Legendre rate function.  Here $I$ is the Legendre
+  transform of $\Phi(\xi)=\arcosh(\prod_j\cosh\xi_j)$, and
+  $v_*=(1-\frac1{2\sqrt3})(1,1,1)$ is the unique minimiser of $I$ over the
+  regional velocity set.  Moreover $J<K_*<\log4$.  By (iv), the rate $K_*$
+  is attained by an explicit response.
+\item \emph{Leading asymptotics} (Theorem~\ref{thm:main}).  For the twelve
+  Pauli encoder--detector pairs ($M\ne I$; the four pairs with $M=I$ are
+  reference controls),
+  $\delta_{M,M_B}(N)=|C_{M,M_B}(\theta_N)|N^{-13/2}e^{-K_*N}(1+O(N^{-1/2}))$.
+  The coefficient $C_{M,M_B}(\theta)$ is given in closed form and is
+  uniformly non-zero, with relative oscillation in $\theta$ at most
+  $1.5\times10^{-3}$.
+\end{enumerate}
+
+Result (iv) is an asymptotic statement and not a numerical approximation
+valid from small $N$.  The constants in its remainder are not explicit, and
+neither is the threshold $N_*$ beyond which $\delta_{M,M_B}(N)>0$ is
+guaranteed.  Finite-$N$ diagnostics (Appendix~\ref{app:numerics}) indicate
+a relative correction of about $-100/N$, so the leading term is
+quantitatively accurate only for $N\gtrsim10^3$.  For the pairs with the
+smallest coefficients, the next-order term $N^{-17/2}e^{-K_*N}$ dominates
+throughout the diagnostic range $N\le56$ (Remark~\ref{rem:features}).
+
+The coefficient is not a product of local factors.  It arises from the
+interference between the \emph{free tail} of the resource at Bob, which is
+only polynomially small, and the part of Alice's encoding that reaches Bob,
+which is exponentially small.  Two points of the complex-shifted Brillouin
+torus contribute, and they enter with different projectors.  The power
+$13/2$ is not a count of Gaussian directions.  The two normal directions are
+discrete sums over lattice planes of depth $O(1)$, and the common tangential
+direction is a flat direction of the exponent that is confined only by the
+profiles.
+
+\subsection*{Relation to the literature}
+Ballistic scaling and weak limit theorems for translation-invariant quantum
+walks are classical \cite{Konno,GJS,AVWW}: $Q(t)/t$ converges in
+distribution to the group velocity distributed by the initial state.
+Cedzich, Joye, Werner and Werner \cite{CJWW} proved that the probability of
+velocities outside the support of this limit decays exponentially.  They gave
+a method for bounding the rate uniformly in the initial state and discussed
+the ``fuzziness'' of the emergent light cone in exactly this language.  Our
+upper bound (ii) uses their contour-shift idea, supplemented by an elementary
+ellipse lemma and a Jordan-safe bound on matrix powers.  Their method bounds
+rates; it does not give prefactor-level asymptotics.
+
+Sharp asymptotics with prefactors outside the propagation region are known
+in one dimension.  Sunada and Tate \cite{SunadaTate} obtained exact local
+asymptotics of transition probabilities, including exponential decay with an
+explicit prefactor in the region hidden from the weak limit.  Carteret,
+Richmond and Temme \cite{CRT} obtained uniformly convergent asymptotics in
+the exponentially decaying regions of coined walks on the line.  These are
+the closest precursors of the saddle-point analysis of
+Section~\ref{sec:asymptotics}.  In two dimensions, Baryshnikov, Brady,
+Bressler and Pemantle \cite{BBBP} analysed quantum walks through multivariate
+generating functions and determined the limiting profile in the feasible
+region, outside of which the probability is exponentially small.  Analytic
+combinatorics in several variables \cite{ACSV} provides general transfer
+theorems for multivariate coefficient asymptotics, whose standard sharp
+forms assume minimality hypotheses on the critical points.  We do not claim
+that these methods cannot reproduce the present result.  We are not aware of
+a transfer theorem that yields it directly, and we carry out the
+model-specific saddle-point analysis explicitly.
+
+What we add is a \emph{lower} bound, in the strong form of exact leading
+asymptotics.  It concerns an \emph{operational} quantity: the
+distinguishability produced by a local encoding.  The encoding is spread
+over a region of size $O(N)$ and constrained to be infrared-admissible, in
+dimension three, and at a point strictly inside the corona.  Upper bounds
+alone cannot distinguish an exponentially small response from an exactly
+vanishing one.  In the problem studied here that distinction is the
+content of the result.  The novelty claim is correspondingly narrow.  To our
+knowledge, Theorem~\ref{thm:main} is the first prefactor-level asymptotic,
+with a leading coefficient that is oscillatory and certified to be
+non-vanishing, for an infrared-controlled operational response in the
+strictly outside-propagation-region regime of a three-dimensional
+multi-component quantum walk.  Exponential decay outside the propagation
+region, large-deviation rates, Weyl-cone dispersion and microscopic support
+outside an emergent cone all have prior art, cited above.
+
+Lieb--Robinson bounds \cite{LiebRobinson,BHV} give exponentially small
+leakage outside a linear cone for continuous-time lattice dynamics.  For
+quantum walks the strict cone $\Cmicro$ plays that role exactly, and the
+question here is the one \emph{inside} it.
+
+\subsection*{Organisation}
+Section~\ref{sec:walk} sets up the walk and proves the geometric statements.
+Section~\ref{sec:protocol} defines the protocol and infrared admissibility.
+Section~\ref{sec:results} states the results.  Sections~\ref{sec:upper}
+to~\ref{sec:asymptotics} contain the proofs.  Section~\ref{sec:discussion}
+discusses scope and limitations.  Appendix~\ref{app:numerics} lists the
+computer-assisted parts and the finite-$N$ diagnostics.
+
+\section{The walk and its three velocity sets}\label{sec:walk}
+
+\subsection{Conventions}
+The one-particle Hilbert space is $\mathcal H=\ell^2(\Z^3;\C^2)$ with
+internal basis $\up=(1,0)^T$ and $\dn=(0,1)^T$.  We use the Fourier
+transform $\hat\psi(p)=\sum_{x}e^{ip\cdot x}\psi(x)$, with inverse
+$\psi(x)=\int_{\T^3}e^{-ip\cdot x}\hat\psi(p)\,d\mu(p)$ and
+$d\mu=d^3p/(2\pi)^3$ on $\T^3=[-\pi,\pi)^3$.  We write $c_j=\cos p_j$ and
+$s_j=\sin p_j$.  $B(1)=\overline B(0,1)$ denotes the closed Euclidean unit
+ball.
+
+The walk $W$ of \cite[Eq.~(5.15)]{CJWW} has symbol
+\[
+W(p)=\begin{pmatrix} c_1c_2e^{ip_3} & -c_1s_2+is_1\\ c_1s_2+is_1 & c_1c_2e^{-ip_3}\end{pmatrix},
+\qquad \det W(p)=1 .
+\]
+States evolve by the unitary $S$ with symbol
+\begin{equation}\label{eq:symbol}
+S(p)=W(p)^{-1}=\begin{pmatrix} c_1c_2e^{-ip_3} & c_1s_2-is_1\\ -c_1s_2-is_1 & c_1c_2e^{ip_3}\end{pmatrix}.
+\end{equation}
+Both are matrix-valued trigonometric polynomials, so they extend to entire
+functions of $p\in\C^3$.  For $p\in\C^3$, $S(p)$ denotes the continuation of
+\eqref{eq:symbol}, which is the inverse of $W(p)$ and not its adjoint.
+Writing $S(p)=\sum_dS_de^{ip\cdot d}$, the walk acts as
+$(S\psi)(y)=\sum_dS_d\psi(y-d)$.  The $N$-step kernel is
+\begin{equation}\label{eq:kernel}
+(S^N)_{y,x}=G_N(y-x),\qquad G_N(d)=\int_{\T^3}e^{-ip\cdot d}S(p)^N\,d\mu(p).
+\end{equation}
+
+\begin{lemma}[Jumps]\label{lem:jumps}
+The set $F=\{d:S_d\ne0\}$ has fourteen elements: the eight vertices
+$(\pm1,\pm1,\pm1)$, the four face diagonals $(\pm1,\pm1,0)$, and the two
+axial jumps $(\pm1,0,0)$.  Each vertex block is $\frac14$ times a rank-one
+diagonal projector; in particular $S_{(1,1,1)}=\frac14|\dn\rangle\langle\dn|$.
+The face-diagonal blocks have norm $\frac14$ and the axial blocks have norm
+$\frac12$, so that $\sum_d\|S_d\|=4$.
+\end{lemma}
+
+\begin{proof}
+This is a direct expansion of \eqref{eq:symbol} in $z_j=e^{ip_j}$.  The
+coefficient of $z_1z_2z_3$ comes only from the $(2,2)$ entry
+$c_1c_2e^{ip_3}$ and equals $\frac14$.
+\end{proof}
+
+\subsection{Dispersion and the infrared node}
+Since $\det S=1$ and $\tr S(p)=2c_1c_2c_3$, the eigenvalues of $S(p)$ are
+$e^{\mp i\omega(p)}$ with
+\begin{equation}\label{eq:dispersion}
+\cos\omega(p)=\cos p_1\cos p_2\cos p_3 .
+\end{equation}
+At $p=0$ one has $S(p)=I-iH_W(p)+O(|p|^2)$ with
+\[
+H_W(p)=p_1\sigma_1-p_2\sigma_2+p_3\sigma_3,\qquad H_W(p)^2=|p|^2I .
+\]
+This is a Weyl Hamiltonian with speed $\cIR=1$.  The same conical structure
+occurs at the eight points of $\{0,\pi\}^3$.
+
+\begin{proposition}[Geometry]\label{prop:geometry}
+\begin{enumerate}[label=(\alph*)]
+\item The causal body is $\Cmicro=\operatorname{conv}F=[-1,1]^3$.  Its
+  support function is $h_{\Cmicro}(\hat n)=\|\hat n\|_1$ for unit vectors
+  $\hat n$.
+\item At every $p$ where $\omega$ is differentiable,
+  \begin{equation}\label{eq:SOS}
+  \bigl(1-f^2\bigr)-|\nabla f|^2=s_2^2s_3^2+s_1^2s_2^2c_3^2+s_1^2c_2^2s_3^2\ \ge0,
+  \qquad f=c_1c_2c_3,
+  \end{equation}
+  and hence $|\nabla\omega(p)|\le1$.  At the conical points $\nabla\omega$
+  takes every value in the unit sphere.  Thus $\Gamma\subseteq B(1)$ and
+  $\partial B(1)\subseteq\Gamma$, where $\Gamma$ is the closure of the set
+  of group velocities.
+\item For every vertex $\sigma\in\{\pm1\}^3$ and every $N\ge1$,
+  $(S^N)_{N\sigma,0}=S_\sigma^N=4^{-N}\Pi_\sigma\ne0$, where $\Pi_\sigma$ is
+  a diagonal rank-one projector.  In particular
+  $(S^N)_{(N,N,N),0}=4^{-N}|\dn\rangle\langle\dn|$.  Hence the $N$-step
+  support function equals $N\|\hat n\|_1$ exactly.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) follows from Lemma~\ref{lem:jumps}.  The supremum of $\hat n\cdot x$ over
+the cube is separable and equals $\sum_j|n_j|$.
+
+(b) With $\cos\omega=f$ we have $\nabla\omega=-\nabla f/\sin\omega$ and
+$\sin^2\omega=1-f^2$.  The identity \eqref{eq:SOS} is a polynomial identity
+in $(c_j,s_j)$ modulo $c_j^2+s_j^2=1$, and is checked by expansion.  Near a
+conical point, $\omega(p)=|p-p_\vee|+O(|p-p_\vee|^2)$, so
+$\nabla\omega=(p-p_\vee)/|p-p_\vee|+o(1)$ sweeps the unit sphere.
+
+(c) Let $d_1+\dots+d_N=N\sigma$ with $d_k\in F$.  Every $d\in F$ satisfies
+$\sigma_i d_i\le1$ for each coordinate $i$, so
+$\sum_k\sigma_i(d_k)_i=N$ forces $\sigma_i(d_k)_i=1$ for all $i$ and $k$,
+that is, $d_k=\sigma$.  Hence $(S^N)_{N\sigma,0}=S_\sigma^N$.  By Lemma~\ref{lem:jumps},
+$S_\sigma=\frac14\Pi_\sigma$, so $S_\sigma^N=4^{-N}\Pi_\sigma$.
+\end{proof}
+
+\begin{remark}
+The reverse inclusion $B(1)\subseteq\Gamma$, that is, that $\Gamma$ fills
+the ball, holds numerically but is not proved and not used.  What is used is
+the exact inclusion $\Gamma\subseteq B(1)$, equivalently
+$\sup|\nabla\omega|\le\cIR$, with equality by $\partial B(1)\subseteq\Gamma$.  Consequently the relation
+$\sup|v_g|=\cIR$ does \emph{not} imply that the emergent cone coincides with
+the causal boundary.  The two coincide only in the six axial directions.
+The \emph{corona} is $\Cmicro\setminus B(1)$.  Propagation into $N$ times
+the corona is not ballistic, but by (c) it is not forbidden.
+\end{remark}
+
+\begin{remark}
+For the Bialynicki-Birula walk \cite[Eq.~(5.12)]{CJWW}, $\Gamma$ is contained
+in the intersection of three orthogonal cylinders (and numerically equal to
+it \cite[Fig.~5]{CJWW}).  It contains group velocities up to
+$\sqrt{3/2}>\cIR$, attained at $p=-\frac\pi4(1,1,1)$.  In that walk the corona contains a ballistic sector
+faster than the emergent light.  We restrict to \cite[Eq.~(5.15)]{CJWW}
+precisely because it has no such sector.
+\end{remark}
+
+\section{Protocol and infrared admissibility}\label{sec:protocol}
+
+Fix an integer $N\ge2$.  The infrared scale is $\Lambda_N=N^{-1}$ and the
+admissibility budget is $\Lambda'_N=N^{-1/2}$.  Let $\Pi_\Lambda$ denote the
+spectral projection onto $\{|p|_2\le\Lambda\}$, and write $\Pi=\Pi_{\Lambda_N}$
+and $\Pi'=\Pi_{\Lambda'_N}$.  For $N\ge2$ both balls lie in $|p|<\pi/4$,
+where $f>0$ and the only conical point is $p=0$.
+
+\subsection{Regions}
+Let
+\[
+\cA_N=\{x\in\Z^3:|x|\le N/4\},\qquad \cB_N=\{y\in\Z^3:|y-N(1,1,1)|\le N/4\},
+\]
+with Euclidean norms throughout.  For every $x\in\cA_N$ and $y\in\cB_N$,
+\begin{equation}\label{eq:separation}
+|y-x|-N\ge(\sqrt3-\tfrac32)N>\tfrac N5,
+\qquad
+u\cdot(y-x)\ge(3-\tfrac{\sqrt3}2)N,\quad u=(1,1,1).
+\end{equation}
+Both follow from the triangle inequality, and the last inequality in the
+first display is $3>(17/10)^2$.  Each region has at most $(N/2+1)^3\le N^3$
+sites.
+
+\subsection{Resource, encoder, detector}
+Let $g(q)=(1-|q|^2)_+^2$.  The resource is
+\[
+\hat\phi_N(p)=Z_N^{-1/2}\,g(Np)\,\dn,
+\qquad Z_N=\frac{64}{3465\,\pi^2N^3},
+\]
+so that $\|\phi_N\|=1$ and $\Pi\phi_N=\phi_N$.  In position space
+$\phi_N=\varphi_N\,\dn$ with the real, radial function
+\begin{equation}\label{eq:resource}
+\varphi_N(x)=N^{-3/2}\,\Phi_0(x/N),\qquad
+\Phi_0(w)=c_r\int_{\R^3}g(q)\,e^{-iq\cdot w}\,d^3q,\qquad c_r=\frac{\sqrt{3465}}{64\pi^2}.
+\end{equation}
+This is exact, with no truncation of the spatial tail.
+
+Alice's profile is $F_N(x)=(1-16|x|^2/N^2)_+^2$, supported in $\cA_N$.  For
+$M\in\{I,\sigma_1,\sigma_2,\sigma_3\}$ the encoder is the multiplication
+operator
+\[
+U_M=\exp\bigl(i\tfrac\pi2F_N(x)\,M\bigr)=I+c_N(x)I+is_N(x)M,
+\qquad c_N=\cos(\tfrac\pi2F_N)-1,\ \ s_N=\sin(\tfrac\pi2F_N).
+\]
+It acts as the identity outside $\cA_N$.  In the second-quantized free
+fermion picture it is the one-particle restriction of an even,
+number-preserving local unitary.
+
+Bob's profile is $h_N(y)=(1-16|y-Nu|^2/N^2)_+^2$, with $u=(1,1,1)$,
+supported in $\cB_N$.
+For $M_B\in\{I,P_1,P_2,P_3\}$, with $P_j=(I+\sigma_j)/2$, the effect is
+\[
+E=h_N\otimes M_B,\qquad 0\le E\le I .
+\]
+
+\subsection{Signal}
+Alice encodes a bit $b\in\{0,1\}$ by applying $U^{(1)}=U_M$ or $U^{(0)}=I$ to
+the resource.  After $N$ steps the state is
+$\psi_b(N)=S^NU^{(b)}\phi_N$.  The signal is
+\begin{equation}\label{eq:signal}
+\delta_{M,M_B}(N)=\bigl|\langle\psi_1,E\psi_1\rangle-\langle\psi_0,E\psi_0\rangle\bigr|=|L_{M,M_B}(N)|,
+\end{equation}
+where $L_{M,M_B}(N)$ denotes the signed difference.  No spectral projection is
+applied to the signal.  Infrared admissibility is a property of the
+operations only.  We also consider the trace distance $D_B(N)$ between Bob's
+reduced states.  In the free-fermion description, the reduced state of a
+one-particle vector $\psi$ on the modes of $\cB_N$ is
+$(1-\|P_B\psi\|^2)|\Omega\rangle\langle\Omega|+|P_B\psi\rangle\langle P_B\psi|$,
+and $D_B=\frac12\|\rho_1-\rho_0\|_1\ge\delta$.
+
+\subsection{Infrared admissibility}
+\begin{definition}\label{def:admissible}
+For a bounded operator $X$ on $\mathcal H$ with $X\Pi\ne0$, set
+\[
+\eta_{\mathrm{op}}(X)=\frac{\|(I-\Pi')X\Pi\|}{\|X\Pi\|}.
+\]
+The encoder $U_M$ is \emph{infrared-admissible} if
+$\eta_{\mathrm{op}}(U_M-I)\to0$ and
+\[
+\eta_{\mathrm{enc}}^M=\frac{\|\Delta_M-\Pi'\Delta_M\Pi'\|_1}{\|\Delta_M\|_1}\to0,
+\qquad \Delta_M=U_M|\phi_N\rangle\langle\phi_N|U_M^*-|\phi_N\rangle\langle\phi_N|,
+\]
+as $N\to\infty$, where $\Delta_M\ne0$ is required for $\eta_{\mathrm{enc}}^M$
+to be defined.  The effect $E$ is infrared-admissible if
+$\eta_{\mathrm{op}}(E)\to0$.
+\end{definition}
+
+For the operations of this paper all denominators are non-zero for every
+$N\ge2$ (Theorem~\ref{thm:admissible}).
+
+In words: acting on anything in the infrared band, an admissible operation
+leaves only a vanishing fraction of its output outside the wider band
+$\Pi'$.  A strictly local gate cannot do this.
+
+\begin{lemma}[Single-site operations are ultraviolet]\label{lem:point}
+If $X\Pi\ne0$ and $\operatorname{ran}X\subseteq\ell^2(\{x_0\};\C^2)$ for a
+single site $x_0$, then
+$\eta_{\mathrm{op}}(X)=\sqrt{1-\kappa'_N}\to1$, where
+$\kappa'_N=(6\pi^2N^{3/2})^{-1}$.
+\end{lemma}
+
+\begin{proof}
+For every vector $e_{x_0}\otimes\chi$,
+$\|\Pi'(e_{x_0}\otimes\chi)\|^2=\mu(\{|p|\le\Lambda'_N\})=(\Lambda'_N)^3/(6\pi^2)$.
+Hence every vector in $\operatorname{ran}X$ has exactly the fraction
+$1-\kappa'_N$ of its squared norm outside $\Pi'$.
+\end{proof}
+
+This is the reason the encoder is spread over a region of size $O(N)$ with
+a smooth profile.  A pointlike phase gate, such as $I-2P_{x_0}$, is
+excluded by Lemma~\ref{lem:point}.  The regional operations pass:
+
+\begin{theorem}[Admissibility]\label{thm:admissible}
+Let $K_e=\frac\pi2(2+8\sqrt3\pi)$, $K_d=\frac\pi2(1+16\sqrt3)$ and
+$m=11/(560\pi^2\,32^3)$.  For all $N\ge32$, all four $M$ and all four
+$M_B$,
+\[
+\eta_{\mathrm{op}}(U_M-I)\le\frac{K_e}{\sqrt{(2-\sqrt2)m}}\,N^{-1/2},\qquad
+\eta_{\mathrm{enc}}^M\le\frac{K_e}{m\sqrt{2-\sqrt2}}\,N^{-1/2},\qquad
+\eta_{\mathrm{op}}(E)\le\frac{2K_d}{\sqrt m}\,N^{-1/2}.
+\]
+All denominators are non-zero for every $N\ge2$.
+\end{theorem}
+
+The constants are conservative.  The proof is in Section~\ref{sec:admissible}.
+
+\section{Results}\label{sec:results}
+
+\begin{theorem}[Explicit upper bound]\label{thm:upper}
+Let $N\ge2$ and $T_N=\|P_{\cB_N}S^NP_{\cA_N}\|$.  Then
+\[
+T_N\le9N^4e^{-JN},\qquad J=\bigl(1-\tfrac{\sqrt3}2\bigr)\log2\approx0.0929 .
+\]
+Consequently, for every unitary $U$ acting as the identity outside
+$\cA_N\otimes\C^2$, every one-particle state and every effect in $\cB_N$,
+\[
+\delta\le D_B\le4T_N\le36N^4e^{-JN}.
+\]
+\end{theorem}
+
+\begin{remark}[Formal verification]
+Theorem~\ref{thm:upper} is machine-checked in Lean~4 with Mathlib
+(\texttt{formal/} in~\cite{Repo}), for every $N\ge2$ and without
+additional axioms.  This covers the kernel bound, the geometry
+\eqref{eq:separation}, the counting of lattice points, the operator bound on
+$T_N$, and the step $\delta\le4T_N$.  The formal proof bounds the matrix
+powers through Cayley--Hamilton and entrywise estimates instead of
+Lemma~\ref{lem:schur}, and obtains the sharper constant
+$T_N\le4N^4e^{-JN}$.  Both constants are valid; the proof in
+Section~\ref{sec:upper} keeps the constant $9$ that the elementary
+Lemma~\ref{lem:schur} gives.  The identification of Bob's amplitudes with the
+restricted walk, and the second-quantized distance $D_B$, are not
+formalized.
+\end{remark}
+
+For $\xi\in\R^3$ put $\Phi(\xi)=\arcosh\bigl(\prod_{j=1}^3\cosh\xi_j\bigr)$
+and define the rate function
+\begin{equation}\label{eq:rate}
+I(v)=\sup_{\xi\in\R^3}\bigl[\xi\cdot v-\Phi(\xi)\bigr].
+\end{equation}
+Let $V_{\mathrm{reg}}=(1,1,1)+\overline B(0,\tfrac12)$.  This is the set of
+velocities $(y-x)/N$ for $x,y$ in the continuum balls underlying
+$\cA_N,\cB_N$.
+
+\begin{theorem}[Regional rate]\label{thm:rate}
+\begin{enumerate}[label=(\alph*)]
+\item $I$ is convex, $I=0$ on $\overline B(0,1)$, $I>0$ outside it, and
+  $I=+\infty$ outside $[-1,1]^3$.
+\item On $V_{\mathrm{reg}}$, $I$ has the unique minimiser
+  $v_*=\alpha(1,1,1)$, $\alpha=1-\frac1{2\sqrt3}$.  The corresponding dual
+  tilt is $\xi_*=t_*(1,1,1)$, where $t_*>0$ is the unique solution of
+  $\alpha=\nabla_1\Phi(t,t,t)$.  Moreover
+  \[
+  K_*:=I(v_*)=3\alpha t_*-\arcosh(\cosh^3t_*),\qquad
+  \cosh^2t_*=\frac{\alpha\bigl(\alpha+\sqrt{4-3\alpha^2}\bigr)}{2(1-\alpha^2)} .
+  \]
+\item $J<K_*<\log4$.  Numerically $t_*=0.7357528144\ldots$ and
+  $K_*=0.1905189296\ldots$.
+\item For all $N\ge2$ and all $(x,y)\in\cA_N\times\cB_N$,
+  \[
+  \|G_N(y-x)\|\le\bigl(1+4e^{3t_*-\Phi_*}N\bigr)e^{-K_*N},\qquad \Phi_*=\Phi(\xi_*),
+  \]
+  and hence $\delta\le D_B\le4N^3(1+10N)e^{-K_*N}$.
+\end{enumerate}
+\end{theorem}
+
+The main result identifies the exact leading behaviour of every signal in
+the family.  Write $\theta_N=\{\sqrt3N/4\}\in[0,1)$ for the fractional part.
+
+\begin{theorem}[Leading asymptotics]\label{thm:main}
+For each of the sixteen pairs $(M,M_B)$ there is a continuous, $1$-periodic,
+real function $C_{M,M_B}(\theta)$ such that, as $N\to\infty$,
+\[
+L_{M,M_B}(N)=e^{-K_*N}N^{-13/2}\Bigl(C_{M,M_B}(\theta_N)+O(N^{-1/2})\Bigr).
+\]
+Explicitly,
+\begin{equation}\label{eq:C}
+C_{M,M_B}(\theta)=\cK\,c_r\bigl[\Gamma_+(\theta)\,\ell_0+\Gamma_-(\theta)\,\ell_\pi\bigr],
+\end{equation}
+with the constants $\cK$, $c_r$, the functions $\Gamma_\pm$ and the numbers
+$\ell_0,\ell_\pi$ defined in Section~\ref{sec:asymptotics}.  For every pair,
+\[
+C_{M,M_B}(\theta)=\overline C_{M,M_B}\bigl(1+\vartheta_{M,M_B}(\theta)\bigr),
+\qquad \sup_\theta|\vartheta_{M,M_B}(\theta)|\le1.47\times10^{-3},
+\qquad \overline C_{M,M_B}\ne0,
+\]
+with the values in Table~\ref{tab:C}.  Consequently, for every pair,
+\[
+\delta_{M,M_B}(N)=\bigl|C_{M,M_B}(\theta_N)\bigr|\,N^{-13/2}\,e^{-K_*N}\bigl(1+O(N^{-1/2})\bigr),
+\]
+and $\delta_{M,M_B}(N)>0$ for all $N$ larger than some finite $N_*$.
+\end{theorem}
+
+Throughout, the operational claim concerns the twelve Pauli pairs,
+$M\in\{\sigma_1,\sigma_2,\sigma_3\}$.  The four pairs with $M=I$ are
+included as reference controls.  Theorem~\ref{thm:main} and
+Table~\ref{tab:C} cover all sixteen pairs.
+
+The constants implicit in the $O(N^{-1/2})$ terms are finite but not
+explicit, and neither is $N_*$.  Theorem~\ref{thm:main} therefore does not
+assert $\delta_{M,M_B}(N)>0$ at any specified $N$.  It also does not say from
+which $N$ on the leading term is numerically accurate
+(Section~\ref{sec:discussion}).
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llrr}
+\toprule
+$M$ & $M_B$ & $\overline C_{M,M_B}$ & $\sup_\theta|C/\overline C-1|$\\
+\midrule
+$I$ & $I$ & $-0.0752752093$ & $1.47\cdot10^{-3}$\\
+$I$ & $P_1$ & $+1.2072650683$ & $1.09\cdot10^{-3}$\\
+$I$ & $P_2$ & $+0.8164098576$ & $1.08\cdot10^{-3}$\\
+$I$ & $P_3$ & $-0.0752752093$ & $1.47\cdot10^{-3}$\\
+$\sigma_1$ & $I$ & $-3.7206303938$ & $1.05\cdot10^{-3}$\\
+$\sigma_1$ & $P_1$ & $-1.5567800857$ & $1.06\cdot10^{-3}$\\
+$\sigma_1$ & $P_2$ & $-2.8203960182$ & $1.02\cdot10^{-3}$\\
+$\sigma_1$ & $P_3$ & $-0.1776542932$ & $1.05\cdot10^{-3}$\\
+$\sigma_2$ & $I$ & $-2.9389199724$ & $1.05\cdot10^{-3}$\\
+$\sigma_2$ & $P_1$ & $-0.5846543741$ & $1.02\cdot10^{-3}$\\
+$\sigma_2$ & $P_2$ & $-1.7729950974$ & $1.04\cdot10^{-3}$\\
+$\sigma_2$ & $P_3$ & $-0.1776542932$ & $1.05\cdot10^{-3}$\\
+$\sigma_3$ & $I$ & $+0.0752752093$ & $1.47\cdot10^{-3}$\\
+$\sigma_3$ & $P_1$ & $-1.2072650683$ & $1.09\cdot10^{-3}$\\
+$\sigma_3$ & $P_2$ & $-0.8164098576$ & $1.08\cdot10^{-3}$\\
+$\sigma_3$ & $P_3$ & $+0.0752752093$ & $1.47\cdot10^{-3}$\\
+\bottomrule
+\end{tabular}
+\caption{Mean leading coefficients $\overline C_{M,M_B}=\cK c_r\overline\Gamma\ell_0$
+and the uniform bound on their relative oscillation in $\theta$.  Values are
+certified by interval arithmetic (Appendix~\ref{app:numerics}).  Rows with
+$M=I$ are reference controls.}
+\label{tab:C}
+\end{table}
+
+\begin{corollary}\label{cor:suppressed}
+In this protocol the emergent light cone is not operationally sharp for
+infrared-admissible operations.  For each of the twelve Pauli pairs the response is
+non-perturbatively small: $\delta_{M,M_B}(N)=o(N^{-k})$ for every $k$.  It is
+nevertheless non-zero for all large $N$, with the exact rate $K_*$, the exact
+power $13/2$ and an explicit non-vanishing coefficient.
+\end{corollary}
+
+\begin{remark}\label{rem:features}
+Three features of Table~\ref{tab:C} were not assumed and come out of the
+computation.  First, $C(\sigma_3,\cdot)=-C(I,\cdot)$ at leading order;
+the two encoders differ only at lower orders.  Second, the three Pauli
+encoders are not equivalent: with $M_B=I$ they give three different
+coefficients.  Third, for $M=\sigma_2$ the two contributing saddles enter with
+the same sign for every detector: $\ell_0$ and $\ell_\pi$ of
+Appendix~\ref{app:numerics} have the same sign.  Since $\Gamma_+>0$ and
+$\Gamma_-\ge0$ (Lemma~\ref{lem:depth}), non-vanishing then follows without
+the margin estimate in the proof of Theorem~\ref{thm:main}, so for this
+encoder the non-cancellation mechanism is particularly transparent.  The smallest coefficients,
+$|\overline C|\approx0.0753$, occur for $M\in\{I,\sigma_3\}$ with
+$M_B\in\{I,P_3\}$.  For these two encoders with $M_B=I$, the diagnostics of
+Appendix~\ref{app:numerics} show that the next-order term, of size
+$N^{-17/2}e^{-K_*N}$, dominates numerically throughout the diagnostic range
+$N\le56$.
+\end{remark}
+
+\begin{remark}[Methodology]
+The protocol (regions, profiles, encoders, detectors, scalings
+$\Lambda_N=N^{-1}$, $\Lambda'_N=N^{-1/2}$ and the encoding angle $\pi/2$) was fixed before
+the asymptotic analysis and was not tuned afterwards.  The family of
+encoders and detectors is not exhaustive: a general generator
+$M=aI+b\cdot\sigma$ is not covered, because no symmetry of the walk relating
+the directions $\hat n\cdot\sigma$ has been established.
+\end{remark}
+
+\section{Proof of the upper bounds}\label{sec:upper}
+
+\subsection{An ellipse lemma}
+For $a\ge1$ let
+$E_a=\{z\in\C:(\re z)^2/a^2+(\im z)^2/(a^2-1)\le1\}$, where $E_1=[-1,1]$.
+These are the confocal ellipses with foci $\pm1$.  The Joukowski map
+$\lambda\mapsto(\lambda+\lambda^{-1})/2$ sends the circle $|\lambda|=r\ge1$
+onto $\partial E_{(r+r^{-1})/2}$.
+
+\begin{lemma}\label{lem:ellipse}
+Let $a,c\ge1$.  If $z\in\partial E_a$ and $w\in E_c$, then $zw\in E_{ac}$;
+consequently $E_aE_c\subseteq E_{ac}$.  If moreover $a,c>1$, then
+$zw\in\partial E_{ac}$ only if $z=\pm a$ and $w=\pm c$.
+\end{lemma}
+
+\begin{proof}
+If $c=1$, then $w\in[-1,1]$ and $zw\in E_a$ by convexity and symmetry.  If
+$a=1$, then $z\in[-1,1]$ and the same argument applies.  So let $a,c>1$.
+Write
+$z=a\cos p+i\sqrt{a^2-1}\sin p$ and $w=c\,x+i\sqrt{c^2-1}\,y$ with
+$x^2+y^2\le1$.  In the coordinates adapted to $E_{ac}$, the point $zw$
+corresponds to $L(x,y)^T$ with
+\[
+L=\begin{pmatrix}(ac)^{-1}&0\\0&(a^2c^2-1)^{-1/2}\end{pmatrix}
+\begin{pmatrix}a\cos p&-\sqrt{a^2-1}\sin p\\ \sqrt{a^2-1}\sin p&a\cos p\end{pmatrix}
+\begin{pmatrix}c&0\\0&\sqrt{c^2-1}\end{pmatrix}.
+\]
+With $A=a^2$, $C=c^2$ and $u=\cos^2p$, a direct computation gives
+\[
+(I-L^TL)_{11}=\frac{(1-u)(C-1)}{AC-1},\qquad
+\det(I-L^TL)=\frac{(C-1)(1-u)\bigl[A-1+C(1-u)\bigr]}{AC(AC-1)} .
+\]
+Both are non-negative, so $I-L^TL\ge0$ by Sylvester's criterion and
+$\|L\|\le1$.  If $u<1$, both are positive, so $\|L\|<1$ and $zw$ is
+interior.  If $u=1$, then $z=\pm a$ and
+\[
+L=\pm\operatorname{diag}\Bigl(1,\ \frac{a\sqrt{c^2-1}}{\sqrt{a^2c^2-1}}\Bigr),
+\]
+whose second entry is $<1$.  Hence $|L(x,y)^T|=1$ forces $y=0$ and $|x|=1$,
+that is, $w=\pm c$.
+\end{proof}
+
+\begin{lemma}\label{lem:specrad}
+For $\eta\in\R^3$ and $\xi\in\R^3$,
+$\rho\bigl(S(\eta-i\xi)\bigr)\le e^{\Phi(\xi)}$.  If all $\xi_j\ne0$, equality
+holds if and only if $\eta\in\Sigma:=\{0,\pi\}^3$ modulo $2\pi$.
+\end{lemma}
+
+\begin{proof}
+$\cos(\eta_j-i\xi_j)=\cos\eta_j\cosh\xi_j+i\sin\eta_j\sinh\xi_j\in\partial E_{\cosh\xi_j}$.
+By Lemma~\ref{lem:ellipse} applied twice,
+$f(\eta-i\xi)=\prod_j\cos(\eta_j-i\xi_j)\in E_{\prod\cosh\xi_j}$.  When all
+$\xi_j\ne0$, it lies on the boundary only if every factor is a real vertex,
+that is, only if every $\sin\eta_j=0$.  The eigenvalues $\lambda^{\pm1}$ of
+the unimodular matrix $S(\eta-i\xi)$ satisfy $(\lambda+\lambda^{-1})/2=f$.
+If $|\lambda|=r\ge1$, then $f\in\partial E_{(r+r^{-1})/2}$.  Since the
+ellipses are nested, $(r+r^{-1})/2\le\prod\cosh\xi_j$, which is
+$r\le e^{\Phi(\xi)}$, with strict inequality when $f$ is interior.  On
+$\Sigma$, $f=\pm\prod\cosh\xi_j$ is real and equality holds.
+\end{proof}
+
+\begin{lemma}[Powers without a gap]\label{lem:schur}
+Let $T$ be a $2\times2$ matrix with $\rho(T)\le e^{\varkappa}$ and
+$\|T\|\le\beta$.  Then $\|T^N\|\le e^{N\varkappa}+\beta Ne^{(N-1)\varkappa}$.
+\end{lemma}
+
+\begin{proof}
+Take a unitary Schur form $T=V\begin{psmallmatrix}\lambda_1&b\\0&\lambda_2\end{psmallmatrix}V^*$,
+so $|b|\le\|T\|$.  The upper-right entry of the $N$-th power is
+$b\sum_{j=0}^{N-1}\lambda_1^j\lambda_2^{N-1-j}$, also when
+$\lambda_1=\lambda_2$.  The diagonal part has norm
+$\max_j|\lambda_j|^N$.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:upper}}
+Since the integrand in \eqref{eq:kernel} is entire and $2\pi$-periodic in
+each variable, the contour can be shifted to $p=\eta-i\xi$ for any
+$\xi\in\R^3$ without boundary terms:
+\begin{equation}\label{eq:tilt}
+G_N(d)=e^{-\xi\cdot d}\int_{\T^3}e^{-i\eta\cdot d}\,S(\eta-i\xi)^N\,d\mu(\eta).
+\end{equation}
+Take $\xi=tu$ with $t=\log2$, so $\cosh^3t=125/64$.  Lemma~\ref{lem:specrad}
+gives
+\[
+\rho\bigl(S(\eta-itu)\bigr)\le\exp\arcosh(125/64)<4,
+\]
+because $125/64<17/8=\cosh\log4$.  By Lemma~\ref{lem:jumps},
+\[
+\|S(\eta-itu)\|\le\sum_d\|S_d\|e^{t|u\cdot d|}\le4e^{3t}=32 .
+\]
+Lemma~\ref{lem:schur}, with the cruder bound $|\lambda_j|\le4$, gives
+$\|S(\eta-itu)^N\|\le4^N+32N4^{N-1}\le9N4^N$.  With
+\eqref{eq:separation},
+\[
+\|G_N(y-x)\|\le9N\exp\bigl[-t\,u\cdot(y-x)+N\log4\bigr]\le9Ne^{-JN}
+\]
+for all $(x,y)\in\cA_N\times\cB_N$.  The Schur test with $|\cA_N|,|\cB_N|\le N^3$
+gives $T_N\le9N^4e^{-JN}$.
+
+Let $v_b=P_BS^NU^{(b)}\psi$ for a one-particle state $\psi$.  Then
+$v_1-v_0=P_BS^NP_A(U-I)\psi$, so $\|v_1-v_0\|\le2T_N$.  The difference of
+Bob's reduced states is $X=|v_1\rangle\langle v_1|-|v_0\rangle\langle v_0|$ on
+the one-particle block, together with $-\tr X$ on the vacuum block.  Hence
+$D_B=\frac12(|\tr X|+\|X\|_1)\le\|X\|_1\le(\|v_1\|+\|v_0\|)\|v_1-v_0\|\le4T_N$.
+Mixed states follow by convexity, and $\delta\le D_B$ holds for every effect.
+\qed
+
+\subsection{Proof of Theorem~\ref{thm:rate}}
+(a) $I$ is a supremum of affine functions, so it is convex, and $I\ge0$
+(take $\xi=0$).  The inequality
+$\cosh\sqrt{a^2+b^2}\le\cosh a\cosh b$, applied twice, gives
+$\Phi(\xi)\ge|\xi|$, so $I=0$ on $\overline B(0,1)$.  Since
+$\Phi(\xi)=|\xi|+O(|\xi|^3)$, $I(v)>0$ for $|v|>1$.  Finally $I=+\infty$ outside
+$\operatorname{conv}F$ by \cite[Lemma~4.1]{CJWW}.  Directly, if
+$v_j>1$, take $\xi=se_j$ and let $s\to\infty$, using $\Phi(se_j)=s$.
+
+(b) $\Phi$ is smooth where $\Pi(\xi)=\prod_j\cosh\xi_j>1$, with
+\[
+\nabla\Phi(\xi)=\frac{\Pi(\xi)}{\sqrt{\Pi(\xi)^2-1}}\,(\tanh\xi_1,\tanh\xi_2,\tanh\xi_3).
+\]
+On the diagonal, $h(t)=\nabla_1\Phi(t,t,t)$ tends to $1/\sqrt3$ as
+$t\to0^+$ and to $1$ as $t\to\infty$.  It is strictly increasing, since
+$3h'(t)=u^T\Hess\Phi(t,t,t)\,u=3q_n(t)>0$, where $q_n(t)$ is given by the
+formula of Lemma~\ref{lem:symbol}(d) with $c_*$ replaced by $\cosh t>1$.  Since
+$\alpha\in(1/\sqrt3,1)$, there is a unique $t_*>0$ with $h(t_*)=\alpha$, and
+then $\nabla\Phi(\xi_*)=v_*$.  Solving $h(t)=\alpha$ for $\cosh^2t$ gives the
+stated closed form.  By the definition of $I$, for every $v$,
+\[
+I(v)\ge\xi_*\cdot v-\Phi(\xi_*)=I(v_*)+\xi_*\cdot(v-v_*)
+=I(v_*)+\sqrt3\,t_*\bigl(\uhat\cdot v-|v_*|\bigr),
+\qquad \uhat=u/\sqrt3 .
+\]
+On $V_{\mathrm{reg}}$ we have $\uhat\cdot v\ge\sqrt3-\frac12=|v_*|$, with
+equality only at $v=v_*$.  Hence $v_*$ is the unique minimiser.
+
+(c) The tilt $\xi=(\log2)u$ gives
+$I(v_*)\ge3\alpha\log2-\arcosh(125/64)>(3-\tfrac{\sqrt3}2)\log2-\log4=J$.
+Also $\xi_*\cdot v_*<\xi_*\cdot u$ because $\alpha<1$ and $t_*>0$, so
+$I(v_*)<\xi_*\cdot u-\Phi(\xi_*)\le I(u)$.  Along the diagonal,
+$3t-\arcosh(\cosh^3t)\uparrow\log4$, and $I(u)=\log4$ is also the exact
+vertex rate of Proposition~\ref{prop:geometry}(c).  The numerical values are
+enclosed by interval arithmetic.
+
+(d) Apply \eqref{eq:tilt} with $\xi=\xi_*$.  By Lemma~\ref{lem:specrad},
+$\rho(S(\eta-i\xi_*))\le e^{\Phi_*}$ for all $\eta$.  By
+Lemma~\ref{lem:jumps}, $\|S(\eta-i\xi_*)\|\le4e^{3t_*}$.
+Lemma~\ref{lem:schur} gives
+$\sup_\eta\|S(\eta-i\xi_*)^N\|\le e^{N\Phi_*}(1+4e^{3t_*-\Phi_*}N)$.  For
+$(x,y)\in\cA_N\times\cB_N$, \eqref{eq:separation} and $\xi_*\parallel\uhat$
+give $\xi_*\cdot(y-x)\ge N\,\xi_*\cdot v_*$, and
+$N\xi_*\cdot v_*-N\Phi_*=NK_*$.  Numerically $4e^{3t_*-\Phi_*}<9.2$, so
+$1+4e^{3t_*-\Phi_*}N\le1+10N$, and the Schur test concludes as before.
+\qed
+
+\section{Proof of admissibility}\label{sec:admissible}
+
+\begin{lemma}\label{lem:IR1}
+Let $a:\Z^3\to M_2(\C)$ satisfy $\sup\|a\|\le A$ and
+$\|a(x+e_j)-a(x)\|\le L/N$ for all $x,j$.  Then
+\[
+\|(I-\Pi')\,a\,\Pi\|\le\tfrac\pi2(A+\sqrt3L)\,N^{-1/2}.
+\]
+\end{lemma}
+
+\begin{proof}
+Let $D_j\xi(x)=\xi(x+e_j)-\xi(x)$.  On the complement of $\Pi'$,
+\[
+\sum_j|e^{ip_j}-1|^2=\sum_j4\sin^2(p_j/2)\ge(2/\pi)^2|p|^2\ge(2/\pi)^2N^{-1},
+\]
+using $\sin s\ge2s/\pi$ on $[0,\pi/2]$.  By Plancherel,
+$\|(I-\Pi')\xi\|\le\frac\pi2N^{1/2}(\sum_j\|D_j\xi\|^2)^{1/2}$.  For
+$\psi=\Pi\psi$, $(\sum_j\|D_j\psi\|^2)^{1/2}\le N^{-1}\|\psi\|$.  The
+discrete product rule
+$D_j(a\psi)=a(\cdot+e_j)D_j\psi+(D_ja)\psi$ and Minkowski's inequality give
+$(\sum_j\|D_j(a\psi)\|^2)^{1/2}\le(A+\sqrt3L)N^{-1}\|\psi\|$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:admissible}]
+\emph{Numerators.}  $|\nabla F_N|=64|x|(1-16|x|^2/N^2)/N^2\le16/N$ inside
+$\cA_N$, and the gradient vanishes on the sphere, so $F_N$ is
+$16/N$-Lipschitz on $\Z^3$.  For $a_M=U_M-I$ we get $A=2$ and $L=8\pi$,
+because $\|\frac{d}{dF}e^{i\pi FM/2}\|=\pi/2$.  For $E=h_N\otimes M_B$ we get
+$A=1$ and $L=16$.  Lemma~\ref{lem:IR1} bounds the numerators by
+$K_eN^{-1/2}$ and $K_dN^{-1/2}$.  For $\eta_{\mathrm{enc}}$, write
+$v=U_M\phi_N$, $w=\Pi'v$ and $r=v-w=(I-\Pi')a_M\phi_N$.  Since
+$\Pi'\phi_N=\phi_N$, $\Delta_M-\Pi'\Delta_M\Pi'=|r\rangle\langle v|+|w\rangle\langle r|$,
+whose trace norm is at most $2\|r\|\le2K_eN^{-1/2}$.
+
+\emph{Denominators.}  For $|x|\le N$ and $|p|\le N^{-1}$, $\cos(p\cdot x)\ge\frac12$.
+Hence $\varphi_N(x)\ge\frac12\sqrt{11/(140\pi^2)}\,N^{-3/2}$ for $|x|\le N$.
+Let $N\ge32$, and consider two auxiliary sets.  The first is
+$Q_{\mathrm{in}}=\{|x_j|\le N/32\}$, with at least $(N/32)^3$ sites, on which
+$F_N\ge(61/64)^2>\frac12$.  The second is
+$Q_{\mathrm{out}}=\{N/2\le x_1\le5N/8,\ 0\le x_2,x_3\le N/8\}$, with at least
+$(N/16)^3$ sites, on which $F_N=0$ and $|x|<N$.  Each carries resource
+weight at least $m$.
+
+On $Q_{\mathrm{in}}$, $\frac\pi2F_N\in[\frac\pi4,\frac\pi2]$, so
+$a_M^*a_M=2(1-\cos\frac\pi2F_N)I\ge(2-\sqrt2)I$.  Thus
+$\|a_M\Pi\|\ge\|a_M\phi_N\|\ge\sqrt{(2-\sqrt2)m}$.  For the detector, test
+on the resource translated to $N(1,1,1)$, with internal state a
+$+1$ eigenvector of $M_B$.  This test vector lies in $\operatorname{ran}\Pi$,
+and it gives $\|E\Pi\|\ge\frac12\sqrt m$.
+
+For $\eta_{\mathrm{enc}}$, $\|\Delta_M\|_1=2\sqrt{1-|z|^2}$ with
+$z=\sum_xw_xt_x$, $w_x=|\varphi_N(x)|^2$ and
+$t_x=\langle\dn|e^{i\pi F_N(x)M/2}|\dn\rangle$.  This gives $t_x=e^{i\pi F_N/2}$
+for $M=I$, $\cos(\pi F_N/2)$ for $M=\sigma_{1,2}$, and $e^{-i\pi F_N/2}$ for
+$M=\sigma_3$.  Then
+$1-|z|^2=\sum_{x,y}w_xw_y(1-\re t_x\bar t_y)$.  All terms are non-negative,
+and for $x\in Q_{\mathrm{in}}$, $y\in Q_{\mathrm{out}}$ one has
+$\re t_x\bar t_y=\cos(\frac\pi2F_N(x))\le1/\sqrt2$.  Counting both orders
+gives $1-|z|^2\ge(2-\sqrt2)m^2$.  For $2\le N<32$ the same argument, with
+the origin and the site $(\lfloor N/4\rfloor+1,0,0)$, shows that the
+denominators are non-zero.
+\end{proof}
+
+\section{Proof of the leading asymptotics}\label{sec:asymptotics}
+
+Throughout, $C$ denotes a finite constant independent of $N$ whose value may
+change from line to line.  The constants $r_0,c,c_3,c_P$ below are finite
+but not made explicit.
+
+\subsection{Reduction to one interference functional}
+Let $P_B$ be the restriction to $\cB_N$ (not a spectral projection).  Write
+$\widetilde r=S^N\phi_N$ for the free evolution of the resource on all of
+$\Z^3$, and put
+\[
+r=P_B\widetilde r,\qquad a_c=P_BS^N(c_N\varphi_N\dn),\qquad
+a_\up=P_BS^N(s_N\varphi_N\up),\qquad a_\dn=P_BS^N(s_N\varphi_N\dn).
+\]
+Since $\sigma_1\dn=\up$, $\sigma_2\dn=-i\up$ and $\sigma_3\dn=-\dn$, Bob's
+encoded amplitude $P_B\psi_1$ is $v+ia_\dn$, $v+ia_\up$, $v+a_\up$ or
+$v-ia_\dn$ for $M=I,\sigma_1,\sigma_2,\sigma_3$, where $v=r+a_c$.  Expanding
+\eqref{eq:signal} with $E$ supported in $\cB_N$,
+\begin{equation}\label{eq:Lexp}
+\begin{aligned}
+L_{I}&=2\re\langle r,Ea_c\rangle-2\im\langle r,Ea_\dn\rangle+Q_I, &
+L_{\sigma_3}&=2\re\langle r,Ea_c\rangle+2\im\langle r,Ea_\dn\rangle+Q_{\sigma_3},\\
+L_{\sigma_1}&=2\re\langle r,Ea_c\rangle-2\im\langle r,Ea_\up\rangle+Q_{\sigma_1}, &
+L_{\sigma_2}&=2\re\langle r,Ea_c\rangle+2\re\langle r,Ea_\up\rangle+Q_{\sigma_2}.
+\end{aligned}
+\end{equation}
+Each $Q_M$ is a sum of terms quadratic in $(a_c,a_\up,a_\dn)$.  For
+example, $Q_I=\langle a_c,Ea_c\rangle+\langle a_\dn,Ea_\dn\rangle-2\im\langle a_c,Ea_\dn\rangle$.
+Positivity of $E$ does not fix the sign of $L$, because the interference
+terms can have either sign.
+
+By Theorem~\ref{thm:rate}(d), $a_c,a_\up,a_\dn$ have $\ell^2$-norm at most
+$T_N=O(N^4e^{-K_*N})$, so $Q_M=O(N^{8}e^{-2K_*N})$.  The free tail is only polynomially
+small (Lemma~\ref{lem:tail}).  The $e^{-K_*N}$ sector therefore consists of
+the linear interference terms.  Define, for $\chi\in\{\up,\dn\}$,
+\[
+\mathcal T_\chi(N)=e^{K_*N}\,\bigl\langle r,\,E\,S^N(s_N\varphi_N\chi)\bigr\rangle .
+\]
+Theorem~\ref{thm:main} follows from Theorem~\ref{thm:T} below.  The piece
+$\langle r,Ea_c\rangle$ is $O(N^{-17/2}e^{-K_*N})$ by the same argument,
+because $c_N=\Theta(N^{-4})$ in the relevant layer while $s_N=\Theta(N^{-2})$.
+
+\subsection{Exact tilted representation}
+Let $R=N/4$, $x_*=R\uhat$ and $y_*=N u-R\uhat$, so that $y_*-x_*=Nv_*$.  For
+$f$ supported in $\cA_N$ and $w$ supported in $\cB_N$, put
+\[
+\mathfrak A_f(\eta)=\sum_xe^{i\eta\cdot(x-x_*)}e^{\xi_*\cdot(x-x_*)}f(x),\qquad
+\mathfrak B_w(\eta)=\sum_ye^{-i\eta\cdot(y-y_*)}e^{-\xi_*\cdot(y-y_*)}w(y)^\dagger .
+\]
+Let $\widetilde S_N(\eta)=e^{-N\Phi_*}S(\eta-i\xi_*)^N$.  By \eqref{eq:tilt}
+with $\xi=\xi_*$, and using $\xi_*\cdot v_*-\Phi_*=K_*$,
+\begin{equation}\label{eq:exactrep}
+e^{K_*N}\sum_yw(y)^\dagger(S^Nf)(y)=\int_{\T^3}\mathfrak B_w(\eta)\,\widetilde S_N(\eta)\,\mathfrak A_f(\eta)\,e^{-iN\eta\cdot v_*}\,d\mu(\eta).
+\end{equation}
+This identity is exact: the sums are finite and no poles are crossed.
+
+\subsection{The tilted symbol}\label{ssec:tilted}
+\begin{lemma}\label{lem:symbol}
+\begin{enumerate}[label=(\alph*)]
+\item $S(-i\xi)$ is Hermitian for every real $\xi$, with $\det=1$.  At
+  $\xi_*$, with $c_*=\cosh t_*$ and $s_*=\sinh t_*$,
+  \[
+  S(-i\xi_*)=\begin{pmatrix}c_*^2e^{-t_*}&-(1+ic_*)s_*\\-(1-ic_*)s_*&c_*^2e^{t_*}\end{pmatrix},
+  \]
+  with eigenvalues $e^{\pm\Phi_*}$, $e^{\Phi_*}=c_*^3+\sqrt{c_*^6-1}=3.97314\ldots$.
+  The orthogonal projector onto the $e^{\Phi_*}$-eigenspace is
+  \[
+  P=\frac12\begin{pmatrix}1-\alpha&-(1+ic_*)\alpha/c_*^2\\-(1-ic_*)\alpha/c_*^2&1+\alpha\end{pmatrix}.
+  \]
+\item For all $p\in\C^3$: $S(p+\pi e_1)=-S(p)$, $S(p+\pi e_3)=-\sigma_3S(p)\sigma_3$,
+  $S(p+\pi e_2)=-\sigma_3S(p)^T\sigma_3$ and $S(p+\pi(1,1,1))=-S(p)^T$.
+\item The character $x\mapsto e^{i\eta_0\cdot x}$, $\eta_0\in\Sigma$,
+  restricted to $\Lambda_0=\{u\in\Z^3:u_1+u_2+u_3=0\}$ is trivial if and only if
+  $\eta_0\in\{0,\pi u\}$.
+\item There is $r_0>0$ such that, for $|\eta|\le r_0$,
+  $S(\eta-i\xi_*)=\lambda(\eta)P(\eta)+\lambda(\eta)^{-1}(I-P(\eta))$ with
+  $\lambda,P$ analytic, $P(0)=P$, $\|P(\eta)-P\|\le c_P|\eta|$ and
+  \[
+  \lambda(\eta)=\exp\Bigl(\Phi_*+iv_*\cdot\eta-\tfrac12\eta^TQ\eta+\rho_3(\eta)\Bigr),\qquad
+  |\rho_3(\eta)|\le c_3|\eta|^3\le\tfrac14\eta^TQ\eta .
+  \]
+  Here $Q=\Hess\Phi(\xi_*)=q_t(I-\uhat\uhat^T)+q_n\uhat\uhat^T$ with
+  \[
+  q_t=\frac{c_*}{D_*}=0.68956\ldots,\qquad
+  q_n=\frac{c_*}{D_*}\frac{(c_*^2-1)(c_*^2+2)}{c_*^4+c_*^2+1}=0.30338\ldots,\qquad D_*=\sqrt{c_*^6-1}.
+  \]
+\item Outside $\bigcup_{\eta_0\in\Sigma}B(\eta_0,r_0)$,
+  $\|\widetilde S_N(\eta)\|\le CNe^{-cN}$ for some $c>0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) and (b) are identities between trigonometric polynomials and are checked
+by expansion.  (c): $\Lambda_0$ is generated by $e_1-e_2$ and $e_2-e_3$, so
+the character is trivial on it if and only if
+$\eta_{0,1}\equiv\eta_{0,2}\equiv\eta_{0,3}\pmod{2\pi}$.  (d): the
+eigenvalues of $S(\eta-i\xi_*)$ are
+$\exp(\pm\arcosh f(\eta-i\xi_*))$ and
+$f(\eta-i\xi)=\prod_j\cosh(\xi_j+i\eta_j)$.  Hence
+$\log\lambda(\eta)=\Phi(\xi_*+i\eta)$, which is holomorphic near $\eta=0$
+because $\Pi(\xi_*)>1$.  Taylor expansion gives $\nabla\Phi(\xi_*)=v_*$ and
+$\Hess\Phi(\xi_*)=Q$.  The explicit Hessian is
+$\Hess\Phi=\frac{\Pi}{D}\operatorname{diag}(\operatorname{sech}^2\xi_j)-\frac{\Pi}{D^3}(\tanh\xi_i\tanh\xi_j)$
+with $D=\sqrt{\Pi^2-1}$.  The eigenvalues $\lambda^{\pm1}$ are separated
+by the gap $e^{2\Phi_*}\approx15.8$, so the spectral projector is analytic.
+(e): by Lemma~\ref{lem:specrad} and compactness,
+$\rho(S(\eta-i\xi_*))\le e^{\Phi_*-c'}$ away from $\Sigma$.  Conclude with
+Lemma~\ref{lem:schur}.
+\end{proof}
+
+By (b), near $\pi u$ we have $S(\pi u+\eta-i\xi_*)^N=(-1)^N(S(\eta-i\xi_*)^N)^T$,
+whose Perron projector is $P^T=\overline P$.  The other six points of
+$\Sigma$ have the same spectral radius, but by (c) their characters are
+non-trivial on the lattice planes $u\cdot x=k$.  This is why only $0$ and
+$\pi u$ contribute at leading order (Lemma~\ref{lem:layers}(d)).
+
+\subsection{Lattice-plane coordinates and profiles}
+The planes $\{u\cdot x=k\}$ are orthogonal to $\xi_*$, and each is a translate
+of the two-dimensional lattice $\Lambda_0$, of covolume $\sqrt3$.  Write
+Alice's sites as $x=x_*-\delta\uhat+u_\perp$ with $u_\perp\perp\uhat$ and
+depth $\delta=(\sqrt3R-u\cdot x)/\sqrt3$.  Since $u\cdot x\in\Z$,
+\[
+\sqrt3\,\delta=\theta_N+j,\qquad j\in\Z_{\ge0},\qquad \theta_N=\{\sqrt3R\}=\{\sqrt3N/4\}.
+\]
+Similarly $y=y_*+\delta'\uhat+u'_\perp$ with $\sqrt3\delta'=\theta_N+j'$, with
+the \emph{same} $\theta_N$.  Then
+$\xi_*\cdot(x-x_*)=-t_*(\theta_N+j)$ and $\xi_*\cdot(y-y_*)=t_*(\theta_N+j')$.
+Moreover $u\cdot(y-x)=3N-2\lfloor\sqrt3R\rfloor+j+j'$, so
+$(-1)^{N+u\cdot(y-x)}=(-1)^{j+j'}$.
+
+On the plane at depth $\delta$, exactly,
+\[
+F_N=\frac{64}{N^2}\varepsilon_\perp^2,\qquad
+\varepsilon_\perp=\delta-\frac{\delta^2}{2R}-\frac{|u_\perp|^2}{2R}\ \ (\ge0),
+\]
+and therefore
+$s_N=\frac{32\pi}{N^2}\varepsilon_\perp^2+O(N^{-6})$ and
+$c_N=-\frac{512\pi^2}{N^4}\varepsilon_\perp^4+O(N^{-8})$ for $\delta=O(1)$.  The
+same holds for $h_N$ with $\delta'$ and $u'_\perp$.  Replacing
+$\varepsilon_\perp$ by $\delta-|u_\perp|^2/2R$ costs a relative $O(N^{-1})$.
+
+\subsection{The free tail}
+\begin{lemma}\label{lem:tail}
+Uniformly in $y\in\Z^3$,
+$\widetilde r(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2})$, where
+\[
+R_0(w)=c_r\bigl[\mathcal I_0(|w|)\,I-\mathcal I_1(|w|)\,H_W(\hat w)\bigr]\dn,
+\]
+\[
+\mathcal I_0(\rho)=4\pi\int_0^1k^2(1-k^2)^2\cos k\;j_0(k\rho)\,dk,\qquad
+\mathcal I_1(\rho)=4\pi\int_0^1k^2(1-k^2)^2\sin k\;j_1(k\rho)\,dk .
+\]
+At the facing point $w_*=u-\uhat/4$, with $\rho_*=|w_*|=\sqrt3-\frac14$ and
+$\hat w_*=\uhat$, one has
+$R_0(w_*)=c_r\bigl(-\tfrac{\mathcal I_1}{\sqrt3}(1+i),\ \mathcal I_0+\tfrac{\mathcal I_1}{\sqrt3}\bigr)^T$,
+with $\mathcal I_0=0.716577\ldots>0$ and $\mathcal I_1=0.132252\ldots>0$.
+In particular $r(y)=N^{-3/2}R_0(y/N)+O(N^{-5/2})$ uniformly in $y\in\cB_N$,
+and $r=0$ outside $\cB_N$.
+\end{lemma}
+
+\begin{proof}
+For $|p|\le N^{-1}$, $S(p)=e^{-iH(p)}$ with $H$ Hermitian, analytic, and
+$H-H_W=O(|p|^2)$.  Duhamel's formula gives
+$\|S(p)^N-e^{-iNH_W(p)}\|\le CN|p|^2\le C/N$.  With $q=Np$,
+$e^{-iH_W(q)}=\cos|q|-i\sin|q|\,H_W(\hat q)$, and the angular integrals of
+$e^{-iq\cdot w}$ and $e^{-iq\cdot w}\hat q$ are $4\pi j_0$ and
+$-4\pi ij_1\hat w$.  The resource enters through $g(Np)$ and is not
+truncated.  The integrands defining $\mathcal I_0,\mathcal I_1$ are positive
+because $k\rho_*<\pi$.  The value of $H_W(\uhat)\dn=(1+i,-1)^T/\sqrt3$ follows
+by direct computation.
+\end{proof}
+
+The resource on Alice's sphere has the exact value
+$N^{3/2}\varphi_N=\Phi_0(\frac14)=c_rI_b$ with
+$I_b=16\pi\int_0^1k(1-k^2)^2\sin(k/4)\,dk$.  We write
+$\varphi_\partial=c_rI_b$.
+
+\subsection{Layer sums}
+Let $\Psi_\delta(\tau)=\int_{\R^2}(\delta-|\sigma|^2)_+^2e^{i\tau\cdot\sigma}\,d^2\sigma$,
+which is real and radial in $\tau$.  Define
+\[
+\cS_\pm(\tau;\theta)=\sum_{j\ge0}(\pm1)^je^{-t_*(\theta+j)}\,\Psi_{(\theta+j)/\sqrt3}(\tau),
+\qquad
+\Gamma_\pm(\theta)=\int_{\R^2}e^{-q_t|\tau|^2}\,\cS_\pm(\tau;\theta)^2\,d^2\tau .
+\]
+
+\begin{lemma}[Depth sums]\label{lem:depth}
+Let $c_g=2\pi/(3\sqrt3)$ and $s_\omega=t_*+i\omega$.  Then
+\[
+\cS_+=\sum_{n\in\Z}\hat g_\tau(2\pi n)e^{2\pi in\theta},\qquad
+\cS_-=\sum_{n\in\Z}\hat g_\tau\bigl(\pi(2n+1)\bigr)e^{i\pi(2n+1)\theta},\qquad
+\hat g_\tau(\omega)=c_g\,\frac{e^{-|\tau|^2/(4\sqrt3\,s_\omega)}}{s_\omega^4}.
+\]
+Consequently $|\cS_+-\hat g_\tau(0)|\le c_g/720$ and $|\cS_-|\le c_g/48$.
+Moreover
+\[
+\overline\Gamma:=\int e^{-q_t|\tau|^2}\hat g_\tau(0)^2d^2\tau=\frac{c_g^2}{t_*^8}\frac{\pi}{q_t+\frac1{2\sqrt3t_*}}=49.44186\ldots,
+\qquad |\Gamma_+-\overline\Gamma|\le\varepsilon_+,\qquad 0\le\Gamma_-\le\varepsilon_-,
+\]
+with
+$\varepsilon_+=2\frac{c_g}{720}\frac{c_g}{t_*^4}\frac{\pi}{q_t+1/(4\sqrt3t_*)}+\bigl(\frac{c_g}{720}\bigr)^2\frac\pi{q_t}=0.04917\ldots$
+and $\varepsilon_-=\bigl(\frac{c_g}{48}\bigr)^2\frac\pi{q_t}=0.00289\ldots$.
+\end{lemma}
+
+\begin{proof}
+Radially, $\Psi_\delta(\tau)=\pi H(\delta)$ with
+$H(\delta)=\int_0^\delta(\delta-s)^2J_0(|\tau|\sqrt s)\,ds$.  So $H'''=2J_0(|\tau|\sqrt\delta)$
+and $H(0)=H'(0)=H''(0)=0$.  Since
+$\int_0^\infty e^{-ps}J_0(|\tau|\sqrt s)\,ds=e^{-|\tau|^2/4p}/p$, the function
+$g_\tau(x)=e^{-t_*x}\Psi_{x/\sqrt3}(\tau)\mathbf 1_{x\ge0}$ has Fourier
+transform $\hat g_\tau$ as stated.  It is continuous, vanishing to third
+order at $x=0$, and $\hat g_\tau\in\ell^1(2\pi\Z)$.  Poisson summation is
+therefore exact.  The bounds use $|e^{-|\tau|^2/(4\sqrt3s)}|\le1$,
+$|s_{2\pi n}|\ge2\pi|n|$, $\sum_{n\ne0}(2\pi n)^{-4}=1/720$ and
+$\sum_n|\pi(2n+1)|^{-4}=1/48$.  The Gaussian integrals are elementary.
+\end{proof}
+
+\begin{lemma}[Layers]\label{lem:layers}
+Let $\chi\in\{\up,\dn\}$, $f=s_N\varphi_N\chi$, $w=h_N\,M_B\,r$ and
+$\tau=\sqrt{N/2}\,\eta_t$, where $\eta=\eta_n\uhat+\eta_t$ with
+$\eta_t\perp\uhat$.
+\begin{enumerate}[label=(\alph*)]
+\item $|\mathfrak A_f(\eta)|,\ \|\mathfrak B_w(\eta)\|\le CN^{-5/2}$ for all $\eta$.
+\item For $|\eta|\le r_0$,
+  \[
+  \mathfrak A_f(\eta)=N^{-5/2}\tfrac{16\pi}{\sqrt3}\varphi_\partial\bigl[\cS_+(\tau;\theta_N)+\mathcal E_A\bigr]\chi,\qquad
+  \mathfrak B_w(\eta)=N^{-5/2}\tfrac{32}{\sqrt3}\,R_0(w_*)^\dagger M_B\bigl[\cS_+(\tau;\theta_N)+\mathcal E_B\bigr],
+  \]
+  with $|\mathcal E_{A,B}|\le C(N^{-1/2}+|\eta_n|)$.
+\item Near $\pi u$ the same holds with $\cS_-$ in place of $\cS_+$.  The
+  alternating sign comes from the parity $(-1)^{N+u\cdot(y-x)}=(-1)^{j+j'}$,
+  combined with $S^N\mapsto(-1)^N(S^N)^T$.
+\item For $\eta_0\in\Sigma\setminus\{0,\pi u\}$ and $|\eta|\le r_0$,
+  $|\mathfrak A_f(\eta_0+\eta)|\le CN^{-4}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Decompose the sums into lattice planes.  On the plane at depth
+$\delta=(\theta_N+j)/\sqrt3$ the tilt weight is $e^{-t_*(\theta_N+j)}$.  The
+profile $s_N\varphi_N$ is supported in a disc of radius
+$\varrho=\sqrt{2R\delta-\delta^2}=O(\sqrt N)$ and has size $O(N^{-7/2}\delta^2)$.
+Planes with $\delta>R/2$ contribute $O(e^{-cN})$.  This gives (a).
+
+For (b), apply Poisson summation on each plane.  The $m=0$ term is
+$\frac1{\sqrt3}\int e^{i\eta_t\cdot u_\perp}G_0(u_\perp)\,d^2u_\perp$.  The
+terms $m\ne0$ are bounded by $\|\partial^3G_0\|_{\mathcal M}|2\pi m-\eta_t|^{-3}$,
+since the profile vanishes quadratically on the rim and its third
+derivative is a finite measure.  After the weighted depth sum, they give a
+relative error $O(N^{-3/2})$.  In the $m=0$ term, use the profile
+expansions, $\varphi_N=N^{-3/2}\varphi_\partial(1+O(|u_\perp|/N+\delta/N))$ and
+$|e^{-i\eta_n\delta}-1|\le|\eta_n|\delta$.  With the substitution
+$u_\perp=\sqrt{2R}\,\sigma$,
+\[
+\int e^{i\eta_t\cdot u_\perp}\Bigl(\delta-\frac{|u_\perp|^2}{2R}\Bigr)_+^2d^2u_\perp=2R\,\Psi_\delta(\tau).
+\]
+Collecting the factors
+$\frac1{\sqrt3}\cdot\frac{32\pi}{N^2}\cdot N^{-3/2}\varphi_\partial\cdot2R$ gives
+the prefactor of $\mathfrak A_f$.  For $\mathfrak B_w$ the factors are
+$\frac1{\sqrt3}\cdot\frac{64}{N^2}\cdot N^{-3/2}R_0(w_*)^\dagger\cdot2R$, using
+Lemma~\ref{lem:tail}, the smoothness of $R_0$ and $M_B^\dagger=M_B$.  (c)
+follows from Lemma~\ref{lem:symbol}(b) and the parity identity.  (d): by
+Lemma~\ref{lem:symbol}(c), the character is non-trivial on each plane.  The
+Poisson sum therefore has no $m=0$ term, and the remaining terms are
+$O(N^{-4})$.
+\end{proof}
+
+\subsection{Assembly}
+\begin{theorem}\label{thm:T}
+For $\chi\in\{\up,\dn\}$ and each $M_B$,
+\[
+\mathcal T_\chi(N)=N^{-13/2}\,\cK\,c_r\bigl[\Gamma_+(\theta_N)\,x_0+\Gamma_-(\theta_N)\,x_\pi\bigr]+O(N^{-7}),
+\]
+where $x_0=\tilde R^\dagger M_BP\chi$, $x_\pi=\tilde R^\dagger M_B\overline P\chi$,
+$\tilde R=R_0(w_*)/c_r$ and
+\[
+\cK=\frac{128}{3\pi^2}\sqrt{\frac{2\pi}{q_n}}\;\varphi_\partial=1.749269\ldots .
+\]
+\end{theorem}
+
+\begin{proof}
+Insert Lemmas~\ref{lem:symbol} and~\ref{lem:layers} into
+\eqref{eq:exactrep}.  Away from the balls $B(\eta_0,r_0)$ the contribution is
+$O(Ne^{-cN}N^{-5})$.  The six points of $\Sigma$ with non-trivial
+characters give $O(N^{-4}\cdot N^{-5/2}\cdot N^{-3/2})=O(N^{-8})$, using the
+Gaussian decay of $\widetilde S_N$.  Near $\eta_0\in\{0,\pi u\}$ we make
+three replacements.  First, $\widetilde S_Ne^{-iN\eta\cdot v_*}$ is replaced
+by $e^{-N\eta^TQ\eta/2}P$ (respectively $\overline P$), at cost
+$N^{-5}\int(c_P|\eta|+Nc_3|\eta|^3)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$.
+Second, the layers are replaced by their leading forms, at cost
+$N^{-5}\int(N^{-1/2}+|\eta_n|)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$.  Third,
+the integral is extended to $\R^3$, at cost $O(e^{-cNr_0^2})$.  What
+remains is
+\[
+N^{-5}\,\frac{512\pi}{3}\,\varphi_\partial\,c_r\,x_{0,\pi}\,\sqrt{\frac{2\pi}{Nq_n}}\;\frac2N\;(2\pi)^{-3}\int_{\R^2}e^{-q_t|\tau|^2}\cS_\pm^2\,d^2\tau .
+\]
+Here we used $d^2\eta_t=(2/N)d^2\tau$ and
+$N\eta^TQ\eta/2=Nq_n\eta_n^2/2+q_t|\tau|^2$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By \eqref{eq:Lexp}, the $e^{-K_*N}N^{-13/2}$ sector of $L_{M,M_B}$ is
+$\ell(\mathcal T_\chi)$, where $\ell$ is the real-linear functional
+$-2\im$ for $M\in\{I,\sigma_1\}$, $+2\im$ for $M=\sigma_3$ and $+2\re$ for
+$M=\sigma_2$, and $\chi=\dn$ for $M\in\{I,\sigma_3\}$, $\chi=\up$ for
+$M\in\{\sigma_1,\sigma_2\}$.  Since $\cK$, $c_r$ and $\Gamma_\pm$ are real,
+Theorem~\ref{thm:T} gives \eqref{eq:C} with $\ell_0=\ell(x_0)$ and
+$\ell_\pi=\ell(x_\pi)$.  Closed forms of $\ell_0,\ell_\pi$ in terms of
+$\alpha,c_*,\mathcal I_0,\mathcal I_1$ are listed in
+Appendix~\ref{app:numerics}.
+
+The remainder budget, relative to $N^{-13/2}$, is as follows:
+\begin{itemize}
+\item $O(N^{-1/2})$ from the cubic term of the exponent, from
+  $P(\eta)-P$, from the normal phase, and from the variation of
+  $\varphi_N$ and $R_0$ across the layer;
+\item $O(N^{-1})$ from $r-N^{-3/2}R_0$ and from the exact profile and disc
+  geometry;
+\item $O(N^{-3/2})$ from in-plane Poisson terms and from the six
+  non-contributing torus points;
+\item $O(N^{-2})$ from $2\re\langle r,Ea_c\rangle$;
+\item exponentially small terms from the region away from $\Sigma$ and from
+  the sector $e^{-2K_*N}$.
+\end{itemize}
+Hence $L=e^{-K_*N}N^{-13/2}(C(\theta_N)+R_N)$ with $|R_N|\le C'N^{-1/2}$.
+
+For non-vanishing, note that $\Gamma_-\ge0$.  For every pair, interval
+arithmetic certifies $|\ell_0|(\overline\Gamma-\varepsilon_+)>\varepsilon_-|\ell_\pi|$.
+Therefore $C(\theta)$ has the sign of $\ell_0$ for every $\theta$, and
+$|C(\theta)/\overline C-1|\le(\varepsilon_+|\ell_0|+\varepsilon_-|\ell_\pi|)/(\overline\Gamma|\ell_0|)$,
+which gives the bounds of Table~\ref{tab:C}.  Since
+$\inf_\theta|C(\theta)|\ge(1-1.5\cdot10^{-3})|\overline C|>0$, the remainder
+cannot cancel the leading term for $N$ large, and the asymptotics of
+$\delta=|L|$ follow.
+\end{proof}
+
+\begin{remark}[Counting the power]
+The exponent $13/2$ decomposes as follows.  The resource contributes
+$\frac32$ at the layer and the free tail $\frac32$ at Bob.  The profiles
+$s_N$ and $h_N$ contribute $2+2$.  The two in-plane areas contribute $-2$.
+The normal Gaussian contributes $\frac12$, and the tangential rescaling
+$d^2\eta_t=(2/N)d^2\tau$ contributes $1$.  The depths $j,j'$ are discrete
+sums of size $O(1)$ and contribute no power.  The common tangential
+direction $u_\perp+u'_\perp$ is a flat direction of the exponent, because
+$\xi_*$ is orthogonal to the planes.  It is confined by the profiles and
+produces the area factors, not a Gaussian factor.
+\end{remark}
+
+\begin{remark}[Dependence on $\theta_N$]
+Since $\sqrt3/4\notin\mathbb Q$, the sequence $\theta_N$ is equidistributed.
+$C(\theta_N)$ is therefore quasi-periodic in $N$ and not a constant.  The
+oscillation comes from the commensurability of the lattice planes with the
+spheres bounding the regions.  It is below $0.15\%$, and it never changes
+the sign.
+\end{remark}
+
+\section{Discussion}\label{sec:discussion}
+
+\subsection{What the theorem says and does not say}
+The theorem is a statement about one walk and one explicitly specified
+family of operations.  It shows that the gap between the emergent
+relativistic cone and the microscopic causal support is not merely
+geometric.  Under an infrared-controlled protocol it carries an
+operational response whose asymptotic law is known exactly: rate, power
+and coefficient.  It does not claim that $D_B>0$ for every protocol, that
+every quantum walk behaves this way, or that every smooth encoder
+$M=aI+b\cdot\sigma$ signals.  It is not a violation of the model's
+microcausality, since Bob remains inside $N\Cmicro$.  The limit
+$N\to\infty$ is an infrared scaling at fixed lattice units, not a continuum
+limit $a,\tau\to0$.
+
+The result is asymptotic.  The remainder constants and $N_*$ are finite but
+not explicit.  The finite-$N$ diagnostics of Appendix~\ref{app:numerics}
+indicate an effective relative correction of about $-100/N$.  The leading
+formula is therefore quantitatively reliable only for $N\gtrsim10^3$.  For
+$M\in\{I,\sigma_3\}$ with $M_B=I$, whose coefficient is among the smallest,
+the $N^{-17/2}$ term dominates over the whole diagnostic range.
+
+\subsection{Physical reading}
+Restoring a lattice spacing $a$, the integer $N$ is both the number of
+steps and the separation scale in lattice units, so $N\sim\ell/a$ for a
+separation $\ell$, and $\delta\sim e^{-K_*N}$ up to algebraic factors.  The
+response is therefore negligible at any separation large compared with the
+lattice spacing, and by the preceding subsection the leading formula becomes
+accurate only for $N\gtrsim10^3$.  We make no claim about observability, and
+regard the result as a statement in the mathematical physics of finite-range
+unitary dynamics.
+Its interest lies in the structure it exhibits: an exact separation between
+ballistic propagation, which respects $\cIR$, and operational influence,
+which does not vanish inside the corona even under infrared control.
+
+\subsection{Open problems}
+\begin{enumerate}[label=(\arabic*)]
+\item General encoders $M=aI+b\cdot\sigma$, and optimisation over
+  admissible operations.
+\item Other walks, in particular the Bialynicki-Birula walk
+  \cite[Eq.~(5.12)]{CJWW}, whose corona contains ballistic modes faster than
+  $\cIR$, and the massive Dirac case.
+\item Explicit remainder constants and $N_*$, which would make the
+  statement effective at finite $N$.
+\item Many-particle and second-quantized versions.  The upper bound
+  extends to even local unitaries on the full CAR algebra, with prefactor
+  $288N^7$ in place of $36N^4$~\cite{Repo}, but no lower bound is available
+  there.
+\end{enumerate}
+
+\appendix
+
+\section{Computer-assisted parts and diagnostics}\label{app:numerics}
+
+Theorem~\ref{thm:upper}, together with Lemma~\ref{lem:ellipse}, is
+formally verified in Lean~4/Mathlib (\texttt{formal/} in~\cite{Repo}).  The
+asymptotic results (Theorems~\ref{thm:rate} and~\ref{thm:main}) are not.
+The analytic arguments above are complete up to the following verified
+computations.  All of them are performed by the certificate scripts listed
+in~\cite{Repo}, at the commit given there, with Python~3.12.3, SymPy~1.14.0
+and mpmath~1.3.0.  Exact identities use SymPy.  Enclosures use the interval
+context \texttt{mpmath.iv} with 50 digits, and only its elementary
+operations: the four arithmetic operations, integer powers by repeated
+multiplication, $\sqrt{\cdot}$, $\exp$, $\log$, $\sin$, $\cos$ and $\pi$.
+No interval quadrature is used: $\mathcal I_0(\rho_*)$, $\mathcal I_1(\rho_*)$
+and $I_b$ are enclosed through exact closed forms in $\sin$ and $\cos$,
+obtained from the moments $\int_0^1k^m\{\sin,\cos\}(\omega k)\,dk$, $m\le5$,
+which are checked symbolically.
+\begin{itemize}
+\item The symbol identities: Lemma~\ref{lem:jumps}, \eqref{eq:SOS}, and
+  Lemma~\ref{lem:symbol}(a)--(b).  Also the ellipse-lemma polynomials,
+  $\cosh^3(\log2)=125/64$ and the vertex blocks.
+\item Closed forms and enclosures of $t_*$, $K_*$, $c_*^2$, $\Phi_*$,
+  $q_t$, $q_n$, $P$, $\mathcal I_0$, $\mathcal I_1$, $\varphi_\partial$, $\cK$,
+  $\overline\Gamma$ and $\varepsilon_\pm$.
+\item The sixteen pairs $(\ell_0,\ell_\pi)$, the sign margin
+  $|\ell_0|(\overline\Gamma-\varepsilon_+)>\varepsilon_-|\ell_\pi|$, the
+  bounds of Table~\ref{tab:C}, and $C(\sigma_3,\cdot)=-C(I,\cdot)$.
+\end{itemize}
+Closed forms of $\ell_0,\ell_\pi$ are given below, with $c=c_*$,
+$A=\mathcal I_0(\rho_*)$ and $B=\mathcal I_1(\rho_*)$.  The rows for
+$\sigma_3$ are the negatives of the rows for $I$.
+
+{\small
+\[
+\begin{array}{lll}
+\toprule
+(M,M_B) & \ell_0 & \ell_\pi\\
+\midrule
+(I,I),(I,P_3) & -\frac{\sqrt3}{3}\frac{B\alpha(c-1)}{c^2} & +\frac{\sqrt3}{3}\frac{B\alpha(c+1)}{c^2}\\[3pt]
+(I,P_1) & \frac{3Ac\alpha-\sqrt3B(c^2\alpha+c^2-\alpha)}{6c^2} & -\frac{3Ac\alpha+\sqrt3B(c^2\alpha+c^2-\alpha)}{6c^2}\\[3pt]
+(I,P_2) & \frac{3A\alpha-\sqrt3B(c^2\alpha+c^2+c\alpha-2\alpha)}{6c^2} & \frac{3A\alpha-\sqrt3B(c^2\alpha+c^2-c\alpha-2\alpha)}{6c^2}\\[3pt]
+(\sigma_1,I) & -\frac{3A\alpha+\sqrt3B(c-c\alpha+\alpha)}{3c} & \frac{3A\alpha-\sqrt3B(c-c\alpha-\alpha)}{3c}\\[3pt]
+(\sigma_1,P_1) & -\frac{3Ac\alpha+\sqrt3B(c^2-c^2\alpha-\alpha)}{6c^2} & \frac{3Ac\alpha-\sqrt3B(c^2-c^2\alpha-\alpha)}{6c^2}\\[3pt]
+(\sigma_1,P_2) & -\frac{3A(c^2(1-\alpha)+c\alpha)+\sqrt3B(2c^2(1-\alpha)+2c\alpha-\alpha)}{6c^2} & -\frac{3A(c^2(1-\alpha)-c\alpha)+\sqrt3B(2c^2(1-\alpha)-2c\alpha-\alpha)}{6c^2}\\[3pt]
+(\sigma_1,P_3),(\sigma_2,P_3) & -\frac{\sqrt3}{3}B(1-\alpha) & -\frac{\sqrt3}{3}B(1-\alpha)\\[3pt]
+(\sigma_2,I) & -\frac{3A\alpha+\sqrt3B(c^2(1-\alpha)+\alpha)}{3c^2} & -\frac{3A\alpha+\sqrt3B(c^2(1-\alpha)+\alpha)}{3c^2}\\[3pt]
+(\sigma_2,P_1) & -\frac{3A(\alpha-c^2(1-\alpha))+\sqrt3Bc\alpha}{6c^2} & -\frac{3A(\alpha-c^2(1-\alpha))-\sqrt3Bc\alpha}{6c^2}\\[3pt]
+(\sigma_2,P_2) & -\frac{3A\alpha+\sqrt3B(c^2(1-\alpha)+c\alpha+2\alpha)}{6c^2} & -\frac{3A\alpha+\sqrt3B(c^2(1-\alpha)-c\alpha+2\alpha)}{6c^2}\\
+\bottomrule
+\end{array}
+\]
+}
+
+\medskip\noindent\emph{Finite-$N$ diagnostics.}  These are floating-point
+and not used in any proof; they use NumPy~1.26.4 and are produced by the
+\texttt{--diagnostics} option of the coefficient certificate~\cite{Repo}.  A
+floating-point FFT evaluation of the exact discrete convolution formula in
+tilted variables (``brute'') was compared with a reference that keeps the
+exact lattice geometry but replaces the kernel by its Gaussian form at the
+eight points of $\Sigma$.  Their ratio tends to $1$ with deviation of order
+$c/N$, $c\in[-0.5,14]$, at $N=24,40,56$.  For $M\in\{I,\sigma_3\}$ and
+$M_B=I$, the ratio of the $N^{-17/2}$ piece $2\re\langle r,Ea_c\rangle$ to
+the piece $2\im\langle r,Ea_\dn\rangle$ that carries the $N^{-13/2}$ term is
+$15.2$, $9.4$ and $6.4$ at $N=24,40,56$.  A semi-analytic evaluation with discrete
+planes and exact profiles gives semi/lead $=0.906$, $0.990$ and $0.997$ at
+$N=10^3$, $10^4$ and $3\cdot10^4$, consistent with a relative correction
+$\approx-100/N$.  The free tail agrees with $N^{-3/2}R_0$ to relative
+accuracy $2\cdot10^{-6}$ at $N=40$ and $8\cdot10^{-9}$ at $N=640$.
+
+\begin{thebibliography}{99}
+
+\bibitem{AVWW}
+A.~Ahlbrecht, H.~Vogts, A.~H.~Werner, R.~F.~Werner,
+\emph{Asymptotic evolution of quantum walks with random coin},
+arXiv:1009.2019.
+
+\bibitem{Arrighi}
+P.~Arrighi,
+\emph{An overview of quantum cellular automata},
+arXiv:1904.12956.
+
+\bibitem{BBBP}
+Y.~Baryshnikov, W.~Brady, A.~Bressler, R.~Pemantle,
+\emph{Two-dimensional quantum random walk},
+J.\ Stat.\ Phys.\ \textbf{142}, 78--107 (2011), arXiv:0810.5495.
+
+\bibitem{BialynickiBirula}
+I.~Bialynicki-Birula,
+\emph{Weyl, Dirac, and Maxwell equations on a lattice as unitary cellular automata},
+Phys.\ Rev.\ D \textbf{49}, 6920 (1994), arXiv:hep-th/9304070.
+
+\bibitem{BDPT}
+A.~Bisio, G.~M.~D'Ariano, P.~Perinotti, A.~Tosini,
+\emph{Free quantum field theory from quantum cellular automata: derivation of Weyl, Dirac and Maxwell quantum cellular automata},
+arXiv:1601.04832.
+
+\bibitem{BHS}
+L.~Bombelli, J.~Henson, R.~D.~Sorkin,
+\emph{Discreteness without symmetry breaking: a theorem},
+arXiv:gr-qc/0605006.
+
+\bibitem{BHV}
+S.~Bravyi, M.~B.~Hastings, F.~Verstraete,
+\emph{Lieb--Robinson bounds and the generation of correlations and topological quantum order},
+Phys.\ Rev.\ Lett.\ \textbf{97}, 050401 (2006), arXiv:quant-ph/0603121.
+
+\bibitem{CRT}
+H.~A.~Carteret, B.~Richmond, N.~M.~Temme,
+\emph{Evanescence in coined quantum walks},
+J.\ Phys.\ A: Math.\ Gen.\ \textbf{38}, 8641--8665 (2005), arXiv:quant-ph/0506048.
+
+\bibitem{CJWW}
+C.~Cedzich, A.~Joye, A.~H.~Werner, R.~F.~Werner,
+\emph{Exponential tail estimates for quantum lattice dynamics},
+Ann.\ Henri Poincar\'e \textbf{27}, 2843--2870 (2026), doi:10.1007/s00023-025-01598-4, arXiv:2408.02108.
+
+\bibitem{DArianoErbaPerinotti}
+G.~M.~D'Ariano, M.~Erba, P.~Perinotti,
+\emph{Isotropic quantum walks on lattices and the Weyl equation},
+Phys.\ Rev.\ A \textbf{96}, 062101 (2017), arXiv:1708.00826.
+
+\bibitem{DArianoPerinotti}
+G.~M.~D'Ariano, P.~Perinotti,
+\emph{Derivation of the Dirac equation from principles of information processing},
+Phys.\ Rev.\ A \textbf{90}, 062106 (2014), arXiv:1306.1934.
+
+\bibitem{Farrelly}
+T.~Farrelly,
+\emph{A review of quantum cellular automata},
+Quantum \textbf{4}, 368 (2020), arXiv:1904.13318.
+
+\bibitem{GJS}
+G.~Grimmett, S.~Janson, P.~F.~Scudo,
+\emph{Weak limits for quantum random walks},
+Phys.\ Rev.\ E \textbf{69}, 026119 (2004), arXiv:quant-ph/0309135.
+
+\bibitem{Konno}
+N.~Konno,
+\emph{Quantum random walks in one dimension},
+Quantum Inf.\ Process.\ \textbf{1}, 345--354 (2002).
+
+\bibitem{LiebRobinson}
+E.~H.~Lieb, D.~W.~Robinson,
+\emph{The finite group velocity of quantum spin systems},
+Commun.\ Math.\ Phys.\ \textbf{28}, 251--257 (1972).
+
+\bibitem{ACSV}
+R.~Pemantle, M.~C.~Wilson, S.~Melczer,
+\emph{Analytic Combinatorics in Several Variables}, 2nd ed.,
+Cambridge University Press (2024), doi:10.1017/9781108874144.
+
+\bibitem{Repo}
+Repository \texttt{nacho09021973/qca-causal-cones},
+% TODO(author): replace by an archived release (tag and DOI) before submission.
+\url{https://github.com/nacho09021973/qca-causal-cones}, commit
+\texttt{551addabe28b} (branch \texttt{research/b-infinity-post-s4-gate}).
+Certificates
+\texttt{scripts/verify\_scaled\_ir\_gate.py},
+\texttt{scripts/verify\_regional\_directional\_asymptotics\_gate.py},
+\texttt{scripts/verify\_regional\_laplace\_coefficient\_gate.py},
+\texttt{scripts/verify\_directional\_saturation.py}; Lean formalization in
+\texttt{formal/}.
+
+\bibitem{SchumacherWerner}
+B.~Schumacher, R.~F.~Werner,
+\emph{Reversible quantum cellular automata},
+arXiv:quant-ph/0405174.
+
+\bibitem{SunadaTate}
+T.~Sunada, T.~Tate,
+\emph{Asymptotic behavior of quantum walks on the line},
+J.\ Funct.\ Anal.\ \textbf{262}, 2608--2645 (2012), arXiv:1108.1878.
+
+\end{thebibliography}
+
+\end{document}
+
+=== DOCUMENT 4: informe_gemini.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ ce09890a0d5f68a6634f358eff2e477ac5f15ec7; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: STOP (estado operativo, no validación del contenido)
+modelo: gemini-4-argon, esfuerzo: maxOutputTokens=32768, thinkingLevel=medium, vía: API generativelanguage.googleapis.com generateContent, sin herramientas
+modelo devuelto por API: gemini-4-argon
+gemini.json sha256 8f27d57c293bd9edf527e5efeb6e081248640a20ffa67732a13b8f309c36fed8
+inicio: 2026-10-31T17:32:51Z  fin: 2026-10-31T17:34:19Z
+documento: /home/adnac/qca-causal-cones/debates/2026-09-25--schur-physical-bridge-grok-input.md ; último commit observado: f6aad62 ; sha256 de la copia enviada 2c805293f8d3fbe6afb536fc7d6d09a0ef53b245856aaed4936faa134b591fb6
+entrada_gemini.txt sha256 c4085e2a74e6496184bf1c05efc4ec56a6abf419c69af93db56ac6e1c13221a8
+respuesta sha256 63e563b39cdb1952e3feb1ce008b2543e0734d62e6328a317e36384bdf99529d
+-->
+
+# Revisión Adversarial Independiente: Puente Schur → Extremos Físicos Actuales
+
+**Autor auditado:** Codex (OpenAI) (`reports/2026-09-24--schur-stability-physical-transfer.md`)  
+**Alcance:** Reconstrucción matemática línea por línea desde las fuentes congeladas adjuntas (`T1` e `ir-corona.tex`), verificando el uso de los extremos físicos actuales, las interfaces del proyector, el dato $Q$ inicial y la distinción entre cota absoluta y líder firmado no nulo.
+
+---
+
+## Resumen de Dictámenes por Gate
+
+1. **SCHUR_STABILITY:** `PASS`
+2. **PHYSICAL_ENDPOINTS:** `PASS`
+3. **PROPAGATOR_ERROR:** `PASS`
+4. **SIGNED_REDUCTION:** `REPAIR_REQUIRED`
+5. **CLAIM_CEILING:** `PASS`
+
+---
+
+## 1. SCHUR_STABILITY — Dictamen: `PASS`
+
+### Reconstrucción de las desigualdades (3)–(7)
+* **Espectro de $R(p)$ (Ec. 3):** Del Lema 5.2 de `ir-corona.tex`, $\rho(S(\eta-i\xi_*)) \le e^{\Phi(\xi_*)} = \Lambda$, con igualdad si y sólo si $\eta \in \Sigma = \{0,\pi\}^3$. Como $D = S \oplus S^{-1}$ y $\det S = 1$, los autovalores de $S^{-1}(p-i\xi_*)$ son exactamente los recíprocos $\lambda(p)^{\mp 1}$ de los de $S(p-i\xi_*)$, por lo que $\rho(D_\xi(p)) = \rho(S(p-i\xi_*)) \le \Lambda$ y $\rho(R(p)) \le 1$.
+* **No normalidad exterior y rangos oblicuos (Ec. 4):** En $\operatorname{Ran} P$, $R_P$ actúa en cada fibra $p \in W$ como multiplicación por el escalar $\lambda(p)/\Lambda$ con $|\lambda(p)| \le \Lambda$, luego $\|R_P^h\|_{L^2 \to L^2} \le 1$ para todo $h \ge 0$ (incluso aunque $P(p)$ no sea ortogonal). En $\operatorname{Ran} Q$:
+  - Para $p \in W$, $R_Q(p)$ actúa en el subespacio espectral asociado a $\lambda(p)^{-1}/\Lambda$, donde $|\lambda(p)^{-1}|/\Lambda \le \Lambda^{-2} < 1$, luego es multiplicación escalar en $\operatorname{Ran} Q(p)$ con módulo $\le \Lambda^{-2}$.
+  - Para $p \in W^c$ (compacto disjunto de $\Sigma$), $P(p)=0, Q(p)=I_4$ y $\sup_{p \in W^c} \rho(R(p)) = r_0 < 1$. Aplicando el Lema 5.3 de `ir-corona.tex` (triangularización de Schur unitaria $2\times 2$ en cada bloque de $D_\xi$), $\|R(p)^h\| \le r_0^h + h \|R(p)\| r_0^{h-1}$. Fijando $\rho \in (\max(r_0, \Lambda^{-2}), 1)$, existe $C_0(W) < \infty$ tal que $\|R_Q^h\| \le C_0 \rho^h$. Los saltos de $P$ en $\partial W$ no interfieren con $R$ porque $R(p)$ y $P(p)$ son multiplicadores puntuales que conmutan fibra a fibra.
+* **Norma adaptada $|\cdot|_*$ y bloques (Ec. 5):** Definiendo $|y|_* = \sup_{h \ge 0} \rho^{-h} \|R_Q^h y\|_2$ en $\operatorname{Ran} Q$, se cumple $\|y\|_2 \le |y|_* \le C_0 \|y\|_2$ y $|R_Q y|_* \le \rho |y|_*$. Como $\|C_N - I\| \le 2\sin(\|\vartheta\|_\infty/(2N)) \le b/N$ y $C_N$ conmuta con $H_\xi$, se tiene $\|T - R\|_{L^2 \to L^2} \le b \|R\| / N$. Usando que $\|P\|_{L^2\to L^2}, \|Q\|_{L^2\to L^2} \le C_P(W)$ y la equivalencia entre $\|\cdot\|_2$ y $|\cdot|_*$, los acoplamientos satisfacen $\|\mathsf{B}\|_{* \to 2}, \|\mathsf{C}\|_{2 \to *} \le a/N$, $\|\mathsf{A}\|_{2 \to 2} \le 1 + a/N$ y $\|\mathsf{D}\|_{* \to *} \le \rho + a/N \le \rho_2 < 1$ para $N$ grande, con $a = a(W, b)$.
+* **Recurrencia acoplada y suma doble de Schur (Ec. 6–7):** En la norma $|z|_\oplus = \|Pz\|_2 + |Qz|_*$, $|Tz|_\oplus \le (1+2a/N)|z|_\oplus$, lo que da $\sup_{j \le N} \|T^j\| \le C_0 e^{2a} = C_W$ (y también se verifica de forma independiente por Duhamel + Gronwall discreto). Para $y_N = Q t_N$, la recurrencia $y_{j+1} = \mathsf{C} x_j + \mathsf{D} y_j$ da $|y_N|_* \le \rho_2^N |y_0|_* + \sum_{k=0}^{N-1} \rho_2^{N-1-k} (a/N) \|x_k\|_2 \le C_W (\rho_2^N + N^{-1}) \|s\|_2$. Finalmente, en el kernel de memoria (14) de `T1`,
+  \[
+  \sum_{m=0}^{n-1} \sum_{k=0}^{m-1} \|\Phi_P(n,m+1)\|_{2\to 2} \|\mathsf{B}\|_{*\to 2} \|G_Q(m,k+1)\|_{*\to *} \|\mathsf{C}\|_{2\to *} \le \sum_{m=0}^{n-1} e^a \frac{a^2}{N^2} \sum_{k=0}^{m-1} \rho_2^{m-1-k} \le \frac{e^a a^2}{N(1-\rho_2)}.
+  \]
+  No hay confusión de adjuntos ni de normas.
+
+---
+
+## 2. PHYSICAL_ENDPOINTS — Dictamen: `PASS`
+
+### Reconstrucción de las desigualdades (8)–(15)
+* **Extremo de Alice con encoder completo (Ec. 8–9):** En `T1` (1), $f = J(U_M - I)\phi_N = J(c_N \phi_N + i s_N M \phi_N)$. Dado que $U_M(x) = e^{i \frac{\pi}{2} F_N(x) M}$ con $M^2 = I$, los autovalores de $U_M(x) - I$ tienen módulo $|e^{\pm i \frac{\pi}{2} F_N(x)} - 1| = 2 |\sin(\frac{\pi}{4} F_N(x))| \le \frac{\pi}{2} F_N(x)$. Esto acota simultáneamente $c_N$ y $s_N$ sin omitir el término coseno. Por (7) de `ir-corona.tex`, $\|\phi_N(x)\| = |\varphi_N(x)| \le C N^{-3/2}$. En las coordenadas de capas de `ir-corona.tex` (§6.4), $x = x_* - \delta \hat u + u_\perp$ con $\delta_j = (\theta_N + j)/\sqrt{3}$ y $F_N(x) = \frac{64}{N^2}(\delta - \frac{\delta^2}{2R_b} - \frac{|u_\perp|^2}{2R_b})_+^2 \le 64 \delta_j^2 / N^2$. El soporte en el plano $j$ es un disco de radio cuadrado $2 R_b \delta_j - \delta_j^2 \le N \delta_j / 2$; como $\Lambda_0$ es una red 2D fija, el número de sitios en ese disco es $\le C(1 + N \delta_j)$ uniformemente en el centro del disco. Con $\xi_* \cdot (x - x_*) = -\sqrt{3} t_* \delta_j = -t_*(\theta_N + j)$, Plancherel da:
+  \[
+  \|s\|_2^2 = \|H_\xi f\|_{\ell^2}^2 \le C N^{-3} \sum_{j \ge 0} e^{-2t_*(\theta_N+j)} \frac{\delta_j^4}{N^4} (1 + N\delta_j) = O(N^{-6}) \implies \|s\|_2 = O(N^{-3}).
+  \]
+* **Extremo de Bob actual bajo la hipótesis F (Ec. 10–13):** Bajo F, $\vartheta(x/N) = \int_{\mathbb{R}^3} e^{-ik\cdot x/N} \hat\vartheta(k) \frac{d^3k}{(2\pi)^3}$. En espacio de momentos $p \in \mathbb{T}^3$, la multiplicación por $\vartheta(x/N)$ actúa sobre $\hat\psi(p) = \sum_x e^{ip\cdot x} \psi(x)$ como convolución respecto a la medida periodizada $\mu_N$ empujada por $k \mapsto -k/N \pmod{2\pi}$. Por subaditividad en las fibras del cociente $\mathbb{R}^3 \to \mathbb{T}^3$, $\|\mu_N\|_{\mathrm{TV}} \le a_0$ y $\int_{\mathbb{T}^3} d_{\mathbb{T}}(q,0) d|\mu_N|(q) \le a_1 / N$.
+  - En el toro real $\mathbb{T}^3$, $D(p) = S(p) \oplus S(p)^{-1}$ es unitario en $\mathbb{C}^4$ para cada $p$, luego $\|\widehat{D\psi}\|_{L^1(\mathbb{T}^3;\mathbb{C}^4)} = \|\hat\psi\|_{L^1(\mathbb{T}^3;\mathbb{C}^4)}$.
+  - Por la desigualdad de Young para medidas en el grupo compacto $\mathbb{T}^3$, la convolución con $-i \frac{\mu_N}{N} \beta$ tiene norma $L^1 \to L^1$ a lo sumo $\|\mu_N\|_{\mathrm{TV}} \|\beta\| / N \le a_0 / N$, y su exponencial $\widehat{C_N}$ tiene norma $L^1 \to L^1$ a lo sumo $e^{a_0/N}$.
+  - Iterando $N$ veces sobre $J\phi_N$, se obtiene $\|\widehat{U_N^N J\phi_N}\|_{L^1(\mathbb{T}^3)} \le e^{a_0} \|\hat\phi_N\|_{L^1(\mathbb{T}^3)}$. Como $\hat\phi_N(p) = Z_N^{-1/2} g(Np)\downarrow$ con $Z_N = \Theta(N^{-3})$ y $\operatorname{supp} g(Np) \subset \{|p| \le N^{-1}\}$ de volumen $O(N^{-3})$, tenemos $\|\hat\phi_N\|_{L^1(\mathbb{T}^3)} = O(N^{3/2} \cdot N^{-3}) = O(N^{-3/2})$. Por inversión de Fourier, $\sup_{y \in \mathbb{Z}^3} \|r(y)\| \le \|\hat r\|_{L^1(\mathbb{T}^3)} \le e^{a_0} C N^{-3/2}$.
+  - Para $v_c = \mathcal{V}_c^* E r_c$, usando que $\mathcal{F}$ es unitaria de $\ell^2(\mathbb{Z}^3)$ a $L^2(\mathbb{T}^3, d\mu)$ y $r_c = \mathbf{1}_{\mathcal{B}_N} \pi_c r$, tenemos $\|v_c\|_{L^2(\mathbb{T}^3)}^2 = \sum_{y \in \mathcal{B}_N} e^{-2\xi_*\cdot(y-y_*)} h_N(y)^2 \|M_B \pi_c r(y)\|^2$. Con $y = y_* + \delta' \hat u + u'_\perp$, $\xi_*\cdot(y-y_*) = +t_*(\theta_N + j') > 0$ (signo correcto del tilt saliente) y $h_N(y) \le 64 (\delta')^2 / N^2$, la misma suma de capas da $\|v_c\|_2^2 \le C e^{2a_0} N^{-7} \sum_{j'\ge 0} e^{-2t_*(\theta_N+j')} (\delta'_{j'})^4 (1 + N\delta'_{j'}) = O_\vartheta(N^{-6})$, luego $\|v_c\|_2 = O_\vartheta(N^{-3})$.
+* **Reconstrucción ponderada y diez piezas (Ec. 14–15):** En (14), $E = h_N \otimes M_B \ge 0$ con $\|M_B\| = 1$ (ya que $M_B \in \{I, (I+\sigma_j)/2\}$ tiene autovalor máximo $1$). No se confunde $E$ con $E^{1/2}$: al factorizar $|\langle d_{c,A}, E d_{c,B} \rangle| \le \|E^{1/2} d_{c,A}\| \|E^{1/2} d_{c,B}\|$, entra exactamente $\sqrt{h_N(y)} = 1 - 16|y-Nu|^2/N^2 = \frac{2R_b \delta' - (\delta')^2 - |u'_\perp|^2}{R_b^2} \le \frac{2\delta'}{R_b} = \frac{8\delta'}{N}$. Maximizando $\frac{8\delta'}{N} e^{-\gamma \delta'}$ en $\delta' \ge 0$ se obtiene el máximo exacto $\frac{8}{e\gamma N}$ en $\delta' = 1/\gamma$. Para la cota inferior en la red, el punto de $\mathbb{Z}^3$ más cercano a $y_* + 2\hat u$ dista a lo sumo $\sqrt{3}/2$, luego $\delta' \in [2-\sqrt{3}/2, 2+\sqrt{3}/2] \subset [1.13, 2.87]$ y $|u'_\perp| \le \sqrt{3}/2$; para $N$ grande esto garantiza $\sqrt{h_N(y)} \ge \frac{2(2-\sqrt{3}/2)}{N/4} - O(N^{-2}) \ge \frac{9}{N}$ y $e^{-\gamma \delta'} \ge e^{-\gamma(2+\sqrt{3}/2)}$, probando rigurosamente $\|E^{1/2}\mathcal{V}_c\| = \Theta(N^{-1})$.
+
+---
+
+## 3. PROPAGATOR_ERROR — Dictamen: `PASS`
+
+### Reconstrucción de las desigualdades (16)–(19)
+* **Regularidad de $P(p')\beta P(p)$ e interfaces de $W$ (Ec. 16):** Éste es el punto analítico más delicado. El proyector $P(p)$ se extiende por cero fuera de $W = \bigcup_{\alpha \in \Sigma} W_\alpha$, por lo que $P(p)$ es discontinuo en $\partial W$. Sin embargo, el bloque diagonal $P \vartheta(x/N)\beta P$ tiene núcleo integral $\int_{\mathbb{T}^3} P(p') \beta P(p'-q) d\mu_N(q)$. El operador actúa únicamente cuando **ambos** argumentos $p'$ y $p = p'-q$ pertenecen a $W$; si $p' \notin W$ o $p \notin W$, entonces $P(p') = 0$ o $P(p) = 0$, anulando idénticamente el integrando $P(p')\beta P(p)$. Por tanto, las discontinuidades en $\partial W$ jamás producen términos de borde ni deltas.
+  - Cuando ambos $p, p' \in W$: si pertenecen a la misma componente $W_\alpha$, como $\overline{W_\alpha} \subset O_\alpha$ y $p_S$ es analítico en $O_\alpha$ (Ec. 3a de `T1`), $P$ es $C^1$ con derivada uniformemente acotada en el compacto $\overline{W_\alpha}$. Usando (3b) de `T1` ($\beta P(p) = Q(p)\beta$ para $p \in W$) y $P(p)Q(p)=0$, se obtiene $P(p')\beta P(p) = P(p')Q(p)\beta = [P(p') - P(p)] Q(p)\beta = [P(p') - P(p)]\beta P(p)$, cuya norma es $\le \|\nabla P\|_{L^\infty(\overline{W_\alpha})} \|P\|_{L^\infty(W)} d_{\mathbb{T}}(p',p)$.
+  - Si $p \in W_\alpha$ y $p' \in W_{\alpha'}$ con $\alpha \ne \alpha'$, como los cierres $\overline{W_\alpha}$ son disjuntos, existe $\delta_W = \min_{\alpha \ne \alpha'} \operatorname{dist}(\overline{W_\alpha}, \overline{W_{\alpha'}}) > 0$, de modo que $\|P(p')\beta P(p)\| \le C_P(W)^2 \le \frac{C_P(W)^2}{\delta_W} d_{\mathbb{T}}(p',p)$.
+  - Así, $\|P(p')\beta P(p)\| \le C_W d_{\mathbb{T}}(p',p)$ se cumple para **todo** par $(p', p) \in \mathbb{T}^3 \times \mathbb{T}^3$.
+* **Desigualdad de Young con $\mu_N$ y término siempre-$P$ (Ec. 17):** Para cada $q \in \mathbb{T}^3$ fijo, el operador $K_q: f(p') \mapsto P(p')\beta P(p'-q) f(p'-q)$ es una traslación compuesta con un multiplicador puntual acotado por $C_W d_{\mathbb{T}}(q,0)$, por lo que $\|K_q\|_{L^2 \to L^2} \le C_W d_{\mathbb{T}}(q,0)$. Integrando respecto a $d|\mu_N|(q)$ (desigualdad de Minkowski/Young en $L^2(\mathbb{T}^3)$) y usando (10), resulta:
+  \[
+  \Bigl\| P \frac{\vartheta(x/N)}{N} \beta P \Bigr\|_{L^2 \to L^2} \le \frac{1}{N} \int_{\mathbb{T}^3} \|K_q\|_{L^2 \to L^2}\, d|\mu_N|(q) \le \frac{C_W a_1}{N^2}.
+  \]
+  Expandiendo $C_N(x) = I - i \frac{\vartheta(x/N)}{N}\beta + R_{2,N}(x)$ con $\|R_{2,N}\|_\infty \le \frac{b^2}{2N^2}$ y usando que $R$ conmuta con $P$, se tiene $\mathsf{A} - R_P = P(C_N - I)R P = -i P \frac{\vartheta(x/N)}{N}\beta P R_P + P R_{2,N} R P$, luego $\|\mathsf{A} - R_P\|_{L^2 \to L^2} \le C'_W / N^2$. Como $\|R_P^k\| \le 1$ y $\|\mathsf{A}^k\| \le e^a$, la suma telescópica $\mathsf{A}^N - R_P^N = \sum_{k=0}^{N-1} \mathsf{A}^{N-1-k}(\mathsf{A} - R_P) R_P^k$ da $\|\mathsf{A}^N - R_P^N\| \le N e^a (C'_W / N^2) = O_W(N^{-1})$.
+* **Control de dato $Q$ inicial de orden uno y propagador completo (Ec. 18–19):** ¿Impide un dato $Qs$ de orden $\|s\|$ que $T^N - R^N = O(N^{-1})$? No:
+  - En el bloque $P$, la entrada desde $Qs$ es $f_{Q,N} = \sum_{m=0}^{N-1} \Phi_P(N,m+1) \mathsf{B} G_Q(m,0) Qs$, cuya norma es $\le e^a \frac{a}{N} \sum_{m=0}^{N-1} \rho_2^m |Qs|_* \le \frac{e^a a C_0}{(1-\rho_2)N} \|Qs\|_2 = O_W(N^{-1}) \|s\|_2$. Sumando esto con $\|(\mathbb{M}_N x)_N\|_2 \le O_W(N^{-1})\|s\|_2$ de (7) y $\|\mathsf{A}^N - R_P^N\| \le O_W(N^{-1})$, se obtiene (18): $\|Pt_N - R_P^N Ps\|_2 \le C_W N^{-1} \|s\|_2$.
+  - En el bloque $Q$, el término homogéneo libre satisface $\|\mathsf{D}^N - R_Q^N\|_{* \to *} \le \sum_{j=0}^{N-1} \|\mathsf{D}^{N-1-j}\|_* \|\mathsf{D} - R_Q\|_* \|R_Q^j\|_* \le \frac{a}{N} \sum_{j=0}^{N-1} \rho_2^{N-1-j} \rho^j \le \frac{a}{(1-\rho_2)N}$ (notar que incluso evaluando por separado $\|\mathsf{D}^N\|_* + \|R_Q^N\|_* \le \rho_2^N + \rho^N$, decae exponencialmente y por tanto es $O_W(N^{-1})$). El término forzado desde $P$ en (14) de `T1`, $\sum_{k=0}^{N-1} G_Q(N,k+1) \mathsf{C} x_k$, tiene norma $\le \frac{a}{N(1-\rho_2)} \sup_k \|x_k\|_2 = O_W(N^{-1})\|s\|_2$.
+  - Así, $\|Qt_N - R_Q^N Qs\|_2 \le C_W N^{-1} \|s\|_2$, completando rigurosamente $\|T^N - R^N\|_{\mathscr{H} \to \mathscr{H}} = O_W(N^{-1})$.
+
+---
+
+## 4. SIGNED_REDUCTION — Dictamen: `REPAIR_REQUIRED`
+
+### Verificación de (20) y de las piezas $A_{-P}, A_{+Q}, A_{-Q}$
+* La cadena (20) es exacta: $|\langle r_c, E d_{c,A}^{\mathrm{err}} \rangle| = e^{-K_* N} |\langle v_c, \mathcal{E}_N s \rangle| \le e^{-K_* N} \|v_c\|_2 \|\mathcal{E}_N\| \|s\|_2 = O_W(N^{-3} \cdot N^{-1} \cdot N^{-3} e^{-K_* N}) = O_W(N^{-7} e^{-K_* N})$.
+* Para $A_{-P}$: como $s = \mathcal{F} H_\xi J f_0$ tiene soporte exclusivamente en el canal $+$, y tanto $P$ como $R$ son diagonales en el espacio de canales $\{+,-\}$, se cumple $\pi_- R_P^N P s = 0$. Por (18), $\|\pi_- P t_N\|_2 = \|\pi_- (P t_N - R_P^N P s)\|_2 \le \|P t_N - R_P^N P s\|_2 = O_W(N^{-4})$. Emparejando con $\|v_-\|_2 = O_\vartheta(N^{-3})$ de (13), resulta $|A_{-P}| \le 2 e^{-K_* N} \|v_-\|_2 \|\pi_- P t_N\|_2 = O_W(N^{-7} e^{-K_* N})$.
+* Para $A_{+Q}$ y $A_{-Q}$: de (6) y (9), $\|Q t_N\|_2 \le C_W (\rho_2^N + N^{-1}) \|s\|_2 = O_W(N^{-4})$. Emparejando con $\|v_\pm\|_2 = O_\vartheta(N^{-3})$, se obtiene $|A_{\pm Q}| \le 2 e^{-K_* N} \|v_\pm\|_2 \|Q t_N\|_2 = O_W(N^{-7} e^{-K_* N})$.
+
+### Defecto detectado en la primera línea de (21) y (22)
+
+* **Ecuación afectada:** Primera línea de (21) y primera línea de (22) en `reports/2026-09-24--schur-stability-physical-transfer.md` (§8):
+  \[
+  A_{+P} = 2\operatorname{Re}\langle r_+, E S^N f_0 \rangle + O_W(N^{-7} e^{-K_* N}), \qquad
+  L_+ = 2\operatorname{Re}\langle r_+, E S^N (U_M - I)\phi_N \rangle + O_W(N^{-7} e^{-K_* N}) + O_W(N^{-8} e^{-2K_* N}).
+  \]
+* **Contraargumento matemático (reconstrucción exacta del término libre $Q$):**  
+  Por definición en `T1` (8) y (10a), $A_{+P} = 2 e^{-K_* N} \operatorname{Re}\langle v_+, P t_N \rangle$. Sustituyendo (18), $P t_N = R_P^N P s + O_W(N^{-4})$, junto con $\|v_+\|_2 = O_\vartheta(N^{-3})$, se obtiene legítimamente:
+  \[
+  A_{+P} = 2 e^{-K_* N} \operatorname{Re}\langle v_+, R_P^N P s \rangle + O_W(N^{-7} e^{-K_* N}).
+  \]
+  Por otro lado, por (7) de `T1` aplicada a la evolución libre ($\vartheta = 0 \implies U_N = D, T = R$), como $s = \mathcal{F} H_\xi J f_0$ está en el canal $+$, se tiene la identidad exacta:
+  \[
+  \mathbf{1}_{\mathcal{B}_N} S^N f_0 = \mathbf{1}_{\mathcal{B}_N} \pi_+ D^N J f_0 = e^{-K_* N} \mathcal{V}_+ R^N s = e^{-K_* N} \mathcal{V}_+ R_P^N P s + e^{-K_* N} \mathcal{V}_+ R_Q^N Q s.
+  \]
+  Por tanto, la diferencia entre el funcional escrito en (21) y el término principal libre en $P$ es exactamente la contribución libre en $Q$:
+  \[
+  2\operatorname{Re}\langle r_+, E S^N f_0 \rangle - 2 e^{-K_* N} \operatorname{Re}\langle v_+, R_P^N P s \rangle = 2 e^{-K_* N} \operatorname{Re}\langle v_+, R_Q^N Q s \rangle.
+  \]
+  El autor afirma en §8 que *"El Q libre terminal es exponencialmente pequeño por (4)"* y usa esto para absorber $2 e^{-K_* N} \operatorname{Re}\langle v_+, R_Q^N Q s \rangle$ dentro de $O_W(N^{-7} e^{-K_* N})$. Sin embargo, de (4), (9) y (13), la única cota demostrada para ese término es:
+  \[
+  \bigl| 2 e^{-K_* N} \operatorname{Re}\langle v_+, R_Q^N Q s \rangle \bigr| \le 2 e^{-K_* N} \|v_+\|_2 \|R_Q^N Q s\|_2 \le C_W C_0 N^{-6} \rho^N e^{-K_* N}.
+  \]
+  Aunque $\rho^N$ es exponencialmente pequeño frente a $N^{-1}$ cuando $N \to \infty$ (es decir, $\rho^N = o_W(N^{-1})$), **no existe una constante $C_W$ independiente de $N$ tal que $\rho^N \le C_W N^{-1}$ para todo $N \ge 2$** salvo que esa constante absorba el umbral donde $\rho^N$ cae por debajo de $N^{-1}$. Pero en (4), $\rho \in (r_0(W), 1)$ depende de $W$, y si la notación $O_W(\cdot)$ se aplica para todo $N$ o si se compara con la tasa exponencial $e^{-K_* N}$, reemplazar $R_P^N P s$ por $R^N s$ (que reintroduce el exterior $W^c$ y la rama subdominante en $W$) mezcla el funcional proyectado en $P$ con el propagador completo $S^N$ a través de un error $O_W(N^{-6} \rho^N e^{-K_* N})$. Más importante aún desde el punto de vista estructural del contrato `T1`/`T2`: `T1` introdujo $P$ y $Q$ precisamente para aislar la rama dominante en las ventanas $W$; si al final de (21) se vuelve a sumar $R_Q^N Q s$ para escribir $\langle r_+, E S^N f_0 \rangle$, la expresión final de (21)–(22) ya no contiene $P$ ni $W$ en su término principal, mientras que el resto $O_W(N^{-7} e^{-K_* N})$ sí depende de $W$ (porque absorber $\rho(W)^N \le C_W N^{-1}$ hace que la constante implícita en $O_W(N^{-7})$ explote exponencialmente cuando $\partial W$ se acerca a $\Sigma$ y $1-\rho(W) \to 0$).
+* **Condición de cierre:** En (21) y (22) (y en la línea intermedia previa a (15) donde se dice *"Se ha absorbido $\rho_2^N$ en $O(N^{-1})$"*), el autor debe hacer una de las dos reparaciones siguientes (o ambas explícitamente):
+  1. Conservar explícitamente la forma proyectada $2 e^{-K_* N} \operatorname{Re}\langle v_+, R_P^N P s \rangle$ en (21), o bien escribir el término libre de $Q$ separado como $+ O_W(N^{-6} \rho^N e^{-K_* N})$ antes de absorberlo.
+  2. Si se absorbe $\rho^N$ (y $\rho_2^N$) dentro de $C_W N^{-1}$ para pasar a $2\operatorname{Re}\langle r_+, E S^N f_0 \rangle$, declarar explícitamente en el texto de (15) y (21)–(22) que dicha absorción utiliza $\sup_{N \ge 2} N \rho(W)^N \le \frac{1}{e |\log \rho(W)|} < \infty$ para $W$ fijo, haciendo constar que el término principal escrito $2\operatorname{Re}\langle r_+, E S^N f_0 \rangle$ es formalmente independiente de $W$ sólo porque la contribución de $W^c$ ha sido volcada en la constante dependiente de $W$ del resto $O_W(N^{-7} e^{-K_* N})$.
+
+---
+
+## 5. CLAIM_CEILING — Dictamen: `PASS`
+
+### Auditoría de alcance, cuantificadores y techo de las afirmaciones
+* **Separación entre hipótesis B y F:** El informe distingue con total rigor qué se obtiene bajo $B$ ($\|\vartheta\|_\infty \le b < \infty$) y qué requiere $F$ ($a_0, a_1 < \infty$ en (2)). Bajo $B$ sólo se obtienen la estabilidad de Schur en §2 y las cotas gruesas $|A_{cP}| = O_W(N^{-4} e^{-K_* N})$, $|A_{cQ}| = O_W(N^{-5} e^{-K_* N})$ y $B_{cAB} = O_W(N^{-8} e^{-2K_* N})$ en §5 (usando $\|r_c\|_2 \le 1$). Tanto la cota puntual de Bob (11),(13) ($a_0 < \infty$) como el conmutador de transporte (16)–(19) ($a_1 < \infty$) dependen de $F$, y el informe señala expresamente en §1 y §9 que $F$ no se deduce de $B$ ni de ser meramente $C^1$.
+* **Cuantificadores e independencia en $N$ pero no en $W$/perfil:** No se elige $W = W_N$ ni se exige un perfil numérico para las pruebas analíticas: los cuantificadores están bien ordenados (se fija $W$ admisible y $\vartheta \in F$, y las constantes $C_W, O_W, O_\vartheta$ son independientes de $N$).
+* **Subordinación absoluta frente a líder firmado no nulo:** El informe respeta estrictamente el techo del resultado:
+  - Demuestra que el error del puente hacia el funcional libre con referencia actual es absolutamente $O_W(N^{-7} e^{-K_* N})$, que es $o(N^{-13/2} e^{-K_* N})$ en comparación con la escala del protocolo plano de `ir-corona.tex`.
+  - Declara explícitamente en §7, §8 y §9 que esto **no** demuestra que el nuevo funcional $2\operatorname{Re}\langle r_+, E S^N (U_M - I)\phi_N \rangle$ tenga orden $N^{-13/2} e^{-K_* N}$, ni fija su signo, ni excluye que se anule o sufra cancelaciones para un perfil $\vartheta \ne 0$.
+  - No promueve `H1`/`H1c`, `POWER_13/2_STABILITY`, `E0` ni `AdS`, ni presenta la subordinación de Schur como novedad conceptual.
+* **Controles límite:** El caso $\vartheta = 0$ ($T=R, r_-=0, L_-=0, L_+ = L_{\mathrm{plano}}$) y el control de fuente nula ($U_{\mathrm{enc}} = I \implies f=s=0$, distinguiéndolo correctamente del encoder congelado $M=I$ donde $U_I = e^{i\pi F_N/2}I \ne I$) son exactos y consistentes con `T1` e `ir-corona.tex`.
+
+=== DOCUMENT 5: 2026-10-31--schur-physical-bridge-review-disposition.md ===
+
+# Schur physical bridge: independent review and disposition
+
+Date: 2026-10-31. Branch: `research/schur-stability-audit`.
+Base commit: `b934bc3d10fd855f27214a70c28519c98bf3c1db`.
+Status: `INDEPENDENT_REVIEW_COMPLETED / CLARIFICATIONS_APPLIED_NOT_REREVIEWED`.
+No global PASS or canonical promotion is recorded.
+
+The continuation addresses only the pending review of the existing candidate.
+H1 remains OPEN and paused; localization, a signed nonzero leader and AdS
+are not opened or certified.
+
+## Execution and frozen sources
+
+The prior execution record documents the user's explicit request for Grok,
+then Gemini if unavailable. The current instruction was to continue.
+The bounded request allowed one Grok execution and one Gemini fallback.
+Both used `revision-ciega` from herramientas commit
+`ce09890a0d5f68a6634f358eff2e477ac5f15ec7`.
+
+Grok's execution was interrupted by the Codex server restart. The recovered
+JSON contains 1773 events, no final result/error/done event and no text event.
+The previous execution session was no longer available. No mathematical
+verdict is attributed to Grok; partial provider output is not evidence.
+
+Gemini completed normally, model returned `gemini-4-argon`, finish `STOP`,
+2026-10-31 17:32:51–17:34:19 UTC. See the unedited
+[review](../debates/2026-10-31--schur-physical-bridge-review/informe_gemini.md)
+and [operational state](../debates/2026-10-31--schur-physical-bridge-review/estado_gemini.json).
+One Google-family agent reviewed an OpenAI-authored candidate; this is not
+human review or multi-member consensus. `COMPLETED` describes execution only.
+
+The exact submitted document is the assembled frozen September dossier,
+SHA256 `2c805293f8d3fbe6afb536fc7d6d09a0ef53b245856aaed4936faa134b591fb6`.
+The wrapper's complete input has SHA256
+`c4085e2a74e6496184bf1c05efc4ec56a6abf419c69af93db56ac6e1c13221a8`.
+Before the clarifications, the current candidate had SHA256
+`472c18154104530b15123c67e62d456f5b18a44bec79f4eeac1b4ae4b77e4534`;
+its text and T1 match their embedded versions, ignoring outer whitespace.
+The dossier's manuscript predates changes to the presentation of the twelve
+Pauli pairs and four reference controls. The review covers the frozen text,
+not a fresh certification of the current manuscript.
+
+## Verdict and mathematical disposition
+
+| Requested block | Gemini verdict |
+| --- | --- |
+| SCHUR_STABILITY | PASS |
+| PHYSICAL_ENDPOINTS | PASS |
+| PROPAGATOR_ERROR | PASS |
+| SIGNED_REDUCTION | REPAIR_REQUIRED |
+| CLAIM_CEILING | PASS |
+
+Gemini accepts the current physical Alice and Bob endpoints and the absolute
+bridge error. Its requested repair concerns absorbing the free terminal-Q
+contribution when replacing the projected free functional by the full one.
+The review is retained without editing, including its errors.
+
+**Author disposition, not a second independent review:** the stated objection
+that no N-independent constant bounds `rho^N` by `C_W/N` is false for fixed
+`0<rho(W)<1`. With `a=-log(rho)>0`, differentiation gives
+`d(x exp(-a x))/dx = exp(-a x)(1-a x)`, hence
+
+\[
+\sup_{N\ge2}N\rho^N\le\sup_{x\ge0}xe^{-ax}
+=1/(ea)<\infty.
+\]
+
+A second elementary bound follows from positivity of the geometric series:
+`N rho^N <= sum_{n>=1} n rho^n = rho/(1-rho)^2`.
+Both constants are independent of N and may depend on W, as the candidate
+already permits. No uniformity as W varies or shrinks is asserted.
+
+The exact free reconstruction identity splits the full functional into
+`2 exp(-K_*N) Re<v_+, R_P^N P s>` and its Q counterpart. The latter obeys
+`C_(W,profile) N^-6 rho(W)^N exp(-K_*N)`, therefore
+`O_(W,profile)(N^-7 exp(-K_*N))`. The original conclusion does not fail for
+the reason alleged. Nevertheless the candidate now displays this identity,
+the separate Q error, and the explicit absorption constant at (15) and
+before (21). These are clarifications, with no change of hypotheses or powers.
+The changed version has not been independently re-reviewed.
+
+**Further review error:** in its Schur discussion Gemini writes the interior
+subdominant modulus as at most `Lambda^-2`. This does not follow from
+`|lambda(p)|<=Lambda`: inversion reverses the inequality. The sufficient
+bound retained by the candidate is instead
+`1/(Lambda inf_(p in closure W)|lambda(p)|)<1`, under T1's fixed admissible
+window with `inf|lambda|>1`. This review sentence must not be used as a lemma.
+Neither this correction nor the absorption calculation certifies the entire
+proof afresh. The reported per-block verdicts remain those of the reviewer.
+
+## Scope and checks
+
+The original dossier, raw provider responses and unedited Gemini report are
+preserved. The source manuscript, T1, observable and canonical gate ledger
+are unchanged. No new numerical scan, external literature claim, publication,
+commit or push is made. The local library index is absent in this checkout;
+this task reviews the supplied frozen proof rather than adding literature.
+Validation is the explicit absorption calculation above and `git diff --check`;
+no scientific verifier was changed or rerun for these textual clarifications.

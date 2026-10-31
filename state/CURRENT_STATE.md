@@ -1,12 +1,25 @@
 # CURRENT_STATE
 
-**Date:** 2026-09-24
+**Date:** 2026-10-31
+
+**Current update — 2026-10-31:** by direct user instruction («1 y despues 3»),
+the Schur physical bridge of Sec. 9.7 is promoted on
+`research/schur-stability-audit` to **SCHUR_PHYSICAL_BRIDGE_PASS_UNDER_B_F_FIXED_W**.
+The completed cross-family review and bounded clarification re-review leave
+no mandatory repairs for the reviewed snapshot. This supersedes pending-review
+language and the older endpoint obstruction only within that bridge's F and
+fixed-W scope; B alone retains its weaker conclusions. No signed nonzero
+leader, general H1/H1c or E/AdS result is promoted. H1 remains OPEN and paused
+at this consolidation step. The separately selected small-profile next step
+requires its own preregistered contract before execution. The long status
+summary below retains historical gate descriptions; where it conflicts with
+this update, this update and the revised Sec. 9.7 prevail.
 **Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. L2 stop gate: `B / OPEN_BLOCKED_METHOD` (PRELIMINARY decision audit; partial external review + source bounds reproduced by Claude; B structural to norm-based method, not evidence against H1; H1 OPEN and paused). The present physical stay-remainder bounds do not reach `o(N^-13/2 e^{-K_*N})` without the still-open H1c localization machinery; this is a method obstruction, not an H1 refutation. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
-**Branch-local state.** This file is reconciled on
-`research/b-infinity-post-s4-gate` only, so that it agrees with all evidence
-merged on this branch. It is **not** a canonical promotion: `main` is
-unchanged, and promotion requires a separate explicit decision.
+**Branch-local state.** Earlier reconciliation was on
+`research/b-infinity-post-s4-gate`. The 2026-10-31 user-authorized bridge
+promotion is on `research/schur-stability-audit` only. `main` is unchanged;
+promotion to `main` requires a separate explicit decision.
 
 **Repository:** `nacho09021973/qca-causal-cones`
 
@@ -1463,8 +1476,9 @@ observables). This scan does **not** assign a 4B terminal state.
 
 ## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)
 
-**Status (2026-09-25): H1 OPEN; the Schur / physical-endpoint bridge is
-written but awaits independent review in Sec. 9.7. The operational contract is fixed
+**Status (2026-10-31): H1 OPEN and paused; the Schur / physical-endpoint bridge
+has completed review and is promoted within its frozen B/F, fixed-W scope
+in Sec. 9.7. The operational contract is fixed
 in Sec. 9.6. The full H1c localization claim is not closed.**
 
 This update supersedes the older statement that physical-realization / absolute-scale
@@ -1711,19 +1725,23 @@ follow-up requiring a line-by-line check that both endpoints belong to the
 current two-channel protocol. This authorizes the estimate audit and the
 linear-piece reduction below; it does not assert a nonzero leading coefficient.
 
-Status: **PROOF_WRITTEN / INDEPENDENT_REVIEW_PENDING**. The
+Status (promoted 2026-10-31): **SCHUR_PHYSICAL_BRIDGE_PASS_UNDER_B_F_FIXED_W**. The
 [candidate proof and endpoint trace](../reports/2026-09-24--schur-stability-physical-transfer.md)
 retains the exact T1 definitions and fixed W. It distinguishes bounded real
 profiles (B) from the additional Fourier-moment hypothesis of Sec. 9.4 (F).
 The latter is not implied by boundedness or merely C1 regularity.
-Two external review executions timed out without a mathematical verdict;
-the [execution record](../reports/2026-09-25--schur-physical-bridge-review-status.md)
-records both failures. Neither is a pass, rejection or consensus. No review
-process remains running.
+The [execution record](../reports/2026-09-25--schur-physical-bridge-review-status.md)
+retains the failed historical attempts. The completed Google-family review
+and bounded re-review of the clarified OpenAI-authored candidate are recorded
+in the [closure report](../reports/2026-10-31--schur-physical-bridge-review-closure.md).
+Reviewed candidate SHA256:
+`caee6fa254fd83d64ac16ce6de2f04b359087e9a8f1668b0d4f93a089589bf65`.
+No mandatory repairs remain. This is one cross-family reviewer sequence,
+not two independent reviewers, human review or multi-member consensus.
 
 The candidate establishes under B the full double Schur sum O_W(N^-1),
 uniform stability of the normalized product, and the reconstruction norm
-Theta(N^-1). Under F it proposes the stronger full propagator estimate
+Theta(N^-1). Under F the reviewed bridge establishes the full propagator estimate
 ||T^N - R^N|| = O_W(N^-1), where R = D_xi/Lambda. The complete physical
 Alice source s = Fourier H_xi J(U_M-I)phi_N and the actual Bob dual endpoint
 v_c = V_c^* E B pi_c U_N^N J phi_N both have L2 norm O(N^-3).
@@ -1738,13 +1756,21 @@ The signed continuation keeps the current reference r_+:
 - The sum of quadratic pieces in either channel is nonnegative and
   O_W(N^-8 exp(-2K_*N)); there are three such pieces per channel.
 
-These are candidate estimates pending review. N^-7 is smaller than the
+These are reviewed estimates under the stated hypotheses. N^-7 is smaller than the
 flat benchmark N^-13/2, but no lower bound for the current signed functional
 is supplied. Its sign, coefficient and nonvanishing remain OPEN. This is
-a proposed repair of the missing bridge, not a novelty claim, not transfer
+a reviewed repair of the missing bridge, not a novelty claim, not transfer
 of the flat Bob spinor, and not closure of H1/H1c, E0,
 POWER_13/2_STABILITY or E/AdS. T3's earlier cancellation stop is not converted
 into a cancellation result.
+
+The older physical-transfer and L2-stop entries below remain historical
+records of their narrower norm-based methods. In particular, their claims
+that Bob has no N^-3 bound do not override the reviewed Fourier-L1 argument
+under F. The bridge does not by itself control the change of its retained
+reference functional from the flat one, so it supplies no signal-survival
+claim or resolution of the full paused H1 problem.
+
 ### 9.7 Physical reconstruction operator norms — 2026-09-24
 
 The initial endpoint-transfer audit is recorded in
