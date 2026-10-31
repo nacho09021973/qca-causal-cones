@@ -14,6 +14,12 @@ at this consolidation step. The separately selected small-profile next step
 requires its own preregistered contract before execution. The long status
 summary below retains historical gate descriptions; where it conflicts with
 this update, this update and the revised Sec. 9.7 prevail.
+
+**Small-profile execution — 2026-10-31:** the selected next step has now
+been preregistered and executed in Sec. 9.8. Status:
+`SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PENDING`,
+evidence PRELIMINARY. Only that one-profile/one-pair subproblem is reopened;
+the broad H1/H1c localization program stays paused. No H1 PASS is promoted.
 **Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. L2 stop gate: `B / OPEN_BLOCKED_METHOD` (PRELIMINARY decision audit; partial external review + source bounds reproduced by Claude; B structural to norm-based method, not evidence against H1; H1 OPEN and paused). The present physical stay-remainder bounds do not reach `o(N^-13/2 e^{-K_*N})` without the still-open H1c localization machinery; this is a method obstruction, not an H1 refutation. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
 
 **Branch-local state.** Earlier reconciliation was on
@@ -1776,10 +1782,33 @@ claim or resolution of the full paused H1 problem.
 Direct user instruction «1 y despues 3» authorizes the limited perturbative
 step after bridge consolidation at `2e6af3a`. Contract:
 [`H1_SMALL_GAUSSIAN_PROFILE_GATE`](../theory/H1_SMALL_GAUSSIAN_PROFILE_GATE.md).
-Initial status: `OPEN / NOT_EXECUTED`. Fix `vartheta(X)=epsilon exp(-|X|^2)`,
+Preregistration: `6ef57da`, corrected before execution at `067f8fa` to retain
+all fourteen jumps of the defining symbol. Fix `vartheta(X)=epsilon exp(-|X|^2)`,
 encoder sigma_2, detector I, and the current two-channel functional.
 Only this subproblem is reopened; the broad H1/H1c localization program
-remains paused. No survival statement is installed before execution/review.
+remains paused.
+
+Execution: [`small Gaussian profile report`](../reports/2026-10-31--h1-small-gaussian-profile.md).
+Status: **SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PENDING**;
+evidence **PRELIMINARY**. Exact channel parity gives zero first epsilon
+derivative of the retained signed functional. The report gives its first
+potentially nonzero quadratic coefficient (including same-coin terms),
+but does not prove that coefficient nonzero. The candidate proof bounds
+the functional difference by `C epsilon^2 N^-13/2 exp(-K_*N)` uniformly
+for `|epsilon|<=1`, using weighted layer l1 masses and an integrated
+tilted-free-kernel norm `O(N^-3/2)` over all eight saddles. It proposes a
+positive N-independent epsilon_0 for uniform negative full L_+ and
+`|L_+|=Theta(N^-13/2 exp(-K_*N))`, with L_- bounded at the smaller
+`N^-7 exp(-K_*N)` scale. The transfer explicitly checks bridge constants
+uniformly on the fixed epsilon interval. No numerical epsilon_0, finite-N
+threshold or new full asymptotic coefficient is supplied.
+
+The new permanent algebra verifier passes 21 exact checks; the unchanged
+flat Laplace verifier passes 58/58. Neither count certifies the new analytic
+estimates. The new survival conclusion is unreviewed and is not promoted
+to H1, general profile/pair stability, H1c, E0, POWER_13/2_STABILITY or E/AdS.
+The bounded execution stops here pending independent review; no external
+submission or broader research is authorized by this state update.
 
 ### 9.7 Physical reconstruction operator norms — 2026-09-24
 

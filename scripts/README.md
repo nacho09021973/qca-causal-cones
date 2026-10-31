@@ -1,5 +1,22 @@
 # Scripts
 
+## Small fixed Gaussian profile algebra (2026-10-31)
+
+`verify_small_gaussian_profile_algebra.py` accompanies the preregistered
+[small Gaussian gate](../theory/H1_SMALL_GAUSSIAN_PROFILE_GATE.md) and its
+[execution](../reports/2026-10-31--h1-small-gaussian-profile.md). It runs
+21 exact SymPy 1.14.0 checks: Gaussian Fourier moments, resource L1
+normalization, channel parity, one abstract noncommuting three-step
+quadratic expansion with the single-coin contribution, positive Hessian
+factorization, geometric moments and power bookkeeping. This is not a
+lattice simulation or finite-N signal scan. The analytic kernel estimate,
+general-N remainder and signal survival remain report proofs pending review;
+the checks do not certify them. The corrected contract is pinned by SHA256.
+
+```sh
+/home/adnac/venvs/torch-gpu/bin/python -B scripts/verify_small_gaussian_profile_algebra.py
+```
+
 No scientific script was present at the initial freeze (`44ad178`).
 
 ## IR projection leakage algebra (2026-09-22)
