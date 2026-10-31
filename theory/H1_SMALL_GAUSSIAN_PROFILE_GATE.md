@@ -4,7 +4,10 @@ Date: 2026-10-31. Initial status: `OPEN / NOT_EXECUTED`.
 User authorization: «1 y despues 3»: consolidate the bridge, then study
 `vartheta=epsilon v` for a fixed admissible profile, its first signed
 correction, and possible flat-leader survival at small epsilon.
-This contract is committed before execution.
+This contract is committed before execution. Pre-execution correction:
+the initial `6ef57da` wording mentioned only the vertex jumps; direct
+inspection of the defining symbol restores its full fourteen-jump support
+below. Execution uses the corrected contract, without changing the walk.
 
 ## 1. Frozen model and quantifiers
 
@@ -12,7 +15,9 @@ The promoted Schur physical bridge at `2e6af3a` is input. Retain the exact
 two-channel contract and T1: dimension 3, C^2_channel tensor C^2_spin,
 D=S direct-sum S^-1 for the explicit CJWW (5.15) symbol in
 `papers/ir-corona/ir-corona.tex`, beta=sigma_x_channel tensor I_spin.
-Keep the body-diagonal one-step displacements, lattice units, complete
+Keep all fourteen one-step displacements of that symbol: eight vertices
+`(+/-1,+/-1,+/-1)`, four face diagonals `(+/-1,+/-1,0)` and two axial
+jumps `(+/-1,0,0)`. Keep lattice units, complete
 update, J phi_N, Alice/Bob balls of radius N/4, profiles and time N.
 No new isotropy, representation, minimality or irreducibility assumption
 is imposed on the inhomogeneous coin. Any admissible T1 W is fixed
