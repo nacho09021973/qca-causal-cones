@@ -17,9 +17,10 @@ this update, this update and the revised Sec. 9.7 prevail.
 
 **Small-profile execution — 2026-10-31:** the selected next step has now
 been preregistered and executed in Sec. 9.8. Status:
-`SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS /
-PROMOTION_PENDING`. Claude Opus 5.5 reviewed the exact candidate and returned
-PASS on all six blocks, no mandatory repairs. This records review evidence
+`SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS_TWO_HOUSES /
+PROMOTION_PENDING`. Claude Opus 5.5 (2026-10-31) and, blind to it, Grok
+grok-4.7 (2026-11-01) reviewed the exact candidate on identical input and
+each returned PASS on all six blocks, no mandatory repairs. This records review evidence
 only; the new scientific conclusion is not canonically promoted. Only that
 one-profile/one-pair subproblem is reopened;
 the broad H1/H1c localization program stays paused. No H1 PASS is promoted.
@@ -1792,13 +1793,18 @@ Only this subproblem is reopened; the broad H1/H1c localization program
 remains paused.
 
 Execution: [`small Gaussian profile report`](../reports/2026-10-31--h1-small-gaussian-profile.md).
-Status: **SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS /
+Status: **SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS_TWO_HOUSES /
 PROMOTION_PENDING**. The execution was initially PRELIMINARY. The later
 [independent Claude review](../reports/2026-10-31--h1-small-gaussian-claude-review.md)
 returns PASS on all six blocks, no mandatory repairs, for candidate SHA256
 `98e96a47fdb584e921210e71c07559b773a2bd85258ab8fc1606ac6bc5972611`.
 One cross-family agent review, conditional on the frozen flat theorem and
 promoted bridge; not human review or automatic canonical promotion.
+A second, blind [Grok review](../reports/2026-11-01--h1-small-gaussian-grok-review.md)
+(user instruction «a ciro») on byte-identical input (SHA256 `60df1c1e…`)
+also returns PASS on all six blocks, no mandatory repairs. Two agent
+reviews from different houses; still not human review. The 21- and
+58-check counts were reproduced outside the author's run on 2026-11-01.
 Exact channel parity gives zero first epsilon
 derivative of the retained signed functional. The report gives its first
 potentially nonzero quadratic coefficient (including same-coin terms),
