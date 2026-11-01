@@ -5,7 +5,7 @@
 **Gate executed — 2026-11-01:** `C_ACROSS_LATTICES` (Sec. 11) is
 executed: `TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN`, evidence
 **PRELIMINARY**; reviewed (Grok REPAIR_REQUIRED, Gemini PASS), repaired,
-bounded re-review pending; not promoted. It is the
+bounded re-review Gemini PASS with Grok ausente; not promoted. It is the
 active front; the H1 line stays paused.
 
 **Current update — 2026-11-01:** by direct user instruction («promocionada
@@ -2104,7 +2104,8 @@ verifier `scripts/verify_c_across_lattices_gate.py` (reviewed at
 [Reviews](../reports/2026-11-01--c-across-lattices-review.md): Grok
 REPAIR_REQUIRED (three repairs, applied), Gemini PASS. Status:
 **TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PRELIMINARY,
-REPAIRED, RE-REVIEW PENDING.** In the declared rows: square,
+REPAIRED; bounded re-review: Gemini PASS (R1–R5), Grok ausente (402,
+balance exhausted). PROMOTION_PENDING (user decision).** In the declared rows: square,
 BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
 has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
 L6d on the identical substrate; `C_infty^strict = C_micro` in every

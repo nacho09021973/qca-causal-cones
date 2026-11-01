@@ -1,0 +1,265 @@
+diff --git a/reports/2026-11-01--c-across-lattices.md b/reports/2026-11-01--c-across-lattices.md
+index b162ce9..35e06bc 100644
+--- a/reports/2026-11-01--c-across-lattices.md
++++ b/reports/2026-11-01--c-across-lattices.md
+@@ -5,13 +5,29 @@ Contract: [`C_ACROSS_LATTICES_GATE.md`](../theory/C_ACROSS_LATTICES_GATE.md),
+ preregistered at `30672ba52b037f95b99c7f3b3dc791d215b97cdf`; contract SHA256
+ `b58deeec91184fbf976a6cb857c8e935ec7d4a4e52d6608a62768452759e34e3`, unchanged
+ since the freeze.
+-Verifier: [`scripts/verify_c_across_lattices_gate.py`](../scripts/verify_c_across_lattices_gate.py)
+-at `cae6e308ab0e224f48db875df0997b362a13a98c`, SHA256
+-`1da30dab9060c8d97a4452eb07451f7886325f4fd87ce22a27cdd950dfee9645`.
++Verifier: [`scripts/verify_c_across_lattices_gate.py`](../scripts/verify_c_across_lattices_gate.py);
++reviewed version at `cae6e308ab0e224f48db875df0997b362a13a98c`, SHA256
++`1da30dab9060c8d97a4452eb07451f7886325f4fd87ce22a27cdd950dfee9645`;
++repaired version in the commit that adds this repair note.
+ Author: Claude Code (Claude Opus 5.5), at the user's direction.
+ 
+ **Gate verdict: `TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN`.**
+-**Evidence level: PRELIMINARY** (no independent review yet). Not promoted.
++**Evidence level: PRELIMINARY.** Repaired 2026-11-01 after the
++[Grok/Gemini reviews](2026-11-01--c-across-lattices-review.md) (Grok
++REPAIR_REQUIRED, Gemini PASS); the repaired snapshot awaits a bounded
++re-review. Not promoted.
++
++**Repairs applied (2026-11-01).** (1) Every tabulated value — step sets,
++group indices, `r_in`, `c_0`, vertex counts, Gram matrices, `K` — is now
++asserted by an exact `record` in the verifier, which passes 135/135; a
++negative test (altering one expected `c_0` and one step set in memory)
++makes it exit 1 on exactly those checks. (2) Sec. 2 no longer presents the
++continuum-speed agreement as a test of the product order. (3) Hb/Hc are
++stated for the decided rows with L6b OPEN, not with the token
++`CONFIRMED_IN_DECLARED_ROWS`. Clarifications: the Duhamel identity of
++Sec. 5 is corrected (no number changes); Sec. 3 distinguishes the finer
++group of L6c; the Fourier sign convention relative to JDW's plane wave is
++noted; the script docstring is updated.
+ 
+ ## 0. Answer in one paragraph
+ 
+@@ -37,7 +53,8 @@ interpreter has no SymPy):
+ python -B scripts/verify_c_across_lattices_gate.py
+ ```
+ 
+-Result: exit 0, **103/103 exact checks PASS, 0 FAIL**. No floating point,
++Result (repaired verifier): exit 0, **135/135 exact checks PASS, 0 FAIL**
++(103/103 in the reviewed version at `cae6e30`). No floating point,
+ sampling or fitting in any certified quantity. Zero tests are symbolic; the
+ sign of a nonzero radical is decided by SymPy's exact relational evaluation.
+ The reviewed helpers `published_symbol` and `fourier_support` of
+@@ -70,8 +87,17 @@ history `28ef8f1`, `de5680b`, `cae6e30`.
+ own units reproduces the continuum speed each source states: JDW
+ `Delta t = 3 epsilon/2` (L6c, L6d), `epsilon` (L6e), `3 sqrt3 epsilon/4`
+ (L6f) give `c = 1`; ADMP, Farrelly–Short and Mlodinow–Brun give `c = 1` per
+-update in their units. This tests the phase, routing and ordering
+-conventions independently of the geometry.
++update in their units. This checks the routing and scale conventions. It
++does **not** test the product order: since every factor satisfies
++`W_j(0) = I`, the linear term is the sum of the factors' derivatives and is
++order-independent (Grok review). The `prod_j` order of JDW Eqs. (2), (8)
++remains a declared reading; `K` (Sec. 5) and vertex coefficients of L6c and
++L6f may depend on it.
++
++**Fourier sign.** Relative to JDW's plane wave `exp i(omega t - k.X)`, the
++encoded symbol corresponds to `k -> -k`. Every tabulated quantity
++(`U(0)`, quadratic cone, Gram, Hessian) is even in `k`, so the table is
++unaffected.
+ 
+ ## 3. Step sets: what the substrates actually are (Part 1)
+ 
+@@ -89,8 +115,11 @@ conventions independently of the geometry.
+ No "honeycomb" walk in the declared sources acts on a honeycomb Bravais
+ structure: as homogeneous walks they move on a triangular lattice. The JDW
+ "isosceles" walk is on the standard square substrate. In two dimensions the
+-declared rows therefore realise **two** substrates up to isometry and scale:
+-square and hexagonal.
++declared rows realise **two `C_micro` shapes** up to isometry and scale,
++square and hexagonal. Counting the translation group as well, there are
++three: square (L2, L6e); hexagon with step spacing equal to the hull radius
++(L6a, L6d, L6f); and the same hexagon over the finer triangular group of
++L6c (spacing/radius `1/2`, a scale invariant).
+ 
+ **Source sign issues (ADMP 1803.01015v2 p.3), certified as recorded
+ issues, not repaired silently:** (i) Eq. (8) holds for
+@@ -148,12 +177,16 @@ way", JDW p.2), `theta = 3 sqrt3 m/4` (L6f); JDW L6e replaces `U^1` so that
+ `U(0) = e^{-i m sigma_x}`, `theta = m`.
+ 
+ Method (exact, no matrix-log series). For `U(0) = e^{-i theta Q}`,
+-`Q^2 = I`, the derivative of the exponential gives
+-`i dU U(0)^dag = X_par + (sin theta/theta) X_perp`, with `X_par`, `X_perp`
+-the parts of `dH` commuting and anticommuting with `Q`; hence
+-`dH = X_par + (theta/sin theta) X_perp`. `c_H(n̂)^2 = n̂.g.n̂` with
+-`{B_a, B_b} = 2 g_ab I`, `B_a = dH/dk_a(0)` — the linear spatial coefficient
+-of `H = i log U` at fixed mass, as in the Weyl/Dirac gate. For `omega`,
++`Q^2 = I`, Duhamel's formula gives
++`i dU U(0)^dag = X_par + (sin theta/theta) X_perp e^{i theta Q}`, with
++`X_par`, `X_perp` the parts of `dH` commuting and anticommuting with `Q`.
++(The reviewed version omitted the unitary factor `e^{i theta Q}`; both
++reviewers flagged it; corrected here.) The verifier forms
++`B_a = X_par + X_perp e^{i theta Q}` and asserts `X_par = 0`; then `B_a` is
++Hermitian, anticommutes with `Q`, and `{B_a, B_b} = {X_a, X_b}`, so its Gram
++matrix is that of `dH`. `c_H(n̂)^2 = n̂.g.n̂` with
++`{dH_a, dH_b} = 2 g_ab I` — the linear spatial coefficient of `H = i log U`
++at fixed mass, as in the Weyl/Dirac gate. No tabulated number changes. For `omega`,
+ `G = (U+U^dag)/2` has eigenvalues `cos omega_j`, is scalar at `k=0` and has
+ zero gradient, so its Hessian gives `omega_j^2 = theta^2 +
+ (theta/sin theta) q_j |k|^2`. The script certifies
+@@ -200,8 +233,8 @@ Readings, each limited to these rows:
+ | Hypothesis | Verdict |
+ | --- | --- |
+ | Ha: `c_0 = r_in` in every declared s=2 row with a massless node | **`REFUTED_BY_ROW_L6a`** (also L6c, L6d, L6f). Holds in L1, L2, L5a, L6e and the recorded L3, L4. |
+-| Hb: `c_strict^iso = r_in` in every declared row | **`CONFIRMED_IN_DECLARED_ROWS`** for every computed or recorded row; L6b OPEN |
+-| Hc: no declared row with `c_0 > c_strict^iso` | **`CONFIRMED_IN_DECLARED_ROWS`** (asserted by the script where decided); L6b OPEN |
++| Hb: `c_strict^iso = r_in` in every declared row | **OPEN**: holds in every decided row (all computed and recorded rows); L6b undecided. The token `CONFIRMED_IN_DECLARED_ROWS` is not used because a declared row is OPEN. |
++| Hc: no declared row with `c_0 > c_strict^iso` | **OPEN**: holds in every decided row (asserted by the script for the computed rows; L3, L3s4, L4 from their records); L6b undecided. |
+ 
+ ## 7. What this does not establish
+ 
+diff --git a/scripts/verify_c_across_lattices_gate.py b/scripts/verify_c_across_lattices_gate.py
+index afcb8a0..cefd732 100644
+--- a/scripts/verify_c_across_lattices_gate.py
++++ b/scripts/verify_c_across_lattices_gate.py
+@@ -8,17 +8,25 @@ Run from the repository root:
+ Fail-closed: any failed check or exception exits nonzero. SymPy only, zero
+ tolerance, no sampling or fitting.
+ 
+-Part 1 (this revision): for each new row (L5a, L5b, L6a, L6c-L6f) build the
+-exact Bloch symbol of one complete update from the source equations, check
+-unitarity and the source's stated algebraic identities, and extract the
+-composite step set F and the translation group it generates. Row L6b is
+-reported as not encoded (see SOURCE_GAPS). Later parts (C_micro geometry,
+-c_0, c_strict^iso, masses) are not yet implemented here.
++Part 1: for each new row (L5a, L5b, L6a, L6c-L6f) build the exact Bloch
++symbol of one complete update from the source equations, check unitarity
++and the source identities used, and assert the composite step set F and
++the index of the translation group it generates. Row L6b is reported as
++not encoded (see SOURCE_GAPS).
++Part 2: massless node at k = 0; asserts r_in, c_0, vertex count and
++C_infty^strict = C_micro for L1, L2 and the new rows against EXPECTED_*.
++Part 3: massive rows; asserts the exact first-order Gram matrix and the
++theta-independent curvature correction K against EXPECTED_*, plus a
++positive control on the reviewed 1D Dirac block. ADMP mass is OPEN.
++Every tabulated value of the report is asserted by record(); nothing in
++the table rests on a print alone (repair 1 of the 2026-11-01 Grok review).
+ 
+ Conventions (frozen in the contract, Sec. 2):
+ - moving amplitude by displacement h carries the phase exp(-i k.h); an
+   operator that reads the value at X+v therefore moves amplitude by -v;
+-- in every product the factor with the smallest index acts first;
++- in every product the factor with the smallest index acts first (for the
++  prod_j notation of JDW Eqs. (2), (8) this is a declared reading; the
++  linear cone does not depend on it, but K and vertex coefficients may);
+ - lattice vectors are written as integer combinations of two (or three)
+   generators g; the Laurent variable z_i stands for exp(-i k.g_i).
+ """
+@@ -54,6 +62,24 @@ SOURCE_GAPS = {
+ }
+ 
+ 
++R2, R3 = sp.sqrt(2), sp.sqrt(3)
++EXPECTED_F = {
++    "L6a": {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)},
++    "L6c": {(a, b) for a in range(-2, 3) for b in range(-2, 3) if max(abs(a), abs(b), abs(a + b)) <= 2},
++    "L6d": {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)},
++    "L6e": {(-2, 0), (0, -2), (0, 2), (2, 0)},
++    "L6f": {(-2, 1), (-1, -1), (-1, 2), (0, 0), (1, -2), (1, 1), (2, -1)},
++}
++EXPECTED_INDEX = {"L5a": 4, "L5b": 4, "L6a": 4, "L6c": 1, "L6d": 4, "L6e": 4, "L6f": 3}
++EXPECTED_MASSLESS = {  # label: (r_in, c_0, number of vertices)
++    "L1": (1, 1, 2), "L2": (R2 / 2, R2 / 2, 4),
++    "L5a": (R3 / 3, R3 / 3, 8), "L5b": (R3 / 3, R3 / 3, 8),
++    "L6a": (R3 / 2, sp.Rational(1, 2), 6), "L6c": (R3 / 2, sp.Rational(3, 4), 6),
++    "L6d": (R3 / 2, sp.Rational(3, 4), 6), "L6e": (R2 / 2, R2 / 2, 4),
++    "L6f": (R3 / 2, sp.Rational(3, 4), 6),
++}
++
++
+ def record(label, ok, detail=""):
+     CHECKS.append((label, bool(ok), detail))
+     print(("[PASS] " if ok else "[FAIL] ") + label + (f" -- {detail}" if detail else ""))
+@@ -461,6 +487,9 @@ def analyse(label, symbol, zs, support, gens, sigma, results):
+           f"c_strict^iso = {c_strict if c_strict is not None else 'OPEN'}; "
+           f"S_min = c0/V_causal^max = {c0}; S_max = c0/r_in = {ratio}; "
+           f"c0 in source units (per update, |h| as in source) = {sp.radsimp(c0 * L)}")
++    exp_r, exp_c, exp_v = EXPECTED_MASSLESS[label]
++    record(f"{label}: tabulated r_in = {exp_r}, c_0 = {exp_c}, |vertices| = {exp_v}",
++           sp.simplify(r_in - exp_r) == 0 and sp.simplify(c0 - exp_c) == 0 and len(verts) == exp_v)
+     results[label] = dict(s=symbol.rows, d=dim, r_in=r_in, c0=c0, ratio=ratio,
+                           c_strict=c_strict, iso=iso, nverts=len(verts))
+     return results[label]
+@@ -488,16 +517,22 @@ def part2(rows):
+     print(f"  Ha (c0 = r_in, s=2 rows): {ha}")
+     print(f"  Hb (c_strict^iso = r_in): {hb}")
+     print(f"  Hc (c0 <= c_strict^iso where decided): {hc}")
+-    record("Hc holds in every row where c_strict^iso is decided", all(hc.values()))
++    record("Hb holds in every row computed here (L6b undecided, OPEN)", all(hb.values()))
++    record("Hc holds in every row computed here (L6b undecided, OPEN)", all(hc.values()))
+     return results
+ 
+ 
+ # ================================================================ Part 3
+-# Massive rows. With U(0) = exp(-i theta Q), Q^2 = I, the derivative of the
+-# exponential gives i dU U(0)^dag = X_par + (sin theta/theta) X_perp, where
+-# X_par / X_perp are the parts of dH commuting / anticommuting with Q. Hence
+-# dH = X_par + (theta/sin theta) X_perp exactly (c_H, as in the Weyl/Dirac
+-# gate: linear spatial coefficient of H = i log U at fixed mass). With
++# Massive rows. With U(0) = exp(-i theta Q), Q^2 = I, Duhamel's formula gives
++# i dU U(0)^dag = X_par + (sin theta/theta) X_perp exp(i theta Q), where
++# X_par / X_perp are the parts of dH commuting / anticommuting with Q
++# (corrected 2026-11-01 after both reviews; the earlier comment omitted the
++# unitary factor). The code forms B = Y_par + (theta/sin theta) Y_perp from
++# Y = i dU U(0)^dag, i.e. B = X_par + X_perp exp(i theta Q). When X_par = 0
++# (asserted), B is Hermitian, anticommutes with Q, and {B_a, B_b} =
++# {X_a, X_b}: its Gram matrix is that of dH, which defines c_H (linear
++# spatial coefficient of H = i log U at fixed mass, as in the Weyl/Dirac
++# gate). B itself is not dH. With
+ # G = (U + U^dag)/2 scalar at k = 0 and zero linear term, cos omega_j(k) are
+ # cos theta + eig(G_2(k)) + O(k^3), so omega_j^2 = theta^2 + (theta/sin theta)
+ # q_j |k|^2 with G_2 = -(q/2)|k|^2 (c_omega2^2 = theta q / sin theta).
+@@ -605,8 +640,26 @@ def part3(rows, results):
+     record("CONTROL: method reproduces an isotropic c_omega2 (K = 0)", ctrl["iso_W"])
+     print("  ADMP L6a mass (M inside W, Eq. (7)): not of the form exp(-i theta Q) x hopping "
+           "with a fixed axis; U(0) = prod_i exp(-i mu tau_i). Not encoded in Part 3 (OPEN).")
++    # Table assertions (repair 1): Gram matrices and K exactly as tabulated.
++    i3 = sp.Rational(1, 3)
++    exp_K = {
++        "L5b": {(0, 0): sp.zeros(4), (1, 1): sp.zeros(4), (2, 2): sp.zeros(4),
++                (0, 1): sp.diag(-i3, i3, i3, -i3),
++                (0, 2): i3 * sp.Matrix([[0, -sp.I, 0, 0], [sp.I, 0, 0, 0], [0, 0, 0, sp.I], [0, 0, -sp.I, 0]]),
++                (1, 2): i3 * sp.Matrix([[0, -1, 0, 0], [-1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])},
++        "L6c": {(0, 0): -5 * R3 / 32 * I2, (0, 1): sp.zeros(2), (1, 1): 3 * R3 / 32 * I2},
++        "L6d": {(0, 0): R3 / 16 * I2, (0, 1): -sp.Rational(3, 8) * I2, (1, 1): -3 * R3 / 16 * I2},
++        "L6f": {(0, 0): -3 * R3 / 16 * I2, (0, 1): sp.zeros(2), (1, 1): 5 * R3 / 16 * I2},
++        "L6e": {(0, 0): sp.zeros(2), (0, 1): -sp.Rational(1, 2) * I2, (1, 1): sp.zeros(2)},
++    }
++    exp_g = {"L5b": sp.eye(3), "L6c": sp.eye(2), "L6d": sp.eye(2), "L6f": sp.eye(2),
++             "L6e": sp.Matrix([[1, sp.sin(2 * THETA)], [sp.sin(2 * THETA), 1]])}
+     for label, r in out.items():
+-        print(f"  summary {label}: isotropic c_H: {r['iso_H']}; isotropic c_omega2: {r['iso_W']}")
++        record(f"{label} massive: tabulated Gram/(c_0 theta/sin theta)^2 = {exp_g[label].tolist()}",
++               is_zero_matrix(r["gram"] - exp_g[label]))
++        record(f"{label} massive: tabulated curvature correction K",
++               all(is_zero_matrix(r["K"][ab] - m) for ab, m in exp_K[label].items()))
++        print(f"  summary {label}: isotropic c_H: {r['iso_H']}; K = 0 (isotropic c_omega2): {r['iso_W']}")
+     return out
+ 
+ 
+@@ -625,11 +678,18 @@ def main():
+         rows[label] = fn()
+     for label, reason in SOURCE_GAPS.items():
+         print(f"== {label}: NOT ENCODED -- {reason}")
++    print("== Part 1 table assertions")
++    for label, (symbol, zs, support, gens) in rows.items():
++        if label in EXPECTED_F:
++            record(f"{label}: composite step set F equals the tabulated set", set(support) == EXPECTED_F[label])
++        nonzero = [h for h in support if any(h)]
++        record(f"{label}: index of <F> in the generator lattice = {EXPECTED_INDEX[label]}",
++               lattice_index(nonzero) == EXPECTED_INDEX[label])
+     sys.path.insert(0, str(ROOT / "scripts"))
+     results = part2(rows)
+     part3(rows, results)
+     failed = [c for c in CHECKS if not c[1]]
+-    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-3).")
++    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-3, table asserted).")
+     return 1 if failed else 0
+ 
+ 

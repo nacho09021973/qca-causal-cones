@@ -1,0 +1,36 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "### Dictamen por punto\n\n**R1. Asertos de tabla: PASS**\nCada valor tabulado en el informe para las filas computadas está ahora cerrado mediante una llamada exacta a `record()` en `scripts/verify_c_across_lattices_gate.py`, garantizando que el proceso falle (exit 1) si algún valor discrepa:\n- **Conjuntos de pasos ($F$) e índices:** `EXPECTED_F` cierra los conjuntos compuestos de L6a y L6c–L6f (mientras que L5a y L5b ya estaban cerrados en `row_L5a` y `row_L5b` frente a $\\{\\pm 1\\}^3$). `EXPECTED_INDEX` cierra los índices del subgrupo de traslación generado por $F$ para todas las filas nuevas (4 para BCC/L5a/L5b, L6a, L6d, L6e; 1 para L6c; 3 para L6f). En las coordenadas de generadores declaradas, los conjuntos de `EXPECTED_F` corresponden exactamente a la geometría descrita en la Tabla 3 (hexágono de radio 2 para L6a/L6d, bola hexagonal de 19 puntos para L6c, los 4 puntos $(\\pm 1, \\pm 1)$ cartesianos para L6e y el hexágono rotado de radio $\\sqrt{3}$ con origen para L6f).\n- **Cantidades sin masa ($r_{\\text{in}}$, $c_0$, número de vértices):** `EXPECTED_MASSLESS` afirma exactamente los valores de la Tabla 4 para L1, L2, L5a, L5b, L6a y L6c–L6f (y la supervivencia de todos los vértices junto con $c_{\\text{strict}}^{\\text{iso}} = r_{\\text{in}}$ queda cerrada por `all_survive`).\n- **Matrices de Gram y corrección de curvatura ($K$):** En `part3`, `exp_g` y `exp_K` verifican elemento a elemento (vía `is_zero_matrix`) las matrices de Gram normalizadas y los tensores matriciales $K_{ab}$ para L5b y L6c–L6f, además del control positivo Dirac 1D. Aunque el bucle de afirmación de $K$ recorre las claves $(0,0), (0,1), (1,1)$ (y $(0,2), (1,2), (2,2)$ en 3D), la simetría $K_{ab} = K_{ba}$ está garantizada analíticamente porque provienen de las segundas derivadas parciales conmutativas de $G(k)$. Todos los valores coinciden exactamente con la Tabla 5.\n- **No tautología:** Ningún aserto nuevo es tautológico; todos comparan resultados extraídos simbólicamente de los símbolos de Bloch y la geometría convexa contra constantes explícitas predeclaradas.\n\n**R2. Orden del producto: PASS**\nEn la Sección 2 del informe («Control against the sources») y en el docstring del verificador se ha eliminado la afirmación de que reproducir la velocidad continua de las fuentes valide el orden del producto. Se explica explícitamente que, dado que cada factor cumple $W_j(0) = I$, el término lineal es la suma de las derivadas de los factores y por tanto independiente del orden; y se declara que el orden en $\\prod_j$ para JDW Eqs. (2) y (8) es una lectura declarada de la que sí pueden depender $K$ (Sección 5) y los coeficientes de los vértices de L6c y L6f.\n\n**R3. Tokens Hb/Hc: PASS**\nTanto en la tabla de la Sección 6 del informe como en `part2` del verificador se ha retirado el token `CONFIRMED_IN_DECLARED_ROWS` para Hb y Hc. El informe los declara como **OPEN** porque la fila declarada L6b está sin decidir (no codificada), haciendo constar con precisión que ambas hipótesis se cumplen en todas las filas decididas (computadas y registradas).\n\n**R4. Aclaraciones: PASS**\n- **Identidad de Duhamel:** La Sección 5 del informe y los comentarios de la Parte 3 del código incluyen ahora el factor unitario correcto: $i\\, dU\\, U(0)^\\dagger = X_{\\text{par}} + (\\sin\\theta/\\theta) X_{\\text{perp}} e^{i\\theta Q}$. Se explica claramente que el verificador construye $B_a = X_{\\text{par}} + X_{\\text{perp}} e^{i\\theta Q}$ y que, tras verificar $X_{\\text{par}} = 0$, $B_a$ es hermítico, anticonmuta con $Q$ y satisface $\\{B_a, B_b\\} = \\{X_a, X_b\\}$, por lo que su matriz de Gram coincide exactamente con la de $dH$ sin alterar ningún número tabulado.\n- **Grupo fino de L6c:** La Sección 3 distingue ahora entre las **dos** formas de $C_{\\text{micro}}$ en 2D (cuadrado y hexágono) y los **tres** sustratos al contar también el grupo de traslación, separando el grupo triangular más fino de L6c (índice 1, razón espaciado/radio $1/2$).\n- **Signo de Fourier $k \\to -k$ y docstring:** La Sección 2 documenta la convención $k \\to -k$ respecto a la onda plana de JDW y su inocuidad sobre las cantidades pares tabuladas. El docstring del script describe ahora las Partes 1, 2 y 3, y el print de resumen de la Parte 3 etiqueta `iso_W` con precisión como `K = 0 (isotropic c_omega2)`.\n\n**R5. Regresiones: PASS**\nEl diff es limpio, acotado a las reparaciones y aclaraciones solicitadas, no altera la física ni los cálculos ya aceptados en los bloques 1–5 y mantiene todas las conclusiones dentro de los límites estrictos del contrato congelado.\n\n---\n\n### Dictamen global\n\n**PASS.** No hay reparaciones obligatorias.",
+            "thoughtSignature": "ElkKVwFpFH0TwnYVZ8YWyB0v7+1Oeutbl/ZFs/SDYij1sYJYcFjW1Cp1FpJB8JJ8fYV/fvxv6oZAueKvKC3jgwV0v4v7ER0HF46FoktPBC2ws+xpm8GAr48N+A=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 30300,
+    "candidatesTokenCount": 1380,
+    "totalTokenCount": 31680,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 30300
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1380
+      }
+    ]
+  },
+  "modelVersion": "gemini-4-argon",
+  "responseId": "Gb7nas6LObD5kdUP-q7uyQ8"
+}

@@ -72,3 +72,24 @@ massive Gram/curvature conclusions.
 
 Repair the verifier and report, then a bounded re-review of the repaired
 snapshot. No promotion before that.
+
+## Bounded re-review of the repaired snapshot (2026-11-01)
+
+User instruction «si, autorizado». Repaired snapshot `8d0276e`; request,
+diff `aab5e7b..8d0276e` of the verifier and report, and raw outputs in
+`debates/2026-11-01--c-across-lattices-rereview/`. Documents: contract,
+this review record, the diff, the repaired report and verifier. Same
+input to both houses, SHA256
+`28f6c9ded4da3a99f308e5c6f5ad7dc48652196bf54b9a40f11235b647f09a27`.
+Scope: the three repairs (R1–R3), the clarifications (R4) and regressions
+(R5); blocks 1–5 not reopened unless the diff altered them.
+
+| House | Outcome |
+| --- | --- |
+| gemini (gemini-4-argon) | COMPLETED (`STOP`), 22:33 UTC. **PASS on R1–R5; no mandatory repairs.** Review SHA256 `6672ed508bb20920f8c75003f3c905ea03016331512aa08db7805d87f757f3c0` (file `informe_gemini.md`). |
+| ciro (grok-4.7) | **FAILED, ausente**: `API error (status 402 Payment Required): Grok Build usage balance exhausted` (`grok.log`). Account-level failure, so no descent of the Grok model ladder; no verdict. |
+
+Consequence: Grok's three mandatory repairs were applied by the author
+and checked by Gemini, not by Grok. The repaired snapshot has one bounded
+cross-family re-review PASS (Gemini) on top of the first-round Gemini PASS;
+Grok's acceptance of its own repairs is not on record.
