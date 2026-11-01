@@ -2,11 +2,16 @@
 
 **Date:** 2026-11-01
 
-**Gate executed — 2026-11-01:** `C_ACROSS_LATTICES` (Sec. 11) is
-executed: `TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN`, evidence
-**PRELIMINARY**; reviewed (Grok REPAIR_REQUIRED, Gemini PASS), repaired,
-bounded re-review Gemini PASS with Grok ausente; not promoted. It is the
-active front; the H1 line stays paused.
+**Gate promoted — 2026-11-01:** by direct user instruction («1»: promote
+now rather than wait for Grok), `C_ACROSS_LATTICES` (Sec. 11) is promoted
+on `research/schur-stability-audit` as
+**TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PROMOTED IN THE
+DECLARED ROWS**. Evidence: Gemini PASS (first round and bounded
+re-review of the repaired snapshot); Grok PASS on the five physics blocks
+and REPAIR_REQUIRED on scope/code, repairs applied but Grok's acceptance
+of them **not on record** (Grok ausente, 402). Not human review. No
+general QCA law, rigidity or novelty is promoted. It remains the active
+front; the H1 line stays paused.
 
 **Current update — 2026-11-01:** by direct user instruction («promocionada
 9.8»), the small fixed Gaussian profile result of Sec. 9.8 is promoted on
@@ -2103,9 +2108,11 @@ verifier `scripts/verify_c_across_lattices_gate.py` (reviewed at
 `cae6e30`, 103/103; repaired, 135/135 with every table value asserted).
 [Reviews](../reports/2026-11-01--c-across-lattices-review.md): Grok
 REPAIR_REQUIRED (three repairs, applied), Gemini PASS. Status:
-**TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PRELIMINARY,
-REPAIRED; bounded re-review: Gemini PASS (R1–R5), Grok ausente (402,
-balance exhausted). PROMOTION_PENDING (user decision).** In the declared rows: square,
+**TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PROMOTED IN THE
+DECLARED ROWS (2026-11-01, user instruction «1»).** Repaired; bounded
+re-review Gemini PASS (R1–R5); Grok ausente (402, balance exhausted), so
+Grok's acceptance of its own three repairs is not on record. Previous
+status: PRELIMINARY, PROMOTION_PENDING. In the declared rows: square,
 BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
 has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
 L6d on the identical substrate; `C_infty^strict = C_micro` in every
