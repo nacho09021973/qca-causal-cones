@@ -4,7 +4,8 @@
 
 **Gate executed — 2026-11-01:** `C_ACROSS_LATTICES` (Sec. 11) is
 executed: `TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN`, evidence
-**PRELIMINARY**, independent review pending, not promoted. It is the
+**PRELIMINARY**; reviewed (Grok REPAIR_REQUIRED, Gemini PASS), repaired,
+bounded re-review pending; not promoted. It is the
 active front; the H1 line stays paused.
 
 **Current update — 2026-11-01:** by direct user instruction («promocionada
@@ -2098,13 +2099,17 @@ redirecting the project to comparing `c` across substrates within the QCA
 scope (PROJECT_INSTRUCTIONS §1); no new substrate class is opened.
 
 Execution (2026-11-01): [report](../reports/2026-11-01--c-across-lattices.md),
-verifier `scripts/verify_c_across_lattices_gate.py` at `cae6e30`, 103/103
-exact checks. Status: **TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN —
-PRELIMINARY, INDEPENDENT_REVIEW_PENDING.** In the declared rows: square,
+verifier `scripts/verify_c_across_lattices_gate.py` (reviewed at
+`cae6e30`, 103/103; repaired, 135/135 with every table value asserted).
+[Reviews](../reports/2026-11-01--c-across-lattices-review.md): Grok
+REPAIR_REQUIRED (three repairs, applied), Gemini PASS. Status:
+**TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PRELIMINARY,
+REPAIRED, RE-REVIEW PENDING.** In the declared rows: square,
 BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
 has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
 L6d on the identical substrate; `C_infty^strict = C_micro` in every
-computed row. Ha `REFUTED_BY_ROW_L6a`; Hb, Hc `CONFIRMED_IN_DECLARED_ROWS`.
+computed row. Ha `REFUTED_BY_ROW_L6a`; Hb, Hc hold in every decided row
+and stay OPEN only because L6b is undecided.
 At finite mass, `c_H = c_0 theta/sin theta` where isotropic and no
 computed new row has an isotropic `c_omega2` (anisotropy `O(sin theta)`).
 Two ADMP sign issues are recorded. Not promoted; no general law.

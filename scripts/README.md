@@ -258,7 +258,13 @@ perturbation in a nonperiodic box. No frozen verifier is modified.
 See the [audit and reproduction commands](../reports/2026-09-22--ir-spectral-attribution-audit.md).
 These are empirical finite-N diagnostics, not certificates or asymptotic gates.
 
-## c across lattices gate (2026-11-01, in progress)
+## c across lattices gate (2026-11-01)
+
+Repaired after the 2026-11-01 reviews: every tabulated value (step sets,
+group indices, `r_in`, `c_0`, vertex counts, Gram matrices, `K`) is now
+asserted by an exact `record`; 135/135 checks. A negative test that
+alters one expected value in memory makes it exit 1. The Part 3 comment
+now states the Duhamel identity with its unitary factor.
 
 `verify_c_across_lattices_gate.py` certifies the
 [`C_ACROSS_LATTICES`](../theory/C_ACROSS_LATTICES_GATE.md) contract,

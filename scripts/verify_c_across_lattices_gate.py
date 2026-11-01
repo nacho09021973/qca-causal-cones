@@ -8,17 +8,25 @@ Run from the repository root:
 Fail-closed: any failed check or exception exits nonzero. SymPy only, zero
 tolerance, no sampling or fitting.
 
-Part 1 (this revision): for each new row (L5a, L5b, L6a, L6c-L6f) build the
-exact Bloch symbol of one complete update from the source equations, check
-unitarity and the source's stated algebraic identities, and extract the
-composite step set F and the translation group it generates. Row L6b is
-reported as not encoded (see SOURCE_GAPS). Later parts (C_micro geometry,
-c_0, c_strict^iso, masses) are not yet implemented here.
+Part 1: for each new row (L5a, L5b, L6a, L6c-L6f) build the exact Bloch
+symbol of one complete update from the source equations, check unitarity
+and the source identities used, and assert the composite step set F and
+the index of the translation group it generates. Row L6b is reported as
+not encoded (see SOURCE_GAPS).
+Part 2: massless node at k = 0; asserts r_in, c_0, vertex count and
+C_infty^strict = C_micro for L1, L2 and the new rows against EXPECTED_*.
+Part 3: massive rows; asserts the exact first-order Gram matrix and the
+theta-independent curvature correction K against EXPECTED_*, plus a
+positive control on the reviewed 1D Dirac block. ADMP mass is OPEN.
+Every tabulated value of the report is asserted by record(); nothing in
+the table rests on a print alone (repair 1 of the 2026-11-01 Grok review).
 
 Conventions (frozen in the contract, Sec. 2):
 - moving amplitude by displacement h carries the phase exp(-i k.h); an
   operator that reads the value at X+v therefore moves amplitude by -v;
-- in every product the factor with the smallest index acts first;
+- in every product the factor with the smallest index acts first (for the
+  prod_j notation of JDW Eqs. (2), (8) this is a declared reading; the
+  linear cone does not depend on it, but K and vertex coefficients may);
 - lattice vectors are written as integer combinations of two (or three)
   generators g; the Laurent variable z_i stands for exp(-i k.g_i).
 """
@@ -51,6 +59,24 @@ SOURCE_GAPS = {
            "not by the text; the edge-midpoint lattice and the routing "
            "e(v,k) cannot be encoded exactly from the equations. The source "
            "states equivalence with L6a over three updates; not verified.",
+}
+
+
+R2, R3 = sp.sqrt(2), sp.sqrt(3)
+EXPECTED_F = {
+    "L6a": {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)},
+    "L6c": {(a, b) for a in range(-2, 3) for b in range(-2, 3) if max(abs(a), abs(b), abs(a + b)) <= 2},
+    "L6d": {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)},
+    "L6e": {(-2, 0), (0, -2), (0, 2), (2, 0)},
+    "L6f": {(-2, 1), (-1, -1), (-1, 2), (0, 0), (1, -2), (1, 1), (2, -1)},
+}
+EXPECTED_INDEX = {"L5a": 4, "L5b": 4, "L6a": 4, "L6c": 1, "L6d": 4, "L6e": 4, "L6f": 3}
+EXPECTED_MASSLESS = {  # label: (r_in, c_0, number of vertices)
+    "L1": (1, 1, 2), "L2": (R2 / 2, R2 / 2, 4),
+    "L5a": (R3 / 3, R3 / 3, 8), "L5b": (R3 / 3, R3 / 3, 8),
+    "L6a": (R3 / 2, sp.Rational(1, 2), 6), "L6c": (R3 / 2, sp.Rational(3, 4), 6),
+    "L6d": (R3 / 2, sp.Rational(3, 4), 6), "L6e": (R2 / 2, R2 / 2, 4),
+    "L6f": (R3 / 2, sp.Rational(3, 4), 6),
 }
 
 
@@ -461,6 +487,9 @@ def analyse(label, symbol, zs, support, gens, sigma, results):
           f"c_strict^iso = {c_strict if c_strict is not None else 'OPEN'}; "
           f"S_min = c0/V_causal^max = {c0}; S_max = c0/r_in = {ratio}; "
           f"c0 in source units (per update, |h| as in source) = {sp.radsimp(c0 * L)}")
+    exp_r, exp_c, exp_v = EXPECTED_MASSLESS[label]
+    record(f"{label}: tabulated r_in = {exp_r}, c_0 = {exp_c}, |vertices| = {exp_v}",
+           sp.simplify(r_in - exp_r) == 0 and sp.simplify(c0 - exp_c) == 0 and len(verts) == exp_v)
     results[label] = dict(s=symbol.rows, d=dim, r_in=r_in, c0=c0, ratio=ratio,
                           c_strict=c_strict, iso=iso, nverts=len(verts))
     return results[label]
@@ -488,16 +517,22 @@ def part2(rows):
     print(f"  Ha (c0 = r_in, s=2 rows): {ha}")
     print(f"  Hb (c_strict^iso = r_in): {hb}")
     print(f"  Hc (c0 <= c_strict^iso where decided): {hc}")
-    record("Hc holds in every row where c_strict^iso is decided", all(hc.values()))
+    record("Hb holds in every row computed here (L6b undecided, OPEN)", all(hb.values()))
+    record("Hc holds in every row computed here (L6b undecided, OPEN)", all(hc.values()))
     return results
 
 
 # ================================================================ Part 3
-# Massive rows. With U(0) = exp(-i theta Q), Q^2 = I, the derivative of the
-# exponential gives i dU U(0)^dag = X_par + (sin theta/theta) X_perp, where
-# X_par / X_perp are the parts of dH commuting / anticommuting with Q. Hence
-# dH = X_par + (theta/sin theta) X_perp exactly (c_H, as in the Weyl/Dirac
-# gate: linear spatial coefficient of H = i log U at fixed mass). With
+# Massive rows. With U(0) = exp(-i theta Q), Q^2 = I, Duhamel's formula gives
+# i dU U(0)^dag = X_par + (sin theta/theta) X_perp exp(i theta Q), where
+# X_par / X_perp are the parts of dH commuting / anticommuting with Q
+# (corrected 2026-11-01 after both reviews; the earlier comment omitted the
+# unitary factor). The code forms B = Y_par + (theta/sin theta) Y_perp from
+# Y = i dU U(0)^dag, i.e. B = X_par + X_perp exp(i theta Q). When X_par = 0
+# (asserted), B is Hermitian, anticommutes with Q, and {B_a, B_b} =
+# {X_a, X_b}: its Gram matrix is that of dH, which defines c_H (linear
+# spatial coefficient of H = i log U at fixed mass, as in the Weyl/Dirac
+# gate). B itself is not dH. With
 # G = (U + U^dag)/2 scalar at k = 0 and zero linear term, cos omega_j(k) are
 # cos theta + eig(G_2(k)) + O(k^3), so omega_j^2 = theta^2 + (theta/sin theta)
 # q_j |k|^2 with G_2 = -(q/2)|k|^2 (c_omega2^2 = theta q / sin theta).
@@ -605,8 +640,26 @@ def part3(rows, results):
     record("CONTROL: method reproduces an isotropic c_omega2 (K = 0)", ctrl["iso_W"])
     print("  ADMP L6a mass (M inside W, Eq. (7)): not of the form exp(-i theta Q) x hopping "
           "with a fixed axis; U(0) = prod_i exp(-i mu tau_i). Not encoded in Part 3 (OPEN).")
+    # Table assertions (repair 1): Gram matrices and K exactly as tabulated.
+    i3 = sp.Rational(1, 3)
+    exp_K = {
+        "L5b": {(0, 0): sp.zeros(4), (1, 1): sp.zeros(4), (2, 2): sp.zeros(4),
+                (0, 1): sp.diag(-i3, i3, i3, -i3),
+                (0, 2): i3 * sp.Matrix([[0, -sp.I, 0, 0], [sp.I, 0, 0, 0], [0, 0, 0, sp.I], [0, 0, -sp.I, 0]]),
+                (1, 2): i3 * sp.Matrix([[0, -1, 0, 0], [-1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])},
+        "L6c": {(0, 0): -5 * R3 / 32 * I2, (0, 1): sp.zeros(2), (1, 1): 3 * R3 / 32 * I2},
+        "L6d": {(0, 0): R3 / 16 * I2, (0, 1): -sp.Rational(3, 8) * I2, (1, 1): -3 * R3 / 16 * I2},
+        "L6f": {(0, 0): -3 * R3 / 16 * I2, (0, 1): sp.zeros(2), (1, 1): 5 * R3 / 16 * I2},
+        "L6e": {(0, 0): sp.zeros(2), (0, 1): -sp.Rational(1, 2) * I2, (1, 1): sp.zeros(2)},
+    }
+    exp_g = {"L5b": sp.eye(3), "L6c": sp.eye(2), "L6d": sp.eye(2), "L6f": sp.eye(2),
+             "L6e": sp.Matrix([[1, sp.sin(2 * THETA)], [sp.sin(2 * THETA), 1]])}
     for label, r in out.items():
-        print(f"  summary {label}: isotropic c_H: {r['iso_H']}; isotropic c_omega2: {r['iso_W']}")
+        record(f"{label} massive: tabulated Gram/(c_0 theta/sin theta)^2 = {exp_g[label].tolist()}",
+               is_zero_matrix(r["gram"] - exp_g[label]))
+        record(f"{label} massive: tabulated curvature correction K",
+               all(is_zero_matrix(r["K"][ab] - m) for ab, m in exp_K[label].items()))
+        print(f"  summary {label}: isotropic c_H: {r['iso_H']}; K = 0 (isotropic c_omega2): {r['iso_W']}")
     return out
 
 
@@ -625,11 +678,18 @@ def main():
         rows[label] = fn()
     for label, reason in SOURCE_GAPS.items():
         print(f"== {label}: NOT ENCODED -- {reason}")
+    print("== Part 1 table assertions")
+    for label, (symbol, zs, support, gens) in rows.items():
+        if label in EXPECTED_F:
+            record(f"{label}: composite step set F equals the tabulated set", set(support) == EXPECTED_F[label])
+        nonzero = [h for h in support if any(h)]
+        record(f"{label}: index of <F> in the generator lattice = {EXPECTED_INDEX[label]}",
+               lattice_index(nonzero) == EXPECTED_INDEX[label])
     sys.path.insert(0, str(ROOT / "scripts"))
     results = part2(rows)
     part3(rows, results)
     failed = [c for c in CHECKS if not c[1]]
-    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-3).")
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-3, table asserted).")
     return 1 if failed else 0
 
 

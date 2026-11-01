@@ -5,13 +5,29 @@ Contract: [`C_ACROSS_LATTICES_GATE.md`](../theory/C_ACROSS_LATTICES_GATE.md),
 preregistered at `30672ba52b037f95b99c7f3b3dc791d215b97cdf`; contract SHA256
 `b58deeec91184fbf976a6cb857c8e935ec7d4a4e52d6608a62768452759e34e3`, unchanged
 since the freeze.
-Verifier: [`scripts/verify_c_across_lattices_gate.py`](../scripts/verify_c_across_lattices_gate.py)
-at `cae6e308ab0e224f48db875df0997b362a13a98c`, SHA256
-`1da30dab9060c8d97a4452eb07451f7886325f4fd87ce22a27cdd950dfee9645`.
+Verifier: [`scripts/verify_c_across_lattices_gate.py`](../scripts/verify_c_across_lattices_gate.py);
+reviewed version at `cae6e308ab0e224f48db875df0997b362a13a98c`, SHA256
+`1da30dab9060c8d97a4452eb07451f7886325f4fd87ce22a27cdd950dfee9645`;
+repaired version in the commit that adds this repair note.
 Author: Claude Code (Claude Opus 5.5), at the user's direction.
 
 **Gate verdict: `TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN`.**
-**Evidence level: PRELIMINARY** (no independent review yet). Not promoted.
+**Evidence level: PRELIMINARY.** Repaired 2026-11-01 after the
+[Grok/Gemini reviews](2026-11-01--c-across-lattices-review.md) (Grok
+REPAIR_REQUIRED, Gemini PASS); the repaired snapshot awaits a bounded
+re-review. Not promoted.
+
+**Repairs applied (2026-11-01).** (1) Every tabulated value — step sets,
+group indices, `r_in`, `c_0`, vertex counts, Gram matrices, `K` — is now
+asserted by an exact `record` in the verifier, which passes 135/135; a
+negative test (altering one expected `c_0` and one step set in memory)
+makes it exit 1 on exactly those checks. (2) Sec. 2 no longer presents the
+continuum-speed agreement as a test of the product order. (3) Hb/Hc are
+stated for the decided rows with L6b OPEN, not with the token
+`CONFIRMED_IN_DECLARED_ROWS`. Clarifications: the Duhamel identity of
+Sec. 5 is corrected (no number changes); Sec. 3 distinguishes the finer
+group of L6c; the Fourier sign convention relative to JDW's plane wave is
+noted; the script docstring is updated.
 
 ## 0. Answer in one paragraph
 
@@ -37,7 +53,8 @@ interpreter has no SymPy):
 python -B scripts/verify_c_across_lattices_gate.py
 ```
 
-Result: exit 0, **103/103 exact checks PASS, 0 FAIL**. No floating point,
+Result (repaired verifier): exit 0, **135/135 exact checks PASS, 0 FAIL**
+(103/103 in the reviewed version at `cae6e30`). No floating point,
 sampling or fitting in any certified quantity. Zero tests are symbolic; the
 sign of a nonzero radical is decided by SymPy's exact relational evaluation.
 The reviewed helpers `published_symbol` and `fourier_support` of
@@ -70,8 +87,17 @@ history `28ef8f1`, `de5680b`, `cae6e30`.
 own units reproduces the continuum speed each source states: JDW
 `Delta t = 3 epsilon/2` (L6c, L6d), `epsilon` (L6e), `3 sqrt3 epsilon/4`
 (L6f) give `c = 1`; ADMP, Farrelly–Short and Mlodinow–Brun give `c = 1` per
-update in their units. This tests the phase, routing and ordering
-conventions independently of the geometry.
+update in their units. This checks the routing and scale conventions. It
+does **not** test the product order: since every factor satisfies
+`W_j(0) = I`, the linear term is the sum of the factors' derivatives and is
+order-independent (Grok review). The `prod_j` order of JDW Eqs. (2), (8)
+remains a declared reading; `K` (Sec. 5) and vertex coefficients of L6c and
+L6f may depend on it.
+
+**Fourier sign.** Relative to JDW's plane wave `exp i(omega t - k.X)`, the
+encoded symbol corresponds to `k -> -k`. Every tabulated quantity
+(`U(0)`, quadratic cone, Gram, Hessian) is even in `k`, so the table is
+unaffected.
 
 ## 3. Step sets: what the substrates actually are (Part 1)
 
@@ -89,8 +115,11 @@ conventions independently of the geometry.
 No "honeycomb" walk in the declared sources acts on a honeycomb Bravais
 structure: as homogeneous walks they move on a triangular lattice. The JDW
 "isosceles" walk is on the standard square substrate. In two dimensions the
-declared rows therefore realise **two** substrates up to isometry and scale:
-square and hexagonal.
+declared rows realise **two `C_micro` shapes** up to isometry and scale,
+square and hexagonal. Counting the translation group as well, there are
+three: square (L2, L6e); hexagon with step spacing equal to the hull radius
+(L6a, L6d, L6f); and the same hexagon over the finer triangular group of
+L6c (spacing/radius `1/2`, a scale invariant).
 
 **Source sign issues (ADMP 1803.01015v2 p.3), certified as recorded
 issues, not repaired silently:** (i) Eq. (8) holds for
@@ -148,12 +177,16 @@ way", JDW p.2), `theta = 3 sqrt3 m/4` (L6f); JDW L6e replaces `U^1` so that
 `U(0) = e^{-i m sigma_x}`, `theta = m`.
 
 Method (exact, no matrix-log series). For `U(0) = e^{-i theta Q}`,
-`Q^2 = I`, the derivative of the exponential gives
-`i dU U(0)^dag = X_par + (sin theta/theta) X_perp`, with `X_par`, `X_perp`
-the parts of `dH` commuting and anticommuting with `Q`; hence
-`dH = X_par + (theta/sin theta) X_perp`. `c_H(n̂)^2 = n̂.g.n̂` with
-`{B_a, B_b} = 2 g_ab I`, `B_a = dH/dk_a(0)` — the linear spatial coefficient
-of `H = i log U` at fixed mass, as in the Weyl/Dirac gate. For `omega`,
+`Q^2 = I`, Duhamel's formula gives
+`i dU U(0)^dag = X_par + (sin theta/theta) X_perp e^{i theta Q}`, with
+`X_par`, `X_perp` the parts of `dH` commuting and anticommuting with `Q`.
+(The reviewed version omitted the unitary factor `e^{i theta Q}`; both
+reviewers flagged it; corrected here.) The verifier forms
+`B_a = X_par + X_perp e^{i theta Q}` and asserts `X_par = 0`; then `B_a` is
+Hermitian, anticommutes with `Q`, and `{B_a, B_b} = {X_a, X_b}`, so its Gram
+matrix is that of `dH`. `c_H(n̂)^2 = n̂.g.n̂` with
+`{dH_a, dH_b} = 2 g_ab I` — the linear spatial coefficient of `H = i log U`
+at fixed mass, as in the Weyl/Dirac gate. No tabulated number changes. For `omega`,
 `G = (U+U^dag)/2` has eigenvalues `cos omega_j`, is scalar at `k=0` and has
 zero gradient, so its Hessian gives `omega_j^2 = theta^2 +
 (theta/sin theta) q_j |k|^2`. The script certifies
@@ -200,8 +233,8 @@ Readings, each limited to these rows:
 | Hypothesis | Verdict |
 | --- | --- |
 | Ha: `c_0 = r_in` in every declared s=2 row with a massless node | **`REFUTED_BY_ROW_L6a`** (also L6c, L6d, L6f). Holds in L1, L2, L5a, L6e and the recorded L3, L4. |
-| Hb: `c_strict^iso = r_in` in every declared row | **`CONFIRMED_IN_DECLARED_ROWS`** for every computed or recorded row; L6b OPEN |
-| Hc: no declared row with `c_0 > c_strict^iso` | **`CONFIRMED_IN_DECLARED_ROWS`** (asserted by the script where decided); L6b OPEN |
+| Hb: `c_strict^iso = r_in` in every declared row | **OPEN**: holds in every decided row (all computed and recorded rows); L6b undecided. The token `CONFIRMED_IN_DECLARED_ROWS` is not used because a declared row is OPEN. |
+| Hc: no declared row with `c_0 > c_strict^iso` | **OPEN**: holds in every decided row (asserted by the script for the computed rows; L3, L3s4, L4 from their records); L6b undecided. |
 
 ## 7. What this does not establish
 
