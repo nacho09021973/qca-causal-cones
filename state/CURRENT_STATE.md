@@ -2,9 +2,10 @@
 
 **Date:** 2026-11-01
 
-**Gate chartered — 2026-11-01:** `C_ACROSS_LATTICES` is frozen and
-authorized by direct user instruction (Sec. 11). Status **OPEN**, not
-executed. It is now the active front; the H1 line stays paused.
+**Gate executed — 2026-11-01:** `C_ACROSS_LATTICES` (Sec. 11) is
+executed: `TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN`, evidence
+**PRELIMINARY**, independent review pending, not promoted. It is the
+active front; the H1 line stays paused.
 
 **Current update — 2026-11-01:** by direct user instruction («promocionada
 9.8»), the small fixed Gaussian profile result of Sec. 9.8 is promoted on
@@ -2096,7 +2097,19 @@ frozen before solving. Authorization: direct user instruction, 2026-11-01,
 redirecting the project to comparing `c` across substrates within the QCA
 scope (PROJECT_INSTRUCTIONS §1); no new substrate class is opened.
 
-Status: **OPEN — CHARTERED, NOT EXECUTED.** Thirteen declared rows: six
+Execution (2026-11-01): [report](../reports/2026-11-01--c-across-lattices.md),
+verifier `scripts/verify_c_across_lattices_gate.py` at `cae6e30`, 103/103
+exact checks. Status: **TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN —
+PRELIMINARY, INDEPENDENT_REVIEW_PENDING.** In the declared rows: square,
+BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
+has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
+L6d on the identical substrate; `C_infty^strict = C_micro` in every
+computed row. Ha `REFUTED_BY_ROW_L6a`; Hb, Hc `CONFIRMED_IN_DECLARED_ROWS`.
+At finite mass, `c_H = c_0 theta/sin theta` where isotropic and no
+computed new row has an isotropic `c_omega2` (anisotropy `O(sin theta)`).
+Two ADMP sign issues are recorded. Not promoted; no general law.
+
+Charter summary: thirteen declared rows: six
 already established (L1–L3, L3s4, L4 in part) are re-tabulated with their
 existing tags; seven new rows from primary sources read on 2026-11-01
 (L5a Farrelly–Short, L5b Mlodinow–Brun on BCC; L6a–L6b ADMP, L6c–L6f JDW
