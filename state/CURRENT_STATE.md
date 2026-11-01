@@ -2,6 +2,10 @@
 
 **Date:** 2026-11-01
 
+**Gate chartered — 2026-11-01:** `C_ACROSS_LATTICES` is frozen and
+authorized by direct user instruction (Sec. 11). Status **OPEN**, not
+executed. It is now the active front; the H1 line stays paused.
+
 **Current update — 2026-11-01:** by direct user instruction («promocionada
 9.8»), the small fixed Gaussian profile result of Sec. 9.8 is promoted on
 `research/schur-stability-audit` to
@@ -2084,3 +2088,24 @@ C3 is PASS in its frozen scope; E/AdS remains FROZEN. H1c, E0,
 POWER_13/2_STABILITY and the Sec. 8.20 flat theorem are unchanged. No new
 numerical calculation, scan, manuscript publication, commit or push follows
 from this update.
+
+## 11. c across QCA lattices and neighbourhoods — chartered 2026-11-01
+
+Contract: [`C_ACROSS_LATTICES_GATE.md`](../theory/C_ACROSS_LATTICES_GATE.md),
+frozen before solving. Authorization: direct user instruction, 2026-11-01,
+redirecting the project to comparing `c` across substrates within the QCA
+scope (PROJECT_INSTRUCTIONS §1); no new substrate class is opened.
+
+Status: **OPEN — CHARTERED, NOT EXECUTED.** Thirteen declared rows: six
+already established (L1–L3, L3s4, L4 in part) are re-tabulated with their
+existing tags; seven new rows from primary sources read on 2026-11-01
+(L5a Farrelly–Short, L5b Mlodinow–Brun on BCC; L6a–L6b ADMP, L6c–L6f JDW
+on two-dimensional lattices). Arrighi–Facchini is excluded with its
+recorded reason. Substrates are declared by the translation group and
+composite step set of each equation, not by the papers' lattice labels.
+Hypotheses Ha (`c_0 = r_in` in declared s=2 rows), Hb (`c_strict^iso =
+r_in`) and Hc (no row with `c_0 > c_strict^iso`) are OPEN. Execution:
+report plus `scripts/verify_c_across_lattices_gate.py`, then independent
+cross-family review, then a separate promotion. No rigidity or general
+QCA law may be drawn from the table.
+
