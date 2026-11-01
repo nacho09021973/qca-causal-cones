@@ -2108,4 +2108,3 @@ r_in`) and Hc (no row with `c_0 > c_strict^iso`) are OPEN. Execution:
 report plus `scripts/verify_c_across_lattices_gate.py`, then independent
 cross-family review, then a separate promotion. No rigidity or general
 QCA law may be drawn from the table.
-
