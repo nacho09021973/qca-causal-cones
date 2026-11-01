@@ -492,6 +492,124 @@ def part2(rows):
     return results
 
 
+# ================================================================ Part 3
+# Massive rows. With U(0) = exp(-i theta Q), Q^2 = I, the derivative of the
+# exponential gives i dU U(0)^dag = X_par + (sin theta/theta) X_perp, where
+# X_par / X_perp are the parts of dH commuting / anticommuting with Q. Hence
+# dH = X_par + (theta/sin theta) X_perp exactly (c_H, as in the Weyl/Dirac
+# gate: linear spatial coefficient of H = i log U at fixed mass). With
+# G = (U + U^dag)/2 scalar at k = 0 and zero linear term, cos omega_j(k) are
+# cos theta + eig(G_2(k)) + O(k^3), so omega_j^2 = theta^2 + (theta/sin theta)
+# q_j |k|^2 with G_2 = -(q/2)|k|^2 (c_omega2^2 = theta q / sin theta).
+
+THETA = sp.Symbol("theta", positive=True)
+
+
+def massive(label, symbol, zs, gens, scale, dim, Q, c0, theta_note):
+    """Certify the exact first-order Hamiltonian Gram matrix g_ab
+    ({B_a, B_b} = 2 g_ab I, c_H(n)^2 = n.g.n) and the exact decomposition
+    Hess_k cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K. Isotropy is
+    reported, not assumed."""
+    k = sp.symbols(f"k1:{dim + 1}", real=True)
+    subs = {z: sp.exp(-sp.I * sum((k[a] * g[a] for a in range(dim)), 0) / scale)
+            for z, g in zip(zs, gens)}
+    s_dim = symbol.rows
+    ident = sp.eye(s_dim)
+    U = symbol.subs(subs)
+    zero = {ka: 0 for ka in k}
+    simp = lambda e: sp.simplify(sp.expand_complex(sp.expand(e)))
+    U0 = U.subs(zero).applyfunc(simp)
+    expected = sp.cos(THETA) * ident - sp.I * sp.sin(THETA) * Q
+    record(f"{label} massive: U(0) = exp(-i theta Q), Q^2 = I ({theta_note})",
+           is_zero_matrix(U0 - expected) and is_zero_matrix(Q * Q - ident))
+    B = []
+    par_zero = True
+    for a in range(dim):
+        Y = ((sp.I * U.diff(k[a])).subs(zero) * expected.H).applyfunc(simp)
+        Xpar = (Y + Q * Y * Q) / 2
+        Xperp = (Y - Q * Y * Q) / 2
+        par_zero = par_zero and is_zero_matrix(Xpar)
+        B.append((Xpar + THETA / sp.sin(THETA) * Xperp).applyfunc(sp.simplify))
+    record(f"{label} massive: linear dH anticommutes with the mass term (X_par = 0)", par_zero)
+    gram = sp.zeros(dim, dim)
+    scalar = True
+    for a in range(dim):
+        for b in range(dim):
+            anti = ((B[a] * B[b] + B[b] * B[a]) / 2).applyfunc(sp.simplify)
+            gram[a, b] = sp.simplify(anti[0, 0])
+            scalar = scalar and is_zero_matrix(anti - gram[a, b] * ident)
+    record(f"{label} massive: {{B_a, B_b}} = 2 g_ab I (scalar Gram matrix)", scalar)
+    g_rel = (gram / (c0 ** 2 * (THETA / sp.sin(THETA)) ** 2)).applyfunc(sp.simplify)
+    iso_H = is_zero_matrix(g_rel - g_rel[0, 0] * sp.eye(dim))  # Gram proportional to I
+    Ud = U.H.applyfunc(lambda e: e.subs({sp.conjugate(THETA): THETA}))
+    G = (U + Ud) / 2
+    record(f"{label} massive: grad cos(omega)(0) = 0 (no linear dispersion term)",
+           all(is_zero_matrix(G.diff(ka).subs(zero).applyfunc(simp)) for ka in k))
+    K = {}
+    decomposed = True
+    for a in range(dim):
+        for b in range(dim):
+            hab = G.diff(k[a]).diff(k[b]).subs(zero).applyfunc(simp)
+            rest = (hab + (c0 ** 2 * sp.cos(THETA) if a == b else 0) * ident).applyfunc(
+                lambda e: sp.simplify(e / sp.sin(THETA)))
+            decomposed = decomposed and all(not e.has(THETA) for e in rest)
+            K[(a, b)] = rest
+    record(f"{label} massive: Hess cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K, "
+           f"K independent of theta", decomposed)
+    iso_W = all(is_zero_matrix(m) for m in K.values())
+    print(f"  {label}: c_H Gram / (c_0 theta/sin theta)^2 = {g_rel.tolist()} -> "
+          f"{('ISOTROPIC c_H, c_H^2/c_0^2 = ' + str(sp.simplify(g_rel[0, 0] * (THETA / sp.sin(THETA)) ** 2))) if iso_H else 'ANISOTROPIC c_H(n) at finite mass'}")
+    Kshow = {ab: (m[0, 0] if is_zero_matrix(m - m[0, 0] * ident) else m.tolist()) for ab, m in K.items()}
+    print(f"  {label}: curvature correction K_ab = {Kshow} -> "
+          f"{'ISOTROPIC c_omega2 = c_0 sqrt(theta cot theta)' if iso_W else 'NO isotropic c_omega2 at finite mass (anisotropic and/or band-split, O(sin theta))'}")
+    return dict(iso_H=iso_H, iso_W=iso_W, gram=g_rel, K=K)
+
+
+def part3(rows, results):
+    print("== Part 3: massive rows (mass parameter theta = quasienergy gap at k = 0)")
+    out = {}
+    kron = sp.kronecker_product
+    cm, sm = sp.cos(THETA), sp.sin(THETA)
+    # L5b: Mlodinow-Brun Eq. (23): U = (axis product) exp(-i theta Q).
+    sym, zs, sup, gens = rows["L5b"]
+    Q = kron(SZ, I2)
+    out["L5b"] = massive("L5b", sp.expand(sym * (cm * sp.eye(4) - sp.I * sm * Q)), zs, gens,
+                         sp.sqrt(3), 3, Q, results["L5b"]["c0"], "theta = MB theta")
+    # JDW: W_m = U_m W_0, U_m = U(0,0,-pi/2,phi) = exp(-i phi sigma_x).
+    for label, note in (("L6c", "theta = 3m/2, JDW p.2"),
+                        ("L6d", "theta = 3m/2, 'same way as' six-step, JDW p.2"),
+                        ("L6f", "theta = 3 sqrt3 m/4, JDW p.3")):
+        sym, zs, sup, gens = rows[label]
+        Um = cm * I2 - sp.I * sm * SX
+        record(f"{label}: U(0,0,-pi/2,theta) = exp(-i theta sigma_x)",
+               is_zero_matrix(u2(0, 0, -sp.pi / 2, THETA) - Um))
+        L = 2 if label in ("L6c", "L6d") else sp.sqrt(3)
+        out[label] = massive(label, sp.expand(Um * sym), zs, gens, L, 2, SX, results[label]["c0"], note)
+    # L6e: U^1 -> U(0,0,-pi/2,-pi/4+m): U(0) = exp(-i m sigma_x), theta = m.
+    zs = sp.symbols("z1:3")
+    sym = sp.eye(2)
+    for j in (1, 2, 3):
+        ang = (-sp.pi / 4 + THETA) if j == 1 else (j - 2) * sp.pi / 4
+        sym = sp.expand(u2(0, 0, -sp.pi / 2, ang) * jdw_shift(zs, ISO[j], ISO[j + 3]) * sym)
+    out["L6e"] = massive("L6e", sym, zs, ISO_GENS, sp.sqrt(2), 2, SX, results["L6e"]["c0"],
+                         "theta = m, JDW p.2")
+    # Positive control: the reviewed minimal 1D Dirac block of the Weyl/Dirac
+    # gate, [[n e^{-ik}, i m], [i m, n e^{ik}]], n = cos M, m = sin M, has
+    # c_H = c_0 M cot M and isotropic c_omega2 = c_0 sqrt(M cot M) (report
+    # 2026-09-14, Secs. 5-6). U(0) = exp(+i M sigma_x): Q = -sigma_x.
+    zc = sp.symbols("y1:2")
+    dirac = sp.Matrix([[cm * zc[0], sp.I * sm], [sp.I * sm, cm / zc[0]]])
+    ctrl = massive("CONTROL 1D Dirac", dirac, zc, [(1,)], 1, 1, -SX, 1, "theta = M")
+    record("CONTROL: method reproduces the reviewed c_H = c_0 M cot M",
+           sp.simplify(ctrl["gram"][0, 0] - sp.cos(THETA) ** 2) == 0)
+    record("CONTROL: method reproduces an isotropic c_omega2 (K = 0)", ctrl["iso_W"])
+    print("  ADMP L6a mass (M inside W, Eq. (7)): not of the form exp(-i theta Q) x hopping "
+          "with a fixed axis; U(0) = prod_i exp(-i mu tau_i). Not encoded in Part 3 (OPEN).")
+    for label, r in out.items():
+        print(f"  summary {label}: isotropic c_H: {r['iso_H']}; isotropic c_omega2: {r['iso_W']}")
+    return out
+
+
 def main():
     print(f"contract sha256 {hashlib.sha256(CONTRACT.read_bytes()).hexdigest()}")
     for name, expected in SOURCES.items():
@@ -508,9 +626,10 @@ def main():
     for label, reason in SOURCE_GAPS.items():
         print(f"== {label}: NOT ENCODED -- {reason}")
     sys.path.insert(0, str(ROOT / "scripts"))
-    part2(rows)
+    results = part2(rows)
+    part3(rows, results)
     failed = [c for c in CHECKS if not c[1]]
-    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-2).")
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-3).")
     return 1 if failed else 0
 
 

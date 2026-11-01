@@ -282,9 +282,20 @@ and vertices, `r_in`, `c_0`, and non-nilpotency of every vertex coefficient
 (hence `C_infty^strict = C_micro`, `c_strict^iso = r_in`). Prints Ha/Hb/Hc
 per row and asserts Hc where decided.
 
+Part 3 (35 further checks, 103 total): massive rows L5b, L6c–L6f with
+mass parameter `theta` (quasienergy gap at `k=0`). Uses the exact identity
+`i dU U(0)^dag = X_par + (sin theta/theta) X_perp` for `U(0)=exp(-i theta Q)`
+to obtain the linear term of `H = i log U` without a matrix-log series, and
+`G=(U+U^dag)/2` for the `omega^2` curvature. It certifies, per row, the
+scalar Gram matrix of the linear term (`c_H(n)`), and the exact
+decomposition `Hess cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K`
+with `theta`-independent `K`; isotropy is printed, not assumed. Positive
+control: reproduces the reviewed 1D Dirac block (`c_H = c_0 M cot M`,
+`K=0`). ADMP's mass (inside `W`) is not encoded (OPEN).
+
 What it does **not** certify: the step-set identifications are printed,
-not asserted, except for L5a/L5b (`{±1}^3`); `V_grp^max` and massive
-coefficients are not computed; signs of nonzero radicals use SymPy's exact
+not asserted, except for L5a/L5b (`{±1}^3`); `V_grp^max` is not computed;
+the ADMP massive row is not computed; signs of nonzero radicals use SymPy's exact
 relational evaluation; the
 reading of the source conventions (phase, product order, read-from-
 neighbour routing) is a declared choice documented in the script header,
