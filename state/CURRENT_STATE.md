@@ -2154,4 +2154,3 @@ cone. Targets: L0 (`c_0 <= r_in`, to be proved or cited, not assumed),
 T1 (`n = 3` antipodal subclass: exact supremum), T2 (whole class: gap
 proof or explicit witness). Hypotheses HX0–HX2 OPEN. No verdict from
 numerics or failed search; restricted results stay restricted.
-
