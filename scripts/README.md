@@ -306,3 +306,18 @@ relational evaluation; the
 reading of the source conventions (phase, product order, read-from-
 neighbour routing) is a declared choice documented in the script header,
 not a theorem. Not independently reviewed.
+
+## Hexagonal ceiling gate (2026-11-01, in progress)
+
+`verify_hex_ceiling_gate.py` certifies part of
+[`HEX_CEILING`](../theory/HEX_CEILING_GATE.md), preregistered at `8c56ced`.
+18 exact checks: the lattice-grid step of L0 (facet-normal frequencies on
+a uniform grid), the T1 algebra symbolic in the pairwise overlaps
+(isotropy iff equal overlaps, `c_0^2 = (3/2) l^2 (1-g)`, PSD iff
+`g >= -1/2`, hence `c_0/r_in <= sqrt3/2`), an exactly certified walk
+attaining `sqrt3/2`, and the ADMP overlaps `g = 1/3` reproducing
+`c_0 = 1/2`. Reuses read-only helpers of `verify_c_across_lattices_gate.py`.
+
+Does **not** certify: the Bernstein step of L0 (prior art, applied in the
+report), the reduction of a general `n = 3` antipodal walk to product form,
+or anything about T2. Not independently reviewed.

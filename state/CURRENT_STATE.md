@@ -2146,7 +2146,15 @@ before solving. Authorization: direct user instruction, 2026-11-01, after
 the promoted Sec. 11 table showed no declared hexagonal walk reaching
 `c_0 = r_in`.
 
-Status: **OPEN — CHARTERED, NOT EXECUTED.** Class `W_hex`: translation-
+Execution (2026-11-01, partial): [report](../reports/2026-11-01--hex-ceiling.md),
+verifier `scripts/verify_hex_ceiling_gate.py` (18/18). L0
+`PROVED_IN_REPO` (with classical Bernstein, prior art): `c_0 <= r_in` on
+`W_hex`. T1 `GAP_PROVED_IN_CLASS`: in the `n = 3` antipodal subclass,
+`c_0/r_in = sqrt(1-g)/sqrt2 <= sqrt3/2`, attained iff the coin axes are
+coplanar at 120° (ADMP `g = 1/3`, JDW L6d `g = -1/2`). T2 not started.
+All PRELIMINARY, unreviewed, not promoted.
+
+Charter: class `W_hex`: translation-
 invariant `s = 2` walks on the triangular lattice, one update a product
 of `n` coin–partial-shift factors, regular hexagonal `C_micro` from the
 exact composite support, massless node at `k = 0` with isotropic untilted
