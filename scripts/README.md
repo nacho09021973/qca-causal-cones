@@ -274,9 +274,18 @@ issues (Eq. (8) holds for `alpha=-arccos(sqrt5/3)`; the printed `S` orders
 the `tau_i` backwards, `S^{-1}` restores Eq. (7) = Eq. (10)). Row L6b is
 reported as not encoded, with its reason.
 
+Part 2 (46 further checks, 68 total): massless node at `k=0` for L1, L2
+(from the reviewed `published_symbol`/`fourier_support`, imported
+read-only) and the seven new rows: `U(0)=I`, Hermitian linear generators,
+no tilt, isotropic cone `{T_a,T_b}=2c_0^2 delta_ab`, exact `C_micro` facets
+and vertices, `r_in`, `c_0`, and non-nilpotency of every vertex coefficient
+(hence `C_infty^strict = C_micro`, `c_strict^iso = r_in`). Prints Ha/Hb/Hc
+per row and asserts Hc where decided.
+
 What it does **not** certify: the step-set identifications are printed,
-not asserted, except for L5a/L5b (`{±1}^3`); C_micro geometry, `c_0`,
-`c_strict^iso`, `S(n̂)`, `V_grp^max` and masses are not computed yet; the
+not asserted, except for L5a/L5b (`{±1}^3`); `V_grp^max` and massive
+coefficients are not computed; signs of nonzero radicals use SymPy's exact
+relational evaluation; the
 reading of the source conventions (phase, product order, read-from-
 neighbour routing) is a declared choice documented in the script header,
 not a theorem. Not independently reviewed.

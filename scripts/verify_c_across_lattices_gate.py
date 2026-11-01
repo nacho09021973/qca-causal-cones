@@ -359,6 +359,139 @@ def row_L6f():
     return symbol, zs, support, TRI_GENS
 
 
+
+# ================================================================ Part 2
+# Massless geometry and speeds at the declared node k = 0.
+#
+# Normalisation (contract Sec. 2): Cartesian positions divided by the longest
+# |h| in F, one complete update per time unit. U(k) is obtained from the
+# Laurent symbol by z_j = exp(sigma * i * k.g_j / L), sigma = -1 for the
+# symbols built above (z <-> exp(-i k.g)) and +1 for the published standard
+# symbols (z = exp(i k)). Signs of nonzero algebraic numbers are decided by
+# SymPy's exact relational evaluation on radicals; zero tests are symbolic.
+
+def positive(x):
+    v = sp.radsimp(sp.simplify(x))
+    if v == 0:
+        return 0
+    return 1 if bool(v > 0) else -1
+
+
+def hull(points):
+    """Facets (unit outward normal, distance) and vertex set of conv(points),
+    for points spanning R^d with the origin in the interior."""
+    import itertools
+    d = points[0].rows
+    facets = {}
+    for combo in itertools.combinations(range(len(points)), d):
+        base = points[combo[0]]
+        if d == 1:
+            normal = sp.Matrix([1])
+        else:
+            diff = sp.Matrix([list((points[i] - base).T) for i in combo[1:]])
+            ns = diff.nullspace()
+            if len(ns) != 1:
+                continue
+            normal = ns[0]
+        offset = (normal.T * base)[0]
+        if offset == 0 or positive(offset) == 0:
+            continue
+        if positive(offset) < 0:
+            normal, offset = -normal, -offset
+        if all(positive(offset - (normal.T * q)[0]) >= 0 for q in points):
+            norm = sp.sqrt((normal.T * normal)[0])
+            unit = (normal / norm).applyfunc(lambda e: sp.radsimp(sp.simplify(e)))
+            facets[tuple(unit)] = sp.radsimp(sp.simplify(offset / norm))
+    verts = []
+    for idx, q in enumerate(points):
+        on = [sp.Matrix(n) for n, dist in facets.items()
+              if positive((sp.Matrix(n).T * q)[0] - dist) == 0]
+        if on and sp.Matrix.hstack(*on).rank() == d:
+            verts.append(idx)
+    return facets, verts
+
+
+def node_speeds(symbol, zs, gens, scale, sigma, dim):
+    k = sp.symbols(f"k1:{dim + 1}", real=True)
+    subs = {}
+    for z, g in zip(zs, gens):
+        phase = sum((k[a] * g[a] for a in range(dim)), 0) / scale
+        subs[z] = sp.exp(sigma * sp.I * phase)
+    U = symbol.subs(subs)
+    at0 = U.subs({ka: 0 for ka in k}).applyfunc(lambda e: sp.radsimp(sp.simplify(e)))
+    s_dim = symbol.rows
+    A = [(sp.I * U.diff(ka)).subs({kb: 0 for kb in k}).applyfunc(
+        lambda e: sp.radsimp(sp.simplify(sp.expand_complex(e)))) for ka in k]
+    tilt = [sp.simplify(Ai.trace() / s_dim) for Ai in A]
+    T = [Ai - t * sp.eye(s_dim) for Ai, t in zip(A, tilt)]
+    c2 = sp.radsimp(sp.simplify((T[0] * T[0])[0, 0]))
+    iso = all(is_zero_matrix(T[a] * T[a] - c2 * sp.eye(s_dim)) for a in range(dim)) and all(
+        is_zero_matrix(T[a] * T[b] + T[b] * T[a]) for a in range(dim) for b in range(a + 1, dim))
+    herm = all(is_zero_matrix(Ai - Ai.H) for Ai in A)
+    return at0, A, tilt, c2, iso, herm
+
+
+def nilpotent(m):
+    return is_zero_matrix(m ** m.rows)
+
+
+def analyse(label, symbol, zs, support, gens, sigma, results):
+    dim = len(gens[0])
+    cart = {h: sum((a * sp.Matrix(g) for a, g in zip(h, gens)), sp.zeros(dim, 1)) for h in support}
+    L = max((sp.sqrt((v.T * v)[0]) for v in cart.values()), key=lambda x: float(x))
+    L = sp.radsimp(sp.simplify(L))
+    keys = sorted(support)
+    pts = [(cart[h] / L).applyfunc(sp.radsimp) for h in keys]
+    facets, verts = hull(pts)
+    r_in = min(facets.values(), key=lambda x: float(x))
+    at0, A, tilt, c2, iso, herm = node_speeds(symbol, zs, gens, L, sigma, dim)
+    record(f"{label}: U(0) = I (node at k = 0, all quasienergies 0)", is_zero_matrix(at0 - sp.eye(symbol.rows)))
+    record(f"{label}: linear generators i dU/dk_a(0) are Hermitian", herm)
+    record(f"{label}: no tilt at the node (trace parts vanish)", all(t == 0 for t in tilt))
+    record(f"{label}: isotropic untilted cone, {{T_a, T_b}} = 2 c0^2 delta_ab", iso)
+    c0 = sp.radsimp(sp.sqrt(c2))
+    survive = {keys[i]: not nilpotent(support[keys[i]]) for i in verts}
+    all_survive = all(survive.values())
+    record(f"{label}: every vertex coefficient is non-nilpotent (C_infty^strict = C_micro)",
+           all_survive, f"{sum(survive.values())}/{len(survive)} vertices survive")
+    c_strict = r_in if all_survive else None
+    ratio = sp.radsimp(sp.simplify(c0 / r_in))
+    print(f"  {label}: L = {L}; |vertices| = {len(verts)}; |facets| = {len(facets)}; "
+          f"r_in = {r_in}; V_causal^max = 1; c0 = {c0}; c0/r_in = {ratio}; "
+          f"c_strict^iso = {c_strict if c_strict is not None else 'OPEN'}; "
+          f"S_min = c0/V_causal^max = {c0}; S_max = c0/r_in = {ratio}; "
+          f"c0 in source units (per update, |h| as in source) = {sp.radsimp(c0 * L)}")
+    results[label] = dict(s=symbol.rows, d=dim, r_in=r_in, c0=c0, ratio=ratio,
+                          c_strict=c_strict, iso=iso, nverts=len(verts))
+    return results[label]
+
+
+def part2(rows):
+    import verify_weyl_dirac_gate as wd  # reviewed helper, imported read-only
+    results = {}
+    print("== Part 2: standard rows L1, L2 (recomputed only for C_infty^strict)")
+    for label, dim in (("L1", 1), ("L2", 2)):
+        zs = sp.symbols(f"w1:{dim + 1}")
+        symbol, _ = wd.published_symbol(dim, 1, zs)
+        support = wd.fourier_support(symbol, zs)
+        gens = [tuple(1 if a == b else 0 for b in range(dim)) for a in range(dim)]
+        analyse(label, symbol, zs, support, gens, +1, results)
+    print("== Part 2: new rows")
+    for label, (symbol, zs, support, gens) in rows.items():
+        analyse(label, symbol, zs, support, gens, -1, results)
+    # Hypotheses (contract Sec. 5), on the rows computed here.
+    s2 = [l for l, r in results.items() if r["s"] == 2]
+    ha = {l: results[l]["ratio"] == 1 for l in s2}
+    hb = {l: results[l]["c_strict"] is not None for l in results}
+    hc = {l: (results[l]["c_strict"] is None) or positive(results[l]["c_strict"] - results[l]["c0"]) >= 0
+          for l in results}
+    print(f"  Ha (c0 = r_in, s=2 rows): {ha}")
+    print(f"  Hb (c_strict^iso = r_in): {hb}")
+    print(f"  Hc (c0 <= c_strict^iso where decided): {hc}")
+    record("Hc holds in every row where c_strict^iso is decided", all(hc.values()))
+    return results
+
+
 def main():
     print(f"contract sha256 {hashlib.sha256(CONTRACT.read_bytes()).hexdigest()}")
     for name, expected in SOURCES.items():
@@ -374,8 +507,10 @@ def main():
         rows[label] = fn()
     for label, reason in SOURCE_GAPS.items():
         print(f"== {label}: NOT ENCODED -- {reason}")
+    sys.path.insert(0, str(ROOT / "scripts"))
+    part2(rows)
     failed = [c for c in CHECKS if not c[1]]
-    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Part 1: step sets).")
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-2).")
     return 1 if failed else 0
 
 
