@@ -1,8 +1,24 @@
 # CURRENT_STATE
 
-**Date:** 2026-10-31
+**Date:** 2026-11-01
 
-**Current update — 2026-10-31:** by direct user instruction («1 y despues 3»),
+**Current update — 2026-11-01:** by direct user instruction («promocionada
+9.8»), the small fixed Gaussian profile result of Sec. 9.8 is promoted on
+`research/schur-stability-audit` to
+**SMALL_GAUSSIAN_PROFILE_SURVIVAL_PROVED_UNDER_FROZEN_CONTRACT**. Scope:
+`vartheta(X)=epsilon exp(-|X|^2)`, encoder sigma_2, detector I, fixed W,
+the current two-channel functional; conditional on the promoted Schur bridge
+and the frozen flat sigma_2/I theorem. Evidence: two blind cross-family
+agent reviews (Claude Opus 5.5, Grok grok-4.7) PASS on identical input, no
+mandatory repairs; verifier counts reproduced. Not human review. No general
+H1/H1c, other profile/pair, E0, POWER_13/2_STABILITY, E/AdS or novelty
+result is promoted. `Q_N != 0`, the full nonzero-epsilon coefficient and
+effective `epsilon_0, N_0` remain OPEN and are **not chartered**. The H1
+line stays paused: on 2026-11-01 the user redirected the project to
+comparing `c` across QCA lattices and neighbourhoods (draft charter
+pending, not authorized).
+
+**Earlier update — 2026-10-31:** by direct user instruction («1 y despues 3»),
 the Schur physical bridge of Sec. 9.7 is promoted on
 `research/schur-stability-audit` to **SCHUR_PHYSICAL_BRIDGE_PASS_UNDER_B_F_FIXED_W**.
 The completed cross-family review and bounded clarification re-review leave
@@ -18,10 +34,10 @@ this update, this update and the revised Sec. 9.7 prevail.
 **Small-profile execution — 2026-10-31:** the selected next step has now
 been preregistered and executed in Sec. 9.8. Status:
 `SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS_TWO_HOUSES /
-PROMOTION_PENDING`. Claude Opus 5.5 (2026-10-31) and, blind to it, Grok
-grok-4.7 (2026-11-01) reviewed the exact candidate on identical input and
-each returned PASS on all six blocks, no mandatory repairs. This records review evidence
-only; the new scientific conclusion is not canonically promoted. Only that
+PROMOTION_PENDING`, superseded on 2026-11-01 by the promotion above.
+Claude Opus 5.5 (2026-10-31) and, blind to it, Grok grok-4.7 (2026-11-01)
+reviewed the exact candidate on identical input and each returned PASS on
+all six blocks, no mandatory repairs. Only that
 one-profile/one-pair subproblem is reopened;
 the broad H1/H1c localization program stays paused. No H1 PASS is promoted.
 **Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. L2 stop gate: `B / OPEN_BLOCKED_METHOD` (PRELIMINARY decision audit; partial external review + source bounds reproduced by Claude; B structural to norm-based method, not evidence against H1; H1 OPEN and paused). The present physical stay-remainder bounds do not reach `o(N^-13/2 e^{-K_*N})` without the still-open H1c localization machinery; this is a method obstruction, not an H1 refutation. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
@@ -1793,8 +1809,12 @@ Only this subproblem is reopened; the broad H1/H1c localization program
 remains paused.
 
 Execution: [`small Gaussian profile report`](../reports/2026-10-31--h1-small-gaussian-profile.md).
-Status: **SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS_TWO_HOUSES /
-PROMOTION_PENDING**. The execution was initially PRELIMINARY. The later
+Status (promoted 2026-11-01, user instruction «promocionada 9.8»):
+**SMALL_GAUSSIAN_PROFILE_SURVIVAL_PROVED_UNDER_FROZEN_CONTRACT**, in the
+frozen one-profile/one-pair scope above, conditional on the promoted bridge
+and the flat sigma_2/I theorem. Previous status:
+SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS_TWO_HOUSES /
+PROMOTION_PENDING. The execution was initially PRELIMINARY. The later
 [independent Claude review](../reports/2026-10-31--h1-small-gaussian-claude-review.md)
 returns PASS on all six blocks, no mandatory repairs, for candidate SHA256
 `98e96a47fdb584e921210e71c07559b773a2bd85258ab8fc1606ac6bc5972611`.
@@ -1820,8 +1840,9 @@ threshold or new full asymptotic coefficient is supplied.
 
 The new permanent algebra verifier passes 21 exact checks; the unchanged
 flat Laplace verifier passes 58/58. Neither count certifies the new analytic
-estimates. The new survival conclusion has the review recorded above and is not promoted
-to H1, general profile/pair stability, H1c, E0, POWER_13/2_STABILITY or E/AdS.
+estimates. The survival conclusion is promoted only in the frozen scope stated above;
+it is not promoted to H1, general profile/pair stability, H1c, E0,
+POWER_13/2_STABILITY or E/AdS.
 The user explicitly authorized this Claude review with «que lo revise claude»;
 it is complete. This supersedes the earlier no-external-submission clause
 for that request only. No further external submission, broader research,
