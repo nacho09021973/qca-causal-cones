@@ -2,6 +2,10 @@
 
 **Date:** 2026-11-01
 
+**Gate chartered — 2026-11-01:** `HEX_CEILING` (Sec. 12) is frozen and
+authorized by direct user instruction. Status **OPEN**, not executed. It
+is the active front; `C_ACROSS_LATTICES` stays promoted as below.
+
 **Gate promoted — 2026-11-01:** by direct user instruction («1»: promote
 now rather than wait for Grok), `C_ACROSS_LATTICES` (Sec. 11) is promoted
 on `research/schur-stability-audit` as
@@ -2134,3 +2138,20 @@ r_in`) and Hc (no row with `c_0 > c_strict^iso`) are OPEN. Execution:
 report plus `scripts/verify_c_across_lattices_gate.py`, then independent
 cross-family review, then a separate promotion. No rigidity or general
 QCA law may be drawn from the table.
+
+## 12. Hexagonal ceiling — chartered 2026-11-01
+
+Contract: [`HEX_CEILING_GATE.md`](../theory/HEX_CEILING_GATE.md), frozen
+before solving. Authorization: direct user instruction, 2026-11-01, after
+the promoted Sec. 11 table showed no declared hexagonal walk reaching
+`c_0 = r_in`.
+
+Status: **OPEN — CHARTERED, NOT EXECUTED.** Class `W_hex`: translation-
+invariant `s = 2` walks on the triangular lattice, one update a product
+of `n` coin–partial-shift factors, regular hexagonal `C_micro` from the
+exact composite support, massless node at `k = 0` with isotropic untilted
+cone. Targets: L0 (`c_0 <= r_in`, to be proved or cited, not assumed),
+T1 (`n = 3` antipodal subclass: exact supremum), T2 (whole class: gap
+proof or explicit witness). Hypotheses HX0–HX2 OPEN. No verdict from
+numerics or failed search; restricted results stay restricted.
+
