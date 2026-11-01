@@ -257,3 +257,26 @@ The optional check imports the existing exact blocks and evolves the compact
 perturbation in a nonperiodic box. No frozen verifier is modified.
 See the [audit and reproduction commands](../reports/2026-09-22--ir-spectral-attribution-audit.md).
 These are empirical finite-N diagnostics, not certificates or asymptotic gates.
+
+## c across lattices gate (2026-11-01, in progress)
+
+`verify_c_across_lattices_gate.py` certifies the
+[`C_ACROSS_LATTICES`](../theory/C_ACROSS_LATTICES_GATE.md) contract,
+preregistered at `30672ba`. Run from the repository root; fail-closed.
+
+Part 1 (22 exact checks): for rows L5a, L5b, L6a, L6c–L6f it builds the
+exact Bloch symbol of one complete update from the source equations,
+checks unitarity on the unit torus, checks the source identities it uses
+(ADMP Eq. (5) C1–C2, JDW printed inverses, the Mlodinow–Brun Clifford
+relations for the chosen representation) and prints the composite step set
+F with its lattice index. Two ADMP sign issues are certified as recorded
+issues (Eq. (8) holds for `alpha=-arccos(sqrt5/3)`; the printed `S` orders
+the `tau_i` backwards, `S^{-1}` restores Eq. (7) = Eq. (10)). Row L6b is
+reported as not encoded, with its reason.
+
+What it does **not** certify: the step-set identifications are printed,
+not asserted, except for L5a/L5b (`{±1}^3`); C_micro geometry, `c_0`,
+`c_strict^iso`, `S(n̂)`, `V_grp^max` and masses are not computed yet; the
+reading of the source conventions (phase, product order, read-from-
+neighbour routing) is a declared choice documented in the script header,
+not a theorem. Not independently reviewed.
