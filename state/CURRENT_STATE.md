@@ -1,10 +1,19 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-01
+**Date:** 2026-11-02
 
-**Gate chartered — 2026-11-01:** `HEX_CEILING` (Sec. 12) is frozen and
-authorized by direct user instruction. Status **OPEN**, not executed. It
-is the active front; `C_ACROSS_LATTICES` stays promoted as below.
+**Gate promoted — 2026-11-02:** by direct user instruction («si,
+promuévelo»), `HEX_CEILING` (Sec. 12) is promoted on
+`research/schur-stability-audit` in its frozen scope: L0
+`PROVED_IN_REPO` (`c_0 <= r_in` on `W_hex`, Bernstein proved in-repo);
+T1 `GAP_PROVED_IN_CLASS` (`sup c_0/r_in = sqrt3/2` in the `n = 3`
+antipodal subclass, attained at coplanar 120° coin axes); T2
+`PROVED_FOR_MINIMAL_SUPPORT` (no s=2 walk with `F within {0} U vert(H)`
+reaches the ceiling) and `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` in general.
+Evidence: two houses — Gemini PASS (first round and re-review), Grok
+REPAIR_REQUIRED then PASS on the repairs. Not human review. No general
+QCA law, no claim for `s > 2` or other lattices, no novelty. HX2 in
+general stays OPEN; no front is chartered beyond this.
 
 **Gate promoted — 2026-11-01:** by direct user instruction («1»: promote
 now rather than wait for Grok), `C_ACROSS_LATTICES` (Sec. 11) is promoted
@@ -2159,13 +2168,15 @@ two-layer restrictions on the facet-normal lines; the resulting
 polynomial system has no real solution; square-substrate positive
 control passes); verifier 24/24. T2 in general
 `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` (19-point ball: Groebner over C did
-not finish in 900 s; inconclusive, recorded as exploratory). Execution
+not finish in 900 s; inconclusive, recorded as exploratory). **Promoted
+2026-11-02 (user instruction «si, promuévelo») in the frozen scope stated
+at the top of this file.** Execution
 stopped. [Reviews](../reports/2026-11-02--hex-ceiling-review.md): Gemini
 PASS on all five blocks; Grok REPAIR_REQUIRED (R1: Bernstein used without
 in-repo proof; R2: weak rank predicate), both repaired 2026-11-02 (Lemma B
 in the report; exact minor in the verifier, 24/24). Bounded re-review
 of the repairs: Grok PASS and Gemini PASS on R1–R4, identical input.
-PRELIMINARY, PROMOTION_PENDING (user decision).
+Previous status: PRELIMINARY, PROMOTION_PENDING.
 
 Charter: class `W_hex`: translation-
 invariant `s = 2` walks on the triangular lattice, one update a product
