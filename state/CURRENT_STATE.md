@@ -2159,7 +2159,9 @@ polynomial system has no real solution; square-substrate positive
 control passes); verifier 24/24. T2 in general
 `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` (19-point ball: Groebner over C did
 not finish in 900 s; inconclusive, recorded as exploratory). Execution
-stopped; review pending. All PRELIMINARY, not promoted.
+stopped. [Review](../reports/2026-11-02--hex-ceiling-review.md): Gemini
+gemini-4-argon PASS on all five blocks, no mandatory repairs (one house;
+Grok unavailable). PRELIMINARY, PROMOTION_PENDING (user decision).
 
 Charter: class `W_hex`: translation-
 invariant `s = 2` walks on the triangular lattice, one update a product
