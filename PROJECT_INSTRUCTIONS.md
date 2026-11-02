@@ -105,6 +105,11 @@ Rules that carry over to any successor gate:
   a general QCA law without a separate proof.
 - No anisotropic detour, broad model search, causal sets or new substrate class.
 - Check primary classification assumptions before claiming a new rigidity theorem.
+- Before every new experiment, calculation or code modification (user rule,
+  2026-11-02), state: what is already known, with its source; the concrete
+  question; and the result that would make us abandon the line. Every charter
+  records the third item for the line, separately from its per-hypothesis
+  verdicts. See `reports/2026-11-02--research-lines-known-question-abandonment.md`.
 
 Negative results are valid project outcomes.
 
