@@ -2,6 +2,12 @@
 
 **Date:** 2026-11-02
 
+**Gate chartered — 2026-11-02:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES`
+(Sec. 13, [`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md))
+is frozen and authorized by user instruction («haz lo que consideres,
+estás autorizado»). Status **OPEN**, not executed. It is the active
+front; Sec. 11 and L6b stay promoted as below.
+
 **Gate promoted — 2026-11-02:** by user instruction («haz lo que
 consideres, estás autorizado», after the two PASS reviews were reported
 with `PROMOTION_PENDING`), `L6B_TRIANGULAR_ROW`
@@ -2293,3 +2299,34 @@ cone. Targets: L0 (`c_0 <= r_in`, to be proved or cited, not assumed),
 T1 (`n = 3` antipodal subclass: exact supremum), T2 (whole class: gap
 proof or explicit witness). Hypotheses HX0–HX2 OPEN. No verdict from
 numerics or failed search; restricted results stay restricted.
+
+## 13. Dispersion corrections across lattices — chartered 2026-11-02
+
+Contract: [`DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
+frozen before solving. Authorization: user instruction, 2026-11-02
+(«haz lo que consideres, estás autorizado»), given on a draft that was
+then revised before freezing in three points and one removal, all
+recorded here so the revision is traceable: (i) the expansion now
+allows an odd term `beta(n̂)|k|` and records the order of the lowest
+nonvanishing correction, because a `C_3`-symmetric node admits
+`cos 3 theta` at relative order `|k|`; (ii) the harmonics are those of
+the walk's own symmetry group `G_walk`, found exactly per row, and the
+charter records that under `C_6` the degree-4 term is isotropic, so
+`cos 6 theta` cannot appear before relative order `|k|^4`; (iii) He
+excludes `d = 1` and names the ceiling rows; the source script of every
+symbol is named. Removed: the draft's Phase 2 conditional dictionary to
+observational bounds (second question; needs the photon identification
+the claim ceiling forbids; deferred to its own charter if ever wanted).
+
+Single question: the exact lowest-order correction to the massless
+dispersion per declared row, its order, sign and angular pattern. Rows:
+the thirteen massless rows of Sec. 11 plus L6b, every symbol imported
+read-only from a versioned script. Hypotheses Hd (`alpha_0 < 0` in every
+row), He (ceiling rows with `d >= 2` have a nonzero anisotropic
+coefficient), Hf (rows on one substrate do not share the correction) are
+OPEN. Verdicts: `CORRECTIONS_TABLE_COMPLETE` / `_PARTIAL_<reason>`; per
+hypothesis `CONFIRMED_IN_DECLARED_ROWS` / `REFUTED_BY_ROW_<Id>` /
+`DECIDED_BY_SYMMETRY`. Execution: report plus
+`scripts/verify_dispersion_corrections_gate.py`, then independent
+cross-family review, then a separate promotion. No claim about our
+universe, no general QCA law, no novelty claim.
