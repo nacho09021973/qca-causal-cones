@@ -67,3 +67,30 @@ No value, table entry or verdict changed.
 Neither review is human review. Nothing is promoted by this record. The
 verifier's bytes changed, so the repairs need their own review before
 promotion.
+
+## Bounded re-review of the repairs (2026-11-02)
+
+**Authorization:** user, «adelante» (2026-11-02). One round per house,
+1800 s. **Input:** the contract, this record (as of `4a45280`), the repair
+diff, and the repaired report and verifier (SHA256
+`b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`);
+identical to both houses (input SHA256
+`f4976edfcc8a722b2257ce316528adf2d4086ee98e0f9dfcbb7a5d50d5d3fb6d`).
+Snapshot reviewed `9557aa9`, repaired `4a45280`. Tool `ce09890`.
+
+| House | Model | R1 β sign in L3s4 | R2 L5a/L5b sentence | R3 Hd record | R4 regressions | Global | Mandatory repairs |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Gemini | gemini-4-argon | PASS | PASS | PASS | PASS | PASS | none |
+| Grok | grok-4.7 | PASS | PASS | PASS | PASS | PASS | none |
+
+Record: [`debates/2026-11-02--dispersion-rereview/`](../debates/2026-11-02--dispersion-rereview/).
+Both rederived `beta0^2 - beta3^2/27 = (11a^4 - 38a^2 + 23)/(324a^2)` and
+the single threshold `a^2 = (19 - 6 sqrt3)/11` in `0 < a < 1`. Both
+confirm that the new records can fail and certify what their labels
+state, and that the diff changes no value or verdict. Grok checked the
+sample values at `a = 1/2` and `a = 19/20` and noted that `beta` vanishes
+on the diagonals at the threshold, so the strict "iff" is the right
+statement. Grok's acceptance of its own three repairs is now on record.
+
+Status after re-review: **PRELIMINARY, INDEPENDENT_REVIEW_PASS_TWO_HOUSES,
+PROMOTION_PENDING (user decision).** Not human review. Nothing promoted.

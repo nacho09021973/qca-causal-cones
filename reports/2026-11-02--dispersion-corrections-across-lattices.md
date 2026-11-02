@@ -17,7 +17,8 @@ SymPy). Run time about 11 min, dominated by the symmetry test of
 L3s4. The imported verifiers are unchanged.
 **Status:** `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN` —
 PRELIMINARY. Reviewed: Gemini PASS, Grok REPAIR_REQUIRED (three repairs,
-applied in Sec. 5); review of the repairs pending. Nothing is promoted by this report.
+applied in Sec. 5); bounded re-review of the repairs: Gemini PASS, Grok
+PASS. PROMOTION_PENDING. Nothing is promoted by this report.
 
 ## 1. Result
 
@@ -267,4 +268,4 @@ No value, table entry or verdict changed.
 
 ## 7. Next step
 
-Bounded review of the three repairs, then a separate promotion decision.
+A separate promotion decision (user).

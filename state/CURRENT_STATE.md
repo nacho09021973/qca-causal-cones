@@ -13,8 +13,10 @@ Hd `REFUTED_BY_ROW_L1` (also by L3s4 for `a < a*`), He
 [Reviews](../reports/2026-11-02--dispersion-corrections-across-lattices-review.md):
 Gemini PASS on all six blocks; Grok REPAIR_REQUIRED (three repairs, two
 in the report prose, one constant-`True` record), all accepted and
-applied, no value or verdict changed. **PRELIMINARY, review of the
-repairs pending; nothing promoted.** It is the active front;
+applied, no value or verdict changed; bounded re-review of the repairs:
+Gemini PASS and Grok PASS on R1–R4, identical input, no repairs.
+**PRELIMINARY, INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING
+(user decision); nothing promoted.** It is the active front;
 Sec. 11 and L6b stay promoted as below.
 
 **Gate promoted — 2026-11-02:** by user instruction («haz lo que
@@ -2345,8 +2347,8 @@ verifier `scripts/verify_dispersion_corrections_gate.py` (SHA256
 `b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`,
 81/81 after the review repairs; 79/79 at the reviewed `791f0d80d279`).
 Status `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`,
-PRELIMINARY; reviews Gemini PASS, Grok REPAIR_REQUIRED, repairs applied,
-their review pending. Findings: the lowest correction
+PRELIMINARY; reviews Gemini PASS, Grok REPAIR_REQUIRED, repairs applied;
+bounded re-review Gemini PASS, Grok PASS; PROMOTION_PENDING. Findings: the lowest correction
 is a relative-order-`|k|` term `beta` exactly in the six rows whose walk
 group lacks inversion (L5a, L5b, L4 with `T_d`; L6a, L6b with `D_3`;
 L3s4), and `alpha` elsewhere; the harmonic content matches the walk's
