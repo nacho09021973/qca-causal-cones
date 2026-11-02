@@ -68,6 +68,24 @@ Readings, each limited to these rows:
   restore uniqueness.
 - The directional ratio `S(n̂) = c_0 / h_{C_micro}(n̂)` equals 1 in some
   direction only in the rows with `c_0 = r_in`.
+- Different substrates can share `c_0`. L3s4 at `a = sqrt3/2` has
+  `c_0 = 1/2`, the value of L6a on the hexagonal substrate. This is
+  immediate from the L3s4 continuum (every `c_0` in `(0, 1/sqrt3)` is
+  attained on BCC) and is a statement in the units of this table (longest
+  step 1, one update per time unit; the `N_3` steps have unit length). In
+  units of `r_in` the two rows differ (`sqrt3/2` against `1/sqrt3`). It
+  shows that a common `c_0` across substrates is possible by choice of
+  coin parameters, not that anything forces it: IR universality (A) stays
+  OPEN.
+- In the hexagonal subclass the internal parameter enters through
+  `c_0,raw^2 = (3/2) l^2 (1 - g)`, i.e. through the overlaps `g_ij`
+  weighted by the step products `a_i . a_j` (`= -l^2/2` for `i != j`).
+  Pairwise anticommuting coin operators (`g = 0`) give `c_0/r_in =
+  1/sqrt2`, not the maximum; the maximum `sqrt3/2` is at `g = -1/2`,
+  where the Bloch vectors reproduce the 120° geometry of the steps and
+  the operators do not anticommute. What matters is the joint structure
+  of step vectors and internal overlaps, not anticommutation alone
+  (`reports/2026-11-01--hex-ceiling.md`, T1). Read off that subclass only.
 
 ## 2. The ceiling and its scope
 
