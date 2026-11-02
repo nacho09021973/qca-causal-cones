@@ -161,6 +161,132 @@ def check_admp():
            iso and sp.radsimp(sp.sqrt(c2)) == sp.Rational(1, 2))
 
 
+def check_T2_minimal():
+    """Minimal-support subclass: F within {0} U vert(H), any s = 2 walk (no
+    product form assumed). WLOG (Bloch rotation, joint spatial/Bloch
+    rotation, scale): vertices v_k = (cos k pi/3, sin k pi/3), the isotropic
+    linear term A(n) = r n.sigma with n in the xy Bloch plane. Saturation
+    c_0 = r_in forces, along each facet normal n, U(t n) = e^{-irt} P_+ +
+    e^{irt} P_- (report, Bernstein equality / Julia), i.e. layer sums:
+    top edge -> P_+(n), bottom edge -> P_-(n), middle layer -> 0."""
+    v = [sp.Matrix([sp.cos(sp.pi * k / 3), sp.sin(sp.pi * k / 3)]) for k in range(6)]
+    normals = [sp.Matrix([sp.cos(a), sp.sin(a)]) for a in (sp.pi / 6, sp.pi / 2, 5 * sp.pi / 6)]
+    layers = []
+    for n in normals:
+        proj = [sp.nsimplify((vk.T * n)[0]) for vk in v]
+        top = [k for k in range(6) if proj[k] == R3 / 2]
+        bot = [k for k in range(6) if proj[k] == -R3 / 2]
+        mid = [k for k in range(6) if proj[k] == 0]
+        layers.append((top, bot, mid))
+    record("T2-min: along each facet normal the layers are {top edge, middle (2 vertices + 0), bottom edge}",
+           all(len(t) == 2 and len(b) == 2 and len(m) == 2 for t, b, m in layers)
+           and [l[0] for l in layers] == [[0, 1], [1, 2], [2, 3]])
+
+    def proj(n, sign):
+        return (I2 + sign * (n[0] * SX + n[1] * SY)) / 2
+    Pp = [proj(n, 1).applyfunc(sp.nsimplify) for n in normals]
+    Pm = [proj(n, -1).applyfunc(sp.nsimplify) for n in normals]
+    # generic unknown coefficients for the 6 vertices and the origin
+    syms = []
+    def gen(name):
+        e = sp.symbols(f"{name}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    X = [gen(f"X{k}") for k in range(6)]
+    Z = gen("Z")
+    lin = []
+    for (top, bot, mid), Pt, Pb in zip(layers, Pp, Pm):
+        for M in (X[top[0]] + X[top[1]] - Pt, X[bot[0]] + X[bot[1]] - Pb, X[mid[0]] + X[mid[1]] + Z):
+            for e in M:
+                e = sp.expand(e)
+                lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    x0 = syms[:8]
+    sol = sp.solve(lin, [s_ for s_ in syms if s_ not in x0], dict=True)
+    record("T2-min: layer equations are consistent, with the X0 coefficient free", len(sol) == 1)
+    sol = sol[0]
+    Zs = Z.subs(sol)
+    record("T2-min: layer equations force A_0 = -I/2", base.is_zero_matrix(Zs + I2 / 2))
+    Xs = [Xk.subs(sol) for Xk in X]
+    pts = [(v[k], Xs[k]) for k in range(6)] + [(sp.zeros(2, 1), Zs)]
+    eqs = set()
+    blocks = {}
+    for h1, A1 in pts:
+        for h2, A2 in pts:
+            d = tuple(sp.nsimplify(c) for c in (h1 - h2))
+            blocks.setdefault(d, [sp.zeros(2), sp.zeros(2)])
+            blocks[d][0] += A1 * A2.H
+            blocks[d][1] += A2.H * A1
+    for d, (m1, m2) in blocks.items():
+        target = I2 if all(c == 0 for c in d) else sp.zeros(2)
+        for M in (m1 - target, m2 - target):
+            for e in M:
+                e = sp.expand(e)
+                for part in (sp.expand(sp.re(e)), sp.expand(sp.im(e))):
+                    if part != 0:
+                        eqs.add(part)
+    G = sp.groebner(list(eqs), *x0, order="lex")
+    uni = [g for g in G.exprs if g.free_symbols == {x0[6]} and sp.degree(g, x0[6]) == 2]
+    ok = False
+    if uni:
+        a2, a1, a0 = sp.Poly(uni[0], x0[6]).all_coeffs()
+        disc = sp.simplify(a1 ** 2 - 4 * a2 * a0)
+        ok = bool(disc < 0)
+        print(f"  T2-min: Groebner element {uni[0]} = 0, discriminant {disc}")
+    record("T2-min: unitarity + saturation imply a real quadratic with negative discriminant "
+           "(no real solution): the ceiling is not attained with F in {0} U vert(H)", ok)
+
+
+def check_T2_square_control():
+    """Positive control for the saturation method: the square substrate
+    F within {0} U {(+-1,+-1)}, facet normals x and y, A(n) = r n.sigma.
+    The same layer + unitarity system must be consistent, and the known
+    saturating walk exp(-i k_x sigma_x) exp(-i k_y sigma_y) must solve it."""
+    verts = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+    syms = []
+    def gen(name):
+        e = sp.symbols(f"{name}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    X = {v: gen(f"Y{i}") for i, v in enumerate(verts)}
+    Z = gen("W")
+    Px, Pxm = (I2 + SX) / 2, (I2 - SX) / 2
+    Py, Pym = (I2 + SY) / 2, (I2 - SY) / 2
+    lin = []
+    for M in (X[(1, 1)] + X[(1, -1)] - Px, X[(-1, 1)] + X[(-1, -1)] - Pxm,
+              X[(1, 1)] + X[(-1, 1)] - Py, X[(1, -1)] + X[(-1, -1)] - Pym, Z):
+        for e in M:
+            e = sp.expand(e)
+            lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    free = syms[:8]
+    sol = sp.solve(lin, [s_ for s_ in syms if s_ not in free], dict=True)[0]
+    pts = [(sp.Matrix(v), X[v].subs(sol)) for v in verts] + [(sp.zeros(2, 1), Z.subs(sol))]
+    eqs = set()
+    blocks = {}
+    for h1, A1 in pts:
+        for h2, A2 in pts:
+            d = tuple(h1 - h2)
+            blocks.setdefault(d, [sp.zeros(2), sp.zeros(2)])
+            blocks[d][0] += A1 * A2.H
+            blocks[d][1] += A2.H * A1
+    for d, (m1, m2) in blocks.items():
+        target = I2 if all(c == 0 for c in d) else sp.zeros(2)
+        for M in (m1 - target, m2 - target):
+            for e in M:
+                e = sp.expand(e)
+                for part in (sp.expand(sp.re(e)), sp.expand(sp.im(e))):
+                    if part != 0:
+                        eqs.add(part)
+    G = sp.groebner(list(eqs), *free, order="lex")
+    record("CONTROL square: saturation system is consistent (Groebner basis != {1})", list(G.exprs) != [1])
+    # known walk: (cos kx - i sin kx sx)(cos ky - i sin ky sy), coefficient of shift (a,b)
+    # with z^h <-> exp(-i k.h): factor = z_x P_x^+ + z_x^{-1} P_x^-, same for y
+    known = Px * Py  # coefficient at (1,1) = P_x^+ P_y^+
+    vals = dict(zip(free, [sp.re(known[0, 0]), sp.im(known[0, 0]), sp.re(known[0, 1]), sp.im(known[0, 1]),
+                           sp.re(known[1, 0]), sp.im(known[1, 0]), sp.re(known[1, 1]), sp.im(known[1, 1])]))
+    record("CONTROL square: the saturating walk exp(-ik_x s_x) exp(-ik_y s_y) solves it",
+           all(sp.simplify(e.subs(vals)) == 0 for e in eqs))
+
+
 def main():
     print("== L0 grid step")
     check_L0_grid()
@@ -170,8 +296,12 @@ def main():
     check_witness()
     print("== T1 consistency with ADMP")
     check_admp()
+    print("== T2, minimal-support subclass F in {0} U vert(H)")
+    check_T2_minimal()
+    print("== positive control on the square substrate")
+    check_T2_square_control()
     failed = [c for c in CHECKS if not c[1]]
-    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (L0 grid step, T1).")
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (L0 grid step, T1, T2 minimal support).")
     return 1 if failed else 0
 
 

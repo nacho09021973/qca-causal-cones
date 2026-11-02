@@ -318,6 +318,13 @@ a uniform grid), the T1 algebra symbolic in the pairwise overlaps
 attaining `sqrt3/2`, and the ADMP overlaps `g = 1/3` reproducing
 `c_0 = 1/2`. Reuses read-only helpers of `verify_c_across_lattices_gate.py`.
 
-Does **not** certify: the Bernstein step of L0 (prior art, applied in the
-report), the reduction of a general `n = 3` antipodal walk to product form,
-or anything about T2. Not independently reviewed.
+T2 minimal support (6 further checks, 24 total): layer structure along
+the three facet normals, the layer equations forcing `A_0 = -I/2`, and a
+lex Gröbner basis of the unitarity system containing a real quadratic of
+discriminant `-1/12` (no real solution); positive control on the square
+substrate (consistent system, solved by the known saturating walk).
+
+Does **not** certify: the Bernstein step of L0 and the Bernstein-equality /
+Julia step of T2 (prior art, applied in the report), the normal-form
+reduction, the reduction of a general `n = 3` antipodal walk to product
+form, or T2 beyond minimal support. Not independently reviewed.

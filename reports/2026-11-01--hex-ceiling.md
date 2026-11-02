@@ -4,12 +4,14 @@ Date: 2026-11-01. Branch: `research/schur-stability-audit`.
 Contract: [`HEX_CEILING_GATE.md`](../theory/HEX_CEILING_GATE.md),
 preregistered at `8c56ced`.
 Verifier: [`scripts/verify_hex_ceiling_gate.py`](../scripts/verify_hex_ceiling_gate.py),
-18/18 exact checks (Python 3.12.3, `sympy==1.14.0`).
+24/24 exact checks (Python 3.12.3, `sympy==1.14.0`).
 Author: Claude Code (Claude Opus 5.5), at the user's direction.
 
 **Status: PARTIAL EXECUTION — L0 `PROVED_IN_REPO` (using the classical
 scalar Bernstein inequality, prior art); T1 `GAP_PROVED_IN_CLASS` with
-supremum `sqrt3/2`, attained; T2 not started.** Evidence **PRELIMINARY**
+supremum `sqrt3/2`, attained; T2 `PROVED_FOR_MINIMAL_SUPPORT`
+(`F within {0} U vert(H)`, any s=2 walk, no product form assumed); T2 in
+general OPEN.** Evidence **PRELIMINARY**
 (no independent review). Not promoted.
 
 ## 1. L0 — the ceiling `c_0 <= r_in` on `W_hex`
@@ -97,16 +99,69 @@ attained exactly at coplanar 120° Bloch vectors. HX1
 `CONFIRMED_IN_CLASS` (T1 subclass). HX0 `CONFIRMED_IN_CLASS` (L0, all of
 `W_hex`).
 
-## 3. Not established
+## 3. T2 — minimal-support subclass (2026-11-02)
 
-- T2 (all of `W_hex`: more factors, skew partial shifts, other step
-  lengths) is not started. HX2 is OPEN. The T1 result does not extend to
-  T2 by itself.
+Subclass: walks in `W_hex` whose composite support satisfies
+`F within {0} U vert(H)` (origin plus the six hull vertices). No product
+form is assumed: the argument uses only `F`, unitarity, the node and
+isotropy. It contains T1, ADMP L6a, JDW L6d and L6f (Sec. 11); it does not
+contain JDW L6c (19 points).
+
+**Step 1: saturation along a facet normal is rigid.** Suppose
+`c_0 = r_in`. Let `n_f` be a facet normal and `x` a unit eigenvector of
+`A(n_f)` with eigenvalue `+c_0`. With the notation of Sec. 1,
+`p(s) = <x, U(s n_f/delta) x>` has `|p| <= 1`, `p(0) = 1` and
+`p'(0) = -i N`. Then `P(z) = z^N p` (with `z = e^{is}`) is an analytic
+polynomial with `|P| <= 1` on the closed disc, `P(1) = 1` and `P'(1) = 0`.
+By Julia's lemma (classical; a non-constant `P` with `|P| <= 1` and a
+boundary fixed point has angular derivative `P'(1) > 0`) `P` is constant,
+so `p(s) = e^{-iNs}`; equivalently this is the equality case of
+Bernstein's inequality, listed as prior art in PROJECT_INSTRUCTIONS §6.
+By Cauchy–Schwarz `U(t n_f) x = e^{-i r_in t} x` for all `t`, and likewise
+for the `-c_0` eigenvector. Hence along every facet-normal line
+`U(t n_f) = e^{-i r_in t} P_+(n_f) + e^{i r_in t} P_-(n_f)`: only the two
+extreme layers of `F` survive in that direction. In coefficients: the sum
+of `A_h` over the top edge is `P_+(n_f)`, over the bottom edge
+`P_-(n_f)`, and over every intermediate layer `0`.
+Citation status: Julia's lemma and the Bernstein equality case are
+classical; no primary source for them is in `sources/` (page
+[UNVERIFIED]).
+
+**Step 2: normal form.** By a Bloch rotation, a joint rotation of space
+and Bloch sphere about `z`, and scale, take `vert(H) = {(cos k pi/3,
+sin k pi/3)}` and `A(n) = r_in n . sigma` with `n` in the `xy` Bloch plane.
+The three facet normals are at 30°, 90°, 150°.
+
+**Step 3: certificate (verifier).** Along each facet normal the layers
+are top edge (2 vertices), middle layer (2 vertices and `0`), bottom edge.
+The nine layer equations are consistent, leave the coefficient `X_0` of
+one vertex free, and force `A_0 = -I/2`. Imposing
+`sum_h A_{h+d} A_h^dag = delta_{d0} I` and `sum_h A_h^dag A_{h+d} =
+delta_{d0} I` for all `d`, the lex Gröbner basis of the real equations
+contains `x^2 - x/2 + 1/12` in one real coordinate of `X_0`; its
+discriminant is `-1/12 < 0`. No real solution exists.
+
+**Positive control.** The same procedure on the square substrate
+(`F within {0} U {(±1,±1)}`, facet normals `x`, `y`) gives a consistent
+system, and the saturating walk `e^{-ik_x sigma_x} e^{-ik_y sigma_y}`
+solves it (verifier).
+
+**Verdict.** T2 `PROVED_FOR_MINIMAL_SUPPORT`: no s=2 walk on the
+hexagonal substrate with `F within {0} U vert(H)` reaches `c_0 = r_in`.
+HX2 holds in this subclass; HX2 in general is OPEN. No supremum is
+claimed for this subclass beyond T1's `sqrt3/2`, which it contains; the
+gap here is qualitative (`<`), not a bound.
+
+## 4. Not established
+
+- T2 for supports with further lattice points (edge-interior or interior
+  points, e.g. JDW L6c). HX2 is OPEN there. The minimal-support result does
+  not extend by itself.
 - Nothing for `s > 2`, other lattices, masses.
 - No novelty claim: Bernstein is prior art; the T1 computation is
   elementary.
 
-## 4. Next step
+## 5. Next step
 
-T2, under the same contract. Then independent cross-family review and a
+T2 beyond minimal support, under the same contract. Then independent cross-family review and a
 separate promotion.

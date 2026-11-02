@@ -2151,8 +2151,13 @@ verifier `scripts/verify_hex_ceiling_gate.py` (18/18). L0
 `PROVED_IN_REPO` (with classical Bernstein, prior art): `c_0 <= r_in` on
 `W_hex`. T1 `GAP_PROVED_IN_CLASS`: in the `n = 3` antipodal subclass,
 `c_0/r_in = sqrt(1-g)/sqrt2 <= sqrt3/2`, attained iff the coin axes are
-coplanar at 120° (ADMP `g = 1/3`, JDW L6d `g = -1/2`). T2 not started.
-All PRELIMINARY, unreviewed, not promoted.
+coplanar at 120° (ADMP `g = 1/3`, JDW L6d `g = -1/2`). T2
+`PROVED_FOR_MINIMAL_SUPPORT` (2026-11-02): no s=2 walk with
+`F within {0} U vert(H)` reaches the ceiling (saturation forces exact
+two-layer restrictions on the facet-normal lines; the resulting
+polynomial system has no real solution; square-substrate positive
+control passes); verifier 24/24. T2 in general OPEN. All PRELIMINARY,
+unreviewed, not promoted.
 
 Charter: class `W_hex`: translation-
 invariant `s = 2` walks on the triangular lattice, one update a product
