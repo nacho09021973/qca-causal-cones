@@ -15,8 +15,11 @@ equivalent); `s = 6`, not the parent's `s = 2`; `r_in = sqrt3/2`,
 colourings and both coin readings; source coefficient `sqrt3/6` and the
 three-update equivalence with L6a (up to a 60° rotation) reproduced. If
 promoted: parent Hb `REFUTED_BY_ROW_L6b`, Hc `CONFIRMED_IN_DECLARED_ROWS`,
-Ha unchanged. **PRELIMINARY, independent review pending; nothing
-promoted.**
+Ha unchanged. [Reviews](../reports/2026-11-02--l6b-triangular-row-review.md)
+2026-11-02: Gemini (gemini-4-argon) PASS on all six blocks, Grok
+(grok-4.7) PASS on all six blocks, identical input without Fig. 1, no
+mandatory repairs. **PRELIMINARY, INDEPENDENT_REVIEW_PASS_TWO_HOUSES,
+PROMOTION_PENDING (user decision); nothing promoted.**
 
 **Gate promoted — 2026-11-02:** by direct user instruction («si,
 promuévelo»), `HEX_CEILING` (Sec. 12) is promoted on
