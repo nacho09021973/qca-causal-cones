@@ -10,6 +10,10 @@ Antes de hacer cualquier trabajo, lee y sigue:
 2. `state/CURRENT_STATE.md` — única fuente de verdad del estado, los gates y lo que está
    autorizado. Si otro fichero lo contradice, gana este.
 
+Antes de cada experimento, cálculo o modificación del código, escribe: qué se sabe ya (con
+su fuente), qué pregunta concreta se quiere resolver y qué resultado obligaría a abandonar esa
+línea. Cada charter recoge el tercer punto para la línea, aparte de sus veredictos por hipótesis.
+
 Antes de investigar cualquier cuestión, lee `biblioteca/INDICE.md` (una línea por PDF, con
 etiquetas de materia: `grep -i <tema|palabra> biblioteca/INDICE.md`) y comprueba si hay algún
 paper útil. El índice localiza, no prueba: lee el PDF y cita `fichero.pdf p.N`, si no

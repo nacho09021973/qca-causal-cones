@@ -2,6 +2,53 @@
 
 **Date:** 2026-11-02
 
+**Novelty candidacy dropped — 2026-11-02:** by direct user instruction
+(«regístralo»), after the primary-source comparison
+[`reports/2026-11-02--s4-family-vs-arrighi-facchini.md`](../reports/2026-11-02--s4-family-vs-arrighi-facchini.md),
+the s=4 family (Sec. 4.1) is **not pursued as a novelty candidate**.
+Arrighi–Facchini is a structural antecedent (speed by compression of an
+involution, Eq. (27); operator splitting; continuum cone inside the
+lattice cone, Sec. V), not an identification; published hexagonal walks
+already realise `c_0 < c_strict^iso` (Sec. 11). The counterexample to
+strong `B_infty^*` in the declared s=4 class, its certificate and its
+review are unchanged. Next candidate compared, the IR-corona theorem of
+`papers/ir-corona/`: [check](../reports/2026-11-02--ir-corona-prior-art-check.md)
+found neither prior prefactor asymptotics outside the propagation region
+in `d >= 2` (CJWW 2024, p. 13: only two 1D studies) nor an ACSV theorem
+yielding the result directly (degenerate-point theory concerns
+coefficients of a fixed rational function; the signal is a sum with
+N-dependent non-analytic profiles). Candidacy stands, `NOVELTY = OPEN`;
+targeted search, unreviewed; ACSV monograph (2nd ed.) not read. Third
+candidate, the hexagonal ceiling (Sec. 12):
+[check](../reports/2026-11-02--hex-ceiling-prior-art-check.md) found no
+prior speed bound, 120° optimum or non-attainment statement for
+triangular/hexagonal walks; P17 (Fig. 1, p. 6) excludes isotropic `s = 2`
+walks on the triangular lattice in its sense, so the ceiling concerns a
+class P17 does not cover. Not refuted, `NOVELTY = OPEN`, weight low (L0
+Bernstein, T1 elementary, T2 restricted, whole class OPEN).
+
+**Synthesis written — 2026-11-02:** by user instruction («redacta la
+respuesta»), [`reports/2026-11-02--c-across-substrates-answer.md`](../reports/2026-11-02--c-across-substrates-answer.md)
+collects the promoted answer to "how much is c on different substrates"
+in the declared classes: the substrate fixes the ceiling `c_0 <= r_in`,
+the walk fixes `c_0` below it, and whether the ceiling is reached depends
+on the substrate (reached on line, square, BCC, cube; not by any declared
+hexagonal walk; hexagonal whole class OPEN). No new computation; changes
+no evidence level; the synthesis itself is unreviewed (PRELIMINARY).
+
+**Line abandoned — 2026-11-02:** by direct user instruction («abandona
+H1»), after the line review
+[`reports/2026-11-02--research-lines-known-question-abandonment.md`](../reports/2026-11-02--research-lines-known-question-abandonment.md)
+found that H1 has no open question serving the repo's goal (`c` across
+substrates) and that its abandonment result was already met (the L2 stop
+`B / OPEN_BLOCKED_METHOD`, a method obstruction). Line status:
+**H1 LINE_ABANDONED_BY_USER_DECISION.** Scientific status of H1 and H1c is
+unchanged: **OPEN** (unresolved), neither proved nor refuted. Every
+promoted H1-line result keeps its frozen scope (Schur physical bridge,
+small Gaussian profile, the Sec. 9 gate records); nothing is demoted. No
+H1 work may be resumed without a new charter and user authorization.
+Every "paused" wording about H1 below is superseded by this entry.
+
 **Gate promoted — 2026-11-02:** by direct user instruction («si,
 promuévelo», after the two PASS re-reviews were reported with
 `PROMOTION_PENDING`), `DISPERSION_CORRECTIONS_ACROSS_LATTICES` (Sec. 13,
@@ -130,8 +177,13 @@ on `main` with the same frozen scopes. The later promotions of
 `L6B_TRIANGULAR_ROW` and `DISPERSION_CORRECTIONS_ACROSS_LATTICES`
 (2026-11-02) were made on the same branch and, by direct user instruction
 («FUSIONAMOS main»), integrated into `main` through PR #15 with the same
-frozen scopes. Repository integration does not by itself promote an
-evidence level.
+frozen scopes. The later 2026-11-02 records on the same branch (per-line
+known facts and abandonment results, the H1 abandonment by user decision,
+the PRELIMINARY answer on c across substrates, the s=4 family dropped as a
+novelty candidate, and the IR-corona and hexagonal-ceiling prior-art
+checks) were, by direct user instruction («fusiona con main»), integrated
+into `main` through PR #16 without any change of evidence level.
+Repository integration does not by itself promote an evidence level.
 
 ## Reading guide and synchronization — 2026-09-28
 
@@ -150,7 +202,7 @@ not promote a scientific result, close a gate, or authorize a new calculation.
 | Spectral attribution | C2c PASS for the sixteen frozen pairs; C3 PASS for four encoders with M_B=I, limited to the conditioning correction | Section 10.1 |
 | Physical realization / absolute scale (4B) | September 25 execution records NO_ABSOLUTE_SCALE_DERIVABLE with PRELIMINARY / PARTIAL_EXTERNAL_REVIEW evidence and a scoped September 26 review; terminal closure by user decision on September 28, recorded 2026-09-30 (PR #12) | Section 8.21; [September 25 execution](../reports/2026-09-25--physical-realization-absolute-scale-gate.md); [September 28 report](../reports/2026-09-28--physical-realization-absolute-scale-gate.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
-| H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
+| H1 / inhomogeneous extension | OPEN; line ABANDONED by user decision 2026-11-02 (not refuted); L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda; abandonment entry at the top |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
 | Independent-use discrimination cost | PRELIMINARY, independent review pending: fixed-detector Theta(delta_N^-2); uniform one-particle lower bound Omega(N^-4 exp(K_* N)) for independent uses in the same regions | [September 28 supplied report](../reports/2026-09-28--iid-message-discrimination-cost.md) |
 
@@ -336,7 +388,7 @@ with equality only where separately certified (see the d=3 row below).
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
 | B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
 | B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN** |
-| Novelty of the s=4 family and its strict-support statement | **OPEN** — no equivalent found in eleven checked primary sources; not a novelty certificate |
+| Novelty of the s=4 family and its strict-support statement | **NOT PURSUED AS A NOVELTY CANDIDATE** (user decision 2026-11-02): no identification found (eleven sources 2026-09-15; Arrighi–Facchini compared 2026-11-02), but the compression mechanism and product structure are in AF (arXiv:1609.00305), and published walks (ADMP L6a, JDW L6c/d/f) already have `c_0 < c_strict^iso` (Sec. 11). Residual claim class-relative only. Mathematical result and review unchanged |
 
 The restricted statements are established for the declared cases below.
 There is no general rigidity theorem, proof of A, or novelty claim.
@@ -344,7 +396,8 @@ There is no general rigidity theorem, proof of A, or novelty claim.
 ### 4.1 Declared s=4 counterexample class
 
 **Status: COUNTEREXAMPLE_VERIFIED for this class; independent review PASS;
-NOVELTY = OPEN.**
+NOVELTY: not pursued as a candidate (user decision 2026-11-02, see the
+Sec. 4 table).**
 
 | Item | Declaration |
 | --- | --- |
@@ -1648,6 +1701,10 @@ of authorization is superseded by the record above.
 
 
 ## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)
+
+**Line abandoned 2026-11-02 by user decision** (entry at the top of this
+file). H1 stays scientifically OPEN; the records below are kept as they
+were, and their "paused" wording is historical.
 
 **Status (2026-10-31): H1 OPEN and paused; the Schur / physical-endpoint bridge
 has completed review and is promoted within its frozen B/F, fixed-W scope
