@@ -122,3 +122,27 @@ Recommendation, not an authorization: 3 before anything is written for
 outside readers, since the corona is the only candidate with weight. If the
 goal is the c question itself, 1 settles whether the current answer stands,
 and 2 is the only computation whose result changes it.
+
+## 4. Repository closure criterion (user decision, 2026-11-02)
+
+User statement: «si mañana volvemos a fracasar cerramos el repo y lo
+borramos». The user asked for "failure" to be fixed here in advance, so it
+is not argued afterwards:
+
+- **Close if** step 3 finds the IR-corona asymptotics already published.
+  No candidate with weight would then remain: the s=4 family was dropped,
+  and the hexagonal ceiling is elementary (Bernstein plus a three-vector
+  Gram bound).
+- **Close if** the independent review (step 1) finds that the
+  c-across-substrates answer states more than its promoted results
+  support, and the repair leaves no content of its own.
+- **Not a closure:** M1 stopping at `OPEN_AFTER_<analysis>`, which its
+  abandonment result anticipates as a stop rather than a failure. A step
+  that is simply not done tomorrow is not a closure either.
+
+How to close: archive the GitHub repository (read-only, can be private,
+reversible) rather than delete it. Deletion cannot be undone, and it
+discards results that stand without novelty: no substrate-fixed `c_0`, the
+`r_in` bound, the counterexamples, and the Lean fragment. No agent deletes
+or archives anything without the user's explicit confirmation at that
+moment.
