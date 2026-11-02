@@ -5,8 +5,13 @@
 **Gate chartered — 2026-11-02:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES`
 (Sec. 13, [`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md))
 is frozen and authorized by user instruction («haz lo que consideres,
-estás autorizado»). Status **OPEN**, not executed. It is the active
-front; Sec. 11 and L6b stay promoted as below.
+estás autorizado»). **Executed 2026-11-02** (user «si»;
+[report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
+verifier 79/79): `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`.
+Hd `REFUTED_BY_ROW_L1` (also by L3s4 for `a < a*`), He
+`CONFIRMED_IN_DECLARED_ROWS`, Hf `REFUTED_BY_ROW_L6e`. **PRELIMINARY,
+independent review pending; nothing promoted.** It is the active front;
+Sec. 11 and L6b stay promoted as below.
 
 **Gate promoted — 2026-11-02:** by user instruction («haz lo que
 consideres, estás autorizado», after the two PASS reviews were reported
@@ -2330,3 +2335,20 @@ hypothesis `CONFIRMED_IN_DECLARED_ROWS` / `REFUTED_BY_ROW_<Id>` /
 `scripts/verify_dispersion_corrections_gate.py`, then independent
 cross-family review, then a separate promotion. No claim about our
 universe, no general QCA law, no novelty claim.
+
+Execution (2026-11-02): [report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
+verifier `scripts/verify_dispersion_corrections_gate.py` (SHA256
+`791f0d80d2790f34b72521c90622fa0056fd629fa1b3ef89addfc2ad664e6c2a`,
+79/79). Status `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`,
+PRELIMINARY, independent review pending. Findings: the lowest correction
+is a relative-order-`|k|` term `beta` exactly in the six rows whose walk
+group lacks inversion (L5a, L5b, L4 with `T_d`; L6a, L6b with `D_3`;
+L3s4), and `alpha` elsewhere; the harmonic content matches the walk's
+group in every row (the `D_6` rows L6c, L6d, L6f are isotropic through
+relative order `|k|^2`, first `cos 6 theta` at `|k|^4`). Hd
+`REFUTED_BY_ROW_L1` (`alpha_0 = 0`, exactly linear) and by L3s4 for
+`0 < a < a* = sqrt3 sqrt(17 - sqrt154)/9`; every other row has
+`alpha_0 < 0`. He `CONFIRMED_IN_DECLARED_ROWS` (L2, L6e `cos 4 theta`; L3
+`K4`; L5a, L5b, L4 `n1 n2 n3`). Hf `REFUTED_BY_ROW_L6e` (L2 and L6e
+identical; also L5a = L5b and L6d = L6f through `|k|^2`). Scale of
+validity OPEN in `d >= 2`; `V_grp^max` OPEN. No physical interpretation.

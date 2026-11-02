@@ -35,7 +35,9 @@
       "Bash(python3 scripts/verify_l6b_triangular_row_gate.py)",
       "Bash(python3 -B scripts/verify_l6b_triangular_row_gate.py)",
       "Bash(lake build)",
-      "Bash(lake exe cache get)"
+      "Bash(lake exe cache get)",
+      "Bash(python3 scripts/verify_dispersion_corrections_gate.py)",
+      "Bash(python3 -B scripts/verify_dispersion_corrections_gate.py)"
     ]
   }
 }
