@@ -2,6 +2,19 @@
 
 **Date:** 2026-11-02
 
+**Line abandoned — 2026-11-02:** by direct user instruction («abandona
+H1»), after the line review
+[`reports/2026-11-02--research-lines-known-question-abandonment.md`](../reports/2026-11-02--research-lines-known-question-abandonment.md)
+found that H1 has no open question serving the repo's goal (`c` across
+substrates) and that its abandonment result was already met (the L2 stop
+`B / OPEN_BLOCKED_METHOD`, a method obstruction). Line status:
+**H1 LINE_ABANDONED_BY_USER_DECISION.** Scientific status of H1 and H1c is
+unchanged: **OPEN** (unresolved), neither proved nor refuted. Every
+promoted H1-line result keeps its frozen scope (Schur physical bridge,
+small Gaussian profile, the Sec. 9 gate records); nothing is demoted. No
+H1 work may be resumed without a new charter and user authorization.
+Every "paused" wording about H1 below is superseded by this entry.
+
 **Gate promoted — 2026-11-02:** by direct user instruction («si,
 promuévelo», after the two PASS re-reviews were reported with
 `PROMOTION_PENDING`), `DISPERSION_CORRECTIONS_ACROSS_LATTICES` (Sec. 13,
@@ -150,7 +163,7 @@ not promote a scientific result, close a gate, or authorize a new calculation.
 | Spectral attribution | C2c PASS for the sixteen frozen pairs; C3 PASS for four encoders with M_B=I, limited to the conditioning correction | Section 10.1 |
 | Physical realization / absolute scale (4B) | September 25 execution records NO_ABSOLUTE_SCALE_DERIVABLE with PRELIMINARY / PARTIAL_EXTERNAL_REVIEW evidence and a scoped September 26 review; terminal closure by user decision on September 28, recorded 2026-09-30 (PR #12) | Section 8.21; [September 25 execution](../reports/2026-09-25--physical-realization-absolute-scale-gate.md); [September 28 report](../reports/2026-09-28--physical-realization-absolute-scale-gate.md) |
 | Engineered implementation (4A) | User authorization recorded, separate contract still missing | Section 8.21 addendum; no implementation opened here |
-| H1 / inhomogeneous extension | OPEN and paused; L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda |
+| H1 / inhomogeneous extension | OPEN; line ABANDONED by user decision 2026-11-02 (not refuted); L2 B / OPEN_BLOCKED_METHOD is a method limitation, not a refutation | Section 9.7, later repair and L2 addenda; abandonment entry at the top |
 | E0 / power stability / E–AdS | OPEN_AT_STOP / OPEN_AT_STOP / STOPPED_UNPROVEN | Existing Section 9 records; no reopening |
 | Independent-use discrimination cost | PRELIMINARY, independent review pending: fixed-detector Theta(delta_N^-2); uniform one-particle lower bound Omega(N^-4 exp(K_* N)) for independent uses in the same regions | [September 28 supplied report](../reports/2026-09-28--iid-message-discrimination-cost.md) |
 
@@ -1648,6 +1661,10 @@ of authorization is superseded by the record above.
 
 
 ## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)
+
+**Line abandoned 2026-11-02 by user decision** (entry at the top of this
+file). H1 stays scientifically OPEN; the records below are kept as they
+were, and their "paused" wording is historical.
 
 **Status (2026-10-31): H1 OPEN and paused; the Schur / physical-endpoint bridge
 has completed review and is promoted within its frozen B/F, fixed-W scope
