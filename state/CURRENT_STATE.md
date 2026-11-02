@@ -177,8 +177,13 @@ on `main` with the same frozen scopes. The later promotions of
 `L6B_TRIANGULAR_ROW` and `DISPERSION_CORRECTIONS_ACROSS_LATTICES`
 (2026-11-02) were made on the same branch and, by direct user instruction
 («FUSIONAMOS main»), integrated into `main` through PR #15 with the same
-frozen scopes. Repository integration does not by itself promote an
-evidence level.
+frozen scopes. The later 2026-11-02 records on the same branch (per-line
+known facts and abandonment results, the H1 abandonment by user decision,
+the PRELIMINARY answer on c across substrates, the s=4 family dropped as a
+novelty candidate, and the IR-corona and hexagonal-ceiling prior-art
+checks) were, by direct user instruction («fusiona con main»), integrated
+into `main` through PR #16 without any change of evidence level.
+Repository integration does not by itself promote an evidence level.
 
 ## Reading guide and synchronization — 2026-09-28
 
