@@ -2,6 +2,13 @@
 
 **Date:** 2026-11-02
 
+**Gate chartered — 2026-11-02:** `L6B_TRIANGULAR_ROW`
+([`theory/L6B_TRIANGULAR_ROW_GATE.md`](../theory/L6B_TRIANGULAR_ROW_GATE.md)),
+a revision of `C_ACROSS_LATTICES` restricted to row L6b, is frozen and
+authorized by direct user instruction («vamos con L6b»; «sí, apruébalo y
+empieza»). Status **OPEN**, not executed. Massless row only; it decides
+parent Hb/Hc only. The parent verifier is not modified.
+
 **Gate promoted — 2026-11-02:** by direct user instruction («si,
 promuévelo»), `HEX_CEILING` (Sec. 12) is promoted on
 `research/schur-stability-audit` in its frozen scope: L0
