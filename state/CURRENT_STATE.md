@@ -2,6 +2,18 @@
 
 **Date:** 2026-11-02
 
+**Novelty candidacy dropped — 2026-11-02:** by direct user instruction
+(«regístralo»), after the primary-source comparison
+[`reports/2026-11-02--s4-family-vs-arrighi-facchini.md`](../reports/2026-11-02--s4-family-vs-arrighi-facchini.md),
+the s=4 family (Sec. 4.1) is **not pursued as a novelty candidate**.
+Arrighi–Facchini is a structural antecedent (speed by compression of an
+involution, Eq. (27); operator splitting; continuum cone inside the
+lattice cone, Sec. V), not an identification; published hexagonal walks
+already realise `c_0 < c_strict^iso` (Sec. 11). The counterexample to
+strong `B_infty^*` in the declared s=4 class, its certificate and its
+review are unchanged. Next candidate under comparison: the IR-corona
+theorem of `papers/ir-corona/`.
+
 **Synthesis written — 2026-11-02:** by user instruction («redacta la
 respuesta»), [`reports/2026-11-02--c-across-substrates-answer.md`](../reports/2026-11-02--c-across-substrates-answer.md)
 collects the promoted answer to "how much is c on different substrates"
@@ -358,7 +370,7 @@ with equality only where separately certified (see the d=3 row below).
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
 | B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
 | B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN** |
-| Novelty of the s=4 family and its strict-support statement | **OPEN** — no equivalent found in eleven checked primary sources; not a novelty certificate |
+| Novelty of the s=4 family and its strict-support statement | **NOT PURSUED AS A NOVELTY CANDIDATE** (user decision 2026-11-02): no identification found (eleven sources 2026-09-15; Arrighi–Facchini compared 2026-11-02), but the compression mechanism and product structure are in AF (arXiv:1609.00305), and published walks (ADMP L6a, JDW L6c/d/f) already have `c_0 < c_strict^iso` (Sec. 11). Residual claim class-relative only. Mathematical result and review unchanged |
 
 The restricted statements are established for the declared cases below.
 There is no general rigidity theorem, proof of A, or novelty claim.
