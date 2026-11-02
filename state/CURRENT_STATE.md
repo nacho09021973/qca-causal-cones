@@ -378,7 +378,8 @@ There is no general rigidity theorem, proof of A, or novelty claim.
 ### 4.1 Declared s=4 counterexample class
 
 **Status: COUNTEREXAMPLE_VERIFIED for this class; independent review PASS;
-NOVELTY = OPEN.**
+NOVELTY: not pursued as a candidate (user decision 2026-11-02, see the
+Sec. 4 table).**
 
 | Item | Declaration |
 | --- | --- |
