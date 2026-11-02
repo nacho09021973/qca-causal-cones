@@ -2,24 +2,34 @@
 
 **Date:** 2026-11-02
 
-**Gate chartered — 2026-11-02:** `L6B_TRIANGULAR_ROW`
+**Gate promoted — 2026-11-02:** by user instruction («haz lo que
+consideres, estás autorizado», after the two PASS reviews were reported
+with `PROMOTION_PENDING`), `L6B_TRIANGULAR_ROW`
 ([`theory/L6B_TRIANGULAR_ROW_GATE.md`](../theory/L6B_TRIANGULAR_ROW_GATE.md)),
-a revision of `C_ACROSS_LATTICES` restricted to row L6b, is frozen and
-authorized by direct user instruction («vamos con L6b»; «sí, apruébalo y
-empieza»). Massless row only; it decides parent Hb/Hc only. The parent
+a revision of `C_ACROSS_LATTICES` restricted to row L6b, is promoted on
+`research/schur-stability-audit` in its frozen scope: row L6b
+`L6B_PARTIAL_VGRP_OPEN` with `s = 6`, `r_in = sqrt3/2`, `c_0 = 1/3`,
+`c_strict^iso = 1/sqrt3`; parent Hb `REFUTED_BY_ROW_L6b` (first declared
+row where `c_strict^iso < r_in`), Hc `CONFIRMED_IN_DECLARED_ROWS`, Ha
+unchanged. Evidence: two houses, Gemini and Grok, PASS on all six blocks,
+no repairs; Grok did not rerun the verifier. Not human review. One row
+of a declared list, no general QCA law, no novelty; ADMP massive row and
+`V_grp^max` stay OPEN. Chartered the same day by direct user instruction
+(«vamos con L6b»; «sí, apruébalo y empieza»). Massless row only; it
+decides parent Hb/Hc only. The parent
 verifier is not modified. **Executed 2026-11-02**
 ([report](../reports/2026-11-02--l6b-triangular-row.md), verifier 64/64):
 `L6B_PARTIAL_VGRP_OPEN`. The text fixes the labelling (6 admissible, all
 equivalent); `s = 6`, not the parent's `s = 2`; `r_in = sqrt3/2`,
 `c_0 = 1/3`, `c_strict^iso = 1/sqrt3` (normalised), identical for both
 colourings and both coin readings; source coefficient `sqrt3/6` and the
-three-update equivalence with L6a (up to a 60° rotation) reproduced. If
-promoted: parent Hb `REFUTED_BY_ROW_L6b`, Hc `CONFIRMED_IN_DECLARED_ROWS`,
-Ha unchanged. [Reviews](../reports/2026-11-02--l6b-triangular-row-review.md)
+three-update equivalence with L6a (up to a 60° rotation) reproduced. Promoted
+as stated above: parent Hb `REFUTED_BY_ROW_L6b`, Hc
+`CONFIRMED_IN_DECLARED_ROWS`, Ha unchanged. [Reviews](../reports/2026-11-02--l6b-triangular-row-review.md)
 2026-11-02: Gemini (gemini-4-argon) PASS on all six blocks, Grok
 (grok-4.7) PASS on all six blocks, identical input without Fig. 1, no
-mandatory repairs. **PRELIMINARY, INDEPENDENT_REVIEW_PASS_TWO_HOUSES,
-PROMOTION_PENDING (user decision); nothing promoted.**
+mandatory repairs. Previous status: PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING.
 
 **Gate promoted — 2026-11-02:** by direct user instruction («si,
 promuévelo»), `HEX_CEILING` (Sec. 12) is promoted on
@@ -2221,8 +2231,14 @@ status: PRELIMINARY, PROMOTION_PENDING. In the declared rows: square,
 BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
 has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
 L6d on the identical substrate; `C_infty^strict = C_micro` in every
-computed row. Ha `REFUTED_BY_ROW_L6a`; Hb, Hc hold in every decided row
-and stay OPEN only because L6b is undecided.
+computed row. Ha `REFUTED_BY_ROW_L6a`. **Row L6b decided and promoted 2026-11-02**
+([`L6B_TRIANGULAR_ROW`](../theory/L6B_TRIANGULAR_ROW_GATE.md),
+[report](../reports/2026-11-02--l6b-triangular-row.md),
+[reviews](../reports/2026-11-02--l6b-triangular-row-review.md)): `s = 6`,
+`r_in = sqrt3/2`, `c_0 = 1/3`, `c_strict^iso = 1/sqrt3`, so Hb
+`REFUTED_BY_ROW_L6b` and Hc `CONFIRMED_IN_DECLARED_ROWS`. The table
+status name `..._L6B_UNENCODED_...` above is historical: L6b is now
+encoded in its own gate, the parent verifier unchanged.
 At finite mass, `c_H = c_0 theta/sin theta` where isotropic and no
 computed new row has an isotropic `c_omega2` (anisotropy `O(sin theta)`).
 Two ADMP sign issues are recorded. Not promoted; no general law.
