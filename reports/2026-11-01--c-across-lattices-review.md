@@ -93,3 +93,18 @@ Consequence: Grok's three mandatory repairs were applied by the author
 and checked by Gemini, not by Grok. The repaired snapshot has one bounded
 cross-family re-review PASS (Gemini) on top of the first-round Gemini PASS;
 Grok's acceptance of its own repairs is not on record.
+
+## Grok re-review of the repaired snapshot (2026-11-02)
+
+After the Grok account balance was restored, Grok reviewed the repaired
+snapshot `8d0276e` with the same bounded request as on 2026-11-01, blind
+to the Gemini re-review (it received this record as it stood at
+`8d0276e`). Raw files in
+`debates/2026-11-02--c-across-lattices-rereview-grok/`; `grok-4.7`,
+08:02:29–08:12:10 UTC, exit 0; review SHA256 `a57b20bcb31c32e5cccb8d8b983cab8073b576992a5951468d3a1471794caaf8`. Before sending, the
+report and verifier were checked byte-identical to `8d0276e`.
+
+**Verdict: PASS on R1–R5, no mandatory repairs.** Grok's acceptance of its
+own three repairs is now on record. One non-blocking observation: the
+report's Sec. 9 still names the verifier at `cae6e30`, which the header
+identifies as the pre-repair version.

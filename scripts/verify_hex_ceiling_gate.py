@@ -80,8 +80,10 @@ def check_T1_algebra():
     jac = sp.Matrix([[sp.diff(e, x) for x in (g12, g13, g23)] for e in eqs]).applyfunc(sp.simplify)
     const = [sp.simplify(e.subs({g12: 0, g13: 0, g23: 0})) for e in eqs]
     record("T1: traceless part is linear homogeneous in (g12, g13, g23)", all(c == 0 for c in const))
-    record("T1: its 2x3 coefficient matrix has rank 2 for every theta0",
-           sp.simplify(jac[:, :2].det()) != 0 or sp.simplify(jac[:, 1:].det()) != 0)
+    minor = sp.simplify(sp.expand_trig(jac[:, :2].det()))
+    record("T1: a 2x2 minor of the coefficient matrix equals the theta0-free constant "
+           "sqrt3 l^4/2, so the rank is 2 for every theta0 (repair R2, Grok 2026-11-02)",
+           sp.simplify(minor - R3 * ell ** 4 / 2) == 0, f"minor = {minor}")
     null = jac * sp.Matrix([1, 1, 1])
     record("T1: null space is spanned by (1,1,1): isotropy iff g12 = g13 = g23",
            all(sp.simplify(e) == 0 for e in null))

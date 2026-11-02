@@ -2114,8 +2114,9 @@ verifier `scripts/verify_c_across_lattices_gate.py` (reviewed at
 REPAIR_REQUIRED (three repairs, applied), Gemini PASS. Status:
 **TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PROMOTED IN THE
 DECLARED ROWS (2026-11-01, user instruction «1»).** Repaired; bounded
-re-review Gemini PASS (R1–R5); Grok ausente (402, balance exhausted), so
-Grok's acceptance of its own three repairs is not on record. Previous
+re-review Gemini PASS (R1–R5); Grok, ausente on 2026-11-01 (402), reviewed
+the repaired snapshot on 2026-11-02: PASS on R1–R5, no mandatory repairs.
+Grok's acceptance of its own three repairs is now on record. Previous
 status: PRELIMINARY, PROMOTION_PENDING. In the declared rows: square,
 BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
 has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
@@ -2159,9 +2160,11 @@ polynomial system has no real solution; square-substrate positive
 control passes); verifier 24/24. T2 in general
 `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` (19-point ball: Groebner over C did
 not finish in 900 s; inconclusive, recorded as exploratory). Execution
-stopped. [Review](../reports/2026-11-02--hex-ceiling-review.md): Gemini
-gemini-4-argon PASS on all five blocks, no mandatory repairs (one house;
-Grok unavailable). PRELIMINARY, PROMOTION_PENDING (user decision).
+stopped. [Reviews](../reports/2026-11-02--hex-ceiling-review.md): Gemini
+PASS on all five blocks; Grok REPAIR_REQUIRED (R1: Bernstein used without
+in-repo proof; R2: weak rank predicate), both repaired 2026-11-02 (Lemma B
+in the report; exact minor in the verifier, 24/24). Bounded re-review
+pending. PRELIMINARY, not promoted.
 
 Charter: class `W_hex`: translation-
 invariant `s = 2` walks on the triangular lattice, one update a product
