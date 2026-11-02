@@ -182,7 +182,9 @@ known facts and abandonment results, the H1 abandonment by user decision,
 the PRELIMINARY answer on c across substrates, the s=4 family dropped as a
 novelty candidate, and the IR-corona and hexagonal-ceiling prior-art
 checks) were, by direct user instruction («fusiona con main»), integrated
-into `main` through PR #16 without any change of evidence level.
+into `main` through PR #16 without any change of evidence level. The
+next-session work plan (`reports/2026-11-02--work-plan-next-session.md`,
+planning only) followed through PR #17 («fusiona con main»).
 Repository integration does not by itself promote an evidence level.
 
 ## Reading guide and synchronization — 2026-09-28
