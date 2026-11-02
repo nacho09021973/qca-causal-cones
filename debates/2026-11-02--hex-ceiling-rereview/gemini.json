@@ -1,0 +1,36 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "### Dictamen por punto\n\n**R1. Lema B y cierre de L0: PASS**\nLa prueba de la desigualdad de Bernstein escalar en el Lema B es completa y rigurosa:\n- **Reducción al caso real:** Al elegir $\\alpha$ tal que $e^{i\\alpha} p'(s_0) = |p'(s_0)|$, la función $R(s) = \\operatorname{Re}(e^{i\\alpha} p(s)) = \\frac{1}{2}(e^{i\\alpha} p(s) + e^{-i\\alpha} \\overline{p(s)})$ es un polinomio trigonométrico real de grado $\\le N$, acotado por $|R(s)| \\le |p(s)| \\le 1$, y cumple $R'(s_0) = |p'(s_0)|$.\n- **Perturbación y elección de fase:** Si $R'(s_0) \u003e N$, para $\\varepsilon \\in (0,1)$ suficientemente pequeño, $R_\\varepsilon = (1-\\varepsilon)R$ mantiene $R_\\varepsilon'(s_0) \u003e N$ y garantiza $|R_\\varepsilon(s)| \\le 1-\\varepsilon \u003c 1$ en todo $\\mathbb{R}$. Esto permite elegir de forma única $\\beta \\in (-\\pi, 0)$ tal que $\\cos\\beta = R_\\varepsilon(s_0)$, con $\\sin\\beta \u003c 0$.\n- **Comparación y recuento de ceros:** Para $C(s) = \\cos(N(s-s_0)+\\beta)$, se tiene $C(s_0) = R_\\varepsilon(s_0)$ y $C'(s_0) = -N\\sin\\beta \\in (0, N]$. Por tanto, la diferencia $D = C - R_\\varepsilon$ verifica $D(s_0) = 0$ y $D'(s_0) = C'(s_0) - R_\\varepsilon'(s_0) \u003c 0$. En un periodo $[0, 2\\pi)$ (para $N \\ge 1$; el caso $N=0$ es trivial pues $R'=0$), $C(s)$ alcanza los valores extremos $\\pm 1$ alternadamente en $2N$ puntos $t_1 \u003c t_2 \u003c \\dots \u003c t_{2N}$. Como $|R_\\varepsilon(t_j)| \u003c 1$, el signo de $D(t_j)$ coincide con el de $C(t_j)$ y alterna entre puntos consecutivos. Esto garantiza al menos un cero en cada uno de los $2N$ arcos abiertos $(t_j, t_{j+1})$ (con $t_{2N+1} = t_1 + 2\\pi$). Como $D(s_0) = 0 \\ne D(t_j)$ y $C'(s_0) \u003e 0$, $s_0$ pertenece al interior de un arco $(t_j, t_{j+1})$ donde $C$ es estrictamente creciente, es decir, $C(t_j) = -1$ y $C(t_{j+1}) = +1$, luego $D(t_j) \u003c 0 \u003c D(t_{j+1})$. Dado que $D(s_0) = 0$ y $D'(s_0) \u003c 0$, se tiene $D(s) \u003e 0$ inmediatamente a la izquierda de $s_0$ y $D(s) \u003c 0$ inmediatamente a su derecha; por el teorema del valor intermedio, existen al menos un cero en $(t_j, s_0)$ y otro en $(s_0, t_{j+1})$, sumando al menos tres ceros distintos en dicho arco y al menos $2N+2$ ceros simples/distintos en el periodo.\n- **Contradicción algebraica y simetría:** En la variable $z = e^{is}$ sobre el círculo unidad, $e^{iNs} D(s)$ es un polinomio algebraico no nulo de grado $\\le 2N$, que puede tener a lo sumo $2N$ raíces en $|z|=1$. La contradicción prueba $R'(s_0) \\le N$, y aplicar el resultado a $R(-s)$ da $R'(s_0) \\ge -N$.\n- **Cumplimiento del contrato:** Esto cierra formalmente L0 como `PROVED_IN_REPO` en estricto cumplimiento de la Sección 2 de `HEX_CEILING_GATE.md`.\n\n**R2. Certificación del rango en T1: PASS**\nEn `verify_hex_ceiling_gate.py`, el cálculo del menor $2\\times 2$ de las dos primeras columnas de la matriz jacobiana `jac` (`minor = sp.simplify(sp.expand_trig(jac[:, :2].det()))`) se compara simbólicamente contra $\\frac{\\sqrt{3}}{2}\\ell^4$ mediante `sp.simplify(minor - R3 * ell ** 4 / 2) == 0`. Al ser $\\ell \u003e 0$, esta constante es estrictamente distinta de cero e independiente del ángulo de orientación $\\theta_0$. Esto certifica de manera exacta que la matriz de coeficientes $2\\times 3$ tiene rango 2 para todo $\\theta_0$, por lo que su núcleo es de dimensión 1 (generado por $(1,1,1)$). El texto del informe refleja fielmente este hecho.\n\n**R3. Aclaraciones incorporadas: PASS**\nLas cuatro aclaraciones se han integrado con precisión matemática:\n1. **Hermiticidad de $A(n_f)$ en L0:** Se demuestra diferenciando $U(t)U(t)^\\dagger = I$ en $t=0$ con $U(0)=I$, lo que implica que $\\frac{dU}{dt}(0)$ es antihermítica y $A(n_f) = i\\frac{dU}{dt}(0)$ es hermítica. Esto justifica rigurosamente que $A(n_f)^2 = c_0^2 I$ implique espectro $\\{\\pm c_0\\}$ y norma de operador $\\|A(n_f)\\| = c_0$.\n2. **Principio del módulo máximo en T2:** Se explicita que $P(z) = z^N p(s)$ (con $z=e^{is}$) es un polinomio analítico que cumple $|P(z)| = |p(s)| \\le 1$ en la circunferencia unidad $|z|=1$, de donde se sigue $|P(z)| \\le 1$ en todo el disco cerrado $|z|\\le 1$ por el principio del módulo máximo antes de invocar el lema de Julia.\n3. **El hexágono fija el denominador $2\\ell$:** Se aclara en T1 que la condición de soporte hexagonal obliga a que los seis vértices $\\pm 2a_j$ estén en $F$, fijando el paso más largo en $2\\ell$ (el denominador de normalización de $c_0$), sin restringir el supremo ya que $g = -1/2$ realiza los seis vértices.\n4. **$\\xi$ como componente de Bloch:** Se corrige la redacción indicando que los ejes de ADMP comparten la componente $z$ de Bloch $\\xi = \\sqrt{5}/3$ (en lugar de describir $\\xi$ como un ángulo de inclinación), lo que eleva el solapamiento a $g = 1/3$.\n\n**R4. Regresiones y alcance: PASS**\nEl diff es limpio y acotado a las reparaciones solicitadas. No introduce errores algebraicos ni afirmaciones que excedan el alcance del contrato congelado `HEX_CEILING_GATE.md`. (Como observación menor no bloqueante, el comentario en la docstring inicial de `verify_hex_ceiling_gate.py` aún menciona que Bernstein es *prior art* aplicado en el informe, lo cual sigue siendo cierto aunque ahora además esté demostrado en el Lema B del informe).\n\n---\n\n### Dictamen global\n\n**PASS**. No hay reparaciones obligatorias pendientes.",
+            "thoughtSignature": "ElkKVwFpFH0T4FR3UPYIRd8Lj4epkPxvG4tMh4lyL8udHCCb/GKEczo+8poqUPuTSqxJGsvuCwHpw8Jv11jlM2D+TACeUxFQ86Y/q1WQHJiglxlBUU9qNG4Beg=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 32621,
+    "candidatesTokenCount": 1791,
+    "totalTokenCount": 34412,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 32621
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1791
+      }
+    ]
+  },
+  "modelVersion": "gemini-4-argon",
+  "responseId": "80zoaqq6NPyekdUPpqHYmQo"
+}

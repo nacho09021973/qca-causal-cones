@@ -176,12 +176,31 @@ Epistemic (from `~/herramientas/REGLAS.md`):
   if the symlink goes missing) — adversarial debate across model families. Use
   for "is this true?" before promoting or publishing. It sees only what is
   attached with `-c`. Output to `debates/`. See `~/sanedrin/README.md`.
-  Check the census first: `sanedrin --listar`. As of 2026-09-26 `opus`, `astra`
-  and `ciro` (Grok, logged in via the `grok` CLI) are `ok`; `gemini` is `ausente`
-  for lack of `GEMINI_API_KEY`; and `abner` (DeepSeek) reports `ok` only because
-  the key is *defined* — the value in `~/.config/sanedrin/env` is still the
-  `sk-PON…` placeholder, so it does not authenticate. Read a first `ausente` for
-  `ciro` with suspicion: the check is `timeout 15 grok models`, and a cold
-  `grok` can exceed it; rerun before recording the house as unavailable. Record a
-  genuine failure rather than substituting a same-family review.
+  **`sanedrin --listar` checks logins and credential presence; no check of it
+  proves a house can generate.** Probe the generating endpoint before relying on
+  one: `claude -p --model`, `codex exec -m`, `grok --model … -p`, or Gemini's
+  `:generateContent`. Four false readings were verified on 2026-09-26 —
+  `abner` `ok` on a placeholder key (its check is `-n "$DEEPSEEK_API_KEY"` plus
+  DNS); `astra` `ok` while the ChatGPT account was over its usage limit (that
+  check self-labels "cuota no verificada"); `gemini` `ok` while every *pro*
+  model returned `limit: 0` (its check is an authenticated metadata `GET`, which
+  passes regardless); and `ciro` `ausente` because a cold `timeout 15 grok
+  models` overran, so rerun a single `ausente` before believing it.
+
+  Generation verified on 2026-09-26: `opus` (`claude-opus-5`, and
+  `claude-sonnet-5` / `claude-haiku-4-5-20251001` below it; `claude-fable-5`
+  needs credits), `ciro` (`grok-4.7` / `4.6` / `4.5`) and `gemini`
+  (`gemini-3.8-flash`; the seat is pinned there because the *pro* family has no
+  free-tier quota, so it is weaker than the pro the design assumes — name the
+  real model in any report it feeds). `astra` could **not** generate: every
+  model its account admits — `gpt-6-astra`, `gpt-5.6-terra`, `gpt-5.6-sol`,
+  `gpt-5.6-luna` — returned the same account-level usage limit, and
+  `gpt-6-pro` / `gpt-6` / `gpt-5.4-mini` are refused outright. So three houses,
+  not four, which still satisfies the cross-family requirement.
+
+  When a house fails, descend that provider's own ladder rather than dropping
+  the seat — but only for a *per-model* failure (400/404, or a `limit: 0` on
+  that model). An *account-level* failure is identical across the family, so
+  descending wastes calls: mark the house `ausente`. Record whatever actually
+  answered; never downgrade a seat silently.
 - Neither authorizes anything; the user decides.

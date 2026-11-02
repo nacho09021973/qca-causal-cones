@@ -1,5 +1,22 @@
 # Scripts
 
+## Small fixed Gaussian profile algebra (2026-10-31)
+
+`verify_small_gaussian_profile_algebra.py` accompanies the preregistered
+[small Gaussian gate](../theory/H1_SMALL_GAUSSIAN_PROFILE_GATE.md) and its
+[execution](../reports/2026-10-31--h1-small-gaussian-profile.md). It runs
+21 exact SymPy 1.14.0 checks: Gaussian Fourier moments, resource L1
+normalization, channel parity, one abstract noncommuting three-step
+quadratic expansion with the single-coin contribution, positive Hessian
+factorization, geometric moments and power bookkeeping. This is not a
+lattice simulation or finite-N signal scan. The analytic kernel estimate,
+general-N remainder and signal survival remain report proofs pending review;
+the checks do not certify them. The corrected contract is pinned by SHA256.
+
+```sh
+/home/adnac/venvs/torch-gpu/bin/python -B scripts/verify_small_gaussian_profile_algebra.py
+```
+
 No scientific script was present at the initial freeze (`44ad178`).
 
 ## IR projection leakage algebra (2026-09-22)
@@ -240,3 +257,80 @@ The optional check imports the existing exact blocks and evolves the compact
 perturbation in a nonperiodic box. No frozen verifier is modified.
 See the [audit and reproduction commands](../reports/2026-09-22--ir-spectral-attribution-audit.md).
 These are empirical finite-N diagnostics, not certificates or asymptotic gates.
+
+## c across lattices gate (2026-11-01)
+
+Repaired after the 2026-11-01 reviews: every tabulated value (step sets,
+group indices, `r_in`, `c_0`, vertex counts, Gram matrices, `K`) is now
+asserted by an exact `record`; 135/135 checks. A negative test that
+alters one expected value in memory makes it exit 1. The Part 3 comment
+now states the Duhamel identity with its unitary factor.
+
+`verify_c_across_lattices_gate.py` certifies the
+[`C_ACROSS_LATTICES`](../theory/C_ACROSS_LATTICES_GATE.md) contract,
+preregistered at `30672ba`. Run from the repository root; fail-closed.
+
+Part 1 (22 exact checks): for rows L5a, L5b, L6a, L6c–L6f it builds the
+exact Bloch symbol of one complete update from the source equations,
+checks unitarity on the unit torus, checks the source identities it uses
+(ADMP Eq. (5) C1–C2, JDW printed inverses, the Mlodinow–Brun Clifford
+relations for the chosen representation) and prints the composite step set
+F with its lattice index. Two ADMP sign issues are certified as recorded
+issues (Eq. (8) holds for `alpha=-arccos(sqrt5/3)`; the printed `S` orders
+the `tau_i` backwards, `S^{-1}` restores Eq. (7) = Eq. (10)). Row L6b is
+reported as not encoded, with its reason.
+
+Part 2 (46 further checks, 68 total): massless node at `k=0` for L1, L2
+(from the reviewed `published_symbol`/`fourier_support`, imported
+read-only) and the seven new rows: `U(0)=I`, Hermitian linear generators,
+no tilt, isotropic cone `{T_a,T_b}=2c_0^2 delta_ab`, exact `C_micro` facets
+and vertices, `r_in`, `c_0`, and non-nilpotency of every vertex coefficient
+(hence `C_infty^strict = C_micro`, `c_strict^iso = r_in`). Prints Ha/Hb/Hc
+per row and asserts Hc where decided.
+
+Part 3 (35 further checks, 103 total): massive rows L5b, L6c–L6f with
+mass parameter `theta` (quasienergy gap at `k=0`). Uses the exact identity
+`i dU U(0)^dag = X_par + (sin theta/theta) X_perp` for `U(0)=exp(-i theta Q)`
+to obtain the linear term of `H = i log U` without a matrix-log series, and
+`G=(U+U^dag)/2` for the `omega^2` curvature. It certifies, per row, the
+scalar Gram matrix of the linear term (`c_H(n)`), and the exact
+decomposition `Hess cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K`
+with `theta`-independent `K`; isotropy is printed, not assumed. Positive
+control: reproduces the reviewed 1D Dirac block (`c_H = c_0 M cot M`,
+`K=0`). ADMP's mass (inside `W`) is not encoded (OPEN).
+
+What it does **not** certify: the step-set identifications are printed,
+not asserted, except for L5a/L5b (`{±1}^3`); `V_grp^max` is not computed;
+the ADMP massive row is not computed; signs of nonzero radicals use SymPy's exact
+relational evaluation; the
+reading of the source conventions (phase, product order, read-from-
+neighbour routing) is a declared choice documented in the script header,
+not a theorem. Not independently reviewed.
+
+## Hexagonal ceiling gate (2026-11-01, in progress)
+
+`verify_hex_ceiling_gate.py` certifies part of
+[`HEX_CEILING`](../theory/HEX_CEILING_GATE.md), preregistered at `8c56ced`.
+18 exact checks: the lattice-grid step of L0 (facet-normal frequencies on
+a uniform grid), the T1 algebra symbolic in the pairwise overlaps
+(isotropy iff equal overlaps, `c_0^2 = (3/2) l^2 (1-g)`, PSD iff
+`g >= -1/2`, hence `c_0/r_in <= sqrt3/2`), an exactly certified walk
+attaining `sqrt3/2`, and the ADMP overlaps `g = 1/3` reproducing
+`c_0 = 1/2`. Reuses read-only helpers of `verify_c_across_lattices_gate.py`.
+
+T2 minimal support (6 further checks, 24 total): layer structure along
+the three facet normals, the layer equations forcing `A_0 = -I/2`, and a
+lex Gröbner basis of the unitarity system containing a real quadratic of
+discriminant `-1/12` (no real solution); positive control on the square
+substrate (consistent system, solved by the known saturating walk).
+
+Does **not** certify: the Bernstein step of L0 and the Bernstein-equality /
+Julia step of T2 (prior art, applied in the report), the normal-form
+reduction, the reduction of a general `n = 3` antipodal walk to product
+form, or T2 beyond minimal support. Not independently reviewed.
+
+`explore_hex_saturation_support.py` is **exploratory, not a certificate**:
+it builds the same saturation system for a given support and runs a
+grevlex Gröbner basis over `C`. Its docstring records the runs (minimal:
+consistent over `C`, 0.5 s; 19-point ball: not finished in 900 s). It
+supports no verdict.

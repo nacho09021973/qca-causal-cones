@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "FAILED",
+  "exit_code": 1,
+  "finish_reason": "cli_exit_1",
+  "requested_model": "grok-4.7",
+  "input_sha256": "28f6c9ded4da3a99f308e5c6f5ad7dc48652196bf54b9a40f11235b647f09a27",
+  "started": "2026-11-01T22:32:55Z",
+  "finished": "2026-11-01T22:33:05Z",
+  "tool_commit": "ce09890a0d5f68a6634f358eff2e477ac5f15ec7",
+  "script_sha256": "0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0",
+  "library_sha256": "af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c"
+}

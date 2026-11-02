@@ -2,12 +2,16 @@
 
 Fecha: 2026-09-24. Base: 7f68fa7554c927c23c12c69591d49915b53ee5ab.
 Autor: Codex (OpenAI).
-Estado: **PROOF_WRITTEN / INDEPENDENT_REVIEW_PENDING**.
+Estado: **INDEPENDENT_REVIEW_COMPLETED / CLARIFICATIONS_APPLIED_NOT_REREVIEWED**.
 
-Los dos intentos externos terminaron sin dictamen. Véase el
+Los primeros dos intentos externos terminaron sin dictamen. Véase el
 [registro de ejecución](2026-09-25--schur-physical-bridge-review-status.md).
-Las conclusiones siguientes siguen siendo una derivación del autor pendiente
-de revisión independiente; no se registra PASS.
+Gemini revisó el expediente congelado el 2026-10-31: cuatro bloques PASS y
+SIGNED_REDUCTION REPAIR_REQUIRED. La objeción y su disposición, incluida
+una desigualdad incorrecta del revisor, quedan registradas en la
+[nota de revisión](2026-10-31--schur-physical-bridge-review-disposition.md).
+Se explicita abajo la absorción geométrica solicitada; esta versión aclarada
+no ha sido revisada de nuevo. No se registra un PASS global ni promoción de H1.
 
 La instrucción es reparar el cuello de botella y continuar; la precisión
 posterior del usuario exige comprobar, línea por línea, que los extremos
@@ -256,7 +260,14 @@ De (6),(9),(14), ya bajo B,
 \|E^{1/2}d_{c,Q}\|=O_W(N^{-5}e^{-K_*N}).
 \tag{15}
 \]
-Se ha absorbido \(\rho_2^N\) en \(O(N^{-1})\).
+Se ha absorbido \(\rho_2^N\) en \(O_W(N^{-1})\). Explícitamente, para
+cualquier \(0<r<1\) fijo,
+\[
+\sup_{N\ge2}Nr^N\le\sup_{x\ge0}xe^{-x|\log r|}
+=\frac1{e|\log r|}<\infty.
+\]
+Se aplica con \(r=\rho_2(W,\vartheta)\); las constantes y el umbral
+pueden depender de W y del perfil fijo. No se afirma uniformidad al variar W.
 La cota \(\|r_c\|\le1\) da bajo B
 \(|A_{cP}|=O_W(N^{-4}e^{-K_*N})\),
 \(|A_{cQ}|=O_W(N^{-5}e^{-K_*N})\).
@@ -371,8 +382,25 @@ R, P y Q son diagonales en canal, y s empieza en +.
 De (18), el componente minus de \(Pt_N\) es \(O_W(N^{-4})\).
 De (6), todo \(Qt_N\) es \(O_W(N^{-4})\).
 El Q libre terminal es exponencialmente pequeño por (4).
-Emparejando con el extremo actual (13), con
-\(f_0=(U_M-I)\phi_N\), se obtiene
+En concreto, bajo F, (4),(9),(13) dan
+\[
+\left|2e^{-K_*N}\Re\langle v_+,R_Q^NQs\rangle\right|
+\le C_{W,\vartheta}N^{-6}\rho(W)^N e^{-K_*N}
+=O_{W,\vartheta}(N^{-7}e^{-K_*N}),
+\]
+por la cota explícita anterior, ahora con \(r=\rho(W)\). Con
+\(f_0=(U_M-I)\phi_N\), la identidad
+de reconstrucción libre de T1 implica
+\[
+2\Re\langle r_+,ES^N f_0\rangle
+=2e^{-K_*N}\Re\langle v_+,R_P^NPs\rangle
+ +2e^{-K_*N}\Re\langle v_+,R_Q^NQs\rangle.
+\]
+Así se reemplaza el término libre proyectado por el libre completo,
+conservando la referencia física actual \(r_+\). El término completo no
+depende de W; su comparación con la pieza P sí tiene constantes dependientes
+de W y del perfil. Esto no permite tomar \(W=W_N\).
+Emparejando con el extremo actual (13), se obtiene
 \[
 \begin{aligned}
 A_{+P}

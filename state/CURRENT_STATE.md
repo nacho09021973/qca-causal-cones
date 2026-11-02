@@ -1,6 +1,85 @@
 # CURRENT_STATE
 
+**Date:** 2026-11-02
+
+**Gate promoted — 2026-11-02:** by direct user instruction («si,
+promuévelo»), `HEX_CEILING` (Sec. 12) is promoted on
+`research/schur-stability-audit` in its frozen scope: L0
+`PROVED_IN_REPO` (`c_0 <= r_in` on `W_hex`, Bernstein proved in-repo);
+T1 `GAP_PROVED_IN_CLASS` (`sup c_0/r_in = sqrt3/2` in the `n = 3`
+antipodal subclass, attained at coplanar 120° coin axes); T2
+`PROVED_FOR_MINIMAL_SUPPORT` (no s=2 walk with `F within {0} U vert(H)`
+reaches the ceiling) and `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` in general.
+Evidence: two houses — Gemini PASS (first round and re-review), Grok
+REPAIR_REQUIRED then PASS on the repairs. Not human review. No general
+QCA law, no claim for `s > 2` or other lattices, no novelty. HX2 in
+general stays OPEN; no front is chartered beyond this.
+
+**Gate promoted — 2026-11-01:** by direct user instruction («1»: promote
+now rather than wait for Grok), `C_ACROSS_LATTICES` (Sec. 11) is promoted
+on `research/schur-stability-audit` as
+**TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PROMOTED IN THE
+DECLARED ROWS**. Evidence: Gemini PASS (first round and bounded
+re-review of the repaired snapshot); Grok PASS on the five physics blocks
+and REPAIR_REQUIRED on scope/code, repairs applied but Grok's acceptance
+of them **not on record** (Grok ausente, 402). Not human review. No
+general QCA law, rigidity or novelty is promoted. It remains the active
+front; the H1 line stays paused.
+
+**Current update — 2026-11-01:** by direct user instruction («promocionada
+9.8»), the small fixed Gaussian profile result of Sec. 9.8 is promoted on
+`research/schur-stability-audit` to
+**SMALL_GAUSSIAN_PROFILE_SURVIVAL_PROVED_UNDER_FROZEN_CONTRACT**. Scope:
+`vartheta(X)=epsilon exp(-|X|^2)`, encoder sigma_2, detector I, fixed W,
+the current two-channel functional; conditional on the promoted Schur bridge
+and the frozen flat sigma_2/I theorem. Evidence: two blind cross-family
+agent reviews (Claude Opus 5.5, Grok grok-4.7) PASS on identical input, no
+mandatory repairs; verifier counts reproduced. Not human review. No general
+H1/H1c, other profile/pair, E0, POWER_13/2_STABILITY, E/AdS or novelty
+result is promoted. `Q_N != 0`, the full nonzero-epsilon coefficient and
+effective `epsilon_0, N_0` remain OPEN and are **not chartered**. The H1
+line stays paused: on 2026-11-01 the user redirected the project to
+comparing `c` across QCA lattices and neighbourhoods (draft charter
+pending, not authorized).
+
+**Earlier update — 2026-10-31:** by direct user instruction («1 y despues 3»),
+the Schur physical bridge of Sec. 9.7 is promoted on
+`research/schur-stability-audit` to **SCHUR_PHYSICAL_BRIDGE_PASS_UNDER_B_F_FIXED_W**.
+The completed cross-family review and bounded clarification re-review leave
+no mandatory repairs for the reviewed snapshot. This supersedes pending-review
+language and the older endpoint obstruction only within that bridge's F and
+fixed-W scope; B alone retains its weaker conclusions. No signed nonzero
+leader, general H1/H1c or E/AdS result is promoted. H1 remains OPEN and paused
+at this consolidation step. The separately selected small-profile next step
+requires its own preregistered contract before execution. The long status
+summary below retains historical gate descriptions; where it conflicts with
+this update, this update and the revised Sec. 9.7 prevail.
+
+**Small-profile execution — 2026-10-31:** the selected next step has now
+been preregistered and executed in Sec. 9.8. Status:
+`SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS_TWO_HOUSES /
+PROMOTION_PENDING`, superseded on 2026-11-01 by the promotion above.
+Claude Opus 5.5 (2026-10-31) and, blind to it, Grok grok-4.7 (2026-11-01)
+reviewed the exact candidate on identical input and each returned PASS on
+all six blocks, no mandatory repairs. Only that
+one-profile/one-pair subproblem is reopened;
+the broad H1/H1c localization program stays paused. No H1 PASS is promoted.
+**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; flat absolute-scale gate 4B CLOSED as `NO_ABSOLUTE_SCALE_DERIVABLE` (Sec. 8.21, within that frozen class); **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification for H1 OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. L2 stop gate: `B / OPEN_BLOCKED_METHOD` (PRELIMINARY decision audit; partial external review + source bounds reproduced by Claude; B structural to norm-based method, not evidence against H1; H1 OPEN and paused). The present physical stay-remainder bounds do not reach `o(N^-13/2 e^{-K_*N})` without the still-open H1c localization machinery; this is a method obstruction, not an H1 refutation. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
+
+**Branch-local state.** Earlier reconciliation was on
+`research/b-infinity-post-s4-gate`; those records reached `main` through
+PR #10. The promotions dated 2026-10-31 to 2026-11-02 above were made on
+`research/schur-stability-audit`. On 2026-11-02 `main` (`0ee2564`, PRs #11
+and #12) was merged into that branch to resolve the conflict in PR #13; the
+2026-09-28 checkpoint and the 4B closure below come from that merge. The
+branch promotions reach `main` only if PR #13 is merged, by separate user
+decision. Repository integration does not by itself promote an evidence
+level.
+
 ## Reading guide and synchronization — 2026-09-28
+
+*Checkpoint imported from `main`. Where it conflicts with the 2026-10-31 to
+2026-11-02 updates above, those updates prevail.*
 
 This is a documentation-only checkpoint requested by the user before further
 research. Its remote baseline is `main@0ad333fb645200a409733642cfccc7dd2fec8f48`.
@@ -37,14 +116,6 @@ cost remains PRELIMINARY. A universal operational boundary at c, viable
 communication inside it, other geometries, correlated uses, and stability
 under perturbations remain unproved and are not opened by this checkpoint.
 
-**Date:** 2026-09-24
-**Status:** STANDARD WEYL/DIRAC EXACT GATE: PASS; strong `B_infty^*` REJECTED IN DECLARED s=4 CLASS; point-(3) ceiling PROVED UNDER FROZEN CONTRACT, one independent review PASS; flat CJWW (5.15) operational IR-corona result CLOSED in its frozen class; flat absolute-scale gate 4B CLOSED as `NO_ABSOLUTE_SCALE_DERIVABLE` (Sec. 8.21, within that frozen class); **H1-only extension: TWO_DISTINGUISHABLE_CHANNELS frozen by explicit model assumption** (Sec. 9.6): H1c-0a CLOSED, H1c-0b FIXED_BY_EXPLICIT_ASSUMPTION, primary observable `(L_+, L_-)`; physical realization/justification for H1 OPEN; Volterra/asymptotic localization PAUSED. H1-SR proved under frozen beta contract, H1a/H1b proof written/unreviewed, layer absolute-mass bound PASS, G-insertion and final-Q-leakage PASS_IN_LOCAL_WINDOW retain their prior scope; H1c localization and H1 remain unproved/OPEN. Exploratory sequence: T1 `PASS` with independent adversarial review for the frozen model and admissible fixed W; T2 `TRACE_COMPLETE / BOUND_NOT_TRANSFERRED`; T3 `STOPPED_NO_SIGNED_TERM`. Physical reconstruction norm audit: `PRELIMINARY: BOUNDS_TRANSFERRED / NO_SIGNED_LEADING_TERM`, the operator norm bound is direct; the L^2 stability `||t_j||_2 = O_{W,Theta}(1)` (Sec. 9.7) was repaired and has `SCHUR_STABILITY_PASS` with independent review (DeepSeek, GPT/Grok), scope `||t_j||_2` only; the vector/piece bounds that use it remain PRELIMINARY (not expressly reviewed). Physical transfer of the flat endpoints (Sec. 9.7 addendum): `ENDPOINT_TRANSFER_PARTIAL — PRELIMINARY` (Alice `O(N^-3)` transfers; no `O(N^-3)` for Bob at `vartheta != 0`; gaps L1/L2/L3; `PASS_WITH_REPAIRS`, repaired version not re-reviewed). No `E_6` or dominance claim. L2 stop gate: `B / OPEN_BLOCKED_METHOD` (PRELIMINARY decision audit; partial external review + source bounds reproduced by Claude; B structural to norm-based method, not evidence against H1; H1 OPEN and paused). The present physical stay-remainder bounds do not reach `o(N^-13/2 e^{-K_*N})` without the still-open H1c localization machinery; this is a method obstruction, not an H1 refutation. See Sec. 9.7. No H1/H1c promotion. E0 and POWER_13/2_STABILITY remain OPEN_AT_STOP; E/AdS remains STOPPED_UNPROVEN. IR spectral-attribution front (Sec. 10.1): C1 PASS, C2a PASS for sigma2/I (one independent agent review), C2b PASS for sigma2/I (B4_PRIME_PASS separately; one independent agent review), C2c structural scope C2C_PASS for the frozen 16-pair scope, C3 conditioning C3_PASS for the frozen four-encoder `M_B=I` scope.
-
-**Historical branch provenance.** The earlier reconciliation originated on
-`research/b-infinity-post-s4-gate`. These records are now present in the remote
-main baseline named above; the former statement that main was unchanged is
-obsolete. Repository integration does not by itself promote an evidence level.
-This checkpoint records inventory and provenance only.
 
 **Repository:** `nacho09021973/qca-causal-cones`
 
@@ -1521,8 +1592,9 @@ of authorization is superseded by the record above.
 
 ## 9. H1-only inhomogeneous reopening — branch-local update (2026-09-20)
 
-**Status (2026-09-25): H1 OPEN; the Schur / physical-endpoint bridge is
-written but awaits independent review in Sec. 9.7. The operational contract is fixed
+**Status (2026-10-31): H1 OPEN and paused; the Schur / physical-endpoint bridge
+has completed review and is promoted within its frozen B/F, fixed-W scope
+in Sec. 9.7. The operational contract is fixed
 in Sec. 9.6. The full H1c localization claim is not closed.**
 
 This update supersedes the older statement that physical-realization / absolute-scale
@@ -1774,19 +1846,23 @@ follow-up requiring a line-by-line check that both endpoints belong to the
 current two-channel protocol. This authorizes the estimate audit and the
 linear-piece reduction below; it does not assert a nonzero leading coefficient.
 
-Status: **PROOF_WRITTEN / INDEPENDENT_REVIEW_PENDING**. The
+Status (promoted 2026-10-31): **SCHUR_PHYSICAL_BRIDGE_PASS_UNDER_B_F_FIXED_W**. The
 [candidate proof and endpoint trace](../reports/2026-09-24--schur-stability-physical-transfer.md)
 retains the exact T1 definitions and fixed W. It distinguishes bounded real
 profiles (B) from the additional Fourier-moment hypothesis of Sec. 9.4 (F).
 The latter is not implied by boundedness or merely C1 regularity.
-Two external review executions timed out without a mathematical verdict;
-the [execution record](../reports/2026-09-25--schur-physical-bridge-review-status.md)
-records both failures. Neither is a pass, rejection or consensus. No review
-process remains running.
+The [execution record](../reports/2026-09-25--schur-physical-bridge-review-status.md)
+retains the failed historical attempts. The completed Google-family review
+and bounded re-review of the clarified OpenAI-authored candidate are recorded
+in the [closure report](../reports/2026-10-31--schur-physical-bridge-review-closure.md).
+Reviewed candidate SHA256:
+`caee6fa254fd83d64ac16ce6de2f04b359087e9a8f1668b0d4f93a089589bf65`.
+No mandatory repairs remain. This is one cross-family reviewer sequence,
+not two independent reviewers, human review or multi-member consensus.
 
 The candidate establishes under B the full double Schur sum O_W(N^-1),
 uniform stability of the normalized product, and the reconstruction norm
-Theta(N^-1). Under F it proposes the stronger full propagator estimate
+Theta(N^-1). Under F the reviewed bridge establishes the full propagator estimate
 ||T^N - R^N|| = O_W(N^-1), where R = D_xi/Lambda. The complete physical
 Alice source s = Fourier H_xi J(U_M-I)phi_N and the actual Bob dual endpoint
 v_c = V_c^* E B pi_c U_N^N J phi_N both have L2 norm O(N^-3).
@@ -1801,13 +1877,72 @@ The signed continuation keeps the current reference r_+:
 - The sum of quadratic pieces in either channel is nonnegative and
   O_W(N^-8 exp(-2K_*N)); there are three such pieces per channel.
 
-These are candidate estimates pending review. N^-7 is smaller than the
+These are reviewed estimates under the stated hypotheses. N^-7 is smaller than the
 flat benchmark N^-13/2, but no lower bound for the current signed functional
 is supplied. Its sign, coefficient and nonvanishing remain OPEN. This is
-a proposed repair of the missing bridge, not a novelty claim, not transfer
+a reviewed repair of the missing bridge, not a novelty claim, not transfer
 of the flat Bob spinor, and not closure of H1/H1c, E0,
 POWER_13/2_STABILITY or E/AdS. T3's earlier cancellation stop is not converted
 into a cancellation result.
+
+The older physical-transfer and L2-stop entries below remain historical
+records of their narrower norm-based methods. In particular, their claims
+that Bob has no N^-3 bound do not override the reviewed Fourier-L1 argument
+under F. The bridge does not by itself control the change of its retained
+reference functional from the flat one, so it supplies no signal-survival
+claim or resolution of the full paused H1 problem.
+
+### 9.8 Small fixed Gaussian profile — authorized 2026-10-31
+
+Direct user instruction «1 y despues 3» authorizes the limited perturbative
+step after bridge consolidation at `2e6af3a`. Contract:
+[`H1_SMALL_GAUSSIAN_PROFILE_GATE`](../theory/H1_SMALL_GAUSSIAN_PROFILE_GATE.md).
+Preregistration: `6ef57da`, corrected before execution at `067f8fa` to retain
+all fourteen jumps of the defining symbol. Fix `vartheta(X)=epsilon exp(-|X|^2)`,
+encoder sigma_2, detector I, and the current two-channel functional.
+Only this subproblem is reopened; the broad H1/H1c localization program
+remains paused.
+
+Execution: [`small Gaussian profile report`](../reports/2026-10-31--h1-small-gaussian-profile.md).
+Status (promoted 2026-11-01, user instruction «promocionada 9.8»):
+**SMALL_GAUSSIAN_PROFILE_SURVIVAL_PROVED_UNDER_FROZEN_CONTRACT**, in the
+frozen one-profile/one-pair scope above, conditional on the promoted bridge
+and the flat sigma_2/I theorem. Previous status:
+SMALL_PROFILE_SURVIVAL_PROOF_WRITTEN / INDEPENDENT_REVIEW_PASS_TWO_HOUSES /
+PROMOTION_PENDING. The execution was initially PRELIMINARY. The later
+[independent Claude review](../reports/2026-10-31--h1-small-gaussian-claude-review.md)
+returns PASS on all six blocks, no mandatory repairs, for candidate SHA256
+`98e96a47fdb584e921210e71c07559b773a2bd85258ab8fc1606ac6bc5972611`.
+One cross-family agent review, conditional on the frozen flat theorem and
+promoted bridge; not human review or automatic canonical promotion.
+A second, blind [Grok review](../reports/2026-11-01--h1-small-gaussian-grok-review.md)
+(user instruction «a ciro») on byte-identical input (SHA256 `60df1c1e…`)
+also returns PASS on all six blocks, no mandatory repairs. Two agent
+reviews from different houses; still not human review. The 21- and
+58-check counts were reproduced outside the author's run on 2026-11-01.
+Exact channel parity gives zero first epsilon
+derivative of the retained signed functional. The report gives its first
+potentially nonzero quadratic coefficient (including same-coin terms),
+but does not prove that coefficient nonzero. The candidate proof bounds
+the functional difference by `C epsilon^2 N^-13/2 exp(-K_*N)` uniformly
+for `|epsilon|<=1`, using weighted layer l1 masses and an integrated
+tilted-free-kernel norm `O(N^-3/2)` over all eight saddles. It proposes a
+positive N-independent epsilon_0 for uniform negative full L_+ and
+`|L_+|=Theta(N^-13/2 exp(-K_*N))`, with L_- bounded at the smaller
+`N^-7 exp(-K_*N)` scale. The transfer explicitly checks bridge constants
+uniformly on the fixed epsilon interval. No numerical epsilon_0, finite-N
+threshold or new full asymptotic coefficient is supplied.
+
+The new permanent algebra verifier passes 21 exact checks; the unchanged
+flat Laplace verifier passes 58/58. Neither count certifies the new analytic
+estimates. The survival conclusion is promoted only in the frozen scope stated above;
+it is not promoted to H1, general profile/pair stability, H1c, E0,
+POWER_13/2_STABILITY or E/AdS.
+The user explicitly authorized this Claude review with «que lo revise claude»;
+it is complete. This supersedes the earlier no-external-submission clause
+for that request only. No further external submission, broader research,
+publication or automatic promotion is authorized by this state update.
+
 ### 9.7 Physical reconstruction operator norms — 2026-09-24
 
 The initial endpoint-transfer audit is recorded in
@@ -2044,3 +2179,81 @@ C3 is PASS in its frozen scope; E/AdS remains FROZEN. H1c, E0,
 POWER_13/2_STABILITY and the Sec. 8.20 flat theorem are unchanged. No new
 numerical calculation, scan, manuscript publication, commit or push follows
 from this update.
+
+## 11. c across QCA lattices and neighbourhoods — chartered 2026-11-01
+
+Contract: [`C_ACROSS_LATTICES_GATE.md`](../theory/C_ACROSS_LATTICES_GATE.md),
+frozen before solving. Authorization: direct user instruction, 2026-11-01,
+redirecting the project to comparing `c` across substrates within the QCA
+scope (PROJECT_INSTRUCTIONS §1); no new substrate class is opened.
+
+Execution (2026-11-01): [report](../reports/2026-11-01--c-across-lattices.md),
+verifier `scripts/verify_c_across_lattices_gate.py` (reviewed at
+`cae6e30`, 103/103; repaired, 135/135 with every table value asserted).
+[Reviews](../reports/2026-11-01--c-across-lattices-review.md): Grok
+REPAIR_REQUIRED (three repairs, applied), Gemini PASS. Status:
+**TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PROMOTED IN THE
+DECLARED ROWS (2026-11-01, user instruction «1»).** Repaired; bounded
+re-review Gemini PASS (R1–R5); Grok, ausente on 2026-11-01 (402), reviewed
+the repaired snapshot on 2026-11-02: PASS on R1–R5, no mandatory repairs.
+Grok's acceptance of its own three repairs is now on record. Previous
+status: PRELIMINARY, PROMOTION_PENDING. In the declared rows: square,
+BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
+has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
+L6d on the identical substrate; `C_infty^strict = C_micro` in every
+computed row. Ha `REFUTED_BY_ROW_L6a`; Hb, Hc hold in every decided row
+and stay OPEN only because L6b is undecided.
+At finite mass, `c_H = c_0 theta/sin theta` where isotropic and no
+computed new row has an isotropic `c_omega2` (anisotropy `O(sin theta)`).
+Two ADMP sign issues are recorded. Not promoted; no general law.
+
+Charter summary: thirteen declared rows: six
+already established (L1–L3, L3s4, L4 in part) are re-tabulated with their
+existing tags; seven new rows from primary sources read on 2026-11-01
+(L5a Farrelly–Short, L5b Mlodinow–Brun on BCC; L6a–L6b ADMP, L6c–L6f JDW
+on two-dimensional lattices). Arrighi–Facchini is excluded with its
+recorded reason. Substrates are declared by the translation group and
+composite step set of each equation, not by the papers' lattice labels.
+Hypotheses Ha (`c_0 = r_in` in declared s=2 rows), Hb (`c_strict^iso =
+r_in`) and Hc (no row with `c_0 > c_strict^iso`) are OPEN. Execution:
+report plus `scripts/verify_c_across_lattices_gate.py`, then independent
+cross-family review, then a separate promotion. No rigidity or general
+QCA law may be drawn from the table.
+
+## 12. Hexagonal ceiling — chartered 2026-11-01
+
+Contract: [`HEX_CEILING_GATE.md`](../theory/HEX_CEILING_GATE.md), frozen
+before solving. Authorization: direct user instruction, 2026-11-01, after
+the promoted Sec. 11 table showed no declared hexagonal walk reaching
+`c_0 = r_in`.
+
+Execution (2026-11-01, partial): [report](../reports/2026-11-01--hex-ceiling.md),
+verifier `scripts/verify_hex_ceiling_gate.py` (18/18). L0
+`PROVED_IN_REPO` (with classical Bernstein, prior art): `c_0 <= r_in` on
+`W_hex`. T1 `GAP_PROVED_IN_CLASS`: in the `n = 3` antipodal subclass,
+`c_0/r_in = sqrt(1-g)/sqrt2 <= sqrt3/2`, attained iff the coin axes are
+coplanar at 120° (ADMP `g = 1/3`, JDW L6d `g = -1/2`). T2
+`PROVED_FOR_MINIMAL_SUPPORT` (2026-11-02): no s=2 walk with
+`F within {0} U vert(H)` reaches the ceiling (saturation forces exact
+two-layer restrictions on the facet-normal lines; the resulting
+polynomial system has no real solution; square-substrate positive
+control passes); verifier 24/24. T2 in general
+`OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` (19-point ball: Groebner over C did
+not finish in 900 s; inconclusive, recorded as exploratory). **Promoted
+2026-11-02 (user instruction «si, promuévelo») in the frozen scope stated
+at the top of this file.** Execution
+stopped. [Reviews](../reports/2026-11-02--hex-ceiling-review.md): Gemini
+PASS on all five blocks; Grok REPAIR_REQUIRED (R1: Bernstein used without
+in-repo proof; R2: weak rank predicate), both repaired 2026-11-02 (Lemma B
+in the report; exact minor in the verifier, 24/24). Bounded re-review
+of the repairs: Grok PASS and Gemini PASS on R1–R4, identical input.
+Previous status: PRELIMINARY, PROMOTION_PENDING.
+
+Charter: class `W_hex`: translation-
+invariant `s = 2` walks on the triangular lattice, one update a product
+of `n` coin–partial-shift factors, regular hexagonal `C_micro` from the
+exact composite support, massless node at `k = 0` with isotropic untilted
+cone. Targets: L0 (`c_0 <= r_in`, to be proved or cited, not assumed),
+T1 (`n = 3` antipodal subclass: exact supremum), T2 (whole class: gap
+proof or explicit witness). Hypotheses HX0–HX2 OPEN. No verdict from
+numerics or failed search; restricted results stay restricted.

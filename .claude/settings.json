@@ -20,12 +20,18 @@
       "Bash(python3 -B scripts/verify_regional_laplace_coefficient_gate.py)",
       "Bash(python3 scripts/verify_ir_projection_leakage.py)",
       "Bash(python3 -B scripts/verify_ir_projection_leakage.py)",
+      "Bash(python3 scripts/verify_small_gaussian_profile_algebra.py)",
+      "Bash(python3 -B scripts/verify_small_gaussian_profile_algebra.py)",
       "Bash(python3 scripts/verify_signaling_witness.py)",
       "Bash(python3 -B scripts/verify_signaling_witness.py)",
       "Bash(python3 scripts/cert_Aa_s4_counterexample.py)",
       "Bash(python3 -B scripts/cert_Aa_s4_counterexample.py)",
       "Bash(python3 scripts/review_Aa_s4_exact.py)",
       "Bash(python3 -B scripts/review_Aa_s4_exact.py)",
+      "Bash(python3 scripts/verify_c_across_lattices_gate.py)",
+      "Bash(python3 -B scripts/verify_c_across_lattices_gate.py)",
+      "Bash(python3 scripts/verify_hex_ceiling_gate.py)",
+      "Bash(python3 -B scripts/verify_hex_ceiling_gate.py)",
       "Bash(lake build)",
       "Bash(lake exe cache get)"
     ]
