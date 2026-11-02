@@ -2,22 +2,28 @@
 
 **Date:** 2026-11-02
 
-**Gate chartered — 2026-11-02:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES`
-(Sec. 13, [`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md))
-is frozen and authorized by user instruction («haz lo que consideres,
-estás autorizado»). **Executed 2026-11-02** (user «si»;
-[report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
-verifier 81/81 after repairs): `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`.
-Hd `REFUTED_BY_ROW_L1` (also by L3s4 for `a < a*`), He
-`CONFIRMED_IN_DECLARED_ROWS`, Hf `REFUTED_BY_ROW_L6e`.
-[Reviews](../reports/2026-11-02--dispersion-corrections-across-lattices-review.md):
-Gemini PASS on all six blocks; Grok REPAIR_REQUIRED (three repairs, two
-in the report prose, one constant-`True` record), all accepted and
-applied, no value or verdict changed; bounded re-review of the repairs:
-Gemini PASS and Grok PASS on R1–R4, identical input, no repairs.
-**PRELIMINARY, INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING
-(user decision); nothing promoted.** It is the active front;
-Sec. 11 and L6b stay promoted as below.
+**Gate promoted — 2026-11-02:** by direct user instruction («si,
+promuévelo», after the two PASS re-reviews were reported with
+`PROMOTION_PENDING`), `DISPERSION_CORRECTIONS_ACROSS_LATTICES` (Sec. 13,
+[`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md))
+is promoted on `research/schur-stability-audit` in its frozen scope:
+`CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`; Hd
+`REFUTED_BY_ROW_L1` (also by L3s4 for `a < a*`), He
+`CONFIRMED_IN_DECLARED_ROWS`, Hf `REFUTED_BY_ROW_L6e`. Evidence: two
+houses — Gemini PASS on all six blocks; Grok REPAIR_REQUIRED (three
+repairs, two in the report prose, one constant-`True` record), all
+accepted and applied with no value or verdict changed; bounded re-review
+of the repairs Gemini PASS and Grok PASS on R1–R4, identical input. Not
+human review. Declared rows only, no general QCA law, no physical
+interpretation, no novelty; scale of validity in `d >= 2` and
+`V_grp^max` stay OPEN; the observational Phase 2 stays deferred without
+a charter. Chartered the same day by user instruction («haz lo que
+consideres, estás autorizado»); executed on «si»
+([report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
+verifier 81/81 after repairs, SHA256 `b7c451e2…`);
+[reviews](../reports/2026-11-02--dispersion-corrections-across-lattices-review.md).
+Previous status: PRELIMINARY, INDEPENDENT_REVIEW_PASS_TWO_HOUSES,
+PROMOTION_PENDING. Sec. 11, L6b and Sec. 12 stay promoted as below.
 
 **Gate promoted — 2026-11-02:** by user instruction («haz lo que
 consideres, estás autorizado», after the two PASS reviews were reported
@@ -2311,7 +2317,7 @@ T1 (`n = 3` antipodal subclass: exact supremum), T2 (whole class: gap
 proof or explicit witness). Hypotheses HX0–HX2 OPEN. No verdict from
 numerics or failed search; restricted results stay restricted.
 
-## 13. Dispersion corrections across lattices — chartered 2026-11-02
+## 13. Dispersion corrections across lattices — chartered and promoted 2026-11-02
 
 Contract: [`DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
 frozen before solving. Authorization: user instruction, 2026-11-02
@@ -2347,8 +2353,10 @@ verifier `scripts/verify_dispersion_corrections_gate.py` (SHA256
 `b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`,
 81/81 after the review repairs; 79/79 at the reviewed `791f0d80d279`).
 Status `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`,
-PRELIMINARY; reviews Gemini PASS, Grok REPAIR_REQUIRED, repairs applied;
-bounded re-review Gemini PASS, Grok PASS; PROMOTION_PENDING. Findings: the lowest correction
+PRELIMINARY until promotion; reviews Gemini PASS, Grok REPAIR_REQUIRED, repairs applied;
+bounded re-review Gemini PASS, Grok PASS. **Promoted 2026-11-02** by
+direct user instruction («si, promuévelo») in the frozen scope below.
+Findings: the lowest correction
 is a relative-order-`|k|` term `beta` exactly in the six rows whose walk
 group lacks inversion (L5a, L5b, L4 with `T_d`; L6a, L6b with `D_3`;
 L3s4), and `alpha` elsewhere; the harmonic content matches the walk's
@@ -2358,5 +2366,6 @@ relative order `|k|^2`, first `cos 6 theta` at `|k|^4`). Hd
 `0 < a < a* = sqrt3 sqrt(17 - sqrt154)/9`; every other row has
 `alpha_0 < 0`. He `CONFIRMED_IN_DECLARED_ROWS` (L2, L6e `cos 4 theta`; L3
 `K4`; L5a, L5b, L4 `n1 n2 n3`). Hf `REFUTED_BY_ROW_L6e` (L2 and L6e
-identical; also L5a = L5b and L6d = L6f through `|k|^2`). Scale of
+identical; also L5a = the `+i` Weyl block of L5b, and L6d = L6f through
+`|k|^2`). Scale of
 validity OPEN in `d >= 2`; `V_grp^max` OPEN. No physical interpretation.
