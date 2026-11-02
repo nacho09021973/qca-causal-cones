@@ -126,8 +126,12 @@ and #12) was merged into that branch (`ac19f4d`) to resolve the conflict in
 PR #13; the 2026-09-28 checkpoint and the 4B closure below come from that
 merge. By direct user instruction («fusiona el PR a main»), PR #13 was
 merged into `main` on 2026-11-02 as `0e52d90`, so these promotions are now
-on `main` with the same frozen scopes. Repository integration does not by
-itself promote an evidence level.
+on `main` with the same frozen scopes. The later promotions of
+`L6B_TRIANGULAR_ROW` and `DISPERSION_CORRECTIONS_ACROSS_LATTICES`
+(2026-11-02) were made on the same branch and, by direct user instruction
+(«FUSIONAMOS main»), integrated into `main` through PR #15 with the same
+frozen scopes. Repository integration does not by itself promote an
+evidence level.
 
 ## Reading guide and synchronization — 2026-09-28
 
