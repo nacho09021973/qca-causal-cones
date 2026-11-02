@@ -334,3 +334,35 @@ it builds the same saturation system for a given support and runs a
 grevlex Gröbner basis over `C`. Its docstring records the runs (minimal:
 consistent over `C`, 0.5 s; 19-point ball: not finished in 900 s). It
 supports no verdict.
+
+## Dispersion corrections gate (2026-11-02)
+
+`verify_dispersion_corrections_gate.py` certifies
+[`DISPERSION_CORRECTIONS_ACROSS_LATTICES`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
+preregistered at `a7ff5b7`, for the
+[execution report](../reports/2026-11-02--dispersion-corrections-across-lattices.md).
+81 exact checks, about 11 minutes (79 at the reviewed version; two
+added by the review repairs, see the report Sec. 5). Run it with an interpreter that has
+`sympy==1.14.0` (here `/home/adnac/venvs/torch-gpu/bin/python -B`). It
+imports the thirteen massless symbols read-only from
+`verify_weyl_dirac_gate.py`, `verify_c_across_lattices_gate.py`,
+`verify_directional_saturation.py`, `cert_Aa_s4_counterexample.py` and
+`verify_l6b_triangular_row_gate.py`; those files are unchanged. Importing
+them reruns the parent row constructors' own checks, which the script
+requires to pass.
+
+Certified per row: the exact Taylor coefficients of the node branch
+through relative order `t^4` (`d <= 2`) or `t^2` (`d = 3`), `c_0` against
+the parent table, the absence of a linear phase, the walk's symmetry group
+by Laurent identities of power traces, the harmonic decomposition, and the
+sign of `alpha_0` (for L3s4 symbolic in `a`, with the exact root in
+`0 < a < 1`). Cross-checks: L1 exactly linear, L6b equal to L6a scaled by
+2/3, 2, 4 and rotated 60°, hand closed forms for L2, L6e, L3, L5a, L5b, L4
+and L6a, and the Newton-identity characteristic polynomial against the
+full one on L5b.
+
+Does **not** certify: `V_grp^max` (OPEN), the scale of validity in
+`d >= 2` (OPEN), terms beyond the stated order, or any reading of the
+hypotheses beyond the printed coefficients. The verdicts on Hd, He and Hf
+are drawn in the report from the printed values; the script prints them
+but asserts none. Not independently reviewed.

@@ -1,0 +1,141 @@
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ ce09890a0d5f68a6634f358eff2e477ac5f15ec7; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: STOP (estado operativo, no validación del contenido)
+modelo: gemini-4-argon, esfuerzo: maxOutputTokens=32768, thinkingLevel=medium, vía: API generativelanguage.googleapis.com generateContent, sin herramientas
+modelo devuelto por API: gemini-4-argon
+gemini.json sha256 8990237c5045f433a10506a2932244c9a07b0c9499d959bcf68d40cf9e5e0fbe
+inicio: 2026-11-02T13:24:14Z  fin: 2026-11-02T13:25:43Z
+documento: /home/adnac/qca-causal-cones/reports/2026-11-02--l6b-triangular-row.md ; último commit observado: a19e480 ; sha256 de la copia enviada 201a62e186976639dc351da55355820b8327dff971e0badd53a58ed9835afe4c
+documento: /home/adnac/qca-causal-cones/scripts/verify_l6b_triangular_row_gate.py ; último commit observado: a19e480 ; sha256 de la copia enviada c2e91c237b023abde1199f8ef3bea143f49e559da35899c01e049a9ddf3f2441
+documento: /home/adnac/qca-causal-cones/scripts/verify_c_across_lattices_gate.py ; último commit observado: 8d0276e ; sha256 de la copia enviada b91253117e141b972add6640834363fe34cbbc1d321fd00fbe01d22b7875eadb
+documento: /home/adnac/qca-causal-cones/theory/L6B_TRIANGULAR_ROW_GATE.md ; último commit observado: b076670 ; sha256 de la copia enviada 28081b0cd8536bceeb732c6740a07b53239ed8d32a678e52d8177b0b60259829
+documento: /home/adnac/qca-causal-cones/sources/1803.01015v2.pdf ; último commit observado: 30672ba ; sha256 de la copia enviada 1d1de6058787437bb712448af11dd6b57d83f73fbe6cb7e6dffd242a45f8a570
+entrada_gemini.txt sha256 37568e67f30cb8437107f374cfc61ddb53664f7c9040e81d21eae4162c50be3c
+respuesta sha256 d63e0523d01d61900f77d73e0d6511f44b651d02b02b500a757034381b980c10
+-->
+
+Revisión adversarial e independiente de la ejecución del gate `L6B_TRIANGULAR_ROW` (`2026-11-02--l6b-triangular-row.md` y `verify_l6b_triangular_row_gate.py`) frente al contrato congelado `L6B_TRIANGULAR_ROW_GATE.md` y la fuente primaria ADMP (`1803.01015v2`).
+
+---
+
+### 1. ENCODING
+**Dictamen: PASS**
+
+* **Suficiencia del texto sin la Figura 1:** El texto de la p. 4 de ADMP establece dos premisas algebraico-geométricas:
+  1. *Pegado (gluing):* «if triangle $v_0$ (white) and $v_1$ (grey) are glued along their $k = 1$ side, then $\psi(t, v_0, 1) = \psi(t, v_1, 1)$». Como cada arista de orientación geométrica $o \in \{h, b, s\}$ es compartida exactamente por un triángulo blanco y uno gris, bajo invarianza traslacional ambos triángulos deben asignar la misma etiqueta $k \in \{0,1,2\}$ a esa orientación: $\lambda_{\text{white}}(o) = \lambda_{\text{grey}}(o)$.
+  2. *Rotación antihoraria $R$:* «The first operator, $R$, simply rotates every triangle anti-clockwise. Phrased in terms of the hosted $\mathbb{C}^3$ vectors, the component at side $k$ hops to side $(k + 1 \bmod 3)$. For instance $R\psi(t, v_0) = (\psi^\uparrow(t, v_0, k - 1))_{k=2,0,1}$».
+
+* **Geometría de aristas y orden cíclico:** Con generadores finos $f_1 = (1/2, 0)$ y $f_2 = (1/4, \sqrt{3}/4)$ (lado del triángulo $= 1$), el triángulo hacia arriba $U_n$ ($n \in \mathbb{Z}^2$) tiene vértices en $2n$, $2n+(2,0)$, $2n+(0,2)$. Los puntos medios de sus tres lados son:
+  * $h$ (base horizontal): $2n + (1,0) \mapsto (1/2, 0)$ (para $n=(0,0)$),
+  * $b$ (lado derecho `\`): $2n + (1,1) \mapsto (3/4, \sqrt{3}/4)$,
+  * $s$ (lado izquierdo `/`): $2n + (0,1) \mapsto (1/4, \sqrt{3}/4)$.
+  Respecto al baricentro $(1/2, \sqrt{3}/6)$, los vectores a los puntos medios son:
+  $$\Delta_h = \left(0, -\frac{\sqrt{3}}{6}\right)\!,\quad \Delta_b = \left(\frac{1}{4}, \frac{\sqrt{3}}{12}\right)\!,\quad \Delta_s = \left(-\frac{1}{4}, \frac{\sqrt{3}}{12}\right)$$
+  con ángulos $-\pi/2$, $\pi/6$, $5\pi/6$. El orden antihorario es estrictamente $h \to b \to s \to h$.
+  El triángulo hacia abajo $D_m$, con vértices en $2m+(2,0)$, $2m+(0,2)$, $2m+(2,2)$, tiene aristas $(m,b)$, $(m+(0,1),h)$ y $(m+(1,0),s)$. Para $m=(0,0)$, sus puntos medios cartesianos son $(3/4, \sqrt{3}/4)$ para $b$, $(3/4, \sqrt{3}/2)$ para $h$, y $(5/4, \sqrt{3}/4)$ para $s$. Respecto a su baricentro $(1, \sqrt{3}/3)$, los desplazamientos son:
+  $$\Delta_b = \left(-\frac{1}{4}, -\frac{\sqrt{3}}{12}\right)\!,\quad \Delta_s = \left(\frac{1}{4}, -\frac{\sqrt{3}}{12}\right)\!,\quad \Delta_h = \left(0, \frac{\sqrt{3}}{6}\right)$$
+  con ángulos $-5\pi/6$, $-\pi/6$, $\pi/2$, dando el orden antihorario $b \to s \to h \to b$, que es el mismo ciclo $h \to b \to s \to h$. La función `down_of` invierte correctamente `down_edges`: una arista $(n,b)$ pertenece a $D_n$; $(n,h)$ pertenece a $D_{n-(0,1)}$; y $(n,s)$ pertenece a $D_{n-(1,0)}$.
+
+* **Enumeración de 72 candidatos y reducción a 6:** Hay 2 elecciones para qué orientación de triángulo es blanca (`up` o `down`), $3! = 6$ bijecciones $\lambda_w : \{h,b,s\} \to \{0,1,2\}$ y $3! = 6$ bijecciones $\lambda_g$, totalizando $2 \times 6 \times 6 = 72$ candidatos. La condición (i) fuerza $\lambda_w = \lambda_g$ (reduce a 12), y la condición (ii) fuerza $\lambda_w(\text{succ}(o)) \equiv \lambda_w(o) + 1 \pmod 3$, lo cual selecciona las 3 permutaciones cíclicas de $(h,b,s) \mapsto (0,1,2)$ para cada una de las 2 coloraciones, dando exactamente $2 \times 3 = 6$ asignaciones admisibles.
+
+* **Invariancia del predecesor y codificación $U_k$:** La Ec. (12),
+  $$\begin{pmatrix} \tilde{\psi}^\uparrow(t+\varepsilon, v, k) \\ \tilde{\psi}^\downarrow(t+\varepsilon, v, k) \end{pmatrix} = W \begin{pmatrix} \tilde{\psi}^\uparrow(t, v, k-1) \\ \tilde{\psi}^\downarrow(t, e(v,k), k-1) \end{pmatrix},$$
+  mueve la amplitud de la arista con etiqueta $k-1$ a la arista con etiqueta $k$ dentro del triángulo blanco (componente $\uparrow$) y dentro del triángulo gris adyacente (componente $\downarrow$). En términos de las orientaciones geométricas $\{h,b,s\}$, esto depende únicamente del predecesor antihorario $\text{pred}(o) = \lambda_w^{-1}(\lambda_w(o)-1 \bmod 3)$, que es $s \to h$, $h \to b$, $b \to s$ para las 3 rotaciones cíclicas de $\lambda_w$. Por tanto, en la base indexada por orientaciones $(h,b,s)$, el operador sobre espinores pre-codificados depende solo de la coloración (`white = up` o `down`), no de la rotación de etiquetas.
+  Finalmente, la transformación $\tilde{\psi}(t,v,k) = U_k \psi(t,v,k)$ de la Ec. (11) actúa en el espacio de Bloch como conjugación por $E = \text{diag}(U_{\lambda(h)}, U_{\lambda(b)}, U_{\lambda(s)})$, que es unitaria, diagonal por bloques $2\times 2$ en cada orientación y constante en el cuasimomento $z$. Conjugar $U(z) \mapsto E^\dagger U(z) E$ preserva el soporte de Laurent en $z$ (ya que cada bloque $2\times 2$ se conjuga independientemente sin mezclar diferentes monomios $z^d$) y preserva idénticamente el polinomio característico $\det(U(z) - \lambda I_6)$.
+
+---
+
+### 2. INTERNAL_DIMENSION
+**Dictamen: PASS**
+
+* **Dimensión interna $s = 6$:** El grupo de traslaciones que preserva la geometría y la coloración blanco/gris es la red de Bravais de los triángulos hacia arriba ($U_n$, $n \in \mathbb{Z}^2$). Como ninguna traslación mapea un triángulo hacia arriba en uno hacia abajo, y cada triángulo hacia arriba contiene exactamente 3 aristas de orientaciones distintas ($h, b, s$, ninguna compartida con otro triángulo hacia arriba), la celda unidad de la red de Bravais contiene exactamente 3 aristas. Con un espinor $\mathbb{C}^2$ por arista, el espacio de Hilbert por celda unidad es $\mathbb{C}^3 \otimes \mathbb{C}^2 \cong \mathbb{C}^6$, luego $s = 6$.
+* **Relación con la tabla padre y alcance de Ha:** El valor $s = 2$ de la tabla padre contaba los grados de libertad por arista individual, pero el conjunto de puntos medios de las aristas forma una red de Kagome (no una red de Bravais), donde el operador de evolución no es invariante por traslaciones de arista a arista. Escrito en forma invariante por traslaciones sobre la red de Bravais, $s = 6$. El contrato (§1 y §5) anticipó explícitamente esta distinción y congeló la regla: «Ha applies only if the computed $s$ is 2. If $s \neq 2$, L6b is outside Ha's scope; Ha stays `REFUTED_BY_ROW_L6a` either way». No hay alteración del alcance ni reparación indebida del padre.
+
+---
+
+### 3. C0
+**Dictamen: PASS**
+
+* **Conjunto de pasos $F$, normalización y $C_{\text{micro}}$:** En un paso temporal (`white = up`), los desplazamientos $d = \text{pos}(\text{target}) - \text{pos}(\text{source})$ en coordenadas finas son:
+  * Componente $\uparrow$ (dentro de $U_n$): $s \to h: (1,-1)$; $h \to b: (0,1)$; $b \to s: (-1,0)$.
+  * Componente $\downarrow$ (dentro de $D_m$): $s \to h: (-1,1)$; $h \to b: (0,-1)$; $b \to s: (1,0)$.
+  (Para `white = down` se intercambian los signos entre $\uparrow$ y $\downarrow$, dejando el conjunto total invariante). En coordenadas cartesianas (lado $= 1$), estos son los 6 vectores de longitud $\ell = 1/2$ a ángulos $0^\circ, 60^\circ, 120^\circ, 180^\circ, 240^\circ, 300^\circ$, sin vector nulo ($0 \notin F$). Al normalizar por el paso más largo $\ell = 1/2$, $C_{\text{micro}}$ es el hexágono regular de circunradio $V_{\text{causal}}^{\max} = 1$ e inradio $r_{\text{in}} = \sqrt{3}/2$.
+
+* **Estructura del nodo $U(0)$:** En $k = 0$ ($z_1 = z_2 = 1$), la matriz de desplazamiento $R(1)$ en la base $(h\uparrow, h\downarrow, b\uparrow, b\downarrow, s\uparrow, s\downarrow)$ es $P \otimes I_2$, donde
+  $$P = \begin{pmatrix} 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}$$
+  es la permutación cíclica de orientaciones ($P^3 = I_3$, autovalores $\{1, e^{2\pi i/3}, e^{-2\pi i/3}\}$). Como el operador moneda es $\text{diag}(W,W,W) = I_3 \otimes W$, se cumple exactamente:
+  $$U(0) = (I_3 \otimes W)(P \otimes I_2) = P \otimes W.$$
+  Dado que $W = U_0 S U_0^\dagger$ y $S = \text{diag}(1, e^{\pm 2\pi i/3})$, $W$ tiene autovalores $\{1, e^{\pm 2\pi i/3}\}$ y satisface $W^3 = I_2$. Por consiguiente, $U(0)^3 = P^3 \otimes W^3 = I_6$, y el espectro de $U(0)$ es el producto de $\{1, \omega, \omega^2\}$ por $\{1, \omega\}$ (con $\omega = e^{2\pi i/3}$), lo que da $\{1, \omega, \omega^2\}$ cada uno con multiplicidad exactamente 2. El par con autovalor $1$ ($\text{ cuasienergía } 0$) es el nodo declarado.
+
+* **Corrección e independencia de las Rutas A y B:**
+  * *Ruta A:* Evalúa $V(k) = U(k)^3$. Como en cada paso la orientación avanza cíclicamente ($s \to h \to b \to s$), tras 3 pasos cada orientación vuelve a sí misma, por lo que $V(k)$ es diagonal por bloques $2\times 2$ en el espacio de orientaciones y $V(0) = U(0)^3 = I_6$. Aplicando `P.node_speeds` a $V(k)$ con escala espacial $1$ (unidades de lado), se obtiene $i \partial_{k_a} V(0) = T_a$ hermítica, sin inclinación ($\text{tr } T_a = 0$) e isótropa ($\{T_a, T_b\} = 2 c_0(V)^2 \delta_{ab} I_6$) con $c_0(V) = 1/2$ (unidades de lado por cada 3 pasos). Como en la rama del nodo ($U(0)\psi = \psi$) las autofases de $U(k)$ y $V(k)$ se relacionan por $e^{-i\Omega(k)} = (e^{-i\omega(k)})^3$, es decir $\omega(k) = \Omega(k)/3$, la velocidad por paso en unidades de lado es $c_0(\text{lado}) = c_0(V)/3 = 1/6$, y normalizada por $\ell = 1/2$ es:
+    $$c_0 = \frac{1/6}{1/2} = \frac{1}{3}.$$
+  * *Ruta B:* Aplica teoría de perturbaciones degenerada de primer orden directamente a un solo paso $U(k)$ en $k=0$, proyectando el generador lineal sobre el subespacio propio $\ker(U(0) - I_6)$ mediante una base ortonormal $Q \in \mathbb{C}^{6\times 2}$ ($Q^\dagger Q = I_2$, obtenida por descomposición QR):
+    $$G_a = Q^\dagger \left( i U(0)^\dagger \frac{\partial U}{\partial k_a}\Big|_{k=0} \right) Q.$$
+    Verifica que $\text{tr}(G_a) = 0$ y $\{G_a, G_b\} = 2 c_{B}^2 \delta_{ab} I_2$ con $c_B = 1/6$ (unidades de lado), luego $c_0 = c_B / \ell = 1/3$.
+  * *Independencia algebraica:* Aunque físicamente ambas rutas miden la derivada del mismo cono de dispersión, computacionalmente son independientes: la Ruta A expande el polinomio de Laurent cúbico $U(z)^3$ y diferencia en $k=0$ sobre $\mathbb{C}^6$ completo; la Ruta B diferencia $U(k)$ a primer orden sin elevar al cubo y proyecta mediante la identidad espectral: si $U(0)Q = Q$ y $U(0)^3 = I_6$, entonces $Q^\dagger (I + U(0)^\dagger + U(0)^{\dagger 2}) = 3Q^\dagger$, de modo que
+    $$Q^\dagger (i \partial_{k_a} U^3(0)) Q = Q^\dagger \left(i \sum_{m=0}^2 U(0)^{\dagger m} \partial_{k_a} U(0) U(0)^{2-m}\right) Q = 3 G_a.$$
+    La coincidencia exacta entre ambas rutas certifica la ausencia de errores de indexación o escala.
+
+* **Coincidencia con el coeficiente $\sqrt{3}/6$ de la fuente:** En la p. 4 de ADMP se indica que la distancia entre puntos medios de los lados de un triángulo es $\sqrt{3}/2$. Como en un triángulo equilátero de lado $L_{\text{tri}}$ la distancia entre puntos medios es $L_{\text{tri}}/2$, la fuente utiliza unidades donde el lado del triángulo vale $L_{\text{tri}} = \sqrt{3}$ (y paso temporal $\varepsilon = 1$). Multiplicando la velocidad en unidades de lado ($c_0 \cdot \ell = 1/6$) por $L_{\text{tri}} = \sqrt{3}$, se obtiene exactamente $\sqrt{3}/6$, coincidiendo con la ecuación $i\partial_t \psi = \frac{\sqrt{3}}{6}(p_x\sigma_x + \sigma_y p_y)\psi$ de ADMP.
+
+---
+
+### 4. C_STRICT
+**Dictamen: PASS**
+
+* **Nilpotencia a un paso:** Escribiendo $U(z) = \sum_{d \in F} M_d z^d$, cada desplazamiento $d \in F$ ocurre en una transición fija de orientación $o_1 \to o_2$ con $o_1 \neq o_2$ (por ejemplo, $d = (1,-1)$ solo aparece en el bloque $(h, s)$, componente $\uparrow$). Por tanto, cada matriz de coeficientes $M_d$ ($6\times 6$) tiene entradas no nulas en una única posición fuera de la diagonal de bloques $3\times 3$ de orientación, lo que implica inmediatamente $M_d^2 = 0$ (y a fortiori $M_d^6 = 0$, verificado por `P.nilpotent`). El movimiento en línea recta no puede repetirse en pasos consecutivos porque la orientación de la arista cambia en cada paso.
+
+* **Supervivencia de los seis vértices de $U^3$ y demostración sin huecos de $h_\infty = h_{\text{conv supp } U^3}/3$:**
+  En tres pasos, cada bloque diagonal de orientación suma tres desplazamientos de un paso. En coordenadas finas, los desplazamientos de un paso en la componente $\uparrow$ son $v_1=(1,-1), v_2=(0,1), v_3=(-1,0)$ (que suman $0$) y en la $\downarrow$ son $-v_1, -v_2, -v_3$. Elegir el signo $\sigma_j \in \{+1,-1\}$ en cada uno de los tres pasos produce desplazamientos totales $\sum_{j=1}^3 \sigma_j v_j \in \{0, \pm 2v_1, \pm 2v_2, \pm 2v_3\}$, es decir:
+  $$\text{supp } U^3 = \{(0,0), \pm(2,-2), \pm(0,2), \pm(-2,0)\}.$$
+  En unidades de lado, los 6 vértices no nulos tienen longitud $1$ (el doble que los pasos de $U$) y ángulos múltiplos de $60^\circ$, formando un hexágono regular de circunradio $1$ e inradio $r_{\text{in}}(V) = \sqrt{3}/2$ (unidades de lado).
+  Para cada vértice $w \in \text{vert}(\text{conv supp } U^3)$, existe una única secuencia de signos $(\sigma_1, \sigma_2, \sigma_3)$ que alcanza $w$ desde una orientación dada $o$. Por tanto, el coeficiente de Laurent $N_w$ de $V = U^3$ en el vértice $w$ es diagonal por bloques de orientación, y en cada bloque $2\times 2$ es de la forma $(W P_{\sigma_3})(W P_{\sigma_2})(W P_{\sigma_1})$, donde $P_+ = \text{diag}(1,0)$ y $P_- = \text{diag}(0,1)$ son proyectores de rango 1. El código verifica explícitamente (`all(survive.values())`) que $(N_w)^6 \neq 0$ para los 6 vértices.
+
+  *Rigurosidad del paso al límite $h_\infty$:*
+  1. Como $N_w$ es una matriz no nilpotente, tiene al menos un autovalor $\lambda \neq 0$, luego $(N_w)^m \neq 0$ para todo entero $m \ge 1$.
+  2. Como $w$ es un punto extremo (vértice) de $\text{conv}(\text{supp } V)$, el coeficiente de $V^m = U^{3m}$ en $m w$ es exactamente $(N_w)^m \neq 0$. Por tanto, $m w \in S_{3m} = \text{supp}(U^{3m})$ para todo $m \ge 1$, lo que demuestra que $\text{conv}(S_{3m}) = m\,\text{conv}(S_3)$, luego para toda dirección $\hat{n}$:
+     $$\frac{1}{3m} \max_{x \in S_{3m}} \hat{n}\cdot x = \frac{1}{3} h_{\text{conv}(S_3)}(\hat{n}).$$
+  3. Para $n = 3m + r$ arbitrario con $r \in \{0,1,2\}$, como $U^n = U^r V^m$, todo elemento $x \in S_n$ es de la forma $y + z$ con $y \in S_{3m}$ y $z \in S_r$. Dado que $\max_{z \in S_r} |z| \le r \ell \le 2\ell$ está uniformemente acotado con respecto a $m$, se tiene:
+     $$\max_{x \in S_n} \hat{n}\cdot x \le m\, h_{\text{conv}(S_3)}(\hat{n}) + 2\ell \implies \limsup_{n\to\infty} \frac{1}{n} \max_{x \in S_n} \hat{n}\cdot x \le \frac{1}{3} h_{\text{conv}(S_3)}(\hat{n}).$$
+  Combinando la subsucesión $n = 3m$ (cota inferior) con la cota superior para todo $n$, el límite superior (y de hecho el límite ordinario) es exactamente $h_\infty(\hat{n}) = \frac{1}{3} h_{\text{conv}(\text{supp } U^3)}(\hat{n})$. El argumento matemático es cerrado y no tiene ningún hueco.
+  Normalizando por $\ell = 1/2$, se obtiene:
+  $$c_{\text{strict}}^{\text{iso}} = \frac{r_{\text{in}}(\text{conv supp } U^3)}{3\ell} = \frac{\sqrt{3}/2}{3 \cdot (1/2)} = \frac{1}{\sqrt{3}}, \qquad \frac{c_{\text{strict}}^{\text{iso}}}{r_{\text{in}}(C_{\text{micro}})} = \frac{1/\sqrt{3}}{\sqrt{3}/2} = \frac{2}{3}.$$
+
+---
+
+### 5. CROSSCHECK_L6A
+**Dictamen: PASS**
+
+* **Geometría de la equivalencia módulo isometría:** En `row_L6a()` (verificador padre), los vectores de desplazamiento en la base $g_1 = (1,0)$, $g_2 = (1/2, \sqrt{3}/2)$ son $u_0 = (1,0)$ ($0^\circ$), $u_1 = (-1,1)$ ($120^\circ$) y $u_2 = (0,-1)$ ($240^\circ$), generando en 3 subpasos el conjunto de soporte $F_{\text{L6a}} = \{(0,0), \pm(2,0), \pm(-2,2), \pm(0,-2)\}$.
+  En L6b, usando la base fina $f_1 = g_1/2$, $f_2 = g_2/2$, los desplazamientos de un paso en el triángulo hacia arriba son $(1,-1)$ ($300^\circ$), $(0,1)$ ($60^\circ$) y $(-1,0)$ ($180^\circ$). Es decir, las direcciones de los 3 subpasos de L6b están rotadas $60^\circ$ ($\pi/3$) respecto a las direcciones $u_0, u_1, u_2$ de L6a. Aunque tras 3 pasos el conjunto de soporte en coordenadas enteras es idéntico ($\text{supp } U^3 = F_{\text{L6a}}$ porque el conjunto de los 6 vértices del hexágono es invariante por rotación de $60^\circ$), la asociación entre los proyectores internos de la moneda $W$ y los 3 ejes del hexágono está rotada $60^\circ$ (y permutada cíclicamente entre los bloques $h, b, s$).
+
+* **Legitimidad del cambio en la comprobación:** El contrato (§4) estipuló como control cruzado: «the source's claim that three updates are equivalent to L6a: compare the three-update symbol with row L6a (same substrate? same $c_0$?)». El contrato no exigió que el símbolo $U^3$ fuera idéntico a L6a bajo la isometría identidad en una elección arbitraria de ejes coordenados. Documentar transparentemente en el informe (§5) y en la salida del script (`same orientation (identity isometry) matches: [False, False, False]`) que la identidad falla porque las aristas del triángulo están rotadas $60^\circ$ respecto a los enlaces del panal, y verificar que el polinomio característico coincide exactamente bajo las rotaciones de $60^\circ, 180^\circ, 300^\circ$ (y 3 reflexiones) del grupo diedral $D_6$, es un análisis geométrico legítimo y riguroso, no un ajuste *post hoc* para ocultar un fallo.
+
+* **¿Qué prueba la igualdad de polinomios característicos?** Para una matriz $B(k) \in \text{U}(2)$ (cada bloque de orientación de $U^3$ en el toro de Bloch $|z_1|=|z_2|=1$), el polinomio característico determina la traza $\text{tr } B(k)$ y el determinante $\det B(k)$, y por tanto determina de forma exacta y completa las dos bandas de cuasienergía $\Omega_\pm(k)$ en toda la zona de Brillouin. Al coincidir $\det(B(M k) - \lambda I_2) = \det(U_{\text{L6a}}(k) - \lambda I_2)$ para una isometría $M \in O(2)$ del hexágono, se demuestra que la relación de dispersión de tres pasos de L6b es exactamente isométrica a la de un paso de L6a (a mitad de escala espacial), lo que implica que todas las velocidades espectrales ($c_0$, $V_{\text{grp}}^{\max}$, etc.) de $U^3$ (por 3 pasos, en unidades de $f_i$) son idénticas a las de L6a (por 1 paso, en unidades de $g_i$).
+
+---
+
+### 6. SCOPE_AND_CODE
+**Dictamen: PASS**
+
+* **Veredicto y estado de las hipótesis:**
+  * Todas las cantidades requeridas por el contrato (§4 ítems 1–5) están certificadas de forma exacta en SymPy; $V_{\text{grp}}^{\max}$ (ítem 6) se deja como `OPEN`, lo que según la regla de parada §6 («`L6B_PARTIAL_<reason>` — encoded, but some entry `OPEN`») corresponde exactamente al veredicto `L6B_PARTIAL_VGRP_OPEN`.
+  * **Ha:** Con $s = 6 \neq 2$, L6b queda fuera del dominio de Ha; Ha permanece en `REFUTED_BY_ROW_L6a`.
+  * **Hb:** Falla en L6b porque $c_{\text{strict}}^{\text{iso}} = 1/\sqrt{3} < r_{\text{in}} = \sqrt{3}/2$ (para las 6 asignaciones admisibles y ambas lecturas de $W$). Según el contrato §5 («if either fails for an assignment that matches Fig. 1, it becomes `REFUTED_BY_ROW_L6b`»), Hb pasa correctamente a `REFUTED_BY_ROW_L6b`.
+  * **Hc:** Se cumple en L6b ($c_0 = 1/3 \le 1/\sqrt{3} = c_{\text{strict}}^{\text{iso}}$). Al haberse cumplido también en todas las demás filas declaradas en el verificador padre (`L1, L2, L5a, L5b, L6a, L6c-L6f`), Hc pasa a `CONFIRMED_IN_DECLARED_ROWS`.
+
+* **Auditoría del código y de las dos lecturas de la moneda $W$:**
+  * En `coin(variant)`, `c_half` $= \sqrt{(1+\sqrt{5}/3)/2} = \cos(\alpha/2)$ y `s_half` $= \sqrt{(1-\sqrt{5}/3)/2} = \sin(\alpha/2)$ con $\alpha = \arccos(\sqrt{5}/3)$.
+    * Para `variant == "printed"`, `U0` es $\begin{pmatrix} \cos(\alpha/2) & -\sin(\alpha/2) \\ \sin(\alpha/2) & \cos(\alpha/2) \end{pmatrix} = e^{-i\alpha\sigma_y/2} = R_{\sigma_y}(+\alpha)$, y $S = \text{diag}(1, e^{2\pi i/3}) = e^{i\pi/3} R_{\sigma_z}(2\pi/3)$, exactamente como están impresas en la p. 3 de ADMP.
+    * Para `variant == "parent"`, `U0` es $R_{\sigma_y}(-\alpha)$ y $S$ se reemplaza por $S^\dagger = S^{-1}$, que son las matrices corregidas en `row_L6a()` del verificador padre para satisfacer $\sigma_z = U_0 \tau_0 U_0^\dagger$ y $\tau_i = U_i^\dagger \sigma_z U_i$. Ambas variantes están bien construidas y el código certifica que todos los invariantes geométricos y espectrales son idénticos para las 4 combinaciones `(white, variant)`.
+  * **Ausencia de checks tautológicos:** Ningún `record()` en `verify_l6b_triangular_row_gate.py` codifica el resultado por definición; cada cantidad ($F$, $\ell$, $r_{\text{in}}$, nilpotencia de los vértices de $U$, diagonalidad por bloques de $U^3$, $c_0$ por rutas A y B, supervivencia de los vértices de $U^3$, $c_{\text{strict}}^{\text{iso}}$) se calcula algebraicamente desde el símbolo de Laurent construido a partir de la geometría de los triángulos y se compara contra el valor analítico exacto.
+  * *Observación menor no bloqueante (aclaración, no fallo matemático):* En `ccw_successor`, la línea `order = sorted(ang, key=lambda o: float(ang[o]))` convierte expresiones exactas `sp.atan2` a `float` para ordenar 3 ángulos separados por $2\pi/3 \approx 2.094$ radianes. Aunque la separación angular hace imposible cualquier ambigüedad numérica, para pureza simbólica absoluta al 100% podría usarse el signo del producto vectorial o `sp.Comparable`, pero esto no constituye un fallo matemático ni requiere reparación.
+  * El informe y el código respetan estrictamente las exclusiones del contrato (§6–§7): no se modifica el verificador padre, no se toca la fila masiva de ADMP y no se reclama promoción automática.
+
+---
+
+### Dictamen Global y Lista de Reparaciones Obligatorias
+
+* **Dictamen Global:** **PASS**
+* **Lista de reparaciones obligatorias:** **Ninguna.** No se ha encontrado ningún fallo matemático, de codificación, de lógica en las cotas asintóticas ni de cumplimiento del contrato en el informe ni en el verificador. La ejecución del gate `L6B_TRIANGULAR_ROW` está lista para su decisión de promoción.

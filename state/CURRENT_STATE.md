@@ -3,6 +3,58 @@
 **Date:** 2026-11-02
 
 **Gate promoted — 2026-11-02:** by direct user instruction («si,
+promuévelo», after the two PASS re-reviews were reported with
+`PROMOTION_PENDING`), `DISPERSION_CORRECTIONS_ACROSS_LATTICES` (Sec. 13,
+[`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md))
+is promoted on `research/schur-stability-audit` in its frozen scope:
+`CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`; Hd
+`REFUTED_BY_ROW_L1` (also by L3s4 for `a < a*`), He
+`CONFIRMED_IN_DECLARED_ROWS`, Hf `REFUTED_BY_ROW_L6e`. Evidence: two
+houses — Gemini PASS on all six blocks; Grok REPAIR_REQUIRED (three
+repairs, two in the report prose, one constant-`True` record), all
+accepted and applied with no value or verdict changed; bounded re-review
+of the repairs Gemini PASS and Grok PASS on R1–R4, identical input. Not
+human review. Declared rows only, no general QCA law, no physical
+interpretation, no novelty; scale of validity in `d >= 2` and
+`V_grp^max` stay OPEN; the observational Phase 2 stays deferred without
+a charter. Chartered the same day by user instruction («haz lo que
+consideres, estás autorizado»); executed on «si»
+([report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
+verifier 81/81 after repairs, SHA256 `b7c451e2…`);
+[reviews](../reports/2026-11-02--dispersion-corrections-across-lattices-review.md).
+Previous status: PRELIMINARY, INDEPENDENT_REVIEW_PASS_TWO_HOUSES,
+PROMOTION_PENDING. Sec. 11, L6b and Sec. 12 stay promoted as below.
+
+**Gate promoted — 2026-11-02:** by user instruction («haz lo que
+consideres, estás autorizado», after the two PASS reviews were reported
+with `PROMOTION_PENDING`), `L6B_TRIANGULAR_ROW`
+([`theory/L6B_TRIANGULAR_ROW_GATE.md`](../theory/L6B_TRIANGULAR_ROW_GATE.md)),
+a revision of `C_ACROSS_LATTICES` restricted to row L6b, is promoted on
+`research/schur-stability-audit` in its frozen scope: row L6b
+`L6B_PARTIAL_VGRP_OPEN` with `s = 6`, `r_in = sqrt3/2`, `c_0 = 1/3`,
+`c_strict^iso = 1/sqrt3`; parent Hb `REFUTED_BY_ROW_L6b` (first declared
+row where `c_strict^iso < r_in`), Hc `CONFIRMED_IN_DECLARED_ROWS`, Ha
+unchanged. Evidence: two houses, Gemini and Grok, PASS on all six blocks,
+no repairs; Grok did not rerun the verifier. Not human review. One row
+of a declared list, no general QCA law, no novelty; ADMP massive row and
+`V_grp^max` stay OPEN. Chartered the same day by direct user instruction
+(«vamos con L6b»; «sí, apruébalo y empieza»). Massless row only; it
+decides parent Hb/Hc only. The parent
+verifier is not modified. **Executed 2026-11-02**
+([report](../reports/2026-11-02--l6b-triangular-row.md), verifier 64/64):
+`L6B_PARTIAL_VGRP_OPEN`. The text fixes the labelling (6 admissible, all
+equivalent); `s = 6`, not the parent's `s = 2`; `r_in = sqrt3/2`,
+`c_0 = 1/3`, `c_strict^iso = 1/sqrt3` (normalised), identical for both
+colourings and both coin readings; source coefficient `sqrt3/6` and the
+three-update equivalence with L6a (up to a 60° rotation) reproduced. Promoted
+as stated above: parent Hb `REFUTED_BY_ROW_L6b`, Hc
+`CONFIRMED_IN_DECLARED_ROWS`, Ha unchanged. [Reviews](../reports/2026-11-02--l6b-triangular-row-review.md)
+2026-11-02: Gemini (gemini-4-argon) PASS on all six blocks, Grok
+(grok-4.7) PASS on all six blocks, identical input without Fig. 1, no
+mandatory repairs. Previous status: PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING.
+
+**Gate promoted — 2026-11-02:** by direct user instruction («si,
 promuévelo»), `HEX_CEILING` (Sec. 12) is promoted on
 `research/schur-stability-audit` in its frozen scope: L0
 `PROVED_IN_REPO` (`c_0 <= r_in` on `W_hex`, Bernstein proved in-repo);
@@ -74,8 +126,12 @@ and #12) was merged into that branch (`ac19f4d`) to resolve the conflict in
 PR #13; the 2026-09-28 checkpoint and the 4B closure below come from that
 merge. By direct user instruction («fusiona el PR a main»), PR #13 was
 merged into `main` on 2026-11-02 as `0e52d90`, so these promotions are now
-on `main` with the same frozen scopes. Repository integration does not by
-itself promote an evidence level.
+on `main` with the same frozen scopes. The later promotions of
+`L6B_TRIANGULAR_ROW` and `DISPERSION_CORRECTIONS_ACROSS_LATTICES`
+(2026-11-02) were made on the same branch and, by direct user instruction
+(«FUSIONAMOS main»), integrated into `main` through PR #15 with the same
+frozen scopes. Repository integration does not by itself promote an
+evidence level.
 
 ## Reading guide and synchronization — 2026-09-28
 
@@ -2202,8 +2258,14 @@ status: PRELIMINARY, PROMOTION_PENDING. In the declared rows: square,
 BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
 has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
 L6d on the identical substrate; `C_infty^strict = C_micro` in every
-computed row. Ha `REFUTED_BY_ROW_L6a`; Hb, Hc hold in every decided row
-and stay OPEN only because L6b is undecided.
+computed row. Ha `REFUTED_BY_ROW_L6a`. **Row L6b decided and promoted 2026-11-02**
+([`L6B_TRIANGULAR_ROW`](../theory/L6B_TRIANGULAR_ROW_GATE.md),
+[report](../reports/2026-11-02--l6b-triangular-row.md),
+[reviews](../reports/2026-11-02--l6b-triangular-row-review.md)): `s = 6`,
+`r_in = sqrt3/2`, `c_0 = 1/3`, `c_strict^iso = 1/sqrt3`, so Hb
+`REFUTED_BY_ROW_L6b` and Hc `CONFIRMED_IN_DECLARED_ROWS`. The table
+status name `..._L6B_UNENCODED_...` above is historical: L6b is now
+encoded in its own gate, the parent verifier unchanged.
 At finite mass, `c_H = c_0 theta/sin theta` where isotropic and no
 computed new row has an isotropic `c_omega2` (anisotropy `O(sin theta)`).
 Two ADMP sign issues are recorded. Not promoted; no general law.
@@ -2258,3 +2320,56 @@ cone. Targets: L0 (`c_0 <= r_in`, to be proved or cited, not assumed),
 T1 (`n = 3` antipodal subclass: exact supremum), T2 (whole class: gap
 proof or explicit witness). Hypotheses HX0–HX2 OPEN. No verdict from
 numerics or failed search; restricted results stay restricted.
+
+## 13. Dispersion corrections across lattices — chartered and promoted 2026-11-02
+
+Contract: [`DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
+frozen before solving. Authorization: user instruction, 2026-11-02
+(«haz lo que consideres, estás autorizado»), given on a draft that was
+then revised before freezing in three points and one removal, all
+recorded here so the revision is traceable: (i) the expansion now
+allows an odd term `beta(n̂)|k|` and records the order of the lowest
+nonvanishing correction, because a `C_3`-symmetric node admits
+`cos 3 theta` at relative order `|k|`; (ii) the harmonics are those of
+the walk's own symmetry group `G_walk`, found exactly per row, and the
+charter records that under `C_6` the degree-4 term is isotropic, so
+`cos 6 theta` cannot appear before relative order `|k|^4`; (iii) He
+excludes `d = 1` and names the ceiling rows; the source script of every
+symbol is named. Removed: the draft's Phase 2 conditional dictionary to
+observational bounds (second question; needs the photon identification
+the claim ceiling forbids; deferred to its own charter if ever wanted).
+
+Single question: the exact lowest-order correction to the massless
+dispersion per declared row, its order, sign and angular pattern. Rows:
+the thirteen massless rows of Sec. 11 plus L6b, every symbol imported
+read-only from a versioned script. Hypotheses Hd (`alpha_0 < 0` in every
+row), He (ceiling rows with `d >= 2` have a nonzero anisotropic
+coefficient), Hf (rows on one substrate do not share the correction) are
+OPEN. Verdicts: `CORRECTIONS_TABLE_COMPLETE` / `_PARTIAL_<reason>`; per
+hypothesis `CONFIRMED_IN_DECLARED_ROWS` / `REFUTED_BY_ROW_<Id>` /
+`DECIDED_BY_SYMMETRY`. Execution: report plus
+`scripts/verify_dispersion_corrections_gate.py`, then independent
+cross-family review, then a separate promotion. No claim about our
+universe, no general QCA law, no novelty claim.
+
+Execution (2026-11-02): [report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
+verifier `scripts/verify_dispersion_corrections_gate.py` (SHA256
+`b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`,
+81/81 after the review repairs; 79/79 at the reviewed `791f0d80d279`).
+Status `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`,
+PRELIMINARY until promotion; reviews Gemini PASS, Grok REPAIR_REQUIRED, repairs applied;
+bounded re-review Gemini PASS, Grok PASS. **Promoted 2026-11-02** by
+direct user instruction («si, promuévelo») in the frozen scope below.
+Findings: the lowest correction
+is a relative-order-`|k|` term `beta` exactly in the six rows whose walk
+group lacks inversion (L5a, L5b, L4 with `T_d`; L6a, L6b with `D_3`;
+L3s4), and `alpha` elsewhere; the harmonic content matches the walk's
+group in every row (the `D_6` rows L6c, L6d, L6f are isotropic through
+relative order `|k|^2`, first `cos 6 theta` at `|k|^4`). Hd
+`REFUTED_BY_ROW_L1` (`alpha_0 = 0`, exactly linear) and by L3s4 for
+`0 < a < a* = sqrt3 sqrt(17 - sqrt154)/9`; every other row has
+`alpha_0 < 0`. He `CONFIRMED_IN_DECLARED_ROWS` (L2, L6e `cos 4 theta`; L3
+`K4`; L5a, L5b, L4 `n1 n2 n3`). Hf `REFUTED_BY_ROW_L6e` (L2 and L6e
+identical; also L5a = the `+i` Weyl block of L5b, and L6d = L6f through
+`|k|^2`). Scale of
+validity OPEN in `d >= 2`; `V_grp^max` OPEN. No physical interpretation.
