@@ -11,8 +11,14 @@ involution, Eq. (27); operator splitting; continuum cone inside the
 lattice cone, Sec. V), not an identification; published hexagonal walks
 already realise `c_0 < c_strict^iso` (Sec. 11). The counterexample to
 strong `B_infty^*` in the declared s=4 class, its certificate and its
-review are unchanged. Next candidate under comparison: the IR-corona
-theorem of `papers/ir-corona/`.
+review are unchanged. Next candidate compared, the IR-corona theorem of
+`papers/ir-corona/`: [check](../reports/2026-11-02--ir-corona-prior-art-check.md)
+found neither prior prefactor asymptotics outside the propagation region
+in `d >= 2` (CJWW 2024, p. 13: only two 1D studies) nor an ACSV theorem
+yielding the result directly (degenerate-point theory concerns
+coefficients of a fixed rational function; the signal is a sum with
+N-dependent non-analytic profiles). Candidacy stands, `NOVELTY = OPEN`;
+targeted search, unreviewed; ACSV monograph (2nd ed.) not read.
 
 **Synthesis written — 2026-11-02:** by user instruction («redacta la
 respuesta»), [`reports/2026-11-02--c-across-substrates-answer.md`](../reports/2026-11-02--c-across-substrates-answer.md)

@@ -50,9 +50,56 @@ satisfies and which yields the result directly.
   coefficient, operational IR-admissible response, outside region, 3D,
   multi-component).
 
-## 3. What would close (b), not done
+## 3. Closure of (b) — ACSV degenerate-point theory (2026-11-02, same day)
 
-Read the degenerate-point chapters of the ACSV monograph and check whether
-a stated theorem covers a flat tangential direction with lattice-plane
-sums in the normal directions; and a forward-citation search of CRT,
-Sunada–Tate and BBBP for `d >= 2` outside-region results.
+User instruction: «cierra (b) con la teoría ACSV de puntos degenerados».
+Pre-step check: known, (b) undecided, leader `N^{-13/2}` with a flat
+tangential direction; question, does a degenerate-point ACSV theorem,
+with hypotheses our problem satisfies, yield the Theorem directly;
+abandonment, finding one.
+
+**Form of the hypotheses (read).**
+
+| Source | Passage | Finding |
+| --- | --- | --- |
+| Baryshnikov, Pemantle, *Asymptotics of multivariate sequences, part III: quadratic points*, arXiv:0810.4898v3 (alphaXiv full text) | Theorem 3.7 and the quadratic-point hypotheses 3.1; Sec. 4.3 (two-dimensional quantum random walk); Introduction | The degenerate (quadratic/cone) point theorem gives asymptotics of the coefficients `a_r` of a fixed `F = P/Q^s`, "uniformly over `r in K*`", `K*` a compact subcone of the interior of `N*`. Outside `N*` the stated result is only "exponentially small"; no prefactor is given there. Sec. 4.3 applies the theory to pointwise amplitudes of the 2D Hadamard walk from its space-time generating function. |
+| Baryshnikov, Melczer, Pemantle, *Stationary points at infinity for analytic combinatorics*, arXiv:1905.05250v3 (alphaXiv full text) | Sec. 1.1; Example 1 | ACSV "studies coefficients of multivariate generating functions", `a_r` given by a Cauchy integral of a fixed `F(z)`, as `r` varies over a cone; quantum walks enter through the coefficients of their space-time generating function. |
+
+**Form of our quantity (read).** In `papers/ir-corona/ir-corona.tex`,
+Sec. "Protocol and infrared admissibility", the signal
+`delta_{M,M_B}(N) = |<psi_1,E psi_1> - <psi_0,E psi_0>|` is a bilinear sum
+over `O(N^3)` sites of amplitudes weighted by N-dependent data: the
+resource `g(Np)` (`g(q) = (1-|q|^2)_+^2`), Alice's profile
+`F_N(x) = (1-16|x|^2/N^2)_+^2` inside `exp(i pi/2 F_N M)`, and Bob's
+profile `h_N`. These profiles are compactly supported, only finitely
+differentiable at the spheres, and rescale with `N`. Remark "Counting
+the power" attributes the exponent `13/2` to the resource (`3/2 + 3/2`),
+the profiles (`2 + 2`), the in-plane areas (`-2`), one normal Gaussian
+(`1/2`) and the tangential rescaling (`1`); the flat tangential
+direction is confined by the profiles; the quasi-periodic `C(theta_N)`
+comes from lattice planes against the spheres bounding the regions.
+
+**Verdict on (b): `NOT_MET`.** The ACSV theorems read concern single
+coefficients of a fixed rational function, uniformly over compact
+direction cones; `delta(N)` is not such a coefficient, its weights depend
+on `N` and are non-analytic, and the features that fix the leader (the
+`13/2`, the flat direction confined by profiles, `C(theta_N)`) come from
+that summation, which none of the theorems read addresses. In the
+exponentially small regime, the quadratic-point paper states only
+exponential smallness. No theorem read yields the result directly.
+
+**What ACSV plausibly does supply, not claimed as checked:** pointwise
+amplitude asymptotics of the walk's space-time generating function, which
+could replace part of the paper's own saddle-point input. That would
+shorten a proof, not anticipate the result.
+
+**Not read:** the monograph Pemantle–Wilson–Melczer, *Analytic
+Combinatorics in Several Variables*, 2nd ed. (2024), and its chapters on
+cone points and on quantum walks `[UNVERIFIED]`; a theorem there on
+weighted sums with N-dependent non-analytic profiles would reopen (b).
+
+## 4. Status after (a) and (b)
+
+Both abandonment conditions are not met in what was read. The candidacy
+stands with `NOVELTY = OPEN` and the paper's narrow claim unchanged. The
+search is targeted, not exhaustive, and this report is unreviewed.
