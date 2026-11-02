@@ -18,7 +18,14 @@ in `d >= 2` (CJWW 2024, p. 13: only two 1D studies) nor an ACSV theorem
 yielding the result directly (degenerate-point theory concerns
 coefficients of a fixed rational function; the signal is a sum with
 N-dependent non-analytic profiles). Candidacy stands, `NOVELTY = OPEN`;
-targeted search, unreviewed; ACSV monograph (2nd ed.) not read.
+targeted search, unreviewed; ACSV monograph (2nd ed.) not read. Third
+candidate, the hexagonal ceiling (Sec. 12):
+[check](../reports/2026-11-02--hex-ceiling-prior-art-check.md) found no
+prior speed bound, 120° optimum or non-attainment statement for
+triangular/hexagonal walks; P17 (Fig. 1, p. 6) excludes isotropic `s = 2`
+walks on the triangular lattice in its sense, so the ceiling concerns a
+class P17 does not cover. Not refuted, `NOVELTY = OPEN`, weight low (L0
+Bernstein, T1 elementary, T2 restricted, whole class OPEN).
 
 **Synthesis written — 2026-11-02:** by user instruction («redacta la
 respuesta»), [`reports/2026-11-02--c-across-substrates-answer.md`](../reports/2026-11-02--c-across-substrates-answer.md)
