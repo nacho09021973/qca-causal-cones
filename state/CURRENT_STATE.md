@@ -6,8 +6,17 @@
 ([`theory/L6B_TRIANGULAR_ROW_GATE.md`](../theory/L6B_TRIANGULAR_ROW_GATE.md)),
 a revision of `C_ACROSS_LATTICES` restricted to row L6b, is frozen and
 authorized by direct user instruction («vamos con L6b»; «sí, apruébalo y
-empieza»). Status **OPEN**, not executed. Massless row only; it decides
-parent Hb/Hc only. The parent verifier is not modified.
+empieza»). Massless row only; it decides parent Hb/Hc only. The parent
+verifier is not modified. **Executed 2026-11-02**
+([report](../reports/2026-11-02--l6b-triangular-row.md), verifier 64/64):
+`L6B_PARTIAL_VGRP_OPEN`. The text fixes the labelling (6 admissible, all
+equivalent); `s = 6`, not the parent's `s = 2`; `r_in = sqrt3/2`,
+`c_0 = 1/3`, `c_strict^iso = 1/sqrt3` (normalised), identical for both
+colourings and both coin readings; source coefficient `sqrt3/6` and the
+three-update equivalence with L6a (up to a 60° rotation) reproduced. If
+promoted: parent Hb `REFUTED_BY_ROW_L6b`, Hc `CONFIRMED_IN_DECLARED_ROWS`,
+Ha unchanged. **PRELIMINARY, independent review pending; nothing
+promoted.**
 
 **Gate promoted — 2026-11-02:** by direct user instruction («si,
 promuévelo»), `HEX_CEILING` (Sec. 12) is promoted on
