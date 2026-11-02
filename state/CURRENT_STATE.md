@@ -2,6 +2,15 @@
 
 **Date:** 2026-11-02
 
+**Synthesis written — 2026-11-02:** by user instruction («redacta la
+respuesta»), [`reports/2026-11-02--c-across-substrates-answer.md`](../reports/2026-11-02--c-across-substrates-answer.md)
+collects the promoted answer to "how much is c on different substrates"
+in the declared classes: the substrate fixes the ceiling `c_0 <= r_in`,
+the walk fixes `c_0` below it, and whether the ceiling is reached depends
+on the substrate (reached on line, square, BCC, cube; not by any declared
+hexagonal walk; hexagonal whole class OPEN). No new computation; changes
+no evidence level; the synthesis itself is unreviewed (PRELIMINARY).
+
 **Line abandoned — 2026-11-02:** by direct user instruction («abandona
 H1»), after the line review
 [`reports/2026-11-02--research-lines-known-question-abandonment.md`](../reports/2026-11-02--research-lines-known-question-abandonment.md)

@@ -26,7 +26,7 @@ authorization). Known, at the level stated:
 
 | # | Fact | Level and source |
 | --- | --- | --- |
-| K1 | `c_0 <= c_strict^iso` in every direction | PROVED_UNDER_FROZEN_CONTRACT, one independent review (CS Sec. 7.2) |
+| K1 | `c_0 <= c_strict^iso` in every direction, for the class on the BCC step set `N_3`; outside `N_3` only confirmed row by row (Hc) | PROVED_UNDER_FROZEN_CONTRACT on `N_3`, one independent review (CS Sec. 7.2); `CONFIRMED_IN_DECLARED_ROWS` elsewhere (CS Sec. 11, L6b) |
 | K2 | `c_strict^iso <= r_in(C_micro)` in general | CS Sec. 4 (B_infty^* paragraph) |
 | K3 | `c_0` is not fixed by the substrate: on the BCC step set `N_3` the s=4 family has `c_0 = a/sqrt3` for every `0 < a < 1`; on one hexagonal substrate ADMP and JDW L6d give `c_0/r_in = 1/sqrt3` and `sqrt3/2` | COUNTEREXAMPLE_VERIFIED (CS Sec. 4.1); promoted rows (CS Sec. 11) |
 | K4 | `c_0 = r_in` is attained on the line, square and BCC/cubic rows | promoted in declared rows (CS Sec. 11) |
@@ -36,9 +36,12 @@ authorization). Known, at the level stated:
 | K8 | Lowest dispersion correction per row; in the `beta` rows the radial group speed near the node is `c_0 (1 + 2 beta t + ...)`, so it exceeds `c_0` in the directions with `beta > 0` | promoted (CS Sec. 13); report Sec. 3.5 |
 | K9 | No absolute value of `c` in physical units is derivable in the frozen flat class | `NO_ABSOLUTE_SCALE_DERIVABLE` (CS Sec. 8.21) |
 
+Correction (2026-11-02, same day): K1 first omitted its `N_3` scope; fixed
+when the answer write-up checked it against CS Sec. 7.2.
+
 Consequence for the goal, read off K1–K5 and K9: in the declared classes
 `c` is not a number fixed by the substrate. What the substrate fixes is an
-upper bound, `c_0 <= r_in(C_micro)`, and the walk decides where below it
+upper bound, `c_0 <= r_in(C_micro)` (in every declared row), and the walk decides where below it
 `c_0` falls. The residual substrate question that is still well posed is
 the supremum of `c_0/r_in` over a stated class of walks on each substrate,
 and which walks attain it. It is decided for line, square and BCC (value
