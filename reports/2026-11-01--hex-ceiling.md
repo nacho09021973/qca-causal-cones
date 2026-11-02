@@ -11,7 +11,8 @@ Author: Claude Code (Claude Opus 5.5), at the user's direction.
 scalar Bernstein inequality, prior art); T1 `GAP_PROVED_IN_CLASS` with
 supremum `sqrt3/2`, attained; T2 `PROVED_FOR_MINIMAL_SUPPORT`
 (`F within {0} U vert(H)`, any s=2 walk, no product form assumed); T2 in
-general OPEN.** Evidence **PRELIMINARY**
+general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`. Execution stopped here; ready
+for independent review.** Evidence **PRELIMINARY**
 (no independent review). Not promoted.
 
 ## 1. L0 — the ceiling `c_0 <= r_in` on `W_hex`
@@ -152,16 +153,33 @@ HX2 holds in this subclass; HX2 in general is OPEN. No supremum is
 claimed for this subclass beyond T1's `sqrt3/2`, which it contains; the
 gap here is qualitative (`<`), not a bound.
 
-## 4. Not established
+## 4. Attempt beyond minimal support (inconclusive)
+
+The same reduction for the radius-2 hexagonal ball (19 points: origin,
+inner ring, edge midpoints, vertices; contains JDW L6c) leaves 56 free real
+parameters after the layer equations and 730 quadratic unitarity
+equations. A grevlex Gröbner basis over the complex field did not finish
+within the agreed 900 s cap (exit 124). Even a finished basis other than
+`{1}` would not decide real solvability (the minimal case is consistent
+over `C`; its contradiction is real). The attempt is recorded in the
+exploratory script `scripts/explore_hex_saturation_support.py`; it is not
+evidence for any verdict. Per the contract's stop rule, T2 is recorded as
+`OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`.
+
+## 5. Not established
 
 - T2 for supports with further lattice points (edge-interior or interior
   points, e.g. JDW L6c). HX2 is OPEN there. The minimal-support result does
-  not extend by itself.
+  not extend by itself, and the failed computation is not evidence either
+  way.
 - Nothing for `s > 2`, other lattices, masses.
 - No novelty claim: Bernstein is prior art; the T1 computation is
   elementary.
 
-## 5. Next step
+## 6. Next step
 
-T2 beyond minimal support, under the same contract. Then independent cross-family review and a
+Independent cross-family review of L0, T1 and the minimal-support T2, then
+a separate promotion. Extending T2 needs a new approach (e.g. a structural
+argument on edge polynomials, or real-algebraic certificates) and is not
+in progress. Then independent cross-family review and a
 separate promotion.

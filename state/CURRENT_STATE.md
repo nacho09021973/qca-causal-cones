@@ -2156,8 +2156,10 @@ coplanar at 120° (ADMP `g = 1/3`, JDW L6d `g = -1/2`). T2
 `F within {0} U vert(H)` reaches the ceiling (saturation forces exact
 two-layer restrictions on the facet-normal lines; the resulting
 polynomial system has no real solution; square-substrate positive
-control passes); verifier 24/24. T2 in general OPEN. All PRELIMINARY,
-unreviewed, not promoted.
+control passes); verifier 24/24. T2 in general
+`OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` (19-point ball: Groebner over C did
+not finish in 900 s; inconclusive, recorded as exploratory). Execution
+stopped; review pending. All PRELIMINARY, not promoted.
 
 Charter: class `W_hex`: translation-
 invariant `s = 2` walks on the triangular lattice, one update a product

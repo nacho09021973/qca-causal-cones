@@ -328,3 +328,9 @@ Does **not** certify: the Bernstein step of L0 and the Bernstein-equality /
 Julia step of T2 (prior art, applied in the report), the normal-form
 reduction, the reduction of a general `n = 3` antipodal walk to product
 form, or T2 beyond minimal support. Not independently reviewed.
+
+`explore_hex_saturation_support.py` is **exploratory, not a certificate**:
+it builds the same saturation system for a given support and runs a
+grevlex Gröbner basis over `C`. Its docstring records the runs (minimal:
+consistent over `C`, 0.5 s; 19-point ball: not finished in 900 s). It
+supports no verdict.
