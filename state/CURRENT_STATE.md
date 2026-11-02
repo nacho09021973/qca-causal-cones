@@ -7,10 +7,14 @@
 is frozen and authorized by user instruction («haz lo que consideres,
 estás autorizado»). **Executed 2026-11-02** (user «si»;
 [report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
-verifier 79/79): `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`.
+verifier 81/81 after repairs): `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`.
 Hd `REFUTED_BY_ROW_L1` (also by L3s4 for `a < a*`), He
-`CONFIRMED_IN_DECLARED_ROWS`, Hf `REFUTED_BY_ROW_L6e`. **PRELIMINARY,
-independent review pending; nothing promoted.** It is the active front;
+`CONFIRMED_IN_DECLARED_ROWS`, Hf `REFUTED_BY_ROW_L6e`.
+[Reviews](../reports/2026-11-02--dispersion-corrections-across-lattices-review.md):
+Gemini PASS on all six blocks; Grok REPAIR_REQUIRED (three repairs, two
+in the report prose, one constant-`True` record), all accepted and
+applied, no value or verdict changed. **PRELIMINARY, review of the
+repairs pending; nothing promoted.** It is the active front;
 Sec. 11 and L6b stay promoted as below.
 
 **Gate promoted — 2026-11-02:** by user instruction («haz lo que
@@ -2338,9 +2342,11 @@ universe, no general QCA law, no novelty claim.
 
 Execution (2026-11-02): [report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
 verifier `scripts/verify_dispersion_corrections_gate.py` (SHA256
-`791f0d80d2790f34b72521c90622fa0056fd629fa1b3ef89addfc2ad664e6c2a`,
-79/79). Status `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`,
-PRELIMINARY, independent review pending. Findings: the lowest correction
+`b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`,
+81/81 after the review repairs; 79/79 at the reviewed `791f0d80d279`).
+Status `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`,
+PRELIMINARY; reviews Gemini PASS, Grok REPAIR_REQUIRED, repairs applied,
+their review pending. Findings: the lowest correction
 is a relative-order-`|k|` term `beta` exactly in the six rows whose walk
 group lacks inversion (L5a, L5b, L4 with `T_d`; L6a, L6b with `D_3`;
 L3s4), and `alpha` elsewhere; the harmonic content matches the walk's

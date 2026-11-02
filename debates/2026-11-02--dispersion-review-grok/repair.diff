@@ -1,0 +1,123 @@
+diff --git a/reports/2026-11-02--dispersion-corrections-across-lattices.md b/reports/2026-11-02--dispersion-corrections-across-lattices.md
+index e7984d3..268c7e7 100644
+--- a/reports/2026-11-02--dispersion-corrections-across-lattices.md
++++ b/reports/2026-11-02--dispersion-corrections-across-lattices.md
+@@ -10,13 +10,14 @@ preregistration commit `a7ff5b7` (contract SHA256
+ from the script named in contract Sec. 2.
+ **Verifier:**
+ [`scripts/verify_dispersion_corrections_gate.py`](../scripts/verify_dispersion_corrections_gate.py),
+-SHA256 `791f0d80d2790f34b72521c90622fa0056fd629fa1b3ef89addfc2ad664e6c2a`, 79/79 exact checks (Python 3.12.3,
++SHA256 `b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`, 81/81 exact checks after the review repairs (79/79 at the reviewed SHA256 `791f0d80d2790f34b72521c90622fa0056fd629fa1b3ef89addfc2ad664e6c2a`) (Python 3.12.3,
+ `sympy==1.14.0`, interpreter `/home/adnac/venvs/torch-gpu/bin/python`, as
+ `scripts/README.md` records for earlier runs; the system `python3` has no
+ SymPy). Run time about 11 min, dominated by the symmetry test of
+ L3s4. The imported verifiers are unchanged.
+ **Status:** `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN` —
+-PRELIMINARY, independent review pending. Nothing is promoted by this report.
++PRELIMINARY. Reviewed: Gemini PASS, Grok REPAIR_REQUIRED (three repairs,
++applied in Sec. 5); review of the repairs pending. Nothing is promoted by this report.
+ 
+ ## 1. Result
+ 
+@@ -72,7 +73,8 @@ Hypotheses (contract Sec. 4):
+ - **Hf** (no two rows on one substrate share `beta` and `alpha`):
+   **`REFUTED_BY_ROW_L6e`**. L2 and L6e have identical `beta`, `alpha`,
+   group-velocity coefficients and `t^4` harmonics. Further shared pairs:
+-  L5a with each Weyl block of L5b, and L6d with L6f through relative order
++  L5a with the Weyl block of L5b whose `beta` has L5a's sign (the other
++  block differs in that sign), and L6d with L6f through relative order
+   `t^2`. Under the weaker reading of Hf's header ("do not all share"),
+   the square substrate also refutes it, since it has only these two rows.
+   On the hexagon and BCC substrates the corrections are not all equal.
+@@ -154,11 +156,17 @@ after three updates.
+ - `alpha <= 0` pointwise in L2, L6e, L3, L5a, L5b, L4 (closed forms in
+   Sec. 1), vanishing only along the coordinate axes. `alpha < 0` pointwise
+   in L6a, L6b (`-46/1728 <= alpha <= -36/1728` for L6a), L6c, L6d, L6f.
+-- In the rows with `beta != 0`, the lowest correction takes both signs: it
+-  is odd under `n̂ -> -n̂`. These rows are not "subluminal at short
+-  wavelength" in every direction even though `alpha_0 < 0`. The phase
+-  speed of the upper branch exceeds `c_0` near the node where
++- In L5a, L5b, L4, L6a and L6b, `beta` is odd under `n̂ -> -n̂`, so the
++  lowest correction takes both signs. These rows are not "subluminal at
++  short wavelength" in every direction even though `alpha_0 < 0`. The
++  phase speed of the upper branch exceeds `c_0` near the node where
+   `beta(n̂) > 0`, for example along `n1 n2 n3 > 0` in L5a.
++- In L3s4, `beta = beta_0 + beta_3 n1 n2 n3` with `beta_0 != 0`, so it is
++  not odd. Since `|n1 n2 n3| <= 1/(3 sqrt3)`, `beta` keeps the sign of
++  `beta_0` on the whole sphere iff `a^2 < (19 - 6 sqrt3)/11`, and takes
++  both signs above that threshold. The sign of `beta_0` depends on the
++  cluster and reverses between the upper and lower branch (Sec. 3.4).
++  The verifier checks the threshold exactly.
+ - L3s4: `alpha_0` changes sign at `a*` (Sec. 1).
+ 
+ ### 3.4 L3s4: a branch-dependent quadratic term
+@@ -229,6 +237,22 @@ as contract Sec. 3 item 6 allows.
+   elements. They now apply only where `|G_walk| >= 24` and are reported
+   descriptively otherwise.
+ 
++Repairs after the independent review
++([record](2026-11-02--dispersion-corrections-across-lattices-review.md)),
++all three from Grok, checked before acceptance:
++
++- R1: Sec. 3.3 claimed that every row with `beta != 0` has an odd
++  lowest correction. False for L3s4; restricted, and the threshold
++  `a^2 = (19 - 6 sqrt3)/11` added, with an exact check in the verifier.
++- R2: Sec. 1 said L5a shares `beta` and `alpha` with "each" Weyl block of
++  L5b; it shares them with one block only.
++- R3: the verifier's record that the sign of `alpha_0` is decided in
++  every row had the constant predicate `True`. It now requires an exact
++  sign for each numeric `alpha_0` and a complete Sturm sign table for
++  L3s4.
++
++No value, table entry or verdict changed.
++
+ ## 6. What this does not claim
+ 
+ - No physical interpretation of `alpha` or `beta`, no observational
+@@ -243,5 +267,4 @@ as contract Sec. 3 item 6 allows.
+ 
+ ## 7. Next step
+ 
+-Independent cross-family review of this report and of the verifier
+-(SHA256 above), then a separate promotion decision.
++Bounded review of the three repairs, then a separate promotion decision.
+diff --git a/scripts/verify_dispersion_corrections_gate.py b/scripts/verify_dispersion_corrections_gate.py
+index f3c0476..9e98ee8 100644
+--- a/scripts/verify_dispersion_corrections_gate.py
++++ b/scripts/verify_dispersion_corrections_gate.py
+@@ -772,9 +772,32 @@ def main():
+         table[label] = sgn
+         print(f"  {label}: alpha0 = {a0}; sign = {sgn if sgn is not None else 'depends on a (see report)'}; "
+               f"odd parts of omega^2 vanish: {info['odd_zero']}; phi == 0: {info['phi_zero']}")
+-    undecided = [l for l, s in table.items() if s is None]
+-    record("Hd: the sign of alpha0 is decided exactly in every row (or left to the report for symbolic a)",
+-           True, f"undecided: {undecided}")
++    def sturm_table_complete(info):
++        """Intervals cover (0, 1) contiguously, each with an exact nonzero sign."""
++        sg = info.get("alpha0_signs")
++        return bool(sg) and sg[0][0] == 0 and sg[-1][1] == 1 \
++            and all(sg[i][1] == sg[i + 1][0] for i in range(len(sg) - 1)) \
++            and all(x[2] in (1, -1) for x in sg)
++    undecided = [l for l, s in table.items() if s is None and not sturm_table_complete(results[l])]
++    record("Hd: the sign of alpha0 is decided exactly in every row (exact sign of each numeric alpha0; "
++           "complete Sturm sign table on 0 < a < 1 for L3s4)", not undecided, f"undecided: {undecided}")
++    # Sign of beta in L3s4 (review R1): beta = beta0 + beta3 n1 n2 n3 with
++    # |n1 n2 n3| <= 1/(3 sqrt3), so beta keeps the sign of beta0 on the whole
++    # sphere iff beta3^2 / 27 < beta0^2. The boundary in 0 < a < 1 is
++    # a^2 = (19 - 6 sqrt3)/11 (hand derivation, report Sec. 3.3).
++    for label in ("L3s4[+pi/4]", "L3s4[-pi/4]"):
++        info = results[label]
++        gap = sp.factor(sp.together(info["beta0"] ** 2 - info["beta3"] ** 2 / 27))
++        num = sp.Poly(sp.fraction(gap)[0], A_SYM)
++        a2 = (19 - 6 * R3) / 11
++        roots_in = num.count_roots(0, 1) - (1 if num.eval(0) == 0 else 0) - (1 if num.eval(1) == 0 else 0)
++        at_boundary = zero(sp.fraction(gap)[0].subs(A_SYM, sp.sqrt(a2)))
++        below = P.positive(gap.subs(A_SYM, sp.Rational(1, 2)))
++        above = P.positive(gap.subs(A_SYM, sp.Rational(19, 20)))
++        record(f"{label}: beta keeps one sign on the sphere iff a^2 < (19 - 6 sqrt3)/11 "
++               f"(single root of beta0^2 - beta3^2/27 in 0 < a < 1)",
++               roots_in == 1 and at_boundary and below == 1 and above == -1,
++               f"beta0^2 - beta3^2/27 = {gap}")
+     hd = all(s is not None and s < 0 for s in table.values())
+     print(f"  Hd (alpha0 < 0 in every row): {hd}; rows with alpha0 >= 0: "
+           f"{[l for l, s in table.items() if s is not None and s >= 0]}")

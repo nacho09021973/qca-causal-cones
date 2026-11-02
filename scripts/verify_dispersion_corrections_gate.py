@@ -772,9 +772,32 @@ def main():
         table[label] = sgn
         print(f"  {label}: alpha0 = {a0}; sign = {sgn if sgn is not None else 'depends on a (see report)'}; "
               f"odd parts of omega^2 vanish: {info['odd_zero']}; phi == 0: {info['phi_zero']}")
-    undecided = [l for l, s in table.items() if s is None]
-    record("Hd: the sign of alpha0 is decided exactly in every row (or left to the report for symbolic a)",
-           True, f"undecided: {undecided}")
+    def sturm_table_complete(info):
+        """Intervals cover (0, 1) contiguously, each with an exact nonzero sign."""
+        sg = info.get("alpha0_signs")
+        return bool(sg) and sg[0][0] == 0 and sg[-1][1] == 1 \
+            and all(sg[i][1] == sg[i + 1][0] for i in range(len(sg) - 1)) \
+            and all(x[2] in (1, -1) for x in sg)
+    undecided = [l for l, s in table.items() if s is None and not sturm_table_complete(results[l])]
+    record("Hd: the sign of alpha0 is decided exactly in every row (exact sign of each numeric alpha0; "
+           "complete Sturm sign table on 0 < a < 1 for L3s4)", not undecided, f"undecided: {undecided}")
+    # Sign of beta in L3s4 (review R1): beta = beta0 + beta3 n1 n2 n3 with
+    # |n1 n2 n3| <= 1/(3 sqrt3), so beta keeps the sign of beta0 on the whole
+    # sphere iff beta3^2 / 27 < beta0^2. The boundary in 0 < a < 1 is
+    # a^2 = (19 - 6 sqrt3)/11 (hand derivation, report Sec. 3.3).
+    for label in ("L3s4[+pi/4]", "L3s4[-pi/4]"):
+        info = results[label]
+        gap = sp.factor(sp.together(info["beta0"] ** 2 - info["beta3"] ** 2 / 27))
+        num = sp.Poly(sp.fraction(gap)[0], A_SYM)
+        a2 = (19 - 6 * R3) / 11
+        roots_in = num.count_roots(0, 1) - (1 if num.eval(0) == 0 else 0) - (1 if num.eval(1) == 0 else 0)
+        at_boundary = zero(sp.fraction(gap)[0].subs(A_SYM, sp.sqrt(a2)))
+        below = P.positive(gap.subs(A_SYM, sp.Rational(1, 2)))
+        above = P.positive(gap.subs(A_SYM, sp.Rational(19, 20)))
+        record(f"{label}: beta keeps one sign on the sphere iff a^2 < (19 - 6 sqrt3)/11 "
+               f"(single root of beta0^2 - beta3^2/27 in 0 < a < 1)",
+               roots_in == 1 and at_boundary and below == 1 and above == -1,
+               f"beta0^2 - beta3^2/27 = {gap}")
     hd = all(s is not None and s < 0 for s in table.values())
     print(f"  Hd (alpha0 < 0 in every row): {hd}; rows with alpha0 >= 0: "
           f"{[l for l, s in table.items() if s is not None and s >= 0]}")

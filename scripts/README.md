@@ -341,7 +341,8 @@ supports no verdict.
 [`DISPERSION_CORRECTIONS_ACROSS_LATTICES`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
 preregistered at `a7ff5b7`, for the
 [execution report](../reports/2026-11-02--dispersion-corrections-across-lattices.md).
-79 exact checks, about 11 minutes. Run it with an interpreter that has
+81 exact checks, about 11 minutes (79 at the reviewed version; two
+added by the review repairs, see the report Sec. 5). Run it with an interpreter that has
 `sympy==1.14.0` (here `/home/adnac/venvs/torch-gpu/bin/python -B`). It
 imports the thirteen massless symbols read-only from
 `verify_weyl_dirac_gate.py`, `verify_c_across_lattices_gate.py`,

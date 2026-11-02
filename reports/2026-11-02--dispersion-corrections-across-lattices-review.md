@@ -55,6 +55,15 @@ them); `omega = c_0 |k|` is not analytic at `k = 0`, the ray expansion is
 (Grok); the `float` calls only order roots and pick a rational sample
 point whose position is then checked exactly (Gemini).
 
+**Repairs applied (2026-11-02).** R1 and R2 in the report (Secs. 3.3, 1,
+listed in its Sec. 5); R3 in the verifier, which also gains an exact check
+of the R1 threshold (`beta0^2 - beta3^2/27 = (11a^4 - 38a^2 + 23)/(324a^2)`,
+single root `a^2 = (19 - 6 sqrt3)/11` in `0 < a < 1`). Verifier SHA256
+`b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`, 81/81; its output differs from the reviewed run only in those
+three records and the count. Diff:
+[`repair.diff`](../debates/2026-11-02--dispersion-review-grok/repair.diff).
+No value, table entry or verdict changed.
+
 Neither review is human review. Nothing is promoted by this record. The
-repairs, and the record of the run that follows them, are a separate
-commit; changing the verifier's bytes requires a new review of that file.
+verifier's bytes changed, so the repairs need their own review before
+promotion.
