@@ -2164,7 +2164,8 @@ stopped. [Reviews](../reports/2026-11-02--hex-ceiling-review.md): Gemini
 PASS on all five blocks; Grok REPAIR_REQUIRED (R1: Bernstein used without
 in-repo proof; R2: weak rank predicate), both repaired 2026-11-02 (Lemma B
 in the report; exact minor in the verifier, 24/24). Bounded re-review
-pending. PRELIMINARY, not promoted.
+of the repairs: Grok PASS and Gemini PASS on R1–R4, identical input.
+PRELIMINARY, PROMOTION_PENDING (user decision).
 
 Charter: class `W_hex`: translation-
 invariant `s = 2` walks on the triangular lattice, one update a product

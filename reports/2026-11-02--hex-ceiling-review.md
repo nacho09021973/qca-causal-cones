@@ -5,7 +5,8 @@ Reviewed snapshot: base `61232d7`; report
 `reports/2026-11-01--hex-ceiling.md`, verifier
 `scripts/verify_hex_ceiling_gate.py` (24/24), contract preregistered at
 `8c56ced`.
-Status: **Gemini PASS; Grok REPAIR_REQUIRED (two repairs, applied)**.
+Status: **Gemini PASS; Grok REPAIR_REQUIRED (two repairs, applied);
+bounded re-review of the repairs: Grok PASS, Gemini PASS**.
 Not promoted.
 
 ## Execution
@@ -99,5 +100,30 @@ the denominator `2l`; `xi` is a component, not an angle.
 Report: Lemma B proves the scalar Bernstein inequality in-repo (reduction
 to real polynomials, comparison with `cos(N(s - s_0) + beta)`, zero count
 `>= 2N + 2` against `<= 2N`); the clarifications are written in. Verifier:
-the rank record now asserts the minor equals `sqrt3 l^4/2`; 24/24. A
-bounded re-review of the repairs is pending.
+the rank record now asserts the minor equals `sqrt3 l^4/2`; 24/24.
+
+## Bounded re-review of the repairs (2026-11-02)
+
+User instruction «si, con ciro y gemini». Repaired snapshot `bb4fcdb`;
+documents: contract, this review record, diff `61232d7..bb4fcdb` of the
+report and verifier, the repaired report and verifier, and the imported
+helper module. Identical input to both houses, SHA256
+`474062a1d9ba3c2146bd149993ed5810c95245226c70e5055d2ce49e314aaef0`. Raw
+files in `debates/2026-11-02--hex-ceiling-rereview/`. Scope: Lemma B (R1),
+the rank record (R2), clarifications (R3), regressions (R4).
+
+| House | Run | Verdict | Review SHA256 |
+| --- | --- | --- | --- |
+| ciro (grok-4.7) | 08:34:19–08:42:00 UTC, exit 0 | **PASS on R1–R4, no mandatory repairs** | `a4bfc2fb9db1c1e93c981331bb451b5937916cc8e46e39a54381e53a92d9bd17` |
+| gemini (gemini-4-argon) | finished 08:42:49 UTC, `STOP`, exit 0 | **PASS on R1–R4, no mandatory repairs** | `b8cb642afd4c2c0cd45c3d46cc032bea5bd6422b85ee3091ce68b4a6ca50de8b` |
+
+Grok reconstructs Lemma B step by step (unique `beta in (-pi,0)`, the
+`2N + 2` distinct zeros, the bound `<= 2N`) and the three minors
+`±sqrt3 l^4/2`, and confirms L0 closes as `PROVED_IN_REPO` under contract
+Sec. 2.
+
+Launch note: the author's first parallel launch passed no arguments to
+the Gemini job (a shell `&` split the variable assignment from it); it
+failed locally with "falta la carpeta del encargo" and sent nothing. It was
+rerun with the same arguments; the input hash above is identical to
+Grok's.
