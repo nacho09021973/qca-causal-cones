@@ -16,6 +16,12 @@ all applied; R6 and R8 as citation repairs (the content is in the promoted
 gates' execution reports, which the review did not receive). No value
 changed. Still PRELIMINARY as a synthesis.
 
+**Maintenance (2026-11-03).** Documentary update authorized by the user
+(«Actualizar la respuesta sobre c: autorizado como mantenimiento
+documental, después del paso 4»): adds the promoted M1-B13 and M1-B19
+results (CS Sec. 14) to answer 3 and Secs. 2, 4, 5. No other statement
+changed; no new computation; the hexagonal class stays OPEN.
+
 **Pre-step check (PROJECT_INSTRUCTIONS, rule of 2026-11-02).** Known: the
 promoted results of CS Secs. 4, 7.2, 8.21, 11, 12, 13 and the L6b row.
 Question: what does the repo establish about the value of `c` per
@@ -45,8 +51,9 @@ answer needed a new computation, the text stops there.
    substrate none of the five declared walks does; in the class of
    three-step antipodal walks the exact supremum is `c_0/r_in = sqrt3/2`,
    and no `s = 2` walk with `F within {0} U vert(H)` reaches `r_in`
-   (CS Sec. 12). The rest of `W_hex` is OPEN; nothing is stated for
-   `s > 2`.
+   (CS Sec. 12), nor one with `F` within the 13- or 19-point hexagon, in
+   the class `W_hex^sym` that contains `W_hex` (M1-B13, M1-B19, CS
+   Sec. 14). The rest of `W_hex` is OPEN; nothing is stated for `s > 2`.
 4. **No absolute value.** The repo derives no value of `c` in physical
    units: in the frozen flat class the absolute scale is
    `NO_ABSOLUTE_SCALE_DERIVABLE`. Every number here is in lattice units.
@@ -118,9 +125,12 @@ Readings, each limited to these rows:
   `PROVED_IN_REPO` (classical Bernstein, prior art); the supremum
   `sqrt3/2` is `GAP_PROVED_IN_CLASS` for the `n = 3` antipodal subclass,
   attained iff the coin axes are coplanar at 120°; no `s = 2` walk with
-  `F within {0} U vert(H)` reaches the ceiling, `PROVED_FOR_MINIMAL_SUPPORT`;
-  the rest of `W_hex` is `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` (CS Sec. 12).
-  Nothing is stated for `s > 2`.
+  `F within {0} U vert(H)` reaches the ceiling, `PROVED_FOR_MINIMAL_SUPPORT`
+  (CS Sec. 12); nor does one with `F` within the 13-point or the 19-point
+  hexagon, `PROVED_FOR_S13` and `PROVED_FOR_S19` in `W_hex^sym` (CS
+  Sec. 14; qualitative gap, no bound below `r_in`). The whole class stays
+  OPEN (M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`). Nothing is stated for
+  `s > 2`.
 
 ## 3. Away from the node and at finite mass
 
@@ -152,8 +162,9 @@ Readings, each limited to these rows:
   list from the repo's own constructions and five primary sources
   (`reports/2026-11-01--c-across-lattices.md`).
 - Not that the hexagonal substrate cannot reach the ceiling; only the
-  `n = 3` antipodal subclass and the `s = 2` minimal-support results of
-  CS Sec. 12. Nothing for `s > 2`.
+  `n = 3` antipodal subclass, the `s = 2` minimal-support result of
+  CS Sec. 12, and the `s = 2` results on the 13- and 19-point hexagons of
+  CS Sec. 14. No extrapolation to larger supports. Nothing for `s > 2`.
 - Not that every declared BCC walk reaches the ceiling: L3s4 does not.
 - No closure of `NOVELTY = OPEN` for the hexagonal ceiling.
 - No value of `c` in physical units, no statement about our universe, no
@@ -165,5 +176,6 @@ Readings, each limited to these rows:
 
 ## 5. What is still open, none of it chartered
 
-- Hexagonal supremum in the rest of `W_hex` (CS Sec. 12, T2).
+- Hexagonal supremum in the rest of `W_hex` (CS Sec. 12, T2; CS Sec. 14,
+  M1: supports beyond the 19-point hexagon not chartered).
 - `V_grp^max` per row; IR universality (A); the ADMP massive row.
