@@ -10,7 +10,7 @@
 - **Certificate:** `scripts/verify_s3_parity_step0.py`, SHA-256 `78f5ace96ce02023…`. 14/14 exact checks,
   about 5 s, Python 3.12.3, SymPy 1.14.0. It imports the stage (a) group helpers of
   `verify_minimal_s2_step00.py` and `published_symbol` of `verify_weyl_dirac_gate.py`, read-only.
-- **Full sweep:** SWEEP ([record](2026-10-29--s3-parity-step0-run_all.tsv)).
+- **Full sweep:** 51 verifiers, 0 failed, run 2026-11-03 ([record](2026-10-29--s3-parity-step0-run_all.tsv)).
 - **Evidence level:** **PRELIMINARY**. Author-side computation, not yet reviewed.
 
 ## Result
