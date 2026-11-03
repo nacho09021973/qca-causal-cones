@@ -1,0 +1,2400 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente el informe
+2026-11-03--hex-supremum-b19.md (M1-B19 del contrato HEX_SUPREMUM_GATE.md),
+escrito por Claude (Anthropic), su verificador verify_hex_supremum_b19.py y
+el fichero de multiplicadores hex_s19_certificate.json. Se adjuntan, como
+fuentes ya revisadas y promocionadas, el informe y el verificador de la
+etapa A (verify_hex_supremum_gate.py, importado por el de B19), y el
+informe y el verificador del gate padre (hex-ceiling). El informe no es
+premisa: comprueba cada paso. No tienes herramientas: no ejecutes, edites
+ni navegues. Si un punto solo puede comprobarse ejecutando código, dilo y
+evalúa si el código, tal como está escrito, comprueba lo que dice.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / OPEN:
+1. LEMA A3. ¿Se deduce necesariamente de unitariedad y rigidez, sin
+   hipótesis añadidas? Comprueba: que f(z; s) es un polinomio analítico en
+   z para todo s real (exponentes r − h·n ≥ 0 y múltiplos de delta), que
+   Re g = 0 en el círculo implica g constante imaginaria, que g(1) = 0, y
+   que los coeficientes de Fourier de g son exactamente las sumas por capa
+   del enunciado. ¿Vale igual el signo −?
+2. LEMA A4. ¿Es correcta la derivación de la antihermiticidad de
+   K(t) = D(t)^† ∂_e U(t n), la expresión de K_{+−} y conj K_{−+}, y el
+   emparejamiento de frecuencias λ' = −λ? ¿Hay frecuencias coincidentes
+   que el emparejamiento ignore?
+3. NO SE ELIMINAN SOLUCIONES. A3 y A4 son condiciones necesarias; confirma
+   que lo son y que el verificador impone exactamente esas identidades
+   (linear_system: L1 sumas de capa, L2 = A3, L3 = A4) y no otras más
+   fuertes. ¿Basta usar las tres primeras normales de cara (normals[:3]),
+   o las opuestas aportarían restricciones distintas? (Usar menos
+   restricciones no elimina soluciones; usar de más sí.)
+4. REDUCCIÓN A 18 PARÁMETROS. ¿Conservan las transformaciones lineales
+   (forma real con z y w = conj z formales, rango y rref exactos sobre
+   QQ(sqrt3), parametrización afín P, Q en t) todas las soluciones del
+   sistema lineal? ¿Es legítimo tratar w como variable independiente y
+   luego volver a la forma real? ¿unitarity_equations codifica las dos
+   familias Σ A_{h+d} A_h^† = δ_{d0} I y Σ A_h^† A_{h+d} = δ_{d0} I para todo
+   d, sin omitir ninguna?
+5. CERTIFICADO DE GRAM. Revisa check_certificate, gram_of,
+   ldl_pivots_positive y positive_q3: ¿la comprobación p = (1,t) G (1,t)^T
+   es identidad polinómica completa? ¿La eliminación exacta con 19 pivotes
+   positivos implica G definida positiva y p > 0 en todo R^18, es decir,
+   sobre todas las variables reales restantes? ¿Es exacta la decisión de
+   signo de a + b√3? ¿Es correcta la conversión a la forma del contrato
+   −1 = Σ (d_j/μ) ℓ_j² + Σ (−c_i/μ) f_i?
+6. DESVIACIONES LITERALES DEL CONTRATO. El contrato, Sec. 4 (ii), pide
+   «exact rational coefficients» y una comprobación «exactly and quickly»;
+   el certificado tiene c_i racionales pero G, d_j y ℓ_j en QQ(sqrt3), y el
+   verificador tarda unos 11 minutos. ¿Es la forma usada matemáticamente
+   equivalente en validez a la del contrato? ¿Son desviaciones que deben
+   declararse con una enmienda explícita antes de promocionar? No se
+   modificará retroactivamente el prerregistro.
+7. CONTROLES Y ALCANCE. ¿Son pertinentes los controles del cuadrado
+   (recordando que no sustituyen la demostración de A3 y A4)? ¿Se
+   corresponden los veredictos (M1-B19 PROVED_FOR_S19, HX2
+   CONFIRMED_FOR_S19, M1-A OPEN_AFTER_SINGLETON_LAYER_ANALYSIS) con lo
+   demostrado, sin extenderse a S25, a soportes mayores ni a s > 2? ¿Dice
+   el informe lo que el verificador no certifica?
+
+Hasta 2000 palabras en español. Cada reparación obligatoria debe citar la
+frase o la línea afectada, por qué falla y qué la cerraría. Distingue
+aclaración de error. Dictamen global y lista de reparaciones obligatorias;
+si no hay ninguna, dilo expresamente. No exijas resultados nuevos (S25 no
+está en el alcance).
+
+=== DOCUMENT 1: 2026-11-03--hex-supremum-b19.md ===
+
+# HEX_SUPREMUM (M1): the 19-point support (M1-B19)
+
+**Date:** 2026-11-03. **Branch:** `research/schur-stability-audit`.
+**Contract:** [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
+preregistration commit `86573ca`; M1-B19 authorized 2026-11-03 («Autorizar
+M1-B19 ... empezando exclusivamente por la reducción estructural»), after
+the promotion of M1-B13 (`677bec0`). Builds on
+[Stage A](2026-11-03--hex-supremum.md) (promoted for S13).
+**Author:** Claude Code (Claude Opus 5.5). **Verifier:**
+`scripts/verify_hex_supremum_b19.py`, 17/17 (fail-closed, exact, 10 min 44 s;
+SHA-256 `244bb106…`);
+certificate data `scripts/data/hex_s19_certificate.json` (SHA-256
+`548988f7…`). Exploratory scripts (no verdict):
+`scripts/explore_hex_s19_reduced.py`, `scripts/explore_hex_s19_certificate.py`.
+**Status: PRELIMINARY, not independently reviewed.**
+
+**Pre-step check.** Known: S19 has facet-normal layers 3, 4, 5, 4, 3, so
+lemma A1 forces only layer sums; the full system (56 free real parameters,
+Gröbner over `C`) did not finish in 900 s in the parent gate. Question: do
+further consequences of saturation reduce the unknowns before any solver?
+Abandonment: if nothing beyond the layer sums is forced, no rerun of the
+same system; budgeted solver on a reduced system or `OPEN_AFTER_<analysis>`.
+
+## 1. Two further linear consequences of saturation
+
+Notation of the Stage A report. Suppose `c_0 = r_in = r`. Fix a facet
+normal `n`, the edge direction `e = Rot90(n)`, and `x_+`, `x_-` the unit
+eigenvectors of `n.sigma` (eigenvalues `+1`, `-1`). On the facet line,
+`U(t n) = D(t) = e^{-irt} P_+ + e^{irt} P_-` (rigidity). Levels `lambda`
+are the projections `h.n`.
+
+**Lemma A3 (first moments).** For every layer `lambda` and both signs,
+`sum_{h in lambda} (h.e) <x_±, A_h x_±> = 0`.
+
+*Proof (sign +).* `f(z; s) = e^{irt} <x_+, U(t n + s e) x_+>` is, for fixed
+real `s`, an analytic polynomial in `z = e^{i delta t}` (the exponents
+`r - h.n` are `>= 0` multiples of `delta`), with `|f| <= 1` on `|z| = 1`
+(unitarity) and `f(z; 0) = 1` (rigidity). Let `g(z) = d f/ds (z; 0)`, again an
+analytic polynomial. From `|f|^2 = 1 + 2 s Re g + O(s^2) <= 1` for both
+signs of `s`, `Re g = 0` on the circle, so `g` is an imaginary constant.
+At `z = 1` (`t = 0`), `g = -i <x_+, A(e) x_+> = -i r (e.n) = 0`. Hence
+`g = 0`; its Fourier coefficients are `-i sum_{h in lambda} (h.e) <x_+, A_h x_+>`.
+The sign `-` is the same with `e^{-irt}` and `z̄`. ∎
+
+**Lemma A4 (off-diagonal first order).** For every layer `lambda`,
+`sum_{h in lambda} (h.e) <x_+, A_h x_-> = sum_{h in -lambda} (h.e) conj<x_-, A_h x_+>`.
+
+*Proof.* Differentiating `U^dag U = I` along `e` on the facet line gives
+that `K(t) = D(t)^dag d_e U(t n)` is anti-Hermitian. With
+`d_e U = -i sum_h (h.e) A_h e^{-it h.n}`, `K_{+-} = -i sum_h (h.e) <x_+, A_h x_->
+e^{it(r - h.n)}` and `conj K_{-+} = i sum_h (h.e) conj<x_-, A_h x_+>
+e^{it(r + h.n)}`. `K_{+-} + conj K_{-+} = 0` for all `t`; matching the
+frequency `r - lambda = r + lambda'` gives `lambda' = -lambda` and the
+stated identity. (The diagonal of `K` gives `Re g = 0` only; A3 is
+stronger because it uses analyticity.) ∎
+
+A3 and A4 are consequences of unitarity and rigidity; they are not new
+assumptions. Their use is that they are linear.
+
+## 2. Reduction on S19 (verifier)
+
+Unknowns: 19 complex 2×2 coefficients, 152 real parameters; normal form
+`A(n) = r n.sigma`, `|vertex| = 1`.
+
+| Constraints | Free real parameters |
+| --- | --- |
+| L1: layer sums on the three facet normals | 56 (as in the parent gate) |
+| + L2: A3 | 28 |
+| + L3: A4 | 18 |
+
+All three systems are consistent (exact rank over `QQ(sqrt3)`). The
+remaining unitarity equations `sum_{h-h'=d} A_h A_{h'}^dag = delta_{d0} I`,
+`sum A_{h'}^dag A_h = delta_{d0} I`, restricted to the 18-parameter affine
+family, are 730 distinct real quadratics; they span a space of dimension 56
+(floating-point rank, used only to guide).
+
+**Controls.** The saturating square walk `exp(-ik_x s_x) exp(-ik_y s_y)`
+satisfies L1, L2 and L3. The whole pipeline (L1 + L2 + L3, exact
+parametrization, unitarity equations) on the 3×3 square support, which
+like S19 has edge-interior and interior points, keeps that walk in its
+13-parameter family, and all 298 reduced equations vanish there: the
+reductions do not exclude a known saturating walk. On S7, L1 + L2 + L3
+leave 1 free parameter, consistent with the parent T2 (the contradiction
+there is in one real coordinate).
+
+## 3. Exact infeasibility certificate
+
+**Exploration (no verdict).** Least squares on the 730 equations from 100
+random starts converge to the same positive minimum (`5.056e-3`), which
+suggests no real solution. A search over the 56-dimensional span for a
+combination whose Gram matrix in the basis `(1, t)` is positive definite
+(maximising `lambda_min` at trace 1, SLSQP, 20 starts) found
+`lambda_min ≈ 3.8e-4 > 0` in every start. The best combination was rounded
+to rational multipliers `c_i` (denominators `<= 10^9`) and stored in
+`scripts/data/hex_s19_certificate.json`.
+
+**Certificate (verifier, exact).** `p = sum_i c_i f_i` is formed exactly;
+its unique Gram matrix `G` in the basis `(1, t)` satisfies
+`p = (1,t) G (1,t)^T` identically, and exact Gaussian elimination over
+`QQ(sqrt3)` gives 19 positive pivots, so `G` is positive definite. Then
+`p(t) > 0` for every `t in R^18`, while at any solution every `f_i`, hence
+`p`, vanishes. In the contract's form (Sec. 4 (ii)): for `0 < mu <=
+1/(G^{-1})_00`, `G - mu e_0 e_0^T = L D L^T` with `D >= 0`, so
+`-1 = sum_j (d_j/mu) l_j(t)^2 + sum_i (-c_i/mu) f_i(t)`, a weighted sum of
+squares with exact coefficients in `QQ(sqrt3)`. Note: the system's own
+coefficients lie in `QQ(sqrt3)` (normal form and hexagon geometry), so the
+certificate's are exact in that field rather than in `QQ`; the multipliers
+`c_i` themselves are rational.
+
+**Verdict.** M1-B19 `PROVED_FOR_S19`: no s=2 walk with `F within S19`
+(in `W_hex^sym`, hence in `W_hex`) reaches `c_0 = r_in`. This includes the
+support of JDW L6c. HX2 `CONFIRMED_FOR_S19` (and S7, S13). The gap is
+qualitative; no bound below `r_in` is claimed.
+
+## 4. Budget and runs
+
+- Gröbner or other nonlinear solver runs on S19: none (0 s of the 3600 s).
+- Exact certificate check: inside the verifier, about 10 min of its 11.
+- A first version of the linear reduction with symbolic `rank(simplify=True)`
+  was stopped after more than 600 s; replaced by exact `DomainMatrix` rank
+  over `QQ(sqrt3)` (seconds). No result came from the stopped run.
+- Exploratory numerics: 558 s (least squares), 2 × 368 s (certificate
+  search; the second run wrote the stored multipliers, seed 0, 20 starts).
+
+## 5. Status of M1 and what is not established
+
+- M1-A stays `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`: A1–A4 are proved for
+  every support, but no gap proof for `W_hex^sym`.
+- The contract's ordered bounded stages (S13, S19) both end with a gap.
+  No witness was found, so result (a) of Sec. 0 is not met and the line is
+  not closed; no gap proof for the whole class, so it is not settled
+  either. Larger hexagons are not in the contract's stages (the next one,
+  `v = 2 g_1 + g_2`, has 25 lattice points by Pick's theorem: area 21
+  cells, 6 boundary points; not checked by any verifier); continuing would
+  need a user decision.
+- Nothing for `s > 2`, other lattices, masses.
+- No novelty claim: A1–A4 are direct uses of unitarity and the Bernstein
+  equality case (prior art); positive-definite Gram certificates are
+  standard real algebraic geometry.
+
+## 6. Next step
+
+Independent cross-family review (as for Stage A), then a separate
+promotion; any extension beyond S19 is a separate user decision.
+
+=== DOCUMENT 2: HEX_SUPREMUM_GATE.md ===
+
+# HEX_SUPREMUM (M1) — frozen contract
+
+**Frozen:** 2026-11-03, before solving. Nothing in Secs. 3–5 has been
+computed. Drafted by Claude Code (Claude Opus 5.5) at the user's
+instruction («vamos con la carta M1»).
+**Authorization:** user approval of the draft, 2026-11-03, «APROBACIÓN CON
+ENMIENDAS», with three amendments incorporated before freezing: (1) the
+solver budget is cumulative per support, not per run (Sec. 5); (2) the
+sum-of-squares certificate has the explicit form of Sec. 4, and the
+no-real-zero alternative needs its own certificate; (3) a witness answers
+the saturation question only, without a broader claim about the substrate
+(Sec. 0). Approval covers the preregistration and Stage A as first work,
+with no confirmatory numerics.
+Reports cite the commit that adds this file as the preregistration commit.
+**Initial scientific status: OPEN.**
+**Parent:** `HEX_CEILING_GATE.md` (T2 general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`,
+CURRENT_STATE Sec. 12). This gate continues T2 only; it does not reopen L0,
+T1 or the minimal-support T2.
+
+## 0. Pre-step check (rule of 2026-11-02)
+
+- **Known.** K4 (`c_0 = r_in` attained on line, square, BCC/cubic rows) and
+  K5 (hexagon: L0 `c_0 <= r_in` on `W_hex`; T1 `sup = sqrt3/2` in the
+  `n = 3` antipodal subclass; no s=2 walk with `F within {0} U vert(H)`
+  reaches `r_in`). Saturation along a facet normal is rigid (hex-ceiling
+  report Sec. 3, Step 1). A grevlex Gröbner basis over `C` for the 19-point
+  ball did not finish in 900 s, and would not have decided real
+  solvability anyway (hex-ceiling report Sec. 4).
+- **Question.** Does any s=2 walk in `W_hex` reach `c_0 = r_in`?
+- **Result that ends the line** (research-lines report, M1):
+  (a) an explicit witness in `W_hex` with `c_0 = r_in`, certified exactly:
+  the saturation question is answered affirmatively for `s = 2` and the
+  line M1 closes. This shows only that the hexagonal substrate admits
+  saturation in `W_hex`; it does not by itself show that no other
+  property of `c` specific to the hexagonal substrate remains;
+  (b) no exact method of Sec. 4 finishes within the session budget of
+  Sec. 5: stop at `OPEN_AFTER_<analysis>`, no numerics.
+  A gap proof for the whole class keeps the line (it is the only outcome
+  that makes the hexagon substrate-specific). A gap proof for a bounded
+  support only is recorded as such and does not close the line either way.
+
+## 1. Single question
+
+> On the hexagonal substrate, is there a two-component walk of the class
+> `W_hex` with `c_0 = r_in(C_micro)`, i.e. a walk whose support is not of
+> minimal type and which saturates the ceiling?
+
+## 2. Declared class
+
+`W_hex` exactly as in `HEX_CEILING_GATE.md` Sec. 1 (triangular lattice
+`Lambda`, `s = 2`, product of coin–partial-shift factors, `C_micro = conv F`
+a regular hexagon from the exact composite support, scalar `U(0)`,
+traceless isotropic linear term, longest vector of `F` of length 1).
+
+Two readings of the class are kept apart:
+
+- **Gap direction.** A proof that `c_0 < r_in` may use only unitarity, `F`,
+  the node and isotropy (as the minimal-support T2 did). It then holds for
+  the larger class `W_hex^sym` of all s=2 unitary Laurent polynomials with
+  those properties, which contains `W_hex`; it is stated for `W_hex^sym`.
+- **Witness direction.** A witness must lie in `W_hex`: it is given as an
+  explicit product `C_n D_n(k) ... C_1 D_1(k)`. A saturating symbol found
+  without a product factorization is reported as a witness in `W_hex^sym`
+  only, which does not meet result (a); in two dimensions factorization is
+  not automatic [UNVERIFIED as a general statement; not used].
+
+**Supports.** Regular lattice hexagons centred at the origin have vertices
+`R^j v`, `v in Lambda`, `R` the 60° rotation. Ordered by the number of
+lattice points of the closed hull (to be certified by the verifier, not
+assumed):
+
+- `S7`: `v = g_1` — 7 points; every walk is of minimal type (done in T2).
+- `S13`: `v = g_1 + g_2` — origin, inner ring of six unit vectors, six
+  vertices: 13 points. Smallest support not covered by T2.
+- `S19`: `v = 2 g_1` — the radius-2 ball (contains JDW L6c, `c_0/r_in =
+  sqrt3/2`).
+- larger hexagons: covered only by a structural argument (Sec. 4, Stage A).
+
+## 3. Targets
+
+- **M1-A (structural).** Necessary conditions for saturation valid for
+  every support, from facet-line rigidity and the extreme-face unitarity
+  identities (Sec. 4). Either a gap proof for `W_hex^sym`, or a reduced
+  normal form with fewer unknowns for Stage B.
+- **M1-B13.** On `S13`: gap proof (`c_0 < r_in` for every walk with
+  `F within S13`) or an explicit witness.
+- **M1-B19.** On `S19`: same, only after M1-B13 has a verdict.
+
+## 4. Method, named before any computation
+
+**Stage A — structural reduction (by hand, checked by the verifier).**
+
+1. Facet-line rigidity (hex-ceiling report Sec. 3, Step 1, reused): along
+   each of the three facet-normal lines the top edge sums to `P_+(n_f)`,
+   the bottom edge to `P_-(n_f)`, every intermediate layer to `0`.
+2. Extreme-face identities. The Newton polytope of `U U^dag` lies in
+   `C - C = 2C`. For each edge `e` of `C` with outward normal `n_e`, the
+   coefficients of `U U^dag` and `U^dag U` on the face of `2C` in direction
+   `n_e` vanish (except at `0`, not on the face). With `E_e(x)` the edge
+   polynomial of the top edge and `E_{-e}(x)` that of the opposite edge,
+   this gives `E_e(x) E_{-e}(x)^dag = 0` and `E_{-e}(x)^dag E_e(x) = 0` as
+   one-variable Laurent identities, together with `E_e(1) = P_+(n_e)`,
+   `E_{-e}(1) = P_-(n_e)` from step 1.
+3. Use 1–2 (and, if needed, the next-to-extreme faces) to restrict the
+   edge coefficients to rank-one forms and eliminate unknowns, before any
+   solver is run. Step 2 is a standard fact about Laurent polynomials
+   (product of extreme coefficients); its use here is stated and proved in
+   the report, not cited.
+
+**Stage B — exact decision on a bounded support (`S13`, then `S19`).**
+
+- Unknowns: the coefficients left after Stage A and the normal form of the
+  hex-ceiling report Sec. 3, Step 2 (`A(n) = r_in n . sigma`, vertices at
+  `k pi/3`).
+- Equations: layer equations, node and isotropy, and unitarity
+  `sum_h A_{h+d} A_h^dag = delta_{d0} I`, `sum_h A_h^dag A_{h+d} = delta_{d0} I`.
+- **Infeasibility certificate (gap).** Accepted forms only, each checked
+  exactly and quickly by the verifier without rerunning a solver:
+  (i) a polynomial `p` in the ideal, given with explicit exact cofactors
+  `p = sum_i h_i f_i`, whose absence of real zeros is itself certified
+  exactly (e.g. a univariate polynomial with negative discriminant, as in
+  T2, or a sum-of-squares-plus-positive-constant representation of `p`);
+  or (ii) for the real system `f_1 = ... = f_m = 0`, an identity
+  `-1 = sum_j q_j(x)^2 + sum_i h_i(x) f_i(x)` with exact rational
+  coefficients, the verifier expanding both sides and checking equality. A Gröbner basis over `C`
+  different from `{1}` decides nothing about real solvability and is not a
+  verdict.
+- **Witness.** Closed form, certified exactly: unitarity, composite `F`,
+  regular hexagonal hull, node, isotropy, `c_0 = r_in`, and the product
+  factorization (Sec. 2).
+- Exploratory numerics (a versioned script labelled exploratory) may guide
+  the search for a witness or for the certificate. **No numerical result,
+  scan, optimisation or failed search enters a verdict**, and no rigidity
+  is inferred from one.
+
+## 5. Stop rules and budget
+
+- Order: Stage A, then M1-B13, then M1-B19. Do not start the next stage
+  before the previous has a verdict or a recorded stop.
+- Budget: one working session, and at most 3600 s of solver wall time
+  **cumulative per support** (`S13`, `S19`), however it is split across
+  runs; every run is recorded with its command, wall time and exit code.
+  A run cut by the budget is inconclusive and is not evidence.
+- Stop at the first of: a witness meeting Sec. 4 (result (a); then M1
+  closes, with the limited reading of Sec. 0); a gap proof for `W_hex^sym` (line kept); budget exhausted
+  (result (b), `OPEN_AFTER_<analysis>` naming the stages done).
+- Do not widen the class during execution; restricted results stay
+  restricted.
+
+## 6. Exclusions
+
+`s > 2`, other lattices, masses, `V_grp^max`, inhomogeneous or encoded
+walks, new substrate classes, general QCA laws, claims about our universe.
+No novelty claim: Bernstein's inequality and its equality case are prior
+art; the hexagonal-ceiling prior-art check (plan step 4) is not finished.
+
+## 7. Verdicts
+
+- M1-A: `GAP_PROVED_IN_CLASS` (for `W_hex^sym`), `REDUCED_TO_<normal form>`,
+  or `OPEN_AFTER_<analysis>`.
+- M1-B13, M1-B19: `PROVED_FOR_<support>` (gap on that support),
+  `CEILING_ATTAINED_BY_EXPLICIT_WALK` (in `W_hex`) /
+  `CEILING_ATTAINED_IN_W_HEX_SYM_ONLY`, or `OPEN_AFTER_<analysis>`.
+- HX2 (from the parent gate): `CONFIRMED_IN_CLASS` / `REFUTED_BY_<witness>` /
+  `OPEN`, and `CONFIRMED_FOR_<support>` for a bounded result.
+
+## 8. Deliverables
+
+Report `reports/YYYY-MM-DD--hex-supremum.md`; verifier
+`scripts/verify_hex_supremum_gate.py` (fail-closed, exact, checks
+certificates rather than rerunning solvers; both exact command forms added
+to `.claude/settings.json`); exploratory scripts, if any, versioned and
+labelled; independent cross-family review; then a separate promotion.
+Reviewed verifiers (`verify_hex_ceiling_gate.py`) are imported read-only,
+never edited.
+
+=== DOCUMENT 3: verify_hex_supremum_b19.py ===
+
+"""Exact structural reduction for M1-B19 of the HEX_SUPREMUM gate (S19).
+
+Contract: theory/HEX_SUPREMUM_GATE.md, preregistered at 86573ca; M1-B19
+authorized 2026-11-03 («Autorizar M1-B19 ... empezando exclusivamente por la
+reducción estructural»). Run from the repository root:
+
+  python -B scripts/verify_hex_supremum_b19.py
+
+Fail-closed, SymPy only, zero tolerance, no solver of the nonlinear system
+(this is Stage A-type reduction, not a budgeted solver run). Imports
+read-only the reviewed verify_hex_supremum_gate.py (hexagon, layers) and,
+through it, verify_hex_ceiling_gate.py; neither is modified.
+
+What is computed and certified here, for walks with F within S19 (19 points)
+and the normal form A(n) = r n.sigma:
+- L1, layer equations of facet-line rigidity on the three facet normals:
+  56 free real parameters left (as in the parent gate's 900 s attempt).
+- L2, first-moment equations (lemma A3 of the report): for each facet
+  normal n, edge direction e = Rot90(n), each layer m, and x_+/- the
+  +-eigenvectors of n.sigma: sum_{h in layer} (h.e) <x, A_h x> = 0.
+  28 free parameters left.
+- L3, off-diagonal first-order unitarity on the facet line (lemma A4):
+  sum_{h in m} (h.e) <x+, A_h x-> = sum_{h in -m} (h.e) conj<x-, A_h x+>.
+  18 free parameters left; L1 + L2 + L3 consistent.
+- Controls: the saturating square walk satisfies L1, L2, L3; the whole
+  pipeline on the 3x3 square support keeps that walk and all its reduced
+  unitarity equations vanish there; unitarity_equations is 0 on a unitary
+  walk and nonzero on a perturbed one.
+- The reduced S19 system (18 parameters, 730 quadratic equations) and an
+  exact real infeasibility certificate: rational multipliers c_i from
+  scripts/data/hex_s19_certificate.json (found by the exploratory
+  explore_hex_s19_certificate.py), p = sum c_i f_i, Gram matrix of p in the
+  basis (1, t) positive definite over QQ(sqrt3) by exact elimination (all
+  19 pivots > 0). Hence p > 0 on R^18 and no real solution exists.
+- S7 with L1 + L2 + L3 (informational; consistent, 1 free parameter).
+What is not certified here: the analytic proofs of rigidity, A3 and A4 and
+the normal form (report). Runtime about 11 minutes (the exact certificate
+expansion dominates).
+"""
+import sys
+from pathlib import Path
+
+import sympy as sp
+from sympy.polys.matrices import DomainMatrix
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_hex_supremum_gate as m1  # reviewed, read-only
+
+CHECKS = []
+SX, SY, I2 = m1.SX, m1.SY, m1.I2
+R3 = sp.sqrt(3)
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok)))
+    print(f"[{'PASS' if ok else 'FAIL'}] {label}" + (f" ({detail})" if detail else ""))
+
+
+def eigvecs(n):
+    """Unit +- eigenvectors of n.sigma for n in the xy plane at angle a."""
+    a = sp.atan2(n[1], n[0])
+    xp = sp.Matrix([1, sp.exp(sp.I * a)]) / sp.sqrt(2)
+    xm = sp.Matrix([1, -sp.exp(sp.I * a)]) / sp.sqrt(2)
+    return xp.applyfunc(sp.simplify), xm.applyfunc(sp.simplify)
+
+
+def unknowns(npts):
+    """Complex unknowns z (4 per point) and formal symbols w standing for
+    conj(z); equations are linear in (z, w) and split into real form in
+    (Re z, Im z) afterwards."""
+    zs, ws, A, Abar = [], [], [], []
+    for k in range(npts):
+        z = sp.symbols(f"z{k}_0:4")
+        w = sp.symbols(f"w{k}_0:4")
+        zs.extend(z)
+        ws.extend(w)
+        A.append(sp.Matrix([[z[0], z[1]], [z[2], z[3]]]))
+        Abar.append(sp.Matrix([[w[0], w[1]], [w[2], w[3]]]))
+    return zs, ws, A, Abar
+
+
+def linear_system(pts, normals, r, N, A, moments, Abar=None):
+    """Linear equations (expressions == 0) in z and, for L3, w = conj(z)."""
+    eqs = []
+    for n in normals:
+        L = m1.layers(pts, n, r, N)
+        Pp = (I2 + n[0] * SX + n[1] * SY) / 2
+        Pm = (I2 - n[0] * SX - n[1] * SY) / 2
+        e = sp.Matrix([-n[1], n[0]])
+        xp, xm = eigvecs(n)
+        for lev, idx in L.items():
+            target = Pp if lev == N else Pm if lev == -N else sp.zeros(2)
+            M = sum((A[i] for i in idx), sp.zeros(2)) - target
+            eqs += [sp.expand(x) for x in M]
+            if moments:
+                for x in (xp, xm):
+                    s_ = sum((sp.nsimplify((pts[i].T * e)[0]) * (x.H * A[i] * x)[0] for i in idx), 0)
+                    eqs.append(sp.expand(s_))
+            if Abar is not None:
+                # L3: off-diagonal anti-Hermiticity of D^dag d_e U on the line:
+                # sum_{h in lev} (h.e) <x+, A_h x-> = sum_{h in -lev} (h.e) conj<x-, A_h x+>
+                lhs = sum((sp.nsimplify((pts[i].T * e)[0]) * (xp.H * A[i] * xm)[0] for i in idx), 0)
+                rhs = sum((sp.nsimplify((pts[i].T * e)[0]) * (xm.T * Abar[i] * xp.conjugate())[0]
+                           for i in L.get(-lev, [])), 0)
+                eqs.append(sp.expand(lhs - rhs))
+    return [q for q in eqs if q != 0]
+
+
+def real_form(eqs, zs, ws):
+    """System C z + D conj(z) = b  ->  real system in (Re z, Im z)."""
+    n = len(zs)
+    CD, b = sp.linear_eq_to_matrix(eqs, list(zs) + list(ws))
+    rows = []
+    for i in range(CD.rows):
+        re_row, im_row = [], []
+        for j in range(n):
+            c, d = sp.expand(CD[i, j]), sp.expand(CD[i, n + j])
+            cr, ci = sp.expand(sp.re(c)), sp.expand(sp.im(c))
+            dr, di = sp.expand(sp.re(d)), sp.expand(sp.im(d))
+            re_row += [cr + dr, -ci + di]
+            im_row += [ci + di, cr - dr]
+        br, bi = sp.expand(sp.re(b[i])), sp.expand(sp.im(b[i]))
+        rows += [re_row + [br], im_row + [bi]]
+    return rows
+
+
+def rank_and_free(eqs, zs, ws):
+    rows = real_form(eqs, zs, ws)
+    nv = 2 * len(zs)
+    full = DomainMatrix.from_list_sympy(len(rows), nv + 1, rows, extension=True)
+    coef = DomainMatrix.from_list_sympy(len(rows), nv, [r_[:nv] for r_ in rows], extension=True)
+    rk, rka = coef.rank(), full.rank()
+    return rk, nv - rk, rka
+
+
+def parametrize(eqs, zs, ws, tname="t"):
+    """Solve the real linear system exactly over QQ<sqrt3>; return the real
+    and imaginary parts (P, Q) of each A_h as 2x2 matrices of affine forms in
+    the free real parameters t."""
+    rows = real_form(eqs, zs, ws)
+    nv = 2 * len(zs)
+    full = DomainMatrix.from_list_sympy(len(rows), nv + 1, rows, extension=True)
+    R, pivots = full.rref()
+    R = R.to_Matrix()
+    free = [j for j in range(nv) if j not in pivots]
+    t = sp.symbols(f"{tname}0:{len(free)}", real=True)
+    val = {}
+    for j, tj in zip(free, t):
+        val[j] = tj
+    for row, j in enumerate(pivots):
+        val[j] = sp.expand(R[row, nv] - sum(R[row, f] * val[f] for f in free))
+    P, Q = [], []
+    for k in range(len(zs) // 4):
+        P.append(sp.Matrix(2, 2, [val[2 * (4 * k + m)] for m in range(4)]))
+        Q.append(sp.Matrix(2, 2, [val[2 * (4 * k + m) + 1] for m in range(4)]))
+    return t, P, Q
+
+
+def unitarity_equations(pts, P, Q):
+    """Real polynomial equations of sum_{h-h'=d} A_h A_h'^dag = delta I and
+    sum_{h-h'=d} A_h'^dag A_h = delta I, with A = P + iQ."""
+    blocks = {}
+    for i, hi in enumerate(pts):
+        for j, hj in enumerate(pts):
+            d = tuple(sp.nsimplify(c) for c in (hi - hj))
+            b = blocks.setdefault(d, [sp.zeros(2) for _ in range(4)])
+            # A_i A_j^dag = (P_i P_j^T + Q_i Q_j^T) + i (Q_i P_j^T - P_i Q_j^T)
+            b[0] += P[i] * P[j].T + Q[i] * Q[j].T
+            b[1] += Q[i] * P[j].T - P[i] * Q[j].T
+            # A_j^dag A_i = (P_j^T P_i + Q_j^T Q_i) + i (P_j^T Q_i - Q_j^T P_i)
+            b[2] += P[j].T * P[i] + Q[j].T * Q[i]
+            b[3] += P[j].T * Q[i] - Q[j].T * P[i]
+    eqs = set()
+    for d, (re1, im1, re2, im2) in blocks.items():
+        target = I2 if all(c == 0 for c in d) else sp.zeros(2)
+        for M in (re1 - target, im1, re2 - target, im2):
+            for e in M:
+                e = sp.expand(e)
+                if e != 0:
+                    eqs.add(e)
+    return sorted(eqs, key=sp.default_sort_key)
+
+
+def gram_of(poly, t):
+    """Unique symmetric Gram matrix of a quadratic polynomial in the basis (1, t)."""
+    n = len(t)
+    G = sp.zeros(n + 1)
+    for mon, c in sp.Poly(poly, *t).terms():
+        nz = [i for i, p_ in enumerate(mon) if p_]
+        if not nz:
+            G[0, 0] += c
+        elif len(nz) == 1 and mon[nz[0]] == 1:
+            G[0, nz[0] + 1] += c / 2
+            G[nz[0] + 1, 0] += c / 2
+        elif len(nz) == 1:
+            G[nz[0] + 1, nz[0] + 1] += c
+        else:
+            i, j = nz
+            G[i + 1, j + 1] += c / 2
+            G[j + 1, i + 1] += c / 2
+    return G
+
+
+def positive_q3(x):
+    """Exact sign test for x = a + b sqrt3, a, b rational."""
+    x = sp.expand(x)
+    b_ = x.coeff(R3)
+    a_ = sp.expand(x - b_ * R3)
+    if not (a_.is_Rational and b_.is_Rational):
+        raise ValueError(f"not in Q(sqrt3): {x}")
+    if a_ >= 0 and b_ >= 0:
+        return a_ > 0 or b_ > 0
+    if a_ > 0 and b_ < 0:
+        return a_ ** 2 > 3 * b_ ** 2
+    if a_ < 0 and b_ > 0:
+        return 3 * b_ ** 2 > a_ ** 2
+    return False
+
+
+def ldl_pivots_positive(G):
+    """Gaussian elimination without pivoting over QQ<sqrt3>; a real symmetric
+    matrix is positive definite iff every pivot is positive (Sylvester)."""
+    dm = DomainMatrix.from_list_sympy(G.rows, G.cols, G.tolist(), extension=True)
+    K = dm.domain
+    a = [list(row) for row in dm.to_list()]
+    n = len(a)
+    pivots = []
+    for k in range(n):
+        pk = a[k][k]
+        if not positive_q3(K.to_sympy(pk)):
+            return False, k, K.to_sympy(pk)
+        pivots.append(pk)
+        for i in range(k + 1, n):
+            f = a[i][k] / pk
+            if f != K.zero:
+                for j in range(k, n):
+                    a[i][j] = a[i][j] - f * a[k][j]
+    return True, n, None
+
+
+def check_certificate(t, eqs, path):
+    """Exact real infeasibility certificate (contract Sec. 4 (ii) with
+    constant multipliers): p = sum_i c_i f_i with rational c_i read from
+    `path`; if the Gram matrix G of p in the basis (1, t) is positive
+    definite then p(t) = (1,t) G (1,t)^T > 0 for every real t, while every
+    f_i vanishes at a solution. In contract form: for 0 < mu <= 1/(G^-1)_00,
+    G - mu e0 e0^T is PSD, = L D L^T with D >= 0, so p = mu + sum_j d_j l_j^2
+    and -1 = sum_j (d_j/mu) l_j^2 + sum_i (-c_i/mu) f_i, a weighted sum of
+    squares with exact coefficients. The verifier checks G > 0 exactly, which
+    is what makes such a representation exist."""
+    import json
+    from fractions import Fraction
+    data = json.loads(Path(path).read_text())
+    c = [sp.Rational(Fraction(x).numerator, Fraction(x).denominator) for x in data["multipliers"]]
+    record("certificate file matches the equation list", data["n_equations"] == len(eqs) == len(c))
+    p = sp.expand(sum((ci * fi for ci, fi in zip(c, eqs) if ci != 0), sp.Integer(0)))
+    G = gram_of(p, t)
+    v = sp.Matrix([1] + list(t))
+    record("p equals (1,t) G (1,t)^T exactly", sp.expand((v.T * G * v)[0] - p) == 0)
+    ok, k, piv = ldl_pivots_positive(G)
+    record("CERTIFICATE: the Gram matrix of p = sum c_i f_i is positive definite over QQ(sqrt3) "
+           "(all 19 pivots > 0): p > 0 on R^18, so the reduced S19 system has no real solution",
+           ok, "all pivots positive" if ok else f"pivot {k} not positive: {piv}")
+
+
+def check_square_control():
+    """Square substrate: U = exp(-ik_x s_x) exp(-ik_y s_y) has coefficients
+    A_(hx,hy) = X_hx Y_hy at e^{-ik.h}, X_+-1 = (I +- s_x)/2,
+    Y_+-1 = (I +- s_y)/2; it saturates c_0 = r_in = 1 with A(n) = n.sigma.
+    Facet normals x, y. The walk must satisfy the layer sums and the
+    first-moment equations (A3)."""
+    X = {1: (I2 + SX) / 2, -1: (I2 - SX) / 2}
+    Y = {1: (I2 + SY) / 2, -1: (I2 - SY) / 2}
+    pts = [sp.Matrix([a, b]) for a in (1, -1) for b in (1, -1)]
+    A = [X[a] * Y[b] for a in (1, -1) for b in (1, -1)]
+    ok_sum = sp.simplify(sum(A, sp.zeros(2)) - I2) == sp.zeros(2)
+    ok = True
+    for n in (sp.Matrix([1, 0]), sp.Matrix([0, 1])):
+        e = sp.Matrix([-n[1], n[0]])
+        xp, xm = eigvecs(n)
+        Pp = (I2 + n[0] * SX + n[1] * SY) / 2
+        levels = {}
+        for i, p in enumerate(pts):
+            levels.setdefault((p.T * n)[0], []).append(i)
+        ok = ok and sp.simplify(sum((A[i] for i in levels[1]), sp.zeros(2)) - Pp) == sp.zeros(2)
+        for lev, idx in levels.items():
+            for x in (xp, xm):
+                s_ = sp.simplify(sum(((pts[i].T * e)[0] * (x.H * A[i] * x)[0] for i in idx), 0))
+                ok = ok and s_ == 0
+            lhs = sum(((pts[i].T * e)[0] * (xp.H * A[i] * xm)[0] for i in idx), 0)
+            rhs = sum(((pts[i].T * e)[0] * sp.conjugate((xm.H * A[i] * xp)[0]) for i in levels.get(-lev, [])), 0)
+            ok = ok and sp.simplify(lhs - rhs) == 0
+    record("CONTROL square: the saturating walk satisfies the layer sums, A3 (L2) and the off-diagonal L3",
+           ok_sum and ok)
+    P = [Ak.applyfunc(sp.re) for Ak in A]
+    Q = [Ak.applyfunc(sp.im) for Ak in A]
+    record("CONTROL square: unitarity_equations of the unitary square walk are all identically 0",
+           unitarity_equations(pts, P, Q) == [])
+    P[0] = P[0] + sp.Rational(1, 7) * I2
+    record("CONTROL square: a perturbed (non-unitary) coefficient is detected by unitarity_equations",
+           unitarity_equations(pts, P, Q) != [])
+
+
+def check_pipeline_square_control():
+    """Positive control of the whole reduction pipeline (L1 + L2 + L3,
+    parametrize, unitarity_equations) on the 3x3 square support, which, like
+    S19, has interior and edge-interior points: the known saturating walk
+    exp(-ik_x s_x) exp(-ik_y s_y) must lie in the parametrized family and
+    satisfy every reduced equation."""
+    pts = [sp.Matrix([a, b_]) for a in (-1, 0, 1) for b_ in (-1, 0, 1)]
+    normals = [sp.Matrix([1, 0]), sp.Matrix([0, 1])]
+    zs, ws, A, Abar = unknowns(len(pts))
+    e3 = linear_system(pts, normals, sp.Integer(1), 1, A, moments=True, Abar=Abar)
+    t, P, Q = parametrize(e3, zs, ws, tname="u")
+    X = {1: (I2 + SX) / 2, -1: (I2 - SX) / 2}
+    Y = {1: (I2 + SY) / 2, -1: (I2 - SY) / 2}
+    walk = [X[int(p_[0])] * Y[int(p_[1])] if p_[0] != 0 and p_[1] != 0 else sp.zeros(2) for p_ in pts]
+    match = []
+    for k in range(len(pts)):
+        match += list(P[k] - walk[k].applyfunc(sp.re)) + list(Q[k] - walk[k].applyfunc(sp.im))
+    match = [sp.expand(m) for m in match if sp.expand(m) != 0]
+    sol = sp.solve(match, t, dict=True) if match else [{}]
+    ok = len(sol) >= 1 and all(sp.expand(m.subs(sol[0])) == 0 for m in match)
+    record("CONTROL pipeline (3x3 square): the saturating walk lies in the L1+L2+L3 parametrized family",
+           ok, f"{len(t)} free parameters")
+    if ok:
+        eqs = unitarity_equations(pts, P, Q)
+        val = {ti: sol[0].get(ti, 0) for ti in t}
+        record("CONTROL pipeline (3x3 square): it satisfies every reduced unitarity equation",
+               all(sp.expand(e.subs(val)) == 0 for e in eqs), f"{len(eqs)} equations")
+
+
+def main():
+    pts, verts, normals, r = m1.hexagon(2 * m1.G1)
+    N = 2
+    normals = normals[:3]
+    record("S19: 19 points, r_in = sqrt3/2, three facet normals", len(pts) == 19 and sp.simplify(r - R3 / 2) == 0)
+    zs, ws, A, Abar = unknowns(len(pts))
+    e1 = linear_system(pts, normals, r, N, A, moments=False)
+    rk1, free1, rka1 = rank_and_free(e1, zs, ws)
+    print(f"  L1 (layer sums): rank {rk1}, free real parameters {free1} of {2 * len(zs)}")
+    record("L1 consistent", rka1 == rk1)
+    record("L1 leaves 56 free real parameters, as in the parent gate's attempt (hex-ceiling report Sec. 4)",
+           free1 == 56)
+    e2 = linear_system(pts, normals, r, N, A, moments=True)
+    rk2, free2, rka2 = rank_and_free(e2, zs, ws)
+    print(f"  L1 + L2 (with first moments): rank {rk2}, free real parameters {free2}")
+    record("L1 + L2 consistent (rank of augmented matrix equals rank)", rka2 == rk2)
+    record("L2 adds independent linear constraints beyond L1", rk2 > rk1, f"{rk2 - rk1} added")
+    record("L1 + L2 leave 28 free real parameters", free2 == 28)
+    e3 = linear_system(pts, normals, r, N, A, moments=True, Abar=Abar)
+    rk3, free3, rka3 = rank_and_free(e3, zs, ws)
+    print(f"  L1 + L2 + L3 (with off-diagonal first order): rank {rk3}, free real parameters {free3}")
+    record("L1 + L2 + L3 consistent", rka3 == rk3, f"rank {rk3}, augmented {rka3}")
+    check_square_control()
+    check_pipeline_square_control()
+    print("== S19 reduced system and exact certificate")
+    t, P, Q = parametrize(e3, zs, ws)
+    eqs = unitarity_equations(pts, P, Q)
+    record("reduced S19 system: 18 real parameters, 730 distinct quadratic equations",
+           len(t) == 18 and len(eqs) == 730)
+    check_certificate(t, eqs, ROOT / "scripts" / "data" / "hex_s19_certificate.json")
+    print("== S7 (minimal support, second route to T2)")
+    p7, v7, n7, r7 = m1.hexagon(m1.G1)
+    z7, w7, A7, B7 = unknowns(len(p7))
+    e7 = linear_system(p7, n7[:3], r7, 1, A7, moments=True, Abar=B7)
+    rk7, free7, rka7 = rank_and_free(e7, z7, w7)
+    print(f"  S7 with L1 + L2 + L3: rank {rk7}, augmented {rka7}, free real parameters {free7}")
+    record("S7: L1 + L2 + L3 computed (informational; T2 decides S7)", True,
+           "inconsistent" if rka7 > rk7 else f"consistent, {free7} free")
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (M1-B19 structural reduction).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 4: hex_s19_certificate.json ===
+
+{
+"note": "EXPLORATORY candidate multipliers (rational) for the S19 equations, in the order of unitarity_equations(); checked exactly in verify_hex_supremum_b19.py",
+"n_equations": 730,
+"multipliers": [
+"64632517/913681554",
+"-50132512/708701341",
+"-71599233/878781563",
+"59780943/733728398",
+"66405351/958192339",
+"-25956067/374531633",
+"-61223923/764918953",
+"70573637/881732334",
+"6588659/532794021",
+"-824815/501164113",
+"401210/243778367",
+"-419132471/685214823",
+"-27175747/43375893",
+"-2781812/558570425",
+"-263472/57017837",
+"4161827/900658793",
+"-3244408/884248191",
+"8545342/744132413",
+"2653012/382544347",
+"51991/440564304",
+"-2835505/408858463",
+"-104032/881552301",
+"-55026991/87999256",
+"-519101551/810907507",
+"-39520771/213217759",
+"42590514/229779271",
+"145600387/946601012",
+"-1559/279815504",
+"29/5205035",
+"22780646/981474845",
+"-18120322/780690777",
+"4333079/976374938",
+"18531/26947954",
+"-76235/110861652",
+"-198834620/863856333",
+"6759817/29368682",
+"-93153080/737630539",
+"111663077/884201528",
+"-119752299/992991125",
+"105419949/874146673",
+"596526649/689872297",
+"6123452/938867263",
+"146431071/881817863",
+"-162548047/978875388",
+"-5102608/782348193",
+"81626/13749901",
+"503306/746788393",
+"-491073/728637482",
+"-623467/731139484",
+"270271/316946686",
+"340634350/999421183",
+"164618517/966919858",
+"-113209900/664961041",
+"247833707/968489835",
+"-58919589/965039140",
+"149380094/967869573",
+"-65202480/422462557",
+"56875001/931551000",
+"-45396647/962303726",
+"31174979/660837318",
+"-56801965/744507842",
+"59486077/779688710",
+"-65273161/575733177",
+"74899301/660639256",
+"-30073339/690043844",
+"181935332/904089773",
+"-91038250/452395639",
+"37642043/863710546",
+"4287301/956427901",
+"-407390/90882157",
+"-135400145/669736883",
+"109191203/540098210",
+"-273744447/413060765",
+"-17612434/867609387",
+"17801778/876936697",
+"103729279/538349395",
+"-67719001/528771788",
+"125772301/982070667",
+"1666250/841788761",
+"-42840/21642749",
+"-635109/980880401",
+"631888/975905797",
+"-13585307/777600141",
+"11353215/63604468",
+"-104478493/585323097",
+"8048955/460708657",
+"1652611/982790186",
+"-1400418/832813691",
+"26868394/366527061",
+"-27801034/268899009",
+"-206446699/982613435",
+"104488119/497326574",
+"59005223/570714240",
+"-44539577/607589730",
+"14837531/909276511",
+"128337979/441310600",
+"5898411/278910233",
+"245641551/886308508",
+"-245641551/886308508",
+"-5680586/268610235",
+"-174964337/601642765",
+"488396165/775421427",
+"153425805/999855082",
+"-21920873/720223210",
+"1546071/80951356",
+"-15861404/830493659",
+"22338558/733946497",
+"-58470373/381043460",
+"2611945/892923898",
+"10599607/826839447",
+"-126256/9848803",
+"-1805434/617208695",
+"96425627/586051225",
+"-268828101/937048600",
+"-166979495/722544463",
+"139152275/817889272",
+"-143369638/842677483",
+"220074039/952292246",
+"282522383/984782478",
+"82132925/509558584",
+"-94328123/585218471",
+"62826819/373209028",
+"-7290661/43308583",
+"-8868922/738533445",
+"3886129/732742540",
+"26471726/892951957",
+"111540369/999107980",
+"-21653924/892016093",
+"4150457/170974759",
+"-59600952/533867579",
+"-1555602/443502397",
+"3420224/975106449",
+"640348480/779305523",
+"30265321/697010352",
+"-1873414/43144725",
+"-5845901/246528100",
+"23054477/972232751",
+"36018532/205605023",
+"-87949899/502045475",
+"-526358315/782688652",
+"-4708823/244150644",
+"-510565984/975233927",
+"15370523/384140418",
+"-76399512/693903923",
+"-63699389/935255433",
+"-60689789/513062277",
+"53813491/454931096",
+"53853551/790695593",
+"19030437/172845278",
+"-18365129/458981671",
+"-6157228/138799649",
+"35738695/805641487",
+"-351930691/936081611",
+"-106646201/892642874",
+"-13344813/100077004",
+"-192576269/961493191",
+"199166419/994396437",
+"-32060/93945547",
+"334418/979946411",
+"13738293/955888085",
+"7509245/928509374",
+"-1719817/996010154",
+"-4052779/501121390",
+"1714558/992964471",
+"-4573987/318250577",
+"-205697517/961507571",
+"-84977968/465057159",
+"57973933/317272738",
+"205482155/960500888",
+"-6460149/984773861",
+"5796369/883588394",
+"6740731/957063701",
+"-6470206/918653971",
+"-49200785/926913704",
+"-179869135/575599441",
+"250854987/881287163",
+"12502646/977743511",
+"198863035/812998764",
+"-148750981/608128925",
+"-12784994/999823951",
+"-121361/854873266",
+"-14848571/969776314",
+"-3355687/448704939",
+"5641369/754334398",
+"10347433/675802098",
+"95461/672432304",
+"108951034/628255963",
+"-66005593/380615088",
+"7208860/619629421",
+"-5691535/489209464",
+"1819523/714396335",
+"-1580815/809594708",
+"515506588/942631659",
+"-113537905/559386514",
+"-90647374/163821391",
+"-851804/262440043",
+"226314667/619234190",
+"32008451/659706571",
+"-36723455/381670512",
+"76780744/621871895",
+"-93130537/344107283",
+"-118741553/961725958",
+"191345016/706999183",
+"70434752/732035367",
+"-28413743/585618247",
+"1298374/919482813",
+"-10244057/792909522",
+"9835139/761258490",
+"-784952/555887497",
+"-1240705/787616943",
+"13999171/970046476",
+"-2139391/890489622",
+"-12862720/891298221",
+"1991712/829020439",
+"186138391/960693540",
+"471468110/888616547",
+"317383773/703233991",
+"124397723/719311608",
+"-167299819/812571409",
+"-14611936/470787057",
+"-318934673/462871069",
+"20700886/453057087",
+"-244332341/772748563",
+"211151131/961889599",
+"-191421982/872014337",
+"263415654/833103253",
+"-33664324/736773323",
+"-6164239/731698948",
+"95769/107294621",
+"-688123/770937323",
+"5027867/596810895",
+"4653463/681202935",
+"-142880408/722702833",
+"142880408/722702833",
+"-1977493/563825841",
+"2239523/638536237",
+"-97691278/746696431",
+"97691278/746696431",
+"111281297/977659556",
+"-49576675/836664863",
+"-77239494/923476639",
+"-202717871/938994614",
+"3176009/468495732",
+"-78261971/742689788",
+"77391519/734429380",
+"-6222271/917852376",
+"202717871/938994614",
+"9581233/653690283",
+"1095362/79376913",
+"-5121091/349392132",
+"-12891217/934179760",
+"4356927/983113850",
+"-424876/95870663",
+"-25906531/924456583",
+"120903475/897593577",
+"223267399/778159651",
+"1484048/58426337",
+"-24388545/960166618",
+"-223267399/778159651",
+"-115000170/853767139",
+"25810742/921038419",
+"49518207/277464323",
+"-49518207/277464323",
+"-85478294/340805189",
+"8522913/628029553",
+"-8130579/599119561",
+"15948974/996617361",
+"-15948974/996617361",
+"1983413/205349866",
+"273880591/740529725",
+"30125072/529164531",
+"20498609/128045410",
+"-20498609/128045410",
+"-30125072/529164531",
+"-377321411/726894058",
+"105364703/838688265",
+"6174491/113138374",
+"-41700838/943231345",
+"-21675151/655015964",
+"8277595/316497378",
+"-8277595/316497378",
+"13372595/404115441",
+"37948234/858351187",
+"-12341208/226134301",
+"-60827692/484179901",
+"-4649419/626025161",
+"5752751/687997014",
+"-5249725/627837903",
+"4392315/591407164",
+"142289114/533587431",
+"7099933/421732585",
+"-16581667/984942997",
+"48382486/251382503",
+"-48382486/251382503",
+"513347973/620990300",
+"148841201/264845044",
+"110749787/175928891",
+"-1814104/948522749",
+"-183243617/985548896",
+"163230061/998790417",
+"-163230061/998790417",
+"121620083/654115764",
+"474591/248144737",
+"-108721015/164288857",
+"190613347/586924800",
+"18898093/524389112",
+"-52410521/439850640",
+"14652625/101321228",
+"-59062892/408413151",
+"52410521/439850640",
+"-15976000/443306129",
+"-190613347/586924800",
+"-425917955/949588498",
+"26156539/761468989",
+"25282992/167865115",
+"-85708621/339402620",
+"-10218659/942171303",
+"10218659/942171303",
+"85708621/339402620",
+"1",
+"-2303253/205424390",
+"19026548/703494295",
+"-19026548/703494295",
+"-1424982/159226375",
+"6555905/732551701",
+"-7737367/567508435",
+"-75516019/293974873",
+"75516019/293974873",
+"-54225119/392076914",
+"184737699/795571324",
+"-184737699/795571324",
+"54225119/392076914",
+"6306679/751901732",
+"556939/817296511",
+"492097/239999654",
+"-7158511/986016729",
+"7158511/986016729",
+"-221557/325130334",
+"-492097/239999654",
+"-6270660/768819199",
+"39459187/430050594",
+"-39459187/430050594",
+"7254215/889408733",
+"-48711622/986771005",
+"-229145993/817182488",
+"-136278261/779764604",
+"74777263/444216191",
+"-74777263/444216191",
+"136278261/779764604",
+"229145993/817182488",
+"31386699/635813041",
+"4660099/762502607",
+"-113598/307709399",
+"-7125529/897287843",
+"30823470/870136603",
+"53641/16999391",
+"-1413015/756550552",
+"1413015/756550552",
+"-53641/16999391",
+"-30823470/870136603",
+"7125529/897287843",
+"90993018/638461661",
+"-16332989/780033390",
+"16332989/780033390",
+"429723997/688000705",
+"-139534558/390284689",
+"-1984162/891699937",
+"217593569/935401490",
+"83492278/561479667",
+"-613313/955085018",
+"613313/955085018",
+"-83492278/561479667",
+"701239/85554642",
+"8191925/696999271",
+"-7392293/711177331",
+"-12534339/927902737",
+"12534339/927902737",
+"-270815613/529299083",
+"-2417081/29161394",
+"72101105/869879301",
+"1462691/842562829",
+"-984080/150107407",
+"-14192904/972109235",
+"3165064/244915255",
+"-4171121/206500224",
+"-6991744/629807853",
+"-120866/662675511",
+"120866/662675511",
+"6991744/629807853",
+"4171121/206500224",
+"-597882/28201369",
+"167760170/399618269",
+"-47935654/660406575",
+"-315331592/972044803",
+"-115494948/790634825",
+"-325991/103089107",
+"-520401101/774930279",
+"3898900/931650159",
+"130560/159566183",
+"-4147657/533531877",
+"4147657/533531877",
+"-130560/159566183",
+"2667601/419601829",
+"-7377007/233862015",
+"-53348010/167794547",
+"-29655284/749025177",
+"-61713462/464478659",
+"-277588443/446605598",
+"15874965/828067198",
+"-125772/974974303",
+"38670887/638325143",
+"56317194/853266683",
+"-39695211/354470348",
+"-129108259/368731883",
+"33545972/323859273",
+"-33545972/323859273",
+"138095045/394398053",
+"106374224/949900687",
+"-56317194/853266683",
+"-38670887/638325143",
+"-233455/10186339",
+"97231/36422549",
+"648451/587900300",
+"696923/727214257",
+"-696923/727214257",
+"-97231/36422549",
+"-648451/587900300",
+"8964402/686148341",
+"511482021/964888124",
+"316159636/675192683",
+"-131091593/728673822",
+"-6966039/26623196",
+"-116967570/425815063",
+"-353110289/642862313",
+"-14286681/21824000",
+"-137206565/578157777",
+"172465747/910070750",
+"9545883/427379231",
+"-9545883/427379231",
+"-172465747/910070750",
+"137206565/578157777",
+"-536815/211447618",
+"536815/211447618",
+"221627435/390606929",
+"-5408236/204645205",
+"-188282643/762280265",
+"365066950/792266841",
+"334181504/765462979",
+"78426103/575230811",
+"-266546867/955049124",
+"143510268/238982999",
+"-239733097/418117171",
+"3321687/246610819",
+"725593007/925902837",
+"279348973/708131171",
+"184733693/625338077",
+"6982115/997450414",
+"4660063/753380212",
+"3287605/685288694",
+"-4804751/776771543",
+"-2388397/497852224",
+"1255951/245552859",
+"-251583424/789854395",
+"-163074579/874091378",
+"73841318/479608063",
+"-87811415/256772036",
+"-1092138/991105021",
+"848531/381294235",
+"774886/390199281",
+"-11809839/879416357",
+"-5100455/799830316",
+"5100455/799830316",
+"3514124/751593927",
+"8241258/429269045",
+"-8241258/429269045",
+"-8461457/999844167",
+"190549190/846717971",
+"224060665/962930103",
+"-178058291/842517186",
+"519335239/900314159",
+"-100500384/609370699",
+"-146718023/866925944",
+"672019234/707315635",
+"-476371773/939209711",
+"-9296278/546970087",
+"9296278/546970087",
+"-1416661/284347465",
+"1416661/284347465",
+"-181942593/676533133",
+"-258298206/990264509",
+"381818599/391144561",
+"-8156137/627203983",
+"-1330889/798655310",
+"572155/531175439",
+"3153770/145444891",
+"7606978/889498345",
+"-6810187/424458383",
+"-1955601/403253972",
+"1955601/403253972",
+"6810187/424458383",
+"-3153770/145444891",
+"-7606978/889498345",
+"-572155/531175439",
+"-7176096/546329171",
+"8145659/994743144",
+"-1953791/260232249",
+"2141512/435149643",
+"144180/485604629",
+"-17019326/836342081",
+"4351319/641899249",
+"-7585381/967867885",
+"10457209/982840472",
+"4974932/211186021",
+"-4974932/211186021",
+"-10457209/982840472",
+"-4351319/641899249",
+"7585381/967867885",
+"17019326/836342081",
+"-144180/485604629",
+"-15502681/939768650",
+"96574990/154701521",
+"128017344/995472215",
+"-1622809/832536418",
+"4111191/660742538",
+"1227907/273743807",
+"3686534/709217435",
+"-1104859/469956889",
+"5385101/931883121",
+"-3269169/650853851",
+"-1211277/750949564",
+"-872902/116585323",
+"533041/977497960",
+"-533041/977497960",
+"872902/116585323",
+"1211277/750949564",
+"3269169/650853851",
+"-5385101/931883121",
+"1104859/469956889",
+"-3686534/709217435",
+"2990248/926151571",
+"17902728/907471481",
+"6841207/451236331",
+"1708498/986461391",
+"674637/375518420",
+"334613/393613694",
+"7372633/828664684",
+"-17335894/793650721",
+"-8867650/965740839",
+"9646256/902550587",
+"2040748/828551455",
+"-3234047/307843367",
+"7207739/865166007",
+"926074/604847625",
+"-12299522/886662651",
+"12956671/934035994",
+"-1236053/807304515",
+"-7207739/865166007",
+"3234047/307843367",
+"-2040748/828551455",
+"982041/163318430",
+"4194525/255958412",
+"8734879/902431071",
+"3530952/282479545",
+"144851/46021524",
+"-6009011/660149434",
+"-18550761/376306493",
+"-34004455/818534228",
+"-5085207/537226589",
+"-3307374/401189977",
+"-1629595/90748667",
+"35108/10401209",
+"-35108/10401209",
+"1629595/90748667",
+"4681888/483668571",
+"16618466/814749845",
+"690722/163736217",
+"-2715694/279352185",
+"1444458/774189965",
+"554133/339521171",
+"-2317076/918452973",
+"846120/335388839",
+"-1253098/767781923",
+"9450827/259317406",
+"-10131358/569036753",
+"-4585439/113555109",
+"-4623144/955750063",
+"3197451/671311102",
+"-9413212/685988129",
+"-122287/36105264",
+"-31785/5586433",
+"3954791/898826431",
+"-2302347/136892833",
+"-554804/298028769",
+"6063049/557028620",
+"-8601408/790234489",
+"1401345/752772376",
+"2302347/136892833",
+"-3954791/898826431",
+"31785/5586433",
+"301946037/844632998",
+"-282552207/943429157",
+"22764820/900759413",
+"-3181493/432341639",
+"3439925/989332324",
+"-10268494/820805807",
+"100081/670320215",
+"3128365/349926484",
+"296522/41106655",
+"-296522/41106655",
+"-3128365/349926484",
+"-86308360/146996013",
+"-19932098/873754231",
+"-6228289/701860319",
+"-5294615/856127672",
+"-23000/73111317",
+"11262044/955758973",
+"-5955169/381036619",
+"-1766434/312484539",
+"2332538/572296677",
+"6017382/567036475",
+"5303324/693063843",
+"1081933/520545380",
+"3816323/904378898",
+"4718275/699769141",
+"-4718275/699769141",
+"-3816323/904378898",
+"-1081933/520545380",
+"-5303324/693063843",
+"-6017382/567036475",
+"-2332538/572296677",
+"1766434/312484539",
+"3783141/518557243",
+"555201483/902255567",
+"-120775383/829504733",
+"24845986/742719317",
+"15406594/908804837",
+"-5327033/620818483",
+"-13372369/996633005",
+"-12863290/973484471",
+"9808790/927329981",
+"-7277101/534062324",
+"11049421/959137186",
+"21074874/976924751",
+"-1163843/716779661",
+"-1648561/281984028",
+"-30333207/971546030",
+"-2478599/303419054",
+"-6397457/796558325",
+"231284/326715759",
+"-1741366/240261361",
+"1741366/240261361",
+"-231284/326715759",
+"6397457/796558325",
+"2478599/303419054",
+"30333207/971546030",
+"1648561/281984028",
+"1163843/716779661",
+"-21074874/976924751",
+"-11049421/959137186",
+"7277101/534062324",
+"-127249494/915968011",
+"-169239312/486468113",
+"188608287/203624507",
+"2901769/120381996",
+"-14574623/888653778",
+"10472687/736242161",
+"24670564/806652187",
+"339104/108299937",
+"11458765/903219917",
+"-13116417/489487415",
+"-2249034/455726195",
+"-6560830/420336463",
+"11349163/829697284",
+"4722386/680319777",
+"3064721/394674725",
+"7303694/588341061",
+"967656/956649293",
+"15474886/740472827",
+"-15474886/740472827",
+"-967656/956649293",
+"-7303694/588341061",
+"-3064721/394674725",
+"-4722386/680319777",
+"540775193/982143832",
+"-185492546/558729187",
+"-4654080/951476897",
+"-300560019/983238880",
+"241373663/541145684",
+"-305644340/863665207",
+"-160161989/281325917",
+"-10719275/708954384",
+"-9244318/865771653",
+"12042326/651456289",
+"-3036881/249177777",
+"2600697/603126301",
+"1569762/134823149",
+"6218093/614252257",
+"7034879/913196925",
+"1866532/513751859",
+"18007/19947779",
+"-4933887/226833107",
+"-2476028/448750535",
+"-654146/85996165",
+"6175613/923566354",
+"1932821/261084731",
+"-1932821/261084731",
+"-6175613/923566354",
+"654146/85996165",
+"2476028/448750535",
+"4933887/226833107",
+"-18007/19947779",
+"-1866532/513751859",
+"-7034879/913196925",
+"-6218093/614252257",
+"-1569762/134823149",
+"-4285008/993733997",
+"10859191/891002668",
+"115015211/980017820",
+"-22932971/984264383",
+"16303887/662398559",
+"-5911003/336928777",
+"44014/148745079",
+"3622369/981526594",
+"10737743/852715650",
+"-16403445/545334848",
+"-20517381/981828733",
+"-190250689/967756119",
+"13757389/427770091",
+"311072808/904526995",
+"-159693752/637438003"
+]
+}
+=== DOCUMENT 5: 2026-11-03--hex-supremum.md ===
+
+# HEX_SUPREMUM (M1): Stage A and the 13-point support
+
+**Date:** 2026-11-03. **Branch:** `research/schur-stability-audit`.
+**Contract:** [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
+preregistration commit `86573ca`; authorization CURRENT_STATE Sec. 14
+(`762ecdb`), user instruction «adelante» for Stage A.
+**Author:** Claude Code (Claude Opus 5.5). **Verifier:**
+`scripts/verify_hex_supremum_gate.py`, 12/12, SHA-256 `ef4b0114…`; imports
+read-only the reviewed `verify_hex_ceiling_gate.py` (SHA-256 `8f3b7a10…`,
+unchanged). **Solver budget used:** 0 s on S13 (no solver run); 0 s on
+S19 (not started). No numerics. **Status: PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES; promoted 2026-11-03 for S13 (CURRENT_STATE
+Sec. 14).**
+
+**Review (2026-11-03).** Grok PASS and Gemini PASS on all five blocks, no
+mandatory repair, identical input (this report at SHA-256 `8a4c4eec…`,
+before this paragraph)
+([Grok](../debates/2026-11-03--hex-supremum-stageA-review-grok/informe_grok.md),
+[Gemini](../debates/2026-11-03--hex-supremum-stageA-review-gemini/informe_gemini.md),
+[author reading](../debates/2026-11-03--hex-supremum-stageA-review-grok/verificacion_autor.md)).
+Accepted clarification (Grok): the "second route" of Sec. 3 is not an
+independent derivation; the layer equations already contain `A_h = 0` on
+each singleton, so the exact solve confirms the same geometry in algebra.
+The body below is unchanged.
+
+**Pre-step check.** Known: facet-line rigidity and the minimal-support T2
+(hex-ceiling report Sec. 3, CURRENT_STATE Sec. 12). Question: what do the
+saturation conditions force before any solver, and does that decide S13?
+Abandonment: if Stage A forced nothing beyond the layer sums, S13 would go
+to an exact solver within the per-support budget.
+
+## 1. Stage A: two consequences of saturation valid for every support
+
+Notation of the hex-ceiling report: `U(k) = sum_{h in F} A_h e^{-ik.h}`,
+`C = conv F` a regular hexagon, `|vertex| = 1`, `r = r_in = sqrt3/2`,
+normal form `A(n) = r n.sigma` (Step 2 there). Suppose `c_0 = r_in`.
+
+**Lemma A1 (singleton layer).** Let `n_f` be a facet normal and `delta`
+the spacing of the projections of `Lambda` onto `n_f` (they lie on a
+uniform grid, L0 of the parent gate). If a layer strictly between the two
+extreme ones contains exactly one point `h` of `C cap Lambda`, then
+`A_h = 0`.
+
+*Proof.* By facet-line rigidity (hex-ceiling report Sec. 3, Step 1:
+Bernstein equality / Julia, prior art), `U(t n_f) = e^{-irt} P_+(n_f) +
+e^{irt} P_-(n_f)`, so the sum of `A_h` over each intermediate layer is 0.
+A layer with one point gives `A_h = 0`. ∎
+
+**Lemma A2 (opposite vertices).** For every vertex `v` of `C`,
+`A_v A_{-v}^dag = 0` and `A_{-v}^dag A_v = 0`.
+
+*Proof.* The coefficient of `U U^dag` at displacement `2v` is
+`sum_{h - h' = 2v} A_h A_{h'}^dag`. Since `C` is centrally symmetric,
+`h - h' = 2v` with `h, h' in C` means `(h + (-h'))/2 = v` with both in `C`;
+`v` is extreme, so `h = v`, `h' = -v`. The coefficient must vanish
+(`2v != 0`); likewise for `U^dag U`. ∎
+
+A2 is recorded for later stages; it is not used for S13. Neither lemma
+alone gives a gap proof for `W_hex^sym`.
+
+## 2. Supports (verifier)
+
+Closed regular lattice hexagons with vertex `v`, in increasing size:
+`S7` (`v = g_1`, 7 points), `S13` (`v = g_1 + g_2`, 13 points), `S19`
+(`v = 2 g_1`, 19 points). After normalising `|v| = 1`, S13 consists of the
+origin, an inner ring of six points with `|h| = 1/sqrt3` at angles
+`k pi/3`, and six vertices at `pi/6 + k pi/3`.
+
+## 3. M1-B13: the 13-point support reduces to minimal support
+
+Facet normals of S13 point at angles `k pi/3`, i.e. through the
+inner-ring points. Along each, the projections lie on the grid
+`delta = r/3` with levels `-3..3`; the layers are, top to bottom: two
+vertices; **one inner-ring point**; two inner-ring points; origin and two
+vertices; two inner-ring points; **one inner-ring point**; two vertices
+(verifier). By A1 the two singleton layers force their coefficients to 0.
+The three normals cover all six inner-ring points, so every inner-ring
+coefficient vanishes and `F within {0} U vert(H)`.
+
+Second route (rule 4): with generic coefficients on all 13 points, the
+exact solution of the full set of layer equations along the three normals
+forces every inner-ring coefficient to 0 (verifier). Both routes agree.
+
+The surviving support is the configuration of the minimal-support T2 up
+to a similarity: rotating space by `-30°` (jointly with the Bloch sphere
+about `z`, which keeps `A(n) = r n.sigma`) maps the six vertices to
+`(cos k pi/3, sin k pi/3)` (verifier). The T2 proof uses only the geometry
+of the seven points, unitarity, the node and isotropy: its layer
+equations and its set of differences `h - h'` are invariant under
+similarity, and the lattice never enters (`verify_hex_ceiling_gate.py`,
+`check_T2_minimal`, lines 166-238, which encodes the vertices abstractly).
+The T2 check is rerun read-only and passes (4/4).
+
+**Verdict.** M1-B13 `PROVED_FOR_S13`: no s=2 walk with `F within S13`
+(in `W_hex^sym`, hence in `W_hex`) reaches `c_0 = r_in`. HX2
+`CONFIRMED_FOR_S13` (and for S7 by T2). No supremum is claimed on S13
+beyond what T1 gives; the gap is qualitative.
+
+## 4. S19 is not reduced by A1
+
+In S19 the facet-normal layers have sizes 3, 4, 5, 4, 3 on every normal
+(verifier): no intermediate singleton, so A1 forces only the layer sums,
+as in the 900 s attempt of the parent gate. S19 contains JDW L6c
+(`c_0/r_in = sqrt3/2`). Lemma A2 and the edge identities of the contract
+(Sec. 4, Stage A, step 2) are the remaining structural input before any
+solver.
+
+## 5. Verdicts so far
+
+- M1-A: `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS` for the whole class (A1, A2
+  proved; no gap proof for `W_hex^sym`, no normal form for general
+  supports).
+- M1-B13: `PROVED_FOR_S13`.
+- M1-B19: not started. Per the contract it may now start (S13 has a
+  verdict), with at most 3600 s of cumulative solver time.
+- HX2: `CONFIRMED_FOR_S13`; OPEN in general.
+
+## 6. Not established
+
+- Nothing for S19 or larger hexagons; nothing for `s > 2`.
+- The line M1 is neither closed nor kept by this: S13 is a bounded support.
+- No novelty claim: A1 is a direct use of the Bernstein equality case
+  (prior art); A2 is the standard extreme-coefficient argument.
+
+## 7. Next step
+
+M1-B19 (user decision on when), then independent cross-family review and
+a separate promotion.
+
+=== DOCUMENT 6: verify_hex_supremum_gate.py ===
+
+"""Exact checks for the HEX_SUPREMUM (M1) gate, Stage A and M1-B13.
+
+Contract: theory/HEX_SUPREMUM_GATE.md, preregistered at 86573ca.
+Run from the repository root:
+
+  python -B scripts/verify_hex_supremum_gate.py
+
+Fail-closed, SymPy only, zero tolerance. Imports read-only the reviewed
+verify_hex_ceiling_gate.py (its check_T2_minimal is rerun unchanged and its
+own check list is read); that file is not modified.
+
+What is certified here:
+- Supports: the closed regular lattice hexagons with vertex v = g1, g1+g2,
+  2 g1 contain exactly 7, 13, 19 lattice points (S7, S13, S19).
+- Layer structure along the three facet normals, after normalising the
+  longest vector to 1: every projection is an integer multiple of
+  delta = r_in / N; in S13 (N = 3) the layers +-2 delta are singletons and
+  together they are the six inner-ring points; in S19 (N = 2) no layer
+  strictly between the extremes is a singleton.
+- Second route for S13: generic coefficients on all 13 points, the layer
+  equations of facet-line saturation (top edge -> P_+(n), bottom edge ->
+  P_-(n), each intermediate layer -> 0) solved exactly force every
+  inner-ring coefficient to vanish.
+- The surviving S13 support {0} U vert is similar (rotation by -30 deg,
+  scale) to the configuration of check_T2_minimal, which is rerun here.
+What is not certified here: facet-line rigidity itself (Bernstein equality /
+Julia, hex-ceiling report Sec. 3, Step 1, prior art), the normal form
+A(n) = r n.sigma (Step 2), and the argument that the T2 proof is
+lattice-free (it uses only the geometry of the 7 points); these are in the
+report.
+"""
+import sys
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_hex_ceiling_gate as hexg  # reviewed, read-only
+
+CHECKS = []
+SX, SY, I2 = hexg.SX, hexg.SY, hexg.I2
+R3 = sp.sqrt(3)
+G1, G2 = hexg.G1, hexg.G2
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok)))
+    print(f"[{'PASS' if ok else 'FAIL'}] {label}" + (f" ({detail})" if detail else ""))
+
+
+def rot(a):
+    return sp.Matrix([[sp.cos(a), -sp.sin(a)], [sp.sin(a), sp.cos(a)]])
+
+
+def hexagon(v):
+    """Lattice points of the closed regular hexagon with vertices R^j v,
+    normalised so that |v| = 1. Returns (points, vertices, normals, r_in)."""
+    L = sp.sqrt((v.T * v)[0])
+    verts = [rot(sp.pi * j / 3) * v for j in range(6)]
+    ang = sp.atan2(v[1], v[0])
+    normals = [rot(ang + sp.pi / 6 + sp.pi * j / 3) * G1 for j in range(6)]
+    r = sp.simplify(L * R3 / 2)
+    pts = []
+    for a in range(-5, 6):
+        for b in range(-5, 6):
+            h = a * G1 + b * G2
+            if all(sp.simplify((h.T * n)[0] - r) <= 0 for n in normals):
+                pts.append(h)
+    s = 1 / L
+    return ([(p * s).applyfunc(sp.simplify) for p in pts],
+            [(w * s).applyfunc(sp.simplify) for w in verts],
+            [n.applyfunc(sp.simplify) for n in normals], sp.simplify(r * s))
+
+
+def layers(pts, n, r, N):
+    delta = r / N
+    out = {}
+    for i, p in enumerate(pts):
+        q = sp.nsimplify(sp.simplify((p.T * n)[0] / delta))
+        if not q.is_integer:
+            return None
+        out.setdefault(int(q), []).append(i)
+    return out
+
+
+def same(p, q):
+    return all(sp.simplify(x - y) == 0 for x, y in zip(p, q))
+
+
+def check_supports():
+    res = {}
+    for name, v, count in (("S7", G1, 7), ("S13", G1 + G2, 13), ("S19", 2 * G1, 19)):
+        pts, verts, normals, r = hexagon(v)
+        res[name] = (pts, verts, normals, r)
+        record(f"{name}: closed hexagon with vertex {list(v)} has {count} lattice points, r_in = sqrt3/2",
+               len(pts) == count and sp.simplify(r - R3 / 2) == 0, f"{len(pts)} points")
+    return res
+
+
+def check_S13(pts, verts, normals, r):
+    N = 3
+    inner = [i for i, p in enumerate(pts) if sp.simplify((p.T * p)[0] - sp.Rational(1, 3)) == 0]
+    vidx = [i for i, p in enumerate(pts) if any(same(p, w) for w in verts)]
+    origin = [i for i, p in enumerate(pts) if same(p, sp.zeros(2, 1))]
+    record("S13: 1 origin + 6 inner-ring points (|h| = 1/sqrt3) + 6 vertices",
+           len(origin) == 1 and len(inner) == 6 and len(vidx) == 6)
+    forced = set()
+    ok_grid, ok_single = True, True
+    lay3 = []
+    for n in normals[:3]:
+        L = layers(pts, n, r, N)
+        if L is None or set(L) != set(range(-N, N + 1)):
+            ok_grid = False
+            continue
+        lay3.append((n, L))
+        for lev in (2, -2):
+            if len(L[lev]) != 1 or L[lev][0] not in inner:
+                ok_single = False
+            forced.update(L[lev])
+        if sorted(len(L[k]) for k in (N, -N)) != [2, 2]:
+            ok_single = False
+    record("S13: along each facet normal all projections lie on the grid delta = r_in/3, levels -3..3", ok_grid)
+    record("S13: layers +-2 delta are singletons of inner-ring points; edges have 2 points", ok_single)
+    record("S13: the six singleton layers are exactly the inner ring (each such coefficient must vanish)",
+           forced == set(inner))
+
+    # Second route: generic coefficients, layer equations, exact linear solve.
+    syms = []
+
+    def gen(k):
+        e = sp.symbols(f"a{k}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    A = [gen(k) for k in range(len(pts))]
+    lin = []
+    for n, L in lay3:
+        Pp = (I2 + n[0] * SX + n[1] * SY) / 2
+        Pm = (I2 - n[0] * SX - n[1] * SY) / 2
+        for lev, idx in L.items():
+            target = Pp if lev == N else Pm if lev == -N else sp.zeros(2)
+            M = sum((A[i] for i in idx), sp.zeros(2)) - target
+            for e in M:
+                e = sp.expand(e)
+                lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    sol = sp.solve(lin, syms, dict=True)
+    ok = len(sol) == 1 and all(hexg.base.is_zero_matrix(A[i].subs(sol[0])) for i in inner)
+    record("S13 (second route): exact solution of the layer equations forces every inner-ring coefficient to 0", ok)
+
+    # The surviving support {0} U vert is similar to the T2 configuration.
+    t2 = [sp.Matrix([sp.cos(sp.pi * k / 3), sp.sin(sp.pi * k / 3)]) for k in range(6)]
+    rv = [(rot(-sp.pi / 6) * w).applyfunc(sp.simplify) for w in verts]
+    record("S13: rotating the six vertices by -30 deg gives the T2 vertex set (cos k pi/3, sin k pi/3)",
+           all(any(same(p, q) for q in t2) for p in rv))
+
+
+def check_S19(pts, verts, normals, r):
+    N = 2
+    sizes, ok_grid, singleton = [], True, False
+    for n in normals[:3]:
+        L = layers(pts, n, r, N)
+        if L is None or set(L) != set(range(-N, N + 1)):
+            ok_grid = False
+            continue
+        sizes.append([len(L[k]) for k in range(N, -N - 1, -1)])
+        singleton |= any(len(L[k]) == 1 for k in range(-N + 1, N))
+    record("S19: along each facet normal all projections lie on the grid delta = r_in/2, levels -2..2", ok_grid)
+    record("S19: layer sizes (top..bottom) are 3,4,5,4,3 on each normal; no intermediate singleton",
+           ok_grid and all(s == [3, 4, 5, 4, 3] for s in sizes) and not singleton, str(sizes))
+
+
+def check_T2_rerun():
+    before = len(hexg.CHECKS)
+    hexg.check_T2_minimal()
+    sub = hexg.CHECKS[before:]
+    record("T2-min of the reviewed verifier, rerun unchanged: all its checks pass",
+           len(sub) == 4 and all(c[1] for c in sub), f"{sum(c[1] for c in sub)}/{len(sub)}")
+
+
+def main():
+    print("== supports")
+    res = check_supports()
+    print("== S13: singleton layers")
+    check_S13(*res["S13"])
+    print("== S19: layer structure")
+    check_S19(*res["S19"])
+    print("== T2 minimal support (reviewed verifier, read-only)")
+    check_T2_rerun()
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (M1 Stage A, M1-B13).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 7: 2026-11-01--hex-ceiling.md ===
+
+# Hexagonal ceiling — execution report (L0 and T1)
+
+Date: 2026-11-01. Branch: `research/schur-stability-audit`.
+Contract: [`HEX_CEILING_GATE.md`](../theory/HEX_CEILING_GATE.md),
+preregistered at `8c56ced`.
+Verifier: [`scripts/verify_hex_ceiling_gate.py`](../scripts/verify_hex_ceiling_gate.py),
+24/24 exact checks (Python 3.12.3, `sympy==1.14.0`); repaired 2026-11-02
+after review (see the repair note below).
+Author: Claude Code (Claude Opus 5.5), at the user's direction.
+
+**Status: PARTIAL EXECUTION — L0 `PROVED_IN_REPO` (Bernstein's inequality
+proved in Lemma B); T1 `GAP_PROVED_IN_CLASS` with
+supremum `sqrt3/2`, attained; T2 `PROVED_FOR_MINIMAL_SUPPORT`
+(`F within {0} U vert(H)`, any s=2 walk, no product form assumed); T2 in
+general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`. Execution stopped here; ready
+for independent review.** Evidence **PRELIMINARY**. Not promoted.
+
+**Repair note (2026-11-02).** [Reviews](2026-11-02--hex-ceiling-review.md):
+Gemini PASS; Grok REPAIR_REQUIRED with two mandatory repairs, both
+accepted. (R1) L0 was labelled `PROVED_IN_REPO` while Bernstein's
+inequality was only named as prior art, against contract Sec. 2; Lemma B
+now proves it in-repo. (R2) The verifier's "rank 2 for every theta_0"
+check only tested that a minor is not identically zero; it now asserts the
+minor equals the `theta_0`-free constant `sqrt3 l^4/2`. Clarifications:
+Hermiticity of `A` in L0; the maximum-modulus step in T2; the hexagon
+fixes the denominator `2l`; `xi` is a Bloch component.
+
+## 1. L0 — the ceiling `c_0 <= r_in` on `W_hex`
+
+Let `U` be in `W_hex`. Multiplying by the scalar `e^{i phi}` does not change
+the support, so take `U(0) = I`. Let `n_f` be the unit outward normal of a
+facet of the regular hexagon `C = conv F`, with edge vector `d in Lambda`
+(edges join lattice vertices). For a lattice vector `h = a g_1 + b g_2` and
+`d = p g_1 + q g_2`,
+
+`h . Rot90(d) = (sqrt3/2)(b p - a q)`   (verifier, check L0),
+
+so `h . n_f = m_h delta` with `m_h in Z` and `delta = sqrt3/(2|d|)`. The
+extreme values of `h . n_f` over `F` are `±h_C(n_f)` (central symmetry of
+the hexagon) and are attained at vertices, which lie in `F`; hence
+`h_C(n_f) = N delta` for an integer `N` and every `m_h` satisfies
+`|m_h| <= N`.
+
+For unit vectors `x, y in C^2` set `p(s) = <y, U(s n_f / delta) x>`. Then
+`p(s) = sum_{|m|<=N} c_m e^{-i m s}` is a trigonometric polynomial of degree
+`N` with `|p| <= 1` (U unitary). Bernstein's inequality (Lemma B below,
+proved here) gives `|p'(0)| <= N`, i.e. `|<y, dU/dt(0) x>| <= N delta =
+h_C(n_f)` along `n_f`. Taking the supremum over `x, y`,
+`||A(n_f)|| <= h_C(n_f) = r_in`, where `A(n) = i dU(t n)/dt (0)`. `A(n_f)` is
+Hermitian: differentiating `U U^dag = I` at `t = 0`, where `U = I`, shows
+`dU/dt(0)` is anti-Hermitian. With `s = 2` and a traceless isotropic cone,
+`A(n_f)^2 = c_0^2 I`, so the Hermitian `A(n_f)` has spectrum `{±c_0}` and
+`||A(n_f)|| = c_0` (without Hermiticity, `M^2 = c_0^2 I` would not fix the
+norm). Therefore **`c_0 <= r_in` for every walk in `W_hex`**. Only the
+facet normal is needed, since `r_in = min h_C` is attained there.
+
+**Lemma B (Bernstein, proved in-repo; repair R1 of the 2026-11-02 Grok
+review).** If `p(s) = sum_{|m|<=N} c_m e^{-ims}` and `|p| <= 1` on `R`, then
+`|p'(s_0)| <= N` for every `s_0`.
+
+*Reduction to real polynomials.* Fix `s_0` and choose `alpha` with
+`e^{i alpha} p'(s_0) = |p'(s_0)|`. `R(s) = Re(e^{i alpha} p(s))` is a real
+trigonometric polynomial of degree `<= N`, `|R| <= 1`, and
+`R'(s_0) = Re(e^{i alpha} p'(s_0)) = |p'(s_0)|`. So it suffices to show
+`R'(s_0) <= N` for real `R`.
+
+*Real case.* Suppose `R'(s_0) > N`. Choose `0 < eps < 1` so small that
+`R_eps = (1 - eps) R` still has `R_eps'(s_0) > N`; then `|R_eps| < 1`
+everywhere. Pick `beta in (-pi, 0)` with `cos beta = R_eps(s_0)` (possible
+since `|R_eps(s_0)| < 1`) and set `C(s) = cos(N(s - s_0) + beta)`. Then
+`C(s_0) = R_eps(s_0)` and `C'(s_0) = -N sin beta in (0, N]`, so
+`D = C - R_eps` has `D(s_0) = 0`, `D'(s_0) < 0`; in particular `D` is not
+identically zero. On one period `C` reaches `±1` alternately at `2N`
+points `t_1 < ... < t_2N`, and there `|R_eps| < 1` gives
+`sign D(t_j) = sign C(t_j)`, alternating. Hence `D` has a zero in each of
+the `2N` open arcs between consecutive `t_j`. The point `s_0` is not a
+`t_j` (`D(s_0) = 0 != D(t_j)`), so it lies in one arc `(t_j, t_{j+1})`, on
+which `C` is monotone; `C'(s_0) > 0` makes it increasing, so
+`C(t_j) = -1`, `C(t_{j+1}) = +1`, i.e. `D(t_j) < 0 < D(t_{j+1})`. Since `D`
+falls through zero at `s_0` (`D'(s_0) < 0`), `D > 0` just left of `s_0` and
+`D < 0` just right of it: there is a further zero in `(t_j, s_0)` and one in
+`(s_0, t_{j+1})`. That arc holds at least three zeros, so `D` has at least
+`2N + 2` zeros per period. But `e^{iNs} D(s)` is an algebraic polynomial of
+degree `<= 2N` in `z = e^{is}`, so a nonzero `D` has at most `2N` zeros per
+period. Contradiction; hence `R'(s_0) <= N`. Applying this to `R(-s)` gives
+`R'(s_0) >= -N`. `square`
+
+This is the classical argument (prior art; no novelty claimed); it is
+written out so that L0 closes in-repo as the contract (Sec. 2) requires.
+
+## 2. T1 — the `n = 3` antipodal subclass
+
+**Reduction (analytic).** With `D_j(k) = diag(e^{-ik.a_j}, e^{ik.a_j}) =
+e^{-i (k.a_j) sigma_z}` and `G_j = C_{j-1} ... C_1` (`G_1 = I`),
+
+`C_3 D_3 C_2 D_2 C_1 D_1 = (C_3 C_2 C_1) * prod_{j=3..1} G_j^dag D_j G_j`.
+
+The node condition makes `C_3 C_2 C_1` scalar, so up to a phase
+`U(k) = prod_{j=3..1} exp(-i (k.a_j) tau_j)`, `tau_j = G_j^dag sigma_z G_j
+= t_j . sigma` with unit Bloch vectors `t_j` (free up to one global
+rotation). The `a_j` are three lattice vectors of equal length `l` at
+120°, `a_1 + a_2 + a_3 = 0`.
+
+**Linear term.** `A(k) = sum_j (k.a_j) tau_j = (sum_j t_j (a_j . k)) . sigma`,
+independent of the factor order. Its square is
+`k^T M k I` with `M = sum_ij g_ij a_i a_j^T`, `g_ij = t_i . t_j`.
+
+**Isotropy forces equal overlaps** (verifier, symbolic in `theta_0`):
+the traceless part of `M` is linear in `(g_12, g_13, g_23)` with a
+coefficient matrix whose `2x2` minors are `±sqrt3 l^4/2`, independent of
+`theta_0` (verifier), hence rank 2 for every `theta_0`, with kernel
+`(1,1,1)`. Geometrically, the three
+pair terms are double-angle vectors at `2 theta_0`, `2 theta_0 + 2pi/3`,
+`2 theta_0 + 4pi/3`, which cancel only with equal weights. With
+`g_ij = g`: `M = (3/2) l^2 (1 - g) I`, so `c_0,raw^2 = (3/2) l^2 (1 - g)`.
+
+**Range of `g`.** The Gram matrix of three unit vectors with equal
+overlaps has eigenvalues `1 + 2g` and `1 - g` (twice); it is realisable iff
+`-1/2 <= g <= 1`.
+
+**Normalisation.** `F` is contained in `{0, ±2 a_j}`; the hexagon condition
+puts all six `±2 a_j` in `F`, so the longest step is `2l` and
+`c_0 = c_0,raw/(2l)`, `r_in = sqrt3/2`. Hence
+
+`c_0 / r_in = sqrt(1 - g) / sqrt2 <= sqrt3/2`, equality iff `g = -1/2`,
+
+i.e. iff the three Bloch vectors are coplanar at mutual 120°. The
+hexagon condition enters only through the denominator: it puts the six
+`±2 a_j` in `F` and so fixes the longest step at `2l`. It does not change
+the supremum, since `g = -1/2` is realised with all six vertices present.
+
+**Attainment.** The verifier builds the walk with
+`t_j = (cos 2pi j/3, sin 2pi j/3, 0)` and certifies exactly: unitary
+symbol, `F = {0, ±2 u_j}`, regular hexagonal hull (6 vertices, 6 facets,
+`r_in = sqrt3/2`), every vertex coefficient non-nilpotent, `U(0) = I`,
+untilted isotropic cone, `c_0 = 3/4`, `c_0/r_in = sqrt3/2`.
+
+**Explains the previous table.** ADMP's `tau_i` (Eq. (5)) have `g = 1/3`,
+giving `c_0 = 1/2` (verifier, reproducing row L6a of Sec. 11). JDW L6d has
+`c_0 = 3/4`, the maximum, which corresponds to `g = -1/2`. The ADMP–JDW
+difference on the same substrate is the difference in the overlap of the
+three coin axes: ADMP's axes share the Bloch `z`-component
+`xi = sqrt5/3` (they are not coplanar through the origin), which raises
+`g` to `1/3` and costs speed.
+
+**Verdicts.** T1 `GAP_PROVED_IN_CLASS`: `sup c_0/r_in = sqrt3/2`,
+attained exactly at coplanar 120° Bloch vectors. HX1
+`CONFIRMED_IN_CLASS` (T1 subclass). HX0 `CONFIRMED_IN_CLASS` (L0, all of
+`W_hex`).
+
+## 3. T2 — minimal-support subclass (2026-11-02)
+
+Subclass: walks in `W_hex` whose composite support satisfies
+`F within {0} U vert(H)` (origin plus the six hull vertices). No product
+form is assumed: the argument uses only `F`, unitarity, the node and
+isotropy. It contains T1, ADMP L6a, JDW L6d and L6f (Sec. 11); it does not
+contain JDW L6c (19 points).
+
+**Step 1: saturation along a facet normal is rigid.** Suppose
+`c_0 = r_in`. Let `n_f` be a facet normal and `x` a unit eigenvector of
+`A(n_f)` with eigenvalue `+c_0`. With the notation of Sec. 1,
+`p(s) = <x, U(s n_f/delta) x>` has `|p| <= 1`, `p(0) = 1` and
+`p'(0) = -i N`. Then `P(z) = z^N p` (with `z = e^{is}`) is an analytic
+polynomial with `|P| = |p| <= 1` on the unit circle, hence `|P| <= 1` on
+the closed disc by the maximum-modulus principle, `P(1) = 1` and
+`P'(1) = 0`.
+By Julia's lemma (classical; a non-constant `P` with `|P| <= 1` and a
+boundary fixed point has angular derivative `P'(1) > 0`) `P` is constant,
+so `p(s) = e^{-iNs}`; equivalently this is the equality case of
+Bernstein's inequality, listed as prior art in PROJECT_INSTRUCTIONS §6.
+By Cauchy–Schwarz `U(t n_f) x = e^{-i r_in t} x` for all `t`, and likewise
+for the `-c_0` eigenvector. Hence along every facet-normal line
+`U(t n_f) = e^{-i r_in t} P_+(n_f) + e^{i r_in t} P_-(n_f)`: only the two
+extreme layers of `F` survive in that direction. In coefficients: the sum
+of `A_h` over the top edge is `P_+(n_f)`, over the bottom edge
+`P_-(n_f)`, and over every intermediate layer `0`.
+Citation status: Julia's lemma and the Bernstein equality case are
+classical; no primary source for them is in `sources/` (page
+[UNVERIFIED]).
+
+**Step 2: normal form.** By a Bloch rotation, a joint rotation of space
+and Bloch sphere about `z`, and scale, take `vert(H) = {(cos k pi/3,
+sin k pi/3)}` and `A(n) = r_in n . sigma` with `n` in the `xy` Bloch plane.
+The three facet normals are at 30°, 90°, 150°.
+
+**Step 3: certificate (verifier).** Along each facet normal the layers
+are top edge (2 vertices), middle layer (2 vertices and `0`), bottom edge.
+The nine layer equations are consistent, leave the coefficient `X_0` of
+one vertex free, and force `A_0 = -I/2`. Imposing
+`sum_h A_{h+d} A_h^dag = delta_{d0} I` and `sum_h A_h^dag A_{h+d} =
+delta_{d0} I` for all `d`, the lex Gröbner basis of the real equations
+contains `x^2 - x/2 + 1/12` in one real coordinate of `X_0`; its
+discriminant is `-1/12 < 0`. No real solution exists.
+
+**Positive control.** The same procedure on the square substrate
+(`F within {0} U {(±1,±1)}`, facet normals `x`, `y`) gives a consistent
+system, and the saturating walk `e^{-ik_x sigma_x} e^{-ik_y sigma_y}`
+solves it (verifier).
+
+**Verdict.** T2 `PROVED_FOR_MINIMAL_SUPPORT`: no s=2 walk on the
+hexagonal substrate with `F within {0} U vert(H)` reaches `c_0 = r_in`.
+HX2 holds in this subclass; HX2 in general is OPEN. No supremum is
+claimed for this subclass beyond T1's `sqrt3/2`, which it contains; the
+gap here is qualitative (`<`), not a bound.
+
+## 4. Attempt beyond minimal support (inconclusive)
+
+The same reduction for the radius-2 hexagonal ball (19 points: origin,
+inner ring, edge midpoints, vertices; contains JDW L6c) leaves 56 free real
+parameters after the layer equations and 730 quadratic unitarity
+equations. A grevlex Gröbner basis over the complex field did not finish
+within the agreed 900 s cap (exit 124). Even a finished basis other than
+`{1}` would not decide real solvability (the minimal case is consistent
+over `C`; its contradiction is real). The attempt is recorded in the
+exploratory script `scripts/explore_hex_saturation_support.py`; it is not
+evidence for any verdict. Per the contract's stop rule, T2 is recorded as
+`OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`.
+
+## 5. Not established
+
+- T2 for supports with further lattice points (edge-interior or interior
+  points, e.g. JDW L6c). HX2 is OPEN there. The minimal-support result does
+  not extend by itself, and the failed computation is not evidence either
+  way.
+- Nothing for `s > 2`, other lattices, masses.
+- No novelty claim: Bernstein is prior art; the T1 computation is
+  elementary.
+
+## 6. Next step
+
+Independent cross-family review of L0, T1 and the minimal-support T2, then
+a separate promotion. Extending T2 needs a new approach (e.g. a structural
+argument on edge polynomials, or real-algebraic certificates) and is not
+in progress. Then independent cross-family review and a
+separate promotion.
+
+=== DOCUMENT 8: verify_hex_ceiling_gate.py ===
+
+"""Exact checks for the HEX_CEILING gate (L0 lattice-grid step and T1).
+
+Contract: theory/HEX_CEILING_GATE.md, preregistered at 8c56ced.
+Run from the repository root:
+
+  python -B scripts/verify_hex_ceiling_gate.py
+
+Fail-closed, SymPy only, zero tolerance. Reuses read-only helpers of the
+reviewed verify_c_across_lattices_gate.py (laurent_support, hull,
+node_speeds, nilpotent, is_zero_matrix); that file is not modified and its
+own check list is not used.
+
+What is certified here:
+- L0, grid step: for a lattice edge direction d of a triangular-lattice
+  polygon, h . Rot90(d) is an integer multiple of sqrt3/2 for every lattice
+  vector h, so the frequencies along a facet normal lie on a uniform grid
+  (the remaining step, the classical scalar Bernstein inequality, is prior
+  art and is applied in the report, not here).
+- T1 algebra, symbolic in the pairwise overlaps g_ij = t_i . t_j and the
+  orientation theta0: the traceless part of sum_ij g_ij a_i a_j^T vanishes
+  iff g_12 = g_13 = g_23; then c0_raw^2 = (3/2) l^2 (1 - g); the Gram matrix
+  is PSD iff -1/2 <= g <= 1; hence c0/r_in <= sqrt3/2 with equality iff
+  g = -1/2.
+- An explicit T1 walk with g = -1/2 (coplanar Bloch vectors at 120 deg),
+  built as a symbol and certified exactly: unitarity, F = {0, +-2 a_j},
+  regular hexagonal hull, node, isotropy, c0 = 3/4, c0/r_in = sqrt3/2;
+  and the ADMP overlaps g = 1/3 giving c0 = 1/2.
+What is not certified here: the reduction of a general n = 3 antipodal
+walk to the product form, the hull argument for all g, and the Bernstein
+step; these are in the report.
+"""
+import sys
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_c_across_lattices_gate as base  # reviewed, read-only
+
+CHECKS = []
+SX, SY, SZ, I2 = base.SX, base.SY, base.SZ, base.I2
+R3 = sp.sqrt(3)
+G1 = sp.Matrix([1, 0])
+G2 = sp.Matrix([sp.Rational(1, 2), R3 / 2])
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok)))
+    print(("[PASS] " if ok else "[FAIL] ") + label + (f" -- {detail}" if detail else ""))
+
+
+def cross(u, v):
+    return u[0] * v[1] - u[1] * v[0]
+
+
+def check_L0_grid():
+    p, q, a, b = sp.symbols("p q a b", integer=True)
+    d = p * G1 + q * G2
+    h = a * G1 + b * G2
+    rot = sp.Matrix([-d[1], d[0]])
+    value = sp.expand((h.T * rot)[0])
+    record("L0: h . Rot90(d) = (sqrt3/2)(b p - a q) for lattice h = a g1 + b g2, d = p g1 + q g2",
+           sp.simplify(value - R3 / 2 * (b * p - a * q)) == 0)
+
+
+def check_T1_algebra():
+    th, ell = sp.symbols("theta0 ell", positive=True)
+    g12, g13, g23, g = sp.symbols("g12 g13 g23 g", real=True)
+    a = [ell * sp.Matrix([sp.cos(th + 2 * sp.pi * j / 3), sp.sin(th + 2 * sp.pi * j / 3)]) for j in range(3)]
+    G = sp.Matrix([[1, g12, g13], [g12, 1, g23], [g13, g23, 1]])
+    M = sp.zeros(2, 2)
+    for i in range(3):
+        for j in range(3):
+            M += G[i, j] * a[i] * a[j].T
+    M = M.applyfunc(lambda e: sp.simplify(sp.expand_trig(e)))
+    traceless = M - M.trace() / 2 * sp.eye(2)
+    eqs = [sp.simplify(traceless[0, 0]), sp.simplify(traceless[0, 1])]
+    # linear in (g12, g13, g23); solve for all theta0
+    jac = sp.Matrix([[sp.diff(e, x) for x in (g12, g13, g23)] for e in eqs]).applyfunc(sp.simplify)
+    const = [sp.simplify(e.subs({g12: 0, g13: 0, g23: 0})) for e in eqs]
+    record("T1: traceless part is linear homogeneous in (g12, g13, g23)", all(c == 0 for c in const))
+    minor = sp.simplify(sp.expand_trig(jac[:, :2].det()))
+    record("T1: a 2x2 minor of the coefficient matrix equals the theta0-free constant "
+           "sqrt3 l^4/2, so the rank is 2 for every theta0 (repair R2, Grok 2026-11-02)",
+           sp.simplify(minor - R3 * ell ** 4 / 2) == 0, f"minor = {minor}")
+    null = jac * sp.Matrix([1, 1, 1])
+    record("T1: null space is spanned by (1,1,1): isotropy iff g12 = g13 = g23",
+           all(sp.simplify(e) == 0 for e in null))
+    Mg = M.subs({g12: g, g13: g, g23: g}).applyfunc(sp.simplify)
+    record("T1: at equal overlaps, sum g_ij a_i a_j^T = (3/2) l^2 (1 - g) I",
+           all(sp.simplify(e) == 0 for e in (Mg - sp.Rational(3, 2) * ell ** 2 * (1 - g) * sp.eye(2))))
+    Gg = G.subs({g12: g, g13: g, g23: g})
+    eig = Gg.eigenvals()
+    record("T1: Gram eigenvalues are 1 + 2g (once) and 1 - g (twice): PSD iff -1/2 <= g <= 1",
+           eig == {1 + 2 * g: 1, 1 - g: 2})
+    c0_raw = sp.sqrt(sp.Rational(3, 2) * (1 - g)) * ell
+    c0 = c0_raw / (2 * ell)          # longest step 2*ell
+    r_in = R3 / 2
+    ratio = sp.simplify(c0 / r_in)
+    record("T1: c0/r_in = sqrt(1 - g)/sqrt2, maximal at g = -1/2 with value sqrt3/2",
+           sp.simplify(ratio - sp.sqrt(1 - g) / sp.sqrt(2)) == 0 and sp.simplify(ratio.subs(g, -sp.Rational(1, 2)) - R3 / 2) == 0)
+    record("T1: sqrt3/2 < 1 (the ceiling is not reached in T1)", bool(R3 / 2 < 1))
+    record("T1: ADMP overlaps g = 1/3 give c0 = 1/2; g = -1/2 gives c0 = 3/4",
+           sp.simplify(c0.subs(g, sp.Rational(1, 3)) - sp.Rational(1, 2)) == 0
+           and sp.simplify(c0.subs(g, -sp.Rational(1, 2)) - sp.Rational(3, 4)) == 0)
+
+
+def t1_walk(tvecs):
+    """U(k) = prod_{j=3..1} exp(-i (k.a_j) tau_j), a_j = u_0, u_1, u_2 (unit,
+    120 deg), tau_j = t_j . sigma, as a Laurent symbol in z = exp(-i k.g)."""
+    zs = sp.symbols("z1:3")
+    u = [(1, 0), (-1, 1), (0, -1)]          # u_0, u_1, u_2 in (g1, g2)
+    factors = []
+    for (tx, ty, tz), uj in zip(tvecs, u):
+        tau = tx * SX + ty * SY + tz * SZ
+        plus, minus = (I2 + tau) / 2, (I2 - tau) / 2
+        factors.append(base.monomial(zs, uj) * plus + base.monomial(zs, base.neg(uj)) * minus)
+    return sp.expand(factors[2] * factors[1] * factors[0]), zs
+
+
+def check_witness():
+    tv = [(sp.cos(2 * sp.pi * j / 3), sp.sin(2 * sp.pi * j / 3), 0) for j in range(3)]
+    tv = [tuple(sp.nsimplify(x) for x in t) for t in tv]
+    overlaps = [sum(a * b for a, b in zip(tv[i], tv[j])) for i, j in ((0, 1), (0, 2), (1, 2))]
+    record("witness: Bloch vectors are unit, coplanar, pairwise overlap -1/2",
+           all(sp.simplify(sum(x ** 2 for x in t) - 1) == 0 for t in tv)
+           and all(sp.simplify(o + sp.Rational(1, 2)) == 0 for o in overlaps))
+    symbol, zs = t1_walk(tv)
+    adj = base.laurent_adjoint(symbol, zs)
+    record("witness: symbol is unitary", base.is_zero_matrix(sp.expand(symbol * adj) - I2))
+    support = base.laurent_support(symbol, zs)
+    expected = {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)}
+    record("witness: composite F = {0, +-2 u_j} (zero coefficient tolerated only at 0)",
+           set(support) - {(0, 0)} == expected - {(0, 0)})
+    gens = [(1, 0), (sp.Rational(1, 2), R3 / 2)]
+    keys = sorted(h for h in support)
+    cart = {h: (h[0] * G1 + h[1] * G2) for h in keys}
+    L = 2
+    pts = [(cart[h] / L).applyfunc(sp.radsimp) for h in keys]
+    facets, verts = base.hull(pts)
+    r_in = min(facets.values(), key=lambda x: float(x))
+    record("witness: hull is the regular hexagon (6 vertices, 6 facets, r_in = sqrt3/2)",
+           len(verts) == 6 and len(facets) == 6 and sp.simplify(r_in - R3 / 2) == 0)
+    record("witness: every vertex coefficient is non-nilpotent",
+           all(not base.nilpotent(support[keys[i]]) for i in verts))
+    at0, A, tilt, c2, iso, herm = base.node_speeds(symbol, zs, gens, L, -1, 2)
+    c0 = sp.radsimp(sp.sqrt(c2))
+    record("witness: U(0) = I, Hermitian untilted isotropic cone",
+           base.is_zero_matrix(at0 - I2) and herm and all(t == 0 for t in tilt) and iso)
+    record("witness: c0 = 3/4 and c0/r_in = sqrt3/2", c0 == sp.Rational(3, 4)
+           and sp.simplify(c0 / r_in - R3 / 2) == 0)
+
+
+def check_admp():
+    xi = sp.sqrt(5) / 3
+    tv = [(sp.Rational(2, 3), 0, xi), (-sp.Rational(1, 3), R3 / 3, xi), (-sp.Rational(1, 3), -R3 / 3, xi)]
+    overlaps = [sp.simplify(sum(a * b for a, b in zip(tv[i], tv[j]))) for i, j in ((0, 1), (0, 2), (1, 2))]
+    record("ADMP: tau_i of Eq. (5) have equal pairwise overlaps g = 1/3", overlaps == [sp.Rational(1, 3)] * 3)
+    symbol, zs = t1_walk(tv)
+    _, _, _, c2, iso, _ = base.node_speeds(symbol, zs, [(1, 0), (sp.Rational(1, 2), R3 / 2)], 2, -1, 2)
+    record("ADMP: product-form symbol gives isotropic c0 = 1/2 (matches Sec. 11 row L6a)",
+           iso and sp.radsimp(sp.sqrt(c2)) == sp.Rational(1, 2))
+
+
+def check_T2_minimal():
+    """Minimal-support subclass: F within {0} U vert(H), any s = 2 walk (no
+    product form assumed). WLOG (Bloch rotation, joint spatial/Bloch
+    rotation, scale): vertices v_k = (cos k pi/3, sin k pi/3), the isotropic
+    linear term A(n) = r n.sigma with n in the xy Bloch plane. Saturation
+    c_0 = r_in forces, along each facet normal n, U(t n) = e^{-irt} P_+ +
+    e^{irt} P_- (report, Bernstein equality / Julia), i.e. layer sums:
+    top edge -> P_+(n), bottom edge -> P_-(n), middle layer -> 0."""
+    v = [sp.Matrix([sp.cos(sp.pi * k / 3), sp.sin(sp.pi * k / 3)]) for k in range(6)]
+    normals = [sp.Matrix([sp.cos(a), sp.sin(a)]) for a in (sp.pi / 6, sp.pi / 2, 5 * sp.pi / 6)]
+    layers = []
+    for n in normals:
+        proj = [sp.nsimplify((vk.T * n)[0]) for vk in v]
+        top = [k for k in range(6) if proj[k] == R3 / 2]
+        bot = [k for k in range(6) if proj[k] == -R3 / 2]
+        mid = [k for k in range(6) if proj[k] == 0]
+        layers.append((top, bot, mid))
+    record("T2-min: along each facet normal the layers are {top edge, middle (2 vertices + 0), bottom edge}",
+           all(len(t) == 2 and len(b) == 2 and len(m) == 2 for t, b, m in layers)
+           and [l[0] for l in layers] == [[0, 1], [1, 2], [2, 3]])
+
+    def proj(n, sign):
+        return (I2 + sign * (n[0] * SX + n[1] * SY)) / 2
+    Pp = [proj(n, 1).applyfunc(sp.nsimplify) for n in normals]
+    Pm = [proj(n, -1).applyfunc(sp.nsimplify) for n in normals]
+    # generic unknown coefficients for the 6 vertices and the origin
+    syms = []
+    def gen(name):
+        e = sp.symbols(f"{name}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    X = [gen(f"X{k}") for k in range(6)]
+    Z = gen("Z")
+    lin = []
+    for (top, bot, mid), Pt, Pb in zip(layers, Pp, Pm):
+        for M in (X[top[0]] + X[top[1]] - Pt, X[bot[0]] + X[bot[1]] - Pb, X[mid[0]] + X[mid[1]] + Z):
+            for e in M:
+                e = sp.expand(e)
+                lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    x0 = syms[:8]
+    sol = sp.solve(lin, [s_ for s_ in syms if s_ not in x0], dict=True)
+    record("T2-min: layer equations are consistent, with the X0 coefficient free", len(sol) == 1)
+    sol = sol[0]
+    Zs = Z.subs(sol)
+    record("T2-min: layer equations force A_0 = -I/2", base.is_zero_matrix(Zs + I2 / 2))
+    Xs = [Xk.subs(sol) for Xk in X]
+    pts = [(v[k], Xs[k]) for k in range(6)] + [(sp.zeros(2, 1), Zs)]
+    eqs = set()
+    blocks = {}
+    for h1, A1 in pts:
+        for h2, A2 in pts:
+            d = tuple(sp.nsimplify(c) for c in (h1 - h2))
+            blocks.setdefault(d, [sp.zeros(2), sp.zeros(2)])
+            blocks[d][0] += A1 * A2.H
+            blocks[d][1] += A2.H * A1
+    for d, (m1, m2) in blocks.items():
+        target = I2 if all(c == 0 for c in d) else sp.zeros(2)
+        for M in (m1 - target, m2 - target):
+            for e in M:
+                e = sp.expand(e)
+                for part in (sp.expand(sp.re(e)), sp.expand(sp.im(e))):
+                    if part != 0:
+                        eqs.add(part)
+    G = sp.groebner(list(eqs), *x0, order="lex")
+    uni = [g for g in G.exprs if g.free_symbols == {x0[6]} and sp.degree(g, x0[6]) == 2]
+    ok = False
+    if uni:
+        a2, a1, a0 = sp.Poly(uni[0], x0[6]).all_coeffs()
+        disc = sp.simplify(a1 ** 2 - 4 * a2 * a0)
+        ok = bool(disc < 0)
+        print(f"  T2-min: Groebner element {uni[0]} = 0, discriminant {disc}")
+    record("T2-min: unitarity + saturation imply a real quadratic with negative discriminant "
+           "(no real solution): the ceiling is not attained with F in {0} U vert(H)", ok)
+
+
+def check_T2_square_control():
+    """Positive control for the saturation method: the square substrate
+    F within {0} U {(+-1,+-1)}, facet normals x and y, A(n) = r n.sigma.
+    The same layer + unitarity system must be consistent, and the known
+    saturating walk exp(-i k_x sigma_x) exp(-i k_y sigma_y) must solve it."""
+    verts = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+    syms = []
+    def gen(name):
+        e = sp.symbols(f"{name}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    X = {v: gen(f"Y{i}") for i, v in enumerate(verts)}
+    Z = gen("W")
+    Px, Pxm = (I2 + SX) / 2, (I2 - SX) / 2
+    Py, Pym = (I2 + SY) / 2, (I2 - SY) / 2
+    lin = []
+    for M in (X[(1, 1)] + X[(1, -1)] - Px, X[(-1, 1)] + X[(-1, -1)] - Pxm,
+              X[(1, 1)] + X[(-1, 1)] - Py, X[(1, -1)] + X[(-1, -1)] - Pym, Z):
+        for e in M:
+            e = sp.expand(e)
+            lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    free = syms[:8]
+    sol = sp.solve(lin, [s_ for s_ in syms if s_ not in free], dict=True)[0]
+    pts = [(sp.Matrix(v), X[v].subs(sol)) for v in verts] + [(sp.zeros(2, 1), Z.subs(sol))]
+    eqs = set()
+    blocks = {}
+    for h1, A1 in pts:
+        for h2, A2 in pts:
+            d = tuple(h1 - h2)
+            blocks.setdefault(d, [sp.zeros(2), sp.zeros(2)])
+            blocks[d][0] += A1 * A2.H
+            blocks[d][1] += A2.H * A1
+    for d, (m1, m2) in blocks.items():
+        target = I2 if all(c == 0 for c in d) else sp.zeros(2)
+        for M in (m1 - target, m2 - target):
+            for e in M:
+                e = sp.expand(e)
+                for part in (sp.expand(sp.re(e)), sp.expand(sp.im(e))):
+                    if part != 0:
+                        eqs.add(part)
+    G = sp.groebner(list(eqs), *free, order="lex")
+    record("CONTROL square: saturation system is consistent (Groebner basis != {1})", list(G.exprs) != [1])
+    # known walk: (cos kx - i sin kx sx)(cos ky - i sin ky sy), coefficient of shift (a,b)
+    # with z^h <-> exp(-i k.h): factor = z_x P_x^+ + z_x^{-1} P_x^-, same for y
+    known = Px * Py  # coefficient at (1,1) = P_x^+ P_y^+
+    vals = dict(zip(free, [sp.re(known[0, 0]), sp.im(known[0, 0]), sp.re(known[0, 1]), sp.im(known[0, 1]),
+                           sp.re(known[1, 0]), sp.im(known[1, 0]), sp.re(known[1, 1]), sp.im(known[1, 1])]))
+    record("CONTROL square: the saturating walk exp(-ik_x s_x) exp(-ik_y s_y) solves it",
+           all(sp.simplify(e.subs(vals)) == 0 for e in eqs))
+
+
+def main():
+    print("== L0 grid step")
+    check_L0_grid()
+    print("== T1 algebra")
+    check_T1_algebra()
+    print("== T1 witness at g = -1/2")
+    check_witness()
+    print("== T1 consistency with ADMP")
+    check_admp()
+    print("== T2, minimal-support subclass F in {0} U vert(H)")
+    check_T2_minimal()
+    print("== positive control on the square substrate")
+    check_T2_square_control()
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (L0 grid step, T1, T2 minimal support).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
