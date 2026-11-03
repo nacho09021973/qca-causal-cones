@@ -8,7 +8,13 @@
 **Authorization:** user instructions, 2026-11-03 («vamos con L4, lee CJWW
 (5.12) y (5.15)»; «adelante con (a), el addendum»).
 **Author:** Claude Code (Claude Opus 5.5).
-**Status: PRELIMINARY, not independently reviewed. This addendum does not
+**Review:** DeepSeek (`deepseek-v4-pro`), PASS, no mandatory repairs
+(`debates/2026-11-03--substrate-saturation-phase0-addendum-L4-review-deepseek/`).
+One clarification applied (clause (v)); one citation error of the author
+corrected (PDF pages of (5.12)–(5.14)). The literal check of (5.12) and
+(5.14) was not possible for the reviewer, because the extract sent covered
+PDF pp. 17–18 only.
+**Status: PRELIMINARY. This addendum does not
 change any outcome of the audit.** The audit keeps `OPEN_AFTER_ROW_SURVEY`,
 L4 stays unclassified there, and the two
 `NO_COUNTEREXAMPLE_IN_SOURCE_TABLE` outcomes are unchanged. The contract
@@ -29,8 +35,11 @@ shows the contrary, L4 stays unclassified and that is recorded.
 ## 1. What the source prints
 
 Source: Cedzich, Joye, Werner, Werner, *Exponential tail estimates for
-quantum lattice dynamics*, `sources/2408.02108v1.pdf`, Sec. 5.4, PDF
-pp. 17–18 (printed pp. 16–17). Read in the PDF text in this session.
+quantum lattice dynamics*, `sources/2408.02108v1.pdf`, Sec. 5.4: Eqs. (5.12)–(5.14) on PDF p. 16,
+Eqs. (5.15)–(5.17) on PDF p. 17 (printed page numbers coincide). An
+earlier version of this addendum said «PDF pp. 17–18 (printed pp. 16–17)»;
+that was wrong and is corrected here (found after the DeepSeek review,
+which received only the text of PDF pp. 17–18). Read in the PDF text in this session.
 
 - Eq. (5.12), the «"Weyl equation" model» of Bialynicki-Birula, with
   `K = C^2`: `W(p_1, p_2, p_3) = e^{i p_1 σ_1} e^{i p_2 σ_2} e^{i p_3 σ_3}`.
@@ -59,8 +68,9 @@ convention and does not affect any clause below.)
 and `T_a = −σ_a`: Hermitian and traceless.
 (iv) `{T_a, T_b} = 2 δ_ab I`, hence `c_0 = 1` in CJWW units (unit lattice
 spacing, one update per time unit), consistent with Eq. (5.14).
-(v) Traceless plus (iv) gives `A(n)^2 = |n|^2 I` for `A(n) = n_a T_a`, the
-equivalent form of the untilted condition declared in contract Sec. 2.4.
+(v) (iv) alone gives `A(n)^2 = |n|^2 I` for `A(n) = n_a T_a`, the
+equivalent form declared in contract Sec. 2.4; tracelessness (iii) is what
+excludes an identity component (tilt) in the linear term.
 
 **(5.15).**
 Unitarity for real `p` (checked by hand): the rows have norm
@@ -71,7 +81,8 @@ orthogonal.
 `T = (−σ_1, σ_2, −σ_3)`: Hermitian and traceless.
 (iv) The three anticommute and square to `I`: `{T_a, T_b} = 2 δ_ab I`,
 `c_0 = 1`.
-(v) As for (5.12), `A(n)^2 = |n|^2 I`.
+(v) As for (5.12): `A(n)^2 = |n|^2 I` from (iv), no identity component
+from (iii).
 
 **Support and units.** In both walks the composite support contains
 `(±1, ±1, ±1)` (for (5.12), the product of three factors each with steps
