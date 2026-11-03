@@ -209,6 +209,24 @@ What it does not certify: the written step from the reduced system to the 48 fam
 listed identities, the vertex lemma itself, the inequality `|q|_1 >= |q|_2`, Q-b, or anything
 outside this class.
 
+## s=3 isotropic rigidity, Step 0
+
+`verify_s3_parity_step0.py` certifies the determinant parity lemma of the
+[charter](../theory/S3_ISOTROPIC_RIGIDITY_GATE.md), as recorded in the
+[report](../reports/2026-10-29--s3-parity-step0.md). It runs 14 checks in about 5 s.
+
+How it works:
+- expands `det U` for a generic `3 × 3` symbol on `N_3` and lists its exponents;
+- checks the extremal-pair step of the unimodular-monomial lemma on that support;
+- computes the common fixed space of each of the five groups exactly;
+- negative controls at `s = 2, 4` (integer instances), positive controls on Pavia symbols.
+
+What it certifies: all exponents of `det U` are odd at `s = 3`; the five common fixed spaces meet
+the odd coset trivially; the controls.
+
+What it does not certify: the written general proof of the unimodular-monomial lemma, or anything
+beyond Step 0.
+
 ## Exact standard Weyl/Dirac battery
 
 `verify_weyl_dirac_gate.py` implements the

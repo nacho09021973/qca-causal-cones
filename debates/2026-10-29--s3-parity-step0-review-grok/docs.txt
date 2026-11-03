@@ -1,0 +1,6 @@
+reports/2026-10-29--s3-parity-step0.md
+scripts/verify_s3_parity_step0.py
+theory/S3_ISOTROPIC_RIGIDITY_GATE.md
+scripts/verify_minimal_s2_step00.py
+scripts/verify_weyl_dirac_gate.py
+theory/MINIMAL_S2_RIGIDITY_GATE.md
