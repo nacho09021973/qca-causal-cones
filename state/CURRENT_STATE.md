@@ -2495,3 +2495,17 @@ includes the support of JDW L6c), HX2 `CONFIRMED_FOR_S19`. No nonlinear
 solver run (0 s of 3600 s); exploratory numerics only guided the
 certificate. Whole class OPEN; larger hexagons not in the contract's
 stages. Status: **PRELIMINARY, not independently reviewed.**
+
+M1-B19 review and amendment (2026-11-03): `6302328` pushed by user
+authorization (push and Grok + Gemini review; S25 not authorized). Grok
+(`grok-4.7`): REPAIR_REQUIRED, points on A3, A4, solution preservation,
+the 18-parameter reduction and the certificate's implication PASS; one
+mandatory repair: the report claimed contract form Sec. 4 (ii), which the
+certificate does not meet literally (record `f80c075`). Gemini: no report,
+`402` prepayment credits depleted (four attempts, account-level).
+[Amendment 1](../theory/HEX_SUPREMUM_GATE_AMENDMENT_1.md) (`208e1b1`,
+approved by the user, post-execution, frozen file untouched): the
+certificate is assessed under Sec. 4 (i); field `QQ(sqrt3)`, ~11 min check
+time, exploratory numerics (1294 s) and separate report/verifier declared.
+Report repaired accordingly (verifier bytes unchanged). Status:
+**PRELIMINARY; one of two requested reviews; promotion not authorized.**

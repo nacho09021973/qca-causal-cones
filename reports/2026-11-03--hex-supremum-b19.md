@@ -12,7 +12,14 @@ SHA-256 `244bb106…`);
 certificate data `scripts/data/hex_s19_certificate.json` (SHA-256
 `548988f7…`). Exploratory scripts (no verdict):
 `scripts/explore_hex_s19_reduced.py`, `scripts/explore_hex_s19_certificate.py`.
-**Status: PRELIMINARY, not independently reviewed.**
+**Amendment:** [`HEX_SUPREMUM_GATE_AMENDMENT_1.md`](../theory/HEX_SUPREMUM_GATE_AMENDMENT_1.md)
+(`208e1b1`, approved 2026-11-03): the certificate is assessed under
+contract Sec. 4 (i); literal deviations declared there.
+**Review:** Grok (`grok-4.7`), REPAIR_REQUIRED with one mandatory repair
+(the amendment) and two clarifications, all applied in this revision
+(`debates/2026-11-03--hex-supremum-b19-review-grok/`, record `f80c075`,
+reviewed version `6302328`). Gemini: no report (402, no credits).
+**Status: PRELIMINARY; one of the two requested independent reviews.**
 
 **Pre-step check.** Known: S19 has facet-normal layers 3, 4, 5, 4, 3, so
 lemma A1 forces only layer sums; the full system (56 free real parameters,
@@ -54,8 +61,9 @@ frequency `r - lambda = r + lambda'` gives `lambda' = -lambda` and the
 stated identity. (The diagonal of `K` gives `Re g = 0` only; A3 is
 stronger because it uses analyticity.) ∎
 
-A3 and A4 are consequences of unitarity and rigidity; they are not new
-assumptions. Their use is that they are linear.
+A3 and A4 are consequences of unitarity, rigidity and the normal form
+`A(v) = r v.sigma` (hex-ceiling report Sec. 3, Step 2; A3 uses it at
+`z = 1`); they are not new assumptions. Their use is that they are linear.
 
 ## 2. Reduction on S19 (verifier)
 
@@ -81,7 +89,10 @@ like S19 has edge-interior and interior points, keeps that walk in its
 13-parameter family, and all 298 reduced equations vanish there: the
 reductions do not exclude a known saturating walk. On S7, L1 + L2 + L3
 leave 1 free parameter, consistent with the parent T2 (the contradiction
-there is in one real coordinate).
+there is in one real coordinate). The counts «13-parameter», «298
+equations» and S7's «1 free parameter» are printed output, not checks:
+the verifier requires only membership and vanishing for the square
+controls, and its S7 record is informational (always passes).
 
 ## 3. Exact infeasibility certificate
 
@@ -99,13 +110,17 @@ its unique Gram matrix `G` in the basis `(1, t)` satisfies
 `p = (1,t) G (1,t)^T` identically, and exact Gaussian elimination over
 `QQ(sqrt3)` gives 19 positive pivots, so `G` is positive definite. Then
 `p(t) > 0` for every `t in R^18`, while at any solution every `f_i`, hence
-`p`, vanishes. In the contract's form (Sec. 4 (ii)): for `0 < mu <=
-1/(G^{-1})_00`, `G - mu e_0 e_0^T = L D L^T` with `D >= 0`, so
-`-1 = sum_j (d_j/mu) l_j(t)^2 + sum_i (-c_i/mu) f_i(t)`, a weighted sum of
-squares with exact coefficients in `QQ(sqrt3)`. Note: the system's own
-coefficients lie in `QQ(sqrt3)` (normal form and hexagon geometry), so the
-certificate's are exact in that field rather than in `QQ`; the multipliers
-`c_i` themselves are rational.
+`p`, vanishes. **Contract form: Sec. 4 (i)** (Amendment 1, Sec. 1): an
+ideal element with explicit rational cofactors `c_i`, whose absence of real
+zeros is certified exactly by `G > 0` (Gram identity plus 19 positive
+pivots in `QQ(sqrt3)`). It is not claimed as a form (ii) certificate.
+As a corollary only (not built or checked by the verifier): for
+`0 < mu <= 1/(G^{-1})_00`, `G - mu e_0 e_0^T = L D L^T` with `D >= 0`, so
+`-1 = sum_j (d_j/mu) l_j(t)^2 + sum_i (-c_i/mu) f_i(t)`, with coefficients
+in `QQ(sqrt3)`. The system's own coefficients lie in `QQ(sqrt3)` (normal
+form and hexagon geometry); the multipliers `c_i` are rational. The
+docstring of `check_certificate` still says «contract Sec. 4 (ii)»; the
+amendment supersedes it, and the verifier's bytes are unchanged.
 
 **Verdict.** M1-B19 `PROVED_FOR_S19`: no s=2 walk with `F within S19`
 (in `W_hex^sym`, hence in `W_hex`) reaches `c_0 = r_in`. This includes the
@@ -114,7 +129,9 @@ qualitative; no bound below `r_in` is claimed.
 
 ## 4. Budget and runs
 
-- Gröbner or other nonlinear solver runs on S19: none (0 s of the 3600 s).
+- Gröbner or other exact nonlinear solver runs on S19: none (0 s of the
+  3600 s). Counting the exploratory numerics below as solver time too:
+  1294 s < 3600 s (Amendment 1, Sec. 2).
 - Exact certificate check: inside the verifier, about 10 min of its 11.
 - A first version of the linear reduction with symbolic `rank(simplify=True)`
   was stopped after more than 600 s; replaced by exact `DomainMatrix` rank
@@ -140,5 +157,6 @@ qualitative; no bound below `r_in` is claimed.
 
 ## 6. Next step
 
-Independent cross-family review (as for Stage A), then a separate
-promotion; any extension beyond S19 is a separate user decision.
+Second independent cross-family review (Gemini when it has credits, or
+another family the user authorizes), then a separate promotion; any
+extension beyond S19 is a separate user decision (S25 not authorized).
