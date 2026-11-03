@@ -19,7 +19,9 @@ contract Sec. 4 (i); literal deviations declared there.
 (the amendment) and two clarifications, all applied in this revision
 (`debates/2026-11-03--hex-supremum-b19-review-grok/`, record `f80c075`,
 reviewed version `6302328`). Gemini: no report (402, no credits).
-**Status: PRELIMINARY; one of the two requested independent reviews.**
+Second review: the user, OK, on `88d28dd`
+(`debates/2026-11-03--hex-supremum-b19-review-usuario/registro.md`).
+**Status: promoted 2026-11-03 for S19 (CURRENT_STATE Sec. 14).**
 
 **Pre-step check.** Known: S19 has facet-normal layers 3, 4, 5, 4, 3, so
 lemma A1 forces only layer sums; the full system (56 free real parameters,

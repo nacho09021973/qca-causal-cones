@@ -3,9 +3,12 @@
 **Date:** 2026-11-03
 
 **Partial result promoted — 2026-11-03:** M1 hexagonal supremum (Sec. 14,
-frozen at `86573ca`): M1-B13 `PROVED_FOR_S13` (no s=2 walk with support in
-the 13-point hexagon reaches `r_in`, in `W_hex^sym`), Grok and Gemini PASS.
-Whole class OPEN; M1-B19 authorized, structural reduction first.
+frozen at `86573ca`, Amendment 1 at `208e1b1`): M1-B19 `PROVED_FOR_S19` (no
+s=2 walk with support in the 19-point hexagon reaches `r_in`, in
+`W_hex^sym`), reviewed by Grok (repair applied) and by the user; M1-B13
+`PROVED_FOR_S13` promoted earlier the same day. Both bounded stages of the
+contract end with a gap and no witness; whole class OPEN; S25 not
+authorized.
 
 **Novelty candidacy dropped — 2026-11-02:** by direct user instruction
 («regístralo»), after the primary-source comparison
@@ -2507,5 +2510,17 @@ certificate does not meet literally (record `f80c075`). Gemini: no report,
 approved by the user, post-execution, frozen file untouched): the
 certificate is assessed under Sec. 4 (i); field `QQ(sqrt3)`, ~11 min check
 time, exploratory numerics (1294 s) and separate report/verifier declared.
-Report repaired accordingly (verifier bytes unchanged). Status:
-**PRELIMINARY; one of two requested reviews; promotion not authorized.**
+Report repaired accordingly (verifier bytes unchanged). Second review: the
+user personally, OK, on the version at `88d28dd`
+([record](../debates/2026-11-03--hex-supremum-b19-review-usuario/registro.md),
+`59f2ea2`; no written list of points checked). **Promoted 2026-11-03 (user
+instruction «sí, promociona S19 y haz push»):** M1-B19 `PROVED_FOR_S19`,
+HX2 `CONFIRMED_FOR_S19`, M1-A stays `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`.
+Scope: S19 only, in `W_hex^sym` (hence `W_hex`); qualitative gap, no
+uniform separation from `r_in`; certificate under contract Sec. 4 (i) per
+Amendment 1. The 17/17 verifier runs are the author's, not the reviewers'
+(Grok could not execute). M1 status: both bounded stages (S13, S19) end
+with a gap, no witness; result (a) of Sec. 0 not met, no gap proof for the
+class; whole class OPEN. No further stage is in the contract; S25 or any
+other extension needs a new charter (not authorized). Previous status:
+PRELIMINARY; one of two requested reviews; promotion not authorized.
