@@ -198,10 +198,20 @@ decaying regions of coined walks on the line. These are the closest
 precursors of the saddle-point analysis of Section 7. In two dimensions,
 Baryshnikov, Brady, Bressler and Pemantle [3] analysed quantum walks through
 multivariate generating functions and determined the limiting profile in the
-feasible region, outside of which the probability is exponentially small.
-Analytic combinatorics in several variables [16] provides general transfer
-theorems for multivariate coefficient asymptotics, whose standard sharp forms
-assume minimality hypotheses on the critical points. We do not claim that
+feasible region, outside of which the probability is exponentially small;
+the shape theorem they prove gives $O(e^{-cn})$ uniformly on compact subsets
+of the complement of the feasible region, and prefactor asymptotics only
+inside it [20, Thms. 2.2–2.3]. Analytic combinatorics in several variables
+[16] provides general transfer theorems for multivariate coefficient
+asymptotics, whose standard sharp forms assume minimality hypotheses on the
+critical points. In its quantum-walk examples the asymptotics hold uniformly
+for directions in compact subsets of the feasible region, and outside it the
+conclusion is exponential decay [22, Thm. 12.12 and its proof, Thm. 12.14];
+the quadratic-point theory gives asymptotics uniformly over compact subcones
+of the interior of the dual cone and only exponential smallness outside it
+[21, Thm. 3.7]. Cedzich, Joye, Werner and Werner count two studies of the
+asymptotics outside the propagation region, both of walks on the line
+[9, Sec. 5.1], namely [8, 19]. We do not claim that
 these methods cannot reproduce the present result. We are not aware of a
 transfer theorem that yields it directly, and we carry out the model-specific
 saddle-point analysis explicitly.
@@ -1455,3 +1465,11 @@ $N=40$ and $8\cdot10^{-9}$ at $N=640$.
     arXiv:quant-ph/0405174.
 19. T. Sunada, T. Tate, *Asymptotic behavior of quantum walks on the line*,
     J. Funct. Anal. **262**, 2608–2645 (2012), arXiv:1108.1878.
+20. A. Bressler, T. Greenwood, R. Pemantle, M. Petkovšek, *Quantum random
+    walk on the integer lattice: examples and phenomena*, arXiv:0903.2967.
+21. Y. Baryshnikov, R. Pemantle, *Asymptotics of multivariate sequences,
+    part III: quadratic points*, arXiv:0810.4898.
+22. R. Pemantle, M. C. Wilson, S. Melczer, *Analytic Combinatorics in Several
+    Variables*, Expanded Second Edition, manuscript,
+    <https://ACSVproject.com/PemantleWilsonMelczer23.pdf> (theorem numbers as
+    in this manuscript; not compared with the printed edition [16]).
