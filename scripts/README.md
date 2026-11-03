@@ -335,6 +335,22 @@ grevlex Gröbner basis over `C`. Its docstring records the runs (minimal:
 consistent over `C`, 0.5 s; 19-point ball: not finished in 900 s). It
 supports no verdict.
 
+## Hexagonal supremum gate, M1 (2026-11-03)
+
+`verify_hex_supremum_gate.py` certifies Stage A and M1-B13 of
+[`HEX_SUPREMUM`](../theory/HEX_SUPREMUM_GATE.md), preregistered at
+`86573ca`. 12 exact checks: lattice-point counts of the closed hexagons
+S7, S13, S19 (7, 13, 19); in S13 the facet-normal layers lie on the grid
+`r_in/3` and the layers `+-2 delta` are singletons that together are the
+inner ring; a second route (generic coefficients on all 13 points, exact
+solve of the layer equations) forcing every inner-ring coefficient to 0;
+the surviving `{0} U vert` similar to the T2 configuration; in S19 layer
+sizes 3,4,5,4,3 with no intermediate singleton; and a read-only rerun of
+`check_T2_minimal` of the reviewed `verify_hex_ceiling_gate.py` (4/4).
+Does **not** certify: facet-line rigidity and the normal form (hex-ceiling
+report Sec. 3, Steps 1-2), or that the T2 proof is lattice-free (report).
+Nothing for S19 or larger supports. Not independently reviewed.
+
 ## Dispersion corrections gate (2026-11-02)
 
 `verify_dispersion_corrections_gate.py` certifies
