@@ -1,0 +1,1624 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente el informe de ejecución
+2026-11-03--substrate-saturation-phase0.md, escrito por Claude (Anthropic),
+contra su contrato congelado SUBSTRATE_SATURATION_PHASE0_GATE.md. Se
+adjuntan como fuentes promocionadas: un extracto literal de
+state/CURRENT_STATE.md con su numeración original de líneas (commit
+6851d92), y los informes c-across-lattices, hex-ceiling, L6b y M1-B19. El
+informe no es premisa. No tienes herramientas: no ejecutes, edites ni
+navegues. No propongas cálculos ni ampliar la investigación. Señala solo
+defectos demostrables, con su localización exacta.
+
+Dictámenes separados PASS / REPAIR_REQUIRED:
+1. DEFINICIONES. ¿Introducen (PH), su dominio («admisible»: nodo isótropo
+   sin inclinación y pertenencia a una clase declarada) o sus
+   cuantificadores alguna circularidad en la ejecución? ¿Aplica el informe
+   las definiciones del contrato tal como están congeladas?
+2. TRAZABILIDAD. Comprueba cada cita del informe contra las fuentes
+   adjuntas (líneas y secciones), en particular: L4 (una sola fuente, l. 147
+   del informe c-across-lattices; nodo trazado a CS l. 764–769 y l. 784–789;
+   ¿basta `h_{B(c_IR)} ≡ c_IR` para «sin inclinación»?), la exclusión de L6b
+   (`s = 6`), y la pertenencia de L6a, L6d, L6f al subconjunto de soporte
+   mínimo y de L6c a S19.
+3. F2. La hipótesis de que todos los patrones de signos aparecen en F con
+   amplitud no nula, ¿afecta solo a (PS′) o compromete alguna conclusión
+   sobre (PH) (forma de `C_micro`, hipercubo sí/no, `r_in`)? ¿Es correcto
+   leer las «direcciones de zonotopo» de las aristas certificadas de
+   `C_micro`, y está bien acotado lo que eso no establece?
+4. NIVELES LÓGICOS. ¿Hay alguna frase que convierta un resultado sobre un
+   walk, una subclase o un soporte acotado en una afirmación universal
+   sobre el sustrato? Revisa en especial los tres campos de la Sec. 2 y la
+   Sec. 3.
+5. VEREDICTO. ¿Se sostienen DEFINITIONS_CLOSED y
+   NO_COUNTEREXAMPLE_IN_SOURCE_TABLE con los criterios del contrato
+   (Sec. 5)? ¿Queda claro, en la misma frase, que el segundo no es evidencia
+   independiente y que ningún resultado autoriza fases posteriores?
+
+Hasta 1500 palabras en español. Cada defecto: frase o línea exacta, por qué
+falla y qué lo cerraría. Distingue aclaración de error. Dictamen global
+PASS o REPAIR_REQUIRED y lista de reparaciones obligatorias; si no hay
+ninguna, dilo expresamente.
+
+=== DOCUMENT 1: 2026-11-03--substrate-saturation-phase0.md ===
+
+# Substrate saturation, phase 0 — definitional audit
+
+**Date:** 2026-11-03. **Branch:** `research/schur-stability-audit`.
+**Contract:** [`SUBSTRATE_SATURATION_PHASE0_GATE.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE.md),
+preregistration commit `9bf3019`; registered in CS Sec. 15 (`6851d92`).
+**Authorization to execute:** user instruction, 2026-11-03 («EJECUTAMOS
+FASE 0»).
+**Author:** Claude Code (Claude Opus 5.5). Documentary only: no verifier
+run, written or edited; no walk built; no numerics.
+**Nature:** a definitional audit with **no confirmatory value** (contract
+Sec. 0). **Status: PRELIMINARY, not independently reviewed.**
+
+**Pre-step check.** Known: the contract fixes (PH), its domain (`s = 2`,
+`d <= 3`, admissible models), one source per row, three separate fields,
+and the outcomes. Question: is (PH) defined without ambiguity on the
+promoted rows, and is there an exact counterexample among them? Ends this
+formulation: one exact counterexample (contract Sec. 4).
+
+## 1. Rows considered (contract Sec. 3.1)
+
+Promoted rows with `d <= 3` and an exact `c_0` or an exact class statement.
+Primary row source: the massless table of
+[`reports/2026-11-01--c-across-lattices.md`](2026-11-01--c-across-lattices.md)
+(l. 140–152; promoted in the declared rows, CS Sec. 11), in units of
+longest step 1, one update per time unit. Composite step sets from the same
+report, Sec. 3 (l. 106–113), and for L1–L3 from CS l. 484–496
+(`N_d = {(±1,...,±1)/sqrt(d)}`, `C_micro = [-1/sqrt(d), 1/sqrt(d)]^d`,
+`c_0 = r_in = 1/sqrt(d)`). Every computed row of that table carries the
+certificate «Hermitian linear generators, zero tilt, an isotropic untilted
+cone (`{T_a, T_b} = 2 c_0^2 delta_ab`), the exact facets and vertices of
+`C_micro`» (report l. 154–156).
+
+**Outside the domain (`s != 2`), recorded only:**
+
+| Row | `s` | Source | Note |
+| --- | --- | --- | --- |
+| L5b (BCC) | 4 | c-across-lattices l. 145 | saturates; cannot confirm or refute (PH) |
+| L3s4 (BCC) | 4 | c-across-lattices l. 146; CS Sec. 4.1 | `c_0 = a/sqrt3 < r_in` |
+| L6b (triangular) | 6 | L6b report l. 24, l. 70–71; CS l. 88–94, l. 106 | the parent table (l. 152) still lists `s = 2`, OPEN, not encoded; not amended |
+
+## 2. Row table, domain `s = 2` (contract Secs. 3.2–3.3)
+
+Shapes are read from the certified vertices of `C_micro` in the units
+above. "Hypercube" means up to scale and isometry; "parallelepiped" means a
+Minkowski sum of `d` independent segments. "Zonotope directions" are the
+edge directions of `C_micro` (every polytope listed here is a zonotope;
+its generators are read from its edges, not from the walk's factor
+structure — see Sec. 4, finding F2).
+
+| Row | Substrate (group, `N`) | `C_micro` vertices | Hypercube | Parallelepiped | Zonotope directions | `r_in` | `c_0` | Single source |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| L1 | line, `N = {±1}` | `±1` | yes (segment) | yes | 1 | 1 | 1 | c-across-lattices l. 140 |
+| L2 | square, `N_2` | `(±1,±1)/sqrt2` | yes (square) | yes | 2, orthogonal | `1/sqrt2` | `1/sqrt2` | l. 141; CS l. 484–496 |
+| L6e | square, same as L2 (l. 111) | `(±1,±1)/sqrt2` | yes | yes | 2, orthogonal | `1/sqrt2` | `1/sqrt2` | l. 142 |
+| L3 | BCC, `N_3` | `(±1,±1,±1)/sqrt3` | yes (cube) | yes | 3, orthogonal | `1/sqrt3` | `1/sqrt3` | l. 143; CS l. 484–496 |
+| L5a | BCC, same as L3 (l. 106) | `(±1,±1,±1)/sqrt3` | yes | yes | 3, orthogonal | `1/sqrt3` | `1/sqrt3` | l. 144 |
+| L4 | cube (CJWW (5.12), (5.15)) | cube of longest step 1 (label `[-1,1]^3` is in CS Sec. 8 units; not combined with the rescaled radius) | yes | yes | 3, orthogonal | `1/sqrt3` | `1/sqrt3` | l. 147 only (CS Sec. 8 pair not crossed) |
+| L6a | triangular lattice, `F = {0} ∪ {±2u_i}` (l. 108) | regular hexagon | no | no | 3, at 120° | `sqrt3/2` | `1/2` | l. 148 |
+| L6d | identical to L6a (l. 110) | regular hexagon | no | no | 3, at 120° | `sqrt3/2` | `3/4` | l. 150 |
+| L6f | triangular lattice, hexagon of radius `sqrt3` rotated 30° (l. 112) | regular hexagon | no | no | 3, at 120° | `sqrt3/2` | `3/4` | l. 151 |
+| L6c | finer triangular group, 19-point hexagonal ball (l. 109) | regular hexagon | no | no | 3, at 120° | `sqrt3/2` | `3/4` | l. 149 |
+
+**Three fields per row, kept apart (contract Sec. 3.3).**
+
+| Row | (a) this walk | (b) promoted class statement, with its scope | (c) substrate, existential |
+| --- | --- | --- | --- |
+| L1 | `c_0 = r_in` | — | yes: L1 |
+| L2, L6e | `c_0 = r_in` | — | yes: L2, L6e |
+| L3, L5a | `c_0 = r_in` | — | yes: L3, L5a |
+| L4 | `c_0 = r_in` | — | yes: L4 |
+| L6a | `c_0 < r_in` (`1/sqrt3`) | T1: `sup c_0/r_in = sqrt3/2` on the `n = 3` antipodal subclass only (hex-ceiling report l. 125, CS Sec. 12); L6a is in it, `g = 1/3` (l. 138–139). T2: no s=2 walk with `F within {0} U vert(H)` reaches `r_in` (CS Sec. 12; contains L6a, L6d, L6f, hex-ceiling l. 152–156). M1-B13, M1-B19: no s=2 walk in `W_hex^sym` with `F` within S13 or S19 reaches `r_in` (CS Sec. 14), qualitative gaps. Whole hexagonal class OPEN. | no promoted saturating walk; **not** "no walk saturates" |
+| L6d, L6f | `c_0 < r_in` (`sqrt3/2`) | as for L6a (L6d at the T1 maximum, `g = -1/2`) | as for L6a |
+| L6c | `c_0 < r_in` (`sqrt3/2`) | not in the minimal-support subclass (hex-ceiling l. 156); its 19-point support is S19, covered by M1-B19 in `W_hex^sym` (B19 report Sec. 3) | as for L6a, on its own (finer) substrate |
+
+**`OUTSIDE_DEFINITIONS` (contract Sec. 3.4): none.** Every row in the domain
+has the isotropic untilted node: computed rows by the certificate of
+report l. 154–156; L1–L3 also by CS l. 484–496. **L4 is the weakest traced
+row:** it is re-tabulated, not computed, in that report (l. 147, «CURRENT_STATE
+Sec. 8»), so its certificate does not cover it. Its node is traced to CS
+Sec. 8.1 (l. 764–769, «the emergent isotropic IR light cone» `B(c_IR)` for
+CJWW (5.12) and (5.15)) and Sec. 8.2 (l. 784–789: `S(n̂) = h_{B(c_IR)}(n̂) /
+h_{C_micro}(n̂) = 1/||n̂||_1` for every unit `n̂`, i.e. `h_{B(c_IR)} ≡ c_IR`,
+a ball centred at the origin, hence no tilt). Isotropy and zero tilt are
+thus stated in promoted text, but not through the same certificate as the
+other rows; recorded, not flagged.
+
+## 3. Counterexample check (contract Sec. 4)
+
+- **Against (PH⇒)** — a non-hypercube substrate in the domain with a
+  promoted walk at `c_0 = r_in`: none. The only non-hypercube shape is the
+  regular hexagon (L6a, L6c, L6d, L6f), and every promoted hexagonal walk
+  has `c_0 < r_in`.
+- **Against (PH⇐)** — a hypercube substrate in the domain on which a
+  promoted exact result shows that no admissible walk saturates: none.
+  Each hypercube substrate (line, square, BCC, cube) has a promoted walk
+  with `c_0 = r_in`.
+
+## 4. Audit findings
+
+- **F1 (contract Sec. 3.5).** The table contains no parallelepiped that is
+  not a hypercube, and no non-hypercube body with a promoted saturating
+  walk. It therefore cannot separate (PH) from (PS′), nor from any other
+  predicate that agrees on segments, squares, cubes and the regular
+  hexagon (for example "fewer than `d+1` zonotope directions", or "the
+  facet normals come in `d` orthogonal pairs"). The shapes present are
+  three hypercubes (segment, square, cube) and one non-hypercube (the
+  regular hexagon).
+- **F2 (on (PS′), recorded, no verdict).** The contract's identity
+  `conv F = sum_i [-a_i, a_i]` presupposes that every sign pattern
+  `sum_i ε_i a_i` of the partial shifts appears in `F` with nonzero
+  amplitude. That is not recorded per row in the promoted data (the factor
+  structure is tabulated only for the `n = 3` antipodal subclass, T1), and
+  it can fail if a coin entry vanishes. The "zonotope directions" column
+  above is read from the edges of `C_micro`, which are certified; whether
+  they coincide with the factor shifts of each walk is not established
+  here. (PS′) as written therefore needs that hypothesis made explicit
+  before any test.
+- **F3 (substrate counts).** Grouped by shape and translation group, the
+  domain has five substrates (line; square, L2 = L6e; BCC, L3 = L5a; cube,
+  L4; hexagon on the triangular lattice, L6a = L6d, with L6f the same shape
+  up to rotation and scale) plus the finer-group hexagon of L6c. By shape
+  alone: four (segment, square, cube, hexagon).
+
+## 5. Outcomes (contract Sec. 5)
+
+**Definitional outcome: `DEFINITIONS_CLOSED`.** Every row in the domain has
+one traced source in the units of contract Sec. 2.4 (L4 from l. 147 only),
+all fields of Secs. 3.2–3.3 are filled from promoted exact data (the
+zonotope-direction field from the certified vertices, with the caveat of
+F2), and the `OUTSIDE_DEFINITIONS` list is explicit (empty). This means
+only that (PH) is defined well enough to be tested for refutation.
+
+**Counterexample check:** (PH⇐) `NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`; (PH⇒)
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`. **This is not independent evidence
+for (PH):** the statement was read off this table, which has three
+hypercube shapes and one non-hypercube shape and no parallelepiped that is
+not a hypercube (F1). Never `CONFIRMED`.
+
+**No outcome of this gate authorizes any later phase** (contract Sec. 5).
+A test that can fail needs its own contract with a shape or support not in
+the table (contract Sec. 7).
+
+## 6. What this does not establish
+
+No evidence for (PH) or (PS′); no statement about parallelepipeds that are
+not hypercubes, about hexagonal walks beyond the promoted results, about
+`s != 2` or `d > 3`; no uniform gap; no physical explanation of the
+predicate; no novelty claim.
+
+=== DOCUMENT 2: SUBSTRATE_SATURATION_PHASE0_GATE.md ===
+
+# SUBSTRATE_SATURATION (phase 0) — frozen contract
+
+**Frozen:** 2026-11-03, revision 3, by the user's instruction («congela la
+revisión 3»), before any execution. Nothing in Secs. 3–5 has been done.
+Freezing is not authorization to execute: execution of phase 0 needs a
+separate user decision. The only change from the reviewed snapshot
+(`borrador_rev3_snapshot.md`, SHA-256 `b574a407…`) is this status header.
+Drafted by Claude Code (Claude Opus 5.5) on 2026-11-03 at the user's
+instruction («Autorizo redactar la carta de la fase 0, pero no congelarla
+ni ejecutar todavía ninguna comprobación»). Revision 1 was reviewed by Grok
+(`grok-4.7`, REPAIR_REQUIRED, six mandatory repairs;
+`debates/2026-11-03--substrate-saturation-phase0-draft-review-grok/`).
+Revision 2 applies, by the user's decision of 2026-11-03 («aceptar las seis
+reparaciones de Grok, adoptar "hipercubo" como predicado provisional y
+convertir la fase 0 en una auditoría de definiciones, sin valor
+confirmatorio»), all six repairs, the terminology change
+parallelotope → parallelepiped, and the zonotope reading (PS′) without any
+equivalence claim. Revision 3 (same day) applies the one mandatory repair
+of Grok's round 2 (L6b traceability) and its five clarifications, by the
+user's instruction («sí, aplica la reparación y las cinco aclaraciones»;
+`debates/2026-11-03--substrate-saturation-phase0-rev2-review-grok/`).
+Reports cite the commit that adds this file as the preregistration
+commit.
+**Initial scientific status: OPEN.** The conjecture below is `[UNVERIFIED]`;
+it was formulated by an AI from the promoted table and has no evidence
+level of its own.
+**Does not alter:** step 4 of the work plan (hexagonal-ceiling prior-art
+check, `NOT_FOUND_IN_SCOPED_SEARCH`, `6114b9d`), M1 (`86573ca`,
+Amendment 1 `208e1b1`) or any promoted row.
+
+## 0. Nature of this gate and pre-step check (rule of 2026-11-02)
+
+**Phase 0 is a definitional audit with no confirmatory value.** The
+conjecture of Sec. 1 was read off the same table this gate would audit
+(Grok, repair 6). Its purpose is to fix definitions, normalizations,
+traceability and the domain of the statement. Its conclusion is never
+"the conjecture survives"; at best it is "the statement is defined well
+enough to be tested for refutation". A test that can fail needs a separate
+contract with a shape not in the table (Sec. 7).
+
+- **Known.** Promoted rows (CS Secs. 4, 5, 8, 11, 12, 14; c-across-lattices
+  report Sec. 4; c-across-substrates answer Sec. 1): the ceiling
+  `c_0 = r_in(C_micro)` is attained by some declared `s = 2` walk on the
+  line (L1), the square (L2, L6e), BCC (L3, L5a) and the cube (L4); their
+  `C_micro` are a segment, squares and cubes, i.e. hypercubes up to scale
+  and isometry. On the hexagon no declared walk attains it; `sup c_0/r_in
+  = sqrt3/2` in the `n = 3` antipodal subclass; no s=2 walk in `W_hex^sym`
+  with `F` within S7, S13 or S19 attains it; the whole hexagonal class is
+  OPEN. The table contains no parallelepiped that is not a hypercube, so it
+  cannot distinguish the two notions (Grok, repair 1).
+- **Question.** Is the statement of Sec. 1 defined without ambiguity on the
+  promoted rows (definitions, units, single source per row, levels of
+  claim), and is there an exact counterexample to it among those rows?
+- **Result that ends this formulation.** One exact counterexample in the
+  promoted rows (Sec. 4): the formulation of Sec. 1 is dropped at once,
+  with no repair attempted in this gate.
+
+## 1. Statement under audit
+
+> **(PH) [UNVERIFIED], provisional predicate.** For `s = 2`, `d <= 3`,
+> within the declared classes of Sec. 2 and only for models with an
+> admissible isotropic untilted node: the ceiling is attained on a
+> substrate, in the sense of Sec. 2.1, if and only if its `C_micro` is a
+> hypercube up to scale and isometry.
+
+Two directions are kept apart:
+
+- **(PH⇐)** `C_micro` a hypercube up to scale and isometry ⇒ there exists
+  an admissible walk on that substrate with `c_0 = r_in`.
+- **(PH⇒)** `C_micro` not a hypercube up to scale and isometry ⇒ every
+  admissible walk on that substrate has `c_0 < r_in`.
+
+A body with no admissible isotropic untilted node in the declared class is
+outside the statement: it is on neither side of the biconditional and is
+recorded as `OUTSIDE_DEFINITIONS` (Sec. 3.4).
+
+**The predicate is a geometric classification suggested by the existing
+cases, not a physical explanation.** Whether saturation is controlled by
+this geometry, or by algebraic and isotropy constraints that coincide with
+it on the present table, is the open question (user decision,
+2026-11-03).
+
+This contract states only (PH) on the promoted rows. No general statement
+about hypercubes or parallelepipeds outside those rows is written here
+(Grok, repair 3).
+
+**Zonotope reading (PS′) [UNVERIFIED], product class only, not equivalent
+to (PH).** For a walk that is a product of `n` coin–partial-shift factors,
+each partial shift moving by `±a_i`, the composite step set is
+`F = {sum_i ε_i a_i}` and `C_micro = conv F` is the zonotope
+`sum_i [-a_i, a_i]` (convex hull of a Minkowski sum is the Minkowski sum
+of the hulls). It is a parallelepiped exactly when the reduced generators
+(`a_i` up to sign and positive scale, parallel ones merged) are `d`
+linearly independent vectors. (PS′) reads: in the product class, the
+ceiling is attained iff the generators reduce to `d` independent
+directions. **(PS′) is not equivalent to (PH):** `d` independent
+generators need not be orthogonal or of equal length, so a parallelepiped
+need not be a hypercube (e.g. a 60° rhombus in `d = 2`). No equivalence is
+claimed until proved. Examples in the promoted rows: square (two
+generators), BCC/cube (three orthogonal generators), `W_hex` (three
+generators at 120°, `d = 2`: the hexagon). The zonotope facts it would use
+(e.g. the space-tiling criterion of Shephard 1974 and McMullen 1975) are
+cited by Moriyama–Otozawa (arXiv:2411.09141v1) and have not been read
+here. The same domain clause applies to (PS′): a body (e.g. a rhombus)
+whose declared class has no admissible isotropic untilted node is
+`OUTSIDE_DEFINITIONS` and is not on the "attained" side. Phase 0 records
+the reduced generators of each product-class row and gives no verdict on
+(PS′); the counterexample criterion of Sec. 4 concerns (PH) only.
+
+## 2. Quantifiers, domain and normalization
+
+1. **Quantifiers.** "The ceiling is attained on a substrate" means: there
+   exists at least one admissible walk `W` on that substrate with
+   `c_0(W) = r_in(C_W)`. It does not mean that every walk saturates. A
+   non-saturating walk on a substrate where another walk saturates is not
+   a counterexample to (PH⇐) (e.g. L3s4 on BCC, which in any case has
+   `s = 4` and is outside the domain).
+2. **Domain.** `s = 2`, `d <= 3`, models with an admissible isotropic
+   untilted node, and only the classes already declared in the frozen
+   contracts the promoted rows cite (C_ACROSS_LATTICES_GATE,
+   HEX_CEILING_GATE, HEX_SUPREMUM_GATE and the row contracts).
+   **"Admissible"** means exactly: the walk belongs to one of these declared
+   classes and has an isotropic untilted node at `k = 0` in the sense of
+   Sec. 2.4 (`U(0)` scalar, traceless Hermitian linear term with
+   `{T_a, T_b} = 2 c_0^2 delta_ab`, zero tilt; equivalently
+   `A(n)^2 = c_0^2 |n|^2 I`, HEX_CEILING_GATE Sec. 1). It is not the
+   "admissible graph" of P17, whose isotropy in its own sense excludes the
+   triangular lattice. Rows with
+   `s != 2` are recorded and are outside the domain: L5b and L3s4
+   (`s = 4`, c-across-lattices report Sec. 4 table); L6b (`s = 6`: L6b
+   report Secs. 1–2, `s = 6` counted per cell, three edges with `C^2`
+   each, whereas the parent's `s = 2` counts per edge; the row is promoted
+   with `s = 6` by L6B_TRIANGULAR_ROW, described in CS l. 88–94 as «a
+   revision of `C_ACROSS_LATTICES` restricted to row L6b», and CS l. 106
+   records «`s = 6`, not the parent's `s = 2`»). The parent contract
+   C_ACROSS_LATTICES_GATE and the c-across-lattices table were not amended
+   and still list L6b with `s = 2` (`OPEN`, not encoded); the exclusion
+   rests on the promoted `s = 6`. No extrapolation to other `s`, `d`,
+   lattices or classes.
+3. **Substrate.** As in C_ACROSS_LATTICES_GATE Sec. 2: the translation group
+   generated by one complete update together with its composite step set.
+   Here `N := F`, the composite step set of one complete update (all sums
+   of one displacement per partial shift), not the displacement set of a
+   single partial shift. `0 ∈ N` does not change `C_micro`, `r_in` or the
+   longest step when it is interior.
+4. **Normalization and single source per row.** Every row is compared with
+   the same frozen definitions (CS Sec. 2): `C_micro := conv(N)`; `h_C`;
+   `r_in(C_micro) := min h_C`; `c_0` the isotropic untilted cone speed at
+   the massless node (`{T_a, T_b} = 2 c_0^2 delta_ab`, as certified per row
+   in the c-across-lattices report Sec. 4); units: longest step 1, one
+   update per time unit. **For each row the pair `(r_in, c_0)` is taken
+   from exactly one source, in these units.** For L4 that source is the
+   c-across-lattices report Sec. 4 table (`r_in = c_0 = 1/sqrt3`); that
+   table's label "cube `[-1,1]^3`" names the shape in CS Sec. 8 units, and
+   its vertices are not to be combined with the rescaled radius `1/sqrt3`
+   (the rescaled cube has longest step 1). The CS
+   Sec. 8 pair (`C_micro = [-1,1]^3`, `r_in = 1`, `c_IR = 1`) is in other
+   units and must not be crossed with it (Grok, repair 4). A numerical
+   coincidence of speeds, or a value from a different normalization, is
+   not a comparison. "Hypercube up to scale and isometry" and
+   "parallelepiped" (Minkowski sum of `d` linearly independent segments)
+   are checked exactly from the vertices of `C_micro`.
+   **Terminology.** Revision 1 said "parallelotope"; in standard use a
+   parallelotope is any polytope that tiles space by translations
+   (Moriyama–Otozawa, arXiv:2411.09141v1, Sec. 2.2, p. 11), and the
+   regular hexagon is one. That word is not used for the predicate.
+5. **Pointwise against uniform gap.** (PH⇒) is pointwise:
+   `for all W, c_0(W) < r_in(C_W)`. It does not imply a uniform gap
+   `sup_W c_0(W)/r_in(C_W) < 1` over a class. Phase 0 makes no claim about
+   a uniform gap. T1 (`sqrt3/2`) is a uniform statement for the `n = 3`
+   antipodal subclass only; M1-B13 and M1-B19 are qualitative gaps with no
+   bound below `r_in`.
+6. **Background bound.** `c_0 <= r_in` (L0, Bernstein) holds on the
+   declared classes; a row with `c_0 > r_in` would contradict L0, not (PH).
+   No such row exists.
+
+## 3. Method (no computation)
+
+Documentary only. No verifier is run, written or edited; no new walk is
+built; no numerics.
+
+1. List every promoted row in `state/CURRENT_STATE.md` and the reports it
+   cites with `d <= 3`, with its source (`file:line` or section), its
+   declared class and its `s`. Rows with `s != 2` are listed and marked
+   outside the domain with the citation of Sec. 2.2.
+2. For each row in the domain, record from the single source of Sec. 2.4:
+   the vertices of `C_micro`; whether it is a hypercube up to scale and
+   isometry; whether it is a parallelepiped; for product-class rows, the
+   reduced generators (for (PS′)); `r_in`; `c_0`.
+3. **Three separate fields per row, never merged** (Grok, repair 5):
+   (a) *this walk*: `c_0 = r_in` or `c_0 < r_in`, exact;
+   (b) *promoted statement on a class*, quoted with its own quantifier and
+   scope (e.g. T1 on the `n = 3` antipodal subclass; M1-B13/B19 on `W_hex^sym`
+   with `F` within S13/S19; the whole hexagonal class OPEN);
+   (c) *existential reading per substrate*: "some promoted walk on this
+   substrate has `c_0 = r_in`" (yes / no promoted witness). A gap on a
+   subclass or a bounded support is entered in (b) and is never read as
+   (c) "no walk on the substrate saturates".
+4. Flag, without resolving, every row where a definition of Sec. 2 does not
+   apply as frozen (for example a body whose declared class has no
+   admissible isotropic untilted node). Such a row is
+   `OUTSIDE_DEFINITIONS`: not a counterexample and not support.
+5. Record whether the table contains a parallelepiped that is not a
+   hypercube, or a non-hypercube body with a promoted saturating walk. If
+   it contains neither, record that it cannot separate (PH) from (PS′) or
+   from other predicates that agree on segments, squares, cubes and the
+   regular hexagon.
+
+## 4. Counterexample criterion
+
+An exact counterexample among the promoted rows is any of:
+
+- (against PH⇒) a substrate in the domain whose `C_micro` is not a
+  hypercube up to scale and isometry, with a promoted walk with
+  `c_0 = r_in` exactly;
+- (against PH⇐) a substrate in the domain whose `C_micro` is a hypercube up
+  to scale and isometry, on which a promoted exact result shows that no
+  admissible walk of the declared class attains `c_0 = r_in`.
+
+A failed search, a non-saturating single walk, a gap on a subclass or a
+bounded support, or a row outside the domain or the definitions is not a
+counterexample.
+
+## 5. Outcomes
+
+Two separate outcomes, reported together.
+
+**Definitional outcome.**
+
+- `DEFINITIONS_CLOSED`: every row in the domain has a single traced source
+  in the units of Sec. 2.4, all fields of Sec. 3.2–3.3 are filled from
+  promoted exact data, and the `OUTSIDE_DEFINITIONS` list is explicit.
+  Meaning: the statement is defined well enough to be tested for
+  refutation. Nothing more.
+- `OPEN_AFTER_ROW_SURVEY`: some needed quantity is missing, not exact, or
+  has no single source; the list of gaps is reported.
+
+**Counterexample check** (per direction, PH⇐ and PH⇒):
+
+- `REFUTED_BY_ROW_<row>`: one exact counterexample (Sec. 4). The
+  formulation of Sec. 1 stops at once.
+- `NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`: no counterexample among the promoted
+  rows. **This is not independent evidence for (PH)**: the statement was
+  read off this table, which has three hypercube shapes and one
+  non-hypercube shape (the regular hexagon), and no parallelepiped that is
+  not a hypercube. The verdict is never `CONFIRMED`, and it must be
+  reported in the same sentence as this caveat.
+
+**No outcome of this gate authorizes any later phase.** In particular,
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE` is not a condition for, nor a reason
+to start, any test of refutation; each later phase is chartered on its
+own (Grok, repair 6).
+
+## 6. Exclusions
+
+`s != 2`, `d > 3`, bodies without an admissible isotropic untilted node,
+new lattices, new walks, masses, `V_grp^max`, inhomogeneous or encoded
+walks, uniform gaps, general QCA laws, claims about our universe, any
+physical explanation of the predicate. No novelty claim. No computation of
+any kind in this gate.
+
+## 7. After this gate (not authorized here)
+
+A test that can fail needs its own contract, with a shape or support not
+in the source table. The user's stated first choice (2026-11-03) is the
+hexagon: look for an admissible hexagonal family with exactly
+`c_0 = r_in(C_micro)`. Finding one inside the domain of Sec. 2.2
+(`s = 2`, admissible) would refute (PH⇒); a witness with `s != 2` would be
+outside the domain and would not refute (PH). Not finding one would not
+prove (PH). The user prefers it to the rhombus because the
+hexagonal substrate is already studied and a rhombus without an admissible
+isotropic node would be outside the domain. Its exact scope (larger
+support at `s = 2`, larger `s`, or both) is to be fixed in that contract.
+
+## 8. Deliverables
+
+A report `reports/YYYY-MM-DD--substrate-saturation-phase0.md` with the row
+table of Sec. 3, each entry traced to its single source, the
+`OUTSIDE_DEFINITIONS` list, the audit finding of Sec. 3.5 and the outcomes
+of Sec. 5. Then independent cross-family review (user permission needed to
+send), then a separate promotion decision.
+
+=== DOCUMENT 3: extracto_current_state.md ===
+
+# Extracto literal de state/CURRENT_STATE.md en el commit 6851d92 (numeración original de líneas a la izquierda)
+
+## Líneas 85,112
+```
+   85  a charter. Chartered the same day by user instruction («haz lo que
+   86  consideres, estás autorizado»); executed on «si»
+   87  ([report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
+   88  verifier 81/81 after repairs, SHA256 `b7c451e2…`);
+   89  [reviews](../reports/2026-11-02--dispersion-corrections-across-lattices-review.md).
+   90  Previous status: PRELIMINARY, INDEPENDENT_REVIEW_PASS_TWO_HOUSES,
+   91  PROMOTION_PENDING. Sec. 11, L6b and Sec. 12 stay promoted as below.
+   92  
+   93  **Gate promoted — 2026-11-02:** by user instruction («haz lo que
+   94  consideres, estás autorizado», after the two PASS reviews were reported
+   95  with `PROMOTION_PENDING`), `L6B_TRIANGULAR_ROW`
+   96  ([`theory/L6B_TRIANGULAR_ROW_GATE.md`](../theory/L6B_TRIANGULAR_ROW_GATE.md)),
+   97  a revision of `C_ACROSS_LATTICES` restricted to row L6b, is promoted on
+   98  `research/schur-stability-audit` in its frozen scope: row L6b
+   99  `L6B_PARTIAL_VGRP_OPEN` with `s = 6`, `r_in = sqrt3/2`, `c_0 = 1/3`,
+  100  `c_strict^iso = 1/sqrt3`; parent Hb `REFUTED_BY_ROW_L6b` (first declared
+  101  row where `c_strict^iso < r_in`), Hc `CONFIRMED_IN_DECLARED_ROWS`, Ha
+  102  unchanged. Evidence: two houses, Gemini and Grok, PASS on all six blocks,
+  103  no repairs; Grok did not rerun the verifier. Not human review. One row
+  104  of a declared list, no general QCA law, no novelty; ADMP massive row and
+  105  `V_grp^max` stay OPEN. Chartered the same day by direct user instruction
+  106  («vamos con L6b»; «sí, apruébalo y empieza»). Massless row only; it
+  107  decides parent Hb/Hc only. The parent
+  108  verifier is not modified. **Executed 2026-11-02**
+  109  ([report](../reports/2026-11-02--l6b-triangular-row.md), verifier 64/64):
+  110  `L6B_PARTIAL_VGRP_OPEN`. The text fixes the labelling (6 admissible, all
+  111  equivalent); `s = 6`, not the parent's `s = 2`; `r_in = sqrt3/2`,
+  112  `c_0 = 1/3`, `c_strict^iso = 1/sqrt3` (normalised), identical for both
+```
+
+## Líneas 484,500
+```
+  484  complete update per time unit:
+  485  
+  486  `N_d = {(+/-1, ..., +/-1)/sqrt(d)}`,
+  487  
+  488  `C_micro = [-1/sqrt(d), 1/sqrt(d)]^d`,
+  489  
+  490  `r_in = 1/sqrt(d)`, `V_causal^max = 1`.
+  491  
+  492  ### Massless equality
+  493  
+  494  For d=1,2,3 in this family, at the declared zero node,
+  495  
+  496  `m = 0: c_0 = r_in = 1/sqrt(d)` — **EXACT**.
+  497  
+  498  This is equality of the linear IR coefficient, not exact finite-momentum
+  499  relativistic dispersion or a theorem about every admissible symbol.
+  500  
+```
+
+## Líneas 762,812
+```
+  762  ### 8.1 Three objects, never identified
+  763  
+  764  For the two 3D finite-range walks of CJWW `sources/2408.02108v1.pdf`,
+  765  Eqs. (5.12) and (5.15):
+  766  
+  767  `B(c_IR) ⊆ Γ ⊆ C_micro`,
+  768  
+  769  - `B(c_IR)`: the emergent isotropic IR light cone;
+  770  - `Γ`: the ballistic / group-velocity propagation body;
+  771  - `C_micro = conv F`: the strict microscopic causal body of the finite step set `F`.
+  772  
+  773  `Γ ⊆ C_micro` is general (CJWW Lemma 4.1: the rate function is `+∞` outside
+  774  `conv F`). `B(c_IR) ⊆ Γ` is **not** general and is asserted here only for these
+  775  two walks; CJWW Sec. 5.3 exhibits a non-convex `Γ`, so no convexity of `Γ` may
+  776  be assumed.
+  777  
+  778  ### 8.2 The canonical saturation function
+  779  
+  780  For both walks `C_micro = [-1,1]^3`, hence for `||n̂||_2 = 1`
+  781  
+  782  `v_sub(n̂) := h_{C_micro}(n̂) = ||n̂||_1`,
+  783  
+  784  and, in the normalization `c_IR = 1`, the canonical directional saturation
+  785  function is the **support-function ratio**
+  786  
+  787  `S(n̂) := h_{B(c_IR)}(n̂) / h_{C_micro}(n̂) = 1/||n̂||_1`.
+  788  
+  789  `S(n̂) = 1` only for the six axial directions `n̂ = ±e_i`; `S(n̂) < 1` for every
+  790  non-axial direction, with `S_min = S((1,1,1)/sqrt(3)) = 1/sqrt(3)`.
+  791  
+  792  `S_min` is a **descriptive scalar summary only**. The full directional function
+  793  `S(·)` is the canonical object. No scalar separates the two walks: `c_IR/r_in`
+  794  is `1` and `S_min` is `1/sqrt(3)` for both; their difference lives in `Γ`.
+  795  
+  796  ### 8.3 Walk (5.12)
+  797  
+  798  `B(1) ⊊ Γ_1 ⊊ [-1,1]^3`, with `sup|∇ω| = sqrt(3/2) > c_IR`, attained exactly at
+  799  `p = (-π/4,-π/4,-π/4)`. This walk contains finite-momentum ballistic modes
+  800  faster than the emergent IR light speed while remaining inside `C_micro`.
+  801  `Γ_1 ⊆` tricylinder is exact (SOS identity); the reverse inclusion is numerical.
+  802  
+  803  ### 8.4 Walk (5.15) — the clean counterexample
+  804  
+  805  `Γ_2 = B(1) ⊊ [-1,1]^3`, with `sup|∇ω| = c_IR = 1`.
+  806  
+  807  This refutes the identification
+  808  
+  809  `sup|v_g| = c_IR  ⟹  IR light cone = microscopic causal boundary`.
+  810  
+  811  Even when **all ballistic propagation respects `c_IR`**, the substrate permits
+  812  causal propagation outside the relativistic ball in non-axial directions.
+```
+
+## Líneas 2318,2400
+```
+ 2318  ## 11. c across QCA lattices and neighbourhoods — chartered 2026-11-01
+ 2319  
+ 2320  Contract: [`C_ACROSS_LATTICES_GATE.md`](../theory/C_ACROSS_LATTICES_GATE.md),
+ 2321  frozen before solving. Authorization: direct user instruction, 2026-11-01,
+ 2322  redirecting the project to comparing `c` across substrates within the QCA
+ 2323  scope (PROJECT_INSTRUCTIONS §1); no new substrate class is opened.
+ 2324  
+ 2325  Execution (2026-11-01): [report](../reports/2026-11-01--c-across-lattices.md),
+ 2326  verifier `scripts/verify_c_across_lattices_gate.py` (reviewed at
+ 2327  `cae6e30`, 103/103; repaired, 135/135 with every table value asserted).
+ 2328  [Reviews](../reports/2026-11-01--c-across-lattices-review.md): Grok
+ 2329  REPAIR_REQUIRED (three repairs, applied), Gemini PASS. Status:
+ 2330  **TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN — PROMOTED IN THE
+ 2331  DECLARED ROWS (2026-11-01, user instruction «1»).** Repaired; bounded
+ 2332  re-review Gemini PASS (R1–R5); Grok, ausente on 2026-11-01 (402), reviewed
+ 2333  the repaired snapshot on 2026-11-02: PASS on R1–R5, no mandatory repairs.
+ 2334  Grok's acceptance of its own three repairs is now on record. Previous
+ 2335  status: PRELIMINARY, PROMOTION_PENDING. In the declared rows: square,
+ 2336  BCC/cubic and line substrates have `c_0 = r_in`; the hexagonal substrate
+ 2337  has `c_0 / r_in = 1/sqrt3` (ADMP) or `sqrt3/2` (JDW), with ADMP and JDW
+ 2338  L6d on the identical substrate; `C_infty^strict = C_micro` in every
+ 2339  computed row. Ha `REFUTED_BY_ROW_L6a`. **Row L6b decided and promoted 2026-11-02**
+ 2340  ([`L6B_TRIANGULAR_ROW`](../theory/L6B_TRIANGULAR_ROW_GATE.md),
+ 2341  [report](../reports/2026-11-02--l6b-triangular-row.md),
+ 2342  [reviews](../reports/2026-11-02--l6b-triangular-row-review.md)): `s = 6`,
+ 2343  `r_in = sqrt3/2`, `c_0 = 1/3`, `c_strict^iso = 1/sqrt3`, so Hb
+ 2344  `REFUTED_BY_ROW_L6b` and Hc `CONFIRMED_IN_DECLARED_ROWS`. The table
+ 2345  status name `..._L6B_UNENCODED_...` above is historical: L6b is now
+ 2346  encoded in its own gate, the parent verifier unchanged.
+ 2347  At finite mass, `c_H = c_0 theta/sin theta` where isotropic and no
+ 2348  computed new row has an isotropic `c_omega2` (anisotropy `O(sin theta)`).
+ 2349  Two ADMP sign issues are recorded. Not promoted; no general law.
+ 2350  
+ 2351  Charter summary: thirteen declared rows: six
+ 2352  already established (L1–L3, L3s4, L4 in part) are re-tabulated with their
+ 2353  existing tags; seven new rows from primary sources read on 2026-11-01
+ 2354  (L5a Farrelly–Short, L5b Mlodinow–Brun on BCC; L6a–L6b ADMP, L6c–L6f JDW
+ 2355  on two-dimensional lattices). Arrighi–Facchini is excluded with its
+ 2356  recorded reason. Substrates are declared by the translation group and
+ 2357  composite step set of each equation, not by the papers' lattice labels.
+ 2358  Hypotheses Ha (`c_0 = r_in` in declared s=2 rows), Hb (`c_strict^iso =
+ 2359  r_in`) and Hc (no row with `c_0 > c_strict^iso`) are OPEN. Execution:
+ 2360  report plus `scripts/verify_c_across_lattices_gate.py`, then independent
+ 2361  cross-family review, then a separate promotion. No rigidity or general
+ 2362  QCA law may be drawn from the table.
+ 2363  
+ 2364  ## 12. Hexagonal ceiling — chartered 2026-11-01
+ 2365  
+ 2366  Contract: [`HEX_CEILING_GATE.md`](../theory/HEX_CEILING_GATE.md), frozen
+ 2367  before solving. Authorization: direct user instruction, 2026-11-01, after
+ 2368  the promoted Sec. 11 table showed no declared hexagonal walk reaching
+ 2369  `c_0 = r_in`.
+ 2370  
+ 2371  Execution (2026-11-01, partial): [report](../reports/2026-11-01--hex-ceiling.md),
+ 2372  verifier `scripts/verify_hex_ceiling_gate.py` (18/18). L0
+ 2373  `PROVED_IN_REPO` (with classical Bernstein, prior art): `c_0 <= r_in` on
+ 2374  `W_hex`. T1 `GAP_PROVED_IN_CLASS`: in the `n = 3` antipodal subclass,
+ 2375  `c_0/r_in = sqrt(1-g)/sqrt2 <= sqrt3/2`, attained iff the coin axes are
+ 2376  coplanar at 120° (ADMP `g = 1/3`, JDW L6d `g = -1/2`). T2
+ 2377  `PROVED_FOR_MINIMAL_SUPPORT` (2026-11-02): no s=2 walk with
+ 2378  `F within {0} U vert(H)` reaches the ceiling (saturation forces exact
+ 2379  two-layer restrictions on the facet-normal lines; the resulting
+ 2380  polynomial system has no real solution; square-substrate positive
+ 2381  control passes); verifier 24/24. T2 in general
+ 2382  `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` (19-point ball: Groebner over C did
+ 2383  not finish in 900 s; inconclusive, recorded as exploratory). **Promoted
+ 2384  2026-11-02 (user instruction «si, promuévelo») in the frozen scope stated
+ 2385  at the top of this file.** Execution
+ 2386  stopped. [Reviews](../reports/2026-11-02--hex-ceiling-review.md): Gemini
+ 2387  PASS on all five blocks; Grok REPAIR_REQUIRED (R1: Bernstein used without
+ 2388  in-repo proof; R2: weak rank predicate), both repaired 2026-11-02 (Lemma B
+ 2389  in the report; exact minor in the verifier, 24/24). Bounded re-review
+ 2390  of the repairs: Grok PASS and Gemini PASS on R1–R4, identical input.
+ 2391  Previous status: PRELIMINARY, PROMOTION_PENDING.
+ 2392  
+ 2393  Charter: class `W_hex`: translation-
+ 2394  invariant `s = 2` walks on the triangular lattice, one update a product
+ 2395  of `n` coin–partial-shift factors, regular hexagonal `C_micro` from the
+ 2396  exact composite support, massless node at `k = 0` with isotropic untilted
+ 2397  cone. Targets: L0 (`c_0 <= r_in`, to be proved or cited, not assumed),
+ 2398  T1 (`n = 3` antipodal subclass: exact supremum), T2 (whole class: gap
+ 2399  proof or explicit witness). Hypotheses HX0–HX2 OPEN. No verdict from
+ 2400  numerics or failed search; restricted results stay restricted.
+```
+
+## Líneas 2450,2600
+```
+ 2450  `K4`; L5a, L5b, L4 `n1 n2 n3`). Hf `REFUTED_BY_ROW_L6e` (L2 and L6e
+ 2451  identical; also L5a = the `+i` Weyl block of L5b, and L6d = L6f through
+ 2452  `|k|^2`). Scale of
+ 2453  validity OPEN in `d >= 2`; `V_grp^max` OPEN. No physical interpretation.
+ 2454  
+ 2455  ## 14. Hexagonal supremum (M1) — chartered 2026-11-03
+ 2456  
+ 2457  Contract: [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
+ 2458  frozen before solving, preregistration commit `86573ca`. Authorization:
+ 2459  user approval of the draft, 2026-11-03 («APROBACIÓN CON ENMIENDAS»), with
+ 2460  three amendments incorporated before freezing (cumulative solver budget of
+ 2461  3600 s per support; explicit form of the real infeasibility certificate,
+ 2462  `-1 = sum q_j^2 + sum h_i f_i` with exact rational coefficients, or an
+ 2463  ideal element with certified absence of real zeros; a witness answers the
+ 2464  saturation question only). Continues T2 of Sec. 12 only; L0, T1 and the
+ 2465  minimal-support T2 are not reopened.
+ 2466  
+ 2467  Question: does any `s = 2` walk in `W_hex` reach `c_0 = r_in`? Method,
+ 2468  named before computation: Stage A structural reduction (facet-line
+ 2469  rigidity plus extreme-face unitarity identities), then exact decision on
+ 2470  the 13-point support `S13` (`v = g_1 + g_2`), then `S19` only after `S13`
+ 2471  has a verdict. Gap proofs from unitarity, support, node and isotropy are
+ 2472  stated for `W_hex^sym`; a witness must be given in product form to lie in
+ 2473  `W_hex`. Exploratory numerics only to guide, never in a verdict; no
+ 2474  confirmatory numerics. Budget: one session. Ends the line: a factorized
+ 2475  witness (M1 closes, limited reading), or budget exhausted
+ 2476  (`OPEN_AFTER_<analysis>`, not a repo closure, plan Sec. 4); a gap proof
+ 2477  for `W_hex^sym` keeps the line. Status before execution: OPEN; authorized.
+ 2478  
+ 2479  Execution (2026-11-03, partial): [report](../reports/2026-11-03--hex-supremum.md),
+ 2480  verifier `scripts/verify_hex_supremum_gate.py` (12/12), 0 s solver.
+ 2481  Lemma A1 (singleton intermediate layer along a facet normal forces its
+ 2482  coefficient to 0) and A2 (`A_v A_{-v}^dag = 0` at opposite vertices).
+ 2483  M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`. M1-B13 `PROVED_FOR_S13`: in
+ 2484  S13 the singleton layers are the inner ring, which vanishes, leaving the
+ 2485  minimal support excluded by T2 (Sec. 12), in `W_hex^sym`. HX2
+ 2486  `CONFIRMED_FOR_S13`. S19 (layers 3,4,5,4,3) not reduced by A1; M1-B19 not
+ 2487  started. [Reviews](../debates/2026-11-03--hex-supremum-stageA-review-grok/verificacion_autor.md):
+ 2488  Grok PASS, Gemini PASS, no repairs. **Promoted 2026-11-03 (user
+ 2489  instruction «PROMOCIÓN AUTORIZADA»):** M1-B13 `PROVED_FOR_S13`, HX2
+ 2490  `CONFIRMED_FOR_S13`, M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`. Scope: S13
+ 2491  only, in `W_hex^sym` (hence `W_hex`); qualitative gap, no uniform
+ 2492  separation from `r_in`, whole class OPEN. The 12/12 verifier run is the
+ 2493  author's session, not the reviewers'. Previous status: PRELIMINARY,
+ 2494  INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING. M1-B19 authorized
+ 2495  the same day, structural reduction first, solver budget 3600 s
+ 2496  cumulative.
+ 2497  
+ 2498  M1-B19 execution (2026-11-03): [report](../reports/2026-11-03--hex-supremum-b19.md),
+ 2499  verifier `scripts/verify_hex_supremum_b19.py` (17/17), certificate data
+ 2500  `scripts/data/hex_s19_certificate.json`. Two further linear consequences
+ 2501  of saturation, A3 (first moments along the edge, per layer) and A4
+ 2502  (off-diagonal first-order unitarity on the facet line), reduce S19 from 56
+ 2503  to 18 free real parameters; controls on the square substrate keep the
+ 2504  known saturating walk. The 730 remaining unitarity quadratics admit a
+ 2505  rational combination with positive-definite Gram matrix (exact, over
+ 2506  `QQ(sqrt3)`): no real solution. M1-B19 `PROVED_FOR_S19` (in `W_hex^sym`;
+ 2507  includes the support of JDW L6c), HX2 `CONFIRMED_FOR_S19`. No nonlinear
+ 2508  solver run (0 s of 3600 s); exploratory numerics only guided the
+ 2509  certificate. Whole class OPEN; larger hexagons not in the contract's
+ 2510  stages. Status: **PRELIMINARY, not independently reviewed.**
+ 2511  
+ 2512  M1-B19 review and amendment (2026-11-03): `6302328` pushed by user
+ 2513  authorization (push and Grok + Gemini review; S25 not authorized). Grok
+ 2514  (`grok-4.7`): REPAIR_REQUIRED, points on A3, A4, solution preservation,
+ 2515  the 18-parameter reduction and the certificate's implication PASS; one
+ 2516  mandatory repair: the report claimed contract form Sec. 4 (ii), which the
+ 2517  certificate does not meet literally (record `f80c075`). Gemini: no report,
+ 2518  `402` prepayment credits depleted (four attempts, account-level).
+ 2519  [Amendment 1](../theory/HEX_SUPREMUM_GATE_AMENDMENT_1.md) (`208e1b1`,
+ 2520  approved by the user, post-execution, frozen file untouched): the
+ 2521  certificate is assessed under Sec. 4 (i); field `QQ(sqrt3)`, ~11 min check
+ 2522  time, exploratory numerics (1294 s) and separate report/verifier declared.
+ 2523  Report repaired accordingly (verifier bytes unchanged). Second review: the
+ 2524  user personally, OK, on the version at `88d28dd`
+ 2525  ([record](../debates/2026-11-03--hex-supremum-b19-review-usuario/registro.md),
+ 2526  `59f2ea2`; no written list of points checked). **Promoted 2026-11-03 (user
+ 2527  instruction «sí, promociona S19 y haz push»):** M1-B19 `PROVED_FOR_S19`,
+ 2528  HX2 `CONFIRMED_FOR_S19`, M1-A stays `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`.
+ 2529  Scope: S19 only, in `W_hex^sym` (hence `W_hex`); qualitative gap, no
+ 2530  uniform separation from `r_in`; certificate under contract Sec. 4 (i) per
+ 2531  Amendment 1. The 17/17 verifier runs are the author's, not the reviewers'
+ 2532  (Grok could not execute). M1 status: both bounded stages (S13, S19) end
+ 2533  with a gap, no witness; result (a) of Sec. 0 not met, no gap proof for the
+ 2534  class; whole class OPEN. No further stage is in the contract; S25 or any
+ 2535  other extension needs a new charter (not authorized). Previous status:
+ 2536  PRELIMINARY; one of two requested reviews; promotion not authorized.
+ 2537  
+ 2538  ## 15. Substrate saturation, phase 0 — chartered 2026-11-03
+ 2539  
+ 2540  Contract: [`SUBSTRATE_SATURATION_PHASE0_GATE.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE.md),
+ 2541  frozen before execution, preregistration commit `9bf3019`, by user
+ 2542  instruction («congela la revisión 3»). Drafting authorized 2026-11-03
+ 2543  («Autorizo redactar la carta de la fase 0, pero no congelarla ni ejecutar
+ 2544  todavía ninguna comprobación»), with the user's four precisions
+ 2545  (existential quantifier, domain `s = 2`, `d <= 3`, single normalization,
+ 2546  one exact counterexample refutes). Two Grok rounds:
+ 2547  [round 1](../debates/2026-11-03--substrate-saturation-phase0-draft-review-grok/informe_grok.md)
+ 2548  REPAIR_REQUIRED (six repairs, all accepted by the user, who chose the
+ 2549  predicate "hypercube up to scale and isometry" and turned phase 0 into a
+ 2550  definitional audit);
+ 2551  [round 2](../debates/2026-11-03--substrate-saturation-phase0-rev2-review-grok/informe_grok.md)
+ 2552  REPAIR_REQUIRED (one repair, L6b traceability, plus five clarifications,
+ 2553  all applied). Domain, logic and independence PASS in round 2: the
+ 2554  isotropic-untilted-node condition is defined on the linear term, not on
+ 2555  the shape of `C_micro`; the hexagonal rows are inside the domain, so a
+ 2556  saturating admissible `s = 2` hexagonal walk would refute (PH⇒).
+ 2557  
+ 2558  Statement under audit: **(PH) [UNVERIFIED]**, for `s = 2`, `d <= 3`,
+ 2559  admissible models only: the ceiling `c_0 = r_in(C_micro)` is attained by
+ 2560  some admissible walk on a substrate iff `C_micro` is a hypercube up to
+ 2561  scale and isometry. A geometric classification suggested by the promoted
+ 2562  rows, not a physical explanation. The zonotope reading (PS′) is kept
+ 2563  `[UNVERIFIED]` and is not equivalent to (PH). Method: documentary only, no
+ 2564  computation. Outcomes: `DEFINITIONS_CLOSED` (the statement is defined well
+ 2565  enough to be tested for refutation, nothing more) or
+ 2566  `OPEN_AFTER_ROW_SURVEY`; per direction `REFUTED_BY_ROW_<row>` or
+ 2567  `NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`, the latter never evidence for (PH)
+ 2568  and never `CONFIRMED`. No outcome authorizes a later phase; a test that
+ 2569  can fail (the hexagon, user's first choice) needs its own contract.
+ 2570  Status: **OPEN; frozen; execution not authorized; nothing done.**
+```
+
+
+=== DOCUMENT 4: 2026-11-01--c-across-lattices.md ===
+
+# c across QCA lattices and neighbourhoods — execution report
+
+Date: 2026-11-01. Branch: `research/schur-stability-audit`.
+Contract: [`C_ACROSS_LATTICES_GATE.md`](../theory/C_ACROSS_LATTICES_GATE.md),
+preregistered at `30672ba52b037f95b99c7f3b3dc791d215b97cdf`; contract SHA256
+`b58deeec91184fbf976a6cb857c8e935ec7d4a4e52d6608a62768452759e34e3`, unchanged
+since the freeze.
+Verifier: [`scripts/verify_c_across_lattices_gate.py`](../scripts/verify_c_across_lattices_gate.py);
+reviewed version at `cae6e308ab0e224f48db875df0997b362a13a98c`, SHA256
+`1da30dab9060c8d97a4452eb07451f7886325f4fd87ce22a27cdd950dfee9645`;
+repaired version in the commit that adds this repair note.
+Author: Claude Code (Claude Opus 5.5), at the user's direction.
+
+**Gate verdict: `TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN`.**
+**Evidence level: PRELIMINARY.** Repaired 2026-11-01 after the
+[Grok/Gemini reviews](2026-11-01--c-across-lattices-review.md) (Grok
+REPAIR_REQUIRED, Gemini PASS); the repaired snapshot awaits a bounded
+re-review. Not promoted.
+
+**Repairs applied (2026-11-01).** (1) Every tabulated value — step sets,
+group indices, `r_in`, `c_0`, vertex counts, Gram matrices, `K` — is now
+asserted by an exact `record` in the verifier, which passes 135/135; a
+negative test (altering one expected `c_0` and one step set in memory)
+makes it exit 1 on exactly those checks. (2) Sec. 2 no longer presents the
+continuum-speed agreement as a test of the product order. (3) Hb/Hc are
+stated for the decided rows with L6b OPEN, not with the token
+`CONFIRMED_IN_DECLARED_ROWS`. Clarifications: the Duhamel identity of
+Sec. 5 is corrected (no number changes); Sec. 3 distinguishes the finer
+group of L6c; the Fourier sign convention relative to JDW's plane wave is
+noted; the script docstring is updated.
+
+## 0. Answer in one paragraph
+
+Within the declared rows, the substrate fixes a ceiling and the walk decides
+where `c` sits below it. Every declared walk on the square, cubic/BCC and
+line substrates reaches the ceiling, `c_0 = r_in(C_micro)`. No declared walk
+on the hexagonal (triangular-lattice) substrate reaches it, and two walks on
+the identical hexagonal substrate (ADMP L6a and JDW L6d: same translation
+group, same step set) have different `c_0`, `1/2` and `3/4` in units where
+the longest step is 1 — so even at internal dimension `s=2` the substrate
+does not determine `c`. In every computed row the strict asymptotic body
+equals `C_micro` (all vertex amplitudes survive), so `c_strict^iso = r_in`
+and `c_0 <= c_strict^iso`. This is a statement about thirteen declared rows,
+not a QCA law (PROJECT_INSTRUCTIONS §7).
+
+## 1. Execution record
+
+Run from the repository root with Python 3.12.3 and the pinned
+`sympy==1.14.0`, `numpy==1.26.4` (fresh virtual environment; the system
+interpreter has no SymPy):
+
+```sh
+python -B scripts/verify_c_across_lattices_gate.py
+```
+
+Result (repaired verifier): exit 0, **135/135 exact checks PASS, 0 FAIL**
+(103/103 in the reviewed version at `cae6e30`). No floating point,
+sampling or fitting in any certified quantity. Zero tests are symbolic; the
+sign of a nonzero radical is decided by SymPy's exact relational evaluation.
+The reviewed helpers `published_symbol` and `fourier_support` of
+`verify_weyl_dirac_gate.py` are imported read-only for L1/L2; no reviewed
+file was modified.
+
+Development history, stated because it matters for review: the first
+Part 1 run failed 10 checks through a wrong Laurent adjoint (conjugated `z`
+was never replaced by `1/z`) and two SymPy simplification failures
+(unreduced `exp(2 pi i/3)`, and `.H` of `cos(arccos(.)/2)`); a check with
+`or True` was removed before any result was used. The first Part 3 version
+assumed isotropy and compared one matrix entry; it was replaced by checks
+that certify the exact structure. All of these are visible in the commit
+history `28ef8f1`, `de5680b`, `cae6e30`.
+
+## 2. Conventions (contract Sec. 2)
+
+- Moving amplitude by `h` carries `exp(-i k.h)`; an operator that reads the
+  value at `X+v` moves amplitude by `-v`.
+- In every product the factor with the smallest index acts first, as the
+  sources write explicitly for JDW Eqs. (4), (6) and ADMP Eq. (10). For the
+  `prod_j` notation of JDW Eqs. (2), (8) the same reading is a declared
+  choice.
+- One complete update = one time unit; positions are divided by the
+  longest `|h|` in the composite step set `F`.
+- Substrate = translation group generated by `F` together with `F`, as
+  computed from the equation, not the paper's lattice label.
+
+**Control against the sources.** Converting each `c_0` back to the source's
+own units reproduces the continuum speed each source states: JDW
+`Delta t = 3 epsilon/2` (L6c, L6d), `epsilon` (L6e), `3 sqrt3 epsilon/4`
+(L6f) give `c = 1`; ADMP, Farrelly–Short and Mlodinow–Brun give `c = 1` per
+update in their units. This checks the routing and scale conventions. It
+does **not** test the product order: since every factor satisfies
+`W_j(0) = I`, the linear term is the sum of the factors' derivatives and is
+order-independent (Grok review). The `prod_j` order of JDW Eqs. (2), (8)
+remains a declared reading; `K` (Sec. 5) and vertex coefficients of L6c and
+L6f may depend on it.
+
+**Fourier sign.** Relative to JDW's plane wave `exp i(omega t - k.X)`, the
+encoded symbol corresponds to `k -> -k`. Every tabulated quantity
+(`U(0)`, quadratic cone, Gram, Hessian) is even in `k`, so the table is
+unaffected.
+
+## 3. Step sets: what the substrates actually are (Part 1)
+
+| Row | Source label | Composite `F` (source units) | Substrate |
+| --- | --- | --- | --- |
+| L5a | BCC, axis product (FS Eqs. (20)–(21)) | the 8 points `{±1}^3` | BCC, same as L3 |
+| L5b | BCC, axis product (MB Eqs. (23), (33)), s=4 | `{±1}^3` | BCC, same as L3 |
+| L6a | honeycomb (ADMP Eq. (7)/(10)) | `0` and the hexagon `{±2u_i}`, radius 2 | triangular lattice, hexagonal `C_micro` |
+| L6c | equilateral triangular, six-step (JDW Eq. (2)) | 19 points: the full hexagonal ball of radius 2 | same hexagonal `C_micro` as L6a, finer group (index 1 vs 4) |
+| L6d | equilateral triangular, three-step (JDW Eq. (4)) | identical to L6a | **identical substrate to L6a** |
+| L6e | isosceles triangular (JDW Eq. (6)) | the 4 points `(±1,±1)` | **square lattice with diagonal steps, same as L2** |
+| L6f | honeycomb (JDW Eqs. (7)–(8)) | `0` and a hexagon of radius `sqrt3`, rotated 30° | triangular lattice, hexagonal `C_micro` (L6a up to rotation and scale) |
+| L6b | triangular (ADMP Eq. (12)) | **not encoded** | edge geometry fixed only by Fig. 1 of the source |
+
+No "honeycomb" walk in the declared sources acts on a honeycomb Bravais
+structure: as homogeneous walks they move on a triangular lattice. The JDW
+"isosceles" walk is on the standard square substrate. In two dimensions the
+declared rows realise **two `C_micro` shapes** up to isometry and scale,
+square and hexagonal. Counting the translation group as well, there are
+three: square (L2, L6e); hexagon with step spacing equal to the hull radius
+(L6a, L6d, L6f); and the same hexagon over the finer triangular group of
+L6c (spacing/radius `1/2`, a scale invariant).
+
+**Source sign issues (ADMP 1803.01015v2 p.3), certified as recorded
+issues, not repaired silently:** (i) Eq. (8) holds for
+`alpha = -arccos(sqrt5/3)`, not the printed `+arccos(sqrt5/3)`; (ii) with the
+printed `S = e^{i pi/3} R_z(2 pi/3)`, `U_0 S` yields `tau_2`, not `tau_1`;
+with `S^{-1}` the relations hold and the Eq. (10) symbol equals
+`U_0 (Eq. (7) symbol) U_0^dag` exactly. L6a is built from the `tau_i` of
+Eq. (5), which conditions C1–C2 define and the script verifies. Neither
+issue changes `F` or `c_0`.
+
+## 4. Massless table (Part 2)
+
+Units: longest step 1, one update per time unit. `V_causal^max = 1` in
+every row by this normalisation. All entries exact.
+
+| Row | Substrate | s | `r_in` | `c_0` | `c_0 / r_in` | `c_strict^iso` | `S_min = c_0` | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| L1 | line | 2 | 1 | 1 | **1** | 1 | 1 | computed here |
+| L2 | square | 2 | `1/sqrt2` | `1/sqrt2` | **1** | `1/sqrt2` | `1/sqrt2` | `C_infty^strict` new here; `c_0` from Sec. 5 |
+| L6e | square | 2 | `1/sqrt2` | `1/sqrt2` | **1** | `1/sqrt2` | `1/sqrt2` | new |
+| L3 | BCC | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | CURRENT_STATE Secs. 4, 5 (certified) |
+| L5a | BCC | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | new |
+| L5b | BCC | 4 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | new |
+| L3s4 | BCC | 4 | `1/sqrt3` | `a/sqrt3`, `0<a<1` | **a** | `1/sqrt3` | `a/sqrt3` | CURRENT_STATE Sec. 4.1 (reviewed) |
+| L4 | cube `[-1,1]^3` | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | CURRENT_STATE Sec. 8 (CJWW (5.12), (5.15)) |
+| L6a | hexagon | 2 | `sqrt3/2` | `1/2` | **`1/sqrt3` ≈ 0.577** | `sqrt3/2` | `1/2` | new |
+| L6c | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2` ≈ 0.866** | `sqrt3/2` | `3/4` | new |
+| L6d | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2`** | `sqrt3/2` | `3/4` | new |
+| L6f | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2`** | `sqrt3/2` | `3/4` | new |
+| L6b | — | 2 | — | — | — | — | — | OPEN (not encoded) |
+
+For every computed row the script certifies: `U(0) = I` (node at `k=0`),
+Hermitian linear generators, zero tilt, an isotropic untilted cone
+(`{T_a, T_b} = 2 c_0^2 delta_ab`), the exact facets and vertices of
+`C_micro`, and that every vertex Fourier coefficient is non-nilpotent. A
+vertex `v` of `conv F` is reached in `n` updates only by repeating `v`, so
+the coefficient of `n v` in `U^n` is `A_v^n != 0` for all `n`; hence
+`C_infty^strict = C_micro` and `c_strict^iso = r_in` exactly in those rows.
+For L4 the vertex statement is the one already recorded in Sec. 8.5.
+
+`S(n̂) = c_0 / h_{C_micro}(n̂)` ranges from `S_min = c_0` (at a vertex
+direction) to `S_max = c_0 / r_in` (at a facet normal). Only the rows with
+`c_0 / r_in = 1` have `S = 1` in any direction.
+
+`V_grp^max = sup |grad omega|` is **not computed** for the new rows: no
+exact certificate was attempted. It stays OPEN; Bernstein-type bounds give
+`V_grp^max <= V_causal^max` as prior art, not as a result of this gate.
+
+## 5. Massive rows (Part 3)
+
+Mass parameter `theta` = quasienergy gap at `k=0`, as each source inserts
+it: MB coin `e^{-i theta Q}` (L5b); JDW `U_m = U(0,0,-pi/2,phi)
+= e^{-i phi sigma_x}` on the left, `theta = 3m/2` (L6c, and L6d "the same
+way", JDW p.2), `theta = 3 sqrt3 m/4` (L6f); JDW L6e replaces `U^1` so that
+`U(0) = e^{-i m sigma_x}`, `theta = m`.
+
+Method (exact, no matrix-log series). For `U(0) = e^{-i theta Q}`,
+`Q^2 = I`, Duhamel's formula gives
+`i dU U(0)^dag = X_par + (sin theta/theta) X_perp e^{i theta Q}`, with
+`X_par`, `X_perp` the parts of `dH` commuting and anticommuting with `Q`.
+(The reviewed version omitted the unitary factor `e^{i theta Q}`; both
+reviewers flagged it; corrected here.) The verifier forms
+`B_a = X_par + X_perp e^{i theta Q}` and asserts `X_par = 0`; then `B_a` is
+Hermitian, anticommutes with `Q`, and `{B_a, B_b} = {X_a, X_b}`, so its Gram
+matrix is that of `dH`. `c_H(n̂)^2 = n̂.g.n̂` with
+`{dH_a, dH_b} = 2 g_ab I` — the linear spatial coefficient of `H = i log U`
+at fixed mass, as in the Weyl/Dirac gate. No tabulated number changes. For `omega`,
+`G = (U+U^dag)/2` has eigenvalues `cos omega_j`, is scalar at `k=0` and has
+zero gradient, so its Hessian gives `omega_j^2 = theta^2 +
+(theta/sin theta) q_j |k|^2`. The script certifies
+`Hess cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K` with `K`
+independent of `theta`; an isotropic `c_omega2` exists iff `K = 0`, and then
+`c_omega2 = c_0 sqrt(theta cot theta)`.
+
+**Positive control.** On the reviewed minimal 1D Dirac block of the
+Weyl/Dirac gate the same code returns `c_H = c_0 M cot M` and `K = 0`
+(isotropic `c_omega2`), reproducing `reports/2026-09-14--weyl-dirac-exact-gate.md`
+Secs. 5–6.
+
+| Row | linear term at `theta != 0` | `omega^2` curvature at `theta != 0` |
+| --- | --- | --- |
+| L5b (MB, BCC, s=4) | isotropic, `c_H = c_0 theta/sin theta` | `K != 0`: anisotropic and band-split; no isotropic `c_omega2` |
+| L6c (JDW) | isotropic, `c_H = c_0 theta/sin theta` | `K = diag(-5 sqrt3/32, 3 sqrt3/32)`: anisotropic |
+| L6d (JDW) | isotropic, `c_H = c_0 theta/sin theta` | `K = [[sqrt3/16, -3/8], [-3/8, -3 sqrt3/16]]`: anisotropic |
+| L6f (JDW) | isotropic, `c_H = c_0 theta/sin theta` | `K = diag(-3 sqrt3/16, 5 sqrt3/16)`: anisotropic |
+| L6e (JDW) | **anisotropic**: `g / (c_0 theta/sin theta)^2 = [[1, sin 2theta], [sin 2theta, 1]]` | `K = [[0, -1/2], [-1/2, 0]]`: anisotropic |
+| L6a (ADMP) | OPEN: mass enters inside the coin, `U(0) = prod_i e^{-i mu tau_i}`; not encoded | OPEN |
+| control: 1D Dirac | `c_H = c_0 M cot M` | `K = 0`, `c_omega2 = c_0 sqrt(M cot M)` |
+
+Readings, each limited to these rows:
+
+1. Where the mass is a separate coin multiplying a unitary hopping product
+   (L5b, L6c, L6d, L6f), `c_H = c_0 theta/sin theta > c_0` for
+   `0 < theta < pi`. In the standard Dirac family, where the hopping
+   amplitude is scaled by `cos M`, `c_H = c_0 M cot M < c_0`. So `c_H` can
+   exceed the ceiling `r_in` in these rows. This contradicts no bound: `c_H`
+   is a Hamiltonian coefficient, not a propagation speed.
+2. In every massive row computed here, `omega^2` has **no isotropic
+   quadratic coefficient** at finite mass; the anisotropy is
+   `O(sin theta)` and vanishes as `theta -> 0`, where `c_H`, and the
+   isotropic part of the curvature, both return to `c_0`. The standard
+   Dirac family is the only computed case with an isotropic `c_omega2`.
+   The repo rule "do not treat `c_H` and `c_{omega^2}` as interchangeable"
+   is strengthened here: at finite mass there may be no single
+   `c_{omega^2}` at all.
+3. L6e shows that where the mass is inserted matters: replacing an
+   internal coin of the sequence makes the linear term itself anisotropic.
+
+## 6. Hypotheses (contract Sec. 5)
+
+| Hypothesis | Verdict |
+| --- | --- |
+| Ha: `c_0 = r_in` in every declared s=2 row with a massless node | **`REFUTED_BY_ROW_L6a`** (also L6c, L6d, L6f). Holds in L1, L2, L5a, L6e and the recorded L3, L4. |
+| Hb: `c_strict^iso = r_in` in every declared row | **OPEN**: holds in every decided row (all computed and recorded rows); L6b undecided. The token `CONFIRMED_IN_DECLARED_ROWS` is not used because a declared row is OPEN. |
+| Hc: no declared row with `c_0 > c_strict^iso` | **OPEN**: holds in every decided row (asserted by the script for the computed rows; L3, L3s4, L4 from their records); L6b undecided. |
+
+## 7. What this does not establish
+
+- No rigidity, classification or general QCA law: the rows are a declared
+  finite list from five sources, plus the repo's existing rows.
+- Not that hexagonal substrates cannot reach the ceiling: only that none of
+  the four declared hexagonal walks does.
+- No statement about doublers or nodes other than `k=0`; no
+  finite-momentum dispersion beyond second order; no `V_grp^max`.
+- No claim about which P17 hypothesis each L6 row violates beyond the
+  sources' own account (ADMP p.2: spinors on triangle edges). Identifying
+  it is left OPEN; the substrate result (triangular group) is a candidate
+  explanation, not a proof.
+- No novelty claim. Bernstein and the sources' constructions are prior
+  art. No claim about our universe.
+- Convention dependence: the JDW `prod_j` order for Eqs. (2) and (8) is a
+  declared reading. The agreement with each source's continuum speed (Sec. 2)
+  supports the conventions but does not prove them.
+
+## 8. Open items
+
+`L6b` (source underdetermined), ADMP massive row, `V_grp^max` for the new
+rows, the P17-hypothesis identification for L6 rows. None is authorized by
+this report; each would need a revised or new charter.
+
+## 9. Next steps
+
+Independent cross-family review of this report and of the verifier at
+`cae6e30`, then a separate promotion commit. Nothing here is promoted.
+
+=== DOCUMENT 5: 2026-11-01--hex-ceiling.md ===
+
+# Hexagonal ceiling — execution report (L0 and T1)
+
+Date: 2026-11-01. Branch: `research/schur-stability-audit`.
+Contract: [`HEX_CEILING_GATE.md`](../theory/HEX_CEILING_GATE.md),
+preregistered at `8c56ced`.
+Verifier: [`scripts/verify_hex_ceiling_gate.py`](../scripts/verify_hex_ceiling_gate.py),
+24/24 exact checks (Python 3.12.3, `sympy==1.14.0`); repaired 2026-11-02
+after review (see the repair note below).
+Author: Claude Code (Claude Opus 5.5), at the user's direction.
+
+**Status: PARTIAL EXECUTION — L0 `PROVED_IN_REPO` (Bernstein's inequality
+proved in Lemma B); T1 `GAP_PROVED_IN_CLASS` with
+supremum `sqrt3/2`, attained; T2 `PROVED_FOR_MINIMAL_SUPPORT`
+(`F within {0} U vert(H)`, any s=2 walk, no product form assumed); T2 in
+general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`. Execution stopped here; ready
+for independent review.** Evidence **PRELIMINARY**. Not promoted.
+
+**Repair note (2026-11-02).** [Reviews](2026-11-02--hex-ceiling-review.md):
+Gemini PASS; Grok REPAIR_REQUIRED with two mandatory repairs, both
+accepted. (R1) L0 was labelled `PROVED_IN_REPO` while Bernstein's
+inequality was only named as prior art, against contract Sec. 2; Lemma B
+now proves it in-repo. (R2) The verifier's "rank 2 for every theta_0"
+check only tested that a minor is not identically zero; it now asserts the
+minor equals the `theta_0`-free constant `sqrt3 l^4/2`. Clarifications:
+Hermiticity of `A` in L0; the maximum-modulus step in T2; the hexagon
+fixes the denominator `2l`; `xi` is a Bloch component.
+
+## 1. L0 — the ceiling `c_0 <= r_in` on `W_hex`
+
+Let `U` be in `W_hex`. Multiplying by the scalar `e^{i phi}` does not change
+the support, so take `U(0) = I`. Let `n_f` be the unit outward normal of a
+facet of the regular hexagon `C = conv F`, with edge vector `d in Lambda`
+(edges join lattice vertices). For a lattice vector `h = a g_1 + b g_2` and
+`d = p g_1 + q g_2`,
+
+`h . Rot90(d) = (sqrt3/2)(b p - a q)`   (verifier, check L0),
+
+so `h . n_f = m_h delta` with `m_h in Z` and `delta = sqrt3/(2|d|)`. The
+extreme values of `h . n_f` over `F` are `±h_C(n_f)` (central symmetry of
+the hexagon) and are attained at vertices, which lie in `F`; hence
+`h_C(n_f) = N delta` for an integer `N` and every `m_h` satisfies
+`|m_h| <= N`.
+
+For unit vectors `x, y in C^2` set `p(s) = <y, U(s n_f / delta) x>`. Then
+`p(s) = sum_{|m|<=N} c_m e^{-i m s}` is a trigonometric polynomial of degree
+`N` with `|p| <= 1` (U unitary). Bernstein's inequality (Lemma B below,
+proved here) gives `|p'(0)| <= N`, i.e. `|<y, dU/dt(0) x>| <= N delta =
+h_C(n_f)` along `n_f`. Taking the supremum over `x, y`,
+`||A(n_f)|| <= h_C(n_f) = r_in`, where `A(n) = i dU(t n)/dt (0)`. `A(n_f)` is
+Hermitian: differentiating `U U^dag = I` at `t = 0`, where `U = I`, shows
+`dU/dt(0)` is anti-Hermitian. With `s = 2` and a traceless isotropic cone,
+`A(n_f)^2 = c_0^2 I`, so the Hermitian `A(n_f)` has spectrum `{±c_0}` and
+`||A(n_f)|| = c_0` (without Hermiticity, `M^2 = c_0^2 I` would not fix the
+norm). Therefore **`c_0 <= r_in` for every walk in `W_hex`**. Only the
+facet normal is needed, since `r_in = min h_C` is attained there.
+
+**Lemma B (Bernstein, proved in-repo; repair R1 of the 2026-11-02 Grok
+review).** If `p(s) = sum_{|m|<=N} c_m e^{-ims}` and `|p| <= 1` on `R`, then
+`|p'(s_0)| <= N` for every `s_0`.
+
+*Reduction to real polynomials.* Fix `s_0` and choose `alpha` with
+`e^{i alpha} p'(s_0) = |p'(s_0)|`. `R(s) = Re(e^{i alpha} p(s))` is a real
+trigonometric polynomial of degree `<= N`, `|R| <= 1`, and
+`R'(s_0) = Re(e^{i alpha} p'(s_0)) = |p'(s_0)|`. So it suffices to show
+`R'(s_0) <= N` for real `R`.
+
+*Real case.* Suppose `R'(s_0) > N`. Choose `0 < eps < 1` so small that
+`R_eps = (1 - eps) R` still has `R_eps'(s_0) > N`; then `|R_eps| < 1`
+everywhere. Pick `beta in (-pi, 0)` with `cos beta = R_eps(s_0)` (possible
+since `|R_eps(s_0)| < 1`) and set `C(s) = cos(N(s - s_0) + beta)`. Then
+`C(s_0) = R_eps(s_0)` and `C'(s_0) = -N sin beta in (0, N]`, so
+`D = C - R_eps` has `D(s_0) = 0`, `D'(s_0) < 0`; in particular `D` is not
+identically zero. On one period `C` reaches `±1` alternately at `2N`
+points `t_1 < ... < t_2N`, and there `|R_eps| < 1` gives
+`sign D(t_j) = sign C(t_j)`, alternating. Hence `D` has a zero in each of
+the `2N` open arcs between consecutive `t_j`. The point `s_0` is not a
+`t_j` (`D(s_0) = 0 != D(t_j)`), so it lies in one arc `(t_j, t_{j+1})`, on
+which `C` is monotone; `C'(s_0) > 0` makes it increasing, so
+`C(t_j) = -1`, `C(t_{j+1}) = +1`, i.e. `D(t_j) < 0 < D(t_{j+1})`. Since `D`
+falls through zero at `s_0` (`D'(s_0) < 0`), `D > 0` just left of `s_0` and
+`D < 0` just right of it: there is a further zero in `(t_j, s_0)` and one in
+`(s_0, t_{j+1})`. That arc holds at least three zeros, so `D` has at least
+`2N + 2` zeros per period. But `e^{iNs} D(s)` is an algebraic polynomial of
+degree `<= 2N` in `z = e^{is}`, so a nonzero `D` has at most `2N` zeros per
+period. Contradiction; hence `R'(s_0) <= N`. Applying this to `R(-s)` gives
+`R'(s_0) >= -N`. `square`
+
+This is the classical argument (prior art; no novelty claimed); it is
+written out so that L0 closes in-repo as the contract (Sec. 2) requires.
+
+## 2. T1 — the `n = 3` antipodal subclass
+
+**Reduction (analytic).** With `D_j(k) = diag(e^{-ik.a_j}, e^{ik.a_j}) =
+e^{-i (k.a_j) sigma_z}` and `G_j = C_{j-1} ... C_1` (`G_1 = I`),
+
+`C_3 D_3 C_2 D_2 C_1 D_1 = (C_3 C_2 C_1) * prod_{j=3..1} G_j^dag D_j G_j`.
+
+The node condition makes `C_3 C_2 C_1` scalar, so up to a phase
+`U(k) = prod_{j=3..1} exp(-i (k.a_j) tau_j)`, `tau_j = G_j^dag sigma_z G_j
+= t_j . sigma` with unit Bloch vectors `t_j` (free up to one global
+rotation). The `a_j` are three lattice vectors of equal length `l` at
+120°, `a_1 + a_2 + a_3 = 0`.
+
+**Linear term.** `A(k) = sum_j (k.a_j) tau_j = (sum_j t_j (a_j . k)) . sigma`,
+independent of the factor order. Its square is
+`k^T M k I` with `M = sum_ij g_ij a_i a_j^T`, `g_ij = t_i . t_j`.
+
+**Isotropy forces equal overlaps** (verifier, symbolic in `theta_0`):
+the traceless part of `M` is linear in `(g_12, g_13, g_23)` with a
+coefficient matrix whose `2x2` minors are `±sqrt3 l^4/2`, independent of
+`theta_0` (verifier), hence rank 2 for every `theta_0`, with kernel
+`(1,1,1)`. Geometrically, the three
+pair terms are double-angle vectors at `2 theta_0`, `2 theta_0 + 2pi/3`,
+`2 theta_0 + 4pi/3`, which cancel only with equal weights. With
+`g_ij = g`: `M = (3/2) l^2 (1 - g) I`, so `c_0,raw^2 = (3/2) l^2 (1 - g)`.
+
+**Range of `g`.** The Gram matrix of three unit vectors with equal
+overlaps has eigenvalues `1 + 2g` and `1 - g` (twice); it is realisable iff
+`-1/2 <= g <= 1`.
+
+**Normalisation.** `F` is contained in `{0, ±2 a_j}`; the hexagon condition
+puts all six `±2 a_j` in `F`, so the longest step is `2l` and
+`c_0 = c_0,raw/(2l)`, `r_in = sqrt3/2`. Hence
+
+`c_0 / r_in = sqrt(1 - g) / sqrt2 <= sqrt3/2`, equality iff `g = -1/2`,
+
+i.e. iff the three Bloch vectors are coplanar at mutual 120°. The
+hexagon condition enters only through the denominator: it puts the six
+`±2 a_j` in `F` and so fixes the longest step at `2l`. It does not change
+the supremum, since `g = -1/2` is realised with all six vertices present.
+
+**Attainment.** The verifier builds the walk with
+`t_j = (cos 2pi j/3, sin 2pi j/3, 0)` and certifies exactly: unitary
+symbol, `F = {0, ±2 u_j}`, regular hexagonal hull (6 vertices, 6 facets,
+`r_in = sqrt3/2`), every vertex coefficient non-nilpotent, `U(0) = I`,
+untilted isotropic cone, `c_0 = 3/4`, `c_0/r_in = sqrt3/2`.
+
+**Explains the previous table.** ADMP's `tau_i` (Eq. (5)) have `g = 1/3`,
+giving `c_0 = 1/2` (verifier, reproducing row L6a of Sec. 11). JDW L6d has
+`c_0 = 3/4`, the maximum, which corresponds to `g = -1/2`. The ADMP–JDW
+difference on the same substrate is the difference in the overlap of the
+three coin axes: ADMP's axes share the Bloch `z`-component
+`xi = sqrt5/3` (they are not coplanar through the origin), which raises
+`g` to `1/3` and costs speed.
+
+**Verdicts.** T1 `GAP_PROVED_IN_CLASS`: `sup c_0/r_in = sqrt3/2`,
+attained exactly at coplanar 120° Bloch vectors. HX1
+`CONFIRMED_IN_CLASS` (T1 subclass). HX0 `CONFIRMED_IN_CLASS` (L0, all of
+`W_hex`).
+
+## 3. T2 — minimal-support subclass (2026-11-02)
+
+Subclass: walks in `W_hex` whose composite support satisfies
+`F within {0} U vert(H)` (origin plus the six hull vertices). No product
+form is assumed: the argument uses only `F`, unitarity, the node and
+isotropy. It contains T1, ADMP L6a, JDW L6d and L6f (Sec. 11); it does not
+contain JDW L6c (19 points).
+
+**Step 1: saturation along a facet normal is rigid.** Suppose
+`c_0 = r_in`. Let `n_f` be a facet normal and `x` a unit eigenvector of
+`A(n_f)` with eigenvalue `+c_0`. With the notation of Sec. 1,
+`p(s) = <x, U(s n_f/delta) x>` has `|p| <= 1`, `p(0) = 1` and
+`p'(0) = -i N`. Then `P(z) = z^N p` (with `z = e^{is}`) is an analytic
+polynomial with `|P| = |p| <= 1` on the unit circle, hence `|P| <= 1` on
+the closed disc by the maximum-modulus principle, `P(1) = 1` and
+`P'(1) = 0`.
+By Julia's lemma (classical; a non-constant `P` with `|P| <= 1` and a
+boundary fixed point has angular derivative `P'(1) > 0`) `P` is constant,
+so `p(s) = e^{-iNs}`; equivalently this is the equality case of
+Bernstein's inequality, listed as prior art in PROJECT_INSTRUCTIONS §6.
+By Cauchy–Schwarz `U(t n_f) x = e^{-i r_in t} x` for all `t`, and likewise
+for the `-c_0` eigenvector. Hence along every facet-normal line
+`U(t n_f) = e^{-i r_in t} P_+(n_f) + e^{i r_in t} P_-(n_f)`: only the two
+extreme layers of `F` survive in that direction. In coefficients: the sum
+of `A_h` over the top edge is `P_+(n_f)`, over the bottom edge
+`P_-(n_f)`, and over every intermediate layer `0`.
+Citation status: Julia's lemma and the Bernstein equality case are
+classical; no primary source for them is in `sources/` (page
+[UNVERIFIED]).
+
+**Step 2: normal form.** By a Bloch rotation, a joint rotation of space
+and Bloch sphere about `z`, and scale, take `vert(H) = {(cos k pi/3,
+sin k pi/3)}` and `A(n) = r_in n . sigma` with `n` in the `xy` Bloch plane.
+The three facet normals are at 30°, 90°, 150°.
+
+**Step 3: certificate (verifier).** Along each facet normal the layers
+are top edge (2 vertices), middle layer (2 vertices and `0`), bottom edge.
+The nine layer equations are consistent, leave the coefficient `X_0` of
+one vertex free, and force `A_0 = -I/2`. Imposing
+`sum_h A_{h+d} A_h^dag = delta_{d0} I` and `sum_h A_h^dag A_{h+d} =
+delta_{d0} I` for all `d`, the lex Gröbner basis of the real equations
+contains `x^2 - x/2 + 1/12` in one real coordinate of `X_0`; its
+discriminant is `-1/12 < 0`. No real solution exists.
+
+**Positive control.** The same procedure on the square substrate
+(`F within {0} U {(±1,±1)}`, facet normals `x`, `y`) gives a consistent
+system, and the saturating walk `e^{-ik_x sigma_x} e^{-ik_y sigma_y}`
+solves it (verifier).
+
+**Verdict.** T2 `PROVED_FOR_MINIMAL_SUPPORT`: no s=2 walk on the
+hexagonal substrate with `F within {0} U vert(H)` reaches `c_0 = r_in`.
+HX2 holds in this subclass; HX2 in general is OPEN. No supremum is
+claimed for this subclass beyond T1's `sqrt3/2`, which it contains; the
+gap here is qualitative (`<`), not a bound.
+
+## 4. Attempt beyond minimal support (inconclusive)
+
+The same reduction for the radius-2 hexagonal ball (19 points: origin,
+inner ring, edge midpoints, vertices; contains JDW L6c) leaves 56 free real
+parameters after the layer equations and 730 quadratic unitarity
+equations. A grevlex Gröbner basis over the complex field did not finish
+within the agreed 900 s cap (exit 124). Even a finished basis other than
+`{1}` would not decide real solvability (the minimal case is consistent
+over `C`; its contradiction is real). The attempt is recorded in the
+exploratory script `scripts/explore_hex_saturation_support.py`; it is not
+evidence for any verdict. Per the contract's stop rule, T2 is recorded as
+`OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`.
+
+## 5. Not established
+
+- T2 for supports with further lattice points (edge-interior or interior
+  points, e.g. JDW L6c). HX2 is OPEN there. The minimal-support result does
+  not extend by itself, and the failed computation is not evidence either
+  way.
+- Nothing for `s > 2`, other lattices, masses.
+- No novelty claim: Bernstein is prior art; the T1 computation is
+  elementary.
+
+## 6. Next step
+
+Independent cross-family review of L0, T1 and the minimal-support T2, then
+a separate promotion. Extending T2 needs a new approach (e.g. a structural
+argument on edge polynomials, or real-algebraic certificates) and is not
+in progress. Then independent cross-family review and a
+separate promotion.
+
+=== DOCUMENT 6: 2026-11-02--l6b-triangular-row.md ===
+
+# L6b triangular row — execution
+
+**Date:** 2026-11-02
+**Gate:** `L6B_TRIANGULAR_ROW`, contract
+[`theory/L6B_TRIANGULAR_ROW_GATE.md`](../theory/L6B_TRIANGULAR_ROW_GATE.md),
+preregistration commit `b076670` (contract SHA256
+`28081b0cd8536bceeb732c6740a07b53239ed8d32a678e52d8177b0b60259829`).
+**Parent:** `C_ACROSS_LATTICES`, row L6b.
+**Source:** ADMP `sources/1803.01015v2.pdf` (SHA256 checked against
+`sources/README.md`), Sec. IV p.4, Eqs. (9), (11), (12), Fig. 1; read on
+2026-11-02.
+**Verifier:**
+[`scripts/verify_l6b_triangular_row_gate.py`](../scripts/verify_l6b_triangular_row_gate.py),
+64/64 exact checks (Python 3.12.3, `sympy==1.14.0`, run from the repo root
+with `python -B`). It imports the reviewed parent verifier read-only; that
+file is unchanged.
+**Status:** `L6B_PARTIAL_VGRP_OPEN` — PRELIMINARY, independent review
+pending. Nothing is promoted by this report.
+
+## 1. Result
+
+| Quantity (normalised: longest one-update step = 1) | L6b, massless |
+| --- | --- |
+| internal dimension `s` (translation-invariant form) | **6** (three edges per unit cell, `C^2` each) |
+| step set `F` of one update | 6 vectors of length 1/2 side, at 60° spacing; `0 ∉ F` |
+| `C_micro` | regular hexagon, `r_in = sqrt3/2`, `V_causal^max = 1` |
+| `c_0` (isotropic, untilted) | **1/3** |
+| `c_strict^iso` | **1/sqrt3** |
+| `c_0 / r_in` | `2 sqrt3 / 9` |
+| `c_strict^iso / r_in` | **2/3** |
+| `S_min = c_0 / V_causal^max`, `S_max = c_0 / r_in` | `1/3`, `2 sqrt3/9` |
+| `V_grp^max` | `OPEN` (not certified) |
+| `c_0` in source units (side `sqrt3`, one update) | `sqrt3/6`, equal to the source's coefficient |
+
+Hypotheses of the parent gate, for this row (contract Sec. 5):
+
+- **Ha:** `s = 6`, so L6b is outside Ha's scope. Ha stays
+  `REFUTED_BY_ROW_L6a`.
+- **Hb:** **fails**: `c_strict^iso = 1/sqrt3 < r_in = sqrt3/2`. Parent Hb
+  becomes `REFUTED_BY_ROW_L6b`.
+- **Hc:** holds: `c_0 = 1/3 <= 1/sqrt3`. With L6b decided, parent Hc holds
+  in every declared row: `CONFIRMED_IN_DECLARED_ROWS`.
+
+All entries are identical for the two admissible colourings and for both
+readings of the coin (Sec. 3).
+
+## 2. Encoding (contract Sec. 2)
+
+The parent verifier left L6b unencoded because the labelling seemed fixed
+only by Fig. 1. The text fixes it. Two statements on p.4 suffice:
+(i) glued triangles share the side label ("triangle `v0` (white) and `v1`
+(grey) are glued along their `k = 1` side, then `psi(t,v0,1) =
+psi(t,v1,1)`"); (ii) `R` sends side `k` to side `k+1` anticlockwise in
+every triangle. The verifier computes the anticlockwise successor of edge
+orientations from exact midpoints: it is `h -> b -> s -> h` in both up and
+down triangles. Enumerating all 72 candidates (2 colourings × 6 white
+labelings × 6 grey labelings), exactly 6 satisfy (i)–(ii): two colourings
+times the three rotations of one cyclic labeling. The labeling read from
+Fig. 1 (white upward; bottom 2, right 0, left 1) is one of them. The update
+uses only "side `k-1` -> side `k`", i.e. the anticlockwise predecessor,
+which is the same for the three rotations; so at most the colouring can
+change the walk, and it does not change any entry.
+
+The encodings `U_k` of Eq. (11) form an on-site block-diagonal unitary
+constant in quasimomentum; the verifier checks that it leaves the support
+and the characteristic polynomial unchanged, then works with Eq. (12).
+
+**Internal dimension.** Each edge lies in exactly one up triangle, and no
+translation maps up triangles onto down ones, so the unit cell holds the
+three edges of one up triangle. The parent table's `s = 2` counts the
+`C^2` per edge, not per unit cell. Recorded, not repaired in the parent.
+
+## 3. Coin
+
+`W = U_0 S U_0^dagger` (Eq. (9), `M = I`). The parent verifier recorded two
+source sign issues for L6a (Eq. (8) holds for `alpha = -arccos(sqrt5/3)`;
+the printed `S` orders the `tau_i` backwards) and used the corrected
+matrices. Following parent §6, both are run here: the parent's corrected
+`W` and the `W` as printed. Both are unitary with `W^3 = I`, and every
+entry of Sec. 1 is the same for both.
+
+## 4. Derivation of the entries
+
+**`F`, `C_micro`.** In an up triangle the anticlockwise moves between side
+midpoints point at 60°, 180°, 300°; in a down triangle at 240°, 0°, 120°.
+The move out of an edge on the grey side is minus the move on the white
+side. So `F` is six vectors of length 1/2 (side units) and `C_micro` the
+regular hexagon, `r_in = sqrt3/2` normalised.
+
+**Node.** `U(0) = P ⊗ W` with `P` the cyclic permutation of the three
+edge orientations, so `U(0)^3 = I`. Its spectrum is `{1, e^{±2πi/3}}`, each
+with multiplicity 2; the eigenvalue-1 pair is the declared node.
+
+**`c_0`, two routes.** (A) `V = U^3` is block diagonal in edge orientation,
+hence a walk on the white-triangle Bravais lattice with `V(0) = I`; the
+parent's `node_speeds` gives a Hermitian, untilted, isotropic cone with
+`c_0(V) = 1/2` side per three updates. The node branch of `U` has
+quasienergy `omega = Omega/3`, so per update `c_0 = 1/6` side, `1/3`
+normalised. (B) First-order degenerate perturbation of `U` itself on the
+eigenvalue-1 space: generator `Q^dagger (i U(0)^dagger dU/dk) Q`,
+untilted, isotropic, same `c_0`. Both routes agree exactly.
+
+**`c_strict^iso`.** Every one-step vertex coefficient is nilpotent: the
+edge orientation advances at every update, so the same move cannot be
+repeated. With `h_infty(n̂) = limsup_n (1/n) max_{x in S_n} n̂·x`
+(`theory/B_STAR_HYPOTHESIS.md`, from `CAUSAL_BODY_GEOMETRY.md` Sec. 6):
+`supp U^3 = {0, ±2w_o}`, a hexagon of radius 1 side, and all six vertex
+coefficients of `U^3` are non-nilpotent. For `V = U^3`, a translation-
+invariant walk, the coefficient of `V^m` at `m v` for a vertex `v` is
+`M_v^m`, nonzero; and `supp U^n` lies within a bounded distance of
+`supp U^{3⌊n/3⌋}`. Hence `h_infty = h_{conv supp U^3} / 3`, inradius
+`sqrt3/6` side per update, `1/sqrt3` normalised. The asymptotic body is
+the hexagon `(1/3) sum_o [-w_o, w_o]`, with the same orientation as
+`C_micro` (vertices at multiples of 60°) and scaled by 2/3.
+
+## 5. Cross-checks against the source (contract Sec. 4)
+
+- **Coefficient.** The source states `i d_t psi = (sqrt3/6)(p·sigma) psi`
+  per update `epsilon`, with side-midpoint distance `sqrt3/2`, i.e. side
+  `sqrt3`. The computed `c_0` in those units is `sqrt3/6`. Agrees.
+- **Equivalence with L6a.** `supp U^3` equals L6a's `F` in the same
+  integer coordinates (generators halved). Each orientation block of `U^3`
+  has the characteristic polynomial of the L6a symbol **up to an isometry
+  of the hexagon**, not in the same orientation: the first run of the
+  verifier tested the identity isometry only and that check failed (all
+  three blocks). Re-derived: L6b's three moves from edge `h` are at 60°,
+  180°, 300°, L6a's partial shifts at 0°, 120°, 240°. The repaired check
+  tries all 12 isometries; the matching ones are the rotations by 60°,
+  180°, 300° and three reflections, for every block. So three L6b updates
+  realise the L6a dispersion at half the length scale, rotated 60°.
+
+## 6. What this does not claim
+
+- No statement about the ADMP massive row (still `OPEN` under the parent),
+  about `V_grp^max`, or about any other row.
+- Hb's failure is one row of a declared list, caused by a walk whose
+  translation cell carries three edge orientations visited cyclically. It
+  is not a general QCA law, and it does not contradict
+  `c_strict^iso <= r_in`, which it satisfies.
+- No novelty claim. Not human review.
+
+## 7. Next step
+
+Independent cross-family review of this report and of the verifier
+(SHA256 `c2e91c237b023abde1199f8ef3bea143f49e559da35899c01e049a9ddf3f2441`
+at the run recorded here), then a separate promotion decision.
+
+=== DOCUMENT 7: 2026-11-03--hex-supremum-b19.md ===
+
+# HEX_SUPREMUM (M1): the 19-point support (M1-B19)
+
+**Date:** 2026-11-03. **Branch:** `research/schur-stability-audit`.
+**Contract:** [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
+preregistration commit `86573ca`; M1-B19 authorized 2026-11-03 («Autorizar
+M1-B19 ... empezando exclusivamente por la reducción estructural»), after
+the promotion of M1-B13 (`677bec0`). Builds on
+[Stage A](2026-11-03--hex-supremum.md) (promoted for S13).
+**Author:** Claude Code (Claude Opus 5.5). **Verifier:**
+`scripts/verify_hex_supremum_b19.py`, 17/17 (fail-closed, exact, 10 min 44 s;
+SHA-256 `244bb106…`);
+certificate data `scripts/data/hex_s19_certificate.json` (SHA-256
+`548988f7…`). Exploratory scripts (no verdict):
+`scripts/explore_hex_s19_reduced.py`, `scripts/explore_hex_s19_certificate.py`.
+**Amendment:** [`HEX_SUPREMUM_GATE_AMENDMENT_1.md`](../theory/HEX_SUPREMUM_GATE_AMENDMENT_1.md)
+(`208e1b1`, approved 2026-11-03): the certificate is assessed under
+contract Sec. 4 (i); literal deviations declared there.
+**Review:** Grok (`grok-4.7`), REPAIR_REQUIRED with one mandatory repair
+(the amendment) and two clarifications, all applied in this revision
+(`debates/2026-11-03--hex-supremum-b19-review-grok/`, record `f80c075`,
+reviewed version `6302328`). Gemini: no report (402, no credits).
+Second review: the user, OK, on `88d28dd`
+(`debates/2026-11-03--hex-supremum-b19-review-usuario/registro.md`).
+**Status: promoted 2026-11-03 for S19 (CURRENT_STATE Sec. 14).**
+
+**Pre-step check.** Known: S19 has facet-normal layers 3, 4, 5, 4, 3, so
+lemma A1 forces only layer sums; the full system (56 free real parameters,
+Gröbner over `C`) did not finish in 900 s in the parent gate. Question: do
+further consequences of saturation reduce the unknowns before any solver?
+Abandonment: if nothing beyond the layer sums is forced, no rerun of the
+same system; budgeted solver on a reduced system or `OPEN_AFTER_<analysis>`.
+
+## 1. Two further linear consequences of saturation
+
+Notation of the Stage A report. Suppose `c_0 = r_in = r`. Fix a facet
+normal `n`, the edge direction `e = Rot90(n)`, and `x_+`, `x_-` the unit
+eigenvectors of `n.sigma` (eigenvalues `+1`, `-1`). On the facet line,
+`U(t n) = D(t) = e^{-irt} P_+ + e^{irt} P_-` (rigidity). Levels `lambda`
+are the projections `h.n`.
+
+**Lemma A3 (first moments).** For every layer `lambda` and both signs,
+`sum_{h in lambda} (h.e) <x_±, A_h x_±> = 0`.
+
+*Proof (sign +).* `f(z; s) = e^{irt} <x_+, U(t n + s e) x_+>` is, for fixed
+real `s`, an analytic polynomial in `z = e^{i delta t}` (the exponents
+`r - h.n` are `>= 0` multiples of `delta`), with `|f| <= 1` on `|z| = 1`
+(unitarity) and `f(z; 0) = 1` (rigidity). Let `g(z) = d f/ds (z; 0)`, again an
+analytic polynomial. From `|f|^2 = 1 + 2 s Re g + O(s^2) <= 1` for both
+signs of `s`, `Re g = 0` on the circle, so `g` is an imaginary constant.
+At `z = 1` (`t = 0`), `g = -i <x_+, A(e) x_+> = -i r (e.n) = 0`. Hence
+`g = 0`; its Fourier coefficients are `-i sum_{h in lambda} (h.e) <x_+, A_h x_+>`.
+The sign `-` is the same with `e^{-irt}` and `z̄`. ∎
+
+**Lemma A4 (off-diagonal first order).** For every layer `lambda`,
+`sum_{h in lambda} (h.e) <x_+, A_h x_-> = sum_{h in -lambda} (h.e) conj<x_-, A_h x_+>`.
+
+*Proof.* Differentiating `U^dag U = I` along `e` on the facet line gives
+that `K(t) = D(t)^dag d_e U(t n)` is anti-Hermitian. With
+`d_e U = -i sum_h (h.e) A_h e^{-it h.n}`, `K_{+-} = -i sum_h (h.e) <x_+, A_h x_->
+e^{it(r - h.n)}` and `conj K_{-+} = i sum_h (h.e) conj<x_-, A_h x_+>
+e^{it(r + h.n)}`. `K_{+-} + conj K_{-+} = 0` for all `t`; matching the
+frequency `r - lambda = r + lambda'` gives `lambda' = -lambda` and the
+stated identity. (The diagonal of `K` gives `Re g = 0` only; A3 is
+stronger because it uses analyticity.) ∎
+
+A3 and A4 are consequences of unitarity, rigidity and the normal form
+`A(v) = r v.sigma` (hex-ceiling report Sec. 3, Step 2; A3 uses it at
+`z = 1`); they are not new assumptions. Their use is that they are linear.
+
+## 2. Reduction on S19 (verifier)
+
+Unknowns: 19 complex 2×2 coefficients, 152 real parameters; normal form
+`A(n) = r n.sigma`, `|vertex| = 1`.
+
+| Constraints | Free real parameters |
+| --- | --- |
+| L1: layer sums on the three facet normals | 56 (as in the parent gate) |
+| + L2: A3 | 28 |
+| + L3: A4 | 18 |
+
+All three systems are consistent (exact rank over `QQ(sqrt3)`). The
+remaining unitarity equations `sum_{h-h'=d} A_h A_{h'}^dag = delta_{d0} I`,
+`sum A_{h'}^dag A_h = delta_{d0} I`, restricted to the 18-parameter affine
+family, are 730 distinct real quadratics; they span a space of dimension 56
+(floating-point rank, used only to guide).
+
+**Controls.** The saturating square walk `exp(-ik_x s_x) exp(-ik_y s_y)`
+satisfies L1, L2 and L3. The whole pipeline (L1 + L2 + L3, exact
+parametrization, unitarity equations) on the 3×3 square support, which
+like S19 has edge-interior and interior points, keeps that walk in its
+13-parameter family, and all 298 reduced equations vanish there: the
+reductions do not exclude a known saturating walk. On S7, L1 + L2 + L3
+leave 1 free parameter, consistent with the parent T2 (the contradiction
+there is in one real coordinate). The counts «13-parameter», «298
+equations» and S7's «1 free parameter» are printed output, not checks:
+the verifier requires only membership and vanishing for the square
+controls, and its S7 record is informational (always passes).
+
+## 3. Exact infeasibility certificate
+
+**Exploration (no verdict).** Least squares on the 730 equations from 100
+random starts converge to the same positive minimum (`5.056e-3`), which
+suggests no real solution. A search over the 56-dimensional span for a
+combination whose Gram matrix in the basis `(1, t)` is positive definite
+(maximising `lambda_min` at trace 1, SLSQP, 20 starts) found
+`lambda_min ≈ 3.8e-4 > 0` in every start. The best combination was rounded
+to rational multipliers `c_i` (denominators `<= 10^9`) and stored in
+`scripts/data/hex_s19_certificate.json`.
+
+**Certificate (verifier, exact).** `p = sum_i c_i f_i` is formed exactly;
+its unique Gram matrix `G` in the basis `(1, t)` satisfies
+`p = (1,t) G (1,t)^T` identically, and exact Gaussian elimination over
+`QQ(sqrt3)` gives 19 positive pivots, so `G` is positive definite. Then
+`p(t) > 0` for every `t in R^18`, while at any solution every `f_i`, hence
+`p`, vanishes. **Contract form: Sec. 4 (i)** (Amendment 1, Sec. 1): an
+ideal element with explicit rational cofactors `c_i`, whose absence of real
+zeros is certified exactly by `G > 0` (Gram identity plus 19 positive
+pivots in `QQ(sqrt3)`). It is not claimed as a form (ii) certificate.
+As a corollary only (not built or checked by the verifier): for
+`0 < mu <= 1/(G^{-1})_00`, `G - mu e_0 e_0^T = L D L^T` with `D >= 0`, so
+`-1 = sum_j (d_j/mu) l_j(t)^2 + sum_i (-c_i/mu) f_i(t)`, with coefficients
+in `QQ(sqrt3)`. The system's own coefficients lie in `QQ(sqrt3)` (normal
+form and hexagon geometry); the multipliers `c_i` are rational. The
+docstring of `check_certificate` still says «contract Sec. 4 (ii)»; the
+amendment supersedes it, and the verifier's bytes are unchanged.
+
+**Verdict.** M1-B19 `PROVED_FOR_S19`: no s=2 walk with `F within S19`
+(in `W_hex^sym`, hence in `W_hex`) reaches `c_0 = r_in`. This includes the
+support of JDW L6c. HX2 `CONFIRMED_FOR_S19` (and S7, S13). The gap is
+qualitative; no bound below `r_in` is claimed.
+
+## 4. Budget and runs
+
+- Gröbner or other exact nonlinear solver runs on S19: none (0 s of the
+  3600 s). Counting the exploratory numerics below as solver time too:
+  1294 s < 3600 s (Amendment 1, Sec. 2).
+- Exact certificate check: inside the verifier, about 10 min of its 11.
+- A first version of the linear reduction with symbolic `rank(simplify=True)`
+  was stopped after more than 600 s; replaced by exact `DomainMatrix` rank
+  over `QQ(sqrt3)` (seconds). No result came from the stopped run.
+- Exploratory numerics: 558 s (least squares), 2 × 368 s (certificate
+  search; the second run wrote the stored multipliers, seed 0, 20 starts).
+
+## 5. Status of M1 and what is not established
+
+- M1-A stays `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`: A1–A4 are proved for
+  every support, but no gap proof for `W_hex^sym`.
+- The contract's ordered bounded stages (S13, S19) both end with a gap.
+  No witness was found, so result (a) of Sec. 0 is not met and the line is
+  not closed; no gap proof for the whole class, so it is not settled
+  either. Larger hexagons are not in the contract's stages (the next one,
+  `v = 2 g_1 + g_2`, has 25 lattice points by Pick's theorem: area 21
+  cells, 6 boundary points; not checked by any verifier); continuing would
+  need a user decision.
+- Nothing for `s > 2`, other lattices, masses.
+- No novelty claim: A1–A4 are direct uses of unitarity and the Bernstein
+  equality case (prior art); positive-definite Gram certificates are
+  standard real algebraic geometry.
+
+## 6. Next step
+
+Second independent cross-family review (Gemini when it has credits, or
+another family the user authorizes), then a separate promotion; any
+extension beyond S19 is a separate user decision (S25 not authorized).
