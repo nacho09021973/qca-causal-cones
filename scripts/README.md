@@ -352,6 +352,24 @@ report Sec. 3, Steps 1-2), or that the T2 proof is lattice-free (report).
 Nothing for S19 or larger supports. Reviewed 2026-11-03: Grok PASS,
 Gemini PASS (verifier SHA-256 `ef4b0114…`).
 
+`verify_hex_supremum_b19.py` certifies M1-B19 of the same gate (S19).
+Exact: the linear reductions L1 (layer sums, 56 free real parameters),
+L2 (first moments, lemma A3, 28) and L3 (off-diagonal first order, lemma
+A4, 18), all consistent over `QQ(sqrt3)`; controls (the saturating square
+walk satisfies L1-L3, the whole pipeline on the 3x3 square support keeps
+it and all reduced equations vanish; unitarity_equations detects a
+non-unitary perturbation); the reduced system (18 parameters, 730
+quadratics) and an exact infeasibility certificate: rational multipliers
+from `data/hex_s19_certificate.json`, Gram matrix of their combination
+positive definite by exact elimination (19 positive pivots). About 11
+minutes. Does **not** certify the analytic proofs of rigidity, A3, A4 or
+the normal form (report). Not independently reviewed.
+
+`explore_hex_s19_reduced.py` (least squares on the reduced system) and
+`explore_hex_s19_certificate.py` (search for a positive-definite
+combination; wrote `data/hex_s19_certificate.json`) are **exploratory,
+not certificates**; runs recorded in `reports/2026-11-03--hex-supremum-b19.md`.
+
 ## Dispersion corrections gate (2026-11-02)
 
 `verify_dispersion_corrections_gate.py` certifies

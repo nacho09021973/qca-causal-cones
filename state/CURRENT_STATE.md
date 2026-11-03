@@ -2481,3 +2481,17 @@ author's session, not the reviewers'. Previous status: PRELIMINARY,
 INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING. M1-B19 authorized
 the same day, structural reduction first, solver budget 3600 s
 cumulative.
+
+M1-B19 execution (2026-11-03): [report](../reports/2026-11-03--hex-supremum-b19.md),
+verifier `scripts/verify_hex_supremum_b19.py` (17/17), certificate data
+`scripts/data/hex_s19_certificate.json`. Two further linear consequences
+of saturation, A3 (first moments along the edge, per layer) and A4
+(off-diagonal first-order unitarity on the facet line), reduce S19 from 56
+to 18 free real parameters; controls on the square substrate keep the
+known saturating walk. The 730 remaining unitarity quadratics admit a
+rational combination with positive-definite Gram matrix (exact, over
+`QQ(sqrt3)`): no real solution. M1-B19 `PROVED_FOR_S19` (in `W_hex^sym`;
+includes the support of JDW L6c), HX2 `CONFIRMED_FOR_S19`. No nonlinear
+solver run (0 s of 3600 s); exploratory numerics only guided the
+certificate. Whole class OPEN; larger hexagons not in the contract's
+stages. Status: **PRELIMINARY, not independently reviewed.**
