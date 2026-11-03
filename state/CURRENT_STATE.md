@@ -2,6 +2,11 @@
 
 **Date:** 2026-11-03
 
+**Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
+frozen at `9bf3019` after two Grok rounds; a definitional audit of the
+provisional statement (PH) on the promoted rows, with no confirmatory
+value. OPEN; frozen, **execution not authorized**; nothing done.
+
 **Partial result promoted — 2026-11-03:** M1 hexagonal supremum (Sec. 14,
 frozen at `86573ca`, Amendment 1 at `208e1b1`): M1-B19 `PROVED_FOR_S19` (no
 s=2 walk with support in the 19-point hexagon reaches `r_in`, in
@@ -2529,3 +2534,37 @@ with a gap, no witness; result (a) of Sec. 0 not met, no gap proof for the
 class; whole class OPEN. No further stage is in the contract; S25 or any
 other extension needs a new charter (not authorized). Previous status:
 PRELIMINARY; one of two requested reviews; promotion not authorized.
+
+## 15. Substrate saturation, phase 0 — chartered 2026-11-03
+
+Contract: [`SUBSTRATE_SATURATION_PHASE0_GATE.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE.md),
+frozen before execution, preregistration commit `9bf3019`, by user
+instruction («congela la revisión 3»). Drafting authorized 2026-11-03
+(«Autorizo redactar la carta de la fase 0, pero no congelarla ni ejecutar
+todavía ninguna comprobación»), with the user's four precisions
+(existential quantifier, domain `s = 2`, `d <= 3`, single normalization,
+one exact counterexample refutes). Two Grok rounds:
+[round 1](../debates/2026-11-03--substrate-saturation-phase0-draft-review-grok/informe_grok.md)
+REPAIR_REQUIRED (six repairs, all accepted by the user, who chose the
+predicate "hypercube up to scale and isometry" and turned phase 0 into a
+definitional audit);
+[round 2](../debates/2026-11-03--substrate-saturation-phase0-rev2-review-grok/informe_grok.md)
+REPAIR_REQUIRED (one repair, L6b traceability, plus five clarifications,
+all applied). Domain, logic and independence PASS in round 2: the
+isotropic-untilted-node condition is defined on the linear term, not on
+the shape of `C_micro`; the hexagonal rows are inside the domain, so a
+saturating admissible `s = 2` hexagonal walk would refute (PH⇒).
+
+Statement under audit: **(PH) [UNVERIFIED]**, for `s = 2`, `d <= 3`,
+admissible models only: the ceiling `c_0 = r_in(C_micro)` is attained by
+some admissible walk on a substrate iff `C_micro` is a hypercube up to
+scale and isometry. A geometric classification suggested by the promoted
+rows, not a physical explanation. The zonotope reading (PS′) is kept
+`[UNVERIFIED]` and is not equivalent to (PH). Method: documentary only, no
+computation. Outcomes: `DEFINITIONS_CLOSED` (the statement is defined well
+enough to be tested for refutation, nothing more) or
+`OPEN_AFTER_ROW_SURVEY`; per direction `REFUTED_BY_ROW_<row>` or
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`, the latter never evidence for (PH)
+and never `CONFIRMED`. No outcome authorizes a later phase; a test that
+can fail (the hexagon, user's first choice) needs its own contract.
+Status: **OPEN; frozen; execution not authorized; nothing done.**
