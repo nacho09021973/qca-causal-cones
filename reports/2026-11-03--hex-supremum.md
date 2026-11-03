@@ -9,7 +9,8 @@ preregistration commit `86573ca`; authorization CURRENT_STATE Sec. 14
 read-only the reviewed `verify_hex_ceiling_gate.py` (SHA-256 `8f3b7a10…`,
 unchanged). **Solver budget used:** 0 s on S13 (no solver run); 0 s on
 S19 (not started). No numerics. **Status: PRELIMINARY,
-INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING.**
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES; promoted 2026-11-03 for S13 (CURRENT_STATE
+Sec. 14).**
 
 **Review (2026-11-03).** Grok PASS and Gemini PASS on all five blocks, no
 mandatory repair, identical input (this report at SHA-256 `8a4c4eec…`,

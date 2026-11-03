@@ -2,9 +2,10 @@
 
 **Date:** 2026-11-03
 
-**Gate chartered — 2026-11-03:** M1 hexagonal supremum (Sec. 14), frozen
-at `86573ca` on user approval with three amendments. OPEN, authorized,
-Stage A (structural reduction) first; nothing computed.
+**Partial result promoted — 2026-11-03:** M1 hexagonal supremum (Sec. 14,
+frozen at `86573ca`): M1-B13 `PROVED_FOR_S13` (no s=2 walk with support in
+the 13-point hexagon reaches `r_in`, in `W_hex^sym`), Grok and Gemini PASS.
+Whole class OPEN; M1-B19 authorized, structural reduction first.
 
 **Novelty candidacy dropped — 2026-11-02:** by direct user instruction
 («regístralo»), after the primary-source comparison
@@ -2471,5 +2472,12 @@ S13 the singleton layers are the inner ring, which vanishes, leaving the
 minimal support excluded by T2 (Sec. 12), in `W_hex^sym`. HX2
 `CONFIRMED_FOR_S13`. S19 (layers 3,4,5,4,3) not reduced by A1; M1-B19 not
 started. [Reviews](../debates/2026-11-03--hex-supremum-stageA-review-grok/verificacion_autor.md):
-Grok PASS, Gemini PASS, no repairs. Status: **PRELIMINARY,
-INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING.**
+Grok PASS, Gemini PASS, no repairs. **Promoted 2026-11-03 (user
+instruction «PROMOCIÓN AUTORIZADA»):** M1-B13 `PROVED_FOR_S13`, HX2
+`CONFIRMED_FOR_S13`, M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`. Scope: S13
+only, in `W_hex^sym` (hence `W_hex`); qualitative gap, no uniform
+separation from `r_in`, whole class OPEN. The 12/12 verifier run is the
+author's session, not the reviewers'. Previous status: PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING. M1-B19 authorized
+the same day, structural reduction first, solver budget 3600 s
+cumulative.
