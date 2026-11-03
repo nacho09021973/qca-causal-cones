@@ -8,8 +8,19 @@ preregistration commit `86573ca`; authorization CURRENT_STATE Sec. 14
 `scripts/verify_hex_supremum_gate.py`, 12/12, SHA-256 `ef4b0114…`; imports
 read-only the reviewed `verify_hex_ceiling_gate.py` (SHA-256 `8f3b7a10…`,
 unchanged). **Solver budget used:** 0 s on S13 (no solver run); 0 s on
-S19 (not started). No numerics. **Status: PRELIMINARY, not independently
-reviewed.**
+S19 (not started). No numerics. **Status: PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING.**
+
+**Review (2026-11-03).** Grok PASS and Gemini PASS on all five blocks, no
+mandatory repair, identical input (this report at SHA-256 `8a4c4eec…`,
+before this paragraph)
+([Grok](../debates/2026-11-03--hex-supremum-stageA-review-grok/informe_grok.md),
+[Gemini](../debates/2026-11-03--hex-supremum-stageA-review-gemini/informe_gemini.md),
+[author reading](../debates/2026-11-03--hex-supremum-stageA-review-grok/verificacion_autor.md)).
+Accepted clarification (Grok): the "second route" of Sec. 3 is not an
+independent derivation; the layer equations already contain `A_h = 0` on
+each singleton, so the exact solve confirms the same geometry in algebra.
+The body below is unchanged.
 
 **Pre-step check.** Known: facet-line rigidity and the minimal-support T2
 (hex-ceiling report Sec. 3, CURRENT_STATE Sec. 12). Question: what do the

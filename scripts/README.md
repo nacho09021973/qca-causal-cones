@@ -349,7 +349,8 @@ sizes 3,4,5,4,3 with no intermediate singleton; and a read-only rerun of
 `check_T2_minimal` of the reviewed `verify_hex_ceiling_gate.py` (4/4).
 Does **not** certify: facet-line rigidity and the normal form (hex-ceiling
 report Sec. 3, Steps 1-2), or that the T2 proof is lattice-free (report).
-Nothing for S19 or larger supports. Not independently reviewed.
+Nothing for S19 or larger supports. Reviewed 2026-11-03: Grok PASS,
+Gemini PASS (verifier SHA-256 `ef4b0114…`).
 
 ## Dispersion corrections gate (2026-11-02)
 

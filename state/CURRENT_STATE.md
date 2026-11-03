@@ -2460,5 +2460,16 @@ stated for `W_hex^sym`; a witness must be given in product form to lie in
 confirmatory numerics. Budget: one session. Ends the line: a factorized
 witness (M1 closes, limited reading), or budget exhausted
 (`OPEN_AFTER_<analysis>`, not a repo closure, plan Sec. 4); a gap proof
-for `W_hex^sym` keeps the line. Status: **OPEN; authorized; Stage A first;
-nothing computed.**
+for `W_hex^sym` keeps the line. Status before execution: OPEN; authorized.
+
+Execution (2026-11-03, partial): [report](../reports/2026-11-03--hex-supremum.md),
+verifier `scripts/verify_hex_supremum_gate.py` (12/12), 0 s solver.
+Lemma A1 (singleton intermediate layer along a facet normal forces its
+coefficient to 0) and A2 (`A_v A_{-v}^dag = 0` at opposite vertices).
+M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`. M1-B13 `PROVED_FOR_S13`: in
+S13 the singleton layers are the inner ring, which vanishes, leaving the
+minimal support excluded by T2 (Sec. 12), in `W_hex^sym`. HX2
+`CONFIRMED_FOR_S13`. S19 (layers 3,4,5,4,3) not reduced by A1; M1-B19 not
+started. [Reviews](../debates/2026-11-03--hex-supremum-stageA-review-grok/verificacion_autor.md):
+Grok PASS, Gemini PASS, no repairs. Status: **PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING.**
