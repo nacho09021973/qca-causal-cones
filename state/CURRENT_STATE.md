@@ -33,7 +33,12 @@ prior speed bound, 120° optimum or non-attainment statement for
 triangular/hexagonal walks; P17 (Fig. 1, p. 6) excludes isotropic `s = 2`
 walks on the triangular lattice in its sense, so the ceiling concerns a
 class P17 does not cover. Not refuted, `NOVELTY = OPEN`, weight low (L0
-Bernstein, T1 elementary, T2 restricted, whole class OPEN).
+Bernstein, T1 elementary, T2 restricted, whole class OPEN). Step 4 of the
+work plan (2026-11-03, user authorization, scoped to forward citations of
+ADMP, JDW, P17 and arXiv:1812.02601; same report, Sec. 4):
+`NOT_FOUND_IN_SCOPED_SEARCH`; closest statement JDW's forced time step
+`Δt = (3/2) ε` for one construction method, not equivalent; originality
+not claimed; unreviewed.
 
 **Synthesis written — 2026-11-02:** by user instruction («redacta la
 respuesta»), [`reports/2026-11-02--c-across-substrates-answer.md`](../reports/2026-11-02--c-across-substrates-answer.md)
