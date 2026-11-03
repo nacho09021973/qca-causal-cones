@@ -1,6 +1,10 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-02
+**Date:** 2026-11-03
+
+**Gate chartered — 2026-11-03:** M1 hexagonal supremum (Sec. 14), frozen
+at `86573ca` on user approval with three amendments. OPEN, authorized,
+Stage A (structural reduction) first; nothing computed.
 
 **Novelty candidacy dropped — 2026-11-02:** by direct user instruction
 («regístralo»), after the primary-source comparison
@@ -2433,3 +2437,28 @@ relative order `|k|^2`, first `cos 6 theta` at `|k|^4`). Hd
 identical; also L5a = the `+i` Weyl block of L5b, and L6d = L6f through
 `|k|^2`). Scale of
 validity OPEN in `d >= 2`; `V_grp^max` OPEN. No physical interpretation.
+
+## 14. Hexagonal supremum (M1) — chartered 2026-11-03
+
+Contract: [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
+frozen before solving, preregistration commit `86573ca`. Authorization:
+user approval of the draft, 2026-11-03 («APROBACIÓN CON ENMIENDAS»), with
+three amendments incorporated before freezing (cumulative solver budget of
+3600 s per support; explicit form of the real infeasibility certificate,
+`-1 = sum q_j^2 + sum h_i f_i` with exact rational coefficients, or an
+ideal element with certified absence of real zeros; a witness answers the
+saturation question only). Continues T2 of Sec. 12 only; L0, T1 and the
+minimal-support T2 are not reopened.
+
+Question: does any `s = 2` walk in `W_hex` reach `c_0 = r_in`? Method,
+named before computation: Stage A structural reduction (facet-line
+rigidity plus extreme-face unitarity identities), then exact decision on
+the 13-point support `S13` (`v = g_1 + g_2`), then `S19` only after `S13`
+has a verdict. Gap proofs from unitarity, support, node and isotropy are
+stated for `W_hex^sym`; a witness must be given in product form to lie in
+`W_hex`. Exploratory numerics only to guide, never in a verdict; no
+confirmatory numerics. Budget: one session. Ends the line: a factorized
+witness (M1 closes, limited reading), or budget exhausted
+(`OPEN_AFTER_<analysis>`, not a repo closure, plan Sec. 4); a gap proof
+for `W_hex^sym` keeps the line. Status: **OPEN; authorized; Stage A first;
+nothing computed.**
