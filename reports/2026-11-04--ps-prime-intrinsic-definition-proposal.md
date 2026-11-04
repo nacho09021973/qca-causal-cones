@@ -2,6 +2,11 @@
 
 Date: 2026-11-04. Base: `13432ab9f85f2b5d46c5e55b8ef2f2c749393628`.
 Author: Codex (OpenAI). Status: **PROPOSAL / PRELIMINARY**.
+**Recommendation adopted by the user, 2026-11-04** («si a las 3»), after
+Claude's review (PASS, not blind) and DeepSeek's sealed review
+(`debates/2026-11-04--ps-prime-proposal-review-deepseek/`, PASS, no
+repairs). Adoption records a project decision on usage; it is not a verdict
+on PS′ and changes no status listed in Sec. 4.
 Authorization: the user's instruction to write a bounded documentary
 proposal about PS′ and its stopping criterion.
 
