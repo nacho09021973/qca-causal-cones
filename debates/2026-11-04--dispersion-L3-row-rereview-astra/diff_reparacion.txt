@@ -1,0 +1,134 @@
+diff --git a/reports/2026-11-04--dispersion-L3-row.md b/reports/2026-11-04--dispersion-L3-row.md
+index e227ae5..66c5030 100644
+--- a/reports/2026-11-04--dispersion-L3-row.md
++++ b/reports/2026-11-04--dispersion-L3-row.md
+@@ -3,9 +3,27 @@
+ **Date:** 2026-11-04. **Author:** Claude (Anthropic). **Contract:**
+ [`DISPERSION_L3_ROW_GATE.md`](../theory/DISPERSION_L3_ROW_GATE.md),
+ preregistration `d3868fa`. **Verifier:**
+-`scripts/verify_dispersion_L3_row_gate.py`, SHA256 `1beb8fd9…` (full hash in
+-the commit that adds this report), 34/34 exact checks, `python3 -B`, sympy
+-1.14.0. **Status: PRELIMINARY**, not independently reviewed, not promoted.
++`scripts/verify_dispersion_L3_row_gate.py`, SHA256 `89b33e700aedb7ae19bb80e00f45d8452f6a550ba7c836c5d3c246f070adae10`,
++35/35 exact checks, `python3 -B`, sympy 1.14.0; prints the row verdict
++**`L3_DISPERSION_COMPLETE`** (contract Sec. 4). **Status: PRELIMINARY**, not
++promoted.
++
++**Review.** gpt-6.1-sol (OpenAI), on the version `1beb8fd9…` (34 checks) at
++base `b9b0e58`:
++`debates/2026-11-04--dispersion-L3-row-review-astra/`, **REPAIR_REQUIRED**,
++three repairs. It re-derived `beta`, `alpha`, `alpha_0` and `G_walk` by
++hand and found no error in the coefficients. Repairs applied in this
++version, not re-reviewed:
++1. the checks of the constructor `row_L5a` now enter the evaluated record,
++   and the hypothesis verdicts print «NOT CERTIFIED» if any prerequisite
++   check fails (an undecidable sign prints «UNDECIDED»);
++2. the script now prints the contract's row verdict;
++3. the «second route» of Sec. 3 is restricted to what it proves.
++
++Contract wording, recorded not edited (frozen): «nothing else of the parent
++is recomputed or changed» means that the parent table is not changed; two
++parent rows, CJWW (5.12) and L5a, are recomputed here only as comparison
++controls.
+ 
+ ## 1. Why this row
+ 
+@@ -45,12 +63,15 @@ report l. 44); here it is printed as its projection on `1, K4, K6`.
+   cases.
+ - **HL3e CONFIRMED.** `alpha_0 = −4/315 < 0` in all four cases.
+ 
+-**Second route.** HL3b and HL3c also follow without the expansion. For
+-`s = 2` with `det U = 1` the characteristic polynomial is fixed by `tr U`.
+-`tr U` equals `2(ccc + sss)` for A+, B+ and for CJWW (5.12)
+-(`verify_directional_saturation.py` l. 81). `chi = −1` is `k -> −k` of
+-`chi = +1`, which flips `beta` (odd order) and keeps `alpha` (even). The
+-expansion agrees with this.
++**Second route (restricted after review, repair 3).** For `s = 2` with
++`det U = 1` the characteristic polynomial is fixed by `tr U`. `tr U` equals
++`2(ccc + sss)` for A+, B+ and for CJWW (5.12)
++(`verify_directional_saturation.py` l. 81), which gives HL3b without the
++expansion. The trace for `chi = −1` is the trace for `chi = +1` at `−k`
++(an identity of traces, not of matrices), which flips `beta` (odd order)
++and keeps `alpha` (even): the first half of HL3c. The comparison of A−/B−
++with L5a rests on the expansion only; no trace identity for the L5a symbol
++(with `sigma = −1`) is derived here.
+ 
+ These hypotheses were written after the author read the code, before the
+ run. They are predictions from an exact identity, not independent evidence
+@@ -67,8 +88,8 @@ about walks in general.
+   coefficient. He holds in all declared ceiling rows of the parent plus L3.
+ - **Hd.** Unchanged (`alpha_0 < 0` here).
+ - **Hf.** On the BCC substrate there are further shared `(beta, alpha)`
+-  pairs: L3 A± with CJWW (5.12) and with L5a (and the L5b blocks, through
+-  the parent's table). Hf was already `REFUTED_BY_ROW_L6e`; this adds
++  pairs: A+/B+ with CJWW (5.12), A−/B− with L5a, and each sign with the
++  L5b block of the same `beta` sign (the last through the parent's table). Hf was already `REFUTED_BY_ROW_L6e`; this adds
+   coincidences on BCC, which the parent read as «not all equal»: that
+   still holds, since `beta` takes both signs.
+ - **CJWW (5.12).** Same dispersion through relative order `t^2` and same
+diff --git a/scripts/verify_dispersion_L3_row_gate.py b/scripts/verify_dispersion_L3_row_gate.py
+index bbc29b2..884ebb6 100644
+--- a/scripts/verify_dispersion_L3_row_gate.py
++++ b/scripts/verify_dispersion_L3_row_gate.py
+@@ -84,28 +84,56 @@ def main():
+         analyse(label, sym, zs, GENS3, +1, results, groups)
+     # Comparison rows with the parent's own setup (l. 565-576).
+     analyse("parent L4 = CJWW (5.12)", D.laurent_matrix_from_p(DS.walk1()), DS.Z, GENS3, +1, results, groups)
++    n_parent_before = len(P.CHECKS)
+     symbol, zsa, _, gens_a = P.row_L5a()
++    D.record("parent row constructor row_L5a passes its own checks (as the parent requires)",
++             all(ok for _, ok, _ in P.CHECKS[n_parent_before:]), f"{len(P.CHECKS) - n_parent_before} constructor checks")
+     analyse("parent L5a", symbol, zsa, gens_a, -1, results, groups)
+ 
++    # Prerequisites: every asserted check so far (repair 1 of the gpt-6.1-sol review).
++    prereq_failed = [c for c in D.CHECKS if not c[1]]
++    certified = not prereq_failed
++
++    def verdict(ok):
++        if not certified:
++            return "NOT CERTIFIED (failed prerequisite checks)"
++        if ok is None:
++            return "UNDECIDED"
++        return "CONFIRMED" if ok else "REFUTED"
++
+     print("== Part 3: hypotheses (contract Sec. 3)")
+     hb = all(same_pair(x, "parent L4 = CJWW (5.12)", results) and groups[x] == groups["parent L4 = CJWW (5.12)"]
+              for x in ("L3 A+", "L3 B+"))
+-    print(f"  HL3b (A+, B+ share (beta, alpha) and G_walk with CJWW (5.12)): {'CONFIRMED' if hb else 'REFUTED'}")
++    print(f"  HL3b (A+, B+ share (beta, alpha) and G_walk with CJWW (5.12)): {verdict(hb)}")
+     hc_sign = all(D.czero(results[x]["beta"] + results["L3 A+"]["beta"], NS)
+                   and D.czero(results[x]["alpha"] - results["L3 A+"]["alpha"], NS) for x in ("L3 A-", "L3 B-"))
+     hc_l5a = all(same_pair(x, "parent L5a", results) for x in ("L3 A-", "L3 B-"))
+     hc = hc_sign and hc_l5a
+     print(f"  HL3c (A-, B-: beta opposite to A+, same alpha: {hc_sign}; same (beta, alpha) as L5a: {hc_l5a}): "
+-          f"{'CONFIRMED' if hc else 'REFUTED'}")
++          f"{verdict(hc)}")
+     hd = all(results[x]["lowest_aniso"] for x in cases)
+-    print(f"  HL3d (lowest correction anisotropic in all four cases): {'CONFIRMED' if hd else 'REFUTED'}")
+-    he = all(results[x]["alpha0"].is_negative for x in cases)
+-    print(f"  HL3e (alpha_0 < 0 in all four cases): {'CONFIRMED' if he else 'REFUTED'}; "
++    print(f"  HL3d (lowest correction anisotropic in all four cases): {verdict(hd)}")
++    signs = [results[x]["alpha0"].is_negative for x in cases]
++    he = None if any(v is None for v in signs) else all(signs)
++    print(f"  HL3e (alpha_0 < 0 in all four cases): {verdict(he)}; "
+           f"alpha_0 = {[results[x]['alpha0'] for x in cases]}")
+     for x in cases:
+         r = results[x]
+         print(f"  {x}: lowest = {r['lowest']}; beta = {r['beta0']} + ({r['beta3']}) n1 n2 n3; "
+               f"{r['pattern'].split('; ')[1]}")
++    # Contract Sec. 4 verdict (repair 2): every quantity of Sec. 2 except the two OPEN ones.
++    missing = [x for x in cases
++               if any(results[x].get(key) is None for key in ("beta", "alpha", "alpha0", "lowest"))
++               or x not in groups
++               or not D.czero(results[x]["beta_residual"], NS) or not D.czero(results[x]["cubic_residual"], NS)]
++    if not certified:
++        row_verdict = "L3_DISPERSION_OPEN_FAILED_CHECKS"
++    elif missing:
++        row_verdict = "L3_DISPERSION_OPEN_QUANTITIES_MISSING_" + "_".join(m.replace(" ", "") for m in missing)
++    else:
++        row_verdict = "L3_DISPERSION_COMPLETE"
++    print(f"  Row verdict (contract Sec. 4): {row_verdict} "
++          f"(V_grp^max and scale of validity OPEN, as the contract states)")
+     failed = [c for c in D.CHECKS if not c[1]]
+     print(f"{len(D.CHECKS) - len(failed)}/{len(D.CHECKS)} checks passed (dispersion L3 row gate; "
+           f"includes the parent's per-row checks of the comparison rows).")

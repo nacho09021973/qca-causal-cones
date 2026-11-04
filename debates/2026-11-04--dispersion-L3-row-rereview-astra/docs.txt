@@ -1,0 +1,10 @@
+scripts/verify_dispersion_L3_row_gate.py
+reports/2026-11-04--dispersion-L3-row.md
+debates/2026-11-04--dispersion-L3-row-rereview-astra/salida_verificador.txt
+debates/2026-11-04--dispersion-L3-row-rereview-astra/diff_reparacion.txt
+debates/2026-11-04--dispersion-L3-row-review-astra/informe_astra.md
+theory/DISPERSION_L3_ROW_GATE.md
+scripts/verify_dispersion_corrections_gate.py
+scripts/verify_c_across_lattices_gate.py
+scripts/verify_weyl_dirac_gate.py
+scripts/verify_directional_saturation.py
