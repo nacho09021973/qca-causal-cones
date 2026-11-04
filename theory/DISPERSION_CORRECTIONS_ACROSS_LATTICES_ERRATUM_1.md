@@ -1,7 +1,11 @@
 # DISPERSION_CORRECTIONS_ACROSS_LATTICES — Erratum 1 (row labels L3/L4)
 
 **Date:** 2026-11-04. **Author:** Claude (Anthropic). **Status: DRAFT,
-PRELIMINARY**, pending cross-family review and user approval.
+PRELIMINARY**, pending user approval. Reviewed by DeepSeek
+(`debates/2026-11-04--dispersion-erratum1-review-deepseek/`, PASS, no
+mandatory repairs, reviewed SHA256 in its `inputs.sha256`); its two
+citation clarifications (CS line of «thirteen», `L5b[+i]` at verifier
+l. 811) were applied afterwards, without re-review.
 **Authorization:** user instruction of 2026-11-04 («haz la 4 y la 3»),
 option 3: a dated erratum with a short review. **Base:** `200f221`.
 
@@ -65,14 +69,16 @@ contract's row table relative to its parent, not in the execution.
    `verify_weyl_dirac_gate.published_symbol(3, ·, ·)`) has **no dispersion
    entry**; the verifier imports `published_symbol` only for d = 1, 2
    (l. 560, 562). Both computed CJWW rows belong to parent row L4. The
-   phrase «the thirteen massless rows of Sec. 11» in CS Sec. 13 overstates
-   coverage by one row.
+   phrase «the thirteen massless rows of Sec. 11» in CS Sec. 13 (l. 2422)
+   overstates coverage by one row: thirteen computed entries cover twelve
+   distinct parent rows (parent L4 gets two, parent L3 none).
 2. **He.** The listing «L3 `K4`» in CS Sec. 13 (l. 2449–2450) is evidence
    for CJWW (5.15), i.e. parent row L4. He is **not checked** for the
    parent's row L3. The verdict `CONFIRMED_IN_DECLARED_ROWS` therefore
    holds for the declared rows except the standard-battery L3.
 3. **Hf substrate grouping.** Contract l. 142 and verifier l. 811 compare
-   «BCC: L3, L5a, L5b», where «L3» is CJWW (5.15) on `Z^3`. With the
+   «BCC: L3, L5a, L5b» (the verifier uses the block `L5b[+i]`), where
+   «L3» is CJWW (5.15) on `Z^3`. With the
    groups of Sec. 1:
    - the BCC substrate carries L5a, the two Weyl blocks of L5b, and CJWW
      (5.12);
