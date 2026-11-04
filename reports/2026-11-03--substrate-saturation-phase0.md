@@ -20,6 +20,14 @@ to the Weyl/Dirac gate (Sec. 2). Second Grok round
 REPAIR_REQUIRED, two repairs (L3 trace rewritten clause by clause; L4 not
 counted in the domain), both applied here; this revision is not
 re-reviewed.
+**Update 2026-11-04 (L3 only).** DeepSeek (`deepseek-v4-pro`) reviewed the
+L3 node trace of Sec. 2: PASS on all five points, no mandatory repairs
+(`debates/2026-11-04--substrate-saturation-phase0-L3-trace-review-deepseek/`,
+`97dfe44`; reviewed sha256 `3b88e925…`). By the user's decision of
+2026-11-04, L3 counts as a witness in this audit, in that role only; its two
+non-blocking clarifications are added to the trace. This changes no outcome:
+the BCC substrate already had the witness L5a. It does not close phase 0 and
+does not change its evidential value.
 
 **Pre-step check.** Known: the contract fixes (PH), its domain (`s = 2`,
 `d <= 3`, admissible models), one source per row, three separate fields,
@@ -77,7 +85,7 @@ structure — see Sec. 4, finding F2).
 | --- | --- | --- | --- |
 | L1 | `c_0 = r_in` | — | yes: L1 |
 | L2, L6e | `c_0 = r_in` | — | yes: L2, L6e |
-| L3, L5a | `c_0 = r_in` | — | yes: L5a (L3 pending review of its node trace) |
+| L3, L5a | `c_0 = r_in` | — | yes: L5a and L3 (L3's node trace reviewed 2026-11-04) |
 | L4 | `c_0 = r_in` (pair from l. 147); node not established in the frozen sense | — | unresolved: L4 is the only tabulated walk on its substrate and is flagged |
 | L6a | `c_0 < r_in` (`c_0/r_in = 1/sqrt3`) | T1: `sup c_0/r_in = sqrt3/2` on the `n = 3` antipodal subclass only (hex-ceiling report l. 125, CS Sec. 12); L6a is in it, `g = 1/3` (l. 138–139). T2: no s=2 walk with `F within {0} U vert(H)` reaches `r_in` (CS Sec. 12; contains L6a, L6d, L6f, hex-ceiling l. 153–156). M1-B13, M1-B19: no s=2 walk in `W_hex^sym` with `F` within S13 or S19 reaches `r_in` (CS Sec. 14), qualitative gaps. Whole hexagonal class OPEN. | no promoted saturating walk; **not** "no walk saturates" |
 | L6d, L6f | `c_0 < r_in` (`c_0/r_in = sqrt3/2`) | as for L6a (L6d at the T1 maximum, `g = -1/2`) | as for L6a |
@@ -100,23 +108,33 @@ origin (l. 159–160) and checks unitarity `W W^† = I` as a Laurent identity
 (l. 147); differentiating it at `k = 0`, where `W = I`, gives
 `∂W + ∂W^† = 0`, so `i ∂W` is Hermitian (a one-line derivation by the
 author from the checked identity, not itself a verifier check);
+[clarification, 2026-11-04 review: `spatial_derivative` is
+`i z ∂_z / sqrt(d)` (verifier l. 133–134), which equals `∂_k` under the phase
+`z_j = e^{i k_j / sqrt(d)}`; that phase follows from `N_d = {±1}^d / sqrt(d)`
+(CS l. 486), since the monomial `z^n` is the displacement `n / sqrt(d)`. The
+opposite sign convention flips the sign of every `T_a` and affects neither
+Hermiticity, tracelessness nor the anticommutator];
 (iii) traceless: «scalar trace» `tr W = 2u` (l. 149) and «scalar gradient»
 `∂u = 0` at the origin (l. 161–162), so `tr(i ∂W) = 0`;
 (iv) `{T_a, T_b} = 2 c_0^2 delta_ab`: «Clifford» checks
 `{spatial_a, spatial_b} = 2 (delta_ab/d) I` (l. 164–167), with
-`c_0 = 1/sqrt(d)` by «massless matching» (l. 172–173); also exact-gate
+`c_0 = 1/sqrt(d)` [clarification, 2026-11-04 review: the value `c_0^2 = 1/d`
+is fixed by the Clifford check; «massless matching» (l. 172–173) computes
+`c_0` from `T_1` and checks `c_0 = r_in`]; also exact-gate
 report l. 131–138 (`H_W = (1/sqrt d) sum_j Sigma_j k_j + O(|k|^2)`,
 `{Sigma_i, Sigma_j} = 2 delta_ij I`);
 (v) zero tilt: the word is not used in the Weyl/Dirac dossier. It is
 reached only through the equivalent form the contract itself declares,
 `A(n)^2 = c_0^2 |n|^2 I` with `A(n) = n_a T_a` traceless, which is the
 polarization of (iv) together with (iii).
-**Status of L3's node: traced by this correspondence, pending review**
+**Status of L3's node: traced by this correspondence; reviewed by DeepSeek on
+2026-11-04, PASS, no repairs (header); L3 counts as a witness by the user's
+decision of that date.** Text as of 2026-11-03, kept: «pending review»
 (steps (ii) and (v) are elementary derivations by the author from checked
 identities; the user checked both derivations on 2026-11-03 and found them
 correct under the stated hypotheses, without inspecting the verifier lines
 or the full correspondence, so the status is unchanged). Until that is reviewed, L3 is not used as a witness; the BCC
-witness is L5a, a computed row under the certificate of l. 154–156. **L4 is flagged, unresolved:** it is re-tabulated, not
+witness is L5a» (superseded 2026-11-04 as stated above). L5a is a computed row under the certificate of l. 154–156. **L4 is flagged, unresolved:** it is re-tabulated, not
 computed, in that report (l. 147, «CURRENT_STATE Sec. 8»), so the
 certificate does not cover it, and the promoted passages read here (CS
 Sec. 8.1–8.2, l. 762–789) state an emergent isotropic IR cone `B(c_IR)`
@@ -167,7 +185,7 @@ is not the frozen certificate, and it is withdrawn.)
   before any test.
 - **F3 (substrate counts).** Grouped by shape and translation group, the
   rows with a traced node give four substrates in the domain (line; square,
-  L2 = L6e; BCC, L5a, with L3 pending; hexagon on the triangular lattice,
+  L2 = L6e; BCC, L5a and L3 (L3 reviewed 2026-11-04); hexagon on the triangular lattice,
   L6a = L6d, with L6f the same shape up to rotation and scale) plus the
   finer-group hexagon of L6c. The cube substrate of L4 is tabulated with
   domain membership not established (Sec. 2) and is not counted. By shape,
@@ -178,7 +196,7 @@ is not the frozen certificate, and it is withdrawn.)
 **Definitional outcome: `OPEN_AFTER_ROW_SURVEY`.** Gap: the admissibility
 of L4 (isotropic untilted node in the sense of contract Sec. 2.4) is not
 established from the promoted data used here (Sec. 2). L3's node is traced through the Weyl/Dirac gate by the correspondence of
-Sec. 2, pending review. Every tabulated `s = 2` row, L4 included, has one
+Sec. 2, reviewed 2026-11-04 (PASS); this does not touch the gap, which is L4. Every tabulated `s = 2` row, L4 included, has one
 traced source for the pair `(r_in, c_0)` in the units of contract
 Sec. 2.4; the rows counted in the domain are those with a traced node (L4
 is not among them); the zonotope-direction field is read from the
