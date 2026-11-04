@@ -1,13 +1,18 @@
 # SUBSTRATE_SATURATION (phase 0) — Amendment 1 (post-execution, row L4)
 
-**Status: DRAFT, not approved, not frozen.** Drafted by Claude Code
+**Status: APPROVED, 2026-11-04** («sí, aplica las cuatro aclaraciones y
+apruebo la enmienda»), after applying the four non-blocking clarifications
+of the gpt-6.1-sol review (`debates/2026-11-04--substrate-saturation-phase0-amendment1-review-astra/`,
+PASS, no mandatory repairs, reviewed draft `cecf75a`). The clarifications,
+plus updating the status notes of Sec. 2 header, Sec. 2.4 and Sec. 5 to
+record that review, are the only changes from the reviewed draft. Drafted by Claude Code
 (Claude Opus 5.5) on 2026-11-04 at the user's instruction («redacta la
 enmienda para L4, sin ejecutar un verificador. Propongo que la enmienda
 diga expresamente que una fila declarada puede clasificarse si identifica
 la clase pertinente y la derivación desde la fuente primaria está
 revisada. La mera aparición de una fila en una tabla no bastaría por sí
-sola»). Approval of this amendment, when given, is not promotion of
-phase 0 and does not change its evidential value.
+sola»). Approval of this amendment is not promotion of phase 0 and does
+not change its evidential value.
 **Amends:** [`SUBSTRATE_SATURATION_PHASE0_GATE.md`](SUBSTRATE_SATURATION_PHASE0_GATE.md),
 preregistration commit `9bf3019`. **The frozen file is not edited.** This
 amendment is a separate document; where it applies, it prevails over the
@@ -44,7 +49,12 @@ not touch the counterexample criterion (Sec. 4) or the caveat on
   any of these cases L4 stays unclassified and that is recorded (user rule
   of 2026-11-03: do not force L4 to obtain `DEFINITIONS_CLOSED`).
 
-## 1. Rule (replaces nothing; adds a second admissible source for the node)
+## 1. Rule (keeps every mathematical condition; adds an explicit exception to the documentary source of the node)
+
+Every condition of frozen Secs. 2.2 and 2.4 still has to hold. What
+changes is only where the node may be established from: besides the
+certificate cited in frozen Sec. 2.4, a reviewed primary-source derivation
+under the conditions below.
 
 A declared `s = 2`, `d <= 3` row whose isotropic untilted node is **not**
 covered by a promoted certificate may be classified as admissible in the
@@ -78,7 +88,7 @@ under Amendment 1 (reviewed primary-source derivation)», never as
 without a frozen class clause, and it gives no row any confirmatory weight
 for (PH).
 
-## 2. Application to L4 (as drafted; to be checked on review)
+## 2. Application to L4
 
 1. **Class.** `theory/C_ACROSS_LATTICES_GATE.md` (preregistration commit
    `30672ba`), Sec. 2 table, l. 78: row L4, `d = 3`, «Z^3,
@@ -94,12 +104,32 @@ for (PH).
    `T_a := i ∂_{p_a} W(0)` (sign immaterial to every clause). Literal check
    of (5.12) and (5.14) on p. 16 by DeepSeek, PASS (`801c3f2`), including
    the confirmation that the `p_1` typo of (5.14) is in the original.
+   **Recorded source discrepancy, not repaired.** The printed (5.13) has
+   `cos p_1 cos p_2 cos p_3 − sin p_1 sin p_2 sin p_3`; half the trace of
+   the printed matrix (5.12) is `ccc + sss` (with `σ_1σ_2σ_3 = iI`), the two
+   differing by `p -> -p`. Already certified in
+   `scripts/verify_directional_saturation.py` l. 106–111 and noted in
+   `scripts/README.md` l. 98. This amendment follows the matrix (5.12). The
+   discrepancy does not affect clauses (i)–(v), the support or `r_in`; it
+   does change the cubic term of the dispersion
+   (`ω^2 = |p|^2 − 2 p_1 p_2 p_3 + O(|p|^4)` from the matrix, the opposite
+   cubic sign from the printed (5.13)), so its irrelevance here does not
+   extend to dispersion calculations.
 3. **Review.** DeepSeek (`deepseek-v4-pro`), two PASS verdicts, no
    mandatory repairs (`debates/2026-11-03--substrate-saturation-phase0-addendum-L4-review-deepseek/`,
    `debates/2026-11-03--substrate-saturation-phase0-addendum-L4-p16-check-deepseek/`).
-   DeepSeek is a different family from the author (Claude). One house.
-4. **Substrate: author finding, hand derivation, `[UNVERIFIED]` until
-   reviewed.** Read from the printed symbols:
+   DeepSeek is a different family from the author (Claude). Records:
+   review 1 of the addendum at `3e20c70`, reviewed SHA-256 `39a6d17a…`,
+   PASS; literal check of p. 16 at `738b62c`, reviewed SHA-256
+   `b8b9ed87…`, PASS. The current addendum has SHA-256 `b8b9ed87…`
+   (checked 2026-11-04), i.e. it is the text of the second record; between
+   the two, only the page citation and the wording of clause (v) changed.
+   In addition, gpt-6.1-sol (OpenAI) re-derived (i)–(v) for both walks from
+   the source text in its review of this amendment (point 3, PASS), so the
+   derivation has PASS verdicts from two families other than the author's.
+4. **Substrate: author finding, hand derivation, not checked by any
+   script; re-derived by gpt-6.1-sol (review point 4, PASS).** Read from
+   the printed symbols:
    - (5.12) is the product of `cos p_a + i sin p_a σ_a`, each factor with
      Fourier support `{±e_a}`; the composite support is exactly
      `{±1}^3`. The group it generates is `{x ∈ Z^3 : x_1 ≡ x_2 ≡ x_3
@@ -115,8 +145,11 @@ for (PH).
      `cos p_1 sin p_2` (steps `(±1,±1,0)`) and `sin p_1` (steps
      `(±1,0,0)`). These generate `Z^3`. The convex hull is still
      `[-1,1]^3`.
-   - Hence the source label «Z^3» of C_ACROSS l. 78 holds for (5.15) and
-     not for (5.12). Both walks have `C_micro` a cube, so the shape column
+   - Hence the source label «Z^3» of C_ACROSS l. 78 holds for the
+     generated group of (5.15) and not for that of (5.12). This refers to
+     the generated group required by frozen Sec. 2.3: (5.12) can be
+     written on the ambient `Z^3`, where it preserves each of the four BCC
+     cosets; it is not impossible to formulate it there. Both walks have `C_micro` a cube, so the shape column
      of the audit is unchanged; the substrate count of audit F3 changes:
      the «cube substrate of L4» is the `Z^3` group of (5.15), and (5.12)
      is a further walk on the BCC substrate.
@@ -154,10 +187,12 @@ reclassify any other row; it does not promote phase 0; it gives no
 evidence for (PH) or (PS′); it authorizes no later phase (frozen Sec. 5,
 last paragraph, still applies).
 
-## 5. Before approval
+## 5. Review and approval
 
-Independent cross-family review of this draft, in particular of Sec. 1
-(that the rule lowers no requirement) and of Sec. 2.4 (the substrate
-derivation), with the user's permission to send. Then the user approves,
-amends or rejects; only then is the audit's definitional outcome
-re-assessed.
+Reviewed as a draft (`cecf75a`) by gpt-6.1-sol (OpenAI), sent with the
+user's permission: PASS on Sec. 1 (the rule lowers no mathematical
+requirement), Sec. 2.1–2.4 and Secs. 3–4, no mandatory repairs, four
+clarifications, all applied (Sec. 1 title and preamble; Sec. 2.2 sign
+note; Sec. 2.3 records; Sec. 2.4 generated group). Approved by the user
+on 2026-11-04. Next, and only next: re-assess the audit's definitional
+outcome under this amendment (Sec. 3).
