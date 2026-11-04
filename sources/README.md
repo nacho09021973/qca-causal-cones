@@ -91,3 +91,21 @@ Read 2026-11-01 (text extraction, `pdftotext -layout`, per page):
   `Delta P_i` Eqs. (25)–(27) p.6; momentum symbol Eq. (33) p.7);
   `1312.2852v1.pdf` p.4–5 Eqs. (20)–(21) and the BCC remark;
   `1609.00305v2.pdf` p.1–3 (paired/encoded QW, Eqs. (3)–(6)).
+
+## CJWW tail-estimate paper — entry added 2026-11-04
+
+Archived on 2026-09-15 in `f74018f` (s4-family prior-art audit); this entry
+was missing until 2026-11-04 (work plan, Sec. 3). Size and SHA256 measured
+on 2026-11-04 with `stat -c %s` and `sha256sum`; title, authors and arXiv
+stamp checked against p.1 (`pdftotext -l 1`).
+
+| File | Paper | SHA256 | Bytes |
+| --- | --- | --- | --- |
+| `2408.02108v1.pdf` | C. Cedzich, A. Joye, A. H. Werner, R. F. Werner, *Exponential tail estimates for quantum lattice dynamics*, arXiv:2408.02108v1 [quant-ph], 4 Aug 2024 | `25e2b03ff056fc78a7105fb81a6859be326ae2ee5717b35f7fc664b89ae7bdf8` | 1146894 |
+
+Pages recorded as read live in the reports that cite them, not here:
+`reports/2026-09-15--s4-family-prior-art-audit.md` (Sec. 5.3);
+`reports/2026-09-16--directional-causal-saturation.md` (PDF pp. 17–18);
+`reports/2026-10-31--h1-small-gaussian-profile.md` (p. 17);
+`reports/2026-11-03--substrate-saturation-phase0-addendum-L4.md`
+(Sec. 5.4, Eqs. (5.12)–(5.17), PDF pp. 16–17).
