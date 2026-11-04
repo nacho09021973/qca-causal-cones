@@ -183,6 +183,14 @@ is not the frozen certificate, and it is withdrawn.)
   they coincide with the factor shifts of each walk is not established
   here. (PS′) as written therefore needs that hypothesis made explicit
   before any test.
+  **Correction, 2026-11-04** (gpt-6.1-sol review of the G1 trace,
+  `8d70e58`, repair 2; text above kept): the all-patterns condition is
+  sufficient, not necessary. `conv F = sum_i [-a_i, a_i]` holds iff every
+  vertex of the zonotope is in `F`; each vertex comes from a single sign
+  pattern (Lemma V of the G1 trace). Non-vertex patterns may vanish without
+  changing the hull. Equality of `F` with the full set of sign sums needs,
+  in addition, the summed amplitudes at coincident displacements. L6e is a
+  case where vertex patterns vanish (G1 trace, `d60eaba`).
 - **F3 (substrate counts; updated in Sec. 7.3 to six substrates).** Grouped by shape and translation group, the
   rows with a traced node give four substrates in the domain (line; square,
   L2 = L6e; BCC, L5a and L3 (L3 reviewed 2026-11-04); hexagon on the triangular lattice,
@@ -329,3 +337,16 @@ not a counterexample; it is not independent evidence for (PH), because
 (PH) was read off this table and the table still has three hypercube
 shapes, one regular hexagon and no parallelepiped that is not a hypercube.
 Never `CONFIRMED`. No outcome authorizes a later phase. F2 unchanged.
+
+### 7.5 G1 trace (2026-11-04)
+
+Documentary trace: [`2026-11-04--substrate-saturation-phase0-G1-trace.md`](2026-11-04--substrate-saturation-phase0-G1-trace.md)
+(`cb814b5`; reviewed by gpt-6.1-sol, REPAIR_REQUIRED, two repairs, applied
+in `d60eaba`, not re-reviewed). Resolved: L1, L2, L3, L5a, L4-(5.12), L6a,
+L6d. **G1 stays open** with three named parts: **G1-a** (L6c, L6f:
+asymmetric partial shifts, product-class membership needs a definitional
+decision); **G1-b** (L4-(5.15): no factorization in the record); **G1-c**
+(L6e: reduced generators depend on the presentation; in the printed one
+four sign patterns vanish, two at missing zonotope vertices). F2 corrected
+as noted in Sec. 4. The definitional outcome stays
+`OPEN_AFTER_ROW_SURVEY`, PRELIMINARY, with no confirmatory value.
