@@ -183,7 +183,7 @@ is not the frozen certificate, and it is withdrawn.)
   they coincide with the factor shifts of each walk is not established
   here. (PS′) as written therefore needs that hypothesis made explicit
   before any test.
-- **F3 (substrate counts).** Grouped by shape and translation group, the
+- **F3 (substrate counts; updated in Sec. 7.3 to six substrates).** Grouped by shape and translation group, the
   rows with a traced node give four substrates in the domain (line; square,
   L2 = L6e; BCC, L5a and L3 (L3 reviewed 2026-11-04); hexagon on the triangular lattice,
   L6a = L6d, with L6f the same shape up to rotation and scale) plus the
@@ -192,6 +192,10 @@ is not the frozen certificate, and it is withdrawn.)
   among domain rows: segment, square, cube (BCC) and hexagon.
 
 ## 5. Outcomes (contract Sec. 5)
+
+**Re-assessed 2026-11-04 under Amendment 1: see Sec. 7** (outcome
+`OPEN_AFTER_ROW_SURVEY` kept; L4 gap resolved; gap G1 named). Text of
+2026-11-03 follows.
 
 **Definitional outcome: `OPEN_AFTER_ROW_SURVEY`.** Gap: the admissibility
 of L4 (isotropic untilted node in the sense of contract Sec. 2.4) is not
@@ -216,3 +220,112 @@ No evidence for (PH) or (PS′); no statement about parallelepipeds that are
 not hypercubes, about hexagonal walks beyond the promoted results, about
 `s != 2` or `d > 3`; no uniform gap; no physical explanation of the
 predicate; no novelty claim.
+
+## 7. Re-assessment of the definitional outcome under Amendment 1 (2026-11-04)
+
+**Authorization:** user instruction, 2026-11-04 («haz la revaluación
+conforme a la Enmienda 1 aprobada. Comprueba cada condición congelada de
+cierre y deja su trazabilidad en el informe»). **Amendment:**
+[`SUBSTRATE_SATURATION_PHASE0_GATE_AMENDMENT_1.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE_AMENDMENT_1.md),
+approved `5213d94` (review: gpt-6.1-sol, PASS, `1d17a2d`). Author: Claude
+Code (Claude Opus 5.5). Documentary only: no verifier run, written or
+edited. Per Amendment 1 Sec. 3, only the definitional outcome is
+re-assessed, with the amendment as the sole change; Secs. 1–6 above are
+kept as written on 2026-11-03 (with the L3 annotation of `6aa42f9`).
+
+### 7.1 L4 under Amendment 1
+
+The five conditions of Amendment 1 Sec. 1, as applied there in Sec. 2 and
+reviewed: (1) class: C_ACROSS_LATTICES_GATE l. 78 with its admission rule
+l. 100–104, the two printed walks CJWW (5.12), (5.15); (2) primary source:
+PDF p. 16 (5.12), p. 17 (5.15), transcription checked literally (DeepSeek,
+`801c3f2`; gpt-6.1-sol, point 3); (3) review: DeepSeek PASS twice, the
+current addendum text being the second record (sha256 `b8b9ed87…`), and
+gpt-6.1-sol re-derivation PASS; (4) substrate: (5.12) generates the BCC
+group, (5.15) generates `Z^3` (Amendment 1 Sec. 2.4, re-derived by
+gpt-6.1-sol); (5) pair `(1/sqrt3, 1/sqrt3)` from c-across-lattices l. 147
+only. **L4 is admissible under Amendment 1 (reviewed primary-source
+derivation), not «certified».** Fields of Sec. 3.3 for L4: (a) `c_0 = r_in`
+for both walks; (b) none; (c) yes for the `Z^3` substrate (witness
+(5.15)) and yes again for BCC ((5.12), besides L5a and L3).
+
+### 7.2 Frozen closing conditions (contract Sec. 5, `DEFINITIONS_CLOSED`)
+
+| # | Condition (frozen text) | Status after Amendment 1 | Trace |
+| --- | --- | --- | --- |
+| C1 | every row in the domain has a single traced source in the units of Sec. 2.4 | **met** | Sec. 2 table, «Single source» column: c-across-lattices l. 140–151; L4 l. 147 only, CS Sec. 8 pair not crossed |
+| C2 | domain membership of each row (admissible node, frozen Secs. 2.2, 2.4) | **met** | L1, L2, L6e, L5a, L6a, L6c, L6d, L6f: certificate c-across-lattices l. 154–156; L3: trace to the Weyl/Dirac gate (CS Sec. 5, PASS), reviewed (DeepSeek, `97dfe44`); L4: Sec. 7.1 |
+| C3a | Sec. 3.2 fields: vertices of `C_micro`, hypercube, parallelepiped, `r_in`, `c_0` | **met** | Sec. 2 table, vertices from c-across-lattices Sec. 3 (l. 106–113) and CS l. 486–488 |
+| C3b | Sec. 3.2 field: «for product-class rows, the reduced generators (for (PS′))» | **not met** | see gap G1 below |
+| C3c | Sec. 3.3: three separate fields per row | **met** | Sec. 2 «Three fields» table, L3 updated `6aa42f9`, L4 in Sec. 7.1 |
+| C4 | all fields «filled from promoted exact data» | met for C3a and C3c, with the L4 node from the Amendment 1 source; not for C3b | as above |
+| C5 | «the `OUTSIDE_DEFINITIONS` list is explicit» | **met here**: `OUTSIDE_DEFINITIONS = ∅` | every `s = 2` row now has an admissible node (C2); rows with `s != 2` (L5b, L3s4, L6b) are outside the domain (Sec. 1 table), which is a different category. The 2026-11-03 text did not state the list; it is stated here |
+
+**Gap G1 (C3b), present in the 2026-11-03 audit and not counted there.**
+Frozen Sec. 3.2 and the last paragraph of frozen Sec. 1 require phase 0 to
+record, for product-class rows, the reduced generators: the partial-shift
+vectors `a_i` of the factors, up to sign and positive scale, parallel ones
+merged. The Sec. 2 table records instead a «Zonotope directions» column
+read from the edges of `C_micro`, and finding F2 states that «whether they
+coincide with the factor shifts of each walk is not established here». The
+edges of `conv F` equal the reduced generators only if `conv F` is the full
+zonotope `sum_i [-a_i, a_i]`, which is the hypothesis of F2. Nor does the
+audit record which rows belong to the product class (CJWW (5.15), for
+instance, is printed as a matrix, not as a product of partial shifts). So
+the field is filled by a proxy whose identity with the frozen quantity is
+not established. The 2026-11-03 Sec. 5 named only L4 as the gap; that was
+an omission by the author, found now while checking each condition.
+
+**What would close G1 (not done here; needs the user's decision and a
+review):** a documentary trace, per `s = 2` row, of (i) product-class
+membership and the factor shift vectors, read from the reviewed
+constructors that build each symbol as a product (e.g.
+`verify_weyl_dirac_gate.py` `rotation_product`, l. 80–88, factors along the
+coordinate axes; `verify_c_across_lattices_gate.py` `row_L5a`, l. 167–189,
+`T_b` shifting by `±e_b`; `row_L6a`, l. 227–299, translations by `±u_i`),
+and (ii) whether every sign pattern appears in the certified support `F`.
+For CJWW (5.12) both are already in the reviewed record (three factors with
+shifts `±e_a`; all eight corner amplitudes nonzero, gpt-6.1-sol point 4).
+
+### 7.3 F3 updated: six substrates by group and support
+
+Grouped by translation group and composite step set (frozen Sec. 2.3),
+source coordinates, shape in brackets:
+
+1. **Line** [segment]: group `Z`, `F = {±1}`. L1.
+2. **Square, diagonal steps** [square]: `F = {(±1,±1)}`, group
+   `{x ∈ Z^2 : x_1 ≡ x_2 (mod 2)}`. L2 (CS l. 486), L6e (c-across-lattices
+   l. 111).
+3. **BCC** [cube]: `F = {±1}^3`, group
+   `{x ∈ Z^3 : x_1 ≡ x_2 ≡ x_3 (mod 2)}`. L3 (CS l. 486), L5a
+   (c-across-lattices l. 106), CJWW (5.12) of L4 (Amendment 1 Sec. 2.4).
+4. **Simple cubic** [cube]: `F = {±1}^3 ∪ {(±1,±1,0)} ∪ {(±1,0,0)}` (signs
+   independent), group `Z^3`. CJWW (5.15) of L4 (Amendment 1 Sec. 2.4).
+   New in this count.
+5. **Hexagon on the triangular lattice** [regular hexagon]:
+   `F = {0} ∪ {±2u_i}`, step spacing equal to the hull radius. L6a = L6d
+   (c-across-lattices l. 108, 110); L6f, a hexagon of radius `sqrt3` rotated
+   30° (l. 112), the same shape and group up to rotation and scale.
+6. **Hexagon over the finer triangular group** [regular hexagon]: the
+   19-point hexagonal ball of radius 2, group of index 1 instead of 4 in
+   the generator lattice (l. 109). L6c.
+
+The 2026-11-03 count was five (items 1, 2, 3, 5, 6). Item 4 is added and
+item 3 gains a walk. **Shapes unchanged:** segment, square, cube,
+hexagon; F1 unchanged (no parallelepiped that is not a hypercube, no
+non-hypercube body with a saturating walk).
+
+### 7.4 Outcomes after re-assessment
+
+**Definitional outcome: `OPEN_AFTER_ROW_SURVEY`, kept.** Remaining gap:
+**G1**, the reduced generators of product-class rows (and the list of
+those rows), frozen Sec. 3.2. The L4 gap of 2026-11-03 is **resolved** by
+Amendment 1. No other gap was found against conditions C1–C5.
+
+**Counterexample check, unchanged:** (PH⇐) and (PH⇒)
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`. The new `Z^3` witness is on a
+hypercube substrate and saturates, so it is consistent with (PH⇐) and is
+not a counterexample; it is not independent evidence for (PH), because
+(PH) was read off this table and the table still has three hypercube
+shapes, one regular hexagon and no parallelepiped that is not a hypercube.
+Never `CONFIRMED`. No outcome authorizes a later phase. F2 unchanged.
