@@ -22,8 +22,11 @@ Sec. 1.3 (no recibió los expedientes de DeepSeek).
   mismo. Su expansión `ω^2 = |p|^2 − 2 p1 p2 p3 + O(|p|^4)` cerca de 0: de
   `cos ω = 1 − |p|^2/2 + p1p2p3 + O(|p|^4)` y `ω^2 = 2(1 − cos ω) + O(|p|^4)`.
   Coincide. No afecta a (i)–(v), al soporte ni al radio; sí al término
-  cúbico de la dispersión. No se comprueba aquí si algún resultado del
-  repo usó el signo impreso de (5.13).
+  cúbico de la dispersión. Ya estaba registrado en el repo:
+  `verify_directional_saturation.py` l. 106–111 certifica `ccc + sss` frente
+  al `ccc − sss` impreso, y `scripts/README.md` l. 98 dice que ambos difieren
+  por `p -> -p`; `reports/2026-09-16--directional-causal-saturation.md` l. 20
+  lo anota. No es un hallazgo nuevo.
 - **Recuento F3.** Cuatro sustratos más el hexágono de grupo fino = 5;
   con el `Z^3` de (5.15), 6. Coincide con el revisor.
 
