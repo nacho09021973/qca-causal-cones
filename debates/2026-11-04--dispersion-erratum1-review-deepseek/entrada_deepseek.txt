@@ -1,0 +1,943 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente la errata
+theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_ERRATUM_1.md, escrita por
+Claude (Anthropic). Se adjuntan: la errata, el contrato congelado del gate
+de dispersión, su contrato padre (theory/C_ACROSS_LATTICES_GATE.md), el
+informe del gate de dispersión y extractos literales numerados del
+verificador de dispersión, de scripts/verify_directional_saturation.py
+(walk1, walk2), de la Enmienda 1 de la fase 0 (Sec. 2, punto 4, grupos
+generados) y de state/CURRENT_STATE.md Sec. 13. La errata no es premisa. No
+tienes herramientas: no ejecutes ni navegues. No propongas ampliar la
+investigación ni calcular la fila que falta.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / INSUFFICIENT_EVIDENCE:
+1. INCOHERENCIA. ¿Es exacta la tabla de la Sec. 1 (padre l. 76, 78;
+   contrato de dispersión l. 63, 67; verificador l. 573–576;
+   walk1/walk2)? ¿Se sigue de la Enmienda 1 que (5.12) genera BCC y (5.15)
+   genera Z^3, con C_micro = [−1,1]^3 para ambos? ¿Es justo decir que el
+   defecto está en la tabla del contrato y no en la ejecución?
+2. LO QUE SE MANTIENE. ¿Son los coeficientes de la tabla del informe
+   resultados para los símbolos importados, y es correcta la reasignación
+   («L3» impreso = (5.15), «L4» impreso = (5.12))? ¿Es cierto que no
+   dependen de las etiquetas los hallazgos listados (términos beta, contenido
+   armónico, Hd, refutación de Hf por L2 = L6e)?
+3. LO QUE CAMBIA. (a) ¿Es cierto que la fila L3 del padre (batería estándar
+   d = 3) no tiene entrada, según las líneas 560 y 562 del verificador, y que
+   «the thirteen massless rows» sobrestima la cobertura en una fila? (b) ¿Es
+   correcto restringir He a las filas declaradas salvo L3? (c) Con los grupos
+   corregidos, ¿es correcta la nueva pertenencia al sustrato BCC, el par
+   compartido (5.12) con el bloque de L5b de signo de beta opuesto al de L5a
+   (leído a mano de la tabla) y la afirmación de que las l. 81 y 263 del
+   informe siguen siendo ciertas? ¿Queda intacto REFUTED_BY_ROW_L6e?
+4. ALCANCE. ¿Respeta la errata lo que dice no hacer (no cambia bytes de
+   contrato, informe ni verificador; no recalcula; no decide la
+   coincidencia de símbolos)? ¿Se le escapa algún enunciado promovido de CS
+   Sec. 13 que dependa de las etiquetas L3/L4?
+
+Hasta 1500 palabras en español. Cada defecto: frase o línea exacta, por qué
+falla y qué lo cerraría. Distingue aclaración de error. Dictamen global PASS,
+REPAIR_REQUIRED o INSUFFICIENT_EVIDENCE y lista de reparaciones obligatorias;
+si no hay ninguna, dilo expresamente.
+
+=== DOCUMENT 1: DISPERSION_CORRECTIONS_ACROSS_LATTICES_ERRATUM_1.md ===
+
+# DISPERSION_CORRECTIONS_ACROSS_LATTICES — Erratum 1 (row labels L3/L4)
+
+**Date:** 2026-11-04. **Author:** Claude (Anthropic). **Status: DRAFT,
+PRELIMINARY**, pending cross-family review and user approval.
+**Authorization:** user instruction of 2026-11-04 («haz la 4 y la 3»),
+option 3: a dated erratum with a short review. **Base:** `200f221`.
+
+This erratum changes no byte of the frozen contract
+(`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`, preregistration
+`a7ff5b7`), of the report
+(`reports/2026-11-02--dispersion-corrections-across-lattices.md`) or of
+the reviewed verifier (`scripts/verify_dispersion_corrections_gate.py`,
+SHA256 `b7c451e2…`, last change `4a45280`). Nothing is recomputed. It
+records what the rows labelled L3 and L4 actually contain and which
+promoted statements of `state/CURRENT_STATE.md` Sec. 13 that affects.
+
+## 1. The inconsistency
+
+| Source | Row L3 | Row L4 |
+| --- | --- | --- |
+| Parent `C_ACROSS_LATTICES_GATE.md` l. 76, 78 | standard battery, BCC `N_3` | CJWW (5.12) **and** (5.15), `Z^3` label, `C_micro = [-1,1]^3` |
+| Dispersion contract l. 63, 67 | `walk2()` = CJWW (5.15), «BCC» | `walk1()` = CJWW (5.12), «cube `[-1,1]^3`» |
+| Verifier l. 573–576 | `DS.walk2()`, substrate «cubic» | `DS.walk1()`, substrate «cubic» |
+
+`scripts/verify_directional_saturation.py` l. 64–65 and 72–73 confirm
+`walk1()` = CJWW (5.12) and `walk2()` = CJWW (5.15).
+
+Substrates under phase-0 Sec. 2.3 (generated translation group plus step
+set), from Amendment 1 of the phase-0 gate, Sec. 2 item 4 (hand
+derivation, re-derived by gpt-6.1-sol, PASS):
+
+- CJWW (5.12): support `{±1}^3`, generated group BCC.
+- CJWW (5.15): generated group `Z^3`.
+- Both have `C_micro = [-1,1]^3`.
+
+So the dispersion gate:
+
+- put a CJWW walk, (5.15), in the slot of the parent's standard-battery
+  row L3;
+- labelled it «BCC», although its generated group is `Z^3`;
+- labelled (5.12) «cube», which is right for its hull but not for its
+  group, BCC.
+
+The verifier followed the contract as frozen. The defect is in the
+contract's row table relative to its parent, not in the execution.
+
+## 2. What stands
+
+- **Per-symbol results.** Every coefficient in the report table (l. 38–50)
+  is a result for the symbol the verifier imported. Under the corrected
+  labels:
+  - the row printed «L3» (`O_h`, `alpha = −sigma2/18`, `alpha_0 = −1/90`)
+    is **CJWW (5.15)**;
+  - the row printed «L4» (`T_d`, `beta = −(sqrt3/3) n1 n2 n3`, `alpha` as
+    L5a) is **CJWW (5.12)**.
+- **Findings unaffected by the labels:**
+  - which rows have a `beta` term (inversion-free walk group);
+  - harmonic content against `G_walk`;
+  - Hd (`REFUTED_BY_ROW_L1`; L3s4 range);
+  - Hf refuted by L2 = L6e on the square.
+
+## 3. What changes
+
+1. **Coverage.** The parent's row L3 (standard d = 3 battery,
+   `verify_weyl_dirac_gate.published_symbol(3, ·, ·)`) has **no dispersion
+   entry**; the verifier imports `published_symbol` only for d = 1, 2
+   (l. 560, 562). Both computed CJWW rows belong to parent row L4. The
+   phrase «the thirteen massless rows of Sec. 11» in CS Sec. 13 overstates
+   coverage by one row.
+2. **He.** The listing «L3 `K4`» in CS Sec. 13 (l. 2449–2450) is evidence
+   for CJWW (5.15), i.e. parent row L4. He is **not checked** for the
+   parent's row L3. The verdict `CONFIRMED_IN_DECLARED_ROWS` therefore
+   holds for the declared rows except the standard-battery L3.
+3. **Hf substrate grouping.** Contract l. 142 and verifier l. 811 compare
+   «BCC: L3, L5a, L5b», where «L3» is CJWW (5.15) on `Z^3`. With the
+   groups of Sec. 1:
+   - the BCC substrate carries L5a, the two Weyl blocks of L5b, and CJWW
+     (5.12);
+   - (5.15) is the only computed row on `Z^3`.
+
+   From the report table, by hand, not compared by the verifier: CJWW
+   (5.12) has `beta = −(sqrt3/3) n1 n2 n3` and `alpha` as L5a, so it has
+   the same `(beta, alpha)` as the L5b Weyl block whose `beta` sign is
+   opposite to L5a's, through the orders the table records. This is a
+   further shared pair on BCC. Report l. 81 and l. 263 («on the … BCC
+   substrates the corrections are not all equal») remain true with the
+   corrected membership: L5a and (5.12) differ in the sign of `beta`. The
+   verdict `REFUTED_BY_ROW_L6e` is unchanged.
+
+## 4. Not done here
+
+- No dispersion entry is computed for the standard-battery L3. That would
+  need an authorized computation (user decision).
+- Whether CJWW (5.12) or (5.15) coincides with an L3 symbol up to the
+  declared symmetries is not checked (as in Amendment 1, Sec. 2 item 4).
+- The verifier and the report are not edited. CS Sec. 13 receives a
+  dated note only after this erratum is reviewed and approved.
+
+=== DOCUMENT 2: DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md ===
+
+# DISPERSION_CORRECTIONS_ACROSS_LATTICES — frozen contract
+
+**Status of this text:** frozen at the commit that introduces it; that
+commit is the preregistration commit. Authorized by user instruction of
+2026-11-02 («haz lo que consideres, estás autorizado») on the draft
+revised as recorded in `state/CURRENT_STATE.md` Sec. 13. Nothing computed
+before this commit.
+**Parent:** `C_ACROSS_LATTICES` (`theory/C_ACROSS_LATTICES_GATE.md`), its
+table of massless rows, and `L6B_TRIANGULAR_ROW` for row L6b (promoted
+2026-11-02). Those rows are input; none is recomputed.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> For each declared row, how does the propagation speed depart from the
+> constant `c_0` as the wavelength approaches the lattice scale: what is
+> the exact lowest-order correction to the massless dispersion, its order,
+> its sign, and what angular pattern the walk's symmetry imposes on it?
+
+`c_0` is one number per row and says nothing about the shape of the
+lattice beyond `r_in`. The first correction is where the substrate's
+symmetry, as far as the walk keeps it, becomes visible in the dispersion.
+This gate computes that correction exactly and tabulates it; it does not
+interpret it physically.
+
+## 1. Background taken as input
+
+- Massless table of `C_ACROSS_LATTICES` (`reports/2026-11-01--c-across-
+  lattices.md` Sec. 4) and row L6b (`reports/2026-11-02--l6b-triangular-
+  row.md`, promoted 2026-11-02): symbols, nodes, `c_0`, `r_in`,
+  `c_strict^iso` per row.
+- `c_H` and `c_{omega^2}` are kept distinct for massive rows (PROJECT_
+  INSTRUCTIONS §3). This gate is massless only, so a single `omega(k)`.
+- The 4B closure (`CURRENT_STATE.md` Sec. 8.21): the model fixes no
+  absolute scale; `ell` (lattice step) and `tau` (update time) are free.
+  Every quantity here is therefore dimensionless, in units `ell = 1`
+  (longest step) and `tau = 1`.
+- Claim ceiling of Sec. 8.9(iii) / Sec. 8.21: no claim about our universe.
+  No dictionary to observations is part of this gate (Sec. 5).
+- Symmetry facts used in Sec. 3, elementary and prior art, stated here so
+  that no hypothesis is decided by them unknowingly. A homogeneous
+  polynomial of degree `n` in `(k_x, k_y)` invariant under rotation by
+  `2 pi / m` is a combination of `|k|^n` and `|k|^(n-jm) Re/Im (k_x + i k_y)^(jm)`,
+  `jm <= n`. Hence under `C_6` there is no invariant of odd degree and the
+  degree-4 invariant is `|k|^4` alone: the first anisotropic term can only
+  appear at degree 6 (`cos 6 theta`, relative order `|k|^4`). Under `C_3`
+  alone, `cos 3 theta` is allowed at degree 3 (relative order `|k|`), an
+  odd term. Under `C_4`, `cos 4 theta` is allowed at degree 4. Under the
+  cubic group, the degree-4 cubic harmonic `k_x^4 + k_y^4 + k_z^4 -
+  (3/5)|k|^4` is allowed.
+
+## 2. Rows and the source of each symbol
+
+All rows of the parent massless table with a symbol in a versioned
+script, imported read-only (the bytes of a reviewed verifier are not
+changed):
+
+| Row | Substrate | Symbol taken from |
+| --- | --- | --- |
+| L1 | line | `verify_weyl_dirac_gate.published_symbol(1, 1, ·)` |
+| L2 | square | `verify_weyl_dirac_gate.published_symbol(2, 1, ·)` |
+| L6e | square | `verify_c_across_lattices_gate.row_L6e()` |
+| L3 | BCC | `verify_directional_saturation.walk2()` (CJWW (5.15)) |
+| L5a | BCC | `verify_c_across_lattices_gate.row_L5a()` |
+| L5b | BCC | `verify_c_across_lattices_gate.row_L5b()` |
+| L3s4 | BCC, `s = 4` | `cert_Aa_s4_counterexample.core(a, theta)` with `a` symbolic, `0 < a < 1`, at the massless point recorded in `CURRENT_STATE.md` Sec. 4.1 |
+| L4 | cube `[-1,1]^3` | `verify_directional_saturation.walk1()` (CJWW (5.12)) |
+| L6a | hexagon | `verify_c_across_lattices_gate.row_L6a()` |
+| L6c | hexagon | `verify_c_across_lattices_gate.row_L6c()` |
+| L6d | hexagon | `verify_c_across_lattices_gate.row_L6d()` |
+| L6f | hexagon | `verify_c_across_lattices_gate.row_L6f()` |
+| L6b | hexagon, `s = 6` | `verify_l6b_triangular_row_gate.step_symbol(...)` cubed, `V = U^3`, one admissible assignment and one coin reading, as the L6b report fixes them (all six are isometric) |
+
+If a listed constructor turns out not to return the symbol in the form
+the parent used, the row is marked `OPEN (symbol not reusable)` with the
+reason; no new walk is constructed and no symbol is retranscribed from a
+paper inside this gate.
+
+## 3. Quantities per row (exact, SymPy, zero tolerance)
+
+At the massless node of the row (at `k = 0` in every parent row, `U(0) = I`),
+with `omega(k)` the quasienergy branch of the node and `k = |k| n̂`:
+
+1. **Expansion.** `omega(k) = c_0 |k| [1 + beta(n̂) |k| + alpha(n̂) |k|^2
+   + O(|k|^3)]`, obtained from the exact characteristic polynomial of the
+   symbol along the ray `k = |k| n̂` (equivalently from `cos omega` or
+   `omega^2` as the row's node structure allows), as functions of the
+   direction cosines with radical coefficients. No series fitting. The
+   first thing recorded is the **order of the lowest nonvanishing
+   correction**: `beta` (relative order `|k|`, possible only if
+   `omega(k) != omega(-k)` at the node) or `alpha` (relative order
+   `|k|^2`). Evenness `omega(k) = omega(-k)` is checked per row, not
+   assumed; the parent's "zero tilt" certifies only the linear term.
+2. **Symmetry group of the walk.** For each row, the subgroup `G_walk`
+   of the substrate point group under which the node dispersion is
+   invariant, decided exactly by equality of characteristic polynomials
+   of the symbol at `k` and `g k` (the test the L6b verifier used for the
+   twelve isometries of the hexagon). `G_walk` may be smaller than the
+   point group of the lattice; the harmonics allowed are those of
+   `G_walk`, not of the substrate.
+3. **Angular pattern.** Decompose the lowest nonvanishing correction into
+   the harmonics allowed by `G_walk` (Sec. 1): `d = 1`: constant;
+   `C_4`/`D_4`: `alpha_0 + alpha_4 cos 4 theta`; `C_3`: `beta_3 cos 3 theta`
+   at relative order `|k|` (then `alpha` at the next order); `C_6`/`D_6`:
+   `alpha_0` isotropic, no anisotropy possible at this order; cubic:
+   isotropic part plus the degree-4 cubic harmonic. Record the isotropic
+   part and every anisotropic coefficient exactly. For rows whose first
+   correction is isotropic by symmetry (`C_6`), also compute the next
+   order (relative `|k|^4`) to exhibit the first anisotropic coefficient
+   `alpha_6`, if exactly feasible; otherwise record
+   `ANISOTROPY_AT_HIGHER_ORDER_OPEN`. That no forbidden harmonic appears is
+   a consistency check on the symbol, not a result.
+4. **Sign.** For each row: sign of the isotropic coefficient of the lowest
+   even correction `alpha_0` (`< 0`: subluminal at short wavelength; `= 0`;
+   `> 0`), and whether the full correction changes sign with direction.
+5. **Group velocity at the node.** `|grad_k omega|` to the same order, so
+   the correction to `c_0` in the group speed, direction by direction;
+   and, where exactly certifiable, `V_grp^max` of the node branch
+   (otherwise `OPEN`, as in the parent).
+6. **Scale of validity.** The smallest `|k|` at which the node branch
+   meets another branch or `omega` stops being analytic, if finite and
+   exactly computable; else `OPEN`.
+
+Cross-checks: for L1 the result must reproduce the one-dimensional Dirac
+walk expansion (`omega = arcsin`-type dispersion); rows that share a
+substrate and `c_0` (L6c, L6d, L6f) are compared; L6b's `V` is compared
+with L6a up to the 60° isometry already recorded; for every row the
+harmonic content found in item 3 must be consistent with `G_walk` found
+in item 2.
+
+## 4. Hypotheses, stated before solving
+
+- **Hd.** In every declared row `alpha_0 < 0`: the lattice is subluminal
+  at short wavelength.
+- **He.** In every row with `d >= 2` and `c_0 = r_in` (rows that reach
+  the ceiling: L2, L6e, L3, L5a, L5b, L4 at freeze; L1 excluded because
+  no anisotropy exists in `d = 1`), the anisotropic coefficient of the
+  lowest nonvanishing correction is nonzero: a walk that reaches the
+  ceiling shows the substrate's shape in its first correction. No
+  hexagonal row reaches the ceiling, so the `C_6` isotropy of Sec. 1 does
+  not decide He.
+- **Hf.** Rows on the same substrate (square: L2, L6e; BCC: L3, L5a, L5b;
+  hexagonal: L6a, L6c, L6d, L6f, L6b) do not all share the same
+  correction function: the correction is walk-dependent, not fixed by the
+  substrate. Hf is refuted only if two rows on one substrate have
+  identical `beta(n̂)` and `alpha(n̂)`; it is confirmed in a substrate if
+  any two differ.
+
+Refuting any of them is a valid outcome. A pattern is a pattern in the
+declared list, not a law. A hypothesis decided by the symmetry facts of
+Sec. 1 alone is recorded as `DECIDED_BY_SYMMETRY`, not as a computed
+result.
+
+## 5. Deferred, not part of this gate
+
+A conditional dictionary (`omega^2 = c^2 k^2 [1 + xi_1 (k ell) + xi_2
+(k ell)^2 + ...]`, bounds on `ell` per row from observational bounds on
+`xi_1`, `xi_2`) was in the draft and is removed: it is a second question,
+it would need the extra hypothesis that a row's massless excitation is
+the photon, and the expected close is `NO_COMPARABLE_OBSERVABLE_READ`.
+If wanted after Phase 1 is reviewed, it needs its own charter and its own
+user authorization; this gate makes no statement about our universe.
+
+## 6. Stop rules
+
+- Stop when every row has items 1–6 filled or `OPEN` with reason.
+- No numerics in a certified entry; no series fitting; no new walks or
+  lattices; no massive rows; no interacting or inhomogeneous models.
+- Reviewed verifiers are imported read-only; their bytes are not changed.
+- If a row's series extraction does not finish exactly (SymPy) within one
+  session, the row is `OPEN (not extracted)`; no floating-point fallback.
+
+## 7. Exclusions
+
+Same as the parent §7. Additionally: no Lorentz-violation model building
+(no DSR, no Horava-type Lagrangians), no detector or source modelling, no
+observational comparison, no claim about our universe.
+
+## 8. Verdicts
+
+- `CORRECTIONS_TABLE_COMPLETE` / `CORRECTIONS_TABLE_PARTIAL_<reason>`.
+- Per hypothesis: `CONFIRMED_IN_DECLARED_ROWS` / `REFUTED_BY_ROW_<Id>` /
+  `DECIDED_BY_SYMMETRY`.
+
+## 9. Deliverables
+
+- `reports/YYYY-MM-DD--dispersion-corrections-across-lattices.md`.
+- `scripts/verify_dispersion_corrections_gate.py`, fail-closed, exact,
+  importing reviewed symbols read-only; two exact command forms in
+  `.claude/settings.json`.
+- Independent cross-family review before any promotion; promotion is a
+  separate commit updating `state/CURRENT_STATE.md` Sec. 13.
+
+=== DOCUMENT 3: C_ACROSS_LATTICES_GATE.md ===
+
+# C_ACROSS_LATTICES — frozen contract
+
+**Frozen:** 2026-11-01, before solving. No row has been computed.
+**Authorization:** direct user instruction, 2026-11-01: the user redirected
+the project to "ver cuánto es c en distintos sustratos", chose QCA lattices
+and neighbourhoods within scope, accepted rows L5 and L6 and hypotheses
+Ha–Hc, and approved this text («si»). Reports cite the commit that adds
+this file as the preregistration commit.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> For each declared lattice/neighbourhood and each declared walk family on
+> it, what is the relativistic speed `c` relative to the microscopic causal
+> geometry of that substrate, and which part of `c` is fixed by the
+> substrate and which by the walk?
+
+The deliverable is a table of exact quantities, one row per declared
+(lattice, family, node) triple. It is descriptive. No rigidity or general
+QCA law may be drawn from it (PROJECT_INSTRUCTIONS §7).
+
+## 1. Background taken as input (not re-proved here)
+
+Cited from `state/CURRENT_STATE.md` at the freeze commit, with their scope:
+
+- `c_strict^iso <= r_in(C_micro)` (Sec. 4).
+- `c_0 <= c_strict^iso` in all directions, proved under the point-(3)
+  contract for the N3 class only (Sec. 7.2). Not assumed for other
+  displacement sets.
+- P17 (`sources/1708.00826v2.pdf` p.7 Prop. 5, p.6 Fig. 1): for `s=2`
+  QWs on `Z^d` isotropic on `S+` in its sense (with its Eq. (2)), the
+  admissible Cayley graph is unique in each `d=1,2,3`: line, simple
+  square, BCC. The L6 walks below are therefore outside at least one of
+  P17's hypotheses; which one is recorded per row before computing.
+- Farrelly–Short (`sources/1312.2852v1.pdf` p.4–5, Eqs. (20)–(21)): the
+  axis-by-axis conditional-shift walk `U_D = T_x T_y T_z` "essentially
+  uses a body centred cubic neighbourhood", and the simple cubic
+  neighbourhood "cannot give the three dimensional Weyl equation in the
+  continuum limit" (their ref. [8]; quoted, not re-proved here).
+- Standard Weyl/Dirac battery: `c_0 = r_in = 1/sqrt(d)` for d=1,2,3;
+  massive `c_H < c_{omega^2} < r_in` for `0<m<1` (Sec. 5).
+- s=4 family on N3: `c_0(a) = a/sqrt(3) < c_strict^iso = 1/sqrt(3)`
+  (Sec. 4.1).
+- CJWW (5.12), (5.15) on Z^3, `C_micro=[-1,1]^3`, `c_IR=1` (Sec. 8).
+
+Rows already established are re-tabulated from those records with their
+existing tags. They are not recomputed except where a quantity is missing
+(e.g. `C_infty^strict` for d=1,2, marked "not checked" in Sec. 4).
+
+## 2. Declared lattices and neighbourhoods
+
+**Substrate = what the equation does, not the paper's label.** For each
+row the substrate is declared as the translation group actually acting
+(the subgroup of `R^d` generated by the displacements of one complete
+update) together with the composite step set `F` of that update: all
+sums of one displacement per partial shift, with internal components
+routed as the equation states. If two rows labelled differently (e.g.
+"honeycomb" and "triangular") yield the same group and `F` up to
+isometry and scale, they are the **same substrate** carrying different
+walks, and must be reported that way. Computing `F` from the equation is
+the first execution step of each row; a disagreement with the paper's
+own lattice label is recorded, not repaired.
+
+**Time unit.** One complete update (the full product of partial shifts
+and coins as written in the source) is one time unit. Multi-step walks
+whose source takes the continuum limit over several updates (ADMP
+triangular, three updates) are also reported per update. Normalisation:
+longest vector in `F` has length 1. Each row additionally reports `c`
+in the source's own units (its `epsilon`, `Delta t`) for cross-checking
+against the source's stated continuum coefficient.
+
+| Id | d | Source label | Source, equations, page | s |
+| --- | --- | --- | --- | --- |
+| L1 | 1 | line `{±1}` | standard battery (done) | 2 |
+| L2 | 2 | square, `N_2={(±1,±1)/sqrt2}` | P17 / standard battery (done massless) | 2 |
+| L3 | 3 | BCC, `N_3` | P17 / standard battery (done) | 2 |
+| L3s4 | 3 | BCC, `N_3` | S4 family (done) | 4 |
+| L4 | 3 | Z^3, `C_micro=[-1,1]^3` | CJWW `2408.02108v1` (5.12), (5.15) (done in part) | 2 |
+| L5a | 3 | BCC via axis product | Farrelly–Short `1312.2852v1` Eqs. (20)–(21) p.4–5 | 2 |
+| L5b | 3 | BCC via axis product | Mlodinow–Brun `1802.03910v1` Eq. (23) p.5, symbol Eq. (33) p.7, `Delta P_i`, `Q` mutually anticommuting involutions (Eqs. (25)–(27) p.6); mass `theta` | 4 |
+| L6a | 2 | honeycomb | ADMP `1803.01015v2` Eq. (10) p.3 (coin `W` Eq. (9), axes Eq. (4)) | 2 |
+| L6b | 2 | triangular | ADMP `1803.01015v2` Eq. (12) p.4 (source: equivalent to L6a over three updates) | 2 |
+| L6c | 2 | equilateral triangular, six-step | JDW `1803.01304v1` Eq. (2) p.2, `U(·)` Eq. (1) p.1, neighbours p.1 | 2 |
+| L6d | 2 | equilateral triangular, three-step | JDW `1803.01304v1` Eq. (4) p.2 | 2 |
+| L6e | 2 | isosceles triangular, three-step | JDW `1803.01304v1` Eq. (6) p.2 | 2 |
+| L6f | 2 | honeycomb, three-step | JDW `1803.01304v1` Eqs. (7)–(8) p.2 | 2 |
+
+**Excluded, with reason.** Arrighi–Facchini `1609.00305v2`: paired QW
+with a prior encoding, coins on enlarged neighbourhoods and position-
+dependent coins (p.1–3, Eqs. (3)–(6)); its step set depends on the
+encoding convention, so it is not comparable without an extra
+declaration. The equivalence of its homogeneous specialization with the
+S4 family stays the separate OPEN item already recorded in
+`CURRENT_STATE.md` Sec. 4.1.
+
+Mass terms: where the source gives one (L5b `theta`, ADMP `M`, JDW
+`U_m`), the massless row is primary; the massive row is computed with
+`c_H` and `c_{omega^2}` kept separate, over the source's stated range.
+
+Only walks whose symbols are read from a primary source equation are
+admitted. No walk is constructed for this gate (no model search). Where a
+source gives a parameter family, the admissible structural coefficients
+are varied over the source's stated range, not only transposes or
+chiralities.
+
+## 3. Quantifiers frozen per row
+
+For each row, before computing: internal dimension `s`, group and action,
+representation of the isotropy group (irreducible or not), node and sector,
+any irreducibility or minimality assumption. Every conclusion keeps them.
+
+P17 compatibility: L6 rows are two-component walks on lattices that P17
+p.7 Prop. 5 excludes for isotropic `s=2` QWs, so each violates at least
+one P17 hypothesis. Before computing, record the source's own account
+(ADMP p.2: spinors on edges shared by triangles; JDW: none stated, to be
+recorded as such). Identifying which hypothesis actually fails is an
+execution item, reported per row; it is not a new theorem.
+
+## 4. Quantities per row
+
+All exact (SymPy, zero tolerance):
+
+1. `C_micro = conv F`, support function `h_C`, inradius `r_in`,
+   `V_causal^max`.
+2. Exact Bloch symbol and eigenphases at the declared node.
+3. `c_0` (massless linear IR coefficient) and, if the node cone is not
+   isotropic, the directional coefficient `c_0(n̂)`.
+4. `C_infty^strict` by vertex-trace survival, hence `c_strict^iso`.
+   If survival cannot be decided exactly, the entry is `OPEN`, not
+   estimated.
+5. `S(n̂) = c_0 / h_C(n̂)` and `S_min`.
+6. `V_grp^max = sup |∇omega|` if it is exactly certifiable; else `OPEN`.
+7. If the source defines a mass term: `c_H` and `c_{omega^2}` separately.
+
+## 5. Hypotheses, stated before solving
+
+- **Ha.** In every declared `s=2` row with a massless node, `c_0 = r_in`.
+- **Hb.** In every declared row, `c_strict^iso = r_in` (all vertex
+  amplitudes survive).
+- **Hc.** No declared row has `c_0 > c_strict^iso`. For rows outside N3
+  this is a check, not a consequence of point (3).
+
+Refuting any of them is a valid outcome. A pattern across rows is
+recorded as a pattern in the declared list, not as a law.
+
+## 6. Stop rules
+
+- Stop when every declared row is filled or marked `OPEN` with its reason.
+- No numerics in a certified entry; no fitting.
+- Do not add lattices, families or constructions during execution. Adding
+  one needs a revised charter.
+- If a source's symbol fails unitarity or its published sign is
+  ambiguous, record it, follow the approach of the Weyl/Dirac gate (use
+  the declared matrices), and do not repair silently.
+
+## 7. Exclusions
+
+No new substrate class, random lattices, causal sets, interacting QCA,
+anisotropic detour beyond the declared rows, or claim about our universe.
+No novelty claim; Bernstein is prior art. No H1 work.
+
+## 8. Verdicts
+
+- `TABLE_COMPLETE` — every row filled exactly.
+- `TABLE_PARTIAL_<reason>` — some entries `OPEN` with recorded reason.
+- Per hypothesis: `CONFIRMED_IN_DECLARED_ROWS` or
+  `REFUTED_BY_ROW_<Id>`.
+
+## 9. Deliverables
+
+- `reports/YYYY-MM-DD--c-across-lattices.md` (derivation and table).
+- `scripts/verify_c_across_lattices_gate.py` (fail-closed, exact),
+  reusing reviewed helpers read-only; its two exact command forms added to
+  `.claude/settings.json`.
+- Independent cross-family review before any promotion.
+
+=== DOCUMENT 4: 2026-11-02--dispersion-corrections-across-lattices.md ===
+
+# Dispersion corrections across lattices — execution
+
+**Date:** 2026-11-02
+**Gate:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES`, contract
+[`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
+preregistration commit `a7ff5b7` (contract SHA256
+`6df09e81fae231ebbb00d19de546298559d333d33e965c95a1aa6027842231ea`).
+**Parent:** `C_ACROSS_LATTICES` massless table and `L6B_TRIANGULAR_ROW`
+(both promoted). No row is recomputed; every symbol is imported read-only
+from the script named in contract Sec. 2.
+**Verifier:**
+[`scripts/verify_dispersion_corrections_gate.py`](../scripts/verify_dispersion_corrections_gate.py),
+SHA256 `b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`, 81/81 exact checks after the review repairs (79/79 at the reviewed SHA256 `791f0d80d2790f34b72521c90622fa0056fd629fa1b3ef89addfc2ad664e6c2a`) (Python 3.12.3,
+`sympy==1.14.0`, interpreter `/home/adnac/venvs/torch-gpu/bin/python`, as
+`scripts/README.md` records for earlier runs; the system `python3` has no
+SymPy). Run time about 11 min, dominated by the symmetry test of
+L3s4. The imported verifiers are unchanged.
+**Status:** `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN` —
+PRELIMINARY. Reviewed: Gemini PASS, Grok REPAIR_REQUIRED (three repairs,
+applied in Sec. 5); bounded re-review of the repairs: Gemini PASS, Grok
+PASS. PROMOTION_PENDING. Nothing is promoted by this report.
+
+## 1. Result
+
+Units as in the parent: Cartesian positions divided by the longest step
+of one update, one update per time unit (L6b: `V = U^3`, quasienergy
+divided by 3). Along a ray `k = t n̂`, `|n̂| = 1`, the upper branch of the
+massless node is
+
+`eps_+(t n̂) - eps_0 = c_0 t [1 + beta(n̂) t + alpha(n̂) t^2 + O(t^3)]`.
+
+`alpha_0` is the mean of `alpha` over the unit circle or sphere. In
+`d = 2`, `theta` is the angle of `n̂` in the row's Cartesian frame; in
+`d = 3`, `K4 = n1^4 + n2^4 + n3^4 - 3/5`, `K6` is the part of
+`n1^2 n2^2 n3^2` orthogonal to 1 and `K4` on the sphere, and
+`sigma2 = n1^2 n2^2 + n2^2 n3^2 + n3^2 n1^2`.
+
+| Row | Substrate | `c_0` | `G_walk` (exact) | Lowest correction | `beta(n̂)` | `alpha(n̂)` | `alpha_0` |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| L1 | line | 1 | `{±1}` | none: `omega = |k|` exactly | 0 | 0 | **0** |
+| L2 | square | `1/sqrt2` | `D_4` (8) | `alpha`, anisotropic | 0 | `-n1^2 n2^2/12 = -(1 - cos 4θ)/96` | `-1/96` |
+| L6e | square | `1/sqrt2` | `D_4` (8) | `alpha`, anisotropic | 0 | identical to L2 | `-1/96` |
+| L3 | BCC | `1/sqrt3` | `O_h` (48) | `alpha`, anisotropic | 0 | `-sigma2/18 = -1/90 + K4/36` | `-1/90` |
+| L5a | BCC | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `(sqrt3/3) n1 n2 n3` | `-sigma2/18 - n1^2 n2^2 n3^2/6` | `-4/315` |
+| L5b (each Weyl block) | BCC | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `±(sqrt3/3) n1 n2 n3` | as L5a | `-4/315` |
+| L4 | cube | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `-(sqrt3/3) n1 n2 n3` | as L5a | `-4/315` |
+| L3s4 (each cluster) | BCC, `s = 4` | `a/sqrt3` | 8 (`D_2` half-turns and the `x <-> z` swap composed with them) | `beta`, isotropic + anisotropic | `±[sqrt3 (1-a^2)/(6a) + sqrt3 (2a^2-1)/(3a) n1 n2 n3]`, upper sign for the cluster at `+pi/4` | non-cubic content (Sec. 3.4) | `2(27a^4 - 34a^2 + 5)/(315 a^2)` |
+| L6a | hexagon | `1/2` | `D_3` (6) | `beta`, anisotropic | `-(sqrt15/36) cos 3θ` | `-41/1728 - (5/1728) cos 6θ` | `-41/1728` |
+| L6c | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/512` | `-1/512` |
+| L6d | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/128` | `-1/128` |
+| L6f | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/128` | `-1/128` |
+| L6b (each orientation block) | hexagon, `s = 6` | `1/3` | `D_3` (6) | `beta`, anisotropic | `(sqrt15/18) cos 3θ` | `-41/432 - (5/432) cos 6θ` | `-41/432` |
+
+First anisotropy of the isotropic hexagonal rows, at relative order
+`t^4` (coefficient of `cos 6θ` in `E_5 / c_0`): L6c `1/184320`, L6d
+`1/11520`, L6f `-1/11520`. L6d and L6f therefore agree through relative
+order `t^2` and differ at `t^4` by the sign of the `cos 6θ` term, that is,
+by a 30° rotation of the anisotropy.
+
+Hypotheses (contract Sec. 4):
+
+- **Hd** (`alpha_0 < 0` in every row): **`REFUTED_BY_ROW_L1`**. L1 has
+  `alpha_0 = 0`, because its symbol is `exp(-i k sigma_z)` and the
+  dispersion is exactly linear. The refutation is not only the degenerate
+  1D row: L3s4 has `alpha_0 > 0` for `0 < a < a*` and `< 0` for
+  `a* < a < 1`, with `a* = sqrt3 sqrt(17 - sqrt154) / 9` (exact root,
+  Sturm count 1; `a* ≈ 0.412`). Every other row has `alpha_0 < 0`.
+- **He** (ceiling rows with `d >= 2` have a nonzero anisotropic
+  coefficient in their lowest correction): **`CONFIRMED_IN_DECLARED_ROWS`**.
+  L2, L6e: `cos 4θ` at relative order `t^2`. L3: `K4` at `t^2`. L5a, L5b,
+  L4: the odd invariant `n1 n2 n3` at relative order `t`. Not decided by
+  symmetry: `D_4`, `O_h` and `T_d` allow these terms but do not force
+  them.
+- **Hf** (no two rows on one substrate share `beta` and `alpha`):
+  **`REFUTED_BY_ROW_L6e`**. L2 and L6e have identical `beta`, `alpha`,
+  group-velocity coefficients and `t^4` harmonics. Further shared pairs:
+  L5a with the Weyl block of L5b whose `beta` has L5a's sign (the other
+  block differs in that sign), and L6d with L6f through relative order
+  `t^2`. Under the weaker reading of Hf's header ("do not all share"),
+  the square substrate also refutes it, since it has only these two rows.
+  On the hexagon and BCC substrates the corrections are not all equal.
+
+Under the contract's exact procedure, the `C_6` isotropy of Sec. 1 decides
+no hypothesis: He concerns rows that reach the ceiling, and no hexagonal
+row does.
+
+## 2. Method (contract Sec. 3)
+
+For each row the symbol is expanded exactly as a Taylor polynomial in `k`
+to total degree `N` (`N = 6` in `d <= 2`, `N = 4` in `d = 3`). The node
+branch is read from the quadratic factor `lambda^2 - s1 lambda + s2` of
+the characteristic polynomial that carries the node:
+
+- `s = 2` rows: the whole characteristic polynomial.
+- L5b (`s = 4`): `Gamma = dP_X dP_Y dP_Z` commutes with every Fourier
+  coefficient and `Gamma^2 = -I`; its two eigenspaces give two `2x2`
+  Weyl blocks.
+- L6b: the three `2x2` orientation blocks of `V = U^3`, as in the L6b
+  verifier.
+- L3s4: Hensel lifting of the quadratic factor at the double root
+  `exp(∓ i pi/4)` of `A_a(0) = W`. The characteristic polynomial is
+  computed from Newton's identities on truncated power traces; the script
+  checks this route against the full characteristic polynomial on the
+  `4x4` L5b symbol. The parameter is kept symbolic: `a` and
+  `b = sqrt(1-a^2)` are independent symbols reduced with `b^2 = 1 - a^2`.
+  This keeps the zero test exact, because `sqrt(1-a^2)` is not a rational
+  function of `a`.
+
+From `s1`, `s2`: `exp(-2i phi) = s2 / s2(0)` gives the common phase
+`phi(k)` of the two node levels, and `cos^2 omega = s1^2/(4 s2)` gives
+`omega^2(k)` as a power series with exact homogeneous parts. Then
+`eps_± = eps_0 + phi ± omega`. No series is fitted; every coefficient is
+an exact algebraic number or, for L3s4, an exact rational function of
+`a`. The Taylor coefficients of `arccos(1-v)^2`, `log(1+v)`, `sqrt(1+v)`
+and `1/(1+v)` are checked against SymPy's series.
+
+`G_walk` is the set of point-group elements `g` of the substrate with
+`charpoly U(g k) = charpoly U(k)` as Laurent identities. In characteristic
+0 this equals equality of `tr U^m`, `m = 1..s`, and `tr U(gk)^m` is
+`tr U^m` under the monomial substitution `z^h -> z^(Mh)`. The angular
+content is read as a trigonometric polynomial in `d = 2` and projected on
+`1, K4, K6` in `d = 3` (and `beta` on `1, n1 n2 n3`). A zero residual is
+certified wherever `|G_walk| >= 24`.
+
+## 3. Findings per item
+
+### 3.1 Order of the lowest correction
+
+Every node is untilted at linear order, as the parent certified. The
+lowest correction has relative order `t` (a `beta` term) exactly in the
+rows whose `G_walk` lacks inversion: L5a, L5b, L4 (`T_d`-type, 24
+elements), L6a and L6b (`D_3`), and L3s4. In every row whose `G_walk`
+contains `k -> -k` (L1, L2, L6e, L3, L6c, L6d, L6f), `omega^2` has no odd
+terms through the computed order and the lowest correction is `alpha`.
+The draft charter assumed evenness; the frozen contract required it to be
+checked, and six of the thirteen rows are not even.
+
+### 3.2 Angular pattern and the walk's group
+
+The harmonic content matches `G_walk` in every row:
+
+- `D_6` rows (L6c, L6d, L6f): `alpha` isotropic and `cos 6θ` first at
+  relative order `t^4`, as the degree argument of contract Sec. 1 forces.
+- `D_3` rows (L6a, L6b): `cos 3θ` at relative order `t`. The `cos 6θ` in
+  `alpha` comes from `beta^2`; the degree-4 part of `omega^2` is
+  isotropic (`Q4 = -1/96` for L6a).
+- `D_4` rows (L2, L6e): `cos 4θ` at `t^2`.
+- `O_h` row (L3): `K4` at `t^2`.
+- 24-element cubic rows: `n1 n2 n3` at `t`, then `1, K4, K6` at `t^2`.
+
+The three ADMP/JDW hexagonal walks with `c_0 = 3/4` have the full `D_6`.
+ADMP's L6a has only `D_3`, and so has L6b, which realises L6a's dispersion
+after three updates.
+
+### 3.3 Sign
+
+- `alpha <= 0` pointwise in L2, L6e, L3, L5a, L5b, L4 (closed forms in
+  Sec. 1), vanishing only along the coordinate axes. `alpha < 0` pointwise
+  in L6a, L6b (`-46/1728 <= alpha <= -36/1728` for L6a), L6c, L6d, L6f.
+- In L5a, L5b, L4, L6a and L6b, `beta` is odd under `n̂ -> -n̂`, so the
+  lowest correction takes both signs. These rows are not "subluminal at
+  short wavelength" in every direction even though `alpha_0 < 0`. The
+  phase speed of the upper branch exceeds `c_0` near the node where
+  `beta(n̂) > 0`, for example along `n1 n2 n3 > 0` in L5a.
+- In L3s4, `beta = beta_0 + beta_3 n1 n2 n3` with `beta_0 != 0`, so it is
+  not odd. Since `|n1 n2 n3| <= 1/(3 sqrt3)`, `beta` keeps the sign of
+  `beta_0` on the whole sphere iff `a^2 < (19 - 6 sqrt3)/11`, and takes
+  both signs above that threshold. The sign of `beta_0` depends on the
+  cluster and reverses between the upper and lower branch (Sec. 3.4).
+  The verifier checks the threshold exactly.
+- L3s4: `alpha_0` changes sign at `a*` (Sec. 1).
+
+### 3.4 L3s4: a branch-dependent quadratic term
+
+L3s4 is the only row with `phi != 0`. The two levels of each cluster move
+together as `phi = ±(1 - a^2) t^2 / 6 + O(t^4)`, with opposite signs for
+the clusters at `±pi/4`. This is consistent with second-order repulsion
+between the clusters through the intersector coupling `b^2 = 1 - a^2`. It
+gives `beta` an isotropic part `±sqrt3 (1-a^2)/(6a)` of opposite sign on
+the upper and lower branch of a cluster; `alpha` is the same for both
+branches and both clusters. `G_walk` has 8 elements, so `alpha` has
+content outside `span(1, K4, K6)`. The verifier prints it; it is not
+tabulated further here. At `a = 1` the isotropic part of `beta` vanishes,
+and `beta = (sqrt3/3) n1 n2 n3` with `alpha_0 = -4/315`, the values of
+L5a.
+
+### 3.5 Group velocity at the node
+
+`|grad eps_+| / c_0 = 1 + 2 beta(n̂) t + O(t^2)`, and `1 + 3 alpha(n̂) t^2
++ O(t^4)` where `beta = 0`. The coefficients through relative order `t^4`
+(`d <= 2`) or `t^2` (`d = 3`) are printed per row by the verifier.
+`V_grp^max` is `OPEN` for every row in `d >= 2`, as in the parent. For L1,
+`omega = |k|` on the whole branch, so its group speed is 1 everywhere;
+this follows from the symbol `exp(-i k sigma_z)` and is checked by the
+script only through `t^5`.
+
+### 3.6 Scale of validity
+
+L1: the branches meet first at `|k| = pi` (exact). `d >= 2`: `OPEN`. The
+exact minimisation of `|k|` on the branch-meeting set was not attempted,
+as contract Sec. 3 item 6 allows.
+
+## 4. Cross-checks and second route
+
+- **L1** reproduces the exactly linear 1D massless walk: all corrections
+  vanish through `t^5`.
+- **Closed forms by hand.** For a symbol with `cos omega = prod_i cos p_i`
+  and `p = k / sqrt d`, the expansion `log cos x = -x^2/2 - x^4/12 +
+  O(x^6)` gives `omega^2 = |p|^2 - (1/3) sum_{i<j} p_i^2 p_j^2 + O(p^6)`,
+  hence `alpha = -sum_{i<j} n_i^2 n_j^2 / (6d)`. This is `-n1^2 n2^2/12`
+  for L2 and `-sigma2/18` for L3. For the chiral BCC rows,
+  `alpha = (3/2) Q4 - Q3^2/(8 c_0^4)` with `Q4 = -sigma2/27` and
+  `Q3 = (2 sqrt3/9) n1 n2 n3` gives `-sigma2/18 - n1^2 n2^2 n3^2/6`. The
+  verifier asserts all three forms against its series output.
+- **L6b vs L6a.** With each row's normalisation,
+  `eps_L6b(k) = eps_L6a(2 R k) / 3` for a 60° rotation `R`. So
+  `c_0` scales by `2/3`, `beta` by 2 and `alpha` by 4. All three are
+  asserted exactly. The rotation reverses the sign of `cos 3θ`, which is
+  why `beta` changes sign between the two rows. The three orientation
+  blocks of L6b give identical results.
+- **L6c, L6d, L6f:** compared in Sec. 1.
+- **L5b:** both Weyl blocks give the same `alpha` and opposite `beta`.
+  **L3s4:** both clusters give the same `alpha`.
+
+## 5. Corrections made during the execution
+
+- The first runs used the full characteristic polynomial; for L3s4 with
+  symbolic `a` it did not finish in an hour. It was replaced by Newton's
+  identities on truncated power traces, cross-checked as stated.
+- A rational parametrisation of `a` was tried and abandoned: SymPy merged
+  `1 + u^2` with negative powers of `z`. The independent-symbol reduction
+  replaced it.
+- The first cross-check of L6b against L6a compared `alpha` without the
+  scale factor 4. The second route above derived the factor, and the
+  check was corrected before any passing run.
+- Two per-row assertions assumed that `beta` is purely `n1 n2 n3` and that
+  `alpha` is cubic-invariant. Both fail for L3s4, whose group has 8
+  elements. They now apply only where `|G_walk| >= 24` and are reported
+  descriptively otherwise.
+
+Repairs after the independent review
+([record](2026-11-02--dispersion-corrections-across-lattices-review.md)),
+all three from Grok, checked before acceptance:
+
+- R1: Sec. 3.3 claimed that every row with `beta != 0` has an odd
+  lowest correction. False for L3s4; restricted, and the threshold
+  `a^2 = (19 - 6 sqrt3)/11` added, with an exact check in the verifier.
+- R2: Sec. 1 said L5a shares `beta` and `alpha` with "each" Weyl block of
+  L5b; it shares them with one block only.
+- R3: the verifier's record that the sign of `alpha_0` is decided in
+  every row had the constant predicate `True`. It now requires an exact
+  sign for each numeric `alpha_0` and a complete Sturm sign table for
+  L3s4.
+
+No value, table entry or verdict changed.
+
+## 6. What this does not claim
+
+- No physical interpretation of `alpha` or `beta`, no observational
+  comparison, no statement about our universe (contract Secs. 5, 7).
+- Hf's refutation by L2 and L6e is one coincidence on one substrate. It is
+  not evidence that the substrate fixes the correction in general; the
+  hexagon and BCC substrates carry rows with different corrections.
+- The observation that `alpha <= 0` pointwise in every row with
+  `d >= 2` except L3s4 is a pattern in the declared list, found after
+  solving. It is not a hypothesis of this gate and not a law.
+- Not human review. No novelty claim.
+
+## 7. Next step
+
+A separate promotion decision (user).
+
+=== DOCUMENT 5: extractos.md ===
+
+# Extractos literales con numeración original (preparado 2026-11-04, base 648be9c)
+
+## scripts/verify_dispersion_corrections_gate.py, l. 555–580
+```
+555:     groups = {}
+556:     print("== Part 1: symbols imported read-only (parent checks re-run on import, not counted here)")
+557:     rows = {}
+558:     zs1 = sp.symbols("w1:2")
+559:     zs2 = sp.symbols("w1:3")
+560:     sym, _ = WD.published_symbol(1, 1, zs1)
+561:     rows["L1"] = dict(symbol=sym, zs=zs1, gens=[(1,)], sigma=+1, substrate="line", N=6, c0=sp.Integer(1))
+562:     sym, _ = WD.published_symbol(2, 1, zs2)
+563:     rows["L2"] = dict(symbol=sym, zs=zs2, gens=[(1, 0), (0, 1)], sigma=+1, substrate="square", N=6, c0=R2 / 2)
+564:     n_parent_before = len(P.CHECKS)
+565:     for label, fn in (("L6e", P.row_L6e), ("L5a", P.row_L5a), ("L5b", P.row_L5b), ("L6a", P.row_L6a),
+566:                       ("L6c", P.row_L6c), ("L6d", P.row_L6d), ("L6f", P.row_L6f)):
+567:         symbol, zs, support, gens = fn()
+568:         sub = {"L6e": "square", "L5a": "cubic", "L5b": "cubic"}.get(label, "hexagon")
+569:         rows[label] = dict(symbol=symbol, zs=zs, gens=gens, sigma=-1, substrate=sub,
+570:                            N=4 if sub == "cubic" else 6, c0=P.EXPECTED_MASSLESS[label][1])
+571:     record("parent row constructors pass their own checks on import",
+572:            all(ok for _, ok, _ in P.CHECKS[n_parent_before:]), f"{len(P.CHECKS) - n_parent_before} parent checks")
+573:     rows["L3"] = dict(symbol=laurent_matrix_from_p(DS.walk2()), zs=DS.Z, gens=[(1, 0, 0), (0, 1, 0), (0, 0, 1)],
+574:                       sigma=+1, substrate="cubic", N=4, c0=1 / R3)
+575:     rows["L4"] = dict(symbol=laurent_matrix_from_p(DS.walk1()), zs=DS.Z, gens=[(1, 0, 0), (0, 1, 0), (0, 0, 1)],
+576:                       sigma=+1, substrate="cubic", N=4, c0=1 / R3)
+577:     zs3 = sp.symbols("z1:4")
+578:     rows["L3s4"] = dict(symbol=row_L3s4_symbol(A_SYM, zs3), zs=zs3, gens=[(1 / R3, 0, 0), (0, 1 / R3, 0), (0, 0, 1 / R3)],
+579:                         sigma=-1, substrate="cubic", N=4, c0=A_SYM / R3)
+580:     # L6b: V = U^3 on the white-triangle lattice, orientation blocks.
+```
+
+## scripts/verify_dispersion_corrections_gate.py, l. 804–815
+```
+804:     ceiling = ["L2", "L6e", "L3", "L5a", "L5b[+i]", "L5b[-i]", "L4"]
+805:     he = {}
+806:     for label in ceiling:
+807:         he[label] = results[label]["lowest_aniso"]
+808:     print(f"  He (ceiling rows have nonzero anisotropy): {all(he.values())}; per row {he}")
+809:     hf = {}
+810:     n3 = sp.symbols("n1:4", real=True)
+811:     for sub, members in (("square", ["L2", "L6e"]), ("BCC", ["L3", "L5a", "L5b[+i]"]),
+812:                          ("hexagon", ["L6a", "L6c", "L6d", "L6f", "L6b[block 0]"])):
+813:         ns_ = n2 if sub != "BCC" else n3
+814:         pairs = {}
+815:         for x, y in itertools.combinations(members, 2):
+```
+
+## scripts/verify_directional_saturation.py, l. 60–82
+```
+60:         return fn
+61:     return wrap
+62: 
+63: 
+64: def walk1():
+65:     """CJWW (5.12): W(p) = exp(i p1 s1) exp(i p2 s2) exp(i p3 s3)."""
+66:     W = I2
+67:     for c, s, sig in zip(C, S, PAULI):
+68:         W = W * (c * I2 + sp.I * s * sig)
+69:     return sp.expand(W)
+70: 
+71: 
+72: def walk2():
+73:     """CJWW (5.15), transcribed entry by entry."""
+74:     e = sp.exp(sp.I * P3)
+75:     return sp.Matrix([
+76:         [C[0] * C[1] * e, -C[0] * S[1] + sp.I * S[0]],
+77:         [C[0] * S[1] + sp.I * S[0], C[0] * C[1] / e],
+78:     ])
+79: 
+80: 
+81: F1 = C[0] * C[1] * C[2] + S[0] * S[1] * S[2]     # tr W1 / 2
+82: F2 = C[0] * C[1] * C[2]                          # tr W2 / 2
+```
+
+## theory/SUBSTRATE_SATURATION_PHASE0_GATE_AMENDMENT_1.md, l. 130–165
+```
+130: 4. **Substrate: author finding, hand derivation, not checked by any
+131:    script; re-derived by gpt-6.1-sol (review point 4, PASS).** Read from
+132:    the printed symbols:
+133:    - (5.12) is the product of `cos p_a + i sin p_a σ_a`, each factor with
+134:      Fourier support `{±e_a}`; the composite support is exactly
+135:      `{±1}^3`. The group it generates is `{x ∈ Z^3 : x_1 ≡ x_2 ≡ x_3
+136:      (mod 2)}`, the BCC lattice, which up to the scale `1/sqrt3` is the
+137:      substrate of L3 and L5a (`N_3`, CS l. 486). Its scalar part
+138:      `cos p_1 cos p_2 cos p_3 + sin p_1 sin p_2 sin p_3`
+139:      (`verify_directional_saturation.py` l. 81, `F1`) has the form of the
+140:      d = 3 published symbol with chirality `+1`
+141:      (`verify_weyl_dirac_gate.py` l. 68); whether (5.12) coincides with
+142:      one of the L3 symbols up to the declared symmetries is not checked
+143:      here.
+144:    - (5.15) has entries `cos p_1 cos p_2 e^{±i p_3}` (steps `(±1,±1,±1)`),
+145:      `cos p_1 sin p_2` (steps `(±1,±1,0)`) and `sin p_1` (steps
+146:      `(±1,0,0)`). These generate `Z^3`. The convex hull is still
+147:      `[-1,1]^3`.
+148:    - Hence the source label «Z^3» of C_ACROSS l. 78 holds for the
+149:      generated group of (5.15) and not for that of (5.12). This refers to
+150:      the generated group required by frozen Sec. 2.3: (5.12) can be
+151:      written on the ambient `Z^3`, where it preserves each of the four BCC
+152:      cosets; it is not impossible to formulate it there. Both walks have `C_micro` a cube, so the shape column
+153:      of the audit is unchanged; the substrate count of audit F3 changes:
+154:      the «cube substrate of L4» is the `Z^3` group of (5.15), and (5.12)
+155:      is a further walk on the BCC substrate.
+156: 5. **Pair.** `(r_in, c_0) = (1/sqrt3, 1/sqrt3)` from the c-across-lattices
+157:    table l. 147, as before; the addendum's CJWW-unit pair `(1, 1)` is
+158:    shown only for consistency.
+159: 
+160: **Recorded inconsistency, not repaired here.** The frozen contract
+161: `theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md` (l. 63, 67)
+162: assigns `walk2()` (CJWW (5.15)) to row L3 «BCC» and `walk1()` (CJWW (5.12))
+163: to row L4 «cube», whereas C_ACROSS_LATTICES_GATE l. 76 and 78 declare L3 as
+164: the standard battery and L4 as both CJWW walks, and item 4 above places
+165: (5.12) on the BCC group and (5.15) on `Z^3`. This amendment does not rely
+```
+
+## state/CURRENT_STATE.md, l. 2424–2456
+```
+2424: row), He (ceiling rows with `d >= 2` have a nonzero anisotropic
+2425: coefficient), Hf (rows on one substrate do not share the correction) are
+2426: OPEN. Verdicts: `CORRECTIONS_TABLE_COMPLETE` / `_PARTIAL_<reason>`; per
+2427: hypothesis `CONFIRMED_IN_DECLARED_ROWS` / `REFUTED_BY_ROW_<Id>` /
+2428: `DECIDED_BY_SYMMETRY`. Execution: report plus
+2429: `scripts/verify_dispersion_corrections_gate.py`, then independent
+2430: cross-family review, then a separate promotion. No claim about our
+2431: universe, no general QCA law, no novelty claim.
+2432: 
+2433: Execution (2026-11-02): [report](../reports/2026-11-02--dispersion-corrections-across-lattices.md),
+2434: verifier `scripts/verify_dispersion_corrections_gate.py` (SHA256
+2435: `b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`,
+2436: 81/81 after the review repairs; 79/79 at the reviewed `791f0d80d279`).
+2437: Status `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`,
+2438: PRELIMINARY until promotion; reviews Gemini PASS, Grok REPAIR_REQUIRED, repairs applied;
+2439: bounded re-review Gemini PASS, Grok PASS. **Promoted 2026-11-02** by
+2440: direct user instruction («si, promuévelo») in the frozen scope below.
+2441: Findings: the lowest correction
+2442: is a relative-order-`|k|` term `beta` exactly in the six rows whose walk
+2443: group lacks inversion (L5a, L5b, L4 with `T_d`; L6a, L6b with `D_3`;
+2444: L3s4), and `alpha` elsewhere; the harmonic content matches the walk's
+2445: group in every row (the `D_6` rows L6c, L6d, L6f are isotropic through
+2446: relative order `|k|^2`, first `cos 6 theta` at `|k|^4`). Hd
+2447: `REFUTED_BY_ROW_L1` (`alpha_0 = 0`, exactly linear) and by L3s4 for
+2448: `0 < a < a* = sqrt3 sqrt(17 - sqrt154)/9`; every other row has
+2449: `alpha_0 < 0`. He `CONFIRMED_IN_DECLARED_ROWS` (L2, L6e `cos 4 theta`; L3
+2450: `K4`; L5a, L5b, L4 `n1 n2 n3`). Hf `REFUTED_BY_ROW_L6e` (L2 and L6e
+2451: identical; also L5a = the `+i` Weyl block of L5b, and L6d = L6f through
+2452: `|k|^2`). Scale of
+2453: validity OPEN in `d >= 2`; `V_grp^max` OPEN. No physical interpretation.
+2454: 
+2455: ## 14. Hexagonal supremum (M1) — chartered 2026-11-03
+2456: 
+```
+
