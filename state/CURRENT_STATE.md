@@ -2580,6 +2580,9 @@ REPAIR_REQUIRED, five repairs, applied (the definitional outcome went from
 REPAIR_REQUIRED, two repairs (L3 node trace clause by clause; L4 not
 counted in the domain), applied, not re-reviewed. Finding F2: (PS′)
 presupposes that every sign pattern of the partial shifts appears in `F`.
+(Corrected 2026-11-04, see below: that condition is sufficient, not
+necessary; the exact condition for `conv F` to be the zonotope is that
+every zonotope vertex is in `F`.)
 
 **L4 addendum (2026-11-03).**
 [`2026-11-03--substrate-saturation-phase0-addendum-L4.md`](../reports/2026-11-03--substrate-saturation-phase0-addendum-L4.md)
@@ -2629,3 +2632,21 @@ The audit has no confirmatory value; any closure would be definitional
 only. Not promoted; no outcome authorizes a later phase. Closing G1 needs a
 documentary trace of product-class membership and factor shifts per row
 from the reviewed constructors, with review, by user decision.
+
+**G1 trace (2026-11-04,** user instruction;
+[report](../reports/2026-11-04--substrate-saturation-phase0-G1-trace.md),
+`cb814b5`). Documentary, from the reviewed constructors and sources; no
+verifier run or edited; no factor inferred from the edges of `C_micro`.
+gpt-6.1-sol review: REPAIR_REQUIRED, two repairs (L6e count; F2 stated as
+necessary), applied with three clarifications by user decision
+(`8d70e58`, `d60eaba`), not re-reviewed. Resolved: L1, L2, L3, L5a,
+L4-(5.12), L6a, L6d. Open: **G1-a** L6c, L6f (asymmetric partial shifts;
+product-class membership is a definitional decision); **G1-b** L4-(5.15)
+(no factorization in the record); **G1-c** L6e (reduced generators depend
+on the presentation; in the printed one four sign patterns vanish, two at
+missing zonotope vertices). Finding, no verdict: L6e saturates, is
+literally a product walk and has three reduced generators in its printed
+presentation; it bears on (PS′) only. F2 corrected in the audit
+(`a5b7ab4`). Status unchanged: **PRELIMINARY,
+`OPEN_AFTER_ROW_SURVEY` (gap G1: G1-a, G1-b, G1-c), no confirmatory
+value, not promoted.**
