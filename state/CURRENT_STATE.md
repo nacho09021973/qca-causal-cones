@@ -2650,3 +2650,18 @@ presentation; it bears on (PS′) only. F2 corrected in the audit
 (`a5b7ab4`). Status unchanged: **PRELIMINARY,
 `OPEN_AFTER_ROW_SURVEY` (gap G1: G1-a, G1-b, G1-c), no confirmatory
 value, not promoted.**
+
+**PS′ presentation decision (2026-11-04,** user decision «si a las 3»;
+[proposal](../reports/2026-11-04--ps-prime-intrinsic-definition-proposal.md),
+Codex, `757d13f`, clarifications A1–A2 `0d85366`). Adopted as a project
+decision: the presentation-based count of reduced generators in (PS′) is
+not used as an intrinsic saturation criterion of the complete walk without
+an explicit presentation rule; counts stay attached to their stated
+presentation. Ground: L6e has two presentations of the same operator (JDW
+Eq. (6), identity step-2 coin) with 3 and 2 reduced directions. The
+stopping rationale is retrospective, not preregistered; it does not show
+that no rule can exist. Reviews: Claude (not blind, PASS, `bddd1c5`);
+DeepSeek deepseek-v4-pro sealed (PASS, no repairs, `8ddce30`). Unchanged:
+contract, (PH), G1-a/b/c, and the status **PRELIMINARY,
+`OPEN_AFTER_ROW_SURVEY`, no confirmatory value, not promoted**. No verdict
+on (PS′); no amendment.
