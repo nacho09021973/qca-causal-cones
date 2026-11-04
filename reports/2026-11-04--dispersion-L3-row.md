@@ -3,9 +3,27 @@
 **Date:** 2026-11-04. **Author:** Claude (Anthropic). **Contract:**
 [`DISPERSION_L3_ROW_GATE.md`](../theory/DISPERSION_L3_ROW_GATE.md),
 preregistration `d3868fa`. **Verifier:**
-`scripts/verify_dispersion_L3_row_gate.py`, SHA256 `1beb8fd9…` (full hash in
-the commit that adds this report), 34/34 exact checks, `python3 -B`, sympy
-1.14.0. **Status: PRELIMINARY**, not independently reviewed, not promoted.
+`scripts/verify_dispersion_L3_row_gate.py`, SHA256 `89b33e700aedb7ae19bb80e00f45d8452f6a550ba7c836c5d3c246f070adae10`,
+35/35 exact checks, `python3 -B`, sympy 1.14.0; prints the row verdict
+**`L3_DISPERSION_COMPLETE`** (contract Sec. 4). **Status: PRELIMINARY**, not
+promoted.
+
+**Review.** gpt-6.1-sol (OpenAI), on the version `1beb8fd9…` (34 checks) at
+base `b9b0e58`:
+`debates/2026-11-04--dispersion-L3-row-review-astra/`, **REPAIR_REQUIRED**,
+three repairs. It re-derived `beta`, `alpha`, `alpha_0` and `G_walk` by
+hand and found no error in the coefficients. Repairs applied in this
+version, not re-reviewed:
+1. the checks of the constructor `row_L5a` now enter the evaluated record,
+   and the hypothesis verdicts print «NOT CERTIFIED» if any prerequisite
+   check fails (an undecidable sign prints «UNDECIDED»);
+2. the script now prints the contract's row verdict;
+3. the «second route» of Sec. 3 is restricted to what it proves.
+
+Contract wording, recorded not edited (frozen): «nothing else of the parent
+is recomputed or changed» means that the parent table is not changed; two
+parent rows, CJWW (5.12) and L5a, are recomputed here only as comparison
+controls.
 
 ## 1. Why this row
 
@@ -45,12 +63,15 @@ report l. 44); here it is printed as its projection on `1, K4, K6`.
   cases.
 - **HL3e CONFIRMED.** `alpha_0 = −4/315 < 0` in all four cases.
 
-**Second route.** HL3b and HL3c also follow without the expansion. For
-`s = 2` with `det U = 1` the characteristic polynomial is fixed by `tr U`.
-`tr U` equals `2(ccc + sss)` for A+, B+ and for CJWW (5.12)
-(`verify_directional_saturation.py` l. 81). `chi = −1` is `k -> −k` of
-`chi = +1`, which flips `beta` (odd order) and keeps `alpha` (even). The
-expansion agrees with this.
+**Second route (restricted after review, repair 3).** For `s = 2` with
+`det U = 1` the characteristic polynomial is fixed by `tr U`. `tr U` equals
+`2(ccc + sss)` for A+, B+ and for CJWW (5.12)
+(`verify_directional_saturation.py` l. 81), which gives HL3b without the
+expansion. The trace for `chi = −1` is the trace for `chi = +1` at `−k`
+(an identity of traces, not of matrices), which flips `beta` (odd order)
+and keeps `alpha` (even): the first half of HL3c. The comparison of A−/B−
+with L5a rests on the expansion only; no trace identity for the L5a symbol
+(with `sigma = −1`) is derived here.
 
 These hypotheses were written after the author read the code, before the
 run. They are predictions from an exact identity, not independent evidence
@@ -67,8 +88,8 @@ about walks in general.
   coefficient. He holds in all declared ceiling rows of the parent plus L3.
 - **Hd.** Unchanged (`alpha_0 < 0` here).
 - **Hf.** On the BCC substrate there are further shared `(beta, alpha)`
-  pairs: L3 A± with CJWW (5.12) and with L5a (and the L5b blocks, through
-  the parent's table). Hf was already `REFUTED_BY_ROW_L6e`; this adds
+  pairs: A+/B+ with CJWW (5.12), A−/B− with L5a, and each sign with the
+  L5b block of the same `beta` sign (the last through the parent's table). Hf was already `REFUTED_BY_ROW_L6e`; this adds
   coincidences on BCC, which the parent read as «not all equal»: that
   still holds, since `beta` takes both signs.
 - **CJWW (5.12).** Same dispersion through relative order `t^2` and same

@@ -84,28 +84,56 @@ def main():
         analyse(label, sym, zs, GENS3, +1, results, groups)
     # Comparison rows with the parent's own setup (l. 565-576).
     analyse("parent L4 = CJWW (5.12)", D.laurent_matrix_from_p(DS.walk1()), DS.Z, GENS3, +1, results, groups)
+    n_parent_before = len(P.CHECKS)
     symbol, zsa, _, gens_a = P.row_L5a()
+    D.record("parent row constructor row_L5a passes its own checks (as the parent requires)",
+             all(ok for _, ok, _ in P.CHECKS[n_parent_before:]), f"{len(P.CHECKS) - n_parent_before} constructor checks")
     analyse("parent L5a", symbol, zsa, gens_a, -1, results, groups)
+
+    # Prerequisites: every asserted check so far (repair 1 of the gpt-6.1-sol review).
+    prereq_failed = [c for c in D.CHECKS if not c[1]]
+    certified = not prereq_failed
+
+    def verdict(ok):
+        if not certified:
+            return "NOT CERTIFIED (failed prerequisite checks)"
+        if ok is None:
+            return "UNDECIDED"
+        return "CONFIRMED" if ok else "REFUTED"
 
     print("== Part 3: hypotheses (contract Sec. 3)")
     hb = all(same_pair(x, "parent L4 = CJWW (5.12)", results) and groups[x] == groups["parent L4 = CJWW (5.12)"]
              for x in ("L3 A+", "L3 B+"))
-    print(f"  HL3b (A+, B+ share (beta, alpha) and G_walk with CJWW (5.12)): {'CONFIRMED' if hb else 'REFUTED'}")
+    print(f"  HL3b (A+, B+ share (beta, alpha) and G_walk with CJWW (5.12)): {verdict(hb)}")
     hc_sign = all(D.czero(results[x]["beta"] + results["L3 A+"]["beta"], NS)
                   and D.czero(results[x]["alpha"] - results["L3 A+"]["alpha"], NS) for x in ("L3 A-", "L3 B-"))
     hc_l5a = all(same_pair(x, "parent L5a", results) for x in ("L3 A-", "L3 B-"))
     hc = hc_sign and hc_l5a
     print(f"  HL3c (A-, B-: beta opposite to A+, same alpha: {hc_sign}; same (beta, alpha) as L5a: {hc_l5a}): "
-          f"{'CONFIRMED' if hc else 'REFUTED'}")
+          f"{verdict(hc)}")
     hd = all(results[x]["lowest_aniso"] for x in cases)
-    print(f"  HL3d (lowest correction anisotropic in all four cases): {'CONFIRMED' if hd else 'REFUTED'}")
-    he = all(results[x]["alpha0"].is_negative for x in cases)
-    print(f"  HL3e (alpha_0 < 0 in all four cases): {'CONFIRMED' if he else 'REFUTED'}; "
+    print(f"  HL3d (lowest correction anisotropic in all four cases): {verdict(hd)}")
+    signs = [results[x]["alpha0"].is_negative for x in cases]
+    he = None if any(v is None for v in signs) else all(signs)
+    print(f"  HL3e (alpha_0 < 0 in all four cases): {verdict(he)}; "
           f"alpha_0 = {[results[x]['alpha0'] for x in cases]}")
     for x in cases:
         r = results[x]
         print(f"  {x}: lowest = {r['lowest']}; beta = {r['beta0']} + ({r['beta3']}) n1 n2 n3; "
               f"{r['pattern'].split('; ')[1]}")
+    # Contract Sec. 4 verdict (repair 2): every quantity of Sec. 2 except the two OPEN ones.
+    missing = [x for x in cases
+               if any(results[x].get(key) is None for key in ("beta", "alpha", "alpha0", "lowest"))
+               or x not in groups
+               or not D.czero(results[x]["beta_residual"], NS) or not D.czero(results[x]["cubic_residual"], NS)]
+    if not certified:
+        row_verdict = "L3_DISPERSION_OPEN_FAILED_CHECKS"
+    elif missing:
+        row_verdict = "L3_DISPERSION_OPEN_QUANTITIES_MISSING_" + "_".join(m.replace(" ", "") for m in missing)
+    else:
+        row_verdict = "L3_DISPERSION_COMPLETE"
+    print(f"  Row verdict (contract Sec. 4): {row_verdict} "
+          f"(V_grp^max and scale of validity OPEN, as the contract states)")
     failed = [c for c in D.CHECKS if not c[1]]
     print(f"{len(D.CHECKS) - len(failed)}/{len(D.CHECKS)} checks passed (dispersion L3 row gate; "
           f"includes the parent's per-row checks of the comparison rows).")

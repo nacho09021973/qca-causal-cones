@@ -407,7 +407,7 @@ but asserts none. Not independently reviewed.
 `verify_dispersion_L3_row_gate.py` certifies
 [`DISPERSION_L3_ROW`](../theory/DISPERSION_L3_ROW_GATE.md), preregistered at
 `d3868fa`, for the [report](../reports/2026-11-04--dispersion-L3-row.md).
-34 exact checks, about 10 s (`python3 -B`, sympy 1.14.0). It imports
+35 exact checks, about 10 s (`python3 -B`, sympy 1.14.0). It imports
 read-only the helpers of `verify_dispersion_corrections_gate.py` and the
 symbols of `verify_weyl_dirac_gate.py` (`published_symbol(3, ±1, ·)` and
 transposes: cases A+, B+, A−, B−), `verify_directional_saturation.py`
@@ -417,8 +417,8 @@ L5a) are recomputed with the parent's own row setup.
 
 Certified per case: unitarity, `det U = 1`, `tr U = 2(ccc + chi sss)`,
 support `{±1}^3`, and the parent's per-row checks (no degree-0/1 terms in
-`omega^2`, `c_0 = 1/sqrt3`, no linear phase). Printed, not asserted: `beta`,
+`omega^2`, `c_0 = 1/sqrt3`, no linear phase). Prints the contract row verdict; hypothesis verdicts print «NOT CERTIFIED» if any check fails. Printed, not asserted: `beta`,
 `alpha`, their cubic projections, `G_walk`, and the verdicts on HL3b–HL3e.
 
 Does **not** certify: `V_grp^max`, the scale of validity, terms beyond
-relative order `t^2`. Not independently reviewed.
+relative order `t^2`. Reviewed by gpt-6.1-sol (REPAIR_REQUIRED, repairs applied, not re-reviewed).
