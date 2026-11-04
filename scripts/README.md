@@ -422,3 +422,25 @@ support `{±1}^3`, and the parent's per-row checks (no degree-0/1 terms in
 
 Does **not** certify: `V_grp^max`, the scale of validity, terms beyond
 relative order `t^2`. Reviewed by gpt-6.1-sol (REPAIR_REQUIRED, repairs applied, not re-reviewed).
+
+## PH refutation test on hexagon H25 (2026-11-04)
+
+`verify_ph_refutation_hex_s25_gate.py` certifies
+[`PH_REFUTATION_HEX_S25`](../theory/PH_REFUTATION_HEX_S25_GATE.md),
+preregistered at `6eb50c1`, for the
+[report](../reports/2026-11-04--ph-refutation-hex-s25.md). 14 exact checks,
+about 30 s (`python3 -B`, sympy 1.14.0). Imports read-only
+`verify_hex_supremum_gate.py`, `verify_hex_supremum_b19.py` and, through
+them, `verify_hex_ceiling_gate.py`; those files are unchanged.
+
+Certified: H25 (vertex `2 g1 + g2`) has 25 points, 6 vertices, no lattice
+point inside an edge; layers on the grid `r_in/7`; the singleton
+intermediate layers are exactly the 18 non-vertex, non-origin points (and
+by a second, non-independent route, the exact layer-equation solve forces
+them to 0); the same directly on H25′; the surviving support rotates onto
+the T2 configuration, whose reviewed check is rerun (4/4); the M1-B19
+square controls are rerun (5/5).
+
+Does **not** certify: facet-line rigidity, lemma A1, the normal form, or
+the lattice-freeness of the T2 proof (reports). No nonlinear solver. Not
+independently reviewed.
