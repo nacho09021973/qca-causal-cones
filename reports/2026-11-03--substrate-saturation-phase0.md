@@ -350,3 +350,25 @@ decision); **G1-b** (L4-(5.15): no factorization in the record); **G1-c**
 four sign patterns vanish, two at missing zonotope vertices). F2 corrected
 as noted in Sec. 4. The definitional outcome stays
 `OPEN_AFTER_ROW_SURVEY`, PRELIMINARY, with no confirmatory value.
+
+### 7.6 User decisions on G1-a and G1-b (2026-11-04)
+
+User decision («confirmo las tres», on a recommendation drafted by Codex
+and assessed by Claude in the session):
+
+- **G1-a (L6c, L6f).** The product-class clause is kept literal: partial
+  shifts moving by `±a_i` (contract Sec. 1). The printed presentations of
+  L6c and L6f do not meet it. Recorded as: *product-class membership of
+  the walk not established*. This does not show that no admissible
+  factorization exists, and the class is not widened by the affine
+  centring of the G1 trace to close the gap.
+- **G1-b (L4-(5.15)).** Recorded as: *product-class membership not
+  established*. No new factorization is sought in this documentary audit.
+
+These decisions bound G1; they do not close it. G1-c is governed by the
+adopted PS′ presentation decision
+([proposal](2026-11-04--ps-prime-intrinsic-definition-proposal.md),
+`606a580`): counts stay attached to their stated presentation. No
+amendment is made to restrict contract Sec. 3.2 to printed presentations.
+The definitional outcome stays `OPEN_AFTER_ROW_SURVEY` (G1-a, G1-b, G1-c),
+PRELIMINARY, with no confirmatory value, not promoted.
