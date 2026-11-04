@@ -12,6 +12,10 @@ changes: disclose the retrospective stopping criterion, distinguish a
 possible intrinsic extension from the contract's presentation-based
 wording, and follow the directory's language convention. It was not a
 sealed blind review. This revised text has not been independently reviewed.
+Second revision (2026-11-04): Claude's review
+(`debates/2026-11-04--ps-prime-proposal-review-claude/revision.md`, PASS,
+not blind) asked for two non-blocking clarifications, A1 and A2; the user
+approved applying them, and Claude inserted them (Sec. 1, Sec. 3).
 
 This is not an approved amendment. It does not change the frozen contract,
 close G1, issue the PS′ verdict excluded by phase 0, or update
@@ -84,7 +88,10 @@ The G1 trace, Sec. 2, L6e entry, already records both presentations:
 | Second and third shifts combined | Two orthogonal directions | Equal, as recorded in the trace |
 
 The recorded Cartesian shift vectors are `(1,0)`, `(1/2,1/2)` and
-`(-1/2,1/2)`; the last two combine to `(0,1)`. Operator equality follows
+`(-1/2,1/2)`; the last two combine to `(0,1)`. The combined shift moves
+L by `-(0,1)` and R by `+(0,1)`, so it is symmetric, `±a` with
+`a = (0,1)`; this is what places the two-factor presentation in the
+product class of contract Sec. 1 (clarification A1). Operator equality follows
 from the identity coin and the shifts conditioned in the same basis,
 not from inferring factors from the body's edges. Support and saturation
 values are taken from the existing record, not recertified here. In
@@ -129,7 +136,9 @@ directions and the other rows not. Its selection must be stated and
 assessed without consulting `c_0 = r_in`.
 
 The last option uses the corrected F2 but has a precise limit. Conditional
-on `Z(P) = conv F`, the geometric statement in contract Sec. 1 makes
+on `Z(P) = conv F`, and on the generators spanning `R^d` (a
+full-dimensional body, which holds in every row of the record;
+clarification A2), the geometric statement in contract Sec. 1 makes
 “exactly `d` independent reduced directions” equivalent to the common body
 being a parallelepiped. The truth value of that predicate is then fixed
 by the body, even without a canonical factorization. This is a conditional
