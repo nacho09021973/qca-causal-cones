@@ -2567,4 +2567,65 @@ enough to be tested for refutation, nothing more) or
 `NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`, the latter never evidence for (PH)
 and never `CONFIRMED`. No outcome authorizes a later phase; a test that
 can fail (the hexagon, user's first choice) needs its own contract.
-Status: **OPEN; frozen; execution not authorized; nothing done.**
+Status at the charter (2026-11-03): OPEN; frozen; execution not
+authorized; nothing done. **Superseded by the record below.**
+
+**Execution (2026-11-03).** Authorized by the user («EJECUTAMOS FASE 0»).
+Report: [`2026-11-03--substrate-saturation-phase0.md`](../reports/2026-11-03--substrate-saturation-phase0.md),
+committed `2f6160e`; documentary only. Grok execution reviews:
+[round 1](../debates/2026-11-03--substrate-saturation-phase0-exec-review-grok/)
+REPAIR_REQUIRED, five repairs, applied (the definitional outcome went from
+`DEFINITIONS_CLOSED` to `OPEN_AFTER_ROW_SURVEY`, gap L4);
+[round 2](../debates/2026-11-03--substrate-saturation-phase0-exec-review2-grok/)
+REPAIR_REQUIRED, two repairs (L3 node trace clause by clause; L4 not
+counted in the domain), applied, not re-reviewed. Finding F2: (PS′)
+presupposes that every sign pattern of the partial shifts appears in `F`.
+
+**L4 addendum (2026-11-03).**
+[`2026-11-03--substrate-saturation-phase0-addendum-L4.md`](../reports/2026-11-03--substrate-saturation-phase0-addendum-L4.md)
+(`3e20c70`, page fix `738b62c`): node clauses (i)–(v) of CJWW (5.12),
+(5.15) derived from the primary source. DeepSeek PASS on the derivation
+and PASS on the literal check of p. 16 (`801c3f2`).
+
+**L3 node trace review (2026-11-04).** DeepSeek PASS, no repairs
+(`97dfe44`). By user decision, L3 counts as a witness in the audit, in that
+role only; two clarifications added to the trace (`6aa42f9`).
+
+**Amendment 1 (2026-11-04).**
+[`SUBSTRATE_SATURATION_PHASE0_GATE_AMENDMENT_1.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE_AMENDMENT_1.md),
+drafted at the user's instruction (`cecf75a`), reviewed by gpt-6.1-sol
+(OpenAI): PASS, no mandatory repairs, four clarifications (`1d17a2d`),
+applied; **approved by the user** (`5213d94`). Written after the result and
+declared so. Rule: a declared row whose node no promoted certificate covers
+may be classified as admissible only with a cited frozen class clause and
+admission rule, a primary-source derivation of the node clauses with
+literal transcription check, a cross-family review PASS, the substrate
+stated under frozen Sec. 2.3, and the pair from its single source;
+appearing in a table does not suffice. Applied to L4: class
+C_ACROSS_LATTICES_GATE l. 78 (CJWW (5.12), (5.15)). Author finding,
+re-derived by the reviewer: (5.12) generates the BCC group, (5.15)
+generates `Z^3`; both have `C_micro` a cube. Recorded, not repaired:
+DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE l. 63, 67 assigns (5.15) to L3
+and (5.12) to L4, unlike C_ACROSS_LATTICES_GATE l. 76, 78; whether its
+executed results are affected is open for the user.
+
+**Re-assessment under Amendment 1 (2026-11-04,** user instruction; report
+Sec. 7, `862b405`). Each frozen closing condition checked and traced. L4 is
+admissible under Amendment 1 (not «certified»); `OUTSIDE_DEFINITIONS = ∅`,
+stated explicitly. **Gap G1**, present on 2026-11-03 and not counted then:
+frozen Sec. 3.2 requires the reduced generators of product-class rows; the
+audit recorded `C_micro` edge directions instead, whose identity with the
+factor shifts F2 leaves unestablished, and did not list the product-class
+rows. F3: six substrates by group and support (line; square with diagonal
+steps; BCC; simple cubic `Z^3`, new; hexagon on the triangular lattice;
+hexagon over the finer group), same four shapes; F1 unchanged.
+
+Status: **PRELIMINARY. Definitional outcome `OPEN_AFTER_ROW_SURVEY`
+(remaining gap G1; L4 resolved). Counterexample check: (PH⇐) and (PH⇒)
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`, not independent evidence for (PH),
+because (PH) was read off this table (three hypercube shapes, one regular
+hexagon, no parallelepiped that is not a hypercube); never `CONFIRMED`.**
+The audit has no confirmatory value; any closure would be definitional
+only. Not promoted; no outcome authorizes a later phase. Closing G1 needs a
+documentary trace of product-class membership and factor shifts per row
+from the reviewed constructors, with review, by user decision.
