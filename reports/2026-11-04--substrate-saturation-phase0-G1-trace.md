@@ -18,7 +18,12 @@ source equations, never from the edges of `C_micro`. Supports are taken
 from set assertions already in the verifiers (cited per row). Statements
 marked **[hand]** are elementary derivations by the author, not checked by
 any script.
-**Status: PRELIMINARY, unreviewed.** The audit stays
+**Review:** gpt-6.1-sol (OpenAI), REPAIR_REQUIRED, two mandatory repairs
+(L6e count in the summary; F2 stated as a necessary condition), both
+applied in this revision with three clarifications, by the user's decision
+of 2026-11-04 («SI»); `debates/2026-11-04--substrate-saturation-phase0-G1-trace-review-astra/`
+(`8d70e58`, reviewed text `cb814b5`). This revision is not re-reviewed.
+**Status: PRELIMINARY.** The audit stays
 `OPEN_AFTER_ROW_SURVEY`, PRELIMINARY, with no confirmatory value.
 
 ## 0. Pre-step check
@@ -28,8 +33,16 @@ any script.
   factors, each partial shift moving by `±a_i`»; then
   `F = {sum_i ε_i a_i}` and `C_micro` is the zonotope `sum_i [-a_i, a_i]`;
   reduced generators are the `a_i` «up to sign and positive scale, parallel
-  ones merged». Audit F2: that identity presupposes every sign pattern has
-  nonzero amplitude.
+  ones merged». Audit F2 said that identity presupposes every sign pattern
+  has nonzero amplitude. **Corrected (repair 2):** that condition is
+  sufficient, not necessary. Three things must be kept apart: the
+  individual pattern amplitudes, the support `F` (where coincident
+  patterns add), and the convex hull. By Lemma V (Sec. 1), `conv F = Z`
+  iff every vertex of `Z` is in `F`; non-vertex patterns may vanish without
+  changing the hull (e.g. two identical factors `P_+ T(a) + P_- T(−a)`:
+  the mixed patterns vanish, `F = {±2a}`, `conv F = Z`). Equality of `F`
+  with the full set of candidate sums needs, in addition, the summed
+  amplitudes at coincident displacements.
 - **Question.** For each `s = 2` row of the audit: is it in the product
   class (cited), what are its factor shifts and reduced generators, and do
   the sign patterns have nonzero amplitude in the certified support?
@@ -99,7 +112,7 @@ values are given where directions are compared.
 - **Factor shifts:** `±e_a`. **Reduced generators:** 3 orthogonal.
 - **Patterns:** 8, distinct; support asserted exactly the 8 cube vertices
   (`verify_directional_saturation.py` l. 136–140; verifier promoted, CS
-  l. 754–755). All nonzero (also gpt-6.1-sol, Amendment 1 review point 4);
+  l. 754–755). All nonzero;
   `conv F = Z`.
 
 ### L4, walk CJWW (5.15) — **not resolved**
@@ -122,7 +135,9 @@ values are given where directions are compared.
   coordinates); Cartesian (generators l. 349) `(1,0)`, `(1/2,1/2)`,
   `(−1/2,1/2)`. **Reduced generators: 3 directions** in `d = 2`
   (`N_1 − N_2 + N_3 = 0`).
-- **Patterns [hand]:** `(+,+,+) → (2,0)`, `(+,+,−) → (2,−2)`,
+- **Patterns [hand]** (`+` designates the R component, which moves by
+  `+N_j`; L moves by `−N_j`, since `jdw_shift` reads L at `X + N_j`):
+  `(+,+,+) → (2,0)`, `(+,+,−) → (2,−2)`,
   `(+,−,+) → (0,0)`, `(+,−,−) → (0,−2)` and negatives (ISO). The zonotope
   of the three generators is a hexagon with vertices `±(2,0)`, `±(2,−2)`,
   `±(0,2)` (ISO). The asserted support is
@@ -133,7 +148,7 @@ values are given where directions are compared.
   `s_2 ≠ s_3` vanish individually (including the two at `0`), the four
   with `s_2 = s_3` do not (`U^1` has both entries nonzero).
 - **Consequence:** in the printed presentation `conv F` (a square) is not
-  the zonotope (a hexagon): the F2 hypothesis **fails** for L6e. [hand]
+  the zonotope (a hexagon): the vertex condition (corrected F2, Sec. 0) **fails** for L6e. [hand]
   Because `U^2 = I`, factors 2 and 3 combine into one partial shift by
   `±(N_2 + N_3) = ±(1,1)` (ISO) = `±(0,1)` (Cartesian); in that
   presentation there are 2 orthogonal reduced generators, all 4 patterns
@@ -178,7 +193,8 @@ values are given where directions are compared.
   `S_3` `(N_3, N_1)` with `HEX = (1,0), (−1,1), (0,−1)` (l. 367). Each
   partial shift moves L by `b_j = −N_a` and R by `c_j = −N_b` with
   `c_j ≠ −b_j`. **The literal clause «each partial shift moving by `±a_i`»
-  is not met.**
+  is not met** by the printed presentation; this does not show that no
+  other factorization exists.
 - **Affine reading [hand], recorded only:** `b_j = m_j + a_j`,
   `c_j = m_j − a_j` with `a_j = (b_j − c_j)/2`: `a = (−1, 1/2), (1/2, −1),
   (1/2, 1/2)` (TRI), Cartesian `(−3/4, √3/4)`, `(0, −√3/2)`, `(3/4, √3/4)`,
@@ -194,8 +210,12 @@ values are given where directions are compared.
 
 - **Product of coin–partial-shift factors: yes.** `row_L6c` (l. 312–329):
   `prod_j R_j^{-1} S_j R_j`, `S_j` reads L at `N_j`, R at `N_{j+1}`;
-  `c_j ≠ −b_j`. **Literal clause not met.**
-- **Affine reading [hand], recorded only:** `a_j = (N_j − N_{j+1})/2`:
+  `c_j ≠ −b_j`. **Literal clause not met** by the printed presentation;
+  this does not show that no other factorization exists.
+- **Affine reading [hand], recorded only** (orientation: `+` designates
+  R; with `b_j` the L displacement and `b_j = m_j + a_j` as for L6f, the
+  `a_j` below carry the opposite sign, which does not change the reduced
+  generators, defined up to sign): `a_j = (N_j − N_{j+1})/2`:
   `(1,−1)/2, (1,0)/2, (0,1)/2` and their negatives (`a_{j+3} = −a_j`);
   `sum_j m_j = −sum_j N_j = 0`. **Reduced generators** (parallel merged):
   3 directions at 60°, Cartesian `(1,0)`, `(1/2, ±√3/2)`, each of merged
@@ -229,16 +249,16 @@ L2, L3, L5a, L4-(5.12), L6a, L6d. Open, named:
 - **G1-b** (L4-(5.15)): no factorization in the source or in the reviewed
   constructor.
 - **G1-c** (L6e): the reduced generators depend on the presentation; in
-  the printed one, two sign patterns vanish and `conv F` is not the
-  zonotope.
+  the printed one, four sign patterns vanish (two at the missing vertices
+  `±(2,−2)` and two at `0`) and `conv F` is not the zonotope.
 
 **Finding recorded, no verdict (frozen Sec. 1: phase 0 gives no verdict on
 (PS′)).** L6e is literally in the product class in its printed
 presentation, has three reduced generators in `d = 2`, and saturates
 (`c_0 = r_in`, c-across-lattices l. 142). (PS′) as written («the ceiling is
 attained iff the generators reduce to `d` independent directions») would
-need either the F2 hypothesis or a rule fixing the presentation to apply
-to it. This is the concrete instance of F2; it bears on (PS′) only, not on
+need either the vertex condition (corrected F2) or a rule fixing the presentation to apply
+to it. This is a concrete instance of the corrected F2 (vertex patterns vanish); it bears on (PS′) only, not on
 (PH), and is not evidence for or against either.
 
 The audit's definitional outcome stays **`OPEN_AFTER_ROW_SURVEY`**,
