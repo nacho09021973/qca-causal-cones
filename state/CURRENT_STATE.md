@@ -2665,3 +2665,12 @@ DeepSeek deepseek-v4-pro sealed (PASS, no repairs, `8ddce30`). Unchanged:
 contract, (PH), G1-a/b/c, and the status **PRELIMINARY,
 `OPEN_AFTER_ROW_SURVEY`, no confirmatory value, not promoted**. No verdict
 on (PS′); no amendment.
+
+**G1-a / G1-b decisions (2026-11-04,** user decision; audit Sec. 7.6).
+G1-a: the `±a_i` clause is kept literal; L6c and L6f, whose printed
+presentations do not meet it, are recorded as *product-class membership
+not established*, without widening the class by affine centring. G1-b:
+L4-(5.15) recorded as *product-class membership not established*; no new
+factorization sought. G1 is bounded, not closed; no amendment. Status
+unchanged: **PRELIMINARY, `OPEN_AFTER_ROW_SURVEY` (G1-a, G1-b, G1-c), no
+confirmatory value, not promoted.**
