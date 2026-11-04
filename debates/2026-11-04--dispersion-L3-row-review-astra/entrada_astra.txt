@@ -1,0 +1,1883 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente el gate DISPERSION_L3_ROW,
+escrito por Claude (Anthropic): contrato theory/DISPERSION_L3_ROW_GATE.md,
+verificador scripts/verify_dispersion_L3_row_gate.py, informe
+reports/2026-11-04--dispersion-L3-row.md y la salida completa del
+verificador (salida_verificador.txt). Se adjuntan también, para leer el
+código importado, scripts/verify_dispersion_corrections_gate.py (gate padre,
+revisado y promovido) y scripts/verify_weyl_dirac_gate.py (símbolos de L3,
+revisado), la Errata 1 del gate padre y extractos literales numerados de
+scripts/verify_directional_saturation.py (walk1 = CJWW (5.12)), de la tabla
+del informe padre y de la tabla de filas del contrato C_ACROSS. Nada de lo
+escrito por Claude es premisa. No tienes herramientas: no ejecutes ni
+navegues. No propongas ampliar la investigación ni nuevas filas.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / INSUFFICIENT_EVIDENCE:
+1. CONTRATO. ¿Fija la pregunta, los cuatro símbolos (A±, B± de
+   `verify_case`), la normalización, el método y las hipótesis antes del
+   cálculo? ¿Es honesto sobre que las hipótesis se escribieron tras leer el
+   código? ¿Respeta el alcance del padre?
+2. VERIFICADOR. ¿Reproduce la rama genérica s = 2 del padre (Parte 2:
+   soporte, escala, `taylor_symbol`, traza y determinante truncados,
+   `analyse_block`, `walk_group`) sin cambiar bytes revisados? ¿Es correcta
+   la convención `sigma = +1` para `published_symbol` (la que usa el padre
+   para L1, L2) y `sigma = −1` para L5a? ¿Son correctas y suficientes las
+   comprobaciones afirmadas (unitaridad con `P.laurent_adjoint`, det = 1,
+   traza, soporte)? ¿Hay algún modo en que imprima CONFIRMED sin que la
+   comparación lo justifique (por ejemplo, `same_pair`, la igualdad de
+   listas de `G_walk`, `alpha0.is_negative`)?
+3. RESULTADOS. ¿Se leen de la salida los valores de la tabla del informe
+   (β, α, α_0, G_walk)? ¿Reproducen las filas de comparación ((5.12) y L5a)
+   la tabla del padre? ¿Es correcta la segunda vía (con det U = 1 el
+   polinomio característico depende sólo de la traza; χ = −1 es k → −k de
+   χ = +1, que invierte β y conserva α)?
+4. CONSECUENCIAS. ¿Son correctas y acotadas las consecuencias de la Sec. 4
+   (lista de filas con β; cobertura de He; Hd; pares compartidos en BCC y
+   Hf; la advertencia de que igual polinomio característico no implica
+   igual símbolo)? ¿Afirma el informe algo que no esté en la salida?
+
+Hasta 1500 palabras en español. Cada defecto: frase o línea exacta, por qué
+falla y qué lo cerraría. Distingue aclaración de error. Dictamen global PASS,
+REPAIR_REQUIRED o INSUFFICIENT_EVIDENCE y lista de reparaciones obligatorias;
+si no hay ninguna, dilo expresamente.
+
+=== DOCUMENT 1: DISPERSION_L3_ROW_GATE.md ===
+
+# DISPERSION_L3_ROW — frozen contract
+
+**Status of this text:** frozen at the commit that introduces it; that
+commit is the preregistration commit. Nothing computed before it.
+**Authorization:** user instruction of 2026-11-04, «autorizado a L3», in
+reply to Erratum 1 of the dispersion gate
+(`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_ERRATUM_1.md`, Sec. 4: «No
+dispersion entry is computed for the standard-battery L3. That would need
+an authorized computation»). Read by the author as authorizing this
+computation; the user may withdraw that reading.
+**Parent:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES` (preregistration
+`a7ff5b7`, promoted, CS Sec. 13). This contract adds the one parent row of
+`C_ACROSS_LATTICES` (l. 76) that the dispersion gate did not compute. It is
+a revision of the dispersion gate restricted to that row; nothing else of
+the parent is recomputed or changed.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> For the standard d = 3 Weyl battery (row L3 of `C_ACROSS_LATTICES`),
+> what is the exact lowest-order correction to the massless dispersion,
+> its order, sign and angular pattern, under the parent's definitions?
+
+## 1. Row and symbols
+
+Row L3, `s = 2`, `d = 3`. The four symbols certified by
+`scripts/verify_weyl_dirac_gate.py` (`verify_case`, l. 137–149), imported
+read-only:
+
+| Case | Symbol |
+| --- | --- |
+| A+ | `published_symbol(3, +1, z)` |
+| B+ | `published_symbol(3, +1, z).T` |
+| A− | `published_symbol(3, −1, z)` |
+| B− | `published_symbol(3, −1, z).T` |
+
+`z_j = e^{i k_j}` (sign `sigma = +1`, as the parent uses for L1 and L2),
+generators the unit vectors, support `{±1}^3`, normalization as the
+parent: longest step `sqrt3` → 1, one update per time unit; expected
+`c_0 = 1/sqrt3` (CS Sec. 5).
+
+## 2. Quantities and method
+
+Exactly the parent's quantities (parent contract Sec. 3) and method: the
+node quadratic factor `lambda^2 − tr U lambda + det U`; `omega^2`, `phi`;
+along rays `eps_+ − eps_0 = c_0 t [1 + beta(n) t + alpha(n) t^2 + …]`;
+`beta`, `alpha` exact, with cubic projections (`alpha_0`, `K4`, `K6`,
+`n1 n2 n3`); `G_walk` among the 48 signed permutations. Taylor degree
+`N = 4`, as the parent uses for its d = 3 rows. Scale of validity and
+`V_grp^max` are not attempted (OPEN, as in the parent).
+
+The helpers of `scripts/verify_dispersion_corrections_gate.py`
+(`taylor_symbol`, `analyse_block`, `walk_group`, `point_group`,
+`laurent_matrix_from_p`) and the symbols of
+`scripts/verify_weyl_dirac_gate.py` and
+`scripts/verify_directional_saturation.py` are imported read-only. No
+reviewed byte is changed. New verifier:
+`scripts/verify_dispersion_L3_row_gate.py`, fail-closed, exact.
+
+## 3. Hypotheses, stated before solving
+
+Author's reading of the code before computing (recorded so that it is a
+prediction, not a fit). For `s = 2` with `det U = 1` the characteristic
+polynomial is fixed by `tr U = 2 × scalar`. The scalar of
+`published_symbol(3, chi, ·)` is `ccc + chi sss` (`verify_weyl_dirac_gate.py`
+l. 68). The half-trace of CJWW (5.12), as transcribed by `walk1()`, is
+`ccc + sss` (`verify_directional_saturation.py` l. 81, Amendment 1 of the
+phase-0 gate, Sec. 2). Transposition preserves trace and determinant.
+
+- **HL3a.** `det U = 1` and `tr U = 2(ccc + chi sss)` exactly for all
+  four cases.
+- **HL3b.** A+ and B+ have the same `(beta, alpha)` and `G_walk` as the
+  parent's row printed «L4» (CJWW (5.12), `walk1()`), recomputed here with
+  the same helpers.
+- **HL3c.** A− and B− have `beta` of opposite sign to A+ and the same
+  `alpha`, and the same `(beta, alpha)` as L5a.
+- **HL3d (parent He for L3).** The lowest nonvanishing correction is
+  anisotropic.
+- **HL3e (parent Hd for L3).** `alpha_0 < 0`.
+
+## 4. Verdicts
+
+- `L3_DISPERSION_COMPLETE` (all quantities of Sec. 2 except the two OPEN
+  ones) or `L3_DISPERSION_OPEN_<reason>`.
+- Per hypothesis: `CONFIRMED` / `REFUTED`.
+- Consequences for the parent's He and Hf are recorded, not re-decided:
+  He coverage of row L3 (Erratum 1, Sec. 3 item 2), and any shared
+  `(beta, alpha)` pair on the BCC substrate.
+
+## 5. Stop rules and exclusions
+
+- Stop when the four cases are filled or marked OPEN with reason.
+- No numerics, no fitting, no new walk, no change to the parent table.
+- No physical interpretation, no claim about our universe, no novelty
+  claim.
+
+## 6. Deliverables
+
+- `reports/2026-11-04--dispersion-L3-row.md`.
+- `scripts/verify_dispersion_L3_row_gate.py`; its two exact command forms
+  in `.claude/settings.json`.
+- Cross-family review before any promotion; promotion is a separate user
+  decision.
+
+=== DOCUMENT 2: verify_dispersion_L3_row_gate.py ===
+
+#!/usr/bin/env python3
+"""Exact certificate for the DISPERSION_L3_ROW gate.
+Contract: theory/DISPERSION_L3_ROW_GATE.md (preregistration commit d3868fa).
+
+Adds row L3 of C_ACROSS_LATTICES (standard d = 3 Weyl battery: cases A+, B+,
+A-, B- of verify_weyl_dirac_gate.verify_case) to the dispersion corrections
+table, with the parent's helpers imported read-only from
+scripts/verify_dispersion_corrections_gate.py (no reviewed byte changed).
+For comparison (hypotheses HL3b, HL3c) the parent's rows printed "L4"
+(CJWW (5.12), walk1()) and L5a are recomputed here with the parent's own row
+setup (verify_dispersion_corrections_gate.py l. 565-576).
+Fails closed: any failed check or exception exits nonzero.
+Run from the repository root:  python3 -B scripts/verify_dispersion_L3_row_gate.py
+"""
+import sys
+import time
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_dispersion_corrections_gate as D   # reviewed, read-only
+import verify_c_across_lattices_gate as P        # reviewed, read-only
+import verify_weyl_dirac_gate as WD              # reviewed, read-only
+import verify_directional_saturation as DS       # reviewed, read-only
+
+R3 = sp.sqrt(3)
+START = time.time()
+N = 4                                            # parent's degree for d = 3 rows
+GENS3 = [(1, 0, 0), (0, 1, 0), (0, 0, 1)]
+KS = sp.symbols("k1:4", real=True)
+NS = sp.symbols("n1:4", real=True)
+
+
+def analyse(label, symbol, zs, gens, sigma, results, groups):
+    """The parent's generic s = 2 branch (Part 2), applied to one symbol."""
+    support = P.laurent_support(symbol, zs)
+    cart = {h: sum((a * sp.Matrix(g) for a, g in zip(h, gens)), sp.zeros(3, 1)) for h in support}
+    L = sp.radsimp(sp.simplify(max((sp.sqrt((v.T * v)[0]) for v in cart.values()), key=lambda x: float(x))))
+    print(f"-- {label} (s = {symbol.rows}, d = 3, scale = {L}, N = {N})  [elapsed {time.time() - START:.0f} s]",
+          flush=True)
+    Uk = D.taylor_symbol(support, gens, L, sigma, KS, N)
+    s1 = D.trunc(Uk.trace(), KS, N)
+    s2 = D.trunc(Uk.det(), KS, N)
+    D.analyse_block(label, s1, s2, KS, NS, N, 1, results, 1 / R3)
+    members, non_lattice = D.walk_group(symbol, zs, gens, D.point_group("cubic"))
+    groups[label] = members
+    print(f"  {label}: G_walk = {D.describe_group(members, 3)}; non-lattice skipped: {len(non_lattice)}")
+    return support
+
+
+def same_pair(x, y, results):
+    return (D.czero(results[x]["beta"] - results[y]["beta"], NS)
+            and D.czero(results[x]["alpha"] - results[y]["alpha"], NS))
+
+
+def main():
+    results, groups = {}, {}
+    zs = sp.symbols("w1:4")
+    cases = {}
+    print("== Part 1: row L3 symbols imported read-only (contract Sec. 1)")
+    for chi in (1, -1):
+        sym, scalar = WD.published_symbol(3, chi, zs)
+        s = "+" if chi == 1 else "-"
+        cases[f"L3 A{s}"] = (sym, scalar)
+        cases[f"L3 B{s}"] = (sym.T, scalar)
+    C = [(z + 1 / z) / 2 for z in zs]
+    S = [(z - 1 / z) / (2 * sp.I) for z in zs]
+    for label, (sym, scalar) in cases.items():
+        chi = 1 if "+" in label else -1
+        D.record(f"{label}: unitary as a Laurent matrix",
+                 P.is_zero_matrix(sym * P.laurent_adjoint(sym, zs) - sp.eye(2)))
+        # HL3a
+        D.record(f"{label}: det U = 1 (Laurent identity)", sp.expand(sp.together(sym.det() - 1)) == 0)
+        D.record(f"{label}: tr U = 2 (ccc + chi sss), chi = {chi} (HL3a)",
+                 sp.expand(sp.together(sym.trace() - 2 * (C[0] * C[1] * C[2] + chi * S[0] * S[1] * S[2]))) == 0)
+        sup = P.laurent_support(sym, zs)
+        D.record(f"{label}: Fourier support is {{+-1}}^3", set(sup) == {(a, b, c) for a in (1, -1)
+                                                                       for b in (1, -1) for c in (1, -1)})
+
+    print("== Part 2: node branch expansions (contract Sec. 2)")
+    for label, (sym, _) in cases.items():
+        analyse(label, sym, zs, GENS3, +1, results, groups)
+    # Comparison rows with the parent's own setup (l. 565-576).
+    analyse("parent L4 = CJWW (5.12)", D.laurent_matrix_from_p(DS.walk1()), DS.Z, GENS3, +1, results, groups)
+    symbol, zsa, _, gens_a = P.row_L5a()
+    analyse("parent L5a", symbol, zsa, gens_a, -1, results, groups)
+
+    print("== Part 3: hypotheses (contract Sec. 3)")
+    hb = all(same_pair(x, "parent L4 = CJWW (5.12)", results) and groups[x] == groups["parent L4 = CJWW (5.12)"]
+             for x in ("L3 A+", "L3 B+"))
+    print(f"  HL3b (A+, B+ share (beta, alpha) and G_walk with CJWW (5.12)): {'CONFIRMED' if hb else 'REFUTED'}")
+    hc_sign = all(D.czero(results[x]["beta"] + results["L3 A+"]["beta"], NS)
+                  and D.czero(results[x]["alpha"] - results["L3 A+"]["alpha"], NS) for x in ("L3 A-", "L3 B-"))
+    hc_l5a = all(same_pair(x, "parent L5a", results) for x in ("L3 A-", "L3 B-"))
+    hc = hc_sign and hc_l5a
+    print(f"  HL3c (A-, B-: beta opposite to A+, same alpha: {hc_sign}; same (beta, alpha) as L5a: {hc_l5a}): "
+          f"{'CONFIRMED' if hc else 'REFUTED'}")
+    hd = all(results[x]["lowest_aniso"] for x in cases)
+    print(f"  HL3d (lowest correction anisotropic in all four cases): {'CONFIRMED' if hd else 'REFUTED'}")
+    he = all(results[x]["alpha0"].is_negative for x in cases)
+    print(f"  HL3e (alpha_0 < 0 in all four cases): {'CONFIRMED' if he else 'REFUTED'}; "
+          f"alpha_0 = {[results[x]['alpha0'] for x in cases]}")
+    for x in cases:
+        r = results[x]
+        print(f"  {x}: lowest = {r['lowest']}; beta = {r['beta0']} + ({r['beta3']}) n1 n2 n3; "
+              f"{r['pattern'].split('; ')[1]}")
+    failed = [c for c in D.CHECKS if not c[1]]
+    print(f"{len(D.CHECKS) - len(failed)}/{len(D.CHECKS)} checks passed (dispersion L3 row gate; "
+          f"includes the parent's per-row checks of the comparison rows).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+=== DOCUMENT 3: 2026-11-04--dispersion-L3-row.md ===
+
+# Dispersion corrections: row L3 (standard d = 3 Weyl battery)
+
+**Date:** 2026-11-04. **Author:** Claude (Anthropic). **Contract:**
+[`DISPERSION_L3_ROW_GATE.md`](../theory/DISPERSION_L3_ROW_GATE.md),
+preregistration `d3868fa`. **Verifier:**
+`scripts/verify_dispersion_L3_row_gate.py`, SHA256 `1beb8fd9…` (full hash in
+the commit that adds this report), 34/34 exact checks, `python3 -B`, sympy
+1.14.0. **Status: PRELIMINARY**, not independently reviewed, not promoted.
+
+## 1. Why this row
+
+Erratum 1 of the dispersion gate
+(`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_ERRATUM_1.md`, DeepSeek PASS)
+found that the parent's row L3 (standard battery, `C_ACROSS_LATTICES` l. 76)
+had no dispersion entry. The row printed «L3» in the dispersion report is
+CJWW (5.15). The user authorized this computation («autorizado a L3").
+
+## 2. Result
+
+All four cases have `c_0 = 1/sqrt3`, no linear phase, and support `{±1}^3`
+(BCC group). Coefficients in the parent's normalization (ray
+`k = t n`, `eps_+ − eps_0 = c_0 t [1 + beta t + alpha t^2 + …]`):
+
+| Case | `G_walk` | Lowest correction | `beta(n̂)` | `alpha(n̂)` | `alpha_0` |
+| --- | --- | --- | --- | --- | --- |
+| A+, B+ | 24, `T_d` (same 24 elements as L5a and CJWW (5.12)) | `beta`, anisotropic | `−(sqrt3/3) n1 n2 n3` | `−4/315 + (7/198) K4 − (1/6) K6` | `−4/315` |
+| A−, B− | 24, same set | `beta`, anisotropic | `+(sqrt3/3) n1 n2 n3` | same | `−4/315` |
+
+Residuals of both cubic projections are zero. The `alpha` expression is the
+same as the parent's L5a and «L4» entries (`−sigma2/18 − n1^2 n2^2 n3^2/6`,
+report l. 44); here it is printed as its projection on `1, K4, K6`.
+
+## 3. Hypotheses (contract Sec. 3)
+
+- **HL3a CONFIRMED.** `det U = 1` and `tr U = 2(ccc + chi sss)` exactly
+  for all four cases (asserted checks).
+- **HL3b CONFIRMED.** A+ and B+ have the same `(beta, alpha)` and the same
+  `G_walk` as CJWW (5.12) (parent row printed «L4»), recomputed in the same
+  run with the parent's setup. The recomputed (5.12) reproduces the
+  parent's table: `beta = −(sqrt3/3) n1 n2 n3`, `alpha_0 = −4/315`.
+- **HL3c CONFIRMED.** A− and B− have the opposite `beta` and the same
+  `alpha` as A+, and the same `(beta, alpha)` as L5a (recomputed, matching
+  the parent's table: `beta = +(sqrt3/3) n1 n2 n3`).
+- **HL3d CONFIRMED.** The lowest correction is anisotropic in all four
+  cases.
+- **HL3e CONFIRMED.** `alpha_0 = −4/315 < 0` in all four cases.
+
+**Second route.** HL3b and HL3c also follow without the expansion. For
+`s = 2` with `det U = 1` the characteristic polynomial is fixed by `tr U`.
+`tr U` equals `2(ccc + sss)` for A+, B+ and for CJWW (5.12)
+(`verify_directional_saturation.py` l. 81). `chi = −1` is `k -> −k` of
+`chi = +1`, which flips `beta` (odd order) and keeps `alpha` (even). The
+expansion agrees with this.
+
+These hypotheses were written after the author read the code, before the
+run. They are predictions from an exact identity, not independent evidence
+about walks in general.
+
+## 4. Consequences for the parent (recorded, not re-decided)
+
+- **Rows with a `beta` term.** The parent's list «L5a, L5b, L4 with
+  `T_d`; L6a, L6b with `D_3`; L3s4» (CS Sec. 13) gains the standard L3.
+  The parent's statement «`alpha` elsewhere» covered the row printed «L3»,
+  which is CJWW (5.15).
+- **He.** The coverage gap recorded by Erratum 1, Sec. 3 item 2, is filled:
+  the standard L3 (a ceiling row) has a nonzero anisotropic lowest
+  coefficient. He holds in all declared ceiling rows of the parent plus L3.
+- **Hd.** Unchanged (`alpha_0 < 0` here).
+- **Hf.** On the BCC substrate there are further shared `(beta, alpha)`
+  pairs: L3 A± with CJWW (5.12) and with L5a (and the L5b blocks, through
+  the parent's table). Hf was already `REFUTED_BY_ROW_L6e`; this adds
+  coincidences on BCC, which the parent read as «not all equal»: that
+  still holds, since `beta` takes both signs.
+- **CJWW (5.12).** Same dispersion through relative order `t^2` and same
+  `G_walk` as L3 A+/B+. Whether (5.12) equals an L3 symbol up to the
+  declared symmetries is still not checked; equal characteristic
+  polynomials do not imply equal symbols.
+
+## 5. Not established
+
+- `V_grp^max` and the scale of validity: OPEN, as in the parent.
+- Terms beyond relative order `t^2`.
+- Any physical reading of `alpha`, `beta`.
+- No promotion. CS Sec. 13 is not changed by this report; a note would
+  follow review and a user decision, together with Erratum 1.
+
+=== DOCUMENT 4: salida_verificador.txt ===
+
+== Part 1: row L3 symbols imported read-only (contract Sec. 1)
+[PASS] L3 A+: unitary as a Laurent matrix
+[PASS] L3 A+: det U = 1 (Laurent identity)
+[PASS] L3 A+: tr U = 2 (ccc + chi sss), chi = 1 (HL3a)
+[PASS] L3 A+: Fourier support is {+-1}^3
+[PASS] L3 B+: unitary as a Laurent matrix
+[PASS] L3 B+: det U = 1 (Laurent identity)
+[PASS] L3 B+: tr U = 2 (ccc + chi sss), chi = 1 (HL3a)
+[PASS] L3 B+: Fourier support is {+-1}^3
+[PASS] L3 A-: unitary as a Laurent matrix
+[PASS] L3 A-: det U = 1 (Laurent identity)
+[PASS] L3 A-: tr U = 2 (ccc + chi sss), chi = -1 (HL3a)
+[PASS] L3 A-: Fourier support is {+-1}^3
+[PASS] L3 B-: unitary as a Laurent matrix
+[PASS] L3 B-: det U = 1 (Laurent identity)
+[PASS] L3 B-: tr U = 2 (ccc + chi sss), chi = -1 (HL3a)
+[PASS] L3 B-: Fourier support is {+-1}^3
+== Part 2: node branch expansions (contract Sec. 2)
+-- L3 A+ (s = 2, d = 3, scale = sqrt(3), N = 4)  [elapsed 0 s]
+[PASS] L3 A+: omega^2 has no terms of degree 0 or 1 and its degree-2 part is c0^2 |k|^2
+[PASS] L3 A+: c0 = sqrt(3)/3 agrees with the parent table
+[PASS] L3 A+: no linear phase (phi has no degree-1 part: untilted node)
+  L3 A+: node eigenvalue at k=0: 1; eps_0 = 0
+  L3 A+: Q3 = -2*sqrt(3)*n1*n2*n3/9; Q4 = n1**4/27 + n1**2*n2**2/27 - n1**2/27 + n2**4/27 - n2**2/27
+  L3 A+: phi: Phi2 = 0, Phi3 = 0, Phi4 = 0
+  L3 A+: beta(n) = -sqrt(3)*n1*n2*n3/3
+  L3 A+: alpha(n) = n1**4*n2**2/6 + n1**4/18 + n1**2*n2**4/6 - n1**2*n2**2/9 - n1**2/18 + n2**4/18 - n2**2/18
+  L3 A+: |grad eps_+| / c0 - 1 = (-2*sqrt(3)*n1*n2*n3/3) t^1 + (2*n1**4*n2**2 + 2*n1**2*n2**4 - 2*n1**2*n2**2) t^2
+  L3 A+: lowest nonvanishing correction: beta; anisotropic: True
+  L3 A+: lowest corrections: beta == 0: False; alpha0 = -4/315; angular content: beta = 0 + (-sqrt(3)/3) n1 n2 n3 [+ residual 0]; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  L3 A+: G_walk = 24 of 48 signed permutations: ['P(0, 1, 2)S(-1, -1, 1)', 'P(0, 1, 2)S(-1, 1, -1)', 'P(0, 1, 2)S(1, -1, -1)', 'P(0, 1, 2)S(1, 1, 1)', 'P(0, 2, 1)S(-1, -1, 1)', 'P(0, 2, 1)S(-1, 1, -1)', 'P(0, 2, 1)S(1, -1, -1)', 'P(0, 2, 1)S(1, 1, 1)', 'P(1, 0, 2)S(-1, -1, 1)', 'P(1, 0, 2)S(-1, 1, -1)', 'P(1, 0, 2)S(1, -1, -1)', 'P(1, 0, 2)S(1, 1, 1)', 'P(1, 2, 0)S(-1, -1, 1)', 'P(1, 2, 0)S(-1, 1, -1)', 'P(1, 2, 0)S(1, -1, -1)', 'P(1, 2, 0)S(1, 1, 1)', 'P(2, 0, 1)S(-1, -1, 1)', 'P(2, 0, 1)S(-1, 1, -1)', 'P(2, 0, 1)S(1, -1, -1)', 'P(2, 0, 1)S(1, 1, 1)', 'P(2, 1, 0)S(-1, -1, 1)', 'P(2, 1, 0)S(-1, 1, -1)', 'P(2, 1, 0)S(1, -1, -1)', 'P(2, 1, 0)S(1, 1, 1)']; non-lattice skipped: 0
+-- L3 B+ (s = 2, d = 3, scale = sqrt(3), N = 4)  [elapsed 1 s]
+[PASS] L3 B+: omega^2 has no terms of degree 0 or 1 and its degree-2 part is c0^2 |k|^2
+[PASS] L3 B+: c0 = sqrt(3)/3 agrees with the parent table
+[PASS] L3 B+: no linear phase (phi has no degree-1 part: untilted node)
+  L3 B+: node eigenvalue at k=0: 1; eps_0 = 0
+  L3 B+: Q3 = -2*sqrt(3)*n1*n2*n3/9; Q4 = n1**4/27 + n1**2*n2**2/27 - n1**2/27 + n2**4/27 - n2**2/27
+  L3 B+: phi: Phi2 = 0, Phi3 = 0, Phi4 = 0
+  L3 B+: beta(n) = -sqrt(3)*n1*n2*n3/3
+  L3 B+: alpha(n) = n1**4*n2**2/6 + n1**4/18 + n1**2*n2**4/6 - n1**2*n2**2/9 - n1**2/18 + n2**4/18 - n2**2/18
+  L3 B+: |grad eps_+| / c0 - 1 = (-2*sqrt(3)*n1*n2*n3/3) t^1 + (2*n1**4*n2**2 + 2*n1**2*n2**4 - 2*n1**2*n2**2) t^2
+  L3 B+: lowest nonvanishing correction: beta; anisotropic: True
+  L3 B+: lowest corrections: beta == 0: False; alpha0 = -4/315; angular content: beta = 0 + (-sqrt(3)/3) n1 n2 n3 [+ residual 0]; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  L3 B+: G_walk = 24 of 48 signed permutations: ['P(0, 1, 2)S(-1, -1, 1)', 'P(0, 1, 2)S(-1, 1, -1)', 'P(0, 1, 2)S(1, -1, -1)', 'P(0, 1, 2)S(1, 1, 1)', 'P(0, 2, 1)S(-1, -1, 1)', 'P(0, 2, 1)S(-1, 1, -1)', 'P(0, 2, 1)S(1, -1, -1)', 'P(0, 2, 1)S(1, 1, 1)', 'P(1, 0, 2)S(-1, -1, 1)', 'P(1, 0, 2)S(-1, 1, -1)', 'P(1, 0, 2)S(1, -1, -1)', 'P(1, 0, 2)S(1, 1, 1)', 'P(1, 2, 0)S(-1, -1, 1)', 'P(1, 2, 0)S(-1, 1, -1)', 'P(1, 2, 0)S(1, -1, -1)', 'P(1, 2, 0)S(1, 1, 1)', 'P(2, 0, 1)S(-1, -1, 1)', 'P(2, 0, 1)S(-1, 1, -1)', 'P(2, 0, 1)S(1, -1, -1)', 'P(2, 0, 1)S(1, 1, 1)', 'P(2, 1, 0)S(-1, -1, 1)', 'P(2, 1, 0)S(-1, 1, -1)', 'P(2, 1, 0)S(1, -1, -1)', 'P(2, 1, 0)S(1, 1, 1)']; non-lattice skipped: 0
+-- L3 A- (s = 2, d = 3, scale = sqrt(3), N = 4)  [elapsed 2 s]
+[PASS] L3 A-: omega^2 has no terms of degree 0 or 1 and its degree-2 part is c0^2 |k|^2
+[PASS] L3 A-: c0 = sqrt(3)/3 agrees with the parent table
+[PASS] L3 A-: no linear phase (phi has no degree-1 part: untilted node)
+  L3 A-: node eigenvalue at k=0: 1; eps_0 = 0
+  L3 A-: Q3 = 2*sqrt(3)*n1*n2*n3/9; Q4 = n1**4/27 + n1**2*n2**2/27 - n1**2/27 + n2**4/27 - n2**2/27
+  L3 A-: phi: Phi2 = 0, Phi3 = 0, Phi4 = 0
+  L3 A-: beta(n) = sqrt(3)*n1*n2*n3/3
+  L3 A-: alpha(n) = n1**4*n2**2/6 + n1**4/18 + n1**2*n2**4/6 - n1**2*n2**2/9 - n1**2/18 + n2**4/18 - n2**2/18
+  L3 A-: |grad eps_+| / c0 - 1 = (2*sqrt(3)*n1*n2*n3/3) t^1 + (2*n1**4*n2**2 + 2*n1**2*n2**4 - 2*n1**2*n2**2) t^2
+  L3 A-: lowest nonvanishing correction: beta; anisotropic: True
+  L3 A-: lowest corrections: beta == 0: False; alpha0 = -4/315; angular content: beta = 0 + (sqrt(3)/3) n1 n2 n3 [+ residual 0]; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  L3 A-: G_walk = 24 of 48 signed permutations: ['P(0, 1, 2)S(-1, -1, 1)', 'P(0, 1, 2)S(-1, 1, -1)', 'P(0, 1, 2)S(1, -1, -1)', 'P(0, 1, 2)S(1, 1, 1)', 'P(0, 2, 1)S(-1, -1, 1)', 'P(0, 2, 1)S(-1, 1, -1)', 'P(0, 2, 1)S(1, -1, -1)', 'P(0, 2, 1)S(1, 1, 1)', 'P(1, 0, 2)S(-1, -1, 1)', 'P(1, 0, 2)S(-1, 1, -1)', 'P(1, 0, 2)S(1, -1, -1)', 'P(1, 0, 2)S(1, 1, 1)', 'P(1, 2, 0)S(-1, -1, 1)', 'P(1, 2, 0)S(-1, 1, -1)', 'P(1, 2, 0)S(1, -1, -1)', 'P(1, 2, 0)S(1, 1, 1)', 'P(2, 0, 1)S(-1, -1, 1)', 'P(2, 0, 1)S(-1, 1, -1)', 'P(2, 0, 1)S(1, -1, -1)', 'P(2, 0, 1)S(1, 1, 1)', 'P(2, 1, 0)S(-1, -1, 1)', 'P(2, 1, 0)S(-1, 1, -1)', 'P(2, 1, 0)S(1, -1, -1)', 'P(2, 1, 0)S(1, 1, 1)']; non-lattice skipped: 0
+-- L3 B- (s = 2, d = 3, scale = sqrt(3), N = 4)  [elapsed 3 s]
+[PASS] L3 B-: omega^2 has no terms of degree 0 or 1 and its degree-2 part is c0^2 |k|^2
+[PASS] L3 B-: c0 = sqrt(3)/3 agrees with the parent table
+[PASS] L3 B-: no linear phase (phi has no degree-1 part: untilted node)
+  L3 B-: node eigenvalue at k=0: 1; eps_0 = 0
+  L3 B-: Q3 = 2*sqrt(3)*n1*n2*n3/9; Q4 = n1**4/27 + n1**2*n2**2/27 - n1**2/27 + n2**4/27 - n2**2/27
+  L3 B-: phi: Phi2 = 0, Phi3 = 0, Phi4 = 0
+  L3 B-: beta(n) = sqrt(3)*n1*n2*n3/3
+  L3 B-: alpha(n) = n1**4*n2**2/6 + n1**4/18 + n1**2*n2**4/6 - n1**2*n2**2/9 - n1**2/18 + n2**4/18 - n2**2/18
+  L3 B-: |grad eps_+| / c0 - 1 = (2*sqrt(3)*n1*n2*n3/3) t^1 + (2*n1**4*n2**2 + 2*n1**2*n2**4 - 2*n1**2*n2**2) t^2
+  L3 B-: lowest nonvanishing correction: beta; anisotropic: True
+  L3 B-: lowest corrections: beta == 0: False; alpha0 = -4/315; angular content: beta = 0 + (sqrt(3)/3) n1 n2 n3 [+ residual 0]; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  L3 B-: G_walk = 24 of 48 signed permutations: ['P(0, 1, 2)S(-1, -1, 1)', 'P(0, 1, 2)S(-1, 1, -1)', 'P(0, 1, 2)S(1, -1, -1)', 'P(0, 1, 2)S(1, 1, 1)', 'P(0, 2, 1)S(-1, -1, 1)', 'P(0, 2, 1)S(-1, 1, -1)', 'P(0, 2, 1)S(1, -1, -1)', 'P(0, 2, 1)S(1, 1, 1)', 'P(1, 0, 2)S(-1, -1, 1)', 'P(1, 0, 2)S(-1, 1, -1)', 'P(1, 0, 2)S(1, -1, -1)', 'P(1, 0, 2)S(1, 1, 1)', 'P(1, 2, 0)S(-1, -1, 1)', 'P(1, 2, 0)S(-1, 1, -1)', 'P(1, 2, 0)S(1, -1, -1)', 'P(1, 2, 0)S(1, 1, 1)', 'P(2, 0, 1)S(-1, -1, 1)', 'P(2, 0, 1)S(-1, 1, -1)', 'P(2, 0, 1)S(1, -1, -1)', 'P(2, 0, 1)S(1, 1, 1)', 'P(2, 1, 0)S(-1, -1, 1)', 'P(2, 1, 0)S(-1, 1, -1)', 'P(2, 1, 0)S(1, -1, -1)', 'P(2, 1, 0)S(1, 1, 1)']; non-lattice skipped: 0
+-- parent L4 = CJWW (5.12) (s = 2, d = 3, scale = sqrt(3), N = 4)  [elapsed 3 s]
+[PASS] parent L4 = CJWW (5.12): omega^2 has no terms of degree 0 or 1 and its degree-2 part is c0^2 |k|^2
+[PASS] parent L4 = CJWW (5.12): c0 = sqrt(3)/3 agrees with the parent table
+[PASS] parent L4 = CJWW (5.12): no linear phase (phi has no degree-1 part: untilted node)
+  parent L4 = CJWW (5.12): node eigenvalue at k=0: 1; eps_0 = 0
+  parent L4 = CJWW (5.12): Q3 = -2*sqrt(3)*n1*n2*n3/9; Q4 = n1**4/27 + n1**2*n2**2/27 - n1**2/27 + n2**4/27 - n2**2/27
+  parent L4 = CJWW (5.12): phi: Phi2 = 0, Phi3 = 0, Phi4 = 0
+  parent L4 = CJWW (5.12): beta(n) = -sqrt(3)*n1*n2*n3/3
+  parent L4 = CJWW (5.12): alpha(n) = n1**4*n2**2/6 + n1**4/18 + n1**2*n2**4/6 - n1**2*n2**2/9 - n1**2/18 + n2**4/18 - n2**2/18
+  parent L4 = CJWW (5.12): |grad eps_+| / c0 - 1 = (-2*sqrt(3)*n1*n2*n3/3) t^1 + (2*n1**4*n2**2 + 2*n1**2*n2**4 - 2*n1**2*n2**2) t^2
+  parent L4 = CJWW (5.12): lowest nonvanishing correction: beta; anisotropic: True
+  parent L4 = CJWW (5.12): lowest corrections: beta == 0: False; alpha0 = -4/315; angular content: beta = 0 + (-sqrt(3)/3) n1 n2 n3 [+ residual 0]; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  parent L4 = CJWW (5.12): G_walk = 24 of 48 signed permutations: ['P(0, 1, 2)S(-1, -1, 1)', 'P(0, 1, 2)S(-1, 1, -1)', 'P(0, 1, 2)S(1, -1, -1)', 'P(0, 1, 2)S(1, 1, 1)', 'P(0, 2, 1)S(-1, -1, 1)', 'P(0, 2, 1)S(-1, 1, -1)', 'P(0, 2, 1)S(1, -1, -1)', 'P(0, 2, 1)S(1, 1, 1)', 'P(1, 0, 2)S(-1, -1, 1)', 'P(1, 0, 2)S(-1, 1, -1)', 'P(1, 0, 2)S(1, -1, -1)', 'P(1, 0, 2)S(1, 1, 1)', 'P(1, 2, 0)S(-1, -1, 1)', 'P(1, 2, 0)S(-1, 1, -1)', 'P(1, 2, 0)S(1, -1, -1)', 'P(1, 2, 0)S(1, 1, 1)', 'P(2, 0, 1)S(-1, -1, 1)', 'P(2, 0, 1)S(-1, 1, -1)', 'P(2, 0, 1)S(1, -1, -1)', 'P(2, 0, 1)S(1, 1, 1)', 'P(2, 1, 0)S(-1, -1, 1)', 'P(2, 1, 0)S(-1, 1, -1)', 'P(2, 1, 0)S(1, -1, -1)', 'P(2, 1, 0)S(1, 1, 1)']; non-lattice skipped: 0
+[PASS] L5a: symbol is unitary (U U^dagger = I on |z|=1)
+  L5a: |F| = 8, contains 0: False
+    h=(-1, -1, -1)  cart=(-1, -1, -1)  |h|=sqrt(3)
+    h=(-1, -1, 1)  cart=(-1, -1, 1)  |h|=sqrt(3)
+    h=(-1, 1, -1)  cart=(-1, 1, -1)  |h|=sqrt(3)
+    h=(-1, 1, 1)  cart=(-1, 1, 1)  |h|=sqrt(3)
+    h=(1, -1, -1)  cart=(1, -1, -1)  |h|=sqrt(3)
+    h=(1, -1, 1)  cart=(1, -1, 1)  |h|=sqrt(3)
+    h=(1, 1, -1)  cart=(1, 1, -1)  |h|=sqrt(3)
+    h=(1, 1, 1)  cart=(1, 1, 1)  |h|=sqrt(3)
+    longest |h| = sqrt(3); index of <F> in generator lattice = 4
+[PASS] L5a: composite step set is {+-1}^3 (BCC, as the source remarks)
+-- parent L5a (s = 2, d = 3, scale = sqrt(3), N = 4)  [elapsed 4 s]
+[PASS] parent L5a: omega^2 has no terms of degree 0 or 1 and its degree-2 part is c0^2 |k|^2
+[PASS] parent L5a: c0 = sqrt(3)/3 agrees with the parent table
+[PASS] parent L5a: no linear phase (phi has no degree-1 part: untilted node)
+  parent L5a: node eigenvalue at k=0: 1; eps_0 = 0
+  parent L5a: Q3 = 2*sqrt(3)*n1*n2*n3/9; Q4 = n1**4/27 + n1**2*n2**2/27 - n1**2/27 + n2**4/27 - n2**2/27
+  parent L5a: phi: Phi2 = 0, Phi3 = 0, Phi4 = 0
+  parent L5a: beta(n) = sqrt(3)*n1*n2*n3/3
+  parent L5a: alpha(n) = n1**4*n2**2/6 + n1**4/18 + n1**2*n2**4/6 - n1**2*n2**2/9 - n1**2/18 + n2**4/18 - n2**2/18
+  parent L5a: |grad eps_+| / c0 - 1 = (2*sqrt(3)*n1*n2*n3/3) t^1 + (2*n1**4*n2**2 + 2*n1**2*n2**4 - 2*n1**2*n2**2) t^2
+  parent L5a: lowest nonvanishing correction: beta; anisotropic: True
+  parent L5a: lowest corrections: beta == 0: False; alpha0 = -4/315; angular content: beta = 0 + (sqrt(3)/3) n1 n2 n3 [+ residual 0]; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  parent L5a: G_walk = 24 of 48 signed permutations: ['P(0, 1, 2)S(-1, -1, 1)', 'P(0, 1, 2)S(-1, 1, -1)', 'P(0, 1, 2)S(1, -1, -1)', 'P(0, 1, 2)S(1, 1, 1)', 'P(0, 2, 1)S(-1, -1, 1)', 'P(0, 2, 1)S(-1, 1, -1)', 'P(0, 2, 1)S(1, -1, -1)', 'P(0, 2, 1)S(1, 1, 1)', 'P(1, 0, 2)S(-1, -1, 1)', 'P(1, 0, 2)S(-1, 1, -1)', 'P(1, 0, 2)S(1, -1, -1)', 'P(1, 0, 2)S(1, 1, 1)', 'P(1, 2, 0)S(-1, -1, 1)', 'P(1, 2, 0)S(-1, 1, -1)', 'P(1, 2, 0)S(1, -1, -1)', 'P(1, 2, 0)S(1, 1, 1)', 'P(2, 0, 1)S(-1, -1, 1)', 'P(2, 0, 1)S(-1, 1, -1)', 'P(2, 0, 1)S(1, -1, -1)', 'P(2, 0, 1)S(1, 1, 1)', 'P(2, 1, 0)S(-1, -1, 1)', 'P(2, 1, 0)S(-1, 1, -1)', 'P(2, 1, 0)S(1, -1, -1)', 'P(2, 1, 0)S(1, 1, 1)']; non-lattice skipped: 0
+== Part 3: hypotheses (contract Sec. 3)
+  HL3b (A+, B+ share (beta, alpha) and G_walk with CJWW (5.12)): CONFIRMED
+  HL3c (A-, B-: beta opposite to A+, same alpha: True; same (beta, alpha) as L5a: True): CONFIRMED
+  HL3d (lowest correction anisotropic in all four cases): CONFIRMED
+  HL3e (alpha_0 < 0 in all four cases): CONFIRMED; alpha_0 = [-4/315, -4/315, -4/315, -4/315]
+  L3 A+: lowest = beta; beta = 0 + (-sqrt(3)/3) n1 n2 n3; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  L3 B+: lowest = beta; beta = 0 + (-sqrt(3)/3) n1 n2 n3; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  L3 A-: lowest = beta; beta = 0 + (sqrt(3)/3) n1 n2 n3; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+  L3 B-: lowest = beta; beta = 0 + (sqrt(3)/3) n1 n2 n3; alpha = -4/315 + (7/198) K4 + (-1/6) K6 [+ residual 0]
+34/34 checks passed (dispersion L3 row gate; includes the parent's per-row checks of the comparison rows).
+
+=== DOCUMENT 5: verify_dispersion_corrections_gate.py ===
+
+#!/usr/bin/env python3
+"""Exact certificate for the DISPERSION_CORRECTIONS_ACROSS_LATTICES gate.
+Contract: theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md
+(preregistration commit a7ff5b7). Rows and symbol sources: contract Sec. 2.
+
+For every declared massless row the symbol U(k) is imported read-only from
+the script named in the contract, expanded exactly as a multivariate Taylor
+polynomial in k (normalised as in the parent: Cartesian positions divided by
+the longest step, one update per time unit), and the node branch is read
+from the quadratic factor of the characteristic polynomial that carries the
+node:
+  s = 2 rows                  : the factor is the whole polynomial,
+                                s1 = tr U, s2 = det U;
+  L5b (s = 4)                 : the joint commutant element
+                                Gamma = dP_X dP_Y dP_Z splits U into two
+                                2x2 blocks (two Weyl blocks);
+  L6b (s = 6, V = U^3)        : the three 2x2 orientation blocks of V,
+                                quasienergies divided by 3 (three updates);
+  L3s4 (s = 4, nodes at +-pi/4): Hensel lifting of the quadratic factor of
+                                the characteristic polynomial at the
+                                double root exp(-+ i pi/4) of A_a(0) = W.
+From s1, s2: exp(-2 i phi) = s2 / s2(0), cos^2 omega = s1^2 / (4 s2), the
+node branches are eps = eps_0 + phi +- omega, and omega^2 is an analytic
+function of k whose homogeneous parts Q_m(k) are extracted exactly.
+Along a ray k = t n, |n| = 1, the upper branch is
+  eps_+ - eps_0 = c_0 t [1 + beta(n) t + alpha(n) t^2 + ...],
+with beta, alpha exact functions of n; their angular content is read as a
+trigonometric polynomial (d = 2) or projected on cubic invariants (d = 3).
+The symmetry group of the walk, G_walk, is the set of substrate point-group
+elements g with charpoly U(g k) = charpoly U(k) exactly (Laurent identity).
+Fails closed: any failed check or exception exits nonzero.
+Run from the repository root:  python3 -B scripts/verify_dispersion_corrections_gate.py
+"""
+import hashlib
+import itertools
+import math
+import sys
+import time
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_c_across_lattices_gate as P      # reviewed, read-only
+import verify_weyl_dirac_gate as WD            # reviewed, read-only
+import verify_directional_saturation as DS     # reviewed, read-only
+import cert_Aa_s4_counterexample as AA         # reviewed, read-only
+import verify_l6b_triangular_row_gate as L6B   # reviewed, read-only
+
+CONTRACT = ROOT / "theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md"
+CHECKS = []
+START = time.time()
+R3 = sp.sqrt(3)
+R2 = sp.sqrt(2)
+LAM = sp.symbols("lambda")
+T = sp.symbols("t", positive=True)
+W = sp.symbols("w")  # e^{i theta} for the d = 2 angular content
+
+# Exact Taylor coefficients (SymPy series, checked at import below).
+ACOS2 = [0, 2, sp.Rational(1, 3), sp.Rational(4, 45), sp.Rational(1, 35)]    # acos(1-v)^2
+LOG1P = [0, 1, -sp.Rational(1, 2), sp.Rational(1, 3), -sp.Rational(1, 4),
+         sp.Rational(1, 5), -sp.Rational(1, 6)]                             # log(1+v)
+SQRT1P = [1, sp.Rational(1, 2), -sp.Rational(1, 8), sp.Rational(1, 16),
+          -sp.Rational(5, 128), sp.Rational(7, 256), -sp.Rational(21, 1024)]  # sqrt(1+v)
+INV1P = [1, -1, 1, -1, 1, -1, 1]                                            # 1/(1+v)
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok), detail))
+    print(("[PASS] " if ok else "[FAIL] ") + label + (f" -- {detail}" if detail else ""))
+
+
+A_SYM = sp.symbols("a", positive=True)   # L3s4 parameter, 0 < a < 1
+B_SYM = sp.symbols("b", positive=True)   # stands for sqrt(1 - a^2)
+
+
+def reduce_b(e):
+    """Reduce modulo b^2 = 1 - a^2, leaving b to degree <= 1. Since
+    sqrt(1-a^2) is not a rational function of a, c0(a) + c1(a) b vanishes
+    identically on 0 < a < 1 iff c0 = c1 = 0: the zero test stays exact."""
+    if not e.has(B_SYM):
+        return e
+    poly = sp.Poly(sp.expand(e), B_SYM)
+    return sp.expand(sum((c * (1 - A_SYM ** 2) ** (j // 2) * B_SYM ** (j % 2)
+                          for (j,), c in poly.terms()), sp.Integer(0)))
+
+
+def canon(e):
+    """Canonical radical form for a scalar; zero iff the scalar is zero."""
+    return sp.radsimp(sp.simplify(sp.expand_complex(reduce_b(sp.expand(e)))))
+
+
+def zero(e):
+    e = reduce_b(sp.expand(e))
+    return e == 0 or canon(e) == 0      # fast path when expansion already gives 0
+
+
+def czero(expr, syms):
+    """Zero test for a polynomial in syms with radical coefficients."""
+    expr = sp.expand(expr)
+    if expr == 0:
+        return True
+    return all(zero(c) for c in sp.Poly(expr, *syms).coeffs())
+
+
+# ------------------------------------------------------------ polynomials
+def trunc(expr, ks, N):
+    expr = sp.expand(expr)
+    if expr == 0:
+        return sp.Integer(0)
+    poly = sp.Poly(expr, *ks)
+    return sum((reduce_b(c) * sp.prod([k ** e for k, e in zip(ks, exps)])
+                for exps, c in poly.terms() if sum(exps) <= N), sp.Integer(0))
+
+
+def homog(expr, ks, m):
+    expr = sp.expand(expr)
+    if expr == 0:
+        return sp.Integer(0)
+    poly = sp.Poly(expr, *ks)
+    return sum((c * sp.prod([k ** e for k, e in zip(ks, exps)])
+                for exps, c in poly.terms() if sum(exps) == m), sp.Integer(0))
+
+
+def compose(coeffs, x, ks, N):
+    """sum_j coeffs[j] x^j truncated at total degree N; x has no constant term."""
+    out = sp.Integer(coeffs[0])
+    power = sp.Integer(1)
+    for j in range(1, len(coeffs)):
+        power = trunc(power * x, ks, N)
+        if power == 0:
+            break
+        out += coeffs[j] * power
+    return trunc(out, ks, N)
+
+
+def taylor_symbol(support, gens, scale, sigma, ks, N):
+    """U(k) = sum_h A_h exp(sigma i k.h_cart / scale), Taylor polynomial of degree N."""
+    d = len(ks)
+    U = sp.zeros(next(iter(support.values())).rows)
+    for h, A in support.items():
+        cart = [sum(a * sp.Matrix(g)[i] for a, g in zip(h, gens)) for i in range(d)]
+        phase = sigma * sp.I * sum(k * c for k, c in zip(ks, cart)) / scale
+        e = sum((phase ** m / sp.factorial(m) for m in range(N + 1)), sp.Integer(0))
+        U += A.applyfunc(canon) * e
+    return U.applyfunc(lambda e: trunc(e, ks, N))
+
+
+# ------------------------------------------------------------ node branch
+def node_from_quadratic(s1, s2, ks, N):
+    """Given the quadratic factor lambda^2 - s1 lambda + s2 carrying the node
+    (truncated at degree N), return (phi, omega2, lambda0): the common phase
+    phi(k) with exp(-2 i phi) = s2/s2(0), and omega^2(k) with
+    cos^2 omega = s1^2/(4 s2), both as polynomials in k of degree <= N."""
+    at0 = {k: 0 for k in ks}
+    s20 = canon(s2.subs(at0))
+    s10 = canon(s1.subs(at0))
+    lam0 = canon(s10 / 2)                     # double root at k = 0
+    record_quiet = zero(lam0 ** 2 - s20)
+    if not record_quiet:
+        raise ValueError("node factor is not a double root at k = 0")
+    x = trunc(s2 / s20 - 1, ks, N)
+    phi = trunc(sp.I / 2 * compose(LOG1P, x, ks, N), ks, N)
+    inv_s2 = trunc(compose(INV1P, x, ks, N) / s20, ks, N)
+    g = trunc(s1 ** 2 * inv_s2 / 4, ks, N)
+    v = trunc(2 * (1 - g), ks, N)             # 1 - cos(2 omega)
+    omega2 = trunc(compose(ACOS2, v, ks, N) / 4, ks, N)
+    return phi, omega2, lam0
+
+
+def reduce_sphere(expr, ns):
+    """Reduce a polynomial in n modulo |n|^2 = 1 (last variable eliminated)."""
+    expr = sp.expand(expr)
+    if expr == 0 or len(ns) == 1:
+        return sp.expand(expr.subs(ns[0] ** 2, 1)) if len(ns) == 1 else expr
+    last = ns[-1]
+    rest = 1 - sum(n ** 2 for n in ns[:-1])
+    poly = sp.Poly(expr, last)
+    out = sp.Integer(0)
+    for (j,), c in poly.terms():
+        out += c * last ** (j % 2) * rest ** (j // 2)
+    return sp.expand(out)
+
+
+def ray_expansion(phi, omega2, ks, ns, N, divisor=1):
+    """Upper node branch along k = t n, |n| = 1:
+    eps_+ - eps_0 = (phi + omega)/divisor = sum_j E_j(n) t^j.
+    Returns c0 and the dict {j: E_j(n)} (sphere-reduced), j = 1..N-1,
+    together with the homogeneous parts Q_m(n) of omega^2 and Phi_m of phi."""
+    sub = {k: T * n for k, n in zip(ks, ns)}
+    om2_t = sp.expand(omega2.subs(sub))
+    Q = {m: reduce_sphere(om2_t.coeff(T, m), ns) for m in range(0, N + 1)}
+    ph_t = sp.expand(phi.subs(sub))
+    Phi = {m: reduce_sphere(ph_t.coeff(T, m), ns) for m in range(0, N + 1)}
+    c0sq = canon(Q[2])
+    c0 = sp.radsimp(sp.sqrt(c0sq))
+    x = sum((Q[m] / c0sq * T ** (m - 2) for m in range(3, N + 1)), sp.Integer(0))
+    sq = compose(SQRT1P, x, [T], N - 2)
+    om_t = sp.expand(c0 * T * sq)
+    eps_t = sp.expand((om_t + ph_t) / divisor)
+    E = {j: reduce_sphere(eps_t.coeff(T, j), ns) for j in range(1, N)}
+    return c0 / divisor, E, Q, Phi
+
+
+def group_velocity(phi, omega2, ks, ns, N, c0, divisor=1):
+    """|grad eps_+| along k = t n to relative order t^(N-2): returns the
+    coefficients gamma_j with |grad eps_+| = c0 [1 + sum_j gamma_j t^j]."""
+    sub = {k: T * n for k, n in zip(ks, ns)}
+    grad_om2 = [sp.expand(sp.diff(omega2, k).subs(sub)) for k in ks]
+    grad_phi = [sp.expand(sp.diff(phi, k).subs(sub)) for k in ks]
+    om2_t = sp.expand(omega2.subs(sub))
+    c0full = c0 * divisor
+    c0sq = c0full ** 2
+    x = sp.expand(sum((reduce_sphere(om2_t.coeff(T, m), ns) / c0sq * T ** (m - 2)
+                       for m in range(3, N + 1)), sp.Integer(0)))
+    inv_sqrt = compose(SQRT1P, x, [T], N - 2)     # sqrt(1+x)
+    inv_sqrt = compose(INV1P, sp.expand(inv_sqrt - 1), [T], N - 2)  # 1/sqrt(1+x)
+    comps = []
+    for a in range(len(ks)):
+        g = sp.expand(grad_om2[a])
+        # grad omega = grad omega2 / (2 omega), omega = c0full t sqrt(1+x)
+        g_over_t = sp.expand(sum(reduce_sphere(g.coeff(T, m), ns) * T ** (m - 1) for m in range(1, N)))
+        val = sp.expand(g_over_t * inv_sqrt / (2 * c0full) + grad_phi[a])
+        comps.append(trunc(val, [T], N - 2))
+    v2 = trunc(sum(c ** 2 for c in comps), [T], N - 2)
+    v2 = sp.expand(sum(reduce_sphere(v2.coeff(T, m), ns) * T ** m for m in range(0, N - 1)))
+    lead = canon(v2.coeff(T, 0))
+    if not zero(lead - c0sq):
+        raise ValueError(f"group speed at the node is not c0: {lead} vs {c0sq}")
+    y = trunc(v2 / c0sq - 1, [T], N - 2)
+    vg = compose(SQRT1P, y, [T], N - 2)
+    return {j: reduce_sphere(sp.expand(vg).coeff(T, j), ns) for j in range(1, N - 1)}
+
+
+# ------------------------------------------------------------ angular content
+def fourier2(f, ns):
+    """Trigonometric content of f(cos th, sin th): returns {m: (a_m, b_m)} with
+    f = a_0 + sum_{m>0} a_m cos(m th) + b_m sin(m th), exactly."""
+    sub = {ns[0]: (W + 1 / W) / 2, ns[1]: (W - 1 / W) / (2 * sp.I)}
+    g = sp.expand(f.subs(sub))
+    out = {}
+    if g == 0:
+        return {0: (sp.Integer(0), sp.Integer(0))}
+    shift = W ** 40
+    poly = sp.Poly(sp.expand(g * shift), W)
+    c = {}
+    for (e,), coeff in poly.terms():
+        c[e - 40] = canon(coeff)
+    ms = sorted({abs(m) for m in c})
+    for m in ms:
+        cp, cm = c.get(m, 0), c.get(-m, 0)
+        if m == 0:
+            out[0] = (canon(cp), sp.Integer(0))
+        else:
+            out[m] = (canon(cp + cm), canon(sp.I * (cp - cm)))
+    return out
+
+
+def dfact(n):
+    return sp.Integer(1) if n <= 0 else sp.Integer(n) * dfact(n - 2)
+
+
+def sphere_average(f, ns):
+    """Exact average over the unit sphere S^2 of a polynomial in n."""
+    f = sp.expand(f)
+    if f == 0:
+        return sp.Integer(0)
+    poly = sp.Poly(f, *ns)
+    out = sp.Integer(0)
+    for exps, c in poly.terms():
+        if any(e % 2 for e in exps):
+            continue
+        out += c * sp.prod([dfact(e - 1) for e in exps]) / dfact(sum(exps) + 1)
+    return canon(out)
+
+
+def cubic_content(f, ns):
+    """f on S^2 = a0 + b4 K4 + b6 K6 + residual, with K4 = sum n^4 - 3/5 and K6
+    the part of n1^2 n2^2 n3^2 orthogonal (L^2(S^2)) to 1 and K4. 1, K4, K6
+    span the cubic (O_h) invariants of degree <= 6 on S^2. A zero residual
+    certifies that f has only cubic-invariant content up to degree 6."""
+    def avg(x):
+        return sphere_average(reduce_sphere(x, ns), ns)
+    K4 = reduce_sphere(sum(n ** 4 for n in ns) - sp.Rational(3, 5), ns)
+    m6 = reduce_sphere(sp.prod([n ** 2 for n in ns]), ns)
+    K6 = reduce_sphere(m6 - avg(m6) - avg(m6 * K4) / avg(K4 * K4) * K4, ns)
+    a0 = avg(f)
+    b4 = canon(avg(f * K4) / avg(K4 * K4))
+    b6 = canon(avg(f * K6) / avg(K6 * K6))
+    residual = reduce_sphere(f - a0 - b4 * K4 - b6 * K6, ns)
+    return a0, b4, b6, residual
+
+
+# ------------------------------------------------------------ symmetry group
+def rot2(angle):
+    return sp.Matrix([[sp.cos(angle), -sp.sin(angle)], [sp.sin(angle), sp.cos(angle)]])
+
+
+def point_group(name):
+    if name == "line":
+        return {"+1": sp.Matrix([[1]]), "-1": sp.Matrix([[-1]])}
+    F = sp.diag(1, -1)
+    if name == "square":
+        g = {}
+        for j in range(4):
+            g[f"R{90 * j}"] = rot2(sp.pi * j / 2)
+            g[f"R{90 * j}F"] = rot2(sp.pi * j / 2) * F
+        return g
+    if name == "hexagon":
+        g = {}
+        for j in range(6):
+            g[f"R{60 * j}"] = rot2(sp.pi * j / 3)
+            g[f"R{60 * j}F"] = rot2(sp.pi * j / 3) * F
+        return g
+    if name == "cubic":
+        g = {}
+        for perm in itertools.permutations(range(3)):
+            for signs in itertools.product((1, -1), repeat=3):
+                m = sp.zeros(3)
+                for i in range(3):
+                    m[i, perm[i]] = signs[i]
+                g[f"P{perm}S{signs}"] = m
+        return g
+    raise ValueError(name)
+
+
+def lp_equal(a, b, zs):
+    shift = sp.prod([z ** 12 for z in zs])
+    diff = sp.expand((a - b) * shift)
+    if diff == 0:
+        return True
+    return all(zero(c) for c in sp.Poly(diff, *zs).coeffs())
+
+
+def power_traces(symbol, n):
+    """tr(U^m), m = 1..n, exact Laurent polynomials."""
+    out, M = [], sp.eye(symbol.rows)
+    for _ in range(n):
+        M = (M * symbol).applyfunc(sp.expand)
+        out.append(sp.expand(M.trace()))
+    return out
+
+
+def walk_group(symbol, zs, gens, group):
+    """Elements g of the substrate point group with charpoly U(g k) = charpoly U(k).
+    In characteristic 0 the characteristic polynomial of an s x s matrix is
+    determined by tr(U^m), m = 1..s (Newton identities), and tr(U(g k)^m) is
+    tr(U^m) with the monomial substitution z^h -> z^(M h), M the integer
+    matrix of g in generator coordinates (k.h is invariant)."""
+    d = len(gens[0])
+    G = sp.Matrix([[sp.Matrix(g)[i] for g in gens] for i in range(d)])
+    Ginv = G.inv()
+    traces = power_traces(symbol, symbol.rows)
+    members, non_lattice = [], []
+    for name, g in group.items():
+        M = (Ginv * g.T * G).applyfunc(canon)
+        if not all(x.is_integer for x in M):
+            non_lattice.append(name)
+            continue
+        sub = {zs[i]: sp.prod([zs[j] ** int(M[j, i]) for j in range(d)]) for i in range(d)}
+        if all(lp_equal(sp.expand(tr.subs(sub, simultaneous=True)), tr, zs) for tr in traces):
+            members.append(name)
+    return members, non_lattice
+
+
+def truncated_charpoly(Uk, ks, N):
+    """Coefficients (low to high in lambda) of det(lambda - U(k)) truncated at
+    total degree N in k, from Newton's identities on truncated power traces."""
+    n = Uk.rows
+    p, M = [], sp.eye(n)
+    for _ in range(n):
+        M = (M * Uk).applyfunc(lambda e: trunc(e, ks, N))
+        p.append(trunc(M.trace(), ks, N))
+    e = [sp.Integer(1)]
+    for m in range(1, n + 1):
+        acc = sum(((-1) ** (i - 1) * e[m - i] * p[i - 1] for i in range(1, m + 1)), sp.Integer(0))
+        e.append(trunc(acc / m, ks, N))
+    coeffs = [sp.Integer(0)] * (n + 1)
+    for m in range(n + 1):
+        coeffs[n - m] = (-1) ** m * e[m]
+    return coeffs
+
+
+def describe_group(members, dim):
+    rot = [m for m in members if not m.endswith("F")] if dim == 2 else None
+    if dim == 1:
+        return f"{{{', '.join(members)}}}"
+    if dim == 2:
+        refl = [m for m in members if m.endswith("F")]
+        return f"{len(members)} elements: rotations {sorted(rot)}, reflections {len(refl)}"
+    if len(members) == 48:
+        return "48 of 48 signed permutations (O_h)"
+    return f"{len(members)} of 48 signed permutations: {sorted(members)}"
+
+
+# ------------------------------------------------------------ rows
+def laurent_matrix_from_p(M):
+    """Matrices of verify_directional_saturation (functions of p) as Laurent
+    matrices in DS.Z with z_k = exp(i p_k)."""
+    return M.applyfunc(lambda e: sp.expand(DS.laurent(e)))
+
+
+def row_L3s4_symbol(a, zs):
+    """A_a(k) of CURRENT_STATE Sec. 4.1 at theta = pi/4: W exp(-i q.Gamma) with
+    q_i = k_i/sqrt3 and z_i <-> exp(-i q_i), i.e. generators e_i/sqrt3, sigma=-1.
+    The radical b = sqrt(1-a^2) built inside core() is replaced by the symbol
+    B_SYM, reduced with b^2 = 1 - a^2 (reduce_b)."""
+    b, w, ts, gammas, rs = AA.core(a, sp.pi / 4)
+    gammas = tuple(g.xreplace({b: B_SYM}) for g in gammas)
+    if any(e.has(sp.sqrt(1 - a ** 2)) for g in gammas for e in g):
+        raise ValueError("L3s4: sqrt(1-a^2) survived the substitution")
+    U = w
+    for z, gam in zip(zs, gammas):
+        cosq = (z + 1 / z) / 2
+        sinq = (1 / z - z) / (2 * sp.I)     # z = exp(-i q)
+        U = U * (cosq * sp.eye(4) - sp.I * sinq * gam)
+    return U.applyfunc(sp.expand)
+
+
+def hensel_quadratic(coeffs, lam0, ks, N):
+    """coeffs: monic polynomial sum_j coeffs[j] lambda^j (coeffs[-1] = 1) with
+    entries polynomials in k of degree <= N. At k = 0, lam0 is a double root
+    and the cofactor is coprime to (lambda - lam0)^2. Returns (s1, s2) with
+    the lifted quadratic factor lambda^2 - s1 lambda + s2, exact to degree N."""
+    n = len(coeffs) - 1
+    at0 = {k: 0 for k in ks}
+    P0 = sp.Poly(sum(canon(c.subs(at0)) * LAM ** j for j, c in enumerate(coeffs)), LAM)
+    Q0 = sp.Poly(sp.expand((LAM - lam0) ** 2), LAM)
+    R0, rem = sp.div(P0, Q0)
+    if not all(zero(c) for c in rem.all_coeffs()):
+        raise ValueError("lam0 is not a double root at k = 0")
+    R0 = sp.Poly([canon(c) for c in R0.all_coeffs()], LAM)
+    # Unknowns u = (q0, q1, r0, ..., r_{n-3}); linear map u -> Q0 * r + R0 * q.
+    us = sp.symbols(f"u0:{n}")
+    qpoly = sp.Poly(us[0] + us[1] * LAM, LAM)
+    rpoly = sp.Poly(sum(us[2 + i] * LAM ** i for i in range(n - 2)), LAM)
+    lin = (Q0 * rpoly + R0 * qpoly).as_expr()
+    S = sp.Matrix([[sp.expand(lin).coeff(LAM, j).coeff(u) for u in us] for j in range(n)])
+    Sinv = S.inv().applyfunc(canon)
+    Qparts = {0: Q0.as_expr()}
+    Rparts = {0: R0.as_expr()}
+    for m in range(1, N + 1):
+        Pm = sum(homog(c, ks, m) * LAM ** j for j, c in enumerate(coeffs))
+        conv = sum((Qparts[i] * Rparts[m - i] for i in range(1, m)), sp.Integer(0))
+        rhs_poly = sp.expand(Pm - conv)
+        rhs = sp.Matrix([rhs_poly.coeff(LAM, j) for j in range(n)])
+        sol = (Sinv * rhs).applyfunc(sp.expand)
+        Qparts[m] = sol[0] + sol[1] * LAM
+        Rparts[m] = sum(sol[2 + i] * LAM ** i for i in range(n - 2))
+    Q = sp.expand(sum(Qparts.values()))
+    q1 = sp.expand(Q.coeff(LAM, 1))
+    q0 = sp.expand(Q.coeff(LAM, 0))
+    return -q1, q0
+
+
+def analyse_block(label, s1, s2, ks, ns, N, divisor, results, expected_c0):
+    """From the node quadratic factor to the tabulated quantities."""
+    phi, omega2, lam0 = node_from_quadratic(s1, s2, ks, N)
+    c0, E, Q, Phi = ray_expansion(phi, omega2, ks, ns, N, divisor)
+    dim = len(ks)
+    record(f"{label}: omega^2 has no terms of degree 0 or 1 and its degree-2 part is c0^2 |k|^2",
+           czero(Q[0], ns) and czero(Q[1], ns) and zero(Q[2] - c0 ** 2 * divisor ** 2))
+    record(f"{label}: c0 = {c0} agrees with the parent table", zero(c0 - expected_c0))
+    record(f"{label}: no linear phase (phi has no degree-1 part: untilted node)", czero(Phi[1], ns))
+    odd = {m: czero(Q[m], ns) for m in range(3, N + 1, 2)}
+    even_phi = {m: czero(Phi[m], ns) for m in range(2, N + 1)}
+    beta = sp.expand(E[2] / c0)
+    alpha = sp.expand(E[3] / c0)
+    print(f"  {label}: node eigenvalue at k=0: {lam0}; eps_0 = {canon(sp.I * sp.log(lam0))}")
+    print(f"  {label}: Q3 = {Q[3]}; Q4 = {Q[4]}")
+    if N >= 6:
+        print(f"  {label}: Q5 = {Q[5]}; Q6 = {Q[6]}")
+    print(f"  {label}: phi: Phi2 = {Phi[2]}, Phi3 = {Phi[3]}, Phi4 = {Phi[4]}")
+    print(f"  {label}: beta(n) = {beta}")
+    print(f"  {label}: alpha(n) = {alpha}")
+    gam = group_velocity(phi, omega2, ks, ns, N, c0, divisor)
+    print(f"  {label}: |grad eps_+| / c0 - 1 = " + " + ".join(f"({g}) t^{j}" for j, g in gam.items()))
+    info = dict(c0=c0, beta=beta, alpha=alpha, E=E, Q=Q, Phi=Phi, gamma=gam, dim=dim,
+                odd_zero=all(odd.values()), phi_zero=all(even_phi.values()))
+    if dim == 1:
+        info["alpha0"] = canon(alpha)
+        info["aniso"] = sp.Integer(0)
+        info["pattern"] = f"constant alpha = {info['alpha0']}"
+    elif dim == 2:
+        fb = fourier2(beta, ns)
+        fa = fourier2(alpha, ns)
+        info["fourier_beta"], info["fourier_alpha"] = fb, fa
+        info["alpha0"] = fa.get(0, (sp.Integer(0),))[0]
+        info["aniso"] = {m: v for m, v in fa.items() if m > 0 and not (zero(v[0]) and zero(v[1]))}
+        info["pattern"] = (f"beta: {fb}; alpha: {fa}")
+        if N >= 6:
+            f5 = fourier2(sp.expand(E[5] / c0), ns)
+            info["fourier_E5"] = f5
+            print(f"  {label}: E5/c0 (relative order t^4) harmonics: {f5}")
+    else:
+        a0, b4, b6, res = cubic_content(alpha, ns)
+        info["alpha0"] = a0
+        info["aniso"] = {4: b4, 6: b6} if not (zero(b4) and zero(b6)) else {}
+        info["cubic_residual"] = res
+        n123 = sp.prod(ns)
+        b0 = sphere_average(beta, ns)
+        b3 = canon(sphere_average(reduce_sphere(beta * n123, ns), ns)
+                   / sphere_average(reduce_sphere(n123 ** 2, ns), ns))
+        info["beta0"], info["beta3"] = b0, b3
+        info["beta_residual"] = reduce_sphere(beta - b0 - b3 * n123, ns)
+        info["pattern"] = (f"beta = {b0} + ({b3}) n1 n2 n3 [+ residual "
+                           f"{'0' if czero(info['beta_residual'], ns) else 'nonzero'}]; "
+                           f"alpha = {a0} + ({b4}) K4 + ({b6}) K6 [+ residual "
+                           f"{'0' if czero(res, ns) else 'nonzero'}]")
+    if dim == 1:
+        info["lowest"] = "beta" if not czero(beta, ns) else ("alpha" if not czero(alpha, ns) else "none (to t^%d)" % (N - 2))
+    else:
+        info["lowest"] = "beta" if not czero(beta, ns) else ("alpha" if not czero(alpha, ns) else "none")
+    if info["lowest"] == "beta":
+        if dim == 2:
+            info["lowest_aniso"] = any(m > 0 and not (zero(v[0]) and zero(v[1])) for m, v in info["fourier_beta"].items())
+        else:
+            info["lowest_aniso"] = not zero(info["beta3"]) or not czero(info["beta_residual"], ns)
+    elif info["lowest"] == "alpha":
+        info["lowest_aniso"] = bool(info["aniso"]) or (dim == 3 and not czero(info["cubic_residual"], ns))
+    else:
+        info["lowest_aniso"] = False
+    print(f"  {label}: lowest nonvanishing correction: {info['lowest']}; anisotropic: {info['lowest_aniso']}")
+    print(f"  {label}: lowest corrections: beta == 0: {czero(beta, ns)}; alpha0 = {info['alpha0']}; "
+          f"angular content: {info['pattern']}")
+    results[label] = info
+    return info
+
+
+def validity_scale_1d(s1, ks):
+    """d = 1: smallest |k| > 0 where the two branches meet (cos omega = +-1)."""
+    k = ks[0]
+    sols = []
+    for sgn in (1, -1):
+        try:
+            sol = sp.solveset(sp.Eq(s1 / 2, sgn), k, domain=sp.Interval.open(0, 4 * sp.pi))
+            if isinstance(sol, sp.FiniteSet):
+                sols += [s for s in sol if s.is_real]
+        except Exception:
+            pass
+    return min(sols, key=lambda x: float(x)) if sols else None
+
+
+def main():
+    print(f"contract sha256 {hashlib.sha256(CONTRACT.read_bytes()).hexdigest()}")
+    v = sp.symbols("v")
+    record("Taylor coefficients match SymPy series (acos(1-v)^2, log, sqrt, 1/(1+v))",
+           sp.expand(sp.series(sp.acos(1 - v) ** 2, v, 0, 5).removeO() - sum(c * v ** j for j, c in enumerate(ACOS2))) == 0
+           and sp.expand(sp.series(sp.log(1 + v), v, 0, 7).removeO() - sum(c * v ** j for j, c in enumerate(LOG1P))) == 0
+           and sp.expand(sp.series(sp.sqrt(1 + v), v, 0, 7).removeO() - sum(c * v ** j for j, c in enumerate(SQRT1P))) == 0
+           and sp.expand(sp.series(1 / (1 + v), v, 0, 7).removeO() - sum(c * v ** j for j, c in enumerate(INV1P))) == 0)
+
+    results = {}
+    groups = {}
+    print("== Part 1: symbols imported read-only (parent checks re-run on import, not counted here)")
+    rows = {}
+    zs1 = sp.symbols("w1:2")
+    zs2 = sp.symbols("w1:3")
+    sym, _ = WD.published_symbol(1, 1, zs1)
+    rows["L1"] = dict(symbol=sym, zs=zs1, gens=[(1,)], sigma=+1, substrate="line", N=6, c0=sp.Integer(1))
+    sym, _ = WD.published_symbol(2, 1, zs2)
+    rows["L2"] = dict(symbol=sym, zs=zs2, gens=[(1, 0), (0, 1)], sigma=+1, substrate="square", N=6, c0=R2 / 2)
+    n_parent_before = len(P.CHECKS)
+    for label, fn in (("L6e", P.row_L6e), ("L5a", P.row_L5a), ("L5b", P.row_L5b), ("L6a", P.row_L6a),
+                      ("L6c", P.row_L6c), ("L6d", P.row_L6d), ("L6f", P.row_L6f)):
+        symbol, zs, support, gens = fn()
+        sub = {"L6e": "square", "L5a": "cubic", "L5b": "cubic"}.get(label, "hexagon")
+        rows[label] = dict(symbol=symbol, zs=zs, gens=gens, sigma=-1, substrate=sub,
+                           N=4 if sub == "cubic" else 6, c0=P.EXPECTED_MASSLESS[label][1])
+    record("parent row constructors pass their own checks on import",
+           all(ok for _, ok, _ in P.CHECKS[n_parent_before:]), f"{len(P.CHECKS) - n_parent_before} parent checks")
+    rows["L3"] = dict(symbol=laurent_matrix_from_p(DS.walk2()), zs=DS.Z, gens=[(1, 0, 0), (0, 1, 0), (0, 0, 1)],
+                      sigma=+1, substrate="cubic", N=4, c0=1 / R3)
+    rows["L4"] = dict(symbol=laurent_matrix_from_p(DS.walk1()), zs=DS.Z, gens=[(1, 0, 0), (0, 1, 0), (0, 0, 1)],
+                      sigma=+1, substrate="cubic", N=4, c0=1 / R3)
+    zs3 = sp.symbols("z1:4")
+    rows["L3s4"] = dict(symbol=row_L3s4_symbol(A_SYM, zs3), zs=zs3, gens=[(1 / R3, 0, 0), (0, 1 / R3, 0), (0, 0, 1 / R3)],
+                        sigma=-1, substrate="cubic", N=4, c0=A_SYM / R3)
+    # L6b: V = U^3 on the white-triangle lattice, orientation blocks.
+    succ, admissible = L6B.part1_labelings()
+    Wcoin, _, _ = L6B.coin("parent")
+    U6, _ = L6B.step_symbol("up", succ, Wcoin)
+    V6 = sp.expand(U6 ** 3)
+    off, blocks = L6B.orientation_blocks(V6)
+    record("L6b: V = U^3 is block diagonal in the edge orientation (reused structure)", off)
+    ell = sp.Rational(1, 2)
+    rows["L6b"] = dict(symbol=blocks[0].applyfunc(sp.expand), zs=L6B.ZS, gens=L6B.GENS, sigma=-1, substrate="hexagon",
+                       N=6, c0=sp.Rational(1, 3), scale=ell, divisor=3, blocks=[b.applyfunc(sp.expand) for b in blocks])
+
+    print("== Part 2: node branch expansions per row (contract Sec. 3)")
+    for label, row in rows.items():
+        symbol, zs, gens, sigma, N = row["symbol"], row["zs"], row["gens"], row["sigma"], row["N"]
+        dim = len(gens[0])
+        ks = sp.symbols(f"k1:{dim + 1}", real=True)
+        ns = sp.symbols(f"n1:{dim + 1}", real=True)
+        support = P.laurent_support(symbol, zs)
+        if label == "L3s4":
+            record("L3s4: U(0) = W exactly (node structure of Sec. 4.1)",
+                   all(zero(x) for x in (sum(support.values(), sp.zeros(4)) - AA.core(A_SYM, sp.pi / 4)[1])))
+        cart = {h: sum((a_ * sp.Matrix(g) for a_, g in zip(h, gens)), sp.zeros(dim, 1)) for h in support}
+        L = row.get("scale") or sp.radsimp(sp.simplify(max((sp.sqrt((v_.T * v_)[0]) for v_ in cart.values()),
+                                                           key=lambda x: float(x))))
+        divisor = row.get("divisor", 1)
+        print(f"-- {label} ({row['substrate']}, s = {symbol.rows}, d = {dim}, scale = {L}, N = {N})"
+              f"  [elapsed {time.time() - START:.0f} s]", flush=True)
+        if label == "L5b":
+            Uk = taylor_symbol(support, gens, L, sigma, ks, N)
+            kron = sp.kronecker_product
+            dP = (kron(P.SX, P.SX), kron(P.SX, P.SY), kron(P.SX, P.SZ))
+            full = [trunc(c, ks, N) for c in reversed(Uk.charpoly(LAM).all_coeffs())]
+            record("truncated_charpoly (Newton identities) equals the full charpoly truncated, L5b 4x4",
+                   all(czero(x - y, ks) for x, y in zip(full, truncated_charpoly(Uk, ks, N))))
+            Gam = (dP[0] * dP[1] * dP[2]).applyfunc(canon)
+            record("L5b: Gamma = dP_X dP_Y dP_Z commutes with every Fourier coefficient and Gamma^2 = -I",
+                   all(P.is_zero_matrix(Gam * A - A * Gam) for A in support.values())
+                   and P.is_zero_matrix(Gam * Gam + sp.eye(4)))
+            for sgn in (1, -1):
+                proj = (sp.eye(4) - sgn * sp.I * Gam) / 2        # eigenvalue  sgn*i
+                vecs = proj.columnspace()
+                B = sp.Matrix.hstack(*vecs)
+                Bq, _ = B.QRdecomposition()
+                Bq = Bq.applyfunc(canon)
+                blk = (Bq.H * Uk * Bq).applyfunc(lambda e: trunc(e, ks, N))
+                record(f"L5b block (Gamma = {sgn}i): the block is 2x2 and Bq is an isometry",
+                       blk.rows == 2 and P.is_zero_matrix(Bq.H * Bq - sp.eye(2)))
+                s1 = trunc(blk.trace(), ks, N)
+                s2 = trunc(blk.det(), ks, N)
+                analyse_block(f"L5b[{'+' if sgn > 0 else '-'}i]", s1, s2, ks, ns, N, 1, results, row["c0"])
+                # block symbol as Laurent matrix for the symmetry test
+                blk_l = (Bq.H * symbol * Bq).applyfunc(sp.expand)
+                members, non_lattice = walk_group(blk_l, zs, gens, point_group(row["substrate"]))
+                groups[f"L5b[{'+' if sgn > 0 else '-'}i]"] = members
+                print(f"  L5b[{'+' if sgn > 0 else '-'}i]: G_walk = {describe_group(members, dim)}; "
+                      f"non-lattice elements skipped: {len(non_lattice)}")
+            continue
+        if label == "L3s4":
+            Uk = taylor_symbol(support, gens, L, sigma, ks, N)
+            cp = truncated_charpoly(Uk, ks, N)
+            record("L3s4: characteristic polynomial is monic of degree 4", len(cp) == 5 and zero(cp[4] - 1))
+            for sgn, name in ((1, "+pi/4"), (-1, "-pi/4")):
+                lam0 = (1 - sgn * sp.I) / R2          # exp(-+ i pi/4)
+                s1, s2 = hensel_quadratic(cp, lam0, ks, N)
+                analyse_block(f"L3s4[{name}]", s1, s2, ks, ns, N, 1, results, row["c0"])
+            members, non_lattice = walk_group(symbol, zs, gens, point_group(row["substrate"]))
+            groups["L3s4"] = members
+            print(f"  L3s4: G_walk = {describe_group(members, dim)}; non-lattice skipped: {len(non_lattice)}")
+            continue
+        if label == "L6b":
+            for i, blk in enumerate(row["blocks"]):
+                sup_b = P.laurent_support(blk, zs)
+                Uk = taylor_symbol(sup_b, gens, L, sigma, ks, N)
+                s1 = trunc(Uk.trace(), ks, N)
+                s2 = trunc(Uk.det(), ks, N)
+                analyse_block(f"L6b[block {i}]", s1, s2, ks, ns, N, divisor, results, row["c0"])
+            tr0 = power_traces(row["blocks"][0], 2)
+            same = all(all(lp_equal(x, y, zs) for x, y in zip(tr0, power_traces(b, 2)))
+                       for b in row["blocks"][1:])
+            record("L6b: the three orientation blocks have the same characteristic polynomial", same)
+            members, non_lattice = walk_group(row["blocks"][0], zs, gens, point_group(row["substrate"]))
+            groups["L6b"] = members
+            print(f"  L6b: G_walk (block 0) = {describe_group(members, dim)}; non-lattice skipped: {len(non_lattice)}")
+            continue
+        Uk = taylor_symbol(support, gens, L, sigma, ks, N)
+        s1 = trunc(Uk.trace(), ks, N)
+        s2 = trunc(Uk.det(), ks, N)
+        info = analyse_block(label, s1, s2, ks, ns, N, 1, results, row["c0"])
+        members, non_lattice = walk_group(symbol, zs, gens, point_group(row["substrate"]))
+        groups[label] = members
+        print(f"  {label}: G_walk = {describe_group(members, dim)}; non-lattice skipped: {len(non_lattice)}")
+        if dim == 1:
+            full_s1 = symbol.subs({zs[0]: sp.exp(sigma * sp.I * ks[0] / L)}).trace()
+            kstar = validity_scale_1d(sp.simplify(full_s1), ks)
+            print(f"  {label}: branches meet first at |k| = {kstar} (exact, d = 1)")
+            info["kstar"] = kstar
+        else:
+            print(f"  {label}: scale of validity OPEN (exact minimisation of |k| on the branch-meeting "
+                  f"set not attempted, contract Sec. 3 item 6)")
+
+    print("== Part 3: cross-checks (contract Sec. 3)")
+    r1 = results["L1"]
+    record("L1: massless 1D Dirac walk has exactly linear dispersion (all corrections vanish)",
+           all(czero(r1["E"][j], sp.symbols("n1:2", real=True)) for j in range(2, 6)))
+    n2 = sp.symbols("n1:3", real=True)
+    for x, y in (("L6c", "L6d"), ("L6c", "L6f"), ("L6d", "L6f")):
+        same = czero(results[x]["alpha"] - results[y]["alpha"], n2) and czero(results[x]["beta"] - results[y]["beta"], n2)
+        print(f"  {x} vs {y}: same beta and alpha: {same}")
+        results[x].setdefault("same_as", {})[y] = same
+    # L6b vs L6a. In the normalised units of each row, V = U^3 realises the
+    # L6a symbol at half the length scale, rotated (L6b report Sec. 5):
+    # eps_L6b(k) = eps_L6a(2 R k) / 3, so c0 scales by 2/3, beta(n) by 2 and
+    # alpha(n) by 4, evaluated at R n.
+    th = sp.pi / 3
+    record("L6b: c0(L6b) = (2/3) c0(L6a)", zero(results["L6b[block 0]"]["c0"] - sp.Rational(2, 3) * results["L6a"]["c0"]))
+    for sgn in (1, -1):
+        R = rot2(sgn * th)
+        sub = {n2[0]: R[0, 0] * n2[0] + R[0, 1] * n2[1], n2[1]: R[1, 0] * n2[0] + R[1, 1] * n2[1]}
+        rb = reduce_sphere(sp.expand(2 * results["L6a"]["beta"].subs(sub, simultaneous=True)), n2)
+        ra = reduce_sphere(sp.expand(4 * results["L6a"]["alpha"].subs(sub, simultaneous=True)), n2)
+        ok = czero(rb - results["L6b[block 0]"]["beta"], n2) and czero(ra - results["L6b[block 0]"]["alpha"], n2)
+        print(f"  L6b (beta, alpha) = (2 beta, 4 alpha) of L6a at R({sgn * 60} deg) n: {ok}")
+        if ok:
+            results["L6b[block 0]"]["rot_match"] = sgn * 60
+    record("L6b: beta = 2 beta_L6a(R n), alpha = 4 alpha_L6a(R n) for a 60-degree rotation R",
+           "rot_match" in results["L6b[block 0]"])
+    # Second route (hand derivation, report Sec. 4). For cos(omega) =
+    # prod_i cos(p_i), p = k / sqrt(d): log cos x = -x^2/2 - x^4/12 + O(x^6)
+    # gives omega^2 = |p|^2 - (1/3) sum_{i<j} p_i^2 p_j^2 + O(p^6), hence
+    # alpha = -sum_{i<j} n_i^2 n_j^2 / (6 d). For the chiral BCC rows the
+    # beta^2 term adds -n1^2 n2^2 n3^2 / 6. The script checks these forms.
+    n3 = sp.symbols("n1:4", real=True)
+    sig2 = n3[0] ** 2 * n3[1] ** 2 + n3[1] ** 2 * n3[2] ** 2 + n3[2] ** 2 * n3[0] ** 2
+    sig3 = n3[0] ** 2 * n3[1] ** 2 * n3[2] ** 2
+    record("closed form: L2 and L6e alpha = -n1^2 n2^2 / 12",
+           all(czero(reduce_sphere(results[l]["alpha"] + n2[0] ** 2 * n2[1] ** 2 / 12, n2), n2) for l in ("L2", "L6e")))
+    record("closed form: L3 alpha = -(n1^2 n2^2 + n2^2 n3^2 + n3^2 n1^2) / 18",
+           czero(reduce_sphere(results["L3"]["alpha"] + sig2 / 18, n3), n3))
+    record("closed form: L5a, L5b, L4 alpha = -sigma2/18 - n1^2 n2^2 n3^2/6",
+           all(czero(reduce_sphere(results[l]["alpha"] + sig2 / 18 + sig3 / 6, n3), n3)
+               for l in ("L5a", "L5b[+i]", "L5b[-i]", "L4")))
+    record("closed form: L6a alpha = -41/1728 - (5/1728) cos 6 theta, beta = -(sqrt15/36) cos 3 theta",
+           results["L6a"]["fourier_alpha"] == {0: (-sp.Rational(41, 1728), 0), 6: (-sp.Rational(5, 1728), 0)}
+           and set(results["L6a"]["fourier_beta"]) == {3} and zero(results["L6a"]["fourier_beta"][3][0] + sp.sqrt(15) / 36))
+    record("L6b: the three orientation blocks give identical beta and alpha",
+           all(czero(results[f"L6b[block {i}]"]["alpha"] - results["L6b[block 0]"]["alpha"], n2)
+               and czero(results[f"L6b[block {i}]"]["beta"] - results["L6b[block 0]"]["beta"], n2) for i in (1, 2)))
+    n3c = sp.symbols("n1:4", real=True)
+    for label, info in results.items():
+        if info["dim"] != 3:
+            continue
+        g = groups.get(label) or groups.get(label.split("[")[0])
+        if g is not None and len(g) >= 24:
+            record(f"{label}: |G_walk| = {len(g)} >= 24, so beta = b3 n1 n2 n3 and alpha in span(1, K4, K6) exactly",
+                   zero(info["beta0"]) and czero(info["beta_residual"], n3c) and czero(info["cubic_residual"], n3c))
+        else:
+            print(f"  {label}: |G_walk| = {len(g) if g is not None else '?'} < 24: non-cubic content allowed; "
+                  f"beta residual zero: {czero(info['beta_residual'], n3c)}, "
+                  f"alpha residual zero: {czero(info['cubic_residual'], n3c)}")
+    record("L5b: the two Weyl blocks give identical alpha",
+           czero(results["L5b[+i]"]["alpha"] - results["L5b[-i]"]["alpha"], sp.symbols("n1:4", real=True)))
+    record("L3s4: the two clusters give identical alpha",
+           czero(results["L3s4[+pi/4]"]["alpha"] - results["L3s4[-pi/4]"]["alpha"], sp.symbols("n1:4", real=True)))
+
+    print("== Part 4: hypotheses (contract Sec. 4)")
+    table = {}
+    for label, info in results.items():
+        a0 = info["alpha0"]
+        if not a0.free_symbols:
+            sgn = P.positive(a0)
+        else:
+            if a0.has(B_SYM) or a0.free_symbols - {A_SYM}:
+                raise ValueError(f"{label}: alpha0 is not a rational function of a: {a0}")
+            num, den = sp.fraction(sp.together(sp.factor(a0)))
+            pn, pd = sp.Poly(num, A_SYM), sp.Poly(den, A_SYM)
+            roots_in = pn.count_roots(0, 1) - (1 if pn.eval(0) == 0 else 0) - (1 if pn.eval(1) == 0 else 0)
+            poles_in = pd.count_roots(0, 1) - (1 if pd.eval(0) == 0 else 0) - (1 if pd.eval(1) == 0 else 0)
+            mid = P.positive(a0.subs(A_SYM, sp.Rational(1, 2)))
+            sgn = mid if roots_in == 0 and poles_in == 0 else None
+            rts = [r for r in sp.real_roots(pn) if bool(r > 0) and bool(r < 1)]
+            rts = [sp.radsimp(sp.nsimplify(sp.simplify(r))) for r in rts]
+            signs = []
+            cuts = [sp.Integer(0)] + sorted(rts, key=lambda x: float(x)) + [sp.Integer(1)]
+            for lo, hi in zip(cuts[:-1], cuts[1:]):
+                q = sp.Rational(int(float((lo + hi) / 2) * 10 ** 6), 10 ** 6)  # rational point inside (lo, hi)
+                if not (bool(q > lo) and bool(q < hi)):                       # checked exactly
+                    raise ValueError("sample point outside its interval")
+                signs.append((lo, hi, P.positive(a0.subs(A_SYM, q))))
+            record(f"{label}: alpha0(a) roots in 0 < a < 1 found exactly (Sturm count {roots_in}, poles {poles_in})",
+                   len(rts) == roots_in and poles_in == 0,
+                   f"alpha0(a) = {sp.factor(a0)}; roots {rts}; sign on each interval {signs}")
+            info["alpha0_roots"], info["alpha0_signs"] = rts, signs
+        table[label] = sgn
+        print(f"  {label}: alpha0 = {a0}; sign = {sgn if sgn is not None else 'depends on a (see report)'}; "
+              f"odd parts of omega^2 vanish: {info['odd_zero']}; phi == 0: {info['phi_zero']}")
+    def sturm_table_complete(info):
+        """Intervals cover (0, 1) contiguously, each with an exact nonzero sign."""
+        sg = info.get("alpha0_signs")
+        return bool(sg) and sg[0][0] == 0 and sg[-1][1] == 1 \
+            and all(sg[i][1] == sg[i + 1][0] for i in range(len(sg) - 1)) \
+            and all(x[2] in (1, -1) for x in sg)
+    undecided = [l for l, s in table.items() if s is None and not sturm_table_complete(results[l])]
+    record("Hd: the sign of alpha0 is decided exactly in every row (exact sign of each numeric alpha0; "
+           "complete Sturm sign table on 0 < a < 1 for L3s4)", not undecided, f"undecided: {undecided}")
+    # Sign of beta in L3s4 (review R1): beta = beta0 + beta3 n1 n2 n3 with
+    # |n1 n2 n3| <= 1/(3 sqrt3), so beta keeps the sign of beta0 on the whole
+    # sphere iff beta3^2 / 27 < beta0^2. The boundary in 0 < a < 1 is
+    # a^2 = (19 - 6 sqrt3)/11 (hand derivation, report Sec. 3.3).
+    for label in ("L3s4[+pi/4]", "L3s4[-pi/4]"):
+        info = results[label]
+        gap = sp.factor(sp.together(info["beta0"] ** 2 - info["beta3"] ** 2 / 27))
+        num = sp.Poly(sp.fraction(gap)[0], A_SYM)
+        a2 = (19 - 6 * R3) / 11
+        roots_in = num.count_roots(0, 1) - (1 if num.eval(0) == 0 else 0) - (1 if num.eval(1) == 0 else 0)
+        at_boundary = zero(sp.fraction(gap)[0].subs(A_SYM, sp.sqrt(a2)))
+        below = P.positive(gap.subs(A_SYM, sp.Rational(1, 2)))
+        above = P.positive(gap.subs(A_SYM, sp.Rational(19, 20)))
+        record(f"{label}: beta keeps one sign on the sphere iff a^2 < (19 - 6 sqrt3)/11 "
+               f"(single root of beta0^2 - beta3^2/27 in 0 < a < 1)",
+               roots_in == 1 and at_boundary and below == 1 and above == -1,
+               f"beta0^2 - beta3^2/27 = {gap}")
+    hd = all(s is not None and s < 0 for s in table.values())
+    print(f"  Hd (alpha0 < 0 in every row): {hd}; rows with alpha0 >= 0: "
+          f"{[l for l, s in table.items() if s is not None and s >= 0]}")
+    ceiling = ["L2", "L6e", "L3", "L5a", "L5b[+i]", "L5b[-i]", "L4"]
+    he = {}
+    for label in ceiling:
+        he[label] = results[label]["lowest_aniso"]
+    print(f"  He (ceiling rows have nonzero anisotropy): {all(he.values())}; per row {he}")
+    hf = {}
+    n3 = sp.symbols("n1:4", real=True)
+    for sub, members in (("square", ["L2", "L6e"]), ("BCC", ["L3", "L5a", "L5b[+i]"]),
+                         ("hexagon", ["L6a", "L6c", "L6d", "L6f", "L6b[block 0]"])):
+        ns_ = n2 if sub != "BCC" else n3
+        pairs = {}
+        for x, y in itertools.combinations(members, 2):
+            pairs[(x, y)] = czero(results[x]["alpha"] - results[y]["alpha"], ns_) and czero(results[x]["beta"] - results[y]["beta"], ns_)
+        hf[sub] = pairs
+        print(f"  Hf {sub}: identical (beta, alpha) pairs: {[p for p, s in pairs.items() if s]}")
+    identical = {sub: [p for p, same in pairs.items() if same] for sub, pairs in hf.items()}
+    print(f"  Hf: identical (beta, alpha) pairs per substrate: {identical}")
+    print(f"  Hf (no two rows on one substrate share beta and alpha, contract refutation clause): "
+          f"{not any(identical.values())}")
+    print(f"  Hf (rows on each substrate do not all share the correction): "
+          f"{all(not all(pairs.values()) for pairs in hf.values())}")
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (dispersion corrections gate).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:  # fail closed
+        import traceback
+        traceback.print_exc()
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 6: verify_weyl_dirac_gate.py ===
+
+"""Exact, fail-closed checks for the frozen standard Pavia Weyl/Dirac gate."""
+
+import argparse
+import hashlib
+import itertools
+from pathlib import Path
+import platform
+import sys
+
+import sympy as sp
+
+
+ROOT = Path(__file__).resolve().parents[1]
+CONTRACT = ROOT / "reports/2026-09-14--weyl-dirac-gate-contract.md"
+SOURCE = ROOT / "sources/1601.04832v1.pdf"
+SOURCE_SHA256 = "0dbf0a0bea497701e0408ce410d62ca0183a4aa14b4116254d029ff6602f1367"
+IDENTITY = sp.eye(2)
+PAULI = (
+    sp.Matrix([[0, 1], [1, 0]]),
+    sp.Matrix([[0, -sp.I], [sp.I, 0]]),
+    sp.diag(1, -1),
+)
+MASS, HOP = sp.symbols("m n", positive=True)
+CHECKS = []
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def residual(expression):
+    return sp.cancel(sp.expand(expression).subs(HOP**2, 1 - MASS**2))
+
+
+def check_zero(label, expression):
+    entries = list(expression) if isinstance(expression, sp.MatrixBase) else [expression]
+    for entry in entries:
+        remaining = residual(entry)
+        if remaining != 0:
+            raise ValueError(f"{label}: nonzero or unresolved residual {remaining}")
+    CHECKS.append(label)
+
+
+def check_equal(label, actual, expected):
+    if actual != expected:
+        raise ValueError(f"{label}: {actual!r} != {expected!r}")
+    CHECKS.append(label)
+
+
+def laurent_adjoint(matrix, variables):
+    return matrix.H.subs({variable: 1 / variable for variable in variables}, simultaneous=True)
+
+
+def published_symbol(dimension, chirality, variables):
+    cosines = [(variable + 1 / variable) / 2 for variable in variables]
+    sines = [(variable - 1 / variable) / (2 * sp.I) for variable in variables]
+    if dimension == 1:
+        scalar = cosines[0]
+        vector = (0, 0, sines[0])
+    elif dimension == 2:
+        cos_x, cos_y = cosines
+        sin_x, sin_y = sines
+        scalar = cos_x * cos_y
+        vector = (sin_x * cos_y, cos_x * sin_y, sin_x * sin_y)
+    else:
+        cos_x, cos_y, cos_z = cosines
+        sin_x, sin_y, sin_z = sines
+        scalar = cos_x * cos_y * cos_z + chirality * sin_x * sin_y * sin_z
+        vector = (
+            sin_x * cos_y * cos_z - chirality * cos_x * sin_y * sin_z,
+            -chirality * cos_x * sin_y * cos_z - sin_x * cos_y * sin_z,
+            cos_x * cos_y * sin_z - chirality * sin_x * sin_y * cos_z,
+        )
+    matrix = scalar * IDENTITY
+    for component, pauli in zip(vector, PAULI):
+        matrix -= sp.I * component * pauli
+    return matrix.applyfunc(sp.expand), sp.expand(scalar)
+
+
+def rotation_product(dimension, chirality, variables):
+    axes = (2,) if dimension == 1 else tuple(range(dimension))
+    signs = (1, -chirality, 1) if dimension == 3 else (1,) * dimension
+    matrix = IDENTITY
+    for variable, axis, sign in zip(variables, axes, signs):
+        positive = (IDENTITY - sign * PAULI[axis]) / 2
+        negative = (IDENTITY + sign * PAULI[axis]) / 2
+        matrix = matrix * (variable * positive + negative / variable)
+    return matrix.applyfunc(sp.expand)
+
+
+def fourier_support(matrix, variables):
+    shift = sp.prod(variables)
+    coefficients = {}
+    for row in range(matrix.rows):
+        for column in range(matrix.cols):
+            polynomial = sp.Poly(sp.expand(shift * matrix[row, column]), *variables)
+            for powers, coefficient in polynomial.terms():
+                displacement = tuple(1 - power for power in powers)
+                coefficients.setdefault(displacement, sp.zeros(matrix.rows, matrix.cols))
+                coefficients[displacement][row, column] += coefficient
+    return {
+        displacement: coefficient
+        for displacement, coefficient in coefficients.items()
+        if any(sp.expand(entry) != 0 for entry in coefficient)
+    }
+
+
+def hull_geometry(support, dimension):
+    vertices = [sp.Matrix(displacement) / sp.sqrt(dimension) for displacement in support]
+    facets = set()
+    for selected in itertools.combinations(vertices, dimension):
+        differences = sp.Matrix(dimension - 1, dimension, lambda row, column:
+                                selected[row + 1][column] - selected[0][column])
+        normals = differences.nullspace()
+        if len(normals) != 1:
+            continue
+        normal = normals[0]
+        offset = normal.dot(selected[0])
+        if offset == 0:
+            continue
+        normalized = normal / offset
+        distances = [sp.simplify(normalized.dot(vertex) - 1) for vertex in vertices]
+        if all(distance <= 0 for distance in distances):
+            facets.add(tuple(normalized))
+    if not facets:
+        raise ValueError("Hull has no certified facets")
+    inradius = min(sp.simplify(1 / sp.sqrt(sum(value**2 for value in facet)))
+                   for facet in facets)
+    maximum = max(sp.sqrt(vertex.dot(vertex)) for vertex in vertices)
+    return inradius, maximum, len(facets)
+
+
+def spatial_derivative(expression, variable, dimension):
+    return sp.I * variable * sp.diff(expression, variable) / sp.sqrt(dimension)
+
+
+def verify_case(dimension, chirality, transpose):
+    suffix = ("+" if chirality == 1 else "-") if dimension == 3 else ""
+    name = f"d={dimension} {'B' if transpose else 'A'}{suffix}"
+    variables = sp.symbols(f"z0:{dimension}", real=True, nonzero=True)
+    matrix, scalar = published_symbol(dimension, chirality, variables)
+    product = rotation_product(dimension, chirality, variables)
+    if transpose:
+        matrix, product = matrix.T, product.T
+    check_zero(f"{name}: published vs product", matrix - product)
+    adjoint = laurent_adjoint(matrix, variables)
+    check_zero(f"{name}: Weyl unitarity", matrix * adjoint - IDENTITY)
+    check_zero(f"{name}: Weyl quadratic", matrix**2 - 2 * scalar * matrix + IDENTITY)
+    check_zero(f"{name}: scalar trace", sp.trace(matrix) - 2 * scalar)
+    support = fourier_support(matrix, variables)
+    corners = set(itertools.product((-1, 1), repeat=dimension))
+    check_equal(f"{name}: active support", set(support), corners)
+    inradius, maximum, facets = hull_geometry(support, dimension)
+    check_zero(f"{name}: inradius", inradius - 1 / sp.sqrt(dimension))
+    check_zero(f"{name}: maximum support", maximum - 1)
+    check_equal(f"{name}: facets", facets, 2 * dimension)
+    origin = dict.fromkeys(variables, 1)
+    check_zero(f"{name}: zero node", matrix.subs(origin) - IDENTITY)
+    spatial = [sp.I * spatial_derivative(matrix, variable, dimension).subs(origin)
+               for variable in variables]
+    for first, first_variable in enumerate(variables):
+        check_zero(f"{name}: scalar gradient {first}",
+                   spatial_derivative(scalar, first_variable, dimension).subs(origin))
+        for second, second_variable in enumerate(variables):
+            expected = sp.Rational(int(first == second), dimension)
+            check_zero(f"{name}: Clifford {first},{second}",
+                       spatial[first] * spatial[second] + spatial[second] * spatial[first]
+                       - 2 * expected * IDENTITY)
+            hessian = spatial_derivative(
+                spatial_derivative(scalar, first_variable, dimension), second_variable, dimension)
+            check_zero(f"{name}: Hessian {first},{second}", hessian.subs(origin) + expected)
+    speed = sp.sqrt(sp.simplify(sp.trace(spatial[0]**2) / 2))
+    check_zero(f"{name}: massless matching", speed - inradius)
+    dirac = sp.BlockMatrix([[HOP * matrix, sp.I * MASS * IDENTITY],
+                           [sp.I * MASS * IDENTITY, HOP * adjoint]]).as_explicit()
+    if dimension == 1:
+        permutation = (0, 2, 3, 1)
+        reduced = sp.Matrix([[HOP / variables[0], sp.I * MASS],
+                             [sp.I * MASS, HOP * variables[0]]])
+        check_zero(f"{name}: minimal Dirac blocks",
+                   dirac.extract(permutation, permutation) - sp.diag(reduced, reduced))
+    dirac_adjoint = laurent_adjoint(dirac, variables)
+    check_zero(f"{name}: Dirac unitarity", dirac * dirac_adjoint - sp.eye(4))
+    check_zero(f"{name}: Dirac quadratic", dirac**2 - 2 * HOP * scalar * dirac + sp.eye(4))
+    check_zero(f"{name}: Dirac trace", sp.trace(dirac) - 4 * HOP * scalar)
+    sine_part = sp.I * (dirac - dirac_adjoint) / 2
+    check_zero(f"{name}: logarithm algebra",
+               sine_part**2 - (1 - HOP**2 * scalar**2) * sp.eye(4))
+    check_equal(f"{name}: massive support", set(fourier_support(dirac, variables)),
+                corners | {(0,) * dimension})
+    check_equal(f"{name}: massless Dirac support",
+                set(fourier_support(dirac.subs({MASS: 0, HOP: 1}), variables)), corners)
+    check_equal(f"{name}: decoupled support",
+                set(fourier_support(dirac.subs({MASS: 1, HOP: 0}), variables)), {(0,) * dimension})
+    return name, len(support), facets, sp.sstr(inradius), sp.sstr(maximum), sp.sstr(speed)
+
+
+def verify_mass_coefficients():
+    scalar_argument = sp.Symbol("u", real=True)
+    gap = sp.Symbol("M", positive=True)
+    phase = sp.acos(HOP * scalar_argument)
+    prefactor = phase / sp.sqrt(1 - HOP**2 * scalar_argument**2)
+
+    def at_origin(expression):
+        expression = expression.subs(scalar_argument, 1).subs(HOP, sp.sqrt(1 - MASS**2))
+        expression = sp.simplify(expression)
+        return expression.subs(sp.acos(sp.sqrt(1 - MASS**2)), gap)
+
+    hopping = sp.sqrt(1 - MASS**2)
+    ratio = gap * hopping / MASS
+    check_zero("fixed-mass logarithm prefactor", at_origin(prefactor) - gap / MASS)
+    for dimension in (1, 2, 3):
+        speed_squared = sp.Rational(1, dimension)
+        phase_coefficient = at_origin(sp.diff(phase**2, scalar_argument)) * (-speed_squared / 2)
+        check_zero(f"d={dimension}: phase curvature", phase_coefficient - speed_squared * ratio)
+        mass_curvature = MASS * at_origin(sp.diff(prefactor, scalar_argument)) * (-speed_squared / 2)
+        expected_curvature = speed_squared * hopping * (1 - ratio) / (2 * MASS)
+        check_zero(f"d={dimension}: quadratic mass term", mass_curvature - expected_curvature)
+        check_zero(f"d={dimension}: independent H-squared curvature",
+                   speed_squared * ratio**2 + 2 * gap * mass_curvature - phase_coefficient)
+    mass_ratio = ratio.subs(gap, sp.asin(MASS))
+    check_zero("c_H small-mass series", sp.series(mass_ratio, MASS, 0, 6).removeO()
+               - (1 - MASS**2 / 3 - 2 * MASS**4 / 15))
+    check_zero("c_omega2 small-mass series", sp.series(sp.sqrt(mass_ratio), MASS, 0, 6).removeO()
+               - (1 - MASS**2 / 6 - 29 * MASS**4 / 360))
+    check_zero("small-mass ratio limit", sp.limit(mass_ratio, MASS, 0, dir="+") - 1)
+    angle = sp.Symbol("angle", real=True)
+    check_zero("strict-bound derivative identity",
+               sp.diff(sp.sin(angle) - angle * sp.cos(angle), angle) - angle * sp.sin(angle))
+    check_zero("strict-bound zero endpoint", (sp.sin(angle) - angle * sp.cos(angle)).subs(angle, 0))
+
+
+def verify_negative_controls():
+    weyl = sp.diag(-sp.I, sp.I)
+    bad_dirac = sp.BlockMatrix([[sp.Rational(4, 5) * weyl, sp.I * sp.Rational(3, 5) * IDENTITY],
+                               [sp.I * sp.Rational(3, 5) * IDENTITY, sp.Rational(4, 5) * weyl]]).as_explicit()
+    check_equal("negative control: missing dagger detected",
+                bad_dirac * bad_dirac.H != sp.eye(4), True)
+    variables = sp.symbols("z0:3", real=True, nonzero=True)
+    matrix, scalar = published_symbol(3, 1, variables)
+    wrong_scalar = published_symbol(3, -1, variables)[1]
+    check_equal("negative control: reversed phase sign detected",
+                residual(sp.trace(matrix) / 2 - wrong_scalar) != 0, True)
+    momentum = sp.Symbol("momentum", real=True)
+    phase = sp.acos(sp.cos(momentum) / sp.sqrt(2))
+    dispersion_coefficient = sp.simplify(sp.diff(phase**2, momentum, 2).subs(momentum, 0) / 2)
+    hamiltonian_coefficient = sp.simplify((phase / sp.sin(phase)).subs(momentum, 0) / sp.sqrt(2))
+    discrepancy = sp.simplify(dispersion_coefficient - hamiltonian_coefficient**2)
+    check_zero("negative control: exact finite-mass discrepancy",
+               discrepancy - sp.pi * (4 - sp.pi) / 16)
+    check_equal("negative control: missing quadratic mass term detected", discrepancy != 0, True)
+
+
+def verify_vertex_idempotency():
+    """Addendum (2026-09-14): exact non-nilpotency certificate for every
+    d=3 corner coefficient A_h, reusing published_symbol/fourier_support.
+    This is the algebraic input for the strict-asymptotic-body baseline
+    certificate; see reports/2026-09-14--strict-asymptotic-pavia-baseline.md.
+    Governed by no separate contract; it only extracts and checks exact
+    identities already reachable from the frozen d=3 factorization."""
+    positive_generators = {(1, 1, 1), (1, -1, -1), (-1, 1, -1), (-1, -1, 1)}
+    alpha_plus = sp.Rational(1, 4) * (1 - sp.I)
+    alpha_minus = sp.Rational(1, 4) * (1 + sp.I)
+    rows = []
+    for chirality in (1, -1):
+        own, other = (alpha_plus, alpha_minus) if chirality == 1 else (alpha_minus, alpha_plus)
+        for transpose in (False, True):
+            suffix = "+" if chirality == 1 else "-"
+            name = f"d=3 {'B' if transpose else 'A'}{suffix}"
+            variables = sp.symbols("z0:3", real=True, nonzero=True)
+            matrix, _ = published_symbol(3, chirality, variables)
+            if transpose:
+                matrix = matrix.T
+            support = fourier_support(matrix, variables)
+            for h in sorted(support):
+                coefficient = support[h]
+                expected = own if h in positive_generators else other
+                check_zero(f"{name}: vertex {h} rank-one (det A_h=0)", coefficient.det())
+                check_zero(f"{name}: vertex {h} trace A_h={sp.nsimplify(expected)}",
+                           sp.trace(coefficient) - expected)
+                check_zero(f"{name}: vertex {h} A_h^2=alpha*A_h",
+                           coefficient * coefficient - expected * coefficient)
+                check_equal(f"{name}: vertex {h} nonzero eigenvalue alpha", expected != 0, True)
+                rows.append((name, str(h), sp.sstr(expected)))
+    return rows
+
+
+def run():
+    CHECKS.clear()
+    check_equal("source PDF SHA256", digest(SOURCE), SOURCE_SHA256)
+    rows = []
+    for dimension in (1, 2, 3):
+        chiralities = (1, -1) if dimension == 3 else (0,)
+        transposes = (False,) if dimension == 1 else (False, True)
+        for chirality, transpose in itertools.product(chiralities, transposes):
+            rows.append(verify_case(dimension, chirality, transpose))
+    verify_mass_coefficients()
+    verify_negative_controls()
+    vertex_rows = verify_vertex_idempotency()
+    lines = [
+        "# Weyl/Dirac exact verification record", "",
+        f"Result: PASS — {len(CHECKS)} exact checks; zero tolerance; seven Weyl symbols and their Dirac couplings.",
+        "", "This is a local verification record, not a canonical status update.", "",
+        f"Python: {platform.python_version()}; SymPy: {sp.__version__}.", "",
+        "| Case | Weyl neighbors | Facets | r_in | V_causal^max | c_0 |",
+        "| --- | ---: | ---: | --- | --- | --- |",
+    ]
+    lines.extend("| " + " | ".join(map(str, row)) + " |" for row in rows)
+    lines.extend([
+        "", "For each row and 0<m<1: M=asin(m), F=M*sqrt(1-m^2)/m;",
+        "c_H=c_0*F and c_omega2=c_0*sqrt(F). Analytically 0<F<1.",
+        "At m=0 both equal r_in (EXACT); at fixed 0<m<1 both equalities",
+        "with r_in are FALSE; matching as m tends to zero is ASYMPTOTIC.",
+        "", "At m=1 active support is {0}; all spatial coefficients and its inradius",
+        "are zero. The limiting ratio to the nonzero-mass substrate inradius is not",
+        "an inradius ratio for that collapsed active body.", "",
+        "Negative controls: missing dagger, reversed phase sign, omitted quadratic mass term detected.",
+        "Interval proof, continuum scaling and convention limits: see the analytic report.", "",
+        "## Addendum: d=3 vertex non-nilpotency certificate (2026-09-14)", "",
+        "For every one-step corner h in {-1,1}^3/sqrt(3) and every d=3 case,",
+        "det(A_h)=0 and A_h^2=alpha*A_h with alpha in {(1-i)/4,(1+i)/4}, alpha!=0",
+        "(exact). Hence each A_h is rank-one and not nilpotent, so",
+        "A_h^n=alpha^(n-1)*A_h != 0 for every n>=1. See",
+        "reports/2026-09-14--strict-asymptotic-pavia-baseline.md for the",
+        "convexity argument that turns this into C_infty^strict=C_micro for this",
+        "baseline. Baseline-specific; not a claim about other admissible symbols.",
+        "", "| Case | Vertex h | alpha |", "| --- | --- | ---: |",
+    ])
+    lines.extend(f"| {name} | {h} | {alpha} |" for name, h, alpha in vertex_rows)
+    lines.extend([
+        "",
+        "## Provenance", "",
+        f"- Script SHA256: `{digest(Path(__file__))}`",
+        f"- Contract SHA256: `{digest(CONTRACT)}`",
+        f"- 1601.04832v1 PDF SHA256: `{digest(SOURCE)}`",
+        "- Weyl input: https://arxiv.org/abs/1601.04832v1, equations (15)-(17).",
+        "- Dirac dagger cross-check: https://arxiv.org/html/1601.04842v1#S2.E9.",
+        "- Baseline: 44ad178; fixed cases and semantics are specified by the contract.",
+        "",
+    ])
+    return "\n".join(lines)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, help="Write the record only after all checks pass.")
+    arguments = parser.parse_args()
+    try:
+        record = run()
+    except (ValueError, OSError) as error:
+        print(f"FAIL: {error}", file=sys.stderr)
+        return 1
+    if arguments.output:
+        arguments.output.write_text(record, encoding="utf-8")
+        print(f"PASS: {len(CHECKS)} exact checks; wrote {arguments.output}")
+    else:
+        print(record, end="")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+=== DOCUMENT 7: DISPERSION_CORRECTIONS_ACROSS_LATTICES_ERRATUM_1.md ===
+
+# DISPERSION_CORRECTIONS_ACROSS_LATTICES — Erratum 1 (row labels L3/L4)
+
+**Date:** 2026-11-04. **Author:** Claude (Anthropic). **Status: DRAFT,
+PRELIMINARY**, pending user approval. Reviewed by DeepSeek
+(`debates/2026-11-04--dispersion-erratum1-review-deepseek/`, PASS, no
+mandatory repairs, reviewed SHA256 in its `inputs.sha256`); its two
+citation clarifications (CS line of «thirteen», `L5b[+i]` at verifier
+l. 811) were applied afterwards, without re-review.
+**Authorization:** user instruction of 2026-11-04 («haz la 4 y la 3»),
+option 3: a dated erratum with a short review. **Base:** `200f221`.
+
+This erratum changes no byte of the frozen contract
+(`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`, preregistration
+`a7ff5b7`), of the report
+(`reports/2026-11-02--dispersion-corrections-across-lattices.md`) or of
+the reviewed verifier (`scripts/verify_dispersion_corrections_gate.py`,
+SHA256 `b7c451e2…`, last change `4a45280`). Nothing is recomputed. It
+records what the rows labelled L3 and L4 actually contain and which
+promoted statements of `state/CURRENT_STATE.md` Sec. 13 that affects.
+
+## 1. The inconsistency
+
+| Source | Row L3 | Row L4 |
+| --- | --- | --- |
+| Parent `C_ACROSS_LATTICES_GATE.md` l. 76, 78 | standard battery, BCC `N_3` | CJWW (5.12) **and** (5.15), `Z^3` label, `C_micro = [-1,1]^3` |
+| Dispersion contract l. 63, 67 | `walk2()` = CJWW (5.15), «BCC» | `walk1()` = CJWW (5.12), «cube `[-1,1]^3`» |
+| Verifier l. 573–576 | `DS.walk2()`, substrate «cubic» | `DS.walk1()`, substrate «cubic» |
+
+`scripts/verify_directional_saturation.py` l. 64–65 and 72–73 confirm
+`walk1()` = CJWW (5.12) and `walk2()` = CJWW (5.15).
+
+Substrates under phase-0 Sec. 2.3 (generated translation group plus step
+set), from Amendment 1 of the phase-0 gate, Sec. 2 item 4 (hand
+derivation, re-derived by gpt-6.1-sol, PASS):
+
+- CJWW (5.12): support `{±1}^3`, generated group BCC.
+- CJWW (5.15): generated group `Z^3`.
+- Both have `C_micro = [-1,1]^3`.
+
+So the dispersion gate:
+
+- put a CJWW walk, (5.15), in the slot of the parent's standard-battery
+  row L3;
+- labelled it «BCC», although its generated group is `Z^3`;
+- labelled (5.12) «cube», which is right for its hull but not for its
+  group, BCC.
+
+The verifier followed the contract as frozen. The defect is in the
+contract's row table relative to its parent, not in the execution.
+
+## 2. What stands
+
+- **Per-symbol results.** Every coefficient in the report table (l. 38–50)
+  is a result for the symbol the verifier imported. Under the corrected
+  labels:
+  - the row printed «L3» (`O_h`, `alpha = −sigma2/18`, `alpha_0 = −1/90`)
+    is **CJWW (5.15)**;
+  - the row printed «L4» (`T_d`, `beta = −(sqrt3/3) n1 n2 n3`, `alpha` as
+    L5a) is **CJWW (5.12)**.
+- **Findings unaffected by the labels:**
+  - which rows have a `beta` term (inversion-free walk group);
+  - harmonic content against `G_walk`;
+  - Hd (`REFUTED_BY_ROW_L1`; L3s4 range);
+  - Hf refuted by L2 = L6e on the square.
+
+## 3. What changes
+
+1. **Coverage.** The parent's row L3 (standard d = 3 battery,
+   `verify_weyl_dirac_gate.published_symbol(3, ·, ·)`) has **no dispersion
+   entry**; the verifier imports `published_symbol` only for d = 1, 2
+   (l. 560, 562). Both computed CJWW rows belong to parent row L4. The
+   phrase «the thirteen massless rows of Sec. 11» in CS Sec. 13 (l. 2422)
+   overstates coverage by one row: thirteen computed entries cover twelve
+   distinct parent rows (parent L4 gets two, parent L3 none).
+2. **He.** The listing «L3 `K4`» in CS Sec. 13 (l. 2449–2450) is evidence
+   for CJWW (5.15), i.e. parent row L4. He is **not checked** for the
+   parent's row L3. The verdict `CONFIRMED_IN_DECLARED_ROWS` therefore
+   holds for the declared rows except the standard-battery L3.
+3. **Hf substrate grouping.** Contract l. 142 and verifier l. 811 compare
+   «BCC: L3, L5a, L5b» (the verifier uses the block `L5b[+i]`), where
+   «L3» is CJWW (5.15) on `Z^3`. With the
+   groups of Sec. 1:
+   - the BCC substrate carries L5a, the two Weyl blocks of L5b, and CJWW
+     (5.12);
+   - (5.15) is the only computed row on `Z^3`.
+
+   From the report table, by hand, not compared by the verifier: CJWW
+   (5.12) has `beta = −(sqrt3/3) n1 n2 n3` and `alpha` as L5a, so it has
+   the same `(beta, alpha)` as the L5b Weyl block whose `beta` sign is
+   opposite to L5a's, through the orders the table records. This is a
+   further shared pair on BCC. Report l. 81 and l. 263 («on the … BCC
+   substrates the corrections are not all equal») remain true with the
+   corrected membership: L5a and (5.12) differ in the sign of `beta`. The
+   verdict `REFUTED_BY_ROW_L6e` is unchanged.
+
+## 4. Not done here
+
+- No dispersion entry is computed for the standard-battery L3. That would
+  need an authorized computation (user decision).
+- Whether CJWW (5.12) or (5.15) coincides with an L3 symbol up to the
+  declared symmetries is not checked (as in Amendment 1, Sec. 2 item 4).
+- The verifier and the report are not edited. CS Sec. 13 receives a
+  dated note only after this erratum is reviewed and approved.
+
+=== DOCUMENT 8: extractos.md ===
+
+# Extractos literales con numeración original (preparado 2026-11-04, base b9b0e58)
+
+## scripts/verify_directional_saturation.py, l. 36–82
+```
+36: Z = sp.symbols("z1 z2 z3")
+37: CHECKS = []
+38: 
+39: 
+40: def laurent(e):
+41:     """Canonical form: every symbol here is a Laurent polynomial in z_k = e^{i p_k}.
+42: 
+43:     Two such expressions agree as functions of real p iff they agree as Laurent
+44:     polynomials, so `laurent(a - b) == 0` is a sound equality test.  Needed
+45:     because (5.12) is written in cos/sin and (5.15) in exp, and SymPy does not
+46:     reconcile the two forms on its own.
+47:     """
+48:     e = sp.expand(sp.expand(e).rewrite(sp.exp))
+49:     e = e.subs({p: -sp.I * sp.log(z) for p, z in zip(PS, Z)})
+50:     return sp.cancel(sp.powsimp(sp.expand(sp.powsimp(e, force=True)), force=True))
+51: 
+52: 
+53: def is_zero(e):
+54:     return sp.simplify(laurent(e)) == 0
+55: 
+56: 
+57: def check(name, tag="ESTABLISHED"):
+58:     def wrap(fn):
+59:         CHECKS.append((name, tag, fn))
+60:         return fn
+61:     return wrap
+62: 
+63: 
+64: def walk1():
+65:     """CJWW (5.12): W(p) = exp(i p1 s1) exp(i p2 s2) exp(i p3 s3)."""
+66:     W = I2
+67:     for c, s, sig in zip(C, S, PAULI):
+68:         W = W * (c * I2 + sp.I * s * sig)
+69:     return sp.expand(W)
+70: 
+71: 
+72: def walk2():
+73:     """CJWW (5.15), transcribed entry by entry."""
+74:     e = sp.exp(sp.I * P3)
+75:     return sp.Matrix([
+76:         [C[0] * C[1] * e, -C[0] * S[1] + sp.I * S[0]],
+77:         [C[0] * S[1] + sp.I * S[0], C[0] * C[1] / e],
+78:     ])
+79: 
+80: 
+81: F1 = C[0] * C[1] * C[2] + S[0] * S[1] * S[2]     # tr W1 / 2
+82: F2 = C[0] * C[1] * C[2]                          # tr W2 / 2
+```
+
+## reports/2026-11-02--dispersion-corrections-across-lattices.md, l. 36–50
+```
+36: `sigma2 = n1^2 n2^2 + n2^2 n3^2 + n3^2 n1^2`.
+37: 
+38: | Row | Substrate | `c_0` | `G_walk` (exact) | Lowest correction | `beta(n̂)` | `alpha(n̂)` | `alpha_0` |
+39: | --- | --- | --- | --- | --- | --- | --- | --- |
+40: | L1 | line | 1 | `{±1}` | none: `omega = |k|` exactly | 0 | 0 | **0** |
+41: | L2 | square | `1/sqrt2` | `D_4` (8) | `alpha`, anisotropic | 0 | `-n1^2 n2^2/12 = -(1 - cos 4θ)/96` | `-1/96` |
+42: | L6e | square | `1/sqrt2` | `D_4` (8) | `alpha`, anisotropic | 0 | identical to L2 | `-1/96` |
+43: | L3 | BCC | `1/sqrt3` | `O_h` (48) | `alpha`, anisotropic | 0 | `-sigma2/18 = -1/90 + K4/36` | `-1/90` |
+44: | L5a | BCC | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `(sqrt3/3) n1 n2 n3` | `-sigma2/18 - n1^2 n2^2 n3^2/6` | `-4/315` |
+45: | L5b (each Weyl block) | BCC | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `±(sqrt3/3) n1 n2 n3` | as L5a | `-4/315` |
+46: | L4 | cube | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `-(sqrt3/3) n1 n2 n3` | as L5a | `-4/315` |
+47: | L3s4 (each cluster) | BCC, `s = 4` | `a/sqrt3` | 8 (`D_2` half-turns and the `x <-> z` swap composed with them) | `beta`, isotropic + anisotropic | `±[sqrt3 (1-a^2)/(6a) + sqrt3 (2a^2-1)/(3a) n1 n2 n3]`, upper sign for the cluster at `+pi/4` | non-cubic content (Sec. 3.4) | `2(27a^4 - 34a^2 + 5)/(315 a^2)` |
+48: | L6a | hexagon | `1/2` | `D_3` (6) | `beta`, anisotropic | `-(sqrt15/36) cos 3θ` | `-41/1728 - (5/1728) cos 6θ` | `-41/1728` |
+49: | L6c | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/512` | `-1/512` |
+50: | L6d | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/128` | `-1/128` |
+```
+
+## theory/C_ACROSS_LATTICES_GATE.md, l. 72–87
+```
+72: | Id | d | Source label | Source, equations, page | s |
+73: | --- | --- | --- | --- | --- |
+74: | L1 | 1 | line `{±1}` | standard battery (done) | 2 |
+75: | L2 | 2 | square, `N_2={(±1,±1)/sqrt2}` | P17 / standard battery (done massless) | 2 |
+76: | L3 | 3 | BCC, `N_3` | P17 / standard battery (done) | 2 |
+77: | L3s4 | 3 | BCC, `N_3` | S4 family (done) | 4 |
+78: | L4 | 3 | Z^3, `C_micro=[-1,1]^3` | CJWW `2408.02108v1` (5.12), (5.15) (done in part) | 2 |
+79: | L5a | 3 | BCC via axis product | Farrelly–Short `1312.2852v1` Eqs. (20)–(21) p.4–5 | 2 |
+80: | L5b | 3 | BCC via axis product | Mlodinow–Brun `1802.03910v1` Eq. (23) p.5, symbol Eq. (33) p.7, `Delta P_i`, `Q` mutually anticommuting involutions (Eqs. (25)–(27) p.6); mass `theta` | 4 |
+81: | L6a | 2 | honeycomb | ADMP `1803.01015v2` Eq. (10) p.3 (coin `W` Eq. (9), axes Eq. (4)) | 2 |
+82: | L6b | 2 | triangular | ADMP `1803.01015v2` Eq. (12) p.4 (source: equivalent to L6a over three updates) | 2 |
+83: | L6c | 2 | equilateral triangular, six-step | JDW `1803.01304v1` Eq. (2) p.2, `U(·)` Eq. (1) p.1, neighbours p.1 | 2 |
+84: | L6d | 2 | equilateral triangular, three-step | JDW `1803.01304v1` Eq. (4) p.2 | 2 |
+85: | L6e | 2 | isosceles triangular, three-step | JDW `1803.01304v1` Eq. (6) p.2 | 2 |
+86: | L6f | 2 | honeycomb, three-step | JDW `1803.01304v1` Eqs. (7)–(8) p.2 | 2 |
+87: 
+```
+
