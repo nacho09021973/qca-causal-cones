@@ -401,3 +401,24 @@ Does **not** certify: `V_grp^max` (OPEN), the scale of validity in
 hypotheses beyond the printed coefficients. The verdicts on Hd, He and Hf
 are drawn in the report from the printed values; the script prints them
 but asserts none. Not independently reviewed.
+
+## Dispersion L3 row gate (2026-11-04)
+
+`verify_dispersion_L3_row_gate.py` certifies
+[`DISPERSION_L3_ROW`](../theory/DISPERSION_L3_ROW_GATE.md), preregistered at
+`d3868fa`, for the [report](../reports/2026-11-04--dispersion-L3-row.md).
+34 exact checks, about 10 s (`python3 -B`, sympy 1.14.0). It imports
+read-only the helpers of `verify_dispersion_corrections_gate.py` and the
+symbols of `verify_weyl_dirac_gate.py` (`published_symbol(3, ±1, ·)` and
+transposes: cases A+, B+, A−, B−), `verify_directional_saturation.py`
+(`walk1`, CJWW (5.12)) and `verify_c_across_lattices_gate.py`
+(`row_L5a`); those files are unchanged. The comparison rows (CJWW (5.12),
+L5a) are recomputed with the parent's own row setup.
+
+Certified per case: unitarity, `det U = 1`, `tr U = 2(ccc + chi sss)`,
+support `{±1}^3`, and the parent's per-row checks (no degree-0/1 terms in
+`omega^2`, `c_0 = 1/sqrt3`, no linear phase). Printed, not asserted: `beta`,
+`alpha`, their cubic projections, `G_walk`, and the verdicts on HL3b–HL3e.
+
+Does **not** certify: `V_grp^max`, the scale of validity, terms beyond
+relative order `t^2`. Not independently reviewed.
