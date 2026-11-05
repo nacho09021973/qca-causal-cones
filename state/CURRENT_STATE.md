@@ -24,10 +24,13 @@ globally bounded compatible candidate; one session of at most 90 minutes. Execut
 plus local Codex review PASS. Qualitative gap only; (PH) not proved;
 hexagonal class OPEN.
 
-**Gate executed — 2026-11-05:** aligned all-m (Sec. 16, `1154fad`):
-`OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`; vertex-slice route closed for m >= 629;
-PRELIMINARY; OpenAI sealed review (maths PASS, documentary repairs) and
-Grok re-review PASS; promotion pending.
+**Bounded result promoted — 2026-11-05:** aligned all-m gate (Sec. 16,
+executed `1154fad`): `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`. Promoted: for every
+m >= 629 no certificate supported on the vertex-direction slice `p = 2q`
+can prove scalar incompatibility (route closure only). Not promoted: any
+compatible candidate, any m in 4..628, the all-m question (OPEN). Reviewed
+by OpenAI `gpt-6-astra` (maths PASS, documentary repairs) and Grok
+`grok-4.7` (re-review PASS).
 
 **Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
 frozen at `9bf3019` after two Grok rounds; a definitional audit of the
@@ -2802,8 +2805,25 @@ Bounded re-review (2026-11-05): Grok `grok-4.7` (DeepSeek unavailable,
 insufficient balance; user chose Grok)
 ([report](../debates/2026-11-05--hex-trace-aligned-all-m-rereview-grok/informe_grok.md)):
 **PASS**, R1–R6 resolved, no new error, no remaining mandatory repair.
-Status: **PRELIMINARY; INDEPENDENT_REVIEW_PASS_TWO_HOUSES (OpenAI maths PASS
-plus repairs, Grok re-review PASS); PROMOTION_PENDING.**
+
+**Promoted 2026-11-05 (user instruction «promueve el resultado de todo
+m»):** outcome `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS` with the route closure
+it rests on: (i) on `p = 2q` the slice image of D6-invariant residuals
+supported in `H_{m-2}` is exactly `{g : deg g <= 2m-4, g'(-1/2) = 0}`;
+(ii) for every m >= 629 the explicit product construction (verifier D1–D3)
+gives `|f| <= 1` on the whole slice, so no certificate supported on the
+vertex-direction lines proves `SCALAR_INFEASIBLE_ALL_ALIGNED_M_GE4`; (iii)
+the general-m walk-to-scalar bridge of report Sec. 2 (not used in
+Secs. 3–4). Not covered: a compatible candidate (bound off the slice not
+examined), any m in 4..628, the all-m incompatibility question (stays
+OPEN), non-aligned hexagons, M1 class (OPEN, Sec. 14), novelty
+(Markov/Bernstein prior art, `NOVELTY = OPEN`). Budget compliance stays
+[UNVERIFIED] (report timing note). Neither reviewer executed code; the
+verifier runs (21/21) are the author's. Continuing the all-m question (a
+two-dimensional certificate or a globally bounded candidate) needs a new
+charter; not authorized. Previous status: PRELIMINARY;
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES (OpenAI maths PASS plus repairs, Grok
+re-review PASS); PROMOTION_PENDING.
 
 **S25 Astra review attempt:** recorded without verdict (`5512a96`,
 `SIN_DICTAMEN_CONSERVADO`; empty `run.out`, no report). Not a completed

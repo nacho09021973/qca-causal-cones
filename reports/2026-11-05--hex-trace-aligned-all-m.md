@@ -15,7 +15,8 @@ machine-recorded interval above is documented. No code was run before it.
 **Outcome: `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`.** Status: PRELIMINARY;
 sealed OpenAI review (`gpt-6-astra`) REPAIR_REQUIRED on documentation only,
 repairs applied (Sec. 7); bounded re-review by Grok `grok-4.7` PASS
-(R1–R6 resolved); not promoted.
+(R1–R6 resolved); promoted 2026-11-05 as bounded route closure
+(CURRENT_STATE Sec. 16); the all-m question stays OPEN.
 
 ## 0. Pre-step check
 
