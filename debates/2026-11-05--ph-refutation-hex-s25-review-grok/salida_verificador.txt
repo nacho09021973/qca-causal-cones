@@ -1,0 +1,40 @@
+== Part 1: support H25 (contract Sec. 2)
+[PASS] H25: closed hexagon with vertex 2 g1 + g2 has 25 lattice points, 6 vertices, r_in = sqrt3/2 (25 points)
+[PASS] H25: all six vertices are lattice points of the support
+[PASS] H25: no lattice point in the interior of an edge
+[PASS] H25': the reflection y -> -y (a symmetry of Lambda) maps H25 onto the hexagon with vertex g1 + 2 g2
+== Part 2: layers and lemma A1 (contract Sec. 3, Stage A)
+[PASS] H25: on each of the three facet normals every projection is a multiple of delta = r_in/7
+[PASS] H25: the three facet normals are unit vectors (explicit radicals) ([[sqrt(21)/7, 2*sqrt(7)/7], [-sqrt(21)/14, 5*sqrt(7)/14], [-3*sqrt(21)/14, sqrt(7)/14]])
+  normal [cos(atan(sqrt(3)/5) + pi/6), sin(atan(sqrt(3)/5) + pi/6)]: layer sizes from +7 to -7: [2, 1, 1, 2, 1, 2, 2, 3, 2, 2, 1, 2, 1, 1, 2]
+  normal [-sqrt(21)/14, 5*sqrt(7)/14]: layer sizes from +7 to -7: [2, 1, 1, 2, 1, 2, 2, 3, 2, 2, 1, 2, 1, 1, 2]
+  normal [-3*sqrt(21)/14, cos(atan(sqrt(3)/5) + pi/3)]: layer sizes from +7 to -7: [2, 1, 1, 2, 1, 2, 2, 3, 2, 2, 1, 2, 1, 1, 2]
+[PASS] H25: the two extreme layers of each normal are the two vertices of an edge
+  A1 forces A_h = 0 at 18 points; surviving support: 7 points
+    vertex: [-2*sqrt(7)/7, sqrt(21)/7], |h|^2 = 1
+    vertex: [-5*sqrt(7)/14, -sqrt(21)/14], |h|^2 = 1
+    vertex: [sqrt(7)/14, 3*sqrt(21)/14], |h|^2 = 1
+    origin: [0, 0], |h|^2 = 0
+    vertex: [-sqrt(7)/14, -3*sqrt(21)/14], |h|^2 = 1
+    vertex: [5*sqrt(7)/14, sqrt(21)/14], |h|^2 = 1
+    vertex: [2*sqrt(7)/7, -sqrt(21)/7], |h|^2 = 1
+[PASS] H25 (A1): singleton intermediate layers cover every point other than the origin and the vertices
+[PASS] H25 (second route, not independent of A1): exact solution of the layer equations on all 25 points forces A_h = 0 on those 18 points
+[PASS] H25' (direct): 25 points, and A1 forces A_h = 0 at every point other than the origin and the vertices
+== Part 3: reduction to the minimal-support configuration of T2
+[PASS] H25: rotating the six vertices by -atan(sqrt3/5) gives the T2 vertex set (cos k pi/3, sin k pi/3)
+[PASS] H25': rotating its six vertices by minus the angle of its first vertex gives the T2 vertex set
+[PASS] T2-min: along each facet normal the layers are {top edge, middle (2 vertices + 0), bottom edge}
+[PASS] T2-min: layer equations are consistent, with the X0 coefficient free
+[PASS] T2-min: layer equations force A_0 = -I/2
+  T2-min: Groebner element X0_6**2 - X0_6/2 + 1/12 = 0, discriminant -1/12
+[PASS] T2-min: unitarity + saturation imply a real quadratic with negative discriminant (no real solution): the ceiling is not attained with F in {0} U vert(H)
+[PASS] T2-min of the reviewed verify_hex_ceiling_gate.py, rerun unchanged: all its checks pass (4/4)
+== Part 4: controls (reviewed verify_hex_supremum_b19.py, read-only)
+[PASS] CONTROL square: the saturating walk satisfies the layer sums, A3 (L2) and the off-diagonal L3
+[PASS] CONTROL square: unitarity_equations of the unitary square walk are all identically 0
+[PASS] CONTROL square: a perturbed (non-unitary) coefficient is detected by unitarity_equations
+[PASS] CONTROL pipeline (3x3 square): the saturating walk lies in the L1+L2+L3 parametrized family (13 free parameters)
+[PASS] CONTROL pipeline (3x3 square): it satisfies every reduced unitarity equation (298 equations)
+[PASS] CONTROLS of the M1-B19 verifier on the square substrate, rerun unchanged: all pass (the layer equations, of which A1 is the singleton case, keep the known saturating walk) (5/5)
+14/14 checks passed (PH refutation, H25, Stage A).
