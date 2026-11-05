@@ -1,6 +1,15 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-03
+**Date:** 2026-11-05
+
+**Bounded result promoted — 2026-11-05:** hexagonal trace/scalar line
+(Sec. 16), m=3 only: `SCALAR_INFEASIBLE_M3` on the aligned 37-point
+hexagon, with its two-parameter reduction at m=3 and the trace bridge to
+walk-level non-attainment (s=2, scalar node, traceless isotropic linear
+term, exact radius-one hull; pointwise, no uniform gap). Reviewed by Claude
+Opus 5.5 and Grok `grok-4.7`. Not promoted: the general aligned-m
+reduction, the S19 alternative proof, other radii or orientations; M1 class
+OPEN.
 
 **Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
 frozen at `9bf3019` after two Grok rounds; a definitional audit of the
@@ -2674,3 +2683,65 @@ L4-(5.15) recorded as *product-class membership not established*; no new
 factorization sought. G1 is bounded, not closed; no amendment. Status
 unchanged: **PRELIMINARY, `OPEN_AFTER_ROW_SURVEY` (G1-a, G1-b, G1-c), no
 confirmatory value, not promoted.**
+
+## 16. Hexagonal trace/scalar line — 2026-11-05
+
+Contracts: [`HEX_TRACE_SCALAR_GATE.md`](../theory/HEX_TRACE_SCALAR_GATE.md)
+(user «autorizado, adelante») and its child
+[`HEX_TRACE_M3_GATE.md`](../theory/HEX_TRACE_M3_GATE.md) (user option «2»;
+m=3, two scalar parameters, no continuation to other radii). Both are new
+contracts, not edits of the frozen HEX_SUPREMUM gate (Sec. 14). Author of
+both contracts and reports: Codex (OpenAI). **No preregistration commit:**
+each contract was written before its calculation but entered Git in the
+same commit as the result (`HEX_TRACE_M3_GATE.md` and the m=3 report both
+in `ad84207`); the m=3 report records the pre-calculation charter SHA256
+`e436cdb8…de04b68`, which the committed file still matches. This is a
+departure from the gate cycle and limits the preregistration claim to that
+hash.
+
+Not promoted, unchanged status (one reviewing house each):
+- S19 alternative scalar trace proof
+  ([report](../reports/2026-11-05--hex-trace-s19.md)): DeepSeek
+  `deepseek-v4-pro` PASS; PRELIMINARY. The promoted S19 result (Sec. 14,
+  matrix certificate) is unchanged.
+- Scalar method beyond S19
+  ([report](../reports/2026-11-05--hex-trace-scalar-method.md)):
+  `OPEN_AFTER_SCALAR_ANALYSIS`; its Sec. 3 general aligned-m residual form
+  `f = f_m^0 + Delta*h` reviewed by Claude Opus 5.5 only (PASS);
+  PRELIMINARY for general m.
+
+m=3 execution: [report](../reports/2026-11-05--hex-trace-m3.md), verifier
+`scripts/verify_hex_trace_m3.py` (5/5, exit 0, SHA256 `88a20b3d…6669998f`;
+rerun 2026-11-05 at `6aefa91`, 5/5), stdout
+`reports/2026-11-05--hex-trace-m3-verifier.txt`. On the aligned radius-three
+lattice ball (37 points of `Lambda/3`, exact hull the radius-one regular
+hexagon), D6 averaging plus double divisibility on the three mirrors and
+Newton support reduce every real scalar candidate to
+`f_3^0 + Delta*(alpha + beta*S1)`; four exact point restrictions on the
+slice `p = 2q` with positive rational weights give `0 <= -7362262528/3381753375`.
+Outcome `SCALAR_INFEASIBLE_M3`. Trace bridge (report Sec. 4, R1 repair):
+`Re Tr U~/2` of a saturating walk would be such a candidate, using the
+facet-normal rigidity of HEX_CEILING Sec. 3 Step 1.
+
+Reviews: Claude Opus 5.5
+([round 1](../debates/2026-11-05--hex-trace-m3-review-opus/),
+PASS blocks 1–5, REPAIR_REQUIRED block 6 (R1, documentary);
+[re-review](../debates/2026-11-05--hex-trace-m3-review-opus-r1/), R1
+RESOLVED, PASS); Grok `grok-4.7`
+([sealed](../debates/2026-11-05--hex-trace-m3-review-grok/), without earlier
+verdicts, PASS on all six blocks, no repairs; re-derives the reduction at
+m=3 in its block 2). Neither reviewer executed code; the verifier runs are
+the author's and this session's.
+
+**Promoted 2026-11-05 (user instruction «sí, haz el paso 1 y enséñamelo
+antes del push»):** `SCALAR_INFEASIBLE_M3`, including the two-parameter
+reduction at m=3 on which it depends. Walk-level consequence, same scope:
+no walk with s=2, scalar node, traceless isotropic linear term, support in
+the aligned 37-point hexagon and exact radius-one hull reaches
+`c_0 = r_in`; with the ceiling `c_0 <= r_in` this gives `c_0 < r_in` in that
+class. Pointwise non-attainment, no uniform separation from `r_in`. Not
+covered: the general aligned-m reduction (one house), the universal scalar
+obstruction, any m >= 4, non-aligned hexagons (including S25, separate
+report and gate), M1 class (stays OPEN, Sec. 14), novelty. Any m >= 4 or
+all-m question needs a new charter (not authorized). Previous status:
+PRELIMINARY; INDEPENDENT_REVIEW_PASS_TWO_HOUSES; PROMOTION_PENDING.
