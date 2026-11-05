@@ -1,0 +1,67 @@
+[PASS] support count: 37 points; residual support: origin plus six-point orbit
+[PASS] point budget <=256 and every retained Delta is strictly positive
+[PASS] exact elimination completed within 300 s
+point inequalities: 146; elimination seconds: 0.034939
+[PASS] certificate point evaluations checked by independent Laurent substitution
+[PASS] nonnegative exact weights yield 0 <= a strictly negative rational
+CERTIFICATE [
+  {
+    "weight": "64/169",
+    "restriction": {
+      "point": "p=2q",
+      "cos_q": "5/16",
+      "base": "-1206391/1048576",
+      "delta": "27951/262144",
+      "S1": "-23/64",
+      "A": "1",
+      "B": "-23/64",
+      "C": "204997/10164",
+      "bound": "upper"
+    }
+  },
+  {
+    "weight": "64/169",
+    "restriction": {
+      "point": "p=2q",
+      "cos_q": "-1/2",
+      "base": "1",
+      "delta": "27/64",
+      "S1": "-3",
+      "A": "-1",
+      "B": "3",
+      "C": "128/27",
+      "bound": "lower"
+    }
+  },
+  {
+    "weight": "64/245",
+    "restriction": {
+      "point": "p=2q",
+      "cos_q": "3/8",
+      "base": "-17671/16384",
+      "delta": "1375/16384",
+      "S1": "1/16",
+      "A": "1",
+      "B": "1/16",
+      "C": "6811/275",
+      "bound": "upper"
+    }
+  },
+  {
+    "weight": "64/245",
+    "restriction": {
+      "point": "p=2q",
+      "cos_q": "13/16",
+      "base": "-1265351/1048576",
+      "delta": "783/262144",
+      "S1": "249/64",
+      "A": "-1",
+      "B": "-249/64",
+      "C": "-7475/108",
+      "bound": "lower"
+    }
+  }
+]
+contradiction: 0 <= -7362262528/3381753375
+OUTCOME: SCALAR_INFEASIBLE_M3 (PRELIMINARY, independently unreviewed)
+5/5 exact checks passed

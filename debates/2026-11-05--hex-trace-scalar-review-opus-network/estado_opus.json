@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "finish_reason": "cli_exit_0",
+  "requested_model": "claude-opus-5-5",
+  "input_sha256": "cf8387e841dc3adbdb202891ca088815bd54a18dcdef994dd06dc75e3aed966a",
+  "started": "2026-11-05T10:16:32Z",
+  "finished": "2026-11-05T10:21:16Z",
+  "tool_commit": "ce09890a0d5f68a6634f358eff2e477ac5f15ec7",
+  "script_sha256": "0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0",
+  "library_sha256": "af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c"
+}

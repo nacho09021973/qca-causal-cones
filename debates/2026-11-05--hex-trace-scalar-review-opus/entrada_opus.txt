@@ -1,0 +1,451 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente el informe adjunto «Scalar method beyond S19».
+Su autor es Codex (OpenAI). El usuario ha pedido expresamente que esta
+revisión la haga Claude. No se solicita resolver la factibilidad escalar,
+probar no saturación universal, buscar literatura ni extender soportes.
+
+Objetivo: determinar si las secciones 2 y 3 son demostraciones correctas
+con los cuantificadores y la normalización indicados. Resultado esperado:
+PASS / REPAIR_REQUIRED / FAIL por cada bloque y un dictamen global:
+
+1. Del coseno normal en tres direcciones a D^2 f(0)=-r^2 I.
+2. Fórmula de proyección para cualquier v=a*g1+b*g2, grid delta,
+   grado entero N y argumento de los 2N ceros que anula la derivada
+   transversal sin introducir reflexiones ilícitas.
+3. Familia alineada v=m*g1: interpolante f_m^0 y disponibilidad de D6.
+4. Divisibilidad por Delta: factores dobles en el anillo de Laurent,
+   multiplicidades derivadas de reflexiones, realidad y simetría del
+   cociente h, y suficiencia para interpolación (no para acotación).
+5. Polígonos de Newton: si d=f-f_m^0 tiene soporte en H_m y Delta tiene
+   polígono H_2, ¿se sigue rigurosamente supp(h) dentro de H_(m-2)?
+   Revisa m=1, m=2, d=0 y la posibilidad de cancelaciones.
+6. Alcance del verificador y del resultado: identidades verificadas no
+   equivalen al teorema general; la reducción alineada no cubre por sí
+   sola todas las orientaciones; un candidato escalar no es un walk.
+
+Re-deriva los pasos, no uses el texto de Codex como fuente de autoridad.
+Identifica cualquier hipótesis ausente, ambigüedad de escala o brecha.
+Si objetas, da una derivación o contraejemplo concreto. Distingue cambios
+obligatorios de sugerencias opcionales. No atribuyas ejecución de código:
+esta sesión está sellada, sin herramientas ni búsqueda. Se adjuntan el
+script, su salida local y el contrato para delimitar las pretensiones.
+La prueba S19 adjunta es contexto para la especialización m=2; no heredes
+ningún PASS previo ni necesitas revisar el antiguo certificado matricial.
+
+Máximo: una ronda inicial y, solo si procede, una revisión adicional
+acotada de las reparaciones. Cierre: informe completo sin objeciones
+obligatorias pendientes, o identificación explícita de fallo/obligación
+abierta. Una falta de entrega operativa no es revisión ni rechazo
+matemático. No se promociona ningún resultado por este encargo.
+
+=== DOCUMENT 1: 2026-11-05--hex-trace-scalar-method.md ===
+
+# Scalar method beyond S19: bounded analytic audit
+
+Date: 2026-11-05. Author: Codex (OpenAI).
+Contract: theory/HEX_TRACE_SCALAR_GATE.md, written before this analysis.
+Status: PRELIMINARY, not independently reviewed, not promoted.
+Outcome: OPEN_AFTER_SCALAR_ANALYSIS. No general incompatibility theorem
+and no compatible scalar polynomial have been obtained in this session.
+
+## 1. The exact question
+
+The S19 scalar obstruction is support-specific: D6 invariance leaves four
+orbit coefficients, normal rigidity leaves one, two point bounds fix it,
+and a third point contradicts the remaining bound. Larger supports have
+more orbits; the uniqueness step is not inherited.
+
+For H_v with v=a*g1+b*g2 nonzero, let L=|v|, normalize the frequency
+lattice to Lambda/L, and write r=sqrt(3)/2. Does a real finite Fourier
+polynomial f with spectrum inside H_v/L satisfy
+
+    -1<=f(k)<=1, f(0)=1,
+    f(t*n_j)=cos(r*t) on all six facet normals?
+
+One may impose evenness and C6 invariance by averaging. D6 averaging
+inside the same lattice is available for S19; for a general oriented
+lattice hexagon a geometric reflection need not preserve Lambda.
+Do not assume that stronger average in the universal question.
+
+If no such polynomial exists for every v, the trace argument excludes
+saturation for the declared walks. If one exists, these scalar conditions
+are insufficient. It would not yet produce a unitary 2x2 symbol, a product
+walk, or a counterexample to the saturation claim itself.
+
+## 2. Hessian and transverse derivative: necessary conditions
+
+These statements require only real boundedness, normal cosines and the
+finite frequency support; not the full amplitude matrices.
+
+First, the Hessian of f at zero is fixed. On three distinct facet-normal
+lines its quadratic form is -r^2. A symmetric 2x2 matrix whose quadratic
+form agrees with -r^2 I on three distinct unoriented lines equals -r^2 I:
+their difference is a homogeneous quadratic vanishing on three lines,
+so it is zero. Thus D^2 f(0)=-r^2 I. This does not require a separate
+scalar isotropy assumption.
+
+Fix a facet normal n and its unit tangent e. Put
+g(t)=partial_e f(t*n). Then
+
+    g(t)=0 for every real t.                                      (T)
+
+Here is a finite-degree proof that applies to all lattice H_v. For the
+facet joining v to Rv, set D=a^2+ab+b^2 and d=gcd(|a|,|b|). In lattice
+coordinates its edge vector is (-a-b,a). A frequency h=(m*g1+l*g2)/L
+has normalized projection
+
+    (h.n)/r = [a*m+(a+b)*l]/D.
+
+Therefore all normal frequencies are integer multiples of
+delta=r*d/D, with maximal degree N=D/d (a positive integer). Rotation
+gives the same property on the other facets. The proof needs only a
+commensurate grid, not that every layer is populated.
+
+Use theta=delta*t and write G(theta)=g(theta/delta), a real trigonometric
+polynomial of degree at most N. At theta_j=j*pi/N, j=0,...,2N-1,
+f((theta_j/delta)*n)=(-1)^j. Boundedness makes each such point a global
+maximum or minimum in the full k-plane, so its transverse derivative is
+zero: G(theta_j)=0. Multiplying G by z^N, z=exp(i*theta), gives an
+ordinary polynomial of degree <=2N vanishing at all 2N-th roots of unity.
+It is a constant multiple of z^(2N)-1, so reality implies
+G(theta)=b*sin(N*theta) with b real. But
+
+    G'(0)=partial_n partial_e f(0)/delta=0
+
+by the Hessian identity above. Hence b=0 and (T) follows.
+
+Equivalently, in Fourier coefficients b_h,
+
+    sum_{h.n=lambda} (h.e)*b_h = 0
+
+for every normal layer lambda, in addition to the usual layer sums
+(1/2 on each extreme layer, zero on intermediate layers). These are
+necessary first-moment constraints on the scalar coefficients.
+
+## 3. Exact residual form for the aligned hexagon family
+
+This section concerns v=m*g1, m a positive integer; it does not silently
+identify all oriented lattice hexagons with this family. Set
+p=k.g1/m, q=k.g2/m. Frequencies in these variables have integer pairs
+(i,j) with max(|i|,|j|,|i+j|)<=m. Averaging over D6 is valid here.
+The prescribed normal restrictions become cos(m*q) on p=0, cos(m*p)
+on q=0 and on p=q. A particular interpolant is
+
+    f_m^0 = [cos(m*p)+cos(m*q)+cos(m*(p-q))-1]/2.
+
+Every D6-invariant real candidate with those restrictions has the form
+
+    f = f_m^0 + Delta*h,
+    Delta = sin^2(p/2)*sin^2(q/2)*sin^2((p-q)/2),                 (R)
+
+where h is a real D6-invariant Laurent polynomial supported inside the
+radius-(m-2) lattice hexagon. For m=1 the residual must be zero; for m=2
+it is a constant. The assertion concerns interpolation and support, not
+boundedness: that still has to be imposed on the full expression.
+
+Proof: write d=f-f_m^0, z=exp(i*p), w=exp(i*q). Vanishing on p=0, q=0
+and p=q gives the factors z-1, w-1 and z-w in the Laurent ring. The
+reflection fixing p=0 sends (p,q) to (-p,q-p). Differentiating invariance
+at p=0, where d and partial_q d vanish, gives partial_p d=0. Thus the
+factor z-1 has multiplicity at least two. The conjugate reflections give
+the other double factors. They are distinct irreducibles in the Laurent
+UFD, so their product divides d. Since
+
+    Delta = -(z-1)^2*(w-1)^2*(z-w)^2/(64*z^2*w^2),
+
+the quotient h is Laurent. Delta is D6 invariant and real, hence so is
+h (first on the dense set Delta!=0 and then identically). If h is nonzero,
+the Newton polytope of a product is the Minkowski sum: each exposed leading
+face is a product of nonzero face polynomials in an integral domain.
+Delta has Newton polygon H_2. Since Delta*h=d has support inside H_m,
+the six facet inequalities bound the support of h by H_(m-2). If m=1,
+their intersection is empty; h must be zero. Conversely such an h gives
+the stated support and normal restrictions, though not necessarily bounds.
+
+For m=2, f_m^0=-1/2+S3/4 and the S19 one-parameter family satisfies
+
+    fbar = f_2^0 - 32*a1*Delta.
+
+Thus the supplied S19 argument forces h=16/3 and disproves boundedness
+of that unique candidate. For m>=3 the quotient can be nonconstant;
+its exclusion cannot be inferred from the constant case.
+
+The permanent checker `scripts/verify_hex_trace_scalar_structure.py`
+checks the Laurent factorization, double zeros, D6 invariance, exact
+Newton polygon and the S19 residual identity. The proof of universal
+divisibility in this aligned family is the analytic argument above,
+not something certified by testing a finite set of radii.
+
+## 4. What this does not solve
+
+The first-moment constraints are already consequences of the scalar
+conditions, not extra assumptions or a new witness. On reflection axes
+they also follow immediately from reflection symmetry. For S19, whose
+average is D6 invariant, adding them cannot improve the scalar reduction.
+For general oriented lattice hexagons the derivative argument supplies
+them without an illicit reflection average.
+
+The zero-count argument does not apply to partial_e^2 f: at the extremal
+points only an alternating sign is forced for that derivative, not zero.
+It therefore cannot be iterated here to conclude that all transverse
+dependence vanishes. That would be an unsupported generalization.
+
+No exact compatible polynomial or general contradiction is provided.
+No larger-support solver, numerical scan, or new walk construction was
+run. The bounded analysis ends here under the contract. Any further
+attempt should address scalar feasibility itself, rather than treating
+these necessary constraints or additional bounded cases as a proof for
+all supports. The universal walk saturation question remains OPEN.
+
+## 5. Provenance and review boundary
+
+This is an analytic derivation written in the permanent report; the
+explicit Laurent checks have their permanent script, and no temporary
+script generated the conclusions. The normal projection formula
+is derived from the determinant with edge (-a-b,a); at v=2*g1 it gives
+N=2, and at v=2*g1+g2 it gives N=7, matching the respective existing
+layer descriptions. These are consistency checks, not independent review.
+The sealed S19 review has a separate scope and does not review this
+general-method report. No literature novelty claim is made.
+
+Local algebra execution: `python3 -B scripts/verify_hex_trace_scalar_structure.py`,
+exit 0, 6/6 exact checks, Python 3.12.3 / SymPy 1.14.0. Permanent stdout:
+`reports/2026-11-05--hex-trace-scalar-structure-verifier.txt`.
+Script SHA256:
+`a00574f90b6c2191dbb92d20f75b260c3a6f4987b683e97a96c7585717647ce3`.
+
+=== DOCUMENT 2: verify_hex_trace_scalar_structure.py ===
+
+"""Exact algebra for the aligned-hexagon scalar reduction, 2026-11-05.
+
+Run: python3 -B scripts/verify_hex_trace_scalar_structure.py
+Contract: theory/HEX_TRACE_SCALAR_GATE.md. This checks Laurent identities
+and the Newton polygon of Delta, not universal scalar feasibility or the
+analytic divisibility theorem (proved in the companion report).
+"""
+import sympy as s
+
+
+def main():
+    z, w, a = s.symbols('z w a', nonzero=True)
+    checks = []
+
+    def record(name, ok):
+        checks.append(bool(ok))
+        print(f"[{'PASS' if checks[-1] else 'FAIL'}] {name}")
+
+    def c(i, j):
+        return (z**i*w**j + z**(-i)*w**(-j))/2
+
+    def equal(x, y):
+        return s.cancel(x-y) == 0
+
+    S1 = 2*(c(1, 0)+c(0, 1)+c(1, -1))
+    S2 = 2*(c(1, 1)+c(2, -1)+c(1, -2))
+    S3 = 2*(c(2, 0)+c(0, 2)+c(2, -2))
+    delta = (1-c(1, 0))*(1-c(0, 1))*(1-c(1, -1))/8
+    factor = -(z-1)**2*(w-1)**2*(z-w)**2/(64*z**2*w**2)
+    record("Delta exact Laurent factorization", equal(delta, factor))
+    record("Delta normal-line double factors", all(s.diff(s.cancel(delta), v, j).subs(v, val) == 0
+           for v, val in ((z, 1), (w, 1)) for j in (0, 1))
+           and equal(delta.subs(z, w), 0)
+           and equal(s.diff(delta, z).subs(z, w), 0))
+    # Reciprocal-coordinate maps induced by a 60-degree rotation and a reflection.
+    record("Delta is real/even and D6 invariant",
+           equal(delta.subs({z: 1/z, w: 1/w}, simultaneous=True), delta)
+           and equal(delta.subs({z: w, w: w/z}, simultaneous=True), delta)
+           and equal(delta.subs({z: 1/z, w: w/z}, simultaneous=True), delta))
+    poly = s.Poly(s.expand(s.cancel(delta*z**2*w**2)), z, w)
+    support = {(i-2, j-2) for (i, j), coeff in poly.terms() if coeff != 0}
+    vertices = {(2, 0), (0, 2), (-2, 2), (-2, 0), (0, -2), (2, -2)}
+    record("Delta Newton polygon is exactly the radius-two hexagon",
+           vertices <= support and all(max(abs(i), abs(j), abs(i+j)) <= 2 for i, j in support))
+    f0 = -s.Rational(1, 2)+S3/4
+    family = -s.Rational(1, 2)-3*a+a*S1-a*S2+(1+2*a)*S3/4
+    record("S19 family equals f0 - 32*a1*Delta", equal(family, f0-32*a*delta))
+    record("S19 forced candidate has residual coefficient 16/3",
+           equal(family.subs(a, -s.Rational(1, 6)), f0+s.Rational(16, 3)*delta))
+    print(f"{sum(checks)}/{len(checks)} exact checks passed")
+    return 0 if all(checks) else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
+
+=== DOCUMENT 3: 2026-11-05--hex-trace-scalar-structure-verifier.txt ===
+
+[PASS] Delta exact Laurent factorization
+[PASS] Delta normal-line double factors
+[PASS] Delta is real/even and D6 invariant
+[PASS] Delta Newton polygon is exactly the radius-two hexagon
+[PASS] S19 family equals f0 - 32*a1*Delta
+[PASS] S19 forced candidate has residual coefficient 16/3
+6/6 exact checks passed
+
+=== DOCUMENT 4: HEX_TRACE_SCALAR_GATE.md ===
+
+# HEX_TRACE_SCALAR — bounded scalar-method audit
+
+Date: 2026-11-05. Author: Codex (OpenAI).
+Authorization: user «autorizado, adelante», following the three-step proposal
+in this session: document the S19 trace proof, exact permanent verifier,
+bounded independent review, then investigate the sufficiency of scalar
+constraints under an explicit charter. This is a new contract, not an edit
+of the frozen HEX_SUPREMUM gate. Recorded before the new verifier is run
+and before investigating the general scalar question; no Git freeze commit
+is claimed. The S19 derivation was supplied by the user before this charter.
+
+## Known, question, abandonment
+
+Known: HEX_CEILING report Sec. 3 Step 1 gives facet-normal rigidity under
+saturation, for s=2, scalar node and traceless isotropic linear term.
+HEX_SUPREMUM B19 is promoted in CURRENT_STATE Sec. 14. The user supplied
+an alternative scalar derivation. S25 has a separate preliminary report;
+it is neither rerun nor promoted here.
+
+Question A: does the supplied scalar proof correctly reproduce S19?
+Abandon A if the necessary scalar reduction or its exact contradiction
+fails. A local verifier is not independent review.
+
+Question B: can bounded real, even, hexagonally symmetric finite Fourier
+polynomials satisfy all the normal-line cosines forced by saturation?
+Abandon the proposed *universal scalar obstruction* at the first exact
+compatible polynomial. This does not establish a unitary walk. An exact
+incompatibility for a bounded support is not a universal obstruction.
+
+## Domain and quantifiers
+
+Walk input: W_hex^sym as in HEX_SUPREMUM Sec. 2: s=2 unitary Laurent
+symbols on a triangular lattice, scalar node at zero (phase removed),
+traceless isotropic A(n), c0>0, regular centred hexagonal exact hull,
+maximum support radius 1. No product factorization is used for a gap.
+
+Scalar relaxation: for every nonzero lattice vector v, H_v is the regular
+hexagon with vertices R^j v, normalized by |v|. Frequencies belong to
+(Lambda/|v|) intersect H_v. A candidate f is real, even, invariant under
+the geometric dihedral group of H_v when that group preserves the
+frequency lattice, satisfies -1<=f<=1 and f(0)=1, and
+f(t n_j)=cos(sqrt(3)t/2) for all real t and all six unit facet normals.
+For rotated lattice hexagons whose reflections do not preserve Lambda,
+use C6 averaging only; do not silently enlarge the frequency lattice.
+The S19 argument uses its actual D6-invariant frequency lattice.
+
+## Method and finite budget
+
+A: independent exact orbit enumeration, Laurent coefficient comparison,
+trigonometric evaluations and a second contradiction point if available;
+all code remains in scripts/verify_hex_trace_s19.py. No numerical verdict.
+Write the analytic bridges explicitly. Review by revision-ciega from
+another model family: one initial round, at most one repair re-review.
+An operational failure is recorded and diagnosed, never counted as review.
+
+B: one bounded analytic session, no support-by-support solver campaign.
+First derive necessary consequences of scalar boundedness on saturated
+normal lines. Test an explicit construction only if there is an analytic
+reason to do so; exact checks in a permanent script. No nonlinear solver
+or numerical search is authorized by this contract. Stop with either an
+exact compatible polynomial, a general proof, or OPEN_AFTER_SCALAR_ANALYSIS
+with the remaining obstruction identified. Further work needs a new scope.
+
+## Outputs and evidence
+
+S19 report plus permanent verifier; sealed review input/output and author
+response. General report distinguishes analytic necessary conditions,
+scalar feasibility and unitary realizability. PRELIMINARY until independent
+review; promotion remains a separate user decision. No novelty claim,
+literature absence claim, uniform gap, general QCA law or extension to s>2.
+
+=== DOCUMENT 5: 2026-11-05--hex-trace-s19.md ===
+
+# S19: alternative scalar trace obstruction
+
+Date: 2026-11-05. Status: PRELIMINARY; INDEPENDENT_REVIEW_PASS_ONE_HOUSE;
+alternative proof not separately promoted. DeepSeek deepseek-v4-pro: PASS
+on all six blocks, no mandatory repairs, no code execution claimed.
+Sealed review: `debates/2026-11-05--hex-trace-s19-review-deepseek-network/`.
+The reviewed mathematical body below is unchanged; only this status header
+has been updated. See the verification record for the submitted hash.
+Derivation supplied by the user in this session; exposition and permanent
+exact verifier by Codex (OpenAI). No novelty claim. Existing S19 promotion
+and matrix certificate remain unchanged. Contract: HEX_TRACE_SCALAR_GATE.
+
+## 1. Scope and analytic bridge
+
+Let U be in W_hex^sym (HEX_SUPREMUM Sec. 2), with s=2, support F inside
+S19, exact hull the radius-one regular hexagon, scalar node at k=0 and
+traceless isotropic linear term A(n), A(n)^2=c0^2 |n|^2 I, c0>0.
+Remove the scalar phase so U(0)=I. Suppose c0=r=sqrt(3)/2.
+
+Known input: HEX_CEILING report Sec. 3 Step 1 gives on every facet normal
+n the identity U(t n)=exp(-irt)P_+(n)+exp(irt)P_-(n), with rank-one
+projectors. That step uses the hexagonal hull, unitarity, node and
+isotropy, not minimal support. We reuse that analytic rigidity, not the
+19-pivot certificate and not the scalar inequality alone.
+
+Set f(k)=Re Tr U(k)/2. Unitarity gives -1<=f<=1 and f(0)=1.
+Its even part and its D6 average, denoted fbar, retain these bounds.
+Taking the real part adds reflected frequencies; S19=-S19. D6 maps S19
+onto itself, hence averaging cannot enlarge it. Every transformed facet
+normal is another facet normal; all have the same trace cos(rt). Thus
+fbar retains this restriction. fbar need not be a unitary symbol's trace:
+only necessary scalar conditions are used.
+
+Write S19={(a*g1+b*g2)/2: max(|a|,|b|,|a+b|)<=2}, where
+g1=(1,0), g2=(1/2,sqrt(3)/2). This is the old radius-two lattice ball
+after radius-one normalization. Put p=k.g1/2, q=k.g2/2. Its three
+nonzero D6 orbits have representatives (1,0),(1,1),(2,0). Therefore
+
+    fbar = a0 + a1 S1 + a2 S2 + a3 S3,
+    S1 = 2[cos p + cos q + cos(p-q)],
+    S2 = 2[cos(p+q) + cos(2p-q) + cos(p-2q)],
+    S3 = 2[cos 2p + cos 2q + cos 2(p-q)].
+
+For the unit normal n=(0,1), k=t n gives p=0, q=sqrt(3)t/4,
+so rt=2q and fbar(0,q)=cos(2q). Other normal lines are q=0 and p=q.
+
+## 2. Exact contradiction
+
+At p=0 the three orbit sums are 2+4cos q,
+4cos q+2cos(2q), and 2+4cos(2q). Coefficient comparison yields
+
+    a2=-a1, a3=(1+2a1)/4, a0=-1/2-3a1.
+
+At P=(pi/3,2pi/3) the orbit sums are (1,-2,-3), so
+fbar(P)=-5/4-3a1/2. At Q=(2pi/3,4pi/3) they are (-3,6,-3), so
+fbar(Q)=-5/4-27a1/2. The lower bound at P forces a1<=-1/6;
+the upper bound at Q forces a1>=-1/6. Consequently
+
+    fbar=(S2+S3-S1)/6.
+
+At C=(3pi/5,3pi/10), direct trigonometric evaluation gives
+
+    fbar(C)=(2-sqrt(5)-sqrt(20+8sqrt(5)))/6 < -1:
+
+sqrt(5)>2 and 20+8sqrt(5)>36 prove the strict inequality.
+
+A second exact contradiction avoids nested radicals. On p=2q, put
+x=cos q. The same candidate is
+
+    (8x^4+8x^3-6x^2-8x+1)/3.
+
+At x=3/5 it is -1997/1875 < -1. The verifier checks this expression
+against the original trigonometric candidate. Either point suffices.
+
+Therefore c0<r for every walk in the stated S19 class, using also the
+already established ceiling c0<=r. This is pointwise non-attainment,
+not a uniform quantitative gap or a statement about all hexagonal supports.
+
+## 3. Verification and limits
+
+Run `python3 -B scripts/verify_hex_trace_s19.py`. The verifier enumerates
+the support and D6 orbits independently of the old matrix certificate,
+compares exact normal-layer coefficients, checks P/Q/C and the second
+contradiction. It imports no project verifier and uses no floating point.
+It does not mechanize the analytic unitarity/averaging/rigidity bridge.
+Execution record and sealed review are recorded separately after running.
+
+This proof omits the amplitude-level A3/A4 reduction and the positive
+definite 19-pivot certificate. It still depends on the reviewed normal-line
+rigidity. No conclusion is drawn for s>2, arbitrary supports, a uniform gap,
+literature novelty or the physical interpretation of c0.
