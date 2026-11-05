@@ -442,5 +442,17 @@ the T2 configuration, whose reviewed check is rerun (4/4); the M1-B19
 square controls are rerun (5/5).
 
 Does **not** certify: facet-line rigidity, lemma A1, the normal form, or
-the lattice-freeness of the T2 proof (reports). No nonlinear solver. Not
-independently reviewed.
+the lattice-freeness of the T2 proof (reports). No nonlinear solver.
+Review: local cross-family review by Codex (OpenAI), not blind, PASS,
+2026-11-05 (`debates/2026-11-05--ph-refutation-hex-s25-review-codex-local/`);
+promotion pending. The sealed Astra attempt has no verdict.
+
+`verify_hex_s25_review.py` (review-side supplement, author Codex, SHA-256
+`010fa7fb…6ac09b7a`). 13 exact checks, pure integer arithmetic, no project
+imports. Recomputes the H25 support (25 points, 6 vertices, exhaustive
+enumeration of `[-3,3]^2` justified by `a^2+ab+b^2 <= 7`), the three layer
+tables, the 18 singleton-forced points, the H25′ mirror orbit, and the
+contract Sec. 2 list of smaller centred lattice hexagons contained in H25
+(exactly S7, S13, S19), which the original verifier does not check.
+Does **not** certify: facet-line rigidity, lemma A1, the T2 theorem or
+its transport to H25. Not itself independently reviewed.

@@ -17,6 +17,10 @@ proof or exact certificate with universal quantifiers) or an exact
 globally bounded compatible candidate; one session of at most 90 minutes. OPEN; **execution
 authorized**; nothing computed.
 
+**Recorded late — 2026-11-05:** PH refutation test on H25 (Sec. 17),
+chartered `6eb50c1`, executed 2026-11-04: author verdict `PROVED_FOR_S25`,
+PRELIMINARY, one local non-blind Codex review (PASS); promotion pending.
+
 **Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
 frozen at `9bf3019` after two Grok rounds; a definitional audit of the
 provisional statement (PH) on the promoted rows, with no confirmatory
@@ -2771,4 +2775,35 @@ separate user decision.
 
 **S25 Astra review attempt:** recorded without verdict (`5512a96`,
 `SIN_DICTAMEN_CONSERVADO`; empty `run.out`, no report). Not a completed
-review.
+review. S25 itself is recorded in Sec. 17.
+
+## 17. PH refutation test on hexagon H25 — chartered 2026-11-04
+
+Recorded late (2026-11-05): this gate was chartered and executed on
+2026-11-04 without a CURRENT_STATE entry. It supersedes, for S25 only, the
+Sec. 14 sentence «S25 or any other extension needs a new charter (not
+authorized)»: that new charter is
+[`PH_REFUTATION_HEX_S25_GATE.md`](../theory/PH_REFUTATION_HEX_S25_GATE.md),
+preregistration commit `6eb50c1` (user approval «SI»).
+
+Execution (2026-11-04, `7e7bf7d`): [report](../reports/2026-11-04--ph-refutation-hex-s25.md),
+author Claude Code (Claude Opus 5.5); verifier
+`scripts/verify_ph_refutation_hex_s25_gate.py` (14/14, SHA256
+`ddf85386…`), importing the reviewed M1 and hex-ceiling verifiers read-only.
+Stage A lemma A1 removes the 18 non-vertex, non-origin points of H25 (and
+of its mirror H25′); the surviving support rotates onto the T2 minimal
+configuration (Sec. 12). Author verdicts: H25 `PROVED_FOR_S25`; (PH⇒)
+`NOT_REFUTED_ON_H25` (never `CONFIRMED`); HX2 `CONFIRMED_FOR_S25`. Scope:
+s=2, scalar node, traceless isotropic linear term, exact hull H25 or H25′,
+in `W_hex^sym` (hence `W_hex`); pointwise, no uniform gap, no proof of
+(PH), hexagonal class OPEN.
+
+Reviews: sealed Astra attempt without verdict (`5512a96`). Local review by
+Codex (OpenAI), cross-family, **not blind**, with repo access and prior
+context ([record](../debates/2026-11-05--ph-refutation-hex-s25-review-codex-local/revision_local_codex.md)):
+PASS, no mathematical repairs; it found that the original verifier does not
+check the contract Sec. 2 list of smaller contained hexagons and covered it
+with `scripts/verify_hex_s25_review.py` (13/13, SHA256 `010fa7fb…`; not
+needed for the exclusion with exact hull H25). Both verifiers rerun in this
+session at `5512a96`: 14/14 and 13/13. Status: **PRELIMINARY; one local
+non-blind cross-family review; promotion pending (user decision).**

@@ -15,3 +15,11 @@ Se conserva la carpeta como registro de procedencia, sin borrar ni
 modificar los archivos originales. Este registro no promueve S25 ni
 modifica CURRENT_STATE. Una nueva revisión necesitaría autorización
 explícita de envío; usaría otra carpeta para preservar este intento.
+
+Adenda 2026-11-05: el usuario solicitó una revisión local de Codex, sin
+envío. Está registrada por separado en
+`debates/2026-11-05--ph-refutation-hex-s25-review-codex-local/`
+(`revision_local_codex.md` y dos salidas), movida allí desde esta carpeta
+el 2026-11-05 por Claude Code a petición del usuario, sin cambiar su
+contenido; no es el informe ausente del intento sellado.
+Los archivos originales de aquel intento permanecen intactos.
