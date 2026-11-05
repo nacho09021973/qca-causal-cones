@@ -11,6 +11,12 @@ Opus 5.5 and Grok `grok-4.7`. Not promoted: the general aligned-m
 reduction, the S19 alternative proof, other radii or orientations; M1 class
 OPEN.
 
+**Gate chartered — 2026-11-05:** aligned hexagons, all m >= 4 (Sec. 16),
+frozen at `689fd30`; scalar incompatibility for every m >= 4 (analytic
+proof or exact certificate with universal quantifiers) or an exact
+globally bounded compatible candidate; one session of at most 90 minutes. OPEN; **execution
+authorized**; nothing computed.
+
 **Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
 frozen at `9bf3019` after two Grok rounds; a definitional audit of the
 provisional statement (PH) on the promoted rows, with no confirmatory
@@ -2745,3 +2751,24 @@ obstruction, any m >= 4, non-aligned hexagons (including S25, separate
 report and gate), M1 class (stays OPEN, Sec. 14), novelty. Any m >= 4 or
 all-m question needs a new charter (not authorized). Previous status:
 PRELIMINARY; INDEPENDENT_REVIEW_PASS_TWO_HOUSES; PROMOTION_PENDING.
+
+**All-m charter (2026-11-05):**
+[`HEX_TRACE_ALIGNED_ALL_M_GATE.md`](../theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md),
+preregistration commit `689fd30` (SHA256 `ca2e1788…c6906`). Draft by Codex
+(OpenAI); amended by Claude Opus 5.5 (m=1,2,3 results named with their
+class intersection; Markov/Bernstein prior art, `NOVELTY = OPEN`; slice
+`p = 2q` as first route, with the caveat that the free-polynomial
+relaxation is weaker than the actual problem). Frozen by user approval
+(«haz los tres el texto está bien»). Question: are the aligned scalar
+conditions incompatible for every m >= 4? Outcomes
+`SCALAR_INFEASIBLE_ALL_ALIGNED_M_GE4` / `SCALAR_COMPATIBLE_ALIGNED_M_<m>` /
+`OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`. One analytic session, at most 90
+minutes; no radius-by-radius sweep, no floating-point search, no nonlinear
+solver; finite checks of selected m are not a certificate. Status: OPEN;
+**execution authorized** (user instruction «AÑADELO», 2026-11-05); nothing
+computed. Review needs separate authorization to send; promotion is a
+separate user decision.
+
+**S25 Astra review attempt:** recorded without verdict (`5512a96`,
+`SIN_DICTAMEN_CONSERVADO`; empty `run.out`, no report). Not a completed
+review.
