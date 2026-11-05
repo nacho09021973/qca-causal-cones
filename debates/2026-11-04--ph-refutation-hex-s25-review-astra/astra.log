@@ -1,0 +1,3113 @@
+OpenAI Codex v0.166.0
+--------
+workdir: /tmp/tmp.gtGijglZir/sello
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1a6d7-fffe-7a13-a719-21e3ff2d5b06
+--------
+user
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente la prueba de refutación de (PH)
+en el hexágono H25, escrita por Claude (Anthropic): contrato
+theory/PH_REFUTATION_HEX_S25_GATE.md, verificador
+scripts/verify_ph_refutation_hex_s25_gate.py, informe
+reports/2026-11-04--ph-refutation-hex-s25.md y la salida completa del
+verificador. Se adjuntan los módulos importados (verify_hex_supremum_gate.py,
+verify_hex_supremum_b19.py, verify_hex_ceiling_gate.py,
+verify_c_across_lattices_gate.py), el informe de la etapa A de M1 (lema A1;
+argumento de que T2 no depende de la red), el informe hex-ceiling (rigidez en
+la recta de faceta, forma normal, T2), los contratos HEX_CEILING_GATE
+(clase W_hex), HEX_SUPREMUM_GATE y el de la fase 0 (dominio de PH y
+criterio de contraejemplo). Nada de lo escrito por Claude es premisa. No
+tienes herramientas: no ejecutes ni navegues. No propongas ampliar la
+investigación ni otros soportes.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / INSUFFICIENT_EVIDENCE:
+1. SOPORTE. ¿Certifica el verificador que H25 (vértice 2 g1 + g2) tiene 25
+   puntos, 6 vértices, ningún punto de red interior a una arista, y que H25′
+   es su imagen por una simetría de la red? ¿Es correcto que los únicos
+   hexágonos de red centrados dentro de H25 son S7, S13, S19, de modo que
+   sólo conv F = H25 (o H25′) es nuevo?
+2. CAPAS Y LEMA A1. ¿Es correcta la rejilla δ = r_in/7 y la tabla de tamaños
+   de capa? ¿Se sigue de la rigidez que cada capa intermedia suma 0 y, por
+   tanto, que un coeficiente en capa unitaria es 0? ¿Cubren las capas
+   unitarias exactamente los 18 puntos que no son origen ni vértice? ¿Es
+   correcta la segunda vía (resolución exacta de las ecuaciones de capa) y su
+   declaración de no independencia? ¿Afecta la simplificación de las
+   normales (radicales explícitos) a la Parte 2?
+3. REDUCCIÓN A T2. ¿Es lícito trasladar T2 a {0} ∪ vert(H25) mediante el
+   giro espacial conjunto con un giro de Bloch alrededor de z que conserva
+   A(n) = r n.σ? ¿Usa T2 sólo la geometría de los siete puntos, la
+   unitariedad, el nodo y la isotropía (lee check_T2_minimal)? ¿Cubre T2
+   cualquier walk s = 2 con F ⊆ {0} ∪ vert(H), sin forma de producto?
+4. CONTROLES. ¿Son pertinentes los controles del cuadrado de M1-B19 y
+   describe bien el informe su límite (A1 no tiene caso no trivial en el
+   cuadrado)?
+5. DICTÁMENES Y ALCANCE. ¿Son correctos PROVED_FOR_S25 (en W_hex^sym, luego
+   en W_hex), NOT_REFUTED_ON_H25 y CONFIRMED_FOR_S25? ¿Respeta el informe que
+   no es evidencia para (PH) fuera de H25 y que el patrón S13/H25 no se
+   afirma? ¿Hay algún walk con conv F = H25 que el argumento no cubra?
+
+Hasta 1500 palabras en español. Cada defecto: frase o línea exacta, por qué
+falla y qué lo cerraría. Distingue aclaración de error. Dictamen global PASS,
+REPAIR_REQUIRED o INSUFFICIENT_EVIDENCE y lista de reparaciones obligatorias;
+si no hay ninguna, dilo expresamente.
+
+=== DOCUMENT 1: PH_REFUTATION_HEX_S25_GATE.md ===
+
+# PH_REFUTATION_HEX_S25 — frozen contract
+
+**Frozen:** 2026-11-04, before solving. Nothing in Secs. 3–5 has been
+computed. Drafted by Claude Code (Claude Opus 5.5) at the user's
+instruction of 2026-11-04 («haz la prueba de refutación de PH»).
+**Authorization:** user approval of the draft, 2026-11-04, «SI», without
+changes. Reports cite the commit that adds this file as the
+preregistration commit.
+**Parents:** `SUBSTRATE_SATURATION_PHASE0_GATE.md` (`9bf3019`; Sec. 7: «a
+test that can fail needs its own contract, with a shape or support not in
+the source table»; the user's first choice is the hexagon) and
+`HEX_SUPREMUM_GATE.md` (M1; S13, S19 promoted, whole class OPEN, «S25 or any
+other extension needs a new charter»). This contract is that charter. It
+does not reopen S7, S13, S19 or Stage A of M1.
+**Initial scientific status: OPEN.**
+
+## 0. Pre-step check (rule of 2026-11-02)
+
+- **Known.** (PH) [UNVERIFIED] was read off the source table, so phase 0
+  cannot refute it (phase-0 Sec. 4). On the hexagonal substrate no walk of
+  `W_hex^sym` with `F` in S7, S13 or S19 reaches `r_in` (promoted, CS Secs.
+  12, 14). The regular hexagon is inside the phase-0 domain (`s = 2`,
+  declared class `W_hex`, admissible node), so an admissible hexagonal
+  saturating walk refutes (PH⇒).
+- **Question.** Does a walk of `W_hex` whose composite support has as hull
+  the next centred lattice hexagon, H25, reach `c_0 = r_in`?
+- **Result that ends the test.**
+  (a) an exact witness in `W_hex` (explicit product, Sec. 2): (PH⇒) is
+  **refuted** under phase-0 Sec. 4, once the witness is reviewed and
+  promoted;
+  (b) an exact gap proof for H25: `PROVED_FOR_S25`. This is a bounded
+  result. It is **not** evidence for (PH) beyond that support and does not
+  close the hexagonal class;
+  (c) budget exhausted: `OPEN_AFTER_<analysis>`, no numerics in the verdict.
+- **Why this can fail.** The support H25 is not in the source table, and its
+  outcome is not fixed before computing. Its geometry differs from S13 and
+  S19 (Sec. 2), so the earlier proofs do not carry over automatically.
+
+## 1. Single question
+
+> In `W_hex` (`s = 2`, triangular lattice), is there a walk with
+> `conv F = H25` and `c_0 = r_in(C_micro)`?
+
+## 2. Class and support
+
+`W_hex` and `W_hex^sym` exactly as in `HEX_CEILING_GATE.md` Sec. 1 and
+`HEX_SUPREMUM_GATE.md` Sec. 2. Gap direction: stated for `W_hex^sym`.
+Witness direction: must lie in `W_hex` (explicit product
+`C_n D_n(k) … C_1 D_1(k)`). A saturating symbol without a product
+factorization is reported as `CEILING_ATTAINED_IN_W_HEX_SYM_ONLY` and does
+**not** refute (PH): whether `W_hex^sym` is a declared class for phase 0 is
+a definitional question for the user, not decided here.
+
+**Support.** Centred regular lattice hexagons are `R^j v`, `v in Lambda`,
+`R` the 60° rotation (which preserves `Lambda`). H25: `v = 2 g_1 + g_2`,
+`|v| = sqrt7`. An author's inspection count (not a certificate) gives 25
+lattice points in the closed hull, against 7, 13, 19 for `v = g_1`,
+`g_1 + g_2`, `2 g_1`. The verifier certifies the count and the vertex set
+exactly. Facts to be certified, not assumed:
+
+- each edge of H25 contains no lattice point besides its two vertices
+  (edge vector `R v − v = −3 g_1 + 2 g_2`, coprime coordinates);
+- H25 is not mirror-symmetric under the lattice reflections; its mirror
+  image H25′ (`v = g_1 + 2 g_2`) is the other hexagon of the same norm. A
+  lattice reflection maps `W_hex` to itself and preserves `c_0` and
+  `r_in`, so H25′ is decided with H25; the verifier checks the map on the
+  reduced system;
+- walks with `F` inside H25 but hull S7, S13 or S19 have `F` inside that
+  smaller support (the only centred lattice hexagons inside H25), so they
+  are already decided. Only `conv F = H25` is new.
+
+## 3. Method, named before any computation
+
+As M1 (`HEX_SUPREMUM_GATE.md` Sec. 4), restated for H25, whose vertices are
+not at angles `k pi/3`: coordinates are rotated so that the normal form
+`A(n) = r_in n . sigma` of the hex-ceiling report Sec. 3, Step 2 applies;
+the rotation is part of the certified setup.
+
+- **Stage A (by hand, checked by the verifier).** Facet-line rigidity
+  (top edge sums to `P_+(n_f)`, bottom edge to `P_-(n_f)`, intermediate
+  layers to `0`) and the extreme-face identities
+  `E_e E_{−e}^dag = 0`, `E_{−e}^dag E_e = 0`. On H25 each edge polynomial
+  has two terms (the two vertices); the consequences are derived in the
+  report and checked exactly. If Stage A alone gives a gap for H25, stop
+  there with `PROVED_FOR_S25`.
+- **Stage B (exact decision).** Unknowns left after Stage A; equations:
+  layer equations, node, isotropy, unitarity. Accepted certificates as in
+  M1 Sec. 4 (i) or (ii) (`HEX_SUPREMUM_GATE_AMENDMENT_1.md` for (i)),
+  checked by the verifier without rerunning a solver. A Gröbner basis over
+  `C` other than `{1}` decides nothing. A witness is certified exactly
+  (unitarity, composite `F`, hull H25, node, isotropy, `c_0 = r_in`,
+  product factorization).
+- **Exploratory numerics** in a versioned script labelled exploratory may
+  guide the search for a witness or a certificate; no numerical result
+  enters a verdict, and no rigidity is inferred from a failed search.
+- **Controls.** As in M1: the reductions are run on the square substrate,
+  where they must keep the known saturating walk.
+
+## 4. Stop rules and budget
+
+- Budget: at most 3600 s of solver wall time **cumulative for H25** (H25′
+  by the reflection), however split; every run recorded with command,
+  wall time and exit code. A run cut by the budget is not evidence.
+- Stop at the first of: a certified witness (a); a certified gap (b);
+  budget exhausted (c).
+- Do not widen the class or the support during execution. No support beyond
+  H25, no `s > 2`, no other lattice.
+
+## 5. Verdicts
+
+- H25: `CEILING_ATTAINED_BY_EXPLICIT_WALK` (in `W_hex`) /
+  `CEILING_ATTAINED_IN_W_HEX_SYM_ONLY` / `PROVED_FOR_S25` /
+  `OPEN_AFTER_<analysis>`.
+- (PH⇒): `REFUTED_BY_H25_WITNESS` only after review and promotion of a
+  `W_hex` witness; otherwise `NOT_REFUTED_ON_H25` (never `CONFIRMED`).
+- HX2 of the hex-ceiling gate: `REFUTED_BY_<witness>` or
+  `CONFIRMED_FOR_S25`.
+
+## 6. Exclusions
+
+`s > 2`, masses, `V_grp^max`, inhomogeneous or encoded walks, other
+lattices or new substrate classes, general QCA laws, claims about our
+universe. No novelty claim (Bernstein's inequality and its equality case
+are prior art; the hexagonal prior-art check is not finished).
+
+## 7. Deliverables
+
+Report `reports/YYYY-MM-DD--ph-refutation-hex-s25.md`; verifier
+`scripts/verify_ph_refutation_hex_s25_gate.py` (fail-closed, exact, checks
+certificates; both exact command forms in `.claude/settings.json`); reviewed
+verifiers (`verify_hex_ceiling_gate.py`, `verify_hex_supremum_gate.py`,
+`verify_hex_supremum_b19.py`) imported read-only; exploratory scripts
+versioned and labelled; independent cross-family review with every
+imported module attached; promotion as a separate user decision.
+
+=== DOCUMENT 2: verify_ph_refutation_hex_s25_gate.py ===
+
+"""Exact checks for the PH_REFUTATION_HEX_S25 gate (hexagon H25).
+
+Contract: theory/PH_REFUTATION_HEX_S25_GATE.md, preregistered at 6eb50c1.
+Run from the repository root:
+
+  python3 -B scripts/verify_ph_refutation_hex_s25_gate.py
+
+Fail-closed, SymPy only, zero tolerance. Imports read-only the reviewed
+verify_hex_supremum_gate.py (hexagon, layers) and verify_hex_supremum_b19.py
+(linear reductions L1-L3, parametrization, unitarity equations, square
+controls); neither is modified.
+
+Stage A on H25 (v = 2 g1 + g2), certified here:
+- support: 25 lattice points, 6 vertices, r_in = sqrt3/2 after normalising
+  |v| = 1; no lattice point in the interior of an edge; the mirror image
+  H25' (v = g1 + 2 g2) is the image of H25 under a lattice reflection;
+- layers along the three facet normals lie on the grid delta = r_in / 7;
+  singleton intermediate layers (lemma A1 of the M1 Stage A report) force
+  their coefficients to vanish;
+- these singletons are exactly the 18 points other than the origin and the
+  vertices (second route: exact solution of the layer equations; not
+  independent of A1); the same holds directly on H25';
+- the surviving support {0} U vert(H25) is, after a rotation, the vertex set
+  of the minimal-support T2 of the hex-ceiling gate, whose reviewed check
+  is rerun unchanged (4/4);
+- the square-substrate controls of the M1-B19 verifier, rerun unchanged.
+What is not certified here: the analytic steps (facet-line rigidity, lemma
+A1, the normal form, and that the T2 proof uses only the geometry of the
+seven points), which are in the hex-ceiling and M1 reports and reused.
+No nonlinear solver is run.
+"""
+import sys
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_hex_supremum_gate as m1    # reviewed, read-only
+import verify_hex_supremum_b19 as b19    # reviewed, read-only
+
+CHECKS = []
+R3 = sp.sqrt(3)
+G1, G2 = m1.G1, m1.G2
+N25 = 7
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok)))
+    print(f"[{'PASS' if ok else 'FAIL'}] {label}" + (f" ({detail})" if detail else ""))
+
+
+def lattice_coords(p, scale):
+    """Integer coordinates (a, b) with p * scale = a g1 + b g2."""
+    M = sp.Matrix.hstack(G1, G2)
+    c = (M.inv() * (p * scale)).applyfunc(sp.nsimplify)
+    return tuple(int(x) for x in c) if all(x.is_integer for x in c) else None
+
+
+def check_support():
+    v = 2 * G1 + G2
+    pts, verts, normals, r = m1.hexagon(v)
+    L = sp.sqrt((v.T * v)[0])
+    record("H25: closed hexagon with vertex 2 g1 + g2 has 25 lattice points, 6 vertices, r_in = sqrt3/2",
+           len(pts) == 25 and len(verts) == 6 and sp.simplify(r - R3 / 2) == 0, f"{len(pts)} points")
+    vidx = [i for i, p in enumerate(pts) if any(m1.same(p, w) for w in verts)]
+    record("H25: all six vertices are lattice points of the support", len(vidx) == 6)
+    # edges: lattice points on the segment between consecutive vertices
+    interior = 0
+    for j in range(6):
+        a, b = verts[j], verts[(j + 1) % 6]
+        for i, p in enumerate(pts):
+            if i in vidx:
+                continue
+            cross = sp.simplify((b - a)[0] * (p - a)[1] - (b - a)[1] * (p - a)[0])
+            if cross == 0:
+                interior += 1
+    record("H25: no lattice point in the interior of an edge", interior == 0)
+    # mirror: reflection across the g1 axis composed with lattice map; image hexagon
+    pts2, verts2, _, _ = m1.hexagon(G1 + 2 * G2)
+    refl = sp.Matrix([[1, 0], [0, -1]])  # reflection y -> -y maps Lambda to Lambda
+    img = [(refl * p).applyfunc(sp.simplify) for p in pts]
+    in_lattice = all(lattice_coords(q, L) is not None for q in img)
+    same_set = len(pts2) == 25 and all(any(m1.same(q, p2) for p2 in pts2) for q in img)
+    record("H25': the reflection y -> -y (a symmetry of Lambda) maps H25 onto the hexagon with vertex g1 + 2 g2",
+           in_lattice and same_set)
+    return pts, verts, normals, r, vidx
+
+
+def singleton_layers(pts, normals, r):
+    forced, table = set(), []
+    for n in normals[:3]:
+        Ls = m1.layers(pts, n, r, N25)
+        if Ls is None:
+            return None, None
+        sizes = [len(Ls.get(m, [])) for m in range(N25, -N25 - 1, -1)]
+        table.append(sizes)
+        for m, idx in Ls.items():
+            if abs(m) < N25 and len(idx) == 1:
+                forced.update(idx)
+    return forced, table
+
+
+def second_route(pts, normals, r, forced):
+    """Generic coefficients on all points; the layer equations of facet-line
+    rigidity along the three normals, solved exactly, must force A_h = 0 on
+    the A1 set. Not independent of A1 (the layer equations contain it)."""
+    syms = []
+
+    def gen(k):
+        e = sp.symbols(f"a{k}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    A = [gen(k) for k in range(len(pts))]
+    lin = []
+    for n in normals[:3]:
+        Ls = m1.layers(pts, n, r, N25)
+        # explicit radicals: SymPy leaves cos(atan(sqrt3/5) + pi/6) unevaluated,
+        # and re()/im() of the projector entries are then not reduced
+        n = n.applyfunc(lambda x: sp.radsimp(sp.simplify(sp.expand_trig(x))))
+        Pp = (m1.I2 + n[0] * m1.SX + n[1] * m1.SY) / 2
+        Pm = (m1.I2 - n[0] * m1.SX - n[1] * m1.SY) / 2
+        for lev, idx in Ls.items():
+            target = Pp if lev == N25 else Pm if lev == -N25 else sp.zeros(2)
+            M = sum((A[i] for i in idx), sp.zeros(2)) - target
+            for e in M:
+                e = sp.expand(e)
+                lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    sol = sp.solve(lin, syms, dict=True)
+    return len(sol) == 1 and all(m1.hexg.base.is_zero_matrix(A[i].subs(sol[0])) for i in forced)
+
+
+def main():
+    print("== Part 1: support H25 (contract Sec. 2)")
+    pts, verts, normals, r, vidx = check_support()
+    print("== Part 2: layers and lemma A1 (contract Sec. 3, Stage A)")
+    forced, table = singleton_layers(pts, normals, r)
+    record("H25: on each of the three facet normals every projection is a multiple of delta = r_in/7",
+           forced is not None)
+    nsimp = [n.applyfunc(lambda x: sp.radsimp(sp.simplify(sp.expand_trig(x)))) for n in normals[:3]]
+    record("H25: the three facet normals are unit vectors (explicit radicals)",
+           all(sp.simplify(n[0] ** 2 + n[1] ** 2 - 1) == 0 for n in nsimp), str([list(n) for n in nsimp]))
+    for n, sizes in zip(normals[:3], table):
+        print(f"  normal {list(n)}: layer sizes from +7 to -7: {sizes}")
+    record("H25: the two extreme layers of each normal are the two vertices of an edge",
+           all(s[0] == 2 and s[-1] == 2 for s in table))
+    origin = [i for i, p in enumerate(pts) if m1.same(p, sp.zeros(2, 1))]
+    survivors = [i for i in range(len(pts)) if i not in forced]
+    print(f"  A1 forces A_h = 0 at {len(forced)} points; surviving support: {len(survivors)} points")
+    for i in survivors:
+        tag = "vertex" if i in vidx else "origin" if i in origin else "interior"
+        print(f"    {tag}: {list(pts[i])}, |h|^2 = {sp.simplify((pts[i].T * pts[i])[0])}")
+    nonvertex = [i for i in range(len(pts)) if i not in vidx and i not in origin]
+    record("H25 (A1): singleton intermediate layers cover every point other than the origin and the vertices",
+           forced == set(nonvertex) and len(forced) == 18)
+    record("H25 (second route, not independent of A1): exact solution of the layer equations on all 25 "
+           "points forces A_h = 0 on those 18 points", second_route(pts, normals, r, forced))
+    # The same analysis directly on the mirror hexagon H25' (instead of relying on the reflection).
+    pts2, verts2, normals2, r2 = m1.hexagon(G1 + 2 * G2)
+    forced2, table2 = singleton_layers(pts2, normals2, r2)
+    v2 = [i for i, p in enumerate(pts2) if any(m1.same(p, w) for w in verts2)]
+    o2 = [i for i, p in enumerate(pts2) if m1.same(p, sp.zeros(2, 1))]
+    record("H25' (direct): 25 points, and A1 forces A_h = 0 at every point other than the origin and the vertices",
+           len(pts2) == 25 and forced2 is not None
+           and forced2 == {i for i in range(25) if i not in v2 and i not in o2})
+    print("== Part 3: reduction to the minimal-support configuration of T2")
+    ang = sp.atan2(verts[0][1], verts[0][0])
+    t2 = [sp.Matrix([sp.cos(sp.pi * k / 3), sp.sin(sp.pi * k / 3)]) for k in range(6)]
+    rv = [(m1.rot(-ang) * w).applyfunc(sp.simplify) for w in verts]
+    record("H25: rotating the six vertices by -atan(sqrt3/5) gives the T2 vertex set (cos k pi/3, sin k pi/3)",
+           all(any(m1.same(p, q) for q in t2) for p in rv))
+    ang2 = sp.atan2(verts2[0][1], verts2[0][0])
+    rv2 = [(m1.rot(-ang2) * w).applyfunc(sp.simplify) for w in verts2]
+    record("H25': rotating its six vertices by minus the angle of its first vertex gives the T2 vertex set",
+           all(any(m1.same(p, q) for q in t2) for p in rv2))
+    before = len(m1.hexg.CHECKS)
+    m1.hexg.check_T2_minimal()
+    sub = m1.hexg.CHECKS[before:]
+    record("T2-min of the reviewed verify_hex_ceiling_gate.py, rerun unchanged: all its checks pass",
+           len(sub) == 4 and all(c[1] for c in sub), f"{sum(c[1] for c in sub)}/{len(sub)}")
+    print("== Part 4: controls (reviewed verify_hex_supremum_b19.py, read-only)")
+    before = len(b19.CHECKS)
+    b19.check_square_control()
+    b19.check_pipeline_square_control()
+    sub = b19.CHECKS[before:]
+    record("CONTROLS of the M1-B19 verifier on the square substrate, rerun unchanged: all pass "
+           "(the layer equations, of which A1 is the singleton case, keep the known saturating walk)",
+           len(sub) >= 5 and all(c[1] for c in sub), f"{sum(c[1] for c in sub)}/{len(sub)}")
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (PH refutation, H25, Stage A).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 3: 2026-11-04--ph-refutation-hex-s25.md ===
+
+# PH refutation test on hexagon H25
+
+**Date:** 2026-11-04. **Branch:** `research/schur-stability-audit`.
+**Contract:** [`PH_REFUTATION_HEX_S25_GATE.md`](../theory/PH_REFUTATION_HEX_S25_GATE.md),
+preregistration commit `6eb50c1` (user approval «SI»).
+**Author:** Claude Code (Claude Opus 5.5). **Verifier:**
+`scripts/verify_ph_refutation_hex_s25_gate.py`, 14/14, SHA-256
+`ddf853866d1e249b9de3689030e85d4477bfe310a6bf0b0cc7a22b3f8567e10e`, about
+30 s. It imports read-only `verify_hex_supremum_gate.py` (SHA-256
+`ef4b0114…`), `verify_hex_supremum_b19.py` (`244bb106…`) and, through them,
+`verify_hex_ceiling_gate.py` (`8f3b7a10…`). These are the hashes recorded
+in the M1 reports, so the files are unchanged.
+**Solver budget used:** 0 s of 3600 s (no nonlinear solver, no numerics).
+**Status: PRELIMINARY**, not independently reviewed, not promoted.
+
+**Pre-step check.** Known: no walk of `W_hex^sym` with `F` in S7, S13 or
+S19 reaches `r_in` (promoted). Question: does a walk with `conv F = H25`?
+Abandonment: if Stage A forced nothing beyond the layer sums, H25 would go to
+Stage B within the budget.
+
+## 1. Support (verifier, Part 1)
+
+H25 is the closed regular hexagon with vertex `v = 2 g_1 + g_2`. After
+normalising `|v| = 1` it has 25 lattice points, 6 vertices and
+`r_in = sqrt3/2`. No lattice point lies in the interior of an edge. The
+reflection `y -> −y`, a symmetry of `Lambda`, maps it onto H25′ (vertex
+`g_1 + 2 g_2`). H25′ is also checked directly below, so the reflection
+argument is not needed.
+
+## 2. Stage A: lemma A1 decides H25 (verifier, Part 2)
+
+The facet normals have explicit radicals, for example
+`(sqrt21/7, 2 sqrt7/7)`. Along each of the three normals the projections of
+the 25 points lie on the grid `delta = r_in/7`, levels −7..7. Layer sizes,
+top to bottom, are the same on every normal:
+
+`2, 1, 1, 2, 1, 2, 2, 3, 2, 2, 1, 2, 1, 1, 2`
+
+The extreme layers are the two vertices of an edge. Each normal has six
+singleton intermediate layers. By lemma A1 of the M1 Stage A report (from
+facet-line rigidity: every intermediate layer sums to 0), each singleton
+coefficient vanishes. Over the three normals the singletons are exactly
+the 18 points other than the origin and the six vertices.
+
+Second route (rule 4), not independent of A1: with generic coefficients on
+all 25 points, the exact solution of the full layer equations on the three
+normals forces those 18 coefficients to 0. The same singleton analysis run
+directly on H25′ gives the same result.
+
+So saturation forces `F within {0} U vert(H25)`.
+
+## 3. Reduction to T2 (verifier, Part 3)
+
+Rotating space by `−atan(sqrt3/5)` maps the six vertices of H25 onto
+`(cos k pi/3, sin k pi/3)`, the vertex set of the minimal-support T2 of the
+hex-ceiling gate; the same holds for H25′ with its own angle. As in the M1
+Stage A report (Sec. 3), the space rotation is done jointly with a Bloch
+rotation about `z`, so the normal form `A(n) = r n.sigma` is kept. The T2
+proof uses only the geometry of the seven points, unitarity, the node and
+isotropy, and the lattice never enters. Its reviewed check is rerun
+unchanged and passes 4/4: the layer equations force `A_0 = −I/2`, and
+unitarity then gives a real quadratic with discriminant `−1/12`, so there
+is no real solution.
+
+**Controls (Part 4).** The square-substrate controls of the M1-B19 verifier,
+rerun unchanged, pass 5/5: the layer equations, of which A1 is the
+singleton case, keep the known saturating square walk. A1 itself has no
+nontrivial instance on the square substrate (no singleton layer arises
+there), so this control tests the layer equations, not the singleton step
+as such.
+
+## 4. Verdicts (contract Sec. 5)
+
+- **H25: `PROVED_FOR_S25`.** No `s = 2` walk with `conv F = H25` or
+  `conv F = H25′` (in `W_hex^sym`, hence in `W_hex`) reaches
+  `c_0 = r_in`. The gap is qualitative; no bound below `r_in` is claimed.
+- **(PH⇒): `NOT_REFUTED_ON_H25`.** Never `CONFIRMED`.
+- **HX2: `CONFIRMED_FOR_S25`** (with S7, S13, S19).
+
+## 5. What this does and does not show
+
+- The test could have failed. H25 was not in the source table, and nothing
+  fixed the outcome before computing. It ended at Stage A through the same
+  mechanism as S13 (singleton layers leaving the T2 configuration), not
+  through a new argument.
+- **Bounded result.** Only H25 and H25′. The hexagonal class stays OPEN.
+  Per the contract this is not evidence for (PH) beyond H25, and it closes
+  nothing in phase 0.
+- **Pattern noted, not claimed.** S13 and H25 reduce to T2 by A1; S19 does
+  not (layers 3, 4, 5, 4, 3). Whether A1 decides every hexagon whose edges
+  have no interior lattice point is not examined here (no extension beyond
+  H25 is authorized).
+- No novelty claim. A1 is a direct use of the Bernstein equality case
+  (prior art). The hexagonal prior-art check is not finished.
+
+## 6. Next step
+
+Independent cross-family review, with every imported module attached, then a
+separate promotion (user decision).
+
+=== DOCUMENT 4: salida_verificador.txt ===
+
+== Part 1: support H25 (contract Sec. 2)
+[PASS] H25: closed hexagon with vertex 2 g1 + g2 has 25 lattice points, 6 vertices, r_in = sqrt3/2 (25 points)
+[PASS] H25: all six vertices are lattice points of the support
+[PASS] H25: no lattice point in the interior of an edge
+[PASS] H25': the reflection y -> -y (a symmetry of Lambda) maps H25 onto the hexagon with vertex g1 + 2 g2
+== Part 2: layers and lemma A1 (contract Sec. 3, Stage A)
+[PASS] H25: on each of the three facet normals every projection is a multiple of delta = r_in/7
+[PASS] H25: the three facet normals are unit vectors (explicit radicals) ([[sqrt(21)/7, 2*sqrt(7)/7], [-sqrt(21)/14, 5*sqrt(7)/14], [-3*sqrt(21)/14, sqrt(7)/14]])
+  normal [cos(atan(sqrt(3)/5) + pi/6), sin(atan(sqrt(3)/5) + pi/6)]: layer sizes from +7 to -7: [2, 1, 1, 2, 1, 2, 2, 3, 2, 2, 1, 2, 1, 1, 2]
+  normal [-sqrt(21)/14, 5*sqrt(7)/14]: layer sizes from +7 to -7: [2, 1, 1, 2, 1, 2, 2, 3, 2, 2, 1, 2, 1, 1, 2]
+  normal [-3*sqrt(21)/14, cos(atan(sqrt(3)/5) + pi/3)]: layer sizes from +7 to -7: [2, 1, 1, 2, 1, 2, 2, 3, 2, 2, 1, 2, 1, 1, 2]
+[PASS] H25: the two extreme layers of each normal are the two vertices of an edge
+  A1 forces A_h = 0 at 18 points; surviving support: 7 points
+    vertex: [-2*sqrt(7)/7, sqrt(21)/7], |h|^2 = 1
+    vertex: [-5*sqrt(7)/14, -sqrt(21)/14], |h|^2 = 1
+    vertex: [sqrt(7)/14, 3*sqrt(21)/14], |h|^2 = 1
+    origin: [0, 0], |h|^2 = 0
+    vertex: [-sqrt(7)/14, -3*sqrt(21)/14], |h|^2 = 1
+    vertex: [5*sqrt(7)/14, sqrt(21)/14], |h|^2 = 1
+    vertex: [2*sqrt(7)/7, -sqrt(21)/7], |h|^2 = 1
+[PASS] H25 (A1): singleton intermediate layers cover every point other than the origin and the vertices
+[PASS] H25 (second route, not independent of A1): exact solution of the layer equations on all 25 points forces A_h = 0 on those 18 points
+[PASS] H25' (direct): 25 points, and A1 forces A_h = 0 at every point other than the origin and the vertices
+== Part 3: reduction to the minimal-support configuration of T2
+[PASS] H25: rotating the six vertices by -atan(sqrt3/5) gives the T2 vertex set (cos k pi/3, sin k pi/3)
+[PASS] H25': rotating its six vertices by minus the angle of its first vertex gives the T2 vertex set
+[PASS] T2-min: along each facet normal the layers are {top edge, middle (2 vertices + 0), bottom edge}
+[PASS] T2-min: layer equations are consistent, with the X0 coefficient free
+[PASS] T2-min: layer equations force A_0 = -I/2
+  T2-min: Groebner element X0_6**2 - X0_6/2 + 1/12 = 0, discriminant -1/12
+[PASS] T2-min: unitarity + saturation imply a real quadratic with negative discriminant (no real solution): the ceiling is not attained with F in {0} U vert(H)
+[PASS] T2-min of the reviewed verify_hex_ceiling_gate.py, rerun unchanged: all its checks pass (4/4)
+== Part 4: controls (reviewed verify_hex_supremum_b19.py, read-only)
+[PASS] CONTROL square: the saturating walk satisfies the layer sums, A3 (L2) and the off-diagonal L3
+[PASS] CONTROL square: unitarity_equations of the unitary square walk are all identically 0
+[PASS] CONTROL square: a perturbed (non-unitary) coefficient is detected by unitarity_equations
+[PASS] CONTROL pipeline (3x3 square): the saturating walk lies in the L1+L2+L3 parametrized family (13 free parameters)
+[PASS] CONTROL pipeline (3x3 square): it satisfies every reduced unitarity equation (298 equations)
+[PASS] CONTROLS of the M1-B19 verifier on the square substrate, rerun unchanged: all pass (the layer equations, of which A1 is the singleton case, keep the known saturating walk) (5/5)
+14/14 checks passed (PH refutation, H25, Stage A).
+
+=== DOCUMENT 5: verify_hex_supremum_gate.py ===
+
+"""Exact checks for the HEX_SUPREMUM (M1) gate, Stage A and M1-B13.
+
+Contract: theory/HEX_SUPREMUM_GATE.md, preregistered at 86573ca.
+Run from the repository root:
+
+  python -B scripts/verify_hex_supremum_gate.py
+
+Fail-closed, SymPy only, zero tolerance. Imports read-only the reviewed
+verify_hex_ceiling_gate.py (its check_T2_minimal is rerun unchanged and its
+own check list is read); that file is not modified.
+
+What is certified here:
+- Supports: the closed regular lattice hexagons with vertex v = g1, g1+g2,
+  2 g1 contain exactly 7, 13, 19 lattice points (S7, S13, S19).
+- Layer structure along the three facet normals, after normalising the
+  longest vector to 1: every projection is an integer multiple of
+  delta = r_in / N; in S13 (N = 3) the layers +-2 delta are singletons and
+  together they are the six inner-ring points; in S19 (N = 2) no layer
+  strictly between the extremes is a singleton.
+- Second route for S13: generic coefficients on all 13 points, the layer
+  equations of facet-line saturation (top edge -> P_+(n), bottom edge ->
+  P_-(n), each intermediate layer -> 0) solved exactly force every
+  inner-ring coefficient to vanish.
+- The surviving S13 support {0} U vert is similar (rotation by -30 deg,
+  scale) to the configuration of check_T2_minimal, which is rerun here.
+What is not certified here: facet-line rigidity itself (Bernstein equality /
+Julia, hex-ceiling report Sec. 3, Step 1, prior art), the normal form
+A(n) = r n.sigma (Step 2), and the argument that the T2 proof is
+lattice-free (it uses only the geometry of the 7 points); these are in the
+report.
+"""
+import sys
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_hex_ceiling_gate as hexg  # reviewed, read-only
+
+CHECKS = []
+SX, SY, I2 = hexg.SX, hexg.SY, hexg.I2
+R3 = sp.sqrt(3)
+G1, G2 = hexg.G1, hexg.G2
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok)))
+    print(f"[{'PASS' if ok else 'FAIL'}] {label}" + (f" ({detail})" if detail else ""))
+
+
+def rot(a):
+    return sp.Matrix([[sp.cos(a), -sp.sin(a)], [sp.sin(a), sp.cos(a)]])
+
+
+def hexagon(v):
+    """Lattice points of the closed regular hexagon with vertices R^j v,
+    normalised so that |v| = 1. Returns (points, vertices, normals, r_in)."""
+    L = sp.sqrt((v.T * v)[0])
+    verts = [rot(sp.pi * j / 3) * v for j in range(6)]
+    ang = sp.atan2(v[1], v[0])
+    normals = [rot(ang + sp.pi / 6 + sp.pi * j / 3) * G1 for j in range(6)]
+    r = sp.simplify(L * R3 / 2)
+    pts = []
+    for a in range(-5, 6):
+        for b in range(-5, 6):
+            h = a * G1 + b * G2
+            if all(sp.simplify((h.T * n)[0] - r) <= 0 for n in normals):
+                pts.append(h)
+    s = 1 / L
+    return ([(p * s).applyfunc(sp.simplify) for p in pts],
+            [(w * s).applyfunc(sp.simplify) for w in verts],
+            [n.applyfunc(sp.simplify) for n in normals], sp.simplify(r * s))
+
+
+def layers(pts, n, r, N):
+    delta = r / N
+    out = {}
+    for i, p in enumerate(pts):
+        q = sp.nsimplify(sp.simplify((p.T * n)[0] / delta))
+        if not q.is_integer:
+            return None
+        out.setdefault(int(q), []).append(i)
+    return out
+
+
+def same(p, q):
+    return all(sp.simplify(x - y) == 0 for x, y in zip(p, q))
+
+
+def check_supports():
+    res = {}
+    for name, v, count in (("S7", G1, 7), ("S13", G1 + G2, 13), ("S19", 2 * G1, 19)):
+        pts, verts, normals, r = hexagon(v)
+        res[name] = (pts, verts, normals, r)
+        record(f"{name}: closed hexagon with vertex {list(v)} has {count} lattice points, r_in = sqrt3/2",
+               len(pts) == count and sp.simplify(r - R3 / 2) == 0, f"{len(pts)} points")
+    return res
+
+
+def check_S13(pts, verts, normals, r):
+    N = 3
+    inner = [i for i, p in enumerate(pts) if sp.simplify((p.T * p)[0] - sp.Rational(1, 3)) == 0]
+    vidx = [i for i, p in enumerate(pts) if any(same(p, w) for w in verts)]
+    origin = [i for i, p in enumerate(pts) if same(p, sp.zeros(2, 1))]
+    record("S13: 1 origin + 6 inner-ring points (|h| = 1/sqrt3) + 6 vertices",
+           len(origin) == 1 and len(inner) == 6 and len(vidx) == 6)
+    forced = set()
+    ok_grid, ok_single = True, True
+    lay3 = []
+    for n in normals[:3]:
+        L = layers(pts, n, r, N)
+        if L is None or set(L) != set(range(-N, N + 1)):
+            ok_grid = False
+            continue
+        lay3.append((n, L))
+        for lev in (2, -2):
+            if len(L[lev]) != 1 or L[lev][0] not in inner:
+                ok_single = False
+            forced.update(L[lev])
+        if sorted(len(L[k]) for k in (N, -N)) != [2, 2]:
+            ok_single = False
+    record("S13: along each facet normal all projections lie on the grid delta = r_in/3, levels -3..3", ok_grid)
+    record("S13: layers +-2 delta are singletons of inner-ring points; edges have 2 points", ok_single)
+    record("S13: the six singleton layers are exactly the inner ring (each such coefficient must vanish)",
+           forced == set(inner))
+
+    # Second route: generic coefficients, layer equations, exact linear solve.
+    syms = []
+
+    def gen(k):
+        e = sp.symbols(f"a{k}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    A = [gen(k) for k in range(len(pts))]
+    lin = []
+    for n, L in lay3:
+        Pp = (I2 + n[0] * SX + n[1] * SY) / 2
+        Pm = (I2 - n[0] * SX - n[1] * SY) / 2
+        for lev, idx in L.items():
+            target = Pp if lev == N else Pm if lev == -N else sp.zeros(2)
+            M = sum((A[i] for i in idx), sp.zeros(2)) - target
+            for e in M:
+                e = sp.expand(e)
+                lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    sol = sp.solve(lin, syms, dict=True)
+    ok = len(sol) == 1 and all(hexg.base.is_zero_matrix(A[i].subs(sol[0])) for i in inner)
+    record("S13 (second route): exact solution of the layer equations forces every inner-ring coefficient to 0", ok)
+
+    # The surviving support {0} U vert is similar to the T2 configuration.
+    t2 = [sp.Matrix([sp.cos(sp.pi * k / 3), sp.sin(sp.pi * k / 3)]) for k in range(6)]
+    rv = [(rot(-sp.pi / 6) * w).applyfunc(sp.simplify) for w in verts]
+    record("S13: rotating the six vertices by -30 deg gives the T2 vertex set (cos k pi/3, sin k pi/3)",
+           all(any(same(p, q) for q in t2) for p in rv))
+
+
+def check_S19(pts, verts, normals, r):
+    N = 2
+    sizes, ok_grid, singleton = [], True, False
+    for n in normals[:3]:
+        L = layers(pts, n, r, N)
+        if L is None or set(L) != set(range(-N, N + 1)):
+            ok_grid = False
+            continue
+        sizes.append([len(L[k]) for k in range(N, -N - 1, -1)])
+        singleton |= any(len(L[k]) == 1 for k in range(-N + 1, N))
+    record("S19: along each facet normal all projections lie on the grid delta = r_in/2, levels -2..2", ok_grid)
+    record("S19: layer sizes (top..bottom) are 3,4,5,4,3 on each normal; no intermediate singleton",
+           ok_grid and all(s == [3, 4, 5, 4, 3] for s in sizes) and not singleton, str(sizes))
+
+
+def check_T2_rerun():
+    before = len(hexg.CHECKS)
+    hexg.check_T2_minimal()
+    sub = hexg.CHECKS[before:]
+    record("T2-min of the reviewed verifier, rerun unchanged: all its checks pass",
+           len(sub) == 4 and all(c[1] for c in sub), f"{sum(c[1] for c in sub)}/{len(sub)}")
+
+
+def main():
+    print("== supports")
+    res = check_supports()
+    print("== S13: singleton layers")
+    check_S13(*res["S13"])
+    print("== S19: layer structure")
+    check_S19(*res["S19"])
+    print("== T2 minimal support (reviewed verifier, read-only)")
+    check_T2_rerun()
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (M1 Stage A, M1-B13).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 6: verify_hex_supremum_b19.py ===
+
+"""Exact structural reduction for M1-B19 of the HEX_SUPREMUM gate (S19).
+
+Contract: theory/HEX_SUPREMUM_GATE.md, preregistered at 86573ca; M1-B19
+authorized 2026-11-03 («Autorizar M1-B19 ... empezando exclusivamente por la
+reducción estructural»). Run from the repository root:
+
+  python -B scripts/verify_hex_supremum_b19.py
+
+Fail-closed, SymPy only, zero tolerance, no solver of the nonlinear system
+(this is Stage A-type reduction, not a budgeted solver run). Imports
+read-only the reviewed verify_hex_supremum_gate.py (hexagon, layers) and,
+through it, verify_hex_ceiling_gate.py; neither is modified.
+
+What is computed and certified here, for walks with F within S19 (19 points)
+and the normal form A(n) = r n.sigma:
+- L1, layer equations of facet-line rigidity on the three facet normals:
+  56 free real parameters left (as in the parent gate's 900 s attempt).
+- L2, first-moment equations (lemma A3 of the report): for each facet
+  normal n, edge direction e = Rot90(n), each layer m, and x_+/- the
+  +-eigenvectors of n.sigma: sum_{h in layer} (h.e) <x, A_h x> = 0.
+  28 free parameters left.
+- L3, off-diagonal first-order unitarity on the facet line (lemma A4):
+  sum_{h in m} (h.e) <x+, A_h x-> = sum_{h in -m} (h.e) conj<x-, A_h x+>.
+  18 free parameters left; L1 + L2 + L3 consistent.
+- Controls: the saturating square walk satisfies L1, L2, L3; the whole
+  pipeline on the 3x3 square support keeps that walk and all its reduced
+  unitarity equations vanish there; unitarity_equations is 0 on a unitary
+  walk and nonzero on a perturbed one.
+- The reduced S19 system (18 parameters, 730 quadratic equations) and an
+  exact real infeasibility certificate: rational multipliers c_i from
+  scripts/data/hex_s19_certificate.json (found by the exploratory
+  explore_hex_s19_certificate.py), p = sum c_i f_i, Gram matrix of p in the
+  basis (1, t) positive definite over QQ(sqrt3) by exact elimination (all
+  19 pivots > 0). Hence p > 0 on R^18 and no real solution exists.
+- S7 with L1 + L2 + L3 (informational; consistent, 1 free parameter).
+What is not certified here: the analytic proofs of rigidity, A3 and A4 and
+the normal form (report). Runtime about 11 minutes (the exact certificate
+expansion dominates).
+"""
+import sys
+from pathlib import Path
+
+import sympy as sp
+from sympy.polys.matrices import DomainMatrix
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_hex_supremum_gate as m1  # reviewed, read-only
+
+CHECKS = []
+SX, SY, I2 = m1.SX, m1.SY, m1.I2
+R3 = sp.sqrt(3)
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok)))
+    print(f"[{'PASS' if ok else 'FAIL'}] {label}" + (f" ({detail})" if detail else ""))
+
+
+def eigvecs(n):
+    """Unit +- eigenvectors of n.sigma for n in the xy plane at angle a."""
+    a = sp.atan2(n[1], n[0])
+    xp = sp.Matrix([1, sp.exp(sp.I * a)]) / sp.sqrt(2)
+    xm = sp.Matrix([1, -sp.exp(sp.I * a)]) / sp.sqrt(2)
+    return xp.applyfunc(sp.simplify), xm.applyfunc(sp.simplify)
+
+
+def unknowns(npts):
+    """Complex unknowns z (4 per point) and formal symbols w standing for
+    conj(z); equations are linear in (z, w) and split into real form in
+    (Re z, Im z) afterwards."""
+    zs, ws, A, Abar = [], [], [], []
+    for k in range(npts):
+        z = sp.symbols(f"z{k}_0:4")
+        w = sp.symbols(f"w{k}_0:4")
+        zs.extend(z)
+        ws.extend(w)
+        A.append(sp.Matrix([[z[0], z[1]], [z[2], z[3]]]))
+        Abar.append(sp.Matrix([[w[0], w[1]], [w[2], w[3]]]))
+    return zs, ws, A, Abar
+
+
+def linear_system(pts, normals, r, N, A, moments, Abar=None):
+    """Linear equations (expressions == 0) in z and, for L3, w = conj(z)."""
+    eqs = []
+    for n in normals:
+        L = m1.layers(pts, n, r, N)
+        Pp = (I2 + n[0] * SX + n[1] * SY) / 2
+        Pm = (I2 - n[0] * SX - n[1] * SY) / 2
+        e = sp.Matrix([-n[1], n[0]])
+        xp, xm = eigvecs(n)
+        for lev, idx in L.items():
+            target = Pp if lev == N else Pm if lev == -N else sp.zeros(2)
+            M = sum((A[i] for i in idx), sp.zeros(2)) - target
+            eqs += [sp.expand(x) for x in M]
+            if moments:
+                for x in (xp, xm):
+                    s_ = sum((sp.nsimplify((pts[i].T * e)[0]) * (x.H * A[i] * x)[0] for i in idx), 0)
+                    eqs.append(sp.expand(s_))
+            if Abar is not None:
+                # L3: off-diagonal anti-Hermiticity of D^dag d_e U on the line:
+                # sum_{h in lev} (h.e) <x+, A_h x-> = sum_{h in -lev} (h.e) conj<x-, A_h x+>
+                lhs = sum((sp.nsimplify((pts[i].T * e)[0]) * (xp.H * A[i] * xm)[0] for i in idx), 0)
+                rhs = sum((sp.nsimplify((pts[i].T * e)[0]) * (xm.T * Abar[i] * xp.conjugate())[0]
+                           for i in L.get(-lev, [])), 0)
+                eqs.append(sp.expand(lhs - rhs))
+    return [q for q in eqs if q != 0]
+
+
+def real_form(eqs, zs, ws):
+    """System C z + D conj(z) = b  ->  real system in (Re z, Im z)."""
+    n = len(zs)
+    CD, b = sp.linear_eq_to_matrix(eqs, list(zs) + list(ws))
+    rows = []
+    for i in range(CD.rows):
+        re_row, im_row = [], []
+        for j in range(n):
+            c, d = sp.expand(CD[i, j]), sp.expand(CD[i, n + j])
+            cr, ci = sp.expand(sp.re(c)), sp.expand(sp.im(c))
+            dr, di = sp.expand(sp.re(d)), sp.expand(sp.im(d))
+            re_row += [cr + dr, -ci + di]
+            im_row += [ci + di, cr - dr]
+        br, bi = sp.expand(sp.re(b[i])), sp.expand(sp.im(b[i]))
+        rows += [re_row + [br], im_row + [bi]]
+    return rows
+
+
+def rank_and_free(eqs, zs, ws):
+    rows = real_form(eqs, zs, ws)
+    nv = 2 * len(zs)
+    full = DomainMatrix.from_list_sympy(len(rows), nv + 1, rows, extension=True)
+    coef = DomainMatrix.from_list_sympy(len(rows), nv, [r_[:nv] for r_ in rows], extension=True)
+    rk, rka = coef.rank(), full.rank()
+    return rk, nv - rk, rka
+
+
+def parametrize(eqs, zs, ws, tname="t"):
+    """Solve the real linear system exactly over QQ<sqrt3>; return the real
+    and imaginary parts (P, Q) of each A_h as 2x2 matrices of affine forms in
+    the free real parameters t."""
+    rows = real_form(eqs, zs, ws)
+    nv = 2 * len(zs)
+    full = DomainMatrix.from_list_sympy(len(rows), nv + 1, rows, extension=True)
+    R, pivots = full.rref()
+    R = R.to_Matrix()
+    free = [j for j in range(nv) if j not in pivots]
+    t = sp.symbols(f"{tname}0:{len(free)}", real=True)
+    val = {}
+    for j, tj in zip(free, t):
+        val[j] = tj
+    for row, j in enumerate(pivots):
+        val[j] = sp.expand(R[row, nv] - sum(R[row, f] * val[f] for f in free))
+    P, Q = [], []
+    for k in range(len(zs) // 4):
+        P.append(sp.Matrix(2, 2, [val[2 * (4 * k + m)] for m in range(4)]))
+        Q.append(sp.Matrix(2, 2, [val[2 * (4 * k + m) + 1] for m in range(4)]))
+    return t, P, Q
+
+
+def unitarity_equations(pts, P, Q):
+    """Real polynomial equations of sum_{h-h'=d} A_h A_h'^dag = delta I and
+    sum_{h-h'=d} A_h'^dag A_h = delta I, with A = P + iQ."""
+    blocks = {}
+    for i, hi in enumerate(pts):
+        for j, hj in enumerate(pts):
+            d = tuple(sp.nsimplify(c) for c in (hi - hj))
+            b = blocks.setdefault(d, [sp.zeros(2) for _ in range(4)])
+            # A_i A_j^dag = (P_i P_j^T + Q_i Q_j^T) + i (Q_i P_j^T - P_i Q_j^T)
+            b[0] += P[i] * P[j].T + Q[i] * Q[j].T
+            b[1] += Q[i] * P[j].T - P[i] * Q[j].T
+            # A_j^dag A_i = (P_j^T P_i + Q_j^T Q_i) + i (P_j^T Q_i - Q_j^T P_i)
+            b[2] += P[j].T * P[i] + Q[j].T * Q[i]
+            b[3] += P[j].T * Q[i] - Q[j].T * P[i]
+    eqs = set()
+    for d, (re1, im1, re2, im2) in blocks.items():
+        target = I2 if all(c == 0 for c in d) else sp.zeros(2)
+        for M in (re1 - target, im1, re2 - target, im2):
+            for e in M:
+                e = sp.expand(e)
+                if e != 0:
+                    eqs.add(e)
+    return sorted(eqs, key=sp.default_sort_key)
+
+
+def gram_of(poly, t):
+    """Unique symmetric Gram matrix of a quadratic polynomial in the basis (1, t)."""
+    n = len(t)
+    G = sp.zeros(n + 1)
+    for mon, c in sp.Poly(poly, *t).terms():
+        nz = [i for i, p_ in enumerate(mon) if p_]
+        if not nz:
+            G[0, 0] += c
+        elif len(nz) == 1 and mon[nz[0]] == 1:
+            G[0, nz[0] + 1] += c / 2
+            G[nz[0] + 1, 0] += c / 2
+        elif len(nz) == 1:
+            G[nz[0] + 1, nz[0] + 1] += c
+        else:
+            i, j = nz
+            G[i + 1, j + 1] += c / 2
+            G[j + 1, i + 1] += c / 2
+    return G
+
+
+def positive_q3(x):
+    """Exact sign test for x = a + b sqrt3, a, b rational."""
+    x = sp.expand(x)
+    b_ = x.coeff(R3)
+    a_ = sp.expand(x - b_ * R3)
+    if not (a_.is_Rational and b_.is_Rational):
+        raise ValueError(f"not in Q(sqrt3): {x}")
+    if a_ >= 0 and b_ >= 0:
+        return a_ > 0 or b_ > 0
+    if a_ > 0 and b_ < 0:
+        return a_ ** 2 > 3 * b_ ** 2
+    if a_ < 0 and b_ > 0:
+        return 3 * b_ ** 2 > a_ ** 2
+    return False
+
+
+def ldl_pivots_positive(G):
+    """Gaussian elimination without pivoting over QQ<sqrt3>; a real symmetric
+    matrix is positive definite iff every pivot is positive (Sylvester)."""
+    dm = DomainMatrix.from_list_sympy(G.rows, G.cols, G.tolist(), extension=True)
+    K = dm.domain
+    a = [list(row) for row in dm.to_list()]
+    n = len(a)
+    pivots = []
+    for k in range(n):
+        pk = a[k][k]
+        if not positive_q3(K.to_sympy(pk)):
+            return False, k, K.to_sympy(pk)
+        pivots.append(pk)
+        for i in range(k + 1, n):
+            f = a[i][k] / pk
+            if f != K.zero:
+                for j in range(k, n):
+                    a[i][j] = a[i][j] - f * a[k][j]
+    return True, n, None
+
+
+def check_certificate(t, eqs, path):
+    """Exact real infeasibility certificate (contract Sec. 4 (ii) with
+    constant multipliers): p = sum_i c_i f_i with rational c_i read from
+    `path`; if the Gram matrix G of p in the basis (1, t) is positive
+    definite then p(t) = (1,t) G (1,t)^T > 0 for every real t, while every
+    f_i vanishes at a solution. In contract form: for 0 < mu <= 1/(G^-1)_00,
+    G - mu e0 e0^T is PSD, = L D L^T with D >= 0, so p = mu + sum_j d_j l_j^2
+    and -1 = sum_j (d_j/mu) l_j^2 + sum_i (-c_i/mu) f_i, a weighted sum of
+    squares with exact coefficients. The verifier checks G > 0 exactly, which
+    is what makes such a representation exist."""
+    import json
+    from fractions import Fraction
+    data = json.loads(Path(path).read_text())
+    c = [sp.Rational(Fraction(x).numerator, Fraction(x).denominator) for x in data["multipliers"]]
+    record("certificate file matches the equation list", data["n_equations"] == len(eqs) == len(c))
+    p = sp.expand(sum((ci * fi for ci, fi in zip(c, eqs) if ci != 0), sp.Integer(0)))
+    G = gram_of(p, t)
+    v = sp.Matrix([1] + list(t))
+    record("p equals (1,t) G (1,t)^T exactly", sp.expand((v.T * G * v)[0] - p) == 0)
+    ok, k, piv = ldl_pivots_positive(G)
+    record("CERTIFICATE: the Gram matrix of p = sum c_i f_i is positive definite over QQ(sqrt3) "
+           "(all 19 pivots > 0): p > 0 on R^18, so the reduced S19 system has no real solution",
+           ok, "all pivots positive" if ok else f"pivot {k} not positive: {piv}")
+
+
+def check_square_control():
+    """Square substrate: U = exp(-ik_x s_x) exp(-ik_y s_y) has coefficients
+    A_(hx,hy) = X_hx Y_hy at e^{-ik.h}, X_+-1 = (I +- s_x)/2,
+    Y_+-1 = (I +- s_y)/2; it saturates c_0 = r_in = 1 with A(n) = n.sigma.
+    Facet normals x, y. The walk must satisfy the layer sums and the
+    first-moment equations (A3)."""
+    X = {1: (I2 + SX) / 2, -1: (I2 - SX) / 2}
+    Y = {1: (I2 + SY) / 2, -1: (I2 - SY) / 2}
+    pts = [sp.Matrix([a, b]) for a in (1, -1) for b in (1, -1)]
+    A = [X[a] * Y[b] for a in (1, -1) for b in (1, -1)]
+    ok_sum = sp.simplify(sum(A, sp.zeros(2)) - I2) == sp.zeros(2)
+    ok = True
+    for n in (sp.Matrix([1, 0]), sp.Matrix([0, 1])):
+        e = sp.Matrix([-n[1], n[0]])
+        xp, xm = eigvecs(n)
+        Pp = (I2 + n[0] * SX + n[1] * SY) / 2
+        levels = {}
+        for i, p in enumerate(pts):
+            levels.setdefault((p.T * n)[0], []).append(i)
+        ok = ok and sp.simplify(sum((A[i] for i in levels[1]), sp.zeros(2)) - Pp) == sp.zeros(2)
+        for lev, idx in levels.items():
+            for x in (xp, xm):
+                s_ = sp.simplify(sum(((pts[i].T * e)[0] * (x.H * A[i] * x)[0] for i in idx), 0))
+                ok = ok and s_ == 0
+            lhs = sum(((pts[i].T * e)[0] * (xp.H * A[i] * xm)[0] for i in idx), 0)
+            rhs = sum(((pts[i].T * e)[0] * sp.conjugate((xm.H * A[i] * xp)[0]) for i in levels.get(-lev, [])), 0)
+            ok = ok and sp.simplify(lhs - rhs) == 0
+    record("CONTROL square: the saturating walk satisfies the layer sums, A3 (L2) and the off-diagonal L3",
+           ok_sum and ok)
+    P = [Ak.applyfunc(sp.re) for Ak in A]
+    Q = [Ak.applyfunc(sp.im) for Ak in A]
+    record("CONTROL square: unitarity_equations of the unitary square walk are all identically 0",
+           unitarity_equations(pts, P, Q) == [])
+    P[0] = P[0] + sp.Rational(1, 7) * I2
+    record("CONTROL square: a perturbed (non-unitary) coefficient is detected by unitarity_equations",
+           unitarity_equations(pts, P, Q) != [])
+
+
+def check_pipeline_square_control():
+    """Positive control of the whole reduction pipeline (L1 + L2 + L3,
+    parametrize, unitarity_equations) on the 3x3 square support, which, like
+    S19, has interior and edge-interior points: the known saturating walk
+    exp(-ik_x s_x) exp(-ik_y s_y) must lie in the parametrized family and
+    satisfy every reduced equation."""
+    pts = [sp.Matrix([a, b_]) for a in (-1, 0, 1) for b_ in (-1, 0, 1)]
+    normals = [sp.Matrix([1, 0]), sp.Matrix([0, 1])]
+    zs, ws, A, Abar = unknowns(len(pts))
+    e3 = linear_system(pts, normals, sp.Integer(1), 1, A, moments=True, Abar=Abar)
+    t, P, Q = parametrize(e3, zs, ws, tname="u")
+    X = {1: (I2 + SX) / 2, -1: (I2 - SX) / 2}
+    Y = {1: (I2 + SY) / 2, -1: (I2 - SY) / 2}
+    walk = [X[int(p_[0])] * Y[int(p_[1])] if p_[0] != 0 and p_[1] != 0 else sp.zeros(2) for p_ in pts]
+    match = []
+    for k in range(len(pts)):
+        match += list(P[k] - walk[k].applyfunc(sp.re)) + list(Q[k] - walk[k].applyfunc(sp.im))
+    match = [sp.expand(m) for m in match if sp.expand(m) != 0]
+    sol = sp.solve(match, t, dict=True) if match else [{}]
+    ok = len(sol) >= 1 and all(sp.expand(m.subs(sol[0])) == 0 for m in match)
+    record("CONTROL pipeline (3x3 square): the saturating walk lies in the L1+L2+L3 parametrized family",
+           ok, f"{len(t)} free parameters")
+    if ok:
+        eqs = unitarity_equations(pts, P, Q)
+        val = {ti: sol[0].get(ti, 0) for ti in t}
+        record("CONTROL pipeline (3x3 square): it satisfies every reduced unitarity equation",
+               all(sp.expand(e.subs(val)) == 0 for e in eqs), f"{len(eqs)} equations")
+
+
+def main():
+    pts, verts, normals, r = m1.hexagon(2 * m1.G1)
+    N = 2
+    normals = normals[:3]
+    record("S19: 19 points, r_in = sqrt3/2, three facet normals", len(pts) == 19 and sp.simplify(r - R3 / 2) == 0)
+    zs, ws, A, Abar = unknowns(len(pts))
+    e1 = linear_system(pts, normals, r, N, A, moments=False)
+    rk1, free1, rka1 = rank_and_free(e1, zs, ws)
+    print(f"  L1 (layer sums): rank {rk1}, free real parameters {free1} of {2 * len(zs)}")
+    record("L1 consistent", rka1 == rk1)
+    record("L1 leaves 56 free real parameters, as in the parent gate's attempt (hex-ceiling report Sec. 4)",
+           free1 == 56)
+    e2 = linear_system(pts, normals, r, N, A, moments=True)
+    rk2, free2, rka2 = rank_and_free(e2, zs, ws)
+    print(f"  L1 + L2 (with first moments): rank {rk2}, free real parameters {free2}")
+    record("L1 + L2 consistent (rank of augmented matrix equals rank)", rka2 == rk2)
+    record("L2 adds independent linear constraints beyond L1", rk2 > rk1, f"{rk2 - rk1} added")
+    record("L1 + L2 leave 28 free real parameters", free2 == 28)
+    e3 = linear_system(pts, normals, r, N, A, moments=True, Abar=Abar)
+    rk3, free3, rka3 = rank_and_free(e3, zs, ws)
+    print(f"  L1 + L2 + L3 (with off-diagonal first order): rank {rk3}, free real parameters {free3}")
+    record("L1 + L2 + L3 consistent", rka3 == rk3, f"rank {rk3}, augmented {rka3}")
+    check_square_control()
+    check_pipeline_square_control()
+    print("== S19 reduced system and exact certificate")
+    t, P, Q = parametrize(e3, zs, ws)
+    eqs = unitarity_equations(pts, P, Q)
+    record("reduced S19 system: 18 real parameters, 730 distinct quadratic equations",
+           len(t) == 18 and len(eqs) == 730)
+    check_certificate(t, eqs, ROOT / "scripts" / "data" / "hex_s19_certificate.json")
+    print("== S7 (minimal support, second route to T2)")
+    p7, v7, n7, r7 = m1.hexagon(m1.G1)
+    z7, w7, A7, B7 = unknowns(len(p7))
+    e7 = linear_system(p7, n7[:3], r7, 1, A7, moments=True, Abar=B7)
+    rk7, free7, rka7 = rank_and_free(e7, z7, w7)
+    print(f"  S7 with L1 + L2 + L3: rank {rk7}, augmented {rka7}, free real parameters {free7}")
+    record("S7: L1 + L2 + L3 computed (informational; T2 decides S7)", True,
+           "inconsistent" if rka7 > rk7 else f"consistent, {free7} free")
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (M1-B19 structural reduction).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 7: verify_hex_ceiling_gate.py ===
+
+"""Exact checks for the HEX_CEILING gate (L0 lattice-grid step and T1).
+
+Contract: theory/HEX_CEILING_GATE.md, preregistered at 8c56ced.
+Run from the repository root:
+
+  python -B scripts/verify_hex_ceiling_gate.py
+
+Fail-closed, SymPy only, zero tolerance. Reuses read-only helpers of the
+reviewed verify_c_across_lattices_gate.py (laurent_support, hull,
+node_speeds, nilpotent, is_zero_matrix); that file is not modified and its
+own check list is not used.
+
+What is certified here:
+- L0, grid step: for a lattice edge direction d of a triangular-lattice
+  polygon, h . Rot90(d) is an integer multiple of sqrt3/2 for every lattice
+  vector h, so the frequencies along a facet normal lie on a uniform grid
+  (the remaining step, the classical scalar Bernstein inequality, is prior
+  art and is applied in the report, not here).
+- T1 algebra, symbolic in the pairwise overlaps g_ij = t_i . t_j and the
+  orientation theta0: the traceless part of sum_ij g_ij a_i a_j^T vanishes
+  iff g_12 = g_13 = g_23; then c0_raw^2 = (3/2) l^2 (1 - g); the Gram matrix
+  is PSD iff -1/2 <= g <= 1; hence c0/r_in <= sqrt3/2 with equality iff
+  g = -1/2.
+- An explicit T1 walk with g = -1/2 (coplanar Bloch vectors at 120 deg),
+  built as a symbol and certified exactly: unitarity, F = {0, +-2 a_j},
+  regular hexagonal hull, node, isotropy, c0 = 3/4, c0/r_in = sqrt3/2;
+  and the ADMP overlaps g = 1/3 giving c0 = 1/2.
+What is not certified here: the reduction of a general n = 3 antipodal
+walk to the product form, the hull argument for all g, and the Bernstein
+step; these are in the report.
+"""
+import sys
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_c_across_lattices_gate as base  # reviewed, read-only
+
+CHECKS = []
+SX, SY, SZ, I2 = base.SX, base.SY, base.SZ, base.I2
+R3 = sp.sqrt(3)
+G1 = sp.Matrix([1, 0])
+G2 = sp.Matrix([sp.Rational(1, 2), R3 / 2])
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok)))
+    print(("[PASS] " if ok else "[FAIL] ") + label + (f" -- {detail}" if detail else ""))
+
+
+def cross(u, v):
+    return u[0] * v[1] - u[1] * v[0]
+
+
+def check_L0_grid():
+    p, q, a, b = sp.symbols("p q a b", integer=True)
+    d = p * G1 + q * G2
+    h = a * G1 + b * G2
+    rot = sp.Matrix([-d[1], d[0]])
+    value = sp.expand((h.T * rot)[0])
+    record("L0: h . Rot90(d) = (sqrt3/2)(b p - a q) for lattice h = a g1 + b g2, d = p g1 + q g2",
+           sp.simplify(value - R3 / 2 * (b * p - a * q)) == 0)
+
+
+def check_T1_algebra():
+    th, ell = sp.symbols("theta0 ell", positive=True)
+    g12, g13, g23, g = sp.symbols("g12 g13 g23 g", real=True)
+    a = [ell * sp.Matrix([sp.cos(th + 2 * sp.pi * j / 3), sp.sin(th + 2 * sp.pi * j / 3)]) for j in range(3)]
+    G = sp.Matrix([[1, g12, g13], [g12, 1, g23], [g13, g23, 1]])
+    M = sp.zeros(2, 2)
+    for i in range(3):
+        for j in range(3):
+            M += G[i, j] * a[i] * a[j].T
+    M = M.applyfunc(lambda e: sp.simplify(sp.expand_trig(e)))
+    traceless = M - M.trace() / 2 * sp.eye(2)
+    eqs = [sp.simplify(traceless[0, 0]), sp.simplify(traceless[0, 1])]
+    # linear in (g12, g13, g23); solve for all theta0
+    jac = sp.Matrix([[sp.diff(e, x) for x in (g12, g13, g23)] for e in eqs]).applyfunc(sp.simplify)
+    const = [sp.simplify(e.subs({g12: 0, g13: 0, g23: 0})) for e in eqs]
+    record("T1: traceless part is linear homogeneous in (g12, g13, g23)", all(c == 0 for c in const))
+    minor = sp.simplify(sp.expand_trig(jac[:, :2].det()))
+    record("T1: a 2x2 minor of the coefficient matrix equals the theta0-free constant "
+           "sqrt3 l^4/2, so the rank is 2 for every theta0 (repair R2, Grok 2026-11-02)",
+           sp.simplify(minor - R3 * ell ** 4 / 2) == 0, f"minor = {minor}")
+    null = jac * sp.Matrix([1, 1, 1])
+    record("T1: null space is spanned by (1,1,1): isotropy iff g12 = g13 = g23",
+           all(sp.simplify(e) == 0 for e in null))
+    Mg = M.subs({g12: g, g13: g, g23: g}).applyfunc(sp.simplify)
+    record("T1: at equal overlaps, sum g_ij a_i a_j^T = (3/2) l^2 (1 - g) I",
+           all(sp.simplify(e) == 0 for e in (Mg - sp.Rational(3, 2) * ell ** 2 * (1 - g) * sp.eye(2))))
+    Gg = G.subs({g12: g, g13: g, g23: g})
+    eig = Gg.eigenvals()
+    record("T1: Gram eigenvalues are 1 + 2g (once) and 1 - g (twice): PSD iff -1/2 <= g <= 1",
+           eig == {1 + 2 * g: 1, 1 - g: 2})
+    c0_raw = sp.sqrt(sp.Rational(3, 2) * (1 - g)) * ell
+    c0 = c0_raw / (2 * ell)          # longest step 2*ell
+    r_in = R3 / 2
+    ratio = sp.simplify(c0 / r_in)
+    record("T1: c0/r_in = sqrt(1 - g)/sqrt2, maximal at g = -1/2 with value sqrt3/2",
+           sp.simplify(ratio - sp.sqrt(1 - g) / sp.sqrt(2)) == 0 and sp.simplify(ratio.subs(g, -sp.Rational(1, 2)) - R3 / 2) == 0)
+    record("T1: sqrt3/2 < 1 (the ceiling is not reached in T1)", bool(R3 / 2 < 1))
+    record("T1: ADMP overlaps g = 1/3 give c0 = 1/2; g = -1/2 gives c0 = 3/4",
+           sp.simplify(c0.subs(g, sp.Rational(1, 3)) - sp.Rational(1, 2)) == 0
+           and sp.simplify(c0.subs(g, -sp.Rational(1, 2)) - sp.Rational(3, 4)) == 0)
+
+
+def t1_walk(tvecs):
+    """U(k) = prod_{j=3..1} exp(-i (k.a_j) tau_j), a_j = u_0, u_1, u_2 (unit,
+    120 deg), tau_j = t_j . sigma, as a Laurent symbol in z = exp(-i k.g)."""
+    zs = sp.symbols("z1:3")
+    u = [(1, 0), (-1, 1), (0, -1)]          # u_0, u_1, u_2 in (g1, g2)
+    factors = []
+    for (tx, ty, tz), uj in zip(tvecs, u):
+        tau = tx * SX + ty * SY + tz * SZ
+        plus, minus = (I2 + tau) / 2, (I2 - tau) / 2
+        factors.append(base.monomial(zs, uj) * plus + base.monomial(zs, base.neg(uj)) * minus)
+    return sp.expand(factors[2] * factors[1] * factors[0]), zs
+
+
+def check_witness():
+    tv = [(sp.cos(2 * sp.pi * j / 3), sp.sin(2 * sp.pi * j / 3), 0) for j in range(3)]
+    tv = [tuple(sp.nsimplify(x) for x in t) for t in tv]
+    overlaps = [sum(a * b for a, b in zip(tv[i], tv[j])) for i, j in ((0, 1), (0, 2), (1, 2))]
+    record("witness: Bloch vectors are unit, coplanar, pairwise overlap -1/2",
+           all(sp.simplify(sum(x ** 2 for x in t) - 1) == 0 for t in tv)
+           and all(sp.simplify(o + sp.Rational(1, 2)) == 0 for o in overlaps))
+    symbol, zs = t1_walk(tv)
+    adj = base.laurent_adjoint(symbol, zs)
+    record("witness: symbol is unitary", base.is_zero_matrix(sp.expand(symbol * adj) - I2))
+    support = base.laurent_support(symbol, zs)
+    expected = {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)}
+    record("witness: composite F = {0, +-2 u_j} (zero coefficient tolerated only at 0)",
+           set(support) - {(0, 0)} == expected - {(0, 0)})
+    gens = [(1, 0), (sp.Rational(1, 2), R3 / 2)]
+    keys = sorted(h for h in support)
+    cart = {h: (h[0] * G1 + h[1] * G2) for h in keys}
+    L = 2
+    pts = [(cart[h] / L).applyfunc(sp.radsimp) for h in keys]
+    facets, verts = base.hull(pts)
+    r_in = min(facets.values(), key=lambda x: float(x))
+    record("witness: hull is the regular hexagon (6 vertices, 6 facets, r_in = sqrt3/2)",
+           len(verts) == 6 and len(facets) == 6 and sp.simplify(r_in - R3 / 2) == 0)
+    record("witness: every vertex coefficient is non-nilpotent",
+           all(not base.nilpotent(support[keys[i]]) for i in verts))
+    at0, A, tilt, c2, iso, herm = base.node_speeds(symbol, zs, gens, L, -1, 2)
+    c0 = sp.radsimp(sp.sqrt(c2))
+    record("witness: U(0) = I, Hermitian untilted isotropic cone",
+           base.is_zero_matrix(at0 - I2) and herm and all(t == 0 for t in tilt) and iso)
+    record("witness: c0 = 3/4 and c0/r_in = sqrt3/2", c0 == sp.Rational(3, 4)
+           and sp.simplify(c0 / r_in - R3 / 2) == 0)
+
+
+def check_admp():
+    xi = sp.sqrt(5) / 3
+    tv = [(sp.Rational(2, 3), 0, xi), (-sp.Rational(1, 3), R3 / 3, xi), (-sp.Rational(1, 3), -R3 / 3, xi)]
+    overlaps = [sp.simplify(sum(a * b for a, b in zip(tv[i], tv[j]))) for i, j in ((0, 1), (0, 2), (1, 2))]
+    record("ADMP: tau_i of Eq. (5) have equal pairwise overlaps g = 1/3", overlaps == [sp.Rational(1, 3)] * 3)
+    symbol, zs = t1_walk(tv)
+    _, _, _, c2, iso, _ = base.node_speeds(symbol, zs, [(1, 0), (sp.Rational(1, 2), R3 / 2)], 2, -1, 2)
+    record("ADMP: product-form symbol gives isotropic c0 = 1/2 (matches Sec. 11 row L6a)",
+           iso and sp.radsimp(sp.sqrt(c2)) == sp.Rational(1, 2))
+
+
+def check_T2_minimal():
+    """Minimal-support subclass: F within {0} U vert(H), any s = 2 walk (no
+    product form assumed). WLOG (Bloch rotation, joint spatial/Bloch
+    rotation, scale): vertices v_k = (cos k pi/3, sin k pi/3), the isotropic
+    linear term A(n) = r n.sigma with n in the xy Bloch plane. Saturation
+    c_0 = r_in forces, along each facet normal n, U(t n) = e^{-irt} P_+ +
+    e^{irt} P_- (report, Bernstein equality / Julia), i.e. layer sums:
+    top edge -> P_+(n), bottom edge -> P_-(n), middle layer -> 0."""
+    v = [sp.Matrix([sp.cos(sp.pi * k / 3), sp.sin(sp.pi * k / 3)]) for k in range(6)]
+    normals = [sp.Matrix([sp.cos(a), sp.sin(a)]) for a in (sp.pi / 6, sp.pi / 2, 5 * sp.pi / 6)]
+    layers = []
+    for n in normals:
+        proj = [sp.nsimplify((vk.T * n)[0]) for vk in v]
+        top = [k for k in range(6) if proj[k] == R3 / 2]
+        bot = [k for k in range(6) if proj[k] == -R3 / 2]
+        mid = [k for k in range(6) if proj[k] == 0]
+        layers.append((top, bot, mid))
+    record("T2-min: along each facet normal the layers are {top edge, middle (2 vertices + 0), bottom edge}",
+           all(len(t) == 2 and len(b) == 2 and len(m) == 2 for t, b, m in layers)
+           and [l[0] for l in layers] == [[0, 1], [1, 2], [2, 3]])
+
+    def proj(n, sign):
+        return (I2 + sign * (n[0] * SX + n[1] * SY)) / 2
+    Pp = [proj(n, 1).applyfunc(sp.nsimplify) for n in normals]
+    Pm = [proj(n, -1).applyfunc(sp.nsimplify) for n in normals]
+    # generic unknown coefficients for the 6 vertices and the origin
+    syms = []
+    def gen(name):
+        e = sp.symbols(f"{name}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    X = [gen(f"X{k}") for k in range(6)]
+    Z = gen("Z")
+    lin = []
+    for (top, bot, mid), Pt, Pb in zip(layers, Pp, Pm):
+        for M in (X[top[0]] + X[top[1]] - Pt, X[bot[0]] + X[bot[1]] - Pb, X[mid[0]] + X[mid[1]] + Z):
+            for e in M:
+                e = sp.expand(e)
+                lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    x0 = syms[:8]
+    sol = sp.solve(lin, [s_ for s_ in syms if s_ not in x0], dict=True)
+    record("T2-min: layer equations are consistent, with the X0 coefficient free", len(sol) == 1)
+    sol = sol[0]
+    Zs = Z.subs(sol)
+    record("T2-min: layer equations force A_0 = -I/2", base.is_zero_matrix(Zs + I2 / 2))
+    Xs = [Xk.subs(sol) for Xk in X]
+    pts = [(v[k], Xs[k]) for k in range(6)] + [(sp.zeros(2, 1), Zs)]
+    eqs = set()
+    blocks = {}
+    for h1, A1 in pts:
+        for h2, A2 in pts:
+            d = tuple(sp.nsimplify(c) for c in (h1 - h2))
+            blocks.setdefault(d, [sp.zeros(2), sp.zeros(2)])
+            blocks[d][0] += A1 * A2.H
+            blocks[d][1] += A2.H * A1
+    for d, (m1, m2) in blocks.items():
+        target = I2 if all(c == 0 for c in d) else sp.zeros(2)
+        for M in (m1 - target, m2 - target):
+            for e in M:
+                e = sp.expand(e)
+                for part in (sp.expand(sp.re(e)), sp.expand(sp.im(e))):
+                    if part != 0:
+                        eqs.add(part)
+    G = sp.groebner(list(eqs), *x0, order="lex")
+    uni = [g for g in G.exprs if g.free_symbols == {x0[6]} and sp.degree(g, x0[6]) == 2]
+    ok = False
+    if uni:
+        a2, a1, a0 = sp.Poly(uni[0], x0[6]).all_coeffs()
+        disc = sp.simplify(a1 ** 2 - 4 * a2 * a0)
+        ok = bool(disc < 0)
+        print(f"  T2-min: Groebner element {uni[0]} = 0, discriminant {disc}")
+    record("T2-min: unitarity + saturation imply a real quadratic with negative discriminant "
+           "(no real solution): the ceiling is not attained with F in {0} U vert(H)", ok)
+
+
+def check_T2_square_control():
+    """Positive control for the saturation method: the square substrate
+    F within {0} U {(+-1,+-1)}, facet normals x and y, A(n) = r n.sigma.
+    The same layer + unitarity system must be consistent, and the known
+    saturating walk exp(-i k_x sigma_x) exp(-i k_y sigma_y) must solve it."""
+    verts = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+    syms = []
+    def gen(name):
+        e = sp.symbols(f"{name}_0:8", real=True)
+        syms.extend(e)
+        return sp.Matrix([[e[0] + sp.I * e[1], e[2] + sp.I * e[3]], [e[4] + sp.I * e[5], e[6] + sp.I * e[7]]])
+    X = {v: gen(f"Y{i}") for i, v in enumerate(verts)}
+    Z = gen("W")
+    Px, Pxm = (I2 + SX) / 2, (I2 - SX) / 2
+    Py, Pym = (I2 + SY) / 2, (I2 - SY) / 2
+    lin = []
+    for M in (X[(1, 1)] + X[(1, -1)] - Px, X[(-1, 1)] + X[(-1, -1)] - Pxm,
+              X[(1, 1)] + X[(-1, 1)] - Py, X[(1, -1)] + X[(-1, -1)] - Pym, Z):
+        for e in M:
+            e = sp.expand(e)
+            lin += [sp.expand(sp.re(e)), sp.expand(sp.im(e))]
+    free = syms[:8]
+    sol = sp.solve(lin, [s_ for s_ in syms if s_ not in free], dict=True)[0]
+    pts = [(sp.Matrix(v), X[v].subs(sol)) for v in verts] + [(sp.zeros(2, 1), Z.subs(sol))]
+    eqs = set()
+    blocks = {}
+    for h1, A1 in pts:
+        for h2, A2 in pts:
+            d = tuple(h1 - h2)
+            blocks.setdefault(d, [sp.zeros(2), sp.zeros(2)])
+            blocks[d][0] += A1 * A2.H
+            blocks[d][1] += A2.H * A1
+    for d, (m1, m2) in blocks.items():
+        target = I2 if all(c == 0 for c in d) else sp.zeros(2)
+        for M in (m1 - target, m2 - target):
+            for e in M:
+                e = sp.expand(e)
+                for part in (sp.expand(sp.re(e)), sp.expand(sp.im(e))):
+                    if part != 0:
+                        eqs.add(part)
+    G = sp.groebner(list(eqs), *free, order="lex")
+    record("CONTROL square: saturation system is consistent (Groebner basis != {1})", list(G.exprs) != [1])
+    # known walk: (cos kx - i sin kx sx)(cos ky - i sin ky sy), coefficient of shift (a,b)
+    # with z^h <-> exp(-i k.h): factor = z_x P_x^+ + z_x^{-1} P_x^-, same for y
+    known = Px * Py  # coefficient at (1,1) = P_x^+ P_y^+
+    vals = dict(zip(free, [sp.re(known[0, 0]), sp.im(known[0, 0]), sp.re(known[0, 1]), sp.im(known[0, 1]),
+                           sp.re(known[1, 0]), sp.im(known[1, 0]), sp.re(known[1, 1]), sp.im(known[1, 1])]))
+    record("CONTROL square: the saturating walk exp(-ik_x s_x) exp(-ik_y s_y) solves it",
+           all(sp.simplify(e.subs(vals)) == 0 for e in eqs))
+
+
+def main():
+    print("== L0 grid step")
+    check_L0_grid()
+    print("== T1 algebra")
+    check_T1_algebra()
+    print("== T1 witness at g = -1/2")
+    check_witness()
+    print("== T1 consistency with ADMP")
+    check_admp()
+    print("== T2, minimal-support subclass F in {0} U vert(H)")
+    check_T2_minimal()
+    print("== positive control on the square substrate")
+    check_T2_square_control()
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (L0 grid step, T1, T2 minimal support).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 8: verify_c_across_lattices_gate.py ===
+
+"""Exact checks for the C_ACROSS_LATTICES gate.
+
+Contract: theory/C_ACROSS_LATTICES_GATE.md, preregistered at 30672ba.
+Run from the repository root:
+
+  python -B scripts/verify_c_across_lattices_gate.py
+
+Fail-closed: any failed check or exception exits nonzero. SymPy only, zero
+tolerance, no sampling or fitting.
+
+Part 1: for each new row (L5a, L5b, L6a, L6c-L6f) build the exact Bloch
+symbol of one complete update from the source equations, check unitarity
+and the source identities used, and assert the composite step set F and
+the index of the translation group it generates. Row L6b is reported as
+not encoded (see SOURCE_GAPS).
+Part 2: massless node at k = 0; asserts r_in, c_0, vertex count and
+C_infty^strict = C_micro for L1, L2 and the new rows against EXPECTED_*.
+Part 3: massive rows; asserts the exact first-order Gram matrix and the
+theta-independent curvature correction K against EXPECTED_*, plus a
+positive control on the reviewed 1D Dirac block. ADMP mass is OPEN.
+Every tabulated value of the report is asserted by record(); nothing in
+the table rests on a print alone (repair 1 of the 2026-11-01 Grok review).
+
+Conventions (frozen in the contract, Sec. 2):
+- moving amplitude by displacement h carries the phase exp(-i k.h); an
+  operator that reads the value at X+v therefore moves amplitude by -v;
+- in every product the factor with the smallest index acts first (for the
+  prod_j notation of JDW Eqs. (2), (8) this is a declared reading; the
+  linear cone does not depend on it, but K and vertex coefficients may);
+- lattice vectors are written as integer combinations of two (or three)
+  generators g; the Laurent variable z_i stands for exp(-i k.g_i).
+"""
+import hashlib
+import sys
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+CONTRACT = ROOT / "theory/C_ACROSS_LATTICES_GATE.md"
+SOURCES = {
+    "1312.2852v1": None,
+    "1802.03910v1": None,
+    "1803.01015v2": "1d1de6058787437bb712448af11dd6b57d83f73fbe6cb7e6dffd242a45f8a570",
+    "1803.01304v1": "9fa0ea34763b4dd01fe2c38d699ecf5358b98b6b1582381f95330c84eb90ff90",
+}
+
+I2 = sp.eye(2)
+SX = sp.Matrix([[0, 1], [1, 0]])
+SY = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+SZ = sp.Matrix([[1, 0], [0, -1]])
+PROJ_L = sp.Matrix([[1, 0], [0, 0]])
+PROJ_R = sp.Matrix([[0, 0], [0, 1]])
+
+CHECKS = []
+SOURCE_GAPS = {
+    "L6b": "ADMP Eq. (12) p.4 places spinors on triangle edges with a "
+           "white/grey triangulation whose geometry is fixed only by Fig. 1, "
+           "not by the text; the edge-midpoint lattice and the routing "
+           "e(v,k) cannot be encoded exactly from the equations. The source "
+           "states equivalence with L6a over three updates; not verified.",
+}
+
+
+R2, R3 = sp.sqrt(2), sp.sqrt(3)
+EXPECTED_F = {
+    "L6a": {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)},
+    "L6c": {(a, b) for a in range(-2, 3) for b in range(-2, 3) if max(abs(a), abs(b), abs(a + b)) <= 2},
+    "L6d": {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)},
+    "L6e": {(-2, 0), (0, -2), (0, 2), (2, 0)},
+    "L6f": {(-2, 1), (-1, -1), (-1, 2), (0, 0), (1, -2), (1, 1), (2, -1)},
+}
+EXPECTED_INDEX = {"L5a": 4, "L5b": 4, "L6a": 4, "L6c": 1, "L6d": 4, "L6e": 4, "L6f": 3}
+EXPECTED_MASSLESS = {  # label: (r_in, c_0, number of vertices)
+    "L1": (1, 1, 2), "L2": (R2 / 2, R2 / 2, 4),
+    "L5a": (R3 / 3, R3 / 3, 8), "L5b": (R3 / 3, R3 / 3, 8),
+    "L6a": (R3 / 2, sp.Rational(1, 2), 6), "L6c": (R3 / 2, sp.Rational(3, 4), 6),
+    "L6d": (R3 / 2, sp.Rational(3, 4), 6), "L6e": (R2 / 2, R2 / 2, 4),
+    "L6f": (R3 / 2, sp.Rational(3, 4), 6),
+}
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok), detail))
+    print(("[PASS] " if ok else "[FAIL] ") + label + (f" -- {detail}" if detail else ""))
+
+
+def is_zero_matrix(matrix):
+    return all(sp.simplify(sp.radsimp(sp.expand(entry))) == 0 for entry in matrix)
+
+
+def u2(alpha, xi, zeta, theta):
+    """JDW Eq. (1), 1803.01304v1 p.1."""
+    return sp.exp(sp.I * alpha) * sp.Matrix([
+        [sp.exp(sp.I * xi) * sp.cos(theta), sp.exp(sp.I * zeta) * sp.sin(theta)],
+        [-sp.exp(-sp.I * zeta) * sp.sin(theta), sp.exp(-sp.I * xi) * sp.cos(theta)],
+    ])
+
+
+def monomial(zs, displacement):
+    return sp.prod([z ** int(a) for z, a in zip(zs, displacement)])
+
+
+def neg(v):
+    return tuple(-a for a in v)
+
+
+def laurent_adjoint(matrix, zs):
+    """Adjoint on the unit torus: conjugate coefficients, z -> 1/z."""
+    sub = {sp.conjugate(z): 1 / z for z in zs}
+    return matrix.applyfunc(lambda e: sp.conjugate(sp.expand(e)).subs(sub)).T
+
+
+def laurent_support(matrix, zs, bound=8):
+    """Displacements h (integer generator coordinates) with nonzero
+    coefficient matrix, for a symbol written with z^h <-> exp(-i k.h)."""
+    shift = sp.prod([z ** bound for z in zs])
+    coefficients = {}
+    for r in range(matrix.rows):
+        for c in range(matrix.cols):
+            expr = sp.expand(shift * matrix[r, c])
+            if expr == 0:
+                continue
+            poly = sp.Poly(expr, *zs)
+            for powers, coeff in poly.terms():
+                h = tuple(p - bound for p in powers)
+                coefficients.setdefault(h, sp.zeros(matrix.rows, matrix.cols))
+                coefficients[h][r, c] += coeff
+    return {h: m for h, m in coefficients.items() if not is_zero_matrix(m)}
+
+
+def check_unitary(label, symbol, zs):
+    product = sp.expand(symbol * laurent_adjoint(symbol, zs))
+    record(f"{label}: symbol is unitary (U U^dagger = I on |z|=1)",
+           is_zero_matrix(product - sp.eye(symbol.rows)))
+
+
+def lattice_index(vectors):
+    """|det| of the integer lattice spanned by integer vectors in Z^d,
+    relative to the generator lattice (1 = they generate all of it)."""
+    d = len(vectors[0])
+    m = sp.Matrix(vectors).T
+    hnf_rank = m.rank()
+    if hnf_rank < d:
+        return 0
+    from sympy.matrices.normalforms import smith_normal_form
+    snf = smith_normal_form(m, domain=sp.ZZ)
+    return sp.prod([abs(snf[i, i]) for i in range(d)])
+
+
+def report_row(label, support, generators):
+    cart = {h: sum((a * sp.Matrix(g) for a, g in zip(h, generators)),
+                   sp.zeros(len(generators[0]), 1)) for h in support}
+    lengths = {h: sp.sqrt(sum(x ** 2 for x in v)) for h, v in cart.items()}
+    longest = max(lengths.values(), key=lambda x: float(x))
+    nonzero = [h for h in support if any(h)]
+    index = lattice_index(nonzero) if nonzero else 0
+    print(f"  {label}: |F| = {len(support)}, contains 0: {tuple([0]*len(generators)) in support}")
+    for h in sorted(support):
+        v = cart[h]
+        print(f"    h={h}  cart={tuple(sp.nsimplify(x) for x in v)}  |h|={sp.nsimplify(lengths[h])}")
+    print(f"    longest |h| = {sp.nsimplify(longest)}; index of <F> in generator lattice = {index}")
+    return cart, longest, index
+
+
+# ---------------------------------------------------------------- L5a
+def row_L5a():
+    """Farrelly-Short 1312.2852v1 Eqs. (20)-(21) p.4-5:
+    U_D = T_x T_y T_z, T_b = S_b |up_b><up_b| + S_b^dagger |down_b><down_b|,
+    S_b shifts by +1 along b. 'U_D = T_x T_y T_z' as an operator product
+    means T_z acts first."""
+    zs = sp.symbols("z1:4")
+    paulis = (SX, SY, SZ)
+    T = []
+    for b in range(3):
+        up = (I2 + paulis[b]) / 2
+        down = (I2 - paulis[b]) / 2
+        e = [0, 0, 0]
+        e[b] = 1
+        T.append(monomial(zs, e) * up + monomial(zs, neg(e)) * down)
+    symbol = sp.expand(T[0] * T[1] * T[2])
+    check_unitary("L5a", symbol, zs)
+    support = laurent_support(symbol, zs)
+    gens = [(1, 0, 0), (0, 1, 0), (0, 0, 1)]
+    report_row("L5a", support, gens)
+    expected = {(a, b, c) for a in (-1, 1) for b in (-1, 1) for c in (-1, 1)}
+    record("L5a: composite step set is {+-1}^3 (BCC, as the source remarks)",
+           set(support) == expected)
+    return symbol, zs, support, gens
+
+
+# ---------------------------------------------------------------- L5b
+def row_L5b():
+    """Mlodinow-Brun 1802.03910v1 Eq. (23) p.5, massless (theta = 0):
+    U = (S_X P_X^+ + S_X^dag P_X^-)(S_Y ...)(S_Z ...), with
+    Delta P_i = P_i^+ - P_i^- mutually anticommuting involutions and a coin
+    Q anticommuting with all three (Eqs. (25)-(27) p.6, p.7), so the four
+    generate the irreducible complex Clifford representation on C^4. A
+    concrete choice is fixed here; Q is used only to check that choice."""
+    zs = sp.symbols("z1:4")
+    kron = sp.kronecker_product
+    dP = (kron(SX, SX), kron(SX, SY), kron(SX, SZ))
+    Q = kron(SZ, I2)
+    gens4 = list(dP) + [Q]
+    ok = all(is_zero_matrix(g * g - sp.eye(4)) for g in gens4) and all(
+        is_zero_matrix(gens4[i] * gens4[j] + gens4[j] * gens4[i])
+        for i in range(4) for j in range(i + 1, 4))
+    record("L5b: Delta P_X,Y,Z and Q are mutually anticommuting involutions on C^4", ok)
+    T = []
+    for b in range(3):
+        e = [0, 0, 0]
+        e[b] = 1
+        plus = (sp.eye(4) + dP[b]) / 2
+        minus = (sp.eye(4) - dP[b]) / 2
+        T.append(monomial(zs, e) * plus + monomial(zs, neg(e)) * minus)
+    symbol = sp.expand(T[0] * T[1] * T[2])
+    check_unitary("L5b", symbol, zs)
+    support = laurent_support(symbol, zs)
+    gens = [(1, 0, 0), (0, 1, 0), (0, 0, 1)]
+    report_row("L5b", support, gens)
+    expected = {(a, b, c) for a in (-1, 1) for b in (-1, 1) for c in (-1, 1)}
+    record("L5b: composite step set is {+-1}^3 (BCC)", set(support) == expected)
+    return symbol, zs, support, gens
+
+
+# ---------------------------------------------------------------- L6a
+def row_L6a():
+    """ADMP 1803.01015v2 p.3, massless: Eq. (7) with M = I,
+    prod_{i=0}^{2} U_i^dag T_i U_i = prod_i sum_s Pi_i^s T(i, s eps),
+    Pi_i^s the eigenprojectors of tau_i (Eq. (5)), T(i, s eps) the
+    translation by s u_i (u_i Eq. (4)). Factor i = 0 acts first, as in
+    Eq. (10). Lattice coordinates: g1 = u_0 = (1,0), g2 = (1/2, sqrt3/2),
+    so u_0 -> (1,0), u_1 -> (-1,1), u_2 -> (0,-1)."""
+    xi = sp.sqrt(5) / 3
+    tau = [sp.Rational(2, 3) * SX + xi * SZ,
+           -sp.Rational(1, 3) * SX + sp.sqrt(3) / 3 * SY + xi * SZ,
+           -sp.Rational(1, 3) * SX - sp.sqrt(3) / 3 * SY + xi * SZ]
+    record("L6a: tau_i are involutions (Eq. (5) C1)",
+           all(is_zero_matrix(t * t - I2) for t in tau))
+    px, py = sp.symbols("p_x p_y", real=True)
+    pis = [sp.cos(2 * sp.pi * i / 3) * px + sp.sin(2 * sp.pi * i / 3) * py for i in range(3)]
+    record("L6a: sum_i tau_i pi_i = p_x sigma_x + p_y sigma_y (C2)",
+           is_zero_matrix(sum((t * p for t, p in zip(tau, pis)), sp.zeros(2)) - px * SX - py * SY))
+    record("L6a: sum_i tau_i = sqrt5 sigma_z (Eq. (5))",
+           is_zero_matrix(tau[0] + tau[1] + tau[2] - sp.sqrt(5) * SZ))
+    zs = sp.symbols("z1:3")
+    u = [(1, 0), (-1, 1), (0, -1)]
+    factors = []
+    for i in range(3):
+        plus = (I2 + tau[i]) / 2
+        minus = (I2 - tau[i]) / 2
+        factors.append(monomial(zs, u[i]) * plus + monomial(zs, neg(u[i])) * minus)
+    symbol = sp.expand(factors[2] * factors[1] * factors[0])
+    check_unitary("L6a", symbol, zs)
+
+    # Encoded form Eq. (10): W T2 W T1 W T0 with W = U0 S U0^dag (M = I),
+    # U0 = R_y(alpha) = exp(-i alpha sigma_y/2), S = e^{i pi/3} R_z(2pi/3).
+    S = (sp.exp(sp.I * sp.pi / 3) * sp.diag(sp.exp(-sp.I * sp.pi / 3), sp.exp(sp.I * sp.pi / 3))
+         ).applyfunc(lambda e: sp.expand_complex(sp.expand(e)))  # radicals: diag(1, e^{2 pi i/3})
+    record("L6a: S cubes to the identity (p.3)", is_zero_matrix(S ** 3 - I2))
+    signs = {}
+    # Half-angle radicals of alpha = sign*arccos(sqrt5/3), so that every
+    # entry is a real radical and .H simplifies exactly.
+    c_half = sp.sqrt((1 + sp.sqrt(5) / 3) / 2)
+    s_half = sp.sqrt((1 - sp.sqrt(5) / 3) / 2)
+
+    def ry(sign):
+        return sp.Matrix([[c_half, -sign * s_half], [sign * s_half, c_half]])
+
+    for sign in (1, -1):
+        U0 = ry(sign)
+        signs[sign] = is_zero_matrix(U0 * tau[0] * U0.H - SZ)
+    print(f"  L6a: sigma_z = R_y(alpha) tau_0 R_y(alpha)^dag holds for "
+          f"alpha=+arccos(sqrt5/3): {signs[1]}, alpha=-arccos(sqrt5/3): {signs[-1]}")
+    record("L6a: SOURCE SIGN ISSUE recorded: Eq. (8) holds for alpha = -arccos(sqrt5/3) "
+           "only, not the printed +arccos(sqrt5/3)", (not signs[1]) and signs[-1])
+    U0 = ry(1 if signs[1] else -1)
+    printed = [U0, U0 * S, U0 * S * S]
+    printed_ok = all(is_zero_matrix(Ui.H * SZ * Ui - t) for Ui, t in zip(printed, tau))
+    swapped = is_zero_matrix(printed[1].H * SZ * printed[1] - tau[2])
+    print(f"  L6a: with the printed S, U_i^dag sigma_z U_i = tau_i: {printed_ok}; "
+          f"U_0 S gives tau_2 instead: {swapped}")
+    record("L6a: SOURCE SIGN ISSUE recorded: printed S orders the tau_i backwards",
+           (not printed_ok) and swapped)
+    S = S.H  # use S^{-1}; Eq. (5) with C1-C2 is the primary definition
+    Us = [U0, U0 * S, U0 * S * S]
+    record("L6a: with S^{-1}, tau_i = U_i^dag sigma_z U_i for i = 0, 1, 2",
+           all(is_zero_matrix(Ui.H * SZ * Ui - t) for Ui, t in zip(Us, tau)))
+    W = U0 * S * U0.H
+    Tp = [monomial(zs, ui) * PROJ_L + monomial(zs, neg(ui)) * PROJ_R for ui in u]
+    encoded = sp.expand(W * Tp[2] * W * Tp[1] * W * Tp[0])
+    # Eq. (7) -> (10): U_{i+1} U_i^dag = W and U_2^dag = U_0^dag W (S^3 = I),
+    # hence prod_i U_i^dag T_i U_i = U_0^dag (W T2 W T1 W T0) U_0.
+    record("L6a: Eq. (7) symbol = U_0^dag (Eq. (10) symbol) U_0 exactly",
+           is_zero_matrix(sp.expand(U0 * symbol * U0.H) - encoded))
+    support = laurent_support(symbol, zs)
+    gens = [(1, 0), (sp.Rational(1, 2), sp.sqrt(3) / 2)]
+    report_row("L6a", support, gens)
+    return symbol, zs, support, gens
+
+
+# ---------------------------------------------------------------- JDW
+def jdw_shift(zs, read_L, read_R):
+    """(S Psi)(X) = (psi^L(X+read_L), psi^R(X+read_R)): L moves by -read_L."""
+    return monomial(zs, neg(read_L)) * PROJ_L + monomial(zs, neg(read_R)) * PROJ_R
+
+
+TRI = [None, (1, 0), (0, 1), (-1, 1), (-1, 0), (0, -1), (1, -1)]  # X1..X6, g1=(1,0), g2=(1/2,sqrt3/2)
+TRI_GENS = [(1, 0), (sp.Rational(1, 2), sp.sqrt(3) / 2)]
+
+
+def row_L6c():
+    """JDW 1803.01304v1 Eq. (2) p.2: W0 = prod_{j=1}^{6} W_j,
+    W_j = R_j^{-1} U_j S_j R_j, U_j = 1, R_j = U(0, pi/2, 0, pi/12+(j-1)pi/6),
+    R_j^{-1} = U(0, -pi/2, 0, -pi/12-(j-1)pi/6); S_j reads L at N_j, R at
+    N_{j+1}. W_1 acts first."""
+    zs = sp.symbols("z1:3")
+    symbol = sp.eye(2)
+    for j in range(1, 7):
+        R = u2(0, sp.pi / 2, 0, sp.pi / 12 + (j - 1) * sp.pi / 6)
+        Rinv = u2(0, -sp.pi / 2, 0, -sp.pi / 12 - (j - 1) * sp.pi / 6)
+        if j == 1:
+            record("L6c: R_j^{-1} as printed is the inverse of R_j", is_zero_matrix(Rinv * R - I2))
+        Sj = jdw_shift(zs, TRI[j], TRI[j % 6 + 1])
+        symbol = sp.expand(Rinv * Sj * R * symbol)
+    check_unitary("L6c", symbol, zs)
+    support = laurent_support(symbol, zs)
+    report_row("L6c", support, TRI_GENS)
+    return symbol, zs, support, TRI_GENS
+
+
+def row_L6d():
+    """JDW Eq. (4) p.2: W~0 = R~2^{-1} U3 S~3 R~2 R~1^{-1} U2 S~2 R~1 U1 S~1,
+    R~j = U(0, pi/2, 0, j pi/6), U_j = 1, S~j reads L at N_j, R at N_{j+3}."""
+    zs = sp.symbols("z1:3")
+    Rt = {j: u2(0, sp.pi / 2, 0, j * sp.pi / 6) for j in (1, 2)}
+    Rti = {j: u2(0, -sp.pi / 2, 0, -j * sp.pi / 6) for j in (1, 2)}
+    record("L6d: R~j^{-1} as printed are the inverses",
+           all(is_zero_matrix(Rti[j] * Rt[j] - I2) for j in (1, 2)))
+    St = {j: jdw_shift(zs, TRI[j], TRI[j + 3]) for j in (1, 2, 3)}
+    symbol = sp.expand(Rti[2] * St[3] * Rt[2] * Rti[1] * St[2] * Rt[1] * St[1])
+    check_unitary("L6d", symbol, zs)
+    support = laurent_support(symbol, zs)
+    report_row("L6d", support, TRI_GENS)
+    return symbol, zs, support, TRI_GENS
+
+
+ISO = [None, (1, -1), (1, 0), (0, 1), (-1, 1), (-1, 0), (0, -1)]  # g1=(1/2,1/2), g2=(-1/2,1/2)
+ISO_GENS = [(sp.Rational(1, 2), sp.Rational(1, 2)), (-sp.Rational(1, 2), sp.Rational(1, 2))]
+
+
+def row_L6e():
+    """JDW Eq. (6) p.2: W^0 = W^3 W^2 W^1, W^j = U^j S^j,
+    U^j = U(0, 0, -pi/2, (j-2) pi/4), S^j reads L at N_j, R at N_{j+3};
+    isosceles neighbours X1..X6 of p.2."""
+    zs = sp.symbols("z1:3")
+    symbol = sp.eye(2)
+    for j in (1, 2, 3):
+        Uj = u2(0, 0, -sp.pi / 2, (j - 2) * sp.pi / 4)
+        symbol = sp.expand(Uj * jdw_shift(zs, ISO[j], ISO[j + 3]) * symbol)
+    check_unitary("L6e", symbol, zs)
+    support = laurent_support(symbol, zs)
+    report_row("L6e", support, ISO_GENS)
+    return symbol, zs, support, ISO_GENS
+
+
+HEX = [None, (1, 0), (-1, 1), (0, -1)]  # X1..X3 of p.2 in TRI generators
+
+
+def row_L6f():
+    """JDW Eqs. (7)-(8) p.2: W0 = prod_{j=1}^{3} W_j, W_j = U_j^{-1} S_j U_j,
+    U_j = U(0, pi/2, 0, pi/6+(j-1)pi/3); S_1 reads (N1,N2), S_2 (N2,N3),
+    S_3 (N3,N1). W_1 acts first."""
+    zs = sp.symbols("z1:3")
+    reads = {1: (1, 2), 2: (2, 3), 3: (3, 1)}
+    symbol = sp.eye(2)
+    for j in (1, 2, 3):
+        Uj = u2(0, sp.pi / 2, 0, sp.pi / 6 + (j - 1) * sp.pi / 3)
+        Uji = u2(0, -sp.pi / 2, 0, -sp.pi / 6 - (j - 1) * sp.pi / 3)
+        a, b = reads[j]
+        symbol = sp.expand(Uji * jdw_shift(zs, HEX[a], HEX[b]) * Uj * symbol)
+    check_unitary("L6f", symbol, zs)
+    support = laurent_support(symbol, zs)
+    report_row("L6f", support, TRI_GENS)
+    return symbol, zs, support, TRI_GENS
+
+
+
+# ================================================================ Part 2
+# Massless geometry and speeds at the declared node k = 0.
+#
+# Normalisation (contract Sec. 2): Cartesian positions divided by the longest
+# |h| in F, one complete update per time unit. U(k) is obtained from the
+# Laurent symbol by z_j = exp(sigma * i * k.g_j / L), sigma = -1 for the
+# symbols built above (z <-> exp(-i k.g)) and +1 for the published standard
+# symbols (z = exp(i k)). Signs of nonzero algebraic numbers are decided by
+# SymPy's exact relational evaluation on radicals; zero tests are symbolic.
+
+def positive(x):
+    v = sp.radsimp(sp.simplify(x))
+    if v == 0:
+        return 0
+    return 1 if bool(v > 0) else -1
+
+
+def hull(points):
+    """Facets (unit outward normal, distance) and vertex set of conv(points),
+    for points spanning R^d with the origin in the interior."""
+    import itertools
+    d = points[0].rows
+    facets = {}
+    for combo in itertools.combinations(range(len(points)), d):
+        base = points[combo[0]]
+        if d == 1:
+            normal = sp.Matrix([1])
+        else:
+            diff = sp.Matrix([list((points[i] - base).T) for i in combo[1:]])
+            ns = diff.nullspace()
+            if len(ns) != 1:
+                continue
+            normal = ns[0]
+        offset = (normal.T * base)[0]
+        if offset == 0 or positive(offset) == 0:
+            continue
+        if positive(offset) < 0:
+            normal, offset = -normal, -offset
+        if all(positive(offset - (normal.T * q)[0]) >= 0 for q in points):
+            norm = sp.sqrt((normal.T * normal)[0])
+            unit = (normal / norm).applyfunc(lambda e: sp.radsimp(sp.simplify(e)))
+            facets[tuple(unit)] = sp.radsimp(sp.simplify(offset / norm))
+    verts = []
+    for idx, q in enumerate(points):
+        on = [sp.Matrix(n) for n, dist in facets.items()
+              if positive((sp.Matrix(n).T * q)[0] - dist) == 0]
+        if on and sp.Matrix.hstack(*on).rank() == d:
+            verts.append(idx)
+    return facets, verts
+
+
+def node_speeds(symbol, zs, gens, scale, sigma, dim):
+    k = sp.symbols(f"k1:{dim + 1}", real=True)
+    subs = {}
+    for z, g in zip(zs, gens):
+        phase = sum((k[a] * g[a] for a in range(dim)), 0) / scale
+        subs[z] = sp.exp(sigma * sp.I * phase)
+    U = symbol.subs(subs)
+    at0 = U.subs({ka: 0 for ka in k}).applyfunc(lambda e: sp.radsimp(sp.simplify(e)))
+    s_dim = symbol.rows
+    A = [(sp.I * U.diff(ka)).subs({kb: 0 for kb in k}).applyfunc(
+        lambda e: sp.radsimp(sp.simplify(sp.expand_complex(e)))) for ka in k]
+    tilt = [sp.simplify(Ai.trace() / s_dim) for Ai in A]
+    T = [Ai - t * sp.eye(s_dim) for Ai, t in zip(A, tilt)]
+    c2 = sp.radsimp(sp.simplify((T[0] * T[0])[0, 0]))
+    iso = all(is_zero_matrix(T[a] * T[a] - c2 * sp.eye(s_dim)) for a in range(dim)) and all(
+        is_zero_matrix(T[a] * T[b] + T[b] * T[a]) for a in range(dim) for b in range(a + 1, dim))
+    herm = all(is_zero_matrix(Ai - Ai.H) for Ai in A)
+    return at0, A, tilt, c2, iso, herm
+
+
+def nilpotent(m):
+    return is_zero_matrix(m ** m.rows)
+
+
+def analyse(label, symbol, zs, support, gens, sigma, results):
+    dim = len(gens[0])
+    cart = {h: sum((a * sp.Matrix(g) for a, g in zip(h, gens)), sp.zeros(dim, 1)) for h in support}
+    L = max((sp.sqrt((v.T * v)[0]) for v in cart.values()), key=lambda x: float(x))
+    L = sp.radsimp(sp.simplify(L))
+    keys = sorted(support)
+    pts = [(cart[h] / L).applyfunc(sp.radsimp) for h in keys]
+    facets, verts = hull(pts)
+    r_in = min(facets.values(), key=lambda x: float(x))
+    at0, A, tilt, c2, iso, herm = node_speeds(symbol, zs, gens, L, sigma, dim)
+    record(f"{label}: U(0) = I (node at k = 0, all quasienergies 0)", is_zero_matrix(at0 - sp.eye(symbol.rows)))
+    record(f"{label}: linear generators i dU/dk_a(0) are Hermitian", herm)
+    record(f"{label}: no tilt at the node (trace parts vanish)", all(t == 0 for t in tilt))
+    record(f"{label}: isotropic untilted cone, {{T_a, T_b}} = 2 c0^2 delta_ab", iso)
+    c0 = sp.radsimp(sp.sqrt(c2))
+    survive = {keys[i]: not nilpotent(support[keys[i]]) for i in verts}
+    all_survive = all(survive.values())
+    record(f"{label}: every vertex coefficient is non-nilpotent (C_infty^strict = C_micro)",
+           all_survive, f"{sum(survive.values())}/{len(survive)} vertices survive")
+    c_strict = r_in if all_survive else None
+    ratio = sp.radsimp(sp.simplify(c0 / r_in))
+    print(f"  {label}: L = {L}; |vertices| = {len(verts)}; |facets| = {len(facets)}; "
+          f"r_in = {r_in}; V_causal^max = 1; c0 = {c0}; c0/r_in = {ratio}; "
+          f"c_strict^iso = {c_strict if c_strict is not None else 'OPEN'}; "
+          f"S_min = c0/V_causal^max = {c0}; S_max = c0/r_in = {ratio}; "
+          f"c0 in source units (per update, |h| as in source) = {sp.radsimp(c0 * L)}")
+    exp_r, exp_c, exp_v = EXPECTED_MASSLESS[label]
+    record(f"{label}: tabulated r_in = {exp_r}, c_0 = {exp_c}, |vertices| = {exp_v}",
+           sp.simplify(r_in - exp_r) == 0 and sp.simplify(c0 - exp_c) == 0 and len(verts) == exp_v)
+    results[label] = dict(s=symbol.rows, d=dim, r_in=r_in, c0=c0, ratio=ratio,
+                          c_strict=c_strict, iso=iso, nverts=len(verts))
+    return results[label]
+
+
+def part2(rows):
+    import verify_weyl_dirac_gate as wd  # reviewed helper, imported read-only
+    results = {}
+    print("== Part 2: standard rows L1, L2 (recomputed only for C_infty^strict)")
+    for label, dim in (("L1", 1), ("L2", 2)):
+        zs = sp.symbols(f"w1:{dim + 1}")
+        symbol, _ = wd.published_symbol(dim, 1, zs)
+        support = wd.fourier_support(symbol, zs)
+        gens = [tuple(1 if a == b else 0 for b in range(dim)) for a in range(dim)]
+        analyse(label, symbol, zs, support, gens, +1, results)
+    print("== Part 2: new rows")
+    for label, (symbol, zs, support, gens) in rows.items():
+        analyse(label, symbol, zs, support, gens, -1, results)
+    # Hypotheses (contract Sec. 5), on the rows computed here.
+    s2 = [l for l, r in results.items() if r["s"] == 2]
+    ha = {l: results[l]["ratio"] == 1 for l in s2}
+    hb = {l: results[l]["c_strict"] is not None for l in results}
+    hc = {l: (results[l]["c_strict"] is None) or positive(results[l]["c_strict"] - results[l]["c0"]) >= 0
+          for l in results}
+    print(f"  Ha (c0 = r_in, s=2 rows): {ha}")
+    print(f"  Hb (c_strict^iso = r_in): {hb}")
+    print(f"  Hc (c0 <= c_strict^iso where decided): {hc}")
+    record("Hb holds in every row computed here (L6b undecided, OPEN)", all(hb.values()))
+    record("Hc holds in every row computed here (L6b undecided, OPEN)", all(hc.values()))
+    return results
+
+
+# ================================================================ Part 3
+# Massive rows. With U(0) = exp(-i theta Q), Q^2 = I, Duhamel's formula gives
+# i dU U(0)^dag = X_par + (sin theta/theta) X_perp exp(i theta Q), where
+# X_par / X_perp are the parts of dH commuting / anticommuting with Q
+# (corrected 2026-11-01 after both reviews; the earlier comment omitted the
+# unitary factor). The code forms B = Y_par + (theta/sin theta) Y_perp from
+# Y = i dU U(0)^dag, i.e. B = X_par + X_perp exp(i theta Q). When X_par = 0
+# (asserted), B is Hermitian, anticommutes with Q, and {B_a, B_b} =
+# {X_a, X_b}: its Gram matrix is that of dH, which defines c_H (linear
+# spatial coefficient of H = i log U at fixed mass, as in the Weyl/Dirac
+# gate). B itself is not dH. With
+# G = (U + U^dag)/2 scalar at k = 0 and zero linear term, cos omega_j(k) are
+# cos theta + eig(G_2(k)) + O(k^3), so omega_j^2 = theta^2 + (theta/sin theta)
+# q_j |k|^2 with G_2 = -(q/2)|k|^2 (c_omega2^2 = theta q / sin theta).
+
+THETA = sp.Symbol("theta", positive=True)
+
+
+def massive(label, symbol, zs, gens, scale, dim, Q, c0, theta_note):
+    """Certify the exact first-order Hamiltonian Gram matrix g_ab
+    ({B_a, B_b} = 2 g_ab I, c_H(n)^2 = n.g.n) and the exact decomposition
+    Hess_k cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K. Isotropy is
+    reported, not assumed."""
+    k = sp.symbols(f"k1:{dim + 1}", real=True)
+    subs = {z: sp.exp(-sp.I * sum((k[a] * g[a] for a in range(dim)), 0) / scale)
+            for z, g in zip(zs, gens)}
+    s_dim = symbol.rows
+    ident = sp.eye(s_dim)
+    U = symbol.subs(subs)
+    zero = {ka: 0 for ka in k}
+    simp = lambda e: sp.simplify(sp.expand_complex(sp.expand(e)))
+    U0 = U.subs(zero).applyfunc(simp)
+    expected = sp.cos(THETA) * ident - sp.I * sp.sin(THETA) * Q
+    record(f"{label} massive: U(0) = exp(-i theta Q), Q^2 = I ({theta_note})",
+           is_zero_matrix(U0 - expected) and is_zero_matrix(Q * Q - ident))
+    B = []
+    par_zero = True
+    for a in range(dim):
+        Y = ((sp.I * U.diff(k[a])).subs(zero) * expected.H).applyfunc(simp)
+        Xpar = (Y + Q * Y * Q) / 2
+        Xperp = (Y - Q * Y * Q) / 2
+        par_zero = par_zero and is_zero_matrix(Xpar)
+        B.append((Xpar + THETA / sp.sin(THETA) * Xperp).applyfunc(sp.simplify))
+    record(f"{label} massive: linear dH anticommutes with the mass term (X_par = 0)", par_zero)
+    gram = sp.zeros(dim, dim)
+    scalar = True
+    for a in range(dim):
+        for b in range(dim):
+            anti = ((B[a] * B[b] + B[b] * B[a]) / 2).applyfunc(sp.simplify)
+            gram[a, b] = sp.simplify(anti[0, 0])
+            scalar = scalar and is_zero_matrix(anti - gram[a, b] * ident)
+    record(f"{label} massive: {{B_a, B_b}} = 2 g_ab I (scalar Gram matrix)", scalar)
+    g_rel = (gram / (c0 ** 2 * (THETA / sp.sin(THETA)) ** 2)).applyfunc(sp.simplify)
+    iso_H = is_zero_matrix(g_rel - g_rel[0, 0] * sp.eye(dim))  # Gram proportional to I
+    Ud = U.H.applyfunc(lambda e: e.subs({sp.conjugate(THETA): THETA}))
+    G = (U + Ud) / 2
+    record(f"{label} massive: grad cos(omega)(0) = 0 (no linear dispersion term)",
+           all(is_zero_matrix(G.diff(ka).subs(zero).applyfunc(simp)) for ka in k))
+    K = {}
+    decomposed = True
+    for a in range(dim):
+        for b in range(dim):
+            hab = G.diff(k[a]).diff(k[b]).subs(zero).applyfunc(simp)
+            rest = (hab + (c0 ** 2 * sp.cos(THETA) if a == b else 0) * ident).applyfunc(
+                lambda e: sp.simplify(e / sp.sin(THETA)))
+            decomposed = decomposed and all(not e.has(THETA) for e in rest)
+            K[(a, b)] = rest
+    record(f"{label} massive: Hess cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K, "
+           f"K independent of theta", decomposed)
+    iso_W = all(is_zero_matrix(m) for m in K.values())
+    print(f"  {label}: c_H Gram / (c_0 theta/sin theta)^2 = {g_rel.tolist()} -> "
+          f"{('ISOTROPIC c_H, c_H^2/c_0^2 = ' + str(sp.simplify(g_rel[0, 0] * (THETA / sp.sin(THETA)) ** 2))) if iso_H else 'ANISOTROPIC c_H(n) at finite mass'}")
+    Kshow = {ab: (m[0, 0] if is_zero_matrix(m - m[0, 0] * ident) else m.tolist()) for ab, m in K.items()}
+    print(f"  {label}: curvature correction K_ab = {Kshow} -> "
+          f"{'ISOTROPIC c_omega2 = c_0 sqrt(theta cot theta)' if iso_W else 'NO isotropic c_omega2 at finite mass (anisotropic and/or band-split, O(sin theta))'}")
+    return dict(iso_H=iso_H, iso_W=iso_W, gram=g_rel, K=K)
+
+
+def part3(rows, results):
+    print("== Part 3: massive rows (mass parameter theta = quasienergy gap at k = 0)")
+    out = {}
+    kron = sp.kronecker_product
+    cm, sm = sp.cos(THETA), sp.sin(THETA)
+    # L5b: Mlodinow-Brun Eq. (23): U = (axis product) exp(-i theta Q).
+    sym, zs, sup, gens = rows["L5b"]
+    Q = kron(SZ, I2)
+    out["L5b"] = massive("L5b", sp.expand(sym * (cm * sp.eye(4) - sp.I * sm * Q)), zs, gens,
+                         sp.sqrt(3), 3, Q, results["L5b"]["c0"], "theta = MB theta")
+    # JDW: W_m = U_m W_0, U_m = U(0,0,-pi/2,phi) = exp(-i phi sigma_x).
+    for label, note in (("L6c", "theta = 3m/2, JDW p.2"),
+                        ("L6d", "theta = 3m/2, 'same way as' six-step, JDW p.2"),
+                        ("L6f", "theta = 3 sqrt3 m/4, JDW p.3")):
+        sym, zs, sup, gens = rows[label]
+        Um = cm * I2 - sp.I * sm * SX
+        record(f"{label}: U(0,0,-pi/2,theta) = exp(-i theta sigma_x)",
+               is_zero_matrix(u2(0, 0, -sp.pi / 2, THETA) - Um))
+        L = 2 if label in ("L6c", "L6d") else sp.sqrt(3)
+        out[label] = massive(label, sp.expand(Um * sym), zs, gens, L, 2, SX, results[label]["c0"], note)
+    # L6e: U^1 -> U(0,0,-pi/2,-pi/4+m): U(0) = exp(-i m sigma_x), theta = m.
+    zs = sp.symbols("z1:3")
+    sym = sp.eye(2)
+    for j in (1, 2, 3):
+        ang = (-sp.pi / 4 + THETA) if j == 1 else (j - 2) * sp.pi / 4
+        sym = sp.expand(u2(0, 0, -sp.pi / 2, ang) * jdw_shift(zs, ISO[j], ISO[j + 3]) * sym)
+    out["L6e"] = massive("L6e", sym, zs, ISO_GENS, sp.sqrt(2), 2, SX, results["L6e"]["c0"],
+                         "theta = m, JDW p.2")
+    # Positive control: the reviewed minimal 1D Dirac block of the Weyl/Dirac
+    # gate, [[n e^{-ik}, i m], [i m, n e^{ik}]], n = cos M, m = sin M, has
+    # c_H = c_0 M cot M and isotropic c_omega2 = c_0 sqrt(M cot M) (report
+    # 2026-09-14, Secs. 5-6). U(0) = exp(+i M sigma_x): Q = -sigma_x.
+    zc = sp.symbols("y1:2")
+    dirac = sp.Matrix([[cm * zc[0], sp.I * sm], [sp.I * sm, cm / zc[0]]])
+    ctrl = massive("CONTROL 1D Dirac", dirac, zc, [(1,)], 1, 1, -SX, 1, "theta = M")
+    record("CONTROL: method reproduces the reviewed c_H = c_0 M cot M",
+           sp.simplify(ctrl["gram"][0, 0] - sp.cos(THETA) ** 2) == 0)
+    record("CONTROL: method reproduces an isotropic c_omega2 (K = 0)", ctrl["iso_W"])
+    print("  ADMP L6a mass (M inside W, Eq. (7)): not of the form exp(-i theta Q) x hopping "
+          "with a fixed axis; U(0) = prod_i exp(-i mu tau_i). Not encoded in Part 3 (OPEN).")
+    # Table assertions (repair 1): Gram matrices and K exactly as tabulated.
+    i3 = sp.Rational(1, 3)
+    exp_K = {
+        "L5b": {(0, 0): sp.zeros(4), (1, 1): sp.zeros(4), (2, 2): sp.zeros(4),
+                (0, 1): sp.diag(-i3, i3, i3, -i3),
+                (0, 2): i3 * sp.Matrix([[0, -sp.I, 0, 0], [sp.I, 0, 0, 0], [0, 0, 0, sp.I], [0, 0, -sp.I, 0]]),
+                (1, 2): i3 * sp.Matrix([[0, -1, 0, 0], [-1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])},
+        "L6c": {(0, 0): -5 * R3 / 32 * I2, (0, 1): sp.zeros(2), (1, 1): 3 * R3 / 32 * I2},
+        "L6d": {(0, 0): R3 / 16 * I2, (0, 1): -sp.Rational(3, 8) * I2, (1, 1): -3 * R3 / 16 * I2},
+        "L6f": {(0, 0): -3 * R3 / 16 * I2, (0, 1): sp.zeros(2), (1, 1): 5 * R3 / 16 * I2},
+        "L6e": {(0, 0): sp.zeros(2), (0, 1): -sp.Rational(1, 2) * I2, (1, 1): sp.zeros(2)},
+    }
+    exp_g = {"L5b": sp.eye(3), "L6c": sp.eye(2), "L6d": sp.eye(2), "L6f": sp.eye(2),
+             "L6e": sp.Matrix([[1, sp.sin(2 * THETA)], [sp.sin(2 * THETA), 1]])}
+    for label, r in out.items():
+        record(f"{label} massive: tabulated Gram/(c_0 theta/sin theta)^2 = {exp_g[label].tolist()}",
+               is_zero_matrix(r["gram"] - exp_g[label]))
+        record(f"{label} massive: tabulated curvature correction K",
+               all(is_zero_matrix(r["K"][ab] - m) for ab, m in exp_K[label].items()))
+        print(f"  summary {label}: isotropic c_H: {r['iso_H']}; K = 0 (isotropic c_omega2): {r['iso_W']}")
+    return out
+
+
+def main():
+    print(f"contract sha256 {hashlib.sha256(CONTRACT.read_bytes()).hexdigest()}")
+    for name, expected in SOURCES.items():
+        digest = hashlib.sha256((ROOT / f"sources/{name}.pdf").read_bytes()).hexdigest()
+        if expected is not None:
+            record(f"source {name}.pdf SHA256 matches sources/README.md", digest == expected)
+        else:
+            print(f"  source {name}.pdf sha256 {digest}")
+    rows = {}
+    for label, fn in [("L5a", row_L5a), ("L5b", row_L5b), ("L6a", row_L6a),
+                      ("L6c", row_L6c), ("L6d", row_L6d), ("L6e", row_L6e), ("L6f", row_L6f)]:
+        print(f"== {label}")
+        rows[label] = fn()
+    for label, reason in SOURCE_GAPS.items():
+        print(f"== {label}: NOT ENCODED -- {reason}")
+    print("== Part 1 table assertions")
+    for label, (symbol, zs, support, gens) in rows.items():
+        if label in EXPECTED_F:
+            record(f"{label}: composite step set F equals the tabulated set", set(support) == EXPECTED_F[label])
+        nonzero = [h for h in support if any(h)]
+        record(f"{label}: index of <F> in the generator lattice = {EXPECTED_INDEX[label]}",
+               lattice_index(nonzero) == EXPECTED_INDEX[label])
+    sys.path.insert(0, str(ROOT / "scripts"))
+    results = part2(rows)
+    part3(rows, results)
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-3, table asserted).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:  # fail closed
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 9: 2026-11-03--hex-supremum.md ===
+
+# HEX_SUPREMUM (M1): Stage A and the 13-point support
+
+**Date:** 2026-11-03. **Branch:** `research/schur-stability-audit`.
+**Contract:** [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
+preregistration commit `86573ca`; authorization CURRENT_STATE Sec. 14
+(`762ecdb`), user instruction «adelante» for Stage A.
+**Author:** Claude Code (Claude Opus 5.5). **Verifier:**
+`scripts/verify_hex_supremum_gate.py`, 12/12, SHA-256 `ef4b0114…`; imports
+read-only the reviewed `verify_hex_ceiling_gate.py` (SHA-256 `8f3b7a10…`,
+unchanged). **Solver budget used:** 0 s on S13 (no solver run); 0 s on
+S19 (not started). No numerics. **Status: PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES; promoted 2026-11-03 for S13 (CURRENT_STATE
+Sec. 14).**
+
+**Review (2026-11-03).** Grok PASS and Gemini PASS on all five blocks, no
+mandatory repair, identical input (this report at SHA-256 `8a4c4eec…`,
+before this paragraph)
+([Grok](../debates/2026-11-03--hex-supremum-stageA-review-grok/informe_grok.md),
+[Gemini](../debates/2026-11-03--hex-supremum-stageA-review-gemini/informe_gemini.md),
+[author reading](../debates/2026-11-03--hex-supremum-stageA-review-grok/verificacion_autor.md)).
+Accepted clarification (Grok): the "second route" of Sec. 3 is not an
+independent derivation; the layer equations already contain `A_h = 0` on
+each singleton, so the exact solve confirms the same geometry in algebra.
+The body below is unchanged.
+
+**Pre-step check.** Known: facet-line rigidity and the minimal-support T2
+(hex-ceiling report Sec. 3, CURRENT_STATE Sec. 12). Question: what do the
+saturation conditions force before any solver, and does that decide S13?
+Abandonment: if Stage A forced nothing beyond the layer sums, S13 would go
+to an exact solver within the per-support budget.
+
+## 1. Stage A: two consequences of saturation valid for every support
+
+Notation of the hex-ceiling report: `U(k) = sum_{h in F} A_h e^{-ik.h}`,
+`C = conv F` a regular hexagon, `|vertex| = 1`, `r = r_in = sqrt3/2`,
+normal form `A(n) = r n.sigma` (Step 2 there). Suppose `c_0 = r_in`.
+
+**Lemma A1 (singleton layer).** Let `n_f` be a facet normal and `delta`
+the spacing of the projections of `Lambda` onto `n_f` (they lie on a
+uniform grid, L0 of the parent gate). If a layer strictly between the two
+extreme ones contains exactly one point `h` of `C cap Lambda`, then
+`A_h = 0`.
+
+*Proof.* By facet-line rigidity (hex-ceiling report Sec. 3, Step 1:
+Bernstein equality / Julia, prior art), `U(t n_f) = e^{-irt} P_+(n_f) +
+e^{irt} P_-(n_f)`, so the sum of `A_h` over each intermediate layer is 0.
+A layer with one point gives `A_h = 0`. ∎
+
+**Lemma A2 (opposite vertices).** For every vertex `v` of `C`,
+`A_v A_{-v}^dag = 0` and `A_{-v}^dag A_v = 0`.
+
+*Proof.* The coefficient of `U U^dag` at displacement `2v` is
+`sum_{h - h' = 2v} A_h A_{h'}^dag`. Since `C` is centrally symmetric,
+`h - h' = 2v` with `h, h' in C` means `(h + (-h'))/2 = v` with both in `C`;
+`v` is extreme, so `h = v`, `h' = -v`. The coefficient must vanish
+(`2v != 0`); likewise for `U^dag U`. ∎
+
+A2 is recorded for later stages; it is not used for S13. Neither lemma
+alone gives a gap proof for `W_hex^sym`.
+
+## 2. Supports (verifier)
+
+Closed regular lattice hexagons with vertex `v`, in increasing size:
+`S7` (`v = g_1`, 7 points), `S13` (`v = g_1 + g_2`, 13 points), `S19`
+(`v = 2 g_1`, 19 points). After normalising `|v| = 1`, S13 consists of the
+origin, an inner ring of six points with `|h| = 1/sqrt3` at angles
+`k pi/3`, and six vertices at `pi/6 + k pi/3`.
+
+## 3. M1-B13: the 13-point support reduces to minimal support
+
+Facet normals of S13 point at angles `k pi/3`, i.e. through the
+inner-ring points. Along each, the projections lie on the grid
+`delta = r/3` with levels `-3..3`; the layers are, top to bottom: two
+vertices; **one inner-ring point**; two inner-ring points; origin and two
+vertices; two inner-ring points; **one inner-ring point**; two vertices
+(verifier). By A1 the two singleton layers force their coefficients to 0.
+The three normals cover all six inner-ring points, so every inner-ring
+coefficient vanishes and `F within {0} U vert(H)`.
+
+Second route (rule 4): with generic coefficients on all 13 points, the
+exact solution of the full set of layer equations along the three normals
+forces every inner-ring coefficient to 0 (verifier). Both routes agree.
+
+The surviving support is the configuration of the minimal-support T2 up
+to a similarity: rotating space by `-30°` (jointly with the Bloch sphere
+about `z`, which keeps `A(n) = r n.sigma`) maps the six vertices to
+`(cos k pi/3, sin k pi/3)` (verifier). The T2 proof uses only the geometry
+of the seven points, unitarity, the node and isotropy: its layer
+equations and its set of differences `h - h'` are invariant under
+similarity, and the lattice never enters (`verify_hex_ceiling_gate.py`,
+`check_T2_minimal`, lines 166-238, which encodes the vertices abstractly).
+The T2 check is rerun read-only and passes (4/4).
+
+**Verdict.** M1-B13 `PROVED_FOR_S13`: no s=2 walk with `F within S13`
+(in `W_hex^sym`, hence in `W_hex`) reaches `c_0 = r_in`. HX2
+`CONFIRMED_FOR_S13` (and for S7 by T2). No supremum is claimed on S13
+beyond what T1 gives; the gap is qualitative.
+
+## 4. S19 is not reduced by A1
+
+In S19 the facet-normal layers have sizes 3, 4, 5, 4, 3 on every normal
+(verifier): no intermediate singleton, so A1 forces only the layer sums,
+as in the 900 s attempt of the parent gate. S19 contains JDW L6c
+(`c_0/r_in = sqrt3/2`). Lemma A2 and the edge identities of the contract
+(Sec. 4, Stage A, step 2) are the remaining structural input before any
+solver.
+
+## 5. Verdicts so far
+
+- M1-A: `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS` for the whole class (A1, A2
+  proved; no gap proof for `W_hex^sym`, no normal form for general
+  supports).
+- M1-B13: `PROVED_FOR_S13`.
+- M1-B19: not started. Per the contract it may now start (S13 has a
+  verdict), with at most 3600 s of cumulative solver time.
+- HX2: `CONFIRMED_FOR_S13`; OPEN in general.
+
+## 6. Not established
+
+- Nothing for S19 or larger hexagons; nothing for `s > 2`.
+- The line M1 is neither closed nor kept by this: S13 is a bounded support.
+- No novelty claim: A1 is a direct use of the Bernstein equality case
+  (prior art); A2 is the standard extreme-coefficient argument.
+
+## 7. Next step
+
+M1-B19 (user decision on when), then independent cross-family review and
+a separate promotion.
+
+=== DOCUMENT 10: 2026-11-01--hex-ceiling.md ===
+
+# Hexagonal ceiling — execution report (L0 and T1)
+
+Date: 2026-11-01. Branch: `research/schur-stability-audit`.
+Contract: [`HEX_CEILING_GATE.md`](../theory/HEX_CEILING_GATE.md),
+preregistered at `8c56ced`.
+Verifier: [`scripts/verify_hex_ceiling_gate.py`](../scripts/verify_hex_ceiling_gate.py),
+24/24 exact checks (Python 3.12.3, `sympy==1.14.0`); repaired 2026-11-02
+after review (see the repair note below).
+Author: Claude Code (Claude Opus 5.5), at the user's direction.
+
+**Status: PARTIAL EXECUTION — L0 `PROVED_IN_REPO` (Bernstein's inequality
+proved in Lemma B); T1 `GAP_PROVED_IN_CLASS` with
+supremum `sqrt3/2`, attained; T2 `PROVED_FOR_MINIMAL_SUPPORT`
+(`F within {0} U vert(H)`, any s=2 walk, no product form assumed); T2 in
+general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`. Execution stopped here; ready
+for independent review.** Evidence **PRELIMINARY**. Not promoted.
+
+**Repair note (2026-11-02).** [Reviews](2026-11-02--hex-ceiling-review.md):
+Gemini PASS; Grok REPAIR_REQUIRED with two mandatory repairs, both
+accepted. (R1) L0 was labelled `PROVED_IN_REPO` while Bernstein's
+inequality was only named as prior art, against contract Sec. 2; Lemma B
+now proves it in-repo. (R2) The verifier's "rank 2 for every theta_0"
+check only tested that a minor is not identically zero; it now asserts the
+minor equals the `theta_0`-free constant `sqrt3 l^4/2`. Clarifications:
+Hermiticity of `A` in L0; the maximum-modulus step in T2; the hexagon
+fixes the denominator `2l`; `xi` is a Bloch component.
+
+## 1. L0 — the ceiling `c_0 <= r_in` on `W_hex`
+
+Let `U` be in `W_hex`. Multiplying by the scalar `e^{i phi}` does not change
+the support, so take `U(0) = I`. Let `n_f` be the unit outward normal of a
+facet of the regular hexagon `C = conv F`, with edge vector `d in Lambda`
+(edges join lattice vertices). For a lattice vector `h = a g_1 + b g_2` and
+`d = p g_1 + q g_2`,
+
+`h . Rot90(d) = (sqrt3/2)(b p - a q)`   (verifier, check L0),
+
+so `h . n_f = m_h delta` with `m_h in Z` and `delta = sqrt3/(2|d|)`. The
+extreme values of `h . n_f` over `F` are `±h_C(n_f)` (central symmetry of
+the hexagon) and are attained at vertices, which lie in `F`; hence
+`h_C(n_f) = N delta` for an integer `N` and every `m_h` satisfies
+`|m_h| <= N`.
+
+For unit vectors `x, y in C^2` set `p(s) = <y, U(s n_f / delta) x>`. Then
+`p(s) = sum_{|m|<=N} c_m e^{-i m s}` is a trigonometric polynomial of degree
+`N` with `|p| <= 1` (U unitary). Bernstein's inequality (Lemma B below,
+proved here) gives `|p'(0)| <= N`, i.e. `|<y, dU/dt(0) x>| <= N delta =
+h_C(n_f)` along `n_f`. Taking the supremum over `x, y`,
+`||A(n_f)|| <= h_C(n_f) = r_in`, where `A(n) = i dU(t n)/dt (0)`. `A(n_f)` is
+Hermitian: differentiating `U U^dag = I` at `t = 0`, where `U = I`, shows
+`dU/dt(0)` is anti-Hermitian. With `s = 2` and a traceless isotropic cone,
+`A(n_f)^2 = c_0^2 I`, so the Hermitian `A(n_f)` has spectrum `{±c_0}` and
+`||A(n_f)|| = c_0` (without Hermiticity, `M^2 = c_0^2 I` would not fix the
+norm). Therefore **`c_0 <= r_in` for every walk in `W_hex`**. Only the
+facet normal is needed, since `r_in = min h_C` is attained there.
+
+**Lemma B (Bernstein, proved in-repo; repair R1 of the 2026-11-02 Grok
+review).** If `p(s) = sum_{|m|<=N} c_m e^{-ims}` and `|p| <= 1` on `R`, then
+`|p'(s_0)| <= N` for every `s_0`.
+
+*Reduction to real polynomials.* Fix `s_0` and choose `alpha` with
+`e^{i alpha} p'(s_0) = |p'(s_0)|`. `R(s) = Re(e^{i alpha} p(s))` is a real
+trigonometric polynomial of degree `<= N`, `|R| <= 1`, and
+`R'(s_0) = Re(e^{i alpha} p'(s_0)) = |p'(s_0)|`. So it suffices to show
+`R'(s_0) <= N` for real `R`.
+
+*Real case.* Suppose `R'(s_0) > N`. Choose `0 < eps < 1` so small that
+`R_eps = (1 - eps) R` still has `R_eps'(s_0) > N`; then `|R_eps| < 1`
+everywhere. Pick `beta in (-pi, 0)` with `cos beta = R_eps(s_0)` (possible
+since `|R_eps(s_0)| < 1`) and set `C(s) = cos(N(s - s_0) + beta)`. Then
+`C(s_0) = R_eps(s_0)` and `C'(s_0) = -N sin beta in (0, N]`, so
+`D = C - R_eps` has `D(s_0) = 0`, `D'(s_0) < 0`; in particular `D` is not
+identically zero. On one period `C` reaches `±1` alternately at `2N`
+points `t_1 < ... < t_2N`, and there `|R_eps| < 1` gives
+`sign D(t_j) = sign C(t_j)`, alternating. Hence `D` has a zero in each of
+the `2N` open arcs between consecutive `t_j`. The point `s_0` is not a
+`t_j` (`D(s_0) = 0 != D(t_j)`), so it lies in one arc `(t_j, t_{j+1})`, on
+which `C` is monotone; `C'(s_0) > 0` makes it increasing, so
+`C(t_j) = -1`, `C(t_{j+1}) = +1`, i.e. `D(t_j) < 0 < D(t_{j+1})`. Since `D`
+falls through zero at `s_0` (`D'(s_0) < 0`), `D > 0` just left of `s_0` and
+`D < 0` just right of it: there is a further zero in `(t_j, s_0)` and one in
+`(s_0, t_{j+1})`. That arc holds at least three zeros, so `D` has at least
+`2N + 2` zeros per period. But `e^{iNs} D(s)` is an algebraic polynomial of
+degree `<= 2N` in `z = e^{is}`, so a nonzero `D` has at most `2N` zeros per
+period. Contradiction; hence `R'(s_0) <= N`. Applying this to `R(-s)` gives
+`R'(s_0) >= -N`. `square`
+
+This is the classical argument (prior art; no novelty claimed); it is
+written out so that L0 closes in-repo as the contract (Sec. 2) requires.
+
+## 2. T1 — the `n = 3` antipodal subclass
+
+**Reduction (analytic).** With `D_j(k) = diag(e^{-ik.a_j}, e^{ik.a_j}) =
+e^{-i (k.a_j) sigma_z}` and `G_j = C_{j-1} ... C_1` (`G_1 = I`),
+
+`C_3 D_3 C_2 D_2 C_1 D_1 = (C_3 C_2 C_1) * prod_{j=3..1} G_j^dag D_j G_j`.
+
+The node condition makes `C_3 C_2 C_1` scalar, so up to a phase
+`U(k) = prod_{j=3..1} exp(-i (k.a_j) tau_j)`, `tau_j = G_j^dag sigma_z G_j
+= t_j . sigma` with unit Bloch vectors `t_j` (free up to one global
+rotation). The `a_j` are three lattice vectors of equal length `l` at
+120°, `a_1 + a_2 + a_3 = 0`.
+
+**Linear term.** `A(k) = sum_j (k.a_j) tau_j = (sum_j t_j (a_j . k)) . sigma`,
+independent of the factor order. Its square is
+`k^T M k I` with `M = sum_ij g_ij a_i a_j^T`, `g_ij = t_i . t_j`.
+
+**Isotropy forces equal overlaps** (verifier, symbolic in `theta_0`):
+the traceless part of `M` is linear in `(g_12, g_13, g_23)` with a
+coefficient matrix whose `2x2` minors are `±sqrt3 l^4/2`, independent of
+`theta_0` (verifier), hence rank 2 for every `theta_0`, with kernel
+`(1,1,1)`. Geometrically, the three
+pair terms are double-angle vectors at `2 theta_0`, `2 theta_0 + 2pi/3`,
+`2 theta_0 + 4pi/3`, which cancel only with equal weights. With
+`g_ij = g`: `M = (3/2) l^2 (1 - g) I`, so `c_0,raw^2 = (3/2) l^2 (1 - g)`.
+
+**Range of `g`.** The Gram matrix of three unit vectors with equal
+overlaps has eigenvalues `1 + 2g` and `1 - g` (twice); it is realisable iff
+`-1/2 <= g <= 1`.
+
+**Normalisation.** `F` is contained in `{0, ±2 a_j}`; the hexagon condition
+puts all six `±2 a_j` in `F`, so the longest step is `2l` and
+`c_0 = c_0,raw/(2l)`, `r_in = sqrt3/2`. Hence
+
+`c_0 / r_in = sqrt(1 - g) / sqrt2 <= sqrt3/2`, equality iff `g = -1/2`,
+
+i.e. iff the three Bloch vectors are coplanar at mutual 120°. The
+hexagon condition enters only through the denominator: it puts the six
+`±2 a_j` in `F` and so fixes the longest step at `2l`. It does not change
+the supremum, since `g = -1/2` is realised with all six vertices present.
+
+**Attainment.** The verifier builds the walk with
+`t_j = (cos 2pi j/3, sin 2pi j/3, 0)` and certifies exactly: unitary
+symbol, `F = {0, ±2 u_j}`, regular hexagonal hull (6 vertices, 6 facets,
+`r_in = sqrt3/2`), every vertex coefficient non-nilpotent, `U(0) = I`,
+untilted isotropic cone, `c_0 = 3/4`, `c_0/r_in = sqrt3/2`.
+
+**Explains the previous table.** ADMP's `tau_i` (Eq. (5)) have `g = 1/3`,
+giving `c_0 = 1/2` (verifier, reproducing row L6a of Sec. 11). JDW L6d has
+`c_0 = 3/4`, the maximum, which corresponds to `g = -1/2`. The ADMP–JDW
+difference on the same substrate is the difference in the overlap of the
+three coin axes: ADMP's axes share the Bloch `z`-component
+`xi = sqrt5/3` (they are not coplanar through the origin), which raises
+`g` to `1/3` and costs speed.
+
+**Verdicts.** T1 `GAP_PROVED_IN_CLASS`: `sup c_0/r_in = sqrt3/2`,
+attained exactly at coplanar 120° Bloch vectors. HX1
+`CONFIRMED_IN_CLASS` (T1 subclass). HX0 `CONFIRMED_IN_CLASS` (L0, all of
+`W_hex`).
+
+## 3. T2 — minimal-support subclass (2026-11-02)
+
+Subclass: walks in `W_hex` whose composite support satisfies
+`F within {0} U vert(H)` (origin plus the six hull vertices). No product
+form is assumed: the argument uses only `F`, unitarity, the node and
+isotropy. It contains T1, ADMP L6a, JDW L6d and L6f (Sec. 11); it does not
+contain JDW L6c (19 points).
+
+**Step 1: saturation along a facet normal is rigid.** Suppose
+`c_0 = r_in`. Let `n_f` be a facet normal and `x` a unit eigenvector of
+`A(n_f)` with eigenvalue `+c_0`. With the notation of Sec. 1,
+`p(s) = <x, U(s n_f/delta) x>` has `|p| <= 1`, `p(0) = 1` and
+`p'(0) = -i N`. Then `P(z) = z^N p` (with `z = e^{is}`) is an analytic
+polynomial with `|P| = |p| <= 1` on the unit circle, hence `|P| <= 1` on
+the closed disc by the maximum-modulus principle, `P(1) = 1` and
+`P'(1) = 0`.
+By Julia's lemma (classical; a non-constant `P` with `|P| <= 1` and a
+boundary fixed point has angular derivative `P'(1) > 0`) `P` is constant,
+so `p(s) = e^{-iNs}`; equivalently this is the equality case of
+Bernstein's inequality, listed as prior art in PROJECT_INSTRUCTIONS §6.
+By Cauchy–Schwarz `U(t n_f) x = e^{-i r_in t} x` for all `t`, and likewise
+for the `-c_0` eigenvector. Hence along every facet-normal line
+`U(t n_f) = e^{-i r_in t} P_+(n_f) + e^{i r_in t} P_-(n_f)`: only the two
+extreme layers of `F` survive in that direction. In coefficients: the sum
+of `A_h` over the top edge is `P_+(n_f)`, over the bottom edge
+`P_-(n_f)`, and over every intermediate layer `0`.
+Citation status: Julia's lemma and the Bernstein equality case are
+classical; no primary source for them is in `sources/` (page
+[UNVERIFIED]).
+
+**Step 2: normal form.** By a Bloch rotation, a joint rotation of space
+and Bloch sphere about `z`, and scale, take `vert(H) = {(cos k pi/3,
+sin k pi/3)}` and `A(n) = r_in n . sigma` with `n` in the `xy` Bloch plane.
+The three facet normals are at 30°, 90°, 150°.
+
+**Step 3: certificate (verifier).** Along each facet normal the layers
+are top edge (2 vertices), middle layer (2 vertices and `0`), bottom edge.
+The nine layer equations are consistent, leave the coefficient `X_0` of
+one vertex free, and force `A_0 = -I/2`. Imposing
+`sum_h A_{h+d} A_h^dag = delta_{d0} I` and `sum_h A_h^dag A_{h+d} =
+delta_{d0} I` for all `d`, the lex Gröbner basis of the real equations
+contains `x^2 - x/2 + 1/12` in one real coordinate of `X_0`; its
+discriminant is `-1/12 < 0`. No real solution exists.
+
+**Positive control.** The same procedure on the square substrate
+(`F within {0} U {(±1,±1)}`, facet normals `x`, `y`) gives a consistent
+system, and the saturating walk `e^{-ik_x sigma_x} e^{-ik_y sigma_y}`
+solves it (verifier).
+
+**Verdict.** T2 `PROVED_FOR_MINIMAL_SUPPORT`: no s=2 walk on the
+hexagonal substrate with `F within {0} U vert(H)` reaches `c_0 = r_in`.
+HX2 holds in this subclass; HX2 in general is OPEN. No supremum is
+claimed for this subclass beyond T1's `sqrt3/2`, which it contains; the
+gap here is qualitative (`<`), not a bound.
+
+## 4. Attempt beyond minimal support (inconclusive)
+
+The same reduction for the radius-2 hexagonal ball (19 points: origin,
+inner ring, edge midpoints, vertices; contains JDW L6c) leaves 56 free real
+parameters after the layer equations and 730 quadratic unitarity
+equations. A grevlex Gröbner basis over the complex field did not finish
+within the agreed 900 s cap (exit 124). Even a finished basis other than
+`{1}` would not decide real solvability (the minimal case is consistent
+over `C`; its contradiction is real). The attempt is recorded in the
+exploratory script `scripts/explore_hex_saturation_support.py`; it is not
+evidence for any verdict. Per the contract's stop rule, T2 is recorded as
+`OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`.
+
+## 5. Not established
+
+- T2 for supports with further lattice points (edge-interior or interior
+  points, e.g. JDW L6c). HX2 is OPEN there. The minimal-support result does
+  not extend by itself, and the failed computation is not evidence either
+  way.
+- Nothing for `s > 2`, other lattices, masses.
+- No novelty claim: Bernstein is prior art; the T1 computation is
+  elementary.
+
+## 6. Next step
+
+Independent cross-family review of L0, T1 and the minimal-support T2, then
+a separate promotion. Extending T2 needs a new approach (e.g. a structural
+argument on edge polynomials, or real-algebraic certificates) and is not
+in progress. Then independent cross-family review and a
+separate promotion.
+
+=== DOCUMENT 11: HEX_CEILING_GATE.md ===
+
+# HEX_CEILING — frozen contract
+
+**Frozen:** 2026-11-01, before solving. Nothing in Secs. 3–4 has been
+computed or proved.
+**Authorization:** direct user instruction, 2026-11-01: «adelante con el
+punto 3, redacta el charter», then approval of this text («si»),
+including the scope choices `s = 2` only and `n` unrestricted in T2.
+Reports cite the commit that adds this file as the preregistration commit.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> On the hexagonal substrate, can a two-component walk of the declared
+> product class reach the ceiling `c_0 = r_in(C_micro)`? If not, what is
+> `sup c_0 / r_in` over the class, and is it attained?
+
+Origin: in the promoted `C_ACROSS_LATTICES` table (CURRENT_STATE Sec. 11)
+every declared square, BCC/cubic and line walk has `c_0 = r_in`, and none
+of the four declared hexagonal walks does (`c_0/r_in = 1/sqrt3` for ADMP,
+`sqrt3/2` for JDW). The table cannot tell whether this is a property of
+the substrate or of those four walks. This gate asks that question
+directly, by proof or by explicit counterexample, never by a scan.
+
+## 1. Declared class `W_hex`
+
+Fixed for every conclusion of this gate:
+
+- **Lattice.** `Lambda` = triangular lattice generated by `g_1 = (1,0)`,
+  `g_2 = (1/2, sqrt3/2)`; the walk is translation invariant on `Lambda`.
+- **Internal dimension.** `s = 2`. No larger `s` (s=4 is excluded; see
+  Sec. 6).
+- **Form of one update.**
+  `U(k) = C_n D_n(k) C_{n-1} D_{n-1}(k) ... C_1 D_1(k)`, with `n >= 1`
+  arbitrary, `C_j in U(2)` arbitrary, and
+  `D_j(k) = diag(exp(-i k.a_j), exp(-i k.b_j))`, `a_j, b_j in Lambda`
+  (a partial shift: each component moves by its own lattice vector). An
+  optional final coin `C_{n+1}` is absorbed by conjugation and does not
+  change the spectrum. This contains every encoded hexagonal row of the
+  previous gate: ADMP L6a (`a_j = -b_j`, coins built from `tau_i`) and JDW
+  L6c, L6d, L6f (antipodal or skew partial shifts).
+- **Substrate condition.** `C_micro = conv F` is a regular hexagon centred
+  at the origin, where `F` is the composite Fourier support of `U`
+  (vectors with nonzero matrix coefficient, computed exactly, not the set
+  of formally admissible sums).
+- **Node condition.** `U(0) = e^{-i phi} I` (degenerate quasienergy at
+  `k = 0`, massless node), and the linear term
+  `A(k) = i dU/dk (0) . k` (with the global phase removed) is traceless
+  and isotropic: `A(n)^2 = c_0^2 |n|^2 I`, `c_0 > 0`.
+- **Normalisation.** Longest vector of `F` has length 1 (so
+  `r_in = sqrt3/2`, `V_causal^max = 1`); one update per time unit.
+- **Not assumed.** No representation-isotropy in the P17 sense
+  (P17 p.7 Prop. 5 excludes the triangular lattice for that stronger
+  notion; `W_hex` asks only for an isotropic cone). No irreducibility
+  beyond the node condition; a reducible walk is admitted but must be
+  reported as such.
+
+## 2. Background taken as input
+
+- Promoted table, CURRENT_STATE Sec. 11, with its scope.
+- The matrix Bernstein inequality for unitary trigonometric polynomials
+  is prior art. Its consequence needed here, `||A(n)|| <= h_{C_micro}(n)`
+  at a node with `U(0)` scalar, hence `c_0 <= r_in`, is **not** assumed:
+  the repo has it only for the N3 class (Sec. 7.2). It is lemma L0 below,
+  to be proved in-repo or cited with page from a primary source read in
+  this gate.
+
+## 3. Targets
+
+- **L0 (ceiling).** For every walk in `W_hex`, `c_0 <= r_in`.
+- **T1 (subclass n = 3, antipodal).** `n = 3`, `b_j = -a_j`, the `a_j`
+  three lattice vectors at 120° (the ADMP / JDW L6d form). Determine
+  `sup c_0/r_in` exactly, whether it is attained, and by which coins.
+  This also explains the ADMP–JDW difference within that subclass.
+- **T2 (general class).** Either prove `c_0 < r_in` for all of `W_hex`
+  (with the best bound obtained), or exhibit an explicit walk in `W_hex`
+  with `c_0 = r_in`, certified exactly.
+
+## 4. Hypotheses, stated before solving
+
+- **HX0.** L0 holds.
+- **HX1.** In the T1 subclass, `c_0 < r_in` for every walk.
+- **HX2.** In all of `W_hex`, `c_0 < r_in` for every walk.
+
+Each refutation is a valid outcome. No expected value of the supremum is
+stated; the table only gives `sup >= sqrt3/2` (JDW).
+
+## 5. Method and stop rules
+
+- Exact algebra and geometry first. Proofs are written in a report; any
+  computation is a permanent traced verifier
+  (`scripts/verify_hex_ceiling_gate.py`, fail-closed, exact).
+- A witness walk (refuting HX1 or HX2) must be given in closed form and
+  certified exactly: unitarity, composite `F`, regular hexagonal hull,
+  node, isotropy, `c_0`.
+- Numerical exploration may guide a construction or a proof idea only if
+  done by a versioned script and labelled exploratory. **No numerical
+  result, scan, optimisation or failed search may enter a verdict**, and
+  no rigidity may be inferred from one.
+- If a proof is obtained only for a restricted subclass (e.g. bounded
+  `n`, antipodal shifts), the result is stated for that subclass only and
+  not extrapolated.
+- Stop when T1 and T2 each reach a verdict, or when T2 is recorded as
+  `OPEN_AFTER_<analysis>` with the analysis that was done. Do not widen the
+  class during execution.
+
+## 6. Exclusions
+
+`s > 2`, other lattices, inhomogeneous or encoded walks (e.g.
+Arrighi–Facchini), masses, `V_grp^max`, new substrate classes, general QCA
+laws, claims about our universe. No novelty claim (Bernstein is prior
+art).
+
+## 7. Verdicts
+
+- L0: `PROVED_IN_REPO` / `CITED_<source, page>` / `OPEN`.
+- T1, T2: `GAP_PROVED_IN_CLASS` (with the supremum or bound),
+  `CEILING_ATTAINED_BY_EXPLICIT_WALK`, `PROVED_FOR_<subclass>`, or
+  `OPEN_AFTER_<analysis>`.
+- Per hypothesis: `CONFIRMED_IN_CLASS` / `REFUTED_BY_<witness>` / `OPEN`.
+
+## 8. Deliverables
+
+Report `reports/YYYY-MM-DD--hex-ceiling.md`, verifier
+`scripts/verify_hex_ceiling_gate.py` (exact command forms added to
+`.claude/settings.json`), independent cross-family review, then a separate
+promotion.
+
+=== DOCUMENT 12: HEX_SUPREMUM_GATE.md ===
+
+# HEX_SUPREMUM (M1) — frozen contract
+
+**Frozen:** 2026-11-03, before solving. Nothing in Secs. 3–5 has been
+computed. Drafted by Claude Code (Claude Opus 5.5) at the user's
+instruction («vamos con la carta M1»).
+**Authorization:** user approval of the draft, 2026-11-03, «APROBACIÓN CON
+ENMIENDAS», with three amendments incorporated before freezing: (1) the
+solver budget is cumulative per support, not per run (Sec. 5); (2) the
+sum-of-squares certificate has the explicit form of Sec. 4, and the
+no-real-zero alternative needs its own certificate; (3) a witness answers
+the saturation question only, without a broader claim about the substrate
+(Sec. 0). Approval covers the preregistration and Stage A as first work,
+with no confirmatory numerics.
+Reports cite the commit that adds this file as the preregistration commit.
+**Initial scientific status: OPEN.**
+**Parent:** `HEX_CEILING_GATE.md` (T2 general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`,
+CURRENT_STATE Sec. 12). This gate continues T2 only; it does not reopen L0,
+T1 or the minimal-support T2.
+
+## 0. Pre-step check (rule of 2026-11-02)
+
+- **Known.** K4 (`c_0 = r_in` attained on line, square, BCC/cubic rows) and
+  K5 (hexagon: L0 `c_0 <= r_in` on `W_hex`; T1 `sup = sqrt3/2` in the
+  `n = 3` antipodal subclass; no s=2 walk with `F within {0} U vert(H)`
+  reaches `r_in`). Saturation along a facet normal is rigid (hex-ceiling
+  report Sec. 3, Step 1). A grevlex Gröbner basis over `C` for the 19-point
+  ball did not finish in 900 s, and would not have decided real
+  solvability anyway (hex-ceiling report Sec. 4).
+- **Question.** Does any s=2 walk in `W_hex` reach `c_0 = r_in`?
+- **Result that ends the line** (research-lines report, M1):
+  (a) an explicit witness in `W_hex` with `c_0 = r_in`, certified exactly:
+  the saturation question is answered affirmatively for `s = 2` and the
+  line M1 closes. This shows only that the hexagonal substrate admits
+  saturation in `W_hex`; it does not by itself show that no other
+  property of `c` specific to the hexagonal substrate remains;
+  (b) no exact method of Sec. 4 finishes within the session budget of
+  Sec. 5: stop at `OPEN_AFTER_<analysis>`, no numerics.
+  A gap proof for the whole class keeps the line (it is the only outcome
+  that makes the hexagon substrate-specific). A gap proof for a bounded
+  support only is recorded as such and does not close the line either way.
+
+## 1. Single question
+
+> On the hexagonal substrate, is there a two-component walk of the class
+> `W_hex` with `c_0 = r_in(C_micro)`, i.e. a walk whose support is not of
+> minimal type and which saturates the ceiling?
+
+## 2. Declared class
+
+`W_hex` exactly as in `HEX_CEILING_GATE.md` Sec. 1 (triangular lattice
+`Lambda`, `s = 2`, product of coin–partial-shift factors, `C_micro = conv F`
+a regular hexagon from the exact composite support, scalar `U(0)`,
+traceless isotropic linear term, longest vector of `F` of length 1).
+
+Two readings of the class are kept apart:
+
+- **Gap direction.** A proof that `c_0 < r_in` may use only unitarity, `F`,
+  the node and isotropy (as the minimal-support T2 did). It then holds for
+  the larger class `W_hex^sym` of all s=2 unitary Laurent polynomials with
+  those properties, which contains `W_hex`; it is stated for `W_hex^sym`.
+- **Witness direction.** A witness must lie in `W_hex`: it is given as an
+  explicit product `C_n D_n(k) ... C_1 D_1(k)`. A saturating symbol found
+  without a product factorization is reported as a witness in `W_hex^sym`
+  only, which does not meet result (a); in two dimensions factorization is
+  not automatic [UNVERIFIED as a general statement; not used].
+
+**Supports.** Regular lattice hexagons centred at the origin have vertices
+`R^j v`, `v in Lambda`, `R` the 60° rotation. Ordered by the number of
+lattice points of the closed hull (to be certified by the verifier, not
+assumed):
+
+- `S7`: `v = g_1` — 7 points; every walk is of minimal type (done in T2).
+- `S13`: `v = g_1 + g_2` — origin, inner ring of six unit vectors, six
+  vertices: 13 points. Smallest support not covered by T2.
+- `S19`: `v = 2 g_1` — the radius-2 ball (contains JDW L6c, `c_0/r_in =
+  sqrt3/2`).
+- larger hexagons: covered only by a structural argument (Sec. 4, Stage A).
+
+## 3. Targets
+
+- **M1-A (structural).** Necessary conditions for saturation valid for
+  every support, from facet-line rigidity and the extreme-face unitarity
+  identities (Sec. 4). Either a gap proof for `W_hex^sym`, or a reduced
+  normal form with fewer unknowns for Stage B.
+- **M1-B13.** On `S13`: gap proof (`c_0 < r_in` for every walk with
+  `F within S13`) or an explicit witness.
+- **M1-B19.** On `S19`: same, only after M1-B13 has a verdict.
+
+## 4. Method, named before any computation
+
+**Stage A — structural reduction (by hand, checked by the verifier).**
+
+1. Facet-line rigidity (hex-ceiling report Sec. 3, Step 1, reused): along
+   each of the three facet-normal lines the top edge sums to `P_+(n_f)`,
+   the bottom edge to `P_-(n_f)`, every intermediate layer to `0`.
+2. Extreme-face identities. The Newton polytope of `U U^dag` lies in
+   `C - C = 2C`. For each edge `e` of `C` with outward normal `n_e`, the
+   coefficients of `U U^dag` and `U^dag U` on the face of `2C` in direction
+   `n_e` vanish (except at `0`, not on the face). With `E_e(x)` the edge
+   polynomial of the top edge and `E_{-e}(x)` that of the opposite edge,
+   this gives `E_e(x) E_{-e}(x)^dag = 0` and `E_{-e}(x)^dag E_e(x) = 0` as
+   one-variable Laurent identities, together with `E_e(1) = P_+(n_e)`,
+   `E_{-e}(1) = P_-(n_e)` from step 1.
+3. Use 1–2 (and, if needed, the next-to-extreme faces) to restrict the
+   edge coefficients to rank-one forms and eliminate unknowns, before any
+   solver is run. Step 2 is a standard fact about Laurent polynomials
+   (product of extreme coefficients); its use here is stated and proved in
+   the report, not cited.
+
+**Stage B — exact decision on a bounded support (`S13`, then `S19`).**
+
+- Unknowns: the coefficients left after Stage A and the normal form of the
+  hex-ceiling report Sec. 3, Step 2 (`A(n) = r_in n . sigma`, vertices at
+  `k pi/3`).
+- Equations: layer equations, node and isotropy, and unitarity
+  `sum_h A_{h+d} A_h^dag = delta_{d0} I`, `sum_h A_h^dag A_{h+d} = delta_{d0} I`.
+- **Infeasibility certificate (gap).** Accepted forms only, each checked
+  exactly and quickly by the verifier without rerunning a solver:
+  (i) a polynomial `p` in the ideal, given with explicit exact cofactors
+  `p = sum_i h_i f_i`, whose absence of real zeros is itself certified
+  exactly (e.g. a univariate polynomial with negative discriminant, as in
+  T2, or a sum-of-squares-plus-positive-constant representation of `p`);
+  or (ii) for the real system `f_1 = ... = f_m = 0`, an identity
+  `-1 = sum_j q_j(x)^2 + sum_i h_i(x) f_i(x)` with exact rational
+  coefficients, the verifier expanding both sides and checking equality. A Gröbner basis over `C`
+  different from `{1}` decides nothing about real solvability and is not a
+  verdict.
+- **Witness.** Closed form, certified exactly: unitarity, composite `F`,
+  regular hexagonal hull, node, isotropy, `c_0 = r_in`, and the product
+  factorization (Sec. 2).
+- Exploratory numerics (a versioned script labelled exploratory) may guide
+  the search for a witness or for the certificate. **No numerical result,
+  scan, optimisation or failed search enters a verdict**, and no rigidity
+  is inferred from one.
+
+## 5. Stop rules and budget
+
+- Order: Stage A, then M1-B13, then M1-B19. Do not start the next stage
+  before the previous has a verdict or a recorded stop.
+- Budget: one working session, and at most 3600 s of solver wall time
+  **cumulative per support** (`S13`, `S19`), however it is split across
+  runs; every run is recorded with its command, wall time and exit code.
+  A run cut by the budget is inconclusive and is not evidence.
+- Stop at the first of: a witness meeting Sec. 4 (result (a); then M1
+  closes, with the limited reading of Sec. 0); a gap proof for `W_hex^sym` (line kept); budget exhausted
+  (result (b), `OPEN_AFTER_<analysis>` naming the stages done).
+- Do not widen the class during execution; restricted results stay
+  restricted.
+
+## 6. Exclusions
+
+`s > 2`, other lattices, masses, `V_grp^max`, inhomogeneous or encoded
+walks, new substrate classes, general QCA laws, claims about our universe.
+No novelty claim: Bernstein's inequality and its equality case are prior
+art; the hexagonal-ceiling prior-art check (plan step 4) is not finished.
+
+## 7. Verdicts
+
+- M1-A: `GAP_PROVED_IN_CLASS` (for `W_hex^sym`), `REDUCED_TO_<normal form>`,
+  or `OPEN_AFTER_<analysis>`.
+- M1-B13, M1-B19: `PROVED_FOR_<support>` (gap on that support),
+  `CEILING_ATTAINED_BY_EXPLICIT_WALK` (in `W_hex`) /
+  `CEILING_ATTAINED_IN_W_HEX_SYM_ONLY`, or `OPEN_AFTER_<analysis>`.
+- HX2 (from the parent gate): `CONFIRMED_IN_CLASS` / `REFUTED_BY_<witness>` /
+  `OPEN`, and `CONFIRMED_FOR_<support>` for a bounded result.
+
+## 8. Deliverables
+
+Report `reports/YYYY-MM-DD--hex-supremum.md`; verifier
+`scripts/verify_hex_supremum_gate.py` (fail-closed, exact, checks
+certificates rather than rerunning solvers; both exact command forms added
+to `.claude/settings.json`); exploratory scripts, if any, versioned and
+labelled; independent cross-family review; then a separate promotion.
+Reviewed verifiers (`verify_hex_ceiling_gate.py`) are imported read-only,
+never edited.
+
+=== DOCUMENT 13: SUBSTRATE_SATURATION_PHASE0_GATE.md ===
+
+# SUBSTRATE_SATURATION (phase 0) — frozen contract
+
+**Frozen:** 2026-11-03, revision 3, by the user's instruction («congela la
+revisión 3»), before any execution. Nothing in Secs. 3–5 has been done.
+Freezing is not authorization to execute: execution of phase 0 needs a
+separate user decision. The only change from the reviewed snapshot
+(`borrador_rev3_snapshot.md`, SHA-256 `b574a407…`) is this status header.
+Drafted by Claude Code (Claude Opus 5.5) on 2026-11-03 at the user's
+instruction («Autorizo redactar la carta de la fase 0, pero no congelarla
+ni ejecutar todavía ninguna comprobación»). Revision 1 was reviewed by Grok
+(`grok-4.7`, REPAIR_REQUIRED, six mandatory repairs;
+`debates/2026-11-03--substrate-saturation-phase0-draft-review-grok/`).
+Revision 2 applies, by the user's decision of 2026-11-03 («aceptar las seis
+reparaciones de Grok, adoptar "hipercubo" como predicado provisional y
+convertir la fase 0 en una auditoría de definiciones, sin valor
+confirmatorio»), all six repairs, the terminology change
+parallelotope → parallelepiped, and the zonotope reading (PS′) without any
+equivalence claim. Revision 3 (same day) applies the one mandatory repair
+of Grok's round 2 (L6b traceability) and its five clarifications, by the
+user's instruction («sí, aplica la reparación y las cinco aclaraciones»;
+`debates/2026-11-03--substrate-saturation-phase0-rev2-review-grok/`).
+Reports cite the commit that adds this file as the preregistration
+commit.
+**Initial scientific status: OPEN.** The conjecture below is `[UNVERIFIED]`;
+it was formulated by an AI from the promoted table and has no evidence
+level of its own.
+**Does not alter:** step 4 of the work plan (hexagonal-ceiling prior-art
+check, `NOT_FOUND_IN_SCOPED_SEARCH`, `6114b9d`), M1 (`86573ca`,
+Amendment 1 `208e1b1`) or any promoted row.
+
+## 0. Nature of this gate and pre-step check (rule of 2026-11-02)
+
+**Phase 0 is a definitional audit with no confirmatory value.** The
+conjecture of Sec. 1 was read off the same table this gate would audit
+(Grok, repair 6). Its purpose is to fix definitions, normalizations,
+traceability and the domain of the statement. Its conclusion is never
+"the conjecture survives"; at best it is "the statement is defined well
+enough to be tested for refutation". A test that can fail needs a separate
+contract with a shape not in the table (Sec. 7).
+
+- **Known.** Promoted rows (CS Secs. 4, 5, 8, 11, 12, 14; c-across-lattices
+  report Sec. 4; c-across-substrates answer Sec. 1): the ceiling
+  `c_0 = r_in(C_micro)` is attained by some declared `s = 2` walk on the
+  line (L1), the square (L2, L6e), BCC (L3, L5a) and the cube (L4); their
+  `C_micro` are a segment, squares and cubes, i.e. hypercubes up to scale
+  and isometry. On the hexagon no declared walk attains it; `sup c_0/r_in
+  = sqrt3/2` in the `n = 3` antipodal subclass; no s=2 walk in `W_hex^sym`
+  with `F` within S7, S13 or S19 attains it; the whole hexagonal class is
+  OPEN. The table contains no parallelepiped that is not a hypercube, so it
+  cannot distinguish the two notions (Grok, repair 1).
+- **Question.** Is the statement of Sec. 1 defined without ambiguity on the
+  promoted rows (definitions, units, single source per row, levels of
+  claim), and is there an exact counterexample to it among those rows?
+- **Result that ends this formulation.** One exact counterexample in the
+  promoted rows (Sec. 4): the formulation of Sec. 1 is dropped at once,
+  with no repair attempted in this gate.
+
+## 1. Statement under audit
+
+> **(PH) [UNVERIFIED], provisional predicate.** For `s = 2`, `d <= 3`,
+> within the declared classes of Sec. 2 and only for models with an
+> admissible isotropic untilted node: the ceiling is attained on a
+> substrate, in the sense of Sec. 2.1, if and only if its `C_micro` is a
+> hypercube up to scale and isometry.
+
+Two directions are kept apart:
+
+- **(PH⇐)** `C_micro` a hypercube up to scale and isometry ⇒ there exists
+  an admissible walk on that substrate with `c_0 = r_in`.
+- **(PH⇒)** `C_micro` not a hypercube up to scale and isometry ⇒ every
+  admissible walk on that substrate has `c_0 < r_in`.
+
+A body with no admissible isotropic untilted node in the declared class is
+outside the statement: it is on neither side of the biconditional and is
+recorded as `OUTSIDE_DEFINITIONS` (Sec. 3.4).
+
+**The predicate is a geometric classification suggested by the existing
+cases, not a physical explanation.** Whether saturation is controlled by
+this geometry, or by algebraic and isotropy constraints that coincide with
+it on the present table, is the open question (user decision,
+2026-11-03).
+
+This contract states only (PH) on the promoted rows. No general statement
+about hypercubes or parallelepipeds outside those rows is written here
+(Grok, repair 3).
+
+**Zonotope reading (PS′) [UNVERIFIED], product class only, not equivalent
+to (PH).** For a walk that is a product of `n` coin–partial-shift factors,
+each partial shift moving by `±a_i`, the composite step set is
+`F = {sum_i ε_i a_i}` and `C_micro = conv F` is the zonotope
+`sum_i [-a_i, a_i]` (convex hull of a Minkowski sum is the Minkowski sum
+of the hulls). It is a parallelepiped exactly when the reduced generators
+(`a_i` up to sign and positive scale, parallel ones merged) are `d`
+linearly independent vectors. (PS′) reads: in the product class, the
+ceiling is attained iff the generators reduce to `d` independent
+directions. **(PS′) is not equivalent to (PH):** `d` independent
+generators need not be orthogonal or of equal length, so a parallelepiped
+need not be a hypercube (e.g. a 60° rhombus in `d = 2`). No equivalence is
+claimed until proved. Examples in the promoted rows: square (two
+generators), BCC/cube (three orthogonal generators), `W_hex` (three
+generators at 120°, `d = 2`: the hexagon). The zonotope facts it would use
+(e.g. the space-tiling criterion of Shephard 1974 and McMullen 1975) are
+cited by Moriyama–Otozawa (arXiv:2411.09141v1) and have not been read
+here. The same domain clause applies to (PS′): a body (e.g. a rhombus)
+whose declared class has no admissible isotropic untilted node is
+`OUTSIDE_DEFINITIONS` and is not on the "attained" side. Phase 0 records
+the reduced generators of each product-class row and gives no verdict on
+(PS′); the counterexample criterion of Sec. 4 concerns (PH) only.
+
+## 2. Quantifiers, domain and normalization
+
+1. **Quantifiers.** "The ceiling is attained on a substrate" means: there
+   exists at least one admissible walk `W` on that substrate with
+   `c_0(W) = r_in(C_W)`. It does not mean that every walk saturates. A
+   non-saturating walk on a substrate where another walk saturates is not
+   a counterexample to (PH⇐) (e.g. L3s4 on BCC, which in any case has
+   `s = 4` and is outside the domain).
+2. **Domain.** `s = 2`, `d <= 3`, models with an admissible isotropic
+   untilted node, and only the classes already declared in the frozen
+   contracts the promoted rows cite (C_ACROSS_LATTICES_GATE,
+   HEX_CEILING_GATE, HEX_SUPREMUM_GATE and the row contracts).
+   **"Admissible"** means exactly: the walk belongs to one of these declared
+   classes and has an isotropic untilted node at `k = 0` in the sense of
+   Sec. 2.4 (`U(0)` scalar, traceless Hermitian linear term with
+   `{T_a, T_b} = 2 c_0^2 delta_ab`, zero tilt; equivalently
+   `A(n)^2 = c_0^2 |n|^2 I`, HEX_CEILING_GATE Sec. 1). It is not the
+   "admissible graph" of P17, whose isotropy in its own sense excludes the
+   triangular lattice. Rows with
+   `s != 2` are recorded and are outside the domain: L5b and L3s4
+   (`s = 4`, c-across-lattices report Sec. 4 table); L6b (`s = 6`: L6b
+   report Secs. 1–2, `s = 6` counted per cell, three edges with `C^2`
+   each, whereas the parent's `s = 2` counts per edge; the row is promoted
+   with `s = 6` by L6B_TRIANGULAR_ROW, described in CS l. 88–94 as «a
+   revision of `C_ACROSS_LATTICES` restricted to row L6b», and CS l. 106
+   records «`s = 6`, not the parent's `s = 2`»). The parent contract
+   C_ACROSS_LATTICES_GATE and the c-across-lattices table were not amended
+   and still list L6b with `s = 2` (`OPEN`, not encoded); the exclusion
+   rests on the promoted `s = 6`. No extrapolation to other `s`, `d`,
+   lattices or classes.
+3. **Substrate.** As in C_ACROSS_LATTICES_GATE Sec. 2: the translation group
+   generated by one complete update together with its composite step set.
+   Here `N := F`, the composite step set of one complete update (all sums
+   of one displacement per partial shift), not the displacement set of a
+   single partial shift. `0 ∈ N` does not change `C_micro`, `r_in` or the
+   longest step when it is interior.
+4. **Normalization and single source per row.** Every row is compared with
+   the same frozen definitions (CS Sec. 2): `C_micro := conv(N)`; `h_C`;
+   `r_in(C_micro) := min h_C`; `c_0` the isotropic untilted cone speed at
+   the massless node (`{T_a, T_b} = 2 c_0^2 delta_ab`, as certified per row
+   in the c-across-lattices report Sec. 4); units: longest step 1, one
+   update per time unit. **For each row the pair `(r_in, c_0)` is taken
+   from exactly one source, in these units.** For L4 that source is the
+   c-across-lattices report Sec. 4 table (`r_in = c_0 = 1/sqrt3`); that
+   table's label "cube `[-1,1]^3`" names the shape in CS Sec. 8 units, and
+   its vertices are not to be combined with the rescaled radius `1/sqrt3`
+   (the rescaled cube has longest step 1). The CS
+   Sec. 8 pair (`C_micro = [-1,1]^3`, `r_in = 1`, `c_IR = 1`) is in other
+   units and must not be crossed with it (Grok, repair 4). A numerical
+   coincidence of speeds, or a value from a different normalization, is
+   not a comparison. "Hypercube up to scale and isometry" and
+   "parallelepiped" (Minkowski sum of `d` linearly independent segments)
+   are checked exactly from the vertices of `C_micro`.
+   **Terminology.** Revision 1 said "parallelotope"; in standard use a
+   parallelotope is any polytope that tiles space by translations
+   (Moriyama–Otozawa, arXiv:2411.09141v1, Sec. 2.2, p. 11), and the
+   regular hexagon is one. That word is not used for the predicate.
+5. **Pointwise against uniform gap.** (PH⇒) is pointwise:
+   `for all W, c_0(W) < r_in(C_W)`. It does not imply a uniform gap
+   `sup_W c_0(W)/r_in(C_W) < 1` over a class. Phase 0 makes no claim about
+   a uniform gap. T1 (`sqrt3/2`) is a uniform statement for the `n = 3`
+   antipodal subclass only; M1-B13 and M1-B19 are qualitative gaps with no
+   bound below `r_in`.
+6. **Background bound.** `c_0 <= r_in` (L0, Bernstein) holds on the
+   declared classes; a row with `c_0 > r_in` would contradict L0, not (PH).
+   No such row exists.
+
+## 3. Method (no computation)
+
+Documentary only. No verifier is run, written or edited; no new walk is
+built; no numerics.
+
+1. List every promoted row in `state/CURRENT_STATE.md` and the reports it
+   cites with `d <= 3`, with its source (`file:line` or section), its
+   declared class and its `s`. Rows with `s != 2` are listed and marked
+   outside the domain with the citation of Sec. 2.2.
+2. For each row in the domain, record from the single source of Sec. 2.4:
+   the vertices of `C_micro`; whether it is a hypercube up to scale and
+   isometry; whether it is a parallelepiped; for product-class rows, the
+   reduced generators (for (PS′)); `r_in`; `c_0`.
+3. **Three separate fields per row, never merged** (Grok, repair 5):
+   (a) *this walk*: `c_0 = r_in` or `c_0 < r_in`, exact;
+   (b) *promoted statement on a class*, quoted with its own quantifier and
+   scope (e.g. T1 on the `n = 3` antipodal subclass; M1-B13/B19 on `W_hex^sym`
+   with `F` within S13/S19; the whole hexagonal class OPEN);
+   (c) *existential reading per substrate*: "some promoted walk on this
+   substrate has `c_0 = r_in`" (yes / no promoted witness). A gap on a
+   subclass or a bounded support is entered in (b) and is never read as
+   (c) "no walk on the substrate saturates".
+4. Flag, without resolving, every row where a definition of Sec. 2 does not
+   apply as frozen (for example a body whose declared class has no
+   admissible isotropic untilted node). Such a row is
+   `OUTSIDE_DEFINITIONS`: not a counterexample and not support.
+5. Record whether the table contains a parallelepiped that is not a
+   hypercube, or a non-hypercube body with a promoted saturating walk. If
+   it contains neither, record that it cannot separate (PH) from (PS′) or
+   from other predicates that agree on segments, squares, cubes and the
+   regular hexagon.
+
+## 4. Counterexample criterion
+
+An exact counterexample among the promoted rows is any of:
+
+- (against PH⇒) a substrate in the domain whose `C_micro` is not a
+  hypercube up to scale and isometry, with a promoted walk with
+  `c_0 = r_in` exactly;
+- (against PH⇐) a substrate in the domain whose `C_micro` is a hypercube up
+  to scale and isometry, on which a promoted exact result shows that no
+  admissible walk of the declared class attains `c_0 = r_in`.
+
+A failed search, a non-saturating single walk, a gap on a subclass or a
+bounded support, or a row outside the domain or the definitions is not a
+counterexample.
+
+## 5. Outcomes
+
+Two separate outcomes, reported together.
+
+**Definitional outcome.**
+
+- `DEFINITIONS_CLOSED`: every row in the domain has a single traced source
+  in the units of Sec. 2.4, all fields of Sec. 3.2–3.3 are filled from
+  promoted exact data, and the `OUTSIDE_DEFINITIONS` list is explicit.
+  Meaning: the statement is defined well enough to be tested for
+  refutation. Nothing more.
+- `OPEN_AFTER_ROW_SURVEY`: some needed quantity is missing, not exact, or
+  has no single source; the list of gaps is reported.
+
+**Counterexample check** (per direction, PH⇐ and PH⇒):
+
+- `REFUTED_BY_ROW_<row>`: one exact counterexample (Sec. 4). The
+  formulation of Sec. 1 stops at once.
+- `NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`: no counterexample among the promoted
+  rows. **This is not independent evidence for (PH)**: the statement was
+  read off this table, which has three hypercube shapes and one
+  non-hypercube shape (the regular hexagon), and no parallelepiped that is
+  not a hypercube. The verdict is never `CONFIRMED`, and it must be
+  reported in the same sentence as this caveat.
+
+**No outcome of this gate authorizes any later phase.** In particular,
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE` is not a condition for, nor a reason
+to start, any test of refutation; each later phase is chartered on its
+own (Grok, repair 6).
+
+## 6. Exclusions
+
+`s != 2`, `d > 3`, bodies without an admissible isotropic untilted node,
+new lattices, new walks, masses, `V_grp^max`, inhomogeneous or encoded
+walks, uniform gaps, general QCA laws, claims about our universe, any
+physical explanation of the predicate. No novelty claim. No computation of
+any kind in this gate.
+
+## 7. After this gate (not authorized here)
+
+A test that can fail needs its own contract, with a shape or support not
+in the source table. The user's stated first choice (2026-11-03) is the
+hexagon: look for an admissible hexagonal family with exactly
+`c_0 = r_in(C_micro)`. Finding one inside the domain of Sec. 2.2
+(`s = 2`, admissible) would refute (PH⇒); a witness with `s != 2` would be
+outside the domain and would not refute (PH). Not finding one would not
+prove (PH). The user prefers it to the rhombus because the
+hexagonal substrate is already studied and a rhombus without an admissible
+isotropic node would be outside the domain. Its exact scope (larger
+support at `s = 2`, larger `s`, or both) is to be fixed in that contract.
+
+## 8. Deliverables
+
+A report `reports/YYYY-MM-DD--substrate-saturation-phase0.md` with the row
+table of Sec. 3, each entry traced to its single source, the
+`OUTSIDE_DEFINITIONS` list, the audit finding of Sec. 3.5 and the outcomes
+of Sec. 5. Then independent cross-family review (user permission needed to
+send), then a separate promotion decision.
+
