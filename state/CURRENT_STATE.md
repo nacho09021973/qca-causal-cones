@@ -2,6 +2,14 @@
 
 **Date:** 2026-11-05
 
+**Work priority — 2026-11-05:** user approval («adelante») to park the
+hexagonal line and complete the documentary loose ends of the main
+`c`/substrate line. Hexagonal results keep their promoted scope; the
+all-m problem and whole class remain OPEN. No continuation is authorized.
+This is a work-priority decision, not a mathematical refutation. The
+stopping rationale is retrospective: the slice route has closed within
+its stated scope; a two-dimensional argument would need a new charter.
+
 **Bounded result promoted — 2026-11-05:** hexagonal trace/scalar line
 (Sec. 16), m=3 only: `SCALAR_INFEASIBLE_M3` on the aligned 37-point
 hexagon, with its two-parameter reduction at m=3 and the trace bridge to
@@ -2482,6 +2490,40 @@ identical; also L5a = the `+i` Weyl block of L5b, and L6d = L6f through
 `|k|^2`). Scale of
 validity OPEN in `d >= 2`; `V_grp^max` OPEN. No physical interpretation.
 
+**Erratum approved and L3 promoted (2026-11-05, user «adelante»).**
+[`Erratum 1`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_ERRATUM_1.md)
+documents a contract-table mismatch with the parent: the dispersion row
+printed L3 is CJWW (5.15), on `Z^3`; the row printed L4 is CJWW (5.12),
+on BCC. Both belong to parent row L4; the standard-battery L3 was missing.
+Per-symbol coefficients stand, but the parent-row coverage, He listing
+and Hf substrate grouping above must be read with this correction.
+DeepSeek sealed review PASS, no mandatory repairs (`83c5644`);
+two citation clarifications applied afterwards, not re-reviewed.
+Erratum 1 is **APPROVED BY USER**, with those two unreviewed citation
+clarifications disclosed.
+The frozen contract, original report and original verifier are unchanged.
+
+The missing standard-battery row has a separate frozen contract
+[`DISPERSION_L3_ROW_GATE.md`](../theory/DISPERSION_L3_ROW_GATE.md)
+(`d3868fa`) and [execution report](../reports/2026-11-04--dispersion-L3-row.md).
+Recorded author run: 35/35 checks, verifier SHA256
+`89b33e700aedb7ae19bb80e00f45d8452f6a550ba7c836c5d3c246f070adae10`,
+outcome `L3_DISPERSION_COMPLETE`, HL3a–e `CONFIRMED` in the four declared
+cases. After three repairs, sealed gpt-6.1-sol re-review
+([report](../debates/2026-11-04--dispersion-L3-row-rereview-astra/informe_astra.md),
+`f3b9b10`): PASS, no mandatory repairs; static review, no code execution.
+One reviewing house (OpenAI), cross-family to the author (Anthropic).
+**PROMOTED: `L3_DISPERSION_COMPLETE`, HL3a–e `CONFIRMED` in the four
+declared cases; one cross-family reviewing house, not two.** This fills
+the L3 coverage/He gap and adds the stated BCC coefficient coincidences.
+Standard L3 has `T_d`, lowest correction
+`beta = -chi*n1*n2*n3/sqrt3`, and `alpha_0 = -4/315`;
+the row printed L3 in the original table remains CJWW (5.15), with `K4`.
+He is now covered for standard L3 as well; Hd and Hf verdicts are unchanged.
+Maximum group speed, validity scale, physical reading and symbol
+equivalence remain undecided. Previous status: PRELIMINARY, promotion
+pending. No new computation or verifier change in this promotion.
+
 ## 14. Hexagonal supremum (M1) — chartered 2026-11-03
 
 Contract: [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
@@ -2680,6 +2722,27 @@ presentation; it bears on (PS′) only. F2 corrected in the audit
 (`a5b7ab4`). Status unchanged: **PRELIMINARY,
 `OPEN_AFTER_ROW_SURVEY` (gap G1: G1-a, G1-b, G1-c), no confirmatory
 value, not promoted.**
+
+**G1 trace re-review (2026-11-04, recorded 2026-11-05).**
+Sealed gpt-6.1-sol [second round](../debates/2026-11-04--substrate-saturation-phase0-G1-trace-rereview-astra/informe_astra.md)
+(`d727e09`): **INSUFFICIENT_EVIDENCE** globally. Both repairs and all
+three clarifications PASS; no mandatory text repair identified.
+Ratification of L1–L3 lacks the cited primary constructor file
+`scripts/verify_weyl_dirac_gate.py`, omitted from the attachment set.
+A repeat with that file could resolve this review limitation; it would
+not by itself close G1-a/b/c or promote the audit. User «adelante»
+(2026-11-05) authorizes one bounded completion round on L1–L3, with the
+missing constructor, via `revision-ciega` (tools `ce09890`); record in
+`debates/2026-11-05--G1-L1-L3-completion-astra/`. Initial client-start
+failure archived in the sibling `-attempt1-sandbox/` folder, no report;
+retry outside the sandbox authorized and completed. Completion review:
+**PASS for L1–L3**, no mandatory repairs; identities, literal product-class
+membership, nonzero pattern amplitudes and reduced generators derived
+statically from the constructor. No code executed; no ratification of
+historical execution claims. Together with the preceding re-review this
+resolves the missing-attachment limitation, not the substantive G1 gaps.
+Audit status
+remains **PRELIMINARY, `OPEN_AFTER_ROW_SURVEY`, not promoted**.
 
 **PS′ presentation decision (2026-11-04,** user decision «si a las 3»;
 [proposal](../reports/2026-11-04--ps-prime-intrinsic-definition-proposal.md),

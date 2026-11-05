@@ -5,8 +5,15 @@
 preregistration `d3868fa`. **Verifier:**
 `scripts/verify_dispersion_L3_row_gate.py`, SHA256 `89b33e700aedb7ae19bb80e00f45d8452f6a550ba7c836c5d3c246f070adae10`,
 35/35 exact checks, `python3 -B`, sympy 1.14.0; prints the row verdict
-**`L3_DISPERSION_COMPLETE`** (contract Sec. 4). **Status: PRELIMINARY**, not
-promoted.
+**`L3_DISPERSION_COMPLETE`** (contract Sec. 4). **Status: PROMOTED** by
+user decision, 2026-11-05 («adelante»), for these four declared cases;
+HL3a–e CONFIRMED. One cross-family reviewing house (OpenAI), not two.
+Previous status: PRELIMINARY, not promoted.
+
+**Re-review:** gpt-6.1-sol PASS, no mandatory repairs (`f3b9b10`;
+`debates/2026-11-04--dispersion-L3-row-rereview-astra/informe_astra.md`).
+Static review; no verifier execution by the reviewer. It supersedes
+«not re-reviewed» in the historical first-review paragraph below.
 
 **Review.** gpt-6.1-sol (OpenAI), on the version `1beb8fd9…` (34 checks) at
 base `b9b0e58`:
@@ -102,5 +109,6 @@ about walks in general.
 - `V_grp^max` and the scale of validity: OPEN, as in the parent.
 - Terms beyond relative order `t^2`.
 - Any physical reading of `alpha`, `beta`.
-- No promotion. CS Sec. 13 is not changed by this report; a note would
-  follow review and a user decision, together with Erratum 1.
+- At execution: no promotion; a CS Sec. 13 note required review and a
+  user decision together with Erratum 1. Superseded by the dated promotion
+  above and the corresponding CS Sec. 13 entry; exclusions unchanged.

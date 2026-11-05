@@ -1,7 +1,8 @@
 # DISPERSION_CORRECTIONS_ACROSS_LATTICES — Erratum 1 (row labels L3/L4)
 
-**Date:** 2026-11-04. **Author:** Claude (Anthropic). **Status: DRAFT,
-PRELIMINARY**, pending user approval. Reviewed by DeepSeek
+**Date:** 2026-11-04. **Author:** Claude (Anthropic). **Status: APPROVED
+BY USER**, 2026-11-05 («adelante» to the explicit proposal to approve
+Erratum 1). Previous status: DRAFT, PRELIMINARY. Reviewed by DeepSeek
 (`debates/2026-11-04--dispersion-erratum1-review-deepseek/`, PASS, no
 mandatory repairs, reviewed SHA256 in its `inputs.sha256`); its two
 citation clarifications (CS line of «thirteen», `L5b[+i]` at verifier
@@ -94,6 +95,12 @@ contract's row table relative to its parent, not in the execution.
    verdict `REFUTED_BY_ROW_L6e` is unchanged.
 
 ## 4. Not done here
+
+Historical scope of this erratum; superseding record (2026-11-05): the
+separate L3 gate has since been executed, reviewed by gpt-6.1-sol
+(`f3b9b10`) and promoted by the user, with one reviewing house. See
+`state/CURRENT_STATE.md` Sec. 13. The exclusions below describe what the
+erratum itself did, not the later L3 gate.
 
 - No dispersion entry is computed for the standard-battery L3. That would
   need an authorized computation (user decision).

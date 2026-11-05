@@ -22,7 +22,16 @@ any script.
 (L6e count in the summary; F2 stated as a necessary condition), both
 applied in this revision with three clarifications, by the user's decision
 of 2026-11-04 («SI»); `debates/2026-11-04--substrate-saturation-phase0-G1-trace-review-astra/`
-(`8d70e58`, reviewed text `cb814b5`). This revision is not re-reviewed.
+(`8d70e58`, reviewed text `cb814b5`). Historical first-review record.
+**Re-review:** gpt-6.1-sol (`d727e09`), repairs and clarifications PASS,
+global INSUFFICIENT_EVIDENCE because the L1–L3 constructor was omitted.
+**Completion round (2026-11-05):**
+[`informe_astra.md`](../debates/2026-11-05--G1-L1-L3-completion-astra/informe_astra.md),
+gpt-6.1-sol PASS for identities, literal product-class membership and
+generators of L1–L3, no mandatory repairs. Static derivation from the
+constructor, no execution. Resolves the missing-attachment limitation;
+does not close G1-a/b/c or promote the audit. Tool: `revision-ciega`,
+`~/herramientas` commit `ce09890a0d5f68a6634f358eff2e477ac5f15ec7`.
 **Status: PRELIMINARY.** The audit stays
 `OPEN_AFTER_ROW_SURVEY`, PRELIMINARY, with no confirmatory value.
 
