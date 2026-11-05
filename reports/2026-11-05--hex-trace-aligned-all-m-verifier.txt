@@ -1,0 +1,21 @@
+[PASS] A1 f0 = cos(mq) on p=0, cos(mp) on q=0 and on p=q (symbolic m)
+[PASS] A2 Delta Laurent support inside H_2, six vertices present (Newton polygon H_2)
+[PASS] A3 Delta and its gradient vanish on p=0, q=0, p=q
+[PASS] A4 Laurent form of Delta equals the trigonometric form
+[PASS] B1 f0(2q,q) = cos(mq)^2 + cos(mq) - 1 (symbolic m)
+[PASS] B2 Delta(2q,q) = (1-x)^3 (1+x)/4 with x = cos q
+[PASS] C1a 120-degree rotation fixes the slice point q=2pi/3, i.e. (4pi/3,2pi/3), mod 2pi
+[PASS] C1b Delta'(-1/2)=0, Delta(-1/2)!=0, and d/dq f0(2q,q)=0 at q=2pi/3 for m=0,1,2 mod 3
+[PASS] C2a orbit of (a,0), a>=1: slice frequencies <= 2a, attained
+[PASS] C2b orbit of (a,1), a>=1: slice frequencies <= 2a+1, attained; (a,1) in H_n iff a<=n-1
+[PASS] C3 diagnostics m=3..8: slice image has rank 2(m-2) and every element has g'(-1/2)=0
+[PASS] C4 m=3 control: slice image spanned by 1 and 4x^2+4x-2 (the promoted m=3 form)
+[PASS] D1a (2-sqrt3)y^2-6y-18 > 0 at y=sqrt(629), and y=sqrt(629) beyond the vertex (increasing)
+[PASS] D1b 135m^2-216sqrt3 m-324 > 0 for m>=4 (positive at 4, increasing beyond vertex)
+[PASS] D2 m=629: K1=1089, K2=1095, L=78; F-F0=O(q^6), F(pi)=(-1)^m, F'(2pi/3)=0, lambda,alpha in [0,1], degree K2+2L<=2m
+[PASS] D2 m=630: K1=1086, K2=1092, L=78; F-F0=O(q^6), F(pi)=(-1)^m, F'(2pi/3)=0, lambda,alpha in [0,1], degree K2+2L<=2m
+[PASS] D2 m=1000: K1=1728, K2=1734, L=96; F-F0=O(q^6), F(pi)=(-1)^m, F'(2pi/3)=0, lambda,alpha in [0,1], degree K2+2L<=2m
+[PASS] D3a closed-form moments: mu2 = 3m^2 = -F0''(0), mu4 = 9m^4 = F0''''(0) (m=629,630,1000)
+[PASS] D3b negative control: without B the q^4 condition fails (excess > 0)
+[PASS] D3c m=3: construction degree bound fails (K2+2L>2m), consistent with SCALAR_INFEASIBLE_M3
+20/20 checks passed
