@@ -2,6 +2,15 @@
 
 **Date:** 2026-11-05
 
+**Next-session plan — 2026-11-06:** user requested a work plan based on
+the symmetry-selection intuition; see
+[plan](../reports/2026-11-06--work-plan-symmetry-common-cone.md), written
+2026-11-05. First audit the current premises and primary-source novelty;
+then freeze one additional symmetry condition before any calculation.
+Protection, isotropy, selection dynamics and physical scale remain
+separate obligations. Planning only: no future calculation executed or
+external review sent; no scientific status promoted by this entry.
+
 **Local symmetry normal form — 2026-11-05:** continued by user instruction;
 [contract](../theory/COMMON_CONE_LOCAL_SYMMETRY_NORMAL_FORM.md),
 [report](../reports/2026-11-05--common-cone-symmetry-normal-form.md).
