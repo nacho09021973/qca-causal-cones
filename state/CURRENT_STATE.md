@@ -14,12 +14,19 @@ OPEN.
 **Gate chartered — 2026-11-05:** aligned hexagons, all m >= 4 (Sec. 16),
 frozen at `689fd30`; scalar incompatibility for every m >= 4 (analytic
 proof or exact certificate with universal quantifiers) or an exact
-globally bounded compatible candidate; one session of at most 90 minutes. OPEN; **execution
-authorized**; nothing computed.
+globally bounded compatible candidate; one session of at most 90 minutes. Executed
+2026-11-05 (see «Gate executed» below).
 
-**Recorded late — 2026-11-05:** PH refutation test on H25 (Sec. 17),
-chartered `6eb50c1`, executed 2026-11-04: author verdict `PROVED_FOR_S25`,
-PRELIMINARY, one local non-blind Codex review (PASS); promotion pending.
+**Bounded result promoted — 2026-11-05:** PH refutation test on H25
+(Sec. 17, chartered `6eb50c1`): H25 `PROVED_FOR_S25` (no s=2 walk in
+`W_hex^sym`, hence `W_hex`, with `conv F = H25` or H25′ reaches `r_in`),
+(PH⇒) `NOT_REFUTED_ON_H25`, HX2 `CONFIRMED_FOR_S25`. Sealed Grok review PASS
+plus local Codex review PASS. Qualitative gap only; (PH) not proved;
+hexagonal class OPEN.
+
+**Gate executed — 2026-11-05:** aligned all-m (Sec. 16, `1154fad`):
+`OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`; vertex-slice route closed for m >= 629;
+PRELIMINARY, unreviewed.
 
 **Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
 frozen at `9bf3019` after two Grok rounds; a definitional audit of the
@@ -2773,6 +2780,19 @@ solver; finite checks of selected m are not a certificate. Status: OPEN;
 computed. Review needs separate authorization to send; promotion is a
 separate user decision.
 
+All-m execution (2026-11-05, `1154fad`): [report](../reports/2026-11-05--hex-trace-aligned-all-m.md),
+author Claude Code (Claude Opus 5.5); verifier
+`scripts/verify_hex_trace_aligned_all_m.py` (20/20, SHA256 `f8da0f94…`).
+The slice image of invariant residuals on `p = 2q` is exactly
+`{g : deg g <= 2m-4, g'(-1/2) = 0}`; for every m >= 629 an explicit product
+of bounded cosine polynomials gives `|f| <= 1` on the whole slice, so no
+certificate supported on the vertex-direction lines (the m=3 type) can
+prove the all-m statement. Not a compatible candidate (bound off the slice
+not examined); 4 <= m <= 628 not decided. Outcome
+`OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`; unresolved step: a two-dimensional
+certificate or a globally bounded candidate; no automatic continuation.
+Status: **PRELIMINARY, not independently reviewed, not promoted.**
+
 **S25 Astra review attempt:** recorded without verdict (`5512a96`,
 `SIN_DICTAMEN_CONSERVADO`; empty `run.out`, no report). Not a completed
 review. S25 itself is recorded in Sec. 17.
@@ -2807,3 +2827,22 @@ with `scripts/verify_hex_s25_review.py` (13/13, SHA256 `010fa7fb…`; not
 needed for the exclusion with exact hull H25). Both verifiers rerun in this
 session at `5512a96`: 14/14 and 13/13. Status: **PRELIMINARY; one local
 non-blind cross-family review; promotion pending (user decision).**
+
+Sealed review (2026-11-05): Grok `grok-4.7` via `revision-ciega`
+(`~/herramientas` `ce09890`), base `da49c00`, no earlier verdicts attached
+([report](../debates/2026-11-05--ph-refutation-hex-s25-review-grok/informe_grok.md),
+`5a87790`): **PASS** on all five blocks, no mandatory repairs; two
+clarifications outside the gap chain (the S7/S13/S19 classification is
+checked by `verify_hex_s25_review.py`, not by the contract verifier, found
+independently of the Codex review; the extreme-layer label checks only
+cardinalities, vertex identity covered by `check_T2_minimal`). No code
+executed by the reviewer.
+
+**Promoted 2026-11-05 (user instruction «SI» to the proposal to promote
+S25):** H25 `PROVED_FOR_S25`, (PH⇒) `NOT_REFUTED_ON_H25` (never
+`CONFIRMED`), HX2 `CONFIRMED_FOR_S25`. Scope: s=2, scalar node, traceless
+isotropic linear term, `conv F = H25` or H25′, in `W_hex^sym` (hence
+`W_hex`); qualitative gap, no uniform separation from `r_in`; no evidence
+for (PH) beyond H25; hexagonal class and M1 class OPEN. The verifier runs
+are the author's and Codex's, not Grok's. Previous status: PRELIMINARY; one
+local non-blind cross-family review; promotion pending.
