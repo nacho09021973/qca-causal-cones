@@ -26,8 +26,8 @@ hexagonal class OPEN.
 
 **Gate executed — 2026-11-05:** aligned all-m (Sec. 16, `1154fad`):
 `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`; vertex-slice route closed for m >= 629;
-PRELIMINARY; OpenAI sealed review: maths PASS, documentary repairs applied,
-re-review pending.
+PRELIMINARY; OpenAI sealed review (maths PASS, documentary repairs) and
+Grok re-review PASS; promotion pending.
 
 **Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
 frozen at `9bf3019` after two Grok rounds; a definitional audit of the
@@ -2798,8 +2798,12 @@ Sealed review (2026-11-05): OpenAI `gpt-6-astra`
 mathematics PASS (blocks 1–3), REPAIR_REQUIRED on documentation (verifier
 label C2b, D3a partly by construction, timing compliance, general-m
 walk-to-scalar bridge, two phrasings); repairs applied, outcome unchanged.
-Status: **PRELIMINARY; one sealed review with documentary repairs applied;
-bounded re-review pending; not promoted.**
+Bounded re-review (2026-11-05): Grok `grok-4.7` (DeepSeek unavailable,
+insufficient balance; user chose Grok)
+([report](../debates/2026-11-05--hex-trace-aligned-all-m-rereview-grok/informe_grok.md)):
+**PASS**, R1–R6 resolved, no new error, no remaining mandatory repair.
+Status: **PRELIMINARY; INDEPENDENT_REVIEW_PASS_TWO_HOUSES (OpenAI maths PASS
+plus repairs, Grok re-review PASS); PROMOTION_PENDING.**
 
 **S25 Astra review attempt:** recorded without verdict (`5512a96`,
 `SIN_DICTAMEN_CONSERVADO`; empty `run.out`, no report). Not a completed
