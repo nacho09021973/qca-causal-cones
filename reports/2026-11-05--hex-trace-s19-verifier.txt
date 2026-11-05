@@ -1,0 +1,15 @@
+[PASS] 19 points; origin plus three disjoint six-point D6 orbits
+[PASS] D6 preserves support
+[PASS] maximum physical radius is 1
+[PASS] orbit sums equal the three stated cosine sums
+[PASS] normal-line coefficients leave exactly the stated one-parameter family
+[PASS] family has f(0)=1 and all three normal-line cosines
+[PASS] P and Q orbit values (second direct evaluation)
+[PASS] P and Q affine values
+[PASS] bounds force a1=-1/6
+[PASS] unique candidate is (S2+S3-S1)/6
+[PASS] C exact radical value
+[PASS] C value is strictly below -1 by exact positive radicals
+[PASS] second route: q=p/2 has polynomial expression in cos(q)
+[PASS] second contradiction: cos(q)=3/5 gives -1997/1875 < -1
+14/14 exact checks passed

@@ -1,0 +1,7 @@
+[PASS] Delta exact Laurent factorization
+[PASS] Delta normal-line double factors
+[PASS] Delta is real/even and D6 invariant
+[PASS] Delta Newton polygon is exactly the radius-two hexagon
+[PASS] S19 family equals f0 - 32*a1*Delta
+[PASS] S19 forced candidate has residual coefficient 16/3
+6/6 exact checks passed
