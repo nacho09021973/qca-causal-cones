@@ -1,0 +1,6 @@
+ca2e1788cdb8793c1cc9c0c60902d131280a0163d27be5af81c034d9fd6c6906  theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md
+432930498ba0abcd9611b856b673c755d9cfc397a6db1855c695349e6fb6c8c9  reports/2026-11-05--hex-trace-aligned-all-m.md
+f8da0f94f61f4dcd56f4f0ec5086ce96dd440019cfeb20b0ef5f6a3aa19ecdf9  scripts/verify_hex_trace_aligned_all_m.py
+139ddb03cd93e4f8c665f3730acf215d7a9b5264b4d65f242ec56fbc1856d9d1  reports/2026-11-05--hex-trace-aligned-all-m-verifier.txt
+c1115dcd7e269b491d3cb65e339ab6f2fd561cdcf38efe0c92a9a8f4f7a1d4a8  reports/2026-11-05--hex-trace-m3.md
+321b53d0dbc234724188b350a1ea050fc79747c5f7e038cdb17cd834b689423b  reports/2026-11-05--hex-trace-scalar-method.md

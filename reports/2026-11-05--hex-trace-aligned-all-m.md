@@ -5,12 +5,16 @@ Contract: [`HEX_TRACE_ALIGNED_ALL_M_GATE.md`](../theory/HEX_TRACE_ALIGNED_ALL_M_
 preregistration commit `689fd30`; execution authorized by the user
 («AÑADELO», recorded in CURRENT_STATE Sec. 16 at `302b616`).
 Session: start 2026-11-05T13:01:50Z (first command), verifier final run
-13:03:18Z, end 2026-11-05T13:04:19Z, within the 90-minute budget.
-Timing note: the analytic route of Secs. 3–4 was worked out by reasoning
-in the same session immediately before the first command; no code was run
-and nothing was computed by machine before the start time.
-**Outcome: `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`.** Status: PRELIMINARY, not
-independently reviewed, not promoted.
+13:03:18Z, end 2026-11-05T13:04:19Z.
+Timing note (repaired after review): the contract counts from the first
+calculation, analytic included. The analytic route of Secs. 3–4 was worked
+out by reasoning in the same session after the user's instruction and
+before the first command; that start has no recorded timestamp. Compliance
+with the 90-minute budget is therefore **[UNVERIFIED]**; only the
+machine-recorded interval above is documented. No code was run before it.
+**Outcome: `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`.** Status: PRELIMINARY;
+sealed OpenAI review (`gpt-6-astra`) REPAIR_REQUIRED on documentation only,
+repairs applied (Sec. 7); bounded re-review pending; not promoted.
 
 ## 0. Pre-step check
 
@@ -61,6 +65,29 @@ mirror lines p=0, q=0, p=q are permuted). It suffices to treat invariant f.
 
 The divisibility direction is analytic (not mechanized); the closure in
 Secs. 3–4 uses only the converse.
+
+**Walk-to-scalar relaxation for general m (added after review).** This is
+the bridge that makes the scalar problem relevant to walks; it is stated
+here for the general aligned domain, with the same hypotheses as the m=3
+bridge (`reports/2026-11-05--hex-trace-m3.md` Sec. 4, R1). Let U be an s=2
+walk with support F in `H_m` (in `Lambda/m` coordinates), exact hull the
+radius-one hexagon, `U(0) = e^{-i phi} I`, traceless isotropic linear term,
+and suppose `c_0 = r = sqrt3/2`. Put `U~ = e^{i phi} U` and
+`f_U = Re Tr U~ / 2`. Then `-1 <= f_U <= 1` (two unimodular eigenvalues),
+`f_U(0) = 1`, and supp `f_U` lies in `F ∪ (-F)`, inside the centrally
+symmetric `H_m`. By HEX_CEILING report (`reports/2026-11-01--hex-ceiling.md`)
+Sec. 3 Step 1, saturation gives on each facet normal
+`U~(t n) = e^{-irt} P_+(n) + e^{irt} P_-(n)`; that step uses the
+commensurate frequency grid (here of degree N = m along each normal),
+unitarity, the scalar node and the traceless isotropic generator, not
+minimal support. With s = 2 and `c_0 > 0` both projectors have rank one, so
+`f_U(t n) = cos(r t)`: in p, q these are the normal cosines of Sec. 2. The
+D6 average of `f_U` keeps all these properties and support in `H_m`.
+Hence a walk saturating `c_0 = r_in` in this class gives a scalar candidate
+of Sec. 2; scalar infeasibility for some m would exclude such walks at
+that m. This bridge was not used in Secs. 3–4 and no walk statement is made
+here; its general-N rigidity input is the cited HEX_CEILING step, read, not
+re-proved.
 
 ## 3. The slice p = 2q and the image of the residuals
 
@@ -127,17 +154,21 @@ K ≡ m mod 2 (K ≡ 0 or 3 mod 6), `K1` the largest such with `K1^2 < s^2`,
   `(2 - sqrt3) y^2 - 6y - 18 >= 0`, y = sqrt m, true for m >= 629 (D1a).
 - `F(π) = (-1)^m` (K ≡ m mod 2, L even) and `F'(2π/3) = 0` (K, L ≡ 0 mod 3).
 
-Instances m = 629, 630, 1000 are checked exactly (D2, D3a); a negative
+Instances m = 629, 630, 1000 are checked exactly: D2 by series (the
+independent Taylor test); D3a is the closed-form moment algebra, which
+cancels by the definition of α and is therefore partly by construction; a negative
 control without B fails the q^4 condition (D3b). At m = 3 the construction
 does not apply (D3c), consistent with the promoted m=3 certificate; the
 check only says the construction is unavailable there, not that the slice
 is infeasible for 4 <= m <= 628.
 
-Second derivation of the key point (contract Sec. 3): in the scaled
-variable t = mq the slice conditions approach those of `cos(sqrt3 t)`, a
-bounded function of exponential type sqrt3 < 2 that meets them; the
-explicit construction is the finite-degree version of this limit, so the
-closure is expected, not an artefact of the construction.
+Local control (repaired after review; not a second derivation of all
+conditions): in the scaled variable t = mq the three conditions at q = 0
+become those of `cos(sqrt3 t)`, a bounded function of exponential type
+sqrt3 < 2 that meets them. The conditions at q = π and q = 2π/3 move to
+infinity under this scaling and are not tested by the limit; they are
+checked by the congruences of Sec. 4 and by D2. The control only shows the
+local conditions are not an obstruction in the limit.
 
 ## 5. What is and is not established
 
@@ -149,7 +180,7 @@ closure is expected, not an artefact of the construction.
   `SCALAR_COMPATIBLE_ALIGNED_M_<m>`; nothing about walks; nothing for
   4 <= m <= 628; nothing about other lines or 2D certificates.
 - Unresolved step for the all-m question: a certificate using points off
-  the vertex-direction lines (a genuinely two-dimensional measure), or an
+  the vertex-direction lines, or an
   exact globally bounded candidate. The contract allows no automatic
   continuation; either needs a new decision.
 - Prior art: the slice problem is a one-variable extremal problem of
@@ -161,15 +192,38 @@ closure is expected, not an artefact of the construction.
 ## 6. Provenance
 
 Verifier `scripts/verify_hex_trace_aligned_all_m.py`, created before its
-first run; 20 exact checks; SHA-256
-`f8da0f94f61f4dcd56f4f0ec5086ce96dd440019cfeb20b0ef5f6a3aa19ecdf9`.
+first run; 21 exact checks after the review repair (20 at `1154fad`, SHA-256
+`f8da0f94…`); current SHA-256
+`1c31653c4decbe7027b9644e155618ece7150b6a64f9d11cf0cb5fbea794f4e0`.
 Command: `python3 -B scripts/verify_hex_trace_aligned_all_m.py` (about 2 s,
 sympy 1.14.0). Stdout: `reports/2026-11-05--hex-trace-aligned-all-m-verifier.txt`.
 Commands run in the session: the verifier, three times (first run 17/17
 before the second-route checks D3 were added; then 20/20, saved; a rerun
-after registering the script, 20/20, bytes unchanged). No
+after registering the script, 20/20, bytes unchanged); after the review
+repair R1, one more run, 21/21, saved as the current stdout. No
 floating-point search, no nonlinear solver, no radius sweep. Not
 mechanized: the divisibility step of Sec. 2 and the interpretation of the
 inequalities D1 as valid for all m >= 629 (monotonicity beyond the vertex
 is checked, the algebra from the construction to D1 is in Sec. 4).
 Session end: 2026-11-05T13:04:19Z.
+
+## 7. Review and repairs
+
+Sealed review by OpenAI `gpt-6-astra` via `revision-ciega astra`
+(`~/herramientas` `ce09890`), base `8204822`
+([report](../debates/2026-11-05--hex-trace-aligned-all-m-review-astra/informe_astra.md)):
+blocks 1–3 (reduction and converse, slice image and one-variable
+equivalence, construction) PASS; blocks 4–5 REPAIR_REQUIRED, documentary.
+Repairs, none changing the construction or the outcome:
+
+- R1 verifier label C2b claimed a membership check it did not make: label
+  narrowed; new check C2c (hex norm of (a,1) is a+1) added. 21/21.
+- R2 D3a partly by construction: stated in the label and in Sec. 4; D2 is
+  the independent Taylor test.
+- R3 timing: budget compliance marked [UNVERIFIED] (analytic start not
+  timestamped).
+- R4 walk-to-scalar bridge for general m added to Sec. 2, with hypotheses,
+  reflected support, averaging and the cited rigidity step with N = m.
+- R5 the `cos(sqrt3 t)` paragraph restated as a local control only.
+- R6 "a genuinely two-dimensional measure" removed: points off the vertex
+  lines could lie on other lines.

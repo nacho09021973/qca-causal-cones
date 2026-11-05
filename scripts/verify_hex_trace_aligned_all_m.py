@@ -17,7 +17,8 @@ certified quantity, fail-closed):
      F=A*B, bounded by 1 by construction, meets every slice condition.
      D1 symbolic inequalities for all m>=629, D2 explicit instances
      m=629, 630, 1000 (Taylor to q^4, F(pi), F'(2pi/3), lambda, alpha, degree),
-     D3 second route by closed-form moments, negative control, m=3 consistency.
+     D3 closed-form moments (algebraic, partly by construction; D2 is the
+     independent Taylor test), negative control, m=3 consistency.
 
 What it does NOT certify: the universal divisibility (R) of the general
 reduction (analytic, report Sec. 2), boundedness of any candidate off the
@@ -125,8 +126,12 @@ def tops_ok(i0, j0, top, amin):
 
 check('C2a orbit of (a,0), a>=1: slice frequencies <= 2a, attained',
       tops_ok(a, 0, 2*a, 1) and any(sp.expand(2*i + j - 2*a) == 0 for i, j in sym_orbit(a, 0)))
-check('C2b orbit of (a,1), a>=1: slice frequencies <= 2a+1, attained; (a,1) in H_n iff a<=n-1',
+check('C2b orbit of (a,1), a>=1: slice frequencies <= 2a+1, attained',
       tops_ok(a, 1, 2*a + 1, 1) and any(sp.expand(2*i + j - 2*a - 1) == 0 for i, j in sym_orbit(a, 1)))
+ap = sp.symbols('ap', positive=True)            # ap = a - 1 >= 0 handled via a = ap + 1 > 1 and a = 1
+hex_a1 = sp.Max(sp.Abs(ap + 1), 1, sp.Abs(ap + 2))
+check('C2c hex norm of (a,1) is a+1 for a>=1, so (a,1) in H_n iff a<=n-1 (Review R1)',
+      sp.simplify(hex_a1 - (ap + 2)) == 0 and hexn(1, 1) == 2)
 
 
 def slice_image(n):
@@ -224,7 +229,8 @@ for mm in (629, 630, 1000):
     mu2 = lam*K1**2 + (1 - lam)*K2**2
     mu4 = lam*K1**4 + (1 - lam)*K2**4 - 3*(1 - alpha)*sp.Integer(L)**4
     okm &= sp.simplify(mu2 - 3*mm**2) == 0 and sp.simplify(mu4 - 9*mm**4) == 0
-check('D3a closed-form moments: mu2 = 3m^2 = -F0\'\'(0), mu4 = 9m^4 = F0\'\'\'\'(0) (m=629,630,1000)', okm)
+check('D3a closed-form moments (algebraic; cancels by the definition of alpha, so it is '
+      'not an independent test of the q^4 Taylor coefficient: D2 is) mu2 = 3m^2, mu4 = 9m^4', okm)
 C = construction(629)
 Fbad = C['A']                                    # drop the B factor (alpha=1)
 F0b = sp.cos(629*q)**2 + sp.cos(629*q) - 1

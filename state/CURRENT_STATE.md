@@ -26,7 +26,8 @@ hexagonal class OPEN.
 
 **Gate executed — 2026-11-05:** aligned all-m (Sec. 16, `1154fad`):
 `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`; vertex-slice route closed for m >= 629;
-PRELIMINARY, unreviewed.
+PRELIMINARY; OpenAI sealed review: maths PASS, documentary repairs applied,
+re-review pending.
 
 **Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
 frozen at `9bf3019` after two Grok rounds; a definitional audit of the
@@ -2782,7 +2783,8 @@ separate user decision.
 
 All-m execution (2026-11-05, `1154fad`): [report](../reports/2026-11-05--hex-trace-aligned-all-m.md),
 author Claude Code (Claude Opus 5.5); verifier
-`scripts/verify_hex_trace_aligned_all_m.py` (20/20, SHA256 `f8da0f94…`).
+`scripts/verify_hex_trace_aligned_all_m.py` (20/20 at `1154fad`; 21/21 after
+review repair, SHA256 `1c31653c…`).
 The slice image of invariant residuals on `p = 2q` is exactly
 `{g : deg g <= 2m-4, g'(-1/2) = 0}`; for every m >= 629 an explicit product
 of bounded cosine polynomials gives `|f| <= 1` on the whole slice, so no
@@ -2791,7 +2793,13 @@ prove the all-m statement. Not a compatible candidate (bound off the slice
 not examined); 4 <= m <= 628 not decided. Outcome
 `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`; unresolved step: a two-dimensional
 certificate or a globally bounded candidate; no automatic continuation.
-Status: **PRELIMINARY, not independently reviewed, not promoted.**
+Sealed review (2026-11-05): OpenAI `gpt-6-astra`
+([report](../debates/2026-11-05--hex-trace-aligned-all-m-review-astra/informe_astra.md)):
+mathematics PASS (blocks 1–3), REPAIR_REQUIRED on documentation (verifier
+label C2b, D3a partly by construction, timing compliance, general-m
+walk-to-scalar bridge, two phrasings); repairs applied, outcome unchanged.
+Status: **PRELIMINARY; one sealed review with documentary repairs applied;
+bounded re-review pending; not promoted.**
 
 **S25 Astra review attempt:** recorded without verdict (`5512a96`,
 `SIN_DICTAMEN_CONSERVADO`; empty `run.out`, no report). Not a completed

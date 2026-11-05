@@ -462,7 +462,7 @@ its transport to H25. Not itself independently reviewed.
 `verify_hex_trace_aligned_all_m.py` supports
 [`HEX_TRACE_ALIGNED_ALL_M`](../theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md),
 preregistered at `689fd30`, for the
-[report](../reports/2026-11-05--hex-trace-aligned-all-m.md). 20 exact checks,
+[report](../reports/2026-11-05--hex-trace-aligned-all-m.md). 21 exact checks,
 about 2 s. Certified: general-m interpolant and residual factor (symbolic m);
 slice `p = 2q` identities; slice image of invariant residuals (K-point
 constraint, symbolic triangular tops; rank diagnostics m = 3..8 and the m = 3
@@ -470,4 +470,7 @@ control are consistency checks only); inequalities giving the explicit
 bounded slice solution for all m >= 629, with exact instances m = 629, 630,
 1000, a closed-form second route and a negative control.
 Does **not** certify: the divisibility step of the general reduction, any
-bound off the slice, or the all-m question (OPEN). Not independently reviewed.
+bound off the slice, or the all-m question (OPEN). D3a is closed-form moment
+algebra, partly by construction; D2 is the independent Taylor test. Sealed
+OpenAI review REPAIR_REQUIRED (documentary), repairs applied (C2c added);
+re-review pending.
