@@ -2,6 +2,53 @@
 
 **Date:** 2026-11-05
 
+**Local symmetry normal form — 2026-11-05:** continued by user instruction;
+[contract](../theory/COMMON_CONE_LOCAL_SYMMETRY_NORMAL_FORM.md),
+[report](../reports/2026-11-05--common-cone-symmetry-normal-form.md).
+For fixed s=4, R_j=sigma_j tensor I and C=(sigma_y tensor tau_y)K,
+the local Hermitian derivatives necessarily have
+J_i=sigma_i tensor (v_i.tau), without assuming a shift-product ansatz.
+The two conjugate nodal doublets share the linear dispersion in magnitude;
+isotropy still requires equal squared axial coefficients. D2 alone permits
+an extra d_i sigma_i tensor I term; C forbids it. Author auxiliary checks
+279/279. **PRELIMINARY, not independently reviewed or promoted; no novelty
+claim, no value of c fixed, no universality between unrelated species.**
+
+**Local antiunitary test — 2026-11-05:** user instruction to search for
+a local symmetry relating the two cones; separate
+[contract](../theory/LOCAL_PARTICLE_HOLE_TWO_CONES_ATTEMPT.md) and
+[report](../reports/2026-11-05--local-particle-hole-two-cones.md).
+At a=3/5, theta=pi/4, the original three-shift model admits
+C=(sigma_y tensor tau_y)K, C²=+I, exchanging its nodal doublets and
+satisfying V U(k)* V†=U(-k). Coefficient intertwiner rank 15 (kernel 1).
+For the double-shift model the rank is 16 (kernel 0): no symmetry of that
+fixed local form. Author exact verifier 22/22. **PRELIMINARY, not reviewed
+or promoted; no novelty or physical charge-conjugation claim.** Does not
+establish cone survival or universality between unrelated species.
+
+**Five-point extension — 2026-11-05:** user authorized a table of further
+cone pairs in the double-shift architecture; separate
+[contract](../theory/TWO_CONES_PARAMETER_TABLE_ATTEMPT.md) and
+[report](../reports/2026-11-05--two-cones-parameter-table.md).
+For a=1/5,1/3,1/2,3/5,4/5, exact author checks pass 415/415, with the same
+27-point support and scalar commutant. Ratios: 3/2,2,3,4,9. In this family
+c_P=(1+a)/(2sqrt3), c_Q=(1-a)/(2sqrt3); sqrt3/15 is parameter-specific,
+while their sum is 1/sqrt3. **PRELIMINARY, not independently reviewed or
+promoted; no universality or novelty claim.** Ends at this five-point table.
+
+**Bounded exploratory attempt — 2026-11-05:** by user instruction to try
+another pair of cones and another structure, the double-shift s=4
+[contract](../theory/TWO_CONES_DOUBLE_SHIFT_ATTEMPT.md) and
+[report](../reports/2026-11-05--two-cones-double-shift.md) record
+`TWO_UNEQUAL_CONES`, **PRELIMINARY, not promoted**. Fixed rational point:
+two isotropic untilted rank-two Floquet nodes, c_P=4sqrt3/15 and
+c_Q=sqrt3/15 (ratio 4), globally irreducible, D2-covariant unitary with
+normalized support {-1,0,1}^3/sqrt3. Author verifier 165/165 exact checks;
+no external review or novelty claim. Different support/architecture from
+the preceding three-involution attempt; not a perturbation counterexample
+at fixed N3. No continuation beyond this fixed example is authorized by
+the attempt; earlier frozen gates and promoted results are unchanged.
+
 **Work priority — 2026-11-05:** user approval («adelante») to park the
 hexagonal line and complete the documentary loose ends of the main
 `c`/substrate line. Hexagonal results keep their promoted scope; the

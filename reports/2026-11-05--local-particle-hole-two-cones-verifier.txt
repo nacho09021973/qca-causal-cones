@@ -1,0 +1,28 @@
+original : rank = 15 ; kernel dimension = 1
+verdict = LOCAL_PHS_FOUND
+double_shift : rank = 16 ; kernel dimension = 0
+verdict = NO_LOCAL_PHS
+PASS candidate unitary
+PASS antiunitary square +I
+PASS doublet exchange
+PASS W conjugation
+PASS G0 conjugation
+PASS L0 sign reversal
+PASS G1 conjugation
+PASS L1 sign reversal
+PASS G2 conjugation
+PASS L2 sign reversal
+PASS original support size
+PASS original intertwiner rank
+PASS original coefficient (-1, -1, -1)
+PASS original coefficient (-1, -1, 1)
+PASS original coefficient (-1, 1, -1)
+PASS original coefficient (-1, 1, 1)
+PASS original coefficient (1, -1, -1)
+PASS original coefficient (1, -1, 1)
+PASS original coefficient (1, 1, -1)
+PASS original coefficient (1, 1, 1)
+PASS double_shift support size
+PASS double_shift intertwiner rank
+22/22 exact checks PASS
+No statement about physical charge or momentum-dependent transformations.

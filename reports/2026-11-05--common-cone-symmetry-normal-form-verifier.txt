@@ -1,0 +1,6 @@
+D2 nodal commutant basis: [(0, 0), (0, 1), (0, 2), (0, 3)]
+J 0 D2: [(1, 0), (1, 1), (1, 2), (1, 3)] ; D2+PHS: [(1, 1), (1, 2), (1, 3)]
+J 1 D2: [(2, 0), (2, 1), (2, 2), (2, 3)] ; D2+PHS: [(2, 1), (2, 2), (2, 3)]
+J 2 D2: [(3, 0), (3, 1), (3, 2), (3, 3)] ; D2+PHS: [(3, 1), (3, 2), (3, 3)]
+279/279 exact checks PASS
+No proof of isotropy, exact factorization, or novelty follows from this count.

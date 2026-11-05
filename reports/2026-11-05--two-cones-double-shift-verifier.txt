@@ -1,0 +1,169 @@
+PASS W unitary
+PASS nodal P phase
+PASS nodal Q phase
+PASS P rank two
+PASS Q rank two
+PASS G0 Hermitian
+PASS G0 involution
+PASS L0 Hermitian
+PASS L0 involution
+PASS axis 0 Laurent unitarity -4
+PASS axis 0 Laurent unitarity -2
+PASS axis 0 Laurent unitarity 0
+PASS axis 0 Laurent unitarity 2
+PASS axis 0 Laurent unitarity 4
+PASS axis 0 origin
+PASS axis 0 derivative
+PASS G1 Hermitian
+PASS G1 involution
+PASS L1 Hermitian
+PASS L1 involution
+PASS axis 1 Laurent unitarity -4
+PASS axis 1 Laurent unitarity -2
+PASS axis 1 Laurent unitarity 0
+PASS axis 1 Laurent unitarity 2
+PASS axis 1 Laurent unitarity 4
+PASS axis 1 origin
+PASS axis 1 derivative
+PASS G2 Hermitian
+PASS G2 involution
+PASS L2 Hermitian
+PASS L2 involution
+PASS axis 2 Laurent unitarity -4
+PASS axis 2 Laurent unitarity -2
+PASS axis 2 Laurent unitarity 0
+PASS axis 2 Laurent unitarity 2
+PASS axis 2 Laurent unitarity 4
+PASS axis 2 origin
+PASS axis 2 derivative
+PASS 27 nonzero coefficients
+PASS coefficient sum
+PASS coefficient moment 0
+PASS D2 coefficient 0 (-2, -2, -2)
+PASS D2 coefficient 0 (-2, -2, 0)
+PASS D2 coefficient 0 (-2, -2, 2)
+PASS D2 coefficient 0 (-2, 0, -2)
+PASS D2 coefficient 0 (-2, 0, 0)
+PASS D2 coefficient 0 (-2, 0, 2)
+PASS D2 coefficient 0 (-2, 2, -2)
+PASS D2 coefficient 0 (-2, 2, 0)
+PASS D2 coefficient 0 (-2, 2, 2)
+PASS D2 coefficient 0 (0, -2, -2)
+PASS D2 coefficient 0 (0, -2, 0)
+PASS D2 coefficient 0 (0, -2, 2)
+PASS D2 coefficient 0 (0, 0, -2)
+PASS D2 coefficient 0 (0, 0, 0)
+PASS D2 coefficient 0 (0, 0, 2)
+PASS D2 coefficient 0 (0, 2, -2)
+PASS D2 coefficient 0 (0, 2, 0)
+PASS D2 coefficient 0 (0, 2, 2)
+PASS D2 coefficient 0 (2, -2, -2)
+PASS D2 coefficient 0 (2, -2, 0)
+PASS D2 coefficient 0 (2, -2, 2)
+PASS D2 coefficient 0 (2, 0, -2)
+PASS D2 coefficient 0 (2, 0, 0)
+PASS D2 coefficient 0 (2, 0, 2)
+PASS D2 coefficient 0 (2, 2, -2)
+PASS D2 coefficient 0 (2, 2, 0)
+PASS D2 coefficient 0 (2, 2, 2)
+PASS P compression 0
+PASS Q compression 0
+PASS coefficient moment 1
+PASS D2 coefficient 1 (-2, -2, -2)
+PASS D2 coefficient 1 (-2, -2, 0)
+PASS D2 coefficient 1 (-2, -2, 2)
+PASS D2 coefficient 1 (-2, 0, -2)
+PASS D2 coefficient 1 (-2, 0, 0)
+PASS D2 coefficient 1 (-2, 0, 2)
+PASS D2 coefficient 1 (-2, 2, -2)
+PASS D2 coefficient 1 (-2, 2, 0)
+PASS D2 coefficient 1 (-2, 2, 2)
+PASS D2 coefficient 1 (0, -2, -2)
+PASS D2 coefficient 1 (0, -2, 0)
+PASS D2 coefficient 1 (0, -2, 2)
+PASS D2 coefficient 1 (0, 0, -2)
+PASS D2 coefficient 1 (0, 0, 0)
+PASS D2 coefficient 1 (0, 0, 2)
+PASS D2 coefficient 1 (0, 2, -2)
+PASS D2 coefficient 1 (0, 2, 0)
+PASS D2 coefficient 1 (0, 2, 2)
+PASS D2 coefficient 1 (2, -2, -2)
+PASS D2 coefficient 1 (2, -2, 0)
+PASS D2 coefficient 1 (2, -2, 2)
+PASS D2 coefficient 1 (2, 0, -2)
+PASS D2 coefficient 1 (2, 0, 0)
+PASS D2 coefficient 1 (2, 0, 2)
+PASS D2 coefficient 1 (2, 2, -2)
+PASS D2 coefficient 1 (2, 2, 0)
+PASS D2 coefficient 1 (2, 2, 2)
+PASS P compression 1
+PASS Q compression 1
+PASS coefficient moment 2
+PASS D2 coefficient 2 (-2, -2, -2)
+PASS D2 coefficient 2 (-2, -2, 0)
+PASS D2 coefficient 2 (-2, -2, 2)
+PASS D2 coefficient 2 (-2, 0, -2)
+PASS D2 coefficient 2 (-2, 0, 0)
+PASS D2 coefficient 2 (-2, 0, 2)
+PASS D2 coefficient 2 (-2, 2, -2)
+PASS D2 coefficient 2 (-2, 2, 0)
+PASS D2 coefficient 2 (-2, 2, 2)
+PASS D2 coefficient 2 (0, -2, -2)
+PASS D2 coefficient 2 (0, -2, 0)
+PASS D2 coefficient 2 (0, -2, 2)
+PASS D2 coefficient 2 (0, 0, -2)
+PASS D2 coefficient 2 (0, 0, 0)
+PASS D2 coefficient 2 (0, 0, 2)
+PASS D2 coefficient 2 (0, 2, -2)
+PASS D2 coefficient 2 (0, 2, 0)
+PASS D2 coefficient 2 (0, 2, 2)
+PASS D2 coefficient 2 (2, -2, -2)
+PASS D2 coefficient 2 (2, -2, 0)
+PASS D2 coefficient 2 (2, -2, 2)
+PASS D2 coefficient 2 (2, 0, -2)
+PASS D2 coefficient 2 (2, 0, 0)
+PASS D2 coefficient 2 (2, 0, 2)
+PASS D2 coefficient 2 (2, 2, -2)
+PASS D2 coefficient 2 (2, 2, 0)
+PASS D2 coefficient 2 (2, 2, 2)
+PASS P compression 2
+PASS Q compression 2
+PASS axis 0 sign -1 exact half trace
+PASS axis 0 sign -1 determinant
+PASS axis 0 sign -1 P phase slope
+PASS axis 0 sign -1 Q phase slope
+PASS axis 0 sign 1 exact half trace
+PASS axis 0 sign 1 determinant
+PASS axis 0 sign 1 P phase slope
+PASS axis 0 sign 1 Q phase slope
+PASS axis 1 sign -1 exact half trace
+PASS axis 1 sign -1 determinant
+PASS axis 1 sign -1 P phase slope
+PASS axis 1 sign -1 Q phase slope
+PASS axis 1 sign 1 exact half trace
+PASS axis 1 sign 1 determinant
+PASS axis 1 sign 1 P phase slope
+PASS axis 1 sign 1 Q phase slope
+PASS axis 2 sign -1 exact half trace
+PASS axis 2 sign -1 determinant
+PASS axis 2 sign -1 P phase slope
+PASS axis 2 sign -1 Q phase slope
+PASS axis 2 sign 1 exact half trace
+PASS axis 2 sign 1 determinant
+PASS axis 2 sign 1 P phase slope
+PASS axis 2 sign 1 Q phase slope
+PASS P untilted
+PASS P isotropic characteristic polynomial
+PASS Q untilted
+PASS Q isotropic characteristic polynomial
+PASS commutant constraint rank 15
+PASS max raw step squared 12
+PASS group generator 2e0
+PASS group generator 2e1
+PASS group generator 2e2
+PASS speed ratio four
+PASS positive unequal speeds
+165/165 exact checks PASS
+Raw support: {-2,0,2}^3; translation group: 2Z^3
+Normalized cP = 4*sqrt(3)/15 ; cQ = sqrt(3)/15 ; ratio = 4
+Verdict: TWO_UNEQUAL_CONES (fixed model, author verification only)
