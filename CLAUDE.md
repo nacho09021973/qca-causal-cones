@@ -1,6 +1,9 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Single instruction file for every AI agent working in this repository: Claude
+Code reads it directly, Codex through `project_doc_fallback_filenames =
+["CLAUDE.md"]` in its `config.toml`, and Grok. There is no `AGENTS.md` here on
+purpose: with both files Grok would load both (`~/herramientas/README.md`).
 
 ## What this repository is
 
@@ -23,8 +26,12 @@ In this order:
 2. `state/CURRENT_STATE.md` — **single source of truth** for status, gates, what
    is authorized. If any other file (including this one, `README.md`, a gate
    charter or a report) contradicts it, `CURRENT_STATE.md` wins.
-3. `AGENTS.md` — the shared entry point for every AI agent, plus
-   `~/herramientas/REGLAS.md`, the cross-repo rules that also apply here.
+3. `~/herramientas/REGLAS.md` — the cross-repo rules, which also apply here.
+
+Before every experiment, computation or code change, write down three things:
+what is already known (with its source), the concrete question to be answered,
+and which result would force abandoning that line. Each charter records the
+third point for the line, separately from its per-hypothesis verdicts.
 
 Before investigating any question, check the literature index:
 `grep -i <topic> biblioteca/INDICE.md`. `biblioteca/` is git-ignored and local;
@@ -32,11 +39,11 @@ the index only *locates* papers, it proves nothing — read the PDF and cite
 `file.pdf p.N`, otherwise tag the claim `[UNVERIFIED]`. Tags marked `proposed`
 were written by an AI. Never hand-edit `INDICE.md`; edit
 `scripts/biblioteca_catalog/curated.csv` (versioned, with `tags.csv`) and
-regenerate. Verified 2026-09-26: `biblioteca/` is **not present in this
-checkout**, and the generator `~/herramientas/biblioteca_catalog/build_catalog.py`
-named by `README.md` and `AGENTS.md` does not exist on this machine. Ask the
-user rather than inventing a path; fall back to `sources/` (versioned PDFs with
-recorded SHA256) as primary literature.
+regenerate with `python3 ~/herramientas/biblioteca_catalog/build_catalog.py
+--repo .`. Verified 2026-11-06: `biblioteca/INDICE.md` and the generator both
+exist on this machine (on 2026-09-26 neither did). If either is missing in a
+checkout, ask the user rather than inventing a path; `sources/` (versioned PDFs
+with recorded SHA256) is the primary literature that is always present.
 
 ## Commands
 
@@ -89,7 +96,7 @@ When you add a new verifier, add its two exact forms there.
 | `sources/` | primary PDFs, with `README.md` recording SHA256 and which equations were actually read |
 
 Language: scientific artifacts (`theory/`, `reports/`, `state/`, `papers/`) are in
-English; `AGENTS.md`, `comite/` and `debates/` are in Spanish. Follow the
+English; `comite/` and `debates/` are in Spanish. Follow the
 convention of the directory you are writing into. Commit messages are short
 English imperatives ("Record Grok authentication failure…", "Charter C3 conditioning gate").
 
@@ -203,4 +210,18 @@ Epistemic (from `~/herramientas/REGLAS.md`):
   that model). An *account-level* failure is identical across the family, so
   descending wastes calls: mark the house `ausente`. Record whatever actually
   answered; never downgrade a seat silently.
-- Neither authorizes anything; the user decides.
+- `revision-ciega <astra|opus|deepseek> <folder> <document>...` — sealed blind
+  review of one or more documents (e.g. a report or `state/CURRENT_STATE.md`) by
+  a single model; the brief (`prompt.md`) and the report go in `reports/` or
+  `debates/`, next to what was reviewed. `opus` does not count as independent
+  review of text written with Claude.
+- `investigacion-gemini investigaciones/<YYYY-MM-DD>-<slug> [prompt_abierto.md]`
+  — research brief to Gemini with Google search. It locates, it does not prove:
+  every citation is read in the original and logged in that folder's
+  `comprobacion.md`.
+- `comprobar-objeciones <objeciones.csv> <document.tex|.md>` — objection register
+  with status and checked commit; warns about sections changed since the check.
+- These three live in `~/herramientas` (see `~/herramientas/README.md` and
+  `MAPA.md`). `revision-ciega`, `investigacion-gemini` and `sanedrin` send text to
+  third parties: only with the user's explicit permission.
+- Neither the committee nor the sanedrin authorizes anything; the user decides.
