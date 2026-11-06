@@ -218,7 +218,7 @@ A passing script promotes nothing (`CLAUDE.md`, gate cycle step 5).
 3. **Diagnostic sweep** for Stage B, behind the `--diagnostics` flag of the same script
    (decision D4). The default run executes only Stage 0 and Stage A. Diagnostic output is
    labelled `SUPPORTED`, and no exact check reads it.
-4. **Independent review** by DeepSeek (decision D5), recorded with the SHA256 of the candidate,
+4. **Independent review** by Grok (decision D5, as amended), recorded with the SHA256 of the candidate,
    the base commit, the real model name that answered, and the `~/herramientas` commit used.
    DeepSeek generation must be probed first (`CLAUDE.md`: `sanedrin --listar` does not prove a
    house can generate). If DeepSeek cannot generate, the user picks the substitute.
@@ -231,6 +231,9 @@ A passing script promotes nothing (`CLAUDE.md`, gate cycle step 5).
 - **D3. Symbolic `n`.** Out of scope for this gate. Only the D1 instances are certified.
 - **D4. Stage B location.** A `--diagnostics` flag in the exact verifier. The default run is
   exact only.
-- **D5. Reviewer.** DeepSeek, for the charter and for the execution.
+- **D5. Reviewer.** DeepSeek, for the charter and for the execution. **Amended 2026-11-06:**
+  DeepSeek could not generate (account-level `insufficient_balance_error`, request_id
+  `1f6a0357-8eb2-4de0-baeb-b72665234588`), so it is marked `ausente`. Following the substitution
+  rule of Sec. 8, item 4, the user chose Grok (`grok-4.7`, generation probed the same day).
 - **D6. Branch.** `theory/massive-vgrp-bcc`, from `main` (`bce5599`), separate from the pending
   local changes on `research/schur-stability-audit`.
