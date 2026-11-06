@@ -1,6 +1,24 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-05
+**Date:** 2026-11-06
+
+**Symmetry-plan premise audit — 2026-11-06:** user requested continuation
+of today's work. Stages 1 and 2 of the saved plan were executed;
+[audit](../reports/2026-11-06--symmetry-common-cone-premise-audit.md).
+Manual rederivation retains the provisional D2+C normal form and its
+conditional nodal nondegeneracy. Primary passages of Asboth, P17 and
+Arrighi–Facchini were checked. The local conditional combination of PHS
+pairing and spatial covariance forcing an invariant isotropic quadratic
+form is recorded as `STANDARD_SYMMETRY_COROLLARY`; its novelty candidacy
+is closed by the plan's stage-2 cutoff. PRELIMINARY author audit, no
+independent review or promotion. No additional microscopic symmetry
+contract or realization executed (stages 3–4 not entered). Existence of
+an irreducible finite-range realization with the enlarged fixed symmetry
+remains a named obligation, not an impossibility result.
+`SELECTION_MECHANISM_NOT_SPECIFIED`; common physical scale and universality
+between independent pairs remain unresolved. Hexagonal work stays parked;
+previous results keep their scope. This bounded cutoff does not abandon
+all symmetry research or authorize a successor search.
 
 **Next-session plan — 2026-11-06:** user requested a work plan based on
 the symmetry-selection intuition; see
