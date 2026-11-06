@@ -1,0 +1,1113 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Responde en español. Eres un revisor independiente de física matemática (QCA en red, símbolos de
+Laurent unitarios, dispersión de sectores con masa, geometría algebraica real efectiva). Solo
+tienes los documentos adjuntos; no tienes herramientas y no puedes ejecutar código. No supongas
+que nada es correcto.
+
+Documento 1: el borrador v4 de la carta `DIRAC_VGRP_MAX_GATE.md`, aún no congelada. Los cambios
+de esta versión llevan la etiqueta `[G-V-R2-NN]`.
+Documento 2: el informe de la ronda 2 (objeciones G-V-R2-01..11).
+Documento 3: la lectura del autor de la ronda 2, con la reparación propuesta para cada objeción.
+Documentos 4–6: la nota de las tres velocidades, el contrato de la puerta Weyl/Dirac estándar y
+su verificador exacto.
+
+Comprueba, con alcance acotado:
+1. Cada objeción G-V-R2-01..11, y los parciales G-V-05 y G-V-11: ¿los resuelve la v4? Atención
+   especial a:
+   - el orden único A3 → A5 → OPEN;
+   - la separación entre `VGRP_MAX_VALUE_CERTIFIED` y `MAXIMIZER_SET_CERTIFIED`, y la regla de
+     H3;
+   - el certificado de muestreo sobre el modelo compacto `(s_i, c_i)`;
+   - la regla unilateral de B3 para `CEILING_ONLY` y la suspensión por veto;
+   - el predicado de `STOPPED_PRIOR_ART`.
+2. ¿Hay ahora alguna contradicción interna, o alguna frase que prometa más de lo que la carta
+   puede certificar?
+
+No reabras decisiones del usuario (masas, malla 256³, `n` simbólico fuera, flag `--diagnostics`,
+revisor, rama, tolerancias `1e-9` y `1e-6`) salvo que hagan la carta incoherente. No reabras
+objeciones de rondas anteriores que diste por resueltas, salvo que la v4 las haya roto.
+
+Salida: veredicto global; tabla de estado; una sección por punto; objeciones nuevas G-V-R3-NN con
+ubicación y gravedad (error demostrado, laguna o redacción). Una sola ronda: declara tus
+supuestos.
+
+=== DOCUMENT 1: DIRAC_VGRP_MAX_GATE.md ===
+
+# DIRAC_VGRP_MAX — massive group-velocity ceiling, standard Pavia Dirac family, d=3
+
+**Status: DRAFT v4 (2026-11-06), not frozen.** Drafted by Claude Code (Claude Opus 5.5) at the
+user's request ("Redacta el borrador del charter en `theory/` para la primera opción: el techo de
+velocidad de grupo masivo en una familia concreta de d=3"). Nothing here is authorized for
+execution. The charter is frozen only by an explicit user instruction, and that commit becomes
+the preregistration commit. This draft records no computation, candidate or theorem.
+
+Drafting history:
+- **v1** proposed Stage A (exact) as the certificate and Stage B (floating-point sweep) as a
+  diagnostic only. The user accepted this replacement of their original acceptance criterion
+  (2026-11-06).
+- **v2** records user decisions D1–D6 (Sec. 9). Branch `theory/massive-vgrp-bcc`, from `main`
+  at `bce5599`.
+- **v2 review.** Blind review by Grok (`grok-4.7`) of v2 at `5ebe10d`: do not freeze, seventeen
+  objections G-V-01..17. The author accepted all of them
+  ([report and author reading](../debates/2026-11-06--dirac-vgrp-max-charter-review-grok/verificacion_autor.md)).
+- **v3** applies G-V-01..17. It fixes the Stage B tolerances (user approval «SI», 2026-11-06)
+  and adds the line-abandonment criterion now required by `CLAUDE.md`. Each change is tagged
+  `[G-V-NN]` or `[CLAUDE.md]`.
+- **v3 review.** Bounded round-2 review by Grok of v3 at `7697593`: do not freeze. Fifteen of
+  G-V-01..17 resolved, two partial, eleven new objections G-V-R2-01..11. The author accepted all
+  of them
+  ([report and author reading](../debates/2026-11-06--dirac-vgrp-max-charter-review-grok-r2/verificacion_autor.md)).
+- **v4** applies G-V-R2-01..11 and fixes the spatial tolerance of B3 (iii) (decision D8). Each
+  change is tagged `[G-V-R2-NN]`.
+
+**Initial scientific status: OPEN.**
+
+**Origin.** An AI-written memorandum pasted on 2026-11-06 claimed
+`|v_g,max| = c_eff cos m` for "any isotropic massive QCA". The user classified it REJECTED.
+The memorandum is **not** a source for this gate. Its formula appears only as hypothesis H1
+(Sec. 3), because the one-dimensional analogue is easy to check (Sec. 4, control C0).
+
+**Authority:** [CURRENT_STATE](../state/CURRENT_STATE.md):
+- `V_grp^max := sup_{s,k} ||∇_k ω_s(k)||` is defined in Sec. 2 of
+  [`THREE_VELOCITIES.md`](THREE_VELOCITIES.md). `V_grp^max` is OPEN in `d >= 2` (CURRENT_STATE,
+  dispersion-corrections and L6b entries).
+- Standard Weyl/Dirac exact gate: PASS
+  (`reports/2026-09-14--weyl-dirac-gate-contract.md`, `scripts/verify_weyl_dirac_gate.py`).
+- Exact finite-mass `B*` REJECTED IN STANDARD DIRAC FAMILY: for `0 < m < 1`, `M = arcsin m`,
+  `F = M cot M`, `c_H = r_in F < c_{ω^2} = r_in sqrt(F) < r_in`.
+- [`THREE_VELOCITIES.md`](THREE_VELOCITIES.md) Sec. 3.2: `C_micro`, `V_grp^max` and `c_IR` are
+  never identified with one another.
+
+**Relation to other drafts.** `theory/MASSIVE_RIGIDITY_GATE.md` (DRAFT v2, present only on
+branch `research/inverse-gravity-design`, `99c20c6`) asks how `c_H` and `c_{ω^2}` depend on the
+symbol across class M4. This gate asks a different question: the *global maximum* of the group
+velocity for *one fixed family*. It does not touch `c_H`, `c_{ω^2}` or M4.
+
+## 0. Pre-step check (rule of 2026-11-02)
+
+- **Known.**
+  - **Family.** Weyl matrices: eqs. (15)–(17) of arXiv:1601.04832v1, p.6. Dirac coupling:
+    `D = [[n W, i m I], [i m I, n W^†]]`, eq. (9) of arXiv:1601.04842v1. Here `0 < m < 1` and
+    `n = sqrt(1-m^2)`.
+  - **Spectrum.** The phases are `±ω` with `ω = acos(n u)`. The scalar is
+    `u = cos q_x cos q_y cos q_z + χ sin q_x sin q_y sin q_z`, `χ = ±1`
+    (`scripts/verify_weyl_dirac_gate.py:66-68`).
+  - **Units.** The physical wavevector is `k = sqrt(3) q`: each derivative carries a factor
+    `1/sqrt(d)` (`scripts/verify_weyl_dirac_gate.py:133-134`). The hops lie in `N_3`, normalized
+    to unit length. The verifier certifies `C_micro` as the cube with `r_in = 1/sqrt(3)` and
+    maximum support `1`.
+  - **Massless node.** At `m = 0` the linear slope of `ω` at the node equals `r_in`. This is
+    not a group velocity: `ω` is not differentiable there [G-V-01].
+- **Not known in this repo.** `V_grp^max` of this family for any `0 < m < 1`. Where it is
+  attained. Whether it lies below, at or above `r_in`.
+- **Literature (to do before execution, part of Stage 0).** The Pavia papers may already state
+  the group velocity of the massive BCC automaton. Read `sources/1601.04832v1.pdf` and
+  arXiv:1601.04842 (not yet in `sources/`) for any statement about `∇ω`, and record the pages
+  read. `NOVELTY = OPEN`. Until that check is done, any prior-art status is `[UNVERIFIED]`. The
+  prior-art status of the 1D formula and of Bernstein-type bounds stays `[UNVERIFIED]` unless
+  these pages state them; two PDFs are not a literature search for either [G-V-17, G-V-R2-06]. A
+  reading that finds nothing does not make anything novel.
+- **Question.** See Sec. 1.
+- **Results that end the gate.**
+  - The exact value of `V_grp^max` at the declared masses, certified as in Sec. 4, and the
+    maximizer set wherever Sec. 7 allows it to be certified.
+  - Or a stop under Sec. 5.
+- **Results that abandon the line** [CLAUDE.md]. These are separate from the per-hypothesis
+  verdicts of Sec. 7.
+  - **Prior art** [G-V-R2-06]. The pages read in Stage 0 explicitly state the exact value of
+    `max ||∇_k ω||` (or of its square) for this family, with identifiable chirality and mass and
+    with units convertible to those of Sec. 0. A formula for `∇ω` without its maximum does not
+    count. The gate then stops before Stage A with `STOPPED_PRIOR_ART`.
+  - **Exact route exhausted** [G-V-R2-11]. All five masses end
+    `OPEN_AFTER_CRITICAL_POINT_ANALYSIS`. The gate verdict is then
+    `STOPPED_EXACT_ROUTE_EXHAUSTED`, and any continuation needs a new charter with a different
+    method.
+
+## 1. Single question
+
+For the standard Pavia Dirac family in `d = 3` and each declared mass `m`, what is
+
+`V_grp^max(m)^2 := max_{q ∈ T^3} Φ(q; m)`,  `Φ = ||∇_k ω||^2`,  `k = sqrt(3) q`,
+`ω = acos(n u(q))` [G-V-R2-08],
+
+and, where it can be certified (Sec. 7), where is the maximum attained?
+
+The answer is compared exactly with `r_in(C_micro) = 1/sqrt(3)` and `V_causal^max = 1`.
+
+`c_H` and `c_{ω^2}` are cited as context only. Their closed forms contain `arcsin` of a rational,
+so no certified comparison with them is made [G-V-02, G-V-12, G-V-16]. The quantity named `c_IR`
+is neither computed nor inferred here.
+
+## 2. Declared class
+
+| Item | Declaration |
+| --- | --- |
+| Symbols | The four Pavia Dirac symbols built from `A+, B+, A-, B-` (the four cases of `verify_weyl_dirac_gate.py`) |
+| Internal dimension | 4 (two Weyl doublets coupled by the on-site mass term) |
+| Substrate | BCC, `N_3 = {(±1,±1,±1)/sqrt(3)}`, plus on-site; one complete update per time step `Δt = 1` |
+| Mass | Declared rational set `m ∈ {3/5, 4/5, 5/13, 12/13, 8/17}`, with `n` respectively `4/5, 3/5, 12/13, 5/13, 15/17` (decision D1). Rational `n` keeps every coefficient of Sec. 4 in `Q`. It does not by itself guarantee that Stage A finishes within budget; Sec. 5 governs that |
+| Brillouin zone | The torus `T^3 = R^3/(2πZ)^3`. Points are classes `q mod 2π`, not representatives in a cube [G-V-03]. No symmetry reduction unless it is proved exactly in Stage 0 |
+| Branch | Both phases `±ω`, each of multiplicity 2. Their gradients differ only in sign. Stage 0, step 3 verifies this [G-V-07] |
+| Excluded | `m = 0` (ω is not differentiable at the node) and `m = 1` (support collapses to on-site, so ω is constant) |
+
+## 3. Targets and preregistered hypotheses
+
+**Targets.**
+- T1. The exact value of `V_grp^max(m)` at each declared mass. Its square is an algebraic number,
+  given by a minimal polynomial over `Q` and an isolating interval with rational endpoints.
+- T2. The exact set of maximizers in `T^3`, reconstructed as orbits of representatives under the
+  symmetries proved in Stage 0, step 5. It is certifiable only on the zero-dimensional path of
+  A3 (Sec. 7) [G-V-R2-02].
+- T3. The exact signs of `V_grp^max(m)^2 − 1/3` (comparison with `r_in`) and
+  `V_grp^max(m)^2 − 1` (comparison with `V_causal^max`) at each declared mass. Both are signs of
+  algebraic numbers [G-V-12].
+
+**Hypotheses**, frozen before any computation. They are tests, not predictions. No outcome is
+favoured.
+- **H1 (transplanted 1D formula).** `V_grp^max(m)^2 = n^2/3`, that is
+  `V_grp^max = n · r_in` (in 1D, `n = cos(arcsin m)`).
+- **H2 (strict ceiling).** `V_grp^max(m)^2 < 1/3` at every declared mass.
+- **H3 (axis attainment).** Let `A := {q ∈ T^3 : at least two coordinates are ≡ 0 or π (mod 2π)}`.
+  H3 states that at each declared mass at least one maximizer lies in `A` (existential, not
+  universal) [G-V-14].
+
+The rules that turn per-mass results into hypothesis verdicts are in Sec. 7 [G-V-13].
+
+No hypothesis is a claim about "any isotropic massive QCA". A confirmation at five masses of one
+family is recorded as exactly that.
+
+## 4. Method, named before any computation
+
+**Reduction (to be proved exactly in Stage 0, not assumed).** For `0 < m < 1`,
+`|u| <= 1` and therefore `|n u| <= n < 1` on the whole torus. Then `1 − n^2 u^2 >= m^2 > 0`, so
+`ω` is real-analytic there. Let
+
+`Φ(q) := ||∇_k ω||^2 = (n^2/3) · G / (1 − n^2 u^2)`,  `G := ||∇_q u||^2`.
+
+This `Φ` is the `d = 3` function only. The 1D control uses its own function `Φ₁` [G-V-09]. The
+torus is compact and has no boundary. Therefore `V_grp^max(m)^2 = max Φ`, and the maximum is
+attained at a critical point of `Φ`.
+
+**Stage 0 — exact preliminaries** (SymPy, no floating point):
+1. Check that `published_symbol` and the Dirac block reproduce the spectrum `cos ω = n u`. Reuse
+   these helpers read-only from `verify_weyl_dirac_gate.py`. **That file's bytes are not
+   changed.**
+2. Prove `|u| <= 1`, hence `|n u| <= n < 1` and `1 − n^2 u^2 >= m^2`, on the torus for each
+   declared mass, and derive `Φ` symbolically. This comes before step 3, which uses it
+   [G-V-R2-07].
+3. **Branches** [G-V-07]. Prove `D^2 − 2 n u D + I = 0` and `tr D = 4 n u`. Together with
+   `sin ω = sqrt(1 − n^2 u^2) >= m > 0` (from step 2), these force the eigenvalues `e^{±iω}`,
+   each of multiplicity 2, so the two branch gradients differ only in sign.
+4. **Control C0 (1D)** [G-V-09]. With `u₁ = cos q` and `Φ₁(q) := n^2 sin^2 q / (1 − n^2 cos^2 q)`
+   (1D units, `k = q`), prove `max Φ₁ = n^2`, attained exactly at `q = ±π/2`. If C0 fails, the
+   pipeline is wrong and the gate stops.
+5. **Symmetries** [G-V-08]. Only signed permutations `S` of `(q_x, q_y, q_z)` are admitted. They
+   are orthogonal in `k = sqrt(3) q`, because the scaling is isotropic. For each candidate, verify
+   exactly that `Φ∘S = Φ` (not merely that `u` is invariant), or that `S` maps the `Φ` of one
+   symbol case (choice of `χ`, transposition) onto the `Φ` of another. Only symmetries proved
+   here may reduce later stages. The maximizer set is then reconstructed by orbits.
+6. Record the literature check of Sec. 0, with the pages read. If the prior-art predicate of
+   Sec. 0 holds, stop with `STOPPED_PRIOR_ART`.
+
+**Stage A — exact global maximum** (primary; certifies T1 and T3, and T2 where Sec. 7 allows):
+- **A1. Rational charts** [G-V-03]. On each circle factor, `t = tan(q/2)` is a diffeomorphism
+  from the class of `(−π, π)` onto `R`, and `t' = cot(q/2)` is one from the class of `(0, 2π)`
+  onto `R`. The class `q ≡ π` is the point `t' = 0`. The `2^3` chart combinations cover `T^3`.
+  Fewer are used only if Stage 0, step 5 proves symmetries that identify them. Implementations
+  never evaluate a chart at a representative where it diverges.
+- **A2. Critical system.** Since `dt_i/dq_i != 0` in each chart, `∇_q Φ = 0` is equivalent to
+  `∇_t Φ = 0`. With `D := 1 − n^2 u^2 > 0` this is
+  `D ∂_i G + 2 n^2 u G ∂_i u = 0`, `i = 1, 2, 3`.
+  Multiply only by the listed positive factors: powers of `(1 + t_i^2)` and of `(1 + t_i'^2)`.
+  These are positive at real points and neither add nor remove real zeros [G-V-04]. The
+  coefficients are in `Q` at each declared mass.
+- **A3. Solving** [G-V-04, G-V-05].
+  - Compute a Gröbner basis over `Q`, or eliminate with resultants. Every real zero obtained by
+    elimination is checked exactly in the A2 system before any further use, or the ideal is
+    saturated by the cleared factors. A zero that fails is discarded and recorded.
+  - **Zero-dimensional ideal:** isolate every real solution exactly, in rational boxes.
+  - **Positive-dimensional ideal:** `dΦ = 0` on the whole real critical locus, so `Φ` is
+    constant on each connected component of that locus. The verifier must produce one exact
+    sample point in each connected real component, with an exact certificate that the samples
+    meet every component. Admitted certificates [G-V-R2-03]:
+    - a cylindrical algebraic decomposition sample;
+    - the critical and singular points of a generic linear function on the **compact** model
+      `(s_i, c_i)`, `s_i^2 + c_i^2 = 1`, of `T^3`. On a compact component a linear function
+      attains its maximum, which is either a critical or a singular point of the restriction.
+    Critical points of a linear function in the affine charts `t ∈ R^3` are **not** admitted,
+    because those charts are not compact. The verifier then evaluates `Φ` at the samples.
+  - Searching for critical points of `Φ` again on the component is not a valid step.
+  - If A3 does not finish within budget, the procedure continues with A5. The mass is not
+    declared OPEN at this point [G-V-R2-01].
+- **A4. Comparison.** Evaluate `Φ` as an algebraic number at every isolated real critical point
+  (zero-dimensional path) or at every component sample (positive-dimensional path). Determine
+  the maximum by exact sign comparison of differences. Only the zero-dimensional path also
+  yields the maximizer set [G-V-R2-02].
+- **A5 (alternative certificate, if A3 does not finish)** [G-V-06].
+  - Upper bound: for a rational `V^2`, a sum-of-squares certificate with rational coefficients
+    for the trigonometric polynomial `V^2 (1 − n^2 u^2) − (n^2/3) G >= 0`. This is sufficient but
+    not complete: some nonnegative trigonometric polynomials are not sums of squares, and no
+    degree bound is promised.
+  - Lower bound: an exact witness `q_*` with `Φ(q_*) = V^2`. The witness may only be a real zero
+    certified in A3 (even if A3 did not finish), never a point from Stage B.
+  - With both, `V_grp^max(m)^2 = V^2 ∈ Q` and the mass is `VGRP_MAX_VALUE_CERTIFIED`, with
+    no maximizer set [G-V-R2-02]. With only the upper bound, the mass is `CEILING_ONLY`. If
+    `V_grp^max(m)^2` is algebraic but not rational, A5 can give only a ceiling.
+  - If neither A3–A4 nor A5 certifies within their budgets, the mass is
+    `OPEN_AFTER_CRITICAL_POINT_ANALYSIS` [G-V-R2-01].
+
+**Stage B — numerical sweep of the Brillouin zone** (diagnostic only, `SUPPORTED`; the user's
+acceptance criterion):
+- **B1.** A uniform grid on the full torus (representatives `[-π, π)^3`), with no symmetry reduction and no
+  assumption of isotropy or continuous spherical symmetry. Grid: `N = 256` points per axis
+  (decision D2), for each declared mass and each of the four symbols. It runs only under the
+  `--diagnostics` flag of the exact verifier (decision D4). Report the grid maximum of
+  `Φ` and its location.
+- **B2.** Local refinement (Newton or BFGS from the best 64 grid points). Report every distinct
+  local maximum found.
+- **B3. Agreement rule, fixed here before any computation** [G-V-10, G-V-11, G-V-R2-04].
+  Stage B runs **after** Stage A, for every mass that is `VGRP_MAX_VALUE_CERTIFIED` or
+  `CEILING_ONLY`; OPEN masses are not swept. A refinement in B2 that does not converge counts as
+  disagreement.
+
+  *Certified value.* Write `Φ*` for the certified maximum, converted to double precision from
+  its isolating interval (refined to width below `1e-15`). Agreement means all three of:
+  - (i) the grid maximum is at most `Φ* (1 + 1e-9)`;
+  - (ii) the largest refined local maximum lies in `[Φ* (1 − 1e-9), Φ* (1 + 1e-9)]`. This is
+    two-sided: it catches a certified maximum that is too low, and also an inflated or spurious
+    one that the sweep cannot reproduce;
+  - (iii) only when the A3 certificate is zero-dimensional: the rational isolating boxes of
+    the exact critical points are first refined to width `<= 1e-9` in each coordinate, and
+    every refined local maximum lies within sup-norm distance `1e-6` in `q` (mod `2π`) of some
+    such box (decision D8). When the certificate comes from positive-dimensional sampling or
+    from A5, (iii) is not applied and only (i) and (ii) count.
+
+  *Ceiling only.* For a `CEILING_ONLY` mass with ceiling `V^2`, the rule is one-sided:
+  agreement means that the grid maximum and every refined local maximum are at most
+  `V^2 (1 + 1e-9)`.
+
+  - **Role.** Disagreement is a veto: it stops the gate with
+    `STOPPED_EXACT_NUMERIC_DISAGREEMENT`. The veto suspends the hypothesis verdicts contributed
+    by the masses in disagreement: they are recorded as suspended, not as decided, and are not
+    promoted [G-V-R2-05]. Stage B never certifies a value, never decides a hypothesis and cannot
+    rescue a stopped Stage A. A finite scan does not prove a global maximum (`CLAUDE.md`, hard
+    rules).
+
+## 5. Stop rules and budget
+
+- **Budget** [G-V-15]. Stage 0, step 5 decides the number of symbol classes, which is at most
+  four. Stage A gets 900 s of CPU per declared mass per symbol class, cumulative across runs.
+  A5 gets 900 s per mass per class, once, in total. No other time is authorized for A or A5.
+  Stages 0 and B do not widen the question [G-V-R2-09].
+- **A mass is `OPEN_AFTER_CRITICAL_POINT_ANALYSIS`** only if neither A3–A4 nor A5 certifies it
+  within budget (Sec. 4, A3 and A5) [G-V-R2-01]. The other masses keep their verdicts.
+- **Stop with `STOPPED_EXACT_ROUTE_EXHAUSTED`** if all five masses are OPEN (Sec. 0)
+  [G-V-R2-11].
+- **Stop with `STOPPED_CONTROL_FAILED`** if control C0 fails.
+- **Stop with `STOPPED_EXACT_NUMERIC_DISAGREEMENT`** on any disagreement under Sec. 4, B3.
+- **Stop with `STOPPED_PRIOR_ART`** under Sec. 0 (Stage 0, step 6).
+- **No extensions without a new charter:** no extra masses, no symbolic-in-`n` result
+  (decision D3), not the `s = 4` family of `S4_STRICT_CONE_COUNTEREXAMPLE.md` [G-V-15], no other
+  substrates, no `d = 2`.
+
+## 6. Exclusions
+
+The following are not computed, claimed or inferred here:
+- `c_IR`; and `c_H` or `c_{ω^2}`, which are cited as context without any certified comparison
+  [G-V-16];
+- signalling, evanescent precursors, saddle-point asymptotics;
+- entanglement, the coin Bloch tensor, Wilson masses, fermion doublers;
+- any other family or class, and any general QCA law;
+- any physical interpretation, and novelty.
+
+The prior-art status of the 1D formula and of Bernstein-type bounds is `[UNVERIFIED]` until the
+Stage 0 literature check [G-V-17]. That C0 checks the 1D formula does not make it a cited
+source.
+
+## 7. Verdicts
+
+Verdicts per declared mass (value) [G-V-R2-02]:
+- `VGRP_MAX_VALUE_CERTIFIED`: exact `V_grp^max(m)^2` and the T3 signs. It comes from A3–A4 (either
+  path) or from A5 with a witness;
+- `CEILING_ONLY`: A5 rational upper bound `V^2` without a witness;
+- `OPEN_AFTER_CRITICAL_POINT_ANALYSIS`.
+
+Verdict per declared mass (set), in addition to the value verdict:
+- `MAXIMIZER_SET_CERTIFIED`: T2, available only on the zero-dimensional path of A3–A4.
+
+Verdicts per hypothesis [G-V-13, G-V-R2-02]:
+- **At one mass.**
+  - H1 and H2: a `VGRP_MAX_VALUE_CERTIFIED` mass decides both. A `CEILING_ONLY` mass with
+    ceiling `V^2` decides only H2 true if `V^2 < 1/3`, and H1 false if `V^2 < n^2/3`; otherwise
+    nothing.
+  - H3: true at that mass if some certified maximizer (an isolated critical point, a component
+    sample attaining the maximum, or an A5 witness) lies in `A`. False only if the mass is
+    `MAXIMIZER_SET_CERTIFIED` and no maximizer lies in `A`. Otherwise that mass does not decide
+    H3.
+  - An OPEN mass, or a mass whose verdicts are suspended by the Stage B veto, decides nothing.
+- **Over the five masses,** with this precedence:
+  1. `REFUTED_AT_m ∈ {<every mass that decides it false>}` if at least one mass decides the
+     hypothesis false, even if other masses are OPEN [G-V-R2-10];
+  2. `CONFIRMED_AT_DECLARED_MASSES` only if all five masses decide it true;
+  3. `UNDECIDED` otherwise.
+
+Gate-level verdicts:
+- `STOPPED_PRIOR_ART`;
+- `STOPPED_CONTROL_FAILED`;
+- `STOPPED_EXACT_NUMERIC_DISAGREEMENT` (with the suspension of Sec. 4, B3);
+- `STOPPED_EXACT_ROUTE_EXHAUSTED`.
+
+A passing script promotes nothing (`CLAUDE.md`, gate cycle step 5).
+
+## 8. Deliverables
+
+1. **Report** `reports/YYYY-MM-DD--dirac-vgrp-max.md`, citing the preregistration commit.
+2. **Exact verifier** `scripts/verify_dirac_vgrp_max_gate.py`. It is fail-closed, covers
+   Stage 0 and Stage A, and uses no floating point in any certified quantity. Its two exact
+   command forms go into `.claude/settings.json`, and an entry goes into `scripts/README.md`
+   stating what it does not certify.
+3. **Diagnostic sweep** for Stage B, behind the `--diagnostics` flag of the same script
+   (decision D4). The default run executes only Stage 0 and Stage A. Diagnostic output is
+   labelled `SUPPORTED`, and no exact check reads it.
+4. **Independent review** by Grok (decision D5, as amended), recorded with the SHA256 of the
+   candidate, the base commit, the real model name that answered, and the `~/herramientas`
+   commit used. Grok generation must be probed first (`CLAUDE.md`: `sanedrin --listar` does not
+   prove a house can generate). If Grok cannot generate, the user picks the substitute.
+5. **Promotion**, if any, in a separate commit to `CURRENT_STATE.md`, by user decision.
+
+## 9. User decisions (2026-11-06)
+
+- **D1. Mass set.** The five declared rational-`n` masses are approved.
+- **D2. Stage B grid.** `N = 256` per axis is approved.
+- **D3. Symbolic `n`.** Out of scope for this gate. Only the D1 instances are certified.
+- **D4. Stage B location.** A `--diagnostics` flag in the exact verifier. The default run is
+  exact only.
+- **D5. Reviewer.** DeepSeek, for the charter and for the execution. **Amended 2026-11-06:**
+  DeepSeek could not generate (account-level `insufficient_balance_error`, request_id
+  `1f6a0357-8eb2-4de0-baeb-b72665234588`), so it is marked `ausente`. Following the substitution
+  rule then in Sec. 8, item 4, the user chose Grok (`grok-4.7`, generation probed the same day).
+- **D7. Stage B tolerances.** Relative `1e-9`, two-sided, as in Sec. 4, B3 (user approval «SI»,
+  2026-11-06).
+- **D8. Stage B spatial tolerance.** Sup-norm distance `1e-6` in `q` for B3 (iii), with the
+  isolating boxes refined to width `<= 1e-9` (user approval «si», 2026-11-06).
+- **D6. Branch.** `theory/massive-vgrp-bcc`, from `main` (`bce5599`), separate from the pending
+  local changes on `research/schur-stability-audit`.
+
+=== DOCUMENT 2: informe_grok.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ 97292a9f58c3450128293acacac071d0c1e2391a; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: cli_exit_0 (estado operativo, no validación del contenido)
+modelo: grok-4.7, esfuerzo: por defecto del CLI, vía: grok CLI sellado como CIRO de Sanedrín (grok 1.0.34 (3736acbc8658) [stable])
+grok.json sha256 80c0e20ed6381f6ccc2a07a7ec2d9d65e0d5e1ea3821bf09ffce6873de9d35b2
+llamadas a herramienta intentadas (denegadas): 0
+inicio: 2026-11-06T11:06:18Z  fin: 2026-11-06T11:20:19Z
+documento: /home/ignac/qca-causal-cones/.worktrees/massive-vgrp-bcc/theory/DIRAC_VGRP_MAX_GATE.md ; último commit observado: 7697593 ; sha256 de la copia enviada 941bd6ed2a402834120b5d58dab602e1cb0420bf879312cbb19fd754ebe4c1c8
+documento: /home/ignac/qca-causal-cones/.worktrees/massive-vgrp-bcc/debates/2026-11-06--dirac-vgrp-max-charter-review-grok/informe_grok.md ; último commit observado: 928274c ; sha256 de la copia enviada 1b6c599316c86c29ef8e84f3825e7d93f5f3fc549124220c04f85eebbb5ffc08
+documento: /home/ignac/qca-causal-cones/.worktrees/massive-vgrp-bcc/debates/2026-11-06--dirac-vgrp-max-charter-review-grok/verificacion_autor.md ; último commit observado: 928274c ; sha256 de la copia enviada 2b8f94b03c135e2cb4f6c572bba08363c7d87e7b340d9065bb77e68928b1e129
+documento: /home/ignac/qca-causal-cones/.worktrees/massive-vgrp-bcc/theory/THREE_VELOCITIES.md ; último commit observado: 95f423f ; sha256 de la copia enviada bf1a746c557408d1ab5249210fba0566502677ab302e1068886f39b31d32ba41
+documento: /home/ignac/qca-causal-cones/.worktrees/massive-vgrp-bcc/reports/2026-09-14--weyl-dirac-gate-contract.md ; último commit observado: 2c7c2c9 ; sha256 de la copia enviada e0e3483380b0352198c64cbca64985a5240389b7fc70a2694c9a79f9a2f33d27
+documento: /home/ignac/qca-causal-cones/.worktrees/massive-vgrp-bcc/scripts/verify_weyl_dirac_gate.py ; último commit observado: 95f423f ; sha256 de la copia enviada 6c555cef8db0d8a7307a08e0251fa9278773aceeea8bf2bdb956ba2c3ca06597
+entrada_grok.txt sha256 b1a377edcf7c7a56337712142bae09af4f24b9e792456f75dc01463ee34ff834
+respuesta sha256 451881cd90de8d952efe591156410ddde76262ae3ccc085feb7304bf5417ff48
+-->
+
+**No congelar.** La v3 cierra el error de «restringir y repetir», el inglés de la malla y la regla de hipótesis que se pedía, pero no es un procedimiento cerrado: en el caso de dimensión positiva y en A5 puede declarar `VGRP_MAX_CERTIFIED` y decidir H3 sin el conjunto de maximizadores, y el propio A3 condena la masa a `OPEN` en un caso en el que la sección 5 todavía manda ejecutar A5.
+
+## Supuestos
+
+Solo están los seis textos pegados. No ejecuté el verificador, no leí los PDF de Pavia, `CURRENT_STATE.md`, `S4_STRICT_CONE_COUNTEREXAMPLE.md` ni el `CLAUDE.md` del repo. El nombre de ese archivo se toma como identificador de una familia; no comprobé que exista.
+
+Rehíce a mano, sin SymPy: la regla de la cadena y `Φ`; la ecuación crítica; las cinco parejas `(m, n)` (`n² + m² = 1`); `Φ₁` y su máximo `n²` en `q = ±π/2`; el recubrimiento de las ocho cartas; la multiplicidad a partir de `D² − 2nu D + I = 0`, `tr D = 4nu` y `sin ω > 0`. Conté el Python pegado: las líneas 66–68 son el escalar `u` y las 133–134 son `spatial_derivative`. No doy por hecho el PASS histórico: las identidades citadas están en el código pegado.
+
+«Error demostrado» significa que la frase o el procedimiento, leídos como están, no hacen lo que dicen. «Laguna», que falta un caso o una obligación. «Redacción», que el contenido se salva cambiando la frase. No reabro masas, malla `256³`, `n` simbólico, `--diagnostics`, revisor, rama ni la tolerancia relativa `1e-9`.
+
+Las componentes conexas de un semialgebraico real son conexas por caminos. Una descomposición cilíndrica algebraica da una muestra por componente; los críticos de una función lineal genérica, no, si el modelo afín no es compacto.
+
+## Tabla
+
+| Id | Estado | Qué queda |
+| --- | --- | --- |
+| G-V-01 | Resuelta | La pendiente en `m = 0` ya no se llama velocidad de grupo |
+| G-V-02 | Resuelta | `c_H` y `c_{ω²}` salen de T3 y de toda comparación certificada |
+| G-V-03 | Resuelta | La zona es el toro; las cartas no se evalúan donde divergen |
+| G-V-04 | Resuelta | Comprobación en el sistema de A2, o saturación por los factores |
+| G-V-05 | Parcial | Muere «restringir y repetir»; el paro choca con A5 y la muestra no es el conjunto |
+| G-V-06 | Resuelta | SOS racional = techo; testigo solo de A3; el exceso de etiqueta es G-V-R2-02 |
+| G-V-07 | Resuelta | El paso 2 de la etapa 0 pide signo y multiplicidad |
+| G-V-08 | Resuelta | Se exige `Φ∘S = Φ`, no solo invariancia de `u` |
+| G-V-09 | Resuelta | C0 usa `Φ₁`, no el `Φ` de `d = 3` |
+| G-V-10 | Resuelta | La malla no demuestra el máximo; B veta y no certifica |
+| G-V-11 | Parcial | El valor es bilateral a `1e-9`; la cláusula espacial no es un predicado |
+| G-V-12 | Resuelta | T3 solo compara algebraicos con `1/3` y con `1` |
+| G-V-13 | Resuelta | Hay precedencia y `CEILING_ONLY` tiene imagen; no cubre el veto de B |
+| G-V-14 | Resuelta | `A` está definido y H3 es existencial |
+| G-V-15 | Resuelta | Tope de cuatro clases; A5 es 900 s por masa y clase, una vez |
+| G-V-16 | Resuelta | La sección 6 y T3 dicen lo mismo |
+| G-V-17 | Resuelta | Prior art de la fórmula 1D y de Bernstein queda `[UNVERIFIED]` |
+
+## 1. Objeciones G-V-01..17
+
+**G-V-01, G-V-02, G-V-12, G-V-16, G-V-17.** Resueltas. La sección 0 llama «pendiente lineal» a lo que el verificador iguala con `r_in` en el nodo sin masa, y dice que no es velocidad de grupo. T3 pide solo el signo de `V_grp^max(m)² − 1/3` y de `V_grp^max(m)² − 1`. Con el valor aislado, ambos signos se deciden: `1/3` y `1` están en `Q`, y `V ≥ 0` no cambia el signo respecto de `V − r_in` y de `V − 1`. Las secciones 1 y 6 citan `c_H` y `c_{ω²}` y prohíben compararlos. La fórmula 1D y las cotas de tipo Bernstein siguen `[UNVERIFIED]`; que C0 demuestre la fórmula no la convierte en fuente. El alcance de esa lectura es otra cosa: G-V-R2-06.
+
+**G-V-03, G-V-04, G-V-07, G-V-08, G-V-09.** Resueltas. La zona de Brillouin es `T³ = R³/(2πZ)³` y A1 trabaja con clases; la malla de B1 en `[−π, π)³` evalúa `Φ`, no `tan` ni `cot`, así que no reabre la singularidad. A2 lista los factores `(1+tᵢ²)` y `(1+tᵢ'²)`, positivos en el real de esa carta. A3 obliga a comprobar cada cero real de la eliminación en el sistema de A2, o a saturar por esos factores, y a registrar el descarte. El paso 2 de la etapa 0 pide la cuadrática, la traza y `sin ω ≥ m > 0`. Con eso la multiplicidad sale: el polinomio anula la matriz 4×4, la traza `4nu = 4 cos ω` y `sin ω > 0` fuerzan `e^{±iω}` con multiplicidad 2 cada uno. El orden de ese `sin ω` respecto de `|u| ≤ 1` es G-V-R2-07. El paso 5 solo admite permutaciones con signo, ortogonales en `k` porque la escala es isótropa, y exige `Φ∘S = Φ` o el transporte exacto de un símbolo a otro; el conjunto se reconstruye por órbitas. C0 usa `Φ₁(q) = n² sin²q / (1 − n² cos²q)` con `k = q`. Esa función crece con `sin²q` y vale `n²` en `q = ±π/2`.
+
+**G-V-05.** Parcial. El error demostrado ya no está: si el ideal es de dimensión positiva, `dΦ = 0` en el lugar crítico real, `Φ` es constante en cada componente conexa real, se pide una muestra exacta por componente con certificado de cobertura, y se prohíbe volver a buscar críticos de `Φ` sobre la componente. Eso fija el valor si el certificado es de verdad.
+
+No cierra el procedimiento. El último inciso de A3 dice que, si la muestra no cabe en el presupuesto, esa masa para en `OPEN_AFTER_CRITICAL_POINT_ANALYSIS`. A5 dice ser el certificado alternativo precisamente cuando A3 no termina, y la sección 5 solo deja la masa abierta si tampoco A5 termina. A5 tiene otros 900 s: no es que se haya agotado el tiempo. Las dos reglas asignan finales distintos al mismo caso. Además A4 sigue escrito para «cada punto crítico real», y T2 pide el conjunto exacto; una muestra no es ese conjunto. Detalle en G-V-R2-01, G-V-R2-02 y G-V-R2-03.
+
+**G-V-06.** Resuelta en el hueco original. El techo es una suma de cuadrados con coeficientes racionales del polinomio trigonométrico `V²(1 − n²u²) − (n²/3)G`, suficiente y no completa, sin cota de grado. El testigo `Φ(q₊) = V²` solo puede ser un cero real certificado en A3, aunque A3 no haya terminado, nunca un punto de B. Con las dos cosas, `V² ∈ Q`. Si el cuadrado del máximo es algebraico no racional, A5 solo puede dar techo, y el veredicto es `CEILING_ONLY`. La lógica bilateral del valor es correcta: `D > 0` en todo el toro, así que la identidad de suma de cuadrados da `Φ ≤ V²` y el testigo da la igualdad. Lo que no es correcto es llamar a eso `VGRP_MAX_CERTIFIED` tal como lo define la sección 7: G-V-R2-02.
+
+**G-V-10.** Resuelta. B3 dice que el desacuerdo es un veto y para la puerta con `STOPPED_EXACT_NUMERIC_DISAGREEMENT`, y que B no certifica un valor, no decide una hipótesis y no rescata una etapa A parada. «A finite scan does not prove a global maximum» ya no afirma que la malla demuestre la ausencia del máximo. No queda el choque entre «B no produce veredicto» y el paro. Falta la precedencia de ese paro frente a un `REFUTED` ya calculado: G-V-R2-05.
+
+**G-V-11.** Parcial. La parte aprobada en D7 está escrita y es previa a cualquier cómputo. `Φ*` sale del intervalo aislante refinado por debajo de `1e-15` en anchura absoluta; para estos valores, del orden de `1/3` o menores pero no diminutos, eso es más fino que el relativo `1e-9`. El acuerdo exige (i) malla `≤ Φ*(1+1e-9)` y (ii) el mayor máximo local refinado dentro de `[Φ*(1−1e-9), Φ*(1+1e-9)]`. (ii) es bilateral: un certificado demasiado bajo se sale por arriba si el barrido lo ve, y uno inflado se sale por abajo si el barrido no lo reproduce. Eso cierra el agujero de la ronda 1. El acuerdo no prueba el máximo; el desacuerdo solo veta. Correcto para un diagnóstico.
+
+(iii) no está cerrado. Solo vale si A3 es cero-dimensional: cada máximo local refinado a distancia supremo `1e-6` en `q` (mod `2π`) de algún crítico exacto. El texto refina el intervalo del valor, no las cajas de `q`. Con una caja ancha, el real elegido dentro cambia el sí o el no. `1e-6` tampoco es la cifra de D7. Y «certified» no dice si incluye `CEILING_ONLY`: aplicar (ii) a un techo produciría vetos falsos, y no aplicarlo deja un techo falso sin veto. G-V-R2-04.
+
+**G-V-13.** Resuelta en el conflicto que se señaló. Una masa `VGRP_MAX_CERTIFIED` decide H1, H2 y H3 en esa masa. Una masa `CEILING_ONLY` solo decide H2 verdadera si el techo es `< 1/3`, y H1 falsa si el techo es `< n²/3`; si no, no decide. Una masa abierta no decide. Sobre las cinco masas, el orden es único: `REFUTED_AT_m=<valor>` si alguna decide falso, aunque otras estén abiertas o decidan verdadero; `CONFIRMED_AT_DECLARED_MASSES` solo si las cinco deciden verdadero; si no, `UNDECIDED`.
+
+Lo comprobé contra el álgebra. Como `n² < 1`, se tiene `n²/3 < 1/3`: un techo que refuta H1 también cumple `V² < 1/3` y decide H2 verdadera. Un techo entre `n²/3` y `1/3` decide H2 y no decide H1. Un techo `≥ 1/3` no refuta H2, porque es cota superior. El signo cero del valor exacto refuta H2, que es estricta, y confirma H1. Cinco techos `< 1/3` confirman H2 sin ningún valor exacto; la inferencia es válida. Lo que la regla no puede hacer es decidir H3 desde un certificado que no determina el conjunto: eso es G-V-R2-02, no el choque viejo entre `REFUTED` y `UNDECIDED`.
+
+**G-V-14, G-V-15.** Resueltas. `A` es el conjunto de clases de `T³` en las que al menos dos coordenadas son `≡ 0` o `≡ π` (mod `2π`). Incluye los círculos con coordenadas `0`, los desplazados a `π` y los ocho vértices. H3 es existencial y por masa. Para un punto algebraico aislado, en la carta, la pertenencia es `tᵢ = 0` o `tᵢ' = 0`: decidible. La etapa 0 fija a lo sumo cuatro clases; A tiene 900 s por masa y clase, acumulados; A5 tiene 900 s por masa y clase, una sola vez. «No s = 4» apunta a la familia del archivo nombrado. La frase «No other time is authorized» es G-V-R2-09.
+
+## 2. Añadidos
+
+**Abandono de la línea.** Hay dos disparadores, separados de los veredictos de hipótesis.
+
+El de las cinco masas es decidible y coherente con la sección 5. Solo se abandona la ruta exacta si las cinco acaban `OPEN_AFTER_CRITICAL_POINT_ANALYSIS`. Si alguna queda certificada o en techo, la línea no se abandona; las abiertas siguen abiertas y hace falta otra carta para continuarlas, pero eso ya lo decía el presupuesto. No está en la lista de veredictos de la sección 7: G-V-R2-11.
+
+`STOPPED_PRIOR_ART` encaja como paro anterior a la etapa A, sin veredicto de H1–H3, y no afirma novedad si la lectura sale vacía. No es decidible. «Publicado de forma exacta» no dice si basta una fórmula de `∇ω` sin el máximo, si vale una sola quiralidad, ni qué unidades cuentan. La lista de lectura es `1601.04832v1` y `1601.04842`, buscando frases sobre `∇ω`. La sección 0 dice que esa misma lectura cubre la fórmula 1D y las cotas de tipo Bernstein. Esos dos PDF no son una búsqueda bibliográfica de Bernstein; el documento 4 menciona la cota en una dimensión y no da fuente. G-V-R2-06.
+
+**Conjunto `A`.** La definición es correcta, estable en el toro (`−π ≡ π`) y coherente con T2 cuando el conjunto de maximizadores es una unión finita de órbitas: se prueba la órbita entera, no un representante. No es coherente con el veredicto que obliga a decidir H3 desde una muestra o desde un solo testigo de A5. Si ese punto cae en `A`, H3 es verdadera en esa masa, porque el punto es un maximizador. Si cae fuera, no se sabe: otro punto del mismo máximo puede estar en `A`. La negación de H3 exige el conjunto entero.
+
+**T3.** Decidible y coherente. Ya no promete signos de `arcsin`. En el camino cero-dimensional, y también cuando A5 cierra un racional con testigo, los dos signos salen de comparar algebraicos. `CEILING_ONLY` no hereda T3, y no debe heredarlo: un techo `≥ 1/3` no fija el signo. No choca con la sección 6.
+
+## 3. Contradicciones y exceso
+
+El núcleo que la ronda 1 aceptó sigue en pie, y lo he vuelto a derivar: `ω = acos(nu)`, `|nu| ≤ n < 1`, `k = √3 q`, `Φ = (n²/3) G / (1 − n²u²)`, C0, las ocho cartas y la separación entre `V_grp^max`, `r_in`, `V_causal^max = 1`, `c_H`, `c_{ω²}` y `c_IR`. El contrato y el verificador pegados dan el mismo `u`, la misma cuadrática de Dirac, la misma traza, `r_in = 1/√3` y soporte máximo `1`. Esta carta no los reabre.
+
+Hay contradicción interna, no solo redacción.
+
+La primera está en el paro. A3, si la muestra no se certifica, pone ya el veredicto `OPEN_AFTER_CRITICAL_POINT_ANALYSIS`. A5 y la sección 5 dicen que ese es el veredicto solo cuando A5 tampoco termina. Quien obedezca A3 no llegará a un techo que la sección 5 considera válido. Quien obedezca la sección 5 ignorará una frase que presenta ese `OPEN` como final.
+
+La segunda es de alcance. La sección 7 define `VGRP_MAX_CERTIFIED` como valor exacto, conjunto de maximizadores y signos de T3, y dice que esa masa decide H3. A5 pone esa misma etiqueta con un racional y un testigo. El caso de dimensión positiva evalúa `Φ` en una muestra por componente. T2 pide órbitas de representantes: el grupo de permutaciones con signo es finito, así que ese formato no describe una componente de dimensión positiva. H1, H2 y T3 solo necesitan el valor, y ahí A5 sí llega. H3 y T2, no. La carta promete, en esos dos caminos, un lugar del máximo que el certificado no contiene.
+
+La tercera es local pero falsa: A3 ofrece como certificado los críticos de una función lineal genérica sobre el lugar. En estas cartas el lugar afín no es compacto. Un lazo crítico que corte `qᵢ ≡ 0` y `qᵢ ≡ π` no cabe en ninguna de las ocho cartas, y en cada una deja un trozo no acotado. Una lineal genérica puede no tener crítico en ese trozo y perder la componente, luego el máximo. La descomposición cilíndrica, citada al lado, sí muestra cada pieza afín; la lineal, no. El paréntesis las presenta como si fueran lo mismo.
+
+No promete una ley para toda QCA masiva isótropa, ni una comparación certificada con `c_H` o `c_{ω²}`, ni que la malla pruebe el máximo. Esos excesos de la v2 están cerrados.
+
+## Objeciones nuevas
+
+**G-V-R2-01.** Sección 4, A3, último inciso, frente a A5 y a la sección 5. Error demostrado. Si la muestra de dimensión positiva no cabe en los 900 s de A, A3 declara esa masa `OPEN_AFTER_CRITICAL_POINT_ANALYSIS`. A5 es el alternativa «si A3 no termina» y tiene presupuesto propio; la sección 5 solo abre la masa si A5 tampoco termina. El mismo caso tiene dos finales. Se cierra nombrando un solo orden: A3 falla, A5 puede correr, y `OPEN` es el veredicto solo si las dos han terminado sin certificado.
+
+**G-V-R2-02.** Sección 4, A3 (dimensión positiva), A4 y A5, frente a T2, H3 y la sección 7. Error demostrado. `VGRP_MAX_CERTIFIED` incluye el conjunto de maximizadores y decide H3. A5 entrega un punto y el valor. La muestra entrega un punto por componente y el valor, si el certificado de cobertura es real. Ni uno ni otra entregan el conjunto, y T2 no tiene formato para una componente continua. Con el punto fuera de `A`, H3 no se decide; la sección 7 dice que se decide. El camino cero-dimensional sí puede decidirla. Se cierra separando el veredicto de valor (T1, T3, H1, H2) del veredicto que exige el conjunto (T2, H3), y no usando el segundo si el certificado no describe todos los maximizadores.
+
+**G-V-R2-03.** Sección 4, A3, paréntesis de la muestra. Error demostrado. «Críticos de una función lineal genérica restringida al lugar» no es un certificado de cobertura en estas cartas: el modelo en `t ∈ R³` no es compacto, y un componente que cruce las paredes `q ≡ 0` y `q ≡ π` queda, en cada carta, como un trozo sin crítico de esa lineal. Se cierra quitando ese ejemplo, o limitándolo a un modelo compacto (senos y cosenos con `sᵢ² + cᵢ² = 1`) donde el método esté demostrado. La descomposición cilíndrica puede quedarse.
+
+**G-V-R2-04.** Sección 4, B3 (iii), y la frase «only for masses that Stage A certified». Laguna. (iii) compara un real de máquina con un crítico exacto a `1e-6`, pero solo obliga a refinar el intervalo del valor, no las cajas de `q` por debajo de esa distancia. Sin eso, (iii) no es una función del certificado. `1e-6` no es la cifra de D7. Tampoco se dice qué pasa si Newton o BFGS no convergen, ni si `CEILING_ONLY` es «certified»: la prueba bilateral contra un techo veta certificados válidos, y saltársela deja sin veto un techo que la malla supera y que puede decidir H2. Se cierra refinando las cajas de `q` a anchura fijada, definiendo el fallo de convergencia como desacuerdo, y escribiendo una regla unilateral solo para techos, o excluyéndolos en una frase.
+
+**G-V-R2-05.** Sección 7 frente a B3, «Role». Laguna. La precedencia entre `REFUTED_AT_m` o `CONFIRMED_AT_DECLARED_MASSES` y `STOPPED_EXACT_NUMERIC_DISAGREEMENT` no está. B corre después de haber certificado. Si el valor que refuta H2 no se reproduce en el barrido, el informe puede quedarse con las dos etiquetas. Se cierra diciendo que el veto numérico suspende los veredictos de hipótesis de las masas en desacuerdo y no se promocionan.
+
+**G-V-R2-06.** Sección 0, «Results that abandon the line», etapa 0 paso 6, y sección 6. Laguna. `STOPPED_PRIOR_ART` depende de «ya publicado de forma exacta», que no es un predicado: no fija familia, quiralidad, masa y máximo frente a una fórmula de `∇ω`. La lectura obligada son dos artículos y el objeto `∇ω`; el texto dice que eso zanja también las cotas de tipo Bernstein. Una lectura vacía de esos PDF no las zanja, y tampoco debe pasar el estado a novedad verificada. Se cierra acotando el paro a una frase exacta del máximo de esta familia en las páginas leídas, y dejando Bernstein en `[UNVERIFIED]` si esos PDF no lo enuncian.
+
+**G-V-R2-07.** Etapa 0, pasos 2 y 3. Laguna. El paso 2 usa `sin ω ≥ m > 0`. Eso es `√(1 − n²u²) ≥ m`, que necesita `|u| ≤ 1`. `|u| ≤ 1` se prueba en el paso 3, después. La implicación de la multiplicidad es correcta; el orden no la prueba todavía. Se cierra demostrando `|u| ≤ 1` antes de usarla.
+
+**G-V-R2-08.** Sección 1, definición de `V_grp^max`, frente a la fila Brillouin de la sección 2. Redacción. La sección 2 define la zona como clases `q` mod `2π`. La sección 1 escribe el máximo sobre `k ∈ BZ` y evalúa `u(k/√3)`. Leído al pie, `k` recorre una celda de lado `2π` y `q` no recorre un periodo. La etapa A no hereda ese error: certifica `max Φ` en el `q`-toro, que es el periodo de `u`. Se cierra cuantificando el máximo sobre `q ∈ T³`, o sobre `k` mod `2π√3`.
+
+**G-V-R2-09.** Sección 5, «No other time is authorized». Redacción. Pegada a los presupuestos de A y A5, se lee como si la etapa 0 y la etapa B tuvieran cero segundos. Se cierra diciendo que no hay más tiempo para A ni para A5, y que 0 y B no amplían la pregunta.
+
+**G-V-R2-10.** Sección 7, etiqueta `REFUTED_AT_m=<valor>`. Redacción. Si dos masas deciden falso, la etiqueta tiene un solo hueco. La hipótesis queda refutada igual, pero el informe puede callarse una masa. Se cierra listando todas las masas que refutan.
+
+**G-V-R2-11.** Sección 0, abandono por cinco `OPEN`, frente a las secciones 5 y 7. Laguna. La condición es decidible y está separada de H1–H3, pero no tiene veredicto de puerta. Quien ejecute solo la sección 7 registrará cinco abiertas y no el abandono de la ruta exacta. Se cierra con un veredicto de puerta, distinto de `STOPPED_PRIOR_ART`, emitido exactamente cuando las cinco masas están `OPEN_AFTER_CRITICAL_POINT_ANALYSIS`.
+
+=== DOCUMENT 3: verificacion_autor.md ===
+
+# Lectura del autor — ronda 2 de Grok, carta DIRAC_VGRP_MAX v3
+
+Autor de la carta y de esta lectura: Claude Code (Claude Opus 5.5). Fecha: 2026-11-06.
+Informe: `informe_grok.md` (modelo `grok-4.7`, estado `COMPLETED`). Carta revisada:
+`theory/DIRAC_VGRP_MAX_GATE.md` en `7697593`. Herramienta: `~/herramientas` `ce09890`.
+
+**Veredicto de Grok:** no congelar.
+- De la ronda 1, quince objeciones quedan resueltas y dos parciales (G-V-05 y G-V-11).
+- Hay once objeciones nuevas: tres errores demostrados, cinco lagunas y tres de redacción.
+- El núcleo analítico se vuelve a confirmar.
+
+**Lectura del autor:** acepto las once. La comprobación consiste en releer el texto de la v3 y
+rehacer a mano el argumento, sin cálculo nuevo. Dos de los errores demostrados los introdujo la
+propia v3 al reparar la ronda 1:
+- G-V-R2-01: el paro en A3 contradice A5;
+- G-V-R2-03: mi ejemplo de la función lineal genérica.
+
+| Id | Acepto | Comprobación del autor | Reparación propuesta para la v4 |
+| --- | --- | --- | --- |
+| G-V-R2-01 | Sí (error) | A3 declaraba `OPEN` cuando la muestra no cabía en el presupuesto; A5 y la Sec. 5 solo declaran `OPEN` si A5 tampoco termina | Un solo orden: si A3 falla, corre A5; `OPEN_AFTER_CRITICAL_POINT_ANALYSIS` solo si ninguna de las dos certifica. Se quita el veredicto del último inciso de A3 |
+| G-V-R2-02 | Sí (error) | Un testigo de A5, o una muestra por componente, da el valor pero no el conjunto de maximizadores. T2 no tiene formato para una componente continua. Un punto fuera de `A` no refuta H3 | Separar dos veredictos por masa. `VGRP_MAX_VALUE_CERTIFIED` cubre T1, T3, H1 y H2. `MAXIMIZER_SET_CERTIFIED` cubre T2, solo en el camino cero-dimensional. H3 es verdadera en una masa si algún maximizador certificado está en `A`; falsa solo con el conjunto certificado; en otro caso esa masa no la decide |
+| G-V-R2-03 | Sí (error) | En las cartas afines `t ∈ R³` el lugar no es compacto, así que una función lineal genérica puede no tener crítico en un trozo y perder la componente | Quitar el ejemplo de la lineal en las cartas. Se admite la descomposición cilíndrica algebraica, o una lineal genérica sobre el modelo compacto `(sᵢ, cᵢ)`, `sᵢ² + cᵢ² = 1`, incluyendo sus puntos singulares. En una componente compacta la lineal alcanza su máximo, que es crítico o singular |
+| G-V-R2-04 | Sí | (iii) refinaba el intervalo del valor, no las cajas de `q`. No decía qué hacer si el refinamiento no converge, ni cómo tratar `CEILING_ONLY` | Refinar las cajas de `q` a anchura `≤ 1e-9`. Un refinamiento que no converge cuenta como desacuerdo. Para `CEILING_ONLY`, regla unilateral: el máximo de la malla y los máximos refinados `≤ V² (1 + 1e-9)`. La distancia `1e-6` de (iii) es una cifra nueva, fuera de D7: **la decide el usuario** |
+| G-V-R2-05 | Sí | No se decía qué pasa si B veta después de que A haya decidido una hipótesis | El veto suspende los veredictos de hipótesis de las masas en desacuerdo. Esos veredictos no se registran como decididos ni se promocionan |
+| G-V-R2-06 | Sí | «Published exactly» no es un predicado. Dos PDF de Pavía no zanjan el estado de Bernstein | `STOPPED_PRIOR_ART` solo si las páginas leídas dan de forma explícita el valor exacto de `max ‖∇_k ω‖` (o de su cuadrado) para esta familia, con quiralidad y masa identificables y unidades convertibles. Bernstein y la fórmula 1D quedan `[UNVERIFIED]` si esos PDF no los enuncian. Una lectura vacía no implica novedad |
+| G-V-R2-07 | Sí | El paso 2 usaba `sin ω ≥ m`, que necesita `|u| ≤ 1`, demostrado solo en el paso 3 | Cambiar el orden: primero `|u| ≤ 1`, después ramas y multiplicidad |
+| G-V-R2-08 | Sí | La Sec. 1 tomaba el máximo sobre `k ∈ BZ` con `u(k/√3)`, cuyo periodo en `k` es `2π√3` | Cuantificar sobre `q ∈ T³`: `V_grp^max(m)^2 := max_{q ∈ T³} Φ(q)` |
+| G-V-R2-09 | Sí | «No other time is authorized» podía leerse como que las etapas 0 y B tienen presupuesto cero | Escribir «No other time is authorized for A or A5. Stages 0 and B do not widen the question» |
+| G-V-R2-10 | Sí | La etiqueta tenía un solo hueco para la masa | `REFUTED_AT_m ∈ {…}`, con todas las masas que refutan |
+| G-V-R2-11 | Sí | El abandono por cinco `OPEN` no tenía veredicto de puerta | Nuevo veredicto de puerta `STOPPED_EXACT_ROUTE_EXHAUSTED`, emitido exactamente cuando las cinco masas acaban `OPEN_AFTER_CRITICAL_POINT_ANALYSIS` |
+
+**Estado:** la carta sigue en DRAFT v3, no congelada. El encargo admitía una ronda y ya se ha
+hecho. Si se escribe la v4, si se fija la tolerancia espacial de B3 (iii) y si hay una tercera
+ronda antes de congelar, lo decide el usuario.
+
+=== DOCUMENT 4: THREE_VELOCITIES.md ===
+
+# THREE_VELOCITIES
+
+## Purpose
+
+This note fixes the vocabulary for propagation speeds in the project.
+
+## 1. Microscopic causal geometry
+
+For a finite one-step displacement set `N`, define
+
+`C_micro = conv(N)`.
+
+This is the primary causal object in more than one spatial dimension. It records which average velocities are geometrically compatible with repeated local moves.
+
+For direction `n̂`, the support function is
+
+`h_C(n̂) = sup_{v in C_micro} n̂·v`.
+
+The directional causal speed is proportional to `h_C(n̂)` after restoring lattice/time units.
+
+Two scalar summaries are useful but secondary:
+
+- inradius: `r_in = min h_C`;
+- maximal directional support: `V_causal^max = max h_C`.
+
+## 2. Spectral group velocity
+
+Let the Bloch unitary have eigenvalues
+
+`exp[-i ω_s(k) Δt]`.
+
+The group velocity of branch `s` is
+
+`v_s(k) = ∇_k ω_s(k)`.
+
+Define
+
+`V_grp^max = sup_{s,k} ||v_s(k)||`.
+
+This quantity belongs to the spectrum of a specific QCA. It is not identical by definition to the geometric boundary of `C_micro`.
+
+## 3. Relativistic IR speed
+
+`c_IR` belongs to the low-energy effective theory.
+
+For a gapless node with isotropic linear dispersion,
+
+`ω(k) = c_IR |k| + higher orders`,
+
+so `c_IR` is the low-energy slope.
+
+For a massive relativistic EFT,
+
+`H_eff(k) = M β + c_IR α·k + ...`,
+
+or, in the exact continuum relativistic form,
+
+`ω^2 = M^2 + c_IR^2 |k|^2`.
+
+On a finite lattice, higher-order Hamiltonian terms can contribute to the `|k|^2` coefficient of `ω^2`, so the two extraction procedures must be checked rather than assumed equivalent.
+
+The completed standard Dirac gate establishes a strict difference for
+`0 < m < 1`: with `F = arcsin(m) sqrt(1-m^2)/m`,
+`c_H = r_in F < c_{ω^2} = r_in sqrt(F) < r_in`.
+The quadratic mass-direction correction satisfies
+`c_H^2 + 2 M b = c_{ω^2}^2`, where `M = arcsin(m)` and
+`b = r_in^2 sqrt(1-m^2)(1-F)/(2m)`.
+
+Thus an unspecified finite-lattice `c_IR` is ambiguous between these
+extractions. Their common massless/continuum limit is verified for the standard
+family; see the [canonical state](../state/CURRENT_STATE.md) for the claim ceiling.
+
+## 4. Safe inequalities and unsafe identifications
+
+The robust locality statement is that spectral propagation cannot outrun the microscopic causal geometry. In one dimension this reduces to a scalar Bernstein-type bound.
+
+Unsafe universal identifications include:
+
+`c_IR = V_grp^max`,
+
+`V_grp^max = V_causal^max`,
+
+and therefore
+
+`c_IR = V_causal^max`.
+
+Each equality requires an independent mechanism or proof.
+
+## 5. Current geometric candidate
+
+If the IR cone is isotropic and must fit inside `C_micro`, then
+
+`c_IR <= r_in(C_micro)`.
+
+The strongest isotropic cone compatible with the *one-step* microscopic causal body has radius exactly `r_in`.
+
+**Correction (2026-09-14):** `r_in(C_micro)` is only an upper bound, and it
+bounds the one-step body, not the propagation actually achievable after
+repeated time steps. The object that should be compared against `c_IR` is the
+*strict asymptotic* isotropic speed `c_strict^iso = min h_infty`, defined from
+the actual long-run Fourier support in
+[`CAUSAL_BODY_GEOMETRY.md`](CAUSAL_BODY_GEOMETRY.md) Sec. 6, which satisfies
+`c_strict^iso <= r_in(C_micro)` in general and need not be an "inradius" at
+all (a pure shift gives a negative value). The live hypothesis is therefore
+
+`B_infty^*: c_0 = c_strict^iso`,
+
+not the old `c_IR = r_in(C_micro)`. The standard Pavia Weyl family in d=3 is
+the one baseline where the two targets are certified to coincide exactly
+(`c_strict^iso = r_in = 1/sqrt(3)`); see
+[`2026-09-14--strict-asymptotic-pavia-baseline.md`](../reports/2026-09-14--strict-asymptotic-pavia-baseline.md).
+See `B_STAR_HYPOTHESIS.md` for current status.
+
+=== DOCUMENT 5: 2026-09-14--weyl-dirac-gate-contract.md ===
+
+# Weyl/Dirac exact gate — execution contract
+
+Date: 2026-09-14. Baseline: `44ad178`.
+
+This contract is written before implementation or execution of the verifier.
+It specifies a local calculation under the initial freeze; it does not change
+the canonical status in `state/CURRENT_STATE.md` or authorize scope expansion.
+
+## Cases and conventions
+
+- Standard zero-node Pavia symbols: d=1 A; d=2 A and its transpose;
+  d=3 A+, A- and their transposes. The additional d=2 on-site rotation
+  parameter is fixed to zero. No exhaustive classification of that deformation
+  or of all isotropic QCAs is claimed.
+- Momentum coordinates are Cartesian, Euclidean, and dual to unit-length
+  one-step neighbors. One complete automaton update is one time unit.
+  Define `q_j = k_j/sqrt(d)`; d=1 uses `q=k`.
+- Weyl matrices are equations (15)-(17) of arXiv:1601.04832v1, PDF p.6.
+  The scalar part of each matrix fixes `cos(theta)=tr(W)/2`.
+  Do not copy the inconsistent opposite sign in the sentence after (15).
+- Dirac coupling is `D=[[n W,i m I],[i m I,n W^dagger]]`, equation (9)
+  of arXiv:1601.04842v1. Take `0<m<1`, `n=sqrt(1-m^2)>0`.
+  The dagger is mandatory; equation (23) of 1601.04832v1 omits it.
+- Use `D=exp(-i H)`, the logarithm continuous from the identity near the
+  massless zero node, and massive phases `+/-omega`,
+  `omega=acos(n u)`, `M=omega(0)=asin(m)` in `(0,pi/2)`.
+- Compare actual nonzero one-step Fourier support. At `m=0` and `m=1`
+  recompute support separately. Distinguish active support from an unchanged
+  declared substrate neighborhood at the decoupled endpoint.
+
+## Required verification, frozen before execution
+
+1. Reconstruct each published Weyl matrix independently as an ordered product
+   of Pauli rotations; extract its nonzero Laurent coefficients.
+2. Verify unitarity and the characteristic quadratic as exact identities.
+3. Enumerate supporting facets of the extracted neighbor hull exactly;
+   obtain inradius and maximum support. Establish the directional support
+   formula analytically from the complete corner set.
+4. Compute all first spatial derivatives and the full Hessian of the scalar
+   Weyl symbol at zero; check isotropy including mixed entries.
+5. Check Dirac unitarity, its characteristic quadratic and the square of its
+   Hermitian sine part. Derive the logarithm from this algebra.
+6. Independently differentiate the exact eigenphase and logarithm prefactor
+   to compare `c_H`, `c_{omega^2}` and the quadratic mass-term correction.
+7. Treat the open mass interval analytically, with separate massless and
+   decoupled endpoints. Derive the small-mass series and a joint continuum
+   scaling; finite samples cannot establish an interval assertion or limit.
+8. Negative controls must detect a missing Dirac dagger, a reversed 3D
+   phase sign, and the omission of the quadratic mass correction.
+
+## Acceptance and output
+
+All machine checks use exact symbolic arithmetic: tolerance is zero. A
+nonzero or unresolved residual stops the verifier with a nonzero exit code.
+No numerical tolerance, fitting, scan, or post-output change of acceptance
+is allowed. A checker failure is distinguished from a false hypothesis.
+
+Equality labels are `EXACT`, `ASYMPTOTIC`, `FALSE`, and
+`CONVENTION_DEPENDENT`; a degenerate endpoint is explicitly qualified.
+The analytic report must explain any interval inequality and limit, rather
+than inferring it from machine samples.
+
+The permanent verifier lives in `scripts/verify_weyl_dirac_gate.py`.
+It emits a deterministic Markdown record, including source/script/contract
+hashes and dependency versions, only after every check passes. Its default
+is stdout; `--output` explicitly writes the retained record.
+
+Completion of this battery supplies evidence for the seven declared symbols
+and their block couplings. It does not prove A, general B*_0, general B*_cont,
+novelty, or any theorem for a new substrate. Canonical promotion requires the
+separate reason-recording commit specified by PROJECT_INSTRUCTIONS.
+
+=== DOCUMENT 6: verify_weyl_dirac_gate.py ===
+
+"""Exact, fail-closed checks for the frozen standard Pavia Weyl/Dirac gate."""
+
+import argparse
+import hashlib
+import itertools
+from pathlib import Path
+import platform
+import sys
+
+import sympy as sp
+
+
+ROOT = Path(__file__).resolve().parents[1]
+CONTRACT = ROOT / "reports/2026-09-14--weyl-dirac-gate-contract.md"
+SOURCE = ROOT / "sources/1601.04832v1.pdf"
+SOURCE_SHA256 = "0dbf0a0bea497701e0408ce410d62ca0183a4aa14b4116254d029ff6602f1367"
+IDENTITY = sp.eye(2)
+PAULI = (
+    sp.Matrix([[0, 1], [1, 0]]),
+    sp.Matrix([[0, -sp.I], [sp.I, 0]]),
+    sp.diag(1, -1),
+)
+MASS, HOP = sp.symbols("m n", positive=True)
+CHECKS = []
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def residual(expression):
+    return sp.cancel(sp.expand(expression).subs(HOP**2, 1 - MASS**2))
+
+
+def check_zero(label, expression):
+    entries = list(expression) if isinstance(expression, sp.MatrixBase) else [expression]
+    for entry in entries:
+        remaining = residual(entry)
+        if remaining != 0:
+            raise ValueError(f"{label}: nonzero or unresolved residual {remaining}")
+    CHECKS.append(label)
+
+
+def check_equal(label, actual, expected):
+    if actual != expected:
+        raise ValueError(f"{label}: {actual!r} != {expected!r}")
+    CHECKS.append(label)
+
+
+def laurent_adjoint(matrix, variables):
+    return matrix.H.subs({variable: 1 / variable for variable in variables}, simultaneous=True)
+
+
+def published_symbol(dimension, chirality, variables):
+    cosines = [(variable + 1 / variable) / 2 for variable in variables]
+    sines = [(variable - 1 / variable) / (2 * sp.I) for variable in variables]
+    if dimension == 1:
+        scalar = cosines[0]
+        vector = (0, 0, sines[0])
+    elif dimension == 2:
+        cos_x, cos_y = cosines
+        sin_x, sin_y = sines
+        scalar = cos_x * cos_y
+        vector = (sin_x * cos_y, cos_x * sin_y, sin_x * sin_y)
+    else:
+        cos_x, cos_y, cos_z = cosines
+        sin_x, sin_y, sin_z = sines
+        scalar = cos_x * cos_y * cos_z + chirality * sin_x * sin_y * sin_z
+        vector = (
+            sin_x * cos_y * cos_z - chirality * cos_x * sin_y * sin_z,
+            -chirality * cos_x * sin_y * cos_z - sin_x * cos_y * sin_z,
+            cos_x * cos_y * sin_z - chirality * sin_x * sin_y * cos_z,
+        )
+    matrix = scalar * IDENTITY
+    for component, pauli in zip(vector, PAULI):
+        matrix -= sp.I * component * pauli
+    return matrix.applyfunc(sp.expand), sp.expand(scalar)
+
+
+def rotation_product(dimension, chirality, variables):
+    axes = (2,) if dimension == 1 else tuple(range(dimension))
+    signs = (1, -chirality, 1) if dimension == 3 else (1,) * dimension
+    matrix = IDENTITY
+    for variable, axis, sign in zip(variables, axes, signs):
+        positive = (IDENTITY - sign * PAULI[axis]) / 2
+        negative = (IDENTITY + sign * PAULI[axis]) / 2
+        matrix = matrix * (variable * positive + negative / variable)
+    return matrix.applyfunc(sp.expand)
+
+
+def fourier_support(matrix, variables):
+    shift = sp.prod(variables)
+    coefficients = {}
+    for row in range(matrix.rows):
+        for column in range(matrix.cols):
+            polynomial = sp.Poly(sp.expand(shift * matrix[row, column]), *variables)
+            for powers, coefficient in polynomial.terms():
+                displacement = tuple(1 - power for power in powers)
+                coefficients.setdefault(displacement, sp.zeros(matrix.rows, matrix.cols))
+                coefficients[displacement][row, column] += coefficient
+    return {
+        displacement: coefficient
+        for displacement, coefficient in coefficients.items()
+        if any(sp.expand(entry) != 0 for entry in coefficient)
+    }
+
+
+def hull_geometry(support, dimension):
+    vertices = [sp.Matrix(displacement) / sp.sqrt(dimension) for displacement in support]
+    facets = set()
+    for selected in itertools.combinations(vertices, dimension):
+        differences = sp.Matrix(dimension - 1, dimension, lambda row, column:
+                                selected[row + 1][column] - selected[0][column])
+        normals = differences.nullspace()
+        if len(normals) != 1:
+            continue
+        normal = normals[0]
+        offset = normal.dot(selected[0])
+        if offset == 0:
+            continue
+        normalized = normal / offset
+        distances = [sp.simplify(normalized.dot(vertex) - 1) for vertex in vertices]
+        if all(distance <= 0 for distance in distances):
+            facets.add(tuple(normalized))
+    if not facets:
+        raise ValueError("Hull has no certified facets")
+    inradius = min(sp.simplify(1 / sp.sqrt(sum(value**2 for value in facet)))
+                   for facet in facets)
+    maximum = max(sp.sqrt(vertex.dot(vertex)) for vertex in vertices)
+    return inradius, maximum, len(facets)
+
+
+def spatial_derivative(expression, variable, dimension):
+    return sp.I * variable * sp.diff(expression, variable) / sp.sqrt(dimension)
+
+
+def verify_case(dimension, chirality, transpose):
+    suffix = ("+" if chirality == 1 else "-") if dimension == 3 else ""
+    name = f"d={dimension} {'B' if transpose else 'A'}{suffix}"
+    variables = sp.symbols(f"z0:{dimension}", real=True, nonzero=True)
+    matrix, scalar = published_symbol(dimension, chirality, variables)
+    product = rotation_product(dimension, chirality, variables)
+    if transpose:
+        matrix, product = matrix.T, product.T
+    check_zero(f"{name}: published vs product", matrix - product)
+    adjoint = laurent_adjoint(matrix, variables)
+    check_zero(f"{name}: Weyl unitarity", matrix * adjoint - IDENTITY)
+    check_zero(f"{name}: Weyl quadratic", matrix**2 - 2 * scalar * matrix + IDENTITY)
+    check_zero(f"{name}: scalar trace", sp.trace(matrix) - 2 * scalar)
+    support = fourier_support(matrix, variables)
+    corners = set(itertools.product((-1, 1), repeat=dimension))
+    check_equal(f"{name}: active support", set(support), corners)
+    inradius, maximum, facets = hull_geometry(support, dimension)
+    check_zero(f"{name}: inradius", inradius - 1 / sp.sqrt(dimension))
+    check_zero(f"{name}: maximum support", maximum - 1)
+    check_equal(f"{name}: facets", facets, 2 * dimension)
+    origin = dict.fromkeys(variables, 1)
+    check_zero(f"{name}: zero node", matrix.subs(origin) - IDENTITY)
+    spatial = [sp.I * spatial_derivative(matrix, variable, dimension).subs(origin)
+               for variable in variables]
+    for first, first_variable in enumerate(variables):
+        check_zero(f"{name}: scalar gradient {first}",
+                   spatial_derivative(scalar, first_variable, dimension).subs(origin))
+        for second, second_variable in enumerate(variables):
+            expected = sp.Rational(int(first == second), dimension)
+            check_zero(f"{name}: Clifford {first},{second}",
+                       spatial[first] * spatial[second] + spatial[second] * spatial[first]
+                       - 2 * expected * IDENTITY)
+            hessian = spatial_derivative(
+                spatial_derivative(scalar, first_variable, dimension), second_variable, dimension)
+            check_zero(f"{name}: Hessian {first},{second}", hessian.subs(origin) + expected)
+    speed = sp.sqrt(sp.simplify(sp.trace(spatial[0]**2) / 2))
+    check_zero(f"{name}: massless matching", speed - inradius)
+    dirac = sp.BlockMatrix([[HOP * matrix, sp.I * MASS * IDENTITY],
+                           [sp.I * MASS * IDENTITY, HOP * adjoint]]).as_explicit()
+    if dimension == 1:
+        permutation = (0, 2, 3, 1)
+        reduced = sp.Matrix([[HOP / variables[0], sp.I * MASS],
+                             [sp.I * MASS, HOP * variables[0]]])
+        check_zero(f"{name}: minimal Dirac blocks",
+                   dirac.extract(permutation, permutation) - sp.diag(reduced, reduced))
+    dirac_adjoint = laurent_adjoint(dirac, variables)
+    check_zero(f"{name}: Dirac unitarity", dirac * dirac_adjoint - sp.eye(4))
+    check_zero(f"{name}: Dirac quadratic", dirac**2 - 2 * HOP * scalar * dirac + sp.eye(4))
+    check_zero(f"{name}: Dirac trace", sp.trace(dirac) - 4 * HOP * scalar)
+    sine_part = sp.I * (dirac - dirac_adjoint) / 2
+    check_zero(f"{name}: logarithm algebra",
+               sine_part**2 - (1 - HOP**2 * scalar**2) * sp.eye(4))
+    check_equal(f"{name}: massive support", set(fourier_support(dirac, variables)),
+                corners | {(0,) * dimension})
+    check_equal(f"{name}: massless Dirac support",
+                set(fourier_support(dirac.subs({MASS: 0, HOP: 1}), variables)), corners)
+    check_equal(f"{name}: decoupled support",
+                set(fourier_support(dirac.subs({MASS: 1, HOP: 0}), variables)), {(0,) * dimension})
+    return name, len(support), facets, sp.sstr(inradius), sp.sstr(maximum), sp.sstr(speed)
+
+
+def verify_mass_coefficients():
+    scalar_argument = sp.Symbol("u", real=True)
+    gap = sp.Symbol("M", positive=True)
+    phase = sp.acos(HOP * scalar_argument)
+    prefactor = phase / sp.sqrt(1 - HOP**2 * scalar_argument**2)
+
+    def at_origin(expression):
+        expression = expression.subs(scalar_argument, 1).subs(HOP, sp.sqrt(1 - MASS**2))
+        expression = sp.simplify(expression)
+        return expression.subs(sp.acos(sp.sqrt(1 - MASS**2)), gap)
+
+    hopping = sp.sqrt(1 - MASS**2)
+    ratio = gap * hopping / MASS
+    check_zero("fixed-mass logarithm prefactor", at_origin(prefactor) - gap / MASS)
+    for dimension in (1, 2, 3):
+        speed_squared = sp.Rational(1, dimension)
+        phase_coefficient = at_origin(sp.diff(phase**2, scalar_argument)) * (-speed_squared / 2)
+        check_zero(f"d={dimension}: phase curvature", phase_coefficient - speed_squared * ratio)
+        mass_curvature = MASS * at_origin(sp.diff(prefactor, scalar_argument)) * (-speed_squared / 2)
+        expected_curvature = speed_squared * hopping * (1 - ratio) / (2 * MASS)
+        check_zero(f"d={dimension}: quadratic mass term", mass_curvature - expected_curvature)
+        check_zero(f"d={dimension}: independent H-squared curvature",
+                   speed_squared * ratio**2 + 2 * gap * mass_curvature - phase_coefficient)
+    mass_ratio = ratio.subs(gap, sp.asin(MASS))
+    check_zero("c_H small-mass series", sp.series(mass_ratio, MASS, 0, 6).removeO()
+               - (1 - MASS**2 / 3 - 2 * MASS**4 / 15))
+    check_zero("c_omega2 small-mass series", sp.series(sp.sqrt(mass_ratio), MASS, 0, 6).removeO()
+               - (1 - MASS**2 / 6 - 29 * MASS**4 / 360))
+    check_zero("small-mass ratio limit", sp.limit(mass_ratio, MASS, 0, dir="+") - 1)
+    angle = sp.Symbol("angle", real=True)
+    check_zero("strict-bound derivative identity",
+               sp.diff(sp.sin(angle) - angle * sp.cos(angle), angle) - angle * sp.sin(angle))
+    check_zero("strict-bound zero endpoint", (sp.sin(angle) - angle * sp.cos(angle)).subs(angle, 0))
+
+
+def verify_negative_controls():
+    weyl = sp.diag(-sp.I, sp.I)
+    bad_dirac = sp.BlockMatrix([[sp.Rational(4, 5) * weyl, sp.I * sp.Rational(3, 5) * IDENTITY],
+                               [sp.I * sp.Rational(3, 5) * IDENTITY, sp.Rational(4, 5) * weyl]]).as_explicit()
+    check_equal("negative control: missing dagger detected",
+                bad_dirac * bad_dirac.H != sp.eye(4), True)
+    variables = sp.symbols("z0:3", real=True, nonzero=True)
+    matrix, scalar = published_symbol(3, 1, variables)
+    wrong_scalar = published_symbol(3, -1, variables)[1]
+    check_equal("negative control: reversed phase sign detected",
+                residual(sp.trace(matrix) / 2 - wrong_scalar) != 0, True)
+    momentum = sp.Symbol("momentum", real=True)
+    phase = sp.acos(sp.cos(momentum) / sp.sqrt(2))
+    dispersion_coefficient = sp.simplify(sp.diff(phase**2, momentum, 2).subs(momentum, 0) / 2)
+    hamiltonian_coefficient = sp.simplify((phase / sp.sin(phase)).subs(momentum, 0) / sp.sqrt(2))
+    discrepancy = sp.simplify(dispersion_coefficient - hamiltonian_coefficient**2)
+    check_zero("negative control: exact finite-mass discrepancy",
+               discrepancy - sp.pi * (4 - sp.pi) / 16)
+    check_equal("negative control: missing quadratic mass term detected", discrepancy != 0, True)
+
+
+def verify_vertex_idempotency():
+    """Addendum (2026-09-14): exact non-nilpotency certificate for every
+    d=3 corner coefficient A_h, reusing published_symbol/fourier_support.
+    This is the algebraic input for the strict-asymptotic-body baseline
+    certificate; see reports/2026-09-14--strict-asymptotic-pavia-baseline.md.
+    Governed by no separate contract; it only extracts and checks exact
+    identities already reachable from the frozen d=3 factorization."""
+    positive_generators = {(1, 1, 1), (1, -1, -1), (-1, 1, -1), (-1, -1, 1)}
+    alpha_plus = sp.Rational(1, 4) * (1 - sp.I)
+    alpha_minus = sp.Rational(1, 4) * (1 + sp.I)
+    rows = []
+    for chirality in (1, -1):
+        own, other = (alpha_plus, alpha_minus) if chirality == 1 else (alpha_minus, alpha_plus)
+        for transpose in (False, True):
+            suffix = "+" if chirality == 1 else "-"
+            name = f"d=3 {'B' if transpose else 'A'}{suffix}"
+            variables = sp.symbols("z0:3", real=True, nonzero=True)
+            matrix, _ = published_symbol(3, chirality, variables)
+            if transpose:
+                matrix = matrix.T
+            support = fourier_support(matrix, variables)
+            for h in sorted(support):
+                coefficient = support[h]
+                expected = own if h in positive_generators else other
+                check_zero(f"{name}: vertex {h} rank-one (det A_h=0)", coefficient.det())
+                check_zero(f"{name}: vertex {h} trace A_h={sp.nsimplify(expected)}",
+                           sp.trace(coefficient) - expected)
+                check_zero(f"{name}: vertex {h} A_h^2=alpha*A_h",
+                           coefficient * coefficient - expected * coefficient)
+                check_equal(f"{name}: vertex {h} nonzero eigenvalue alpha", expected != 0, True)
+                rows.append((name, str(h), sp.sstr(expected)))
+    return rows
+
+
+def run():
+    CHECKS.clear()
+    check_equal("source PDF SHA256", digest(SOURCE), SOURCE_SHA256)
+    rows = []
+    for dimension in (1, 2, 3):
+        chiralities = (1, -1) if dimension == 3 else (0,)
+        transposes = (False,) if dimension == 1 else (False, True)
+        for chirality, transpose in itertools.product(chiralities, transposes):
+            rows.append(verify_case(dimension, chirality, transpose))
+    verify_mass_coefficients()
+    verify_negative_controls()
+    vertex_rows = verify_vertex_idempotency()
+    lines = [
+        "# Weyl/Dirac exact verification record", "",
+        f"Result: PASS — {len(CHECKS)} exact checks; zero tolerance; seven Weyl symbols and their Dirac couplings.",
+        "", "This is a local verification record, not a canonical status update.", "",
+        f"Python: {platform.python_version()}; SymPy: {sp.__version__}.", "",
+        "| Case | Weyl neighbors | Facets | r_in | V_causal^max | c_0 |",
+        "| --- | ---: | ---: | --- | --- | --- |",
+    ]
+    lines.extend("| " + " | ".join(map(str, row)) + " |" for row in rows)
+    lines.extend([
+        "", "For each row and 0<m<1: M=asin(m), F=M*sqrt(1-m^2)/m;",
+        "c_H=c_0*F and c_omega2=c_0*sqrt(F). Analytically 0<F<1.",
+        "At m=0 both equal r_in (EXACT); at fixed 0<m<1 both equalities",
+        "with r_in are FALSE; matching as m tends to zero is ASYMPTOTIC.",
+        "", "At m=1 active support is {0}; all spatial coefficients and its inradius",
+        "are zero. The limiting ratio to the nonzero-mass substrate inradius is not",
+        "an inradius ratio for that collapsed active body.", "",
+        "Negative controls: missing dagger, reversed phase sign, omitted quadratic mass term detected.",
+        "Interval proof, continuum scaling and convention limits: see the analytic report.", "",
+        "## Addendum: d=3 vertex non-nilpotency certificate (2026-09-14)", "",
+        "For every one-step corner h in {-1,1}^3/sqrt(3) and every d=3 case,",
+        "det(A_h)=0 and A_h^2=alpha*A_h with alpha in {(1-i)/4,(1+i)/4}, alpha!=0",
+        "(exact). Hence each A_h is rank-one and not nilpotent, so",
+        "A_h^n=alpha^(n-1)*A_h != 0 for every n>=1. See",
+        "reports/2026-09-14--strict-asymptotic-pavia-baseline.md for the",
+        "convexity argument that turns this into C_infty^strict=C_micro for this",
+        "baseline. Baseline-specific; not a claim about other admissible symbols.",
+        "", "| Case | Vertex h | alpha |", "| --- | --- | ---: |",
+    ])
+    lines.extend(f"| {name} | {h} | {alpha} |" for name, h, alpha in vertex_rows)
+    lines.extend([
+        "",
+        "## Provenance", "",
+        f"- Script SHA256: `{digest(Path(__file__))}`",
+        f"- Contract SHA256: `{digest(CONTRACT)}`",
+        f"- 1601.04832v1 PDF SHA256: `{digest(SOURCE)}`",
+        "- Weyl input: https://arxiv.org/abs/1601.04832v1, equations (15)-(17).",
+        "- Dirac dagger cross-check: https://arxiv.org/html/1601.04842v1#S2.E9.",
+        "- Baseline: 44ad178; fixed cases and semantics are specified by the contract.",
+        "",
+    ])
+    return "\n".join(lines)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, help="Write the record only after all checks pass.")
+    arguments = parser.parse_args()
+    try:
+        record = run()
+    except (ValueError, OSError) as error:
+        print(f"FAIL: {error}", file=sys.stderr)
+        return 1
+    if arguments.output:
+        arguments.output.write_text(record, encoding="utf-8")
+        print(f"PASS: {len(CHECKS)} exact checks; wrote {arguments.output}")
+    else:
+        print(record, end="")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
