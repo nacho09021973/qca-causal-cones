@@ -1,0 +1,2156 @@
+{
+  "python": "3.12.3",
+  "numpy": "2.4.4",
+  "seed": null,
+  "tolerance": 2e-12,
+  "contract_commit": "fd1ef6c",
+  "sha256": {
+    "scripts/verify_thirring_two_node.py": "2280cf0e37ca312e4ddf43fa8750d8ad1786bd876035f39c34d9d43c411f7e96",
+    "theory/THIRRING_TWO_NODE_GATE.md": "684290668d7e64f62e9aa1c75c55fc1e9103942ebff8729c63f01149bb8a27ac",
+    "sources/1804.08508v1.pdf": "495646b1a0c0a2822422c4d65536b8c4caa0d82c5efe7e48df878766af91f0d0",
+    "2026-11-08--thirring-primera-colision.md": "c05ac808de6e334a4ba199298bf3e1f7a196cd3b677a549e24a61b55be6d4a39"
+  },
+  "checks": [
+    {
+      "name": "gram:(-4, 4):1",
+      "error": 8.881784197001252e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=1:chi=0.0",
+      "error": 4.440892098500626e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=1:chi=0.0",
+      "error": 1.9721522630525295e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=1:chi=0.0",
+      "error": 1.7763568394002505e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=1:chi=0.0",
+      "error": 2.4651903288156608e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-4, 4):1",
+      "error": 8.881784197001252e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=1:chi=0.7",
+      "error": 5.176064399998538e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=1:chi=0.7",
+      "error": 1.9810141573566377e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=1:chi=0.7",
+      "error": 1.5615789467626758e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=1:chi=0.7",
+      "error": 4.440892098500626e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-4, 4):1",
+      "error": 8.881784197001252e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=1:chi=1.5707963267948966",
+      "error": 4.447864503296149e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=1:chi=1.5707963267948966",
+      "error": 2.0285422608680407e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=1:chi=1.5707963267948966",
+      "error": 1.7798229048217483e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=1:chi=1.5707963267948966",
+      "error": 8.881784197001252e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-4, 4):1",
+      "error": 8.881784197001252e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=1:chi=3.141592653589793",
+      "error": 4.440892098500626e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=1:chi=3.141592653589793",
+      "error": 1.9721522630525295e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=1:chi=3.141592653589793",
+      "error": 1.7763568394002505e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=1:chi=3.141592653589793",
+      "error": 9.860761315262648e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 8):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=2:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=2:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=2:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=2:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 8):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=2:chi=0.7",
+      "error": 1.179611963664229e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=2:chi=0.7",
+      "error": 1.232595164407831e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=2:chi=0.7",
+      "error": 2.368064523248383e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=2:chi=0.7",
+      "error": 1.1102230246251565e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 8):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=2:chi=1.5707963267948966",
+      "error": 6.938893903907226e-17,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=2:chi=1.5707963267948966",
+      "error": 4.017228076208261e-33,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=2:chi=1.5707963267948966",
+      "error": 3.925231146709438e-17,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=2:chi=1.5707963267948966",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 8):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=2:chi=3.141592653589793",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=2:chi=3.141592653589793",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=2:chi=3.141592653589793",
+      "error": 1.4997597826618576e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=2:chi=3.141592653589793",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 32):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=8:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=8:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=8:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=8:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 32):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=8:chi=0.7",
+      "error": 1.0275319357095066e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=8:chi=0.7",
+      "error": 1.0477058897466575e-30,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=8:chi=0.7",
+      "error": 1.5711444427323794e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=8:chi=0.7",
+      "error": 3.3306690738754696e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 32):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=8:chi=1.5707963267948966",
+      "error": 5.73352682810801e-17,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=8:chi=1.5707963267948966",
+      "error": 3.805759227532495e-33,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=8:chi=1.5707963267948966",
+      "error": 2.4532694666933987e-18,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=8:chi=1.5707963267948966",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 32):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=8:chi=3.141592653589793",
+      "error": 1.2557063237404776e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=8:chi=3.141592653589793",
+      "error": 1.5194243707429902e-62,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=8:chi=3.141592653589793",
+      "error": 1.4997597826618546e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=8:chi=3.141592653589793",
+      "error": 1.232595164407831e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-128, 128):32",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=32:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=32:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=32:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=32:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-128, 128):32",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=32:chi=0.7",
+      "error": 1.3614747679188153e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=32:chi=0.7",
+      "error": 1.968064982856769e-30,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=32:chi=0.7",
+      "error": 4.965416739131958e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=32:chi=0.7",
+      "error": 1.4432899320127035e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-128, 128):32",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=32:chi=1.5707963267948966",
+      "error": 5.562515854687171e-17,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=32:chi=1.5707963267948966",
+      "error": 3.752891916627218e-33,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=32:chi=1.5707963267948966",
+      "error": 1.5332934166833742e-19,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=32:chi=1.5707963267948966",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-128, 128):32",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-map:M=32:chi=3.141592653589793",
+      "error": 1.4815216097198812e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-leak:M=32:chi=3.141592653589793",
+      "error": 2.187780257531713e-62,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-packet-unitarity:M=32:chi=3.141592653589793",
+      "error": 1.499759782661854e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "concurrence:M=32:chi=3.141592653589793",
+      "error": 1.4791141972893971e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 16):4",
+      "error": 2.2247786310271853e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "partial-crossing-is-not-a-closed-gate",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "partial-crossing-still-preserves-parity:0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "partial-crossing-still-preserves-parity:1",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=1:chi=0.0",
+      "error": 4.558971099676148e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=1:chi=0.0",
+      "error": 2.2186712959340953e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=1:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=1:chi=0.7",
+      "error": 5.832386959276583e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=1:chi=0.7",
+      "error": 2.3499528044281277e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=1:chi=0.7",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=1:chi=1.5707963267948966",
+      "error": 4.449557262054371e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=1:chi=1.5707963267948966",
+      "error": 2.496386908990187e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=1:chi=1.5707963267948966",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=1:chi=3.141592653589793",
+      "error": 4.558971099676149e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=1:chi=3.141592653589793",
+      "error": 2.2186712959340953e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=1:chi=3.141592653589793",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=2:chi=0.0",
+      "error": 1.16615088255205e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=2:chi=0.0",
+      "error": 2.4651903288156624e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=2:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=2:chi=0.7",
+      "error": 2.7061686225238186e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=2:chi=0.7",
+      "error": 4.691403431382689e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=2:chi=0.7",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=2:chi=1.5707963267948966",
+      "error": 1.2412670766236366e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=2:chi=1.5707963267948966",
+      "error": 3.464678648084027e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=2:chi=1.5707963267948966",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=2:chi=3.141592653589793",
+      "error": 1.16615088255205e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=2:chi=3.141592653589793",
+      "error": 2.4651903288156624e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=2:chi=3.141592653589793",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=3:chi=0.0",
+      "error": 4.446429977700569e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=3:chi=0.0",
+      "error": 2.2186712959340953e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=3:chi=0.0",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=3:chi=0.7",
+      "error": 6.593044732505607e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=3:chi=0.7",
+      "error": 5.629662316050513e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=3:chi=0.7",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=3:chi=1.5707963267948966",
+      "error": 4.996003610813204e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=3:chi=1.5707963267948966",
+      "error": 2.718360521642338e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=3:chi=1.5707963267948966",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-map:M=3:chi=3.141592653589793",
+      "error": 4.446429977700569e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-leak:M=3:chi=3.141592653589793",
+      "error": 2.2186712959340953e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "fermionic-antisymmetry:M=3:chi=3.141592653589793",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 0, 8):1",
+      "error": 1.8856899923547945e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=1:chi=0.0:t=7",
+      "error": 6.879854403319467e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=1:chi=0.0:t=7",
+      "error": 4.43734259186819e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 0, 8):1",
+      "error": 1.8856899923547945e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=1:chi=0.0:t=11",
+      "error": 6.879854403319467e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=1:chi=0.0:t=11",
+      "error": 4.43734259186819e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 0, 8):1",
+      "error": 1.8856899923547945e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=1:chi=0.7:t=7",
+      "error": 6.522560269672796e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=1:chi=0.7:t=7",
+      "error": 3.5886178469667927e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 0, 8):1",
+      "error": 1.8856899923547945e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=1:chi=0.7:t=11",
+      "error": 6.722282952163625e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=1:chi=0.7:t=11",
+      "error": 3.112139936807842e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 0, 8):1",
+      "error": 1.8856899923547945e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=1:chi=1.5707963267948966:t=7",
+      "error": 4.877924609637682e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=1:chi=1.5707963267948966:t=7",
+      "error": 2.472374826527295e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 0, 8):1",
+      "error": 1.8856899923547945e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=1:chi=1.5707963267948966:t=11",
+      "error": 5.07341072362005e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=1:chi=1.5707963267948966:t=11",
+      "error": 2.558359281974882e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 0, 8):1",
+      "error": 1.8856899923547945e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=1:chi=3.141592653589793:t=7",
+      "error": 6.879854403319467e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=1:chi=3.141592653589793:t=7",
+      "error": 4.437342591868194e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-8, 0, 8):1",
+      "error": 1.8856899923547945e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=1:chi=3.141592653589793:t=11",
+      "error": 6.879854403319468e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=1:chi=3.141592653589793:t=11",
+      "error": 4.437342591868194e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 0, 16):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=2:chi=0.0:t=13",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=2:chi=0.0:t=13",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 0, 16):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=2:chi=0.0:t=21",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=2:chi=0.0:t=21",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 0, 16):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=2:chi=0.7:t=13",
+      "error": 6.206335383118184e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=2:chi=0.7:t=13",
+      "error": 3.5745259767827093e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 0, 16):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=2:chi=0.7:t=21",
+      "error": 3.58994808126657e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=2:chi=0.7:t=21",
+      "error": 1.89769634890547e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 0, 16):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=2:chi=1.5707963267948966:t=13",
+      "error": 6.316519372592879e-17,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=2:chi=1.5707963267948966:t=13",
+      "error": 3.991174363178608e-33,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 0, 16):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=2:chi=1.5707963267948966:t=21",
+      "error": 1.1047740061976757e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=2:chi=1.5707963267948966:t=21",
+      "error": 1.0486818606614046e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 0, 16):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=2:chi=3.141592653589793:t=13",
+      "error": 7.857794173099923e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=2:chi=3.141592653589793:t=13",
+      "error": 5.474788278414635e-63,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-16, 0, 16):2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=2:chi=3.141592653589793:t=21",
+      "error": 1.0460672589262403e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=2:chi=3.141592653589793:t=21",
+      "error": 1.23062557985047e-62,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 0, 32):4",
+      "error": 6.308304947407305e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=4:chi=0.0:t=25",
+      "error": 2.468290984480215e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=4:chi=0.0:t=25",
+      "error": 6.536175609008107e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 0, 32):4",
+      "error": 6.308304947407305e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=4:chi=0.0:t=41",
+      "error": 2.468290984480215e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=4:chi=0.0:t=41",
+      "error": 6.536175609008107e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 0, 32):4",
+      "error": 6.308304947407305e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=4:chi=0.7:t=25",
+      "error": 5.068145169807729e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=4:chi=0.7:t=25",
+      "error": 2.558639777580353e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 0, 32):4",
+      "error": 6.308304947407305e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=4:chi=0.7:t=41",
+      "error": 1.2919440986913193e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=4:chi=0.7:t=41",
+      "error": 1.5489255831390945e-30,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 0, 32):4",
+      "error": 6.308304947407305e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=4:chi=1.5707963267948966:t=25",
+      "error": 2.4308357913422905e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=4:chi=1.5707963267948966:t=25",
+      "error": 7.78513292218501e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 0, 32):4",
+      "error": 6.308304947407305e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=4:chi=1.5707963267948966:t=41",
+      "error": 2.8808848099734293e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=4:chi=1.5707963267948966:t=41",
+      "error": 8.8037690237221e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 0, 32):4",
+      "error": 6.308304947407305e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=4:chi=3.141592653589793:t=25",
+      "error": 2.4682909844802146e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=4:chi=3.141592653589793:t=25",
+      "error": 6.536175609008107e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-32, 0, 32):4",
+      "error": 6.308304947407305e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=4:chi=3.141592653589793:t=41",
+      "error": 2.468290984480215e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=4:chi=3.141592653589793:t=41",
+      "error": 6.536175609008107e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-64, 0, 64):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=8:chi=0.0:t=49",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=8:chi=0.0:t=49",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-64, 0, 64):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=8:chi=0.0:t=81",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=8:chi=0.0:t=81",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-64, 0, 64):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=8:chi=0.7:t=49",
+      "error": 1.3666519380324108e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=8:chi=0.7:t=49",
+      "error": 2.105356545185089e-30,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-64, 0, 64):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=8:chi=0.7:t=81",
+      "error": 1.5223134176790111e-15,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=8:chi=0.7:t=81",
+      "error": 2.250833937598559e-30,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-64, 0, 64):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=8:chi=1.5707963267948966:t=49",
+      "error": 5.551115123125783e-17,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=8:chi=1.5707963267948966:t=49",
+      "error": 3.749399456654655e-33,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-64, 0, 64):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=8:chi=1.5707963267948966:t=81",
+      "error": 1.224631310855794e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=8:chi=1.5707963267948966:t=81",
+      "error": 1.461286972574328e-32,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-64, 0, 64):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=8:chi=3.141592653589793:t=49",
+      "error": 1.5099290763995927e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=8:chi=3.141592653589793:t=49",
+      "error": 2.188016197816708e-62,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "gram:(-64, 0, 64):8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-composition:M=8:chi=3.141592653589793:t=81",
+      "error": 3.006796124336505e-31,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "three-packet-leak:M=8:chi=3.141592653589793:t=81",
+      "error": 8.761378181166216e-62,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "overgrant-monomial-one-entry-per-column",
+      "error": 5.551115123125783e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "overgrant-monomial-one-entry-per-row",
+      "error": 5.551115123125783e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "overgrant-monomial-other-entries-zero",
+      "error": 5.551115123125783e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "H-witness-both-parities-fidelity-one-half",
+      "error": 2.220446049250313e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "ancilla-preserves-definite-data-parity",
+      "error": 2.220446049250313e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "chi-pi-is-minus-product-XX",
+      "error": 1.7319121124709866e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "two-node-quasienergy-shift",
+      "error": 5.338891568193822e-16,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "Fourier-node-shift:M=1",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "Fourier-node-shift:M=2",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "Fourier-node-shift:M=8",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "Fourier-node-shift:M=32",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "Fourier-node-shift:M=128",
+      "error": 0.0,
+      "tolerance": 2e-12,
+      "pass": true
+    }
+  ],
+  "two_packet": [
+    {
+      "M": 1,
+      "chi": 0.0,
+      "steps": 6,
+      "map_error": 4.440892098500626e-16,
+      "worst_leakage": 1.9721522630525295e-31,
+      "concurrence_00": 2.4651903288156608e-32
+    },
+    {
+      "M": 1,
+      "chi": 0.7,
+      "steps": 6,
+      "map_error": 5.176064399998538e-16,
+      "worst_leakage": 1.9810141573566377e-31,
+      "concurrence_00": 0.6442176872376906
+    },
+    {
+      "M": 1,
+      "chi": 1.5707963267948966,
+      "steps": 6,
+      "map_error": 4.447864503296149e-16,
+      "worst_leakage": 2.0285422608680407e-31,
+      "concurrence_00": 0.9999999999999991
+    },
+    {
+      "M": 1,
+      "chi": 3.141592653589793,
+      "steps": 6,
+      "map_error": 4.440892098500626e-16,
+      "worst_leakage": 1.9721522630525295e-31,
+      "concurrence_00": 1.2246467991473522e-16
+    },
+    {
+      "M": 2,
+      "chi": 0.0,
+      "steps": 11,
+      "map_error": 0.0,
+      "worst_leakage": 0.0,
+      "concurrence_00": 0.0
+    },
+    {
+      "M": 2,
+      "chi": 0.7,
+      "steps": 11,
+      "map_error": 1.179611963664229e-16,
+      "worst_leakage": 1.232595164407831e-32,
+      "concurrence_00": 0.6442176872376909
+    },
+    {
+      "M": 2,
+      "chi": 1.5707963267948966,
+      "steps": 11,
+      "map_error": 6.938893903907226e-17,
+      "worst_leakage": 4.017228076208261e-33,
+      "concurrence_00": 1.0
+    },
+    {
+      "M": 2,
+      "chi": 3.141592653589793,
+      "steps": 11,
+      "map_error": 0.0,
+      "worst_leakage": 0.0,
+      "concurrence_00": 1.2246467991473532e-16
+    },
+    {
+      "M": 8,
+      "chi": 0.0,
+      "steps": 41,
+      "map_error": 0.0,
+      "worst_leakage": 0.0,
+      "concurrence_00": 0.0
+    },
+    {
+      "M": 8,
+      "chi": 0.7,
+      "steps": 41,
+      "map_error": 1.0275319357095066e-15,
+      "worst_leakage": 1.0477058897466575e-30,
+      "concurrence_00": 0.6442176872376913
+    },
+    {
+      "M": 8,
+      "chi": 1.5707963267948966,
+      "steps": 41,
+      "map_error": 5.73352682810801e-17,
+      "worst_leakage": 3.805759227532495e-33,
+      "concurrence_00": 1.0
+    },
+    {
+      "M": 8,
+      "chi": 3.141592653589793,
+      "steps": 41,
+      "map_error": 1.2557063237404776e-31,
+      "worst_leakage": 1.5194243707429902e-62,
+      "concurrence_00": 1.224646799147352e-16
+    },
+    {
+      "M": 32,
+      "chi": 0.0,
+      "steps": 161,
+      "map_error": 0.0,
+      "worst_leakage": 0.0,
+      "concurrence_00": 0.0
+    },
+    {
+      "M": 32,
+      "chi": 0.7,
+      "steps": 161,
+      "map_error": 1.3614747679188153e-15,
+      "worst_leakage": 1.968064982856769e-30,
+      "concurrence_00": 0.6442176872376925
+    },
+    {
+      "M": 32,
+      "chi": 1.5707963267948966,
+      "steps": 161,
+      "map_error": 5.562515854687171e-17,
+      "worst_leakage": 3.752891916627218e-33,
+      "concurrence_00": 1.0
+    },
+    {
+      "M": 32,
+      "chi": 3.141592653589793,
+      "steps": 161,
+      "map_error": 1.4815216097198812e-31,
+      "worst_leakage": 2.187780257531713e-62,
+      "concurrence_00": 1.2246467991473517e-16
+    }
+  ],
+  "incomplete_crossing": {
+    "M": 4,
+    "steps": 17,
+    "chi": 1.5707963267948966,
+    "worst_leakage": 0.46874999999999983
+  },
+  "fermionic": [
+    {
+      "M": 1,
+      "L": 64,
+      "steps": 5,
+      "chi": 0.0,
+      "map_error": 4.558971099676148e-16,
+      "worst_leakage": 2.2186712959340953e-31,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 1,
+      "L": 64,
+      "steps": 5,
+      "chi": 0.7,
+      "map_error": 5.832386959276583e-16,
+      "worst_leakage": 2.3499528044281277e-31,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 1,
+      "L": 64,
+      "steps": 5,
+      "chi": 1.5707963267948966,
+      "map_error": 4.449557262054371e-16,
+      "worst_leakage": 2.496386908990187e-31,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 1,
+      "L": 64,
+      "steps": 5,
+      "chi": 3.141592653589793,
+      "map_error": 4.558971099676149e-16,
+      "worst_leakage": 2.2186712959340953e-31,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 2,
+      "L": 64,
+      "steps": 9,
+      "chi": 0.0,
+      "map_error": 1.16615088255205e-16,
+      "worst_leakage": 2.4651903288156624e-32,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 2,
+      "L": 64,
+      "steps": 9,
+      "chi": 0.7,
+      "map_error": 2.7061686225238186e-16,
+      "worst_leakage": 4.691403431382689e-32,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 2,
+      "L": 64,
+      "steps": 9,
+      "chi": 1.5707963267948966,
+      "map_error": 1.2412670766236366e-16,
+      "worst_leakage": 3.464678648084027e-32,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 2,
+      "L": 64,
+      "steps": 9,
+      "chi": 3.141592653589793,
+      "map_error": 1.16615088255205e-16,
+      "worst_leakage": 2.4651903288156624e-32,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 3,
+      "L": 64,
+      "steps": 13,
+      "chi": 0.0,
+      "map_error": 4.446429977700569e-16,
+      "worst_leakage": 2.2186712959340953e-31,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 3,
+      "L": 64,
+      "steps": 13,
+      "chi": 0.7,
+      "map_error": 6.593044732505607e-16,
+      "worst_leakage": 5.629662316050513e-31,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 3,
+      "L": 64,
+      "steps": 13,
+      "chi": 1.5707963267948966,
+      "map_error": 4.996003610813204e-16,
+      "worst_leakage": 2.718360521642338e-31,
+      "antisymmetry_error": 0.0
+    },
+    {
+      "M": 3,
+      "L": 64,
+      "steps": 13,
+      "chi": 3.141592653589793,
+      "map_error": 4.446429977700569e-16,
+      "worst_leakage": 2.2186712959340953e-31,
+      "antisymmetry_error": 0.0
+    }
+  ],
+  "composition": [
+    {
+      "M": 1,
+      "chi": 0.0,
+      "steps": 7,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 6.879854403319467e-16,
+      "worst_leakage": 4.43734259186819e-31
+    },
+    {
+      "M": 1,
+      "chi": 0.0,
+      "steps": 11,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 6.879854403319467e-16,
+      "worst_leakage": 4.43734259186819e-31
+    },
+    {
+      "M": 1,
+      "chi": 0.7,
+      "steps": 7,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 6.522560269672796e-16,
+      "worst_leakage": 3.5886178469667927e-31
+    },
+    {
+      "M": 1,
+      "chi": 0.7,
+      "steps": 11,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 6.722282952163625e-16,
+      "worst_leakage": 3.112139936807842e-31
+    },
+    {
+      "M": 1,
+      "chi": 1.5707963267948966,
+      "steps": 7,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 4.877924609637682e-16,
+      "worst_leakage": 2.472374826527295e-31
+    },
+    {
+      "M": 1,
+      "chi": 1.5707963267948966,
+      "steps": 11,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 5.07341072362005e-16,
+      "worst_leakage": 2.558359281974882e-31
+    },
+    {
+      "M": 1,
+      "chi": 3.141592653589793,
+      "steps": 7,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 6.879854403319467e-16,
+      "worst_leakage": 4.437342591868194e-31
+    },
+    {
+      "M": 1,
+      "chi": 3.141592653589793,
+      "steps": 11,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 6.879854403319468e-16,
+      "worst_leakage": 4.437342591868194e-31
+    },
+    {
+      "M": 2,
+      "chi": 0.0,
+      "steps": 13,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 0.0,
+      "worst_leakage": 0.0
+    },
+    {
+      "M": 2,
+      "chi": 0.0,
+      "steps": 21,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 0.0,
+      "worst_leakage": 0.0
+    },
+    {
+      "M": 2,
+      "chi": 0.7,
+      "steps": 13,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 6.206335383118184e-16,
+      "worst_leakage": 3.5745259767827093e-31
+    },
+    {
+      "M": 2,
+      "chi": 0.7,
+      "steps": 21,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 3.58994808126657e-16,
+      "worst_leakage": 1.89769634890547e-31
+    },
+    {
+      "M": 2,
+      "chi": 1.5707963267948966,
+      "steps": 13,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 6.316519372592879e-17,
+      "worst_leakage": 3.991174363178608e-33
+    },
+    {
+      "M": 2,
+      "chi": 1.5707963267948966,
+      "steps": 21,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 1.1047740061976757e-16,
+      "worst_leakage": 1.0486818606614046e-32
+    },
+    {
+      "M": 2,
+      "chi": 3.141592653589793,
+      "steps": 13,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 7.857794173099923e-32,
+      "worst_leakage": 5.474788278414635e-63
+    },
+    {
+      "M": 2,
+      "chi": 3.141592653589793,
+      "steps": 21,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 1.0460672589262403e-31,
+      "worst_leakage": 1.23062557985047e-62
+    },
+    {
+      "M": 4,
+      "chi": 0.0,
+      "steps": 25,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 2.468290984480215e-16,
+      "worst_leakage": 6.536175609008107e-32
+    },
+    {
+      "M": 4,
+      "chi": 0.0,
+      "steps": 41,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 2.468290984480215e-16,
+      "worst_leakage": 6.536175609008107e-32
+    },
+    {
+      "M": 4,
+      "chi": 0.7,
+      "steps": 25,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 5.068145169807729e-16,
+      "worst_leakage": 2.558639777580353e-31
+    },
+    {
+      "M": 4,
+      "chi": 0.7,
+      "steps": 41,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 1.2919440986913193e-15,
+      "worst_leakage": 1.5489255831390945e-30
+    },
+    {
+      "M": 4,
+      "chi": 1.5707963267948966,
+      "steps": 25,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 2.4308357913422905e-16,
+      "worst_leakage": 7.78513292218501e-32
+    },
+    {
+      "M": 4,
+      "chi": 1.5707963267948966,
+      "steps": 41,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 2.8808848099734293e-16,
+      "worst_leakage": 8.8037690237221e-32
+    },
+    {
+      "M": 4,
+      "chi": 3.141592653589793,
+      "steps": 25,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 2.4682909844802146e-16,
+      "worst_leakage": 6.536175609008107e-32
+    },
+    {
+      "M": 4,
+      "chi": 3.141592653589793,
+      "steps": 41,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 2.468290984480215e-16,
+      "worst_leakage": 6.536175609008107e-32
+    },
+    {
+      "M": 8,
+      "chi": 0.0,
+      "steps": 49,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 0.0,
+      "worst_leakage": 0.0
+    },
+    {
+      "M": 8,
+      "chi": 0.0,
+      "steps": 81,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 0.0,
+      "worst_leakage": 0.0
+    },
+    {
+      "M": 8,
+      "chi": 0.7,
+      "steps": 49,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 1.3666519380324108e-15,
+      "worst_leakage": 2.105356545185089e-30
+    },
+    {
+      "M": 8,
+      "chi": 0.7,
+      "steps": 81,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 1.5223134176790111e-15,
+      "worst_leakage": 2.250833937598559e-30
+    },
+    {
+      "M": 8,
+      "chi": 1.5707963267948966,
+      "steps": 49,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 5.551115123125783e-17,
+      "worst_leakage": 3.749399456654655e-33
+    },
+    {
+      "M": 8,
+      "chi": 1.5707963267948966,
+      "steps": 81,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 1.224631310855794e-16,
+      "worst_leakage": 1.461286972574328e-32
+    },
+    {
+      "M": 8,
+      "chi": 3.141592653589793,
+      "steps": 49,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "map_error": 1.5099290763995927e-31,
+      "worst_leakage": 2.188016197816708e-62
+    },
+    {
+      "M": 8,
+      "chi": 3.141592653589793,
+      "steps": 81,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "map_error": 3.006796124336505e-31,
+      "worst_leakage": 8.761378181166216e-62
+    }
+  ],
+  "obstruction": {
+    "H_witness_max_fidelity": 0.4999999999999998,
+    "H_witness_min_trace_distance": 0.7071067811865477,
+    "overgrant_monomial_error": 5.551115123125783e-16
+  },
+  "physical": {
+    "node_dispersion_error": 5.338891568193822e-16,
+    "packet_tails": [
+      {
+        "M": 1,
+        "fft_points": 65536,
+        "cutoff": 0.3,
+        "finite_ring_tail_probability": 0.8104169678529978,
+        "infinite_line_tail_upper_bound": 1.0
+      },
+      {
+        "M": 2,
+        "fft_points": 65536,
+        "cutoff": 0.3,
+        "finite_ring_tail_probability": 0.631942007761351,
+        "infinite_line_tail_upper_bound": 1.0
+      },
+      {
+        "M": 8,
+        "fft_points": 65536,
+        "cutoff": 0.3,
+        "finite_ring_tail_probability": 0.10759598067789317,
+        "infinite_line_tail_upper_bound": 1.0
+      },
+      {
+        "M": 32,
+        "fft_points": 65536,
+        "cutoff": 0.3,
+        "finite_ring_tail_probability": 0.03333230694971552,
+        "infinite_line_tail_upper_bound": 0.6996762992475795
+      },
+      {
+        "M": 128,
+        "fft_points": 65536,
+        "cutoff": 0.3,
+        "finite_ring_tail_probability": 0.008332814129924555,
+        "infinite_line_tail_upper_bound": 0.17491907481189486
+      }
+    ]
+  }
+}

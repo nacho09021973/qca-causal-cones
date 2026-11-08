@@ -1,6 +1,24 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-06
+**Date:** 2026-11-08
+
+**Two-node Thirring experiment — 2026-11-08:** user authorized the complete
+code/collision/composition/relativistic-sector experiment;
+[contract](../theory/THIRRING_TWO_NODE_GATE.md), preregistration `fd1ef6c`;
+[report](../reports/2026-11-08--thirring-two-node.md).
+For mu=0 and fixed on-site contact phase, the node qubit (f, Pi f) closes
+exactly after a full crossing: S=exp(i chi/2) exp(i chi XX/2).
+At chi=pi/2 it maximally entangles; completed crossings compose.
+Conserved trajectory parities obstruct a universal unitary gate set in
+this code, including independent ancillas without intermediate measurement.
+TWO_NODE_COLLISION_CLOSED_AND_ENTANGLING /
+MASSLESS_NODE_CODE_NOT_UNITARILY_UNIVERSAL. The two free nodal envelopes
+have c_IR=a/tau after removing the pi-node Floquet carrier; no interacting
+relativistic QFT limit, absolute clock frequency, or universal processor proved.
+Author verifier 228/228, including direct trajectories and antisymmetric
+two-fermion propagation; PRELIMINARY, no independent review/promotion.
+This massless coding experiment is closed. Massive Thirring, other encodings
+and the general coexistence question remain open; other gates unchanged.
 
 **Symmetry-plan premise audit — 2026-11-06:** user requested continuation
 of today's work. Stages 1 and 2 of the saved plan were executed;
