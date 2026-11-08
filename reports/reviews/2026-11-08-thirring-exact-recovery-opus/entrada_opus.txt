@@ -1,0 +1,844 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente la demostración adjunta de que, en el código
+microscópico M=1 declarado, no existe ninguna matriz V con
+U^T B=F^T B V para ningún entero T>=2. Tu objetivo es encontrar un error,
+un supuesto oculto o un hueco real, o explicar por qué el argumento se sostiene.
+No aceptes el recuento de controles como prueba del cuantificador temporal.
+
+Comprueba desde las definiciones: (1) representación isométrica de fermiones
+con Gamma opuestos y alternancia temporal; (2) unicidad de las trayectorias
+extremas, matriz G e identidad Pi_T U^T B=R_T D; (3) que esto fuerza V=D,
+también para recuperar solo la entrada 01; (4) identidad telescópica y sus
+índices; (5) cono relativo de cada fuente, coincidencia inicial y coeficiente
+no cancelable; (6) cota de fuga y exponentes; (7) correspondencia del script
+con la prueba y límites de su segunda implementación; (8) extensión escrita
+a 0<mu,nu<1 y z!=1, y distinción entre exacto y aproximado.
+
+Se adjuntan contrato, informe, script, registro de ejecución y el informe
+previo de dos contactos como contexto de las definiciones. No tienes acceso
+al repositorio ni puedes ejecutar código. Distingue lo deducido a mano de
+lo que solo puedes inspeccionar. No afirmes haber comprobado PDFs o Lean
+no adjuntados. El informe previo es contexto del autor, no fuente independiente.
+
+Entrega en español: veredicto (se sostiene / reparación necesaria / refutado /
+no decidido), derivaciones críticas, objeciones ordenadas por gravedad con
+sección y reparación concreta, y alcance exacto que aceptarías. Si no hay
+fallos, dilo sin inventar objeciones. Cierre: un informe completo de esta única
+ronda; ninguna propuesta de protocolo o búsqueda adicional es necesaria.
+
+=== DOCUMENT 1: THIRRING_EXACT_RECOVERY_GATE.md ===
+
+# Recuperación exacta del código microscópico a tiempo arbitrario
+
+2026-11-08. Autor Codex/OpenAI. Usuario «adelante» a decidir si existe
+T>=3,V unitaria entrelazante con U^T B=F^T B V, en la misma arquitectura.
+
+Sabido: 53a9868 obtiene la fuga positiva de dos pasos; 490269a audita las
+nueve identidades Lean finitas y delimita su puente de Fock. La puerta
+de un paso es exacta. No se conoce recuperación a tiempos posteriores.
+Sources/README.md consultado, biblioteca/ ausente. Fuente de la regla:
+1711.03920v1.pdf pp.1–2 y 1804.08508v1.pdf p.3.
+
+Pregunta congelada: M=1, B inicial en posiciones {0,1}, sectores Gamma
+opuestos, mu=3/5,nu=4/5,chi=pi/2 constantes, recta infinita, sin auxiliares
+o controles. Salida definida por F^T B. T es cualquier entero >=3.
+Se permite derivar un resultado más fuerte que excluya cualquier matriz
+V si las hipótesis son explícitas; no se sustituye B o la salida.
+
+Criterio de cierre: condición algebraica para todos los tiempos que
+excluya recuperación exacta, o un tiempo con igualdad exacta sobre todas
+las columnas y V unitaria entrelazante. Si no se decide, OPEN, sin
+búsqueda indefinida. Recuperación aproximada y otras arquitecturas
+quedan fuera; una cota positiva dependiente de T no es una cota uniforme.
+
+Primera vía anunciada antes de este archivo: cuatro rayos extremos libres
+de contactos tras el inicial parecen fijar V=D, y una emisión del segundo
+contacto hacia máxima separación relativa impide esa igualdad. Es una
+derivación manual preliminar; este archivo congela antes del verificador,
+no se presenta como preregistración anterior a la idea o sus fórmulas.
+
+Contrastes permanentes: propagación exacta en Z con enteros gaussianos,
+T=1,2,3,4,6,8,12 seleccionados para verificar identidades (no búsqueda de
+tiempo óptimo); cada resultado se conservará. Segundo contraste:
+amplitudes antisimétricas con espín explícito para T=1,2,3,4, con margen
+causal sin retornos de frontera. Conteo de rayos, invertibilidad de su
+matriz, amplitud de la emisión y fuga de la entrada 01. El argumento de
+todos los T se escribirá por localidad y rutas, sin extrapolar muestras.
+
+No se afirma que el certificado Lean de dos pasos formalice el argumento
+de tiempo arbitrario. No nuevas llamadas externas ni promoción. Contrato
+y generador se versionan antes de ejecutar. Nivel de autor PRELIMINARY.
+
+=== DOCUMENT 2: 2026-11-08--thirring-exact-recovery.md ===
+
+# Código microscópico Thirring: no hay recuperación exacta posterior
+
+2026-11-08. Autor Codex/OpenAI. **PRELIMINARY: demostración analítica y
+contrastes del autor, sin revisión independiente ni promoción. El teorema
+de tiempo arbitrario no está formalizado en Lean.**
+
+Usuario «adelante» a estudiar si existe T>=3 y una unitaria entrelazante V
+con U^T B=F^T B V. Contrato
+[THIRRING_EXACT_RECOVERY_GATE.md](../theory/THIRRING_EXACT_RECOVERY_GATE.md),
+congelado antes del verificador en `0212df6`, después de anunciar la idea
+manual de los rayos. Código versionado antes de ejecutar en `578607b`.
+
+## 1. Teorema y alcance
+
+Para el código microscópico M=1 del trabajo anterior, regla fija con
+mu=3/5,nu=4/5,chi=pi/2, recta infinita y salida libre exacta F^T B:
+
+\[
+ \boxed{\text{para todo entero }T\ge2,\quad
+ \nexists\,V\in\mathbb C^{4\times4}:\ U^T B=F^T B V.}
+\]
+
+Se excluye cualquier matriz V, y en particular una unitaria entrelazante.
+Más concretamente, la entrada producto lógica 01 tiene fuga estrictamente
+positiva para cada T>=2. En T=1 permanece la puerta exacta D ya comprobada.
+
+Veredicto: `EXACT_RECOVERY_EXCLUDED_FOR_ALL_FINITE_T_GE2 /
+FIRST_STEP_GATE_RETAINED / APPROXIMATE_RECOVERY_OPEN`.
+
+El argumento que sigue usa solo 0<mu,nu<1, mu²+nu²=1 y una fase
+z=e^{i chi} distinta de uno. Por tanto esas hipótesis bastan para la misma
+exclusión con este código. La ejecución y el contrato físico conservan
+los parámetros congelados; no se realizó búsqueda de masas o acoplamientos.
+
+No se excluyen recuperación aproximada, otro código de salida, medidas,
+auxiliares o una geometría distinta. No es una imposibilidad del autómata
+de Thirring completo ni de un procesador universal relativista.
+
+## 2. Definiciones y coordenadas
+
+Se mantiene U=FJ y
+
+\[
+ W=\begin{pmatrix}\nu\mathsf T&-i\mu\\-i\mu&\nu\mathsf T^{-1}\end{pmatrix},
+ \quad J=\prod_x e^{i\chi n_R(x)n_L(x)}.
+\]
+
+La traslación espacial se escribe mathsf T para distinguirla del tiempo T.
+El modelo publicado se consultó en `1804.08508v1.pdf` p.3, Ec.(1) y sección 3.
+La fase precede al paso libre. La orientación R/L es la declarada en los
+informes previos; no cambia la interacción local.
+
+Los qubits iniciales son A=(R|0>,L|1>) y B=(R|1>,L|0>), con producto de
+creación en orden A,B. Escribimos B para la isometría de sus cuatro
+entradas, en orden 00,01,10,11. Como antes, los modos pertenecen a sectores
+opuestos de Gamma=sigma_z(-1)^x. En cada tiempo se sigue cada etiqueta
+en su sector alternante. Las amplitudes ordenadas por sus dos posiciones
+son una representación isométrica del sector fermiónico correspondiente,
+no una eliminación de la estadística sin justificación.
+
+La salida B_T=F^T B se obtiene de modos libres de una partícula. No depende
+de U, de V o del estado lógico de entrada. No se aplica F^{-T} como control.
+
+El primer contacto preserva el código:
+
+\[
+ JB=BD,\qquad D=\operatorname{diag}(1,z,z,1),\qquad UB=FB D.
+\]
+
+## 3. Cuatro rayos extremos fuerzan la matriz V
+
+En el sector ordenado de Gamma opuestos, sea Pi_T la extracción de las
+cuatro amplitudes en posiciones (x_A,x_B), en este orden:
+
+\[
+ (T,T+1),\quad(1-T,T+1),\quad(T,-T),\quad(1-T,-T).
+\]
+
+Son cuatro coordenadas ortogonales, así que ||Pi_T||=1. Para T>=1,
+
+\[
+ R_T:=\Pi_T F^T B=\nu^{2T-1}G,\qquad
+ G=\begin{pmatrix}
+ \nu&0&-i\mu&0\\
+ -i\mu&0&\nu&0\\
+ 0&\nu&0&-i\mu\\
+ 0&-i\mu&0&\nu
+ \end{pmatrix},\qquad G^\dagger G=I.
+\]
+
+Justificación de los factores, sin extrapolar casos finitos:
+
+- B en T+1 solo proviene del modo inicial R|1> mediante T traslaciones
+  a derecha. Su amplitud es nu^T. Ninguna trayectoria del modo L|0>
+  puede llegar allí: necesita primero convertir su componente y pierde
+  al menos un desplazamiento.
+- B en -T solo proviene del modo inicial L|0> por T traslaciones a
+  izquierda, también con amplitud nu^T.
+- A en T tiene amplitudes (nu^T,-i mu nu^(T-1)) desde sus modos 0 y 1.
+  A en 1-T tiene amplitudes (-i mu nu^(T-1),nu^T). Para esos extremos,
+  la conversión de componente, cuando hace falta, tiene que ocurrir
+  en el primer paso; después todas las traslaciones deben ser exteriores.
+
+Además, las trayectorias extremas de B no pueden volver a contactar con A
+tras t=0: B corre hacia fuera a velocidad máxima, y después del primer
+paso A queda estrictamente detrás. Una trayectoria de A de alcance uno
+por paso no puede alcanzarlo. Esto vale independientemente de los caminos
+internos de A. Las únicas fases posibles son las del contacto inicial,
+por lo que para **todos** los T>=1,
+
+\[
+ \Pi_T U^T B=R_T D.
+\]
+
+Como nu>0 y G es unitaria, R_T es invertible. Si existiera una matriz V
+con U^T B=F^T B V, al extraer esas coordenadas se obtendría
+R_T V=R_T D y necesariamente **V=D**. Esto incluye cualquier fase global
+o cambio de base lógico que se pretendiera absorber en V.
+
+## 4. El segundo contacto emite una amplitud que no puede cancelarse
+
+Definimos Delta_T=U^T B-F^T B D. Usando UB=FB D y telescopaje de potencias,
+
+\[
+ \Delta_T=\sum_{k=1}^{T-1}
+ U^{T-1-k}F(J-I)F^k B D,\qquad T\ge2.
+\]
+
+Cada factor J-I es (z-1)C, con C el proyector de coincidencia de dos
+componentes opuestas. Su fuente tiene separación relativa cero. Desde
+la fuente k quedan T-k pasos: la separación relativa absoluta alcanzable
+es como máximo 2(T-k), porque cada componente se desplaza a lo sumo
+una celda por paso y el contacto no mueve posiciones.
+
+Consideremos la entrada lógica 01, y extraigamos la coordenada
+
+\[
+ q_T=(1-T,T-1),\qquad x_A-x_B=-2(T-1).
+\]
+
+Ningún término k>=2 puede llegar a q_T, pues 2(T-k)<2(T-1).
+Para k=1, sobre esa entrada, la única coincidencia tras el primer paso
+libre es la rama de masa en el sitio cero:
+
+\[
+ CFB D|01\rangle=-\mu^2z\,|L0,R0\rangle.
+\]
+
+Para llegar desde allí a q_T en los T-1 pasos restantes, A debe trasladarse
+siempre a izquierda y B siempre a derecha. Es un único par de caminos,
+de peso nu^(2T-2), sin nuevos contactos. Por consiguiente,
+
+\[
+ \boxed{\langle q_T|\Delta_T|01\rangle
+ =-\mu^2z(z-1)\nu^{2T-2}\ne0,\qquad T\ge2.}
+\]
+
+Con los parámetros congelados es mu² nu^(2T-2)(1+i). En numeradores
+gaussianos sobre el denominador 25^T, sus dos componentes son exactamente
+9*4^(2T-2). No hay suma de fases tardías que pueda anular esta amplitud:
+las fuentes tardías tienen un cono de separación relativa demasiado corto.
+
+La sección 3 forzaba V=D. Esta amplitud contradice U^T B=F^T B D y cierra
+la posibilidad para cualquier T>=2. La prueba no procede de buscar
+numéricamente un tiempo de recuperación y no utiliza un anillo finito.
+
+Incluso si solo se exigiera recuperar la entrada 01 en algún vector del
+código libre, sus cuatro amplitudes extremas fuerzan los coeficientes a
+D|01>. La misma coordenada q_T lo impide. Por tanto esa entrada producto
+queda fuera del código libre en todo T>=2.
+
+## 5. Cota cuantitativa y distinción entre exacto y aproximado
+
+Una segunda formulación usa la compresión y el residuo, sin suponer una
+recuperación exacta. Sean
+
+\[
+ K_T=B_T^\dagger U^T B,\quad
+ E_T=(I-B_TB_T^\dagger)U^T B,\quad
+ \rho_T=\nu^{2T-1}.
+\]
+
+La identidad de los cuatro bordes da
+
+\[
+ \Pi_TE_T=R_T(D-K_T),\qquad
+ \|(K_T-D)|01\rangle\|\leq\rho_T^{-1}\|E_T|01\rangle\|.
+\]
+
+Al extraer q_T de Delta_T=E_T+B_T(K_T-D), con B_T isométrica,
+
+\[
+ |\langle q_T|\Delta_T|01\rangle|
+ \leq(1+\rho_T^{-1})\|E_T|01\rangle\|.
+\]
+
+Resulta una cota explícita para la probabilidad de fuga de la entrada 01:
+
+\[
+ \boxed{p_{01}(T)\geq
+ \frac{|z-1|^2\mu^4\nu^{8T-6}}{(1+\nu^{2T-1})^2}>0,\quad T\ge2.}
+\]
+
+También es una cota inferior de p_max(T). Es dependiente de T y tiende
+a cero cuando T crece. No prueba que p_01 real tienda a cero ni que tenga
+un límite positivo, y **no excluye recuperación aproximada** o un límite
+por una subsecuencia de tiempos. La cota no se convierte en un no-go de
+aproximación por ser estrictamente positiva en cada tiempo finito.
+
+## 6. Comprobaciones exactas y segunda implementación
+
+[Script permanente](../scripts/verify_thirring_exact_recovery.py),
+[JSON](2026-11-08--thirring-exact-recovery.json),
+[registro](2026-11-08--thirring-exact-recovery.txt). **80/80 controles de autor**.
+Las cuatro columnas se propagan sobre Z mediante diccionarios de enteros
+gaussianos, con denominador común 25^T. No hay frontera periódica ni ajuste
+numérico en las identidades de rayos. Los tiempos fijados antes de ejecutar
+son 1,2,3,4,6,8,12: contrastan la implementación de las fórmulas, no prueban
+el cuantificador de todos los T por muestreo.
+
+Se contrastan: cuatro filas libres, cuatro filas reales y sus fases,
+Gram invertible de extracción, Grams de las cuatro columnas completas,
+cono de soporte, diferencia de amplitud emitida y fuga racional exacta
+de la entrada 01. Esta última se obtiene por proyección sobre las cuatro
+columnas libres ortonormales, no suponiendo que los coeficientes sean D.
+La cota cuantitativa se compara con esa probabilidad racional.
+
+Como segunda representación se propaga W tensor W con espín explícito y
+amplitudes antisimétricas completas para T=1,2,3,4. Un anillo de 20 sitios,
+origen par +6, mantiene las trayectorias dentro del intervalo causal sin
+contactar con la frontera. Se comparan amplitudes completas libres/reales
+y la probabilidad de proyección con el cálculo gaussiano exacto. Es otro
+contraste de implementación del autor, no una revisión independiente.
+
+| T | p_01 observado por aritmética racional exacta (redondeado aquí) | Cota inferior de los rayos (redondeada aquí) |
+| ---: | ---: | ---: |
+| 1 | 0 | No aplicable |
+| 2 | 0.165888 | 0.012174 |
+| 3 | 0.301608 | 0.002649 |
+| 4 | 0.399219 | 0.000535 |
+| 6 | 0.529932 | 0.000019 |
+| 8 | 0.566089 | 5.79187e-7 |
+| 12 | 0.555645 | 4.85984e-10 |
+
+El JSON conserva las fracciones completas. Las cifras de la tabla se
+redondean para lectura; no se usan como certificados de redondeo ni para
+inferir monotonicidad o comportamiento asintótico. La fila T=1 verifica
+la puerta exacta conservada.
+
+## 7. Alcance formal y decisión de cierre
+
+El certificado Lean existente cubre las identidades de dos pasos y conserva
+su alcance. No se modificó ni se presenta como prueba de los rayos para
+tiempo arbitrario. La demostración general anterior es del autor, pendiente
+de revisión independiente. Los hashes de script, contrato y PDF primario
+leído en esta sesión están registrados en el JSON.
+
+Se responde negativamente la pregunta congelada: no hay T>=3 con
+U^T B=F^T B V, ni siquiera para una matriz V no unitaria. Esperar más
+tiempo no recupera **exactamente** este código libre con esta arquitectura.
+La puerta de un paso sigue siendo válida y el Thirring completo no queda
+descartado. La recuperación aproximada, los cambios de código o recursos,
+la universalidad y el régimen relativista son cuestiones distintas y
+permanecen fuera de este cierre.
+
+=== DOCUMENT 3: verify_thirring_exact_recovery.py ===
+
+#!/usr/bin/env python3
+"""Exact unbounded-lattice ray checks for the arbitrary-time recovery proof.
+
+Selected times validate formulas, not a search or proof by extrapolation.
+Gaussian-integer numerators have common denominator 25**T.
+"""
+import hashlib
+import json
+from fractions import Fraction
+from pathlib import Path
+
+import numpy as np
+
+ROOT=Path(__file__).resolve().parents[1]
+OUT=ROOT/"reports/2026-11-08--thirring-exact-recovery"
+TIMES=(1,2,3,4,6,8,12)
+CHECKS=[]
+
+
+def add(a,b): return (a[0]+b[0],a[1]+b[1])
+def mul(a,b): return (a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0])
+def conj(a): return (a[0],-a[1])
+def normsq(a): return a[0]*a[0]+a[1]*a[1]
+def neg(a): return (-a[0],-a[1])
+def sub(a,b): return add(a,neg(b))
+def parity(x): return 1 if x%2==0 else -1
+
+
+def check(name,value,tol=2e-12):
+    error=float(value)
+    CHECKS.append(dict(name=name,error=error,passed=bool(np.isfinite(error) and error<tol)))
+
+
+def exact(name,condition): check(name,0 if condition else 1)
+
+
+def contact(v):
+    return {xy:mul((0,1),a) if xy[0]==xy[1] else a for xy,a in v.items()}
+
+
+def free(v,s):
+    out={}
+    for (x,y),a in v.items():
+        px=x+s*parity(x)
+        py=y-s*parity(y)
+        for xy,c in (((px,py),(16,0)),((px,y),(0,-12)),((x,py),(0,-12)),((x,y),(-9,0))):
+            out[xy]=add(out.get(xy,(0,0)),mul(c,a))
+    return {xy:a for xy,a in out.items() if a!=(0,0)}
+
+
+def inner(a,b):
+    z=(0,0)
+    for xy,v in a.items(): z=add(z,mul(conj(v),b.get(xy,(0,0))))
+    return z
+
+
+def embed(states,T,L,offset):
+    out=np.zeros((4,2*L,2*L),complex)
+    s=parity(T)
+    for j,state in enumerate(states):
+        for (x,y),v in state.items():
+            a=2*(x+offset)+(0 if s*parity(x)==1 else 1)
+            b=2*(y+offset)+(0 if -s*parity(y)==1 else 1)
+            assert 0<=a<2*L and 0<=b<2*L
+            z=complex(*v)/(25**T*np.sqrt(2))
+            out[j,a,b]+=z
+            out[j,b,a]-=z
+    return out
+
+
+def full_reference(saved):
+    L,offset=20,6
+    W=np.zeros((2*L,2*L),complex)
+    for x in range(L):
+        W[2*((x+1)%L),2*x]=.8
+        W[2*((x-1)%L)+1,2*x+1]=.8
+        W[2*x+1,2*x]=W[2*x,2*x+1]=-.6j
+    A=np.zeros((2*L,2),complex)
+    B=np.zeros_like(A)
+    A[2*offset,0]=A[2*(offset+1)+1,1]=1
+    B[2*(offset+1),0]=B[2*offset+1,1]=1
+    actual=np.array([(np.outer(A[:,a],B[:,b])-np.outer(B[:,b],A[:,a]))/np.sqrt(2)
+                     for a in range(2) for b in range(2)])
+    reference=actual.copy()
+    modes=np.arange(2*L)
+    mask=((modes[:,None]//2==modes[None,:]//2)&(modes[:,None]%2!=modes[None,:]%2))
+    for T in range(1,5):
+        actual=W@(np.where(mask,1j,1)*actual)@W.T
+        reference=W@reference@W.T
+        exact_actual,exact_free=saved[T]
+        check(f"full-Fock-vs-exact-actual:T={T}",np.linalg.norm(actual-embed(exact_actual,T,L,offset)))
+        check(f"full-Fock-vs-exact-free:T={T}",np.linalg.norm(reference-embed(exact_free,T,L,offset)))
+        row=reference.reshape(4,-1).conj()@actual.reshape(4,-1).T
+        p=1-sum(abs(row[:,1])**2)
+        kraw=[inner(v,exact_actual[1]) for v in exact_free]
+        pexact=1-Fraction(sum(normsq(z) for z in kraw),25**(4*T))
+        check(f"full-Fock-input01-projection:T={T}",abs(p-float(pexact)))
+
+
+def main():
+    actual=[{(a,1-b):(1,0)} for a in range(2) for b in range(2)]
+    reference=[dict(v) for v in actual]
+    phases=((1,0),(0,1),(0,1),(1,0))
+    G=[[(4,0),(0,0),(0,-3),(0,0)],[(0,-3),(0,0),(4,0),(0,0)],
+       [(0,0),(4,0),(0,0),(0,-3)],[(0,0),(0,-3),(0,0),(4,0)]]
+    rows=[]
+    saved={}
+    for T in range(1,max(TIMES)+1):
+        s=parity(T-1)
+        actual=[free(contact(v),s) for v in actual]
+        reference=[free(v,s) for v in reference]
+        if T not in TIMES: continue
+        coords=((T,T+1),(1-T,T+1),(T,-T),(1-T,-T))
+        R=[[v.get(xy,(0,0)) for v in reference] for xy in coords]
+        Urows=[[v.get(xy,(0,0)) for v in actual] for xy in coords]
+        factor=4**(2*T-1)
+        expected=[[(factor*a,factor*b) for a,b in row] for row in G]
+        exact(f"four-free-edge-rows:T={T}",R==expected)
+        exact(f"four-actual-edge-rows-first-phase-only:T={T}",
+              Urows==[[mul(a,phases[j]) for j,a in enumerate(row)] for row in expected])
+        gram=[[sum((mul(conj(R[k][a]),R[k][b]))[0] for k in range(4))
+               for b in range(4)] for a in range(4)]
+        # Also check imaginary Gram components explicitly.
+        exact(f"edge-extractor-invertible-real-Gram:T={T}",
+              gram==[[25*factor*factor if a==b else 0 for b in range(4)] for a in range(4)])
+        exact(f"edge-extractor-zero-imaginary-Gram:T={T}",
+              all(sum(mul(conj(R[k][a]),R[k][b])[1] for k in range(4))==0
+                  for a in range(4) for b in range(4)))
+        exact(f"free-basis-Gram:T={T}",all(inner(reference[a],reference[b])==
+              ((25**(2*T),0) if a==b else (0,0)) for a in range(4) for b in range(4)))
+        exact(f"actual-basis-Gram:T={T}",all(inner(actual[a],actual[b])==
+              ((25**(2*T),0) if a==b else (0,0)) for a in range(4) for b in range(4)))
+        exact(f"finite-cone-support:T={T}",all(-T<=x<=T+1 and -T<=y<=T+1
+              for v in actual+reference for x,y in v))
+        k01=[inner(v,actual[1]) for v in reference]
+        p01=1-Fraction(sum(normsq(z) for z in k01),25**(4*T))
+        r=dict(T=T,raw_denominator=25**T,free_edge_rows=R,actual_edge_rows=Urows,
+               edge_raw_factor=factor,input01_leakage_exact=str(p01),input01_leakage=float(p01))
+        if T>=2:
+            xy=(1-T,T-1)
+            diff=sub(actual[1].get(xy,(0,0)),mul(reference[1].get(xy,(0,0)),(0,1)))
+            predicted=(9*4**(2*T-2),9*4**(2*T-2))
+            exact(f"earliest-emission-unrepaired:T={T}",diff==predicted)
+            exact(f"persistent-positive-input01-leakage:T={T}",p01>0)
+            rho=Fraction(4,5)**(2*T-1)
+            lower=2*Fraction(3,5)**4*Fraction(4,5)**(8*T-6)/(1+rho)**2
+            exact(f"quantitative-ray-lower-bound:T={T}",0<lower<=p01)
+            r.update(emission_coordinate=xy,emission_difference_raw=diff,
+                     emission_difference_expected_raw=predicted,
+                     lower_bound_exact=str(lower),lower_bound=float(lower))
+        else:
+            exact("first-step-remains-exact",p01==0 and
+                  all(actual[j]=={xy:mul(z,phases[j]) for xy,z in reference[j].items()}
+                      for j in range(4)))
+        rows.append(r)
+        if T<=4: saved[T]=([dict(v) for v in actual],[dict(v) for v in reference])
+    full_reference(saved)
+    paths=("scripts/verify_thirring_exact_recovery.py","theory/THIRRING_EXACT_RECOVERY_GATE.md",
+           "sources/1804.08508v1.pdf")
+    data=dict(parameters=dict(mu="3/5",nu="4/5",phase="i",M=1),times=TIMES,
+              rows=rows,checks=CHECKS,provenance={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths})
+    OUT.with_suffix(".json").write_text(json.dumps(data,indent=2)+"\n")
+    passed=sum(c["passed"] for c in CHECKS)
+    lines=[f"Author checks: {passed}/{len(CHECKS)}; finite tests corroborate the all-time ray proof.",
+           "Exact propagation on Z; Gaussian-integer numerators, no periodic boundary.",
+           "T input01_leakage rigorous_lower_bound_from_written_ray_argument"]
+    lines += [f"{r['T']} {r['input01_leakage']:.12g} {r.get('lower_bound',0):.12g}" for r in rows]
+    lines += [f"{'PASS' if c['passed'] else 'FAIL'} {c['name']}: {c['error']:.6g}" for c in CHECKS]
+    OUT.with_suffix(".txt").write_text("\n".join(lines)+"\n")
+    print("\n".join(lines[:10]))
+    if passed!=len(CHECKS):
+        print([c for c in CHECKS if not c["passed"]])
+        raise SystemExit(1)
+
+
+if __name__=="__main__": main()
+
+=== DOCUMENT 4: 2026-11-08--thirring-exact-recovery.txt ===
+
+Author checks: 80/80; finite tests corroborate the all-time ray proof.
+Exact propagation on Z; Gaussian-integer numerators, no periodic boundary.
+T input01_leakage rigorous_lower_bound_from_written_ray_argument
+1 0 0
+2 0.165888 0.0121739435828
+3 0.301607634862 0.00264891447632
+4 0.399218909031 0.00053531373163
+6 0.529932291915 1.86997287884e-05
+8 0.566088793018 5.79187031205e-07
+12 0.555645290946 4.85983647071e-10
+PASS four-free-edge-rows:T=1: 0
+PASS four-actual-edge-rows-first-phase-only:T=1: 0
+PASS edge-extractor-invertible-real-Gram:T=1: 0
+PASS edge-extractor-zero-imaginary-Gram:T=1: 0
+PASS free-basis-Gram:T=1: 0
+PASS actual-basis-Gram:T=1: 0
+PASS finite-cone-support:T=1: 0
+PASS first-step-remains-exact: 0
+PASS four-free-edge-rows:T=2: 0
+PASS four-actual-edge-rows-first-phase-only:T=2: 0
+PASS edge-extractor-invertible-real-Gram:T=2: 0
+PASS edge-extractor-zero-imaginary-Gram:T=2: 0
+PASS free-basis-Gram:T=2: 0
+PASS actual-basis-Gram:T=2: 0
+PASS finite-cone-support:T=2: 0
+PASS earliest-emission-unrepaired:T=2: 0
+PASS persistent-positive-input01-leakage:T=2: 0
+PASS quantitative-ray-lower-bound:T=2: 0
+PASS four-free-edge-rows:T=3: 0
+PASS four-actual-edge-rows-first-phase-only:T=3: 0
+PASS edge-extractor-invertible-real-Gram:T=3: 0
+PASS edge-extractor-zero-imaginary-Gram:T=3: 0
+PASS free-basis-Gram:T=3: 0
+PASS actual-basis-Gram:T=3: 0
+PASS finite-cone-support:T=3: 0
+PASS earliest-emission-unrepaired:T=3: 0
+PASS persistent-positive-input01-leakage:T=3: 0
+PASS quantitative-ray-lower-bound:T=3: 0
+PASS four-free-edge-rows:T=4: 0
+PASS four-actual-edge-rows-first-phase-only:T=4: 0
+PASS edge-extractor-invertible-real-Gram:T=4: 0
+PASS edge-extractor-zero-imaginary-Gram:T=4: 0
+PASS free-basis-Gram:T=4: 0
+PASS actual-basis-Gram:T=4: 0
+PASS finite-cone-support:T=4: 0
+PASS earliest-emission-unrepaired:T=4: 0
+PASS persistent-positive-input01-leakage:T=4: 0
+PASS quantitative-ray-lower-bound:T=4: 0
+PASS four-free-edge-rows:T=6: 0
+PASS four-actual-edge-rows-first-phase-only:T=6: 0
+PASS edge-extractor-invertible-real-Gram:T=6: 0
+PASS edge-extractor-zero-imaginary-Gram:T=6: 0
+PASS free-basis-Gram:T=6: 0
+PASS actual-basis-Gram:T=6: 0
+PASS finite-cone-support:T=6: 0
+PASS earliest-emission-unrepaired:T=6: 0
+PASS persistent-positive-input01-leakage:T=6: 0
+PASS quantitative-ray-lower-bound:T=6: 0
+PASS four-free-edge-rows:T=8: 0
+PASS four-actual-edge-rows-first-phase-only:T=8: 0
+PASS edge-extractor-invertible-real-Gram:T=8: 0
+PASS edge-extractor-zero-imaginary-Gram:T=8: 0
+PASS free-basis-Gram:T=8: 0
+PASS actual-basis-Gram:T=8: 0
+PASS finite-cone-support:T=8: 0
+PASS earliest-emission-unrepaired:T=8: 0
+PASS persistent-positive-input01-leakage:T=8: 0
+PASS quantitative-ray-lower-bound:T=8: 0
+PASS four-free-edge-rows:T=12: 0
+PASS four-actual-edge-rows-first-phase-only:T=12: 0
+PASS edge-extractor-invertible-real-Gram:T=12: 0
+PASS edge-extractor-zero-imaginary-Gram:T=12: 0
+PASS free-basis-Gram:T=12: 0
+PASS actual-basis-Gram:T=12: 0
+PASS finite-cone-support:T=12: 0
+PASS earliest-emission-unrepaired:T=12: 0
+PASS persistent-positive-input01-leakage:T=12: 0
+PASS quantitative-ray-lower-bound:T=12: 0
+PASS full-Fock-vs-exact-actual:T=1: 1.57009e-16
+PASS full-Fock-vs-exact-free:T=1: 1.57009e-16
+PASS full-Fock-input01-projection:T=1: 4.44089e-16
+PASS full-Fock-vs-exact-actual:T=2: 3.59753e-16
+PASS full-Fock-vs-exact-free:T=2: 3.59753e-16
+PASS full-Fock-input01-projection:T=2: 1.94289e-16
+PASS full-Fock-vs-exact-actual:T=3: 4.57651e-16
+PASS full-Fock-vs-exact-free:T=3: 4.65346e-16
+PASS full-Fock-input01-projection:T=3: 1.11022e-16
+PASS full-Fock-vs-exact-actual:T=4: 5.66225e-16
+PASS full-Fock-vs-exact-free:T=4: 5.9734e-16
+PASS full-Fock-input01-projection:T=4: 2.77556e-16
+
+=== DOCUMENT 5: 2026-11-08--thirring-two-contacts.md ===
+
+# Dos contactos consecutivos: la primera puerta exacta no se compone sin fuga
+
+2026-11-08. Autor Codex/OpenAI. **PRELIMINARY para el puente físico y la
+derivación general; certificado Lean compilado para las identidades finitas
+exactas que se indican abajo. Sin revisión independiente ni promoción.**
+
+Usuario: «y puedes hacerlo solo o con lean?», referido a la comprobación
+de composición propuesta. Contrato
+[THIRRING_TWO_CONTACT_COMPOSITION_GATE.md](../theory/THIRRING_TWO_CONTACT_COMPOSITION_GATE.md)
+en `d2279da`, escrito antes de los verificadores pero después de anunciar la
+fórmula manual preliminar de fuga. No se presenta como preregistración anterior
+a esa derivación. No se convocaron otros agentes ni modelos.
+
+## Resultado
+
+Para el mismo código microscópico M=1, regla U=FJ constante y salida libre
+exacta F²B, la compresión tras dos pasos tiene fuga máxima
+
+\[
+ \boxed{p_{\max}^{(2)}=2\mu^2\nu^2(1-\cos\chi).}
+\]
+
+Con mu=3/5,nu=4/5,chi=pi/2 vale **288/625 = 0.4608**. Hay entradas producto
+que alcanzan ese máximo. Así, la primera puerta exacta D_chi en F B no se
+encadena con la segunda aplicación de la misma regla como una puerta
+determinista sobre F²B. No se contó F ni J como control independiente.
+
+Veredicto: `FIRST_CONTACT_EXACT /
+SECOND_CONSECUTIVE_CONTACT_LEAKS_IN_EXACT_FREE_OUTPUT_CODE`.
+
+Esto cierra esa composición concreta. No demuestra imposibilidad de recuperar
+el código después, usar otros tiempos, geometrías o auxiliares, ni refuta
+universalidad del autómata completo. La puerta exacta de un paso sigue siendo
+válida. No se ha construido un procesador universal relativista.
+
+## 1. Modelo y código de entrada
+
+Misma regla del trabajo previo, W con R a derecha, L a izquierda, mezcla
+-i mu y nu²+mu²=1. J=producto_x exp(i chi n_R(x)n_L(x)), antes de F.
+Mu y chi son constantes durante ambos pasos. Fuente primaria local:
+`1711.03920v1.pdf` pp.1–2 (W y regla de dos partículas, Ecs.(1)–(2));
+`1804.08508v1.pdf` p.3 y pp.5–6 (modelo y sector interactuante/libre).
+Las fórmulas siguientes se derivan de los W y J explícitos del contrato.
+
+Trasladamos el origen a cero en la derivación. Los modos lógicos de A son
+(R|0>, L|1>) en Gamma=+1; los de B son (R|1>, L|0>) en Gamma=-1.
+El producto de creación en orden A,B define la isometría B de cuatro
+estados al sector fermiónico Q=0. Se compara al final con F²B, construido
+con modos libres de una partícula; no se aplica F^{-2} físicamente.
+
+El primer contacto preserva B:
+
+\[
+ JB=BD,\quad D=\operatorname{diag}(1,z,z,1),\quad z=e^{i\chi}.
+\]
+
+Por tanto UB=FB D es la puerta exacta de un paso ya encontrada.
+
+## 2. Qué hace el segundo contacto
+
+En coordenadas de posición del sector Gamma de A, el primer paso libre
+actúa sobre sus dos modos por
+
+\[
+ S=\nu X-i\mu I,\qquad S^\dagger S=I.
+\]
+
+Ambos modos de A quedan en posiciones {0,1}. Los de B evolucionan a
+nu R|2>-i mu L|1> y nu L|-1>-i mu R|0>, respectivamente.
+Solo las ramas de masa de B pueden volver a coincidir con A.
+
+Sean P_0=S†|0><0|S y P_1=S†|1><1|S. Son proyectores ortogonales de
+rango uno. En las entradas lógicas A tensor B,
+
+\[
+ P=P_1\otimes|0\rangle\langle0|
+   +P_0\otimes|1\rangle\langle1|,
+ \quad P^2=P=P^\dagger,\quad \operatorname{rank}P=2.
+\]
+
+Si C es el proyector de contacto de dos partículas,
+
+\[
+ C_1=B^\dagger F^\dagger CFB=\mu^2 P.
+\]
+
+No es un proyector para 0<mu<1: la rama que puede coincidir tiene peso
+mu² y las ramas desplazadas de B son ortogonales a los modos de A.
+Las dos coincidencias ocurren en sitios distintos, así que no hay términos
+cruzados entre los modos lógicos 0 y 1 de B.
+
+La matriz lógica de dos pasos se obtiene sin proyección intermedia:
+
+\[
+ K_2=(F^2B)^\dagger U^2B
+ =B^\dagger F^\dagger JFB\,D
+ =\left[I+(z-1)\mu^2P\right]D.
+\]
+
+Para comprobar el defecto se usa |z|=1 y P²=P:
+
+\[
+ I-K_2^\dagger K_2
+ =\lambda D^\dagger PD,\qquad
+ \lambda=2\mu^2(1-\mu^2)(1-\cos\chi)
+ =2\mu^2\nu^2(1-\cos\chi).
+\]
+
+D†PD es un proyector no nulo y la salida libre es una isometría. Por ello
+la norma de este defecto es la fuga máxima, igual a lambda. Los valores
+singulares son 1,1,sqrt(1-lambda),sqrt(1-lambda). Si 0<mu,nu<1 y
+chi no es múltiplo de 2pi, la fuga es estrictamente positiva.
+
+Los controles chi=0,mu=0 o nu=0 dan lambda=0. Son casos degenerados;
+no establecen una nueva arquitectura universal. No se varían parámetros
+entre los pasos para realizar una puerta.
+
+## 3. Matriz exacta y testigos a los parámetros congelados
+
+Con mu=3/5,nu=4/5,z=i, la matriz es
+
+\[
+ K_2=\frac1{625}\begin{pmatrix}
+ 481+144i&0&-108+108i&0\\
+ 0&-81+544i&0&-108-108i\\
+ -108-108i&0&-81+544i&0\\
+ 0&-108+108i&0&481+144i
+ \end{pmatrix}.
+\]
+
+Además
+
+\[
+ D^\dagger PD=\frac1{25}
+ \begin{pmatrix}16&0&12&0\\0&9&0&12\\12&0&9&0\\0&12&0&16\end{pmatrix}.
+\]
+
+El vector v=(4,0,3,0)/5, un estado producto del dato A y B=0, pertenece
+al rango de ese proyector y alcanza fuga 288/625. La entrada 00 ya tiene
+fuga positiva 4608/15625=0.294912. Por tanto ni siquiera es necesario
+usar una entrada entrelazada para detectar la falta de cierre.
+
+La parte algebraica de contacto no comparte necesariamente eje con la masa.
+Ese hecho no remedia el defecto de unitariedad ni autoriza contar dos
+generadores abstractos como controles que el autómata pueda seleccionar.
+
+## 4. Qué comprueba exactamente Lean
+
+Subproyecto autónomo [formal/thirring-two-contact](../formal/thirring-two-contact/README.md),
+Lean v4.31.0, sin Mathlib ni descargas adicionales. El proyecto formal
+anterior del repo no se modifica. Las definiciones y enunciados están en
+[Challenge.lean](../formal/thirring-two-contact/ThirringTwoContact/Challenge.lean);
+las pruebas están separadas en Solution.lean y los controles de axiomas
+en Axioms.lean.
+
+Lean comprueba, por reducción exacta de enteros gaussianos, nueve identidades:
+
+- Relación de primera puerta en cada una de las cuatro columnas de base;
+  la extensión a superposiciones arbitrarias usa linealidad en el puente escrito.
+- Gramianos libres y reales de los cuatro estados tras dos pasos.
+- Matriz comprimida K_2 exacta.
+- Su defecto de Gram exacto.
+- Identidad de proyector para la matriz entera H=25D†PD.
+- Un autovector de H de autovalor 25.
+- Déficit positivo de norma de la columna 00.
+- Soporte final fuera de los sitios 6 y 7 nulo.
+
+Auditoría de correspondencia autorizada por el usuario como opción b:
+[lectura de los nueve enunciados y compilación limpia](2026-11-08--thirring-lean-statement-audit.md).
+`NoWrap` certifica soporte final, no todos los recorridos intermedios;
+el argumento de localidad que evita retorno periódico pertenece al puente
+escrito. No cambió ningún `.lean` ni resultado numérico en esta auditoría.
+
+Cada paso libre reducido de dos partículas tiene denominador 25, y tras
+dos pasos los estados tienen denominador 625. Lean verifica numeradores
+enteros: Gram de estados 390625 I, inner(free2,actual2)=625 K_num,
+y K_num†K_num=390625 I-7200 H. H²=25H. No usa floats, `sorry`,
+`native_decide` ni axiomas científicos. Ocho teoremas no dependen de
+axiomas; el del autovector usa solo `propext`, según las salidas vigiladas
+por `#guard_msgs`. No se presume un resultado matemático por compilar sin
+leer qué enunciados se han comprobado.
+
+**Puente no formalizado:** se usa la identificación matemática del sector
+de Gamma opuestos con dos posiciones, mediante el producto exterior
+isométrico. Se sigue la regla reducida en un anillo de ocho sitios con
+entrada en {2,3}; por localidad de alcance uno, en dos pasos no hay retorno
+por frontera y coincide con la recta. La antisimetrización de Fock, la
+interpretación de las normas y la fórmula general en mu,chi se justifican
+por las derivaciones escritas; no se afirma que estén formalizadas en este
+certificado. El certificado asegura el cálculo exacto finito declarado,
+no un teorema de todos los QCA, un límite IR ni universalidad.
+
+## 5. Verificación independiente de implementación y controles negativos
+
+[verify_thirring_two_contacts.py](../scripts/verify_thirring_two_contacts.py)
+implementa dos vías: propagación dispersa de enteros gaussianos y W tensor W
+en amplitudes antisimétricas con espín explícito. La segunda vía no usa la
+matriz K_2 esperada en el propagador. Resultado **44/44 controles de autor**;
+[JSON](2026-11-08--thirring-two-contacts.json),
+[registro](2026-11-08--thirring-two-contacts.txt). Los controles degenerados
+chi=0 y mu=0,1 comprueban los factores de la fórmula. No se buscó un
+parámetro por éxito ni se amplió a otros tiempos.
+
+La herramienta canónica `lean-mutar` (herramientas `ce09890`) comprobó
+compilaciones limpias inicial y final, y rechazó **3/3 mutaciones**:
+signo incorrecto de la primera fase, coeficiente incorrecto de K_2,
+y sustitución de una prueba por `sorry`. Las dos primeras fallan en
+Solution.lean al intentar demostrar una proposición falsa; la tercera
+falla en Axioms.lean. Se restauraron los bytes originales.
+[Registro de mutaciones](2026-11-08--thirring-two-contact-lean-mutations.json),
+[salida](2026-11-08--thirring-two-contact-lean-mutations.txt).
+
+Durante la construcción se corrigieron dos incidencias de infraestructura:
+hubo que desplegar los enunciados antes de sintetizar Decidable, y el
+control inicial que exigía cero axiomas para el autovector rechazó
+`propext`. Se fijó el mensaje a la dependencia estándar realmente usada,
+sin relajar el resto. La salida fallida del control de axiomas está
+[conservada](2026-11-08--thirring-two-contact-axiom-check-first.txt).
+La [compilación final](2026-11-08--thirring-two-contact-lean-build.txt) y
+la recompilación limpia final de las mutaciones pasan.
+
+## 6. Decisión
+
+La respuesta a «solo o con Lean» es: derivación física explícita,
+contraste por otra implementación y un núcleo finito verificado en Lean.
+Para esta arquitectura, ya el segundo contacto consecutivo tiene fuga
+positiva. Se cierra esa composición y se detiene el trabajo bajo su
+contrato, sin inventar una nueva geometría para esquivar el resultado.
+Una arquitectura con auxiliares, otros intervalos o recuperación posterior
+seguiría siendo una pregunta distinta. No hay conclusión sobre c, una
+frecuencia absoluta de reloj o universalidad del modelo completo.

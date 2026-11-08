@@ -2,6 +2,18 @@
 
 **Date:** 2026-11-08
 
+**Claude review of arbitrary-time exact recovery — 2026-11-08:** user
+explicitly requested Claude. One sealed revision-ciega opus round,
+herramientas ce09890, on report 0828861; [unaltered review](../reports/reviews/2026-11-08-thirring-exact-recovery-opus/informe_opus.md).
+Verdict: proof holds; no invalidating objection. Two minor requested
+clarifications incorporated: explicit antisymmetric isometry and A's
+support 1-t<=x_A(t)<=t from initial chirality. Particle/component wording
+also corrected. No formulas, scientific code or output changed. Reviewer
+inspected code without execution, did not check PDFs or Lean. Post-review
+clarifications not sent for a second round. One external cross-family
+review, no automatic promotion; all-time Lean and approximate recovery
+remain outside this result. Review task closed.
+
 **Exact later recovery in the microscopic Thirring code — 2026-11-08:**
 user authorized the arbitrary-time exact recovery question. Contract
 0212df6 records that the manual ray idea preceded the freeze; permanent

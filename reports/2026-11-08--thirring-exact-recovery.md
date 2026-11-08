@@ -1,8 +1,13 @@
 # Código microscópico Thirring: no hay recuperación exacta posterior
 
 2026-11-08. Autor Codex/OpenAI. **PRELIMINARY: demostración analítica y
-contrastes del autor, sin revisión independiente ni promoción. El teorema
-de tiempo arbitrario no está formalizado en Lean.**
+contrastes del autor, con una revisión externa de Claude y sin promoción.
+El teorema de tiempo arbitrario no está formalizado en Lean.**
+
+[Revisión ciega de Claude](reviews/2026-11-08-thirring-exact-recovery-opus/informe_opus.md)
+del texto en 0828861: «Se sostiene», con dos aclaraciones menores incorporadas
+abajo. Una ronda, herramientas ce09890; el revisor inspeccionó el script sin
+ejecutarlo y no comprobó PDF ni Lean. Su informe se conserva sin editar.
 
 Usuario «adelante» a estudiar si existe T>=3 y una unitaria entrelazante V
 con U^T B=F^T B V. Contrato
@@ -58,6 +63,15 @@ en su sector alternante. Las amplitudes ordenadas por sus dos posiciones
 son una representación isométrica del sector fermiónico correspondiente,
 no una eliminación de la estadística sin justificación.
 
+Explícitamente, para modos de sectores opuestos, el mapa es
+I_t(psi tensor phi)=(psi tensor phi-phi tensor psi)/sqrt(2).
+Es isométrico porque los sectores son ortogonales. La evolución libre
+satisface F I_t=I_{t+1}(W tensor W): se conserva el orden A,B mientras
+sus sectores alternan. J conserva esta imagen y actúa como fase z solo
+si las posiciones coinciden, pues entonces las componentes son opuestas.
+Así no se introduce un signo dependiente del camino al usar posiciones
+ordenadas A,B, tanto para U como para F.
+
 La salida B_T=F^T B se obtiene de modos libres de una partícula. No depende
 de U, de V o del estado lógico de entrada. No se aplica F^{-T} como control.
 
@@ -103,7 +117,11 @@ Justificación de los factores, sin extrapolar casos finitos:
 
 Además, las trayectorias extremas de B no pueden volver a contactar con A
 tras t=0: B corre hacia fuera a velocidad máxima, y después del primer
-paso A queda estrictamente detrás. Una trayectoria de A de alcance uno
+paso A queda estrictamente detrás. En efecto, para t>=1 cualquier trayectoria
+de A satisface 1-t<=x_A(t)<=t: desde R0 no puede empezar a izquierda,
+y desde L1 no puede empezar a derecha; una conversión de componente
+consume un paso sin desplazamiento. Frente a ello los rayos de B están
+en t+1 o -t. Una trayectoria de A de alcance uno
 por paso no puede alcanzarlo. Esto vale independientemente de los caminos
 internos de A. Las únicas fases posibles son las del contacto inicial,
 por lo que para **todos** los T>=1,
@@ -129,7 +147,7 @@ Definimos Delta_T=U^T B-F^T B D. Usando UB=FB D y telescopaje de potencias,
 Cada factor J-I es (z-1)C, con C el proyector de coincidencia de dos
 componentes opuestas. Su fuente tiene separación relativa cero. Desde
 la fuente k quedan T-k pasos: la separación relativa absoluta alcanzable
-es como máximo 2(T-k), porque cada componente se desplaza a lo sumo
+es como máximo 2(T-k), porque cada partícula se desplaza a lo sumo
 una celda por paso y el contacto no mueve posiciones.
 
 Consideremos la entrada lógica 01, y extraigamos la coordenada
@@ -251,8 +269,10 @@ la puerta exacta conservada.
 
 El certificado Lean existente cubre las identidades de dos pasos y conserva
 su alcance. No se modificó ni se presenta como prueba de los rayos para
-tiempo arbitrario. La demostración general anterior es del autor, pendiente
-de revisión independiente. Los hashes de script, contrato y PDF primario
+tiempo arbitrario. La demostración general anterior es del autor, con una
+revisión externa de otra familia y las aclaraciones señaladas incorporadas;
+estas ediciones posteriores no tuvieron una segunda ronda. Sin promoción.
+Los hashes de script, contrato y PDF primario
 leído en esta sesión están registrados en el JSON.
 
 Se responde negativamente la pregunta congelada: no hay T>=3 con
