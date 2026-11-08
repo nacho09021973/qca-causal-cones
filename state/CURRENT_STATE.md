@@ -2,6 +2,19 @@
 
 **Date:** 2026-11-08
 
+**Option b: Lean statement correspondence audit — 2026-11-08:** user
+explicitly authorized reading the certificate before further Thirring work.
+[Audit](../reports/2026-11-08--thirring-lean-statement-audit.md) maps all nine
+propositions to the report, verifies Gaussian-integer operations, code
+indexing, FJ order, 25/625 denominators, K2 and Gram defect normalization.
+No mismatch found in the declared finite calculation. Coverage wording
+clarified: FirstGate checks four columns, with superposition by written
+linearity; NoWrap is final support, with causal no-wrap argument outside Lean.
+Clean lake rebuild passed including all axiom guards. Challenge/Solution
+hashes match existing 3/3 mutation record; no Lean sources or physical
+outputs changed. Author audit, not independent review or promotion.
+Option b completed; no recovery-time experiment or option c executed.
+
 **Two consecutive microscopic contacts, exact/Lean check — 2026-11-08:**
 user asked whether composition could be checked alone or with Lean.
 [Report](../reports/2026-11-08--thirring-two-contacts.md); contract d2279da

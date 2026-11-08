@@ -25,6 +25,13 @@ the second compressed matrix, its strict Gram deficit, the projector
 identity, an eigenvector and a nonzero witness column deficit. Thus a
 wrong sign, wrong compressed coefficient or fake proof is detectable.
 
+Coverage precision: `FirstGate` checks the four basis columns; its extension
+to arbitrary complex inputs uses linearity in the written modelling bridge.
+`NoWrap` checks final support on the ring, not every intermediate path.
+The separate two-step locality argument establishes absence of periodic
+wrapping. See the [statement audit](../../reports/2026-11-08--thirring-lean-statement-audit.md),
+which includes a clean rebuild without changing any Lean source.
+
 The identification with the opposite-Gamma sector of fermionic Fock
 space, the generic formula in arbitrary real mass/coupling and the norm
 interpretation of the Gram deficit are explained in the

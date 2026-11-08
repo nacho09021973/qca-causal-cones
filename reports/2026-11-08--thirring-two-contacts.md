@@ -155,7 +155,8 @@ en Axioms.lean.
 
 Lean comprueba, por reducción exacta de enteros gaussianos, nueve identidades:
 
-- Acción del primer contacto en todo el código.
+- Relación de primera puerta en cada una de las cuatro columnas de base;
+  la extensión a superposiciones arbitrarias usa linealidad en el puente escrito.
 - Gramianos libres y reales de los cuatro estados tras dos pasos.
 - Matriz comprimida K_2 exacta.
 - Su defecto de Gram exacto.
@@ -163,6 +164,12 @@ Lean comprueba, por reducción exacta de enteros gaussianos, nueve identidades:
 - Un autovector de H de autovalor 25.
 - Déficit positivo de norma de la columna 00.
 - Soporte final fuera de los sitios 6 y 7 nulo.
+
+Auditoría de correspondencia autorizada por el usuario como opción b:
+[lectura de los nueve enunciados y compilación limpia](2026-11-08--thirring-lean-statement-audit.md).
+`NoWrap` certifica soporte final, no todos los recorridos intermedios;
+el argumento de localidad que evita retorno periódico pertenece al puente
+escrito. No cambió ningún `.lean` ni resultado numérico en esta auditoría.
 
 Cada paso libre reducido de dos partículas tiene denominador 25, y tras
 dos pasos los estados tienen denominador 625. Lean verifica numeradores
