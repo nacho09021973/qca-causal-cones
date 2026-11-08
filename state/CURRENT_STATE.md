@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-08
 
+**Claude re-review of two-node Thirring — 2026-11-08:** user authorized
+sending repaired version cfeb548 to Claude. Sealed claude-opus-5-5, high,
+via revision-ciega (herramientas ce09890), one round, completed.
+[Report](../debates/2026-11-08--thirring-two-node-rereview-opus/informe_opus.md).
+Reviewer marks R1–R4 RESOLVED and accepts the algebraic core, with new
+mandatory objections O1–O9 on scope, geometry, ancilla quantifiers,
+verification taxonomy, source domain and provenance. No code executed.
+O1–O9 remain OPEN / AUTHOR_CHECK_PENDING: reviewer derivations and
+counterexamples are not adopted as verified results. No global PASS,
+promotion or new experiment. This supersedes the pending-re-review status below.
+
 **Two-node Thirring review repairs — 2026-11-08:** user requested repairs.
 Sealed Grok review (grok-4.7; herramientas ce09890; archived 66e6bc2)
 gives blocks 1–4 PASS, blocks 5–6 REPAIR_REQUIRED.
