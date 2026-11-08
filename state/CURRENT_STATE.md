@@ -2,6 +2,26 @@
 
 **Date:** 2026-11-08
 
+**Two consecutive microscopic contacts, exact/Lean check — 2026-11-08:**
+user asked whether composition could be checked alone or with Lean.
+[Report](../reports/2026-11-08--thirring-two-contacts.md); contract d2279da
+records that the manual leakage formula preceded its computational freeze.
+Same M=1 code, fixed U=FJ and free output F^2 B:
+K2=[I+(exp(i chi)-1)mu^2 P]D, P an orthogonal rank-two projector.
+Worst leakage is 2mu^2nu^2(1-cos chi)=288/625=0.4608 at frozen parameters.
+Thus the second consecutive contact is not a deterministic closed gate
+in this output code; first-step exact gate remains valid.
+44/44 exact/numerical author checks; independent full antisymmetric
+propagator matches the Gaussian-integer reduced calculation.
+Lean 4.31 core certificate checks nine finite exact identities (matrix,
+Grams, projector, witness, support). Eight theorems use no axioms, one
+only propext; all guarded. Canonical lean-mutar, herramientas ce09890:
+3/3 false-sign/coefficient/sorry controls rejected, final clean build passes.
+The Fock/reduced-model bridge and generic norm theorem are written
+derivations, not claimed as fully Lean-formalized. PRELIMINARY physical
+interpretation, no external review/promotion. This closes only two
+consecutive contacts with no additional resources, not all architectures.
+
 **Growing-time Thirring with exact free output — 2026-11-08:** user
 authorized the proposed growing-time experiment. Contract 61a180a;
 [report](../reports/2026-11-08--thirring-growing-time.md).

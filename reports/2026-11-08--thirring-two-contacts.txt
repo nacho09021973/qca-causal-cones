@@ -1,0 +1,48 @@
+Author exact/numerical checks: 44/44
+K2 numerator /625: [[(481, 144), (0, 0), (-108, 108), (0, 0)], [(0, 0), (-81, 544), (0, 0), (-108, -108)], [(-108, -108), (0, 0), (-81, 544), (0, 0)], [(0, 0), (-108, 108), (0, 0), (481, 144)]]
+Input 00 leakage: 4608/15625; worst leakage: 288/625 = 0.4608
+Lean separately checks exact reduced finite algebra; Fock identification is a modelling bridge.
+PASS exact-compression-denominator: 0
+PASS exact-gram-free: 0
+PASS exact-no-wrap-free: 0
+PASS exact-gram-actual: 0
+PASS exact-no-wrap-actual: 0
+PASS exact-column-norm: 0
+PASS full-map:mu=0.0:chi=0.0:T=1: 4.4409e-16
+PASS leakage:mu=0.0:chi=0.0:T=1: 2.4652e-32
+PASS norm:mu=0.0:chi=0.0:T=1: 4.4409e-16
+PASS full-map:mu=0.0:chi=0.0:T=2: 4.4409e-16
+PASS leakage:mu=0.0:chi=0.0:T=2: 2.4652e-32
+PASS norm:mu=0.0:chi=0.0:T=2: 4.4409e-16
+PASS full-map:mu=0.0:chi=1.5707963267948966:T=1: 4.4409e-16
+PASS leakage:mu=0.0:chi=1.5707963267948966:T=1: 2.4652e-32
+PASS norm:mu=0.0:chi=1.5707963267948966:T=1: 4.4409e-16
+PASS full-map:mu=0.0:chi=1.5707963267948966:T=2: 4.4409e-16
+PASS leakage:mu=0.0:chi=1.5707963267948966:T=2: 2.4652e-32
+PASS norm:mu=0.0:chi=1.5707963267948966:T=2: 4.4409e-16
+PASS full-map:mu=0.6:chi=0.0:T=1: 4.4582e-16
+PASS leakage:mu=0.6:chi=0.0:T=1: 4.3141e-32
+PASS norm:mu=0.6:chi=0.0:T=1: 4.4582e-16
+PASS full-map:mu=0.6:chi=0.0:T=2: 3.3584e-16
+PASS leakage:mu=0.6:chi=0.0:T=2: 4.8164e-32
+PASS norm:mu=0.6:chi=0.0:T=2: 3.3584e-16
+PASS full-map:mu=0.6:chi=1.5707963267948966:T=1: 4.4582e-16
+PASS leakage:mu=0.6:chi=1.5707963267948966:T=1: 4.3141e-32
+PASS norm:mu=0.6:chi=1.5707963267948966:T=1: 4.4582e-16
+PASS full-map:mu=0.6:chi=1.5707963267948966:T=2: 2.9807e-16
+PASS leakage:mu=0.6:chi=1.5707963267948966:T=2: 1.1102e-16
+PASS norm:mu=0.6:chi=1.5707963267948966:T=2: 1.5891e-16
+PASS maximizing-witness: 5.5511e-17
+PASS full-map:mu=1.0:chi=0.0:T=1: 4.4409e-16
+PASS leakage:mu=1.0:chi=0.0:T=1: 2.4652e-32
+PASS norm:mu=1.0:chi=0.0:T=1: 4.4409e-16
+PASS full-map:mu=1.0:chi=0.0:T=2: 4.4409e-16
+PASS leakage:mu=1.0:chi=0.0:T=2: 2.4652e-32
+PASS norm:mu=1.0:chi=0.0:T=2: 4.4409e-16
+PASS full-map:mu=1.0:chi=1.5707963267948966:T=1: 4.4409e-16
+PASS leakage:mu=1.0:chi=1.5707963267948966:T=1: 2.4652e-32
+PASS norm:mu=1.0:chi=1.5707963267948966:T=1: 4.4409e-16
+PASS full-map:mu=1.0:chi=1.5707963267948966:T=2: 4.4964e-16
+PASS leakage:mu=1.0:chi=1.5707963267948966:T=2: 2.4652e-32
+PASS norm:mu=1.0:chi=1.5707963267948966:T=2: 4.4409e-16
+PASS integer-map-vs-full-Fock: 3.2049e-16

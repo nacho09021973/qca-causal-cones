@@ -1,0 +1,12 @@
+✔ [3/6] Built ThirringTwoContact.Solution (5.8s)
+✖ [4/6] Building ThirringTwoContact.Axioms (171ms)
+trace: .> LEAN_PATH=/home/adnac/qca-causal-cones/formal/thirring-two-contact/.lake/build/lib/lean /home/adnac/.elan/toolchains/leanprover--lean4---v4.31.0/bin/lean /home/adnac/qca-causal-cones/formal/thirring-two-contact/ThirringTwoContact/Axioms.lean -o /home/adnac/qca-causal-cones/formal/thirring-two-contact/.lake/build/lib/lean/ThirringTwoContact/Axioms.olean -i /home/adnac/qca-causal-cones/formal/thirring-two-contact/.lake/build/lib/lean/ThirringTwoContact/Axioms.ilean -c /home/adnac/qca-causal-cones/formal/thirring-two-contact/.lake/build/ir/ThirringTwoContact/Axioms.c --setup /home/adnac/qca-causal-cones/formal/thirring-two-contact/.lake/build/ir/ThirringTwoContact/Axioms.setup.json --json
+info: ThirringTwoContact/Axioms.lean:23:0: 'ThirringSolution.witness_eigenvector' depends on axioms: [propext]
+error: ThirringTwoContact/Axioms.lean:22:0: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 'ThirringSolution.witness_eigenvector' does not depend on any axioms
++ info: 'ThirringSolution.witness_eigenvector' depends on axioms: [propext]
+error: Lean exited with code 1
+Some required targets logged failures:
+- ThirringTwoContact.Axioms
+error: build failed
