@@ -2,6 +2,25 @@
 
 **Date:** 2026-11-08
 
+**Exact later recovery in the microscopic Thirring code — 2026-11-08:**
+user authorized the arbitrary-time exact recovery question. Contract
+0212df6 records that the manual ray idea preceded the freeze; permanent
+verifier committed before execution at 578607b.
+[Report](../reports/2026-11-08--thirring-exact-recovery.md): for the same
+M=1 code, fixed rule and exact free output F^T B, no matrix V satisfies
+U^T B=F^T B V at any integer T>=2. Four extreme free rays force V=D;
+the earliest additional contact emits a nonzero relative-edge amplitude
+that later contacts cannot cancel. Input 01 has strictly positive leakage
+at every such finite time. An explicit lower bound decays with T and
+therefore does not exclude approximate recovery at long times.
+80/80 author checks at the frozen selected times, exact integer propagation
+on Z plus full antisymmetric propagation at T<=4. The arbitrary-time claim
+rests on the written proof, not finite sampling. PRELIMINARY author proof,
+no independent review or promotion; not formalized in Lean. The previous
+Lean certificate remains a two-step result. First-step exact entangler
+retained; approximate recovery and other codes/resources remain OPEN.
+Contract cutoff reached; no further search or protocol opened.
+
 **Option b: Lean statement correspondence audit — 2026-11-08:** user
 explicitly authorized reading the certificate before further Thirring work.
 [Audit](../reports/2026-11-08--thirring-lean-statement-audit.md) maps all nine
@@ -13,7 +32,8 @@ linearity; NoWrap is final support, with causal no-wrap argument outside Lean.
 Clean lake rebuild passed including all axiom guards. Challenge/Solution
 hashes match existing 3/3 mutation record; no Lean sources or physical
 outputs changed. Author audit, not independent review or promotion.
-Option b completed; no recovery-time experiment or option c executed.
+Option b completed; no recovery-time experiment or option c executed during
+that audit. The separately authorized exact-recovery follow-up is above.
 
 **Two consecutive microscopic contacts, exact/Lean check — 2026-11-08:**
 user asked whether composition could be checked alone or with Lean.

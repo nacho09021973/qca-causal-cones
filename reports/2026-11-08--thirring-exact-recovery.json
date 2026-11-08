@@ -1,0 +1,1595 @@
+{
+  "parameters": {
+    "mu": "3/5",
+    "nu": "4/5",
+    "phase": "i",
+    "M": 1
+  },
+  "times": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8,
+    12
+  ],
+  "rows": [
+    {
+      "T": 1,
+      "raw_denominator": 25,
+      "free_edge_rows": [
+        [
+          [
+            16,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -12
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -12
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            16,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            16,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -12
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -12
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            16,
+            0
+          ]
+        ]
+      ],
+      "actual_edge_rows": [
+        [
+          [
+            16,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            12,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -12
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            16
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            16
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -12
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            12,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            16,
+            0
+          ]
+        ]
+      ],
+      "edge_raw_factor": 4,
+      "input01_leakage_exact": "0",
+      "input01_leakage": 0.0
+    },
+    {
+      "T": 2,
+      "raw_denominator": 625,
+      "free_edge_rows": [
+        [
+          [
+            256,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -192
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -192
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            256,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            256,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -192
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -192
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            256,
+            0
+          ]
+        ]
+      ],
+      "actual_edge_rows": [
+        [
+          [
+            256,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            192,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -192
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            256
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            256
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -192
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            192,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            256,
+            0
+          ]
+        ]
+      ],
+      "edge_raw_factor": 64,
+      "input01_leakage_exact": "2592/15625",
+      "input01_leakage": 0.165888,
+      "emission_coordinate": [
+        -1,
+        1
+      ],
+      "emission_difference_raw": [
+        144,
+        144
+      ],
+      "emission_difference_expected_raw": [
+        144,
+        144
+      ],
+      "lower_bound_exact": "2097152/172265625",
+      "lower_bound": 0.01217394358276644
+    },
+    {
+      "T": 3,
+      "raw_denominator": 15625,
+      "free_edge_rows": [
+        [
+          [
+            4096,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -3072
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -3072
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4096,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            4096,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -3072
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -3072
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4096,
+            0
+          ]
+        ]
+      ],
+      "actual_edge_rows": [
+        [
+          [
+            4096,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3072,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -3072
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            4096
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            4096
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -3072
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            3072,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4096,
+            0
+          ]
+        ]
+      ],
+      "edge_raw_factor": 1024,
+      "input01_leakage_exact": "1840866912/6103515625",
+      "input01_leakage": 0.30160763486208,
+      "emission_coordinate": [
+        -2,
+        2
+      ],
+      "emission_difference_raw": [
+        2304,
+        2304
+      ],
+      "emission_difference_expected_raw": [
+        2304,
+        2304
+      ],
+      "lower_bound_exact": "137438953472/51885009765625",
+      "lower_bound": 0.00264891447631675
+    },
+    {
+      "T": 4,
+      "raw_denominator": 390625,
+      "free_edge_rows": [
+        [
+          [
+            65536,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -49152
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -49152
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            65536,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            65536,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -49152
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -49152
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            65536,
+            0
+          ]
+        ]
+      ],
+      "actual_edge_rows": [
+        [
+          [
+            65536,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            49152,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -49152
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            65536
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            65536
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -49152
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            49152,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            65536,
+            0
+          ]
+        ]
+      ],
+      "edge_raw_factor": 16384,
+      "input01_leakage_exact": "951812050416768/2384185791015625",
+      "input01_leakage": 0.39921890903112517,
+      "emission_coordinate": [
+        -3,
+        3
+      ],
+      "emission_difference_raw": [
+        36864,
+        36864
+      ],
+      "emission_difference_expected_raw": [
+        36864,
+        36864
+      ],
+      "lower_bound_exact": "9007199254740992/16826019439697265625",
+      "lower_bound": 0.0005353137316298649
+    },
+    {
+      "T": 6,
+      "raw_denominator": 244140625,
+      "free_edge_rows": [
+        [
+          [
+            16777216,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -12582912
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -12582912
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            16777216,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            16777216,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -12582912
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -12582912
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            16777216,
+            0
+          ]
+        ]
+      ],
+      "actual_edge_rows": [
+        [
+          [
+            16777216,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            12582912,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -12582912
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            16777216
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            16777216
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -12582912
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            12582912,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            16777216,
+            0
+          ]
+        ]
+      ],
+      "edge_raw_factor": 4194304,
+      "input01_leakage_exact": "38557648943594652392935776/72759576141834259033203125",
+      "input01_leakage": 0.5299322919148416,
+      "emission_coordinate": [
+        -5,
+        5
+      ],
+      "emission_difference_raw": [
+        9437184,
+        9437184
+      ],
+      "emission_difference_expected_raw": [
+        9437184,
+        9437184
+      ],
+      "lower_bound_exact": "38685626227668133590597632/2068780069778025150299072265625",
+      "lower_bound": 1.8699728788386385e-05
+    },
+    {
+      "T": 8,
+      "raw_denominator": 152587890625,
+      "free_edge_rows": [
+        [
+          [
+            4294967296,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -3221225472
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -3221225472
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4294967296,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            4294967296,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -3221225472
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -3221225472
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4294967296,
+            0
+          ]
+        ]
+      ],
+      "actual_edge_rows": [
+        [
+          [
+            4294967296,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3221225472,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -3221225472
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            4294967296
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            4294967296
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -3221225472
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            3221225472,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4294967296,
+            0
+          ]
+        ]
+      ],
+      "edge_raw_factor": 1073741824,
+      "input01_leakage_exact": "31424240599541467677441757702940041728/55511151231257827021181583404541015625",
+      "input01_leakage": 0.5660887930179831,
+      "emission_coordinate": [
+        -7,
+        7
+      ],
+      "emission_difference_raw": [
+        2415919104,
+        2415919104
+      ],
+      "emission_difference_expected_raw": [
+        2415919104,
+        2415919104
+      ],
+      "lower_bound_exact": "166153499473114484112975882535043072/286873653105680107162334024906158447265625",
+      "lower_bound": 5.791870312046605e-07
+    },
+    {
+      "T": 12,
+      "raw_denominator": 59604644775390625,
+      "free_edge_rows": [
+        [
+          [
+            281474976710656,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -211106232532992
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -211106232532992
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            281474976710656,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            281474976710656,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -211106232532992
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -211106232532992
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            281474976710656,
+            0
+          ]
+        ]
+      ],
+      "actual_edge_rows": [
+        [
+          [
+            281474976710656,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            211106232532992,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            -211106232532992
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            281474976710656
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            281474976710656
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -211106232532992
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            211106232532992,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            281474976710656,
+            0
+          ]
+        ]
+      ],
+      "edge_raw_factor": 70368744177664,
+      "input01_leakage_exact": "28726188257928321684668176017336345806645564347098391204992/51698788284564229679463043254372678347863256931304931640625",
+      "input01_leakage": 0.5556452909459221,
+      "emission_coordinate": [
+        -11,
+        11
+      ],
+      "emission_difference_raw": [
+        158329674399744,
+        158329674399744
+      ],
+      "emission_difference_expected_raw": [
+        158329674399744,
+        158329674399744
+      ],
+      "lower_bound_exact": "3064991081731777716716694054300618367237478244367204352/6306778222284333752635880021987446752973482944071292877197265625",
+      "lower_bound": 4.859836470706954e-10
+    }
+  ],
+  "checks": [
+    {
+      "name": "four-free-edge-rows:T=1",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-actual-edge-rows-first-phase-only:T=1",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-invertible-real-Gram:T=1",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-zero-imaginary-Gram:T=1",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "free-basis-Gram:T=1",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "actual-basis-Gram:T=1",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "finite-cone-support:T=1",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "first-step-remains-exact",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-free-edge-rows:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-actual-edge-rows-first-phase-only:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-invertible-real-Gram:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-zero-imaginary-Gram:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "free-basis-Gram:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "actual-basis-Gram:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "finite-cone-support:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "earliest-emission-unrepaired:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "persistent-positive-input01-leakage:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "quantitative-ray-lower-bound:T=2",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-free-edge-rows:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-actual-edge-rows-first-phase-only:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-invertible-real-Gram:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-zero-imaginary-Gram:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "free-basis-Gram:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "actual-basis-Gram:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "finite-cone-support:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "earliest-emission-unrepaired:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "persistent-positive-input01-leakage:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "quantitative-ray-lower-bound:T=3",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-free-edge-rows:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-actual-edge-rows-first-phase-only:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-invertible-real-Gram:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-zero-imaginary-Gram:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "free-basis-Gram:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "actual-basis-Gram:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "finite-cone-support:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "earliest-emission-unrepaired:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "persistent-positive-input01-leakage:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "quantitative-ray-lower-bound:T=4",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-free-edge-rows:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-actual-edge-rows-first-phase-only:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-invertible-real-Gram:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-zero-imaginary-Gram:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "free-basis-Gram:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "actual-basis-Gram:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "finite-cone-support:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "earliest-emission-unrepaired:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "persistent-positive-input01-leakage:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "quantitative-ray-lower-bound:T=6",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-free-edge-rows:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-actual-edge-rows-first-phase-only:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-invertible-real-Gram:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-zero-imaginary-Gram:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "free-basis-Gram:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "actual-basis-Gram:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "finite-cone-support:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "earliest-emission-unrepaired:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "persistent-positive-input01-leakage:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "quantitative-ray-lower-bound:T=8",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-free-edge-rows:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "four-actual-edge-rows-first-phase-only:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-invertible-real-Gram:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "edge-extractor-zero-imaginary-Gram:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "free-basis-Gram:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "actual-basis-Gram:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "finite-cone-support:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "earliest-emission-unrepaired:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "persistent-positive-input01-leakage:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "quantitative-ray-lower-bound:T=12",
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-vs-exact-actual:T=1",
+      "error": 1.5700924586837752e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-vs-exact-free:T=1",
+      "error": 1.5700924586837752e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-input01-projection:T=1",
+      "error": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-vs-exact-actual:T=2",
+      "error": 3.597533769998862e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-vs-exact-free:T=2",
+      "error": 3.597533769998862e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-input01-projection:T=2",
+      "error": 1.942890293094024e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-vs-exact-actual:T=3",
+      "error": 4.576514847043675e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-vs-exact-free:T=3",
+      "error": 4.653458371169123e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-input01-projection:T=3",
+      "error": 1.1102230246251565e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-vs-exact-actual:T=4",
+      "error": 5.6622547467402735e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-vs-exact-free:T=4",
+      "error": 5.973401808526103e-16,
+      "passed": true
+    },
+    {
+      "name": "full-Fock-input01-projection:T=4",
+      "error": 2.7755575615628914e-16,
+      "passed": true
+    }
+  ],
+  "provenance": {
+    "scripts/verify_thirring_exact_recovery.py": "ce8f96b9699b72bc0833943aad10548ab7e757a6b61e8dd6a1189021939eeacd",
+    "theory/THIRRING_EXACT_RECOVERY_GATE.md": "58d09634e76a0d0e32e7ccc589be31c167a1571c460ebb30b273662a95308a69",
+    "sources/1804.08508v1.pdf": "495646b1a0c0a2822422c4d65536b8c4caa0d82c5efe7e48df878766af91f0d0"
+  }
+}
