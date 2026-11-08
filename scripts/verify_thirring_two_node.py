@@ -101,6 +101,9 @@ def two_packet_checks():
     # Deliberately incomplete crossing: closure need not hold mid-collision.
     partial, leak = projected_trajectory((-16, 16), (1, -1), 4, 17, np.pi/2)
     check("partial-crossing-is-not-a-closed-gate", 0. if leak > .01 else 1.)
+    for i in (0, 1):
+        Xi = pauli(2, (i,))
+        check(f"partial-crossing-still-preserves-parity:{i}", np.linalg.norm(partial@Xi-Xi@partial))
     return rows, dict(M=4, steps=17, chi=np.pi/2, worst_leakage=leak)
 
 
@@ -206,7 +209,7 @@ def obstruction_checks():
     reduced = matrix @ matrix.conj().T
     check("ancilla-preserves-definite-data-parity",
           np.linalg.norm(reduced-np.outer(plus, plus)))
-    check("chi-pi-is-product-XX", np.linalg.norm(gate(2, 0, 1, np.pi)-np.kron(X, X)))
+    check("chi-pi-is-minus-product-XX", np.linalg.norm(gate(2, 0, 1, np.pi)+np.kron(X, X)))
     return dict(H_witness_max_fidelity=float(fidelity),
                 H_witness_min_trace_distance=float(np.sqrt(1-fidelity)),
                 overgrant_monomial_error=float(np.max(np.minimum(absolute, abs(absolute-1)))))
