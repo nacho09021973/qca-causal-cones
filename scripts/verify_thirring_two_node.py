@@ -254,7 +254,10 @@ def main():
     for rel in ("scripts/verify_thirring_two_node.py", "theory/THIRRING_TWO_NODE_GATE.md",
                 "sources/1804.08508v1.pdf", "2026-11-08--thirring-primera-colision.md"):
         path = ROOT / rel
-        provenance[rel] = hashlib.sha256(path.read_bytes()).hexdigest()
+        # The starting note belongs to the user and is not tracked in this
+        # checkout. It is contextual, never a computational input: a fresh
+        # checkout must be able to reproduce the experiment without that note.
+        provenance[rel] = hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
     result = dict(python=platform.python_version(), numpy=np.__version__,
                   seed=None, tolerance=TOL, contract_commit="fd1ef6c",
                   sha256=provenance, checks=CHECKS, two_packet=two,
