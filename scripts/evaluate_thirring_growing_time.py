@@ -67,7 +67,9 @@ def diagnostics(actual,free,label):
     check(f"leakage-identity:{label}",abs(leak-leak_direct))
     error = float(np.linalg.norm(A-B@Q,ord=2))
     error_formula = float(np.sqrt(max(0.,2*(1-smin))))
-    check(f"polar-error-identity:{label}",abs(error-error_formula))
+    # Compare the squared identity: sqrt(1-smin) is ill-conditioned when
+    # smin=1 to floating precision, even for an exactly closed unitary code.
+    check(f"squared-polar-error-identity:{label}",abs(error*error-max(0.,2*(1-smin))))
     check(f"polar-unitarity:{label}",np.linalg.norm(Q.conj().T@Q-np.eye(4)))
     # These 16 products are witnesses only, not maximization over all inputs.
     probes = (np.array([1.,0.]),np.array([0.,1.]),

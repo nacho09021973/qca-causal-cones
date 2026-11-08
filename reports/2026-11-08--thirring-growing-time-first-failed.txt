@@ -1,0 +1,139 @@
+Author checks: 122/123; no independent review or limit certificate.
+Fixed mu=3/5,nu=4/5,chi=pi/2. Exact free output; strict light-cone margins.
+M T leakage full_polar_error min_singular_value largest_probe_concurrence
+1 1 0 1.38374855677e-32 1 1
+2 1 0.5 0.76536686473 0.707106781187 0.707106781187
+2 2 0.670306569448 0.922833280503 0.574189368198 0.720877002499
+2 4 0.97290116046 1.29258094397 0.164617251647 0.916844317032
+4 1 0.375 0.647194846948 0.790569415042 0.316227766017
+4 4 0.886060667708 1.15104386776 0.337549007245 0.747021968383
+4 16 0.918252822508 1.19506097483 0.285914633225 0.523960603251
+8 1 0.21875 0.481905641214 0.883883476483 0.141421356237
+8 8 0.859201123473 1.11782667373 0.37523176375 0.42075885618
+8 64 0.983778126945 1.32108658527 0.127365117104 0.381330165259
+16 1 0.1171875 0.347617537969 0.939581023648 0.0665190105238
+16 16 0.318998571533 0.591222281499 0.82522810693 0.0896928489481
+16 256 0.964615568986 1.27427822821 0.188107498558 0.271047761798
+PASS norm:M=1:T=1: 5.55112e-17
+PASS free-gram:M=1:T=1: 5.55112e-17
+PASS leakage-identity:M=1:T=1: 1.89911e-64
+PASS polar-error-identity:M=1:T=1: 1.38375e-32
+PASS polar-unitarity:M=1:T=1: 0
+PASS no-boundary-contact:M=1:T=1: 0
+PASS previous-algebra-bound:M=1:T=1: 2.22045e-16
+PASS full-vs-reduced-actual:M=1:T=1: 2.22045e-16
+PASS full-vs-reduced-free:M=1:T=1: 2.22045e-16
+PASS norm:full:M=1:T=1: 4.44116e-16
+PASS free-gram:full:M=1:T=1: 4.44116e-16
+PASS leakage-identity:full:M=1:T=1: 4.44089e-16
+FAIL polar-error-identity:full:M=1:T=1: 2.10734e-08
+PASS polar-unitarity:full:M=1:T=1: 0
+PASS full-vs-reduced-K:M=1:T=1: 4.47142e-16
+PASS norm:M=2:T=1: 6.84387e-16
+PASS free-gram:M=2:T=1: 4.47545e-16
+PASS leakage-identity:M=2:T=1: 3.33067e-16
+PASS polar-error-identity:M=2:T=1: 7.77156e-16
+PASS polar-unitarity:M=2:T=1: 4.33301e-16
+PASS no-boundary-contact:M=2:T=1: 0
+PASS previous-algebra-bound:M=2:T=1: 2.22045e-16
+PASS norm:M=2:T=2: 4.48117e-16
+PASS free-gram:M=2:T=2: 5.09099e-16
+PASS leakage-identity:M=2:T=2: 1.33227e-15
+PASS polar-error-identity:M=2:T=2: 9.99201e-16
+PASS polar-unitarity:M=2:T=2: 2.14486e-15
+PASS no-boundary-contact:M=2:T=2: 0
+PASS previous-algebra-bound:M=2:T=2: 0
+PASS norm:M=2:T=4: 5.16815e-16
+PASS free-gram:M=2:T=4: 1.01883e-15
+PASS leakage-identity:M=2:T=4: 6.66134e-16
+PASS polar-error-identity:M=2:T=4: 4.44089e-16
+PASS polar-unitarity:M=2:T=4: 2.106e-15
+PASS no-boundary-contact:M=2:T=4: 0
+PASS previous-algebra-bound:M=2:T=4: 0
+PASS full-vs-reduced-actual:M=2:T=1: 2.22045e-16
+PASS full-vs-reduced-free:M=2:T=1: 1.57009e-16
+PASS norm:full:M=2:T=1: 7.90258e-16
+PASS free-gram:full:M=2:T=1: 7.94617e-16
+PASS leakage-identity:full:M=2:T=1: 4.44089e-16
+PASS polar-error-identity:full:M=2:T=1: 1.11022e-16
+PASS polar-unitarity:full:M=2:T=1: 1.30966e-15
+PASS full-vs-reduced-K:M=2:T=1: 4.08395e-16
+PASS full-vs-reduced-actual:M=2:T=2: 3.34622e-16
+PASS full-vs-reduced-free:M=2:T=2: 2.98433e-16
+PASS norm:full:M=2:T=2: 4.53382e-16
+PASS free-gram:full:M=2:T=2: 5.73888e-16
+PASS leakage-identity:full:M=2:T=2: 6.66134e-16
+PASS polar-error-identity:full:M=2:T=2: 3.33067e-16
+PASS polar-unitarity:full:M=2:T=2: 9.57429e-16
+PASS full-vs-reduced-K:M=2:T=2: 2.98853e-16
+PASS full-vs-reduced-actual:M=2:T=4: 4.75559e-16
+PASS full-vs-reduced-free:M=2:T=4: 5.25331e-16
+PASS norm:full:M=2:T=4: 5.70561e-16
+PASS free-gram:full:M=2:T=4: 4.16677e-16
+PASS leakage-identity:full:M=2:T=4: 7.77156e-16
+PASS polar-error-identity:full:M=2:T=4: 2.22045e-16
+PASS polar-unitarity:full:M=2:T=4: 1.57438e-15
+PASS full-vs-reduced-K:M=2:T=4: 2.68451e-16
+PASS norm:M=4:T=1: 9.20548e-17
+PASS free-gram:M=4:T=1: 5.55112e-17
+PASS leakage-identity:M=4:T=1: 5.55112e-17
+PASS polar-error-identity:M=4:T=1: 1.11022e-16
+PASS polar-unitarity:M=4:T=1: 5.51621e-16
+PASS no-boundary-contact:M=4:T=1: 0
+PASS previous-algebra-bound:M=4:T=1: 1.11022e-16
+PASS norm:M=4:T=4: 6.14162e-16
+PASS free-gram:M=4:T=4: 3.4714e-16
+PASS leakage-identity:M=4:T=4: 4.44089e-16
+PASS polar-error-identity:M=4:T=4: 4.44089e-16
+PASS polar-unitarity:M=4:T=4: 1.33272e-15
+PASS no-boundary-contact:M=4:T=4: 0
+PASS previous-algebra-bound:M=4:T=4: 0
+PASS norm:M=4:T=16: 3.00897e-15
+PASS free-gram:M=4:T=16: 3.99741e-15
+PASS leakage-identity:M=4:T=16: 1.66533e-15
+PASS polar-error-identity:M=4:T=16: 1.33227e-15
+PASS polar-unitarity:M=4:T=16: 2.42046e-15
+PASS no-boundary-contact:M=4:T=16: 0
+PASS previous-algebra-bound:M=4:T=16: 0
+PASS norm:M=8:T=1: 6.18848e-16
+PASS free-gram:M=8:T=1: 2.94556e-16
+PASS leakage-identity:M=8:T=1: 1.16573e-15
+PASS polar-error-identity:M=8:T=1: 1.05471e-15
+PASS polar-unitarity:M=8:T=1: 8.00374e-16
+PASS no-boundary-contact:M=8:T=1: 0
+PASS previous-algebra-bound:M=8:T=1: 0
+PASS norm:M=8:T=8: 4.07876e-16
+PASS free-gram:M=8:T=8: 1.20361e-16
+PASS leakage-identity:M=8:T=8: 3.33067e-16
+PASS polar-error-identity:M=8:T=8: 4.44089e-16
+PASS polar-unitarity:M=8:T=8: 2.25761e-15
+PASS no-boundary-contact:M=8:T=8: 0
+PASS previous-algebra-bound:M=8:T=8: 0
+PASS norm:M=8:T=64: 1.00019e-14
+PASS free-gram:M=8:T=64: 1.08828e-14
+PASS leakage-identity:M=8:T=64: 5.21805e-15
+PASS polar-error-identity:M=8:T=64: 3.77476e-15
+PASS polar-unitarity:M=8:T=64: 1.66491e-15
+PASS no-boundary-contact:M=8:T=64: 0
+PASS previous-algebra-bound:M=8:T=64: 0
+PASS norm:M=16:T=1: 1.11555e-16
+PASS free-gram:M=16:T=1: 1.11503e-16
+PASS leakage-identity:M=16:T=1: 2.63678e-16
+PASS polar-error-identity:M=16:T=1: 4.996e-16
+PASS polar-unitarity:M=16:T=1: 3.41839e-16
+PASS no-boundary-contact:M=16:T=1: 0
+PASS previous-algebra-bound:M=16:T=1: 5.55112e-17
+PASS norm:M=16:T=16: 2.70436e-15
+PASS free-gram:M=16:T=16: 3.5541e-15
+PASS leakage-identity:M=16:T=16: 2.16493e-15
+PASS polar-error-identity:M=16:T=16: 2.10942e-15
+PASS polar-unitarity:M=16:T=16: 1.77725e-15
+PASS no-boundary-contact:M=16:T=16: 0
+PASS previous-algebra-bound:M=16:T=16: 0
+PASS norm:M=16:T=256: 4.49035e-14
+PASS free-gram:M=16:T=256: 4.51942e-14
+PASS leakage-identity:M=16:T=256: 2.30926e-14
+PASS polar-error-identity:M=16:T=256: 1.70974e-14
+PASS polar-unitarity:M=16:T=256: 1.13837e-15
+PASS no-boundary-contact:M=16:T=256: 0
+PASS previous-algebra-bound:M=16:T=256: 0
