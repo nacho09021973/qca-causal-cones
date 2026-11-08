@@ -2,6 +2,12 @@
 
 **Date:** 2026-11-08
 
+**Handoff for tomorrow — 2026-11-08:** user requested push and a roadmap.
+[Roadmap for 2026-11-09](ROADMAP_2026-11-09.md) records the exact closure,
+review limitations, and a proposed bounded analytic question on approximate
+recovery with the same code/rule. Lean is a separate certification option.
+Planning only: no new experiment, calculation, external review or promotion.
+
 **Claude review of arbitrary-time exact recovery — 2026-11-08:** user
 explicitly requested Claude. One sealed revision-ciega opus round,
 herramientas ce09890, on report 0828861; [unaltered review](../reports/reviews/2026-11-08-thirring-exact-recovery-opus/informe_opus.md).
