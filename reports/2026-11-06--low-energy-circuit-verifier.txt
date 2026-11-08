@@ -1,0 +1,4 @@
+22/22 exact checks PASS
+Free dispersion: E^2=v^2 sum sin(k_i)^2+[sum(1-cos(k_i))]^2
+Tree-level contact coupling flow: du/dell=-2u
+Integral of leading u(ell)^2: u0^2/4; no two-loop coefficient computed.

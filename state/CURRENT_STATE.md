@@ -82,6 +82,208 @@ two-fermion propagation; PRELIMINARY, no independent review/promotion.
 This massless coding experiment is closed. Massive Thirring, other encodings
 and the general coexistence question remain open; other gates unchanged.
 
+**Next-session worksheet — 2026-11-07:** prepared on November 6 at user
+request; [worksheet](../reports/2026-11-07--work-plan-interacting-review-repairs.md).
+Priority is to resolve Claude's review objections before further model
+work: scope, Hartree/Dyson conventions, symmetry/operator checks,
+numerical precision and quantitative feasibility. Planning only; no
+future calculation, new external review, promotion or merge executed.
+Today's artifacts remain uncommitted; check working tree when resuming.
+
+**Blind Claude review — 2026-11-06:** explicitly authorized by user;
+[status and open repairs](../reports/2026-11-06--interacting-chain-review-status.md),
+[sealed report](../debates/2026-11-06--interacting-chain-review-opus/informe_opus.md).
+Claude Opus 5.5 via canonical revision-ciega, herramientas ce09890.
+One cross-family agent review, not human review: blocks 1 and 3 PASS,
+block 4 PASS for frozen effective ODE; blocks 2,5,6 REPAIR_REQUIRED.
+No FAIL; no numerical execution by reviewer. Two canonical wording
+overclaims corrected below; other objections and reviewer-proposed
+derivations remain open for author checking. No global PASS, promotion
+or microscopic QCA proof. Conditional main fusion remains inactive.
+
+**Critical tuning/cutoff/IR control — 2026-11-06:** user requested all
+three pending obligations; [contract](../theory/YUKAWA_CRITICAL_CUTOFF_IR_GATE.md),
+[report](../reports/2026-11-06--yukawa-critical-cutoff-ir.md).
+Derived and numerically evaluated static one-loop tadpole/scalar-curvature
+counterterm candidates; no full critical-surface proof or certified
+quadrature. Wilson permits additional relevant odd scalar terms, which
+must also be controlled. Derived occupation-moment cutoff bounds and a
+counterexample showing bounded first moment alone does not suppress CCR
+boundary defect. Conditional schedule T=L,M=L²,delta=L^-12 controls
+the finite-circuit error if parameter/moment bounds hold. This is a
+varying circuit family, NOT fixed-QCA infrared control. PRELIMINARY,
+no independent review/promotion. Critical tuning, uniform state moments,
+cutoff-state convergence and fixed-QCA matching remain OPEN; conditional
+main fusion not activated.
+
+**Frozen one-loop Yukawa ODE solved, linear velocity differences and equal reference couplings — 2026-11-06:** user requested
+proof, with commit/push/main fusion conditional on obtaining it.
+[Contract](../theory/YUKAWA_JOINT_FLOW_GATE.md),
+[report](../reports/2026-11-06--yukawa-joint-flow-proof-scope.md).
+Checked Fei et al. original pp.2–5, N=8. In frozen one-loop ODE at
+c=1, u'=-14u²/(16pi²), lambda/u tends to 16/3 from positive ratios.
+Linear velocity modes decay with powers -1/21 and -13/21 of
+1+14u0 ell/(16pi²). EFFECTIVE_ONE_LOOP_LINEAR_ATTRACTION_SOLVED /
+MICROSCOPIC_QCA_THEOREM_NOT_PROVED. PRELIMINARY author proof, no review
+or promotion. Critical tuning, cutoff convergence, uniform circuit
+matching and exact infrared control remain OPEN. Conditional main
+fusion not activated; effective equations are not a QCA proof.
+
+**Shared Yukawa mediator bridge — 2026-11-06:** user «haz las tres»;
+[contract](../theory/YUKAWA_MEDIATOR_BRIDGE_GATE.md),
+[report](../reports/2026-11-06--yukawa-mediator-bridge.md).
+Two-flavor extension of checked one-loop velocity beta functions gives
+local linear attraction modes with generator eigenvalues 0,1,13 for
+equal reference Yukawa couplings. Unequal positive couplings admit a
+weighted dissipation identity. Asymptotic equality requires sufficient
+integrated coupling; marginal running can meet it conditionally.
+Explicit finite-cutoff scalar/Wilson Hamiltonian and finite-depth unitary
+Strang circuit defined, with Trotter error bound at fixed volume and
+bosonic cutoff; no cutoff-convergence error bound established.
+PRELIMINARY author derivation, no review or promotion. Joint coupling
+trajectory, scalar/fermion critical tuning, cutoff convergence and
+microscopic critical matching remain OPEN. No QCA velocity-universality
+result, global attraction or novelty claimed.
+
+**Low-energy circuit attempt — 2026-11-06:** user requested all three
+steps; [contract](../theory/LOW_ENERGY_INTERACTING_CIRCUIT_GATE.md),
+[report](../reports/2026-11-06--low-energy-interacting-circuit.md).
+New cubic Wilson two-species model, v1=1/3,v2=2/3, contact interaction:
+explicit finite-depth Strang circuit, finite-volume/time approximation
+bound, and half-filled Hamiltonian ground state with a sufficient
+finite-volume weak-g gap bound. Not an exact stationary circuit state.
+Canonical RG gives contact dimension -2 and no first-order slope
+correction. Gaussian fixed family retains distinct velocities;
+no common-speed attractor established. PRELIMINARY author analysis,
+no review or promotion. Two-loop coefficients/sign, mass tuning and
+thermodynamic/long-time control remain OPEN. BCC results unchanged.
+
+**Memory decay analytic audit — 2026-11-06:** continued on «adelante»;
+[contract](../theory/OCCUPIED_MEMORY_DECAY_GATE.md),
+[report](../reports/2026-11-06--occupied-memory-decay-audit.md).
+Derived overlap/pointwise-propagator bounds and the exact six-variable
+momentum representation of the force memory. A global nondegenerate
+stationary-phase estimate would suffice conditionally, but branch
+crossings and the full stationary set have not been controlled.
+GLOBAL_DISPERSIVE_ESTIMATE_REQUIRED / REAL_FREQUENCY_LIMIT_NOT_PROVED.
+The infinite-temperature state does not isolate the IR cone; a local
+cone approximation alone cannot justify removing the Abel regulator.
+PRELIMINARY author audit, no independent review or promotion. No proof
+of divergence, linewidth or velocity equalization; no larger numerical
+scan claimed as a substitute for the missing global estimate.
+
+**Abel memory sums with temporal bounds — 2026-11-06:** continued on
+«adelante»; [contract](../theory/OCCUPIED_ABEL_MEMORY_GATE.md),
+[report](../reports/2026-11-06--occupied-abel-memory.md).
+Evaluated r<=24 memory matrices and momentum derivatives at the nodal
+frequencies, rho=0.5,0.65,0.8. Analytic uniform coefficient bounds give
+explicit geometric temporal-tail bounds for each fixed rho<1; bounds
+exclude floating-point errors. Prior r<=8 reproduced within 1.72e-16.
+ABEL_MEMORY_SUM_WITH_TEMPORAL_TAIL_BOUND / REAL_FREQUENCY_LIMIT_OPEN.
+PRELIMINARY author result, no independent review or promotion. Bounds
+diverge as rho->1; no real-frequency pole, linewidth or velocity
+equalization established. No extrapolation from finite resolution.
+
+**Occupied memory evaluated — 2026-11-06:** user chose option 1;
+[contract](../theory/OCCUPIED_MEMORY_KERNEL_GATE.md),
+[report](../reports/2026-11-06--occupied-memory-kernel.md).
+Force-correlation reduction and numerical evaluation of the second-order
+memory at delays r=1..8 for the fixed two walks, including matrices and
+first physical momentum derivatives at zero. Nonzero, species-dependent
+memory; two alias-free grids agree to 2.64e-16 and the first delay is
+checked by direct coefficients. PRELIMINARY author result, no independent
+review or promotion. MEMORY_KERNEL_REDUCED_AND_EVALUATED_R1_R8 /
+LONG_TIME_SELF_ENERGY_OPEN. No temporal tail bound, linewidth, pole or
+velocity attraction established. Earlier unevaluated wording below is
+superseded only for this finite delay window.
+
+**Occupied second-order partial calculation — 2026-11-06:** on «adelante»,
+[contract](../theory/OCCUPIED_SECOND_ORDER_GATE.md),
+[report](../reports/2026-11-06--occupied-second-order.md).
+Exact one-step response multiplier K=(1-p+p exp(-i chi))^4; at p=1/2,
+K=exp(-2i chi)cos^4(chi/2). Centered contraction begins at chi²/2.
+Nine exact identities checked. An exact projection recurrence identifies
+the temporal memory term B_1 D_0^j C_1 at the same perturbative order;
+it has NOT been evaluated for the fixed walks. Status
+SECOND_ORDER_INSTANTANEOUS_TERM_EXACT / TEMPORAL_MEMORY_NOT_EVALUATED.
+PRELIMINARY author result, no review or promotion. No linewidth, long-time
+pole or velocity equalization inferred from single-step contraction.
+
+**Occupied stationary response — 2026-11-06:** continued on «adelante»;
+[contract](../theory/STATIONARY_OCCUPIED_RESPONSE_GATE.md),
+[report](../reports/2026-11-06--stationary-occupied-response.md).
+The fugacity ensemble exp(-lambda_1 N1-lambda_2 N2)/Z is exactly
+stationary for the number-conserving collision circuit. This occupied
+mixed state is not a relativistic low-energy vacuum. Its retarded
+single-particle response has only a scalar Hartree phase at first order
+in chi at fixed time; no first-order slope correction. PRELIMINARY
+author derivation, no independent review or promotion. Long-time poles,
+second-order density correlations and spectral widths remain unproved;
+no velocity equalization or RG bridge established.
+
+**Interacting extension authorized and first filter executed — 2026-11-06:**
+user granted autonomous continuation including needed extensions.
+[Contract](../theory/INTERACTING_VELOCITY_BRIDGE_GATE.md),
+[report](../reports/2026-11-06--interaction-vacuum-sector.md).
+For the specified number-conserving density-collision QCA, the vacuum
+one-particle propagator is exactly free at every coupling: interaction
+vanishes on that invariant sector. `VACUUM_ONE_PARTICLE_ROUTE_CLOSED /
+MANY_BODY_STATE_REQUIRED`. PRELIMINARY author proof, no promotion.
+Next obligation is a stationary occupied reference state and response
+observable; finite-density equalization has not been calculated.
+This authorization supersedes earlier statements that an interacting
+extension is unauthorized, without promoting its unproved hypotheses.
+
+**Selection-mechanism literature filter — 2026-11-06:** user requested
+the search («adelante busca el mecanismo»);
+[report](../reports/2026-11-06--velocity-selection-mechanism-search.md).
+`LITERATURE_MECHANISM_IDENTIFIED: INTERACTION_DRIVEN_RG_ATTRACTION`:
+Anber–Donoghue arXiv:1102.0789v2, PDF pp.2–4 and 7–10, supplies an
+explicit one-loop interacting fermion–scalar example with an IR-attractive
+equal-velocity line. This is running of effective parameters with energy
+scale, not temporal adaptation of QW coins. Common value is not fixed;
+convergence can be logarithmically slow. `QW_TRANSFER_NOT_ESTABLISHED`:
+no interacting finite-range QCA constructed or authorized, no anisotropy
+selection proved, no microscopic selection rule specified for current
+free QWs. Documentary interpretation PRELIMINARY, no independent review
+or promotion. Stops at one identified mechanism; further transfer needs
+a separate interacting-class charter. Earlier results and parked
+hexagonal priority unchanged.
+
+**Independent-pairs symmetry preflight — 2026-11-06:** user authorized
+option 2 («adelante»). Fixed s=8 local filter, sigma/tau/rho factors;
+[contract](../theory/INDEPENDENT_PAIRS_SYMMETRY_PREFLIGHT.md),
+[report](../reports/2026-11-06--independent-pairs-symmetry.md).
+`LOCAL_EXCHANGE_INSUFFICIENT / TWO_GENERATORS_FORCE_IDENTICAL_COPIES`:
+an internal rho_x exchange permits a local isotropic splitting term;
+adding conserved rho_z forces U=A tensor I_rho. Disjoint nodal phase
+sets cannot be exchanged by a commuting unitary symmetry at k=0.
+An exact non-scalar internal commuting F already supplies constant
+invariant sectors and excludes scalar-commutant global irreducibility.
+These are standard representation/algebra consequences; cutoff reached,
+no new constructor, novelty claim or successor search. Author verifier
+37/37; PRELIMINARY, no independent review or promotion. The local
+splitting is NOT a realized Laurent perturbation or a microscopic QW
+counterexample. No general no-go for other symmetry actions or for
+universality. Selection and scale unresolved; previous work unchanged.
+
+**Bounded cyclic realization attempt — 2026-11-06:** user authorized
+option 1 (exact microscopic realization); separate frozen
+[contract](../theory/CYCLIC_COMMON_CONE_REALIZATION_ATTEMPT.md) and
+[report](../reports/2026-11-06--cyclic-common-cone-realization.md).
+One s=4 ordered xyz candidate on N3, a=3/5, common T, with fixed
+R_j, C and cyclic S: `CANDIDATE_FAILS_CYCLIC_COVARIANCE`.
+Exact author checks 139/139 include unitarity, full eight-point support,
+PHS, D2, scalar commutant and two isotropic cones c_P=c_Q=sqrt3/5.
+The full update fails cyclic covariance in all eight coefficients;
+an independent exact momentum section gives a nonzero order-two defect.
+PRELIMINARY, not independently reviewed or promoted, no novelty claim.
+The candidate is outside the enlarged symmetry class, so its robustness
+obligation is not reached. Stops under its contract: no factor/order,
+support or representation changes and no successor search. General
+Laurent realization remains OPEN, not disproved. Selection and physical
+scale unresolved; hexagonal work stays parked.
+
 **Symmetry-plan premise audit — 2026-11-06:** user requested continuation
 of today's work. Stages 1 and 2 of the saved plan were executed;
 [audit](../reports/2026-11-06--symmetry-common-cone-premise-audit.md).

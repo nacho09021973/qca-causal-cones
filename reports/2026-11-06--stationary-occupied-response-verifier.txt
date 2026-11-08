@@ -1,0 +1,4 @@
+1027/1027 exact checks PASS
+Mean opposite-species cell density: 4p; variance: 4p(1-p).
+Collision annihilator phase: exp(-i chi N_other).
+Stationarity uses global number conservation, proved in report.

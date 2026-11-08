@@ -1,0 +1,6 @@
+rho=0.50 tail<=1.19209289551e-07 derivative tail<=1.85828891613e-06
+rho=0.65 tail<=0.000120169946379 derivative tail<=0.0019327327748
+rho=0.80 tail<=0.037778931863 derivative tail<=0.654350294423
+Previous-window max difference: 1.716587549445839e-16
+PASS: normalization, first-delay direct check, reproduction r<=8.
+No rho->1 limit, Dyson pole, or velocity attraction established.

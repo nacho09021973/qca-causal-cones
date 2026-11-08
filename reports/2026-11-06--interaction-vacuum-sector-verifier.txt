@@ -1,0 +1,4 @@
+266/266 exact checks PASS
+Vacuum and one-particle interaction generator vanish.
+One particle of each species at a cell has interaction eigenvalue 1.
+Global argument uses number conservation; no finite-density verdict.

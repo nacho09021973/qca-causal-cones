@@ -2,6 +2,32 @@
 
 Primary sources currently relevant to the freeze.
 
+## Joint Yukawa flow — acquired 2026-11-06
+
+Fei et al., *Yukawa conformal field theories and emergent supersymmetry*,
+PTEP 2016, 12C105. Original PDF from
+https://inspirehep.net/files/ffbb5687cb89ebffbb5cffb7e40dcb64,
+stored as `fei_giombi_klebanov_tarnopolsky_2016_yukawa.pdf`.
+SHA256 `83cdf266ca7c6c03fb58872a527679acbe380bbc78d8ad2052ea20bca3470393`.
+Read pp.2–5, especially action (1.4), N=4Nf and beta functions (2.1).
+Application and limits in the joint-flow report dated 2026-11-06.
+
+## Interaction-driven velocity flow — acquired 2026-11-06
+
+M. M. Anber and J. F. Donoghue, *The emergence of a universal limiting
+speed*, arXiv:1102.0789v2, Phys. Rev. D 83, 105027 (2011).
+Downloaded unchanged from `https://arxiv.org/pdf/1102.0789`; checked the
+v2 stamp, title and authors on p.1. Stored as `1102.0789v2.pdf`, 291803
+bytes, 13 pages. SHA256:
+`46b33eb09d810174b2e54c71e39970be96b9acfa7f1cf92bb345d4557d8ed67d`.
+Versioned URL: https://arxiv.org/pdf/1102.0789v2 .
+
+Read with `pdftotext -f/-l -layout`: pp.1–4 and 7–10, in particular
+Eqs. (18)–(19), the Jacobian at the top of p.4, and Eqs. (51)–(55).
+Scope and transfer limits are recorded in
+`reports/2026-11-06--velocity-selection-mechanism-search.md`.
+This acquisition does not authorize an interacting QCA extension.
+
 ## Pavia QCA program
 
 1. **A. Bisio, G. M. D'Ariano, P. Perinotti, A. Tosini**  

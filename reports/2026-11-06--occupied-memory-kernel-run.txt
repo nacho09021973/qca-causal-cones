@@ -1,0 +1,19 @@
+Cross-grid maximum absolute difference: 2.633125101432526e-16
+r=1 species=1 ||F||=0.389439645274 density_return=2.60434562426e-37
+r=1 species=2 ||F||=0.373252673532 density_return=2.39248737086e-37
+r=2 species=1 ||F||=0.189362045772 density_return=0.0624333180918
+r=2 species=2 ||F||=0.122790422623 density_return=0.0706066148453
+r=3 species=1 ||F||=0.0821159309073 density_return=2.12659078795e-36
+r=3 species=2 ||F||=0.0484161319932 density_return=1.40203304759e-36
+r=4 species=1 ||F||=0.102707714537 density_return=0.117304587397
+r=4 species=2 ||F||=0.115654425618 density_return=0.169050274559
+r=5 species=1 ||F||=0.0423792293912 density_return=5.48660840725e-36
+r=5 species=2 ||F||=0.0444971167341 density_return=4.25795315148e-36
+r=6 species=1 ||F||=0.02543202037 density_return=0.0517513802404
+r=6 species=2 ||F||=0.00809012418848 density_return=0.0204273071034
+r=7 species=1 ||F||=0.0179482050501 density_return=9.33582467792e-36
+r=7 species=2 ||F||=0.00970040526394 density_return=5.98152622567e-36
+r=8 species=1 ||F||=0.00712105978025 density_return=0.00711539196134
+r=8 species=2 ||F||=0.00911379002927 density_return=0.0345890025509
+PASS: propagator normalization, direct first lag, two alias-free grids.
+No memory-tail bound or long-time pole inferred.

@@ -1,0 +1,5 @@
+Exact identities and limits PASS
+u=y^2; du/dell=-14u^2/(16pi^2)
+lambda/u -> 16/3 for positive initial ratio, within frozen ODE.
+Velocity modes decay as [1+14u0 ell/(16pi^2)]^(-1/21), ^(-13/21).
+Effective one-loop result only; no uniform microscopic matching proof.

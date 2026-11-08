@@ -1,0 +1,5 @@
+{"L": 24, "species": [{"v": 0.3333333333333333, "tadpole_counterterm_per_y": 1.9580178849280807, "mass2_counterterm_per_y2": 0.10292263323914635}, {"v": 0.6666666666666666, "tadpole_counterterm_per_y": 1.870404622465345, "mass2_counterterm_per_y2": 0.16867933987656142}], "scalar_mass2_counterterm_per_lambda": -0.11378043780423702}
+{"L": 48, "species": [{"v": 0.3333333333333333, "tadpole_counterterm_per_y": 1.9580145320837505, "mass2_counterterm_per_y2": 0.103958424098488}, {"v": 0.6666666666666666, "tadpole_counterterm_per_y": 1.8704029886241942, "mass2_counterterm_per_y2": 0.16918869442624146}], "scalar_mass2_counterterm_per_lambda": -0.11382215278324923}
+{"L": 96, "species": [{"v": 0.3333333333333333, "tadpole_counterterm_per_y": 1.9580143241617574, "mass2_counterterm_per_y2": 0.10421011209097081}, {"v": 0.6666666666666666, "tadpole_counterterm_per_y": 1.8704028852690868, "mass2_counterterm_per_y2": 0.16931401155156414}], "scalar_mass2_counterterm_per_lambda": -0.11383254997256084}
+PASS: exact first/second mass derivatives; numerical midpoint grids only.
+No rigorous quadrature error, fermion mass tuning, or full critical surface.
