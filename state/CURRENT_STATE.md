@@ -2,6 +2,28 @@
 
 **Date:** 2026-11-08
 
+**Growing-time Thirring with exact free output — 2026-11-08:** user
+authorized the proposed growing-time experiment. Contract 61a180a;
+[report](../reports/2026-11-08--thirring-growing-time.md).
+Same fixed rule and initial code; output B_T=F^T B, not the fixed-support
+alternating frame. Exact positive result: M=1,T=1 implements
+diag(1,exp(i chi),exp(i chi),1) without leakage, maximally entangling
+at chi=pi/2. Microscopic one-step resource only; composition unproved.
+Existing telescoping bound excludes a finite entangling effect when
+T=o(M^(1/4)). For frozen schedules T=M and M^2, M=1,2,4,8,16,
+no controlled gate limit established; at M=16,T=256 worst leakage
+is 0.964616 and full polar-unitary error 1.274278.
+Exact opposite-Gamma reduction checked against full antisymmetric
+propagation for M=1,2,T<=4; strict light-cone boundaries for all samples.
+123/123 author controls after squared-polar-error stability repair;
+first failed run retained. PRELIMINARY, no independent review/promotion.
+EXACT_MICROSCOPIC_ONE_STEP_ENTANGLER_AT_M1 /
+SUBQUARTER_POWER_TIME_ROUTE_CLOSED /
+LINEAR_QUADRATIC_LIMIT_NOT_ESTABLISHED /
+GENERAL_GROWING_TIME_ROUTE_OPEN. No claim of asymptotic impossibility
+from finite samples, no interacting relativistic limit or universality proof.
+Frozen experiment completed; no further time/mass/profile sweep executed.
+
 **Massive preflight free-bound proof repair — 2026-11-08:** following a
 review observation supplied by the user, report Sec.5 now proves the
 2T delta_M bound explicitly: exact and ideal one-particle maps, including
