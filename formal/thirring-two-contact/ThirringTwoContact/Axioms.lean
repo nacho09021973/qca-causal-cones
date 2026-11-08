@@ -18,7 +18,7 @@ import ThirringTwoContact.Solution
 /-- info: 'ThirringSolution.projector_identity' does not depend on any axioms -/
 #guard_msgs in
 #print axioms ThirringSolution.projector_identity
-/-- info: 'ThirringSolution.witness_eigenvector' does not depend on any axioms -/
+/-- info: 'ThirringSolution.witness_eigenvector' depends on axioms: [propext] -/
 #guard_msgs in
 #print axioms ThirringSolution.witness_eigenvector
 /-- info: 'ThirringSolution.strict_column_defect' does not depend on any axioms -/
