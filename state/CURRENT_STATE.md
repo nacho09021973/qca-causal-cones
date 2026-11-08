@@ -2,6 +2,22 @@
 
 **Date:** 2026-11-08
 
+**Author check of Claude O1–O9 — 2026-11-08:** user requested verification.
+[Audit](../reports/2026-11-08--thirring-claude-check.md), bounded charter
+and permanent script preregistered at 45b933f; author verifier 28/28.
+Useful scope objections confirmed: unitary non-density is not a complexity
+classification, ancilla and geometry quantifiers need precision, structural
+checks and repeated grams are not independent physical evidence.
+Reviewer claims corrected: overlapping-support leakage is not 15/32 for every
+T (at chi=pi/2 it is 0 at T=0, 3/8 at T=1, 15/32 for T>=4);
+fixed minus-sign regional parity holds in the one-particle sector, not all Fock;
+massive alternating charge restricts to a component-signed sum of node X,
+not an unqualified sum. Transfer to pi does not refute the two-node code.
+Primary 1711.03920v1 pp.1–2 acquired/read; both originals use schematic
+local interaction notation. No new counterexample to ordered full-collision
+closure or code unitary non-density. PRELIMINARY author adjudication, no
+independent re-review of this audit or promotion. Full details qualify below.
+
 **Claude re-review of two-node Thirring — 2026-11-08:** user authorized
 sending repaired version cfeb548 to Claude. Sealed claude-opus-5-5, high,
 via revision-ciega (herramientas ce09890), one round, completed.

@@ -4,6 +4,12 @@
 del autor; revisión ciega Grok con reparaciones de autor aplicadas, sin
 re-revisión ni promoción.**
 
+Actualización de comprobación (2026-11-08): Claude revisó cfeb548 y marcó R1–R4
+resueltas, con nuevas objeciones O1–O9. La [comprobación de autor](2026-11-08--thirring-claude-check.md)
+acepta precisiones de alcance y corrige varias afirmaciones del revisor.
+Sus delimitaciones sobre geometría, ancillas, universalidad unitaria y velocidad
+de envolventes deben acompañar la lectura de este informe. No hay promoción.
+
 Contrato previo al cálculo: [THIRRING_TWO_NODE_GATE.md](../theory/THIRRING_TWO_NODE_GATE.md),
 commit `fd1ef6c`. Autorización: «adelante, estas autorizado para hacer el experimento
 completo», referida al experimento de código, colisión, composición y sector relativista.

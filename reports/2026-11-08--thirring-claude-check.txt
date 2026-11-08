@@ -1,0 +1,29 @@
+Author audit: 28/28
+PASS contact-count-vs-propagation:(0, 0):0:1.5707963267948966: 0
+PASS contact-count-vs-propagation:(0, 0):1:1.5707963267948966: 1.1102230246251565e-16
+PASS contact-count-vs-propagation:(0, 0):4:1.5707963267948966: 1.1102230246251565e-16
+PASS contact-count-vs-propagation:(0, 0):17:1.5707963267948966: 1.1102230246251565e-16
+PASS contact-count-vs-propagation:(-16, 16):0:1.5707963267948966: 0
+PASS contact-count-vs-propagation:(-16, 16):17:1.5707963267948966: 5.5511151231257827e-17
+PASS contact-count-vs-propagation:(-16, 16):21:1.5707963267948966: 3.863152896864577e-33
+PASS overlap-T0-zero-not-15/32: 0
+PASS overlap-T1-is-3/8: 5.5511151231257827e-17
+PASS overlap-T4-is-15/32: 1.6653345369377348e-16
+PASS contact-count-vs-propagation:(-16, 16):21:0.0: 0
+PASS modal-node-transfer:0.0: 0
+PASS contact-count-vs-propagation:(-16, 16):21:0.7: 4.1908235589866252e-31
+PASS modal-node-transfer:0.7: 1.9428902930940239e-16
+PASS contact-count-vs-propagation:(-16, 16):21:1.5707963267948966: 3.863152896864577e-33
+PASS modal-node-transfer:1.5707963267948966: 2.2204460492503131e-16
+PASS contact-count-vs-propagation:(-16, 16):21:3.141592653589793: 5.4700404945417595e-63
+PASS modal-node-transfer:3.141592653589793: 0
+PASS Fock-region-identity-with-number-factor: 0
+PASS Fock-region-minus-sign-on-N1-sector: 0
+PASS unqualified-minus-sign-fails-on-full-Fock: 0
+PASS massive-Gamma-flips:0.0: 0
+PASS plain-Pi-flip-fails-by-2mu:0.0: 0
+PASS massive-Gamma-flips:0.2: 1.1132193382143441e-16
+PASS plain-Pi-flip-fails-by-2mu:0.2: 0
+PASS massive-Gamma-flips:0.6: 2.6645352591003756e-17
+PASS plain-Pi-flip-fails-by-2mu:0.6: 0
+PASS review-counts-228-49-9-40-18: 0

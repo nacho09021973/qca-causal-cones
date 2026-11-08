@@ -1,0 +1,347 @@
+{
+  "checks": [
+    {
+      "name": "contact-count-vs-propagation:(0, 0):0:1.5707963267948966",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(0, 0):1:1.5707963267948966",
+      "residual": 1.1102230246251565e-16,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(0, 0):4:1.5707963267948966",
+      "residual": 1.1102230246251565e-16,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(0, 0):17:1.5707963267948966",
+      "residual": 1.1102230246251565e-16,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(-16, 16):0:1.5707963267948966",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(-16, 16):17:1.5707963267948966",
+      "residual": 5.551115123125783e-17,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(-16, 16):21:1.5707963267948966",
+      "residual": 3.863152896864577e-33,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "overlap-T0-zero-not-15/32",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "overlap-T1-is-3/8",
+      "residual": 5.551115123125783e-17,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "overlap-T4-is-15/32",
+      "residual": 1.6653345369377348e-16,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(-16, 16):21:0.0",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "modal-node-transfer:0.0",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(-16, 16):21:0.7",
+      "residual": 4.190823558986625e-31,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "modal-node-transfer:0.7",
+      "residual": 1.942890293094024e-16,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(-16, 16):21:1.5707963267948966",
+      "residual": 3.863152896864577e-33,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "modal-node-transfer:1.5707963267948966",
+      "residual": 2.220446049250313e-16,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-count-vs-propagation:(-16, 16):21:3.141592653589793",
+      "residual": 5.47004049454176e-63,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "modal-node-transfer:3.141592653589793",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "Fock-region-identity-with-number-factor",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "Fock-region-minus-sign-on-N1-sector",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "unqualified-minus-sign-fails-on-full-Fock",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "massive-Gamma-flips:0.0",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "plain-Pi-flip-fails-by-2mu:0.0",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "massive-Gamma-flips:0.2",
+      "residual": 1.113219338214344e-16,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "plain-Pi-flip-fails-by-2mu:0.2",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "massive-Gamma-flips:0.6",
+      "residual": 2.6645352591003756e-17,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "plain-Pi-flip-fails-by-2mu:0.6",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    },
+    {
+      "name": "review-counts-228-49-9-40-18",
+      "residual": 0.0,
+      "tolerance": 2e-12,
+      "passed": true
+    }
+  ],
+  "contact_cases": [
+    {
+      "starts": [
+        0,
+        0
+      ],
+      "steps": 0,
+      "chi": 1.5707963267948966,
+      "parity_contact_fractions": {
+        "(0, 0)": "0",
+        "(0, 1)": "0",
+        "(1, 0)": "0",
+        "(1, 1)": "0"
+      },
+      "leakage": 0.0,
+      "leakage_from_exact_counts": 0.0
+    },
+    {
+      "starts": [
+        0,
+        0
+      ],
+      "steps": 1,
+      "chi": 1.5707963267948966,
+      "parity_contact_fractions": {
+        "(0, 0)": "1/4",
+        "(0, 1)": "0",
+        "(1, 0)": "0",
+        "(1, 1)": "1/4"
+      },
+      "leakage": 0.37500000000000006,
+      "leakage_from_exact_counts": 0.37499999999999994
+    },
+    {
+      "starts": [
+        0,
+        0
+      ],
+      "steps": 4,
+      "chi": 1.5707963267948966,
+      "parity_contact_fractions": {
+        "(0, 0)": "5/8",
+        "(0, 1)": "0",
+        "(1, 0)": "0",
+        "(1, 1)": "5/8"
+      },
+      "leakage": 0.46874999999999983,
+      "leakage_from_exact_counts": 0.46874999999999994
+    },
+    {
+      "starts": [
+        0,
+        0
+      ],
+      "steps": 17,
+      "chi": 1.5707963267948966,
+      "parity_contact_fractions": {
+        "(0, 0)": "5/8",
+        "(0, 1)": "0",
+        "(1, 0)": "0",
+        "(1, 1)": "5/8"
+      },
+      "leakage": 0.46874999999999983,
+      "leakage_from_exact_counts": 0.46874999999999994
+    },
+    {
+      "starts": [
+        -16,
+        16
+      ],
+      "steps": 0,
+      "chi": 1.5707963267948966,
+      "parity_contact_fractions": {
+        "(0, 0)": "0",
+        "(0, 1)": "0",
+        "(1, 0)": "0",
+        "(1, 1)": "0"
+      },
+      "leakage": 0.0,
+      "leakage_from_exact_counts": 0.0
+    },
+    {
+      "starts": [
+        -16,
+        16
+      ],
+      "steps": 17,
+      "chi": 1.5707963267948966,
+      "parity_contact_fractions": {
+        "(0, 0)": "5/8",
+        "(0, 1)": "0",
+        "(1, 0)": "0",
+        "(1, 1)": "5/8"
+      },
+      "leakage": 0.46875,
+      "leakage_from_exact_counts": 0.46874999999999994
+    },
+    {
+      "starts": [
+        -16,
+        16
+      ],
+      "steps": 21,
+      "chi": 1.5707963267948966,
+      "parity_contact_fractions": {
+        "(0, 0)": "1",
+        "(0, 1)": "0",
+        "(1, 0)": "0",
+        "(1, 1)": "1"
+      },
+      "leakage": 3.863152896864577e-33,
+      "leakage_from_exact_counts": 0.0
+    }
+  ],
+  "node_transfer": [
+    {
+      "chi": 0.0,
+      "node_11_probability": 0.0,
+      "concurrence": 0.0
+    },
+    {
+      "chi": 0.7,
+      "node_11_probability": 0.11757890635775597,
+      "concurrence": 0.6442176872376915
+    },
+    {
+      "chi": 1.5707963267948966,
+      "node_11_probability": 0.5000000000000001,
+      "concurrence": 1.0
+    },
+    {
+      "chi": 3.141592653589793,
+      "node_11_probability": 1.0,
+      "concurrence": 1.2246467991473525e-16
+    }
+  ],
+  "fock_full_space_unqualified_sign_failure": 2.0,
+  "massive_identity": [
+    {
+      "mu": 0.0,
+      "Gamma_flip_residual": 0.0,
+      "plain_Pi_flip_residual": 0.0
+    },
+    {
+      "mu": 0.2,
+      "Gamma_flip_residual": 1.113219338214344e-16,
+      "plain_Pi_flip_residual": 0.4
+    },
+    {
+      "mu": 0.6,
+      "Gamma_flip_residual": 2.6645352591003756e-17,
+      "plain_Pi_flip_residual": 1.2
+    }
+  ],
+  "old_counts": {
+    "total": 228,
+    "gram_calls": 49,
+    "unique_grams": 9,
+    "gram_duplicates": 40,
+    "structural_18": 18
+  },
+  "reclassified": {
+    "structural_consistency_including_repeated_grams": 67,
+    "independent_propagator_vs_formula": 60,
+    "leakage": 60,
+    "derived_diagnostic": 35,
+    "illustration": 6
+  },
+  "provenance": {
+    "scripts/check_thirring_claude_objections.py": "b86f6ef2aba5de5c190e53d9ea43713804d393737b13587a22aea51c9dbd2168",
+    "theory/THIRRING_CLAUDE_OBJECTIONS_AUDIT.md": "8af13bb6cd61268372dfdb5cf8b4d087455b842ffdc3e508f901d9fe96090f87",
+    "sources/1711.03920v1.pdf": "3032b33d1375d4a55008aafe1f0e74d228052fa120446694ba8e9ab8e41867ca",
+    "sources/1804.08508v1.pdf": "495646b1a0c0a2822422c4d65536b8c4caa0d82c5efe7e48df878766af91f0d0",
+    "reports/2026-11-08--thirring-two-node.json": "c468bba2d309550267f7197af8005aea25596e2be9ac1ceae0e7720c6aa19779"
+  }
+}
