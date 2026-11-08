@@ -163,11 +163,61 @@ producto de sus compresiones: la fuga intermedia puede volver al código.
 
 Sea B_t^(2) el código de salida alternante y L_T=R_theta^T tensor R_theta^T.
 Con la norma de operador sobre las cuatro entradas lógicas, una cota
-conservadora del paso libre, por telescopaje de las dos partículas, es
+conservadora del paso libre es
 
 \[
  \|F^T B^{(2)}-B_T^{(2)}L_T\|\leq 2T\delta_M.
 \]
+
+**Demostración del paso libre y de la constante (añadida tras la observación
+aportada por el usuario).** No se usa una desigualdad genérica del producto
+exterior que pueda perder un factor sqrt(2). Sean H_+ y H_- los autoespacios
+ortogonales de Gamma, y s_t=(-1)^t. El mapa
+
+\[
+ E_t:H_{s_t}\otimes H_{-s_t}\longrightarrow\wedge^2\mathcal H,
+ \qquad E_t(a\otimes b)=\frac{a\otimes b-b\otimes a}{\sqrt2}
+\]
+
+es una isometría. En efecto, para a,c en H_{s_t} y b,d en H_{-s_t},
+
+\[
+ \langle E_t(a\otimes b),E_t(c\otimes d)\rangle
+ =\langle a,c\rangle\langle b,d\rangle
+ -\langle a,d\rangle\langle b,c\rangle
+ =\langle a,c\rangle\langle b,d\rangle.
+\]
+
+Por linealidad y continuidad vale para todo el producto tensorial, incluidas
+entradas lógicas entrelazadas, no solo para vectores producto.
+
+Escribamos C_{s,t}=B_{(-1)^t s}, para s=+,-. La sección 3 prueba
+||W C_{s,t}-C_{s,t+1}R_theta||<=delta_M para ambos signos (cero si
+el código de entrada es B_+). Como W y R_theta son unitarias, el
+telescopaje de **una partícula** da, para todo T>=0,
+
+\[
+ \|W^T B_s-B_{(-1)^T s}R_\theta^T\|\leq T\delta_M.
+\]
+
+Definimos A_T=W^T B_+, D_T=W^T B_-,
+A'_T=B_{s_T}R_theta^T y D'_T=B_{-s_T}R_theta^T. Los cuatro son
+isometrías; A_T,A'_T tienen rango en H_{s_T} y D_T,D'_T en H_{-s_T}.
+Esto incluye los rangos de A_T-A'_T y D_T-D'_T: los errores tampoco
+adquieren una componente en el sector de la otra etiqueta, porque
+Gamma W=-W Gamma. Usando el mismo E_T para ambos mapas,
+
+\[
+ F^T B^{(2)}-B_T^{(2)}L_T
+ =E_T\big[(A_T-A'_T)\otimes D_T
+             +A'_T\otimes(D_T-D'_T)\big].
+\]
+
+La isometría de E_T, la norma multiplicativa del tensor de operadores y
+||D_T||=||A'_T||=1 dan una cota T delta_M+T delta_M=2T delta_M.
+Así se conserva exactamente la constante usada en el informe y el verificador.
+La ortogonalidad necesaria es la de los **sectores completos** de Gamma;
+no se presupone que las envolventes exactas permanezcan dentro del código.
 
 Todos los códigos B_t^(2) tienen el mismo valor ||CB_t^(2)||=1/sqrt M.
 La identidad de diferencias de potencias (sin proyectar en cada paso) da
@@ -250,6 +300,17 @@ Esas preguntas no se deducen del presente filtro algebraico.
 Los hashes de contrato, script y PDF están en el JSON. Los PDF primarios son
 los originales locales leídos en esta sesión; las ecuaciones de este informe
 son derivaciones del autor a partir del W y J explícitos. No se afirma novedad.
+
+**Comprobación adicional tras la observación aportada por el usuario:** se
+compararon de nuevo los cuatro SHA256 del JSON con los ficheros de script,
+contrato y ambos PDF: todos coinciden. Se releyeron `1711.03920v1.pdf`
+pp.1–2 (W y dispersión en Ec.(1), regla de dos partículas FJ y contacto
+en Ec.(2)) y `1804.08508v1.pdf` pp.5–6 (proyector en Ec.(8), división
+interactuante/libre). La Ec.(8) citada para el sector libre pertenece al
+segundo artículo; no se atribuye a la Ec.(8) del primero. La prueba de la
+cota del paso libre anterior es una derivación de autor, no un teorema
+importado de esos artículos. El script y los datos numéricos no se han
+modificado ni vuelto a ejecutar para esta reparación de demostración.
 
 ## 7. Punto de parada
 

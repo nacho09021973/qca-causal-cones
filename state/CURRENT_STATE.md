@@ -2,6 +2,16 @@
 
 **Date:** 2026-11-08
 
+**Massive preflight free-bound proof repair — 2026-11-08:** following a
+review observation supplied by the user, report Sec.5 now proves the
+2T delta_M bound explicitly: exact and ideal one-particle maps, including
+their errors, remain in opposite Gamma eigenspaces. The normalized exterior
+embedding from their tensor product is isometric, so no extra sqrt(2) occurs.
+All four JSON provenance hashes match current files; primary equation
+locations rechecked (1711 pp.1–2; 1804 pp.5–6 for Eq.8).
+No code/data changes or new experiment. Author repair, no independent
+re-review or promotion; bounded-duration/code/frame scope unchanged.
+
 **Massive Thirring algebra preflight — 2026-11-08:** user authorized
 the proposed symmetry-compatible code filter. Contract cbfae56;
 [report](../reports/2026-11-08--thirring-massive-preflight.md).
