@@ -1,7 +1,8 @@
 # Thirring sin masa: dos nodos cierran la colisión, pero no dan puertas universales
 
 2026-11-08. Autor: Codex (OpenAI). **PRELIMINARY: derivación y verificaciones
-del autor, sin revisión independiente ni promoción.**
+del autor; revisión ciega Grok con reparaciones de autor aplicadas, sin
+re-revisión ni promoción.**
 
 Contrato previo al cálculo: [THIRRING_TWO_NODE_GATE.md](../theory/THIRRING_TWO_NODE_GATE.md),
 commit `fd1ef6c`. Autorización: «adelante, estas autorizado para hacer el experimento
@@ -20,7 +21,7 @@ de posiciones de la nota anterior.
 | ¿Entrelaza? | Sí para sin(chi) distinto de cero; máximo en chi=pi/2. |
 | ¿Se componen colisiones? | Sí para cruces completos; se demuestra la fórmula multipaquete y se comprueba una secuencia con tres partículas. |
 | ¿Computación cuántica universal con esos recursos? | No en este código: las paridades de las trayectorias impiden una Hadamard lógica. |
-| ¿Sector libre relativista? | Dos envolventes de Dirac sin masa con la misma velocidad a/tau, retirando el portador de Floquet del nodo pi. |
+| ¿Sector libre relativista? | Cada envolvente libre tiene velocidad a/tau tras retirar su portador. El qubit 0/pi no se ha aislado como grado lógico infrarrojo ni de baja cuasienergía. |
 | ¿QFT interactuante relativista / procesador universal relativista? | No demostrados. La primera afirmación no se deduce de la cinemática libre; la segunda falla para el código y recursos probados. |
 
 Veredicto: `TWO_NODE_COLLISION_CLOSED_AND_ENTANGLING /
@@ -103,7 +104,9 @@ un cambio de marco o una convención de lectura con un control físico adicional
 La ausencia de fuga se afirma **al completar el cruce**. Durante el encuentro
 pueden correlacionarse paridad y forma espacial; la proyección sobre los mismos
 cuatro modos no es una puerta unitaria. Un caso intermedio del verificador
-(M=4,T=17,chi=pi/2) da fuga máxima 0.46875.
+(M=4,T=17,chi=pi/2) da fuga 0.46875: es el máximo sobre entradas normalizadas
+de ese código a esos parámetros (norma de operador al cuadrado), no un máximo
+sobre tiempos, tamaños o acoplamientos.
 
 ## 4. Composición y puertas de un qubit
 
@@ -190,6 +193,13 @@ En dos pasos se pliegan ambos nodos: W(pi+q)^2=W(q)^2. No se debe identificar
 sin más cuasienergía pi/tau con una energía positiva infinita, ni afirmar que
 se ha construido un vacío de baja energía de un Hamiltoniano único.
 
+El qubit 0/pi utiliza coherencia entre nodos separados por momento pi, de
+escala reticular. Por ejemplo, (f+Pi f)/sqrt(2) solo ocupa sitios pares y
+conserva modulación a escala de celda aunque su envolvente sea ancha.
+Por eso el qubit de nodo no se identifica aquí como grado lógico infrarrojo:
+no se ha aislado un qubit de baja cuasienergía. La descripción lenta se aplica
+a cada envolvente después de retirar su portador espacial y temporal.
+
 La concentración de los paquetes es controlable sin un ajuste numérico:
 
 \[
@@ -236,8 +246,9 @@ Tampoco determina a o tau por separado ni una frecuencia absoluta de reloj.
 ## 7. Verificación, reparación y procedencia
 
 Implementación permanente: [verify_thirring_two_node.py](../scripts/verify_thirring_two_node.py).
-Se versionó antes de ejecutarla (`578f27c`). Ejecución final con código
-`20a78c4`, Python 3.12.3, NumPy 2.4.4, sin aleatoriedad:
+Se versionó antes de ejecutarla (`578f27c`). Ejecución original con código
+`20a78c4`; repetida tras la reparación R2 con Python 3.12.3, NumPy 2.4.4,
+sin aleatoriedad. El JSON registra el hash exacto del código ejecutado:
 
 ```sh
 /home/adnac/venvs/torch-gpu/bin/python scripts/verify_thirring_two_node.py
@@ -245,6 +256,20 @@ Se versionó antes de ejecutarla (`578f27c`). Ejecución final con código
 
 Resultados: [JSON](2026-11-08--thirring-two-node.json),
 [registro](2026-11-08--thirring-two-node-verifier.txt). **228/228 comprobaciones**.
+El recuento contiene 222 contrastes numéricos finitos y 6 ilustraciones
+algebraicas; no es una certificación de la obstrucción general.
+
+- Contrastes numéricos: propagación microscópica frente a S_chi y su composición,
+  cierre en los casos muestreados, gramianos, paridad de una compresión parcial
+  y diagnósticos de Fourier. Pueden detectar discrepancias en esas implementaciones.
+- Ilustraciones: una palabra monomial (tres comprobaciones), un ejemplo con
+  ancilla, el límite chi=pi y los solapamientos del testigo H. Estos últimos
+  solo calculan números de referencia: pasarían incluso si otra dinámica
+  implementara H. No se ejecuta una Hadamard con el autómata, ni se prueba el
+  grupo completo mediante una palabra o un estado de ancilla.
+- Consecuencias exclusivamente algebraicas: cierre exacto para todo M al terminar
+  el cruce y obstrucción para todos los protocolos y ancillas admitidos, por las
+  demostraciones de las secciones 3–5. Ningún recuento finito reemplaza sus cuantificadores.
 
 | Comprobación | Máximo observado |
 | --- | ---: |
@@ -258,7 +283,10 @@ La fuga exactamente nula y la obstrucción general se deducen del álgebra.
 El test antisimétrico usa anillo de 64 sitios, M=1,2,3 y tiempos sin contacto
 con la frontera; no depende de un ajuste de tamaño finito. Los otros métodos
 son evolución directa de coincidencias sobre soportes finitos en la recta.
-Son dos implementaciones del autor, no revisión independiente.
+La antisimetrización numérica es exclusivamente de **dos cuerpos**. La secuencia
+de tres paquetes se comprobó con trayectorias en orden de etiqueta, justificadas
+por la sección 2; no se propagó numéricamente el sector de Fock de tres cuerpos.
+Son dos implementaciones del autor; Grok leyó el código sin ejecutarlo.
 
 Primer intento: 225/226. La expectativa del test chi=pi omitía el signo global:
 comparaba con +XX en lugar de -XX. Se rederivó a=0,b=-1, se corrigió el test
@@ -271,6 +299,24 @@ La nota de partida sigue siendo un fichero del usuario no versionado: su hash
 se registra si está disponible, pero no es una entrada necesaria del cálculo.
 
 ## 8. Fuentes y decisión
+
+Revisión ciega: [Grok](../debates/2026-11-08--thirring-two-node-review-grok/informe_grok.md),
+modelo grok-4.7, herramienta canónica revision-ciega, herramientas `ce09890`.
+Dictamen archivado en `66e6bc2`: bloques 1–4 PASS, bloques 5–6 REPAIR_REQUIRED.
+El revisor no ejecutó código. Las siguientes reparaciones fueron autorizadas
+por el usuario «haz la reparacion» y comprobadas por el autor:
+
+| Objeción | Respuesta aplicada | Estado |
+| --- | --- | --- |
+| R1: alcance infrarrojo | Veredicto y sección 6: envolventes libres frente a qubit de nodos con modulación reticular; no qubit de baja cuasienergía aislado. | Respondida; sin re-revisión. |
+| R2: alcance del verificador | Sección 7, JSON y log distinguen 222 contrastes, 6 ilustraciones y consecuencias exclusivamente algebraicas; H no es ejecutada por U. | Respondida; sin re-revisión. |
+| R3: número de cuerpos | Sección 7 y log: dos cuerpos antisimétricos, tres trayectorias etiquetadas. | Respondida; sin re-revisión. |
+| R4: fuga del cruce parcial | Sección 3 y log fijan M,T,chi y el dominio del máximo: entradas del código a esos parámetros, no barrido de parámetros. | Respondida; sin re-revisión. |
+
+La repetición del verificador tras R2 conserva los residuos originales y pasa
+228/228. Esta comprobación del autor no cambia el dictamen sellado ni constituye
+un PASS global posterior. La reparación es documental y de clasificación de
+salida; no modifica el contrato congelado ni la evolución física.
 
 [1] Bisio, D'Ariano, Mosco, Perinotti, Tosini,
 *Solutions of a two-particle interacting quantum walk*, arXiv:1804.08508v1,

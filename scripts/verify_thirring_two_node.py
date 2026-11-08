@@ -12,6 +12,7 @@ import hashlib
 import itertools
 import json
 import platform
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -28,7 +29,9 @@ CHECKS = []
 
 def check(name, error, tol=TOL):
     error = float(error)
-    CHECKS.append({"name": name, "error": error, "tolerance": tol,
+    category = ("illustration_not_no_go_test" if name.startswith(("overgrant-", "H-witness-", "ancilla-", "chi-pi-"))
+                else "finite_numerical_contrast")
+    CHECKS.append({"name": name, "category": category, "error": error, "tolerance": tol,
                    "pass": bool(np.isfinite(error) and error < tol)})
 
 
@@ -177,10 +180,16 @@ def composition_checks():
     return rows
 
 
-def obstruction_checks():
+def obstruction_illustrations():
+    """Examples only: no finite check here establishes the no-go theorem.
+
+    The H overlaps below are reference arithmetic, not evolution by the QCA;
+    they would still pass if some physical implementation could implement H.
+    The monomial word and ancilla example do not quantify over all protocols.
+    """
     # Intentionally larger than the physical gate set: independent Z flips,
     # arbitrary XX collision angles and arbitrary local X rotations. Still
-    # monomial in the X basis, so failure here covers the smaller actual set.
+    # monomial in the X basis by the report's proof; this one word illustrates it.
     n = 3
     B = kron_all([H]*n)
     U = np.eye(2**n, dtype=complex)
@@ -248,7 +257,7 @@ def main():
     two, partial = two_packet_checks()
     fermionic = antisymmetric_lattice_checks()
     composition = composition_checks()
-    obstruction = obstruction_checks()
+    obstruction = obstruction_illustrations()
     physical = physical_checks()
     provenance = {}
     for rel in ("scripts/verify_thirring_two_node.py", "theory/THIRRING_TWO_NODE_GATE.md",
@@ -262,7 +271,11 @@ def main():
                   seed=None, tolerance=TOL, contract_commit="fd1ef6c",
                   sha256=provenance, checks=CHECKS, two_packet=two,
                   incomplete_crossing=partial, fermionic=fermionic,
-                  composition=composition, obstruction=obstruction, physical=physical)
+                  composition=composition, obstruction_illustrations=obstruction, physical=physical,
+                  check_categories=dict(Counter(c["category"] for c in CHECKS)),
+                  algebra_only_conclusions=["exact closure for all M after completed crossings",
+                                            "non-universality for all allowed protocols and independent ancillas"],
+                  verification_scope="two-fermion antisymmetric propagation; three labeled trajectories, not three-body Fock propagation")
     STEM.with_suffix(".json").write_text(json.dumps(result, indent=2)+"\n")
     passed = sum(c["pass"] for c in CHECKS)
     lines = [f"Checks: {passed}/{len(CHECKS)}", f"Python {platform.python_version()}, NumPy {np.__version__}",
@@ -274,10 +287,16 @@ def main():
              f"Max closed-code leakage: {max(r['worst_leakage'] for r in two+fermionic+composition):.17g}",
              f"Incomplete-crossing leakage: {partial['worst_leakage']:.17g}",
              f"H witness maximum fidelity: {obstruction['H_witness_max_fidelity']:.17g}"]
-    lines.extend(f"{'PASS' if c['pass'] else 'FAIL'} {c['name']}: {c['error']:.5g}" for c in CHECKS)
+    lines += ["Categories: " + str(result["check_categories"]),
+              "H overlaps are reference arithmetic; no QCA implementation of H was executed.",
+              "Monomial word and ancilla: one illustrative example each, not universal quantifiers.",
+              "Exact closure and no-go rely on the report's algebra, not the check count.",
+              "Antisymmetric propagation: TWO fermions. Three packets: labeled trajectories only.",
+              "Incomplete-crossing leakage: worst input for M=4,T=17,chi=pi/2 only; no maximization over parameters."]
+    lines.extend(f"{'PASS' if c['pass'] else 'FAIL'} [{c['category']}] {c['name']}: {c['error']:.5g}" for c in CHECKS)
     log = "\n".join(lines)+"\n"
     STEM.with_name(STEM.name+"-verifier.txt").write_text(log)
-    print("\n".join(lines[:10]))
+    print("\n".join(lines[:16]))
     if passed != len(CHECKS):
         for c in CHECKS:
             if not c["pass"]:

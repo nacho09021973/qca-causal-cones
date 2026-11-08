@@ -2,6 +2,20 @@
 
 **Date:** 2026-11-08
 
+**Two-node Thirring review repairs — 2026-11-08:** user requested repairs.
+Sealed Grok review (grok-4.7; herramientas ce09890; archived 66e6bc2)
+gives blocks 1–4 PASS, blocks 5–6 REPAIR_REQUIRED.
+[Author responses R1–R4](../reports/2026-11-08--thirring-two-node.md):
+the node qubit is not established as an infrared or low-quasienergy qubit;
+c_IR=a/tau refers to each free envelope after carrier removal.
+Verifier output distinguishes 222 finite numerical contrasts, 6 illustrations
+and algebra-only general consequences. Hadamard was not executed by U.
+Antisymmetric propagation covers two bodies; three packets use labeled
+trajectories. Partial-crossing leakage 0.46875 maximizes over code inputs
+only at M=4,T=17,chi=pi/2. Rerun: 228/228, unchanged numerical residuals.
+R1–R4 RESPONDED_BY_AUTHOR, not independently resolved; no re-review,
+global PASS or promotion. This supersedes the initial no-review wording below.
+
 **Two-node Thirring experiment — 2026-11-08:** user authorized the complete
 code/collision/composition/relativistic-sector experiment;
 [contract](../theory/THIRRING_TWO_NODE_GATE.md), preregistration `fd1ef6c`;
