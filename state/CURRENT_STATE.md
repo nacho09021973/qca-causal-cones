@@ -2,6 +2,27 @@
 
 **Date:** 2026-11-08
 
+**Massive Thirring algebra preflight — 2026-11-08:** user authorized
+the proposed symmetry-compatible code filter. Contract cbfae56;
+[report](../reports/2026-11-08--thirring-massive-preflight.md).
+C_plus=(R f_even,L T f_even), C_minus=(R T f_even,L f_even);
+two qubits use opposite Gamma sectors, total Q=0. The mass yields an
+exact first-step logical rotation from C_plus to C_minus; the reverse
+step has envelope error nu sqrt(2/M). Same-sign Gamma pairs never contact.
+Instantaneous opposite-sector contact compresses to diag(1,c,c,1),
+c=1+(exp(i chi)-1)/M, with leakage 2(M-1)(1-cos chi)/M^2.
+F and J are not independently available controls. Telescoping bounds show
+the actual fixed-rule evolution approaches local free rotations for every
+bounded duration as M grows; positive ballistic-edge leakage at finite M
+closes bounded-duration entangling gates for this code and output frame.
+MASS_LOGICAL_MIXING_AVAILABLE /
+BOUNDED_DURATION_ENTANGLING_GATE_CLOSED_FOR_DECLARED_CODE /
+GROWING_TIME_SCATTERING_OPEN. Author verifier 140/140, mu=3/5,chi=pi/2,
+M=1,2,4,8,16,T=1,2. PRELIMINARY, no independent review or promotion.
+Preflight cutoff reached; no long-time scattering or relativistic
+interacting-limit calculation executed. General massive-model universality
+and growing-time protocols remain OPEN.
+
 **Author check of Claude O1–O9 — 2026-11-08:** user requested verification.
 [Audit](../reports/2026-11-08--thirring-claude-check.md), bounded charter
 and permanent script preregistered at 45b933f; author verifier 28/28.
