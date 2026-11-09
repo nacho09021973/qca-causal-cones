@@ -15,7 +15,18 @@ OPEN; sampled diagnostic 0.0099 with +-0.5 deg positions). L3s4 has no blind
 directions for a^2 < x_c: `EXCLUDED_ROBUST` under H_min for every
 orientation for a < 0.7731 (D1) and a^2 < x_c minus a sliver (D2). L3
 `ALLOWED_ROBUST`. Line `ORIENTATION_INDEPENDENT_EXCLUSION_UNDER_HMIN_L3s4`.
-PRELIMINARY, no review or promotion; conditional on H_gamma, D1/D2, H_min.
+User asked for Codex review: one sealed revision-ciega astra round
+(gpt-6-astra, herramientas 97292a9) on 630bd6e,
+[unaltered review](../reports/reviews/2026-11-09-multi-source-orientation-astra/informe_astra.md):
+«reparación necesaria». Applied: the order-2 cancellation holds for
+wave-vector directions only; for observed propagation directions the
+coefficient is 3alpha - (3/2)|grad_S beta|^2 = -(2/3) r1^2 r2^2 on planes
+(re-derived), so L5a/L5b/L4 escape the linear term only, and the quadratic
+residual (ell >~ 8.6e-28 m) does not reach H_min: not excluded by the two
+TOF sources; D2 OPEN with the escape-plausibility argument withdrawn; L3s4
+boundaries are exact roots a(q), single-source failure does not mean "not
+excluded", D2 boundary a(q_2), cluster-sign mapping [UNVERIFIED]. Not
+re-reviewed. PRELIMINARY, no promotion.
 
 **Dispersion data comparison — 2026-11-09:** user «adelante». Contract
 ad445aa (photon dictionary H_gamma with D1 non-birefringent / D2

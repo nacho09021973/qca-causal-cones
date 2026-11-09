@@ -1,0 +1,759 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente el informe adjunto. Afirmaciones: (a) en los planos
+coordenados la corrección de velocidad de grupo de L5a/L5b/L4 se anula hasta
+orden 2, y cualesquiera 2 o 3 direcciones pueden colocarse a la vez en esos
+planos, por lo que escapan a las dos fuentes de tiempo de vuelo;
+(b) la certificación D2 con cuatro fuentes queda OPEN; (c) L3s4 queda
+excluida bajo H_min para toda orientación si a < 0.7731 (D1) y casi todo
+a^2 < x_c (D2); (d) L3 permitida; (e) veredicto de línea y sec. 3. No aceptes
+el recuento 4/5 como prueba.
+
+Comprueba:
+(1) la identidad de expansión y la cancelación en n3 = 0, y su extensión a
+    todos los planos coordenados y a ±beta;
+(2) la construcción de escape para 2 y 3 direcciones (incluidos casos
+    degenerados) y si el escape exacto en un plano implica ausencia de
+    restricción a todo orden relevante o sólo hasta orden 2;
+(3) que la rama-y-poda D2 está bien planteada (umbrales delta_i, cajas de
+    posición ±0.5°, semántica de "para toda orientación y toda posición") y
+    que su fallo se presenta como OPEN sin sesgo; si el diagnóstico de
+    muestreo está bien etiquetado;
+(4) los umbrales de L3s4 (inf|beta| = B - M, raíces, asignación de signo a
+    cada cluster, umbral D2) y el razonamiento de independencia de la
+    orientación;
+(5) el argumento de L3;
+(6) si el informe se excede (sec. 3) o deja huecos;
+(7) correspondencia script-informe.
+
+Se adjuntan contrato, informe, script, registro, el registro de fuentes con
+posiciones, y el informe padre de comparación (ya reparado). No tienes acceso
+al repositorio ni puedes ejecutar código. Distingue lo que derivas a mano de
+lo que sólo inspeccionas.
+
+Entrega en español: veredicto (se sostiene / reparación necesaria /
+refutado / no decidido), derivaciones críticas, objeciones ordenadas por
+gravedad con sección y reparación concreta, y el alcance exacto que
+aceptarías. Si no hay fallos, dilo sin inventar objeciones. Ninguna propuesta
+de protocolo o búsqueda adicional es necesaria.
+
+=== DOCUMENT 1: MULTI_SOURCE_ORIENTATION_GATE.md ===
+
+# MULTI_SOURCE_ORIENTATION — contract
+
+**Status of this text:** frozen at the commit that introduces it
+(preregistration). Written 2026-11-09 by Claude (Opus 5.5); user choice «2»
+(open a contract combining several sources before executing
+`MINIMAL_LENGTH_EXCLUSION`).
+**Parents:** `DISPERSION_DATA_COMPARISON` (repaired after Astra review: only
+sensitivities at the direction of maximal coefficient; no exclusion for an
+unknown orientation), `OBSERVATIONAL_SIGNATURE_SATURATION`,
+`MINIMAL_LENGTH_EXCLUSION` (frozen at 130cdbc, not executed), and the source
+check `investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md`.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> For a lattice of unknown orientation R in SO(3), and using several verified
+> sources at known sky directions, does any 3D row's leading dispersion,
+> under H_gamma and D1 or D2, imply a bound on ell that holds for **every** R?
+> If so, is that bound below lambda ell_P (H_min, lambda in [1/2, 2])?
+
+## 1. Known, question, abandonment
+
+Known:
+
+- Only d = 3 rows can describe a photon in 3D space: L3, L5a, L5b, L4 and
+  L3s4. The 2D rows are out of scope here.
+- Leading coefficients and zero sets (parent, after repair):
+  - L5a, L5b, L4: beta ∝ n1 n2 n3, zero on the coordinate planes. There the
+    order-2 group-speed term 3 alpha + |grad_S beta|^2/2 also vanishes, at
+    least on n3 = 0 for L5a, L5b and L4 (reviewer computation, to be
+    re-derived).
+  - L3: alpha = -sigma2/18, zero only on the coordinate axes.
+  - L3s4: zeros only if a^2 ≥ x_c.
+- Verified sources with sky positions:
+  - Kostelecký–Mewes Table I gives (theta, phi) for GRB 041219A, 100826A,
+    110301A and 110721A, with per-source d = 5 bounds (Table III).
+  - LHAASO GRB 221009A and Fermi GRB 090510 give time-of-flight bounds, but
+    their sky positions were not read in a primary source. They must be
+    verified before use.
+
+Question: see Sec. 0.
+
+Abandonment: if, for every 3D row and both dictionaries, some orientation
+places all available sources in the row's zero set through the order
+considered, record `NO_ORIENTATION_INDEPENDENT_BOUND_FROM_AVAILABLE_SOURCES`
+and stop.
+
+## 2. Quantities
+
+1. **Escape count (exact).** For each 3D row, the largest k such that any k
+   generic directions can be placed simultaneously in the zero set of the
+   leading correction, and of the order-2 group-speed correction where the
+   leading one vanishes, by some R. Exact argument or explicit construction.
+   This includes the order-2 cancellation on the zero set (re-derived, not
+   imported from the review).
+2. **Available sources per dictionary.**
+   - D1 (time of flight): GRB 221009A and GRB 090510, if their positions are
+     verified in a primary source; otherwise D1 is `OPEN (positions not
+     verified)`.
+   - D2 (polarization): the four Kostelecký–Mewes GRBs, each with its own K_i.
+3. **Orientation-independent bound.** For rows and dictionaries where the
+   number of sources exceeds the escape count, compute
+   m = min over R of max_i |coef(R^{-1} s_i)|/K_i. The bound is then
+   ell_max = hbar c/(m · const), with the dictionary's constant. m must be
+   certified by a **rigorous lower bound**: exact algebra, or interval
+   branch-and-bound over SO(3) with outward rounding and certified
+   constants (the Astra repairs of the previous gate apply; no float
+   comparisons in a certified path). An upper bound on m, obtained by
+   exhibiting an R, is allowed only as a non-verdict diagnostic.
+4. **H_min comparison.** Compare each certified ell_max with lambda ell_P,
+   lambda in [1/2, 2], using the class rules of `MINIMAL_LENGTH_EXCLUSION`
+   Sec. 3.
+
+## 3. Hypotheses (before computing)
+
+- **Hm1:** L5a, L5b and L4 have escape count 3 through order 2, so two or
+  three sources never exclude them for an unknown orientation.
+- **Hm2:** with the four Kostelecký–Mewes sources, under D2, L5a, L5b and L4
+  have a certified m > 0, and the resulting ell_max is below ell_P/2 for
+  every orientation (`EXCLUDED_ROBUST` under H_min).
+
+## 4. Method, budget, stop rules
+
+- Sky positions of GRB 221009A and GRB 090510 are read in a primary source
+  (paper or GCN), cited with page or circular number, and recorded in the
+  source check. A web search may locate them; the original must be read.
+- Rotation parametrization and search are fixed in the verifier before
+  running.
+- One permanent verifier `scripts/verify_multi_source_orientation.py`,
+  committed before its first run; failed runs retained; two command entries.
+- One session. If the rigorous lower bound on m does not close, the row and
+  dictionary are `OPEN (min over orientations not certified)`. No
+  floating-point verdict.
+- No new data beyond verified sources, and no combination with unverified
+  bounds.
+
+## 5. Verdicts and claim ceiling
+
+- Per row and dictionary: `ESCAPES_ALL_SOURCES` /
+  `ORIENTATION_INDEPENDENT_BOUND_<value>` / `OPEN (...)`, and the H_min class
+  where a bound exists.
+- Hm1, Hm2: `CONFIRMED` / `REFUTED` / `OPEN`.
+- Line: `ORIENTATION_INDEPENDENT_EXCLUSION_UNDER_HMIN_<rows,dict>` /
+  `NO_ORIENTATION_INDEPENDENT_BOUND_FROM_AVAILABLE_SOURCES` /
+  `OPEN_AFTER_BOUNDED_ATTEMPT`.
+
+Everything is conditional on H_gamma, D1/D2 and H_min (when used), and on
+the sources' observational assumptions. D2 additionally relies on the SME
+matching and on each K_i being a bound on the combination at that source's
+direction. No claim about our universe. PRELIMINARY until a cross-family
+review; no promotion without a separate user decision.
+
+## 6. Explored before freezing (declared)
+
+Before writing this, I reasoned informally:
+
+- two directions fit in one plane, and a rotation about its normal can
+  place a third direction in a second coordinate plane; hence the expected
+  escape count of 3 for n1 n2 n3 rows;
+- with three rotation parameters, a fourth generic direction is not
+  expected to fit.
+
+Hm1 and Hm2 encode this expectation. No m, no position and no rotation
+search has been computed.
+
+=== DOCUMENT 2: 2026-11-09--multi-source-orientation.md ===
+
+# Multi-source orientation: results
+
+2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: exact checks, an
+interval branch-and-bound that did not close, and decimal arithmetic; no
+independent review, no promotion.**
+
+Contract [MULTI_SOURCE_ORIENTATION_GATE.md](../theory/MULTI_SOURCE_ORIENTATION_GATE.md),
+frozen at `dd9ab5c`. Sky positions verified in the original circulars and
+recorded in the [source check](../investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md):
+
+- GRB 090510: GCN 9339.
+- GRB 221009A = Swift J1913.1+1946: GCN 32632 for the position, GCN 32635
+  for the identification.
+
+Verifier committed before running at `2464e1a`. First and only run: 4/5. The
+failing check is the D2 branch-and-bound, which returned OPEN (budget
+exceeded). That outcome is allowed by the contract and is recorded as the
+result, not repaired.
+
+Everything is conditional on H_gamma, on the dictionaries D1/D2, on H_min
+(ell ≥ lambda ell_P, lambda in [1/2, 2]) where used, and on the sources'
+observational assumptions.
+
+## 1. Result
+
+| Row | D1 (time of flight: GRB 221009A, GRB 090510) | D2 (polarization: 4 Kostelecký–Mewes GRBs) |
+| --- | --- | --- |
+| L5a, L5b, L4 | `ESCAPES_ALL_SOURCES`: some orientation puts both sources on coordinate planes, where the correction vanishes through order 2 | `OPEN` (minimum over orientations not certified) |
+| L3s4, a < 0.7731 (both clusters) | `EXCLUDED_ROBUST` under H_min for every orientation | `EXCLUDED_ROBUST` for every orientation (B - M ≫ 1.7×10^-15) |
+| L3s4, 0.7731 ≤ a < 0.7826 | upper cluster `EXCLUDED_ROBUST`; lower cluster not | excluded except a sliver at a^2 → x_c |
+| L3s4, a ≥ 0.7826 | not excluded (B - M below threshold, or blind directions for a^2 ≥ x_c) | `OPEN` for a^2 ≥ x_c |
+| L3 | `ALLOWED_ROBUST` for every orientation (ell_max ≥ 9.2×10^7 ell_P) | not applicable (no beta) |
+
+Line verdict: `ORIENTATION_INDEPENDENT_EXCLUSION_UNDER_HMIN_L3s4`, for
+a < 0.7731 under D1 and for a^2 < x_c except a thin sliver under D2. The
+L5a/L5b/L4 rows escape D1 and are OPEN under D2.
+
+- **Hm1** `CONFIRMED`: L5a, L5b and L4 have escape count ≥ 3 through order 2.
+- **Hm2** `OPEN`: no certification. A sampled diagnostic suggests that the
+  four sources can be brought close to the blind planes.
+
+## 2. Arguments
+
+- **Order-2 cancellation (exact, part A).** Since beta is homogeneous of
+  degree 3, n·grad beta = 3 beta, so on beta = 0 the gradient is tangential.
+  On n3 = 0, |grad_S beta|^2 = n1^2 n2^2/3 and 3 alpha = -n1^2 n2^2/6. Hence
+  the order-2 group-speed coefficient 3 alpha + |grad_S beta|^2/2 vanishes.
+  The expansion |grad eps|/c_0 = 1 + 2 beta t + (3 alpha + |grad_S beta|^2/2) t^2
+  is checked symbolically. By permutation symmetry the same holds on every
+  coordinate plane, for +beta and -beta.
+- **Escape count ≥ 3 (written construction).** Two source directions span a
+  plane. Rotate it onto n3 = 0. A rotation about the new n3 axis then moves
+  the third direction into n1 = 0 (or it already lies on that axis). So any
+  2 or 3 sources sit on coordinate planes, where L5a, L5b and L4 have no
+  correction through order 2. With the two D1 sources this needs no data
+  beyond their existence.
+- **D2 branch-and-bound (part B, not closed).** ZYZ Euler boxes; float
+  interval arithmetic with np.nextafter outward rounding; Lipschitz sin/cos
+  enclosures with a 10^-15 slack for libm error (assumed, not proved);
+  source directions enclosed with ±0.5° (the positions are given to integer
+  degrees). Targets |n1 n2 n3| > delta_i = 2 (hbar c/ell_P) K_i sqrt3, about
+  3-8×10^-15. It processed 4.7×10^6 boxes over 27 levels without pruning
+  everything. Sampled diagnostic (floats, 20,000 random orientations, no
+  verdict): the smallest max_i |n1 n2 n3| found is 0.0099. A ±0.5° position
+  box changes |n1 n2 n3| by up to about 0.02, so an exact escape within the
+  positional uncertainty is plausible. It is not decided.
+- **L3s4 (part C, decimal).** For a^2 < x_c, inf |beta| = B - M > 0 in every
+  direction, with B = sqrt3 (1-a^2)/(6a) and M = |2a^2 - 1|/(9a). So any
+  single source gives an orientation-independent bound.
+  - Under D1 and H_min, `EXCLUDED_ROBUST` iff B - M > (hbar c/ell_P)/E_QG,1.
+    The threshold is 0.1110 for the upper cluster (beta > 0, superluminal
+    E_QG) and 0.1221 for the lower cluster. The boundary roots are
+    a = 0.78262 and a = 0.77315, from quadratics on the branch a^2 ≥ 1/2;
+    for example f(1/√2) = 0.204.
+  - Under D2, with the strongest K and a single source, the threshold is
+    B - M > 1.7×10^-15, met for a^2 < x_c except arbitrarily close to x_c.
+- **L3.** Its bound at the most sensitive direction is already
+  ell_max = 9.2×10^7 ell_P. Any orientation gives a larger or equal ell_max
+  (weaker coefficient), so `ALLOWED_ROBUST` under H_min for every
+  orientation.
+
+## 3. What this says for "c is the clock"
+
+Under the photon dictionary, the 3D rows and H_min:
+
+- **One rule is excluded whatever the orientation of the lattice:** L3s4 for
+  a < 0.77. It lets excitations outrun c at first order and has no blind
+  directions.
+- **The rules at the isotropic ceiling that let excitations outrun c**
+  (L5a, L5b, L4) are not excluded by time of flight: two sources can always
+  be hidden on their blind planes. Under the birefringent dictionary, four
+  polarization sources might exclude them, but this was not certified and
+  may fail within the positional uncertainty.
+- **The rule in which nothing outruns c (L3) is allowed.**
+
+## 4. Limits
+
+- The D2 result is OPEN; nothing about L5a, L5b or L4 under D2 is claimed.
+- The interval method assumes a libm error below 10^-15, which is not
+  proved. Constants enter as floats. These limits matter only for a CERTIFIED
+  outcome, which did not occur.
+- The L3s4 thresholds are decimal arithmetic on stated constants; the
+  boundaries in a inherit their roundings.
+- Dictionaries and H_min are assumptions. The LHAASO analysis is isotropic
+  and is transferred direction by direction at leading order.
+- 2D rows are excluded from scope as photon models.
+
+## 5. Verifier
+
+[Script](../scripts/verify_multi_source_orientation.py),
+[record](2026-11-09--multi-source-orientation.txt),
+[JSON](2026-11-09--multi-source-orientation.json): 4/5 PASS, 1 FAIL. The
+failing check is the D2 certification, outcome OPEN (budget exceeded). The
+sampled minimum is a labelled diagnostic and feeds no verdict.
+
+=== DOCUMENT 3: verify_multi_source_orientation.py ===
+
+#!/usr/bin/env python3
+"""Multi-source orientation gate (contract theory/MULTI_SOURCE_ORIENTATION_GATE.md, commit dd9ab5c).
+
+Report: reports/2026-11-09--multi-source-orientation.md
+
+Parts:
+ A. EXACT (SymPy): on the coordinate plane n3 = 0 the order-2 group-speed coefficient
+    3 alpha + |grad_S beta|^2 / 2 vanishes for L5a/L5b/L4 (beta = +-(sqrt3/3) n1 n2 n3,
+    alpha = -sigma2/18 - n1^2 n2^2 n3^2/6); and the radial/tangential expansion identity.
+ B. D2 branch-and-bound over SO(3) (ZYZ Euler boxes) with float interval arithmetic,
+    outward rounding by np.nextafter, Lipschitz trig enclosures with an added 1e-15 slack for
+    libm error, and source-direction boxes of +-0.5 deg (Kostelecky-Mewes positions are
+    integer degrees). Goal: certify that for every orientation some source i has
+    |n1 n2 n3 (R^T s_i)| > delta_i, delta_i = 2 E_Pl' K_i sqrt3 (EXCLUDED_ROBUST threshold).
+    Declared limits: libm error slack is assumed, not proved; constants enter as floats.
+ C. Decimal (mpmath): L3s4 orientation-independent D1/D2 thresholds on a (quadratic roots),
+    L3 D1 orientation-independent lower bound (inherits the parent sensitivity).
+"""
+import hashlib
+import json
+import math
+from pathlib import Path
+
+import mpmath as mp
+import numpy as np
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "reports/2026-11-09--multi-source-orientation"
+CHECKS = []
+mp.mp.dps = 30
+HBARC = mp.mpf("1.973269804e-16")
+LP = mp.mpf("1.616255e-35")
+EPLP = HBARC / LP                                   # hbar c / ell_P in GeV (~1.22089e19)
+EQG1 = {"sub": mp.mpf("1.0e20"), "super": mp.mpf("1.1e20")}
+KM = [  # (name, codeclination deg, RA deg, K GeV^-1)
+    ("GRB 041219A", 27, 6, 2e-34), ("GRB 100826A", 112, 279, 7e-35),
+    ("GRB 110301A", 61, 229, 2e-34), ("GRB 110721A", 129, 333, 1e-34)]
+POS_UNC_DEG = 0.5
+SLACK = 1e-15
+MAX_BOXES = 4_000_000
+MIN_WIDTH = 1e-7
+
+
+def exact(name, cond, detail=""):
+    CHECKS.append(dict(name=name, passed=bool(cond), detail=str(detail)))
+
+
+# ---------------- A ----------------
+def part_A():
+    n1, n2, n3, t = sp.symbols("n1 n2 n3 t", real=True)
+    beta = sp.sqrt(3) / 3 * n1 * n2 * n3
+    alpha = -(n1**2 * n2**2 + n2**2 * n3**2 + n3**2 * n1**2) / 18 - n1**2 * n2**2 * n3**2 / 6
+    grad = sp.Matrix([sp.diff(beta, v) for v in (n1, n2, n3)])
+    nvec = sp.Matrix([n1, n2, n3])
+    radial = (nvec.T * grad)[0]                     # = 3 beta (Euler, homogeneous degree 3)
+    exact("A: n.grad(beta) = 3 beta (homogeneity), so on beta = 0 grad beta is tangential",
+          sp.simplify(radial - 3 * beta) == 0)
+    on_plane = {n3: 0}
+    gS2 = sum(g**2 for g in grad).subs(on_plane)    # tangential = full gradient where beta = 0
+    coef2 = sp.simplify((3 * alpha + gS2 / 2).subs(on_plane))
+    exact("A: on n3 = 0, 3 alpha + |grad_S beta|^2/2 = 0 (L5a/L5b/L4; same for -beta)", coef2 == 0, coef2)
+    # expansion identity: |grad eps|/c0 = 1 + 2 b t + (3 a + |gS b|^2/2) t^2 + O(t^3)
+    b, a, g = sp.symbols("b a g", real=True)
+    expr = sp.sqrt((1 + 2 * b * t + 3 * a * t**2)**2 + t**2 * g**2)
+    ser = sp.series(expr, t, 0, 3).removeO()
+    exact("A: sqrt((1+2bt+3at^2)^2 + g^2 t^2) = 1 + 2bt + (3a + g^2/2) t^2 + O(t^3)",
+          sp.expand(ser - (1 + 2 * b * t + (3 * a + g**2 / 2) * t**2)) == 0)
+
+
+# ---------------- B: interval arithmetic ----------------
+def dn(x):
+    return np.nextafter(x, -np.inf)
+
+
+def up(x):
+    return np.nextafter(x, np.inf)
+
+
+def iadd(a, b):
+    return dn(a[0] + b[0]), up(a[1] + b[1])
+
+
+def imul(a, b):
+    p = np.stack([a[0] * b[0], a[0] * b[1], a[1] * b[0], a[1] * b[1]])
+    return dn(p.min(0)), up(p.max(0))
+
+
+def ineg(a):
+    return -a[1], -a[0]
+
+
+def isin(lo, hi):
+    c = 0.5 * (lo + hi); w = 0.5 * (hi - lo)
+    s = np.sin(c)
+    return np.maximum(dn(s - w - SLACK), -1.0), np.minimum(up(s + w + SLACK), 1.0)
+
+
+def icos(lo, hi):
+    c = 0.5 * (lo + hi); w = 0.5 * (hi - lo)
+    s = np.cos(c)
+    return np.maximum(dn(s - w - SLACK), -1.0), np.minimum(up(s + w + SLACK), 1.0)
+
+
+def rot_z_T(v, c, s):
+    """apply Rz(angle)^T = Rz(-angle) to vector intervals v=(x,y,z): x' = c x + s y, y' = -s x + c y."""
+    x, y, z = v
+    return iadd(imul(c, x), imul(s, y)), iadd(imul(ineg(s), x), imul(c, y)), z
+
+
+def rot_y_T(v, c, s):
+    """Ry(angle)^T: x' = c x - s z, z' = s x + c z."""
+    x, y, z = v
+    return iadd(imul(c, x), imul(ineg(s), z)), y, iadd(imul(s, x), imul(c, z))
+
+
+def source_box(theta_deg, phi_deg):
+    """Enclosure of s = (sin th cos ph, sin th sin ph, cos th) over th, ph in +-0.5 deg (Lipschitz 1 per angle)."""
+    th = math.radians(theta_deg); ph = math.radians(phi_deg)
+    r = math.radians(POS_UNC_DEG) * 2 + SLACK      # |ds_j| <= |dth| + |dph|
+    c = [math.sin(th) * math.cos(ph), math.sin(th) * math.sin(ph), math.cos(th)]
+    return [(np.float64(dn(x - r)), np.float64(up(x + r))) for x in c]
+
+
+def part_B():
+    deltas = [float(2 * EPLP * mp.mpf(K) * mp.sqrt(3)) * (1 + 1e-9) for _, _, _, K in KM]
+    srcs = [source_box(th, ph) for _, th, ph, _ in KM]
+    lo = np.array([[0.0, 0.0, 0.0]]); hi = np.array([[2 * math.pi, math.pi, 2 * math.pi]])
+    # split initial domain into a coarse grid
+    g = 8
+    A = np.linspace(0, 2 * math.pi, g + 1); B = np.linspace(0, math.pi, g + 1); C = np.linspace(0, 2 * math.pi, g + 1)
+    ii = np.array([(i, j, k) for i in range(g) for j in range(g) for k in range(g)])
+    lo = np.stack([A[ii[:, 0]], B[ii[:, 1]], C[ii[:, 2]]], 1)
+    hi = np.stack([A[ii[:, 0] + 1], B[ii[:, 1] + 1], C[ii[:, 2] + 1]], 1)
+    processed = 0
+    level = 0
+    status = "CERTIFIED"
+    witness = None
+    while len(lo):
+        level += 1
+        processed += len(lo)
+        if processed > MAX_BOXES:
+            status = "OPEN (box budget exceeded)"; break
+        ca, sa = icos(lo[:, 0], hi[:, 0]), isin(lo[:, 0], hi[:, 0])
+        cb, sb = icos(lo[:, 1], hi[:, 1]), isin(lo[:, 1], hi[:, 1])
+        cg, sg = icos(lo[:, 2], hi[:, 2]), isin(lo[:, 2], hi[:, 2])
+        alive = np.ones(len(lo), bool)
+        for (sx, sy, sz), d in zip(srcs, deltas):
+            n = len(lo)
+            v = ((np.full(n, sx[0]), np.full(n, sx[1])), (np.full(n, sy[0]), np.full(n, sy[1])),
+                 (np.full(n, sz[0]), np.full(n, sz[1])))
+            # n = R^T s with R = Rz(a) Ry(b) Rz(g): R^T = Rz(g)^T Ry(b)^T Rz(a)^T
+            v = rot_z_T(v, ca, sa); v = rot_y_T(v, cb, sb); v = rot_z_T(v, cg, sg)
+            p = imul(imul(v[0], v[1]), v[2])
+            excluded_here = (p[0] > d) | (p[1] < -d)
+            alive &= ~excluded_here
+        lo, hi = lo[alive], hi[alive]
+        if not len(lo):
+            break
+        w = hi - lo
+        if w.max() < MIN_WIDTH:
+            status = "OPEN (min width reached; candidate escape region)"
+            witness = dict(lo=lo[0].tolist(), hi=hi[0].tolist(), count=int(len(lo))); break
+        k = np.argmax(w, axis=1)
+        mid = lo[np.arange(len(lo)), k] + 0.5 * w[np.arange(len(lo)), k]
+        lo2 = lo.copy(); hi2 = hi.copy()
+        hi1 = hi.copy(); hi1[np.arange(len(lo)), k] = mid
+        lo2[np.arange(len(lo)), k] = mid
+        lo = np.concatenate([lo, lo2]); hi = np.concatenate([hi1, hi2])
+    return dict(status=status, boxes_processed=int(processed), levels=level, deltas=deltas, witness=witness)
+
+
+def part_B_diagnostic(nsamp=20000):
+    """Non-verdict diagnostic: sampled upper estimate of min_R max_i |p_i|/delta_i (floats)."""
+    rng = np.random.default_rng(12345)
+    q = rng.normal(size=(nsamp, 4)); q /= np.linalg.norm(q, axis=1, keepdims=True)
+    w, x, y, z = q.T
+    R = np.stack([np.stack([1 - 2 * (y*y + z*z), 2 * (x*y - z*w), 2 * (x*z + y*w)], -1),
+                  np.stack([2 * (x*y + z*w), 1 - 2 * (x*x + z*z), 2 * (y*z - x*w)], -1),
+                  np.stack([2 * (x*z - y*w), 2 * (y*z + x*w), 1 - 2 * (x*x + y*y)], -1)], 1)
+    best = np.inf
+    vals = []
+    for (_, th, ph, K) in KM:
+        t, p = math.radians(th), math.radians(ph)
+        s = np.array([math.sin(t) * math.cos(p), math.sin(t) * math.sin(p), math.cos(t)])
+        n = np.einsum("nji,j->ni", R, s)
+        vals.append(np.abs(n.prod(1)))
+    m = np.max(np.stack(vals), 0)
+    return float(m.min())
+
+
+# ---------------- C ----------------
+def part_C():
+    out = {}
+    s3 = mp.sqrt(3)
+    xc = (19 - 6 * s3) / 11
+    for cluster, E in (("upper (beta>0, superluminal)", EQG1["super"]), ("lower (beta<0, subluminal)", EQG1["sub"])):
+        thr = EPLP / E                          # D1 EXCLUDED_ROBUST iff B-M > thr
+        roots = []
+        # case a^2 <= 1/2: sqrt3(1-a^2)/6 - (1-2a^2)/9 = thr a  ->  a^2(2/9 - sqrt3/6) - thr a + (sqrt3/6 - 1/9) = 0
+        A1, B1, C1 = (mp.mpf(2) / 9 - s3 / 6), -thr, (s3 / 6 - mp.mpf(1) / 9)
+        # case a^2 >= 1/2: sqrt3(1-a^2)/6 - (2a^2-1)/9 = thr a -> a^2(-sqrt3/6 - 2/9) - thr a + (sqrt3/6 + 1/9) = 0
+        A2, B2, C2 = (-s3 / 6 - mp.mpf(2) / 9), -thr, (s3 / 6 + mp.mpf(1) / 9)
+        for (Aq, Bq, Cq, lo_, hi_) in ((A1, B1, C1, 0, 1 / mp.sqrt(2)), (A2, B2, C2, 1 / mp.sqrt(2), mp.sqrt(xc))):
+            disc = Bq**2 - 4 * Aq * Cq
+            if disc >= 0:
+                for r in ((-Bq + mp.sqrt(disc)) / (2 * Aq), (-Bq - mp.sqrt(disc)) / (2 * Aq)):
+                    if lo_ < r < hi_:
+                        roots.append(r)
+        f = lambda a: (s3 * (1 - a**2) / 6 - abs(2 * a**2 - 1) / 9) / a
+        out[cluster] = dict(threshold=mp.nstr(thr, 8), roots=[mp.nstr(r, 10) for r in roots],
+                            f_at_1_over_sqrt2=mp.nstr(f(1 / mp.sqrt(2)), 8), f_near_xc=mp.nstr(f(mp.sqrt(xc) * (1 - mp.mpf("1e-6"))), 6))
+    d2_thr = 2 * mp.mpf("7e-35") * EPLP
+    out["D2 threshold on B-M (strongest K, any single source)"] = mp.nstr(d2_thr, 6)
+    out["x_c"] = mp.nstr(xc, 10)
+    exact("C: L3s4 B-M > D1 threshold holds for a in (0, root) per cluster (single root inside (0, sqrt x_c))",
+          all(len(v["roots"]) == 1 for k, v in out.items() if isinstance(v, dict)), out)
+    return out
+
+
+def main():
+    part_A()
+    b = part_B()
+    exact("B: D2 branch-and-bound: every orientation has some KM source with |n1n2n3| > delta_i "
+          "(interval method; libm slack assumed)", b["status"] == "CERTIFIED", b)
+    diag = part_B_diagnostic()
+    c = part_C()
+    data = dict(B=b, B_diagnostic_sampled_min_max_abs_p=diag, C=c, checks=CHECKS,
+                sources_D1=dict(GRB_090510="RA 333.55271 Dec -26.58266 (GCN 9339)",
+                                GRB_221009A="RA 288.2643 Dec +19.7712 (GCN 32632; GCN 32635 identification)"),
+                provenance={p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in (
+                    "scripts/verify_multi_source_orientation.py", "theory/MULTI_SOURCE_ORIENTATION_GATE.md",
+                    "investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md")})
+    OUT.with_suffix(".json").write_text(json.dumps(data, indent=2, default=str) + "\n")
+    passed = sum(x["passed"] for x in CHECKS)
+    lines = [f"Checks: {passed}/{len(CHECKS)}"] + [f"{'PASS' if x['passed'] else 'FAIL'} {x['name']}  {x['detail']}" for x in CHECKS]
+    lines += ["", f"DIAGNOSTIC (sampled, float, no verdict): min over sampled R of max_i |n1n2n3| = {diag:.4g}"]
+    OUT.with_suffix(".txt").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+    if passed != len(CHECKS):
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 4: 2026-11-09--multi-source-orientation.txt ===
+
+Checks: 4/5
+PASS A: n.grad(beta) = 3 beta (homogeneity), so on beta = 0 grad beta is tangential  
+PASS A: on n3 = 0, 3 alpha + |grad_S beta|^2/2 = 0 (L5a/L5b/L4; same for -beta)  0
+PASS A: sqrt((1+2bt+3at^2)^2 + g^2 t^2) = 1 + 2bt + (3a + g^2/2) t^2 + O(t^3)  
+FAIL B: D2 branch-and-bound: every orientation has some KM source with |n1n2n3| > delta_i (interval method; libm slack assumed)  {'status': 'OPEN (box budget exceeded)', 'boxes_processed': 4721034, 'levels': 27, 'deltas': [8.458575066402971e-15, 2.9605012732410402e-15, 8.458575066402971e-15, 4.229287533201486e-15], 'witness': None}
+PASS C: L3s4 B-M > D1 threshold holds for a in (0, root) per cluster (single root inside (0, sqrt x_c))  {'upper (beta>0, superluminal)': {'threshold': '0.11099001', 'roots': ['0.7826218041'], 'f_at_1_over_sqrt2': '0.20412415', 'f_near_xc': '9.0388e-7'}, 'lower (beta<0, subluminal)': {'threshold': '0.12208901', 'roots': ['0.7731485185'], 'f_at_1_over_sqrt2': '0.20412415', 'f_near_xc': '9.0388e-7'}, 'D2 threshold on B-M (strongest K, any single source)': '1.70925e-15', 'x_c': '0.7825177413'}
+
+DIAGNOSTIC (sampled, float, no verdict): min over sampled R of max_i |n1n2n3| = 0.009915
+
+=== DOCUMENT 5: comprobacion.md ===
+
+# Astrophysical bounds on photon dispersion and birefringence — source check
+
+2026-11-09. Requested by the user («busca esas cotas astrofisicas reales») after
+the observational-signature gate (`reports/2026-11-09--observational-signature-saturation.md`),
+whose Sec. 5 deferred any comparison with data. Located with WebSearch
+(standard mode); every number below was read in the original arXiv text
+through the alphaXiv full-text tool in this session. Search summaries were
+used only to locate papers. This file records literature, not a comparison:
+no translation of these bounds to the repository's rows is made here (that
+needs a successor charter).
+
+## Verified in the original
+
+| # | Source | What was read | Numbers (95% CL unless stated) |
+| --- | --- | --- | --- |
+| 1 | LHAASO Collaboration, "Stringent Tests of Lorentz Invariance Violation from LHAASO Observations of GRB 221009A", arXiv:2402.06009v3 (dated 17 Feb 2026) | Abstract; Eqs.(1)-(5); Table I; Sec. IV | Dispersion convention E^2 ≃ p^2c^2[1 - Σ s (E/E_QG,n)^n], s = +1 subluminal, -1 superluminal; v(E) ≈ c[1 - s (n+1)/2 (E/E_QG,n)^n]. ML (MINOS): E_QG,1 > 1.0×10^20 GeV (subluminal), > 1.1×10^20 GeV (superluminal); E_QG,2 > 6.9×10^11 GeV (sub), > 7.0×10^11 GeV (super). Abstract: E_QG,1 > 10 E_Pl, E_QG,2 > 6×10^-8 E_Pl; E_Pl ≃ 1.22×10^19 GeV. Source at z = 0.151; isotropic (direction-independent) dispersion model. |
+| 2 | V. Vasileiou et al., "Constraints on Lorentz Invariance Violation from Fermi-LAT Observations of GRBs", arXiv:1305.3463v1 | Abstract | Subluminal, no source-intrinsic dispersion assumed, GRB 090510: E_QG,1 > 7.6 E_Pl, E_QG,2 > 1.3×10^11 GeV. (LHAASO [ref 21] quotes the same work as E_QG,1 > 9.3×10^19 GeV sub, 1.3×10^20 GeV super; consistent with 7.6 E_Pl.) |
+| 3 | V.A. Kostelecký, M. Mewes, "Constraints on relativity violations from gamma-ray bursts", arXiv:1301.5367v1 (PRL 110, 201601) | Full text, Tables II-III | In the SME photon sector, dispersion for odd mass dimension d is necessarily accompanied by birefringence; only CPT-even, even-d coefficients give dispersion without birefringence. Direction-dependent bounds from GRB polarization: |Σ Y_jm k^(5)_(V)jm| < 7×10^-35 to 2×10^-34 GeV^-1 depending on the source direction (GRB 041219A, 100826A, 110301A, 110721A); isotropic |k^(5)_(V)00| < 2×10^-34 to 9×10^-34 GeV^-1. A single source constrains only one direction-dependent combination. |
+
+## Located, not verified
+
+- J.D. Finke, S. Razzaque, arXiv:2210.11261: claimed possible evidence for
+  subluminal LIV from the survival of an 18 TeV photon of GRB 221009A
+  (E_QG,1 ≲ 49 E_Pl). Known only from the search summary; contested by later
+  analyses; not read. `[UNVERIFIED]`
+- Abdo et al. (Fermi), Nature 462, 331 (2009), arXiv:0908.1832, GRB 090510,
+  E_QG,1 > 1.2 E_Pl (earlier, more conservative). Seen only in summaries and
+  as LHAASO ref. [20]. `[UNVERIFIED]`
+- Yang, Bi, Yin (2024) LHAASO-data analysis with stronger quoted limits. Seen
+  only in the search summary. `[UNVERIFIED]`
+
+## Relevance to the repository (not a result)
+
+- The verified time-of-flight bounds assume an isotropic dispersion law. The
+  repository's order-1 (beta) rows have direction-dependent corrections that
+  vanish on certain planes; one source bounds one direction.
+- Source 3 says that, within the SME effective field theory, an order-1
+  (d = 5) dispersion of photons is necessarily birefringent and is then
+  bounded by polarization at the 10^-34 GeV^-1 level. Whether a QCA row's
+  beta term maps to an SME d = 5 coefficient (for example via opposite signs
+  in two helicity blocks, as in L5b) is a modelling question not addressed
+  here.
+- Any numerical bound on the lattice step ell or the clock frequency from
+  these sources requires the dictionary H_gamma plus a successor contract.
+
+Tools: WebSearch; alphaXiv full text. No ~/herramientas tool used.
+
+## Sky positions (added 2026-11-09 for MULTI_SOURCE_ORIENTATION, read in the original circulars)
+
+| Source | Circular read | Position (J2000) | Uncertainty |
+| --- | --- | --- | --- |
+| GRB 090510 | GCN 9339, M.R. Goad, J.P. Osborne, A.P. Beardmore, P.A. Evans, "GRB 090510: Enhanced Swift-XRT position" | RA, Dec = 333.55271, -26.58266 deg (22h14m12.65s, -26d34'57.6") | 1.4 arcsec (90%) |
+| GRB 221009A | GCN 32632, S. Dichiara et al., "Swift J1913.1+1946 a new bright hard X-ray and optical transient": XRT source | RA, Dec = 288.2643, +19.7712 deg (19h13m3.43s, +19d46'16.3") | 5.6 arcsec (90%) |
+| (identification) | GCN 32635, J.A. Kennea, M. Williams, subject "GRB 221009A: Swift detected transient may be GRB": BAT trigger 1126853 = Swift J1913.1+1946 | — | — |
+
+Kostelecký–Mewes positions (codeclination theta, right ascension phi), Table I of
+arXiv:1301.5367, given to integer degrees: GRB 041219A (27, 6), 100826A (112, 279),
+110301A (61, 229), 110721A (129, 333). Per-source d = 5 bounds (Table III, first row):
+2e-34, 7e-35, 2e-34, 1e-34 GeV^-1 respectively.
+
+=== DOCUMENT 6: 2026-11-09--dispersion-data-comparison.md ===
+
+# Dispersion data comparison: results
+
+2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: exact checks plus
+decimal arithmetic with stated physical constants; one sealed cross-family
+review (GPT-6 Astra) with repairs applied, not re-reviewed; no promotion.**
+
+Contract [DISPERSION_DATA_COMPARISON_GATE.md](../theory/DISPERSION_DATA_COMPARISON_GATE.md),
+frozen at `ad445aa`. Verifier committed before running at `6b0e049`; first
+run 9/9.
+
+[Sealed Astra review](reviews/2026-11-09-dispersion-data-comparison-astra/informe_astra.md)
+of the text at 121f679 (herramientas 97292a9): «reparación necesaria». The
+matching factors, the angular suprema and the arithmetic were re-derived by
+the reviewer and agree. Each repair below was checked by the author:
+
+1. **Quantifier.** Values at the direction of maximal coefficient are a
+   **sensitivity comparison**, not bounds on a lattice of unknown
+   orientation. Near zero-coefficient directions the linear analysis gives
+   no uniform bound. The old conclusion and Sec. 4 are rewritten.
+2. **L3s4.** It has zero-coefficient directions only if a^2 ≥ x_c ≈ 0.7825,
+   located at n1 n2 n3 = -(1-a^2)/(2(2a^2-1)), not on the coordinate planes.
+   Its supremum is S(a), not 1/9. The numbers given use 1/9 and are
+   conservative envelopes.
+3. **Zero directions.** Where beta(n̂) = 0 but beta is not identically 0, the
+   order-2 group-speed term is 3 alpha + (1/2)|grad_S beta|^2, not 3 alpha.
+   For L5a, L5b and L4 on n3 = 0 the two cancel (3 alpha = -n1^2 n2^2/6;
+   checked by hand). The claim that such directions fall back to order-2
+   bounds is withdrawn.
+4. **"Nothing outruns c".** This is proved only for L2 and L3
+   (observational-signature gate, Sec. 3). For L6e, L6c, L6d and L6f the
+   maximal group speed is OPEN.
+5. **Missing quantities.** The D2 frequencies and L3s4's f_min were not
+   computed by the verifier. Formulas are given (Sec. 2); the reviewer's
+   numerical estimates are quoted as such.
+6. **Inputs and presentation.** LHAASO entries are the Table I ML values.
+   The abstract's "10 E_Pl" and "6×10^-8 E_Pl" are coarser roundings of the
+   same results. Minor wording corrected (≃ in the hand check, "most
+   restrictive" at sup |alpha|, about 22 orders between 1e-27 and 1e-49 m).
+
+The original text is in git at 121f679.
+
+Everything below is conditional on H_gamma (the massless branch is the
+photon), on the frozen dictionaries D1 (non-birefringent) and D2
+(birefringent, SME CPT-odd d = 5 matching), and on the observational
+assumptions of the sources (isotropic analyses, transferred direction by
+direction as a leading-order reading). No claim that any row describes the
+photon, or that our universe is a QCA.
+
+## 1. Result: sensitivities at the direction of maximal coefficient
+
+Route verdict: `DATA_SEPARATE_ORDER1_FROM_ORDER2_ROWS`, read as a comparison
+of leading-order sensitivities at each row's direction of maximal |coefficient|
+(repair 1). It is not a separation valid for an unknown lattice orientation.
+
+| Rows | Leading correction | D1 sensitivity: ell at max coefficient | D2 sensitivity |
+| --- | --- | --- | --- |
+| L5a, L5b, L4 | order 1 | 0.55 ell_P (8.9×10^-36 m) | 7.7×10^-15 - 2.2×10^-14 ell_P |
+| L6a | order 1 | 0.57 ell_P | 7.9×10^-15 - 2.3×10^-14 ell_P |
+| L6b | order 1 | 0.28 ell_P | 4.0×10^-15 - 1.1×10^-14 ell_P |
+| L3s4 | order 1 | ≤ 0.55 ell_P (conservative envelope with 1/9 ≤ S(a)) | envelope |
+| L2, L6e | order 2 | 1.40×10^-27 m (8.7×10^7 ell_P) | — |
+| L3 | order 2 | 1.49×10^-27 m (9.2×10^7 ell_P) | — |
+| L6c, L6d, L6f | order 2, isotropic | 2.3 - 4.6×10^-27 m | — |
+| L1 | none | no constraint | — |
+
+The order-1 rows use the subluminal E_QG, which is the weaker of the two
+signs. With the superluminal value, ell is divided by 1.1.
+
+- **Hi** `CONFIRMED_IN_DECLARED_ROWS`, with its stated quantifier: at the
+  direction of maximal coefficient, under D1, every order-1 row has
+  sensitivity below ell_P.
+- **Hk** `CONFIRMED_IN_DECLARED_ROWS` as a comparison of leading-order
+  limits: the order-2 limits exceed 10^6 ell_P. They are most restrictive
+  at sup |alpha|.
+
+## 2. Matching and quantities
+
+- **D1.** u = E ell/(hbar c) equals t at leading order, which suffices at
+  the orders used.
+  - n = 1: ell = hbar c/(2|beta| E_QG,1). beta < 0 corresponds to s = +1
+    (subluminal) and beta > 0 to s = -1.
+  - n = 2 (beta ≡ 0): ell = hbar c/(sqrt(2|alpha|) E_QG,2), using
+    6.9×10^11 GeV since alpha < 0.
+- **D2.** Per-helicity correction ±2E|q_5|, so |q_5| = |beta| ell/(hbar c)
+  and ell = K hbar c/|beta|. K is a direction-dependent combination,
+  7×10^-35 to 2×10^-34 GeV^-1 from different sources. This range is not a
+  statistical interval.
+- **Suprema and zeros:**
+
+  | Rows | Supremum | Zero directions |
+  | --- | --- | --- |
+  | L2, L6e | 1/48 | coordinate axes |
+  | L3 | 1/54 | coordinate axes |
+  | L5a, L5b, L4 | 1/9 | coordinate planes |
+  | L6a | √15/36 | cos 3θ = 0 |
+  | L6b | √15/18 | cos 3θ = 0 |
+  | L6c, L6d, L6f | 1/512, 1/128, 1/128 | none |
+  | L3s4 | S(a) = B + M | only if a^2 ≥ x_c |
+
+  For L3s4, B = sqrt3 (1-a^2)/(6a) and M = |2a^2 - 1|/(9a), with
+  inf |beta| = max(B - M, 0). S(a) > 1/9 on (0,1) (certified lower bound),
+  and S(1/√2) = sqrt6/12 ≈ 0.204, isotropic.
+- **Frequencies.** f_min = c/(c_0 ell).
+  - D1 values: L5a, L5b, L4 5.85×10^43 Hz; L6a 6.54×10^43; L6b 1.96×10^44;
+    L2, L6e 3.0×10^35; L3 3.5×10^35; L6c 8.7×10^34; L6d, L6f 1.7×10^35.
+  - L3s4 conservative D1 bound:
+    f_min(a) = 2 sqrt3 c E_QG,1 S(a)/(a hbar c).
+  - D2: f_min(a,K) = sqrt3 c S(a)/(a K hbar c) for L3s4, and
+    c |beta|/(c_0 K hbar c) in general. Not computed by the verifier
+    (repair 5). The reviewer estimates 1.5-4.2×10^57 Hz for L5a, L5b and L4.
+
+## 3. Limits
+
+- **Orientation.** For one source and lattice orientation R, the bound
+  depends on |beta(R^-1 n̂_source)|. When this can vanish, the linear
+  analysis gives no uniform finite bound over R.
+- **Zero directions.** On the zero directions of beta rows, the order-2
+  group-speed coefficient is 3 alpha + (1/2)|grad_S beta|^2, and for L5a,
+  L5b and L4 on n3 = 0 it vanishes (repair 3). Those directions are
+  unconstrained through order 2. The distinction between wave-vector
+  direction and propagation direction matters there.
+- **Dictionaries and source transfer** are assumptions (see header).
+- **Source fidelity.** The bounds were read in the originals by the author
+  (source check). The reviewer could not verify them independently.
+
+## 4. What this says for "c is the clock"
+
+Within these assumptions, the comparison concerns sensitivity only:
+
+- At their direction of maximal coefficient, rules with a first-order
+  correction (the super-c rows of the previous gate) would be probed down to
+  about half a Planck length, and to about 10^-14 ell_P if birefringent.
+- Order-2-only rules are probed only down to about 10^-27 m.
+- Among the order-2-only rules, it is proved only for L2 and L3 that
+  nothing outruns c.
+- For an unknown lattice orientation, no row is excluded by this analysis,
+  because blind directions exist (for all order-1 rows except L3s4 below
+  x_c, and for L2, L6e and L3).
+
+## 5. Verifier
+
+[Script](../scripts/verify_dispersion_data_comparison.py),
+[record](2026-11-09--dispersion-data-comparison.txt),
+[JSON](2026-11-09--dispersion-data-comparison.json): 9/9. These are 7 exact
+identities and inequalities plus 2 recorded hypothesis evaluations, where
+either outcome was allowed. The script stores 1/9 for L3s4 as if it were the
+supremum; it is a lower bound of S(a) (repair 2). The ell and f values are
+decimal arithmetic, not certified quantities.
+
+**Effect on `MINIMAL_LENGTH_EXCLUSION` (frozen at 130cdbc, not executed).**
+Its inputs are these sensitivities. Any "exclusion" there refers only to the
+direction of maximal coefficient, never to an unknown orientation. L3s4
+must use the envelope label.

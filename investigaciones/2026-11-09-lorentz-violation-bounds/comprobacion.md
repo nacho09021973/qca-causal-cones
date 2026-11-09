@@ -57,3 +57,59 @@ Kostelecký–Mewes positions (codeclination theta, right ascension phi), Table 
 arXiv:1301.5367, given to integer degrees: GRB 041219A (27, 6), 100826A (112, 279),
 110301A (61, 229), 110721A (129, 333). Per-source d = 5 bounds (Table III, first row):
 2e-34, 7e-35, 2e-34, 1e-34 GeV^-1 respectively.
+
+## Per-source time-of-flight limits (added 2026-11-09, read in the original)
+
+Vasileiou et al., arXiv:1305.3463v1, Table IV ("Lower Limits on E_QG ... total degree of
+dispersion"), linear case n = 1, in Planck units, 95% one-sided, methods PairView / SMM /
+Likelihood:
+
+| GRB | subluminal (s=+1) | superluminal (s=-1) |
+| --- | --- | --- |
+| 080916C | 0.11 / 0.09 / 0.22 | 18 / 5.4 / 0.2 |
+| 090510 | 7.6 / 5.9 / 5.2 | 0.56 / 0.57 / 11 |
+| 090902B | 0.17 / 0.15 / 0.12 | 0.38 / 0.86 / 0.37 |
+| 090926A | – / 8 / 1.2 | 0.24 / 0.2 / 0.17 |
+
+(Text extraction; column alignment read from the table layout. Other strong sources such as
+the MAGIC GRB 190114C quadratic limit and H.E.S.S. AGN-flare limits are located but not read.)
+
+Consequence for MULTI_SOURCE_ORIENTATION (arithmetic, not a gate result): under D1 a source
+with E_QG,1 = X E_Pl gives at best ell_max/ell_P = 1/(2 X sup|beta|) = 4.5/X for L5a/L5b/L4.
+EXCLUDED_ROBUST (< 1/2) would need X > 9; the strongest verified source (LHAASO, ~8.2 for
+1.0e20 GeV) gives 0.549 at the most favorable direction. Sources with X ~ 0.1-1 can only give
+ell_max of order 4.5-45 ell_P.
+
+## MAGIC and H.E.S.S. (added 2026-11-09, read in the original)
+
+| Source | What was read | Limits (95% unless stated) |
+| --- | --- | --- |
+| MAGIC Collaboration, "Bounds on Lorentz Invariance Violation from MAGIC Observation of GRB 190114C", arXiv:2001.09728v4 (PRL 125, 021301) | Full text, Table I and conclusions | Theoretical light-curve model: E_QG,1 > 0.58e19 GeV (subluminal), > 0.55e19 GeV (superluminal); E_QG,2 > 6.3e10 GeV (sub), > 5.6e10 GeV (super). Minimal (step-function) model: E_QG,1 > 0.28e19, E_QG,2 > 7.3e10 GeV (sub only). z = 0.4245. In units of E_Pl = 1.22e19 GeV: linear ≈ 0.45-0.48. |
+| H.E.S.S. Collaboration, PKS 2155-304 flare of 28 July 2006, likelihood analysis, arXiv:1101.3650 (Astropart. Phys. 34, 738, 2011) | Abstract | M_QG (linear) > 2.1e18 GeV (≈ 0.17 E_Pl); M_QG (quadratic) > 6.4e10 GeV. No confidence level stated in the abstract. |
+
+Cited inside MAGIC (not read in their originals): H.E.S.S. Mrk 501 2014 flare, quadratic
+E_QG,2 > 8.5e10 GeV (sub), 7.3e10 (super) [ApJ 870, 93 (2019)]; and Vasileiou et al. quoted by
+MAGIC as E_QG,1 > 2.2e19 (sub) / 3.9e19 (super) GeV, lower than the 7.6 E_Pl abstract value
+(different method/assumption; not resolved here).
+
+Consequence (arithmetic, not a gate result): best-case ell_max/ell_P = 4.5/X for L5a/L5b/L4
+gives about 9.4 ell_P for MAGIC (X ≈ 0.48) and 26 ell_P for H.E.S.S. PKS 2155-304 (X ≈ 0.17):
+neither can exclude these rows under H_min. All quadratic limits found (5.6e10-8.5e10 GeV) are
+weaker than LHAASO's 6.9e11 GeV.
+
+## Precise positions of the four Kostelecký–Mewes polarization GRBs (added 2026-11-09, read in the original circulars)
+
+| GRB | Circular read | Position (J2000, deg) | Uncertainty as stated | KM Table I (codecl., RA) |
+| --- | --- | --- | --- | --- |
+| 041219A | GCN 2866, D. Gotz, S. Mereghetti, S. Shaw, M. Beck, J. Borkowski, "GRB 041219 - A long GRB detected by INTEGRAL" | RA 6.1075, Dec +62.8349 | 2 arcmin (90% radius) | (27, 6): consistent (codecl. 27.17) |
+| 100826A | GCN 11156, K. Hurley et al. (IPN), "IPN triangulation of GRB 100826A" | 3-sigma box centre RA 279.593, Dec -22.128; corners span Dec -18.32 to -26.94 at RA ≈ 279.4-280.0 | preliminary 3-sigma box, area ~1.5 sq. deg: a long thin strip (~8 deg long) | (112, 279): consistent (codecl. 112.13) |
+| 110301A | GCN 11771, S. Foley for the Fermi GBM team, "GRB 110301A: Fermi GBM detection" | RA 229.35, Dec +29.40 | 1.0 deg (1-sigma, statistical only) plus a systematic error "currently estimated to be 2 to 3 degrees" | (61, 229): consistent (codecl. 60.60) |
+| 110721A | GCN 12188, V. Vasileiou, F. Piron, D. Tierney et al., "GRB 110721A: Fermi-LAT detection" | RA 333.4, Dec -39.0 | 0.75 (0.51) deg at 90% (68%), statistical only | (129, 333): consistent (codecl. 129.0) |
+
+Located, not read: a refined LAT position for 110721A, (333.52, -38.60) with 0.09 deg radius
+(arXiv:1709.06263); the IPN x LAT joint box (GCN 12195). `[UNVERIFIED]`
+
+Consequence for MULTI_SOURCE_ORIENTATION (observation, not a gate result): the ±0.5 deg box
+assumed there (rounding hypothesis) understates the real localization uncertainty of GRB 100826A
+(strip ~8 deg long) and GRB 110301A (several degrees with systematics). With realistic regions an
+escape of all four directions onto the blind planes becomes easier, not harder.
