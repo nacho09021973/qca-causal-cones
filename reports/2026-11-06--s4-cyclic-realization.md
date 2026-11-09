@@ -1,6 +1,12 @@
 # Realización s=4 con simetría cíclica y soporte tetraédrico
 
 2026-11-06. Codex (OpenAI). **PRELIMINARY, comprobación de autor**.
+
+[Revisión ciega de Grok](reviews/2026-11-09-s4-cyclic-realization-grok/informe_grok.md)
+(2026-11-09, grok-4.7, herramientas 97292a9, texto en 170910b): «se sostiene»,
+sin objeciones; rederiva unitariedad, simetrías (incluido el sentido del giro),
+nodos, irreducibilidad, geometría y el argumento local; inspecciona el script
+sin ejecutarlo; no leyó 1708.00826. Una ronda; informe sin editar.
 Base Git `b434547432647ca72110d4f7b6c78583d70f27c9`; cambios documentales
 anteriores conservados. Autorización: «realizamos s=4 a ver que ocurre?».
 Contrato: `theory/S4_CYCLIC_REALIZATION_ATTEMPT.md`, SHA256

@@ -447,6 +447,10 @@ Outcome `NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN`;
 This closes the declared minimal extension: no unequal-speed starting
 pair, no coupling scan. General alignment remains unevaluated; no change
 of shifts, dimension or node conditions is authorized by this closure.
+Grok review requested by the user 2026-11-09: one sealed round (grok-4.7,
+herramientas 97292a9) on 170910b, [unaltered review](../reports/reviews/2026-11-09-s4-general-coin-viability-grok/informe_grok.md):
+«se sostiene», no objections. Its extra corollary (no tilted isotropic cone)
+is the reviewer's, not adopted. One cross-family review; no promotion.
 
 **s=4 cyclic realization — 2026-11-06:** user explicitly requested an
 exact realization attempt; [contract](../theory/S4_CYCLIC_REALIZATION_ATTEMPT.md),
@@ -464,6 +468,10 @@ unitarity identities, commutant and axial eigenphase cross-checks.
 **PRELIMINARY, no independent review, promotion or novelty claim.** No
 strict asymptotic-body result or physical value of c; selection remains
 parked. This explicit request reopens the realization attempt only.
+Grok review requested by the user 2026-11-09: one sealed round (grok-4.7,
+herramientas 97292a9) on 170910b, [unaltered review](../reports/reviews/2026-11-09-s4-cyclic-realization-grok/informe_grok.md):
+«se sostiene», no objections; 1708.00826 not read by the reviewer.
+One cross-family review; no promotion.
 Not the same object as the "Bounded cyclic realization attempt" entry
 above (contract CYCLIC_COMMON_CONE_REALIZATION_ATTEMPT.md): that entry
 tests a different s=4 candidate (ordered xyz, a=3/5, full eight-point

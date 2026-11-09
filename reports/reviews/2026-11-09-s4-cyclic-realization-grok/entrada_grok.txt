@@ -1,0 +1,560 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente la realización adjunta: U(k)=W prod_i
+exp(-i k_i G_i/sqrt3), G_i=sigma_i tensor tau_i,
+W=I tensor exp(-i pi (n.tau)/4), n=(1,1,1)/sqrt3, con veredicto
+REALIZED_WITH_ACTUAL_SUPPORT: unitaria de alcance finito, conmutante común
+escalar, D2 (R_j=sigma_j tensor I), C=VK con V=sigma_y tensor tau_y,
+covariancia cíclica S=t tensor t, dos dobletes nodales en k=0 con fases
+±pi/4 y pendientes lineales isotrópicas cP=cQ=1/3, soporte real tetraédrico
+(cuatro de los ocho coeficientes permitidos se anulan). Tu objetivo es
+encontrar un error, un supuesto oculto o un hueco real, o explicar por qué
+se sostiene. No aceptes el recuento 143/143 como prueba.
+
+Comprueba desde las definiciones:
+(1) que W definido en el contrato coincide con (I-iN)/sqrt2 del informe, y
+    la descomposición U(k)=sum_h W E_h exp(-ik.h/sqrt3) con soporte F;
+    unitariedad;
+(2) cada simetría: R_j y su acción sobre k; la condición antiunitaria
+    V U(k)* V^dagger=U(-k) y si corresponde a la convención declarada de C;
+    t cicla las Pauli, S conserva W y cicla G_i, y la dirección del giro
+    S U(kx,ky,kz)S^dagger=U(kz,kx,ky);
+(3) nodos: WP=e^{-i pi/4}P, WQ=e^{i pi/4}Q, rango dos, compresiones
+    P J_i P=(sigma_i tensor I)P/3 y Q J_i Q=-(sigma_i tensor I)Q/3, y que de
+    ahí salen conos no degenerados con c=1/3; la segunda vía axial;
+(4) el argumento de irreducibilidad (conmutante común escalar);
+(5) la geometría: conv(F) tetraedro regular, r_in=1/3, y que la coincidencia
+    c=r_in se presenta solo como propia de esta realización;
+(6) el argumento local de protección de la sección 6 (D2 fuerza W'=I tensor
+    w', S fuerza eje n, igualdad de los v_i.n): huecos o supuestos;
+(7) correspondencia del script con el informe;
+(8) si el alcance declarado (variante de ocho saltos OPEN, sin cuerpo
+    estricto asintótico, sin selección ni valor físico de c, no
+    pertenencia a la clase de 1708.00826) es correcto o se excede.
+
+Se adjuntan contrato, informe, script y registro de ejecución. No tienes
+acceso al repositorio ni puedes ejecutar código. Distingue lo que derivas a
+mano de lo que solo inspeccionas. No afirmes haber leído PDFs no adjuntados.
+
+Entrega en español: veredicto (se sostiene / reparación necesaria /
+refutado / no decidido), derivaciones críticas, objeciones ordenadas por
+gravedad con sección y reparación concreta, y el alcance exacto que
+aceptarías. Si no hay fallos, dilo sin inventar objeciones. Ninguna
+propuesta de protocolo o búsqueda adicional es necesaria.
+
+=== DOCUMENT 1: S4_CYCLIC_REALIZATION_ATTEMPT.md ===
+
+# Intento s=4 con giro cíclico: contrato de comprobación
+
+2026-11-06, Codex. Usuario: «realizamos s=4 a ver que ocurre?».
+Autorización de un intento matemático separado de selección y novedad.
+La candidata se identificó en el razonamiento previo: no se declara
+prerregistro de descubrimiento ni prerregistro Git. Se fija antes de
+ejecutar su verificador; hash y hora se conservarán en el informe.
+
+Conocido: forma local provisional D2+C en el informe del 2026-11-05;
+la realización con covariancia espacial adicional sigue abierta.
+Pregunta: ¿el candidato siguiente realiza dos conos isotrópicos conjugados
+en un walk exacto irreducible con simetría espacial cíclica?
+
+## Datos fijos
+
+- s=4, d=3, una actualización de duración 1; longitudes en las mismas
+  unidades que el soporte previo N3={±1}^3/sqrt(3).
+- N3 es soporte PERMITIDO; se calculan todos los coeficientes y su soporte
+  real. No se exige que los ocho sean no nulos. Si hay cancelaciones, no
+  se afirma realización con hull cúbico exacto ni pertenencia a una clase
+  que exija los ocho saltos. No se renormalizan las longitudes después.
+- Red generada por los pasos: coordenadas enteras de igual paridad,
+  escaladas por 1/sqrt(3). Se comprobará con el soporte real.
+- R_j=sigma_j tensor I; V=sigma_y tensor tau_y, C=VK.
+- t=(I-i(sigma_x+sigma_y+sigma_z))/2, S=t tensor t; giro espacial
+  rho:(kx,ky,kz)->(kz,kx,ky). Grupo espacial generado por D2 y rho
+  (tetraédrico propio). Representaciones fijas, independientes de k.
+- G_i=sigma_i tensor tau_i; n=(1,1,1)/sqrt(3);
+  W=I tensor exp(-i*pi*(n.tau)/4).
+- U(k)=W product_{i=x,y,z}[cos(ki/sqrt(3)) I4
+  -i sin(ki/sqrt(3)) G_i], orden xyz fijo.
+- Nodos en k=0: fases ±pi/4, cada una con multiplicidad dos.
+  Irreducibilidad: conmutante común de todos los coeficientes escalar.
+
+## Obligaciones y corte
+
+Comprobar unitariedad Laurent exacta, soporte tras cancelaciones, C,
+covariancia D2 y S coeficiente a coeficiente, nodos y pendientes,
+irreducibilidad. Segunda vía para pendientes: eigenfases axiales frente
+a compresión del término lineal. Computar cuerpo causal, soporte e
+inradio reales, sin inferir cuerpo estricto asintótico.
+
+Robustez solo relativa a perturbaciones unitarias de soporte permitido que
+preserven las representaciones, la separación nodal y pendientes no nulas;
+no se exige isotropía como condición independiente. No se promete que haya
+deformaciones arbitrarias con ese soporte.
+
+Una sola candidata; hasta 90 minutos desde el registro previo al cálculo.
+Abandono de esta realización si falla una identidad exacta, hay conos
+degenerados o reducibilidad. No cambiar moneda, grupo, soporte permitido
+ni dimensión para salvarla. Un fallo de candidata no prueba imposibilidad
+de la clase. Salidas: REALIZED_WITH_ACTUAL_SUPPORT / CANDIDATE_FAIL /
+OPEN_WITH_NAMED_OBLIGATION. Todo resultado queda PRELIMINARY, sin revisión
+externa, promoción, novedad, selección, commit o push.
+
+=== DOCUMENT 2: 2026-11-06--s4-cyclic-realization.md ===
+
+# Realización s=4 con simetría cíclica y soporte tetraédrico
+
+2026-11-06. Codex (OpenAI). **PRELIMINARY, comprobación de autor**.
+Base Git `b434547432647ca72110d4f7b6c78583d70f27c9`; cambios documentales
+anteriores conservados. Autorización: «realizamos s=4 a ver que ocurre?».
+Contrato: `theory/S4_CYCLIC_REALIZATION_ATTEMPT.md`, SHA256
+`c065cb8c91c0945e09aa6267d5933f47ab8cc5069d696fb89818826fb1734330`.
+Registrado antes del verificador a las 07:42:25 UTC; ejecución terminada
+antes de las 07:43:33 UTC. Candidata advertida durante el razonamiento
+previo, como declara el contrato; sin prerregistro Git.
+
+## 1. Resultado y alcance
+
+**REALIZED_WITH_ACTUAL_SUPPORT.** Una realización exacta de dimensión
+interna cuatro, unitaria de alcance finito, irreducible en el sentido de
+conmutante común escalar, tiene dos dobletes nodales en k=0, con fases
+±pi/4, y dos conos isotrópicos hasta primer orden con cP=cQ=1/3.
+Satisface D2, C y una covariancia espacial cíclica exacta.
+
+El soporte permitido se fijó en N3={±1}^3/sqrt(3), pero cuatro coeficientes
+se anulan. El soporte REAL es
+
+    F={(-1,-1,-1), (-1,1,1), (1,-1,1), (1,1,-1)}/sqrt(3).
+
+Por tanto esto NO resuelve la variante que exige ocho coeficientes no
+nulos o hull cúbico exacto. No se cambió la normalización después del
+cálculo. La red generada sigue siendo la de triples enteros de igual
+paridad, escalada por 1/sqrt(3): todos los pasos pertenecen a ella y tres
+generadores tienen determinante de módulo cuatro, su índice en Z^3.
+
+## 2. Constructor y unitariedad exacta
+
+Sean sigma_i y tau_i las Pauli de los dos factores internos, y
+
+    G_i = sigma_i tensor tau_i,
+    n = (1,1,1)/sqrt(3),
+    N = I tensor (n.tau),
+    W = (I4-iN)/sqrt(2),
+    U(k) = W product_i exp(-i k_i G_i/sqrt(3)).
+
+Cada G_i es una involución hermítica. Para i distinto de j, las dos
+anticomutaciones Pauli se compensan: los G_i conmutan. Además
+G_x G_y G_z=-I4. Sus proyectores conjuntos son
+
+    E_h = product_i (I4+h_i G_i)/2.
+
+E_h=0 si h_x h_y h_z=+1. Los otros cuatro son proyectores ortogonales de
+rango uno que suman I4. Así A_h=W E_h y
+
+    U(k)=sum_{h_x h_y h_z=-1} A_h exp(-i k.h/sqrt(3)).
+
+Esta descomposición prueba unitariedad para todo k por ortogonalidad de
+los E_h y unitariedad de W. El verificador comprueba además las dos
+convoluciones Laurent U†U y UU† en todos sus desplazamientos posibles.
+
+## 3. Simetrías exactas
+
+Se mantienen R_j=sigma_j tensor I y V=sigma_y tensor tau_y, C=VK.
+R_j cambia el signo de los G_i con i distinto de j y conmuta con W;
+por tanto implementa los semigiros cartesianos. C conserva G_i y W como
+operadores antiunitarios, y coeficiente a coeficiente V A_h* V†=A_h.
+Esto equivale a V U(k)* V†=U(-k), no a una identidad con adjuntos.
+
+Sea t=(I-i(sigma_x+sigma_y+sigma_z))/2 y S=t tensor t.
+La conjugación por t cicla las Pauli x->y->z->x; S conserva N y W y
+cicla G_i. Como los tres factores conmutan, el cambio de orden no altera
+el producto. Se obtiene exactamente
+
+    S U(kx,ky,kz) S† = U(kz,kx,ky).
+
+D2 y este giro generan el grupo tetraédrico propio, que actúa transitivamente
+en F. S³=I4; las R_j constituyen la representación proyectiva fijada.
+El verificador comprueba también S R_i S†=R_{i+1} y compatibilidad con C.
+
+## 4. Nodos, conos y segunda vía
+
+P=(I4+N)/2 y Q=(I4-N)/2 son de rango dos, con
+WP=e^(-i*pi/4)P y WQ=e^(i*pi/4)Q. Las fases son distintas.
+Para J_i=iW†partial_i U(0)=G_i/sqrt(3),
+
+    P J_i P = (sigma_i tensor I)P/3,
+    Q J_i Q = -(sigma_i tensor I)Q/3.
+
+Los términos efectivos nodales son por tanto ±(q.sigma)/3, sin inclinación.
+Su polinomio característico es lambda²-|q|²/9. Son dos cruces cónicos
+tridimensionales no degenerados, con igual magnitud de velocidad 1/3;
+no se afirma isotropía a todos los órdenes en k.
+
+Segunda vía exacta: en cada eje, diagonalizando sigma_i con signo eps,
+queda un bloque SU(2) de determinante uno, cuya semitraza es
+
+    f(x)=[cos(x)-eps sin(x)/sqrt(3)]/sqrt(2), x=k_i/sqrt(3).
+
+Sus eigenfases son ±acos(f). Sus derivadas físicas en el origen son
+±eps/3, coincidentes con las compresiones. Se comprobaron por separado
+los tres ejes y ambos signos. No se usa un ajuste numérico.
+
+## 5. Irreducibilidad y geometría
+
+Si X conmuta con todos los A_h, conmuta con W=sum A_h y, por tanto,
+con E_h=W†A_h. En la base conjunta de G_i, X es diagonal. Cada tau_i
+lleva un estado conjunto a otro cambiando los dos signos G_j con j!=i;
+los tres tau_i conectan los otros tres estados. Todos sus coeficientes en
+n.tau son no nulos. Conmutar además con W obliga a que las cuatro
+entradas diagonales de X sean iguales. No son dos bloques independientes
+en una base interna fija. El sistema lineal directo de conmutación con
+los cuatro A_h tiene rango 15 sobre las 16 entradas complejas de X.
+
+C_micro=conv(F) es un tetraedro regular centrado en el origen. Sus vértices
+v tienen norma uno y los productos entre vértices distintos valen -1/3.
+La faceta opuesta a v tiene normal exterior -v y distancia 1/3 al origen.
+Así r_in=1/3 y la función soporte es h_C(u)=max_{v en F} u.v.
+La máxima longitud de paso es uno. La coincidencia cP=cQ=r_in pertenece
+solo a esta realización; no se ha calculado el cuerpo estricto asintótico,
+la máxima velocidad de grupo ni una ley universal de saturación.
+
+## 6. Protección relativa, no selección
+
+Para una perturbación que conserve exactamente R_j, C y S, D2 obliga
+a W'=I tensor w'. Conservar S hace que w' conmute con t; mientras sus
+dos eigenvalores sigan separados, su eje es n (hasta intercambio de etiquetas).
+La forma local D2+C es J_i=sigma_i tensor(v_i.tau). La covariancia
+cíclica exige v_{i+1}=rho v_i. Como rho n=n, los tres productos v_i.n
+coinciden. Las compresiones en P y Q son opuestas y su métrica es
+isotrópica. Este es un argumento local de autor, no una clasificación de
+todas las perturbaciones Laurent admisibles.
+
+En el punto construido esos productos físicos son no nulos; por continuidad
+la propiedad persiste en una vecindad dentro de esa clase de simetrías con
+dobletes separados. La igualdad no se impuso como condición de admisión
+de las pendientes. No se demuestra selección de esas simetrías ni
+universalidad entre pares independientes. El valor 1/3 es del constructor
+y de las unidades fijadas, no una predicción del valor físico de c.
+
+## 7. Evidencia y cierre
+
+Comando: `python3 -B scripts/verify_s4_cyclic_realization.py`.
+SymPy 1.14.0, salida 0, **143/143 comprobaciones exactas PASS**.
+Registro: `reports/2026-11-06--s4-cyclic-realization-verifier.txt`.
+Script SHA256:
+`9a13907240311d26e8db7bc356b9826efd63f0a65190182404a819461ba19224`.
+
+Fuente primaria de comparación leída: `biblioteca/1708.00826v2.pdf` p.2,
+Def.1 y Ec.(4), covariancia por representación. Su convención exige
+coeficientes no nulos en S+ y sus inversos. Aquí F no contiene sus
+inversos: no se declara pertenencia a esa clase por usar la palabra
+isotropía. Nuestra afirmación es la identidad explícita de covariancia
+y la isotropía del término lineal verificadas arriba. No se hizo una
+búsqueda de novedad de este constructor.
+
+El intento termina con esta realización de soporte real tetraédrico.
+La variante de ocho saltos no nulos queda OPEN, no excluida. La línea
+de selección permanece aparcada. Sin revisión externa, promoción,
+commit ni push; los controles de autor no son revisión independiente.
+
+## Visualización posterior autorizada
+
+A petición del usuario, `scripts/plot_s4_cyclic_realization.py` genera
+el soporte real y cortes de las bandas mediante diagonalización numérica
+del constructor. Figuras, datos y procedencia en
+[`figures/s4_cyclic/README.md`](figures/s4_cyclic/README.md).
+Se muestran dos cruces con pendiente local 1/3 y diferencias direccionales
+a momento finito; no se interpreta la semiseparación/r como velocidad de
+grupo. Sin nuevo modelo, promoción ni afirmación sobre propagación temporal.
+
+=== DOCUMENT 3: verify_s4_cyclic_realization.py ===
+
+"""Exact author checks for S4_CYCLIC_REALIZATION_ATTEMPT.md.
+
+Run: python3 -B scripts/verify_s4_cyclic_realization.py
+Physical Fourier coefficients are stored as sqrt(2)*A_h below.
+No floating point tests or parameter search.
+"""
+import itertools
+import sympy as s
+
+checks = []
+
+
+def zero(label, value):
+    entries = list(value) if isinstance(value, s.MatrixBase) else [value]
+    if any(s.simplify(x) != 0 for x in entries):
+        raise AssertionError(label)
+    checks.append(label)
+
+
+I, J = s.eye(2), s.eye(4)
+pauli = [s.Matrix([[0, 1], [1, 0]]),
+         s.Matrix([[0, -s.I], [s.I, 0]]), s.diag(1, -1)]
+kron = s.kronecker_product
+G = [kron(p, p) for p in pauli]
+R = [kron(p, I) for p in pauli]
+n_tau = sum(pauli, s.zeros(2))/s.sqrt(3)
+N = kron(I, n_tau)
+Wraw = J-s.I*N
+P, Q = (J+N)/2, (J-N)/2
+V = kron(pauli[1], pauli[1])
+t = (I-s.I*sum(pauli, s.zeros(2)))/2
+S = kron(t, t)
+zero('W unitary with normalization', Wraw.H*Wraw-2*J)
+zero('cyclic representation unitary', S.H*S-J)
+zero('cyclic representation cubed', S**3-J)
+zero('C square +I', V*V.conjugate()-J)
+zero('C exchanges nodal projectors', V*P.conjugate()*V.H-Q)
+zero('S preserves W', S*Wraw*S.H-Wraw)
+zero('S compatible with C', V*S.conjugate()*V.H-S)
+for i in range(3):
+    zero(f'G{i} Hermitian', G[i].H-G[i])
+    zero(f'G{i} involution', G[i]**2-J)
+    zero(f'S cycles G{i}', S*G[i]*S.H-G[(i+1) % 3])
+    zero(f'S cycles R{i}', S*R[i]*S.H-R[(i+1) % 3])
+    for j in range(3):
+        zero(f'G{i} commutes G{j}', G[i]*G[j]-G[j]*G[i])
+zero('triple product', G[0]*G[1]*G[2]+J)
+coeffs = {}
+for h in itertools.product((-1, 1), repeat=3):
+    projector = J
+    for i in range(3):
+        projector = projector*(J+h[i]*G[i])/2
+    A = (Wraw*projector).applyfunc(s.simplify)
+    if A != s.zeros(4):
+        coeffs[h] = A
+        zero(f'projector rank one {h}', s.trace(projector)-1)
+    else:
+        zero(f'cancelled parity {h}', h[0]*h[1]*h[2]-1)
+assert set(coeffs) == {h for h in itertools.product((-1, 1), repeat=3)
+                       if h[0]*h[1]*h[2] == -1}
+checks.append('exact four-point negative-parity support')
+zero('origin coefficient sum', sum(coeffs.values(), s.zeros(4))-Wraw)
+differences = {tuple(y[i]-x[i] for i in range(3))
+               for x in coeffs for y in coeffs}
+for d in sorted(differences):
+    pairs = [(A, B) for x, A in coeffs.items() for y, B in coeffs.items()
+             if tuple(y[i]-x[i] for i in range(3)) == d]
+    target = 2*J if d == (0, 0, 0) else s.zeros(4)
+    zero(f'Laurent Udagger U {d}',
+         sum((A.H*B for A, B in pairs), s.zeros(4))-target)
+    zero(f'Laurent U Udagger {d}',
+         sum((A*B.H for A, B in pairs), s.zeros(4))-target)
+for h, A in coeffs.items():
+    zero(f'C coefficient {h}', V*A.conjugate()*V.H-A)
+    rho = (h[2], h[0], h[1])
+    zero(f'cyclic coefficient {h}', S*A*S.H-coeffs[rho])
+    for i in range(3):
+        gh = tuple(x if i == j else -x for j, x in enumerate(h))
+        zero(f'D2 coefficient {i} {h}', R[i]*A*R[i].H-coeffs[gh])
+for label, proj, sign in [('P', P, 1), ('Q', Q, -1)]:
+    zero(label+' projector', proj**2-proj)
+    zero(label+' rank two', s.trace(proj)-2)
+    zero(label+' node phase', Wraw*proj-(1-sign*s.I)*proj)
+    for i in range(3):
+        # Physical derivative J_i = G_i/sqrt(3).
+        zero(f'{label} compression {i}',
+             proj*G[i]*proj/s.sqrt(3)-sign*R[i]*proj/3)
+for i in range(3):
+    zero(f'Fourier moment {i}',
+         sum((h[i]*A for h, A in coeffs.items()), s.zeros(4))-Wraw*G[i])
+q = s.symbols('qx qy qz', real=True)
+lam = s.symbols('lambda')
+H = sum((qi*pi for qi, pi in zip(q, pauli)), s.zeros(2))/3
+zero('untilted effective cone', s.trace(H))
+zero('isotropic cone polynomial',
+     H.charpoly(lam).as_expr()-lam**2+sum(qi**2 for qi in q)/9)
+# Independent axial route: diagonalize sigma_i, leaving a 2x2 SU(2) block.
+x = s.symbols('x', real=True)
+wtau = (I-s.I*n_tau)/s.sqrt(2)
+for i in range(3):
+    for eps in (-1, 1):
+        block = wtau*(s.cos(x)*I-s.I*eps*s.sin(x)*pauli[i])
+        f = (s.cos(x)-eps*s.sin(x)/s.sqrt(3))/s.sqrt(2)
+        zero(f'axis half trace {i} {eps}', s.trace(block)/2-f)
+        zero(f'axis determinant {i} {eps}', s.trigsimp(block.det())-1)
+        zero(f'axis physical phase slope {i} {eps}',
+             s.diff(s.acos(f), x).subs(x, 0)/s.sqrt(3)-eps/3)
+# Direct coefficient commutant, not merely the linearized Hamiltonian.
+basis = []
+for j in range(16):
+    E = s.zeros(4)
+    E[j//4, j % 4] = 1
+    basis.append(E)
+constraints = s.Matrix.hstack(*[
+    s.Matrix([v for A in coeffs.values() for v in E*A-A*E]) for E in basis])
+rank = constraints.rank()
+zero('full coefficient commutant rank 15', rank-15)
+# Geometry: regular unit-circumradius tetrahedron, facets opposite vertices.
+vertices = [s.Matrix(h)/s.sqrt(3) for h in coeffs]
+for i, v in enumerate(vertices):
+    zero(f'vertex radius {i}', v.dot(v)-1)
+    for j, w in enumerate(vertices):
+        zero(f'vertex dot {i} {j}', v.dot(w)-(1 if i == j else -s.Rational(1, 3)))
+zero('tetrahedron centroid', sum(vertices, s.zeros(3, 1)))
+# All raw vertices lie in equal-parity lattice, which has index four.
+# Three of these generators already have determinant of magnitude four.
+for h in coeffs:
+    assert (h[0]-h[1]) % 2 == 0 and (h[0]-h[2]) % 2 == 0
+zero('translation lattice index four',
+     abs(s.Matrix.hstack(*[s.Matrix(h) for h in list(coeffs)[:3]]).det())-4)
+print('SymPy', s.__version__)
+for label in checks:
+    print('PASS', label)
+print(f'{len(checks)}/{len(checks)} exact checks PASS')
+print('Actual raw support:', sorted(coeffs))
+print('Physical support = raw/sqrt(3); cP=cQ=1/3; r_in=1/3')
+print('Coefficient commutant dimension:', 16-rank)
+print('Verdict: REALIZED_WITH_ACTUAL_SUPPORT; PRELIMINARY, author checks only')
+
+=== DOCUMENT 4: 2026-11-06--s4-cyclic-realization-verifier.txt ===
+
+SymPy 1.14.0
+PASS W unitary with normalization
+PASS cyclic representation unitary
+PASS cyclic representation cubed
+PASS C square +I
+PASS C exchanges nodal projectors
+PASS S preserves W
+PASS S compatible with C
+PASS G0 Hermitian
+PASS G0 involution
+PASS S cycles G0
+PASS S cycles R0
+PASS G0 commutes G0
+PASS G0 commutes G1
+PASS G0 commutes G2
+PASS G1 Hermitian
+PASS G1 involution
+PASS S cycles G1
+PASS S cycles R1
+PASS G1 commutes G0
+PASS G1 commutes G1
+PASS G1 commutes G2
+PASS G2 Hermitian
+PASS G2 involution
+PASS S cycles G2
+PASS S cycles R2
+PASS G2 commutes G0
+PASS G2 commutes G1
+PASS G2 commutes G2
+PASS triple product
+PASS projector rank one (-1, -1, -1)
+PASS cancelled parity (-1, -1, 1)
+PASS cancelled parity (-1, 1, -1)
+PASS projector rank one (-1, 1, 1)
+PASS cancelled parity (1, -1, -1)
+PASS projector rank one (1, -1, 1)
+PASS projector rank one (1, 1, -1)
+PASS cancelled parity (1, 1, 1)
+PASS exact four-point negative-parity support
+PASS origin coefficient sum
+PASS Laurent Udagger U (-2, -2, 0)
+PASS Laurent U Udagger (-2, -2, 0)
+PASS Laurent Udagger U (-2, 0, -2)
+PASS Laurent U Udagger (-2, 0, -2)
+PASS Laurent Udagger U (-2, 0, 2)
+PASS Laurent U Udagger (-2, 0, 2)
+PASS Laurent Udagger U (-2, 2, 0)
+PASS Laurent U Udagger (-2, 2, 0)
+PASS Laurent Udagger U (0, -2, -2)
+PASS Laurent U Udagger (0, -2, -2)
+PASS Laurent Udagger U (0, -2, 2)
+PASS Laurent U Udagger (0, -2, 2)
+PASS Laurent Udagger U (0, 0, 0)
+PASS Laurent U Udagger (0, 0, 0)
+PASS Laurent Udagger U (0, 2, -2)
+PASS Laurent U Udagger (0, 2, -2)
+PASS Laurent Udagger U (0, 2, 2)
+PASS Laurent U Udagger (0, 2, 2)
+PASS Laurent Udagger U (2, -2, 0)
+PASS Laurent U Udagger (2, -2, 0)
+PASS Laurent Udagger U (2, 0, -2)
+PASS Laurent U Udagger (2, 0, -2)
+PASS Laurent Udagger U (2, 0, 2)
+PASS Laurent U Udagger (2, 0, 2)
+PASS Laurent Udagger U (2, 2, 0)
+PASS Laurent U Udagger (2, 2, 0)
+PASS C coefficient (-1, -1, -1)
+PASS cyclic coefficient (-1, -1, -1)
+PASS D2 coefficient 0 (-1, -1, -1)
+PASS D2 coefficient 1 (-1, -1, -1)
+PASS D2 coefficient 2 (-1, -1, -1)
+PASS C coefficient (-1, 1, 1)
+PASS cyclic coefficient (-1, 1, 1)
+PASS D2 coefficient 0 (-1, 1, 1)
+PASS D2 coefficient 1 (-1, 1, 1)
+PASS D2 coefficient 2 (-1, 1, 1)
+PASS C coefficient (1, -1, 1)
+PASS cyclic coefficient (1, -1, 1)
+PASS D2 coefficient 0 (1, -1, 1)
+PASS D2 coefficient 1 (1, -1, 1)
+PASS D2 coefficient 2 (1, -1, 1)
+PASS C coefficient (1, 1, -1)
+PASS cyclic coefficient (1, 1, -1)
+PASS D2 coefficient 0 (1, 1, -1)
+PASS D2 coefficient 1 (1, 1, -1)
+PASS D2 coefficient 2 (1, 1, -1)
+PASS P projector
+PASS P rank two
+PASS P node phase
+PASS P compression 0
+PASS P compression 1
+PASS P compression 2
+PASS Q projector
+PASS Q rank two
+PASS Q node phase
+PASS Q compression 0
+PASS Q compression 1
+PASS Q compression 2
+PASS Fourier moment 0
+PASS Fourier moment 1
+PASS Fourier moment 2
+PASS untilted effective cone
+PASS isotropic cone polynomial
+PASS axis half trace 0 -1
+PASS axis determinant 0 -1
+PASS axis physical phase slope 0 -1
+PASS axis half trace 0 1
+PASS axis determinant 0 1
+PASS axis physical phase slope 0 1
+PASS axis half trace 1 -1
+PASS axis determinant 1 -1
+PASS axis physical phase slope 1 -1
+PASS axis half trace 1 1
+PASS axis determinant 1 1
+PASS axis physical phase slope 1 1
+PASS axis half trace 2 -1
+PASS axis determinant 2 -1
+PASS axis physical phase slope 2 -1
+PASS axis half trace 2 1
+PASS axis determinant 2 1
+PASS axis physical phase slope 2 1
+PASS full coefficient commutant rank 15
+PASS vertex radius 0
+PASS vertex dot 0 0
+PASS vertex dot 0 1
+PASS vertex dot 0 2
+PASS vertex dot 0 3
+PASS vertex radius 1
+PASS vertex dot 1 0
+PASS vertex dot 1 1
+PASS vertex dot 1 2
+PASS vertex dot 1 3
+PASS vertex radius 2
+PASS vertex dot 2 0
+PASS vertex dot 2 1
+PASS vertex dot 2 2
+PASS vertex dot 2 3
+PASS vertex radius 3
+PASS vertex dot 3 0
+PASS vertex dot 3 1
+PASS vertex dot 3 2
+PASS vertex dot 3 3
+PASS tetrahedron centroid
+PASS translation lattice index four
+143/143 exact checks PASS
+Actual raw support: [(-1, -1, -1), (-1, 1, 1), (1, -1, 1), (1, 1, -1)]
+Physical support = raw/sqrt(3); cP=cQ=1/3; r_in=1/3
+Coefficient commutant dimension: 1
+Verdict: REALIZED_WITH_ACTUAL_SUPPORT; PRELIMINARY, author checks only

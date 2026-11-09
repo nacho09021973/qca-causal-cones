@@ -1,6 +1,12 @@
 # Moneda general: exclusión de una pendiente isotrópica distinta
 
 2026-11-06. Codex (OpenAI). **PRELIMINARY: derivación y controles de autor**.
+
+[Revisión ciega de Grok](reviews/2026-11-09-s4-general-coin-viability-grok/informe_grok.md)
+(2026-11-09, grok-4.7, herramientas 97292a9, texto en 170910b): «se sostiene»,
+sin objeciones; rederiva a mano las dos vías, inspecciona el script sin
+ejecutarlo. Añade por su cuenta un corolario (no hay cono isótropo inclinado)
+y un testigo de no vacuidad; no se incorporan aquí. Una ronda; informe sin editar.
 Contrato: `theory/S4_GENERAL_COIN_VIABILITY.md`, SHA256
 `a817034f28736469d5ecccb0901bc9ba2c49832dde5dcff6117bc4bca2b1de13`.
 Hash registrado a las 08:51:26 UTC antes de ejecutar el verificador;

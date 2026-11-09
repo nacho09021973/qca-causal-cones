@@ -1,0 +1,337 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente la afirmación adjunta: para U(k)=W prod_i
+exp(-i k_i G_i/sqrt3), G_i=sigma_i tensor tau_i, y cualquier W en U(4), todo
+doblete nodal aislado de rango dos en k=0 con cono lineal isotrópico no
+degenerado y sin inclinación tiene c=1/3. Tu objetivo es encontrar un error,
+un supuesto oculto o un hueco real, o explicar por qué se sostiene. No
+aceptes el recuento 55/55 como prueba del enunciado universal.
+
+Comprueba desde las definiciones:
+(1) que los G_i conmutan, son involuciones, G_xG_yG_z=-I y que los cuatro E_h
+    (h_xh_yh_z=-1) son proyectores de rango uno que suman I, con
+    sum_h h_i E_h=G_i;
+(2) que las pendientes nodales de primer orden del doblete son exactamente
+    las de H_i=T^dagger G_i T/sqrt3 (papel de la separación espectral, de z y
+    de que iW^dagger d_iU(0)=G_i/sqrt3), sin término adicional de W;
+(3) la fórmula B_h=[I+sqrt3 sum_i h_i H_i]/4, la definición de "sin
+    inclinación" (tr H_i=0) y de isotropía (M=c^2 I), y la identidad
+    det B_h=[1-3h^T M h]/16;
+(4) que rango B_h<=1 fuerza det B_h=0 y por tanto c=1/3; y la segunda vía por
+    suma de trazas cuadráticas;
+(5) si las hipótesis (doblete exactamente de rango dos, separación, cono no
+    degenerado) se usan todas y bastan; casos límite que escapen;
+(6) correspondencia del script con lo que el informe dice que comprueba;
+(7) si el alcance declarado (solo k=0, este desplazamiento, sin conos
+    inclinados ni otros rangos) es correcto o se excede.
+
+Se adjuntan contrato, informe, script y registro de ejecución. No tienes
+acceso al repositorio ni puedes ejecutar código. Distingue lo que derivas a
+mano de lo que solo inspeccionas.
+
+Entrega en español: veredicto (se sostiene / reparación necesaria /
+refutado / no decidido), derivaciones críticas, objeciones ordenadas por
+gravedad con sección y reparación concreta, y el alcance exacto que
+aceptarías. Si no hay fallos, dilo sin inventar objeciones. Ninguna
+propuesta de protocolo o búsqueda adicional es necesaria.
+
+=== DOCUMENT 1: S4_GENERAL_COIN_VIABILITY.md ===
+
+# Moneda general U(4), desplazamiento tetraédrico fijo
+
+2026-11-06. Codex. Usuario «adelante» a la ampliación mínima propuesta.
+Nuevo contrato; no modifica el de la realización cíclica.
+
+Conocido: G_i=sigma_i tensor tau_i conmutan y tienen cuatro proyectores
+conjuntos E_h de rango uno, h en {±1}^3 con producto -1. El constructor
+anterior realiza c=1/3. Fuente local: informe s4-cyclic-realization del
+2026-11-06, evidencia de autor PRELIMINARY.
+
+Pregunta: para U(k)=W product_i exp(-i k_i G_i/sqrt(3)), con W cualquier
+U(4), ¿existe un doblete espectral en k=0, separado del resto del espectro,
+con cono lineal isotrópico no degenerado, sin inclinación y c distinto de
+1/3? El doblete tiene multiplicidad exactamente dos. No se exige nada
+sobre la multiplicidad de los otros dos eigenvalores, salvo su separación
+respecto al doblete. No se imponen D2, C, S ni una factorización de W.
+
+Se fijan s=4, soporte tetraédrico F={h/sqrt(3): producto h_i=-1}, longitud
+de paso uno, duración uno, nodo k=0. Todos los A_h=W E_h son no nulos
+para W unitario. Se exigiría conmutante escalar para aceptar un testigo.
+No se cambian desplazamientos, unidades, nodo ni dimensión.
+
+Método primero algebraico: comprimir los E_h al doblete. La posible
+exclusión por rango de esas compresiones se ha advertido en el razonamiento
+previo; no se declara prerregistro de descubrimiento ni de Git. Registrar
+hash antes de ejecutar un verificador permanente.
+
+Para una isometría T:C²->C⁴ del doblete, H_i=T†G_i T/sqrt(3).
+Sin inclinación significa tr H_i=0 para todo i. Isotropía significa
+tr(H_i H_j)/2=c² delta_ij, con c>0, no solo igualdad de tres cortes.
+
+Cierre: un testigo exacto verificable; una exclusión algebraica para toda
+la clase; o una obligación concreta OPEN tras una sesión de hasta 90 min.
+Abandono de esta vía si las restricciones fuerzan c=1/3. Una búsqueda
+fallida no prueba exclusión. No acoplamiento s=8, barridos, interacción,
+selección, revisión externa, promoción, commit ni push.
+
+=== DOCUMENT 2: 2026-11-06--s4-general-coin-viability.md ===
+
+# Moneda general: exclusión de una pendiente isotrópica distinta
+
+2026-11-06. Codex (OpenAI). **PRELIMINARY: derivación y controles de autor**.
+Contrato: `theory/S4_GENERAL_COIN_VIABILITY.md`, SHA256
+`a817034f28736469d5ecccb0901bc9ba2c49832dde5dcff6117bc4bca2b1de13`.
+Hash registrado a las 08:51:26 UTC antes de ejecutar el verificador;
+ejecución completada antes de las 08:52:24 UTC. La vía de prueba había
+sido advertida durante el razonamiento, como declara el contrato.
+No prerregistro Git. Base: `b434547432647ca72110d4f7b6c78583d70f27c9`.
+
+## Resultado
+
+Para cualquier W en U(4), sea
+
+    U(k)=W product_i exp(-i k_i G_i/sqrt(3)),
+    G_i=sigma_i tensor tau_i.
+
+Si U(0)=W posee un eigenvalor de multiplicidad exactamente dos, separado
+del resto, y su doblete define un cono lineal isotrópico no degenerado
+sin inclinación, entonces **c=1/3** en las unidades fijadas.
+
+No se exige antiunitaria, covariancia espacial, forma tensorial de W,
+segundo doblete ni irreducibilidad. Por eso la exclusión también se aplica
+a la subclase irreducible solicitada. No existe el testigo c distinto de
+1/3 dentro del contrato. El constructor anterior muestra que c=1/3 sí es
+realizable; la exclusión no procede de una clase vacía.
+
+## 1. Reducción que elimina la moneda
+
+Los G_i conmutan, son involuciones y G_x G_y G_z=-I4. Para
+F_raw={h en {±1}³: h_x h_y h_z=-1}, sus cuatro proyectores conjuntos son
+
+    E_h = (I4 + sum_i h_i G_i)/4.
+
+Cada uno tiene rango uno, sum_h E_h=I4 y sum_h h_i E_h=G_i.
+U(k)=sum_h W E_h exp(-i k.h/sqrt(3)). Como W es invertible, los cuatro
+coeficientes W E_h siguen siendo no nulos. El soporte y la escala son
+exactamente los del contrato, sin ajuste posterior.
+
+Sea T:C²->C⁴ una isometría sobre el doblete, WT=zT, |z|=1.
+Al comprimir la expansión de U en el doblete, el término de primer orden
+es z[I2-i sum_i q_i H_i], donde
+
+    H_i = T†G_i T/sqrt(3).
+
+La separación espectral permite usar esta compresión para las pendientes
+nodales de primer orden. W determina T y z, pero no añade un término a
+H_i: iW†partial_i U(0)=G_i/sqrt(3).
+
+## 2. Primera prueba: rango de las compresiones
+
+Definir B_h=T†E_h T. Son matrices positivas 2x2 de rango a lo sumo uno,
+con suma I2. La fórmula de E_h da exactamente
+
+    B_h = [I2 + sqrt(3) sum_i h_i H_i]/4.                 (1)
+
+Ausencia de inclinación significa tr H_i=0. Escribimos H_i=a_i.sigma,
+con a_i real. La métrica del cono es M_ij=a_i.a_j=tr(H_i H_j)/2.
+Isotropía no degenerada significa M=c² I3 y c>0.
+
+De (1), tr B_h=1/2, y la identidad de determinante de Pauli produce
+
+    det B_h = [1-3 h^T M h]/16
+            = [1-9 c²]/16.                            (2)
+
+Pero rango B_h<=1 exige det B_h=0. Por tanto c²=1/9 y c=1/3.
+La traza 1/2 asegura además que ninguna de estas compresiones sea nula.
+Esto vale para cualquier T que satisfaga las hipótesis, no para una
+muestra de monedas o de subespacios.
+
+## 3. Segunda vía: suma de trazas cuadráticas
+
+Cada B_h tiene rango uno y traza 1/2, luego tr(B_h²)=1/4 y
+sum_h tr(B_h²)=1. Por otra parte, usando (1), sum_h h_i=0 y
+sum_h h_i h_j=4 delta_ij,
+
+    sum_h tr(B_h²) = 1/2 + (3/4) sum_i tr(H_i²)
+                  = 1/2 + (9/2)c².
+
+Igualar ambas expresiones vuelve a dar c²=1/9. Es una segunda derivación
+algebraica de autor con las mismas hipótesis; no es revisión independiente.
+
+## 4. Qué queda excluido y qué no
+
+Queda excluido construir el bloque inicial de pendiente diferente cambiando
+solo W, incluso con una moneda U(4) arbitraria, bajo las condiciones de
+nodo k=0, doblete separado, isotropía lineal y ausencia de inclinación.
+Dos bloques de esta clase que cumplan esas condiciones tendrán ambos
+c=1/3. El barrido de acoplamiento no se abre.
+
+No se ha clasificado cuáles monedas producen conos ni se han impuesto
+las simetrías de la realización anterior. La restricción procede de los
+cuatro proyectores de rango uno del desplazamiento fijo, no de una
+antiunitaria adicional sobre la moneda.
+
+No cubierto: otros desplazamientos o números/rangos de canales, dimensiones
+internas distintas, conos inclinados, degeneraciones nodales de otro rango
+ni modelos interactuantes. El contrato se limita al origen; no se reclama
+una clasificación global de nodos. El mecanismo general de alineación
+permanece sin evaluar. No se amplía la familia para salvar la propuesta.
+
+## 5. Evidencia reproducible
+
+Comando: `python3 -B scripts/verify_s4_general_coin_viability.py`.
+SymPy 1.14.0, salida 0: **55/55 comprobaciones algebraicas auxiliares PASS**.
+Registro: `reports/2026-11-06--s4-general-coin-viability-verifier.txt`.
+Script SHA256:
+`6565ddc135215e371279b97c298422e809124110b3b3b439f79941fe6437a5f4`.
+Comprueba proyectores, inversión tetraédrica, momentos, identidad de
+determinante para nueve coeficientes reales generales, suma de trazas
+cuadráticas y consecuencia isotrópica. El argumento universal de rango
+está en la prueba anterior; los controles no sustituyen esa prueba.
+
+Índice de biblioteca consultado. La clasificación s=2 de 1708.00826 no se
+invoca para esta exclusión s=4. No se ha investigado la novedad de la
+identidad de compresión; no se atribuye originalidad al resultado.
+
+Resultado: `NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN`.
+Se cierra esta ampliación mínima. Sin búsqueda numérica, barrido,
+revisión externa, promoción, commit ni push. Se preservan cambios ajenos.
+
+=== DOCUMENT 3: verify_s4_general_coin_viability.py ===
+
+"""Exact auxiliary identities for S4_GENERAL_COIN_VIABILITY.md.
+
+Run: python3 -B scripts/verify_s4_general_coin_viability.py
+The universal argument is in the report; no search over coins is used.
+"""
+import itertools
+import sympy as s
+
+checks = []
+
+
+def zero(label, value):
+    values = list(value) if isinstance(value, s.MatrixBase) else [value]
+    if any(s.simplify(s.expand(x)) != 0 for x in values):
+        raise AssertionError(label)
+    checks.append(label)
+
+
+I, J = s.eye(2), s.eye(4)
+pauli = [s.Matrix([[0, 1], [1, 0]]),
+         s.Matrix([[0, -s.I], [s.I, 0]]), s.diag(1, -1)]
+G = [s.kronecker_product(p, p) for p in pauli]
+F = [h for h in itertools.product((-1, 1), repeat=3) if h[0]*h[1]*h[2] == -1]
+E = {}
+for h in F:
+    e = J
+    for i in range(3):
+        e = e*(J+h[i]*G[i])/2
+    E[h] = e
+    zero(f'projector {h}', e*e-e)
+    zero(f'Hermitian {h}', e.H-e)
+    zero(f'rank-one via trace {h}', s.trace(e)-1)
+    zero(f'inverse tetrahedron transform {h}',
+         e-(J+sum((h[i]*G[i] for i in range(3)), s.zeros(4)))/4)
+zero('sum projectors', sum(E.values(), s.zeros(4))-J)
+for i in range(3):
+    zero(f'first moment {i}', sum((h[i]*E[h] for h in F), s.zeros(4))-G[i])
+    zero(f'vertex first sum {i}', sum(h[i] for h in F))
+    for j in range(3):
+        zero(f'vertex second sum {i} {j}', sum(h[i]*h[j] for h in F)-4*(i == j))
+
+# An arbitrary traceless Hermitian linear effective Hamiltonian.
+x = s.symbols('x0:9', real=True)
+H = [sum((x[3*i+j]*pauli[j] for j in range(3)), s.zeros(2)) for i in range(3)]
+M = s.Matrix(3, 3, lambda i, j: s.trace(H[i]*H[j])/2)
+B = {h: (I+s.sqrt(3)*sum((h[i]*H[i] for i in range(3)), s.zeros(2)))/4 for h in F}
+zero('compressed completeness', sum(B.values(), s.zeros(2))-I)
+for i in range(3):
+    zero(f'compressed moment {i}',
+         sum((h[i]*B[h] for h in F), s.zeros(2))/s.sqrt(3)-H[i])
+for h in F:
+    hv = s.Matrix(h)
+    zero(f'untilted effect trace {h}', s.trace(B[h])-s.Rational(1, 2))
+    zero(f'general effect determinant {h}', B[h].det()-(1-3*(hv.T*M*hv)[0])/16)
+    zero(f'2x2 trace determinant identity {h}',
+         s.trace(B[h]**2)-s.trace(B[h])**2+2*B[h].det())
+zero('independent purity sum',
+     sum(s.trace(b*b) for b in B.values())-s.Rational(1, 2)-s.Rational(3, 2)*s.trace(M))
+c = s.symbols('c', positive=True)
+for h in F:
+    hv = s.Matrix(h)
+    zero(f'isotropic rank obstruction {h}',
+         (1-3*(hv.T*(c*c*s.eye(3))*hv)[0])/16-(1-9*c*c)/16)
+zero('purity obstruction agrees with determinant',
+     (s.Rational(1, 2)+s.Rational(9, 2)*c*c-1)+(1-9*c*c)/2)
+solutions = s.solve(1-9*c*c, c)
+assert solutions == [s.Rational(1, 3)], solutions
+checks.append('unique positive isotropic speed 1/3')
+print('SymPy', s.__version__)
+for check in checks:
+    print('PASS', check)
+print(f'{len(checks)}/{len(checks)} exact auxiliary checks PASS')
+print('Verdict: NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN')
+print('Author algebra only; no external review, novelty or general-QCA claim.')
+
+=== DOCUMENT 4: 2026-11-06--s4-general-coin-viability-verifier.txt ===
+
+SymPy 1.14.0
+PASS projector (-1, -1, -1)
+PASS Hermitian (-1, -1, -1)
+PASS rank-one via trace (-1, -1, -1)
+PASS inverse tetrahedron transform (-1, -1, -1)
+PASS projector (-1, 1, 1)
+PASS Hermitian (-1, 1, 1)
+PASS rank-one via trace (-1, 1, 1)
+PASS inverse tetrahedron transform (-1, 1, 1)
+PASS projector (1, -1, 1)
+PASS Hermitian (1, -1, 1)
+PASS rank-one via trace (1, -1, 1)
+PASS inverse tetrahedron transform (1, -1, 1)
+PASS projector (1, 1, -1)
+PASS Hermitian (1, 1, -1)
+PASS rank-one via trace (1, 1, -1)
+PASS inverse tetrahedron transform (1, 1, -1)
+PASS sum projectors
+PASS first moment 0
+PASS vertex first sum 0
+PASS vertex second sum 0 0
+PASS vertex second sum 0 1
+PASS vertex second sum 0 2
+PASS first moment 1
+PASS vertex first sum 1
+PASS vertex second sum 1 0
+PASS vertex second sum 1 1
+PASS vertex second sum 1 2
+PASS first moment 2
+PASS vertex first sum 2
+PASS vertex second sum 2 0
+PASS vertex second sum 2 1
+PASS vertex second sum 2 2
+PASS compressed completeness
+PASS compressed moment 0
+PASS compressed moment 1
+PASS compressed moment 2
+PASS untilted effect trace (-1, -1, -1)
+PASS general effect determinant (-1, -1, -1)
+PASS 2x2 trace determinant identity (-1, -1, -1)
+PASS untilted effect trace (-1, 1, 1)
+PASS general effect determinant (-1, 1, 1)
+PASS 2x2 trace determinant identity (-1, 1, 1)
+PASS untilted effect trace (1, -1, 1)
+PASS general effect determinant (1, -1, 1)
+PASS 2x2 trace determinant identity (1, -1, 1)
+PASS untilted effect trace (1, 1, -1)
+PASS general effect determinant (1, 1, -1)
+PASS 2x2 trace determinant identity (1, 1, -1)
+PASS independent purity sum
+PASS isotropic rank obstruction (-1, -1, -1)
+PASS isotropic rank obstruction (-1, 1, 1)
+PASS isotropic rank obstruction (1, -1, 1)
+PASS isotropic rank obstruction (1, 1, -1)
+PASS purity obstruction agrees with determinant
+PASS unique positive isotropic speed 1/3
+55/55 exact auxiliary checks PASS
+Verdict: NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN
+Author algebra only; no external review, novelty or general-QCA claim.
