@@ -1,133 +1,172 @@
 # Observational signature of saturation: results
 
-2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: exact and interval
-author checks plus written arguments; no independent review, no promotion.**
+2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: exact checks plus
+written arguments; one sealed cross-family review (GPT-6 Astra) with
+repairs applied, not re-reviewed; no promotion.**
 
 Contract [OBSERVATIONAL_SIGNATURE_SATURATION_GATE.md](../theory/OBSERVATIONAL_SIGNATURE_SATURATION_GATE.md),
-frozen at `21af1dd`. Verifier committed before its first run at `658845a`.
-First run passed 19/19.
+frozen at `21af1dd`. Verifier committed before its first run at `658845a`;
+first run reported 19/19 (Sec. 6 qualifies this count).
+
+[Sealed Astra review](reviews/2026-11-09-observational-signature-astra/informe_astra.md)
+of the text at f9a638e (herramientas 97292a9): «reparación necesaria».
+Each repair below was checked by the author before adopting it; the
+original text is in git at f9a638e.
+
+1. The claimed independence of "ceiling" and "unbeatable" (old Sec. 5 and
+   item 1.2) was not demonstrated. Only one implication is refuted.
+2. The interval certificates are not audited rigorous certificates: `ivnum`
+   has no certified error bound, and `scale_of` compares floats. The
+   statement that no floating point enters a verdict was false.
+3. The "contract impossibility" diagnosis was too strong. It is a change of
+   method.
+4. L3s4 classification corrected: at a^2 = x_c, beta ≥ 0 with zeros; at
+   a^2 = 1/2 the leading correction is isotropic.
+5. "Ceiling" means the one-step geometric isotropic ceiling, not the
+   asymptotic dynamical one.
+6. The check count is qualified. The arrival-time formula holds at leading
+   order only.
 
 ## 1. Answer
 
-In the 13 declared rows, under the dictionary hypothesis H_gamma (the
-massless branch is the photon), these are the findings:
+In the 13 declared rows, conditional on H_gamma (the massless branch is the
+photon), with "ceiling" meaning the one-step geometric isotropic ceiling
+c_0 = r_in:
 
-1. **"c is the largest isotropic speed the update allows" (S_in) does not
-   imply that nothing outruns c.** Among the ceiling rows with d ≥ 2:
-   - L2 and L3 have V_grp^max = c_0, exactly proved: nothing exceeds c.
-   - L5a, L5b and L4 have certified super-c excitations.
+1. **Being at the ceiling does not guarantee that nothing outruns c.**
+   - L2 and L3 are at the ceiling and have V_grp^max = c_0, proved exactly.
+   - L5a, L5b and L4 are at the ceiling and have excitations faster than
+     c_0 close enough to the node. This follows from the exact sign of
+     beta on a declared ray.
    - Hg is `REFUTED_BY_ROW_L2` (and by L3).
-2. **Observing that nothing exceeds c does not show that c is at the
-   ceiling.** Below-ceiling rows show the same "delay-only, no witness"
-   behaviour (L6c, L6d, L6f: no witness on the declared rays, delay-only
-   near the node). Rows below the ceiling also show super-c (L6a, L6b,
-   L3s4).
-3. **The discrimination that does exist is partial:**
-   - The only S_max row (L1, d = 1) has no correction at all
-     (omega = |k|). Every d ≥ 2 row has one. So "no dispersion whatsoever"
-     singles out exact saturation of the clock, which is possible only
-     in d = 1.
-   - An advance-only signature (superluminal in every direction at first
-     order) appears only below the ceiling: L3s4, one cluster, for
-     a^2 < (19 - 6 sqrt3)/11. Hh is `REFUTED_BY_ROW_L3s4`, decided by the
-     parent table. No ceiling row shows it.
+2. **The converse is OPEN.** Whether "nothing outruns c" implies being at
+   the ceiling is not decided. No below-ceiling row is proved to have
+   V_grp^max = c_0. L6c, L6d and L6f only have no witness on the declared
+   rays, which is a finite search, not a proof.
+3. **Spectral unbeatability does not imply exact saturation of the clock.**
+   In L2 and L3, V_grp^max = c_0 < 1 = V_causal^max.
+4. **Partial discrimination, conditional on H_gamma and on the declared rows
+   and branches:**
+   - The only S_max row (L1, d = 1) has no dispersion correction at all.
+     Every d ≥ 2 row has one.
+   - An advance-only first-order signature occurs for the upper-sign
+     cluster of L3s4 when a^2 < x_c = (19 - 6 sqrt3)/11, a row below the
+     ceiling. No ceiling row shows it. Hh is `REFUTED_BY_ROW_L3s4`, for
+     that branch and that interval.
 
-Route verdict: `DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS`, partial in
-exactly the sense of item 3. The contract's abandonment condition (no
-super-c anywhere and no difference in signatures) is not met. The
-discrimination is one-directional and does not separate S_in from
-below-ceiling in general.
+Route verdict: `DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS`, partial in the
+sense of item 4. It is justified by these concrete differences in
+signature, not merely by the abandonment condition failing.
 
 ## 2. Per row
 
-| Row | d | Saturation | Excitation faster than c_0? | Signature under H_gamma (from the parent table) |
+| Row | d | Saturation (one-step) | Excitation faster than c_0? | Signature under H_gamma |
 | --- | --- | --- | --- | --- |
-| L1 | 1 | S_max | no, V_grp^max = c_0 proved (omega = abs(k)) | none |
-| L2 | 2 | S_in | no, V_grp^max = c_0 proved | order 2, delay-only near node, anisotropic |
+| L1 | 1 | S_max | no: V_grp^max = c_0 (omega = abs(k) on regular branches) | none |
+| L2 | 2 | S_in | no: V_grp^max = c_0 proved | order 2, delay-only near node, anisotropic |
 | L6e | 2 | S_in | no witness on declared rays | order 2, delay-only, anisotropic |
-| L3 | 3 | S_in | no, V_grp^max = c_0 proved | order 2, delay-only, anisotropic |
-| L5a | 3 | S_in | yes: interval-certified point (+111, abs(k) = 1/16) | order 1, both signs with direction |
-| L5b | 3 | S_in | yes: interval-certified point | order 1, both signs |
-| L4 | 3 | S_in | yes: interval-certified point (-111) | order 1, both signs |
-| L3s4 | 3 | below | yes: existence near node (exact sign of beta); explicit k* not attempted (a symbolic) | order 1; one-signed iff a^2 < (19 - 6 sqrt3)/11, else both |
-| L6a | 2 | below | yes: interval-certified point (theta = 60°) | order 1, both signs |
-| L6b | 2 | below | yes: interval-certified point (theta = 0°) | order 1, both signs |
+| L3 | 3 | S_in | no: V_grp^max = c_0 proved | order 2, delay-only, anisotropic |
+| L5a | 3 | S_in | yes near node (beta = 1/9 on +111) | order 1, both signs |
+| L5b | 3 | S_in | yes near node (block with the matching sign) | order 1, both signs |
+| L4 | 3 | S_in | yes near node (beta = 1/9 on -111) | order 1, both signs |
+| L3s4 | 3 | below | yes near node, upper-sign cluster, every fixed 0 < a < 1 (no radius uniform in a) | see below |
+| L6a | 2 | below | yes near node (theta = 60°) | order 1, both signs |
+| L6b | 2 | below | yes near node (theta = 0°) | order 1, both signs |
 | L6c, L6d, L6f | 2 | below | no witness on declared rays | order 2, delay-only, isotropic |
 
-"No witness on declared rays" is not a proof that V_grp^max = c_0
-(contract Sec. 3, item 1).
+L3s4 signature, upper-sign cluster, with beta = B_0 + B_3 n1 n2 n3,
+B_0 = sqrt3 (1-a^2)/(6a), B_3 = sqrt3 (2a^2 - 1)/(3a), and
+min over n̂ of beta = B_0 - |2a^2 - 1|/(9a):
+
+| Parameter | Leading correction |
+| --- | --- |
+| a^2 < x_c | beta > 0 on the whole sphere: advance-only at first order |
+| a^2 = 1/2 (inside this interval) | isotropic, beta = sqrt6/12 |
+| a^2 = x_c | beta ≥ 0, with zeros on certain diagonals; the next order decides there |
+| a^2 > x_c | both signs |
+
+The opposite cluster has the opposite sign.
+
+"Order 1" or "order 2" names the first coefficient that is not identically
+zero on the sphere. It does not cover the directions where that
+coefficient vanishes.
 
 ## 3. Arguments
 
-- **L1.** Tr U = z + 1/z and det U = 1 (exact), so cos omega = cos k and
-  omega = |k| on the branch. Group speed is 1 = c_0 everywhere.
-- **L2, L3.** Exact identities: Tr U / 2 = prod_j cos p_j, det U = 1, and
-  c_0 = 1/L, with p_j = k_j/L and L = sqrt d. Then
-  omega = arccos(prod cos p_j) and, with a_j = cos^2 p_j,
+- **L1.** Tr U = z + 1/z and det U = 1, so omega = |k| on the principal
+  zone. The regular branches have speed 1 = c_0.
+- **L2, L3.** With Tr U = 2 prod cos p_j, det U = 1, p_j = k_j/L and
+  c_0 = 1/L (identities checked in the script),
 
-    L^2 |grad_k omega|^2 = sum_j (1 - a_j) prod_{i≠j} a_i / (1 - prod a_i).
+    L^2 |grad omega|^2 = sum_j (1 - a_j) prod_{i≠j} a_i / (1 - prod a_i),
 
-  This is at most 1 iff f(a) = 1 - prod a - sum_j (1 - a_j) prod_{i≠j} a_i ≥ 0
-  on [0,1]^d. f is multilinear, so its minimum is attained at a vertex.
-  All vertex values are ≥ 0 (certified for d = 2, 3). Hence
-  |grad omega| ≤ 1/L = c_0, with equality along the axes, so
-  V_grp^max = c_0.
-- **Rows with beta not identically 0.** The parent's exact expansion gives
-  |grad eps_+|/c_0 ≥ 1 + 2 beta(n̂) t + O(t^2) along k = t n̂, with the
-  radial derivative as a lower bound. beta is positive on a declared ray
-  (exact):
+  with a_j = cos^2 p_j. The function
+  f = 1 - prod a - sum_j (1 - a_j) prod_{i≠j} a_i is multi-affine. It
+  equals 0 at vertices with at most one zero coordinate and 1 otherwise,
+  so f ≥ 0. An independent reading (from the review): f is the probability
+  of at least two failures among independent trials with success
+  probabilities a_j. Equality along the axes gives V_grp^max = c_0. Points
+  with C^2 = 1 are excluded from the supremum; they do not change it.
+- **Beta rows.** On a branch analytic along the ray (one-sided analytic
+  choice, justified for a unitary analytic symbol with c_0 > 0),
+  n̂·grad eps_+ = c_0 [1 + 2 beta(n̂) t + O(t^2)] ≤ |grad eps_+|.
+  So beta(n̂) > 0 gives speed above c_0 for 0 < t < delta. This is
+  existence near the node, not a point on the finite grid.
+- **Signatures** are transcribed from the parent table into the script,
+  not recomputed. The parent gate is promoted in CURRENT_STATE (entry
+  "Gate promoted — 2026-11-02"). The parent report's own header still reads
+  `PROMOTION_PENDING`, written before that promotion.
+- **Arrival time.** If v = c_0 (1 + delta), then
+  Delta T/(D/c) = 1/(1 + delta) - 1 = -delta + O(delta^2). The signs and
+  orders above are leading-order statements. For L3s4, energy is measured
+  from eps_0.
 
-  | Row | Ray | beta |
-  | --- | --- | --- |
-  | L5a, L5b | +111 | 1/9 |
-  | L4 | -111 | 1/9 |
-  | L6a | theta = 60° | sqrt15/36 |
-  | L6b | theta = 0° | sqrt15/18 |
-  | L3s4, upper-sign cluster | +111 or -111 | the two values sum to 2 beta0 > 0 for all 0 < a < 1 |
+## 4. Method change and limits
 
-  So super-c holds for small t. For the 2x2 rows an explicit point on the
-  rational grid is also certified by rigorous interval arithmetic. The
-  certified lower bounds match c_0(1 + 2 beta t) at t = 1/16 to the
-  expected order; for example L5a gives 0.5852 against 0.5854.
-- **Signatures** are read from the promoted parent table (Sec. 1 and
-  Sec. 3.3 of `reports/2026-11-02--dispersion-corrections-across-lattices.md`),
-  transcribed into the script, not recomputed.
-
-## 4. Deviation and limits
-
-- **Contract defect.** The contract asked for k* with algebraic coordinates
-  on a rational |k| grid, certified "by exact inequality (radicals,
-  Sturm)". At rational |k|, e^{ik} is transcendental, so these
-  requirements cannot all hold. The explicit witnesses are certified with
-  outward-rounded interval arithmetic (mpmath.iv, 40 digits, irrational
-  inputs enclosed within ±1e-55). Existence of super-c for every beta row
-  also follows from exact signs alone.
-- **Search.** Only the declared rays and grid were searched. No row was
-  searched beyond them.
-- **V_grp^max** remains OPEN for L6e, L6c, L6d and L6f.
-- **Signatures** are leading-order and near the node only. Their range of
-  validity is OPEN, as in the parent.
-- **Scope.** No comparison with observational bounds (contract Sec. 5), no
-  value of ell or of the clock frequency, and no claim that our universe
-  is a QCA or a simulation.
+- The contract asked for exact certification of k* by radicals or Sturm
+  sequences. I used directed-rounding interval arithmetic (mpmath.iv), a
+  change of method, not something forced by the contract (repair 3). Exact
+  certification over the transcendental exponentials, with series and
+  bounded remainders, was possible and was not done.
+- The interval points are not audited rigorous certificates (repair 2): the
+  enclosures of the irrational constants rely on a 70-digit evaluation
+  without a certified error bound, L is chosen by float comparison, and
+  block unitarity (detmod) is recorded but not required. They are reported
+  values consistent with the near-node expansion; for example L5a gives
+  0.5852 against c_0 (1 + 2 beta t) = 0.5854 at t = 1/16. They do not carry
+  the verdict. Existence near the node rests on the exact beta signs.
+- V_grp^max remains OPEN for L6e, L6c, L6d and L6f.
+- The signatures are leading-order and near the node; their range of
+  validity is OPEN.
+- Scope: no comparison with observational bounds, no value of ell or of the
+  clock frequency, and no claim that our universe is a QCA or a simulation.
 
 ## 5. What this says about "c is the clock, therefore it cannot be exceeded"
 
-In these models, two statements are independent:
+In these models:
 
-- c being the largest isotropic speed the update allows;
-- c being unbeatable.
+- Being at the largest isotropic speed the one-step update allows does not
+  guarantee that c is unbeatable (L5a, L5b, L4).
+- c being unbeatable does not require exact saturation of the clock (L2,
+  L3, with c_0 < V_causal^max).
+- Whether "unbeatable" forces being at the isotropic ceiling is OPEN in the
+  declared rows.
 
-Some walks at that ceiling still let excitations outrun c (L5a, L5b, L4).
-Some walks below it do not show any excitation faster than c on the
-declared rays (L6c, L6d, L6f). Only exact saturation of the clock, which
-for an isotropic c is possible only in one dimension, comes with no
-dispersion at all. An observation that nothing outruns c would therefore
-not, by itself, identify c with the clock in this class.
+Only exact saturation of the clock, possible for an isotropic c only in one
+dimension, comes with no dispersion correction at all.
 
 ## 6. Verifier
 
 [Script](../scripts/verify_observational_signature_gate.py),
 [record](2026-11-09--observational-signature-saturation.txt),
-[JSON](2026-11-09--observational-signature-saturation.json): 19/19.
-Reviewed verifiers were imported read-only.
+[JSON](2026-11-09--observational-signature-saturation.json): 19/19 lines
+PASS (repair 6). The count mixes three kinds of entries:
+
+- computed exact identities (L1, L2, L3, multilinear vertices);
+- exact signs of transcribed coefficients;
+- interval labels, not audited (Sec. 4).
+
+The signature classes and the L3s4 threshold are transcribed text, not
+checks. A search exception would have been labelled
+`NO_WITNESS_ON_DECLARED_RAYS` instead of `OPEN (evaluation failed)`; none
+occurred in this run. Reviewed verifiers were imported read-only.
