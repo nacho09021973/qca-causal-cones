@@ -2,6 +2,33 @@
 
 **Date:** 2026-11-09
 
+**Dispersion data comparison — 2026-11-09:** user «adelante». Contract
+ad445aa (photon dictionary H_gamma with D1 non-birefringent / D2
+birefringent, frozen); verifier 6b0e049 committed before running, 9/9.
+Only bounds verified in the original
+([source check](../investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md):
+LHAASO 2402.06009 Table I; Kostelecký–Mewes 1301.5367 Table III).
+[Report](../reports/2026-11-09--dispersion-data-comparison.md). Route
+`DATA_SEPARATE_ORDER1_FROM_ORDER2_ROWS`: at the most sensitive direction,
+order-1 (super-c) rows need ell ≤ ~0.3-0.57 ell_P under D1 (clock ≳ 6e43 Hz)
+and ≤ ~2e-14 ell_P under D2; order-2-only rows (incl. L2, L3) allow
+ell up to ~1.4-4.6e-27 m (~1e8 ell_P, clock ≳ 1e35 Hz). Hi, Hk
+`CONFIRMED_IN_DECLARED_ROWS`. Limits: zero-coefficient directions are
+unconstrained at leading order; lattice orientation unknown; dictionaries
+are assumptions. User asked for Codex review: one sealed revision-ciega
+astra round (gpt-6-astra, herramientas 97292a9) on 121f679,
+[unaltered review](../reports/reviews/2026-11-09-dispersion-data-comparison-astra/informe_astra.md):
+«reparación necesaria»; matching factors, suprema and arithmetic agree.
+Applied: result restated as a sensitivity comparison at the direction of
+maximal coefficient (not a bound for unknown orientation; no row excluded
+for unknown orientation); L3s4 zeros only for a^2 >= x_c, sup S(a), numbers
+are envelopes; on beta zero directions the order-2 term is
+3alpha + |grad_S beta|^2/2, cancelling for L5a/L5b/L4 on n3=0 (no
+fall-back to order 2); "nothing outruns c" proved only for L2, L3; D2
+frequencies given as formulas. Not re-reviewed. PRELIMINARY, no promotion;
+no claim about our universe. MINIMAL_LENGTH_EXCLUSION (130cdbc, frozen, not
+executed) inherits the sensitivity reading.
+
 **Observational signature of saturation — 2026-11-09:** user «si, congélalo
 y ejecútalo». Contract 21af1dd (conditional dictionary H_gamma; no claim
 about our universe); verifier 658845a committed before running.
