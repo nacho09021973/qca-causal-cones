@@ -1,5 +1,8 @@
 # Moneda general: exclusión de una pendiente isotrópica distinta
 
+**Promocionado el 2026-11-09 en su alcance congelado** (instrucción del
+usuario; ver `state/CURRENT_STATE.md`). La línea de estado siguiente es la previa.
+
 2026-11-06. Codex (OpenAI). **PRELIMINARY: derivación y controles de autor**.
 
 [Revisión ciega de Grok](reviews/2026-11-09-s4-general-coin-viability-grok/informe_grok.md)

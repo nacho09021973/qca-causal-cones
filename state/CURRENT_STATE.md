@@ -2,6 +2,38 @@
 
 **Date:** 2026-11-09
 
+**Bounded results promoted — 2026-11-09:** by direct user instruction
+(«promociona los tres resultados»), on `research/schur-stability-audit`,
+each in its frozen scope only. Each has one sealed cross-family review
+(Grok `grok-4.7`, «se sostiene», no objections); no Lean, no novelty claim.
+
+1. Thirring approximate recovery (contract `61a8215`, report `ad01e20`,
+   review `d0f1ae1`): `APPROXIMATE_RECOVERY_EXCLUDED`. Promoted: for the
+   M=1 code, U=FJ, mu=3/5, nu=4/5, z=i, infinite line and output frame
+   F^T B, liminf_T ||E_T|00>||^2 >= c > 0, so no subsequence, phase or
+   matrix V gives approximate recovery. Not promoted: a value of c, input
+   11, other codes/resources/parameters, any Thirring-QCA no-go.
+2. s=4 general U(4) coin (contract SHA256 a817034f…, hash recorded before
+   execution, no Git preregistration; review `9996725`):
+   `NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN`.
+   Promoted: for U(k)=W prod exp(-i k_i sigma_i tensor tau_i/sqrt3), any W
+   in U(4), every separated rank-two node at k=0 with untilted
+   nondegenerate isotropic linear cone has c=1/3. Not promoted: the
+   reviewer's extra corollary (no tilted isotropic cone) and witness, other
+   shifts, dimensions, nodes, ranks or anisotropic cones.
+3. s=4 cyclic realization (contract SHA256 c065cb8c…, same preregistration
+   caveat; review `9996725`): `REALIZED_WITH_ACTUAL_SUPPORT`. Promoted: the
+   explicit finite-range unitary with scalar commutant, D2, C=VK, cyclic S,
+   two nodes at phases ±pi/4 with isotropic linear speeds cP=cQ=1/3, real
+   support the regular tetrahedron (r_in=1/3). Not promoted: the
+   eight-nonzero-step variant (OPEN), the local protection argument of its
+   Sec. 6, any strict asymptotic body, law
+   c=r_in, selection or physical value of c, membership in the class of
+   1708.00826.
+
+The entries below keep their execution records; their «no promotion»
+lines are superseded by this entry for the promoted statements only.
+
 **Approximate recovery of the microscopic Thirring code — 2026-11-09:**
 user chose the approximate-recovery option of the roadmap («Contrato
 aproximado»). Contract 61a8215; verifier dd4e547 committed before running,

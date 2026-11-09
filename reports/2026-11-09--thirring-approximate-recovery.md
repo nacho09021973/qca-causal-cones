@@ -1,5 +1,8 @@
 # Microscopic Thirring code: no approximate recovery at growing times
 
+**Promoted 2026-11-09 in its frozen scope** (user instruction; see
+`state/CURRENT_STATE.md`). The status line below records the pre-promotion state.
+
 2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: author proof plus exact
 author checks; one sealed cross-family review (Grok), no promotion, not
 formalized in Lean.**

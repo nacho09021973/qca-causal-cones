@@ -1,5 +1,9 @@
 # Realización s=4 con simetría cíclica y soporte tetraédrico
 
+**Promocionado el 2026-11-09 en su alcance congelado** (instrucción del
+usuario; ver `state/CURRENT_STATE.md`); la sección 6 no se promociona.
+La línea de estado siguiente es la previa.
+
 2026-11-06. Codex (OpenAI). **PRELIMINARY, comprobación de autor**.
 
 [Revisión ciega de Grok](reviews/2026-11-09-s4-cyclic-realization-grok/informe_grok.md)
