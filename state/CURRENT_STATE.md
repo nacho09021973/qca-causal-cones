@@ -2,6 +2,16 @@
 
 **Date:** 2026-11-09
 
+**Project question reframed in README — 2026-11-09:** user decision
+(«este es un objetivo mucho más exacto y concreto que el objetivo inicial»):
+README now leads with the coexistence question of the roadmap — whether one
+finite-range QCA with one fixed rule admits both universal quantum
+computation and a relativistic low-energy regime of the same rule, stated
+per code, resources and parameters. The original c_IR-from-causal-geometry
+question and its results are kept as inherited results. Documentation
+decision only: no gate, status or scope of any result changed;
+`PROJECT_INSTRUCTIONS.md` not edited.
+
 **Bounded results promoted — 2026-11-09:** by direct user instruction
 («promociona los tres resultados»), on `research/schur-stability-audit`,
 each in its frozen scope only. Each has one sealed cross-family review
