@@ -16,7 +16,15 @@ cancelled doubler components reappear. Written packet bridge (exact
 four-plane-wave eigenfunctions certified, unitarity, tail O(mu^{3/4}) and
 phase-variation O(mu^{1/2}) estimates written, not machine-checked).
 Diagnostic at mu=1/11 (decides nothing): leakage 0.331/0.402/0.443 vs
-prediction 0.332/0.402/0.443. PRELIMINARY, no review or promotion.
+prediction 0.332/0.402/0.443 (estimator). User asked for review by Codex
+(other family): one sealed revision-ciega astra round (gpt-6-astra,
+herramientas 97292a9) on b4ac949,
+[unaltered review](../reports/reviews/2026-11-09-thirring-low-energy-packet-astra/informe_astra.md):
+«reparación necesaria»; verdict holds once the proof is completed. Applied: missing 1/(2pi), uniform
+tail bounds with spinor/T derivatives, |omega'| sign, general contact
+derivation separated from point checks, universal closing remark withdrawn,
+diagnostic labelled an estimator, 39/39 qualified; not re-reviewed.
+Contract drafted by Codex (same family as reviewer). PRELIMINARY, no promotion.
 **Closing balance:** contract 1 OPEN; contract 2 negative for this packet code
 only (not a Thirring no-go); budget exhausted, so the Thirring coexistence
 line stops by the 2026-11-09 decision; coexistence question remains OPEN;
