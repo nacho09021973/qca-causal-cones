@@ -152,8 +152,11 @@ def check_overlaps():
         ov = simp(sum(sp.conjugate(psi(*key)) * c for key, c in v.items()))
         res[name] = ov
     exact("overlap-00-equals-minus-i-sqrt2", iszero(res["00"] + I * sp.sqrt(2)))
-    exact("overlap-01-zero", iszero(res["01"]))
-    exact("overlap-10-zero", iszero(res["10"]))
+    # Run 1 (dd4e547) wrongly expected zero for 01 and 10: those inputs are
+    # on-site opposite-component pairs and meet f(0). Corrected after that run;
+    # the failed record is kept as ...-failed-run-1.{txt,json}. Not used for the verdict.
+    exact("overlap-01-equals-3sqrt2/4", iszero(res["01"] - 3 * sp.sqrt(2) / 4))
+    exact("overlap-10-equals-minus-3i-sqrt2/4", iszero(res["10"] + 3 * I * sp.sqrt(2) / 4))
     exact("overlap-11-zero", iszero(res["11"]))
     weight = simp(sp.Abs(res["00"]) ** 2 / norm_f)
     exact("fiber-weight-00-at-p0-equals-16/25", weight == sp.Rational(16, 25))
