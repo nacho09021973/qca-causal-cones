@@ -2,6 +2,21 @@
 
 **Date:** 2026-11-09
 
+**Multi-source orientation — 2026-11-09:** user «2» then «SI BUSCALAS».
+Contract dd9ab5c; sky positions verified in GCN 9339 (GRB 090510) and GCN
+32632/32635 (GRB 221009A = Swift J1913.1+1946); verifier 2464e1a committed
+before running; single run 4/5 (failing check = D2 certification, outcome
+OPEN, allowed). [Report](../reports/2026-11-09--multi-source-orientation.md).
+3D rows only. Exact: on coordinate planes the order-2 group-speed term
+vanishes for L5a/L5b/L4, and any <=3 sources fit those planes, so these rows
+`ESCAPES_ALL_SOURCES` under D1 (Hm1 CONFIRMED); under D2 with the four
+Kostelecký–Mewes GRBs the min over orientations was not certified (Hm2
+OPEN; sampled diagnostic 0.0099 with +-0.5 deg positions). L3s4 has no blind
+directions for a^2 < x_c: `EXCLUDED_ROBUST` under H_min for every
+orientation for a < 0.7731 (D1) and a^2 < x_c minus a sliver (D2). L3
+`ALLOWED_ROBUST`. Line `ORIENTATION_INDEPENDENT_EXCLUSION_UNDER_HMIN_L3s4`.
+PRELIMINARY, no review or promotion; conditional on H_gamma, D1/D2, H_min.
+
 **Dispersion data comparison — 2026-11-09:** user «adelante». Contract
 ad445aa (photon dictionary H_gamma with D1 non-birefringent / D2
 birefringent, frozen); verifier 6b0e049 committed before running, 9/9.
