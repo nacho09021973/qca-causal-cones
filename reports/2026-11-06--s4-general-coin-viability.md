@@ -344,3 +344,204 @@ otra ampliación.
 PRELIMINARY; revisión independiente pendiente; sin verificación formal,
 sin promoción y sin afirmación de novedad. La promoción del 2026-11-09
 al principio del fichero sigue cubriendo solo las secciones originales.
+
+
+---
+
+## Apéndice C — auditoría de antecedentes (2026-11-09)
+
+**NOVELTY = OPEN. Riesgo alto de que el resultado sea una aplicación o un
+corolario de resultados conocidos.** Esta auditoría no es revisión
+independiente de B, ni promoción científica. Se conserva la historia del
+informe; la evaluación bibliográfica siguiente sustituye cualquier
+impresión de novedad basada únicamente en no haber localizado una fórmula.
+
+### C.1 Pregunta y método
+
+Pregunta: ¿qué parte de la cadena de B —soporte tetraédrico exacto,
+unitariedad, factorización con cuatro proyectores de rango uno, compresión
+nodal e isotropía que fuerzan c_IR tau/ell=1/3— está publicada o se deduce
+directamente de antecedentes?
+
+Se buscaron trabajos sobre paseos en grafos de Cayley, clasificación
+isotrópica, redes tetraédricas relativistas y POVM/SIC de qubit. Se
+contrastaron los textos primarios indicados abajo, incluyendo las
+ecuaciones decisivas de los PDF. Se distinguieron fechas del preprint y de
+publicación; las fechas de subida de copias a repositorios no se usaron
+como prioridad científica.
+
+La comparación se limita a A. No es una revisión exhaustiva de todo
+qca-causal-cones, ni evalúa la novedad de la corona IR, el techo hexagonal,
+las interacciones o la universalidad computacional. Una búsqueda negativa
+no establece prioridad.
+
+### C.2 Antecedentes decisivos y diferencias de hipótesis
+
+**[C1] O. López Acevedo y T. Gobron, *Quantum walks on Cayley graphs*.**
+Preprint 2005; J. Phys. A: Math. Gen. 39, 585 (2006).
+[arXiv:quant-ph/0503078v4](https://arxiv.org/abs/quant-ph/0503078v4);
+[DOI](https://doi.org/10.1088/0305-4470/39/3/011).
+
+En la p. 6 del preprint, ecuaciones (20)–(23) y teorema 1, las mismas
+ortogonalidades bilaterales y normalizaciones llevan a
+M_delta=U P_delta, con proyectores ortogonales completos. También se
+identifica el rango uno cuando la dimensión interna es mínima.
+
+**Comparación propia:** el teorema está enunciado para grupos libres;
+nuestra red es abeliana. No se invoca sin comprobar hipótesis. Pero B.1
+establece precisamente las identidades algebraicas que usa su prueba,
+porque las diferencias no nulas del tetraedro son únicas. El paso B.2
+reutiliza ese argumento conocido. La diferencia de grupo no aporta, por
+sí sola, una nueva dificultad de factorización.
+
+**[C2] J. M. Renes, R. Blume-Kohout, A. J. Scott y C. M. Caves,
+*Symmetric Informationally Complete Quantum Measurements*.**
+Preprint 2003; J. Math. Phys. 45, 2171 (2004).
+[arXiv:quant-ph/0310075](https://arxiv.org/abs/quant-ph/0310075);
+[DOI](https://doi.org/10.1063/1.1737053).
+
+La sección III, ecuaciones (17)–(18), y IV.A describen la geometría simplex
+de las SIC y el caso de qubit: cuatro estados puros con vectores de Bloch
+tetraédricos.
+
+**Comparación propia:** escribir H_i=c0 sum_a R_ia sigma_a, R ortogonal,
+convierte (B1) en B_v=[I+3c0 (R^T v).sigma]/4. El rango uno exige longitud
+de Bloch uno, luego 3c0=1. Los B_v son entonces los efectos de una SIC
+tetraédrica, y 2B_v son sus proyectores puros. El artículo no enuncia un
+teorema de velocidad; la conexión con el nodo es nuestra identificación,
+mientras que la geometría empleada es conocida. No se identifica un
+solapamiento SIC con una velocidad por mera coincidencia numérica.
+
+**[C3] B. Z. Foster y T. Jacobson, *Propagating spinors on a tetrahedral
+spacetime lattice*.**
+Preprint 2003, revisión 2004.
+[arXiv:hep-th/0310166v2](https://arxiv.org/abs/hep-th/0310166v2).
+
+En pp. 1–2, ecuaciones (2)–(9), los pasos son epsilon(1,alpha n_i),
+con n_i tetraédricos unitarios. Con velocidad relativista continua fijada
+a uno, eligen alpha=3 para que las caras causales discretas sean nulas;
+aparecen los proyectores (I+n_i.sigma)/2. En p. 4 explicitan que la
+evolución discreta no es unitaria.
+
+**Comparación propia:** tau=epsilon y ell=3epsilon dan el mismo cociente
+c_IR tau/ell=1/3. Es un antecedente físico directo de la proporción y de los
+proyectores, no una demostración de la rigidez para toda la clase unitaria
+s=4 de A. Además, parten de una ecuación continua cuya velocidad ya está
+especificada; no seleccionan la velocidad de nuestro universo.
+
+La continuación de los autores,
+[*Spin on a 4D Feynman Checkerboard*](https://arxiv.org/abs/1610.01142)
+(preprint 2016; DOI
+[10.1007/s10773-016-3170-0](https://doi.org/10.1007/s10773-016-3170-0)),
+desarrolla esta construcción. Véanse pp. 4–5, ecuaciones (5)–(11), y p. 14
+sobre la falta de unitariedad discreta.
+
+**[C4] G. M. D'Ariano, M. Erba y P. Perinotti,
+*Isotropic quantum walks on lattices and the Weyl equation*.**
+Phys. Rev. A 96, 062101 (2017).
+[arXiv:1708.00826v2](https://arxiv.org/abs/1708.00826v2);
+[DOI](https://doi.org/10.1103/PhysRevA.96.062101).
+
+La proposición 5 (p. 7 del preprint) clasifica los paseos isotrópicos de dimensión interna
+s=2 bajo sus hipótesis; en tres dimensiones aparece la red BCC. La
+definición usa covariancia del paseo completo y un soporte con generadores
+e inversos.
+
+**Comparación propia:** A tiene s=4, solo cuatro direcciones tetraédricas y
+una condición local sobre la métrica del doblete. No puede trasladarse
+automáticamente la clasificación s=2. Es un antecedente de la estrategia
+de obtener dinámica Weyl mediante restricciones microscópicas, no una
+identificación demostrada de las dos clases.
+
+**[C5] U. Nzongani, N. Eon, I. Márquez-Martín, A. Pérez, G. Di Molfetta
+y P. Arrighi, *Dirac quantum walk on tetrahedra*.**
+Phys. Rev. A 110, 042418 (2024).
+[arXiv:2404.09840v1](https://arxiv.org/abs/2404.09840v1);
+[DOI](https://doi.org/10.1103/PhysRevA.110.042418).
+
+Las secciones II y IV construyen un paseo con límite Dirac sobre una
+teselación obtenida dividiendo cubos en seis ortoesquemas tetraédricos.
+Las amplitudes se sitúan en caras y la dinámica concatena operaciones
+locales y desplazamientos.
+
+**Comparación propia:** no es, por compartir la palabra tetraedro o usar
+cuatro amplitudes, la clase homogénea de cuatro traslaciones de A. Haría
+falta demostrar una equivalencia de símbolos, soportes y actualización.
+El artículo no se usa para atribuir a A su clasificación ni su velocidad.
+
+**[C6] L. Mlodinow y T. A. Brun, *Bounds on quantum cellular automaton
+lattice spacing from data on Lorentz violation*.**
+Phys. Rev. D 112, 074513 (2025).
+[arXiv:2506.20136](https://arxiv.org/abs/2506.20136);
+[DOI](https://doi.org/10.1103/5w6s-jr1d).
+
+Como contexto físico reciente, estudian desviaciones de velocidad y
+anisotropías en un QCA correspondiente a QED, y usan restricciones
+experimentales y astrofísicas para acotar su espaciado. Aquí se verificaron
+los metadatos y el resumen primario; no se auditaron sus cotas numéricas.
+No se presenta como antecedente demostrado del teorema A. Ilustra que la
+cuestión física de un sustrato discreto se investiga también mediante sus
+consecuencias observables.
+
+### C.3 Qué queda de la posible aportación
+
+| Pieza del argumento | Evaluación |
+| --- | --- |
+| Diferencias tetraédricas únicas implican ortogonalidad de coeficientes | Aplicación geométrica de las identidades de unitariedad conocidas; comparación propia con [C1]. |
+| Ortogonalidad implica moneda y proyectores; s=4 implica rango uno | Argumento algebraico ya presente en [C1]. |
+| Compresión de rango uno y geometría tetraédrica fijan la longitud de Bloch | Geometría conocida de [C2], aplicada aquí a los generadores nodales. |
+| La proporción tetraédrica 1/3 puede aparecer en una dinámica relativista discreta | Antecedente físico [C3], con distinta unitariedad y dirección de construcción. |
+| Todas las reglas de A tienen esa pendiente si existe el doblete requerido | Enunciado exacto no localizado en los textos revisados; riesgo alto de corolario. Ausencia de localización no certifica novedad. |
+
+El resultado de B sigue siendo útil para cerrar una búsqueda: cambiar los
+coeficientes dentro de A no permite una pendiente distinta mientras se
+mantengan las condiciones nodales. La auditoría no encuentra un motivo
+bibliográfico para retractar esa derivación, pero tampoco constituye su
+validación independiente.
+
+La valoración científica se reduce: no hay base para presentar la
+factorización, la geometría tetraédrica de qubit o la aparición del factor
+1/3 como descubrimientos propios. El posible residuo es la formulación
+conjunta, precisa y condicional para toda la clase de A. Que esa formulación
+sea correcta no implica que tenga suficiente contenido nuevo para un
+artículo autónomo.
+
+### C.4 Próximo gate único
+
+Antes de ampliar modelos o ejecutar nuevos barridos, contrastar con un
+especialista el enunciado A y esta pregunta:
+
+> ¿Queda algún paso matemático sustantivo que no sea una aplicación directa
+> del argumento de [C1], la geometría tetraédrica/SIC de [C2] y la
+> compresión espectral de primer orden?
+
+El resultado de esa comparación debe identificar el paso concreto y sus
+hipótesis, o clasificar honestamente el enunciado como corolario/aplicación.
+El contraste con [C3] debe mantener visible la diferencia entre evolución
+discreta unitaria y no unitaria. No se ha solicitado esa revisión ni se
+declara superado este gate.
+
+Estado al cierre de esta auditoría: **B = PRELIMINARY; NOVELTY = OPEN;
+antecedentes directos identificados; importancia física general no
+establecida.** No se modifica CURRENT_STATE.md ni se extiende la promoción
+histórica a los apéndices.
+
+
+### C.5 Trazabilidad y control de la síntesis asistida
+
+Se completó una búsqueda amplia asistida:
+[informe automático sin corregir](https://agent.tinyfish.ai/research/01a1c0f9-face-7211-bbaf-bf8a534fe0e1).
+Es material auxiliar para localizar candidatos, no revisión independiente
+ni versión científica de esta auditoría.
+
+Su conclusión de novedad no se adopta: omitió [C1] y [C3], y reconoció no
+haber leído directamente la literatura SIC. Además, en algunos pasajes
+presenta la existencia/isotropía del cono como conclusión, cuando en A son
+hipótesis, y normaliza incorrectamente las compresiones. Las identidades
+correctas son sum_v B_v=I2; a c0=1/3 los efectos SIC son B_v, y los
+proyectores puros son 2B_v. Ningún párrafo de esa síntesis altera A o B.
+
+Se comprobaron los originales que sostienen C.2. Algunas otras referencias
+recientes sugeridas por la búsqueda no pudieron corroborarse directamente
+en su texto primario y no se usan para sostener novedad ni prioridad. El
+informe automático tampoco determina que una bibliografía sea exhaustiva.
