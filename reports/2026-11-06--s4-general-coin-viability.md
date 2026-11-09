@@ -596,3 +596,173 @@ estado, el informe existente, su constructor y el catálogo versionado.
 Los originales [C1]–[C3] se han contrastado directamente. Las reglas
 locales ~/herramientas/REGLAS.md no están disponibles aquí; no se declara
 haberlas leído. El índice local no se sustituye por un índice inventado.
+
+
+## Apéndice E — síntesis algebraica y límite de la identificación (2026-11-09)
+
+**PRELIMINARY: derivación manual de autor bajo el contrato D.**
+Contrato registrado en 610f86af3df46e20cae4b0e4b10e9b51fdd44ef6.
+Sin nueva ejecución de código, revisión independiente o promoción.
+**NOVELTY = OPEN.** Las identidades siguientes son una comparación propia
+con fuentes atribuidas, no resultados que se atribuyan a esos autores.
+
+### E.1 Base común y atribución
+
+La base consiste en una cadena de implicaciones con sus hipótesis
+visibles. Dentro de A, B.1 permite aplicar el argumento de factorización
+de López Acevedo–Gobron [C1]; la dimensión interna cuatro fuerza cuatro
+proyectores de rango uno. Su compresión al doblete, junto con isotropía y
+ausencia de inclinación, produce la geometría SIC tetraédrica [C2].
+El resultado condicionado es c_IR tau/ell=1/3.
+
+La aportación del repositorio es formular y demostrar esa cadena para su
+clase precisa, además de disponer de un constructor ya registrado.
+Esta formulación se trata como aplicación/síntesis de antecedentes hasta
+que una revisión de prioridad identifique contenido nuevo suficiente.
+Una prueba más clara tiene valor aunque su conclusión sea un corolario.
+
+[C4] y [C5] quedan como comparadores de clases. [C6] proporciona contexto
+fenomenológico. Sus hipótesis y conclusiones no se incorporan como
+premisas de esta prueba.
+
+### E.2 Identidad exacta de la compresión de un paso
+
+Usar la factorización de B:
+
+    U(k)=W D(k),       D(k)=sum_v P_v exp(-i k.v),
+    WT=zT,            T†T=I2,       |z|=1.
+
+Como W es normal, el subespacio del eigenvalor z es reductor; por tanto
+T†W=zT†. Al retirar la fase nodal se obtiene exactamente, para todo k,
+
+    K(k):=z^(-1)T†U(k)T
+         =sum_v B_v exp(-i k.v),     B_v=T†P_v T.          (E1)
+
+T es la isometría FIJA del doblete en k=0. No es un marco espectral
+dependiente de k, y K no se declara una evolución cerrada de ese doblete
+a momento finito.
+
+Escribir H_i=(1/3)sum_a R_ia sigma_a, con R ortogonal, como permite B.
+Entonces, con n_v=R^T v,
+
+    B_v=[I2+n_v.sigma]/4 = Pi_v^FJ/2,
+    Pi_v^FJ=[I2+n_v.sigma]/2,
+    sum_v B_v=I2.                                         (E2)
+
+Los n_v son vértices de un tetraedro unitario. Si p=R^T k, (E1) se vuelve
+
+    K(k)=(1/2)sum_v Pi_v^FJ exp(-i p.n_v).                 (E3)
+
+Este es el polinomio de UN paso de [C3], p. 2, ecuaciones (6) y (9),
+expresado con longitud elemental uno y los ejes consistentes. Allí el
+salto espacial tiene longitud 3epsilon y el tiempo de paso epsilon, con
+velocidad continua fijada a uno: el cociente adimensional vuelve a ser
+1/3. El cambio ortogonal de ejes debe conservarse en la comparación,
+incluida su orientación; no se identifica una reflexión con una
+conjugación SU(2).
+
+Se identifica el polinomio de un paso, no todo el espacio de estados ni
+la foliación temporal de [C3]. Esta última usa capas espaciales que se
+desplazan entre actualizaciones.
+
+### E.3 El operador comprimido puede perder norma sin contradicción
+
+Sean Pi_0=TT†, Q_0=I4-Pi_0 y V(k)=z^(-1)U(k). Puesto que V es unitario,
+
+    I2-K(k)†K(k)=T†V(k)† Q_0 V(k)T >= 0.                 (E4)
+
+La diferencia mide la amplitud que sale del subespacio retenido. La
+unitariedad del sistema completo no exige unitariedad de esta compresión.
+Es consistente con la no unitariedad de la regla discreta que señalan
+Foster–Jacobson, p. 4 de [C3].
+
+Insertar Pi_0+Q_0 entre dos pasos da otra identidad exacta:
+
+    T†V(k)^2 T-K(k)^2 = T†V(k) Q_0 V(k)T.                (E5)
+
+El miembro derecho no está obligado a anularse. K^2 inserta una
+proyección intermedia; comprimir V^2 permite salir del subespacio y
+regresar. Una coincidencia de un paso no autoriza a transferir los
+propagadores completos ni sus resultados de convergencia.
+
+### E.4 Obstrucción explícita usando el constructor existente
+
+Se reutiliza, sin modificarlo, el constructor de
+[2026-11-06--s4-cyclic-realization.md](2026-11-06--s4-cyclic-realization.md),
+secciones 2 y 4:
+
+    G_i=sigma_i tensor tau_i,
+    n=(1,1,1)/sqrt(3),       N=I2 tensor (n.tau),
+    W=(I4-iN)/sqrt(2),
+    Pi_0=(I4+N)/2,          Q_0=(I4-N)/2.
+
+Elegir T psi=psi tensor |n,+>, donde (n.tau)|n,+>=|n,+>.
+Entonces z=exp(-i pi/4) y z^(-1)W=Pi_0+i Q_0. En el eje
+k=(k_x,0,0), poniendo a=k_x/sqrt(3),
+
+    D(k)=cos(a)I4-i sin(a)G_x,
+    T†G_x T=sigma_x/sqrt(3),
+    K(k)=cos(a)I2-i sin(a)sigma_x/sqrt(3).                (E6)
+
+De G_x^2=I4 se sigue
+
+    T†G_x Q_0 G_x T
+      =I2-(T†G_x T)^2=(2/3)I2.                          (E7)
+
+Sustituir V=(Pi_0+i Q_0)D en (E5) produce
+
+    T†V(k)^2 T-K(k)^2
+      =i T†D(k)Q_0 D(k)T
+      =-(2i/3)sin(a)^2 I2.                              (E8)
+
+Por tanto difieren siempre que sin(a)!=0. Es un contraejemplo algebraico
+a la identificación temporal general dentro de la clase ya existente,
+sin barrido ni nuevo modelo. También
+
+    I2-K(k)†K(k)=(2/3)sin(a)^2 I2.                       (E9)
+
+La diferencia de (E8) empieza en orden k_x^2; no contradice la coincidencia
+del término lineal. Los controles históricos del constructor no se
+atribuyen a (E8) o (E9): estas identidades se han derivado aquí a mano y
+requieren su propia revisión.
+
+### E.5 Afirmación consolidada y límites
+
+**Afirmación que permite esta síntesis, con evidencia PRELIMINARY:**
+
+> Para paseos homogéneos exactamente unitarios con soporte tetraédrico
+> unitario de cuatro pasos no nulos y cuatro componentes internas,
+> cualquier doblete separado en k=0 que tenga un cono lineal isotrópico
+> no degenerado y sin inclinación tiene c_IR tau/ell=1/3. Su compresión
+> de un paso, retirada la fase nodal, coincide con el polinomio tetraédrico
+> de Foster–Jacobson tras identificar ejes y normalización. Esa identidad
+> no se extiende en general a la evolución iterada; el constructor
+> existente da una diferencia no nula ya en dos pasos.
+
+La primera parte reexpone B con atribución a sus ingredientes conocidos.
+La segunda explicita el puente documental y algebraico. La tercera
+impide transferir indebidamente propiedades entre las dos dinámicas.
+No se afirma originalidad de ninguna de las tres por no haber encontrado
+el mismo enunciado en la bibliografía.
+
+Esta base explica una rigidez CONDICIONAL dentro de un universo de
+juguete definido. La existencia del cono, su isotropía y el tipo de nodo
+siguen entre las condiciones; no aparecen como consecuencias nuevas de
+juntar artículos. Tampoco se obtiene selección del sustrato de nuestro
+universo, estabilidad genérica del nodo, igualdad entre todas las
+especies, universalidad computacional o el cuerpo causal estricto.
+
+### E.6 Resultado del contrato y revisión pendiente
+
+La pregunta de D queda respondida por una derivación de autor: identidad
+exacta de un paso y obstrucción explícita a la identificación temporal
+general. Se aplica su criterio de abandono a esa identificación temporal;
+no se abre otra familia para evitar el contraejemplo.
+
+**PRELIMINARY; NOVELTY = OPEN.** La revisión especializada de C.4 sigue
+pendiente. El paquete concreto para revisarla es ahora A–B, las fuentes
+[C1]–[C3], y las ecuaciones (E1)–(E9), con atención a la fase z, la
+normalización de los efectos SIC, la orientación de ejes y la distinción
+entre compresión e iteración. Una revisión debe juzgar corrección y
+novedad por separado. No se ha contactado a terceros ni se ha actualizado
+el estado canónico.
