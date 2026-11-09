@@ -1,0 +1,1676 @@
+OpenAI Codex v0.167.0
+--------
+workdir: /tmp/tmp.tOtNeM39vg/sello
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1c04e-4fb3-72d1-89d1-2163295cf824
+--------
+user
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente el informe adjunto. Afirmaciones centrales: (a) en las
+filas techo L2 y L3, V_grp^max = c_0 exactamente (forma producto
+cos omega = prod cos p_j y cota multilineal); (b) en L5a, L5b, L4, L6a, L6b y
+L3s4 existen excitaciones con velocidad de grupo mayor que c_0 (signo exacto
+de beta en rayos declarados más puntos certificados por intervalos);
+(c) Hg refutada por L2, Hh refutada por L3s4; (d) veredicto de ruta
+DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS, parcial; (e) la conclusión de la
+sec. 5 (estar en el techo isótropo y ser insuperable son independientes en
+esta clase). Tu objetivo es encontrar errores, supuestos ocultos o huecos,
+o explicar por qué se sostiene. No aceptes el recuento 19/19 como prueba.
+
+Comprueba desde las definiciones:
+(1) la reducción de L2/L3 a omega = arccos(prod cos p_j), la fórmula de
+    |grad omega|^2, la cota multilineal y su verificación en vértices, y
+    c_0 = 1/L;
+(2) el paso de beta(n)>0 a |grad eps| > c_0 cerca del nodo (rama analítica a
+    lo largo del rayo, derivada radial como cota inferior), incluido L3s4
+    con a simbólica;
+(3) la fórmula de las dos velocidades de grupo de un bloque unitario 2x2 a
+    partir de |Tr U|^2 y del argumento del determinante, y que ambas ramas
+    son las del nodo sin masa; la corrección de la aritmética de intervalos
+    (constantes, redondeo, comprobación de no cruce);
+(4) la lectura de las firmas desde la tabla padre (orden, signo, isotropía)
+    y la refutación de Hh por L3s4;
+(5) si el veredicto de ruta y la sec. 5 se exceden respecto a lo probado
+    (filas sin testigo ≠ V_grp^max = c_0; validez cerca del nodo);
+(6) el defecto de contrato declarado y si la desviación a intervalos es
+    aceptable;
+(7) correspondencia del script con lo que el informe dice.
+
+Se adjuntan contrato, informe, script, registro, el informe padre de
+correcciones de dispersión y THREE_VELOCITIES.md. No tienes acceso al
+repositorio ni puedes ejecutar código. Distingue lo que derivas a mano de lo
+que sólo inspeccionas.
+
+Entrega en español: veredicto (se sostiene / reparación necesaria /
+refutado / no decidido), derivaciones críticas, objeciones ordenadas por
+gravedad con sección y reparación concreta, y el alcance exacto que
+aceptarías. Si no hay fallos, dilo sin inventar objeciones. Ninguna propuesta
+de protocolo o búsqueda adicional es necesaria.
+
+=== DOCUMENT 1: OBSERVATIONAL_SIGNATURE_SATURATION_GATE.md ===
+
+# OBSERVATIONAL_SIGNATURE_SATURATION — draft contract
+
+**Status of this text:** frozen at the commit that introduces it (preregistration), written 2026-11-09 by Claude (Opus 5.5) at
+user request («si, redáctalo como contrato»); frozen on «si, congélalo y ejecútalo». Earlier draft text said it would freeze at the
+commit that introduces it. Nothing in Secs. 3-4 has been computed.
+**Parent:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES` (promoted 2026-11-02,
+`CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN`). Its Sec. 5
+deferred the observational dictionary to "its own charter and its own user
+authorization"; this is that charter.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> In the declared rows, is there an observable difference between a walk
+> whose low-energy speed is the largest speed its update allows and one
+> whose low-energy speed lies below it? Concretely: does any excitation
+> outrun c_0, and what time-of-flight signature (sign, order in energy,
+> direction dependence) does each row predict, under the explicit
+> hypothesis that the row's massless branch is the photon?
+
+## 1. Known (with sources), the question, and what abandons the line
+
+Known:
+
+- Locality: no signal exceeds the microscopic causal body C_micro; in units
+  of one longest step per update, V_causal^max = 1 for every declared row
+  (`theory/THREE_VELOCITIES.md` Sec. 4; parent Sec. 1).
+- An isotropic low-energy cone fits inside C_micro, so c_0 ≤ r_in
+  (`theory/THREE_VELOCITIES.md` Sec. 5). For d ≥ 2 and a polytope C_micro,
+  r_in < V_causal^max. Hence c_0 = V_causal^max is possible only in d = 1.
+- Parent table (`reports/2026-11-02--dispersion-corrections-across-lattices.md`
+  Sec. 1 and Sec. 3.5): exact beta(n̂), alpha(n̂) and the node group-speed
+  correction |grad eps|/c_0 = 1 + 2 beta t + ... or 1 + 3 alpha t^2 + ...
+  for 13 rows. In L1, omega = |k| exactly. In L5a, L5b, L4, L6a and L6b,
+  beta is odd and the lowest correction takes both signs with direction.
+  V_grp^max is OPEN for every row with d ≥ 2.
+- No absolute scale is derivable (4B, `NO_ABSOLUTE_SCALE_DERIVABLE`);
+  ell and tau are free, and only ell/tau is fixed by c.
+
+Two saturation notions, fixed here:
+
+- **S_max**: c_0 = V_causal^max. Among the declared rows only L1 can have it.
+- **S_in**: c_0 = r_in (ceiling rows: L1, L2, L6e, L3, L5a, L5b, L4 in the
+  parent's list). This is "c is the largest isotropic speed the update
+  allows".
+
+Question: see Sec. 0.
+
+Abandonment of this observational route: if, in every declared row, no
+excitation is shown to outrun c_0 and the signatures of S_in rows and of
+non-ceiling rows do not differ in any of sign, order or direction
+dependence, the route is recorded as
+`NO_DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS` and abandoned for these rows.
+
+## 2. Rows
+
+Exactly the 13 rows of the parent table, with symbols imported read-only
+from the scripts listed in the parent contract Sec. 2. No new walk,
+lattice, massive row or interacting model. If a constructor does not return
+the symbol in the parent's form, the row is `OPEN (symbol not reusable)`.
+
+## 3. Quantities per row (exact, SymPy, zero tolerance)
+
+1. **Super-c witness.** An exact point k* (algebraic coordinates) on the
+   massless branch, with branch analyticity at k* checked, such that
+   |grad_k omega(k*)| > c_0 is certified exactly. Search is restricted, and
+   declared now, to the symmetry rays of each row (coordinate axes, face
+   and body diagonals, and the hexagon's vertex and edge directions) with
+   |k| on an exact rational grid fixed in the verifier before running. A
+   witness proves V_grp^max > c_0. Failing to find one proves nothing
+   (`NO_WITNESS_ON_DECLARED_RAYS`, not "V_grp^max = c_0").
+2. **Upper bound, optional.** Where an exact global argument exists (as for
+   L1, omega = |k|), V_grp^max = c_0 proved. Otherwise `OPEN`.
+3. **Signature class**, from the parent coefficients (imported, not
+   recomputed), under hypothesis H_gamma of Sec. 4:
+   - order n of the leading correction to the arrival time: n = 1 if beta is
+     not identically 0, n = 2 if beta = 0 and alpha is not identically 0,
+     none if both vanish;
+   - sign: delay only, advance only, or both signs with direction;
+   - direction dependence: isotropic or anisotropic, with the harmonic
+     (n1 n2 n3, cos 3 theta, cos 4 theta, K4, ...).
+   Arrival-time shift in the row's units, for a source at distance D and
+   energy E: Delta t / (D/c) = -(group-speed correction) at the wavenumber
+   of E. ell enters only through E ell / (hbar c) and stays a free
+   parameter. No numerical value of ell.
+4. **Discrimination table.** S_max row (L1), S_in rows and non-ceiling rows
+   side by side in items 1 and 3.
+
+## 4. Explicit hypotheses
+
+- **H_gamma (dictionary hypothesis, not a result):** the massless branch of
+  a row is identified with the photon; c = c_0 ell/tau. Every statement in
+  Sec. 3 item 3 is conditional on H_gamma. No claim that our universe is a
+  QCA or a simulation (`state/CURRENT_STATE.md` Sec. 8.9(iii) claim ceiling
+  stands, except that this conditional dictionary is now authorized).
+- **Hg (stated before solving):** every S_in row with d ≥ 2 has a super-c
+  witness: even when c is the largest isotropic speed the update allows,
+  some excitation outruns it.
+- **Hh (stated before solving):** no non-ceiling row has an advance-only
+  signature: a walk below the ceiling does not show a purely superluminal
+  leading correction.
+
+## 5. Not part of this gate
+
+- Comparison with observational bounds (time-of-flight limits from
+  astrophysical sources). This needs primary sources read in the original;
+  a literature search with `investigacion-gemini` sends text to third
+  parties and requires separate user permission; the comparison needs a
+  successor charter.
+- Any numerical value or bound on ell or on the clock frequency 1/tau.
+- Lorentz-violation model building, detector or source modelling.
+
+## 6. Method, budget, stop rules
+
+- Exact arithmetic; witnesses certified by exact inequality (radicals,
+  Sturm sequences if needed). Floating point only in a labelled
+  illustration file that feeds no verdict.
+- One permanent verifier `scripts/verify_observational_signature_gate.py`,
+  committed before its first run; failed runs retained; two exact command
+  forms in `.claude/settings.json`. Reviewed verifiers imported read-only.
+- Bound: one working session. Stop when every row has items 1, 3 and 4
+  filled or `OPEN` with reason. No search beyond the declared rays and grid.
+
+## 7. Verdicts
+
+- Per row: `SUPER_C_WITNESS` / `NO_WITNESS_ON_DECLARED_RAYS` /
+  `V_GRP_MAX_EQUALS_C0_PROVED`; signature class or `OPEN`.
+- Hg, Hh: `CONFIRMED_IN_DECLARED_ROWS` / `REFUTED_BY_ROW_<Id>` /
+  `DECIDED_BY_PARENT_TABLE`.
+- Route: `DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS` /
+  `NO_DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS` /
+  `OPEN_AFTER_BOUNDED_EXACT_ATTEMPT`, with the same weight.
+
+All results PRELIMINARY until a cross-family review; no promotion without
+separate user decision. Even a discriminating signature says what would
+distinguish the hypotheses in these rows; it is not evidence that we live
+in either.
+
+## 8. Explored before freezing (declared)
+
+Reading of the parent contract and report (Secs. 1, 3.3, 3.5, 3.6, 5) and of
+`theory/THREE_VELOCITIES.md`. The 1D Dirac-walk inequality
+nu sin k / sin omega ≤ 1 was noted by hand in conversation. The d ≥ 2
+consequence r_in < V_causal^max for polytopes is elementary. No group
+velocity off the node, no witness and no signature class has been computed.
+
+=== DOCUMENT 2: 2026-11-09--observational-signature-saturation.md ===
+
+# Observational signature of saturation: results
+
+2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: exact and interval
+author checks plus written arguments; no independent review, no promotion.**
+
+Contract [OBSERVATIONAL_SIGNATURE_SATURATION_GATE.md](../theory/OBSERVATIONAL_SIGNATURE_SATURATION_GATE.md),
+frozen at `21af1dd`. Verifier committed before its first run at `658845a`.
+First run passed 19/19.
+
+## 1. Answer
+
+In the 13 declared rows, under the dictionary hypothesis H_gamma (the
+massless branch is the photon), these are the findings:
+
+1. **"c is the largest isotropic speed the update allows" (S_in) does not
+   imply that nothing outruns c.** Among the ceiling rows with d ≥ 2:
+   - L2 and L3 have V_grp^max = c_0, exactly proved: nothing exceeds c.
+   - L5a, L5b and L4 have certified super-c excitations.
+   - Hg is `REFUTED_BY_ROW_L2` (and by L3).
+2. **Observing that nothing exceeds c does not show that c is at the
+   ceiling.** Below-ceiling rows show the same "delay-only, no witness"
+   behaviour (L6c, L6d, L6f: no witness on the declared rays, delay-only
+   near the node). Rows below the ceiling also show super-c (L6a, L6b,
+   L3s4).
+3. **The discrimination that does exist is partial:**
+   - The only S_max row (L1, d = 1) has no correction at all
+     (omega = |k|). Every d ≥ 2 row has one. So "no dispersion whatsoever"
+     singles out exact saturation of the clock, which is possible only
+     in d = 1.
+   - An advance-only signature (superluminal in every direction at first
+     order) appears only below the ceiling: L3s4, one cluster, for
+     a^2 < (19 - 6 sqrt3)/11. Hh is `REFUTED_BY_ROW_L3s4`, decided by the
+     parent table. No ceiling row shows it.
+
+Route verdict: `DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS`, partial in
+exactly the sense of item 3. The contract's abandonment condition (no
+super-c anywhere and no difference in signatures) is not met. The
+discrimination is one-directional and does not separate S_in from
+below-ceiling in general.
+
+## 2. Per row
+
+| Row | d | Saturation | Excitation faster than c_0? | Signature under H_gamma (from the parent table) |
+| --- | --- | --- | --- | --- |
+| L1 | 1 | S_max | no, V_grp^max = c_0 proved (omega = abs(k)) | none |
+| L2 | 2 | S_in | no, V_grp^max = c_0 proved | order 2, delay-only near node, anisotropic |
+| L6e | 2 | S_in | no witness on declared rays | order 2, delay-only, anisotropic |
+| L3 | 3 | S_in | no, V_grp^max = c_0 proved | order 2, delay-only, anisotropic |
+| L5a | 3 | S_in | yes: interval-certified point (+111, abs(k) = 1/16) | order 1, both signs with direction |
+| L5b | 3 | S_in | yes: interval-certified point | order 1, both signs |
+| L4 | 3 | S_in | yes: interval-certified point (-111) | order 1, both signs |
+| L3s4 | 3 | below | yes: existence near node (exact sign of beta); explicit k* not attempted (a symbolic) | order 1; one-signed iff a^2 < (19 - 6 sqrt3)/11, else both |
+| L6a | 2 | below | yes: interval-certified point (theta = 60°) | order 1, both signs |
+| L6b | 2 | below | yes: interval-certified point (theta = 0°) | order 1, both signs |
+| L6c, L6d, L6f | 2 | below | no witness on declared rays | order 2, delay-only, isotropic |
+
+"No witness on declared rays" is not a proof that V_grp^max = c_0
+(contract Sec. 3, item 1).
+
+## 3. Arguments
+
+- **L1.** Tr U = z + 1/z and det U = 1 (exact), so cos omega = cos k and
+  omega = |k| on the branch. Group speed is 1 = c_0 everywhere.
+- **L2, L3.** Exact identities: Tr U / 2 = prod_j cos p_j, det U = 1, and
+  c_0 = 1/L, with p_j = k_j/L and L = sqrt d. Then
+  omega = arccos(prod cos p_j) and, with a_j = cos^2 p_j,
+
+    L^2 |grad_k omega|^2 = sum_j (1 - a_j) prod_{i≠j} a_i / (1 - prod a_i).
+
+  This is at most 1 iff f(a) = 1 - prod a - sum_j (1 - a_j) prod_{i≠j} a_i ≥ 0
+  on [0,1]^d. f is multilinear, so its minimum is attained at a vertex.
+  All vertex values are ≥ 0 (certified for d = 2, 3). Hence
+  |grad omega| ≤ 1/L = c_0, with equality along the axes, so
+  V_grp^max = c_0.
+- **Rows with beta not identically 0.** The parent's exact expansion gives
+  |grad eps_+|/c_0 ≥ 1 + 2 beta(n̂) t + O(t^2) along k = t n̂, with the
+  radial derivative as a lower bound. beta is positive on a declared ray
+  (exact):
+
+  | Row | Ray | beta |
+  | --- | --- | --- |
+  | L5a, L5b | +111 | 1/9 |
+  | L4 | -111 | 1/9 |
+  | L6a | theta = 60° | sqrt15/36 |
+  | L6b | theta = 0° | sqrt15/18 |
+  | L3s4, upper-sign cluster | +111 or -111 | the two values sum to 2 beta0 > 0 for all 0 < a < 1 |
+
+  So super-c holds for small t. For the 2x2 rows an explicit point on the
+  rational grid is also certified by rigorous interval arithmetic. The
+  certified lower bounds match c_0(1 + 2 beta t) at t = 1/16 to the
+  expected order; for example L5a gives 0.5852 against 0.5854.
+- **Signatures** are read from the promoted parent table (Sec. 1 and
+  Sec. 3.3 of `reports/2026-11-02--dispersion-corrections-across-lattices.md`),
+  transcribed into the script, not recomputed.
+
+## 4. Deviation and limits
+
+- **Contract defect.** The contract asked for k* with algebraic coordinates
+  on a rational |k| grid, certified "by exact inequality (radicals,
+  Sturm)". At rational |k|, e^{ik} is transcendental, so these
+  requirements cannot all hold. The explicit witnesses are certified with
+  outward-rounded interval arithmetic (mpmath.iv, 40 digits, irrational
+  inputs enclosed within ±1e-55). Existence of super-c for every beta row
+  also follows from exact signs alone.
+- **Search.** Only the declared rays and grid were searched. No row was
+  searched beyond them.
+- **V_grp^max** remains OPEN for L6e, L6c, L6d and L6f.
+- **Signatures** are leading-order and near the node only. Their range of
+  validity is OPEN, as in the parent.
+- **Scope.** No comparison with observational bounds (contract Sec. 5), no
+  value of ell or of the clock frequency, and no claim that our universe
+  is a QCA or a simulation.
+
+## 5. What this says about "c is the clock, therefore it cannot be exceeded"
+
+In these models, two statements are independent:
+
+- c being the largest isotropic speed the update allows;
+- c being unbeatable.
+
+Some walks at that ceiling still let excitations outrun c (L5a, L5b, L4).
+Some walks below it do not show any excitation faster than c on the
+declared rays (L6c, L6d, L6f). Only exact saturation of the clock, which
+for an isotropic c is possible only in one dimension, comes with no
+dispersion at all. An observation that nothing outruns c would therefore
+not, by itself, identify c with the clock in this class.
+
+## 6. Verifier
+
+[Script](../scripts/verify_observational_signature_gate.py),
+[record](2026-11-09--observational-signature-saturation.txt),
+[JSON](2026-11-09--observational-signature-saturation.json): 19/19.
+Reviewed verifiers were imported read-only.
+
+=== DOCUMENT 3: verify_observational_signature_gate.py ===
+
+#!/usr/bin/env python3
+"""Checks for the observational-signature / saturation gate.
+
+Contract: theory/OBSERVATIONAL_SIGNATURE_SATURATION_GATE.md (commit 21af1dd).
+Report:   reports/2026-11-09--observational-signature-saturation.md
+
+Rows and symbols: imported read-only from the reviewed verifiers used by the parent
+gate (verify_dispersion_corrections_gate.py and its imports). Units: longest step
+of one update = 1, one update per time unit (L6b: V = U^3, quasienergy / 3).
+
+Certification methods (declared in the report as a deviation from the contract's
+"radicals, Sturm" wording, because e^{ik} at rational |k| is transcendental):
+  * EXACT (SymPy): Laurent identities, closed-form bounds, signs of parent
+    coefficients on declared rays, multilinear vertex checks.
+  * INTERVAL: rigorous outward-rounded interval arithmetic (mpmath.iv) for the
+    inequality |grad eps(k*)| > c0 at explicit points k* on declared rays and on the
+    rational |k| grid below, plus the non-crossing check 0 < |Tr U~|^2 < 4 at k*.
+No floating point enters a verdict.
+"""
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+import sympy as sp
+from mpmath import iv
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import verify_dispersion_corrections_gate as DC    # reviewed parent, read-only
+P, WD, DS, L6B = DC.P, DC.WD, DC.DS, DC.L6B
+
+OUT = ROOT / "reports/2026-11-09--observational-signature-saturation"
+CHECKS = []
+I = sp.I
+R2, R3 = sp.sqrt(2), sp.sqrt(3)
+GRID = [sp.Rational(1, 16), sp.Rational(1, 8), sp.Rational(1, 4), sp.Rational(1, 2),
+        sp.Rational(3, 4), sp.Integer(1), sp.Rational(3, 2), sp.Integer(2)]
+iv.dps = 40
+
+
+def ivnum(e):
+    """Rigorous enclosure of a real SymPy number: 60-digit value widened by 1e-55."""
+    x = sp.N(e, 70)
+    eps = sp.Rational(1, 10**55)
+    return iv.mpf([str(sp.N(x - eps, 70)), str(sp.N(x + eps, 70))])
+
+
+def exact(name, cond, detail=""):
+    CHECKS.append(dict(name=name, passed=bool(cond), detail=str(detail)))
+
+
+def zero(e):
+    return sp.simplify(sp.expand(e)) == 0
+
+
+# ---------------- rows (same constructors as the parent) ----------------
+def build_rows():
+    rows = {}
+    zs1, zs2 = sp.symbols("w1:2"), sp.symbols("w1:3")
+    rows["L1"] = dict(blocks=[WD.published_symbol(1, 1, zs1)[0]], zs=zs1, gens=[(1,)], sigma=+1, c0=sp.Integer(1), div=1)
+    rows["L2"] = dict(blocks=[WD.published_symbol(2, 1, zs2)[0]], zs=zs2, gens=[(1, 0), (0, 1)], sigma=+1, c0=R2 / 2, div=1)
+    for label, fn in (("L6e", P.row_L6e), ("L5a", P.row_L5a), ("L6a", P.row_L6a),
+                      ("L6c", P.row_L6c), ("L6d", P.row_L6d), ("L6f", P.row_L6f)):
+        symbol, zs, support, gens = fn()
+        rows[label] = dict(blocks=[symbol], zs=zs, gens=gens, sigma=-1, c0=P.EXPECTED_MASSLESS[label][1], div=1)
+    rows["L3"] = dict(blocks=[DC.laurent_matrix_from_p(DS.walk2())], zs=DS.Z, gens=[(1, 0, 0), (0, 1, 0), (0, 0, 1)],
+                      sigma=+1, c0=1 / R3, div=1)
+    rows["L4"] = dict(blocks=[DC.laurent_matrix_from_p(DS.walk1())], zs=DS.Z, gens=[(1, 0, 0), (0, 1, 0), (0, 0, 1)],
+                      sigma=+1, c0=1 / R3, div=1)
+    # L5b: 4x4, split by Gamma = dP_X dP_Y dP_Z (as in the parent)
+    symbol, zs, support, gens = P.row_L5b()
+    kron = sp.kronecker_product
+    dP = (kron(P.SX, P.SX), kron(P.SX, P.SY), kron(P.SX, P.SZ))
+    Gam = (dP[0] * dP[1] * dP[2]).applyfunc(DC.canon)
+    blks = []
+    for sgn in (1, -1):
+        proj = (sp.eye(4) - sgn * I * Gam) / 2
+        Bq, _ = sp.Matrix.hstack(*proj.columnspace()).QRdecomposition()
+        Bq = Bq.applyfunc(DC.canon)
+        blks.append((Bq.H * symbol * Bq).applyfunc(sp.expand))
+    rows["L5b"] = dict(blocks=blks, zs=zs, gens=gens, sigma=-1, c0=P.EXPECTED_MASSLESS["L5b"][1], div=1)
+    succ, admissible = L6B.part1_labelings()
+    Wcoin, _, _ = L6B.coin("parent")
+    U6, _ = L6B.step_symbol("up", succ, Wcoin)
+    off, blocks = L6B.orientation_blocks(sp.expand(U6 ** 3))
+    rows["L6b"] = dict(blocks=[b.applyfunc(sp.expand) for b in blocks], zs=L6B.ZS, gens=L6B.GENS, sigma=-1,
+                       c0=sp.Rational(1, 3), div=3, scale=sp.Rational(1, 2))
+    return rows
+
+
+def scale_of(row):
+    if row.get("scale") is not None:
+        return row["scale"]
+    sup = P.laurent_support(row["blocks"][0], row["zs"])
+    dim = len(row["gens"][0])
+    best = 0
+    for h in sup:
+        v = sum((a * sp.Matrix(g) for a, g in zip(h, row["gens"])), sp.zeros(dim, 1))
+        nrm = sp.sqrt((v.T * v)[0])
+        if float(nrm) > float(best):
+            best = nrm
+    return sp.radsimp(sp.simplify(best))
+
+
+# ---------------- real polynomial representation in (c_j, s_j) ----------------
+def trig_parts(expr, zs, sigma):
+    cs = sp.symbols(f"c1:{len(zs) + 1}", real=True)
+    ss = sp.symbols(f"s1:{len(zs) + 1}", real=True)
+    sub = {z: c + I * sigma * s for z, c, s in zip(zs, cs, ss)}
+    inv = {z: c - I * sigma * s for z, c, s in zip(zs, cs, ss)}
+    # Laurent polynomial: negative powers via z^{-1} = conj(z) on the unit circle
+    e2 = sp.expand(sp.expand(expr).replace(lambda x: x.is_Pow and x.base in zs and x.exp < 0,
+                                        lambda x: (inv[x.base]) ** (-x.exp)))
+    e2 = sp.expand(e2.subs(sub))
+    return sp.expand(sp.re(e2)), sp.expand(sp.im(e2)), cs, ss
+
+
+def dp(F, j, cs, ss):
+    return sp.expand(-ss[j] * sp.diff(F, cs[j]) + cs[j] * sp.diff(F, ss[j]))
+
+
+def prepare_block(block, zs, sigma):
+    trr, tri, cs, ss = trig_parts(block.trace(), zs, sigma)
+    der, dei, _, _ = trig_parts(sp.expand(block.det()), zs, sigma)
+    T2 = sp.expand(trr ** 2 + tri ** 2)
+    n = len(zs)
+    exprs = [T2, sp.expand(der ** 2 + dei ** 2)]
+    exprs += [dp(T2, j, cs, ss) for j in range(n)]
+    exprs += [sp.expand(der * dp(dei, j, cs, ss) - dei * dp(der, j, cs, ss)) for j in range(n)]
+    args = list(cs) + list(ss)
+    fns = [sp.lambdify(args, e, modules=[{"sqrt": iv.sqrt, "mpf": iv.mpf}, "mpmath"]) for e in exprs]
+    return fns, n
+
+
+def branch_speeds_interval(prep, gens, L, div, kvec):
+    """Rigorous intervals for |grad eps_+|, |grad eps_-| of a 2x2 unitary block at k.
+    Tr U = e^{i phi_d/2} 2 cos(theta): eps_pm = -phi_d/2 -+ theta, |Tr|^2 = 4 cos^2 theta,
+    grad theta = -+ grad|Tr|^2 / (2 |Tr| sqrt(4-|Tr|^2)) (sign covered by the two branches),
+    grad phi_d = Im(conj(det) grad det) since |det| = 1."""
+    fns, n = prep
+    dim = len(gens[0])
+    Lv = ivnum(L)
+    pv = []
+    for g in gens:
+        acc = iv.mpf(0)
+        for m in range(dim):
+            acc += ivnum(kvec[m]) * ivnum(g[m])
+        pv.append(acc / Lv)
+    args = [iv.cos(x) for x in pv] + [iv.sin(x) for x in pv]
+    vals = [f(*args) for f in fns]
+    T2v, detmod = vals[0], vals[1]
+    dT2 = vals[2:2 + n]
+    dphi = vals[2 + n:2 + 2 * n]
+    a = [-x / 2 for x in dphi]
+    bmag = iv.mpf(1) / (2 * iv.sqrt(T2v) * iv.sqrt(4 - T2v))
+    b = [x * bmag for x in dT2]
+    def kgrad(vec):
+        return [sum(vec[j] * ivnum(gens[j][m]) for j in range(n)) / Lv / div for m in range(dim)]
+    A, Bv = kgrad(a), kgrad(b)
+    plus = iv.sqrt(sum((A[m] + Bv[m]) ** 2 for m in range(dim)))
+    minus = iv.sqrt(sum((A[m] - Bv[m]) ** 2 for m in range(dim)))
+    return T2v, detmod, plus, minus
+
+
+def rays(dim, label):
+    if dim == 1:
+        return {"+x": (1,), "-x": (-1,)}
+    if dim == 2:
+        if label in ("L2", "L6e"):
+            out = {}
+            for nm, v in (("x", (1, 0)), ("y", (0, 1)), ("d1", (1, 1)), ("d2", (1, -1))):
+                nv = sp.sqrt(sum(x ** 2 for x in v))
+                out["+" + nm] = tuple(x / nv for x in v); out["-" + nm] = tuple(-x / nv for x in v)
+            return out
+        out = {}
+        for j in range(12):                    # hexagon vertex and edge directions, every 30 degrees
+            th = sp.pi * j / 6
+            out[f"th={j * 30}"] = (sp.cos(th), sp.sin(th))
+        return out
+    out = {}
+    for nm, v in (("x", (1, 0, 0)), ("y", (0, 1, 0)), ("z", (0, 0, 1)),
+                  ("xy", (1, 1, 0)), ("x-y", (1, -1, 0)), ("xz", (1, 0, 1)), ("x-z", (1, 0, -1)),
+                  ("yz", (0, 1, 1)), ("y-z", (0, 1, -1)),
+                  ("111", (1, 1, 1)), ("11-1", (1, 1, -1)), ("1-11", (1, -1, 1)), ("-111", (-1, 1, 1))):
+        nv = sp.sqrt(sum(x ** 2 for x in v))
+        out["+" + nm] = tuple(x / nv for x in v); out["-" + nm] = tuple(-x / nv for x in v)
+    return out
+
+
+def witness_search(label, row):
+    L = scale_of(row)
+    dim = len(row["gens"][0])
+    c0 = row["c0"]
+    c0v = ivnum(c0)
+    found = None
+    for bi, blk in enumerate(row["blocks"]):
+        if blk.rows != 2:
+            return None, "block not 2x2"
+        prep = prepare_block(blk, row["zs"], row["sigma"])
+        for rname, n in rays(dim, label).items():
+            for t in GRID:
+                k = [t * x for x in n]
+                T2v, detmod, plus, minus = branch_speeds_interval(prep, row["gens"], L, row["div"], k)
+                ok_branch = (T2v.a > 0) and (T2v.b < 4)
+                best = plus if plus.a > minus.a else minus
+                if ok_branch and best.a > c0v.b:
+                    found = dict(block=bi, ray=rname, t=str(t), speed_lower=str(best.a), c0=str(c0), detmod=str(detmod))
+                    return found, "found"
+    return None, "none on declared rays and grid"
+
+
+# ---------------- exact closed forms ----------------
+def check_L1(row):
+    U = row["blocks"][0]; z = row["zs"][0]
+    exact("L1-symbol-trace=z+1/z-and-det=1", zero(U.trace() - (z + 1 / z)) and zero(U.det() - 1),
+          f"trace={sp.simplify(U.trace())}, det={sp.simplify(U.det())}")
+
+
+def check_product_form(label, row):
+    U = row["blocks"][0]; zs = row["zs"]
+    target = sp.prod([(z + 1 / z) for z in zs]) * 2 / 2 ** len(zs)
+    ok_tr = zero(U.trace() - target)
+    ok_det = zero(U.det() - 1)
+    L = scale_of(row)
+    exact(f"{label}-trace/2=prod(cos p_j)-and-det=1", ok_tr and ok_det, f"L={L}")
+    exact(f"{label}-c0=1/L", zero(row["c0"] - 1 / L), f"c0={row['c0']}, L={L}")
+    return ok_tr and ok_det
+
+
+def check_multilinear(d):
+    a = sp.symbols(f"a1:{d + 1}", real=True)
+    lhs = sum((1 - a[j]) * sp.prod([a[i] for i in range(d) if i != j]) for j in range(d))
+    f = sp.expand(1 - sp.prod(a) - lhs)          # >= 0 on [0,1]^d  <=>  sum_j (dω/dp_j)^2 <= 1
+    multilinear = all(sp.degree(f, x) <= 1 for x in a)
+    import itertools
+    vert = all(f.subs(dict(zip(a, v))) >= 0 for v in itertools.product((0, 1), repeat=d))
+    exact(f"multilinear-bound-d={d}: 1 - prod a - sum_j (1-a_j) prod_(i!=j) a_i >= 0 on [0,1]^d (vertices)",
+          multilinear and vert, f"f={f}")
+
+
+# ---------------- parent coefficients (transcribed from the promoted report, Sec. 1) ----------------
+def parent_table():
+    n1, n2, n3, th, a = sp.symbols("n1 n2 n3 theta a", real=True)
+    T = {
+        "L1": dict(beta=0, alpha=0, alpha0=0, d=1, ceiling=True, smax=True),
+        "L2": dict(beta=0, alpha=-n1**2 * n2**2 / 12, alpha0=sp.Rational(-1, 96), d=2, ceiling=True),
+        "L6e": dict(beta=0, alpha=-n1**2 * n2**2 / 12, alpha0=sp.Rational(-1, 96), d=2, ceiling=True),
+        "L3": dict(beta=0, alpha=-(n1**2*n2**2 + n2**2*n3**2 + n3**2*n1**2) / 18, alpha0=sp.Rational(-1, 90), d=3, ceiling=True),
+        "L5a": dict(beta=R3 / 3 * n1 * n2 * n3, alpha0=sp.Rational(-4, 315), d=3, ceiling=True),
+        "L5b": dict(beta=R3 / 3 * n1 * n2 * n3, alpha0=sp.Rational(-4, 315), d=3, ceiling=True, both_blocks_sign=True),
+        "L4": dict(beta=-R3 / 3 * n1 * n2 * n3, alpha0=sp.Rational(-4, 315), d=3, ceiling=True),
+        "L3s4": dict(beta=R3 * (1 - a**2) / (6 * a) + R3 * (2 * a**2 - 1) / (3 * a) * n1 * n2 * n3,
+                     alpha0=2 * (27 * a**4 - 34 * a**2 + 5) / (315 * a**2), d=3, ceiling=False),
+        "L6a": dict(beta=-sp.sqrt(15) / 36 * sp.cos(3 * th), alpha0=sp.Rational(-41, 1728), d=2, ceiling=False),
+        "L6c": dict(beta=0, alpha0=sp.Rational(-1, 512), d=2, ceiling=False, iso=True),
+        "L6d": dict(beta=0, alpha0=sp.Rational(-1, 128), d=2, ceiling=False, iso=True),
+        "L6f": dict(beta=0, alpha0=sp.Rational(-1, 128), d=2, ceiling=False, iso=True),
+        "L6b": dict(beta=sp.sqrt(15) / 18 * sp.cos(3 * th), alpha0=sp.Rational(-41, 432), d=2, ceiling=False),
+    }
+    return T, (n1, n2, n3, th, a)
+
+
+def beta_positive_on_declared_ray(label, entry, syms):
+    n1, n2, n3, th, a = syms
+    b = sp.sympify(entry["beta"])
+    if b == 0:
+        return None
+    if entry["d"] == 3:
+        if label == "L3s4":
+            # cluster with upper sign: beta0 = sqrt3 (1-a^2)/(6a) > 0 for 0<a<1; along +111 or -111 choose sign of n1n2n3
+            s = R3 / 9
+            val_p = b.subs({n1: 1 / R3, n2: 1 / R3, n3: 1 / R3})
+            val_m = b.subs({n1: -1 / R3, n2: -1 / R3, n3: -1 / R3})
+            # for every a in (0,1): max(val_p, val_m) > 0 since val_p + val_m = 2 beta0 > 0
+            return ("+111 or -111 (upper-sign cluster)", sp.simplify(val_p + val_m), "sum=2*beta0>0 for 0<a<1")
+        for nm, v in (("+111", (1, 1, 1)), ("-111", (-1, -1, -1))):
+            val = b.subs({n1: v[0] / R3, n2: v[1] / R3, n3: v[2] / R3})
+            if sp.simplify(val) > 0:
+                return (nm, sp.nsimplify(val), "")
+    else:
+        for j in range(12):
+            val = b.subs(th, sp.pi * j / 6)
+            if sp.simplify(val) > 0:
+                return (f"th={j * 30}", sp.nsimplify(val), "")
+    return None
+
+
+def main():
+    rows = build_rows()
+    T, syms = parent_table()
+    out = {}
+    check_multilinear(2); check_multilinear(3)
+    check_L1(rows["L1"])
+    vgrp_exact = {"L1": "V_GRP_MAX_EQUALS_C0_PROVED (omega=|k|)"}
+    for lab in ("L2", "L3"):
+        if check_product_form(lab, rows[lab]):
+            vgrp_exact[lab] = "V_GRP_MAX_EQUALS_C0_PROVED (product form + multilinear bound)"
+    # existence of super-c near the node from the parent's beta (exact sign on a declared ray)
+    near_node = {}
+    for lab, e in T.items():
+        r = beta_positive_on_declared_ray(lab, e, syms)
+        if r is not None:
+            near_node[lab] = dict(ray=r[0], beta_value=str(r[1]), note=r[2])
+            exact(f"{lab}-beta>0-on-declared-ray-(near-node-super-c-existence)", True, r)
+    exact("L3s4-beta0>0-for-0<a<1", sp.simplify(sp.sqrt(3) * (1 - syms[4]**2) / (6 * syms[4])).subs(syms[4], sp.Rational(1, 2)) > 0
+          and sp.solve(sp.Eq(1 - syms[4]**2, 0), syms[4]) == [-1, 1])
+    # explicit interval witnesses on the rational grid
+    for lab, row in rows.items():
+        if lab in vgrp_exact:
+            out[lab] = dict(witness=None, status=vgrp_exact[lab])
+            continue
+        try:
+            w, why = witness_search(lab, row)
+        except Exception as ex:          # recorded, not hidden
+            w, why = None, f"error: {type(ex).__name__}: {ex}"
+        out[lab] = dict(witness=w, status=("SUPER_C_WITNESS (interval-certified point)" if w else
+                                           ("SUPER_C_WITNESS (existence near node, exact beta sign)" if lab in near_node
+                                            else f"NO_WITNESS_ON_DECLARED_RAYS ({why})")))
+        if w:
+            exact(f"{lab}-interval-witness |grad eps(k*)| > c0", True, w)
+    out["L3s4"] = dict(witness=None, status="SUPER_C_WITNESS (existence near node, exact beta sign; explicit k* not attempted, a symbolic)")
+    # signature classes
+    sig = {}
+    n1, n2, n3, th, a = syms
+    for lab, e in T.items():
+        b = sp.sympify(e["beta"])
+        if lab == "L1":
+            sig[lab] = "none (omega = |k| exactly)"
+        elif b != 0:
+            if lab == "L3s4":
+                sig[lab] = "order 1; one-signed on the sphere iff a^2 < (19-6sqrt3)/11 (sign opposite between clusters), else both signs; anisotropic"
+            else:
+                sig[lab] = "order 1; both signs with direction (beta odd); anisotropic"
+        else:
+            iso = e.get("iso", False)
+            sig[lab] = f"order 2; delay-only near node (alpha0 = {e['alpha0']} < 0, alpha <= 0 pointwise); {'isotropic' if iso else 'anisotropic'}"
+    data = dict(rows={k: dict(saturation=("S_max" if T[k].get("smax") else ("S_in" if T[k]["ceiling"] else "below ceiling")),
+                              signature=sig[k], vgrp=out.get(k)) for k in T},
+                near_node=near_node, checks=CHECKS,
+                provenance={p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in (
+                    "scripts/verify_observational_signature_gate.py",
+                    "theory/OBSERVATIONAL_SIGNATURE_SATURATION_GATE.md",
+                    "scripts/verify_dispersion_corrections_gate.py",
+                    "reports/2026-11-02--dispersion-corrections-across-lattices.md")})
+    OUT.with_suffix(".json").write_text(json.dumps(data, indent=2, default=str) + "\n")
+    passed = sum(c["passed"] for c in CHECKS)
+    lines = [f"Checks: {passed}/{len(CHECKS)} (exact SymPy {sp.__version__}; interval mpmath.iv dps={iv.dps})."]
+    lines += [f"{'PASS' if c['passed'] else 'FAIL'} {c['name']}  {c['detail']}" for c in CHECKS]
+    lines += ["", "Per row: saturation | V_grp / witness | signature"]
+    for k, v in data["rows"].items():
+        lines.append(f"{k}: {v['saturation']} | {v['vgrp']['status'] if v['vgrp'] else '-'} | {v['signature']}")
+    OUT.with_suffix(".txt").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+    if passed != len(CHECKS):
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 4: 2026-11-09--observational-signature-saturation.txt ===
+
+Checks: 19/19 (exact SymPy 1.14.0; interval mpmath.iv dps=40).
+PASS multilinear-bound-d=2: 1 - prod a - sum_j (1-a_j) prod_(i!=j) a_i >= 0 on [0,1]^d (vertices)  f=a1*a2 - a1 - a2 + 1
+PASS multilinear-bound-d=3: 1 - prod a - sum_j (1-a_j) prod_(i!=j) a_i >= 0 on [0,1]^d (vertices)  f=2*a1*a2*a3 - a1*a2 - a1*a3 - a2*a3 + 1
+PASS L1-symbol-trace=z+1/z-and-det=1  trace=w1 + 1/w1, det=1
+PASS L2-trace/2=prod(cos p_j)-and-det=1  L=sqrt(2)
+PASS L2-c0=1/L  c0=sqrt(2)/2, L=sqrt(2)
+PASS L3-trace/2=prod(cos p_j)-and-det=1  L=sqrt(3)
+PASS L3-c0=1/L  c0=sqrt(3)/3, L=sqrt(3)
+PASS L5a-beta>0-on-declared-ray-(near-node-super-c-existence)  ('+111', 1/9, '')
+PASS L5b-beta>0-on-declared-ray-(near-node-super-c-existence)  ('+111', 1/9, '')
+PASS L4-beta>0-on-declared-ray-(near-node-super-c-existence)  ('-111', 1/9, '')
+PASS L3s4-beta>0-on-declared-ray-(near-node-super-c-existence)  ('+111 or -111 (upper-sign cluster)', sqrt(3)*(1 - a**2)/(3*a), 'sum=2*beta0>0 for 0<a<1')
+PASS L6a-beta>0-on-declared-ray-(near-node-super-c-existence)  ('th=60', sqrt(15)/36, '')
+PASS L6b-beta>0-on-declared-ray-(near-node-super-c-existence)  ('th=0', sqrt(15)/18, '')
+PASS L3s4-beta0>0-for-0<a<1  
+PASS L5a-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': '+111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}
+PASS L6a-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': 'th=60', 't': '1/16', 'speed_lower': '[0.506568256561733636740566155084967496486886781, 0.506568256561733636740566155084967496486886781]', 'c0': '1/2', 'detmod': '1'}
+PASS L4-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': '-111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}
+PASS L5b-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': '+111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}
+PASS L6b-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': 'th=0', 't': '1/16', 'speed_lower': '[0.341884265910732422715236178385004926341005451, 0.341884265910732422715236178385004926341005451]', 'c0': '1/3', 'detmod': '1'}
+
+Per row: saturation | V_grp / witness | signature
+L1: S_max | V_GRP_MAX_EQUALS_C0_PROVED (omega=|k|) | none (omega = |k| exactly)
+L2: S_in | V_GRP_MAX_EQUALS_C0_PROVED (product form + multilinear bound) | order 2; delay-only near node (alpha0 = -1/96 < 0, alpha <= 0 pointwise); anisotropic
+L6e: S_in | NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid) | order 2; delay-only near node (alpha0 = -1/96 < 0, alpha <= 0 pointwise); anisotropic
+L3: S_in | V_GRP_MAX_EQUALS_C0_PROVED (product form + multilinear bound) | order 2; delay-only near node (alpha0 = -1/90 < 0, alpha <= 0 pointwise); anisotropic
+L5a: S_in | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+L5b: S_in | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+L4: S_in | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+L3s4: below ceiling | SUPER_C_WITNESS (existence near node, exact beta sign; explicit k* not attempted, a symbolic) | order 1; one-signed on the sphere iff a^2 < (19-6sqrt3)/11 (sign opposite between clusters), else both signs; anisotropic
+L6a: below ceiling | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+L6c: below ceiling | NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid) | order 2; delay-only near node (alpha0 = -1/512 < 0, alpha <= 0 pointwise); isotropic
+L6d: below ceiling | NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid) | order 2; delay-only near node (alpha0 = -1/128 < 0, alpha <= 0 pointwise); isotropic
+L6f: below ceiling | NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid) | order 2; delay-only near node (alpha0 = -1/128 < 0, alpha <= 0 pointwise); isotropic
+L6b: below ceiling | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+
+=== DOCUMENT 5: 2026-11-02--dispersion-corrections-across-lattices.md ===
+
+# Dispersion corrections across lattices — execution
+
+**Date:** 2026-11-02
+**Gate:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES`, contract
+[`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
+preregistration commit `a7ff5b7` (contract SHA256
+`6df09e81fae231ebbb00d19de546298559d333d33e965c95a1aa6027842231ea`).
+**Parent:** `C_ACROSS_LATTICES` massless table and `L6B_TRIANGULAR_ROW`
+(both promoted). No row is recomputed; every symbol is imported read-only
+from the script named in contract Sec. 2.
+**Verifier:**
+[`scripts/verify_dispersion_corrections_gate.py`](../scripts/verify_dispersion_corrections_gate.py),
+SHA256 `b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`, 81/81 exact checks after the review repairs (79/79 at the reviewed SHA256 `791f0d80d2790f34b72521c90622fa0056fd629fa1b3ef89addfc2ad664e6c2a`) (Python 3.12.3,
+`sympy==1.14.0`, interpreter `/home/adnac/venvs/torch-gpu/bin/python`, as
+`scripts/README.md` records for earlier runs; the system `python3` has no
+SymPy). Run time about 11 min, dominated by the symmetry test of
+L3s4. The imported verifiers are unchanged.
+**Status:** `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN` —
+PRELIMINARY. Reviewed: Gemini PASS, Grok REPAIR_REQUIRED (three repairs,
+applied in Sec. 5); bounded re-review of the repairs: Gemini PASS, Grok
+PASS. PROMOTION_PENDING. Nothing is promoted by this report.
+
+## 1. Result
+
+Units as in the parent: Cartesian positions divided by the longest step
+of one update, one update per time unit (L6b: `V = U^3`, quasienergy
+divided by 3). Along a ray `k = t n̂`, `|n̂| = 1`, the upper branch of the
+massless node is
+
+`eps_+(t n̂) - eps_0 = c_0 t [1 + beta(n̂) t + alpha(n̂) t^2 + O(t^3)]`.
+
+`alpha_0` is the mean of `alpha` over the unit circle or sphere. In
+`d = 2`, `theta` is the angle of `n̂` in the row's Cartesian frame; in
+`d = 3`, `K4 = n1^4 + n2^4 + n3^4 - 3/5`, `K6` is the part of
+`n1^2 n2^2 n3^2` orthogonal to 1 and `K4` on the sphere, and
+`sigma2 = n1^2 n2^2 + n2^2 n3^2 + n3^2 n1^2`.
+
+| Row | Substrate | `c_0` | `G_walk` (exact) | Lowest correction | `beta(n̂)` | `alpha(n̂)` | `alpha_0` |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| L1 | line | 1 | `{±1}` | none: `omega = |k|` exactly | 0 | 0 | **0** |
+| L2 | square | `1/sqrt2` | `D_4` (8) | `alpha`, anisotropic | 0 | `-n1^2 n2^2/12 = -(1 - cos 4θ)/96` | `-1/96` |
+| L6e | square | `1/sqrt2` | `D_4` (8) | `alpha`, anisotropic | 0 | identical to L2 | `-1/96` |
+| L3 | BCC | `1/sqrt3` | `O_h` (48) | `alpha`, anisotropic | 0 | `-sigma2/18 = -1/90 + K4/36` | `-1/90` |
+| L5a | BCC | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `(sqrt3/3) n1 n2 n3` | `-sigma2/18 - n1^2 n2^2 n3^2/6` | `-4/315` |
+| L5b (each Weyl block) | BCC | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `±(sqrt3/3) n1 n2 n3` | as L5a | `-4/315` |
+| L4 | cube | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `-(sqrt3/3) n1 n2 n3` | as L5a | `-4/315` |
+| L3s4 (each cluster) | BCC, `s = 4` | `a/sqrt3` | 8 (`D_2` half-turns and the `x <-> z` swap composed with them) | `beta`, isotropic + anisotropic | `±[sqrt3 (1-a^2)/(6a) + sqrt3 (2a^2-1)/(3a) n1 n2 n3]`, upper sign for the cluster at `+pi/4` | non-cubic content (Sec. 3.4) | `2(27a^4 - 34a^2 + 5)/(315 a^2)` |
+| L6a | hexagon | `1/2` | `D_3` (6) | `beta`, anisotropic | `-(sqrt15/36) cos 3θ` | `-41/1728 - (5/1728) cos 6θ` | `-41/1728` |
+| L6c | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/512` | `-1/512` |
+| L6d | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/128` | `-1/128` |
+| L6f | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/128` | `-1/128` |
+| L6b (each orientation block) | hexagon, `s = 6` | `1/3` | `D_3` (6) | `beta`, anisotropic | `(sqrt15/18) cos 3θ` | `-41/432 - (5/432) cos 6θ` | `-41/432` |
+
+First anisotropy of the isotropic hexagonal rows, at relative order
+`t^4` (coefficient of `cos 6θ` in `E_5 / c_0`): L6c `1/184320`, L6d
+`1/11520`, L6f `-1/11520`. L6d and L6f therefore agree through relative
+order `t^2` and differ at `t^4` by the sign of the `cos 6θ` term, that is,
+by a 30° rotation of the anisotropy.
+
+Hypotheses (contract Sec. 4):
+
+- **Hd** (`alpha_0 < 0` in every row): **`REFUTED_BY_ROW_L1`**. L1 has
+  `alpha_0 = 0`, because its symbol is `exp(-i k sigma_z)` and the
+  dispersion is exactly linear. The refutation is not only the degenerate
+  1D row: L3s4 has `alpha_0 > 0` for `0 < a < a*` and `< 0` for
+  `a* < a < 1`, with `a* = sqrt3 sqrt(17 - sqrt154) / 9` (exact root,
+  Sturm count 1; `a* ≈ 0.412`). Every other row has `alpha_0 < 0`.
+- **He** (ceiling rows with `d >= 2` have a nonzero anisotropic
+  coefficient in their lowest correction): **`CONFIRMED_IN_DECLARED_ROWS`**.
+  L2, L6e: `cos 4θ` at relative order `t^2`. L3: `K4` at `t^2`. L5a, L5b,
+  L4: the odd invariant `n1 n2 n3` at relative order `t`. Not decided by
+  symmetry: `D_4`, `O_h` and `T_d` allow these terms but do not force
+  them.
+- **Hf** (no two rows on one substrate share `beta` and `alpha`):
+  **`REFUTED_BY_ROW_L6e`**. L2 and L6e have identical `beta`, `alpha`,
+  group-velocity coefficients and `t^4` harmonics. Further shared pairs:
+  L5a with the Weyl block of L5b whose `beta` has L5a's sign (the other
+  block differs in that sign), and L6d with L6f through relative order
+  `t^2`. Under the weaker reading of Hf's header ("do not all share"),
+  the square substrate also refutes it, since it has only these two rows.
+  On the hexagon and BCC substrates the corrections are not all equal.
+
+Under the contract's exact procedure, the `C_6` isotropy of Sec. 1 decides
+no hypothesis: He concerns rows that reach the ceiling, and no hexagonal
+row does.
+
+## 2. Method (contract Sec. 3)
+
+For each row the symbol is expanded exactly as a Taylor polynomial in `k`
+to total degree `N` (`N = 6` in `d <= 2`, `N = 4` in `d = 3`). The node
+branch is read from the quadratic factor `lambda^2 - s1 lambda + s2` of
+the characteristic polynomial that carries the node:
+
+- `s = 2` rows: the whole characteristic polynomial.
+- L5b (`s = 4`): `Gamma = dP_X dP_Y dP_Z` commutes with every Fourier
+  coefficient and `Gamma^2 = -I`; its two eigenspaces give two `2x2`
+  Weyl blocks.
+- L6b: the three `2x2` orientation blocks of `V = U^3`, as in the L6b
+  verifier.
+- L3s4: Hensel lifting of the quadratic factor at the double root
+  `exp(∓ i pi/4)` of `A_a(0) = W`. The characteristic polynomial is
+  computed from Newton's identities on truncated power traces; the script
+  checks this route against the full characteristic polynomial on the
+  `4x4` L5b symbol. The parameter is kept symbolic: `a` and
+  `b = sqrt(1-a^2)` are independent symbols reduced with `b^2 = 1 - a^2`.
+  This keeps the zero test exact, because `sqrt(1-a^2)` is not a rational
+  function of `a`.
+
+From `s1`, `s2`: `exp(-2i phi) = s2 / s2(0)` gives the common phase
+`phi(k)` of the two node levels, and `cos^2 omega = s1^2/(4 s2)` gives
+`omega^2(k)` as a power series with exact homogeneous parts. Then
+`eps_± = eps_0 + phi ± omega`. No series is fitted; every coefficient is
+an exact algebraic number or, for L3s4, an exact rational function of
+`a`. The Taylor coefficients of `arccos(1-v)^2`, `log(1+v)`, `sqrt(1+v)`
+and `1/(1+v)` are checked against SymPy's series.
+
+`G_walk` is the set of point-group elements `g` of the substrate with
+`charpoly U(g k) = charpoly U(k)` as Laurent identities. In characteristic
+0 this equals equality of `tr U^m`, `m = 1..s`, and `tr U(gk)^m` is
+`tr U^m` under the monomial substitution `z^h -> z^(Mh)`. The angular
+content is read as a trigonometric polynomial in `d = 2` and projected on
+`1, K4, K6` in `d = 3` (and `beta` on `1, n1 n2 n3`). A zero residual is
+certified wherever `|G_walk| >= 24`.
+
+## 3. Findings per item
+
+### 3.1 Order of the lowest correction
+
+Every node is untilted at linear order, as the parent certified. The
+lowest correction has relative order `t` (a `beta` term) exactly in the
+rows whose `G_walk` lacks inversion: L5a, L5b, L4 (`T_d`-type, 24
+elements), L6a and L6b (`D_3`), and L3s4. In every row whose `G_walk`
+contains `k -> -k` (L1, L2, L6e, L3, L6c, L6d, L6f), `omega^2` has no odd
+terms through the computed order and the lowest correction is `alpha`.
+The draft charter assumed evenness; the frozen contract required it to be
+checked, and six of the thirteen rows are not even.
+
+### 3.2 Angular pattern and the walk's group
+
+The harmonic content matches `G_walk` in every row:
+
+- `D_6` rows (L6c, L6d, L6f): `alpha` isotropic and `cos 6θ` first at
+  relative order `t^4`, as the degree argument of contract Sec. 1 forces.
+- `D_3` rows (L6a, L6b): `cos 3θ` at relative order `t`. The `cos 6θ` in
+  `alpha` comes from `beta^2`; the degree-4 part of `omega^2` is
+  isotropic (`Q4 = -1/96` for L6a).
+- `D_4` rows (L2, L6e): `cos 4θ` at `t^2`.
+- `O_h` row (L3): `K4` at `t^2`.
+- 24-element cubic rows: `n1 n2 n3` at `t`, then `1, K4, K6` at `t^2`.
+
+The three ADMP/JDW hexagonal walks with `c_0 = 3/4` have the full `D_6`.
+ADMP's L6a has only `D_3`, and so has L6b, which realises L6a's dispersion
+after three updates.
+
+### 3.3 Sign
+
+- `alpha <= 0` pointwise in L2, L6e, L3, L5a, L5b, L4 (closed forms in
+  Sec. 1), vanishing only along the coordinate axes. `alpha < 0` pointwise
+  in L6a, L6b (`-46/1728 <= alpha <= -36/1728` for L6a), L6c, L6d, L6f.
+- In L5a, L5b, L4, L6a and L6b, `beta` is odd under `n̂ -> -n̂`, so the
+  lowest correction takes both signs. These rows are not "subluminal at
+  short wavelength" in every direction even though `alpha_0 < 0`. The
+  phase speed of the upper branch exceeds `c_0` near the node where
+  `beta(n̂) > 0`, for example along `n1 n2 n3 > 0` in L5a.
+- In L3s4, `beta = beta_0 + beta_3 n1 n2 n3` with `beta_0 != 0`, so it is
+  not odd. Since `|n1 n2 n3| <= 1/(3 sqrt3)`, `beta` keeps the sign of
+  `beta_0` on the whole sphere iff `a^2 < (19 - 6 sqrt3)/11`, and takes
+  both signs above that threshold. The sign of `beta_0` depends on the
+  cluster and reverses between the upper and lower branch (Sec. 3.4).
+  The verifier checks the threshold exactly.
+- L3s4: `alpha_0` changes sign at `a*` (Sec. 1).
+
+### 3.4 L3s4: a branch-dependent quadratic term
+
+L3s4 is the only row with `phi != 0`. The two levels of each cluster move
+together as `phi = ±(1 - a^2) t^2 / 6 + O(t^4)`, with opposite signs for
+the clusters at `±pi/4`. This is consistent with second-order repulsion
+between the clusters through the intersector coupling `b^2 = 1 - a^2`. It
+gives `beta` an isotropic part `±sqrt3 (1-a^2)/(6a)` of opposite sign on
+the upper and lower branch of a cluster; `alpha` is the same for both
+branches and both clusters. `G_walk` has 8 elements, so `alpha` has
+content outside `span(1, K4, K6)`. The verifier prints it; it is not
+tabulated further here. At `a = 1` the isotropic part of `beta` vanishes,
+and `beta = (sqrt3/3) n1 n2 n3` with `alpha_0 = -4/315`, the values of
+L5a.
+
+### 3.5 Group velocity at the node
+
+`|grad eps_+| / c_0 = 1 + 2 beta(n̂) t + O(t^2)`, and `1 + 3 alpha(n̂) t^2
++ O(t^4)` where `beta = 0`. The coefficients through relative order `t^4`
+(`d <= 2`) or `t^2` (`d = 3`) are printed per row by the verifier.
+`V_grp^max` is `OPEN` for every row in `d >= 2`, as in the parent. For L1,
+`omega = |k|` on the whole branch, so its group speed is 1 everywhere;
+this follows from the symbol `exp(-i k sigma_z)` and is checked by the
+script only through `t^5`.
+
+### 3.6 Scale of validity
+
+L1: the branches meet first at `|k| = pi` (exact). `d >= 2`: `OPEN`. The
+exact minimisation of `|k|` on the branch-meeting set was not attempted,
+as contract Sec. 3 item 6 allows.
+
+## 4. Cross-checks and second route
+
+- **L1** reproduces the exactly linear 1D massless walk: all corrections
+  vanish through `t^5`.
+- **Closed forms by hand.** For a symbol with `cos omega = prod_i cos p_i`
+  and `p = k / sqrt d`, the expansion `log cos x = -x^2/2 - x^4/12 +
+  O(x^6)` gives `omega^2 = |p|^2 - (1/3) sum_{i<j} p_i^2 p_j^2 + O(p^6)`,
+  hence `alpha = -sum_{i<j} n_i^2 n_j^2 / (6d)`. This is `-n1^2 n2^2/12`
+  for L2 and `-sigma2/18` for L3. For the chiral BCC rows,
+  `alpha = (3/2) Q4 - Q3^2/(8 c_0^4)` with `Q4 = -sigma2/27` and
+  `Q3 = (2 sqrt3/9) n1 n2 n3` gives `-sigma2/18 - n1^2 n2^2 n3^2/6`. The
+  verifier asserts all three forms against its series output.
+- **L6b vs L6a.** With each row's normalisation,
+  `eps_L6b(k) = eps_L6a(2 R k) / 3` for a 60° rotation `R`. So
+  `c_0` scales by `2/3`, `beta` by 2 and `alpha` by 4. All three are
+  asserted exactly. The rotation reverses the sign of `cos 3θ`, which is
+  why `beta` changes sign between the two rows. The three orientation
+  blocks of L6b give identical results.
+- **L6c, L6d, L6f:** compared in Sec. 1.
+- **L5b:** both Weyl blocks give the same `alpha` and opposite `beta`.
+  **L3s4:** both clusters give the same `alpha`.
+
+## 5. Corrections made during the execution
+
+- The first runs used the full characteristic polynomial; for L3s4 with
+  symbolic `a` it did not finish in an hour. It was replaced by Newton's
+  identities on truncated power traces, cross-checked as stated.
+- A rational parametrisation of `a` was tried and abandoned: SymPy merged
+  `1 + u^2` with negative powers of `z`. The independent-symbol reduction
+  replaced it.
+- The first cross-check of L6b against L6a compared `alpha` without the
+  scale factor 4. The second route above derived the factor, and the
+  check was corrected before any passing run.
+- Two per-row assertions assumed that `beta` is purely `n1 n2 n3` and that
+  `alpha` is cubic-invariant. Both fail for L3s4, whose group has 8
+  elements. They now apply only where `|G_walk| >= 24` and are reported
+  descriptively otherwise.
+
+Repairs after the independent review
+([record](2026-11-02--dispersion-corrections-across-lattices-review.md)),
+all three from Grok, checked before acceptance:
+
+- R1: Sec. 3.3 claimed that every row with `beta != 0` has an odd
+  lowest correction. False for L3s4; restricted, and the threshold
+  `a^2 = (19 - 6 sqrt3)/11` added, with an exact check in the verifier.
+- R2: Sec. 1 said L5a shares `beta` and `alpha` with "each" Weyl block of
+  L5b; it shares them with one block only.
+- R3: the verifier's record that the sign of `alpha_0` is decided in
+  every row had the constant predicate `True`. It now requires an exact
+  sign for each numeric `alpha_0` and a complete Sturm sign table for
+  L3s4.
+
+No value, table entry or verdict changed.
+
+## 6. What this does not claim
+
+- No physical interpretation of `alpha` or `beta`, no observational
+  comparison, no statement about our universe (contract Secs. 5, 7).
+- Hf's refutation by L2 and L6e is one coincidence on one substrate. It is
+  not evidence that the substrate fixes the correction in general; the
+  hexagon and BCC substrates carry rows with different corrections.
+- The observation that `alpha <= 0` pointwise in every row with
+  `d >= 2` except L3s4 is a pattern in the declared list, found after
+  solving. It is not a hypothesis of this gate and not a law.
+- Not human review. No novelty claim.
+
+## 7. Next step
+
+A separate promotion decision (user).
+
+=== DOCUMENT 6: THREE_VELOCITIES.md ===
+
+# THREE_VELOCITIES
+
+## Purpose
+
+This note fixes the vocabulary for propagation speeds in the project.
+
+## 1. Microscopic causal geometry
+
+For a finite one-step displacement set `N`, define
+
+`C_micro = conv(N)`.
+
+This is the primary causal object in more than one spatial dimension. It records which average velocities are geometrically compatible with repeated local moves.
+
+For direction `n̂`, the support function is
+
+`h_C(n̂) = sup_{v in C_micro} n̂·v`.
+
+The directional causal speed is proportional to `h_C(n̂)` after restoring lattice/time units.
+
+Two scalar summaries are useful but secondary:
+
+- inradius: `r_in = min h_C`;
+- maximal directional support: `V_causal^max = max h_C`.
+
+## 2. Spectral group velocity
+
+Let the Bloch unitary have eigenvalues
+
+`exp[-i ω_s(k) Δt]`.
+
+The group velocity of branch `s` is
+
+`v_s(k) = ∇_k ω_s(k)`.
+
+Define
+
+`V_grp^max = sup_{s,k} ||v_s(k)||`.
+
+This quantity belongs to the spectrum of a specific QCA. It is not identical by definition to the geometric boundary of `C_micro`.
+
+## 3. Relativistic IR speed
+
+`c_IR` belongs to the low-energy effective theory.
+
+For a gapless node with isotropic linear dispersion,
+
+`ω(k) = c_IR |k| + higher orders`,
+
+so `c_IR` is the low-energy slope.
+
+For a massive relativistic EFT,
+
+`H_eff(k) = M β + c_IR α·k + ...`,
+
+or, in the exact continuum relativistic form,
+
+`ω^2 = M^2 + c_IR^2 |k|^2`.
+
+On a finite lattice, higher-order Hamiltonian terms can contribute to the `|k|^2` coefficient of `ω^2`, so the two extraction procedures must be checked rather than assumed equivalent.
+
+The completed standard Dirac gate establishes a strict difference for
+`0 < m < 1`: with `F = arcsin(m) sqrt(1-m^2)/m`,
+`c_H = r_in F < c_{ω^2} = r_in sqrt(F) < r_in`.
+The quadratic mass-direction correction satisfies
+`c_H^2 + 2 M b = c_{ω^2}^2`, where `M = arcsin(m)` and
+`b = r_in^2 sqrt(1-m^2)(1-F)/(2m)`.
+
+Thus an unspecified finite-lattice `c_IR` is ambiguous between these
+extractions. Their common massless/continuum limit is verified for the standard
+family; see the [canonical state](../state/CURRENT_STATE.md) for the claim ceiling.
+
+## 4. Safe inequalities and unsafe identifications
+
+The robust locality statement is that spectral propagation cannot outrun the microscopic causal geometry. In one dimension this reduces to a scalar Bernstein-type bound.
+
+Unsafe universal identifications include:
+
+`c_IR = V_grp^max`,
+
+`V_grp^max = V_causal^max`,
+
+and therefore
+
+`c_IR = V_causal^max`.
+
+Each equality requires an independent mechanism or proof.
+
+## 5. Current geometric candidate
+
+If the IR cone is isotropic and must fit inside `C_micro`, then
+
+`c_IR <= r_in(C_micro)`.
+
+The strongest isotropic cone compatible with the *one-step* microscopic causal body has radius exactly `r_in`.
+
+**Correction (2026-09-14):** `r_in(C_micro)` is only an upper bound, and it
+bounds the one-step body, not the propagation actually achievable after
+repeated time steps. The object that should be compared against `c_IR` is the
+*strict asymptotic* isotropic speed `c_strict^iso = min h_infty`, defined from
+the actual long-run Fourier support in
+[`CAUSAL_BODY_GEOMETRY.md`](CAUSAL_BODY_GEOMETRY.md) Sec. 6, which satisfies
+`c_strict^iso <= r_in(C_micro)` in general and need not be an "inradius" at
+all (a pure shift gives a negative value). The live hypothesis is therefore
+
+`B_infty^*: c_0 = c_strict^iso`,
+
+not the old `c_IR = r_in(C_micro)`. The standard Pavia Weyl family in d=3 is
+the one baseline where the two targets are certified to coincide exactly
+(`c_strict^iso = r_in = 1/sqrt(3)`); see
+[`2026-09-14--strict-asymptotic-pavia-baseline.md`](../reports/2026-09-14--strict-asymptotic-pavia-baseline.md).
+See `B_STAR_HYPOTHESIS.md` for current status.
+
+codex
+**Veredicto: reparación necesaria.** La cota de L2/L3 y la existencia local de excitaciones super‑\(c_0\) se sostienen matemáticamente a partir de las identidades y coeficientes declarados. La independencia afirmada en la sección 5 no está demostrada. Además, la certificación por intervalos tiene un hueco en el tratamiento de las constantes, y la clasificación de L3s4 necesita dos correcciones.
+
+Esta es una revisión manual de los adjuntos. No he ejecutado el script. Las identidades de los símbolos importados y los resultados numéricos del registro quedan **[UNVERIFIED] como resultados de ejecución independiente**: sus constructores no están adjuntos. Sí puedo comprobar las consecuencias matemáticas de esas identidades y la lógica del código mostrado. El 19/19 no sustituye esas comprobaciones.
+
+Las derivaciones críticas son las siguientes.
+
+1. **L2/L3: la prueba global es correcta, condicionada a las identidades del símbolo.**
+
+   Para un unitario \(2\times2\) con
+   \[
+   \det U=1,\qquad \operatorname{Tr}U=2C,\qquad
+   C=\prod_j\cos p_j,
+   \]
+   el polinomio característico es
+   \[
+   \lambda^2-2C\lambda+1.
+   \]
+   Sus eigenvalores son \(e^{\pm i\omega}\), con
+   \[
+   \omega=\arccos C.
+   \]
+   Esto comprueba la reducción espectral; que los símbolos concretos de L2/L3 satisfagan esas identidades sólo consta aquí en el script y su registro.
+
+   Si \(p_j=k_j/L\), donde \(C^2\ne1\),
+   \[
+   \partial_{k_j}\omega=
+   \frac{\sin p_j\prod_{i\ne j}\cos p_i}
+        {L\sqrt{1-C^2}}.
+   \]
+   Por tanto, tomando \(a_j=\cos^2p_j\),
+   \[
+   L^2\|\nabla_k\omega\|^2=
+   \frac{\sum_j(1-a_j)\prod_{i\ne j}a_i}
+        {1-\prod_j a_j}.
+   \]
+   La fórmula del informe es correcta.
+
+   También lo es la cota multilineal. En un vértice de \([0,1]^d\), sea \(m\) el número de coordenadas nulas. Para
+   \[
+   f=1-\prod_j a_j-\sum_j(1-a_j)\prod_{i\ne j}a_i
+   \]
+   se obtiene \(f=0\) si \(m=0\) o \(m=1\), y \(f=1\) si \(m\ge2\). Una función multiafín es una combinación convexa de sus valores en los vértices: luego \(f\ge0\).
+
+   Hay una segunda comprobación directa: interpretando \(a_j\) como probabilidades de éxitos independientes, \(f\) es la probabilidad de tener al menos dos fallos. En particular,
+   \[
+   f_2=(1-a_1)(1-a_2),
+   \]
+   y
+   \[
+   f_3=(1-a_1)(1-a_2)
+      +(1-a_3)\bigl[(1-a_1)a_2+a_1(1-a_2)\bigr].
+   \]
+   Ambos son manifiestamente no negativos.
+
+   Finalmente,
+   \[
+   C=1-\frac{|k|^2}{2L^2}+O(|k|^4)
+   \quad\Longrightarrow\quad
+   \omega=\frac{|k|}{L}+O(|k|^3),
+   \]
+   de modo que \(c_0=1/L\). Sobre un eje, fuera de los cruces, la velocidad alcanza exactamente \(1/L\). Las dos ramas tienen la misma norma del gradiente. Así,
+   \[
+   V_{\rm grp}^{\max}=c_0.
+   \]
+
+   Los puntos donde \(C^2=1\) requieren excluir el gradiente no definido o considerar límites; no invalidan el supremo. Análogamente, en L1, \(\omega=|k|\) corresponde a la zona principal: globalmente hay plegamiento de cuasienergía, aunque la rapidez de las ramas regulares sigue siendo uno.
+
+2. **El signo positivo de \(\beta\) sí demuestra existencia local, pero no un punto de la rejilla finita.**
+
+   Para una rama analítica a lo largo del rayo, con \(t>0\),
+   \[
+   \varepsilon_+(t\hat n)-\varepsilon_0
+   =c_0\bigl[t+\beta(\hat n)t^2+\alpha(\hat n)t^3+O(t^4)\bigr],
+   \]
+   se puede derivar:
+   \[
+   \hat n\cdot\nabla\varepsilon_+
+   =c_0\bigl[1+2\beta(\hat n)t+3\alpha(\hat n)t^2+O(t^3)\bigr].
+   \]
+   Como
+   \[
+   \|\nabla\varepsilon_+\|
+   \ge \hat n\cdot\nabla\varepsilon_+,
+   \]
+   si \(\beta(\hat n)>0\), existe un intervalo \(0<t<\delta\) donde la rapidez supera \(c_0\).
+
+   La analiticidad importa: no basta con derivar formalmente un resto \(O(t^4)\) sin regularidad. Aquí se justifica para un símbolo unitario analítico restringido a un rayo: puede elegirse un logaritmo hermítico local y, para \(c_0>0\), la separación lineal de las dos ramas permite una elección analítica unilateral. Para L3s4, los dos conglomerados tienen eigenvalores distintos en el nodo, y el mismo argumento vale para cada \(a\) fijo con \(0<a<1\). No proporciona un radio uniforme en \(a\).
+
+   Las sustituciones de los rayos dan efectivamente:
+   \[
+   \beta_{\mathrm{L5a,L5b}}(+111)=\frac19,\qquad
+   \beta_{\mathrm{L4}}(-111)=\frac19,
+   \]
+   \[
+   \beta_{\mathrm{L6a}}(60^\circ)=\frac{\sqrt{15}}{36},
+   \qquad
+   \beta_{\mathrm{L6b}}(0^\circ)=\frac{\sqrt{15}}{18}.
+   \]
+   En L5b se entiende el bloque con el signo correspondiente.
+
+   Para el signo superior de L3s4,
+   \[
+   \beta(+111)+\beta(-111)
+   =\frac{\sqrt3(1-a^2)}{3a}>0.
+   \]
+   Al menos uno de esos rayos tiene \(\beta>0\), para todo \(0<a<1\). Esta demostración es suficiente para la existencia local super‑\(c_0\).
+
+   **No demuestra que alguno de los ocho radios de `GRID` esté dentro de ese intervalo.** La existencia local y el testigo contractual en la rejilla son resultados distintos.
+
+3. **La fórmula de velocidades del bloque \(2\times2\) es correcta como pareja no ordenada.**
+
+   Escribamos
+   \[
+   d=\det U=e^{i\phi_d},\qquad
+   \lambda_\pm=e^{i\phi_d/2}e^{\pm i\theta}.
+   \]
+   Con la convención \(\lambda=e^{-i\varepsilon}\),
+   \[
+   \varepsilon_\pm=-\frac{\phi_d}{2}\mp\theta
+   \quad\bmod 2\pi.
+   \]
+   Si \(T=|\operatorname{Tr}U|^2\), entonces
+   \[
+   T=4\cos^2\theta,\qquad
+   \nabla T=-8\cos\theta\sin\theta\,\nabla\theta.
+   \]
+   Por ello, para \(0<T<4\), las dos velocidades forman el conjunto
+   \[
+   \left\{
+   -\frac12\nabla\phi_d
+   \ \pm\
+   \frac{\nabla T}{2\sqrt T\sqrt{4-T}}
+   \right\}.
+   \]
+   El signo perdido al usar \(T\) sólo intercambia las ramas. No hay un factor dos incorrecto en el script.
+
+   Además,
+   \[
+   \nabla\phi_d=
+   \frac{\operatorname{Im}(\bar d\,\nabla d)}{|d|^2}.
+   \]
+   El código puede omitir el denominador porque presupone unitariedad exacta, de donde \(|d|=1\). La conversión desde las fases \(p_j\) a \(k\), y la división entre tres para L6b, coinciden con las convenciones declaradas.
+
+   La condición \(T<4\) excluye una degeneración dentro del bloque. \(T>0\) evita la singularidad de esta representación mediante el módulo cuadrado de la traza; \(T=0\) no es en sí un cruce de eigenvalores.
+
+   El chequeo mostrado establece regularidad **en el punto evaluado**. Que el bloque sea unitario, invariante y contenga las dos ramas del nodo depende de los constructores y descomposiciones importados. El informe padre lo describe, pero el script nuevo no vuelve a comprobarlo. Tampoco identifica cuál de `plus` y `minus` es la rama superior: para demostrar existencia en cualquiera de las dos basta, pero debe conservarse esa distinción.
+
+4. **L3s4 refuta Hh en el sentido de una rama seleccionada, con dos excepciones de clasificación.**
+
+   Poniendo \(x=a^2\),
+   \[
+   \beta=B_0+B_3n_1n_2n_3,\qquad
+   B_0=\frac{\sqrt3(1-x)}{6a},\quad
+   B_3=\frac{\sqrt3(2x-1)}{3a}.
+   \]
+   Puesto que
+   \[
+   |n_1n_2n_3|\le\frac1{3\sqrt3},
+   \]
+   resulta
+   \[
+   \min_{\hat n}\beta
+   =\frac{\sqrt3(1-x)}{6a}-\frac{|2x-1|}{9a}.
+   \]
+   La positividad estricta equivale a
+   \[
+   3\sqrt3(1-x)>2|2x-1|,
+   \]
+   que, para \(0<x<1\), da exactamente
+   \[
+   x<x_c=\frac{19-6\sqrt3}{11}.
+   \]
+
+   Por tanto, la rama superior del conglomerado de signo positivo tiene avance a primer orden en todas las direcciones para \(a^2<x_c\). Esto refuta Hh bajo la lectura del contrato que asigna la firma a esa rama. No significa que todas las ramas de L3s4 tengan avance: el conglomerado opuesto tiene el signo contrario.
+
+   Las correcciones necesarias son:
+
+   - En \(a^2=x_c\), \(\beta\ge0\), con ceros en ciertas diagonales. **No toma ambos signos.** En esas direcciones nulas, el comportamiento siguiente requiere términos superiores.
+   - En \(a^2=1/2\), \(B_3=0\) y
+     \[
+     \beta=\frac{\sqrt6}{12}.
+     \]
+     La corrección principal es **isótropa**. La etiqueta incondicional «anisotropic» del script es incorrecta para ese parámetro.
+
+   Para las demás filas, orden y signos se leen correctamente de las fórmulas adjuntas: \(\alpha\le0\) en L2/L6e/L3; \(\alpha<0\), constante, en L6c/L6d/L6f; y \(\beta\) cambia de signo en las filas impares indicadas. «Orden 1» u «orden 2» describe el primer coeficiente no idénticamente nulo sobre la esfera: no asegura ese mismo orden sobre sus direcciones de anulación.
+
+Las objeciones, ordenadas por gravedad, son estas.
+
+1. **La independencia de la sección 5 y la afirmación 1.2 no están demostradas.**
+
+   Sean
+   \[
+   A:\ c_0=r_{\rm in},
+   \qquad
+   B:\ V_{\rm grp}^{\max}=c_0.
+   \]
+   Los resultados declarados proporcionan:
+
+   | Caso | Filas |
+   |---|---|
+   | \(A\land B\) | L2, L3 |
+   | \(A\land\neg B\) | L5a, L5b, L4 |
+   | \(\neg A\land\neg B\) | L6a, L6b, L3s4 |
+   | \(\neg A\land B\) | Ninguna demostrada |
+
+   Se demuestra que \(A\) **no implica** \(B\). No se demuestra que \(B\) no implique \(A\). Los resultados negativos de una búsqueda finita en L6c/L6d/L6f no rellenan la última casilla.
+
+   **Reparación:** sustituir «son independientes» por «alcanzar el techo isótropo no garantiza que ninguna excitación supere \(c_0\); la implicación inversa queda abierta». La afirmación 1.2 debe limitarse a la coincidencia de firmas de retraso y de resultados negativos de búsqueda.
+
+   Hay una conclusión distinta que sí se sostiene: la insuperabilidad espectral no implica \(S_{\max}\). L2/L3 ya son ejemplos, pues \(V_{\rm grp}^{\max}=c_0<1=V_{\rm causal}^{\max}\), según las normalizaciones declaradas. Esto permite conservar una conclusión limitada sobre «identificar \(c\) con el reloj», distinguiéndola de \(S_{\rm in}\).
+
+2. **La certificación rigurosa por intervalos no queda cerrada —informe §4; `ivnum`, `scale_of`, `prepare_block`.**
+
+   `ivnum` evalúa con `sp.N(e,70)` y ensancha el resultado en \(10^{-55}\). Eso no incluye una demostración de que
+   \[
+   |e-\operatorname{N}(e,70)|<10^{-55}.
+   \]
+   Para las constantes pequeñas y radicales esperables, el margen parece holgado; pero «70 cifras solicitadas» no es una cota de error certificada. El redondeo exterior posterior de `iv.mpf` encierra los extremos decimales suministrados, no demuestra por sí mismo que éstos encierren el número exacto.
+
+   Por otro lado, `scale_of` usa `float(nrm)` para seleccionar la normalización. Por tanto, la frase **«No floating point enters a verdict» es literalmente falsa**: esas comparaciones influyen en \(L\) y, con ello, en las velocidades. No he encontrado evidencia de que hayan elegido mal en estas filas; el defecto es de garantía y descripción.
+
+   La asociación de `sqrt` y `mpf` con operaciones de intervalos es adecuada. Sin los símbolos importados y las funciones generadas no puedo comprobar que todas las constantes y operaciones restantes queden cubiertas.
+
+   **Reparación:** proporcionar encerramientos certificados de las constantes exactas y elegir \(L\) mediante comparaciones exactas. Explicitar también dónde se garantiza la unitariedad de los bloques; `detmod` se registra, pero no se exige. Hasta entonces, aceptaría esos números como resultados reportados compatibles con la prueba local, no como certificados rigurosos auditados.
+
+   Este hueco **no elimina** la existencia super‑\(c_0\) obtenida mediante \(\beta>0\).
+
+3. **El diagnóstico de imposibilidad contractual es demasiado fuerte —informe §4; contrato §§3 y 6.**
+
+   Un \(k_*\) de coordenadas algebraicas y radio racional es perfectamente coherente. Que sus exponenciales sean trascendentes impide tratarlas en general como radicales algebraicos; **no impide demostrar desigualdades exactas sobre ellas**. Por ejemplo, pueden encerrarse mediante series con restos acotados y extremos racionales.
+
+   La desviación real es utilizar aritmética de punto flotante con redondeo dirigido para alimentar el veredicto, cuando el contrato reservaba el punto flotante a ilustraciones.
+
+   **Reparación:** describirlo como una modificación del método, no como incompatibilidad matemática de los requisitos. Los intervalos son científicamente aceptables si sus garantías están completas, pero no constituyen cumplimiento literal del contrato congelado.
+
+   Además, L3s4 debe distinguir `SUPER_C_EXISTENCE_NEAR_NODE` de un testigo contractual: no se ha dado el punto exigido ni se ha demostrado que pertenezca a la rejilla finita.
+
+4. **La firma de L3s4 necesita corregir la frontera y el parámetro isótropo —informe §§1–2; `main`; registro; padre §3.3.**
+
+   Son errores algebraicos concretos, derivados arriba: «else both signs» falla en \(a^2=x_c\), y «anisotropic» falla para la corrección principal en \(a^2=1/2\).
+
+   **Reparación:** separar \(a^2<x_c\), \(a^2=x_c\) y \(a^2>x_c\), y registrar la isotropía principal en \(a^2=1/2\). Hh sigue refutada para el intervalo estricto, identificando la rama elegida bajo \(H_\gamma\).
+
+5. **El significado físico de “techo” necesita respetar THREE_VELOCITIES §5.**
+
+   El contrato define \(S_{\rm in}\) mediante el cuerpo causal de **un paso**. El documento adjunto advierte expresamente que éste proporciona una cota geométrica y que no debe identificarse automáticamente con la propagación asintótica realizable.
+
+   **Reparación:** usar «techo geométrico isótropo del cuerpo de un paso». Una fila con \(c_0<r_{\rm in}\) no queda demostrada, sólo por eso, por debajo de su propio techo dinámico asintótico. Esta precisión no altera las comparaciones algebraicas con \(c_0\), pero limita su interpretación.
+
+6. **El script respalda menos afirmaciones de las que puede sugerir el 19/19 —informe §6.**
+
+   Por inspección:
+
+   - Las firmas y el umbral de L3s4 se transcriben o codifican como texto; no se verifican en esta ejecución.
+   - Los chequeos de existencia local verifican signos, no regularidad analítica ni pertenencia a la rejilla.
+   - Las etiquetas de éxito de los intervalos dependen de la ruta numérica antes discutida.
+   - Una excepción en la búsqueda puede terminar etiquetada como `NO_WITNESS_ON_DECLARED_RAYS`; debería ser `OPEN (evaluation failed)`. No consta que ocurriera en el registro adjunto.
+
+   No todas las llamadas con predicado `True` son vacías: varias sólo se alcanzan después de una condición efectiva. Pero el recuento mezcla resultados calculados, consecuencias matemáticas y etiquetas; no son diecinueve pruebas independientes de todo el informe.
+
+   **Reparación:** ajustar las etiquetas a lo efectivamente comprobado y separar las firmas heredadas de las verificaciones nuevas. La promoción del padre también queda **[UNVERIFIED]**: el documento adjunto todavía dice `PROMOTION_PENDING`, aunque una decisión posterior podría explicar la discrepancia.
+
+Una precisión adicional afecta al diccionario de llegada. Si \(v=c_0(1+\delta)\), entonces
+\[
+\frac{\Delta T}{D/c}=\frac1{1+\delta}-1
+=-\delta+O(\delta^2).
+\]
+La igualdad con menos la corrección de velocidad es de **orden principal**, no exacta. Así entendida, los signos y órdenes utilizados son correctos. Para L3s4, además, la energía de la excitación debe medirse respecto a \(\varepsilon_0\), como en la expansión padre.
+
+**El alcance que aceptaría** es el siguiente: dadas las identidades espectrales y los coeficientes declarados, L2/L3 satisfacen exactamente \(V_{\rm grp}^{\max}=c_0\), Hg queda refutada, y las seis filas con \(\beta\) indicada tienen excitaciones super‑\(c_0\) suficientemente cerca del nodo. Hh queda refutada para la rama especificada de L3s4 y \(a^2<x_c\).
+
+También aceptaría `DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS` como conclusión **parcial, condicional a \(H_\gamma\) y restringida a las filas y ramas declaradas**, tras corregir L3s4. La justificación son las diferencias concretas de firmas, no simplemente que no se cumpla la condición de abandono. No aceptaría todavía los puntos como certificados rigurosos independientes, el cumplimiento literal del contrato, ni la independencia entre \(S_{\rm in}\) e insuperabilidad.
+tokens used
+34,354
+**Veredicto: reparación necesaria.** La cota de L2/L3 y la existencia local de excitaciones super‑\(c_0\) se sostienen matemáticamente a partir de las identidades y coeficientes declarados. La independencia afirmada en la sección 5 no está demostrada. Además, la certificación por intervalos tiene un hueco en el tratamiento de las constantes, y la clasificación de L3s4 necesita dos correcciones.
+
+Esta es una revisión manual de los adjuntos. No he ejecutado el script. Las identidades de los símbolos importados y los resultados numéricos del registro quedan **[UNVERIFIED] como resultados de ejecución independiente**: sus constructores no están adjuntos. Sí puedo comprobar las consecuencias matemáticas de esas identidades y la lógica del código mostrado. El 19/19 no sustituye esas comprobaciones.
+
+Las derivaciones críticas son las siguientes.
+
+1. **L2/L3: la prueba global es correcta, condicionada a las identidades del símbolo.**
+
+   Para un unitario \(2\times2\) con
+   \[
+   \det U=1,\qquad \operatorname{Tr}U=2C,\qquad
+   C=\prod_j\cos p_j,
+   \]
+   el polinomio característico es
+   \[
+   \lambda^2-2C\lambda+1.
+   \]
+   Sus eigenvalores son \(e^{\pm i\omega}\), con
+   \[
+   \omega=\arccos C.
+   \]
+   Esto comprueba la reducción espectral; que los símbolos concretos de L2/L3 satisfagan esas identidades sólo consta aquí en el script y su registro.
+
+   Si \(p_j=k_j/L\), donde \(C^2\ne1\),
+   \[
+   \partial_{k_j}\omega=
+   \frac{\sin p_j\prod_{i\ne j}\cos p_i}
+        {L\sqrt{1-C^2}}.
+   \]
+   Por tanto, tomando \(a_j=\cos^2p_j\),
+   \[
+   L^2\|\nabla_k\omega\|^2=
+   \frac{\sum_j(1-a_j)\prod_{i\ne j}a_i}
+        {1-\prod_j a_j}.
+   \]
+   La fórmula del informe es correcta.
+
+   También lo es la cota multilineal. En un vértice de \([0,1]^d\), sea \(m\) el número de coordenadas nulas. Para
+   \[
+   f=1-\prod_j a_j-\sum_j(1-a_j)\prod_{i\ne j}a_i
+   \]
+   se obtiene \(f=0\) si \(m=0\) o \(m=1\), y \(f=1\) si \(m\ge2\). Una función multiafín es una combinación convexa de sus valores en los vértices: luego \(f\ge0\).
+
+   Hay una segunda comprobación directa: interpretando \(a_j\) como probabilidades de éxitos independientes, \(f\) es la probabilidad de tener al menos dos fallos. En particular,
+   \[
+   f_2=(1-a_1)(1-a_2),
+   \]
+   y
+   \[
+   f_3=(1-a_1)(1-a_2)
+      +(1-a_3)\bigl[(1-a_1)a_2+a_1(1-a_2)\bigr].
+   \]
+   Ambos son manifiestamente no negativos.
+
+   Finalmente,
+   \[
+   C=1-\frac{|k|^2}{2L^2}+O(|k|^4)
+   \quad\Longrightarrow\quad
+   \omega=\frac{|k|}{L}+O(|k|^3),
+   \]
+   de modo que \(c_0=1/L\). Sobre un eje, fuera de los cruces, la velocidad alcanza exactamente \(1/L\). Las dos ramas tienen la misma norma del gradiente. Así,
+   \[
+   V_{\rm grp}^{\max}=c_0.
+   \]
+
+   Los puntos donde \(C^2=1\) requieren excluir el gradiente no definido o considerar límites; no invalidan el supremo. Análogamente, en L1, \(\omega=|k|\) corresponde a la zona principal: globalmente hay plegamiento de cuasienergía, aunque la rapidez de las ramas regulares sigue siendo uno.
+
+2. **El signo positivo de \(\beta\) sí demuestra existencia local, pero no un punto de la rejilla finita.**
+
+   Para una rama analítica a lo largo del rayo, con \(t>0\),
+   \[
+   \varepsilon_+(t\hat n)-\varepsilon_0
+   =c_0\bigl[t+\beta(\hat n)t^2+\alpha(\hat n)t^3+O(t^4)\bigr],
+   \]
+   se puede derivar:
+   \[
+   \hat n\cdot\nabla\varepsilon_+
+   =c_0\bigl[1+2\beta(\hat n)t+3\alpha(\hat n)t^2+O(t^3)\bigr].
+   \]
+   Como
+   \[
+   \|\nabla\varepsilon_+\|
+   \ge \hat n\cdot\nabla\varepsilon_+,
+   \]
+   si \(\beta(\hat n)>0\), existe un intervalo \(0<t<\delta\) donde la rapidez supera \(c_0\).
+
+   La analiticidad importa: no basta con derivar formalmente un resto \(O(t^4)\) sin regularidad. Aquí se justifica para un símbolo unitario analítico restringido a un rayo: puede elegirse un logaritmo hermítico local y, para \(c_0>0\), la separación lineal de las dos ramas permite una elección analítica unilateral. Para L3s4, los dos conglomerados tienen eigenvalores distintos en el nodo, y el mismo argumento vale para cada \(a\) fijo con \(0<a<1\). No proporciona un radio uniforme en \(a\).
+
+   Las sustituciones de los rayos dan efectivamente:
+   \[
+   \beta_{\mathrm{L5a,L5b}}(+111)=\frac19,\qquad
+   \beta_{\mathrm{L4}}(-111)=\frac19,
+   \]
+   \[
+   \beta_{\mathrm{L6a}}(60^\circ)=\frac{\sqrt{15}}{36},
+   \qquad
+   \beta_{\mathrm{L6b}}(0^\circ)=\frac{\sqrt{15}}{18}.
+   \]
+   En L5b se entiende el bloque con el signo correspondiente.
+
+   Para el signo superior de L3s4,
+   \[
+   \beta(+111)+\beta(-111)
+   =\frac{\sqrt3(1-a^2)}{3a}>0.
+   \]
+   Al menos uno de esos rayos tiene \(\beta>0\), para todo \(0<a<1\). Esta demostración es suficiente para la existencia local super‑\(c_0\).
+
+   **No demuestra que alguno de los ocho radios de `GRID` esté dentro de ese intervalo.** La existencia local y el testigo contractual en la rejilla son resultados distintos.
+
+3. **La fórmula de velocidades del bloque \(2\times2\) es correcta como pareja no ordenada.**
+
+   Escribamos
+   \[
+   d=\det U=e^{i\phi_d},\qquad
+   \lambda_\pm=e^{i\phi_d/2}e^{\pm i\theta}.
+   \]
+   Con la convención \(\lambda=e^{-i\varepsilon}\),
+   \[
+   \varepsilon_\pm=-\frac{\phi_d}{2}\mp\theta
+   \quad\bmod 2\pi.
+   \]
+   Si \(T=|\operatorname{Tr}U|^2\), entonces
+   \[
+   T=4\cos^2\theta,\qquad
+   \nabla T=-8\cos\theta\sin\theta\,\nabla\theta.
+   \]
+   Por ello, para \(0<T<4\), las dos velocidades forman el conjunto
+   \[
+   \left\{
+   -\frac12\nabla\phi_d
+   \ \pm\
+   \frac{\nabla T}{2\sqrt T\sqrt{4-T}}
+   \right\}.
+   \]
+   El signo perdido al usar \(T\) sólo intercambia las ramas. No hay un factor dos incorrecto en el script.
+
+   Además,
+   \[
+   \nabla\phi_d=
+   \frac{\operatorname{Im}(\bar d\,\nabla d)}{|d|^2}.
+   \]
+   El código puede omitir el denominador porque presupone unitariedad exacta, de donde \(|d|=1\). La conversión desde las fases \(p_j\) a \(k\), y la división entre tres para L6b, coinciden con las convenciones declaradas.
+
+   La condición \(T<4\) excluye una degeneración dentro del bloque. \(T>0\) evita la singularidad de esta representación mediante el módulo cuadrado de la traza; \(T=0\) no es en sí un cruce de eigenvalores.
+
+   El chequeo mostrado establece regularidad **en el punto evaluado**. Que el bloque sea unitario, invariante y contenga las dos ramas del nodo depende de los constructores y descomposiciones importados. El informe padre lo describe, pero el script nuevo no vuelve a comprobarlo. Tampoco identifica cuál de `plus` y `minus` es la rama superior: para demostrar existencia en cualquiera de las dos basta, pero debe conservarse esa distinción.
+
+4. **L3s4 refuta Hh en el sentido de una rama seleccionada, con dos excepciones de clasificación.**
+
+   Poniendo \(x=a^2\),
+   \[
+   \beta=B_0+B_3n_1n_2n_3,\qquad
+   B_0=\frac{\sqrt3(1-x)}{6a},\quad
+   B_3=\frac{\sqrt3(2x-1)}{3a}.
+   \]
+   Puesto que
+   \[
+   |n_1n_2n_3|\le\frac1{3\sqrt3},
+   \]
+   resulta
+   \[
+   \min_{\hat n}\beta
+   =\frac{\sqrt3(1-x)}{6a}-\frac{|2x-1|}{9a}.
+   \]
+   La positividad estricta equivale a
+   \[
+   3\sqrt3(1-x)>2|2x-1|,
+   \]
+   que, para \(0<x<1\), da exactamente
+   \[
+   x<x_c=\frac{19-6\sqrt3}{11}.
+   \]
+
+   Por tanto, la rama superior del conglomerado de signo positivo tiene avance a primer orden en todas las direcciones para \(a^2<x_c\). Esto refuta Hh bajo la lectura del contrato que asigna la firma a esa rama. No significa que todas las ramas de L3s4 tengan avance: el conglomerado opuesto tiene el signo contrario.
+
+   Las correcciones necesarias son:
+
+   - En \(a^2=x_c\), \(\beta\ge0\), con ceros en ciertas diagonales. **No toma ambos signos.** En esas direcciones nulas, el comportamiento siguiente requiere términos superiores.
+   - En \(a^2=1/2\), \(B_3=0\) y
+     \[
+     \beta=\frac{\sqrt6}{12}.
+     \]
+     La corrección principal es **isótropa**. La etiqueta incondicional «anisotropic» del script es incorrecta para ese parámetro.
+
+   Para las demás filas, orden y signos se leen correctamente de las fórmulas adjuntas: \(\alpha\le0\) en L2/L6e/L3; \(\alpha<0\), constante, en L6c/L6d/L6f; y \(\beta\) cambia de signo en las filas impares indicadas. «Orden 1» u «orden 2» describe el primer coeficiente no idénticamente nulo sobre la esfera: no asegura ese mismo orden sobre sus direcciones de anulación.
+
+Las objeciones, ordenadas por gravedad, son estas.
+
+1. **La independencia de la sección 5 y la afirmación 1.2 no están demostradas.**
+
+   Sean
+   \[
+   A:\ c_0=r_{\rm in},
+   \qquad
+   B:\ V_{\rm grp}^{\max}=c_0.
+   \]
+   Los resultados declarados proporcionan:
+
+   | Caso | Filas |
+   |---|---|
+   | \(A\land B\) | L2, L3 |
+   | \(A\land\neg B\) | L5a, L5b, L4 |
+   | \(\neg A\land\neg B\) | L6a, L6b, L3s4 |
+   | \(\neg A\land B\) | Ninguna demostrada |
+
+   Se demuestra que \(A\) **no implica** \(B\). No se demuestra que \(B\) no implique \(A\). Los resultados negativos de una búsqueda finita en L6c/L6d/L6f no rellenan la última casilla.
+
+   **Reparación:** sustituir «son independientes» por «alcanzar el techo isótropo no garantiza que ninguna excitación supere \(c_0\); la implicación inversa queda abierta». La afirmación 1.2 debe limitarse a la coincidencia de firmas de retraso y de resultados negativos de búsqueda.
+
+   Hay una conclusión distinta que sí se sostiene: la insuperabilidad espectral no implica \(S_{\max}\). L2/L3 ya son ejemplos, pues \(V_{\rm grp}^{\max}=c_0<1=V_{\rm causal}^{\max}\), según las normalizaciones declaradas. Esto permite conservar una conclusión limitada sobre «identificar \(c\) con el reloj», distinguiéndola de \(S_{\rm in}\).
+
+2. **La certificación rigurosa por intervalos no queda cerrada —informe §4; `ivnum`, `scale_of`, `prepare_block`.**
+
+   `ivnum` evalúa con `sp.N(e,70)` y ensancha el resultado en \(10^{-55}\). Eso no incluye una demostración de que
+   \[
+   |e-\operatorname{N}(e,70)|<10^{-55}.
+   \]
+   Para las constantes pequeñas y radicales esperables, el margen parece holgado; pero «70 cifras solicitadas» no es una cota de error certificada. El redondeo exterior posterior de `iv.mpf` encierra los extremos decimales suministrados, no demuestra por sí mismo que éstos encierren el número exacto.
+
+   Por otro lado, `scale_of` usa `float(nrm)` para seleccionar la normalización. Por tanto, la frase **«No floating point enters a verdict» es literalmente falsa**: esas comparaciones influyen en \(L\) y, con ello, en las velocidades. No he encontrado evidencia de que hayan elegido mal en estas filas; el defecto es de garantía y descripción.
+
+   La asociación de `sqrt` y `mpf` con operaciones de intervalos es adecuada. Sin los símbolos importados y las funciones generadas no puedo comprobar que todas las constantes y operaciones restantes queden cubiertas.
+
+   **Reparación:** proporcionar encerramientos certificados de las constantes exactas y elegir \(L\) mediante comparaciones exactas. Explicitar también dónde se garantiza la unitariedad de los bloques; `detmod` se registra, pero no se exige. Hasta entonces, aceptaría esos números como resultados reportados compatibles con la prueba local, no como certificados rigurosos auditados.
+
+   Este hueco **no elimina** la existencia super‑\(c_0\) obtenida mediante \(\beta>0\).
+
+3. **El diagnóstico de imposibilidad contractual es demasiado fuerte —informe §4; contrato §§3 y 6.**
+
+   Un \(k_*\) de coordenadas algebraicas y radio racional es perfectamente coherente. Que sus exponenciales sean trascendentes impide tratarlas en general como radicales algebraicos; **no impide demostrar desigualdades exactas sobre ellas**. Por ejemplo, pueden encerrarse mediante series con restos acotados y extremos racionales.
+
+   La desviación real es utilizar aritmética de punto flotante con redondeo dirigido para alimentar el veredicto, cuando el contrato reservaba el punto flotante a ilustraciones.
+
+   **Reparación:** describirlo como una modificación del método, no como incompatibilidad matemática de los requisitos. Los intervalos son científicamente aceptables si sus garantías están completas, pero no constituyen cumplimiento literal del contrato congelado.
+
+   Además, L3s4 debe distinguir `SUPER_C_EXISTENCE_NEAR_NODE` de un testigo contractual: no se ha dado el punto exigido ni se ha demostrado que pertenezca a la rejilla finita.
+
+4. **La firma de L3s4 necesita corregir la frontera y el parámetro isótropo —informe §§1–2; `main`; registro; padre §3.3.**
+
+   Son errores algebraicos concretos, derivados arriba: «else both signs» falla en \(a^2=x_c\), y «anisotropic» falla para la corrección principal en \(a^2=1/2\).
+
+   **Reparación:** separar \(a^2<x_c\), \(a^2=x_c\) y \(a^2>x_c\), y registrar la isotropía principal en \(a^2=1/2\). Hh sigue refutada para el intervalo estricto, identificando la rama elegida bajo \(H_\gamma\).
+
+5. **El significado físico de “techo” necesita respetar THREE_VELOCITIES §5.**
+
+   El contrato define \(S_{\rm in}\) mediante el cuerpo causal de **un paso**. El documento adjunto advierte expresamente que éste proporciona una cota geométrica y que no debe identificarse automáticamente con la propagación asintótica realizable.
+
+   **Reparación:** usar «techo geométrico isótropo del cuerpo de un paso». Una fila con \(c_0<r_{\rm in}\) no queda demostrada, sólo por eso, por debajo de su propio techo dinámico asintótico. Esta precisión no altera las comparaciones algebraicas con \(c_0\), pero limita su interpretación.
+
+6. **El script respalda menos afirmaciones de las que puede sugerir el 19/19 —informe §6.**
+
+   Por inspección:
+
+   - Las firmas y el umbral de L3s4 se transcriben o codifican como texto; no se verifican en esta ejecución.
+   - Los chequeos de existencia local verifican signos, no regularidad analítica ni pertenencia a la rejilla.
+   - Las etiquetas de éxito de los intervalos dependen de la ruta numérica antes discutida.
+   - Una excepción en la búsqueda puede terminar etiquetada como `NO_WITNESS_ON_DECLARED_RAYS`; debería ser `OPEN (evaluation failed)`. No consta que ocurriera en el registro adjunto.
+
+   No todas las llamadas con predicado `True` son vacías: varias sólo se alcanzan después de una condición efectiva. Pero el recuento mezcla resultados calculados, consecuencias matemáticas y etiquetas; no son diecinueve pruebas independientes de todo el informe.
+
+   **Reparación:** ajustar las etiquetas a lo efectivamente comprobado y separar las firmas heredadas de las verificaciones nuevas. La promoción del padre también queda **[UNVERIFIED]**: el documento adjunto todavía dice `PROMOTION_PENDING`, aunque una decisión posterior podría explicar la discrepancia.
+
+Una precisión adicional afecta al diccionario de llegada. Si \(v=c_0(1+\delta)\), entonces
+\[
+\frac{\Delta T}{D/c}=\frac1{1+\delta}-1
+=-\delta+O(\delta^2).
+\]
+La igualdad con menos la corrección de velocidad es de **orden principal**, no exacta. Así entendida, los signos y órdenes utilizados son correctos. Para L3s4, además, la energía de la excitación debe medirse respecto a \(\varepsilon_0\), como en la expansión padre.
+
+**El alcance que aceptaría** es el siguiente: dadas las identidades espectrales y los coeficientes declarados, L2/L3 satisfacen exactamente \(V_{\rm grp}^{\max}=c_0\), Hg queda refutada, y las seis filas con \(\beta\) indicada tienen excitaciones super‑\(c_0\) suficientemente cerca del nodo. Hh queda refutada para la rama especificada de L3s4 y \(a^2<x_c\).
+
+También aceptaría `DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS` como conclusión **parcial, condicional a \(H_\gamma\) y restringida a las filas y ramas declaradas**, tras corregir L3s4. La justificación son las diferencias concretas de firmas, no simplemente que no se cumpla la condición de abandono. No aceptaría todavía los puntos como certificados rigurosos independientes, el cumplimiento literal del contrato, ni la independencia entre \(S_{\rm in}\) e insuperabilidad.

@@ -2,6 +2,26 @@
 
 **Date:** 2026-11-09
 
+**Observational signature of saturation — 2026-11-09:** user «si, congélalo
+y ejecútalo». Contract 21af1dd (conditional dictionary H_gamma; no claim
+about our universe); verifier 658845a committed before running.
+[Report](../reports/2026-11-09--observational-signature-saturation.md).
+One-step isotropic ceiling rows: L2, L3 have V_grp^max = c_0 exactly
+(product form + multilinear bound); L5a, L5b, L4 have super-c excitations
+near the node (exact beta sign), so Hg `REFUTED_BY_ROW_L2`: being at the
+ceiling does not guarantee c is unbeatable. Converse OPEN (L6c/d/f only
+lack witnesses on declared rays). Unbeatable does not imply S_max (L2, L3).
+Hh `REFUTED_BY_ROW_L3s4` for the upper-sign cluster with a^2 < x_c. Route
+`DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS`, partial and conditional on
+H_gamma. User asked for Codex review: one sealed revision-ciega astra round
+(gpt-6-astra, herramientas 97292a9) on f9a638e,
+[unaltered review](../reports/reviews/2026-11-09-observational-signature-astra/informe_astra.md):
+«reparación necesaria»; applied: independence claim withdrawn, interval
+points downgraded to unaudited supporting values (existence rests on exact
+beta signs), method change instead of "impossibility", L3s4 boundary and
+isotropic case at a^2=1/2, one-step ceiling wording, count qualified; not
+re-reviewed. PRELIMINARY, no promotion; no comparison with data.
+
 **Low-energy packet gate executed (contract 2 of 2) and Thirring coexistence line closed — 2026-11-09:**
 user «si a ambas preguntas» (push contract 715096f, execute it). Exact
 verifier and labelled diagnostic committed before running (75b33c3); first
