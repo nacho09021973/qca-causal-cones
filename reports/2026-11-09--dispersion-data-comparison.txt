@@ -1,0 +1,26 @@
+Checks: 9/9 (SymPy 1.14.0; mpmath 1.3.0, 30 digits for constants).
+PASS circle: 1/4 - n1^2 n2^2 = (n1^2-n2^2)^2/4 when n1^2+n2^2=1  
+PASS sphere: (sum n^2)^2 - 3 sigma2 = (1/2) sum (n_i^2-n_j^2)^2 >= 0, so sigma2 <= 1/3  
+PASS sphere: n1 n2 n3 at body diagonal = 3^{-3/2} (AM-GM bound attained)  
+PASS L3s4: a(sup|beta| - 1/9) = (1-a)[sqrt3(1+a)/6 - (2a+1)/9] for a^2>=1/2  
+PASS L3s4: bracket linear increasing (slope sqrt3/6 - 2/9 > 0) and positive at a = 1/sqrt2  
+PASS L3s4: for a^2<=1/2, a(sup|beta|-1/9) is decreasing in a and positive at a = 1/sqrt2  
+PASS sups used: L2/L6e 1/48 = (1/4)/12; L3 1/54 = (1/3)/18; beta rows 1/9 = (sqrt3/3)(3^{-3/2})  
+PASS Hi-evaluated (recorded, either outcome allowed): order-1 rows need ell_max < ell_P at most sensitive direction (D1)  {'L5a': '0.5494', 'L5b': '0.5494', 'L4': '0.5494', 'L6a': '0.5674', 'L6b': '0.2837', 'L3s4': '0.5494', 'Hi': True}
+PASS Hk-evaluated (recorded, either outcome allowed): order-2 rows allow ell_max > 1e6 ell_P at sup|alpha|  {'L2': '8.668e+7', 'L6e': '8.668e+7', 'L3': '9.194e+7', 'L6c': '2.831e+8', 'L6d': '1.416e+8', 'L6f': '1.416e+8', 'Hk': True}
+
+Per row (conditional on H_gamma; D1 non-birefringent, D2 birefringent):
+L1: order=None sup=None zeros=None | D1 UNCONSTRAINED_AT_ALL_ORDERS (omega = |k|)
+L2: order=2 sup=1/48 zeros=True | D1 {'ell_max_m': '1.401e-27', 'ell_over_lP': '8.668e+7', 'f_min_Hz': '3.026e+35'}
+L6e: order=2 sup=1/48 zeros=True | D1 {'ell_max_m': '1.401e-27', 'ell_over_lP': '8.668e+7', 'f_min_Hz': '3.026e+35'}
+L3: order=2 sup=1/54 zeros=True | D1 {'ell_max_m': '1.486e-27', 'ell_over_lP': '9.194e+7', 'f_min_Hz': '3.494e+35'}
+L6c: order=2 sup=1/512 zeros=False | D1 {'ell_max_m': '4.576e-27', 'ell_over_lP': '2.831e+8', 'f_min_Hz': '8.736e+34'}
+L6d: order=2 sup=1/128 zeros=False | D1 {'ell_max_m': '2.288e-27', 'ell_over_lP': '1.416e+8', 'f_min_Hz': '1.747e+35'}
+L6f: order=2 sup=1/128 zeros=False | D1 {'ell_max_m': '2.288e-27', 'ell_over_lP': '1.416e+8', 'f_min_Hz': '1.747e+35'}
+L5a: order=1 sup=1/9 zeros=True | D1 {'ell_max_m_delay_dir': '8.88e-36', 'ell_max_m_advance_dir': '8.072e-36', 'ell_over_lP_max': '0.5494', 'f_min_Hz': '5.848e+43'} | D2 {'strongest': {'ell_max_m': '1.243e-49', 'ell_over_lP': '7.692e-15'}, 'weakest': {'ell_max_m': '3.552e-49', 'ell_over_lP': '2.198e-14'}}
+L5b: order=1 sup=1/9 zeros=True | D1 {'ell_max_m_delay_dir': '8.88e-36', 'ell_max_m_advance_dir': '8.072e-36', 'ell_over_lP_max': '0.5494', 'f_min_Hz': '5.848e+43'} | D2 {'strongest': {'ell_max_m': '1.243e-49', 'ell_over_lP': '7.692e-15'}, 'weakest': {'ell_max_m': '3.552e-49', 'ell_over_lP': '2.198e-14'}}
+L4: order=1 sup=1/9 zeros=True | D1 {'ell_max_m_delay_dir': '8.88e-36', 'ell_max_m_advance_dir': '8.072e-36', 'ell_over_lP_max': '0.5494', 'f_min_Hz': '5.848e+43'} | D2 {'strongest': {'ell_max_m': '1.243e-49', 'ell_over_lP': '7.692e-15'}, 'weakest': {'ell_max_m': '3.552e-49', 'ell_over_lP': '2.198e-14'}}
+L6a: order=1 sup=sqrt(15)/36 zeros=True | D1 {'ell_max_m_delay_dir': '9.171e-36', 'ell_max_m_advance_dir': '8.337e-36', 'ell_over_lP_max': '0.5674', 'f_min_Hz': '6.538e+43'} | D2 {'strongest': {'ell_max_m': '1.284e-49', 'ell_over_lP': '7.944e-15'}, 'weakest': {'ell_max_m': '3.668e-49', 'ell_over_lP': '2.27e-14'}}
+L6b: order=1 sup=sqrt(15)/18 zeros=True | D1 {'ell_max_m_delay_dir': '4.585e-36', 'ell_max_m_advance_dir': '4.169e-36', 'ell_over_lP_max': '0.2837', 'f_min_Hz': '1.961e+44'} | D2 {'strongest': {'ell_max_m': '6.42e-50', 'ell_over_lP': '3.972e-15'}, 'weakest': {'ell_max_m': '1.834e-49', 'ell_over_lP': '1.135e-14'}}
+L3s4: order=1 sup=1/9 zeros=a-dependent | D1 {'ell_max_m_delay_dir': '8.88e-36', 'ell_max_m_advance_dir': '8.072e-36', 'ell_over_lP_max': '0.5494', 'note': 'L3s4: bound uses sup|beta| >= 1/9 (all a); c_0 = a/sqrt3 a-dependent, f_min not given'} | D2 {'strongest': {'ell_max_m': '1.243e-49', 'ell_over_lP': '7.692e-15'}, 'weakest': {'ell_max_m': '3.552e-49', 'ell_over_lP': '2.198e-14'}}
+Hi=True  Hk=True
