@@ -219,7 +219,9 @@ def check_O3c(cf2_mu, mu_sym):
     Mb = 2 * sp.asin(mu / sp.sqrt(2))                # = acos(nu^2): 1 - cos M_b = mu^2, M_b in (0, pi)
     exact("O3c-identity-cos(2asin(mu/sqrt2))=nu^2", iszero(sp.expand_trig(sp.cos(Mb)) - nu**2))
     cb2 = Mb * Epp / 4                                     # omega_b^2 = M_b^2 + c_b^2 P^2, P = 2p
-    exact("O3c-c_b^2-closed-form", iszero(cb2 - Mb * nu**2 / (sp.sqrt(2) * C0 * mu)))
+    cb2_closed = Mb * nu**2 / (sp.sqrt(2) * C0 * mu)
+    exact("O3c-c_b^2-closed-form", iszero(cb2 - cb2_closed))
+    cb2 = cb2_closed   # limits and series below use the certified closed form
     exact("O3c-M_b-below-threshold-cos(M_b)>cos(2 omega0)", iszero(sp.cos(2 * sp.acos(nu)) - (2 * nu**2 - 1)))
     # mu -> 0 is s -> 0 (mu = 2s + O(s^3))
     exact("O3c-limit-M_b/mu=sqrt2", sp.simplify(sp.limit(Mb / mu, S_PAR, 0, "+") - sp.sqrt(2)) == 0)
