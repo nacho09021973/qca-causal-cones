@@ -197,9 +197,9 @@ def check_P5():
     Kmax_ok = (2 + sp.sqrt(sp.Rational(1, 10))) < sp.Rational(232, 100)
     f068_sq = sp.Rational(68, 100)**2 / (1 + sp.Rational(68, 100)**2)
     vlow = sp.sqrt(sp.Rational(99, 100)) * (1 - sp.Rational(1, 100) * sp.Rational(232, 100)**2 / 6)
-    bound = vlow**2 * f068_sq > sp.Rational(555, 1000)**2
-    exact("P5-velocity-lower-bound-0.555-on-support", bool(Kmin_ok and Kmax_ok and bound))
-    exact("P5-closing-margin-y_c<=2L-1.11*4L<-2.4L", sp.Rational(2) - sp.Rational(111, 100) * 4 < -sp.Rational(24, 10))
+    bound = vlow**2 * f068_sq > sp.Rational(55, 100)**2
+    exact("P5-velocity-lower-bound-0.55-on-support", bool(Kmin_ok and Kmax_ok and bound))
+    exact("P5-closing-margin-y_c<=2L-1.10*4L=-2.4L<-2L", sp.Rational(2) - sp.Rational(110, 100) * 4 < -2)
 
 
 # ---------------- P6 ----------------

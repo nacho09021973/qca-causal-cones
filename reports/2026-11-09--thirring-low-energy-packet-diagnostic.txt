@@ -1,0 +1,6 @@
+DIAGNOSTIC ONLY (floating point); feeds no verdict.
+mu=1/11, L=121, T=484, delta=0.0274101, box=[-760,760), packet norms=['0.99989308', '0.99989303', '0.99989307', '0.99989302']
+input 00: leakage=0.331163 doubler=0.329071 predicted |T_c-1|^2/4=0.332103
+input 01: leakage=0.401520 doubler=0.399566 predicted |T_c-1|^2/4=0.401945
+input 10: leakage=0.401520 doubler=0.399566 predicted |T_c-1|^2/4=0.401945
+input 11: leakage=0.443447 doubler=0.441469 predicted |T_c-1|^2/4=0.443483
