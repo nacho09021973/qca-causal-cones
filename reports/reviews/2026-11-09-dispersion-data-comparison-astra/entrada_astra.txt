@@ -1,0 +1,803 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente el informe adjunto, que traduce los coeficientes
+exactos de dispersión de 13 redes a cotas sobre el paso de red ell y la
+frecuencia de actualización, usando las cotas de LHAASO (GRB 221009A) y de
+Kostelecký–Mewes (polarización de GRB), bajo la hipótesis explícita H_gamma y
+los diccionarios D1 (no birrefringente) y D2 (birrefringente). Conclusión:
+DATA_SEPARATE_ORDER1_FROM_ORDER2_ROWS (filas de orden 1 con ell ≲ 0.3–0.57
+ell_P bajo D1; filas sólo de orden 2 con ell hasta ~1e-27 m). No aceptes el
+recuento 9/9 como prueba.
+
+Comprueba:
+(1) el emparejamiento con la forma de LHAASO v = c[1 - s (n+1)/2 (E/E_QG,n)^n]
+    para n = 1 y n = 2, factores 2 y 3/2, signos sub/superlumínicos, y la
+    relación t = k ell = E ell/(hbar c);
+(2) el emparejamiento D2 con la forma SME CPT-impar d = 5
+    (delta v_gr = ±2E|varsigma_3|) y la elección del rango de K;
+(3) los supremos exactos de los coeficientes sobre la esfera/círculo y la
+    cota sup|beta| ≥ 1/9 de L3s4 para todo a;
+(4) la aritmética de ell_max, ell/ell_P y f_min = c/(c_0 ell_max) con las
+    constantes declaradas;
+(5) si los límites declarados (direcciones con coeficiente nulo, orientación
+    desconocida, análisis isótropo de los datos, diccionarios supuestos)
+    bastan, o si la conclusión y la sec. 4 se exceden;
+(6) si las cotas usadas están bien leídas de las fuentes según el registro de
+    comprobación adjunto;
+(7) correspondencia del script con el informe.
+
+Se adjuntan contrato, informe, script, registro, el registro de comprobación
+de fuentes y el informe padre de correcciones de dispersión. No tienes acceso
+al repositorio ni a los artículos originales ni puedes ejecutar código.
+Distingue lo que derivas a mano de lo que sólo inspeccionas.
+
+Entrega en español: veredicto (se sostiene / reparación necesaria /
+refutado / no decidido), derivaciones críticas, objeciones ordenadas por
+gravedad con sección y reparación concreta, y el alcance exacto que
+aceptarías. Si no hay fallos, dilo sin inventar objeciones. Ninguna propuesta
+de protocolo o búsqueda adicional es necesaria.
+
+=== DOCUMENT 1: DISPERSION_DATA_COMPARISON_GATE.md ===
+
+# DISPERSION_DATA_COMPARISON — contract
+
+**Status of this text:** frozen at the commit that introduces it
+(preregistration). Written 2026-11-09 by Claude (Opus 5.5); user authorization
+«adelante», after being offered "un contrato para hacer esta comparación en
+serio". Nothing in Secs. 3-5 has been computed in a retained form. A rough
+orientation was given in conversation (Sec. 8).
+**Parents:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES` (promoted 2026-11-02;
+coefficient table), `OBSERVATIONAL_SIGNATURE_SATURATION` (2026-11-09,
+reviewed, not promoted), and the source check
+`investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md`.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> Under an explicit photon dictionary, what upper bound on the lattice step
+> ell, and what lower bound on the update frequency f = 1/tau, does each
+> declared row's leading dispersion correction imply when compared with the
+> verified astrophysical bounds, as a range over the unknown orientation of
+> the lattice relative to the sources?
+
+## 1. Known, question, abandonment
+
+Known: the parent coefficients (exact; group-speed correction
+|grad eps|/c_0 = 1 + 2 beta(n̂) t + ... or 1 + 3 alpha(n̂) t^2 + ..., with t = k ell);
+verified bounds (source check, items 1-3):
+
+- LHAASO ML values: E_QG,1 > 1.0e20 GeV (subluminal), 1.1e20 GeV (superluminal);
+  E_QG,2 > 6.9e11 GeV (sub), 7.0e11 GeV (super); with
+  v = c[1 - s (n+1)/2 (E/E_QG,n)^n];
+- Kostelecký–Mewes d = 5 CPT-odd: |varsigma^(5)_3| bounded between 7e-35 and
+  2e-34 GeV^-1 depending on the source direction, with
+  delta v_gr = ±2 E |varsigma_3|.
+
+No absolute scale is derivable (4B), and c = c_0 ell/tau.
+
+Abandonment of this route: if every row's bound is either vacuous (no
+constraint in any direction) or flips qualitatively between dictionaries
+D1 and D2 for every row, record `NO_DATA_DISCRIMINATION_UNDER_DICTIONARY`.
+
+## 2. Rows
+
+The 13 rows of the parent table, with coefficients imported as transcribed
+in `scripts/verify_observational_signature_gate.py` (parent_table). No new
+walk.
+
+## 3. Dictionary (frozen; conditional, not a result)
+
+- **H_gamma:** the row's massless branch near the node is the photon;
+  E = hbar c k at leading order, so t = k ell = E ell/(hbar c).
+- **D1 (non-birefringent):** both photon helicities follow the same branch
+  correction. Matching gives:
+  - n = 1: 2|beta(n̂)| ell/(hbar c) = 1/E_QG,1, so
+    ell_max(n̂) = hbar c/(2 |beta(n̂)| E_QG,1). Use the subluminal E_QG if
+    beta(n̂) < 0 and the superluminal one if beta(n̂) > 0.
+  - n = 2 (beta ≡ 0): 3|alpha(n̂)| ell^2/(hbar c)^2 = (3/2)/E_QG,2^2, so
+    ell_max(n̂) = hbar c/(sqrt(2|alpha(n̂)|) E_QG,2), with the sign rule
+    analogous.
+- **D2 (birefringent):** the two helicities carry opposite order-1
+  corrections ±beta(n̂). This applies only to rows with beta ≢ 0; for L5b it
+  is the row's own pair of Weyl blocks. Matching to the SME CPT-odd d = 5
+  form: |varsigma_3| = |beta(n̂)| ell/(hbar c), so
+  ell_max(n̂) = K hbar c/|beta(n̂)|, with K = 7e-35 GeV^-1 (strongest source)
+  and K = 2e-34 GeV^-1 (weakest).
+- **Frequency:** f_min(n̂) = c/(c_0 ell_max(n̂)).
+
+## 4. Quantities per row
+
+1. The order n and the exact range of |coefficient| over the unit sphere or
+   circle: the supremum, and whether the infimum is 0 (directions with no
+   constraint at that order).
+2. Under D1: ell_max at the most sensitive direction (sup |coef|) in metres
+   and in units of the Planck length ell_P, the corresponding f_min, and the
+   list of unconstrained directions (coef = 0) if any.
+3. Under D2 (beta rows): the same with both values of K.
+4. A summary table comparing the order-1 rows (super-c rows) and the
+   order-2-only rows.
+
+Constants: hbar c = 1.973269804e-16 GeV m; ell_P = 1.616255e-35 m;
+E_Pl = 1.22e19 GeV (LHAASO's value); c = 299792458 m/s. These are physical
+input, stated to the digits given. Exact SymPy for the coefficient ranges;
+decimal arithmetic for the constants.
+
+## 5. Hypotheses (before computing)
+
+- **Hi:** under D1, every order-1 row requires ell_max < ell_P at its most
+  sensitive direction.
+- **Hk:** under D1, every order-2-only row allows ell_max > 10^6 ell_P at
+  every direction where its coefficient is nonzero.
+
+## 6. Method, budget, stop rules
+
+- One permanent verifier `scripts/verify_dispersion_data_comparison.py`,
+  committed before its first run; failed runs retained; two command entries.
+- Only the verified bounds of the source check. No unverified source. No
+  combination of sources, no likelihood, no new data.
+- L3s4 is kept symbolic in a; any sample value of a is labelled as such.
+- One session. Stop when Sec. 4 is filled or `OPEN` with reason.
+
+## 7. Verdicts and claim ceiling
+
+- Per row: bound ranges, or `UNCONSTRAINED_AT_LEADING_ORDER` (L1, and the
+  zero-coefficient directions).
+- Hi, Hk: `CONFIRMED_IN_DECLARED_ROWS` / `REFUTED_BY_ROW_<Id>`.
+- Route: `DATA_SEPARATE_ORDER1_FROM_ORDER2_ROWS` /
+  `NO_DATA_DISCRIMINATION_UNDER_DICTIONARY` /
+  `OPEN_AFTER_BOUNDED_ATTEMPT`.
+
+Everything is conditional on H_gamma and on D1/D2. No claim that our
+universe is a QCA or a simulation, and no claim that any row describes the
+photon. PRELIMINARY until a cross-family review; no promotion without a
+separate user decision.
+
+## 8. Explored before freezing (declared)
+
+In conversation I gave rough estimates by hand:
+
+- order-1 rows: ell ≲ ell_P/(20|beta|);
+- order-2 rows: ell ≲ 1e-27 m;
+- a birefringent mapping: ell ~ 1e-49 m.
+
+These motivated Hi and Hk. They are not retained results; the verifier
+recomputes everything.
+
+=== DOCUMENT 2: 2026-11-09--dispersion-data-comparison.md ===
+
+# Dispersion data comparison: results
+
+2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: exact checks plus
+decimal arithmetic with stated physical constants; no independent review, no
+promotion.**
+
+Contract [DISPERSION_DATA_COMPARISON_GATE.md](../theory/DISPERSION_DATA_COMPARISON_GATE.md),
+frozen at `ad445aa`. Verifier committed before running at `6b0e049`; first
+run 9/9. Bounds used: only those verified in
+[the source check](../investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md)
+(LHAASO arXiv:2402.06009v3 Table I; Kostelecký–Mewes arXiv:1301.5367 Table III).
+
+Everything below is conditional on H_gamma (the row's massless branch is the
+photon) and on the frozen dictionaries:
+
+- **D1:** both helicities follow the same correction.
+- **D2:** order-1 corrections of opposite sign for the two helicities,
+  matched to the SME CPT-odd d = 5 form.
+
+No claim that any row describes the photon, or that our universe is a QCA.
+
+## 1. Result
+
+Route verdict: `DATA_SEPARATE_ORDER1_FROM_ORDER2_ROWS`.
+
+| Rows | Leading correction | D1: largest allowed step at the most sensitive direction | D1: minimal clock rate | D2 (birefringent) |
+| --- | --- | --- | --- | --- |
+| L5a, L5b, L4, L3s4 (all a) | order 1 (super-c rows) | ell ≤ 0.55 ell_P (≈ 9×10^-36 m) | ≈ 6×10^43 Hz | ell ≤ 2×10^-14 ell_P (≈ 4×10^-49 m) |
+| L6a | order 1 | ell ≤ 0.57 ell_P | ≈ 7×10^43 Hz | ell ≤ 2×10^-14 ell_P |
+| L6b | order 1 | ell ≤ 0.28 ell_P | ≈ 2×10^44 Hz | ell ≤ 1×10^-14 ell_P |
+| L2, L6e | order 2 | ell ≤ 1.4×10^-27 m ≈ 9×10^7 ell_P | ≈ 3×10^35 Hz | — |
+| L3 | order 2 | ell ≤ 1.5×10^-27 m ≈ 9×10^7 ell_P | ≈ 3.5×10^35 Hz | — |
+| L6c, L6d, L6f | order 2, isotropic | ell ≤ 2.3-4.6×10^-27 m ≈ 1.4-2.8×10^8 ell_P | ≈ 0.9-1.7×10^35 Hz | — |
+| L1 | none (omega = abs(k)) | no constraint at any order | — | — |
+
+In the D2 column the range of K (strongest and weakest source) changes the
+value by a factor of about 3. The table gives the weakest bound.
+
+- **Hi** `CONFIRMED_IN_DECLARED_ROWS`: under D1, every order-1 row needs
+  ell < ell_P at its most sensitive direction.
+- **Hk** `CONFIRMED_IN_DECLARED_ROWS`: every order-2-only row allows
+  ell > 10^6 ell_P in every direction where its coefficient is nonzero. The
+  bound is weakest where |alpha| is smallest and largest at sup |alpha|.
+
+The two classes are separated by about 8 orders of magnitude in the allowed
+ell under D1, and by about 21 under D2.
+
+## 2. Inputs and matching (contract Sec. 3)
+
+- **Group-speed corrections** (parent table): 2 beta(n̂) t at order 1 and
+  3 alpha(n̂) t^2 at order 2, with t = k ell = E ell/(hbar c).
+- **LHAASO form:** v = c[1 - s (n+1)/2 (E/E_QG,n)^n]. Hence
+  ell_max = hbar c/(2|beta| E_QG,1) (n = 1) and
+  ell_max = hbar c/(sqrt(2|alpha|) E_QG,2) (n = 2). The subluminal or
+  superluminal E_QG is used according to the sign; all order-2 rows here
+  have alpha ≤ 0, so they are delay-only.
+- **D2:** |varsigma_3| = |beta| ell/(hbar c) < K, so ell_max = K hbar c/|beta|,
+  with K = 7×10^-35 to 2×10^-34 GeV^-1.
+- **Clock rate:** f_min = c/(c_0 ell_max).
+- **Exact suprema over directions:**
+  - L2, L6e: |alpha| ≤ 1/48, from 1/4 - n1^2 n2^2 = (n1^2 - n2^2)^2/4;
+  - L3: |alpha| ≤ 1/54, from sigma2 ≤ 1/3;
+  - beta rows: |beta| ≤ 1/9, √15/36 and √15/18;
+  - L3s4: sup |beta| ≥ 1/9 for every 0 < a < 1, certified by a factorization
+    on a^2 ≥ 1/2 and a monotonicity argument on a^2 ≤ 1/2;
+  - L6c, L6d, L6f: isotropic, |alpha| = 1/512, 1/128 and 1/128.
+- **Constants:** hbar c = 1.973269804×10^-16 GeV m; ell_P = 1.616255×10^-35 m;
+  E_Pl = 1.22×10^19 GeV; c exact.
+- **Hand checks:** L5a: ell/ell_P = E_Pl · 9/(2×10^20) = 0.549. L2:
+  1.973×10^-16/(0.204 × 6.9×10^11) = 1.40×10^-27 m.
+
+## 3. Limits
+
+- **Direction.** The bounds are for the most sensitive direction. The
+  orientation of the lattice relative to the sources is unknown. Every
+  order-1 row and L2, L6e, L3 have directions where the leading coefficient
+  vanishes:
+  - coordinate planes for the n1 n2 n3 rows;
+  - cos 3θ = 0 for L6a and L6b;
+  - coordinate axes for L2 and L3.
+
+  A source in such a direction constrains the row only at the next order.
+  Order-1 rows there fall back to order-2-like bounds. Several sources in
+  different directions would close this gap; combining them is outside this
+  contract.
+- **Dictionaries.** D1 and D2 are assumptions. Whether a row's beta term
+  would be birefringent for the photon is not decided here. L5b's two Weyl
+  blocks carry opposite beta, which is the D2 situation if those blocks were
+  the two helicities.
+- **Isotropic data analyses.** The LHAASO limits come from an isotropic
+  analysis. Applying them to one direction is the leading-order reading.
+- **Not decided:** L3s4's f_min (c_0 depends on a), the full validity range
+  of the expansions, and any statement beyond the declared rows.
+
+## 4. What this says for "c is the clock"
+
+Under the photon dictionary and these 13 rows:
+
+- Rules that let excitations outrun c at first order (the super-c rows)
+  need a cell no larger than about half a Planck length, and 10^-14 Planck
+  lengths if birefringent. A clock of at least about 10^44 Hz.
+- Rules in which nothing outruns c, or that have only second-order delays,
+  are allowed by current data with cells up to about 10^-27 m, a clock of
+  about 10^35 Hz or more. 10^-27 m is about 10^8 Planck lengths.
+
+The data do not say that c is a clock frequency. They say, for this class
+and dictionary, that a first-order super-c rule would need its clock at or
+above the Planck scale, while an order-2-only rule is still allowed with a
+clock some eight orders slower.
+
+## 5. Verifier
+
+[Script](../scripts/verify_dispersion_data_comparison.py),
+[record](2026-11-09--dispersion-data-comparison.txt),
+[JSON](2026-11-09--dispersion-data-comparison.json): 9/9. The count covers:
+
+- 7 exact identities and inequalities (suprema, the L3s4 bound);
+- 2 recorded hypothesis evaluations (either outcome allowed).
+
+The ell and f values are decimal arithmetic on stated constants, not
+certified quantities.
+
+=== DOCUMENT 3: verify_dispersion_data_comparison.py ===
+
+#!/usr/bin/env python3
+"""Dispersion data comparison (contract theory/DISPERSION_DATA_COMPARISON_GATE.md, commit ad445aa).
+
+Report: reports/2026-11-09--dispersion-data-comparison.md
+
+Exact (SymPy): suprema/zeros of the parent coefficients over the unit sphere or circle
+(AM-GM identities), and a lower bound sup|beta| >= 1/9 for L3s4 valid for every 0<a<1.
+Decimal (mpmath, 30 digits): physical constants and the derived ell_max, f_min under the
+frozen dictionaries D1 and D2, using only the verified bounds of
+investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md.
+Everything is conditional on H_gamma and D1/D2 (contract Sec. 3).
+"""
+import hashlib
+import json
+from pathlib import Path
+
+import mpmath as mp
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "reports/2026-11-09--dispersion-data-comparison"
+CHECKS = []
+mp.mp.dps = 30
+
+HBARC = mp.mpf("1.973269804e-16")      # GeV m
+LP = mp.mpf("1.616255e-35")            # m
+EPL = mp.mpf("1.22e19")                # GeV (LHAASO value)
+C = mp.mpf(299792458)                  # m/s
+EQG1 = {"sub": mp.mpf("1.0e20"), "super": mp.mpf("1.1e20")}
+EQG2 = {"sub": mp.mpf("6.9e11"), "super": mp.mpf("7.0e11")}
+K5 = {"strongest": mp.mpf("7e-35"), "weakest": mp.mpf("2e-34")}   # GeV^-1
+
+
+def exact(name, cond, detail=""):
+    CHECKS.append(dict(name=name, passed=bool(cond), detail=str(detail)))
+
+
+def zero(e):
+    return sp.simplify(sp.expand(e)) == 0
+
+
+def am_gm_checks():
+    n1, n2, n3 = sp.symbols("n1 n2 n3", real=True)
+    # circle: n1^2 + n2^2 = 1  =>  1/4 - n1^2 n2^2 = (n1^2 - n2^2)^2 / 4
+    exact("circle: 1/4 - n1^2 n2^2 = (n1^2-n2^2)^2/4 when n1^2+n2^2=1",
+          zero(((n1**2 + n2**2)**2 / 4 - n1**2 * n2**2) - (n1**2 - n2**2)**2 / 4))
+    # sphere: (sum n^2)^2 - 3 sigma2 = 1/2 sum (n_i^2 - n_j^2)^2
+    s2 = n1**2 * n2**2 + n2**2 * n3**2 + n3**2 * n1**2
+    exact("sphere: (sum n^2)^2 - 3 sigma2 = (1/2) sum (n_i^2-n_j^2)^2 >= 0, so sigma2 <= 1/3",
+          zero((n1**2 + n2**2 + n3**2)**2 - 3 * s2 - ((n1**2 - n2**2)**2 + (n2**2 - n3**2)**2 + (n3**2 - n1**2)**2) / 2))
+    # |n1 n2 n3| <= 3^{-3/2} (AM-GM on n_i^2), attained on body diagonals
+    v = 1 / sp.sqrt(3)
+    exact("sphere: n1 n2 n3 at body diagonal = 3^{-3/2} (AM-GM bound attained)", zero(v**3 - 3**sp.Rational(-3, 2)))
+
+
+def l3s4_bound():
+    a = sp.symbols("a", positive=True)
+    B0 = sp.sqrt(3) * (1 - a**2) / (6 * a)
+    B3abs_hi = (2 * a**2 - 1) / (3 * a) * sp.sqrt(3)   # a^2 >= 1/2
+    B3abs_lo = (1 - 2 * a**2) / (3 * a) * sp.sqrt(3)   # a^2 <= 1/2
+    sup_hi = B0 + B3abs_hi / (3 * sp.sqrt(3))
+    sup_lo = B0 + B3abs_lo / (3 * sp.sqrt(3))
+    # a in [1/sqrt2, 1): a (sup - 1/9) = (1-a) [sqrt3 (1+a)/6 - (2a+1)/9]
+    g_hi = sp.expand(a * (sup_hi - sp.Rational(1, 9)))
+    exact("L3s4: a(sup|beta| - 1/9) = (1-a)[sqrt3(1+a)/6 - (2a+1)/9] for a^2>=1/2",
+          zero(g_hi - (1 - a) * (sp.sqrt(3) * (1 + a) / 6 - (2 * a + 1) / 9)))
+    br = sp.sqrt(3) * (1 + a) / 6 - (2 * a + 1) / 9
+    exact("L3s4: bracket linear increasing (slope sqrt3/6 - 2/9 > 0) and positive at a = 1/sqrt2",
+          bool(sp.sqrt(3) / 6 - sp.Rational(2, 9) > 0) and bool(br.subs(a, 1 / sp.sqrt(2)) > 0))
+    g_lo = sp.expand(a * (sup_lo - sp.Rational(1, 9)))
+    dg = sp.diff(g_lo, a)
+    exact("L3s4: for a^2<=1/2, a(sup|beta|-1/9) is decreasing in a and positive at a = 1/sqrt2",
+          zero(dg - (-sp.sqrt(3) * a / 3 - 4 * a / 9 - sp.Rational(1, 9))) and bool(g_lo.subs(a, 1 / sp.sqrt(2)) > 0))
+    return sp.simplify(sup_hi), sp.simplify(sup_lo)
+
+
+ROWS = {
+    # label: (order, sup|coef| exact, has_zero_directions, sign info, c0)
+    "L1": (None, None, None, "none", 1),
+    "L2": (2, sp.Rational(1, 48), True, "delay (alpha<=0)", 1 / sp.sqrt(2)),
+    "L6e": (2, sp.Rational(1, 48), True, "delay", 1 / sp.sqrt(2)),
+    "L3": (2, sp.Rational(1, 54), True, "delay", 1 / sp.sqrt(3)),
+    "L6c": (2, sp.Rational(1, 512), False, "delay, isotropic", sp.Rational(3, 4)),
+    "L6d": (2, sp.Rational(1, 128), False, "delay, isotropic", sp.Rational(3, 4)),
+    "L6f": (2, sp.Rational(1, 128), False, "delay, isotropic", sp.Rational(3, 4)),
+    "L5a": (1, sp.Rational(1, 9), True, "both signs", 1 / sp.sqrt(3)),
+    "L5b": (1, sp.Rational(1, 9), True, "both signs; two Weyl blocks with opposite beta", 1 / sp.sqrt(3)),
+    "L4": (1, sp.Rational(1, 9), True, "both signs", 1 / sp.sqrt(3)),
+    "L6a": (1, sp.sqrt(15) / 36, True, "both signs", sp.Rational(1, 2)),
+    "L6b": (1, sp.sqrt(15) / 18, True, "both signs", sp.Rational(1, 3)),
+    "L3s4": (1, sp.Rational(1, 9), "a-dependent", "a-dependent (sup|beta| >= 1/9 for all a)", None),
+}
+
+
+def num(e):
+    return mp.mpf(str(sp.N(e, 40)))
+
+
+def main():
+    am_gm_checks()
+    sup_hi, sup_lo = l3s4_bound()
+    exact("sups used: L2/L6e 1/48 = (1/4)/12; L3 1/54 = (1/3)/18; beta rows 1/9 = (sqrt3/3)(3^{-3/2})",
+          zero(sp.Rational(1, 4) / 12 - sp.Rational(1, 48)) and zero(sp.Rational(1, 3) / 18 - sp.Rational(1, 54))
+          and zero(sp.sqrt(3) / 3 * 3**sp.Rational(-3, 2) - sp.Rational(1, 9)))
+    table = {}
+    for lab, (n, sup, zeros, sign, c0) in ROWS.items():
+        row = dict(order=n, sup=str(sup), zero_directions=str(zeros), sign=sign)
+        if n is None:
+            row["D1"] = "UNCONSTRAINED_AT_ALL_ORDERS (omega = |k|)"
+        elif n == 2:
+            s = num(sup)
+            ell = HBARC / (mp.sqrt(2 * s) * EQG2["sub"])
+            row["D1"] = dict(ell_max_m=mp.nstr(ell, 4), ell_over_lP=mp.nstr(ell / LP, 4),
+                             f_min_Hz=mp.nstr(C / (num(c0) * ell), 4))
+        else:
+            s = num(sup)
+            ell_sub = HBARC / (2 * s * EQG1["sub"])
+            ell_sup = HBARC / (2 * s * EQG1["super"])
+            row["D1"] = dict(ell_max_m_delay_dir=mp.nstr(ell_sub, 4), ell_max_m_advance_dir=mp.nstr(ell_sup, 4),
+                             ell_over_lP_max=mp.nstr(max(ell_sub, ell_sup) / LP, 4))
+            row["D2"] = {k: dict(ell_max_m=mp.nstr(Kv * HBARC / s, 4), ell_over_lP=mp.nstr(Kv * HBARC / s / LP, 4))
+                         for k, Kv in K5.items()}
+            if c0 is not None:
+                row["D1"]["f_min_Hz"] = mp.nstr(C / (num(c0) * max(ell_sub, ell_sup)), 4)
+            else:
+                row["D1"]["note"] = "L3s4: bound uses sup|beta| >= 1/9 (all a); c_0 = a/sqrt3 a-dependent, f_min not given"
+        table[lab] = row
+    # hypotheses
+    order1 = [k for k, v in ROWS.items() if v[0] == 1]
+    order2 = [k for k, v in ROWS.items() if v[0] == 2]
+    hi = all(mp.mpf(table[k]["D1"]["ell_over_lP_max"]) < 1 for k in order1)
+    hk = all(mp.mpf(table[k]["D1"]["ell_over_lP"]) > 1e6 for k in order2)
+    exact("Hi-evaluated (recorded, either outcome allowed): order-1 rows need ell_max < ell_P at most sensitive direction (D1)", True,
+          {k: table[k]["D1"]["ell_over_lP_max"] for k in order1} | {"Hi": hi})
+    exact("Hk-evaluated (recorded, either outcome allowed): order-2 rows allow ell_max > 1e6 ell_P at sup|alpha|", True,
+          {k: table[k]["D1"]["ell_over_lP"] for k in order2} | {"Hk": hk})
+    data = dict(dictionary="H_gamma with D1/D2 (contract Sec. 3)", constants=dict(hbarc_GeV_m=str(HBARC), l_P_m=str(LP),
+                E_Pl_GeV=str(EPL), c=str(C), E_QG1=str(EQG1), E_QG2=str(EQG2), K5=str(K5)),
+                L3s4_sup_beta=dict(a2_ge_half=str(sup_hi), a2_le_half=str(sup_lo)), rows=table, Hi=hi, Hk=hk,
+                checks=CHECKS,
+                provenance={p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in (
+                    "scripts/verify_dispersion_data_comparison.py", "theory/DISPERSION_DATA_COMPARISON_GATE.md",
+                    "investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md")})
+    OUT.with_suffix(".json").write_text(json.dumps(data, indent=2, default=str) + "\n")
+    passed = sum(c["passed"] for c in CHECKS)
+    lines = [f"Checks: {passed}/{len(CHECKS)} (SymPy {sp.__version__}; mpmath {mp.__version__}, 30 digits for constants)."]
+    lines += [f"{'PASS' if c['passed'] else 'FAIL'} {c['name']}  {c['detail']}" for c in CHECKS]
+    lines += ["", "Per row (conditional on H_gamma; D1 non-birefringent, D2 birefringent):"]
+    for k, v in table.items():
+        lines.append(f"{k}: order={v['order']} sup={v['sup']} zeros={v['zero_directions']} | D1 {v['D1']}"
+                     + (f" | D2 {v['D2']}" if 'D2' in v else ""))
+    lines.append(f"Hi={hi}  Hk={hk}")
+    OUT.with_suffix(".txt").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+    if passed != len(CHECKS):
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 4: 2026-11-09--dispersion-data-comparison.txt ===
+
+Checks: 9/9 (SymPy 1.14.0; mpmath 1.3.0, 30 digits for constants).
+PASS circle: 1/4 - n1^2 n2^2 = (n1^2-n2^2)^2/4 when n1^2+n2^2=1  
+PASS sphere: (sum n^2)^2 - 3 sigma2 = (1/2) sum (n_i^2-n_j^2)^2 >= 0, so sigma2 <= 1/3  
+PASS sphere: n1 n2 n3 at body diagonal = 3^{-3/2} (AM-GM bound attained)  
+PASS L3s4: a(sup|beta| - 1/9) = (1-a)[sqrt3(1+a)/6 - (2a+1)/9] for a^2>=1/2  
+PASS L3s4: bracket linear increasing (slope sqrt3/6 - 2/9 > 0) and positive at a = 1/sqrt2  
+PASS L3s4: for a^2<=1/2, a(sup|beta|-1/9) is decreasing in a and positive at a = 1/sqrt2  
+PASS sups used: L2/L6e 1/48 = (1/4)/12; L3 1/54 = (1/3)/18; beta rows 1/9 = (sqrt3/3)(3^{-3/2})  
+PASS Hi-evaluated (recorded, either outcome allowed): order-1 rows need ell_max < ell_P at most sensitive direction (D1)  {'L5a': '0.5494', 'L5b': '0.5494', 'L4': '0.5494', 'L6a': '0.5674', 'L6b': '0.2837', 'L3s4': '0.5494', 'Hi': True}
+PASS Hk-evaluated (recorded, either outcome allowed): order-2 rows allow ell_max > 1e6 ell_P at sup|alpha|  {'L2': '8.668e+7', 'L6e': '8.668e+7', 'L3': '9.194e+7', 'L6c': '2.831e+8', 'L6d': '1.416e+8', 'L6f': '1.416e+8', 'Hk': True}
+
+Per row (conditional on H_gamma; D1 non-birefringent, D2 birefringent):
+L1: order=None sup=None zeros=None | D1 UNCONSTRAINED_AT_ALL_ORDERS (omega = |k|)
+L2: order=2 sup=1/48 zeros=True | D1 {'ell_max_m': '1.401e-27', 'ell_over_lP': '8.668e+7', 'f_min_Hz': '3.026e+35'}
+L6e: order=2 sup=1/48 zeros=True | D1 {'ell_max_m': '1.401e-27', 'ell_over_lP': '8.668e+7', 'f_min_Hz': '3.026e+35'}
+L3: order=2 sup=1/54 zeros=True | D1 {'ell_max_m': '1.486e-27', 'ell_over_lP': '9.194e+7', 'f_min_Hz': '3.494e+35'}
+L6c: order=2 sup=1/512 zeros=False | D1 {'ell_max_m': '4.576e-27', 'ell_over_lP': '2.831e+8', 'f_min_Hz': '8.736e+34'}
+L6d: order=2 sup=1/128 zeros=False | D1 {'ell_max_m': '2.288e-27', 'ell_over_lP': '1.416e+8', 'f_min_Hz': '1.747e+35'}
+L6f: order=2 sup=1/128 zeros=False | D1 {'ell_max_m': '2.288e-27', 'ell_over_lP': '1.416e+8', 'f_min_Hz': '1.747e+35'}
+L5a: order=1 sup=1/9 zeros=True | D1 {'ell_max_m_delay_dir': '8.88e-36', 'ell_max_m_advance_dir': '8.072e-36', 'ell_over_lP_max': '0.5494', 'f_min_Hz': '5.848e+43'} | D2 {'strongest': {'ell_max_m': '1.243e-49', 'ell_over_lP': '7.692e-15'}, 'weakest': {'ell_max_m': '3.552e-49', 'ell_over_lP': '2.198e-14'}}
+L5b: order=1 sup=1/9 zeros=True | D1 {'ell_max_m_delay_dir': '8.88e-36', 'ell_max_m_advance_dir': '8.072e-36', 'ell_over_lP_max': '0.5494', 'f_min_Hz': '5.848e+43'} | D2 {'strongest': {'ell_max_m': '1.243e-49', 'ell_over_lP': '7.692e-15'}, 'weakest': {'ell_max_m': '3.552e-49', 'ell_over_lP': '2.198e-14'}}
+L4: order=1 sup=1/9 zeros=True | D1 {'ell_max_m_delay_dir': '8.88e-36', 'ell_max_m_advance_dir': '8.072e-36', 'ell_over_lP_max': '0.5494', 'f_min_Hz': '5.848e+43'} | D2 {'strongest': {'ell_max_m': '1.243e-49', 'ell_over_lP': '7.692e-15'}, 'weakest': {'ell_max_m': '3.552e-49', 'ell_over_lP': '2.198e-14'}}
+L6a: order=1 sup=sqrt(15)/36 zeros=True | D1 {'ell_max_m_delay_dir': '9.171e-36', 'ell_max_m_advance_dir': '8.337e-36', 'ell_over_lP_max': '0.5674', 'f_min_Hz': '6.538e+43'} | D2 {'strongest': {'ell_max_m': '1.284e-49', 'ell_over_lP': '7.944e-15'}, 'weakest': {'ell_max_m': '3.668e-49', 'ell_over_lP': '2.27e-14'}}
+L6b: order=1 sup=sqrt(15)/18 zeros=True | D1 {'ell_max_m_delay_dir': '4.585e-36', 'ell_max_m_advance_dir': '4.169e-36', 'ell_over_lP_max': '0.2837', 'f_min_Hz': '1.961e+44'} | D2 {'strongest': {'ell_max_m': '6.42e-50', 'ell_over_lP': '3.972e-15'}, 'weakest': {'ell_max_m': '1.834e-49', 'ell_over_lP': '1.135e-14'}}
+L3s4: order=1 sup=1/9 zeros=a-dependent | D1 {'ell_max_m_delay_dir': '8.88e-36', 'ell_max_m_advance_dir': '8.072e-36', 'ell_over_lP_max': '0.5494', 'note': 'L3s4: bound uses sup|beta| >= 1/9 (all a); c_0 = a/sqrt3 a-dependent, f_min not given'} | D2 {'strongest': {'ell_max_m': '1.243e-49', 'ell_over_lP': '7.692e-15'}, 'weakest': {'ell_max_m': '3.552e-49', 'ell_over_lP': '2.198e-14'}}
+Hi=True  Hk=True
+
+=== DOCUMENT 5: comprobacion.md ===
+
+# Astrophysical bounds on photon dispersion and birefringence — source check
+
+2026-11-09. Requested by the user («busca esas cotas astrofisicas reales») after
+the observational-signature gate (`reports/2026-11-09--observational-signature-saturation.md`),
+whose Sec. 5 deferred any comparison with data. Located with WebSearch
+(standard mode); every number below was read in the original arXiv text
+through the alphaXiv full-text tool in this session. Search summaries were
+used only to locate papers. This file records literature, not a comparison:
+no translation of these bounds to the repository's rows is made here (that
+needs a successor charter).
+
+## Verified in the original
+
+| # | Source | What was read | Numbers (95% CL unless stated) |
+| --- | --- | --- | --- |
+| 1 | LHAASO Collaboration, "Stringent Tests of Lorentz Invariance Violation from LHAASO Observations of GRB 221009A", arXiv:2402.06009v3 (dated 17 Feb 2026) | Abstract; Eqs.(1)-(5); Table I; Sec. IV | Dispersion convention E^2 ≃ p^2c^2[1 - Σ s (E/E_QG,n)^n], s = +1 subluminal, -1 superluminal; v(E) ≈ c[1 - s (n+1)/2 (E/E_QG,n)^n]. ML (MINOS): E_QG,1 > 1.0×10^20 GeV (subluminal), > 1.1×10^20 GeV (superluminal); E_QG,2 > 6.9×10^11 GeV (sub), > 7.0×10^11 GeV (super). Abstract: E_QG,1 > 10 E_Pl, E_QG,2 > 6×10^-8 E_Pl; E_Pl ≃ 1.22×10^19 GeV. Source at z = 0.151; isotropic (direction-independent) dispersion model. |
+| 2 | V. Vasileiou et al., "Constraints on Lorentz Invariance Violation from Fermi-LAT Observations of GRBs", arXiv:1305.3463v1 | Abstract | Subluminal, no source-intrinsic dispersion assumed, GRB 090510: E_QG,1 > 7.6 E_Pl, E_QG,2 > 1.3×10^11 GeV. (LHAASO [ref 21] quotes the same work as E_QG,1 > 9.3×10^19 GeV sub, 1.3×10^20 GeV super; consistent with 7.6 E_Pl.) |
+| 3 | V.A. Kostelecký, M. Mewes, "Constraints on relativity violations from gamma-ray bursts", arXiv:1301.5367v1 (PRL 110, 201601) | Full text, Tables II-III | In the SME photon sector, dispersion for odd mass dimension d is necessarily accompanied by birefringence; only CPT-even, even-d coefficients give dispersion without birefringence. Direction-dependent bounds from GRB polarization: |Σ Y_jm k^(5)_(V)jm| < 7×10^-35 to 2×10^-34 GeV^-1 depending on the source direction (GRB 041219A, 100826A, 110301A, 110721A); isotropic |k^(5)_(V)00| < 2×10^-34 to 9×10^-34 GeV^-1. A single source constrains only one direction-dependent combination. |
+
+## Located, not verified
+
+- J.D. Finke, S. Razzaque, arXiv:2210.11261: claimed possible evidence for
+  subluminal LIV from the survival of an 18 TeV photon of GRB 221009A
+  (E_QG,1 ≲ 49 E_Pl). Known only from the search summary; contested by later
+  analyses; not read. `[UNVERIFIED]`
+- Abdo et al. (Fermi), Nature 462, 331 (2009), arXiv:0908.1832, GRB 090510,
+  E_QG,1 > 1.2 E_Pl (earlier, more conservative). Seen only in summaries and
+  as LHAASO ref. [20]. `[UNVERIFIED]`
+- Yang, Bi, Yin (2024) LHAASO-data analysis with stronger quoted limits. Seen
+  only in the search summary. `[UNVERIFIED]`
+
+## Relevance to the repository (not a result)
+
+- The verified time-of-flight bounds assume an isotropic dispersion law. The
+  repository's order-1 (beta) rows have direction-dependent corrections that
+  vanish on certain planes; one source bounds one direction.
+- Source 3 says that, within the SME effective field theory, an order-1
+  (d = 5) dispersion of photons is necessarily birefringent and is then
+  bounded by polarization at the 10^-34 GeV^-1 level. Whether a QCA row's
+  beta term maps to an SME d = 5 coefficient (for example via opposite signs
+  in two helicity blocks, as in L5b) is a modelling question not addressed
+  here.
+- Any numerical bound on the lattice step ell or the clock frequency from
+  these sources requires the dictionary H_gamma plus a successor contract.
+
+Tools: WebSearch; alphaXiv full text. No ~/herramientas tool used.
+
+=== DOCUMENT 6: 2026-11-02--dispersion-corrections-across-lattices.md ===
+
+# Dispersion corrections across lattices — execution
+
+**Date:** 2026-11-02
+**Gate:** `DISPERSION_CORRECTIONS_ACROSS_LATTICES`, contract
+[`theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
+preregistration commit `a7ff5b7` (contract SHA256
+`6df09e81fae231ebbb00d19de546298559d333d33e965c95a1aa6027842231ea`).
+**Parent:** `C_ACROSS_LATTICES` massless table and `L6B_TRIANGULAR_ROW`
+(both promoted). No row is recomputed; every symbol is imported read-only
+from the script named in contract Sec. 2.
+**Verifier:**
+[`scripts/verify_dispersion_corrections_gate.py`](../scripts/verify_dispersion_corrections_gate.py),
+SHA256 `b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e`, 81/81 exact checks after the review repairs (79/79 at the reviewed SHA256 `791f0d80d2790f34b72521c90622fa0056fd629fa1b3ef89addfc2ad664e6c2a`) (Python 3.12.3,
+`sympy==1.14.0`, interpreter `/home/adnac/venvs/torch-gpu/bin/python`, as
+`scripts/README.md` records for earlier runs; the system `python3` has no
+SymPy). Run time about 11 min, dominated by the symmetry test of
+L3s4. The imported verifiers are unchanged.
+**Status:** `CORRECTIONS_TABLE_PARTIAL_VALIDITY_SCALE_AND_VGRP_OPEN` —
+PRELIMINARY. Reviewed: Gemini PASS, Grok REPAIR_REQUIRED (three repairs,
+applied in Sec. 5); bounded re-review of the repairs: Gemini PASS, Grok
+PASS. PROMOTION_PENDING. Nothing is promoted by this report.
+
+## 1. Result
+
+Units as in the parent: Cartesian positions divided by the longest step
+of one update, one update per time unit (L6b: `V = U^3`, quasienergy
+divided by 3). Along a ray `k = t n̂`, `|n̂| = 1`, the upper branch of the
+massless node is
+
+`eps_+(t n̂) - eps_0 = c_0 t [1 + beta(n̂) t + alpha(n̂) t^2 + O(t^3)]`.
+
+`alpha_0` is the mean of `alpha` over the unit circle or sphere. In
+`d = 2`, `theta` is the angle of `n̂` in the row's Cartesian frame; in
+`d = 3`, `K4 = n1^4 + n2^4 + n3^4 - 3/5`, `K6` is the part of
+`n1^2 n2^2 n3^2` orthogonal to 1 and `K4` on the sphere, and
+`sigma2 = n1^2 n2^2 + n2^2 n3^2 + n3^2 n1^2`.
+
+| Row | Substrate | `c_0` | `G_walk` (exact) | Lowest correction | `beta(n̂)` | `alpha(n̂)` | `alpha_0` |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| L1 | line | 1 | `{±1}` | none: `omega = |k|` exactly | 0 | 0 | **0** |
+| L2 | square | `1/sqrt2` | `D_4` (8) | `alpha`, anisotropic | 0 | `-n1^2 n2^2/12 = -(1 - cos 4θ)/96` | `-1/96` |
+| L6e | square | `1/sqrt2` | `D_4` (8) | `alpha`, anisotropic | 0 | identical to L2 | `-1/96` |
+| L3 | BCC | `1/sqrt3` | `O_h` (48) | `alpha`, anisotropic | 0 | `-sigma2/18 = -1/90 + K4/36` | `-1/90` |
+| L5a | BCC | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `(sqrt3/3) n1 n2 n3` | `-sigma2/18 - n1^2 n2^2 n3^2/6` | `-4/315` |
+| L5b (each Weyl block) | BCC | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `±(sqrt3/3) n1 n2 n3` | as L5a | `-4/315` |
+| L4 | cube | `1/sqrt3` | 24, `T_d` | `beta`, anisotropic | `-(sqrt3/3) n1 n2 n3` | as L5a | `-4/315` |
+| L3s4 (each cluster) | BCC, `s = 4` | `a/sqrt3` | 8 (`D_2` half-turns and the `x <-> z` swap composed with them) | `beta`, isotropic + anisotropic | `±[sqrt3 (1-a^2)/(6a) + sqrt3 (2a^2-1)/(3a) n1 n2 n3]`, upper sign for the cluster at `+pi/4` | non-cubic content (Sec. 3.4) | `2(27a^4 - 34a^2 + 5)/(315 a^2)` |
+| L6a | hexagon | `1/2` | `D_3` (6) | `beta`, anisotropic | `-(sqrt15/36) cos 3θ` | `-41/1728 - (5/1728) cos 6θ` | `-41/1728` |
+| L6c | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/512` | `-1/512` |
+| L6d | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/128` | `-1/128` |
+| L6f | hexagon | `3/4` | `D_6` (12) | `alpha`, isotropic | 0 | `-1/128` | `-1/128` |
+| L6b (each orientation block) | hexagon, `s = 6` | `1/3` | `D_3` (6) | `beta`, anisotropic | `(sqrt15/18) cos 3θ` | `-41/432 - (5/432) cos 6θ` | `-41/432` |
+
+First anisotropy of the isotropic hexagonal rows, at relative order
+`t^4` (coefficient of `cos 6θ` in `E_5 / c_0`): L6c `1/184320`, L6d
+`1/11520`, L6f `-1/11520`. L6d and L6f therefore agree through relative
+order `t^2` and differ at `t^4` by the sign of the `cos 6θ` term, that is,
+by a 30° rotation of the anisotropy.
+
+Hypotheses (contract Sec. 4):
+
+- **Hd** (`alpha_0 < 0` in every row): **`REFUTED_BY_ROW_L1`**. L1 has
+  `alpha_0 = 0`, because its symbol is `exp(-i k sigma_z)` and the
+  dispersion is exactly linear. The refutation is not only the degenerate
+  1D row: L3s4 has `alpha_0 > 0` for `0 < a < a*` and `< 0` for
+  `a* < a < 1`, with `a* = sqrt3 sqrt(17 - sqrt154) / 9` (exact root,
+  Sturm count 1; `a* ≈ 0.412`). Every other row has `alpha_0 < 0`.
+- **He** (ceiling rows with `d >= 2` have a nonzero anisotropic
+  coefficient in their lowest correction): **`CONFIRMED_IN_DECLARED_ROWS`**.
+  L2, L6e: `cos 4θ` at relative order `t^2`. L3: `K4` at `t^2`. L5a, L5b,
+  L4: the odd invariant `n1 n2 n3` at relative order `t`. Not decided by
+  symmetry: `D_4`, `O_h` and `T_d` allow these terms but do not force
+  them.
+- **Hf** (no two rows on one substrate share `beta` and `alpha`):
+  **`REFUTED_BY_ROW_L6e`**. L2 and L6e have identical `beta`, `alpha`,
+  group-velocity coefficients and `t^4` harmonics. Further shared pairs:
+  L5a with the Weyl block of L5b whose `beta` has L5a's sign (the other
+  block differs in that sign), and L6d with L6f through relative order
+  `t^2`. Under the weaker reading of Hf's header ("do not all share"),
+  the square substrate also refutes it, since it has only these two rows.
+  On the hexagon and BCC substrates the corrections are not all equal.
+
+Under the contract's exact procedure, the `C_6` isotropy of Sec. 1 decides
+no hypothesis: He concerns rows that reach the ceiling, and no hexagonal
+row does.
+
+## 2. Method (contract Sec. 3)
+
+For each row the symbol is expanded exactly as a Taylor polynomial in `k`
+to total degree `N` (`N = 6` in `d <= 2`, `N = 4` in `d = 3`). The node
+branch is read from the quadratic factor `lambda^2 - s1 lambda + s2` of
+the characteristic polynomial that carries the node:
+
+- `s = 2` rows: the whole characteristic polynomial.
+- L5b (`s = 4`): `Gamma = dP_X dP_Y dP_Z` commutes with every Fourier
+  coefficient and `Gamma^2 = -I`; its two eigenspaces give two `2x2`
+  Weyl blocks.
+- L6b: the three `2x2` orientation blocks of `V = U^3`, as in the L6b
+  verifier.
+- L3s4: Hensel lifting of the quadratic factor at the double root
+  `exp(∓ i pi/4)` of `A_a(0) = W`. The characteristic polynomial is
+  computed from Newton's identities on truncated power traces; the script
+  checks this route against the full characteristic polynomial on the
+  `4x4` L5b symbol. The parameter is kept symbolic: `a` and
+  `b = sqrt(1-a^2)` are independent symbols reduced with `b^2 = 1 - a^2`.
+  This keeps the zero test exact, because `sqrt(1-a^2)` is not a rational
+  function of `a`.
+
+From `s1`, `s2`: `exp(-2i phi) = s2 / s2(0)` gives the common phase
+`phi(k)` of the two node levels, and `cos^2 omega = s1^2/(4 s2)` gives
+`omega^2(k)` as a power series with exact homogeneous parts. Then
+`eps_± = eps_0 + phi ± omega`. No series is fitted; every coefficient is
+an exact algebraic number or, for L3s4, an exact rational function of
+`a`. The Taylor coefficients of `arccos(1-v)^2`, `log(1+v)`, `sqrt(1+v)`
+and `1/(1+v)` are checked against SymPy's series.
+
+`G_walk` is the set of point-group elements `g` of the substrate with
+`charpoly U(g k) = charpoly U(k)` as Laurent identities. In characteristic
+0 this equals equality of `tr U^m`, `m = 1..s`, and `tr U(gk)^m` is
+`tr U^m` under the monomial substitution `z^h -> z^(Mh)`. The angular
+content is read as a trigonometric polynomial in `d = 2` and projected on
+`1, K4, K6` in `d = 3` (and `beta` on `1, n1 n2 n3`). A zero residual is
+certified wherever `|G_walk| >= 24`.
+
+## 3. Findings per item
+
+### 3.1 Order of the lowest correction
+
+Every node is untilted at linear order, as the parent certified. The
+lowest correction has relative order `t` (a `beta` term) exactly in the
+rows whose `G_walk` lacks inversion: L5a, L5b, L4 (`T_d`-type, 24
+elements), L6a and L6b (`D_3`), and L3s4. In every row whose `G_walk`
+contains `k -> -k` (L1, L2, L6e, L3, L6c, L6d, L6f), `omega^2` has no odd
+terms through the computed order and the lowest correction is `alpha`.
+The draft charter assumed evenness; the frozen contract required it to be
+checked, and six of the thirteen rows are not even.
+
+### 3.2 Angular pattern and the walk's group
+
+The harmonic content matches `G_walk` in every row:
+
+- `D_6` rows (L6c, L6d, L6f): `alpha` isotropic and `cos 6θ` first at
+  relative order `t^4`, as the degree argument of contract Sec. 1 forces.
+- `D_3` rows (L6a, L6b): `cos 3θ` at relative order `t`. The `cos 6θ` in
+  `alpha` comes from `beta^2`; the degree-4 part of `omega^2` is
+  isotropic (`Q4 = -1/96` for L6a).
+- `D_4` rows (L2, L6e): `cos 4θ` at `t^2`.
+- `O_h` row (L3): `K4` at `t^2`.
+- 24-element cubic rows: `n1 n2 n3` at `t`, then `1, K4, K6` at `t^2`.
+
+The three ADMP/JDW hexagonal walks with `c_0 = 3/4` have the full `D_6`.
+ADMP's L6a has only `D_3`, and so has L6b, which realises L6a's dispersion
+after three updates.
+
+### 3.3 Sign
+
+- `alpha <= 0` pointwise in L2, L6e, L3, L5a, L5b, L4 (closed forms in
+  Sec. 1), vanishing only along the coordinate axes. `alpha < 0` pointwise
+  in L6a, L6b (`-46/1728 <= alpha <= -36/1728` for L6a), L6c, L6d, L6f.
+- In L5a, L5b, L4, L6a and L6b, `beta` is odd under `n̂ -> -n̂`, so the
+  lowest correction takes both signs. These rows are not "subluminal at
+  short wavelength" in every direction even though `alpha_0 < 0`. The
+  phase speed of the upper branch exceeds `c_0` near the node where
+  `beta(n̂) > 0`, for example along `n1 n2 n3 > 0` in L5a.
+- In L3s4, `beta = beta_0 + beta_3 n1 n2 n3` with `beta_0 != 0`, so it is
+  not odd. Since `|n1 n2 n3| <= 1/(3 sqrt3)`, `beta` keeps the sign of
+  `beta_0` on the whole sphere iff `a^2 < (19 - 6 sqrt3)/11`, and takes
+  both signs above that threshold. The sign of `beta_0` depends on the
+  cluster and reverses between the upper and lower branch (Sec. 3.4).
+  The verifier checks the threshold exactly.
+- L3s4: `alpha_0` changes sign at `a*` (Sec. 1).
+
+### 3.4 L3s4: a branch-dependent quadratic term
+
+L3s4 is the only row with `phi != 0`. The two levels of each cluster move
+together as `phi = ±(1 - a^2) t^2 / 6 + O(t^4)`, with opposite signs for
+the clusters at `±pi/4`. This is consistent with second-order repulsion
+between the clusters through the intersector coupling `b^2 = 1 - a^2`. It
+gives `beta` an isotropic part `±sqrt3 (1-a^2)/(6a)` of opposite sign on
+the upper and lower branch of a cluster; `alpha` is the same for both
+branches and both clusters. `G_walk` has 8 elements, so `alpha` has
+content outside `span(1, K4, K6)`. The verifier prints it; it is not
+tabulated further here. At `a = 1` the isotropic part of `beta` vanishes,
+and `beta = (sqrt3/3) n1 n2 n3` with `alpha_0 = -4/315`, the values of
+L5a.
+
+### 3.5 Group velocity at the node
+
+`|grad eps_+| / c_0 = 1 + 2 beta(n̂) t + O(t^2)`, and `1 + 3 alpha(n̂) t^2
++ O(t^4)` where `beta = 0`. The coefficients through relative order `t^4`
+(`d <= 2`) or `t^2` (`d = 3`) are printed per row by the verifier.
+`V_grp^max` is `OPEN` for every row in `d >= 2`, as in the parent. For L1,
+`omega = |k|` on the whole branch, so its group speed is 1 everywhere;
+this follows from the symbol `exp(-i k sigma_z)` and is checked by the
+script only through `t^5`.
+
+### 3.6 Scale of validity
+
+L1: the branches meet first at `|k| = pi` (exact). `d >= 2`: `OPEN`. The
+exact minimisation of `|k|` on the branch-meeting set was not attempted,
+as contract Sec. 3 item 6 allows.
+
+## 4. Cross-checks and second route
+
+- **L1** reproduces the exactly linear 1D massless walk: all corrections
+  vanish through `t^5`.
+- **Closed forms by hand.** For a symbol with `cos omega = prod_i cos p_i`
+  and `p = k / sqrt d`, the expansion `log cos x = -x^2/2 - x^4/12 +
+  O(x^6)` gives `omega^2 = |p|^2 - (1/3) sum_{i<j} p_i^2 p_j^2 + O(p^6)`,
+  hence `alpha = -sum_{i<j} n_i^2 n_j^2 / (6d)`. This is `-n1^2 n2^2/12`
+  for L2 and `-sigma2/18` for L3. For the chiral BCC rows,
+  `alpha = (3/2) Q4 - Q3^2/(8 c_0^4)` with `Q4 = -sigma2/27` and
+  `Q3 = (2 sqrt3/9) n1 n2 n3` gives `-sigma2/18 - n1^2 n2^2 n3^2/6`. The
+  verifier asserts all three forms against its series output.
+- **L6b vs L6a.** With each row's normalisation,
+  `eps_L6b(k) = eps_L6a(2 R k) / 3` for a 60° rotation `R`. So
+  `c_0` scales by `2/3`, `beta` by 2 and `alpha` by 4. All three are
+  asserted exactly. The rotation reverses the sign of `cos 3θ`, which is
+  why `beta` changes sign between the two rows. The three orientation
+  blocks of L6b give identical results.
+- **L6c, L6d, L6f:** compared in Sec. 1.
+- **L5b:** both Weyl blocks give the same `alpha` and opposite `beta`.
+  **L3s4:** both clusters give the same `alpha`.
+
+## 5. Corrections made during the execution
+
+- The first runs used the full characteristic polynomial; for L3s4 with
+  symbolic `a` it did not finish in an hour. It was replaced by Newton's
+  identities on truncated power traces, cross-checked as stated.
+- A rational parametrisation of `a` was tried and abandoned: SymPy merged
+  `1 + u^2` with negative powers of `z`. The independent-symbol reduction
+  replaced it.
+- The first cross-check of L6b against L6a compared `alpha` without the
+  scale factor 4. The second route above derived the factor, and the
+  check was corrected before any passing run.
+- Two per-row assertions assumed that `beta` is purely `n1 n2 n3` and that
+  `alpha` is cubic-invariant. Both fail for L3s4, whose group has 8
+  elements. They now apply only where `|G_walk| >= 24` and are reported
+  descriptively otherwise.
+
+Repairs after the independent review
+([record](2026-11-02--dispersion-corrections-across-lattices-review.md)),
+all three from Grok, checked before acceptance:
+
+- R1: Sec. 3.3 claimed that every row with `beta != 0` has an odd
+  lowest correction. False for L3s4; restricted, and the threshold
+  `a^2 = (19 - 6 sqrt3)/11` added, with an exact check in the verifier.
+- R2: Sec. 1 said L5a shares `beta` and `alpha` with "each" Weyl block of
+  L5b; it shares them with one block only.
+- R3: the verifier's record that the sign of `alpha_0` is decided in
+  every row had the constant predicate `True`. It now requires an exact
+  sign for each numeric `alpha_0` and a complete Sturm sign table for
+  L3s4.
+
+No value, table entry or verdict changed.
+
+## 6. What this does not claim
+
+- No physical interpretation of `alpha` or `beta`, no observational
+  comparison, no statement about our universe (contract Secs. 5, 7).
+- Hf's refutation by L2 and L6e is one coincidence on one substrate. It is
+  not evidence that the substrate fixes the correction in general; the
+  hexagon and BCC substrates carry rows with different corrections.
+- The observation that `alpha <= 0` pointwise in every row with
+  `d >= 2` except L3s4 is a pattern in the declared list, found after
+  solving. It is not a hypothesis of this gate and not a law.
+- Not human review. No novelty claim.
+
+## 7. Next step
+
+A separate promotion decision (user).
