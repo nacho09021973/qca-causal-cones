@@ -15,8 +15,11 @@ Riesz continuity gives positive bound-state weight c, which never returns
 to the free frame (absolutely continuous free fibers, Riemann-Lebesgue).
 liminf ||E_T|00>||^2 >= c > 0: `APPROXIMATE_RECOVERY_EXCLUDED` for this
 code, rule and parameters; no numerical value of c. Not a Thirring-QCA
-no-go; other codes/resources not addressed. PRELIMINARY author proof, no
-independent review, promotion or Lean. Contract cutoff reached; the
+no-go; other codes/resources not addressed. PRELIMINARY author proof.
+User asked for Grok review: one sealed revision-ciega round (grok-4.7,
+herramientas 97292a9) on ad01e20, [unaltered review](../reports/reviews/2026-11-09-thirring-approximate-recovery-grok/informe_grok.md):
+«se sostiene», no objections; it rederived steps 1-6, inspected but did not
+run the script. One cross-family review; no promotion, no Lean. Contract cutoff reached; the
 roadmap's Lean option was not executed.
 
 **Handoff for tomorrow — 2026-11-08:** user requested push and a roadmap.

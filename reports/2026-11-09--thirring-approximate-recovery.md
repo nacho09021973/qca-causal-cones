@@ -1,7 +1,13 @@
 # Microscopic Thirring code: no approximate recovery at growing times
 
 2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: author proof plus exact
-author checks; no independent review, no promotion, not formalized in Lean.**
+author checks; one sealed cross-family review (Grok), no promotion, not
+formalized in Lean.**
+
+[Sealed Grok review](reviews/2026-11-09-thirring-approximate-recovery-grok/informe_grok.md)
+of this text at ad01e20 (grok-4.7, revision-ciega, herramientas 97292a9):
+«se sostiene», no objections; steps 1-6 rederived by hand; script inspected,
+not executed. One round; its report is kept unedited.
 
 Contract [THIRRING_APPROXIMATE_RECOVERY_GATE.md](../theory/THIRRING_APPROXIMATE_RECOVERY_GATE.md),
 frozen at `61a8215` before any derivation. Verifier committed before its first
