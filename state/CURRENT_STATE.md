@@ -9,8 +9,11 @@ finite-range QCA with one fixed rule admits both universal quantum
 computation and a relativistic low-energy regime of the same rule, stated
 per code, resources and parameters. The original c_IR-from-causal-geometry
 question and its results are kept as inherited results. Documentation
-decision only: no gate, status or scope of any result changed;
-`PROJECT_INSTRUCTIONS.md` not edited.
+decision only: no gate, status or scope of any result changed.
+Same day, by user approval, `PROJECT_INSTRUCTIONS.md` §1/§7 and `CLAUDE.md`
+were aligned: coexistence question stated, original lines kept as
+inherited, interacting QCA in scope one declared model/code/resource set
+per charter (as authorized 2026-11-06). No new gate authorized.
 
 **Bounded results promoted — 2026-11-09:** by direct user instruction
 («promociona los tres resultados»), on `research/schur-stability-audit`,

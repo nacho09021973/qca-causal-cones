@@ -9,8 +9,14 @@ purpose: with both files Grok would load both (`~/herramientas/README.md`).
 
 A physics/mathematics research repository, not a software product. Its output is
 frozen contracts, derivations, exact verification certificates, reports and
-independent reviews about finite-range quantum cellular automata (QCA), their
-microscopic causal geometry and the relativistic speed of the low-energy limit.
+independent reviews about finite-range quantum cellular automata (QCA).
+
+Project question (since 2026-11-09, `README.md`): does one finite-range QCA,
+under one fixed rule, admit both universal quantum computation and a
+relativistic low-energy regime of the same rule? Claims are per code,
+resources and parameters; working model the Thirring QCA, `U = F J`. The
+original question — the relativistic speed from microscopic causal geometry —
+and its results are kept as inherited lines (`PROJECT_INSTRUCTIONS.md` §1).
 Most work is textual; code exists only to certify claims.
 
 Because it is a research repo, **process discipline is the load-bearing part**.
@@ -142,8 +148,10 @@ Scientific:
   point in a certified quantity.
 - No rigidity from a failed search, a finite scan or local isolation. No family
   identity promoted to a general QCA law without a separate proof.
-- Do not broaden scope: no causal sets, random lattices, interacting QCA, quantum
-  gravity, new substrate classes, or anisotropic detours, absent a new charter.
+- Do not broaden scope: no causal sets, random lattices, quantum gravity, new
+  substrate classes, or anisotropic detours, absent a new charter. Interacting
+  QCA are in scope for the coexistence question, one declared model, code and
+  resource set per charter.
 - Bernstein's inequality and its equality theory are prior art. `NOVELTY = OPEN`.
 - Negative results are first-class outcomes.
 
