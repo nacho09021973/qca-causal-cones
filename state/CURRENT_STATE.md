@@ -2,6 +2,26 @@
 
 **Date:** 2026-11-09
 
+**Thirring two-particle low-energy preflight (coexistence (c), contract 1 of 2) — 2026-11-09:**
+user «adelante con el preflight de (c)». Contract 6d24fb8; verifier 5c484d7
+committed before running; four failed runs retained (tooling / check
+construction, no expectation changed); 34/34 exact at 68e1a55.
+[Report](../reports/2026-11-09--thirring-two-particle-ir.md). Family chi=pi/2,
+0<mu<1, two-fermion carrier sector, rule only. O1: T=1 gate D holds for
+every mu. O2: c_f^2=asin(mu)nu/mu -> 1. O3: no bound branch at the (+,+)
+threshold +2omega0 (Gamma0 root non-normalizable; uniqueness from
+1711.03920 Lemma 2 / 1804.08508 p.13); the unique bound branch sits at the
+-2omega0 edge, outside the frozen window, with cos M_b=nu^2,
+c_b^2=M_b nu^2/(sqrt2 C0 mu), M_b/mu -> sqrt2, c_b^2 -> 1,
+c_b^2-c_f^2=-mu^2/3+O(mu^4) (lattice eigenvector certified at mu=3/5,
+5/13). O4 OPEN: the frozen definition does not separate doubler content
+(1/2 in every opposite-Gamma state, in and out) from transfer (zero by a
+written argument); low-energy T_+ depends only on rapidity difference.
+Verdict `IR_BOUND_BRANCH_RELATIVISTIC / DOUBLER_CHANNEL_OPEN` (bound-branch
+condition vacuous in the window). PRELIMINARY, no review or promotion.
+Not composable universality or an interacting QFT limit; the M=1 code is a
+lattice-scale state. One contract of the budget remains.
+
 **Coexistence quantifiers and line budget decided — 2026-11-09:** after
 committee brief `reports/comite/comite_decision_002_rumbo-tras-cierre-aproximado-thirring.md`
 (verdict RECOMMEND_PROCEED_WITH_CAVEATS; all members Claude, one voice), the
