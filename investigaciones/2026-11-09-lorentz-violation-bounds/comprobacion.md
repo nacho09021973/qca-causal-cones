@@ -96,3 +96,20 @@ Consequence (arithmetic, not a gate result): best-case ell_max/ell_P = 4.5/X for
 gives about 9.4 ell_P for MAGIC (X ≈ 0.48) and 26 ell_P for H.E.S.S. PKS 2155-304 (X ≈ 0.17):
 neither can exclude these rows under H_min. All quadratic limits found (5.6e10-8.5e10 GeV) are
 weaker than LHAASO's 6.9e11 GeV.
+
+## Precise positions of the four Kostelecký–Mewes polarization GRBs (added 2026-11-09, read in the original circulars)
+
+| GRB | Circular read | Position (J2000, deg) | Uncertainty as stated | KM Table I (codecl., RA) |
+| --- | --- | --- | --- | --- |
+| 041219A | GCN 2866, D. Gotz, S. Mereghetti, S. Shaw, M. Beck, J. Borkowski, "GRB 041219 - A long GRB detected by INTEGRAL" | RA 6.1075, Dec +62.8349 | 2 arcmin (90% radius) | (27, 6): consistent (codecl. 27.17) |
+| 100826A | GCN 11156, K. Hurley et al. (IPN), "IPN triangulation of GRB 100826A" | 3-sigma box centre RA 279.593, Dec -22.128; corners span Dec -18.32 to -26.94 at RA ≈ 279.4-280.0 | preliminary 3-sigma box, area ~1.5 sq. deg: a long thin strip (~8 deg long) | (112, 279): consistent (codecl. 112.13) |
+| 110301A | GCN 11771, S. Foley for the Fermi GBM team, "GRB 110301A: Fermi GBM detection" | RA 229.35, Dec +29.40 | 1.0 deg (1-sigma, statistical only) plus a systematic error "currently estimated to be 2 to 3 degrees" | (61, 229): consistent (codecl. 60.60) |
+| 110721A | GCN 12188, V. Vasileiou, F. Piron, D. Tierney et al., "GRB 110721A: Fermi-LAT detection" | RA 333.4, Dec -39.0 | 0.75 (0.51) deg at 90% (68%), statistical only | (129, 333): consistent (codecl. 129.0) |
+
+Located, not read: a refined LAT position for 110721A, (333.52, -38.60) with 0.09 deg radius
+(arXiv:1709.06263); the IPN x LAT joint box (GCN 12195). `[UNVERIFIED]`
+
+Consequence for MULTI_SOURCE_ORIENTATION (observation, not a gate result): the ±0.5 deg box
+assumed there (rounding hypothesis) understates the real localization uncertainty of GRB 100826A
+(strip ~8 deg long) and GRB 110301A (several degrees with systematics). With realistic regions an
+escape of all four directions onto the blind planes becomes easier, not harder.
