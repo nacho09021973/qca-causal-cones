@@ -1,0 +1,66 @@
+{
+  "herramienta": "lean-mutar",
+  "herramientas_commit": "ce09890",
+  "mutar_sha256": "6750fa3315226d205fc4a138cb9010ce536d3c7262edbf5ad296c2e934b99fa3",
+  "proyecto": "/home/adnac/qca-causal-cones/formal/thirring-two-contact",
+  "proyecto_commit": "bc2e485",
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mutaciones_fichero": "/home/adnac/qca-causal-cones/formal/thirring-two-contact/mutaciones.toml",
+  "mutaciones_sha256": "ec065032db53322facac35e3a3ebc1b7e64201a7f993b55b1c29988bede683a1",
+  "build_cmd": [
+    "lake",
+    "build",
+    "ThirringTwoContact"
+  ],
+  "timeout": 120,
+  "inicio": "2026-11-08T19:29:02.244966+00:00",
+  "ficheros": {
+    "ThirringTwoContact/Challenge.lean": {
+      "sha256": "8d4580efc639d3fd14aa8f4e0ccae09ebb9fd4a1cd4b19d27ab5fded8f0617b3",
+      "cambios_sin_commit": false
+    },
+    "ThirringTwoContact/Solution.lean": {
+      "sha256": "d55f2f3528686ca1cf303231c3f474960dd732209fa80587046885067f544068",
+      "cambios_sin_commit": false
+    }
+  },
+  "resultados": [
+    {
+      "nombre": "wrong sign in claimed first-contact phase",
+      "fichero": "ThirringTwoContact/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 6.0,
+      "coincidencia": "error: ThirringTwoContact/Solution.lean:7:91: Tactic `decide` proved that the proposition",
+      "errores": []
+    },
+    {
+      "nombre": "wrong second-compression matrix coefficient",
+      "fichero": "ThirringTwoContact/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 4.6,
+      "coincidencia": "error: ThirringTwoContact/Solution.lean:10:115: Tactic `decide` proved that the proposition",
+      "errores": []
+    },
+    {
+      "nombre": "replace a proof by sorry",
+      "fichero": "ThirringTwoContact/Solution.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 6.3,
+      "coincidencia": "error: ThirringTwoContact/Axioms.lean:25:0: ❌️ Docstring on `#guard_msgs` does not match generated message:",
+      "errores": []
+    }
+  ],
+  "limpia_inicial": {
+    "codigo": 0,
+    "segundos": 0.1
+  },
+  "limpia_final": {
+    "codigo": 0,
+    "segundos": 6.1
+  },
+  "veredicto": "PASA",
+  "fin": "2026-11-08T19:29:26.102932+00:00"
+}

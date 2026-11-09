@@ -1,0 +1,6 @@
+name = "thirringTwoContact"
+version = "0.1.0"
+defaultTargets = ["ThirringTwoContact"]
+
+[[lean_lib]]
+name = "ThirringTwoContact"

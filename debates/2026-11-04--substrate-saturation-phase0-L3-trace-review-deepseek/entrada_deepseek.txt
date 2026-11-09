@@ -1,0 +1,1086 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente un único párrafo del informe
+reports/2026-11-03--substrate-saturation-phase0.md, escrito por Claude
+(Anthropic): la «Definition check (contract Sec. 3.4)», l. 86–118, que traza
+el nodo de la fila L3 (walk de Weyl en la red BCC, d = 3) hasta
+comprobaciones del verificador exacto scripts/verify_weyl_dirac_gate.py. Se
+adjuntan: el informe completo, el contrato congelado de la fase 0
+(theory/SUBSTRATE_SATURATION_PHASE0_GATE.md; la condición de nodo está en su
+Sec. 2.4), el verificador completo y extractos literales numerados de
+state/CURRENT_STATE.md (Sec. 5), del informe c-across-lattices (tabla de
+filas, l. 143 para L3) y del informe del gate exacto de Weyl/Dirac (l.
+131–138). El informe no es premisa. No tienes herramientas: no ejecutes ni
+navegues. No propongas ampliar la investigación.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / INSUFFICIENT_EVIDENCE:
+1. LÍNEAS. ¿Hace cada línea citada del verificador (147, 149, 158, 159–160,
+   161–162, 164–167, 172–173) lo que el párrafo le atribuye? Lee
+   `published_symbol`, `spatial_derivative` y `verify_case`.
+2. COBERTURA DE L3. ¿Son los símbolos d = 3 que comprueba el verificador
+   (A±, B±) los walks de la fila L3? Usa la tabla del informe
+   c-across-lattices (l. 143, fuente «CURRENT_STATE Secs. 4, 5») y el
+   extracto de CURRENT_STATE. Si la identificación no se sigue de lo
+   adjuntado, dilo.
+3. DERIVACIONES. Rehaz (ii): de W W^† = I como identidad de Laurent y W(0)
+   = I, ¿se sigue que i ∂W(0) es hermítica? Ten en cuenta que
+   `spatial_derivative` usa i z ∂_z / sqrt(d) con z = e^{±ik}: ¿afecta la
+   convención de signo o el factor a la hermiticidad, a la traza nula o al
+   anticonmutador? Rehaz (iii) y (iv) y la identificación c_0 = 1/sqrt(d)
+   por «massless matching».
+4. INCLINACIÓN. ¿Es correcto llegar a (v) sólo mediante la forma
+   equivalente A(n)^2 = c_0^2 |n|^2 I que declara el contrato? ¿Implican
+   (iii) y (iv) esa forma, y declara el contrato la equivalencia de modo
+   que baste?
+5. UNIDADES Y ALCANCE. ¿Son coherentes las unidades del verificador
+   (vértices {±1}^3, inradio 1/sqrt3, paso más largo 1) con la regla de
+   una sola fuente por fila de la Sec. 2.4 del contrato? ¿Respeta el
+   párrafo que el «Hessian» (l. 169–171) no es el certificado del nodo, y
+   no presenta la traza como evidencia para (PH)?
+
+Hasta 1500 palabras en español. Cada defecto: frase o línea exacta, por qué
+falla y qué lo cerraría. Distingue aclaración de error. Dictamen global
+PASS, REPAIR_REQUIRED o INSUFFICIENT_EVIDENCE y lista de reparaciones
+obligatorias; si no hay ninguna, dilo expresamente.
+
+=== DOCUMENT 1: 2026-11-03--substrate-saturation-phase0.md ===
+
+# Substrate saturation, phase 0 — definitional audit
+
+**Date:** 2026-11-03. **Branch:** `research/schur-stability-audit`.
+**Contract:** [`SUBSTRATE_SATURATION_PHASE0_GATE.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE.md),
+preregistration commit `9bf3019`; registered in CS Sec. 15 (`6851d92`).
+**Authorization to execute:** user instruction, 2026-11-03 («EJECUTAMOS
+FASE 0»).
+**Author:** Claude Code (Claude Opus 5.5). Documentary only: no verifier
+run, written or edited; no walk built; no numerics.
+**Nature:** a definitional audit with **no confirmatory value** (contract
+Sec. 0). **Status: PRELIMINARY.**
+**Review:** Grok (`grok-4.7`), REPAIR_REQUIRED, five mandatory repairs, all
+applied in this revision (`debates/2026-11-03--substrate-saturation-phase0-exec-review-grok/`;
+reviewed snapshot `informe_fase0_snapshot.md`). Repair 1 changes the
+definitional outcome from `DEFINITIONS_CLOSED` to `OPEN_AFTER_ROW_SURVEY`
+(L4). While applying it the author found that L3, like L4, is a recorded
+row not covered by the c-across-lattices certificate; its node is traced
+to the Weyl/Dirac gate (Sec. 2). Second Grok round
+(`debates/2026-11-03--substrate-saturation-phase0-exec-review2-grok/`):
+REPAIR_REQUIRED, two repairs (L3 trace rewritten clause by clause; L4 not
+counted in the domain), both applied here; this revision is not
+re-reviewed.
+
+**Pre-step check.** Known: the contract fixes (PH), its domain (`s = 2`,
+`d <= 3`, admissible models), one source per row, three separate fields,
+and the outcomes. Question: is (PH) defined without ambiguity on the
+promoted rows, and is there an exact counterexample among them? Ends this
+formulation: one exact counterexample (contract Sec. 4).
+
+## 1. Rows considered (contract Sec. 3.1)
+
+Promoted rows with `d <= 3` and an exact `c_0` or an exact class statement.
+Primary row source: the massless table of
+[`reports/2026-11-01--c-across-lattices.md`](2026-11-01--c-across-lattices.md)
+(l. 140–152; promoted in the declared rows, CS Sec. 11), in units of
+longest step 1, one update per time unit. Composite step sets from the same
+report, Sec. 3 (l. 106–113), and for L2–L3 the vertices from CS l. 486–488
+(`N_d = {(±1,...,±1)/sqrt(d)}`, `C_micro = [-1/sqrt(d), 1/sqrt(d)]^d`).
+The pair `(r_in, c_0)` of every row is taken from the massless table only. Every computed row of that table carries the
+certificate «Hermitian linear generators, zero tilt, an isotropic untilted
+cone (`{T_a, T_b} = 2 c_0^2 delta_ab`), the exact facets and vertices of
+`C_micro`» (report l. 154–156).
+
+**Outside the domain (`s != 2`), recorded only:**
+
+| Row | `s` | Source | Note |
+| --- | --- | --- | --- |
+| L5b (BCC) | 4 | c-across-lattices l. 145 | saturates; cannot confirm or refute (PH) |
+| L3s4 (BCC) | 4 | c-across-lattices l. 146; CS Sec. 4.1 | `c_0 = a/sqrt3 < r_in` |
+| L6b (triangular) | 6 | L6b report l. 24, l. 70–71; CS l. 97–99, l. 111 (current numbering; the frozen contract's l. 88–94, l. 106 refer to the file at `9bf3019`) | the parent table (l. 152) still lists `s = 2`, OPEN, not encoded; not amended |
+
+## 2. Row table, `s = 2` (contract Secs. 3.2–3.3; L4 tabulated, domain membership not established)
+
+Shapes are read from the certified vertices of `C_micro` in the units
+above. "Hypercube" means up to scale and isometry; "parallelepiped" means a
+Minkowski sum of `d` independent segments. "Zonotope directions" are the
+edge directions of `C_micro` (every polytope listed here is a zonotope;
+its generators are read from its edges, not from the walk's factor
+structure — see Sec. 4, finding F2).
+
+| Row | Substrate (group, `N`) | `C_micro` vertices | Hypercube | Parallelepiped | Zonotope directions | `r_in` | `c_0` | Single source |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| L1 | line, `N = {±1}` | `±1` | yes (segment) | yes | 1 | 1 | 1 | c-across-lattices l. 140 |
+| L2 | square, `N_2` | `(±1,±1)/sqrt2` | yes (square) | yes | 2, orthogonal | `1/sqrt2` | `1/sqrt2` | pair: l. 141 only (vertices: CS l. 486–488) |
+| L6e | square, same as L2 (l. 111) | `(±1,±1)/sqrt2` | yes | yes | 2, orthogonal | `1/sqrt2` | `1/sqrt2` | l. 142 |
+| L3 | BCC, `N_3` | `(±1,±1,±1)/sqrt3` | yes (cube) | yes | 3, orthogonal | `1/sqrt3` | `1/sqrt3` | pair: l. 143 only (vertices: CS l. 486–488) |
+| L5a | BCC, same as L3 (l. 106) | `(±1,±1,±1)/sqrt3` | yes | yes | 3, orthogonal | `1/sqrt3` | `1/sqrt3` | l. 144 |
+| L4 | cube (CJWW (5.12), (5.15)) | cube of longest step 1 (label `[-1,1]^3` is in CS Sec. 8 units; not combined with the rescaled radius) | yes | yes | 3, orthogonal | `1/sqrt3` | `1/sqrt3` | l. 147 only (CS Sec. 8 pair not crossed) |
+| L6a | triangular lattice, `F = {0} ∪ {±2u_i}` (l. 108) | regular hexagon | no | no | 3, at 120° | `sqrt3/2` | `1/2` | l. 148 |
+| L6d | identical to L6a (l. 110) | regular hexagon | no | no | 3, at 120° | `sqrt3/2` | `3/4` | l. 150 |
+| L6f | triangular lattice, hexagon of radius `sqrt3` rotated 30° (l. 112) | regular hexagon | no | no | 3, at 120° | `sqrt3/2` | `3/4` | l. 151 |
+| L6c | finer triangular group, 19-point hexagonal ball (l. 109) | regular hexagon | no | no | 3, at 120° | `sqrt3/2` | `3/4` | l. 149 |
+
+**Three fields per row, kept apart (contract Sec. 3.3).**
+
+| Row | (a) this walk | (b) promoted class statement, with its scope | (c) substrate, existential |
+| --- | --- | --- | --- |
+| L1 | `c_0 = r_in` | — | yes: L1 |
+| L2, L6e | `c_0 = r_in` | — | yes: L2, L6e |
+| L3, L5a | `c_0 = r_in` | — | yes: L5a (L3 pending review of its node trace) |
+| L4 | `c_0 = r_in` (pair from l. 147); node not established in the frozen sense | — | unresolved: L4 is the only tabulated walk on its substrate and is flagged |
+| L6a | `c_0 < r_in` (`c_0/r_in = 1/sqrt3`) | T1: `sup c_0/r_in = sqrt3/2` on the `n = 3` antipodal subclass only (hex-ceiling report l. 125, CS Sec. 12); L6a is in it, `g = 1/3` (l. 138–139). T2: no s=2 walk with `F within {0} U vert(H)` reaches `r_in` (CS Sec. 12; contains L6a, L6d, L6f, hex-ceiling l. 153–156). M1-B13, M1-B19: no s=2 walk in `W_hex^sym` with `F` within S13 or S19 reaches `r_in` (CS Sec. 14), qualitative gaps. Whole hexagonal class OPEN. | no promoted saturating walk; **not** "no walk saturates" |
+| L6d, L6f | `c_0 < r_in` (`c_0/r_in = sqrt3/2`) | as for L6a (L6d at the T1 maximum, `g = -1/2`) | as for L6a |
+| L6c | `c_0 < r_in` (`c_0/r_in = sqrt3/2`) | not in the minimal-support subclass (hex-ceiling l. 156–157); its 19-point support is S19, covered by M1-B19 in `W_hex^sym` (B19 report Sec. 3) | as for L6a, on its own (finer) substrate |
+
+**Definition check (contract Sec. 3.4).** The c-across-lattices report
+separates computed from recorded rows (l. 235: Ha «Holds in L1, L2, L5a,
+L6e and the recorded L3, L4»). Rows L1, L2, L6e, L5a, L6a, L6c, L6d and
+L6f are computed there and carry its certificate of the isotropic untilted
+node (l. 154–156). **L3 is recorded, not computed**, so that certificate
+does not cover it either. Its node is traced instead, clause by clause, to
+checks of the standard Weyl/Dirac gate (CS Sec. 5, PASS, l. 462–464;
+verifier `scripts/verify_weyl_dirac_gate.py`, applied to all seven
+standard symbols, including the d=3 symbols of L3). The scalar Hessian
+check («Hessian», verifier l. 169–171) is **not** the node certificate and
+is not used. Correspondence with contract Sec. 2.4:
+(i) `U(0)` scalar: «zero node», `W(0) − I = 0` (verifier l. 158);
+(ii) Hermitian linear term: the verifier sets `spatial = i ∂W` at the
+origin (l. 159–160) and checks unitarity `W W^† = I` as a Laurent identity
+(l. 147); differentiating it at `k = 0`, where `W = I`, gives
+`∂W + ∂W^† = 0`, so `i ∂W` is Hermitian (a one-line derivation by the
+author from the checked identity, not itself a verifier check);
+(iii) traceless: «scalar trace» `tr W = 2u` (l. 149) and «scalar gradient»
+`∂u = 0` at the origin (l. 161–162), so `tr(i ∂W) = 0`;
+(iv) `{T_a, T_b} = 2 c_0^2 delta_ab`: «Clifford» checks
+`{spatial_a, spatial_b} = 2 (delta_ab/d) I` (l. 164–167), with
+`c_0 = 1/sqrt(d)` by «massless matching» (l. 172–173); also exact-gate
+report l. 131–138 (`H_W = (1/sqrt d) sum_j Sigma_j k_j + O(|k|^2)`,
+`{Sigma_i, Sigma_j} = 2 delta_ij I`);
+(v) zero tilt: the word is not used in the Weyl/Dirac dossier. It is
+reached only through the equivalent form the contract itself declares,
+`A(n)^2 = c_0^2 |n|^2 I` with `A(n) = n_a T_a` traceless, which is the
+polarization of (iv) together with (iii).
+**Status of L3's node: traced by this correspondence, pending review**
+(steps (ii) and (v) are elementary derivations by the author from checked
+identities; the user checked both derivations on 2026-11-03 and found them
+correct under the stated hypotheses, without inspecting the verifier lines
+or the full correspondence, so the status is unchanged). Until that is reviewed, L3 is not used as a witness; the BCC
+witness is L5a, a computed row under the certificate of l. 154–156. **L4 is flagged, unresolved:** it is re-tabulated, not
+computed, in that report (l. 147, «CURRENT_STATE Sec. 8»), so the
+certificate does not cover it, and the promoted passages read here (CS
+Sec. 8.1–8.2, l. 762–789) state an emergent isotropic IR cone `B(c_IR)`
+(l. 769) and the support-function ratio `S(n̂) = h_{B(c_IR)}/h_{C_micro} =
+1/||n̂||_1` (l. 780–787, in CS Sec. 8 units), which is geometry of `B`, not
+the algebraic node condition of contract Sec. 2.4 (`U(0)` scalar,
+traceless Hermitian linear term, `{T_a, T_b} = 2 c_0^2 delta_ab`, zero
+tilt). Whether L4 is admissible in the frozen sense is therefore not
+established from the promoted data used here. **L4 is unclassified, not
+shown to be outside the domain:** it is neither `OUTSIDE_DEFINITIONS` nor
+an admissible row; the uncertainty is kept as such. (An earlier draft of this
+report read that ratio as "no tilt"; Grok's review showed that inference
+is not the frozen certificate, and it is withdrawn.)
+
+## 3. Counterexample check (contract Sec. 4)
+
+- **Against (PH⇒)** — a non-hypercube substrate in the domain with a
+  promoted walk at `c_0 = r_in`: none. The only non-hypercube shape is the
+  regular hexagon (L6a, L6c, L6d, L6f), and every promoted hexagonal walk
+  has `c_0 < r_in`.
+- **Against (PH⇐)** — a hypercube substrate in the domain on which a
+  promoted exact result shows that no admissible walk saturates: none.
+  The line, square and BCC substrates each have a promoted admissible walk
+  with `c_0 = r_in` (L1; L2 and L6e; L5a). On the L4 cube substrate the only tabulated walk is
+  flagged (Sec. 2), so that substrate has no established witness; a
+  flagged node is not a promoted result that no walk saturates, so it is
+  not a counterexample either.
+
+## 4. Audit findings
+
+- **F1 (contract Sec. 3.5).** The table contains no parallelepiped that is
+  not a hypercube, and no non-hypercube body with a promoted saturating
+  walk. It therefore cannot separate (PH) from (PS′), nor from any other
+  predicate that agrees on segments, squares, cubes and the regular
+  hexagon (for example "fewer than `d+1` zonotope directions", or "the
+  facet normals come in `d` orthogonal pairs"). The shapes present are
+  three hypercubes (segment, square, cube) and one non-hypercube (the
+  regular hexagon).
+- **F2 (on (PS′), recorded, no verdict).** The contract's identity
+  `conv F = sum_i [-a_i, a_i]` presupposes that every sign pattern
+  `sum_i ε_i a_i` of the partial shifts appears in `F` with nonzero
+  amplitude. That is not recorded per row in the promoted data (the factor
+  structure is tabulated only for the `n = 3` antipodal subclass, T1), and
+  it can fail if a coin entry vanishes. The "zonotope directions" column
+  above is read from the edges of `C_micro`, which are certified; whether
+  they coincide with the factor shifts of each walk is not established
+  here. (PS′) as written therefore needs that hypothesis made explicit
+  before any test.
+- **F3 (substrate counts).** Grouped by shape and translation group, the
+  rows with a traced node give four substrates in the domain (line; square,
+  L2 = L6e; BCC, L5a, with L3 pending; hexagon on the triangular lattice,
+  L6a = L6d, with L6f the same shape up to rotation and scale) plus the
+  finer-group hexagon of L6c. The cube substrate of L4 is tabulated with
+  domain membership not established (Sec. 2) and is not counted. By shape,
+  among domain rows: segment, square, cube (BCC) and hexagon.
+
+## 5. Outcomes (contract Sec. 5)
+
+**Definitional outcome: `OPEN_AFTER_ROW_SURVEY`.** Gap: the admissibility
+of L4 (isotropic untilted node in the sense of contract Sec. 2.4) is not
+established from the promoted data used here (Sec. 2). L3's node is traced through the Weyl/Dirac gate by the correspondence of
+Sec. 2, pending review. Every tabulated `s = 2` row, L4 included, has one
+traced source for the pair `(r_in, c_0)` in the units of contract
+Sec. 2.4; the rows counted in the domain are those with a traced node (L4
+is not among them); the zonotope-direction field is read from the
+certified vertices, with the caveat of F2.
+
+**Counterexample check:** the outcomes are (PH⇐)
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE` and (PH⇒)
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`; they are not independent evidence for
+(PH), because the statement was read off this table (three hypercube
+shapes, one regular hexagon, no parallelepiped that is not a hypercube,
+F1); they are never `CONFIRMED`; and, like every outcome of this gate,
+they authorize no later phase.
+
+## 6. What this does not establish
+
+No evidence for (PH) or (PS′); no statement about parallelepipeds that are
+not hypercubes, about hexagonal walks beyond the promoted results, about
+`s != 2` or `d > 3`; no uniform gap; no physical explanation of the
+predicate; no novelty claim.
+
+=== DOCUMENT 2: SUBSTRATE_SATURATION_PHASE0_GATE.md ===
+
+# SUBSTRATE_SATURATION (phase 0) — frozen contract
+
+**Frozen:** 2026-11-03, revision 3, by the user's instruction («congela la
+revisión 3»), before any execution. Nothing in Secs. 3–5 has been done.
+Freezing is not authorization to execute: execution of phase 0 needs a
+separate user decision. The only change from the reviewed snapshot
+(`borrador_rev3_snapshot.md`, SHA-256 `b574a407…`) is this status header.
+Drafted by Claude Code (Claude Opus 5.5) on 2026-11-03 at the user's
+instruction («Autorizo redactar la carta de la fase 0, pero no congelarla
+ni ejecutar todavía ninguna comprobación»). Revision 1 was reviewed by Grok
+(`grok-4.7`, REPAIR_REQUIRED, six mandatory repairs;
+`debates/2026-11-03--substrate-saturation-phase0-draft-review-grok/`).
+Revision 2 applies, by the user's decision of 2026-11-03 («aceptar las seis
+reparaciones de Grok, adoptar "hipercubo" como predicado provisional y
+convertir la fase 0 en una auditoría de definiciones, sin valor
+confirmatorio»), all six repairs, the terminology change
+parallelotope → parallelepiped, and the zonotope reading (PS′) without any
+equivalence claim. Revision 3 (same day) applies the one mandatory repair
+of Grok's round 2 (L6b traceability) and its five clarifications, by the
+user's instruction («sí, aplica la reparación y las cinco aclaraciones»;
+`debates/2026-11-03--substrate-saturation-phase0-rev2-review-grok/`).
+Reports cite the commit that adds this file as the preregistration
+commit.
+**Initial scientific status: OPEN.** The conjecture below is `[UNVERIFIED]`;
+it was formulated by an AI from the promoted table and has no evidence
+level of its own.
+**Does not alter:** step 4 of the work plan (hexagonal-ceiling prior-art
+check, `NOT_FOUND_IN_SCOPED_SEARCH`, `6114b9d`), M1 (`86573ca`,
+Amendment 1 `208e1b1`) or any promoted row.
+
+## 0. Nature of this gate and pre-step check (rule of 2026-11-02)
+
+**Phase 0 is a definitional audit with no confirmatory value.** The
+conjecture of Sec. 1 was read off the same table this gate would audit
+(Grok, repair 6). Its purpose is to fix definitions, normalizations,
+traceability and the domain of the statement. Its conclusion is never
+"the conjecture survives"; at best it is "the statement is defined well
+enough to be tested for refutation". A test that can fail needs a separate
+contract with a shape not in the table (Sec. 7).
+
+- **Known.** Promoted rows (CS Secs. 4, 5, 8, 11, 12, 14; c-across-lattices
+  report Sec. 4; c-across-substrates answer Sec. 1): the ceiling
+  `c_0 = r_in(C_micro)` is attained by some declared `s = 2` walk on the
+  line (L1), the square (L2, L6e), BCC (L3, L5a) and the cube (L4); their
+  `C_micro` are a segment, squares and cubes, i.e. hypercubes up to scale
+  and isometry. On the hexagon no declared walk attains it; `sup c_0/r_in
+  = sqrt3/2` in the `n = 3` antipodal subclass; no s=2 walk in `W_hex^sym`
+  with `F` within S7, S13 or S19 attains it; the whole hexagonal class is
+  OPEN. The table contains no parallelepiped that is not a hypercube, so it
+  cannot distinguish the two notions (Grok, repair 1).
+- **Question.** Is the statement of Sec. 1 defined without ambiguity on the
+  promoted rows (definitions, units, single source per row, levels of
+  claim), and is there an exact counterexample to it among those rows?
+- **Result that ends this formulation.** One exact counterexample in the
+  promoted rows (Sec. 4): the formulation of Sec. 1 is dropped at once,
+  with no repair attempted in this gate.
+
+## 1. Statement under audit
+
+> **(PH) [UNVERIFIED], provisional predicate.** For `s = 2`, `d <= 3`,
+> within the declared classes of Sec. 2 and only for models with an
+> admissible isotropic untilted node: the ceiling is attained on a
+> substrate, in the sense of Sec. 2.1, if and only if its `C_micro` is a
+> hypercube up to scale and isometry.
+
+Two directions are kept apart:
+
+- **(PH⇐)** `C_micro` a hypercube up to scale and isometry ⇒ there exists
+  an admissible walk on that substrate with `c_0 = r_in`.
+- **(PH⇒)** `C_micro` not a hypercube up to scale and isometry ⇒ every
+  admissible walk on that substrate has `c_0 < r_in`.
+
+A body with no admissible isotropic untilted node in the declared class is
+outside the statement: it is on neither side of the biconditional and is
+recorded as `OUTSIDE_DEFINITIONS` (Sec. 3.4).
+
+**The predicate is a geometric classification suggested by the existing
+cases, not a physical explanation.** Whether saturation is controlled by
+this geometry, or by algebraic and isotropy constraints that coincide with
+it on the present table, is the open question (user decision,
+2026-11-03).
+
+This contract states only (PH) on the promoted rows. No general statement
+about hypercubes or parallelepipeds outside those rows is written here
+(Grok, repair 3).
+
+**Zonotope reading (PS′) [UNVERIFIED], product class only, not equivalent
+to (PH).** For a walk that is a product of `n` coin–partial-shift factors,
+each partial shift moving by `±a_i`, the composite step set is
+`F = {sum_i ε_i a_i}` and `C_micro = conv F` is the zonotope
+`sum_i [-a_i, a_i]` (convex hull of a Minkowski sum is the Minkowski sum
+of the hulls). It is a parallelepiped exactly when the reduced generators
+(`a_i` up to sign and positive scale, parallel ones merged) are `d`
+linearly independent vectors. (PS′) reads: in the product class, the
+ceiling is attained iff the generators reduce to `d` independent
+directions. **(PS′) is not equivalent to (PH):** `d` independent
+generators need not be orthogonal or of equal length, so a parallelepiped
+need not be a hypercube (e.g. a 60° rhombus in `d = 2`). No equivalence is
+claimed until proved. Examples in the promoted rows: square (two
+generators), BCC/cube (three orthogonal generators), `W_hex` (three
+generators at 120°, `d = 2`: the hexagon). The zonotope facts it would use
+(e.g. the space-tiling criterion of Shephard 1974 and McMullen 1975) are
+cited by Moriyama–Otozawa (arXiv:2411.09141v1) and have not been read
+here. The same domain clause applies to (PS′): a body (e.g. a rhombus)
+whose declared class has no admissible isotropic untilted node is
+`OUTSIDE_DEFINITIONS` and is not on the "attained" side. Phase 0 records
+the reduced generators of each product-class row and gives no verdict on
+(PS′); the counterexample criterion of Sec. 4 concerns (PH) only.
+
+## 2. Quantifiers, domain and normalization
+
+1. **Quantifiers.** "The ceiling is attained on a substrate" means: there
+   exists at least one admissible walk `W` on that substrate with
+   `c_0(W) = r_in(C_W)`. It does not mean that every walk saturates. A
+   non-saturating walk on a substrate where another walk saturates is not
+   a counterexample to (PH⇐) (e.g. L3s4 on BCC, which in any case has
+   `s = 4` and is outside the domain).
+2. **Domain.** `s = 2`, `d <= 3`, models with an admissible isotropic
+   untilted node, and only the classes already declared in the frozen
+   contracts the promoted rows cite (C_ACROSS_LATTICES_GATE,
+   HEX_CEILING_GATE, HEX_SUPREMUM_GATE and the row contracts).
+   **"Admissible"** means exactly: the walk belongs to one of these declared
+   classes and has an isotropic untilted node at `k = 0` in the sense of
+   Sec. 2.4 (`U(0)` scalar, traceless Hermitian linear term with
+   `{T_a, T_b} = 2 c_0^2 delta_ab`, zero tilt; equivalently
+   `A(n)^2 = c_0^2 |n|^2 I`, HEX_CEILING_GATE Sec. 1). It is not the
+   "admissible graph" of P17, whose isotropy in its own sense excludes the
+   triangular lattice. Rows with
+   `s != 2` are recorded and are outside the domain: L5b and L3s4
+   (`s = 4`, c-across-lattices report Sec. 4 table); L6b (`s = 6`: L6b
+   report Secs. 1–2, `s = 6` counted per cell, three edges with `C^2`
+   each, whereas the parent's `s = 2` counts per edge; the row is promoted
+   with `s = 6` by L6B_TRIANGULAR_ROW, described in CS l. 88–94 as «a
+   revision of `C_ACROSS_LATTICES` restricted to row L6b», and CS l. 106
+   records «`s = 6`, not the parent's `s = 2`»). The parent contract
+   C_ACROSS_LATTICES_GATE and the c-across-lattices table were not amended
+   and still list L6b with `s = 2` (`OPEN`, not encoded); the exclusion
+   rests on the promoted `s = 6`. No extrapolation to other `s`, `d`,
+   lattices or classes.
+3. **Substrate.** As in C_ACROSS_LATTICES_GATE Sec. 2: the translation group
+   generated by one complete update together with its composite step set.
+   Here `N := F`, the composite step set of one complete update (all sums
+   of one displacement per partial shift), not the displacement set of a
+   single partial shift. `0 ∈ N` does not change `C_micro`, `r_in` or the
+   longest step when it is interior.
+4. **Normalization and single source per row.** Every row is compared with
+   the same frozen definitions (CS Sec. 2): `C_micro := conv(N)`; `h_C`;
+   `r_in(C_micro) := min h_C`; `c_0` the isotropic untilted cone speed at
+   the massless node (`{T_a, T_b} = 2 c_0^2 delta_ab`, as certified per row
+   in the c-across-lattices report Sec. 4); units: longest step 1, one
+   update per time unit. **For each row the pair `(r_in, c_0)` is taken
+   from exactly one source, in these units.** For L4 that source is the
+   c-across-lattices report Sec. 4 table (`r_in = c_0 = 1/sqrt3`); that
+   table's label "cube `[-1,1]^3`" names the shape in CS Sec. 8 units, and
+   its vertices are not to be combined with the rescaled radius `1/sqrt3`
+   (the rescaled cube has longest step 1). The CS
+   Sec. 8 pair (`C_micro = [-1,1]^3`, `r_in = 1`, `c_IR = 1`) is in other
+   units and must not be crossed with it (Grok, repair 4). A numerical
+   coincidence of speeds, or a value from a different normalization, is
+   not a comparison. "Hypercube up to scale and isometry" and
+   "parallelepiped" (Minkowski sum of `d` linearly independent segments)
+   are checked exactly from the vertices of `C_micro`.
+   **Terminology.** Revision 1 said "parallelotope"; in standard use a
+   parallelotope is any polytope that tiles space by translations
+   (Moriyama–Otozawa, arXiv:2411.09141v1, Sec. 2.2, p. 11), and the
+   regular hexagon is one. That word is not used for the predicate.
+5. **Pointwise against uniform gap.** (PH⇒) is pointwise:
+   `for all W, c_0(W) < r_in(C_W)`. It does not imply a uniform gap
+   `sup_W c_0(W)/r_in(C_W) < 1` over a class. Phase 0 makes no claim about
+   a uniform gap. T1 (`sqrt3/2`) is a uniform statement for the `n = 3`
+   antipodal subclass only; M1-B13 and M1-B19 are qualitative gaps with no
+   bound below `r_in`.
+6. **Background bound.** `c_0 <= r_in` (L0, Bernstein) holds on the
+   declared classes; a row with `c_0 > r_in` would contradict L0, not (PH).
+   No such row exists.
+
+## 3. Method (no computation)
+
+Documentary only. No verifier is run, written or edited; no new walk is
+built; no numerics.
+
+1. List every promoted row in `state/CURRENT_STATE.md` and the reports it
+   cites with `d <= 3`, with its source (`file:line` or section), its
+   declared class and its `s`. Rows with `s != 2` are listed and marked
+   outside the domain with the citation of Sec. 2.2.
+2. For each row in the domain, record from the single source of Sec. 2.4:
+   the vertices of `C_micro`; whether it is a hypercube up to scale and
+   isometry; whether it is a parallelepiped; for product-class rows, the
+   reduced generators (for (PS′)); `r_in`; `c_0`.
+3. **Three separate fields per row, never merged** (Grok, repair 5):
+   (a) *this walk*: `c_0 = r_in` or `c_0 < r_in`, exact;
+   (b) *promoted statement on a class*, quoted with its own quantifier and
+   scope (e.g. T1 on the `n = 3` antipodal subclass; M1-B13/B19 on `W_hex^sym`
+   with `F` within S13/S19; the whole hexagonal class OPEN);
+   (c) *existential reading per substrate*: "some promoted walk on this
+   substrate has `c_0 = r_in`" (yes / no promoted witness). A gap on a
+   subclass or a bounded support is entered in (b) and is never read as
+   (c) "no walk on the substrate saturates".
+4. Flag, without resolving, every row where a definition of Sec. 2 does not
+   apply as frozen (for example a body whose declared class has no
+   admissible isotropic untilted node). Such a row is
+   `OUTSIDE_DEFINITIONS`: not a counterexample and not support.
+5. Record whether the table contains a parallelepiped that is not a
+   hypercube, or a non-hypercube body with a promoted saturating walk. If
+   it contains neither, record that it cannot separate (PH) from (PS′) or
+   from other predicates that agree on segments, squares, cubes and the
+   regular hexagon.
+
+## 4. Counterexample criterion
+
+An exact counterexample among the promoted rows is any of:
+
+- (against PH⇒) a substrate in the domain whose `C_micro` is not a
+  hypercube up to scale and isometry, with a promoted walk with
+  `c_0 = r_in` exactly;
+- (against PH⇐) a substrate in the domain whose `C_micro` is a hypercube up
+  to scale and isometry, on which a promoted exact result shows that no
+  admissible walk of the declared class attains `c_0 = r_in`.
+
+A failed search, a non-saturating single walk, a gap on a subclass or a
+bounded support, or a row outside the domain or the definitions is not a
+counterexample.
+
+## 5. Outcomes
+
+Two separate outcomes, reported together.
+
+**Definitional outcome.**
+
+- `DEFINITIONS_CLOSED`: every row in the domain has a single traced source
+  in the units of Sec. 2.4, all fields of Sec. 3.2–3.3 are filled from
+  promoted exact data, and the `OUTSIDE_DEFINITIONS` list is explicit.
+  Meaning: the statement is defined well enough to be tested for
+  refutation. Nothing more.
+- `OPEN_AFTER_ROW_SURVEY`: some needed quantity is missing, not exact, or
+  has no single source; the list of gaps is reported.
+
+**Counterexample check** (per direction, PH⇐ and PH⇒):
+
+- `REFUTED_BY_ROW_<row>`: one exact counterexample (Sec. 4). The
+  formulation of Sec. 1 stops at once.
+- `NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`: no counterexample among the promoted
+  rows. **This is not independent evidence for (PH)**: the statement was
+  read off this table, which has three hypercube shapes and one
+  non-hypercube shape (the regular hexagon), and no parallelepiped that is
+  not a hypercube. The verdict is never `CONFIRMED`, and it must be
+  reported in the same sentence as this caveat.
+
+**No outcome of this gate authorizes any later phase.** In particular,
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE` is not a condition for, nor a reason
+to start, any test of refutation; each later phase is chartered on its
+own (Grok, repair 6).
+
+## 6. Exclusions
+
+`s != 2`, `d > 3`, bodies without an admissible isotropic untilted node,
+new lattices, new walks, masses, `V_grp^max`, inhomogeneous or encoded
+walks, uniform gaps, general QCA laws, claims about our universe, any
+physical explanation of the predicate. No novelty claim. No computation of
+any kind in this gate.
+
+## 7. After this gate (not authorized here)
+
+A test that can fail needs its own contract, with a shape or support not
+in the source table. The user's stated first choice (2026-11-03) is the
+hexagon: look for an admissible hexagonal family with exactly
+`c_0 = r_in(C_micro)`. Finding one inside the domain of Sec. 2.2
+(`s = 2`, admissible) would refute (PH⇒); a witness with `s != 2` would be
+outside the domain and would not refute (PH). Not finding one would not
+prove (PH). The user prefers it to the rhombus because the
+hexagonal substrate is already studied and a rhombus without an admissible
+isotropic node would be outside the domain. Its exact scope (larger
+support at `s = 2`, larger `s`, or both) is to be fixed in that contract.
+
+## 8. Deliverables
+
+A report `reports/YYYY-MM-DD--substrate-saturation-phase0.md` with the row
+table of Sec. 3, each entry traced to its single source, the
+`OUTSIDE_DEFINITIONS` list, the audit finding of Sec. 3.5 and the outcomes
+of Sec. 5. Then independent cross-family review (user permission needed to
+send), then a separate promotion decision.
+
+=== DOCUMENT 3: verify_weyl_dirac_gate.py ===
+
+"""Exact, fail-closed checks for the frozen standard Pavia Weyl/Dirac gate."""
+
+import argparse
+import hashlib
+import itertools
+from pathlib import Path
+import platform
+import sys
+
+import sympy as sp
+
+
+ROOT = Path(__file__).resolve().parents[1]
+CONTRACT = ROOT / "reports/2026-09-14--weyl-dirac-gate-contract.md"
+SOURCE = ROOT / "sources/1601.04832v1.pdf"
+SOURCE_SHA256 = "0dbf0a0bea497701e0408ce410d62ca0183a4aa14b4116254d029ff6602f1367"
+IDENTITY = sp.eye(2)
+PAULI = (
+    sp.Matrix([[0, 1], [1, 0]]),
+    sp.Matrix([[0, -sp.I], [sp.I, 0]]),
+    sp.diag(1, -1),
+)
+MASS, HOP = sp.symbols("m n", positive=True)
+CHECKS = []
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def residual(expression):
+    return sp.cancel(sp.expand(expression).subs(HOP**2, 1 - MASS**2))
+
+
+def check_zero(label, expression):
+    entries = list(expression) if isinstance(expression, sp.MatrixBase) else [expression]
+    for entry in entries:
+        remaining = residual(entry)
+        if remaining != 0:
+            raise ValueError(f"{label}: nonzero or unresolved residual {remaining}")
+    CHECKS.append(label)
+
+
+def check_equal(label, actual, expected):
+    if actual != expected:
+        raise ValueError(f"{label}: {actual!r} != {expected!r}")
+    CHECKS.append(label)
+
+
+def laurent_adjoint(matrix, variables):
+    return matrix.H.subs({variable: 1 / variable for variable in variables}, simultaneous=True)
+
+
+def published_symbol(dimension, chirality, variables):
+    cosines = [(variable + 1 / variable) / 2 for variable in variables]
+    sines = [(variable - 1 / variable) / (2 * sp.I) for variable in variables]
+    if dimension == 1:
+        scalar = cosines[0]
+        vector = (0, 0, sines[0])
+    elif dimension == 2:
+        cos_x, cos_y = cosines
+        sin_x, sin_y = sines
+        scalar = cos_x * cos_y
+        vector = (sin_x * cos_y, cos_x * sin_y, sin_x * sin_y)
+    else:
+        cos_x, cos_y, cos_z = cosines
+        sin_x, sin_y, sin_z = sines
+        scalar = cos_x * cos_y * cos_z + chirality * sin_x * sin_y * sin_z
+        vector = (
+            sin_x * cos_y * cos_z - chirality * cos_x * sin_y * sin_z,
+            -chirality * cos_x * sin_y * cos_z - sin_x * cos_y * sin_z,
+            cos_x * cos_y * sin_z - chirality * sin_x * sin_y * cos_z,
+        )
+    matrix = scalar * IDENTITY
+    for component, pauli in zip(vector, PAULI):
+        matrix -= sp.I * component * pauli
+    return matrix.applyfunc(sp.expand), sp.expand(scalar)
+
+
+def rotation_product(dimension, chirality, variables):
+    axes = (2,) if dimension == 1 else tuple(range(dimension))
+    signs = (1, -chirality, 1) if dimension == 3 else (1,) * dimension
+    matrix = IDENTITY
+    for variable, axis, sign in zip(variables, axes, signs):
+        positive = (IDENTITY - sign * PAULI[axis]) / 2
+        negative = (IDENTITY + sign * PAULI[axis]) / 2
+        matrix = matrix * (variable * positive + negative / variable)
+    return matrix.applyfunc(sp.expand)
+
+
+def fourier_support(matrix, variables):
+    shift = sp.prod(variables)
+    coefficients = {}
+    for row in range(matrix.rows):
+        for column in range(matrix.cols):
+            polynomial = sp.Poly(sp.expand(shift * matrix[row, column]), *variables)
+            for powers, coefficient in polynomial.terms():
+                displacement = tuple(1 - power for power in powers)
+                coefficients.setdefault(displacement, sp.zeros(matrix.rows, matrix.cols))
+                coefficients[displacement][row, column] += coefficient
+    return {
+        displacement: coefficient
+        for displacement, coefficient in coefficients.items()
+        if any(sp.expand(entry) != 0 for entry in coefficient)
+    }
+
+
+def hull_geometry(support, dimension):
+    vertices = [sp.Matrix(displacement) / sp.sqrt(dimension) for displacement in support]
+    facets = set()
+    for selected in itertools.combinations(vertices, dimension):
+        differences = sp.Matrix(dimension - 1, dimension, lambda row, column:
+                                selected[row + 1][column] - selected[0][column])
+        normals = differences.nullspace()
+        if len(normals) != 1:
+            continue
+        normal = normals[0]
+        offset = normal.dot(selected[0])
+        if offset == 0:
+            continue
+        normalized = normal / offset
+        distances = [sp.simplify(normalized.dot(vertex) - 1) for vertex in vertices]
+        if all(distance <= 0 for distance in distances):
+            facets.add(tuple(normalized))
+    if not facets:
+        raise ValueError("Hull has no certified facets")
+    inradius = min(sp.simplify(1 / sp.sqrt(sum(value**2 for value in facet)))
+                   for facet in facets)
+    maximum = max(sp.sqrt(vertex.dot(vertex)) for vertex in vertices)
+    return inradius, maximum, len(facets)
+
+
+def spatial_derivative(expression, variable, dimension):
+    return sp.I * variable * sp.diff(expression, variable) / sp.sqrt(dimension)
+
+
+def verify_case(dimension, chirality, transpose):
+    suffix = ("+" if chirality == 1 else "-") if dimension == 3 else ""
+    name = f"d={dimension} {'B' if transpose else 'A'}{suffix}"
+    variables = sp.symbols(f"z0:{dimension}", real=True, nonzero=True)
+    matrix, scalar = published_symbol(dimension, chirality, variables)
+    product = rotation_product(dimension, chirality, variables)
+    if transpose:
+        matrix, product = matrix.T, product.T
+    check_zero(f"{name}: published vs product", matrix - product)
+    adjoint = laurent_adjoint(matrix, variables)
+    check_zero(f"{name}: Weyl unitarity", matrix * adjoint - IDENTITY)
+    check_zero(f"{name}: Weyl quadratic", matrix**2 - 2 * scalar * matrix + IDENTITY)
+    check_zero(f"{name}: scalar trace", sp.trace(matrix) - 2 * scalar)
+    support = fourier_support(matrix, variables)
+    corners = set(itertools.product((-1, 1), repeat=dimension))
+    check_equal(f"{name}: active support", set(support), corners)
+    inradius, maximum, facets = hull_geometry(support, dimension)
+    check_zero(f"{name}: inradius", inradius - 1 / sp.sqrt(dimension))
+    check_zero(f"{name}: maximum support", maximum - 1)
+    check_equal(f"{name}: facets", facets, 2 * dimension)
+    origin = dict.fromkeys(variables, 1)
+    check_zero(f"{name}: zero node", matrix.subs(origin) - IDENTITY)
+    spatial = [sp.I * spatial_derivative(matrix, variable, dimension).subs(origin)
+               for variable in variables]
+    for first, first_variable in enumerate(variables):
+        check_zero(f"{name}: scalar gradient {first}",
+                   spatial_derivative(scalar, first_variable, dimension).subs(origin))
+        for second, second_variable in enumerate(variables):
+            expected = sp.Rational(int(first == second), dimension)
+            check_zero(f"{name}: Clifford {first},{second}",
+                       spatial[first] * spatial[second] + spatial[second] * spatial[first]
+                       - 2 * expected * IDENTITY)
+            hessian = spatial_derivative(
+                spatial_derivative(scalar, first_variable, dimension), second_variable, dimension)
+            check_zero(f"{name}: Hessian {first},{second}", hessian.subs(origin) + expected)
+    speed = sp.sqrt(sp.simplify(sp.trace(spatial[0]**2) / 2))
+    check_zero(f"{name}: massless matching", speed - inradius)
+    dirac = sp.BlockMatrix([[HOP * matrix, sp.I * MASS * IDENTITY],
+                           [sp.I * MASS * IDENTITY, HOP * adjoint]]).as_explicit()
+    if dimension == 1:
+        permutation = (0, 2, 3, 1)
+        reduced = sp.Matrix([[HOP / variables[0], sp.I * MASS],
+                             [sp.I * MASS, HOP * variables[0]]])
+        check_zero(f"{name}: minimal Dirac blocks",
+                   dirac.extract(permutation, permutation) - sp.diag(reduced, reduced))
+    dirac_adjoint = laurent_adjoint(dirac, variables)
+    check_zero(f"{name}: Dirac unitarity", dirac * dirac_adjoint - sp.eye(4))
+    check_zero(f"{name}: Dirac quadratic", dirac**2 - 2 * HOP * scalar * dirac + sp.eye(4))
+    check_zero(f"{name}: Dirac trace", sp.trace(dirac) - 4 * HOP * scalar)
+    sine_part = sp.I * (dirac - dirac_adjoint) / 2
+    check_zero(f"{name}: logarithm algebra",
+               sine_part**2 - (1 - HOP**2 * scalar**2) * sp.eye(4))
+    check_equal(f"{name}: massive support", set(fourier_support(dirac, variables)),
+                corners | {(0,) * dimension})
+    check_equal(f"{name}: massless Dirac support",
+                set(fourier_support(dirac.subs({MASS: 0, HOP: 1}), variables)), corners)
+    check_equal(f"{name}: decoupled support",
+                set(fourier_support(dirac.subs({MASS: 1, HOP: 0}), variables)), {(0,) * dimension})
+    return name, len(support), facets, sp.sstr(inradius), sp.sstr(maximum), sp.sstr(speed)
+
+
+def verify_mass_coefficients():
+    scalar_argument = sp.Symbol("u", real=True)
+    gap = sp.Symbol("M", positive=True)
+    phase = sp.acos(HOP * scalar_argument)
+    prefactor = phase / sp.sqrt(1 - HOP**2 * scalar_argument**2)
+
+    def at_origin(expression):
+        expression = expression.subs(scalar_argument, 1).subs(HOP, sp.sqrt(1 - MASS**2))
+        expression = sp.simplify(expression)
+        return expression.subs(sp.acos(sp.sqrt(1 - MASS**2)), gap)
+
+    hopping = sp.sqrt(1 - MASS**2)
+    ratio = gap * hopping / MASS
+    check_zero("fixed-mass logarithm prefactor", at_origin(prefactor) - gap / MASS)
+    for dimension in (1, 2, 3):
+        speed_squared = sp.Rational(1, dimension)
+        phase_coefficient = at_origin(sp.diff(phase**2, scalar_argument)) * (-speed_squared / 2)
+        check_zero(f"d={dimension}: phase curvature", phase_coefficient - speed_squared * ratio)
+        mass_curvature = MASS * at_origin(sp.diff(prefactor, scalar_argument)) * (-speed_squared / 2)
+        expected_curvature = speed_squared * hopping * (1 - ratio) / (2 * MASS)
+        check_zero(f"d={dimension}: quadratic mass term", mass_curvature - expected_curvature)
+        check_zero(f"d={dimension}: independent H-squared curvature",
+                   speed_squared * ratio**2 + 2 * gap * mass_curvature - phase_coefficient)
+    mass_ratio = ratio.subs(gap, sp.asin(MASS))
+    check_zero("c_H small-mass series", sp.series(mass_ratio, MASS, 0, 6).removeO()
+               - (1 - MASS**2 / 3 - 2 * MASS**4 / 15))
+    check_zero("c_omega2 small-mass series", sp.series(sp.sqrt(mass_ratio), MASS, 0, 6).removeO()
+               - (1 - MASS**2 / 6 - 29 * MASS**4 / 360))
+    check_zero("small-mass ratio limit", sp.limit(mass_ratio, MASS, 0, dir="+") - 1)
+    angle = sp.Symbol("angle", real=True)
+    check_zero("strict-bound derivative identity",
+               sp.diff(sp.sin(angle) - angle * sp.cos(angle), angle) - angle * sp.sin(angle))
+    check_zero("strict-bound zero endpoint", (sp.sin(angle) - angle * sp.cos(angle)).subs(angle, 0))
+
+
+def verify_negative_controls():
+    weyl = sp.diag(-sp.I, sp.I)
+    bad_dirac = sp.BlockMatrix([[sp.Rational(4, 5) * weyl, sp.I * sp.Rational(3, 5) * IDENTITY],
+                               [sp.I * sp.Rational(3, 5) * IDENTITY, sp.Rational(4, 5) * weyl]]).as_explicit()
+    check_equal("negative control: missing dagger detected",
+                bad_dirac * bad_dirac.H != sp.eye(4), True)
+    variables = sp.symbols("z0:3", real=True, nonzero=True)
+    matrix, scalar = published_symbol(3, 1, variables)
+    wrong_scalar = published_symbol(3, -1, variables)[1]
+    check_equal("negative control: reversed phase sign detected",
+                residual(sp.trace(matrix) / 2 - wrong_scalar) != 0, True)
+    momentum = sp.Symbol("momentum", real=True)
+    phase = sp.acos(sp.cos(momentum) / sp.sqrt(2))
+    dispersion_coefficient = sp.simplify(sp.diff(phase**2, momentum, 2).subs(momentum, 0) / 2)
+    hamiltonian_coefficient = sp.simplify((phase / sp.sin(phase)).subs(momentum, 0) / sp.sqrt(2))
+    discrepancy = sp.simplify(dispersion_coefficient - hamiltonian_coefficient**2)
+    check_zero("negative control: exact finite-mass discrepancy",
+               discrepancy - sp.pi * (4 - sp.pi) / 16)
+    check_equal("negative control: missing quadratic mass term detected", discrepancy != 0, True)
+
+
+def verify_vertex_idempotency():
+    """Addendum (2026-09-14): exact non-nilpotency certificate for every
+    d=3 corner coefficient A_h, reusing published_symbol/fourier_support.
+    This is the algebraic input for the strict-asymptotic-body baseline
+    certificate; see reports/2026-09-14--strict-asymptotic-pavia-baseline.md.
+    Governed by no separate contract; it only extracts and checks exact
+    identities already reachable from the frozen d=3 factorization."""
+    positive_generators = {(1, 1, 1), (1, -1, -1), (-1, 1, -1), (-1, -1, 1)}
+    alpha_plus = sp.Rational(1, 4) * (1 - sp.I)
+    alpha_minus = sp.Rational(1, 4) * (1 + sp.I)
+    rows = []
+    for chirality in (1, -1):
+        own, other = (alpha_plus, alpha_minus) if chirality == 1 else (alpha_minus, alpha_plus)
+        for transpose in (False, True):
+            suffix = "+" if chirality == 1 else "-"
+            name = f"d=3 {'B' if transpose else 'A'}{suffix}"
+            variables = sp.symbols("z0:3", real=True, nonzero=True)
+            matrix, _ = published_symbol(3, chirality, variables)
+            if transpose:
+                matrix = matrix.T
+            support = fourier_support(matrix, variables)
+            for h in sorted(support):
+                coefficient = support[h]
+                expected = own if h in positive_generators else other
+                check_zero(f"{name}: vertex {h} rank-one (det A_h=0)", coefficient.det())
+                check_zero(f"{name}: vertex {h} trace A_h={sp.nsimplify(expected)}",
+                           sp.trace(coefficient) - expected)
+                check_zero(f"{name}: vertex {h} A_h^2=alpha*A_h",
+                           coefficient * coefficient - expected * coefficient)
+                check_equal(f"{name}: vertex {h} nonzero eigenvalue alpha", expected != 0, True)
+                rows.append((name, str(h), sp.sstr(expected)))
+    return rows
+
+
+def run():
+    CHECKS.clear()
+    check_equal("source PDF SHA256", digest(SOURCE), SOURCE_SHA256)
+    rows = []
+    for dimension in (1, 2, 3):
+        chiralities = (1, -1) if dimension == 3 else (0,)
+        transposes = (False,) if dimension == 1 else (False, True)
+        for chirality, transpose in itertools.product(chiralities, transposes):
+            rows.append(verify_case(dimension, chirality, transpose))
+    verify_mass_coefficients()
+    verify_negative_controls()
+    vertex_rows = verify_vertex_idempotency()
+    lines = [
+        "# Weyl/Dirac exact verification record", "",
+        f"Result: PASS — {len(CHECKS)} exact checks; zero tolerance; seven Weyl symbols and their Dirac couplings.",
+        "", "This is a local verification record, not a canonical status update.", "",
+        f"Python: {platform.python_version()}; SymPy: {sp.__version__}.", "",
+        "| Case | Weyl neighbors | Facets | r_in | V_causal^max | c_0 |",
+        "| --- | ---: | ---: | --- | --- | --- |",
+    ]
+    lines.extend("| " + " | ".join(map(str, row)) + " |" for row in rows)
+    lines.extend([
+        "", "For each row and 0<m<1: M=asin(m), F=M*sqrt(1-m^2)/m;",
+        "c_H=c_0*F and c_omega2=c_0*sqrt(F). Analytically 0<F<1.",
+        "At m=0 both equal r_in (EXACT); at fixed 0<m<1 both equalities",
+        "with r_in are FALSE; matching as m tends to zero is ASYMPTOTIC.",
+        "", "At m=1 active support is {0}; all spatial coefficients and its inradius",
+        "are zero. The limiting ratio to the nonzero-mass substrate inradius is not",
+        "an inradius ratio for that collapsed active body.", "",
+        "Negative controls: missing dagger, reversed phase sign, omitted quadratic mass term detected.",
+        "Interval proof, continuum scaling and convention limits: see the analytic report.", "",
+        "## Addendum: d=3 vertex non-nilpotency certificate (2026-09-14)", "",
+        "For every one-step corner h in {-1,1}^3/sqrt(3) and every d=3 case,",
+        "det(A_h)=0 and A_h^2=alpha*A_h with alpha in {(1-i)/4,(1+i)/4}, alpha!=0",
+        "(exact). Hence each A_h is rank-one and not nilpotent, so",
+        "A_h^n=alpha^(n-1)*A_h != 0 for every n>=1. See",
+        "reports/2026-09-14--strict-asymptotic-pavia-baseline.md for the",
+        "convexity argument that turns this into C_infty^strict=C_micro for this",
+        "baseline. Baseline-specific; not a claim about other admissible symbols.",
+        "", "| Case | Vertex h | alpha |", "| --- | --- | ---: |",
+    ])
+    lines.extend(f"| {name} | {h} | {alpha} |" for name, h, alpha in vertex_rows)
+    lines.extend([
+        "",
+        "## Provenance", "",
+        f"- Script SHA256: `{digest(Path(__file__))}`",
+        f"- Contract SHA256: `{digest(CONTRACT)}`",
+        f"- 1601.04832v1 PDF SHA256: `{digest(SOURCE)}`",
+        "- Weyl input: https://arxiv.org/abs/1601.04832v1, equations (15)-(17).",
+        "- Dirac dagger cross-check: https://arxiv.org/html/1601.04842v1#S2.E9.",
+        "- Baseline: 44ad178; fixed cases and semantics are specified by the contract.",
+        "",
+    ])
+    return "\n".join(lines)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, help="Write the record only after all checks pass.")
+    arguments = parser.parse_args()
+    try:
+        record = run()
+    except (ValueError, OSError) as error:
+        print(f"FAIL: {error}", file=sys.stderr)
+        return 1
+    if arguments.output:
+        arguments.output.write_text(record, encoding="utf-8")
+        print(f"PASS: {len(CHECKS)} exact checks; wrote {arguments.output}")
+    else:
+        print(record, end="")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+=== DOCUMENT 4: extractos.md ===
+
+# Extractos literales con numeración de línea original (preparado 2026-11-04, base 78eb306)
+
+## state/CURRENT_STATE.md, l. 462–537 (Sec. 5)
+```
+462: ## 5. Completed standard Weyl/Dirac exact gate
+463: 
+464: **Status: PASS — 247 exact checks, zero tolerance, specific negative controls.**
+465: 
+466: Evidence is the committed
+467: [contract](../reports/2026-09-14--weyl-dirac-gate-contract.md),
+468: [analytic derivation](../reports/2026-09-14--weyl-dirac-exact-gate.md),
+469: [verification record](../reports/2026-09-14--weyl-dirac-verification.md), and
+470: [permanent verifier](../scripts/verify_weyl_dirac_gate.py) at `2c7c2c9`.
+471: Source provenance and the published sign/dagger issues are recorded there.
+472: The analytic proof establishes the open mass interval and continuum scaling;
+473: the check count alone is not their justification or a formal proof certificate.
+474: 
+475: ### Declared family and coordinates
+476: 
+477: The cases are d=1 A; d=2 A, B; d=3 A+, B+, A-, B-, with the standard d=2
+478: on-site rotation parameter fixed to zero. The d=1 Dirac reduction also covers
+479: the minimal two-component blocks. The seven symbols are not seven independent
+480: geometries: transposes/chiralities within a dimension share support, inradius
+481: and linear speed. There are three dimension-specific geometries in this battery.
+482: 
+483: Use Cartesian Euclidean coordinates dual to unit-length neighbors and one
+484: complete update per time unit:
+485: 
+486: `N_d = {(+/-1, ..., +/-1)/sqrt(d)}`,
+487: 
+488: `C_micro = [-1/sqrt(d), 1/sqrt(d)]^d`,
+489: 
+490: `r_in = 1/sqrt(d)`, `V_causal^max = 1`.
+491: 
+492: ### Massless equality
+493: 
+494: For d=1,2,3 in this family, at the declared zero node,
+495: 
+496: `m = 0: c_0 = r_in = 1/sqrt(d)` — **EXACT**.
+497: 
+498: This is equality of the linear IR coefficient, not exact finite-momentum
+499: relativistic dispersion or a theorem about every admissible symbol.
+500: 
+501: ### Fixed nonzero lattice mass
+502: 
+503: For `U_k = [[n A_k, i m I], [i m I, n A_k^†]]`,
+504: `0 < m < 1`, `n = sqrt(1-m^2)`, use `U = exp(-i H)` and the logarithm branch
+505: continuous from the identity near the massless zero node. Then
+506: 
+507: `cos ω_D(k) = n cos θ(k)`, `M = ω_D(0) = arcsin(m)`,
+508: 
+509: `F(m) = arcsin(m) sqrt(1-m^2) / m = M cot M`, with `0 < F < 1`,
+510: 
+511: `c_H = r_in F < c_{ω^2} = r_in sqrt(F) < r_in` — **EXACT**.
+512: 
+513: Exact finite-mass B* is refuted in the standard family under either extraction.
+514: This result is no longer PRELIMINARY.
+515: 
+516: The quadratic mass-direction Hamiltonian term `b |k|^2 β` reconciles the two
+517: expansions: `b = r_in^2 n (1-F)/(2m)` and
+518: `c_H^2 + 2 M b = c_{ω^2}^2`. Their discrepancy is a lattice correction,
+519: not a failure of the exact spectrum or an inconsistent calculation.
+520: 
+521: The endpoint m=1 is separate: actual hopping vanishes, active support becomes
+522: `{0}`, and its inradius and spatial coefficients are zero. It is not covered
+523: by the strict inequalities for `0 < m < 1`.
+524: 
+525: ### Small-mass / continuum matching
+526: 
+527: For each standard coupling in d=1,2,3,
+528: 
+529: `lim_{m -> 0+} c_H(m) = lim_{m -> 0+} c_{ω^2}(m) = r_in`.
+530: 
+531: **VERIFIED FOR STANDARD DIRAC COUPLINGS.** Matching is asymptotic in m;
+532: the equality of the limits is established analytically. The joint scaling
+533: of momentum, dimensionless mass, neighbor length and time step is specified
+534: in the report. Its continuum statement is local at fixed rescaled momentum
+535: and mass, not a full propagator convergence theorem on arbitrary states.
+536: 
+537: ## 6. Current scientific interpretation
+```
+
+## reports/2026-11-01--c-across-lattices.md, l. 100–160 y l. 230–240
+```
+100: unaffected.
+101: 
+102: ## 3. Step sets: what the substrates actually are (Part 1)
+103: 
+104: | Row | Source label | Composite `F` (source units) | Substrate |
+105: | --- | --- | --- | --- |
+106: | L5a | BCC, axis product (FS Eqs. (20)–(21)) | the 8 points `{±1}^3` | BCC, same as L3 |
+107: | L5b | BCC, axis product (MB Eqs. (23), (33)), s=4 | `{±1}^3` | BCC, same as L3 |
+108: | L6a | honeycomb (ADMP Eq. (7)/(10)) | `0` and the hexagon `{±2u_i}`, radius 2 | triangular lattice, hexagonal `C_micro` |
+109: | L6c | equilateral triangular, six-step (JDW Eq. (2)) | 19 points: the full hexagonal ball of radius 2 | same hexagonal `C_micro` as L6a, finer group (index 1 vs 4) |
+110: | L6d | equilateral triangular, three-step (JDW Eq. (4)) | identical to L6a | **identical substrate to L6a** |
+111: | L6e | isosceles triangular (JDW Eq. (6)) | the 4 points `(±1,±1)` | **square lattice with diagonal steps, same as L2** |
+112: | L6f | honeycomb (JDW Eqs. (7)–(8)) | `0` and a hexagon of radius `sqrt3`, rotated 30° | triangular lattice, hexagonal `C_micro` (L6a up to rotation and scale) |
+113: | L6b | triangular (ADMP Eq. (12)) | **not encoded** | edge geometry fixed only by Fig. 1 of the source |
+114: 
+115: No "honeycomb" walk in the declared sources acts on a honeycomb Bravais
+116: structure: as homogeneous walks they move on a triangular lattice. The JDW
+117: "isosceles" walk is on the standard square substrate. In two dimensions the
+118: declared rows realise **two `C_micro` shapes** up to isometry and scale,
+119: square and hexagonal. Counting the translation group as well, there are
+120: three: square (L2, L6e); hexagon with step spacing equal to the hull radius
+121: (L6a, L6d, L6f); and the same hexagon over the finer triangular group of
+122: L6c (spacing/radius `1/2`, a scale invariant).
+123: 
+124: **Source sign issues (ADMP 1803.01015v2 p.3), certified as recorded
+125: issues, not repaired silently:** (i) Eq. (8) holds for
+126: `alpha = -arccos(sqrt5/3)`, not the printed `+arccos(sqrt5/3)`; (ii) with the
+127: printed `S = e^{i pi/3} R_z(2 pi/3)`, `U_0 S` yields `tau_2`, not `tau_1`;
+128: with `S^{-1}` the relations hold and the Eq. (10) symbol equals
+129: `U_0 (Eq. (7) symbol) U_0^dag` exactly. L6a is built from the `tau_i` of
+130: Eq. (5), which conditions C1–C2 define and the script verifies. Neither
+131: issue changes `F` or `c_0`.
+132: 
+133: ## 4. Massless table (Part 2)
+134: 
+135: Units: longest step 1, one update per time unit. `V_causal^max = 1` in
+136: every row by this normalisation. All entries exact.
+137: 
+138: | Row | Substrate | s | `r_in` | `c_0` | `c_0 / r_in` | `c_strict^iso` | `S_min = c_0` | Status |
+139: | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+140: | L1 | line | 2 | 1 | 1 | **1** | 1 | 1 | computed here |
+141: | L2 | square | 2 | `1/sqrt2` | `1/sqrt2` | **1** | `1/sqrt2` | `1/sqrt2` | `C_infty^strict` new here; `c_0` from Sec. 5 |
+142: | L6e | square | 2 | `1/sqrt2` | `1/sqrt2` | **1** | `1/sqrt2` | `1/sqrt2` | new |
+143: | L3 | BCC | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | CURRENT_STATE Secs. 4, 5 (certified) |
+144: | L5a | BCC | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | new |
+145: | L5b | BCC | 4 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | new |
+146: | L3s4 | BCC | 4 | `1/sqrt3` | `a/sqrt3`, `0<a<1` | **a** | `1/sqrt3` | `a/sqrt3` | CURRENT_STATE Sec. 4.1 (reviewed) |
+147: | L4 | cube `[-1,1]^3` | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | CURRENT_STATE Sec. 8 (CJWW (5.12), (5.15)) |
+148: | L6a | hexagon | 2 | `sqrt3/2` | `1/2` | **`1/sqrt3` ≈ 0.577** | `sqrt3/2` | `1/2` | new |
+149: | L6c | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2` ≈ 0.866** | `sqrt3/2` | `3/4` | new |
+150: | L6d | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2`** | `sqrt3/2` | `3/4` | new |
+151: | L6f | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2`** | `sqrt3/2` | `3/4` | new |
+152: | L6b | — | 2 | — | — | — | — | — | OPEN (not encoded) |
+153: 
+154: For every computed row the script certifies: `U(0) = I` (node at `k=0`),
+155: Hermitian linear generators, zero tilt, an isotropic untilted cone
+156: (`{T_a, T_b} = 2 c_0^2 delta_ab`), the exact facets and vertices of
+157: `C_micro`, and that every vertex Fourier coefficient is non-nilpotent. A
+158: vertex `v` of `conv F` is reached in `n` updates only by repeating `v`, so
+159: the coefficient of `n v` in `U^n` is `A_v^n != 0` for all `n`; hence
+160: `C_infty^strict = C_micro` and `c_strict^iso = r_in` exactly in those rows.
+230: 
+231: ## 6. Hypotheses (contract Sec. 5)
+232: 
+233: | Hypothesis | Verdict |
+234: | --- | --- |
+235: | Ha: `c_0 = r_in` in every declared s=2 row with a massless node | **`REFUTED_BY_ROW_L6a`** (also L6c, L6d, L6f). Holds in L1, L2, L5a, L6e and the recorded L3, L4. |
+236: | Hb: `c_strict^iso = r_in` in every declared row | **OPEN**: holds in every decided row (all computed and recorded rows); L6b undecided. The token `CONFIRMED_IN_DECLARED_ROWS` is not used because a declared row is OPEN. |
+237: | Hc: no declared row with `c_0 > c_strict^iso` | **OPEN**: holds in every decided row (asserted by the script for the computed rows; L3, L3s4, L4 from their records); L6b undecided. |
+238: 
+239: ## 7. What this does not establish
+240: 
+```
+
+## reports/2026-09-14--weyl-dirac-exact-gate.md, l. 120–145 (el «exact-gate report» que cita la auditoría)
+```
+120: \(u^2+|\mathbf v|^2=1\). Its characteristic polynomial is
+121: \(\lambda^2-2u\lambda+1\). Hence its eigenvalues are
+122: \(e^{\pm i\theta}\), \(\theta=\arccos u\), near the zero node. In d=1 one
+123: may instead follow signed branches \(\pm k\); the positive phase is locally
+124: \(|k|\). This distinction does not affect the speed coefficient.
+125: 
+126: The products give \(u=\cos k\) in d=1, \(u=\cos q_x\cos q_y\) in d=2, and
+127: \(u=\cos q_x\cos q_y\cos q_z\pm\sin q_x\sin q_y\sin q_z\) for A±.
+128: The sign is fixed by \(u=\operatorname{tr}W/2\), not an independent phase choice.
+129: 
+130: For all seven cases,
+131: 
+132: \[
+133: u=1-\frac{|\mathbf k|^2}{2d}+O(|\mathbf k|^3),\quad
+134: H_W=i\log W=\frac{\theta}{\sin\theta}\sigma\cdot\mathbf v
+135: =\frac1{\sqrt d}\sum_j\Sigma_j k_j+O(|\mathbf k|^2),
+136: \]
+137: 
+138: where \(\{\Sigma_i,\Sigma_j\}=2\delta_{ij}I\). Some symbols reflect a Pauli
+139: axis; replacing that reflection silently by an identical matrix would be
+140: incorrect, but its speed is unchanged. The displayed remainder is sufficient
+141: in all dimensions; d=1,2 have no cubic scalar term. It follows that
+142: \(\theta=c_0|\mathbf k|+O(|\mathbf k|^2)\), \(c_0=1/\sqrt d=r_d\).
+143: This is an exact coefficient, not an exactly linear finite-momentum dispersion.
+144: 
+145: ## 5. Fixed-mass Dirac logarithm
+```

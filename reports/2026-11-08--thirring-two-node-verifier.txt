@@ -1,0 +1,244 @@
+Checks: 228/228
+Python 3.12.3, NumPy 2.4.4
+Contract commit: fd1ef6c; deterministic, no random seed
+All errors are floating-point diagnostics, not interval certificates.
+Max two-packet map error: 1.3614747679188153e-15
+Max antisymmetric map error: 6.5930447325056069e-16
+Max three-packet map error: 1.5223134176790111e-15
+Max closed-code leakage: 2.2508339375985591e-30
+Incomplete-crossing leakage: 0.46874999999999983
+H witness maximum fidelity: 0.49999999999999978
+Categories: {'finite_numerical_contrast': 222, 'illustration_not_no_go_test': 6}
+H overlaps are reference arithmetic; no QCA implementation of H was executed.
+Monomial word and ancilla: one illustrative example each, not universal quantifiers.
+Exact closure and no-go rely on the report's algebra, not the check count.
+Antisymmetric propagation: TWO fermions. Three packets: labeled trajectories only.
+Incomplete-crossing leakage: worst input for M=4,T=17,chi=pi/2 only; no maximization over parameters.
+PASS [finite_numerical_contrast] gram:(-4, 4):1: 8.8818e-16
+PASS [finite_numerical_contrast] two-packet-map:M=1:chi=0.0: 4.4409e-16
+PASS [finite_numerical_contrast] two-packet-leak:M=1:chi=0.0: 1.9722e-31
+PASS [finite_numerical_contrast] two-packet-unitarity:M=1:chi=0.0: 1.7764e-15
+PASS [finite_numerical_contrast] concurrence:M=1:chi=0.0: 2.4652e-32
+PASS [finite_numerical_contrast] gram:(-4, 4):1: 8.8818e-16
+PASS [finite_numerical_contrast] two-packet-map:M=1:chi=0.7: 5.1761e-16
+PASS [finite_numerical_contrast] two-packet-leak:M=1:chi=0.7: 1.981e-31
+PASS [finite_numerical_contrast] two-packet-unitarity:M=1:chi=0.7: 1.5616e-15
+PASS [finite_numerical_contrast] concurrence:M=1:chi=0.7: 4.4409e-16
+PASS [finite_numerical_contrast] gram:(-4, 4):1: 8.8818e-16
+PASS [finite_numerical_contrast] two-packet-map:M=1:chi=1.5707963267948966: 4.4479e-16
+PASS [finite_numerical_contrast] two-packet-leak:M=1:chi=1.5707963267948966: 2.0285e-31
+PASS [finite_numerical_contrast] two-packet-unitarity:M=1:chi=1.5707963267948966: 1.7798e-15
+PASS [finite_numerical_contrast] concurrence:M=1:chi=1.5707963267948966: 8.8818e-16
+PASS [finite_numerical_contrast] gram:(-4, 4):1: 8.8818e-16
+PASS [finite_numerical_contrast] two-packet-map:M=1:chi=3.141592653589793: 4.4409e-16
+PASS [finite_numerical_contrast] two-packet-leak:M=1:chi=3.141592653589793: 1.9722e-31
+PASS [finite_numerical_contrast] two-packet-unitarity:M=1:chi=3.141592653589793: 1.7764e-15
+PASS [finite_numerical_contrast] concurrence:M=1:chi=3.141592653589793: 9.8608e-32
+PASS [finite_numerical_contrast] gram:(-8, 8):2: 0
+PASS [finite_numerical_contrast] two-packet-map:M=2:chi=0.0: 0
+PASS [finite_numerical_contrast] two-packet-leak:M=2:chi=0.0: 0
+PASS [finite_numerical_contrast] two-packet-unitarity:M=2:chi=0.0: 0
+PASS [finite_numerical_contrast] concurrence:M=2:chi=0.0: 0
+PASS [finite_numerical_contrast] gram:(-8, 8):2: 0
+PASS [finite_numerical_contrast] two-packet-map:M=2:chi=0.7: 1.1796e-16
+PASS [finite_numerical_contrast] two-packet-leak:M=2:chi=0.7: 1.2326e-32
+PASS [finite_numerical_contrast] two-packet-unitarity:M=2:chi=0.7: 2.3681e-16
+PASS [finite_numerical_contrast] concurrence:M=2:chi=0.7: 1.1102e-16
+PASS [finite_numerical_contrast] gram:(-8, 8):2: 0
+PASS [finite_numerical_contrast] two-packet-map:M=2:chi=1.5707963267948966: 6.9389e-17
+PASS [finite_numerical_contrast] two-packet-leak:M=2:chi=1.5707963267948966: 4.0172e-33
+PASS [finite_numerical_contrast] two-packet-unitarity:M=2:chi=1.5707963267948966: 3.9252e-17
+PASS [finite_numerical_contrast] concurrence:M=2:chi=1.5707963267948966: 0
+PASS [finite_numerical_contrast] gram:(-8, 8):2: 0
+PASS [finite_numerical_contrast] two-packet-map:M=2:chi=3.141592653589793: 0
+PASS [finite_numerical_contrast] two-packet-leak:M=2:chi=3.141592653589793: 0
+PASS [finite_numerical_contrast] two-packet-unitarity:M=2:chi=3.141592653589793: 1.4998e-32
+PASS [finite_numerical_contrast] concurrence:M=2:chi=3.141592653589793: 0
+PASS [finite_numerical_contrast] gram:(-32, 32):8: 0
+PASS [finite_numerical_contrast] two-packet-map:M=8:chi=0.0: 0
+PASS [finite_numerical_contrast] two-packet-leak:M=8:chi=0.0: 0
+PASS [finite_numerical_contrast] two-packet-unitarity:M=8:chi=0.0: 0
+PASS [finite_numerical_contrast] concurrence:M=8:chi=0.0: 0
+PASS [finite_numerical_contrast] gram:(-32, 32):8: 0
+PASS [finite_numerical_contrast] two-packet-map:M=8:chi=0.7: 1.0275e-15
+PASS [finite_numerical_contrast] two-packet-leak:M=8:chi=0.7: 1.0477e-30
+PASS [finite_numerical_contrast] two-packet-unitarity:M=8:chi=0.7: 1.5711e-15
+PASS [finite_numerical_contrast] concurrence:M=8:chi=0.7: 3.3307e-16
+PASS [finite_numerical_contrast] gram:(-32, 32):8: 0
+PASS [finite_numerical_contrast] two-packet-map:M=8:chi=1.5707963267948966: 5.7335e-17
+PASS [finite_numerical_contrast] two-packet-leak:M=8:chi=1.5707963267948966: 3.8058e-33
+PASS [finite_numerical_contrast] two-packet-unitarity:M=8:chi=1.5707963267948966: 2.4533e-18
+PASS [finite_numerical_contrast] concurrence:M=8:chi=1.5707963267948966: 0
+PASS [finite_numerical_contrast] gram:(-32, 32):8: 0
+PASS [finite_numerical_contrast] two-packet-map:M=8:chi=3.141592653589793: 1.2557e-31
+PASS [finite_numerical_contrast] two-packet-leak:M=8:chi=3.141592653589793: 1.5194e-62
+PASS [finite_numerical_contrast] two-packet-unitarity:M=8:chi=3.141592653589793: 1.4998e-32
+PASS [finite_numerical_contrast] concurrence:M=8:chi=3.141592653589793: 1.2326e-31
+PASS [finite_numerical_contrast] gram:(-128, 128):32: 0
+PASS [finite_numerical_contrast] two-packet-map:M=32:chi=0.0: 0
+PASS [finite_numerical_contrast] two-packet-leak:M=32:chi=0.0: 0
+PASS [finite_numerical_contrast] two-packet-unitarity:M=32:chi=0.0: 0
+PASS [finite_numerical_contrast] concurrence:M=32:chi=0.0: 0
+PASS [finite_numerical_contrast] gram:(-128, 128):32: 0
+PASS [finite_numerical_contrast] two-packet-map:M=32:chi=0.7: 1.3615e-15
+PASS [finite_numerical_contrast] two-packet-leak:M=32:chi=0.7: 1.9681e-30
+PASS [finite_numerical_contrast] two-packet-unitarity:M=32:chi=0.7: 4.9654e-15
+PASS [finite_numerical_contrast] concurrence:M=32:chi=0.7: 1.4433e-15
+PASS [finite_numerical_contrast] gram:(-128, 128):32: 0
+PASS [finite_numerical_contrast] two-packet-map:M=32:chi=1.5707963267948966: 5.5625e-17
+PASS [finite_numerical_contrast] two-packet-leak:M=32:chi=1.5707963267948966: 3.7529e-33
+PASS [finite_numerical_contrast] two-packet-unitarity:M=32:chi=1.5707963267948966: 1.5333e-19
+PASS [finite_numerical_contrast] concurrence:M=32:chi=1.5707963267948966: 0
+PASS [finite_numerical_contrast] gram:(-128, 128):32: 0
+PASS [finite_numerical_contrast] two-packet-map:M=32:chi=3.141592653589793: 1.4815e-31
+PASS [finite_numerical_contrast] two-packet-leak:M=32:chi=3.141592653589793: 2.1878e-62
+PASS [finite_numerical_contrast] two-packet-unitarity:M=32:chi=3.141592653589793: 1.4998e-32
+PASS [finite_numerical_contrast] concurrence:M=32:chi=3.141592653589793: 1.4791e-31
+PASS [finite_numerical_contrast] gram:(-16, 16):4: 2.2248e-16
+PASS [finite_numerical_contrast] partial-crossing-is-not-a-closed-gate: 0
+PASS [finite_numerical_contrast] partial-crossing-still-preserves-parity:0: 0
+PASS [finite_numerical_contrast] partial-crossing-still-preserves-parity:1: 0
+PASS [finite_numerical_contrast] fermionic-map:M=1:chi=0.0: 4.559e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=1:chi=0.0: 2.2187e-31
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=1:chi=0.0: 0
+PASS [finite_numerical_contrast] fermionic-map:M=1:chi=0.7: 5.8324e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=1:chi=0.7: 2.35e-31
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=1:chi=0.7: 0
+PASS [finite_numerical_contrast] fermionic-map:M=1:chi=1.5707963267948966: 4.4496e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=1:chi=1.5707963267948966: 2.4964e-31
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=1:chi=1.5707963267948966: 0
+PASS [finite_numerical_contrast] fermionic-map:M=1:chi=3.141592653589793: 4.559e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=1:chi=3.141592653589793: 2.2187e-31
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=1:chi=3.141592653589793: 0
+PASS [finite_numerical_contrast] fermionic-map:M=2:chi=0.0: 1.1662e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=2:chi=0.0: 2.4652e-32
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=2:chi=0.0: 0
+PASS [finite_numerical_contrast] fermionic-map:M=2:chi=0.7: 2.7062e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=2:chi=0.7: 4.6914e-32
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=2:chi=0.7: 0
+PASS [finite_numerical_contrast] fermionic-map:M=2:chi=1.5707963267948966: 1.2413e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=2:chi=1.5707963267948966: 3.4647e-32
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=2:chi=1.5707963267948966: 0
+PASS [finite_numerical_contrast] fermionic-map:M=2:chi=3.141592653589793: 1.1662e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=2:chi=3.141592653589793: 2.4652e-32
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=2:chi=3.141592653589793: 0
+PASS [finite_numerical_contrast] fermionic-map:M=3:chi=0.0: 4.4464e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=3:chi=0.0: 2.2187e-31
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=3:chi=0.0: 0
+PASS [finite_numerical_contrast] fermionic-map:M=3:chi=0.7: 6.593e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=3:chi=0.7: 5.6297e-31
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=3:chi=0.7: 0
+PASS [finite_numerical_contrast] fermionic-map:M=3:chi=1.5707963267948966: 4.996e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=3:chi=1.5707963267948966: 2.7184e-31
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=3:chi=1.5707963267948966: 0
+PASS [finite_numerical_contrast] fermionic-map:M=3:chi=3.141592653589793: 4.4464e-16
+PASS [finite_numerical_contrast] fermionic-leak:M=3:chi=3.141592653589793: 2.2187e-31
+PASS [finite_numerical_contrast] fermionic-antisymmetry:M=3:chi=3.141592653589793: 0
+PASS [finite_numerical_contrast] gram:(-8, 0, 8):1: 1.8857e-15
+PASS [finite_numerical_contrast] three-packet-composition:M=1:chi=0.0:t=7: 6.8799e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=1:chi=0.0:t=7: 4.4373e-31
+PASS [finite_numerical_contrast] gram:(-8, 0, 8):1: 1.8857e-15
+PASS [finite_numerical_contrast] three-packet-composition:M=1:chi=0.0:t=11: 6.8799e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=1:chi=0.0:t=11: 4.4373e-31
+PASS [finite_numerical_contrast] gram:(-8, 0, 8):1: 1.8857e-15
+PASS [finite_numerical_contrast] three-packet-composition:M=1:chi=0.7:t=7: 6.5226e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=1:chi=0.7:t=7: 3.5886e-31
+PASS [finite_numerical_contrast] gram:(-8, 0, 8):1: 1.8857e-15
+PASS [finite_numerical_contrast] three-packet-composition:M=1:chi=0.7:t=11: 6.7223e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=1:chi=0.7:t=11: 3.1121e-31
+PASS [finite_numerical_contrast] gram:(-8, 0, 8):1: 1.8857e-15
+PASS [finite_numerical_contrast] three-packet-composition:M=1:chi=1.5707963267948966:t=7: 4.8779e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=1:chi=1.5707963267948966:t=7: 2.4724e-31
+PASS [finite_numerical_contrast] gram:(-8, 0, 8):1: 1.8857e-15
+PASS [finite_numerical_contrast] three-packet-composition:M=1:chi=1.5707963267948966:t=11: 5.0734e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=1:chi=1.5707963267948966:t=11: 2.5584e-31
+PASS [finite_numerical_contrast] gram:(-8, 0, 8):1: 1.8857e-15
+PASS [finite_numerical_contrast] three-packet-composition:M=1:chi=3.141592653589793:t=7: 6.8799e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=1:chi=3.141592653589793:t=7: 4.4373e-31
+PASS [finite_numerical_contrast] gram:(-8, 0, 8):1: 1.8857e-15
+PASS [finite_numerical_contrast] three-packet-composition:M=1:chi=3.141592653589793:t=11: 6.8799e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=1:chi=3.141592653589793:t=11: 4.4373e-31
+PASS [finite_numerical_contrast] gram:(-16, 0, 16):2: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=2:chi=0.0:t=13: 0
+PASS [finite_numerical_contrast] three-packet-leak:M=2:chi=0.0:t=13: 0
+PASS [finite_numerical_contrast] gram:(-16, 0, 16):2: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=2:chi=0.0:t=21: 0
+PASS [finite_numerical_contrast] three-packet-leak:M=2:chi=0.0:t=21: 0
+PASS [finite_numerical_contrast] gram:(-16, 0, 16):2: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=2:chi=0.7:t=13: 6.2063e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=2:chi=0.7:t=13: 3.5745e-31
+PASS [finite_numerical_contrast] gram:(-16, 0, 16):2: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=2:chi=0.7:t=21: 3.5899e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=2:chi=0.7:t=21: 1.8977e-31
+PASS [finite_numerical_contrast] gram:(-16, 0, 16):2: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=2:chi=1.5707963267948966:t=13: 6.3165e-17
+PASS [finite_numerical_contrast] three-packet-leak:M=2:chi=1.5707963267948966:t=13: 3.9912e-33
+PASS [finite_numerical_contrast] gram:(-16, 0, 16):2: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=2:chi=1.5707963267948966:t=21: 1.1048e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=2:chi=1.5707963267948966:t=21: 1.0487e-32
+PASS [finite_numerical_contrast] gram:(-16, 0, 16):2: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=2:chi=3.141592653589793:t=13: 7.8578e-32
+PASS [finite_numerical_contrast] three-packet-leak:M=2:chi=3.141592653589793:t=13: 5.4748e-63
+PASS [finite_numerical_contrast] gram:(-16, 0, 16):2: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=2:chi=3.141592653589793:t=21: 1.0461e-31
+PASS [finite_numerical_contrast] three-packet-leak:M=2:chi=3.141592653589793:t=21: 1.2306e-62
+PASS [finite_numerical_contrast] gram:(-32, 0, 32):4: 6.3083e-16
+PASS [finite_numerical_contrast] three-packet-composition:M=4:chi=0.0:t=25: 2.4683e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=4:chi=0.0:t=25: 6.5362e-32
+PASS [finite_numerical_contrast] gram:(-32, 0, 32):4: 6.3083e-16
+PASS [finite_numerical_contrast] three-packet-composition:M=4:chi=0.0:t=41: 2.4683e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=4:chi=0.0:t=41: 6.5362e-32
+PASS [finite_numerical_contrast] gram:(-32, 0, 32):4: 6.3083e-16
+PASS [finite_numerical_contrast] three-packet-composition:M=4:chi=0.7:t=25: 5.0681e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=4:chi=0.7:t=25: 2.5586e-31
+PASS [finite_numerical_contrast] gram:(-32, 0, 32):4: 6.3083e-16
+PASS [finite_numerical_contrast] three-packet-composition:M=4:chi=0.7:t=41: 1.2919e-15
+PASS [finite_numerical_contrast] three-packet-leak:M=4:chi=0.7:t=41: 1.5489e-30
+PASS [finite_numerical_contrast] gram:(-32, 0, 32):4: 6.3083e-16
+PASS [finite_numerical_contrast] three-packet-composition:M=4:chi=1.5707963267948966:t=25: 2.4308e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=4:chi=1.5707963267948966:t=25: 7.7851e-32
+PASS [finite_numerical_contrast] gram:(-32, 0, 32):4: 6.3083e-16
+PASS [finite_numerical_contrast] three-packet-composition:M=4:chi=1.5707963267948966:t=41: 2.8809e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=4:chi=1.5707963267948966:t=41: 8.8038e-32
+PASS [finite_numerical_contrast] gram:(-32, 0, 32):4: 6.3083e-16
+PASS [finite_numerical_contrast] three-packet-composition:M=4:chi=3.141592653589793:t=25: 2.4683e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=4:chi=3.141592653589793:t=25: 6.5362e-32
+PASS [finite_numerical_contrast] gram:(-32, 0, 32):4: 6.3083e-16
+PASS [finite_numerical_contrast] three-packet-composition:M=4:chi=3.141592653589793:t=41: 2.4683e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=4:chi=3.141592653589793:t=41: 6.5362e-32
+PASS [finite_numerical_contrast] gram:(-64, 0, 64):8: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=8:chi=0.0:t=49: 0
+PASS [finite_numerical_contrast] three-packet-leak:M=8:chi=0.0:t=49: 0
+PASS [finite_numerical_contrast] gram:(-64, 0, 64):8: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=8:chi=0.0:t=81: 0
+PASS [finite_numerical_contrast] three-packet-leak:M=8:chi=0.0:t=81: 0
+PASS [finite_numerical_contrast] gram:(-64, 0, 64):8: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=8:chi=0.7:t=49: 1.3667e-15
+PASS [finite_numerical_contrast] three-packet-leak:M=8:chi=0.7:t=49: 2.1054e-30
+PASS [finite_numerical_contrast] gram:(-64, 0, 64):8: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=8:chi=0.7:t=81: 1.5223e-15
+PASS [finite_numerical_contrast] three-packet-leak:M=8:chi=0.7:t=81: 2.2508e-30
+PASS [finite_numerical_contrast] gram:(-64, 0, 64):8: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=8:chi=1.5707963267948966:t=49: 5.5511e-17
+PASS [finite_numerical_contrast] three-packet-leak:M=8:chi=1.5707963267948966:t=49: 3.7494e-33
+PASS [finite_numerical_contrast] gram:(-64, 0, 64):8: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=8:chi=1.5707963267948966:t=81: 1.2246e-16
+PASS [finite_numerical_contrast] three-packet-leak:M=8:chi=1.5707963267948966:t=81: 1.4613e-32
+PASS [finite_numerical_contrast] gram:(-64, 0, 64):8: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=8:chi=3.141592653589793:t=49: 1.5099e-31
+PASS [finite_numerical_contrast] three-packet-leak:M=8:chi=3.141592653589793:t=49: 2.188e-62
+PASS [finite_numerical_contrast] gram:(-64, 0, 64):8: 0
+PASS [finite_numerical_contrast] three-packet-composition:M=8:chi=3.141592653589793:t=81: 3.0068e-31
+PASS [finite_numerical_contrast] three-packet-leak:M=8:chi=3.141592653589793:t=81: 8.7614e-62
+PASS [illustration_not_no_go_test] overgrant-monomial-one-entry-per-column: 5.5511e-16
+PASS [illustration_not_no_go_test] overgrant-monomial-one-entry-per-row: 5.5511e-16
+PASS [illustration_not_no_go_test] overgrant-monomial-other-entries-zero: 5.5511e-16
+PASS [illustration_not_no_go_test] H-witness-both-parities-fidelity-one-half: 2.2204e-16
+PASS [illustration_not_no_go_test] ancilla-preserves-definite-data-parity: 2.2204e-16
+PASS [illustration_not_no_go_test] chi-pi-is-minus-product-XX: 1.7319e-16
+PASS [finite_numerical_contrast] two-node-quasienergy-shift: 5.3389e-16
+PASS [finite_numerical_contrast] Fourier-node-shift:M=1: 0
+PASS [finite_numerical_contrast] Fourier-node-shift:M=2: 0
+PASS [finite_numerical_contrast] Fourier-node-shift:M=8: 0
+PASS [finite_numerical_contrast] Fourier-node-shift:M=32: 0
+PASS [finite_numerical_contrast] Fourier-node-shift:M=128: 0

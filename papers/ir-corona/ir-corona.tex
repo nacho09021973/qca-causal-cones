@@ -238,10 +238,21 @@ the closest precursors of the saddle-point analysis of
 Section~\ref{sec:asymptotics}.  In two dimensions, Baryshnikov, Brady,
 Bressler and Pemantle \cite{BBBP} analysed quantum walks through multivariate
 generating functions and determined the limiting profile in the feasible
-region, outside of which the probability is exponentially small.  Analytic
+region, outside of which the probability is exponentially small; the shape
+theorem they prove gives $O(e^{-cn})$ uniformly on compact subsets of the
+complement of the feasible region, and prefactor asymptotics only inside it
+\cite[Thms.~2.2--2.3]{BGPP}.  Analytic
 combinatorics in several variables \cite{ACSV} provides general transfer
 theorems for multivariate coefficient asymptotics, whose standard sharp
-forms assume minimality hypotheses on the critical points.  We do not claim
+forms assume minimality hypotheses on the critical points.  In its
+quantum-walk examples the asymptotics hold uniformly for directions in
+compact subsets of the feasible region, and outside it the conclusion is
+exponential decay \cite[Thm.~12.12 and its proof, Thm.~12.14]{ACSVms}; the
+quadratic-point theory gives asymptotics uniformly over compact subcones of
+the interior of the dual cone and only exponential smallness outside it
+\cite[Thm.~3.7]{BP3}.  Cedzich, Joye, Werner and Werner count two studies of
+the asymptotics outside the propagation region, both of walks on the line
+\cite[Sec.~5.1]{CJWW}, namely \cite{CRT,SunadaTate}.  We do not claim
 that these methods cannot reproduce the present result.  We are not aware of
 a transfer theorem that yields it directly, and we carry out the
 model-specific saddle-point analysis explicitly.
@@ -1478,6 +1489,23 @@ arXiv:quant-ph/0405174.
 T.~Sunada, T.~Tate,
 \emph{Asymptotic behavior of quantum walks on the line},
 J.\ Funct.\ Anal.\ \textbf{262}, 2608--2645 (2012), arXiv:1108.1878.
+
+\bibitem{BGPP}
+A.~Bressler, T.~Greenwood, R.~Pemantle, M.~Petkov\v{s}ek,
+\emph{Quantum random walk on the integer lattice: examples and phenomena},
+arXiv:0903.2967.
+
+\bibitem{BP3}
+Y.~Baryshnikov, R.~Pemantle,
+\emph{Asymptotics of multivariate sequences, part III: quadratic points},
+arXiv:0810.4898.
+
+\bibitem{ACSVms}
+R.~Pemantle, M.~C.~Wilson, S.~Melczer,
+\emph{Analytic Combinatorics in Several Variables}, Expanded Second Edition,
+manuscript, \url{https://ACSVproject.com/PemantleWilsonMelczer23.pdf}
+(theorem numbers as in this manuscript; not compared with the printed
+edition \cite{ACSV}).
 
 \end{thebibliography}
 

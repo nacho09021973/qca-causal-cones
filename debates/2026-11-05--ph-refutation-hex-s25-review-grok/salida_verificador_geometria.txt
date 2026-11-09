@@ -1,0 +1,15 @@
+[PASS] 25 points and 6 vertices
+[PASS] circumradius bound for every point
+[PASS] rotation preserves support
+[PASS] axis 0: extreme layers contain only edge vertices
+[PASS] axis 1: extreme layers contain only edge vertices
+[PASS] axis 2: extreme layers contain only edge vertices
+[PASS] all three complete layer tables
+layer sizes: [2, 1, 1, 2, 1, 2, 2, 3, 2, 2, 1, 2, 1, 1, 2]
+[PASS] singletons remove exactly 18 nonvertex nonzero points
+[PASS] only smaller centered lattice hexagons are S7, S13, S19
+[PASS] smaller hull (1, 0) contains 7 lattice points
+[PASS] smaller hull (1, 1) contains 13 lattice points
+[PASS] smaller hull (2, 0) contains 19 lattice points
+[PASS] mirror vertex orbit is H25 prime
+13/13 checks passed

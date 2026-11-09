@@ -1,0 +1,13 @@
+theory/PH_REFUTATION_HEX_S25_GATE.md
+scripts/verify_ph_refutation_hex_s25_gate.py
+reports/2026-11-04--ph-refutation-hex-s25.md
+debates/2026-11-04--ph-refutation-hex-s25-review-astra/salida_verificador.txt
+scripts/verify_hex_supremum_gate.py
+scripts/verify_hex_supremum_b19.py
+scripts/verify_hex_ceiling_gate.py
+scripts/verify_c_across_lattices_gate.py
+reports/2026-11-03--hex-supremum.md
+reports/2026-11-01--hex-ceiling.md
+theory/HEX_CEILING_GATE.md
+theory/HEX_SUPREMUM_GATE.md
+theory/SUBSTRATE_SATURATION_PHASE0_GATE.md

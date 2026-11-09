@@ -1,0 +1,5 @@
+9/9 exact identities PASS
+K(chi,p)=(1-p+p exp(-i chi))^4
+Centered K=1-2p(1-p)chi^2+O(chi^3)
+p=1/2: K=exp(-2i chi)cos(chi/2)^4
+No long-time pole, linewidth, or velocity correction inferred.

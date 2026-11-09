@@ -1,85 +1,112 @@
 # qca-causal-cones
 
-Finite-range quantum cellular automata, microscopic causal bodies, Bernstein bounds, and the emergence of relativistic propagation speeds.
+Finite-range quantum cellular automata (QCA): can one substrate, with one
+fixed update rule, both compute universally and look relativistic at low
+energy?
 
 ## Project question
 
-The project asks whether a relativistic low-energy propagation speed can be derived from the causal geometry of an underlying finite-range QCA, while keeping distinct three objects that must not be conflated:
+Does a single finite-range QCA, evolving under one fixed local rule, admit
+**both**
 
-1. the microscopic causal body `C_micro`, fixed by locality;
-2. the spectral group-velocity envelope `V_grp^max`, fixed by the bands of a specific automaton;
-3. the relativistic low-energy speed `c_IR`, fixed by the effective field theory.
+1. **universal quantum computation**: an encoding of qubits in its states
+   such that the rule itself, with no external control of its free or
+   interacting parts, implements an entangling gate set that composes into
+   a universal set, with preparation and readout stated explicitly; and
+2. **a relativistic low-energy regime of the same rule**: an effective
+   propagation speed `c_IR` for its low-energy excitations, with the
+   interacting dynamics, not only free envelopes, controlled?
 
-The original strong identification `c_IR = maximum microscopic substrate speed` does **not** survive generically in finite-range lattice QCAs for spatial dimension `d >= 2`. Comparison with the one-step inradius was replaced by `B_infty^*`, which compares the massless speed `c_0` with the strict asymptotic isotropic speed `c_strict^iso` of the same dynamics. Its strong form has an explicit counterexample in a declared four-component class. The open question is which additional structural hypotheses, if any, restore the equality.
+The question is stated per code, per resource set (ancillas, measurement,
+geometry) and per parameter choice. A negative answer for one code is not a
+no-go for the substrate. The working model is the Thirring QCA
+(`sources/1711.03920v1.pdf`, `sources/1804.08508v1.pdf`): a one-dimensional
+Dirac walk with an on-site two-fermion phase, `U = F J`.
 
-## Canonical state
+Two distinctions are kept throughout:
 
-Read [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md) before doing new work. It is the single source of truth for project status, gates, rejected claims, and the next allowed calculation.
+- `C_micro` (causal body fixed by locality), `V_grp^max` (group-velocity
+  envelope) and `c_IR` (low-energy speed) are different objects
+  ([`theory/THREE_VELOCITIES.md`](theory/THREE_VELOCITIES.md)); never write
+  `v_max` unqualified.
+- `c_IR` has units of length per time and an update frequency has units of
+  inverse time. Comparing them needs a spatial scale, a time scale and the
+  relevant dimensionless coefficient.
 
-## Current reading order — 2026-09-28
+## Why the question changed
 
-1. [State and synchronization summary](state/CURRENT_STATE.md#reading-guide-and-synchronization--2026-09-28):
-   accepted scopes, preliminary work, paused fronts, and reconciled local history.
-2. [Flat CJWW manuscript](papers/ir-corona/ir-corona.tex): the model result.
-3. [Independent-use discrimination cost](reports/2026-09-28--iid-message-discrimination-cost.md):
-   supplied preliminary derivation, independent review pending.
-4. [Existing 4B execution](reports/2026-09-25--physical-realization-absolute-scale-gate.md):
-   negative absolute-scale result, with its recorded evidence limitations;
-   terminal closure recorded in `state/CURRENT_STATE.md` Section 8.21.
+The repository started with a narrower question: can `c_IR` be derived from
+the causal geometry of the substrate alone? The answer found is that, in
+general, it cannot (summary below). The coexistence question above is more
+concrete: it names the operations that must be shown, and each can be
+proved or excluded for a declared code.
 
-The immediate task is independent review of the preliminary discrimination-cost
-report before further research.
-The new report does not establish a universal operational boundary at c.
+## Status of the coexistence question
+
+Single source of truth: [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md).
+Roadmap: [`state/ROADMAP_2026-11-09.md`](state/ROADMAP_2026-11-09.md).
+All entries below are for the declared code, rule and parameters only.
+
+| Result | Report | Status |
+| --- | --- | --- |
+| Massless two-node code: a full crossing is an exact entangling gate and completed crossings compose; trajectory parities forbid a universal unitary set in this code | [two-node](reports/2026-11-08--thirring-two-node.md) | PRELIMINARY; Grok review with author repairs; Claude objections O1–O9 open |
+| Massive code: bounded-duration entangling gates closed for the declared code and frame | [massive preflight](reports/2026-11-08--thirring-massive-preflight.md) | PRELIMINARY |
+| M=1 microscopic code: one step is an exact maximally entangling gate `diag(1,i,i,1)` | [growing time](reports/2026-11-08--thirring-growing-time.md) | PRELIMINARY |
+| A second consecutive contact leaks (worst leakage 288/625); finite identities checked in Lean | [two contacts](reports/2026-11-08--thirring-two-contacts.md) | PRELIMINARY |
+| No exact recovery of the code at any later time `T >= 2` | [exact recovery](reports/2026-11-08--thirring-exact-recovery.md) | PRELIMINARY; Claude review «se sostiene» |
+| No approximate recovery at growing times: a two-particle bound state keeps leakage of input 00 above `c > 0` | [approximate recovery](reports/2026-11-09--thirring-approximate-recovery.md) | **PROMOTED** 2026-11-09 (Grok review) |
+| Vacuum one-particle sector of a density-collision QCA is exactly free at every coupling | [vacuum sector](reports/2026-11-06--interaction-vacuum-sector.md) | PRELIMINARY |
+
+Read together: the fixed rule produces an exact entangling gate once, but in
+the codes tested so far it neither keeps the code closed under repeated
+contacts nor yields a universal set. Free nodal envelopes have
+`c_IR = a/tau`. No interacting relativistic limit has been established.
+Open: other codes, ancillas or measurement, composition with controlled
+error, and the low-energy regime of the interacting rule.
+
+## Results inherited from the original question
+
+- **Standard Weyl/Dirac gate: PASS** (d=1,2,3; seven standard symbols).
+  Massless and continuum inradius matching hold; exact finite-mass matching
+  fails for both `c_H` and `c_{ω^2}`.
+  [Promotion record](reports/2026-09-14--standard-gate-promotion.md).
+- **Strong `B_infty^*` rejected in the declared s=4 class**
+  ([counterexample](theory/S4_STRICT_CONE_COUNTEREXAMPLE.md)); the Pavia
+  s=2, d=3 equality `c_0 = c_strict^iso = 1/sqrt(3)` remains certified.
+- **s=4 tetrahedral shift** (promoted 2026-11-09):
+  [any U(4) coin](reports/2026-11-06--s4-general-coin-viability.md) gives
+  `c = 1/3` for an untilted isotropic node at `k=0`, and an
+  [explicit cyclic-symmetric realization](reports/2026-11-06--s4-cyclic-realization.md)
+  has two such cones.
+- Paper on the IR corona: [`papers/ir-corona/ir-corona.tex`](papers/ir-corona/ir-corona.tex),
+  with its Theorem 4.1 formalized in Lean 4 ([`formal/`](formal/README.md)).
+- Bernstein's inequality and its equality theory are prior art.
+  **NOVELTY remains OPEN** for every result in this repository.
+
+## How to work here
+
+Read `CLAUDE.md`, `PROJECT_INSTRUCTIONS.md` and `state/CURRENT_STATE.md`
+first. Every result follows the cycle: frozen contract in `theory/`,
+execution in `reports/` with a permanent verifier in `scripts/`, independent
+cross-family review, and a separate promotion commit. No result is promoted
+because it fits the narrative.
+
+```sh
+pip install -r scripts/requirements.txt          # Python 3.12, sympy==1.14.0, numpy==1.26.4
+python3 -B scripts/verify_<gate>.py              # run from the repo root; fails closed
+cd formal && lake exe cache get && lake build   # Lean fragment
+```
+
+[`scripts/README.md`](scripts/README.md) states what each verifier certifies
+and what it does not.
 
 ## Literature library
 
-`biblioteca/` (git-ignored) holds the local PDFs. **Before investigating any question, read
-`biblioteca/INDICE.md`** (one line per PDF, with subject tags;
-`grep -i <topic|keyword> biblioteca/INDICE.md`) and check whether a paper can help. The index
-locates papers, it proves nothing: read the PDF and cite `file.pdf p.N`, otherwise mark the claim
-`[UNVERIFIED]`. Tags marked `proposed` were written by an AI. Regenerate the index with
-`python3 ~/herramientas/biblioteca_catalog/build_catalog.py --repo .` after editing
-`scripts/biblioteca_catalog/curated.csv`.
-
-## Method rule
-
-No result is promoted from exploratory to canonical merely because it fits the current narrative. Every claimed identity must be checked against the exact QCA geometry, exact unitary spectrum, and the appropriate low-energy expansion.
-
-## Verified standard Weyl/Dirac gate
-
-The [execution contract](reports/2026-09-14--weyl-dirac-gate-contract.md),
-[exact derivation](reports/2026-09-14--weyl-dirac-exact-gate.md), and
-[reproducible verification](reports/2026-09-14--weyl-dirac-verification.md)
-cover the seven declared standard symbols in d=1,2,3 and their Dirac couplings.
-**STANDARD WEYL/DIRAC EXACT GATE: PASS.** The evidence baseline is `2c7c2c9`;
-the [promotion record](reports/2026-09-14--standard-gate-promotion.md) explains
-the canonical status change. The original reports retain their historical
-pre-promotion wording and provenance.
-
-Massless and continuum inradius matching are verified for the declared
-standard family; exact finite-mass matching is rejected for both `c_H` and
-`c_{ω^2}`. Generality and inter-species universality remain open. The seven
-symbols share three dimension-specific geometries.
-
-## Status after the s=4 counterexample
-
-The records below originated on `research/b-infinity-post-s4-gate` and are
-present in the September 28 remote main baseline. Their scientific scope
-and evidence levels remain those recorded in `state/CURRENT_STATE.md`.
-
-The [MASSLESS INRADIUS RIGIDITY GATE](theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md)
-is historical. It was completed by an explicit
-[s=4 strict-cone counterexample](theory/S4_STRICT_CONE_COUNTEREXAMPLE.md)
-with an [independent review](reports/2026-09-15--s4-independent-review.md)
-and a [prior-art audit](reports/2026-09-15--s4-family-prior-art-audit.md).
-
-- Strong `B_infty^*` is **REJECTED IN THE DECLARED s=4 CLASS**.
-- The standard Pavia `s=2`, d=3 equality `c_0 = c_strict^iso = 1/sqrt(3)`
-  remains **CERTIFIED** and is not affected.
-- Rigidity in the published minimal `s=2` class, and in stronger classes with
-  additional representation assumptions, remains **OPEN**.
-- **NOVELTY remains OPEN.**
-- This is the historical s=4 summary. Later authorizations and stops are
-  recorded in [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md), Sections 8–10.
-  Use its reading guide before continuing; this documentation update opens
-  no new scientific gate.
+`biblioteca/` (git-ignored) holds the local PDFs. Before investigating a
+question, read `biblioteca/INDICE.md`
+(`grep -i <topic> biblioteca/INDICE.md`). The index locates papers and proves
+nothing: read the PDF and cite `file.pdf p.N`, otherwise mark the claim
+`[UNVERIFIED]`. Tags marked `proposed` were written by an AI. Regenerate with
+`python3 ~/herramientas/biblioteca_catalog/build_catalog.py --repo .` after
+editing `scripts/biblioteca_catalog/curated.csv`. `sources/` holds versioned
+primary PDFs with recorded SHA256.

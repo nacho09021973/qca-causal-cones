@@ -1,0 +1,5 @@
+8/8 exact scaling and boundary identities PASS
+Conditional schedule T=L, M=L^2, delta=L^-12: Strang O(L^-2).
+Uniform second occupation moment -> global cutoff probability O(L^-1).
+Bounded first moment alone does not suppress the CCR boundary defect.
+No moment uniformity, critical tuning or fixed-QCA infrared theorem proved.

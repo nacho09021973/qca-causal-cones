@@ -1,0 +1,8 @@
+reports/2026-11-03--hex-supremum-b19.md
+theory/HEX_SUPREMUM_GATE.md
+scripts/verify_hex_supremum_b19.py
+scripts/data/hex_s19_certificate.json
+reports/2026-11-03--hex-supremum.md
+scripts/verify_hex_supremum_gate.py
+reports/2026-11-01--hex-ceiling.md
+scripts/verify_hex_ceiling_gate.py

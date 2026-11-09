@@ -335,6 +335,41 @@ grevlex Gröbner basis over `C`. Its docstring records the runs (minimal:
 consistent over `C`, 0.5 s; 19-point ball: not finished in 900 s). It
 supports no verdict.
 
+## Hexagonal supremum gate, M1 (2026-11-03)
+
+`verify_hex_supremum_gate.py` certifies Stage A and M1-B13 of
+[`HEX_SUPREMUM`](../theory/HEX_SUPREMUM_GATE.md), preregistered at
+`86573ca`. 12 exact checks: lattice-point counts of the closed hexagons
+S7, S13, S19 (7, 13, 19); in S13 the facet-normal layers lie on the grid
+`r_in/3` and the layers `+-2 delta` are singletons that together are the
+inner ring; a second route (generic coefficients on all 13 points, exact
+solve of the layer equations) forcing every inner-ring coefficient to 0;
+the surviving `{0} U vert` similar to the T2 configuration; in S19 layer
+sizes 3,4,5,4,3 with no intermediate singleton; and a read-only rerun of
+`check_T2_minimal` of the reviewed `verify_hex_ceiling_gate.py` (4/4).
+Does **not** certify: facet-line rigidity and the normal form (hex-ceiling
+report Sec. 3, Steps 1-2), or that the T2 proof is lattice-free (report).
+Nothing for S19 or larger supports. Reviewed 2026-11-03: Grok PASS,
+Gemini PASS (verifier SHA-256 `ef4b0114…`).
+
+`verify_hex_supremum_b19.py` certifies M1-B19 of the same gate (S19).
+Exact: the linear reductions L1 (layer sums, 56 free real parameters),
+L2 (first moments, lemma A3, 28) and L3 (off-diagonal first order, lemma
+A4, 18), all consistent over `QQ(sqrt3)`; controls (the saturating square
+walk satisfies L1-L3, the whole pipeline on the 3x3 square support keeps
+it and all reduced equations vanish; unitarity_equations detects a
+non-unitary perturbation); the reduced system (18 parameters, 730
+quadratics) and an exact infeasibility certificate: rational multipliers
+from `data/hex_s19_certificate.json`, Gram matrix of their combination
+positive definite by exact elimination (19 positive pivots). About 11
+minutes. Does **not** certify the analytic proofs of rigidity, A3, A4 or
+the normal form (report). Not independently reviewed.
+
+`explore_hex_s19_reduced.py` (least squares on the reduced system) and
+`explore_hex_s19_certificate.py` (search for a positive-definite
+combination; wrote `data/hex_s19_certificate.json`) are **exploratory,
+not certificates**; runs recorded in `reports/2026-11-03--hex-supremum-b19.md`.
+
 ## Dispersion corrections gate (2026-11-02)
 
 `verify_dispersion_corrections_gate.py` certifies
@@ -366,3 +401,76 @@ Does **not** certify: `V_grp^max` (OPEN), the scale of validity in
 hypotheses beyond the printed coefficients. The verdicts on Hd, He and Hf
 are drawn in the report from the printed values; the script prints them
 but asserts none. Not independently reviewed.
+
+## Dispersion L3 row gate (2026-11-04)
+
+`verify_dispersion_L3_row_gate.py` certifies
+[`DISPERSION_L3_ROW`](../theory/DISPERSION_L3_ROW_GATE.md), preregistered at
+`d3868fa`, for the [report](../reports/2026-11-04--dispersion-L3-row.md).
+35 exact checks, about 10 s (`python3 -B`, sympy 1.14.0). It imports
+read-only the helpers of `verify_dispersion_corrections_gate.py` and the
+symbols of `verify_weyl_dirac_gate.py` (`published_symbol(3, ±1, ·)` and
+transposes: cases A+, B+, A−, B−), `verify_directional_saturation.py`
+(`walk1`, CJWW (5.12)) and `verify_c_across_lattices_gate.py`
+(`row_L5a`); those files are unchanged. The comparison rows (CJWW (5.12),
+L5a) are recomputed with the parent's own row setup.
+
+Certified per case: unitarity, `det U = 1`, `tr U = 2(ccc + chi sss)`,
+support `{±1}^3`, and the parent's per-row checks (no degree-0/1 terms in
+`omega^2`, `c_0 = 1/sqrt3`, no linear phase). Prints the contract row verdict; hypothesis verdicts print «NOT CERTIFIED» if any check fails. Printed, not asserted: `beta`,
+`alpha`, their cubic projections, `G_walk`, and the verdicts on HL3b–HL3e.
+
+Does **not** certify: `V_grp^max`, the scale of validity, terms beyond
+relative order `t^2`. Reviewed by gpt-6.1-sol (REPAIR_REQUIRED, repairs applied, not re-reviewed).
+
+## PH refutation test on hexagon H25 (2026-11-04)
+
+`verify_ph_refutation_hex_s25_gate.py` certifies
+[`PH_REFUTATION_HEX_S25`](../theory/PH_REFUTATION_HEX_S25_GATE.md),
+preregistered at `6eb50c1`, for the
+[report](../reports/2026-11-04--ph-refutation-hex-s25.md). 14 exact checks,
+about 30 s (`python3 -B`, sympy 1.14.0). Imports read-only
+`verify_hex_supremum_gate.py`, `verify_hex_supremum_b19.py` and, through
+them, `verify_hex_ceiling_gate.py`; those files are unchanged.
+
+Certified: H25 (vertex `2 g1 + g2`) has 25 points, 6 vertices, no lattice
+point inside an edge; layers on the grid `r_in/7`; the singleton
+intermediate layers are exactly the 18 non-vertex, non-origin points (and
+by a second, non-independent route, the exact layer-equation solve forces
+them to 0); the same directly on H25′; the surviving support rotates onto
+the T2 configuration, whose reviewed check is rerun (4/4); the M1-B19
+square controls are rerun (5/5).
+
+Does **not** certify: facet-line rigidity, lemma A1, the normal form, or
+the lattice-freeness of the T2 proof (reports). No nonlinear solver.
+Review: local cross-family review by Codex (OpenAI), not blind, PASS,
+2026-11-05 (`debates/2026-11-05--ph-refutation-hex-s25-review-codex-local/`);
+promotion pending. The sealed Astra attempt has no verdict.
+
+`verify_hex_s25_review.py` (review-side supplement, author Codex, SHA-256
+`010fa7fb…6ac09b7a`). 13 exact checks, pure integer arithmetic, no project
+imports. Recomputes the H25 support (25 points, 6 vertices, exhaustive
+enumeration of `[-3,3]^2` justified by `a^2+ab+b^2 <= 7`), the three layer
+tables, the 18 singleton-forced points, the H25′ mirror orbit, and the
+contract Sec. 2 list of smaller centred lattice hexagons contained in H25
+(exactly S7, S13, S19), which the original verifier does not check.
+Does **not** certify: facet-line rigidity, lemma A1, the T2 theorem or
+its transport to H25. Not itself independently reviewed.
+
+## Aligned hexagons, all m >= 4 (2026-11-05)
+
+`verify_hex_trace_aligned_all_m.py` supports
+[`HEX_TRACE_ALIGNED_ALL_M`](../theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md),
+preregistered at `689fd30`, for the
+[report](../reports/2026-11-05--hex-trace-aligned-all-m.md). 21 exact checks,
+about 2 s. Certified: general-m interpolant and residual factor (symbolic m);
+slice `p = 2q` identities; slice image of invariant residuals (K-point
+constraint, symbolic triangular tops; rank diagnostics m = 3..8 and the m = 3
+control are consistency checks only); inequalities giving the explicit
+bounded slice solution for all m >= 629, with exact instances m = 629, 630,
+1000, a closed-form second route and a negative control.
+Does **not** certify: the divisibility step of the general reduction, any
+bound off the slice, or the all-m question (OPEN). D3a is closed-form moment
+algebra, partly by construction; D2 is the independent Taylor test. Sealed
+OpenAI review REPAIR_REQUIRED (documentary), repairs applied (C2c added);
+re-review pending.

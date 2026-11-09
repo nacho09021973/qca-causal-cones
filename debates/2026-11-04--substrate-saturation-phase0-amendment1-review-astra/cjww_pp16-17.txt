@@ -1,0 +1,110 @@
+16                       C. CEDZICH, A. JOYE, A.H. WERNER, AND R.F. WERNER
+
+
+statements. They give a positive rate function only outside the convex hull of Γ (recall that we
+approximate by half spaces).
+
+
+                              5.4. 3D cones and rate functions
+   Some quantum walks on the three-dimensional cubic lattice were proposed by Bialinycki-Birula [6]
+as discrete approximations to the Weyl, Dirac, and Maxwell equations. The interest in that paper
+is mainly in the continuum limit, and the possible variations of nearest neighbour walks automata
+for which this works. But one can take the discrete model as a system in its own right and analyze
+its propagation properties. Let us consider the simplest of these, the “Weyl equation” model in [6].
+We then have K = C2 , and
+                                 W (p1 , p2 , p3 ) = eip1 σ1 eip2 σ2 eip3 σ3 .                 (5.12)
+
+This gives
+                                                                                    
+                ω± (p) = ±ω(p) = ± arccos cos p1 cos p2 cos p3 − sin p1 sin p2 sin p3 .        (5.13)
+
+A characteristic feature here are conical singularities at p = 0 and eight inequivalent points in the
+Brillouin zone, where p1 , p2 , p3 ∈ πZ, meaning that all cos pi = ±1 and each matrix factor in (5.12)
+is ±1. Expanding the cosine of (5.13) to second order in a small deviation p from such a conical
+point p∨ , we get, for any combination of the signs cos(p∨ k ),
+
+                                ω(p∨ + p)2 = (p21 + p21 + p21 ) + O(p3 )                       (5.14)
+
+This is in keeping with the remarks in Section 2.2 on regular vs. singular points in a dispersion
+relation. Along a straight line through p∨ we can use one-parameter perturbation theory, in which
+we can always choose analytic branches, corresponding to the straight lines in the boundary of the
+cone, but as a function of three parameters ω(p + p∨ ) ≈ ω(p∨ ) ± |p| is not analytic. In the limit
+taken in [6] only small momenta survive, so the propagation is indeed exactly the familiar light cone
+from relativistic physics. However, in this model faster propagation speeds can arise from points at
+a finite distance from the singularities. The overall propagation region is shown in Figure 5.
+
+
+
+
+       Figure 5. Propagation region for the walk (5.12). This convex set is the intersection
+       of three orthogonal cylinders.
+                 EXPONENTIAL TAIL ESTIMATES FOR QUANTUM LATTICE DYNAMICS                             17
+
+
+  To get a spherical propagation region, we consider a modified model, on the same lattice and also
+with K = C2 , and with exactly the same conical points p∨ , namely
+                                       cos p1 cos p2 eip3
+                                                                                        
+                                                              − cos p1 sin p2 + i sin p1
+                W (p1 , p2 , p3 ) =                                                          (5.15)
+                                     cos p1 sin p2 + i sin p1    cos p1 cos p2 e−ip3
+                                                              
+                          ω(p) = arccos cos p1 cos p2 cos p3 .                               (5.16)
+The modulus of the group velocity ∇ω is then given by
+                   sin2 p1 cos2 p2 cos2 p3 + cos2 p1 sin2 p2 cos2 p3 + cos2 p1 cos2 p2 sin2 p3
+           |∇ω|2 =
+                                             1 − cos2 p1 cos2 p2 cos2 p3
+                        (1 − c3 )(1 − c1 c2 ) + c3 (1 − c1 )(1 − c2 )
+                  =1−                                                                            (5.17)
+                                       1 − c1 c2 c3
+where, in the second line we have abbreviated ci = cos2 pi . Since the fraction in the second line
+is manifestly positive, we get |∇ω| ≤ 1. The maximum is reached at the conical points p∨ , where
+c1 = c2 = c3 = 1.
+   In order to compute the rate function we first notice that the analytic continuation of W to
+complex p is still a 2 × 2-matrix with determinant 1, so the trace (equal to 2 cos ω(p)) determines
+the secular equation and hence both eigenvalues. That is, all information we need to evaluate R(λ)
+from (2.9) is contained in the analytic continuation of (5.16).
+   We further reduce the problem by not looking at the full rate function, but a radial version of
+it: I(x) retains some of the lattice symmetry and is certainly not a rotation invariant function.
+As described in the introduction, we are however, mainly interested in an upper bound on the
+probability leakage outside a ball with slightly superluminal speed. We therefore look for a “radial
+rate function” Ie such that I(x) ≥ I(r)
+                                   e if |x| ≥ r. Then the bound (2.6) for the probability outside
+a ball M<r of radius r becomes
+                                              1
+                                    lim sup     log pt (ρ, M≥r ) ≤ −I(r)
+                                                                    e                            (5.18)
+                                     t→∞      t
+which vanishes up to r = 1. The Legendre transform is friendly to the radial reduction: Suppose
+that R(λ) ≤ R(ℓ),
+            e     whenever |λ| ≤ ℓ. Then, for |x| ≥ r,
+                                                           
+                     I(x) = sup sup x · λ − R(λ) ≥ sup sup x · λ − R(ℓ)
+                                                                     e
+                              ℓ>0 |λ|≤ℓ                     ℓ>0 |λ|≤ℓ
+                                                 
+                           = sup |x|ℓ − R(ℓ)
+                                        e    ≥ sup rℓ − R(ℓ)
+                                                        e    =: I(r),
+                                                                e                                (5.19)
+                              ℓ>0                     ℓ>0
+
+which is the Legendre transform of R.e Here the inequality signs were chosen to make Ie and R e
+automatically monotone.
+  This leaves us with the task to compute, for every ℓ ≥ 0 the dual radial rate function
+                        n                                                        o
+             e = sup log |u|2 u ∈ spec W p + iλ for some p, λ ∈ R3 , |λ| ≤ ℓ
+             R(ℓ)                                                                        (5.20)
+                                                    2
+
+Here it is useful to note that the eigenvalues are u = exp(iω) with ω ∈ C determined from (5.16)
+with complex substitution pk 7→ pk + iλk /2, so that log |u|2 = 2|ℑmω|. The absolute value here
+takes care of the maximum over the spectrum (and the sign ambiguity for ω). This makes log |u|2
+straightforward to evaluate for given p, λ.
+   The eigenvalue branches of W are analytic in the complex vector variable (p + iλ/2) except for
+the branch points at p = p∨ , λ = 0. Therefore, by the maximum principle [11, Thm. V.2.3], no
+local maximum can occur away from these points and |λ| < ℓ. At the conical points the function is
+continuous and zero. The numerical evaluation of the maximum as a function
+                                                                       √      of ℓ = |λ| is shown
+in Fig. 6. It turns out that the maximum is always attained for λ = ℓ/ 3(1, 1, 1) and p = 0, and
+

@@ -1,0 +1,1030 @@
+{
+  "parameters": {
+    "mu": 0.6,
+    "nu": 0.8,
+    "chi": 1.5707963267948966
+  },
+  "python": "3.12.3",
+  "numpy": "2.4.4",
+  "random_seed": null,
+  "checks": [
+    {
+      "name": "Gamma-anticommutation:M=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-charge:M=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-charge:M=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-step-exact-rotation:M=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-compression:M=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-leak-exact:M=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-error-to-rotation:M=1",
+      "error": 2.220446049250313e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-step-logical-matrix:M=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-qubit-gram:M=1",
+      "error": 4.440892098500626e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-compression:M=1",
+      "error": 4.49636861297849e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-leakage:M=1",
+      "error": 2.4651903288156624e-32,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-projector-norm:M=1",
+      "error": 1.1102230246251565e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=1:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=1:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=1:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=1:T=1",
+      "error": 2.220446049250313e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=1:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=1:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-pair-factorization:M=1",
+      "error": 2.482534153247273e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=1:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=1:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=1:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=1:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=1:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=1:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=1:T=0",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=1:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=1:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "Gamma-anticommutation:M=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-charge:M=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-charge:M=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-step-exact-rotation:M=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-compression:M=2",
+      "error": 1.7554167342883506e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-leak-exact:M=2",
+      "error": 1.1102230246251565e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-error-to-rotation:M=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-step-logical-matrix:M=2",
+      "error": 1.6184142622847344e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-qubit-gram:M=2",
+      "error": 9.485749680535094e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-compression:M=2",
+      "error": 7.691850745534255e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-leakage:M=2",
+      "error": 1.6653345369377348e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-projector-norm:M=2",
+      "error": 1.1102230246251565e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=2:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=2:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=2:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=2:T=1",
+      "error": 1.6653345369377348e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=2:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=2:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-pair-factorization:M=2",
+      "error": 7.043575467574348e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=2:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=2:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=2:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=2:T=2",
+      "error": 8.326672684688674e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=2:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=2:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=2:T=0",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=2:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=2:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "Gamma-anticommutation:M=4",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-charge:M=4",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-charge:M=4",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-step-exact-rotation:M=4",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-compression:M=4",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-leak-exact:M=4",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-error-to-rotation:M=4",
+      "error": 1.1102230246251565e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-step-logical-matrix:M=4",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-qubit-gram:M=4",
+      "error": 2.220446049250313e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-compression:M=4",
+      "error": 2.3551386880256624e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-leakage:M=4",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-projector-norm:M=4",
+      "error": 5.551115123125783e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=4:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=4:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=4:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=4:T=1",
+      "error": 5.551115123125783e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=4:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=4:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-pair-factorization:M=4",
+      "error": 4.3709524189038457e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=4:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=4:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=4:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=4:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=4:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=4:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=4:T=0",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=4:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=4:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "Gamma-anticommutation:M=8",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-charge:M=8",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-charge:M=8",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-step-exact-rotation:M=8",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-compression:M=8",
+      "error": 3.510833468576701e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-leak-exact:M=8",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-error-to-rotation:M=8",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-step-logical-matrix:M=8",
+      "error": 1.1102230246251565e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-qubit-gram:M=8",
+      "error": 5.087681048627601e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-compression:M=8",
+      "error": 5.102800490722269e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-leakage:M=8",
+      "error": 8.326672684688674e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-projector-norm:M=8",
+      "error": 5.551115123125783e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=8:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=8:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=8:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=8:T=1",
+      "error": 4.163336342344337e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=8:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=8:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-pair-factorization:M=8",
+      "error": 1.2300449440205884e-15,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=8:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=8:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=8:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=8:T=2",
+      "error": 2.0816681711721685e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=8:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=8:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=8:T=0",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=8:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=8:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "Gamma-anticommutation:M=16",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-charge:M=16",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-charge:M=16",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "plus-step-exact-rotation:M=16",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-compression:M=16",
+      "error": 2.220446049250313e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-leak-exact:M=16",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "minus-error-to-rotation:M=16",
+      "error": 5.551115123125783e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-step-logical-matrix:M=16",
+      "error": 6.389813363550566e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "two-qubit-gram:M=16",
+      "error": 2.220446049250313e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-compression:M=16",
+      "error": 2.222613395836815e-16,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-leakage:M=16",
+      "error": 2.7755575615628914e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "contact-projector-norm:M=16",
+      "error": 2.7755575615628914e-17,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=16:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=16:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=16:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=16:T=1",
+      "error": 6.938893903907228e-18,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=16:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=16:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-pair-factorization:M=16",
+      "error": 1.0265811539126828e-15,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "free-error-bound:M=16:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "interaction-error-bound:M=16:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "actual-error-bound:M=16:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "ballistic-boundary-occupation:M=16:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "leakage-positive-bound:M=16:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "charge-zero-preserved:M=16:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=16:T=0",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=16:T=1",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    },
+    {
+      "name": "same-charge-contact-zero:M=16:T=2",
+      "error": 0.0,
+      "tolerance": 3e-12,
+      "passed": true
+    }
+  ],
+  "rows": [
+    {
+      "M": 1,
+      "T": 1,
+      "free_error": 1.131370849898476,
+      "interaction_error": 1.414213562373095,
+      "actual_error": 1.5518939746296918,
+      "free_leakage": 0.6399999999999997,
+      "actual_leakage": 0.6400000000000001,
+      "contact_leakage": 2.4651903288156624e-32,
+      "contact_c_real": 1.1102230246251565e-16,
+      "contact_c_imag": 1.0,
+      "abstract_commutator": 1.357645019878171,
+      "extreme_occupation": 0.6399999999999999,
+      "extreme_expected": 0.6400000000000001,
+      "free_bound": 2.2627416997969525,
+      "interaction_bound": 1.414213562373095
+    },
+    {
+      "M": 1,
+      "T": 2,
+      "free_error": 1.4837789592793127,
+      "interaction_error": 1.5438409404843474,
+      "actual_error": 1.640385002926427,
+      "free_leakage": 0.8704000000000001,
+      "actual_leakage": 0.8703999999999997,
+      "contact_leakage": 2.4651903288156624e-32,
+      "contact_c_real": 1.1102230246251565e-16,
+      "contact_c_imag": 1.0,
+      "abstract_commutator": 1.357645019878171,
+      "extreme_occupation": 0.4096000000000001,
+      "extreme_expected": 0.4096000000000001,
+      "free_bound": 4.525483399593905,
+      "interaction_bound": 6.028427124746191
+    },
+    {
+      "M": 2,
+      "T": 1,
+      "free_error": 0.7999999999999998,
+      "interaction_error": 0.9999999999999998,
+      "actual_error": 1.1661903789690595,
+      "free_leakage": 0.48,
+      "actual_leakage": 0.7399999999999995,
+      "contact_leakage": 0.4999999999999998,
+      "contact_c_real": 0.5,
+      "contact_c_imag": 0.5,
+      "abstract_commutator": 0.6788225099390855,
+      "extreme_occupation": 0.3199999999999999,
+      "extreme_expected": 0.32000000000000006,
+      "free_bound": 1.6,
+      "interaction_bound": 0.9999999999999998
+    },
+    {
+      "M": 2,
+      "T": 2,
+      "free_error": 1.0910545357588683,
+      "interaction_error": 1.2550008697888615,
+      "actual_error": 1.4240958314661893,
+      "free_leakage": 0.7295999999999997,
+      "actual_leakage": 0.9542706601494019,
+      "contact_leakage": 0.4999999999999998,
+      "contact_c_real": 0.5,
+      "contact_c_imag": 0.5,
+      "abstract_commutator": 0.6788225099390855,
+      "extreme_occupation": 0.20479999999999995,
+      "extreme_expected": 0.20480000000000004,
+      "free_bound": 3.2,
+      "interaction_bound": 4.262741699796952
+    },
+    {
+      "M": 4,
+      "T": 1,
+      "free_error": 0.5656854249492381,
+      "interaction_error": 0.7071067811865475,
+      "actual_error": 0.8626951100222404,
+      "free_leakage": 0.2799999999999999,
+      "actual_leakage": 0.5499999999999997,
+      "contact_leakage": 0.37499999999999994,
+      "contact_c_real": 0.75,
+      "contact_c_imag": 0.25,
+      "abstract_commutator": 0.3394112549695428,
+      "extreme_occupation": 0.15999999999999998,
+      "extreme_expected": 0.16000000000000003,
+      "free_bound": 1.1313708498984762,
+      "interaction_bound": 0.7071067811865475
+    },
+    {
+      "M": 4,
+      "T": 2,
+      "free_error": 0.7858753081755401,
+      "interaction_error": 0.9446060816967505,
+      "actual_error": 1.149903200653174,
+      "free_leakage": 0.48160000000000003,
+      "actual_leakage": 0.8325760352363498,
+      "contact_leakage": 0.37499999999999994,
+      "contact_c_real": 0.75,
+      "contact_c_imag": 0.25,
+      "abstract_commutator": 0.3394112549695428,
+      "extreme_occupation": 0.10240000000000002,
+      "extreme_expected": 0.10240000000000002,
+      "free_bound": 2.2627416997969525,
+      "interaction_bound": 3.0142135623730955
+    },
+    {
+      "M": 8,
+      "T": 1,
+      "free_error": 0.3999999999999999,
+      "interaction_error": 0.4999999999999999,
+      "actual_error": 0.624890466101469,
+      "free_leakage": 0.14999999999999997,
+      "actual_leakage": 0.3359374999999998,
+      "contact_leakage": 0.2187499999999999,
+      "contact_c_real": 0.875,
+      "contact_c_imag": 0.125,
+      "abstract_commutator": 0.1697056274847714,
+      "extreme_occupation": 0.07999999999999997,
+      "extreme_expected": 0.08000000000000002,
+      "free_bound": 0.8,
+      "interaction_bound": 0.4999999999999999
+    },
+    {
+      "M": 8,
+      "T": 2,
+      "free_error": 0.5607138307550474,
+      "interaction_error": 0.6876955896708214,
+      "actual_error": 0.8603726434919706,
+      "free_leakage": 0.27749999999999997,
+      "actual_leakage": 0.5844113420677641,
+      "contact_leakage": 0.2187499999999999,
+      "contact_c_real": 0.875,
+      "contact_c_imag": 0.125,
+      "abstract_commutator": 0.1697056274847714,
+      "extreme_occupation": 0.05119999999999999,
+      "extreme_expected": 0.05120000000000001,
+      "free_bound": 1.6,
+      "interaction_bound": 2.131370849898476
+    },
+    {
+      "M": 16,
+      "T": 1,
+      "free_error": 0.28284271247461923,
+      "interaction_error": 0.35355339059327373,
+      "actual_error": 0.4472790685552769,
+      "free_leakage": 0.07750000000000001,
+      "actual_leakage": 0.1856054687500001,
+      "contact_leakage": 0.11718749999999996,
+      "contact_c_real": 0.9375,
+      "contact_c_imag": 0.0625,
+      "abstract_commutator": 0.08485281374238575,
+      "extreme_occupation": 0.04,
+      "extreme_expected": 0.04000000000000001,
+      "free_bound": 0.5656854249492381,
+      "interaction_bound": 0.35355339059327373
+    },
+    {
+      "M": 16,
+      "T": 2,
+      "free_error": 0.3982461550347976,
+      "interaction_error": 0.4931684281010987,
+      "actual_error": 0.6245221988993359,
+      "free_leakage": 0.14899375000000006,
+      "actual_leakage": 0.34647596278751314,
+      "contact_leakage": 0.11718749999999996,
+      "contact_c_real": 0.9375,
+      "contact_c_imag": 0.0625,
+      "abstract_commutator": 0.08485281374238575,
+      "extreme_occupation": 0.025600000000000005,
+      "extreme_expected": 0.025600000000000005,
+      "free_bound": 1.1313708498984762,
+      "interaction_bound": 1.5071067811865477
+    }
+  ],
+  "provenance": {
+    "scripts/verify_thirring_massive_preflight.py": "ffd63193cbc7162dbb04395e67ede8a668d05e0a754423b19b917433195705c6",
+    "theory/THIRRING_MASSIVE_ALGEBRA_PREFLIGHT.md": "aba9cfb337991e5731ae395f121989f25f62f3231cb264999515ef0dece23711",
+    "sources/1711.03920v1.pdf": "3032b33d1375d4a55008aafe1f0e74d228052fa120446694ba8e9ab8e41867ca",
+    "sources/1804.08508v1.pdf": "495646b1a0c0a2822422c4d65536b8c4caa0d82c5efe7e48df878766af91f0d0"
+  }
+}

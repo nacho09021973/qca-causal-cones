@@ -103,3 +103,47 @@ weighted sums with N-dependent non-analytic profiles would reopen (b).
 Both abandonment conditions are not met in what was read. The candidacy
 stands with `NOVELTY = OPEN` and the paper's narrow claim unchanged. The
 search is targeted, not exhaustive, and this report is unreviewed.
+
+## 5. Remaining sources (step 3 of the work plan, 2026-11-03)
+
+User instruction: «si, empieza», on step 3 of
+`reports/2026-11-02--work-plan-next-session.md`. Pre-step check, stated
+before any search: known, Secs. 1-4 above ((a) not met, (b) `NOT_MET`, in
+what was read); question, do the sources listed there as not read satisfy
+(a) or (b); abandonment, one that does, read in the original with page
+cited, which drops the candidacy and triggers the closure criterion of the
+work plan (Sec. 4 there). Stop rule fixed in advance: if none does, step 3
+ends here and the search is not widened.
+
+Search tools: web search, alphaXiv, and the public citation indexes named
+below, used only to locate; every finding is from the text named. Written
+by Claude Code (Claude Opus 5.5); unreviewed.
+
+**Read.**
+
+| Source | Passage | Finding |
+| --- | --- | --- |
+| Pemantle, Wilson, Melczer, *Analytic Combinatorics in Several Variables*, "Expanded Second Edition" manuscript, 589 pp., from `https://ACSVproject.com/PemantleWilsonMelczer23.pdf` (SHA-256 `b9529cd711e4bdc547da8ebbb15ee31fdbd57edb05467b5f479e4182e3f5c02b`, PDF dated 2023-07-25; the printed Cambridge 2024 edition was not compared) | Example 9.47, pp. 301-305; Theorem 12.12 and its proof, pp. 412-414; Example 12.13 and Theorem 12.14, pp. 414-416; Sec. 13.2, p. 443 | Every quantum-walk asymptotic in the book holds for directions in a compact subset of the feasible region: Thm 12.12 (1D, "uniformly as λ varies over any compact subset of the interior of J_c"; "Conversely, if λ varies over a compact subset of the complement of J_c then p(r, s) → 0 exponentially"), Thm 12.14 (2D S(p) walk, "r̂ in a compact subset of the feasible velocity region"). Outside, the proof of Thm 12.12 concludes only that "p(r, s) decays exponentially" (via Thm 11.4, `β < 0`). Sec. 13.2 lists non-uniformity at the boundary of the 2D feasible region as open. No prefactor outside the feasible region, no weighted sums with N-dependent profiles. |
+| Sigal, Wu, *On light cone bounds for Markov quantum open systems*, Lett. Math. Phys. (2026), doi:10.1007/s11005-026-02086-4 (title and authors confirmed by Crossref), read as arXiv:2503.20635v3 via alphaXiv | Abstract and Thm 1.1, eq. (1.9), p. 4; Cor. 1.2, Thm 1.3; ref. [14] = CJWW | Upper bound `‖χ̂_X β_t χ̂_Y‖ ≤ C e^{-2μ(d_XY - ct)}` for Lindblad dynamics on `R^n` or `Z^n`. An upper bound with unspecified `C`; no asymptotics, no prefactor, no walk. Neither (a) nor (b). |
+| Bressler, Greenwood, Pemantle, Petkovšek, *Quantum random walk on the integer lattice: examples and phenomena*, arXiv:0903.2967v2 (Contemp. Math. 520) | Thm 2.2, p. 3; Thm 2.3, p. 4; Prop. 3.4, pp. 7-8 | Outside the feasible region only `a = O(e^{-cn})` (shape theorem, quoting BBBP Thm 4.2); prefactor asymptotics (2.8) only for `r` in `G`. |
+| Kuklinski, Kon, *Bifurcation curves of two-dimensional quantum walks*, arXiv:1905.00057v2 (EPTCS 315, 2020) | Sec. 2, Props. 2.1-2.2, pp. 61-62 | Outside: superpolynomial decay from the absence of critical points (Stein); the paper computes the boundary curves of the polynomial-decay region. No outside-region prefactor. |
+| Beenakker, Sánchez Fernán, Tworzydło, *Fragile single-cone Dirac quantum walks in two dimensions*, arXiv:2607.05112v3 | Abstract; Secs. I, VI | Topological fragility of 2D Dirac walks; no asymptotics outside a propagation region. |
+
+**Citation sweep (located, screened by title).** Citing lists were
+retrieved on 2026-11-03 from OpenAlex (`/works?filter=cites:<id>`) for CRT
+2005 (W2050628998, 14 citing records), BBBP 2011 (W2076252358, 25) and its
+arXiv record (W2949723071, 3), and from Semantic Scholar
+(`/graph/v1/paper/arXiv:<id>/citations`) for Sunada–Tate (42) and CJWW
+(13); Semantic Scholar refused CRT and BBBP (HTTP 429), which OpenAlex
+covered. Among them, the records in `d >= 2` that could concern the region
+outside the propagation set are the three read above, plus BP 2011 part
+III and BMP 2021, already read in Sec. 3. The rest are 1D, bounds,
+spectral or localization results, reviews, or unrelated. Citation indexes
+are incomplete; this sweep is targeted, not exhaustive.
+
+**Verdict on step 3.** (a) `NOT_MET` and (b) `NOT_MET` in every source
+read, including the ones Secs. 2-4 listed as not read. The candidacy
+stands, `NOVELTY = OPEN`, with the paper's narrow claim unchanged. By the
+stop rule above, step 3 is finished; the closure criterion of the work plan
+is not triggered by it. Unreviewed: an independent check of this verdict
+is part of the review (step 1 of the plan) if the user authorizes it.

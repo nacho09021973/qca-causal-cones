@@ -1,0 +1,149 @@
+SymPy 1.14.0
+PASS W unitary with normalization
+PASS cyclic representation unitary
+PASS cyclic representation cubed
+PASS C square +I
+PASS C exchanges nodal projectors
+PASS S preserves W
+PASS S compatible with C
+PASS G0 Hermitian
+PASS G0 involution
+PASS S cycles G0
+PASS S cycles R0
+PASS G0 commutes G0
+PASS G0 commutes G1
+PASS G0 commutes G2
+PASS G1 Hermitian
+PASS G1 involution
+PASS S cycles G1
+PASS S cycles R1
+PASS G1 commutes G0
+PASS G1 commutes G1
+PASS G1 commutes G2
+PASS G2 Hermitian
+PASS G2 involution
+PASS S cycles G2
+PASS S cycles R2
+PASS G2 commutes G0
+PASS G2 commutes G1
+PASS G2 commutes G2
+PASS triple product
+PASS projector rank one (-1, -1, -1)
+PASS cancelled parity (-1, -1, 1)
+PASS cancelled parity (-1, 1, -1)
+PASS projector rank one (-1, 1, 1)
+PASS cancelled parity (1, -1, -1)
+PASS projector rank one (1, -1, 1)
+PASS projector rank one (1, 1, -1)
+PASS cancelled parity (1, 1, 1)
+PASS exact four-point negative-parity support
+PASS origin coefficient sum
+PASS Laurent Udagger U (-2, -2, 0)
+PASS Laurent U Udagger (-2, -2, 0)
+PASS Laurent Udagger U (-2, 0, -2)
+PASS Laurent U Udagger (-2, 0, -2)
+PASS Laurent Udagger U (-2, 0, 2)
+PASS Laurent U Udagger (-2, 0, 2)
+PASS Laurent Udagger U (-2, 2, 0)
+PASS Laurent U Udagger (-2, 2, 0)
+PASS Laurent Udagger U (0, -2, -2)
+PASS Laurent U Udagger (0, -2, -2)
+PASS Laurent Udagger U (0, -2, 2)
+PASS Laurent U Udagger (0, -2, 2)
+PASS Laurent Udagger U (0, 0, 0)
+PASS Laurent U Udagger (0, 0, 0)
+PASS Laurent Udagger U (0, 2, -2)
+PASS Laurent U Udagger (0, 2, -2)
+PASS Laurent Udagger U (0, 2, 2)
+PASS Laurent U Udagger (0, 2, 2)
+PASS Laurent Udagger U (2, -2, 0)
+PASS Laurent U Udagger (2, -2, 0)
+PASS Laurent Udagger U (2, 0, -2)
+PASS Laurent U Udagger (2, 0, -2)
+PASS Laurent Udagger U (2, 0, 2)
+PASS Laurent U Udagger (2, 0, 2)
+PASS Laurent Udagger U (2, 2, 0)
+PASS Laurent U Udagger (2, 2, 0)
+PASS C coefficient (-1, -1, -1)
+PASS cyclic coefficient (-1, -1, -1)
+PASS D2 coefficient 0 (-1, -1, -1)
+PASS D2 coefficient 1 (-1, -1, -1)
+PASS D2 coefficient 2 (-1, -1, -1)
+PASS C coefficient (-1, 1, 1)
+PASS cyclic coefficient (-1, 1, 1)
+PASS D2 coefficient 0 (-1, 1, 1)
+PASS D2 coefficient 1 (-1, 1, 1)
+PASS D2 coefficient 2 (-1, 1, 1)
+PASS C coefficient (1, -1, 1)
+PASS cyclic coefficient (1, -1, 1)
+PASS D2 coefficient 0 (1, -1, 1)
+PASS D2 coefficient 1 (1, -1, 1)
+PASS D2 coefficient 2 (1, -1, 1)
+PASS C coefficient (1, 1, -1)
+PASS cyclic coefficient (1, 1, -1)
+PASS D2 coefficient 0 (1, 1, -1)
+PASS D2 coefficient 1 (1, 1, -1)
+PASS D2 coefficient 2 (1, 1, -1)
+PASS P projector
+PASS P rank two
+PASS P node phase
+PASS P compression 0
+PASS P compression 1
+PASS P compression 2
+PASS Q projector
+PASS Q rank two
+PASS Q node phase
+PASS Q compression 0
+PASS Q compression 1
+PASS Q compression 2
+PASS Fourier moment 0
+PASS Fourier moment 1
+PASS Fourier moment 2
+PASS untilted effective cone
+PASS isotropic cone polynomial
+PASS axis half trace 0 -1
+PASS axis determinant 0 -1
+PASS axis physical phase slope 0 -1
+PASS axis half trace 0 1
+PASS axis determinant 0 1
+PASS axis physical phase slope 0 1
+PASS axis half trace 1 -1
+PASS axis determinant 1 -1
+PASS axis physical phase slope 1 -1
+PASS axis half trace 1 1
+PASS axis determinant 1 1
+PASS axis physical phase slope 1 1
+PASS axis half trace 2 -1
+PASS axis determinant 2 -1
+PASS axis physical phase slope 2 -1
+PASS axis half trace 2 1
+PASS axis determinant 2 1
+PASS axis physical phase slope 2 1
+PASS full coefficient commutant rank 15
+PASS vertex radius 0
+PASS vertex dot 0 0
+PASS vertex dot 0 1
+PASS vertex dot 0 2
+PASS vertex dot 0 3
+PASS vertex radius 1
+PASS vertex dot 1 0
+PASS vertex dot 1 1
+PASS vertex dot 1 2
+PASS vertex dot 1 3
+PASS vertex radius 2
+PASS vertex dot 2 0
+PASS vertex dot 2 1
+PASS vertex dot 2 2
+PASS vertex dot 2 3
+PASS vertex radius 3
+PASS vertex dot 3 0
+PASS vertex dot 3 1
+PASS vertex dot 3 2
+PASS vertex dot 3 3
+PASS tetrahedron centroid
+PASS translation lattice index four
+143/143 exact checks PASS
+Actual raw support: [(-1, -1, -1), (-1, 1, 1), (1, -1, 1), (1, 1, -1)]
+Physical support = raw/sqrt(3); cP=cQ=1/3; r_in=1/3
+Coefficient commutant dimension: 1
+Verdict: REALIZED_WITH_ACTUAL_SUPPORT; PRELIMINARY, author checks only

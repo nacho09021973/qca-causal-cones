@@ -1,0 +1,23 @@
+objetivo = "ThirringTwoContact"
+timeout = 120
+
+[[mutacion]]
+nombre = "wrong sign in claimed first-contact phase"
+fichero = "ThirringTwoContact/Challenge.lean"
+antes = "then (0,1) else one"
+despues = "then (0,-1) else one"
+espera = "Solution\\.lean.*Tactic.*decide"
+
+[[mutacion]]
+nombre = "wrong second-compression matrix coefficient"
+fichero = "ThirringTwoContact/Challenge.lean"
+antes = "then (481,144) else (-81,544)"
+despues = "then (482,144) else (-81,544)"
+espera = "Solution\\.lean.*Tactic.*decide"
+
+[[mutacion]]
+nombre = "replace a proof by sorry"
+fichero = "ThirringTwoContact/Solution.lean"
+antes = "theorem strict_column_defect : ThirringChallenge.StrictColumnDefect := by unfold ThirringChallenge.StrictColumnDefect; decide"
+despues = "theorem strict_column_defect : ThirringChallenge.StrictColumnDefect := by sorry"
+espera = "Axioms\\.lean.*Docstring"

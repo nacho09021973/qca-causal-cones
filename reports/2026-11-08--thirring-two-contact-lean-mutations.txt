@@ -1,0 +1,7 @@
+· compilación limpia inicial: lake build ThirringTwoContact
+RECHAZADA           6.0s  wrong sign in claimed first-contact phase
+RECHAZADA           4.6s  wrong second-compression matrix coefficient
+RECHAZADA           6.3s  replace a proof by sorry
+· compilación limpia final
+· registro: reports/2026-11-08--thirring-two-contact-lean-mutations.json
+PASA: 3/3 mutaciones rechazadas; limpia final código 0

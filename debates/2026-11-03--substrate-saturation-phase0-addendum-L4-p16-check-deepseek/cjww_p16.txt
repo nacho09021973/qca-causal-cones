@@ -1,0 +1,41 @@
+16                       C. CEDZICH, A. JOYE, A.H. WERNER, AND R.F. WERNER
+
+
+statements. They give a positive rate function only outside the convex hull of Γ (recall that we
+approximate by half spaces).
+
+
+                              5.4. 3D cones and rate functions
+   Some quantum walks on the three-dimensional cubic lattice were proposed by Bialinycki-Birula [6]
+as discrete approximations to the Weyl, Dirac, and Maxwell equations. The interest in that paper
+is mainly in the continuum limit, and the possible variations of nearest neighbour walks automata
+for which this works. But one can take the discrete model as a system in its own right and analyze
+its propagation properties. Let us consider the simplest of these, the “Weyl equation” model in [6].
+We then have K = C2 , and
+                                 W (p1 , p2 , p3 ) = eip1 σ1 eip2 σ2 eip3 σ3 .                 (5.12)
+
+This gives
+                                                                                    
+                ω± (p) = ±ω(p) = ± arccos cos p1 cos p2 cos p3 − sin p1 sin p2 sin p3 .        (5.13)
+
+A characteristic feature here are conical singularities at p = 0 and eight inequivalent points in the
+Brillouin zone, where p1 , p2 , p3 ∈ πZ, meaning that all cos pi = ±1 and each matrix factor in (5.12)
+is ±1. Expanding the cosine of (5.13) to second order in a small deviation p from such a conical
+point p∨ , we get, for any combination of the signs cos(p∨ k ),
+
+                                ω(p∨ + p)2 = (p21 + p21 + p21 ) + O(p3 )                       (5.14)
+
+This is in keeping with the remarks in Section 2.2 on regular vs. singular points in a dispersion
+relation. Along a straight line through p∨ we can use one-parameter perturbation theory, in which
+we can always choose analytic branches, corresponding to the straight lines in the boundary of the
+cone, but as a function of three parameters ω(p + p∨ ) ≈ ω(p∨ ) ± |p| is not analytic. In the limit
+taken in [6] only small momenta survive, so the propagation is indeed exactly the familiar light cone
+from relativistic physics. However, in this model faster propagation speeds can arise from points at
+a finite distance from the singularities. The overall propagation region is shown in Figure 5.
+
+
+
+
+       Figure 5. Propagation region for the walk (5.12). This convex set is the intersection
+       of three orthogonal cylinders.
+

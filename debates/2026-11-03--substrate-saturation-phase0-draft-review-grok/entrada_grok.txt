@@ -1,0 +1,991 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente el borrador de contrato
+SUBSTRATE_SATURATION_PHASE0_GATE.md, escrito por Claude (Anthropic). Se
+adjuntan como contexto, ya revisados y promocionados, la síntesis sobre c
+en distintos sustratos, el informe c-across-lattices con la tabla de filas,
+su contrato y el contrato M1 del hexágono. El borrador no es premisa: es el
+objeto de la revisión. No tienes herramientas: no ejecutes, edites ni
+navegues. La fase 0 es solo documental: no pidas cálculos.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / OPEN:
+1. CONJETURA. ¿Está bien definida (PS) «el techo c_0 = r_in(C_micro) se
+   alcanza si y solo si C_micro es un paralelotopo» con s = 2, d ≤ 3? ¿Es
+   «paralelotopo» la noción geométrica adecuada, o lo es otra (zonotopo,
+   cubo/cuadrado regular, simetría bajo la isotropía exigida)? En
+   particular: ¿tiene sentido PS⇐ para paralelotopos sin la simetría que
+   exige un cono isótropo en el nodo (por ejemplo un rombo de 60° en d = 2)?
+   ¿Hay ya en los documentos adjuntos un dato que la contradiga?
+2. CUANTIFICADORES Y DOMINIO. ¿Están bien separados el existencial
+   (existe un walk que satura) y el universal (ninguno satura)? ¿Está bien
+   excluido todo lo que tiene s ≠ 2? ¿«Sustrato» queda definido sin
+   ambigüedad (grupo de traslaciones y N compuesto)?
+3. NORMALIZACIÓN. ¿Garantizan las definiciones congeladas (C_micro =
+   conv N, r_in = min h_C, c_0 del cono isótropo sin inclinación, unidades
+   de paso más largo 1) que todas las filas se comparan igual? ¿Falta algo
+   (por ejemplo, el tratamiento del cero en N, o filas cuya c_0 viene de
+   otro contrato con otra normalización, como L4 reescalado)?
+4. CRITERIO DE FRACASO Y VEREDICTOS. ¿Es correcto que un solo
+   contraejemplo exacto refute, que NOT_REFUTED_IN_EXISTING_ROWS sea el
+   máximo, y que OUTSIDE_DEFINITIONS no cuente ni a favor ni en contra?
+   ¿Distingue bien la carta hueco puntual y hueco uniforme?
+5. UTILIDAD Y SESGO. Con cuatro sustratos paralelotopo y uno no
+   paralelotopo, elegidos antes para otras preguntas, ¿qué información
+   real puede dar la fase 0? ¿Hay riesgo de leer un NOT_REFUTED como
+   apoyo? ¿Qué cambiarías para que la fase 0 pueda fallar de verdad?
+
+Hasta 1500 palabras en español. Cada reparación obligatoria debe citar la
+frase afectada, por qué falla y qué la cerraría. Distingue aclaración de
+error. Dictamen global y lista de reparaciones obligatorias; si no hay
+ninguna, dilo expresamente.
+
+=== DOCUMENT 1: SUBSTRATE_SATURATION_PHASE0_GATE.md ===
+
+# SUBSTRATE_SATURATION (phase 0) — draft contract
+
+**Status: DRAFT for the user's prior review. Not frozen, not committed,
+nothing executed.** Drafted by Claude Code (Claude Opus 5.5) on 2026-11-03
+at the user's instruction («Autorizo redactar la carta de la fase 0, pero
+no congelarla ni ejecutar todavía ninguna comprobación»), incorporating the
+user's four required precisions (quantifiers, domain, normalization,
+failure criterion) and the distinction between pointwise and uniform gap.
+Freezing needs a separate approval; reports would then cite the commit that
+adds this file as the preregistration commit.
+**Initial scientific status: OPEN.** The conjecture below is `[UNVERIFIED]`;
+it was formulated by an AI from the promoted table and has no evidence
+level of its own.
+**Does not alter:** step 4 of the work plan (hexagonal-ceiling prior-art
+check, closed `NOT_FOUND_IN_SCOPED_SEARCH`, `6114b9d`), M1 (`86573ca`,
+Amendment 1 `208e1b1`) or any promoted row.
+
+## 0. Pre-step check (rule of 2026-11-02)
+
+- **Known.** Promoted rows (CS Secs. 4, 5, 8, 11, 12, 14; c-across-lattices
+  report Sec. 4; c-across-substrates answer Sec. 1): the ceiling
+  `c_0 = r_in(C_micro)` is attained by some declared walk on the line (L1),
+  the square (L2, L6e), BCC (L3, L5a) and the cube (L4), whose `C_micro`
+  are a segment, a square and cubes; on the hexagon no declared walk
+  attains it, `sup c_0/r_in = sqrt3/2` in the `n = 3` antipodal subclass,
+  and no s=2 walk in `W_hex^sym` with `F` within S7, S13 or S19 attains it;
+  the whole hexagonal class is OPEN.
+- **Question.** Within the existing promoted rows only, is there an exact
+  counterexample to the conjecture of Sec. 1, read with the quantifiers of
+  Sec. 2?
+- **Result that ends this formulation.** One exact counterexample in the
+  existing rows (Sec. 4): the formulation of Sec. 1 is dropped
+  immediately, with no repair attempted in this gate.
+
+## 1. Conjecture under test
+
+> **(PS) [UNVERIFIED].** For `s = 2`, `d <= 3`, within the declared classes
+> of Sec. 2: the ceiling is attained on a substrate, in the sense of
+> Sec. 2, if and only if its `C_micro` is a parallelotope.
+
+Two directions are kept apart:
+
+- **(PS⇐)** `C_micro` a parallelotope ⇒ there exists an admissible walk on
+  that substrate with `c_0 = r_in`.
+- **(PS⇒)** `C_micro` not a parallelotope ⇒ every admissible walk on that
+  substrate has `c_0 < r_in`.
+
+## 2. Quantifiers, domain and normalization (user precisions 1–3)
+
+1. **Quantifiers.** "The ceiling is attained on a substrate" means: there
+   exists at least one admissible walk `W` on that substrate with
+   `c_0(W) = r_in(C_W)`. It does not mean that every walk saturates. A
+   non-saturating walk on a substrate where another walk saturates (e.g.
+   L3s4 on BCC) is not a counterexample to (PS⇐).
+2. **Domain.** `s = 2`, `d <= 3`, and only the classes already declared in
+   the repo's frozen contracts for each row (C_ACROSS_LATTICES_GATE,
+   HEX_CEILING_GATE, HEX_SUPREMUM_GATE, and the contracts the promoted
+   rows cite). Rows with `s != 2` (L5b, L3s4 with `s = 4`; L6b with
+   `s = 6`) are recorded but are outside the domain and cannot confirm or
+   refute (PS). No extrapolation to other `s`, `d`, lattices or classes.
+3. **Normalization.** Every row is compared with the same frozen
+   definitions (CS Sec. 2): `C_micro := conv(N)`, `N` the exact composite
+   one-step displacement set; `h_C`, `r_in(C_micro) := min h_C`;
+   `c_0` the isotropic untilted cone speed at the massless node
+   (`{T_a, T_b} = 2 c_0^2 delta_ab`, as certified per row in the
+   c-across-lattices report Sec. 4); units: longest step 1, one update per
+   time unit. A numerical coincidence of speeds, or a value taken in other
+   units, is not a comparison. "Parallelotope" means `C_micro` is the
+   Minkowski sum of `d` linearly independent segments (a parallelogram in
+   `d = 2`), checked exactly from its vertices.
+4. **Pointwise against uniform gap.** (PS⇒) as stated is pointwise:
+   `for all W, c_0(W) < r_in(C_W)`. This does not imply a uniform gap
+   `sup_W c_0(W)/r_in(C_W) < 1` over a class. Phase 0 makes no claim
+   about a uniform gap; where a row records a supremum (T1, `sqrt3/2`),
+   it is quoted with its own scope only.
+
+## 3. Method (no computation)
+
+Documentary only. No verifier is run, written or edited; no new walk is
+built; no numerics.
+
+1. List every promoted row in `state/CURRENT_STATE.md` and the reports it
+   cites that has `s = 2`, `d <= 3`, an exact `C_micro` and an exact
+   `c_0` (or an exact gap/non-attainment statement), with its source
+   (`file:line` or section) and its declared class.
+2. For each, record from the cited exact data: the vertices of `C_micro`,
+   whether it is a parallelotope (Sec. 2.3), `r_in`, `c_0`, and whether
+   the row or its class has `c_0 = r_in`.
+3. Group rows by substrate (translation group and `N`, as in
+   C_ACROSS_LATTICES_GATE Sec. 2) and evaluate the existential reading
+   per substrate.
+4. Flag, without resolving, every row where a definition of Sec. 2 does
+   not apply as frozen (for example a parallelotope substrate on which
+   the declared class has no isotropic untilted node, so `c_0` is not
+   defined in the frozen sense). Such a row is `OUTSIDE_DEFINITIONS`, not
+   a counterexample and not support.
+
+## 4. Counterexample criterion (user precision 4)
+
+An exact counterexample in the existing rows is any of:
+
+- (against PS⇒) a substrate in the domain with non-parallelotope `C_micro`
+  and a promoted walk with `c_0 = r_in` exactly;
+- (against PS⇐) a substrate in the domain with parallelotope `C_micro` on
+  which a promoted exact result shows that no walk of the declared class
+  attains `c_0 = r_in`.
+
+A failed search, a non-saturating single walk, or a row outside the domain
+or the definitions is not a counterexample.
+
+## 5. Verdicts
+
+- `REFUTED_BY_ROW_<row>`: one exact counterexample (Sec. 4). The
+  formulation of Sec. 1 stops at once.
+- `NOT_REFUTED_IN_EXISTING_ROWS`: no counterexample among the rows listed
+  in Sec. 3. Never `CONFIRMED`: the existing rows are few (four
+  parallelotope substrates, one non-parallelotope substrate, all chosen
+  earlier for other questions), and (PS⇐) for general parallelotopes and
+  (PS⇒) for the whole hexagonal class are not established by them.
+- `OPEN_AFTER_ROW_SURVEY`: if the survey cannot be completed from promoted
+  data alone (a needed quantity is missing or not exact).
+
+Each direction gets its own verdict; the list of `OUTSIDE_DEFINITIONS`
+rows is reported with them.
+
+## 6. Exclusions
+
+`s != 2`, `d > 3`, new lattices, new walks, masses, `V_grp^max`,
+inhomogeneous or encoded walks, uniform gaps, general QCA laws, claims
+about our universe. No novelty claim. No computation of any kind in this
+gate; phases 1 (PS⇐ for general parallelotopes) and 2 (PS⇒) need their own
+contracts, and phase 2 only after phase 0 ends `NOT_REFUTED_IN_EXISTING_ROWS`.
+
+## 7. Deliverables
+
+A report `reports/YYYY-MM-DD--substrate-saturation-phase0.md` with the row
+table of Sec. 3, each entry traced to its source, and the verdicts of
+Sec. 5. Then independent cross-family review (user permission needed to
+send), then a separate promotion decision.
+
+=== DOCUMENT 2: 2026-11-02--c-across-substrates-answer.md ===
+
+# How much is c on different substrates: the answer in the declared classes
+
+**Date:** 2026-11-02. **Branch:** `research/schur-stability-audit`.
+**Nature of this text:** synthesis, written by Claude Code (Claude Opus
+5.5) at the user's instruction («redacta la respuesta»), of results
+already promoted in `state/CURRENT_STATE.md` (CS). No new computation was
+run and no verifier was touched. Every statement cites the promoted
+section or report it comes from and keeps that result's scope. The text
+itself has had no independent review: **PRELIMINARY as a synthesis**;
+the results it collects keep their own levels.
+
+**Repairs (2026-11-03).** Grok REPAIR_REQUIRED, ten mandatory repairs
+([review](../debates/2026-11-03--c-answer-review-grok/informe_grok.md),
+[author reading](../debates/2026-11-03--c-answer-review-grok/verificacion_autor.md)),
+all applied; R6 and R8 as citation repairs (the content is in the promoted
+gates' execution reports, which the review did not receive). No value
+changed. Still PRELIMINARY as a synthesis.
+
+**Maintenance (2026-11-03).** Documentary update authorized by the user
+(«Actualizar la respuesta sobre c: autorizado como mantenimiento
+documental, después del paso 4»): adds the promoted M1-B13 and M1-B19
+results (CS Sec. 14) to answer 3 and Secs. 2, 4, 5. No other statement
+changed; no new computation; the hexagonal class stays OPEN.
+
+**Pre-step check (PROJECT_INSTRUCTIONS, rule of 2026-11-02).** Known: the
+promoted results of CS Secs. 4, 7.2, 8.21, 11, 12, 13 and the L6b row.
+Question: what does the repo establish about the value of `c` per
+substrate within its declared classes? Abandonment: any statement that
+cannot be traced to a promoted section with its scope is dropped; if the
+answer needed a new computation, the text stops there.
+
+## 0. Answer
+
+1. **The substrate does not fix `c`.** On one substrate, different walks
+   have different `c_0`: on the BCC step set the four-component family
+   L3s4 has `c_0 = a/sqrt3` for every `0 < a < 1`, a continuum of values;
+   on one hexagonal substrate (the identical substrate of ADMP L6a and JDW
+   L6d, CS Sec. 11) the two declared walks have `c_0 = 1/2` and `3/4`
+   (units: longest step 1, one update per time unit). The row L6b
+   (`s = 6`, a different step set) has `c_0 = 1/3`.
+2. **The substrate fixes a ceiling.** `c_strict^iso <= r_in(C_micro)` in
+   general, and `c_0 <= c_strict^iso` (proved for the admitted cones and
+   the exact support of the full symbol on `N_3`, CS Sec. 7.2; confirmed
+   row by row in every other declared row). So `c_0 <=
+   r_in(C_micro)` in every declared row: the inradius of the one-step
+   causal body bounds the relativistic speed.
+3. **Whether the ceiling is reached depends on the substrate and the
+   walk.** On the line, square, standard BCC and cube substrates, some
+   declared walks reach it (`c_0 = r_in`); on the same BCC step set L3s4
+   does not (`c_0 = a/sqrt3 < 1/sqrt3`, CS Sec. 4.1). On the hexagonal
+   substrate none of the five declared walks does; in the class of
+   three-step antipodal walks the exact supremum is `c_0/r_in = sqrt3/2`,
+   and no `s = 2` walk with `F within {0} U vert(H)` reaches `r_in`
+   (CS Sec. 12), nor one with `F` within the 13- or 19-point hexagon, in
+   the class `W_hex^sym` that contains `W_hex` (M1-B13, M1-B19, CS
+   Sec. 14). The rest of `W_hex` is OPEN; nothing is stated for `s > 2`.
+4. **No absolute value.** The repo derives no value of `c` in physical
+   units: in the frozen flat class the absolute scale is
+   `NO_ABSOLUTE_SCALE_DERIVABLE`. Every number here is in lattice units.
+
+This is a statement about declared rows and classes, not a QCA law.
+
+## 1. Table per substrate (massless node at `k = 0`)
+
+Units: longest one-update step 1, one update per time unit, so
+`V_causal^max = 1` in every row. All values exact.
+
+| Substrate | Rows | `r_in` | `c_0` | `c_0 / r_in` | `c_strict^iso` | Source |
+| --- | --- | --- | --- | --- | --- | --- |
+| line | L1 | 1 | 1 | 1 | 1 | CS Secs. 5, 11 |
+| square | L2, L6e | `1/sqrt2` | `1/sqrt2` | 1 | `1/sqrt2` | CS Secs. 5, 11 |
+| BCC (`N_3`) | L3, L5a, L5b | `1/sqrt3` | `1/sqrt3` | 1 | `1/sqrt3` | CS Secs. 4, 5, 11 |
+| BCC (`N_3`) | L3s4 (s=4) | `1/sqrt3` | `a/sqrt3`, `0<a<1` | `a` | `1/sqrt3` | CS Sec. 4.1 |
+| cube (`C_micro = [-1,1]^3` in CS Sec. 8 units, `r_in = 1`; rescaled here to longest step 1) | L4 | `1/sqrt3` | `1/sqrt3` | 1 | `1/sqrt3` | CS Secs. 8, 11 |
+| hexagon (triangular lattice) | L6a (ADMP) | `sqrt3/2` | `1/2` | `1/sqrt3` | `sqrt3/2` | CS Sec. 11; hex-ceiling report T1 |
+| hexagon | L6c, L6d, L6f (JDW) | `sqrt3/2` | `3/4` | `sqrt3/2` | `sqrt3/2` | CS Sec. 11; hex-ceiling report T1 |
+| hexagon | L6b (ADMP, s=6) | `sqrt3/2` | `1/3` | `2 sqrt3/9` | `1/sqrt3` | L6b row (promoted) |
+
+Readings, each limited to these rows:
+
+- `c_strict^iso = r_in` in every row except L6b, where every one-step
+  vertex coefficient is nilpotent and the long-run body is smaller
+  (`c_strict^iso / r_in = 2/3`). So `r_in` does not force
+  `c_strict^iso = r_in` (row L6b). No source places L6b on the step set of
+  L6a/L6d, so this is not a statement that one substrate leaves
+  `c_strict^iso` free.
+- L6a and L6d sit on the identical substrate (same translation group and
+  step set) and differ in `c_0`. Internal dimension `s = 2` does not
+  restore uniqueness.
+- The directional ratio `S(n̂) = c_0 / h_{C_micro}(n̂)` equals 1 in some
+  direction only in the rows with `c_0 = r_in`.
+- Different substrates can share `c_0`. L3s4 at `a = sqrt3/2` has
+  `c_0 = 1/2`, the value of L6a on the hexagonal substrate. This is
+  immediate from the L3s4 continuum (every `c_0` in `(0, 1/sqrt3)` is
+  attained on BCC) and is a statement in the units of this table (longest
+  step 1, one update per time unit; the `N_3` steps have unit length). In
+  units of `r_in` the two rows differ (`sqrt3/2` against `1/sqrt3`). It
+  shows that a common `c_0` across substrates is possible by choice of
+  coin parameters, not that anything forces it: IR universality (A) stays
+  OPEN.
+- In the hexagonal subclass the internal parameter enters through
+  `c_0,raw^2 = (3/2) l^2 (1 - g)`, i.e. through the overlaps `g_ij`
+  weighted by the step products `a_i . a_j` (`= -l^2/2` for `i != j`).
+  Pairwise anticommuting coin operators (`g = 0`) give `c_0/r_in =
+  1/sqrt2`, not the maximum; the maximum `sqrt3/2` is at `g = -1/2`,
+  where the Bloch vectors reproduce the 120° geometry of the steps and
+  the operators do not anticommute. What matters is the joint structure
+  of step vectors and internal overlaps, not anticommutation alone
+  (`reports/2026-11-01--hex-ceiling.md`, T1). Read off that subclass only.
+
+## 2. The ceiling and its scope
+
+- `c_strict^iso <= r_in(C_micro)`: established (CS Sec. 7.2, research
+  direction 1; CS Sec. 4).
+- `c_0 <= c_strict^iso`: `PROVED_UNDER_FROZEN_CONTRACT` with one
+  independent review, for the admitted cones and the exact support of the
+  full symbol on `N_3`, including degenerate Floquet nodes and eigenvalue
+  collisions after taking powers (CS Sec. 7.2); not for incommensurable
+  displacement sets. Outside `N_3` it is
+  `CONFIRMED_IN_DECLARED_ROWS` (Hc, CS Sec. 11 and the L6b row), not
+  proved.
+- Equality `c_0 = c_strict^iso` is not forced: the strong `B_infty^*` is
+  `REJECTED IN THE DECLARED s=4 CLASS` (L3s4).
+- On the hexagonal substrate: `c_0 <= r_in` on `W_hex` is
+  `PROVED_IN_REPO` (classical Bernstein, prior art); the supremum
+  `sqrt3/2` is `GAP_PROVED_IN_CLASS` for the `n = 3` antipodal subclass,
+  attained iff the coin axes are coplanar at 120°; no `s = 2` walk with
+  `F within {0} U vert(H)` reaches the ceiling, `PROVED_FOR_MINIMAL_SUPPORT`
+  (CS Sec. 12); nor does one with `F` within the 13-point or the 19-point
+  hexagon, `PROVED_FOR_S13` and `PROVED_FOR_S19` in `W_hex^sym` (CS
+  Sec. 14; qualitative gap, no bound below `r_in`). The whole class stays
+  OPEN (M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`). Nothing is stated for
+  `s > 2`.
+
+## 3. Away from the node and at finite mass
+
+- **Dispersion** (CS Sec. 13; the group-speed sentence is from the
+  promoted gate's execution report,
+  `reports/2026-11-02--dispersion-corrections-across-lattices.md`
+  Sec. 3.5). Writing `omega = c_0 |k| [1 + beta |k| +
+  alpha |k|^2 + ...]`: the lowest correction is the odd term `beta`
+  exactly in the rows whose walk group lacks inversion (L5a, L5b, L4, L6a,
+  L6b, L3s4), and `alpha` elsewhere. In the `beta` rows the group speed
+  near the node, `|grad eps_+| = c_0 (1 + 2 beta |k| + ...)`, exceeds `c_0` in the
+  directions where `beta > 0`; so `c_0` is not the largest group speed of
+  those walks. L1 is exactly linear. `alpha_0 < 0` in every other row
+  except L3s4 for `0 < a < a* = sqrt3 sqrt(17 - sqrt154)/9`. `V_grp^max` itself is OPEN.
+- **Finite mass** (CS Secs. 4, 5, 11; the row-by-row readings are from
+  the promoted table's execution report,
+  `reports/2026-11-01--c-across-lattices.md` Sec. 5). `c_H` and
+  `c_{omega^2}` differ for `0 < m < 1` in the standard Dirac family, where
+  `c_H < c_{omega^2} < r_in`. In the rows where the
+  mass is a separate coin (L5b, L6c, L6d, L6f), `c_H = c_0 theta / sin
+  theta > c_0` (a Hamiltonian coefficient, not a propagation speed), and
+  `omega^2` has no isotropic quadratic coefficient at finite mass; in L6e
+  the linear term itself becomes anisotropic. The ADMP massive row is
+  OPEN.
+
+## 4. What this does not establish
+
+- No QCA law, rigidity or classification: the rows are a declared finite
+  list from the repo's own constructions and five primary sources
+  (`reports/2026-11-01--c-across-lattices.md`).
+- Not that the hexagonal substrate cannot reach the ceiling; only the
+  `n = 3` antipodal subclass, the `s = 2` minimal-support result of
+  CS Sec. 12, and the `s = 2` results on the 13- and 19-point hexagons of
+  CS Sec. 14. No extrapolation to larger supports. Nothing for `s > 2`.
+- Not that every declared BCC walk reaches the ceiling: L3s4 does not.
+- No closure of `NOVELTY = OPEN` for the hexagonal ceiling.
+- No value of `c` in physical units, no statement about our universe, no
+  identification of any row's excitation with the photon.
+- No IR universality (question A stays OPEN): the table shows that free
+  walks on one substrate do not share `c_0` unless chosen to.
+- No novelty: Bernstein's inequality and the sources' constructions are
+  prior art.
+
+## 5. What is still open, none of it chartered
+
+- Hexagonal supremum in the rest of `W_hex` (CS Sec. 12, T2; CS Sec. 14,
+  M1: supports beyond the 19-point hexagon not chartered).
+- `V_grp^max` per row; IR universality (A); the ADMP massive row.
+
+=== DOCUMENT 3: 2026-11-01--c-across-lattices.md ===
+
+# c across QCA lattices and neighbourhoods — execution report
+
+Date: 2026-11-01. Branch: `research/schur-stability-audit`.
+Contract: [`C_ACROSS_LATTICES_GATE.md`](../theory/C_ACROSS_LATTICES_GATE.md),
+preregistered at `30672ba52b037f95b99c7f3b3dc791d215b97cdf`; contract SHA256
+`b58deeec91184fbf976a6cb857c8e935ec7d4a4e52d6608a62768452759e34e3`, unchanged
+since the freeze.
+Verifier: [`scripts/verify_c_across_lattices_gate.py`](../scripts/verify_c_across_lattices_gate.py);
+reviewed version at `cae6e308ab0e224f48db875df0997b362a13a98c`, SHA256
+`1da30dab9060c8d97a4452eb07451f7886325f4fd87ce22a27cdd950dfee9645`;
+repaired version in the commit that adds this repair note.
+Author: Claude Code (Claude Opus 5.5), at the user's direction.
+
+**Gate verdict: `TABLE_PARTIAL_L6B_UNENCODED_ADMP_MASS_VGRP_OPEN`.**
+**Evidence level: PRELIMINARY.** Repaired 2026-11-01 after the
+[Grok/Gemini reviews](2026-11-01--c-across-lattices-review.md) (Grok
+REPAIR_REQUIRED, Gemini PASS); the repaired snapshot awaits a bounded
+re-review. Not promoted.
+
+**Repairs applied (2026-11-01).** (1) Every tabulated value — step sets,
+group indices, `r_in`, `c_0`, vertex counts, Gram matrices, `K` — is now
+asserted by an exact `record` in the verifier, which passes 135/135; a
+negative test (altering one expected `c_0` and one step set in memory)
+makes it exit 1 on exactly those checks. (2) Sec. 2 no longer presents the
+continuum-speed agreement as a test of the product order. (3) Hb/Hc are
+stated for the decided rows with L6b OPEN, not with the token
+`CONFIRMED_IN_DECLARED_ROWS`. Clarifications: the Duhamel identity of
+Sec. 5 is corrected (no number changes); Sec. 3 distinguishes the finer
+group of L6c; the Fourier sign convention relative to JDW's plane wave is
+noted; the script docstring is updated.
+
+## 0. Answer in one paragraph
+
+Within the declared rows, the substrate fixes a ceiling and the walk decides
+where `c` sits below it. Every declared walk on the square, cubic/BCC and
+line substrates reaches the ceiling, `c_0 = r_in(C_micro)`. No declared walk
+on the hexagonal (triangular-lattice) substrate reaches it, and two walks on
+the identical hexagonal substrate (ADMP L6a and JDW L6d: same translation
+group, same step set) have different `c_0`, `1/2` and `3/4` in units where
+the longest step is 1 — so even at internal dimension `s=2` the substrate
+does not determine `c`. In every computed row the strict asymptotic body
+equals `C_micro` (all vertex amplitudes survive), so `c_strict^iso = r_in`
+and `c_0 <= c_strict^iso`. This is a statement about thirteen declared rows,
+not a QCA law (PROJECT_INSTRUCTIONS §7).
+
+## 1. Execution record
+
+Run from the repository root with Python 3.12.3 and the pinned
+`sympy==1.14.0`, `numpy==1.26.4` (fresh virtual environment; the system
+interpreter has no SymPy):
+
+```sh
+python -B scripts/verify_c_across_lattices_gate.py
+```
+
+Result (repaired verifier): exit 0, **135/135 exact checks PASS, 0 FAIL**
+(103/103 in the reviewed version at `cae6e30`). No floating point,
+sampling or fitting in any certified quantity. Zero tests are symbolic; the
+sign of a nonzero radical is decided by SymPy's exact relational evaluation.
+The reviewed helpers `published_symbol` and `fourier_support` of
+`verify_weyl_dirac_gate.py` are imported read-only for L1/L2; no reviewed
+file was modified.
+
+Development history, stated because it matters for review: the first
+Part 1 run failed 10 checks through a wrong Laurent adjoint (conjugated `z`
+was never replaced by `1/z`) and two SymPy simplification failures
+(unreduced `exp(2 pi i/3)`, and `.H` of `cos(arccos(.)/2)`); a check with
+`or True` was removed before any result was used. The first Part 3 version
+assumed isotropy and compared one matrix entry; it was replaced by checks
+that certify the exact structure. All of these are visible in the commit
+history `28ef8f1`, `de5680b`, `cae6e30`.
+
+## 2. Conventions (contract Sec. 2)
+
+- Moving amplitude by `h` carries `exp(-i k.h)`; an operator that reads the
+  value at `X+v` moves amplitude by `-v`.
+- In every product the factor with the smallest index acts first, as the
+  sources write explicitly for JDW Eqs. (4), (6) and ADMP Eq. (10). For the
+  `prod_j` notation of JDW Eqs. (2), (8) the same reading is a declared
+  choice.
+- One complete update = one time unit; positions are divided by the
+  longest `|h|` in the composite step set `F`.
+- Substrate = translation group generated by `F` together with `F`, as
+  computed from the equation, not the paper's lattice label.
+
+**Control against the sources.** Converting each `c_0` back to the source's
+own units reproduces the continuum speed each source states: JDW
+`Delta t = 3 epsilon/2` (L6c, L6d), `epsilon` (L6e), `3 sqrt3 epsilon/4`
+(L6f) give `c = 1`; ADMP, Farrelly–Short and Mlodinow–Brun give `c = 1` per
+update in their units. This checks the routing and scale conventions. It
+does **not** test the product order: since every factor satisfies
+`W_j(0) = I`, the linear term is the sum of the factors' derivatives and is
+order-independent (Grok review). The `prod_j` order of JDW Eqs. (2), (8)
+remains a declared reading; `K` (Sec. 5) and vertex coefficients of L6c and
+L6f may depend on it.
+
+**Fourier sign.** Relative to JDW's plane wave `exp i(omega t - k.X)`, the
+encoded symbol corresponds to `k -> -k`. Every tabulated quantity
+(`U(0)`, quadratic cone, Gram, Hessian) is even in `k`, so the table is
+unaffected.
+
+## 3. Step sets: what the substrates actually are (Part 1)
+
+| Row | Source label | Composite `F` (source units) | Substrate |
+| --- | --- | --- | --- |
+| L5a | BCC, axis product (FS Eqs. (20)–(21)) | the 8 points `{±1}^3` | BCC, same as L3 |
+| L5b | BCC, axis product (MB Eqs. (23), (33)), s=4 | `{±1}^3` | BCC, same as L3 |
+| L6a | honeycomb (ADMP Eq. (7)/(10)) | `0` and the hexagon `{±2u_i}`, radius 2 | triangular lattice, hexagonal `C_micro` |
+| L6c | equilateral triangular, six-step (JDW Eq. (2)) | 19 points: the full hexagonal ball of radius 2 | same hexagonal `C_micro` as L6a, finer group (index 1 vs 4) |
+| L6d | equilateral triangular, three-step (JDW Eq. (4)) | identical to L6a | **identical substrate to L6a** |
+| L6e | isosceles triangular (JDW Eq. (6)) | the 4 points `(±1,±1)` | **square lattice with diagonal steps, same as L2** |
+| L6f | honeycomb (JDW Eqs. (7)–(8)) | `0` and a hexagon of radius `sqrt3`, rotated 30° | triangular lattice, hexagonal `C_micro` (L6a up to rotation and scale) |
+| L6b | triangular (ADMP Eq. (12)) | **not encoded** | edge geometry fixed only by Fig. 1 of the source |
+
+No "honeycomb" walk in the declared sources acts on a honeycomb Bravais
+structure: as homogeneous walks they move on a triangular lattice. The JDW
+"isosceles" walk is on the standard square substrate. In two dimensions the
+declared rows realise **two `C_micro` shapes** up to isometry and scale,
+square and hexagonal. Counting the translation group as well, there are
+three: square (L2, L6e); hexagon with step spacing equal to the hull radius
+(L6a, L6d, L6f); and the same hexagon over the finer triangular group of
+L6c (spacing/radius `1/2`, a scale invariant).
+
+**Source sign issues (ADMP 1803.01015v2 p.3), certified as recorded
+issues, not repaired silently:** (i) Eq. (8) holds for
+`alpha = -arccos(sqrt5/3)`, not the printed `+arccos(sqrt5/3)`; (ii) with the
+printed `S = e^{i pi/3} R_z(2 pi/3)`, `U_0 S` yields `tau_2`, not `tau_1`;
+with `S^{-1}` the relations hold and the Eq. (10) symbol equals
+`U_0 (Eq. (7) symbol) U_0^dag` exactly. L6a is built from the `tau_i` of
+Eq. (5), which conditions C1–C2 define and the script verifies. Neither
+issue changes `F` or `c_0`.
+
+## 4. Massless table (Part 2)
+
+Units: longest step 1, one update per time unit. `V_causal^max = 1` in
+every row by this normalisation. All entries exact.
+
+| Row | Substrate | s | `r_in` | `c_0` | `c_0 / r_in` | `c_strict^iso` | `S_min = c_0` | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| L1 | line | 2 | 1 | 1 | **1** | 1 | 1 | computed here |
+| L2 | square | 2 | `1/sqrt2` | `1/sqrt2` | **1** | `1/sqrt2` | `1/sqrt2` | `C_infty^strict` new here; `c_0` from Sec. 5 |
+| L6e | square | 2 | `1/sqrt2` | `1/sqrt2` | **1** | `1/sqrt2` | `1/sqrt2` | new |
+| L3 | BCC | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | CURRENT_STATE Secs. 4, 5 (certified) |
+| L5a | BCC | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | new |
+| L5b | BCC | 4 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | new |
+| L3s4 | BCC | 4 | `1/sqrt3` | `a/sqrt3`, `0<a<1` | **a** | `1/sqrt3` | `a/sqrt3` | CURRENT_STATE Sec. 4.1 (reviewed) |
+| L4 | cube `[-1,1]^3` | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | CURRENT_STATE Sec. 8 (CJWW (5.12), (5.15)) |
+| L6a | hexagon | 2 | `sqrt3/2` | `1/2` | **`1/sqrt3` ≈ 0.577** | `sqrt3/2` | `1/2` | new |
+| L6c | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2` ≈ 0.866** | `sqrt3/2` | `3/4` | new |
+| L6d | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2`** | `sqrt3/2` | `3/4` | new |
+| L6f | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2`** | `sqrt3/2` | `3/4` | new |
+| L6b | — | 2 | — | — | — | — | — | OPEN (not encoded) |
+
+For every computed row the script certifies: `U(0) = I` (node at `k=0`),
+Hermitian linear generators, zero tilt, an isotropic untilted cone
+(`{T_a, T_b} = 2 c_0^2 delta_ab`), the exact facets and vertices of
+`C_micro`, and that every vertex Fourier coefficient is non-nilpotent. A
+vertex `v` of `conv F` is reached in `n` updates only by repeating `v`, so
+the coefficient of `n v` in `U^n` is `A_v^n != 0` for all `n`; hence
+`C_infty^strict = C_micro` and `c_strict^iso = r_in` exactly in those rows.
+For L4 the vertex statement is the one already recorded in Sec. 8.5.
+
+`S(n̂) = c_0 / h_{C_micro}(n̂)` ranges from `S_min = c_0` (at a vertex
+direction) to `S_max = c_0 / r_in` (at a facet normal). Only the rows with
+`c_0 / r_in = 1` have `S = 1` in any direction.
+
+`V_grp^max = sup |grad omega|` is **not computed** for the new rows: no
+exact certificate was attempted. It stays OPEN; Bernstein-type bounds give
+`V_grp^max <= V_causal^max` as prior art, not as a result of this gate.
+
+## 5. Massive rows (Part 3)
+
+Mass parameter `theta` = quasienergy gap at `k=0`, as each source inserts
+it: MB coin `e^{-i theta Q}` (L5b); JDW `U_m = U(0,0,-pi/2,phi)
+= e^{-i phi sigma_x}` on the left, `theta = 3m/2` (L6c, and L6d "the same
+way", JDW p.2), `theta = 3 sqrt3 m/4` (L6f); JDW L6e replaces `U^1` so that
+`U(0) = e^{-i m sigma_x}`, `theta = m`.
+
+Method (exact, no matrix-log series). For `U(0) = e^{-i theta Q}`,
+`Q^2 = I`, Duhamel's formula gives
+`i dU U(0)^dag = X_par + (sin theta/theta) X_perp e^{i theta Q}`, with
+`X_par`, `X_perp` the parts of `dH` commuting and anticommuting with `Q`.
+(The reviewed version omitted the unitary factor `e^{i theta Q}`; both
+reviewers flagged it; corrected here.) The verifier forms
+`B_a = X_par + X_perp e^{i theta Q}` and asserts `X_par = 0`; then `B_a` is
+Hermitian, anticommutes with `Q`, and `{B_a, B_b} = {X_a, X_b}`, so its Gram
+matrix is that of `dH`. `c_H(n̂)^2 = n̂.g.n̂` with
+`{dH_a, dH_b} = 2 g_ab I` — the linear spatial coefficient of `H = i log U`
+at fixed mass, as in the Weyl/Dirac gate. No tabulated number changes. For `omega`,
+`G = (U+U^dag)/2` has eigenvalues `cos omega_j`, is scalar at `k=0` and has
+zero gradient, so its Hessian gives `omega_j^2 = theta^2 +
+(theta/sin theta) q_j |k|^2`. The script certifies
+`Hess cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K` with `K`
+independent of `theta`; an isotropic `c_omega2` exists iff `K = 0`, and then
+`c_omega2 = c_0 sqrt(theta cot theta)`.
+
+**Positive control.** On the reviewed minimal 1D Dirac block of the
+Weyl/Dirac gate the same code returns `c_H = c_0 M cot M` and `K = 0`
+(isotropic `c_omega2`), reproducing `reports/2026-09-14--weyl-dirac-exact-gate.md`
+Secs. 5–6.
+
+| Row | linear term at `theta != 0` | `omega^2` curvature at `theta != 0` |
+| --- | --- | --- |
+| L5b (MB, BCC, s=4) | isotropic, `c_H = c_0 theta/sin theta` | `K != 0`: anisotropic and band-split; no isotropic `c_omega2` |
+| L6c (JDW) | isotropic, `c_H = c_0 theta/sin theta` | `K = diag(-5 sqrt3/32, 3 sqrt3/32)`: anisotropic |
+| L6d (JDW) | isotropic, `c_H = c_0 theta/sin theta` | `K = [[sqrt3/16, -3/8], [-3/8, -3 sqrt3/16]]`: anisotropic |
+| L6f (JDW) | isotropic, `c_H = c_0 theta/sin theta` | `K = diag(-3 sqrt3/16, 5 sqrt3/16)`: anisotropic |
+| L6e (JDW) | **anisotropic**: `g / (c_0 theta/sin theta)^2 = [[1, sin 2theta], [sin 2theta, 1]]` | `K = [[0, -1/2], [-1/2, 0]]`: anisotropic |
+| L6a (ADMP) | OPEN: mass enters inside the coin, `U(0) = prod_i e^{-i mu tau_i}`; not encoded | OPEN |
+| control: 1D Dirac | `c_H = c_0 M cot M` | `K = 0`, `c_omega2 = c_0 sqrt(M cot M)` |
+
+Readings, each limited to these rows:
+
+1. Where the mass is a separate coin multiplying a unitary hopping product
+   (L5b, L6c, L6d, L6f), `c_H = c_0 theta/sin theta > c_0` for
+   `0 < theta < pi`. In the standard Dirac family, where the hopping
+   amplitude is scaled by `cos M`, `c_H = c_0 M cot M < c_0`. So `c_H` can
+   exceed the ceiling `r_in` in these rows. This contradicts no bound: `c_H`
+   is a Hamiltonian coefficient, not a propagation speed.
+2. In every massive row computed here, `omega^2` has **no isotropic
+   quadratic coefficient** at finite mass; the anisotropy is
+   `O(sin theta)` and vanishes as `theta -> 0`, where `c_H`, and the
+   isotropic part of the curvature, both return to `c_0`. The standard
+   Dirac family is the only computed case with an isotropic `c_omega2`.
+   The repo rule "do not treat `c_H` and `c_{omega^2}` as interchangeable"
+   is strengthened here: at finite mass there may be no single
+   `c_{omega^2}` at all.
+3. L6e shows that where the mass is inserted matters: replacing an
+   internal coin of the sequence makes the linear term itself anisotropic.
+
+## 6. Hypotheses (contract Sec. 5)
+
+| Hypothesis | Verdict |
+| --- | --- |
+| Ha: `c_0 = r_in` in every declared s=2 row with a massless node | **`REFUTED_BY_ROW_L6a`** (also L6c, L6d, L6f). Holds in L1, L2, L5a, L6e and the recorded L3, L4. |
+| Hb: `c_strict^iso = r_in` in every declared row | **OPEN**: holds in every decided row (all computed and recorded rows); L6b undecided. The token `CONFIRMED_IN_DECLARED_ROWS` is not used because a declared row is OPEN. |
+| Hc: no declared row with `c_0 > c_strict^iso` | **OPEN**: holds in every decided row (asserted by the script for the computed rows; L3, L3s4, L4 from their records); L6b undecided. |
+
+## 7. What this does not establish
+
+- No rigidity, classification or general QCA law: the rows are a declared
+  finite list from five sources, plus the repo's existing rows.
+- Not that hexagonal substrates cannot reach the ceiling: only that none of
+  the four declared hexagonal walks does.
+- No statement about doublers or nodes other than `k=0`; no
+  finite-momentum dispersion beyond second order; no `V_grp^max`.
+- No claim about which P17 hypothesis each L6 row violates beyond the
+  sources' own account (ADMP p.2: spinors on triangle edges). Identifying
+  it is left OPEN; the substrate result (triangular group) is a candidate
+  explanation, not a proof.
+- No novelty claim. Bernstein and the sources' constructions are prior
+  art. No claim about our universe.
+- Convention dependence: the JDW `prod_j` order for Eqs. (2) and (8) is a
+  declared reading. The agreement with each source's continuum speed (Sec. 2)
+  supports the conventions but does not prove them.
+
+## 8. Open items
+
+`L6b` (source underdetermined), ADMP massive row, `V_grp^max` for the new
+rows, the P17-hypothesis identification for L6 rows. None is authorized by
+this report; each would need a revised or new charter.
+
+## 9. Next steps
+
+Independent cross-family review of this report and of the verifier at
+`cae6e30`, then a separate promotion commit. Nothing here is promoted.
+
+=== DOCUMENT 4: C_ACROSS_LATTICES_GATE.md ===
+
+# C_ACROSS_LATTICES — frozen contract
+
+**Frozen:** 2026-11-01, before solving. No row has been computed.
+**Authorization:** direct user instruction, 2026-11-01: the user redirected
+the project to "ver cuánto es c en distintos sustratos", chose QCA lattices
+and neighbourhoods within scope, accepted rows L5 and L6 and hypotheses
+Ha–Hc, and approved this text («si»). Reports cite the commit that adds
+this file as the preregistration commit.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> For each declared lattice/neighbourhood and each declared walk family on
+> it, what is the relativistic speed `c` relative to the microscopic causal
+> geometry of that substrate, and which part of `c` is fixed by the
+> substrate and which by the walk?
+
+The deliverable is a table of exact quantities, one row per declared
+(lattice, family, node) triple. It is descriptive. No rigidity or general
+QCA law may be drawn from it (PROJECT_INSTRUCTIONS §7).
+
+## 1. Background taken as input (not re-proved here)
+
+Cited from `state/CURRENT_STATE.md` at the freeze commit, with their scope:
+
+- `c_strict^iso <= r_in(C_micro)` (Sec. 4).
+- `c_0 <= c_strict^iso` in all directions, proved under the point-(3)
+  contract for the N3 class only (Sec. 7.2). Not assumed for other
+  displacement sets.
+- P17 (`sources/1708.00826v2.pdf` p.7 Prop. 5, p.6 Fig. 1): for `s=2`
+  QWs on `Z^d` isotropic on `S+` in its sense (with its Eq. (2)), the
+  admissible Cayley graph is unique in each `d=1,2,3`: line, simple
+  square, BCC. The L6 walks below are therefore outside at least one of
+  P17's hypotheses; which one is recorded per row before computing.
+- Farrelly–Short (`sources/1312.2852v1.pdf` p.4–5, Eqs. (20)–(21)): the
+  axis-by-axis conditional-shift walk `U_D = T_x T_y T_z` "essentially
+  uses a body centred cubic neighbourhood", and the simple cubic
+  neighbourhood "cannot give the three dimensional Weyl equation in the
+  continuum limit" (their ref. [8]; quoted, not re-proved here).
+- Standard Weyl/Dirac battery: `c_0 = r_in = 1/sqrt(d)` for d=1,2,3;
+  massive `c_H < c_{omega^2} < r_in` for `0<m<1` (Sec. 5).
+- s=4 family on N3: `c_0(a) = a/sqrt(3) < c_strict^iso = 1/sqrt(3)`
+  (Sec. 4.1).
+- CJWW (5.12), (5.15) on Z^3, `C_micro=[-1,1]^3`, `c_IR=1` (Sec. 8).
+
+Rows already established are re-tabulated from those records with their
+existing tags. They are not recomputed except where a quantity is missing
+(e.g. `C_infty^strict` for d=1,2, marked "not checked" in Sec. 4).
+
+## 2. Declared lattices and neighbourhoods
+
+**Substrate = what the equation does, not the paper's label.** For each
+row the substrate is declared as the translation group actually acting
+(the subgroup of `R^d` generated by the displacements of one complete
+update) together with the composite step set `F` of that update: all
+sums of one displacement per partial shift, with internal components
+routed as the equation states. If two rows labelled differently (e.g.
+"honeycomb" and "triangular") yield the same group and `F` up to
+isometry and scale, they are the **same substrate** carrying different
+walks, and must be reported that way. Computing `F` from the equation is
+the first execution step of each row; a disagreement with the paper's
+own lattice label is recorded, not repaired.
+
+**Time unit.** One complete update (the full product of partial shifts
+and coins as written in the source) is one time unit. Multi-step walks
+whose source takes the continuum limit over several updates (ADMP
+triangular, three updates) are also reported per update. Normalisation:
+longest vector in `F` has length 1. Each row additionally reports `c`
+in the source's own units (its `epsilon`, `Delta t`) for cross-checking
+against the source's stated continuum coefficient.
+
+| Id | d | Source label | Source, equations, page | s |
+| --- | --- | --- | --- | --- |
+| L1 | 1 | line `{±1}` | standard battery (done) | 2 |
+| L2 | 2 | square, `N_2={(±1,±1)/sqrt2}` | P17 / standard battery (done massless) | 2 |
+| L3 | 3 | BCC, `N_3` | P17 / standard battery (done) | 2 |
+| L3s4 | 3 | BCC, `N_3` | S4 family (done) | 4 |
+| L4 | 3 | Z^3, `C_micro=[-1,1]^3` | CJWW `2408.02108v1` (5.12), (5.15) (done in part) | 2 |
+| L5a | 3 | BCC via axis product | Farrelly–Short `1312.2852v1` Eqs. (20)–(21) p.4–5 | 2 |
+| L5b | 3 | BCC via axis product | Mlodinow–Brun `1802.03910v1` Eq. (23) p.5, symbol Eq. (33) p.7, `Delta P_i`, `Q` mutually anticommuting involutions (Eqs. (25)–(27) p.6); mass `theta` | 4 |
+| L6a | 2 | honeycomb | ADMP `1803.01015v2` Eq. (10) p.3 (coin `W` Eq. (9), axes Eq. (4)) | 2 |
+| L6b | 2 | triangular | ADMP `1803.01015v2` Eq. (12) p.4 (source: equivalent to L6a over three updates) | 2 |
+| L6c | 2 | equilateral triangular, six-step | JDW `1803.01304v1` Eq. (2) p.2, `U(·)` Eq. (1) p.1, neighbours p.1 | 2 |
+| L6d | 2 | equilateral triangular, three-step | JDW `1803.01304v1` Eq. (4) p.2 | 2 |
+| L6e | 2 | isosceles triangular, three-step | JDW `1803.01304v1` Eq. (6) p.2 | 2 |
+| L6f | 2 | honeycomb, three-step | JDW `1803.01304v1` Eqs. (7)–(8) p.2 | 2 |
+
+**Excluded, with reason.** Arrighi–Facchini `1609.00305v2`: paired QW
+with a prior encoding, coins on enlarged neighbourhoods and position-
+dependent coins (p.1–3, Eqs. (3)–(6)); its step set depends on the
+encoding convention, so it is not comparable without an extra
+declaration. The equivalence of its homogeneous specialization with the
+S4 family stays the separate OPEN item already recorded in
+`CURRENT_STATE.md` Sec. 4.1.
+
+Mass terms: where the source gives one (L5b `theta`, ADMP `M`, JDW
+`U_m`), the massless row is primary; the massive row is computed with
+`c_H` and `c_{omega^2}` kept separate, over the source's stated range.
+
+Only walks whose symbols are read from a primary source equation are
+admitted. No walk is constructed for this gate (no model search). Where a
+source gives a parameter family, the admissible structural coefficients
+are varied over the source's stated range, not only transposes or
+chiralities.
+
+## 3. Quantifiers frozen per row
+
+For each row, before computing: internal dimension `s`, group and action,
+representation of the isotropy group (irreducible or not), node and sector,
+any irreducibility or minimality assumption. Every conclusion keeps them.
+
+P17 compatibility: L6 rows are two-component walks on lattices that P17
+p.7 Prop. 5 excludes for isotropic `s=2` QWs, so each violates at least
+one P17 hypothesis. Before computing, record the source's own account
+(ADMP p.2: spinors on edges shared by triangles; JDW: none stated, to be
+recorded as such). Identifying which hypothesis actually fails is an
+execution item, reported per row; it is not a new theorem.
+
+## 4. Quantities per row
+
+All exact (SymPy, zero tolerance):
+
+1. `C_micro = conv F`, support function `h_C`, inradius `r_in`,
+   `V_causal^max`.
+2. Exact Bloch symbol and eigenphases at the declared node.
+3. `c_0` (massless linear IR coefficient) and, if the node cone is not
+   isotropic, the directional coefficient `c_0(n̂)`.
+4. `C_infty^strict` by vertex-trace survival, hence `c_strict^iso`.
+   If survival cannot be decided exactly, the entry is `OPEN`, not
+   estimated.
+5. `S(n̂) = c_0 / h_C(n̂)` and `S_min`.
+6. `V_grp^max = sup |∇omega|` if it is exactly certifiable; else `OPEN`.
+7. If the source defines a mass term: `c_H` and `c_{omega^2}` separately.
+
+## 5. Hypotheses, stated before solving
+
+- **Ha.** In every declared `s=2` row with a massless node, `c_0 = r_in`.
+- **Hb.** In every declared row, `c_strict^iso = r_in` (all vertex
+  amplitudes survive).
+- **Hc.** No declared row has `c_0 > c_strict^iso`. For rows outside N3
+  this is a check, not a consequence of point (3).
+
+Refuting any of them is a valid outcome. A pattern across rows is
+recorded as a pattern in the declared list, not as a law.
+
+## 6. Stop rules
+
+- Stop when every declared row is filled or marked `OPEN` with its reason.
+- No numerics in a certified entry; no fitting.
+- Do not add lattices, families or constructions during execution. Adding
+  one needs a revised charter.
+- If a source's symbol fails unitarity or its published sign is
+  ambiguous, record it, follow the approach of the Weyl/Dirac gate (use
+  the declared matrices), and do not repair silently.
+
+## 7. Exclusions
+
+No new substrate class, random lattices, causal sets, interacting QCA,
+anisotropic detour beyond the declared rows, or claim about our universe.
+No novelty claim; Bernstein is prior art. No H1 work.
+
+## 8. Verdicts
+
+- `TABLE_COMPLETE` — every row filled exactly.
+- `TABLE_PARTIAL_<reason>` — some entries `OPEN` with recorded reason.
+- Per hypothesis: `CONFIRMED_IN_DECLARED_ROWS` or
+  `REFUTED_BY_ROW_<Id>`.
+
+## 9. Deliverables
+
+- `reports/YYYY-MM-DD--c-across-lattices.md` (derivation and table).
+- `scripts/verify_c_across_lattices_gate.py` (fail-closed, exact),
+  reusing reviewed helpers read-only; its two exact command forms added to
+  `.claude/settings.json`.
+- Independent cross-family review before any promotion.
+
+=== DOCUMENT 5: HEX_SUPREMUM_GATE.md ===
+
+# HEX_SUPREMUM (M1) — frozen contract
+
+**Frozen:** 2026-11-03, before solving. Nothing in Secs. 3–5 has been
+computed. Drafted by Claude Code (Claude Opus 5.5) at the user's
+instruction («vamos con la carta M1»).
+**Authorization:** user approval of the draft, 2026-11-03, «APROBACIÓN CON
+ENMIENDAS», with three amendments incorporated before freezing: (1) the
+solver budget is cumulative per support, not per run (Sec. 5); (2) the
+sum-of-squares certificate has the explicit form of Sec. 4, and the
+no-real-zero alternative needs its own certificate; (3) a witness answers
+the saturation question only, without a broader claim about the substrate
+(Sec. 0). Approval covers the preregistration and Stage A as first work,
+with no confirmatory numerics.
+Reports cite the commit that adds this file as the preregistration commit.
+**Initial scientific status: OPEN.**
+**Parent:** `HEX_CEILING_GATE.md` (T2 general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`,
+CURRENT_STATE Sec. 12). This gate continues T2 only; it does not reopen L0,
+T1 or the minimal-support T2.
+
+## 0. Pre-step check (rule of 2026-11-02)
+
+- **Known.** K4 (`c_0 = r_in` attained on line, square, BCC/cubic rows) and
+  K5 (hexagon: L0 `c_0 <= r_in` on `W_hex`; T1 `sup = sqrt3/2` in the
+  `n = 3` antipodal subclass; no s=2 walk with `F within {0} U vert(H)`
+  reaches `r_in`). Saturation along a facet normal is rigid (hex-ceiling
+  report Sec. 3, Step 1). A grevlex Gröbner basis over `C` for the 19-point
+  ball did not finish in 900 s, and would not have decided real
+  solvability anyway (hex-ceiling report Sec. 4).
+- **Question.** Does any s=2 walk in `W_hex` reach `c_0 = r_in`?
+- **Result that ends the line** (research-lines report, M1):
+  (a) an explicit witness in `W_hex` with `c_0 = r_in`, certified exactly:
+  the saturation question is answered affirmatively for `s = 2` and the
+  line M1 closes. This shows only that the hexagonal substrate admits
+  saturation in `W_hex`; it does not by itself show that no other
+  property of `c` specific to the hexagonal substrate remains;
+  (b) no exact method of Sec. 4 finishes within the session budget of
+  Sec. 5: stop at `OPEN_AFTER_<analysis>`, no numerics.
+  A gap proof for the whole class keeps the line (it is the only outcome
+  that makes the hexagon substrate-specific). A gap proof for a bounded
+  support only is recorded as such and does not close the line either way.
+
+## 1. Single question
+
+> On the hexagonal substrate, is there a two-component walk of the class
+> `W_hex` with `c_0 = r_in(C_micro)`, i.e. a walk whose support is not of
+> minimal type and which saturates the ceiling?
+
+## 2. Declared class
+
+`W_hex` exactly as in `HEX_CEILING_GATE.md` Sec. 1 (triangular lattice
+`Lambda`, `s = 2`, product of coin–partial-shift factors, `C_micro = conv F`
+a regular hexagon from the exact composite support, scalar `U(0)`,
+traceless isotropic linear term, longest vector of `F` of length 1).
+
+Two readings of the class are kept apart:
+
+- **Gap direction.** A proof that `c_0 < r_in` may use only unitarity, `F`,
+  the node and isotropy (as the minimal-support T2 did). It then holds for
+  the larger class `W_hex^sym` of all s=2 unitary Laurent polynomials with
+  those properties, which contains `W_hex`; it is stated for `W_hex^sym`.
+- **Witness direction.** A witness must lie in `W_hex`: it is given as an
+  explicit product `C_n D_n(k) ... C_1 D_1(k)`. A saturating symbol found
+  without a product factorization is reported as a witness in `W_hex^sym`
+  only, which does not meet result (a); in two dimensions factorization is
+  not automatic [UNVERIFIED as a general statement; not used].
+
+**Supports.** Regular lattice hexagons centred at the origin have vertices
+`R^j v`, `v in Lambda`, `R` the 60° rotation. Ordered by the number of
+lattice points of the closed hull (to be certified by the verifier, not
+assumed):
+
+- `S7`: `v = g_1` — 7 points; every walk is of minimal type (done in T2).
+- `S13`: `v = g_1 + g_2` — origin, inner ring of six unit vectors, six
+  vertices: 13 points. Smallest support not covered by T2.
+- `S19`: `v = 2 g_1` — the radius-2 ball (contains JDW L6c, `c_0/r_in =
+  sqrt3/2`).
+- larger hexagons: covered only by a structural argument (Sec. 4, Stage A).
+
+## 3. Targets
+
+- **M1-A (structural).** Necessary conditions for saturation valid for
+  every support, from facet-line rigidity and the extreme-face unitarity
+  identities (Sec. 4). Either a gap proof for `W_hex^sym`, or a reduced
+  normal form with fewer unknowns for Stage B.
+- **M1-B13.** On `S13`: gap proof (`c_0 < r_in` for every walk with
+  `F within S13`) or an explicit witness.
+- **M1-B19.** On `S19`: same, only after M1-B13 has a verdict.
+
+## 4. Method, named before any computation
+
+**Stage A — structural reduction (by hand, checked by the verifier).**
+
+1. Facet-line rigidity (hex-ceiling report Sec. 3, Step 1, reused): along
+   each of the three facet-normal lines the top edge sums to `P_+(n_f)`,
+   the bottom edge to `P_-(n_f)`, every intermediate layer to `0`.
+2. Extreme-face identities. The Newton polytope of `U U^dag` lies in
+   `C - C = 2C`. For each edge `e` of `C` with outward normal `n_e`, the
+   coefficients of `U U^dag` and `U^dag U` on the face of `2C` in direction
+   `n_e` vanish (except at `0`, not on the face). With `E_e(x)` the edge
+   polynomial of the top edge and `E_{-e}(x)` that of the opposite edge,
+   this gives `E_e(x) E_{-e}(x)^dag = 0` and `E_{-e}(x)^dag E_e(x) = 0` as
+   one-variable Laurent identities, together with `E_e(1) = P_+(n_e)`,
+   `E_{-e}(1) = P_-(n_e)` from step 1.
+3. Use 1–2 (and, if needed, the next-to-extreme faces) to restrict the
+   edge coefficients to rank-one forms and eliminate unknowns, before any
+   solver is run. Step 2 is a standard fact about Laurent polynomials
+   (product of extreme coefficients); its use here is stated and proved in
+   the report, not cited.
+
+**Stage B — exact decision on a bounded support (`S13`, then `S19`).**
+
+- Unknowns: the coefficients left after Stage A and the normal form of the
+  hex-ceiling report Sec. 3, Step 2 (`A(n) = r_in n . sigma`, vertices at
+  `k pi/3`).
+- Equations: layer equations, node and isotropy, and unitarity
+  `sum_h A_{h+d} A_h^dag = delta_{d0} I`, `sum_h A_h^dag A_{h+d} = delta_{d0} I`.
+- **Infeasibility certificate (gap).** Accepted forms only, each checked
+  exactly and quickly by the verifier without rerunning a solver:
+  (i) a polynomial `p` in the ideal, given with explicit exact cofactors
+  `p = sum_i h_i f_i`, whose absence of real zeros is itself certified
+  exactly (e.g. a univariate polynomial with negative discriminant, as in
+  T2, or a sum-of-squares-plus-positive-constant representation of `p`);
+  or (ii) for the real system `f_1 = ... = f_m = 0`, an identity
+  `-1 = sum_j q_j(x)^2 + sum_i h_i(x) f_i(x)` with exact rational
+  coefficients, the verifier expanding both sides and checking equality. A Gröbner basis over `C`
+  different from `{1}` decides nothing about real solvability and is not a
+  verdict.
+- **Witness.** Closed form, certified exactly: unitarity, composite `F`,
+  regular hexagonal hull, node, isotropy, `c_0 = r_in`, and the product
+  factorization (Sec. 2).
+- Exploratory numerics (a versioned script labelled exploratory) may guide
+  the search for a witness or for the certificate. **No numerical result,
+  scan, optimisation or failed search enters a verdict**, and no rigidity
+  is inferred from one.
+
+## 5. Stop rules and budget
+
+- Order: Stage A, then M1-B13, then M1-B19. Do not start the next stage
+  before the previous has a verdict or a recorded stop.
+- Budget: one working session, and at most 3600 s of solver wall time
+  **cumulative per support** (`S13`, `S19`), however it is split across
+  runs; every run is recorded with its command, wall time and exit code.
+  A run cut by the budget is inconclusive and is not evidence.
+- Stop at the first of: a witness meeting Sec. 4 (result (a); then M1
+  closes, with the limited reading of Sec. 0); a gap proof for `W_hex^sym` (line kept); budget exhausted
+  (result (b), `OPEN_AFTER_<analysis>` naming the stages done).
+- Do not widen the class during execution; restricted results stay
+  restricted.
+
+## 6. Exclusions
+
+`s > 2`, other lattices, masses, `V_grp^max`, inhomogeneous or encoded
+walks, new substrate classes, general QCA laws, claims about our universe.
+No novelty claim: Bernstein's inequality and its equality case are prior
+art; the hexagonal-ceiling prior-art check (plan step 4) is not finished.
+
+## 7. Verdicts
+
+- M1-A: `GAP_PROVED_IN_CLASS` (for `W_hex^sym`), `REDUCED_TO_<normal form>`,
+  or `OPEN_AFTER_<analysis>`.
+- M1-B13, M1-B19: `PROVED_FOR_<support>` (gap on that support),
+  `CEILING_ATTAINED_BY_EXPLICIT_WALK` (in `W_hex`) /
+  `CEILING_ATTAINED_IN_W_HEX_SYM_ONLY`, or `OPEN_AFTER_<analysis>`.
+- HX2 (from the parent gate): `CONFIRMED_IN_CLASS` / `REFUTED_BY_<witness>` /
+  `OPEN`, and `CONFIRMED_FOR_<support>` for a bounded result.
+
+## 8. Deliverables
+
+Report `reports/YYYY-MM-DD--hex-supremum.md`; verifier
+`scripts/verify_hex_supremum_gate.py` (fail-closed, exact, checks
+certificates rather than rerunning solvers; both exact command forms added
+to `.claude/settings.json`); exploratory scripts, if any, versioned and
+labelled; independent cross-family review; then a separate promotion.
+Reviewed verifiers (`verify_hex_ceiling_gate.py`) are imported read-only,
+never edited.

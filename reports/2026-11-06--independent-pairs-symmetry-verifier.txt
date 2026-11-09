@@ -1,0 +1,5 @@
+Flavor commutants: [0, 1] [0]
+Exchange-compatible local slopes at c=1/3, delta=1/12: 5/12 and 1/4
+37/37 exact checks PASS
+LOCAL_EXCHANGE_INSUFFICIENT; TWO_GENERATORS_FORCE_IDENTICAL_COPIES
+No Laurent realization, normalized causal speed, or general no-go certified.

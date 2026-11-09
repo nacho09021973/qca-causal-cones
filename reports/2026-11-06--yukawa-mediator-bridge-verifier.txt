@@ -1,0 +1,5 @@
+16/16 exact checks PASS
+IR velocity generator: -y^2/(24 pi^2 c^3) M; eigenvalues M: 0,1,13.
+Weighted dissipation =6 q1(v1-vb)^2+6 q2(v2-vb)^2.
+Scalar cutoff preserves Hermiticity, not exact canonical commutation.
+No microscopic critical matching or cutoff convergence certified.

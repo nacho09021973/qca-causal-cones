@@ -1,0 +1,2009 @@
+OpenAI Codex v0.166.0
+--------
+workdir: /tmp/tmp.8RyG5X4lvt/sello
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1a644-665e-7280-a722-e9a3a463a7da
+--------
+user
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente la versión reparada de la traza
+reports/2026-11-04--substrate-saturation-phase0-G1-trace.md, escrita por
+Claude (Anthropic). Se adjuntan: la traza reparada, el diff de la reparación
+respecto a la versión revisada (diff_reparacion.txt), tu informe anterior
+sobre aquella versión (informe_astra.md), el contrato congelado de la fase 0
+(clase producto y generadores reducidos en su Sec. 1, «Zonotope reading», y
+Sec. 3.2), el verificador scripts/verify_c_across_lattices_gate.py, los
+extractos literales usados en la primera revisión y el texto de CJWW
+pp. 16–17. La traza no es premisa. No tienes herramientas: no ejecutes ni
+navegues. No propongas ampliar la investigación ni nuevas filas.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / INSUFFICIENT_EVIDENCE:
+1. REPARACIÓN 1. ¿Dice ahora la traza, en todos sus lugares, que en la
+   presentación impresa de L6e se anulan cuatro patrones de signo (dos en
+   los vértices ausentes ±(2,−2) en coordenadas ISO y dos en el origen)?
+   Rehaz el recuento con el Lema P y `row_L6e`.
+2. REPARACIÓN 2. ¿Presenta ahora la traza la condición exacta (todo vértice
+   del zonótopo está en F, Lema V) y «todos los patrones no nulos» como
+   condición suficiente, no necesaria? ¿Distingue amplitud de patrón,
+   soporte y envolvente? ¿Es correcto el contraejemplo de dos factores
+   idénticos? ¿Quedan menciones de F2 con la lectura antigua?
+3. ACLARACIONES. ¿Son correctas las tres aclaraciones aplicadas (convención
+   del signo `+` para la componente R en L6e y L6c y su efecto en los `a_j`;
+   el fallo de la cláusula ±a en L6c y L6f es de la presentación impresa, no
+   prueba de que no exista otra factorización; cita suprimida en (5.12))?
+4. NO REGRESIÓN. ¿Ha cambiado el diff algo fuera de lo pedido? ¿Siguen
+   correctas las filas resueltas (L1, L2, L3, L5a, L4-(5.12), L6a, L6d) y la
+   clasificación G1-a, G1-b, G1-c?
+
+Hasta 1500 palabras en español. Cada defecto: frase o línea exacta, por qué
+falla y qué lo cerraría. Distingue aclaración de error. Dictamen global PASS,
+REPAIR_REQUIRED o INSUFFICIENT_EVIDENCE y lista de reparaciones obligatorias;
+si no hay ninguna, dilo expresamente.
+
+=== DOCUMENT 1: 2026-11-04--substrate-saturation-phase0-G1-trace.md ===
+
+# Substrate saturation, phase 0 — documentary trace for gap G1 (reduced generators)
+
+**Date:** 2026-11-04. **Branch:** `research/schur-stability-audit`.
+**Base:** `4747b23` (local).
+**Gap traced:** G1 of the audit re-assessment
+([`2026-11-03--substrate-saturation-phase0.md`](2026-11-03--substrate-saturation-phase0.md),
+Sec. 7.2, `862b405`): frozen Sec. 3.2 of
+[`SUBSTRATE_SATURATION_PHASE0_GATE.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE.md)
+(`9bf3019`) requires, for product-class rows, the reduced generators.
+**Authorization:** user instruction, 2026-11-04 («haz la traza documental
+de G1, acotada a las filas de la auditoría y usando los constructores y
+fuentes ya revisados ... No deduzcas los factores a partir de las aristas
+del cuerpo. Si alguna fila no puede resolverse documentalmente, deja la
+laguna explícita ... sin ejecutar ni modificar verificadores»).
+**Author:** Claude Code (Claude Opus 5.5). **Documentary only:** no verifier
+run, written or edited. Factors are read from the constructor code and the
+source equations, never from the edges of `C_micro`. Supports are taken
+from set assertions already in the verifiers (cited per row). Statements
+marked **[hand]** are elementary derivations by the author, not checked by
+any script.
+**Review:** gpt-6.1-sol (OpenAI), REPAIR_REQUIRED, two mandatory repairs
+(L6e count in the summary; F2 stated as a necessary condition), both
+applied in this revision with three clarifications, by the user's decision
+of 2026-11-04 («SI»); `debates/2026-11-04--substrate-saturation-phase0-G1-trace-review-astra/`
+(`8d70e58`, reviewed text `cb814b5`). This revision is not re-reviewed.
+**Status: PRELIMINARY.** The audit stays
+`OPEN_AFTER_ROW_SURVEY`, PRELIMINARY, with no confirmatory value.
+
+## 0. Pre-step check
+
+- **Known.** Frozen definition (contract Sec. 1, «Zonotope reading»): a
+  walk in the product class is «a product of `n` coin–partial-shift
+  factors, each partial shift moving by `±a_i`»; then
+  `F = {sum_i ε_i a_i}` and `C_micro` is the zonotope `sum_i [-a_i, a_i]`;
+  reduced generators are the `a_i` «up to sign and positive scale, parallel
+  ones merged». Audit F2 said that identity presupposes every sign pattern
+  has nonzero amplitude. **Corrected (repair 2):** that condition is
+  sufficient, not necessary. Three things must be kept apart: the
+  individual pattern amplitudes, the support `F` (where coincident
+  patterns add), and the convex hull. By Lemma V (Sec. 1), `conv F = Z`
+  iff every vertex of `Z` is in `F`; non-vertex patterns may vanish without
+  changing the hull (e.g. two identical factors `P_+ T(a) + P_- T(−a)`:
+  the mixed patterns vanish, `F = {±2a}`, `conv F = Z`). Equality of `F`
+  with the full set of candidate sums needs, in addition, the summed
+  amplitudes at coincident displacements.
+- **Question.** For each `s = 2` row of the audit: is it in the product
+  class (cited), what are its factor shifts and reduced generators, and do
+  the sign patterns have nonzero amplitude in the certified support?
+- **What ends it.** Every row resolved closes G1; any row that cannot be
+  resolved from the record leaves G1 open with that row named.
+
+## 1. Two facts used throughout [hand]
+
+**Lemma V (vertex patterns are unique).** If every `a_i ≠ 0`, each vertex
+`v` of `Z = sum_i [-a_i, a_i]` is the sum of exactly one sign pattern.
+Proof: `v` uniquely maximizes some linear functional `φ` with
+`φ(a_i) ≠ 0` for all `i`; any pattern summing to `v` also maximizes `φ`,
+which forces `ε_i = sign φ(a_i)`. Hence coincident displacements (several
+patterns, one point) occur only at non-vertices, and the amplitude at a
+vertex is the amplitude of a single pattern: it is nonzero **iff** the
+vertex is in the certified support. In particular `conv F = Z` iff every
+vertex of `Z` is in `F`.
+
+**Lemma P (pattern amplitudes, rank-one projectors).** If factor `i` is
+`sum_{s=±} Q_i^s T(s a_i)` with `Q_i^±` rank-one projectors on `C^2`
+(Bloch vectors `±q_i`), the amplitude of pattern `(s_1, …, s_n)` is
+`Q_n^{s_n} … Q_1^{s_1}`, nonzero iff no consecutive pair
+`s_i q_i`, `s_{i+1} q_{i+1}` is antipodal; for `s_i = s_{i+1}` this means
+`q_{i+1} ≠ −q_i`, for `s_i ≠ s_{i+1}` it means `q_{i+1} ≠ q_i`. For the
+conjugated JDW factors `R^{-1} S R` with `R = U(0, π/2, 0, θ)` (JDW Eq. (1),
+`verify_c_across_lattices_gate.py` l. 92–97), the projector of the L
+component is onto `R^† |0⟩ = (−i cos θ, sin θ)`, Bloch vector
+`m(θ) = (0, sin 2θ, cos 2θ)`.
+
+## 2. Row-by-row trace
+
+Coordinates are the generator coordinates of each constructor; Cartesian
+values are given where directions are compared.
+
+### L1, L2, L3 (standard battery)
+
+- **Product class: yes, literal.** `verify_weyl_dirac_gate.py`
+  `rotation_product` (l. 80–88): one factor per axis,
+  `z_a P_a^+ + z_a^{-1} P_a^-`, `P_a^± = (I ∓ sign σ_a)/2`; the check
+  «published vs product» (l. 145) makes the published symbol equal to this
+  product for all seven cases (CS Sec. 5, PASS). B cases: transpose of the
+  product, again a product of axis factors (`σ_y^T = −σ_y`). L1, L2 use
+  `published_symbol(d, 1, ·)` (`verify_c_across_lattices_gate.py` l. 504).
+- **Factor shifts:** `±e_a`, `a = 1..d` (scaled by `1/sqrt d` in the
+  normalized units). **Reduced generators:** `d` orthogonal directions of
+  equal length.
+- **Patterns:** `2^d`, all with distinct displacements (the corners). The
+  certified support is exactly the corners («active support», l. 150–152).
+  So every pattern has nonzero amplitude, and `conv F = Z`.
+  [hand, Lemma P] consistent: Bloch vectors along orthogonal axes are
+  never antipodal.
+
+### L5a (Farrelly–Short, axis product)
+
+- **Product class: yes, literal.** `row_L5a` (l. 167–189):
+  `T_b = z^{e_b} (I+σ_b)/2 + z^{-e_b} (I−σ_b)/2`, product `T_x T_y T_z`.
+- **Factor shifts:** `±e_b`. **Reduced generators:** 3 orthogonal.
+- **Patterns:** 8, distinct displacements; the support is asserted equal to
+  `{±1}^3` (l. 187–188). All nonzero; `conv F = Z`.
+
+### L4, walk CJWW (5.12)
+
+- **Product class: yes, literal.** Source PDF p. 16:
+  `W = e^{i p_1 σ_1} e^{i p_2 σ_2} e^{i p_3 σ_3}`, each factor
+  `sum_ε e^{i ε p_a} (I + ε σ_a)/2`; constructor
+  `verify_directional_saturation.py` `walk1` (l. 64–69).
+- **Factor shifts:** `±e_a`. **Reduced generators:** 3 orthogonal.
+- **Patterns:** 8, distinct; support asserted exactly the 8 cube vertices
+  (`verify_directional_saturation.py` l. 136–140; verifier promoted, CS
+  l. 754–755). All nonzero;
+  `conv F = Z`.
+
+### L4, walk CJWW (5.15) — **not resolved**
+
+- **Product class: not established.** The source prints `W` as a `2×2`
+  matrix (PDF p. 17), not as a product of coin–partial-shift factors, and
+  the constructor `walk2` (l. 72–78) transcribes it entry by entry. No
+  factorization is in the reviewed record. Its support is asserted to have
+  14 vectors containing the 8 vertices (l. 142–147), but factors may not be
+  inferred from it (user rule). **Gap G1-b.**
+
+### L6e (JDW isosceles, three-step)
+
+- **Product class: yes, literal, in the printed presentation.** `row_L6e`
+  (l. 352–364): `W^0 = W^3 W^2 W^1`, `W^j = U^j S^j`,
+  `U^j = U(0, 0, −π/2, (j−2) π/4)`, `S^j` reads L at `N_j` and R at
+  `N_{j+3} = −N_j` (ISO table, l. 348), so each partial shift moves by
+  `±N_j`.
+- **Factor shifts:** `N_1 = (1,−1)`, `N_2 = (1,0)`, `N_3 = (0,1)` (ISO
+  coordinates); Cartesian (generators l. 349) `(1,0)`, `(1/2,1/2)`,
+  `(−1/2,1/2)`. **Reduced generators: 3 directions** in `d = 2`
+  (`N_1 − N_2 + N_3 = 0`).
+- **Patterns [hand]** (`+` designates the R component, which moves by
+  `+N_j`; L moves by `−N_j`, since `jdw_shift` reads L at `X + N_j`):
+  `(+,+,+) → (2,0)`, `(+,+,−) → (2,−2)`,
+  `(+,−,+) → (0,0)`, `(+,−,−) → (0,−2)` and negatives (ISO). The zonotope
+  of the three generators is a hexagon with vertices `±(2,0)`, `±(2,−2)`,
+  `±(0,2)` (ISO). The asserted support is
+  `{(−2,0), (0,−2), (0,2), (2,0)}` (l. 70, asserted l. 684): the vertices
+  `±(2,−2)` and the point `0` are **absent**. By Lemma V the patterns
+  `±(+,+,−)` have zero amplitude. [hand] Cause: `U^2 = U(0,0,−π/2,0) = I`,
+  so `P_{s_3} U^2 P_{s_2} = 0` when `s_2 ≠ s_3`; the four patterns with
+  `s_2 ≠ s_3` vanish individually (including the two at `0`), the four
+  with `s_2 = s_3` do not (`U^1` has both entries nonzero).
+- **Consequence:** in the printed presentation `conv F` (a square) is not
+  the zonotope (a hexagon): the vertex condition (corrected F2, Sec. 0) **fails** for L6e. [hand]
+  Because `U^2 = I`, factors 2 and 3 combine into one partial shift by
+  `±(N_2 + N_3) = ±(1,1)` (ISO) = `±(0,1)` (Cartesian); in that
+  presentation there are 2 orthogonal reduced generators, all 4 patterns
+  are nonzero, and `conv F = Z`. **The reduced generators of L6e therefore
+  depend on the presentation (3 or 2).** Which presentation the frozen
+  definition intends is not documentary. **Gap G1-c.**
+
+### L6a (ADMP honeycomb, Eq. (7)/(10))
+
+- **Product class: yes, literal.** `row_L6a` (l. 227–299):
+  `prod_i sum_s Π_i^s T(s u_i)`, `Π_i^±` eigenprojectors of `τ_i`.
+- **Factor shifts:** `u = (1,0), (−1,1), (0,−1)` (TRI); Cartesian
+  `(1,0)`, `(−1/2, √3/2)`, `(−1/2, −√3/2)`. **Reduced generators:** 3
+  directions at 120°.
+- **Patterns [hand]:** `u_0 + u_1 + u_2 = 0`, so `±(+,+,+) → 0` (two
+  coincident patterns, interior) and the other six give the hexagon
+  vertices `±2u_i`. Asserted support (l. 67, l. 684) contains the six
+  vertices and `0`: by Lemma V all six vertex patterns are nonzero;
+  `conv F = Z`. At `0` the support shows only that the sum of the two
+  patterns is nonzero. [hand, Lemma P] individually nonzero: the Bloch
+  vectors of `τ_0, τ_1, τ_2` (l. 235–237) are distinct and pairwise not
+  antipodal.
+
+### L6d (JDW equilateral, three-step)
+
+- **Product class: yes, literal.** `row_L6d` (l. 332–345):
+  `R~2^{-1} S~3 R~2 R~1^{-1} S~2 R~1 S~1`, `U_j = 1`; `S~j` reads L at
+  `N_j`, R at `N_{j+3} = −N_j` (TRI table, l. 308).
+- **Factor shifts:** `N_1 = (1,0)`, `N_2 = (0,1)`, `N_3 = (−1,1)` (TRI);
+  Cartesian `(1,0)`, `(1/2, √3/2)`, `(−1/2, √3/2)`. **Reduced
+  generators:** 3 directions at 60°.
+- **Patterns [hand]:** `N_1 − N_2 + N_3 = 0`, so `±(+,−,+) → 0` (two
+  coincident, interior); the other six give `±2N_j`. Asserted support
+  (l. 69) contains them: vertices nonzero, `conv F = Z`. [hand, Lemma P]
+  Bloch vectors `m(0), m(π/6), m(π/3)`, consecutive ones neither equal nor
+  antipodal: all 8 patterns individually nonzero.
+
+### L6f (JDW honeycomb, three-step) — **partial shifts not of the form ±a**
+
+- **Product of coin–partial-shift factors: yes.** `row_L6f` (l. 370–385):
+  `W_j = U_j^{-1} S_j U_j`; `S_1` reads `(N_1, N_2)`, `S_2` `(N_2, N_3)`,
+  `S_3` `(N_3, N_1)` with `HEX = (1,0), (−1,1), (0,−1)` (l. 367). Each
+  partial shift moves L by `b_j = −N_a` and R by `c_j = −N_b` with
+  `c_j ≠ −b_j`. **The literal clause «each partial shift moving by `±a_i`»
+  is not met** by the printed presentation; this does not show that no
+  other factorization exists.
+- **Affine reading [hand], recorded only:** `b_j = m_j + a_j`,
+  `c_j = m_j − a_j` with `a_j = (b_j − c_j)/2`: `a = (−1, 1/2), (1/2, −1),
+  (1/2, 1/2)` (TRI), Cartesian `(−3/4, √3/4)`, `(0, −√3/2)`, `(3/4, √3/4)`,
+  three directions at 60°; `sum_j m_j = 0`, so `F = {sum ε_j a_j}` holds
+  exactly. Patterns: `±(+,+,+) → 0` (two, interior), six vertices
+  `(−1,−1), (−1,2), (−2,1)` and negatives, equal to the asserted support
+  (l. 71): vertices nonzero, `conv F = Z`. [hand, Lemma P] `m(π/6),
+  m(π/2), m(5π/6)`: all 8 patterns individually nonzero.
+- **Gap G1-a:** whether a product with asymmetric partial shifts belongs to
+  the frozen product class is a definitional decision, not documentary.
+
+### L6c (JDW equilateral, six-step) — **partial shifts not of the form ±a**
+
+- **Product of coin–partial-shift factors: yes.** `row_L6c` (l. 312–329):
+  `prod_j R_j^{-1} S_j R_j`, `S_j` reads L at `N_j`, R at `N_{j+1}`;
+  `c_j ≠ −b_j`. **Literal clause not met** by the printed presentation;
+  this does not show that no other factorization exists.
+- **Affine reading [hand], recorded only** (orientation: `+` designates
+  R; with `b_j` the L displacement and `b_j = m_j + a_j` as for L6f, the
+  `a_j` below carry the opposite sign, which does not change the reduced
+  generators, defined up to sign): `a_j = (N_j − N_{j+1})/2`:
+  `(1,−1)/2, (1,0)/2, (0,1)/2` and their negatives (`a_{j+3} = −a_j`);
+  `sum_j m_j = −sum_j N_j = 0`. **Reduced generators** (parallel merged):
+  3 directions at 60°, Cartesian `(1,0)`, `(1/2, ±√3/2)`, each of merged
+  length 1. 64 patterns onto the 19 points of the asserted support (l. 68):
+  many coincident displacements at non-vertices; the six hexagon vertices
+  of radius 2 are single patterns (Lemma V) and are in the support:
+  `conv F = Z`. [hand, Lemma P] consecutive `2θ_j` differ by `π/3`: all 64
+  patterns individually nonzero.
+- **Gap G1-a** as for L6f.
+
+## 3. Summary
+
+| Row | Product class (literal) | Factor shifts / reduced generators | Vertex patterns in certified support | Coincident displacements |
+| --- | --- | --- | --- | --- |
+| L1, L2, L3 | yes (`rotation_product`, l. 145) | `±e_a`; `d` orthogonal | all | none |
+| L5a | yes (l. 167–189) | `±e_b`; 3 orthogonal | all | none |
+| L4 (5.12) | yes (p. 16; `walk1`) | `±e_a`; 3 orthogonal | all | none |
+| L4 (5.15) | **not established** (G1-b) | — | — | — |
+| L6e | yes, printed presentation | 3 directions (printed) or 2 orthogonal (factors 2–3 merged, `U^2 = I`) — **G1-c** | **no** for the printed presentation (`±(2,−2)` absent); yes for the merged one | `0`, two patterns, both zero |
+| L6a | yes (l. 227–299) | `u_i`; 3 at 120° | all | `0`, two patterns |
+| L6d | yes (l. 332–345) | `N_j`; 3 at 60° | all | `0`, two patterns |
+| L6f | **no**: asymmetric partial shifts (G1-a) | affine: 3 at 60° | all (affine) | `0`, two patterns |
+| L6c | **no**: asymmetric partial shifts (G1-a) | affine: 3 at 60°, merged pairs | all (affine) | 64 patterns on 19 points |
+
+**Outcome of the trace: G1 is not closed.** Resolved documentarily: L1,
+L2, L3, L5a, L4-(5.12), L6a, L6d. Open, named:
+
+- **G1-a** (L6c, L6f): asymmetric partial shifts; product-class membership
+  needs a definitional decision (the affine reading makes the frozen
+  formula `F = {sum ε_i a_i}` hold exactly, since `sum m_j = 0`).
+- **G1-b** (L4-(5.15)): no factorization in the source or in the reviewed
+  constructor.
+- **G1-c** (L6e): the reduced generators depend on the presentation; in
+  the printed one, four sign patterns vanish (two at the missing vertices
+  `±(2,−2)` and two at `0`) and `conv F` is not the zonotope.
+
+**Finding recorded, no verdict (frozen Sec. 1: phase 0 gives no verdict on
+(PS′)).** L6e is literally in the product class in its printed
+presentation, has three reduced generators in `d = 2`, and saturates
+(`c_0 = r_in`, c-across-lattices l. 142). (PS′) as written («the ceiling is
+attained iff the generators reduce to `d` independent directions») would
+need either the vertex condition (corrected F2) or a rule fixing the presentation to apply
+to it. This is a concrete instance of the corrected F2 (vertex patterns vanish); it bears on (PS′) only, not on
+(PH), and is not evidence for or against either.
+
+The audit's definitional outcome stays **`OPEN_AFTER_ROW_SURVEY`**,
+PRELIMINARY, with no confirmatory value; the counterexample outcomes are
+unchanged. This trace is not promoted and authorizes nothing; external
+review is the user's decision.
+
+=== DOCUMENT 2: diff_reparacion.txt ===
+
+diff --git a/reports/2026-11-04--substrate-saturation-phase0-G1-trace.md b/reports/2026-11-04--substrate-saturation-phase0-G1-trace.md
+index a7a4cc0..46ec1a5 100644
+--- a/reports/2026-11-04--substrate-saturation-phase0-G1-trace.md
++++ b/reports/2026-11-04--substrate-saturation-phase0-G1-trace.md
+@@ -18,7 +18,12 @@ source equations, never from the edges of `C_micro`. Supports are taken
+ from set assertions already in the verifiers (cited per row). Statements
+ marked **[hand]** are elementary derivations by the author, not checked by
+ any script.
+-**Status: PRELIMINARY, unreviewed.** The audit stays
++**Review:** gpt-6.1-sol (OpenAI), REPAIR_REQUIRED, two mandatory repairs
++(L6e count in the summary; F2 stated as a necessary condition), both
++applied in this revision with three clarifications, by the user's decision
++of 2026-11-04 («SI»); `debates/2026-11-04--substrate-saturation-phase0-G1-trace-review-astra/`
++(`8d70e58`, reviewed text `cb814b5`). This revision is not re-reviewed.
++**Status: PRELIMINARY.** The audit stays
+ `OPEN_AFTER_ROW_SURVEY`, PRELIMINARY, with no confirmatory value.
+ 
+ ## 0. Pre-step check
+@@ -28,8 +33,16 @@ any script.
+   factors, each partial shift moving by `±a_i`»; then
+   `F = {sum_i ε_i a_i}` and `C_micro` is the zonotope `sum_i [-a_i, a_i]`;
+   reduced generators are the `a_i` «up to sign and positive scale, parallel
+-  ones merged». Audit F2: that identity presupposes every sign pattern has
+-  nonzero amplitude.
++  ones merged». Audit F2 said that identity presupposes every sign pattern
++  has nonzero amplitude. **Corrected (repair 2):** that condition is
++  sufficient, not necessary. Three things must be kept apart: the
++  individual pattern amplitudes, the support `F` (where coincident
++  patterns add), and the convex hull. By Lemma V (Sec. 1), `conv F = Z`
++  iff every vertex of `Z` is in `F`; non-vertex patterns may vanish without
++  changing the hull (e.g. two identical factors `P_+ T(a) + P_- T(−a)`:
++  the mixed patterns vanish, `F = {±2a}`, `conv F = Z`). Equality of `F`
++  with the full set of candidate sums needs, in addition, the summed
++  amplitudes at coincident displacements.
+ - **Question.** For each `s = 2` row of the audit: is it in the product
+   class (cited), what are its factor shifts and reduced generators, and do
+   the sign patterns have nonzero amplitude in the certified support?
+@@ -99,7 +112,7 @@ values are given where directions are compared.
+ - **Factor shifts:** `±e_a`. **Reduced generators:** 3 orthogonal.
+ - **Patterns:** 8, distinct; support asserted exactly the 8 cube vertices
+   (`verify_directional_saturation.py` l. 136–140; verifier promoted, CS
+-  l. 754–755). All nonzero (also gpt-6.1-sol, Amendment 1 review point 4);
++  l. 754–755). All nonzero;
+   `conv F = Z`.
+ 
+ ### L4, walk CJWW (5.15) — **not resolved**
+@@ -122,7 +135,9 @@ values are given where directions are compared.
+   coordinates); Cartesian (generators l. 349) `(1,0)`, `(1/2,1/2)`,
+   `(−1/2,1/2)`. **Reduced generators: 3 directions** in `d = 2`
+   (`N_1 − N_2 + N_3 = 0`).
+-- **Patterns [hand]:** `(+,+,+) → (2,0)`, `(+,+,−) → (2,−2)`,
++- **Patterns [hand]** (`+` designates the R component, which moves by
++  `+N_j`; L moves by `−N_j`, since `jdw_shift` reads L at `X + N_j`):
++  `(+,+,+) → (2,0)`, `(+,+,−) → (2,−2)`,
+   `(+,−,+) → (0,0)`, `(+,−,−) → (0,−2)` and negatives (ISO). The zonotope
+   of the three generators is a hexagon with vertices `±(2,0)`, `±(2,−2)`,
+   `±(0,2)` (ISO). The asserted support is
+@@ -133,7 +148,7 @@ values are given where directions are compared.
+   `s_2 ≠ s_3` vanish individually (including the two at `0`), the four
+   with `s_2 = s_3` do not (`U^1` has both entries nonzero).
+ - **Consequence:** in the printed presentation `conv F` (a square) is not
+-  the zonotope (a hexagon): the F2 hypothesis **fails** for L6e. [hand]
++  the zonotope (a hexagon): the vertex condition (corrected F2, Sec. 0) **fails** for L6e. [hand]
+   Because `U^2 = I`, factors 2 and 3 combine into one partial shift by
+   `±(N_2 + N_3) = ±(1,1)` (ISO) = `±(0,1)` (Cartesian); in that
+   presentation there are 2 orthogonal reduced generators, all 4 patterns
+@@ -178,7 +193,8 @@ values are given where directions are compared.
+   `S_3` `(N_3, N_1)` with `HEX = (1,0), (−1,1), (0,−1)` (l. 367). Each
+   partial shift moves L by `b_j = −N_a` and R by `c_j = −N_b` with
+   `c_j ≠ −b_j`. **The literal clause «each partial shift moving by `±a_i`»
+-  is not met.**
++  is not met** by the printed presentation; this does not show that no
++  other factorization exists.
+ - **Affine reading [hand], recorded only:** `b_j = m_j + a_j`,
+   `c_j = m_j − a_j` with `a_j = (b_j − c_j)/2`: `a = (−1, 1/2), (1/2, −1),
+   (1/2, 1/2)` (TRI), Cartesian `(−3/4, √3/4)`, `(0, −√3/2)`, `(3/4, √3/4)`,
+@@ -194,8 +210,12 @@ values are given where directions are compared.
+ 
+ - **Product of coin–partial-shift factors: yes.** `row_L6c` (l. 312–329):
+   `prod_j R_j^{-1} S_j R_j`, `S_j` reads L at `N_j`, R at `N_{j+1}`;
+-  `c_j ≠ −b_j`. **Literal clause not met.**
+-- **Affine reading [hand], recorded only:** `a_j = (N_j − N_{j+1})/2`:
++  `c_j ≠ −b_j`. **Literal clause not met** by the printed presentation;
++  this does not show that no other factorization exists.
++- **Affine reading [hand], recorded only** (orientation: `+` designates
++  R; with `b_j` the L displacement and `b_j = m_j + a_j` as for L6f, the
++  `a_j` below carry the opposite sign, which does not change the reduced
++  generators, defined up to sign): `a_j = (N_j − N_{j+1})/2`:
+   `(1,−1)/2, (1,0)/2, (0,1)/2` and their negatives (`a_{j+3} = −a_j`);
+   `sum_j m_j = −sum_j N_j = 0`. **Reduced generators** (parallel merged):
+   3 directions at 60°, Cartesian `(1,0)`, `(1/2, ±√3/2)`, each of merged
+@@ -229,16 +249,16 @@ L2, L3, L5a, L4-(5.12), L6a, L6d. Open, named:
+ - **G1-b** (L4-(5.15)): no factorization in the source or in the reviewed
+   constructor.
+ - **G1-c** (L6e): the reduced generators depend on the presentation; in
+-  the printed one, two sign patterns vanish and `conv F` is not the
+-  zonotope.
++  the printed one, four sign patterns vanish (two at the missing vertices
++  `±(2,−2)` and two at `0`) and `conv F` is not the zonotope.
+ 
+ **Finding recorded, no verdict (frozen Sec. 1: phase 0 gives no verdict on
+ (PS′)).** L6e is literally in the product class in its printed
+ presentation, has three reduced generators in `d = 2`, and saturates
+ (`c_0 = r_in`, c-across-lattices l. 142). (PS′) as written («the ceiling is
+ attained iff the generators reduce to `d` independent directions») would
+-need either the F2 hypothesis or a rule fixing the presentation to apply
+-to it. This is the concrete instance of F2; it bears on (PS′) only, not on
++need either the vertex condition (corrected F2) or a rule fixing the presentation to apply
++to it. This is a concrete instance of the corrected F2 (vertex patterns vanish); it bears on (PS′) only, not on
+ (PH), and is not evidence for or against either.
+ 
+ The audit's definitional outcome stays **`OPEN_AFTER_ROW_SURVEY`**,
+
+=== DOCUMENT 3: informe_astra.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ ce09890a0d5f68a6634f358eff2e477ac5f15ec7; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: cli_exit_0 (estado operativo, no validación del contenido)
+modelo: gpt-6.1-sol, esfuerzo: high, vía: codex exec sellado (codex-cli 0.166.0)
+inicio: 2026-11-04T08:41:54Z  fin: 2026-11-04T08:45:16Z
+documento: /home/ignac/qca-causal-cones/reports/2026-11-04--substrate-saturation-phase0-G1-trace.md ; último commit observado: cb814b5 ; sha256 de la copia enviada f173971be2f182c57482f555a24b45ec0639487cd4ee7e07861d1f1216f474ec
+documento: /home/ignac/qca-causal-cones/theory/SUBSTRATE_SATURATION_PHASE0_GATE.md ; último commit observado: 9bf3019 ; sha256 de la copia enviada 62d198bc961b831f2d67f8e7420b5c61b95c25059fa1814541369af1634ba13f
+documento: /home/ignac/qca-causal-cones/reports/2026-11-03--substrate-saturation-phase0.md ; último commit observado: 862b405 ; sha256 de la copia enviada aee9b97aa5841abfaaae487ee765b8a7ea40b45acd9ec83ac8f5a680870041e0
+documento: /home/ignac/qca-causal-cones/scripts/verify_c_across_lattices_gate.py ; último commit observado: 8d0276e ; sha256 de la copia enviada b91253117e141b972add6640834363fe34cbbc1d321fd00fbe01d22b7875eadb
+documento: /home/ignac/qca-causal-cones/scripts/verify_weyl_dirac_gate.py ; último commit observado: 95f423f ; sha256 de la copia enviada 6c555cef8db0d8a7307a08e0251fa9278773aceeea8bf2bdb956ba2c3ca06597
+documento: /home/ignac/qca-causal-cones/debates/2026-11-04--substrate-saturation-phase0-G1-trace-review-astra/cjww_pp16-17.txt ; último commit observado: sin versionar ; sha256 de la copia enviada 68d4b9c97dedcc638ba1f55cc50e888497a3d1ce313d83a85c6ebe3399d70f5e
+documento: /home/ignac/qca-causal-cones/debates/2026-11-04--substrate-saturation-phase0-G1-trace-review-astra/extractos.md ; último commit observado: sin versionar ; sha256 de la copia enviada ce7632dc6469689fa0e35cdd398c6e9a51a4c7bb45bd5e35cb9ba3aa81f60cfb
+entrada_astra.txt sha256 b91d9ce3d3631e8750dba71da9ea1b75d75aacbbbd94129a75f0f691f6d8488d
+respuesta sha256 5ce72c25fe11c72a3cc8a0dd9a53f2d77e786f0afbd08e6927397eee316ab554
+-->
+
+**Dictamen global: REPAIR_REQUIRED.** Hay dos errores obligatorios de corregir: el recuento final de patrones nulos de L6e y la presentación de F2 como condición necesaria. Los cálculos principales y las lagunas G1-a/b/c quedan sustentados por los textos adjuntos. Esta revisión es manual; no acredita nuevas ejecuciones de los verificadores.
+
+**1. LEMAS: PASS.**
+
+El **Lema V** es correcto. Un funcional que expone únicamente el vértice debe satisfacer \(\varphi(a_i)\ne0\): si alguno fuera cero, variar ese segmento produciría otros maximizadores. Cada signo queda entonces forzado por \(\operatorname{sign}\varphi(a_i)\). Esto vale también con generadores paralelos o dependientes.
+
+La consecuencia sobre amplitudes es correcta dentro del contexto, donde \(F\subseteq Z\): un vértice tiene un solo patrón contribuyente, por lo que no puede desaparecer por interferencia entre patrones distintos. Asimismo,
+\[
+\operatorname{conv}F=Z\iff \operatorname{vert}Z\subseteq F.
+\]
+
+El **Lema P** también es correcto para proyectores ortogonales de rango uno. Escribiendo \(Q_i=|v_i\rangle\langle v_i|\),
+\[
+Q_n\cdots Q_1
+=|v_n\rangle\Bigl(\prod_{i=1}^{n-1}\langle v_{i+1}|v_i\rangle\Bigr)\langle v_1|.
+\]
+Se anula exactamente cuando algún solapamiento consecutivo es cero. Para estados puros de qubit, eso equivale a vectores de Bloch antípodas. No hay que comparar adicionalmente el último factor con el primero.
+
+La fórmula JDW es correcta. De `u2` resulta
+\[
+R=\begin{pmatrix}i\cos\theta&\sin\theta\\-\sin\theta&-i\cos\theta\end{pmatrix},
+\qquad R^\dagger|0\rangle=(-i\cos\theta,\sin\theta)^T.
+\]
+Por tanto, \(2\Re(\bar\alpha\beta)=0\), \(2\Im(\bar\alpha\beta)=\sin2\theta\) y \(|\alpha|^2-|\beta|^2=\cos2\theta\).
+
+**2. FILAS RESUELTAS: PASS.**
+
+La pertenencia literal y los generadores indicados se sostienen:
+
+- **L1–L3:** `rotation_product` proporciona factores con desplazamientos opuestos por cada coordenada. La transposición invierte el orden de los factores y transpone los proyectores, conservando esta estructura. La igualdad «published vs product» y «active support» son las comprobaciones pertinentes. Son \(2^d\) desplazamientos distintos, todos esquinas. En L1 el eje de Pauli utilizado es \(z\); esto no cambia el único generador espacial.
+- **L5a:** el código construye literalmente \(T_xT_yT_z\), con desplazamientos \(\pm e_b\), y compara el soporte calculado con las ocho esquinas.
+- **CJWW (5.12):** la ecuación primaria y `walk1` muestran los tres factores. El *jump set* se obtiene de coeficientes Fourier no nulos y se compara con las ocho esquinas. No se necesita la reseña de otro modelo citada por la traza.
+- **L6a:** los desplazamientos son \(\pm u_i\). Como \(u_0+u_1+u_2=0\), dos patrones llegan al origen y los otros seis a \(\pm2u_i\). Los vectores de Bloch tienen producto escalar \(1/3\) entre distintos índices; ningún par pertinente es igual ni antípoda. Los ocho patrones son individualmente no nulos.
+- **L6d:** los tres factores pueden agruparse como \(S_1\), \(R_1^{-1}S_2R_1\), \(R_2^{-1}S_3R_2\). Sus generadores son los \(N_j\) citados. Los patrones \(\pm(+,-,+)\) coinciden en cero; los otros seis dan \(\pm2N_j\). Los vectores \(m(0),m(\pi/6),m(\pi/3)\) permiten aplicar P.
+
+En L6a y L6d, la traza distingue correctamente dos afirmaciones: cada patrón central es no nulo y su **suma** también lo es. La primera procede de P; la segunda, del soporte afirmado por el código. `EXPECTED_F` no es por sí solo una prueba, pero aquí se compara explícitamente con `laurent_support`, que elimina coeficientes matriciales nulos.
+
+**3. L6e: REPAIR_REQUIRED.**
+
+La derivación principal es correcta. El constructor da
+\[
+W=U^3S^3U^2S^2U^1S^1,\qquad
+U^j=e^{-i(j-2)\pi\sigma_x/4},
+\]
+por lo que \(U^2=I\) y \(U^3=(U^1)^{-1}\).
+
+Los desplazamientos físicos de L son \(-N_j\), porque `jdw_shift` lee en \(X+N_j\). Para reproducir la tabla de la traza, el signo positivo debe designar R, que se desplaza por \(+N_j\). Con esa convención,
+\[
+A_s=U^3P_{s_3}P_{s_2}U^1P_{s_1}.
+\]
+Así, se anulan exactamente los **cuatro** patrones con \(s_2\ne s_3\):
+
+\[
+(++-),\ (--+),\ (+-+),\ (-+-).
+\]
+
+Los dos primeros llegan a \(\pm(2,-2)\); los otros dos, al origen. Los cuatro restantes son no nulos porque todas las entradas de \(U^1\) son no nulas. Producen exactamente el `EXPECTED_F` de cuatro puntos.
+
+El zonótopo de los tres \(N_j\) tiene los seis vértices citados. El soporte pierde dos vértices y el origen; su envolvente es el cuadrado indicado. No hay cancelación entre dos contribuciones centrales no nulas: ambas contribuciones son individualmente cero.
+
+La fusión también es correcta:
+\[
+W=U^3(S^3S^2)U^1S^1.
+\]
+El desplazamiento combinado es \(\pm(N_2+N_3)\). En coordenadas cartesianas, los dos generadores son \((1,0)\) y \((0,1)\). Sus cuatro patrones son no nulos. Por tanto, **los generadores reducidos de estas presentaciones sí difieren**: tres direcciones frente a dos.
+
+**Error exacto:** resumen, G1-c: «**in the printed one, two sign patterns vanish**». Son cuatro, aunque solo dos correspondan a vértices desaparecidos. Lo cierra sustituir esa frase por «four sign patterns vanish: two at the missing vertices and two at zero».
+
+**Aclaración:** explicitar «\(+\) corresponde a R» evita confundir lectura y desplazamiento. No cambia los conjuntos ni la conclusión.
+
+**4. L6c, L6f y CJWW (5.15): PASS, con aclaración de signos.**
+
+En los factores impresos de L6c y L6f, los desplazamientos son efectivamente asimétricos: \(c_j\ne-b_j\). No satisfacen literalmente la cláusula congelada \(\pm a_j\). Esto establece el fallo de esa presentación respecto de la cláusula; no demuestra que sea imposible cualquier otra factorización.
+
+Para **L6f**, con \(b=-N_a,c=-N_b\), los valores de \(a=(b-c)/2\) son correctos. Los centros son
+\[
+m_1=(0,-1/2),\quad m_2=(1/2,0),\quad m_3=(-1/2,1/2),
+\]
+y suman cero. Las ocho asignaciones producen siete desplazamientos: cero dos veces y los seis puntos no nulos de `EXPECTED_F`. Los ángulos de Bloch consecutivos difieren en \(2\pi/3\); P confirma que los ocho patrones son individualmente no nulos. La presencia efectiva del origen se obtiene además de la comparación de soportes.
+
+Para **L6c**, los centros son
+\[
+m_j=-(N_j+N_{j+1})/2,\qquad \sum_jm_j=0.
+\]
+Los \(a_j=(N_j-N_{j+1})/2\) impresos son válidos si el signo positivo designa **R**. Si se conserva la convención \(b=m+a\) de L6f con \(b\) como desplazamiento L, deben llevar el signo contrario. Es una **aclaración de orientación**, no un error en los generadores reducidos, definidos salvo signo.
+
+Las parejas opuestas se fusionan en tres segmentos de longitud 1, con las direcciones cartesianas indicadas. Sus sumas dan los 19 puntos del hexágono afirmado; los seis vértices tienen patrón único. Los incrementos consecutivos de \(2\theta\) son \(\pi/3\), de modo que los 64 patrones son individualmente no nulos.
+
+Para **CJWW (5.15)**, lo adjuntado contiene una matriz y una transcripción por entradas, ninguna factorización. El soporte de 14 puntos no determina proyectores, monedas ni una presentación producto. Mantener G1-b abierto es correcto; tampoco procede afirmar inexistencia de factorización.
+
+**5. ALCANCE: PASS.**
+
+La traza mantiene explícitamente G1 abierto, `OPEN_AFTER_ROW_SURVEY`, el carácter preliminar y la ausencia de valor confirmatorio. Registra L6e sin emitir un veredicto sobre (PS′), sin trasladarlo a (PH) y sin autorizar fases posteriores. No encuentro factores deducidos de aristas: las direcciones proceden de constructores y las envolventes se calculan después.
+
+**Segundo error obligatorio, transversal: formulación de F2.**
+
+La frase de Sec. 0 «**that identity presupposes every sign pattern has nonzero amplitude**» reproduce una condición necesaria incorrecta para \(\operatorname{conv}F=Z\). El propio Lema V identifica la condición exacta: basta y es necesario conservar todos los vértices.
+
+Como comprobación independiente, dos factores idénticos \(P_+T(a)+P_-T(-a)\) tienen patrones mixtos nulos, pero soporte \(\{\pm2a\}\), cuya envolvente es el zonótopo completo. Para la igualdad del **soporte** con todas las sumas candidatas, además deben considerarse las sumas de amplitudes en desplazamientos coincidentes.
+
+Lo cierra reemplazar aquella frase por una atribución explícitamente corregida: F2 señaló un riesgo real, pero su condición era excesiva; la igualdad de envolventes depende de los patrones de vértice. Esto no altera el diagnóstico de L6e.
+
+**Reparaciones obligatorias:**
+
+1. Cambiar de dos a cuatro los patrones nulos en el resumen de G1-c.
+2. Corregir la formulación necesaria de F2, distinguiendo soporte, patrones individuales y envolvente convexa.
+
+No hacen falta nuevos cálculos ni ampliar la investigación para estas reparaciones.
+=== DOCUMENT 4: SUBSTRATE_SATURATION_PHASE0_GATE.md ===
+
+# SUBSTRATE_SATURATION (phase 0) — frozen contract
+
+**Frozen:** 2026-11-03, revision 3, by the user's instruction («congela la
+revisión 3»), before any execution. Nothing in Secs. 3–5 has been done.
+Freezing is not authorization to execute: execution of phase 0 needs a
+separate user decision. The only change from the reviewed snapshot
+(`borrador_rev3_snapshot.md`, SHA-256 `b574a407…`) is this status header.
+Drafted by Claude Code (Claude Opus 5.5) on 2026-11-03 at the user's
+instruction («Autorizo redactar la carta de la fase 0, pero no congelarla
+ni ejecutar todavía ninguna comprobación»). Revision 1 was reviewed by Grok
+(`grok-4.7`, REPAIR_REQUIRED, six mandatory repairs;
+`debates/2026-11-03--substrate-saturation-phase0-draft-review-grok/`).
+Revision 2 applies, by the user's decision of 2026-11-03 («aceptar las seis
+reparaciones de Grok, adoptar "hipercubo" como predicado provisional y
+convertir la fase 0 en una auditoría de definiciones, sin valor
+confirmatorio»), all six repairs, the terminology change
+parallelotope → parallelepiped, and the zonotope reading (PS′) without any
+equivalence claim. Revision 3 (same day) applies the one mandatory repair
+of Grok's round 2 (L6b traceability) and its five clarifications, by the
+user's instruction («sí, aplica la reparación y las cinco aclaraciones»;
+`debates/2026-11-03--substrate-saturation-phase0-rev2-review-grok/`).
+Reports cite the commit that adds this file as the preregistration
+commit.
+**Initial scientific status: OPEN.** The conjecture below is `[UNVERIFIED]`;
+it was formulated by an AI from the promoted table and has no evidence
+level of its own.
+**Does not alter:** step 4 of the work plan (hexagonal-ceiling prior-art
+check, `NOT_FOUND_IN_SCOPED_SEARCH`, `6114b9d`), M1 (`86573ca`,
+Amendment 1 `208e1b1`) or any promoted row.
+
+## 0. Nature of this gate and pre-step check (rule of 2026-11-02)
+
+**Phase 0 is a definitional audit with no confirmatory value.** The
+conjecture of Sec. 1 was read off the same table this gate would audit
+(Grok, repair 6). Its purpose is to fix definitions, normalizations,
+traceability and the domain of the statement. Its conclusion is never
+"the conjecture survives"; at best it is "the statement is defined well
+enough to be tested for refutation". A test that can fail needs a separate
+contract with a shape not in the table (Sec. 7).
+
+- **Known.** Promoted rows (CS Secs. 4, 5, 8, 11, 12, 14; c-across-lattices
+  report Sec. 4; c-across-substrates answer Sec. 1): the ceiling
+  `c_0 = r_in(C_micro)` is attained by some declared `s = 2` walk on the
+  line (L1), the square (L2, L6e), BCC (L3, L5a) and the cube (L4); their
+  `C_micro` are a segment, squares and cubes, i.e. hypercubes up to scale
+  and isometry. On the hexagon no declared walk attains it; `sup c_0/r_in
+  = sqrt3/2` in the `n = 3` antipodal subclass; no s=2 walk in `W_hex^sym`
+  with `F` within S7, S13 or S19 attains it; the whole hexagonal class is
+  OPEN. The table contains no parallelepiped that is not a hypercube, so it
+  cannot distinguish the two notions (Grok, repair 1).
+- **Question.** Is the statement of Sec. 1 defined without ambiguity on the
+  promoted rows (definitions, units, single source per row, levels of
+  claim), and is there an exact counterexample to it among those rows?
+- **Result that ends this formulation.** One exact counterexample in the
+  promoted rows (Sec. 4): the formulation of Sec. 1 is dropped at once,
+  with no repair attempted in this gate.
+
+## 1. Statement under audit
+
+> **(PH) [UNVERIFIED], provisional predicate.** For `s = 2`, `d <= 3`,
+> within the declared classes of Sec. 2 and only for models with an
+> admissible isotropic untilted node: the ceiling is attained on a
+> substrate, in the sense of Sec. 2.1, if and only if its `C_micro` is a
+> hypercube up to scale and isometry.
+
+Two directions are kept apart:
+
+- **(PH⇐)** `C_micro` a hypercube up to scale and isometry ⇒ there exists
+  an admissible walk on that substrate with `c_0 = r_in`.
+- **(PH⇒)** `C_micro` not a hypercube up to scale and isometry ⇒ every
+  admissible walk on that substrate has `c_0 < r_in`.
+
+A body with no admissible isotropic untilted node in the declared class is
+outside the statement: it is on neither side of the biconditional and is
+recorded as `OUTSIDE_DEFINITIONS` (Sec. 3.4).
+
+**The predicate is a geometric classification suggested by the existing
+cases, not a physical explanation.** Whether saturation is controlled by
+this geometry, or by algebraic and isotropy constraints that coincide with
+it on the present table, is the open question (user decision,
+2026-11-03).
+
+This contract states only (PH) on the promoted rows. No general statement
+about hypercubes or parallelepipeds outside those rows is written here
+(Grok, repair 3).
+
+**Zonotope reading (PS′) [UNVERIFIED], product class only, not equivalent
+to (PH).** For a walk that is a product of `n` coin–partial-shift factors,
+each partial shift moving by `±a_i`, the composite step set is
+`F = {sum_i ε_i a_i}` and `C_micro = conv F` is the zonotope
+`sum_i [-a_i, a_i]` (convex hull of a Minkowski sum is the Minkowski sum
+of the hulls). It is a parallelepiped exactly when the reduced generators
+(`a_i` up to sign and positive scale, parallel ones merged) are `d`
+linearly independent vectors. (PS′) reads: in the product class, the
+ceiling is attained iff the generators reduce to `d` independent
+directions. **(PS′) is not equivalent to (PH):** `d` independent
+generators need not be orthogonal or of equal length, so a parallelepiped
+need not be a hypercube (e.g. a 60° rhombus in `d = 2`). No equivalence is
+claimed until proved. Examples in the promoted rows: square (two
+generators), BCC/cube (three orthogonal generators), `W_hex` (three
+generators at 120°, `d = 2`: the hexagon). The zonotope facts it would use
+(e.g. the space-tiling criterion of Shephard 1974 and McMullen 1975) are
+cited by Moriyama–Otozawa (arXiv:2411.09141v1) and have not been read
+here. The same domain clause applies to (PS′): a body (e.g. a rhombus)
+whose declared class has no admissible isotropic untilted node is
+`OUTSIDE_DEFINITIONS` and is not on the "attained" side. Phase 0 records
+the reduced generators of each product-class row and gives no verdict on
+(PS′); the counterexample criterion of Sec. 4 concerns (PH) only.
+
+## 2. Quantifiers, domain and normalization
+
+1. **Quantifiers.** "The ceiling is attained on a substrate" means: there
+   exists at least one admissible walk `W` on that substrate with
+   `c_0(W) = r_in(C_W)`. It does not mean that every walk saturates. A
+   non-saturating walk on a substrate where another walk saturates is not
+   a counterexample to (PH⇐) (e.g. L3s4 on BCC, which in any case has
+   `s = 4` and is outside the domain).
+2. **Domain.** `s = 2`, `d <= 3`, models with an admissible isotropic
+   untilted node, and only the classes already declared in the frozen
+   contracts the promoted rows cite (C_ACROSS_LATTICES_GATE,
+   HEX_CEILING_GATE, HEX_SUPREMUM_GATE and the row contracts).
+   **"Admissible"** means exactly: the walk belongs to one of these declared
+   classes and has an isotropic untilted node at `k = 0` in the sense of
+   Sec. 2.4 (`U(0)` scalar, traceless Hermitian linear term with
+   `{T_a, T_b} = 2 c_0^2 delta_ab`, zero tilt; equivalently
+   `A(n)^2 = c_0^2 |n|^2 I`, HEX_CEILING_GATE Sec. 1). It is not the
+   "admissible graph" of P17, whose isotropy in its own sense excludes the
+   triangular lattice. Rows with
+   `s != 2` are recorded and are outside the domain: L5b and L3s4
+   (`s = 4`, c-across-lattices report Sec. 4 table); L6b (`s = 6`: L6b
+   report Secs. 1–2, `s = 6` counted per cell, three edges with `C^2`
+   each, whereas the parent's `s = 2` counts per edge; the row is promoted
+   with `s = 6` by L6B_TRIANGULAR_ROW, described in CS l. 88–94 as «a
+   revision of `C_ACROSS_LATTICES` restricted to row L6b», and CS l. 106
+   records «`s = 6`, not the parent's `s = 2`»). The parent contract
+   C_ACROSS_LATTICES_GATE and the c-across-lattices table were not amended
+   and still list L6b with `s = 2` (`OPEN`, not encoded); the exclusion
+   rests on the promoted `s = 6`. No extrapolation to other `s`, `d`,
+   lattices or classes.
+3. **Substrate.** As in C_ACROSS_LATTICES_GATE Sec. 2: the translation group
+   generated by one complete update together with its composite step set.
+   Here `N := F`, the composite step set of one complete update (all sums
+   of one displacement per partial shift), not the displacement set of a
+   single partial shift. `0 ∈ N` does not change `C_micro`, `r_in` or the
+   longest step when it is interior.
+4. **Normalization and single source per row.** Every row is compared with
+   the same frozen definitions (CS Sec. 2): `C_micro := conv(N)`; `h_C`;
+   `r_in(C_micro) := min h_C`; `c_0` the isotropic untilted cone speed at
+   the massless node (`{T_a, T_b} = 2 c_0^2 delta_ab`, as certified per row
+   in the c-across-lattices report Sec. 4); units: longest step 1, one
+   update per time unit. **For each row the pair `(r_in, c_0)` is taken
+   from exactly one source, in these units.** For L4 that source is the
+   c-across-lattices report Sec. 4 table (`r_in = c_0 = 1/sqrt3`); that
+   table's label "cube `[-1,1]^3`" names the shape in CS Sec. 8 units, and
+   its vertices are not to be combined with the rescaled radius `1/sqrt3`
+   (the rescaled cube has longest step 1). The CS
+   Sec. 8 pair (`C_micro = [-1,1]^3`, `r_in = 1`, `c_IR = 1`) is in other
+   units and must not be crossed with it (Grok, repair 4). A numerical
+   coincidence of speeds, or a value from a different normalization, is
+   not a comparison. "Hypercube up to scale and isometry" and
+   "parallelepiped" (Minkowski sum of `d` linearly independent segments)
+   are checked exactly from the vertices of `C_micro`.
+   **Terminology.** Revision 1 said "parallelotope"; in standard use a
+   parallelotope is any polytope that tiles space by translations
+   (Moriyama–Otozawa, arXiv:2411.09141v1, Sec. 2.2, p. 11), and the
+   regular hexagon is one. That word is not used for the predicate.
+5. **Pointwise against uniform gap.** (PH⇒) is pointwise:
+   `for all W, c_0(W) < r_in(C_W)`. It does not imply a uniform gap
+   `sup_W c_0(W)/r_in(C_W) < 1` over a class. Phase 0 makes no claim about
+   a uniform gap. T1 (`sqrt3/2`) is a uniform statement for the `n = 3`
+   antipodal subclass only; M1-B13 and M1-B19 are qualitative gaps with no
+   bound below `r_in`.
+6. **Background bound.** `c_0 <= r_in` (L0, Bernstein) holds on the
+   declared classes; a row with `c_0 > r_in` would contradict L0, not (PH).
+   No such row exists.
+
+## 3. Method (no computation)
+
+Documentary only. No verifier is run, written or edited; no new walk is
+built; no numerics.
+
+1. List every promoted row in `state/CURRENT_STATE.md` and the reports it
+   cites with `d <= 3`, with its source (`file:line` or section), its
+   declared class and its `s`. Rows with `s != 2` are listed and marked
+   outside the domain with the citation of Sec. 2.2.
+2. For each row in the domain, record from the single source of Sec. 2.4:
+   the vertices of `C_micro`; whether it is a hypercube up to scale and
+   isometry; whether it is a parallelepiped; for product-class rows, the
+   reduced generators (for (PS′)); `r_in`; `c_0`.
+3. **Three separate fields per row, never merged** (Grok, repair 5):
+   (a) *this walk*: `c_0 = r_in` or `c_0 < r_in`, exact;
+   (b) *promoted statement on a class*, quoted with its own quantifier and
+   scope (e.g. T1 on the `n = 3` antipodal subclass; M1-B13/B19 on `W_hex^sym`
+   with `F` within S13/S19; the whole hexagonal class OPEN);
+   (c) *existential reading per substrate*: "some promoted walk on this
+   substrate has `c_0 = r_in`" (yes / no promoted witness). A gap on a
+   subclass or a bounded support is entered in (b) and is never read as
+   (c) "no walk on the substrate saturates".
+4. Flag, without resolving, every row where a definition of Sec. 2 does not
+   apply as frozen (for example a body whose declared class has no
+   admissible isotropic untilted node). Such a row is
+   `OUTSIDE_DEFINITIONS`: not a counterexample and not support.
+5. Record whether the table contains a parallelepiped that is not a
+   hypercube, or a non-hypercube body with a promoted saturating walk. If
+   it contains neither, record that it cannot separate (PH) from (PS′) or
+   from other predicates that agree on segments, squares, cubes and the
+   regular hexagon.
+
+## 4. Counterexample criterion
+
+An exact counterexample among the promoted rows is any of:
+
+- (against PH⇒) a substrate in the domain whose `C_micro` is not a
+  hypercube up to scale and isometry, with a promoted walk with
+  `c_0 = r_in` exactly;
+- (against PH⇐) a substrate in the domain whose `C_micro` is a hypercube up
+  to scale and isometry, on which a promoted exact result shows that no
+  admissible walk of the declared class attains `c_0 = r_in`.
+
+A failed search, a non-saturating single walk, a gap on a subclass or a
+bounded support, or a row outside the domain or the definitions is not a
+counterexample.
+
+## 5. Outcomes
+
+Two separate outcomes, reported together.
+
+**Definitional outcome.**
+
+- `DEFINITIONS_CLOSED`: every row in the domain has a single traced source
+  in the units of Sec. 2.4, all fields of Sec. 3.2–3.3 are filled from
+  promoted exact data, and the `OUTSIDE_DEFINITIONS` list is explicit.
+  Meaning: the statement is defined well enough to be tested for
+  refutation. Nothing more.
+- `OPEN_AFTER_ROW_SURVEY`: some needed quantity is missing, not exact, or
+  has no single source; the list of gaps is reported.
+
+**Counterexample check** (per direction, PH⇐ and PH⇒):
+
+- `REFUTED_BY_ROW_<row>`: one exact counterexample (Sec. 4). The
+  formulation of Sec. 1 stops at once.
+- `NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`: no counterexample among the promoted
+  rows. **This is not independent evidence for (PH)**: the statement was
+  read off this table, which has three hypercube shapes and one
+  non-hypercube shape (the regular hexagon), and no parallelepiped that is
+  not a hypercube. The verdict is never `CONFIRMED`, and it must be
+  reported in the same sentence as this caveat.
+
+**No outcome of this gate authorizes any later phase.** In particular,
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE` is not a condition for, nor a reason
+to start, any test of refutation; each later phase is chartered on its
+own (Grok, repair 6).
+
+## 6. Exclusions
+
+`s != 2`, `d > 3`, bodies without an admissible isotropic untilted node,
+new lattices, new walks, masses, `V_grp^max`, inhomogeneous or encoded
+walks, uniform gaps, general QCA laws, claims about our universe, any
+physical explanation of the predicate. No novelty claim. No computation of
+any kind in this gate.
+
+## 7. After this gate (not authorized here)
+
+A test that can fail needs its own contract, with a shape or support not
+in the source table. The user's stated first choice (2026-11-03) is the
+hexagon: look for an admissible hexagonal family with exactly
+`c_0 = r_in(C_micro)`. Finding one inside the domain of Sec. 2.2
+(`s = 2`, admissible) would refute (PH⇒); a witness with `s != 2` would be
+outside the domain and would not refute (PH). Not finding one would not
+prove (PH). The user prefers it to the rhombus because the
+hexagonal substrate is already studied and a rhombus without an admissible
+isotropic node would be outside the domain. Its exact scope (larger
+support at `s = 2`, larger `s`, or both) is to be fixed in that contract.
+
+## 8. Deliverables
+
+A report `reports/YYYY-MM-DD--substrate-saturation-phase0.md` with the row
+table of Sec. 3, each entry traced to its single source, the
+`OUTSIDE_DEFINITIONS` list, the audit finding of Sec. 3.5 and the outcomes
+of Sec. 5. Then independent cross-family review (user permission needed to
+send), then a separate promotion decision.
+
+=== DOCUMENT 5: verify_c_across_lattices_gate.py ===
+
+"""Exact checks for the C_ACROSS_LATTICES gate.
+
+Contract: theory/C_ACROSS_LATTICES_GATE.md, preregistered at 30672ba.
+Run from the repository root:
+
+  python -B scripts/verify_c_across_lattices_gate.py
+
+Fail-closed: any failed check or exception exits nonzero. SymPy only, zero
+tolerance, no sampling or fitting.
+
+Part 1: for each new row (L5a, L5b, L6a, L6c-L6f) build the exact Bloch
+symbol of one complete update from the source equations, check unitarity
+and the source identities used, and assert the composite step set F and
+the index of the translation group it generates. Row L6b is reported as
+not encoded (see SOURCE_GAPS).
+Part 2: massless node at k = 0; asserts r_in, c_0, vertex count and
+C_infty^strict = C_micro for L1, L2 and the new rows against EXPECTED_*.
+Part 3: massive rows; asserts the exact first-order Gram matrix and the
+theta-independent curvature correction K against EXPECTED_*, plus a
+positive control on the reviewed 1D Dirac block. ADMP mass is OPEN.
+Every tabulated value of the report is asserted by record(); nothing in
+the table rests on a print alone (repair 1 of the 2026-11-01 Grok review).
+
+Conventions (frozen in the contract, Sec. 2):
+- moving amplitude by displacement h carries the phase exp(-i k.h); an
+  operator that reads the value at X+v therefore moves amplitude by -v;
+- in every product the factor with the smallest index acts first (for the
+  prod_j notation of JDW Eqs. (2), (8) this is a declared reading; the
+  linear cone does not depend on it, but K and vertex coefficients may);
+- lattice vectors are written as integer combinations of two (or three)
+  generators g; the Laurent variable z_i stands for exp(-i k.g_i).
+"""
+import hashlib
+import sys
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+CONTRACT = ROOT / "theory/C_ACROSS_LATTICES_GATE.md"
+SOURCES = {
+    "1312.2852v1": None,
+    "1802.03910v1": None,
+    "1803.01015v2": "1d1de6058787437bb712448af11dd6b57d83f73fbe6cb7e6dffd242a45f8a570",
+    "1803.01304v1": "9fa0ea34763b4dd01fe2c38d699ecf5358b98b6b1582381f95330c84eb90ff90",
+}
+
+I2 = sp.eye(2)
+SX = sp.Matrix([[0, 1], [1, 0]])
+SY = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+SZ = sp.Matrix([[1, 0], [0, -1]])
+PROJ_L = sp.Matrix([[1, 0], [0, 0]])
+PROJ_R = sp.Matrix([[0, 0], [0, 1]])
+
+CHECKS = []
+SOURCE_GAPS = {
+    "L6b": "ADMP Eq. (12) p.4 places spinors on triangle edges with a "
+           "white/grey triangulation whose geometry is fixed only by Fig. 1, "
+           "not by the text; the edge-midpoint lattice and the routing "
+           "e(v,k) cannot be encoded exactly from the equations. The source "
+           "states equivalence with L6a over three updates; not verified.",
+}
+
+
+R2, R3 = sp.sqrt(2), sp.sqrt(3)
+EXPECTED_F = {
+    "L6a": {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)},
+    "L6c": {(a, b) for a in range(-2, 3) for b in range(-2, 3) if max(abs(a), abs(b), abs(a + b)) <= 2},
+    "L6d": {(-2, 0), (-2, 2), (0, -2), (0, 0), (0, 2), (2, -2), (2, 0)},
+    "L6e": {(-2, 0), (0, -2), (0, 2), (2, 0)},
+    "L6f": {(-2, 1), (-1, -1), (-1, 2), (0, 0), (1, -2), (1, 1), (2, -1)},
+}
+EXPECTED_INDEX = {"L5a": 4, "L5b": 4, "L6a": 4, "L6c": 1, "L6d": 4, "L6e": 4, "L6f": 3}
+EXPECTED_MASSLESS = {  # label: (r_in, c_0, number of vertices)
+    "L1": (1, 1, 2), "L2": (R2 / 2, R2 / 2, 4),
+    "L5a": (R3 / 3, R3 / 3, 8), "L5b": (R3 / 3, R3 / 3, 8),
+    "L6a": (R3 / 2, sp.Rational(1, 2), 6), "L6c": (R3 / 2, sp.Rational(3, 4), 6),
+    "L6d": (R3 / 2, sp.Rational(3, 4), 6), "L6e": (R2 / 2, R2 / 2, 4),
+    "L6f": (R3 / 2, sp.Rational(3, 4), 6),
+}
+
+
+def record(label, ok, detail=""):
+    CHECKS.append((label, bool(ok), detail))
+    print(("[PASS] " if ok else "[FAIL] ") + label + (f" -- {detail}" if detail else ""))
+
+
+def is_zero_matrix(matrix):
+    return all(sp.simplify(sp.radsimp(sp.expand(entry))) == 0 for entry in matrix)
+
+
+def u2(alpha, xi, zeta, theta):
+    """JDW Eq. (1), 1803.01304v1 p.1."""
+    return sp.exp(sp.I * alpha) * sp.Matrix([
+        [sp.exp(sp.I * xi) * sp.cos(theta), sp.exp(sp.I * zeta) * sp.sin(theta)],
+        [-sp.exp(-sp.I * zeta) * sp.sin(theta), sp.exp(-sp.I * xi) * sp.cos(theta)],
+    ])
+
+
+def monomial(zs, displacement):
+    return sp.prod([z ** int(a) for z, a in zip(zs, displacement)])
+
+
+def neg(v):
+    return tuple(-a for a in v)
+
+
+def laurent_adjoint(matrix, zs):
+    """Adjoint on the unit torus: conjugate coefficients, z -> 1/z."""
+    sub = {sp.conjugate(z): 1 / z for z in zs}
+    return matrix.applyfunc(lambda e: sp.conjugate(sp.expand(e)).subs(sub)).T
+
+
+def laurent_support(matrix, zs, bound=8):
+    """Displacements h (integer generator coordinates) with nonzero
+    coefficient matrix, for a symbol written with z^h <-> exp(-i k.h)."""
+    shift = sp.prod([z ** bound for z in zs])
+    coefficients = {}
+    for r in range(matrix.rows):
+        for c in range(matrix.cols):
+            expr = sp.expand(shift * matrix[r, c])
+            if expr == 0:
+                continue
+            poly = sp.Poly(expr, *zs)
+            for powers, coeff in poly.terms():
+                h = tuple(p - bound for p in powers)
+                coefficients.setdefault(h, sp.zeros(matrix.rows, matrix.cols))
+                coefficients[h][r, c] += coeff
+    return {h: m for h, m in coefficients.items() if not is_zero_matrix(m)}
+
+
+def check_unitary(label, symbol, zs):
+    product = sp.expand(symbol * laurent_adjoint(symbol, zs))
+    record(f"{label}: symbol is unitary (U U^dagger = I on |z|=1)",
+           is_zero_matrix(product - sp.eye(symbol.rows)))
+
+
+def lattice_index(vectors):
+    """|det| of the integer lattice spanned by integer vectors in Z^d,
+    relative to the generator lattice (1 = they generate all of it)."""
+    d = len(vectors[0])
+    m = sp.Matrix(vectors).T
+    hnf_rank = m.rank()
+    if hnf_rank < d:
+        return 0
+    from sympy.matrices.normalforms import smith_normal_form
+    snf = smith_normal_form(m, domain=sp.ZZ)
+    return sp.prod([abs(snf[i, i]) for i in range(d)])
+
+
+def report_row(label, support, generators):
+    cart = {h: sum((a * sp.Matrix(g) for a, g in zip(h, generators)),
+                   sp.zeros(len(generators[0]), 1)) for h in support}
+    lengths = {h: sp.sqrt(sum(x ** 2 for x in v)) for h, v in cart.items()}
+    longest = max(lengths.values(), key=lambda x: float(x))
+    nonzero = [h for h in support if any(h)]
+    index = lattice_index(nonzero) if nonzero else 0
+    print(f"  {label}: |F| = {len(support)}, contains 0: {tuple([0]*len(generators)) in support}")
+    for h in sorted(support):
+        v = cart[h]
+        print(f"    h={h}  cart={tuple(sp.nsimplify(x) for x in v)}  |h|={sp.nsimplify(lengths[h])}")
+    print(f"    longest |h| = {sp.nsimplify(longest)}; index of <F> in generator lattice = {index}")
+    return cart, longest, index
+
+
+# ---------------------------------------------------------------- L5a
+def row_L5a():
+    """Farrelly-Short 1312.2852v1 Eqs. (20)-(21) p.4-5:
+    U_D = T_x T_y T_z, T_b = S_b |up_b><up_b| + S_b^dagger |down_b><down_b|,
+    S_b shifts by +1 along b. 'U_D = T_x T_y T_z' as an operator product
+    means T_z acts first."""
+    zs = sp.symbols("z1:4")
+    paulis = (SX, SY, SZ)
+    T = []
+    for b in range(3):
+        up = (I2 + paulis[b]) / 2
+        down = (I2 - paulis[b]) / 2
+        e = [0, 0, 0]
+        e[b] = 1
+        T.append(monomial(zs, e) * up + monomial(zs, neg(e)) * down)
+    symbol = sp.expand(T[0] * T[1] * T[2])
+    check_unitary("L5a", symbol, zs)
+    support = laurent_support(symbol, zs)
+    gens = [(1, 0, 0), (0, 1, 0), (0, 0, 1)]
+    report_row("L5a", support, gens)
+    expected = {(a, b, c) for a in (-1, 1) for b in (-1, 1) for c in (-1, 1)}
+    record("L5a: composite step set is {+-1}^3 (BCC, as the source remarks)",
+           set(support) == expected)
+    return symbol, zs, support, gens
+
+
+# ---------------------------------------------------------------- L5b
+def row_L5b():
+    """Mlodinow-Brun 1802.03910v1 Eq. (23) p.5, massless (theta = 0):
+    U = (S_X P_X^+ + S_X^dag P_X^-)(S_Y ...)(S_Z ...), with
+    Delta P_i = P_i^+ - P_i^- mutually anticommuting involutions and a coin
+    Q anticommuting with all three (Eqs. (25)-(27) p.6, p.7), so the four
+    generate the irreducible complex Clifford representation on C^4. A
+    concrete choice is fixed here; Q is used only to check that choice."""
+    zs = sp.symbols("z1:4")
+    kron = sp.kronecker_product
+    dP = (kron(SX, SX), kron(SX, SY), kron(SX, SZ))
+    Q = kron(SZ, I2)
+    gens4 = list(dP) + [Q]
+    ok = all(is_zero_matrix(g * g - sp.eye(4)) for g in gens4) and all(
+        is_zero_matrix(gens4[i] * gens4[j] + gens4[j] * gens4[i])
+        for i in range(4) for j in range(i + 1, 4))
+    record("L5b: Delta P_X,Y,Z and Q are mutually anticommuting involutions on C^4", ok)
+    T = []
+    for b in range(3):
+        e = [0, 0, 0]
+        e[b] = 1
+        plus = (sp.eye(4) + dP[b]) / 2
+        minus = (sp.eye(4) - dP[b]) / 2
+        T.append(monomial(zs, e) * plus + monomial(zs, neg(e)) * minus)
+    symbol = sp.expand(T[0] * T[1] * T[2])
+    check_unitary("L5b", symbol, zs)
+    support = laurent_support(symbol, zs)
+    gens = [(1, 0, 0), (0, 1, 0), (0, 0, 1)]
+    report_row("L5b", support, gens)
+    expected = {(a, b, c) for a in (-1, 1) for b in (-1, 1) for c in (-1, 1)}
+    record("L5b: composite step set is {+-1}^3 (BCC)", set(support) == expected)
+    return symbol, zs, support, gens
+
+
+# ---------------------------------------------------------------- L6a
+def row_L6a():
+    """ADMP 1803.01015v2 p.3, massless: Eq. (7) with M = I,
+    prod_{i=0}^{2} U_i^dag T_i U_i = prod_i sum_s Pi_i^s T(i, s eps),
+    Pi_i^s the eigenprojectors of tau_i (Eq. (5)), T(i, s eps) the
+    translation by s u_i (u_i Eq. (4)). Factor i = 0 acts first, as in
+    Eq. (10). Lattice coordinates: g1 = u_0 = (1,0), g2 = (1/2, sqrt3/2),
+    so u_0 -> (1,0), u_1 -> (-1,1), u_2 -> (0,-1)."""
+    xi = sp.sqrt(5) / 3
+    tau = [sp.Rational(2, 3) * SX + xi * SZ,
+           -sp.Rational(1, 3) * SX + sp.sqrt(3) / 3 * SY + xi * SZ,
+           -sp.Rational(1, 3) * SX - sp.sqrt(3) / 3 * SY + xi * SZ]
+    record("L6a: tau_i are involutions (Eq. (5) C1)",
+           all(is_zero_matrix(t * t - I2) for t in tau))
+    px, py = sp.symbols("p_x p_y", real=True)
+    pis = [sp.cos(2 * sp.pi * i / 3) * px + sp.sin(2 * sp.pi * i / 3) * py for i in range(3)]
+    record("L6a: sum_i tau_i pi_i = p_x sigma_x + p_y sigma_y (C2)",
+           is_zero_matrix(sum((t * p for t, p in zip(tau, pis)), sp.zeros(2)) - px * SX - py * SY))
+    record("L6a: sum_i tau_i = sqrt5 sigma_z (Eq. (5))",
+           is_zero_matrix(tau[0] + tau[1] + tau[2] - sp.sqrt(5) * SZ))
+    zs = sp.symbols("z1:3")
+    u = [(1, 0), (-1, 1), (0, -1)]
+    factors = []
+    for i in range(3):
+        plus = (I2 + tau[i]) / 2
+        minus = (I2 - tau[i]) / 2
+        factors.append(monomial(zs, u[i]) * plus + monomial(zs, neg(u[i])) * minus)
+    symbol = sp.expand(factors[2] * factors[1] * factors[0])
+    check_unitary("L6a", symbol, zs)
+
+    # Encoded form Eq. (10): W T2 W T1 W T0 with W = U0 S U0^dag (M = I),
+    # U0 = R_y(alpha) = exp(-i alpha sigma_y/2), S = e^{i pi/3} R_z(2pi/3).
+    S = (sp.exp(sp.I * sp.pi / 3) * sp.diag(sp.exp(-sp.I * sp.pi / 3), sp.exp(sp.I * sp.pi / 3))
+         ).applyfunc(lambda e: sp.expand_complex(sp.expand(e)))  # radicals: diag(1, e^{2 pi i/3})
+    record("L6a: S cubes to the identity (p.3)", is_zero_matrix(S ** 3 - I2))
+    signs = {}
+    # Half-angle radicals of alpha = sign*arccos(sqrt5/3), so that every
+    # entry is a real radical and .H simplifies exactly.
+    c_half = sp.sqrt((1 + sp.sqrt(5) / 3) / 2)
+    s_half = sp.sqrt((1 - sp.sqrt(5) / 3) / 2)
+
+    def ry(sign):
+        return sp.Matrix([[c_half, -sign * s_half], [sign * s_half, c_half]])
+
+    for sign in (1, -1):
+        U0 = ry(sign)
+        signs[sign] = is_zero_matrix(U0 * tau[0] * U0.H - SZ)
+    print(f"  L6a: sigma_z = R_y(alpha) tau_0 R_y(alpha)^dag holds for "
+          f"alpha=+arccos(sqrt5/3): {signs[1]}, alpha=-arccos(sqrt5/3): {signs[-1]}")
+    record("L6a: SOURCE SIGN ISSUE recorded: Eq. (8) holds for alpha = -arccos(sqrt5/3) "
+           "only, not the printed +arccos(sqrt5/3)", (not signs[1]) and signs[-1])
+    U0 = ry(1 if signs[1] else -1)
+    printed = [U0, U0 * S, U0 * S * S]
+    printed_ok = all(is_zero_matrix(Ui.H * SZ * Ui - t) for Ui, t in zip(printed, tau))
+    swapped = is_zero_matrix(printed[1].H * SZ * printed[1] - tau[2])
+    print(f"  L6a: with the printed S, U_i^dag sigma_z U_i = tau_i: {printed_ok}; "
+          f"U_0 S gives tau_2 instead: {swapped}")
+    record("L6a: SOURCE SIGN ISSUE recorded: printed S orders the tau_i backwards",
+           (not printed_ok) and swapped)
+    S = S.H  # use S^{-1}; Eq. (5) with C1-C2 is the primary definition
+    Us = [U0, U0 * S, U0 * S * S]
+    record("L6a: with S^{-1}, tau_i = U_i^dag sigma_z U_i for i = 0, 1, 2",
+           all(is_zero_matrix(Ui.H * SZ * Ui - t) for Ui, t in zip(Us, tau)))
+    W = U0 * S * U0.H
+    Tp = [monomial(zs, ui) * PROJ_L + monomial(zs, neg(ui)) * PROJ_R for ui in u]
+    encoded = sp.expand(W * Tp[2] * W * Tp[1] * W * Tp[0])
+    # Eq. (7) -> (10): U_{i+1} U_i^dag = W and U_2^dag = U_0^dag W (S^3 = I),
+    # hence prod_i U_i^dag T_i U_i = U_0^dag (W T2 W T1 W T0) U_0.
+    record("L6a: Eq. (7) symbol = U_0^dag (Eq. (10) symbol) U_0 exactly",
+           is_zero_matrix(sp.expand(U0 * symbol * U0.H) - encoded))
+    support = laurent_support(symbol, zs)
+    gens = [(1, 0), (sp.Rational(1, 2), sp.sqrt(3) / 2)]
+    report_row("L6a", support, gens)
+    return symbol, zs, support, gens
+
+
+# ---------------------------------------------------------------- JDW
+def jdw_shift(zs, read_L, read_R):
+    """(S Psi)(X) = (psi^L(X+read_L), psi^R(X+read_R)): L moves by -read_L."""
+    return monomial(zs, neg(read_L)) * PROJ_L + monomial(zs, neg(read_R)) * PROJ_R
+
+
+TRI = [None, (1, 0), (0, 1), (-1, 1), (-1, 0), (0, -1), (1, -1)]  # X1..X6, g1=(1,0), g2=(1/2,sqrt3/2)
+TRI_GENS = [(1, 0), (sp.Rational(1, 2), sp.sqrt(3) / 2)]
+
+
+def row_L6c():
+    """JDW 1803.01304v1 Eq. (2) p.2: W0 = prod_{j=1}^{6} W_j,
+    W_j = R_j^{-1} U_j S_j R_j, U_j = 1, R_j = U(0, pi/2, 0, pi/12+(j-1)pi/6),
+    R_j^{-1} = U(0, -pi/2, 0, -pi/12-(j-1)pi/6); S_j reads L at N_j, R at
+    N_{j+1}. W_1 acts first."""
+    zs = sp.symbols("z1:3")
+    symbol = sp.eye(2)
+    for j in range(1, 7):
+        R = u2(0, sp.pi / 2, 0, sp.pi / 12 + (j - 1) * sp.pi / 6)
+        Rinv = u2(0, -sp.pi / 2, 0, -sp.pi / 12 - (j - 1) * sp.pi / 6)
+        if j == 1:
+            record("L6c: R_j^{-1} as printed is the inverse of R_j", is_zero_matrix(Rinv * R - I2))
+        Sj = jdw_shift(zs, TRI[j], TRI[j % 6 + 1])
+        symbol = sp.expand(Rinv * Sj * R * symbol)
+    check_unitary("L6c", symbol, zs)
+    support = laurent_support(symbol, zs)
+    report_row("L6c", support, TRI_GENS)
+    return symbol, zs, support, TRI_GENS
+
+
+def row_L6d():
+    """JDW Eq. (4) p.2: W~0 = R~2^{-1} U3 S~3 R~2 R~1^{-1} U2 S~2 R~1 U1 S~1,
+    R~j = U(0, pi/2, 0, j pi/6), U_j = 1, S~j reads L at N_j, R at N_{j+3}."""
+    zs = sp.symbols("z1:3")
+    Rt = {j: u2(0, sp.pi / 2, 0, j * sp.pi / 6) for j in (1, 2)}
+    Rti = {j: u2(0, -sp.pi / 2, 0, -j * sp.pi / 6) for j in (1, 2)}
+    record("L6d: R~j^{-1} as printed are the inverses",
+           all(is_zero_matrix(Rti[j] * Rt[j] - I2) for j in (1, 2)))
+    St = {j: jdw_shift(zs, TRI[j], TRI[j + 3]) for j in (1, 2, 3)}
+    symbol = sp.expand(Rti[2] * St[3] * Rt[2] * Rti[1] * St[2] * Rt[1] * St[1])
+    check_unitary("L6d", symbol, zs)
+    support = laurent_support(symbol, zs)
+    report_row("L6d", support, TRI_GENS)
+    return symbol, zs, support, TRI_GENS
+
+
+ISO = [None, (1, -1), (1, 0), (0, 1), (-1, 1), (-1, 0), (0, -1)]  # g1=(1/2,1/2), g2=(-1/2,1/2)
+ISO_GENS = [(sp.Rational(1, 2), sp.Rational(1, 2)), (-sp.Rational(1, 2), sp.Rational(1, 2))]
+
+
+def row_L6e():
+    """JDW Eq. (6) p.2: W^0 = W^3 W^2 W^1, W^j = U^j S^j,
+    U^j = U(0, 0, -pi/2, (j-2) pi/4), S^j reads L at N_j, R at N_{j+3};
+    isosceles neighbours X1..X6 of p.2."""
+    zs = sp.symbols("z1:3")
+    symbol = sp.eye(2)
+    for j in (1, 2, 3):
+        Uj = u2(0, 0, -sp.pi / 2, (j - 2) * sp.pi / 4)
+        symbol = sp.expand(Uj * jdw_shift(zs, ISO[j], ISO[j + 3]) * symbol)
+    check_unitary("L6e", symbol, zs)
+    support = laurent_support(symbol, zs)
+    report_row("L6e", support, ISO_GENS)
+    return symbol, zs, support, ISO_GENS
+
+
+HEX = [None, (1, 0), (-1, 1), (0, -1)]  # X1..X3 of p.2 in TRI generators
+
+
+def row_L6f():
+    """JDW Eqs. (7)-(8) p.2: W0 = prod_{j=1}^{3} W_j, W_j = U_j^{-1} S_j U_j,
+    U_j = U(0, pi/2, 0, pi/6+(j-1)pi/3); S_1 reads (N1,N2), S_2 (N2,N3),
+    S_3 (N3,N1). W_1 acts first."""
+    zs = sp.symbols("z1:3")
+    reads = {1: (1, 2), 2: (2, 3), 3: (3, 1)}
+    symbol = sp.eye(2)
+    for j in (1, 2, 3):
+        Uj = u2(0, sp.pi / 2, 0, sp.pi / 6 + (j - 1) * sp.pi / 3)
+        Uji = u2(0, -sp.pi / 2, 0, -sp.pi / 6 - (j - 1) * sp.pi / 3)
+        a, b = reads[j]
+        symbol = sp.expand(Uji * jdw_shift(zs, HEX[a], HEX[b]) * Uj * symbol)
+    check_unitary("L6f", symbol, zs)
+    support = laurent_support(symbol, zs)
+    report_row("L6f", support, TRI_GENS)
+    return symbol, zs, support, TRI_GENS
+
+
+
+# ================================================================ Part 2
+# Massless geometry and speeds at the declared node k = 0.
+#
+# Normalisation (contract Sec. 2): Cartesian positions divided by the longest
+# |h| in F, one complete update per time unit. U(k) is obtained from the
+# Laurent symbol by z_j = exp(sigma * i * k.g_j / L), sigma = -1 for the
+# symbols built above (z <-> exp(-i k.g)) and +1 for the published standard
+# symbols (z = exp(i k)). Signs of nonzero algebraic numbers are decided by
+# SymPy's exact relational evaluation on radicals; zero tests are symbolic.
+
+def positive(x):
+    v = sp.radsimp(sp.simplify(x))
+    if v == 0:
+        return 0
+    return 1 if bool(v > 0) else -1
+
+
+def hull(points):
+    """Facets (unit outward normal, distance) and vertex set of conv(points),
+    for points spanning R^d with the origin in the interior."""
+    import itertools
+    d = points[0].rows
+    facets = {}
+    for combo in itertools.combinations(range(len(points)), d):
+        base = points[combo[0]]
+        if d == 1:
+            normal = sp.Matrix([1])
+        else:
+            diff = sp.Matrix([list((points[i] - base).T) for i in combo[1:]])
+            ns = diff.nullspace()
+            if len(ns) != 1:
+                continue
+            normal = ns[0]
+        offset = (normal.T * base)[0]
+        if offset == 0 or positive(offset) == 0:
+            continue
+        if positive(offset) < 0:
+            normal, offset = -normal, -offset
+        if all(positive(offset - (normal.T * q)[0]) >= 0 for q in points):
+            norm = sp.sqrt((normal.T * normal)[0])
+            unit = (normal / norm).applyfunc(lambda e: sp.radsimp(sp.simplify(e)))
+            facets[tuple(unit)] = sp.radsimp(sp.simplify(offset / norm))
+    verts = []
+    for idx, q in enumerate(points):
+        on = [sp.Matrix(n) for n, dist in facets.items()
+              if positive((sp.Matrix(n).T * q)[0] - dist) == 0]
+        if on and sp.Matrix.hstack(*on).rank() == d:
+            verts.append(idx)
+    return facets, verts
+
+
+def node_speeds(symbol, zs, gens, scale, sigma, dim):
+    k = sp.symbols(f"k1:{dim + 1}", real=True)
+    subs = {}
+    for z, g in zip(zs, gens):
+        phase = sum((k[a] * g[a] for a in range(dim)), 0) / scale
+        subs[z] = sp.exp(sigma * sp.I * phase)
+    U = symbol.subs(subs)
+    at0 = U.subs({ka: 0 for ka in k}).applyfunc(lambda e: sp.radsimp(sp.simplify(e)))
+    s_dim = symbol.rows
+    A = [(sp.I * U.diff(ka)).subs({kb: 0 for kb in k}).applyfunc(
+        lambda e: sp.radsimp(sp.simplify(sp.expand_complex(e)))) for ka in k]
+    tilt = [sp.simplify(Ai.trace() / s_dim) for Ai in A]
+    T = [Ai - t * sp.eye(s_dim) for Ai, t in zip(A, tilt)]
+    c2 = sp.radsimp(sp.simplify((T[0] * T[0])[0, 0]))
+    iso = all(is_zero_matrix(T[a] * T[a] - c2 * sp.eye(s_dim)) for a in range(dim)) and all(
+        is_zero_matrix(T[a] * T[b] + T[b] * T[a]) for a in range(dim) for b in range(a + 1, dim))
+    herm = all(is_zero_matrix(Ai - Ai.H) for Ai in A)
+    return at0, A, tilt, c2, iso, herm
+
+
+def nilpotent(m):
+    return is_zero_matrix(m ** m.rows)
+
+
+def analyse(label, symbol, zs, support, gens, sigma, results):
+    dim = len(gens[0])
+    cart = {h: sum((a * sp.Matrix(g) for a, g in zip(h, gens)), sp.zeros(dim, 1)) for h in support}
+    L = max((sp.sqrt((v.T * v)[0]) for v in cart.values()), key=lambda x: float(x))
+    L = sp.radsimp(sp.simplify(L))
+    keys = sorted(support)
+    pts = [(cart[h] / L).applyfunc(sp.radsimp) for h in keys]
+    facets, verts = hull(pts)
+    r_in = min(facets.values(), key=lambda x: float(x))
+    at0, A, tilt, c2, iso, herm = node_speeds(symbol, zs, gens, L, sigma, dim)
+    record(f"{label}: U(0) = I (node at k = 0, all quasienergies 0)", is_zero_matrix(at0 - sp.eye(symbol.rows)))
+    record(f"{label}: linear generators i dU/dk_a(0) are Hermitian", herm)
+    record(f"{label}: no tilt at the node (trace parts vanish)", all(t == 0 for t in tilt))
+    record(f"{label}: isotropic untilted cone, {{T_a, T_b}} = 2 c0^2 delta_ab", iso)
+    c0 = sp.radsimp(sp.sqrt(c2))
+    survive = {keys[i]: not nilpotent(support[keys[i]]) for i in verts}
+    all_survive = all(survive.values())
+    record(f"{label}: every vertex coefficient is non-nilpotent (C_infty^strict = C_micro)",
+           all_survive, f"{sum(survive.values())}/{len(survive)} vertices survive")
+    c_strict = r_in if all_survive else None
+    ratio = sp.radsimp(sp.simplify(c0 / r_in))
+    print(f"  {label}: L = {L}; |vertices| = {len(verts)}; |facets| = {len(facets)}; "
+          f"r_in = {r_in}; V_causal^max = 1; c0 = {c0}; c0/r_in = {ratio}; "
+          f"c_strict^iso = {c_strict if c_strict is not None else 'OPEN'}; "
+          f"S_min = c0/V_causal^max = {c0}; S_max = c0/r_in = {ratio}; "
+          f"c0 in source units (per update, |h| as in source) = {sp.radsimp(c0 * L)}")
+    exp_r, exp_c, exp_v = EXPECTED_MASSLESS[label]
+    record(f"{label}: tabulated r_in = {exp_r}, c_0 = {exp_c}, |vertices| = {exp_v}",
+           sp.simplify(r_in - exp_r) == 0 and sp.simplify(c0 - exp_c) == 0 and len(verts) == exp_v)
+    results[label] = dict(s=symbol.rows, d=dim, r_in=r_in, c0=c0, ratio=ratio,
+                          c_strict=c_strict, iso=iso, nverts=len(verts))
+    return results[label]
+
+
+def part2(rows):
+    import verify_weyl_dirac_gate as wd  # reviewed helper, imported read-only
+    results = {}
+    print("== Part 2: standard rows L1, L2 (recomputed only for C_infty^strict)")
+    for label, dim in (("L1", 1), ("L2", 2)):
+        zs = sp.symbols(f"w1:{dim + 1}")
+        symbol, _ = wd.published_symbol(dim, 1, zs)
+        support = wd.fourier_support(symbol, zs)
+        gens = [tuple(1 if a == b else 0 for b in range(dim)) for a in range(dim)]
+        analyse(label, symbol, zs, support, gens, +1, results)
+    print("== Part 2: new rows")
+    for label, (symbol, zs, support, gens) in rows.items():
+        analyse(label, symbol, zs, support, gens, -1, results)
+    # Hypotheses (contract Sec. 5), on the rows computed here.
+    s2 = [l for l, r in results.items() if r["s"] == 2]
+    ha = {l: results[l]["ratio"] == 1 for l in s2}
+    hb = {l: results[l]["c_strict"] is not None for l in results}
+    hc = {l: (results[l]["c_strict"] is None) or positive(results[l]["c_strict"] - results[l]["c0"]) >= 0
+          for l in results}
+    print(f"  Ha (c0 = r_in, s=2 rows): {ha}")
+    print(f"  Hb (c_strict^iso = r_in): {hb}")
+    print(f"  Hc (c0 <= c_strict^iso where decided): {hc}")
+    record("Hb holds in every row computed here (L6b undecided, OPEN)", all(hb.values()))
+    record("Hc holds in every row computed here (L6b undecided, OPEN)", all(hc.values()))
+    return results
+
+
+# ================================================================ Part 3
+# Massive rows. With U(0) = exp(-i theta Q), Q^2 = I, Duhamel's formula gives
+# i dU U(0)^dag = X_par + (sin theta/theta) X_perp exp(i theta Q), where
+# X_par / X_perp are the parts of dH commuting / anticommuting with Q
+# (corrected 2026-11-01 after both reviews; the earlier comment omitted the
+# unitary factor). The code forms B = Y_par + (theta/sin theta) Y_perp from
+# Y = i dU U(0)^dag, i.e. B = X_par + X_perp exp(i theta Q). When X_par = 0
+# (asserted), B is Hermitian, anticommutes with Q, and {B_a, B_b} =
+# {X_a, X_b}: its Gram matrix is that of dH, which defines c_H (linear
+# spatial coefficient of H = i log U at fixed mass, as in the Weyl/Dirac
+# gate). B itself is not dH. With
+# G = (U + U^dag)/2 scalar at k = 0 and zero linear term, cos omega_j(k) are
+# cos theta + eig(G_2(k)) + O(k^3), so omega_j^2 = theta^2 + (theta/sin theta)
+# q_j |k|^2 with G_2 = -(q/2)|k|^2 (c_omega2^2 = theta q / sin theta).
+
+THETA = sp.Symbol("theta", positive=True)
+
+
+def massive(label, symbol, zs, gens, scale, dim, Q, c0, theta_note):
+    """Certify the exact first-order Hamiltonian Gram matrix g_ab
+    ({B_a, B_b} = 2 g_ab I, c_H(n)^2 = n.g.n) and the exact decomposition
+    Hess_k cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K. Isotropy is
+    reported, not assumed."""
+    k = sp.symbols(f"k1:{dim + 1}", real=True)
+    subs = {z: sp.exp(-sp.I * sum((k[a] * g[a] for a in range(dim)), 0) / scale)
+            for z, g in zip(zs, gens)}
+    s_dim = symbol.rows
+    ident = sp.eye(s_dim)
+    U = symbol.subs(subs)
+    zero = {ka: 0 for ka in k}
+    simp = lambda e: sp.simplify(sp.expand_complex(sp.expand(e)))
+    U0 = U.subs(zero).applyfunc(simp)
+    expected = sp.cos(THETA) * ident - sp.I * sp.sin(THETA) * Q
+    record(f"{label} massive: U(0) = exp(-i theta Q), Q^2 = I ({theta_note})",
+           is_zero_matrix(U0 - expected) and is_zero_matrix(Q * Q - ident))
+    B = []
+    par_zero = True
+    for a in range(dim):
+        Y = ((sp.I * U.diff(k[a])).subs(zero) * expected.H).applyfunc(simp)
+        Xpar = (Y + Q * Y * Q) / 2
+        Xperp = (Y - Q * Y * Q) / 2
+        par_zero = par_zero and is_zero_matrix(Xpar)
+        B.append((Xpar + THETA / sp.sin(THETA) * Xperp).applyfunc(sp.simplify))
+    record(f"{label} massive: linear dH anticommutes with the mass term (X_par = 0)", par_zero)
+    gram = sp.zeros(dim, dim)
+    scalar = True
+    for a in range(dim):
+        for b in range(dim):
+            anti = ((B[a] * B[b] + B[b] * B[a]) / 2).applyfunc(sp.simplify)
+            gram[a, b] = sp.simplify(anti[0, 0])
+            scalar = scalar and is_zero_matrix(anti - gram[a, b] * ident)
+    record(f"{label} massive: {{B_a, B_b}} = 2 g_ab I (scalar Gram matrix)", scalar)
+    g_rel = (gram / (c0 ** 2 * (THETA / sp.sin(THETA)) ** 2)).applyfunc(sp.simplify)
+    iso_H = is_zero_matrix(g_rel - g_rel[0, 0] * sp.eye(dim))  # Gram proportional to I
+    Ud = U.H.applyfunc(lambda e: e.subs({sp.conjugate(THETA): THETA}))
+    G = (U + Ud) / 2
+    record(f"{label} massive: grad cos(omega)(0) = 0 (no linear dispersion term)",
+           all(is_zero_matrix(G.diff(ka).subs(zero).applyfunc(simp)) for ka in k))
+    K = {}
+    decomposed = True
+    for a in range(dim):
+        for b in range(dim):
+            hab = G.diff(k[a]).diff(k[b]).subs(zero).applyfunc(simp)
+            rest = (hab + (c0 ** 2 * sp.cos(THETA) if a == b else 0) * ident).applyfunc(
+                lambda e: sp.simplify(e / sp.sin(THETA)))
+            decomposed = decomposed and all(not e.has(THETA) for e in rest)
+            K[(a, b)] = rest
+    record(f"{label} massive: Hess cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K, "
+           f"K independent of theta", decomposed)
+    iso_W = all(is_zero_matrix(m) for m in K.values())
+    print(f"  {label}: c_H Gram / (c_0 theta/sin theta)^2 = {g_rel.tolist()} -> "
+          f"{('ISOTROPIC c_H, c_H^2/c_0^2 = ' + str(sp.simplify(g_rel[0, 0] * (THETA / sp.sin(THETA)) ** 2))) if iso_H else 'ANISOTROPIC c_H(n) at finite mass'}")
+    Kshow = {ab: (m[0, 0] if is_zero_matrix(m - m[0, 0] * ident) else m.tolist()) for ab, m in K.items()}
+    print(f"  {label}: curvature correction K_ab = {Kshow} -> "
+          f"{'ISOTROPIC c_omega2 = c_0 sqrt(theta cot theta)' if iso_W else 'NO isotropic c_omega2 at finite mass (anisotropic and/or band-split, O(sin theta))'}")
+    return dict(iso_H=iso_H, iso_W=iso_W, gram=g_rel, K=K)
+
+
+def part3(rows, results):
+    print("== Part 3: massive rows (mass parameter theta = quasienergy gap at k = 0)")
+    out = {}
+    kron = sp.kronecker_product
+    cm, sm = sp.cos(THETA), sp.sin(THETA)
+    # L5b: Mlodinow-Brun Eq. (23): U = (axis product) exp(-i theta Q).
+    sym, zs, sup, gens = rows["L5b"]
+    Q = kron(SZ, I2)
+    out["L5b"] = massive("L5b", sp.expand(sym * (cm * sp.eye(4) - sp.I * sm * Q)), zs, gens,
+                         sp.sqrt(3), 3, Q, results["L5b"]["c0"], "theta = MB theta")
+    # JDW: W_m = U_m W_0, U_m = U(0,0,-pi/2,phi) = exp(-i phi sigma_x).
+    for label, note in (("L6c", "theta = 3m/2, JDW p.2"),
+                        ("L6d", "theta = 3m/2, 'same way as' six-step, JDW p.2"),
+                        ("L6f", "theta = 3 sqrt3 m/4, JDW p.3")):
+        sym, zs, sup, gens = rows[label]
+        Um = cm * I2 - sp.I * sm * SX
+        record(f"{label}: U(0,0,-pi/2,theta) = exp(-i theta sigma_x)",
+               is_zero_matrix(u2(0, 0, -sp.pi / 2, THETA) - Um))
+        L = 2 if label in ("L6c", "L6d") else sp.sqrt(3)
+        out[label] = massive(label, sp.expand(Um * sym), zs, gens, L, 2, SX, results[label]["c0"], note)
+    # L6e: U^1 -> U(0,0,-pi/2,-pi/4+m): U(0) = exp(-i m sigma_x), theta = m.
+    zs = sp.symbols("z1:3")
+    sym = sp.eye(2)
+    for j in (1, 2, 3):
+        ang = (-sp.pi / 4 + THETA) if j == 1 else (j - 2) * sp.pi / 4
+        sym = sp.expand(u2(0, 0, -sp.pi / 2, ang) * jdw_shift(zs, ISO[j], ISO[j + 3]) * sym)
+    out["L6e"] = massive("L6e", sym, zs, ISO_GENS, sp.sqrt(2), 2, SX, results["L6e"]["c0"],
+                         "theta = m, JDW p.2")
+    # Positive control: the reviewed minimal 1D Dirac block of the Weyl/Dirac
+    # gate, [[n e^{-ik}, i m], [i m, n e^{ik}]], n = cos M, m = sin M, has
+    # c_H = c_0 M cot M and isotropic c_omega2 = c_0 sqrt(M cot M) (report
+    # 2026-09-14, Secs. 5-6). U(0) = exp(+i M sigma_x): Q = -sigma_x.
+    zc = sp.symbols("y1:2")
+    dirac = sp.Matrix([[cm * zc[0], sp.I * sm], [sp.I * sm, cm / zc[0]]])
+    ctrl = massive("CONTROL 1D Dirac", dirac, zc, [(1,)], 1, 1, -SX, 1, "theta = M")
+    record("CONTROL: method reproduces the reviewed c_H = c_0 M cot M",
+           sp.simplify(ctrl["gram"][0, 0] - sp.cos(THETA) ** 2) == 0)
+    record("CONTROL: method reproduces an isotropic c_omega2 (K = 0)", ctrl["iso_W"])
+    print("  ADMP L6a mass (M inside W, Eq. (7)): not of the form exp(-i theta Q) x hopping "
+          "with a fixed axis; U(0) = prod_i exp(-i mu tau_i). Not encoded in Part 3 (OPEN).")
+    # Table assertions (repair 1): Gram matrices and K exactly as tabulated.
+    i3 = sp.Rational(1, 3)
+    exp_K = {
+        "L5b": {(0, 0): sp.zeros(4), (1, 1): sp.zeros(4), (2, 2): sp.zeros(4),
+                (0, 1): sp.diag(-i3, i3, i3, -i3),
+                (0, 2): i3 * sp.Matrix([[0, -sp.I, 0, 0], [sp.I, 0, 0, 0], [0, 0, 0, sp.I], [0, 0, -sp.I, 0]]),
+                (1, 2): i3 * sp.Matrix([[0, -1, 0, 0], [-1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])},
+        "L6c": {(0, 0): -5 * R3 / 32 * I2, (0, 1): sp.zeros(2), (1, 1): 3 * R3 / 32 * I2},
+        "L6d": {(0, 0): R3 / 16 * I2, (0, 1): -sp.Rational(3, 8) * I2, (1, 1): -3 * R3 / 16 * I2},
+        "L6f": {(0, 0): -3 * R3 / 16 * I2, (0, 1): sp.zeros(2), (1, 1): 5 * R3 / 16 * I2},
+        "L6e": {(0, 0): sp.zeros(2), (0, 1): -sp.Rational(1, 2) * I2, (1, 1): sp.zeros(2)},
+    }
+    exp_g = {"L5b": sp.eye(3), "L6c": sp.eye(2), "L6d": sp.eye(2), "L6f": sp.eye(2),
+             "L6e": sp.Matrix([[1, sp.sin(2 * THETA)], [sp.sin(2 * THETA), 1]])}
+    for label, r in out.items():
+        record(f"{label} massive: tabulated Gram/(c_0 theta/sin theta)^2 = {exp_g[label].tolist()}",
+               is_zero_matrix(r["gram"] - exp_g[label]))
+        record(f"{label} massive: tabulated curvature correction K",
+               all(is_zero_matrix(r["K"][ab] - m) for ab, m in exp_K[label].items()))
+        print(f"  summary {label}: isotropic c_H: {r['iso_H']}; K = 0 (isotropic c_omega2): {r['iso_W']}")
+    return out
+
+
+def main():
+    print(f"contract sha256 {hashlib.sha256(CONTRACT.read_bytes()).hexdigest()}")
+    for name, expected in SOURCES.items():
+        digest = hashlib.sha256((ROOT / f"sources/{name}.pdf").read_bytes()).hexdigest()
+        if expected is not None:
+            record(f"source {name}.pdf SHA256 matches sources/README.md", digest == expected)
+        else:
+            print(f"  source {name}.pdf sha256 {digest}")
+    rows = {}
+    for label, fn in [("L5a", row_L5a), ("L5b", row_L5b), ("L6a", row_L6a),
+                      ("L6c", row_L6c), ("L6d", row_L6d), ("L6e", row_L6e), ("L6f", row_L6f)]:
+        print(f"== {label}")
+        rows[label] = fn()
+    for label, reason in SOURCE_GAPS.items():
+        print(f"== {label}: NOT ENCODED -- {reason}")
+    print("== Part 1 table assertions")
+    for label, (symbol, zs, support, gens) in rows.items():
+        if label in EXPECTED_F:
+            record(f"{label}: composite step set F equals the tabulated set", set(support) == EXPECTED_F[label])
+        nonzero = [h for h in support if any(h)]
+        record(f"{label}: index of <F> in the generator lattice = {EXPECTED_INDEX[label]}",
+               lattice_index(nonzero) == EXPECTED_INDEX[label])
+    sys.path.insert(0, str(ROOT / "scripts"))
+    results = part2(rows)
+    part3(rows, results)
+    failed = [c for c in CHECKS if not c[1]]
+    print(f"{len(CHECKS) - len(failed)}/{len(CHECKS)} checks passed (Parts 1-3, table asserted).")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except Exception as exc:  # fail closed
+        print(f"[FAIL] exception: {exc!r}")
+        sys.exit(1)
+
+=== DOCUMENT 6: extractos.md ===
+
+# Extractos literales con numeración de línea original (preparado 2026-11-04, base cb814b5)
+
+## scripts/verify_directional_saturation.py, l. 55–150
+```
+55: 
+56: 
+57: def check(name, tag="ESTABLISHED"):
+58:     def wrap(fn):
+59:         CHECKS.append((name, tag, fn))
+60:         return fn
+61:     return wrap
+62: 
+63: 
+64: def walk1():
+65:     """CJWW (5.12): W(p) = exp(i p1 s1) exp(i p2 s2) exp(i p3 s3)."""
+66:     W = I2
+67:     for c, s, sig in zip(C, S, PAULI):
+68:         W = W * (c * I2 + sp.I * s * sig)
+69:     return sp.expand(W)
+70: 
+71: 
+72: def walk2():
+73:     """CJWW (5.15), transcribed entry by entry."""
+74:     e = sp.exp(sp.I * P3)
+75:     return sp.Matrix([
+76:         [C[0] * C[1] * e, -C[0] * S[1] + sp.I * S[0]],
+77:         [C[0] * S[1] + sp.I * S[0], C[0] * C[1] / e],
+78:     ])
+79: 
+80: 
+81: F1 = C[0] * C[1] * C[2] + S[0] * S[1] * S[2]     # tr W1 / 2
+82: F2 = C[0] * C[1] * C[2]                          # tr W2 / 2
+83: # B := -grad f, so that grad(arccos f) = B / sqrt(1 - f^2)
+84: B1 = [sp.simplify(-sp.diff(F1, p)) for p in PS]
+85: B2 = [sp.simplify(-sp.diff(F2, p)) for p in PS]
+86: 
+87: 
+88: @check("source byte identity")
+89: def _():
+90:     if not SOURCE.exists():
+91:         return False, f"missing {SOURCE}"
+92:     got = hashlib.sha256(SOURCE.read_bytes()).hexdigest()
+93:     return got == SOURCE_SHA256, got
+94: 
+95: 
+96: @check("both symbols unitary with det 1")
+97: def _():
+98:     out = []
+99:     for nm, W in (("5.12", walk1()), ("5.15", walk2())):
+100:         if not is_zero((W.H * W - I2).norm()) or not is_zero(sp.det(W) - 1):
+101:             return False, f"{nm}: not unitary or det != 1"
+102:         out.append(f"{nm}: W^dag W = I, det W = 1")
+103:     return True, "; ".join(out)
+104: 
+105: 
+106: @check("tr W(5.12)/2 = ccc + sss  (NOT the printed ccc - sss of (5.13))")
+107: def _():
+108:     tr = sp.trace(walk1()) / 2
+109:     printed = C[0] * C[1] * C[2] - S[0] * S[1] * S[2]      # as printed in (5.13)
+110:     return is_zero(tr - F1) and not is_zero(tr - printed), (
+111:         "matches ccc+sss; the printed (5.13) ccc-sss is the trace of "
+112:         "exp(-i p1 s1) exp(-i p2 s2) exp(-i p3 s3), i.e. the image under p -> -p")
+113: 
+114: 
+115: @check("tr W(5.15)/2 = ccc, i.e. CJWW (5.16)")
+116: def _():
+117:     return is_zero(sp.trace(walk2()) / 2 - F2), "omega = arccos(c1 c2 c3)"
+118: 
+119: 
+120: def jump_set(W):
+121:     """Exact Fourier support F = {x : W_x != 0}.
+122: 
+123:     Both symbols have jump length 1 per coordinate, so multiplying by z1 z2 z3
+124:     clears all negative powers and the monomials can be read off directly.
+125:     """
+126:     support = set()
+127:     for entry in W:
+128:         poly = sp.Poly(sp.expand(laurent(entry) * Z[0] * Z[1] * Z[2]), *Z)
+129:         for mono, coeff in poly.terms():
+130:             if sp.simplify(coeff) != 0:
+131:                 support.add(tuple(int(m) - 1 for m in mono))
+132:     return support
+133: 
+134: 
+135: CORNERS = set(itertools.product((-1, 1), repeat=3))
+136: 
+137: 
+138: @check("jump set of (5.12) is exactly the 8 cube vertices")
+139: def _():
+140:     F = jump_set(walk1())
+141:     return F == CORNERS, f"{len(F)} vectors: {sorted(F)}"
+142: 
+143: 
+144: @check("jump set of (5.15) has 14 vectors and contains the 8 cube vertices")
+145: def _():
+146:     F = jump_set(walk2())
+147:     ok = CORNERS <= F and len(F) == 14 and max(max(abs(v) for v in x) for x in F) == 1
+148:     return ok, f"{len(F)} vectors: {sorted(F)}"
+149: 
+150: 
+```
+
+## reports/2026-11-01--c-across-lattices.md, l. 102–115
+```
+102: ## 3. Step sets: what the substrates actually are (Part 1)
+103: 
+104: | Row | Source label | Composite `F` (source units) | Substrate |
+105: | --- | --- | --- | --- |
+106: | L5a | BCC, axis product (FS Eqs. (20)–(21)) | the 8 points `{±1}^3` | BCC, same as L3 |
+107: | L5b | BCC, axis product (MB Eqs. (23), (33)), s=4 | `{±1}^3` | BCC, same as L3 |
+108: | L6a | honeycomb (ADMP Eq. (7)/(10)) | `0` and the hexagon `{±2u_i}`, radius 2 | triangular lattice, hexagonal `C_micro` |
+109: | L6c | equilateral triangular, six-step (JDW Eq. (2)) | 19 points: the full hexagonal ball of radius 2 | same hexagonal `C_micro` as L6a, finer group (index 1 vs 4) |
+110: | L6d | equilateral triangular, three-step (JDW Eq. (4)) | identical to L6a | **identical substrate to L6a** |
+111: | L6e | isosceles triangular (JDW Eq. (6)) | the 4 points `(±1,±1)` | **square lattice with diagonal steps, same as L2** |
+112: | L6f | honeycomb (JDW Eqs. (7)–(8)) | `0` and a hexagon of radius `sqrt3`, rotated 30° | triangular lattice, hexagonal `C_micro` (L6a up to rotation and scale) |
+113: | L6b | triangular (ADMP Eq. (12)) | **not encoded** | edge geometry fixed only by Fig. 1 of the source |
+114: 
+115: No "honeycomb" walk in the declared sources acts on a honeycomb Bravais
+```
+
+## reports/2026-11-01--c-across-lattices.md, l. 136–152
+```
+136: every row by this normalisation. All entries exact.
+137: 
+138: | Row | Substrate | s | `r_in` | `c_0` | `c_0 / r_in` | `c_strict^iso` | `S_min = c_0` | Status |
+139: | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+140: | L1 | line | 2 | 1 | 1 | **1** | 1 | 1 | computed here |
+141: | L2 | square | 2 | `1/sqrt2` | `1/sqrt2` | **1** | `1/sqrt2` | `1/sqrt2` | `C_infty^strict` new here; `c_0` from Sec. 5 |
+142: | L6e | square | 2 | `1/sqrt2` | `1/sqrt2` | **1** | `1/sqrt2` | `1/sqrt2` | new |
+143: | L3 | BCC | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | CURRENT_STATE Secs. 4, 5 (certified) |
+144: | L5a | BCC | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | new |
+145: | L5b | BCC | 4 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | new |
+146: | L3s4 | BCC | 4 | `1/sqrt3` | `a/sqrt3`, `0<a<1` | **a** | `1/sqrt3` | `a/sqrt3` | CURRENT_STATE Sec. 4.1 (reviewed) |
+147: | L4 | cube `[-1,1]^3` | 2 | `1/sqrt3` | `1/sqrt3` | **1** | `1/sqrt3` | `1/sqrt3` | CURRENT_STATE Sec. 8 (CJWW (5.12), (5.15)) |
+148: | L6a | hexagon | 2 | `sqrt3/2` | `1/2` | **`1/sqrt3` ≈ 0.577** | `sqrt3/2` | `1/2` | new |
+149: | L6c | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2` ≈ 0.866** | `sqrt3/2` | `3/4` | new |
+150: | L6d | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2`** | `sqrt3/2` | `3/4` | new |
+151: | L6f | hexagon | 2 | `sqrt3/2` | `3/4` | **`sqrt3/2`** | `sqrt3/2` | `3/4` | new |
+152: | L6b | — | 2 | — | — | — | — | — | OPEN (not encoded) |
+```
+
+## state/CURRENT_STATE.md, l. 750–758
+```
+750: 
+751: ## 8. Directional causal saturation — canonical physical interpretation (2026-09-16)
+752: 
+753: **Evidence commit:** `2494192`.
+754: [Report](../reports/2026-09-16--directional-causal-saturation.md),
+755: [verifier](../scripts/verify_directional_saturation.py) (15/15, fail-closed,
+756: fourteen exact).
+757: 
+758: The active physical question is: **does `c_IR` coincide with the microscopic
+```
+
+
+=== DOCUMENT 7: cjww_pp16-17.txt ===
+
+16                       C. CEDZICH, A. JOYE, A.H. WERNER, AND R.F. WERNER
+
+
+statements. They give a positive rate function only outside the convex hull of Γ (recall that we
+approximate by half spaces).
+
+
+                              5.4. 3D cones and rate functions
+   Some quantum walks on the three-dimensional cubic lattice were proposed by Bialinycki-Birula [6]
+as discrete approximations to the Weyl, Dirac, and Maxwell equations. The interest in that paper
+is mainly in the continuum limit, and the possible variations of nearest neighbour walks automata
+for which this works. But one can take the discrete model as a system in its own right and analyze
+its propagation properties. Let us consider the simplest of these, the “Weyl equation” model in [6].
+We then have K = C2 , and
+                                 W (p1 , p2 , p3 ) = eip1 σ1 eip2 σ2 eip3 σ3 .                 (5.12)
+
+This gives
+                                                                                    
+                ω± (p) = ±ω(p) = ± arccos cos p1 cos p2 cos p3 − sin p1 sin p2 sin p3 .        (5.13)
+
+A characteristic feature here are conical singularities at p = 0 and eight inequivalent points in the
+Brillouin zone, where p1 , p2 , p3 ∈ πZ, meaning that all cos pi = ±1 and each matrix factor in (5.12)
+is ±1. Expanding the cosine of (5.13) to second order in a small deviation p from such a conical
+point p∨ , we get, for any combination of the signs cos(p∨ k ),
+
+                                ω(p∨ + p)2 = (p21 + p21 + p21 ) + O(p3 )                       (5.14)
+
+This is in keeping with the remarks in Section 2.2 on regular vs. singular points in a dispersion
+relation. Along a straight line through p∨ we can use one-parameter perturbation theory, in which
+we can always choose analytic branches, corresponding to the straight lines in the boundary of the
+cone, but as a function of three parameters ω(p + p∨ ) ≈ ω(p∨ ) ± |p| is not analytic. In the limit
+taken in [6] only small momenta survive, so the propagation is indeed exactly the familiar light cone
+from relativistic physics. However, in this model faster propagation speeds can arise from points at
+a finite distance from the singularities. The overall propagation region is shown in Figure 5.
+
+
+
+
+       Figure 5. Propagation region for the walk (5.12). This convex set is the intersection
+       of three orthogonal cylinders.
+                 EXPONENTIAL TAIL ESTIMATES FOR QUANTUM LATTICE DYNAMICS                             17
+
+
+  To get a spherical propagation region, we consider a modified model, on the same lattice and also
+with K = C2 , and with exactly the same conical points p∨ , namely
+                                       cos p1 cos p2 eip3
+                                                                                        
+                                                              − cos p1 sin p2 + i sin p1
+                W (p1 , p2 , p3 ) =                                                          (5.15)
+                                     cos p1 sin p2 + i sin p1    cos p1 cos p2 e−ip3
+                                                              
+                          ω(p) = arccos cos p1 cos p2 cos p3 .                               (5.16)
+The modulus of the group velocity ∇ω is then given by
+                   sin2 p1 cos2 p2 cos2 p3 + cos2 p1 sin2 p2 cos2 p3 + cos2 p1 cos2 p2 sin2 p3
+           |∇ω|2 =
+                                             1 − cos2 p1 cos2 p2 cos2 p3
+                        (1 − c3 )(1 − c1 c2 ) + c3 (1 − c1 )(1 − c2 )
+                  =1−                                                                            (5.17)
+                                       1 − c1 c2 c3
+where, in the second line we have abbreviated ci = cos2 pi . Since the fraction in the second line
+is manifestly positive, we get |∇ω| ≤ 1. The maximum is reached at the conical points p∨ , where
+c1 = c2 = c3 = 1.
+   In order to compute the rate function we first notice that the analytic continuation of W to
+complex p is still a 2 × 2-matrix with determinant 1, so the trace (equal to 2 cos ω(p)) determines
+the secular equation and hence both eigenvalues. That is, all information we need to evaluate R(λ)
+from (2.9) is contained in the analytic continuation of (5.16).
+   We further reduce the problem by not looking at the full rate function, but a radial version of
+it: I(x) retains some of the lattice symmetry and is certainly not a rotation invariant function.
+As described in the introduction, we are however, mainly interested in an upper bound on the
+probability leakage outside a ball with slightly superluminal speed. We therefore look for a “radial
+rate function” Ie such that I(x) ≥ I(r)
+                                   e if |x| ≥ r. Then the bound (2.6) for the probability outside
+a ball M<r of radius r becomes
+                                              1
+                                    lim sup     log pt (ρ, M≥r ) ≤ −I(r)
+                                                                    e                            (5.18)
+                                     t→∞      t
+which vanishes up to r = 1. The Legendre transform is friendly to the radial reduction: Suppose
+that R(λ) ≤ R(ℓ),
+            e     whenever |λ| ≤ ℓ. Then, for |x| ≥ r,
+                                                           
+                     I(x) = sup sup x · λ − R(λ) ≥ sup sup x · λ − R(ℓ)
+                                                                     e
+                              ℓ>0 |λ|≤ℓ                     ℓ>0 |λ|≤ℓ
+                                                 
+                           = sup |x|ℓ − R(ℓ)
+                                        e    ≥ sup rℓ − R(ℓ)
+                                                        e    =: I(r),
+                                                                e                                (5.19)
+                              ℓ>0                     ℓ>0
+
+which is the Legendre transform of R.e Here the inequality signs were chosen to make Ie and R e
+automatically monotone.
+  This leaves us with the task to compute, for every ℓ ≥ 0 the dual radial rate function
+                        n                                                        o
+             e = sup log |u|2 u ∈ spec W p + iλ for some p, λ ∈ R3 , |λ| ≤ ℓ
+             R(ℓ)                                                                        (5.20)
+                                                    2
+
+Here it is useful to note that the eigenvalues are u = exp(iω) with ω ∈ C determined from (5.16)
+with complex substitution pk 7→ pk + iλk /2, so that log |u|2 = 2|ℑmω|. The absolute value here
+takes care of the maximum over the spectrum (and the sign ambiguity for ω). This makes log |u|2
+straightforward to evaluate for given p, λ.
+   The eigenvalue branches of W are analytic in the complex vector variable (p + iλ/2) except for
+the branch points at p = p∨ , λ = 0. Therefore, by the maximum principle [11, Thm. V.2.3], no
+local maximum can occur away from these points and |λ| < ℓ. At the conical points the function is
+continuous and zero. The numerical evaluation of the maximum as a function
+                                                                       √      of ℓ = |λ| is shown
+in Fig. 6. It turns out that the maximum is always attained for λ = ℓ/ 3(1, 1, 1) and p = 0, and
+
+codex
+**Dictamen global: INSUFFICIENT_EVIDENCE.** Las dos reparaciones y las tres aclaraciones son correctas. El diff no introduce regresiones identificables. La limitación afecta a la ratificación independiente de L1–L3: falta el código de `verify_weyl_dirac_gate.py` que sustenta su pertenencia literal y sus generadores. El informe anterior, generado por una IA, no sustituye esa fuente.
+
+Revisión manual de los adjuntos, sin herramientas ni ejecuciones.
+
+**1. REPARACIÓN 1 — PASS.**
+
+De `row_L6e` y `u2` se obtiene
+\[
+U^2=I,\qquad
+U^1=e^{i\pi\sigma_x/4},\qquad
+U^3=e^{-i\pi\sigma_x/4}.
+\]
+Con \(+\) asociado a R, el desplazamiento es \(\sum_j s_jN_j\), y la amplitud matricial:
+\[
+A_s=U^3P_{s_3}P_{s_2}U^1P_{s_1}.
+\]
+La ortogonalidad de los proyectores —el criterio de P en esta base— la anula cuando \(s_2\ne s_3\). Cuando son iguales, las entradas no nulas de \(U^1\) garantizan amplitud no nula.
+
+| Patrones | Desplazamientos ISO | Amplitud |
+| --- | --- | --- |
+| \(++-\), \(--+\) | \((2,-2)\), \((-2,2)\) | cero |
+| \(+-+\), \(-+-\) | ambos \(0\) | cero |
+| \(+++\), \(---\) | \((2,0)\), \((-2,0)\) | no nula |
+| \(+--\), \(-++\) | \((0,-2)\), \((0,2)\) | no nula |
+
+Son **cuatro patrones nulos**, dos en vértices ausentes y dos en el origen. Como segunda comprobación, los cuatro restantes producen exactamente el conjunto `EXPECTED_F["L6e"]`.
+
+La sección L6e, la tabla y G1-c son coherentes. La tabla dice «`0`, two patterns, both zero»: cuenta únicamente los patrones coincidentes en cero, no el total de patrones nulos. No queda el recuento antiguo.
+
+**2. REPARACIÓN 2 — PASS.**
+
+El Lema V establece correctamente, para el soporte contenido en las sumas candidatas:
+\[
+\operatorname{conv}F=Z
+\iff \operatorname{vert}(Z)\subseteq F.
+\]
+Un funcional que expone un vértice fuerza todos los signos; por tanto, ese vértice tiene patrón único. La dependencia lineal o el paralelismo de los generadores no invalidan el argumento.
+
+La reparación distingue correctamente:
+
+- amplitud matricial de cada patrón;
+- coeficiente de un desplazamiento, obtenido sumando las amplitudes coincidentes;
+- soporte de coeficientes no nulos;
+- envolvente convexa del soporte.
+
+Todos los patrones no nulos garantizan conservar los vértices y, por ello, la envolvente. No son necesarios para esa igualdad. Tampoco deben confundirse con la condición para conservar **todas** las sumas candidatas en el soporte: allí cuentan las amplitudes sumadas.
+
+El contraejemplo es correcto. Para \(a\ne0\) y proyectores complementarios:
+\[
+\bigl(P_+T(a)+P_-T(-a)\bigr)^2
+=P_+T(2a)+P_-T(-2a).
+\]
+Los patrones mixtos se anulan, \(F=\{\pm2a\}\), y su envolvente sigue siendo \([-2a,2a]=Z\).
+
+No quedan menciones afirmativas de F2 con la lectura antigua. «Audit F2 said…» es una atribución histórica inmediatamente corregida; las referencias posteriores remiten expresamente a la condición de vértices.
+
+**3. ACLARACIONES — PASS.**
+
+**Signos en L6e y L6c.** `jdw_shift` implementa desplazamientos opuestos a las posiciones leídas. En L6e, R lee en \(-N_j\) y se desplaza por \(+N_j\); la convención añadida reproduce correctamente la tabla.
+
+En L6c,
+\[
+b_j=-N_j,\quad c_j=-N_{j+1},\quad
+m_j=-\frac{N_j+N_{j+1}}2.
+\]
+Si \(+\) designa R:
+\[
+a_j=c_j-m_j=\frac{N_j-N_{j+1}}2.
+\]
+Con la convención de L6f, \(b_j=m_j+a_j\), el generador sería el opuesto. La aclaración explica correctamente esa diferencia; no cambia los segmentos ni las direcciones reducidas. **Es aclaración de orientación, no corrección geométrica.**
+
+**Cláusula \(\pm a\).** En los factores impresos de L6c y L6f, los dos desplazamientos no son opuestos. La frase añadida «this does not show that no other factorization exists» limita correctamente la conclusión. Los «no» de la tabla deben leerse bajo su encabezado «Product class (literal)», referido a esas presentaciones; no constituyen una prueba de inexistencia de otra factorización.
+
+**Cita suprimida en (5.12).** La eliminación es correcta. CJWW p. 16 proporciona el producto original y `walk1` lo transcribe. Los proyectores de ejes de Pauli distintos tienen solapamientos no nulos, y las ocho sumas son distintas. La reseña de otro modelo no hace falta como evidencia.
+
+**4. NO REGRESIÓN — INSUFFICIENT_EVIDENCE para la ratificación completa; PASS respecto al diff.**
+
+El diff modifica únicamente las dos reparaciones, las tres aclaraciones y la cabecera de revisión. No cambia constructores, soportes, magnitudes ni clasificación de filas.
+
+Las filas comprobables directamente con los adjuntos siguen siendo correctas:
+
+- **L5a y L4-(5.12):** tres factores por ejes ortogonales, ocho desplazamientos distintos y patrones no nulos.
+- **L6a:** tres generadores con suma cero; seis vértices y dos patrones centrales. Los vectores de Bloch distintos tienen producto escalar \(1/3\), por lo que P permite los ocho patrones.
+- **L6d:** la agrupación del constructor da tres factores conjugados. Los vectores de Bloch consecutivos difieren en ángulo \(\pi/3\); los ocho patrones son no nulos y las sumas dan los seis vértices y el origen.
+
+Las lagunas conservan su sentido: **G1-a**, adecuación de las presentaciones asimétricas al contrato; **G1-b**, factorización no documentada en el material revisado; **G1-c**, dependencia de la presentación en L6e. En esta última, fusionar \(S^3S^2\) produce el generador cartesiano \((0,1)\), ortogonal al primero \((1,0)\).
+
+La limitación documental exacta está en L1–L3:
+
+> «`rotation_product` (l. 80–88)…»  
+> «the check “published vs product” (l. 145)…»
+
+Ese archivo y esos extractos **no están adjuntos**. `part2` únicamente importa y llama a `published_symbol`; no muestra su definición. El diff acredita que estas afirmaciones no cambiaron, pero su correspondencia con el constructor queda **[UNVERIFIED]** en esta revisión. Lo cerraría el extracto primario ya citado, sin nuevas filas ni ejecuciones. Esto es insuficiencia de evidencia, no un error demostrado de la traza.
+
+**Reparaciones obligatorias del texto: ninguna identificada.** Las reparaciones 1 y 2 están cerradas; el PASS global queda pendiente exclusivamente de la evidencia primaria ausente para L1–L3.
+tokens used
+45,213
+**Dictamen global: INSUFFICIENT_EVIDENCE.** Las dos reparaciones y las tres aclaraciones son correctas. El diff no introduce regresiones identificables. La limitación afecta a la ratificación independiente de L1–L3: falta el código de `verify_weyl_dirac_gate.py` que sustenta su pertenencia literal y sus generadores. El informe anterior, generado por una IA, no sustituye esa fuente.
+
+Revisión manual de los adjuntos, sin herramientas ni ejecuciones.
+
+**1. REPARACIÓN 1 — PASS.**
+
+De `row_L6e` y `u2` se obtiene
+\[
+U^2=I,\qquad
+U^1=e^{i\pi\sigma_x/4},\qquad
+U^3=e^{-i\pi\sigma_x/4}.
+\]
+Con \(+\) asociado a R, el desplazamiento es \(\sum_j s_jN_j\), y la amplitud matricial:
+\[
+A_s=U^3P_{s_3}P_{s_2}U^1P_{s_1}.
+\]
+La ortogonalidad de los proyectores —el criterio de P en esta base— la anula cuando \(s_2\ne s_3\). Cuando son iguales, las entradas no nulas de \(U^1\) garantizan amplitud no nula.
+
+| Patrones | Desplazamientos ISO | Amplitud |
+| --- | --- | --- |
+| \(++-\), \(--+\) | \((2,-2)\), \((-2,2)\) | cero |
+| \(+-+\), \(-+-\) | ambos \(0\) | cero |
+| \(+++\), \(---\) | \((2,0)\), \((-2,0)\) | no nula |
+| \(+--\), \(-++\) | \((0,-2)\), \((0,2)\) | no nula |
+
+Son **cuatro patrones nulos**, dos en vértices ausentes y dos en el origen. Como segunda comprobación, los cuatro restantes producen exactamente el conjunto `EXPECTED_F["L6e"]`.
+
+La sección L6e, la tabla y G1-c son coherentes. La tabla dice «`0`, two patterns, both zero»: cuenta únicamente los patrones coincidentes en cero, no el total de patrones nulos. No queda el recuento antiguo.
+
+**2. REPARACIÓN 2 — PASS.**
+
+El Lema V establece correctamente, para el soporte contenido en las sumas candidatas:
+\[
+\operatorname{conv}F=Z
+\iff \operatorname{vert}(Z)\subseteq F.
+\]
+Un funcional que expone un vértice fuerza todos los signos; por tanto, ese vértice tiene patrón único. La dependencia lineal o el paralelismo de los generadores no invalidan el argumento.
+
+La reparación distingue correctamente:
+
+- amplitud matricial de cada patrón;
+- coeficiente de un desplazamiento, obtenido sumando las amplitudes coincidentes;
+- soporte de coeficientes no nulos;
+- envolvente convexa del soporte.
+
+Todos los patrones no nulos garantizan conservar los vértices y, por ello, la envolvente. No son necesarios para esa igualdad. Tampoco deben confundirse con la condición para conservar **todas** las sumas candidatas en el soporte: allí cuentan las amplitudes sumadas.
+
+El contraejemplo es correcto. Para \(a\ne0\) y proyectores complementarios:
+\[
+\bigl(P_+T(a)+P_-T(-a)\bigr)^2
+=P_+T(2a)+P_-T(-2a).
+\]
+Los patrones mixtos se anulan, \(F=\{\pm2a\}\), y su envolvente sigue siendo \([-2a,2a]=Z\).
+
+No quedan menciones afirmativas de F2 con la lectura antigua. «Audit F2 said…» es una atribución histórica inmediatamente corregida; las referencias posteriores remiten expresamente a la condición de vértices.
+
+**3. ACLARACIONES — PASS.**
+
+**Signos en L6e y L6c.** `jdw_shift` implementa desplazamientos opuestos a las posiciones leídas. En L6e, R lee en \(-N_j\) y se desplaza por \(+N_j\); la convención añadida reproduce correctamente la tabla.
+
+En L6c,
+\[
+b_j=-N_j,\quad c_j=-N_{j+1},\quad
+m_j=-\frac{N_j+N_{j+1}}2.
+\]
+Si \(+\) designa R:
+\[
+a_j=c_j-m_j=\frac{N_j-N_{j+1}}2.
+\]
+Con la convención de L6f, \(b_j=m_j+a_j\), el generador sería el opuesto. La aclaración explica correctamente esa diferencia; no cambia los segmentos ni las direcciones reducidas. **Es aclaración de orientación, no corrección geométrica.**
+
+**Cláusula \(\pm a\).** En los factores impresos de L6c y L6f, los dos desplazamientos no son opuestos. La frase añadida «this does not show that no other factorization exists» limita correctamente la conclusión. Los «no» de la tabla deben leerse bajo su encabezado «Product class (literal)», referido a esas presentaciones; no constituyen una prueba de inexistencia de otra factorización.
+
+**Cita suprimida en (5.12).** La eliminación es correcta. CJWW p. 16 proporciona el producto original y `walk1` lo transcribe. Los proyectores de ejes de Pauli distintos tienen solapamientos no nulos, y las ocho sumas son distintas. La reseña de otro modelo no hace falta como evidencia.
+
+**4. NO REGRESIÓN — INSUFFICIENT_EVIDENCE para la ratificación completa; PASS respecto al diff.**
+
+El diff modifica únicamente las dos reparaciones, las tres aclaraciones y la cabecera de revisión. No cambia constructores, soportes, magnitudes ni clasificación de filas.
+
+Las filas comprobables directamente con los adjuntos siguen siendo correctas:
+
+- **L5a y L4-(5.12):** tres factores por ejes ortogonales, ocho desplazamientos distintos y patrones no nulos.
+- **L6a:** tres generadores con suma cero; seis vértices y dos patrones centrales. Los vectores de Bloch distintos tienen producto escalar \(1/3\), por lo que P permite los ocho patrones.
+- **L6d:** la agrupación del constructor da tres factores conjugados. Los vectores de Bloch consecutivos difieren en ángulo \(\pi/3\); los ocho patrones son no nulos y las sumas dan los seis vértices y el origen.
+
+Las lagunas conservan su sentido: **G1-a**, adecuación de las presentaciones asimétricas al contrato; **G1-b**, factorización no documentada en el material revisado; **G1-c**, dependencia de la presentación en L6e. En esta última, fusionar \(S^3S^2\) produce el generador cartesiano \((0,1)\), ortogonal al primero \((1,0)\).
+
+La limitación documental exacta está en L1–L3:
+
+> «`rotation_product` (l. 80–88)…»  
+> «the check “published vs product” (l. 145)…»
+
+Ese archivo y esos extractos **no están adjuntos**. `part2` únicamente importa y llama a `published_symbol`; no muestra su definición. El diff acredita que estas afirmaciones no cambiaron, pero su correspondencia con el constructor queda **[UNVERIFIED]** en esta revisión. Lo cerraría el extracto primario ya citado, sin nuevas filas ni ejecuciones. Esto es insuficiencia de evidencia, no un error demostrado de la traza.
+
+**Reparaciones obligatorias del texto: ninguna identificada.** Las reparaciones 1 y 2 están cerradas; el PASS global queda pendiente exclusivamente de la evidencia primaria ausente para L1–L3.

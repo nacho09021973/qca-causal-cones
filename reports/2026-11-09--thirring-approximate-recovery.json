@@ -1,0 +1,88 @@
+{
+  "parameters": {
+    "mu": "3/5",
+    "nu": "4/5",
+    "z": "i",
+    "p0": "pi/4",
+    "M": 1
+  },
+  "overlaps_with_f": {
+    "00": "-sqrt(2)*I",
+    "01": "3*sqrt(2)/4",
+    "10": "-3*sqrt(2)*I/4",
+    "11": "0"
+  },
+  "norm_f_squared": "25/8",
+  "fiber_weight_00_at_p0": "16/25",
+  "checks": [
+    {
+      "name": "eq14-eigenvector-all-targets-w-in-{0,1}",
+      "passed": true
+    },
+    {
+      "name": "eq14-eigenvector-window-|x|<=6",
+      "passed": true
+    },
+    {
+      "name": "eigenvalue-equals-exp(2ip0)-equals-z",
+      "passed": true
+    },
+    {
+      "name": "diagonal-translation-phase-exp(-2ip0)",
+      "passed": true
+    },
+    {
+      "name": "f-antisymmetric-E f(-y)=-f(y)",
+      "passed": true
+    },
+    {
+      "name": "W(q)-det-1",
+      "passed": true
+    },
+    {
+      "name": "W(q)-trace-2nu-cos-q",
+      "passed": true
+    },
+    {
+      "name": "cos-square-sum-identity",
+      "passed": true
+    },
+    {
+      "name": "cos2p-zero-at-p0",
+      "passed": true
+    },
+    {
+      "name": "nu-squared-not-one",
+      "passed": true
+    },
+    {
+      "name": "norm-f-squared-25/8",
+      "passed": true
+    },
+    {
+      "name": "overlap-00-equals-minus-i-sqrt2",
+      "passed": true
+    },
+    {
+      "name": "overlap-01-equals-3sqrt2/4",
+      "passed": true
+    },
+    {
+      "name": "overlap-10-equals-minus-3i-sqrt2/4",
+      "passed": true
+    },
+    {
+      "name": "overlap-11-zero",
+      "passed": true
+    },
+    {
+      "name": "fiber-weight-00-at-p0-equals-16/25",
+      "passed": true
+    }
+  ],
+  "provenance": {
+    "scripts/verify_thirring_approximate_recovery.py": "53094142066d85de1f831cac3a6ea9b621597de04fdf3054e29735e88803b0cf",
+    "theory/THIRRING_APPROXIMATE_RECOVERY_GATE.md": "2f81be0d1120170d86b945bf34f53bfbd660a35607f737a90f965c9a1c99c47c",
+    "sources/1711.03920v1.pdf": "3032b33d1375d4a55008aafe1f0e74d228052fa120446694ba8e9ab8e41867ca"
+  }
+}

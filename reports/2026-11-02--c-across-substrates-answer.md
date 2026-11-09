@@ -9,6 +9,19 @@ section or report it comes from and keeps that result's scope. The text
 itself has had no independent review: **PRELIMINARY as a synthesis**;
 the results it collects keep their own levels.
 
+**Repairs (2026-11-03).** Grok REPAIR_REQUIRED, ten mandatory repairs
+([review](../debates/2026-11-03--c-answer-review-grok/informe_grok.md),
+[author reading](../debates/2026-11-03--c-answer-review-grok/verificacion_autor.md)),
+all applied; R6 and R8 as citation repairs (the content is in the promoted
+gates' execution reports, which the review did not receive). No value
+changed. Still PRELIMINARY as a synthesis.
+
+**Maintenance (2026-11-03).** Documentary update authorized by the user
+(«Actualizar la respuesta sobre c: autorizado como mantenimiento
+documental, después del paso 4»): adds the promoted M1-B13 and M1-B19
+results (CS Sec. 14) to answer 3 and Secs. 2, 4, 5. No other statement
+changed; no new computation; the hexagonal class stays OPEN.
+
 **Pre-step check (PROJECT_INSTRUCTIONS, rule of 2026-11-02).** Known: the
 promoted results of CS Secs. 4, 7.2, 8.21, 11, 12, 13 and the L6b row.
 Question: what does the repo establish about the value of `c` per
@@ -21,20 +34,26 @@ answer needed a new computation, the text stops there.
 1. **The substrate does not fix `c`.** On one substrate, different walks
    have different `c_0`: on the BCC step set the four-component family
    L3s4 has `c_0 = a/sqrt3` for every `0 < a < 1`, a continuum of values;
-   on one hexagonal substrate the declared walks have `c_0 = 1/3, 1/2,
-   3/4` (units: longest step 1, one update per time unit).
+   on one hexagonal substrate (the identical substrate of ADMP L6a and JDW
+   L6d, CS Sec. 11) the two declared walks have `c_0 = 1/2` and `3/4`
+   (units: longest step 1, one update per time unit). The row L6b
+   (`s = 6`, a different step set) has `c_0 = 1/3`.
 2. **The substrate fixes a ceiling.** `c_strict^iso <= r_in(C_micro)` in
-   general, and `c_0 <= c_strict^iso` (proved for the class on `N_3`;
-   confirmed row by row in every other declared row). So `c_0 <=
+   general, and `c_0 <= c_strict^iso` (proved for the admitted cones and
+   the exact support of the full symbol on `N_3`, CS Sec. 7.2; confirmed
+   row by row in every other declared row). So `c_0 <=
    r_in(C_micro)` in every declared row: the inradius of the one-step
    causal body bounds the relativistic speed.
-3. **Whether the ceiling is reached depends on the substrate.** On the
-   line, square, BCC and cube substrates, declared walks reach it
-   (`c_0 = r_in`). On the hexagonal substrate none of the five declared
-   walks does; in the class of three-step antipodal walks the exact
-   supremum is `c_0/r_in = sqrt3/2`, and no walk with minimal support
-   reaches `r_in`. Whether any walk on the hexagonal substrate reaches it
-   is OPEN.
+3. **Whether the ceiling is reached depends on the substrate and the
+   walk.** On the line, square, standard BCC and cube substrates, some
+   declared walks reach it (`c_0 = r_in`); on the same BCC step set L3s4
+   does not (`c_0 = a/sqrt3 < 1/sqrt3`, CS Sec. 4.1). On the hexagonal
+   substrate none of the five declared walks does; in the class of
+   three-step antipodal walks the exact supremum is `c_0/r_in = sqrt3/2`,
+   and no `s = 2` walk with `F within {0} U vert(H)` reaches `r_in`
+   (CS Sec. 12), nor one with `F` within the 13- or 19-point hexagon, in
+   the class `W_hex^sym` that contains `W_hex` (M1-B13, M1-B19, CS
+   Sec. 14). The rest of `W_hex` is OPEN; nothing is stated for `s > 2`.
 4. **No absolute value.** The repo derives no value of `c` in physical
    units: in the frozen flat class the absolute scale is
    `NO_ABSOLUTE_SCALE_DERIVABLE`. Every number here is in lattice units.
@@ -48,21 +67,23 @@ Units: longest one-update step 1, one update per time unit, so
 
 | Substrate | Rows | `r_in` | `c_0` | `c_0 / r_in` | `c_strict^iso` | Source |
 | --- | --- | --- | --- | --- | --- | --- |
-| line | L1 | 1 | 1 | 1 | 1 | CS Sec. 11 |
-| square | L2, L6e | `1/sqrt2` | `1/sqrt2` | 1 | `1/sqrt2` | CS Sec. 11 |
+| line | L1 | 1 | 1 | 1 | 1 | CS Secs. 5, 11 |
+| square | L2, L6e | `1/sqrt2` | `1/sqrt2` | 1 | `1/sqrt2` | CS Secs. 5, 11 |
 | BCC (`N_3`) | L3, L5a, L5b | `1/sqrt3` | `1/sqrt3` | 1 | `1/sqrt3` | CS Secs. 4, 5, 11 |
 | BCC (`N_3`) | L3s4 (s=4) | `1/sqrt3` | `a/sqrt3`, `0<a<1` | `a` | `1/sqrt3` | CS Sec. 4.1 |
-| cube `[-1,1]^3` | L4 | `1/sqrt3` | `1/sqrt3` | 1 | `1/sqrt3` | CS Secs. 8, 11 |
-| hexagon (triangular lattice) | L6a (ADMP) | `sqrt3/2` | `1/2` | `1/sqrt3` | `sqrt3/2` | CS Sec. 11 |
-| hexagon | L6c, L6d, L6f (JDW) | `sqrt3/2` | `3/4` | `sqrt3/2` | `sqrt3/2` | CS Sec. 11 |
+| cube (`C_micro = [-1,1]^3` in CS Sec. 8 units, `r_in = 1`; rescaled here to longest step 1) | L4 | `1/sqrt3` | `1/sqrt3` | 1 | `1/sqrt3` | CS Secs. 8, 11 |
+| hexagon (triangular lattice) | L6a (ADMP) | `sqrt3/2` | `1/2` | `1/sqrt3` | `sqrt3/2` | CS Sec. 11; hex-ceiling report T1 |
+| hexagon | L6c, L6d, L6f (JDW) | `sqrt3/2` | `3/4` | `sqrt3/2` | `sqrt3/2` | CS Sec. 11; hex-ceiling report T1 |
 | hexagon | L6b (ADMP, s=6) | `sqrt3/2` | `1/3` | `2 sqrt3/9` | `1/sqrt3` | L6b row (promoted) |
 
 Readings, each limited to these rows:
 
 - `c_strict^iso = r_in` in every row except L6b, where every one-step
   vertex coefficient is nilpotent and the long-run body is smaller
-  (`c_strict^iso / r_in = 2/3`). So even the long-run propagation speed is
-  not fixed by the substrate.
+  (`c_strict^iso / r_in = 2/3`). So `r_in` does not force
+  `c_strict^iso = r_in` (row L6b). No source places L6b on the step set of
+  L6a/L6d, so this is not a statement that one substrate leaves
+  `c_strict^iso` free.
 - L6a and L6d sit on the identical substrate (same translation group and
   step set) and differ in `c_0`. Internal dimension `s = 2` does not
   restore uniqueness.
@@ -93,8 +114,9 @@ Readings, each limited to these rows:
   direction 1; CS Sec. 4).
 - `c_0 <= c_strict^iso`: `PROVED_UNDER_FROZEN_CONTRACT` with one
   independent review, for the admitted cones and the exact support of the
-  full symbol on `N_3`, any fixed `s` and representation, including
-  degenerate Floquet nodes (CS Sec. 7.2). Outside `N_3` it is
+  full symbol on `N_3`, including degenerate Floquet nodes and eigenvalue
+  collisions after taking powers (CS Sec. 7.2); not for incommensurable
+  displacement sets. Outside `N_3` it is
   `CONFIRMED_IN_DECLARED_ROWS` (Hc, CS Sec. 11 and the L6b row), not
   proved.
 - Equality `c_0 = c_strict^iso` is not forced: the strong `B_infty^*` is
@@ -102,22 +124,32 @@ Readings, each limited to these rows:
 - On the hexagonal substrate: `c_0 <= r_in` on `W_hex` is
   `PROVED_IN_REPO` (classical Bernstein, prior art); the supremum
   `sqrt3/2` is `GAP_PROVED_IN_CLASS` for the `n = 3` antipodal subclass,
-  attained iff the coin axes are coplanar at 120°; minimal support is
-  `PROVED_FOR_MINIMAL_SUPPORT`; the whole class is
-  `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS` (CS Sec. 12).
+  attained iff the coin axes are coplanar at 120°; no `s = 2` walk with
+  `F within {0} U vert(H)` reaches the ceiling, `PROVED_FOR_MINIMAL_SUPPORT`
+  (CS Sec. 12); nor does one with `F` within the 13-point or the 19-point
+  hexagon, `PROVED_FOR_S13` and `PROVED_FOR_S19` in `W_hex^sym` (CS
+  Sec. 14; qualitative gap, no bound below `r_in`). The whole class stays
+  OPEN (M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`). Nothing is stated for
+  `s > 2`.
 
 ## 3. Away from the node and at finite mass
 
-- **Dispersion** (CS Sec. 13). Writing `omega = c_0 |k| [1 + beta |k| +
+- **Dispersion** (CS Sec. 13; the group-speed sentence is from the
+  promoted gate's execution report,
+  `reports/2026-11-02--dispersion-corrections-across-lattices.md`
+  Sec. 3.5). Writing `omega = c_0 |k| [1 + beta |k| +
   alpha |k|^2 + ...]`: the lowest correction is the odd term `beta`
   exactly in the rows whose walk group lacks inversion (L5a, L5b, L4, L6a,
-  L6b, L3s4), and `alpha` elsewhere. In the `beta` rows the radial group
-  speed near the node, `c_0 (1 + 2 beta |k| + ...)`, exceeds `c_0` in the
+  L6b, L3s4), and `alpha` elsewhere. In the `beta` rows the group speed
+  near the node, `|grad eps_+| = c_0 (1 + 2 beta |k| + ...)`, exceeds `c_0` in the
   directions where `beta > 0`; so `c_0` is not the largest group speed of
   those walks. L1 is exactly linear. `alpha_0 < 0` in every other row
-  except L3s4 for `a < a* ≈ 0.412`. `V_grp^max` itself is OPEN.
-- **Finite mass** (CS Sec. 11, Sec. 4). `c_H` and `c_{omega^2}` differ
-  for `0 < m < 1` in the standard Dirac family. In the rows where the
+  except L3s4 for `0 < a < a* = sqrt3 sqrt(17 - sqrt154)/9`. `V_grp^max` itself is OPEN.
+- **Finite mass** (CS Secs. 4, 5, 11; the row-by-row readings are from
+  the promoted table's execution report,
+  `reports/2026-11-01--c-across-lattices.md` Sec. 5). `c_H` and
+  `c_{omega^2}` differ for `0 < m < 1` in the standard Dirac family, where
+  `c_H < c_{omega^2} < r_in`. In the rows where the
   mass is a separate coin (L5b, L6c, L6d, L6f), `c_H = c_0 theta / sin
   theta > c_0` (a Hamiltonian coefficient, not a propagation speed), and
   `omega^2` has no isotropic quadratic coefficient at finite mass; in L6e
@@ -127,9 +159,14 @@ Readings, each limited to these rows:
 ## 4. What this does not establish
 
 - No QCA law, rigidity or classification: the rows are a declared finite
-  list from the repo's own constructions and five sources.
+  list from the repo's own constructions and five primary sources
+  (`reports/2026-11-01--c-across-lattices.md`).
 - Not that the hexagonal substrate cannot reach the ceiling; only the
-  subclass and minimal-support results of CS Sec. 12.
+  `n = 3` antipodal subclass, the `s = 2` minimal-support result of
+  CS Sec. 12, and the `s = 2` results on the 13- and 19-point hexagons of
+  CS Sec. 14. No extrapolation to larger supports. Nothing for `s > 2`.
+- Not that every declared BCC walk reaches the ceiling: L3s4 does not.
+- No closure of `NOVELTY = OPEN` for the hexagonal ceiling.
 - No value of `c` in physical units, no statement about our universe, no
   identification of any row's excitation with the photon.
 - No IR universality (question A stays OPEN): the table shows that free
@@ -139,7 +176,6 @@ Readings, each limited to these rows:
 
 ## 5. What is still open, none of it chartered
 
-- Hexagonal supremum in the whole class (CS Sec. 12, T2). The line review
-  (`reports/2026-11-02--research-lines-known-question-abandonment.md`,
-  line M1) records the result that would end it.
+- Hexagonal supremum in the rest of `W_hex` (CS Sec. 12, T2; CS Sec. 14,
+  M1: supports beyond the 19-point hexagon not chartered).
 - `V_grp^max` per row; IR universality (A); the ADMP massive row.

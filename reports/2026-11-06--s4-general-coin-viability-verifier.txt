@@ -1,0 +1,59 @@
+SymPy 1.14.0
+PASS projector (-1, -1, -1)
+PASS Hermitian (-1, -1, -1)
+PASS rank-one via trace (-1, -1, -1)
+PASS inverse tetrahedron transform (-1, -1, -1)
+PASS projector (-1, 1, 1)
+PASS Hermitian (-1, 1, 1)
+PASS rank-one via trace (-1, 1, 1)
+PASS inverse tetrahedron transform (-1, 1, 1)
+PASS projector (1, -1, 1)
+PASS Hermitian (1, -1, 1)
+PASS rank-one via trace (1, -1, 1)
+PASS inverse tetrahedron transform (1, -1, 1)
+PASS projector (1, 1, -1)
+PASS Hermitian (1, 1, -1)
+PASS rank-one via trace (1, 1, -1)
+PASS inverse tetrahedron transform (1, 1, -1)
+PASS sum projectors
+PASS first moment 0
+PASS vertex first sum 0
+PASS vertex second sum 0 0
+PASS vertex second sum 0 1
+PASS vertex second sum 0 2
+PASS first moment 1
+PASS vertex first sum 1
+PASS vertex second sum 1 0
+PASS vertex second sum 1 1
+PASS vertex second sum 1 2
+PASS first moment 2
+PASS vertex first sum 2
+PASS vertex second sum 2 0
+PASS vertex second sum 2 1
+PASS vertex second sum 2 2
+PASS compressed completeness
+PASS compressed moment 0
+PASS compressed moment 1
+PASS compressed moment 2
+PASS untilted effect trace (-1, -1, -1)
+PASS general effect determinant (-1, -1, -1)
+PASS 2x2 trace determinant identity (-1, -1, -1)
+PASS untilted effect trace (-1, 1, 1)
+PASS general effect determinant (-1, 1, 1)
+PASS 2x2 trace determinant identity (-1, 1, 1)
+PASS untilted effect trace (1, -1, 1)
+PASS general effect determinant (1, -1, 1)
+PASS 2x2 trace determinant identity (1, -1, 1)
+PASS untilted effect trace (1, 1, -1)
+PASS general effect determinant (1, 1, -1)
+PASS 2x2 trace determinant identity (1, 1, -1)
+PASS independent purity sum
+PASS isotropic rank obstruction (-1, -1, -1)
+PASS isotropic rank obstruction (-1, 1, 1)
+PASS isotropic rank obstruction (1, -1, 1)
+PASS isotropic rank obstruction (1, 1, -1)
+PASS purity obstruction agrees with determinant
+PASS unique positive isotropic speed 1/3
+55/55 exact auxiliary checks PASS
+Verdict: NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN
+Author algebra only; no external review, novelty or general-QCA claim.

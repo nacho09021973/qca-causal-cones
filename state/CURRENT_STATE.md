@@ -1,6 +1,646 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-02
+**Date:** 2026-11-09
+
+**Project question reframed in README — 2026-11-09:** user decision
+(«este es un objetivo mucho más exacto y concreto que el objetivo inicial»):
+README now leads with the coexistence question of the roadmap — whether one
+finite-range QCA with one fixed rule admits both universal quantum
+computation and a relativistic low-energy regime of the same rule, stated
+per code, resources and parameters. The original c_IR-from-causal-geometry
+question and its results are kept as inherited results. Documentation
+decision only: no gate, status or scope of any result changed;
+`PROJECT_INSTRUCTIONS.md` not edited.
+
+**Bounded results promoted — 2026-11-09:** by direct user instruction
+(«promociona los tres resultados»), on `research/schur-stability-audit`,
+each in its frozen scope only. Each has one sealed cross-family review
+(Grok `grok-4.7`, «se sostiene», no objections); no Lean, no novelty claim.
+
+1. Thirring approximate recovery (contract `61a8215`, report `ad01e20`,
+   review `d0f1ae1`): `APPROXIMATE_RECOVERY_EXCLUDED`. Promoted: for the
+   M=1 code, U=FJ, mu=3/5, nu=4/5, z=i, infinite line and output frame
+   F^T B, liminf_T ||E_T|00>||^2 >= c > 0, so no subsequence, phase or
+   matrix V gives approximate recovery. Not promoted: a value of c, input
+   11, other codes/resources/parameters, any Thirring-QCA no-go.
+2. s=4 general U(4) coin (contract SHA256 a817034f…, hash recorded before
+   execution, no Git preregistration; review `9996725`):
+   `NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN`.
+   Promoted: for U(k)=W prod exp(-i k_i sigma_i tensor tau_i/sqrt3), any W
+   in U(4), every separated rank-two node at k=0 with untilted
+   nondegenerate isotropic linear cone has c=1/3. Not promoted: the
+   reviewer's extra corollary (no tilted isotropic cone) and witness, other
+   shifts, dimensions, nodes, ranks or anisotropic cones.
+3. s=4 cyclic realization (contract SHA256 c065cb8c…, same preregistration
+   caveat; review `9996725`): `REALIZED_WITH_ACTUAL_SUPPORT`. Promoted: the
+   explicit finite-range unitary with scalar commutant, D2, C=VK, cyclic S,
+   two nodes at phases ±pi/4 with isotropic linear speeds cP=cQ=1/3, real
+   support the regular tetrahedron (r_in=1/3). Not promoted: the
+   eight-nonzero-step variant (OPEN), the local protection argument of its
+   Sec. 6, any strict asymptotic body, law
+   c=r_in, selection or physical value of c, membership in the class of
+   1708.00826.
+
+The entries below keep their execution records; their «no promotion»
+lines are superseded by this entry for the promoted statements only.
+
+**Approximate recovery of the microscopic Thirring code — 2026-11-09:**
+user chose the approximate-recovery option of the roadmap («Contrato
+aproximado»). Contract 61a8215; verifier dd4e547 committed before running,
+first run 14/16 retained (wrong zero-overlap expectations for on-site
+inputs 01/10), corrected f5c0d16, 16/16 exact.
+[Report](../reports/2026-11-09--thirring-approximate-recovery.md): at
+p=pi/4, exp(2ip)=z, the compact two-particle vector of 1711.03920v1
+Eq.(14) p.4 is an exact eigenvector of the fiber U(p), isolated from the
+continuous spectrum since nu^2 != 1. Input 00 has fiber weight 16/25 on it;
+Riesz continuity gives positive bound-state weight c, which never returns
+to the free frame (absolutely continuous free fibers, Riemann-Lebesgue).
+liminf ||E_T|00>||^2 >= c > 0: `APPROXIMATE_RECOVERY_EXCLUDED` for this
+code, rule and parameters; no numerical value of c. Not a Thirring-QCA
+no-go; other codes/resources not addressed. PRELIMINARY author proof.
+User asked for Grok review: one sealed revision-ciega round (grok-4.7,
+herramientas 97292a9) on ad01e20, [unaltered review](../reports/reviews/2026-11-09-thirring-approximate-recovery-grok/informe_grok.md):
+«se sostiene», no objections; it rederived steps 1-6, inspected but did not
+run the script. One cross-family review; no promotion, no Lean. Contract cutoff reached; the
+roadmap's Lean option was not executed.
+
+**Handoff for tomorrow — 2026-11-08:** user requested push and a roadmap.
+[Roadmap for 2026-11-09](ROADMAP_2026-11-09.md) records the exact closure,
+review limitations, and a proposed bounded analytic question on approximate
+recovery with the same code/rule. Lean is a separate certification option.
+Planning only: no new experiment, calculation, external review or promotion.
+
+**Claude review of arbitrary-time exact recovery — 2026-11-08:** user
+explicitly requested Claude. One sealed revision-ciega opus round,
+herramientas ce09890, on report 0828861; [unaltered review](../reports/reviews/2026-11-08-thirring-exact-recovery-opus/informe_opus.md).
+Verdict: proof holds; no invalidating objection. Two minor requested
+clarifications incorporated: explicit antisymmetric isometry and A's
+support 1-t<=x_A(t)<=t from initial chirality. Particle/component wording
+also corrected. No formulas, scientific code or output changed. Reviewer
+inspected code without execution, did not check PDFs or Lean. Post-review
+clarifications not sent for a second round. One external cross-family
+review, no automatic promotion; all-time Lean and approximate recovery
+remain outside this result. Review task closed.
+
+**Exact later recovery in the microscopic Thirring code — 2026-11-08:**
+user authorized the arbitrary-time exact recovery question. Contract
+0212df6 records that the manual ray idea preceded the freeze; permanent
+verifier committed before execution at 578607b.
+[Report](../reports/2026-11-08--thirring-exact-recovery.md): for the same
+M=1 code, fixed rule and exact free output F^T B, no matrix V satisfies
+U^T B=F^T B V at any integer T>=2. Four extreme free rays force V=D;
+the earliest additional contact emits a nonzero relative-edge amplitude
+that later contacts cannot cancel. Input 01 has strictly positive leakage
+at every such finite time. An explicit lower bound decays with T and
+therefore does not exclude approximate recovery at long times.
+80/80 author checks at the frozen selected times, exact integer propagation
+on Z plus full antisymmetric propagation at T<=4. The arbitrary-time claim
+rests on the written proof, not finite sampling. PRELIMINARY author proof,
+no independent review or promotion; not formalized in Lean. The previous
+Lean certificate remains a two-step result. First-step exact entangler
+retained; approximate recovery and other codes/resources remain OPEN.
+Contract cutoff reached; no further search or protocol opened.
+
+**Option b: Lean statement correspondence audit — 2026-11-08:** user
+explicitly authorized reading the certificate before further Thirring work.
+[Audit](../reports/2026-11-08--thirring-lean-statement-audit.md) maps all nine
+propositions to the report, verifies Gaussian-integer operations, code
+indexing, FJ order, 25/625 denominators, K2 and Gram defect normalization.
+No mismatch found in the declared finite calculation. Coverage wording
+clarified: FirstGate checks four columns, with superposition by written
+linearity; NoWrap is final support, with causal no-wrap argument outside Lean.
+Clean lake rebuild passed including all axiom guards. Challenge/Solution
+hashes match existing 3/3 mutation record; no Lean sources or physical
+outputs changed. Author audit, not independent review or promotion.
+Option b completed; no recovery-time experiment or option c executed during
+that audit. The separately authorized exact-recovery follow-up is above.
+
+**Two consecutive microscopic contacts, exact/Lean check — 2026-11-08:**
+user asked whether composition could be checked alone or with Lean.
+[Report](../reports/2026-11-08--thirring-two-contacts.md); contract d2279da
+records that the manual leakage formula preceded its computational freeze.
+Same M=1 code, fixed U=FJ and free output F^2 B:
+K2=[I+(exp(i chi)-1)mu^2 P]D, P an orthogonal rank-two projector.
+Worst leakage is 2mu^2nu^2(1-cos chi)=288/625=0.4608 at frozen parameters.
+Thus the second consecutive contact is not a deterministic closed gate
+in this output code; first-step exact gate remains valid.
+44/44 exact/numerical author checks; independent full antisymmetric
+propagator matches the Gaussian-integer reduced calculation.
+Lean 4.31 core certificate checks nine finite exact identities (matrix,
+Grams, projector, witness, support). Eight theorems use no axioms, one
+only propext; all guarded. Canonical lean-mutar, herramientas ce09890:
+3/3 false-sign/coefficient/sorry controls rejected, final clean build passes.
+The Fock/reduced-model bridge and generic norm theorem are written
+derivations, not claimed as fully Lean-formalized. PRELIMINARY physical
+interpretation, no external review/promotion. This closes only two
+consecutive contacts with no additional resources, not all architectures.
+
+**Growing-time Thirring with exact free output — 2026-11-08:** user
+authorized the proposed growing-time experiment. Contract 61a180a;
+[report](../reports/2026-11-08--thirring-growing-time.md).
+Same fixed rule and initial code; output B_T=F^T B, not the fixed-support
+alternating frame. Exact positive result: M=1,T=1 implements
+diag(1,exp(i chi),exp(i chi),1) without leakage, maximally entangling
+at chi=pi/2. Microscopic one-step resource only; composition unproved.
+Existing telescoping bound excludes a finite entangling effect when
+T=o(M^(1/4)). For frozen schedules T=M and M^2, M=1,2,4,8,16,
+no controlled gate limit established; at M=16,T=256 worst leakage
+is 0.964616 and full polar-unitary error 1.274278.
+Exact opposite-Gamma reduction checked against full antisymmetric
+propagation for M=1,2,T<=4; strict light-cone boundaries for all samples.
+123/123 author controls after squared-polar-error stability repair;
+first failed run retained. PRELIMINARY, no independent review/promotion.
+EXACT_MICROSCOPIC_ONE_STEP_ENTANGLER_AT_M1 /
+SUBQUARTER_POWER_TIME_ROUTE_CLOSED /
+LINEAR_QUADRATIC_LIMIT_NOT_ESTABLISHED /
+GENERAL_GROWING_TIME_ROUTE_OPEN. No claim of asymptotic impossibility
+from finite samples, no interacting relativistic limit or universality proof.
+Frozen experiment completed; no further time/mass/profile sweep executed.
+
+**Massive preflight free-bound proof repair — 2026-11-08:** following a
+review observation supplied by the user, report Sec.5 now proves the
+2T delta_M bound explicitly: exact and ideal one-particle maps, including
+their errors, remain in opposite Gamma eigenspaces. The normalized exterior
+embedding from their tensor product is isometric, so no extra sqrt(2) occurs.
+All four JSON provenance hashes match current files; primary equation
+locations rechecked (1711 pp.1–2; 1804 pp.5–6 for Eq.8).
+No code/data changes or new experiment. Author repair, no independent
+re-review or promotion; bounded-duration/code/frame scope unchanged.
+
+**Massive Thirring algebra preflight — 2026-11-08:** user authorized
+the proposed symmetry-compatible code filter. Contract cbfae56;
+[report](../reports/2026-11-08--thirring-massive-preflight.md).
+C_plus=(R f_even,L T f_even), C_minus=(R T f_even,L f_even);
+two qubits use opposite Gamma sectors, total Q=0. The mass yields an
+exact first-step logical rotation from C_plus to C_minus; the reverse
+step has envelope error nu sqrt(2/M). Same-sign Gamma pairs never contact.
+Instantaneous opposite-sector contact compresses to diag(1,c,c,1),
+c=1+(exp(i chi)-1)/M, with leakage 2(M-1)(1-cos chi)/M^2.
+F and J are not independently available controls. Telescoping bounds show
+the actual fixed-rule evolution approaches local free rotations for every
+bounded duration as M grows; positive ballistic-edge leakage at finite M
+closes bounded-duration entangling gates for this code and output frame.
+MASS_LOGICAL_MIXING_AVAILABLE /
+BOUNDED_DURATION_ENTANGLING_GATE_CLOSED_FOR_DECLARED_CODE /
+GROWING_TIME_SCATTERING_OPEN. Author verifier 140/140, mu=3/5,chi=pi/2,
+M=1,2,4,8,16,T=1,2. PRELIMINARY, no independent review or promotion.
+Preflight cutoff reached; no long-time scattering or relativistic
+interacting-limit calculation executed. General massive-model universality
+and growing-time protocols remain OPEN.
+
+**Author check of Claude O1–O9 — 2026-11-08:** user requested verification.
+[Audit](../reports/2026-11-08--thirring-claude-check.md), bounded charter
+and permanent script preregistered at 45b933f; author verifier 28/28.
+Useful scope objections confirmed: unitary non-density is not a complexity
+classification, ancilla and geometry quantifiers need precision, structural
+checks and repeated grams are not independent physical evidence.
+Reviewer claims corrected: overlapping-support leakage is not 15/32 for every
+T (at chi=pi/2 it is 0 at T=0, 3/8 at T=1, 15/32 for T>=4);
+fixed minus-sign regional parity holds in the one-particle sector, not all Fock;
+massive alternating charge restricts to a component-signed sum of node X,
+not an unqualified sum. Transfer to pi does not refute the two-node code.
+Primary 1711.03920v1 pp.1–2 acquired/read; both originals use schematic
+local interaction notation. No new counterexample to ordered full-collision
+closure or code unitary non-density. PRELIMINARY author adjudication, no
+independent re-review of this audit or promotion. Full details qualify below.
+
+**Claude re-review of two-node Thirring — 2026-11-08:** user authorized
+sending repaired version cfeb548 to Claude. Sealed claude-opus-5-5, high,
+via revision-ciega (herramientas ce09890), one round, completed.
+[Report](../debates/2026-11-08--thirring-two-node-rereview-opus/informe_opus.md).
+Reviewer marks R1–R4 RESOLVED and accepts the algebraic core, with new
+mandatory objections O1–O9 on scope, geometry, ancilla quantifiers,
+verification taxonomy, source domain and provenance. No code executed.
+O1–O9 remain OPEN / AUTHOR_CHECK_PENDING: reviewer derivations and
+counterexamples are not adopted as verified results. No global PASS,
+promotion or new experiment. This supersedes the pending-re-review status below.
+
+**Two-node Thirring review repairs — 2026-11-08:** user requested repairs.
+Sealed Grok review (grok-4.7; herramientas ce09890; archived 66e6bc2)
+gives blocks 1–4 PASS, blocks 5–6 REPAIR_REQUIRED.
+[Author responses R1–R4](../reports/2026-11-08--thirring-two-node.md):
+the node qubit is not established as an infrared or low-quasienergy qubit;
+c_IR=a/tau refers to each free envelope after carrier removal.
+Verifier output distinguishes 222 finite numerical contrasts, 6 illustrations
+and algebra-only general consequences. Hadamard was not executed by U.
+Antisymmetric propagation covers two bodies; three packets use labeled
+trajectories. Partial-crossing leakage 0.46875 maximizes over code inputs
+only at M=4,T=17,chi=pi/2. Rerun: 228/228, unchanged numerical residuals.
+R1–R4 RESPONDED_BY_AUTHOR, not independently resolved; no re-review,
+global PASS or promotion. This supersedes the initial no-review wording below.
+
+**Two-node Thirring experiment — 2026-11-08:** user authorized the complete
+code/collision/composition/relativistic-sector experiment;
+[contract](../theory/THIRRING_TWO_NODE_GATE.md), preregistration `fd1ef6c`;
+[report](../reports/2026-11-08--thirring-two-node.md).
+For mu=0 and fixed on-site contact phase, the node qubit (f, Pi f) closes
+exactly after a full crossing: S=exp(i chi/2) exp(i chi XX/2).
+At chi=pi/2 it maximally entangles; completed crossings compose.
+Conserved trajectory parities obstruct a universal unitary gate set in
+this code, including independent ancillas without intermediate measurement.
+TWO_NODE_COLLISION_CLOSED_AND_ENTANGLING /
+MASSLESS_NODE_CODE_NOT_UNITARILY_UNIVERSAL. The two free nodal envelopes
+have c_IR=a/tau after removing the pi-node Floquet carrier; no interacting
+relativistic QFT limit, absolute clock frequency, or universal processor proved.
+Author verifier 228/228, including direct trajectories and antisymmetric
+two-fermion propagation; PRELIMINARY, no independent review/promotion.
+This massless coding experiment is closed. Massive Thirring, other encodings
+and the general coexistence question remain open; other gates unchanged.
+
+**Next-session worksheet — 2026-11-07:** prepared on November 6 at user
+request; [worksheet](../reports/2026-11-07--work-plan-interacting-review-repairs.md).
+Priority is to resolve Claude's review objections before further model
+work: scope, Hartree/Dyson conventions, symmetry/operator checks,
+numerical precision and quantitative feasibility. Planning only; no
+future calculation, new external review, promotion or merge executed.
+Today's artifacts remain uncommitted; check working tree when resuming.
+
+**Blind Claude review — 2026-11-06:** explicitly authorized by user;
+[status and open repairs](../reports/2026-11-06--interacting-chain-review-status.md),
+[sealed report](../debates/2026-11-06--interacting-chain-review-opus/informe_opus.md).
+Claude Opus 5.5 via canonical revision-ciega, herramientas ce09890.
+One cross-family agent review, not human review: blocks 1 and 3 PASS,
+block 4 PASS for frozen effective ODE; blocks 2,5,6 REPAIR_REQUIRED.
+No FAIL; no numerical execution by reviewer. Two canonical wording
+overclaims corrected below; other objections and reviewer-proposed
+derivations remain open for author checking. No global PASS, promotion
+or microscopic QCA proof. Conditional main fusion remains inactive.
+
+**Critical tuning/cutoff/IR control — 2026-11-06:** user requested all
+three pending obligations; [contract](../theory/YUKAWA_CRITICAL_CUTOFF_IR_GATE.md),
+[report](../reports/2026-11-06--yukawa-critical-cutoff-ir.md).
+Derived and numerically evaluated static one-loop tadpole/scalar-curvature
+counterterm candidates; no full critical-surface proof or certified
+quadrature. Wilson permits additional relevant odd scalar terms, which
+must also be controlled. Derived occupation-moment cutoff bounds and a
+counterexample showing bounded first moment alone does not suppress CCR
+boundary defect. Conditional schedule T=L,M=L²,delta=L^-12 controls
+the finite-circuit error if parameter/moment bounds hold. This is a
+varying circuit family, NOT fixed-QCA infrared control. PRELIMINARY,
+no independent review/promotion. Critical tuning, uniform state moments,
+cutoff-state convergence and fixed-QCA matching remain OPEN; conditional
+main fusion not activated.
+
+**Frozen one-loop Yukawa ODE solved, linear velocity differences and equal reference couplings — 2026-11-06:** user requested
+proof, with commit/push/main fusion conditional on obtaining it.
+[Contract](../theory/YUKAWA_JOINT_FLOW_GATE.md),
+[report](../reports/2026-11-06--yukawa-joint-flow-proof-scope.md).
+Checked Fei et al. original pp.2–5, N=8. In frozen one-loop ODE at
+c=1, u'=-14u²/(16pi²), lambda/u tends to 16/3 from positive ratios.
+Linear velocity modes decay with powers -1/21 and -13/21 of
+1+14u0 ell/(16pi²). EFFECTIVE_ONE_LOOP_LINEAR_ATTRACTION_SOLVED /
+MICROSCOPIC_QCA_THEOREM_NOT_PROVED. PRELIMINARY author proof, no review
+or promotion. Critical tuning, cutoff convergence, uniform circuit
+matching and exact infrared control remain OPEN. Conditional main
+fusion not activated; effective equations are not a QCA proof.
+
+**Shared Yukawa mediator bridge — 2026-11-06:** user «haz las tres»;
+[contract](../theory/YUKAWA_MEDIATOR_BRIDGE_GATE.md),
+[report](../reports/2026-11-06--yukawa-mediator-bridge.md).
+Two-flavor extension of checked one-loop velocity beta functions gives
+local linear attraction modes with generator eigenvalues 0,1,13 for
+equal reference Yukawa couplings. Unequal positive couplings admit a
+weighted dissipation identity. Asymptotic equality requires sufficient
+integrated coupling; marginal running can meet it conditionally.
+Explicit finite-cutoff scalar/Wilson Hamiltonian and finite-depth unitary
+Strang circuit defined, with Trotter error bound at fixed volume and
+bosonic cutoff; no cutoff-convergence error bound established.
+PRELIMINARY author derivation, no review or promotion. Joint coupling
+trajectory, scalar/fermion critical tuning, cutoff convergence and
+microscopic critical matching remain OPEN. No QCA velocity-universality
+result, global attraction or novelty claimed.
+
+**Low-energy circuit attempt — 2026-11-06:** user requested all three
+steps; [contract](../theory/LOW_ENERGY_INTERACTING_CIRCUIT_GATE.md),
+[report](../reports/2026-11-06--low-energy-interacting-circuit.md).
+New cubic Wilson two-species model, v1=1/3,v2=2/3, contact interaction:
+explicit finite-depth Strang circuit, finite-volume/time approximation
+bound, and half-filled Hamiltonian ground state with a sufficient
+finite-volume weak-g gap bound. Not an exact stationary circuit state.
+Canonical RG gives contact dimension -2 and no first-order slope
+correction. Gaussian fixed family retains distinct velocities;
+no common-speed attractor established. PRELIMINARY author analysis,
+no review or promotion. Two-loop coefficients/sign, mass tuning and
+thermodynamic/long-time control remain OPEN. BCC results unchanged.
+
+**Memory decay analytic audit — 2026-11-06:** continued on «adelante»;
+[contract](../theory/OCCUPIED_MEMORY_DECAY_GATE.md),
+[report](../reports/2026-11-06--occupied-memory-decay-audit.md).
+Derived overlap/pointwise-propagator bounds and the exact six-variable
+momentum representation of the force memory. A global nondegenerate
+stationary-phase estimate would suffice conditionally, but branch
+crossings and the full stationary set have not been controlled.
+GLOBAL_DISPERSIVE_ESTIMATE_REQUIRED / REAL_FREQUENCY_LIMIT_NOT_PROVED.
+The infinite-temperature state does not isolate the IR cone; a local
+cone approximation alone cannot justify removing the Abel regulator.
+PRELIMINARY author audit, no independent review or promotion. No proof
+of divergence, linewidth or velocity equalization; no larger numerical
+scan claimed as a substitute for the missing global estimate.
+
+**Abel memory sums with temporal bounds — 2026-11-06:** continued on
+«adelante»; [contract](../theory/OCCUPIED_ABEL_MEMORY_GATE.md),
+[report](../reports/2026-11-06--occupied-abel-memory.md).
+Evaluated r<=24 memory matrices and momentum derivatives at the nodal
+frequencies, rho=0.5,0.65,0.8. Analytic uniform coefficient bounds give
+explicit geometric temporal-tail bounds for each fixed rho<1; bounds
+exclude floating-point errors. Prior r<=8 reproduced within 1.72e-16.
+ABEL_MEMORY_SUM_WITH_TEMPORAL_TAIL_BOUND / REAL_FREQUENCY_LIMIT_OPEN.
+PRELIMINARY author result, no independent review or promotion. Bounds
+diverge as rho->1; no real-frequency pole, linewidth or velocity
+equalization established. No extrapolation from finite resolution.
+
+**Occupied memory evaluated — 2026-11-06:** user chose option 1;
+[contract](../theory/OCCUPIED_MEMORY_KERNEL_GATE.md),
+[report](../reports/2026-11-06--occupied-memory-kernel.md).
+Force-correlation reduction and numerical evaluation of the second-order
+memory at delays r=1..8 for the fixed two walks, including matrices and
+first physical momentum derivatives at zero. Nonzero, species-dependent
+memory; two alias-free grids agree to 2.64e-16 and the first delay is
+checked by direct coefficients. PRELIMINARY author result, no independent
+review or promotion. MEMORY_KERNEL_REDUCED_AND_EVALUATED_R1_R8 /
+LONG_TIME_SELF_ENERGY_OPEN. No temporal tail bound, linewidth, pole or
+velocity attraction established. Earlier unevaluated wording below is
+superseded only for this finite delay window.
+
+**Occupied second-order partial calculation — 2026-11-06:** on «adelante»,
+[contract](../theory/OCCUPIED_SECOND_ORDER_GATE.md),
+[report](../reports/2026-11-06--occupied-second-order.md).
+Exact one-step response multiplier K=(1-p+p exp(-i chi))^4; at p=1/2,
+K=exp(-2i chi)cos^4(chi/2). Centered contraction begins at chi²/2.
+Nine exact identities checked. An exact projection recurrence identifies
+the temporal memory term B_1 D_0^j C_1 at the same perturbative order;
+it has NOT been evaluated for the fixed walks. Status
+SECOND_ORDER_INSTANTANEOUS_TERM_EXACT / TEMPORAL_MEMORY_NOT_EVALUATED.
+PRELIMINARY author result, no review or promotion. No linewidth, long-time
+pole or velocity equalization inferred from single-step contraction.
+
+**Occupied stationary response — 2026-11-06:** continued on «adelante»;
+[contract](../theory/STATIONARY_OCCUPIED_RESPONSE_GATE.md),
+[report](../reports/2026-11-06--stationary-occupied-response.md).
+The fugacity ensemble exp(-lambda_1 N1-lambda_2 N2)/Z is exactly
+stationary for the number-conserving collision circuit. This occupied
+mixed state is not a relativistic low-energy vacuum. Its retarded
+single-particle response has only a scalar Hartree phase at first order
+in chi at fixed time; no first-order slope correction. PRELIMINARY
+author derivation, no independent review or promotion. Long-time poles,
+second-order density correlations and spectral widths remain unproved;
+no velocity equalization or RG bridge established.
+
+**Interacting extension authorized and first filter executed — 2026-11-06:**
+user granted autonomous continuation including needed extensions.
+[Contract](../theory/INTERACTING_VELOCITY_BRIDGE_GATE.md),
+[report](../reports/2026-11-06--interaction-vacuum-sector.md).
+For the specified number-conserving density-collision QCA, the vacuum
+one-particle propagator is exactly free at every coupling: interaction
+vanishes on that invariant sector. `VACUUM_ONE_PARTICLE_ROUTE_CLOSED /
+MANY_BODY_STATE_REQUIRED`. PRELIMINARY author proof, no promotion.
+Next obligation is a stationary occupied reference state and response
+observable; finite-density equalization has not been calculated.
+This authorization supersedes earlier statements that an interacting
+extension is unauthorized, without promoting its unproved hypotheses.
+
+**Selection-mechanism literature filter — 2026-11-06:** user requested
+the search («adelante busca el mecanismo»);
+[report](../reports/2026-11-06--velocity-selection-mechanism-search.md).
+`LITERATURE_MECHANISM_IDENTIFIED: INTERACTION_DRIVEN_RG_ATTRACTION`:
+Anber–Donoghue arXiv:1102.0789v2, PDF pp.2–4 and 7–10, supplies an
+explicit one-loop interacting fermion–scalar example with an IR-attractive
+equal-velocity line. This is running of effective parameters with energy
+scale, not temporal adaptation of QW coins. Common value is not fixed;
+convergence can be logarithmically slow. `QW_TRANSFER_NOT_ESTABLISHED`:
+no interacting finite-range QCA constructed or authorized, no anisotropy
+selection proved, no microscopic selection rule specified for current
+free QWs. Documentary interpretation PRELIMINARY, no independent review
+or promotion. Stops at one identified mechanism; further transfer needs
+a separate interacting-class charter. Earlier results and parked
+hexagonal priority unchanged.
+
+**Independent-pairs symmetry preflight — 2026-11-06:** user authorized
+option 2 («adelante»). Fixed s=8 local filter, sigma/tau/rho factors;
+[contract](../theory/INDEPENDENT_PAIRS_SYMMETRY_PREFLIGHT.md),
+[report](../reports/2026-11-06--independent-pairs-symmetry.md).
+`LOCAL_EXCHANGE_INSUFFICIENT / TWO_GENERATORS_FORCE_IDENTICAL_COPIES`:
+an internal rho_x exchange permits a local isotropic splitting term;
+adding conserved rho_z forces U=A tensor I_rho. Disjoint nodal phase
+sets cannot be exchanged by a commuting unitary symmetry at k=0.
+An exact non-scalar internal commuting F already supplies constant
+invariant sectors and excludes scalar-commutant global irreducibility.
+These are standard representation/algebra consequences; cutoff reached,
+no new constructor, novelty claim or successor search. Author verifier
+37/37; PRELIMINARY, no independent review or promotion. The local
+splitting is NOT a realized Laurent perturbation or a microscopic QW
+counterexample. No general no-go for other symmetry actions or for
+universality. Selection and scale unresolved; previous work unchanged.
+
+**Bounded cyclic realization attempt — 2026-11-06:** user authorized
+option 1 (exact microscopic realization); separate frozen
+[contract](../theory/CYCLIC_COMMON_CONE_REALIZATION_ATTEMPT.md) and
+[report](../reports/2026-11-06--cyclic-common-cone-realization.md).
+One s=4 ordered xyz candidate on N3, a=3/5, common T, with fixed
+R_j, C and cyclic S: `CANDIDATE_FAILS_CYCLIC_COVARIANCE`.
+Exact author checks 139/139 include unitarity, full eight-point support,
+PHS, D2, scalar commutant and two isotropic cones c_P=c_Q=sqrt3/5.
+The full update fails cyclic covariance in all eight coefficients;
+an independent exact momentum section gives a nonzero order-two defect.
+PRELIMINARY, not independently reviewed or promoted, no novelty claim.
+The candidate is outside the enlarged symmetry class, so its robustness
+obligation is not reached. Stops under its contract: no factor/order,
+support or representation changes and no successor search. General
+Laurent realization remains OPEN, not disproved. Selection and physical
+scale unresolved; hexagonal work stays parked.
+
+**Symmetry-plan premise audit — 2026-11-06:** user requested continuation
+of today's work. Stages 1 and 2 of the saved plan were executed;
+[audit](../reports/2026-11-06--symmetry-common-cone-premise-audit.md).
+Manual rederivation retains the provisional D2+C normal form and its
+conditional nodal nondegeneracy. Primary passages of Asboth, P17 and
+Arrighi–Facchini were checked. The local conditional combination of PHS
+pairing and spatial covariance forcing an invariant isotropic quadratic
+form is recorded as `STANDARD_SYMMETRY_COROLLARY`; its novelty candidacy
+is closed by the plan's stage-2 cutoff. PRELIMINARY author audit, no
+independent review or promotion. No additional microscopic symmetry
+contract or realization executed (stages 3–4 not entered). Existence of
+an irreducible finite-range realization with the enlarged fixed symmetry
+remains a named obligation, not an impossibility result.
+`SELECTION_MECHANISM_NOT_SPECIFIED`; common physical scale and universality
+between independent pairs remain unresolved. Hexagonal work stays parked;
+previous results keep their scope. This bounded cutoff does not abandon
+all symmetry research or authorize a successor search.
+
+**Parallel premise audit — 2026-11-06 (recorded 2026-11-09):** a second,
+independent Codex execution of the same stages 1–2 (and stage-5 diagnosis)
+existed only in a local checkout; kept verbatim as
+[parallel run](../reports/2026-11-06--symmetry-common-cone-premise-audit-parallel-run.md).
+Same verdicts (`STANDARD_SYMMETRY_COROLLARY`,
+`SELECTION_MECHANISM_NOT_SPECIFIED`); the entry above and its report remain
+canonical. Same model family: not an independent review. The three entries
+below come from that same local line and were reconciled on 2026-11-09.
+
+**General U(4) coin viability — 2026-11-06:** user authorized the minimal
+coin-family extension; [contract](../theory/S4_GENERAL_COIN_VIABILITY.md),
+[proof](../reports/2026-11-06--s4-general-coin-viability.md).
+For fixed G_i=sigma_i tensor tau_i and unit tetrahedral steps, any isolated
+rank-two nodal eigenspace at k=0 with an untilted nondegenerate isotropic
+linear cone has c=1/3, for arbitrary W in U(4). Rank-one compressed
+tetrahedral channels force this value; no C, D2 or cyclic covariance is
+assumed. Two author derivations and 55/55 exact auxiliary checks.
+Outcome `NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN`;
+**PRELIMINARY, no independent review, promotion or novelty claim**.
+This closes the declared minimal extension: no unequal-speed starting
+pair, no coupling scan. General alignment remains unevaluated; no change
+of shifts, dimension or node conditions is authorized by this closure.
+Grok review requested by the user 2026-11-09: one sealed round (grok-4.7,
+herramientas 97292a9) on 170910b, [unaltered review](../reports/reviews/2026-11-09-s4-general-coin-viability-grok/informe_grok.md):
+«se sostiene», no objections. Its extra corollary (no tilted isotropic cone)
+is the reviewer's, not adopted. One cross-family review; no promotion.
+
+**s=4 cyclic realization — 2026-11-06:** user explicitly requested an
+exact realization attempt; [contract](../theory/S4_CYCLIC_REALIZATION_ATTEMPT.md),
+[report](../reports/2026-11-06--s4-cyclic-realization.md).
+Outcome `REALIZED_WITH_ACTUAL_SUPPORT`: G_i=sigma_i tensor tau_i,
+W=I tensor exp[-i*pi*(tau_x+tau_y+tau_z)/(4sqrt(3))], fixed D2+C and
+simultaneous cyclic rotation of both Pauli factors. Exact finite-range
+unitary, scalar coefficient commutant, two conjugate rank-two nodes and
+isotropic linear speeds cP=cQ=1/3 in the declared units. Four of eight
+allowed N3 coefficients cancel: actual support is the negative-parity
+unit tetrahedron, r_in=1/3, NOT the full eight-point cubic hull.
+The exact-eight-nonzero-coefficient variant remains OPEN. Author verifier
+143/143 exact checks, including coefficient covariance, both Laurent
+unitarity identities, commutant and axial eigenphase cross-checks.
+**PRELIMINARY, no independent review, promotion or novelty claim.** No
+strict asymptotic-body result or physical value of c; selection remains
+parked. This explicit request reopens the realization attempt only.
+Grok review requested by the user 2026-11-09: one sealed round (grok-4.7,
+herramientas 97292a9) on 170910b, [unaltered review](../reports/reviews/2026-11-09-s4-cyclic-realization-grok/informe_grok.md):
+«se sostiene», no objections; 1708.00826 not read by the reviewer.
+One cross-family review; no promotion.
+Not the same object as the "Bounded cyclic realization attempt" entry
+above (contract CYCLIC_COMMON_CONE_REALIZATION_ATTEMPT.md): that entry
+tests a different s=4 candidate (ordered xyz, a=3/5, full eight-point
+support, c_P=c_Q=sqrt3/5) under its own contract. Its
+`CANDIDATE_FAILS_CYCLIC_COVARIANCE` and this
+`REALIZED_WITH_ACTUAL_SUPPORT` refer to different candidates, so they
+do not contradict each other and neither supersedes the other.
+
+**Selection documentary decision — 2026-11-06:** user-authorized bounded
+reading of Anber–Donoghue completed;
+[decision](../reports/2026-11-06--selection-rg-documentary-decision.md).
+The examined mechanism runs effective parameters with energy scale, not
+microscopic update rules with time. The Yukawa example assumes spatial
+isotropy; its common-speed fixed line does not select a unique physical c.
+No concrete interacting-QCA bridge was established in this reading.
+Outcome: `DOCUMENTARY_SELECTION_ROUTE_PARKED`; no successor calculation
+charter opened. `SELECTION_MECHANISM_NOT_SPECIFIED` remains for the current
+free-walk class; question A and the exact s=4 spatial-symmetry realization
+remain OPEN. No impossibility or novelty claim, new scientific calculation,
+external review or promotion.
+
+**Next-session plan — 2026-11-06:** user requested a work plan based on
+the symmetry-selection intuition; see
+[plan](../reports/2026-11-06--work-plan-symmetry-common-cone.md), written
+2026-11-05. First audit the current premises and primary-source novelty;
+then freeze one additional symmetry condition before any calculation.
+Protection, isotropy, selection dynamics and physical scale remain
+separate obligations. Planning only: no future calculation executed or
+external review sent; no scientific status promoted by this entry.
+
+**Local symmetry normal form — 2026-11-05:** continued by user instruction;
+[contract](../theory/COMMON_CONE_LOCAL_SYMMETRY_NORMAL_FORM.md),
+[report](../reports/2026-11-05--common-cone-symmetry-normal-form.md).
+For fixed s=4, R_j=sigma_j tensor I and C=(sigma_y tensor tau_y)K,
+the local Hermitian derivatives necessarily have
+J_i=sigma_i tensor (v_i.tau), without assuming a shift-product ansatz.
+The two conjugate nodal doublets share the linear dispersion in magnitude;
+isotropy still requires equal squared axial coefficients. D2 alone permits
+an extra d_i sigma_i tensor I term; C forbids it. Author auxiliary checks
+279/279. **PRELIMINARY, not independently reviewed or promoted; no novelty
+claim, no value of c fixed, no universality between unrelated species.**
+
+**Local antiunitary test — 2026-11-05:** user instruction to search for
+a local symmetry relating the two cones; separate
+[contract](../theory/LOCAL_PARTICLE_HOLE_TWO_CONES_ATTEMPT.md) and
+[report](../reports/2026-11-05--local-particle-hole-two-cones.md).
+At a=3/5, theta=pi/4, the original three-shift model admits
+C=(sigma_y tensor tau_y)K, C²=+I, exchanging its nodal doublets and
+satisfying V U(k)* V†=U(-k). Coefficient intertwiner rank 15 (kernel 1).
+For the double-shift model the rank is 16 (kernel 0): no symmetry of that
+fixed local form. Author exact verifier 22/22. **PRELIMINARY, not reviewed
+or promoted; no novelty or physical charge-conjugation claim.** Does not
+establish cone survival or universality between unrelated species.
+
+**Five-point extension — 2026-11-05:** user authorized a table of further
+cone pairs in the double-shift architecture; separate
+[contract](../theory/TWO_CONES_PARAMETER_TABLE_ATTEMPT.md) and
+[report](../reports/2026-11-05--two-cones-parameter-table.md).
+For a=1/5,1/3,1/2,3/5,4/5, exact author checks pass 415/415, with the same
+27-point support and scalar commutant. Ratios: 3/2,2,3,4,9. In this family
+c_P=(1+a)/(2sqrt3), c_Q=(1-a)/(2sqrt3); sqrt3/15 is parameter-specific,
+while their sum is 1/sqrt3. **PRELIMINARY, not independently reviewed or
+promoted; no universality or novelty claim.** Ends at this five-point table.
+
+**Bounded exploratory attempt — 2026-11-05:** by user instruction to try
+another pair of cones and another structure, the double-shift s=4
+[contract](../theory/TWO_CONES_DOUBLE_SHIFT_ATTEMPT.md) and
+[report](../reports/2026-11-05--two-cones-double-shift.md) record
+`TWO_UNEQUAL_CONES`, **PRELIMINARY, not promoted**. Fixed rational point:
+two isotropic untilted rank-two Floquet nodes, c_P=4sqrt3/15 and
+c_Q=sqrt3/15 (ratio 4), globally irreducible, D2-covariant unitary with
+normalized support {-1,0,1}^3/sqrt3. Author verifier 165/165 exact checks;
+no external review or novelty claim. Different support/architecture from
+the preceding three-involution attempt; not a perturbation counterexample
+at fixed N3. No continuation beyond this fixed example is authorized by
+the attempt; earlier frozen gates and promoted results are unchanged.
+
+**Work priority — 2026-11-05:** user approval («adelante») to park the
+hexagonal line and complete the documentary loose ends of the main
+`c`/substrate line. Hexagonal results keep their promoted scope; the
+all-m problem and whole class remain OPEN. No continuation is authorized.
+This is a work-priority decision, not a mathematical refutation. The
+stopping rationale is retrospective: the slice route has closed within
+its stated scope; a two-dimensional argument would need a new charter.
+
+**Bounded result promoted — 2026-11-05:** hexagonal trace/scalar line
+(Sec. 16), m=3 only: `SCALAR_INFEASIBLE_M3` on the aligned 37-point
+hexagon, with its two-parameter reduction at m=3 and the trace bridge to
+walk-level non-attainment (s=2, scalar node, traceless isotropic linear
+term, exact radius-one hull; pointwise, no uniform gap). Reviewed by Claude
+Opus 5.5 and Grok `grok-4.7`. Not promoted: the general aligned-m
+reduction, the S19 alternative proof, other radii or orientations; M1 class
+OPEN.
+
+**Gate chartered — 2026-11-05:** aligned hexagons, all m >= 4 (Sec. 16),
+frozen at `689fd30`; scalar incompatibility for every m >= 4 (analytic
+proof or exact certificate with universal quantifiers) or an exact
+globally bounded compatible candidate; one session of at most 90 minutes. Executed
+2026-11-05 (see «Gate executed» below).
+
+**Bounded result promoted — 2026-11-05:** PH refutation test on H25
+(Sec. 17, chartered `6eb50c1`): H25 `PROVED_FOR_S25` (no s=2 walk in
+`W_hex^sym`, hence `W_hex`, with `conv F = H25` or H25′ reaches `r_in`),
+(PH⇒) `NOT_REFUTED_ON_H25`, HX2 `CONFIRMED_FOR_S25`. Sealed Grok review PASS
+plus local Codex review PASS. Qualitative gap only; (PH) not proved;
+hexagonal class OPEN.
+
+**Bounded result promoted — 2026-11-05:** aligned all-m gate (Sec. 16,
+executed `1154fad`): `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`. Promoted: for every
+m >= 629 no certificate supported on the vertex-direction slice `p = 2q`
+can prove scalar incompatibility (route closure only). Not promoted: any
+compatible candidate, any m in 4..628, the all-m question (OPEN). Reviewed
+by OpenAI `gpt-6-astra` (maths PASS, documentary repairs) and Grok
+`grok-4.7` (re-review PASS).
+
+**Gate chartered — 2026-11-03:** substrate saturation, phase 0 (Sec. 15),
+frozen at `9bf3019` after two Grok rounds; a definitional audit of the
+provisional statement (PH) on the promoted rows, with no confirmatory
+value. OPEN; frozen, **execution not authorized**; nothing done.
+
+**Partial result promoted — 2026-11-03:** M1 hexagonal supremum (Sec. 14,
+frozen at `86573ca`, Amendment 1 at `208e1b1`): M1-B19 `PROVED_FOR_S19` (no
+s=2 walk with support in the 19-point hexagon reaches `r_in`, in
+`W_hex^sym`), reviewed by Grok (repair applied) and by the user; M1-B13
+`PROVED_FOR_S13` promoted earlier the same day. Both bounded stages of the
+contract end with a gap and no witness; whole class OPEN; S25 not
+authorized.
 
 **Novelty candidacy dropped — 2026-11-02:** by direct user instruction
 («regístralo»), after the primary-source comparison
@@ -25,7 +665,12 @@ prior speed bound, 120° optimum or non-attainment statement for
 triangular/hexagonal walks; P17 (Fig. 1, p. 6) excludes isotropic `s = 2`
 walks on the triangular lattice in its sense, so the ceiling concerns a
 class P17 does not cover. Not refuted, `NOVELTY = OPEN`, weight low (L0
-Bernstein, T1 elementary, T2 restricted, whole class OPEN).
+Bernstein, T1 elementary, T2 restricted, whole class OPEN). Step 4 of the
+work plan (2026-11-03, user authorization, scoped to forward citations of
+ADMP, JDW, P17 and arXiv:1812.02601; same report, Sec. 4):
+`NOT_FOUND_IN_SCOPED_SEARCH`; closest statement JDW's forced time step
+`Δt = (3/2) ε` for one construction method, not equivalent; originality
+not claimed; unreviewed.
 
 **Synthesis written — 2026-11-02:** by user instruction («redacta la
 respuesta»), [`reports/2026-11-02--c-across-substrates-answer.md`](../reports/2026-11-02--c-across-substrates-answer.md)
@@ -2433,3 +3078,455 @@ relative order `|k|^2`, first `cos 6 theta` at `|k|^4`). Hd
 identical; also L5a = the `+i` Weyl block of L5b, and L6d = L6f through
 `|k|^2`). Scale of
 validity OPEN in `d >= 2`; `V_grp^max` OPEN. No physical interpretation.
+
+**Erratum approved and L3 promoted (2026-11-05, user «adelante»).**
+[`Erratum 1`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_ERRATUM_1.md)
+documents a contract-table mismatch with the parent: the dispersion row
+printed L3 is CJWW (5.15), on `Z^3`; the row printed L4 is CJWW (5.12),
+on BCC. Both belong to parent row L4; the standard-battery L3 was missing.
+Per-symbol coefficients stand, but the parent-row coverage, He listing
+and Hf substrate grouping above must be read with this correction.
+DeepSeek sealed review PASS, no mandatory repairs (`83c5644`);
+two citation clarifications applied afterwards, not re-reviewed.
+Erratum 1 is **APPROVED BY USER**, with those two unreviewed citation
+clarifications disclosed.
+The frozen contract, original report and original verifier are unchanged.
+
+The missing standard-battery row has a separate frozen contract
+[`DISPERSION_L3_ROW_GATE.md`](../theory/DISPERSION_L3_ROW_GATE.md)
+(`d3868fa`) and [execution report](../reports/2026-11-04--dispersion-L3-row.md).
+Recorded author run: 35/35 checks, verifier SHA256
+`89b33e700aedb7ae19bb80e00f45d8452f6a550ba7c836c5d3c246f070adae10`,
+outcome `L3_DISPERSION_COMPLETE`, HL3a–e `CONFIRMED` in the four declared
+cases. After three repairs, sealed gpt-6.1-sol re-review
+([report](../debates/2026-11-04--dispersion-L3-row-rereview-astra/informe_astra.md),
+`f3b9b10`): PASS, no mandatory repairs; static review, no code execution.
+One reviewing house (OpenAI), cross-family to the author (Anthropic).
+**PROMOTED: `L3_DISPERSION_COMPLETE`, HL3a–e `CONFIRMED` in the four
+declared cases; one cross-family reviewing house, not two.** This fills
+the L3 coverage/He gap and adds the stated BCC coefficient coincidences.
+Standard L3 has `T_d`, lowest correction
+`beta = -chi*n1*n2*n3/sqrt3`, and `alpha_0 = -4/315`;
+the row printed L3 in the original table remains CJWW (5.15), with `K4`.
+He is now covered for standard L3 as well; Hd and Hf verdicts are unchanged.
+Maximum group speed, validity scale, physical reading and symbol
+equivalence remain undecided. Previous status: PRELIMINARY, promotion
+pending. No new computation or verifier change in this promotion.
+
+## 14. Hexagonal supremum (M1) — chartered 2026-11-03
+
+Contract: [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
+frozen before solving, preregistration commit `86573ca`. Authorization:
+user approval of the draft, 2026-11-03 («APROBACIÓN CON ENMIENDAS»), with
+three amendments incorporated before freezing (cumulative solver budget of
+3600 s per support; explicit form of the real infeasibility certificate,
+`-1 = sum q_j^2 + sum h_i f_i` with exact rational coefficients, or an
+ideal element with certified absence of real zeros; a witness answers the
+saturation question only). Continues T2 of Sec. 12 only; L0, T1 and the
+minimal-support T2 are not reopened.
+
+Question: does any `s = 2` walk in `W_hex` reach `c_0 = r_in`? Method,
+named before computation: Stage A structural reduction (facet-line
+rigidity plus extreme-face unitarity identities), then exact decision on
+the 13-point support `S13` (`v = g_1 + g_2`), then `S19` only after `S13`
+has a verdict. Gap proofs from unitarity, support, node and isotropy are
+stated for `W_hex^sym`; a witness must be given in product form to lie in
+`W_hex`. Exploratory numerics only to guide, never in a verdict; no
+confirmatory numerics. Budget: one session. Ends the line: a factorized
+witness (M1 closes, limited reading), or budget exhausted
+(`OPEN_AFTER_<analysis>`, not a repo closure, plan Sec. 4); a gap proof
+for `W_hex^sym` keeps the line. Status before execution: OPEN; authorized.
+
+Execution (2026-11-03, partial): [report](../reports/2026-11-03--hex-supremum.md),
+verifier `scripts/verify_hex_supremum_gate.py` (12/12), 0 s solver.
+Lemma A1 (singleton intermediate layer along a facet normal forces its
+coefficient to 0) and A2 (`A_v A_{-v}^dag = 0` at opposite vertices).
+M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`. M1-B13 `PROVED_FOR_S13`: in
+S13 the singleton layers are the inner ring, which vanishes, leaving the
+minimal support excluded by T2 (Sec. 12), in `W_hex^sym`. HX2
+`CONFIRMED_FOR_S13`. S19 (layers 3,4,5,4,3) not reduced by A1; M1-B19 not
+started. [Reviews](../debates/2026-11-03--hex-supremum-stageA-review-grok/verificacion_autor.md):
+Grok PASS, Gemini PASS, no repairs. **Promoted 2026-11-03 (user
+instruction «PROMOCIÓN AUTORIZADA»):** M1-B13 `PROVED_FOR_S13`, HX2
+`CONFIRMED_FOR_S13`, M1-A `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`. Scope: S13
+only, in `W_hex^sym` (hence `W_hex`); qualitative gap, no uniform
+separation from `r_in`, whole class OPEN. The 12/12 verifier run is the
+author's session, not the reviewers'. Previous status: PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES, PROMOTION_PENDING. M1-B19 authorized
+the same day, structural reduction first, solver budget 3600 s
+cumulative.
+
+M1-B19 execution (2026-11-03): [report](../reports/2026-11-03--hex-supremum-b19.md),
+verifier `scripts/verify_hex_supremum_b19.py` (17/17), certificate data
+`scripts/data/hex_s19_certificate.json`. Two further linear consequences
+of saturation, A3 (first moments along the edge, per layer) and A4
+(off-diagonal first-order unitarity on the facet line), reduce S19 from 56
+to 18 free real parameters; controls on the square substrate keep the
+known saturating walk. The 730 remaining unitarity quadratics admit a
+rational combination with positive-definite Gram matrix (exact, over
+`QQ(sqrt3)`): no real solution. M1-B19 `PROVED_FOR_S19` (in `W_hex^sym`;
+includes the support of JDW L6c), HX2 `CONFIRMED_FOR_S19`. No nonlinear
+solver run (0 s of 3600 s); exploratory numerics only guided the
+certificate. Whole class OPEN; larger hexagons not in the contract's
+stages. Status: **PRELIMINARY, not independently reviewed.**
+
+M1-B19 review and amendment (2026-11-03): `6302328` pushed by user
+authorization (push and Grok + Gemini review; S25 not authorized). Grok
+(`grok-4.7`): REPAIR_REQUIRED, points on A3, A4, solution preservation,
+the 18-parameter reduction and the certificate's implication PASS; one
+mandatory repair: the report claimed contract form Sec. 4 (ii), which the
+certificate does not meet literally (record `f80c075`). Gemini: no report,
+`402` prepayment credits depleted (four attempts, account-level).
+[Amendment 1](../theory/HEX_SUPREMUM_GATE_AMENDMENT_1.md) (`208e1b1`,
+approved by the user, post-execution, frozen file untouched): the
+certificate is assessed under Sec. 4 (i); field `QQ(sqrt3)`, ~11 min check
+time, exploratory numerics (1294 s) and separate report/verifier declared.
+Report repaired accordingly (verifier bytes unchanged). Second review: the
+user personally, OK, on the version at `88d28dd`
+([record](../debates/2026-11-03--hex-supremum-b19-review-usuario/registro.md),
+`59f2ea2`; no written list of points checked). **Promoted 2026-11-03 (user
+instruction «sí, promociona S19 y haz push»):** M1-B19 `PROVED_FOR_S19`,
+HX2 `CONFIRMED_FOR_S19`, M1-A stays `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS`.
+Scope: S19 only, in `W_hex^sym` (hence `W_hex`); qualitative gap, no
+uniform separation from `r_in`; certificate under contract Sec. 4 (i) per
+Amendment 1. The 17/17 verifier runs are the author's, not the reviewers'
+(Grok could not execute). M1 status: both bounded stages (S13, S19) end
+with a gap, no witness; result (a) of Sec. 0 not met, no gap proof for the
+class; whole class OPEN. No further stage is in the contract; S25 or any
+other extension needs a new charter (not authorized). Previous status:
+PRELIMINARY; one of two requested reviews; promotion not authorized.
+
+## 15. Substrate saturation, phase 0 — chartered 2026-11-03
+
+Contract: [`SUBSTRATE_SATURATION_PHASE0_GATE.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE.md),
+frozen before execution, preregistration commit `9bf3019`, by user
+instruction («congela la revisión 3»). Drafting authorized 2026-11-03
+(«Autorizo redactar la carta de la fase 0, pero no congelarla ni ejecutar
+todavía ninguna comprobación»), with the user's four precisions
+(existential quantifier, domain `s = 2`, `d <= 3`, single normalization,
+one exact counterexample refutes). Two Grok rounds:
+[round 1](../debates/2026-11-03--substrate-saturation-phase0-draft-review-grok/informe_grok.md)
+REPAIR_REQUIRED (six repairs, all accepted by the user, who chose the
+predicate "hypercube up to scale and isometry" and turned phase 0 into a
+definitional audit);
+[round 2](../debates/2026-11-03--substrate-saturation-phase0-rev2-review-grok/informe_grok.md)
+REPAIR_REQUIRED (one repair, L6b traceability, plus five clarifications,
+all applied). Domain, logic and independence PASS in round 2: the
+isotropic-untilted-node condition is defined on the linear term, not on
+the shape of `C_micro`; the hexagonal rows are inside the domain, so a
+saturating admissible `s = 2` hexagonal walk would refute (PH⇒).
+
+Statement under audit: **(PH) [UNVERIFIED]**, for `s = 2`, `d <= 3`,
+admissible models only: the ceiling `c_0 = r_in(C_micro)` is attained by
+some admissible walk on a substrate iff `C_micro` is a hypercube up to
+scale and isometry. A geometric classification suggested by the promoted
+rows, not a physical explanation. The zonotope reading (PS′) is kept
+`[UNVERIFIED]` and is not equivalent to (PH). Method: documentary only, no
+computation. Outcomes: `DEFINITIONS_CLOSED` (the statement is defined well
+enough to be tested for refutation, nothing more) or
+`OPEN_AFTER_ROW_SURVEY`; per direction `REFUTED_BY_ROW_<row>` or
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`, the latter never evidence for (PH)
+and never `CONFIRMED`. No outcome authorizes a later phase; a test that
+can fail (the hexagon, user's first choice) needs its own contract.
+Status at the charter (2026-11-03): OPEN; frozen; execution not
+authorized; nothing done. **Superseded by the record below.**
+
+**Execution (2026-11-03).** Authorized by the user («EJECUTAMOS FASE 0»).
+Report: [`2026-11-03--substrate-saturation-phase0.md`](../reports/2026-11-03--substrate-saturation-phase0.md),
+committed `2f6160e`; documentary only. Grok execution reviews:
+[round 1](../debates/2026-11-03--substrate-saturation-phase0-exec-review-grok/)
+REPAIR_REQUIRED, five repairs, applied (the definitional outcome went from
+`DEFINITIONS_CLOSED` to `OPEN_AFTER_ROW_SURVEY`, gap L4);
+[round 2](../debates/2026-11-03--substrate-saturation-phase0-exec-review2-grok/)
+REPAIR_REQUIRED, two repairs (L3 node trace clause by clause; L4 not
+counted in the domain), applied, not re-reviewed. Finding F2: (PS′)
+presupposes that every sign pattern of the partial shifts appears in `F`.
+(Corrected 2026-11-04, see below: that condition is sufficient, not
+necessary; the exact condition for `conv F` to be the zonotope is that
+every zonotope vertex is in `F`.)
+
+**L4 addendum (2026-11-03).**
+[`2026-11-03--substrate-saturation-phase0-addendum-L4.md`](../reports/2026-11-03--substrate-saturation-phase0-addendum-L4.md)
+(`3e20c70`, page fix `738b62c`): node clauses (i)–(v) of CJWW (5.12),
+(5.15) derived from the primary source. DeepSeek PASS on the derivation
+and PASS on the literal check of p. 16 (`801c3f2`).
+
+**L3 node trace review (2026-11-04).** DeepSeek PASS, no repairs
+(`97dfe44`). By user decision, L3 counts as a witness in the audit, in that
+role only; two clarifications added to the trace (`6aa42f9`).
+
+**Amendment 1 (2026-11-04).**
+[`SUBSTRATE_SATURATION_PHASE0_GATE_AMENDMENT_1.md`](../theory/SUBSTRATE_SATURATION_PHASE0_GATE_AMENDMENT_1.md),
+drafted at the user's instruction (`cecf75a`), reviewed by gpt-6.1-sol
+(OpenAI): PASS, no mandatory repairs, four clarifications (`1d17a2d`),
+applied; **approved by the user** (`5213d94`). Written after the result and
+declared so. Rule: a declared row whose node no promoted certificate covers
+may be classified as admissible only with a cited frozen class clause and
+admission rule, a primary-source derivation of the node clauses with
+literal transcription check, a cross-family review PASS, the substrate
+stated under frozen Sec. 2.3, and the pair from its single source;
+appearing in a table does not suffice. Applied to L4: class
+C_ACROSS_LATTICES_GATE l. 78 (CJWW (5.12), (5.15)). Author finding,
+re-derived by the reviewer: (5.12) generates the BCC group, (5.15)
+generates `Z^3`; both have `C_micro` a cube. Recorded, not repaired:
+DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE l. 63, 67 assigns (5.15) to L3
+and (5.12) to L4, unlike C_ACROSS_LATTICES_GATE l. 76, 78; whether its
+executed results are affected is open for the user.
+
+**Re-assessment under Amendment 1 (2026-11-04,** user instruction; report
+Sec. 7, `862b405`). Each frozen closing condition checked and traced. L4 is
+admissible under Amendment 1 (not «certified»); `OUTSIDE_DEFINITIONS = ∅`,
+stated explicitly. **Gap G1**, present on 2026-11-03 and not counted then:
+frozen Sec. 3.2 requires the reduced generators of product-class rows; the
+audit recorded `C_micro` edge directions instead, whose identity with the
+factor shifts F2 leaves unestablished, and did not list the product-class
+rows. F3: six substrates by group and support (line; square with diagonal
+steps; BCC; simple cubic `Z^3`, new; hexagon on the triangular lattice;
+hexagon over the finer group), same four shapes; F1 unchanged.
+
+Status: **PRELIMINARY. Definitional outcome `OPEN_AFTER_ROW_SURVEY`
+(remaining gap G1; L4 resolved). Counterexample check: (PH⇐) and (PH⇒)
+`NO_COUNTEREXAMPLE_IN_SOURCE_TABLE`, not independent evidence for (PH),
+because (PH) was read off this table (three hypercube shapes, one regular
+hexagon, no parallelepiped that is not a hypercube); never `CONFIRMED`.**
+The audit has no confirmatory value; any closure would be definitional
+only. Not promoted; no outcome authorizes a later phase. Closing G1 needs a
+documentary trace of product-class membership and factor shifts per row
+from the reviewed constructors, with review, by user decision.
+
+**G1 trace (2026-11-04,** user instruction;
+[report](../reports/2026-11-04--substrate-saturation-phase0-G1-trace.md),
+`cb814b5`). Documentary, from the reviewed constructors and sources; no
+verifier run or edited; no factor inferred from the edges of `C_micro`.
+gpt-6.1-sol review: REPAIR_REQUIRED, two repairs (L6e count; F2 stated as
+necessary), applied with three clarifications by user decision
+(`8d70e58`, `d60eaba`), not re-reviewed. Resolved: L1, L2, L3, L5a,
+L4-(5.12), L6a, L6d. Open: **G1-a** L6c, L6f (asymmetric partial shifts;
+product-class membership is a definitional decision); **G1-b** L4-(5.15)
+(no factorization in the record); **G1-c** L6e (reduced generators depend
+on the presentation; in the printed one four sign patterns vanish, two at
+missing zonotope vertices). Finding, no verdict: L6e saturates, is
+literally a product walk and has three reduced generators in its printed
+presentation; it bears on (PS′) only. F2 corrected in the audit
+(`a5b7ab4`). Status unchanged: **PRELIMINARY,
+`OPEN_AFTER_ROW_SURVEY` (gap G1: G1-a, G1-b, G1-c), no confirmatory
+value, not promoted.**
+
+**G1 trace re-review (2026-11-04, recorded 2026-11-05).**
+Sealed gpt-6.1-sol [second round](../debates/2026-11-04--substrate-saturation-phase0-G1-trace-rereview-astra/informe_astra.md)
+(`d727e09`): **INSUFFICIENT_EVIDENCE** globally. Both repairs and all
+three clarifications PASS; no mandatory text repair identified.
+Ratification of L1–L3 lacks the cited primary constructor file
+`scripts/verify_weyl_dirac_gate.py`, omitted from the attachment set.
+A repeat with that file could resolve this review limitation; it would
+not by itself close G1-a/b/c or promote the audit. User «adelante»
+(2026-11-05) authorizes one bounded completion round on L1–L3, with the
+missing constructor, via `revision-ciega` (tools `ce09890`); record in
+`debates/2026-11-05--G1-L1-L3-completion-astra/`. Initial client-start
+failure archived in the sibling `-attempt1-sandbox/` folder, no report;
+retry outside the sandbox authorized and completed. Completion review:
+**PASS for L1–L3**, no mandatory repairs; identities, literal product-class
+membership, nonzero pattern amplitudes and reduced generators derived
+statically from the constructor. No code executed; no ratification of
+historical execution claims. Together with the preceding re-review this
+resolves the missing-attachment limitation, not the substantive G1 gaps.
+Audit status
+remains **PRELIMINARY, `OPEN_AFTER_ROW_SURVEY`, not promoted**.
+
+**PS′ presentation decision (2026-11-04,** user decision «si a las 3»;
+[proposal](../reports/2026-11-04--ps-prime-intrinsic-definition-proposal.md),
+Codex, `757d13f`, clarifications A1–A2 `0d85366`). Adopted as a project
+decision: the presentation-based count of reduced generators in (PS′) is
+not used as an intrinsic saturation criterion of the complete walk without
+an explicit presentation rule; counts stay attached to their stated
+presentation. Ground: L6e has two presentations of the same operator (JDW
+Eq. (6), identity step-2 coin) with 3 and 2 reduced directions. The
+stopping rationale is retrospective, not preregistered; it does not show
+that no rule can exist. Reviews: Claude (not blind, PASS, `bddd1c5`);
+DeepSeek deepseek-v4-pro sealed (PASS, no repairs, `8ddce30`). Unchanged:
+contract, (PH), G1-a/b/c, and the status **PRELIMINARY,
+`OPEN_AFTER_ROW_SURVEY`, no confirmatory value, not promoted**. No verdict
+on (PS′); no amendment.
+
+**G1-a / G1-b decisions (2026-11-04,** user decision; audit Sec. 7.6).
+G1-a: the `±a_i` clause is kept literal; L6c and L6f, whose printed
+presentations do not meet it, are recorded as *product-class membership
+not established*, without widening the class by affine centring. G1-b:
+L4-(5.15) recorded as *product-class membership not established*; no new
+factorization sought. G1 is bounded, not closed; no amendment. Status
+unchanged: **PRELIMINARY, `OPEN_AFTER_ROW_SURVEY` (G1-a, G1-b, G1-c), no
+confirmatory value, not promoted.**
+
+## 16. Hexagonal trace/scalar line — 2026-11-05
+
+Contracts: [`HEX_TRACE_SCALAR_GATE.md`](../theory/HEX_TRACE_SCALAR_GATE.md)
+(user «autorizado, adelante») and its child
+[`HEX_TRACE_M3_GATE.md`](../theory/HEX_TRACE_M3_GATE.md) (user option «2»;
+m=3, two scalar parameters, no continuation to other radii). Both are new
+contracts, not edits of the frozen HEX_SUPREMUM gate (Sec. 14). Author of
+both contracts and reports: Codex (OpenAI). **No preregistration commit:**
+each contract was written before its calculation but entered Git in the
+same commit as the result (`HEX_TRACE_M3_GATE.md` and the m=3 report both
+in `ad84207`); the m=3 report records the pre-calculation charter SHA256
+`e436cdb8…de04b68`, which the committed file still matches. This is a
+departure from the gate cycle and limits the preregistration claim to that
+hash.
+
+Not promoted, unchanged status (one reviewing house each):
+- S19 alternative scalar trace proof
+  ([report](../reports/2026-11-05--hex-trace-s19.md)): DeepSeek
+  `deepseek-v4-pro` PASS; PRELIMINARY. The promoted S19 result (Sec. 14,
+  matrix certificate) is unchanged.
+- Scalar method beyond S19
+  ([report](../reports/2026-11-05--hex-trace-scalar-method.md)):
+  `OPEN_AFTER_SCALAR_ANALYSIS`; its Sec. 3 general aligned-m residual form
+  `f = f_m^0 + Delta*h` reviewed by Claude Opus 5.5 only (PASS);
+  PRELIMINARY for general m.
+
+m=3 execution: [report](../reports/2026-11-05--hex-trace-m3.md), verifier
+`scripts/verify_hex_trace_m3.py` (5/5, exit 0, SHA256 `88a20b3d…6669998f`;
+rerun 2026-11-05 at `6aefa91`, 5/5), stdout
+`reports/2026-11-05--hex-trace-m3-verifier.txt`. On the aligned radius-three
+lattice ball (37 points of `Lambda/3`, exact hull the radius-one regular
+hexagon), D6 averaging plus double divisibility on the three mirrors and
+Newton support reduce every real scalar candidate to
+`f_3^0 + Delta*(alpha + beta*S1)`; four exact point restrictions on the
+slice `p = 2q` with positive rational weights give `0 <= -7362262528/3381753375`.
+Outcome `SCALAR_INFEASIBLE_M3`. Trace bridge (report Sec. 4, R1 repair):
+`Re Tr U~/2` of a saturating walk would be such a candidate, using the
+facet-normal rigidity of HEX_CEILING Sec. 3 Step 1.
+
+Reviews: Claude Opus 5.5
+([round 1](../debates/2026-11-05--hex-trace-m3-review-opus/),
+PASS blocks 1–5, REPAIR_REQUIRED block 6 (R1, documentary);
+[re-review](../debates/2026-11-05--hex-trace-m3-review-opus-r1/), R1
+RESOLVED, PASS); Grok `grok-4.7`
+([sealed](../debates/2026-11-05--hex-trace-m3-review-grok/), without earlier
+verdicts, PASS on all six blocks, no repairs; re-derives the reduction at
+m=3 in its block 2). Neither reviewer executed code; the verifier runs are
+the author's and this session's.
+
+**Promoted 2026-11-05 (user instruction «sí, haz el paso 1 y enséñamelo
+antes del push»):** `SCALAR_INFEASIBLE_M3`, including the two-parameter
+reduction at m=3 on which it depends. Walk-level consequence, same scope:
+no walk with s=2, scalar node, traceless isotropic linear term, support in
+the aligned 37-point hexagon and exact radius-one hull reaches
+`c_0 = r_in`; with the ceiling `c_0 <= r_in` this gives `c_0 < r_in` in that
+class. Pointwise non-attainment, no uniform separation from `r_in`. Not
+covered: the general aligned-m reduction (one house), the universal scalar
+obstruction, any m >= 4, non-aligned hexagons (including S25, separate
+report and gate), M1 class (stays OPEN, Sec. 14), novelty. Any m >= 4 or
+all-m question needs a new charter (not authorized). Previous status:
+PRELIMINARY; INDEPENDENT_REVIEW_PASS_TWO_HOUSES; PROMOTION_PENDING.
+
+**All-m charter (2026-11-05):**
+[`HEX_TRACE_ALIGNED_ALL_M_GATE.md`](../theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md),
+preregistration commit `689fd30` (SHA256 `ca2e1788…c6906`). Draft by Codex
+(OpenAI); amended by Claude Opus 5.5 (m=1,2,3 results named with their
+class intersection; Markov/Bernstein prior art, `NOVELTY = OPEN`; slice
+`p = 2q` as first route, with the caveat that the free-polynomial
+relaxation is weaker than the actual problem). Frozen by user approval
+(«haz los tres el texto está bien»). Question: are the aligned scalar
+conditions incompatible for every m >= 4? Outcomes
+`SCALAR_INFEASIBLE_ALL_ALIGNED_M_GE4` / `SCALAR_COMPATIBLE_ALIGNED_M_<m>` /
+`OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`. One analytic session, at most 90
+minutes; no radius-by-radius sweep, no floating-point search, no nonlinear
+solver; finite checks of selected m are not a certificate. Status: OPEN;
+**execution authorized** (user instruction «AÑADELO», 2026-11-05); nothing
+computed. Review needs separate authorization to send; promotion is a
+separate user decision.
+
+All-m execution (2026-11-05, `1154fad`): [report](../reports/2026-11-05--hex-trace-aligned-all-m.md),
+author Claude Code (Claude Opus 5.5); verifier
+`scripts/verify_hex_trace_aligned_all_m.py` (20/20 at `1154fad`; 21/21 after
+review repair, SHA256 `1c31653c…`).
+The slice image of invariant residuals on `p = 2q` is exactly
+`{g : deg g <= 2m-4, g'(-1/2) = 0}`; for every m >= 629 an explicit product
+of bounded cosine polynomials gives `|f| <= 1` on the whole slice, so no
+certificate supported on the vertex-direction lines (the m=3 type) can
+prove the all-m statement. Not a compatible candidate (bound off the slice
+not examined); 4 <= m <= 628 not decided. Outcome
+`OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`; unresolved step: a two-dimensional
+certificate or a globally bounded candidate; no automatic continuation.
+Sealed review (2026-11-05): OpenAI `gpt-6-astra`
+([report](../debates/2026-11-05--hex-trace-aligned-all-m-review-astra/informe_astra.md)):
+mathematics PASS (blocks 1–3), REPAIR_REQUIRED on documentation (verifier
+label C2b, D3a partly by construction, timing compliance, general-m
+walk-to-scalar bridge, two phrasings); repairs applied, outcome unchanged.
+Bounded re-review (2026-11-05): Grok `grok-4.7` (DeepSeek unavailable,
+insufficient balance; user chose Grok)
+([report](../debates/2026-11-05--hex-trace-aligned-all-m-rereview-grok/informe_grok.md)):
+**PASS**, R1–R6 resolved, no new error, no remaining mandatory repair.
+
+**Promoted 2026-11-05 (user instruction «promueve el resultado de todo
+m»):** outcome `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS` with the route closure
+it rests on: (i) on `p = 2q` the slice image of D6-invariant residuals
+supported in `H_{m-2}` is exactly `{g : deg g <= 2m-4, g'(-1/2) = 0}`;
+(ii) for every m >= 629 the explicit product construction (verifier D1–D3)
+gives `|f| <= 1` on the whole slice, so no certificate supported on the
+vertex-direction lines proves `SCALAR_INFEASIBLE_ALL_ALIGNED_M_GE4`; (iii)
+the general-m walk-to-scalar bridge of report Sec. 2 (not used in
+Secs. 3–4). Not covered: a compatible candidate (bound off the slice not
+examined), any m in 4..628, the all-m incompatibility question (stays
+OPEN), non-aligned hexagons, M1 class (OPEN, Sec. 14), novelty
+(Markov/Bernstein prior art, `NOVELTY = OPEN`). Budget compliance stays
+[UNVERIFIED] (report timing note). Neither reviewer executed code; the
+verifier runs (21/21) are the author's. Continuing the all-m question (a
+two-dimensional certificate or a globally bounded candidate) needs a new
+charter; not authorized. Previous status: PRELIMINARY;
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES (OpenAI maths PASS plus repairs, Grok
+re-review PASS); PROMOTION_PENDING.
+
+**S25 Astra review attempt:** recorded without verdict (`5512a96`,
+`SIN_DICTAMEN_CONSERVADO`; empty `run.out`, no report). Not a completed
+review. S25 itself is recorded in Sec. 17.
+
+## 17. PH refutation test on hexagon H25 — chartered 2026-11-04
+
+Recorded late (2026-11-05): this gate was chartered and executed on
+2026-11-04 without a CURRENT_STATE entry. It supersedes, for S25 only, the
+Sec. 14 sentence «S25 or any other extension needs a new charter (not
+authorized)»: that new charter is
+[`PH_REFUTATION_HEX_S25_GATE.md`](../theory/PH_REFUTATION_HEX_S25_GATE.md),
+preregistration commit `6eb50c1` (user approval «SI»).
+
+Execution (2026-11-04, `7e7bf7d`): [report](../reports/2026-11-04--ph-refutation-hex-s25.md),
+author Claude Code (Claude Opus 5.5); verifier
+`scripts/verify_ph_refutation_hex_s25_gate.py` (14/14, SHA256
+`ddf85386…`), importing the reviewed M1 and hex-ceiling verifiers read-only.
+Stage A lemma A1 removes the 18 non-vertex, non-origin points of H25 (and
+of its mirror H25′); the surviving support rotates onto the T2 minimal
+configuration (Sec. 12). Author verdicts: H25 `PROVED_FOR_S25`; (PH⇒)
+`NOT_REFUTED_ON_H25` (never `CONFIRMED`); HX2 `CONFIRMED_FOR_S25`. Scope:
+s=2, scalar node, traceless isotropic linear term, exact hull H25 or H25′,
+in `W_hex^sym` (hence `W_hex`); pointwise, no uniform gap, no proof of
+(PH), hexagonal class OPEN.
+
+Reviews: sealed Astra attempt without verdict (`5512a96`). Local review by
+Codex (OpenAI), cross-family, **not blind**, with repo access and prior
+context ([record](../debates/2026-11-05--ph-refutation-hex-s25-review-codex-local/revision_local_codex.md)):
+PASS, no mathematical repairs; it found that the original verifier does not
+check the contract Sec. 2 list of smaller contained hexagons and covered it
+with `scripts/verify_hex_s25_review.py` (13/13, SHA256 `010fa7fb…`; not
+needed for the exclusion with exact hull H25). Both verifiers rerun in this
+session at `5512a96`: 14/14 and 13/13. Status: **PRELIMINARY; one local
+non-blind cross-family review; promotion pending (user decision).**
+
+Sealed review (2026-11-05): Grok `grok-4.7` via `revision-ciega`
+(`~/herramientas` `ce09890`), base `da49c00`, no earlier verdicts attached
+([report](../debates/2026-11-05--ph-refutation-hex-s25-review-grok/informe_grok.md),
+`5a87790`): **PASS** on all five blocks, no mandatory repairs; two
+clarifications outside the gap chain (the S7/S13/S19 classification is
+checked by `verify_hex_s25_review.py`, not by the contract verifier, found
+independently of the Codex review; the extreme-layer label checks only
+cardinalities, vertex identity covered by `check_T2_minimal`). No code
+executed by the reviewer.
+
+**Promoted 2026-11-05 (user instruction «SI» to the proposal to promote
+S25):** H25 `PROVED_FOR_S25`, (PH⇒) `NOT_REFUTED_ON_H25` (never
+`CONFIRMED`), HX2 `CONFIRMED_FOR_S25`. Scope: s=2, scalar node, traceless
+isotropic linear term, `conv F = H25` or H25′, in `W_hex^sym` (hence
+`W_hex`); qualitative gap, no uniform separation from `r_in`; no evidence
+for (PH) beyond H25; hexagonal class and M1 class OPEN. The verifier runs
+are the author's and Codex's, not Grok's. Previous status: PRELIMINARY; one
+local non-blind cross-family review; promotion pending.

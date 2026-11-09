@@ -1,0 +1,959 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente el informe
+reports/2026-11-05--hex-trace-aligned-all-m.md, escrito por Claude
+(Anthropic), contra su contrato theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md, con el
+verificador scripts/verify_hex_trace_aligned_all_m.py y su salida completa.
+Se adjuntan como contexto el informe de m=3 (certificado en la recta p=2q,
+ya revisado) y el informe del método escalar (reducción general, Sec. 3).
+Nada de lo escrito por Claude es premisa: rederiva. No tienes herramientas:
+no ejecutes ni navegues y no afirmes haber ejecutado código. No propongas
+ampliar la investigación.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / FAIL:
+1. REDUCCIÓN Y RECÍPROCO (Sec. 2). ¿Es correcto que todo h D6-invariante con
+   soporte en H_(m-2) da un f = f_m^0 + Delta*h admisible (soporte en H_m,
+   f(0)=1, cosenos normales), sin usar la divisibilidad? ¿Es correcta la
+   divisibilidad re-derivada para m general?
+2. RECTA p=2q (Sec. 3). ¿Son correctas f_m^0 = T_m^2+T_m-1 y
+   Delta=(1-x)^3(1+x)/4? ¿Es exactamente la imagen de las restricciones
+   V_n = {g: grado <= 2n, g'(-1/2)=0}: inclusión por el punto fijo del giro de
+   120° y dimensión por las frecuencias máximas {0,2,3,...,2n}? Comprueba en
+   particular las órbitas de (a,0) y (a,1) y que el coeficiente superior no se
+   anula. ¿Es correcta la equivalencia con el problema en una variable
+   (F(0)=1, F''(0)=-3m^2, F''''(0)=9m^4, F(pi)=(-1)^m, F'(2pi/3)=0)?
+3. CONSTRUCCIÓN (Sec. 4). ¿Está F=A*B acotada por 1? ¿Son correctos los
+   momentos, la positividad del exceso E=(K2^2-s^2)(s^2-K1^2), la cota
+   E<36(s+3)^2, 3L^4>=243m^2, y la condición de grado para todo m>=629?
+   ¿Se cumplen F(pi)=(-1)^m y F'(2pi/3)=0 por las congruencias de K y L?
+   ¿De g=(P-f_m^0)/Delta sale un polinomio de grado <= 2m-4 en V_n?
+4. VERIFICADOR. ¿Certifica lo que el informe dice que certifica, y declara
+   bien lo que no (divisibilidad, cotas fuera de la recta, la pregunta para
+   todo m)? ¿Hay alguna comprobación vacía o que pase por construcción?
+5. ALCANCE Y DICTAMEN. ¿Es correcto que esto cierra solo los certificados
+   apoyados en las rectas de dirección de vértice, que no es un candidato
+   compatible, que 4<=m<=628 queda sin decidir y que el resultado correcto es
+   OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS? ¿Afirma el informe algo más fuerte de lo
+   que prueba? ¿Respeta el contrato (sin barrido de radios, sin búsqueda en
+   coma flotante, presupuesto, nota de tiempos)?
+
+Hasta 1500 palabras en español. Cada defecto: frase o línea exacta, por qué
+falla y qué lo cerraría. Distingue aclaración de error. Dictamen global PASS,
+REPAIR_REQUIRED o FAIL y lista de reparaciones obligatorias; si no hay
+ninguna, dilo expresamente.
+
+=== DOCUMENT 1: HEX_TRACE_ALIGNED_ALL_M_GATE.md ===
+
+# HEX_TRACE_ALIGNED_ALL_M — aligned hexagons, all radii
+
+Date: 2026-11-05. Author: Codex (OpenAI).
+Status: OPEN. Frozen by user approval («haz los tres el texto está
+bien», 2026-11-05) after three amendments by Claude Opus 5.5 (Secs. 1, 2,
+3); the freezing commit is the preregistration commit. No calculation was
+made before it. No review submission or promotion is supplied by this
+contract. New contract; no frozen parent is amended.
+
+## 1. Known, question, abandonment
+
+Known: CURRENT_STATE Sec. 16 promotes scalar infeasibility at m=3 and
+its walk-level trace bridge, on the aligned 37-point support only.
+The general aligned residual reduction in
+reports/2026-11-05--hex-trace-scalar-method.md Sec. 3 has one reviewing
+house and remains PRELIMINARY. Earlier bounded exclusions do not prove
+the all-m statement.
+
+Earlier aligned radii, each in its own promoted class:
+- m=1, support {0} U vert(H): T2 PROVED_FOR_MINIMAL_SUPPORT
+  (CURRENT_STATE Sec. 12);
+- m=2, S19: M1-B19 PROVED_FOR_S19, in W_hex^sym (Sec. 14);
+- m=3, 37 points: SCALAR_INFEASIBLE_M3 with trace bridge (Sec. 16).
+Their hypotheses are not identical. A statement about the whole aligned
+family holds only in the intersection of the classes of m=1,2,3 with the
+class of this contract, and the report must state that intersection
+explicitly.
+
+Question: for every integer m>=4, are the scalar conditions below
+incompatible? Combined with the earlier bounded results, a proof would
+exclude attainment throughout the aligned family. This would strengthen
+the substrate comparison beyond a finite list, without deciding the
+whole hexagonal class or (PH).
+
+Abandon the universal scalar obstruction at the first exact compatible
+polynomial with a global bound. That polynomial is not a unitary walk
+and does not refute walk non-attainment. Stop this attempt if the bounded
+session yields neither such a polynomial nor an all-m proof. Additional
+finite-radius exclusions alone are not a successful outcome and do not
+justify automatic continuation.
+
+## 2. Domain and logical target
+
+g1=(1,0), g2=(1/2,sqrt(3)/2), Lambda=Z*g1+Z*g2.
+For integer m>=4 use Lambda/m and the closed radius-one regular hexagon
+with vertices R^j*g1, R the 60-degree rotation. Set
+p=k.g1/m, q=k.g2/m. Integer frequency pairs obey
+max(|i|,|j|,|i+j|)<=m.
+
+Candidates f are real D6-invariant finite Fourier polynomials with this
+support, f(0)=1 and -1<=f<=1 everywhere. Their normal restrictions are
+cos(m*q) on p=0, cos(m*p) on q=0 and on p=q.
+The target is nonexistence for every m>=4, not just any bounded range.
+
+The proposed equivalent residual formulation is
+
+    f = [cos(m*p)+cos(m*q)+cos(m*(p-q))-1]/2 + Delta*h,
+    Delta = sin^2(p/2)*sin^2(q/2)*sin^2((p-q)/2),
+
+with h real D6-invariant Laurent and supported in H_(m-2).
+Any proof relying on this formulation must explicitly re-establish its
+general quantifiers; the m=3 promotion does not cover them.
+
+Prior art: restricted to a line, the question becomes an extremal
+problem for real polynomials of one variable (Markov/Bernstein type).
+Bernstein's inequality and its equality theory are prior art; classical
+extremal results may be used only as cited prior art, with the primary
+source read and cited by page, never presented as new. NOVELTY = OPEN.
+
+Walk consequence, only if proved and later reviewed and promoted:
+s=2 unitary Laurent symbols, scalar node after phase removal, traceless
+isotropic linear term, support in this aligned lattice hexagon and exact
+radius-one hull cannot attain c0=r_in. No product assumption is needed
+for this exclusion. The trace bridge must be stated and checked anew
+for the general domain. No other orientation, lattice, s or node class.
+
+## 3. Method and budget
+
+One analytic session, at most 90 minutes from the first calculation,
+with start/end and commands recorded in the report. First re-derive the
+scalar relaxation and general residual reduction. Seek a structural
+contradiction valid for arbitrary m, or a motivated exact compatible
+candidate. Named first route: generalize the m=3 certificate on the slice
+p=2q, x=cos(q). Caveat: allowing an arbitrary polynomial of the degree of
+h on the slice is a relaxation strictly weaker than the actual problem
+(the m=3 certificate used only the two-dimensional slice image of
+alpha+beta*S1). A slice argument must either use the actual slice image of
+the D6-invariant h supported in H_(m-2), or prove that the relaxation is
+already infeasible. Failure of the relaxation route does not decide the
+question. No sequential support sweep, floating-point search or
+nonlinear solver. No calculations before approval and
+the preregistration commit freezing the contract.
+
+Every computational step retained as evidence belongs in a permanent
+script scripts/verify_hex_trace_aligned_all_m.py, created before running
+it. A proof must be analytic or an exact certificate with explicitly
+universal quantifiers; checking selected m is not a universal certificate.
+A compatible candidate requires an exact global bound, not point samples.
+Check any claimed decisive argument by a second derivation or a relevant
+limit/control, including consistency with the promoted m=3 result.
+
+## 4. Outputs and closure
+
+Permanent report reports/2026-11-05--hex-trace-aligned-all-m.md (use the
+actual execution date if later), any verifier and its complete stdout.
+Outcomes:
+
+- SCALAR_INFEASIBLE_ALL_ALIGNED_M_GE4, with proof and trace consequence;
+- SCALAR_COMPATIBLE_ALIGNED_M_<m>, with exact globally bounded candidate;
+- OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS, with the unresolved step identified.
+
+All outcomes initially PRELIMINARY. Independent cross-family review
+requires separate explicit authorization to send: one initial round and
+at most one repair re-review per reviewer. The general reduction and
+trace bridge must be within its scope. Promotion is a separate user
+decision. No failed delivery counts as review.
+
+No uniform gap, exact supremum, novelty, physical value of c, general
+QCA law, proof of (PH), or closure of M1 is claimed. Non-aligned supports,
+including S25, remain separate. No further stage follows automatically.
+
+=== DOCUMENT 2: 2026-11-05--hex-trace-aligned-all-m.md ===
+
+# Aligned hexagons, all m >= 4: the vertex-slice route is closed
+
+Date: 2026-11-05. Author: Claude Code (Claude Opus 5.5).
+Contract: [`HEX_TRACE_ALIGNED_ALL_M_GATE.md`](../theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md),
+preregistration commit `689fd30`; execution authorized by the user
+(«AÑADELO», recorded in CURRENT_STATE Sec. 16 at `302b616`).
+Session: start 2026-11-05T13:01:50Z (first command), verifier final run
+13:03:18Z, end 2026-11-05T13:04:19Z, within the 90-minute budget.
+Timing note: the analytic route of Secs. 3–4 was worked out by reasoning
+in the same session immediately before the first command; no code was run
+and nothing was computed by machine before the start time.
+**Outcome: `OPEN_AFTER_ALIGNED_ALL_M_ANALYSIS`.** Status: PRELIMINARY, not
+independently reviewed, not promoted.
+
+## 0. Pre-step check
+
+Known: the m=3 certificate (CURRENT_STATE Sec. 16) uses four points on the
+vertex-direction slice `p = 2q` only. Question: does that slice route, or
+another argument, give scalar incompatibility for every m >= 4?
+Abandonment: the contract's first named route is the slice; if it cannot
+work for all m, record why and stop at OPEN.
+
+## 1. Result in one paragraph
+
+For every m >= 629 there is a D6-invariant real residual `h` supported in
+`H_(m-2)` such that `f = f_m^0 + Delta*h` satisfies `-1 <= f <= 1` **on the
+whole slice p = 2q** (hence, by invariance, on every vertex-direction line
+through the origin). So no infeasibility certificate supported on those
+lines, which includes every certificate of the m=3 type, can prove the
+all-m statement. This does not produce a globally bounded candidate: the
+bound off the slice is not examined. The all-m question stays OPEN; the
+unresolved step is a certificate that uses points off the vertex-direction
+lines, or a globally bounded candidate. Range 4 <= m <= 628 for the slice
+is not decided here (no radius-by-radius computation was made).
+
+## 2. General reduction, re-derived
+
+Domain as in the contract: `Lambda/m`, `p = k.g1/m`, `q = k.g2/m`,
+frequencies `(i,j)` with `max(|i|,|j|,|i+j|) <= m` (`H_m`). D6 acts on
+frequencies by the rotation `(i,j) -> (-j, i+j)` and the reflection
+`(i,j) -> (j,i)`; both preserve `H_m` for every m, so D6 averaging keeps
+reality, support, `f(0)=1`, the bound and the normal cosines (the three
+mirror lines p=0, q=0, p=q are permuted). It suffices to treat invariant f.
+
+- `f_m^0 = [cos mp + cos mq + cos m(p-q) - 1]/2` is invariant, supported
+  on `{0}` and the six vertices of `H_m`, and equals `cos mq` on p=0,
+  `cos mp` on q=0 and on p=q (verifier A1, symbolic m).
+- `d = f - f_m^0` vanishes on the three mirrors; invariance under the
+  reflection fixing each mirror makes its normal derivative vanish there,
+  so `(z-1)^2 (w-1)^2 (z-w)^2` divides d in the Laurent ring
+  (z = e^{ip}, w = e^{iq}; distinct irreducibles). With
+  `Delta = sin^2(p/2) sin^2(q/2) sin^2((p-q)/2) = -(z-1)^2(w-1)^2(z-w)^2/(64 z^2 w^2)`
+  (A4), `d = Delta*h` with h invariant and real.
+- Newton polygon of Delta is `H_2` (A2); Newton polytopes add under
+  products, and `H_m` is homothetic to `H_2`, so supp h lies in `H_(m-2)`.
+- Converse (used below, and independent of the divisibility step): if h is
+  invariant and supported in `H_(m-2)`, then `f_m^0 + Delta*h` is invariant,
+  supported in `H_2 + H_(m-2) = H_m` (the hex norm is subadditive), has
+  `f(0)=1` and the normal cosines, because Delta and its gradient vanish
+  on the mirrors (A3).
+
+The divisibility direction is analytic (not mechanized); the closure in
+Secs. 3–4 uses only the converse.
+
+## 3. The slice p = 2q and the image of the residuals
+
+On `p = 2q`, `x = cos q` (B1, B2):
+
+    f_m^0 = T_m(x)^2 + T_m(x) - 1 = G(mq),  G(t) = cos^2 t + cos t - 1,
+    Delta = (1-x)^3 (1+x) / 4.
+
+A frequency `(i,j)` restricts to `e^{i(2i+j)q}`, so `h|slice` is an even
+cosine polynomial of degree <= `2(m-2)`, i.e. a polynomial `g(x)` of degree
+<= `2n`, `n = m-2`.
+
+**Image.** Let V_n = { g : deg g <= 2n, g'(-1/2) = 0 }, of dimension 2n.
+
+- Image ⊂ V_n: the 60° rotation acts on `(p,q)` as `(p,q) -> (p-q,p)`; its
+  square fixes `(4π/3, 2π/3)` mod 2π, the slice point at q = 2π/3 (C1a).
+  A 120° rotation fixes no nonzero vector, so every invariant function has
+  zero gradient there; along the slice, `-sin q * g'(x) = 0` at q = 2π/3,
+  so `g'(-1/2) = 0`.
+- dim image >= 2n: the orbit of `(a,0)`, a >= 1, has top slice frequency
+  2a, and the orbit of `(a,1)`, a >= 1, has top 2a+1 (C2a, C2b, symbolic
+  in a, with positive top coefficient); `(a,1)` lies in `H_n` iff a <= n-1.
+  With the origin, the tops are `{0, 2, 3, ..., 2n}`: 2n distinct values,
+  hence 2n independent restrictions.
+
+So the image is exactly V_n for every m >= 3. Diagnostics m = 3..8 (C3:
+rank 2(m-2), all elements with g'(-1/2)=0) and the m = 3 control (C4: image
+= span{1, 4x^2+4x-2}, the promoted two-parameter form) agree; they are
+consistency checks, not the proof.
+
+**Slice problem.** Writing `P = f_m^0 + Delta*g` and `F(q) = P(cos q)`, a
+residual exists with `|f| <= 1` on the slice iff there is an even cosine
+polynomial F of degree <= 2m with `|F| <= 1` and
+
+    F(0)=1, F''(0) = -3m^2, F''''(0) = 9m^4,  F(π) = (-1)^m,  F'(2π/3) = 0.
+
+The first three say `F - G(mq) = O(q^6)` (the triple zero of Delta at x=1);
+`F(π) = f_m^0(-1) = (-1)^m` is the simple zero at x = -1; the last is
+`g'(-1/2) = 0`, because `f_m^0` and Delta both have zero x-derivative at
+x = -1/2 and `Delta(-1/2) != 0` (C1b). Then `g = (P - f_m^0)/Delta` is a
+polynomial of degree <= 2m-4 in V_n, i.e. the restriction of an admissible h.
+
+## 4. Explicit slice solution for every m >= 629
+
+Let `s^2 = 3m^2` (s = sqrt3 m is never an integer). Take K ≡ 0 mod 3 and
+K ≡ m mod 2 (K ≡ 0 or 3 mod 6), `K1` the largest such with `K1^2 < s^2`,
+`K2 = K1 + 6`; `L = 6*ceil(sqrt(m)/2)`. Put
+
+    A(q) = λ cos(K1 q) + (1-λ) cos(K2 q),  λ = (K2^2 - s^2)/(K2^2 - K1^2),
+    H(q) = 1 - (1/2)(1 - cos Lq)^2,
+    B(q) = α + (1-α) H(q),  1-α = (λK1^4 + (1-λ)K2^4 - s^4) / (3 L^4),
+    F = A*B.
+
+- Bound: |A| <= 1 (convex combination of cosines), H takes values in
+  [-1, 1], |B| <= 1 if α ∈ [0,1]; so |F| <= 1 everywhere.
+- Taylor: A has `μ2 = s^2`, `μ4 = λK1^4 + (1-λ)K2^4`; B has `μ2 = 0`,
+  `μ4 = -3(1-α)L^4`. So F has `μ2 = 3m^2`, `μ4 = 9m^4`, matching G(mq)
+  (D2 by series, D3a by closed form).
+- α ∈ [0,1]: the excess `E = λK1^4 + (1-λ)K2^4 - s^4 = (K2^2 - s^2)(s^2 - K1^2)`
+  is positive (strict convexity) and at most `(3(K1+K2))^2 < 36(s+3)^2`;
+  `3L^4 >= 243 m^2` exceeds this whenever `135m^2 - 216 sqrt3 m - 324 > 0`,
+  true for m >= 4 (D1b).
+- Degree: `K2 + 2L < sqrt3 m + 6 + 6 sqrt m + 12 <= 2m` whenever
+  `(2 - sqrt3) y^2 - 6y - 18 >= 0`, y = sqrt m, true for m >= 629 (D1a).
+- `F(π) = (-1)^m` (K ≡ m mod 2, L even) and `F'(2π/3) = 0` (K, L ≡ 0 mod 3).
+
+Instances m = 629, 630, 1000 are checked exactly (D2, D3a); a negative
+control without B fails the q^4 condition (D3b). At m = 3 the construction
+does not apply (D3c), consistent with the promoted m=3 certificate; the
+check only says the construction is unavailable there, not that the slice
+is infeasible for 4 <= m <= 628.
+
+Second derivation of the key point (contract Sec. 3): in the scaled
+variable t = mq the slice conditions approach those of `cos(sqrt3 t)`, a
+bounded function of exponential type sqrt3 < 2 that meets them; the
+explicit construction is the finite-degree version of this limit, so the
+closure is expected, not an artefact of the construction.
+
+## 5. What is and is not established
+
+- Established here (PRELIMINARY, unreviewed): for m >= 629 the
+  vertex-direction lines carry no infeasibility certificate; in particular
+  the m=3 certificate pattern cannot be extended to all m.
+- Not established: global boundedness of any candidate (off-slice values of
+  `f_m^0 + Delta*h` are not controlled), so this is **not**
+  `SCALAR_COMPATIBLE_ALIGNED_M_<m>`; nothing about walks; nothing for
+  4 <= m <= 628; nothing about other lines or 2D certificates.
+- Unresolved step for the all-m question: a certificate using points off
+  the vertex-direction lines (a genuinely two-dimensional measure), or an
+  exact globally bounded candidate. The contract allows no automatic
+  continuation; either needs a new decision.
+- Prior art: the slice problem is a one-variable extremal problem of
+  Markov/Bernstein type; the construction uses only elementary facts
+  (convex combinations and products of bounded functions). No novelty
+  claim; `NOVELTY = OPEN`. No classical theorem was cited, so none needed
+  a page reference.
+
+## 6. Provenance
+
+Verifier `scripts/verify_hex_trace_aligned_all_m.py`, created before its
+first run; 20 exact checks; SHA-256
+`f8da0f94f61f4dcd56f4f0ec5086ce96dd440019cfeb20b0ef5f6a3aa19ecdf9`.
+Command: `python3 -B scripts/verify_hex_trace_aligned_all_m.py` (about 2 s,
+sympy 1.14.0). Stdout: `reports/2026-11-05--hex-trace-aligned-all-m-verifier.txt`.
+Commands run in the session: the verifier, three times (first run 17/17
+before the second-route checks D3 were added; then 20/20, saved; a rerun
+after registering the script, 20/20, bytes unchanged). No
+floating-point search, no nonlinear solver, no radius sweep. Not
+mechanized: the divisibility step of Sec. 2 and the interpretation of the
+inequalities D1 as valid for all m >= 629 (monotonicity beyond the vertex
+is checked, the algebra from the construction to D1 is in Sec. 4).
+Session end: 2026-11-05T13:04:19Z.
+
+=== DOCUMENT 3: verify_hex_trace_aligned_all_m.py ===
+
+"""HEX_TRACE_ALIGNED_ALL_M: exact checks for the all-m analysis.
+
+Contract: theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md (preregistration 689fd30).
+Report:   reports/2026-11-05--hex-trace-aligned-all-m.md
+Run from the repo root:  python3 -B scripts/verify_hex_trace_aligned_all_m.py
+
+What it checks (exact SymPy / integer arithmetic, no floating point in any
+certified quantity, fail-closed):
+  A. general-m interpolant f0 and residual factor Delta (symbolic m);
+  B. the vertex-direction slice p=2q: f0 = T_m^2+T_m-1, Delta=(1-x)^3(1+x)/4;
+  C. the slice image of D6-invariant residuals h (support H_{m-2}):
+     C1 K-point constraint g'(-1/2)=0 (symmetry), C2 triangular top
+     frequencies {0,2,3,...,2n} for symbolic orbit parameter a, C3 exact
+     rank diagnostics for m=3..8 (consistency only, not a universal proof),
+     C4 m=3 control (image span{1, 4x^2+4x-2});
+  D. slice-route closure: for every m>=629 an explicit slice polynomial
+     F=A*B, bounded by 1 by construction, meets every slice condition.
+     D1 symbolic inequalities for all m>=629, D2 explicit instances
+     m=629, 630, 1000 (Taylor to q^4, F(pi), F'(2pi/3), lambda, alpha, degree),
+     D3 second route by closed-form moments, negative control, m=3 consistency.
+
+What it does NOT certify: the universal divisibility (R) of the general
+reduction (analytic, report Sec. 2), boundedness of any candidate off the
+slice, or any statement about the all-m question itself, which stays OPEN.
+"""
+from math import isqrt
+
+import sympy as sp
+
+p, q, x, m, a, y = sp.symbols('p q x m a y', real=True)
+CHECKS = []
+
+
+def check(label, cond):
+    ok = bool(cond)
+    CHECKS.append(ok)
+    print(f"[{'PASS' if ok else 'FAIL'}] {label}")
+    return ok
+
+
+def zero(e):
+    return sp.simplify(sp.expand(sp.expand_trig(e)).rewrite(sp.exp)) == 0
+
+
+# ---------------- A. interpolant and residual factor -------------------
+f0 = (sp.cos(m*p) + sp.cos(m*q) + sp.cos(m*(p - q)) - 1) / 2
+check('A1 f0 = cos(mq) on p=0, cos(mp) on q=0 and on p=q (symbolic m)',
+      zero(f0.subs(p, 0) - sp.cos(m*q)) and zero(f0.subs(q, 0) - sp.cos(m*p))
+      and zero(f0.subs(q, p) - sp.cos(m*p)) and f0.subs({p: 0, q: 0}) == 1)
+
+Delta = sp.sin(p/2)**2 * sp.sin(q/2)**2 * sp.sin((p - q)/2)**2
+z, w = sp.symbols('z w')
+DeltaL = -(z - 1)**2 * (w - 1)**2 * (z - w)**2 / (64 * z**2 * w**2)
+num = sp.Poly(sp.expand((z - 1)**2 * (w - 1)**2 * (z - w)**2), z, w)
+supp = {(i - 2, j - 2): c for (i, j), c in num.terms()}   # divide by z^2 w^2
+hexn = lambda i, j: max(abs(i), abs(j), abs(i + j))
+verts2 = {(2, 0), (0, 2), (-2, 2), (-2, 0), (0, -2), (2, -2)}
+check('A2 Delta Laurent support inside H_2, six vertices present (Newton polygon H_2)',
+      all(hexn(i, j) <= 2 for (i, j) in supp) and verts2 <= set(supp)
+      and all(-supp[v] / 64 == sp.Rational(-1, 64) for v in verts2))
+check('A3 Delta and its gradient vanish on p=0, q=0, p=q',
+      all(zero(e) for e in [Delta.subs(p, 0), sp.diff(Delta, p).subs(p, 0),
+                            Delta.subs(q, 0), sp.diff(Delta, q).subs(q, 0),
+                            Delta.subs(q, p), (sp.diff(Delta, p) + sp.diff(Delta, q)).subs(q, p),
+                            sp.diff(Delta, p).subs(q, p)]))
+check('A4 Laurent form of Delta equals the trigonometric form',
+      zero(DeltaL.subs({z: sp.exp(sp.I*p), w: sp.exp(sp.I*q)}) - Delta))
+
+# ---------------- B. vertex-direction slice p=2q -----------------------
+F0q = sp.cos(m*q)**2 + sp.cos(m*q) - 1
+check('B1 f0(2q,q) = cos(mq)^2 + cos(mq) - 1 (symbolic m)',
+      zero(f0.subs(p, 2*q) - F0q))
+Dslice = sp.expand_trig(Delta.subs(p, 2*q))
+Dx = (1 - x)**3 * (1 + x) / 4
+check('B2 Delta(2q,q) = (1-x)^3 (1+x)/4 with x = cos q',
+      zero(Dslice - Dx.subs(x, sp.cos(q))))
+
+# ---------------- C. slice image of invariant residuals ----------------
+# rotation by 60 degrees on frequencies (i,j)->(-j,i+j); dual on (p,q): (p,q)->(p-q,p)
+rotk = lambda P: (P[0] - P[1], P[0])
+kstar = (4*sp.pi/3, 2*sp.pi/3)
+r2 = rotk(rotk(kstar))
+check('C1a 120-degree rotation fixes the slice point q=2pi/3, i.e. (4pi/3,2pi/3), mod 2pi',
+      all(sp.simplify((r2[i] - kstar[i]) / (2*sp.pi)).is_integer for i in range(2)))
+dDx = sp.diff(Dx, x).subs(x, sp.Rational(-1, 2))
+k = sp.symbols('k', integer=True, nonnegative=True)
+dF0 = sp.diff(F0q, q)
+okres = True
+for rres in range(3):
+    val = sp.simplify(dF0.subs(m, 3*k + rres).subs(q, 2*sp.pi/3))
+    okres &= zero(val)
+check('C1b Delta\'(-1/2)=0, Delta(-1/2)!=0, and d/dq f0(2q,q)=0 at q=2pi/3 for m=0,1,2 mod 3',
+      dDx == 0 and Dx.subs(x, sp.Rational(-1, 2)) != 0 and okres)
+
+
+def rot(P):
+    return (-P[1], P[0] + P[1])
+
+
+def orbit(P):
+    out = set()
+    for _ in range(6):
+        out.add(P)
+        out.add((P[1], P[0]))          # reflection (i,j)->(j,i)
+        P = rot(P)
+    return out
+
+
+def sym_orbit(i0, j0):
+    pts, P = [], (i0, j0)
+    for _ in range(6):
+        pts += [P, (P[1], P[0])]
+        P = (-P[1], P[0] + P[1])
+    return pts
+
+
+def tops_ok(i0, j0, top, amin):
+    """2i+j over the symbolic orbit is <= top for a>=amin (linear in a)."""
+    for (i, j) in sym_orbit(i0, j0):
+        d = sp.expand(top - (2*i + j))
+        if not (d.subs(a, amin) >= 0 and sp.diff(d, a) >= 0):
+            return False
+    return True
+
+
+check('C2a orbit of (a,0), a>=1: slice frequencies <= 2a, attained',
+      tops_ok(a, 0, 2*a, 1) and any(sp.expand(2*i + j - 2*a) == 0 for i, j in sym_orbit(a, 0)))
+check('C2b orbit of (a,1), a>=1: slice frequencies <= 2a+1, attained; (a,1) in H_n iff a<=n-1',
+      tops_ok(a, 1, 2*a + 1, 1) and any(sp.expand(2*i + j - 2*a - 1) == 0 for i, j in sym_orbit(a, 1)))
+
+
+def slice_image(n):
+    """Coefficient vectors (in cos(jq), j=0..2n) of slice restrictions of orbit sums in H_n."""
+    pts = [(i, j) for i in range(-n, n + 1) for j in range(-n, n + 1) if hexn(i, j) <= n]
+    seen, rows = set(), []
+    for P in pts:
+        o = frozenset(orbit(P))
+        if o in seen:
+            continue
+        seen.add(o)
+        v = [0] * (2*n + 1)
+        for (i, j) in o:
+            v[abs(2*i + j)] += 1
+        rows.append(v)
+    return sp.Matrix(rows)
+
+
+def cheb_to_x(vec):
+    return sp.expand(sum(c * sp.chebyshevt(j, x) for j, c in enumerate(vec)))
+
+
+okrank, okcon = True, True
+for mm in range(3, 9):
+    n = mm - 2
+    M = slice_image(n)
+    okrank &= (M.rank() == 2*n)
+    for r in range(M.rows):
+        g = cheb_to_x(list(M.row(r)))
+        okcon &= (sp.diff(g, x).subs(x, sp.Rational(-1, 2)) == 0)
+check('C3 diagnostics m=3..8: slice image has rank 2(m-2) and every element has g\'(-1/2)=0',
+      okrank and okcon)
+M3 = slice_image(1)
+coef = lambda g: [sp.Poly(g, x).coeff_monomial(x**e) for e in range(3)]
+rows3 = [coef(cheb_to_x(list(M3.row(r)))) for r in range(M3.rows)]
+check('C4 m=3 control: slice image spanned by 1 and 4x^2+4x-2 (the promoted m=3 form)',
+      sp.Matrix(rows3).rank() == 2
+      and sp.Matrix(rows3 + [[1, 0, 0], [-2, 4, 4]]).rank() == 2)
+
+# ---------------- D. slice-route closure for m>=629 ---------------------
+S3 = sp.sqrt(3)
+# D1: for m>=629 with L=6*ceil(sqrt(m)/2), K2<sqrt3 m+6:
+#   degree  sqrt3*m + 6 + 2L <= 2m   follows from (2-sqrt3) y^2 - 6 y - 18 >= 0, y = sqrt(m)
+#   deficit 3L^4 >= 243 m^2 >= excess  follows from 135 m^2 - 216 sqrt3 m - 324 >= 0
+Qdeg = (2 - S3)*y**2 - 6*y - 18
+vertex = sp.Rational(3, 1) / (2 - S3)
+check('D1a (2-sqrt3)y^2-6y-18 > 0 at y=sqrt(629), and y=sqrt(629) beyond the vertex (increasing)',
+      sp.simplify(Qdeg.subs(y, sp.sqrt(629))) > 0 and sp.sqrt(629) > vertex)
+Qexc = 135*m**2 - 216*S3*m - 324
+check('D1b 135m^2-216sqrt3 m-324 > 0 for m>=4 (positive at 4, increasing beyond vertex)',
+      sp.simplify(Qexc.subs(m, 4)) > 0 and 4 > 216*S3/270)
+
+
+def construction(mm):
+    c = 0 if mm % 2 == 0 else 3
+    t = 3*mm*mm
+    K1 = isqrt(t)
+    while K1 % 6 != c or K1*K1 >= t:
+        K1 -= 1
+    K2 = K1 + 6
+    tt = 1
+    while 4*tt*tt < mm:          # tt = ceil(sqrt(m)/2), exact
+        tt += 1
+    L = 6*tt
+    s2 = sp.Integer(t)
+    lam = (K2**2 - s2) / (K2**2 - K1**2)
+    Mq = lam*K1**4 + (1 - lam)*K2**4
+    one_minus_alpha = (Mq - s2**2) / (3*sp.Integer(L)**4)
+    alpha = 1 - one_minus_alpha
+    H = 1 - sp.Rational(1, 2)*(1 - sp.cos(L*q))**2
+    A = lam*sp.cos(K1*q) + (1 - lam)*sp.cos(K2*q)
+    B = alpha + (1 - alpha)*H
+    return dict(K1=K1, K2=K2, L=L, lam=lam, alpha=alpha, A=A, B=B)
+
+
+for mm in (629, 630, 1000):
+    C = construction(mm)
+    F = C['A'] * C['B']
+    F0 = sp.cos(mm*q)**2 + sp.cos(mm*q) - 1
+    ser = sp.series(F - F0, q, 0, 6).removeO()
+    ok = (sp.simplify(ser) == 0
+          and 0 <= C['lam'] <= 1 and 0 <= C['alpha'] <= 1
+          and C['K2'] + 2*C['L'] <= 2*mm
+          and C['K1'] % 3 == 0 and C['K1'] % 2 == mm % 2 and C['L'] % 6 == 0
+          and sp.simplify(F.subs(q, sp.pi) - (-1)**mm) == 0
+          and sp.simplify(sp.diff(F, q).subs(q, 2*sp.pi/3)) == 0)
+    check(f"D2 m={mm}: K1={C['K1']}, K2={C['K2']}, L={C['L']}; F-F0=O(q^6), F(pi)=(-1)^m, "
+          f"F'(2pi/3)=0, lambda,alpha in [0,1], degree K2+2L<=2m", ok)
+
+# D3: second route (closed-form moments, no series) and a negative control.
+okm = True
+for mm in (629, 630, 1000):
+    C = construction(mm)
+    K1, K2, L, lam, alpha = C['K1'], C['K2'], C['L'], C['lam'], C['alpha']
+    mu2 = lam*K1**2 + (1 - lam)*K2**2
+    mu4 = lam*K1**4 + (1 - lam)*K2**4 - 3*(1 - alpha)*sp.Integer(L)**4
+    okm &= sp.simplify(mu2 - 3*mm**2) == 0 and sp.simplify(mu4 - 9*mm**4) == 0
+check('D3a closed-form moments: mu2 = 3m^2 = -F0\'\'(0), mu4 = 9m^4 = F0\'\'\'\'(0) (m=629,630,1000)', okm)
+C = construction(629)
+Fbad = C['A']                                    # drop the B factor (alpha=1)
+F0b = sp.cos(629*q)**2 + sp.cos(629*q) - 1
+check('D3b negative control: without B the q^4 condition fails (excess > 0)',
+      sp.simplify(sp.series(Fbad - F0b, q, 0, 6).removeO()) != 0)
+mm = 3
+check('D3c m=3: construction degree bound fails (K2+2L>2m), consistent with SCALAR_INFEASIBLE_M3',
+      construction(mm)['K2'] + 2*construction(mm)['L'] > 2*mm)
+
+print(f"{sum(CHECKS)}/{len(CHECKS)} checks passed")
+raise SystemExit(0 if all(CHECKS) else 1)
+
+=== DOCUMENT 4: 2026-11-05--hex-trace-aligned-all-m-verifier.txt ===
+
+[PASS] A1 f0 = cos(mq) on p=0, cos(mp) on q=0 and on p=q (symbolic m)
+[PASS] A2 Delta Laurent support inside H_2, six vertices present (Newton polygon H_2)
+[PASS] A3 Delta and its gradient vanish on p=0, q=0, p=q
+[PASS] A4 Laurent form of Delta equals the trigonometric form
+[PASS] B1 f0(2q,q) = cos(mq)^2 + cos(mq) - 1 (symbolic m)
+[PASS] B2 Delta(2q,q) = (1-x)^3 (1+x)/4 with x = cos q
+[PASS] C1a 120-degree rotation fixes the slice point q=2pi/3, i.e. (4pi/3,2pi/3), mod 2pi
+[PASS] C1b Delta'(-1/2)=0, Delta(-1/2)!=0, and d/dq f0(2q,q)=0 at q=2pi/3 for m=0,1,2 mod 3
+[PASS] C2a orbit of (a,0), a>=1: slice frequencies <= 2a, attained
+[PASS] C2b orbit of (a,1), a>=1: slice frequencies <= 2a+1, attained; (a,1) in H_n iff a<=n-1
+[PASS] C3 diagnostics m=3..8: slice image has rank 2(m-2) and every element has g'(-1/2)=0
+[PASS] C4 m=3 control: slice image spanned by 1 and 4x^2+4x-2 (the promoted m=3 form)
+[PASS] D1a (2-sqrt3)y^2-6y-18 > 0 at y=sqrt(629), and y=sqrt(629) beyond the vertex (increasing)
+[PASS] D1b 135m^2-216sqrt3 m-324 > 0 for m>=4 (positive at 4, increasing beyond vertex)
+[PASS] D2 m=629: K1=1089, K2=1095, L=78; F-F0=O(q^6), F(pi)=(-1)^m, F'(2pi/3)=0, lambda,alpha in [0,1], degree K2+2L<=2m
+[PASS] D2 m=630: K1=1086, K2=1092, L=78; F-F0=O(q^6), F(pi)=(-1)^m, F'(2pi/3)=0, lambda,alpha in [0,1], degree K2+2L<=2m
+[PASS] D2 m=1000: K1=1728, K2=1734, L=96; F-F0=O(q^6), F(pi)=(-1)^m, F'(2pi/3)=0, lambda,alpha in [0,1], degree K2+2L<=2m
+[PASS] D3a closed-form moments: mu2 = 3m^2 = -F0''(0), mu4 = 9m^4 = F0''''(0) (m=629,630,1000)
+[PASS] D3b negative control: without B the q^4 condition fails (excess > 0)
+[PASS] D3c m=3: construction degree bound fails (K2+2L>2m), consistent with SCALAR_INFEASIBLE_M3
+20/20 checks passed
+
+=== DOCUMENT 5: 2026-11-05--hex-trace-m3.md ===
+
+# m=3: exact scalar incompatibility on the aligned 37-point hexagon
+
+Date: 2026-11-05. Author: Codex (OpenAI).
+Contract: theory/HEX_TRACE_M3_GATE.md, recorded before computation,
+authorized by the user choosing option «2». No Git preregistration commit
+is claimed. Status: PRELIMINARY; INDEPENDENT_REVIEW_PASS_TWO_HOUSES;
+PROMOTION_PENDING. Outcome: SCALAR_INFEASIBLE_M3.
+Claude Opus 5.5: first round PASS on blocks 1--5, REPAIR_REQUIRED on
+block 6 (documentary R1, explicit trace bridge); bounded re-review PASS,
+R1 RESOLVED, no mandatory obligations remaining. The reviewer did not
+execute code. This is the new calculation's own review, distinct from
+the preceding general reduction's PASS. Certificate and script unchanged.
+Review folders: debates/2026-11-05--hex-trace-m3-review-opus/ and
+debates/2026-11-05--hex-trace-m3-review-opus-r1/. After the re-review,
+only status metadata was updated; the reviewed R1 paragraph is unchanged.
+Second model family: Grok grok-4.7 (xAI), PASS on all six blocks,
+no mandatory repairs, no code execution claimed. Sealed mathematical
+dossier and unchanged verifier submitted without earlier verdicts:
+debates/2026-11-05--hex-trace-m3-review-grok/.
+This status update and the second review postdate publication checkpoint
+ad842076a9e76c6ffccf31e7882438907ea46659; the mathematics is unchanged.
+
+## 1. Domain and reduction
+
+The lattice is Lambda/3 after physical maximum-radius-one normalization,
+g1=(1,0), g2=(1/2,sqrt(3)/2). In p=k.g1/3, q=k.g2/3 the frequency set is
+
+    {(i,j) in Z^2: max(|i|,|j|,|i+j|)<=3}.
+
+The permanent verifier counts 37 points. The exact hull is the regular
+hexagon with vertices R^j*g1 and inradius sqrt(3)/2. This is the aligned
+radius-three lattice ball, not every possible hexagon or orientation.
+
+The reviewed reduction (reports/2026-11-05--hex-trace-scalar-method.md
+Sec. 3; Claude Opus 5.5, PASS with no mandatory repairs) gives, after
+D6 averaging, every possible scalar candidate as
+
+    f = f0 + Delta*(alpha+beta*S1), alpha,beta real,
+    f0 = [cos(3p)+cos(3q)+cos(3(p-q))-1]/2,
+    Delta = sin^2(p/2)*sin^2(q/2)*sin^2((p-q)/2),
+    S1 = 2[cos p+cos q+cos(p-q)].
+
+Indeed the residual support has radius one, whose only D6 orbits are the
+origin and the six-point ring. Averaging preserves bounds, support, f(0)=1
+and normal cosines, so excluding symmetric candidates excludes arbitrary
+real candidates with these scalar conditions on this aligned support.
+We seek -1<=f<=1 globally; point samples alone cannot prove feasibility,
+but an incompatible finite subset proves impossibility.
+
+## 2. Four exact point restrictions suffice
+
+Use only p=2q, x=cos(q) in [-1,1]. Then
+
+    f0(x) = [T6(x)+2*T3(x)-1]/2,
+    Delta(x) = (1-x^2)*(1-x)^2/4,
+    S1(x) = 4*x^2+4*x-2,
+
+where Tj is the Chebyshev polynomial defined by cos(jq)=Tj(cos q).
+These are ordinary identities, not a boundedness approximation.
+
+For Delta>0, the upper and lower global bounds require respectively
+
+    alpha+S1*beta <= (1-f0)/Delta,
+    -alpha-S1*beta <= (1+f0)/Delta.
+
+Four realizable points give these exact inequalities:
+
+| x=cos(q), p=2q | Bound used | Necessary inequality |
+|---|---|---|
+| 5/16 | upper | alpha-(23/64)*beta <= 204997/10164 |
+| -1/2 | lower | -alpha+3*beta <= 128/27 |
+| 3/8 | upper | alpha+(1/16)*beta <= 6811/275 |
+| 13/16 | lower | -alpha-(249/64)*beta <= -7475/108 |
+
+Multiply the first two inequalities by 64/169 each, and the last two by
+64/245 each. All four multipliers are strictly positive. In the sum,
+the alpha terms cancel; the first pair contributes +beta and the second
+pair contributes -beta. The right side is exactly
+
+    (64/169)*(204997/10164+128/27)
+    + (64/245)*(6811/275-7475/108)
+    = -7362262528/3381753375 < 0.
+
+Thus the global bounds imply 0<=-7362262528/3381753375, a contradiction.
+No real alpha,beta can satisfy even these four restrictions.
+
+## 3. Computational provenance and second check
+
+Permanent script: scripts/verify_hex_trace_m3.py.
+Command: `python3 -B scripts/verify_hex_trace_m3.py`.
+No floating-point mathematical calculation, numerical optimization or
+external solver is used. Floating-point elapsed time is diagnostic only.
+
+Discovery schedule, fully retained in the script: rational unit phases
+from eight stereographic parameters on each circle, plus 33 rational x
+values on p=2q. Points with Delta=0 do not produce parameter restrictions.
+There are 146 retained inequalities, below the charter's limit of 256.
+Exact rational elimination of alpha produces bounds on beta. The strongest
+opposite bounds give the displayed four-row certificate. The elimination
+took about 0.04 s in the first run, below 300 s; the final saved stdout
+records its own measured time. No later support or parameter search occurs.
+
+Second route: the verifier re-evaluates each certificate point by direct
+Laurent substitution z=exp(ip), w=exp(iq), with
+w=x+i*sqrt(1-x^2), z=w^2, instead of the Chebyshev slice evaluator.
+It checks f0, Delta and S1 against the values used in the certificate,
+and checks the positive weighted sum exactly. This is a local algebraic
+cross-check, not an independent review.
+
+The five fail-closed checks cover the support/residual counts, point
+budget/positive Delta, timing bound, independent Laurent evaluations,
+and exact nonnegative combination yielding a strictly negative constant.
+Success requires exit 0 and 5/5 checks, not the outcome label alone.
+Saved stdout: reports/2026-11-05--hex-trace-m3-verifier.txt.
+Final run: exit 0, 5/5 checks, 146 inequalities, about 0.035 s for
+generation/elimination. Verifier SHA256:
+`88a20b3d99b2164b91557d48b69fb113e3e3e5adf7662c088347a0146669998f`.
+Pre-calculation charter SHA256:
+`e436cdb879e7b9e1ede963b4d170269d3d340c69f9c5b0a89bcbc6417de04b68`.
+
+## 4. Conclusion and stop
+
+There is no real scalar trigonometric polynomial supported in this
+37-point hexagon with global bounds [-1,1], value 1 at zero and the
+normal cosines forced by saturation. This is stronger than a failed
+parameter search: it has the explicit finite rational certificate above.
+
+Consequently, using the existing s=2 trace/averaging/rigidity bridge,
+no declared walk with support inside this aligned 37-point hexagon and
+exact hull that radius-one hexagon saturates c0=r_in. This consequence
+retains the scalar node, traceless isotropic linear term and s=2
+hypotheses. It is pointwise non-attainment, not a uniform gap estimate.
+
+**Explicit trace bridge (R1 repair).** Let such a walk U have
+U(0)=exp(-i*phi)*I and suppose c0=r=sqrt(3)/2. Define
+U_tilde=exp(i*phi)*U, so U_tilde(0)=I; the phase does not change F,
+unitarity or the phase-removed linear generator. Put
+
+    f_U(k) = Re Tr U_tilde(k)/2.
+
+The two eigenvalues of a unitary 2x2 matrix have modulus one, so
+-1<=f_U<=1 and f_U(0)=1. Taking the real part can add reflected
+frequencies: its support lies in F union (-F), still inside the centrally
+symmetric 37-point set. By HEX_CEILING report
+`reports/2026-11-01--hex-ceiling.md`, Sec. 3 Step 1, saturation on each
+facet normal n gives
+
+    U_tilde(t*n) = exp(-i*r*t)*P_+(n) + exp(i*r*t)*P_-(n).
+
+That rigidity uses the finite commensurate frequency grid, unitarity,
+the scalar node and the traceless isotropic generator; it does not
+require minimal support. Here the grid has degree N=3. Since s=2 and
+c0>0, the projectors have rank one, so their traces are both 1 and
+f_U(t*n)=cos(r*t). In the p,q coordinates these are exactly the normal
+cosines of Sec. 1. The D6 average of f_U preserves all these properties
+and remains supported inside the 37-point set, producing a candidate of
+the excluded two-parameter form. This is the contradiction at walk
+level. Together with the existing ceiling c0<=r_in it gives c0<r_in in
+the stated class and exact-hull normalization.
+
+This test ends here. It does not establish the universal scalar
+obstruction, arbitrary-radius/nonaligned hexagonal non-attainment,
+or literature novelty. Larger radii are not computed or authorized by
+this result. The outcome remains preliminary, with completed reviews
+from two model families and promotion pending; no promotion or change
+to CURRENT_STATE is made.
+
+=== DOCUMENT 6: 2026-11-05--hex-trace-scalar-method.md ===
+
+# Scalar method beyond S19: bounded analytic audit
+
+Date: 2026-11-05. Author: Codex (OpenAI).
+Contract: theory/HEX_TRACE_SCALAR_GATE.md, written before this analysis.
+Status: PRELIMINARY; INDEPENDENT_REVIEW_PASS_ONE_HOUSE; not promoted.
+Claude Opus 5.5: PASS on all six blocks, no mandatory repairs, sealed
+review completed 2026-11-05. No execution of the script by the reviewer.
+Review: `debates/2026-11-05--hex-trace-scalar-review-opus-network/`.
+Only this status header was updated after review; the mathematical body
+and the verifier are unchanged from the submitted snapshot.
+Outcome: OPEN_AFTER_SCALAR_ANALYSIS. No general incompatibility theorem
+and no compatible scalar polynomial have been obtained in this session.
+
+## 1. The exact question
+
+The S19 scalar obstruction is support-specific: D6 invariance leaves four
+orbit coefficients, normal rigidity leaves one, two point bounds fix it,
+and a third point contradicts the remaining bound. Larger supports have
+more orbits; the uniqueness step is not inherited.
+
+For H_v with v=a*g1+b*g2 nonzero, let L=|v|, normalize the frequency
+lattice to Lambda/L, and write r=sqrt(3)/2. Does a real finite Fourier
+polynomial f with spectrum inside H_v/L satisfy
+
+    -1<=f(k)<=1, f(0)=1,
+    f(t*n_j)=cos(r*t) on all six facet normals?
+
+One may impose evenness and C6 invariance by averaging. D6 averaging
+inside the same lattice is available for S19; for a general oriented
+lattice hexagon a geometric reflection need not preserve Lambda.
+Do not assume that stronger average in the universal question.
+
+If no such polynomial exists for every v, the trace argument excludes
+saturation for the declared walks. If one exists, these scalar conditions
+are insufficient. It would not yet produce a unitary 2x2 symbol, a product
+walk, or a counterexample to the saturation claim itself.
+
+## 2. Hessian and transverse derivative: necessary conditions
+
+These statements require only real boundedness, normal cosines and the
+finite frequency support; not the full amplitude matrices.
+
+First, the Hessian of f at zero is fixed. On three distinct facet-normal
+lines its quadratic form is -r^2. A symmetric 2x2 matrix whose quadratic
+form agrees with -r^2 I on three distinct unoriented lines equals -r^2 I:
+their difference is a homogeneous quadratic vanishing on three lines,
+so it is zero. Thus D^2 f(0)=-r^2 I. This does not require a separate
+scalar isotropy assumption.
+
+Fix a facet normal n and its unit tangent e. Put
+g(t)=partial_e f(t*n). Then
+
+    g(t)=0 for every real t.                                      (T)
+
+Here is a finite-degree proof that applies to all lattice H_v. For the
+facet joining v to Rv, set D=a^2+ab+b^2 and d=gcd(|a|,|b|). In lattice
+coordinates its edge vector is (-a-b,a). A frequency h=(m*g1+l*g2)/L
+has normalized projection
+
+    (h.n)/r = [a*m+(a+b)*l]/D.
+
+Therefore all normal frequencies are integer multiples of
+delta=r*d/D, with maximal degree N=D/d (a positive integer). Rotation
+gives the same property on the other facets. The proof needs only a
+commensurate grid, not that every layer is populated.
+
+Use theta=delta*t and write G(theta)=g(theta/delta), a real trigonometric
+polynomial of degree at most N. At theta_j=j*pi/N, j=0,...,2N-1,
+f((theta_j/delta)*n)=(-1)^j. Boundedness makes each such point a global
+maximum or minimum in the full k-plane, so its transverse derivative is
+zero: G(theta_j)=0. Multiplying G by z^N, z=exp(i*theta), gives an
+ordinary polynomial of degree <=2N vanishing at all 2N-th roots of unity.
+It is a constant multiple of z^(2N)-1, so reality implies
+G(theta)=b*sin(N*theta) with b real. But
+
+    G'(0)=partial_n partial_e f(0)/delta=0
+
+by the Hessian identity above. Hence b=0 and (T) follows.
+
+Equivalently, in Fourier coefficients b_h,
+
+    sum_{h.n=lambda} (h.e)*b_h = 0
+
+for every normal layer lambda, in addition to the usual layer sums
+(1/2 on each extreme layer, zero on intermediate layers). These are
+necessary first-moment constraints on the scalar coefficients.
+
+## 3. Exact residual form for the aligned hexagon family
+
+This section concerns v=m*g1, m a positive integer; it does not silently
+identify all oriented lattice hexagons with this family. Set
+p=k.g1/m, q=k.g2/m. Frequencies in these variables have integer pairs
+(i,j) with max(|i|,|j|,|i+j|)<=m. Averaging over D6 is valid here.
+The prescribed normal restrictions become cos(m*q) on p=0, cos(m*p)
+on q=0 and on p=q. A particular interpolant is
+
+    f_m^0 = [cos(m*p)+cos(m*q)+cos(m*(p-q))-1]/2.
+
+Every D6-invariant real candidate with those restrictions has the form
+
+    f = f_m^0 + Delta*h,
+    Delta = sin^2(p/2)*sin^2(q/2)*sin^2((p-q)/2),                 (R)
+
+where h is a real D6-invariant Laurent polynomial supported inside the
+radius-(m-2) lattice hexagon. For m=1 the residual must be zero; for m=2
+it is a constant. The assertion concerns interpolation and support, not
+boundedness: that still has to be imposed on the full expression.
+
+Proof: write d=f-f_m^0, z=exp(i*p), w=exp(i*q). Vanishing on p=0, q=0
+and p=q gives the factors z-1, w-1 and z-w in the Laurent ring. The
+reflection fixing p=0 sends (p,q) to (-p,q-p). Differentiating invariance
+at p=0, where d and partial_q d vanish, gives partial_p d=0. Thus the
+factor z-1 has multiplicity at least two. The conjugate reflections give
+the other double factors. They are distinct irreducibles in the Laurent
+UFD, so their product divides d. Since
+
+    Delta = -(z-1)^2*(w-1)^2*(z-w)^2/(64*z^2*w^2),
+
+the quotient h is Laurent. Delta is D6 invariant and real, hence so is
+h (first on the dense set Delta!=0 and then identically). If h is nonzero,
+the Newton polytope of a product is the Minkowski sum: each exposed leading
+face is a product of nonzero face polynomials in an integral domain.
+Delta has Newton polygon H_2. Since Delta*h=d has support inside H_m,
+the six facet inequalities bound the support of h by H_(m-2). If m=1,
+their intersection is empty; h must be zero. Conversely such an h gives
+the stated support and normal restrictions, though not necessarily bounds.
+
+For m=2, f_m^0=-1/2+S3/4 and the S19 one-parameter family satisfies
+
+    fbar = f_2^0 - 32*a1*Delta.
+
+Thus the supplied S19 argument forces h=16/3 and disproves boundedness
+of that unique candidate. For m>=3 the quotient can be nonconstant;
+its exclusion cannot be inferred from the constant case.
+
+The permanent checker `scripts/verify_hex_trace_scalar_structure.py`
+checks the Laurent factorization, double zeros, D6 invariance, exact
+Newton polygon and the S19 residual identity. The proof of universal
+divisibility in this aligned family is the analytic argument above,
+not something certified by testing a finite set of radii.
+
+## 4. What this does not solve
+
+The first-moment constraints are already consequences of the scalar
+conditions, not extra assumptions or a new witness. On reflection axes
+they also follow immediately from reflection symmetry. For S19, whose
+average is D6 invariant, adding them cannot improve the scalar reduction.
+For general oriented lattice hexagons the derivative argument supplies
+them without an illicit reflection average.
+
+The zero-count argument does not apply to partial_e^2 f: at the extremal
+points only an alternating sign is forced for that derivative, not zero.
+It therefore cannot be iterated here to conclude that all transverse
+dependence vanishes. That would be an unsupported generalization.
+
+No exact compatible polynomial or general contradiction is provided.
+No larger-support solver, numerical scan, or new walk construction was
+run. The bounded analysis ends here under the contract. Any further
+attempt should address scalar feasibility itself, rather than treating
+these necessary constraints or additional bounded cases as a proof for
+all supports. The universal walk saturation question remains OPEN.
+
+## 5. Provenance and review boundary
+
+This is an analytic derivation written in the permanent report; the
+explicit Laurent checks have their permanent script, and no temporary
+script generated the conclusions. The normal projection formula
+is derived from the determinant with edge (-a-b,a); at v=2*g1 it gives
+N=2, and at v=2*g1+g2 it gives N=7, matching the respective existing
+layer descriptions. These are consistency checks, not independent review.
+The sealed S19 review has a separate scope and does not review this
+general-method report. No literature novelty claim is made.
+
+Local algebra execution: `python3 -B scripts/verify_hex_trace_scalar_structure.py`,
+exit 0, 6/6 exact checks, Python 3.12.3 / SymPy 1.14.0. Permanent stdout:
+`reports/2026-11-05--hex-trace-scalar-structure-verifier.txt`.
+Script SHA256:
+`a00574f90b6c2191dbb92d20f75b260c3a6f4987b683e97a96c7585717647ce3`.

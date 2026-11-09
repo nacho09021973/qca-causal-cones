@@ -2,6 +2,32 @@
 
 Primary sources currently relevant to the freeze.
 
+## Joint Yukawa flow — acquired 2026-11-06
+
+Fei et al., *Yukawa conformal field theories and emergent supersymmetry*,
+PTEP 2016, 12C105. Original PDF from
+https://inspirehep.net/files/ffbb5687cb89ebffbb5cffb7e40dcb64,
+stored as `fei_giombi_klebanov_tarnopolsky_2016_yukawa.pdf`.
+SHA256 `83cdf266ca7c6c03fb58872a527679acbe380bbc78d8ad2052ea20bca3470393`.
+Read pp.2–5, especially action (1.4), N=4Nf and beta functions (2.1).
+Application and limits in the joint-flow report dated 2026-11-06.
+
+## Interaction-driven velocity flow — acquired 2026-11-06
+
+M. M. Anber and J. F. Donoghue, *The emergence of a universal limiting
+speed*, arXiv:1102.0789v2, Phys. Rev. D 83, 105027 (2011).
+Downloaded unchanged from `https://arxiv.org/pdf/1102.0789`; checked the
+v2 stamp, title and authors on p.1. Stored as `1102.0789v2.pdf`, 291803
+bytes, 13 pages. SHA256:
+`46b33eb09d810174b2e54c71e39970be96b9acfa7f1cf92bb345d4557d8ed67d`.
+Versioned URL: https://arxiv.org/pdf/1102.0789v2 .
+
+Read with `pdftotext -f/-l -layout`: pp.1–4 and 7–10, in particular
+Eqs. (18)–(19), the Jacobian at the top of p.4, and Eqs. (51)–(55).
+Scope and transfer limits are recorded in
+`reports/2026-11-06--velocity-selection-mechanism-search.md`.
+This acquisition does not authorize an interacting QCA extension.
+
 ## Pavia QCA program
 
 1. **A. Bisio, G. M. D'Ariano, P. Perinotti, A. Tosini**  
@@ -91,3 +117,21 @@ Read 2026-11-01 (text extraction, `pdftotext -layout`, per page):
   `Delta P_i` Eqs. (25)–(27) p.6; momentum symbol Eq. (33) p.7);
   `1312.2852v1.pdf` p.4–5 Eqs. (20)–(21) and the BCC remark;
   `1609.00305v2.pdf` p.1–3 (paired/encoded QW, Eqs. (3)–(6)).
+
+## CJWW tail-estimate paper — entry added 2026-11-04
+
+Archived on 2026-09-15 in `f74018f` (s4-family prior-art audit); this entry
+was missing until 2026-11-04 (work plan, Sec. 3). Size and SHA256 measured
+on 2026-11-04 with `stat -c %s` and `sha256sum`; title, authors and arXiv
+stamp checked against p.1 (`pdftotext -l 1`).
+
+| File | Paper | SHA256 | Bytes |
+| --- | --- | --- | --- |
+| `2408.02108v1.pdf` | C. Cedzich, A. Joye, A. H. Werner, R. F. Werner, *Exponential tail estimates for quantum lattice dynamics*, arXiv:2408.02108v1 [quant-ph], 4 Aug 2024 | `25e2b03ff056fc78a7105fb81a6859be326ae2ee5717b35f7fc664b89ae7bdf8` | 1146894 |
+
+Pages recorded as read live in the reports that cite them, not here:
+`reports/2026-09-15--s4-family-prior-art-audit.md` (Sec. 5.3);
+`reports/2026-09-16--directional-causal-saturation.md` (PDF pp. 17–18);
+`reports/2026-10-31--h1-small-gaussian-profile.md` (p. 17);
+`reports/2026-11-03--substrate-saturation-phase0-addendum-L4.md`
+(Sec. 5.4, Eqs. (5.12)–(5.17), PDF pp. 16–17).
