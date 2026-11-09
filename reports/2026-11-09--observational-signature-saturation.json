@@ -1,0 +1,278 @@
+{
+  "rows": {
+    "L1": {
+      "saturation": "S_max",
+      "signature": "none (omega = |k| exactly)",
+      "vgrp": {
+        "witness": null,
+        "status": "V_GRP_MAX_EQUALS_C0_PROVED (omega=|k|)"
+      }
+    },
+    "L2": {
+      "saturation": "S_in",
+      "signature": "order 2; delay-only near node (alpha0 = -1/96 < 0, alpha <= 0 pointwise); anisotropic",
+      "vgrp": {
+        "witness": null,
+        "status": "V_GRP_MAX_EQUALS_C0_PROVED (product form + multilinear bound)"
+      }
+    },
+    "L6e": {
+      "saturation": "S_in",
+      "signature": "order 2; delay-only near node (alpha0 = -1/96 < 0, alpha <= 0 pointwise); anisotropic",
+      "vgrp": {
+        "witness": null,
+        "status": "NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid)"
+      }
+    },
+    "L3": {
+      "saturation": "S_in",
+      "signature": "order 2; delay-only near node (alpha0 = -1/90 < 0, alpha <= 0 pointwise); anisotropic",
+      "vgrp": {
+        "witness": null,
+        "status": "V_GRP_MAX_EQUALS_C0_PROVED (product form + multilinear bound)"
+      }
+    },
+    "L5a": {
+      "saturation": "S_in",
+      "signature": "order 1; both signs with direction (beta odd); anisotropic",
+      "vgrp": {
+        "witness": {
+          "block": 0,
+          "ray": "+111",
+          "t": "1/16",
+          "speed_lower": "[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]",
+          "c0": "sqrt(3)/3",
+          "detmod": "1"
+        },
+        "status": "SUPER_C_WITNESS (interval-certified point)"
+      }
+    },
+    "L5b": {
+      "saturation": "S_in",
+      "signature": "order 1; both signs with direction (beta odd); anisotropic",
+      "vgrp": {
+        "witness": {
+          "block": 0,
+          "ray": "+111",
+          "t": "1/16",
+          "speed_lower": "[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]",
+          "c0": "sqrt(3)/3",
+          "detmod": "1"
+        },
+        "status": "SUPER_C_WITNESS (interval-certified point)"
+      }
+    },
+    "L4": {
+      "saturation": "S_in",
+      "signature": "order 1; both signs with direction (beta odd); anisotropic",
+      "vgrp": {
+        "witness": {
+          "block": 0,
+          "ray": "-111",
+          "t": "1/16",
+          "speed_lower": "[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]",
+          "c0": "sqrt(3)/3",
+          "detmod": "1"
+        },
+        "status": "SUPER_C_WITNESS (interval-certified point)"
+      }
+    },
+    "L3s4": {
+      "saturation": "below ceiling",
+      "signature": "order 1; one-signed on the sphere iff a^2 < (19-6sqrt3)/11 (sign opposite between clusters), else both signs; anisotropic",
+      "vgrp": {
+        "witness": null,
+        "status": "SUPER_C_WITNESS (existence near node, exact beta sign; explicit k* not attempted, a symbolic)"
+      }
+    },
+    "L6a": {
+      "saturation": "below ceiling",
+      "signature": "order 1; both signs with direction (beta odd); anisotropic",
+      "vgrp": {
+        "witness": {
+          "block": 0,
+          "ray": "th=60",
+          "t": "1/16",
+          "speed_lower": "[0.506568256561733636740566155084967496486886781, 0.506568256561733636740566155084967496486886781]",
+          "c0": "1/2",
+          "detmod": "1"
+        },
+        "status": "SUPER_C_WITNESS (interval-certified point)"
+      }
+    },
+    "L6c": {
+      "saturation": "below ceiling",
+      "signature": "order 2; delay-only near node (alpha0 = -1/512 < 0, alpha <= 0 pointwise); isotropic",
+      "vgrp": {
+        "witness": null,
+        "status": "NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid)"
+      }
+    },
+    "L6d": {
+      "saturation": "below ceiling",
+      "signature": "order 2; delay-only near node (alpha0 = -1/128 < 0, alpha <= 0 pointwise); isotropic",
+      "vgrp": {
+        "witness": null,
+        "status": "NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid)"
+      }
+    },
+    "L6f": {
+      "saturation": "below ceiling",
+      "signature": "order 2; delay-only near node (alpha0 = -1/128 < 0, alpha <= 0 pointwise); isotropic",
+      "vgrp": {
+        "witness": null,
+        "status": "NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid)"
+      }
+    },
+    "L6b": {
+      "saturation": "below ceiling",
+      "signature": "order 1; both signs with direction (beta odd); anisotropic",
+      "vgrp": {
+        "witness": {
+          "block": 0,
+          "ray": "th=0",
+          "t": "1/16",
+          "speed_lower": "[0.341884265910732422715236178385004926341005451, 0.341884265910732422715236178385004926341005451]",
+          "c0": "1/3",
+          "detmod": "1"
+        },
+        "status": "SUPER_C_WITNESS (interval-certified point)"
+      }
+    }
+  },
+  "near_node": {
+    "L5a": {
+      "ray": "+111",
+      "beta_value": "1/9",
+      "note": ""
+    },
+    "L5b": {
+      "ray": "+111",
+      "beta_value": "1/9",
+      "note": ""
+    },
+    "L4": {
+      "ray": "-111",
+      "beta_value": "1/9",
+      "note": ""
+    },
+    "L3s4": {
+      "ray": "+111 or -111 (upper-sign cluster)",
+      "beta_value": "sqrt(3)*(1 - a**2)/(3*a)",
+      "note": "sum=2*beta0>0 for 0<a<1"
+    },
+    "L6a": {
+      "ray": "th=60",
+      "beta_value": "sqrt(15)/36",
+      "note": ""
+    },
+    "L6b": {
+      "ray": "th=0",
+      "beta_value": "sqrt(15)/18",
+      "note": ""
+    }
+  },
+  "checks": [
+    {
+      "name": "multilinear-bound-d=2: 1 - prod a - sum_j (1-a_j) prod_(i!=j) a_i >= 0 on [0,1]^d (vertices)",
+      "passed": true,
+      "detail": "f=a1*a2 - a1 - a2 + 1"
+    },
+    {
+      "name": "multilinear-bound-d=3: 1 - prod a - sum_j (1-a_j) prod_(i!=j) a_i >= 0 on [0,1]^d (vertices)",
+      "passed": true,
+      "detail": "f=2*a1*a2*a3 - a1*a2 - a1*a3 - a2*a3 + 1"
+    },
+    {
+      "name": "L1-symbol-trace=z+1/z-and-det=1",
+      "passed": true,
+      "detail": "trace=w1 + 1/w1, det=1"
+    },
+    {
+      "name": "L2-trace/2=prod(cos p_j)-and-det=1",
+      "passed": true,
+      "detail": "L=sqrt(2)"
+    },
+    {
+      "name": "L2-c0=1/L",
+      "passed": true,
+      "detail": "c0=sqrt(2)/2, L=sqrt(2)"
+    },
+    {
+      "name": "L3-trace/2=prod(cos p_j)-and-det=1",
+      "passed": true,
+      "detail": "L=sqrt(3)"
+    },
+    {
+      "name": "L3-c0=1/L",
+      "passed": true,
+      "detail": "c0=sqrt(3)/3, L=sqrt(3)"
+    },
+    {
+      "name": "L5a-beta>0-on-declared-ray-(near-node-super-c-existence)",
+      "passed": true,
+      "detail": "('+111', 1/9, '')"
+    },
+    {
+      "name": "L5b-beta>0-on-declared-ray-(near-node-super-c-existence)",
+      "passed": true,
+      "detail": "('+111', 1/9, '')"
+    },
+    {
+      "name": "L4-beta>0-on-declared-ray-(near-node-super-c-existence)",
+      "passed": true,
+      "detail": "('-111', 1/9, '')"
+    },
+    {
+      "name": "L3s4-beta>0-on-declared-ray-(near-node-super-c-existence)",
+      "passed": true,
+      "detail": "('+111 or -111 (upper-sign cluster)', sqrt(3)*(1 - a**2)/(3*a), 'sum=2*beta0>0 for 0<a<1')"
+    },
+    {
+      "name": "L6a-beta>0-on-declared-ray-(near-node-super-c-existence)",
+      "passed": true,
+      "detail": "('th=60', sqrt(15)/36, '')"
+    },
+    {
+      "name": "L6b-beta>0-on-declared-ray-(near-node-super-c-existence)",
+      "passed": true,
+      "detail": "('th=0', sqrt(15)/18, '')"
+    },
+    {
+      "name": "L3s4-beta0>0-for-0<a<1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "L5a-interval-witness |grad eps(k*)| > c0",
+      "passed": true,
+      "detail": "{'block': 0, 'ray': '+111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}"
+    },
+    {
+      "name": "L6a-interval-witness |grad eps(k*)| > c0",
+      "passed": true,
+      "detail": "{'block': 0, 'ray': 'th=60', 't': '1/16', 'speed_lower': '[0.506568256561733636740566155084967496486886781, 0.506568256561733636740566155084967496486886781]', 'c0': '1/2', 'detmod': '1'}"
+    },
+    {
+      "name": "L4-interval-witness |grad eps(k*)| > c0",
+      "passed": true,
+      "detail": "{'block': 0, 'ray': '-111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}"
+    },
+    {
+      "name": "L5b-interval-witness |grad eps(k*)| > c0",
+      "passed": true,
+      "detail": "{'block': 0, 'ray': '+111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}"
+    },
+    {
+      "name": "L6b-interval-witness |grad eps(k*)| > c0",
+      "passed": true,
+      "detail": "{'block': 0, 'ray': 'th=0', 't': '1/16', 'speed_lower': '[0.341884265910732422715236178385004926341005451, 0.341884265910732422715236178385004926341005451]', 'c0': '1/3', 'detmod': '1'}"
+    }
+  ],
+  "provenance": {
+    "scripts/verify_observational_signature_gate.py": "785a6b1dfca7934716c2944a80706dbabe1977a5be6ab0a4fc60f1089aacd31a",
+    "theory/OBSERVATIONAL_SIGNATURE_SATURATION_GATE.md": "9cd7a1ee04aa89071bf5ba3f5dfabcec221cfef9fb039793d2d4529e067f3d84",
+    "scripts/verify_dispersion_corrections_gate.py": "b7c451e213b60a0ae22e5c2ad15630abe5f5f4ee1c7c3d11dc660f43ffdb9a7e",
+    "reports/2026-11-02--dispersion-corrections-across-lattices.md": "5aaaea6af9704abb2a1a16613f1ede7fc1639956800e66d2580824484b31bec9"
+  }
+}

@@ -2,6 +2,21 @@
 
 **Date:** 2026-11-09
 
+**Observational signature of saturation — 2026-11-09:** user «si, congélalo
+y ejecútalo». Contract 21af1dd (conditional dictionary H_gamma authorized;
+no claim about our universe); verifier 658845a committed before running,
+19/19 (exact + rigorous interval). [Report](../reports/2026-11-09--observational-signature-saturation.md).
+Ceiling rows: L2, L3 have V_grp^max = c_0 exactly proved (product form +
+multilinear bound); L5a, L5b, L4 have certified super-c excitations, so Hg
+`REFUTED_BY_ROW_L2`: c at the largest isotropic speed does not imply c is
+unbeatable. Below-ceiling L6c/d/f show no witness on declared rays; L6a,
+L6b, L3s4 super-c; Hh `REFUTED_BY_ROW_L3s4` (advance-only, below ceiling).
+Route `DISCRIMINATING_SIGNATURE_IN_DECLARED_ROWS`, partial: only S_max (L1,
+d=1) has no dispersion at all; advance-only implies below ceiling; S_in vs
+below-ceiling not separated in general. Contract defect declared (algebraic
+k* + rational grid + radicals incompatible; interval certification used).
+PRELIMINARY, no review or promotion; no comparison with data.
+
 **Low-energy packet gate executed (contract 2 of 2) and Thirring coexistence line closed — 2026-11-09:**
 user «si a ambas preguntas» (push contract 715096f, execute it). Exact
 verifier and labelled diagnostic committed before running (75b33c3); first

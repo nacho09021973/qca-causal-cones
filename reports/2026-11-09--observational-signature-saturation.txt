@@ -1,0 +1,35 @@
+Checks: 19/19 (exact SymPy 1.14.0; interval mpmath.iv dps=40).
+PASS multilinear-bound-d=2: 1 - prod a - sum_j (1-a_j) prod_(i!=j) a_i >= 0 on [0,1]^d (vertices)  f=a1*a2 - a1 - a2 + 1
+PASS multilinear-bound-d=3: 1 - prod a - sum_j (1-a_j) prod_(i!=j) a_i >= 0 on [0,1]^d (vertices)  f=2*a1*a2*a3 - a1*a2 - a1*a3 - a2*a3 + 1
+PASS L1-symbol-trace=z+1/z-and-det=1  trace=w1 + 1/w1, det=1
+PASS L2-trace/2=prod(cos p_j)-and-det=1  L=sqrt(2)
+PASS L2-c0=1/L  c0=sqrt(2)/2, L=sqrt(2)
+PASS L3-trace/2=prod(cos p_j)-and-det=1  L=sqrt(3)
+PASS L3-c0=1/L  c0=sqrt(3)/3, L=sqrt(3)
+PASS L5a-beta>0-on-declared-ray-(near-node-super-c-existence)  ('+111', 1/9, '')
+PASS L5b-beta>0-on-declared-ray-(near-node-super-c-existence)  ('+111', 1/9, '')
+PASS L4-beta>0-on-declared-ray-(near-node-super-c-existence)  ('-111', 1/9, '')
+PASS L3s4-beta>0-on-declared-ray-(near-node-super-c-existence)  ('+111 or -111 (upper-sign cluster)', sqrt(3)*(1 - a**2)/(3*a), 'sum=2*beta0>0 for 0<a<1')
+PASS L6a-beta>0-on-declared-ray-(near-node-super-c-existence)  ('th=60', sqrt(15)/36, '')
+PASS L6b-beta>0-on-declared-ray-(near-node-super-c-existence)  ('th=0', sqrt(15)/18, '')
+PASS L3s4-beta0>0-for-0<a<1  
+PASS L5a-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': '+111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}
+PASS L6a-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': 'th=60', 't': '1/16', 'speed_lower': '[0.506568256561733636740566155084967496486886781, 0.506568256561733636740566155084967496486886781]', 'c0': '1/2', 'detmod': '1'}
+PASS L4-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': '-111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}
+PASS L5b-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': '+111', 't': '1/16', 'speed_lower': '[0.585203509350624673403524125539131221012121987, 0.585203509350624673403524125539131221012121987]', 'c0': 'sqrt(3)/3', 'detmod': '1'}
+PASS L6b-interval-witness |grad eps(k*)| > c0  {'block': 0, 'ray': 'th=0', 't': '1/16', 'speed_lower': '[0.341884265910732422715236178385004926341005451, 0.341884265910732422715236178385004926341005451]', 'c0': '1/3', 'detmod': '1'}
+
+Per row: saturation | V_grp / witness | signature
+L1: S_max | V_GRP_MAX_EQUALS_C0_PROVED (omega=|k|) | none (omega = |k| exactly)
+L2: S_in | V_GRP_MAX_EQUALS_C0_PROVED (product form + multilinear bound) | order 2; delay-only near node (alpha0 = -1/96 < 0, alpha <= 0 pointwise); anisotropic
+L6e: S_in | NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid) | order 2; delay-only near node (alpha0 = -1/96 < 0, alpha <= 0 pointwise); anisotropic
+L3: S_in | V_GRP_MAX_EQUALS_C0_PROVED (product form + multilinear bound) | order 2; delay-only near node (alpha0 = -1/90 < 0, alpha <= 0 pointwise); anisotropic
+L5a: S_in | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+L5b: S_in | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+L4: S_in | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+L3s4: below ceiling | SUPER_C_WITNESS (existence near node, exact beta sign; explicit k* not attempted, a symbolic) | order 1; one-signed on the sphere iff a^2 < (19-6sqrt3)/11 (sign opposite between clusters), else both signs; anisotropic
+L6a: below ceiling | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
+L6c: below ceiling | NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid) | order 2; delay-only near node (alpha0 = -1/512 < 0, alpha <= 0 pointwise); isotropic
+L6d: below ceiling | NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid) | order 2; delay-only near node (alpha0 = -1/128 < 0, alpha <= 0 pointwise); isotropic
+L6f: below ceiling | NO_WITNESS_ON_DECLARED_RAYS (none on declared rays and grid) | order 2; delay-only near node (alpha0 = -1/128 < 0, alpha <= 0 pointwise); isotropic
+L6b: below ceiling | SUPER_C_WITNESS (interval-certified point) | order 1; both signs with direction (beta odd); anisotropic
