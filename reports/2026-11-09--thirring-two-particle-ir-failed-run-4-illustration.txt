@@ -1,0 +1,5 @@
+ILLUSTRATION (floating point, mpmath 40 digits); feeds no verdict.
+mu=3/5: E(0)=0.87629806116834063139  acos(nu^2)=0.87629806116834063139
+finite-difference c_b^2 (h=1e-4) = 0.729892071161152
+closed-form c_b^2 = 0.729892078657875108772712996279
+c_f^2 = 0.858001478391046

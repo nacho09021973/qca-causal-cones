@@ -162,6 +162,8 @@ def reduce_T(expr, r):
 def check_O3_eigenvector(MU, tag):
     f, lam_b, r, (a, b, c, d), (gpk, gmk), NU = bound_vector(MU)
     exact(f"O3a-{tag}-decay-0<t^2<1", bool(0 < r < 1))
+    t_exp = (sp.sqrt(2 - MU**2) - MU) / (sp.sqrt(2) * NU)        # denested sqrt(r)
+    exact(f"O3a-{tag}-t_explicit^2=r-and-0<t<1", iszero(t_exp**2 - r) and bool(0 < t_exp < 1))
     exact(f"O3a-{tag}-T+numerator-zero", iszero(gpk + sp.conjugate(Z) * gmk))
     exact(f"O3a-{tag}-|lambda_b|=1", iszero(sp.Abs(lam_b)**2 - 1))
     exact(f"O3a-{tag}-cos-M_b=nu^2", iszero(sp.re(lam_b) - NU**2))
@@ -171,8 +173,10 @@ def check_O3_eigenvector(MU, tag):
     for x1 in range(-5, 6):
         for x2 in range(-5, 6):
             for a1, a2 in BASIS:
-                ok &= all(iszero(cf) for cf in reduce_T(Upsi(x1, a1, x2, a2) - lam_b * psi(x1, a1, x2, a2), r))
-                nonzero |= not all(iszero(cf) for cf in reduce_T(psi(x1, a1, x2, a2), r))
+                A, B = reduce_T(Upsi(x1, a1, x2, a2) - lam_b * psi(x1, a1, x2, a2), r)
+                ok &= iszero(A + B * t_exp)
+                A, B = reduce_T(psi(x1, a1, x2, a2), r)
+                nonzero |= not iszero(A + B * t_exp)
     exact(f"O3a-{tag}-lattice-eigenvector-window-|x|<=5", ok and nonzero)
     return dict(mu=str(MU), t_squared=str(r), lambda_b=str(lam_b))
 
@@ -222,7 +226,9 @@ def check_O3c(cf2_mu, mu_sym):
     cb2_closed = Mb * nu**2 / (sp.sqrt(2) * C0 * mu)
     exact("O3c-c_b^2-closed-form", iszero(cb2 - cb2_closed))
     cb2 = cb2_closed   # limits and series below use the certified closed form
-    exact("O3c-M_b-below-threshold-cos(M_b)>cos(2 omega0)", iszero(sp.cos(2 * sp.acos(nu)) - (2 * nu**2 - 1)))
+    exact("O3c-M_b-below-threshold-cos(2omega0)=2nu^2-1<nu^2=cos(M_b)",
+          iszero(sp.expand_trig(sp.cos(2 * sp.acos(sp.Symbol("n")))) - (2 * sp.Symbol("n")**2 - 1))
+          and iszero(sp.simplify((nu**2) - (2 * nu**2 - 1) - (1 - nu**2))) and bool(sp.simplify(1 - nu**2).subs(S_PAR, sp.Rational(1, 3)) > 0))
     # mu -> 0 is s -> 0 (mu = 2s + O(s^3))
     exact("O3c-limit-M_b/mu=sqrt2", sp.simplify(sp.limit(Mb / mu, S_PAR, 0, "+") - sp.sqrt(2)) == 0)
     lim_cb2 = sp.limit(cb2, S_PAR, 0, "+")
