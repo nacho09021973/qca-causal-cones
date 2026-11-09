@@ -1,0 +1,8 @@
+Failed run 1 of scripts/verify_thirring_two_particle_ir.py at commit 5c484d7.
+Command: timeout 900 python3 -B scripts/verify_thirring_two_particle_ir.py
+Result: killed by the 900 s timeout (exit 143) before writing any output; no check result was produced.
+Diagnosis (timing inspection, no results retained): O2, O3b, O4 finish in <1 s; O1 and O3c stalled because
+mu was a positive symbol without the bound mu<1, so sqrt(1-mu^2) was not known to be real and
+re()/simplify produced Abs/atan2 forms; O3a nested radicals (t = sqrt(r)) were also slow.
+Fix in the next commit: rational parametrization mu=2s/(1+s^2), nu=(1-s^2)/(1+s^2), s>0, for O1 and O3c;
+t treated as a symbol T reduced modulo T^2=r in O3a. No check expectation was changed.

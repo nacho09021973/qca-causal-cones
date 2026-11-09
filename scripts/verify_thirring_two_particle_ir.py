@@ -45,6 +45,12 @@ BASIS = [(R, R), (R, L), (L, R), (L, L)]
 Z = sp.I  # e^{i chi}, chi = pi/2
 
 
+S_PAR = sp.symbols("s", positive=True)          # mu = 2s/(1+s^2), nu = (1-s^2)/(1+s^2), 0<s<1
+MU_S = 2 * S_PAR / (1 + S_PAR**2)
+NU_S = (1 - S_PAR**2) / (1 + S_PAR**2)
+TT = sp.symbols("T")                               # t = e^{kappa}, reduced modulo T^2 = r
+
+
 def exact(name, cond):
     CHECKS.append(dict(name=name, passed=bool(cond)))
 
@@ -83,8 +89,7 @@ def J_op(amp):
 
 # ---------------- O1 ----------------
 def check_O1():
-    mu = sp.symbols("mu", positive=True)
-    nu = sp.sqrt(1 - mu**2)
+    mu, nu = MU_S, NU_S
     A = [(0, R), (1, L)]
     Bm = [(1, R), (0, L)]
     D = [1, Z, Z, 1]
@@ -124,8 +129,7 @@ def bound_vector(MU):
     """p=0, k~ = pi + i kappa, cosh(2 kappa)=1/nu^2, kappa<0. Returns f(y) and lambda_b."""
     NU = sp.sqrt(1 - MU**2)
     r = (1 - MU * sp.sqrt(2 - MU**2)) / NU**2          # t^2, t = e^{kappa}
-    t = sp.sqrt(r)
-    lam = -t                                            # e^{-i k~}
+    lam = -TT                                            # e^{-i k~}
     # v^{++}_{k~} components, from g_+(pi+i kappa)=-i mu (1+i)/sqrt2, g_+(-pi-i kappa)=-i mu (1-i)/sqrt2
     gpk = -I * MU * (1 + I) / sp.sqrt(2)
     gmk = -I * MU * (1 - I) / sp.sqrt(2)
@@ -148,6 +152,13 @@ def bound_vector(MU):
     return f, lam_b, r, (a, b, c, d), (gpk, gmk), NU
 
 
+def reduce_T(expr, r):
+    """Reduce a polynomial in T modulo T^2 = r; return the two coefficients."""
+    poly = sp.Poly(sp.expand(expr), TT)
+    rem = sp.rem(poly, sp.Poly(TT**2 - r, TT))
+    return [rem.coeff_monomial(TT**k) for k in (0, 1)]
+
+
 def check_O3_eigenvector(MU, tag):
     f, lam_b, r, (a, b, c, d), (gpk, gmk), NU = bound_vector(MU)
     exact(f"O3a-{tag}-decay-0<t^2<1", bool(0 < r < 1))
@@ -160,10 +171,10 @@ def check_O3_eigenvector(MU, tag):
     for x1 in range(-5, 6):
         for x2 in range(-5, 6):
             for a1, a2 in BASIS:
-                ok &= iszero(Upsi(x1, a1, x2, a2) - lam_b * psi(x1, a1, x2, a2))
-                nonzero |= not iszero(psi(x1, a1, x2, a2))
+                ok &= all(iszero(cf) for cf in reduce_T(Upsi(x1, a1, x2, a2) - lam_b * psi(x1, a1, x2, a2), r))
+                nonzero |= not all(iszero(cf) for cf in reduce_T(psi(x1, a1, x2, a2), r))
     exact(f"O3a-{tag}-lattice-eigenvector-window-|x|<=5", ok and nonzero)
-    return dict(mu=str(MU), t_squared=str(sp.nsimplify(r)), lambda_b=str(lam_b))
+    return dict(mu=str(MU), t_squared=str(r), lambda_b=str(lam_b))
 
 
 def check_O3b():
@@ -179,8 +190,9 @@ def check_O3b():
     # S >= 0, so S = nu sinh(kappa) forces kappa >= 0: k_I = kappa > 0, not normalizable.
 
 
-def check_O3c(cf2, mu):
-    nu = sp.sqrt(1 - mu**2)
+def check_O3c(cf2_mu, mu_sym):
+    mu, nu = MU_S, NU_S
+    cf2 = cf2_mu.subs(mu_sym, MU_S)
     C0 = sp.sqrt((1 + nu**2) / 2)
     S0 = mu / sp.sqrt(2)                                  # sin omega(z0)
     sh0 = -mu / (sp.sqrt(2) * nu)                         # sinh kappa0
@@ -205,11 +217,13 @@ def check_O3c(cf2, mu):
     cb2 = Mb * Epp / 4                                     # omega_b^2 = M_b^2 + c_b^2 P^2, P = 2p
     exact("O3c-c_b^2-closed-form", iszero(cb2 - Mb * nu**2 / (sp.sqrt(2) * C0 * mu)))
     exact("O3c-M_b-below-threshold-cos(M_b)>cos(2 omega0)", iszero(sp.cos(2 * sp.acos(nu)) - (2 * nu**2 - 1)))
-    exact("O3c-limit-M_b/mu=sqrt2", sp.simplify(sp.limit(Mb / mu, mu, 0, "+") - sp.sqrt(2)) == 0)
-    lim_cb2 = sp.limit(cb2, mu, 0, "+")
+    # mu -> 0 is s -> 0 (mu = 2s + O(s^3))
+    exact("O3c-limit-M_b/mu=sqrt2", sp.simplify(sp.limit(Mb / mu, S_PAR, 0, "+") - sp.sqrt(2)) == 0)
+    lim_cb2 = sp.limit(cb2, S_PAR, 0, "+")
     exact("O3c-limit-c_b^2=1", sp.simplify(lim_cb2 - 1) == 0)
-    diff_ser = sp.series(cb2 - cf2, mu, 0, 4).removeO()
-    exact("O3c-c_b^2-c_f^2=-mu^2/3+O(mu^4)", iszero(sp.expand(diff_ser) + mu**2 / 3))
+    diff_ser = sp.series(cb2 - cf2 + mu**2 / 3, S_PAR, 0, 4).removeO()
+    exact("O3c-c_b^2-c_f^2=-mu^2/3+O(mu^4)", iszero(sp.expand(diff_ser)))
+    diff_ser = sp.series(cb2 - cf2, S_PAR, 0, 4).removeO()
     return dict(c_b2=str(sp.simplify(cb2)), c_f2=str(cf2), cb2_minus_cf2_series=str(sp.expand(diff_ser)),
                 M_b="acos(nu^2)"), (Mb, cb2, nu)
 
@@ -257,8 +271,7 @@ def illustration(Mb_cb2):
     Epp_fd = 2 * (Eh - E0) / h**2
     cb2_fd = E0 * Epp_fd / 4
     Mb, cb2, nusym = Mb_cb2
-    musym = list(cb2.free_symbols)[0]
-    cb2_exact = sp.N(cb2.subs(musym, sp.Rational(3, 5)), 30)
+    cb2_exact = sp.N(cb2.subs(S_PAR, sp.Rational(1, 3)), 30)   # s=1/3 <=> mu=3/5
     lines = ["ILLUSTRATION (floating point, mpmath 40 digits); feeds no verdict.",
              f"mu=3/5: E(0)={mp.nstr(E0, 20)}  acos(nu^2)={mp.nstr(mp.acos(nu**2), 20)}",
              f"finite-difference c_b^2 (h=1e-4) = {mp.nstr(cb2_fd, 15)}",
