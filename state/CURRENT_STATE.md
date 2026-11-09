@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-09
 
+**Low-energy packet gate chartered — 2026-11-09:** user «hazlo» to the
+proposal to devote the remaining contract to low-energy carriers.
+[Contract 2 of 2](../theory/THIRRING_LOW_ENERGY_PACKET_GATE.md) freezes a
+positive-band two-fermion momentum-bin code, chi=pi/2, packet widths,
+separation, time and free output frame. Requires vanishing uniform leakage
+and a nonvanishing entangling logical limit. A physical outgoing doubler
+projector replaces coefficient-based interpretations for this contract only.
+Status OPEN / NOT_EXECUTED; no result, independent review or promotion.
+Contract 1 remains closed OPEN. Mandatory operational balance on closure
+of contract 2; no automatic third contract.
+
 **Thirring two-particle low-energy preflight (coexistence (c), contract 1 of 2) — 2026-11-09:**
 user «adelante con el preflight de (c)». Contract 6d24fb8; verifier 5c484d7
 committed before running; four failed runs retained (tooling / check
