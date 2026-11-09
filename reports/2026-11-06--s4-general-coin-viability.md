@@ -1,0 +1,120 @@
+# Moneda general: exclusión de una pendiente isotrópica distinta
+
+2026-11-06. Codex (OpenAI). **PRELIMINARY: derivación y controles de autor**.
+Contrato: `theory/S4_GENERAL_COIN_VIABILITY.md`, SHA256
+`a817034f28736469d5ecccb0901bc9ba2c49832dde5dcff6117bc4bca2b1de13`.
+Hash registrado a las 08:51:26 UTC antes de ejecutar el verificador;
+ejecución completada antes de las 08:52:24 UTC. La vía de prueba había
+sido advertida durante el razonamiento, como declara el contrato.
+No prerregistro Git. Base: `b434547432647ca72110d4f7b6c78583d70f27c9`.
+
+## Resultado
+
+Para cualquier W en U(4), sea
+
+    U(k)=W product_i exp(-i k_i G_i/sqrt(3)),
+    G_i=sigma_i tensor tau_i.
+
+Si U(0)=W posee un eigenvalor de multiplicidad exactamente dos, separado
+del resto, y su doblete define un cono lineal isotrópico no degenerado
+sin inclinación, entonces **c=1/3** en las unidades fijadas.
+
+No se exige antiunitaria, covariancia espacial, forma tensorial de W,
+segundo doblete ni irreducibilidad. Por eso la exclusión también se aplica
+a la subclase irreducible solicitada. No existe el testigo c distinto de
+1/3 dentro del contrato. El constructor anterior muestra que c=1/3 sí es
+realizable; la exclusión no procede de una clase vacía.
+
+## 1. Reducción que elimina la moneda
+
+Los G_i conmutan, son involuciones y G_x G_y G_z=-I4. Para
+F_raw={h en {±1}³: h_x h_y h_z=-1}, sus cuatro proyectores conjuntos son
+
+    E_h = (I4 + sum_i h_i G_i)/4.
+
+Cada uno tiene rango uno, sum_h E_h=I4 y sum_h h_i E_h=G_i.
+U(k)=sum_h W E_h exp(-i k.h/sqrt(3)). Como W es invertible, los cuatro
+coeficientes W E_h siguen siendo no nulos. El soporte y la escala son
+exactamente los del contrato, sin ajuste posterior.
+
+Sea T:C²->C⁴ una isometría sobre el doblete, WT=zT, |z|=1.
+Al comprimir la expansión de U en el doblete, el término de primer orden
+es z[I2-i sum_i q_i H_i], donde
+
+    H_i = T†G_i T/sqrt(3).
+
+La separación espectral permite usar esta compresión para las pendientes
+nodales de primer orden. W determina T y z, pero no añade un término a
+H_i: iW†partial_i U(0)=G_i/sqrt(3).
+
+## 2. Primera prueba: rango de las compresiones
+
+Definir B_h=T†E_h T. Son matrices positivas 2x2 de rango a lo sumo uno,
+con suma I2. La fórmula de E_h da exactamente
+
+    B_h = [I2 + sqrt(3) sum_i h_i H_i]/4.                 (1)
+
+Ausencia de inclinación significa tr H_i=0. Escribimos H_i=a_i.sigma,
+con a_i real. La métrica del cono es M_ij=a_i.a_j=tr(H_i H_j)/2.
+Isotropía no degenerada significa M=c² I3 y c>0.
+
+De (1), tr B_h=1/2, y la identidad de determinante de Pauli produce
+
+    det B_h = [1-3 h^T M h]/16
+            = [1-9 c²]/16.                            (2)
+
+Pero rango B_h<=1 exige det B_h=0. Por tanto c²=1/9 y c=1/3.
+La traza 1/2 asegura además que ninguna de estas compresiones sea nula.
+Esto vale para cualquier T que satisfaga las hipótesis, no para una
+muestra de monedas o de subespacios.
+
+## 3. Segunda vía: suma de trazas cuadráticas
+
+Cada B_h tiene rango uno y traza 1/2, luego tr(B_h²)=1/4 y
+sum_h tr(B_h²)=1. Por otra parte, usando (1), sum_h h_i=0 y
+sum_h h_i h_j=4 delta_ij,
+
+    sum_h tr(B_h²) = 1/2 + (3/4) sum_i tr(H_i²)
+                  = 1/2 + (9/2)c².
+
+Igualar ambas expresiones vuelve a dar c²=1/9. Es una segunda derivación
+algebraica de autor con las mismas hipótesis; no es revisión independiente.
+
+## 4. Qué queda excluido y qué no
+
+Queda excluido construir el bloque inicial de pendiente diferente cambiando
+solo W, incluso con una moneda U(4) arbitraria, bajo las condiciones de
+nodo k=0, doblete separado, isotropía lineal y ausencia de inclinación.
+Dos bloques de esta clase que cumplan esas condiciones tendrán ambos
+c=1/3. El barrido de acoplamiento no se abre.
+
+No se ha clasificado cuáles monedas producen conos ni se han impuesto
+las simetrías de la realización anterior. La restricción procede de los
+cuatro proyectores de rango uno del desplazamiento fijo, no de una
+antiunitaria adicional sobre la moneda.
+
+No cubierto: otros desplazamientos o números/rangos de canales, dimensiones
+internas distintas, conos inclinados, degeneraciones nodales de otro rango
+ni modelos interactuantes. El contrato se limita al origen; no se reclama
+una clasificación global de nodos. El mecanismo general de alineación
+permanece sin evaluar. No se amplía la familia para salvar la propuesta.
+
+## 5. Evidencia reproducible
+
+Comando: `python3 -B scripts/verify_s4_general_coin_viability.py`.
+SymPy 1.14.0, salida 0: **55/55 comprobaciones algebraicas auxiliares PASS**.
+Registro: `reports/2026-11-06--s4-general-coin-viability-verifier.txt`.
+Script SHA256:
+`6565ddc135215e371279b97c298422e809124110b3b3b439f79941fe6437a5f4`.
+Comprueba proyectores, inversión tetraédrica, momentos, identidad de
+determinante para nueve coeficientes reales generales, suma de trazas
+cuadráticas y consecuencia isotrópica. El argumento universal de rango
+está en la prueba anterior; los controles no sustituyen esa prueba.
+
+Índice de biblioteca consultado. La clasificación s=2 de 1708.00826 no se
+invoca para esta exclusión s=4. No se ha investigado la novedad de la
+identidad de compresión; no se atribuye originalidad al resultado.
+
+Resultado: `NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN`.
+Se cierra esta ampliación mínima. Sin búsqueda numérica, barrido,
+revisión externa, promoción, commit ni push. Se preservan cambios ajenos.

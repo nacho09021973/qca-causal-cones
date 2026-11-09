@@ -1,0 +1,23 @@
+{
+  "script": "scripts/plot_s4_cyclic_realization.py",
+  "script_sha256": "b135115f5c54ade4f4b71bc049fa85481d109263e0d90d94efba0b81f6405eaf",
+  "git_head": "b434547432647ca72110d4f7b6c78583d70f27c9",
+  "git_note": "Working-tree artifacts; HEAD is not a claim that these files are committed.",
+  "numpy": "1.26.4",
+  "matplotlib": "3.6.3",
+  "max_unitarity_error": 7.771561172376096e-16,
+  "max_axial_analytic_error": 7.771561172376096e-16,
+  "tiny_radius": 1e-05,
+  "half_splitting_over_r_at_tiny_radius": [
+    0.33333333333551707,
+    0.33333333333551707,
+    0.333332222224314
+  ],
+  "half_splitting_over_r_at_r_0_8": [
+    0.30290531894346284,
+    0.33420977208912167,
+    0.2516316076308775
+  ],
+  "meaning": "Numerical illustration, not independent review; finite-r opening is not group velocity.",
+  "source_report": "reports/2026-11-06--s4-cyclic-realization.md"
+}

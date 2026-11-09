@@ -422,6 +422,66 @@ between independent pairs remain unresolved. Hexagonal work stays parked;
 previous results keep their scope. This bounded cutoff does not abandon
 all symmetry research or authorize a successor search.
 
+**Parallel premise audit — 2026-11-06 (recorded 2026-11-09):** a second,
+independent Codex execution of the same stages 1–2 (and stage-5 diagnosis)
+existed only in a local checkout; kept verbatim as
+[parallel run](../reports/2026-11-06--symmetry-common-cone-premise-audit-parallel-run.md).
+Same verdicts (`STANDARD_SYMMETRY_COROLLARY`,
+`SELECTION_MECHANISM_NOT_SPECIFIED`); the entry above and its report remain
+canonical. Same model family: not an independent review. The three entries
+below come from that same local line and were reconciled on 2026-11-09.
+
+**General U(4) coin viability — 2026-11-06:** user authorized the minimal
+coin-family extension; [contract](../theory/S4_GENERAL_COIN_VIABILITY.md),
+[proof](../reports/2026-11-06--s4-general-coin-viability.md).
+For fixed G_i=sigma_i tensor tau_i and unit tetrahedral steps, any isolated
+rank-two nodal eigenspace at k=0 with an untilted nondegenerate isotropic
+linear cone has c=1/3, for arbitrary W in U(4). Rank-one compressed
+tetrahedral channels force this value; no C, D2 or cyclic covariance is
+assumed. Two author derivations and 55/55 exact auxiliary checks.
+Outcome `NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN`;
+**PRELIMINARY, no independent review, promotion or novelty claim**.
+This closes the declared minimal extension: no unequal-speed starting
+pair, no coupling scan. General alignment remains unevaluated; no change
+of shifts, dimension or node conditions is authorized by this closure.
+
+**s=4 cyclic realization — 2026-11-06:** user explicitly requested an
+exact realization attempt; [contract](../theory/S4_CYCLIC_REALIZATION_ATTEMPT.md),
+[report](../reports/2026-11-06--s4-cyclic-realization.md).
+Outcome `REALIZED_WITH_ACTUAL_SUPPORT`: G_i=sigma_i tensor tau_i,
+W=I tensor exp[-i*pi*(tau_x+tau_y+tau_z)/(4sqrt(3))], fixed D2+C and
+simultaneous cyclic rotation of both Pauli factors. Exact finite-range
+unitary, scalar coefficient commutant, two conjugate rank-two nodes and
+isotropic linear speeds cP=cQ=1/3 in the declared units. Four of eight
+allowed N3 coefficients cancel: actual support is the negative-parity
+unit tetrahedron, r_in=1/3, NOT the full eight-point cubic hull.
+The exact-eight-nonzero-coefficient variant remains OPEN. Author verifier
+143/143 exact checks, including coefficient covariance, both Laurent
+unitarity identities, commutant and axial eigenphase cross-checks.
+**PRELIMINARY, no independent review, promotion or novelty claim.** No
+strict asymptotic-body result or physical value of c; selection remains
+parked. This explicit request reopens the realization attempt only.
+Not the same object as the "Bounded cyclic realization attempt" entry
+above (contract CYCLIC_COMMON_CONE_REALIZATION_ATTEMPT.md): that entry
+tests a different s=4 candidate (ordered xyz, a=3/5, full eight-point
+support, c_P=c_Q=sqrt3/5) under its own contract. Its
+`CANDIDATE_FAILS_CYCLIC_COVARIANCE` and this
+`REALIZED_WITH_ACTUAL_SUPPORT` refer to different candidates, so they
+do not contradict each other and neither supersedes the other.
+
+**Selection documentary decision — 2026-11-06:** user-authorized bounded
+reading of Anber–Donoghue completed;
+[decision](../reports/2026-11-06--selection-rg-documentary-decision.md).
+The examined mechanism runs effective parameters with energy scale, not
+microscopic update rules with time. The Yukawa example assumes spatial
+isotropy; its common-speed fixed line does not select a unique physical c.
+No concrete interacting-QCA bridge was established in this reading.
+Outcome: `DOCUMENTARY_SELECTION_ROUTE_PARKED`; no successor calculation
+charter opened. `SELECTION_MECHANISM_NOT_SPECIFIED` remains for the current
+free-walk class; question A and the exact s=4 spatial-symmetry realization
+remain OPEN. No impossibility or novelty claim, new scientific calculation,
+external review or promotion.
+
 **Next-session plan — 2026-11-06:** user requested a work plan based on
 the symmetry-selection intuition; see
 [plan](../reports/2026-11-06--work-plan-symmetry-common-cone.md), written

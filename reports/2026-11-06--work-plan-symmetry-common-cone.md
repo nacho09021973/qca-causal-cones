@@ -6,7 +6,30 @@ research/schur-stability-audit. Comprobar HEAD y CURRENT_STATE al reanudar.
 Plan de investigación, no resultado, promoción ni ejecución anticipada.
 No es una tarea programada ni un envío autorizado a modelos externos.
 
+**Continuación 2026-11-06:** etapas 1–2 y diagnóstico 5 registrados en
+[auditoría, ejecución paralela](2026-11-06--symmetry-common-cone-premise-audit-parallel-run.md). Corte de
+etapa 2 aplicado a la candidatura de novedad del argumento local;
+etapas 3–4 no ejecutadas. Realización exacta de la extensión espacial
+abierta, sin afirmación de imposibilidad. Sin promoción ni revisión externa.
+
+**Decisión documental posterior — 2026-11-06:** autorizada una lectura
+acotada del mecanismo RG de Anber–Donoghue;
+[nota](2026-11-06--selection-rg-documentary-decision.md).
+Se distingue flujo de parámetros efectivos con escala de evolución temporal
+de la regla microscópica. Ruta de selección aparcada: falta un puente
+interactuante concreto para justificar un contrato sucesor de cálculo.
+La pregunta A y la realización exacta s=4 siguen abiertas; no se reactivan
+las etapas 3–4 ni se promueve la premisa local.
+
 ## Intuición que guía el trabajo
+
+**Intento posterior autorizado — 2026-11-06:** a petición explícita del
+usuario, se ejecuta un contrato separado de realización s=4, sin rescatar
+la candidatura de novedad ni reabrir selección. Resultado y alcance:
+[realización cíclica](2026-11-06--s4-cyclic-realization.md), PRELIMINARY,
+dos conos c=1/3 y covariancia exacta, con soporte real de cuatro vértices
+tetraédricos tras cancelaciones. No resuelve la variante de ocho saltos
+no nulos. El nuevo contrato registra esa distinción antes del verificador.
 
 La isotropía y la universalidad observadas podrían proceder de una
 selección dinámica de estructuras que protegen un cono común con poco
