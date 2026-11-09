@@ -57,3 +57,25 @@ Kostelecký–Mewes positions (codeclination theta, right ascension phi), Table 
 arXiv:1301.5367, given to integer degrees: GRB 041219A (27, 6), 100826A (112, 279),
 110301A (61, 229), 110721A (129, 333). Per-source d = 5 bounds (Table III, first row):
 2e-34, 7e-35, 2e-34, 1e-34 GeV^-1 respectively.
+
+## Per-source time-of-flight limits (added 2026-11-09, read in the original)
+
+Vasileiou et al., arXiv:1305.3463v1, Table IV ("Lower Limits on E_QG ... total degree of
+dispersion"), linear case n = 1, in Planck units, 95% one-sided, methods PairView / SMM /
+Likelihood:
+
+| GRB | subluminal (s=+1) | superluminal (s=-1) |
+| --- | --- | --- |
+| 080916C | 0.11 / 0.09 / 0.22 | 18 / 5.4 / 0.2 |
+| 090510 | 7.6 / 5.9 / 5.2 | 0.56 / 0.57 / 11 |
+| 090902B | 0.17 / 0.15 / 0.12 | 0.38 / 0.86 / 0.37 |
+| 090926A | – / 8 / 1.2 | 0.24 / 0.2 / 0.17 |
+
+(Text extraction; column alignment read from the table layout. Other strong sources such as
+the MAGIC GRB 190114C quadratic limit and H.E.S.S. AGN-flare limits are located but not read.)
+
+Consequence for MULTI_SOURCE_ORIENTATION (arithmetic, not a gate result): under D1 a source
+with E_QG,1 = X E_Pl gives at best ell_max/ell_P = 1/(2 X sup|beta|) = 4.5/X for L5a/L5b/L4.
+EXCLUDED_ROBUST (< 1/2) would need X > 9; the strongest verified source (LHAASO, ~8.2 for
+1.0e20 GeV) gives 0.549 at the most favorable direction. Sources with X ~ 0.1-1 can only give
+ell_max of order 4.5-45 ell_P.
