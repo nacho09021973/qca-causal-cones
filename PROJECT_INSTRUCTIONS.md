@@ -4,12 +4,18 @@
 
 This repository studies finite-range quantum cellular automata (QCA), their microscopic causal geometry, spectral propagation speeds, and relativistic low-energy limits.
 
-The central scientific question is not whether locality gives a finite propagation bound; that is background. The live questions are:
+The central scientific question is not whether locality gives a finite propagation bound; that is background.
+
+**Project question (since 2026-11-09, user decision; see `README.md` and `state/CURRENT_STATE.md`):**
+
+- **Coexistence:** does a single finite-range QCA, under one fixed local rule, admit both universal quantum computation (a code whose gates are implemented by the rule itself, without external control of its free or interacting parts, composing into a universal set, with preparation and readout stated) and a relativistic low-energy regime of the same rule? Every claim is stated per code, per resource set (ancillas, measurement, geometry) and per parameter choice; a negative result for one code is not a no-go for the substrate. Working model: the Thirring QCA, `U = F J`.
+
+Lines inherited from the original question (`c_IR` from causal geometry), still valid in their recorded scope:
 
 - **A — IR universality:** why different low-energy species would share one relativistic causal cone;
 - **B_infty^* — strict asymptotic matching:** under which explicitly stated structural hypotheses the massless relativistic speed `c_0` equals the strict asymptotic isotropic speed `c_strict^iso` of the same dynamics. This supersedes B* against the one-step inradius. The strong form, where locality, unitarity, homogeneity and discrete isotropy alone force the equality, is **REJECTED IN THE DECLARED s=4 CLASS**; see `state/CURRENT_STATE.md`.
 
-Do not broaden the project to causal sets, random lattices, interacting QCA, quantum gravity, or other substrate classes except under a separately chartered successor gate.
+Interacting QCA are in scope for the coexistence question, one declared model, code and resource set per charter (interacting extension authorized 2026-11-06). Do not broaden the project to causal sets, random lattices, quantum gravity, or other substrate classes except under a separately chartered successor gate.
 
 ## 2. Canonical authority
 
@@ -66,6 +72,14 @@ The scalar/trigonometric Bernstein derivative bound and its classical equality t
 Potential novelty, if any, must lie in QCA-specific structural statements, causal-body geometry, exact matching/non-matching results, or new classification theorems that survive prior-art search.
 
 ## 7. Current gate
+
+**Current front (2026-11-09).** The coexistence question, Thirring line:
+status table in `README.md`, details and statuses in `state/CURRENT_STATE.md`,
+next options in `state/ROADMAP_2026-11-09.md`. Approximate recovery of the
+M=1 code is excluded (promoted 2026-11-09); other codes, resources and the
+interacting low-energy regime are OPEN. Each new step needs its own charter.
+
+The paragraphs below record the gates of the original question.
 
 The **STANDARD WEYL/DIRAC EXACT GATE is PASS** for its declared cases, on the
 evidence committed at `2c7c2c9`. This does not establish generality or lift all
