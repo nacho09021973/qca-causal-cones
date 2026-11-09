@@ -127,3 +127,82 @@ identidad de compresión; no se atribuye originalidad al resultado.
 Resultado: `NO_DIFFERENT_UNTILTED_ISOTROPIC_SPEED_AT_ORIGIN_FOR_GENERAL_U4_COIN`.
 Se cierra esta ampliación mínima. Sin búsqueda numérica, barrido,
 revisión externa, promoción, commit ni push. Se preservan cambios ajenos.
+
+
+---
+
+## Apéndice A — contrato de ampliación por soporte (2026-11-09)
+
+**Estado inicial: OPEN.** Este apéndice es nuevo y no está cubierto por la
+revisión ni por la promoción de las secciones anteriores.
+
+**Autorización:** el usuario responde «Sigue» a comprobar si la rigidez
+sobrevive al ampliar las reglas conservando el soporte tetraédrico y las
+condiciones del cono. Precisa que busca diferencias físicas entre modelos,
+no el valor numérico de c en unidades humanas.
+
+**Base leída:** d4f06d0ddd7a9ddc2619e0562f48168cba8e7bd9.
+Rama de trabajo: research/tetrahedral-support-rigidity-2026-11-09.
+Se conserva íntegro el informe anterior. Por la instrucción actual de
+«un paso, una pregunta, un fichero», contrato y posterior ejecución se
+registran como apéndices de este único informe existente, en commits
+separados. El primer commit congela el contrato; no se modifica el contrato
+histórico ni se promociona ningún resultado.
+
+### A.1 Conocido, pregunta y criterio de abandono
+
+Conocido: las secciones 1–4 de este informe prueban c0=1/3 para cualquier
+moneda U(4) con los cuatro proyectores de desplazamiento fijados, bajo
+sus condiciones nodales. CURRENT_STATE.md registra su promoción en ese
+alcance el 2026-11-09.
+
+Pregunta única: ¿todo símbolo unitario homogéneo de cuatro componentes con
+soporte REAL exactamente
+F={(-1,-1,-1),(-1,1,1),(1,-1,1),(1,1,-1)}/sqrt(3)
+tiene c0=1/3 cuando posee en k=0 un doblete espectral separado, con cono
+lineal isotrópico no degenerado y sin inclinación?
+
+Se admite U(k)=sum_{v in F} A_v exp(-i k.v), con A_v matrices complejas
+4x4 arbitrarias y no nulas, U(k) unitaria para todo k. No se presupone
+moneda-desplazamiento, rango de A_v, base interna, covariancia D2/C/S,
+irreducibilidad ni un segundo doblete. La red es el subgrupo aditivo
+generado por F; no hay cociente espacial finito. Longitud de cada salto y
+duración de actualización: uno.
+
+El cono se define por los generadores comprimidos
+H_i=T†[i U(0)† partial_i U(0)]T, para una isometría nodal T:C²->C⁴.
+Se exige tr H_i=0 y tr(H_i H_j)/2=c0² delta_ij, c0>0.
+La fase nodal puede ser cualquiera; su multiplicidad es exactamente dos.
+
+Criterio de abandono de la búsqueda de otra velocidad en esta clase:
+una reducción algebraica de TODA la clase a la familia ya resuelta, o
+una prueba directa de c0=1/3. No se ampliarán soporte, dimensión o tipo
+de nodo para evitar ese cierre.
+
+### A.2 Método y límites
+
+Primero comparar coeficientes de Fourier en U†U y UU†; después estudiar
+las consecuencias sobre los rangos y los generadores nodales. La posible
+vía mediante diferencias únicas del soporte y proyectores ortogonales
+ya se ha advertido antes de este registro: se congela el alcance, no
+se reivindica prerregistro del descubrimiento.
+
+Una derivación manual completa dará PRELIMINARY; un testigo exacto de
+otra velocidad refutará la extensión; una obligación no resuelta dará
+OPEN_AFTER_BOUNDED_ANALYSIS. Una sesión, sin barrido ni programa nuevo.
+Si hiciera falta cálculo automatizado adicional, no se ejecutará como
+script efímero. Las comprobaciones 55/55 del informe histórico no se
+atribuirán a esta extensión.
+
+No están cubiertos: interacciones, universalidad computacional, estabilidad
+del nodo bajo perturbaciones que lo destruyan, otros soportes o dimensiones,
+otros nodos, cuerpo causal estricto asintótico, máxima velocidad de grupo,
+selección cosmológica o valor físico de c.
+
+Se consultaron las instrucciones versionadas, el estado y los informes
+relevantes, además de scripts/biblioteca_catalog/curated.csv. El índice
+local biblioteca/INDICE.md no forma parte del árbol remoto; las reglas
+locales ~/herramientas/REGLAS.md no están disponibles en este entorno.
+No se declara haberlos leído. La búsqueda bibliográfica inicial no
+certifica novedad ni ausencia de antecedentes. NOVELTY = OPEN.
+No se encarga revisión externa ni se actualiza el estado canónico.
