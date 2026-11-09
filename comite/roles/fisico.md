@@ -9,4 +9,5 @@
   2. Con masa: ¿se usa c_H o c_{ω^2} explícitamente, y no |∇ω(0)|?
   3. ¿Se restaura la escala física (a, Δt) sólo después de fijar la geometría adimensional?
   4. ¿Lo que se diría del régimen de laboratorio o de la física real está autorizado
-     (`CURRENT_STATE.md` §8.21, gate de realización física NOT_EXECUTED)?
+     (`CURRENT_STATE.md` §8.21: 4B ejecutado y cerrado como `NO_ABSOLUTE_SCALE_DERIVABLE`;
+     4A sin contrato)? Ninguna afirmación de laboratorio sin contrato propio.
