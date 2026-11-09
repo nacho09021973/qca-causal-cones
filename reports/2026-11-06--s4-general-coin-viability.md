@@ -545,3 +545,54 @@ Se comprobaron los originales que sostienen C.2. Algunas otras referencias
 recientes sugeridas por la búsqueda no pudieron corroborarse directamente
 en su texto primario y no se usan para sostener novedad ni prioridad. El
 informe automático tampoco determina que una bibliografía sea exhaustiva.
+
+
+---
+
+## Apéndice D — síntesis y puente de un paso: contrato (2026-11-09)
+
+**Estado al registrar: OPEN.** Autorización actual del usuario: reunir los
+antecedentes y el resultado propio para construir una base sólida; reiterada
+con «Sigue». Esta es una síntesis acotada dentro de A, no una promoción.
+
+**Conocido.** B deriva la factorización, las compresiones SIC y c0=1/3
+(PRELIMINARY). C identifica sus antecedentes. El constructor de
+[2026-11-06--s4-cyclic-realization.md](2026-11-06--s4-cyclic-realization.md),
+secciones 2 y 4, ya proporciona un ejemplo exacto; su alcance promovido se
+registra en CURRENT_STATE.md, bloque de promociones del 2026-11-09.
+No se construirá otro ejemplo ni se repetirán sus verificadores.
+
+**Pregunta única.** ¿La compresión sobre el doblete fijo de k=0, retirando
+su fase nodal, coincide con el operador de UN paso de Foster–Jacobson [C3],
+y hasta dónde permite esa identidad reunir ambas construcciones?
+
+Se mantienen íntegramente las hipótesis y normalización de A. Sean
+W=U(0), WT=zT, T†T=I2, Pi=TT† y Q=I4-Pi. Se compararán
+K(k)=z^(-1)T†U(k)T y el polinomio de pasos tetraédricos de [C3], pp. 1–2,
+ecuaciones (2), (6) y (9), tras identificar longitud elemental, ejes y
+convención de Fourier. La igualdad que se busca es algebraica de un paso,
+no una identificación de los espacios-tiempo completos.
+
+**Criterio de abandono.** Si no coinciden los coeficientes de ese
+polinomio, se abandona la identificación con [C3]. Si comprimir después de
+dos pasos difiere de iterar K, se rechaza cualquier equivalencia temporal
+general basada solo en la coincidencia de un paso. El testigo para ese
+contraste será exclusivamente el constructor ya existente.
+
+**Método y cierre.** Derivación manual breve: usar B, calcular la
+compresión, insertar Pi+Q en dos pasos y, si hace falta, especializar un
+eje del constructor existente. La ruta de la identidad y de su posible
+obstrucción ya fue advertida durante el razonamiento previo a este
+registro: no se reivindica prerregistro del descubrimiento. Se registra
+el alcance antes de incorporar la derivación al informe.
+
+Una derivación completa se marca PRELIMINARY; una obligación no resuelta,
+OPEN_AFTER_BOUNDED_ANALYSIS. No habrá nuevos programas, simulaciones,
+clasificaciones, modelos, reejecuciones, revisión externa ni promoción.
+Se reusan las referencias de C con atribución expresa; NOVELTY = OPEN.
+
+Se han releído las instrucciones versionadas, los pasajes pertinentes del
+estado, el informe existente, su constructor y el catálogo versionado.
+Los originales [C1]–[C3] se han contrastado directamente. Las reglas
+locales ~/herramientas/REGLAS.md no están disponibles aquí; no se declara
+haberlas leído. El índice local no se sustituye por un índice inventado.
