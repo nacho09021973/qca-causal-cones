@@ -1,0 +1,8 @@
+Failed run 3 of scripts/verify_thirring_two_particle_ir.py at commit 0a48dbd (exit 1).
+Cause: series/limits were taken on the raw implicit-differentiation expression (contains re() of radicals), which sympy cannot expand (NotImplementedError in power nseries). Inspection: the certified closed form c_b^2 = M_b nu^2/(sqrt2 C0 mu) expands without error.
+Fix: limits and series use the closed form, which the script certifies equal to the raw expression first. No expectation changed.
+
+    raise NotImplementedError()
+NotImplementedError
+
+[exited with code 0]

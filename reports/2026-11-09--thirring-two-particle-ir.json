@@ -1,0 +1,165 @@
+{
+  "family": "chi=pi/2, mu in (0,1)",
+  "bound_points": [
+    {
+      "mu": "3/5",
+      "t_squared": "25/16 - 3*sqrt(41)/16",
+      "lambda_b": "16/25 + 3*sqrt(41)*I/25"
+    },
+    {
+      "mu": "5/13",
+      "t_squared": "169/144 - 5*sqrt(313)/144",
+      "lambda_b": "144/169 + 5*sqrt(313)*I/169"
+    }
+  ],
+  "O3c": {
+    "c_b2": "(s**2 - 1)**2*asin(sqrt(2)*s/(s**2 + 1))/(s*sqrt((s**2 - 1)**2 + (s**2 + 1)**2))",
+    "c_f2": "(1 - s**2)*atan(s)/s",
+    "cb2_minus_cf2_series": "-4*s**2/3",
+    "M_b": "acos(nu^2)"
+  },
+  "checks": [
+    {
+      "name": "O1-first-step-gate-D-for-symbolic-mu",
+      "passed": true
+    },
+    {
+      "name": "O2-omega''(0)=nu/mu",
+      "passed": true
+    },
+    {
+      "name": "O2-omega'(0)=0",
+      "passed": true
+    },
+    {
+      "name": "O2-omega^2-q^2-coefficient=c_f^2",
+      "passed": true
+    },
+    {
+      "name": "O2-limit-omega0/mu=1",
+      "passed": true
+    },
+    {
+      "name": "O2-limit-c_f^2=1",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=3/5-decay-0<t^2<1",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=3/5-t_explicit^2=r-and-0<t<1",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=3/5-T+numerator-zero",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=3/5-|lambda_b|=1",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=3/5-cos-M_b=nu^2",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=3/5-lattice-eigenvector-window-|x|<=5",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=5/13-decay-0<t^2<1",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=5/13-t_explicit^2=r-and-0<t<1",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=5/13-T+numerator-zero",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=5/13-|lambda_b|=1",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=5/13-cos-M_b=nu^2",
+      "passed": true
+    },
+    {
+      "name": "O3a-mu=5/13-lattice-eigenvector-window-|x|<=5",
+      "passed": true
+    },
+    {
+      "name": "O3b-Gamma0-T+numerator=(-i)(1-i)(S-nu sinh kappa)",
+      "passed": true
+    },
+    {
+      "name": "O3c-identity-cos(2atan s)=nu",
+      "passed": true
+    },
+    {
+      "name": "O3c-cosh^2-sinh^2=1",
+      "passed": true
+    },
+    {
+      "name": "O3c-bound-condition-S0=-nu*sinh",
+      "passed": true
+    },
+    {
+      "name": "O3c-C0^2+S0^2=1",
+      "passed": true
+    },
+    {
+      "name": "O3c-omega'(z0)=-i",
+      "passed": true
+    },
+    {
+      "name": "O3c-F_p(0)=0",
+      "passed": true
+    },
+    {
+      "name": "O3c-E''(0)=2sqrt2 nu^2/(C0 mu)",
+      "passed": true
+    },
+    {
+      "name": "O3c-identity-cos(2asin(mu/sqrt2))=nu^2",
+      "passed": true
+    },
+    {
+      "name": "O3c-c_b^2-closed-form",
+      "passed": true
+    },
+    {
+      "name": "O3c-M_b-below-threshold-cos(2omega0)=2nu^2-1<nu^2=cos(M_b)",
+      "passed": true
+    },
+    {
+      "name": "O3c-limit-M_b/mu=sqrt2",
+      "passed": true
+    },
+    {
+      "name": "O3c-limit-c_b^2=1",
+      "passed": true
+    },
+    {
+      "name": "O3c-c_b^2-c_f^2=-mu^2/3+O(mu^4)",
+      "passed": true
+    },
+    {
+      "name": "O4-Gamma-W-Gamma=-W",
+      "passed": true
+    },
+    {
+      "name": "O4-g+(mu Q)/(-i mu)->sqrt(1+Q^2)+Q",
+      "passed": true
+    }
+  ],
+  "provenance": {
+    "scripts/verify_thirring_two_particle_ir.py": "9e3fafc8abe16ae336a7b3110c415377b92c354862765f28720035aeeb26603a",
+    "theory/THIRRING_TWO_PARTICLE_IR_PREFLIGHT_GATE.md": "73472f8ef1776321e2de29f69775d969593fc08177b9ed1906184f389fbbf786",
+    "sources/1711.03920v1.pdf": "3032b33d1375d4a55008aafe1f0e74d228052fa120446694ba8e9ab8e41867ca",
+    "sources/1804.08508v1.pdf": "495646b1a0c0a2822422c4d65536b8c4caa0d82c5efe7e48df878766af91f0d0"
+  }
+}

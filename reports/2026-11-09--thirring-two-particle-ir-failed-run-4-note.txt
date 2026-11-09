@@ -1,0 +1,10 @@
+Failed run 4 (commit 9510d54): 29/32; records kept as ...-failed-run-4.{txt,json} and ...-failed-run-4-illustration.txt.
+Failures and causes (diagnosed by inspection, no results retained from the inspection):
+1. O3a lattice eigenvector at mu=3/5 and mu=5/13: the check required both coefficients of A + B*T (after reducing
+   modulo T^2 = r) to vanish. But t = sqrt(r) denests into the coefficient field: t = (sqrt(2-mu^2) - mu)/(sqrt2 nu)
+   (e.g. (sqrt41 - 3)/(4 sqrt2) at mu=3/5), so 1 and T are not independent and the test was wrong. A float
+   evaluation of U psi - lambda_b psi at bulk and boundary sites gave agreement to ~1e-16 (inspection only).
+2. O3c threshold identity cos(2 acos nu) = 2 nu^2 - 1 not recognised by simplify under the rational
+   parametrization (tooling).
+Fix: substitute the explicit denested t (certifying t^2 = r and 0 < t < 1) and evaluate A + B t; use expand_trig
+for the double-angle identity. No expectation changed.
