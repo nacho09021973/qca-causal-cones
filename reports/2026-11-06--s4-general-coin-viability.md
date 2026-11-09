@@ -206,3 +206,141 @@ locales ~/herramientas/REGLAS.md no están disponibles en este entorno.
 No se declara haberlos leído. La búsqueda bibliográfica inicial no
 certifica novedad ni ausencia de antecedentes. NOVELTY = OPEN.
 No se encarga revisión externa ni se actualiza el estado canónico.
+
+
+## Apéndice B — ejecución algebraica de A (2026-11-09)
+
+**PRELIMINARY — derivación manual de autor; sin revisión independiente ni
+promoción. NOVELTY = OPEN.**
+
+Contrato congelado en el commit
+c7ac2d9f748bf19f2f0690d573e2f3e22fe0e607, apéndice A.
+No se han ejecutado programas, simulaciones o nuevos verificadores para
+este apéndice. No se atribuyen a él los controles del informe original.
+
+**Resultado en el alcance de A:** toda regla admitida es equivalente,
+mediante un cambio de base interna constante, a una moneda U(4) seguida
+del desplazamiento tetraédrico ya estudiado. Por tanto todo doblete que
+cumpla las condiciones nodales de A tiene c0=1/3. La búsqueda de otra
+pendiente en esta clase termina por reducción algebraica, no por falta
+de ejemplos.
+
+### B.1 El soporte obliga a anular cada término cruzado
+
+Los cuatro vértices v de F son afínmente independientes. Por tanto,
+para v!=w, la diferencia w-v determina de manera única el par ordenado
+(v,w): una igualdad w-v=w'-v' daría una relación afín entre los cuatro
+vértices; la independencia solo admite el mismo par (excluido el caso
+de diferencia cero). Equivalentemente, este tetraedro no tiene un
+paralelogramo formado por cuatro vértices.
+
+En la red infinita, los caracteres de Fourier de desplazamientos
+distintos son independientes. Al comparar los coeficientes de U†U=I y
+UU†=I se obtiene, para v!=w,
+
+    A_v† A_w = 0,                 A_v A_w† = 0,
+
+y, para el desplazamiento cero,
+
+    sum_v A_v† A_v = I4,          sum_v A_v A_v† = I4.
+
+Las dos ortogonalidades provienen de las dos identidades unitarias;
+no se deduce una de ellas asumiendo que los A_v sean normales.
+
+### B.2 La forma moneda-desplazamiento es una consecuencia
+
+Definir W=U(0)=sum_v A_v. Es unitario. Definir
+
+    P_v = W† A_v = A_v† A_v.
+
+La segunda igualdad usa A_w† A_v=0 para w!=v. Así P_v es positivo y
+sum_v P_v=I4. Para v!=w,
+
+    P_v P_w = A_v† (A_v A_w†) A_w = 0.
+
+Por ello P_v=P_v sum_w P_w=P_v²: son proyectores ortogonales.
+Cada P_v es no nulo porque el soporte REAL exige A_v!=0.
+Cuatro proyectores no nulos que suman I4 tienen todos rango uno.
+Finalmente,
+
+    A_v = W P_v,
+    U(k) = W sum_v P_v exp(-i k.v).
+
+No se supuso esta factorización, ni se eligió una base que la impusiera.
+
+Existe una unitaria interna constante S con S†P_v S=E_v, donde E_v son
+los cuatro proyectores fijos de las secciones 1–2, emparejados con los
+mismos vértices. Entonces
+
+    S†U(k)S = (S†WS) sum_v E_v exp(-i k.v).
+
+Es exactamente la familia anterior, con moneda W'=S†WS arbitraria.
+La conjugación constante conserva espectro, multiplicidades, separación
+del doblete y la métrica de las pendientes; no cambia posiciones,
+momentos, duración del paso ni unidades.
+
+### B.3 Comprobación directa de la pendiente
+
+Para no depender únicamente de la remisión al resultado anterior,
+se deriva la pendiente de nuevo. Con el signo de Fourier de A,
+
+    J_i = i U(0)† partial_i U(0) = sum_v v_i P_v,
+    B_v = T† P_v T,
+    H_i = T† J_i T = sum_v v_i B_v.
+
+Los B_v son positivos, de rango a lo sumo uno, y suman I2.
+Como los vértices tienen norma uno y v.w=-1/3 para v!=w,
+la inversión tetraédrica da
+
+    B_v = (I2 + 3 sum_i v_i H_i)/4.                    (B1)
+
+En efecto, al sustituir H_i=sum_w w_i B_w, el coeficiente de B_v
+es 1 y el de cada B_w con w!=v es cero.
+
+Sin inclinación, H_i=a_i.sigma con a_i real. La isotropía completa
+exige a_i.a_j=c0² delta_ij. En particular,
+
+    |sum_i v_i a_i|² = c0² |v|² = c0²,
+    tr B_v = 1/2,
+    det B_v = (1-9 c0²)/16.                           (B2)
+
+Como rango B_v<=1, su determinante se anula. La traza 1/2 evita la
+compresión nula. Se sigue c0²=1/9 y, por c0>0, c0=1/3.
+
+La ecuación (B2) es la misma obstrucción por rango de la prueba original.
+Lo añadido es que unitariedad, soporte exacto y s=4 obligan a que ese
+mecanismo se aplique a TODOS los coeficientes permitidos por A.
+No se necesita un segundo doblete ni una hipótesis de irreducibilidad.
+
+### B.4 Alcance físico y cierre
+
+La formulación independiente de unidades es
+
+    c_IR tau / ell = 1/3,
+
+si ell es la longitud física del salto elemental y tau su duración.
+Bajo un cambio de unidades, los cambios de c_IR, tau y ell se cancelan.
+Comparar ese cociente entre modelos exige mantener claro qué se
+considera salto y actualización elementales; reagrupar actualizaciones
+no equivale por sí solo a cambiar la física.
+
+La dependencia es estructural: geometría de diferencias del soporte,
+unitariedad, dimensión interna cuatro y condiciones del doblete.
+La geometría causal sola sigue sin determinar la velocidad en clases
+más amplias. Tampoco se ha identificado ell/tau con la máxima velocidad
+de grupo ni con una velocidad estricta asintótica.
+
+Esta prueba da rigidez CONDICIONAL: si una perturbación conserva el
+soporte, s=4 y el tipo de nodo, no puede cambiar c0. No prueba que una
+perturbación genérica conserve el doblete, su separación o su isotropía.
+No selecciona el soporte ni explica por qué nuestro universo lo usaría.
+No demuestra una velocidad universal entre sectores ajenos a esta clase.
+
+Se aplica el criterio de abandono de A.1: buscar una velocidad distinta
+cambiando estos A_v no abre una familia espectral nueva. No se inicia
+otra ampliación.
+
+**Registro de evidencia:** reducción algebraica completa de autor,
+PRELIMINARY; revisión independiente pendiente; sin verificación formal,
+sin promoción y sin afirmación de novedad. La promoción del 2026-11-09
+al principio del fichero sigue cubriendo solo las secciones originales.
