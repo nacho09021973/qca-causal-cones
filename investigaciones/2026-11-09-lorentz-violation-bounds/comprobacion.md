@@ -1,0 +1,46 @@
+# Astrophysical bounds on photon dispersion and birefringence — source check
+
+2026-11-09. Requested by the user («busca esas cotas astrofisicas reales») after
+the observational-signature gate (`reports/2026-11-09--observational-signature-saturation.md`),
+whose Sec. 5 deferred any comparison with data. Located with WebSearch
+(standard mode); every number below was read in the original arXiv text
+through the alphaXiv full-text tool in this session. Search summaries were
+used only to locate papers. This file records literature, not a comparison:
+no translation of these bounds to the repository's rows is made here (that
+needs a successor charter).
+
+## Verified in the original
+
+| # | Source | What was read | Numbers (95% CL unless stated) |
+| --- | --- | --- | --- |
+| 1 | LHAASO Collaboration, "Stringent Tests of Lorentz Invariance Violation from LHAASO Observations of GRB 221009A", arXiv:2402.06009v3 (dated 17 Feb 2026) | Abstract; Eqs.(1)-(5); Table I; Sec. IV | Dispersion convention E^2 ≃ p^2c^2[1 - Σ s (E/E_QG,n)^n], s = +1 subluminal, -1 superluminal; v(E) ≈ c[1 - s (n+1)/2 (E/E_QG,n)^n]. ML (MINOS): E_QG,1 > 1.0×10^20 GeV (subluminal), > 1.1×10^20 GeV (superluminal); E_QG,2 > 6.9×10^11 GeV (sub), > 7.0×10^11 GeV (super). Abstract: E_QG,1 > 10 E_Pl, E_QG,2 > 6×10^-8 E_Pl; E_Pl ≃ 1.22×10^19 GeV. Source at z = 0.151; isotropic (direction-independent) dispersion model. |
+| 2 | V. Vasileiou et al., "Constraints on Lorentz Invariance Violation from Fermi-LAT Observations of GRBs", arXiv:1305.3463v1 | Abstract | Subluminal, no source-intrinsic dispersion assumed, GRB 090510: E_QG,1 > 7.6 E_Pl, E_QG,2 > 1.3×10^11 GeV. (LHAASO [ref 21] quotes the same work as E_QG,1 > 9.3×10^19 GeV sub, 1.3×10^20 GeV super; consistent with 7.6 E_Pl.) |
+| 3 | V.A. Kostelecký, M. Mewes, "Constraints on relativity violations from gamma-ray bursts", arXiv:1301.5367v1 (PRL 110, 201601) | Full text, Tables II-III | In the SME photon sector, dispersion for odd mass dimension d is necessarily accompanied by birefringence; only CPT-even, even-d coefficients give dispersion without birefringence. Direction-dependent bounds from GRB polarization: |Σ Y_jm k^(5)_(V)jm| < 7×10^-35 to 2×10^-34 GeV^-1 depending on the source direction (GRB 041219A, 100826A, 110301A, 110721A); isotropic |k^(5)_(V)00| < 2×10^-34 to 9×10^-34 GeV^-1. A single source constrains only one direction-dependent combination. |
+
+## Located, not verified
+
+- J.D. Finke, S. Razzaque, arXiv:2210.11261: claimed possible evidence for
+  subluminal LIV from the survival of an 18 TeV photon of GRB 221009A
+  (E_QG,1 ≲ 49 E_Pl). Known only from the search summary; contested by later
+  analyses; not read. `[UNVERIFIED]`
+- Abdo et al. (Fermi), Nature 462, 331 (2009), arXiv:0908.1832, GRB 090510,
+  E_QG,1 > 1.2 E_Pl (earlier, more conservative). Seen only in summaries and
+  as LHAASO ref. [20]. `[UNVERIFIED]`
+- Yang, Bi, Yin (2024) LHAASO-data analysis with stronger quoted limits. Seen
+  only in the search summary. `[UNVERIFIED]`
+
+## Relevance to the repository (not a result)
+
+- The verified time-of-flight bounds assume an isotropic dispersion law. The
+  repository's order-1 (beta) rows have direction-dependent corrections that
+  vanish on certain planes; one source bounds one direction.
+- Source 3 says that, within the SME effective field theory, an order-1
+  (d = 5) dispersion of photons is necessarily birefringent and is then
+  bounded by polarization at the 10^-34 GeV^-1 level. Whether a QCA row's
+  beta term maps to an SME d = 5 coefficient (for example via opposite signs
+  in two helicity blocks, as in L5b) is a modelling question not addressed
+  here.
+- Any numerical bound on the lattice step ell or the clock frequency from
+  these sources requires the dictionary H_gamma plus a successor contract.
+
+Tools: WebSearch; alphaXiv full text. No ~/herramientas tool used.
