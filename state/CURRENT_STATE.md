@@ -2,6 +2,28 @@
 
 **Date:** 2026-11-09
 
+**Coexistence quantifiers and line budget decided — 2026-11-09:** after
+committee brief `reports/comite/comite_decision_002_rumbo-tras-cierre-aproximado-thirring.md`
+(verdict RECOMMEND_PROCEED_WITH_CAVEATS; all members Claude, one voice), the
+user adopted the options note
+[coexistence quantifiers](../reports/2026-11-09--coexistence-quantifiers-options.md)
+with corrections. Binding on every coexistence contract: coexistence at the
+same points of a family declared before computing, with the property kept in
+the limit stated (Q1-B); regime of the code's carriers (Q2-A); frames and
+times fixed in advance, independent of the logical input, not using the full
+evolution to force recovery (Q3-A; F^T B admitted); rule-only resources for
+the next contract (Q4-A). A demonstrated negative discards only the declared
+family and sector, not the Thirring model. Operational budget: two further
+contracts, mandatory closure and balance after the second; partial positives
+do not reset the count; otherwise stop as OPEN unless an exclusion is
+demonstrated in scope. The three results promoted today are labelled
+ESTABLISHED in frozen scope, one cross-family review each (labelling, not a
+new review). Committee files (`comite/contexto.md`, guardrail
+NO_SCOPE_BROADENING, physicist and guardian anchors) aligned with the
+coexistence question. **No contract chartered by this entry**; the committee
+recommends a single exact two-particle preflight for option (c), subject to
+a separate user authorization.
+
 **Project question reframed in README — 2026-11-09:** user decision
 («este es un objetivo mucho más exacto y concreto que el objetivo inicial»):
 README now leads with the coexistence question of the roadmap — whether one
