@@ -1,7 +1,31 @@
 # Thirring low-energy packet gate: results and closing balance
 
 2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: written proof plus exact
-author checks; no independent review, no promotion.**
+author checks; one sealed cross-family review (GPT-6 Astra, OpenAI) with
+repairs applied, not re-reviewed; no promotion.**
+
+[Sealed Astra review](reviews/2026-11-09-thirring-low-energy-packet-astra/informe_astra.md)
+of the text at b4ac949 (revision-ciega astra, herramientas 97292a9):
+«reparación necesaria». The verdict holds once the proof is completed,
+with no change to the frozen construction. The contract was drafted by
+Codex (same family as the reviewer); the report is by Claude.
+
+Repairs applied (each checked by the author before adopting it):
+
+1. The missing 1/(2pi) Fourier factor in psi~ is restored (Sec. 4(ii)).
+2. The uniform tail bounds now include spinor and T derivatives and the
+   non-separable T factor (Sec. 4(iii)-(v)).
+3. The velocity bound is stated for |omega'|, since B moves with
+   omega' < 0.
+4. A general derivation of the contact condition (valid on the whole
+   support) is separated from the two certified example points
+   (Sec. 4(i)).
+5. The universal remark at the end of Sec. 7 is withdrawn.
+6. The diagnostic "leakage" is labelled an estimator; the announced box-wrap
+   diagnostic was not computed (Sec. 5).
+7. The 39/39 count is qualified (Sec. 6).
+
+The original text is in git at b4ac949.
 
 Contract [THIRRING_LOW_ENERGY_PACKET_GATE.md](../theory/THIRRING_LOW_ENERGY_PACKET_GATE.md),
 frozen by Codex at `715096f` before execution: contract 2 of 2 of the Thirring
@@ -76,14 +100,33 @@ interacting P-sector solution is (1711.03920 Eq.(12) / 1804.08508 Eq.(18)):
 
 on y ≥ 0, with the phase e^{-i chi} on RL at y = 0 and antisymmetric
 extension. It is an exact lattice eigenvector of U with eigenvalue
-e^{-i omega(q1)} e^{-i omega(q2)}. There are no evanescent terms. Certified
-at two algebraic momentum pairs, one with p = 0 (P3). For chi = 0 the same
-form, with T = 1 and no phase, is an exact eigenvector of F (P3). Here
-T(q1,q2) = [g_+(q1) + e^{-i chi} g_+(q2)] / [g_+(q2) + e^{-i chi} g_+(q1)],
-and |T| = 1.
+e^{-i omega(q1)} e^{-i omega(q2)}, with no evanescent terms. Here
+T(q1,q2) = [g_+(q1) + e^{-i chi} g_+(q2)] / [g_+(q2) + e^{-i chi} g_+(q1)].
+
+General argument, for every (q1, q2) in the support (repair 4):
+
+- The four waves share the free eigenvalue. Shifting both momenta by pi and
+  flipping both bands produces two minus signs.
+- At y = 0 the unmodified combination H has H_RL = 2(b - Tc) and
+  H_LR = 2(c - Tb), with (a,b,c,d) = v+_{q1} ⊗ v+_{q2}.
+- Applying the phase z = e^{-i chi} to RL only, contact antisymmetry
+  requires z(b - Tc) = Tb - c, that is T = (c + zb)/(b + zc), which is the
+  formula above.
+- In the positive half-space, the transitions that reach the contact use
+  its RL component, where J f_RL = H_RL. The remaining equations follow by
+  antisymmetry, and components incompatible with G = -1 vanish.
+- At chi = pi/2, writing g_+(q_j) = -i a_j with a_j > 0, one gets
+  T = (a1 - i a2)/(a2 - i a1), |T| = 1, and the denominator has modulus
+  sqrt(a1^2 + a2^2) > 0. There is no singularity at p = 0.
+
+The exact checks at two algebraic momentum pairs (one with p = 0),
+chi = pi/2 and chi = 0 (P3), are worked examples of this argument, not its
+proof.
 
 **(ii) Exact approximate solution.** Let
-psi~(t) = (1/sqrt2) ∫∫ c(q1,q2) e^{-it(omega(q1)+omega(q2))} (1/2) f_{q1,q2} dq1 dq2,
+psi~(t) = (1/(2 pi sqrt2)) ∫∫ c(q1,q2) e^{-it(omega(q1)+omega(q2))} (1/2) f_{q1,q2} dq1 dq2,
+where the factor 1/(2pi) comes from the two normalized one-particle waves
+(repair 1),
 with normalized spinors (the swap and doubler partners have the same norm,
 P2). Since each f is an exact eigenvector and c is bounded with compact
 support, U psi~(t) = psi~(t+1) exactly. psi~(t) lies in l^2 by the tail
@@ -101,34 +144,47 @@ supported where some packet is at least L from its centre:
 - the incoming part on y < 0;
 - the line y = 0.
 
-One-particle tail bound: integrating by parts twice (h is continuous,
-piecewise smooth, with jumps of h' at ±1),
+Tail bound (repair 2). Rescale q = q_c + delta r with |r| ≤ 1. On the
+supports:
 
-    |packet(x)| ≤ C min(delta^{1/2}, delta^{-3/2} |x - x_c|^{-2}),
+- ||d^j_q v+_q|| ≤ C_j mu^{-j} and |d^j_{q_i} T| ≤ C_j mu^{-j} for j = 1, 2,
+  since q/mu stays in a compact set and the denominator of T, divided by mu,
+  is bounded away from zero;
+- |omega''| ≤ C/mu.
 
-so the l^2 mass beyond distance D is at most C (delta D)^{-3}. With D = L
-and delta L = mu^{-1/2}, the initial error is O(mu^{3/4}).
+After removing the linear phase at q_c, the residual phase is
+t[omega(q_c + delta r) - omega(q_c) - delta r omega'(q_c)]. Its first two
+r-derivatives are bounded uniformly for 0 ≤ t ≤ 4L, because
+t delta^2/mu ≤ 4 ceil(mu^{-2}) mu^2 = O(1). Two integrations by parts,
+including the jumps of h', then give
 
-**(iv) Time T.** The phase is q x + t omega(q), with derivative
-x - x_c + t omega'(q). On the support, omega'(mu K) ≥ 0.55 for both packets
-(P5, rational bounds for 0 < mu < 1/10). So the incoming part of psi~(T) has
-y-centre at most 2L - 1.10 · 4L = -2.4L. The outgoing part has y-centre at
-least +2.4L.
+    |psi_t(x)| ≤ C delta^{1/2} (1 + delta |x - x_c + t omega'(q_c)|)^{-2},
 
-Spreading is T delta max omega'' ≤ 4L mu^{3/2} (C/mu) = O(mu^{-3/2}), much
-less than L. Repeating the integration by parts with the extra terms
-t omega'' ≤ C T/mu, whose contribution is controlled by
-(T/mu) D^{-3} = O(mu^3), shows that the incoming part restricted to y ≥ 0,
-and the y = 0 line, are O(mu^{3/4}).
+and the l^2 mass beyond distance D is at most C (delta D)^{-3}. For waves
+multiplied by the non-separable T(q1,q2), the same one-variable estimate is
+combined with Parseval in the other variable. With D = L and
+delta L ≍ mu^{-1/2}, the initial error is O(mu^{3/4}), with constants common
+to the four columns.
 
-The same holds for the free solution psi~_free (chi = 0, T = 1), with
-||F^T P B - psi~_free(T)|| = O(mu^{3/4}).
+**(iv) Time T.** On the support, |omega'(q)| ≥ 0.55 for both packets
+(P5, rational bounds for 0 < mu < 1/10). For B, omega' < 0 (repair 3).
+
+- At t = 4L the incoming centres satisfy x1 ≤ -1.2L and x2 ≥ 1.2L, so the
+  incoming y-centre is at most -2.4L. The outgoing centres are in the
+  opposite order.
+- The wrong-side restriction, including the contact line, requires a
+  one-particle deviation of at least 1.2L. By the uniform tail bound of
+  (iii) this is O(mu^{3/4}).
+- For chi = 0, T = 1 and the eigenfunction is exactly the free antisymmetric
+  wave projected by P, so psi~_free(t) = F^t P B exactly.
 
 **(v) Phase variation.** At low energy, g_+(mu Q) = -i mu e^{asinh Q}(1 + O(mu))
 (P6). So T is a smooth function of (q1/mu, q2/mu) with denominator bounded
 below by c mu, and |grad T| ≤ C/mu on the support. The support has width
 O(delta) around the centre (q1c, q2c) = (mu k_a, -mu k_b), so
-sup |T - T_c| = O(delta/mu) = O(mu^{1/2}), with T_c := T(q1c, q2c). Hence
+sup |T - T_c| = O(delta/mu) = O(mu^{1/2}), with T_c := T(q1c, q2c).
+Parseval and the contractivity of spatial restrictions turn this into a
+norm bound. Hence
 
     U^T P B|ab> = T_c F^T P B|ab> + O(mu^{1/2}).
 
@@ -151,13 +207,19 @@ Delta = asinh k_a + asinh k_b. Since Delta > 0 for this code, l_ab > 0.
 
 Error budget: O(mu^{1/2}) from the phase variation and O(mu^{3/4}) from the
 tails. The constants in (iii)-(v) are written, not machine-checked.
+Uniformity per column implies operator-norm uniformity (logical dimension
+4), so lim ||E_mu|| = sqrt(4/9) = 2/3. For any normalized logical input,
+the limiting leakage is the weighted mean of the l_ab, between 1/3 and 4/9.
 
 ## 5. Diagnostic (labelled, decides nothing)
 
 [Diagnostic](2026-11-09--thirring-low-energy-packet-diagnostic.txt): direct
 lattice evolution at mu = 1/11 (L = 121, T = 484, box of 1520 sites, packet
-norms 0.99989). Measured values against the finite-mu prediction
-|T_c - 1|^2/4:
+norms 0.99989). The column "leakage" is the estimator
+1 - sum_j |<C_j, Psi>|^2 over truncated, not exactly normalized modes, not
+an exact projective leakage. The box-wrap diagnostic announced in the
+script docstring was not computed (repair 6). Measured values against the
+finite-mu prediction |T_c - 1|^2/4:
 
 | Input | Leakage | Doubler content | Prediction |
 | --- | --- | --- | --- |
@@ -173,7 +235,14 @@ contract it is not evidence for the asymptotic verdict.
 
 [Script](../scripts/verify_thirring_low_energy_packet.py),
 [record](2026-11-09--thirring-low-energy-packet.txt),
-[JSON](2026-11-09--thirring-low-energy-packet.json): **39/39 exact checks**.
+[JSON](2026-11-09--thirring-low-energy-packet.json): **39/39 checks**.
+Qualifications (repair 7):
+
+- the positivity parts of P6-l_ab>0 use a 30-digit numerical evaluation;
+  positivity is proved by hand from Delta > 0;
+- P2 and P4 inspect finite windows; their generality comes from the local
+  structure, not from the count;
+- P3 gives worked examples (Sec. 4(i)).
 
 Run 1 (`75b33c3`) failed the velocity bound. I had written 0.555; the
 certified chain gives about 0.5545. The constant was lowered to 0.55
@@ -198,7 +267,8 @@ Diagnostic script: [diag](../scripts/diag_thirring_low_energy_packet.py).
   2026-11-09, the Thirring coexistence line stops. The coexistence question
   remains **OPEN**: no exclusion is demonstrated beyond the declared codes.
   There is no automatic third contract.
-- **Recorded for whoever resumes:** in this rule, any code whose carriers
-  are split between the G = ±1 halves with T ≠ 1 leaks into doublers. A
-  code would have to live entirely in one half, or use T = 1 kinematics
-  (Delta = 0, no entangling phase). This is a remark, not a theorem.
+- **Recorded for whoever resumes:** for this code and output frame, the
+  leakage comes from carriers split between the G = ±1 halves with T ≠ 1.
+  The universal remark in the previous version is withdrawn (repair 5).
+  An output code that includes the partners G B could contain both
+  components, so no statement about other codes is made.
