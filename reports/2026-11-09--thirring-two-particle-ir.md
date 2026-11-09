@@ -1,7 +1,24 @@
 # Thirring two-particle low-energy preflight: results
 
 2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: author derivation plus
-exact author checks; no independent review, no promotion.**
+exact author checks; one sealed cross-family review (Grok) with repairs
+applied below, not re-reviewed; no promotion.**
+
+[Sealed Grok review](reviews/2026-11-09-thirring-two-particle-ir-grok/informe_grok.md)
+of the text at 3500cbc (grok-4.7, herramientas 97292a9): «reparación necesaria».
+No identity, series or limit found false. Accepted objections:
+
+1. The verdict label overreached. With no bound branch in the window, the
+   contract makes (R) rest on O2 and O4. O4 is open, so the verdict is now
+   `OPEN_AFTER_BOUNDED_EXACT_ATTEMPT`.
+2. Sec. 5 reintroduced the -2 omega0 branch as part of the answer. Removed.
+3. The definition of E(p) was wrong. Corrected.
+4. Gamma_1 Gamma_2 and the projector P of 1804.08508 coincide only on the
+   physical lattice, not as fibre operators, and the "1/2" was not a
+   demonstrated weight. Corrected.
+
+Its point that leaving O4 OPEN is correct is recorded. The original text
+is in git at 3500cbc.
 
 Contract [THIRRING_TWO_PARTICLE_IR_PREFLIGHT_GATE.md](../theory/THIRRING_TWO_PARTICLE_IR_PREFLIGHT_GATE.md),
 frozen at `6d24fb8` before any code; contract 1 of the 2-contract budget of
@@ -10,19 +27,20 @@ the Thirring coexistence line. Verifier committed before its first run at
 
 ## 1. Verdict
 
-`IR_BOUND_BRANCH_RELATIVISTIC / DOUBLER_CHANNEL_OPEN` (contract Sec. 5), read
-strictly:
+`OPEN_AFTER_BOUNDED_EXACT_ATTEMPT` (contract Sec. 5; repaired after review).
 
 - O1 holds on all of F: the gate D survives at every mu.
 - O2: c_f -> 1 and omega0/mu -> 1.
-- O3: inside the frozen window ((+,+) near +2 omega0) there is **no** bound
-  branch at chi = pi/2, so the bound-branch condition is vacuous there. A
-  bound branch does exist at the opposite threshold (-2 omega0); it lies
-  outside the frozen window, is reported in Sec. 3.3 and does not enter the
-  verdict. It is relativistic in the sense of Sec. 4 (M_b/mu -> sqrt2,
-  c_b -> 1).
-- O4: not decided, because the frozen definition does not separate the
-  doubler *content* of a state from doubler *transfer* (Sec. 4).
+- O3: inside the frozen window ((+,+) near +2 omega0) there is no bound
+  branch at chi = pi/2.
+- O4: not decided, because the frozen definition does not separate doubler
+  content from doubler transfer (Sec. 4).
+
+By contract Sec. 5, with an empty window the relativistic property (R)
+rests on O2 and O4. O4 being open, (R) is not decided.
+
+A bound branch exists at the opposite edge -2 omega0, outside the frozen
+window (Sec. 3.2-3.3). It does not enter the verdict or answer (R).
 
 Scope: family F = {chi = pi/2, 0 < mu < 1}, two-fermion sector of the
 carriers, rule only. Not composable universality, not an interacting
@@ -95,7 +113,8 @@ quantities exact):
   C0 = cos omega(z0) = sqrt((1+nu^2)/2);
 - kappa''(0) = -F_pp/F_kappa;
 - E''(0) = 2 sqrt2 nu^2/(C0 mu), where E(p) = 2 Re omega(p + i kappa(p)) is
-  the distance of the eigenphase from the -2 omega0 edge.
+  the modulus of the quasienergy, phi = -E, counted from the same zero as
+  +2 omega0. Its distance to the -2 omega0 edge is 2 omega0 - E.
 
 Hence
 
@@ -120,43 +139,46 @@ coefficient. The full scaling function omega_b(mu Q)/mu was not computed.
 ## 4. O4: why it stays OPEN
 
 - Gamma = sigma_z (-1)^x anticommutes with W (certified on the lattice). So
-  Gamma_1 Gamma_2 commutes with W ⊗ W, and the opposite-Gamma subspace (the
-  subspace P of 1804.08508 Eq.(8)) is invariant.
-- A P-state built from a (+,+) pair at momenta (q1, q2) necessarily contains
-  the (-,-) pair at (q1+pi, q2+pi). This "doubler" component carries weight
-  1/2 whether or not the particles interact, in incoming and outgoing
-  states alike, independent of mu.
+  Gamma_1 Gamma_2 = sigma_z sigma_z (-1)^{x1+x2} commutes with W ⊗ W.
+- On the physical lattice (y ≡ w mod 2), the eigenspace Gamma_1 Gamma_2 = -1
+  coincides with the component-dependent parity mask of the projector P of
+  1804.08508 Eq.(8). As fibre operators in the paper's doubled (y, w)
+  representation the two differ: Gamma_1 Gamma_2 carries (-1)^w and shifts
+  p by pi, while P fixes the parity of y and conserves p (review objection 3).
+- Eq.(18) gives equal coefficients to v^{++}_k and v^{--}_{k-pi}, also
+  without interaction. I had called this a weight 1/2; that is not
+  demonstrated as an L^2 weight of a wave packet.
 - Within P, the scattering eigenvectors of Eq.(18) map P(+,+;k) to
   T_+ P(+,+;-k). For fermions this is a phase on the same momentum pair.
-  This is a written argument; I have not done a wave-packet proof.
+  This is a written argument; no wave-packet proof.
 - At low energy, g_+(mu Q)/(-i mu) -> sqrt(1+Q^2) + Q = e^{theta}, with
   rapidity theta = asinh Q (certified). Hence
   T_+ -> (e^{Delta/2} + e^{-i chi} e^{-Delta/2}) / (e^{-Delta/2} + e^{-i chi} e^{Delta/2}),
-  which depends only on the rapidity difference Delta. This is consistent
-  with a relativistic two-body phase.
+  which depends only on the rapidity difference Delta. This is a statement
+  about real-momentum scattering, not a doubler weight.
 
 The frozen O4 asks for "the outgoing weight carried by the doubler
 components", defined by a wave-packet analysis to be stated in the report
-before evaluation. Read literally, that weight is 1/2, nonzero and
-mu-independent, but it is equally present in the incoming state. Read as
-transfer, the written argument gives zero. Choosing the reading after having
+before evaluation. Read literally as content, the doubler component is nonzero and present in
+the incoming state as well. Read as transfer, the written argument gives
+zero. Choosing the reading after having
 derived both would be a post-hoc definition. O4 is therefore recorded as not
 decided, and the contract wording is flagged as defective.
 
 ## 5. What this means for the coexistence question
 
-- Along F, the T=1 gate and a two-particle low-energy sector coexist at the
-  same points.
-- In that sector, the free pairs and the only bound branch (at -2 omega0)
-  approach the same speed as mu -> 0.
-- The low-energy two-body phase depends only on rapidity differences.
-- Open: the doubler question (O4, a definitional issue), the full scaling
-  function, composable gates, many-body and finite-density behaviour, and
-  whether the T=1 gate acts on low-energy states at all. The M=1 code is a
-  lattice-scale state, not an IR wave packet.
+- Along F, the T=1 gate holds at every point, on lattice-scale states of
+  the M=1 code. No statement that it acts on low-energy states.
+- Free particles have c_f -> 1.
+- The relativistic property (R) of the two-particle sector is not decided:
+  the window has no bound branch and O4 is open.
+- The -2 omega0 bound branch (M_b/mu -> sqrt2, c_b -> 1 at the level of the
+  P^2 coefficient) is outside the frozen window and is not part of (R).
+- Open: O4 and its definition, the full scaling function, composable gates,
+  many-body behaviour, and gates acting on low-energy states.
 
-Budget: this was contract 1 of 2. A partial positive does not reset the
-count (decision of 2026-11-09).
+Budget: this was contract 1 of 2, closed OPEN; one contract remains
+(decision of 2026-11-09).
 
 ## 6. Verifier and failed runs
 
