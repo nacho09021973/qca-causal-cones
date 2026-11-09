@@ -1,0 +1,194 @@
+{
+  "T_at_check_points": {
+    "generic,chi=pi/2": "(-100 + 5*sqrt(1921) + 39*I*(4 + sqrt(41)))/(156 + 39*sqrt(41) - 5*I*(20 - sqrt(1921)))",
+    "generic,chi=0": "1",
+    "p=0,chi=pi/2": "(sqrt(41) + 4*I)/(sqrt(41) - 4*I)",
+    "p=0,chi=0": "1"
+  },
+  "limits": {
+    "00": {
+      "T": "(1 + 2*sqrt(2)*I)/3",
+      "leak": "(-2 + (1 - sqrt(2))**2 + (1 + sqrt(2))**2)/12",
+      "leak_float": 0.3333333333333333
+    },
+    "01": {
+      "T": "(-2 + sqrt(10) + sqrt(2)*I + 2*sqrt(5)*I)/6",
+      "leak": "(-9*sqrt(2)*(1 + sqrt(2))**2 - 4*sqrt(10)*(1 + sqrt(2))**2 - 2*sqrt(10) - 9*sqrt(2)*(2 - sqrt(5))**2 - 4*sqrt(10)*(2 - sqrt(5))**2 + 6*sqrt(5)*(2 - sqrt(5))**2 + 14*(2 - sqrt(5))**2 + 4 + 6*sqrt(5)*(1 + sqrt(2))**2 + 14*(1 + sqrt(2))**2)/24",
+      "leak_float": 0.4031435283193017
+    },
+    "10": {
+      "T": "(-2 + sqrt(10) + sqrt(2)*I + 2*sqrt(5)*I)/6",
+      "leak": "(-6*sqrt(5)*(2 + sqrt(5))**2 - 4*sqrt(10)*(2 + sqrt(5))**2 - 2*sqrt(10) - 6*sqrt(5)*(1 - sqrt(2))**2 - 4*sqrt(10)*(1 - sqrt(2))**2 + 9*sqrt(2)*(1 - sqrt(2))**2 + 14*(1 - sqrt(2))**2 + 4 + 9*sqrt(2)*(2 + sqrt(5))**2 + 14*(2 + sqrt(5))**2)/24",
+      "leak_float": 0.4031435283193017
+    },
+    "11": {
+      "T": "(1 + 4*sqrt(5)*I)/9",
+      "leak": "(-2 + (2 - sqrt(5))**2 + (2 + sqrt(5))**2)/36",
+      "leak_float": 0.4444444444444444
+    }
+  },
+  "checks": [
+    {
+      "name": "P1-int-h^2=1",
+      "passed": true
+    },
+    {
+      "name": "P2-Gamma-W-Gamma=-W",
+      "passed": true
+    },
+    {
+      "name": "P2-sigma_z-v^+_q=v^-_{q+pi}",
+      "passed": true
+    },
+    {
+      "name": "P3-generic-chi=pi/2-four-wave-eigenfunction",
+      "passed": true
+    },
+    {
+      "name": "P3-generic-chi=pi/2-|T|=1",
+      "passed": true
+    },
+    {
+      "name": "P3-generic-chi=0-four-wave-eigenfunction",
+      "passed": true
+    },
+    {
+      "name": "P3-generic-chi=0-|T|=1",
+      "passed": true
+    },
+    {
+      "name": "P3-generic-chi=0-T=1",
+      "passed": true
+    },
+    {
+      "name": "P3-p=0-chi=pi/2-four-wave-eigenfunction",
+      "passed": true
+    },
+    {
+      "name": "P3-p=0-chi=pi/2-|T|=1",
+      "passed": true
+    },
+    {
+      "name": "P3-p=0-chi=0-four-wave-eigenfunction",
+      "passed": true
+    },
+    {
+      "name": "P3-p=0-chi=0-|T|=1",
+      "passed": true
+    },
+    {
+      "name": "P3-p=0-chi=0-T=1",
+      "passed": true
+    },
+    {
+      "name": "P4-contact-only-in-Gamma1Gamma2=-1",
+      "passed": true
+    },
+    {
+      "name": "P5-sin-omega(mu K)/mu->sqrt(1+K^2)",
+      "passed": true
+    },
+    {
+      "name": "P5-omega'(q)=nu sin q/sin omega",
+      "passed": true
+    },
+    {
+      "name": "P5-1-nu^2cos^2q=mu^2+sin^2q-mu^2sin^2q",
+      "passed": true
+    },
+    {
+      "name": "P5-velocity-lower-bound-0.55-on-support",
+      "passed": true
+    },
+    {
+      "name": "P5-closing-margin-y_c<=2L-1.10*4L=-2.4L<-2L",
+      "passed": true
+    },
+    {
+      "name": "P6-g+(mu Q)/(-i mu)->sqrt(1+Q^2)+Q",
+      "passed": true
+    },
+    {
+      "name": "P6-|T_00|=1",
+      "passed": true
+    },
+    {
+      "name": "P6-l_00=(coshD-1)/(2coshD)",
+      "passed": true
+    },
+    {
+      "name": "P6-l_00>0",
+      "passed": true
+    },
+    {
+      "name": "P6-|T_01|=1",
+      "passed": true
+    },
+    {
+      "name": "P6-l_01=(coshD-1)/(2coshD)",
+      "passed": true
+    },
+    {
+      "name": "P6-l_01>0",
+      "passed": true
+    },
+    {
+      "name": "P6-|T_10|=1",
+      "passed": true
+    },
+    {
+      "name": "P6-l_10=(coshD-1)/(2coshD)",
+      "passed": true
+    },
+    {
+      "name": "P6-l_10>0",
+      "passed": true
+    },
+    {
+      "name": "P6-|T_11|=1",
+      "passed": true
+    },
+    {
+      "name": "P6-l_11=(coshD-1)/(2coshD)",
+      "passed": true
+    },
+    {
+      "name": "P6-l_11>0",
+      "passed": true
+    },
+    {
+      "name": "P6-l00=1/3",
+      "passed": true
+    },
+    {
+      "name": "P6-l11=4/9",
+      "passed": true
+    },
+    {
+      "name": "P6-l01=(sqrt10+1)/(2(sqrt10+2))",
+      "passed": true
+    },
+    {
+      "name": "P7-support-positive-(1-m>0)",
+      "passed": true
+    },
+    {
+      "name": "P7-support-inside-4mu-(2+m<4)",
+      "passed": true
+    },
+    {
+      "name": "P7-bins-disjoint-(1-2m>0)",
+      "passed": true
+    },
+    {
+      "name": "P7-monotone-in-m",
+      "passed": true
+    }
+  ],
+  "provenance": {
+    "scripts/verify_thirring_low_energy_packet.py": "a1900674990354db197e7daddfdefb46d0a23536ba3b5e0688c2b45250f4d517",
+    "theory/THIRRING_LOW_ENERGY_PACKET_GATE.md": "aa2da12d4211a969a010a64e122b793ac3ed26b9f060c1cf4cd21868bf7e19ee",
+    "sources/1711.03920v1.pdf": "3032b33d1375d4a55008aafe1f0e74d228052fa120446694ba8e9ab8e41867ca",
+    "sources/1804.08508v1.pdf": "495646b1a0c0a2822422c4d65536b8c4caa0d82c5efe7e48df878766af91f0d0"
+  }
+}

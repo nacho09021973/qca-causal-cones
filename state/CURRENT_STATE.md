@@ -2,6 +2,26 @@
 
 **Date:** 2026-11-09
 
+**Low-energy packet gate executed (contract 2 of 2) and Thirring coexistence line closed — 2026-11-09:**
+user «si a ambas preguntas» (push contract 715096f, execute it). Exact
+verifier and labelled diagnostic committed before running (75b33c3); first
+run one failure retained (velocity constant 0.555 -> 0.55); 39/39 exact at
+8b41761. [Report](../reports/2026-11-09--thirring-low-energy-packet.md).
+Verdict **`NO_ENTANGLER_IN_DECLARED_PACKET_CODE`**: lim ||E_mu|ab>||^2 =
+|T_ab-1|^2/4 = 1/3 (00), (sqrt10+1)/(2(sqrt10+2)) (01,10), 4/9 (11); same
+limit for the outgoing doubler content Q_D. Mechanism: only the
+Gamma1Gamma2=-1 half interacts (J = 1 on the other half, exact); it gets the
+rapidity-difference phase T while the other half evolves freely, so the
+cancelled doubler components reappear. Written packet bridge (exact
+four-plane-wave eigenfunctions certified, unitarity, tail O(mu^{3/4}) and
+phase-variation O(mu^{1/2}) estimates written, not machine-checked).
+Diagnostic at mu=1/11 (decides nothing): leakage 0.331/0.402/0.443 vs
+prediction 0.332/0.402/0.443. PRELIMINARY, no review or promotion.
+**Closing balance:** contract 1 OPEN; contract 2 negative for this packet code
+only (not a Thirring no-go); budget exhausted, so the Thirring coexistence
+line stops by the 2026-11-09 decision; coexistence question remains OPEN;
+no automatic third contract.
+
 **Low-energy packet gate chartered — 2026-11-09:** user «hazlo» to the
 proposal to devote the remaining contract to low-energy carriers.
 [Contract 2 of 2](../theory/THIRRING_LOW_ENERGY_PACKET_GATE.md) freezes a
