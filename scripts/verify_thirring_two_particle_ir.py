@@ -192,7 +192,10 @@ def check_O3b():
 
 def check_O3c(cf2_mu, mu_sym):
     mu, nu = MU_S, NU_S
-    cf2 = cf2_mu.subs(mu_sym, MU_S)
+    om0_s = 2 * sp.atan(S_PAR)                       # = acos(nu) for s in (0,1)
+    exact("O3c-identity-cos(2atan s)=nu", iszero(sp.cos(om0_s).rewrite(sp.tan) - nu) or
+          iszero(sp.simplify(sp.cos(om0_s)) - nu))
+    cf2 = om0_s * nu / mu
     C0 = sp.sqrt((1 + nu**2) / 2)
     S0 = mu / sp.sqrt(2)                                  # sin omega(z0)
     sh0 = -mu / (sp.sqrt(2) * nu)                         # sinh kappa0
@@ -213,7 +216,8 @@ def check_O3c(cf2_mu, mu_sym):
     kpp = -Fpp / Fk
     Epp = 2 * sp.re(sp.expand(w2 + I * w1 * kpp))
     exact("O3c-E''(0)=2sqrt2 nu^2/(C0 mu)", iszero(Epp - 2 * sp.sqrt(2) * nu**2 / (C0 * mu)))
-    Mb = sp.acos(nu**2)
+    Mb = 2 * sp.asin(mu / sp.sqrt(2))                # = acos(nu^2): 1 - cos M_b = mu^2, M_b in (0, pi)
+    exact("O3c-identity-cos(2asin(mu/sqrt2))=nu^2", iszero(sp.expand_trig(sp.cos(Mb)) - nu**2))
     cb2 = Mb * Epp / 4                                     # omega_b^2 = M_b^2 + c_b^2 P^2, P = 2p
     exact("O3c-c_b^2-closed-form", iszero(cb2 - Mb * nu**2 / (sp.sqrt(2) * C0 * mu)))
     exact("O3c-M_b-below-threshold-cos(M_b)>cos(2 omega0)", iszero(sp.cos(2 * sp.acos(nu)) - (2 * nu**2 - 1)))

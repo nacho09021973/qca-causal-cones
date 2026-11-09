@@ -1,0 +1,12 @@
+Failed run 2 of scripts/verify_thirring_two_particle_ir.py at commit 0f81ea6 (exit 1; tail of stderr below).
+Cause: sympy series of acos(...) near argument 1 (sqrt branch) raises NotImplementedError in check_O3c; no output files written.
+Fix: use exact equivalent forms M_b = 2 asin(mu/sqrt2) and omega0 = 2 atan(s), each identity certified exactly in the script. No expectation changed.
+
+  File "/home/ignac/.local/lib/python3.12/site-packages/sympy/core/expr.py", line 3466, in nseries
+    return self._eval_nseries(x, n=n, logx=logx, cdir=cdir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ignac/.local/lib/python3.12/site-packages/sympy/core/power.py", line 1585, in _eval_nseries
+    raise NotImplementedError()
+NotImplementedError
+
+[exited with code 0]
