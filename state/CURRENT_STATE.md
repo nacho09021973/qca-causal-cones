@@ -1,6 +1,23 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-08
+**Date:** 2026-11-09
+
+**Approximate recovery of the microscopic Thirring code — 2026-11-09:**
+user chose the approximate-recovery option of the roadmap («Contrato
+aproximado»). Contract 61a8215; verifier dd4e547 committed before running,
+first run 14/16 retained (wrong zero-overlap expectations for on-site
+inputs 01/10), corrected f5c0d16, 16/16 exact.
+[Report](../reports/2026-11-09--thirring-approximate-recovery.md): at
+p=pi/4, exp(2ip)=z, the compact two-particle vector of 1711.03920v1
+Eq.(14) p.4 is an exact eigenvector of the fiber U(p), isolated from the
+continuous spectrum since nu^2 != 1. Input 00 has fiber weight 16/25 on it;
+Riesz continuity gives positive bound-state weight c, which never returns
+to the free frame (absolutely continuous free fibers, Riemann-Lebesgue).
+liminf ||E_T|00>||^2 >= c > 0: `APPROXIMATE_RECOVERY_EXCLUDED` for this
+code, rule and parameters; no numerical value of c. Not a Thirring-QCA
+no-go; other codes/resources not addressed. PRELIMINARY author proof, no
+independent review, promotion or Lean. Contract cutoff reached; the
+roadmap's Lean option was not executed.
 
 **Handoff for tomorrow — 2026-11-08:** user requested push and a roadmap.
 [Roadmap for 2026-11-09](ROADMAP_2026-11-09.md) records the exact closure,

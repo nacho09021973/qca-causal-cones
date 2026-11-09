@@ -1,0 +1,18 @@
+Author checks: 16/16 exact (SymPy 1.14.0).
+Overlaps <f, code_ab>: {'00': '-sqrt(2)*I', '01': '3*sqrt(2)/4', '10': '-3*sqrt(2)*I/4', '11': '0'}; ||f||^2=25/8; fiber weight of 00 at p0: 16/25
+PASS eq14-eigenvector-all-targets-w-in-{0,1}
+PASS eq14-eigenvector-window-|x|<=6
+PASS eigenvalue-equals-exp(2ip0)-equals-z
+PASS diagonal-translation-phase-exp(-2ip0)
+PASS f-antisymmetric-E f(-y)=-f(y)
+PASS W(q)-det-1
+PASS W(q)-trace-2nu-cos-q
+PASS cos-square-sum-identity
+PASS cos2p-zero-at-p0
+PASS nu-squared-not-one
+PASS norm-f-squared-25/8
+PASS overlap-00-equals-minus-i-sqrt2
+PASS overlap-01-equals-3sqrt2/4
+PASS overlap-10-equals-minus-3i-sqrt2/4
+PASS overlap-11-zero
+PASS fiber-weight-00-at-p0-equals-16/25
