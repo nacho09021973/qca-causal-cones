@@ -1,0 +1,71 @@
+{
+  "B": {
+    "status": "OPEN (box budget exceeded)",
+    "boxes_processed": 4721034,
+    "levels": 27,
+    "deltas": [
+      8.458575066402971e-15,
+      2.9605012732410402e-15,
+      8.458575066402971e-15,
+      4.229287533201486e-15
+    ],
+    "witness": null
+  },
+  "B_diagnostic_sampled_min_max_abs_p": 0.009914662945600186,
+  "C": {
+    "upper (beta>0, superluminal)": {
+      "threshold": "0.11099001",
+      "roots": [
+        "0.7826218041"
+      ],
+      "f_at_1_over_sqrt2": "0.20412415",
+      "f_near_xc": "9.0388e-7"
+    },
+    "lower (beta<0, subluminal)": {
+      "threshold": "0.12208901",
+      "roots": [
+        "0.7731485185"
+      ],
+      "f_at_1_over_sqrt2": "0.20412415",
+      "f_near_xc": "9.0388e-7"
+    },
+    "D2 threshold on B-M (strongest K, any single source)": "1.70925e-15",
+    "x_c": "0.7825177413"
+  },
+  "checks": [
+    {
+      "name": "A: n.grad(beta) = 3 beta (homogeneity), so on beta = 0 grad beta is tangential",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A: on n3 = 0, 3 alpha + |grad_S beta|^2/2 = 0 (L5a/L5b/L4; same for -beta)",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "A: sqrt((1+2bt+3at^2)^2 + g^2 t^2) = 1 + 2bt + (3a + g^2/2) t^2 + O(t^3)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B: D2 branch-and-bound: every orientation has some KM source with |n1n2n3| > delta_i (interval method; libm slack assumed)",
+      "passed": false,
+      "detail": "{'status': 'OPEN (box budget exceeded)', 'boxes_processed': 4721034, 'levels': 27, 'deltas': [8.458575066402971e-15, 2.9605012732410402e-15, 8.458575066402971e-15, 4.229287533201486e-15], 'witness': None}"
+    },
+    {
+      "name": "C: L3s4 B-M > D1 threshold holds for a in (0, root) per cluster (single root inside (0, sqrt x_c))",
+      "passed": true,
+      "detail": "{'upper (beta>0, superluminal)': {'threshold': '0.11099001', 'roots': ['0.7826218041'], 'f_at_1_over_sqrt2': '0.20412415', 'f_near_xc': '9.0388e-7'}, 'lower (beta<0, subluminal)': {'threshold': '0.12208901', 'roots': ['0.7731485185'], 'f_at_1_over_sqrt2': '0.20412415', 'f_near_xc': '9.0388e-7'}, 'D2 threshold on B-M (strongest K, any single source)': '1.70925e-15', 'x_c': '0.7825177413'}"
+    }
+  ],
+  "sources_D1": {
+    "GRB_090510": "RA 333.55271 Dec -26.58266 (GCN 9339)",
+    "GRB_221009A": "RA 288.2643 Dec +19.7712 (GCN 32632; GCN 32635 identification)"
+  },
+  "provenance": {
+    "scripts/verify_multi_source_orientation.py": "fb277dff228ca8dedaf44dfdc2e44d19b30a15ddbdc60e28a0684f7a3e4c92c1",
+    "theory/MULTI_SOURCE_ORIENTATION_GATE.md": "3c8239b39d034d89efc8e65a9b61f3e1530c3cc519261876e8b93eb4e15c71e2",
+    "investigaciones/2026-11-09-lorentz-violation-bounds/comprobacion.md": "f474cef10cf6c1304650eddb432afe2c8e68721bd3a596fe42addbf0e83ac2d0"
+  }
+}

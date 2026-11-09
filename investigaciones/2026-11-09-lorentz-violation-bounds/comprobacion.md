@@ -44,3 +44,16 @@ needs a successor charter).
   these sources requires the dictionary H_gamma plus a successor contract.
 
 Tools: WebSearch; alphaXiv full text. No ~/herramientas tool used.
+
+## Sky positions (added 2026-11-09 for MULTI_SOURCE_ORIENTATION, read in the original circulars)
+
+| Source | Circular read | Position (J2000) | Uncertainty |
+| --- | --- | --- | --- |
+| GRB 090510 | GCN 9339, M.R. Goad, J.P. Osborne, A.P. Beardmore, P.A. Evans, "GRB 090510: Enhanced Swift-XRT position" | RA, Dec = 333.55271, -26.58266 deg (22h14m12.65s, -26d34'57.6") | 1.4 arcsec (90%) |
+| GRB 221009A | GCN 32632, S. Dichiara et al., "Swift J1913.1+1946 a new bright hard X-ray and optical transient": XRT source | RA, Dec = 288.2643, +19.7712 deg (19h13m3.43s, +19d46'16.3") | 5.6 arcsec (90%) |
+| (identification) | GCN 32635, J.A. Kennea, M. Williams, subject "GRB 221009A: Swift detected transient may be GRB": BAT trigger 1126853 = Swift J1913.1+1946 | — | — |
+
+Kostelecký–Mewes positions (codeclination theta, right ascension phi), Table I of
+arXiv:1301.5367, given to integer degrees: GRB 041219A (27, 6), 100826A (112, 279),
+110301A (61, 229), 110721A (129, 333). Per-source d = 5 bounds (Table III, first row):
+2e-34, 7e-35, 2e-34, 1e-34 GeV^-1 respectively.
