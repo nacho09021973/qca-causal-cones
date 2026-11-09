@@ -79,3 +79,20 @@ with E_QG,1 = X E_Pl gives at best ell_max/ell_P = 1/(2 X sup|beta|) = 4.5/X for
 EXCLUDED_ROBUST (< 1/2) would need X > 9; the strongest verified source (LHAASO, ~8.2 for
 1.0e20 GeV) gives 0.549 at the most favorable direction. Sources with X ~ 0.1-1 can only give
 ell_max of order 4.5-45 ell_P.
+
+## MAGIC and H.E.S.S. (added 2026-11-09, read in the original)
+
+| Source | What was read | Limits (95% unless stated) |
+| --- | --- | --- |
+| MAGIC Collaboration, "Bounds on Lorentz Invariance Violation from MAGIC Observation of GRB 190114C", arXiv:2001.09728v4 (PRL 125, 021301) | Full text, Table I and conclusions | Theoretical light-curve model: E_QG,1 > 0.58e19 GeV (subluminal), > 0.55e19 GeV (superluminal); E_QG,2 > 6.3e10 GeV (sub), > 5.6e10 GeV (super). Minimal (step-function) model: E_QG,1 > 0.28e19, E_QG,2 > 7.3e10 GeV (sub only). z = 0.4245. In units of E_Pl = 1.22e19 GeV: linear ≈ 0.45-0.48. |
+| H.E.S.S. Collaboration, PKS 2155-304 flare of 28 July 2006, likelihood analysis, arXiv:1101.3650 (Astropart. Phys. 34, 738, 2011) | Abstract | M_QG (linear) > 2.1e18 GeV (≈ 0.17 E_Pl); M_QG (quadratic) > 6.4e10 GeV. No confidence level stated in the abstract. |
+
+Cited inside MAGIC (not read in their originals): H.E.S.S. Mrk 501 2014 flare, quadratic
+E_QG,2 > 8.5e10 GeV (sub), 7.3e10 (super) [ApJ 870, 93 (2019)]; and Vasileiou et al. quoted by
+MAGIC as E_QG,1 > 2.2e19 (sub) / 3.9e19 (super) GeV, lower than the 7.6 E_Pl abstract value
+(different method/assumption; not resolved here).
+
+Consequence (arithmetic, not a gate result): best-case ell_max/ell_P = 4.5/X for L5a/L5b/L4
+gives about 9.4 ell_P for MAGIC (X ≈ 0.48) and 26 ell_P for H.E.S.S. PKS 2155-304 (X ≈ 0.17):
+neither can exclude these rows under H_min. All quadratic limits found (5.6e10-8.5e10 GeV) are
+weaker than LHAASO's 6.9e11 GeV.
