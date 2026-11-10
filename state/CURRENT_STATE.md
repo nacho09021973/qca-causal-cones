@@ -1,6 +1,19 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-09
+**Date:** 2026-11-10
+
+**Documentation consolidation and IR-corona readiness audit — 2026-11-10:**
+user selected consolidation followed by the IR-corona manuscript. README
+now reflects the stopped two-contract Thirring line; the November 9 roadmap
+is marked historical and [the November 10 roadmap](ROADMAP_2026-11-10.md)
+records the bounded manuscript-readiness task. Tetrahedral appendices A–F
+remain PRELIMINARY / NOVELTY OPEN; the corollary presentation does not
+extend the historical promotion. Documentation and review preparation only:
+no new scientific gate, external transmission or promotion authorized.
+Outcome: [readiness inventory and specialist brief](../reports/2026-11-10--ir-corona-readiness.md)
+prepared; two manuscript wording repairs distinguish radial extent from
+support function and qualify Lean coverage. Compilation checked, not a
+fresh proof/certificate review. No specialist contacted; NOVELTY remains OPEN.
 
 **Multi-source orientation — 2026-11-09:** user «2» then «SI BUSCALAS».
 Contract dd9ab5c; sky positions verified in GCN 9339 (GRB 090510) and GCN

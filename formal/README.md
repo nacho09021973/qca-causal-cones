@@ -42,11 +42,11 @@ sharper constant `4` in place of `9`.
   the second-quantized trace distance `D_B`.  Both are one-line modelling
   steps; only the one-particle signal `δ` is covered through
   `delta_le_four_T`.
-* Theorem 4.2 (the rate `K_*`, its uniqueness, and `J < K_* < log 4`),
-  Theorem 3.3 (admissibility) and Theorem 4.3 (the leading asymptotics).
+* Theorem 4.3 (the rate `K_*`, its uniqueness, and `J < K_* < log 4`),
+  Theorem 3.3 (admissibility) and Theorem 4.4 (the leading asymptotics).
   Mathlib lacks the multidimensional Laplace method, lattice Poisson
   summation and analytic perturbation theory that Theorem 4.3 needs.
-  Those parts rely on the paper's proofs, the independent review and the
+  Those parts rely on the paper's proofs, the scoped review records and the
   certificate scripts.
 
 ## Found while formalizing

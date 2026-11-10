@@ -44,7 +44,9 @@ proved or excluded for a declared code.
 ## Status of the coexistence question
 
 Single source of truth: [`state/CURRENT_STATE.md`](state/CURRENT_STATE.md).
-Roadmap: [`state/ROADMAP_2026-11-09.md`](state/ROADMAP_2026-11-09.md).
+Current next step: [`state/ROADMAP_2026-11-10.md`](state/ROADMAP_2026-11-10.md).
+The November 9 roadmap is historical; its approximate-recovery question
+has been answered and the subsequent two-contract Thirring budget exhausted.
 All entries below are for the declared code, rule and parameters only.
 
 | Result | Report | Status |
@@ -56,13 +58,18 @@ All entries below are for the declared code, rule and parameters only.
 | No exact recovery of the code at any later time `T >= 2` | [exact recovery](reports/2026-11-08--thirring-exact-recovery.md) | PRELIMINARY; Claude review «se sostiene» |
 | No approximate recovery at growing times: a two-particle bound state keeps leakage of input 00 above `c > 0` | [approximate recovery](reports/2026-11-09--thirring-approximate-recovery.md) | **PROMOTED** 2026-11-09 (Grok review) |
 | Vacuum one-particle sector of a density-collision QCA is exactly free at every coupling | [vacuum sector](reports/2026-11-06--interaction-vacuum-sector.md) | PRELIMINARY |
+| Two-particle low-energy preflight, contract 1 of 2 | [preflight](reports/2026-11-09--thirring-two-particle-ir.md) | Closed OPEN; repairs after review not re-reviewed |
+| Low-energy packet code, contract 2 of 2: leakage does not vanish | [packet code](reports/2026-11-09--thirring-low-energy-packet.md) | PRELIMINARY negative in this code; repairs after review not re-reviewed |
 
 Read together: the fixed rule produces an exact entangling gate once, but in
 the codes tested so far it neither keeps the code closed under repeated
 contacts nor yields a universal set. Free nodal envelopes have
 `c_IR = a/tau`. No interacting relativistic limit has been established.
-Open: other codes, ancillas or measurement, composition with controlled
-error, and the low-energy regime of the interacting rule.
+The Thirring coexistence line is **stopped by the November 9 decision**
+after its two-contract budget. Other codes, ancillas or measurement,
+composition with controlled error, and the interacting low-energy regime
+remain open questions, not an authorized continuation. There is no general
+Thirring no-go and no established coexistence result.
 
 ## Results inherited from the original question
 
@@ -78,10 +85,27 @@ error, and the low-energy regime of the interacting rule.
   `c = 1/3` for an untilted isotropic node at `k=0`, and an
   [explicit cyclic-symmetric realization](reports/2026-11-06--s4-cyclic-realization.md)
   has two such cones.
+  The extension to arbitrary coefficients on the exact tetrahedral support
+  and the one-step Foster–Jacobson bridge remain **PRELIMINARY**, outside
+  that historical promotion. [Appendices A–F](reports/2026-11-06--s4-general-coin-viability.md)
+  present the speed proof as an application/corollary of known
+  factorization and elementary rank algebra; the compressed dynamics does
+  not reproduce the full evolution at two steps. Novelty remains OPEN.
 - Paper on the IR corona: [`papers/ir-corona/ir-corona.tex`](papers/ir-corona/ir-corona.tex),
-  with its Theorem 4.1 formalized in Lean 4 ([`formal/`](formal/README.md)).
+  with the kernel/operator-bound components of Theorem 4.1 and an abstract
+  signal inequality formalized in Lean 4 ([`formal/`](formal/README.md));
+  protocol identification and the distance bound are not formalized.
 - Bernstein's inequality and its equality theory are prior art.
   **NOVELTY remains OPEN** for every result in this repository.
+
+## Current work decision — November 10
+
+The user selected documentation consolidation followed by preparation of
+the IR-corona manuscript for specialist assessment. This is a bounded
+readiness audit of the manuscript, review coverage and remaining
+obligations; it does not reopen Thirring, launch new model searches,
+promote results or authorize external transmission. See the
+[current roadmap](state/ROADMAP_2026-11-10.md).
 
 ## How to work here
 

@@ -26,8 +26,9 @@ We ask whether the corona carries an operational response that survives
 infrared control. Alice prepares a narrow-band state and applies a local
 encoding, and Bob reads out with a local detector. All three operations are
 required to be infrared-admissible: acting on the band $|p|\le N^{-1}$, each
-produces only a vanishing fraction of its output outside the wider band
-$|p|\le N^{-1/2}$. Bob's
+has an outside-band map whose operator norm is vanishingly small relative
+to the norm of its restriction to the input band, with wider output band
+$|p|\le N^{-1/2}$. This is not a per-input leakage-fraction bound. Bob's
 region lies outside the emergent light cone of every site of Alice's region.
 After $N$ steps, Bob's distinguishability $\delta(N)$ obeys the explicit
 bound $\delta(N)\le 36N^4e^{-JN}$ with $J=(1-\sqrt3/2)\log 2$. For the twelve
@@ -46,9 +47,8 @@ these pairs; four further pairs with $M=I$ serve as reference controls. The emer
 even for infrared-admissible operations. The response is non-perturbatively
 small, invisible to every power of the infrared scale, and it lies strictly
 inside the microscopic causal support. The result is purely asymptotic: the
-remainder constants are not explicit, and numerical diagnostics indicate that
-the leading term is quantitatively accurate only for $N$ of order $10^3$ and
-beyond.
+remainder constants are not explicit, and the diagnostics do not establish
+quantitative accuracy of the exact-signal asymptotic at a specified size.
 
 ---
 
@@ -114,9 +114,11 @@ Here $B(1)=\overline B(0,1)$ is the closed infrared light cone
 $C_{\mathrm{micro}}$ is the strict causal body. Both statements in (1) are
 exact, and moreover $\partial B(1)\subseteq\Gamma$ (Proposition 2.2).
 Numerically, $\Gamma$ fills the ball; this is not proved and not used. Every
-ballistic mode, at every energy, therefore respects the emergent light speed. Nevertheless, in every non-axial
-direction $\hat n$ the causal support extends to
-$\|\hat n\|_1\in(1,\sqrt3\,]$ times the light speed. Probability outside
+ballistic mode, at every energy, therefore respects the emergent light speed.
+Nevertheless, for every non-axial unit vector $\hat n$ the support
+function of the causal cube is $h(\hat n)=\|\hat n\|_1>1$.
+Its radial extent along the ray $r\hat n$ is instead
+$r_{\max}=1/\|\hat n\|_\infty>1$; these are distinct geometric quantities. Probability outside
 $\Gamma$ is exponentially small in $N$ [9]. The question is whether it can be
 *used* under infrared control.
 
@@ -161,9 +163,8 @@ quadratically on the spheres.
 Result 4 is an asymptotic statement and not a numerical approximation valid
 from small $N$. The constants in its remainder are not explicit, and neither
 is the threshold $N_*$ beyond which $\delta_{M,M_B}(N)>0$ is guaranteed.
-Finite-$N$ diagnostics (Appendix A) indicate a relative correction of about
-$-100/N$, so the leading term is quantitatively accurate only for
-$N\gtrsim10^3$. For the pairs with the smallest coefficients, the next-order
+Finite-$N$ diagnostics (Appendix A) indicate a correction of about $-100/N$ in a semi-analytic approximation; this does
+not establish an accuracy threshold for the exact signal. For the pairs with the smallest coefficients, the next-order
 term $N^{-17/2}e^{-K_*N}$ dominates throughout the diagnostic range $N\le56$
 (Remark 4.6).
 
@@ -188,6 +189,15 @@ light cone in exactly this language. Our upper bound (item 2) uses their
 contour-shift idea, supplemented by an elementary ellipse lemma and a
 Jordan-safe bound on matrix powers. Their method bounds rates; it does not
 give prefactor-level asymptotics.
+
+In particular their diagonal tilt formula
+[9, Eq. (5.21)] is
+$\widetilde R(\ell)=2\arcosh(\cosh^3(\ell/(2\sqrt3)))$.
+With $\ell=2\sqrt3t$, this is $2\Phi(tu)$, and the corresponding
+probability-rate transform at $r=\sqrt3-1/2$ equals $2K_*$.
+Thus the diagonal rate formula is prior art. Our argument proves the
+spectral bound used here and identifies the regional minimiser; the
+operational prefactor is a separate calculation.
 
 Sharp asymptotics with prefactors outside the propagation region are known in
 one dimension. Sunada and Tate [19] obtained exact local asymptotics of
@@ -485,9 +495,9 @@ if $\eta_{\mathrm{op}}(E)\to0$.
 For the operations of this paper all denominators are non-zero for every
 $N\ge2$ (Theorem 3.3).
 
-In words: acting on anything in the infrared band, an admissible operation
-leaves only a vanishing fraction of its output outside the wider band
-$\Pi'$. A strictly local gate cannot do this.
+This is an operator-norm comparison: the norm of the leakage map is small
+relative to the norm of the full map restricted to the infrared band.
+It is not a uniform bound on the leakage fraction for each input separately.
 
 **Lemma 3.2 (Single-site operations are ultraviolet).** If $X\Pi\ne0$ and
 $\operatorname{ran}X\subseteq\ell^2(\{x_0\};\mathbb C^2)$ for a single site
@@ -536,7 +546,8 @@ $$
 \delta\le D_B\le4T_N\le36N^4e^{-JN}.
 $$
 
-**Remark 4.2 (Formal verification).** Theorem 4.1 is machine-checked in
+**Remark 4.2 (Formal verification).** The kernel and operator-bound components
+of Theorem 4.1 and the abstract signal inequality are machine-checked in
 Lean 4 with Mathlib (`formal/` in [17]), for every $N\ge2$ and without
 additional axioms. This covers the kernel bound, the geometry (6), the
 counting of lattice points, the operator bound on $T_N$, and the step
@@ -817,7 +828,17 @@ $3h'(t)=u^T\operatorname{Hess}\Phi(t,t,t)\,u=3q_n(t)>0$, where $q_n(t)$ is
 given by the formula of Lemma 7.1(d) with $c_*$ replaced by $\cosh t>1$.
 Since $\alpha\in(1/\sqrt3,1)$, there is a unique $t_*>0$ with
 $h(t_*)=\alpha$, and then $\nabla\Phi(\xi_*)=v_*$. Solving $h(t)=\alpha$ for
-$\cosh^2t$ gives the stated closed form. By the definition of $I$, for every
+$\cosh^2t$ gives the stated closed form. To justify attainment of the Legendre supremum, note
+that $\Phi$ is convex. Away from zero its Hessian has the form given in
+Lemma 7.1. Cauchy--Schwarz gives
+$(\sum_j\tanh\xi_j x_j)^2\le
+(\sum_j\operatorname{sech}^2\xi_j x_j^2)\sum_j\sinh^2\xi_j$,
+and $\sum_j\sinh^2\xi_j\le\prod_j(1+\sinh^2\xi_j)-1=D^2$.
+Thus the Hessian is positive semidefinite. At zero, continuity and
+$\Phi(\xi)=|\xi|+O(|\xi|^3)$ extend convexity across the origin
+(the one-sided directional derivatives are $-|x|$ and $|x|$).
+Consequently $\nabla\Phi(\xi_*)=v_*$ gives a supporting hyperplane and
+$I(v_*)=\xi_*\cdot v_*-\Phi_*$. By the definition of $I$, for every
 $v$,
 
 $$
@@ -962,8 +983,21 @@ $$
 
 Theorem 4.4 follows from Theorem 7.5 below. The piece
 $\langle r,Ea_c\rangle$ is $O(N^{-17/2}e^{-K_*N})$ by the same argument,
-because $c_N=\Theta(N^{-4})$ in the relevant layer while
-$s_N=\Theta(N^{-2})$.
+For completeness, in a boundary layer of depth $\delta$ put
+$d=(\delta-|u_\perp|^2/(2R))_+$. The exact spherical profile gives
+$F_N=O(N^{-2}d^2)$ with polynomial depth bounds, and
+$|c_N|\le C F_N^2\le C N^{-4}d^4$.
+Thus the tilted Alice layer is $O(N^{-9/2})$: resource, profile and
+disc area contribute $N^{-3/2}$, $N^{-4}$ and $N$, respectively.
+The fourth-order profile's third-derivative variation is
+$O(\delta^{7/2}R^{-1/2})$, giving $O(N^{-6})$ after prefactors and
+the exponentially weighted depth sum. Hence its nonzero Poisson modes
+are smaller than its layer bound, uniformly in $\theta_N$.
+The Bob layer is $O(N^{-5/2})$ and the three-dimensional local Gaussian
+integral is $O(N^{-3/2})$, yielding $N^{-17/2}$.
+The complementary spectral region is exponentially suppressed as in
+the assembly proof. Only this bound, not a fourth-order leading
+coefficient, is needed here.
 
 ### 7.2. Exact tilted representation
 
@@ -1180,36 +1214,52 @@ $\eta=\eta_n\hat u+\eta_t$ with $\eta_t\perp\hat u$.
 - (d) For $\eta_0\in\Sigma\setminus\{0,\pi u\}$ and $|\eta|\le r_0$,
   $|\mathfrak A_f(\eta_0+\eta)|\le CN^{-4}$.
 
-*Proof.* Decompose the sums into lattice planes. On the plane at depth
-$\delta=(\theta_N+j)/\sqrt3$ the tilt weight is $e^{-t_*(\theta_N+j)}$. The
+*Proof.* Decompose the sums into lattice planes.  On the plane at depth
+$\delta=(\theta_N+j)/\sqrt3$ the tilt weight is $e^{-t_*(\theta_N+j)}$.  The
 profile $s_N\varphi_N$ is supported in a disc of radius
-$\varrho=\sqrt{2R\delta-\delta^2}=O(\sqrt N)$ and has size
-$O(N^{-7/2}\delta^2)$. Planes with $\delta>R/2$ contribute $O(e^{-cN})$. This
-gives (a).
+$\varrho=\sqrt{2R\delta-\delta^2}=O(\sqrt N)$ and has size $O(N^{-7/2}\delta^2)$.
+Planes with $\delta>R/2$ contribute $O(e^{-cN})$.  This gives (a).
 
-For (b), apply Poisson summation on each plane. The $m=0$ term is
-$\frac1{\sqrt3}\int e^{i\eta_t\cdot u_\perp}G_0(u_\perp)\,d^2u_\perp$. The
-terms $m\ne0$ are bounded by
-$\|\partial^3G_0\|_{\mathcal M}|2\pi m-\eta_t|^{-3}$, since the profile
-vanishes quadratically on the rim and its third derivative is a finite
-measure. After the weighted depth sum, they give a relative error
-$O(N^{-3/2})$. In the $m=0$ term, use the profile expansions,
-$\varphi_N=N^{-3/2}\varphi_\partial(1+O(|u_\perp|/N+\delta/N))$ and
-$|e^{-i\eta_n\delta}-1|\le|\eta_n|\delta$. With the substitution
+For (b), apply Poisson summation on each plane.  The $m=0$ term is
+$\frac1{\sqrt3}\int e^{i\eta_t\cdot u_\perp}G_0(u_\perp)\,d^2u_\perp$.  The
+terms $m\ne0$ are bounded by $\|\partial^3G_0\|_{\mathcal M}|2\pi m-\eta_t|^{-3}$,
+since the profile vanishes quadratically on the rim and its third
+derivative is a finite measure. Before the resource prefactor, its total
+variation is $O(\delta^{3/2}R^{-1/2})$: the interior derivative is
+$O(|u|/R^2)$ and the boundary measure has density $O(\delta/R)$ on
+a rim of length $O(\sqrt{R\delta})$. Including the prefactors gives
+$\|\partial^3G_0\|_{\mathcal M}=O(N^{-4}\delta^{3/2})$, with additional
+polynomial depth factors when derivatives hit the resource. These are
+absolute bounds uniform at $\delta=0$. Choose $r_0$ below half the
+shortest nonzero reciprocal-lattice length in the $2\pi$ normalization.
+The inverse-cube sum converges on this two-dimensional lattice;
+translations of the planes add only unit-modulus phases. All polynomial
+depth moments are uniformly summable against $e^{-t_*(\theta_N+j)}$.
+After the weighted depth sum, they give a
+relative error $O(N^{-3/2})$.  In the $m=0$ term, use the profile
+expansions, $\varphi_N=N^{-3/2}\varphi_\partial(1+O(|u_\perp|/N+\delta/N))$ and
+$|e^{-i\eta_n\delta}-1|\le|\eta_n|\delta$.  With the substitution
 $u_\perp=\sqrt{2R}\,\sigma$,
-
 $$
 \int e^{i\eta_t\cdot u_\perp}\Bigl(\delta-\frac{|u_\perp|^2}{2R}\Bigr)_+^2d^2u_\perp=2R\,\Psi_\delta(\tau).
 $$
-
 Collecting the factors
-$\frac1{\sqrt3}\cdot\frac{32\pi}{N^2}\cdot N^{-3/2}\varphi_\partial\cdot2R$
-gives the prefactor of $\mathfrak A_f$. For $\mathfrak B_w$ the factors are
-$\frac1{\sqrt3}\cdot\frac{64}{N^2}\cdot N^{-3/2}R_0(w_*)^\dagger\cdot2R$,
-using Lemma 7.2, the smoothness of $R_0$ and $M_B^\dagger=M_B$. (c) follows
-from Lemma 7.1(b) and the parity identity. (d): by Lemma 7.1(c), the
-character is non-trivial on each plane. The Poisson sum therefore has no
-$m=0$ term, and the remaining terms are $O(N^{-4})$. ∎
+$\frac1{\sqrt3}\cdot\frac{32\pi}{N^2}\cdot N^{-3/2}\varphi_\partial\cdot2R$ gives
+the prefactor of $\mathfrak A_f$.  For $\mathfrak B_w$ the factors are
+$\frac1{\sqrt3}\cdot\frac{64}{N^2}\cdot N^{-3/2}R_0(w_*)^\dagger\cdot2R$, using
+Lemma 7.2, the smoothness of $R_0$ and $M_B^\dagger=M_B$.
+For Bob's Poisson remainder one uses the exact unrestricted free tail:
+its smooth Fourier interpolation has support in $|p|\le N^{-1}$, hence
+$\|\partial^\beta\widetilde r\|_\infty\le C_\beta N^{-3/2-|\beta|}$
+by the Fourier $L^1$ bound. Leibniz's rule through order three for
+$h_N\widetilde r$ therefore gives the same variation estimates.
+The cutoff causes no extra boundary term beyond the profile's
+third-derivative measure, since $h_N$ vanishes quadratically. (c)
+follows from Lemma 7.1(b) and the parity identity.  (d): by
+Lemma 7.1(c), the character is non-trivial on each plane.  The
+Poisson sum therefore has no $m=0$ term, and the remaining terms are
+$O(N^{-4})$.
+ ∎
 
 ### 7.7. Assembly
 
@@ -1230,7 +1280,13 @@ $$
 $B(\eta_0,r_0)$ the contribution is $O(Ne^{-cN}N^{-5})$. The six points of
 $\Sigma$ with non-trivial characters give
 $O(N^{-4}\cdot N^{-5/2}\cdot N^{-3/2})=O(N^{-8})$, using the Gaussian decay
-of $\widetilde S_N$. Near $\eta_0\in\{0,\pi u\}$ we make three replacements.
+of $\widetilde S_N$. The half-period identities of
+Lemma 7.1(b) transport these local spectral estimates to
+all eight points. The reciprocal eigenvalue branch has a bounded
+projector on each small neighbourhood and is exponentially suppressed
+after normalization. Its ratio to the dominant branch is
+$e^{-2N\Phi_*}$ at the centre; shrinking the neighbourhood gives a
+uniform $O(e^{-cN})$ bound with $c>0$. Near $\eta_0\in\{0,\pi u\}$ we make three replacements.
 First, $\widetilde S_Ne^{-iN\eta\cdot v_*}$ is replaced by
 $e^{-N\eta^TQ\eta/2}P$ (respectively $\overline P$), at cost
 $N^{-5}\int(c_P|\eta|+Nc_3|\eta|^3)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$.
@@ -1303,23 +1359,40 @@ It is below $0.15\%$, and it never changes the sign.
 
 ### 8.1. What the theorem says and does not say
 
-The theorem is a statement about one walk and one explicitly specified family
-of operations. It shows that the gap between the emergent relativistic cone
-and the microscopic causal support is not merely geometric. Under an
-infrared-controlled protocol it carries an operational response whose
-asymptotic law is known exactly: rate, power and coefficient. It does not
-claim that $D_B>0$ for every protocol, that every quantum walk behaves this
-way, or that every smooth encoder $M=aI+b\cdot\sigma$ signals. It is not a
-violation of the model's microcausality, since Bob remains inside
-$N C_{\mathrm{micro}}$. The limit $N\to\infty$ is an infrared scaling at
-fixed lattice units, not a continuum limit $a,\tau\to0$.
+The theorem is a statement about one walk and one explicitly specified
+family of operations.  It shows that the gap between the emergent
+relativistic cone and the microscopic causal support is not merely
+geometric.  Under an infrared-controlled protocol it carries an
+operational response whose asymptotic law is known exactly: rate, power
+and coefficient. Here infrared control qualifies the operations under
+Definition 3.1; it does not identify the spectral origin
+of the exponentially small response. The admissibility error is only
+polynomially small and can exceed the entire response. The repository's
+later hard-cutoff analysis for the fixed $\sigma_2/I$ pair records an
+$\Theta(N^{-3})$ infrared block cancelled by the blocks involving its
+complement (`state/CURRENT_STATE.md`, Sec. 10.1, with its scoped
+review records). That result is not re-proved here. In particular, the
+projected infrared block alone must not be identified with this signal.
+The tilted representation also includes the saddle at $\pi u$, outside
+the admissibility band centred at zero. The power $13/2$ depends on the
+quadratic vanishing of the chosen profiles; no claim for other vanishing
+orders or infinitely smooth cutoffs follows.
+It does not claim that $D_B>0$ for every protocol, that
+every quantum walk behaves this way, or that every smooth encoder
+$M=aI+b\cdot\sigma$ signals.  It is not a violation of the model's
+microcausality, since Bob remains inside $NC_{\mathrm{micro}}$.  The limit
+$N\to\infty$ is an infrared scaling at fixed lattice units, not a continuum
+limit $a,\tau\to0$.
 
-The result is asymptotic. The remainder constants and $N_*$ are finite but
-not explicit. The finite-$N$ diagnostics of Appendix A indicate an effective
-relative correction of about $-100/N$. The leading formula is therefore
-quantitatively reliable only for $N\gtrsim10^3$. For $M\in\{I,\sigma_3\}$
-with $M_B=I$, whose coefficient is among the smallest, the $N^{-17/2}$ term
-dominates over the whole diagnostic range.
+The result is asymptotic.  The remainder constants and $N_*$ are finite but
+not explicit.  The finite-$N$ diagnostics of Appendix A
+suggest an effective relative correction of about $-100/N$ in the
+semi-analytic approximation. No common range compares the exact signal
+directly with the leading formula, so this does not establish a threshold
+of quantitative accuracy for the exact signal. For
+$M\in\{I,\sigma_3\}$ with $M_B=I$, whose coefficient is among the smallest,
+the $N^{-17/2}$ term dominates over the whole diagnostic range.
+
 
 ### 8.2. Physical reading
 
@@ -1327,8 +1400,7 @@ Restoring a lattice spacing $a$, the integer $N$ is both the number of steps
 and the separation scale in lattice units, so $N\sim\ell/a$ for a separation
 $\ell$, and $\delta\sim e^{-K_*N}$ up to algebraic factors. The response is
 therefore negligible at any separation large compared with the lattice
-spacing, and by the preceding subsection the leading formula becomes accurate
-only for $N\gtrsim10^3$. We make no claim about observability, and regard the
+spacing; a quantitative threshold for exact-signal accuracy has not been established. We make no claim about observability, and regard the
 result as a statement in the mathematical physics of finite-range unitary
 dynamics. Its
 interest lies in the structure it exhibits: an exact separation between
@@ -1353,8 +1425,14 @@ control.
 
 ## Appendix A. Computer-assisted parts and diagnostics
 
-Theorem 4.1, together with Lemma 5.1, is formally verified in Lean 4/Mathlib
-(`formal/` in [17]). The asymptotic results (Theorems 4.3 and 4.4) are not.
+The kernel, geometry, counting and operator-bound components of Theorem 4.1,
+the abstract one-particle signal inequality, and the inclusion part of Lemma 5.1 are formally
+verified in Lean 4/Mathlib (`formal/` in [17]). The identification with the
+protocol and the second-quantized distance $D_B$ are not formalized, as
+specified in the formal-verification remark after Theorem 4.1.
+The boundary equality characterization of Lemma 5.1 is also outside the
+formalization and rests on the written proof.
+The asymptotic results (Theorems 4.3 and 4.4) are not.
 The analytic arguments above are complete up to the following verified
 computations. All of them are performed by the certificate scripts listed in
 [17], at the commit given there, with Python 3.12.3, SymPy 1.14.0 and mpmath
@@ -1403,7 +1481,9 @@ tends to $1$ with deviation of order $c/N$, $c\in[-0.5,14]$, at
 $N=24,40,56$. For $M\in\{I,\sigma_3\}$ and $M_B=I$, the ratio of the
 $N^{-17/2}$ piece $2\operatorname{Re}\langle r,Ea_c\rangle$ to the piece
 $2\operatorname{Im}\langle r,Ea_{\downarrow}\rangle$ that carries the
-$N^{-13/2}$ term is $15.2$, $9.4$ and $6.4$ at $N=24,40,56$. A semi-analytic evaluation with discrete planes and exact
+$N^{-13/2}$ term is $15.2$, $9.4$ and $6.4$ at $N=24,40,56$. These ratios scale approximately
+as $1/N$, not $1/N^2$, and do not validate the relative asymptotic order.
+No common range compares the exact signal with the leading formula. A semi-analytic evaluation with discrete planes and exact
 profiles gives semi/lead $=0.906$, $0.990$ and $0.997$ at $N=10^3$, $10^4$
 and $3\cdot10^4$, consistent with a relative correction $\approx-100/N$. The
 free tail agrees with $N^{-3/2}R_0$ to relative accuracy $2\cdot10^{-6}$ at
