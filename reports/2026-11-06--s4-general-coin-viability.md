@@ -766,3 +766,99 @@ normalización de los efectos SIC, la orientación de ejes y la distinción
 entre compresión e iteración. Una revisión debe juzgar corrección y
 novedad por separado. No se ha contactado a terceros ni se ha actualizado
 el estado canónico.
+
+---
+
+## Apéndice F — reducción a un corolario explícito (2026-11-10)
+
+**PRELIMINARY; NOVELTY = OPEN.** Reescritura y examen de dependencias de
+A–E, autorizados por el usuario al elegir la opción 2: reducir la prueba,
+atribuir sus ingredientes y determinar qué queda por demostrar. Base:
+`a3ec16d3204da928b86488cdb055b00818ecc1dc`. No es un nuevo gate ni un
+prerregistro: el argumento ya estaba derivado. Sin nueva ejecución,
+revisión externa o promoción. Se conserva el texto anterior.
+
+**Conocido:** B contiene la prueba y C–E sus antecedentes y el puente de
+un paso. **Pregunta:** ¿queda un paso matemático sustantivo adicional al
+ensamblar esos ingredientes? **Cierre:** si la reducción solo requiere
+álgebra elemental, tratar el enunciado como aplicación/corolario para su
+presentación; no defender una novedad sustantiva sin evidencia adicional.
+Esto no prueba que el enunciado exacto ya haya sido publicado.
+
+### F.1 Enunciado y prueba reducida
+
+**Corolario (aplicación del argumento de factorización de [C1]).** Sea
+F un tetraedro regular unitario centrado en cero. Sea
+U(k)=sum_v A_v exp(-i k.v), unitario para todo k en la red infinita
+generada por F, con cuatro coeficientes 4x4 no nulos. Si U(0) tiene un
+eigenvalor de multiplicidad exactamente dos, separado del resto, y sus
+generadores comprimidos H_i cumplen tr H_i=0 y
+tr(H_i H_j)/2=c0² delta_ij, con c0>0, entonces c0=1/3.
+En unidades físicas, c_IR tau/ell=1/3, siendo ell la longitud del salto.
+
+**Prueba.** Las diferencias no nulas entre vértices son únicas por
+independencia afín. Comparar coeficientes en U†U=UU†=I da, para v!=w,
+A_v†A_w=A_v A_w†=0 y sum_v A_v†A_v=sum_v A_v A_v†=I4.
+Son las identidades (20)–(21) de [C1], p. 6: su argumento de
+factorización da A_v=W P_v, W=U(0), con P_v proyectores ortogonales.
+Explícitamente P_v=W†A_v=A_v†A_v, P_v P_w=0 para v!=w y sum_v P_v=I4,
+de donde P_v²=P_v. Los cuatro son no nulos, luego todos tienen rango uno.
+
+Sea T una isometría fija sobre el doblete. Con B_v=T†P_v T,
+
+    sum_v B_v=I2,      rank B_v<=1,
+    H_i=sum_v v_i B_v,
+    B_v=(I2+3 sum_i v_i H_i)/4.
+
+La última igualdad usa únicamente v.w=-1/3 para v!=w y |v|=1.
+Escribir H_i=a_i.sigma. Las hipótesis dan a_i.a_j=c0² delta_ij;
+por tanto |sum_i v_i a_i|²=c0² y
+
+    0=det B_v=(1-9c0²)/16.
+
+Como c0>0, c0=1/3. La separación espectral justifica identificar los
+generadores comprimidos con las pendientes nodales de primer orden;
+no supone que el doblete fijo sea invariante a momento finito. Fin.
+
+### F.2 Qué es conocido y qué se aplica aquí
+
+| Paso | Atribución y obligación local |
+| --- | --- |
+| Unitariedad implica ortogonalidades separadas | Identidades generales de [C1], pp. 5–6; aquí hay que comprobar la unicidad de las diferencias del soporte. B.1 la prueba por independencia afín. |
+| A_v=W P_v | Argumento conocido de [C1], p. 6, teorema 1. Se reutiliza su prueba algebraica, no su hipótesis de grupo libre. |
+| Cuatro canales en dimensión cuatro tienen rango uno | Conteo de rangos de proyectores ortogonales no nulos; álgebra lineal elemental. |
+| Compresión, inversión tetraédrica y determinante | Aplicación explícita al nodo en B.3 y F.1; no se atribuye este enunciado de velocidad a [C1] ni a [C2]. |
+| Interpretación SIC | Consecuencia: B_v=(I+n_v.sigma)/4, con n_v tetraédricos unitarios. [C2], p. 1 y pp. 4–6, aporta la normalización y geometría conocidas. No hace falta invocar un teorema SIC para probar c0=1/3. |
+| Comparación con Foster–Jacobson | Consecuencia separada E.2 de la regla [C3], p. 2, ecuaciones (6) y (9). No es premisa del corolario ni equivalencia de evoluciones iteradas. |
+
+Fuentes primarias contrastadas en esta sesión: [C1],
+`quant-ph/0503078v4.pdf`, pp. 5–6; [C2], `quant-ph/0310075v1.pdf`,
+p. 1 y pp. 4–6; [C3], `hep-th/0310166v2.pdf`, pp. 1–2 y 4,
+en los enlaces arXiv de C.2. Son identificadores de los PDF consultados
+en línea, no rutas de archivos añadidos a la biblioteca local.
+
+### F.3 Control alternativo y valoración
+
+Como control manual de la reducción, tr B_v=1/2 y rank B_v=1 implican
+sum_v tr(B_v²)=1. Por la inversión tetraédrica y
+sum_v v_i v_j=(4/3)delta_ij, la misma suma vale
+1/2+(3/4)sum_i tr(H_i²)=1/2+(9/2)c0². Se recupera c0²=1/9
+sin usar el determinante. Es la segunda vía histórica reexpresada para
+F unitario; no es verificación independiente ni un nuevo certificado.
+
+**Valoración de autor:** esta reducción no identifica un paso adicional
+que requiera una técnica o resultado matemático sustantivo nuevo. Las
+obligaciones locales son reales, pero se resuelven con comparación de
+coeficientes, conteo de rangos y álgebra de Pauli. La presentación
+justificada es una **aplicación/corolario del argumento conocido de
+factorización, con hipótesis nodales explícitas**, no un descubrimiento
+de la factorización, de las SIC o del factor tetraédrico 1/3.
+
+No localizado: el enunciado conjunto exacto en los tres originales
+contrastados. Esa ausencia limitada no establece prioridad ni falta de
+prioridad. No queda una laguna algebraica identificada en esta reducción;
+sí quedan la revisión independiente del alcance ampliado A–B y la
+evaluación especializada de originalidad. El puente E y su obstrucción
+temporal son afirmaciones separadas, cuya novedad tampoco se decide aquí.
+Se cierra esta reescritura sin abrir otra clase, ampliar la búsqueda ni
+alterar CURRENT_STATE.md. **PRELIMINARY; NOVELTY = OPEN.**
