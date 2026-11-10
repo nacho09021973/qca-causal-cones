@@ -2,6 +2,15 @@
 
 **Date:** 2026-11-10
 
+**Finite-range polyhedral comparison — 2026-11-10:** user selects
+finite-range polyhedra after discussing extension of the same-rule
+operational corona claim. First bounded step: the
+[fixed tetrahedral spectral preflight](../theory/POLYHEDRAL_CORONA_TETRA_PREFLIGHT_GATE.md).
+Status OPEN, execution authorized within that charter. Test whether the
+existing s=4 walk obeys the CJWW-style global group-velocity ball bound
+before transferring the manuscript's non-ballistic interpretation.
+No general polyhedron theorem, external review or promotion authorized.
+
 **IR-corona specialist review and bounded repairs — 2026-11-10:**
 user authorized one Opus round, then checking and repairing its objections.
 The [sealed review](../reports/reviews/2026-11-10-ir-corona-readiness-r4/informe_opus.md)
