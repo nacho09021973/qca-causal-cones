@@ -2,6 +2,14 @@
 
 **Date:** 2026-11-10
 
+**Tetrahedral IR protocol — authorized 2026-11-10:** user requests studying
+the signal under an infrared protocol. The
+[fixed-protocol charter](../theory/TETRAHEDRAL_IR_SIGNAL_GATE.md) is OPEN;
+bounded execution authorized. One s=4 rule, one resource/encoder/effect,
+separated regions, analytic admissibility and non-cancellation obligations;
+four finite-N diagnostics cannot establish a signal theorem. No external
+review or promotion authorized.
+
 **Finite-range polyhedral comparison — 2026-11-10:** user selects
 finite-range polyhedra after discussing extension of the same-rule
 operational corona claim. First bounded step: the
@@ -10,6 +18,15 @@ Status OPEN, execution authorized within that charter. Test whether the
 existing s=4 walk obeys the CJWW-style global group-velocity ball bound
 before transferring the manuscript's non-ballistic interpretation.
 No general polyhedron theorem, external review or promotion authorized.
+Execution (charter commit 8eed315):
+[axial preflight](../reports/2026-11-10--tetrahedral-corona-preflight.md),
+24/24 exact author checks. Outcome
+`GLOBAL_IR_BALL_BOUND_REFUTED_BY_AXIAL_WITNESS`: a simple eigenphase at
+k=(sqrt(3)pi/2,0,0) has directional speed 1/sqrt(5)>c_IR=1/3.
+The earlier OPEN above is the initial charter status. PRELIMINARY outcome,
+not independently reviewed or promoted. Direct transfer of the entirely
+non-ballistic-corona interpretation stops; the tetrahedral operational
+signal question remains OPEN. No protocol or signal asymptotic computed.
 
 **IR-corona specialist review and bounded repairs — 2026-11-10:**
 user authorized one Opus round, then checking and repairing its objections.

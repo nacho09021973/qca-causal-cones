@@ -1,0 +1,27 @@
+PASS determinant eps=-1
+PASS semitrace eps=-1
+PASS physical local slope eps=-1
+PASS physical witness slope eps=-1
+PASS characteristic equation eps=-1
+PASS eigenvalue derivative cross-check eps=-1
+PASS witness eigenvalue eps=-1,sign=-1
+PASS witness eigenvalue eps=-1,sign=1
+PASS determinant eps=1
+PASS semitrace eps=1
+PASS physical local slope eps=1
+PASS physical witness slope eps=1
+PASS characteristic equation eps=1
+PASS eigenvalue derivative cross-check eps=1
+PASS witness eigenvalue eps=1,sign=-1
+PASS witness eigenvalue eps=1,sign=1
+PASS simple eigenvalues 0,1
+PASS simple eigenvalues 0,2
+PASS simple eigenvalues 0,3
+PASS simple eigenvalues 1,2
+PASS simple eigenvalues 1,3
+PASS simple eigenvalues 2,3
+PASS strictly faster than c_IR
+PASS directional component below axial causal ceiling
+24/24 exact author checks passed
+GLOBAL_IR_BALL_BOUND_REFUTED_BY_AXIAL_WITNESS
+V_grp^max >= 1/sqrt(5) > c_IR=1/3; no global maximum or operational signal certified.
