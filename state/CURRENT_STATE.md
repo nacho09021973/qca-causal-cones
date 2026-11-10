@@ -2,6 +2,22 @@
 
 **Date:** 2026-11-10
 
+**IR-corona specialist review and bounded repairs — 2026-11-10:**
+user authorized one Opus round, then checking and repairing its objections.
+The [sealed review](../reports/reviews/2026-11-10-ir-corona-readiness-r4/informe_opus.md)
+completed with Claude Opus 5.5 (herramientas 97292a9), accepting correctness
+in substance with repairs; no code execution or external literature search
+by the reviewer. Three earlier attempts failed with DNS EAI_AGAIN and carry
+no verdict. Codex checked and repaired exposition, phase-node sign,
+layer-bound uniformity and interpretation; see the
+[objection disposition and primary-source check](../reports/2026-11-10--ir-corona-opus-repairs.md).
+The general ACSV theorems cover Laurent expansions and directional
+uniformity; full kernel hypothesis matching remains OPEN. The manuscript's
+priority sentence was removed. PRELIMINARY repairs, not re-reviewed;
+NOVELTY OPEN, no promotion. This supersedes the earlier readiness entry's
+"no specialist contacted" and "no external transmission authorized" for
+this specific user-authorized model round only.
+
 **Documentation consolidation and IR-corona readiness audit — 2026-11-10:**
 user selected consolidation followed by the IR-corona manuscript. README
 now reflects the stopped two-contract Thirring line; the November 9 roadmap

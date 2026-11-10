@@ -232,4 +232,12 @@ Epistemic (from `~/herramientas/REGLAS.md`):
 - These three live in `~/herramientas` (see `~/herramientas/README.md` and
   `MAPA.md`). `revision-ciega`, `investigacion-gemini` and `sanedrin` send text to
   third parties: only with the user's explicit permission.
+- In Codex, run authorized external reviews outside the network sandbox
+  (`sandbox_permissions: require_escalated`). On 2026-11-10 three sandboxed
+  Opus calls failed with DNS `EAI_AGAIN`; the same sealed CLI options worked
+  outside it. This execution requirement does not replace permission to send.
+  On failure, inspect the provider JSON (`opus.json`), including the final
+  `result` and `api_retry` events: `missing_or_failed_result` in the summary
+  can conceal the concrete connection error. Do not repeat an unchanged call
+  after a DNS failure; correct network access first.
 - Neither the committee nor the sanedrin authorizes anything; the user decides.

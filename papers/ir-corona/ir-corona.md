@@ -22,8 +22,8 @@ cone of its Weyl node. Its one-step causal support is the cube $[-1,1]^3$.
 Velocities in the cube but outside the ball form a *corona*. There,
 propagation is non-ballistic but not causally forbidden.
 
-We ask whether the corona carries an operational response that survives
-infrared control. Alice prepares a narrow-band state and applies a local
+We ask whether the corona carries a non-zero operational response for
+operations satisfying the infrared-admissibility condition below. Alice prepares a narrow-band state and applies a local
 encoding, and Bob reads out with a local detector. All three operations are
 required to be infrared-admissible: acting on the band $|p|\le N^{-1}$, each
 has an outside-band map whose operator norm is vanishingly small relative
@@ -169,8 +169,8 @@ term $N^{-17/2}e^{-K_*N}$ dominates throughout the diagnostic range $N\le56$
 (Remark 4.6).
 
 The coefficient is not a product of local factors. It arises from the
-interference between the *free tail* of the resource at Bob, which is only
-polynomially small, and the part of Alice's encoding that reaches Bob, which
+interference between the *free tail* of the resource at Bob, of pointwise
+size $O(N^{-3/2})$, and the part of Alice's encoding that reaches Bob, which
 is exponentially small. Two points of the complex-shifted Brillouin torus
 contribute, and they enter with different projectors. The power $13/2$ is
 not a count of Gaussian directions. The two normal directions are discrete
@@ -225,6 +225,14 @@ asymptotics outside the propagation region, both of walks on the line
 these methods cannot reproduce the present result. We are not aware of a
 transfer theorem that yields it directly, and we carry out the model-specific
 saddle-point analysis explicitly.
+The general smooth-point theorem covers convergent Laurent expansions,
+finite sets of minimal contributing points and uniformity over compact
+direction sets [22, Thms. 9.5 and 9.12, pp. 264–267]. Thus restrictions of
+the quantum-walk examples do not restrict the general theory. A full
+application to the matrix space-time generating function, including
+numerator cancellations and minimality for the chosen expansion, is not
+supplied here.
+
 
 What we add is a *lower* bound, in the strong form of exact leading
 asymptotics. It concerns an *operational* quantity: the distinguishability
@@ -232,12 +240,11 @@ produced by a local encoding. The encoding is spread over a region of size
 $O(N)$ and constrained to be infrared-admissible, in dimension three, and at
 a point strictly inside the corona. Upper bounds alone cannot distinguish an
 exponentially small response from an exactly vanishing one. In the problem
-studied here that distinction is the content of the result. The novelty
-claim is correspondingly narrow. To our knowledge, Theorem 4.4 is the first
-prefactor-level asymptotic, with a leading coefficient that is oscillatory and
-certified to be non-vanishing, for an infrared-controlled operational response
-in the strictly outside-propagation-region regime of a three-dimensional
-multi-component quantum walk. Exponential decay outside the propagation
+studied here that distinction is the content of the result. The additional calculation is the weighted operational sum over boundary
+layers, including the two contributing torus points and non-vanishing for
+the declared pairs. The applicability of general smooth minimal-point
+transfer theorems to the pointwise kernel remains to be checked; no
+priority claim is made here. Exponential decay outside the propagation
 region, large-deviation rates, Weyl-cone dispersion and microscopic support
 outside an emergent cone all have prior art, cited above.
 
@@ -353,8 +360,9 @@ cube is separable and equals $\sum_j|n_j|$.
 (b) With $\cos\omega=f$ we have $\nabla\omega=-\nabla f/\sin\omega$ and
 $\sin^2\omega=1-f^2$. The identity (5) is a polynomial identity in
 $(c_j,s_j)$ modulo $c_j^2+s_j^2=1$, and is checked by expansion. Near a
-conical point, $\omega(p)=|p-p_\vee|+O(|p-p_\vee|^2)$, so
-$\nabla\omega=(p-p_\vee)/|p-p_\vee|+o(1)$ sweeps the unit sphere.
+conical point with $f=1$, $\omega(p)=|p-p_\vee|+O(|p-p_\vee|^2)$;
+with $f=-1$, $\omega(p)=\pi-|p-p_\vee|+O(|p-p_\vee|^2)$.
+Thus $\nabla\omega=\pm(p-p_\vee)/|p-p_\vee|+o(1)$ sweeps the unit sphere.
 
 (c) Let $d_1+\dots+d_N=N\sigma$ with $d_k\in F$. Every $d\in F$ satisfies
 $\sigma_i d_i\le1$ for each coordinate $i$, so $\sum_k\sigma_i(d_k)_i=N$
@@ -633,7 +641,8 @@ and $\delta_{M,M_B}(N)>0$ for all $N$ larger than some finite $N_*$.
 
 Throughout, the operational claim concerns the twelve Pauli pairs,
 $M\in\{\sigma_1,\sigma_2,\sigma_3\}$. The four pairs with $M=I$ are
-included as reference controls. Theorem 4.4 and Table 1 cover all sixteen
+included as reference comparisons by convention: $U_I$ is a non-trivial
+local phase operation, not a null encoding. Theorem 4.4 and Table 1 cover all sixteen
 pairs.
 
 The constants implicit in the $O(N^{-1/2})$ terms are finite but not
@@ -671,8 +680,8 @@ twelve Pauli pairs the response is non-perturbatively small: $\delta_{M,M_B}(N)=
 $k$. It is nevertheless non-zero for all large $N$, with the exact rate
 $K_*$, the exact power $13/2$ and an explicit non-vanishing coefficient.
 
-**Remark 4.6.** Three features of Table 1 were not assumed and come out of
-the computation. First, $C(\sigma_3,\cdot)=-C(I,\cdot)$ at leading order; the
+**Remark 4.6.** Table 1 has three features. First, $C(\sigma_3,\cdot)=-C(I,\cdot)$ follows from the signal expansion
+and the subleading order of $a_c$; the
 two encoders differ only at lower orders. Second, the three Pauli encoders
 are not equivalent: with $M_B=I$ they give three different coefficients.
 Third, for $M=\sigma_2$ the two contributing saddles enter with the same sign
@@ -689,9 +698,15 @@ $N\le56$.
 **Remark 4.7 (Methodology).** The protocol (regions, profiles, encoders,
 detectors, scalings $\Lambda_N=N^{-1}$, $\Lambda'_N=N^{-1/2}$ and the
 encoding angle $\pi/2$) was fixed before the asymptotic analysis and was not tuned
-afterwards. The family of encoders and detectors is not exhaustive: a general
-generator $M=aI+b\cdot\sigma$ is not covered, because no symmetry of the walk
-relating the directions $\hat n\cdot\sigma$ has been established.
+afterwards. The family of encoders and detectors is not exhaustive: for a fixed bounded Hermitian $M=aI+b\cdot\sigma$, the leading response
+is real-linear in $(a,b)$, by
+$e^{i\pi F_NM/2}-I=i\pi F_NM/2+O(F_N^2)$ and the subleading
+layer bound for the quadratic remainder. Hence the coefficient is
+$aC_{I,M_B}+\sum_kb_kC_{\sigma_k,M_B}$. Non-vanishing is pair-specific:
+$M=I+\sigma_3$ annihilates the resource spinor and leaves it invariant.
+The null encoding has $\Delta_M=0$ and is excluded by Definition 3.1;
+it is not an admissible counterexample to Corollary 4.5.
+Optimisation over admissible operations is not addressed.
 
 ---
 
@@ -854,8 +869,12 @@ equality only at $v=v_*$. Hence $v_*$ is the unique minimiser.
 $I(v_*)\ge3\alpha\log2-\operatorname{arcosh}(125/64)>(3-\tfrac{\sqrt3}2)\log2-\log4=J$.
 Also $\xi_*\cdot v_*<\xi_*\cdot u$ because $\alpha<1$ and $t_*>0$, so
 $I(v_*)<\xi_*\cdot u-\Phi(\xi_*)\le I(u)$. Along the diagonal,
-$3t-\operatorname{arcosh}(\cosh^3t)\uparrow\log4$, and $I(u)=\log4$ is also
-the exact vertex rate of Proposition 2.2(c). The numerical values are
+$3t-\operatorname{arcosh}(\cosh^3t)\uparrow\log4$, giving $I(u)\ge\log4$.
+Conversely, the tilted bound for any fixed real $\xi$ bounds the exact
+vertex amplitude $4^{-N}$ by
+$C_\xi(1+N)e^{-N(\xi\cdot u-\Phi(\xi))}$. Taking logarithms, dividing
+by $N$, and taking the limit gives $\xi\cdot u-\Phi(\xi)\le\log4$.
+Taking the supremum proves $I(u)=\log4$. The numerical values are
 enclosed by interval arithmetic.
 
 (d) Apply (11) with $\xi=\xi_*$. By Lemma 5.2,
@@ -973,8 +992,8 @@ Positivity of $E$ does not fix the sign of $L$, because the interference
 terms can have either sign.
 
 By Theorem 4.3(d), $a_c,a_{\uparrow},a_{\downarrow}$ have $\ell^2$-norm at
-most $T_N=O(N^4e^{-K_*N})$, so $Q_M=O(N^{8}e^{-2K_*N})$. The free tail is only
-polynomially small (Lemma 7.2). The $e^{-K_*N}$ sector therefore consists of
+most $T_N=O(N^4e^{-K_*N})$, so $Q_M=O(N^{8}e^{-2K_*N})$. The free tail is pointwise $O(N^{-3/2})$ on Bob's region (Lemma 7.2),
+whose volume is $O(N^3)$; its regional $\ell^2$ norm is $O(1)$. The $e^{-K_*N}$ sector therefore consists of
 the linear interference terms. Define, for $\chi\in\{{\uparrow},{\downarrow}\}$,
 
 $$
@@ -982,17 +1001,16 @@ $$
 $$
 
 Theorem 4.4 follows from Theorem 7.5 below. The piece
-$\langle r,Ea_c\rangle$ is $O(N^{-17/2}e^{-K_*N})$ by the same argument,
-For completeness, in a boundary layer of depth $\delta$ put
+$\langle r,Ea_c\rangle$ is $O(N^{-17/2}e^{-K_*N})$, as follows.
+In a boundary layer of depth $\delta$ put
 $d=(\delta-|u_\perp|^2/(2R))_+$. The exact spherical profile gives
 $F_N=O(N^{-2}d^2)$ with polynomial depth bounds, and
 $|c_N|\le C F_N^2\le C N^{-4}d^4$.
 Thus the tilted Alice layer is $O(N^{-9/2})$: resource, profile and
 disc area contribute $N^{-3/2}$, $N^{-4}$ and $N$, respectively.
-The fourth-order profile's third-derivative variation is
-$O(\delta^{7/2}R^{-1/2})$, giving $O(N^{-6})$ after prefactors and
-the exponentially weighted depth sum. Hence its nonzero Poisson modes
-are smaller than its layer bound, uniformly in $\theta_N$.
+This absolute bound follows by counting lattice points in the disc;
+polynomial depth factors are summable against the tilt. No fourth-order
+Poisson expansion is needed.
 The Bob layer is $O(N^{-5/2})$ and the three-dimensional local Gaussian
 integral is $O(N^{-3/2})$, yielding $N^{-17/2}$.
 The complementary spectral region is exponentially suppressed as in
@@ -1232,6 +1250,8 @@ $\|\partial^3G_0\|_{\mathcal M}=O(N^{-4}\delta^{3/2})$, with additional
 polynomial depth factors when derivatives hit the resource. These are
 absolute bounds uniform at $\delta=0$. Choose $r_0$ below half the
 shortest nonzero reciprocal-lattice length in the $2\pi$ normalization.
+Also require $r_0$ smaller than half the positive distance of each of the
+six non-trivial tangential characters from $2\pi\Lambda_0^*$.
 The inverse-cube sum converges on this two-dimensional lattice;
 translations of the planes add only unit-modulus phases. All polynomial
 depth moments are uniformly summable against $e^{-t_*(\theta_N+j)}$.
@@ -1243,6 +1263,10 @@ $u_\perp=\sqrt{2R}\,\sigma$,
 $$
 \int e^{i\eta_t\cdot u_\perp}\Bigl(\delta-\frac{|u_\perp|^2}{2R}\Bigr)_+^2d^2u_\perp=2R\,\Psi_\delta(\tau).
 $$
+For $\delta\le R/2$, expand the exact depth on its support as
+$R-\sqrt{(R-\delta)^2+|u_\perp|^2}=\delta-|u_\perp|^2/(2R)+O(\delta^2/R)$.
+Using $x\mapsto(x_+)^2$ bounds the absolute scaled error by a polynomial
+in depth times $R^{-1}$; deeper planes are exponentially suppressed.
 Collecting the factors
 $\frac1{\sqrt3}\cdot\frac{32\pi}{N^2}\cdot N^{-3/2}\varphi_\partial\cdot2R$ gives
 the prefactor of $\mathfrak A_f$.  For $\mathfrak B_w$ the factors are
@@ -1259,6 +1283,10 @@ follows from Lemma 7.1(b) and the parity identity.  (d): by
 Lemma 7.1(c), the character is non-trivial on each plane.  The
 Poisson sum therefore has no $m=0$ term, and the remaining terms are
 $O(N^{-4})$.
+All bounds are uniform in $0<\theta_N<1$: depth sums are bounded by
+$\sum_{j\ge0}e^{-t_*j}\operatorname{poly}(1+j)$. At zero depth the
+profile vanishes, with no division by the depth.
+
  ∎
 
 ### 7.7. Assembly
@@ -1362,16 +1390,12 @@ It is below $0.15\%$, and it never changes the sign.
 The theorem is a statement about one walk and one explicitly specified
 family of operations.  It shows that the gap between the emergent
 relativistic cone and the microscopic causal support is not merely
-geometric.  Under an infrared-controlled protocol it carries an
+geometric. For operations satisfying Definition 3.1, it carries an
 operational response whose asymptotic law is known exactly: rate, power
 and coefficient. Here infrared control qualifies the operations under
 Definition 3.1; it does not identify the spectral origin
 of the exponentially small response. The admissibility error is only
-polynomially small and can exceed the entire response. The repository's
-later hard-cutoff analysis for the fixed $\sigma_2/I$ pair records an
-$\Theta(N^{-3})$ infrared block cancelled by the blocks involving its
-complement (`state/CURRENT_STATE.md`, Sec. 10.1, with its scoped
-review records). That result is not re-proved here. In particular, the
+polynomially small and can exceed the entire response. In particular, the
 projected infrared block alone must not be identified with this signal.
 The tilted representation also includes the saddle at $\pi u$, outside
 the admissibility band centred at zero. The power $13/2$ depends on the
@@ -1405,13 +1429,15 @@ result as a statement in the mathematical physics of finite-range unitary
 dynamics. Its
 interest lies in the structure it exhibits: an exact separation between
 ballistic propagation, which respects $c_{\mathrm{IR}}$, and operational
-influence, which does not vanish inside the corona even under infrared
-control.
+influence, which does not vanish inside the corona for the specified
+infrared-admissible operations. Admissibility is verified separately and
+is not used to derive the signal asymptotic; it does not control errors
+on the exponentially small signal scale.
 
 ### 8.3. Open problems
 
-1. General encoders $M=aI+b\cdot\sigma$, and optimisation over admissible
-   operations.
+1. Optimisation over admissible operations, and subleading responses when
+   a general generator's leading coefficient vanishes.
 2. Other walks, in particular the Bialynicki-Birula walk [9, Eq. (5.12)],
    whose corona contains ballistic modes faster than $c_{\mathrm{IR}}$, and
    the massive Dirac case.
