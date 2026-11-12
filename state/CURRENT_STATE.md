@@ -2,6 +2,12 @@
 
 **Date:** 2026-11-12
 
+**Bravais-lattice generalisation drafted — 2026-11-12:** user agreed to
+generalise the general-rate theorem to other classes, Bravais lattices
+first. [Draft charter](../theory/GENERAL_IR_RATE_BRAVAIS_GATE.md): same
+hypotheses with `u` primitive in the dual lattice; expected outcome a
+corollary. **DRAFT, not frozen; nothing authorized to be computed.**
+
 **Carrier dichotomy chartered — 2026-11-12:** user choice «Dicotomía de
 portadores». The proposed rate gap for walks with fast modes was judged
 unlikely by the author (finitely smooth profiles reach non-zero momenta
