@@ -49,7 +49,9 @@ eigenvalues are isolated from the other `s - 2` at `p = 0`, so their
 spectral projector `Pi(p)` is analytic near `0`; `||(I - Pi(p)) chi|| = O(1/N)`
 on the support, which contributes `O(N^(-d/2 - 1))` pointwise (sup norm
 bounded by the `L^1` norm of the Fourier transform). On `Pi(p)`,
-`S(p) = e^(-i omega_0) e^(-i H(p))` with `H = H_W + O(|p|^2)`; with
+`S(p) = e^(-i omega_0) e^(-i H(p))` with `H = H_W + O(|p|^2)` (the
+remainder bound uses the analyticity of the symbol and of the nodal
+projector, and the absence of a constant or tilt term); with
 `p = q/N`, Duhamel gives `e^(-i N H(q/N)) = e^(-i H_W(q)) + O(1/N)`, and
 `Pi(q/N) = Pi(0) + O(1/N)`. ∎
 
@@ -166,10 +168,14 @@ bounded by some `M_Gamma`.
   (Weyl), so the average over `N` of `Gamma_0` is
   `int e^(-zeta^T S_C zeta/2) g^A(0) g^B(0) d^m zeta`. Both zero modes are
   positive Gaussians in `zeta`; the total quadratic form
-  `S_C/2 + (rho_A + rho_B)/(2 |u| kappa) I` is accretive; the Gaussian
-  integral of an accretive form is `pi^(m/2) det^(-1/2)` with positive
-  real part (its eigenvalues lie in the right half-plane). So the average
-  `mu` has `Re mu > 0`.
+  `S_C/2 + (rho_A + rho_B)/(2 |u| kappa) I` is strictly accretive; the
+  Gaussian integral of such a form is `pi^(m/2) det^(-1/2)`. *Branch
+  (added after review):* its eigenvalues satisfy `|arg lambda_j| < pi/2`,
+  so for `m <= 2` the argument of the determinant stays in `(-pi, pi)`;
+  along the segment to the Hermitian part the form stays strictly
+  accretive, and at the positive-definite end the root is positive, so
+  `det^(-1/2)` has positive real part. For `m >= 3` this argument fails;
+  `d in {2, 3}` is essential here. So the average `mu` has `Re mu > 0`.
 - Under H9(ii), the average is `sum_n int e^(-zeta^T S_C zeta/2) g^A(2 pi n) conj(g^B(2 pi n))`.
   For each `n` the prefactors give `|u s|^(-6 - m) > 0` and the exponent
   has the form `-zeta^T [S_C/2 + (rho_A/s + rho_B/s-bar)/(2|u|) I] zeta`,

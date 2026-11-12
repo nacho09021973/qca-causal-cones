@@ -62,8 +62,15 @@ sufficient; a rotation condition is, and makes `psi` irrelevant;
 which K3 satisfies, approved by the user the same day. **Stage 2:
 `PROVED_UNDER_FROZEN_CONTRACT` as amended (H1–H3, H4′, H5–H10): the CJWW
 rate is attained, in limsup form, by a protocol of the family.** Author
-derivation by a Claude model, PRELIMINARY, not reviewed; no promotion,
-NOVELTY OPEN. User asked for a sealed Grok review. No review, no promotion.
+derivation by a Claude model, PRELIMINARY; no promotion, NOVELTY OPEN.
+Sealed Grok review (grok-4.7, herramientas 7d111a1, base `65e1ec4`,
+[unaltered report](../reports/reviews/2026-11-12-general-ir-rate-grok/informe_grok.md)):
+**Stage 1 PASS, Stage 2 PASS**, five exposition objections, all accepted
+and applied, not re-reviewed
+([author reading](../reports/reviews/2026-11-12-general-ir-rate-grok/verificacion_autor.md)).
+Not detected by the review and still open: the charter clause «`B - A`
+inside `conv F`» excludes the manuscript's regions (unused by the proof;
+correction pending user decision). One house, one round. No review, no promotion.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:

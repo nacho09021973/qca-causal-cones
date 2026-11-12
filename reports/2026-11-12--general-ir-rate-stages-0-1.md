@@ -103,7 +103,8 @@ on `R^d` are continuous. ∎
 
 *Proof.* Unitary Schur form `T = V(D + U)V*`, `|D_jj| <= e^(Phi)`,
 `U` strictly upper triangular, `||U|| <= ||T|| + ||D|| <= 2 beta`. In the
-expansion of `(D + U)^N`, words with `s` or more factors `U` vanish, and
+expansion of `(D + U)^N`, words with `s` or more factors `U` vanish (each
+`U` raises the level of the flag by at least one and `D` preserves it), and
 there are `binom(N,k)` words with `k` factors. ∎ (For `s = 2` this is
 manuscript Lemma 5.3 with `2 beta` in place of `beta`.)
 
@@ -123,7 +124,8 @@ convex set `B - A`, so `xi_*.(v - v_*) >= 0` for `v in B - A`. For
 `xi_*.(y - x) >= N xi_*.v_*`. The contour shift (manuscript Eq. (11),
 valid for any entire periodic integrand) and Lemma 1.2 give
 `||G_N(y - x)|| <= C N^(s-1) e^(N Phi(xi_*) - xi_*.(y - x)) <= C N^(s-1) e^(-K_* N)`.
-The Schur test with `|A_N|, |B_N| <= C N^d` bounds `T_N`; the last two
+The Schur test (`sum_y ||K(y,x)|| <= |B_N| sup||K||`, `sum_x ||K(y,x)|| <= |A_N| sup||K||`,
+so `T_N <= sqrt(|A_N||B_N|) sup||K||`) with `|A_N|, |B_N| <= C N^d` bounds `T_N`; the last two
 inequalities are manuscript Thm 4.1's argument, which uses neither the
 dimension nor the walk. ∎
 
