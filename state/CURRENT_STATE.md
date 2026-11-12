@@ -35,7 +35,18 @@ class; two features absent from the manuscript case found (a complex
 Gaussian, controlled; a phase `e^(iN psi)` that the hypotheses in force do
 not fix). Remaining: A1 leading-term lemma, A2 non-vanishing of the
 imaginary part, which needs one more condition. End of session 1 of the
-Stages 1–2 budget. No review, no promotion.
+Stages 1–2 budget.
+Session 2 (user «SIGUE», read as the recommended plan):
+[leading term and non-vanishing](../reports/2026-11-12--general-ir-rate-stage2-leading-term.md).
+A1 derived in the amended class: free tail, layer sums, depth sums and
+assembly generalised; leading order `N^(-5-d/2)` at zero momentum with a
+phase `e^(iN psi)` and a complex depth factor whose average over `N` has
+positive real part under H9. A2: the recommended `psi in pi Z` is not
+sufficient; a rotation condition is, and makes `psi` irrelevant;
+[draft Amendment 3](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_3.md) (H10),
+which K3 satisfies, **not in force until the user approves it**. With it,
+(T) follows; the verdict is not recorded before that decision. Author
+derivation, not reviewed. No review, no promotion.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:
