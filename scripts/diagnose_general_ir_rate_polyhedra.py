@@ -244,10 +244,12 @@ def refine(sym, k0, xi, basis_np):
                 eb = np.eye(d)[b] * h
                 H[a, b] = (f(th + ea + eb) - f(th + ea - eb) - f(th - ea + eb)
                            + f(th - ea - eb)) / (4 * h * h)
-        if np.all(np.linalg.eigvalsh((H + H.T) / 2) < 0):
-            step = -np.linalg.solve(H, g)
-        else:
-            step = 0.05 * g
+        step = 0.05 * g
+        if np.all(np.isfinite(H)) and np.all(np.linalg.eigvalsh((H + H.T) / 2) < 0):
+            try:
+                step = -np.linalg.solve(H, g)
+            except np.linalg.LinAlgError:     # attempt 1 crashed here (W6); tooling only
+                pass
         if np.linalg.norm(step) > 0.2:
             step *= 0.2 / np.linalg.norm(step)
         th = th + step

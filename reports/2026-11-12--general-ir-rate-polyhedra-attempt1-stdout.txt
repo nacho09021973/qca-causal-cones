@@ -1,0 +1,52 @@
+W1 CJWW (5.15), K3 control: HYPOTHESES_HOLD_NUMERICALLY
+    K_star = 0.19051892958362115
+    t_star = 1.274361256554958
+    lattice_isometric_to_Zd = True
+    H1_on_axis=True, H2=True, H3=True, H4prime=True, H8=True, H7=True, H9=True, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 8
+W2 CJWW (5.12) Bialynicki-Birula: OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    K_star = 0.001305877006875844
+    t_star = 0.26849032997478806
+    lattice_isometric_to_Zd = False
+    H1_on_axis=None, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=True
+    dominant points: 2
+W3 Pavia Weyl A+ (BCC): OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    K_star = 0.0013058770068761771
+    t_star = 0.2684903296907083
+    lattice_isometric_to_Zd = False
+    H1_on_axis=None, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=True
+    dominant points: 2
+W4 square Weyl: HYPOTHESES_HOLD_NUMERICALLY
+    K_star = 0.000870584671250535
+    t_star = 0.21922144570344715
+    lattice_isometric_to_Zd = True
+    H1_on_axis=True, H2=True, H3=True, H4prime=True, H8=True, H7=True, H9=True, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 2
+W5 JDW L6d (hexagon): FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = False
+Traceback (most recent call last):
+  File "/home/ignac/qca-causal-cones/scripts/diagnose_general_ir_rate_polyhedra.py", line 527, in <module>
+    main()
+  File "/home/ignac/qca-causal-cones/scripts/diagnose_general_ir_rate_polyhedra.py", line 509, in main
+    r = analyse(wid, name, builder, phase)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ignac/qca-causal-cones/scripts/diagnose_general_ir_rate_polyhedra.py", line 417, in analyse
+    s_lo, s_hi = slope(lo), slope(hi)
+                            ^^^^^^^^^
+  File "/home/ignac/qca-causal-cones/scripts/diagnose_general_ir_rate_polyhedra.py", line 412, in slope
+    _, ks = phi_and_maximisers(sym, xi, basis_np, grid)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ignac/qca-causal-cones/scripts/diagnose_general_ir_rate_polyhedra.py", line 264, in phi_and_maximisers
+    k, v = refine(sym, grid[idx], xi, basis_np)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ignac/qca-causal-cones/scripts/diagnose_general_ir_rate_polyhedra.py", line 248, in refine
+    step = -np.linalg.solve(H, g)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/numpy/linalg/linalg.py", line 409, in solve
+    r = gufunc(a, b, signature=signature, extobj=extobj)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/numpy/linalg/linalg.py", line 112, in _raise_linalgerror_singular
+    raise LinAlgError("Singular matrix")
+numpy.linalg.LinAlgError: Singular matrix
+exit 1
