@@ -1,0 +1,201 @@
+{
+  "status": "DIAGNOSTIC_ONLY_NOT_A_NONZERO_PROOF",
+  "rows": [
+    {
+      "N": 8,
+      "order": 8,
+      "alice_sites": 1,
+      "bob_sites": 1,
+      "active_alice_sites": 1,
+      "active_bob_sites": 1,
+      "necessary_center_path_counts": [
+        "13/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "signed_signal": 0.0,
+      "delta": 0.0,
+      "interference": 0.0,
+      "quadratic": 0.0,
+      "max_relative_norm_error": 3.219646771412954e-15,
+      "grid_side": 17,
+      "periodic_boundary": false
+    },
+    {
+      "N": 8,
+      "order": 12,
+      "alice_sites": 1,
+      "bob_sites": 1,
+      "active_alice_sites": 1,
+      "active_bob_sites": 1,
+      "necessary_center_path_counts": [
+        "13/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "signed_signal": 0.0,
+      "delta": 0.0,
+      "interference": 0.0,
+      "quadratic": 0.0,
+      "max_relative_norm_error": 3.9968028886505635e-15,
+      "grid_side": 17,
+      "periodic_boundary": false
+    },
+    {
+      "N": 16,
+      "order": 8,
+      "alice_sites": 1,
+      "bob_sites": 1,
+      "active_alice_sites": 1,
+      "active_bob_sites": 1,
+      "necessary_center_path_counts": [
+        "13",
+        "1",
+        "1",
+        "1"
+      ],
+      "signed_signal": 5.822948782703563e-08,
+      "delta": 5.822948782703563e-08,
+      "interference": 2.2236034006145928e-08,
+      "quadratic": 3.5993453820889704e-08,
+      "max_relative_norm_error": 7.216449660063518e-15,
+      "grid_side": 33,
+      "periodic_boundary": false
+    },
+    {
+      "N": 16,
+      "order": 12,
+      "alice_sites": 1,
+      "bob_sites": 1,
+      "active_alice_sites": 1,
+      "active_bob_sites": 1,
+      "necessary_center_path_counts": [
+        "13",
+        "1",
+        "1",
+        "1"
+      ],
+      "signed_signal": 5.822948782703583e-08,
+      "delta": 5.822948782703583e-08,
+      "interference": 2.223603400614528e-08,
+      "quadratic": 3.5993453820890545e-08,
+      "max_relative_norm_error": 7.216449660063518e-15,
+      "grid_side": 33,
+      "periodic_boundary": false
+    },
+    {
+      "N": 24,
+      "order": 8,
+      "alice_sites": 1,
+      "bob_sites": 1,
+      "active_alice_sites": 1,
+      "active_bob_sites": 1,
+      "necessary_center_path_counts": [
+        "39/2",
+        "3/2",
+        "3/2",
+        "3/2"
+      ],
+      "signed_signal": 0.0,
+      "delta": 0.0,
+      "interference": 0.0,
+      "quadratic": 0.0,
+      "max_relative_norm_error": 1.0658141036401503e-14,
+      "grid_side": 49,
+      "periodic_boundary": false
+    },
+    {
+      "N": 24,
+      "order": 12,
+      "alice_sites": 1,
+      "bob_sites": 1,
+      "active_alice_sites": 1,
+      "active_bob_sites": 1,
+      "necessary_center_path_counts": [
+        "39/2",
+        "3/2",
+        "3/2",
+        "3/2"
+      ],
+      "signed_signal": 0.0,
+      "delta": 0.0,
+      "interference": 0.0,
+      "quadratic": 0.0,
+      "max_relative_norm_error": 1.0880185641326534e-14,
+      "grid_side": 49,
+      "periodic_boundary": false
+    },
+    {
+      "N": 32,
+      "order": 8,
+      "alice_sites": 9,
+      "bob_sites": 9,
+      "active_alice_sites": 1,
+      "active_bob_sites": 1,
+      "necessary_center_path_counts": [
+        "26",
+        "2",
+        "2",
+        "2"
+      ],
+      "signed_signal": 2.1392623729605348e-09,
+      "delta": 2.1392623729605348e-09,
+      "interference": -7.509002568648889e-11,
+      "quadratic": 2.2143523986470235e-09,
+      "max_relative_norm_error": 1.3988810110276972e-14,
+      "grid_side": 67,
+      "periodic_boundary": false
+    },
+    {
+      "N": 32,
+      "order": 12,
+      "alice_sites": 9,
+      "bob_sites": 9,
+      "active_alice_sites": 1,
+      "active_bob_sites": 1,
+      "necessary_center_path_counts": [
+        "26",
+        "2",
+        "2",
+        "2"
+      ],
+      "signed_signal": 2.139262372960612e-09,
+      "delta": 2.139262372960612e-09,
+      "interference": -7.509002568646254e-11,
+      "quadratic": 2.214352398647075e-09,
+      "max_relative_norm_error": 1.4765966227514582e-14,
+      "grid_side": 67,
+      "periodic_boundary": false
+    }
+  ],
+  "comparisons": [
+    {
+      "N": 8,
+      "order_difference": 0.0,
+      "relative_order_difference": 0.0
+    },
+    {
+      "N": 16,
+      "order_difference": 1.9852334701272664e-22,
+      "relative_order_difference": 3.409326690326008e-15
+    },
+    {
+      "N": 24,
+      "order_difference": 0.0,
+      "relative_order_difference": 0.0
+    },
+    {
+      "N": 32,
+      "order_difference": 7.734138727370809e-23,
+      "relative_order_difference": 3.615329669294945e-14
+    }
+  ],
+  "numpy": "1.26.4",
+  "script_sha256": "11c51b5d95ae1d6e73c06800f8221af8373de36819c367173ad37c0e14079d31",
+  "git_head": "07d7ce63716ab34959a9dc6596ae0d218fb449e6",
+  "working_tree": true,
+  "charter_commit": "07d7ce6",
+  "meaning": "Two cubatures are sensitivity checks, not certified error bounds. No fit or asymptotic inference."
+}

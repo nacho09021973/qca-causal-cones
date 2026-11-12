@@ -9,6 +9,50 @@ bounded execution authorized. One s=4 rule, one resource/encoder/effect,
 separated regions, analytic admissibility and non-cancellation obligations;
 four finite-N diagnostics cannot establish a signal theorem. No external
 review or promotion authorized.
+Execution under 07d7ce6:
+[IR protocol analysis](../reports/2026-11-10--tetrahedral-ir-signal.md),
+outcome `OPEN_AFTER_IR_PROTOCOL_ANALYSIS`. PRELIMINARY analytic derivation
+gives all three relative leakage ratios O(N^-1/2), with nonzero
+denominators. Fixed diagnostics show exact reachability zeros at N=8,24
+and numerical nonzero at N=16,32; all four profiles have only one active
+site and do not resolve the large-N IR regime. The non-cancellation proof
+for the exact signal at large N remains OPEN. No external review,
+signal promotion or numerical asymptotic inference.
+User subsequently requests Fable 5.2 to tackle this exact non-cancellation
+obligation: one sealed analytic round, requested model claude-fable-5-2,
+via revision-ciega with OPUS_MODEL override (herramientas 97292a9), outside
+the network sandbox. Brief and exact input in
+`reports/reviews/2026-11-10-tetrahedral-ir-signal-fable52/`.
+This is authorization for that specific transmission and analytic attempt,
+not a change of protocol or automatic acceptance/promotion of its output.
+Fable round completed (claude-fable-5-2): candidate two-sided N^-5 signal
+bound, explicitly attributed to fixed nonzero-momentum leakage. User then
+authorized local checking; audit charter 269ada5 and
+[expanded local derivation](../reports/2026-11-10--tetrahedral-fable-local-audit.md).
+Outcome `AUDIT_PASS_WITH_LOCAL_DERIVATION`: 55/55 exact algebra checks plus
+written analytic estimates for low-frequency suppression, uniform aliases,
+o(N^-5) interference and a positive transported quadratic term. The local
+derivation gives eventual L_N>0 with c N^-5<=L_N<=C N^-5 for the fixed
+protocol, without an effective threshold. PRELIMINARY, non-blind local
+audit with prior context; no promotion or sealed re-review of the expanded
+argument. This advances the earlier OPEN non-cancellation obligation to a
+locally checked analytic proof candidate, not an accepted terminal theorem.
+No claim of exclusively IR-carried signal, exact coefficient, N^-13/2
+interference order, or generality beyond this protocol.
+User subsequently requests an independent Grok review. One sealed round
+requested via revision-ciega (grok-4.7, herramientas 97292a9), outside the
+network sandbox. Mathematical sections and frozen definitions were
+extracted reproducibly into
+`reports/reviews/2026-11-10-tetrahedral-ir-signal-grok/`; no Fable report
+or previous audit acceptance verdict was attached. Exact definition 3.1
+from the manuscript is included. The review's outcome is pending; the
+transmission does not promote any scientific conclusion.
+Next-priority user decision: close this tetrahedral case and compare it
+against primary literature before considering any further polyhedron.
+Check existing transfer/transport results and whether our admissibility
+limitation concerns criteria actually used elsewhere. Literature priority
+does not itself establish novelty or close the pending Grok review; see
+the current sequence in ROADMAP_2026-11-10.md.
 
 **Finite-range polyhedral comparison — 2026-11-10:** user selects
 finite-range polyhedra after discussing extension of the same-rule

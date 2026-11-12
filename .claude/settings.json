@@ -1,6 +1,10 @@
 {
   "permissions": {
     "allow": [
+      "Bash(python3 scripts/verify_tetrahedral_fable_audit.py)",
+      "Bash(python3 -B scripts/verify_tetrahedral_fable_audit.py)",
+      "Bash(python3 scripts/diagnose_tetrahedral_ir_signal.py)",
+      "Bash(python3 -B scripts/diagnose_tetrahedral_ir_signal.py)",
       "Bash(python3 scripts/verify_tetrahedral_corona_preflight.py)",
       "Bash(python3 -B scripts/verify_tetrahedral_corona_preflight.py)",
       "Bash(pdftotext *)",

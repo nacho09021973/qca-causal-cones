@@ -1,0 +1,57 @@
+PASS coin unitary
+PASS coin determinant
+PASS joint projector trace (-1, -1, -1)
+PASS colour increment (-1, -1, -1)
+PASS joint projector trace (-1, 1, 1)
+PASS colour increment (-1, 1, 1)
+PASS joint projector trace (1, -1, 1)
+PASS colour increment (1, -1, 1)
+PASS joint projector trace (1, 1, -1)
+PASS colour increment (1, 1, -1)
+PASS projector resolution
+PASS orthogonal channels (-1, -1, -1),(-1, 1, 1)
+PASS orthogonal channels (-1, -1, -1),(1, -1, 1)
+PASS orthogonal channels (-1, -1, -1),(1, 1, -1)
+PASS orthogonal channels (-1, 1, 1),(1, -1, 1)
+PASS orthogonal channels (-1, 1, 1),(1, 1, -1)
+PASS orthogonal channels (1, -1, 1),(1, 1, -1)
+PASS singlet channel
+PASS general Laurent trace
+PASS general Laurent second coefficient
+PASS general Laurent third coefficient
+PASS shift determinant
+PASS local cluster derivative 0
+PASS negative cluster derivative 0
+PASS local cluster derivative 1
+PASS negative cluster derivative 1
+PASS local cluster derivative 2
+PASS negative cluster derivative 2
+PASS axis characteristic factorisation
+PASS simple-spectrum witness polynomial
+PASS characteristic discriminant not identically zero
+PASS active basis orthonormal
+PASS active subspace invariant
+PASS active block trace
+PASS active block determinant
+PASS active off-diagonal coupling
+PASS flat/active crossing residual
+PASS resource spin normalised
+PASS resource in positive cluster
+PASS encoder stays in positive cluster
+PASS singlet overlap weight
+PASS centre phase slope
+PASS centre strictly interior sine
+PASS lower-bound patch phase slope
+PASS lower-bound patch strictly interior sine
+PASS centre group velocity
+PASS patch group velocity
+PASS patch arrival at Bob
+PASS centre nonzero second derivative
+PASS radial Fourier closed form
+PASS cross-section Fourier closed form
+PASS profile second normal derivative
+PASS encoder second normal derivative
+PASS encoder boundary coefficient
+PASS detector boundary coefficient
+55/55 exact checks passed
+ALGEBRA_ONLY: analytic low-frequency, uniform Poisson, interference and transport bounds require the audit report.

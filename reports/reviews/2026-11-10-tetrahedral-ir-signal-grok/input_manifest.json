@@ -1,0 +1,45 @@
+{
+  "purpose": "Review preparation only, no new mathematical result.",
+  "git_head": "269ada5ddb441aa830ba77fa1962641d4ffd4c1b",
+  "working_tree": true,
+  "previous_verdicts_attached": false,
+  "entries": [
+    {
+      "source": "reports/2026-11-10--tetrahedral-fable-local-audit.md",
+      "source_sha256": "ad902826662ec0ab0b300cdfd0e1491157e63cf8d94b3034bcee697ee663d99c",
+      "start_inclusive": "## 1. Exact inputs checked independently",
+      "end_exclusive": "## 7. Validation and what remains outside this audit",
+      "output": "proof_candidate.md",
+      "output_sha256": "4c45cdcfdd342d309b4c487106d8fa689a6152346ae151f089b93b60c523b5f6",
+      "note": "For proof_candidate only: exclude initial executed-checks paragraph and prepend neutral title."
+    },
+    {
+      "source": "theory/TETRAHEDRAL_IR_SIGNAL_GATE.md",
+      "source_sha256": "eeca234eeaacf893a6a58cfaef50f488beb61ee1f169f3137ea35ce4348f04d5",
+      "start_inclusive": "## Fixed model, conventions and geometry",
+      "end_exclusive": "## Stages and outcomes",
+      "output": "protocol_definitions.md",
+      "output_sha256": "0334a224641d5ce9b61e4f4b657c25bedb53605d5f8cf299c01e39efa5dc65e2",
+      "note": "For proof_candidate only: exclude initial executed-checks paragraph and prepend neutral title."
+    },
+    {
+      "source": "theory/POLYHEDRAL_CORONA_TETRA_PREFLIGHT_GATE.md",
+      "source_sha256": "bba1a9010c655be36e193c39e952815e8e23272a7887ba7f9cbca5a4ef09a684",
+      "start_inclusive": "## Frozen model and scope",
+      "end_exclusive": "## Bounded execution",
+      "output": "walk_definition.md",
+      "output_sha256": "00f019683827db1c5537a29a7b8d94e2306e3fdd8f81a8dcc7fa48a57c7ea4d8",
+      "note": "For proof_candidate only: exclude initial executed-checks paragraph and prepend neutral title."
+    },
+    {
+      "source": "papers/ir-corona/ir-corona.tex",
+      "source_sha256": "f5879c0132e1e1975cdc5b11bbf8cebd78239c5b20012824b092732a69453441",
+      "start_inclusive": "\\subsection{Infrared admissibility}",
+      "end_exclusive": "\\begin{lemma}[Single-site operations are ultraviolet]",
+      "output": "ir_admissibility_definition.tex",
+      "output_sha256": "97e7a6e33e1d1903709411ffa530f8450e5f6b94f9b11101fe0f6c462d087657",
+      "note": "For proof_candidate only: exclude initial executed-checks paragraph and prepend neutral title."
+    }
+  ],
+  "script_sha256": "428a8f3cfeec800e0213a4314e1b1abc9032e708171ba449bca3caf1a67aad97"
+}

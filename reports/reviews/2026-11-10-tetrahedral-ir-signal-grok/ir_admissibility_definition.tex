@@ -1,0 +1,24 @@
+\subsection{Infrared admissibility}
+\begin{definition}\label{def:admissible}
+For a bounded operator $X$ on $\mathcal H$ with $X\Pi\ne0$, set
+\[
+\eta_{\mathrm{op}}(X)=\frac{\|(I-\Pi')X\Pi\|}{\|X\Pi\|}.
+\]
+The encoder $U_M$ is \emph{infrared-admissible} if
+$\eta_{\mathrm{op}}(U_M-I)\to0$ and
+\[
+\eta_{\mathrm{enc}}^M=\frac{\|\Delta_M-\Pi'\Delta_M\Pi'\|_1}{\|\Delta_M\|_1}\to0,
+\qquad \Delta_M=U_M|\phi_N\rangle\langle\phi_N|U_M^*-|\phi_N\rangle\langle\phi_N|,
+\]
+as $N\to\infty$, where $\Delta_M\ne0$ is required for $\eta_{\mathrm{enc}}^M$
+to be defined.  The effect $E$ is infrared-admissible if
+$\eta_{\mathrm{op}}(E)\to0$.
+\end{definition}
+
+For the operations of this paper all denominators are non-zero for every
+$N\ge2$ (Theorem~\ref{thm:admissible}).
+
+This is an operator-norm comparison: the norm of the leakage map is small
+relative to the norm of the full map restricted to the infrared band.
+It is not a uniform bound on the leakage fraction for each input separately.
+

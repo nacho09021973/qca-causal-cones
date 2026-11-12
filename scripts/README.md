@@ -1,5 +1,52 @@
 # Scripts
 
+## Local audit of Fable's tetrahedral signal candidate (2026-11-10)
+
+`python3 -B scripts/verify_tetrahedral_fable_audit.py` runs 55 exact SymPy
+checks under `theory/TETRAHEDRAL_IR_FABLE_AUDIT_GATE.md` (269ada5).
+It checks Laurent characteristic coefficients, cluster compressions,
+diagonal-axis factorisation and overlaps, two group velocities, and two
+independent Fourier formulations and boundary constants. Stdout accompanies
+[the local audit](../reports/2026-11-10--tetrahedral-fable-local-audit.md).
+Does not certify Lemmas A--D, uniform lattice limits, non-cancellation or
+eventual signal positivity: those are the report's analytic arguments.
+No numerical scans or edits of reviewed verifier code.
+
+## Fixed tetrahedral IR signal diagnostic (2026-11-10)
+
+`OPENBLAS_NUM_THREADS=1 python3 -B scripts/diagnose_tetrahedral_ir_signal.py`
+implements `theory/TETRAHEDRAL_IR_SIGNAL_GATE.md` (07d7ce6).
+It evaluates the exact interference-plus-square signal expression with
+floating-point evolution of the compact difference, no periodic boundary,
+and two compact-momentum cubatures for the unrestricted reference.
+The frozen N=8,16,24,32 data and provenance accompany
+[the analytic admissibility report](../reports/2026-11-10--tetrahedral-ir-signal.md).
+Norm conservation and exact unreachable-centre counts are checked.
+Not an IR operator-norm computation, nonzero certificate or asymptotic fit;
+all sampled profiles have only one active site, so these data do not
+resolve the large-N admissible regime. The signal theorem remains OPEN.
+
+## Fixed tetrahedral corona preflight (2026-11-10)
+
+`python3 -B scripts/verify_tetrahedral_corona_preflight.py` certifies the
+axial witness in [the report](../reports/2026-11-10--tetrahedral-corona-preflight.md)
+under `theory/POLYHEDRAL_CORONA_TETRA_PREFLIGHT_GATE.md` (8eed315).
+24 exact author checks: axial determinants and traces, local and target
+slopes, independent eigenvalue differentiation, simple target eigenvalues
+and exact squared-speed comparisons. The directional witness is
+1/sqrt(5)>c_IR=1/3. Does not certify a maximum group speed, wavepacket,
+IR-admissible protocol, operational signal, or signal asymptotic.
+
+## Interactive geometric corona viewer (2026-11-10)
+
+`python3 -B scripts/visualize_causal_corona.py` generates the offline
+[viewer and provenance](../reports/figures/causal_corona/README.md).
+It shows a rotating spatial causal body, emergent sphere, radial space-time
+cone and illustrative moving points. Select the cyclic s=4 tetrahedron or
+the CJWW cube, with their own scales. Python standard library only; no
+network needed. Geometric illustration, not photon or wave evolution,
+probability sampling, a finite-N signal, or an asymptotic support proof.
+
 ## Small fixed Gaussian profile algebra (2026-10-31)
 
 `verify_small_gaussian_profile_algebra.py` accompanies the preregistered

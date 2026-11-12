@@ -1,0 +1,813 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Resuelve, si es posible, la obligación matemática abierta del protocolo
+tetraédrico infrarrojo adjunto: demostrar una señal operacional no nula
+fuera del cono local para tiempos grandes, bajo LA MISMA regla U(k), el
+MISMO recurso, codificador, detector, radios y centros fijados.
+
+Es un encargo de resolución analítica, no solo de evaluación editorial.
+Los informes adjuntos son borradores de autor: comprueba las fórmulas y
+las hipótesis desde las definiciones, no los tomes como autoridad.
+
+Obligación: para r_N=U^N phi_N y a_N=U^N(V_N-I)phi_N, estudiar
+L_N=2 Re <r_N,E_N a_N>+<a_N,E_N a_N>, delta_N=|L_N|.
+La admisibilidad tiene una derivación preliminar adjunta; revisa si basta
+para el protocolo exacto antes de apoyarte en ella. No reemplaces una fuga
+relativa por absoluta ni presupongas origen exclusivamente infrarrojo.
+
+Pasos esperados:
+1. Comprobar signos de Fourier, red real y posibles subredes temporales.
+2. Identificar las contribuciones dominantes del N grande para esta
+   geometría y sus posibles simetrías/paridades. No importar la tasa ni
+   el prefactor N^(-13/2) del paseo CJWW, que es otra regla.
+3. Obtener una expansión CON un resto controlado o una cota directa que
+   excluya la cancelación entre interferencia y término positivo.
+4. Precisar si la conclusión vale para todo N suficientemente grande o
+   solo para subsecuencias; si es una subsecuencia, justifica su origen.
+5. Si la señal es exactamente cero, demuestra el mecanismo. Si no puedes
+   resolverlo, identifica el lema preciso que falta y qué sí has probado.
+
+Los datos pequeños N=8,16,24,32 no prueban una asintótica: todos tienen
+solo un sitio de perfil estrictamente positivo. Los ceros en N=8,24
+están explicados por conteos de pasos no enteros. No ajustes perfiles ni
+detector para rescatar una señal y no extrapoles los valores flotantes.
+No ejecutes simulaciones, búsquedas ni herramientas; esta ronda es sellada.
+
+Salida: derivación matemática legible y comprobable, con hipótesis,
+estimaciones y límites explícitos. Separa PROVED_IN_THIS_DERIVATION,
+CONDITIONAL y OPEN; una propuesta de método no es una prueba. Si usas un
+teorema externo no adjunto, enuncia las hipótesis y marca su uso como
+pendiente de comprobación en la fuente primaria. No inventes citas.
+
+Presupuesto: una ronda analítica, sin bucle de reparación ni reenvíos.
+Cierre: prueba candidata completa de no cancelación (o cancelación), o
+informe con la obstrucción matemática precisa. Ninguna respuesta promueve
+automáticamente el resultado del repositorio.
+
+=== DOCUMENT 1: TETRAHEDRAL_IR_SIGNAL_GATE.md ===
+
+# Fixed tetrahedral walk: one infrared operational protocol
+
+2026-11-10. User: "estudiemos la señal bajo un protocolo infrarrojo".
+Status OPEN; this user instruction authorizes the bounded execution below.
+
+## Known, question and abandonment
+
+Known: the preceding tetrahedral spectral preflight exhibits a simple
+branch with directional speed 1/sqrt(5)>c_IR=1/3. This neither proves a
+protocol nor transfers the CJWW signal asymptotic. The resource/encoder/
+effect admissibility definition is the one in `ir-corona.tex` section 3.
+Question: is the fixed protocol below IR-admissible, and what can be
+established about its signal outside the local IR cone?
+Stop a positive-signal proof if admissibility or a non-cancellation bound
+cannot be justified. Report OPEN with the missing bound. A finite-N
+floating-point nonzero value is not an asymptotic or exact nonzero proof.
+
+## Fixed model, conventions and geometry
+
+Same lattice L, internal dimension four and fixed U(k) as
+`POLYHEDRAL_CORONA_TETRA_PREFLIGHT_GATE.md`; no coefficient, representation,
+node or parameter change. Both nodal subspaces are present in the rule.
+Fourier convention here: hat psi(k)=sum_{x in L} exp(-ik.x)psi(x);
+inverse measure is vol(L)/(2pi)^3 dk. The symbol with exp(-ik.h/sqrt(3))
+then implements shifts +h/sqrt(3). Primitive-cell volume is 4/(3sqrt(3)).
+The momentum cell is defined by primitive phases in [-pi,pi)^3, for
+primitive lattice vectors (-1,1,1),(1,-1,1),(1,1,-1), each /sqrt(3).
+
+v=(-1,-1,-1)/sqrt(3); b_N=(3N/4)v. Radius R_N=N/32 for both regions:
+A_N=L intersect ball(0,R_N), B_N=L intersect ball(b_N,R_N).
+All x,y obey |y-x|>=11N/16>N/3. The ball of relative velocities has
+centre (3/4)v and radius 1/16, inside the tetrahedron (nearest face
+distance 1/12). Thus the experiment is outside the local IR cone and
+within its convex microscopic envelope. This is not a strict-support proof.
+
+## Resource, operations and observable
+
+Lambda=N^-1, Lambda'=N^-1/2. Use the exact normalised resource
+hat phi_N(k)=Z_N^-1/2 (1-N^2|k|^2)_+^2 chi for sufficiently large N,
+Z_N=vol(L)*64/(3465 pi^2 N^3).
+chi=|up> tensor eta_+, where (n.sigma)eta_+=eta_+,
+n=(1,1,1)/sqrt(3), eta_+=(sqrt((1+1/sqrt(3))/2),
+exp(i pi/4)sqrt((1-1/sqrt(3))/2)).
+
+F_N(x)=(1-|x|^2/R_N^2)_+^2; h_N(y)=F_N(y-b_N).
+M=sigma_y tensor I_2, encoder V_N=exp(i pi F_N M/2), effect E_N=h_N I_4.
+No spectral projection in the measured signal:
+
+    L_N=<U^N V_N phi_N,E_N U^N V_N phi_N>
+         -<U^N phi_N,E_N U^N phi_N>,   delta_N=|L_N|.
+
+Admissibility requires all three relative ratios in manuscript Definition
+3.1 and nonzero denominators, including Delta_N!=0. It is not enough to
+show an absolute leakage goes to zero. No exclusivity of spectral origin.
+
+## Stages and outcomes
+
+1. Analytic geometry, resource normalisation, operator leakage via lattice
+   finite differences, and lower bounds on the denominators. Obtain
+   vanishing relative leakage or name the gap. No diagnostic can close it.
+2. Fixed finite-N diagnostic N=8,16,24,32 only, no fit or parameter search.
+   Evolve the compact encoded difference by the four exact coefficient
+   formulas on a nonperiodic grid large enough for all N steps. Obtain the
+   unrestricted reference by quadrature over its exact compact momentum
+   support. Use two fixed cubature orders 8 and 12. Evaluate the stable
+   interference-plus-square expression for L_N. Check difference-state
+   norm preservation, no wraparound and quadrature sensitivity; fail on
+   nonfinite data or relative norm error >1e-10. Finite floating-point
+   samples remain diagnostic even if they agree.
+3. Seek an analytic non-cancellation argument for this fixed protocol.
+   If unavailable in this session, retain `OPEN_AFTER_IR_PROTOCOL_ANALYSIS`
+   with the precise missing estimate, not a claim of proven signal.
+
+Allowed alternatives: `IR_ADMISSIBILITY_NOT_ESTABLISHED`,
+`PROTOCOL_ZERO_SIGNAL_PROVED`, or `IR_SIGNAL_PROVED_IN_DECLARED_PROTOCOL`
+only with an actual nonzero proof. No assumed N^-13/2 power or exponential
+rate. No change of profiles, detector, input, geometry or M to rescue zeros.
+
+One analytic pass and one diagnostic script with retained data/provenance.
+No new polyhedron, numerical sweep, independent external review or
+promotion. New code stays in scripts; reviewed verifiers stay byte-identical.
+Commit the charter before execution. All new results remain PRELIMINARY
+until independent review and a separate promotion decision.
+
+=== DOCUMENT 2: POLYHEDRAL_CORONA_TETRA_PREFLIGHT_GATE.md ===
+
+# Polyhedral corona: fixed tetrahedral spectral preflight
+
+2026-11-10. User: "empecemos por poliedros de alcance finito", following
+the request to test the manuscript's operational claim on other geometries.
+One fixed existing walk; no survey or constructor search. Status: OPEN.
+
+## Known, question, abandonment
+
+Known inputs: `reports/2026-11-06--s4-cyclic-realization.md` sections 4--5
+and the read-only `scripts/verify_s4_cyclic_realization.py` define the
+unitary and tetrahedral coefficients, local cones of speed 1/3, and axial
+semitraces. This is source code/model input, not independent proof of a
+new operational statement. The CJWW manuscript uses a different cube walk
+whose group velocities all lie in the emergent unit ball.
+
+Question: can that crucial global spectral bound be transferred to the
+fixed tetrahedral walk? Specifically, is every differentiable eigenphase
+gradient bounded in Euclidean norm by c_IR=1/3?
+
+Abandon the direct transfer of the *entirely non-ballistic corona*
+interpretation if a simple eigenphase has a directional derivative with
+magnitude >1/3. This does not abandon the broader operational question:
+it does not prove a signal or no signal for an IR-admissible protocol.
+
+## Frozen model and scope
+
+- d=3, internal dimension 4, one update lasts 1, lengths unchanged.
+- Lattice: equal-parity integer triples divided by sqrt(3).
+- G_i=sigma_i tensor sigma_i;
+  W=I_2 tensor [I_2-i(sigma_x+sigma_y+sigma_z)/sqrt(3)]/sqrt(2).
+- U(k)=W product_{i=x,y,z}[cos(k_i/sqrt(3))I_4
+  -i sin(k_i/sqrt(3))G_i], fixed xyz order.
+- F={(-1,-1,-1),(-1,1,1),(1,-1,1),(1,1,-1)}/sqrt(3).
+  C_micro=conv F, nodes at k=0 with phases ±pi/4; local speed 1/3.
+- D2 and cyclic proper tetrahedral covariance as in the existing model;
+  no changed representation, coefficient, node, normalization or parameter.
+- All eigenphases of this same rule are included in the global-bound test.
+  No irreducibility classification is attempted.
+
+## Bounded execution
+
+Start from the existing axial block formula at k=(sqrt(3)x,0,0),
+f_eps(x)=[cos x-eps sin x/sqrt(3)]/sqrt(2), eps=±1.
+Re-derive it from the 2x2 blocks and verify both determinants and traces.
+Evaluate the local slope at x=0 and the derivative at x=pi/2, a target
+chosen in designing this preflight, not a blind discovery prediction.
+Check that all four eigenvalues at the target are simple. Cross-check the
+derivative using 2 f=lambda+lambda^(-1), rather than only differentiating
+arccos. A permanent exact SymPy verifier records these identities.
+
+Outcomes:
+
+- `GLOBAL_IR_BALL_BOUND_REFUTED_BY_AXIAL_WITNESS` if the exact simple-branch
+  derivative exceeds 1/3; report only a lower bound on V_grp^max, not its maximum.
+- `OPEN_AFTER_AXIAL_PREFLIGHT` otherwise. A finite axial test cannot prove
+  the global bound and does not certify another polyhedron.
+
+One analytic preflight and one verifier, no numerical scans, protocol
+construction, operational asymptotics, novelty verdict or further models.
+The result remains PRELIMINARY until independent review; sending it out
+requires separate explicit permission. No automatic promotion.
+
+Commit this charter before execution; record its commit in the report.
+The user has authorized beginning the finite-range polyhedral comparison;
+this document bounds its first step and does not authorize forty new gates.
+
+=== DOCUMENT 3: 2026-11-10--tetrahedral-ir-signal.md ===
+
+# Fixed tetrahedral walk: infrared protocol and signal obligations
+
+2026-11-10. Codex. **PRELIMINARY author analysis, not independently reviewed.**
+Charter `theory/TETRAHEDRAL_IR_SIGNAL_GATE.md`, committed before execution
+at `07d7ce6`. User authorized studying the signal under an IR protocol.
+
+## Outcome
+
+`OPEN_AFTER_IR_PROTOCOL_ANALYSIS`.
+
+The fixed family satisfies the manuscript's asymptotic IR-admissibility
+definition by the estimates below, including nonzero denominators. The
+finite samples include exact reachability zeros and numerically nonzero
+responses. No positive-signal theorem for all sufficiently large N, no
+nonzero asymptotic coefficient, and no exponential rate have been proved.
+
+Known: local c_IR=1/3 and an exact faster spectral branch in the same
+tetrahedral walk. Question: what survives with actual admissible
+preparation/encoding/detection? Stop a positive-signal conclusion on an
+uncontrolled relative leakage or interference cancellation. The latter
+remains the named obstruction; no parameters were changed to rescue it.
+
+## 1. Protocol and separation
+
+Use precisely the resource, unitary encoder and scalar effect in the
+charter. Fourier signs here are hat psi(k)=sum exp(-ik.x)psi(x), so the
+fixed U(k) implements the shifts +h/sqrt(3). No substitution of the adjoint
+walk is made. The primitive lattice has cell volume V=4/(3sqrt(3)).
+
+Let v=(-1,-1,-1)/sqrt(3), b_N=3Nv/4, R=N/32. Alice's and Bob's balls
+have centres 0 and b_N and radius R. Then
+
+    |y-x| >= 3N/4-2R = 11N/16 > N/3.
+
+The relative-velocity ball has centre 3v/4 and radius 1/16. For a unit
+tetrahedral vertex w the faces are w.z >= -1/3; at z=3v/4 the smallest
+margin is 1/12. Hence the relative-velocity ball lies strictly inside
+C_micro. These are geometrical separation statements, not reachability
+of every site in that continuous envelope.
+
+The momentum resource has exact compact support |k|<=1/N and constant
+spinor chi=|up> tensor eta_+, with eta_+ the +1 eigenvector of n.sigma.
+It lies in the positive nodal subspace at k=0; no exact finite-k band
+projection or restriction to a single quasienergy branch is asserted.
+The resource has a spatial tail already at Bob, as in the manuscript;
+the observable is the difference between Alice's encoded and unencoded
+bits on that same resource.
+
+Normalisation follows directly from radial integration:
+
+    integral_{|q|<=1} (1-|q|^2)^4 dq
+       =4pi[1/3-4/5+6/7-4/9+1/11]=512pi/3465,
+    Z_N=V*64/(3465 pi^2 N^3).
+
+In position space phi_N(x)=sqrt(V) N^(-3/2) Phi_0(x/N) chi, with
+Phi_0(w)=sqrt(3465)/(64pi^2) integral g(q) exp(iq.w)dq.
+This matches the manuscript's scalar Fourier profile after restoring
+the primitive-cell volume. In particular it is real and strictly
+positive on |w|<=1/32: the integral's real part is bounded below by
+cos(1/32) integral g>0.
+
+## 2. Operator leakage on the actual lattice
+
+Let a_j be the three primitive vectors specified in the charter and
+D_j=T_{a_j}-I. In the chosen momentum cell theta_j=k.a_j lies in [-pi,pi).
+For every momentum in that cell,
+
+    sum_j |exp(i theta_j)-1|^2
+       >= (4/pi^2) sum_j theta_j^2
+       >= 4|k|^2/(3pi^2).
+
+The last inequality follows because the primitive-vector Gram matrix
+has diagonal 1 and off-diagonal -1/3, hence eigenvalues 1/3,4/3,4/3.
+Thus ||(I-Pi') f|| <= C sqrt(N) (sum_j ||D_j f||^2)^(1/2).
+The same Gram matrix gives ||D_j Pi||=O(N^-1) on |k|<=N^-1.
+
+For X_N=V_N-I or E_N the fixed profile has bounded norm and lattice
+differences O(N^-1), uniformly in its translate. Product differentiation
+on the lattice (the exact shifted Leibniz identity) gives
+
+    ||D_j(X_N Pi)||
+       <= ||D_j X_N||_infinity + ||X_N|| ||D_j Pi|| = O(N^-1),
+    ||(I-Pi')X_N Pi||=O(N^-1/2).
+
+This proof uses the full momentum cell, not a continuum gradient that
+would miss lattice zeros. It remains valid for the C1, piecewise smooth
+profiles: only first finite differences and a global Lipschitz bound
+are needed. Constants depend on the fixed radius ratio 1/32; no useful
+small-N threshold is inferred.
+
+## 3. Relative denominators and encoded state
+
+An absolute leakage estimate is insufficient on its own. For the encoder,
+test ||(V_N-I)Pi|| on phi_N. Since chi^dagger M chi=0 and M^2=I,
+
+    ||(V_N-I)phi_N||^2
+      =sum_x 2[1-cos(pi F_N(x)/2)] |phi_N(x)|^2.
+
+Scaled lattice Riemann sums converge to the positive integral
+
+    integral 2[1-cos(pi F(w)/2)] |Phi_0(w)|^2 dw > 0,
+    F(w)=(1-1024|w|^2)_+^2.
+
+The primitive-cell factors cancel the scaled site density. The integrand
+is continuous, compactly supported, and positive on a neighbourhood of
+zero. Hence ||(V_N-I)Pi|| has a fixed positive lower bound for all large N.
+For E_N, use a band-limited resource translated to b_N. The same Riemann
+sum argument gives ||E_N Pi|| bounded below, since h_N is positive near
+its centre. Translation need not be a lattice translation for this test:
+the phase exp(-ik.b_N) defines the shifted band-limited resource on L;
+translated Riemann sums still converge, uniformly in the offset of b_N
+within a primitive cell. Both relative operator leakages are O(N^-1/2).
+
+For the state denominator, write
+
+    a_N=<phi_N,V_N phi_N>=sum_x cos(pi F_N(x)/2)|phi_N(x)|^2.
+
+It is real, 0<=a_N<1, and 1-a_N tends to the strictly positive integral
+with factor 1-cos above. Strict inequality also holds at every integer
+N>=8 because x=0 contributes positive resource weight and F_N(0)=1.
+Consequently Delta_N!=0 and
+
+    ||Delta_N||_1=2sqrt(1-a_N^2)
+
+is bounded below for all sufficiently large N. Since Pi'phi_N=phi_N,
+
+    ||Delta_N-Pi'Delta_N Pi'||_1
+       <=2||(I-Pi')V_N phi_N||=O(N^-1/2).
+
+Therefore eta_enc=O(N^-1/2) as well. All three ratios vanish, under the
+definition frozen in the charter. This is an analytic author derivation;
+the diagnostics do not establish these operator norms. Admissibility
+also does not control relative errors on an exponentially small signal.
+
+## 4. Signal evaluation and fixed finite-N diagnostics
+
+Let r_N=U^N phi_N and a_N^diff=U^N(V_N-I)phi_N (distinct from the scalar
+overlap a_N above). The exact stable expression is
+
+    L_N=2 Re <r_N,E_N a_N^diff> + <a_N^diff,E_N a_N^diff>.
+
+The first term may have either sign. A nonzero encoded difference, a
+nonzero kernel, or a faster spectral mode alone does not prove L_N!=0.
+
+The permanent script evolves only the compact difference on a sufficiently
+large nonperiodic raw-coordinate grid. Its four coefficient channels are
+W E_h with E_h=product_j(I+h_j G_j)/2, h_1h_2h_3=-1. No periodic resource
+or FFT approximation to the narrow band is used. The unrestricted
+reference and the resource at Alice are integrated over the exact ball
+in rescaled momentum q=Nk, with tensor-product Gauss--Legendre/ring
+cubatures of the two fixed orders. Order agreement is a sensitivity
+diagnostic, not an interval-certified integration error.
+
+| N | signed L_N, order 12 (diagnostic) | Interpretation |
+| --- | --- | --- |
+| 8 | 0 | exact unreachable-site zero, see below |
+| 16 | 5.822948782703583e-8 | numerical nonzero only |
+| 24 | 0 | exact unreachable-site zero |
+| 32 | 2.139262372960612e-9 | numerical nonzero only |
+
+Important: throughout this small-N set, the only site of strictly positive
+Alice profile is the origin, and Bob's positive profile is only at b_N.
+At N=32 there are eight additional boundary sites, but their profile is
+exactly zero. These samples do not yet resolve the growing smooth regions
+or demonstrate small leakage ratios at the sampled sizes. They cannot
+establish the large-N regime just proved admissible. The frozen N set was
+not extended after discovering this limitation.
+
+## 5. Exact explanation of the two zeros
+
+In raw integer coordinates an N-step path with counts n_0,n_1,n_2,n_3
+for the four negative-parity vertices, displacement (-3N/4,-3N/4,-3N/4),
+and sum counts N must satisfy
+
+    n_0=13N/16,  n_1=n_2=n_3=N/16.
+
+For N=8 and 24 these are not integers, so there is no path from the
+only actively encoded site to the only actively measured site. Therefore
+E_N U^N(V_N-I)phi_N=0 and L_N=0 exactly, independent of quadrature and
+the reference tail. This is a second, combinatorial route to the zeros,
+not a conclusion from observing floating-point zeros.
+
+Integer counts for N=16 and 32 show only reachability; they do not exclude
+unitary or interference cancellation. Their numerical nonzero results
+are not relabelled as exact certificates.
+
+## 6. Missing proof and closure
+
+The unresolved step is a signed asymptotic or certified non-cancellation
+bound for the exact interference-plus-square expression, for this fixed
+family in its spatially resolved large-N regime. Neither the faster
+spectral branch nor an absolute O(N^-1/2) leakage estimate supplies it.
+No assertion that the observed signal is carried by UV modes or exclusively
+by IR modes is supported by these computations. No N^-13/2 prefactor,
+rate K, or positivity threshold is imported from CJWW.
+
+The admissibility stage is complete as a PRELIMINARY analytic argument;
+the operational nonzero theorem remains OPEN. Continuing would require
+that named non-cancellation analysis, not a larger parameter scan or a
+different protocol chosen after these data.
+
+Reproduce the fixed diagnostics from the root:
+
+    OPENBLAS_NUM_THREADS=1 python3 -B scripts/diagnose_tetrahedral_ir_signal.py
+
+Data and script/base provenance: `2026-11-10--tetrahedral-ir-signal-diagnostic.json`;
+stdout: `2026-11-10--tetrahedral-ir-signal-diagnostic-stdout.txt`.
+Maximum norm error was below 1.5e-14; relative cubature differences at
+the two nonzero samples were below 3.7e-14. These are internal numerical
+consistency checks, not rigorous forward-error bounds. `git diff --check`
+passed. The data file pins the final script hash and NumPy version.
+No reviewed verifier was edited. No independent review, promotion or push.
+
+=== DOCUMENT 4: diagnose_tetrahedral_ir_signal.py ===
+
+"""Fixed diagnostic under theory/TETRAHEDRAL_IR_SIGNAL_GATE.md.
+
+Known: tetrahedral U(k), c_IR=1/3 and faster spectral modes.
+Question: signed signal for the frozen IR resource/encoder/effect?
+Stop on grid/norm failure; samples never replace admissibility or nonzero proof.
+Run from root: python3 -B scripts/diagnose_tetrahedral_ir_signal.py
+"""
+import hashlib
+import itertools
+import json
+import math
+from pathlib import Path
+import subprocess
+from fractions import Fraction
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT/'reports/2026-11-10--tetrahedral-ir-signal-diagnostic.json'
+P = np.array([[[0, 1], [1, 0]], [[0, -1j], [1j, 0]], [[1, 0], [0, -1]]])
+I4 = np.eye(4, dtype=complex)
+G = [np.kron(p, p) for p in P]
+W = np.kron(np.eye(2), (np.eye(2)-1j*sum(P)/np.sqrt(3))/np.sqrt(2))
+M = np.kron(P[1], np.eye(2))
+eta = np.array([np.sqrt((1+1/np.sqrt(3))/2),
+                np.exp(1j*np.pi/4)*np.sqrt((1-1/np.sqrt(3))/2)])
+CHI = np.kron([1, 0], eta)
+VCELL = 4/(3*np.sqrt(3))
+CR = np.sqrt(3465)/(64*np.pi**2)
+STEPS = [h for h in itertools.product((-1, 1), repeat=3) if math.prod(h) == -1]
+
+
+def cubature(order):
+    z, w = np.polynomial.legendre.leggauss(order)
+    r, wr = (z+1)/2, w/2
+    phi = 2*np.pi*np.arange(2*order)/(2*order)
+    r, mu, phi = np.meshgrid(r, z, phi, indexing='ij')
+    weights = wr[:, None, None]*w[None, :, None]*np.ones((1, 1, 2*order))*np.pi/order
+    weights = (weights*r*r*(1-r*r)**2).ravel()
+    q = np.stack([r*np.sqrt(1-mu*mu)*np.cos(phi),
+                  r*np.sqrt(1-mu*mu)*np.sin(phi), r*mu], axis=-1).reshape(-1, 3)
+    return q, weights
+
+
+def sites(center, radius):
+    # Raw integer coordinates, physical positions raw/sqrt(3).
+    lo = np.floor(center-np.sqrt(3)*radius).astype(int)
+    hi = np.ceil(center+np.sqrt(3)*radius).astype(int)
+    result = [v for v in itertools.product(*(range(a,b+1) for a,b in zip(lo,hi)))
+              if v[0]%2 == v[1]%2 == v[2]%2
+              and np.sum((np.array(v)-center)**2) <= 3*radius*radius+1e-12]
+    return np.asarray(result, dtype=int).reshape(-1, 3)
+
+
+def reference(N, positions, q, weights, evolved):
+    if evolved:
+        U = np.broadcast_to(W, (len(q), 4, 4)).copy()
+        for j in range(3):
+            k = q[:, j]/(N*np.sqrt(3))
+            factor = np.cos(k)[:, None, None]*I4-1j*np.sin(k)[:, None, None]*G[j]
+            U = U@factor
+        spin = np.broadcast_to(CHI, (len(q), 4)).copy()
+        for _ in range(N):
+            spin = np.einsum('qij,qj->qi', U, spin)
+    else:
+        spin = np.broadcast_to(CHI, (len(q), 4))
+    phase = np.exp(1j*(positions/(np.sqrt(3)*N))@q.T)
+    return np.sqrt(VCELL)*CR*N**(-1.5)*(phase*weights)@spin
+
+
+def compact_evolution(N, a, perturbation):
+    bound = N+int(np.max(np.abs(a)))
+    shape = (2*bound+1,)*3+(4,)
+    psi = np.zeros(shape, dtype=complex)
+    psi[tuple((a+bound).T)] = perturbation
+    initial_norm = np.sum(np.abs(psi)**2)
+    if not initial_norm > 0:
+        raise ArithmeticError('Zero encoded difference')
+    channels = []
+    for h in STEPS:
+        E = I4.copy()
+        for j in range(3):
+            E = E@(I4+h[j]*G[j])/2
+        col = E[:, np.argmax(np.sum(np.abs(E)**2, axis=0))]
+        vector = col/np.linalg.norm(col)
+        channels.append((h, vector, W@vector))
+    worst = 0.
+    for step in range(N):
+        # The support after this update is contained in [-bound,bound]^3.
+        assert int(np.max(np.abs(a)))+step+1 <= bound
+        out = np.zeros_like(psi)
+        for h, vector, shifted in channels:
+            src = tuple(slice(0, -1) if v == 1 else slice(1, None) for v in h)
+            dst = tuple(slice(1, None) if v == 1 else slice(0, -1) for v in h)
+            amplitude = np.einsum('...i,i->...', psi[src], vector.conj())
+            out[dst] += amplitude[..., None]*shifted
+        psi = out
+        err = abs(np.sum(np.abs(psi)**2)/initial_norm-1)
+        worst = max(worst, float(err))
+        if not np.isfinite(err) or err > 1e-10:
+            raise ArithmeticError(f'Norm failure at N={N}, step={step+1}: {err}')
+    return psi, bound, worst
+
+
+def sample(N, order):
+    q, weights = cubature(order)
+    radius = N/32
+    a = sites(np.zeros(3), radius)
+    center = -np.ones(3)*3*N/4
+    b = sites(center, radius)
+    phi = reference(N, a, q, weights, False)
+    F = np.maximum(1-np.sum(a*a, axis=1)/(3*radius*radius), 0)**2
+    angle = np.pi*F/2
+    perturbation = ((np.cos(angle)-1)[:, None]*phi
+                    +1j*np.sin(angle)[:, None]*(phi@M.T))
+    psi, offset, norm_error = compact_evolution(N, a, perturbation)
+    difference = psi[tuple((b+offset).T)]
+    unencoded = reference(N, b, q, weights, True)
+    h = np.maximum(1-np.sum((b-center)**2, axis=1)/(3*radius*radius), 0)**2
+    interference = float(2*np.real(np.sum(h[:, None]*unencoded.conj()*difference)))
+    quadratic = float(np.sum(h[:, None]*np.abs(difference)**2))
+    L = interference+quadratic
+    if not all(np.isfinite(x) for x in (interference, quadratic, L)):
+        raise ArithmeticError('Nonfinite signal diagnostic')
+    active_a = int(np.count_nonzero(F))
+    active_b = int(np.count_nonzero(h))
+    path_counts = [Fraction(13*N, 16)]+[Fraction(N, 16)]*3
+    if active_a == active_b == 1 and any(n.denominator != 1 for n in path_counts):
+        if np.any(difference[h > 0] != 0) or L != 0:
+            raise ArithmeticError('Signal violates exact unreachable-site rule')
+    return dict(N=N, order=order, alice_sites=len(a), bob_sites=len(b),
+                active_alice_sites=active_a, active_bob_sites=active_b,
+                necessary_center_path_counts=[str(n) for n in path_counts],
+                signed_signal=L, delta=abs(L), interference=interference,
+                quadratic=quadratic, max_relative_norm_error=norm_error,
+                grid_side=2*offset+1, periodic_boundary=False)
+
+
+def main():
+    rows = []
+    for N in (8, 16, 24, 32):
+        for order in (8, 12):
+            row = sample(N, order)
+            rows.append(row)
+            print(json.dumps(row), flush=True)
+    comparisons = []
+    for low, high in zip(rows[::2], rows[1::2]):
+        difference = abs(low['signed_signal']-high['signed_signal'])
+        scale = max(abs(high['signed_signal']), np.finfo(float).tiny)
+        comparisons.append(dict(N=high['N'], order_difference=difference,
+                                relative_order_difference=difference/scale))
+    result = dict(status='DIAGNOSTIC_ONLY_NOT_A_NONZERO_PROOF', rows=rows,
+                  comparisons=comparisons, numpy=np.__version__,
+                  script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                  git_head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+                  working_tree=True, charter_commit='07d7ce6',
+                  meaning='Two cubatures are sensitivity checks, not certified error bounds. No fit or asymptotic inference.')
+    OUT.write_text(json.dumps(result,indent=2)+'\n')
+    print(OUT)
+
+
+if __name__ == '__main__':
+    main()
+
+=== DOCUMENT 5: 2026-11-10--tetrahedral-corona-preflight.md ===
+
+# Fixed tetrahedral corona: axial spectral preflight
+
+2026-11-10. Codex. PRELIMINARY, exact author check only; no independent
+review or promotion. Contract:
+`theory/POLYHEDRAL_CORONA_TETRA_PREFLIGHT_GATE.md`, preregistration commit
+`8eed315d65567ccc191820810420dae2baed4325`. The target axial point was
+selected while designing the preflight, as recorded in the charter.
+
+## Question and fixed rule
+
+Can the manuscript's global group-velocity bound by its emergent ball be
+transferred from CJWW to the existing cyclic s=4 tetrahedral walk?
+Known inputs are the U(k), lattice and phases recorded in
+`reports/2026-11-06--s4-cyclic-realization.md` sections 4--5 and the original
+verifier, used read-only. The local speed is c_IR=1/3. Stop direct transfer
+if a simple branch has a component faster than this speed. This preflight
+does not ask whether an arbitrary polyhedron is a QCA support.
+
+## Exact axial witness
+
+On k=(sqrt(3)x,0,0), diagonalising the first-factor sigma_x with
+eigenvalue eps=±1 gives the exact 2x2 block
+
+    B_eps(x) = W_tau (cos x I - i eps sin x sigma_x),
+    W_tau = [I - i(sigma_x+sigma_y+sigma_z)/sqrt(3)]/sqrt(2).
+
+Its determinant is one and its semitrace is
+
+    f_eps(x) = [cos x - eps sin x/sqrt(3)]/sqrt(2).
+
+For the branch omega=acos f_eps (lambda=exp(-i omega)), the physical
+derivative is
+
+    partial omega / partial k_x = -f'_eps(x) / [sqrt(3) sqrt(1-f_eps(x)^2)].
+
+At x=0 it equals eps/3, confirming the local speed in this axis.
+At x=pi/2, k_x=sqrt(3)pi/2, f_eps=-eps/sqrt(6), f'_eps=-1/sqrt(2), hence
+
+    partial omega / partial k_x = 1/sqrt(5) > 1/3.
+
+The four eigenvalues there are the numbers
+
+    ±1/sqrt(6) ± i sqrt(5/6),
+
+with independent sign choices; all are distinct. Therefore the full
+four-dimensional eigenphase branches are differentiable in a
+neighbourhood of that momentum. This is not a derivative through a
+degenerate crossing. A directional component lower-bounds the gradient
+norm, so V_grp^max >= 1/sqrt(5) > c_IR. This does not calculate V_grp^max
+itself. The axial component is below the axial causal support ceiling
+1/sqrt(3); no conflict with finite range is implied.
+
+Independent algebraic route within the author check: differentiate the
+explicit eigenvalue lambda=f-i sqrt(1-f^2), and evaluate
+i lambda'/(sqrt(3)lambda). This gives the same 1/sqrt(5); the characteristic
+equation and each eigenvalue's block determinant are also checked.
+
+## Outcome and limits
+
+`GLOBAL_IR_BALL_BOUND_REFUTED_BY_AXIAL_WITNESS`.
+
+The tetrahedral model has spectral group velocities outside its local IR
+ball. Thus its geometric corona cannot be interpreted wholesale as the
+non-ballistic region of the CJWW example. The negative result concerns
+that global spectral-bound hypothesis, not the existence of an operational
+response outside the local IR cone. The user-level question about such a
+response remains OPEN for this tetrahedral rule.
+
+No preparation, encoder or detector was constructed here; no wavepacket
+or photon was simulated. A simple-branch velocity witness alone does not
+prove a finite-N detection signal, IR admissibility, non-vanishing of the
+operational coefficient, or the same exponential rate and prefactor as in
+the manuscript. No maximum group-speed body or strict asymptotic support
+body has been computed. The geometric viewer remains a geometry-only
+illustration and is not evidence for these spectral statements.
+
+The next scientific contract would need to decide between an operational
+protocol outside the local cone in the presence of faster spectral modes,
+or a non-ballistic sector outside the full group-velocity body. Neither
+continuation is automatic under this preflight's stop rule.
+
+## Reproduction
+
+    python3 -B scripts/verify_tetrahedral_corona_preflight.py
+
+24/24 exact SymPy author checks passed, exit 0. Stdout:
+`reports/2026-11-10--tetrahedral-corona-preflight-verifier.txt`.
+Verifier SHA256:
+`ab424a484520f12d0909ebd839ef0708299cebd5bca8d8f20f69d56320e06f27`.
+No numerical scan, tolerance or externally generated claim was used.
+
+=== DOCUMENT 6: verify_s4_cyclic_realization.py ===
+
+"""Exact author checks for S4_CYCLIC_REALIZATION_ATTEMPT.md.
+
+Run: python3 -B scripts/verify_s4_cyclic_realization.py
+Physical Fourier coefficients are stored as sqrt(2)*A_h below.
+No floating point tests or parameter search.
+"""
+import itertools
+import sympy as s
+
+checks = []
+
+
+def zero(label, value):
+    entries = list(value) if isinstance(value, s.MatrixBase) else [value]
+    if any(s.simplify(x) != 0 for x in entries):
+        raise AssertionError(label)
+    checks.append(label)
+
+
+I, J = s.eye(2), s.eye(4)
+pauli = [s.Matrix([[0, 1], [1, 0]]),
+         s.Matrix([[0, -s.I], [s.I, 0]]), s.diag(1, -1)]
+kron = s.kronecker_product
+G = [kron(p, p) for p in pauli]
+R = [kron(p, I) for p in pauli]
+n_tau = sum(pauli, s.zeros(2))/s.sqrt(3)
+N = kron(I, n_tau)
+Wraw = J-s.I*N
+P, Q = (J+N)/2, (J-N)/2
+V = kron(pauli[1], pauli[1])
+t = (I-s.I*sum(pauli, s.zeros(2)))/2
+S = kron(t, t)
+zero('W unitary with normalization', Wraw.H*Wraw-2*J)
+zero('cyclic representation unitary', S.H*S-J)
+zero('cyclic representation cubed', S**3-J)
+zero('C square +I', V*V.conjugate()-J)
+zero('C exchanges nodal projectors', V*P.conjugate()*V.H-Q)
+zero('S preserves W', S*Wraw*S.H-Wraw)
+zero('S compatible with C', V*S.conjugate()*V.H-S)
+for i in range(3):
+    zero(f'G{i} Hermitian', G[i].H-G[i])
+    zero(f'G{i} involution', G[i]**2-J)
+    zero(f'S cycles G{i}', S*G[i]*S.H-G[(i+1) % 3])
+    zero(f'S cycles R{i}', S*R[i]*S.H-R[(i+1) % 3])
+    for j in range(3):
+        zero(f'G{i} commutes G{j}', G[i]*G[j]-G[j]*G[i])
+zero('triple product', G[0]*G[1]*G[2]+J)
+coeffs = {}
+for h in itertools.product((-1, 1), repeat=3):
+    projector = J
+    for i in range(3):
+        projector = projector*(J+h[i]*G[i])/2
+    A = (Wraw*projector).applyfunc(s.simplify)
+    if A != s.zeros(4):
+        coeffs[h] = A
+        zero(f'projector rank one {h}', s.trace(projector)-1)
+    else:
+        zero(f'cancelled parity {h}', h[0]*h[1]*h[2]-1)
+assert set(coeffs) == {h for h in itertools.product((-1, 1), repeat=3)
+                       if h[0]*h[1]*h[2] == -1}
+checks.append('exact four-point negative-parity support')
+zero('origin coefficient sum', sum(coeffs.values(), s.zeros(4))-Wraw)
+differences = {tuple(y[i]-x[i] for i in range(3))
+               for x in coeffs for y in coeffs}
+for d in sorted(differences):
+    pairs = [(A, B) for x, A in coeffs.items() for y, B in coeffs.items()
+             if tuple(y[i]-x[i] for i in range(3)) == d]
+    target = 2*J if d == (0, 0, 0) else s.zeros(4)
+    zero(f'Laurent Udagger U {d}',
+         sum((A.H*B for A, B in pairs), s.zeros(4))-target)
+    zero(f'Laurent U Udagger {d}',
+         sum((A*B.H for A, B in pairs), s.zeros(4))-target)
+for h, A in coeffs.items():
+    zero(f'C coefficient {h}', V*A.conjugate()*V.H-A)
+    rho = (h[2], h[0], h[1])
+    zero(f'cyclic coefficient {h}', S*A*S.H-coeffs[rho])
+    for i in range(3):
+        gh = tuple(x if i == j else -x for j, x in enumerate(h))
+        zero(f'D2 coefficient {i} {h}', R[i]*A*R[i].H-coeffs[gh])
+for label, proj, sign in [('P', P, 1), ('Q', Q, -1)]:
+    zero(label+' projector', proj**2-proj)
+    zero(label+' rank two', s.trace(proj)-2)
+    zero(label+' node phase', Wraw*proj-(1-sign*s.I)*proj)
+    for i in range(3):
+        # Physical derivative J_i = G_i/sqrt(3).
+        zero(f'{label} compression {i}',
+             proj*G[i]*proj/s.sqrt(3)-sign*R[i]*proj/3)
+for i in range(3):
+    zero(f'Fourier moment {i}',
+         sum((h[i]*A for h, A in coeffs.items()), s.zeros(4))-Wraw*G[i])
+q = s.symbols('qx qy qz', real=True)
+lam = s.symbols('lambda')
+H = sum((qi*pi for qi, pi in zip(q, pauli)), s.zeros(2))/3
+zero('untilted effective cone', s.trace(H))
+zero('isotropic cone polynomial',
+     H.charpoly(lam).as_expr()-lam**2+sum(qi**2 for qi in q)/9)
+# Independent axial route: diagonalize sigma_i, leaving a 2x2 SU(2) block.
+x = s.symbols('x', real=True)
+wtau = (I-s.I*n_tau)/s.sqrt(2)
+for i in range(3):
+    for eps in (-1, 1):
+        block = wtau*(s.cos(x)*I-s.I*eps*s.sin(x)*pauli[i])
+        f = (s.cos(x)-eps*s.sin(x)/s.sqrt(3))/s.sqrt(2)
+        zero(f'axis half trace {i} {eps}', s.trace(block)/2-f)
+        zero(f'axis determinant {i} {eps}', s.trigsimp(block.det())-1)
+        zero(f'axis physical phase slope {i} {eps}',
+             s.diff(s.acos(f), x).subs(x, 0)/s.sqrt(3)-eps/3)
+# Direct coefficient commutant, not merely the linearized Hamiltonian.
+basis = []
+for j in range(16):
+    E = s.zeros(4)
+    E[j//4, j % 4] = 1
+    basis.append(E)
+constraints = s.Matrix.hstack(*[
+    s.Matrix([v for A in coeffs.values() for v in E*A-A*E]) for E in basis])
+rank = constraints.rank()
+zero('full coefficient commutant rank 15', rank-15)
+# Geometry: regular unit-circumradius tetrahedron, facets opposite vertices.
+vertices = [s.Matrix(h)/s.sqrt(3) for h in coeffs]
+for i, v in enumerate(vertices):
+    zero(f'vertex radius {i}', v.dot(v)-1)
+    for j, w in enumerate(vertices):
+        zero(f'vertex dot {i} {j}', v.dot(w)-(1 if i == j else -s.Rational(1, 3)))
+zero('tetrahedron centroid', sum(vertices, s.zeros(3, 1)))
+# All raw vertices lie in equal-parity lattice, which has index four.
+# Three of these generators already have determinant of magnitude four.
+for h in coeffs:
+    assert (h[0]-h[1]) % 2 == 0 and (h[0]-h[2]) % 2 == 0
+zero('translation lattice index four',
+     abs(s.Matrix.hstack(*[s.Matrix(h) for h in list(coeffs)[:3]]).det())-4)
+print('SymPy', s.__version__)
+for label in checks:
+    print('PASS', label)
+print(f'{len(checks)}/{len(checks)} exact checks PASS')
+print('Actual raw support:', sorted(coeffs))
+print('Physical support = raw/sqrt(3); cP=cQ=1/3; r_in=1/3')
+print('Coefficient commutant dimension:', 16-rank)
+print('Verdict: REALIZED_WITH_ACTUAL_SUPPORT; PRELIMINARY, author checks only')
