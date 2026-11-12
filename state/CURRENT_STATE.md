@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-12
 
+**Carrier dichotomy chartered — 2026-11-12:** user choice «Dicotomía de
+portadores». The proposed rate gap for walks with fast modes was judged
+unlikely by the author (finitely smooth profiles reach non-zero momenta
+polynomially, not exponentially); the question is reframed as which
+momenta carry the leading term.
+[Charter](../theory/IR_CARRIER_DICHOTOMY_GATE.md): R1 (a dominant non-zero
+momentum with character trivial on the planes; seen in CJWW (5.12), Pavia
+A+, cyclic s=4) versus R2 (only non-trivial characters; rhombic
+dodecahedron). Status OPEN, frozen, Stage A (R1) authorized for one
+session; Stage B not authorized. Nothing computed yet.
+
 **Second general-rate diagnostic, walk-adapted regions — 2026-11-12:**
 user «si a las tres» (Amendment 4, second run, then dichotomy proposal).
 Charter and script `7302105`;
