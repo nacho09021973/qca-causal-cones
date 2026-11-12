@@ -1,0 +1,5 @@
+95 theorems use only propext, Classical.choice, Quot.sound
+AliceLayers/AuxiliaryAudit.lean:5:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:
+
+- info: 91 theorems use only propext, Classical.choice, Quot.sound
++ info: 95 theorems use only propext, Classical.choice, Quot.sound

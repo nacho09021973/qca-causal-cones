@@ -1,0 +1,16 @@
+name = "AliceLayersPreparation"
+version = "0.1.0"
+defaultTargets = ["AliceLayers", "AliceComparator"]
+
+# Metadata only: the offline build.py reads the existing cache without lake update/build.
+[[require]]
+name = "mathlib"
+path = "../.lake/packages/mathlib"
+
+[[lean_lib]]
+name = "AliceLayers"
+globs = ["AliceLayers.+"]
+
+[[lean_lib]]
+name = "AliceComparator"
+globs = ["AliceComparator.+"]

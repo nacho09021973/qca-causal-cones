@@ -1,0 +1,55 @@
+AliceLayers/RemainderBounds.lean:218:75: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, zero_mul, Complex.I_im, m̵u̵l̵_̵o̵n̵e̵,̵ ̵sub_self, sub_zero,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲one_mul, Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:218:94: warning: This simp argument is unused:
+  sub_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, zero_mul, Complex.I_im, mul_one, sub_self, s̵u̵b̵_̵z̵e̵r̵o̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲one_mul, Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:280:10: warning: This simp argument is unused:
+  Fin.prod_univ_two
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵F̵i̵n̵.̵p̵r̵o̵d̵_̵u̵n̵i̵v̵_̵t̵w̵o̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:326:39: error: Type mismatch
+  this
+has type
+  a ≤ b + 1
+of sort `Prop` but is expected to have type
+  ℤ
+of sort `Type`
+AliceLayers/RemainderBounds.lean:335:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (?s ×ˢ ?t).card
+in the target expression
+  S.card ≤ (I.product I).card
+
+S : Finset (ℤ × ℤ)
+c r : ℝ
+hr : 0 ≤ r
+hS : ∀ p ∈ S, |↑p.1 - c| ≤ r ∧ |↑p.2 - c| ≤ r
+a : ℤ := ⌊c - r⌋
+b : ℤ := ⌊c + r⌋
+I : Finset ℤ := Finset.Icc a b
+hab : a ≤ b
+hsub : S ⊆ I.product I
+hI : ↑I.card = ↑b + 1 - ↑a
+hlen : ↑I.card ≤ 2 * r + 2
+h : S.card ≤ (I.product I).card
+⊢ ↑S.card ≤ ↑I.card ^ 2
+AliceLayers/RemainderBounds.lean:385:2: error: failed to prove positivity/nonnegativity/nonzeroness

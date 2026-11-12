@@ -1,0 +1,34 @@
+AliceLayers/FiniteProfile.lean:41:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/FiniteProfile.lean:46:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/FiniteProfile.lean:196:2: error: Tactic `rfl` failed: The left-hand side
+  ↑(principalLayerCoefficient N) *
+      (↑(layerScale N ^ 2 * √3)⁻¹ *
+        ∑' (m : ℤ) (n : ℤ),
+          Complex.exp (Complex.I * ↑(-2 * Real.pi * ↑k * (↑m + ↑n) / 3)) *
+            psi (effectiveLayerDepth N k) (tangentShiftedFrequency τ (layerScale N) ↑m ↑n)) +
+    finiteLayerError N k τ
+is not definitionally equal to the right-hand side
+  ↑(principalLayerCoefficient N) * ↑(layerScale N ^ 2 * √3)⁻¹ * layerDualSum N k τ + finiteLayerError N k τ
+
+N : ℕ
+hN : 0 < N
+k : ℤ
+τ : Tangent
+hd : 0 ≤ effectiveLayerDepth N k
+he :
+  originalLayerTransverseSum N k τ =
+    ↑(principalLayerCoefficient N) *
+        ∑ p ∈ layerCoordinates N k,
+          psiIntegrand (effectiveLayerDepth N k) τ (normalizedLayerPosition N k ![↑p.1, ↑p.2]) +
+      finiteLayerError N k τ
+⊢ ↑(principalLayerCoefficient N) *
+        (↑(layerScale N ^ 2 * √3)⁻¹ *
+          ∑' (m : ℤ) (n : ℤ),
+            Complex.exp (Complex.I * ↑(-2 * Real.pi * ↑k * (↑m + ↑n) / 3)) *
+              psi (effectiveLayerDepth N k) (tangentShiftedFrequency τ (layerScale N) ↑m ↑n)) +
+      finiteLayerError N k τ =
+    ↑(principalLayerCoefficient N) * ↑(layerScale N ^ 2 * √3)⁻¹ * layerDualSum N k τ + finiteLayerError N k τ

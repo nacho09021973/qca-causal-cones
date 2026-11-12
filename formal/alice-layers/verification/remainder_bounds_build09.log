@@ -1,0 +1,89 @@
+AliceLayers/RemainderBounds.lean:218:75: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, zero_mul, Complex.I_im, m̵u̵l̵_̵o̵n̵e̵,̵ ̵sub_self, sub_zero,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲one_mul, Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:218:94: warning: This simp argument is unused:
+  sub_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, zero_mul, Complex.I_im, mul_one, sub_self, s̵u̵b̵_̵z̵e̵r̵o̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲one_mul, Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:280:10: warning: This simp argument is unused:
+  Fin.prod_univ_two
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵F̵i̵n̵.̵p̵r̵o̵d̵_̵u̵n̵i̵v̵_̵t̵w̵o̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:420:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/RemainderBounds.lean:420:8: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/RemainderBounds.lean:463:2: error: linarith failed to find a contradiction
+case h1
+N : ℕ
+hN : 0 < N
+k : ℤ
+hk : k ∈ Finset.image planeIndex (aliceSites N)
+hc : ↑(layerNaturalIndex N k) = ↑⌊√3 * ↑N / 4⌋ - ↑k
+hf : Int.fract (√3 * ↑N / 4) + ↑⌊√3 * ↑N / 4⌋ = √3 * ↑N / 4
+hs : √3 ≠ 0
+a✝ : ↑N * √3 - 4 * ↑k < 4 * (Int.fract (↑N * √3 / 4) + (↑⌊↑N * √3 / 4⌋ - ↑k))
+⊢ False
+failed
+AliceLayers/RemainderBounds.lean:490:2: error: Tactic `apply` failed: could not unify the conclusion of `@funext`
+  ?f = ?g
+with the goal
+  Real.instAddCommMonoid =
+    NormedCommRing.toNonUnitalNormedCommRing.toNonUnitalCommRing.toNonUnitalNonAssocCommRing.toNonUnitalNonAssocSemiring.toAddCommMonoid
+
+Note: The full type of `@funext` is
+  ∀ {α : Sort ?u.37} {β : α → Sort ?u.36} {f g : (x : α) → β x}, (∀ (x : α), f x = g x) → f = g
+
+case e'_3
+t : ℝ
+ht : 0 < t
+hs : Summable ((fun n => ↑n ^ 5 * Real.exp (-t * ↑n)) ∘ fun n => n + 2)
+hm : Summable fun i => Real.exp (2 * t) * ((fun n => ↑n ^ 5 * Real.exp (-t * ↑n)) ∘ fun n => n + 2) i
+⊢ Real.instAddCommMonoid =
+    NormedCommRing.toNonUnitalNormedCommRing.toNonUnitalCommRing.toNonUnitalNonAssocCommRing.toNonUnitalNonAssocSemiring.toAddCommMonoid
+AliceLayers/RemainderBounds.lean:531:45: error: No goals to be solved
+AliceLayers/RemainderBounds.lean:536:8: error: Tactic `apply` failed: could not unify the type of `mul_le_mul (layerGlobalFactor_norm_bound N hN t ht η k hk)
+  (LE.le.trans (finiteLayerError_uniform_decay N hN k hd.left (tau N η)) ((div_le_div_iff_of_pos_right hD).mpr hpoly))
+  (norm_nonneg (finiteLayerError N k (tau N η))) (Real.exp_nonneg (-t * ↑(layerNaturalIndex N k)))`
+  ‖layerGlobalFactor N t η k‖ * ‖finiteLayerError N k (tau N η)‖ ≤
+    Real.exp (-t * ↑(layerNaturalIndex N k)) * (finiteErrorConstant * (indexedLayerDepth N k + 1) ^ 5 / D)
+with the goal
+  ‖layerGlobalFactor N t η k‖ * ‖finiteLayerError N k (tau N η)‖ ≤
+    Real.exp (-t * ↑(layerNaturalIndex N k)) * (finiteErrorConstant * (↑(layerNaturalIndex N k) + 2) ^ 5 / D)
+
+N : ℕ
+hN : 0 < N
+t : ℝ
+ht : 0 < t
+η : Frequency
+S : Finset ℤ := Finset.image planeIndex (aliceSites N)
+D : ℝ := ↑N ^ 3 * √↑N
+hD : 0 < D
+hC : 0 ≤ finiteErrorConstant
+henv : ∀ (j : ℕ), 0 ≤ weightedDepthEnvelope t j
+k : ℤ
+hk : k ∈ S
+hd : 0 ≤ indexedLayerDepth N k ∧ indexedLayerDepth N k ≤ ↑(layerNaturalIndex N k) + 1
+hpoly : finiteErrorPolynomial (indexedLayerDepth N k) ≤ finiteErrorConstant * (indexedLayerDepth N k + 1) ^ 5
+⊢ ‖layerGlobalFactor N t η k‖ * ‖finiteLayerError N k (tau N η)‖ ≤
+    Real.exp (-t * ↑(layerNaturalIndex N k)) * (finiteErrorConstant * (↑(layerNaturalIndex N k) + 2) ^ 5 / D)

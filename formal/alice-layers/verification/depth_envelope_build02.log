@@ -1,0 +1,6 @@
+AliceLayers/DepthEnvelope.lean:20:2: error: Type mismatch: After simplification, term
+  h
+ has type
+  @LE.le ℝ Real.instLE ‖∫ (a : Tangent), psiIntegrand δ τ a‖ (∫ (a : Tangent), max (δ - ∑ i, a i ^ 2) 0 ^ 2)
+but is expected to have type
+  @LE.le ℝ Real.instLE ‖psi δ τ‖ (∫ (σ : Tangent), max (δ - ∑ i, σ i ^ 2) 0 ^ 2)

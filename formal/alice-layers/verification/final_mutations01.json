@@ -1,0 +1,498 @@
+{
+  "herramienta": "lean-mutar",
+  "herramientas_commit": "8da0e09",
+  "mutar_sha256": "6750fa3315226d205fc4a138cb9010ce536d3c7262edbf5ad296c2e934b99fa3",
+  "proyecto": "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization",
+  "proyecto_commit": "8da0e09",
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mutaciones_fichero": "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/mutaciones_final.toml",
+  "mutaciones_sha256": "c74f3fe3cf55e00db191cf158253175bb2b75a4365bb9a167aa3f288dcb615c0",
+  "build_cmd": [
+    "python3",
+    "-I",
+    "build_final_comparator.py"
+  ],
+  "timeout": 180,
+  "inicio": "2026-11-11T13:29:43.992940+00:00",
+  "ficheros": {
+    "AliceComparator/FinalChallenge.lean": {
+      "sha256": "eaffdc8e08987ee33ea34563ebe13859f465475d44c7904d99861bd6b7503374",
+      "cambios_sin_commit": true
+    },
+    "AliceComparator/FinalSolution.lean": {
+      "sha256": "19410a31da71b6450975bead1601c010173d6c8c39d391f888d72a06a1a74e0a",
+      "cambios_sin_commit": true
+    }
+  },
+  "resultados": [
+    {
+      "nombre": "definition: sqNorm",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 21.1,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: frequencyNorm",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.1,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: planeIndex",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 15.0,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: normalFrequency",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 9.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: centerCoordinate",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 9.0,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: phase",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 9.1,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: latticeBox",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 10.4,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: aliceSites",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 9.6,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: cutoff",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.9,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: profileF",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 9.4,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: profileS",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.8,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: cResource",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 9.1,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: phi0",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.6,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: resource",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: boundaryResource",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.4,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: alpha",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.8,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: criticalCoshSquared",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.8,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: criticalTilt",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.4,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: tiltWeight",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.0,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: amplitude",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.7,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: theta",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.0,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: transverseCoordinates",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 10.8,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: tau",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 10.0,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: psiIntegrand",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: psi",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.6,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: depthTerm",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.7,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: sPlus",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.4,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: leadingScale",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.1,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: indexedLayerDepth",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.1,
+      "coincidencia": "AliceComparator/FinalSolution.lean:20:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: layerGlobalFactor",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.6,
+      "coincidencia": "AliceComparator/FinalSolution.lean:20:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: layerNaturalIndex",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.9,
+      "coincidencia": "AliceComparator/FinalSolution.lean:20:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: geometricZeroModeSum",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:20:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: unphasedZeroModeSum",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:20:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: normalPhaseError",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.6,
+      "coincidencia": "AliceComparator/FinalSolution.lean:20:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: depthPlaneIndex",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.8,
+      "coincidencia": "AliceComparator/FinalSolution.lean:26:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: activeDepthIndices",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.6,
+      "coincidencia": "AliceComparator/FinalSolution.lean:26:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: depthCompletionError",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.1,
+      "coincidencia": "AliceComparator/FinalSolution.lean:29:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: normalizedRemainder",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.6,
+      "coincidencia": "AliceComparator/FinalSolution.lean:35:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition: AliceLayersB",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.4,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: FullScalarClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.4,
+      "coincidencia": "AliceComparator/FinalSolution.lean:8:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: ExplicitWitnessesClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.5,
+      "coincidencia": "AliceComparator/FinalSolution.lean:11:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: BoundaryPositiveClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.4,
+      "coincidencia": "AliceComparator/FinalSolution.lean:14:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: BoundaryIntegralClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.2,
+      "coincidencia": "AliceComparator/FinalSolution.lean:17:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: PhaseSignClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.9,
+      "coincidencia": "AliceComparator/FinalSolution.lean:20:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: PhaseUniformClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.9,
+      "coincidencia": "AliceComparator/FinalSolution.lean:23:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: ActiveIndicesClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:26:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: CompletionSignClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:29:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: CompletionUniformClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:32:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: NormalizedIdentityClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:35:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim: NormalizedUniformClaim",
+      "fichero": "AliceComparator/FinalChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.3,
+      "coincidencia": "AliceComparator/FinalSolution.lean:38:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "axioms: full scalar proof replaced by sorry",
+      "fichero": "AliceComparator/FinalSolution.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.3,
+      "coincidencia": "AliceComparator/FinalAxioms.lean:7:2: error: 'AliceFinalSolution.FullScalarClaim' depends on non-standard axioms: [sorryAx]\nAliceComparator/FinalAxioms.lean:5:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:\n\n- info: 11 theorems use only propext, Classical.choice, Quot.sound\n+ error: 'AliceFinalSolution.FullScalarClaim' depends on non-standard axioms: [sorryAx]",
+      "errores": []
+    }
+  ],
+  "limpia_inicial": {
+    "codigo": 0,
+    "segundos": 10.7
+  },
+  "limpia_final": {
+    "codigo": 0,
+    "segundos": 8.3
+  },
+  "veredicto": "PASA",
+  "fin": "2026-11-11T13:37:04.381639+00:00"
+}

@@ -1,0 +1,22 @@
+AliceLayers/RemainderBounds.lean:218:75: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, zero_mul, Complex.I_im, m̵u̵l̵_̵o̵n̵e̵,̵ ̵sub_self, sub_zero,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲one_mul, Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:218:94: warning: This simp argument is unused:
+  sub_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, zero_mul, Complex.I_im, mul_one, sub_self, s̵u̵b̵_̵z̵e̵r̵o̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲one_mul, Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

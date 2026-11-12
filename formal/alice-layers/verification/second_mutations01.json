@@ -1,0 +1,84 @@
+{
+  "herramienta": "lean-mutar",
+  "herramientas_commit": "a32e189",
+  "mutar_sha256": "6750fa3315226d205fc4a138cb9010ce536d3c7262edbf5ad296c2e934b99fa3",
+  "proyecto": "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization",
+  "proyecto_commit": "a32e189",
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mutaciones_fichero": "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/second_mutations.toml",
+  "mutaciones_sha256": "4f3313be06c7344fb28ba0179741da00b1dec0972d5a86c0f6a635f9588ca667",
+  "build_cmd": [
+    "python3",
+    "-I",
+    "build.py"
+  ],
+  "timeout": 180,
+  "inicio": "2026-10-29T13:25:49.171222+00:00",
+  "ficheros": {
+    "AliceComparator/SecondChallenge.lean": {
+      "sha256": "65d406ffb52818029745f269426bd39439a5044e33ee65a74f99345c33383a69",
+      "cambios_sin_commit": true
+    },
+    "AliceComparator/SecondSolution.lean": {
+      "sha256": "6c32ff16618a44d9bd5ace617412ec633ac3fcdde44a78d80e0f7fe4e0c28120",
+      "cambios_sin_commit": true
+    }
+  },
+  "resultados": [
+    {
+      "nombre": "claim AE expression",
+      "fichero": "AliceComparator/SecondChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.2,
+      "coincidencia": "AliceComparator/SecondSolution.lean:7:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim integrability",
+      "fichero": "AliceComparator/SecondChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.8,
+      "coincidencia": "AliceComparator/SecondSolution.lean:10:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition positive square",
+      "fichero": "AliceComparator/SecondChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.3,
+      "coincidencia": "AliceComparator/SecondSolution.lean:7:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition cutoff second",
+      "fichero": "AliceComparator/SecondChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.3,
+      "coincidencia": "AliceComparator/SecondSolution.lean:7:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "guard sorry",
+      "fichero": "AliceComparator/SecondSolution.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 9.7,
+      "coincidencia": "AliceComparator/SecondAxioms.lean:7:2: error: 'AliceSecondSolution.secondDerivativeAE' depends on non-standard axioms: [sorryAx]\nAliceComparator/SecondAxioms.lean:5:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:\n\n- info: 2 theorems use only propext, Classical.choice, Quot.sound\n+ error: 'AliceSecondSolution.secondDerivativeAE' depends on non-standard axioms: [sorryAx]",
+      "errores": []
+    }
+  ],
+  "limpia_inicial": {
+    "codigo": 0,
+    "segundos": 2.5
+  },
+  "limpia_final": {
+    "codigo": 0,
+    "segundos": 4.9
+  },
+  "veredicto": "PASA",
+  "fin": "2026-10-29T13:26:35.834756+00:00"
+}

@@ -1,0 +1,29 @@
+AliceLayers/TangentSpectral.lean:84:2: error: Tactic `apply` failed: could not unify the conclusion of `@integral_congr_ae`
+  ∫ (a : ?α), ?f a ∂?μ = ∫ (a : ?α), ?g a ∂?μ
+with the goal
+  ‖∫ (z : ℝ), g z‖ = ‖∫ (v : ℝ), Complex.exp (↑(-2 * Real.pi * v * (u / A)) * Complex.I) • f v‖
+
+Note: The full type of `@integral_congr_ae` is
+  ∀ {α : Type ?u.171} {G : Type ?u.170} [inst : NormedAddCommGroup G] [inst_1 : NormedSpace ℝ G] {m : MeasurableSpace α}
+    {μ : Measure α} {f g : α → G}, f =ᵐ[μ] g → ∫ (a : α), f a ∂μ = ∫ (a : α), g a ∂μ
+
+case e_a
+f : ℝ → ℂ
+A : ℝ
+hA : 0 < A
+d u : ℝ
+hAn : A ≠ 0
+g : ℝ → ℂ := fun z => Complex.exp (Complex.I * ↑(-2 * Real.pi * (u / A) * z)) * f z
+c : ℂ := Complex.exp (Complex.I * ↑(2 * Real.pi * (u / A) * d))
+hc : ‖c‖ = 1
+he : ∀ (y : ℝ), Complex.exp (↑(-2 * Real.pi * y * u) * Complex.I) * f (A * y + d) = c * g (A * y + d)
+hi : ∫ (y : ℝ), g (A * y + d) = A⁻¹ • ∫ (z : ℝ), g z
+⊢ ‖∫ (z : ℝ), g z‖ = ‖∫ (v : ℝ), Complex.exp (↑(-2 * Real.pi * v * (u / A)) * Complex.I) • f v‖
+AliceLayers/TangentSpectral.lean:112:2: error: Type mismatch: After simplification, term
+  hd
+ has type
+  ‖f n‖ ≤ K * ((|↑n + a| ^ 2)⁻¹ * (c ^ 2)⁻¹)
+but is expected to have type
+  ‖f n‖ ≤ K * (c ^ 2)⁻¹ * (|↑n + a| ^ 2)⁻¹
+AliceLayers/TangentSpectral.lean:137:64: error: No goals to be solved
+AliceLayers/TangentSpectral.lean:142:65: error: No goals to be solved

@@ -1,0 +1,62 @@
+AliceLayers/DualDecay.lean:28:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+AliceLayers/DualDecay.lean:70:6: warning: 'all_goals try (funext t)' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/DualDecay.lean:115:68: warning: This simp argument is unused:
+  abs_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [̵n̵o̵r̵m̵_̵m̵u̵l̵,̵h̵p̵h̵a̵s̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵n̵o̵r̵m̵_̵r̵e̵a̵l̵,̵R̵e̵a̵l̵.̵n̵o̵r̵m̵_̵e̵q̵_̵a̵b̵s̵,̵a̵b̵s̵_̵m̵u̵l̵,̵[̲n̲o̲r̲m̲_̲m̲u̲l̲,̲ ̲h̲p̲h̲a̲s̲e̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲n̲o̲r̲m̲_̲r̲e̲a̲l̲,̲ ̲R̲e̲a̲l̲.̲n̲o̲r̲m̲_̲e̲q̲_̲a̲b̲s̲,̲
+          abs_of_pos (by norm_num : (0 : ℝ̵)̵<̵8̵)̵,̵a̵b̵s̵_̵o̵f̵_̵p̵o̵s̵ ̵h̵a̵,̵m̵u̵l̵_̵o̵n̵e̵]̵ℝ̲)̲ ̲<̲ ̲8̲)̲,̲ ̲a̲b̲s̲_̲o̲f̲_̲p̲o̲s̲ ̲h̲a̲,̲ ̲m̲u̲l̲_̲o̲n̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/DualDecay.lean:253:4: error: linarith failed to find a contradiction
+s : ℝ
+hs : 0 < s
+τ : Tangent
+hτ : tangentL1 τ ≤ Real.pi / (3 * s)
+m n : ℤ
+hp : ¬(m, n) = (0, 0)
+c : ℝ := 2 * Real.pi / s
+hc : 0 < 2 * Real.pi / s
+h0 :
+  ∀ (c : ℝ),
+    |τ 0 - c| ≤
+      2 * Real.pi / s * |dualCoordinate (↑m) (↑n) 0| + |τ 0 - 2 * Real.pi / s * dualCoordinate (↑m) (↑n) 0 - c|
+h1 :
+  ∀ (c : ℝ),
+    |τ 1 - c| ≤
+      2 * Real.pi / s * |dualCoordinate (↑m) (↑n) 1| + |τ 1 - 2 * Real.pi / s * dualCoordinate (↑m) (↑n) 1 - c|
+hd : |↑m| + |↑n| ≤ 3 * tangentL1 (dualCoordinate ↑m ↑n)
+hr : 1 ≤ |↑m| + |↑n|
+hsmall : tangentL1 τ ≤ 2 * Real.pi / s / 6
+a✝ :
+  |τ 0| + |τ 1| +
+      (|τ 0 - 2 * Real.pi / s * dualCoordinate (↑m) (↑n) 0| + |τ 1 - 2 * Real.pi / s * dualCoordinate (↑m) (↑n) 1|) <
+    2 * Real.pi / s * (|dualCoordinate (↑m) (↑n) 0| + |dualCoordinate (↑m) (↑n) 1|)
+⊢ False
+failed
+AliceLayers/DualDecay.lean:274:27: error: `dsimp` made no progress
+AliceLayers/DualDecay.lean:265:39: error: unsolved goals
+case e'_4
+δ : ℝ
+hδ : 0 ≤ δ
+s : ℝ
+hs : 0 < s
+τ : Tangent
+hτ : tangentL1 τ ≤ Real.pi / (3 * s)
+m n : ℤ
+hp : (m, n) ≠ (0, 0)
+r : ℝ := |↑m| + |↑n|
+hr : 0 < r
+hsep : Real.pi / (3 * s) * (|↑m| + |↑n|) ≤ tangentL1 (tangentShiftedFrequency τ s ↑m ↑n)
+hbase : 0 < Real.pi / (3 * s) * r
+hb :
+  ‖psi δ (tangentShiftedFrequency τ s ↑m ↑n)‖ * tangentL1 (tangentShiftedFrequency τ s ↑m ↑n) ^ 3 ≤ 1024 * δ * (δ + 1)
+hpow : (Real.pi / (3 * s) * r) ^ 3 ≤ tangentL1 (tangentShiftedFrequency τ s ↑m ↑n) ^ 3
+hm : ‖psi δ (tangentShiftedFrequency τ s ↑m ↑n)‖ * (Real.pi / (3 * s) * r) ^ 3 ≤ 1024 * δ * (δ + 1)
+hdiv : ‖psi δ (tangentShiftedFrequency τ s ↑m ↑n)‖ ≤ 1024 * δ * (δ + 1) / (Real.pi / (3 * s) * r) ^ 3
+⊢ 27648 * δ * (δ + 1) * s ^ 3 / Real.pi ^ 3 * (1 / (|↑m| + |↑n|) ^ 3) =
+    1024 * δ * (δ + 1) / (Real.pi / (3 * s) * (|↑m| + |↑n|)) ^ 3

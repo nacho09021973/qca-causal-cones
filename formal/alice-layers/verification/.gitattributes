@@ -1,0 +1,2 @@
+# Preserve raw Lean output, including spaces in pretty-printed diagnostics.
+*.log whitespace=-blank-at-eol

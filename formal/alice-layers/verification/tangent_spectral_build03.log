@@ -1,0 +1,21 @@
+AliceLayers/TangentSpectral.lean:73:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/TangentSpectral.lean:113:2: error: Type mismatch: After simplification, term
+  hd
+ has type
+  ‖f n‖ ≤ K * ((c ^ 2)⁻¹ * (|↑n + a| ^ 2)⁻¹)
+but is expected to have type
+  ‖f n‖ ≤ K * ((c ^ 2)⁻¹ * ((|↑n + a| ^ 2)⁻¹ * 1))
+AliceLayers/TangentSpectral.lean:138:67: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/TangentSpectral.lean:143:68: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/TangentSpectral.lean:138:67: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/TangentSpectral.lean:143:68: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

@@ -1,0 +1,17 @@
+AliceLayers/Assembly.lean:58:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Real.sinc (k * ?m.323)
+in the target expression
+  (fun x => x ^ 2 * (1 - x ^ 2) ^ 2 * Real.sinc (x * (1 / 4))) k =
+    (fun x => 4 * (x * (1 - x ^ 2) ^ 2 * Real.sin (x / 4))) k
+
+case neg
+k : ℝ
+a✝ : k ∈ Set.uIcc 0 1
+hk : ¬k = 0
+⊢ (fun x => x ^ 2 * (1 - x ^ 2) ^ 2 * Real.sinc (x * (1 / 4))) k =
+    (fun x => 4 * (x * (1 - x ^ 2) ^ 2 * Real.sin (x / 4))) k
+AliceLayers/Assembly.lean:58:48: error: unsolved goals
+k : ℝ
+a✝ : k ∈ Set.uIcc 0 1
+hk : ¬k = 0
+⊢ ¬?m.323 = 0

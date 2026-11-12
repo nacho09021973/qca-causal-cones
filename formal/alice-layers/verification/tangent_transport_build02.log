@@ -1,0 +1,69 @@
+AliceLayers/TangentTransport.lean:29:62: warning: This simp argument is unused:
+  Module.finrank_pi
+
+Hint: Omit it from the simp argument list.
+  simp [scaledTangentMap, LinearMap.det_smul, tangentMap_det,̵ ̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵p̵i̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/TangentTransport.lean:35:58: error: unsolved goals
+s : ℝ
+hs : 0 < s
+b : Tangent
+f : Tangent → ℂ
+hf : Continuous f
+hd : 0 < s ^ 2 * √3
+hm : Measure.map (⇑(scaledTangentMap s)) volume = ENNReal.ofReal |(LinearMap.det (scaledTangentMap s))⁻¹| • volume
+hc : Continuous fun q => f (b + q)
+⊢ (↑|√3|)⁻¹ * ↑(ENNReal.ofReal (s ^ 2)⁻¹).toReal = (↑√3)⁻¹ * (↑s ^ 2)⁻¹ ∨ ∫ (x : Tangent), f x ∂volume = 0
+AliceLayers/TangentTransport.lean:43:30: warning: This simp argument is unused:
+  abs_of_pos (inv_pos.mpr hd)
+
+Hint: Omit it from the simp argument list.
+  simp [scaledTangentMap_det,̵ ̵a̵b̵s̵_̵o̵f̵_̵p̵o̵s̵ ̵(̵i̵n̵v̵_̵p̵o̵s̵.̵m̵p̵r̵ ̵h̵d̵)̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+AliceLayers/TangentTransport.lean:57:81: error: unsolved goals
+s : ℝ
+hs : s ≠ 0
+b τ p : Tangent
+u v : ℝ
+he : p = ![p 0, p 1]
+hp : ∑ i, dualCoordinate u v i * tangentMap p i = u * p 0 + v * p 1
+hd : ∑ i, dualCoordinate u v i * (b i + s * tangentMap p i) = ∑ i, dualCoordinate u v i * b i + s * (u * p 0 + v * p 1)
+⊢ s * ∑ x, (s * τ x * ↑tangentMap p x + τ x * b x) - s * Real.pi * u * p 0 * 2 - s * Real.pi * v * p 1 * 2 =
+    -(s * Real.pi * u * p 0 * 2) - s * Real.pi * v * p 1 * 2 + s * ∑ x, (s * τ x * tangentMap p x + τ x * b x)
+AliceLayers/TangentTransport.lean:100:2: error: ring failed, ring expressions not equal
+δ : ℝ
+τ : Tangent
+s : ℝ
+hs : s ≠ 0
+b p : Tangent
+u v : ℝ
+hp :
+  ∑ i, τ i * (b + (scaledTangentMap s) p) i - 2 * Real.pi * (u * p 0 + v * p 1) =
+    2 * Real.pi / s * ∑ i, dualCoordinate u v i * b i +
+      ∑ i, tangentShiftedFrequency τ s u v i * (b + (scaledTangentMap s) p) i
+he :
+  Complex.exp (Complex.I * ↑(-2 * Real.pi * (u * p 0 + v * p 1))) *
+      Complex.exp (Complex.I * ↑(∑ i, τ i * (b + (scaledTangentMap s) p) i)) =
+    Complex.exp (Complex.I * ↑(2 * Real.pi / s * ∑ i, dualCoordinate u v i * b i)) *
+      Complex.exp (Complex.I * ↑(∑ i, tangentShiftedFrequency τ s u v i * (b + (scaledTangentMap s) p) i))
+⊢ Complex.exp (Complex.I * ↑(-2 * Real.pi * (u * p 0 + v * p 1))) *
+              ↑(max (δ - ∑ i, (b + (scaledTangentMap s) p) i ^ 2) 0 ^ 2) *
+            Complex.exp (Complex.I * ↑(∑ i, τ i * (b + (scaledTangentMap s) p) i)) -
+          Complex.exp (Complex.I * ↑(-2 * Real.pi * (u * p 0 + v * p 1))) *
+              Complex.exp (Complex.I * ↑(∑ i, τ i * (b + (scaledTangentMap s) p) i)) *
+            ↑(max (δ - ∑ i, (b + (scaledTangentMap s) p) i ^ 2) 0) ^ 2 -
+        ↑(max (δ - ∑ i, (b + (scaledTangentMap s) p) i ^ 2) 0 ^ 2) *
+            Complex.exp (Complex.I * ↑(2 * Real.pi / s * ∑ i, dualCoordinate u v i * b i)) *
+          Complex.exp (Complex.I * ↑(∑ i, tangentShiftedFrequency τ s u v i * (b + (scaledTangentMap s) p) i)) +
+      ↑(max (δ - ∑ i, (b + (scaledTangentMap s) p) i ^ 2) 0) ^ 2 *
+          Complex.exp (Complex.I * ↑(2 * Real.pi / s * ∑ i, dualCoordinate u v i * b i)) *
+        Complex.exp (Complex.I * ↑(∑ i, tangentShiftedFrequency τ s u v i * (b + (scaledTangentMap s) p) i)) =
+    0

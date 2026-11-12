@@ -1,0 +1,56 @@
+AliceLayers/RemainderBounds.lean:218:75: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, zero_mul, Complex.I_im, m̵u̵l̵_̵o̵n̵e̵,̵ ̵sub_self, sub_zero,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲one_mul, Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:218:94: warning: This simp argument is unused:
+  sub_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, zero_mul, Complex.I_im, mul_one, sub_self, s̵u̵b̵_̵z̵e̵r̵o̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲one_mul, Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:280:10: warning: This simp argument is unused:
+  Fin.prod_univ_two
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵F̵i̵n̵.̵p̵r̵o̵d̵_̵u̵n̵i̵v̵_̵t̵w̵o̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:420:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/RemainderBounds.lean:420:8: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/RemainderBounds.lean:499:47: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/RemainderBounds.lean:537:17: error: linarith failed to find a contradiction
+case h₁
+N : ℕ
+hN : 0 < N
+t : ℝ
+ht : 0 < t
+η : Frequency
+S : Finset ℤ := Finset.image planeIndex (aliceSites N)
+D : ℝ := ↑N ^ 3 * √↑N
+hD : 0 < D
+hC : 0 ≤ finiteErrorConstant
+henv : ∀ (j : ℕ), 0 ≤ weightedDepthEnvelope t j
+k : ℤ
+hk : k ∈ S
+hd : 0 ≤ indexedLayerDepth N k ∧ indexedLayerDepth N k ≤ ↑(layerNaturalIndex N k) + 1
+a✝ : ↑(layerNaturalIndex N k) < indexedLayerDepth N k
+⊢ False
+failed

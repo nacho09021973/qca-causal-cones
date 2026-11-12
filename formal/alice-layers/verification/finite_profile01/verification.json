@@ -1,0 +1,404 @@
+{
+  "success": true,
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mathlib_commit": "fabf563a7c95a166b8d7b6efca11c8b4dc9d911f",
+  "copied_definitions_byte_equal": {
+    "sqNorm": true,
+    "normalFrequency": true,
+    "centerCoordinate": true,
+    "phase": true,
+    "uncenteredPhase": true,
+    "latticeBox": true,
+    "aliceSites": true,
+    "transverseCoordinates": true,
+    "latticeLayerDepth": true,
+    "latticeLayerRadiusSquared": true,
+    "SupportFaithfulness": true,
+    "new:psiIntegrand": true,
+    "new:psi": true,
+    "new:psiSlice": true,
+    "new:shiftedTau": true,
+    "new:positiveSquare": true,
+    "second:positiveSquare": true,
+    "second:cutoffSecond": true
+  },
+  "standard_axiom_guard_count": 9,
+  "new_comparator_axiom_guard_count": 7,
+  "second_comparator_axiom_guard_count": 2,
+  "auxiliary_standard_axiom_guard_count": 170,
+  "open_targets": [
+    "AliceLayersB"
+  ],
+  "proved_targets": [
+    "ProfileIntegrability"
+  ],
+  "runner_sha256": "93b357ddd796cb6de3cb7cffe1b12c7eaafa75493ff0cebea0361ac861bc4a4d",
+  "modules": [
+    {
+      "module": "AliceLayers.Definitions",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Definitions.olean",
+        "AliceLayers/Definitions.lean"
+      ],
+      "source_sha256": "29b2a75dc88a4bfe4938ab895bbe312cfac203b33d4ace434879b04edf3236d2"
+    },
+    {
+      "module": "AliceLayers.Targets",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Targets.olean",
+        "AliceLayers/Targets.lean"
+      ],
+      "source_sha256": "226a5c3944985fefef063a9dcb693c6d5f2569992734d1e0cb65eaca11a3e53e"
+    },
+    {
+      "module": "AliceLayers.Basic",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Basic.olean",
+        "AliceLayers/Basic.lean"
+      ],
+      "source_sha256": "6b378d855aee67420cc1776be9865e00e25b42ed45858c9c50dd14f05add5deb"
+    },
+    {
+      "module": "AliceLayers.Covolume",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Covolume.olean",
+        "AliceLayers/Covolume.lean"
+      ],
+      "source_sha256": "3cd926a3cf264ea7fa8686b825ded24bd8c12536db8a2401fff5ee83e6ab2506"
+    },
+    {
+      "module": "AliceLayers.Reindex",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Reindex.olean",
+        "AliceLayers/Reindex.lean"
+      ],
+      "source_sha256": "33b2ada2780e1bef7531543070120e2d4eff722c8f3bf9b45ef325402571bc4a"
+    },
+    {
+      "module": "AliceLayers.Poisson",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Poisson.olean",
+        "AliceLayers/Poisson.lean"
+      ],
+      "source_sha256": "e4759dcaf27f83aa7833d85785c288cae260cd3b6b6e088c18705c372c5dab39"
+    },
+    {
+      "module": "AliceLayers.PoissonZero",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/PoissonZero.olean",
+        "AliceLayers/PoissonZero.lean"
+      ],
+      "source_sha256": "ffdd62fe0a29c886d589358aa7a196509340044ca54eff458f49729d4653e81a"
+    },
+    {
+      "module": "AliceLayers.PsiIntermediate",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/PsiIntermediate.olean",
+        "AliceLayers/PsiIntermediate.lean"
+      ],
+      "source_sha256": "de5d41c08982a39e2e9923b841fb770bb3de6000ffa4b82808d8ef2ac1ba0189"
+    },
+    {
+      "module": "AliceLayers.Dual",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Dual.olean",
+        "AliceLayers/Dual.lean"
+      ],
+      "source_sha256": "5562dd1ff2d48dcbeb032a3e8e7a4995c358e8dfd2f4c2a8a25dcec91e23acb2"
+    },
+    {
+      "module": "AliceLayers.SectionRegularity",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/SectionRegularity.olean",
+        "AliceLayers/SectionRegularity.lean"
+      ],
+      "source_sha256": "f05d0dd5e74ad8f5edb97337829dfa950070f3baa2b490224fadf87d7ad37df1"
+    },
+    {
+      "module": "AliceLayers.SectionSecond",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/SectionSecond.olean",
+        "AliceLayers/SectionSecond.lean"
+      ],
+      "source_sha256": "38e13739a3e1f9bb6b6057a80d01ffd36441092adaad3897c11a9fb46f93d399"
+    },
+    {
+      "module": "AliceLayers.WeakParts",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/WeakParts.olean",
+        "AliceLayers/WeakParts.lean"
+      ],
+      "source_sha256": "384308a1ba3412a4b2ed67eadad9edcef9bf0a94a51058694d2f20940470bad9"
+    },
+    {
+      "module": "AliceComparator.Challenge",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/Challenge.olean",
+        "AliceComparator/Challenge.lean"
+      ],
+      "source_sha256": "631c147a6f75a11286f5b010f37bace3b75e4ccf37365232b46563c08d9fb05f"
+    },
+    {
+      "module": "AliceComparator.Solution",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/Solution.olean",
+        "AliceComparator/Solution.lean"
+      ],
+      "source_sha256": "ed4456ffca7d50b25f80487743ced192ecea901f24658add5a18d2543f0f56eb"
+    },
+    {
+      "module": "AliceComparator.AssertAxioms",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/AssertAxioms.olean",
+        "AliceComparator/AssertAxioms.lean"
+      ],
+      "source_sha256": "d71d7b5d52b07a8ff62cf6c203d47f0fa0d4f3bc36da0622400db2cdb9512ce9"
+    },
+    {
+      "module": "AliceLayers.TangentTransport",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/TangentTransport.olean",
+        "AliceLayers/TangentTransport.lean"
+      ],
+      "source_sha256": "a20313225154a2f8080c64cd7ac72aef873d4a32969e13e9e774d46af32daaeb"
+    },
+    {
+      "module": "AliceLayers.TangentSpectral",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/TangentSpectral.olean",
+        "AliceLayers/TangentSpectral.lean"
+      ],
+      "source_sha256": "a8a973d82422917a4615545a1113bce276e43f1204f8fb7d7a470b45f0067883"
+    },
+    {
+      "module": "AliceLayers.FiniteProfile",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/FiniteProfile.olean",
+        "AliceLayers/FiniteProfile.lean"
+      ],
+      "source_sha256": "84ac158daf324ab68f092d9d8d3e70e4d65fec8cf256fcc650ccb8cab24e31e6"
+    },
+    {
+      "module": "AliceLayers.AuxiliaryAudit",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/AuxiliaryAudit.olean",
+        "AliceLayers/AuxiliaryAudit.lean"
+      ],
+      "source_sha256": "5754339bd1effeed793cb18cf1ad99784e3b9b52cbdda5e4320653a47d265f1a"
+    },
+    {
+      "module": "AliceComparator.Axioms",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/Axioms.olean",
+        "AliceComparator/Axioms.lean"
+      ],
+      "source_sha256": "e5455b5c01163fca1d2b9dc827323f7dfdbabc5f6e9241fb612b2872240f1474"
+    },
+    {
+      "module": "AliceComparator.NewChallenge",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/NewChallenge.olean",
+        "AliceComparator/NewChallenge.lean"
+      ],
+      "source_sha256": "63595ff7f88a589fd688b7e320760245e809e2f3daf8214922e386b911eb751b"
+    },
+    {
+      "module": "AliceComparator.NewSolution",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/NewSolution.olean",
+        "AliceComparator/NewSolution.lean"
+      ],
+      "source_sha256": "133c3afa1adef5292af6762c900a0054d19cb96369d90617b901e8825383c870"
+    },
+    {
+      "module": "AliceComparator.NewAxioms",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/NewAxioms.olean",
+        "AliceComparator/NewAxioms.lean"
+      ],
+      "source_sha256": "9a6cf608328e7c08d815979cb8efd9721ae76e45a26731f1a287c709786b7142"
+    },
+    {
+      "module": "AliceComparator.SecondChallenge",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/SecondChallenge.olean",
+        "AliceComparator/SecondChallenge.lean"
+      ],
+      "source_sha256": "65d406ffb52818029745f269426bd39439a5044e33ee65a74f99345c33383a69"
+    },
+    {
+      "module": "AliceComparator.SecondSolution",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/SecondSolution.olean",
+        "AliceComparator/SecondSolution.lean"
+      ],
+      "source_sha256": "6c32ff16618a44d9bd5ace617412ec633ac3fcdde44a78d80e0f7fe4e0c28120"
+    },
+    {
+      "module": "AliceComparator.SecondAxioms",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/SecondAxioms.olean",
+        "AliceComparator/SecondAxioms.lean"
+      ],
+      "source_sha256": "cdd4b4d5ccea05d254165a97c262f7532dd827a2d020a05fadb1aac708502960"
+    }
+  ],
+  "qca_cache_read_only_use": true,
+  "full_layers_b_proved": false
+}

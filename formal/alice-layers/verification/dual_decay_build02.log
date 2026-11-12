@@ -1,0 +1,25 @@
+AliceLayers/DualDecay.lean:28:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+AliceLayers/DualDecay.lean:69:83: error: `ring_nf` made no progress on the goal
+AliceLayers/DualDecay.lean:69:83: error: `ring_nf` made no progress on the goal
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+AliceLayers/DualDecay.lean:112:68: warning: This simp argument is unused:
+  abs_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [̵n̵o̵r̵m̵_̵m̵u̵l̵,̵h̵p̵h̵a̵s̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵n̵o̵r̵m̵_̵r̵e̵a̵l̵,̵R̵e̵a̵l̵.̵n̵o̵r̵m̵_̵e̵q̵_̵a̵b̵s̵,̵a̵b̵s̵_̵m̵u̵l̵,̵[̲n̲o̲r̲m̲_̲m̲u̲l̲,̲ ̲h̲p̲h̲a̲s̲e̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲n̲o̲r̲m̲_̲r̲e̲a̲l̲,̲ ̲R̲e̲a̲l̲.̲n̲o̲r̲m̲_̲e̲q̲_̲a̲b̲s̲,̲
+          abs_of_pos (by norm_num : (0 : ℝ̵)̵<̵8̵)̵,̵a̵b̵s̵_̵o̵f̵_̵p̵o̵s̵ ̵h̵a̵,̵m̵u̵l̵_̵o̵n̵e̵]̵ℝ̲)̲ ̲<̲ ̲8̲)̲,̲ ̲a̲b̲s̲_̲o̲f̲_̲p̲o̲s̲ ̲h̲a̲,̲ ̲m̲u̲l̲_̲o̲n̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

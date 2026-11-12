@@ -1,0 +1,156 @@
+{
+  "herramienta": "lean-mutar",
+  "herramientas_commit": "a32e189",
+  "mutar_sha256": "6750fa3315226d205fc4a138cb9010ce536d3c7262edbf5ad296c2e934b99fa3",
+  "proyecto": "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization",
+  "proyecto_commit": "a32e189",
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mutaciones_fichero": "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/new_mutations.toml",
+  "mutaciones_sha256": "6aafa6a85b0a93e8661a3489a3791b01fd94d951a3c4408f384fd4ad0b4be5a6",
+  "build_cmd": [
+    "python3",
+    "-I",
+    "build.py"
+  ],
+  "timeout": 180,
+  "inicio": "2026-10-29T13:16:50.685144+00:00",
+  "ficheros": {
+    "AliceComparator/NewChallenge.lean": {
+      "sha256": "63595ff7f88a589fd688b7e320760245e809e2f3daf8214922e386b911eb751b",
+      "cambios_sin_commit": true
+    },
+    "AliceComparator/NewSolution.lean": {
+      "sha256": "133c3afa1adef5292af6762c900a0054d19cb96369d90617b901e8825383c870",
+      "cambios_sin_commit": true
+    }
+  },
+  "resultados": [
+    {
+      "nombre": "claim derivative factor",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.9,
+      "coincidencia": "AliceComparator/NewSolution.lean:7:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim smoothness",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.7,
+      "coincidencia": "AliceComparator/NewSolution.lean:9:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim section derivative factor",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.9,
+      "coincidencia": "AliceComparator/NewSolution.lean:11:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim boundary derivative",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.7,
+      "coincidencia": "AliceComparator/NewSolution.lean:13:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim section smoothness",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.9,
+      "coincidencia": "AliceComparator/NewSolution.lean:14:53: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim Fourier swap frequencies",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.1,
+      "coincidencia": "AliceComparator/NewSolution.lean:15:59: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "claim Fourier inequality factor",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.9,
+      "coincidencia": "AliceComparator/NewSolution.lean:16:63: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition positive square",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.1,
+      "coincidencia": "AliceComparator/NewSolution.lean:7:2: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition shift sign",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 7.7,
+      "coincidencia": "AliceComparator/NewSolution.lean:15:59: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition profile exponent",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.0,
+      "coincidencia": "AliceComparator/NewSolution.lean:14:53: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition integral",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.6,
+      "coincidencia": "AliceComparator/NewSolution.lean:15:59: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definition slice",
+      "fichero": "AliceComparator/NewChallenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.8,
+      "coincidencia": "AliceComparator/NewSolution.lean:14:53: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "axiom guard sorry",
+      "fichero": "AliceComparator/NewSolution.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 10.1,
+      "coincidencia": "AliceComparator/NewAxioms.lean:9:2: error: 'AliceNewSolution.psiFourierAll' depends on non-standard axioms: [sorryAx]\nAliceComparator/NewAxioms.lean:5:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:\n\n- info: 7 theorems use only propext, Classical.choice, Quot.sound\n+ error: 'AliceNewSolution.psiFourierAll' depends on non-standard axioms: [sorryAx]",
+      "errores": []
+    }
+  ],
+  "limpia_inicial": {
+    "codigo": 0,
+    "segundos": 10.6
+  },
+  "limpia_final": {
+    "codigo": 0,
+    "segundos": 5.1
+  },
+  "veredicto": "PASA",
+  "fin": "2026-10-29T13:18:52.809124+00:00"
+}

@@ -1,0 +1,10 @@
+AliceLayers/TangentTransport.lean:29:62: warning: This simp argument is unused:
+  Module.finrank_pi
+
+Hint: Omit it from the simp argument list.
+  simp [scaledTangentMap, LinearMap.det_smul, tangentMap_det,̵ ̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵p̵i̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/TangentTransport.lean:77:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`

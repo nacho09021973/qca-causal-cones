@@ -49,6 +49,18 @@ sharper constant `4` in place of `9`.
   Those parts rely on the paper's proofs, the scoped review records and the
   certificate scripts.
 
+## Separate subproject: `alice-layers/`
+
+`formal/alice-layers/` holds a separate Lean development, moved here from
+`~/herramientas` on 2026-11-12 (`alice-layers/MIGRATION.md`). Its theorem
+`AliceLayers.aliceLayersB_proved` is the scalar Alice coefficient of
+Lemma Layers (b), one ingredient of Theorem 4.4. It is not built by
+`lake build` above: it has its own offline `build.py` / `verify.py`, which
+read this directory's Mathlib cache. It does not cover Bob's coefficient,
+the matrix symbol, the assembly or Theorem 4.4 itself, and it has no
+external review; see `alice-layers/FIDELITY_ALICE_LAYERS_B.md`. The
+statement "Theorem 4.4 is not formalized" above stands.
+
 ## Found while formalizing
 
 The paper's Lemma 2.1 listed the axial jumps as `(0,0,±1)`; they are

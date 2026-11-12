@@ -1,0 +1,13 @@
+AliceLayers/SectionSecond.lean:28:59: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/SectionSecond.lean:27:4: warning: 'all_goals try (funext t)' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionSecond.lean:91:52: warning: This simp argument is unused:
+  hy
+
+Hint: Omit it from the simp argument list.
+  simp [cutoffSecond, s, p, h̵y̵,̵ ̵Set.indicator]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

@@ -1,0 +1,35 @@
+AliceLayers/DualDecay.lean:28:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+AliceLayers/DualDecay.lean:70:6: warning: 'all_goals try (funext t)' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/DualDecay.lean:115:68: warning: This simp argument is unused:
+  abs_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [̵n̵o̵r̵m̵_̵m̵u̵l̵,̵h̵p̵h̵a̵s̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵n̵o̵r̵m̵_̵r̵e̵a̵l̵,̵R̵e̵a̵l̵.̵n̵o̵r̵m̵_̵e̵q̵_̵a̵b̵s̵,̵a̵b̵s̵_̵m̵u̵l̵,̵[̲n̲o̲r̲m̲_̲m̲u̲l̲,̲ ̲h̲p̲h̲a̲s̲e̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲n̲o̲r̲m̲_̲r̲e̲a̲l̲,̲ ̲R̲e̲a̲l̲.̲n̲o̲r̲m̲_̲e̲q̲_̲a̲b̲s̲,̲
+          abs_of_pos (by norm_num : (0 : ℝ̵)̵<̵8̵)̵,̵a̵b̵s̵_̵o̵f̵_̵p̵o̵s̵ ̵h̵a̵,̵m̵u̵l̵_̵o̵n̵e̵]̵ℝ̲)̲ ̲<̲ ̲8̲)̲,̲ ̲a̲b̲s̲_̲o̲f̲_̲p̲o̲s̲ ̲h̲a̲,̲ ̲m̲u̲l̲_̲o̲n̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/DualDecay.lean:250:59: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/DualDecay.lean:250:73: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/DualDecay.lean:278:38: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/DualDecay.lean:331:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/DualDecay.lean:331:6: warning: 'linarith [abs_nonneg (p.1 : ℝ), abs_nonneg (p.2 : ℝ)]' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/DualDecay.lean:483:48: error: Type mismatch
+  layerScale_cube_bound N hN
+has type
+  layerScale N ^ 3 ≤ 8 / (↑N * √↑N)
+but is expected to have type
+  0 ≤ layerScale N ^ 3

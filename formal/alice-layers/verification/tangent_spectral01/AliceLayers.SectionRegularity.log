@@ -1,0 +1,44 @@
+AliceLayers/SectionRegularity.lean:46:40: warning: This simp argument is unused:
+  pow_one
+
+Hint: Omit it from the simp argument list.
+  simp only [id_eq, Nat.cast_ofNat, p̵ow̵_̵o̵ne,̵ ̵o̵n̵e̵_mul] at hd
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/SectionRegularity.lean:46:49: warning: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [id_eq, Nat.cast_ofNat, pow_one,̵ ̵o̵n̵e̵_̵m̵u̵l̵] at hd
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/SectionRegularity.lean:56:64: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/SectionRegularity.lean:57:35: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/SectionRegularity.lean:58:92: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/SectionRegularity.lean:56:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/SectionRegularity.lean:58:69: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/SectionRegularity.lean:56:49: warning: '(funext t)' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionRegularity.lean:56:64: warning: 'try (simp [id_eq, Pi.pow_apply, Pi.sub_apply, Function.comp_def]) <;> try ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionRegularity.lean:57:35: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionRegularity.lean:58:77: warning: '(funext t)' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionRegularity.lean:58:92: warning: 'try (simp [id_eq, Pi.pow_apply, Pi.sub_apply, Function.comp_def]) <;> try ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

@@ -1,0 +1,158 @@
+{
+  "sqNorm": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "5beaaa801635fd2988d5ab02ad11d3fb45a13b625ab62afd5b2bff4101d47b13"
+  },
+  "frequencyNorm": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "80d324f8e6d1edee683b5a55b7d2fc75332599e170dd54648fa3db5993c38224"
+  },
+  "planeIndex": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "059b2c20f83ae7fc545362f97a33bb0f910c166e9447d63ab4fe0a55e12247e7"
+  },
+  "normalFrequency": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "35e745f7056b0a097ae63dd0a3966cc24b35b23cf442715043c2a8334d0ac03e"
+  },
+  "centerCoordinate": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "49a553950c500e6b3b93f1d8e53609e36c8de014af656caf2fd0b262bb7248b1"
+  },
+  "phase": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "e3e55fe9254ec97d5cc4745ce7bbf05818912a7cbd6b0c69314362fd37ee55fa"
+  },
+  "latticeBox": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "51318dd6e591f6bcd31689997ede8baa779bf65eed933b636394367e8535251d"
+  },
+  "aliceSites": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "96110843500dce612f213b3c5a2d3ef72876eae9db2a06cfa06a6d48adb0cbe9"
+  },
+  "cutoff": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "fd01b2dcab28d17f94d7ca8daad3df00c09764191eb2e94a228fafd172c4d362"
+  },
+  "profileF": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "8b34d133a31cc830a050ce9b6421966e70e7ac62c6a6fe60c9e7d788e17529da"
+  },
+  "profileS": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "e17a12fad320a70318cdc57abcd57d7e6dd97e2601ab1c5441c7aaf9a3120473"
+  },
+  "cResource": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "8399b297a2d7cc4494f7f8f1af939a3ad585faafa2b1664120b9e54c81ffa4fd"
+  },
+  "phi0": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "9569e2fd04039169e02ca0726d5b0523518543a8b9c77f389e84b533e35d6fc3"
+  },
+  "resource": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "414714cac9bfa9f2cc6b45ce5b859c8be7e93745f01584633b1e150be0b64679"
+  },
+  "boundaryResource": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "005a0ce4358f8985e6da4714b27dbb0800db248e1144d3eb3f4e331b6ab9e5c2"
+  },
+  "alpha": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "dfc9520a700670bc20f0b27664d79584b647f022f814b2ba55b970bb316f0c12"
+  },
+  "criticalCoshSquared": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "f6a33883082c78032b93cde67181325d6eaf9caa3a74f672a757e7247b1119a8"
+  },
+  "criticalTilt": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "f952d80c2722d0ea761e251ac4c4d9f87573988946821ac5a27c3123936d3c6b"
+  },
+  "tiltWeight": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "4274572c64aea9823cfdd54df0fa2ed4ef4542258918f8d631ef8811d680de35"
+  },
+  "amplitude": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "af20b8dd8ea3af56e17a6b6b094dc9f77d3503dced4bfba1530dc612ee383b9a"
+  },
+  "theta": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "9544bd70246ab531331041395d9b52c3bfc58fba31b5b4fc1c78e2789bc92722"
+  },
+  "transverseCoordinates": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "5740bc30008a1c2ec0425066f0cac8cb863658baaaea40353d837c1cfb6c6ab6"
+  },
+  "tau": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "03bf644065b32b5b9fe04aa2af2a7fc358b02e33df0e4242499022e8e10f62e5"
+  },
+  "psiIntegrand": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "30a777e5ef6b294dbabdece71fe40b45fe0a33fd6e5677d15bbb1e33215306ac"
+  },
+  "psi": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "8ae7f7996fa601ee04844664dd151239c85288518344fdd1a74dbb0b09883e46"
+  },
+  "depthTerm": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "3dcf101f41fbb9b04371feec084dcdd0f6af1e4ee92857367add84340d3b095d"
+  },
+  "sPlus": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "2f5db763490e016299b13cb62588aa82064716292bc77784ef56b36f9ab3c066"
+  },
+  "leadingScale": {
+    "source": "AliceLayers/Definitions.lean",
+    "sha256": "cc69baba872819104549c3ef1d983f98b10d6541573e238eb018e1f04c475be5"
+  },
+  "indexedLayerDepth": {
+    "source": "AliceLayers/FiniteProfile.lean",
+    "sha256": "24ccc08464c6c650c7299983419e5fda70e681098f4a03725c97ab00c9976a29"
+  },
+  "layerGlobalFactor": {
+    "source": "AliceLayers/FiniteProfile.lean",
+    "sha256": "bb1c9fe71138cd698e4d95cd7bf917e403dd00b1eb8a40694bff1ce88dcb6d67"
+  },
+  "layerNaturalIndex": {
+    "source": "AliceLayers/RemainderBounds.lean",
+    "sha256": "0d1438c1d9e95ac5d912470e010c25bab87d6be707cb3706d3614623ca6a763f"
+  },
+  "geometricZeroModeSum": {
+    "source": "AliceLayers/ZeroModeDepth.lean",
+    "sha256": "3ae10b0f315a49c70dba063a8e78b92aa1661ae2d1ade41da80e567afaf34f75"
+  },
+  "unphasedZeroModeSum": {
+    "source": "AliceLayers/NormalPhase.lean",
+    "sha256": "825fc582b8cf8ae75443bd50f7ccb0be5e7c3988f48905872f1e297a8b5a8ecf"
+  },
+  "normalPhaseError": {
+    "source": "AliceLayers/NormalPhase.lean",
+    "sha256": "3b51d9298541fef2557740a0f5bd2d3d6b099553fcd0ad5f73560d8851851b06"
+  },
+  "depthPlaneIndex": {
+    "source": "AliceLayers/DepthGeometry.lean",
+    "sha256": "f9c5206b81f6441a3f1ed1f6681ac893bcb76a11a368dee949e40bdf032b9593"
+  },
+  "activeDepthIndices": {
+    "source": "AliceLayers/DepthGeometry.lean",
+    "sha256": "e2b33ecae1fdf662245ca4de6e37c28b58d698a2010e9264dd6ae8fa0e62d693"
+  },
+  "depthCompletionError": {
+    "source": "AliceLayers/DepthCompletion.lean",
+    "sha256": "8a63f75f1054798d8d05734e4d371cf46ef1b1d244322d7e5b6d5304bc919e05"
+  },
+  "normalizedRemainder": {
+    "source": "AliceLayers/NormalizedRemainder.lean",
+    "sha256": "8f530b92fd57cc51d0961958ce2efbbf2db7ed62dcd78b084c8dde8ab54994c8"
+  },
+  "AliceLayersB": {
+    "source": "AliceLayers/Targets.lean",
+    "sha256": "ddeb1c667224748e669bf7abd60430cd4f0197a334a77f4d3c85a7d6b65deafc"
+  }
+}

@@ -1,0 +1,87 @@
+AliceLayers/RemainderBounds.lean:12:60: error(lean.unknownIdentifier): Unknown constant `intervalIntegral.integral_cos`
+AliceLayers/RemainderBounds.lean:9:87: error: unsolved goals
+case neg
+x : ℝ
+hx : ¬x = 0
+⊢ Real.sinc x = x⁻¹ • ∫ (x : ℝ) in 0 * x..1 * x, Real.cos x
+AliceLayers/RemainderBounds.lean:91:49: error(lean.unknownIdentifier): Unknown constant `intervalIntegral.integral_cos`
+AliceLayers/RemainderBounds.lean:131:15: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  |↑?m.39 ^ ?m.40|
+in the target expression
+  |(↑N).rpow (-3 / 2)| * |phi0 (√(sqNorm x) / ↑N)| ≤ (↑N).rpow (-3 / 2) * resourceBound
+
+N : ℕ
+x : Lattice
+⊢ |(↑N).rpow (-3 / 2)| * |phi0 (√(sqNorm x) / ↑N)| ≤ (↑N).rpow (-3 / 2) * resourceBound
+AliceLayers/RemainderBounds.lean:138:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  |↑?m.66 ^ ?m.67|
+in the target expression
+  |(↑N).rpow (-3 / 2)| * |phi0 (√(sqNorm x) / ↑N) - phi0 (1 / 4)| ≤
+    (↑N).rpow (-3 / 2) * resourceBound * (latticeLayerDepth N x / ↑N)
+
+N : ℕ
+hN : 0 < N
+x : Lattice
+hx : x ∈ aliceSites N
+⊢ |(↑N).rpow (-3 / 2)| * |phi0 (√(sqNorm x) / ↑N) - phi0 (1 / 4)| ≤
+    (↑N).rpow (-3 / 2) * resourceBound * (latticeLayerDepth N x / ↑N)
+AliceLayers/RemainderBounds.lean:218:6: error: Type mismatch
+  LE.le.trans (abs_add_le (sineProfileError N (layerPoint k p.1 p.2)) (radialResourceError N (layerPoint k p.1 p.2)))
+    (add_le_add (sineProfileError_bound N hN k p hp) (radialResourceError_bound N hN k p hp))
+has type
+  |sineProfileError N (layerPoint k p.1 p.2) + radialResourceError N (layerPoint k p.1 p.2)| ≤
+    pointwiseSineErrorBound N k + pointwiseRadialErrorBound N k
+but is expected to have type
+  Real.exp (0 * (↑(∑ i, τ i * normalizedLayerPosition N k ![↑p.1, ↑p.2] i)).re - 0) *
+      |sineProfileError N (layerPoint k p.1 p.2) + radialResourceError N (layerPoint k p.1 p.2)| ≤
+    pointwiseSineErrorBound N k + pointwiseRadialErrorBound N k
+AliceLayers/RemainderBounds.lean:220:13: error: unsolved goals
+N : ℕ
+hN : 0 < N
+k : ℤ
+τ : Tangent
+⊢ ↑(layerCoordinates N k).card * pointwiseSineErrorBound N k +
+      ↑(layerCoordinates N k).card * pointwiseRadialErrorBound N k =
+    ↑(layerCoordinates N k).card * (pointwiseSineErrorBound N k + pointwiseRadialErrorBound N k)
+AliceLayers/RemainderBounds.lean:216:65: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, Complex.I_im, m̵u̵l̵_̵o̵n̵e̵,̵ ̵sub_self,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero, one_mul,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:216:74: warning: This simp argument is unused:
+  sub_self
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, Complex.I_im, mul_one, s̵u̵b̵_̵s̵e̵l̵f̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero, one_mul,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:217:8: warning: This simp argument is unused:
+  Real.exp_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re, Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, Complex.I_im, mul_one, sub_self, R̵e̵a̵l̵.̵e̵x̵p̵_̵z̵e̵r̵o̵,̵ ̵one_mul, Complex.norm_real,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/RemainderBounds.lean:217:23: warning: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [layerTransversePhase, norm_mul, Complex.norm_exp, Complex.mul_re,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Complex.I_re,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Complex.ofReal_im, mul_zero, Complex.I_im, mul_one, sub_self,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.exp_zero,
+  ̲ o̵n̵e̵_̵m̵u̵l̵,̵  ̲ ̲ ̲ ̲ ̲ ̲Complex.norm_real, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

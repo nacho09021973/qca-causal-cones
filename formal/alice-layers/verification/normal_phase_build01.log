@@ -1,0 +1,25 @@
+AliceLayers/NormalPhase.lean:62:24: error: unexpected token '|*'; expected '|' or '|ₘ'
+AliceLayers/NormalPhase.lean:59:81: error: unsolved goals
+case he
+N : ℕ
+hN : 0 < N
+t : ℝ
+ht : 0 < t
+η : Frequency
+k : ℤ
+hk : k ∈ Finset.image planeIndex (aliceSites N)
+hd : 0 ≤ indexedLayerDepth N k
+⊢ ‖Complex.exp (Complex.I * ↑(-normalFrequency η * indexedLayerDepth N k)) - 1‖ ≤ |normalFrequency η|
+
+N : ℕ
+hN : 0 < N
+t : ℝ
+ht : 0 < t
+η : Frequency
+k : ℤ
+hk : k ∈ Finset.image planeIndex (aliceSites N)
+hd : 0 ≤ indexedLayerDepth N k
+he : ‖Complex.exp (Complex.I * ↑(-normalFrequency η * indexedLayerDepth N k)) - 1‖ ≤ |normalFrequency η|
+⊢ ‖(Complex.exp (Complex.I * ↑(-normalFrequency η * indexedLayerDepth N k)) - 1) *
+        depthTerm t (theta N) (tau N η) (layerNaturalIndex N k)‖ ≤
+    8 * |normalFrequency η| * weightedDepthEnvelope t (layerNaturalIndex N k)

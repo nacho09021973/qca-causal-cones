@@ -1,0 +1,192 @@
+{
+  "herramienta": "lean-mutar",
+  "herramientas_commit": "83c04f9",
+  "mutar_sha256": "6750fa3315226d205fc4a138cb9010ce536d3c7262edbf5ad296c2e934b99fa3",
+  "proyecto": "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization",
+  "proyecto_commit": "83c04f9",
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mutaciones_fichero": "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/mutaciones.toml",
+  "mutaciones_sha256": "607341cf451f3594f98f870f91635c5244b57fdc31016d42c7a8b8a8d13e33db",
+  "build_cmd": [
+    "python3",
+    "-I",
+    "build.py"
+  ],
+  "timeout": 180,
+  "inicio": "2026-10-28T17:09:48.643927+00:00",
+  "ficheros": {
+    "AliceComparator/Challenge.lean": {
+      "sha256": "49d4e99158653bb132fe48c374139effa8946fa445a20ea771fba5e977c8d175",
+      "cambios_sin_commit": true
+    },
+    "AliceComparator/Solution.lean": {
+      "sha256": "774c3dc04675530a48d8f4d554230aa3e4feccf15c8d2206611e97cb6ee787d9",
+      "cambios_sin_commit": true
+    }
+  },
+  "resultados": [
+    {
+      "nombre": "enunciado: fase central signo",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.5,
+      "coincidencia": "AliceComparator/Solution.lean:5:60: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "enunciado: condicion transversal 0 a 1",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.2,
+      "coincidencia": "AliceComparator/Solution.lean:6:61: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "enunciado: desigualdad finita factor 2",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.2,
+      "coincidencia": "AliceComparator/Solution.lean:7:64: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "enunciado: perfil 64 a 65",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.2,
+      "coincidencia": "AliceComparator/Solution.lean:8:72: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "enunciado: prefactor 16 a 17",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.2,
+      "coincidencia": "AliceComparator/Solution.lean:9:65: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "enunciado: norma de marco factor 2",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.4,
+      "coincidencia": "AliceComparator/Solution.lean:10:66: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "enunciado: soporte conjuncion adicional",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.2,
+      "coincidencia": "AliceComparator/Solution.lean:11:74: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: norma cuadrada factor 2",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.4,
+      "coincidencia": "AliceComparator/Solution.lean:11:74: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: frecuencia normal sqrt5",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.3,
+      "coincidencia": "AliceComparator/Solution.lean:10:66: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: centro N/8sqrt3",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.4,
+      "coincidencia": "AliceComparator/Solution.lean:5:60: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: fase con centro sumado",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.4,
+      "coincidencia": "AliceComparator/Solution.lean:5:60: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: fase sin centro duplicada",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.7,
+      "coincidencia": "AliceComparator/Solution.lean:5:60: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: caja ampliada",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 10.1,
+      "coincidencia": "AliceComparator/Solution.lean:11:74: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: esfera 16 a 15",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.3,
+      "coincidencia": "AliceComparator/Solution.lean:11:74: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: marco sqrt2 a sqrt5",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.5,
+      "coincidencia": "AliceComparator/Solution.lean:10:66: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "definicion: soporte umbral 17",
+      "fichero": "AliceComparator/Challenge.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 5.0,
+      "coincidencia": "AliceComparator/Solution.lean:11:74: error: Type mismatch",
+      "errores": []
+    },
+    {
+      "nombre": "axiomas: prueba sustituida por sorry",
+      "fichero": "AliceComparator/Solution.lean",
+      "estado": "RECHAZADA",
+      "codigo": 1,
+      "segundos": 8.0,
+      "coincidencia": "AliceComparator/Axioms.lean:7:2: error: 'AliceSolution.phase_sub_center' depends on non-standard axioms: [sorryAx]\nAliceComparator/Axioms.lean:5:0: error: ❌️ Docstring on `#guard_msgs` does not match generated message:\n\n- info: 7 theorems use only propext, Classical.choice, Quot.sound\n+ error: 'AliceSolution.phase_sub_center' depends on non-standard axioms: [sorryAx]",
+      "errores": []
+    }
+  ],
+  "limpia_inicial": {
+    "codigo": 0,
+    "segundos": 9.4
+  },
+  "limpia_final": {
+    "codigo": 0,
+    "segundos": 5.1
+  },
+  "veredicto": "PASA",
+  "fin": "2026-10-28T17:11:41.223977+00:00"
+}

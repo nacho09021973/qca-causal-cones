@@ -1,0 +1,52 @@
+{
+  "success": true,
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mathlib_commit": "fabf563a7c95a166b8d7b6efca11c8b4dc9d911f",
+  "runner_sha256": "722b23d542aabcb028b7d32de4f0a098c0043b88b7efd3009089b0cc7f624ed7",
+  "modules": [
+    {
+      "module": "AliceLayers.Definitions",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Definitions.olean",
+        "AliceLayers/Definitions.lean"
+      ],
+      "source_sha256": "b0c4f797bece04009acb754252edbb48700076cb85c14e03d98385c47c2ac980"
+    },
+    {
+      "module": "AliceLayers.Targets",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Targets.olean",
+        "AliceLayers/Targets.lean"
+      ],
+      "source_sha256": "a02d1302a7e4ea0e98866d6684ff13672b100a4e428f48067a44cb42a814546d"
+    },
+    {
+      "module": "AliceLayers.Basic",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Basic.olean",
+        "AliceLayers/Basic.lean"
+      ],
+      "source_sha256": "d49d83b1f7fd32e4054afd0405498b31debc860871c1a2bbaec8adb1aeadabbf"
+    }
+  ],
+  "qca_cache_read_only_use": true,
+  "full_layers_b_proved": false
+}

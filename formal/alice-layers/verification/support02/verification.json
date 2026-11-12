@@ -1,0 +1,139 @@
+{
+  "success": true,
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "mathlib_commit": "fabf563a7c95a166b8d7b6efca11c8b4dc9d911f",
+  "copied_definitions_byte_equal": {
+    "sqNorm": true,
+    "normalFrequency": true,
+    "centerCoordinate": true,
+    "phase": true,
+    "uncenteredPhase": true,
+    "latticeBox": true,
+    "aliceSites": true,
+    "transverseCoordinates": true,
+    "SupportFaithfulness": true
+  },
+  "standard_axiom_guard_count": 7,
+  "auxiliary_standard_axiom_guard_count": 3,
+  "open_targets": [
+    "AliceLayersB",
+    "ProfileIntegrability"
+  ],
+  "runner_sha256": "9b6c370807f95a0d535d549be1130a15334fb2fd44c75bda31b94b6f56cb4939",
+  "modules": [
+    {
+      "module": "AliceLayers.Definitions",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Definitions.olean",
+        "AliceLayers/Definitions.lean"
+      ],
+      "source_sha256": "b0c4f797bece04009acb754252edbb48700076cb85c14e03d98385c47c2ac980"
+    },
+    {
+      "module": "AliceLayers.Targets",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Targets.olean",
+        "AliceLayers/Targets.lean"
+      ],
+      "source_sha256": "226a5c3944985fefef063a9dcb693c6d5f2569992734d1e0cb65eaca11a3e53e"
+    },
+    {
+      "module": "AliceLayers.Basic",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/Basic.olean",
+        "AliceLayers/Basic.lean"
+      ],
+      "source_sha256": "89fe1a1bea92b04fe3f1f6d585c49fbef6bc0985497c75cdbefd6cf8683601d3"
+    },
+    {
+      "module": "AliceComparator.Challenge",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/Challenge.olean",
+        "AliceComparator/Challenge.lean"
+      ],
+      "source_sha256": "49d4e99158653bb132fe48c374139effa8946fa445a20ea771fba5e977c8d175"
+    },
+    {
+      "module": "AliceComparator.Solution",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/Solution.olean",
+        "AliceComparator/Solution.lean"
+      ],
+      "source_sha256": "774c3dc04675530a48d8f4d554230aa3e4feccf15c8d2206611e97cb6ee787d9"
+    },
+    {
+      "module": "AliceComparator.AssertAxioms",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/AssertAxioms.olean",
+        "AliceComparator/AssertAxioms.lean"
+      ],
+      "source_sha256": "d71d7b5d52b07a8ff62cf6c203d47f0fa0d4f3bc36da0622400db2cdb9512ce9"
+    },
+    {
+      "module": "AliceLayers.AuxiliaryAudit",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceLayers/AuxiliaryAudit.olean",
+        "AliceLayers/AuxiliaryAudit.lean"
+      ],
+      "source_sha256": "9595d410e4722f6885e4238d01dfe79de9ff00d061225b13c97dee1fa41e267c"
+    },
+    {
+      "module": "AliceComparator.Axioms",
+      "returncode": 0,
+      "command": [
+        "elan",
+        "run",
+        "leanprover/lean4:v4.31.0",
+        "lean",
+        "-o",
+        "/home/ignac/herramientas/ai_scientist_local/experiments/alice_layers/formalization/build/AliceComparator/Axioms.olean",
+        "AliceComparator/Axioms.lean"
+      ],
+      "source_sha256": "4dcd56c95e2b6b75d7eccc7aabd65860df82e603b5031a89ca9b1860564f883b"
+    }
+  ],
+  "qca_cache_read_only_use": true,
+  "full_layers_b_proved": false
+}

@@ -1,0 +1,60 @@
+AliceLayers/NormalizedRemainder.lean:11:50: error: failed to prove positivity/nonnegativity/nonzeroness
+AliceLayers/NormalizedRemainder.lean:41:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑N ^ (-5 / 2)
+in the target expression
+  (↑N).rpow (-5 / 2) * (16 * Real.pi / √3) * boundaryResource = 16 * Real.pi / √3 * boundaryResource / (↑N ^ 2 * √↑N)
+
+N : ℕ
+hN : 0 < N
+⊢ (↑N).rpow (-5 / 2) * (16 * Real.pi / √3) * boundaryResource = 16 * Real.pi / √3 * boundaryResource / (↑N ^ 2 * √↑N)
+AliceLayers/NormalizedRemainder.lean:78:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/NormalizedRemainder.lean:78:6: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/NormalizedRemainder.lean:89:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/NormalizedRemainder.lean:90:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/NormalizedRemainder.lean:138:48: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  x ^ (-?y)
+in the target expression
+  x.rpow (-(1 / 2)) = 1 / √x
+
+x : ℝ
+hx : 0 < x
+⊢ x.rpow (-(1 / 2)) = 1 / √x
+AliceLayers/NormalizedRemainder.lean:165:2: error: linarith failed to find a contradiction
+N : ℕ
+hN : 1 ≤ N
+η : Frequency
+hη : frequencyNorm η ≤ Real.pi / 6
+hn : 0 < ↑N
+hn1 : 1 ≤ ↑N
+hs : 0 < √↑N
+hsN : √↑N ≤ ↑N
+hsNs : √↑N ≤ ↑N * √↑N
+hg : 0 ≤ normalizedGeometricConstant
+hd : 0 ≤ normalizedDualConstant
+hc : 0 ≤ depthCompletionConstant criticalTilt
+hh : 0 ≤ depthEnvelopeConstant criticalTilt
+hgb : normalizedGeometricConstant / ↑N ≤ normalizedGeometricConstant / √↑N
+hdb : normalizedDualConstant / (↑N * √↑N) ≤ normalizedDualConstant / √↑N
+hcb : depthCompletionConstant criticalTilt / ↑N ≤ depthCompletionConstant criticalTilt / √↑N
+hab : 0 ≤ |normalFrequency η|
+ha :
+  0 ≤
+    (normalizedGeometricConstant + normalizedDualConstant + depthCompletionConstant criticalTilt) * |normalFrequency η|
+hb : 0 ≤ depthEnvelopeConstant criticalTilt / √↑N
+a✝ :
+  (normalizedGeometricConstant + normalizedDualConstant + depthCompletionConstant criticalTilt +
+        depthEnvelopeConstant criticalTilt) *
+      (1 / √↑N + |normalFrequency η|) <
+    normalizedGeometricConstant / ↑N + normalizedDualConstant / (↑N * √↑N) +
+        depthEnvelopeConstant criticalTilt * |normalFrequency η| +
+      depthCompletionConstant criticalTilt / ↑N
+⊢ False
+failed

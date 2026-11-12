@@ -1,0 +1,3 @@
+# Preserve the exact tested inventory bytes and its recorded SHA-256.
+# The generator intentionally separates entries with a blank line, including the last.
+mutaciones_final.toml whitespace=-blank-at-eof

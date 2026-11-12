@@ -1,0 +1,197 @@
+AliceLayers/Basic.lean:235:68: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/Covolume.lean:50:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/Covolume.lean:65:36: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/Reindex.lean:18:57: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/SectionRegularity.lean:46:40: warning: This simp argument is unused:
+  pow_one
+
+Hint: Omit it from the simp argument list.
+  simp only [id_eq, Nat.cast_ofNat, p̵ow̵_̵o̵ne,̵ ̵o̵n̵e̵_mul] at hd
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/SectionRegularity.lean:46:49: warning: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [id_eq, Nat.cast_ofNat, pow_one,̵ ̵o̵n̵e̵_̵m̵u̵l̵] at hd
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/SectionRegularity.lean:56:64: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/SectionRegularity.lean:57:35: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/SectionRegularity.lean:58:92: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+AliceLayers/SectionRegularity.lean:56:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/SectionRegularity.lean:58:69: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/SectionRegularity.lean:56:49: warning: '(funext t)' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionRegularity.lean:56:64: warning: 'try (simp [id_eq, Pi.pow_apply, Pi.sub_apply, Function.comp_def]) <;> try ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionRegularity.lean:57:35: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionRegularity.lean:58:77: warning: '(funext t)' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionRegularity.lean:58:92: warning: 'try (simp [id_eq, Pi.pow_apply, Pi.sub_apply, Function.comp_def]) <;> try ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionSecond.lean:28:59: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/SectionSecond.lean:27:4: warning: 'all_goals try (funext t)' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+AliceLayers/SectionSecond.lean:91:52: warning: This simp argument is unused:
+  hy
+
+Hint: Omit it from the simp argument list.
+  simp [cutoffSecond, s, p, h̵y̵,̵ ̵Set.indicator]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/WeakParts.lean:204:12: warning: This simp argument is unused:
+  norm_mul
+
+Hint: Omit it from the simp argument list.
+  simp [n̵o̵r̵m̵_̵m̵u̵l̵,̵ ̵Complex.norm_exp, Complex.mul_re, Real.norm_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/WeakParts.lean:239:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/WeakParts.lean:245:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/WeakParts.lean:245:35: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+AliceLayers/WeakParts.lean:381:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/WeakParts.lean:391:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/WeakParts.lean:391:35: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/TangentTransport.lean:77:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/TangentTransport.lean:180:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/TangentSpectral.lean:73:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/FiniteProfile.lean:41:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/FiniteProfile.lean:46:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/RemainderBounds.lean:498:47: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/DualDecay.lean:28:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+AliceLayers/DualDecay.lean:249:59: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/DualDecay.lean:249:73: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/DualDecay.lean:277:38: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+AliceLayers/DepthEnvelope.lean:14:36: error: Application type mismatch: The argument
+  sq_nonneg ?m.82
+has type
+  @OfNat.ofNat ?m.76 0 (@Zero.toOfNat0 ?m.76 instMulZeroClassOfSemiring.toZero) ≤ ?m.82 ^ 2
+but is expected to have type
+  @OfNat.ofNat ?m.71 0 (@Zero.toOfNat0 ?m.71 SubtractionMonoid.toSubNegZeroMonoid.toNegZeroClass.toZero) ≤ ?m.74
+in the application
+  abs_of_nonneg (sq_nonneg ?m.82)
+AliceLayers/DepthEnvelope.lean:10:55: error: unsolved goals
+δ : ℝ
+τ σ : Tangent
+he : ‖Complex.exp (Complex.I * ↑(∑ i, τ i * σ i))‖ = 1
+⊢ |max (δ - ∑ i, σ i ^ 2) 0 ^ 2| = max (δ - ∑ i, σ i ^ 2) 0 ^ 2
+AliceLayers/DepthEnvelope.lean:19:12: error: don't know how to synthesize implicit argument `μ`
+  @norm_integral_le_integral_norm Tangent ℂ Complex.instNormedAddCommGroup
+    instInnerProductSpaceRealComplex.toNormedSpace ?m.73 ?m.74 (psiIntegrand δ τ)
+context:
+δ : ℝ
+τ : Tangent
+⊢ Measure Tangent
+AliceLayers/DepthEnvelope.lean:19:12: error: don't know how to synthesize implicit argument `m`
+  @norm_integral_le_integral_norm Tangent ℂ Complex.instNormedAddCommGroup
+    instInnerProductSpaceRealComplex.toNormedSpace ?m.73 ?m.74 (psiIntegrand δ τ)
+context:
+δ : ℝ
+τ : Tangent
+⊢ MeasurableSpace Tangent
+AliceLayers/DepthEnvelope.lean:19:7: error: failed to infer `have` declaration type
+AliceLayers/DepthEnvelope.lean:18:59: error: unsolved goals
+δ : ℝ
+τ : Tangent
+⊢ ‖psi δ τ‖ ≤ ∫ (σ : Tangent), max (δ - ∑ i, σ i ^ 2) 0 ^ 2
+AliceLayers/DepthEnvelope.lean:52:43: error: unsolved goals
+t θ : ℝ
+τ : Tangent
+j : ℕ
+⊢ ‖Complex.exp (-(↑t * (↑θ + ↑j)))‖ = Real.exp (-(t * (θ + ↑j))) ∨ psi ((θ + ↑j) / √3) τ = 0
+AliceLayers/DepthEnvelope.lean:53:19: warning: This simp argument is unused:
+  norm_mul
+
+Hint: Omit it from the simp argument list.
+  simp [depthTerm, n̵o̵r̵m̵_̵m̵u̵l̵,̵ ̵Complex.norm_real, Real.norm_eq_abs,
+  ̵  ̵ ̵ ̵abs_of_pos (Real.exp_pos _)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/DepthEnvelope.lean:53:29: warning: This simp argument is unused:
+  Complex.norm_real
+
+Hint: Omit it from the simp argument list.
+  simp [depthTerm, norm_mul, C̵o̵m̵p̵l̵e̵x̵.̵n̵o̵r̵m̵_̵r̵e̵a̵l̵,̵ ̵Real.norm_eq_abs, abs_of_pos (Real.exp_pos _)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/DepthEnvelope.lean:53:48: warning: This simp argument is unused:
+  Real.norm_eq_abs
+
+Hint: Omit it from the simp argument list.
+  simp [depthTerm, norm_mul, Complex.norm_real, R̵e̵a̵l̵.̵n̵o̵r̵m̵_̵e̵q̵_̵a̵b̵s̵,̵abs_of_pos (Real.exp_pos _)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+AliceLayers/DepthEnvelope.lean:54:4: warning: This simp argument is unused:
+  abs_of_pos (Real.exp_pos _)
+
+Hint: Omit it from the simp argument list.
+  simp [depthTerm, norm_mul, Complex.norm_real, Real.norm_eq_abs,̵
+  ̵ ̵ ̵ ̵ ̵a̵b̵s̵_̵o̵f̵_̵p̵o̵s̵ ̵(̵R̵e̵a̵l̵.̵e̵x̵p̵_̵p̵o̵s̵ ̵_̵)̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
