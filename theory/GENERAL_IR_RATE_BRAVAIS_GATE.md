@@ -1,9 +1,10 @@
 # General infrared rate on Bravais lattices: draft charter
 
 2026-11-12. Drafted by Claude (claude-opus-5-5) after the user agreed to
-generalise to other classes, Bravais lattices first («ok»). **Status:
-DRAFT, not frozen; nothing authorized to be computed until the user
-freezes it.**
+generalise to other classes, Bravais lattices first («ok»). Frozen
+unchanged on the user's instruction «comienza por la fase 1» the same day.
+**Status: OPEN; frozen; Stage 1 authorized within the budget of Sec. 4.
+Stage 2 not yet authorized.**
 
 ## 1. Known, question, abandonment
 

@@ -6,7 +6,9 @@
 generalise the general-rate theorem to other classes, Bravais lattices
 first. [Draft charter](../theory/GENERAL_IR_RATE_BRAVAIS_GATE.md): same
 hypotheses with `u` primitive in the dual lattice; expected outcome a
-corollary. **DRAFT, not frozen; nothing authorized to be computed.**
+corollary. Frozen unchanged on the user's instruction «comienza por la
+fase 1» (2026-11-12): **OPEN; Stage 1 (written adaptation) authorized;
+Stage 2 not authorized.**
 
 **Carrier dichotomy chartered — 2026-11-12:** user choice «Dicotomía de
 portadores». The proposed rate gap for walks with fast modes was judged
