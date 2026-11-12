@@ -1,5 +1,14 @@
 # Scripts
 
+## General infrared rate: diagnostic on ten zonotope walks (2026-11-12)
+
+`python3 -B scripts/diagnose_general_ir_rate_zonotopes.py --output <json>`
+implements `theory/GENERAL_IR_RATE_ZONOTOPES_DIAGNOSTIC.md`. Builds ten
+product walks `prod_j exp(i (k.a_j) n_j.sigma)` with zonotope causal bodies
+in `d = 2, 3` and runs the six-walk diagnostic's analysis on them (imported
+read-only), with the declared vertex fallback. Same nature and limits as
+that diagnostic.
+
 ## General infrared rate: hypothesis diagnostic on six walks (2026-11-12)
 
 `python3 -B scripts/diagnose_general_ir_rate_polyhedra.py --output <json>`
