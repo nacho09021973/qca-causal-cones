@@ -1,8 +1,9 @@
-# Amendment 1 to the general infrared operational rate charter — DRAFT
+# Amendment 1 to the general infrared operational rate charter
 
 2026-11-12. Drafted by Claude (claude-opus-5-5) after Stage 0–1 and the
 Stage 2 reduction (`reports/2026-11-12--general-ir-rate-stages-0-1.md`,
-Stage 2). **Status: DRAFT; not in force until approved by the user.** The
+Stage 2). **Status: APPROVED by the user 2026-11-12 (choice «Aprobar la enmienda»);
+in force from this commit.** The
 frozen charter `GENERAL_IR_RATE_GATE.md` (`aa6c5f6`) is not edited.
 
 ## Reason

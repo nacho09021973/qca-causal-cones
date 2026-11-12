@@ -23,8 +23,8 @@ CJWW Thm 2.1): `delta <= C N^(d+s-1) e^(-K_* N)` for all operations.
 Stage 2: non-vanishing reduced to linear algebra given the leading-term
 lemma (not yet proved); two gaps not covered by H1–H5 found;
 [draft Amendment 1](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_1.md)
-(H4′: zero momentum dominant; H6: independence) **not in force until the
-user approves it**. No review, no promotion.
+(H4′: zero momentum dominant; H6: independence) approved by the user the
+same day and in force. No review, no promotion.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:
