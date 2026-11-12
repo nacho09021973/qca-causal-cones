@@ -27,6 +27,15 @@ proof of the scalar Alice coefficient was moved from `~/herramientas` to
 `formal/alice-layers/` (record Sec. 9 and `formal/alice-layers/MIGRATION.md`);
 full offline verification from the new location `success: true`, 38
 modules; scope unchanged (Alice only, no Bob, no external review).
+Same day, user «haz todo esto» on the four items left open: shape-theorem
+attribution corrected after reading BBBP Thm. 4.2 and BGPP Thms. 2.2–2.3
+in the PDFs; the October BBBP remark verified in the original; the four
+Appendix A certificates rerun (53/53, 18/18, 58/58, 27/27, outputs
+identical to 2026-10-28); Poisson remainders and the compactness step of
+Lemma symbol (e) re-derived without finding a gap; Markdown collated
+against LaTeX (no formula or number differs); bibitem and new annotated
+tag `ir-corona-v2` (record Sec. 10). Same model throughout: **not an
+independent review**; PRELIMINARY, no promotion, NOVELTY OPEN.
 
 **Tetrahedral IR protocol — authorized 2026-11-10:** user requests studying
 the signal under an infrared protocol. The

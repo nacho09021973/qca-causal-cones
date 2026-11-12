@@ -1,0 +1,54 @@
+[PASS] frozen charter SHA256
+[PASS] exact complete-region margin sqrt(3)-3/2 > 1/5
+[PASS] chart arithmetic: 3 > 2sqrt(2), together with analytic pi > 3
+[PASS] both oriented vertex blocks, W and S convention
+[PASS] vertex recurrence at (1, 1, 1); unique-path proof is analytic
+[PASS] vertex recurrence at (-1, -1, -1); unique-path proof is analytic
+[PASS] holomorphic S=adj W equals W dagger on real torus
+[PASS] trace and Cayley-Hamilton
+[PASS] node and frozen linear Weyl symbol
+[PASS] radial normalization and integral
+[PASS] origin probability constant
+[PASS] inner cube profile floor
+[PASS] outer proof cube stays within |x|<N
+[PASS] encoder I: norm identity for every local phase
+[PASS] encoder I: down-spin overlap
+[PASS] encoder sigma1: norm identity for every local phase
+[PASS] encoder sigma1: down-spin overlap
+[PASS] encoder sigma2: norm identity for every local phase
+[PASS] encoder sigma2: down-spin overlap
+[PASS] encoder sigma3: norm identity for every local phase
+[PASS] encoder sigma3: down-spin overlap
+[PASS] detector I: norm-one positive projection
+[PASS] detector +1: norm-one positive projection
+[PASS] detector +2: norm-one positive projection
+[PASS] detector +3: norm-one positive projection
+[PASS] point sanity limits with the two frozen scales
+[PASS] ellipse product: determinant of I-L^T L factors into nonnegative terms
+[PASS] ellipse product: first diagonal gap
+[PASS] ellipse product: second diagonal gap is a convex combination of positive terms
+[PASS] contour t=log 2: cosh(t)=5/4
+[PASS] trace ellipse semiaxis < cosh(log 4): spectral radius < 4
+[PASS] exact sum of norms of the fourteen Laurent blocks
+[PASS] J=(1-sqrt(3)/2)log(2) is strictly positive
+[PASS] physical response input column I
+[PASS] physical response input column sigma1
+[PASS] physical response input column sigma2
+[PASS] physical response input column sigma3
+[PASS] pair I/I: exact Hermitian response functional (no nonzero claim)
+[PASS] pair I/+1: exact Hermitian response functional (no nonzero claim)
+[PASS] pair I/+2: exact Hermitian response functional (no nonzero claim)
+[PASS] pair I/+3: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma1/I: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma1/+1: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma1/+2: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma1/+3: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma2/I: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma2/+1: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma2/+2: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma2/+3: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma3/I: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma3/+1: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma3/+2: exact Hermitian response functional (no nonzero claim)
+[PASS] pair sigma3/+3: exact Hermitian response functional (no nonzero claim)
+53/53 exact identity checks passed; analytic proof coverage is separate.

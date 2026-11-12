@@ -214,10 +214,11 @@ bounds, and they leave lower bounds aside because these would depend on the
 state. In two dimensions,
 Baryshnikov, Brady, Bressler and Pemantle [3] analysed quantum walks through
 multivariate generating functions and determined the limiting profile in the
-feasible region, outside of which the probability is exponentially small;
-the shape theorem they prove gives $O(e^{-cn})$ uniformly on compact subsets
-of the complement of the feasible region, and prefactor asymptotics only
-inside it [22, Thms. 2.2–2.3]. Baryshnikov et al. note that explicit amplitudes
+feasible region, outside of which the probability is exponentially small.
+Bressler, Greenwood, Pemantle and Petkovšek state the resulting shape theorem
+as $O(e^{-cn})$ uniformly on compact subsets of the complement of the feasible
+region, with prefactor asymptotics only inside it [22, Thms. 2.2–2.3],
+attributing it to [3, Thm. 4.2]. Baryshnikov et al. note that explicit amplitudes
 at specific points outside the feasible set can be obtained by their method
 instance by instance, and that the extension to dimension three should be
 modest. Analytic combinatorics in several variables
@@ -1651,7 +1652,7 @@ $N=40$ and $8\cdot10^{-9}$ at $N=640$.
     doi:10.1017/9781108874144.
 19. Repository `nacho09021973/qca-causal-cones`,
     <https://github.com/nacho09021973/qca-causal-cones>, tag
-    `ir-corona-v1`. Certificates
+    `ir-corona-v2`. Certificates
     `scripts/verify_scaled_ir_gate.py`,
     `scripts/verify_regional_directional_asymptotics_gate.py`,
     `scripts/verify_regional_laplace_coefficient_gate.py`,
