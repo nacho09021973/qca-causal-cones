@@ -1,0 +1,31 @@
+W1 CJWW (5.15), K3 control: HYPOTHESES_HOLD_NUMERICALLY
+    K_star = 0.19051892958362115
+    t_star = 1.274361256554958
+    lattice_isometric_to_Zd = True
+    H1_on_axis=True, H2=True, H3=True, H4prime=True, H8=True, H7=True, H9=True, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 8
+W2 CJWW (5.12) Bialynicki-Birula: OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    K_star = 0.001305877006875844
+    t_star = 0.26849032997478806
+    lattice_isometric_to_Zd = False
+    H1_on_axis=None, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=True
+    dominant points: 2
+W3 Pavia Weyl A+ (BCC): OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    K_star = 0.0013058770068761771
+    t_star = 0.2684903296907083
+    lattice_isometric_to_Zd = False
+    H1_on_axis=None, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=True
+    dominant points: 2
+W4 square Weyl: HYPOTHESES_HOLD_NUMERICALLY
+    K_star = 0.000870584671250535
+    t_star = 0.21922144570344715
+    lattice_isometric_to_Zd = True
+    H1_on_axis=True, H2=True, H3=True, H4prime=True, H8=True, H7=True, H9=True, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 2
+W5 JDW L6d (hexagon): FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = False
+W6 cyclic s=4 (tetrahedron), node P: FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = False
+exit 0
