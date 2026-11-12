@@ -28,7 +28,14 @@ same day and in force. A later sweep of the inputs of manuscript Sec. 7
 found three more conditions not implied by them;
 [draft Amendment 2](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_2.md) (H7 Alice
 boundary value, H8 differentiability of Phi at xi_*, H9 arithmetic of the
-depth offsets) approved by the user the same day and in force. No review, no promotion.
+depth offsets) approved by the user the same day and in force.
+[Stage 2 progress](../reports/2026-11-12--general-ir-rate-stage2-progress.md):
+all contributions except the zero-momentum ball are bounded in the amended
+class; two features absent from the manuscript case found (a complex
+Gaussian, controlled; a phase `e^(iN psi)` that the hypotheses in force do
+not fix). Remaining: A1 leading-term lemma, A2 non-vanishing of the
+imaginary part, which needs one more condition. End of session 1 of the
+Stages 1–2 budget. No review, no promotion.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:
