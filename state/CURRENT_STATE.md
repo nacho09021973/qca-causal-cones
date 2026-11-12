@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-12
 
+**Codex second round — 2026-11-12** (user «adelante»; base `755f2ba`;
+[record](../reports/reviews/2026-11-12-bravais-stage1-astra-r2/verificacion_autor.md)):
+**Bravais Stage 1 repaired: PASS** (four objections resolved, inventory
+U1–U15 complete within its declared scope). **Amendment 5 (in force):
+REPAIR_REQUIRED** — strict dominance (one eigenvalue of maximal modulus)
+is used but not stated; [draft Amendment 6](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_6.md)
+states H2″ (strict, simple, `Q > 0`), matching the manuscript and the
+diagnostics' `gap_ratio < 1`. **DRAFT, not in force.** Two exposition
+points on B1 base documents (ACSV sentence in Stage 0(ii); global factors
+in LT §3(c)) recorded, pending user decision. Nothing promoted.
+
 **Codex repairs applied; H2 amendment drafted — 2026-11-12** (user «si a
 las dos»): the four text repairs are applied to the
 [Stage 1 report](../reports/2026-11-12--general-ir-rate-bravais-stage1.md)
