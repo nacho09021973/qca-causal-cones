@@ -1,0 +1,296 @@
+<title>Atlas de portadores IR</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap">
+<style>
+/* Layout: lab-notebook atlas. Regime index on top, two linked plots (momentum | velocity), fact sheet below. */
+:root {
+  --bg: #f6f7f9; --panel: #ffffff; --fg: #1b2230; --muted: #5d6676; --line: #d8dde6;
+  --accent: #b4462b;      /* trivial character / carriers */
+  --zero: #1f6f8b;        /* zero momentum, IR node */
+  --region: #6a4fb3;      /* Bob - Alice */
+  --cone: #2f8f5b;        /* c_IR light cone */
+  --soft: #eef1f5;
+  --ok: #2f8f5b; --bad: #b4462b; --na: #8a93a3;
+  --display: "Fraunces", Georgia, serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12161d; --panel: #1a2029; --fg: #e4e8ef; --muted: #9aa3b2; --line: #2c3442;
+  --accent: #ec7a5a; --zero: #5fb6d3; --region: #a993ec; --cone: #6cc996; --soft: #202734;
+  --ok: #6cc996; --bad: #ec7a5a; --na: #6d7686; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #12161d; --panel: #1a2029; --fg: #e4e8ef; --muted: #9aa3b2; --line: #2c3442;
+  --accent: #ec7a5a; --zero: #5fb6d3; --region: #a993ec; --cone: #6cc996; --soft: #202734;
+  --ok: #6cc996; --bad: #ec7a5a; --na: #6d7686; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 22px; }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(1.7rem, 3.4vw, 2.4rem); margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); max-width: 70ch; margin: 6px 0 0; }
+.lede code, .facts code { font-family: var(--mono); font-size: .92em; }
+.index { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.group { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; align-content: start; }
+.group h2 { font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; margin: 0; color: var(--muted); font-weight: 600; }
+.group p { margin: 0; font-size: .82rem; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--mono); font-size: .85rem; border: 1px solid var(--line); background: var(--soft); color: var(--fg);
+  border-radius: 999px; padding: 3px 11px; cursor: pointer; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible { outline: 2px solid var(--zero); outline-offset: 2px; }
+.current { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.current h3 { font-family: var(--display); font-weight: 500; font-size: 1.45rem; margin: 0; }
+.current .tag { font-family: var(--mono); font-size: .8rem; padding: 2px 8px; border-radius: 4px; background: var(--soft); color: var(--muted); }
+.plots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.plot { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 10px 4px; min-width: 0; display: grid; gap: 4px; }
+.plot h4 { margin: 0 4px; font-size: .9rem; font-weight: 600; }
+.plot .sub { margin: 0 4px; font-size: .8rem; color: var(--muted); }
+.plot .fig { width: 100%; height: 440px; }
+.facts { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; min-width: 0; }
+.card h4 { margin: 0 0 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; }
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0; font-size: .88rem; }
+dt { color: var(--muted); }
+dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill { font-family: var(--mono); font-size: .8rem; padding: 2px 9px; border-radius: 4px; border: 1px solid; }
+.pill.ok { color: var(--ok); border-color: var(--ok); }
+.pill.bad { color: var(--bad); border-color: var(--bad); font-weight: 500; }
+.pill.na { color: var(--na); border-color: var(--line); }
+.reading { margin: 10px 0 0; font-size: .9rem; max-width: 70ch; }
+.legend { display: grid; gap: 6px; font-size: .85rem; margin: 0; padding: 0; list-style: none; }
+.legend li { display: flex; gap: 8px; align-items: center; }
+.sw { width: 14px; height: 14px; flex: none; border-radius: 50%; }
+.sw.line { height: 0; border-top: 2px dashed var(--accent); border-radius: 0; }
+.note { font-size: .8rem; color: var(--muted); max-width: 90ch; }
+@media (max-width: 860px) { .plots, .facts { grid-template-columns: 1fr; } .plot .fig { height: 360px; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Atlas de portadores IR</h1>
+    <p class="lede">Los 16 paseos del diagnóstico de la segunda ronda, cada uno en la red que generan sus pasos. A la izquierda, la zona de Brillouin con los momentos que dominan el símbolo inclinado <code>S(η − iξ*)</code>; a la derecha, el espacio de velocidades con el cono <code>c_IR</code>, los pasos y la región <code>B − A</code>. Elige un paseo; las figuras 3D se giran arrastrando.</p>
+  </header>
+
+  <nav class="index" id="index" aria-label="Paseos por régimen"></nav>
+
+  <section class="current" id="current"></section>
+
+  <section class="plots">
+    <div class="plot">
+      <h4>Momentos: zona de Brillouin</h4>
+      <p class="sub">Puntos dominantes plegados a la zona. Las rectas discontinuas son los momentos con carácter trivial en los planos <code>u·x = k</code>.</p>
+      <div class="fig" id="figK" role="img" aria-label="Zona de Brillouin con puntos dominantes"></div>
+    </div>
+    <div class="plot">
+      <h4>Velocidades</h4>
+      <p class="sub">Cono IR (<code>c_IR</code>), envolvente de los pasos (<code>conv F</code>), región <code>B − A</code> y el minimizador <code>v*</code>.</p>
+      <div class="fig" id="figV" role="img" aria-label="Espacio de velocidades"></div>
+    </div>
+  </section>
+
+  <section class="facts">
+    <div class="card">
+      <h4>Hipótesis (columna del diagnóstico)</h4>
+      <div class="pills" id="pills"></div>
+      <p class="reading" id="reading"></p>
+      <dl id="facts" style="margin-top:12px"></dl>
+    </div>
+    <div class="card">
+      <h4>Cómo leer las figuras</h4>
+      <ul class="legend">
+        <li><span class="sw" style="background:var(--zero)"></span>Momento cero (nodo IR), dominante</li>
+        <li><span class="sw" style="background:var(--accent)"></span>Punto dominante con carácter trivial (portador en R1)</li>
+        <li><span class="sw" style="border:2px solid var(--muted)"></span>Punto dominante con carácter no trivial</li>
+        <li><span class="sw line"></span>Momentos con carácter trivial en los planos (solo si H3 se cumple)</li>
+        <li><span class="sw" style="background:var(--cone)"></span>Bola de radio <code>c_IR</code> (cono IR emergente)</li>
+        <li><span class="sw" style="background:var(--region)"></span>Región <code>B − A</code> y <code>v*</code></li>
+      </ul>
+      <p class="note" style="margin-top:10px">El teorema general necesita que el momento cero sea dominante (H4′) y que <code>ξ*</code> apunte a un vector de la red dual (H3). Si un punto dominante cae sobre una recta discontinua, contribuye al orden principal; si no cae, pierde un factor <code>N^(-3/2)</code> por lado.</p>
+    </div>
+  </section>
+
+  <p class="note" id="prov"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.27.0/plotly.min.js"></script>
+<script>
+const DATA = /*__DATA__*/null;
+const GROUPS = [
+  ["theorem", "El teorema se aplica", "Todas las hipótesis se cumplen numéricamente; el momento cero lleva la señal."],
+  ["r1", "Régimen R1", "El cero no domina; hay portadores con carácter trivial."],
+  ["r2", "Régimen R2", "El cero no domina y ningún punto dominante tiene carácter trivial."],
+  ["h3", "Falla H3", "El cero domina, pero ξ* no apunta a la red dual: no hay planos."],
+  ["h3h4", "Fallan H3 y H4′", "Ni planos ni momento cero dominante."],
+];
+const READ = {
+  theorem: "Cero dominante y H3 válida: en la clase ampliada a redes de Bravais el teorema se aplica a esta fila (en coma flotante; H9 sin comprobar).",
+  r1: "Los puntos dominantes están sobre las rectas de carácter trivial, lejos del cero: el orden principal lo llevan momentos no infrarrojos. Candidato R1, no verificado (H6_k(ii) y H9 no se deciden en coma flotante).",
+  r2: "Ningún punto dominante está sobre una recta de carácter trivial: régimen R2 (etapa B, no autorizada).",
+  h3: "El cero domina, pero la dirección de ξ* es irracional respecto a la red dual: la descomposición por planos no existe.",
+  h3h4: "Fallan H3 y H4′: fuera de ambas cartas.",
+};
+const HYP = ["K_star_positive", "H2", "H3", "H4prime", "H5", "H6_left", "H7", "H8", "H9", "H10_sufficient"];
+const HYPNAME = {K_star_positive: "K*>0", H4prime: "H4′", H6_left: "H6", H10_sufficient: "H10"};
+const byId = Object.fromEntries(DATA.walks.map(w => [w.id, w]));
+let current = null;
+
+function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+function buildIndex() {
+  const nav = document.getElementById("index");
+  for (const [key, title, text] of GROUPS) {
+    const ws = DATA.walks.filter(w => w.regime === key);
+    if (!ws.length) continue;
+    const g = document.createElement("div"); g.className = "group";
+    g.innerHTML = `<h2>${title}</h2><p>${text}</p>`;
+    const chips = document.createElement("div"); chips.className = "chips";
+    for (const w of ws) {
+      const b = document.createElement("button");
+      b.className = "chip"; b.id = "chip-" + w.id; b.textContent = w.id; b.title = w.name;
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", () => { location.hash = w.id; });
+      chips.appendChild(b);
+    }
+    g.appendChild(chips); nav.appendChild(g);
+  }
+}
+
+function fmt(x, n = 3) { return (typeof x === "number") ? x.toFixed(n) : String(x); }
+function vec(v, n = 3) { return "(" + v.map(x => fmt(x, n)).join(", ") + ")"; }
+
+function facts(w) {
+  const groupTitle = GROUPS.find(g => g[0] === w.regime)[1];
+  document.getElementById("current").innerHTML =
+    `<h3>${w.id} · ${w.name}</h3><span class="tag">d = ${w.d}, s = ${w.s}</span><span class="tag">${groupTitle}</span>` +
+    `<span class="tag">${w.lattice_cubic ? "red cúbica" : "red no cúbica"}</span>`;
+  const pills = document.getElementById("pills"); pills.innerHTML = "";
+  for (const k of HYP) {
+    if (!(k in w.hypotheses)) continue;
+    const v = w.hypotheses[k];
+    const s = document.createElement("span");
+    s.className = "pill " + (v === true ? "ok" : v === false ? "bad" : "na");
+    s.textContent = (HYPNAME[k] || k) + (v === true ? " ✓" : v === false ? " ✗" : " · " + (v === null ? "n/a" : v));
+    pills.appendChild(s);
+  }
+  document.getElementById("reading").textContent = READ[w.regime] + (w.minimiser_consistent ? "" :
+    ` Aviso: los ξ*, v* y K* guardados no cumplen v* + 2ρ ξ̂* = V (desvío ${fmt(w.minimiser_gap, 2)}); el Newton siguió una rama que no es la dominante global. Los valores de esta fila no son fiables; V se muestra reconstruido.`);
+  const nd = w.dominant.length, nt = w.dominant.filter(x => x.trivial).length, nz = w.dominant.some(x => x.is_zero);
+  const rows = [
+    ["K*", fmt(w.K_star, 4)], ["c_IR", fmt(w.c_IR, 4)], ["s₀ (balístico a lo largo de n)", fmt(w.s0, 4) + (w.fast_modes ? "  > c_IR: modos rápidos" : "")],
+    ["ξ*", vec(w.xi_star)], ["v*", vec(w.v_star)], ["Vértice de Bob V", vec(w.V)], ["ρ (radio de A y B)", fmt(w.rho, 4)],
+    ["u primitivo en L*", w.u ? vec(w.u.u) + "  |u| = " + fmt(w.u.abs_u) : "no existe (H3 falla)"],
+    ["covol(L)", fmt(w.covol, 4)],
+    ["Puntos dominantes", `${nd} (${nz ? "incluye el cero; " : ""}${nt} con carácter trivial)`],
+    ["Etiqueta del script", w.label],
+  ];
+  document.getElementById("facts").innerHTML = rows.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join("");
+}
+
+function sphere(c, r, n = 28) {
+  const x = [], y = [], z = [];
+  for (let i = 0; i <= n; i++) {
+    const th = Math.PI * i / n, rx = [], ry = [], rz = [];
+    for (let j = 0; j <= n; j++) {
+      const ph = 2 * Math.PI * j / n;
+      rx.push(c[0] + r * Math.sin(th) * Math.cos(ph)); ry.push(c[1] + r * Math.sin(th) * Math.sin(ph)); rz.push(c[2] + r * Math.cos(th));
+    }
+    x.push(rx); y.push(ry); z.push(rz);
+  }
+  return {x, y, z};
+}
+function circle(c, r, n = 120) {
+  const x = [], y = [];
+  for (let i = 0; i <= n; i++) { const t = 2 * Math.PI * i / n; x.push(c[0] + r * Math.cos(t)); y.push(c[1] + r * Math.sin(t)); }
+  return {x, y};
+}
+const col = a => a.map((_, i) => a.map(p => p[i]));
+
+function layoutBase(d) {
+  const fg = css("--muted"), grid = css("--line");
+  const ax = {gridcolor: grid, zerolinecolor: grid, color: fg, tickfont: {family: "IBM Plex Mono", size: 10}};
+  const base = {paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)", margin: {l: 36, r: 10, t: 10, b: 30},
+    showlegend: true, legend: {orientation: "h", y: -0.08, font: {size: 11, color: fg}}, font: {family: "IBM Plex Sans", color: fg}};
+  if (d === 2) return {...base, xaxis: {...ax}, yaxis: {...ax, scaleanchor: "x", scaleratio: 1}};
+  return {...base, margin: {l: 0, r: 0, t: 0, b: 0}, scene: {aspectmode: "data", xaxis: {...ax, title: ""}, yaxis: {...ax, title: ""}, zaxis: {...ax, title: ""}}};
+}
+
+function plotK(w) {
+  const A = css("--accent"), Z = css("--zero"), M = css("--muted"), F = css("--fg");
+  const tr = [], d = w.d;
+  const dom = w.dominant;
+  const zero = dom.filter(x => x.is_zero), triv = dom.filter(x => !x.is_zero && x.trivial), non = dom.filter(x => !x.is_zero && !x.trivial);
+  const hover = x => `k = ${vec(x.k)}<br>plegado = ${vec(x.k_folded)}<br>gap = ${fmt(x.gap_ratio, 3)}`;
+  if (d === 2) {
+    const bz = w.bz.concat([w.bz[0]]);
+    tr.push({x: bz.map(p => p[0]), y: bz.map(p => p[1]), mode: "lines", fill: "toself", fillcolor: css("--soft"), line: {color: M, width: 1.5}, name: "zona de Brillouin", hoverinfo: "skip"});
+    w.trivial_lines.forEach((s, i) => tr.push({x: [s[0][0], s[1][0]], y: [s[0][1], s[1][1]], mode: "lines", line: {color: A, width: 1.5, dash: "dash"}, name: "carácter trivial", legendgroup: "tl", showlegend: i === 0, hoverinfo: "skip"}));
+    tr.push({x: [0], y: [0], mode: "markers", marker: {symbol: "cross-thin", size: 12, line: {color: F, width: 1.5}}, name: "p = 0", hoverinfo: "skip"});
+    const pts = (arr, name, mk) => arr.length && tr.push({x: arr.map(p => p.k_folded[0]), y: arr.map(p => p.k_folded[1]), mode: "markers", marker: mk, name, text: arr.map(hover), hoverinfo: "text"});
+    pts(zero, "cero dominante", {size: 15, color: Z, symbol: "diamond"});
+    pts(triv, "dominante, carácter trivial", {size: 13, color: A});
+    pts(non, "dominante, carácter no trivial", {size: 12, color: "rgba(0,0,0,0)", line: {color: M, width: 2}});
+    const xi = w.xi_star, L = Math.hypot(...xi), s = 0.6 * Math.PI / L;
+    tr.push({x: [0, xi[0] * s], y: [0, xi[1] * s], mode: "lines+markers", marker: {symbol: "arrow", angleref: "previous", size: [0, 11], color: F}, line: {color: F, width: 1.2}, name: "dirección de ξ*", hoverinfo: "skip"});
+  } else {
+    const [bx, by, bz] = col(w.bz);
+    tr.push({type: "mesh3d", x: bx, y: by, z: bz, alphahull: 0, opacity: 0.12, color: M, name: "zona de Brillouin", showlegend: true, hoverinfo: "skip", flatshading: true});
+    w.trivial_lines.forEach((s, i) => tr.push({type: "scatter3d", x: [s[0][0], s[1][0]], y: [s[0][1], s[1][1]], z: [s[0][2], s[1][2]], mode: "lines", line: {color: A, width: 4, dash: "dash"}, name: "carácter trivial", legendgroup: "tl", showlegend: i === 0, hoverinfo: "skip"}));
+    tr.push({type: "scatter3d", x: [0], y: [0], z: [0], mode: "markers", marker: {symbol: "cross", size: 5, color: F}, name: "p = 0", hoverinfo: "skip"});
+    const pts = (arr, name, mk) => arr.length && tr.push({type: "scatter3d", x: arr.map(p => p.k_folded[0]), y: arr.map(p => p.k_folded[1]), z: arr.map(p => p.k_folded[2]), mode: "markers", marker: mk, name, text: arr.map(hover), hoverinfo: "text"});
+    pts(zero, "cero dominante", {size: 9, color: Z, symbol: "diamond"});
+    pts(triv, "dominante, carácter trivial", {size: 8, color: A});
+    pts(non, "dominante, carácter no trivial", {size: 7, color: M, symbol: "circle-open"});
+    const xi = w.xi_star, L = Math.hypot(...xi), s = 0.6 * Math.PI / L;
+    tr.push({type: "scatter3d", x: [0, xi[0] * s], y: [0, xi[1] * s], z: [0, xi[2] * s], mode: "lines", line: {color: F, width: 5}, name: "dirección de ξ*", hoverinfo: "skip"});
+  }
+  Plotly.react("figK", tr, layoutBase(d), {displaylogo: false, responsive: true, modeBarButtonsToRemove: ["toImage"]});
+}
+
+function plotV(w) {
+  const C = css("--cone"), R = css("--region"), M = css("--muted"), F = css("--fg"), A = css("--accent");
+  const tr = [], d = w.d;
+  const Vn = Math.hypot(...w.V), n = w.V.map(x => x / Vn), s0p = n.map(x => x * w.s0);
+  if (d === 2) {
+    const h = w.conv_steps.concat([w.conv_steps[0]]);
+    tr.push({x: h.map(p => p[0]), y: h.map(p => p[1]), mode: "lines", line: {color: M, width: 1.2}, fill: "toself", fillcolor: css("--soft"), name: "conv F", hoverinfo: "skip"});
+    tr.push({x: w.steps.map(p => p[0]), y: w.steps.map(p => p[1]), mode: "markers", marker: {size: 6, color: M}, name: "pasos", hoverinfo: "x+y"});
+    const c = circle([0, 0], w.c_IR);
+    tr.push({x: c.x, y: c.y, mode: "lines", line: {color: C, width: 2}, name: "|v| = c_IR", hoverinfo: "skip"});
+    const r = circle(w.V, 2 * w.rho);
+    tr.push({x: r.x, y: r.y, mode: "lines", line: {color: R, width: 2}, fill: "toself", fillcolor: R + "22", name: "B − A", hoverinfo: "skip"});
+    tr.push({x: [0, w.v_star[0]], y: [0, w.v_star[1]], mode: "lines+markers", line: {color: R, width: 1, dash: "dot"}, marker: {size: [0, 10], color: R}, name: "v*", text: ["", "v* = " + vec(w.v_star)], hoverinfo: "text"});
+    tr.push({x: [s0p[0]], y: [s0p[1]], mode: "markers", marker: {size: 10, symbol: "x-thin", line: {color: w.fast_modes ? A : C, width: 2.5}}, name: "s₀ a lo largo de n", text: ["s₀ = " + fmt(w.s0, 4)], hoverinfo: "text"});
+  } else {
+    const [sx, sy, sz] = col(w.steps);
+    tr.push({type: "mesh3d", x: sx, y: sy, z: sz, alphahull: 0, opacity: 0.1, color: M, name: "conv F", showlegend: true, hoverinfo: "skip", flatshading: true});
+    tr.push({type: "scatter3d", x: sx, y: sy, z: sz, mode: "markers", marker: {size: 3, color: M}, name: "pasos"});
+    const cs = sphere([0, 0, 0], w.c_IR);
+    tr.push({type: "surface", ...cs, opacity: 0.25, showscale: false, colorscale: [[0, C], [1, C]], name: "|v| = c_IR", showlegend: true, hoverinfo: "skip"});
+    const rs = sphere(w.V, 2 * w.rho);
+    tr.push({type: "surface", ...rs, opacity: 0.45, showscale: false, colorscale: [[0, R], [1, R]], name: "B − A", showlegend: true, hoverinfo: "skip"});
+    tr.push({type: "scatter3d", x: [0, w.v_star[0]], y: [0, w.v_star[1]], z: [0, w.v_star[2]], mode: "lines+markers", line: {color: R, width: 3}, marker: {size: [0, 5], color: R}, name: "v*", text: ["", "v* = " + vec(w.v_star)], hoverinfo: "text"});
+    tr.push({type: "scatter3d", x: [s0p[0]], y: [s0p[1]], z: [s0p[2]], mode: "markers", marker: {size: 6, symbol: "x", color: w.fast_modes ? A : C}, name: "s₀ a lo largo de n", text: ["s₀ = " + fmt(w.s0, 4)], hoverinfo: "text"});
+  }
+  Plotly.react("figV", tr, layoutBase(d), {displaylogo: false, responsive: true, modeBarButtonsToRemove: ["toImage"]});
+}
+
+function show(id) {
+  const w = byId[id] || DATA.walks[0];
+  current = w.id;
+  document.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b.id === "chip-" + w.id)));
+  facts(w); plotK(w); plotV(w);
+}
+
+buildIndex();
+document.getElementById("prov").textContent =
+  `Datos: ${DATA.meta.source} (sha256 ${DATA.meta.source_sha256.slice(0, 12)}…), geometría reconstruida por ${DATA.meta.script} (sha256 ${DATA.meta.script_sha256.slice(0, 12)}…). Diagnóstico en coma flotante: ninguna figura es un certificado ni un veredicto.`;
+window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+const rerender = () => current && show(current);
+try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", rerender); } catch (e) {}
+new MutationObserver(rerender).observe(document.documentElement, {attributes: true, attributeFilter: ["data-theme"]});
+show(location.hash.slice(1) || "W1");
+</script>
