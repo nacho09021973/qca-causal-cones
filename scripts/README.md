@@ -1,5 +1,17 @@
 # Scripts
 
+## General infrared rate: hypothesis diagnostic on six walks (2026-11-12)
+
+`python3 -B scripts/diagnose_general_ir_rate_polyhedra.py --output <json>`
+implements `theory/GENERAL_IR_RATE_POLYHEDRA_DIAGNOSTIC.md` (af44458).
+Imports read-only the symbols of CJWW (5.15), (5.12), Pavia Weyl A+, square
+Weyl, JDW L6d and the cyclic s=4 walk; evaluates H1–H3, H4′, H5–H10 of the
+general-rate charter (with Amendments 1–3) for the frozen region rule.
+Floating point (grid plus Newton refinement over the Brillouin zone,
+bisection for `t_*`, Gauss–Legendre radial integrals); H3, H7, H9 exact with
+SymPy. Labels are diagnostic: not certificates, not verdicts on the
+theorem, not a proof that a hypothesis fails.
+
 ## Local audit of Fable's tetrahedral signal candidate (2026-11-10)
 
 `python3 -B scripts/verify_tetrahedral_fable_audit.py` runs 55 exact SymPy

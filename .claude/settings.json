@@ -1,6 +1,8 @@
 {
   "permissions": {
     "allow": [
+      "Bash(python3 -B scripts/diagnose_general_ir_rate_polyhedra.py --output reports/2026-11-12--general-ir-rate-polyhedra.json)",
+      "Bash(python3 scripts/diagnose_general_ir_rate_polyhedra.py --output reports/2026-11-12--general-ir-rate-polyhedra.json)",
       "Bash(python3 scripts/verify_tetrahedral_fable_audit.py)",
       "Bash(python3 -B scripts/verify_tetrahedral_fable_audit.py)",
       "Bash(python3 scripts/diagnose_tetrahedral_ir_signal.py)",
