@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-12
 
+**Codex repairs applied; H2 amendment drafted — 2026-11-12** (user «si a
+las dos»): the four text repairs are applied to the
+[Stage 1 report](../reports/2026-11-12--general-ir-rate-bravais-stage1.md)
+(inventory U1–U15 with the monomial determinant; U6 for the Voronoi cell;
+Sec. 6.1 «in general»; K3 checks outside the inventory), **not
+re-reviewed**. [Draft Amendment 5](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_5.md)
+replaces H2's «non-degenerate Hessian of `log lambda`» by H2′
+(`Q = Hess_xi log|lambda_0|` positive definite), which is what Stages 0–2
+and carrier Stage A use and what the diagnostics tested; no proof or label
+changes. **DRAFT, not in force until the user approves it.**
+
 **Bravais Stage 1 reviewed by Codex — 2026-11-12** (user «empezamos con
 que Codex revise la FAse 1»): sealed `revision-ciega astra` (gpt-6-astra,
 herramientas `7d111a1`), base `24e1965`,

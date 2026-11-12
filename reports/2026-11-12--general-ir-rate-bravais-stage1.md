@@ -60,7 +60,13 @@ with three coordinates of equal parity), `covol = 4`, `u = (1,1,1)`:
 
 ## 1. Inventory of uses of `Z^d`
 
-Every use found in S01, SP, LT, CA, with the replacement on `L`. "Exact"
+Every use of the lattice in the general proofs of S01, SP, LT and CA, with
+the replacement on `L`. The checks specific to the manuscript's walk K3
+(S01 Stage 0(i) and the K3 check after Thm 1.3, LT Sec. 8, the check
+against the point `pi u` in CA Sec. 2) use properties of that walk
+(Hermiticity of `S(-i xi_*)`, its explicit eigenvectors), not of the
+lattice, and are not part of the inventory. *(Scope stated after the Codex
+review, objection 4.)* "Exact"
 means the step goes through with the same words; "constant" means only a
 numerical factor changes (Sec. 4).
 
@@ -71,7 +77,7 @@ numerical factor changes (Sec. 4).
 | U3 | contour shift `p -> p - i xi` (manuscript Eq. (11)) | S01 Thm 1.3 | symbol entire and `2 pi L*`-periodic | exact |
 | U4 | site counts `|A_N|, |B_N| <= C N^d` | S01 Thm 1.3; SP Sec. 2 | `|N A cap L| <= vol(N A + V_L)/covol(L)`, `V_L` a Voronoi cell | constant |
 | U5 | resource normalisation `Z_N`, `c_r` | LT Sec. 2 (`R_0`), Amendment 2 (`Phi_0`) | Parseval with `dmu_L` | constant |
-| U6 | resource band inside the zone | LT Sec. 2 | `g(N p)` supported in `|p| <= 1/N`; inside one zone iff `N > 1/(pi lambda_1(L*))` | finitely many `N` excluded |
+| U6 | resource band inside the zone | LT Sec. 2 | `g(N p)` supported in `|p| <= 1/N`; for `N > 1/(pi lambda_1(L*))` this closed ball lies strictly inside the Voronoi cell of `2 pi L*` centred at `0` (inradius `pi lambda_1(L*)`), i.e. it is injective in the torus | finitely many `N` excluded |
 | U7 | `u` primitive integer, planes `{u.x = k}` | LT Sec. 1; CA Sec. 2 | `u` primitive in `L*`, `u.L = Z` | exact |
 | U8 | `Z^d/Lambda_0 = Z`, characters `omega^(u.x)` | LT preamble, Sec. 3(c); CA Sec. 1 | Sec. 0 | exact |
 | U9 | every depth index `j >= 0` is a non-empty plane; `u.x = floor(u.x_*) - j` | LT Sec. 1; CA Sec. 2 | `u.L = Z` | exact |
@@ -80,9 +86,10 @@ numerical factor changes (Sec. 4).
 | U12 | disc site count `O((N delta)^(m/2) + 1)` on a plane | SP Sec. 2 | cosets of `Lambda_0` | constant |
 | U13 | depth offsets `theta^A_N = {N u.w_A}`, `theta^B_N = {-N u.w_B}`; H9 | LT Secs. 1, 6; CA Secs. 5, 8, 10 | same formulas with `u in L*` | exact |
 | U14 | compactness of the torus (away from dominant points) | SP Sec. 2 | `T_L` compact | exact |
+| U15 | `det S(p)` is a monomial, so `rho(S(eta - i xi)) > 0` and `Phi` is finite | S01 Stage 1, notation | with `p = B^(-T) t`, `S` is a Laurent polynomial in `e^(i t_j)`; unitarity gives `det S . (det S)^sharp = 1` as Laurent polynomials, so `det S(p) = c e^(i p.a_0)`, `a_0 in L`, `|c| = 1`; alternatively `S S^sharp = I`, `S^sharp(p) = sum_a S_a^dagger e^(-i p.a)`, holds as an identity of exponential sums and hence for complex `p` | exact (added after the Codex review, objection 1) |
 
-U2, U3, U6, U11, U12 and U14 are uses not listed in charter B3. None
-fails. U6 is the only new condition, and it removes finitely many `N`,
+U2, U3, U6, U11, U12, U14 and U15 are uses not listed in charter B3.
+None fails. U6 is the only new condition, and it removes finitely many `N`,
 which the limsup form of (T) does not see.
 
 Steps that do not use the lattice at all and are therefore unchanged:
@@ -97,7 +104,7 @@ bilinearity and rotation arguments of LT Sec. 7 and CA Secs. 6, 10.
 
 ## 2. B1 Stage 1 on `L`
 
-Lemma 1.1: the multiplication operator by `S(. - i xi)` on
+Finiteness of `Phi` on `L`: U15. Lemma 1.1: the multiplication operator by `S(. - i xi)` on
 `L^2(T_L, dmu_L; C^s)`; conjugation by the translation by `b e` (U2) gives
 `||F(a + ib)|| = ||F(a)||`; the subharmonicity argument is unchanged.
 Lemma 1.2: no lattice. Thm 1.3: the contour shift (U3) and Lemma 1.2 give
@@ -118,7 +125,8 @@ depth parametrisation by U7, U9; tilt weights
 with `u.x in Z`. The exact formula for `F_N` on each plane is Euclidean.
 
 LT Sec. 2 (free tail): `r(y) = int_{T_L} e^(-i p.y) S(p)^N phi^_N(p) dmu_L`.
-For `N > 1/(pi lambda_1(L*))` (U6) the band is one ball in one zone, and
+For `N > 1/(pi lambda_1(L*))` (U6) the band is one ball inside the
+Voronoi cell centred at `0`, and
 substituting `p = q/N` gives
 
     r~(y) = N^(-d/2) e^(-i N omega_0) [ R_0(y/N) + O(N^(-1)) ],    R_0 with c_r(L) of Sec. 4,
@@ -201,12 +209,14 @@ the same hypotheses; the cell H6_k(ii) with H9(i) stays `OPEN`.
 
 ## 6. Observations outside the question (no verdict)
 
-1. **Not a relabelling.** Writing `L = B Z^d` turns a walk on `L` into a
-   walk on `Z^d`, but Euclidean balls become ellipsoids and an isotropic
-   node becomes anisotropic, both outside B1's class. The enlarged class
-   is therefore not obtained from B1 by a change of coordinates; it is
-   obtained by repeating the proof, which uses the lattice only through
-   U1–U14.
+1. **Not a relabelling, in general.** Writing `L = B Z^d` turns a walk on
+   `L` into a walk on `Z^d`; for a general `B` Euclidean balls become
+   ellipsoids and an isotropic node becomes anisotropic, both outside B1's
+   class. (When `L = a Q Z^d` with `Q` orthogonal the change is a
+   similarity and preserves both; added after the Codex review,
+   objection 3.) The enlarged class is therefore not obtained from B1 by
+   a change of coordinates that preserves B1's class; it is obtained by
+   repeating the proof, which uses the lattice only through U1–U15.
 2. **Choice of lattice.** If the steps of a walk generate a proper
    sublattice `L' subset L`, the symbol on `T_L` is periodic under
    `2 pi L'*`, so every dominant point comes with copies carrying the same
@@ -219,13 +229,15 @@ the same hypotheses; the cell H6_k(ii) with H9(i) stays `OPEN`.
    manuscript Definition 3.1, but S01, SP and LT contain no proof that the
    protocol family is admissible for a general walk of the class (a
    `grep -i admissib` over them finds only the non-vanishing of the
-   denominators, S01 Stage 2). This gap is inherited unchanged on `L`; it
-   does not involve the lattice and is not addressed by this charter.
+   denominators, S01 Stage 2). This gap predates this charter and is
+   inherited unchanged on `L`; it is not addressed here. A proof of
+   admissibility on `L` would have its own lattice inputs (the
+   manuscript's proof uses differences along a basis of `Z^3`).
 
 ## 7. Verdict
 
-Every use of `Z^d` in B1 Stages 1–2 and in the proved part of B2 is one of
-U1–U14; each transfers to a Bravais lattice of `R^d`, `d in {2, 3}`, by
+Every use of `Z^d` in the general proofs of B1 Stages 1–2 and of the
+proved part of B2 is one of U1–U15; each transfers to a Bravais lattice of `R^d`, `d in {2, 3}`, by
 the charter's replacements, with U6 excluding finitely many `N`. No new
 analytic step and no change of hypotheses was needed.
 
@@ -239,3 +251,22 @@ re-reviewed; B2's `OPEN` cell stays open. Constants: Sec. 4.
 Not done: Stage 2 (diagnostic consequence) is not authorized; the sealed
 cross-family review proposed in charter Sec. 4 has not been requested. No
 novelty claim.
+
+## Repairs after the Codex review (2026-11-12)
+
+Sealed review by gpt-6-astra (`reports/reviews/2026-11-12-bravais-stage1-astra/`,
+base `24e1965`, candidate SHA256 `922162b8…4b1c`): REPAIR_REQUIRED, no
+Bravais-specific obstacle, no new hypothesis. Repairs applied on the user's
+instruction («si a las dos»), **not re-reviewed**:
+
+1. U15 (monomial determinant) added to the inventory and to Sec. 2.
+2. U6 stated for the Voronoi cell centred at `0` (injectivity of the
+   band), replacing "inside one zone iff".
+3. Sec. 6.1 qualified: "in general"; similarity case noted.
+4. Inventory scoped to the general proofs; K3-specific checks named and
+   excluded; Sec. 7 restated accordingly. Sec. 6.3 reworded as the
+   reviewer suggested.
+
+No hypothesis, constant or verdict changed. The reviewer's separate
+objection to B1's H2 is handled by draft Amendment 5 to the general-rate
+charter.
