@@ -1,6 +1,8 @@
 {
   "permissions": {
     "allow": [
+      "Bash(python3 -B scripts/diagnose_ir_carrier_r1.py --output reports/2026-11-12--ir-carrier-r1-diagnostic.json)",
+      "Bash(python3 scripts/diagnose_ir_carrier_r1.py --output reports/2026-11-12--ir-carrier-r1-diagnostic.json)",
       "Bash(python3 -B scripts/diagnose_general_ir_rate_round2.py --output reports/2026-11-12--general-ir-rate-round2.json)",
       "Bash(python3 scripts/diagnose_general_ir_rate_round2.py --output reports/2026-11-12--general-ir-rate-round2.json)",
       "Bash(python3 -B scripts/diagnose_general_ir_rate_zonotopes.py --output reports/2026-11-12--general-ir-rate-zonotopes.json)",

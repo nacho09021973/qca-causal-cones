@@ -1,5 +1,14 @@
 # Scripts
 
+## Carrier dichotomy, Stage A(iv) diagnostic for R1 (2026-11-12)
+
+`python3 -B scripts/diagnose_ir_carrier_r1.py --output <json>` evaluates,
+for CJWW (5.12), Pavia A+ and the cyclic s=4 walk with the second-round
+regions, the phase `omega` of each dominant trivial-character momentum,
+`psi_k`, the depth-factor average `mu_k` and the conditions H6_k, H10_k of
+draft Amendment 1 to `theory/IR_CARRIER_DICHOTOMY_GATE.md`. Floating point;
+a diagnostic, not a verification.
+
 ## General infrared rate: second diagnostic, walk-adapted regions (2026-11-12)
 
 `python3 -B scripts/diagnose_general_ir_rate_round2.py --output <json>`
