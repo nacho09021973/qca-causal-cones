@@ -1,0 +1,1484 @@
+{
+  "meta": {
+    "charter": "theory/GENERAL_IR_RATE_ROUND2_DIAGNOSTIC.md",
+    "script_sha256": "ea6f730cb4fec5043eb52fc5ec4ab7d99749dcbb79875745d410633b2769d60a",
+    "imported": {
+      "polyhedra": "8cc62cbfd9b98f9c8c81b903fe4757031ff4bd1e6eceb193714002ea5e4ac935",
+      "zonotopes": "d861466490541718c38492d4ef325e9c4f64828c9771e019e78e8bde548902af"
+    },
+    "numpy": "1.26.4",
+    "sympy": "1.14.0",
+    "nature": "floating-point diagnostic; labels are not certificates or verdicts"
+  },
+  "walks": [
+    {
+      "id": "W1",
+      "name": "CJWW (5.15), K3 control",
+      "d": 3,
+      "s": 2,
+      "lattice_isometric_to_Zd": true,
+      "no_rate_axis": false,
+      "node": {
+        "c_IR": 1.0,
+        "hermitian_defect": 0.0,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 0.0,
+        "isotropy_defect": 0.0
+      },
+      "s0": 0.9999668338657444,
+      "h": 1.7320508075688772,
+      "fast_modes_along_n": false,
+      "rho": 0.1830209934257832,
+      "target_speed": 1.366008820717311,
+      "newton_residual": 1.6370409103223466e-10,
+      "xi_star": [
+        0.9904071335745374,
+        0.9904071335745374,
+        -0.9904071335745374
+      ],
+      "xi_on_axis_defect": 0.0,
+      "v_star": [
+        0.7886655602362679,
+        0.7886655602473701,
+        -0.7886655602362679
+      ],
+      "K_star": 0.39060269708413076,
+      "xi_dual_ratios": [
+        "1",
+        "1",
+        "-1"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -3.141592653583933,
+            -3.1415926535889382,
+            -3.141592653590648
+          ],
+          "is_zero": false,
+          "trivial_character": true,
+          "gap_ratio": 0.020133008699649187,
+          "hessian_eigs": [
+            -0.44365092915450555,
+            -0.443650876949094,
+            -0.2933187840762706
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_zero": true,
+          "trivial_character": true,
+          "gap_ratio": 0.020133008699649266,
+          "hessian_eigs": [
+            -0.44365092637675474,
+            -0.4436509130335377,
+            -0.2933187563206932
+          ],
+          "grad_minus_vstar": 9.992007221626409e-11
+        },
+        {
+          "k": [
+            -3.1415926535918683,
+            2.9299924507972106e-12,
+            -2.92999072708108e-12
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.020133008699649162,
+          "hessian_eigs": [
+            -0.4436509412541133,
+            -0.4436509314628666,
+            -0.2933188617918838
+          ],
+          "grad_minus_vstar": 7.850462293418875e-11
+        },
+        {
+          "k": [
+            -1.6474237051747023e-12,
+            -3.1415926535814305,
+            -8.550464648874252e-13
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.020133008699649232,
+          "hessian_eigs": [
+            -0.44365091887217173,
+            -0.4436508909321709,
+            -0.2933188081311035
+          ],
+          "grad_minus_vstar": 6.843874359417886e-11
+        },
+        {
+          "k": [
+            -1.6474236773676344e-12,
+            -3.1415926535814305,
+            -3.141592653590648
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.020133008699649225,
+          "hessian_eigs": [
+            -0.44365091335423373,
+            -0.4436508927493655,
+            -0.29331881183184694
+          ],
+          "grad_minus_vstar": 6.843874359417886e-11
+        },
+        {
+          "k": [
+            1.2825691987020837e-12,
+            1.2825691368626549e-12,
+            -3.141592653598583
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.020133008699649197,
+          "hessian_eigs": [
+            -0.44365088121029395,
+            -0.44365086198066667,
+            -0.29331876372218296
+          ],
+          "grad_minus_vstar": 1.4304223057953898e-10
+        },
+        {
+          "k": [
+            -3.141592653586863,
+            4.275230591951147e-13,
+            -3.1415926535902208
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.02013300869964922,
+          "hessian_eigs": [
+            -0.4436509615021874,
+            -0.4436509038133068,
+            -0.2933188192333335
+          ],
+          "grad_minus_vstar": 9.28879225241625e-11
+        },
+        {
+          "k": [
+            -3.1415926535914407,
+            -3.1415926535889387,
+            -8.362456319021245e-12
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.02013300869964924,
+          "hessian_eigs": [
+            -0.44365095316497766,
+            -0.4436509306542338,
+            -0.2933188229340766
+          ],
+          "grad_minus_vstar": 5.978733960281816e-11
+        }
+      ],
+      "tails": [
+        {
+          "chi_index": 0,
+          "tail_norm": 0.7958972151952588,
+          "cos_angle_e0_tail": 0.9810525459253678
+        },
+        {
+          "chi_index": 1,
+          "tail_norm": 0.6397065708275507,
+          "cos_angle_e0_tail": 0.48303992041916943
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": true,
+        "H4prime": true,
+        "H8": true,
+        "H7": true,
+        "H9": "generic",
+        "H6_left": true,
+        "H5": true,
+        "H10_sufficient": true
+      },
+      "label": "HYPOTHESES_HOLD_NUMERICALLY"
+    },
+    {
+      "id": "W2",
+      "name": "CJWW (5.12) Bialynicki-Birula",
+      "d": 3,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": false,
+      "node": {
+        "c_IR": 1.0,
+        "hermitian_defect": 0.0,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 0.0,
+        "isotropy_defect": 0.0
+      },
+      "s0": 1.224744973477004,
+      "h": 1.7320508075688772,
+      "fast_modes_along_n": true,
+      "rho": 0.1268264585229683,
+      "target_speed": 1.4783978905229405,
+      "newton_residual": 1.8151090080324713e-11,
+      "xi_star": [
+        1.0770340918069656,
+        1.0770340918069656,
+        -1.0770340918069656
+      ],
+      "xi_on_axis_defect": 1.9229626863835638e-16,
+      "v_star": [
+        0.8535534200548865,
+        0.853553420077091,
+        -0.8535534200548865
+      ],
+      "K_star": 0.2922509069891581,
+      "xi_dual_ratios": [
+        "1",
+        "1",
+        "1/2"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -2.3561944901923444,
+            -2.3561944901923444,
+            2.356194490192344
+          ],
+          "is_zero": false,
+          "trivial_character": true,
+          "gap_ratio": 0.0072168624695194816,
+          "hessian_eigs": [
+            -0.30957293158162147,
+            -0.30957289931928855,
+            -0.1835241773366171
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            0.7853981634150776,
+            0.7853981634007327,
+            -0.7853981634007323
+          ],
+          "is_zero": false,
+          "trivial_character": true,
+          "gap_ratio": 0.007216862469519486,
+          "hessian_eigs": [
+            -0.3095728932459946,
+            -0.3095728784430207,
+            -0.1835241921395907
+          ],
+          "grad_minus_vstar": 3.845925372767128e-11
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": true,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": "generic"
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; FAILS_H4prime"
+    },
+    {
+      "id": "W3",
+      "name": "Pavia Weyl A+ (BCC)",
+      "d": 3,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": false,
+      "node": {
+        "c_IR": 1.0,
+        "hermitian_defect": 0.0,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 0.0,
+        "isotropy_defect": 0.0
+      },
+      "s0": 1.2247449734642029,
+      "h": 1.7320508075688772,
+      "fast_modes_along_n": true,
+      "rho": 0.12682645852616858,
+      "target_speed": 1.47839789051654,
+      "newton_residual": 7.296681913482434e-12,
+      "xi_star": [
+        1.0770340918069656,
+        1.0770340918069656,
+        -1.0770340918069656
+      ],
+      "xi_on_axis_defect": 1.9229626863835638e-16,
+      "v_star": [
+        0.8535534200548865,
+        0.8535534200548865,
+        -0.8535534200548865
+      ],
+      "K_star": 0.29225090696524303,
+      "xi_dual_ratios": [
+        "1",
+        "1",
+        "1/2"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -2.356194490192345,
+            -2.356194490192345,
+            2.356194490192345
+          ],
+          "is_zero": false,
+          "trivial_character": true,
+          "gap_ratio": 0.0072168624695194885,
+          "hessian_eigs": [
+            -0.30957291815958715,
+            -0.3095729053398365,
+            -0.18352416253364298
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            0.785398163418362,
+            0.7853981634183619,
+            -0.7853981634040168
+          ],
+          "is_zero": false,
+          "trivial_character": true,
+          "gap_ratio": 0.007216862469519469,
+          "hessian_eigs": [
+            -0.3095729102899595,
+            -0.3095728836035177,
+            -0.1835241810373592
+          ],
+          "grad_minus_vstar": 2.220446049250313e-11
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": true,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": "generic"
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; FAILS_H4prime"
+    },
+    {
+      "id": "W4",
+      "name": "square Weyl",
+      "d": 2,
+      "s": 2,
+      "lattice_isometric_to_Zd": true,
+      "no_rate_axis": false,
+      "node": {
+        "c_IR": 1.0,
+        "hermitian_defect": 0.0,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 0.0,
+        "isotropy_defect": 0.0
+      },
+      "s0": 0.999975124690606,
+      "h": 1.4142135623730951,
+      "fast_modes_along_n": false,
+      "rho": 0.10355960942062228,
+      "target_speed": 1.2070943435318506,
+      "newton_residual": 5.03497249650713e-12,
+      "xi_star": [
+        1.0769860102675464,
+        1.0769860102675464
+      ],
+      "xi_on_axis_defect": 1.5700924586837752e-16,
+      "v_star": [
+        0.8535445958468556,
+        0.8535445958468556
+      ],
+      "K_star": 0.19481493045534792,
+      "xi_dual_ratios": [
+        "1",
+        "1"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            6.049317546938236e-12,
+            -3.141592653583744
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.03735111576753421,
+          "hessian_eigs": [
+            -0.40152618729916156,
+            -0.18352830088996794
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            -2.765108385740331e-12,
+            2.764944903051883e-12
+          ],
+          "is_zero": true,
+          "trivial_character": true,
+          "gap_ratio": 0.03735111576753388,
+          "hessian_eigs": [
+            -0.4015262122791796,
+            -0.18352823705214405
+          ],
+          "grad_minus_vstar": 4.440892098500626e-11
+        }
+      ],
+      "tails": [
+        {
+          "chi_index": 0,
+          "tail_norm": 0.8462448626068239,
+          "cos_angle_e0_tail": 0.8012689148472585
+        },
+        {
+          "chi_index": 1,
+          "tail_norm": 0.8462448626068239,
+          "cos_angle_e0_tail": 0.8012689148464961
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": true,
+        "H4prime": true,
+        "H8": true,
+        "H7": true,
+        "H9": "generic",
+        "H6_left": true,
+        "H5": true,
+        "H10_sufficient": true
+      },
+      "label": "HYPOTHESES_HOLD_NUMERICALLY"
+    },
+    {
+      "id": "W5",
+      "name": "JDW L6d (hexagon)",
+      "d": 2,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": false,
+      "node": {
+        "c_IR": 1.5000000000000009,
+        "hermitian_defect": 1.1102230246251565e-16,
+        "trace_defect": 7.557738643297562e-17,
+        "anticommutator_defect": 1.4060918964165336e-16,
+        "isotropy_defect": 0.0
+      },
+      "s0": 1.5000001406508627,
+      "h": 2.0,
+      "fast_modes_along_n": false,
+      "rho": 0.12499996483728432,
+      "target_speed": 1.7500000703254313,
+      "newton_residual": 1.535027282673124e-10,
+      "xi_star": [
+        -1.7096515056059003,
+        0.0
+      ],
+      "xi_on_axis_defect": 0.0,
+      "v_star": [
+        -1.7500000704773198,
+        2.2204460492503128e-11
+      ],
+      "K_star": 0.25531738469113074,
+      "xi_dual_ratios": [
+        "1",
+        "1/2"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            0.0,
+            0.0
+          ],
+          "is_zero": true,
+          "trivial_character": true,
+          "gap_ratio": 0.00419800552609129,
+          "hessian_eigs": [
+            -0.8356265901454669,
+            -0.17484280689927728
+          ],
+          "grad_minus_vstar": 0.0
+        }
+      ],
+      "tails": [
+        {
+          "chi_index": 0,
+          "tail_norm": 0.4285450852452663,
+          "cos_angle_e0_tail": 0.8030018494304588
+        },
+        {
+          "chi_index": 1,
+          "tail_norm": 0.8928338130527905,
+          "cos_angle_e0_tail": 0.7561851583768537
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": true,
+        "H4prime": true,
+        "H8": true,
+        "H7": true,
+        "H9": "generic",
+        "H6_left": true,
+        "H5": true,
+        "H10_sufficient": true
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; HYPOTHESES_HOLD_NUMERICALLY"
+    },
+    {
+      "id": "W6",
+      "name": "cyclic s=4 (tetrahedron), node P",
+      "d": 3,
+      "s": 4,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": false,
+      "node": {
+        "c_IR": 0.3333333333333333,
+        "hermitian_defect": 1.1274368112207332e-16,
+        "trace_defect": 1.1102230246251565e-16,
+        "anticommutator_defect": 4.163336342344337e-17,
+        "isotropy_defect": 5.551115123125783e-17
+      },
+      "s0": 0.8047379064285154,
+      "h": 1.0,
+      "fast_modes_along_n": true,
+      "rho": 0.04881552339287115,
+      "target_speed": 0.9023689532142577,
+      "newton_residual": 5.523977400324739e-11,
+      "xi_star": [
+        0.9327389301211618,
+        -0.9327389301211618,
+        0.9327389301211618
+      ],
+      "xi_on_axis_defect": 1.9229626863835638e-16,
+      "v_star": [
+        0.5209829580077319,
+        -0.5209829580521408,
+        0.5209829580743452
+      ],
+      "K_star": 0.09741697950202521,
+      "xi_dual_ratios": [
+        "1",
+        "-1",
+        "1/2"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -1.360349523110222,
+            1.3603495231599418,
+            -1.3603495232096763
+          ],
+          "is_zero": false,
+          "trivial_character": true,
+          "gap_ratio": 0.19324848761379435,
+          "hessian_eigs": [
+            -0.08156614642966957,
+            -0.025777716909789562,
+            -0.025777639370594997
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            1.3603495233623475,
+            4.081048569887342,
+            -4.0810485694397665
+          ],
+          "is_zero": false,
+          "trivial_character": true,
+          "gap_ratio": 0.19324848761379412,
+          "hessian_eigs": [
+            -0.08156625930239256,
+            -0.025777702838901136,
+            -0.025777590528796496
+          ],
+          "grad_minus_vstar": 7.447602459741819e-11
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": true,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": "generic"
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; FAILS_H4prime"
+    },
+    {
+      "id": "Z1",
+      "name": "octagon (1,0),(0,1),(1,1),(1,-1)",
+      "d": 2,
+      "s": 2,
+      "lattice_isometric_to_Zd": true,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 2.4142135623730945,
+        "hermitian_defect": 2.68031548330893e-16,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 1.0721261933235718e-15,
+        "isotropy_defect": 1.7763568394002505e-15
+      },
+      "s0": 2.4141927639681997,
+      "h": 3.1622776601683795,
+      "fast_modes_along_n": false,
+      "rho": 0.18702122405004495,
+      "target_speed": 2.7882352120682894,
+      "newton_residual": 5.794579152396207e-11,
+      "xi_star": [
+        0.28743750258398476,
+        -0.773619649664261
+      ],
+      "xi_on_axis_defect": 0.03398939910649158,
+      "v_star": [
+        0.869726394459036,
+        -2.6493769250013344
+      ],
+      "K_star": 0.1820737606420928,
+      "xi_dual_ratios": [
+        "1",
+        "-6/7"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            3.428474006432787e-12,
+            -3.1415926535901013
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.014478991513302605,
+          "hessian_eigs": [
+            -2.3523576252582057,
+            -0.49132554146180685
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            3.4284741808544744e-12,
+            -3.0813889816682247e-13
+          ],
+          "is_zero": true,
+          "trivial_character": false,
+          "gap_ratio": 0.014478991513302456,
+          "hessian_eigs": [
+            -2.3523575853828897,
+            -0.49132552582597144
+          ],
+          "grad_minus_vstar": 3.1401849173675504e-11
+        }
+      ],
+      "tails": [
+        {
+          "chi_index": 0,
+          "tail_norm": 0.5496039584413402,
+          "cos_angle_e0_tail": 0.9916843018484853
+        },
+        {
+          "chi_index": 1,
+          "tail_norm": 0.5496039584413402,
+          "cos_angle_e0_tail": 0.9916843018489964
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": false,
+        "H4prime": true,
+        "H8": true,
+        "H7": true,
+        "H9": null,
+        "H6_left": true,
+        "H5": true,
+        "H10_sufficient": true
+      },
+      "label": "FAILS_H3"
+    },
+    {
+      "id": "Z2",
+      "name": "octagon (2,0),(0,2),(1,1),(1,-1)",
+      "d": 2,
+      "s": 2,
+      "lattice_isometric_to_Zd": true,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 3.4142135623730945,
+        "hermitian_defect": 3.790538507934087e-16,
+        "trace_defect": 2.2204460492503126e-16,
+        "anticommutator_defect": 7.581077015868172e-16,
+        "isotropy_defect": 7.105427357601002e-15
+      },
+      "s0": 3.414161563985675,
+      "h": 4.47213595499958,
+      "fast_modes_along_n": false,
+      "rho": 0.26449359775347614,
+      "target_speed": 3.9431487594926273,
+      "newton_residual": 7.804999735523473e-11,
+      "xi_star": [
+        -0.5305179539722638,
+        -0.24308694511288387
+      ],
+      "xi_on_axis_defect": 0.03398824847284115,
+      "v_star": [
+        -3.5190933070028403,
+        -1.7796452731699828
+      ],
+      "K_star": 0.18206717079100665,
+      "xi_dual_ratios": [
+        "1",
+        "5/11"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -1.5707963267937706,
+            -1.5707963267935536
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.014480286790684513,
+          "hessian_eigs": [
+            -4.704836971458454,
+            -0.9826711929729663
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            -4.120078419521874e-12,
+            -1.1259199964244336e-12
+          ],
+          "is_zero": true,
+          "trivial_character": false,
+          "gap_ratio": 0.014480286790684537,
+          "hessian_eigs": [
+            -4.704836996533224,
+            -0.982671223409348
+          ],
+          "grad_minus_vstar": 6.280369834735101e-11
+        }
+      ],
+      "tails": [
+        {
+          "chi_index": 0,
+          "tail_norm": 0.47347715740761803,
+          "cos_angle_e0_tail": 0.9639412226482413
+        },
+        {
+          "chi_index": 1,
+          "tail_norm": 0.473477157407618,
+          "cos_angle_e0_tail": 0.9639412226477593
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": false,
+        "H4prime": true,
+        "H8": true,
+        "H7": true,
+        "H9": null,
+        "H6_left": true,
+        "H5": true,
+        "H10_sufficient": true
+      },
+      "label": "FAILS_H3"
+    },
+    {
+      "id": "Z3",
+      "name": "regular hexagon",
+      "d": 2,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": false,
+      "node": {
+        "c_IR": 1.5,
+        "hermitian_defect": 1.6653345369377348e-16,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 1.6653345369377348e-16,
+        "isotropy_defect": 0.0
+      },
+      "s0": 1.5000001406508627,
+      "h": 2.0,
+      "fast_modes_along_n": false,
+      "rho": 0.12499996483728432,
+      "target_speed": 1.7500000703254313,
+      "newton_residual": 1.79667566526901e-10,
+      "xi_star": [
+        -1.7096515056059003,
+        0.0
+      ],
+      "xi_on_axis_defect": 0.0,
+      "v_star": [
+        -1.7500000704995242,
+        4.4408920985006255e-11
+      ],
+      "K_star": 0.2553173847290924,
+      "xi_dual_ratios": [
+        "1",
+        "1/2"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -6.976309647586331e-17,
+            -4.240755476655571e-18
+          ],
+          "is_zero": true,
+          "trivial_character": true,
+          "gap_ratio": 0.0041980055260911805,
+          "hessian_eigs": [
+            -0.8356265235320854,
+            -0.17484272918366556
+          ],
+          "grad_minus_vstar": 0.0
+        }
+      ],
+      "tails": [
+        {
+          "chi_index": 0,
+          "tail_norm": 0.7002867654819197,
+          "cos_angle_e0_tail": 0.9228159283428363
+        },
+        {
+          "chi_index": 1,
+          "tail_norm": 0.7002867654819197,
+          "cos_angle_e0_tail": 0.9228159283428367
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": true,
+        "H4prime": true,
+        "H8": true,
+        "H7": true,
+        "H9": "generic",
+        "H6_left": true,
+        "H5": true,
+        "H10_sufficient": true
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; HYPOTHESES_HOLD_NUMERICALLY"
+    },
+    {
+      "id": "Z4",
+      "name": "dodecagon, triangular lattice",
+      "d": 2,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 4.098076211353316,
+        "hermitian_defect": 1.1374446416282702e-16,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 1.7061669624424053e-16,
+        "isotropy_defect": 0.0
+      },
+      "s0": 4.0980379942301,
+      "h": 5.291502622129181,
+      "fast_modes_along_n": false,
+      "rho": 0.2983661569747704,
+      "target_speed": 4.69477030817964,
+      "newton_residual": 4.823667418269103e-11,
+      "xi_star": [
+        -1.0167579293017097,
+        0.2801760069295146
+      ],
+      "xi_on_axis_defect": 0.06457683520547312,
+      "v_star": [
+        -4.424709666572824,
+        1.5735248263037958
+      ],
+      "K_star": 0.36613102632968353,
+      "xi_dual_ratios": [
+        "1",
+        "1/4"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            0.0,
+            0.0
+          ],
+          "is_zero": true,
+          "trivial_character": false,
+          "gap_ratio": 0.0001065194426573738,
+          "hessian_eigs": [
+            -5.245269461523302,
+            -0.5856046331466778
+          ],
+          "grad_minus_vstar": 0.0
+        }
+      ],
+      "tails": [
+        {
+          "chi_index": 0,
+          "tail_norm": 0.4271690342619739,
+          "cos_angle_e0_tail": 0.9778650284606069
+        },
+        {
+          "chi_index": 1,
+          "tail_norm": 0.4271690342619739,
+          "cos_angle_e0_tail": 0.977865028460607
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": false,
+        "H4prime": true,
+        "H8": true,
+        "H7": true,
+        "H9": null,
+        "H6_left": true,
+        "H5": true,
+        "H10_sufficient": true
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; FAILS_H3"
+    },
+    {
+      "id": "Z5",
+      "name": "octagon of Z1, other factor order",
+      "d": 2,
+      "s": 2,
+      "lattice_isometric_to_Zd": true,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 2.4142135623730945,
+        "hermitian_defect": 0.0,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 0.0,
+        "isotropy_defect": 2.6645352591003757e-15
+      },
+      "s0": 2.41419246575745,
+      "h": 3.1622776601683795,
+      "fast_modes_along_n": false,
+      "rho": 0.18702129860273242,
+      "target_speed": 2.7882350629629147,
+      "newton_residual": 2.1202576222875627e-11,
+      "xi_star": [
+        0.452672923869428,
+        -1.0977785341749884
+      ],
+      "xi_on_axis_defect": 0.06934599921611415,
+      "v_star": [
+        0.85740925732658,
+        -2.6542027405707103
+      ],
+      "K_star": 0.24160620714839087,
+      "xi_dual_ratios": [
+        "1",
+        "-5/7"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -4.6642504836602404e-12,
+            2.312435406261415e-12
+          ],
+          "is_zero": true,
+          "trivial_character": false,
+          "gap_ratio": 0.002197372205629925,
+          "hessian_eigs": [
+            -2.255120422248984,
+            -0.2610240594078397
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            -9.3495201840966e-18,
+            -3.141592653589793
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.0021973722056298764,
+          "hessian_eigs": [
+            -2.255120386272214,
+            -0.26102408428237917
+          ],
+          "grad_minus_vstar": 3.1401849173675504e-11
+        }
+      ],
+      "tails": [
+        {
+          "chi_index": 0,
+          "tail_norm": 0.5495996789437042,
+          "cos_angle_e0_tail": 0.9869788194906759
+        },
+        {
+          "chi_index": 1,
+          "tail_norm": 0.5495996789437042,
+          "cos_angle_e0_tail": 0.9869788194902069
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": false,
+        "H4prime": true,
+        "H8": true,
+        "H7": true,
+        "H9": null,
+        "H6_left": true,
+        "H5": true,
+        "H10_sufficient": true
+      },
+      "label": "FAILS_H3"
+    },
+    {
+      "id": "Z6",
+      "name": "rhombic dodecahedron",
+      "d": 3,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 2.3094010767585025,
+        "hermitian_defect": 4.965068306494546e-16,
+        "trace_defect": 1.1102230246251563e-16,
+        "anticommutator_defect": 1.81100256762983e-15,
+        "isotropy_defect": 1.7763568394002505e-15
+      },
+      "s0": 2.3094041560645744,
+      "h": 4.0,
+      "fast_modes_along_n": true,
+      "rho": 0.4226489609838564,
+      "target_speed": 3.154702078032287,
+      "newton_residual": 5.169361495522634e-11,
+      "xi_star": [
+        -0.6011551866756586,
+        -3.699718668397833e-12,
+        -4.067581857590867e-12
+      ],
+      "xi_on_axis_defect": 9.14650196280851e-12,
+      "v_star": [
+        -3.154702078000948,
+        0.0,
+        -2.2204460492503128e-11
+      ],
+      "K_star": 0.3177759455065121,
+      "xi_dual_ratios": [
+        "1",
+        "0",
+        "1/2"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -6.902783504435676e-12,
+            0.8299395658992785,
+            -1.5707963267955107
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.042537078751293915,
+          "hessian_eigs": [
+            -4.052452784453209,
+            -0.542918415780136,
+            -0.23509113544761798
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            -3.5816979525389578e-12,
+            1.2644555364776964,
+            -1.5707963267942004
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.04253707875129381,
+          "hessian_eigs": [
+            -4.05245278445321,
+            -0.542918382473446,
+            -0.2350911298965029
+          ],
+          "grad_minus_vstar": 1.1102230246251569e-11
+        },
+        {
+          "k": [
+            -0.21725798833494234,
+            -0.5235987755781321,
+            -1.9769741399500163e-12
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.04253707875129405,
+          "hessian_eigs": [
+            -3.5095343631219578,
+            -0.4701820377484008,
+            -0.25196965625084994
+          ],
+          "grad_minus_vstar": 2.6316267194915464e-09
+        },
+        {
+          "k": [
+            0.21725798834057736,
+            1.0471975511807978,
+            -1.5707963267914868
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.04253707875129391,
+          "hessian_eigs": [
+            -3.5095343464686124,
+            -0.4701820155439412,
+            -0.25196963404638867
+          ],
+          "grad_minus_vstar": 2.631462782204368e-09
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": true,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": "generic"
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; FAILS_H4prime"
+    },
+    {
+      "id": "Z7",
+      "name": "truncated octahedron",
+      "d": 3,
+      "s": 2,
+      "lattice_isometric_to_Zd": true,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 2.8284271247461907,
+        "hermitian_defect": 8.881784197001256e-16,
+        "trace_defect": 1.1157603309187458e-15,
+        "anticommutator_defect": 4.5098326559537625e-15,
+        "isotropy_defect": 1.3322676295501878e-14
+      },
+      "s0": 3.0292560616202184,
+      "h": 4.47213595499958,
+      "fast_modes_along_n": true,
+      "rho": 0.3607199733448403,
+      "target_speed": 3.750696008309899,
+      "newton_residual": 2.599209057074938e-10,
+      "xi_star": [
+        -1.0155485940645639,
+        -0.5256392383529442,
+        -0.1832481815663907
+      ],
+      "xi_on_axis_defect": 0.15933745770139804,
+      "v_star": [
+        -3.411027748745354,
+        -1.6356540911477422,
+        -0.11271236048937537
+      ],
+      "K_star": 0.5174240318669274,
+      "xi_dual_ratios": [
+        "1",
+        "1/2",
+        "2/11"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            -1.4113602701576096,
+            -1.4481010861920862,
+            -1.368607589648731
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.00047408808654948796,
+          "hessian_eigs": [
+            -3.216666455672959,
+            -1.4988214285951633,
+            -0.4725277883510499
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            0.1594360566454438,
+            0.12269524061074354,
+            0.20218873715254693
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.000474088086549503,
+          "hessian_eigs": [
+            -3.216666360152919,
+            -1.4988213680165692,
+            -0.47252778901846143
+          ],
+          "grad_minus_vstar": 1.0175362097255203e-10
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": false,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": null
+      },
+      "label": "FAILS_H3_H4prime"
+    },
+    {
+      "id": "Z8",
+      "name": "axes + body diagonals",
+      "d": 3,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 3.309401076758504,
+        "hermitian_defect": 9.397040495892911e-16,
+        "trace_defect": 9.39188966358397e-16,
+        "anticommutator_defect": 3.794166525864467e-15,
+        "isotropy_defect": 5.329070518200751e-15
+      },
+      "s0": 3.7793187922059106,
+      "h": 5.196152422706632,
+      "fast_modes_along_n": true,
+      "rho": 0.35420840762518035,
+      "target_speed": 4.487735607456271,
+      "newton_residual": 5.315578073943552e-11,
+      "xi_star": [
+        -0.4305493243155574,
+        1.1130722395306372,
+        -0.364663381089679
+      ],
+      "xi_on_axis_defect": 0.1953780828104169,
+      "v_star": [
+        -0.7782681460177797,
+        4.4089936185987,
+        -0.6893839331834072
+      ],
+      "K_star": 0.45402897939988396,
+      "xi_dual_ratios": [
+        "-3/8",
+        "1",
+        "1/7"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            0.4555812295994811,
+            1.6590494934297677,
+            -0.7380579512129777
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 4.191148581437014e-05,
+          "hessian_eigs": [
+            -4.032560730433756,
+            -1.601451209468246,
+            -0.19400022185509955
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            -2.686011423997803,
+            -1.4825431601465688,
+            2.403534702375827
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 4.1911485814296946e-05,
+          "hessian_eigs": [
+            -4.032560781091179,
+            -1.601451157176506,
+            -0.19400020128495535
+          ],
+          "grad_minus_vstar": 4.440892098500626e-11
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": false,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": null
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; FAILS_H3_H4prime"
+    },
+    {
+      "id": "Z9",
+      "name": "great rhombicuboctahedron",
+      "d": 3,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 3.8284271247461885,
+        "hermitian_defect": 1.8544529384041587e-15,
+        "trace_defect": 1.1475900544332647e-15,
+        "anticommutator_defect": 7.23780609461846e-15,
+        "isotropy_defect": 3.552713678800501e-15
+      },
+      "s0": 4.3056106003594135,
+      "h": 5.916079783099616,
+      "fast_modes_along_n": true,
+      "rho": 0.40261729568505067,
+      "target_speed": 5.110845191729515,
+      "newton_residual": 7.04783204853311e-11,
+      "xi_star": [
+        0.9876723830684393,
+        0.29981528866459084,
+        -0.5630859584165828
+      ],
+      "xi_on_axis_defect": 0.09061156634692445,
+      "v_star": [
+        4.323589495225377,
+        0.7946705666839192,
+        -2.6143688292457057
+      ],
+      "K_star": 0.5613669707373878,
+      "xi_dual_ratios": [
+        "1",
+        "3/10",
+        "4/11"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            0.9770321992840493,
+            1.2512269762581438,
+            -0.7800119217881789
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 1.9627410667739513e-05,
+          "hessian_eigs": [
+            -2.9219693004667153,
+            -2.023150119460729,
+            -0.5061552561774023
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            -2.1645604543102364,
+            -1.8903656773369824,
+            2.361580731807175
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 1.9627410667608118e-05,
+          "hessian_eigs": [
+            -2.921969276444158,
+            -2.023150006099388,
+            -0.5061552825389962
+          ],
+          "grad_minus_vstar": 6.280369834735101e-11
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": false,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": null
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; FAILS_H3_H4prime"
+    },
+    {
+      "id": "Z10",
+      "name": "hexagonal prism",
+      "d": 3,
+      "s": 2,
+      "lattice_isometric_to_Zd": false,
+      "no_rate_axis": true,
+      "node": {
+        "c_IR": 1.5,
+        "hermitian_defect": 1.6653345369377348e-16,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 1.6653345369377348e-16,
+        "isotropy_defect": 0.0
+      },
+      "s0": 1.5244652632940592,
+      "h": 2.5,
+      "fast_modes_along_n": true,
+      "rho": 0.2438836841764852,
+      "target_speed": 2.01223263164703,
+      "newton_residual": 3.111918194594219e-11,
+      "xi_star": [
+        -0.48316329694821314,
+        -0.18336712070460082,
+        0.3686061050459667
+      ],
+      "xi_on_axis_defect": 0.2921081611382474,
+      "v_star": [
+        -0.9338738765407583,
+        -1.30374299158742,
+        1.3291968095630047
+      ],
+      "K_star": 0.06338307936931042,
+      "xi_dual_ratios": [
+        "1",
+        "5/6",
+        "-4/7"
+      ],
+      "dominant_points": [
+        {
+          "k": [
+            0.7853981634055518,
+            1.360349523147026,
+            1.3962634016266942
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.10713256156916816,
+          "hessian_eigs": [
+            -0.9373218143446782,
+            -0.5677862922306369,
+            -0.01682021013029698
+          ],
+          "grad_minus_vstar": 0.0
+        },
+        {
+          "k": [
+            0.7853981634050744,
+            1.360349523074595,
+            -0.698131700714869
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.10713256156916816,
+          "hessian_eigs": [
+            -0.9373218409065419,
+            -0.5677862735882844,
+            -0.016820157801864744
+          ],
+          "grad_minus_vstar": 3.510833468576701e-11
+        }
+      ],
+      "hypotheses": {
+        "K_star_positive": true,
+        "H2": true,
+        "H3": false,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": null
+      },
+      "label": "OUTSIDE_CLASS_LATTICE; FAILS_H3_H4prime"
+    }
+  ]
+}

@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-12
 
+**Second general-rate diagnostic, walk-adapted regions — 2026-11-12:**
+user «si a las tres» (Amendment 4, second run, then dichotomy proposal).
+Charter and script `7302105`;
+[report](../reports/2026-11-12--general-ir-rate-round2.md). Every row now
+in the non-ballistic corona with the true minimiser. Faster ballistic
+modes along Bob's direction ⇒ zero momentum not dominant (7 of 7); no fast
+modes ⇒ zero dominant in 8 of 9 (exception: rhombic dodecahedron). All
+hypotheses hold for W1, W4 and, outside the `Z^d` class, both hexagonal
+walks; four product walks fail only H3 (irrational dual direction).
+Floating-point diagnostic, not reviewed, no verdict.
+
 **General-rate hypotheses on sixteen walks — 2026-11-12:** user asked to
 test the theorem on more polyhedra while Grok reviews, then on ten more
 bodies in 2D/3D. Two diagnostic charters (`af44458`, `ee429de`), scripts

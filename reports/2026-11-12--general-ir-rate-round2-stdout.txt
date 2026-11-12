@@ -1,0 +1,145 @@
+W1 CJWW (5.15), K3 control: HYPOTHESES_HOLD_NUMERICALLY
+    s0 = 0.9999668338657444
+    h = 1.7320508075688772
+    fast_modes_along_n = False
+    K_star = 0.39060269708413076
+    newton_residual = 1.6370409103223466e-10
+    xi_on_axis_defect = 0.0
+    K_star_positive=True, H2=True, H3=True, H4prime=True, H8=True, H7=True, H9=generic, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 8, zero dominant: True
+W2 CJWW (5.12) Bialynicki-Birula: OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    s0 = 1.224744973477004
+    h = 1.7320508075688772
+    fast_modes_along_n = True
+    K_star = 0.2922509069891581
+    newton_residual = 1.8151090080324713e-11
+    xi_on_axis_defect = 1.9229626863835638e-16
+    K_star_positive=True, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=generic
+    dominant points: 2, zero dominant: False
+W3 Pavia Weyl A+ (BCC): OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    s0 = 1.2247449734642029
+    h = 1.7320508075688772
+    fast_modes_along_n = True
+    K_star = 0.29225090696524303
+    newton_residual = 7.296681913482434e-12
+    xi_on_axis_defect = 1.9229626863835638e-16
+    K_star_positive=True, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=generic
+    dominant points: 2, zero dominant: False
+W4 square Weyl: HYPOTHESES_HOLD_NUMERICALLY
+    s0 = 0.999975124690606
+    h = 1.4142135623730951
+    fast_modes_along_n = False
+    K_star = 0.19481493045534792
+    newton_residual = 5.03497249650713e-12
+    xi_on_axis_defect = 1.5700924586837752e-16
+    K_star_positive=True, H2=True, H3=True, H4prime=True, H8=True, H7=True, H9=generic, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 2, zero dominant: True
+W5 JDW L6d (hexagon): OUTSIDE_CLASS_LATTICE; HYPOTHESES_HOLD_NUMERICALLY
+    s0 = 1.5000001406508627
+    h = 2.0
+    fast_modes_along_n = False
+    K_star = 0.25531738469113074
+    newton_residual = 1.535027282673124e-10
+    xi_on_axis_defect = 0.0
+    K_star_positive=True, H2=True, H3=True, H4prime=True, H8=True, H7=True, H9=generic, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 1, zero dominant: True
+W6 cyclic s=4 (tetrahedron), node P: OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    s0 = 0.8047379064285154
+    h = 1.0
+    fast_modes_along_n = True
+    K_star = 0.09741697950202521
+    newton_residual = 5.523977400324739e-11
+    xi_on_axis_defect = 1.9229626863835638e-16
+    K_star_positive=True, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=generic
+    dominant points: 2, zero dominant: False
+Z1 octagon (1,0),(0,1),(1,1),(1,-1): FAILS_H3
+    s0 = 2.4141927639681997
+    h = 3.1622776601683795
+    fast_modes_along_n = False
+    K_star = 0.1820737606420928
+    newton_residual = 5.794579152396207e-11
+    xi_on_axis_defect = 0.03398939910649158
+    K_star_positive=True, H2=True, H3=False, H4prime=True, H8=True, H7=True, H9=None, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 2, zero dominant: True
+Z2 octagon (2,0),(0,2),(1,1),(1,-1): FAILS_H3
+    s0 = 3.414161563985675
+    h = 4.47213595499958
+    fast_modes_along_n = False
+    K_star = 0.18206717079100665
+    newton_residual = 7.804999735523473e-11
+    xi_on_axis_defect = 0.03398824847284115
+    K_star_positive=True, H2=True, H3=False, H4prime=True, H8=True, H7=True, H9=None, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 2, zero dominant: True
+Z3 regular hexagon: OUTSIDE_CLASS_LATTICE; HYPOTHESES_HOLD_NUMERICALLY
+    s0 = 1.5000001406508627
+    h = 2.0
+    fast_modes_along_n = False
+    K_star = 0.2553173847290924
+    newton_residual = 1.79667566526901e-10
+    xi_on_axis_defect = 0.0
+    K_star_positive=True, H2=True, H3=True, H4prime=True, H8=True, H7=True, H9=generic, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 1, zero dominant: True
+Z4 dodecagon, triangular lattice: OUTSIDE_CLASS_LATTICE; FAILS_H3
+    s0 = 4.0980379942301
+    h = 5.291502622129181
+    fast_modes_along_n = False
+    K_star = 0.36613102632968353
+    newton_residual = 4.823667418269103e-11
+    xi_on_axis_defect = 0.06457683520547312
+    K_star_positive=True, H2=True, H3=False, H4prime=True, H8=True, H7=True, H9=None, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 1, zero dominant: True
+Z5 octagon of Z1, other factor order: FAILS_H3
+    s0 = 2.41419246575745
+    h = 3.1622776601683795
+    fast_modes_along_n = False
+    K_star = 0.24160620714839087
+    newton_residual = 2.1202576222875627e-11
+    xi_on_axis_defect = 0.06934599921611415
+    K_star_positive=True, H2=True, H3=False, H4prime=True, H8=True, H7=True, H9=None, H6_left=True, H5=True, H10_sufficient=True
+    dominant points: 2, zero dominant: True
+Z6 rhombic dodecahedron: OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    s0 = 2.3094041560645744
+    h = 4.0
+    fast_modes_along_n = True
+    K_star = 0.3177759455065121
+    newton_residual = 5.169361495522634e-11
+    xi_on_axis_defect = 9.14650196280851e-12
+    K_star_positive=True, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=generic
+    dominant points: 4, zero dominant: False
+Z7 truncated octahedron: FAILS_H3_H4prime
+    s0 = 3.0292560616202184
+    h = 4.47213595499958
+    fast_modes_along_n = True
+    K_star = 0.5174240318669274
+    newton_residual = 2.599209057074938e-10
+    xi_on_axis_defect = 0.15933745770139804
+    K_star_positive=True, H2=True, H3=False, H4prime=False, H8=True, H7=True, H9=None
+    dominant points: 2, zero dominant: False
+Z8 axes + body diagonals: OUTSIDE_CLASS_LATTICE; FAILS_H3_H4prime
+    s0 = 3.7793187922059106
+    h = 5.196152422706632
+    fast_modes_along_n = True
+    K_star = 0.45402897939988396
+    newton_residual = 5.315578073943552e-11
+    xi_on_axis_defect = 0.1953780828104169
+    K_star_positive=True, H2=True, H3=False, H4prime=False, H8=True, H7=True, H9=None
+    dominant points: 2, zero dominant: False
+Z9 great rhombicuboctahedron: OUTSIDE_CLASS_LATTICE; FAILS_H3_H4prime
+    s0 = 4.3056106003594135
+    h = 5.916079783099616
+    fast_modes_along_n = True
+    K_star = 0.5613669707373878
+    newton_residual = 7.04783204853311e-11
+    xi_on_axis_defect = 0.09061156634692445
+    K_star_positive=True, H2=True, H3=False, H4prime=False, H8=True, H7=True, H9=None
+    dominant points: 2, zero dominant: False
+Z10 hexagonal prism: OUTSIDE_CLASS_LATTICE; FAILS_H3_H4prime
+    s0 = 1.5244652632940592
+    h = 2.5
+    fast_modes_along_n = True
+    K_star = 0.06338307936931042
+    newton_residual = 3.111918194594219e-11
+    xi_on_axis_defect = 0.2921081611382474
+    K_star_positive=True, H2=True, H3=False, H4prime=False, H8=True, H7=True, H9=None
+    dominant points: 2, zero dominant: False
+exit 0
