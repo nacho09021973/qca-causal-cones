@@ -16,7 +16,7 @@ the diagnostic used (imported read-only):
   is exactly the set of momenta whose character is trivial on L cap u^perp;
 - Bob's vertex V = v_* + 2 rho xi_*/|xi_*| (region rule), checked to be a
   step of maximal norm; P.choose_vertex is re-run and its distance to that V
-  recorded (with tied maximal steps its fallback is not reproducible).
+  recorded. Rows where no maximal step satisfies the rule are flagged.
 
 Floating point throughout; for display only.
 
@@ -176,10 +176,8 @@ def build(row, walk):
     vstar = np.array(row["v_star"])
     rho = row["rho"]
     # Region rule of the round-2 charter: B - A is the ball of radius 2 rho at V
-    # and v_* = V - 2 rho xi_*/|xi_*|, so the stored data fix V. The fallback of
-    # the zonotope script picks the first maximal step, and with ties that
-    # order is not reproducible across runs; take V from the data and check it
-    # is a maximal step.
+    # and v_* = V - 2 rho xi_*/|xi_*|, so the stored data fix V; take V from the
+    # data and check it is a maximal step.
     V_data = vstar + 2 * rho * xih
     norms = np.linalg.norm(step_pts, axis=1)
     near = np.linalg.norm(step_pts - V_data, axis=1)

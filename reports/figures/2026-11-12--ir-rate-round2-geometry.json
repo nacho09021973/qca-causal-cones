@@ -3,7 +3,7 @@
   "source": "reports/2026-11-12--general-ir-rate-round2.json",
   "source_sha256": "0fc88b52c6d21acca6f4bff19b8f49effa4076889ba28417de8936bfd1736648",
   "script": "scripts/build_ir_rate_round2_geometry.py",
-  "script_sha256": "4a460498c7b536b1b6ae6d2d3c7d0d5df10b1e7992c53d4520d68e77a31329a8",
+  "script_sha256": "6a0b1a1c909c4a74c221d078b6a987471c38d19c94a8eae2a3257efd0768271a",
   "imported": {
    "round2": "ea6f730cb4fec5043eb52fc5ec4ab7d99749dcbb79875745d410633b2769d60a",
    "polyhedra": "8cc62cbfd9b98f9c8c81b903fe4757031ff4bd1e6eceb193714002ea5e4ac935",

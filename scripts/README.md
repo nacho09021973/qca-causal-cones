@@ -16,8 +16,8 @@ minimiser satisfies `v_* + 2 rho xi_*/|xi_*| = V` for a maximal step `V`
 (the round-2 region rule); this fails for Z7, Z8, Z10 (gaps 0.23, 0.11,
 0.43), where the Newton step tracked a branch that the final global grid
 search did not select, so their stored `xi_*`, `v_*`, `K_*` are not
-reliable. It also records that with tied maximal steps the zonotope
-fallback vertex is not reproducible across runs.
+reliable. In the other thirteen rows the rebuilt vertex equals the one
+fixed by the stored data.
 
 ## Carrier dichotomy, Stage A(iv) diagnostic for R1 (2026-11-12)
 
