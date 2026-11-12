@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-12
 
+**IR-corona manuscript accepted as working version; general-rate charter drafted — 2026-11-12:**
+user «lo damos por bueno, vamos a intentar hacer el teorema general».
+Recorded as the decision to close repair rounds on the manuscript at tag
+`ir-corona-v3`; the scientific status of its claims is unchanged
+(PRELIMINARY, NOVELTY OPEN) and no promotion is recorded. Draft charter
+[general infrared operational rate](../theory/GENERAL_IR_RATE_GATE.md):
+question whether the CJWW rate is sharp, in limsup form, for
+infrared-admissible operational signals in the non-ballistic corona, under
+named hypotheses H1–H5. **DRAFT, not frozen; nothing authorized to be
+computed until the user freezes it.**
+
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:
 `research/inverse-gravity-design` (six commits of 2026-10-28: Lemma Layers
