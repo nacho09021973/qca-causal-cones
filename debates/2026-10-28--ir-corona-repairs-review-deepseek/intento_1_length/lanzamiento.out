@@ -1,0 +1,2 @@
+DeepSeek agotó max_tokens sólo en razonamiento; no emitió informe. DEEPSEEK_REASONING_EFFORT=low permite limitar el esfuerzo en un nuevo intento autorizado; no reserva tokens ni garantiza salida.
+deepseek: INCOMPLETE (salida=0, fin=length). No se crea informe; ver estado_deepseek.json y deepseek.log

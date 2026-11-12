@@ -1,0 +1,63 @@
+# Sanhedrin run log
+script-commit: 7e011a4fed1b8162b58e6981c420cfd10756e3ea
+script-sha256: 13a5c79e9533e5c12006ad71411c4ca60d1aaa7720587d0c403c72b8d067d300
+record:       2026-10-28--ir-corona-sanedrin.md
+started:      2026-10-28T13:31:20Z
+command:      sanedrin -m astra,ciro,abner,gemini -r 2 -i es -p 800 -R /home/ignac/sanedrin/reglas/base.md -c papers/ir-corona/ir-corona.tex -c formal/README.md -c sources/README.md -o debates/2026-10-28--ir-corona-sanedrin.md debates/2026-10-28--ir-corona-sanedrin-request.md
+cwd:          /home/ignac/qca-causal-cones
+project:      /home/ignac/qca-causal-cones
+topic:        debates/2026-10-28--ir-corona-sanedrin-request.md
+rules:        /home/ignac/sanedrin/reglas/base.md
+rounds:       2
+words/turn:   800
+timeout:      900s
+retries:      1
+retry-delay:  2s
+max-failures: 2
+claude-model: claude-opus-5-5
+astra-model:  gpt-6-astra
+ciro-model:   grok-4.6
+gemini-model: gemini-3.1-pro-preview
+protocol:     classic (2 rounds)
+access:       sealed (no files, shell, web or MCP; record only)
+host:         IGNACIO — Linux 6.6.87.2-microsoft-standard-WSL2
+claude:       2.1.312 (Claude Code)
+codex:        codex-cli 0.165.0
+grok:         grok 1.0.34 (3736acbc8658) [stable]
+deepseek:     api.deepseek.com/deepseek-v4-pro
+attachment:   papers/ir-corona/ir-corona.tex (7423 words)
+attachment:   formal/README.md (697 words)
+attachment:   sources/README.md (329 words)
+
+# timestamps are UTC (ISO 8601)
+
+2026-10-28T13:31:22Z  round 1 | ASTRA | send | context 9414 words | access sellado
+2026-10-28T13:35:45Z  round 1 | ASTRA | recv | 263s | 532 words | ok
+2026-10-28T13:35:45Z  round 1 | CIRO | send | context 9954 words | access sellado
+2026-10-28T13:39:56Z  round 1 | CIRO | recv | 251s | 682 words | ok
+2026-10-28T13:39:56Z  round 1 | ABNER | send | context 10641 words | access sellado
+2026-10-28T13:53:03Z  round 1 | ABNER | recv | 787s | 370 words | ok
+2026-10-28T13:53:03Z  round 1 | GEMINI | send | context 11016 words | access sellado
+2026-10-28T13:55:07Z  retry 1 | GEMINI | intento 2/2
+2026-10-28T13:57:07Z  round 1 | GEMINI | recv | 244s | 18 words | FAILED
+2026-10-28T13:57:07Z  round 2 | CIRO | send | context 11037 words | access sellado
+2026-10-28T13:59:27Z  round 2 | CIRO | recv | 140s | 442 words | ok
+2026-10-28T13:59:28Z  round 2 | ABNER | send | context 11484 words | access sellado
+2026-10-28T14:00:33Z  round 2 | ABNER | recv | 65s | 359 words | ok
+2026-10-28T14:00:33Z  round 2 | GEMINI | send | context 11848 words | access sellado
+2026-10-28T14:01:09Z  round 2 | GEMINI | recv | 36s | 535 words | ok
+2026-10-28T14:01:09Z  round 2 | ASTRA | send | context 12388 words | access sellado
+2026-10-28T14:02:20Z  round 2 | ASTRA | recv | 71s | 535 words | ok
+2026-10-28T14:02:20Z  round Residuo | ASTRA | send | context 12932 words | access sellado
+2026-10-28T14:02:50Z  round Residuo | ASTRA | recv | 30s | 172 words | ok
+2026-10-28T14:02:50Z  round Residuo | CIRO | send | context 13109 words | access sellado
+2026-10-28T14:03:50Z  round Residuo | CIRO | recv | 60s | 138 words | ok
+2026-10-28T14:03:50Z  round Residuo | ABNER | send | context 13252 words | access sellado
+2026-10-28T14:04:32Z  round Residuo | ABNER | recv | 42s | 150 words | ok
+2026-10-28T14:04:32Z  round Residuo | GEMINI | send | context 13407 words | access sellado
+2026-10-28T14:04:47Z  round Residuo | GEMINI | recv | 15s | 166 words | ok
+2026-10-28T14:04:47Z  round Veredicto | ASTRA | send | context 13619 words | access sellado
+2026-10-28T14:05:39Z  round Veredicto | ASTRA | recv | 52s | 505 words | ok
+2026-10-28T14:05:39Z  round Veredicto | ASTRA | send | context 954 words | access sellado
+2026-10-28T14:06:05Z  round Veredicto | ASTRA | recv | 26s | 511 words | ok
+2026-10-28T14:06:05Z  END | record: debates/2026-10-28--ir-corona-sanedrin.md | wall clock 2085s

@@ -1,0 +1,24 @@
+deepseek-v4-pro
+{
+  "id": "47977536-3420-4689-b28a-474736b9703f",
+  "object": "chat.completion",
+  "created": 1793203008,
+  "model": "deepseek-v4-pro",
+  "usage": {
+    "prompt_tokens": 31387,
+    "completion_tokens": 65361,
+    "total_tokens": 96748,
+    "prompt_tokens_details": {
+      "cached_tokens": 31360
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 62773
+    },
+    "prompt_cache_hit_tokens": 31360,
+    "prompt_cache_miss_tokens": 27
+  },
+  "system_fingerprint": "a307abda487cd1b463329ccb945ce396",
+  "finish_reasons": [
+    "stop"
+  ]
+}

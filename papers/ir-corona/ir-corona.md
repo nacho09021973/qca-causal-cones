@@ -1,7 +1,9 @@
 # An infrared operational response outside the emergent light cone of a three-dimensional Weyl quantum walk
 
 > **Markdown transcription for review.** Source: `papers/ir-corona/ir-corona.tex`
-> (pre-publication revision of 2026-09-18). Section, theorem, equation and
+> (pre-publication revision of 2026-09-18; Lemma 7.4, the proof of Theorem 7.5
+> and the caption of Table 1 updated 2026-10-28; October and November 2026
+> repairs reconciled 2026-11-12). Section, theorem, equation and
 > reference numbers match the compiled PDF. If this file and the `.tex`
 > disagree, the `.tex` is authoritative. The prior art of the revised Markdown
 > draft (`papers/ir-corona-operational-response-draft.md`, commit `9812cbc`) is
@@ -55,12 +57,12 @@ quantitative accuracy of the exact-signal asymptotic at a specified size.
 ## 1. Introduction
 
 Quantum cellular automata and quantum walks are unitary dynamics on a lattice
-with a strict bound on the speed of propagation [18, 2, 12]. After $N$ steps
+with a strict bound on the speed of propagation [20, 2, 14]. After $N$ steps
 of a finite-range walk, the propagator vanishes identically outside
 $N C_{\mathrm{micro}}$. Here $C_{\mathrm{micro}}=\operatorname{conv}F$ is the
 convex hull of the one-step jumps. Many such walks have a conical point in
 their dispersion relation. Near it, the long-wavelength dynamics is that of a
-Weyl or Dirac equation with a speed of light $c_{\mathrm{IR}}$ [4, 11, 5, 10].
+Weyl or Dirac equation with a speed of light $c_{\mathrm{IR}}$ [4, 13, 5, 12].
 
 In spatial dimension $d\ge2$ the two causal structures cannot coincide. The
 infrared cone of a Weyl node is a Euclidean ball, and $C_{\mathrm{micro}}$ is
@@ -80,7 +82,7 @@ Three questions must be kept apart.
   $4^{-N}$ (Proposition 2.2). One-step Alice/Bob protocols built from
   localized operations turn this into a finite distinguishability (for
   instance $3/128$ after one step for a suitable localized preparation, as
-  recorded in [17]). Such protocols are broadband: their operations are not
+  recorded in [19]). Such protocols are broadband: their operations are not
   concentrated near the Weyl node.
 - **(I) Infrared operational response.** Require the preparation, the encoder
   and the detector to be infrared-admissible, and put Bob outside the
@@ -180,7 +182,7 @@ is a flat direction of the exponent that is confined only by the profiles.
 ### Relation to the literature
 
 Ballistic scaling and weak limit theorems for translation-invariant quantum
-walks are classical [14, 13, 1]: $Q(t)/t$ converges in distribution to the
+walks are classical [16, 15, 1]: $Q(t)/t$ converges in distribution to the
 group velocity distributed by the initial state. Cedzich, Joye, Werner and
 Werner [9] proved that the probability of velocities outside the support of
 this limit decays exponentially. They gave a method for bounding the rate
@@ -200,38 +202,45 @@ spectral bound used here and identifies the regional minimiser; the
 operational prefactor is a separate calculation.
 
 Sharp asymptotics with prefactors outside the propagation region are known in
-one dimension. Sunada and Tate [19] obtained exact local asymptotics of
+one dimension. Sunada and Tate [21] obtained exact local asymptotics of
 transition probabilities, including exponential decay with an explicit
 prefactor in the region hidden from the weak limit. Carteret, Richmond and
 Temme [8] obtained uniformly convergent asymptotics in the exponentially
 decaying regions of coined walks on the line. These are the closest
-precursors of the saddle-point analysis of Section 7. In two dimensions,
+precursors of the saddle-point analysis of Section 7. Cedzich et al. note
+that, to their knowledge, these two studies are the only asymptotic analyses
+outside the propagation region [9, Sec. 5.1]; their own estimates are upper
+bounds, and they leave lower bounds aside because these would depend on the
+state. In two dimensions,
 Baryshnikov, Brady, Bressler and Pemantle [3] analysed quantum walks through
 multivariate generating functions and determined the limiting profile in the
 feasible region, outside of which the probability is exponentially small;
 the shape theorem they prove gives $O(e^{-cn})$ uniformly on compact subsets
 of the complement of the feasible region, and prefactor asymptotics only
-inside it [20, Thms. 2.2–2.3]. Analytic combinatorics in several variables
-[16] provides general transfer theorems for multivariate coefficient
+inside it [22, Thms. 2.2–2.3]. Baryshnikov et al. note that explicit amplitudes
+at specific points outside the feasible set can be obtained by their method
+instance by instance, and that the extension to dimension three should be
+modest. Analytic combinatorics in several variables
+[18] provides general transfer theorems for multivariate coefficient
 asymptotics, whose standard sharp forms assume minimality hypotheses on the
 critical points. In its quantum-walk examples the asymptotics hold uniformly
 for directions in compact subsets of the feasible region, and outside it the
-conclusion is exponential decay [22, Thm. 12.12 and its proof, Thm. 12.14];
+conclusion is exponential decay [24, Thm. 12.12 and its proof, Thm. 12.14];
 the quadratic-point theory gives asymptotics uniformly over compact subcones
 of the interior of the dual cone and only exponential smallness outside it
-[21, Thm. 3.7]. Cedzich, Joye, Werner and Werner count two studies of the
-asymptotics outside the propagation region, both of walks on the line
-[9, Sec. 5.1], namely [8, 19]. We do not claim that
+[23, Thm. 3.7]. We do not claim that
 these methods cannot reproduce the present result. We are not aware of a
 transfer theorem that yields it directly, and we carry out the model-specific
 saddle-point analysis explicitly.
 The general smooth-point theorem covers convergent Laurent expansions,
 finite sets of minimal contributing points and uniformity over compact
-direction sets [22, Thms. 9.5 and 9.12, pp. 264–267]. Thus restrictions of
+direction sets [24, Thms. 9.5 and 9.12, pp. 264–267]. Thus restrictions of
 the quantum-walk examples do not restrict the general theory. A full
 application to the matrix space-time generating function, including
 numerator cancellations and minimality for the chosen expansion, is not
 supplied here.
+Exact path-sum solutions of Weyl walks in $2+1$ and $3+1$ dimensions are
+known [10, 11]; they do not analyse the asymptotics outside the cone.
 
 
 What we add is a *lower* bound, in the strong form of exact leading
@@ -248,7 +257,7 @@ priority claim is made here. Exponential decay outside the propagation
 region, large-deviation rates, Weyl-cone dispersion and microscopic support
 outside an emergent cone all have prior art, cited above.
 
-Lieb–Robinson bounds [15, 7] give exponentially small leakage outside a
+Lieb–Robinson bounds [17, 7] give exponentially small leakage outside a
 linear cone for continuous-time lattice dynamics. For quantum walks the
 strict cone $C_{\mathrm{micro}}$ plays that role exactly, and the question
 here is the one *inside* it.
@@ -556,7 +565,7 @@ $$
 
 **Remark 4.2 (Formal verification).** The kernel and operator-bound components
 of Theorem 4.1 and the abstract signal inequality are machine-checked in
-Lean 4 with Mathlib (`formal/` in [17]), for every $N\ge2$ and without
+Lean 4 with Mathlib (`formal/` in [19]), for every $N\ge2$ and without
 additional axioms. This covers the kernel bound, the geometry (6), the
 counting of lattice points, the operator bound on $T_N$, and the step
 $\delta\le4T_N$. The formal proof bounds the matrix powers through
@@ -650,9 +659,11 @@ explicit, and neither is $N_*$. Theorem 4.4 therefore does not assert
 $\delta_{M,M_B}(N)>0$ at any specified $N$. It also does not say from which
 $N$ on the leading term is numerically accurate (Section 8).
 
-**Table 1.** Mean leading coefficients
+**Table 1.** Reference coefficients
 $\overline{C}_{M,M_B}=\mathcal K c_r\overline\Gamma\ell_0$ and the uniform
-bound on their relative oscillation in $\theta$. Values are certified by
+bound on $|C(\theta)/\overline C-1|$. $\overline C$ is not the average of
+$C(\theta)$ over $\theta$: the average of $\Gamma_+$ exceeds $\overline\Gamma$
+and that of $\Gamma_-$ is positive. Values are certified by
 interval arithmetic (Appendix A). Rows with $M=I$ are reference controls.
 
 | $M$ | $M_B$ | $\overline{C}_{M,M_B}$ | $\sup_\theta \lvert C/\overline{C}-1\rvert$ |
@@ -1221,14 +1232,18 @@ $\eta=\eta_n\hat u+\eta_t$ with $\eta_t\perp\hat u$.
 
   $$
   \mathfrak A_f(\eta)=N^{-5/2}\tfrac{16\pi}{\sqrt3}\varphi_\partial\bigl[\mathcal S_+(\tau;\theta_N)+\mathcal E_A\bigr]\chi,\qquad
-  \mathfrak B_w(\eta)=N^{-5/2}\tfrac{32}{\sqrt3}\,R_0(w_*)^\dagger M_B\bigl[\mathcal S_+(\tau;\theta_N)+\mathcal E_B\bigr],
+  \mathfrak B_w(\eta)=N^{-5/2}\tfrac{32}{\sqrt3}\bigl[R_0(w_*)^\dagger M_B\,\mathcal S_+(\tau;\theta_N)+\mathbf E_B\bigr],
   $$
 
-  with $|\mathcal E_{A,B}|\le C(N^{-1/2}+|\eta_n|)$.
-- (c) Near $\pi u$ the same holds with $\mathcal S_-$ in place of
-  $\mathcal S_+$. The alternating sign comes from the parity
-  $(-1)^{N+u\cdot(y-x)}=(-1)^{j+j'}$, combined with
-  $S^N\mapsto(-1)^N(S^N)^T$.
+  where $\mathcal E_A$ is a scalar, $\mathbf E_B$ is a row vector, and
+  $|\mathcal E_A|,\ \|\mathbf E_B\|\le C(N^{-1/2}+|\eta_n|)$ uniformly in
+  $\theta_N$.
+- (c) Near $\pi u$ the same holds with $\mathcal S_-$ in place of $\mathcal S_+$, each
+  expansion multiplied by the global phase $e^{-i\pi\theta_N}$:
+  $e^{i\pi u\cdot(x-x_*)}=e^{-i\pi\theta_N}(-1)^j$ and
+  $e^{-i\pi u\cdot(y-y_*)}=e^{-i\pi\theta_N}(-1)^{j'}$. The alternating
+  sign gives $\mathcal S_-$. The residuals obey the same bounds.
+
 - (d) For $\eta_0\in\Sigma\setminus\{0,\pi u\}$ and $|\eta|\le r_0$,
   $|\mathfrak A_f(\eta_0+\eta)|\le CN^{-4}$.
 
@@ -1239,19 +1254,20 @@ $\varrho=\sqrt{2R\delta-\delta^2}=O(\sqrt N)$ and has size $O(N^{-7/2}\delta^2)$
 Planes with $\delta>R/2$ contribute $O(e^{-cN})$.  This gives (a).
 
 For (b), apply Poisson summation on each plane.  The $m=0$ term is
-$\frac1{\sqrt3}\int e^{i\eta_t\cdot u_\perp}G_0(u_\perp)\,d^2u_\perp$.  The
-terms $m\ne0$ are bounded by $\|\partial^3G_0\|_{\mathcal M}|2\pi m-\eta_t|^{-3}$,
+$\frac1{\sqrt3}\int e^{i\eta_t\cdot u_\perp}G_\delta(u_\perp)\,d^2u_\perp$, where
+$G_\delta=s_N\varphi_N$ on the plane. Decreasing $r_0$ if necessary,
+$r_0\le\frac12\min_{m\ne0}|2\pi m|$ over $m\in\Lambda_0^*$, so
+$|2\pi m-\eta_t|\ge\pi|m|$ for $m\ne0$. The
+terms $m\ne0$ are bounded by $\|\partial^3G_\delta\|_{\mathcal M}|2\pi m-\eta_t|^{-3}$,
 since the profile vanishes quadratically on the rim and its third
 derivative is a finite measure. Before the resource prefactor, its total
 variation is $O(\delta^{3/2}R^{-1/2})$: the interior derivative is
 $O(|u|/R^2)$ and the boundary measure has density $O(\delta/R)$ on
 a rim of length $O(\sqrt{R\delta})$. Including the prefactors gives
-$\|\partial^3G_0\|_{\mathcal M}=O(N^{-4}\delta^{3/2})$, with additional
+$\|\partial^3G_\delta\|_{\mathcal M}=O(N^{-4}\delta^{3/2})$, with additional
 polynomial depth factors when derivatives hit the resource. These are
-absolute bounds uniform at $\delta=0$. Choose $r_0$ below half the
-shortest nonzero reciprocal-lattice length in the $2\pi$ normalization.
-Also require $r_0$ smaller than half the positive distance of each of the
-six non-trivial tangential characters from $2\pi\Lambda_0^*$.
+absolute bounds uniform at $\delta=0$. The further condition on $r_0$
+needed at the six non-trivial characters is imposed in (d).
 The inverse-cube sum converges on this two-dimensional lattice;
 translations of the planes add only unit-modulus phases. All polynomial
 depth moments are uniformly summable against $e^{-t_*(\theta_N+j)}$.
@@ -1268,26 +1284,84 @@ $R-\sqrt{(R-\delta)^2+|u_\perp|^2}=\delta-|u_\perp|^2/(2R)+O(\delta^2/R)$.
 Using $x\mapsto(x_+)^2$ bounds the absolute scaled error by a polynomial
 in depth times $R^{-1}$; deeper planes are exponentially suppressed.
 Collecting the factors
-$\frac1{\sqrt3}\cdot\frac{32\pi}{N^2}\cdot N^{-3/2}\varphi_\partial\cdot2R$ gives
-the prefactor of $\mathfrak A_f$.  For $\mathfrak B_w$ the factors are
-$\frac1{\sqrt3}\cdot\frac{64}{N^2}\cdot N^{-3/2}R_0(w_*)^\dagger\cdot2R$, using
-Lemma 7.2, the smoothness of $R_0$ and $M_B^\dagger=M_B$.
-For Bob's Poisson remainder one uses the exact unrestricted free tail:
-its smooth Fourier interpolation has support in $|p|\le N^{-1}$, hence
-$\|\partial^\beta\widetilde r\|_\infty\le C_\beta N^{-3/2-|\beta|}$
-by the Fourier $L^1$ bound. Leibniz's rule through order three for
-$h_N\widetilde r$ therefore gives the same variation estimates.
-The cutoff causes no extra boundary term beyond the profile's
-third-derivative measure, since $h_N$ vanishes quadratically. (c)
-follows from Lemma 7.1(b) and the parity identity.  (d): by
-Lemma 7.1(c), the character is non-trivial on each plane.  The
-Poisson sum therefore has no $m=0$ term, and the remaining terms are
-$O(N^{-4})$.
+$\frac1{\sqrt3}\cdot\frac{32\pi}{N^2}\cdot N^{-3/2}\varphi_\partial\cdot2R$
+gives the prefactor of $\mathfrak A_f$.
+
+For $\mathfrak B_w$, the spinor direction of $r$ varies across $\mathcal B_N$, so
+we split it off before summing. Note that $y_*=Nw_*$. On $\mathcal B_N$,
+$|y/N|\ge\sqrt3-\frac14$, and $R_0$ is smooth there. On the plane at depth
+$\delta'$, $|y/N-w_*|\le C(1+\delta')N^{-1/2}$. With Lemma 7.2,
+
+$$
+r(y)=N^{-3/2}R_0(w_*)+\rho(y),\qquad\|\rho(y)\|\le CN^{-2}(1+\delta').
+$$
+
+The term with $R_0(w_*)$ is a fixed spinor times a scalar layer sum of $h_N$.
+That sum is treated as for $\mathfrak A_f$, with the factors
+$\frac1{\sqrt3}\cdot\frac{64}{N^2}\cdot2R$, and gives
+$R_0(w_*)^\dagger M_B[\mathcal S_++\mathcal E]$ with a scalar
+$|\mathcal E|\le C(N^{-1/2}+|\eta_n|)$; here $M_B^\dagger=M_B$. The term with
+$\rho$ is bounded in norm without using oscillation. The plane at depth
+$\delta'$ carries the weight $e^{-t_*(\theta_N+j')}$, has $O(1+N\delta')$ sites
+in the support of $h_N$, and there $h_N\le64\delta'^2/N^2$. Hence the term
+is at most $C\sum_{j'}e^{-t_*(\theta_N+j')}N^{-3}(1+\delta')^4\le CN^{-3}$,
+uniformly in $\theta_N$ and $\eta$. Put $\mathbf E_B$ equal to
+$\mathcal E\,R_0(w_*)^\dagger M_B$ plus this term divided by
+$N^{-5/2}\frac{32}{\sqrt3}$. Then
+$\|\mathbf E_B\|\le C(N^{-1/2}+|\eta_n|)$.
+
+(c): the two phase identities follow from $u\cdot(x-x_*)=-(\theta_N+j)$ and
+$u\cdot(y-y_*)=\theta_N+j'$. The
+bound on the $\rho$ term in (b) does not use the phases, so it holds near
+$\pi u$ unchanged.
+
+(d): write $\eta_{0,t}$ for the projection of $\eta_0$ onto the plane
+$\hat u^\perp$. On a plane, the phase $e^{i(\eta_0+\eta)\cdot x}$ restricted
+to the translates by $\Lambda_0$ depends only on $\eta_{0,t}+\eta_t$. Poisson
+summation on the plane gives the frequencies $2\pi m-\eta_{0,t}-\eta_t$,
+$m\in\Lambda_0^*$, and the term $m=0$ is present. By
+Lemma 7.1(c) the character $e^{i\eta_0\cdot x}$ is non-trivial
+on $\Lambda_0$. So $\eta_{0,t}\notin2\pi\Lambda_0^*$, and
+$d_0=\min_{\eta_0}\operatorname{dist}(\eta_{0,t},2\pi\Lambda_0^*)>0$, where
+the minimum is over the six points. Decreasing $r_0$ if necessary,
+$r_0\le d_0/2$. This keeps Lemma 7.1(d), and (e) holds for every
+$r_0>0$ by the same compactness argument. Then every frequency, including
+$m=0$, has modulus at least $d_0/2$. Each term is bounded by
+$\|\partial^3G_\delta\|_{\mathcal M}|2\pi m-\eta_{0,t}-\eta_t|^{-3}$, and
+$\sup_{|\eta_t|\le r_0}\sum_{m\in\Lambda_0^*}|2\pi m-\eta_{0,t}-\eta_t|^{-3}<\infty$,
+because $\Lambda_0^*$ is two-dimensional. Hence the plane contributes at
+most $C\|\partial^3G_\delta\|_{\mathcal M}$, where $G_\delta=s_N\varphi_N$ on
+the plane.
+
+It remains to bound $\|\partial^3G_\delta\|_{\mathcal M}$ for $\delta\le R/2$.
+Write $s_N=S(\varepsilon_\perp)$ with $S(e)=\sin(\kappa e^2)\mathbf 1_{e\ge0}$
+and $\kappa=32\pi/N^2$. On the support, $\varepsilon_\perp\le\delta$,
+$|u_\perp|^2\le2R\delta$, $|\nabla\varepsilon_\perp|\le(2\delta/R)^{1/2}$,
+$|\nabla^2\varepsilon_\perp|\le1/R$ and $\nabla^3\varepsilon_\perp=0$. Also
+$|S'|\le C\kappa e$, $|S''|\le C\kappa$ and $|S'''|\le C\kappa^2e$. The
+second derivative of $s_N$ jumps across the rim by at most
+$2\kappa|\nabla\varepsilon_\perp|^2\le4\kappa\delta/R$, on a circle of length
+$O((R\delta)^{1/2})$. The interior third derivative is at most
+$C(\kappa^2\delta^{5/2}R^{-3/2}+\kappa\delta^{1/2}R^{-3/2})$, on an area
+$O(R\delta)$. Hence
+$\|\partial^3s_N\|_{\mathcal M}\le C(\kappa\delta^{3/2}R^{-1/2}+\kappa^2\delta^{7/2}R^{-1/2})\le CN^{-5/2}(1+\delta)^{3/2}$,
+since $\delta\le N$. In the same way,
+$\|\partial^as_N\|_{L^1}\le C\kappa\,\delta^{3-a/2}R^{1-a/2}$ for
+$a\le2$. Moreover $\|\partial^b\varphi_N\|_\infty\le CN^{-3/2-b}$, because
+$|\partial^b\Phi_0|\le c_r\int|g||q|^b$. By Leibniz,
+
+$$
+\|\partial^3G_\delta\|_{\mathcal M}\le CN^{-4}(1+\delta)^3 .
+$$
+
+With the plane weight $e^{-t_*(\theta_N+j)}$, the planes $\delta\le R/2$
+sum to $CN^{-4}\sum_je^{-t_*(\theta_N+j)}(1+\theta_N+j)^3\le CN^{-4}$,
+uniformly in $\theta_N$. The planes with $\delta>R/2$ contribute
+$O(e^{-cN})$, as in (a).
+
 All bounds are uniform in $0<\theta_N<1$: depth sums are bounded by
 $\sum_{j\ge0}e^{-t_*j}\operatorname{poly}(1+j)$. At zero depth the
-profile vanishes, with no division by the depth.
-
- ∎
+profile vanishes, with no division by the depth. ∎
 
 ### 7.7. Assembly
 
@@ -1308,9 +1382,8 @@ $$
 $B(\eta_0,r_0)$ the contribution is $O(Ne^{-cN}N^{-5})$. The six points of
 $\Sigma$ with non-trivial characters give
 $O(N^{-4}\cdot N^{-5/2}\cdot N^{-3/2})=O(N^{-8})$, using the Gaussian decay
-of $\widetilde S_N$. The half-period identities of
-Lemma 7.1(b) transport these local spectral estimates to
-all eight points. The reciprocal eigenvalue branch has a bounded
+of $\widetilde S_N$ near those points, which Lemma 7.1(b) transfers from the
+ball at $0$ of Lemma 7.1(d). The reciprocal eigenvalue branch has a bounded
 projector on each small neighbourhood and is exponentially suppressed
 after normalization. Its ratio to the dominant branch is
 $e^{-2N\Phi_*}$ at the centre; shrinking the neighbourhood gives a
@@ -1318,9 +1391,20 @@ uniform $O(e^{-cN})$ bound with $c>0$. Near $\eta_0\in\{0,\pi u\}$ we make three
 First, $\widetilde S_Ne^{-iN\eta\cdot v_*}$ is replaced by
 $e^{-N\eta^TQ\eta/2}P$ (respectively $\overline P$), at cost
 $N^{-5}\int(c_P|\eta|+Nc_3|\eta|^3)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$.
-Second, the layers are replaced by their leading forms, at cost
-$N^{-5}\int(N^{-1/2}+|\eta_n|)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$. Third, the
-integral is extended to $\mathbb R^3$, at cost $O(e^{-cNr_0^2})$. What
+Second, the layers are replaced by their leading forms. The difference is
+bounded in norm by $\|\mathfrak B_w-\mathfrak B^{(0)}\|\,\|\widetilde S_N\|\,|\mathfrak A_f|+\|\mathfrak B^{(0)}\|\,\|\widetilde S_N\|\,|\mathfrak A_f-\mathfrak A^{(0)}|$,
+where $\mathfrak A^{(0)},\mathfrak B^{(0)}$ are the leading forms of
+Lemma 7.4(b)--(c). Since $\mathcal S_\pm$ are bounded
+(Lemma 7.3), $\|\mathfrak B^{(0)}\|\le CN^{-5/2}$, and
+Lemma 7.4(a)--(c) bound the cost. Here $\widetilde S_N$ may be
+the symbol or its Gaussian replacement: by Lemma 7.1(d) both
+are bounded by $Ce^{-N\eta^TQ\eta/4}$. The cost is
+$N^{-5}\int(N^{-1/2}+|\eta_n|)e^{-N\eta^TQ\eta/4}d\eta=O(N^{-7})$. Third,
+the integral is extended to $\mathbb R^3$, at cost $O(e^{-cNr_0^2})$. Near
+$\pi u$, the phases of Lemma 7.4(c), the factor $(-1)^N$ from
+$S^N\mapsto(-1)^N(S^N)^T$ and $e^{-iN\pi u\cdot v_*}$ cancel:
+$u\cdot Nv_*=3N-\sqrt3N/2$, so the product is
+$e^{-2\pi i\theta_N}e^{i\pi\sqrt3N/2}=1$. What
 remains is
 
 $$
@@ -1445,7 +1529,7 @@ on the exponentially small signal scale.
    effective at finite $N$.
 4. Many-particle and second-quantized versions. The upper bound extends to
    even local unitaries on the full CAR algebra, with prefactor $288N^7$ in
-   place of $36N^4$ [17], but no lower bound is available there.
+   place of $36N^4$ [19], but no lower bound is available there.
 
 ---
 
@@ -1453,7 +1537,7 @@ on the exponentially small signal scale.
 
 The kernel, geometry, counting and operator-bound components of Theorem 4.1,
 the abstract one-particle signal inequality, and the inclusion part of Lemma 5.1 are formally
-verified in Lean 4/Mathlib (`formal/` in [17]). The identification with the
+verified in Lean 4/Mathlib (`formal/` in [19]). The identification with the
 protocol and the second-quantized distance $D_B$ are not formalized, as
 specified in the formal-verification remark after Theorem 4.1.
 The boundary equality characterization of Lemma 5.1 is also outside the
@@ -1461,7 +1545,7 @@ formalization and rests on the written proof.
 The asymptotic results (Theorems 4.3 and 4.4) are not.
 The analytic arguments above are complete up to the following verified
 computations. All of them are performed by the certificate scripts listed in
-[17], at the commit given there, with Python 3.12.3, SymPy 1.14.0 and mpmath
+[19], at the tag given there, with Python 3.12.3, SymPy 1.14.0 and mpmath
 1.3.0. Exact identities use SymPy. Enclosures use the interval context
 `mpmath.iv` with 50 digits, and only its elementary operations: the four
 arithmetic operations, integer powers by repeated multiplication,
@@ -1499,7 +1583,7 @@ $\sigma_3$ are the negatives of the rows for $I$.
 
 **Finite-$N$ diagnostics.** These are floating-point and not used in any
 proof; they use NumPy 1.26.4 and are produced by the `--diagnostics` option
-of the coefficient certificate [17]. A floating-point FFT evaluation of the
+of the coefficient certificate [19]. A floating-point FFT evaluation of the
 exact discrete convolution formula in tilted variables ("brute") was compared
 with a reference that keeps the exact lattice geometry but replaces the
 kernel by its Gaussian form at the eight points of $\Sigma$. Their ratio
@@ -1542,40 +1626,46 @@ $N=40$ and $8\cdot10^{-9}$ at $N=640$.
 9. C. Cedzich, A. Joye, A. H. Werner, R. F. Werner, *Exponential tail
    estimates for quantum lattice dynamics*, Ann. Henri Poincaré **27**,
    2843–2870 (2026), doi:10.1007/s00023-025-01598-4, arXiv:2408.02108.
-10. G. M. D'Ariano, M. Erba, P. Perinotti, *Isotropic quantum walks on
+10. G. M. D'Ariano, N. Mosco, P. Perinotti, A. Tosini, *Discrete Feynman
+    propagator for the Weyl quantum walk in 2+1 dimensions*, EPL **109**,
+    40012 (2015), arXiv:1410.6032.
+11. G. M. D'Ariano, N. Mosco, P. Perinotti, A. Tosini, *Path-sum solution of
+    the Weyl quantum walk in 3+1 dimensions*, Phil. Trans. R. Soc. A **375**,
+    20160394 (2017), arXiv:1705.08552.
+12. G. M. D'Ariano, M. Erba, P. Perinotti, *Isotropic quantum walks on
     lattices and the Weyl equation*, Phys. Rev. A **96**, 062101 (2017),
     arXiv:1708.00826.
-11. G. M. D'Ariano, P. Perinotti, *Derivation of the Dirac equation from
+13. G. M. D'Ariano, P. Perinotti, *Derivation of the Dirac equation from
     principles of information processing*, Phys. Rev. A **90**, 062106
     (2014), arXiv:1306.1934.
-12. T. Farrelly, *A review of quantum cellular automata*, Quantum **4**, 368
+14. T. Farrelly, *A review of quantum cellular automata*, Quantum **4**, 368
     (2020), arXiv:1904.13318.
-13. G. Grimmett, S. Janson, P. F. Scudo, *Weak limits for quantum random
+15. G. Grimmett, S. Janson, P. F. Scudo, *Weak limits for quantum random
     walks*, Phys. Rev. E **69**, 026119 (2004), arXiv:quant-ph/0309135.
-14. N. Konno, *Quantum random walks in one dimension*, Quantum Inf. Process.
+16. N. Konno, *Quantum random walks in one dimension*, Quantum Inf. Process.
     **1**, 345–354 (2002).
-15. E. H. Lieb, D. W. Robinson, *The finite group velocity of quantum spin
+17. E. H. Lieb, D. W. Robinson, *The finite group velocity of quantum spin
     systems*, Commun. Math. Phys. **28**, 251–257 (1972).
-16. R. Pemantle, M. C. Wilson, S. Melczer, *Analytic Combinatorics in Several
+18. R. Pemantle, M. C. Wilson, S. Melczer, *Analytic Combinatorics in Several
     Variables*, 2nd ed., Cambridge University Press (2024),
     doi:10.1017/9781108874144.
-17. Repository `nacho09021973/qca-causal-cones`,
-    <https://github.com/nacho09021973/qca-causal-cones>, commit
-    `551addabe28b` (branch `research/b-infinity-post-s4-gate`). Certificates
+19. Repository `nacho09021973/qca-causal-cones`,
+    <https://github.com/nacho09021973/qca-causal-cones>, tag
+    `ir-corona-v1`. Certificates
     `scripts/verify_scaled_ir_gate.py`,
     `scripts/verify_regional_directional_asymptotics_gate.py`,
     `scripts/verify_regional_laplace_coefficient_gate.py`,
     `scripts/verify_directional_saturation.py`; Lean formalization in
     `formal/`.
-18. B. Schumacher, R. F. Werner, *Reversible quantum cellular automata*,
+20. B. Schumacher, R. F. Werner, *Reversible quantum cellular automata*,
     arXiv:quant-ph/0405174.
-19. T. Sunada, T. Tate, *Asymptotic behavior of quantum walks on the line*,
+21. T. Sunada, T. Tate, *Asymptotic behavior of quantum walks on the line*,
     J. Funct. Anal. **262**, 2608–2645 (2012), arXiv:1108.1878.
-20. A. Bressler, T. Greenwood, R. Pemantle, M. Petkovšek, *Quantum random
+22. A. Bressler, T. Greenwood, R. Pemantle, M. Petkovšek, *Quantum random
     walk on the integer lattice: examples and phenomena*, arXiv:0903.2967.
-21. Y. Baryshnikov, R. Pemantle, *Asymptotics of multivariate sequences,
+23. Y. Baryshnikov, R. Pemantle, *Asymptotics of multivariate sequences,
     part III: quadratic points*, arXiv:0810.4898.
-22. R. Pemantle, M. C. Wilson, S. Melczer, *Analytic Combinatorics in Several
+24. R. Pemantle, M. C. Wilson, S. Melczer, *Analytic Combinatorics in Several
     Variables*, Expanded Second Edition, manuscript,
     <https://ACSVproject.com/PemantleWilsonMelczer23.pdf> (theorem numbers as
-    in this manuscript; not compared with the printed edition [16]).
+    in this manuscript; not compared with the printed edition [18]).

@@ -1,6 +1,32 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-10
+**Date:** 2026-11-12
+
+**IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
+empieza con 1». The manuscript existed in two versions that never met:
+`research/inverse-gravity-design` (six commits of 2026-10-28: Lemma Layers
+(b), (c), (d) and Assembly repairs after sanedrin, Astra and DeepSeek) and
+this branch (`1afc164`, `76d6b38`, `341950e`: prior-art citations and
+exposition repairs after Opus). Three-way merge of `.tex` and `.md`;
+[record](../reports/2026-11-12--ir-corona-version-reconciliation.md).
+One overlap decided: for Bob's part of Layers (b) the October argument
+(`r = N^{-3/2}R_0(w_*) + rho`) is kept and the November interpolation
+paragraph is not carried over. October review records and certificate
+outputs brought to this branch unchanged. Checks: compiles (21 pages, no
+undefined reference); Lemma Layers statement byte-identical to the source
+of the Lean proof of the scalar Alice coefficient (`~/herramientas`
+`2a7342b`). Editorial merge by a Claude model, **PRELIMINARY, the
+reconciled text has no review as a whole**; no certificate or Lean rerun,
+no promotion, NOVELTY OPEN, nothing committed. SHA256 values of the
+manuscript in the 2026-11-10 entries below refer to the pre-merge text.
+Same day, user «revísalo completo»: one full read-through by the same
+Claude model (record Sec. 8; not an independent review; three wording
+edits; printed constants and twelve Table 1 entries recomputed by a second
+floating-point route, all agree). Same day, by user instruction, the Lean
+proof of the scalar Alice coefficient was moved from `~/herramientas` to
+`formal/alice-layers/` (record Sec. 9 and `formal/alice-layers/MIGRATION.md`);
+full offline verification from the new location `success: true`, 38
+modules; scope unchanged (Alice only, no Bob, no external review).
 
 **Tetrahedral IR protocol — authorized 2026-11-10:** user requests studying
 the signal under an infrared protocol. The
