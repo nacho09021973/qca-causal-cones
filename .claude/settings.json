@@ -1,6 +1,8 @@
 {
   "permissions": {
     "allow": [
+      "Bash(python3 -B scripts/diagnose_general_ir_rate_round2.py --output reports/2026-11-12--general-ir-rate-round2.json)",
+      "Bash(python3 scripts/diagnose_general_ir_rate_round2.py --output reports/2026-11-12--general-ir-rate-round2.json)",
       "Bash(python3 -B scripts/diagnose_general_ir_rate_zonotopes.py --output reports/2026-11-12--general-ir-rate-zonotopes.json)",
       "Bash(python3 scripts/diagnose_general_ir_rate_zonotopes.py --output reports/2026-11-12--general-ir-rate-zonotopes.json)",
       "Bash(python3 -B scripts/diagnose_general_ir_rate_polyhedra.py --output reports/2026-11-12--general-ir-rate-polyhedra.json)",

@@ -1,5 +1,13 @@
 # Scripts
 
+## General infrared rate: second diagnostic, walk-adapted regions (2026-11-12)
+
+`python3 -B scripts/diagnose_general_ir_rate_round2.py --output <json>`
+implements `theory/GENERAL_IR_RATE_ROUND2_DIAGNOSTIC.md`. Same sixteen
+walks (imported read-only from the two first-run scripts); Bob half-way
+between each walk's ballistic region and its causal boundary along `n`;
+true minimiser by Newton's method off the axis. Same nature and limits.
+
 ## General infrared rate: diagnostic on ten zonotope walks (2026-11-12)
 
 `python3 -B scripts/diagnose_general_ir_rate_zonotopes.py --output <json>`
