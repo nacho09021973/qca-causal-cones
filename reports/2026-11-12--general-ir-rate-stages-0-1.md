@@ -14,7 +14,10 @@ charter if a theorem yields (T) directly.
 
 ### 0(i) The two known cases
 
-- **K3 (CJWW Eq. (5.15)), inside the class, H1–H5 hold**, each from the
+- **K3 (CJWW Eq. (5.15)), inside the class, H1–H5 hold**. *Correction
+  (2026-11-12, Amendment 4):* as first written the class required `B - A`
+  inside `conv F`, which the manuscript's regions violate; with Amendment 4
+  (`v_* in conv F`) the statement holds. Original text follows: each from the
   manuscript (`papers/ir-corona/ir-corona.tex`, tag `ir-corona-v3`):
   `d = 3`, `s = 2`, isotropic untilted node `c_IR = 1`, balls, `K_* > 0`
   (Thm 4.3). H1: unique minimiser `v_*` (Thm 4.3(b)); `I` is

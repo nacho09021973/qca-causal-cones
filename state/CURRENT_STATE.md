@@ -68,9 +68,10 @@ Sealed Grok review (grok-4.7, herramientas 7d111a1, base `65e1ec4`,
 **Stage 1 PASS, Stage 2 PASS**, five exposition objections, all accepted
 and applied, not re-reviewed
 ([author reading](../reports/reviews/2026-11-12-general-ir-rate-grok/verificacion_autor.md)).
-Not detected by the review and still open: the charter clause «`B - A`
-inside `conv F`» excludes the manuscript's regions (unused by the proof;
-correction pending user decision). One house, one round. No review, no promotion.
+Not detected by the review: the charter clause «`B - A` inside
+`conv F`» excluded the manuscript's regions (unused by the proof);
+corrected by [Amendment 4](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_4.md)
+(`v_* in conv F`), approved by the user. One house, one round. No review, no promotion.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:
