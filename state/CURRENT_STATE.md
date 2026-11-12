@@ -36,6 +36,17 @@ Lemma symbol (e) re-derived without finding a gap; Markdown collated
 against LaTeX (no formula or number differs); bibitem and new annotated
 tag `ir-corona-v2` (record Sec. 10). Same model throughout: **not an
 independent review**; PRELIMINARY, no promotion, NOVELTY OPEN.
+Grok review of the reconciled manuscript, user «dile a Grok que lo revise»:
+one sealed revision-ciega round (grok-4.7, herramientas 7d111a1) on
+`b5cc166` with five identifying strings replaced;
+[unaltered review](../reports/reviews/2026-11-12-ir-corona-reconciled-grok/informe_grok.md):
+global REPAIR_REQUIRED; A, B, C PASS; D REPAIR_REQUIRED; no rederived step
+fails and the merged steps are reported compatible.
+[Author reading](../reports/reviews/2026-11-12-ir-corona-reconciled-grok/verificacion_autor.md):
+five exposition repairs accepted (jumps proof, one-sided derivative
+wording, a_c budget versus diagnostics, «flat direction», the constant
+9.2), none applied yet; no statement or constant affected. One house, one
+round, no code run by the reviewer; no promotion.
 
 **Tetrahedral IR protocol — authorized 2026-11-10:** user requests studying
 the signal under an infrared protocol. The
