@@ -10,8 +10,9 @@ Recorded as the decision to close repair rounds on the manuscript at tag
 [general infrared operational rate](../theory/GENERAL_IR_RATE_GATE.md):
 question whether the CJWW rate is sharp, in limsup form, for
 infrared-admissible operational signals in the non-ballistic corona, under
-named hypotheses H1–H5. **DRAFT, not frozen; nothing authorized to be
-computed until the user freezes it.**
+named hypotheses H1–H5. Frozen unchanged by user choice «Congelar tal
+cual»; status OPEN; Stages 0–2 authorized within the charter budget. The
+preregistration commit is the one that changes the charter status line.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:

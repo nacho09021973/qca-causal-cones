@@ -1,8 +1,9 @@
-# General infrared operational rate: draft charter
+# General infrared operational rate: charter
 
 2026-11-12. User: «lo damos por bueno, vamos a intentar hacer el teorema
-general». **Status: DRAFT, not frozen; nothing is authorized to be computed
-until the user freezes it.** Drafted by Claude (claude-opus-5-5).
+general»; frozen unchanged by user choice «Congelar tal cual» the same day.
+**Status: OPEN; frozen; execution of Stages 0–2 authorized within the
+budget of Sec. 6.** Drafted by Claude (claude-opus-5-5).
 
 ## 1. Known, question, abandonment
 
