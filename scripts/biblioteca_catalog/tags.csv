@@ -4,3 +4,7 @@ qw-dirac-weyl,quantum walks y automatas cuanticos que reproducen las ecuaciones 
 espaciotiempo-curvo-lorentz,quantum walks en espaciotiempo curvo e invariancia de Lorentz
 lieb-robinson,cotas de Lieb-Robinson velocidad maxima y colas exponenciales
 info-cuantica,teoria de la informacion cuantica y derivaciones desde principios informacionales
+gravedad-emergente,gravitones o gravedad linealizada emergentes en modelos de red locales y sus obstrucciones
+gauge-tensorial-fractones,teorias gauge tensoriales de rango 2 y fractones
+floquet-energia-local,dinamica Floquet o QCA en tiempo discreto: generadores locales corrientes conservadas y teoremas de Noether en red
+asintotica-qw,asintoticas de quantum walks: limites debiles grandes desviaciones y region fuera de la propagacion

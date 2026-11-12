@@ -262,10 +262,19 @@ BBBP Theorem 4.2. The sentence «the shape theorem they prove … [BGPP]»
 is replaced, in `.tex` and `.md`, by one that names BGPP as the authors of
 the cited formulation and BBBP Theorem 4.2 as its attributed source.
 
-The library catalogue was not regenerated: `scripts/biblioteca_catalog/curated.csv`
-on this branch has no entry for `arXiv-0810.5495.pdf` either, although the
-local `biblioteca/INDICE.md` lists it (generated from another branch). That
-divergence is recorded here and left for a user decision.
+Library catalogue (fixed the same day, user «arréglalo como mejor te
+valga»): `scripts/biblioteca_catalog/curated.csv` and `tags.csv` on this
+branch were the 2026-09-24 version (13 rows), while the fuller catalogue
+(73 rows, four more tags) existed only on `research/inverse-gravity-design`
+(`241be89`). Both files are now taken from that branch; its rows are a
+superset of this branch's except one row for a duplicate PDF that was
+removed there (`3c7a98c`) and is not on disk. Added: the row for
+`arXiv-0903.2967.pdf` and the pages read today in the BBBP row. Index
+regenerated with `~/herramientas/biblioteca_catalog/build_catalog.py`
+(herramientas `7d111a1`): 75 PDFs, 74 tagged. The untagged one,
+`Finiteness and Uniqueness of Duality Cascades in Three Dimensions for
+Affine Quivers.pdf` (arXiv:2411.09141), is on disk without a catalogue row
+and looks unrelated to this repository; left for the user.
 
 ### 10.2 October remark on BBBP — verified
 
