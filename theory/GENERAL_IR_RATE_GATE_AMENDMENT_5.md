@@ -2,7 +2,8 @@
 
 2026-11-12. Drafted by Claude (claude-opus-5-5) on the user's instruction
 («si a las dos», answering the proposal to draft an amendment clarifying
-H2). **Status: DRAFT; not in force until the user approves it.** The
+H2). **Status: APPROVED by the user 2026-11-12 («adelante»); in force
+from this commit.** The
 frozen charter (`aa6c5f6`) and Amendments 1–4 are not edited.
 
 ## Reason

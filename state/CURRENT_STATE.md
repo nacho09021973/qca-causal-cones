@@ -11,7 +11,7 @@ re-reviewed**. [Draft Amendment 5](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_5.md
 replaces H2's «non-degenerate Hessian of `log lambda`» by H2′
 (`Q = Hess_xi log|lambda_0|` positive definite), which is what Stages 0–2
 and carrier Stage A use and what the diagnostics tested; no proof or label
-changes. **DRAFT, not in force until the user approves it.**
+changes. **APPROVED by the user («adelante», 2026-11-12); in force.**
 
 **Bravais Stage 1 reviewed by Codex — 2026-11-12** (user «empezamos con
 que Codex revise la FAse 1»): sealed `revision-ciega astra` (gpt-6-astra,
