@@ -23,9 +23,16 @@ but the two carriers of each R1 walk are inseparable; a second-moment
 argument covers that case under an arithmetic condition.
 [Draft Amendment 1](../theory/IR_CARRIER_DICHOTOMY_GATE_AMENDMENT_1.md)
 (H6_k with isolation or carrier group, H9_k, H10_k) approved by the user.
-**Stage A `PROVED_UNDER_FROZEN_CONTRACT` (as amended), author derivation,
-PRELIMINARY**; no R1 example inside the `Z^d` class is known (the three
-diagnostic examples are BCC). User asked for a sealed Grok review.
+Sealed Grok review (grok-4.7, base `58885d4`,
+[unaltered report](../reports/reviews/2026-11-12-ir-carrier-stage-a-grok/informe_grok.md)):
+**REPAIR_REQUIRED**; phases, complex depth sums and error inheritance
+close; the second-moment step did not cover H6_k(ii) with H9(i).
+[Author reading](../reports/reviews/2026-11-12-ir-carrier-stage-a-grok/verificacion_autor.md):
+verdict restricted to **`PROVED_UNDER_FROZEN_CONTRACT` for H6_k(i) with
+either H9, and H6_k(ii) with H9(ii); `OPEN` for H6_k(ii) with H9(i)**;
+rotation and positive-density steps repaired; repairs not re-reviewed. No
+verified R1 example (the three diagnostic walks are outside `Z^d`, and
+inside them H6_k(i) fails). PRELIMINARY, no promotion.
 
 **Second general-rate diagnostic, walk-adapted regions — 2026-11-12:**
 user «si a las tres» (Amendment 4, second run, then dichotomy proposal).

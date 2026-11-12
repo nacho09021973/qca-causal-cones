@@ -154,14 +154,49 @@ the basis error, is recomputed correctly; H5 and the tail part of H10
 still hold (`|R~| = 0.700`, `cos(e_0, R~) = 0.893`), so the round-2 row
 stands.
 
-## 9. Verdict (after the user approved Amendment 1)
+## 9. Verdict (revised after the Grok review)
 
-**Stage A: `PROVED_UNDER_FROZEN_CONTRACT`** (carrier charter as amended):
-under H1–H3, H5, H7, H8, H2 at the dominant set and H6_k, H9_k, H10_k, the
-CJWW rate is attained in limsup form by a protocol of the family, carried
-by a non-zero dominant momentum with character trivial on the planes, at
-power `5 + d/2`. Author derivation, PRELIMINARY, not reviewed. Outcome (b)
-of the charter partly met (Secs. 2–4 adapt the general derivation; Sec. 5
-and Sec. 8 are new). **No example inside the declared `Z^d` class is
-known:** the three R1 walks of the diagnostic live on BCC lattices.
+The first version of this section recorded `PROVED_UNDER_FROZEN_CONTRACT`
+for the whole amended block. The Grok review (O1) shows that the case
+H6_k(ii) together with H9(i) is not covered by Sec. 8. Revised verdict:
 
+- **`PROVED_UNDER_FROZEN_CONTRACT`** (carrier charter as amended), with
+  the repairs of Sec. 10: H6_k(i) with H9(i) or H9(ii); H6_k(ii) with
+  H9(ii). Author derivation, PRELIMINARY; repairs not re-reviewed.
+- **`OPEN`**: H6_k(ii) with H9(i) (a phase difference commensurate with
+  the second offset can make the cross term survive).
+
+No verified R1 example is known. The three diagnostic walks are outside
+`Z^d` (diagnostic lattice test; CJWW (5.12) generates the BCC group per
+`5213d94`; the s=4 walk lives on the equal-parity lattice of index four),
+and even there H6_k(i) fails while H6_k(ii) needs a rational independence
+that floating point cannot decide.
+
+## 10. Repairs after the Grok review
+
+**Common rotation of a carrier group (O2).** For Hermitian `M_B`,
+`u = M_B R~` ranges over `{u : <R~, u> real}`, and
+`R~^dagger M_B e_j = u^dagger e_j`. By H10_k there is `u_0` with
+`<R~, u_0> = 0` and `u_0^dagger e_k != 0`; both `u_0` and `-i u_0` are
+admissible and multiply the whole vector `(u_0^dagger e_j f_j^dagger v)_j`
+by `1` and `i`. The two protocols see `Im` and `Re` of the same bracket.
+
+**From the mean of `|h|^2` to positive density (O3).** Let
+`omega = (u.w_A, ((psi_i - psi_j)/(2 pi))_{i<j})` and `X` the closure of
+`{N omega}` in the torus; the orbit equidistributes for the Haar measure
+of `X`. Pairwise independence makes each two-dimensional projection of
+that measure Haar, so each cross term integrates to `0` on `X`, and
+`int_X |h|^2 = sum_j |a_j|^2 int |Gamma_j|^2 > 0`. `|h|` is continuous on
+`X`, so `{|h| > c}` is a relatively open set of positive measure for small
+`c > 0`, hence visited with positive density. The `O(N^(-1/2))` error
+inside the bracket does not affect this.
+
+**Rotation before the first-moment bound (O5).** With
+`alpha = arg mu_k`, the mean of `Re(e^(-i alpha) Gamma_k)` is `|mu_k|`;
+the argument of the general derivation, Sec. 6, then gives
+`|Gamma_k| >= |mu_k|/2` on a set of positive density.
+
+**Notes (O6, obligation 3).** `mu_k != 0` is sufficient, not necessary;
+for the second moment `int |Gamma_j|^2 > 0` suffices. "Cannot be
+separated" in H6_k(ii) is read as: `f_k` is outside the span of the `f_j`
+with `j` outside `G`, and each point outside `G` is separable on the left.
