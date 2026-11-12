@@ -2,6 +2,19 @@
 
 **Date:** 2026-11-12
 
+**Bravais Stage 1 reviewed by Codex — 2026-11-12** (user «empezamos con
+que Codex revise la FAse 1»): sealed `revision-ciega astra` (gpt-6-astra,
+herramientas `7d111a1`), base `24e1965`,
+[report and author reading](../reports/reviews/2026-11-12-bravais-stage1-astra/verificacion_autor.md).
+**REPAIR_REQUIRED**: no Bravais-specific obstacle, no new hypothesis, no
+counterexample; four text repairs (inventory misses the monomial
+determinant step; U6 must name the Voronoi cell; Sec. 6.1 needs «in
+general»; separate K3 checks from the inventory). Repairs not applied.
+Separate objection to B1: H2 as written (non-degenerate complex Hessian)
+does not give `Q = Hess_xi log|lambda|` positive definite, which Stage 2
+uses; fixing it needs an amendment to the general-rate charter (user
+decision).
+
 **Bravais-lattice Stage 2 executed — 2026-11-12** (user «adelante con
 la segunda fase», authorized `f301c21`):
 [report](../reports/2026-11-12--general-ir-rate-bravais-stage2.md). No new
