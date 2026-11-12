@@ -62,7 +62,12 @@ Thm 9.12 (printed pp. 266–267, PDF p. 260).
   which is where lattice planes, characters (H3, H4) and the free tail
   (H5) enter.
 - **Verdict: outcome (b) not triggered.** ACSV can supply the pointwise
-  kernel input to Stage 2 under H2; it does not yield (T).
+  kernel input to Stage 2 under H2, provided the obligations listed above
+  (Laurent domain, numerator cancellation, minimality) are discharged,
+  which is not done here; it does not yield (T). *(Conditional added
+  2026-11-12 after the second Codex review,
+  `reports/reviews/2026-11-12-bravais-stage1-astra-r2/`; exposition only.
+  Stage 2 does not use ACSV: its Gaussian computation is direct.)*
 
 ### 0(iii) Search for lower bounds
 

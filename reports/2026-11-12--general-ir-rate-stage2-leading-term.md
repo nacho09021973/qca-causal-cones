@@ -83,7 +83,11 @@ and `|E_A|, ||E_B|| <= C (N^(-1/2) + |eta_n|)` uniformly in the offsets.
 **(c)** At a trivial dominant point `eta_k` with character `omega_k^(u.x)`,
 the same holds with `S^X` replaced by the depth sum weighted by
 `omega_k^(-j)` and with global unimodular factors
-`omega_k^(floor(N u.w_A))`, `omega_k^(-ceil(N u.w_B))`.
+`e^(-i eta_k.x_*) omega_k^(floor(N u.w_A))` and
+`e^(i eta_k.y_*) omega_k^(-ceil(N u.w_B))`. *(The continuous factors
+`e^(-+i eta_k.x_*, y_*)` were omitted in the first version; added
+2026-11-12 after the second Codex review. Their cancellation against
+`e^(-i N eta_k.v_*)` is carrier Stage A, Sec. 2; exposition only.)*
 
 *Proof of (b).* Plane by plane: in-plane Poisson summation over the
 translate of `Lambda_0` gives `(1/|u|) int G_delta(y) e^(i eta_t.y) d^m y`

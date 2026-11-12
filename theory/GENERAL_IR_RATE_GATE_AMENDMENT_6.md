@@ -2,8 +2,8 @@
 
 2026-11-12. Drafted by Claude (claude-opus-5-5) after the second sealed
 Codex round (`reports/reviews/2026-11-12-bravais-stage1-astra-r2/`), which
-gave REPAIR_REQUIRED to Amendment 5. **Status: DRAFT; not in force until
-the user approves it.** The frozen charter (`aa6c5f6`) and Amendments 1–5
+gave REPAIR_REQUIRED to Amendment 5. **Status: APPROVED by the user
+2026-11-12 («si»); in force from this commit.** The frozen charter (`aa6c5f6`) and Amendments 1–5
 are not edited.
 
 ## Reason
