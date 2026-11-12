@@ -2,6 +2,18 @@
 
 **Date:** 2026-11-12
 
+**Bravais-lattice Stage 1 executed — 2026-11-12:**
+[report](../reports/2026-11-12--general-ir-rate-bravais-stage1.md).
+Every use of `Z^d` in the general-rate Stages 1–2 and in carrier Stage A
+(proved cells) transfers to a Bravais lattice (`u` primitive in `L*`,
+`covol(Lambda_0) = covol(L)|u|`, measure `covol(L) d^dp/(2pi)^d`); only
+constants change, and the covolume factors cancel in the leading
+coefficient. Stage 1 `PROVED_UNDER_FROZEN_CONTRACT`, line outcome (b),
+corollary; author, PRELIMINARY, not reviewed. Noted, no verdict:
+admissibility of the protocol family is not proved in the general class
+(inherited gap); a walk whose steps generate a proper sublattice has
+folded dominant copies. Stage 2 and the review not authorized.
+
 **Bravais-lattice generalisation drafted — 2026-11-12:** user agreed to
 generalise the general-rate theorem to other classes, Bravais lattices
 first. [Draft charter](../theory/GENERAL_IR_RATE_BRAVAIS_GATE.md): same
