@@ -4,7 +4,8 @@
 generalise to other classes, Bravais lattices first («ok»). Frozen
 unchanged on the user's instruction «comienza por la fase 1» the same day.
 **Status: OPEN; frozen; Stage 1 authorized within the budget of Sec. 4.
-Stage 2 not yet authorized.**
+Stage 2 authorized by the user («adelante con la segunda fase»,
+2026-11-12) after Stage 1 (`8b23a29`).**
 
 ## 1. Known, question, abandonment
 
