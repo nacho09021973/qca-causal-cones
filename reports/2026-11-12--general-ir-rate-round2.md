@@ -79,3 +79,13 @@ leakage. It is a conjecture, not a result.
 Floating point; a dominant point missed by the grid would change the
 H4′ column. The fast-mode criterion uses a single small `t`. Rows outside
 `Z^d` are outside the class as written. No statement about other walks.
+
+## Erratum (same day)
+
+The tail helper of `scripts/diagnose_general_ir_rate_polyhedra.py` works in
+nodal coordinates and was called with full-space vectors. This mixes bases
+when the nodal basis is not the standard one: among the rows where the tail
+was evaluated, only W5. Recomputed correctly in the R1 diagnostic
+(`reports/2026-11-12--ir-carrier-stage-a.md`, Sec. 8): H5 and the tail
+part of H10 still hold for W5; no label changes.
+

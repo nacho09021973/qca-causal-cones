@@ -121,3 +121,36 @@ positivity in Sec. 5 is new and needs a hypothesis.
 Author derivation; nothing reviewed. Limsup form only. H3 is still needed
 (R1 is defined through lattice planes). Regime R2 (Nacho Martín regime) is
 Stage B and not addressed.
+
+## 8. Addendum after the R1 diagnostic: dependent carriers
+
+The diagnostic (`scripts/diagnose_ir_carrier_r1.py`, run 2; run 1 crashed
+on a basis error of the tail helper and is kept) finds, in CJWW (5.12),
+Pavia A+ and the cyclic s=4 walk, two trivial-character dominant momenta
+each, with `mu != 0` at every one (`|mu| = 2.28` and `0.013` for the two
+cube walks, `9.46` for both points of the tetrahedral walk), `e_k` not
+parallel to `R~`, but **left and right eigenvectors dependent between the
+two points** (they are related by a symmetry of the walk). Isolation
+(H6_k(i)) is impossible there.
+
+The argument still closes with a second moment. For a protocol whose
+coefficient at the group `G` is `c` (times fixed ratios `a_j`), the
+bracket is `h(N) = sum_{j in G} a_j e^(i N psi_j) Gamma_j(theta_N)`. Then
+
+    avg_N |h(N)|^2 = sum_j |a_j|^2 avg |Gamma_j|^2
+                   + sum_{i != j} a_i a_j-bar avg[ e^(i N (psi_i - psi_j)) Gamma_i Gamma_j-bar (theta_N) ].
+
+Under H6_k(ii), `(N u.w_A, N (psi_i - psi_j)/(2 pi))` is equidistributed on
+`T^2` for each pair (Weyl), and `Gamma_i Gamma_j-bar` is continuous on the
+circle, so each cross average tends to `0`; the diagonal averages are at
+least `|mu_j|^2 > 0`. Hence `|h(N)|` is bounded below on a set of `N` of
+positive density, and rotation (H10_k) and bilinearity finish as in Sec. 6.
+In the three walks `psi` differs between the two carriers (`4.4626` vs
+`5.8428`; `0.5554` vs `1.0154`), but rational independence is not
+checkable in floating point.
+
+Also from run 2: the round-2 tail of the JDW hexagonal walk, computed with
+the basis error, is recomputed correctly; H5 and the tail part of H10
+still hold (`|R~| = 0.700`, `cos(e_0, R~) = 0.893`), so the round-2 row
+stands.
+

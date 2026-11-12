@@ -11,7 +11,19 @@ momenta carry the leading term.
 momentum with character trivial on the planes; seen in CJWW (5.12), Pavia
 A+, cyclic s=4) versus R2 (only non-trivial characters; rhombic
 dodecahedron). Status OPEN, frozen, Stage A (R1) authorized for one
-session; Stage B not authorized. Nothing computed yet.
+session; Stage B not authorized. Regime R2 is named the «Nacho Martín
+regime» (user, naming only). Stage A derived
+([report](../reports/2026-11-12--ir-carrier-stage-a.md)): at a
+trivial-character carrier the phases reduce to `e^(iN psi_k)`, depth sums
+get complex decay `kappa + i phi`, power `5 + d/2`; positivity of the
+average is lost, so a non-vanishing condition is needed. R1 diagnostic
+(two runs, first crashed on a tail basis error that also affected the
+round-2 W5 row; recomputed, label unchanged): `mu != 0` at every carrier,
+but the two carriers of each R1 walk are inseparable; a second-moment
+argument covers that case under an arithmetic condition.
+[Draft Amendment 1](../theory/IR_CARRIER_DICHOTOMY_GATE_AMENDMENT_1.md)
+(H6_k with isolation or carrier group, H9_k, H10_k) **not in force until
+the user approves it**; no verdict yet.
 
 **Second general-rate diagnostic, walk-adapted regions — 2026-11-12:**
 user «si a las tres» (Amendment 4, second run, then dichotomy proposal).

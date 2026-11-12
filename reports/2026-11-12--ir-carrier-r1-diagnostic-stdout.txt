@@ -1,0 +1,11 @@
+W2 CJWW (5.12) Bialynicki-Birula: K*=0.29225 |u|=1.7321 kappa=1.07703
+    k=[-2.3562, -2.3562, 2.3562] phi=-2.35619 |mu|=1.3415e-02 mu=[-0.012115084302823898, 0.0057617409870185455] H6_k=False H6_k_right=False H10_k=True psi=4.46262
+    k=[0.7854, 0.7854, -0.7854] phi=0.78540 |mu|=2.2838e+00 mu=[0.37982867735098086, 2.2519774796295953] H6_k=False H6_k_right=False H10_k=True psi=5.84284
+W3 Pavia Weyl A+ (BCC): K*=0.29225 |u|=1.7321 kappa=1.07703
+    k=[-2.3562, -2.3562, 2.3562] phi=-2.35619 |mu|=1.3415e-02 mu=[-0.01211508465460921, 0.005761740863036693] H6_k=False H6_k_right=False H10_k=True psi=4.46262
+    k=[0.7854, 0.7854, -0.7854] phi=0.78540 |mu|=2.2838e+00 mu=[0.3798286126288597, 2.251977343715027] H6_k=False H6_k_right=False H10_k=True psi=5.84284
+W5 JDW L6d (hexagon): erratum check H5=True cos(e0,tail)=[0.893204, 0.893204]
+W6 cyclic s=4 (tetrahedron), node P: K*=0.09742 |u|=3.0000 kappa=0.53852
+    k=[-1.3603, 1.3603, -1.3603] phi=-0.78540 |mu|=9.4597e+00 mu=[5.758264868070159, 7.505169157596321] H6_k=False H6_k_right=False H10_k=True psi=0.55536
+    k=[1.3603, 4.081, -4.081] phi=0.78540 |mu|=9.4597e+00 mu=[5.758272611551813, -7.505168103362314] H6_k=False H6_k_right=False H10_k=True psi=1.01544
+exit 0
