@@ -44,9 +44,11 @@ phase `e^(iN psi)` and a complex depth factor whose average over `N` has
 positive real part under H9. A2: the recommended `psi in pi Z` is not
 sufficient; a rotation condition is, and makes `psi` irrelevant;
 [draft Amendment 3](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_3.md) (H10),
-which K3 satisfies, **not in force until the user approves it**. With it,
-(T) follows; the verdict is not recorded before that decision. Author
-derivation, not reviewed. No review, no promotion.
+which K3 satisfies, approved by the user the same day. **Stage 2:
+`PROVED_UNDER_FROZEN_CONTRACT` as amended (H1–H3, H4′, H5–H10): the CJWW
+rate is attained, in limsup form, by a protocol of the family.** Author
+derivation by a Claude model, PRELIMINARY, not reviewed; no promotion,
+NOVELTY OPEN. User asked for a sealed Grok review. No review, no promotion.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:

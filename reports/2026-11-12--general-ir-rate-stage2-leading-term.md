@@ -219,8 +219,10 @@ has `limsup e^(K_* N) N^(5+d/2) delta(N) > 0`; with Stage 1,
 
     lim sup_{N->inf} (1/N) log delta(N) = -K_*,
 
-which is (T). The verdict `PROVED_UNDER_FROZEN_CONTRACT` (as amended) is
-**not** recorded until the user decides on Amendment 3.
+which is (T). Amendment 3 was approved by the user the same day. **Stage 2
+verdict: `PROVED_UNDER_FROZEN_CONTRACT` (charter as amended by
+Amendments 1–3), author derivation, PRELIMINARY, not reviewed.** Line
+outcome: none of (a), (b), (c) of the charter.
 
 ## 8. K3 against H10
 

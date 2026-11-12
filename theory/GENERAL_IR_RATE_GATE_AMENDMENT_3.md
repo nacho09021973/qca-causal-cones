@@ -1,7 +1,8 @@
-# Amendment 3 to the general infrared operational rate charter — DRAFT
+# Amendment 3 to the general infrared operational rate charter
 
-2026-11-12. Drafted by Claude (claude-opus-5-5). **Status: DRAFT; not in
-force until approved by the user.** The frozen charter (`aa6c5f6`) and
+2026-11-12. Drafted by Claude (claude-opus-5-5). **Status: APPROVED by the
+user 2026-11-12 (choice «Aprobar y mandar a Grok»); in force from this
+commit.** The frozen charter (`aa6c5f6`) and
 Amendments 1–2 are not edited.
 
 ## Reason
