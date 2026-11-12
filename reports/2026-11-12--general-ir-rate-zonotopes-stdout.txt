@@ -1,0 +1,60 @@
+Z1 octagon (1,0),(0,1),(1,1),(1,-1): NO_RATE_AXIS; FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = True
+    frame_isotropy_defect = 0.0
+    c_IR = 2.4142135623730945
+Z2 octagon (2,0),(0,2),(1,1),(1,-1): NO_RATE_AXIS; FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = True
+    frame_isotropy_defect = 0.0
+    c_IR = 3.4142135623730945
+Z3 regular hexagon: FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = False
+    frame_isotropy_defect = 0.0
+    c_IR = 1.5
+Z4 dodecagon, triangular lattice: NO_RATE_AXIS; FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = False
+    frame_isotropy_defect = 0.0
+    c_IR = 4.098076211353316
+Z5 octagon of Z1, other factor order: NO_RATE_AXIS; FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = True
+    frame_isotropy_defect = 0.0
+    c_IR = 2.4142135623730945
+Z6 rhombic dodecahedron: NO_RATE_AXIS; OUTSIDE_CLASS_LATTICE; FAILS_H4prime
+    K_star = 0.15534463966676482
+    t_star = 0.4490988862591553
+    lattice_isometric_to_Zd = False
+    frame_isotropy_defect = 0.0
+    c_IR = 2.3094010767585025
+    H1_on_axis=None, H2=True, H3=True, H4prime=False, H8=True, H7=True, H9=True
+    dominant points: 4
+Z7 truncated octahedron: NO_RATE_AXIS; FAILS_H4prime_H8
+    K_star = 0.03704029540174458
+    t_star = 0.37525140228990694
+    lattice_isometric_to_Zd = True
+    frame_isotropy_defect = 0.0
+    c_IR = 2.8284271247461907
+    H1_on_axis=None, H2=True, H3=True, H4prime=False, H8=False, H7=True, H9=True
+    dominant points: 2
+Z8 axes + body diagonals: NO_RATE_AXIS; FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = False
+    frame_isotropy_defect = 0.0
+    c_IR = 3.309401076758504
+Z9 great rhombicuboctahedron: NO_RATE_AXIS; FAILS_KSTAR_POSITIVE
+    K_star = 0.0
+    lattice_isometric_to_Zd = False
+    frame_isotropy_defect = 0.0
+    c_IR = 3.8284271247461885
+Z10 hexagonal prism: NO_RATE_AXIS; OUTSIDE_CLASS_LATTICE; FAILS_H4prime_H8
+    K_star = 0.08915351973493135
+    t_star = 0.5544590028223424
+    lattice_isometric_to_Zd = False
+    frame_isotropy_defect = 0.0
+    c_IR = 1.5
+    H1_on_axis=None, H2=True, H3=True, H4prime=False, H8=False, H7=True, H9=True
+    dominant points: 4
+exit 0

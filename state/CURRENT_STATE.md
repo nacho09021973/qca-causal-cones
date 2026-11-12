@@ -2,6 +2,21 @@
 
 **Date:** 2026-11-12
 
+**General-rate hypotheses on sixteen walks — 2026-11-12:** user asked to
+test the theorem on more polyhedra while Grok reviews, then on ten more
+bodies in 2D/3D. Two diagnostic charters (`af44458`, `ee429de`), scripts
+committed before their runs, one failed first run kept.
+[Report](../reports/2026-11-12--general-ir-rate-sixteen-walks.md).
+Floating-point diagnostic, no verdict. All hypotheses hold in the
+manuscript's walk and in the square Weyl walk (new case in the class).
+Walks with ballistic modes faster than `c_IR` along the axis (7 of 16)
+either reach Bob ballistically or lose zero momentum as dominant point;
+the body's shape alone does not decide. Design faults declared: the
+copied region rule puts Bob inside the IR cone in six rows, and product
+orders break the rate axis in nine. Also records that the parent charter's
+«inside conv F» clause excludes the manuscript's regions (no proof step
+uses it), and a possible label conflict about «L3 has `V_grp^max = c_0`».
+
 **IR-corona manuscript accepted as working version; general-rate charter drafted — 2026-11-12:**
 user «lo damos por bueno, vamos a intentar hacer el teorema general».
 Recorded as the decision to close repair rounds on the manuscript at tag

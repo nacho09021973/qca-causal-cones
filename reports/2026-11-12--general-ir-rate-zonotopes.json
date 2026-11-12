@@ -1,0 +1,639 @@
+{
+  "meta": {
+    "charter": "theory/GENERAL_IR_RATE_ZONOTOPES_DIAGNOSTIC.md",
+    "script_sha256": "d861466490541718c38492d4ef325e9c4f64828c9771e019e78e8bde548902af",
+    "parent_script_sha256": "8cc62cbfd9b98f9c8c81b903fe4757031ff4bd1e6eceb193714002ea5e4ac935",
+    "numpy": "1.26.4",
+    "sympy": "1.14.0",
+    "nature": "floating-point diagnostic; labels are not certificates or verdicts"
+  },
+  "walks": [
+    {
+      "id": "Z1",
+      "name": "octagon (1,0),(0,1),(1,1),(1,-1)",
+      "d": 2,
+      "s": 2,
+      "n_steps": 12,
+      "unitarity_defect": 4.440892098500626e-16,
+      "lattice_isometric_to_Zd": true,
+      "vertex": [
+        "1",
+        "-3"
+      ],
+      "exact": {
+        "u_norm": "sqrt(10)/2",
+        "rho": "sqrt(30)/12",
+        "rho_u": "5*sqrt(3)/12",
+        "rho_u_irrational": true,
+        "uV": "5",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          1.0000000000000002,
+          -5.551115123125783e-17
+        ],
+        "c_IR": 2.4142135623730945,
+        "hermitian_defect": 2.68031548330893e-16,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 1.0721261933235718e-15,
+        "isotropy_defect": 1.7763568394002505e-15
+      },
+      "min_speed_in_B_minus_A": 2.2494067309931025,
+      "slope_range": [
+        2.4141927639681997,
+        3.162145061205021
+      ],
+      "K_star": 0.0,
+      "label": "NO_RATE_AXIS; FAILS_KSTAR_POSITIVE",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z2",
+      "name": "octagon (2,0),(0,2),(1,1),(1,-1)",
+      "d": 2,
+      "s": 2,
+      "n_steps": 12,
+      "unitarity_defect": 4.440892098500626e-16,
+      "lattice_isometric_to_Zd": true,
+      "vertex": [
+        "-4",
+        "-2"
+      ],
+      "exact": {
+        "u_norm": "sqrt(5)/2",
+        "rho": "sqrt(15)/6",
+        "rho_u": "5*sqrt(3)/12",
+        "rho_u_irrational": true,
+        "uV": "5",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          1.0000000000000002,
+          -5.551115123125783e-17
+        ],
+        "c_IR": 3.4142135623730945,
+        "hermitian_defect": 3.790538507934087e-16,
+        "trace_defect": 2.2204460492503126e-16,
+        "anticommutator_defect": 7.581077015868172e-16,
+        "isotropy_defect": 7.105427357601002e-15
+      },
+      "min_speed_in_B_minus_A": 3.1811415062637742,
+      "slope_range": [
+        3.414161563985675,
+        4.472127874241186
+      ],
+      "K_star": 0.0,
+      "label": "NO_RATE_AXIS; FAILS_KSTAR_POSITIVE",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z3",
+      "name": "regular hexagon",
+      "d": 2,
+      "s": 2,
+      "n_steps": 7,
+      "unitarity_defect": 2.220446049250313e-16,
+      "lattice_isometric_to_Zd": false,
+      "vertex": [
+        "-2",
+        "0"
+      ],
+      "exact": {
+        "u_norm": "1",
+        "rho": "sqrt(3)/6",
+        "rho_u": "sqrt(3)/6",
+        "rho_u_irrational": true,
+        "uV": "2",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          1.0,
+          5.551115123125783e-17
+        ],
+        "c_IR": 1.5,
+        "hermitian_defect": 1.6653345369377348e-16,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 1.6653345369377348e-16,
+        "isotropy_defect": 0.0
+      },
+      "min_speed_in_B_minus_A": 1.4226497308103743,
+      "slope_range": [
+        1.5000001406508627,
+        1.999987711798212
+      ],
+      "K_star": 0.0,
+      "label": "FAILS_KSTAR_POSITIVE",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z4",
+      "name": "dodecagon, triangular lattice",
+      "d": 2,
+      "s": 2,
+      "n_steps": 29,
+      "unitarity_defect": 8.881784197001252e-16,
+      "lattice_isometric_to_Zd": false,
+      "vertex": [
+        "-5",
+        "sqrt(3)"
+      ],
+      "exact": {
+        "u_norm": "sqrt(7)",
+        "rho": "sqrt(21)/6",
+        "rho_u": "7*sqrt(3)/6",
+        "rho_u_irrational": true,
+        "uV": "14",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          1.0,
+          1.3877787807814457e-17
+        ],
+        "c_IR": 4.098076211353316,
+        "hermitian_defect": 1.1374446416282702e-16,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 1.7061669624424053e-16,
+        "isotropy_defect": 0.0
+      },
+      "min_speed_in_B_minus_A": 3.7639773904772342,
+      "slope_range": [
+        4.0980379942301,
+        5.287492898426489
+      ],
+      "K_star": 0.0,
+      "label": "NO_RATE_AXIS; FAILS_KSTAR_POSITIVE",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z5",
+      "name": "octagon of Z1, other factor order",
+      "d": 2,
+      "s": 2,
+      "n_steps": 12,
+      "unitarity_defect": 6.661338147750939e-16,
+      "lattice_isometric_to_Zd": true,
+      "vertex": [
+        "1",
+        "-3"
+      ],
+      "exact": {
+        "u_norm": "sqrt(10)/2",
+        "rho": "sqrt(30)/12",
+        "rho_u": "5*sqrt(3)/12",
+        "rho_u_irrational": true,
+        "uV": "5",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          1.0,
+          0.0
+        ],
+        "c_IR": 2.4142135623730945,
+        "hermitian_defect": 0.0,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 0.0,
+        "isotropy_defect": 2.6645352591003757e-15
+      },
+      "min_speed_in_B_minus_A": 2.2494067309931025,
+      "slope_range": [
+        2.41419246575745,
+        3.1619576332538006
+      ],
+      "K_star": 0.0,
+      "label": "NO_RATE_AXIS; FAILS_KSTAR_POSITIVE",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z6",
+      "name": "rhombic dodecahedron",
+      "d": 3,
+      "s": 2,
+      "n_steps": 15,
+      "unitarity_defect": 8.881784197001252e-16,
+      "lattice_isometric_to_Zd": false,
+      "vertex": [
+        "-4",
+        "0",
+        "0"
+      ],
+      "exact": {
+        "u_norm": "1/2",
+        "rho": "sqrt(3)/3",
+        "rho_u": "sqrt(3)/6",
+        "rho_u_irrational": true,
+        "uV": "2",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          1.0000000000000002,
+          0.0
+        ],
+        "c_IR": 2.3094010767585025,
+        "hermitian_defect": 4.965068306494546e-16,
+        "trace_defect": 1.1102230246251563e-16,
+        "anticommutator_defect": 1.81100256762983e-15,
+        "isotropy_defect": 1.7763568394002505e-15
+      },
+      "min_speed_in_B_minus_A": 2.8452994616207485,
+      "slope_range": [
+        2.3094041560645744,
+        3.9999999998485687
+      ],
+      "t_star": 0.4490988862591553,
+      "Phi_star": 1.1224761796208875,
+      "K_star": 0.15534463966676482,
+      "dominant_points": [
+        {
+          "k": [
+            -6.051852749447683e-12,
+            0.6605545871019816,
+            -1.570796326795004
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.10593258696209648,
+          "hessian_eigs": [
+            -5.240107098236634,
+            -2.5259978275737884,
+            -0.6541693631234577
+          ],
+          "grad_minus_vstar": 2.3700525312428973e-11
+        },
+        {
+          "k": [
+            0.3866429659924858,
+            -0.5235987756002779,
+            -2.9445890170620714e-12
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.10593258696209655,
+          "hessian_eigs": [
+            -2.7141089986582045,
+            -1.3083384708956205,
+            -0.86191193626739
+          ],
+          "grad_minus_vstar": 1.968066415702825e-09
+        },
+        {
+          "k": [
+            -0.38664296598738845,
+            -0.5235987755986496,
+            -4.590772206825022e-13
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.10593258696209647,
+          "hessian_eigs": [
+            -2.714108998658205,
+            -1.3083384653445052,
+            -0.8619119362673895
+          ],
+          "grad_minus_vstar": 1.934603144349012e-09
+        },
+        {
+          "k": [
+            3.878740780435997e-12,
+            -0.13695581150771716,
+            -5.663802760125236e-13
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.10593258696209644,
+          "hessian_eigs": [
+            -5.240107098236635,
+            -2.5259978275737893,
+            -0.654169363123458
+          ],
+          "grad_minus_vstar": 4.0878485148695696e-11
+        }
+      ],
+      "hypotheses": {
+        "H1_on_axis": null,
+        "H2": true,
+        "H3": true,
+        "H4prime": false,
+        "H8": true,
+        "H7": true,
+        "H9": true
+      },
+      "node_untilted_isotropic": true,
+      "label": "NO_RATE_AXIS; OUTSIDE_CLASS_LATTICE; FAILS_H4prime",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z7",
+      "name": "truncated octahedron",
+      "d": 3,
+      "s": 2,
+      "n_steps": 38,
+      "unitarity_defect": 1.2212453270876722e-15,
+      "lattice_isometric_to_Zd": true,
+      "vertex": [
+        "-4",
+        "-2",
+        "0"
+      ],
+      "exact": {
+        "u_norm": "sqrt(5)/2",
+        "rho": "sqrt(15)/6",
+        "rho_u": "5*sqrt(3)/12",
+        "rho_u_irrational": true,
+        "uV": "5",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          0.9999999999999997,
+          0.0
+        ],
+        "c_IR": 2.8284271247461907,
+        "hermitian_defect": 8.881784197001256e-16,
+        "trace_defect": 1.1157603309187458e-15,
+        "anticommutator_defect": 4.5098326559537625e-15,
+        "isotropy_defect": 1.3322676295501878e-14
+      },
+      "min_speed_in_B_minus_A": 3.1811415062637742,
+      "slope_range": [
+        3.0292560616202184,
+        4.472079644918155
+      ],
+      "t_star": 0.37525140228990694,
+      "Phi_star": 1.1566875157063634,
+      "K_star": 0.03704029540174458,
+      "dominant_points": [
+        {
+          "k": [
+            0.13551847291413452,
+            -0.7218555180235936,
+            1.1187207634388827
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.09892680641646485,
+          "hessian_eigs": [
+            -3.879595726658336,
+            -2.3517482713845084,
+            -0.5431971189288902
+          ],
+          "grad_minus_vstar": 0.3659619805831627
+        },
+        {
+          "k": [
+            -1.4352778538746518,
+            0.8489408087717008,
+            -0.45207556335577376
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.098926806416465,
+          "hessian_eigs": [
+            -3.879595713825576,
+            -2.351748303931952,
+            -0.5431971547253546
+          ],
+          "grad_minus_vstar": 0.36596198065241553
+        }
+      ],
+      "hypotheses": {
+        "H1_on_axis": null,
+        "H2": true,
+        "H3": true,
+        "H4prime": false,
+        "H8": false,
+        "H7": true,
+        "H9": true
+      },
+      "node_untilted_isotropic": true,
+      "label": "NO_RATE_AXIS; FAILS_H4prime_H8",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z8",
+      "name": "axes + body diagonals",
+      "d": 3,
+      "s": 2,
+      "n_steps": 88,
+      "unitarity_defect": 8.881784197001252e-16,
+      "lattice_isometric_to_Zd": false,
+      "vertex": [
+        "-1",
+        "5",
+        "-1"
+      ],
+      "exact": {
+        "u_norm": "3*sqrt(3)",
+        "rho": "3/4",
+        "rho_u": "9*sqrt(3)/4",
+        "rho_u_irrational": true,
+        "uV": "27",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          0.9999999999999998,
+          -8.326672684688674e-17
+        ],
+        "c_IR": 3.309401076758504,
+        "hermitian_defect": 9.397040495892911e-16,
+        "trace_defect": 9.39188966358397e-16,
+        "anticommutator_defect": 3.794166525864467e-15,
+        "isotropy_defect": 5.329070518200751e-15
+      },
+      "min_speed_in_B_minus_A": 3.696152422706632,
+      "slope_range": [
+        3.7793187922059106,
+        5.18175524470342
+      ],
+      "K_star": 0.0,
+      "label": "NO_RATE_AXIS; FAILS_KSTAR_POSITIVE",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z9",
+      "name": "great rhombicuboctahedron",
+      "d": 3,
+      "s": 2,
+      "n_steps": 136,
+      "unitarity_defect": 1.4432899320127035e-15,
+      "lattice_isometric_to_Zd": false,
+      "vertex": [
+        "5",
+        "1",
+        "-3"
+      ],
+      "exact": {
+        "u_norm": "sqrt(35)",
+        "rho": "sqrt(105)/12",
+        "rho_u": "35*sqrt(3)/12",
+        "rho_u_irrational": true,
+        "uV": "35",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          1.0000000000000004,
+          -5.551115123125783e-17
+        ],
+        "c_IR": 3.8284271247461885,
+        "hermitian_defect": 1.8544529384041587e-15,
+        "trace_defect": 1.1475900544332647e-15,
+        "anticommutator_defect": 7.23780609461846e-15,
+        "isotropy_defect": 3.552713678800501e-15
+      },
+      "min_speed_in_B_minus_A": 4.208254655439683,
+      "slope_range": [
+        4.3056106003594135,
+        5.910090372903294
+      ],
+      "K_star": 0.0,
+      "label": "NO_RATE_AXIS; FAILS_KSTAR_POSITIVE",
+      "frame_isotropy_defect": 0.0
+    },
+    {
+      "id": "Z10",
+      "name": "hexagonal prism",
+      "d": 3,
+      "s": 2,
+      "n_steps": 14,
+      "unitarity_defect": 6.661338147750939e-16,
+      "lattice_isometric_to_Zd": false,
+      "vertex": [
+        "-2",
+        "0",
+        "3/2"
+      ],
+      "exact": {
+        "u_norm": "10",
+        "rho": "5*sqrt(3)/24",
+        "rho_u": "25*sqrt(3)/12",
+        "rho_u_irrational": true,
+        "uV": "25",
+        "uV_integer": true,
+        "h9_ii": true,
+        "h7": true
+      },
+      "node": {
+        "eigenvalue": [
+          1.0,
+          5.551115123125783e-17
+        ],
+        "c_IR": 1.5,
+        "hermitian_defect": 1.6653345369377348e-16,
+        "trace_defect": 0.0,
+        "anticommutator_defect": 1.6653345369377348e-16,
+        "isotropy_defect": 0.0
+      },
+      "min_speed_in_B_minus_A": 1.778312163512968,
+      "slope_range": [
+        1.5244652632940592,
+        2.4998520043340022
+      ],
+      "t_star": 0.5544590028223424,
+      "Phi_star": 0.8968476691533112,
+      "K_star": 0.08915351973493135,
+      "dominant_points": [
+        {
+          "k": [
+            -0.3548344410946351,
+            0.20854371574425454,
+            -1.8564337414643513
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.16634433391790387,
+          "hessian_eigs": [
+            -2.209341158142627,
+            -1.0313910815578662,
+            -0.12370599941686931
+          ],
+          "grad_minus_vstar": 0.29012177803074685
+        },
+        {
+          "k": [
+            -0.3548344411178485,
+            0.2085437157512366,
+            0.23796136093369846
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.1663443339179037,
+          "hessian_eigs": [
+            -2.2093411824880205,
+            -1.0313911477783468,
+            -0.12370602542441245
+          ],
+          "grad_minus_vstar": 0.29012177808385886
+        },
+        {
+          "k": [
+            1.9256307678957658,
+            -1.1154433978641536,
+            -1.6342247625246493
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.1663443339179039,
+          "hessian_eigs": [
+            -2.209341142201872,
+            -1.0313910838917983,
+            -0.12370599081923217
+          ],
+          "grad_minus_vstar": 0.2901217780626451
+        },
+        {
+          "k": [
+            1.9256307678772864,
+            -1.1154433978540916,
+            0.4601703398805946
+          ],
+          "is_zero": false,
+          "trivial_character": false,
+          "gap_ratio": 0.16634433391790376,
+          "hessian_eigs": [
+            -2.209341184653073,
+            -1.0313911268452578,
+            -0.12370599423241328
+          ],
+          "grad_minus_vstar": 0.2901217780582279
+        }
+      ],
+      "hypotheses": {
+        "H1_on_axis": null,
+        "H2": true,
+        "H3": true,
+        "H4prime": false,
+        "H8": false,
+        "H7": true,
+        "H9": true
+      },
+      "node_untilted_isotropic": true,
+      "label": "NO_RATE_AXIS; OUTSIDE_CLASS_LATTICE; FAILS_H4prime_H8",
+      "frame_isotropy_defect": 0.0
+    }
+  ]
+}
