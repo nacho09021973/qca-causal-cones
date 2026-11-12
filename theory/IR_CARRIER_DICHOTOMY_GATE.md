@@ -94,3 +94,10 @@ about R2, about walks where H3 fails, about nature, or about novelty.
 Stage A: one session. No new walk constructions or searches. No change of
 class or protocol after freezing; amendments recorded before use. No
 external review without a separate user instruction.
+
+## Naming addendum (2026-11-12)
+
+User instruction: regime R2 is called the **Nacho Martín regime** in the
+project's internal documents. Naming only; the frozen content above is
+unchanged.
+
