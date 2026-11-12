@@ -195,3 +195,16 @@ H6; it is not in force until the user approves it.
 - Stage 2: (B) reduced to linear algebra under the draft amendment; (A)
   not started. Budget: Stages 1–2 share two sessions; this session used
   part of the first.
+
+## Addendum: input sweep for Stage 2(A)
+
+After Amendment 1 was approved, each input of manuscript Sec. 7 was
+checked for what it needs in a general walk. Three conditions are used and
+not implied by H1–H3, H4′, H5, H6: Alice's boundary value of the resource
+(`phi_partial != 0`), differentiability of `Phi` at `xi_*`, and the
+arithmetic of the two depth offsets, which decides whether the depth
+factor has a positive average over `N`. Draft Amendment 2
+(`theory/GENERAL_IR_RATE_GATE_AMENDMENT_2.md`) states them as H7–H9 with
+the reason each is needed. They should have been found before Amendment 1.
+Stage 2(A) is not started until the user decides.
+

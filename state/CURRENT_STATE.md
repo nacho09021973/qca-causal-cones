@@ -24,7 +24,11 @@ Stage 2: non-vanishing reduced to linear algebra given the leading-term
 lemma (not yet proved); two gaps not covered by H1–H5 found;
 [draft Amendment 1](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_1.md)
 (H4′: zero momentum dominant; H6: independence) approved by the user the
-same day and in force. No review, no promotion.
+same day and in force. A later sweep of the inputs of manuscript Sec. 7
+found three more conditions not implied by them;
+[draft Amendment 2](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_2.md) (H7 Alice
+boundary value, H8 differentiability of Phi at xi_*, H9 arithmetic of the
+depth offsets) **not in force until the user approves it**. No review, no promotion.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:
