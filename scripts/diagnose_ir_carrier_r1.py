@@ -25,7 +25,16 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import diagnose_general_ir_rate_round2 as R2  # noqa: E402
 
 P = R2.P
-R1_IDS = ("W2", "W3", "W6")
+R1_IDS = ("W2", "W3", "W6", "W5")   # W5: erratum check of the round-2 tail only
+
+
+def tail_full(wB, A, c, Q, col, d):
+    """Free tail in the full internal space. P.tail works in nodal coordinates
+    (A = Q^dagger D Q); attempt 1 passed Q[:, col] (full-space coordinates) to it,
+    which mixes bases whenever Q is not the standard basis (W5, W6, Z7)."""
+    e = np.eye(2)[:, col]
+    R_nodal, I0, I1 = P.tail(wB, A, c, e, d)
+    return Q @ R_nodal
 N_TERMS = 400
 
 
@@ -130,7 +139,17 @@ def main():
         assert gg == 1 and sum(a * b for a, b in zip(nvec, mu_int)) == 1
         x0 = B @ np.array(nvec, float)
         wB = Vn - rho * uhat
-        tails = [P.tail(wB, A, c, Qn[:, col], d)[0] for col in range(2)]
+        tails = [tail_full(wB, A, c, Qn, col, d) for col in range(2)]
+        if wid == "W5":
+            zero = [p for p in out["dominant_points"] if p["is_zero"]]
+            _, e0, _, _ = sym.dominant(np.array(zero[0]["k"]), xi)
+            cosz = [float(abs(np.vdot(e0, R)) / (np.linalg.norm(e0) * np.linalg.norm(R))) for R in tails]
+            res = dict(id=wid, name=name, erratum_check=True, tail_norms=[float(np.linalg.norm(R)) for R in tails],
+                       cos_angle_e0_tail=cosz, H5=bool(all(np.linalg.norm(R) > 1e-8 for R in tails)),
+                       H10_sufficient_tail_part=bool(all(x < 1 - 1e-6 for x in cosz)))
+            results.append(res)
+            print(f"{wid} {name}: erratum check H5={res['H5']} cos(e0,tail)={np.round(cosz, 6).tolist()}")
+            continue
         dom = [p for p in out["dominant_points"] if p["trivial_character"]]
         info = []
         fs = []
@@ -153,16 +172,21 @@ def main():
                              mu_terms_n_minus2_to_2=first,
                              cos_angle_e_k_tail=cos_tail,
                              H10_k=bool(all(x < 1 - 1e-6 for x in cos_tail))))
+        es = [sym.dominant(np.array(p["k"]), xi)[1] for p in dom]
+
+        def independent(vs, i):
+            others = [vs[j] for j in range(len(vs)) if j != i]
+            if not others:
+                return True
+            Fo = np.column_stack(others)
+            Fa = np.column_stack(others + [vs[i]])
+            so = np.linalg.svd(Fo / np.linalg.norm(Fo, axis=0), compute_uv=False)
+            sa = np.linalg.svd(Fa / np.linalg.norm(Fa, axis=0), compute_uv=False)
+            return bool(np.sum(sa > 1e-6) > np.sum(so > 1e-6))
+
         for i, item in enumerate(info):
-            others = [fs[j] for j in range(len(fs)) if j != i]
-            if others:
-                Fo = np.column_stack(others)
-                Fa = np.column_stack(others + [fs[i]])
-                so = np.linalg.svd(Fo / np.linalg.norm(Fo, axis=0), compute_uv=False)
-                sa = np.linalg.svd(Fa / np.linalg.norm(Fa, axis=0), compute_uv=False)
-                item["H6_k"] = bool(np.sum(sa > 1e-6) > np.sum(so > 1e-6))
-            else:
-                item["H6_k"] = True
+            item["H6_k"] = independent(fs, i)            # left, as in draft Amendment 1
+            item["H6_k_right"] = independent(es, i)      # right-vector variant (not in the amendment)
         res = dict(id=wid, name=name, K_star=out["K_star"], rho=rho, u_int=mu_int, abs_u=absu,
                    kappa=kappa, x0=x0.tolist(), xi_on_axis_defect=out["xi_on_axis_defect"],
                    trivial_dominant=info)
@@ -170,7 +194,7 @@ def main():
         print(f"{wid} {name}: K*={out['K_star']:.5f} |u|={absu:.4f} kappa={kappa:.5f}")
         for item in info:
             print(f"    k={np.round(item['k'], 4).tolist()} phi={item['phi']:.5f} |mu|={item['abs_mu']:.4e} "
-                  f"mu={item['mu']} H6_k={item['H6_k']} H10_k={item['H10_k']} psi={item['psi_mod_2pi']:.5f}")
+                  f"mu={item['mu']} H6_k={item['H6_k']} H6_k_right={item['H6_k_right']} H10_k={item['H10_k']} psi={item['psi_mod_2pi']:.5f}")
         sys.stdout.flush()
     meta = dict(charter="theory/IR_CARRIER_DICHOTOMY_GATE.md", stage="A(iv) diagnostic",
                 script_sha256=P.sha(__file__), round2_sha256=P.sha(R2.__file__), n_terms=N_TERMS,
