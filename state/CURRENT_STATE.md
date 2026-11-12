@@ -12,7 +12,19 @@ question whether the CJWW rate is sharp, in limsup form, for
 infrared-admissible operational signals in the non-ballistic corona, under
 named hypotheses H1–H5. Frozen unchanged by user choice «Congelar tal
 cual»; status OPEN; Stages 0–2 authorized within the charter budget. The
-preregistration commit is the one that changes the charter status line.
+preregistration commit is `aa6c5f6`.
+Stages 0–1 executed the same day
+([report](../reports/2026-11-12--general-ir-rate-stages-0-1.md)): Stage 0
+consistent with K3 (H1–H5 hold) and K4 (outside the class, `K_*=0`); ACSV
+Thms 9.5/9.12 read in the PDF give the kernel input but neither
+non-vanishing nor the operational sum, so outcome (b) not triggered.
+Stage 1 `PROVED_UNDER_FROZEN_CONTRACT` (author, PRELIMINARY, adaptation of
+CJWW Thm 2.1): `delta <= C N^(d+s-1) e^(-K_* N)` for all operations.
+Stage 2: non-vanishing reduced to linear algebra given the leading-term
+lemma (not yet proved); two gaps not covered by H1–H5 found;
+[draft Amendment 1](../theory/GENERAL_IR_RATE_GATE_AMENDMENT_1.md)
+(H4′: zero momentum dominant; H6: independence) **not in force until the
+user approves it**. No review, no promotion.
 
 **IR-corona manuscript versions reconciled — 2026-11-12:** user «adelante
 empieza con 1». The manuscript existed in two versions that never met:
