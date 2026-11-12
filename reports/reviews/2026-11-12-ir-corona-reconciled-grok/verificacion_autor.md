@@ -87,3 +87,27 @@ la tabla del apéndice.
 Límites: una sola casa (xAI), una ronda, sin ejecución de código. No cubre
 novedad ni bibliografía. No promociona nada. El manuscrito sigue
 PRELIMINARY hasta que el usuario decida sobre las reparaciones.
+
+## Reparaciones aplicadas (2026-11-12, usuario «sigue»)
+
+Aplicadas en `.tex` y `.md`, solo exposición; ningún enunciado ni constante
+cambia, y el enunciado de Lemma Layers sigue idéntico al de la prueba Lean.
+
+1. Lemma Jumps: prueba completa (expansión en z_j de las cuatro entradas,
+   bloques y normas, suma 4).
+2. Convexidad de Phi: la frase de las derivadas laterales se reescribe con
+   s ↦ Phi(sx) y se dice qué cubre el hessiano.
+3. Apéndice: por qué los cocientes 15.2, 9.4, 6.4 no contradicen la cota
+   absoluta N^(-17/2) del término a_c (régimen no asintótico en N ≤ 56,
+   corrección relativa ≈ −100/N, coeficiente principal mínimo).
+5. «Flat direction» → dos direcciones / un plano, en la introducción y en
+   el recuento de la potencia.
+6. 288 N^7: «as recorded in [Repo] and not proved here».
+7. 4e^(3t_*−Phi_*) < 9.2 deducido de los encierros certificados de t_* y
+   Phi_* (4e^(2.2074)/3.9731 ≈ 9.154).
+
+Objeción 4 (certificados fuera del manuscrito) sigue abierta hasta que
+exista un archivo público con DOI. Las reparaciones no se han re-revisado.
+Bibitem y Markdown citan la etiqueta `ir-corona-v3`, creada en el commit de
+estas reparaciones. Compila: 21 páginas, sin referencias sin definir.
+SHA256: `.tex` 6b307c4c…, `.md` c70966aa….

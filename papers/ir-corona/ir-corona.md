@@ -176,8 +176,9 @@ size $O(N^{-3/2})$, and the part of Alice's encoding that reaches Bob, which
 is exponentially small. Two points of the complex-shifted Brillouin torus
 contribute, and they enter with different projectors. The power $13/2$ is
 not a count of Gaussian directions. The two normal directions are discrete
-sums over lattice planes of depth $O(1)$, and the common tangential direction
-is a flat direction of the exponent that is confined only by the profiles.
+sums over lattice planes of depth $O(1)$, and the two common tangential
+directions are flat directions of the exponent that are confined only by the
+profiles.
 
 ### Relation to the literature
 
@@ -318,9 +319,18 @@ $S_{(1,1,1)}=\frac14|{\downarrow}\rangle\langle{\downarrow}|$. The
 face-diagonal blocks have norm $\frac14$ and the axial blocks have norm
 $\frac12$, so that $\sum_d\|S_d\|=4$.
 
-*Proof.* This is a direct expansion of (2) in $z_j=e^{ip_j}$. The coefficient
-of $z_1z_2z_3$ comes only from the $(2,2)$ entry $c_1c_2e^{ip_3}$ and equals
-$\frac14$. ∎
+*Proof.* Write $c_j=(z_j+z_j^{-1})/2$ and $s_j=(z_j-z_j^{-1})/(2i)$, with
+$z_j=e^{ip_j}$, and expand (2). Since $c_1c_2=\frac14\sum_{a,b=\pm1}z_1^az_2^b$,
+the diagonal entries $c_1c_2z_3^{-1}$ and $c_1c_2z_3$ give the eight
+vertices $(a,b,\mp1)$, each with block $\frac14|{\uparrow}\rangle\langle{\uparrow}|$ or
+$\frac14|{\downarrow}\rangle\langle{\downarrow}|$; in particular
+$S_{(1,1,1)}=\frac14|{\downarrow}\rangle\langle{\downarrow}|$. In the off-diagonal
+entries, $c_1s_2=\frac1{4i}\sum_{a,b=\pm1}b\,z_1^az_2^b$ gives the four face
+diagonals $(a,b,0)$ with block $\frac{b}{4i}\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$,
+of norm $\frac14$, and $-is_1=-\frac12(z_1-z_1^{-1})$ gives $(\pm1,0,0)$ with
+block $\mp\frac12\sigma_1$, of norm $\frac12$. The fourteen jumps are
+distinct, so no terms cancel, and
+$\sum_d\|S_d\|=8\cdot\frac14+4\cdot\frac14+2\cdot\frac12=4$. ∎
 
 ### 2.2. Dispersion and the infrared node
 
@@ -863,7 +873,10 @@ $(\sum_j\tanh\xi_j x_j)^2\le
 and $\sum_j\sinh^2\xi_j\le\prod_j(1+\sinh^2\xi_j)-1=D^2$.
 Thus the Hessian is positive semidefinite. At zero, continuity and
 $\Phi(\xi)=|\xi|+O(|\xi|^3)$ extend convexity across the origin
-(the one-sided directional derivatives are $-|x|$ and $|x|$).
+(for each $x$, $s\mapsto\Phi(sx)=|s||x|+O(s^3)$ has left and right
+derivatives $-|x|\le|x|$ at $s=0$, so its restriction to every line
+through the origin is convex; lines avoiding the origin are covered by the
+Hessian).
 Consequently $\nabla\Phi(\xi_*)=v_*$ gives a supporting hyperplane and
 $I(v_*)=\xi_*\cdot v_*-\Phi_*$. By the definition of $I$, for every
 $v$,
@@ -895,7 +908,9 @@ $\|S(\eta-i\xi_*)\|\le4e^{3t_*}$. Lemma 5.3 gives
 $\sup_\eta\|S(\eta-i\xi_*)^N\|\le e^{N\Phi_*}(1+4e^{3t_*-\Phi_*}N)$. For
 $(x,y)\in\mathcal A_N\times\mathcal B_N$, (6) and $\xi_*\parallel\hat u$ give
 $\xi_*\cdot(y-x)\ge N\,\xi_*\cdot v_*$, and $N\xi_*\cdot v_*-N\Phi_*=NK_*$.
-Numerically $4e^{3t_*-\Phi_*}<9.2$, so $1+4e^{3t_*-\Phi_*}N\le1+10N$, and the
+From the certified enclosures $t_*<0.7358$ and $e^{\Phi_*}>3.9731$
+(Appendix A), $4e^{3t_*-\Phi_*}<4e^{2.2074}/3.9731<9.2$, so
+$1+4e^{3t_*-\Phi_*}N\le1+10N$, and the
 Schur test concludes as before. ∎
 
 ---
@@ -1456,8 +1471,8 @@ $\frac32$ at Bob. The profiles $s_N$ and $h_N$ contribute $2+2$. The two
 in-plane areas contribute $-2$. The normal Gaussian contributes $\frac12$,
 and the tangential rescaling $d^2\eta_t=(2/N)d^2\tau$ contributes $1$. The
 depths $j,j'$ are discrete sums of size $O(1)$ and contribute no power. The
-common tangential direction $u_\perp+u'_\perp$ is a flat direction of the
-exponent, because $\xi_*$ is orthogonal to the planes. It is confined by the
+common tangential translation $u_\perp+u'_\perp$ ranges over a plane on
+which the exponent is flat, because $\xi_*$ is orthogonal to the planes. It is confined by the
 profiles and produces the area factors, not a Gaussian factor.
 
 **Remark 7.7 (Dependence on $\theta_N$).** Since $\sqrt3/4\notin\mathbb Q$,
@@ -1530,7 +1545,8 @@ on the exponentially small signal scale.
    effective at finite $N$.
 4. Many-particle and second-quantized versions. The upper bound extends to
    even local unitaries on the full CAR algebra, with prefactor $288N^7$ in
-   place of $36N^4$ [19], but no lower bound is available there.
+   place of $36N^4$, as recorded in [19] and not proved here, but no lower
+   bound is available there.
 
 ---
 
@@ -1594,6 +1610,11 @@ $N^{-17/2}$ piece $2\operatorname{Re}\langle r,Ea_c\rangle$ to the piece
 $2\operatorname{Im}\langle r,Ea_{\downarrow}\rangle$ that carries the
 $N^{-13/2}$ term is $15.2$, $9.4$ and $6.4$ at $N=24,40,56$. These ratios scale approximately
 as $1/N$, not $1/N^2$, and do not validate the relative asymptotic order.
+They do not contradict the bound $O(N^{-17/2}e^{-K_*N})$ for
+$\langle r,Ea_c\rangle$ in Section 7, which is absolute: the semi-analytic
+comparison below indicates a relative correction of about $-100/N$ to the
+leading term, so $N\le56$ lies outside the asymptotic regime, and these
+pairs have the smallest leading coefficient.
 No common range compares the exact signal with the leading formula. A semi-analytic evaluation with discrete planes and exact
 profiles gives semi/lead $=0.906$, $0.990$ and $0.997$ at $N=10^3$, $10^4$
 and $3\cdot10^4$, consistent with a relative correction $\approx-100/N$. The
@@ -1652,7 +1673,7 @@ $N=40$ and $8\cdot10^{-9}$ at $N=640$.
     doi:10.1017/9781108874144.
 19. Repository `nacho09021973/qca-causal-cones`,
     <https://github.com/nacho09021973/qca-causal-cones>, tag
-    `ir-corona-v2`. Certificates
+    `ir-corona-v3`. Certificates
     `scripts/verify_scaled_ir_gate.py`,
     `scripts/verify_regional_directional_asymptotics_gate.py`,
     `scripts/verify_regional_laplace_coefficient_gate.py`,

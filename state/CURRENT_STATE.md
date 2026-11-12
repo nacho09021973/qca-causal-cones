@@ -45,8 +45,11 @@ fails and the merged steps are reported compatible.
 [Author reading](../reports/reviews/2026-11-12-ir-corona-reconciled-grok/verificacion_autor.md):
 five exposition repairs accepted (jumps proof, one-sided derivative
 wording, a_c budget versus diagnostics, «flat direction», the constant
-9.2), none applied yet; no statement or constant affected. One house, one
-round, no code run by the reviewer; no promotion.
+9.2); no statement or constant affected. One house, one round, no code run
+by the reviewer; no promotion. Same day, user «sigue»: the five repairs and
+the 288N^7 wording applied to `.tex`/`.md`, not re-reviewed; objection 4
+(certificates outside the manuscript) open until a public archive exists;
+bibitem now cites tag `ir-corona-v3`.
 
 **Tetrahedral IR protocol — authorized 2026-11-10:** user requests studying
 the signal under an infrared protocol. The
