@@ -1,7 +1,8 @@
-# Amendment 1 to the carrier dichotomy charter — DRAFT
+# Amendment 1 to the carrier dichotomy charter
 
-2026-11-12. Drafted by Claude (claude-opus-5-5). **Status: DRAFT; not in
-force until approved by the user.** The frozen charter
+2026-11-12. Drafted by Claude (claude-opus-5-5). **Status: APPROVED by the
+user 2026-11-12 (choice «Aprobar y mandar a Grok», on the revised text);
+in force from this commit.** The frozen charter
 (`IR_CARRIER_DICHOTOMY_GATE.md`, `36adaa1`) is not edited.
 
 ## Reason

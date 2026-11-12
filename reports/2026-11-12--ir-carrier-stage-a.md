@@ -154,3 +154,14 @@ the basis error, is recomputed correctly; H5 and the tail part of H10
 still hold (`|R~| = 0.700`, `cos(e_0, R~) = 0.893`), so the round-2 row
 stands.
 
+## 9. Verdict (after the user approved Amendment 1)
+
+**Stage A: `PROVED_UNDER_FROZEN_CONTRACT`** (carrier charter as amended):
+under H1–H3, H5, H7, H8, H2 at the dominant set and H6_k, H9_k, H10_k, the
+CJWW rate is attained in limsup form by a protocol of the family, carried
+by a non-zero dominant momentum with character trivial on the planes, at
+power `5 + d/2`. Author derivation, PRELIMINARY, not reviewed. Outcome (b)
+of the charter partly met (Secs. 2–4 adapt the general derivation; Sec. 5
+and Sec. 8 are new). **No example inside the declared `Z^d` class is
+known:** the three R1 walks of the diagnostic live on BCC lattices.
+

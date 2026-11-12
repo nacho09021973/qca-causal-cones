@@ -22,8 +22,10 @@ round-2 W5 row; recomputed, label unchanged): `mu != 0` at every carrier,
 but the two carriers of each R1 walk are inseparable; a second-moment
 argument covers that case under an arithmetic condition.
 [Draft Amendment 1](../theory/IR_CARRIER_DICHOTOMY_GATE_AMENDMENT_1.md)
-(H6_k with isolation or carrier group, H9_k, H10_k) **not in force until
-the user approves it**; no verdict yet.
+(H6_k with isolation or carrier group, H9_k, H10_k) approved by the user.
+**Stage A `PROVED_UNDER_FROZEN_CONTRACT` (as amended), author derivation,
+PRELIMINARY**; no R1 example inside the `Z^d` class is known (the three
+diagnostic examples are BCC). User asked for a sealed Grok review.
 
 **Second general-rate diagnostic, walk-adapted regions — 2026-11-12:**
 user «si a las tres» (Amendment 4, second run, then dichotomy proposal).
