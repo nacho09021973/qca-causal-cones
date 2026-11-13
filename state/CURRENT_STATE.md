@@ -1,6 +1,12 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-12
+**Date:** 2026-11-13
+
+**General infrared admissibility charter — 2026-11-13:** user «SI»
+approves freezing [the charter](../theory/GENERAL_IR_ADMISSIBILITY_GATE.md)
+and execution of Stage A on `Z^d` (one analytic session, at most 90
+minutes). Status OPEN; no calculation executed at this authorization
+checkpoint. Stage B, external review and promotion not authorized.
 
 **Codex second round — 2026-11-12** (user «adelante»; base `755f2ba`;
 [record](../reports/reviews/2026-11-12-bravais-stage1-astra-r2/verificacion_autor.md)):
