@@ -2,6 +2,20 @@
 
 **Date:** 2026-11-13
 
+**Admissibility Stage B completed — 2026-11-13:** under authorization
+`20bc5b1`, [Bravais analytic report](../reports/2026-11-13--general-ir-admissibility-bravais.md).
+For every fixed full-rank `L=B Z^d`, active encoders and non-zero
+detectors have all three leakage ratios `O(N^(-1/2))`. Lattice constants
+enter the difference estimate; normalized resources acquire
+`sqrt(covol(L))`, balanced by lattice point density in local mass bounds.
+All denominators have positive eventual bounds. No new hypothesis;
+null members retain zero signal and undefined relevant ratios.
+`PROVED_UNDER_FROZEN_CONTRACT` as amended: author, PRELIMINARY, no
+independent review or promotion. B1 compatibility remains conditional
+on its existing Bravais rate/non-vanishing derivation. This supersedes
+the pending Stage B entries below; external review and promotion remain
+unauthorized. No claim of uniformity over varying lattices or of novelty.
+
 **Admissibility Stage B authorized — 2026-11-13:** user «adelante con
 ella» authorizes the Bravais transfer of the active-encoder lemma,
 under `GENERAL_IR_ADMISSIBILITY_GATE.md` Stage B and Amendment 1.
