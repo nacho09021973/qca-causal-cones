@@ -2,6 +2,20 @@
 
 **Date:** 2026-11-13
 
+**General infrared admissibility Stage A — 2026-11-13:** executed under
+charter `ecc5827` ([report](../reports/2026-11-13--general-ir-admissibility-stage-a.md)).
+Author analytic derivation, PRELIMINARY, no independent review. On `Z^d`,
+leakage numerators are `O(N^(-1/2))`; operator denominators for non-zero
+generators and non-zero detector projectors have positive lower bounds
+for sufficiently large N. The unrestricted Hermitian basis can contain
+`M != 0` with `M chi = 0`: then `Delta_M = 0` exactly and `eta_enc` is
+undefined. This is not a counterexample to convergence of a defined ratio
+or to B1's existence claim. Overall `OPEN_AFTER_ADMISSIBILITY_ANALYSIS`;
+stopped at the required class-change decision. State-denominator bounds
+for active generators and compatibility with B1's non-vanishing pair
+remain unproved here. No amendment applied, no promotion; Stage B and
+external review not authorized.
+
 **General infrared admissibility charter — 2026-11-13:** user «SI»
 approves freezing [the charter](../theory/GENERAL_IR_ADMISSIBILITY_GATE.md)
 and execution of Stage A on `Z^d` (one analytic session, at most 90
