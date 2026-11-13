@@ -561,6 +561,23 @@ contract Sec. 2 list of smaller centred lattice hexagons contained in H25
 Does **not** certify: facet-line rigidity, lemma A1, the T2 theorem or
 its transport to H25. Not itself independently reviewed.
 
+## Exact W6 R1 preflight (2026-11-13)
+
+`verify_w6_exact_carrier_preflight.py` supports
+`theory/IR_CARRIER_W6_EXACT_EXAMPLE_GATE.md`, frozen at `b8ece32`.
+Run from the root: `python3 -B scripts/verify_w6_exact_carrier_preflight.py`.
+Exact SymPy algebra, no floats, no project imports; any failed identity
+raises and exits nonzero. Checks the model/node, Laurent unitarity,
+step-generated lattice, primitive dual vector, scalar phase translation,
+order-three symmetry, attaining axial block, envelope-bound polynomial
+factorization and branch-corrected rational relation.
+The count and output are recorded after execution in the dated report.
+Does not certify analytic global-maximizer arguments, existence of the
+regional minimizer or its hypotheses, irrationality, depth averages,
+resource tails, rate attainment or the whole carrier ledger. Those
+limits apply even if every algebra check passes. Old reviewed scripts
+are not imported or changed.
+
 ## Aligned hexagons, all m >= 4 (2026-11-05)
 
 `verify_hex_trace_aligned_all_m.py` supports
