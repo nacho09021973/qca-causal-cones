@@ -571,7 +571,12 @@ raises and exits nonzero. Checks the model/node, Laurent unitarity,
 step-generated lattice, primitive dual vector, scalar phase translation,
 order-three symmetry, attaining axial block, envelope-bound polynomial
 factorization and branch-corrected rational relation.
-The count and output are recorded after execution in the dated report.
+Execution: 86/86 exact checks, exit 0, Python 3.12.3 / SymPy 1.14.0;
+stdout `reports/2026-11-13--w6-exact-carrier-preflight-verifier.txt` and
+analytic report `reports/2026-11-13--w6-exact-carrier-preflight.md`.
+Author-side only; no independent review or promotion. The result is an
+arithmetic obstruction to H6_k(ii) under the required geometry, not an
+operational rate counterexample.
 Does not certify analytic global-maximizer arguments, existence of the
 regional minimizer or its hypotheses, irrationality, depth averages,
 resource tails, rate attainment or the whole carrier ledger. Those

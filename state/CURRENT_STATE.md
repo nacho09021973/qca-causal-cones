@@ -2,6 +2,28 @@
 
 **Date:** 2026-11-13
 
+**Exact W6 gate executed and stopped — 2026-11-13:** frozen at
+`b8ece32`, permanent verifier committed before execution at `27d8ba3`;
+[report](../reports/2026-11-13--w6-exact-carrier-preflight.md),
+[stdout](../reports/2026-11-13--w6-exact-carrier-preflight-verifier.txt)
+(86/86, exit 0; exact algebra). Author verdict
+`COUNTEREXAMPLE_VERIFIED` to the declared hypothesis instance:
+the scalar shift `S(p+(pi/2)u)=-i S(p)`, `u=3V`, creates at least four
+distinct equally dominant points with identical eigenvector spaces.
+If H1 holds, exact symmetry fixes the axis and facing geometry; then
+their normalized phase difference is an integer plus a rational multiple
+of `alpha=u.w_A` (no-wrap form `delta=-1+alpha/2`). This contradicts
+H6_k(ii); H6_k(i) cannot separate scalar copies either. No conjunction
+of all required hypotheses is possible for this fixed candidate.
+The frozen derivative/radius is well defined by an exact global axial
+envelope calculation. Full H1 and the rest of the ledger are not
+certified; their conjunction is excluded by the necessary-condition
+argument. PRELIMINARY, no independent review or promotion. Stop rule
+triggered, Stage 2 NOT_EXECUTED. Not a counterexample to signal existence
+or rate attainment; no exact R1 example obtained. The old two-point W6
+dominant inventory is incomplete on the declared torus. No automatic
+fallback to another walk or resonant-carrier analysis is authorized.
+
 **Exact W6 contract frozen and execution authorized — 2026-11-13:**
 user «comiit , push a todo, luego congela y ejecuta y a ver que tal va».
 Draft committed and pushed at `f0afd88`, then frozen unchanged apart
