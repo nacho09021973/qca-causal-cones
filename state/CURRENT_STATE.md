@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-13
 
+**Exact W6 R1 example charter drafted — 2026-11-13:** after promotion
+and push of admissibility at `46114c0`, user «posteriormente preparar
+el contrato». [Draft](../theory/IR_CARRIER_W6_EXACT_EXAMPLE_GATE.md):
+single cyclic s=4 walk, its step-generated lattice, exact diagnostic-style
+placement rule, explicit P-sector resource vector and finite protocol
+family. All carrier-group hypotheses, global spectral control and depth
+non-vanishing required; numerical outputs not certificates. DRAFT,
+NOT FROZEN, NOT EXECUTED. No exact example, external transmission or
+promotion authorized by drafting. The resource choice is explicit and
+is not asserted to equal the diagnostic's QR-based vector.
+
 **PROMOTED: active-protocol infrared admissibility — 2026-11-13:** user
 «push , promocion y posteriormente preparar el contrato»;
 [promotion record](../reports/2026-11-13--general-ir-admissibility-promotion.md).
