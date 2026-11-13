@@ -2,6 +2,23 @@
 
 **Date:** 2026-11-13
 
+**PROMOTED: active-protocol infrared admissibility — 2026-11-13:** user
+«push , promocion y posteriormente preparar el contrato»;
+[promotion record](../reports/2026-11-13--general-ir-admissibility-promotion.md).
+Branch-local `PROVED_UNDER_FROZEN_CONTRACT` (admissibility charter
+`ecc5827`, Amendment 1 `156657e`), evidence
+ONE_INDEPENDENT_ADVERSARIAL_REVIEW_PASS (Claude Opus 5.5).
+All three ratios are eventually defined and `O(N^(-1/2))` for active
+encoders and non-zero orthogonal detectors on each fixed full-rank
+Bravais lattice, `d in {2,3}`, including `Z^d`, with the frozen profiles
+and resource. Constants and thresholds depend on fixed data. Null state
+ratios stay undefined; their signals are exactly zero. Optional O1–O8
+exposition edits at `76c939a` not re-reviewed. B1 compatibility remains
+a conditional implication, not promotion of its rate/existence proof.
+No human verification, novelty result, exact R1 example, carrier/R2
+promotion or main-branch merge. This supersedes the no-promotion entries
+below for this admissibility lemma only.
+
 **Admissibility exposition comments applied — 2026-11-13:** user
 «aplicalas y dime como seguimos segun la hoja de ruta prevista».
 Optional O1–O8 of Claude's PASS are applied to the three admissibility
