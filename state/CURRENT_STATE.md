@@ -2,6 +2,22 @@
 
 **Date:** 2026-11-13
 
+**Active-encoder admissibility Stage A completed — 2026-11-13:** under
+Amendment 1 (`156657e`), [analytic report](../reports/2026-11-13--general-ir-admissibility-active-encoders.md).
+For each fixed `M chi != 0` on `Z^d`, the state denominator has a positive
+eventual lower bound: compare positive resource mass on an interior box
+where the encoder acts nontrivially with an unchanged exterior box.
+Together with the multiplier and operator-denominator bounds, all three
+ratios are `O(N^(-1/2))` for active encoders and non-zero detectors.
+Null encoders have exactly zero signal and keep an undefined state ratio.
+Conditional on B1's existing leading-term/non-vanishing derivation, its
+non-zero basis pair is active, so it meets this admissibility lemma.
+Both targets `PROVED_UNDER_FROZEN_CONTRACT` as amended: author,
+PRELIMINARY, not independently reviewed, no promotion. This supersedes
+the Stage A open obligation below for active encoders on `Z^d` only;
+no assertion that every unrestricted basis member is admissible.
+Stage B, external review and promotion remain unauthorized.
+
 **Admissibility Amendment 1 approved — 2026-11-13:** user «aprobado»
 authorizes [the active/null distinction](../theory/GENERAL_IR_ADMISSIBILITY_GATE_AMENDMENT_1.md)
 and continuation of Stage A on `Z^d`: prove the state-denominator bound
