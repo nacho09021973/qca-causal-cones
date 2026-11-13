@@ -2,6 +2,14 @@
 
 **Date:** 2026-11-13
 
+**Admissibility Amendment 1 approved — 2026-11-13:** user «aprobado»
+authorizes [the active/null distinction](../theory/GENERAL_IR_ADMISSIBILITY_GATE_AMENDMENT_1.md)
+and continuation of Stage A on `Z^d`: prove the state-denominator bound
+for `M chi != 0` and compatibility with B1's non-vanishing pair. Null
+encoders stay recorded with an undefined state ratio and zero signal.
+No continuation result at this checkpoint. Stage B, external review
+and promotion remain unauthorized.
+
 **General infrared admissibility Stage A — 2026-11-13:** executed under
 charter `ecc5827` ([report](../reports/2026-11-13--general-ir-admissibility-stage-a.md)).
 Author analytic derivation, PRELIMINARY, no independent review. On `Z^d`,
