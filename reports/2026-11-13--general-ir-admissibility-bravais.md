@@ -9,6 +9,13 @@ Base active-case proof: `reports/2026-11-13--general-ir-admissibility-active-enc
 (`bb3592b`). **Author analytic derivation; PRELIMINARY; no independent
 review, no promotion.** No computations or external transmissions.
 
+**Exposition update, 2026-11-13:** optional O1, O2, O5 and O8 from the
+[Claude review](reviews/2026-11-13-admissibility-opus/informe_opus.md)
+are applied at the user's instruction «aplicalas». The original PASS
+version is preserved at `6ddda97` and in the sealed review input. These
+edits have not been re-reviewed; the original evidence and timing labels
+describe the execution before review.
+
 ## 1. Question, scope and conclusion
 
 Known: Stage A proves three `O(N^(-1/2))` leakage ratios on `Z^d` for
@@ -21,6 +28,9 @@ Fix `L=B Z^d`, real invertible B, `d in {2,3}`, and all of the finite
 internal, profile and resource data of Stage A. Write
 `v_L=|det B|`, `b_j=B e_j`, `beta=sigma_min(B)>0`,
 `B_op=||B||_2`, `B_F=(sum_j |b_j|^2)^(1/2)`.
+Here B denotes only the lattice matrix. Bob's physical ball is denoted
+`B_reg` below; its radius is the charter's Bob radius. The reciprocal
+cell's inscribed-ball radius is denoted `r_rec`, a different quantity.
 All constants and thresholds may depend on this fixed lattice and data.
 No uniformity over degenerating lattices or changing bases is asserted.
 
@@ -47,10 +57,10 @@ characters. An explicit reciprocal fundamental cell is
 
     P_B = B^(-T)[-pi,pi)^d.
 
-The Euclidean ball of radius `r_B=pi/max_j |b_j|` lies inside its closure,
+The Euclidean ball of radius `r_rec=pi/max_j |b_j|` lies inside its closure,
 and every ball of strictly smaller radius lies in its interior: if
-`|p|<r_B`, then `|(B^T p)_j|<pi` for every j.
-For sufficiently large N require `N^(-1/2)<r_B`; both frozen cutoff
+`|p|<r_rec`, then `|(B^T p)_j|<pi` for every j.
+For sufficiently large N require `N^(-1/2)<r_rec`; both frozen cutoff
 balls then lie inside this cell. The same small balls inject into the
 reciprocal torus, irrespective of whether a parallelepiped or a Voronoi
 cell is used to represent it. Pi and Pi' are multiplication by these
@@ -98,6 +108,9 @@ The state-numerator rank-one identity is independent of the lattice.
 It still bounds that trace norm by twice the encoder leakage numerator,
 because `Pi' phi_N=phi_N`. Thus every required numerator has the same
 power `N^(-1/2)`.
+Explicitly, `Pi phi_N=phi_N` also gives
+`r=(I-Pi')(U_M-I)Pi phi_N`, so its norm is bounded by the encoder
+leakage operator norm in Sec. 3.
 
 ## 4. Resource normalization and positive local masses
 
@@ -156,7 +169,7 @@ by `Phi(0)>0` and continuity. The count of Sec. 4 applies to the
 translated resource too. A non-zero eigenvalue of M gives a region
 where `|exp(i pi F lambda/2)-1|` is bounded below, so
 `||(U_M-I)Pi||` is bounded below. A unit vector in the range of non-zero
-P and an interior region where h is positive give the lower bound for
+P and an interior region in `B_reg` where h is positive give the lower bound for
 `||E Pi||`. Lattice translation preserves both norm and band support.
 
 Dividing Sec. 3's numerators by these bounds proves all three
@@ -165,11 +178,15 @@ finite common constants by taking their maxima/minima as appropriate.
 
 The active/null distinction is internal and unchanged by the lattice:
 `M chi=0` fixes the resource exactly, so Delta and every signal vanish.
-Zero detectors also give zero signal. In the existing Bravais transfer
-of B1, the leading functional is still bilinear in the same internal
-matrices. Removing its zero terms cannot remove its non-vanishing
-witness. Conditional on that prior derivation, its selected pair is
-active and has a non-zero detector, and therefore satisfies this lemma.
+Zero detectors also give zero signal. Conditional on the Bravais B1
+conclusion that a fixed basis pair has positive scaled limsup
+`limsup e^(K_* N) N^(5+d/2) delta(N) > 0`, any such pair is therefore
+active and has a non-zero detector, and satisfies this lemma. This is
+an existence implication, not an explicit selection of a pair. It
+inherits the B1 existence, per-pair remainder, witness and Bravais
+transfer dependencies enumerated in Stage A Sec. 5. Bilinearity belongs
+to B1's leading functional; the physical exponential signal need not
+be bilinear.
 No use is made of H3 or H9 to prove admissibility itself; such
 hypotheses remain relevant to B1's conditional rate claim.
 
@@ -199,8 +216,11 @@ Neither check implies a uniform theorem when B varies with N.
 **Stage B: `PROVED_UNDER_FROZEN_CONTRACT` as amended by Amendment 1.**
 The transfer changes constants and excludes finitely many N; it supplies
 the active-protocol admissibility lemma on each fixed full-rank Bravais
-lattice. Compatibility with B1 remains conditional on its existing
-rate proof. Author result, **PRELIMINARY; not reviewed; not promoted**.
+lattice. Compatibility with B1 is a **conditional implication**, not
+an unconditional rate proof; the dependencies are listed in Sec. 5
+and the amended exposition of Stage A Sec. 5. The original author result
+was PRELIMINARY and subsequently received one cross-family Claude PASS;
+these exposition edits have not been re-reviewed. No promotion.
 
 No new hypothesis, new walk, carrier computation, numerical diagnostic
 or modified reviewed verifier. The local literature index was checked;

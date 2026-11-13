@@ -7,6 +7,13 @@ Preregistration: `ecc5827a6aa1838f668326386d568a790417150d`,
 Evidence: analytic author derivation, **PRELIMINARY; not independently
 reviewed**. No numerical or symbolic computation, no verifier run.
 
+**Exposition update, 2026-11-13:** Claude's optional O1 and O7 comments
+are applied at the user's instruction «aplicalas». The reviewed version
+is preserved at `c740dbb` and in the sealed review input. The
+[review](reviews/2026-11-13-admissibility-opus/informe_opus.md) gave PASS;
+these edits have not been re-reviewed. The stop and timing records below
+describe the original execution.
+
 ## 1. Scope and outcome
 
 The frozen family permits a Hermitian basis containing a non-zero M
@@ -48,7 +55,8 @@ For a matrix multiplier a with `sup ||a|| <= A` and
 
     ||(I-Pi') a Pi|| <= (pi/2)(A + sqrt(d)L) N^(-1/2).
 
-Indeed `||(D_j Pi f)_j|| <= N^(-1)||f||`; applying the product rule
+Indeed `(sum_j ||D_j Pi f||^2)^(1/2) <= N^(-1)||f||`, using the
+Hilbert direct-sum norm over j; applying the product rule
 gives the upper bound `(A+sqrt(d)L)N^(-1)||f||` for the discrete gradient
 of `a Pi f`. The displayed high-momentum lower bound then yields the
 claim. These are operator norms and vector-valued Plancherel identities;
@@ -71,12 +79,18 @@ Since `Pi'phi_N=phi_N`,
     ||Delta_M-Pi'Delta_M Pi'||_1 <= 2||r|| = O(N^(-1/2)).
 
 The rank-one identity uses `v=w+r` and is valid even when Delta is zero.
+The bound on r follows explicitly from the two band identities:
+
+    Pi phi_N = phi_N,   Pi' phi_N = phi_N,
+    r = (I-Pi')(U_M-I)Pi phi_N,
+    ||r|| <= ||(I-Pi')(U_M-I)Pi|| = O(N^(-1/2)).
+
 It supplies no lower bound for its denominator.
 
 ## 3. Operator denominators
 
-For sufficiently large N the momentum ball lies inside the chosen
-torus cell. With normalized measure `dp/(2pi)^d`, write the exact
+For every integer N >= 1 the momentum ball of radius `1/N` lies inside
+the cell `[-pi,pi]^d`. With normalized measure `dp/(2pi)^d`, write the exact
 normalized scalar resource as
 
     phi_N(x) = N^(-d/2) Phi(x/N) chi,

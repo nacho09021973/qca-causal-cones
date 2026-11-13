@@ -8,6 +8,13 @@ continuation. User «aprobado» authorizes the active/null treatment and
 Stage A continuation only. Analytic derivation, no computational script,
 no external transmission. **PRELIMINARY; not independently reviewed.**
 
+**Exposition update, 2026-11-13:** Claude's optional O1–O4, O6 and O8
+comments are applied at the user's instruction «aplicalas». The reviewed
+version is preserved at `bb3592b` and in the sealed review input. The
+[review](reviews/2026-11-13-admissibility-opus/informe_opus.md) gave PASS;
+these edits have not been re-reviewed. Execution timing and the original
+evidence label above are historical.
+
 ## 1. Statement and quantifiers
 
 Fix `d in {2,3}`, finite `s >= 2`, positive-radius continuum balls A and B,
@@ -24,6 +31,10 @@ no uniformity as the basis, chi, balls or lattice vary is claimed.
 
 Null members `M chi = 0` have `Delta_M = 0` and zero signal exactly.
 Their state ratio remains undefined, as required by Amendment 1.
+For a non-zero null basis member, `eta_op(U_M-I)` is nevertheless
+defined eventually and is `O(N^(-1/2))`: its operator denominator tests
+all input-band vectors, not only the declared resource. Only its state
+ratio `eta_enc(M)` is undefined.
 Zero detector projectors, if present, likewise have zero signal and
 an undefined operator ratio.
 
@@ -148,6 +159,11 @@ form of bound for `||E Pi||`. Translation preserves momentum support.
 These are the first report's Sec. 3 arguments, and require no assumption
 on M's action on the declared chi.
 
+Explicitly, `Pi phi_N=Pi'phi_N=phi_N` implies
+
+    r=(I-Pi')U_M phi_N=(I-Pi')(U_M-I)Pi phi_N,
+    ||r|| <= C_M N^(-1/2).
+
 Finally, the rank-one decomposition of the state numerator gives
 `||Delta_M-Pi'Delta_M Pi'||_1 <= 2 C_M N^(-1/2)`.
 Dividing by the positive bounds above proves
@@ -171,7 +187,9 @@ Two checks of the boundary between active and null cases:
   With its choice `F>=1/2` and `F<=1`, epsilon can be
   `1-1/sqrt(2)`. The displayed bound becomes
   `1-|z_N|^2 >= (2-sqrt(2))m_in m_out`, recovering its denominator
-  argument when the two mass bounds are the same m.
+  argument when the two mass bounds are the same m. This last comparison
+  is a consistency check using the manuscript's stated profile choice;
+  the general proof above does not depend on that comparison.
 
 No uniform positive lower bound as `M chi -> 0` is claimed.
 
@@ -183,36 +201,44 @@ derivation already recorded in
 under the hypotheses as subsequently amended. It is not a re-review
 of those asymptotics or of Amendments 5–6.
 
-That argument uses the real-bilinear leading functional on the fixed
-Hermitian basis and spanning detector projectors. Its carrier coefficient
-contains `(R~^dagger M_B e_k)(f_k^dagger M chi)`. Null encoders and zero
-detectors therefore give zero for every such coefficient. More directly,
-they give exactly zero operational signal for every N, without any
-asymptotic expansion.
+The inherited dependencies are explicit:
 
-Removing these zero contributions cannot change the real-bilinear
-non-vanishing argument: expand its witness in the original finite basis
-and detector set. Every discarded term is zero. If all remaining basis
-pairs had scaled leading functional tending to zero, their finite linear
-combination would also tend to zero, contradicting the recorded witness.
-Thus B1's selected non-vanishing basis pair has `M chi != 0` and
-`M_B != 0`. Secs. 2–4 make that actual pair admissible, including its
-nonlinear exponential encoder, without replacing the fixed family or
-realizing a signed linear combination as a physical detector.
+1. B1 asserts existence of a fixed basis pair for the physical signal
+   with `limsup e^(K_* N) N^(5+d/2) delta(N) > 0`.
+2. Its passage from the leading functional to that physical signal uses
+   the per-pair expansion `L_N=-2 Im Z_1 + lower-order terms`.
+3. Existence of the leading-functional witness uses B1's spectral,
+   arithmetic and non-vanishing hypotheses as amended; that argument
+   is not reproved by the admissibility lemma.
+4. The analogous conclusion on a Bravais lattice requires the existing
+   Bravais transfer of these statements, not established in this report.
+
+Given dependency 1, any such pair must have `M chi != 0` and `M_B != 0`:
+otherwise its physical signal is exactly zero for every N, contradicting
+the positive **scaled** limsup. Secs. 2–4 therefore make that pair
+admissible, with its actual nonlinear exponential encoder. No selection
+algorithm or explicit pair is claimed. The signal itself is not
+bilinear; B1 uses bilinearity only for its leading functional, before
+passing to a basis pair through dependencies 2–3. No signed linear
+combination is realized as a physical detector.
 
 Accordingly the admissibility gap for B1's existence claim on `Z^d`
 is closed at the level of this conditional author derivation. The
-stronger assertion that every member of an unrestricted basis has
-defined ratios remains false. No statement about the open B2 cell,
+assertion that every member has defined ratios fails for some permitted
+Hermitian bases, namely those containing a member annihilating chi.
+It does not fail for bases consisting entirely of active members.
+No statement about the open B2 cell,
 Bravais lattices, interacting QCA or novelty follows.
 
 ## 6. Verdict and provenance
 
 Active-family admissibility on `Z^d`:
 `PROVED_UNDER_FROZEN_CONTRACT` as amended by Amendment 1.
-Compatibility with B1: `PROVED_UNDER_FROZEN_CONTRACT`, conditional on
-its existing non-vanishing/asymptotic derivation. Both are author results,
-**PRELIMINARY; no independent review; no promotion**.
+Compatibility with B1: **conditional implication proved**, with the
+inherited dependencies enumerated in Sec. 5; no unconditional B1 rate
+proof is claimed here. The original author evidence was PRELIMINARY;
+the original version subsequently received one cross-family Claude PASS.
+These exposition edits have not been re-reviewed. No promotion.
 
 The local literature index was checked before continuation; no external
 theorem or bibliographic novelty claim is used. No retained computational

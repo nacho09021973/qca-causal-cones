@@ -2,6 +2,19 @@
 
 **Date:** 2026-11-13
 
+**Admissibility exposition comments applied — 2026-11-13:** user
+«aplicalas y dime como seguimos segun la hoja de ruta prevista».
+Optional O1–O8 of Claude's PASS are applied to the three admissibility
+reports ([change record](../reports/reviews/2026-11-13-admissibility-opus/aplicacion_observaciones.md)).
+Original reviewed bytes remain in Git and the sealed input; current
+exposition edits not re-reviewed. Bounds and hypotheses unchanged,
+no promotion. B1 compatibility is explicitly a conditional implication.
+The [work plan checkpoint](../reports/2026-11-13--work-plan.md#4-progress-checkpoint-2026-11-13-codex)
+records item 2.2 completed in its active-encoder scope; next proposed
+scientific step is a separate charter for an exact R1 example (2.3),
+not yet frozen or authorized for computation. Push and promotion remain
+separate user decisions.
+
 **Admissibility reviewed by Claude — 2026-11-13:** user «que lo revise
 claude»; sealed `revision-ciega opus`, `claude-opus-5-5`, high, tools
 `7d111a1`, base `6ddda97` ([original review](../reports/reviews/2026-11-13-admissibility-opus/informe_opus.md),
