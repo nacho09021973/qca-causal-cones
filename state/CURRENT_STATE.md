@@ -2,6 +2,14 @@
 
 **Date:** 2026-11-13
 
+**Admissibility Stage B authorized — 2026-11-13:** user «adelante con
+ella» authorizes the Bravais transfer of the active-encoder lemma,
+under `GENERAL_IR_ADMISSIBILITY_GATE.md` Stage B and Amendment 1.
+One analytic session, at most 60 minutes; fixed full-rank lattice,
+unchanged physical Euclidean profiles and momentum cutoffs. Stop if
+a new hypothesis is required or a denominator bound fails. No execution
+result at this checkpoint. External review and promotion not authorized.
+
 **Active-encoder admissibility Stage A completed — 2026-11-13:** under
 Amendment 1 (`156657e`), [analytic report](../reports/2026-11-13--general-ir-admissibility-active-encoders.md).
 For each fixed `M chi != 0` on `Z^d`, the state denominator has a positive
