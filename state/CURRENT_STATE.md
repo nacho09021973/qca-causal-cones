@@ -2,6 +2,14 @@
 
 **Date:** 2026-11-13
 
+**Exact W6 contract frozen and execution authorized — 2026-11-13:**
+user «comiit , push a todo, luego congela y ejecuta y a ver que tal va».
+Draft committed and pushed at `f0afd88`, then frozen unchanged apart
+from its authorization header. Stages 1–2 authorized within the two
+90-minute caps and stop rules; no computation at this checkpoint.
+External review and promotion remain separate. This supersedes the
+draft-only status below.
+
 **Exact W6 R1 example charter drafted — 2026-11-13:** after promotion
 and push of admissibility at `46114c0`, user «posteriormente preparar
 el contrato». [Draft](../theory/IR_CARRIER_W6_EXACT_EXAMPLE_GATE.md):

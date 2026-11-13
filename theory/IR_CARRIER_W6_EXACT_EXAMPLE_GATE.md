@@ -1,10 +1,13 @@
-# Exact R1 example in the cyclic s=4 walk: draft charter
+# Exact R1 example in the cyclic s=4 walk: charter
 
 2026-11-13. Codex (OpenAI). Prepared after the authorized admissibility
 promotion and push at `46114c0585fa204237babbfd20af412cdb1ad8ba`, following
 work-plan Sec. 2.3 and user «posteriormente preparar el contrato».
-**DRAFT; NOT FROZEN; NOT EXECUTED.** Preparing this text does not authorize
-calculations, verifier execution, external review or promotion.
+**OPEN; FROZEN; execution of Stages 1–2 authorized** by the user
+«comiit , push a todo, luego congela y ejecuta y a ver que tal va»,
+2026-11-13, after the draft was committed and pushed at `f0afd88`.
+Content frozen unchanged except this authorization record. External
+review and promotion remain separately unauthorized.
 
 ## 1. Known, question and abandonment
 
