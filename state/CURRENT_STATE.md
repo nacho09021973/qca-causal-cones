@@ -2,6 +2,17 @@
 
 **Date:** 2026-11-13
 
+**W6 resonant-carrier successor drafted — 2026-11-13:** user «hazlo»
+after the proposal to prepare a new bounded joint-sum contract.
+[Draft](../theory/W6_RESONANT_CARRIER_GATE.md): keep the same W6 rule,
+lattice, radius, resource and protocol; require a complete carrier
+inventory, all resonant interference terms and non-vanishing of a real
+physical leading coefficient on the actual phase-orbit closure. A complex
+second moment alone is insufficient without a proved readout/rotation
+step. Prior-obstruction review is a distinct assignment. DRAFT,
+NOT FROZEN, NOT EXECUTED; no external transmission, new calculations or
+promotion. The failed old H6 instance remains unchanged below.
+
 **Exact W6 gate executed and stopped — 2026-11-13:** frozen at
 `b8ece32`, permanent verifier committed before execution at `27d8ba3`;
 [report](../reports/2026-11-13--w6-exact-carrier-preflight.md),
