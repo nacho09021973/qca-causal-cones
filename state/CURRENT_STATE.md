@@ -2,6 +2,18 @@
 
 **Date:** 2026-11-13
 
+**Admissibility reviewed by Claude — 2026-11-13:** user «que lo revise
+claude»; sealed `revision-ciega opus`, `claude-opus-5-5`, high, tools
+`7d111a1`, base `6ddda97` ([original review](../reports/reviews/2026-11-13-admissibility-opus/informe_opus.md),
+[author reading](../reports/reviews/2026-11-13-admissibility-opus/verificacion_autor.md)).
+**PASS**, no mandatory repairs: active-case admissibility on `Z^d` and
+each fixed full-rank Bravais lattice. PRELIMINARY;
+ONE_INDEPENDENT_ADVERSARIAL_REVIEW_PASS (Claude reviewing Codex's proofs).
+The B1 link is accepted only as a conditional implication; the reviewer
+did not independently verify B1's existence/asymptotic dependencies or
+their Bravais transfer. No verifier executed by the reviewer. Optional
+exposition comments recorded, not applied; no promotion or push.
+
 **Admissibility Stage B completed — 2026-11-13:** under authorization
 `20bc5b1`, [Bravais analytic report](../reports/2026-11-13--general-ir-admissibility-bravais.md).
 For every fixed full-rank `L=B Z^d`, active encoders and non-zero

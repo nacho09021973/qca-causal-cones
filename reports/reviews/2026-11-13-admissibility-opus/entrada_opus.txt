@@ -1,0 +1,1397 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Actúa como revisor matemático adversarial independiente. Revisa las
+pruebas adjuntas de admisibilidad infrarroja para codificadores activos
+en Z^d y en una red de Bravais fija. No aceptes los veredictos del autor
+como evidencia. No tienes herramientas ni acceso al repositorio: deriva
+los pasos desde lo adjunto y declara cualquier dependencia no verificable.
+No incluyas llamadas simuladas a herramientas.
+
+Objetivo: decidir si las tres razones de fuga son O(N^(-1/2)) con
+denominadores positivos para N suficientemente grande, bajo los
+cuantificadores congelados, y si el enlace condicionado con B1 es válido.
+No se solicita un nuevo examen completo de la tasa B1, ni novedad.
+
+Los tres informes de 2026-11-13 son los candidatos. Los contratos fijan
+el alcance. El informe de leading-term B1 y su transferencia Bravais son
+solo dependencias del enlace condicionado: separa expresamente lo que
+rederivas de lo que asumes de esas derivaciones.
+
+Comprueba en particular:
+1. Identidades de Fourier, constante c_d, factor sqrt(covol(L)),
+   normalización y masas positivas en cajas arbitrarias mediante
+   analiticidad y conteos. No asumir que Alice está cerca del origen.
+2. Estimación de multiplicadores matriciales, normas y factores de B;
+   representación del toro, bolas físicas y complemento de Pi'.
+3. Identidad de traza para Delta, suma doble no negativa, cota inferior
+   para todo M chi != 0, y los casos de fase escalar y generador nulo.
+4. Denominadores de operador mediante estados de prueba trasladados;
+   umbrales dependientes de la red y ausencia de uniformidad indebida.
+5. Compatibilidad del par activo con B1: bilinealidad del término
+   principal frente al codificador exponencial no lineal; determina si
+   el razonamiento elimina legítimamente los miembros nulos.
+6. Cumplimiento del contrato, excepciones, hipótesis ocultas y cualquier
+   afirmación más fuerte de lo que se demuestra. Una comprobación
+   analítica por ti no equivale a ejecutar un verificador.
+
+Entrega en español: veredicto global PASS / REPAIR_REQUIRED / FAIL,
+dictamen separado por bloque, y para cada objeción obligatoria una
+localización, derivación o contraejemplo y reparación mínima. Distingue
+error fatal, hueco de prueba y mejora expositiva opcional. Si no encuentras
+objeciones, justifica los pasos delicados sin repetir meramente el texto.
+Una ronda solamente; no promociones el resultado.
+
+=== DOCUMENT 1: GENERAL_IR_ADMISSIBILITY_GATE.md ===
+
+# Infrared admissibility of the general-rate protocol family: charter
+
+2026-11-13. Drafted by Codex (OpenAI), resuming Claude's work plan
+`reports/2026-11-13--work-plan.md`, Sec. 2.2, at the user's instruction
+«continua donde lo dejo claude». Base commit: `cf7eeb4` on
+`research/tetrahedral-support-rigidity-2026-11-09`.
+
+**Status: OPEN; FROZEN; Stage A authorized by the user («SI»,
+2026-11-13), approving freezing and execution of Stage A.** Stage B,
+external review and promotion are not authorized. No amendment to B1
+is made here.
+
+## 1. Known, question, abandonment
+
+**Known (documentary baseline, not a new verification of the proofs).**
+
+- The manuscript defines three leakage ratios in Definition 3.1
+  (`papers/ir-corona/ir-corona.tex`, label `def:admissible`). Its
+  Theorem `thm:admissible` states bounds of order `N^(-1/2)` for its
+  specific three-dimensional, two-component protocol. The proof in
+  `sec:admissible` uses a discrete multiplier estimate, lower resource
+  mass on an interior and an exterior set, and explicit Pauli identities.
+  This is an author derivation; its existence is checked here, not its
+  validity in a larger class.
+- B1 (`GENERAL_IR_RATE_GATE.md`, Amendments 1–6) declares a general
+  Hermitian encoder basis and a finite spanning set of detector
+  projectors. Bravais Stage 1, Sec. 6.3
+  (`reports/2026-11-12--general-ir-rate-bravais-stage1.md`), explicitly
+  records that admissibility of that family has not been proved in B1.
+- Canonical status remains `state/CURRENT_STATE.md`: no promotion.
+  Neither a diagnostic nor a non-zero denominator proves convergence
+  of a leakage ratio.
+- The local literature index was inspected for quantum walks, large
+  deviations and lower bounds. No external theorem is used in this
+  draft. Novelty is not a target and remains OPEN.
+
+**Question.** For every fixed walk and protocol family in the amended
+B1 class, do the encoder and detector satisfy Definition 3.1 as
+`N -> infinity`, first on `Z^d`, then on a fixed Bravais lattice?
+Which hypotheses, if any, beyond the existing class are needed?
+
+**Result that ends the line.** A proof for the declared family closes
+the gap; a certified failure of convergence for a protocol required by
+the claim prevents that unrestricted claim. Failure of a denominator
+is recorded separately from failure of convergence. If a new resource,
+generator restriction or hypothesis is needed, stop before using it:
+propose an amendment rather than repair the class silently. Budget
+exhaustion closes execution as `OPEN_AFTER_ADMISSIBILITY_ANALYSIS`.
+
+## 2. Fixed scope and definitions
+
+Inherit B1 Sec. 2 with Amendments 1–6, and the Bravais charter's lattice
+replacement. Dimension `d in {2,3}`, finite internal dimension `s >= 2`,
+one fixed translation-invariant finite-range free walk. No interaction,
+new walk construction, carrier analysis or diagnostic sweep.
+
+Use the existing fixed continuum balls A and B, of positive radii,
+intersected with the lattice after dilation by N. Make their inherited
+quadratically vanishing profiles explicit before the proof:
+
+    F_N(x) = (1 - |x/N - a|^2/r_A^2)_+^2,
+    h_N(x) = (1 - |x/N - b|^2/r_B^2)_+^2.
+
+Resource: the normalized Fourier function `g(Np) chi`, with
+`g(q) = (1-|q|^2)_+^2` and a fixed unit vector chi in the declared nodal
+space. Encoder `U_M = exp(i pi F_N M/2)` for each member M of the
+inherited fixed Hermitian basis. Detector `E = h_N tensor M_B` for
+each member of the inherited finite spanning set of projectors.
+Do not replace that basis by Pauli matrices or impose `M^2 = I`.
+
+Let Pi and Pi' be the momentum-ball projections of radii `N^(-1)` and
+`N^(-1/2)`, respectively, with identity on the internal space; they
+are not projections onto a selected eigenphase branch. On a Bravais
+lattice use its reciprocal torus and normalized Haar measure, with
+Euclidean balls in a neighbourhood of zero for sufficiently large N.
+
+Targets, with the norms and denominators unchanged from Definition 3.1:
+
+    eta_op(X) = ||(I-Pi') X Pi|| / ||X Pi||,
+    X = U_M-I or E;
+    Delta_M = |U_M phi_N><U_M phi_N| - |phi_N><phi_N|;
+    eta_enc(M) = ||Delta_M-Pi' Delta_M Pi'||_1 / ||Delta_M||_1.
+
+An identically zero operation or Delta has an undefined ratio, not a
+ratio equal to zero. Record which protocols have defined ratios; do
+not omit such a case from a claim quantified over the whole family.
+No projection is inserted into the operational signal.
+
+## 3. Targets and proposed route (not established results)
+
+1. **Numerators.** Adapt manuscript Lemma `lem:IR1` to dimension d and
+   matrix size s. Then adapt it to a lattice basis, accounting for the
+   reciprocal-torus representative and the constants of the fixed
+   lattice. Seek `O(N^(-1/2))`, without assuming this rate is optimal.
+2. **Operator denominators.** Establish lower bounds uniform in N for
+   each fixed non-zero encoder multiplier and detector. Constants may
+   depend on the fixed geometry, lattice and finite matrix family.
+   A pointwise non-zero value is not such a lower bound.
+3. **State denominator.** Establish a positive lower bound for
+   `||Delta_M||_1` for each required M, or exhibit the precise failure.
+   Check the action on chi explicitly: the Pauli computation in the
+   manuscript is not a proof for an arbitrary Hermitian basis.
+4. **Combine and audit dependencies.** Determine which of H1–H10 and
+   the nodal assumptions actually enter. Do not assume tilted spectral
+   hypotheses control these leakage ratios. State the result with its
+   actual quantifiers, including whether constants are uniform only in
+   N. No uniformity over all lattices, walks or bases is requested.
+5. **Second route/check.** Recover the manuscript's `Z^3`, Pauli case
+   from the general statement and separately inspect a generator whose
+   action on chi vanishes. These are analytic checks, not a walk search.
+
+The desired conclusion is convergence of all defined required ratios;
+`O(N^(-1/2))` is a secondary target. A slower proved convergence still
+answers the admissibility question positively. A failure of one member
+does not by itself refute existence of an admissible pair attaining
+the B1 rate: that requires matching admissibility to B1's non-vanishing
+argument, and must be stated as a separate remaining obligation.
+
+## 4. Stages, budget and verdicts
+
+- Stage A: one analytic session on `Z^d`, at most 90 minutes, including
+  the denominator audit. Stop at a necessary class change.
+- Stage B: one analytic session, at most 60 minutes, transferring a
+  successful Stage A statement to a fixed Bravais lattice. No claim
+  about the unresolved B2 carrier cell. Stage B requires separate
+  authorization after the Stage A result is shown.
+
+Per target: `PROVED_UNDER_FROZEN_CONTRACT`,
+`COUNTEREXAMPLE_VERIFIED`, or `OPEN_AFTER_ADMISSIBILITY_ANALYSIS`.
+Undefined ratios are identified explicitly in the report and limit
+its quantifiers; they are not labelled counterexamples to convergence
+of a defined ratio. All author results remain PRELIMINARY pending review.
+
+Deliver execution in a dated report, citing the preregistration commit
+and recording actual timing. Any computation contributing a retained
+result requires a permanent script committed before execution. Do not
+modify reviewed verifiers. No numerical search is requested.
+
+After freezing, commit the charter before execution. External review
+requires explicit transmission authorization; promotion requires a
+separate user decision. A positive result would supply an admissibility
+lemma for the declared free-walk protocols, not establish coexistence
+in the interacting Thirring QCA or settle novelty.
+
+=== DOCUMENT 2: GENERAL_IR_ADMISSIBILITY_GATE_AMENDMENT_1.md ===
+
+# Amendment 1: active encoders and null resource actions
+
+2026-11-13. Author: Codex (OpenAI). **APPROVED by the user
+(«aprobado»), accepting the proposed treatment of null encoders and
+continuation on active encoders after the Stage A report.** This text
+records that approved scope before the continuation is executed.
+
+## Reason and change
+
+The Stage A report exhibits a permitted non-zero Hermitian generator
+with `M chi = 0`; its resource state is unchanged and `eta_enc` is
+undefined. Keep the original fixed basis, matrices, resource, walk and
+profiles. Partition the basis by its action on the fixed resource:
+
+- Active encoders: `M chi != 0`. Prove all three required leakage
+  ratios converge, including a positive lower bound on the state
+  denominator for sufficiently large N.
+- Null encoders: `M chi = 0`. Record their exactly zero operational
+  signal; do not assign a value to `eta_enc` or call them admissible
+  under Definition 3.1.
+- Non-zero detector projectors are the detector targets. Any zero
+  projector already in a spanning set stays recorded as a zero signal
+  with an undefined operator ratio, rather than an admissible effect.
+
+After proving the active-case lemma, check that the non-vanishing
+basis pair in B1 can be selected among active encoders and non-zero
+detectors. This is a compatibility check conditional on B1's existing
+asymptotic derivation, not a fresh independent verification of B1.
+
+No matrix or protocol is replaced. The admissibility statement is
+restricted to active encoders; B1's existence claim is retained only
+if compatibility is proved. This amendment governs the admissibility
+gate; it does not rewrite the frozen B1 documents or promote B1.
+
+## Authorization, budget and stop
+
+Resume Stage A on `Z^d` for one analytic session of at most 90 minutes.
+Deliver a separate report citing this amendment's commit. Stop if an
+active encoder has no positive eventual state-denominator bound or if
+the B1 compatibility step fails; record the precise open obligation.
+Same verdicts and PRELIMINARY evidence level as the original charter.
+No new walk search, computation, external transmission or promotion.
+Bravais Stage B remains separately unauthorized.
+
+=== DOCUMENT 3: 2026-11-13--general-ir-admissibility-stage-a.md ===
+
+# General infrared admissibility: Stage A denominator audit
+
+2026-11-13. Author: Codex (OpenAI). Branch:
+`research/tetrahedral-support-rigidity-2026-11-09`.
+Preregistration: `ecc5827a6aa1838f668326386d568a790417150d`,
+`theory/GENERAL_IR_ADMISSIBILITY_GATE.md`. User authorized Stage A only.
+Evidence: analytic author derivation, **PRELIMINARY; not independently
+reviewed**. No numerical or symbolic computation, no verifier run.
+
+## 1. Scope and outcome
+
+The frozen family permits a Hermitian basis containing a non-zero M
+with `M chi = 0`. For that member `Delta_M = 0` for every N and
+`eta_enc(M)` is undefined. Thus the whole unrestricted family cannot
+be asserted to satisfy Definition 3.1, which requires `Delta_M != 0`.
+This is a denominator obstruction, **not** a counterexample to convergence
+of a defined ratio, and **not** a counterexample to existence of an
+admissible pair attaining the B1 rate.
+
+Per-target records:
+
+- Leakage numerator estimate: `PROVED_UNDER_FROZEN_CONTRACT` (author).
+- Operator denominators for non-zero M and non-zero detector projectors:
+  `PROVED_UNDER_FROZEN_CONTRACT` for all sufficiently large N (author).
+- State denominator for every member of an arbitrary Hermitian basis:
+  undefined in an allowed case, as proved below. No convergence verdict
+  is assigned to that ratio.
+- Overall: `OPEN_AFTER_ADMISSIBILITY_ANALYSIS`; stopped at the charter's
+  class-change rule, not at budget exhaustion. A revised treatment of
+  null encoders needs a user decision before continuing. No amendment
+  has been applied, and Stage B has not been executed.
+
+The following arguments concern the inherited positive-radius balls
+and fixed finite matrix families on `Z^d`, `d in {2,3}`. All constants
+may depend on that fixed data; none depend on N. No walk hypothesis is
+used in these estimates. The nodal condition only locates chi in the
+declared resource space.
+
+## 2. Numerators: arbitrary internal dimension
+
+On the torus represented by `[-pi,pi]^d`, define
+`D_j f(x) = f(x+e_j)-f(x)`. For `|p| >= N^(-1/2)`,
+
+    sum_j |exp(i p_j)-1|^2 >= (4/pi^2)|p|^2 >= (4/pi^2)/N.
+
+For a matrix multiplier a with `sup ||a|| <= A` and
+`sup ||D_j a|| <= L/N`, the product rule and Plancherel therefore give
+
+    ||(I-Pi') a Pi|| <= (pi/2)(A + sqrt(d)L) N^(-1/2).
+
+Indeed `||(D_j Pi f)_j|| <= N^(-1)||f||`; applying the product rule
+gives the upper bound `(A+sqrt(d)L)N^(-1)||f||` for the discrete gradient
+of `a Pi f`. The displayed high-momentum lower bound then yields the
+claim. These are operator norms and vector-valued Plancherel identities;
+the proof does not depend on matrix size.
+
+For the fixed profiles F and h, put `L_F = Lip(F)`, `L_h = Lip(h)`
+in continuum coordinates. They are finite, including at their spherical
+boundaries. For `a_M = U_M-I`, spectral calculus for a fixed Hermitian M
+gives
+
+    A <= 2,  L <= (pi/2)||M|| L_F.
+
+For `E = h_N tensor P`, with P a non-zero orthogonal projector,
+`A <= 1`, `L <= L_h`. Thus both leakage numerators are `O(N^(-1/2))`.
+
+For the state numerator, let `v=U_M phi_N`, `w=Pi'v`, `r=v-w`.
+Since `Pi'phi_N=phi_N`,
+
+    Delta_M-Pi'Delta_M Pi' = |r><v| + |w><r|,
+    ||Delta_M-Pi'Delta_M Pi'||_1 <= 2||r|| = O(N^(-1/2)).
+
+The rank-one identity uses `v=w+r` and is valid even when Delta is zero.
+It supplies no lower bound for its denominator.
+
+## 3. Operator denominators
+
+For sufficiently large N the momentum ball lies inside the chosen
+torus cell. With normalized measure `dp/(2pi)^d`, write the exact
+normalized scalar resource as
+
+    phi_N(x) = N^(-d/2) Phi(x/N) chi,
+    Phi(w) = c_d integral g(q) exp(-i q.w) dq,
+
+where `c_d > 0` is fixed by normalization. The scalar Phi is continuous
+and `Phi(0)>0`: `g >= 0` is integrable, supported on the unit ball and
+not zero. Hence `|Phi|` has a positive lower bound on a neighbourhood
+of zero. A fixed open box in continuum coordinates contains at least
+`c N^d` points of `N^(-1)Z^d` for all sufficiently large N, by counting
+each coordinate interval.
+
+For a non-zero Hermitian M choose a unit eigenvector v of eigenvalue
+`lambda != 0`. Inside Alice's ball the scalar F takes all values in
+`(0,1)`. Choose an interior point w_0 where
+`exp(i pi lambda F(w_0)/2) != 1`; such points exist because a nonconstant
+interval of phases cannot all lie in `2 pi Z`. By continuity there is
+an open box around w_0 on which this modulus is at least epsilon > 0.
+
+Test `a_M Pi` on the normalized band-limited scalar resource translated
+by a lattice point z_N nearest to `N w_0`, with internal vector v.
+Translation preserves its band support. Shrink the box so that
+`Phi(x/N-z_N/N)` is bounded below there for all large N. Site counting
+then gives a resource mass at least m > 0 on that box, and
+
+    ||a_M Pi|| >= epsilon sqrt(m) > 0.
+
+For a non-zero detector projector choose a unit v in its range, a box
+inside Bob's ball where h >= epsilon, and the same translated-resource
+test. It gives `||E Pi|| >= epsilon sqrt(m) > 0`.
+
+Consequently both operator leakage ratios are `O(N^(-1/2))` for these
+non-zero matrices. A Hermitian basis has no zero member. If a declared
+spanning projector set includes the zero projector, that member has an
+undefined ratio and must also be recorded, not silently discarded.
+Only eventual non-vanishing is proved here; no assertion for all small N.
+
+## 4. Exact state-denominator obstruction; stop
+
+Take an internal orthonormal pair `(chi,v)`. It exists since `s >= 2`.
+The non-zero Hermitian matrix
+
+    M = |v><v|
+
+satisfies `M chi = 0`. It can be a member of a real Hermitian basis:
+any non-zero vector of the finite-dimensional real space of Hermitian
+matrices extends to a basis. For every site and every N, the power
+series of the exponential gives
+
+    exp(i pi F_N(x) M/2) chi = chi.
+
+Since the resource at each site is a scalar multiple of chi,
+`U_M phi_N = phi_N` exactly. Thus `Delta_M = 0` and its trace norm is
+zero. This construction changes only the basis permitted by the
+protocol definition, not the walk, regions or spectral hypotheses.
+It is not a construction or search for a new walk.
+
+Independent formulation of the same check: in coordinates
+`chi=(1,0)` and `v=(0,1)`, take
+
+    M = diag(0,1),
+    U_M(x) = diag(1, exp(i pi F_N(x)/2)).
+
+The first component of the resource is unchanged. In this `s=2` case,
+`{I, sigma_x, sigma_y, diag(0,1)}` is a real Hermitian basis since
+`sigma_z = I-2 diag(0,1)`. This supplies an explicit basis, not merely
+the basis-extension argument. For larger s, the same null action is
+checked on chi in the displayed rank-one construction.
+
+The manuscript's four Pauli generators instead obey `M^2=I`, so none
+annihilates a unit chi. The numerator calculation above reduces to its
+`d=3`, `||M||=1` estimate. Its special state-denominator argument does
+not address the allowed projector generator just exhibited.
+
+This triggers the frozen stop rule. No general lower bound on the
+state denominator for the remaining non-null generators is claimed in
+this execution, and no altered family is used to finish the theorem.
+
+## 5. Decision required before further execution
+
+A candidate continuation would distinguish null encoders `M chi=0`
+(which encode no bit on this resource) from active encoders, then prove
+the state-denominator bound for active encoders and check that B1's
+non-vanishing pair can be chosen among them. This is a proposed change
+of statement, not an amendment in force or an admissibility proof.
+
+There is a useful documentary compatibility check, without completing
+that argument: B1's recorded leading coefficient contains
+`f_0^dagger M chi`
+(`reports/2026-11-12--general-ir-rate-stage2-leading-term.md`, Sec. 5,
+and its bilinearity conclusion in Sec. 7). It vanishes for the null
+generators above. That observation does not independently verify B1,
+its existence argument, or admissibility of the remaining pairs.
+
+No evidence here requires dropping the word admissible from every
+possible B1 existence statement. The unsupported assertion is that
+every member of its unrestricted Hermitian family has defined ratios
+and is admissible. No claim about Bravais lattices, carrier Stage B,
+interactions or novelty follows.
+
+## 6. Timing and provenance
+
+Execution began at `2026-11-13T10:44:41Z`, after the charter commit.
+Execution ended at `2026-11-13T10:45:47Z` (66 seconds of wall time,
+including writing the analytic record). The final documentary status
+update and Git checks follow this endpoint; no further derivation.
+The terminal outcome is the structural denominator obstruction, reached
+within the 90-minute Stage A cap. This report is a written derivation;
+it does not rely on an ephemeral computational script or external model.
+
+=== DOCUMENT 4: 2026-11-13--general-ir-admissibility-active-encoders.md ===
+
+# General infrared admissibility: active encoders on Z^d
+
+2026-11-13. Author: Codex (OpenAI). Branch:
+`research/tetrahedral-support-rigidity-2026-11-09`.
+Charter `ecc5827a6aa1838f668326386d568a790417150d`; Amendment 1
+preregistered at `156657e8a12282e39df9429095c6f58303d25d8a` before this
+continuation. User «aprobado» authorizes the active/null treatment and
+Stage A continuation only. Analytic derivation, no computational script,
+no external transmission. **PRELIMINARY; not independently reviewed.**
+
+## 1. Statement and quantifiers
+
+Fix `d in {2,3}`, finite `s >= 2`, positive-radius continuum balls A and B,
+their frozen profiles F and h, a unit internal vector chi, and a fixed
+finite Hermitian basis and fixed finite set of orthogonal detector
+projectors. All these data are independent of N. Use precisely the
+resource, projections and leakage ratios of the admissibility charter.
+
+For every active basis member `M chi != 0` and every non-zero detector
+projector P, all three required ratios are defined for sufficiently
+large N and are `O(N^(-1/2))`. Constants depend on the fixed data and
+can be chosen uniformly over their finite active/non-zero families;
+no uniformity as the basis, chi, balls or lattice vary is claimed.
+
+Null members `M chi = 0` have `Delta_M = 0` and zero signal exactly.
+Their state ratio remains undefined, as required by Amendment 1.
+Zero detector projectors, if present, likewise have zero signal and
+an undefined operator ratio.
+
+The lemma uses no tilted spectral hypothesis H1–H10 and no walk
+dynamics. Those hypotheses enter only the conditional compatibility
+with B1 in Sec. 5. No Bravais transfer is claimed here.
+
+## 2. Resource mass on arbitrary open boxes
+
+For sufficiently large N the support of `g(Np)` is contained in
+`[-pi,pi]^d`. Put
+
+    J_2 = integral g(q)^2 dq > 0,
+    c_d = (2 pi)^(-d/2) J_2^(-1/2),
+    Phi(w) = c_d integral g(q) exp(-i q.w) dq.
+
+With Fourier measure `dp/(2pi)^d`, direct substitution in the normalized
+resource gives exactly
+
+    phi_N(x) = N^(-d/2) Phi(x/N) chi,
+    w_x := ||phi_N(x)||^2 = N^(-d) |Phi(x/N)|^2,
+    sum_x w_x = 1.
+
+The compactly supported integrable g has an entire Fourier transform:
+expand the exponential on any bounded complex set and integrate its
+uniformly absolutely convergent power series. Thus Phi is real analytic
+on `R^d`, and `Phi(0)=c_d integral g > 0`. Its zero set cannot contain a
+non-empty real open set: vanishing on a ball annihilates every Taylor
+coefficient there, and overlapping Taylor neighbourhoods along a path
+would imply vanishing at zero. This contradicts `Phi(0)>0`.
+
+Consequently any non-empty open set contains a point where Phi is
+non-zero, and a smaller closed axis-aligned box Q of positive side
+lengths on which `|Phi| >= b_Q > 0`. If the side lengths are l_j, then
+for all sufficiently large N each coordinate interval of NQ contains
+at least `N l_j/2` integers. Therefore
+
+    sum_{x/N in Q} w_x >= b_Q^2 product_j(l_j/2) =: m_Q > 0.
+
+This local mass bound avoids any assumption that A is near the origin,
+and does not require a global Riemann-sum error estimate.
+
+## 3. Positive lower bound for the active state denominator
+
+Write the spectral resolution of the fixed Hermitian matrix as
+`M = sum_lambda lambda P_lambda` and let
+`p_lambda = ||P_lambda chi||^2`. These non-negative weights sum to one.
+Activity is equivalent to `p_lambda > 0` for at least one `lambda != 0`.
+At continuum position w set
+
+    theta(w) = pi F(w)/2,
+    t(w) = <chi, exp(i theta(w) M) chi>
+         = sum_lambda p_lambda exp(i theta(w) lambda).
+
+In particular `|t(w)| <= 1`, and outside A, `t(w)=1`.
+Choose an eigenvalue `lambda_* != 0` with `p_lambda_* > 0`.
+Inside a ball of positive radius, F takes every value in `(0,1)`.
+Choose a value f in that interval such that
+`(pi/2) f lambda_*` is not an integer multiple of `2 pi`.
+Such a value exists since the exceptional values form a discrete set.
+At a point attaining f,
+
+    1-Re t(w) = sum_lambda p_lambda (1-cos(theta(w)lambda)) > 0.
+
+By continuity this remains at least epsilon > 0 on a non-empty open
+neighbourhood strictly inside A. By Sec. 2 select a box Q_in in that
+neighbourhood carrying mass at least `m_in > 0` for all large N.
+Also choose a box Q_out strictly outside A carrying mass at least
+`m_out > 0`. Such an exterior box exists by the same analytic argument,
+and `t=1` there. No lower bound on the resource at an entire sphere
+or at a prescribed facing point is needed.
+
+The overlap of the normalized encoded and unencoded states is
+
+    z_N = <phi_N,U_M phi_N> = sum_x w_x t(x/N).
+
+Absolute convergence follows from `sum w_x=1` and `|t|<=1`. Hence
+
+    1-|z_N|^2
+      = sum_{x,y} w_x w_y (1-Re[t(x/N) conjugate(t(y/N))]).
+
+Every summand is non-negative. For one point in Q_in and one in Q_out,
+the bracket is at least epsilon. Counting both orders gives
+
+    1-|z_N|^2 >= 2 epsilon m_in m_out > 0,
+    ||Delta_M||_1 = 2 sqrt(1-|z_N|^2)
+                 >= 2 sqrt(2 epsilon m_in m_out) =: D_M > 0.
+
+The pure-state trace-norm identity follows by restricting the difference
+of the two rank-one projections to the span of their unit vectors:
+its eigenvalues are `+sqrt(1-|z_N|^2)` and its negative (with zeros on
+the orthogonal complement). This also checks that a spatially varying
+scalar phase is not mistakenly treated as a global unobservable phase.
+
+The bound proves eventual non-vanishing. It need not hold for all small
+N; the admissibility definition only requires its asymptotic domain.
+
+## 4. Completion of the three leakage estimates and cross-checks
+
+The discrete product-rule proof in the first Stage A report, Sec. 2,
+gives, for a matrix multiplier a with bounds A and L,
+
+    ||(I-Pi')a Pi|| <= (pi/2)(A+sqrt(d)L) N^(-1/2).
+
+It applies to `a=U_M-I` with `A=2`,
+`L=(pi/2)||M|| Lip(F)`, and to `a=h_N tensor P` with `A=1`,
+`L=Lip(h)`. The proof only uses the elementary torus inequality
+`sum |exp(i p_j)-1|^2 >= 4|p|^2/pi^2`, the input-band bound
+`|p|<=N^(-1)`, and the discrete product rule. Matrix size is irrelevant.
+Write the resulting numerator constants as C_M and C_P.
+
+For completeness, the operator denominators use test states that may
+differ from the declared resource: an operator norm is a supremum over
+all normalized input-band vectors. For non-zero M take an eigenvector
+with non-zero eigenvalue and an interior box where
+`|exp(i theta(w)lambda)-1| >= e > 0`. A scalar resource translated to
+a nearest lattice point to the centre of that box has fixed positive
+mass on a smaller box, since `Phi(0)>0`. Thus
+`||(U_M-I)Pi|| >= e sqrt(m)`. For non-zero P use an internal vector in
+its range and a box inside B where h is positive, obtaining the same
+form of bound for `||E Pi||`. Translation preserves momentum support.
+These are the first report's Sec. 3 arguments, and require no assumption
+on M's action on the declared chi.
+
+Finally, the rank-one decomposition of the state numerator gives
+`||Delta_M-Pi'Delta_M Pi'||_1 <= 2 C_M N^(-1/2)`.
+Dividing by the positive bounds above proves
+
+    eta_op(U_M-I) <= C'_M N^(-1/2),
+    eta_enc(M) <= (2 C_M/D_M) N^(-1/2),
+    eta_op(E) <= C'_P N^(-1/2).
+
+Two checks of the boundary between active and null cases:
+
+- If `M chi=0`, the exponential power series fixes chi at every site,
+  independently of the overlap calculation: Delta and every signal
+  vanish exactly. The positive spectral weight used in Sec. 3 is then
+  absent, so no positive bound is asserted.
+- If `M chi=lambda chi` with real `lambda != 0`, then
+  `t(w)=exp(i lambda theta(w))`. Comparing an interior box with the
+  unmodified exterior proves a positive state denominator even though
+  M acts as a scalar on chi. For the manuscript Pauli matrices,
+  the spectral expression instead reads
+  `t=cos(theta)+i <chi,M chi> sin(theta)`; hence `Re t=cos(theta)`.
+  With its choice `F>=1/2` and `F<=1`, epsilon can be
+  `1-1/sqrt(2)`. The displayed bound becomes
+  `1-|z_N|^2 >= (2-sqrt(2))m_in m_out`, recovering its denominator
+  argument when the two mass bounds are the same m.
+
+No uniform positive lower bound as `M chi -> 0` is claimed.
+
+## 5. Compatibility with the existing B1 existence argument
+
+This step is conditional on the B1 leading-term and non-vanishing
+derivation already recorded in
+`reports/2026-11-12--general-ir-rate-stage2-leading-term.md`, Secs. 5–7,
+under the hypotheses as subsequently amended. It is not a re-review
+of those asymptotics or of Amendments 5–6.
+
+That argument uses the real-bilinear leading functional on the fixed
+Hermitian basis and spanning detector projectors. Its carrier coefficient
+contains `(R~^dagger M_B e_k)(f_k^dagger M chi)`. Null encoders and zero
+detectors therefore give zero for every such coefficient. More directly,
+they give exactly zero operational signal for every N, without any
+asymptotic expansion.
+
+Removing these zero contributions cannot change the real-bilinear
+non-vanishing argument: expand its witness in the original finite basis
+and detector set. Every discarded term is zero. If all remaining basis
+pairs had scaled leading functional tending to zero, their finite linear
+combination would also tend to zero, contradicting the recorded witness.
+Thus B1's selected non-vanishing basis pair has `M chi != 0` and
+`M_B != 0`. Secs. 2–4 make that actual pair admissible, including its
+nonlinear exponential encoder, without replacing the fixed family or
+realizing a signed linear combination as a physical detector.
+
+Accordingly the admissibility gap for B1's existence claim on `Z^d`
+is closed at the level of this conditional author derivation. The
+stronger assertion that every member of an unrestricted basis has
+defined ratios remains false. No statement about the open B2 cell,
+Bravais lattices, interacting QCA or novelty follows.
+
+## 6. Verdict and provenance
+
+Active-family admissibility on `Z^d`:
+`PROVED_UNDER_FROZEN_CONTRACT` as amended by Amendment 1.
+Compatibility with B1: `PROVED_UNDER_FROZEN_CONTRACT`, conditional on
+its existing non-vanishing/asymptotic derivation. Both are author results,
+**PRELIMINARY; no independent review; no promotion**.
+
+The local literature index was checked before continuation; no external
+theorem or bibliographic novelty claim is used. No retained computational
+result was generated and no script or reviewed verifier was modified.
+Execution began `2026-11-13T11:11:50Z`, after the amendment commit.
+Execution completed `2026-11-13T11:13:08Z` (78 seconds wall time,
+including writing the derivation), within the 90-minute cap. Subsequent
+documentary status updates and Git checks do not extend the derivation.
+
+=== DOCUMENT 5: 2026-11-13--general-ir-admissibility-bravais.md ===
+
+# General infrared admissibility: Stage B on a fixed Bravais lattice
+
+2026-11-13. Author: Codex (OpenAI). Branch:
+`research/tetrahedral-support-rigidity-2026-11-09`.
+Contract: `GENERAL_IR_ADMISSIBILITY_GATE.md` (`ecc5827`), Amendment 1
+(`156657e`). Stage B authorized by user «adelante con ella», recorded
+before execution at `20bc5b15ece6e8561b0cd0f87aad69336a3295f7`.
+Base active-case proof: `reports/2026-11-13--general-ir-admissibility-active-encoders.md`
+(`bb3592b`). **Author analytic derivation; PRELIMINARY; no independent
+review, no promotion.** No computations or external transmissions.
+
+## 1. Question, scope and conclusion
+
+Known: Stage A proves three `O(N^(-1/2))` leakage ratios on `Z^d` for
+each fixed active encoder `M chi != 0` and non-zero detector projector.
+Question: does the same statement hold on every fixed full-rank Bravais
+lattice, with physical Euclidean balls and momentum cutoffs unchanged?
+Stop: any required new hypothesis or loss of a denominator lower bound.
+
+Fix `L=B Z^d`, real invertible B, `d in {2,3}`, and all of the finite
+internal, profile and resource data of Stage A. Write
+`v_L=|det B|`, `b_j=B e_j`, `beta=sigma_min(B)>0`,
+`B_op=||B||_2`, `B_F=(sum_j |b_j|^2)^(1/2)`.
+All constants and thresholds may depend on this fixed lattice and data.
+No uniformity over degenerating lattices or changing bases is asserted.
+
+**Conclusion:** Stage A transfers. All three ratios for active encoders
+and non-zero detectors are defined eventually and are `O(N^(-1/2))`.
+No new hypothesis beyond fixed full rank is required. Null encoders and
+zero detectors retain their zero signals and undefined relevant ratios.
+Compatibility with the Bravais version of B1 is conditional on its
+existing rate/non-vanishing derivation. No new proof of that derivation
+or of the carrier dichotomy is supplied here.
+
+## 2. Fourier conventions and small momentum balls
+
+Dual lattice `L*=B^(-T) Z^d`; reciprocal torus
+`T_L=R^d/(2 pi L*)`. Use normalized Haar measure
+
+    dmu_L(p) = v_L dp/(2 pi)^d,
+    f^(p) = sum_{x in L} exp(i p.x) f(x),
+    f(x) = integral exp(-i p.x) f^(p) dmu_L(p).
+
+This is an isometry: for `x=B n`, substitute `t=B^T p` and note
+`dmu_L=dt/(2 pi)^d`, obtaining the standard orthogonality of the integer
+characters. An explicit reciprocal fundamental cell is
+
+    P_B = B^(-T)[-pi,pi)^d.
+
+The Euclidean ball of radius `r_B=pi/max_j |b_j|` lies inside its closure,
+and every ball of strictly smaller radius lies in its interior: if
+`|p|<r_B`, then `|(B^T p)_j|<pi` for every j.
+For sufficiently large N require `N^(-1/2)<r_B`; both frozen cutoff
+balls then lie inside this cell. The same small balls inject into the
+reciprocal torus, irrespective of whether a parallelepiped or a Voronoi
+cell is used to represent it. Pi and Pi' are multiplication by these
+physical balls, with identity on the internal space. Changing the cell
+for this proof does not change either projector.
+
+## 3. Difference estimate with lattice constants
+
+Define `D_j f(x)=f(x+b_j)-f(x)`. Its Fourier multiplier has squared
+modulus `|exp(i t_j)-1|^2`, where `t=B^T p`. For the representative in
+P_B, `|t_j|<=pi`, so
+
+    G(p) := sum_j |exp(i t_j)-1|^2
+          >= (4/pi^2)|B^T p|^2
+          >= (4 beta^2/pi^2)|p|^2.
+
+On the complement of Pi', `|p|>=N^(-1/2)`, because the cutoff ball is
+entirely inside P_B. Plancherel gives
+
+    ||(I-Pi') f|| <= pi sqrt(N)/(2 beta)
+                         (sum_j ||D_j f||^2)^(1/2).
+
+On the input band, `G(p)<=|B^T p|^2<=B_op^2/N^2`, hence
+
+    (sum_j ||D_j Pi f||^2)^(1/2) <= B_op N^(-1)||f||.
+
+Let a_N be a matrix multiplier with `sup||a_N||<=A_0` and physical
+Lipschitz constant at most `ell/N`. Then
+`||D_j a_N||<=ell |b_j|/N`. Applying the discrete product rule and
+Minkowski in the direct sum over j yields
+
+    (sum_j ||D_j(a_N Pi f)||^2)^(1/2)
+        <= (A_0 B_op + ell B_F) N^(-1)||f||,
+
+    ||(I-Pi') a_N Pi||
+        <= pi/(2 beta) (A_0 B_op + ell B_F) N^(-1/2).
+
+For `a_N=U_M-I`, take `A_0=2`,
+`ell=(pi/2)||M|| Lip(F)`. For `a_N=h_N tensor P` with non-zero
+orthogonal P, take `A_0=1`, `ell=Lip(h)`.
+The profiles have the same physical Lipschitz constants as in Stage A;
+their spherical supports have not become coordinate ellipsoids.
+
+The state-numerator rank-one identity is independent of the lattice.
+It still bounds that trace norm by twice the encoder leakage numerator,
+because `Pi' phi_N=phi_N`. Thus every required numerator has the same
+power `N^(-1/2)`.
+
+## 4. Resource normalization and positive local masses
+
+Keep the Stage A notation `J_2=integral g^2` and Phi. For large N,
+
+    Z_{N,L} = integral |g(Np)|^2 dmu_L(p)
+            = v_L (2 pi)^(-d) N^(-d) J_2.
+
+Fourier inversion with this exact normalization gives
+
+    phi_{N,L}(x) = sqrt(v_L) N^(-d/2) Phi(x/N) chi,
+    w_{N,L}(x) = v_L N^(-d) |Phi(x/N)|^2,
+    sum_{x in L} w_{N,L}(x)=1.
+
+In particular, Phi is the same entire non-zero function of the physical
+coordinate as in Stage A. Every non-empty physical open set contains
+a smaller closed parallelotope `Q=B product_j [a_j,a_j+l_j]` of positive
+side lengths in lattice coordinates on which `|Phi|>=b>0`: choose a
+non-zero point of Phi, then shrink the coordinate box inside its
+neighbourhood. Coordinate counting gives
+
+    #(NQ intersect L) >= N^d product_j(l_j/2)
+
+for sufficiently large N, and hence
+
+    sum_{x/N in Q} w_{N,L}(x)
+        >= v_L b^2 product_j(l_j/2)
+         = b^2 vol(Q)/2^d > 0.
+
+This explicitly balances the resource factor v_L against the lattice
+point density. It is a lower bound, not an asymptotic counting formula.
+No numerical approximation or lattice-plane arithmetic is involved.
+
+## 5. All denominator bounds and compatibility
+
+For an active fixed M, the Stage A spectral argument produces a physical
+open subset strictly inside A on which
+
+    1-Re <chi,exp(i pi F(w) M/2)chi> >= epsilon > 0.
+
+Choose a parallelotope Q_in there and another Q_out strictly outside A,
+both with positive mass by Sec. 4. The outside encoder equals identity.
+With `z_N=<phi_{N,L},U_M phi_{N,L}>`, the same absolutely convergent
+double sum of non-negative terms gives
+
+    1-|z_N|^2 >= 2 epsilon m_in m_out,
+    ||Delta_M||_1 >= 2 sqrt(2 epsilon m_in m_out)>0.
+
+For the operator denominator, use the same translated band-limited
+test as in Stage A. The needed lattice point z_N near any physical
+centre Nw_0 exists with a bound independent of N: round every coordinate
+of `B^(-1)Nw_0` to an integer, giving
+`|z_N-Nw_0| <= (1/2)sum_j |b_j|`. Thus `z_N/N -> w_0`.
+On a smaller parallelotope, `Phi(x/N-z_N/N)` has a positive lower bound
+by `Phi(0)>0` and continuity. The count of Sec. 4 applies to the
+translated resource too. A non-zero eigenvalue of M gives a region
+where `|exp(i pi F lambda/2)-1|` is bounded below, so
+`||(U_M-I)Pi||` is bounded below. A unit vector in the range of non-zero
+P and an interior region where h is positive give the lower bound for
+`||E Pi||`. Lattice translation preserves both norm and band support.
+
+Dividing Sec. 3's numerators by these bounds proves all three
+`O(N^(-1/2))` ratios. Finite families give a common threshold and
+finite common constants by taking their maxima/minima as appropriate.
+
+The active/null distinction is internal and unchanged by the lattice:
+`M chi=0` fixes the resource exactly, so Delta and every signal vanish.
+Zero detectors also give zero signal. In the existing Bravais transfer
+of B1, the leading functional is still bilinear in the same internal
+matrices. Removing its zero terms cannot remove its non-vanishing
+witness. Conditional on that prior derivation, its selected pair is
+active and has a non-zero detector, and therefore satisfies this lemma.
+No use is made of H3 or H9 to prove admissibility itself; such
+hypotheses remain relevant to B1's conditional rate claim.
+
+## 6. Independent formulation and limiting checks
+
+Pull back to integer coordinates `x=B n`, `t=B^T p`. The physical
+cutoffs become `|B^(-T)t|<=N^(-1)` and `<=N^(-1/2)` in the ordinary
+integer torus. On their outer complement,
+
+    |t| >= beta N^(-1/2),
+
+while on the input band `|t|<=B_op/N`. The standard integer-torus
+gradient bound then reproduces Sec. 3's constants. This checks the
+estimate by unitary change of coordinates without replacing the
+physical Euclidean balls by spherical coordinate cutoffs.
+
+For `B=I`, `v_L=1`, `beta=B_op=1`, `B_F=sqrt(d)`: the multiplier
+bound and exact resource reduce to Stage A. For `B=a I`, `a>0`,
+`beta=B_op=a`, `B_F=a sqrt(d)`, so the multiplier constant is again
+`(pi/2)(A_0+ell sqrt(d))`; the required threshold depends on a.
+The normalization becomes `sqrt(v_L)=a^(d/2)` and point density scales
+as `a^(-d)`, consistent with the squared resource mass in Sec. 4.
+Neither check implies a uniform theorem when B varies with N.
+
+## 7. Verdict and record
+
+**Stage B: `PROVED_UNDER_FROZEN_CONTRACT` as amended by Amendment 1.**
+The transfer changes constants and excludes finitely many N; it supplies
+the active-protocol admissibility lemma on each fixed full-rank Bravais
+lattice. Compatibility with B1 remains conditional on its existing
+rate proof. Author result, **PRELIMINARY; not reviewed; not promoted**.
+
+No new hypothesis, new walk, carrier computation, numerical diagnostic
+or modified reviewed verifier. The local literature index was checked;
+no external source theorem is invoked and novelty remains OPEN.
+Execution began `2026-11-13T11:14:50Z`, after the authorization commit;
+execution completed `2026-11-13T11:15:56Z` (66 seconds wall time,
+including writing the derivation), within the 60-minute cap. Subsequent
+status and Git checks are documentary only.
+
+=== DOCUMENT 6: 2026-11-12--general-ir-rate-stage2-leading-term.md ===
+
+# General infrared operational rate: Stage 2, leading term and non-vanishing
+
+2026-11-12, session 2 of the Stages 1–2 budget. Claude (claude-opus-5-5).
+Charter `GENERAL_IR_RATE_GATE.md` (`aa6c5f6`), Amendments 1 (`91be396`)
+and 2 (`34f0601`); draft Amendment 3 (this commit). User instruction
+«SIGUE». Author derivation, **PRELIMINARY, not reviewed**; no computation.
+
+Pre-step record. Known: Stages 0–1 and the Stage 2 progress record
+(`reports/2026-11-12--general-ir-rate-stage2-progress.md`). Question:
+prove the leading term at zero momentum (A1) and the non-vanishing (A2)
+in the amended class. Stop: any step needing a hypothesis not in force is
+recorded as such.
+
+Notation as in the manuscript where it exists. `m = d - 1` (in-plane
+dimension). H3: `xi_* = kappa u`, `u` primitive, `kappa > 0`. Planes
+`{u.x = k}` are translates of `Lambda_0 = Z^d cap u^perp`, of covolume
+`|u|`, with spacing `1/|u|`. Every character trivial on `Lambda_0` has the
+form `x -> omega^(u.x)`, `|omega| = 1`, because `Z^d/Lambda_0 = Z` through
+`x -> u.x`.
+
+## 1. Geometry
+
+`v_* = w_B - w_A`, where `w_A` maximises `xi_*.w` on `A` and `w_B`
+minimises it on `B` (the minimiser of a linear functional on the ball
+`B - A` is unique, and Stage 1 shows `v_*` minimises `xi_*.v` there).
+Put `x_* = N w_A`, `y_* = N w_B`, `R_A = N rho_A`, `R_B = N rho_B`.
+
+Alice's sites near `x_*`: `x = x_* - delta u^ + u_perp`, with
+`|u| delta = theta^A_N + j`, `j >= 0`, `theta^A_N = {N u.w_A}`. Bob's:
+`y = y_* + delta' u^ + u'_perp`, `|u| delta' = theta^B_N + j'`,
+`theta^B_N = {-N u.w_B}`. Tilt weights `e^(xi_*.(x - x_*)) = e^(-kappa(theta^A + j))`
+and `e^(-xi_*.(y - y_*)) = e^(-kappa(theta^B + j'))`. On each plane, exactly,
+
+    F_N = (4/R_A^2) eps^2,   eps = delta - delta^2/(2R_A) - |u_perp|^2/(2R_A),
+
+and the same for `h_N` with `R_B`. (Manuscript: `R = N/4`, `4/R^2 = 64/N^2`.)
+
+## 2. Free tail (generalises manuscript Lemma 7.2)
+
+Let `e^(-i omega_0)` be the nodal eigenvalue at `p = 0`, `H_W` the linear
+nodal Hamiltonian on the two-dimensional nodal space `V_0` (isotropic,
+untilted, speed `c_IR`), `chi in V_0`. Then, uniformly in `y in Z^d`,
+
+    r~(y) = N^(-d/2) e^(-i N omega_0) [ R_0(y/N) + O(N^(-1)) ],
+    R_0(w) = c_r int g(q) e^(-i q.w) e^(-i H_W(q)) chi d^d q.
+
+*Proof.* The resource is supported in `|p| <= 1/N`. The two nodal
+eigenvalues are isolated from the other `s - 2` at `p = 0`, so their
+spectral projector `Pi(p)` is analytic near `0`; `||(I - Pi(p)) chi|| = O(1/N)`
+on the support, which contributes `O(N^(-d/2 - 1))` pointwise (sup norm
+bounded by the `L^1` norm of the Fourier transform). On `Pi(p)`,
+`S(p) = e^(-i omega_0) e^(-i H(p))` with `H = H_W + O(|p|^2)` (the
+remainder bound uses the analyticity of the symbol and of the nodal
+projector, and the absence of a constant or tilt term); with
+`p = q/N`, Duhamel gives `e^(-i N H(q/N)) = e^(-i H_W(q)) + O(1/N)`, and
+`Pi(q/N) = Pi(0) + O(1/N)`. ∎
+
+H5: `R~ := R_0(w_B) != 0`.
+
+## 3. Layer sums at a trivial point (generalises Layers (a)–(c))
+
+For `f_1 = theta phi_N M chi` (`theta = (pi/2) F_N`) and `w = h_N M_B r`,
+with `A`, `B` the tilted sums of manuscript Sec. 7.2 and `tau_A = sqrt(2 R_A) eta_t`,
+`tau_B = sqrt(2 R_B) eta_t`:
+
+**(a)** `|A_{f_1}(eta)|, ||B_w(eta)|| <= C N^(-5/2)` for all `eta`
+(progress record, Sec. 2).
+
+**(b)** For `|eta| <= r_0`,
+
+    A_{f_1}(eta) = N^(-5/2) k_A phi_partial [ S^A(tau_A; theta^A_N) + E_A ] M chi,
+    B_w(eta)    = N^(-5/2) k_B e^(i N omega_0) [ R~^dagger M_B S^B(tau_B; theta^B_N) + E_B ],
+
+with `phi_partial = Phi_0(w_A)` (H7),
+`k_A = 2 pi (2 rho_A)^(m/2) / (rho_A^2 |u|)`,
+`k_B = 4 (2 rho_B)^(m/2) / (rho_B^2 |u|)`,
+
+    S^X(tau; theta) = sum_{j>=0} e^(-kappa(theta + j)) Psi_{(theta+j)/|u|}(tau),
+    Psi_delta(tau)  = int_{R^m} (delta - |sigma|^2)_+^2 e^(i tau.sigma) d^m sigma,
+
+and `|E_A|, ||E_B|| <= C (N^(-1/2) + |eta_n|)` uniformly in the offsets.
+
+**(c)** At a trivial dominant point `eta_k` with character `omega_k^(u.x)`,
+the same holds with `S^X` replaced by the depth sum weighted by
+`omega_k^(-j)` and with global unimodular factors
+`e^(-i eta_k.x_*) omega_k^(floor(N u.w_A))` and
+`e^(i eta_k.y_*) omega_k^(-ceil(N u.w_B))`. *(The continuous factors
+`e^(-+i eta_k.x_*, y_*)` were omitted in the first version; added
+2026-11-12 after the second Codex review. Their cancellation against
+`e^(-i N eta_k.v_*)` is carrier Stage A, Sec. 2; exposition only.)*
+
+*Proof of (b).* Plane by plane: in-plane Poisson summation over the
+translate of `Lambda_0` gives `(1/|u|) int G_delta(y) e^(i eta_t.y) d^m y`
+from `m = 0` and terms bounded by `||partial^3 G_delta||_M |2 pi m' - eta_t|^(-3)`,
+`m' in Lambda_0^*`, summable for `m <= 2`; with
+`r_0 <= (1/2) min |2 pi m'|` the frequencies stay at distance `>= pi |m'|`.
+The total variation of the third derivative is
+`O(N^(-d/2 - 2)[(delta/R)(R delta)^((m-1)/2) + (delta/R)^(1/2) R^(-1) (R delta)^(m/2)])
+= O(N^(-4) delta^(d/2))`, against an `m = 0` term of order
+`N^(-5/2) delta^(...)`: relative `O(N^(-3/2))`, uniform at `delta = 0`
+(absolute bounds), with polynomial depth factors summable against the
+tilt. In the `m = 0` term: `theta` is exact,
+`theta = (2 pi / R_A^2) eps^2`; replacing `eps` by `delta - |y|^2/(2R_A)`
+costs a relative `O(delta/R_A)`; `phi_N = N^(-d/2) phi_partial (1 + O(N^(-1/2)))`
+on the support (it is `O(N^(-1))` when `c_A = 0`); `|e^(-i eta_n delta) - 1| <= |eta_n| delta`.
+The substitution `y = sqrt(2 R_A) sigma` gives
+`int e^(i eta_t.y)(delta - |y|^2/(2R_A))_+^2 d^m y = (2 R_A)^(m/2) Psi_delta(tau_A)`.
+Collecting `N^(-d/2) (2 pi / R_A^2)(1/|u|)(2 R_A)^(m/2) = N^(-5/2) k_A`.
+Planes with `delta > R_A/2` and the depth tail are `O(e^(-cN))`. Bob is the
+same with `h_N = (4/R_B^2) eps'^2` and Sec. 2, which supplies
+`e^(i N omega_0)` (complex conjugate of the tail's phase) and
+`R~^dagger M_B`; the variation of `r` across Bob's layer is
+`O(N^(-d/2 - 1/2))` and is bounded without oscillation as in manuscript
+Layers (b). (c) is the same computation with the character written as
+`omega_k^(u.x)`. ∎
+
+Check against the manuscript (`d = 3`, `u = (1,1,1)`, `rho = 1/4`,
+`omega_0 = 0`): `N^(-5/2) k_A = N^(-5/2) 16 pi / sqrt3` and
+`N^(-5/2) k_B = N^(-5/2) 32 / sqrt3`, as in Layers (b).
+
+## 4. Depth sums (generalises manuscript Lemma 7.3)
+
+`S^X(tau; theta) = sum_n g^_tau(2 pi n) e^(2 pi i n theta)` with
+
+    g^_tau(omega) = 2 pi^(m/2) |u| (|u| s)^(-3 - m/2) e^(-|tau|^2 / (4 |u| s)),   s = kappa + i omega.
+
+*Proof.* `int_0^inf e^(-p delta)(delta - |sigma|^2)_+^2 d delta = 2 e^(-p |sigma|^2)/p^3`
+and `int e^(-p|sigma|^2) e^(i tau.sigma) d^m sigma = (pi/p)^(m/2) e^(-|tau|^2/(4p))`;
+then `x = |u| delta`. The function `x -> e^(-kappa x) Psi_{x/|u|}(tau) 1_{x>=0}`
+is continuous and vanishes at `0`; `|g^| <= C |s|^(-3 - m/2)` is summable;
+Poisson summation is exact. ∎ For `d = 3`, `|u| = sqrt3`, `kappa = t_*`
+this is `c_g/s^4`, `c_g = 2 pi/(3 sqrt3)`, as in the manuscript.
+
+## 5. Assembly at zero momentum
+
+Near `eta = 0`, with H2, H8 and the progress record Sec. 3.1,
+`e^(-N Phi_*) lambda_0(eta)^N e^(-i N eta.v_*) = e^(i N phi_0) e^(-N eta^T C eta / 2 + N rho_3(eta))`,
+`C = Q + i Q'` accretive, `|rho_3| <= (1/4) eta^T Q eta` on `|eta| <= r_0`;
+the other eigenvalues and `P_0(eta) - P_0` cost as in manuscript Thm 7.5.
+The three replacements of that proof (Gaussian for the symbol, leading
+forms for the layers, extension to `R^d`) cost `O(N^(-1/2))` relative,
+with the same estimates; `|e^(-N eta^T C eta/2)| = e^(-N eta^T Q eta/2)`.
+Integrating `eta_n` first (the leading layer forms do not depend on it)
+and putting `zeta = sqrt(N) eta_t`:
+
+    Z_1^(0) = e^(-K_* N) N^(-5 - d/2) e^(i N psi) [ c Gamma_0(theta^A_N, theta^B_N) + O(N^(-1/2)) ],
+
+    psi = phi_0 + omega_0,
+    c   = phi_partial k_A k_B (2 pi)^(-d) sqrt(2 pi / C_nn) (R~^dagger M_B e_0)(f_0^dagger M chi),
+    Gamma_0(theta^A, theta^B) = int_{R^m} e^(-zeta^T S_C zeta / 2)
+                                 S^A(sqrt(2 rho_A) zeta; theta^A) S^B(sqrt(2 rho_B) zeta; theta^B) d^m zeta,
+
+with `C_nn = u^.C u^` (positive real part), `S_C` the Schur complement of
+`C` on `u^perp` (accretive: inverses and compressions of accretive
+matrices are accretive, and `S_C^(-1)` is a compression of `C^(-1)`), and
+`P_0 = e_0 f_0^dagger` the rank-one dominant projector (H2). The power
+`5 + d/2` is `13/2` for `d = 3`, as in the manuscript; with `d = 3`,
+`psi = 0`, `C = Q` real and equal radii this reduces to manuscript
+Thm 7.5's zero-momentum term.
+
+The same holds at the other trivial dominant points with their own
+`psi_k`, depth factors and coefficients `c_k` proportional to
+`(R~^dagger M_B e_k)(f_k^dagger M chi)` (Sec. 3(c)).
+
+## 6. Positive average of the depth factor (uses H9)
+
+`Gamma_0` is continuous on `T^2` (the depth sums are continuous and
+1-periodic in the offset, since the summand vanishes at depth `0`) and
+bounded by some `M_Gamma`.
+
+- Under H9(i), `(theta^A_N, theta^B_N)` is equidistributed on `T^2`
+  (Weyl), so the average over `N` of `Gamma_0` is
+  `int e^(-zeta^T S_C zeta/2) g^A(0) g^B(0) d^m zeta`. Both zero modes are
+  positive Gaussians in `zeta`; the total quadratic form
+  `S_C/2 + (rho_A + rho_B)/(2 |u| kappa) I` is strictly accretive; the
+  Gaussian integral of such a form is `pi^(m/2) det^(-1/2)`. *Branch
+  (added after review):* its eigenvalues satisfy `|arg lambda_j| < pi/2`,
+  so for `m <= 2` the argument of the determinant stays in `(-pi, pi)`;
+  along the segment to the Hermitian part the form stays strictly
+  accretive, and at the positive-definite end the root is positive, so
+  `det^(-1/2)` has positive real part. For `m >= 3` this argument fails;
+  `d in {2, 3}` is essential here. So the average `mu` has `Re mu > 0`.
+- Under H9(ii), the average is `sum_n int e^(-zeta^T S_C zeta/2) g^A(2 pi n) conj(g^B(2 pi n))`.
+  For each `n` the prefactors give `|u s|^(-6 - m) > 0` and the exponent
+  has the form `-zeta^T [S_C/2 + (rho_A/s + rho_B/s-bar)/(2|u|) I] zeta`,
+  whose added part has real part `(rho_A + rho_B) kappa / (2 |u| |s|^2) > 0`:
+  each term has positive real part and the series converges absolutely.
+  So `Re mu > 0`.
+
+Hence `Re Gamma_0(theta^A_N, theta^B_N) >= Re mu / 2` on a set of `N` of
+lower density at least `Re mu / (2 M_Gamma)`.
+
+## 7. Non-vanishing (A2) and the conclusion
+
+Exact facts: `Z_1` is complex-linear in `M` and real-linear in `M_B`, so
+`Im Z_1` is real-bilinear in `(M, M_B)`; `L_N = -2 Im Z_1 + 2 Re Z_2 + Q_N`
+with `Z_2`, `Q_N` of lower order (progress record, Sec. 2).
+
+Choose `(M, M_B)` in the real span of the declared family so that the
+coefficients `c_k` of every other trivial dominant point vanish (H6:
+`f_0` outside the span of the other `f_k`, then `M chi = v` with
+`f_k^dagger v = 0`, `f_0^dagger v != 0`, `<chi, v>` real after a phase).
+Their contributions are then `O(e^(-K_* N) N^(-5-d/2-1/2))`, and so are
+those of the non-trivial dominant points and of the rest of the torus.
+For such a protocol
+
+    L_N = -2 e^(-K_* N) N^(-5-d/2) [ Im( e^(i N psi) Gamma_0(theta^A_N, theta^B_N) c ) + O(N^(-1/2)) ].
+
+**What is still needed.** If two such protocols have coefficients `c` and
+`i c`, the two brackets are `Im` and `Re` of the same complex number, so
+one of them is at least `|Gamma_0| |c| / sqrt2 >= Re mu |c| / (2 sqrt2)` on
+a set of positive density; one of the two protocols then has
+`limsup e^(K_* N) N^(5 + d/2) |L_N| > 0`, whatever `psi` is. Without that
+rotation, `Im(e^(i N psi) Gamma_0 c)` could tend to zero (progress record,
+Sec. 3.2), and the condition `psi in pi Z` recommended there is **not
+sufficient on its own**, because `Gamma_0` is complex when `Q' != 0`. The
+rotation is not implied by the hypotheses in force; it is draft
+**Amendment 3 (H10)**. A sufficient form: H6 holds for the left
+eigenvectors and `e_0` is not a complex multiple of `R~`; then `M` removes
+the other points and `M_B` alone sweeps `R~^dagger M_B e_0` over all of
+`C` (for rank-one `K = e_0 R~^dagger`, the real-linear map
+`M_B -> tr(M_B K)` on Hermitian matrices is onto `C` unless `e_0` is
+parallel to `R~`).
+
+**Conclusion, conditional on Amendment 3.** By bilinearity, if every basis
+pair of the declared family had `e^(K_* N) N^(5+d/2) Im Z_1 -> 0`, so
+would every protocol in their span. Hence some basis pair `(M_i, M_B,j)`
+has `limsup e^(K_* N) N^(5+d/2) delta(N) > 0`; with Stage 1,
+
+    lim sup_{N->inf} (1/N) log delta(N) = -K_*,
+
+which is (T). Amendment 3 was approved by the user the same day. **Stage 2
+verdict: `PROVED_UNDER_FROZEN_CONTRACT` (charter as amended by
+Amendments 1–3), author derivation, PRELIMINARY, not reviewed.** Line
+outcome: none of (a), (b), (c) of the charter.
+
+## 8. K3 against H10
+
+`e_0` is proportional to the second column of manuscript `P`,
+`(-(1 + i c_*) alpha / c_*^2, 1 + alpha)`; `R~` to
+`(-(1 + i) I_1/sqrt3, I_0 + I_1/sqrt3)` with `I_0, I_1 > 0`. The ratios of
+first to second components have arguments `arg(-(1 + i c_*))` and
+`arg(-(1 + i))`, equal only if `c_* = 1`; `c_* = cosh t_* > 1`. So `e_0`
+is not parallel to `R~`. Left-H6: `S(-i xi_*)` is Hermitian, so
+`f_0 = e_0`, and at `pi u` the projector is `P-bar`, so `f_pi = e_0-bar`;
+`e_0` is not a complex multiple of a real vector (same argument), so `f_0`
+is not in the span of `f_pi`. K3 satisfies H10 by hand derivation.
+
+## 9. Limits
+
+Author derivation by a Claude model; nothing reviewed. Constants not
+explicit. Limsup form only; no claim on `liminf`, the prefactor or the
+power as a verdict (the power `5 + d/2` is a by-product of the route). No
+novelty claim.
+
+=== DOCUMENT 7: 2026-11-12--general-ir-rate-bravais-stage1.md ===
+
+# General infrared rate on Bravais lattices: Stage 1 (written adaptation)
+
+2026-11-12. Claude (claude-opus-5-5). Charter
+`theory/GENERAL_IR_RATE_BRAVAIS_GATE.md`, preregistration commit `5eb6da9`
+(frozen unchanged on the user's instruction «comienza por la fase 1»).
+Author derivation, **PRELIMINARY, not reviewed**. No computation, no
+verifier, no external transmission.
+
+Pre-step record. Known: B1–B4 of the charter; the texts gone through are
+`reports/2026-11-12--general-ir-rate-stages-0-1.md` ("S01"),
+`reports/2026-11-12--general-ir-rate-stage2-progress.md` ("SP"),
+`reports/2026-11-12--general-ir-rate-stage2-leading-term.md` ("LT") and
+`reports/2026-11-12--ir-carrier-stage-a.md` ("CA"), all as they stand at
+`5eb6da9` (Grok repairs included). Question: does every use of `Z^d` in
+them transfer to a Bravais lattice `L` by the replacements of charter
+Sec. 1? Stop: outcome (a) at the first step that does not.
+
+## 0. Setting on `L`
+
+`L = B Z^d`, `B` invertible real `d x d`, `covol(L) = |det B|`. Dual
+lattice `L* = {k : k.x in Z for all x in L} = B^(-T) Z^d`. Walk on
+`l^2(L; C^s)`, `(S psi)(y) = sum_{a in F} S_a psi(y - a)`, `F subset L`
+finite. Fourier convention of the manuscript:
+`psi^(p) = sum_{x in L} e^(i p.x) psi(x)`, periodic under `2 pi L*`;
+Brillouin zone `T_L = R^d / 2 pi L*`, of volume `(2 pi)^d / covol(L)`;
+normalised measure
+
+    dmu_L = covol(L) d^d p / (2 pi)^d,     psi(x) = int_{T_L} e^(-i p.x) psi^(p) dmu_L(p),
+
+with Parseval `sum_x |psi(x)|^2 = int |psi^|^2 dmu_L`. Kernel
+`G_N(a) = int_{T_L} e^(-i p.a) S(p)^N dmu_L(p)`. The symbol is a finite sum
+of `e^(i p.a)`, `a in L`, hence entire in `p in C^d` and `2 pi L*`-periodic.
+
+**Primitive normal.** For `u in L*`, `u.L` is a subgroup `g Z` of `Z`; if
+`g > 1` then `u/g in L*`. So `u` primitive in `L*` iff `u.L = Z`. H3 on `L`:
+`xi_* = kappa u`, `kappa > 0`, `u` primitive in `L*`. Then:
+
+- every plane `{u.x = k}`, `k in Z`, meets `L`, and its trace is a coset
+  of `Lambda_0 = L cap u^perp` (rank `m = d - 1`);
+- `L/Lambda_0 = Z` through `x -> u.x`, so a character of `L` trivial on
+  `Lambda_0` is `x -> omega^(u.x)`, `|omega| = 1`;
+- plane spacing `1/|u|`; `covol(L) = covol(Lambda_0) / |u|`, i.e.
+  `covol(Lambda_0) = covol(L) |u|` (a fundamental cell of `L` is a cell
+  of `Lambda_0` times one spacing);
+- `e^(i eta.x)` is trivial on `Lambda_0` iff the in-plane component
+  `eta_t` lies in `2 pi Lambda_0^*`, with `Lambda_0^*` the dual of
+  `Lambda_0` inside `u^perp`.
+
+*Second-way check of the covolume (rule 4).* Triangular lattice,
+`b_1 = (1, 0)`, `b_2 = (1/2, sqrt3/2)`, `covol = sqrt3/2`,
+`B^(-T) = [[1, 0], [-1/sqrt3, 2/sqrt3]]`. With `k = (1, 0)`,
+`u = (1, -1/sqrt3)`, `|u| = 2/sqrt3`; `u.b_1 = 1`, `u.b_2 = 0`, so
+`Lambda_0 = Z b_2`, covolume `1 = (sqrt3/2)(2/sqrt3)`; spacing `sqrt3/2`,
+the distance from `b_1` to the line `R b_2`. BCC lattice (integer points
+with three coordinates of equal parity), `covol = 4`, `u = (1,1,1)`:
+`u.(1,1,1) = 3`, `u.(2,0,0) = 2`, so `u.L = Z` and `u` is primitive in
+`L*` (while `u/2` is not in `L*`). Directly,
+`Lambda_0 = 2 (Z^3 cap u^perp)` (odd points cannot sum to zero), covolume
+`4 sqrt3 = covol(L) |u|`. Both agree with the formula.
+
+## 1. Inventory of uses of `Z^d`
+
+Every use of the lattice in the general proofs of S01, SP, LT and CA, with
+the replacement on `L`. The checks specific to the manuscript's walk K3
+(S01 Stage 0(i) and the K3 check after Thm 1.3, LT Sec. 8, the check
+against the point `pi u` in CA Sec. 2) use properties of that walk
+(Hermiticity of `S(-i xi_*)`, its explicit eigenvectors), not of the
+lattice, and are not part of the inventory. *(Scope stated after the Codex
+review, objection 4.)* "Exact"
+means the step goes through with the same words; "constant" means only a
+numerical factor changes (Sec. 4).
+
+| # | Use | Where | On `L` | Status |
+|---|---|---|---|---|
+| U1 | torus `T^d`, measure `d^d p/(2 pi)^d` | S01 notation; LT Sec. 5; SP Sec. 2 | `T_L`, `dmu_L` | constant |
+| U2 | real translation `eta -> eta + b e` unitary on `L^2(T^d)` | S01 Lemma 1.1 | `T_L` is a quotient of `R^d`; same | exact |
+| U3 | contour shift `p -> p - i xi` (manuscript Eq. (11)) | S01 Thm 1.3 | symbol entire and `2 pi L*`-periodic | exact |
+| U4 | site counts `|A_N|, |B_N| <= C N^d` | S01 Thm 1.3; SP Sec. 2 | `|N A cap L| <= vol(N A + V_L)/covol(L)`, `V_L` a Voronoi cell | constant |
+| U5 | resource normalisation `Z_N`, `c_r` | LT Sec. 2 (`R_0`), Amendment 2 (`Phi_0`) | Parseval with `dmu_L` | constant |
+| U6 | resource band inside the zone | LT Sec. 2 | `g(N p)` supported in `|p| <= 1/N`; for `N > 1/(pi lambda_1(L*))` this closed ball lies strictly inside the Voronoi cell of `2 pi L*` centred at `0` (inradius `pi lambda_1(L*)`), i.e. it is injective in the torus | finitely many `N` excluded |
+| U7 | `u` primitive integer, planes `{u.x = k}` | LT Sec. 1; CA Sec. 2 | `u` primitive in `L*`, `u.L = Z` | exact |
+| U8 | `Z^d/Lambda_0 = Z`, characters `omega^(u.x)` | LT preamble, Sec. 3(c); CA Sec. 1 | Sec. 0 | exact |
+| U9 | every depth index `j >= 0` is a non-empty plane; `u.x = floor(u.x_*) - j` | LT Sec. 1; CA Sec. 2 | `u.L = Z` | exact |
+| U10 | in-plane Poisson summation, zero mode `1/covol(Lambda_0) = 1/|u|` | LT Sec. 3(b) | `1/(covol(L) |u|)` | constant |
+| U11 | non-zero in-plane frequencies `2 pi m'`, `m' in Lambda_0^*`; `r_0`; inverse-cube sum in `m <= 2` | LT Sec. 3(b); SP Sec. 2 (non-trivial characters) | same with `Lambda_0^*` of `L` | exact (new `r_0`) |
+| U12 | disc site count `O((N delta)^(m/2) + 1)` on a plane | SP Sec. 2 | cosets of `Lambda_0` | constant |
+| U13 | depth offsets `theta^A_N = {N u.w_A}`, `theta^B_N = {-N u.w_B}`; H9 | LT Secs. 1, 6; CA Secs. 5, 8, 10 | same formulas with `u in L*` | exact |
+| U14 | compactness of the torus (away from dominant points) | SP Sec. 2 | `T_L` compact | exact |
+| U15 | `det S(p)` is a monomial, so `rho(S(eta - i xi)) > 0` and `Phi` is finite | S01 Stage 1, notation | with `p = B^(-T) t`, `S` is a Laurent polynomial in `e^(i t_j)`; unitarity gives `det S . (det S)^sharp = 1` as Laurent polynomials, so `det S(p) = c e^(i p.a_0)`, `a_0 in L`, `|c| = 1`; alternatively `S S^sharp = I`, `S^sharp(p) = sum_a S_a^dagger e^(-i p.a)`, holds as an identity of exponential sums and hence for complex `p` | exact (added after the Codex review, objection 1) |
+
+U2, U3, U6, U11, U12, U14 and U15 are uses not listed in charter B3.
+None fails. U6 is the only new condition, and it removes finitely many `N`,
+which the limsup form of (T) does not see.
+
+Steps that do not use the lattice at all and are therefore unchanged:
+S01 Lemma 1.2 (Schur form), the Fenchel–Young step and the Schur test of
+Thm 1.3 (apart from U4); the free-tail expansion of LT Sec. 2 apart from
+U5–U6 (the node is a statement about `S(p)` near `p = 0` in Euclidean
+momentum); the depth-sum Laplace/Poisson formula of LT Sec. 4 (it involves
+only `|u|` and `kappa`); the Gaussian assembly of LT Sec. 5 apart from U1;
+the averaging arguments of LT Sec. 6 and CA Secs. 5, 8, 10 (Weyl
+equidistribution of `N u.w_A`, `N u.w_B`, `N (psi_i - psi_j)/2 pi`); the
+bilinearity and rotation arguments of LT Sec. 7 and CA Secs. 6, 10.
+
+## 2. B1 Stage 1 on `L`
+
+Finiteness of `Phi` on `L`: U15. Lemma 1.1: the multiplication operator by `S(. - i xi)` on
+`L^2(T_L, dmu_L; C^s)`; conjugation by the translation by `b e` (U2) gives
+`||F(a + ib)|| = ||F(a)||`; the subharmonicity argument is unchanged.
+Lemma 1.2: no lattice. Thm 1.3: the contour shift (U3) and Lemma 1.2 give
+`||G_N(y - x)|| <= C N^(s-1) e^(N Phi(xi_*) - xi_*.(y - x))` for
+`x, y in L`; the convexity step uses `(y - x)/N in B - A`, which holds for
+any points of `N A`, `N B`; the Schur test with U4. Hence, under H1 and
+`0 < K_* < inf`,
+
+    delta <= D_B <= 4 T_N <= C_L N^(d+s-1) e^(-K_* N),
+
+with `C_L` depending on `L` through U4 only. The power is unchanged.
+
+## 3. B1 Stage 2 on `L`
+
+LT Sec. 1 (geometry): `w_A`, `w_B`, `v_*` do not involve the lattice;
+depth parametrisation by U7, U9; tilt weights
+`e^(xi_*.(x - x_*)) = e^(-kappa(theta^A + j))` because `xi_*.x = kappa u.x`
+with `u.x in Z`. The exact formula for `F_N` on each plane is Euclidean.
+
+LT Sec. 2 (free tail): `r(y) = int_{T_L} e^(-i p.y) S(p)^N phi^_N(p) dmu_L`.
+For `N > 1/(pi lambda_1(L*))` (U6) the band is one ball inside the
+Voronoi cell centred at `0`, and
+substituting `p = q/N` gives
+
+    r~(y) = N^(-d/2) e^(-i N omega_0) [ R_0(y/N) + O(N^(-1)) ],    R_0 with c_r(L) of Sec. 4,
+
+uniformly in `y in L`; the remainder bounds (spectral projector,
+`O(|p|^2)` remainder, Duhamel, sup norm by the `L^1(dmu_L)` norm) are
+unchanged.
+
+LT Sec. 3 (layers): the only lattice inputs are U10–U12. (a): the absolute
+bound `N^(-5/2)` is unchanged (it counts sites per plane with U12 and
+uses the pointwise tail). (b): the zero mode of the in-plane Poisson sum
+carries `1/(covol(L) |u|)`; the remainder bound
+`||partial^3 G_delta||_M |2 pi m' - eta_t|^(-3)` is summed over
+`m' in Lambda_0^*` (convergent for `m <= 2`) with
+`r_0 <= (1/2) min_{m' != 0} |2 pi m'|`. The rest of the computation
+(exact `theta`, replacement of `eps`, `phi_N = N^(-d/2) phi_partial (1 + O(N^(-1/2)))`,
+the substitution `y = sqrt(2 R_A) sigma`) does not see the lattice. (c):
+characters `omega_k^(u.x)` by U8.
+
+LT Sec. 4 (depth sums): unchanged; `x = |u| delta` with `|u|` the length
+of the primitive vector of `L*`.
+
+LT Sec. 5 (assembly): the integral over the ball around `eta = 0`
+carries `dmu_L = covol(L) d^d eta/(2 pi)^d` instead of `d^d eta/(2 pi)^d`.
+The Gaussian replacements and their `O(N^(-1/2))` costs are unchanged.
+The power `5 + d/2` is unchanged.
+
+LT Sec. 6 (positive average): no lattice beyond U13. The branch argument
+for `det^(-1/2)` depends on `m <= 2`, which is unchanged.
+
+LT Sec. 7 (non-vanishing): no lattice. SP Sec. 2: the second-order
+encoder term uses `int ||S~_N(eta)|| dmu_L <= C N^(-d/2)` (constant
+change); the non-trivial-character bound uses U11 and needs
+`eta_t notin 2 pi Lambda_0^*`, which is exactly non-triviality on
+`Lambda_0` (Sec. 0); the off-dominant bound uses U14.
+
+## 4. Constants
+
+Write `||g||_2^2 = int_{R^d} g(q)^2 d^d q`.
+
+- `Z_N(L) = covol(L) N^(-d) (2 pi)^(-d) ||g||_2^2`, from
+  `||phi_N||^2 = Z_N^(-1) int g(N p)^2 dmu_L = 1`.
+- `c_r(L) = covol(L)^(1/2) (2 pi)^(-d/2) ||g||_2^(-1)`, from
+  `phi_N(x) = Z_N^(-1/2) covol(L) (2 pi)^(-d) N^(-d) int g(q) e^(-i q.x/N) d^d q`.
+  Hence `Phi_0`, `phi_partial = Phi_0(w_A)` and `R_0`, `R~` scale as
+  `covol(L)^(1/2)`; the conditions H5 and H7 (non-vanishing) and the
+  sufficient radial-positivity forms of H7 do not change.
+- `k_A(L) = 2 pi (2 rho_A)^(m/2) / (rho_A^2 covol(L) |u|)`,
+  `k_B(L) = 4 (2 rho_B)^(m/2) / (rho_B^2 covol(L) |u|)`.
+- Leading coefficient at a trivial dominant point (`eta = 0` or `eta_k`):
+
+      c(L) = phi_partial k_A k_B covol(L) (2 pi)^(-d) sqrt(2 pi / C_nn) (R~^dagger M_B e) (f^dagger M chi).
+
+  Counting powers of `covol(L)`: `1/2` (`phi_partial`) `+ 1/2` (`R~`)
+  `- 2` (`k_A k_B`) `+ 1` (`dmu_L`) `= 0`. So `c(L)` is the `Z^d` formula
+  with `|u|` the length of the primitive vector of `L*`: the explicit
+  covolume factors cancel.
+
+**Check against `Z^3` (charter Stage 1).** `covol = 1`, `L* = Z^3`,
+`u = (1,1,1)` primitive with `|u| = sqrt3`: `dmu_L = d^3 p/(2 pi)^3`,
+`c_r(Z^3) = (2 pi)^(-3/2) (512 pi/3465)^(-1/2) = sqrt(3465)/(64 pi^2)`
+(with `||g||_2^2 = 4 pi int_0^1 (1 - r^2)^4 r^2 dr = 512 pi/3465`),
+which is manuscript Eq. (7); `Z_N = 64/(3465 pi^2 N^3)`, manuscript
+Sec. 3.3; `k_A = 16 pi/sqrt3`, `k_B = 32/sqrt3` at `rho = 1/4`, as in LT
+Sec. 3 and manuscript Layers (b).
+
+## 5. B2 (proved part) on `L`
+
+CA Sec. 1: U8. CA Sec. 2: `u.x = floor(u.x_*) - j` and
+`u.y = ceil(u.y_*) + j'` need only `u.L = Z` (U9); the cancellation of
+`e^(+-i eta_k.(y_* - x_*))` against `e^(-i N eta_k.v_*)` is an identity
+in `R^d`, so `psi_k = phi_k + omega_0 - phi u.v_*` is unchanged. CA
+Sec. 3: depth sums with `sigma = kappa + i phi`, no lattice. CA Sec. 4:
+`c_k(L)` as in Sec. 4 above. CA Secs. 5, 8, 10: averages and
+equidistribution in `N u.w_A`, `N u.w_B`, `N (psi_i - psi_j)/2 pi`, with
+`u in L*` (U13); no other lattice input. Hypotheses H6_k, H9_k, H10_k of
+carrier Amendment 1 are read with `u` primitive in `L*` and characters
+trivial on `Lambda_0 = L cap u^perp`. The proved cells stay proved under
+the same hypotheses; the cell H6_k(ii) with H9(i) stays `OPEN`.
+
+## 6. Observations outside the question (no verdict)
+
+1. **Not a relabelling, in general.** Writing `L = B Z^d` turns a walk on
+   `L` into a walk on `Z^d`; for a general `B` Euclidean balls become
+   ellipsoids and an isotropic node becomes anisotropic, both outside B1's
+   class. (When `L = a Q Z^d` with `Q` orthogonal the change is a
+   similarity and preserves both; added after the Codex review,
+   objection 3.) The enlarged class is therefore not obtained from B1 by
+   a change of coordinates that preserves B1's class; it is obtained by
+   repeating the proof, which uses the lattice only through U1–U15.
+2. **Choice of lattice.** If the steps of a walk generate a proper
+   sublattice `L' subset L`, the symbol on `T_L` is periodic under
+   `2 pi L'*`, so every dominant point comes with copies carrying the same
+   eigenvectors. Where such a copy has a character trivial on
+   `L cap u^perp`, H6 (or H6_k(i)) fails automatically on `L`. On `L'`
+   the walk is a different operator (one coset), with a different
+   primitive `u`, `Lambda_0`, characters and offsets. Which reading
+   applies to a diagnostic row is a Stage 2 question, not decided here.
+3. **Admissibility.** B1's class requires admissibility in the sense of
+   manuscript Definition 3.1, but S01, SP and LT contain no proof that the
+   protocol family is admissible for a general walk of the class (a
+   `grep -i admissib` over them finds only the non-vanishing of the
+   denominators, S01 Stage 2). This gap predates this charter and is
+   inherited unchanged on `L`; it is not addressed here. A proof of
+   admissibility on `L` would have its own lattice inputs (the
+   manuscript's proof uses differences along a basis of `Z^3`).
+
+## 7. Verdict
+
+Every use of `Z^d` in the general proofs of B1 Stages 1–2 and of the
+proved part of B2 is one of U1–U15; each transfers to a Bravais lattice of `R^d`, `d in {2, 3}`, by
+the charter's replacements, with U6 excluding finitely many `N`. No new
+analytic step and no change of hypotheses was needed.
+
+**Stage 1: `PROVED_UNDER_FROZEN_CONTRACT` (charter `5eb6da9`); line
+outcome (b), corollary.** Author derivation, PRELIMINARY, not reviewed.
+The corollary inherits the status of what it transfers: B1 Stages 1–2
+PASS in one sealed Grok review with repairs not re-reviewed; B2's proved
+cells after one Grok review with REPAIR_REQUIRED and repairs not
+re-reviewed; B2's `OPEN` cell stays open. Constants: Sec. 4.
+
+Not done: Stage 2 (diagnostic consequence) is not authorized; the sealed
+cross-family review proposed in charter Sec. 4 has not been requested. No
+novelty claim.
+
+## Repairs after the Codex review (2026-11-12)
+
+Sealed review by gpt-6-astra (`reports/reviews/2026-11-12-bravais-stage1-astra/`,
+base `24e1965`, candidate SHA256 `922162b8…4b1c`): REPAIR_REQUIRED, no
+Bravais-specific obstacle, no new hypothesis. Repairs applied on the user's
+instruction («si a las dos»), **not re-reviewed**:
+
+1. U15 (monomial determinant) added to the inventory and to Sec. 2.
+2. U6 stated for the Voronoi cell centred at `0` (injectivity of the
+   band), replacing "inside one zone iff".
+3. Sec. 6.1 qualified: "in general"; similarity case noted.
+4. Inventory scoped to the general proofs; K3-specific checks named and
+   excluded; Sec. 7 restated accordingly. Sec. 6.3 reworded as the
+   reviewer suggested.
+
+No hypothesis, constant or verdict changed. The reviewer's separate
+objection to B1's H2 is handled by draft Amendment 5 to the general-rate
+charter.
