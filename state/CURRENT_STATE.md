@@ -2,6 +2,26 @@
 
 **Date:** 2026-11-14
 
+**Co-moving packet result promoted — 2026-11-14:** user «promociona el
+resultado, autorizado». Thirring co-moving packet code (contract
+`dca5ebc`, report `reports/2026-11-14--thirring-comoving-packet.md`):
+`COMOVING_PACKET_GATE_SAME_FAMILY`, promoted in its frozen scope only and
+labelled ESTABLISHED in that scope: fast (K = 3) and slow (K = 1) flavour
+packets moving the same way, chi = pi/2, T = 20L, mu -> 0, act by
+V(r_co) = 1 (+) [[alpha, beta], [beta, alpha]] (+) 1, r_co = a(3)/a(1),
+beta = (3 + 2 sqrt5)/11, alpha = i sqrt(92 - 12 sqrt5)/11, leakage -> 0.
+Part A, as exact algebra only: V(r) satisfies Yang-Baxter in R form and
+P V the braid relation; Delta = cos chi where defined (r != 1).
+Reviews: Astra 2026-11-14 REPAIR_REQUIRED (bridge blocks PASS; R1, R2
+documentary), repairs applied, Astra bounded re-review PASS (`4e192ca`).
+One reviewing family (OpenAI), not a person; the co-moving bridge
+adaptation rests on the contract-2 and flavour bridges promoted earlier.
+Not promoted: three-packet factorization, graded tensor structure,
+composability, universality, the A5 matchgate/simulability reading
+([UNVERIFIED], prior art not read), other packets, couplings or times.
+NOVELTY = OPEN. Coexistence remains OPEN; no contract is open and no
+further work is authorized by this entry.
+
 **Co-moving packet gate executed — 2026-11-14:** drafting/freezing
 authorized («si redacta el contrato y luego congelas»), contract frozen at
 `dca5ebc`; execution authorized («autorizado»). Verifier committed before
