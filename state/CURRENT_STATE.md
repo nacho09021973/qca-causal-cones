@@ -2,6 +2,26 @@
 
 **Date:** 2026-11-14
 
+**Thirring, conceptual correction — 2026-11-14 (PRELIMINARY):** user
+decision, reading only (sources/1711.03920v1.pdf Lemma 1, p. 3, Eq. (12);
+P2/P4 of `scripts/verify_thirring_low_energy_packet.py`); no contract, no
+new verifier. A candidate obstruction to universality proposed in session
+(pair collisions diagonal and commuting in the flavour basis of Gamma =
+sigma_z (-1)^x; never recorded in the repo before this entry) is
+withdrawn: it is not demonstrated. The Gamma sector structure stands
+(Gamma W Gamma = -W, J commutes with each Gamma_i, so U^2 conserves the
+flavour numbers), and Lemma 1 leaves no momentum channel beyond the swap
+and its pi-shifted partner. The candidate phases
+T_+ = (a1 + z a2)/(a2 + z a1) and T_- = (a1 - z a2)/(z a1 - a2)
+(z = e^{-i chi}, a1, a2 > 0) differ generically: equality iff z^2 = 1.
+Identifying their joint action with an XXZ-type logical gate on flavours
+requires checking the momentum conventions, the antisymmetrization, the
+fact that the two waves sit in total-momentum sectors P and P+pi, and the
+logical code. No universality and no new obstruction are established.
+The Thirring line stays stopped by budget; coexistence remains OPEN.
+Criterion to reconsider Thirring (user): first identify a physically
+well-defined logical operation, not only two different scattering phases.
+
 **Work priority — 2026-11-14:** user decision. S13 consolidated
 (`GAP_PROVED_IN_CLASS`). The hexagonal line M1 remains `OPEN` but is
 parked: no new calculations, support extensions or contracts are
