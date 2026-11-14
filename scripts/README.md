@@ -488,3 +488,17 @@ gate V(r_co); Part A (Delta = cos chi, Yang-Baxter in R form, braid
 relation for P V; matchgate determinants as a diagnostic). Does **not**
 certify: the packet/scattering bridge in the co-moving geometry, the U^2
 admission, the verdict, physical three-packet factorization.
+
+## Thirring crossing matchgates, A5 (2026-11-14)
+
+`verify_thirring_matchgate_a5.py` supports
+[`THIRRING_MATCHGATE_A5_GATE`](../theory/THIRRING_MATCHGATE_A5_GATE.md),
+frozen at `915e55f`, tasks T2-T3, for the
+[report](../reports/2026-11-14--thirring-matchgate-a5.md). Imports the
+co-moving verifier read-only. Certified: in an explicit Jordan-Wigner Fock
+model, under the stated formalization of F, a crossing acts on the
+position-ordered register as -P v on adjacent slots for generic v,
+spectator-independent; three-packet sequences in both time orders; G(r) =
+-P V(r) = G(A, B) with A, B in SU(2); Valiant's five matchgate identities;
+P V(r) = exp(+i theta (XX+YY)/2), quadratic in JW fermions. Does **not**
+certify: F, the adjacency argument, T4.
