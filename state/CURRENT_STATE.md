@@ -20,8 +20,10 @@ universal construction from crossings would imply BQP in P. Conditional on
 F, chi = pi/2, this code and resources; mu -> 0 only; not a Thirring no-go.
 Sealed Astra review (user-authorized; gpt-6-astra, on 3fa82c8, archived
 `47ea467`): REPAIR_REQUIRED, algebra PASS; R1-R5 applied (user «si»),
-verifier unchanged; re-review pending. No promotion; contract closed;
-coexistence OPEN.
+verifier unchanged. Bounded re-review (`e3413e3`): R1, R3-R5 PASS, R2
+still open (pair orientation, adjacency-preserving tie rule, field of
+alpha, costs in n); completed in the report; second re-review not yet
+authorized. No promotion; contract closed; coexistence OPEN.
 
 **Co-moving packet result promoted — 2026-11-14:** user «promociona el
 resultado, autorizado». Thirring co-moving packet code (contract

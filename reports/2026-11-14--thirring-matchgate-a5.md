@@ -19,6 +19,13 @@ R1-R5 y re-revisión»):
   arithmetic model of Valiant / Terhal-DiVincenzo from the m-digit notion
   of Jozsa-Miyake; error propagation under finite-precision gate entries
   is stated as not re-derived. "Any subset" means one queried assignment.
+  After the bounded re-review (`e3413e3`, R2 still open; R1, R3-R5 PASS),
+  Sec. 5 was completed: pair orientation (right packet first) fixes the
+  sign of the time comparison; coincidences use an adjacency-preserving
+  rule (the plain lexicographic rule could pick a non-adjacent pair, e.g.
+  K = (3/4, -3/4, 0), x = (3/5, -3/5, 0), all meeting at t = 1); alpha lies
+  in the field with i adjoined; costs are poly(n) and poly(n, m) in the
+  input bit length n.
 - R3: Valiant pages corrected: Main Theorem and Theorem 4 p. 120,
   Measurement Theorem p. 121 (checked against the printed page numbers;
   the earlier text was shifted by one). Same fix in `sources/README.md`.
@@ -65,7 +72,8 @@ For the uniform input model of Sec. 5: by Valiant (STOC 2001, pp.
 queried outcome assignment on any subset of packets can be computed, and
 outcomes sampled, in classical polynomial time (exact arithmetic model);
 by Jozsa-Miyake (Theorem 1, p. 2; definition p. 3), <Z_k> on any single
-packet can be computed to m digits in poly(N, m) time. Hence, under F,
+packet can be computed to m digits in poly(n, m) time, n the input bit
+length of Sec. 5 (poly(N, m) in their gate-access model). Hence, under F,
 by Jozsa-Miyake p. 3, a bounded-gap decision problem accepted on one
 packet's final flavour by such circuits lies in P; an efficient universal
 quantum computation by crossings alone at chi = pi/2, in this code with
@@ -118,8 +126,8 @@ is still a nearest-neighbour circuit. For k = 3 both resolutions give the
 same operator (S4: Fock-level products equal G12(y) G23(xy) G12(x) and
 G23(x) G12(xy) G23(y), and these are equal). For k >= 4 the uniqueness of
 the result is not checked: every *specified* resolution is a simulable
-nearest-neighbour circuit, which is what Sec. 5 uses (a fixed
-lexicographic resolution); F's map at such coincidences is defined only
+nearest-neighbour circuit, which is what Sec. 5 uses (an
+adjacency-preserving rule, Sec. 5 item 2); F's map at such coincidences is defined only
 once a resolution is specified. Each pair crosses at most once, so the circuit has
 at most N(N-1)/2 gates.
 
@@ -190,21 +198,32 @@ total bit length. From it, classically:
 1. *Which pairs cross, and the final order.* v_p = K_p/sqrt(1 + K_p^2) is
    increasing in K_p, so packets p, q cross iff (x_p - x_q)(K_p - K_q) > 0
    (the one on the right is faster to the left); rational comparisons.
-2. *Crossing order, ties included.* t_pq = (x_p - x_q)/(v_p - v_q).
-   Deciding t_pq < t_rs or t_pq = t_rs is deciding the sign of
-   (x_p - x_q)(v_r - v_s) - (x_r - x_s)(v_p - v_q), a rational combination of
-   at most four numbers K_i/sqrt(1 + K_i^2) = sign(K_i) sqrt(K_i^2/(1+K_i^2)).
+2. *Crossing order, ties included.* Orient every crossing pair with the
+   initially right packet first: (p, q) with x_p(0) > x_q(0); then
+   v_p > v_q and t_pq = (x_p - x_q)/(v_p - v_q) > 0. For two such oriented
+   pairs, t_pq - t_rs = E/((v_p - v_q)(v_r - v_s)) with
+   E = (x_p - x_q)(v_r - v_s) - (x_r - x_s)(v_p - v_q) and a positive
+   denominator, so sign(t_pq - t_rs) = sign(E), and E = 0 detects ties.
+   E is a rational combination of at most four numbers
+   K_i/sqrt(1 + K_i^2) = sign(K_i) sqrt(K_i^2/(1+K_i^2)).
    The sign of a rational combination of at most four square roots of
    rationals is decided exactly by a bounded number of isolate-and-square
    steps, each polynomial in the bit length (written; standard, not
    machine-checked here). Sorting the at most N(N-1)/2 crossing events
-   uses O(N^2 log N) such comparisons. Coincidences of k >= 3 packets
-   (equal t at one point) are resolved by a fixed lexicographic rule
-   (Sec. 3).
+   uses O(N^2 log N) such comparisons. Events with equal t are processed
+   together by this rule: while some pair crossing at that t occupies
+   adjacent slots and has not yet been swapped, swap the lexicographically
+   smallest such adjacent pair (by packet labels) and update the slots.
+   Pairs meeting at different points at the same t are disjoint and
+   commute; a block of k >= 3 packets meeting at one point is a block of
+   adjacent slots whose pairs are exactly the pending pairs, and the rule
+   is an adjacent-transposition sort of that block to its reversed order,
+   swapping each pair once (Sec. 3). Every applied gate is therefore on
+   adjacent slots.
 3. *Gate parameters.* r_pq = a(K_p)/a(K_q), a(K) = sqrt(1 + K^2) + K; the
-   entries beta = 2r/(1+r^2), alpha = i(r^2-1)/(r^2+1) lie in
-   Q(sqrt(1+K_p^2), sqrt(1+K_q^2)) and are computable to m bits in time
-   polynomial in n and m.
+   real numbers beta = 2r/(1+r^2) and alpha/i = (r^2-1)/(r^2+1) lie in
+   Q(sqrt(1+K_p^2), sqrt(1+K_q^2)) (so alpha lies in that field with i
+   adjoined) and are computable to m bits in time polynomial in n and m.
 
 So the circuit (at most N(N-1)/2 gates, their slots and parameters) is
 generated uniformly in time polynomial in n, exactly up to the parameter
@@ -225,8 +244,10 @@ Simulation notion obtained (R2):
 - Valiant / Terhal-DiVincenzo: polynomial-time algorithms (Pfaffians) for
   the probability of one queried assignment on any subset, and for
   sampling, in an exact arithmetic model on the gate entries.
-- Jozsa-Miyake: <Z_k> on one line to m digits in poly(N, m) time (their
-  definition, p. 3, which they state their Theorem 1 achieves).
+- Jozsa-Miyake: <Z_k> on one line to m digits in poly(N, m) time in their
+  model (definition, p. 3, which they state their Theorem 1 achieves);
+  with the instance generated as above, poly(n, m) in the input bit
+  length n.
 - Not re-derived here: error propagation when the algebraic gate entries
   are replaced by m-bit approximations in the subset-marginal and sampling
   algorithms (additive error of the probabilities, total-variation error
