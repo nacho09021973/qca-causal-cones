@@ -2,6 +2,32 @@
 
 **Date:** 2026-11-14
 
+**Two results promoted — 2026-11-14:** user «autorizado, te autorizo todos
+los pasos» (re-review of the contract-2 bridge, then promotion if PASS).
+Bridge re-review: Astra `gpt-6-astra` (generation probed the same day),
+sealed, one round, on `918f7f4`, archived at `55f2b43`: PASS, all seven
+repairs resolved, no mandatory repair. Promoted, each in its frozen scope
+only, labelled ESTABLISHED in that scope:
+
+1. Thirring low-energy packet code (contract `715096f`, report
+   `reports/2026-11-09--thirring-low-energy-packet.md`):
+   `NO_ENTANGLER_IN_DECLARED_PACKET_CODE`. Reviews: Astra 2026-11-09
+   (repairs), Astra re-review 2026-11-14 PASS. Not promoted: any Thirring
+   no-go, other codes, resources, couplings or frames.
+2. Thirring flavour-packet code (contract `d0c59cb`, report
+   `reports/2026-11-14--thirring-flavour-packet.md`):
+   `FLAVOUR_PACKET_EXCHANGE_GATE_IN_DECLARED_CODE`, V = 1 (+) [[iy, x],
+   [x, iy]] (+) 1, x = (sqrt10 - 2)/6, leakage -> 0, chi = pi/2, the two
+   declared packets, mu -> 0, carriers admitted under U^2 by the user's Q2-A
+   decision. Reviews: Grok 2026-11-14 PASS; its bridge is item 1's. Not
+   promoted: universality (flavour number conserved; single crossings in
+   1D), composability, an interacting relativistic QFT limit, other packets
+   or couplings.
+
+Both reviews are by agents of other families (one per result plus the
+shared bridge), not by a person. NOVELTY = OPEN. Coexistence remains OPEN;
+no contract is open and no further work is authorized by this entry.
+
 **Flavour-packet gate executed — 2026-11-14:** user «AUTORIZO SU
 EJECUCION». Verifier committed before running (`b49bf18`); run 1 no SymPy
 (environment), run 2 one check failed at a degenerate test point
