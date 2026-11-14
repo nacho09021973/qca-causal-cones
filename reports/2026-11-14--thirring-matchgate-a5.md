@@ -12,6 +12,12 @@ the counterexample resolves to the reversed order), field of alpha, costs
 and edits; no mandatory repair. F, uniqueness at >= 4-fold coincidences
 and finite-precision error propagation for many-line outputs remain OPEN.
 
+**Human review (2026-11-14).** The repository owner (the user, who also
+chartered and authorized this work) reports having reviewed this report
+and its verifier personally on `3dc6193` and found everything correct.
+Recorded as stated; no written review document. The OPEN items below are
+unchanged.
+
 **Review (2026-11-14).** Astra `gpt-6-astra`, sealed revision-ciega, one
 round, herramientas `2a7342b`, on `3fa82c8`:
 [unaltered review](reviews/2026-11-14-thirring-matchgate-a5-astra/informe_astra.md).

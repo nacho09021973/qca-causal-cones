@@ -19,7 +19,12 @@ Terhal-DiVincenzo pp. 3-4), and <Z_k> to m digits in poly(n, m)
 (Jozsa-Miyake Thm 1, p. 2); an efficient universal construction from these
 crossings would imply BQP in P. Reviews: Astra REPAIR_REQUIRED (algebra
 PASS; R1-R5), re-review (R2 open), second re-review PASS (`2b3809e`); one
-reviewing family (OpenAI), not a person. Not promoted: F; uniqueness at
+reviewing family (OpenAI). Human review (2026-11-14): the repository owner (the user, who also
+chartered and authorized this work) reports having reviewed the report and
+the verifiers personally on `3dc6193` and found everything correct («yo lo
+he revisado personalmente y lo veo todo correcto»; scope «ambos, informes y
+verificadores, sobre 3dc6193»). Recorded as stated; no written review
+document. Items listed as not promoted or OPEN are unchanged. Not promoted: F; uniqueness at
 >= 4-fold coincidences; finite-precision error propagation for many-line
 outputs; anything at chi not congruent to pi/2 mod pi, other codes or
 resources; an unconditional separation; a Thirring no-go. NOVELTY = OPEN.
@@ -62,7 +67,12 @@ Part A, as exact algebra only: V(r) satisfies Yang-Baxter in R form and
 P V the braid relation; Delta = cos chi where defined (r != 1).
 Reviews: Astra 2026-11-14 REPAIR_REQUIRED (bridge blocks PASS; R1, R2
 documentary), repairs applied, Astra bounded re-review PASS (`4e192ca`).
-One reviewing family (OpenAI), not a person; the co-moving bridge
+One reviewing family (OpenAI). Human review (2026-11-14): the repository owner (the user, who also
+chartered and authorized this work) reports having reviewed the report and
+the verifiers personally on `3dc6193` and found everything correct («yo lo
+he revisado personalmente y lo veo todo correcto»; scope «ambos, informes y
+verificadores, sobre 3dc6193»). Recorded as stated; no written review
+document. Items listed as not promoted or OPEN are unchanged. The co-moving bridge
 adaptation rests on the contract-2 and flavour bridges promoted earlier.
 Not promoted: three-packet factorization, graded tensor structure,
 composability, universality, the A5 matchgate/simulability reading
