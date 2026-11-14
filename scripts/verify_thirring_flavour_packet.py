@@ -18,7 +18,8 @@ Certified (exact SymPy):
       pattern: v+_{q1} x v-_{q2'} with its Gamma1 Gamma2 partner, swap with
       phase T_-, contact phase on RL at y = 0, antisymmetric extension) is an
       exact lattice eigenvector of U with eigenvalue e^{-i omega(q1)}
-      e^{+i omega(q2')}, at two algebraic momentum pairs, mu = 3/5, chi = pi/2
+      e^{+i omega(q2')}, at two non-degenerate algebraic momentum pairs
+      (q_l != q_r), mu = 3/5, chi = pi/2
       and chi = 0 (where T_- = 1, eigenvector of F); |T_-| = 1.
   F3  code algebra in the faithful finite model (one-particle orthonormal
       phi_r, Gamma phi_r, phi_l, Gamma phi_l; Gamma the involution swapping
@@ -117,7 +118,10 @@ def eigenfunction_pm(z1, z2, MU, NU, Z):
 def check_F2():
     MU, NU = sp.Rational(3, 5), sp.Rational(4, 5)
     pts = {"generic": ((4 + 3 * I) / 5, (-12 + 5 * I) / 13),
-           "second": ((4 + 3 * I) / 5, (-4 - 3 * I) / 5)}
+           "p=0": ((4 + 3 * I) / 5, (4 - 3 * I) / 5)}
+    # Run 2 used "second": z2 = -z1, i.e. q_l = q_r (k = -pi/2), a degenerate
+    # point where the four waves coincide pairwise; outside the packet
+    # supports. Replaced after that run (record: *-failed-run-2-note.txt).
     res = {}
     for tag, (z1, z2) in pts.items():
         for chi_tag, Z in (("chi=pi/2", I), ("chi=0", sp.Integer(1))):
