@@ -2,6 +2,30 @@
 
 **Date:** 2026-11-14
 
+**A5 crossing-matchgate result promoted — 2026-11-14:** user «promociona
+el resultado, autorizado». Contract `915e55f`, report
+`reports/2026-11-14--thirring-matchgate-a5.md`:
+`MATCHGATE_SIMULABLE_UNDER_F`, promoted in its frozen scope only and
+labelled ESTABLISHED **conditional on the declared premise F** (F itself
+is not promoted and stays OPEN). Content: under F, in the flavour code at
+chi = pi/2 with product flavour inputs, final flavour readout and no
+ancilla, intermediate/adaptive measurement, postselection or control,
+each crossing acts on the position-ordered register as -P V(r) on adjacent
+slots, an allowable matchgate G(A, B) with A, B in SU(2); the circuit is
+generated uniformly from rational (K_p, x_p(0)); the probability of one
+queried assignment on any subset and sampling are classically
+polynomial-time in the exact arithmetic model (Valiant pp. 118-121;
+Terhal-DiVincenzo pp. 3-4), and <Z_k> to m digits in poly(n, m)
+(Jozsa-Miyake Thm 1, p. 2); an efficient universal construction from these
+crossings would imply BQP in P. Reviews: Astra REPAIR_REQUIRED (algebra
+PASS; R1-R5), re-review (R2 open), second re-review PASS (`2b3809e`); one
+reviewing family (OpenAI), not a person. Not promoted: F; uniqueness at
+>= 4-fold coincidences; finite-precision error propagation for many-line
+outputs; anything at chi not congruent to pi/2 mod pi, other codes or
+resources; an unconditional separation; a Thirring no-go. NOVELTY = OPEN.
+Coexistence remains OPEN; no contract is open and no further work is
+authorized by this entry.
+
 **A5 crossing-matchgate gate executed — 2026-11-14:** drafting, Q-a
 (F a declared premise), Q-b (sources) and freezing authorized by the user;
 contract frozen at `915e55f`; sources at `7fa79e7`, `a1cfd20` (Jozsa-Miyake,
