@@ -135,3 +135,40 @@ Pages recorded as read live in the reports that cite them, not here:
 `reports/2026-10-31--h1-small-gaussian-profile.md` (p. 17);
 `reports/2026-11-03--substrate-saturation-phase0-addendum-L4.md`
 (Sec. 5.4, Eqs. (5.12)–(5.17), PDF pp. 16–17).
+
+## Matchgate simulation (A5 contract, 2026-11-14)
+
+Acquired for T1 of `theory/THIRRING_MATCHGATE_A5_GATE.md` (frozen at
+`915e55f`), under the user's Q-b authorization (read-only download).
+Downloaded 2026-11-14 from `https://arxiv.org/pdf/<id>` (latest version at
+that date, checked on the abs page); size and SHA256 with `stat -c %s` and
+`sha256sum`; title, authors and arXiv stamp checked against p.1
+(`pdftotext -l 1`).
+
+| File | Paper | SHA256 | Bytes |
+| --- | --- | --- | --- |
+| `0804.4050v2.pdf` | R. Jozsa, A. Miyake, *Matchgates and classical simulation of quantum circuits*, arXiv:0804.4050v2 [quant-ph], 19 Nov 2008 | `5f6ea3d7cf51f6e1981cd9139743161ca3847f59627c6b278c3e6ed2e52d497a` | 221878 |
+| `quant-ph-0108010v2.pdf` | B. M. Terhal, D. P. DiVincenzo, *Classical simulation of noninteracting-fermion quantum circuits*, arXiv:quant-ph/0108010v2, 7 Aug 2001 | `71a6c85976f3697a24eb6c32219e6322915f4e2684cd772b25f4f67c3edb271a` | 219409 |
+| `quant-ph-0108033v2.pdf` | E. Knill, *Fermionic Linear Optics and Matchgates* (extended abstract), arXiv:quant-ph/0108033v2, 8 Aug 2001 | `f01663a354b2b03a0e38931dbc277460101920248216b2acbdc9f3f5258086a9` | 130006 |
+
+Read so far (2026-11-14), page numbers as printed / PDF page:
+- Jozsa-Miyake p.2: definition of G(A, B), eq. (1) (A on span{|00>, |11>},
+  B on span{|01>, |10>}, both SU(2) or both U(2) with equal determinant);
+  Theorem 1 (n.n. lines, any product input, computational-basis
+  measurement of any single line, <Z_k> computable classically); p.2-3:
+  comparison with Valiant / Terhal-DiVincenzo and the notion of
+  simulation; p.4: Theorem 2 (n.n. plus next-n.n. G(A, B), or n.n. with
+  SWAP, are universal) — headings and statement only, proof not read.
+- Terhal-DiVincenzo p.3-4: their restricted statement of Valiant's theorem
+  (Theorem 1: n.n. gates of form (1) up to a phase, U^1, U^2 in SU(2);
+  polynomial-time evaluation of |<y|M|x>|^2, of k-bit marginals, and
+  sampling, for computational-basis input x); p.4-5: Hamiltonian form
+  (Z, XX+YY-type, XY-type terms) and the remark that XY interactions on
+  arbitrary pairs are universal, so the n.n. constraint is crucial.
+- Knill: p.1 (title, abstract) only; not used.
+
+Not obtained: L. G. Valiant, *Quantum computers that can be simulated
+classically in polynomial time*, STOC 2001, doi:10.1145/380752.380785 —
+the ACM URL returned an HTML page, not the PDF. Valiant's theorem is
+cited here only through Terhal-DiVincenzo's restatement; the original stays
+[UNVERIFIED] and T1 is not closed on it.
