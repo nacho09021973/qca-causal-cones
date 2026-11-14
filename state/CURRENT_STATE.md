@@ -5,7 +5,8 @@
 **Co-moving packet gate executed — 2026-11-14:** drafting/freezing
 authorized («si redacta el contrato y luego congelas»), contract frozen at
 `dca5ebc`; execution authorized («autorizado»). Verifier committed before
-running (`2685635`), one run, 52/52 exact.
+running (`2685635`), one run, 52/52 passed (50 exact, 2 numerical
+positivity checks closed by hand).
 [Report](../reports/2026-11-14--thirring-comoving-packet.md). Verdict
 **`COMOVING_PACKET_GATE_SAME_FAMILY`** (author, PRELIMINARY): fast (K = 3)
 and slow (K = 1) flavour packets moving the same way, T = 20L, mu -> 0,
@@ -16,9 +17,13 @@ independent of r; V(r) satisfies Yang-Baxter in R form and P V the braid
 relation. A5 diagnostic: at chi = pi/2, P V (the gate in position order)
 meets the matchgate determinant condition; the simulability consequence
 is [UNVERIFIED] (prior art not read). Not established: three-packet
-factorization, graded structure, universality. NOVELTY = OPEN. No review,
-no promotion; contract closed; no automatic further contract; coexistence
-OPEN.
+factorization, graded structure, universality. NOVELTY = OPEN. Sealed Astra
+review (user «autorizado para enviar a Astra»; gpt-6-astra, herramientas
+2a7342b, on e81a719, archived `091f3b8`): REPAIR_REQUIRED, bridge blocks
+PASS; R1 (r = 1 exception in the A2/A5 "iff") and R2 (count qualified)
+applied in the report text (user «si»), verifier unchanged; re-review
+pending. No promotion; contract closed; no automatic further contract;
+coexistence OPEN.
 
 **Two results promoted — 2026-11-14:** user «autorizado, te autorizo todos
 los pasos» (re-review of the contract-2 bridge, then promotion if PASS).

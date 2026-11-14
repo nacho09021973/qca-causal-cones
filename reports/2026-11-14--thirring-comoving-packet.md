@@ -1,7 +1,30 @@
 # Thirring co-moving packet gate: results
 
 2026-11-14. Author: Claude Code (Claude Opus 5.5). **PRELIMINARY: written
-proof plus exact author checks; no independent review; no promotion.**
+proof plus author checks; one sealed cross-family review (Astra) with
+repairs applied, re-review pending; no promotion.**
+
+**Review (2026-11-14).** Astra `gpt-6-astra`, sealed revision-ciega, one
+round, herramientas `2a7342b`, on `e81a719`:
+[unaltered review](reviews/2026-11-14-thirring-comoving-packet-astra/informe_astra.md).
+REPAIR_REQUIRED; blocks 1-3 (bridge geometry, eigenfunctions and
+degeneracies, r_co and values) PASS; no flaw found that invalidates the
+declared gate. Repairs applied (each checked by the author; user «si»):
+
+- R1: the "iff" statements of A2 and A5 omitted r = 1 (where V = P,
+  alpha = 0, beta = 1 and P V = I). Restated in Sec. 2.
+- R2: two checks (`C-beta>0`, `C-concurrence(V|AB>)>0`) evaluate exact
+  expressions numerically (`sp.N(..., 30) > 0`). The count is qualified
+  as 50 exact + 2 numerical positivity checks; exact argument added in
+  Sec. 6. Verifier bytes unchanged.
+
+Clarifications recorded: the factor five bounds the time parameter, not
+necessarily the final tail constant; Lemma 1 also assumes p != n pi/2, and
+here p, k in mu[2 - m, 2 + m], mu[1 - m, 1 + m] keep distances proportional
+to mu from every degeneracy (also in the mixed sector), with scaled
+denominators >= sqrt2; r_co is fixed by the incoming geometry together
+with the declared order; in position order the gate is P V up to a sign
+common to all four basis states. The original text is in git at `e81a719`.
 
 Contract [THIRRING_COMOVING_PACKET_GATE.md](../theory/THIRRING_COMOVING_PACKET_GATE.md),
 frozen at `dca5ebc` before execution; drafting and freezing authorized with
@@ -11,7 +34,8 @@ committed before running at `2685635`. It imports read-only the contract-2
 verifier (SHA256 `a1900674…f4d517`) and the flavour-packet verifier
 (SHA256 `7e66c30a…af6cd`), both unchanged.
 
-Runs: one, in `~/.venvs/qca-causal-cones` (sympy 1.14.0), 52/52 exact,
+Runs: one, in `~/.venvs/qca-causal-cones` (sympy 1.14.0), 52/52 passed (50 exact,
+2 numerical positivity checks; see Sec. 6),
 about 112 s ([output](2026-11-14--thirring-comoving-packet.txt),
 [record](2026-11-14--thirring-comoving-packet.json)). No failed run.
 
@@ -41,18 +65,23 @@ is not reviewed. The verdict is no stronger than it.
 
 - A1: alpha(r) = z(r^2 - 1)/(z^2 r^2 - 1), beta(r) = r(z^2 - 1)/(z^2 r^2 - 1)
   with r = a1/a2 reproduce (T_+ +- T_-)/2. PASS.
-- A2: Delta = (1 + alpha^2 - beta^2)/(2 alpha) = (z^2 + 1)/(2z) = cos chi,
-  independent of r; 1 + alpha^2 - beta^2 = (z^2 + 1)(r^2 - 1)/(z^2 r^2 - 1),
-  zero iff z^2 = -1. PASS.
+- A2: 1 + alpha^2 - beta^2 = (z^2 + 1)(r^2 - 1)/(z^2 r^2 - 1) (rational
+  identity, where z^2 r^2 != 1). Hence Delta = (1 + alpha^2 - beta^2)/(2 alpha)
+  = (z^2 + 1)/(2z) = cos chi wherever the quotient is defined (alpha != 0,
+  i.e. r != 1), independent of r. Pointwise, 1 + alpha^2 - beta^2 = 0 iff
+  z^2 = -1 or r = 1; it vanishes for the whole family iff z^2 = -1. PASS
+  (R1).
 - A3: V_12(x) V_13(xy) V_23(y) = V_23(y) V_13(xy) V_12(x), all 64 entries,
   symbolic in x, y, z, and at z = -i. PASS.
 - A4: with Rcheck = P V, Rcheck_12(x) Rcheck_23(xy) Rcheck_12(y) =
   Rcheck_23(y) Rcheck_12(xy) Rcheck_23(x), symbolic and at z = -i. PASS.
 - A5 (diagnostic, decides nothing). Matchgate determinants (block {00,11}
   versus block {01,10}) at z = -i: V: 1 vs -1; fSWAP V: -1 vs 1; P V: 1 vs 1
-  (equal). In general det B(P V) = 1 - (z^2 + 1)(r^2 - 1)/(z^2 r^2 - 1), so
-  P V meets the determinant condition exactly at chi = pi/2 (certified
-  identity).
+  (equal). In general det A(P V) = 1 and det B(P V) =
+  1 - (z^2 + 1)(r^2 - 1)/(z^2 r^2 - 1) (certified identities). So for r != 1
+  P V meets the determinant condition iff z^2 = -1, i.e. chi = pi/2 mod pi;
+  at r = 1, V = P and P V = I for every chi with defined denominators (R1).
+  The declared code has r_co != 1 and chi = pi/2.
 
 Part A is algebra on C^2 tensor C^2 tensor C^2. It does not show that three
 physical packets scatter in factorized form, and it does not decide whether
@@ -147,9 +176,15 @@ both supports (K near 1 and 3). Not an interacting QFT limit.
 
 ## 6. What the verifier does and does not certify
 
-Certified exactly (52/52): E1-E2, reused F1 and F3/F4, M, V, C, A1-A4,
-and the two A5 identities; the A5 determinant values are recorded
-diagnostics. Not certified: the bridge adaptation of Sec. 3 (written),
+Passed 52/52: 50 exact (E1-E2, reused F1 and F3/F4, M, V, C except two,
+A1-A4, the two A5 identities) and 2 numerical positivity checks,
+`C-beta>0` and `C-concurrence(V|AB>)>0`, which evaluate exact expressions
+with `sp.N(..., 30)` (R2). Exact argument for both: r_co > 1, so
+beta = 2 r_co/(1 + r_co^2) > 0 and Im alpha = (r_co^2 - 1)/(r_co^2 + 1) > 0
+(identities certified exactly by `C-beta=2r/(1+r^2)` and
+`C-alpha=i(r^2-1)/(r^2+1)`); hence the concurrence 2|alpha beta| > 0.
+r_co > 1 because a(3) = sqrt10 + 3 > sqrt2 + 1 = a(1). The A5
+determinant values are recorded diagnostics. Not certified: the bridge adaptation of Sec. 3 (written),
 the U^2 admission (written), the verdict, physical three-packet
 factorization, graded tensor structure, the A5 reading.
 
@@ -169,5 +204,4 @@ factorization, graded tensor structure, the A5 reading.
 - NOVELTY = OPEN: six-vertex / XXZ R-matrices, Yang-Baxter and matchgate
   simulability are prior art; the two-particle solution is from 1711.03920.
 - Balance: this contract is closed; no further contract follows
-  automatically. Coexistence stays OPEN. Independent review needs separate
-  permission.
+  automatically. Coexistence stays OPEN.
