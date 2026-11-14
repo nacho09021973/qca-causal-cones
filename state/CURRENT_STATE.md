@@ -21,8 +21,9 @@ factorization, graded structure, universality. NOVELTY = OPEN. Sealed Astra
 review (user «autorizado para enviar a Astra»; gpt-6-astra, herramientas
 2a7342b, on e81a719, archived `091f3b8`): REPAIR_REQUIRED, bridge blocks
 PASS; R1 (r = 1 exception in the A2/A5 "iff") and R2 (count qualified)
-applied in the report text (user «si»), verifier unchanged; re-review
-pending. No promotion; contract closed; no automatic further contract;
+applied in the report text (user «si»), verifier unchanged; bounded
+Astra re-review on `583868e`: PASS, no mandatory repair. Promotion is a
+separate user decision. No promotion; contract closed; no automatic further contract;
 coexistence OPEN.
 
 **Two results promoted — 2026-11-14:** user «autorizado, te autorizo todos

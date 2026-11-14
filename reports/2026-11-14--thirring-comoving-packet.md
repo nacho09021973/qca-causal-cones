@@ -2,7 +2,14 @@
 
 2026-11-14. Author: Claude Code (Claude Opus 5.5). **PRELIMINARY: written
 proof plus author checks; one sealed cross-family review (Astra) with
-repairs applied, re-review pending; no promotion.**
+repairs applied, re-review PASS; no promotion.**
+
+**Re-review (2026-11-14).** Astra `gpt-6-astra`, sealed, one bounded
+round on `583868e`:
+[unaltered re-review](reviews/2026-11-14-thirring-comoving-packet-astra-rereview/informe_astra.md).
+PASS: R1 and R2 resolved, clarifications reproduced faithfully, no new
+error, no mandatory repair. Physical simulability and the other questions
+delimited below remain OPEN.
 
 **Review (2026-11-14).** Astra `gpt-6-astra`, sealed revision-ciega, one
 round, herramientas `2a7342b`, on `e81a719`:
