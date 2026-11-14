@@ -183,14 +183,15 @@ zeros outside the parity pattern and B(1,1)B(4,4) - B(2,2)B(3,3) =
 B(1,4)B(4,1) - B(2,3)B(3,2) is realizable by a matchgate if B(4,4) != 0),
 the five matchgate identities, and the remark that for unitary characters
 with that pattern the first identity is equality of the two 2x2 block
-determinants; p.119, Main Theorem (character entries of a matchcircuit as
+determinants; Main Theorem (character entries of a matchcircuit as
 Pfaffians when its gates are (a) diagonal, (b) on bits with indices
 differing by one with only the parity-pattern entries nonzero, or (c) any
 matchgate on bits x1, x2), Corollary 1 (|PfS(M_{x,y})|^2 is the transition
 probability of a quantum matchcircuit), Theorem 4 (sums over partial
-assignments in polynomial time); p.120, Measurement Theorem (randomized
+assignments in polynomial time) — all on p.120 (corrected 2026-11-14 after
+Astra's review; first written as p.119); p.121, Measurement Theorem (randomized
 polynomial-time sampling of outputs consistent with a partial assignment,
 given a total input assignment). The identification of the character with
 the gate matrix in the computational basis is as restated by
-Terhal-DiVincenzo p.3; Valiant p.119 notes a complemented 0/1 reading
+Terhal-DiVincenzo p.3; Valiant p.120 notes a complemented 0/1 reading
 "inessential".

@@ -14,10 +14,14 @@ slots (sign derived in a Jordan-Wigner Fock model for generic V, not
 assumed); -P V(r) = G(A, B), A, B in SU(2), Valiant's identities hold;
 P V(r) = exp(+i theta (XX+YY)/2) with the repo sign of alpha. With product
 flavour inputs and final flavour readout, outcome probabilities on any
-subset and sampling are classically polynomial-time (Valiant pp. 118-120;
-Terhal-DiVincenzo p. 3-4; Jozsa-Miyake Thm 1, p. 2). Conditional on F,
-chi = pi/2, this code and resources; mu -> 0 only; not a Thirring no-go.
-No review, no promotion; contract closed; coexistence OPEN.
+subset and sampling are classically polynomial-time (Valiant pp. 118-121;
+Terhal-DiVincenzo pp. 3-4; Jozsa-Miyake Thm 1, p. 2); an efficient
+universal construction from crossings would imply BQP in P. Conditional on
+F, chi = pi/2, this code and resources; mu -> 0 only; not a Thirring no-go.
+Sealed Astra review (user-authorized; gpt-6-astra, on 3fa82c8, archived
+`47ea467`): REPAIR_REQUIRED, algebra PASS; R1-R5 applied (user «si»),
+verifier unchanged; re-review pending. No promotion; contract closed;
+coexistence OPEN.
 
 **Co-moving packet result promoted — 2026-11-14:** user «promociona el
 resultado, autorizado». Thirring co-moving packet code (contract
