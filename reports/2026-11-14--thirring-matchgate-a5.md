@@ -2,7 +2,15 @@
 
 2026-11-14. Author: Claude Code (Claude Opus 5.5). **PRELIMINARY: written
 argument plus exact author checks; one sealed cross-family review (Astra)
-with repairs applied, re-review pending; no promotion.**
+with repairs applied, second bounded re-review PASS; no promotion.**
+
+**Second re-review (2026-11-14).** Astra `gpt-6-astra`, sealed, one round
+on `030e585`, R2 only:
+[unaltered re-review](reviews/2026-11-14-thirring-matchgate-a5-astra-rereview-2/informe_astra.md).
+PASS on orientation, tie rule (termination and one swap per pair proved;
+the counterexample resolves to the reversed order), field of alpha, costs
+and edits; no mandatory repair. F, uniqueness at >= 4-fold coincidences
+and finite-precision error propagation for many-line outputs remain OPEN.
 
 **Review (2026-11-14).** Astra `gpt-6-astra`, sealed revision-ciega, one
 round, herramientas `2a7342b`, on `3fa82c8`:

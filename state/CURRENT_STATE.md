@@ -22,8 +22,9 @@ Sealed Astra review (user-authorized; gpt-6-astra, on 3fa82c8, archived
 `47ea467`): REPAIR_REQUIRED, algebra PASS; R1-R5 applied (user «si»),
 verifier unchanged. Bounded re-review (`e3413e3`): R1, R3-R5 PASS, R2
 still open (pair orientation, adjacency-preserving tie rule, field of
-alpha, costs in n); completed in the report; second re-review not yet
-authorized. No promotion; contract closed; coexistence OPEN.
+alpha, costs in n); completed in the report (`030e585`); second bounded
+Astra re-review: PASS, no mandatory repair. Promotion is a separate user
+decision. No promotion; contract closed; coexistence OPEN.
 
 **Co-moving packet result promoted — 2026-11-14:** user «promociona el
 resultado, autorizado». Thirring co-moving packet code (contract
