@@ -1,6 +1,23 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-09
+**Date:** 2026-11-14
+
+**Bounded result promoted — 2026-11-14:** S13 uniform gap (Sec. 14,
+addendum, user instruction «adelante» after the review): for `X_13`
+(walks of `W_hex^sym` with `F within S13` and `conv F = conv S13`)
+`GAP_PROVED_IN_CLASS`, qualitative: `c_0/r_in <= 1 - eps_13` with
+`0 < eps_13 <= 1 - sqrt3/2`, no value of `eps_13`. Compactness plus
+M1-B13 plus a vertex-loss bound from Lemma B (`c_0 <= 1/2`); class
+nonempty in `W_hex^sym` (T1 walk, ratio `sqrt3/2`); `X_13 cap W_hex`
+undecided. [Addendum](../reports/2026-11-03--hex-supremum.md) Sec. 8
+(`cdda6e4`); one sealed Grok `grok-4.7` review PASS, no mandatory repair.
+Not promoted: S19, larger supports, `s > 2`, any value of `eps_13`.
+Identified obstacle (not a result): for larger hexagons a vertex loss
+may keep `r_in` with a non-regular hull outside `W_hex^sym`. No
+calculation of `eps_13` or S19 extension is authorized.
+Worked on a local clone at `7cadad6` that lacked the 2026-11-09
+commits; integrated by rebase on 2026-11-14. The 2026-11-09 reframing
+(coexistence question; hexagonal line parked) is unchanged by this entry.
 
 **Multi-source orientation — 2026-11-09:** user «2» then «SI BUSCALAS».
 Contract dd9ab5c; sky positions verified in GCN 9339 (GRB 090510) and GCN
@@ -3352,6 +3369,11 @@ with a gap, no witness; result (a) of Sec. 0 not met, no gap proof for the
 class; whole class OPEN. No further stage is in the contract; S25 or any
 other extension needs a new charter (not authorized). Previous status:
 PRELIMINARY; one of two requested reviews; promotion not authorized.
+
+**S13 uniform gap — promoted 2026-11-14:** M1-B13 strengthened from
+non-attainment to a uniform qualitative gap on `X_13`
+(`GAP_PROVED_IN_CLASS`, `0 < eps_13 <= 1 - sqrt3/2`); addendum Sec. 8 of
+the S13 report, one Grok review PASS. Scope S13 only; M1 class OPEN.
 
 ## 15. Substrate saturation, phase 0 — chartered 2026-11-03
 
