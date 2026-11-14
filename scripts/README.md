@@ -474,3 +474,17 @@ bound off the slice, or the all-m question (OPEN). D3a is closed-form moment
 algebra, partly by construction; D2 is the independent Taylor test. Sealed
 OpenAI review REPAIR_REQUIRED (documentary), repairs applied (C2c added);
 re-review pending.
+
+## Thirring co-moving packets (2026-11-14)
+
+`verify_thirring_comoving_packet.py` supports
+[`THIRRING_COMOVING_PACKET_GATE`](../theory/THIRRING_COMOVING_PACKET_GATE.md),
+frozen at `dca5ebc`, for the
+[report](../reports/2026-11-14--thirring-comoving-packet.md). Imports the
+contract-2 and flavour-packet verifiers read-only. Certified: (+,+) and
+(+,-) eigenfunctions at one co-moving algebraic pair; reused F1, F3/F4;
+supports; rational velocity bounds and the T = 20L geometry; the limiting
+gate V(r_co); Part A (Delta = cos chi, Yang-Baxter in R form, braid
+relation for P V; matchgate determinants as a diagnostic). Does **not**
+certify: the packet/scattering bridge in the co-moving geometry, the U^2
+admission, the verdict, physical three-packet factorization.
