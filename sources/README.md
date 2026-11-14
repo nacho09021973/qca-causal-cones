@@ -167,8 +167,30 @@ Read so far (2026-11-14), page numbers as printed / PDF page:
   arbitrary pairs are universal, so the n.n. constraint is crucial.
 - Knill: p.1 (title, abstract) only; not used.
 
-Not obtained: L. G. Valiant, *Quantum computers that can be simulated
-classically in polynomial time*, STOC 2001, doi:10.1145/380752.380785 —
-the ACM URL returned an HTML page, not the PDF. Valiant's theorem is
-cited here only through Terhal-DiVincenzo's restatement; the original stays
-[UNVERIFIED] and T1 is not closed on it.
+Valiant (added 2026-11-14, after the user located a copy): the ACM URL
+had returned an HTML page; the PDF was downloaded from
+`https://www2.cs.sfu.ca/~abulatov/CMPT881QC/topics/valiant.pdf` (course
+copy hosted at Simon Fraser University; the repository is private). p.1
+carries «STOC'01, July 6-8, 2001, Hersonissos, Crete, Greece» and
+«Copyright 2001 ACM 1-58113-349-9/01/0007»; printed pages 114-123.
+
+| File | Paper | SHA256 | Bytes |
+| --- | --- | --- | --- |
+| `valiant-stoc2001.pdf` | L. G. Valiant, *Quantum Computers that can be Simulated Classically in Polynomial Time*, STOC 2001, pp. 114-123, doi:10.1145/380752.380785 | `ff54395f2a04bcffcb8f483bca409d9328aceed2545312d7a35479beb9958572` | 490658 |
+
+Read (printed page numbers): p.118, Proposition 3 (a 4x4 character with
+zeros outside the parity pattern and B(1,1)B(4,4) - B(2,2)B(3,3) =
+B(1,4)B(4,1) - B(2,3)B(3,2) is realizable by a matchgate if B(4,4) != 0),
+the five matchgate identities, and the remark that for unitary characters
+with that pattern the first identity is equality of the two 2x2 block
+determinants; p.119, Main Theorem (character entries of a matchcircuit as
+Pfaffians when its gates are (a) diagonal, (b) on bits with indices
+differing by one with only the parity-pattern entries nonzero, or (c) any
+matchgate on bits x1, x2), Corollary 1 (|PfS(M_{x,y})|^2 is the transition
+probability of a quantum matchcircuit), Theorem 4 (sums over partial
+assignments in polynomial time); p.120, Measurement Theorem (randomized
+polynomial-time sampling of outputs consistent with a partial assignment,
+given a total input assignment). The identification of the character with
+the gate matrix in the computational basis is as restated by
+Terhal-DiVincenzo p.3; Valiant p.119 notes a complemented 0/1 reading
+"inessential".
