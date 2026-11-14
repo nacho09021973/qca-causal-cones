@@ -1,6 +1,208 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-09
+**Date:** 2026-11-14
+
+**A5 crossing-matchgate result promoted — 2026-11-14:** user «promociona
+el resultado, autorizado». Contract `915e55f`, report
+`reports/2026-11-14--thirring-matchgate-a5.md`:
+`MATCHGATE_SIMULABLE_UNDER_F`, promoted in its frozen scope only and
+labelled ESTABLISHED **conditional on the declared premise F** (F itself
+is not promoted and stays OPEN). Content: under F, in the flavour code at
+chi = pi/2 with product flavour inputs, final flavour readout and no
+ancilla, intermediate/adaptive measurement, postselection or control,
+each crossing acts on the position-ordered register as -P V(r) on adjacent
+slots, an allowable matchgate G(A, B) with A, B in SU(2); the circuit is
+generated uniformly from rational (K_p, x_p(0)); the probability of one
+queried assignment on any subset and sampling are classically
+polynomial-time in the exact arithmetic model (Valiant pp. 118-121;
+Terhal-DiVincenzo pp. 3-4), and <Z_k> to m digits in poly(n, m)
+(Jozsa-Miyake Thm 1, p. 2); an efficient universal construction from these
+crossings would imply BQP in P. Reviews: Astra REPAIR_REQUIRED (algebra
+PASS; R1-R5), re-review (R2 open), second re-review PASS (`2b3809e`); one
+reviewing family (OpenAI). Human review (2026-11-14): the repository owner (the user, who also
+chartered and authorized this work) reports having reviewed the report and
+the verifiers personally on `3dc6193` and found everything correct («yo lo
+he revisado personalmente y lo veo todo correcto»; scope «ambos, informes y
+verificadores, sobre 3dc6193»). Recorded as stated; no written review
+document. Items listed as not promoted or OPEN are unchanged. Not promoted: F; uniqueness at
+>= 4-fold coincidences; finite-precision error propagation for many-line
+outputs; anything at chi not congruent to pi/2 mod pi, other codes or
+resources; an unconditional separation; a Thirring no-go. NOVELTY = OPEN.
+Coexistence remains OPEN; no contract is open and no further work is
+authorized by this entry.
+
+**A5 crossing-matchgate gate executed — 2026-11-14:** drafting, Q-a
+(F a declared premise), Q-b (sources) and freezing authorized by the user;
+contract frozen at `915e55f`; sources at `7fa79e7`, `a1cfd20` (Jozsa-Miyake,
+Terhal-DiVincenzo, Knill, Valiant STOC 2001); T2-T4 authorized
+sequentially. Verifier committed before running (`eae7876`), one run,
+26/26 exact. [Report](../reports/2026-11-14--thirring-matchgate-a5.md).
+Verdict **`MATCHGATE_SIMULABLE_UNDER_F`** (author, PRELIMINARY): under F,
+each crossing acts on the position-ordered register as -P V(r) on adjacent
+slots (sign derived in a Jordan-Wigner Fock model for generic V, not
+assumed); -P V(r) = G(A, B), A, B in SU(2), Valiant's identities hold;
+P V(r) = exp(+i theta (XX+YY)/2) with the repo sign of alpha. With product
+flavour inputs and final flavour readout, outcome probabilities on any
+subset and sampling are classically polynomial-time (Valiant pp. 118-121;
+Terhal-DiVincenzo pp. 3-4; Jozsa-Miyake Thm 1, p. 2); an efficient
+universal construction from crossings would imply BQP in P. Conditional on
+F, chi = pi/2, this code and resources; mu -> 0 only; not a Thirring no-go.
+Sealed Astra review (user-authorized; gpt-6-astra, on 3fa82c8, archived
+`47ea467`): REPAIR_REQUIRED, algebra PASS; R1-R5 applied (user «si»),
+verifier unchanged. Bounded re-review (`e3413e3`): R1, R3-R5 PASS, R2
+still open (pair orientation, adjacency-preserving tie rule, field of
+alpha, costs in n); completed in the report (`030e585`); second bounded
+Astra re-review: PASS, no mandatory repair. Promotion is a separate user
+decision. No promotion; contract closed; coexistence OPEN.
+
+**Co-moving packet result promoted — 2026-11-14:** user «promociona el
+resultado, autorizado». Thirring co-moving packet code (contract
+`dca5ebc`, report `reports/2026-11-14--thirring-comoving-packet.md`):
+`COMOVING_PACKET_GATE_SAME_FAMILY`, promoted in its frozen scope only and
+labelled ESTABLISHED in that scope: fast (K = 3) and slow (K = 1) flavour
+packets moving the same way, chi = pi/2, T = 20L, mu -> 0, act by
+V(r_co) = 1 (+) [[alpha, beta], [beta, alpha]] (+) 1, r_co = a(3)/a(1),
+beta = (3 + 2 sqrt5)/11, alpha = i sqrt(92 - 12 sqrt5)/11, leakage -> 0.
+Part A, as exact algebra only: V(r) satisfies Yang-Baxter in R form and
+P V the braid relation; Delta = cos chi where defined (r != 1).
+Reviews: Astra 2026-11-14 REPAIR_REQUIRED (bridge blocks PASS; R1, R2
+documentary), repairs applied, Astra bounded re-review PASS (`4e192ca`).
+One reviewing family (OpenAI). Human review (2026-11-14): the repository owner (the user, who also
+chartered and authorized this work) reports having reviewed the report and
+the verifiers personally on `3dc6193` and found everything correct («yo lo
+he revisado personalmente y lo veo todo correcto»; scope «ambos, informes y
+verificadores, sobre 3dc6193»). Recorded as stated; no written review
+document. Items listed as not promoted or OPEN are unchanged. The co-moving bridge
+adaptation rests on the contract-2 and flavour bridges promoted earlier.
+Not promoted: three-packet factorization, graded tensor structure,
+composability, universality, the A5 matchgate/simulability reading
+([UNVERIFIED], prior art not read), other packets, couplings or times.
+NOVELTY = OPEN. Coexistence remains OPEN; no contract is open and no
+further work is authorized by this entry.
+
+**Co-moving packet gate executed — 2026-11-14:** drafting/freezing
+authorized («si redacta el contrato y luego congelas»), contract frozen at
+`dca5ebc`; execution authorized («autorizado»). Verifier committed before
+running (`2685635`), one run, 52/52 passed (50 exact, 2 numerical
+positivity checks closed by hand).
+[Report](../reports/2026-11-14--thirring-comoving-packet.md). Verdict
+**`COMOVING_PACKET_GATE_SAME_FAMILY`** (author, PRELIMINARY): fast (K = 3)
+and slow (K = 1) flavour packets moving the same way, T = 20L, mu -> 0,
+give V(r_co), r_co = a(3)/a(1), beta = (3 + 2 sqrt5)/11, leakage -> 0.
+Rests on the reviewed contract-2 / flavour bridges plus a written,
+unreviewed co-moving adaptation. Part A (exact): Delta = cos chi
+independent of r; V(r) satisfies Yang-Baxter in R form and P V the braid
+relation. A5 diagnostic: at chi = pi/2, P V (the gate in position order)
+meets the matchgate determinant condition; the simulability consequence
+is [UNVERIFIED] (prior art not read). Not established: three-packet
+factorization, graded structure, universality. NOVELTY = OPEN. Sealed Astra
+review (user «autorizado para enviar a Astra»; gpt-6-astra, herramientas
+2a7342b, on e81a719, archived `091f3b8`): REPAIR_REQUIRED, bridge blocks
+PASS; R1 (r = 1 exception in the A2/A5 "iff") and R2 (count qualified)
+applied in the report text (user «si»), verifier unchanged; bounded
+Astra re-review on `583868e`: PASS, no mandatory repair. Promotion is a
+separate user decision. No promotion; contract closed; no automatic further contract;
+coexistence OPEN.
+
+**Two results promoted — 2026-11-14:** user «autorizado, te autorizo todos
+los pasos» (re-review of the contract-2 bridge, then promotion if PASS).
+Bridge re-review: Astra `gpt-6-astra` (generation probed the same day),
+sealed, one round, on `918f7f4`, archived at `55f2b43`: PASS, all seven
+repairs resolved, no mandatory repair. Promoted, each in its frozen scope
+only, labelled ESTABLISHED in that scope:
+
+1. Thirring low-energy packet code (contract `715096f`, report
+   `reports/2026-11-09--thirring-low-energy-packet.md`):
+   `NO_ENTANGLER_IN_DECLARED_PACKET_CODE`. Reviews: Astra 2026-11-09
+   (repairs), Astra re-review 2026-11-14 PASS. Not promoted: any Thirring
+   no-go, other codes, resources, couplings or frames.
+2. Thirring flavour-packet code (contract `d0c59cb`, report
+   `reports/2026-11-14--thirring-flavour-packet.md`):
+   `FLAVOUR_PACKET_EXCHANGE_GATE_IN_DECLARED_CODE`, V = 1 (+) [[iy, x],
+   [x, iy]] (+) 1, x = (sqrt10 - 2)/6, leakage -> 0, chi = pi/2, the two
+   declared packets, mu -> 0, carriers admitted under U^2 by the user's Q2-A
+   decision. Reviews: Grok 2026-11-14 PASS; its bridge is item 1's. Not
+   promoted: universality (flavour number conserved; single crossings in
+   1D), composability, an interacting relativistic QFT limit, other packets
+   or couplings.
+
+Both reviews are by agents of other families (one per result plus the
+shared bridge), not by a person. NOVELTY = OPEN. Coexistence remains OPEN;
+no contract is open and no further work is authorized by this entry.
+
+**Flavour-packet gate executed — 2026-11-14:** user «AUTORIZO SU
+EJECUCION». Verifier committed before running (`b49bf18`); run 1 no SymPy
+(environment), run 2 one check failed at a degenerate test point
+(q_l = q_r), retained, point replaced (`8d7e444`); run 3 32/32 exact.
+[Report](../reports/2026-11-14--thirring-flavour-packet.md). Verdict
+**`FLAVOUR_PACKET_EXCHANGE_GATE_IN_DECLARED_CODE`** (author, PRELIMINARY):
+in the flavour basis V = 1 (+) [[iy, x], [x, iy]] (+) 1 with
+x = (sqrt10 - 2)/6, y = sqrt(1 - x^2), leakage -> 0; AA and BB evolve
+exactly freely (G = +1); the exchange amplitude vanishes iff chi in
+{0, pi}; concurrence of V|AB> = 2xy ~ 0.380. Depends on the contract-2
+packet bridge (written, not re-reviewed), reused for (+,+) and adapted in
+writing for (+,-). Gate conserves flavour number; not universality,
+composability or an interacting QFT limit. NOVELTY = OPEN. User
+authorized Grok review: one sealed round (grok-4.7, herramientas 2a7342b)
+on 24b78e9, [unaltered review](../reports/reviews/2026-11-14-thirring-flavour-packet-grok/informe_grok.md):
+PASS on all six blocks, no mandatory repair; ceiling remains the
+contract-2 bridge. No promotion. Contract closed; no automatic further
+contract; coexistence OPEN.
+
+**Flavour-packet gate chartered — 2026-11-14:** after the read-only
+coexistence evaluation, user «me gusta tu plan, adelante, autorizado»; new
+explicit authorization for one Thirring contract (not a budget reset).
+Q2-A decided by the user: a definite-flavour packet (Gamma = sigma_z
+(-1)^x) counts as a low-energy carrier under U^2. [Contract](../theory/THIRRING_FLAVOUR_PACKET_GATE.md),
+frozen at `d0c59cb`: does the mu -> 0 collision of two flavour packets act
+on the flavour code as a unitary with vanishing leakage, and non-diagonally
+(exchange amplitude nonzero)? Candidate H_flav OPEN. Status OPEN /
+NOT_EXECUTED; no computation, verifier or result yet. Coexistence OPEN.
+
+**Thirring, conceptual correction — 2026-11-14 (PRELIMINARY):** user
+decision, reading only (sources/1711.03920v1.pdf Lemma 1, p. 3, Eq. (12);
+P2/P4 of `scripts/verify_thirring_low_energy_packet.py`); no contract, no
+new verifier. A candidate obstruction to universality proposed in session
+(pair collisions diagonal and commuting in the flavour basis of Gamma =
+sigma_z (-1)^x; never recorded in the repo before this entry) is
+withdrawn: it is not demonstrated. The Gamma sector structure stands
+(Gamma W Gamma = -W, J commutes with each Gamma_i, so U^2 conserves the
+flavour numbers), and Lemma 1 leaves no momentum channel beyond the swap
+and its pi-shifted partner. The candidate phases
+T_+ = (a1 + z a2)/(a2 + z a1) and T_- = (a1 - z a2)/(z a1 - a2)
+(z = e^{-i chi}, a1, a2 > 0) differ generically: equality iff z^2 = 1.
+Identifying their joint action with an XXZ-type logical gate on flavours
+requires checking the momentum conventions, the antisymmetrization, the
+fact that the two waves sit in total-momentum sectors P and P+pi, and the
+logical code. No universality and no new obstruction are established.
+The Thirring line stays stopped by budget; coexistence remains OPEN.
+Criterion to reconsider Thirring (user): first identify a physically
+well-defined logical operation, not only two different scattering phases.
+
+**Work priority — 2026-11-14:** user decision. S13 consolidated
+(`GAP_PROVED_IN_CLASS`). The hexagonal line M1 remains `OPEN` but is
+parked: no new calculations, support extensions or contracts are
+authorized in this line. The main objective remains the coexistence of
+universal quantum computation and an interacting relativistic regime under
+one fixed rule. This is a work-priority decision, not a mathematical
+result.
+
+**Bounded result promoted — 2026-11-14:** S13 uniform gap (Sec. 14,
+addendum, user instruction «adelante» after the review): for `X_13`
+(walks of `W_hex^sym` with `F within S13` and `conv F = conv S13`)
+`GAP_PROVED_IN_CLASS`, qualitative: `c_0/r_in <= 1 - eps_13` with
+`0 < eps_13 <= 1 - sqrt3/2`, no value of `eps_13`. Compactness plus
+M1-B13 plus a vertex-loss bound from Lemma B (`c_0 <= 1/2`); class
+nonempty in `W_hex^sym` (T1 walk, ratio `sqrt3/2`); `X_13 cap W_hex`
+undecided. [Addendum](../reports/2026-11-03--hex-supremum.md) Sec. 8
+(`cdda6e4`); one sealed Grok `grok-4.7` review PASS, no mandatory repair.
+Not promoted: S19, larger supports, `s > 2`, any value of `eps_13`.
+Identified obstacle (not a result): for larger hexagons a vertex loss
+may keep `r_in` with a non-regular hull outside `W_hex^sym`. No
+calculation of `eps_13` or S19 extension is authorized.
+Worked on a local clone at `7cadad6` that lacked the 2026-11-09
+commits; integrated by rebase on 2026-11-14. The 2026-11-09 reframing
+(coexistence question; hexagonal line parked) is unchanged by this entry.
 
 **Multi-source orientation — 2026-11-09:** user «2» then «SI BUSCALAS».
 Contract dd9ab5c; sky positions verified in GCN 9339 (GRB 090510) and GCN
@@ -3352,6 +3554,11 @@ with a gap, no witness; result (a) of Sec. 0 not met, no gap proof for the
 class; whole class OPEN. No further stage is in the contract; S25 or any
 other extension needs a new charter (not authorized). Previous status:
 PRELIMINARY; one of two requested reviews; promotion not authorized.
+
+**S13 uniform gap — promoted 2026-11-14:** M1-B13 strengthened from
+non-attainment to a uniform qualitative gap on `X_13`
+(`GAP_PROVED_IN_CLASS`, `0 < eps_13 <= 1 - sqrt3/2`); addendum Sec. 8 of
+the S13 report, one Grok review PASS. Scope S13 only; M1 class OPEN.
 
 ## 15. Substrate saturation, phase 0 — chartered 2026-11-03
 

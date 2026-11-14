@@ -1,0 +1,113 @@
+{
+  "checks": [
+    {
+      "name": "S1-two-packets-identity-order-gives-v",
+      "passed": true
+    },
+    {
+      "name": "S2-crossing-slots(1,2)-equals-kron(-Pv,1)",
+      "passed": true
+    },
+    {
+      "name": "S2-crossing-slots(2,3)-equals-kron(1,-Pv)",
+      "passed": true
+    },
+    {
+      "name": "S2-relabelled-crossing-equals-kron(-Pv,1)",
+      "passed": true
+    },
+    {
+      "name": "S3-W-commutes-with-spectator-creation",
+      "passed": true
+    },
+    {
+      "name": "S4-order1-Fock=G12(y)G23(xy)G12(x)",
+      "passed": true
+    },
+    {
+      "name": "S4-order2-Fock=G23(x)G12(xy)G23(y)",
+      "passed": true
+    },
+    {
+      "name": "S4-both-orders-equal",
+      "passed": true
+    },
+    {
+      "name": "M1-alpha-repo-sign=+i(r^2-1)/(r^2+1)",
+      "passed": true
+    },
+    {
+      "name": "M1-A=-1",
+      "passed": true
+    },
+    {
+      "name": "M1-B=-[[beta,alpha],[alpha,beta]]",
+      "passed": true
+    },
+    {
+      "name": "M1-parity-pattern(zeros-off-blocks)",
+      "passed": true
+    },
+    {
+      "name": "M1-A-unitary",
+      "passed": true
+    },
+    {
+      "name": "M1-detA=1",
+      "passed": true
+    },
+    {
+      "name": "M1-B-unitary",
+      "passed": true
+    },
+    {
+      "name": "M1-detB=1",
+      "passed": true
+    },
+    {
+      "name": "M2-Valiant-five-identities-00,01,10,11",
+      "passed": true
+    },
+    {
+      "name": "M2-B(4,4)!=0-00,01,10,11",
+      "passed": true
+    },
+    {
+      "name": "M2-Valiant-five-identities-00,10,01,11",
+      "passed": true
+    },
+    {
+      "name": "M2-B(4,4)!=0-00,10,01,11",
+      "passed": true
+    },
+    {
+      "name": "M3-exp(i theta (XX+YY)/2)=1+[[cos,i sin],[i sin,cos]]+1",
+      "passed": true
+    },
+    {
+      "name": "M3-PV(r)=target(cos=2r/(1+r^2),sin=(r^2-1)/(r^2+1))",
+      "passed": true
+    },
+    {
+      "name": "M3-theta=2atan(r)-pi/2",
+      "passed": true
+    },
+    {
+      "name": "M3-hint-sign-differs-for-r!=1",
+      "passed": true
+    },
+    {
+      "name": "M4-JW-a1^+a2+a2^+a1=(XX+YY)/2",
+      "passed": true
+    },
+    {
+      "name": "M4-JW-anticommutation",
+      "passed": true
+    }
+  ],
+  "provenance": {
+    "scripts/verify_thirring_matchgate_a5.py": "8a5de947de8627d81f641ef7cbe1c21be599dae5c59ff99c06597cea50f0cb1a",
+    "scripts/verify_thirring_comoving_packet.py": "a72db65cf837921d2448315babce39ff93d9ac8077ab9f226abf77f039a9ac55",
+    "theory/THIRRING_MATCHGATE_A5_GATE.md": "2d8f2731513828110b0a0345de8547244a6aa703da3ac10b2dc3e424d48884de"
+  }
+}

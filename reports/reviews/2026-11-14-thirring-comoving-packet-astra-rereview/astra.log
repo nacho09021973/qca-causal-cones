@@ -1,0 +1,888 @@
+OpenAI Codex v0.169.0
+--------
+workdir: /tmp/tmp.cDMPQB1LZu/sello
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1db52-6962-7503-8101-9cbb6eb85b14
+--------
+user
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Re-revisa de forma acotada el informe adjunto
+2026-11-14--thirring-comoving-packet.md, escrito por Claude (Anthropic).
+Ya lo revisaste: se adjunta tu informe («REPAIR_REQUIRED», reparaciones R1
+y R2) y el verificador, cuyos bytes no han cambiado. El texto actual lleva
+las reparaciones en el encabezado y en las Secs. 2 y 6. No tienes
+herramientas: no ejecutes, edites ni navegues. No reabras los bloques que
+diste por PASS salvo que las ediciones los afecten.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / OPEN:
+
+1. R1. ¿Están bien enunciadas ahora A2 (identidad racional, Delta donde
+   el cociente está definido, anulación puntual frente a anulación para
+   toda la familia) y A5 (r = 1, chi = pi/2 mod pi, restricción al código
+   declarado)? Cita la frase.
+2. R2. ¿Es correcta la calificación «50 exact, 2 numerical positivity
+   checks» frente al código, y es exacto y suficiente el argumento manual
+   (r_co > 1 implica beta > 0, Im alpha > 0 y concurrencia positiva)?
+3. ACLARACIONES Y EDICIONES. ¿Recoge el encabezado tus aclaraciones sin
+   deformarlas (factor cinco, Lema 1 y p != n pi/2, orden con geometría
+   entrante, signo común en orden de posición)? ¿Introducen las ediciones
+   algún error o afirmación nueva no sostenida?
+
+Hasta 800 palabras en español. Dictamen global y lista de reparaciones
+obligatorias; si no hay ninguna, dilo expresamente.
+
+=== DOCUMENT 1: 2026-11-14--thirring-comoving-packet.md ===
+
+# Thirring co-moving packet gate: results
+
+2026-11-14. Author: Claude Code (Claude Opus 5.5). **PRELIMINARY: written
+proof plus author checks; one sealed cross-family review (Astra) with
+repairs applied, re-review pending; no promotion.**
+
+**Review (2026-11-14).** Astra `gpt-6-astra`, sealed revision-ciega, one
+round, herramientas `2a7342b`, on `e81a719`:
+[unaltered review](reviews/2026-11-14-thirring-comoving-packet-astra/informe_astra.md).
+REPAIR_REQUIRED; blocks 1-3 (bridge geometry, eigenfunctions and
+degeneracies, r_co and values) PASS; no flaw found that invalidates the
+declared gate. Repairs applied (each checked by the author; user «si»):
+
+- R1: the "iff" statements of A2 and A5 omitted r = 1 (where V = P,
+  alpha = 0, beta = 1 and P V = I). Restated in Sec. 2.
+- R2: two checks (`C-beta>0`, `C-concurrence(V|AB>)>0`) evaluate exact
+  expressions numerically (`sp.N(..., 30) > 0`). The count is qualified
+  as 50 exact + 2 numerical positivity checks; exact argument added in
+  Sec. 6. Verifier bytes unchanged.
+
+Clarifications recorded: the factor five bounds the time parameter, not
+necessarily the final tail constant; Lemma 1 also assumes p != n pi/2, and
+here p, k in mu[2 - m, 2 + m], mu[1 - m, 1 + m] keep distances proportional
+to mu from every degeneracy (also in the mixed sector), with scaled
+denominators >= sqrt2; r_co is fixed by the incoming geometry together
+with the declared order; in position order the gate is P V up to a sign
+common to all four basis states. The original text is in git at `e81a719`.
+
+Contract [THIRRING_COMOVING_PACKET_GATE.md](../theory/THIRRING_COMOVING_PACKET_GATE.md),
+frozen at `dca5ebc` before execution; drafting and freezing authorized with
+«si redacta el contrato y luego congelas», execution with «autorizado»
+(both 2026-11-14). Verifier `scripts/verify_thirring_comoving_packet.py`,
+committed before running at `2685635`. It imports read-only the contract-2
+verifier (SHA256 `a1900674…f4d517`) and the flavour-packet verifier
+(SHA256 `7e66c30a…af6cd`), both unchanged.
+
+Runs: one, in `~/.venvs/qca-causal-cones` (sympy 1.14.0), 52/52 passed (50 exact,
+2 numerical positivity checks; see Sec. 6),
+about 112 s ([output](2026-11-14--thirring-comoving-packet.txt),
+[record](2026-11-14--thirring-comoving-packet.json)). No failed run.
+
+## 1. Verdict
+
+`COMOVING_PACKET_GATE_SAME_FAMILY` (author, PRELIMINARY). For the declared
+fast (K = 3) and slow (K = 1) flavour packets, both moving toward negative
+x, as mu -> 0, in the basis (AA, AB, BA, BB) with the fast packet first:
+
+    V_co = V(r_co) = 1 (+) [[ alpha, beta ], [ beta, alpha ]] (+) 1,
+    r_co  = a(3)/a(1) = (sqrt10 + 3)/(sqrt2 + 1) = 3 sqrt2 + 2 sqrt5 - sqrt10 - 3 ~ 2.5525,
+    beta  = 2 r_co/(1 + r_co^2) = (3 + 2 sqrt5)/11 ~ 0.6793,
+    alpha = i (r_co^2 - 1)/(r_co^2 + 1) = i sqrt(92 - 12 sqrt5)/11 ~ 0.7339 i,
+
+with leakage ||E_mu|| -> 0 and no extra global phase. C1 and C2 hold; C3:
+V_co is the family V(r) at r = r_co, with r_co (not 1/r_co) fixed by the
+creation order (Sec. 4). Concurrence of V_co|AB> is 2|alpha beta| ~ 0.997.
+(The closed form of alpha follows from |alpha|^2 = 1 - beta^2 and
+Im alpha > 0; the verifier certifies the r-form.)
+
+The verdict rests on the contract-2 packet/scattering bridge (re-reviewed
+PASS 2026-11-14) and its flavour-gate (+,-) adaptation (Grok PASS),
+adapted here in writing to the co-moving geometry (Sec. 3). The adaptation
+is not reviewed. The verdict is no stronger than it.
+
+## 2. Part A (exact, verifier A1-A5)
+
+- A1: alpha(r) = z(r^2 - 1)/(z^2 r^2 - 1), beta(r) = r(z^2 - 1)/(z^2 r^2 - 1)
+  with r = a1/a2 reproduce (T_+ +- T_-)/2. PASS.
+- A2: 1 + alpha^2 - beta^2 = (z^2 + 1)(r^2 - 1)/(z^2 r^2 - 1) (rational
+  identity, where z^2 r^2 != 1). Hence Delta = (1 + alpha^2 - beta^2)/(2 alpha)
+  = (z^2 + 1)/(2z) = cos chi wherever the quotient is defined (alpha != 0,
+  i.e. r != 1), independent of r. Pointwise, 1 + alpha^2 - beta^2 = 0 iff
+  z^2 = -1 or r = 1; it vanishes for the whole family iff z^2 = -1. PASS
+  (R1).
+- A3: V_12(x) V_13(xy) V_23(y) = V_23(y) V_13(xy) V_12(x), all 64 entries,
+  symbolic in x, y, z, and at z = -i. PASS.
+- A4: with Rcheck = P V, Rcheck_12(x) Rcheck_23(xy) Rcheck_12(y) =
+  Rcheck_23(y) Rcheck_12(xy) Rcheck_23(x), symbolic and at z = -i. PASS.
+- A5 (diagnostic, decides nothing). Matchgate determinants (block {00,11}
+  versus block {01,10}) at z = -i: V: 1 vs -1; fSWAP V: -1 vs 1; P V: 1 vs 1
+  (equal). In general det A(P V) = 1 and det B(P V) =
+  1 - (z^2 + 1)(r^2 - 1)/(z^2 r^2 - 1) (certified identities). So for r != 1
+  P V meets the determinant condition iff z^2 = -1, i.e. chi = pi/2 mod pi;
+  at r = 1, V = P and P V = I for every chi with defined denominators (R1).
+  The declared code has r_co != 1 and chi = pi/2.
+
+Part A is algebra on C^2 tensor C^2 tensor C^2. It does not show that three
+physical packets scatter in factorized form, and it does not decide whether
+the fermionic packets need a graded tensor structure. Both stay OPEN.
+
+**Reading of A5 (author, [UNVERIFIED] against prior art).** In a
+1D line of packets, each crossing acts on the two packets adjacent in
+position, and after the crossing they exchange position: in position
+order the gate is P V. At chi = pi/2, P V has the form G(A, B) with
+A = 1, B = [[beta, alpha], [alpha, beta]], det A = det B. Nearest-neighbour
+circuits of such gates are, by the matchgate literature (Valiant; Terhal
+and DiVincenzo; Jozsa and Miyake), classically simulable. Not one of those
+papers has been read in this session, and the mapping from flavour qubits
+to their qubit convention is not checked. If it holds, gate-only
+universality from crossings at chi = pi/2 in this code is excluded,
+independently of factorization. This is the obligation the contract
+recorded as separate; it is not a verdict of this gate.
+
+## 3. Bridge in the co-moving geometry (written)
+
+Notation of contract 2 Sec. 4: c(q1, q2) = phi_f(q1) phi_s(q2), particle 1
+the fast packet (carrying e^{iq1 L}, centred at x = +L), particle 2 the slow
+one (e^{-iq2 L}, x = -L), y = x1 - x2. Changes with respect to contract 2:
+
+**(i) Eigenfunctions.** The general contact argument of contract 2 Sec. 4(i)
+((+,+)) and of the flavour report Sec. 4 item 1 ((+,-)) uses only the four
+waves sharing one free eigenvalue and contact antisymmetry; it holds for
+any (q1, q2) away from the degeneracies q1 = q2 (and their pi partners,
+Lemma 1 of 1711.03920 as recorded in the flavour contract). On the
+supports q1/mu in [3 - m, 3 + m], q2/mu in [1 - m, 1 + m], m = sqrt(mu) <
+1/sqrt10, these are disjoint (M). Worked examples: E1, E2 certify both
+eigenfunctions exactly at the co-moving pair e^{iq1} = (4+3i)/5,
+e^{iq2} = (12+5i)/13 (both momenta positive), chi = pi/2 and chi = 0.
+
+**(ii) Which wave is incoming.** On y >= 0 the eigenfunction is
+[incoming, q1 on x1] - T [swap, q2 on x1]. Positive-band positive q moves
+toward negative x with speed omega'(q), so dy/dt = omega'(q2) - omega'(q1)
+for the incoming term. omega'(q)^2 = nu^2 s/(mu^2 + nu^2 s), s = sin^2 q,
+is increasing in s (V), so omega'(q1) > omega'(q2) on the supports and
+the term with the fast momentum on the larger coordinate is incoming, as
+in contract 2. At t = 0 the swap term is centred at y = -2L (wrong side),
+as there. In the (+,-) sector, Gamma phi_s moves as phi_s (flavour report
+Sec. 4 item 3), so the same holds.
+
+**(iii) Initial error.** Unchanged: O(mu^{3/4}) from the tail bound with
+D = L.
+
+**(iv) Time T = 20L.** Rational bounds for 0 < mu < 1/10 (V):
+omega'^2 >= 87/100 on the fast support, omega'^2 <= 16/25 on the slow
+support, so omega'(q1) - omega'(q2) >= 93/100 - 4/5 = 13/100. At t = T the
+incoming y-centre is <= 2L - 20L (13/100) = -3L/5 and the outgoing
+y-centre >= +3L/5. The wrong-side restriction of either term needs a
+one-particle deviation >= 3L/10. In the limit v_f - v_s > 0.24 (V), giving
+-2.83L; the rational bound is only what is uniform on 0 < mu < 1/10.
+
+The tail bound of contract 2 (iii) needs the residual phase derivatives
+uniform for 0 <= t <= T: t delta^2 |omega''| <= 20 ceil(mu^{-2}) mu^3 C/mu =
+O(1), five times the contract-2 constant. With D = 3L/10, delta D ≍
+mu^{-1/2}, the wrong-side mass is O(mu^{3/2}) and the norm error O(mu^{3/4}),
+as in contract 2.
+
+**(v) Phase variation.** The scaled denominators at chi = pi/2 are
+|a_s - i a_f| and |-a_s - i a_f|, both sqrt(a_f^2 + a_s^2) > 0; T_+ and T_-
+are smooth in (q1/mu, q2/mu) with gradient O(1/mu); on supports of width
+mu^{3/2}: sup |T - T_c| = O(mu^{1/2}). Unchanged.
+
+**(vi) Assembly.** Exactly as in the flavour report Sec. 5 (reused F3/F4,
+label-agnostic): AA and BB evolve freely (G = +1, exactly); AB and BA mix
+through the two P-sectors with
+T_+ -> (a_f + z a_s)/(a_s + z a_f), T_- -> (a_f - z a_s)/(z a_f - a_s),
+z = -i, a(K) = sqrt(1 + K^2) + K (contract 2, P6, symbolic in K). Error
+O(mu^{1/2}) + O(mu^{3/4}); per-column uniformity gives operator norm
+uniformity. Leakage vanishes because every image lies in the span of
+B_out up to o(1).
+
+## 4. Why r_co and not 1/r_co
+
+T_+ = T(q1, q2) with q1 the particle first in the creation order and on
+the larger coordinate of the incoming wave (ii). Here that is the fast
+packet, so r = a1/a2 = a_f/a_s = r_co (verifier checks C). In the
+opposite-moving flavour gate the same rule gave r = a(1)/a(-2) =
+a(1) a(2), since a(-K) = 1/a(K). In both cases r = e^{theta_1 - theta_2},
+theta = asinh K: one family in the rapidity difference, as hypothesis
+H_co stated. This choice was fixed by the contract's creation order before
+the comparison.
+
+## 5. Low-energy admission under U^2
+
+The flavour report Sec. 3 argument is momentum-general; P5 and P6 of
+contract 2 are symbolic in K, so omega(mu K)/mu -> sqrt(1 + K^2) holds on
+both supports (K near 1 and 3). Not an interacting QFT limit.
+
+## 6. What the verifier does and does not certify
+
+Passed 52/52: 50 exact (E1-E2, reused F1 and F3/F4, M, V, C except two,
+A1-A4, the two A5 identities) and 2 numerical positivity checks,
+`C-beta>0` and `C-concurrence(V|AB>)>0`, which evaluate exact expressions
+with `sp.N(..., 30)` (R2). Exact argument for both: r_co > 1, so
+beta = 2 r_co/(1 + r_co^2) > 0 and Im alpha = (r_co^2 - 1)/(r_co^2 + 1) > 0
+(identities certified exactly by `C-beta=2r/(1+r^2)` and
+`C-alpha=i(r^2-1)/(r^2+1)`); hence the concurrence 2|alpha beta| > 0.
+r_co > 1 because a(3) = sqrt10 + 3 > sqrt2 + 1 = a(1). The A5
+determinant values are recorded diagnostics. Not certified: the bridge adaptation of Sec. 3 (written),
+the U^2 admission (written), the verdict, physical three-packet
+factorization, graded tensor structure, the A5 reading.
+
+## 7. Scope and balance
+
+- Holds for this code, this rule, chi = pi/2, these two packets, T = 20L,
+  mu -> 0. No parameter was varied.
+- With the opposite-moving result, two-packet crossings of either
+  orientation act by one family V(r), r = e^{Delta theta}, which satisfies
+  Yang-Baxter (A3) and the braid relation (A4). This removes the specific
+  objection that same-direction crossings might use a different matrix.
+- It does not establish three-packet factorization, composability or
+  universality. Flavour number stays conserved. A5 indicates that, at
+  chi = pi/2, crossing gates in position order meet the matchgate
+  determinant condition; if the prior-art reading holds, crossings alone
+  do not give universality here.
+- NOVELTY = OPEN: six-vertex / XXZ R-matrices, Yang-Baxter and matchgate
+  simulability are prior art; the two-particle solution is from 1711.03920.
+- Balance: this contract is closed; no further contract follows
+  automatically. Coexistence stays OPEN.
+
+=== DOCUMENT 2: informe_astra.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ 2a7342b9b98093585e3f8114524ec6840b6dc70f; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: cli_exit_0 (estado operativo, no validación del contenido)
+modelo: gpt-6-astra, esfuerzo: high, vía: codex exec sellado (codex-cli 0.169.0)
+inicio: 2026-11-14T18:24:11Z  fin: 2026-11-14T18:26:08Z
+documento: /home/adnac/qca-causal-cones/reports/2026-11-14--thirring-comoving-packet.md ; último commit observado: e81a719 ; sha256 de la copia enviada 979ecf49f8d31bffc921584c4ae01801ed80734deed00b1bb838b298c422fcf1
+documento: /home/adnac/qca-causal-cones/theory/THIRRING_COMOVING_PACKET_GATE.md ; último commit observado: dca5ebc ; sha256 de la copia enviada 3db4cb5e00ff0146e9deae63533a996cea8a152cae16cba34fcdcebbfd1cc0f6
+documento: /home/adnac/qca-causal-cones/scripts/verify_thirring_comoving_packet.py ; último commit observado: 2685635 ; sha256 de la copia enviada a72db65cf837921d2448315babce39ff93d9ac8077ab9f226abf77f039a9ac55
+documento: /home/adnac/qca-causal-cones/reports/2026-11-14--thirring-comoving-packet.txt ; último commit observado: e81a719 ; sha256 de la copia enviada 0861bf7273608a3c392eb3589b7d0357cf7326fc8dc80eae99190c7d2b5eff18
+documento: /home/adnac/qca-causal-cones/reports/2026-11-09--thirring-low-energy-packet.md ; último commit observado: 55f2b43 ; sha256 de la copia enviada d5d21b221fc3c70d15dfb6c57cbc40372a51a40c2bda59b14eb7c974546d2f2f
+documento: /home/adnac/qca-causal-cones/reports/2026-11-14--thirring-flavour-packet.md ; último commit observado: 918f7f4 ; sha256 de la copia enviada 39e595ce17ac1e5f2f0ad6fa3821f5e413e44ed2a0126aa39c4674e58eb8118e
+documento: /home/adnac/qca-causal-cones/scripts/verify_thirring_low_energy_packet.py ; último commit observado: 8b41761 ; sha256 de la copia enviada a1900674990354db197e7daddfdefb46d0a23536ba3b5e0688c2b45250f4d517
+documento: /home/adnac/qca-causal-cones/scripts/verify_thirring_flavour_packet.py ; último commit observado: 8d7e444 ; sha256 de la copia enviada 7e66c30ac95cb3b7f76f195831ec1d742e595dad52994361d44dcdcf8c0af6cd
+documento: /home/adnac/qca-causal-cones/sources/1711.03920v1.pdf ; último commit observado: 45b933f ; sha256 de la copia enviada 3032b33d1375d4a55008aafe1f0e74d228052fa120446694ba8e9ab8e41867ca
+entrada_astra.txt sha256 f1bd19bc96170687ffd5666a0a70319ea80bfda1f8f22f438bd38f1b4759d76c
+respuesta sha256 f4903c7c9a11cd22b1c5a657005f0935979ba10f76ce3809ccb25809d3e50f58
+-->
+
+**Dictamen global: REPAIR_REQUIRED.** No encuentro un fallo que invalide la puerta co-móvil declarada. Sí encuentro dos reparaciones obligatorias: los «si y solo si» de A2/A5 omiten excepciones, y «52/52 exact» incluye dos comprobaciones numéricas de positividad. La simulabilidad física permanece **OPEN**.
+
+Revisión basada únicamente en los documentos suministrados, mediante lectura del código y derivaciones manuales; no he ejecutado el verificador ni consultado el PDF original.
+
+1. **Geometría co-móvil del puente: PASS.**
+
+Con la convención \(e^{-i(qx+t\omega(q))}\), el centro sigue
+\[
+x(t)=x(0)-t\omega'(q).
+\]
+Por tanto, para la onda con \(q_f\) en la coordenada mayor,
+\[
+y_{\rm in}(t)=2L-t(v_f-v_s).
+\]
+Es entrante: el paquete rápido empieza a la derecha y alcanza al lento desplazándose ambos hacia la izquierda. La onda intercambiada tiene
+\[
+y_{\rm out}(t)=-2L+t(v_f-v_s).
+\]
+La identificación no depende de que las velocidades tengan signos opuestos.
+
+Las cotas racionales bastan:
+\[
+v_f\ge\sqrt{0.87}>0.93,\qquad v_s\le0.8.
+\]
+Así, a \(T=20L\), los centros relativos quedan respectivamente por debajo de \(-0.6L\) y por encima de \(0.6L\). Estar en el semiespacio incorrecto exige que alguna coordenada individual se desvíe al menos \(0.3L\). No hace falta una separación absoluta respecto del origen, pues ambos paquetes pueden estar muy a la izquierda.
+
+La extensión temporal conserva la estimación:
+\[
+t\delta^2/\mu\le20\lceil\mu^{-2}\rceil\mu^2=O(1).
+\]
+Con \(D=3L/10\), resulta \(\delta D\asymp\mu^{-1/2}\), masa de cola \(O(\mu^{3/2})\) y norma \(O(\mu^{3/4})\). También se conservan las estimaciones con \(T(q_1,q_2)\) no separable.
+
+**Aclaración:** el factor cinco corresponde al límite del parámetro temporal que controla las derivadas de fase. La constante final tras integrar por partes no tiene por qué ser exactamente cinco veces la anterior. El exponente y la uniformidad no cambian.
+
+2. **Autofunciones y degeneraciones: PASS, con aclaración de las distancias.**
+
+La ecuación local de contacto reutilizada,
+\[
+z(b-Tc)=Tb-c,
+\]
+no necesita momentos de signos opuestos. Las cuatro ondas comparten el autovalor y la extensión antisimétrica satisface las mismas ecuaciones locales. El argumento sirve en ambos sectores del soporte declarado.
+
+La frase sobre degeneraciones es demasiado abreviada: el Lema 1 del texto suministrado, p. 3, también contiene la hipótesis \(p\ne n\pi/2\). No obstante, aquí puede comprobarse directamente. Escribiendo \(m=\sqrt\mu\),
+\[
+q_f-q_s\ge2\mu(1-m),\quad
+p=\frac{q_f+q_s}{2}\in\mu[2-m,2+m],\quad
+k=\frac{q_f-q_s}{2}\in\mu[1-m,1+m].
+\]
+Hay, pues, separación proporcional a \(\mu\) respecto de \(q_f=q_s\), de \(k=0\) y de \(p=0\); los restantes puntos periódicos quedan lejos.
+
+En el sector mixto, tomando \(q_s'=q_s+\pi\),
+\[
+p'=p+\pi/2,\qquad k'=k-\pi/2.
+\]
+Las distancias a las degeneraciones correspondientes son precisamente \(p\) y \(k\). No son distancias uniformemente positivas sin reescalar, pero sí respecto de la anchura \(\delta=\mu^{3/2}\).
+
+Tampoco se alcanzan los autovalores excepcionales \(e^{\pm i2p}\): para estos momentos pequeños positivos, \(\omega(q)>q\), de modo que
+\[
+\omega(q_f)+\omega(q_s)>q_f+q_s,
+\]
+sin posibilidad de identificación por periodicidad. El desplazamiento del sector mixto multiplica por \(-1\) tanto el autovalor como los valores excepcionales.
+
+Los denominadores admiten una comprobación más fuerte que la mera positividad del límite. Definiendo
+\[
+A_\mu(q)=\frac{\sin\omega(q)+\nu\sin q}{\mu}
+=\sqrt{1+\nu^2(\sin q/\mu)^2}+\nu\sin q/\mu,
+\]
+se tiene \(A_\mu(q)\ge1\) en ambos soportes. Los dos denominadores escalados tienen módulo
+\[
+\sqrt{A_\mu(q_f)^2+A_\mu(q_s)^2}\ge\sqrt2.
+\]
+Esto sostiene las cotas de derivadas, incluidas las segundas utilizadas en las colas.
+
+E1/E2 son ejemplos válidos y no degenerados. Su \(\mu=3/5\) queda fuera del régimen de paquetes, pero eso es admisible como comprobación ilustrativa de la identidad local. La ventana finita comprueba los casos de contacto y los de propagación libre; su extensión a toda la red depende de esa estructura local, no del recuento.
+
+3. **Orden, \(r_{\rm co}\) y ensamblaje: PASS.**
+
+La elección está fijada por **la geometría entrante junto con el orden declarado**: el primer factor de creación es el rápido y ocupa inicialmente la coordenada mayor. Por ello,
+\[
+r_{\rm co}=a(3)/a(1).
+\]
+El orden de creación, aislado de la identificación entrante, no sería una regla universal para escoger entre \(r\) y \(1/r\).
+
+Una comprobación independiente usa \(\Delta\theta=\operatorname{asinh}3-\operatorname{asinh}1\):
+\[
+\cosh\Delta\theta=2\sqrt5-3,\qquad
+\beta=\operatorname{sech}\Delta\theta=\frac{3+2\sqrt5}{11}.
+\]
+Además, \(\alpha=i\tanh\Delta\theta\), con parte imaginaria positiva, da
+\[
+\alpha=\frac{i\sqrt{92-12\sqrt5}}{11}.
+\]
+Los valores son correctos.
+
+AA y BB evolucionan exactamente como sus columnas de \(B_{\rm out}\); esto fija la fase común a \(1\). El signo antisimétrico de la onda intercambiada aparece también en la comparación libre y no introduce otra fase.
+
+Para sentidos opuestos,
+\[
+a(1)/a(-2)=a(1)a(2)
+=e^{\operatorname{asinh}1-\operatorname{asinh}(-2)},
+\]
+coherente con la misma convención.
+
+4. **Parte A, A1–A4: REPAIR_REQUIRED por el alcance de A2.**
+
+A1 y la identidad racional de A2 son correctas. El código de A3 construye las matrices \(8\times8\), implementa \(V_{13}\) mediante permutación y recorre las 64 entradas. A4 comprueba la relación parametrizada escrita para \(PV\). No hay una reducción oculta a un único sector.
+
+La separación respecto de factorización física y estructura graduada está bien expresada.
+
+**Reparación obligatoria R1, primera parte.** Frase afectada: «zero iff \(z^2=-1\)».
+
+La propia identidad muestra
+\[
+1+\alpha^2-\beta^2
+=\frac{(z^2+1)(r^2-1)}{z^2r^2-1}.
+\]
+También se anula en \(r=1\), cuando el denominador está definido. Allí \(\alpha=0,\beta=1\), y la definición cociente de \(\Delta\) es \(0/0\).
+
+Lo cierra distinguir entre:
+
+- igualdad puntual, con la excepción \(r=1\);
+- identidad nula para toda la familia, que sí exige \(z^2=-1\);
+- \(\Delta=\cos\chi\) donde su cociente está definido, o mediante extensión racional explícita.
+
+5. **A5 y su lectura: REPAIR_REQUIRED por R1; simulabilidad física OPEN.**
+
+Los determinantes calculados son correctos:
+\[
+V:(1,-1),\qquad \mathrm{fSWAP}\,V:(-1,1),\qquad PV:(1,1)
+\]
+a \(z=-i\).
+
+El cambio a orden de posición produce \(PV\) **hasta una fase global convencional**. Si ambas bases se construyen literalmente ordenando los operadores fermiónicos por posición, intercambiar los dos paquetes introduce un signo común y puede escribirse \(-PV\). Cada paquete contiene exactamente un fermión para ambos sabores: ese signo es igual para AA, AB, BA y BB. No es el signo selectivo de fSWAP sobre \(|11\rangle\), y no altera la condición de determinantes.
+
+**R1, segunda parte.** Frase afectada: «\(PV\) meets the determinant condition exactly at \(\chi=\pi/2\)».
+
+En \(r=1\), \(V=P\) y \(PV=I\) para cualquier acoplamiento con denominador definido. Para \(r\ne1\), la condición es \(z^2=-1\), es decir, \(\chi=\pi/2\pmod\pi\). Lo cierra introducir esas condiciones o restringir explícitamente la afirmación al acoplamiento declarado.
+
+La lectura de simulabilidad está marcada como no verificada y condicionada; no constituye un veredicto. La igualdad de determinantes sí identifica una matchgate abstracta en la base escrita. La naturaleza fermiónica del sabor no la refuta automáticamente. Lo pendiente es demostrar que una evolución física con muchos paquetes se representa por el circuito correspondiente y precisar preparaciones y medidas admitidas. La condición local de determinantes, sola, no demuestra ninguna de esas cosas.
+
+6. **Alcance y certificación: REPAIR_REQUIRED por una calificación incorrecta.**
+
+La separación entre puente escrito, álgebra comprobada y cuestiones abiertas es sustancialmente correcta. No se afirma factorización física, universalidad ni un no-go general.
+
+**Reparación obligatoria R2.** Frases afectadas: «52/52 exact» y «Certified exactly (52/52)».
+
+En `check_C`, `C-beta>0` y `C-concurrence(V|AB>)>0` usan `sp.N(..., 30) > 0`. Son evaluaciones numéricas, aunque las expresiones originales sean exactas. El informe anterior ya reconocía esta misma distinción.
+
+Lo cierra calificar el recuento o sustituir esas dos comprobaciones por pruebas exactas. La prueba manual es inmediata: \(r_{\rm co}>1\) implica \(\beta>0\) y \(\operatorname{Im}\alpha>0\), luego la concurrencia es positiva.
+
+**Reparaciones obligatorias: R1 y R2, únicamente.** Las aclaraciones sobre degeneraciones, constantes y fase al ordenar por posición no cambian la puerta ni las cotas del puente.
+=== DOCUMENT 3: verify_thirring_comoving_packet.py ===
+
+#!/usr/bin/env python3
+"""Exact checks for the Thirring co-moving packet gate.
+
+Contract: theory/THIRRING_COMOVING_PACKET_GATE.md (frozen at dca5ebc).
+Report:   reports/2026-11-14--thirring-comoving-packet.md
+
+Conventions and helpers imported read-only from
+scripts/verify_thirring_low_energy_packet.py (contract 2: onepart,
+eigenfunction, F_op, J_op, BASIS, iszero) and
+scripts/verify_thirring_flavour_packet.py (eigenfunction_pm, check_F1,
+check_F3_F4). Neither file is modified; their SHA256 are recorded.
+In those helpers Z = I means chi = pi/2 (the phase applied is conj(Z) = -i).
+
+Certified (exact SymPy):
+  E1  (+,+) four-plane-wave function of contract 2 is an exact lattice
+      eigenvector of U at a co-moving algebraic pair, both momenta positive
+      and distinct (e^{iq1} = (4+3i)/5, e^{iq2} = (12+5i)/13), mu = 3/5,
+      chi = pi/2 and chi = 0 (T = 1 there); |T| = 1.
+  E2  (+,-) four-plane-wave function of the flavour gate, same pair with the
+      second momentum shifted by pi (e^{iq2'} = -(12+5i)/13): exact
+      eigenvector, chi = pi/2 and chi = 0; |T_-| = 1.
+  R   reused checks re-run: F1 (g_-(q+pi) = -g_+(q)) and F3/F4 (code algebra
+      and form of V given the two sector limits; label-agnostic finite model).
+  M   supports for 0 < mu < 1/10, delta = mu^(3/2): slow in mu[1-m, 1+m],
+      fast in mu[3-m, 3+m], m = sqrt(mu): positive, inside (0, 4mu),
+      disjoint; pi-shifted copies disjoint.
+  V   velocities: omega'(q)^2 = nu^2 s/(mu^2 + nu^2 s), s = sin^2 q, increasing
+      in s; rational bounds omega'^2 >= 87/100 on the fast support,
+      omega'^2 <= 16/25 on the slow support, so v_f - v_s >= 13/100; at
+      T = 20L the incoming y-centre is <= -3L/5 and the outgoing >= +3L/5.
+  C   limiting gate at chi = pi/2: T_+ = (a_f + z a_s)/(a_s + z a_f),
+      T_- = (a_f - z a_s)/(z a_f - a_s), a_f = sqrt10 + 3, a_s = sqrt2 + 1;
+      (T_+ + T_-)/2 = alpha(r_co), (T_+ - T_-)/2 = beta(r_co) with
+      r_co = a_f/a_s; unitary; beta != 0; concurrence of V|AB> > 0.
+  A1  alpha(r) = z(r^2-1)/(z^2 r^2-1), beta(r) = r(z^2-1)/(z^2 r^2-1) from T_+-
+      with r = a1/a2 (symbolic).
+  A2  Delta = (1 + alpha^2 - beta^2)/(2 alpha) = (z^2+1)/(2z), independent of
+      r; 1 + alpha^2 - beta^2 = (z^2+1)(r^2-1)/(z^2 r^2-1).
+  A3  V_12(x) V_13(xy) V_23(y) = V_23(y) V_13(xy) V_12(x) on (C^2)^(x3), all
+      64 entries, symbolic in x, y, z; and at z = -i.
+  A4  Rcheck = P V: Rcheck_12(x) Rcheck_23(xy) Rcheck_12(y) =
+      Rcheck_23(y) Rcheck_12(xy) Rcheck_23(x), symbolic and at z = -i.
+  A5  diagnostic only: matchgate determinants (det of the {00,11} block vs
+      det of the {01,10} block) for V, P V and fSWAP V, symbolic in z and
+      at z = -i. Results are recorded, not asserted, except the algebraic
+      identities used to state them.
+
+Not certified (written proof in the report): the packet/scattering bridge
+in the co-moving geometry, the U^2 admission argument for K = 1, 3, and the
+verdict. Part A says nothing about physical three-packet factorization or
+about graded versus ungraded tensor structure.
+"""
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "reports/2026-11-14--thirring-comoving-packet"
+
+
+def _load(name, rel):
+    spec = importlib.util.spec_from_file_location(name, ROOT / rel)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+c2 = _load("c2", "scripts/verify_thirring_low_energy_packet.py")
+fl = _load("fl", "scripts/verify_thirring_flavour_packet.py")
+F_op, J_op, BASIS, iszero = c2.F_op, c2.J_op, c2.BASIS, c2.iszero
+I = sp.I
+CHECKS = []
+DIAG = {}
+
+
+def exact(name, cond):
+    CHECKS.append(dict(name=name, passed=bool(cond)))
+
+
+def ccancel(x):
+    return sp.cancel(sp.expand(x))
+
+
+# ---------------- E1 / E2 ----------------
+def eig_check(tag, builder, z1, z2):
+    MU, NU = sp.Rational(3, 5), sp.Rational(4, 5)
+    out = {}
+    for chi_tag, Z in (("chi=pi/2", I), ("chi=0", sp.Integer(1))):
+        psi, lam, T = builder(z1, z2, MU, NU, Z)
+        Upsi = F_op(J_op(psi, Z), MU, NU)
+        ok, nonzero = True, False
+        for x1 in range(-3, 4):
+            for x2 in range(-3, 4):
+                for a1, a2 in BASIS:
+                    ok &= iszero(Upsi(x1, a1, x2, a2) - lam * psi(x1, a1, x2, a2))
+                    nonzero |= not iszero(psi(x1, a1, x2, a2))
+        exact(f"{tag}-{chi_tag}-eigenfunction", ok and nonzero)
+        exact(f"{tag}-{chi_tag}-|T|=1", iszero(sp.Abs(T)**2 - 1))
+        if Z == 1:
+            exact(f"{tag}-chi=0-T=1", iszero(T - 1))
+        out[chi_tag] = str(sp.nsimplify(sp.simplify(T)))
+    return out
+
+
+def check_E():
+    z1 = (4 + 3 * I) / 5          # q1 ~ 0.6435 > 0 (fast, particle 1)
+    z2 = (12 + 5 * I) / 13        # q2 ~ 0.3948 > 0 (slow), q2 != q1
+    exact("E-pair-co-moving(Im z1>0, Im z2>0, z1!=z2)",
+          sp.im(z1) > 0 and sp.im(z2) > 0 and not iszero(z1 - z2))
+    r1 = eig_check("E1-(+,+)", c2.eigenfunction, z1, z2)
+    r2 = eig_check("E2-(+,-)", fl.eigenfunction_pm, z1, -z2)
+    return {"(+,+)": r1, "(+,-)": r2}
+
+
+# ---------------- R (reused, read-only) ----------------
+def check_R():
+    n0 = len(fl.CHECKS)
+    fl.check_F1()
+    fl.check_F3_F4(sp.Symbol("Tp"), sp.Symbol("Tm"))
+    for c in fl.CHECKS[n0:]:
+        exact("R-reused-" + c["name"], c["passed"])
+
+
+# ---------------- M ----------------
+def check_M():
+    m = sp.symbols("m", positive=True)
+    mb = 1 / sp.sqrt(10)
+    conds = {"slow-positive(1-m>0)": 1 - m,
+             "fast-inside-4mu(4-(3+m)>0)": 4 - (3 + m),
+             "disjoint((3-m)-(1+m)>0)": (3 - m) - (1 + m)}
+    for k, f in conds.items():
+        exact(f"M-{k}", bool(f.subs(m, mb) > 0) and sp.diff(f, m) < 0)
+    exact("M-pi-shift-disjoint(8mu<pi)", bool(8 * sp.Rational(1, 10) < sp.pi))
+
+
+# ---------------- V ----------------
+def check_V():
+    q, mu = sp.symbols("q mu", positive=True)
+    s = sp.symbols("s", positive=True)
+    nu2 = 1 - mu**2
+    lhs = nu2 * sp.sin(q)**2 / (1 - nu2 * sp.cos(q)**2)
+    rhs = (nu2 * s / (mu**2 + nu2 * s)).subs(s, sp.sin(q)**2)
+    exact("V-omega'^2=nu^2 s/(mu^2+nu^2 s)",
+          iszero(sp.simplify((lhs - rhs).rewrite(sp.cos))))
+    exact("V-increasing-in-s",
+          iszero(sp.diff(nu2 * s / (mu**2 + nu2 * s), s) - mu**2 * nu2 / (mu**2 + nu2 * s)**2))
+    mb = sp.Rational(317, 1000)
+    exact("V-1/sqrt10<317/1000", mb**2 > sp.Rational(1, 10))
+    mu_max = sp.Rational(1, 10)
+    Kf_min, Kf_max = 3 - mb, 3 + mb
+    Ks_max = 1 + mb
+    # fast: sin q >= q(1 - q^2/6), q = mu K, K >= Kf_min, mu K <= mu_max Kf_max, nu^2 >= 99/100
+    rho_f = sp.Rational(99, 100) * (Kf_min * (1 - (mu_max * Kf_max)**2 / 6))**2
+    vf2 = rho_f / (1 + rho_f)
+    exact("V-fast-omega'^2>=87/100", vf2 >= sp.Rational(87, 100))
+    # slow: nu^2 s <= mu^2 K^2, x/(mu^2+x) increasing => omega'^2 <= K^2/(1+K^2)
+    vs2 = Ks_max**2 / (1 + Ks_max**2)
+    exact("V-slow-omega'^2<=16/25", vs2 <= sp.Rational(16, 25))
+    exact("V-sqrt(87/100)>93/100", sp.Rational(93, 100)**2 < sp.Rational(87, 100))
+    dv = sp.Rational(93, 100) - sp.Rational(4, 5)
+    exact("V-v_f-v_s>=13/100", dv == sp.Rational(13, 100))
+    exact("V-incoming-y-centre<=2L-20L*dv=-3L/5", 2 - 20 * dv == -sp.Rational(3, 5))
+    exact("V-outgoing-y-centre>=-2L+20L*dv=+3L/5", -2 + 20 * dv == sp.Rational(3, 5))
+    vf_lim = sp.Rational(3) / sp.sqrt(10)
+    vs_lim = 1 / sp.sqrt(2)
+    exact("V-limit-v_f-v_s>24/100", bool(vf_lim - vs_lim > sp.Rational(24, 100)))
+    DIAG["velocity_bounds"] = dict(fast_omega_sq_lower=str(vf2), fast_float=float(sp.sqrt(vf2)),
+                                   slow_omega_sq_upper=str(vs2), slow_float=float(sp.sqrt(vs2)),
+                                   limit_dv=float(sp.N(vf_lim - vs_lim, 20)))
+
+
+# ---------------- family ----------------
+def alpha_beta(r, z):
+    return z * (r**2 - 1) / (z**2 * r**2 - 1), r * (z**2 - 1) / (z**2 * r**2 - 1)
+
+
+def Vmat(r, z):
+    al, be = alpha_beta(r, z)
+    return sp.Matrix([[1, 0, 0, 0], [0, al, be, 0], [0, be, al, 0], [0, 0, 0, 1]])
+
+
+SWAP = sp.Matrix([[1, 0, 0, 0], [0, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, 1]])
+FSWAP = sp.Matrix([[1, 0, 0, 0], [0, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, -1]])
+I2 = sp.eye(2)
+
+
+def kron(A, B):
+    return sp.kronecker_product(A, B)
+
+
+def is_zero_matrix(M):
+    return all(ccancel(e) == 0 for e in M)
+
+
+# ---------------- C ----------------
+def check_C():
+    af = sp.sqrt(10) + 3          # a(3) = sqrt(1+9) + 3
+    as_ = sp.sqrt(2) + 1          # a(1)
+    z = -I
+    Tp = (af + z * as_) / (as_ + z * af)
+    Tm = (af - z * as_) / (z * af - as_)
+    r = af / as_
+    al, be = alpha_beta(r, z)
+    exact("C-(T++T-)/2=alpha(r_co)", iszero((Tp + Tm) / 2 - al))
+    exact("C-(T+-T-)/2=beta(r_co)", iszero((Tp - Tm) / 2 - be))
+    exact("C-|T+|=|T-|=1", iszero(sp.Abs(Tp)**2 - 1) and iszero(sp.Abs(Tm)**2 - 1))
+    exact("C-alpha=i(r^2-1)/(r^2+1)", iszero(al - I * (r**2 - 1) / (r**2 + 1)))
+    exact("C-beta=2r/(1+r^2)", iszero(be - 2 * r / (1 + r**2)))
+    exact("C-unitary(|al|^2+|be|^2=1, al conj(be)+be conj(al)=0)",
+          iszero(sp.Abs(al)**2 + sp.Abs(be)**2 - 1)
+          and iszero(al * sp.conjugate(be) + be * sp.conjugate(al)))
+    exact("C-beta>0", bool(sp.N(be, 30) > 0))
+    conc = 2 * sp.Abs(al) * sp.Abs(be)
+    exact("C-concurrence(V|AB>)>0", bool(sp.N(conc, 30) > 0))
+    DIAG["limit"] = dict(r_co=str(sp.radsimp(r)), r_co_float=float(sp.N(r, 20)),
+                         alpha=str(sp.radsimp(al)), alpha_float_im=float(sp.N(sp.im(al), 20)),
+                         beta=str(sp.radsimp(be)), beta_float=float(sp.N(be, 20)),
+                         concurrence_float=float(sp.N(conc, 20)))
+
+
+# ---------------- A ----------------
+def check_A():
+    a1, a2, r, x, y = sp.symbols("a1 a2 r x y", positive=True)
+    z = sp.symbols("z")
+    Tp = (a1 + z * a2) / (a2 + z * a1)
+    Tm = (a1 - z * a2) / (z * a1 - a2)
+    al, be = alpha_beta(a1 / a2, z)
+    exact("A1-alpha=(T++T-)/2", ccancel((Tp + Tm) / 2 - al) == 0)
+    exact("A1-beta=(T+-T-)/2", ccancel((Tp - Tm) / 2 - be) == 0)
+    al, be = alpha_beta(r, z)
+    exact("A2-Delta=(z^2+1)/(2z)", ccancel((1 + al**2 - be**2) / (2 * al) - (z**2 + 1) / (2 * z)) == 0)
+    exact("A2-1+al^2-be^2=(z^2+1)(r^2-1)/(z^2r^2-1)",
+          ccancel(1 + al**2 - be**2 - (z**2 + 1) * (r**2 - 1) / (z**2 * r**2 - 1)) == 0)
+
+    P23 = kron(I2, SWAP)
+
+    def R12(t, zz):
+        return kron(Vmat(t, zz), I2)
+
+    def R23(t, zz):
+        return kron(I2, Vmat(t, zz))
+
+    def R13(t, zz):
+        return P23 * R12(t, zz) * P23
+
+    def C12(t, zz):
+        return kron(SWAP * Vmat(t, zz), I2)
+
+    def C23(t, zz):
+        return kron(I2, SWAP * Vmat(t, zz))
+
+    res = {}
+    for ztag, zz in (("symbolic", z), ("z=-i", -I)):
+        yb = R12(x, zz) * R13(x * y, zz) * R23(y, zz) - R23(y, zz) * R13(x * y, zz) * R12(x, zz)
+        ok3 = is_zero_matrix(yb)
+        br = C12(x, zz) * C23(x * y, zz) * C12(y, zz) - C23(y, zz) * C12(x * y, zz) * C23(x, zz)
+        ok4 = is_zero_matrix(br)
+        exact(f"A3-YBE-R-form-{ztag}", ok3)
+        exact(f"A4-braid-Rcheck=PV-{ztag}", ok4)
+        res[ztag] = dict(A3=ok3, A4=ok4)
+
+    # A5 diagnostic: matchgate determinants
+    def dets(M):
+        A = sp.Matrix([[M[0, 0], M[0, 3]], [M[3, 0], M[3, 3]]])
+        B = sp.Matrix([[M[1, 1], M[1, 2]], [M[2, 1], M[2, 2]]])
+        return ccancel(A.det()), ccancel(B.det())
+
+    diag = {}
+    for name, M in (("V", Vmat(r, z)), ("PV", SWAP * Vmat(r, z)), ("fSWAP V", FSWAP * Vmat(r, z))):
+        dA, dB = dets(M)
+        dA0, dB0 = ccancel(dA.subs(z, -I)), ccancel(dB.subs(z, -I))
+        diag[name] = dict(detA=str(dA), detB=str(sp.factor(dB)),
+                          detA_at_z=str(dA0), detB_at_z_minus_i=str(dB0),
+                          equal_at_z_minus_i=bool(ccancel(dA0 - dB0) == 0))
+    dA, dB = dets(SWAP * Vmat(r, z))
+    exact("A5-identity-detA(PV)=1", ccancel(dA - 1) == 0)
+    exact("A5-identity-detB(PV)=1-(z^2+1)(r^2-1)/(z^2r^2-1)",
+          ccancel(dB - 1 + (z**2 + 1) * (r**2 - 1) / (z**2 * r**2 - 1)) == 0)
+    DIAG["A5_matchgate_determinants"] = diag
+    DIAG["A3_A4"] = res
+
+
+def main():
+    eig = check_E()
+    check_R()
+    check_M()
+    check_V()
+    check_C()
+    check_A()
+    paths = ("scripts/verify_thirring_comoving_packet.py",
+             "scripts/verify_thirring_low_energy_packet.py",
+             "scripts/verify_thirring_flavour_packet.py",
+             "theory/THIRRING_COMOVING_PACKET_GATE.md", "sources/1711.03920v1.pdf")
+    data = dict(T_at_check_points=eig, diagnostics=DIAG, checks=CHECKS,
+                provenance={p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in paths})
+    OUT.with_suffix(".json").write_text(json.dumps(data, indent=2, default=str) + "\n")
+    passed = sum(c["passed"] for c in CHECKS)
+    lines = [f"Author checks: {passed}/{len(CHECKS)} exact (SymPy {sp.__version__})."]
+    lines += [f"{'PASS' if c['passed'] else 'FAIL'} {c['name']}" for c in CHECKS]
+    lim = DIAG["limit"]
+    lines += ["", f"r_co = {lim['r_co']} ~ {lim['r_co_float']:.6f}",
+              f"alpha = {lim['alpha']} ~ i*{lim['alpha_float_im']:.6f}",
+              f"beta = {lim['beta']} ~ {lim['beta_float']:.6f}; concurrence ~ {lim['concurrence_float']:.6f}",
+              "A5 diagnostic (decides nothing):"]
+    for k, v in DIAG["A5_matchgate_determinants"].items():
+        lines.append(f"  {k}: detA = {v['detA']}, detB = {v['detB']}; at z=-i: "
+                     f"detA = {v['detA_at_z']}, detB = {v['detB_at_z_minus_i']}, equal = {v['equal_at_z_minus_i']}")
+    OUT.with_suffix(".txt").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+    if passed != len(CHECKS):
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 4: 2026-11-14--thirring-comoving-packet.txt ===
+
+Author checks: 52/52 exact (SymPy 1.14.0).
+PASS E-pair-co-moving(Im z1>0, Im z2>0, z1!=z2)
+PASS E1-(+,+)-chi=pi/2-eigenfunction
+PASS E1-(+,+)-chi=pi/2-|T|=1
+PASS E1-(+,+)-chi=0-eigenfunction
+PASS E1-(+,+)-chi=0-|T|=1
+PASS E1-(+,+)-chi=0-T=1
+PASS E2-(+,-)-chi=pi/2-eigenfunction
+PASS E2-(+,-)-chi=pi/2-|T|=1
+PASS E2-(+,-)-chi=0-eigenfunction
+PASS E2-(+,-)-chi=0-|T|=1
+PASS E2-(+,-)-chi=0-T=1
+PASS R-reused-F1-g_-(q+pi)=-g_+(q)
+PASS R-reused-F3-columns-orthonormal
+PASS R-reused-F3-AA,BB-have-G=+1
+PASS R-reused-F3-AB=P(phr^phl)-P(phr^Gphl)
+PASS R-reused-F3-BA=P(phr^phl)+P(phr^Gphl)
+PASS R-reused-F3-P-vectors-orthogonal
+PASS R-reused-F3-P-vectors-norm^2=1/2
+PASS R-reused-F4-V=1+[[al,be],[be,al]]+1
+PASS R-reused-F4-no-leakage-in-model
+PASS M-slow-positive(1-m>0)
+PASS M-fast-inside-4mu(4-(3+m)>0)
+PASS M-disjoint((3-m)-(1+m)>0)
+PASS M-pi-shift-disjoint(8mu<pi)
+PASS V-omega'^2=nu^2 s/(mu^2+nu^2 s)
+PASS V-increasing-in-s
+PASS V-1/sqrt10<317/1000
+PASS V-fast-omega'^2>=87/100
+PASS V-slow-omega'^2<=16/25
+PASS V-sqrt(87/100)>93/100
+PASS V-v_f-v_s>=13/100
+PASS V-incoming-y-centre<=2L-20L*dv=-3L/5
+PASS V-outgoing-y-centre>=-2L+20L*dv=+3L/5
+PASS V-limit-v_f-v_s>24/100
+PASS C-(T++T-)/2=alpha(r_co)
+PASS C-(T+-T-)/2=beta(r_co)
+PASS C-|T+|=|T-|=1
+PASS C-alpha=i(r^2-1)/(r^2+1)
+PASS C-beta=2r/(1+r^2)
+PASS C-unitary(|al|^2+|be|^2=1, al conj(be)+be conj(al)=0)
+PASS C-beta>0
+PASS C-concurrence(V|AB>)>0
+PASS A1-alpha=(T++T-)/2
+PASS A1-beta=(T+-T-)/2
+PASS A2-Delta=(z^2+1)/(2z)
+PASS A2-1+al^2-be^2=(z^2+1)(r^2-1)/(z^2r^2-1)
+PASS A3-YBE-R-form-symbolic
+PASS A4-braid-Rcheck=PV-symbolic
+PASS A3-YBE-R-form-z=-i
+PASS A4-braid-Rcheck=PV-z=-i
+PASS A5-identity-detA(PV)=1
+PASS A5-identity-detB(PV)=1-(z^2+1)(r^2-1)/(z^2r^2-1)
+
+r_co = -sqrt(10) - 3 + 3*sqrt(2) + 2*sqrt(5) ~ 2.552499
+alpha = -I*(-29*(3 + sqrt(10))**2 - 12*sqrt(5)*(3 + sqrt(10))**2 - 9*sqrt(10)*(1 + sqrt(2))**2 - 19*sqrt(2)*(1 + sqrt(2))**2 + 12*sqrt(5)*(1 + sqrt(2))**2 + 29*(1 + sqrt(2))**2 + 19*sqrt(2)*(3 + sqrt(10))**2 + 9*sqrt(10)*(3 + sqrt(10))**2)/22 ~ i*0.733874
+beta = (3 + 2*sqrt(5))/11 ~ 0.679285; concurrence ~ 0.997020
+A5 diagnostic (decides nothing):
+  V: detA = 1, detB = -(-r + z)*(r + z)/((r*z - 1)*(r*z + 1)); at z=-i: detA = 1, detB = -1, equal = False
+  PV: detA = 1, detB = (-r + z)*(r + z)/((r*z - 1)*(r*z + 1)); at z=-i: detA = 1, detB = 1, equal = True
+  fSWAP V: detA = -1, detB = (-r + z)*(r + z)/((r*z - 1)*(r*z + 1)); at z=-i: detA = -1, detB = 1, equal = False
+
+codex
+**Dictamen global: PASS para esta re-revisión acotada. R1 y R2 quedan resueltas. No hay reparaciones obligatorias.**
+
+Revisión mediante lectura de los documentos suministrados y derivación manual, sin ejecutar el verificador ni consultar fuentes externas. Mantengo los bloques previamente aprobados fuera del alcance, salvo las aclaraciones incorporadas.
+
+1. **R1 — PASS.**
+
+   A2 distingue correctamente los tres niveles. Cita la identidad como «rational identity, where \(z^2r^2\ne1\)»; restringe \(\Delta=\cos\chi\) a «wherever the quotient is defined»; y separa:
+   > «Pointwise […] iff \(z^2=-1\) or \(r=1\); it vanishes for the whole family iff \(z^2=-1\).»
+
+   Esto se sigue directamente del numerador \((z^2+1)(r^2-1)\), excluidos los polos. El paréntesis «alpha != 0, i.e. r != 1» es correcto en el dominio físico utilizado: \(r>0\) y \(z=e^{-i\chi}\ne0\). No debe interpretarse como una equivalencia para cualquier \(z\) complejo, incluido cero; la identidad racional sí tiene ese alcance algebraico más amplio.
+
+   A5 recoge ambas excepciones y el dominio:
+   > «for r != 1 […] iff […] chi = pi/2 mod pi; at r = 1, V = P and P V = I for every chi with defined denominators».
+
+   Además, concreta «The declared code has r_co != 1 and chi = pi/2». Como comprobación directa, sustituir \(r=1\), con \(z^2\ne1\), da \(\alpha=0,\beta=1\): \(V=P\), \(PV=I\), mientras que el cociente original de \(\Delta\) queda indeterminado. La reparación es coherente.
+
+2. **R2 — PASS.**
+
+   «50 exact, 2 numerical positivity checks» describe correctamente el recuento suministrado. Las dos pruebas identificadas en `check_C` aplican explícitamente `sp.N(..., 30) > 0`; llamarlas mediante una función denominada `exact` no cambia su naturaleza. Las conversiones numéricas adicionales de `DIAG` son valores informativos, no nuevas pruebas del recuento.
+
+   El argumento manual de la Sec. 6 es exacto y suficiente:
+   \[
+   r_{\rm co}=\frac{\sqrt{10}+3}{\sqrt2+1}>1,
+   \quad \beta=\frac{2r_{\rm co}}{1+r_{\rm co}^2}>0,
+   \quad \operatorname{Im}\alpha=\frac{r_{\rm co}^2-1}{r_{\rm co}^2+1}>0.
+   \]
+   Por tanto, ambos coeficientes son no nulos y \(2|\alpha\beta|>0\). Directamente, esa concurrencia también es
+   \[
+   \frac{4r_{\rm co}(r_{\rm co}^2-1)}{(1+r_{\rm co}^2)^2}>0.
+   \]
+
+   La salida histórica y el generador conservan «52/52 exact». El informe corregido rectifica expresamente esa etiqueta y declara que el verificador no cambió; conservar ese registro no deja pendiente R2.
+
+3. **ACLARACIONES Y EDICIONES — PASS.**
+
+   El encabezado reproduce fielmente las cuatro aclaraciones: el factor cinco afecta al parámetro temporal; incorpora \(p\ne n\pi/2\); vincula \(r_{\rm co}\) con geometría entrante **y** orden declarado; y reconoce el signo común de las cuatro columnas al ordenar por posición.
+
+   Las distancias proporcionales a \(\mu\) se entienden como separación mínima de ese orden respecto del conjunto degenerado; los demás puntos periódicos permanecen lejos. La cota de denominadores escalados \(\ge\sqrt2\) coincide con la aclaración anterior. No detecto errores nuevos introducidos por estas ediciones.
+
+**OPEN:** siguen abiertas las cuestiones físicas y bibliográficas previamente delimitadas, incluida la simulabilidad física. Este PASS cierra las reparaciones textuales revisadas; no constituye una promoción del resultado.
+tokens used
+28.115
+**Dictamen global: PASS para esta re-revisión acotada. R1 y R2 quedan resueltas. No hay reparaciones obligatorias.**
+
+Revisión mediante lectura de los documentos suministrados y derivación manual, sin ejecutar el verificador ni consultar fuentes externas. Mantengo los bloques previamente aprobados fuera del alcance, salvo las aclaraciones incorporadas.
+
+1. **R1 — PASS.**
+
+   A2 distingue correctamente los tres niveles. Cita la identidad como «rational identity, where \(z^2r^2\ne1\)»; restringe \(\Delta=\cos\chi\) a «wherever the quotient is defined»; y separa:
+   > «Pointwise […] iff \(z^2=-1\) or \(r=1\); it vanishes for the whole family iff \(z^2=-1\).»
+
+   Esto se sigue directamente del numerador \((z^2+1)(r^2-1)\), excluidos los polos. El paréntesis «alpha != 0, i.e. r != 1» es correcto en el dominio físico utilizado: \(r>0\) y \(z=e^{-i\chi}\ne0\). No debe interpretarse como una equivalencia para cualquier \(z\) complejo, incluido cero; la identidad racional sí tiene ese alcance algebraico más amplio.
+
+   A5 recoge ambas excepciones y el dominio:
+   > «for r != 1 […] iff […] chi = pi/2 mod pi; at r = 1, V = P and P V = I for every chi with defined denominators».
+
+   Además, concreta «The declared code has r_co != 1 and chi = pi/2». Como comprobación directa, sustituir \(r=1\), con \(z^2\ne1\), da \(\alpha=0,\beta=1\): \(V=P\), \(PV=I\), mientras que el cociente original de \(\Delta\) queda indeterminado. La reparación es coherente.
+
+2. **R2 — PASS.**
+
+   «50 exact, 2 numerical positivity checks» describe correctamente el recuento suministrado. Las dos pruebas identificadas en `check_C` aplican explícitamente `sp.N(..., 30) > 0`; llamarlas mediante una función denominada `exact` no cambia su naturaleza. Las conversiones numéricas adicionales de `DIAG` son valores informativos, no nuevas pruebas del recuento.
+
+   El argumento manual de la Sec. 6 es exacto y suficiente:
+   \[
+   r_{\rm co}=\frac{\sqrt{10}+3}{\sqrt2+1}>1,
+   \quad \beta=\frac{2r_{\rm co}}{1+r_{\rm co}^2}>0,
+   \quad \operatorname{Im}\alpha=\frac{r_{\rm co}^2-1}{r_{\rm co}^2+1}>0.
+   \]
+   Por tanto, ambos coeficientes son no nulos y \(2|\alpha\beta|>0\). Directamente, esa concurrencia también es
+   \[
+   \frac{4r_{\rm co}(r_{\rm co}^2-1)}{(1+r_{\rm co}^2)^2}>0.
+   \]
+
+   La salida histórica y el generador conservan «52/52 exact». El informe corregido rectifica expresamente esa etiqueta y declara que el verificador no cambió; conservar ese registro no deja pendiente R2.
+
+3. **ACLARACIONES Y EDICIONES — PASS.**
+
+   El encabezado reproduce fielmente las cuatro aclaraciones: el factor cinco afecta al parámetro temporal; incorpora \(p\ne n\pi/2\); vincula \(r_{\rm co}\) con geometría entrante **y** orden declarado; y reconoce el signo común de las cuatro columnas al ordenar por posición.
+
+   Las distancias proporcionales a \(\mu\) se entienden como separación mínima de ese orden respecto del conjunto degenerado; los demás puntos periódicos permanecen lejos. La cota de denominadores escalados \(\ge\sqrt2\) coincide con la aclaración anterior. No detecto errores nuevos introducidos por estas ediciones.
+
+**OPEN:** siguen abiertas las cuestiones físicas y bibliográficas previamente delimitadas, incluida la simulabilidad física. Este PASS cierra las reparaciones textuales revisadas; no constituye una promoción del resultado.

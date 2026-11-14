@@ -1,0 +1,1329 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Re-revisa de forma acotada el informe adjunto
+2026-11-14--thirring-matchgate-a5.md, escrito por Claude (Anthropic). Ya
+lo revisaste: se adjunta tu informe («REPAIR_REQUIRED», R1-R5), el
+verificador (bytes sin cambiar) y la fuente de Valiant en texto extraído
+para comprobar las páginas. Las reparaciones están en el encabezado y en
+las Secs. 1-6 y 8. No tienes herramientas: no ejecutes, edites ni navegues.
+No reabras los bloques que diste por PASS salvo que las ediciones los
+afecten.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / OPEN:
+
+1. R1 (dominio de W_ab, Sec. 2). Cita la frase.
+2. R2 (Sec. 5). ¿Es correcto y suficiente el modelo de entrada clásico:
+   criterio de cruce (x_p - x_q)(K_p - K_q) > 0, decisión exacta del orden
+   de cruces y empates por signo de una combinación racional de a lo sumo
+   cuatro raíces cuadradas, resolución lexicográfica de coincidencias,
+   cálculo de r_pq? ¿Está bien separada la aritmética exacta
+   (Valiant/T-D) de la noción de m dígitos (J-M), y bien declarado lo no
+   rederivado (propagación de errores)? ¿«Una asignación consultada»?
+3. R3 (páginas de Valiant: Main Theorem y Theorem 4 p. 120, Measurement
+   Theorem p. 121). Compruébalo en el texto adjunto.
+4. R4 (conclusión: simulabilidad; universalidad eficiente implicaría BQP
+   contenido en P; sin separación incondicional). ¿Queda bien en Secs. 1
+   y 8?
+5. R5 (chi no congruente con pi/2 mod pi, Sec. 6).
+6. ACLARACIONES Y EDICIONES. ¿Recoge el encabezado tus aclaraciones sin
+   deformarlas? ¿Introducen las ediciones algún error o afirmación nueva no
+   sostenida?
+
+Hasta 1000 palabras en español. Dictamen global y lista de reparaciones
+obligatorias; si no hay ninguna, dilo expresamente.
+
+=== DOCUMENT 1: 2026-11-14--thirring-matchgate-a5.md ===
+
+# Thirring crossing-matchgate gate (A5): results
+
+2026-11-14. Author: Claude Code (Claude Opus 5.5). **PRELIMINARY: written
+argument plus exact author checks; one sealed cross-family review (Astra)
+with repairs applied, re-review pending; no promotion.**
+
+**Review (2026-11-14).** Astra `gpt-6-astra`, sealed revision-ciega, one
+round, herramientas `2a7342b`, on `3fa82c8`:
+[unaltered review](reviews/2026-11-14-thirring-matchgate-a5-astra/informe_astra.md).
+REPAIR_REQUIRED; sign, adjacency and gate class PASS (no algebraic
+correction). Repairs applied (each checked by the author; user «si, aplica
+R1-R5 y re-revisión»):
+
+- R1: W_ab is used only restricted to the one-fermion-per-packet sector
+  (Sec. 2).
+- R2: uniformity and precision were asserted, not shown. Sec. 5 now gives
+  the classical input model, the exact computation of the crossing order
+  (ties included) and the gate parameters, and separates the exact
+  arithmetic model of Valiant / Terhal-DiVincenzo from the m-digit notion
+  of Jozsa-Miyake; error propagation under finite-precision gate entries
+  is stated as not re-derived. "Any subset" means one queried assignment.
+- R3: Valiant pages corrected: Main Theorem and Theorem 4 p. 120,
+  Measurement Theorem p. 121 (checked against the printed page numbers;
+  the earlier text was shifted by one). Same fix in `sources/README.md`.
+- R4: the universality conclusion is restated: simulability, and an
+  efficient universal construction would imply BQP in P (Jozsa-Miyake
+  pp. 3, 16); no unconditional separation is claimed (Secs. 1, 8).
+- R5: "chi != pi/2" corrected to chi not congruent to pi/2 mod pi (Sec. 6).
+
+Clarifications adopted: the spectator sign argument holds for any number
+of spectators (each term of W has four pair operators); for k >= 4
+coincidences, any *specified* resolution is simulable; Valiant's character
+conventions (inputs as rows, complemented 0/1 reading) leave G unchanged
+because G^T = G and (X(x)X) G (X(x)X) = G (Sec. 4); Terhal-DiVincenzo's
+adaptive extension is specific (Sec. V, p. 16), not arbitrary adaptivity;
+the Jordan-Wigner fermions of M4 are register fermions, not the physical
+modes c_{p f}. The original text is in git at `3fa82c8`.
+
+Contract [THIRRING_MATCHGATE_A5_GATE.md](../theory/THIRRING_MATCHGATE_A5_GATE.md),
+frozen at `915e55f`. Authorizations (user, 2026-11-14): drafting; Q-a (F a
+declared premise), Q-b (download sources), freezing; then «T2–T4: SÍ,
+autorizados secuencialmente», with the order T2, T3, T4, «No presupongas
+que la permutación fermiónica introduce únicamente una fase global»,
+«Respeta el signo de alpha del repositorio», no PASS without complete
+evidence. Sources acquired at `7fa79e7` and `a1cfd20` (`sources/README.md`; Valiant page numbers corrected in
+the repair commit).
+Verifier `scripts/verify_thirring_matchgate_a5.py`, committed before
+running at `eae7876`; it imports the co-moving verifier read-only.
+One run, 26/26 exact ([output](2026-11-14--thirring-matchgate-a5.txt),
+[record](2026-11-14--thirring-matchgate-a5.json)). A manual negative
+control (comparison with +P v instead of -P v) fails, as it should; it
+produces no retained result.
+
+## 1. Verdict
+
+`MATCHGATE_SIMULABLE_UNDER_F` (author, PRELIMINARY). Assume F (Sec. 2).
+Then, in the flavour code at chi = pi/2, with the admitted resources
+(product flavour-basis input, final flavour readout of any subset of
+packets, no ancilla, intermediate or adaptive measurement, postselection
+or control), the logical map of N packets is a circuit of nearest-neighbour
+gates G = -P V(r) on the position-ordered register, each an allowable
+matchgate G(A, B) with A = -1, B = -[[beta, alpha], [alpha, beta]] in SU(2).
+For the uniform input model of Sec. 5: by Valiant (STOC 2001, pp.
+118-121) and Terhal-DiVincenzo (pp. 3-4), the probability of any one
+queried outcome assignment on any subset of packets can be computed, and
+outcomes sampled, in classical polynomial time (exact arithmetic model);
+by Jozsa-Miyake (Theorem 1, p. 2; definition p. 3), <Z_k> on any single
+packet can be computed to m digits in poly(N, m) time. Hence, under F,
+by Jozsa-Miyake p. 3, a bounded-gap decision problem accepted on one
+packet's final flavour by such circuits lies in P; an efficient universal
+quantum computation by crossings alone at chi = pi/2, in this code with
+these resources, would therefore imply BQP in P (Jozsa-Miyake p. 16).
+No unconditional separation is claimed.
+
+This is conditional on F and limited as stated in Sec. 6. It is not a
+Thirring no-go.
+
+## 2. F, as used
+
+F (declared premise, contract): the N-packet logical map, in the mu -> 0
+limit, is the time-ordered product of two-packet crossing maps, each acting
+on its pair with the other packets as spectators, with leakage -> 0.
+
+Formalization used for T2 (stated here so that T2 has a definite object):
+a crossing of packets a and b, with a on the larger coordinate before the
+crossing, acts, on the logical sector with exactly one fermion per packet,
+as the restriction of the even operator
+
+    W_ab = sum_{x,y,x',y'} V(r_ab)[(x'y'),(xy)] c+_{a x'} c+_{b y'} c_{b y} c_{a x},
+
+which on that sector is the identity on the spectator factors (R1). The
+formula is not a unitary on the whole Fock space (it annihilates states
+with an empty packet); no extension outside the code is defined or
+assumed. Here r_ab = e^{theta_a - theta_b}, and
+c+_{p f} creates the freely evolved packet p with flavour f (packet labels
+by identity, readout frame B_out = F^T B_mu as in the promoted reports).
+On two packets this is the promoted two-packet result, whose columns are
+(sqrt2 Pi_{f_a} phi_a) wedge (sqrt2 Pi_{f_b} phi_b) = c+_{a f_a} c+_{b f_b}|0>,
+first factor = the packet on the larger coordinate (flavour gate: right
+packet; co-moving gate: fast packet at +L) (S1).
+
+## 3. T2: the physical crossing as s P V on adjacent slots
+
+**Register.** Between crossings the packet order in x is constant. Define
+the position-ordered basis |f_1 ... f_N>_pos = c+_{pi(1) f_1} ... c+_{pi(N) f_N}|0>,
+pi(k) the packet in slot k counted from the right. Readout of a slot is
+readout of the flavour of a known packet, since pi is classically known.
+
+**Adjacency (written).** Packet centres move on straight lines
+x_p(t) = x_p(0) - t v_p with pairwise distinct v_p (distinct K, v = tanh
+theta increasing). If packets p and s coincide at t* and q was strictly
+between them for t < t*, then by continuity x_q(t*) lies between
+x_p(t*) = x_s(t*), so q coincides too. Hence a crossing of exactly two
+packets is always between adjacent slots. A simultaneous coincidence of
+k >= 3 packets reverses a block of adjacent slots; any resolution of it
+into pairwise crossings is a sequence of adjacent transpositions, so it
+is still a nearest-neighbour circuit. For k = 3 both resolutions give the
+same operator (S4: Fock-level products equal G12(y) G23(xy) G12(x) and
+G23(x) G12(xy) G23(y), and these are equal). For k >= 4 the uniqueness of
+the result is not checked: every *specified* resolution is a simulable
+nearest-neighbour circuit, which is what Sec. 5 uses (a fixed
+lexicographic resolution); F's map at such coincidences is defined only
+once a resolution is specified. Each pair crosses at most once, so the circuit has
+at most N(N-1)/2 gates.
+
+**Sign (certified, not assumed).** For a generic symbolic 4x4 v (16
+symbols), in the explicit Jordan-Wigner Fock model of three packets:
+
+- a crossing of slots (1,2) maps the register by kron(-P v, 1), with the
+  third packet behind the pair in the creation string;
+- a crossing of slots (2,3) maps it by kron(1, -P v), with the first packet
+  in front;
+- the same holds with the packets relabelled (S2), and W_ab commutes with
+  the creation operator of a third packet on the logical sector (S3).
+  For any number of spectators: each term of W_ab has four operators of
+  the pair, so moving a spectator creation operator past it gives
+  (-1)^4 = 1.
+
+Written reason: after the crossing, packet b is on the right, so the
+position-ordered string has c+_{b y'} c+_{a x'} = -c+_{a x'} c+_{b y'}
+(distinct modes anticommute; every packet holds exactly one fermion for
+both flavours, so the sign does not depend on flavours). The pair is
+adjacent in the string, and W_ab is even, so spectators contribute no sign.
+Therefore s = -1 on every basis state of the register, for every crossing,
+independent of V; the product of signs is (-1)^(number of crossings), a
+global phase of the whole computation. This is a derived statement under
+the formalization above, not an assumption.
+
+Free evolution between crossings: under U^2 both flavour components of a
+packet carry the same phase e^{-2i omega(q)} (flavour report Sec. 3), and
+it is absorbed in the comparison frame; it does not act on flavour.
+
+## 4. T3: gate class with the repository sign
+
+Certified (M1-M4), r > 0, chi = pi/2, alpha = +i (r^2 - 1)/(r^2 + 1),
+beta = 2r/(1 + r^2):
+
+- G(r) = -P V(r) has nonzero entries only in the parity pattern; on
+  {00, 11} it is A = -1; on {01, 10} it is B = -[[beta, alpha], [alpha, beta]];
+  A and B are unitary with det 1, so G = G(A, B) in the sense of
+  Jozsa-Miyake eq. (1) (p. 2) and of Terhal-DiVincenzo eq. (1) (p. 3,
+  U^1, U^2 in SU(2)).
+- Valiant's five matchgate identities (p. 118; signs checked on the page
+  image) hold for G(r) under both assignments of the middle rows and
+  columns, and B(4,4) = -1 != 0, so Proposition 3 (p. 118) applies.
+  Conventions: Valiant indexes inputs by rows (a transpose relative to the
+  verifier) and mentions a complemented 0/1 reading (p. 120); since
+  G^T = G and (X (x) X) G (X (x) X) = G (block A = -1, B symmetric with equal
+  diagonal), the character is the same numerical matrix under either
+  convention.
+- Second route: P V(r) = exp(+i theta(r)/2 (XX + YY)), theta(r) =
+  2 atan(r) - pi/2 (cos theta = 2r/(1+r^2), sin theta = (r^2-1)/(r^2+1)),
+  and with a1 = s- (x) 1, a2 = Z (x) s-, a1^+ a2 + a2^+ a1 = (XX + YY)/2: the
+  gate is generated by a quadratic fermionic Hamiltonian, the
+  Terhal-DiVincenzo H2 type (p. 4). The two routes agree. These are
+  register fermions, not the physical modes c_{p f}.
+- The user's hint exp(-i theta/2 (XX + YY)) has the opposite off-diagonal
+  sign (differs by 2i sin theta, nonzero for r != 1). The repository
+  convention gives the + sign. Both signs are matchgates, so the verdict
+  does not depend on it.
+
+## 5. T4: hypotheses of the theorems
+
+**Classical input model (R2).** An instance is N, distinct rationals
+K_1, ..., K_N, rationals x_1(0), ..., x_N(0) with distinct values, the
+product flavour input (a bitstring), and the queried output (a subset of
+packets with one assignment, or a request for one sample). Input size n =
+total bit length. From it, classically:
+
+1. *Which pairs cross, and the final order.* v_p = K_p/sqrt(1 + K_p^2) is
+   increasing in K_p, so packets p, q cross iff (x_p - x_q)(K_p - K_q) > 0
+   (the one on the right is faster to the left); rational comparisons.
+2. *Crossing order, ties included.* t_pq = (x_p - x_q)/(v_p - v_q).
+   Deciding t_pq < t_rs or t_pq = t_rs is deciding the sign of
+   (x_p - x_q)(v_r - v_s) - (x_r - x_s)(v_p - v_q), a rational combination of
+   at most four numbers K_i/sqrt(1 + K_i^2) = sign(K_i) sqrt(K_i^2/(1+K_i^2)).
+   The sign of a rational combination of at most four square roots of
+   rationals is decided exactly by a bounded number of isolate-and-square
+   steps, each polynomial in the bit length (written; standard, not
+   machine-checked here). Sorting the at most N(N-1)/2 crossing events
+   uses O(N^2 log N) such comparisons. Coincidences of k >= 3 packets
+   (equal t at one point) are resolved by a fixed lexicographic rule
+   (Sec. 3).
+3. *Gate parameters.* r_pq = a(K_p)/a(K_q), a(K) = sqrt(1 + K^2) + K; the
+   entries beta = 2r/(1+r^2), alpha = i(r^2-1)/(r^2+1) lie in
+   Q(sqrt(1+K_p^2), sqrt(1+K_q^2)) and are computable to m bits in time
+   polynomial in n and m.
+
+So the circuit (at most N(N-1)/2 gates, their slots and parameters) is
+generated uniformly in time polynomial in n, exactly up to the parameter
+values, which are given exactly as algebraic numbers or to any requested
+precision.
+
+| Hypothesis (source, page) | Architecture under F | Status |
+| --- | --- | --- |
+| Gates on bits with indices differing by one (Valiant Main Theorem (b), p. 120; T-D Thm 1, pp. 3-4; J-M Thm 1(i), p. 2) | adjacent slots of the position register (Sec. 3) | met |
+| Only parity-pattern entries nonzero; matchgate realizable (Valiant Prop. 3, p. 118, B(4,4) != 0) | M1, M2 | met |
+| G(A, B), A, B in SU(2) (T-D pp. 3-4) or U(2) with equal det (J-M eq. (1), p. 2) | M1 | met |
+| Input: computational-basis bitstring (Valiant, T-D) / product state (J-M) | product flavour-basis bitstring | met |
+| Output: probability of one queried assignment on a k-bit subset, and sampling (T-D items (2), (3), p. 4; Valiant Thm 4, p. 120; Measurement Theorem, p. 121) / single line <Z_k> (J-M pp. 2-3) | final flavour of a subset of packets | met |
+| Adaptivity | none admitted (T-D cover a specific adaptive extension, Sec. V, p. 16, not needed here) | met |
+| Poly-size, uniform family | above: <= N(N-1)/2 gates, generated in time poly(n) | met (written) |
+
+Simulation notion obtained (R2):
+- Valiant / Terhal-DiVincenzo: polynomial-time algorithms (Pfaffians) for
+  the probability of one queried assignment on any subset, and for
+  sampling, in an exact arithmetic model on the gate entries.
+- Jozsa-Miyake: <Z_k> on one line to m digits in poly(N, m) time (their
+  definition, p. 3, which they state their Theorem 1 achieves).
+- Not re-derived here: error propagation when the algebraic gate entries
+  are replaced by m-bit approximations in the subset-marginal and sampling
+  algorithms (additive error of the probabilities, total-variation error
+  of sampling). Claims about many-line outputs are therefore stated in
+  the exact arithmetic model; the single-line m-digit claim is that of
+  Jozsa-Miyake.
+
+## 6. Scope and what is not shown
+
+- Everything is conditional on F (multi-packet factorization), which is
+  OPEN; the Fock formalization in Sec. 2 is the reading of F used.
+- The logical map is the mu -> 0 limit; finite-mu corrections are not
+  covered.
+- Only chi = pi/2, this flavour code, these resources. For chi not
+  congruent to pi/2 mod pi and r != 1, P V is not a matchgate (co-moving
+  report, A5; chi = 3 pi/2 also meets the condition), and nothing here says
+  whether crossings there are universal (R5).
+- Not shown: universality or its absence with other resources (ancillas,
+  intermediate or adaptive measurement, non-product inputs), other codes,
+  or non-factorized evolutions; a Thirring no-go; uniqueness of F's map at
+  >= 4-fold coincidences.
+- Knill (quant-ph/0108033) was acquired and not used.
+- NOVELTY = OPEN: matchgate simulability, free-fermion simulation and the
+  Yang-Baxter / six-vertex structure are prior art; the contribution, if
+  any, is the identification of the crossing gates with that class.
+
+## 7. What the verifier does and does not certify
+
+Certified (26/26 exact): S1-S4 (Fock-model sign bookkeeping for generic
+v, spectator independence, three-packet sequences), M1-M4 (gate class,
+Valiant identities, exponential form, Jordan-Wigner). Not certified: F;
+the adjacency argument (written); T4 including the input model and the
+square-root sign decision (written, against the sources and pages listed
+in `sources/README.md`); finite-precision error propagation.
+
+## 8. Balance
+
+Contract closed. Coexistence stays OPEN. Under F, the crossing
+architecture at chi = pi/2 in the flavour code is classically simulable
+with the admitted resources in the senses of Sec. 5; an efficient
+universal construction from it would imply BQP in P. No unconditional
+impossibility is claimed. No further contract follows automatically.
+
+=== DOCUMENT 2: informe_astra.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ 2a7342b9b98093585e3f8114524ec6840b6dc70f; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: cli_exit_0 (estado operativo, no validación del contenido)
+modelo: gpt-6-astra, esfuerzo: high, vía: codex exec sellado (codex-cli 0.169.0)
+inicio: 2026-11-14T19:13:00Z  fin: 2026-11-14T19:14:45Z
+documento: /home/adnac/qca-causal-cones/reports/2026-11-14--thirring-matchgate-a5.md ; último commit observado: 3fa82c8 ; sha256 de la copia enviada 6575d2363f68733fbbd2a572ce3d2af8cef25d35bfa316fbc57307b27fc10e22
+documento: /home/adnac/qca-causal-cones/theory/THIRRING_MATCHGATE_A5_GATE.md ; último commit observado: 915e55f ; sha256 de la copia enviada 2d8f2731513828110b0a0345de8547244a6aa703da3ac10b2dc3e424d48884de
+documento: /home/adnac/qca-causal-cones/scripts/verify_thirring_matchgate_a5.py ; último commit observado: eae7876 ; sha256 de la copia enviada 8a5de947de8627d81f641ef7cbe1c21be599dae5c59ff99c06597cea50f0cb1a
+documento: /home/adnac/qca-causal-cones/reports/2026-11-14--thirring-matchgate-a5.txt ; último commit observado: 3fa82c8 ; sha256 de la copia enviada b1af88b87131f9779e0e2be24962214651fbc18022a5dc64e39ac6e9dae217fc
+documento: /home/adnac/qca-causal-cones/reports/2026-11-14--thirring-comoving-packet.md ; último commit observado: 4e192ca ; sha256 de la copia enviada f016490209ccebdb23cbc3faba35987415ad26b744313755b4151d1b86ea1020
+documento: /home/adnac/qca-causal-cones/scripts/verify_thirring_comoving_packet.py ; último commit observado: 2685635 ; sha256 de la copia enviada a72db65cf837921d2448315babce39ff93d9ac8077ab9f226abf77f039a9ac55
+documento: /home/adnac/qca-causal-cones/sources/valiant-stoc2001.pdf ; último commit observado: a1cfd20 ; sha256 de la copia enviada ff54395f2a04bcffcb8f483bca409d9328aceed2545312d7a35479beb9958572
+documento: /home/adnac/qca-causal-cones/sources/quant-ph-0108010v2.pdf ; último commit observado: 7fa79e7 ; sha256 de la copia enviada 71a6c85976f3697a24eb6c32219e6322915f4e2684cd772b25f4f67c3edb271a
+documento: /home/adnac/qca-causal-cones/sources/0804.4050v2.pdf ; último commit observado: 7fa79e7 ; sha256 de la copia enviada 5f6ea3d7cf51f6e1981cd9139743161ca3847f59627c6b278c3e6ed2e52d497a
+entrada_astra.txt sha256 414c08486ef7f7317c2caaa3706ad5c1b6acbc4d967caac13d391938a9f323db
+respuesta sha256 192a3878dfa8f6fdb4125287049f533838da60e7afb66582d812c4f0f0d46300
+-->
+
+**Dictamen global: REPAIR_REQUIRED.** La reducción algebraica a matchgates es correcta bajo F. Las reparaciones afectan al dominio de \(W_{ab}\), las hipótesis computacionales, la conclusión sobre universalidad, una afirmación fuera del acoplamiento estudiado y las páginas citadas. No cuestiono F como premisa.
+
+Revisión realizada únicamente sobre los textos suministrados, por lectura y derivación matemática. No he ejecutado los verificadores ni comprobado commits, hashes o imágenes de los PDF; esas comprobaciones quedan **[UNVERIFIED]** en esta revisión.
+
+**1. Formalización de F: REPAIR_REQUIRED, por el dominio declarado.**
+
+Sobre el sector lógico con exactamente un fermión por paquete, \(W_{ab}\) es una representación fiel de la acción por pares con espectadores. En efecto,
+\[
+c_{by}c_{ax}c^\dagger_{ax}c^\dagger_{by}|0\rangle=|0\rangle,
+\]
+y la recreación devuelve el orden \(a,b\). Por tanto, sus coeficientes son los de \(V\), sin transposición ni intercambio de columnas.
+
+La elección de \(a\) como paquete inicialmente a mayor coordenada coincide con el contrato y con el informe co-móvil, §4. También respeta el marco libre \(B_{\rm out}\): no añade otra evolución de sabor. Esto representa F; no la prueba ni introduce una interacción adicional con espectadores.
+
+**R1 — aclaración obligatoria de dominio.** Frase: «acts on the fermionic Fock space as the even operator … identity on all other occupations».
+
+La fórmula anula, por ejemplo, el vacío y los estados sin ocupación en alguno de los dos paquetes; no es una puerta unitaria sobre todo Fock. Tampoco especifica una extensión física fuera del código. Se cierra indicando que se utiliza **su restricción al sector de una ocupación por paquete**, donde actúa como identidad sobre los factores espectadores. No hace falta definir ni asumir una extensión unitaria fuera de ese sector.
+
+**2. Signo fermiónico: PASS.**
+
+Con las convenciones declaradas, la acción entre registros ordenados por posición es \(-Pv\). Tras aplicar \(W\), la cadena sigue escrita como \(c^\dagger_a c^\dagger_b\); la base final utiliza \(c^\dagger_b c^\dagger_a\). El intercambio aporta \(-1\) para AA, AB, BA y BB: incluso cuando coinciden los sabores, los modos de paquete son distintos.
+
+Los espectadores no cambian ese signo. Cada monomio de \(W\) contiene cuatro operadores del par y conmuta con cualquier creador de un modo espectador: atravesarlo produce \((-1)^4=1\). Esto prueba el resultado para cualquier número de espectadores, más allá de los tres paquetes del ensayo.
+
+El código implementa correctamente:
+
+- el signo Jordan–Wigner mediante la ocupación de modos anteriores;
+- la actuación de derecha a izquierda en `W`;
+- la cadena de creación mediante el recorrido invertido de `string`;
+- la comparación entre bases inicial y final en `register_map`.
+
+Un \(v\) con 16 símbolos independientes es suficiente para esta identidad lineal: no necesita unitariedad ni conservación de sabor. S3 comprueba un sector limitado, pero el argumento de paridad anterior establece la extensión pertinente. El signo acumulado es global porque la secuencia de cruces está fijada y no depende del sabor.
+
+**3. Adyacencia y coincidencias: PASS, con una precisión sobre la resolución.**
+
+El argumento de continuidad es correcto si «estaba entre ellos» significa en un intervalo inmediatamente anterior a \(t_*\). Una coincidencia exclusivamente doble no puede involucrar posiciones no adyacentes.
+
+Con velocidades distintas, una coincidencia múltiple invierte el bloque: cerca de ella,
+\[
+x_p(t)-x_q(t)=-(v_p-v_q)(t-t_*).
+\]
+Una resolución cinemática usa transposiciones adyacentes y cada par una sola vez.
+
+S4 respeta los pares, parámetros y orden temporal. También puede comprobarse algebraicamente sin invocar el recuento 26/26. Escribiendo \(\alpha(t)=ic_t\), \(\beta(t)=b_t\),
+\[
+c_{xy}=\frac{c_x+c_y}{1+c_xc_y},\qquad
+b_{xy}=\frac{b_xb_y}{1+c_xc_y},
+\]
+se obtienen las igualdades de las dos secuencias en el sector de una excitación; la complementación cubre el de dos. Los sectores restantes son escalares.
+
+Para \(k\ge4\), **cada resolución especificada** sigue siendo simulable, aunque no se haya demostrado unicidad. Esto no permite simular una elección desconocida o no computable de resolución. La distinción del informe es válida en ese sentido. Además, S4 y la conmutación de cruces disjuntos proporcionan las relaciones necesarias para demostrar independencia entre descomposiciones reducidas; esa ampliación no es necesaria para simular un circuito dado.
+
+**4. Clase de puerta: PASS.**
+
+Poniendo \(c=(r^2-1)/(r^2+1)\), se tiene \(\beta^2+c^2=1\). Así,
+\[
+A=-I_2,\qquad B=-(\beta I_2+icX)
+\]
+son unitarios y ambos tienen determinante uno. El signo de \(\alpha\) coincide con el repositorio.
+
+En Valiant, p. 118, la primera identidad es precisamente \(\det A=\det B\); las otras cuatro se anulan por el patrón de paridad. Junto con los ocho ceros y \(B(4,4)=-1\), esto satisface la Proposición 3. Las posibles pérdidas de signos del texto extraído en las cuatro identidades triviales no afectan a esta conclusión.
+
+La correspondencia de convenciones merece explicitarse, pero **no produce un error en esta familia**:
+
+- Valiant coloca entradas en filas y salidas en columnas; frente a la convención del verificador corresponde transponer.
+- La lectura complementada de p. 120 corresponde a complementar ambos bits de entrada y salida.
+- Aquí \(G^T=G\) y \((X\otimes X)G(X\otimes X)=G\). Intercambiar simultáneamente los dos índices centrales tampoco cambia \(G\).
+
+Por tanto, la matriz carácter adecuada es efectivamente la misma matriz numérica. Comprobar solo los índices centrales no explica todo este puente; añadirlo sería una aclaración recomendable.
+
+La segunda vía también es correcta:
+\[
+PV=e^{\,i\theta(XX+YY)/2}.
+\]
+El signo positivo sigue de \(\sin\theta=c\). Con la matriz explícita `sm` del código, la identidad Jordan–Wigner es correcta; para posiciones adyacentes las cadenas anteriores se cancelan. Estos fermiones del registro lógico no deben identificarse con los modos físicos \(c_{pf}\).
+
+**5. Hipótesis de los teoremas: REPAIR_REQUIRED.**
+
+Contraste de las siete filas:
+
+1. **Adyacencia:** satisfecha. Valiant, Main Theorem (b), está en **p. 120**, no 119; T–D, pp. 3–4; J–M, p. 2.
+2. **Patrón y realización:** satisfechos, Valiant, Proposición 3, p. 118.
+3. **Bloques unitarios:** satisfechos, T–D, pp. 3–4; J–M, ecuación (1), p. 2.
+4. **Entrada:** correcta: base computacional para Valiant/T–D; producto general para J–M.
+5. **Salida:** T–D, p. 4, establece explícitamente probabilidades de asignaciones de cualquier subconjunto y muestreo. J–M, pp. 2–3, solo garantiza aquí una línea y \(\langle Z_k\rangle\). En Valiant, Theorem 4 está en **p. 120** y Measurement Theorem en **p. 121**.
+6. **Adaptatividad:** no se necesita. T–D admite una extensión concreta, con mediciones completas de ocupación y sin reutilizar modos medidos (§V, p. 16); no adaptatividad arbitraria.
+7. **Tamaño y uniformidad:** solo está demostrado el número cuadrático de puertas.
+
+**R2 — error de hipótesis y precisión.** Frases: «Poly-size, uniform family … met» y «precision handling is that of the cited theorems».
+
+El número de cruces no demuestra uniformidad. F no prescribe representaciones finitas de \(K_p,x_p(0)\), su generación, ni el coste de ordenar tiempos y resolver empates. Que los \(r\) sean algebraicos para \(K\) racionales tampoco basta para afirmar evaluación exacta en tiempo polinómico de bits.
+
+Se cierra especificando una descripción clásica eficiente de la arquitectura: tamaño de entrada, generación uniforme, cálculo de parámetros y orden de cruces —incluidos empates— y coste en bits. Debe distinguirse evaluación algebraica ideal de aproximación: probabilidades con error aditivo declarado y muestreo con error declarado, por ejemplo en distancia de variación total. Para estados producto generales también se necesita acceso eficiente a sus amplitudes.
+
+«Probabilidades de cualquier subconjunto» significa **una asignación consultada**, no imprimir una tabla de \(2^k\) probabilidades.
+
+**R3 — error documental.** Las referencias «Main Theorem … p. 119», «Thm 4, p. 119» y «Measurement Theorem, p. 120» deben corregirse a **120, 120 y 121**, respectivamente.
+
+La inferencia a \(P\) de J–M, p. 3, es legítima una vez asegurada uniformidad, para aceptación mediante una línea con brecha acotada: basta aproximar su probabilidad con error menor que \(1/6\). No se deduce automáticamente para cualquier predicado clásico sobre muchas salidas.
+
+**6. Alcance: REPAIR_REQUIRED.**
+
+La separación entre verificaciones algebraicas, argumentos escritos y F está bien planteada. No afirma demostrar F ni un no-go general de Thirring.
+
+**R4 — exceso en la conclusión.** Frases: «Hence … do not give universal quantum computation» y «excluded as a route to universality».
+
+La simulabilidad eficiente, por sí sola, no demuestra una separación incondicional respecto de computación cuántica universal. J–M, pp. 3 y 16, distingue expresamente esta cuestión. Se cierra afirmando simulabilidad y pertenencia a \(P\) bajo las condiciones anteriores; una universalidad eficiente implicaría \(P=BQP\). Si se pretende imposibilidad algebraica de implementar unitarias arbitrarias, debe darse un argumento estructural separado.
+
+**R5 — error literal fuera del acoplamiento estudiado.** Frase: «For chi != pi/2 and r != 1, P V is not a matchgate».
+
+El resultado adjunto es módulo \(\pi\): \(\chi=3\pi/2\) también satisface la condición. Se cierra escribiendo \(\chi\not\equiv\pi/2\pmod\pi\), donde la familia esté definida, o suprimiendo esa afirmación.
+
+Las reparaciones obligatorias son **R1–R5**. F permanece asumida; el signo \(-1\), la adyacencia y la identificación de la puerta como matchgate no requieren corrección algebraica.
+=== DOCUMENT 3: verify_thirring_matchgate_a5.py ===
+
+#!/usr/bin/env python3
+"""Exact checks for the Thirring crossing-matchgate gate (A5), tasks T2-T3.
+
+Contract: theory/THIRRING_MATCHGATE_A5_GATE.md (frozen at 915e55f).
+Report:   reports/2026-11-14--thirring-matchgate-a5.md
+
+Family V(r) and its convention (alpha = +i(r^2-1)/(r^2+1) at chi = pi/2,
+basis AA, AB, BA, BB = 00, 01, 10, 11, first factor = packet on the larger
+coordinate before the crossing) from reports/2026-11-14--thirring-comoving-
+packet.md; `alpha_beta`, `Vmat`, `SWAP` imported read-only from
+scripts/verify_thirring_comoving_packet.py (not modified; SHA256 recorded).
+
+Formalization of F used by T2 (stated in the report): a crossing of packets
+a (right) and b (left) acts on the Fock space as the even operator
+W_ab = sum v[(x'y'),(xy)] c+_{a x'} c+_{b y'} c_{b y} c_{a x}, identity on
+everything else, and the N-packet map is the time-ordered product of the W's.
+
+Certified (exact SymPy; Fock space by explicit Jordan-Wigner signs):
+  S1  two packets: W_ab c+_{a x} c+_{b y}|0> = sum v c+_{a x'} c+_{b y'}|0>
+      for a generic symbolic 4x4 v (16 symbols).
+  S2  three packets, generic v: in the position-ordered register (creation
+      string ordered right to left), a crossing of slots (1,2) with a
+      spectator on the left of the string's tail acts as kron(-P v, 1), and a
+      crossing of slots (2,3) with a spectator in front as kron(1, -P v): the
+      sign is -1 on every basis state, independent of v and of the spectator.
+  S3  W_ab commutes with c+ of a third packet on the logical sector (even).
+  S4  three packets, v = V(r) at chi = pi/2, both time orders of the three
+      crossings (theta_a > theta_b > theta_c): the Fock-level products equal
+      the register products G12(y) G23(xy) G12(x) and G23(x) G12(xy) G23(y),
+      G = -P V, x = r_ab, y = r_bc; and the two are equal (symbolic x, y).
+  M1  G(r) = -P V(r) = G(A, B) with A = -1, B = -[[beta, alpha], [alpha, beta]]
+      at chi = pi/2: A, B in SU(2) (unitary, det 1) for all r > 0.
+  M2  Valiant p.118: the five matchgate identities hold for G(r), for both
+      assignments of the middle rows/columns; B(4,4) != 0.
+  M3  second route: P V(r) = exp(+i theta/2 (XX + YY)) with
+      cos theta = 2r/(1+r^2), sin theta = (r^2-1)/(r^2+1),
+      theta = 2 atan(r) - pi/2; the hint's exp(-i theta/2 (XX+YY)) has the
+      opposite off-diagonal sign (recorded, checked unequal for r != 1).
+  M4  Jordan-Wigner: with a1 = s- (x) 1, a2 = Z (x) s-,
+      a1^+ a2 + a2^+ a1 = (XX + YY)/2, so P V(r) = exp(i theta H),
+      H quadratic.
+
+Not certified: F itself; T2's argument that crossings are always between
+position-adjacent packets (written); T4 (matching the theorem hypotheses,
+written against the sources).
+"""
+import hashlib
+import importlib.util
+import itertools
+import json
+from pathlib import Path
+
+import sympy as sp
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "reports/2026-11-14--thirring-matchgate-a5"
+_spec = importlib.util.spec_from_file_location("co", ROOT / "scripts/verify_thirring_comoving_packet.py")
+co = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(co)
+alpha_beta, Vmat, SWAP = co.alpha_beta, co.Vmat, co.SWAP
+I = sp.I
+CHECKS = []
+
+
+def exact(name, cond):
+    CHECKS.append(dict(name=name, passed=bool(cond)))
+
+
+def zero(x):
+    return sp.simplify(sp.cancel(sp.expand(x))) == 0
+
+
+def zero_matrix(M):
+    return all(zero(e) for e in M)
+
+
+# ---------------- Fock space ----------------
+# state: dict {occupation tuple: coefficient}; modes 2*p + f (packet p, flavour f)
+NMODES = 6
+
+
+def cdag(m, st):
+    out = {}
+    for occ, c in st.items():
+        if occ[m]:
+            continue
+        sgn = (-1) ** sum(occ[:m])
+        new = list(occ); new[m] = 1
+        out[tuple(new)] = out.get(tuple(new), 0) + sgn * c
+    return out
+
+
+def cann(m, st):
+    out = {}
+    for occ, c in st.items():
+        if not occ[m]:
+            continue
+        sgn = (-1) ** sum(occ[:m])
+        new = list(occ); new[m] = 0
+        out[tuple(new)] = out.get(tuple(new), 0) + sgn * c
+    return out
+
+
+def add(a, b, k=1):
+    out = dict(a)
+    for o, c in b.items():
+        out[o] = out.get(o, 0) + k * c
+    return out
+
+
+VAC = {tuple([0] * NMODES): sp.Integer(1)}
+PAIRS = [(0, 0), (0, 1), (1, 0), (1, 1)]   # (x, y) = flavours; index 2x + y
+
+
+def W(a, b, v):
+    """Even operator of the crossing of packet a (first) with packet b."""
+    def op(st):
+        res = {}
+        for j, (x, y) in enumerate(PAIRS):
+            # operator order c+_{a x'} c+_{b y'} c_{b y} c_{a x}: rightmost acts first
+            t = cann(2 * b + y, cann(2 * a + x, st))
+            if not t:
+                continue
+            for i, (xp, yp) in enumerate(PAIRS):
+                if v[i, j] == 0:
+                    continue
+                res = add(res, cdag(2 * a + xp, cdag(2 * b + yp, t)), v[i, j])
+        return res
+    return op
+
+
+def string(packets, flavours):
+    """c+_{p1 f1} c+_{p2 f2} ... |0>, leftmost operator = first slot."""
+    st = VAC
+    for p, f in reversed(list(zip(packets, flavours))):
+        st = cdag(2 * p + f, st)
+    return st
+
+
+def inner(a, b):
+    return sp.expand(sum(sp.conjugate(c) * b.get(o, 0) for o, c in a.items()))
+
+
+def register_map(op, order_in, order_out, n):
+    basis = list(itertools.product((0, 1), repeat=n))
+    M = sp.zeros(2 ** n, 2 ** n)
+    for j, fin in enumerate(basis):
+        img = op(string(order_in, fin))
+        for i, fout in enumerate(basis):
+            M[i, j] = inner(string(order_out, fout), img)
+    return M
+
+
+def generic_v():
+    return sp.Matrix(4, 4, lambda i, j: sp.Symbol(f"v{i}{j}"))
+
+
+def check_S1():
+    v = generic_v()
+    M = register_map(W(0, 1, v), (0, 1), (0, 1), 2)
+    exact("S1-two-packets-identity-order-gives-v", zero_matrix(M - v))
+
+
+def check_S2():
+    v = generic_v()
+    I2 = sp.eye(2)
+    # slots right-to-left hold packets (0, 1, 2); crossing of packets 0,1 (slots 1,2)
+    M12 = register_map(W(0, 1, v), (0, 1, 2), (1, 0, 2), 3)
+    exact("S2-crossing-slots(1,2)-equals-kron(-Pv,1)", zero_matrix(M12 - sp.kronecker_product(-SWAP * v, I2)))
+    # crossing of packets 1,2 (slots 2,3), packet 0 in front of the string
+    M23 = register_map(W(1, 2, v), (0, 1, 2), (0, 2, 1), 3)
+    exact("S2-crossing-slots(2,3)-equals-kron(1,-Pv)", zero_matrix(M23 - sp.kronecker_product(I2, -SWAP * v)))
+    # different spectator labelling: packets (2, 0, 1) in slots, crossing 2 with 0
+    M = register_map(W(2, 0, v), (2, 0, 1), (0, 2, 1), 3)
+    exact("S2-relabelled-crossing-equals-kron(-Pv,1)", zero_matrix(M - sp.kronecker_product(-SWAP * v, I2)))
+
+
+def check_S3():
+    v = generic_v()
+    ok = True
+    for f in (0, 1):
+        for x, y in PAIRS:
+            st = string((0, 1), (x, y))
+            lhs = W(0, 1, v)(cdag(2 * 2 + f, st))
+            rhs = cdag(2 * 2 + f, W(0, 1, v)(st))
+            d = add(lhs, rhs, -1)
+            ok &= all(zero(c) for c in d.values())
+    exact("S3-W-commutes-with-spectator-creation", ok)
+
+
+def G(r):
+    return -SWAP * Vmat(r, -I)
+
+
+def check_S4():
+    x, y = sp.symbols("x y", positive=True)
+    I2 = sp.eye(2)
+    rab, rbc, rac = x, y, x * y
+    a, b, c = 0, 1, 2
+    # order 1: (ab), then (ac), then (bc); slots right-to-left start (a, b, c)
+    def seq(ops):
+        def f(st):
+            for o in ops:
+                st = o(st)
+            return st
+        return f
+    o1 = seq([W(a, b, Vmat(rab, -I)), W(a, c, Vmat(rac, -I)), W(b, c, Vmat(rbc, -I))])
+    M1 = register_map(o1, (a, b, c), (c, b, a), 3)
+    R1 = sp.kronecker_product(G(y), I2) * sp.kronecker_product(I2, G(x * y)) * sp.kronecker_product(G(x), I2)
+    exact("S4-order1-Fock=G12(y)G23(xy)G12(x)", zero_matrix(M1 - R1))
+    o2 = seq([W(b, c, Vmat(rbc, -I)), W(a, c, Vmat(rac, -I)), W(a, b, Vmat(rab, -I))])
+    M2 = register_map(o2, (a, b, c), (c, b, a), 3)
+    R2 = sp.kronecker_product(I2, G(x)) * sp.kronecker_product(G(x * y), I2) * sp.kronecker_product(I2, G(y))
+    exact("S4-order2-Fock=G23(x)G12(xy)G23(y)", zero_matrix(M2 - R2))
+    exact("S4-both-orders-equal", zero_matrix(R1 - R2))
+
+
+# ---------------- T3 ----------------
+def check_M():
+    r = sp.symbols("r", positive=True)
+    Gm = G(r)
+    A = sp.Matrix([[Gm[0, 0], Gm[0, 3]], [Gm[3, 0], Gm[3, 3]]])
+    B = sp.Matrix([[Gm[1, 1], Gm[1, 2]], [Gm[2, 1], Gm[2, 2]]])
+    al, be = alpha_beta(r, -I)
+    exact("M1-alpha-repo-sign=+i(r^2-1)/(r^2+1)", zero(al - I * (r**2 - 1) / (r**2 + 1)))
+    exact("M1-A=-1", zero_matrix(A + sp.eye(2)))
+    exact("M1-B=-[[beta,alpha],[alpha,beta]]", zero_matrix(B + sp.Matrix([[be, al], [al, be]])))
+    exact("M1-parity-pattern(zeros-off-blocks)",
+          all(Gm[i, j] == 0 for i in range(4) for j in range(4)
+              if (i in (0, 3)) != (j in (0, 3))))
+    for nm, X in (("A", A), ("B", B)):
+        Xc = X.applyfunc(lambda e: sp.conjugate(e))
+        exact(f"M1-{nm}-unitary", zero_matrix(Xc.T * X - sp.eye(2)))
+        exact(f"M1-det{nm}=1", zero(X.det() - 1))
+    # Valiant p.118 identities; index 1..4 = (empty, {i}, {j}, {i,j}); two middle assignments.
+    # Signs as printed in the PDF (minus signs checked on the page image, see report).
+    for tag, perm in (("00,01,10,11", [0, 1, 2, 3]), ("00,10,01,11", [0, 2, 1, 3])):
+        Bv = sp.Matrix(4, 4, lambda i, j: Gm[perm[i], perm[j]])
+        e = lambda i, j: Bv[i - 1, j - 1]
+        ids = [e(1, 1) * e(4, 4) - e(2, 2) * e(3, 3) - e(1, 4) * e(4, 1) + e(2, 3) * e(3, 2),
+               e(2, 1) * e(4, 4) - e(2, 2) * e(4, 3) - e(4, 1) * e(2, 4) + e(2, 3) * e(4, 2),
+               e(3, 1) * e(4, 4) + e(3, 3) * e(4, 2) - e(4, 1) * e(3, 4) - e(3, 2) * e(4, 3),
+               e(1, 3) * e(4, 4) + e(3, 3) * e(2, 4) - e(1, 4) * e(4, 3) - e(2, 3) * e(3, 4),
+               e(1, 2) * e(4, 4) - e(2, 2) * e(3, 4) - e(1, 4) * e(4, 2) + e(3, 2) * e(2, 4)]
+        exact(f"M2-Valiant-five-identities-{tag}", all(zero(t) for t in ids))
+        exact(f"M2-B(4,4)!=0-{tag}", not zero(e(4, 4)))
+    # M3 second route
+    th = sp.symbols("theta", real=True)
+    X = sp.Matrix([[0, 1], [1, 0]]); Y = sp.Matrix([[0, -I], [I, 0]])
+    H = (sp.kronecker_product(X, X) + sp.kronecker_product(Y, Y)) / 2
+    E = sp.simplify((I * th * H).exp())
+    target = sp.Matrix([[1, 0, 0, 0], [0, sp.cos(th), I * sp.sin(th), 0],
+                        [0, I * sp.sin(th), sp.cos(th), 0], [0, 0, 0, 1]])
+    exact("M3-exp(i theta (XX+YY)/2)=1+[[cos,i sin],[i sin,cos]]+1",
+          all(sp.simplify((E - target)[k].rewrite(sp.exp)) == 0 for k in range(16)))
+    cth, sth = 2 * r / (1 + r**2), (r**2 - 1) / (r**2 + 1)
+    PV = SWAP * Vmat(r, -I)
+    exact("M3-PV(r)=target(cos=2r/(1+r^2),sin=(r^2-1)/(r^2+1))",
+          zero_matrix(PV - target.subs({sp.cos(th): cth, sp.sin(th): sth})))
+    thr = 2 * sp.atan(r) - sp.pi / 2
+    exact("M3-theta=2atan(r)-pi/2", zero(sp.expand_trig(sp.cos(thr)) - cth) and zero(sp.expand_trig(sp.sin(thr)) - sth))
+    hint = target.subs({sp.cos(th): cth, sp.sin(th): -sth})     # exp(-i theta (XX+YY)/2)
+    diff = (PV - hint)[1, 2]
+    exact("M3-hint-sign-differs-for-r!=1", zero(diff - 2 * I * sth) and not zero(sth.subs(r, 2)))
+    # M4 Jordan-Wigner
+    sm = sp.Matrix([[0, 1], [0, 0]]); Z = sp.diag(1, -1); I2 = sp.eye(2)
+    a1 = sp.kronecker_product(sm, I2); a2 = sp.kronecker_product(Z, sm)
+    exact("M4-JW-a1^+a2+a2^+a1=(XX+YY)/2", zero_matrix(a1.T * a2 + a2.T * a1 - H))
+    exact("M4-JW-anticommutation", zero_matrix(a1 * a2 + a2 * a1) and zero_matrix(a1 * a1.T + a1.T * a1 - sp.eye(4)))
+
+
+def main():
+    check_S1(); check_S2(); check_S3(); check_S4(); check_M()
+    paths = ("scripts/verify_thirring_matchgate_a5.py", "scripts/verify_thirring_comoving_packet.py",
+             "theory/THIRRING_MATCHGATE_A5_GATE.md")
+    data = dict(checks=CHECKS,
+                provenance={p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in paths})
+    OUT.with_suffix(".json").write_text(json.dumps(data, indent=2) + "\n")
+    passed = sum(c["passed"] for c in CHECKS)
+    lines = [f"Author checks: {passed}/{len(CHECKS)} exact (SymPy {sp.__version__})."]
+    lines += [f"{'PASS' if c['passed'] else 'FAIL'} {c['name']}" for c in CHECKS]
+    OUT.with_suffix(".txt").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+    if passed != len(CHECKS):
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()
+
+=== DOCUMENT 4: valiant-stoc2001.pdf (plain text extracted from the PDF; formulas may be garbled, the PDF is authoritative) ===
+
+  Quantum Computers that can be Simulated Classically in
+                                   
+                  Polynomial Time
+
+                                                           Leslie G. Valiant
+                                            Division of Engineering and Applied Sciences
+                                                          Harvard University
+                                                        Cambridge, MA 02138
+
+
+ABSTRACT                                                                                   augmented in two ways: On the one hand random oper-
+A model of quantum computation based on unitary ma-                                        ations are often allowed in addition to the originally pro-
+trix operations was introduced by Feynman and Deutsch.                                     posed deterministic ones[22]. On the other, the number of
+It has been asked whether the power of this model exceeds                                  computational steps is restricted to be at most polynomial
+that of classical Turing machines. We show here that a                                     in the input length, which allows such striking phenomena
+signi cant class of these quantum computations can be sim-                                 as NP-completeness to be expressed[10]. Taken together the
+ulated classically in polynomial time. In particular we show                               resulting theory has provided strong circumstantial evidence
+that two-bit operations characterized by 4  4 matrices in                                 for the robustness of the resulting model[16]. The following
+which the sixteen entries obey a set of ve polynomial re-                                  statement is a variant of how this robustness is sometimes
+lations can be composed according to certain rules to yield                                expressed, and might be called the Polynomial Time Turing
+a class of circuits that can be simulated classically in poly-                             Hypothesis:
+nomial time. This contrasts with the known universality                                             Any physical computing device can be simu-
+of two-bit operations, and demonstrates that eÆcient quan-                                      lated by a randomizing Turing machine that, as
+tum computation of restricted classes is reconcilable with                                      the input instances vary, takes a number of steps
+the Polynomial Time Turing Hypothesis. In other words it                                        that grows as at most some xed polynomial in
+is possible that quantum phenomena can be used in a scal-                                       the quantity T + S + E where T; S and E are the
+able fashion to make computers but that they do not have                                        time, space and energy used by the computing de-
+superpolynomial speedups compared to Turing machines for                                        vice.
+any problem. The techniques introduced bring the quantum
+computational model within the realm of algebraic complex-                                    While no generally accepted counterexample is known,
+ity theory. In a manner consistent will one view of quan-                                  this hypothesis has, and can be expected to continue to,
+tum physics, the wave function is simulated deterministi-                                  come under repeated challenge. The fundamental sources of
+cally, and randomization arises only in the course of making                               challenge are the accepted laws of physics that are expressed
+measurements. The results generalize the quantum model                                     in terms of functions that are not known to be polynomial
+in that they do not require the matrices to be unitary. In                                 time computable classically. For example the wave func-
+a di erent direction these techniques also yield determinis-                               tion for indistinguishable bosons can be expressed as a ma-
+tic polynomial time algorithms for the decision and parity                                 trix permanent i.e. the determinant with all positive signs,
+problems for certain classes of read-twice Boolean formulae.                               (e.g.[26,29]). This function is known to be #P -complete[31],
+All our results are based on the use of gates that are de ned                              or, in other words, as hard as counting the number of solu-
+in terms of their graph matching properties.                                               tions of NP-complete problems and therefore at least as hard
+                                                                                           as the decision question for NP-complete problems. Such a
+1.   BACKGROUND                                                                            situation poses a challenge in that it implies that among the
+  The now classical theory of computational complexity is                                  following three statements at least one must be true: (a) the
+based on the computational model proposed by Turing[30]                                    Polynomial Time Turing Hypothesis is false, (b) some reason
+                                                                                           excludes the possibility of a physical device evaluating ap-
+This research was supported in part by grants NSF-CCR-                                    propriate instances of the hard problem that appears in the
+95-04436, NSF-CCR-98-77049 and ARO-DAAL-03092-G-                                           statement of the given physical law, or (c) the supposed hard
+0115                                                                                       problem can be computed classically in polynomial time by
+                                                                                           a yet undiscovered algorithm. Identifying the statement or
+                                                                                           statements in such a list that are true would clearly add to
+                                                                                           our knowledge and o ers a valid scienti c goal. This paper
+Permission to make digital or hard copies of all or part of this work for                  is concerned with a particular instance of (c).
+personal or classroom use is granted without fee provided that copies are                     The law of physics that has received most attention from
+not made or distributed for profit or commercial advantage and that copies                 this viewpoint, and which is the subject of this paper, is the
+bear this notice and the full citation on the first page. To copy otherwise, to            formulation of quantum mechanics as unitary operations.
+republish, to post on servers or to redistribute to lists, requires prior specific         Benio [2] observed that classical Boolean operations could
+permission and/or a fee.
+STOC’01, July 6-8, 2001, Hersonissos, Crete, Greece.                                       be formulated in these terms. Subsequently Feynman17]
+Copyright 2001 ACM 1-58113-349-9/01/0007 ...$5.00.                                         and Deutsch[12] suggested that unitary transformations in
+
+                                                                                     114
+general o er a model of computation that may violate the                   and (ii) in this de nition. For brevity we shall abbreviate
+Polynomial Time Turing Hypothesis and asked whether it                     M (G) by G whenever it is clear that a matrix is intended.
+did. Bernstein and Vazirani[3] showed how uniformity over                    The PfaÆan of an n  n skew-symmetric matrix B is de-
+all input sizes could be incorporated in the quantum com-                   ned to be zero if n is odd, one if n = 0, and if n is even
+putation model and hence that quantum polynomial time                      with n = 2k and k > 0 then it is de ned as:
+class BQP could be de ned. While it is not generally be-                                      X
+lieved that this class contains all of #P or even NP, Shor[27]                     Pf(B ) =         w(i1 ; i2 )w(i3 ; i4 ) : : : w(i2k 1 ; i2k )
+has shown that two particular problems, namely integer fac-                                    
+torization and discrete logarithms, which are not known to                 where
+be polynomial time computable, do lie in BQP.
+   In the model of quantum computation that we consider a                    (i)  = [i1 ; i2 ; i3 ; : : : ; i2k ] is a permutation on [1; 2; : : : ; n],
+gate operating on k Boolean bits is represented as a 2k  2k
+unitary matrix. A unitary matrix A is any matrix with com-
+plex number entries such that AAt = I , where I is the iden-               (ii) summation is over all such permutations  where fur-
+tity matrix, A is the complex conjugate of A, and At is the                    ther
+transpose of A . We note, however, that our constructions                       i1 < i2 ; i3 < i4 ; : : : ; i2k 1 < i2k , and
+are all based on general matrix properties in which unitar-                      i1 < i3 < i5 < : : : < i2k 1 , and
+ity plays no essential part, and, in that sense, our treatment
+generalizes the quantum computational model.                                (iii)  2 f 1; 1g is the sign of the permutation, i.e., it is
+   Some basic results on the quantum computational model                             1 or +1 according to whether the number of trans-
+can be found in [12-15]. Most notably, it is known that there                      positions or swaps of pairs of distinct elements ij , ik ,
+exist 2-bit gates which in conjunction with arbitrary 1-bit                        needed to reorder  to the identity permutation is
+gates can approximate arbitrary unitary matrices. On the                           odd or even. (An equivalent de nition in this con-
+other hand, it is easy to see that circuits composed of one-bit                    text is that it is the sign or parity of the number of
+gates alone can be simulated deterministically in polynomial                       overlapping pairs, where a pair of edges (i2r 1 ; i2r ),
+time since it is possible to follow the evolution of each bit                      (i2s 1 ; i2s ) is overlapping i i2r 1 < i2s 1 < i2r < i2s
+independently. A central component of Grover's algorithm                           or i2s 1 < i2r 1 < i2s < i2r . Note that it is implicit
+is in this class [19]. A more interesting class where only a                       here that i2r 1 < i2r and i2s 1 < i2s .)
+discrete set of gates is allowed but following the evolution
+of a small set of basis operators is suÆcient, is attributed to               A matching E   E of G is a set of edges such that if
+Knill[18].                                                                 (i; j ), (r; s) are distinct edges in E  then i, j , r, s are all
+   Our approach can be viewed as a branch of algebraic com-                distinct vertices. In a graph with an even number 2k of
+plexity theory in which computation gates are simulated by                 nodes a matching E  is perfect if it contains k edges. (In
+graph matching properties [7, 8, 28, 32]. In [31,32] this is               other words every i 2 V is an endpoint of, or is saturated
+done in the context of the matrix permanent. In this paper                 by, some edge in E  .)
+we use encodings by matrix properties that are known to be                    If B is the matrix of the graph G then each monomial in
+polynomial time computable, namely the PfaÆan function,                    the PfaÆan corresponds to a distinct perfect matching in G.
+the decision problem for matchings, and the parity problem                 The monomial w(i1 ; i2 ) w(i3 ; i4 ) : : : w(i2k 1 ; i2k ) in Pf (G)
+for matchings, respectively.                                               corresponds to the perfect matching f(i1 ; i2 ), (i3 ; i4 ); : : : ;
+                                                                           (i2k 1 ; i2k )g in G. This term will have coeÆcient  that
+2.     PFAFFIANS                                                           depends on the sign of this permutation of the indices in the
+                                                                           manner indicated in the de nition of the PfaÆan.
+   We describe some standard graph-theoretic notions and                      The following fact, due to Cayley [9] (see also [5] Theorem
+their relation to the PfaÆan of a matrix.                                  9.5.2) relates the PfaÆan to the determinant.
+   A weighted undirected graph, or simply a graph, G is
+a triple (V; E; W ) where V is a set of vertices each repre-                 Theorem 1. For any skew-symmetric matrix B
+sented by a distinct positive integer, E is a set of edges
+or unordered pairs (i; j ) of the vertices i; j 2 V , and W                                         Det (B ) = (Pf (B ))2 :
+is the set of weights, each weight w(i; j ) corresponding to
+the edge (i; j ) 2 E . For example, V = f1; 2; 3g, E =                        It is known that for matrices with elements from any eld
+f(1; 2); (2; 3); (1; 3)g, w(1; 2) = w(2; 3) = w(1; 3) = 2, is the          the complexity of computing the determinant is to within
+complete graph on three vertices in which every edge has                   a constant multiplicative factor the same as that of matrix
+weight 2.                                                                  multiplication[28]. Further for n  n matrices this cost is
+   An n  n matrix B is skew-symmetric if for all i; j (1                 known to be upper bounded by O(n ), where < 2:38 [11].
+i; j  n) B (i; j ) = B (j; i). The matrix of the graph G =                It follows that the square of the PfaÆan is polynomial time
+(V; E; W ) where V = f1; 2; : : : ; ng is the n  n matrix M (G)           computable, and for complex matrices, so is the square of the
+where the (i; j ) entry M (G)(i; j ) is de ned to equal:                   modulus jPf(B )j2 = j(Pf(B ))2 j. EÆcient parallel algorithms
+                                                                           for these functions also follow from similar results for the
+   (i) w(i; j ) if i < j ,                                                 determinant [4].
+  (ii) w(i; j ) if i > j , and                                                For any n  n matrix B we call a set A = fi1 ; i2 ; : : : ; ir g 
+                                                                           f1; 2; : : : ; ng an index set. Further we denote by B [i1 ; i2 ; : : : ; ir ]
+ (iii) 0 otherwise.                                                        or B [A] the (n r)  (n r) matrix obtained by deleting
+In the more general case that V = fk1 ; k2 ; : : : ; kn g where            the ithj row and column from B for all the r values of j
+k1 < k2 < : : : < kn , weight w(ki ; kj ) replaces w(i; j ) in (i)         (1  j  r).
+
+                                                                     115
+3.    PFAFFIAN SUMS                                                       as a factor will have an identical monomial in Pf(B 0 ) ex-
+   We start by de ning the notion of a PfaÆan Sum, which                  cept that the latter will contain B 0 (i; j ) where B 0 (i; j ) =
+expresses the PfaÆan summed over exponentially many mi-                     B 0 (j; i) = B (i; j ). Therefore at least some terms in Pf(B )
+nors of a matrix. We then go on to show that the PfaÆan                   and Pf(B 0 ) have opposite signs, and it follows that they all
+Sum can be expressed in terms of the standard PfaÆan, and                 must have opposite signs. 2
+its square is therefore computable in polynomial time.                       Lemma 2. If skew-symmetric matrices B , B 0 are identi-
+  De nition. The PfaÆan Sum of an nn skew-symmetric                      cal except that for some i 2 f1; 2; : : : ; ng for all j B (i; j ) =
+matrix B is a polynomial over indeterminates 1 : : : n such               B 0 (i; j ) and B (j; i) = B 0 (j; i) then Pf(B ) = Pf(B 0 ).
+that                                                                         Proof. The monomials of Pf(B ), Pf(B 0 ) can be paired so
+                                       !
+                          X Y                                             that they are identical, except that they contain one factor
+              PfS(B ) =              i Pf(B [A]):                        B (k; i) or B 0 (k; i), respectively, or one factor of B (i; k) or
+                          A    i2A                                        B 0 (i; k), respectively, for some k. In either case the two
+Summation here is over the various principal minors ob-                   factors will have opposite signs by assumption, and hence
+tained from B by deleting some subset A of the indices. In                so will the monomials. 2
+this paper we shall only need the instances in which each i
+is xed to be 0 or 1. The i for which i = 0 can be thought                  Lemma 3. Let (n) be the n  n skew-symmetric matrix
+of as the unomittable indices, and those with i = 1 as the               de ned above with n even. Then
+omittable indices. Then for this (0,1)-case the PfaÆan Sum                                      Pf((n) ) = 1 : : : n :
+is simply the sum of the Pf(B [A]) over those A that contain
+only omittable indices.
+   We note that one can similarly de ne a Determinant Sum
+                                       !                                     Proof. We prove this by induction on even values of n.
+                          X Y                                             Clearly Pf((2) ) = 1 2 . Now assume that the result holds
+            DetS(B ) =               i Det (B [A]):                      for some even n 2. Consider the monomials in the expan-
+                          A    i2A                                        sion for (n) . In all the monomials that contain the element
+It is easy to verify that for any matrix B                                (n) (n 1; n) = n 1 n the complementary factors clearly
+                    DetS(B ) = Det (B + )                                sum to (n 2) , which by induction equals 1 : : : n 2 . It is
+                                                                          therefore suÆcient to observe that all the other monomials
+where (i; j ) = 0 if i 6= j , and (i; i) = i for every i. Thus         in (n) cancel in pairs: Any such other monomial contains a
+a summed determinant is as easy to compute as a single                    product (n) (i; n 1)(n) (j; n) and has a companion mono-
+determinant. We shall now show that the same holds for                    mial that is identical except that this product is replaced by
+the PfaÆan. We de ne the n  n matrix (n) as follows:                    (n) (i; n)(n) (j; n 1), which is equal in value but gives
+                       8                                                  rise to the opposite sign because of the extra transposition
+                       < ( 1)j i+1 i j if i < j;                        (n 1; n). 2
+           (n)
+           (i; j ) = ( 1)i j i j          if i > j;
+                       : 0                   if i = j:             Proof of Theorem. First we assume that n is even. For
+                                                                some    xed A  f1; : : : ; ng consider the monomial set N of
+Also for an n  n matrix B we de ne B + to be the (n +          Pf(B +(n) ) that involve  elements in all rows and columns
+1)  (n + 1) matrix of which the rst n rows and columns         indexed by A, and involve B elements in the remaining rows
+equal B itself, and the (n + 1)st row and column entries are    and columns. We claim that the monomials in N sum to
+all zero.
+                                                                                       Pf(B [A])Pf((A) )                 (1)
+    PfaÆan Sum Theorem. For an n  n skew-symmetric
+matrix B                                                        where (A) is the jAj matrix in which for each i there
+                      (n)                                      has been substituted the indeterminate j where j is the ith
+PfS(B ) = Pf(B ++  (n)+1)if n is even;
+              Pf(B +         ) withn+1 set to 1; if n is odd: smallest element of A. By applying Lemma 3 to the second
+                                                                term here and summing over all choices of A, the Theorem
+Lieb [23] gave a proof for the instance of this relationship    then follows.
+in which the i are equal for all i, and n is even. One can        To establish this claim we consider a sequence of  trans-
+derive our result from that instance. We shall, however,        positions or swaps on the indices (i.e., row and column num-
+give a direct proof of this fact that makes the associated      bers) of the original matrix that results in the indices A
+combinatorial structures more explicit.                         migrating to n jAj + 1, n jAj + 2; : : : ; n, and an accom-
+                                                                panying process of sign changes to the elements described
+    Lemma 1. If matrix B 0 is obtained from skew-symmetric      below. We claim that:
+matrix B by rst interchanging the elements of rows i and
+j , and then interchanging the elements of columns i and j ,      (a) The sequence of transpositions and sign changes to
+then Pf(B ) = Pf(B 0 ).                                               the elements causes all monomials in N to remain un-
+                                                                      changed in sign in the PfaÆan.
+    Proof. The speci ed matrix operation clearly leaves the
+determinant function unchanged. By Theorem 1 it follows           (b) The matrix that is the outcome of the process has the
+that the operation either leaves the PfaÆan invariant, or             B entries in the rst n jAj rows/columns and these
+multiplies it by 1. Assume without loss of generality that            contribute a multiplicand of Pf(B ([A]) (with positive
+i < j . Then each monomial in Pf(B ) that contains B (i; j )          sign) to the sum of N .
+
+                                                                    116
+  (c) The matrix that is the outcome of the process has the             For example k = 1 corresponds to one bit 2  2 matrix trans-
+       entries in the last jAj rows/columns and these con-             formations and k = 2 corresponds to two bit 4  4 transfor-
+      tribute a multiplicand of Pf((A) ) to the sum of N .             mations. In all cases we need to specify a correspondence
+                                                                        between subsets of X and the rows of the matrix, and an-
+   The conjunction of these three claims clearly implies that           other correspondence between subsets of Y and the columns
+the quantity (1) above equals the original sum of N as                  of the matrix. We insist that there is the following consis-
+needed. 2                                                               tency between the row and column orderings. We assume
+                                                                        that there is a bijection f that maps the elements of X to
+4.     MATCHGATES                                                       elements of Y such that if the ith row corresponds to subset
+   We shall simulate each quantum or other gate by what we              X 0 of X and the ith column to subset Y 0 of Y then Y 0 is
+call a matchgate.                                                       the image of X 0 under f . The character matrix is therefore
+   A matchgate is a quadruple (G; X; Y; T ) where G is a                de ned as a matrix of the elements ( ; Z ) with some such
+graph (V; E; W ), X  V is a set of input vertices, Y  V               consistent row/column ordering.
+is a set of output vertices, and T  V is a set of omittable               The character of the matrix can be thought of as deter-
+vertices such that (i) X , Y and T are all disjoint, and (ii)           mining the nondeterministic steps allowed by a matchgate.
+8i 2 T if j 2 X then j < i and if j 2 Y then j > i.                     If f0; 1g vector x is speci ed for the bits of X \ Z then for
+   The matchings we consider will be those that saturate all            each possible f0; 1g vector y for Y \ Z , the corresponding
+the unomittable nodes, i.e. V T , and also some, possibly               element in the character matrix gives the value to be associ-
+empty, subset of T . When we de ne the PfaÆan Sum of                    ated with nondeterministic output y for input x. The overall
+a matchgate we shall perform the substitutions i = 1 if                computations of the circuits composed of these matchgates
+i 2 T , and i = 0 otherwise.                                           are like counting Turing machines [31] or quantum compu-
+   We call X [ Y the external nodes. For Z  X [ Y we                   tations [3,13] in that the values are multiplied over the steps
+de ne the character ( ; Z ) of with respect to Z to be the             of individual nondeterministic computation branches, and
+product                                                                 then added over all possible branches to obtain the numeri-
+                        ( ; Z )PfS(G0 )                                cal value of the computation.
+                                                                           First we shall show that all one-bit or 2  2 matrix trans-
+   where: (a) G0 = (V Z; E 0 ; W 0 ) where further E 0 is the           formations can be simulated by matchgates.
+restriction of E to edges with both endpoints in V Z ,
+and W 0 is the corresponding restriction of W , and (b) the               Proposition 1. For any eld F and any 2  2 matrix
+modi er ( ; Z ) is a multiplier of 1 or 1 that counts the              B of elements from F there exists a four node matchgate
+parity of the number of overlaps between matching edges in              with weights drawn from F such that ( ) = B .
+E 0 and external edges. The external edges are the edges that
+link each matchgate to the rest of the circuit. We consider               Proof. Consider the matchgate (G; X; Y; T ) where G is
+there to exist one external edge from each node in X \ Z                the complete graph on nodes V = f1; 2; 3; 4g, X = f1g,
+and from each node in Y \ Z . The other endpoint of each of             Y = f4g, T = f2g, and W is as variously speci ed below.
+the former is some node of lower index than any in V , and                 We shall identify row 1 of the matrix with ;, and row 2
+of each of the latter is some node of index higher than any             with f1g. Similarly we identify column 1 with ; and column
+in V . Figure 1 gives an illustrative example.                          2 with f4g. Let us abbreviate B (1; 1) = a, B (1; 2) = b,
+   The character of a matchgate, therefore, takes into ac-              B (2; 1) = c, and B (2; 2) = d. Now it is immediate from
+count overlaps between its internal edges and the external              the de nitions that the modi er is always 1 since in this
+edges that link its external nodes to the rest of the circuit.          case external edges cannot overlap with internal ones. The
+The signi cance of condition (ii) in the de nition of match-            character is simply the (0,1)-PfaÆan Sum for the gate with
+gates is that it guarantees that the modi er ( ; Z ) is always         the external nodes corresponding to the variables set to 1
+well de ned: for any xed Z the external edges that arise                removed, and with T as the omittable nodes. In particular,
+are uniquely de ned, but it has to be guaranteed that the                  ( ; ;) = w(2; 3)w(1; 4) w(1; 3)w(2; 4) + w(1; 2)w(3; 4),
+parity of the overlap of any one such external edge with ev-               ( ; f1g) = w(3; 4),
+ery matching of E 0 that saturates all the unomittable nodes               ( ; f4g) = w(1; 3), and
+is the same. Condition (ii) achieves this by not allowing an               ( ; f1; 4g) = w(2; 3).
+omittable node in the gate to be numbered intermediate be-                 Suppose rst that at least one of b, c, or d is nonzero.
+tween the endpoints of an external edge. (That case might               Then by xing w(1; 3) = b, w(3; 4) = c, w(2; 3) = d, and
+produce di erent overlap parity for the given external edge             setting the remaining weights so that |bw(2; 4)+ cw(1; 2)+
+and the various internal matchings depending on whether                 dw(1; 4) = a, the four components of B can be set to the
+the omittable node was in the matching.) To verify this                 arbitrary values a, b, c, and d as desired.
+note that if for i 2 X \ Z there are r nodes j < i where                   In the special case that b = c = d = 0 we consider the
+j 2 V Z , then the parity of the overlap of the external                same matchgate but make T = ;. Then setting w(2; 3) = 0
+edge from i with the internal edges is the parity of r.                 ensures that b = c = d = 0. The expression for ( ; ;) is
+   We de ne the character ( ) of to be the vector of                   unchanged and therefore by setting the remaining weights
+2jX [Y j values of ( ; Z ) for the various 2jX [Y j possible           one can set B (1; 1) to the arbitrary value of a. 2
+choices of Z . Often it is useful to think of a character as               To model two-bit or 4  4 matrices we consider two-bit
+a 2jX j  2jY j matrix where the rows represent the subsets of          matchgates, i.e., where jX j = 2, jY j = 2. The characters
+the inputs X , and the columns the subsets of the outputs               of these can be viewed as above, with the rows representing
+Y . Matchgates with jX j = jY j = k can then be regarded                subsets of X and the columns subsets of Y .
+as matrix transformations de ned by the character matrix.
+
+                                                                  117
+  Proposition 2. For any eld F and any 4  4 matrix                      By inspection, for any Z  X [ Y one can write down
+B of elements from F where all the o diagonal elements                ( ; Z ): If j Z j is even then all the matchings that con-
+are zero and B (1; 1)B (4; 4) = B (2; 2)B (3; 3) there exists a       tribute to ( ; Z ) saturate the omittable node 4, and do so
+matchgate with weights drawn from F such that ( ) = B .              necessarily with edge f3; 4g. Hence this case reverts back
+                                                                      to Proposition 3 since the newly added edges are all inci-
+                                                                      dent to node 3, and can, therefore, play no part. Hence in
+   Proof. Consider V = f1; 2; 3; 4; 5; 6g, X = f1; 2g, Y =            the corresponding eight positions in B we can regard seven
+f5; 6g, and T = ;. The rows of the matrices have ordering             as being arbitrary, and the eighth, namely B (1; 1) as being
+;, f1g, f2g, f1; 2g, and the columns have ordering ;, f6g,            constrained by the rst matchgate relation in terms of the
+f5g, f5; 6g.                                                          other seven exactly, as in Proposition 3.
+   Suppose rst that B (4; 4) 6= 0. Then let the only nonzero             We now consider the eight entries of ( ; Z ) where jZ j is
+weights be: w(1; 6) = B (3; 3)=B (4; 4), w(2; 5) = B (2; 2)=B (4; 4), odd. By inspecting Figure 1 and recalling the de nition of
+and w(3; 4) = B (4; 4). It can be veri ed that this matchgate         ( ; Z ) we obtain immediately that:
+has the required character.
+   If B (4; 4) = 0 then we have various special cases: (a)            ( ; f2; 5; 6g) = B (3; 4)
+w(1; 6), w(2; 3), w(4; 5) 6= 0 solves the case B (1; 1) 6= 0,         ( ; f1; 5; 6g) = B (2; 4)
+B (2; 2) 6= 0, B (3; 3) = 0, B (4; 4) = 0. (b) w(2; 5), w(1; 3),      ( ; f1; 2; 6g) = B (4; 2)
+w(4; 6) 6= 0 solves the case B (1; 1) 6= 0, B (2; 2) = 0, B (3; 3) 6= ( ; f1; 2; 5g) = B (4; 3)
+0, B (4; 4) = 0. (c) w(2; 3), w(4; 5) 6= 0 solves the case            ( ; f1g) = tB (2; 2)B (4; 3)+tB (4; 1)B (2; 4) tB (2; 3)B (4; 2)
+B (1; 1) = 0, B (2; 2) 6= 0, B (3; 3) = 0, B (4; 4) = 0. (d) w(1; 3), ( ; f2g) = tB (3; 3)B (4; 2)+tB (4; 1)B (3; 4)+tB (3; 2)B (4; 3)
+w(4; 6) 6= 0 solves the case B (1; 1) = 0, B (2; 2) = 0, B (3; 3) 6=  ( ; f5g) = tB (3; 3)B (2; 4)+tB (1; 4)B (4; 3)+tB (2; 3)B (3; 4)
+0, B (4; 4) = 0. To solve the remaining case of B (1; 1) 6= 0,        ( ; f6g) = tB (2; 2)B (3; 4)+tB (1; 4)B (4; 2) tB (3; 2)B (2; 4)
+B (2; 2) = 0, B (3; 3) = 0, B (4; 4) = 0 we can consider the
+eight node matchgate with X = f1; 2g, Y = f7; 8g and
+nonzero edges w(1; 3), w(2; 4), w(5; 7) and w(6; 8). 2                   The rst equality states simply that the arbitrary chosen
+                                                                      value B (3; 4) is in fact the value of the character ( ; f2; 5; 6g)
+   We now turn to more general 4  4 matrices:                        for the given matchgate, exactly as desired. The same holds
+                                                                      for B (2; 4); B (4; 2) and B (4; 3). Hence in addition to the
+   Proposition 3. For any eld F and any 4  4 matrix B                seven entries in the character that we said could be xed
+of elements from F satisfying the nine equations B (1; 2) =           arbitrarily, here are a further four.
+B (1; 3) = B (2; 1) = B (2; 4) = B (3; 1) = B (3; 4) = B (4; 2) =        The last four statements describe the remaining four en-
+B (4; 3) = 0, and B (1; 1)B (4; 4) B (2; 2)B (3; 3) = B (1; 4)B       tries of the character in terms of the eleven arbitrarily xed,
+(4; 1) B (2; 3)B (3; 2), there exists a matchgate with weights        and of B (4; 4), which, as we saw, is constrained by the rst
+drawn from F such that ( ) = B , provided B (4; 4) 6= 0.             matchgate identity. These four statements assert nothing
+   Proof. Consider V = f1; 2; 3; 4; 5; 6g, X = f1; 2g, Y =            other than that: if B (2; 1); B (3; 1); B (1; 3) and B (1; 2) do
+f5; 6g, T = ;, and row/column ordering as in Proposition              equal the corresponding character entries of the speci ed
+2. We let t = 1=B (4; 4) and consider the following set of            matchgate, then these quantities obey the last four match-
+nonzero weights: w(1; 6) = tB (3; 3), w(2; 5) = tB (2; 2),            gate identities, respectively. 2
+w(1; 2) = tB (1; 4), w(5; 6) = tB (4; 1), w(1; 5) = tB (3; 2),           A related question is to characterize the subclass of the
+w(2; 6) = tB (2; 3), w(3; 4) = B (4; 4). 2                            feasible  character matrices that are also unitary. For ma-
+                                                                      trices in which the only nonzero entries are those appearing
+   Now consider the following set of what we call the match-          in the rst matchgate identity this is easy. We note that in
+gate identities for 4  4 character matrices:                         that case restricting the matrix to rows/columns f1; 4g im-
+                                                                      poses a unitary constraint on the four remaining elements,
+  B (1;1)B (4;4) B (2;2)B (3;3) B (1;4)B (4;1)+B (2;3)B (3;2)=0       as does the restriction to rows/columns f2; 3g. But unitary
+  B (2;1)B (4;4) B (2;2)B (4;3) B (4;1)B (2;4)+B (2;3)B (4;2)=0
+                                                                      2  2 matrices can be written as [5]:
+  B (3;1)B (4;4)+B (3;3)B (4;2)     B (4;1)B (3;4)   B (3;2)B (4;3)=0                                                                          
+                                                                              ei     e i =2 0           cos =2      sin =2         e iÆ=2 0
+  B (1;3)B (4;4)+B (3;3)B (2;4)     B (1;4)B (4;3)   B (2;3)B (3;4)=0
+                                                                                     0        ei = 2    sin =2 cos =2              0        eiÆ=2
+                                                                              where ; ; ; Æ are real valued. In other words the 2  2
+  B (1;2)B (4;4)   B (2;2)B (3;4)   B (1;4)B (4;2)+B (3;2)B (2;4)=0
+
+
+  Proposition 4. For any eld F and any set of values of                       matrix with elements B (1; 1); B (4; 1); B (1; 4); B (4; 4) can be
+the 11 entries of the 4  4 matrix B other than R = fB (1; 1),                written in this form with appropriate 1 ; 2 ; 1 ; Æ1 , as can
+B (1; 2), B (1; 3), B (2; 1), B (3; 1)g such that B (4; 4) 6= 0,              the 2  2 with elements B (2; 2); B (2; 3); B (3; 2); B (3; 3) for
+there exists a matchgate with weights drawn from F such                       appropriate 2 ; 2 ; 2 ; Æ2 . But the rst matchgate identity is
+that ( ) equals B in the eleven entries other than R, and                    equivalent to saying that the di erence of the determinants
+in each of the R entries ( ) equals various polynomials in                   of these two 2  2 matrices is zero. However, the determinant
+terms of these other 11 entries and 1=B (4; 4). In particular,                of the above product expression for 2  2 unitary matrices
+B = ( ) satis es the ve matchgate identities.                                is ei . It follows that, except for the restriction that ei 1
+                                                                              ei 2 = 0, and B(4,4) 6= 0, the space of matchgate character
+   Proof. Consider the matchgate of Proposition 3 but mod-                    matrices is spanned as the values of 1 ; 1 ; 1 ; Æ1 ; 2 ; 2 ; 2
+ify it by making T = f4g and adding four more nonzero edge                    and Æ2 range over the reals.
+weights: w(1; 3) = B (3; 4), w(2; 3) = B (2; 4), w(3; 5) =
+B (4; 2), w(3; 6) = B (4; 3). This is illustrated in Figure 2.
+
+                                                                        118
+  Theorem 2 Given any matchgate there exists another                         represents a bit on which the circuit does not act. (4) T is
+matchgate 0 that has the same character as , and has an                      the union of the Ti . (5) The node set is now renumbered as
+even number of nodes, at most one of which is omittable.                     necessary so that for each i all the nodes in Vi are contiguous
+                                                                             in V (i.e., if j; k are nodes originating from Vi , and j < l < k
+     The following is proved in [33]:                                        for some node l in V , then l originates from a node in Vi
+  Theorem 3 Suppose that for a matchgate with inputs                         and is not a node on a linking chain or from a di erent Vi .)
+X = fi; j g and outputs fk; lg with i < j < k < l; B is                         Figure 4 shows an example of a matchcircuit with j X j =
+the character matrix for row ordering ; fig; fj g; fi; j g and              j Y j = 6 and with three matchgates.
+column ordering ; flg; fkg; fk; lg. Then B obeys the ve                        Clearly, in general, if jXi j = jYi j for each i then jX j = jY j.
+matchgate identities.                                                        Hence in that case just as the characters of the gates can
+                                                                             be represented as square matrices, so can the character of
+                                                                             the matchcircuit. Also if each constituent matchgate has
+5.     MATCHCIRCUITS                                                         a unitary character then so has the matchcircuit. To see
+   We now discuss how matchgates can be combined in large                    this we note that we can regard any matchgate as acting
+numbers to form circuits. In the rst instance the global                     on all n = j X j = j Y j bits and regard the individual
+properties of circuits that we seek are of the same nature                   gates then as composed in sequence. Figure 3, for example,
+as those of individual gates: we de ne input and output                      illustrates three two-bit gates, each viewed as an n-bit gate
+nodes for a circuit and wish to establish the character of                   composed in sequence. If a gate has a unitary character over
+the circuit from the characters of the constituents and the                  two bits, it has a unitary character also over the n bits, and
+particulars of how the gates are connected together. These                   any composition of such gates also has a unitary character
+latter particulars need special attention if the characters of               since unitary matrices are closed under matrix product.
+the constituents are to be composed so that no untoward                         Matchcircuit Theorem. If matchcircuit is a compo-
+sign e ects arise. The only di erence between a matchgate                    sition of matchgates 1 ; : : : ; m then
+and a matchcircuit is that modi ers are assumed to be +1 for                                            X            Y
+the latter since we do not consider a circuit to be externally                            PfS(G) =          S  PfS(Gi Si );
+connected.                                                                                              S im   1
+   One important purpose of combining matchgates is to de-                   where (1) S is a mapping that determines for each node in
+rive matchgates with new characters. A most basic opera-                     D whether it is to be matched by an edge internal or external
+tion is that of putting two 2-bit gates in sequence, as illus-               to the matchgate from which it originated, (2) Si is the set
+trated in Figure 3.                                                          of external nodes in i that are assigned by S to be matched
+   It should be clear that if gate G is formed from constituent              by an external edge, and (3) S 2 f 1; 1g (and depends on
+gate G1 appended by gate G2 as shown, and if the characters                  the choice of S and on the nature of the composition .)
+of G1 and G2 are B1 and B2 , respectively, then the charac-
+ter of G will be B = B1 B2 where matrix multiplication is                       Proof. The di erent choices of the assignment S parti-
+implied and provided the row and column orderings of B1 ,                    tion the matchings of G. In order to establish the theorem
+B2 , and B are appropriate. To see this consider the entry                   it suÆces to show that the matchings of G that respect S
+B (2; 3) which corresponds to input f1g and output f5g. In                   contribute to PfS(G) a term
+the matrix product B = B1 B2 the corresponding value is                                                 Y
+                                                                                                             PfS(Gi Si )                    (2)
+B1 (2; 1)B2 (1; 3) + B1 (2; 2)B2 (2; 3) + B1 (2; 3)B2 (3; 3)                                        1  im
++ B1 (2; 4)B2 (4; 3):
+                                                                             up to a multiplicative factor of 1 or 1.
+   It is easy to verify that the four terms correspond, respec-                 It is clear that for any sets U1  T1 , U2  T2 ; : : : ; Um 
+tively, to sets of matchings in G that (i) contain neither edge              Tm , and U = U1 [ U2 [ : : :
+e1 nor edge e2, (ii) have e1 but not e2, (iii) have e2 but not               ; [ Um each matching in PfS(G) that omits U corresponds
+e1, and (iv) have both e1 and e2. In the PfaÆan expression                   one to one to the union of matchings from 1 ; : : : ; m that
+for G these terms all have positive signs since the potential                omit U1 ; : : : ; Um , respectively. Hence the monomials in PfS
+overlap between e1 and e2 is always even, and their overlap                  (G) that are consistent with S are identical to the monomials
+with the internal edges of G1 and G2 are already accounted                   in (2) above. It remains therefore only to establish that
+for in the characters of G1 and G2 .                                         either all the corresponding pairs of terms have equal signs
+   More generally let 1 ; : : : ; m be a set of matchgates i =               (and hence S = 1) or they all have unequal signs (and hence
+(Gi ; Xi ; Yi ; Ti ) where Gi = (Vi ; Ei ; Wi ) and jXi j = jYi j. A         S = 1).
+matchcircuit = (G; X; Y; T ) with G = (V; E; W ), is a com-                     For all the matchings in G that are consistent with a single
+position of 1 ; : : : ; m that can be obtained in the following              S the external edges (or other chain edges) matched are
+way: (1) The i are rst reordered as necessary. (2) Each                      identical. Hence the matchings for the xed S di er only as
+external node of i has one external edge. An output node                     far as the edges that are entirely internal to the various i
+of i can be linked to an input node of j if i < j , via a link-              separately. Within any one such i the signs of the various
+ing chain of an odd number of edges and in that case that                    terms in PfS(Gi Si ) are whatever they are. When they
+output node and that input node are considered as mem-                       form subterms of PfS(G) their signs are not a ected relative
+bers of a set D. (3) Nodes in Xi or Yi that are not in D                     to each other. This is because for any two edges from distinct
+are the endpoints of linking chains of odd length, the other                 gates, say edge (u; v ) of Ei and (w; x) of Ej , either u < v <
+endpoints of which are considered as the members of X or                     w < x or w < x < u < v and therefore there is no overlap
+Y , the input and output nodes of the circuit, respectively.                 in either case. It follows that the contributions from the
+An odd length chain between a node in X and a node in Y                      various PfS(Gi Si ) simply multiply together.
+
+                                                                       119
+   It remains to observe that the external and other linking                retain the corresponding nodes and edges. (This f0; 1g in-
+edges produce no overlap. This is simply because the overlap                terpretation of the variable values is the complement of that
+between the external edges and those within gates is, as                    considered for the character, but this is an inessential tech-
+previously observed, xed by virtue of condition (ii) in the                 nicality.) For x 2 f0; 1gn , y 2 f0; 1gn we de ne Mx;y to be
+de nition of matchgates. The overlap among the external                     the matchcircuit M with these modi cations. In the case
+edges and linking chain edges is clearly xed also since there               that the matchgates are unitary, we can regard the circuit
+is just one matching being considered for these. It remains                 as a quantum matchcircuit.
+to observe that the xed matching in the linking edges that
+are not external (i.e., not directly incident to a gate) have no              Corollary 1. For a quantum matchcircuit M 2 started
+overlap with internal gate edges by virtue of condition (5)                 in state x the probability that it terminates in state y is
+in the de nition of matchcircuits that imposes an adequate                  jPfS(Mx;y )j2 .2
+constraint on their numbering. 2
+   We shall think of a matchcircuit as acting on a sequence                    A critical aspect of our theory, which we have not men-
+of bits x1 ; : : : ; xn , and of a k-bit matchgate as acting on             tioned and which goes beyond the standard quantum com-
+a subset of these n bits. We say that a matchcircuit is                     putational model, is that it is capable of simulating in poly-
+in standard description if when the character of a gate is                  nomial time nondeterministic summation over the inputs of
+described to be B it is the case that any one diagonal element              the simulated circuit evaluations in addition to the nonde-
+of B refers to exactly the same subset of fx1 ; : : : ; xn g for            terministic branches. Thus if x ; y assign subsets of the
+the inputs as for the outputs. Thus if, for example, B (2; 2)               inputs and outputs xed values, we rst excise the exter-
+refers to an input subset of f1g and an output subset of                    nal nodes that are so xed to have value 0 and retain those
+f6g, as in Proposition 2, then a standard description would                   xed as 1. We then apply to the resulting matchcircuit M
+insist that output 6 of this gate be the same xi bit as input               the various transformations described in the following:
+1 of this gate. Clearly, a circuit not in standard description                 Theorem 4. For any matchcircuit M 2 , if x , y  are
+can be put into standard description at the expense only of                 partial assignments to the inputs and outputs then each of
+reordering the outputs (and renaming the bits operated on                   the three quantities
+inside the circuit.)
+                                                                             X                         X                            X
+   Main Theorem. For any matchcircuit composed of 2-bit                     (         PfS(Mx;y ))2 ;         j PfS(Mx;y ) j ; and
+                                                                                                                         2
+                                                                                                                                          (PfS(Mx;y ))2 ;
+matchgates any entry in its character can be expressed as a                     x;y                    x;y                          x;y
+PfaÆan of the circuit with the corresponding external nodes
+removed, if the circuit when described in standard form is                  where summation is over all x and y that agree with x and
+composed of (a) matchgates with any character B such that                   y  , respectively, can be evaluated in polynomial time. 2
+B (i; j ) = 0 for all i; j such that i 6= j , (b) matchgates op-
+erating on any two bits with indices di ering by one (e.g.,                    Proof. For the rst quantity we de ne the nondetermin-
+xi ; xi+1 ) that have character B in which the only nonzero                 istic input and output nodes in M as omittable nodes in the
+entries are among B (1; 1), B (2; 2), B (3; 3), B (4; 4), B (1; 4),         matchcircuit and appeal to the PfaÆan Sum Theorem.
+B (4; 1), B (2; 3), B (3; 2), and (c) any matchgate operating                  For the second quantity we construct for M its complex
+on bits x1 and x2 . 2 We note that if we take into account                  conjugate matchcircuit M  which is identical to M except
+                                                                            that corresponding weights are complex conjugates of each
+the matchgate identities then case (a) can be simulated by                  other, and the node indices are from disjoint intervals and
+case (b) and is technically redundant in the above Theorem.                 in reverse order. For each nondeterministic input or output
+To see this note that a case (a) matrix is a diagonal matrix                node we join the corresponding nodes of M and M  by an
+with some (a,b,c,bc/a) on the diagonal. This can be sim-                    edge of weight one. We claim that the PfaÆan of the result is
+ulated by two diagonal 1-bit gates, the rst with diagonal                   the desired quantity. This follows from the observation that
+(a,b) acting on the rst bit, and the second with diagonal                   each subset of the joining edges that is matched represents
+(1; c=a) acting on the second bit. Each of these 1-bit gates                a distinct truth assignment to the nondeterministic nodes,
+can then be viewed as a 2-bit gate that ignores the other                   and its contribution to the PfaÆan will be the product of
+bit, and is feasible for a matchgate. Hence a case (a) 2-                   some PfS(Mx;y ) and its complex conjugate.
+qubit gate acting on bits i; j can be replaced by two 1-bit                    The third quantity is computed in the same way as the
+gates acting on bits i; i + 1 and j; j + 1 respectively.                    second except that instead of M  we simply use a second
+   We call the class of matchcircuits de ned in the above                   copy of M . 2
+Theorem and limited to the classes of matchgates that can                      This result, clearly, has applications broader than the
+be constructed. In particular the gates that can be used in                 quantum computation model, since it is not restricted to
+unrestricted ways include those of Proposition 2. Those that                unitary matrices. We note, however, that if we do restrict
+can be applied to neighboring bits include those of Propo-                  ourselves to the quantum model, or any other model with
+sition 3. Those that can be applied to the end bits x1 , x2                 a similar probabilistic interpretation, then results can be
+include those of Proposition 4.                                             derived that are strongly suggestive of a computational in-
+   Now consider a member M of this class . For any in-                      terpretation of quantum physics. In particular, the last part
+put variable xi or output variable yj that is to be xed                     of the above Theorem can be used to generate in polynomial
+to have value 0 we delete this input/output node and the                    time, an output state according to the probability distribu-
+edges incident to it. This forces the circuit to have value                 tion that the quantum mechanical interpretation of a quan-
+0 for this variable since the corresponding X [ Y node will                 tum matchcircuit speci es. This is precisely equivalent to
+not be saturated. If we wish to set the variable to 1 we                    the idea of performing a measurement in quantum mechan-
+                                                                            ics.
+
+                                                                      120
+   Measurement Theorem. For any quantum matchcir-                          A matchnet is a set of matchgates with no output nodes
+cuit M 2 if x is a total assignment to the inputs, and y               where pairs of input nodes from di erent matchgates may
+a partial assignment to the outputs then there is a random-             be joined (a) by a single edge if the input nodes are to have
+ized polynomial time procedure that generates an output y               the same value, or (b) by a chain of two edges if the in-
+consistent with y with probability                                     put nodes are to have opposite values. We can then de ne
+                                X                                       the matchnet of a read-twice Boolean formula as follows: if
+               jPfS(Mx;y )j =
+                           2
+                                    jPfS(Mx;z )j2
+                                                                        the formula is a conjunction of a number of three-argument
+                                                                        Boolean expressions then the matchnet is simply the union
+where summation in the denominator is over all z consistent             of matchgates, one for each such expression, in addition to
+with y .                                                               single edges or chains of length two to constrain pairs of
+  Proof. We proceed in the manner described in (19) for                 variables in the expressions to have equal or unequal values.
+generating a random combinatorial structure when we can                    More formally a matchnet is a matchcircuit having no in-
+count their number. The procedure has m stages if there                 put or output nodes, and composed of matchgates with no
+are m nondeterministic variables. In each stage we consider             outputs, where condition (1) in the de nition of matchcir-
+one such variable yi and x its value as follows: We evaluate            cuits is redundant, and conditions (2) and (3) are replaced
+for yi = 0, and separately for yi = 1, the quantity                     by the above condition, that inputs of di erent matchgates
+                      X                                                 may be linked by edge chains of length one or two:
+                          jPfS(Mx;y )j  2
+
+                                                                           Theorem 5. If F is a read-twice formula consisting of
+where the summation is over the y variables that have not               gates from B 01 [ B 11 [ B 21 [ B 31 [ B 32 then the matchnet
+been xed yet. Each of the two evaluations is a call of the              of F has a matching i F is satis able. If F is a read-twice
+procedure in the second part of Theorem 5. If we obtain the             formula F consisting of gates from B 01 [ B 11 [ B 21 [ B 31
+values p0 and p1 for these two calls then with probability              then the matchnet of F has an odd number of matchings i F
+p0 =(p0 + p1 ) we x yi = 0 and with probability p1 =(p0 + p1 )          has an odd number of satisfying assignments. The existence
+we x yi = 1. It is clear that the procedure has the desired             of a solution for the formula in the rst case and the parity
+result. 2                                                               of the number of solutions in the second case can both be
+                                                                        computed in deterministic polynomial time. 2
+   In conclusion we note that we can generalize the Measure-               A variety of special cases of these results were previously
+ment Theorem to sum nondeterministically over unspeci ed                known and some related problems are known to be NP-
+inputs also. There is an obvious restriction, however, on               hard. One such case is read-twice formulae consisting only of
+how the various nondeterministic choices can be correlated.             x + y + z gates (from B 32), for which it was known that sat-
+If they are all independent then nothing special needs to be            is ability is polynomial time solvable [22, p. 207]. For that
+done. Otherwise one option is to relate pairs of them by join-          case it was further known that counting the number of solu-
+ing such a pair by an edge or a chain of two edges, and this            tions is #P-complete [6]. The parity problem for it is appar-
+corresponds to read-twice circuits. Controlling the overlaps            ently open. The construction in [18] for read-twice formulae
+of the added edges becomes problematic in general, however.             (of the form of conjunctions of disjunctions of conjunctions)
+The next section takes this route under circumstances when              implies that the existence problem for read-twice formulae
+these overlaps do not matter.                                           constructed from z = x + y functions is NP-complete. Also
+                                                                        one can deduce that the corresponding counting problem is
+6.    MATCHNETS                                                         #P-complete and, using [30], that the corresponding parity
+  We shall compose matchgates now in a di erent way. For                problem is NP-hard via randomized reduction.
+quantum computation we needed to be careful in construct-                  Theorem 6. None of the six functions in B 33 has a
+ing matchcircuits so that the e ects of the constituent match           matchgate where either the parity of the number of match-
+gates simply added, without any uncontrollable sign e ects.             ings or the existence of matchings de nes the required func-
+Thus our simulation of quantum computation was limited                  tion. Neither of the functions in B 32 has a matchgate where
+by (a) what individual matchgates could achieve, and by                 the parity of the number of matchings de nes the required
+(b) the constrained composition rules that were adopted to              function. We observe nally that numerous open problems
+maintain control of the signs. In the two applications in this
+section we shall be limited by (a) alone. In the rst appli-             remain regarding read-twice formulae composed of gates from
+cation we shall be detecting the existence of solutions, and            the 24 gates that we enumerated.
+in the second the parity of the number of solutions.
+  We shall consider the following classi cation of Boolean
+functions:                                                              7. CONCLUSION
+    B 01 = f1; 0g                                                          The exact power of matchgate techniques for deriving
+    B 11 = fxg                                                          polynomial time classical algorithms remains to be resolved.
+    B 21 = fxy; x + y; x  y = 1; x  y = 0g                            Are there indirect methods not yet identi ed for mapping
+    B 31 [ B 32 [ B 33 where                                            richer classes computations into matchgates? Can our par-
+    B 31 = fxyz; x(y = z ); x0 yz + xy 0 z + xyz 0 ; x(y + z ),         ticular class of polynomially simulatable circuits be extended
+      x  y  z = 0; x  y  z = 1; xy + yz + zx,                       by allowing in addition arbitrary use of one-bit gates? Do
+      x + (y = z ); xy + (y = z )g,                                     circuits based on k-bit matchgates for k > 2 have greater
+    B 32 = fx + y + z; :(xyz + x0 y 0 z 0 )g, and                       power for encoding computations?
+    B 33 = fxyz + x0 y 0 z 0 ; xyz + x0 y 0 ; xy + y 0 z ,                 We have de ned a class of quantum computations for
+      x + yz; z = x + y , x0 y 0 z 0 + xy + yz + zxg.                   which the outcome can be predicted by linear algebra com-
+
+                                                                  121
+putations in polynomial time by classical computers. While             17. R. P. Feynman, Simulating physics with computers,
+the standard quantum mechanical formulation is linear also,                Int. J. Theor. Phys., 21:6/7,467{488, (1982).
+it is linear in exponentially more dimensions than is ours.            18. D. Gottesman, The Heisenberg representation of quan-
+This raises the question as to whether physical limitations                tum computers, quant-ph/9807006, (1998).
+restrict scalable quantum devices to those that are polyno-            19. L.K. Grover, Fast quantum mechanical algorithm for
+mial time simulatable classically, as nonquantum devices are               database search, Proc. 28th ACM Symp. on Theory
+believed to be.                                                            of Computing, ACM Press, New York, 212-218 (1996)
+                        References                                     20. H. B. Hunt, and R. E. Stearns, The complexity of very
+                                                                           simple Boolean formulas with applications, SIAM J.
+  1. A. Barenco, A universal two-bit gate for quantum com-                 on Comput., 19:1, 44{70, (1990).
+     putation, Proc. R. Soc. Lond. A449, 679{683, (1995).              21. M. R. Jerrum, L. G. Valiant, and V. V. Vazirani, Ran-
+  2. P. A. Benio , Quantum mechanical Hamiltonian mod-                     dom generation of combinatorial structures from a uni-
+     els of discrete processes that erase their own histories:             form distribution, Theor. Comp. Sci. 46, 169{188,
+     Application to Turing machines, Int. J. Theor. Phys.,                 (1986).
+     21:6/7, 177, (1982).                                              22. K. de Leeuw, E. F. Moore, C. E. Shannon, and N.
+  3. E. Bernstein and U. V. Vazirani, Quantum complexity                   Shapiro, Computability by probabilistic machines, in
+     theory, SIAM J. Computing, 26:5, 1411{1473, 1997.                     Automata Studies, C. E. Shannon and J. McCarthy,
+  4. A. Borodin, S. A. Cook, and N. J. Pippenger, Par-                     eds. (Princeton Univ. Press, 1956), pp. 183{212.
+     allel computation for well-endowed rings and space                23. E. H. Lieb, A theorem on PfaÆans, J. Comb. Theory,
+     bounded probabilistic machines, Information and Con-                  5, 313{319, (1968).
+     trol, 58:1{3, 113{136, (1983).                                    24. K. Murota. Matrices and Matroids for Systems Anal-
+  5. R. A. Brualdi and H. J. Ryser, Combinatorial Matrix                   ysis, Springer-Verlag, Berlin, 2000.
+     Theory, Cambridge University Press, 1991.                         25. C. H. Papadimitriou, Computational Complexity, Addison-
+  6. R. Bubley and M. Dyer, Graph orientations with no                     Wesley, Reading, MA, (1994).
+     sink and an approximation for a hard case of #SAT,                26. R.W. Robinett. Quantum Mechanics, Oxford Univer-
+     8th Ann. ACM-SIAM Symp. on Discrete Algorithms,                       sity Press, New York, 1997.
+     (SIAM Press, 1997), pp248-257.                                    27. P. W. Shor, Algorithms for quantum computation: Dis-
+  7. P. Burgisser, M. Clausen, and M.A. Shokrollahi, Alge-                crete logarithms and factoring, SIAM J. Computing,
+     braic Complexity Theory, Springer Verlag, (1996).                     26:5, 1484{1509, 1997.
+  8. P. Burgisser, Completeness and Reduction in Algebraic            28. V. Strassen, Gaussian elimination is not optimal, Nu-
+     Complexity Theory, Springer Verlag, (2000).                           mer. Math., 13, 354{356, (1968)
+  9. A. Cayley, Sur les determinates gauches, Crelle's J.,            29. L. Troyansky and N. Tishby. Permanent uncertainty:
+     38, 93, (1854).                                                       On the quantum evaluation of the determinant and
+ 10. S. A. Cook, The complexity of theorem proving proce-                  the permanent of a matrix. In Proceedings of Phys.
+     dures, Proc. 3rd ACM Symp. On Theory of Comput-                       Comp. 96.
+     ing, (ACM Press, New York, 1971), 151{158.                        30. A. M. Turing, On computable numbers, with an ap-
+ 11. D. Coppersmith and S. Winograd, Matrix multiplica-                    plication to the Entscheidungsproblem, Proc. Lond.
+     tion via arithmetic progressions, J. Symbolic Comput.,                Math. Soc., Ser. 2, 42, 230{265 (1936).
+     9, 251{280, (1990).                                               31. L. G. Valiant, The complexity of computing the per-
+ 12. D. Deutsch, Quantum theory, the Church-Turing prin-                   manent, Theor. Comp. Sci., 8(2), 189{201, (1979).
+     ciple and the universal quantum computer, Proc. R.                32. L. G. Valiant, Completeness classes in algebra, Proc.
+     Soc. Lond. A400, 97{117, (1985).                                      11th ACM Symp. On Theory of Computing, (ACM
+ 13. D. Deutsch, Quantum computational networks, Proc.                     Press, New York, 1979), 249{261.
+     R. Soc. Lond. A425, 73{90, (1989).                                33. L. G. Valiant, Expressiveness of matchgates, submit-
+ 14. D. Deutsch, A. Barenco, and A. Ekert, Universality                    ted for publication, February 2001.
+     of quantum computation, Proc. R. Soc. Lond. A449,                 34. L. G. Valiant and V. V. Vazirani, NP is as easy as
+     669{677, (1995).                                                      detecting single solutions, Theor. Comp. Sci., 47, 85{
+ 15. D. P. DiVincenzo, Two-bit gates are universal for quan-               93, (1986).
+     tum computation, Phys. Rev. A, 51:2, 1015{1022,                   35. A. C.-C. Yao, Quantum circuit complexity, Proc 34th
+     (1995).                                                               Symp. On Foundations of Computer Science, (IEEE
+ 16. P. van Emde Boas, Machine models and simulations,                     Computer Society, Los Alamitos, CA, 1993), pp. 352{
+     in Handbook of Theoretical Computer Science, Vol. A,                  360.
+     J. van Leeuwen, ed. (Elsevier, Amsterdam, 1990), 1{
+     61.
+
+
+
+
+                                                                 122
+123
+

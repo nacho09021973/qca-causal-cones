@@ -1,0 +1,850 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa de forma adversarial e independiente el documento candidato.md
+(adenda candidata al informe 2026-11-03--hex-supremum.md), escrito por
+Claude (Anthropic) salvo la prueba del Lema 2, formulada por el usuario.
+Se adjuntan como fuentes ya revisadas y promocionadas el informe de S13, el
+informe del gate padre hex-ceiling (con el Lema B, Bernstein, y la
+subclase T1) y los dos contratos. El candidato no es premisa: comprueba
+cada paso. No tienes herramientas: no ejecutes, edites ni navegues.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / OPEN:
+
+1. CLASE. ¿X_13 coincide con lo que M1-B13 cubre (W_hex^sym, F dentro de
+   S13, envolvente igual al hexágono de S13)? ¿Es constante el
+   denominador r_in en X_13?
+2. LEMA 1 (compacidad). ¿Son cerradas todas las condiciones de Y
+   (unitariedad, U(0) escalar con la fase, nodo sin traza, isotropía
+   escrita como A(e1)^2 = A(e2)^2 = c^2 I y anticonmutación)? ¿Es correcta
+   la acotación por la identidad de orden cero de U^dag U = I? ¿Son
+   exactamente c_0 > 0 y los seis coeficientes de vértice no nulos las
+   condiciones abiertas, sin ninguna otra condición de la clase que no sea
+   cerrada (en particular la regularidad hexagonal de la envolvente)?
+   ¿Es continuo el cociente?
+3. LEMA 2 (pérdida de vértice). Comprueba las proyecciones
+   {-1, -1/2, 0, 1/2} de S13 sin un vértice, las frecuencias
+   {-3, -1, 1, 3} de P(t) = e^{-it} W(4t), la aplicación del Lema B
+   elemento a elemento, la derivada P'(0) = -i(I + 4H), la hermiticidad
+   de H y su espectro {±c_0}, y la conclusión c_0 <= 1/2. ¿Vale en un
+   punto del cierre que no está en la clase?
+4. TEOREMA. ¿Es exhaustiva la división en tres casos del maximizador?
+   ¿Pertenece a X_13 todo punto del cierre con c_0 > 0 y los seis
+   vértices no nulos, aunque falten puntos del anillo interior?
+5. NO VACUIDAD. ¿El paseo de T1 con b_j = 2a_j situados en vértices
+   alternos de S13 es un polinomio de Laurent unitario sobre la red, con
+   F = {0} ∪ vértices de S13, nodo e isotropía, y cociente sqrt3/2? ¿Es
+   correcta la salvedad de que está en W_hex^sym y no necesariamente en
+   W_hex?
+6. ALCANCE. ¿Afirma el candidato solo una brecha cualitativa en S13, con
+   0 < eps_13 <= 1 - sqrt3/2, sin extenderse a S19, soportes mayores,
+   s > 2, ni a que el sustrato fije c_0? ¿Es correcta la observación de
+   la Sec. 5 sobre hexágonos mayores, o la presenta con más fuerza de la
+   demostrada?
+
+Hasta 1500 palabras en español. Cada reparación obligatoria debe citar la
+frase afectada, por qué falla y qué la cerraría. Distingue aclaración de
+error. Dictamen global y lista de reparaciones obligatorias; si no hay
+ninguna, dilo expresamente. No exijas resultados nuevos (ni un valor de
+eps_13 ni S19).
+
+=== DOCUMENT 1: candidato.md ===
+
+# S13: from non-attainment to a uniform gap (candidate addendum)
+
+**Date:** 2026-11-14. **Branch:** `research/schur-stability-audit`, base
+`7cadad6`. **Nature:** candidate addendum to
+`reports/2026-11-03--hex-supremum.md` (M1-B13), for independent review
+before any incorporation. No new contract, no computation, no script.
+**Status: PRELIMINARY, unreviewed.** No novelty claim.
+
+**Provenance.** Compactness argument and non-emptiness: Claude Code (Claude
+Opus 5.5), 2026-11-14. The proof of Lemma 2 below, which uses only Lemma B
+of `reports/2026-11-01--hex-ceiling.md`, was formulated by the user (with an
+external assistant) and rechecked step by step by the author; it replaces
+the author's first version (a one-sided Bernstein bound obtained by a phase
+shift), which is not used.
+
+## 0. Class
+
+Notation of the S13 report: triangular lattice `Lambda`, S13 the closed
+regular lattice hexagon with vertex `g_1 + g_2` (13 points), normalised so
+that `|vertex| = 1`, hence `r_in(conv S13) = sqrt3/2`.
+`U(k) = sum_{h in F} A_h e^{-ik.h}`, `A_h in M_2(C)`.
+
+`X_13` := the walks of `W_hex^sym` (HEX_SUPREMUM_GATE.md, "Gap direction":
+s=2 unitary Laurent polynomials with `U(0) = e^{-i phi} I`, traceless
+isotropic linear term `A(n)^2 = c_0^2 |n|^2 I` with `c_0 > 0`, and
+`C_micro = conv F` a regular hexagon from the exact composite support `F`)
+with `F within S13` and `conv F = conv S13`, i.e. all six vertex
+coefficients nonzero. On `X_13` the denominator `r_in(C_micro) = sqrt3/2`
+is constant.
+
+M1-B13 (`PROVED_FOR_S13`, promoted): no walk of `X_13` has
+`c_0 = r_in`.
+
+**Claim.** There is `eps_13 > 0` with `c_0 / r_in <= 1 - eps_13` on all of
+`X_13`; moreover `eps_13 <= 1 - sqrt3/2`. No value of `eps_13` is given.
+
+## 1. Lemma 1 (compact closure, continuous ratio)
+
+Let `Y` be the set of tuples `(A_h)_{h in S13}` satisfying: (a) `U(k)`
+unitary for all `k`; (b) `U(0)` scalar; (c) the linear term
+`A(n) = i d/dt [e^{i phi} U(t n)]_{t=0}` traceless with
+`A(e_1)^2 = A(e_2)^2 = c^2 I` for some real `c >= 0` and
+`A(e_1) A(e_2) + A(e_2) A(e_1) = 0`.
+
+- (a) is the family of polynomial identities `sum_{h-h'=d} A_h A_{h'}^dag
+  = delta_{d,0} I` and likewise for `U^dag U`: closed.
+- (b), (c) are polynomial equalities in the coefficients and in
+  `e^{i phi}` (on the unit circle): closed. (c) is equivalent to
+  `A(n)^2 = c^2 |n|^2 I` for all `n` by bilinearity.
+- Boundedness: the `d = 0` identity of `U^dag U = I` gives
+  `sum_h A_h^dag A_h = I`, so `||A_h|| <= 1`.
+
+Hence `Y` is compact. `X_13 = Y cap {c_0 > 0} cap {A_v != 0 for the six
+vertices v}`; both extra conditions are open, so `closure(X_13) within Y`
+is compact. `c_0^2 = (1/2) tr A(e_1)^2` is a polynomial, so
+`rho := c_0 / (sqrt3/2)` is continuous on `Y` and attains its maximum on
+`closure(X_13)` at some `y`.
+
+## 2. Lemma 2 (vertex loss forces `c_0 <= 1/2`)
+
+Let `y in Y` with `A_v(y) = 0` for some vertex `v` of S13. Let
+`hat v = v/|v|`. The projections `h . hat v` of the points of
+`S13 \ {v}` are exactly `{-1, -1/2, 0, 1/2}` (the other vertices give
+`±1/2, -1/2, -1`; the inner ring, at radius `1/sqrt3` and angles `±30°,
+±90°, ±150°` from `hat v`, gives `1/2, 0, -1/2`; the origin `0`). Further
+missing points only remove frequencies.
+
+Set `W(t) = e^{i phi} U(t hat v)`, so `W(0) = I`, and `H = i W'(0)`.
+Differentiating `W W^dag = I` at `0` shows `H` Hermitian; by (c), `H`
+is traceless with `H^2 = c_0^2 I`, so its spectrum is `{±c_0}`.
+
+Let `P(t) = e^{-it} W(4t)`. Its frequencies (as `e^{-imt}`) are
+`m = 4p + 1` with `p in {-1, -1/2, 0, 1/2}`, i.e. `m in {-3, -1, 1, 3}`,
+so `P` is a trigonometric polynomial of degree `<= 3`, unitary for every
+`t`. For unit `x, z in C^2`, `<z, P(t) x>` has modulus `<= 1`; Lemma B of
+the hex-ceiling report (Bernstein, proved in-repo) gives
+`|<z, P'(0) x>| <= 3`, hence `||P'(0)|| <= 3`. Now
+`P'(0) = -i W(0) + 4 W'(0) = -i (I + 4H)`, so `||I + 4H|| <= 3`. The
+eigenvalue `1 + 4 c_0` gives `c_0 <= 1/2`. Therefore
+`rho(y) <= (1/2)/(sqrt3/2) = 1/sqrt3`.
+
+## 3. Theorem (uniform gap on `X_13`)
+
+Let `y` maximise `rho` on `closure(X_13)`. Exactly one of:
+
+1. `y in X_13`: `rho(y) < 1` by M1-B13.
+2. `c_0(y) = 0`: `rho(y) = 0`.
+3. `c_0(y) > 0` and some vertex coefficient of `y` vanishes:
+   `rho(y) <= 1/sqrt3` by Lemma 2.
+
+(Points of the closure with all six vertex coefficients nonzero and
+`c_0 > 0` are in `X_13`: the exact support then has hull `conv S13`,
+whatever inner-ring coefficients vanish.) In every case `rho(y) < 1`, so
+`sup_{X_13} rho = rho(y) =: 1 - eps_13 < 1`.
+
+## 4. Non-emptiness and an upper bound for `eps_13`
+
+The T1 attainment walk of the hex-ceiling report (Sec. 2) is
+`U(k) = prod_j exp(-i (k.a_j) tau_j)` with coplanar Bloch vectors at 120°,
+certified there with `F = {0, ±2 a_j}`, regular hexagonal hull, every
+vertex coefficient non-nilpotent, `U(0) = I`, isotropic untilted cone,
+`c_0/r_in = sqrt3/2`. Its symbol depends on `k` only through
+`e^{-ik.h}`, `h in F`. Choosing `b_j = 2 a_j` to be three alternate
+vertices of S13 (lattice vectors at 120°, `b_1 + b_2 + b_3 = 0`) gives a
+unitary Laurent polynomial on `Lambda` with `F = {0} U vert(S13)`,
+`conv F = conv S13`, node and isotropy unchanged: a point of `X_13` with
+`rho = sqrt3/2`. Hence `sqrt3/2 <= 1 - eps_13 < 1`.
+
+The `a_j = b_j/2` are not lattice vectors, so this point is in
+`W_hex^sym`; whether `X_13 cap W_hex` (product form with lattice partial
+shifts) is nonempty is not established here.
+
+## 5. Scope
+
+- Qualitative gap only: compactness gives no value of `eps_13`; the only
+  bounds are `0 < eps_13 <= 1 - sqrt3/2`.
+- S13 only. The argument uses that removing a vertex of S13 drops the
+  inradius (Lemma 2). For larger hexagons with lattice points inside the
+  edges, removing a vertex may leave the inradius unchanged, and the
+  limit then has a non-regular hull outside `W_hex^sym`, where no existing
+  result applies. Nothing is claimed for S19, S25 or larger, nor for
+  `s > 2`.
+- No statement that the substrate fixes `c_0`.
+
+=== DOCUMENT 2: 2026-11-03--hex-supremum.md ===
+
+# HEX_SUPREMUM (M1): Stage A and the 13-point support
+
+**Date:** 2026-11-03. **Branch:** `research/schur-stability-audit`.
+**Contract:** [`HEX_SUPREMUM_GATE.md`](../theory/HEX_SUPREMUM_GATE.md),
+preregistration commit `86573ca`; authorization CURRENT_STATE Sec. 14
+(`762ecdb`), user instruction «adelante» for Stage A.
+**Author:** Claude Code (Claude Opus 5.5). **Verifier:**
+`scripts/verify_hex_supremum_gate.py`, 12/12, SHA-256 `ef4b0114…`; imports
+read-only the reviewed `verify_hex_ceiling_gate.py` (SHA-256 `8f3b7a10…`,
+unchanged). **Solver budget used:** 0 s on S13 (no solver run); 0 s on
+S19 (not started). No numerics. **Status: PRELIMINARY,
+INDEPENDENT_REVIEW_PASS_TWO_HOUSES; promoted 2026-11-03 for S13 (CURRENT_STATE
+Sec. 14).**
+
+**Review (2026-11-03).** Grok PASS and Gemini PASS on all five blocks, no
+mandatory repair, identical input (this report at SHA-256 `8a4c4eec…`,
+before this paragraph)
+([Grok](../debates/2026-11-03--hex-supremum-stageA-review-grok/informe_grok.md),
+[Gemini](../debates/2026-11-03--hex-supremum-stageA-review-gemini/informe_gemini.md),
+[author reading](../debates/2026-11-03--hex-supremum-stageA-review-grok/verificacion_autor.md)).
+Accepted clarification (Grok): the "second route" of Sec. 3 is not an
+independent derivation; the layer equations already contain `A_h = 0` on
+each singleton, so the exact solve confirms the same geometry in algebra.
+The body below is unchanged.
+
+**Pre-step check.** Known: facet-line rigidity and the minimal-support T2
+(hex-ceiling report Sec. 3, CURRENT_STATE Sec. 12). Question: what do the
+saturation conditions force before any solver, and does that decide S13?
+Abandonment: if Stage A forced nothing beyond the layer sums, S13 would go
+to an exact solver within the per-support budget.
+
+## 1. Stage A: two consequences of saturation valid for every support
+
+Notation of the hex-ceiling report: `U(k) = sum_{h in F} A_h e^{-ik.h}`,
+`C = conv F` a regular hexagon, `|vertex| = 1`, `r = r_in = sqrt3/2`,
+normal form `A(n) = r n.sigma` (Step 2 there). Suppose `c_0 = r_in`.
+
+**Lemma A1 (singleton layer).** Let `n_f` be a facet normal and `delta`
+the spacing of the projections of `Lambda` onto `n_f` (they lie on a
+uniform grid, L0 of the parent gate). If a layer strictly between the two
+extreme ones contains exactly one point `h` of `C cap Lambda`, then
+`A_h = 0`.
+
+*Proof.* By facet-line rigidity (hex-ceiling report Sec. 3, Step 1:
+Bernstein equality / Julia, prior art), `U(t n_f) = e^{-irt} P_+(n_f) +
+e^{irt} P_-(n_f)`, so the sum of `A_h` over each intermediate layer is 0.
+A layer with one point gives `A_h = 0`. ∎
+
+**Lemma A2 (opposite vertices).** For every vertex `v` of `C`,
+`A_v A_{-v}^dag = 0` and `A_{-v}^dag A_v = 0`.
+
+*Proof.* The coefficient of `U U^dag` at displacement `2v` is
+`sum_{h - h' = 2v} A_h A_{h'}^dag`. Since `C` is centrally symmetric,
+`h - h' = 2v` with `h, h' in C` means `(h + (-h'))/2 = v` with both in `C`;
+`v` is extreme, so `h = v`, `h' = -v`. The coefficient must vanish
+(`2v != 0`); likewise for `U^dag U`. ∎
+
+A2 is recorded for later stages; it is not used for S13. Neither lemma
+alone gives a gap proof for `W_hex^sym`.
+
+## 2. Supports (verifier)
+
+Closed regular lattice hexagons with vertex `v`, in increasing size:
+`S7` (`v = g_1`, 7 points), `S13` (`v = g_1 + g_2`, 13 points), `S19`
+(`v = 2 g_1`, 19 points). After normalising `|v| = 1`, S13 consists of the
+origin, an inner ring of six points with `|h| = 1/sqrt3` at angles
+`k pi/3`, and six vertices at `pi/6 + k pi/3`.
+
+## 3. M1-B13: the 13-point support reduces to minimal support
+
+Facet normals of S13 point at angles `k pi/3`, i.e. through the
+inner-ring points. Along each, the projections lie on the grid
+`delta = r/3` with levels `-3..3`; the layers are, top to bottom: two
+vertices; **one inner-ring point**; two inner-ring points; origin and two
+vertices; two inner-ring points; **one inner-ring point**; two vertices
+(verifier). By A1 the two singleton layers force their coefficients to 0.
+The three normals cover all six inner-ring points, so every inner-ring
+coefficient vanishes and `F within {0} U vert(H)`.
+
+Second route (rule 4): with generic coefficients on all 13 points, the
+exact solution of the full set of layer equations along the three normals
+forces every inner-ring coefficient to 0 (verifier). Both routes agree.
+
+The surviving support is the configuration of the minimal-support T2 up
+to a similarity: rotating space by `-30°` (jointly with the Bloch sphere
+about `z`, which keeps `A(n) = r n.sigma`) maps the six vertices to
+`(cos k pi/3, sin k pi/3)` (verifier). The T2 proof uses only the geometry
+of the seven points, unitarity, the node and isotropy: its layer
+equations and its set of differences `h - h'` are invariant under
+similarity, and the lattice never enters (`verify_hex_ceiling_gate.py`,
+`check_T2_minimal`, lines 166-238, which encodes the vertices abstractly).
+The T2 check is rerun read-only and passes (4/4).
+
+**Verdict.** M1-B13 `PROVED_FOR_S13`: no s=2 walk with `F within S13`
+(in `W_hex^sym`, hence in `W_hex`) reaches `c_0 = r_in`. HX2
+`CONFIRMED_FOR_S13` (and for S7 by T2). No supremum is claimed on S13
+beyond what T1 gives; the gap is qualitative.
+
+## 4. S19 is not reduced by A1
+
+In S19 the facet-normal layers have sizes 3, 4, 5, 4, 3 on every normal
+(verifier): no intermediate singleton, so A1 forces only the layer sums,
+as in the 900 s attempt of the parent gate. S19 contains JDW L6c
+(`c_0/r_in = sqrt3/2`). Lemma A2 and the edge identities of the contract
+(Sec. 4, Stage A, step 2) are the remaining structural input before any
+solver.
+
+## 5. Verdicts so far
+
+- M1-A: `OPEN_AFTER_SINGLETON_LAYER_ANALYSIS` for the whole class (A1, A2
+  proved; no gap proof for `W_hex^sym`, no normal form for general
+  supports).
+- M1-B13: `PROVED_FOR_S13`.
+- M1-B19: not started. Per the contract it may now start (S13 has a
+  verdict), with at most 3600 s of cumulative solver time.
+- HX2: `CONFIRMED_FOR_S13`; OPEN in general.
+
+## 6. Not established
+
+- Nothing for S19 or larger hexagons; nothing for `s > 2`.
+- The line M1 is neither closed nor kept by this: S13 is a bounded support.
+- No novelty claim: A1 is a direct use of the Bernstein equality case
+  (prior art); A2 is the standard extreme-coefficient argument.
+
+## 7. Next step
+
+M1-B19 (user decision on when), then independent cross-family review and
+a separate promotion.
+
+=== DOCUMENT 3: 2026-11-01--hex-ceiling.md ===
+
+# Hexagonal ceiling — execution report (L0 and T1)
+
+Date: 2026-11-01. Branch: `research/schur-stability-audit`.
+Contract: [`HEX_CEILING_GATE.md`](../theory/HEX_CEILING_GATE.md),
+preregistered at `8c56ced`.
+Verifier: [`scripts/verify_hex_ceiling_gate.py`](../scripts/verify_hex_ceiling_gate.py),
+24/24 exact checks (Python 3.12.3, `sympy==1.14.0`); repaired 2026-11-02
+after review (see the repair note below).
+Author: Claude Code (Claude Opus 5.5), at the user's direction.
+
+**Status: PARTIAL EXECUTION — L0 `PROVED_IN_REPO` (Bernstein's inequality
+proved in Lemma B); T1 `GAP_PROVED_IN_CLASS` with
+supremum `sqrt3/2`, attained; T2 `PROVED_FOR_MINIMAL_SUPPORT`
+(`F within {0} U vert(H)`, any s=2 walk, no product form assumed); T2 in
+general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`. Execution stopped here; ready
+for independent review.** Evidence **PRELIMINARY**. Not promoted.
+
+**Repair note (2026-11-02).** [Reviews](2026-11-02--hex-ceiling-review.md):
+Gemini PASS; Grok REPAIR_REQUIRED with two mandatory repairs, both
+accepted. (R1) L0 was labelled `PROVED_IN_REPO` while Bernstein's
+inequality was only named as prior art, against contract Sec. 2; Lemma B
+now proves it in-repo. (R2) The verifier's "rank 2 for every theta_0"
+check only tested that a minor is not identically zero; it now asserts the
+minor equals the `theta_0`-free constant `sqrt3 l^4/2`. Clarifications:
+Hermiticity of `A` in L0; the maximum-modulus step in T2; the hexagon
+fixes the denominator `2l`; `xi` is a Bloch component.
+
+## 1. L0 — the ceiling `c_0 <= r_in` on `W_hex`
+
+Let `U` be in `W_hex`. Multiplying by the scalar `e^{i phi}` does not change
+the support, so take `U(0) = I`. Let `n_f` be the unit outward normal of a
+facet of the regular hexagon `C = conv F`, with edge vector `d in Lambda`
+(edges join lattice vertices). For a lattice vector `h = a g_1 + b g_2` and
+`d = p g_1 + q g_2`,
+
+`h . Rot90(d) = (sqrt3/2)(b p - a q)`   (verifier, check L0),
+
+so `h . n_f = m_h delta` with `m_h in Z` and `delta = sqrt3/(2|d|)`. The
+extreme values of `h . n_f` over `F` are `±h_C(n_f)` (central symmetry of
+the hexagon) and are attained at vertices, which lie in `F`; hence
+`h_C(n_f) = N delta` for an integer `N` and every `m_h` satisfies
+`|m_h| <= N`.
+
+For unit vectors `x, y in C^2` set `p(s) = <y, U(s n_f / delta) x>`. Then
+`p(s) = sum_{|m|<=N} c_m e^{-i m s}` is a trigonometric polynomial of degree
+`N` with `|p| <= 1` (U unitary). Bernstein's inequality (Lemma B below,
+proved here) gives `|p'(0)| <= N`, i.e. `|<y, dU/dt(0) x>| <= N delta =
+h_C(n_f)` along `n_f`. Taking the supremum over `x, y`,
+`||A(n_f)|| <= h_C(n_f) = r_in`, where `A(n) = i dU(t n)/dt (0)`. `A(n_f)` is
+Hermitian: differentiating `U U^dag = I` at `t = 0`, where `U = I`, shows
+`dU/dt(0)` is anti-Hermitian. With `s = 2` and a traceless isotropic cone,
+`A(n_f)^2 = c_0^2 I`, so the Hermitian `A(n_f)` has spectrum `{±c_0}` and
+`||A(n_f)|| = c_0` (without Hermiticity, `M^2 = c_0^2 I` would not fix the
+norm). Therefore **`c_0 <= r_in` for every walk in `W_hex`**. Only the
+facet normal is needed, since `r_in = min h_C` is attained there.
+
+**Lemma B (Bernstein, proved in-repo; repair R1 of the 2026-11-02 Grok
+review).** If `p(s) = sum_{|m|<=N} c_m e^{-ims}` and `|p| <= 1` on `R`, then
+`|p'(s_0)| <= N` for every `s_0`.
+
+*Reduction to real polynomials.* Fix `s_0` and choose `alpha` with
+`e^{i alpha} p'(s_0) = |p'(s_0)|`. `R(s) = Re(e^{i alpha} p(s))` is a real
+trigonometric polynomial of degree `<= N`, `|R| <= 1`, and
+`R'(s_0) = Re(e^{i alpha} p'(s_0)) = |p'(s_0)|`. So it suffices to show
+`R'(s_0) <= N` for real `R`.
+
+*Real case.* Suppose `R'(s_0) > N`. Choose `0 < eps < 1` so small that
+`R_eps = (1 - eps) R` still has `R_eps'(s_0) > N`; then `|R_eps| < 1`
+everywhere. Pick `beta in (-pi, 0)` with `cos beta = R_eps(s_0)` (possible
+since `|R_eps(s_0)| < 1`) and set `C(s) = cos(N(s - s_0) + beta)`. Then
+`C(s_0) = R_eps(s_0)` and `C'(s_0) = -N sin beta in (0, N]`, so
+`D = C - R_eps` has `D(s_0) = 0`, `D'(s_0) < 0`; in particular `D` is not
+identically zero. On one period `C` reaches `±1` alternately at `2N`
+points `t_1 < ... < t_2N`, and there `|R_eps| < 1` gives
+`sign D(t_j) = sign C(t_j)`, alternating. Hence `D` has a zero in each of
+the `2N` open arcs between consecutive `t_j`. The point `s_0` is not a
+`t_j` (`D(s_0) = 0 != D(t_j)`), so it lies in one arc `(t_j, t_{j+1})`, on
+which `C` is monotone; `C'(s_0) > 0` makes it increasing, so
+`C(t_j) = -1`, `C(t_{j+1}) = +1`, i.e. `D(t_j) < 0 < D(t_{j+1})`. Since `D`
+falls through zero at `s_0` (`D'(s_0) < 0`), `D > 0` just left of `s_0` and
+`D < 0` just right of it: there is a further zero in `(t_j, s_0)` and one in
+`(s_0, t_{j+1})`. That arc holds at least three zeros, so `D` has at least
+`2N + 2` zeros per period. But `e^{iNs} D(s)` is an algebraic polynomial of
+degree `<= 2N` in `z = e^{is}`, so a nonzero `D` has at most `2N` zeros per
+period. Contradiction; hence `R'(s_0) <= N`. Applying this to `R(-s)` gives
+`R'(s_0) >= -N`. `square`
+
+This is the classical argument (prior art; no novelty claimed); it is
+written out so that L0 closes in-repo as the contract (Sec. 2) requires.
+
+## 2. T1 — the `n = 3` antipodal subclass
+
+**Reduction (analytic).** With `D_j(k) = diag(e^{-ik.a_j}, e^{ik.a_j}) =
+e^{-i (k.a_j) sigma_z}` and `G_j = C_{j-1} ... C_1` (`G_1 = I`),
+
+`C_3 D_3 C_2 D_2 C_1 D_1 = (C_3 C_2 C_1) * prod_{j=3..1} G_j^dag D_j G_j`.
+
+The node condition makes `C_3 C_2 C_1` scalar, so up to a phase
+`U(k) = prod_{j=3..1} exp(-i (k.a_j) tau_j)`, `tau_j = G_j^dag sigma_z G_j
+= t_j . sigma` with unit Bloch vectors `t_j` (free up to one global
+rotation). The `a_j` are three lattice vectors of equal length `l` at
+120°, `a_1 + a_2 + a_3 = 0`.
+
+**Linear term.** `A(k) = sum_j (k.a_j) tau_j = (sum_j t_j (a_j . k)) . sigma`,
+independent of the factor order. Its square is
+`k^T M k I` with `M = sum_ij g_ij a_i a_j^T`, `g_ij = t_i . t_j`.
+
+**Isotropy forces equal overlaps** (verifier, symbolic in `theta_0`):
+the traceless part of `M` is linear in `(g_12, g_13, g_23)` with a
+coefficient matrix whose `2x2` minors are `±sqrt3 l^4/2`, independent of
+`theta_0` (verifier), hence rank 2 for every `theta_0`, with kernel
+`(1,1,1)`. Geometrically, the three
+pair terms are double-angle vectors at `2 theta_0`, `2 theta_0 + 2pi/3`,
+`2 theta_0 + 4pi/3`, which cancel only with equal weights. With
+`g_ij = g`: `M = (3/2) l^2 (1 - g) I`, so `c_0,raw^2 = (3/2) l^2 (1 - g)`.
+
+**Range of `g`.** The Gram matrix of three unit vectors with equal
+overlaps has eigenvalues `1 + 2g` and `1 - g` (twice); it is realisable iff
+`-1/2 <= g <= 1`.
+
+**Normalisation.** `F` is contained in `{0, ±2 a_j}`; the hexagon condition
+puts all six `±2 a_j` in `F`, so the longest step is `2l` and
+`c_0 = c_0,raw/(2l)`, `r_in = sqrt3/2`. Hence
+
+`c_0 / r_in = sqrt(1 - g) / sqrt2 <= sqrt3/2`, equality iff `g = -1/2`,
+
+i.e. iff the three Bloch vectors are coplanar at mutual 120°. The
+hexagon condition enters only through the denominator: it puts the six
+`±2 a_j` in `F` and so fixes the longest step at `2l`. It does not change
+the supremum, since `g = -1/2` is realised with all six vertices present.
+
+**Attainment.** The verifier builds the walk with
+`t_j = (cos 2pi j/3, sin 2pi j/3, 0)` and certifies exactly: unitary
+symbol, `F = {0, ±2 u_j}`, regular hexagonal hull (6 vertices, 6 facets,
+`r_in = sqrt3/2`), every vertex coefficient non-nilpotent, `U(0) = I`,
+untilted isotropic cone, `c_0 = 3/4`, `c_0/r_in = sqrt3/2`.
+
+**Explains the previous table.** ADMP's `tau_i` (Eq. (5)) have `g = 1/3`,
+giving `c_0 = 1/2` (verifier, reproducing row L6a of Sec. 11). JDW L6d has
+`c_0 = 3/4`, the maximum, which corresponds to `g = -1/2`. The ADMP–JDW
+difference on the same substrate is the difference in the overlap of the
+three coin axes: ADMP's axes share the Bloch `z`-component
+`xi = sqrt5/3` (they are not coplanar through the origin), which raises
+`g` to `1/3` and costs speed.
+
+**Verdicts.** T1 `GAP_PROVED_IN_CLASS`: `sup c_0/r_in = sqrt3/2`,
+attained exactly at coplanar 120° Bloch vectors. HX1
+`CONFIRMED_IN_CLASS` (T1 subclass). HX0 `CONFIRMED_IN_CLASS` (L0, all of
+`W_hex`).
+
+## 3. T2 — minimal-support subclass (2026-11-02)
+
+Subclass: walks in `W_hex` whose composite support satisfies
+`F within {0} U vert(H)` (origin plus the six hull vertices). No product
+form is assumed: the argument uses only `F`, unitarity, the node and
+isotropy. It contains T1, ADMP L6a, JDW L6d and L6f (Sec. 11); it does not
+contain JDW L6c (19 points).
+
+**Step 1: saturation along a facet normal is rigid.** Suppose
+`c_0 = r_in`. Let `n_f` be a facet normal and `x` a unit eigenvector of
+`A(n_f)` with eigenvalue `+c_0`. With the notation of Sec. 1,
+`p(s) = <x, U(s n_f/delta) x>` has `|p| <= 1`, `p(0) = 1` and
+`p'(0) = -i N`. Then `P(z) = z^N p` (with `z = e^{is}`) is an analytic
+polynomial with `|P| = |p| <= 1` on the unit circle, hence `|P| <= 1` on
+the closed disc by the maximum-modulus principle, `P(1) = 1` and
+`P'(1) = 0`.
+By Julia's lemma (classical; a non-constant `P` with `|P| <= 1` and a
+boundary fixed point has angular derivative `P'(1) > 0`) `P` is constant,
+so `p(s) = e^{-iNs}`; equivalently this is the equality case of
+Bernstein's inequality, listed as prior art in PROJECT_INSTRUCTIONS §6.
+By Cauchy–Schwarz `U(t n_f) x = e^{-i r_in t} x` for all `t`, and likewise
+for the `-c_0` eigenvector. Hence along every facet-normal line
+`U(t n_f) = e^{-i r_in t} P_+(n_f) + e^{i r_in t} P_-(n_f)`: only the two
+extreme layers of `F` survive in that direction. In coefficients: the sum
+of `A_h` over the top edge is `P_+(n_f)`, over the bottom edge
+`P_-(n_f)`, and over every intermediate layer `0`.
+Citation status: Julia's lemma and the Bernstein equality case are
+classical; no primary source for them is in `sources/` (page
+[UNVERIFIED]).
+
+**Step 2: normal form.** By a Bloch rotation, a joint rotation of space
+and Bloch sphere about `z`, and scale, take `vert(H) = {(cos k pi/3,
+sin k pi/3)}` and `A(n) = r_in n . sigma` with `n` in the `xy` Bloch plane.
+The three facet normals are at 30°, 90°, 150°.
+
+**Step 3: certificate (verifier).** Along each facet normal the layers
+are top edge (2 vertices), middle layer (2 vertices and `0`), bottom edge.
+The nine layer equations are consistent, leave the coefficient `X_0` of
+one vertex free, and force `A_0 = -I/2`. Imposing
+`sum_h A_{h+d} A_h^dag = delta_{d0} I` and `sum_h A_h^dag A_{h+d} =
+delta_{d0} I` for all `d`, the lex Gröbner basis of the real equations
+contains `x^2 - x/2 + 1/12` in one real coordinate of `X_0`; its
+discriminant is `-1/12 < 0`. No real solution exists.
+
+**Positive control.** The same procedure on the square substrate
+(`F within {0} U {(±1,±1)}`, facet normals `x`, `y`) gives a consistent
+system, and the saturating walk `e^{-ik_x sigma_x} e^{-ik_y sigma_y}`
+solves it (verifier).
+
+**Verdict.** T2 `PROVED_FOR_MINIMAL_SUPPORT`: no s=2 walk on the
+hexagonal substrate with `F within {0} U vert(H)` reaches `c_0 = r_in`.
+HX2 holds in this subclass; HX2 in general is OPEN. No supremum is
+claimed for this subclass beyond T1's `sqrt3/2`, which it contains; the
+gap here is qualitative (`<`), not a bound.
+
+## 4. Attempt beyond minimal support (inconclusive)
+
+The same reduction for the radius-2 hexagonal ball (19 points: origin,
+inner ring, edge midpoints, vertices; contains JDW L6c) leaves 56 free real
+parameters after the layer equations and 730 quadratic unitarity
+equations. A grevlex Gröbner basis over the complex field did not finish
+within the agreed 900 s cap (exit 124). Even a finished basis other than
+`{1}` would not decide real solvability (the minimal case is consistent
+over `C`; its contradiction is real). The attempt is recorded in the
+exploratory script `scripts/explore_hex_saturation_support.py`; it is not
+evidence for any verdict. Per the contract's stop rule, T2 is recorded as
+`OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`.
+
+## 5. Not established
+
+- T2 for supports with further lattice points (edge-interior or interior
+  points, e.g. JDW L6c). HX2 is OPEN there. The minimal-support result does
+  not extend by itself, and the failed computation is not evidence either
+  way.
+- Nothing for `s > 2`, other lattices, masses.
+- No novelty claim: Bernstein is prior art; the T1 computation is
+  elementary.
+
+## 6. Next step
+
+Independent cross-family review of L0, T1 and the minimal-support T2, then
+a separate promotion. Extending T2 needs a new approach (e.g. a structural
+argument on edge polynomials, or real-algebraic certificates) and is not
+in progress. Then independent cross-family review and a
+separate promotion.
+
+=== DOCUMENT 4: HEX_SUPREMUM_GATE.md ===
+
+# HEX_SUPREMUM (M1) — frozen contract
+
+**Frozen:** 2026-11-03, before solving. Nothing in Secs. 3–5 has been
+computed. Drafted by Claude Code (Claude Opus 5.5) at the user's
+instruction («vamos con la carta M1»).
+**Authorization:** user approval of the draft, 2026-11-03, «APROBACIÓN CON
+ENMIENDAS», with three amendments incorporated before freezing: (1) the
+solver budget is cumulative per support, not per run (Sec. 5); (2) the
+sum-of-squares certificate has the explicit form of Sec. 4, and the
+no-real-zero alternative needs its own certificate; (3) a witness answers
+the saturation question only, without a broader claim about the substrate
+(Sec. 0). Approval covers the preregistration and Stage A as first work,
+with no confirmatory numerics.
+Reports cite the commit that adds this file as the preregistration commit.
+**Initial scientific status: OPEN.**
+**Parent:** `HEX_CEILING_GATE.md` (T2 general `OPEN_AFTER_MINIMAL_SUPPORT_ANALYSIS`,
+CURRENT_STATE Sec. 12). This gate continues T2 only; it does not reopen L0,
+T1 or the minimal-support T2.
+
+## 0. Pre-step check (rule of 2026-11-02)
+
+- **Known.** K4 (`c_0 = r_in` attained on line, square, BCC/cubic rows) and
+  K5 (hexagon: L0 `c_0 <= r_in` on `W_hex`; T1 `sup = sqrt3/2` in the
+  `n = 3` antipodal subclass; no s=2 walk with `F within {0} U vert(H)`
+  reaches `r_in`). Saturation along a facet normal is rigid (hex-ceiling
+  report Sec. 3, Step 1). A grevlex Gröbner basis over `C` for the 19-point
+  ball did not finish in 900 s, and would not have decided real
+  solvability anyway (hex-ceiling report Sec. 4).
+- **Question.** Does any s=2 walk in `W_hex` reach `c_0 = r_in`?
+- **Result that ends the line** (research-lines report, M1):
+  (a) an explicit witness in `W_hex` with `c_0 = r_in`, certified exactly:
+  the saturation question is answered affirmatively for `s = 2` and the
+  line M1 closes. This shows only that the hexagonal substrate admits
+  saturation in `W_hex`; it does not by itself show that no other
+  property of `c` specific to the hexagonal substrate remains;
+  (b) no exact method of Sec. 4 finishes within the session budget of
+  Sec. 5: stop at `OPEN_AFTER_<analysis>`, no numerics.
+  A gap proof for the whole class keeps the line (it is the only outcome
+  that makes the hexagon substrate-specific). A gap proof for a bounded
+  support only is recorded as such and does not close the line either way.
+
+## 1. Single question
+
+> On the hexagonal substrate, is there a two-component walk of the class
+> `W_hex` with `c_0 = r_in(C_micro)`, i.e. a walk whose support is not of
+> minimal type and which saturates the ceiling?
+
+## 2. Declared class
+
+`W_hex` exactly as in `HEX_CEILING_GATE.md` Sec. 1 (triangular lattice
+`Lambda`, `s = 2`, product of coin–partial-shift factors, `C_micro = conv F`
+a regular hexagon from the exact composite support, scalar `U(0)`,
+traceless isotropic linear term, longest vector of `F` of length 1).
+
+Two readings of the class are kept apart:
+
+- **Gap direction.** A proof that `c_0 < r_in` may use only unitarity, `F`,
+  the node and isotropy (as the minimal-support T2 did). It then holds for
+  the larger class `W_hex^sym` of all s=2 unitary Laurent polynomials with
+  those properties, which contains `W_hex`; it is stated for `W_hex^sym`.
+- **Witness direction.** A witness must lie in `W_hex`: it is given as an
+  explicit product `C_n D_n(k) ... C_1 D_1(k)`. A saturating symbol found
+  without a product factorization is reported as a witness in `W_hex^sym`
+  only, which does not meet result (a); in two dimensions factorization is
+  not automatic [UNVERIFIED as a general statement; not used].
+
+**Supports.** Regular lattice hexagons centred at the origin have vertices
+`R^j v`, `v in Lambda`, `R` the 60° rotation. Ordered by the number of
+lattice points of the closed hull (to be certified by the verifier, not
+assumed):
+
+- `S7`: `v = g_1` — 7 points; every walk is of minimal type (done in T2).
+- `S13`: `v = g_1 + g_2` — origin, inner ring of six unit vectors, six
+  vertices: 13 points. Smallest support not covered by T2.
+- `S19`: `v = 2 g_1` — the radius-2 ball (contains JDW L6c, `c_0/r_in =
+  sqrt3/2`).
+- larger hexagons: covered only by a structural argument (Sec. 4, Stage A).
+
+## 3. Targets
+
+- **M1-A (structural).** Necessary conditions for saturation valid for
+  every support, from facet-line rigidity and the extreme-face unitarity
+  identities (Sec. 4). Either a gap proof for `W_hex^sym`, or a reduced
+  normal form with fewer unknowns for Stage B.
+- **M1-B13.** On `S13`: gap proof (`c_0 < r_in` for every walk with
+  `F within S13`) or an explicit witness.
+- **M1-B19.** On `S19`: same, only after M1-B13 has a verdict.
+
+## 4. Method, named before any computation
+
+**Stage A — structural reduction (by hand, checked by the verifier).**
+
+1. Facet-line rigidity (hex-ceiling report Sec. 3, Step 1, reused): along
+   each of the three facet-normal lines the top edge sums to `P_+(n_f)`,
+   the bottom edge to `P_-(n_f)`, every intermediate layer to `0`.
+2. Extreme-face identities. The Newton polytope of `U U^dag` lies in
+   `C - C = 2C`. For each edge `e` of `C` with outward normal `n_e`, the
+   coefficients of `U U^dag` and `U^dag U` on the face of `2C` in direction
+   `n_e` vanish (except at `0`, not on the face). With `E_e(x)` the edge
+   polynomial of the top edge and `E_{-e}(x)` that of the opposite edge,
+   this gives `E_e(x) E_{-e}(x)^dag = 0` and `E_{-e}(x)^dag E_e(x) = 0` as
+   one-variable Laurent identities, together with `E_e(1) = P_+(n_e)`,
+   `E_{-e}(1) = P_-(n_e)` from step 1.
+3. Use 1–2 (and, if needed, the next-to-extreme faces) to restrict the
+   edge coefficients to rank-one forms and eliminate unknowns, before any
+   solver is run. Step 2 is a standard fact about Laurent polynomials
+   (product of extreme coefficients); its use here is stated and proved in
+   the report, not cited.
+
+**Stage B — exact decision on a bounded support (`S13`, then `S19`).**
+
+- Unknowns: the coefficients left after Stage A and the normal form of the
+  hex-ceiling report Sec. 3, Step 2 (`A(n) = r_in n . sigma`, vertices at
+  `k pi/3`).
+- Equations: layer equations, node and isotropy, and unitarity
+  `sum_h A_{h+d} A_h^dag = delta_{d0} I`, `sum_h A_h^dag A_{h+d} = delta_{d0} I`.
+- **Infeasibility certificate (gap).** Accepted forms only, each checked
+  exactly and quickly by the verifier without rerunning a solver:
+  (i) a polynomial `p` in the ideal, given with explicit exact cofactors
+  `p = sum_i h_i f_i`, whose absence of real zeros is itself certified
+  exactly (e.g. a univariate polynomial with negative discriminant, as in
+  T2, or a sum-of-squares-plus-positive-constant representation of `p`);
+  or (ii) for the real system `f_1 = ... = f_m = 0`, an identity
+  `-1 = sum_j q_j(x)^2 + sum_i h_i(x) f_i(x)` with exact rational
+  coefficients, the verifier expanding both sides and checking equality. A Gröbner basis over `C`
+  different from `{1}` decides nothing about real solvability and is not a
+  verdict.
+- **Witness.** Closed form, certified exactly: unitarity, composite `F`,
+  regular hexagonal hull, node, isotropy, `c_0 = r_in`, and the product
+  factorization (Sec. 2).
+- Exploratory numerics (a versioned script labelled exploratory) may guide
+  the search for a witness or for the certificate. **No numerical result,
+  scan, optimisation or failed search enters a verdict**, and no rigidity
+  is inferred from one.
+
+## 5. Stop rules and budget
+
+- Order: Stage A, then M1-B13, then M1-B19. Do not start the next stage
+  before the previous has a verdict or a recorded stop.
+- Budget: one working session, and at most 3600 s of solver wall time
+  **cumulative per support** (`S13`, `S19`), however it is split across
+  runs; every run is recorded with its command, wall time and exit code.
+  A run cut by the budget is inconclusive and is not evidence.
+- Stop at the first of: a witness meeting Sec. 4 (result (a); then M1
+  closes, with the limited reading of Sec. 0); a gap proof for `W_hex^sym` (line kept); budget exhausted
+  (result (b), `OPEN_AFTER_<analysis>` naming the stages done).
+- Do not widen the class during execution; restricted results stay
+  restricted.
+
+## 6. Exclusions
+
+`s > 2`, other lattices, masses, `V_grp^max`, inhomogeneous or encoded
+walks, new substrate classes, general QCA laws, claims about our universe.
+No novelty claim: Bernstein's inequality and its equality case are prior
+art; the hexagonal-ceiling prior-art check (plan step 4) is not finished.
+
+## 7. Verdicts
+
+- M1-A: `GAP_PROVED_IN_CLASS` (for `W_hex^sym`), `REDUCED_TO_<normal form>`,
+  or `OPEN_AFTER_<analysis>`.
+- M1-B13, M1-B19: `PROVED_FOR_<support>` (gap on that support),
+  `CEILING_ATTAINED_BY_EXPLICIT_WALK` (in `W_hex`) /
+  `CEILING_ATTAINED_IN_W_HEX_SYM_ONLY`, or `OPEN_AFTER_<analysis>`.
+- HX2 (from the parent gate): `CONFIRMED_IN_CLASS` / `REFUTED_BY_<witness>` /
+  `OPEN`, and `CONFIRMED_FOR_<support>` for a bounded result.
+
+## 8. Deliverables
+
+Report `reports/YYYY-MM-DD--hex-supremum.md`; verifier
+`scripts/verify_hex_supremum_gate.py` (fail-closed, exact, checks
+certificates rather than rerunning solvers; both exact command forms added
+to `.claude/settings.json`); exploratory scripts, if any, versioned and
+labelled; independent cross-family review; then a separate promotion.
+Reviewed verifiers (`verify_hex_ceiling_gate.py`) are imported read-only,
+never edited.
+
+=== DOCUMENT 5: HEX_CEILING_GATE.md ===
+
+# HEX_CEILING — frozen contract
+
+**Frozen:** 2026-11-01, before solving. Nothing in Secs. 3–4 has been
+computed or proved.
+**Authorization:** direct user instruction, 2026-11-01: «adelante con el
+punto 3, redacta el charter», then approval of this text («si»),
+including the scope choices `s = 2` only and `n` unrestricted in T2.
+Reports cite the commit that adds this file as the preregistration commit.
+**Initial scientific status: OPEN.**
+
+## 0. Single question
+
+> On the hexagonal substrate, can a two-component walk of the declared
+> product class reach the ceiling `c_0 = r_in(C_micro)`? If not, what is
+> `sup c_0 / r_in` over the class, and is it attained?
+
+Origin: in the promoted `C_ACROSS_LATTICES` table (CURRENT_STATE Sec. 11)
+every declared square, BCC/cubic and line walk has `c_0 = r_in`, and none
+of the four declared hexagonal walks does (`c_0/r_in = 1/sqrt3` for ADMP,
+`sqrt3/2` for JDW). The table cannot tell whether this is a property of
+the substrate or of those four walks. This gate asks that question
+directly, by proof or by explicit counterexample, never by a scan.
+
+## 1. Declared class `W_hex`
+
+Fixed for every conclusion of this gate:
+
+- **Lattice.** `Lambda` = triangular lattice generated by `g_1 = (1,0)`,
+  `g_2 = (1/2, sqrt3/2)`; the walk is translation invariant on `Lambda`.
+- **Internal dimension.** `s = 2`. No larger `s` (s=4 is excluded; see
+  Sec. 6).
+- **Form of one update.**
+  `U(k) = C_n D_n(k) C_{n-1} D_{n-1}(k) ... C_1 D_1(k)`, with `n >= 1`
+  arbitrary, `C_j in U(2)` arbitrary, and
+  `D_j(k) = diag(exp(-i k.a_j), exp(-i k.b_j))`, `a_j, b_j in Lambda`
+  (a partial shift: each component moves by its own lattice vector). An
+  optional final coin `C_{n+1}` is absorbed by conjugation and does not
+  change the spectrum. This contains every encoded hexagonal row of the
+  previous gate: ADMP L6a (`a_j = -b_j`, coins built from `tau_i`) and JDW
+  L6c, L6d, L6f (antipodal or skew partial shifts).
+- **Substrate condition.** `C_micro = conv F` is a regular hexagon centred
+  at the origin, where `F` is the composite Fourier support of `U`
+  (vectors with nonzero matrix coefficient, computed exactly, not the set
+  of formally admissible sums).
+- **Node condition.** `U(0) = e^{-i phi} I` (degenerate quasienergy at
+  `k = 0`, massless node), and the linear term
+  `A(k) = i dU/dk (0) . k` (with the global phase removed) is traceless
+  and isotropic: `A(n)^2 = c_0^2 |n|^2 I`, `c_0 > 0`.
+- **Normalisation.** Longest vector of `F` has length 1 (so
+  `r_in = sqrt3/2`, `V_causal^max = 1`); one update per time unit.
+- **Not assumed.** No representation-isotropy in the P17 sense
+  (P17 p.7 Prop. 5 excludes the triangular lattice for that stronger
+  notion; `W_hex` asks only for an isotropic cone). No irreducibility
+  beyond the node condition; a reducible walk is admitted but must be
+  reported as such.
+
+## 2. Background taken as input
+
+- Promoted table, CURRENT_STATE Sec. 11, with its scope.
+- The matrix Bernstein inequality for unitary trigonometric polynomials
+  is prior art. Its consequence needed here, `||A(n)|| <= h_{C_micro}(n)`
+  at a node with `U(0)` scalar, hence `c_0 <= r_in`, is **not** assumed:
+  the repo has it only for the N3 class (Sec. 7.2). It is lemma L0 below,
+  to be proved in-repo or cited with page from a primary source read in
+  this gate.
+
+## 3. Targets
+
+- **L0 (ceiling).** For every walk in `W_hex`, `c_0 <= r_in`.
+- **T1 (subclass n = 3, antipodal).** `n = 3`, `b_j = -a_j`, the `a_j`
+  three lattice vectors at 120° (the ADMP / JDW L6d form). Determine
+  `sup c_0/r_in` exactly, whether it is attained, and by which coins.
+  This also explains the ADMP–JDW difference within that subclass.
+- **T2 (general class).** Either prove `c_0 < r_in` for all of `W_hex`
+  (with the best bound obtained), or exhibit an explicit walk in `W_hex`
+  with `c_0 = r_in`, certified exactly.
+
+## 4. Hypotheses, stated before solving
+
+- **HX0.** L0 holds.
+- **HX1.** In the T1 subclass, `c_0 < r_in` for every walk.
+- **HX2.** In all of `W_hex`, `c_0 < r_in` for every walk.
+
+Each refutation is a valid outcome. No expected value of the supremum is
+stated; the table only gives `sup >= sqrt3/2` (JDW).
+
+## 5. Method and stop rules
+
+- Exact algebra and geometry first. Proofs are written in a report; any
+  computation is a permanent traced verifier
+  (`scripts/verify_hex_ceiling_gate.py`, fail-closed, exact).
+- A witness walk (refuting HX1 or HX2) must be given in closed form and
+  certified exactly: unitarity, composite `F`, regular hexagonal hull,
+  node, isotropy, `c_0`.
+- Numerical exploration may guide a construction or a proof idea only if
+  done by a versioned script and labelled exploratory. **No numerical
+  result, scan, optimisation or failed search may enter a verdict**, and
+  no rigidity may be inferred from one.
+- If a proof is obtained only for a restricted subclass (e.g. bounded
+  `n`, antipodal shifts), the result is stated for that subclass only and
+  not extrapolated.
+- Stop when T1 and T2 each reach a verdict, or when T2 is recorded as
+  `OPEN_AFTER_<analysis>` with the analysis that was done. Do not widen the
+  class during execution.
+
+## 6. Exclusions
+
+`s > 2`, other lattices, inhomogeneous or encoded walks (e.g.
+Arrighi–Facchini), masses, `V_grp^max`, new substrate classes, general QCA
+laws, claims about our universe. No novelty claim (Bernstein is prior
+art).
+
+## 7. Verdicts
+
+- L0: `PROVED_IN_REPO` / `CITED_<source, page>` / `OPEN`.
+- T1, T2: `GAP_PROVED_IN_CLASS` (with the supremum or bound),
+  `CEILING_ATTAINED_BY_EXPLICIT_WALK`, `PROVED_FOR_<subclass>`, or
+  `OPEN_AFTER_<analysis>`.
+- Per hypothesis: `CONFIRMED_IN_CLASS` / `REFUTED_BY_<witness>` / `OPEN`.
+
+## 8. Deliverables
+
+Report `reports/YYYY-MM-DD--hex-ceiling.md`, verifier
+`scripts/verify_hex_ceiling_gate.py` (exact command forms added to
+`.claude/settings.json`), independent cross-family review, then a separate
+promotion.

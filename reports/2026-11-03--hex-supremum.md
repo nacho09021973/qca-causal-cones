@@ -10,7 +10,8 @@ read-only the reviewed `verify_hex_ceiling_gate.py` (SHA-256 `8f3b7a10…`,
 unchanged). **Solver budget used:** 0 s on S13 (no solver run); 0 s on
 S19 (not started). No numerics. **Status: PRELIMINARY,
 INDEPENDENT_REVIEW_PASS_TWO_HOUSES; promoted 2026-11-03 for S13 (CURRENT_STATE
-Sec. 14).**
+Sec. 14).** Addendum of 2026-11-14 (Sec. 8): uniform qualitative gap on
+S13, PRELIMINARY, one independent review PASS (Grok), not promoted.
 
 **Review (2026-11-03).** Grok PASS and Gemini PASS on all five blocks, no
 mandatory repair, identical input (this report at SHA-256 `8a4c4eec…`,
@@ -126,3 +127,64 @@ solver.
 
 M1-B19 (user decision on when), then independent cross-family review and
 a separate promotion.
+
+## 8. Addendum (2026-11-14): uniform gap on S13
+
+**Authorization.** User instruction (2026-11-14): request an independent
+review of the S13 compactness argument, checking non-emptiness, and, if it
+passes, incorporate the result here without a new contract. No
+computation, script or solver was used. **Status: PRELIMINARY, one
+independent review PASS (Grok `grok-4.7`), not promoted.** No novelty
+claim.
+
+**Reviewed candidate.**
+[`candidato.md`](../debates/2026-11-14--hex-s13-uniform-gap-review/candidato.md)
+(SHA-256 `282f3024…`, base `7cadad6`), unchanged after review; it holds the
+full proof. Review:
+[`informe_grok.md`](../debates/2026-11-14--hex-s13-uniform-gap-review/informe_grok.md),
+sealed, one round, `~/herramientas` `2a7342b`, input SHA-256 `51ad53cb…`:
+PASS on all six blocks, no mandatory repair. Provenance: compactness and
+non-emptiness by Claude Code (Claude Opus 5.5); the proof of Lemma 2 was
+formulated by the user (with an external assistant) and rechecked by the
+author. Grok is a different family from both.
+
+**Class.** `X_13`: walks of `W_hex^sym` with `F within S13` and
+`conv F = conv S13` (all six vertex coefficients nonzero), so
+`r_in = sqrt3/2` is constant on `X_13`.
+
+**Result.** There is `eps_13 > 0` with `c_0/r_in <= 1 - eps_13` on all of
+`X_13`, and `sqrt3/2 <= 1 - eps_13 < 1`. Outline:
+
+1. *Compact closure (Lemma 1).* Unitarity, scalar `U(0)`, traceless
+   linear term and isotropy (`A(e_1)^2 = A(e_2)^2 = c^2 I` with
+   `{A(e_1), A(e_2)} = 0`, `e_1, e_2` orthonormal; equivalent to
+   `A(n)^2 = c^2 |n|^2 I` by polarization) are closed polynomial
+   conditions; `sum_h A_h^dag A_h = I` bounds the coefficients. Only
+   `c_0 > 0` and the six nonzero vertex coefficients are open; regularity
+   of the hull is implied by them, since S13 has no lattice points inside
+   its edges. `c_0`, the square root of the nonnegative polynomial
+   `(1/2) tr A(e_1)^2`, is continuous, so the ratio attains its maximum
+   on the closure.
+2. *Vertex loss (Lemma 2).* If a vertex coefficient vanishes, the
+   remaining projections on `hat v` lie in `{-1, -1/2, 0, 1/2}`;
+   `P(t) = e^{-it} W(4t)` has frequencies `{-3, -1, 1, 3}`, Lemma B gives
+   `||I + 4H|| <= 3`, hence `c_0 <= 1/2` (the centred inradius of
+   `conv(S13 \ {v})`) and ratio `<= 1/sqrt3`.
+3. *Theorem.* The maximiser is in `X_13` (ratio `< 1` by M1-B13), or has
+   `c_0 = 0`, or has lost a vertex (Lemma 2).
+4. *Non-emptiness.* The T1 attainment walk with `2 a_j` placed on three
+   alternate vertices of S13 lies in `X_13` with ratio `sqrt3/2`. Its
+   `a_j` are not lattice vectors: it is in `W_hex^sym`; whether
+   `X_13 cap W_hex` is nonempty is not decided.
+
+**Verdict.** S13 uniform gap: `GAP_PROVED_IN_CLASS` for `X_13`
+(qualitative), PRELIMINARY until promotion.
+
+**Not established.** No value of `eps_13` beyond
+`0 < eps_13 <= 1 - sqrt3/2`. Nothing for S19, S25, larger supports or
+`s > 2`. For larger hexagons, removing a vertex lowers the centred
+inradius only if the nearest edge lattice point lies at relative position
+`t > 2 - sqrt3` along the edge (review, block 6); otherwise the limit can
+keep `r_in` with a non-regular hull outside `W_hex^sym`, where no existing
+result gives a gap. This is the identified obstacle to extending the
+argument, not a result. No statement that the substrate fixes `c_0`.

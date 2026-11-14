@@ -56,13 +56,23 @@ All entries below are for the declared code, rule and parameters only.
 | No exact recovery of the code at any later time `T >= 2` | [exact recovery](reports/2026-11-08--thirring-exact-recovery.md) | PRELIMINARY; Claude review «se sostiene» |
 | No approximate recovery at growing times: a two-particle bound state keeps leakage of input 00 above `c > 0` | [approximate recovery](reports/2026-11-09--thirring-approximate-recovery.md) | **PROMOTED** 2026-11-09 (Grok review) |
 | Vacuum one-particle sector of a density-collision QCA is exactly free at every coupling | [vacuum sector](reports/2026-11-06--interaction-vacuum-sector.md) | PRELIMINARY |
+| Low-energy band-packet code: no entangler (positive leakage into the doubler-partner sector) | [low-energy packet](reports/2026-11-09--thirring-low-energy-packet.md) | **PROMOTED** 2026-11-14 (Astra review and re-review) |
+| Flavour-packet code, opposite-moving packets: leakage-free entangling exchange gate `V = 1 ⊕ [[iy, x], [x, iy]] ⊕ 1`, `x = (√10 − 2)/6`, under `U^2` | [flavour packet](reports/2026-11-14--thirring-flavour-packet.md) | **PROMOTED** 2026-11-14 (Grok review) |
+| Same-direction (overtaking) flavour packets act by the same family `V(r)`, `r = e^{Δθ}`; `V(r)` satisfies Yang–Baxter, `P V` the braid relation | [co-moving packet](reports/2026-11-14--thirring-comoving-packet.md) | **PROMOTED** 2026-11-14 (Astra review and re-review; owner review) |
+| Under the premise F (multi-packet factorization), crossings at `χ = π/2` are nearest-neighbour matchgates `−P V(r)`: classically simulable with product flavour inputs and flavour readout | [A5 matchgates](reports/2026-11-14--thirring-matchgate-a5.md) | **PROMOTED** 2026-11-14, conditional on F (Astra review, two re-reviews; owner review) |
 
 Read together: the fixed rule produces an exact entangling gate once, but in
-the codes tested so far it neither keeps the code closed under repeated
-contacts nor yields a universal set. Free nodal envelopes have
+the microscopic codes tested it neither keeps the code closed under
+repeated contacts nor yields a universal set. In the flavour-packet code,
+low-energy packets crossing in either direction act by one leakage-free
+entangling family `V(r)`; under F, at `χ = π/2`, these crossings are
+classically simulable matchgates, so crossings alone in that code and
+with those resources are not a route to universality (an efficient
+universal construction would imply BQP ⊆ P). Free nodal envelopes have
 `c_IR = a/tau`. No interacting relativistic limit has been established.
-Open: other codes, ancillas or measurement, composition with controlled
-error, and the low-energy regime of the interacting rule.
+Open: F itself, `χ ≢ π/2 (mod π)`, other codes, ancillas or measurement,
+composition with controlled error, and the low-energy regime of the
+interacting rule.
 
 ## Results inherited from the original question
 

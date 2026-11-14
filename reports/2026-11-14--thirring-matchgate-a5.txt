@@ -1,0 +1,27 @@
+Author checks: 26/26 exact (SymPy 1.14.0).
+PASS S1-two-packets-identity-order-gives-v
+PASS S2-crossing-slots(1,2)-equals-kron(-Pv,1)
+PASS S2-crossing-slots(2,3)-equals-kron(1,-Pv)
+PASS S2-relabelled-crossing-equals-kron(-Pv,1)
+PASS S3-W-commutes-with-spectator-creation
+PASS S4-order1-Fock=G12(y)G23(xy)G12(x)
+PASS S4-order2-Fock=G23(x)G12(xy)G23(y)
+PASS S4-both-orders-equal
+PASS M1-alpha-repo-sign=+i(r^2-1)/(r^2+1)
+PASS M1-A=-1
+PASS M1-B=-[[beta,alpha],[alpha,beta]]
+PASS M1-parity-pattern(zeros-off-blocks)
+PASS M1-A-unitary
+PASS M1-detA=1
+PASS M1-B-unitary
+PASS M1-detB=1
+PASS M2-Valiant-five-identities-00,01,10,11
+PASS M2-B(4,4)!=0-00,01,10,11
+PASS M2-Valiant-five-identities-00,10,01,11
+PASS M2-B(4,4)!=0-00,10,01,11
+PASS M3-exp(i theta (XX+YY)/2)=1+[[cos,i sin],[i sin,cos]]+1
+PASS M3-PV(r)=target(cos=2r/(1+r^2),sin=(r^2-1)/(r^2+1))
+PASS M3-theta=2atan(r)-pi/2
+PASS M3-hint-sign-differs-for-r!=1
+PASS M4-JW-a1^+a2+a2^+a1=(XX+YY)/2
+PASS M4-JW-anticommutation

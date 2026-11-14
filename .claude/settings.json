@@ -67,7 +67,13 @@
       "Bash(python3 scripts/verify_dispersion_data_comparison.py)",
       "Bash(python3 -B scripts/verify_dispersion_data_comparison.py)",
       "Bash(python3 scripts/verify_multi_source_orientation.py)",
-      "Bash(python3 -B scripts/verify_multi_source_orientation.py)"
+      "Bash(python3 -B scripts/verify_multi_source_orientation.py)",
+      "Bash(python3 scripts/verify_thirring_flavour_packet.py)",
+      "Bash(python3 -B scripts/verify_thirring_flavour_packet.py)",
+      "Bash(python3 scripts/verify_thirring_comoving_packet.py)",
+      "Bash(python3 -B scripts/verify_thirring_comoving_packet.py)",
+      "Bash(python3 scripts/verify_thirring_matchgate_a5.py)",
+      "Bash(python3 -B scripts/verify_thirring_matchgate_a5.py)"
     ]
   }
 }
