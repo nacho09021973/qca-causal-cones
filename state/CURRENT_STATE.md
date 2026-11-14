@@ -2,6 +2,22 @@
 
 **Date:** 2026-11-14
 
+**Flavour-packet gate executed — 2026-11-14:** user «AUTORIZO SU
+EJECUCION». Verifier committed before running (`b49bf18`); run 1 no SymPy
+(environment), run 2 one check failed at a degenerate test point
+(q_l = q_r), retained, point replaced (`8d7e444`); run 3 32/32 exact.
+[Report](../reports/2026-11-14--thirring-flavour-packet.md). Verdict
+**`FLAVOUR_PACKET_EXCHANGE_GATE_IN_DECLARED_CODE`** (author, PRELIMINARY):
+in the flavour basis V = 1 (+) [[iy, x], [x, iy]] (+) 1 with
+x = (sqrt10 - 2)/6, y = sqrt(1 - x^2), leakage -> 0; AA and BB evolve
+exactly freely (G = +1); the exchange amplitude vanishes iff chi in
+{0, pi}; concurrence of V|AB> = 2xy ~ 0.380. Depends on the contract-2
+packet bridge (written, not re-reviewed), reused for (+,+) and adapted in
+writing for (+,-). Gate conserves flavour number; not universality,
+composability or an interacting QFT limit. NOVELTY = OPEN. No independent
+review (needs permission), no promotion. Contract closed; no automatic
+further contract; coexistence OPEN.
+
 **Flavour-packet gate chartered — 2026-11-14:** after the read-only
 coexistence evaluation, user «me gusta tu plan, adelante, autorizado»; new
 explicit authorization for one Thirring contract (not a budget reset).

@@ -1,0 +1,35 @@
+Author checks: 32/32 exact (SymPy 1.14.0).
+PASS F1-g_-(q+pi)=-g_+(q)
+PASS F2-generic-chi=pi/2-(+,-)-four-wave-eigenfunction
+PASS F2-generic-chi=pi/2-|T_-|=1
+PASS F2-generic-chi=0-(+,-)-four-wave-eigenfunction
+PASS F2-generic-chi=0-|T_-|=1
+PASS F2-generic-chi=0-T_-=1
+PASS F2-p=0-chi=pi/2-(+,-)-four-wave-eigenfunction
+PASS F2-p=0-chi=pi/2-|T_-|=1
+PASS F2-p=0-chi=0-(+,-)-four-wave-eigenfunction
+PASS F2-p=0-chi=0-|T_-|=1
+PASS F2-p=0-chi=0-T_-=1
+PASS F6-|T+|=1
+PASS F6-|T-|=1
+PASS F6-|be|=2 a_r a_l/(a_r^2+a_l^2)
+PASS F6-|be|>0
+PASS F6-concurrence(V|AB>)=2|al be|>0
+PASS F6-consistency-|T+-1|^2/4=contract2-l01
+PASS F5-numerator=2a1a2(z^2-1)
+PASS F5-denominator=(a2+z a1)(z a1-a2)
+PASS F3-columns-orthonormal
+PASS F3-AA,BB-have-G=+1
+PASS F3-AB=P(phr^phl)-P(phr^Gphl)
+PASS F3-BA=P(phr^phl)+P(phr^Gphl)
+PASS F3-P-vectors-orthogonal
+PASS F3-P-vectors-norm^2=1/2
+PASS F4-V=1+[[al,be],[be,al]]+1
+PASS F4-no-leakage-in-model
+PASS F7-right-positive(1-m>0)
+PASS F7-right-inside-4mu(3-m>0)
+PASS F7-left-negative(2-m>0)
+PASS F7-left-inside-4mu(2-m>0)
+PASS F7-pi-shift-disjoint(8mu<pi)
+
+|beta| = (-2 + sqrt(10))/6 ~ 0.193713; |beta|^2 ~ 0.037525; concurrence ~ 0.380087
