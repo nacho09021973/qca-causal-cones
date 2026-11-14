@@ -14,9 +14,12 @@ exactly freely (G = +1); the exchange amplitude vanishes iff chi in
 {0, pi}; concurrence of V|AB> = 2xy ~ 0.380. Depends on the contract-2
 packet bridge (written, not re-reviewed), reused for (+,+) and adapted in
 writing for (+,-). Gate conserves flavour number; not universality,
-composability or an interacting QFT limit. NOVELTY = OPEN. No independent
-review (needs permission), no promotion. Contract closed; no automatic
-further contract; coexistence OPEN.
+composability or an interacting QFT limit. NOVELTY = OPEN. User
+authorized Grok review: one sealed round (grok-4.7, herramientas 2a7342b)
+on 24b78e9, [unaltered review](../reports/reviews/2026-11-14-thirring-flavour-packet-grok/informe_grok.md):
+PASS on all six blocks, no mandatory repair; ceiling remains the
+contract-2 bridge. No promotion. Contract closed; no automatic further
+contract; coexistence OPEN.
 
 **Flavour-packet gate chartered — 2026-11-14:** after the read-only
 coexistence evaluation, user «me gusta tu plan, adelante, autorizado»; new

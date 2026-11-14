@@ -1,7 +1,21 @@
 # Thirring flavour-packet gate: results
 
 2026-11-14. Author: Claude Code (Claude Opus 5.5). **PRELIMINARY: written
-proof plus exact author checks; no independent review; no promotion.**
+proof plus exact author checks; one sealed cross-family review PASS; no
+promotion.**
+
+**Review (2026-11-14).** Grok `grok-4.7`, sealed revision-ciega, one round,
+herramientas `2a7342b`, on `24b78e9`:
+[unaltered review](reviews/2026-11-14-thirring-flavour-packet-grok/informe_grok.md).
+PASS on all six blocks, no mandatory repair. Clarifications: (i) F7's
+check name `left-inside-4mu(2-m>0)` repeats the expression of
+`left-negative`; author reading: both bounds of the left support,
+`-2+m < 0` and `-2-m > -4`, reduce to the same inequality `m < 2`, so the
+outer bound is checked, only the label is uninformative (verifier bytes not
+changed); (ii) the ceiling of the argument remains the contract-2 bridge
+(written, repaired, not re-reviewed), as Sec. 1 states. The reviewer
+re-derived the (+,-) contact condition, T_-, the degeneracy margin and
+x = (sqrt10 - 2)/6. The body below is unchanged.
 
 Contract [THIRRING_FLAVOUR_PACKET_GATE.md](../theory/THIRRING_FLAVOUR_PACKET_GATE.md),
 frozen at `d0c59cb` before execution; authorization «AUTORIZO SU EJECUCION»
