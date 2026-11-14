@@ -2,6 +2,16 @@
 
 **Date:** 2026-11-14
 
+**Flavour-packet gate chartered — 2026-11-14:** after the read-only
+coexistence evaluation, user «me gusta tu plan, adelante, autorizado»; new
+explicit authorization for one Thirring contract (not a budget reset).
+Q2-A decided by the user: a definite-flavour packet (Gamma = sigma_z
+(-1)^x) counts as a low-energy carrier under U^2. [Contract](../theory/THIRRING_FLAVOUR_PACKET_GATE.md),
+frozen at `d0c59cb`: does the mu -> 0 collision of two flavour packets act
+on the flavour code as a unitary with vanishing leakage, and non-diagonally
+(exchange amplitude nonzero)? Candidate H_flav OPEN. Status OPEN /
+NOT_EXECUTED; no computation, verifier or result yet. Coexistence OPEN.
+
 **Thirring, conceptual correction — 2026-11-14 (PRELIMINARY):** user
 decision, reading only (sources/1711.03920v1.pdf Lemma 1, p. 3, Eq. (12);
 P2/P4 of `scripts/verify_thirring_low_energy_packet.py`); no contract, no
