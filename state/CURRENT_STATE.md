@@ -2,6 +2,23 @@
 
 **Date:** 2026-11-14
 
+**A5 crossing-matchgate gate executed — 2026-11-14:** drafting, Q-a
+(F a declared premise), Q-b (sources) and freezing authorized by the user;
+contract frozen at `915e55f`; sources at `7fa79e7`, `a1cfd20` (Jozsa-Miyake,
+Terhal-DiVincenzo, Knill, Valiant STOC 2001); T2-T4 authorized
+sequentially. Verifier committed before running (`eae7876`), one run,
+26/26 exact. [Report](../reports/2026-11-14--thirring-matchgate-a5.md).
+Verdict **`MATCHGATE_SIMULABLE_UNDER_F`** (author, PRELIMINARY): under F,
+each crossing acts on the position-ordered register as -P V(r) on adjacent
+slots (sign derived in a Jordan-Wigner Fock model for generic V, not
+assumed); -P V(r) = G(A, B), A, B in SU(2), Valiant's identities hold;
+P V(r) = exp(+i theta (XX+YY)/2) with the repo sign of alpha. With product
+flavour inputs and final flavour readout, outcome probabilities on any
+subset and sampling are classically polynomial-time (Valiant pp. 118-120;
+Terhal-DiVincenzo p. 3-4; Jozsa-Miyake Thm 1, p. 2). Conditional on F,
+chi = pi/2, this code and resources; mu -> 0 only; not a Thirring no-go.
+No review, no promotion; contract closed; coexistence OPEN.
+
 **Co-moving packet result promoted — 2026-11-14:** user «promociona el
 resultado, autorizado». Thirring co-moving packet code (contract
 `dca5ebc`, report `reports/2026-11-14--thirring-comoving-packet.md`):
