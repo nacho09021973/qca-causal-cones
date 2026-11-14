@@ -2,6 +2,14 @@
 
 **Date:** 2026-11-14
 
+**Work priority — 2026-11-14:** user decision. S13 consolidated
+(`GAP_PROVED_IN_CLASS`). The hexagonal line M1 remains `OPEN` but is
+parked: no new calculations, support extensions or contracts are
+authorized in this line. The main objective remains the coexistence of
+universal quantum computation and an interacting relativistic regime under
+one fixed rule. This is a work-priority decision, not a mathematical
+result.
+
 **Bounded result promoted — 2026-11-14:** S13 uniform gap (Sec. 14,
 addendum, user instruction «adelante» after the review): for `X_13`
 (walks of `W_hex^sym` with `F within S13` and `conv F = conv S13`)
