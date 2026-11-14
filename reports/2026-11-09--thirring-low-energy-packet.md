@@ -27,6 +27,17 @@ Repairs applied (each checked by the author before adopting it):
 
 The original text is in git at b4ac949.
 
+**Bridge re-review (2026-11-14).** Astra (`gpt-6-astra`), sealed
+revision-ciega, one round, herramientas `2a7342b`, on the repaired text at
+`918f7f4`: [unaltered re-review](reviews/2026-11-14-thirring-low-energy-packet-bridge-astra/informe_astra.md).
+PASS on all six blocks; all seven repairs resolved; no mandatory repair.
+Clarifications recorded, not applied to the body: the denominator written
+with g_+ is bounded away from zero only after division by mu; Sec. 2's
+"omega'(q) > 0" is meant for q > 0; the minimum k-separation over all
+columns is 2mu (3mu for the mixed columns); the result is an operator-norm
+approximation with mu-dependent frames, not convergence of E_mu to a fixed
+operator. The body below is unchanged.
+
 Contract [THIRRING_LOW_ENERGY_PACKET_GATE.md](../theory/THIRRING_LOW_ENERGY_PACKET_GATE.md),
 frozen by Codex at `715096f` before execution: contract 2 of 2 of the Thirring
 coexistence line. Exact verifier and labelled diagnostic committed before
