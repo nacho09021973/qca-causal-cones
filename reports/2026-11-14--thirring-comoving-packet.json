@@ -1,0 +1,280 @@
+{
+  "T_at_check_points": {
+    "(+,+)": {
+      "chi=pi/2": "(100 + 5*sqrt(1921) + 39*I*(4 + sqrt(41)))/(156 + 39*sqrt(41) + 5*I*(20 + sqrt(1921)))",
+      "chi=0": "1"
+    },
+    "(+,-)": {
+      "chi=pi/2": "(-5*sqrt(1921) - 100 + 39*I*(4 + sqrt(41)))/(156 + 39*sqrt(41) - 5*I*(20 + sqrt(1921)))",
+      "chi=0": "1"
+    }
+  },
+  "diagnostics": {
+    "velocity_bounds": {
+      "fast_omega_sq_lower": "27470144857556620696093859/31470144857556620696093859",
+      "fast_float": 0.9342887163671695,
+      "slow_omega_sq_upper": "1734489/2734489",
+      "slow_float": 0.7964301355430279,
+      "limit_dv": 0.24157651686396628
+    },
+    "limit": {
+      "r_co": "-sqrt(10) - 3 + 3*sqrt(2) + 2*sqrt(5)",
+      "r_co_float": 2.5524989819504853,
+      "alpha": "-I*(-29*(3 + sqrt(10))**2 - 12*sqrt(5)*(3 + sqrt(10))**2 - 9*sqrt(10)*(1 + sqrt(2))**2 - 19*sqrt(2)*(1 + sqrt(2))**2 + 12*sqrt(5)*(1 + sqrt(2))**2 + 29*(1 + sqrt(2))**2 + 19*sqrt(2)*(3 + sqrt(10))**2 + 9*sqrt(10)*(3 + sqrt(10))**2)/22",
+      "alpha_float_im": 0.7338744925574584,
+      "beta": "(3 + 2*sqrt(5))/11",
+      "beta_float": 0.6792850868181436,
+      "concurrence_float": 0.9970199967810285
+    },
+    "A5_matchgate_determinants": {
+      "V": {
+        "detA": "1",
+        "detB": "-(-r + z)*(r + z)/((r*z - 1)*(r*z + 1))",
+        "detA_at_z": "1",
+        "detB_at_z_minus_i": "-1",
+        "equal_at_z_minus_i": false
+      },
+      "PV": {
+        "detA": "1",
+        "detB": "(-r + z)*(r + z)/((r*z - 1)*(r*z + 1))",
+        "detA_at_z": "1",
+        "detB_at_z_minus_i": "1",
+        "equal_at_z_minus_i": true
+      },
+      "fSWAP V": {
+        "detA": "-1",
+        "detB": "(-r + z)*(r + z)/((r*z - 1)*(r*z + 1))",
+        "detA_at_z": "-1",
+        "detB_at_z_minus_i": "1",
+        "equal_at_z_minus_i": false
+      }
+    },
+    "A3_A4": {
+      "symbolic": {
+        "A3": true,
+        "A4": true
+      },
+      "z=-i": {
+        "A3": true,
+        "A4": true
+      }
+    }
+  },
+  "checks": [
+    {
+      "name": "E-pair-co-moving(Im z1>0, Im z2>0, z1!=z2)",
+      "passed": true
+    },
+    {
+      "name": "E1-(+,+)-chi=pi/2-eigenfunction",
+      "passed": true
+    },
+    {
+      "name": "E1-(+,+)-chi=pi/2-|T|=1",
+      "passed": true
+    },
+    {
+      "name": "E1-(+,+)-chi=0-eigenfunction",
+      "passed": true
+    },
+    {
+      "name": "E1-(+,+)-chi=0-|T|=1",
+      "passed": true
+    },
+    {
+      "name": "E1-(+,+)-chi=0-T=1",
+      "passed": true
+    },
+    {
+      "name": "E2-(+,-)-chi=pi/2-eigenfunction",
+      "passed": true
+    },
+    {
+      "name": "E2-(+,-)-chi=pi/2-|T|=1",
+      "passed": true
+    },
+    {
+      "name": "E2-(+,-)-chi=0-eigenfunction",
+      "passed": true
+    },
+    {
+      "name": "E2-(+,-)-chi=0-|T|=1",
+      "passed": true
+    },
+    {
+      "name": "E2-(+,-)-chi=0-T=1",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F1-g_-(q+pi)=-g_+(q)",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F3-columns-orthonormal",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F3-AA,BB-have-G=+1",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F3-AB=P(phr^phl)-P(phr^Gphl)",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F3-BA=P(phr^phl)+P(phr^Gphl)",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F3-P-vectors-orthogonal",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F3-P-vectors-norm^2=1/2",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F4-V=1+[[al,be],[be,al]]+1",
+      "passed": true
+    },
+    {
+      "name": "R-reused-F4-no-leakage-in-model",
+      "passed": true
+    },
+    {
+      "name": "M-slow-positive(1-m>0)",
+      "passed": true
+    },
+    {
+      "name": "M-fast-inside-4mu(4-(3+m)>0)",
+      "passed": true
+    },
+    {
+      "name": "M-disjoint((3-m)-(1+m)>0)",
+      "passed": true
+    },
+    {
+      "name": "M-pi-shift-disjoint(8mu<pi)",
+      "passed": true
+    },
+    {
+      "name": "V-omega'^2=nu^2 s/(mu^2+nu^2 s)",
+      "passed": true
+    },
+    {
+      "name": "V-increasing-in-s",
+      "passed": true
+    },
+    {
+      "name": "V-1/sqrt10<317/1000",
+      "passed": true
+    },
+    {
+      "name": "V-fast-omega'^2>=87/100",
+      "passed": true
+    },
+    {
+      "name": "V-slow-omega'^2<=16/25",
+      "passed": true
+    },
+    {
+      "name": "V-sqrt(87/100)>93/100",
+      "passed": true
+    },
+    {
+      "name": "V-v_f-v_s>=13/100",
+      "passed": true
+    },
+    {
+      "name": "V-incoming-y-centre<=2L-20L*dv=-3L/5",
+      "passed": true
+    },
+    {
+      "name": "V-outgoing-y-centre>=-2L+20L*dv=+3L/5",
+      "passed": true
+    },
+    {
+      "name": "V-limit-v_f-v_s>24/100",
+      "passed": true
+    },
+    {
+      "name": "C-(T++T-)/2=alpha(r_co)",
+      "passed": true
+    },
+    {
+      "name": "C-(T+-T-)/2=beta(r_co)",
+      "passed": true
+    },
+    {
+      "name": "C-|T+|=|T-|=1",
+      "passed": true
+    },
+    {
+      "name": "C-alpha=i(r^2-1)/(r^2+1)",
+      "passed": true
+    },
+    {
+      "name": "C-beta=2r/(1+r^2)",
+      "passed": true
+    },
+    {
+      "name": "C-unitary(|al|^2+|be|^2=1, al conj(be)+be conj(al)=0)",
+      "passed": true
+    },
+    {
+      "name": "C-beta>0",
+      "passed": true
+    },
+    {
+      "name": "C-concurrence(V|AB>)>0",
+      "passed": true
+    },
+    {
+      "name": "A1-alpha=(T++T-)/2",
+      "passed": true
+    },
+    {
+      "name": "A1-beta=(T+-T-)/2",
+      "passed": true
+    },
+    {
+      "name": "A2-Delta=(z^2+1)/(2z)",
+      "passed": true
+    },
+    {
+      "name": "A2-1+al^2-be^2=(z^2+1)(r^2-1)/(z^2r^2-1)",
+      "passed": true
+    },
+    {
+      "name": "A3-YBE-R-form-symbolic",
+      "passed": true
+    },
+    {
+      "name": "A4-braid-Rcheck=PV-symbolic",
+      "passed": true
+    },
+    {
+      "name": "A3-YBE-R-form-z=-i",
+      "passed": true
+    },
+    {
+      "name": "A4-braid-Rcheck=PV-z=-i",
+      "passed": true
+    },
+    {
+      "name": "A5-identity-detA(PV)=1",
+      "passed": true
+    },
+    {
+      "name": "A5-identity-detB(PV)=1-(z^2+1)(r^2-1)/(z^2r^2-1)",
+      "passed": true
+    }
+  ],
+  "provenance": {
+    "scripts/verify_thirring_comoving_packet.py": "a72db65cf837921d2448315babce39ff93d9ac8077ab9f226abf77f039a9ac55",
+    "scripts/verify_thirring_low_energy_packet.py": "a1900674990354db197e7daddfdefb46d0a23536ba3b5e0688c2b45250f4d517",
+    "scripts/verify_thirring_flavour_packet.py": "7e66c30ac95cb3b7f76f195831ec1d742e595dad52994361d44dcdcf8c0af6cd",
+    "theory/THIRRING_COMOVING_PACKET_GATE.md": "3db4cb5e00ff0146e9deae63533a996cea8a152cae16cba34fcdcebbfd1cc0f6",
+    "sources/1711.03920v1.pdf": "3032b33d1375d4a55008aafe1f0e74d228052fa120446694ba8e9ab8e41867ca"
+  }
+}

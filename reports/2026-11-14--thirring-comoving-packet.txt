@@ -1,0 +1,61 @@
+Author checks: 52/52 exact (SymPy 1.14.0).
+PASS E-pair-co-moving(Im z1>0, Im z2>0, z1!=z2)
+PASS E1-(+,+)-chi=pi/2-eigenfunction
+PASS E1-(+,+)-chi=pi/2-|T|=1
+PASS E1-(+,+)-chi=0-eigenfunction
+PASS E1-(+,+)-chi=0-|T|=1
+PASS E1-(+,+)-chi=0-T=1
+PASS E2-(+,-)-chi=pi/2-eigenfunction
+PASS E2-(+,-)-chi=pi/2-|T|=1
+PASS E2-(+,-)-chi=0-eigenfunction
+PASS E2-(+,-)-chi=0-|T|=1
+PASS E2-(+,-)-chi=0-T=1
+PASS R-reused-F1-g_-(q+pi)=-g_+(q)
+PASS R-reused-F3-columns-orthonormal
+PASS R-reused-F3-AA,BB-have-G=+1
+PASS R-reused-F3-AB=P(phr^phl)-P(phr^Gphl)
+PASS R-reused-F3-BA=P(phr^phl)+P(phr^Gphl)
+PASS R-reused-F3-P-vectors-orthogonal
+PASS R-reused-F3-P-vectors-norm^2=1/2
+PASS R-reused-F4-V=1+[[al,be],[be,al]]+1
+PASS R-reused-F4-no-leakage-in-model
+PASS M-slow-positive(1-m>0)
+PASS M-fast-inside-4mu(4-(3+m)>0)
+PASS M-disjoint((3-m)-(1+m)>0)
+PASS M-pi-shift-disjoint(8mu<pi)
+PASS V-omega'^2=nu^2 s/(mu^2+nu^2 s)
+PASS V-increasing-in-s
+PASS V-1/sqrt10<317/1000
+PASS V-fast-omega'^2>=87/100
+PASS V-slow-omega'^2<=16/25
+PASS V-sqrt(87/100)>93/100
+PASS V-v_f-v_s>=13/100
+PASS V-incoming-y-centre<=2L-20L*dv=-3L/5
+PASS V-outgoing-y-centre>=-2L+20L*dv=+3L/5
+PASS V-limit-v_f-v_s>24/100
+PASS C-(T++T-)/2=alpha(r_co)
+PASS C-(T+-T-)/2=beta(r_co)
+PASS C-|T+|=|T-|=1
+PASS C-alpha=i(r^2-1)/(r^2+1)
+PASS C-beta=2r/(1+r^2)
+PASS C-unitary(|al|^2+|be|^2=1, al conj(be)+be conj(al)=0)
+PASS C-beta>0
+PASS C-concurrence(V|AB>)>0
+PASS A1-alpha=(T++T-)/2
+PASS A1-beta=(T+-T-)/2
+PASS A2-Delta=(z^2+1)/(2z)
+PASS A2-1+al^2-be^2=(z^2+1)(r^2-1)/(z^2r^2-1)
+PASS A3-YBE-R-form-symbolic
+PASS A4-braid-Rcheck=PV-symbolic
+PASS A3-YBE-R-form-z=-i
+PASS A4-braid-Rcheck=PV-z=-i
+PASS A5-identity-detA(PV)=1
+PASS A5-identity-detB(PV)=1-(z^2+1)(r^2-1)/(z^2r^2-1)
+
+r_co = -sqrt(10) - 3 + 3*sqrt(2) + 2*sqrt(5) ~ 2.552499
+alpha = -I*(-29*(3 + sqrt(10))**2 - 12*sqrt(5)*(3 + sqrt(10))**2 - 9*sqrt(10)*(1 + sqrt(2))**2 - 19*sqrt(2)*(1 + sqrt(2))**2 + 12*sqrt(5)*(1 + sqrt(2))**2 + 29*(1 + sqrt(2))**2 + 19*sqrt(2)*(3 + sqrt(10))**2 + 9*sqrt(10)*(3 + sqrt(10))**2)/22 ~ i*0.733874
+beta = (3 + 2*sqrt(5))/11 ~ 0.679285; concurrence ~ 0.997020
+A5 diagnostic (decides nothing):
+  V: detA = 1, detB = -(-r + z)*(r + z)/((r*z - 1)*(r*z + 1)); at z=-i: detA = 1, detB = -1, equal = False
+  PV: detA = 1, detB = (-r + z)*(r + z)/((r*z - 1)*(r*z + 1)); at z=-i: detA = 1, detB = 1, equal = True
+  fSWAP V: detA = -1, detB = (-r + z)*(r + z)/((r*z - 1)*(r*z + 1)); at z=-i: detA = -1, detB = 1, equal = False

@@ -2,6 +2,24 @@
 
 **Date:** 2026-11-14
 
+**Co-moving packet gate executed — 2026-11-14:** drafting/freezing
+authorized («si redacta el contrato y luego congelas»), contract frozen at
+`dca5ebc`; execution authorized («autorizado»). Verifier committed before
+running (`2685635`), one run, 52/52 exact.
+[Report](../reports/2026-11-14--thirring-comoving-packet.md). Verdict
+**`COMOVING_PACKET_GATE_SAME_FAMILY`** (author, PRELIMINARY): fast (K = 3)
+and slow (K = 1) flavour packets moving the same way, T = 20L, mu -> 0,
+give V(r_co), r_co = a(3)/a(1), beta = (3 + 2 sqrt5)/11, leakage -> 0.
+Rests on the reviewed contract-2 / flavour bridges plus a written,
+unreviewed co-moving adaptation. Part A (exact): Delta = cos chi
+independent of r; V(r) satisfies Yang-Baxter in R form and P V the braid
+relation. A5 diagnostic: at chi = pi/2, P V (the gate in position order)
+meets the matchgate determinant condition; the simulability consequence
+is [UNVERIFIED] (prior art not read). Not established: three-packet
+factorization, graded structure, universality. NOVELTY = OPEN. No review,
+no promotion; contract closed; no automatic further contract; coexistence
+OPEN.
+
 **Two results promoted — 2026-11-14:** user «autorizado, te autorizo todos
 los pasos» (re-review of the contract-2 bridge, then promotion if PASS).
 Bridge re-review: Astra `gpt-6-astra` (generation probed the same day),
