@@ -3952,3 +3952,17 @@ F=OPEN; COEXISTENCE=OPEN; NOVELTY=OPEN. Gate closed; no successor execution,
 external transmission, push or merge to main authorized by this promotion.
 This entry supersedes the earlier PRELIMINARY/no-promotion status only for
 this corollary in its frozen scope.
+
+**Two successive collisions draft — 2026-11-17:** user «adelante con el
+borrador» authorizes `theory/THIRRING_TWO_SUCCESSIVE_COLLISIONS_DRAFT.md`.
+DRAFT / NOT FROZEN / NOT EXECUTED. No complete geometry selected or certified;
+first proposed task is bounded design and compatibility with existing pair
+bridges, including dispersed input modes in the second window. Drafting only;
+no design execution, new calculation, external review or promotion authorized.
+
+**Successive-collision geometry selected — 2026-11-17:** user authorizes
+selection only. Draft selected design keeps the isolated-spectator input,
+windows [0,20L], [2 floor(27L/2),28L], intervening proposed free gap.
+Limiting free-centre sequence: (3,1), then (3,-2); (1,-2) crosses later.
+Design status OPEN_MISSING_BOUND: new second-pair bridge, free-gap estimate
+and finite-mu second-window admission needed. DRAFT, not frozen or executed.
