@@ -4010,3 +4010,16 @@ does not imply universal; abandon on nonvanishing asymptotic leakage or
 no admissible pair bridge at that chi. Requires a new contract.
 F=OPEN; COEXISTENCE=OPEN; NOVELTY=OPEN. No contract open; nothing
 further authorized.
+
+**S4 isotropy (DEP Definition 1) gate frozen — 2026-11-17:** after the
+prior-art search in `investigaciones/2026-11-17-c0-causal-body-prior-art/`
+(open and targeted Grok runs; originals 1906.04483, 1306.1934, 2601.15885,
+1708.00826, 1701.06309 checked in `comprobacion.md`), user «si a ambas
+preguntas» (drafting) and «autorizao congelar» (freezing). Contract
+`theory/S4_DEP_ISOTROPY_GATE.md`, OPEN / NOT EXECUTED: does the s=4
+counterexample family at theta=pi/4 satisfy Definition 1 of 1708.00826,
+including homogeneity condition (2), with S_+ the parity +1 BCC
+generators, L the Klein group of coordinate half-turns and
+U_l = sigma_l ⊗ I, and for which a in (0,1)? Execution, review and
+promotion each need separate authorization. NOVELTY = OPEN. Not part of
+the Thirring coexistence line (stopped).
