@@ -1411,7 +1411,7 @@ Sec. 4 table).**
 | Geometry | d=3, `N_3 = {(+/-1,+/-1,+/-1)/sqrt(3)}`, all eight modes active, no on-site coefficient, one complete update per time unit, phase `exp(-i k.h)` |
 | Internal space | `s=4 = C^2_sigma (x) C^2_tau`; parameter `0<a<1`, `b=sqrt(1-a^2)` |
 | Symbol | `A_a(k) = W exp(-i q_x Gamma_x) exp(-i q_y Gamma_y) exp(-i q_z Gamma_z)`, `q_i=k_i/sqrt(3)`, `W = I (x) exp(-i pi tau_z/4)` |
-| Isotropy | D2 half-turns acting on `N_3`; `R_i = sigma_i (x) I_2` — two copies of the Pauli projective class, hence a **reducible** representation; full cubic symmetry not assumed |
+| Isotropy | D2 half-turns acting on `N_3`; `R_i = sigma_i (x) I_2` — two copies of the Pauli projective class, hence a **reducible** representation; full cubic symmetry not assumed; at `theta=pi/4`, isotropic in the sense of Definition 1 of arXiv:1708.00826 with homogeneity condition (2), for every `0<a<1` — ESTABLISHED in that scope, promoted 2026-11-17 ([report](../reports/2026-11-17--s4-dep-isotropy.md)) |
 | Irreducibility | Dynamics irreducible: scalar joint commutant of all eight Fourier coefficients |
 | Gapless sector | `k=0`; two isolated rank-two clusters at quasienergies `+/-theta`, `theta=pi/4`; isotropic, untilted cones measured from each cluster's node |
 | Result | `C_infty^strict = C_micro` exactly (all vertex traces nonzero, so no vertex coefficient is nilpotent); `c_strict^iso = 1/sqrt(3)`; `c_0(a) = a/sqrt(3)` |
@@ -4052,3 +4052,22 @@ until an explicit promotion decision. Note: Sec. 4.1 records «NOVELTY: not
 pursued as a candidate (user decision 2026-11-02)»; any promotion or
 write-up as a candidate requires revisiting that decision explicitly.
 NOVELTY = OPEN.
+
+**S4 isotropy result promoted — 2026-11-17:** user «promociona el
+resultado». `DEP_ISOTROPIC_IN_DECLARED_L` (contract `9188755`, report
+`reports/2026-11-17--s4-dep-isotropy.md` with repairs `929f7f7`, `0ec49f3`,
+`6331fa5`), promoted in its frozen scope only and labelled ESTABLISHED in
+that scope: at theta=pi/4 and every 0<a<1 the s=4 family of Sec. 4.1
+(eight BCC displacements, no on-site coefficient) satisfies Definition 1
+of arXiv:1708.00826v2 with S_+ the parity +1 generators, L the Klein group
+of coordinate half-turns, U_l = sigma_l ⊗ I, and homogeneity condition
+(2). Reviews: Astra (OpenAI) full sealed review, mathematical verdict PASS,
+documentary REPAIR_REQUIRED (`ed63258`); Grok (xAI) bounded sealed
+re-review of block 5 and repairs, PASS (`3b5f749`). Not promoted: other
+theta, groups, representations or generating sets; other homogeneity
+formulations (e.g. 1708.00826 Ref. [23]); other assumptions of 1306.1934;
+full cubic isotropy; Lorentz covariance; novelty. Combined with the
+already verified slope c_0 = a/sqrt3 and c_strict^iso = 1/sqrt3 (Sec. 4.1),
+within this isotropy notion the s=2 rigidity of 1708.00826 does not
+extend to s=4 for this family. NOVELTY = OPEN; candidacy status is a
+separate user decision (Sec. 4 table, 2026-11-02 entry).
