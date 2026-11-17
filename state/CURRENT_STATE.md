@@ -3901,3 +3901,11 @@ Branch `research/thirring-isolated-spectator`: user «adelante con el siguiente
 trabajo» authorizes the bounded analytic gate
 `theory/THIRRING_ISOLATED_SPECTATOR_GATE.md`. OPEN at preregistration;
 no execution yet. Review, promotion and publication are separate.
+
+**Isolated spectator author execution — 2026-11-17:** preregistration
+`a9d5ae1`; report `reports/2026-11-17--thirring-isolated-spectator.md`.
+Author verdict REDUCES_TO_EXISTING_RESULTS: support separation, exact
+occupation-basis decoupling, initial-tail transfer and the promoted pair
+bridge give vanishing operator-norm error and leakage in the fixed geometry.
+PRELIMINARY, no independent review, no promotion; no verifier or simulation.
+F, coexistence and novelty remain OPEN. Bounded attempt closed.
