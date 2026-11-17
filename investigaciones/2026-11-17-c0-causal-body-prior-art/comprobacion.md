@@ -156,3 +156,64 @@ massive group velocity) not read.
   keeps C_infty^strict = C_micro and has continuous c_0. Not found by the
   Grok open run; not searched by a targeted query. Private route
   (prompt.md) still NOT SENT.
+
+## Targeted route (prompt.md trimmed, ba07e12) — Grok run 2026-11-17
+
+User «COMMIT, PUSH y recorta prompt.md para enviárselo a Grok». One run,
+requested grok-4.7, reported grok-4.7-build, 09:53:13–09:59:15 UTC, exit 0;
+input SHA256 a3d6d682…; launcher run_grok_prompt.py (committed ba07e12
+before the run). Raw stream grok_dirigido.jsonl; final text
+informe_grok_dirigido.md, unchanged. Grok's verdict: claim "not found";
+closest s=4 BCC families are massive Dirac couplings (parameter = on-site
+mass block). AI output; localizes, does not prove.
+
+### Claude check in the original: Gupta and Short, arXiv:2601.15885v1
+
+Full text read (alphaXiv full-text tool). Grok listed it as RELATED and
+noted the stay amplitude, but did not note the causal body.
+- Sec. III.B, Eqs. (14), (40)-(43): K_+ = K_z K_y K_x,
+  K_j = gamma^j_+ S_j + gamma^j_0 + gamma^j_- S_j^dagger, internal
+  dimension 2 (the Weyl walk; s=4 only for the massive Dirac walk, Eq. 27).
+  Continuum limit Eq. (43): "H^±_eff = ±σ·P v cos(θ)", c = v cos θ,
+  -pi/2 < theta < pi/2; theta=0 is the conventional walk.
+- Step set: products of one-dimensional steps in {-1,0,+1}, i.e. inside
+  {-1,0,1}^3, whose convex hull is the same cube as the hull of the eight
+  BCC displacements (+-1,+-1,+-1). Massless isotropic Weyl node at p=0
+  with speed cos(theta) in lattice units, continuously below the cube
+  inradius 1.
+- Not checked: that the corner coefficient gamma^z_+ gamma^y_+ gamma^x_+
+  (a product of rank-one projectors) and its powers are nonzero, i.e. that
+  the strict causal body of K_+^n/n is the whole cube [UNVERIFIED]; any
+  discrete isotropy / D2 covariance of the family (the paper does not
+  claim it); fermion doublers at ±q(theta) (Eq. 44) are reported by the
+  authors.
+Classification: SPECIAL CASE / near-SAME for R3 in d=3 at the level of the
+causal BODY (convex hull) — same cube, isotropic massless speed varying
+continuously — but with on-site and non-BCC displacements in the support
+and internal dimension 2. Not the same as the repository family, which
+keeps exactly the eight BCC displacements, no on-site term, D2
+covariance, s=4.
+
+### Not checked in originals (from Grok, [UNVERIFIED])
+
+D'Ariano arXiv:1701.06309 Sec. 3.8 ("s ≥ 3" unitarity unsolved);
+D'Ariano-Erba-Perinotti arXiv:1708.00826 (isotropic classification for
+s=2 only); Bisio et al. arXiv:1601.04832 Sec. 6 / D'Ariano-Perinotti
+arXiv:1608.02004 Sec. VI ("Instead of deriving the most general QCAs with
+s > 2"); Mlodinow-Brun arXiv:1802.03910; Gupta-Short arXiv:2412.03466.
+Raynal arXiv:1703.05890 was already excluded as a direct identification
+in reports/2026-09-15--s4-family-prior-art-audit.md (R17).
+
+### Consequence (assessment, not a result)
+
+- "In 3D the causal body does not fix c_0" is published in substance:
+  Gupta-Short 2026 (cube hull, s=2, c = v cos theta), pending the
+  strict-support check above. Together with Di Molfetta-Arrighi 2019
+  (1D), R3 as a statement about causal bodies is not a contribution.
+- D'Ariano-Perinotti rigidity (c = causal speed/sqrt3) holds in their
+  class: exactly the eight BCC displacements, no on-site term, isotropy,
+  s=2. Gupta-Short escape it by adding stays, not by enlarging s.
+- Remaining candidate (NOVELTY OPEN): keeping exactly the eight BCC
+  displacements, no on-site term, D2 covariance and irreducibility, the
+  rigidity breaks at s=4. Narrow; its interest depends on whether the
+  exact step set (not only its hull) is regarded as the substrate.

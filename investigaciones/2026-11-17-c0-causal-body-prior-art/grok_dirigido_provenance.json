@@ -1,0 +1,34 @@
+{
+  "prompt_file": "prompt.md",
+  "requested_model": "grok-4.7",
+  "input_sha256": "a3d6d6821acfecc2592c3cb3bb0f3e83f02e73a7a75ac41b9aae5d63409041d1",
+  "command": [
+    "grok",
+    "--model",
+    "grok-4.7",
+    "--agent",
+    "/home/ignac/qca-causal-cones/investigaciones/2026-11-17-c0-causal-body-prior-art/grok_dirigido_agent.md",
+    "-p",
+    "Perform the literature search and give the requested report.",
+    "--tools",
+    "web_search,web_fetch",
+    "--disallowed-tools",
+    "search_tool,use_tool,Agent",
+    "--deny",
+    "Bash",
+    "--deny",
+    "run_terminal_command",
+    "--no-subagents",
+    "--no-plan",
+    "--max-turns",
+    "30",
+    "--output-format",
+    "streaming-json"
+  ],
+  "started": "2026-11-17T09:53:13.707220+00:00",
+  "exit_code": 0,
+  "finished": "2026-11-17T09:59:15.819801+00:00",
+  "reported_model_fields": [
+    "{'grok-4.7-build': {'inputTokens': 169762, 'outputTokens': 21577, 'cacheReadInputTokens': 926080, 'cacheCreationInputTokens': 0, 'modelCalls': 1, 'costUSD': 0.87377768}}"
+  ]
+}
