@@ -1,0 +1,35 @@
+PASS Had unitary
+PASS M1 J' = Pi Q'
+PASS M1 J = Pi Q
+PASS M1 Pi permutation and Pi = X (block swap)
+PASS M2 sigma_x eigenvectors
+PASS M2 T_x eigenvectors
+PASS M2 Gamma_x: two +1 and two -1 eigenvectors
+PASS M2 eigenbasis of Gamma_x unitary
+PASS M2 E_x unitary
+PASS M2 E_x† Q' E_x = I_2 ⊗ P_x^+
+PASS M3 W'_x unitary
+PASS M3 G_x(p) = C_x (I_2 ⊗ F_x(p))
+PASS M2 sigma_y eigenvectors
+PASS M2 T_y eigenvectors
+PASS M2 Gamma_y: two +1 and two -1 eigenvectors
+PASS M2 eigenbasis of Gamma_y unitary
+PASS M2 E_y unitary
+PASS M2 E_y† Q' E_y = I_2 ⊗ P_y^+
+PASS M3 W'_y unitary
+PASS M3 G_y(p) = C_y (I_2 ⊗ F_y(p))
+PASS M2 sigma_z eigenvectors
+PASS M2 T_z eigenvectors
+PASS M2 Gamma_z: two +1 and two -1 eigenvectors
+PASS M2 eigenbasis of Gamma_z unitary
+PASS M2 E_z unitary
+PASS M2 E_z† Q' E_z = I_2 ⊗ P_z^+
+PASS M3 W'_z unitary
+PASS M3 G_z(p) = C_z (I_2 ⊗ F_z(p))
+PASS M4 F_x(q) = cos q I - i sin q Gamma_x (factor of A at q_i = 2 k_i)
+PASS M4 F_y(q) = cos q I - i sin q Gamma_y (factor of A at q_i = 2 k_i)
+PASS M4 F_z(q) = cos q I - i sin q Gamma_z (factor of A at q_i = 2 k_i)
+PASS M5 remark: C = I gives I_4 ⊕ U with U = I
+PASS M5 remark: C = W ⊗ I_2 has unprimed block W ≠ I (Eq. (16) fails)
+33/33 checks passed
+exit=0

@@ -4120,3 +4120,17 @@ W absorbed, A(k)^2 if the time unit differs). Verdicts
 AF_EQUIVALENT_VIA_ANSATZ (drops the candidacy) / ANSATZ_OBSTRUCTED (does
 not establish non-equivalence) / OPEN_AFTER_EXPLICIT_MAP_ATTEMPT.
 Execution needs separate authorization. NOVELTY = OPEN.
+
+**S4 as AF walk: explicit-map gate executed — 2026-11-17:** user «push y
+autorizo ejecucion». Preregistration `fcb6f50`; verifier `db25f3d`; four
+runs retained (timeout; simplify false negative; timeout; final run
+33/33 at `ec7de10`). [Report](../reports/2026-11-17--s4-af-explicit-map.md).
+Author verdict **`AF_EQUIVALENT_VIA_ANSATZ`** (PRELIMINARY, unreviewed):
+under reading R1-R3 (Eq. (16) not imposed) the s=4 family is exactly a
+homogeneous AF (3+1) walk with s=2, trivial coins on two axes and the
+family coin W on the third (encodings chosen so each paired step is the
+coinless shift F_i). Remark check: with Eq. (16) imposed, the coin
+carrying W fails it, so the family lies in AF's architecture, not in AF's
+continuum-limit class. The frozen abandonment criterion is met as written;
+the candidacy status in Sec. 4 is left unchanged pending an explicit user
+decision. NOVELTY = OPEN pending that decision.
