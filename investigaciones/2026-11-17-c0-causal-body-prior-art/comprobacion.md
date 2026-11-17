@@ -217,3 +217,70 @@ in reports/2026-09-15--s4-family-prior-art-audit.md (R17).
   displacements, no on-site term, D2 covariance and irreducibility, the
   rigidity breaks at s=4. Narrow; its interest depends on whether the
   exact step set (not only its hull) is regarded as the substrate.
+
+## Claude check in the originals: 1708.00826 and 1701.06309 — 2026-11-17
+
+User «lee 1708.00826 y 1701.06309 en el original». Full texts obtained
+through the alphaXiv full-text tool; passages below located and read.
+
+### D'Ariano, Erba, Perinotti, arXiv:1708.00826v2
+
+Read: abstract, introduction, Sec. II (generating set, Definition 1,
+condition (2)), the d=1, d=2 and d=3 solution passages, Theorem summary,
+conclusions.
+- Abstract: "a thorough classification of the isotropic quantum walks on
+  lattices of dimension d = 1, 2, 3 with a coin system of dimension s = 2.
+  For d = 3 there exist two isotropic walks, namely the Weyl quantum walks".
+- Scope: any Cayley graph of Z^d; the identity may be a generator
+  ("we allow for the case A_e = 0" or not). Result: "the d = 1 is the only
+  one supporting the self-interaction, namely such that A_e ≠ 0"; for d=3
+  the graph is unique (BCC) and A_e = 0.
+- Definition 1 (isotropic QW): a group L of graph automorphisms acting as
+  permutations of S_+, transitive on each S_+^n, with a projective unitary
+  representation U on C^s such that A_lambda(h) = U_l A_h U_l^dagger;
+  plus homogeneity condition (2): [U_l, A_h] ≠ 0 whenever l(h) ≠ h.
+- d=1 solution: A_h = V diag(n,0), A_-h = V diag(0,n), A_e = V(0 im; im 0),
+  n^2+m^2=1: massless only at m=0, i.e. omega = k.
+Consequences (Claude's inferences from the theorem, not sentences of the
+paper):
+- For s=2, isotropy in this sense fixes the walk, hence c_0, in d=1,2,3,
+  for every generating set, with or without self-loop.
+- The 1D Di Molfetta-Arrighi walk (massless, speed c<1, s=2) and the 3D
+  Gupta-Short walk (s=2, c = v cos theta, non-BCC displacements) are
+  therefore not isotropic in the sense of Definition 1 (else they would
+  appear in the classification). Their speed freedom comes with loss of
+  this isotropy, not with larger s.
+- Repository s=4 family: covariant under the Klein group with
+  R_i = sigma_i ⊗ I_2, coordinate half-turns acting transitively on the
+  four parity +1 BCC generators (theory/S4_STRICT_CONE_COUNTEREXAMPLE.md
+  Sec. 4; reports/2026-09-15--s4-independent-review.md lines 23-28). This
+  matches Definition 1 transposed to s=4. Condition (2) has NOT been
+  checked for the family [UNVERIFIED].
+
+### D'Ariano, arXiv:1701.06309v1 (Sec. 3.8 read; isotropy and speed passages)
+
+- "the unknown are matrices of increasingly larger dimension s ≥ 3 ...
+  a canonical procedure for the solution is unknown". "What we can do for
+  the moment is to provide only some particular solutions".
+- s=4 solutions only by direct sum and tensor product of s=2 walks; in
+  2x2 block form "all four blocks must be quantum walks themselves";
+  locality gives "off-diagonal blocks that do not depend on k",
+  proportional to the identity: D_k = (n A_k, im; im, n A_k^dagger),
+  n^2+m^2=1, dispersion omega_k = arccos[sqrt(1-m^2) u_k] (Eqs. 22-24).
+Consequence (Claude's inference): the zero-displacement Fourier
+coefficient is invariant under constant unitary changes of basis, so a
+family with no on-site term is not equivalent to D_k with m ≠ 0, and the
+irreducible repository family is not equivalent to the reducible m=0
+point. The repository family lies outside this s=4 ansatz.
+
+### Updated candidate (assessment, NOVELTY OPEN)
+
+Published: s=2 isotropic walks are rigid (1306.1934; complete
+classification 1708.00826); s≥3 isotropic unitarity problem is unsolved,
+with only block (Dirac, Maxwell) solutions given (1701.06309); speed
+freedom is published only with loss of isotropy (1906.04483 in d=1,
+2601.15885 in d=3). Candidate: an isotropic (Definition 1, pending
+condition (2)) s=4 walk on exactly the BCC generators, no on-site term,
+irreducible, with continuously variable isotropic c_0 = a/sqrt3 — i.e.
+the s=2 rigidity of D'Ariano-Erba-Perinotti does not extend to s=4.
+Not found in the two Grok runs; absence not established.
