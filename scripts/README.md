@@ -1,5 +1,21 @@
 # Scripts
 
+## Prior-art check: Di Molfetta-Arrighi 1D speed (2026-11-17)
+
+`verify_prior_art_dimolfetta_1d_speed.py` supports the source check in
+`investigaciones/2026-11-17-c0-causal-body-prior-art/comprobacion.md`.
+Nine exact SymPy 1.14.0 checks on the massless alpha=0 walk of
+arXiv:1906.04483v2 (Eqs. (1)-(3), Thm III.1 (iii)): unitarity,
+cos Omega(2 steps) = 1 - 2c^2 sin^2 k, low-energy speed c per step, and
+nonzero extreme coefficients (strict causal body [-1,1]) for every 0<c<1.
+Not a gate certificate; does not certify anything beyond that 1D walk, nor
+whether it lies in D'Ariano-Perinotti's isotropy class. Run 1 failed the
+two unitarity checks for a symbol-assumption reason (recorded in the file).
+
+```sh
+python3 -B scripts/verify_prior_art_dimolfetta_1d_speed.py
+```
+
 ## Small fixed Gaussian profile algebra (2026-10-31)
 
 `verify_small_gaussian_profile_algebra.py` accompanies the preregistered

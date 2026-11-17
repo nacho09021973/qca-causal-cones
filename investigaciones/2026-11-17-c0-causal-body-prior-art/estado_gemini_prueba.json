@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "FAILED",
+  "exit_code": 22,
+  "finish_reason": "UNKNOWN",
+  "requested_model": "gemini-4-argon",
+  "input_sha256": "2f0b1a17b28ba4d9d83c0f74424c6e8f1a22e0ad63252b6ba4b877fe6815905a",
+  "started": "2026-11-17T09:20:18Z",
+  "finished": "2026-11-17T09:20:18Z",
+  "tool_commit": "7d111a158edda04a469b59f0d380cd69d35bbdea",
+  "script_sha256": "aa726e23fcb5aec19c3e7812f6429a767bccf5bfa6e8cd36fc7c68bce20f63b9",
+  "library_sha256": "af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c"
+}

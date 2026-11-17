@@ -1,0 +1,3239 @@
+{"type":"available_commands","tools":["web_search"],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":["web_search"],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":"I will search the open"}
+{"type":"thought","data":" literature for translation-invariant,"}
+{"type":"thought","data":" finite-range discrete-time"}
+{"type":"thought","data":" quantum walks and quantum"}
+{"type":"thought","data":" cellular automata on"}
+{"type":"thought","data":" 1D, 2D, and 3D lattices."}
+{"type":"thought","data":" The focus is on systems"}
+{"type":"thought","data":" whose low-energy continuum"}
+{"type":"thought","data":" limit yields Weyl or"}
+{"type":"thought","data":" Dirac equations with"}
+{"type":"thought","data":" an emergent speed of"}
+{"type":"thought","data":" light."}
+{"type":"available_commands","tools":["web_search"],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":["web_search"],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":["web_search"],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":["web_search"],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":["web_search"],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":"\n\nI will follow strict"}
+{"type":"thought","data":" formatting rules. Every"}
+{"type":"thought","data":" source requires full"}
+{"type":"thought","data":" citation details and"}
+{"type":"thought","data":" a short verbatim quotation."}
+{"type":"thought","data":" Candidates will be "}
+{"type":"thought","data":"classified as same, "}
+{"type":"thought","data":"special case, or related."}
+{"type":"thought","data":" I will separate lattice"}
+{"type":"thought","data":" models from exact causal"}
+{"type":"thought","data":" bodies and distinguish"}
+{"type":"thought","data":" group velocity, infrared"}
+{"type":"thought","data":" relativistic coefficients,"}
+{"type":"thought","data":" and exact-support propagation."}
+{"type":"thought","data":" Results will be ordered"}
+{"type":"thought","data":" by question, and any"}
+{"type":"thought","data":" missing items will "}
+{"type":"thought","data":"be listed at the end."}
+{"type":"thought","data":"\n\nI will use the deep-research"}
+{"type":"thought","data":" skill and available"}
+{"type":"thought","data":" web tools to locate"}
+{"type":"thought","data":" primary sources. I "}
+{"type":"thought","data":"will not claim absence"}
+{"type":"thought","data":" from a failed search."}
+{"type":"thought","data":"\n\nI will use web tools"}
+{"type":"thought","data":" directly rather than"}
+{"type":"thought","data":" the deep-research workflow,"}
+{"type":"thought","data":" since the user requires"}
+{"type":"thought","data":" a single precise report"}
+{"type":"thought","data":" with a strict format."}
+{"type":"thought","data":" I will also check the"}
+{"type":"thought","data":" biblioteca index before"}
+{"type":"thought","data":" beginning the search."}
+{"type":"thought","data":"\n\nI will search the "}
+{"type":"thought","data":"open web for primary"}
+{"type":"thought","data":" sources rather than"}
+{"type":"thought","data":" checking a local biblioteca"}
+{"type":"thought","data":" repository, since the"}
+{"type":"thought","data":" user asked for an open"}
+{"type":"thought","data":" literature search. "}
+{"type":"thought","data":"I am now planning the"}
+{"type":"thought","data":" search strategy."}
+{"type":"thought","data":"\n\nThe search will focus"}
+{"type":"thought","data":" on two specific questions."}
+{"type":"thought","data":" First, whether the "}
+{"type":"thought","data":"emergent low-energy "}
+{"type":"thought","data":"speed of light is bounded"}
+{"type":"thought","data":" by microscopic light-cone"}
+{"type":"thought","data":" quantities such as "}
+{"type":"thought","data":"the neighbourhood or"}
+{"type":"thought","data":" step set, and under"}
+{"type":"thought","data":" what conditions that"}
+{"type":"thought","data":" bound is achieved. "}
+{"type":"thought","data":"Second, whether the "}
+{"type":"thought","data":"emergent speed is determined"}
+{"type":"thought","data":" solely by the lattice and neighbourhood, "}
+{"type":"thought","data":"or if different walks"}
+{"type":"thought","data":" on the same lattice"}
+{"type":"thought","data":" and neighbourhood can"}
+{"type":"thought","data":" yield different emergent"}
+{"type":"thought","data":" speeds.\n\nI will also look for"}
+{"type":"thought","data":" explicit examples, "}
+{"type":"thought","data":"results connecting group"}
+{"type":"thought","data":" velocities to ballistic"}
+{"type":"thought","data":" propagation and exact"}
+{"type":"thought","data":" light-cone support,"}
+{"type":"thought","data":" and the mathematical"}
+{"type":"thought","data":" inequalities—such as"}
+{"type":"thought","data":" trigonometric polynomials—that"}
+{"type":"thought","data":" bound propagation speeds."}
+{"type":"thought","data":" I will carefully distinguish"}
+{"type":"thought","data":" between the lattice"}
+{"type":"thought","data":" structure and the effective"}
+{"type":"thought","data":" nonzero step support,"}
+{"type":"thought","data":" and between group velocity,"}
+{"type":"thought","data":" infrared relativistic"}
+{"type":"thought","data":" coefficient, and asymptotic"}
+{"type":"thought","data":" exact-support propagation."}
+{"type":"thought","data":"\n\nI will not rely on"}
+{"type":"thought","data":" memory for citations."}
+{"type":"thought","data":" I am now identifying"}
+{"type":"thought","data":" specific primary sources"}
+{"type":"thought","data":" to verify, including"}
+{"type":"thought","data":" Bialynicki-Birula’s"}
+{"type":"thought","data":" 1994 paper on Weyl "}
+{"type":"thought","data":"and Dirac equations "}
+{"type":"thought","data":"as unitary cellular "}
+{"type":"thought","data":"automata, and Meyer’s"}
+{"type":"thought","data":" 1996 work linking quantum"}
+{"type":"thought","data":" cellular automata to"}
+{"type":"thought","data":" quantum lattice gases."}
+{"type":"thought","data":"\n\nI am now adding Arrighi,"}
+{"type":"thought","data":" Nesme, and Werner to"}
+{"type":"thought","data":" the search. Their work"}
+{"type":"thought","data":" on unitarity, causality,"}
+{"type":"thought","data":" and localizability "}
+{"type":"thought","data":"in one-dimensional quantum"}
+{"type":"thought","data":" cellular automata may"}
+{"type":"thought","data":" contain relevant results."}
+{"type":"thought","data":" I am also looking at"}
+{"type":"thought","data":" D'Ariano and Perinotti's"}
+{"type":"thought","data":" derivation of the Dirac"}
+{"type":"thought","data":" equation from information-processing"}
+{"type":"thought","data":" principles, possibly"}
+{"type":"thought","data":" via arXiv:1306.1934."}
+{"type":"thought","data":"\n\nI am now adding specific"}
+{"type":"thought","data":" titles to the search"}
+{"type":"thought","data":" list. These include"}
+{"type":"thought","data":" Bisio, D'Ariano, and"}
+{"type":"thought","data":" Perinotti’s work on"}
+{"type":"thought","data":" three-dimensional Weyl"}
+{"type":"thought","data":" quantum cellular automata,"}
+{"type":"thought","data":" Arrighi, Facchini, "}
+{"type":"thought","data":"and Forets on discrete"}
+{"type":"thought","data":" Lorentz covariance "}
+{"type":"thought","data":"for quantum walks, Debbasch"}
+{"type":"thought","data":" and Di Molfetta on "}
+{"type":"thought","data":"the continuous limit"}
+{"type":"thought","data":" of discrete-time quantum"}
+{"type":"thought","data":" walks, and Strauch’s 2006 paper on relativistic"}
+{"type":"thought","data":" quantum walks."}
+{"type":"thought","data":"\n\nI am now adding Ahlbrecht,"}
+{"type":"thought","data":" Vogts, and Werner’s"}
+{"type":"thought","data":" work on the asymptotic evolution of quantum"}
+{"type":"thought","data":" walks with random coins,"}
+{"type":"thought","data":" and Konno’s limit theorems"}
+{"type":"thought","data":" for group velocity."}
+{"type":"thought","data":" I will also search "}
+{"type":"thought","data":"for Arrighi, Nesme, "}
+{"type":"thought","data":"and Forets’s derivation"}
+{"type":"thought","data":" of the Dirac equation"}
+{"type":"thought","data":" as a quantum walk in"}
+{"type":"thought","data":" higher dimensions. "}
+{"type":"thought","data":"I will begin the systematic"}
+{"type":"thought","data":" search now."}
+{"type":"thought","data":"\n\nExact support after"}
+{"type":"thought","data":" n steps is the n-fold"}
+{"type":"thought","data":" Minkowski sum of the"}
+{"type":"thought","data":" neighbourhood. The "}
+{"type":"thought","data":"emergent speed is the"}
+{"type":"thought","data":" slope of the low-momentum"}
+{"type":"thought","data":" dispersion relation"}
+{"type":"thought","data":" E(k) ≈ c|k|. Group "}
+{"type":"thought","data":"velocity is the gradient"}
+{"type":"thought","data":" ∇_k ω(k), which may"}
+{"type":"thought","data":" differ from the light-cone"}
+{"type":"thought","data":" speed. I am now adding"}
+{"type":"thought","data":" Farrelly and Short,"}
+{"type":"thought","data":" Mlodinow and Brun, "}
+{"type":"thought","data":"and Chandrashekar to"}
+{"type":"thought","data":" the search."}
+{"type":"thought","data":"\n\nI am now adding specific"}
+{"type":"thought","data":" papers that directly"}
+{"type":"thought","data":" address the speed of"}
+{"type":"thought","data":" light on lattices. "}
+{"type":"thought","data":"These include Arrighi,"}
+{"type":"thought","data":" Di Molfetta, Facchini,"}
+{"type":"thought","data":" and Márquez-Martín’s"}
+{"type":"thought","data":" derivation of the Dirac"}
+{"type":"thought","data":" equation as a quantum"}
+{"type":"thought","data":" walk over honeycomb"}
+{"type":"thought","data":" and triangular lattices,"}
+{"type":"thought","data":" Debbasch’s work on "}
+{"type":"thought","data":"discrete geometry from"}
+{"type":"thought","data":" quantum walks, and "}
+{"type":"thought","data":"D'Ariano, Erba, and "}
+{"type":"thought","data":"Perinotti’s isotropic"}
+{"type":"thought","data":" quantum walks on lattices"}
+{"type":"thought","data":" that yield the Weyl"}
+{"type":"thought","data":" equation. I am also"}
+{"type":"thought","data":" noting Bisio, D'Ariano,"}
+{"type":"thought","data":" and Perinotti’s paper"}
+{"type":"thought","data":" on quantum walks, the"}
+{"type":"thought","data":" Weyl equation, and "}
+{"type":"thought","data":"the Lorentz group. I"}
+{"type":"thought","data":" will also examine discrete"}
+{"type":"thought","data":" analogues of Lieb-Robinson"}
+{"type":"thought","data":" bounds for propagation"}
+{"type":"thought","data":" speed."}
+{"type":"thought","data":"\n\nExact light-cone propagation"}
+{"type":"thought","data":" in quantum walks is"}
+{"type":"thought","data":" stricter than Lieb-Robinson"}
+{"type":"thought","data":" bounds: if the coin-shift"}
+{"type":"thought","data":" has range R, amplitude"}
+{"type":"thought","data":" outside distance nR"}
+{"type":"thought","data":" is exactly zero. The emergent speed c from"}
+{"type":"thought","data":" linear dispersion is"}
+{"type":"thought","data":" typically bounded above"}
+{"type":"thought","data":" by the maximum group"}
+{"type":"thought","data":" velocity, which is "}
+{"type":"thought","data":"itself bounded by the"}
+{"type":"thought","data":" support speed in lattice"}
+{"type":"thought","data":" units per step. I am"}
+{"type":"thought","data":" now examining the standard"}
+{"type":"thought","data":" one-dimensional Hadamard"}
+{"type":"thought","data":" or Dirac walk operator"}
+{"type":"thought","data":" to verify whether c"}
+{"type":"thought","data":" ≤ 1 in lattice units"}
+{"type":"thought","data":" for nearest-neighbour"}
+{"type":"thought","data":" neighbourhoods."}
+{"type":"thought","data":"\n\nThe one-dimensional"}
+{"type":"thought","data":" quantum walk uses a"}
+{"type":"thought","data":" coin matrix C = [[cos"}
+{"type":"thought","data":" θ, i sin θ], [i sin"}
+{"type":"thought","data":" θ, cos θ]] with dispersion"}
+{"type":"thought","data":" ω(k) = ± arccos(cos"}
+{"type":"thought","data":" θ cos k). Near k = "}
+{"type":"thought","data":"0 the energy is linear"}
+{"type":"thought","data":" in momentum, giving"}
+{"type":"thought","data":" an emergent speed v"}
+{"type":"thought","data":" = sin θ or cos θ. I"}
+{"type":"thought","data":" will verify this with"}
+{"type":"thought","data":" Strauch 2006 or Chandrashekar."}
+{"type":"thought","data":"\n\nKonno’s limit theorem"}
+{"type":"thought","data":" for the Hadamard walk"}
+{"type":"thought","data":" shows that the weak"}
+{"type":"thought","data":" limit distribution "}
+{"type":"thought","data":"is supported on [-1/√2,"}
+{"type":"thought","data":" 1/√2]. The resulting"}
+{"type":"thought","data":" asymptotic ballistic"}
+{"type":"thought","data":" speed is 1/√2, while"}
+{"type":"thought","data":" the exact light-cone"}
+{"type":"thought","data":" support reaches ±n "}
+{"type":"thought","data":"with speed 1. The maximum"}
+{"type":"thought","data":" group velocity is 1/√2."}
+{"type":"thought","data":" This confirms that "}
+{"type":"thought","data":"different coin angles"}
+{"type":"thought","data":" on the same nearest-neighbour"}
+{"type":"thought","data":" lattice can yield different"}
+{"type":"thought","data":" emergent speeds."}
+{"type":"thought","data":"\n\nThe infrared speed"}
+{"type":"thought","data":" at k = 0 may differ"}
+{"type":"thought","data":" from the maximum group"}
+{"type":"thought","data":" velocity over the Brillouin"}
+{"type":"thought","data":" zone. For the massless"}
+{"type":"thought","data":" Dirac walk, the linear"}
+{"type":"thought","data":" slope at zero momentum"}
+{"type":"thought","data":" is c_IR, yet the maximum"}
+{"type":"thought","data":" group velocity can "}
+{"type":"thought","data":"exceed it. The exact"}
+{"type":"thought","data":" light-cone support "}
+{"type":"thought","data":"speed remains 1 for "}
+{"type":"thought","data":"nearest-neighbour lattices."}
+{"type":"thought","data":" The derivative of the"}
+{"type":"thought","data":" dispersion ω(k) = arccos(cos(θ)"}
+{"type":"thought","data":" cos(k)) at k = 0 is"}
+{"type":"thought","data":" being checked to confirm"}
+{"type":"thought","data":" this distinction."}
+{"type":"thought","data":"\n\nI will verify the "}
+{"type":"thought","data":"dispersion relation "}
+{"type":"thought","data":"directly from the literature"}
+{"type":"thought","data":" rather than from memory."}
+{"type":"thought","data":" I am also noting a "}
+{"type":"thought","data":"classical inequality"}
+{"type":"thought","data":" for trigonometric polynomials:"}
+{"type":"thought","data":" if a polynomial of "}
+{"type":"thought","data":"degree d is bounded "}
+{"type":"thought","data":"by one, its derivative"}
+{"type":"thought","data":" is bounded by d. This"}
+{"type":"thought","data":" suggests that the maximum"}
+{"type":"thought","data":" group velocity may "}
+{"type":"thought","data":"be bounded by the neighbourhood"}
+{"type":"thought","data":" radius, since the walk"}
+{"type":"thought","data":" operator’s symbol is"}
+{"type":"thought","data":" built from trigonometric"}
+{"type":"thought","data":" polynomials of that"}
+{"type":"thought","data":" degree."}
+{"type":"thought","data":"\n\nI am now drafting "}
+{"type":"thought","data":"specific search terms"}
+{"type":"thought","data":" to locate the relevant"}
+{"type":"thought","data":" literature. These include"}
+{"type":"thought","data":" quantum walks with "}
+{"type":"thought","data":"speed of light, quantum"}
+{"type":"thought","data":" cellular automata with emergent speed, group velocity and light cone support, and the D'Ariano-Perinotti and Arrighi continuum-limit works."}
+{"type":"text","data":"I"}
+{"type":"text","data":" will"}
+{"type":"text","data":" locate"}
+{"type":"text","data":" primary"}
+{"type":"text","data":" papers"}
+{"type":"text","data":" on"}
+{"type":"text","data":" discrete"}
+{"type":"text","data":"-"}
+{"type":"text","data":"time"}
+{"type":"text","data":" quantum"}
+{"type":"text","data":" walks"}
+{"type":"text","data":" and"}
+{"type":"text","data":" quantum"}
+{"type":"text","data":" cellular"}
+{"type":"text","data":" automata"}
+{"type":"text","data":" whose"}
+{"type":"text","data":" low"}
+{"type":"text","data":"-"}
+{"type":"text","data":"energy"}
+{"type":"text","data":" limit"}
+{"type":"text","data":" is"}
+{"type":"text","data":" a"}
+{"type":"text","data":" Weyl"}
+{"type":"text","data":" or"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" equation"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" check"}
+{"type":"text","data":" how"}
+{"type":"text","data":" they"}
+{"type":"text","data":" relate"}
+{"type":"text","data":" the"}
+{"type":"text","data":" emergent"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" to"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":" step"}
+{"type":"text","data":" support"}
+{"type":"text","data":"."}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-0","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-0","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"quantum walk continuum limit Dirac Weyl emergent speed of light light cone neighbourhood","sources":[{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1708.08897"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1802.03910"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1906.04483"},{"type":"url","url":"https://arxiv.org/html/1505.07023v2"},{"type":"url","url":"https://arxiv.org/html/1609.00305v1"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/2609.31488"},{"type":"url","url":"https://arxiv.org/pdf/1802.03910"},{"type":"url","url":"https://inis.iaea.org/records/qgshe-fvq20/files/NL20K5560.pdf?download=1"},{"type":"url","url":"https://arxiv.org/pdf/1505.07023v2"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1708.08897"},{"type":"url","url":"https://pubs.aip.org/aip/jmp/article/61/8/082202/317989/Symmetries-of-the-Dirac-quantum-walk-and-emergence"},{"type":"url","url":"https://link.springer.com/content/pdf/10.1007/s11128-020-02880-6.pdf"},{"type":"url","url":"https://www.arxiv.org/pdf/1903.07838"},{"type":"url","url":"https://arxiv.org/pdf/2609.31488"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1111.2165"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-0","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-1","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-2","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-1","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"quantum cellular automaton Weyl Dirac \"group velocity\" lattice light cone Arrighi OR D'Ariano OR Perinotti","sources":[{"type":"url","url":"https://www.sciencedirect.com/science/article/abs/pii/S0003491616000531"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1703.05890"},{"type":"url","url":"https://wordpress.qubit.it/wp-content/uploads/publications-dariano/scripta_dirac.pdf"},{"type":"url","url":"https://www.semanticscholar.org/paper/Weyl%2C-Dirac-and-Maxwell-Quantum-Cellular-Automata-Bisio-D%E2%80%99Ariano/1ac9b3a30d98dfda51be52f70affee9ed66afbdc"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1601.04832"},{"type":"url","url":"https://link.springer.com/article/10.1007/s10701-015-9927-0"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1407.6928"},{"type":"url","url":"https://otticaquantistica.it/wp-content/uploads/publications-dariano/1601.04842.pdf"},{"type":"url","url":"https://www.academia.edu/50646316/Dirac_quantum_cellular_automaton_in_one_dimension_Zitterbewegung_and_scattering_from_potential"},{"type":"url","url":"https://www.academia.edu/56446591/Weyl_Dirac_and_Maxwell_Quantum_Cellular_Automata"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-1","status":"completed"},"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-2","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"\"quantum walk\" \"Bernstein\" inequality OR \"trigonometric polynomial\" propagation speed OR group velocity","sources":[{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/0901.4237"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/2303.07386"},{"type":"url","url":"https://arxiv.org/html/2502.10305v3"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/2303.07386"},{"type":"url","url":"https://arxiv.org/html/2204.05625v1"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-2","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-3","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-3","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"quantum walk different coins same lattice different Dirac speed continuum limit arXiv","sources":[{"type":"url","url":"https://arxiv.org/abs/1803.01304"},{"type":"url","url":"https://www.arxivdaily.com/papers/1803.01304"},{"type":"url","url":"https://arxiv.org/html/quant-ph/0508096v3"},{"type":"url","url":"https://www.researchgate.net/publication/346398465_General_methods_and_properties_to_evaluate_continuum_limits_of_the_1D_discrete_time_quantum_walk"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1802.03910"},{"type":"url","url":"https://arxiv.org/html/2512.17755v1"},{"type":"url","url":"https://scite.ai/reports/dirac-equation-as-a-quantum-OV2gQJk"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1708.08897"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-3","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-4","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-5","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-5","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"D'Ariano Perinotti \"group velocity\" Weyl automaton relativistic limit \"speed of light\" dispersion arXiv","sources":[{"type":"url","url":"https://wordpress.qubit.it/wp-content/uploads/publications-dariano/1306.1934.pdf"},{"type":"url","url":"https://arxiv.org/abs/1805.02907"},{"type":"url","url":"https://arxiv.org/html/1603.06442v2"},{"type":"url","url":"https://wordpress.qubit.it/wp-content/uploads/publications-dariano/1306.1934.pdf"},{"type":"url","url":"https://arxiv.org/abs/1811.02245"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-5","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-6","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-6","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"\"quantum cellular automata\" OR \"quantum walk\" Bernstein inequality degree group velocity light cone trig polynomial","sources":[{"type":"url","url":"https://link.springer.com/article/10.1007/s00023-025-01598-4"},{"type":"url","url":"https://arxiv.org/html/2106.09726v2"},{"type":"url","url":"https://arxiv.org/html/1610.02425v5"},{"type":"url","url":"https://arxiv.org/pdf/2409.01473"},{"type":"url","url":"https://arxiv.org/html/2303.07386v2"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-6","status":"completed"},"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-4","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"Arrighi \"causal lightcones\" quantum walk eigenvalues B Dirac continuum limit hopping rate","sources":[{"type":"url","url":"https://www.rintonpress.com/xxqic17/qic-17-910/0810-0824.pdf"},{"type":"url","url":"https://iopscience.iop.org/article/10.1088/1751-8113/47/46/465302"},{"type":"url","url":"https://arxiv.org/abs/1307.3524"},{"type":"url","url":"https://www.semanticscholar.org/paper/Discrete-Lorentz-covariance-for-quantum-walks-and-Arrighi-Facchini/feff5e3d042d1104f5758841b4114a9baa0a3715"},{"type":"url","url":"https://scholar.google.no/citations?view_op=view_citation&hl=en&user=R5JRi90AAAAJ&citation_for_view=R5JRi90AAAAJ:e5wmG9Sq2KIC"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-4","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-7","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-7","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"Farrelly \"quantum walk\" continuum limit Weyl \"speed\" coin dimension arXiv:1708.08897","sources":[{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1708.08897"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1708.08897"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1708.08897"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-7","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-8","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-8","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"Konno quantum walk limit distribution support coin parameter maximum velocity versus light cone site:arxiv.org","sources":[{"type":"url","url":"https://arxiv.org/html/2408.09578v2"},{"type":"url","url":"https://arxiv.org/html/2408.09578v2"},{"type":"url","url":"https://arxiv.org/html/2408.09578v2"},{"type":"url","url":"https://arxiv.org/pdf/0802.1997"},{"type":"url","url":"https://arxiv.org/abs/quant-ph/0206103"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-8","status":"completed"},"locations":[]}
+{"type":"text","data":"The"}
+{"type":"text","data":" "}
+{"type":"text","data":"201"}
+{"type":"text","data":"4"}
+{"type":"text","data":" derivation"}
+{"type":"text","data":" already"}
+{"type":"text","data":" separates"}
+{"type":"text","data":" a"}
+{"type":"text","data":" slower"}
+{"type":"text","data":" isotropic"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" from"}
+{"type":"text","data":" the"}
+{"type":"text","data":" one"}
+{"type":"text","data":"-"}
+{"type":"text","data":"site"}
+{"type":"text","data":" causal"}
+{"type":"text","data":" bound"}
+{"type":"text","data":"."}
+{"type":"text","data":" I"}
+{"type":"text","data":" am"}
+{"type":"text","data":" opening"}
+{"type":"text","data":" that"}
+{"type":"text","data":" paper"}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":"-"}
+{"type":"text","data":"limit"}
+{"type":"text","data":" constructions"}
+{"type":"text","data":" that"}
+{"type":"text","data":" vary"}
+{"type":"text","data":" the"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" on"}
+{"type":"text","data":" a"}
+{"type":"text","data":" fixed"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":"."}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-9","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-9","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"site:arxiv.org Derivation of the Dirac equation from principles of information processing D'Ariano Perinotti 1306.1934","sources":[{"type":"url","url":"https://arxiv.org/abs/1306.1934"},{"type":"url","url":"https://arxiv.org/html/1306.1934v2"},{"type":"url","url":"https://arxiv.org/pdf/1306.1934"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-9","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-10","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-10","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"\"slower than the causal speed\" Weyl OR Dirac quantum automaton OR \"one site per\"","sources":[{"type":"url","url":"https://arxiv.org/html/1306.1934v2"},{"type":"url","url":"https://arxiv.org/abs/2504.06883"},{"type":"url","url":"https://arxiv.org/pdf/1212.2839v1"},{"type":"url","url":"https://arxiv.org/html/1601.04842"},{"type":"url","url":"https://arxiv.org/pdf/1306.1934"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-10","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-11","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-11","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"quantum walk trigonometric polynomial \"group velocity\" bound degree OR \"Bernstein\" OR \"Markov inequality\" site:arxiv.org","sources":[{"type":"url","url":"https://arxiv.org/html/2606.27740v1"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/2303.07386"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/0901.4237"},{"type":"url","url":"https://arxiv.org/html/2610.01844v1"},{"type":"url","url":"https://arxiv.org/abs/0901.4237"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-11","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-12","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-12","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"Arrighi Molfetta 1906.04483 hopping rate c continuum Dirac light cone support","sources":[{"type":"url","url":"https://www.semanticscholar.org/paper/The-Dirac-equation-as-a-quantum-walk-over-the-and-Arrighi-Molfetta/1903b45acdca8ddbaf13ecc3b6b9e7548c0070af"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1609.00305"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/2107.02044"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-12","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-13","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-14","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-14","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"site:arxiv.org quantum walk \"exponentially small\" OR \"exponential decay\" outside group velocity support light cone exact","sources":[{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/2408.02108"},{"type":"url","url":"https://arxiv.org/abs/2302.01869"},{"type":"url","url":"https://arxiv.org/pdf/2408.02108"},{"type":"url","url":"https://arxiv.org/html/2511.15664v1"},{"type":"url","url":"https://arxiv.org/pdf/2409.01473"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-14","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-15","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-15","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"\"Bernstein\" OR \"trigonometric polynomial of degree\" quantum walk OR \"quantum cellular automaton\" velocity OR propagation site:arxiv.org","sources":[{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/2412.16351"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/2302.01869"},{"type":"url","url":"https://arxiv.org/pdf/2402.07809"},{"type":"url","url":"https://arxiv.org/html/2510.09336"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1504.07418"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-15","status":"completed"},"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-13","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://arxiv.org/html/1306.1934v2","pattern":"causal|speed of light|group velocity|√|neighbour|body-cent|dispersion|one site"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-13","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-16","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-16","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"Farrelly continuum limit quantum walk \"coordinate\" rescaling speed relativistic two dimensional coin arXiv","sources":[{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1708.08897"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1802.03910"},{"type":"url","url":"https://www.semanticscholar.org/paper/Discrete-spacetime-and-relativistic-quantum-Farrelly-Short/865bbd8d801fb793e73e082a5965a8c7a0fc47ef"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-16","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-17","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-17","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://arxiv.org/html/1306.1934v2","pattern":"Cayley|body-cent|S_\\\\+|generators|nearest|h_1|primitive|square lattice|causal speed|one site"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-17","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-18","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-19","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-20","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-20","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"Farrelly Short \"Discrete spacetime and relativistic quantum particles\" arXiv gamma speed rescaling","sources":[{"type":"url","url":"https://arxiv.org/abs/1312.2852"},{"type":"url","url":"https://arxiv.org/html/1312.2852v1"},{"type":"url","url":"https://aqora.io/papers/1312.2852"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-20","status":"completed"},"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-19","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://ar5iv.labs.arxiv.org/html/1906.04483","pattern":"hopping rate|speed c|light cone|continuum limit|sin|support|nearest"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-19","status":"completed"},"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-18","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://ar5iv.labs.arxiv.org/html/1505.07023","pattern":"eigenvalues of B|causal light|d_\\{1|Paired|shift|lightcone|finite speed"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-18","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-21","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-22","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-22","status":"completed","content":[],"rawOutput":{"action":{"type":"open_page","url":"https://ar5iv.labs.arxiv.org/html/1906.04483"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-22","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-23","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-21","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://arxiv.org/html/1312.2852v1","pattern":"gamma|neighbourhood|speed|rescal|Hamiltonian|light cone|causal|equation"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-21","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-24","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-23","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://ar5iv.labs.arxiv.org/html/2408.02108","pattern":"strict|support|light cone|group velocity|Bernstein|trigonometric|inequal|Dirac|Weyl|exactly zero|band width"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-23","status":"completed"},"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-24","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://ar5iv.labs.arxiv.org/html/1504.07418","pattern":"group velocity|light|support|beta|dispersion|speed|cone"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-24","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-25","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-25","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"arXiv:1906.04483 authors title journal \"quantum walk with both\"","sources":[{"type":"url","url":"https://arxiv.org/abs/1906.04483"},{"type":"url","url":"https://ar5iv.labs.arxiv.org/html/1906.04483"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-25","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-26","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-26","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://ar5iv.labs.arxiv.org/html/2408.02108","pattern":"Lemma 4.1|jump length|convex hull|ball of radius|Paley|strictly localized|I\\(x\\)=\\\\infty|outside the jump"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-26","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-27","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-27","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://ar5iv.labs.arxiv.org/html/1505.07023","pattern":"Appendix B|d_1, d_2|unitarity|interval"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-27","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-28","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-28","status":"completed","content":[],"rawOutput":{"action":{"type":"search","query":"Bialynicki-Birula \"Weyl, Dirac, and Maxwell equations on a lattice\" 1994 quantum cellular automaton speed","sources":[{"type":"url","url":"https://link.aps.org/doi/10.1103/PhysRevD.49.6920"},{"type":"url","url":"https://arxiv.org/abs/hep-th/9304070"}]},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-28","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-29","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-30","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-29","status":"completed","content":[],"rawOutput":{"action":{"type":"open_page","url":"https://arxiv.org/abs/1504.07418"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-29","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-31","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-30","status":"completed","content":[],"rawOutput":{"action":{"type":"open_page","url":"https://arxiv.org/abs/2408.02108"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-30","status":"completed"},"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-31","status":"completed","content":[],"rawOutput":{"action":{"type":"open_page","url":"https://arxiv.org/abs/1505.07023"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-31","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-32","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-32","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://ar5iv.labs.arxiv.org/html/2408.02108","pattern":"unit disc|maximal|\\\\|v\\\\|=1|radius|attained|sqrt\\\\{3\\\\}|group velocity can"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-32","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-33","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-34","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-33","status":"completed","content":[],"rawOutput":{"action":{"type":"open_page","url":"https://arxiv.org/abs/1802.03910"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-33","status":"completed"},"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-34","status":"completed","content":[],"rawOutput":{"action":{"type":"open_page","url":"https://arxiv.org/abs/1906.04483"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-34","status":"completed"},"locations":[]}
+{"type":"tool_call","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-35","title":"Web search:","kind":"search","status":"in_progress","toolName":"Web search:","rawInput":{"variant":"WebSearch","backend":true},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-35","status":"completed","content":[],"rawOutput":{"action":{"type":"find_in_page","url":"https://ar5iv.labs.arxiv.org/html/2408.02108","pattern":"unit disc|largest jump|propagation region"},"id":"ws_a0f7600a-fefb-9ed6-9aea-52f9dea7426e_call-e26889f1-2fb7-4332-8bb8-fef66dbdefa5-35","status":"completed"},"locations":[]}
+{"type":"text","data":"The"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" coefficient"}
+{"type":"text","data":","}
+{"type":"text","data":" the"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":"-"}
+{"type":"text","data":"support"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" are"}
+{"type":"text","data":" different"}
+{"type":"text","data":" quantities"}
+{"type":"text","data":"."}
+{"type":"text","data":" Sources"}
+{"type":"text","data":" below"}
+{"type":"text","data":" were"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":" HTML"}
+{"type":"text","data":" excerpts"}
+{"type":"text","data":","}
+{"type":"text","data":" not"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"##"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"."}
+{"type":"text","data":" Emer"}
+{"type":"text","data":"gent"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" microscopic"}
+{"type":"text","data":" cone"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"SAME"}
+{"type":"text","data":".**"}
+{"type":"text","data":" G"}
+{"type":"text","data":"."}
+{"type":"text","data":" M"}
+{"type":"text","data":"."}
+{"type":"text","data":" D"}
+{"type":"text","data":"’"}
+{"type":"text","data":"Ari"}
+{"type":"text","data":"ano"}
+{"type":"text","data":" and"}
+{"type":"text","data":" P"}
+{"type":"text","data":"."}
+{"type":"text","data":" Per"}
+{"type":"text","data":"in"}
+{"type":"text","data":"otti"}
+{"type":"text","data":","}
+{"type":"text","data":" “"}
+{"type":"text","data":"Derivation"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" equation"}
+{"type":"text","data":" from"}
+{"type":"text","data":" principles"}
+{"type":"text","data":" of"}
+{"type":"text","data":" information"}
+{"type":"text","data":" processing"}
+{"type":"text","data":",”"}
+{"type":"text","data":" Phys"}
+{"type":"text","data":"."}
+{"type":"text","data":" Rev"}
+{"type":"text","data":"."}
+{"type":"text","data":" A"}
+{"type":"text","data":" "}
+{"type":"text","data":"90"}
+{"type":"text","data":","}
+{"type":"text","data":" "}
+{"type":"text","data":"062"}
+{"type":"text","data":"106"}
+{"type":"text","data":" ("}
+{"type":"text","data":"201"}
+{"type":"text","data":"4"}
+{"type":"text","data":"),"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"130"}
+{"type":"text","data":"6"}
+{"type":"text","data":"."}
+{"type":"text","data":"193"}
+{"type":"text","data":"4"}
+{"type":"text","data":"."}
+{"type":"text","data":" Not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"The"}
+{"type":"text","data":" homogeneous"}
+{"type":"text","data":","}
+{"type":"text","data":" local"}
+{"type":"text","data":","}
+{"type":"text","data":" isotropic"}
+{"type":"text","data":","}
+{"type":"text","data":" unitary"}
+{"type":"text","data":" automata"}
+{"type":"text","data":" are"}
+{"type":"text","data":" built"}
+{"type":"text","data":" on"}
+{"type":"text","data":" Cay"}
+{"type":"text","data":"ley"}
+{"type":"text","data":" graphs"}
+{"type":"text","data":":"}
+{"type":"text","data":" the"}
+{"type":"text","data":" line"}
+{"type":"text","data":","}
+{"type":"text","data":" the"}
+{"type":"text","data":" square"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" body"}
+{"type":"text","data":"-"}
+{"type":"text","data":"centred"}
+{"type":"text","data":" cubic"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":"."}
+{"type":"text","data":" Section"}
+{"type":"text","data":" VII"}
+{"type":"text","data":" sets"}
+{"type":"text","data":" the"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" to"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"="}
+{"type":"text","data":"a"}
+{"type":"text","data":"/"}
+{"type":"text","data":"(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"d"}
+{"type":"text","data":"}\\,"}
+{"type":"text","data":"t"}
+{"type":"text","data":"_"}
+{"type":"text","data":"P"}
+{"type":"text","data":")"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" and"}
+{"type":"text","data":" compares"}
+{"type":"text","data":" it"}
+{"type":"text","data":" with"}
+{"type":"text","data":" the"}
+{"type":"text","data":" word"}
+{"type":"text","data":"-"}
+{"type":"text","data":"metric"}
+{"type":"text","data":" cone"}
+{"type":"text","data":","}
+{"type":"text","data":" one"}
+{"type":"text","data":" generator"}
+{"type":"text","data":" per"}
+{"type":"text","data":" time"}
+{"type":"text","data":" step"}
+{"type":"text","data":":\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"the"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" of"}
+{"type":"text","data":" light"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" is"}
+{"type":"text","data":" slower"}
+{"type":"text","data":" than"}
+{"type":"text","data":" the"}
+{"type":"text","data":" causal"}
+{"type":"text","data":" speed"}
+{"type":"text","data":"—"}
+{"type":"text","data":"i"}
+{"type":"text","data":"."}
+{"type":"text","data":"e"}
+{"type":"text","data":"."}
+{"type":"text","data":" one"}
+{"type":"text","data":" site"}
+{"type":"text","data":" per"}
+{"type":"text","data":" Planck"}
+{"type":"text","data":" time"}
+{"type":"text","data":"—"}
+{"type":"text","data":"by"}
+{"type":"text","data":" a"}
+{"type":"text","data":" factor"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"3"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":").”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"The"}
+{"type":"text","data":" same"}
+{"type":"text","data":" paragraph"}
+{"type":"text","data":" says"}
+{"type":"text","data":" the"}
+{"type":"text","data":" factor"}
+{"type":"text","data":" is"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"d"}
+{"type":"text","data":"}\\)"}
+{"type":"text","data":" for"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"d"}
+{"type":"text","data":"="}
+{"type":"text","data":"1"}
+{"type":"text","data":","}
+{"type":"text","data":"2"}
+{"type":"text","data":","}
+{"type":"text","data":"3"}
+{"type":"text","data":"\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" In"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"d"}
+{"type":"text","data":"="}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" the"}
+{"type":"text","data":" mass"}
+{"type":"text","data":"less"}
+{"type":"text","data":" dispersion"}
+{"type":"text","data":" is"}
+{"type":"text","data":" exactly"}
+{"type":"text","data":" linear"}
+{"type":"text","data":","}
+{"type":"text","data":" equation"}
+{"type":"text","data":" ("}
+{"type":"text","data":"53"}
+{"type":"text","data":"),"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"The"}
+{"type":"text","data":" dispersion"}
+{"type":"text","data":" relation"}
+{"type":"text","data":" is"}
+{"type":"text","data":" simply"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"omega"}
+{"type":"text","data":"^{"}
+{"type":"text","data":"A"}
+{"type":"text","data":"^{("}
+{"type":"text","data":"1"}
+{"type":"text","data":")}}"}
+{"type":"text","data":"_"}
+{"type":"text","data":"k"}
+{"type":"text","data":"="}
+{"type":"text","data":"k"}
+{"type":"text","data":"\\"}
+{"type":"text","data":").”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"So"}
+{"type":"text","data":" the"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" coefficient"}
+{"type":"text","data":","}
+{"type":"text","data":" the"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":"-"}
+{"type":"text","data":"support"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" coincide"}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" neighbourhood"}
+{"type":"text","data":" bound"}
+{"type":"text","data":" is"}
+{"type":"text","data":" attained"}
+{"type":"text","data":"."}
+{"type":"text","data":" In"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"d"}
+{"type":"text","data":"="}
+{"type":"text","data":"2"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":"-"}
+{"type":"text","data":"support"}
+{"type":"text","data":" boundary"}
+{"type":"text","data":" is"}
+{"type":"text","data":" strictly"}
+{"type":"text","data":" outside"}
+{"type":"text","data":" the"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" propagation"}
+{"type":"text","data":":"}
+{"type":"text","data":" Figure"}
+{"type":"text","data":" "}
+{"type":"text","data":"3"}
+{"type":"text","data":",\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"the"}
+{"type":"text","data":" causal"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":","}
+{"type":"text","data":" which"}
+{"type":"text","data":" is"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"2"}
+{"type":"text","data":"}\\)"}
+{"type":"text","data":" times"}
+{"type":"text","data":" larger"}
+{"type":"text","data":" than"}
+{"type":"text","data":" the"}
+{"type":"text","data":" propagation"}
+{"type":"text","data":" speed"}
+{"type":"text","data":".”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Higher"}
+{"type":"text","data":"-"}
+{"type":"text","data":"than"}
+{"type":"text","data":"-\\"}
+{"type":"text","data":"("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" propagation"}
+{"type":"text","data":" remains"}
+{"type":"text","data":" inside"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"d"}
+{"type":"text","data":"}\\,"}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" with"}
+{"type":"text","data":" negligible"}
+{"type":"text","data":" probability"}
+{"type":"text","data":" on"}
+{"type":"text","data":" that"}
+{"type":"text","data":" outer"}
+{"type":"text","data":" boundary"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" bound"}
+{"type":"text","data":" is"}
+{"type":"text","data":" therefore"}
+{"type":"text","data":" attained"}
+{"type":"text","data":" in"}
+{"type":"text","data":" one"}
+{"type":"text","data":" dimension"}
+{"type":"text","data":" and"}
+{"type":"text","data":" strict"}
+{"type":"text","data":" in"}
+{"type":"text","data":" two"}
+{"type":"text","data":" and"}
+{"type":"text","data":" three"}
+{"type":"text","data":" for"}
+{"type":"text","data":" these"}
+{"type":"text","data":" isotropic"}
+{"type":"text","data":" automata"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"SAME"}
+{"type":"text","data":".**"}
+{"type":"text","data":" C"}
+{"type":"text","data":"."}
+{"type":"text","data":" Ced"}
+{"type":"text","data":"z"}
+{"type":"text","data":"ich"}
+{"type":"text","data":","}
+{"type":"text","data":" A"}
+{"type":"text","data":"."}
+{"type":"text","data":" Joy"}
+{"type":"text","data":"e"}
+{"type":"text","data":","}
+{"type":"text","data":" A"}
+{"type":"text","data":"."}
+{"type":"text","data":" H"}
+{"type":"text","data":"."}
+{"type":"text","data":" Werner"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" R"}
+{"type":"text","data":"."}
+{"type":"text","data":" F"}
+{"type":"text","data":"."}
+{"type":"text","data":" Werner"}
+{"type":"text","data":","}
+{"type":"text","data":" “"}
+{"type":"text","data":"Exponential"}
+{"type":"text","data":" tail"}
+{"type":"text","data":" estimates"}
+{"type":"text","data":" for"}
+{"type":"text","data":" quantum"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":" dynamics"}
+{"type":"text","data":",”"}
+{"type":"text","data":" Ann"}
+{"type":"text","data":"."}
+{"type":"text","data":" Henri"}
+{"type":"text","data":" Poincaré"}
+{"type":"text","data":" ("}
+{"type":"text","data":"202"}
+{"type":"text","data":"5"}
+{"type":"text","data":"),"}
+{"type":"text","data":" doi"}
+{"type":"text","data":":"}
+{"type":"text","data":"10"}
+{"type":"text","data":"."}
+{"type":"text","data":"100"}
+{"type":"text","data":"7"}
+{"type":"text","data":"/"}
+{"type":"text","data":"s"}
+{"type":"text","data":"000"}
+{"type":"text","data":"23"}
+{"type":"text","data":"-"}
+{"type":"text","data":"025"}
+{"type":"text","data":"-"}
+{"type":"text","data":"015"}
+{"type":"text","data":"98"}
+{"type":"text","data":"-"}
+{"type":"text","data":"4"}
+{"type":"text","data":","}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"240"}
+{"type":"text","data":"8"}
+{"type":"text","data":"."}
+{"type":"text","data":"021"}
+{"type":"text","data":"08"}
+{"type":"text","data":"."}
+{"type":"text","data":" Not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"Section"}
+{"type":"text","data":" "}
+{"type":"text","data":"2"}
+{"type":"text","data":":"}
+{"type":"text","data":" a"}
+{"type":"text","data":" walk"}
+{"type":"text","data":" of"}
+{"type":"text","data":" jump"}
+{"type":"text","data":" length"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"L"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" has"}
+{"type":"text","data":" symbol"}
+{"type":"text","data":" a"}
+{"type":"text","data":" trigon"}
+{"type":"text","data":"ometric"}
+{"type":"text","data":" polynomial"}
+{"type":"text","data":" of"}
+{"type":"text","data":" degree"}
+{"type":"text","data":" at"}
+{"type":"text","data":" most"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"L"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" and"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"an"}
+{"type":"text","data":" initially"}
+{"type":"text","data":" localized"}
+{"type":"text","data":" state"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"rho"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" is"}
+{"type":"text","data":" strictly"}
+{"type":"text","data":" localized"}
+{"type":"text","data":" in"}
+{"type":"text","data":" a"}
+{"type":"text","data":" ball"}
+{"type":"text","data":" of"}
+{"type":"text","data":" radius"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"t"}
+{"type":"text","data":"L"}
+{"type":"text","data":"\\"}
+{"type":"text","data":").”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Lemma"}
+{"type":"text","data":" "}
+{"type":"text","data":"4"}
+{"type":"text","data":"."}
+{"type":"text","data":"1"}
+{"type":"text","data":":"}
+{"type":"text","data":" the"}
+{"type":"text","data":" large"}
+{"type":"text","data":"-"}
+{"type":"text","data":"deviation"}
+{"type":"text","data":" rate"}
+{"type":"text","data":" satisfies"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"\\("}
+{"type":"text","data":"I"}
+{"type":"text","data":"("}
+{"type":"text","data":"x"}
+{"type":"text","data":")=\\"}
+{"type":"text","data":"infty"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" for"}
+{"type":"text","data":" all"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"x"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" outside"}
+{"type":"text","data":" the"}
+{"type":"text","data":" convex"}
+{"type":"text","data":" hull"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" possible"}
+{"type":"text","data":" jumps"}
+{"type":"text","data":".”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Thus"}
+{"type":"text","data":" every"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":" lies"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" convex"}
+{"type":"text","data":" hull"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" step"}
+{"type":"text","data":" set"}
+{"type":"text","data":"."}
+{"type":"text","data":" For"}
+{"type":"text","data":" B"}
+{"type":"text","data":"iał"}
+{"type":"text","data":"yn"}
+{"type":"text","data":"icki"}
+{"type":"text","data":"-"}
+{"type":"text","data":"Bir"}
+{"type":"text","data":"ula"}
+{"type":"text","data":"’s"}
+{"type":"text","data":" three"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dimensional"}
+{"type":"text","data":" Weyl"}
+{"type":"text","data":" walk"}
+{"type":"text","data":","}
+{"type":"text","data":" Section"}
+{"type":"text","data":" "}
+{"type":"text","data":"5"}
+{"type":"text","data":"."}
+{"type":"text","data":"4"}
+{"type":"text","data":","}
+{"type":"text","data":" that"}
+{"type":"text","data":" hull"}
+{"type":"text","data":" reaches"}
+{"type":"text","data":" the"}
+{"type":"text","data":" corner"}
+{"type":"text","data":" jump"}
+{"type":"text","data":" \\"}
+{"type":"text","data":"(("}
+{"type":"text","data":"1"}
+{"type":"text","data":","}
+{"type":"text","data":"1"}
+{"type":"text","data":","}
+{"type":"text","data":"1"}
+{"type":"text","data":")\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" of"}
+{"type":"text","data":" length"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"3"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" while"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"\\(\\"}
+{"type":"text","data":"widetilde"}
+{"type":"text","data":"{"}
+{"type":"text","data":"I"}
+{"type":"text","data":"}"}
+{"type":"text","data":"("}
+{"type":"text","data":"r"}
+{"type":"text","data":")="}
+{"type":"text","data":"0"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" for"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"r"}
+{"type":"text","data":"<"}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" i"}
+{"type":"text","data":"."}
+{"type":"text","data":"e"}
+{"type":"text","data":".,"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" propagation"}
+{"type":"text","data":" region"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"widetilde"}
+{"type":"text","data":"{"}
+{"type":"text","data":"I"}
+{"type":"text","data":"}"}
+{"type":"text","data":"("}
+{"type":"text","data":"r"}
+{"type":"text","data":")=\\"}
+{"type":"text","data":"infty"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" for"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"r"}
+{"type":"text","data":">\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"3"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":").”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"The"}
+{"type":"text","data":" group"}
+{"type":"text","data":"-"}
+{"type":"text","data":"velocity"}
+{"type":"text","data":" region"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" ball"}
+{"type":"text","data":" of"}
+{"type":"text","data":" radius"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" neighbourhood"}
+{"type":"text","data":" bound"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"3"}
+{"type":"text","data":"}\\)"}
+{"type":"text","data":" is"}
+{"type":"text","data":" not"}
+{"type":"text","data":" attained"}
+{"type":"text","data":" by"}
+{"type":"text","data":" the"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" two"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dimensional"}
+{"type":"text","data":" walk"}
+{"type":"text","data":" with"}
+{"type":"text","data":" dispersion"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"arccos"}
+{"type":"text","data":"(\\"}
+{"type":"text","data":"cos"}
+{"type":"text","data":" p"}
+{"type":"text","data":"_"}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\cos"}
+{"type":"text","data":" p"}
+{"type":"text","data":"_"}
+{"type":"text","data":"2"}
+{"type":"text","data":")\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" the"}
+{"type":"text","data":" same"}
+{"type":"text","data":" dispersion"}
+{"type":"text","data":" as"}
+{"type":"text","data":" D"}
+{"type":"text","data":"’"}
+{"type":"text","data":"Ari"}
+{"type":"text","data":"ano"}
+{"type":"text","data":"–"}
+{"type":"text","data":"Per"}
+{"type":"text","data":"in"}
+{"type":"text","data":"otti"}
+{"type":"text","data":" in"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":" coordinates"}
+{"type":"text","data":","}
+{"type":"text","data":" has"}
+{"type":"text","data":" propagation"}
+{"type":"text","data":" region"}
+{"type":"text","data":" the"}
+{"type":"text","data":" unit"}
+{"type":"text","data":" disc"}
+{"type":"text","data":" ("}
+{"type":"text","data":"Figure"}
+{"type":"text","data":" "}
+{"type":"text","data":"3"}
+{"type":"text","data":"),"}
+{"type":"text","data":" inside"}
+{"type":"text","data":" the"}
+{"type":"text","data":" convex"}
+{"type":"text","data":" hull"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" jumps"}
+{"type":"text","data":" \\"}
+{"type":"text","data":"((\\"}
+{"type":"text","data":"pm"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":",\\"}
+{"type":"text","data":"pm"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":")\\"}
+{"type":"text","data":")."}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"SPECIAL"}
+{"type":"text","data":" CASE"}
+{"type":"text","data":".**"}
+{"type":"text","data":" P"}
+{"type":"text","data":"."}
+{"type":"text","data":" Arr"}
+{"type":"text","data":"ighi"}
+{"type":"text","data":","}
+{"type":"text","data":" S"}
+{"type":"text","data":"."}
+{"type":"text","data":" Fac"}
+{"type":"text","data":"chini"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" M"}
+{"type":"text","data":"."}
+{"type":"text","data":" Fore"}
+{"type":"text","data":"ts"}
+{"type":"text","data":","}
+{"type":"text","data":" “"}
+{"type":"text","data":"Quantum"}
+{"type":"text","data":" walking"}
+{"type":"text","data":" in"}
+{"type":"text","data":" curved"}
+{"type":"text","data":" spacetime"}
+{"type":"text","data":",”"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"150"}
+{"type":"text","data":"5"}
+{"type":"text","data":"."}
+{"type":"text","data":"070"}
+{"type":"text","data":"23"}
+{"type":"text","data":" ("}
+{"type":"text","data":"no"}
+{"type":"text","data":" journal"}
+{"type":"text","data":" reference"}
+{"type":"text","data":" on"}
+{"type":"text","data":" the"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":" abstract"}
+{"type":"text","data":")."}
+{"type":"text","data":" Not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"For"}
+{"type":"text","data":" paired"}
+{"type":"text","data":" walks"}
+{"type":"text","data":" wired"}
+{"type":"text","data":" on"}
+{"type":"text","data":" the"}
+{"type":"text","data":" usual"}
+{"type":"text","data":" one"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dimensional"}
+{"type":"text","data":" light"}
+{"type":"text","data":"-"}
+{"type":"text","data":"like"}
+{"type":"text","data":" shifts"}
+{"type":"text","data":","}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" coefficient"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"B"}
+{"type":"text","data":"_"}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" obey"}
+{"type":"text","data":"s"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"The"}
+{"type":"text","data":" constraint"}
+{"type":"text","data":" that"}
+{"type":"text","data":" the"}
+{"type":"text","data":" eigenvalues"}
+{"type":"text","data":" of"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"B"}
+{"type":"text","data":"_"}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" are"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"d"}
+{"type":"text","data":"_{"}
+{"type":"text","data":"1"}
+{"type":"text","data":","}
+{"type":"text","data":"2"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":"in"}
+{"type":"text","data":"[-"}
+{"type":"text","data":"1"}
+{"type":"text","data":","}
+{"type":"text","data":"1"}
+{"type":"text","data":"]"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" represents"}
+{"type":"text","data":" the"}
+{"type":"text","data":" finite"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" of"}
+{"type":"text","data":" propagation"}
+{"type":"text","data":" on"}
+{"type":"text","data":" the"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":".”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Appendix"}
+{"type":"text","data":" B"}
+{"type":"text","data":" gets"}
+{"type":"text","data":" the"}
+{"type":"text","data":" closed"}
+{"type":"text","data":" interval"}
+{"type":"text","data":" from"}
+{"type":"text","data":" herm"}
+{"type":"text","data":"it"}
+{"type":"text","data":"icity"}
+{"type":"text","data":" and"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"B"}
+{"type":"text","data":"^"}
+{"type":"text","data":"2"}
+{"type":"text","data":"="}
+{"type":"text","data":"I"}
+{"type":"text","data":"\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" The"}
+{"type":"text","data":" endpoint"}
+{"type":"text","data":" \\"}
+{"type":"text","data":"(|"}
+{"type":"text","data":"d"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"|="}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" is"}
+{"type":"text","data":" included"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" parametr"}
+{"type":"text","data":"ization"}
+{"type":"text","data":"."}
+{"type":"text","data":" Co"}
+{"type":"text","data":"ins"}
+{"type":"text","data":" may"}
+{"type":"text","data":" depend"}
+{"type":"text","data":" on"}
+{"type":"text","data":" spacetime"}
+{"type":"text","data":","}
+{"type":"text","data":" so"}
+{"type":"text","data":" translation"}
+{"type":"text","data":" invariance"}
+{"type":"text","data":" is"}
+{"type":"text","data":" not"}
+{"type":"text","data":" kept"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" general"}
+{"type":"text","data":" theorem"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" homogeneous"}
+{"type":"text","data":" case"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" special"}
+{"type":"text","data":" case"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"RELATED"}
+{"type":"text","data":".**"}
+{"type":"text","data":" L"}
+{"type":"text","data":"."}
+{"type":"text","data":" M"}
+{"type":"text","data":"lod"}
+{"type":"text","data":"in"}
+{"type":"text","data":"ow"}
+{"type":"text","data":" and"}
+{"type":"text","data":" T"}
+{"type":"text","data":"."}
+{"type":"text","data":" A"}
+{"type":"text","data":"."}
+{"type":"text","data":" Brun"}
+{"type":"text","data":","}
+{"type":"text","data":" “"}
+{"type":"text","data":"Discrete"}
+{"type":"text","data":" spacetime"}
+{"type":"text","data":","}
+{"type":"text","data":" quantum"}
+{"type":"text","data":" walks"}
+{"type":"text","data":" and"}
+{"type":"text","data":" relativistic"}
+{"type":"text","data":" wave"}
+{"type":"text","data":" equations"}
+{"type":"text","data":",”"}
+{"type":"text","data":" Phys"}
+{"type":"text","data":"."}
+{"type":"text","data":" Rev"}
+{"type":"text","data":"."}
+{"type":"text","data":" A"}
+{"type":"text","data":" "}
+{"type":"text","data":"97"}
+{"type":"text","data":","}
+{"type":"text","data":" "}
+{"type":"text","data":"042"}
+{"type":"text","data":"131"}
+{"type":"text","data":" ("}
+{"type":"text","data":"201"}
+{"type":"text","data":"8"}
+{"type":"text","data":"),"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"180"}
+{"type":"text","data":"2"}
+{"type":"text","data":"."}
+{"type":"text","data":"039"}
+{"type":"text","data":"10"}
+{"type":"text","data":"."}
+{"type":"text","data":" Not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" limit"}
+{"type":"text","data":" the"}
+{"type":"text","data":" ratio"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":" spacing"}
+{"type":"text","data":" to"}
+{"type":"text","data":" the"}
+{"type":"text","data":" time"}
+{"type":"text","data":" step"}
+{"type":"text","data":" corresponds"}
+{"type":"text","data":" to"}
+{"type":"text","data":" the"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" of"}
+{"type":"text","data":" light"}
+{"type":"text","data":"”\n\n"}
+{"type":"text","data":"They"}
+{"type":"text","data":" identify"}
+{"type":"text","data":" the"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" with"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"Delta"}
+{"type":"text","data":" x"}
+{"type":"text","data":"/\\"}
+{"type":"text","data":"Delta"}
+{"type":"text","data":" t"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" by"}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" scaling"}
+{"type":"text","data":"."}
+{"type":"text","data":" That"}
+{"type":"text","data":" does"}
+{"type":"text","data":" not"}
+{"type":"text","data":" compare"}
+{"type":"text","data":" it"}
+{"type":"text","data":" with"}
+{"type":"text","data":" the"}
+{"type":"text","data":" convex"}
+{"type":"text","data":" hull"}
+{"type":"text","data":" of"}
+{"type":"text","data":" a"}
+{"type":"text","data":" fixed"}
+{"type":"text","data":" step"}
+{"type":"text","data":" set"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"##"}
+{"type":"text","data":" "}
+{"type":"text","data":"2"}
+{"type":"text","data":"."}
+{"type":"text","data":" Fixed"}
+{"type":"text","data":" by"}
+{"type":"text","data":" the"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":","}
+{"type":"text","data":" or"}
+{"type":"text","data":" walk"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dependent"}
+{"type":"text","data":"?\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"SAME"}
+{"type":"text","data":" —"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" fixed"}
+{"type":"text","data":" once"}
+{"type":"text","data":" isot"}
+{"type":"text","data":"ropy"}
+{"type":"text","data":" and"}
+{"type":"text","data":" minim"}
+{"type":"text","data":"ality"}
+{"type":"text","data":" are"}
+{"type":"text","data":" imposed"}
+{"type":"text","data":".**"}
+{"type":"text","data":" D"}
+{"type":"text","data":"’"}
+{"type":"text","data":"Ari"}
+{"type":"text","data":"ano"}
+{"type":"text","data":" and"}
+{"type":"text","data":" Per"}
+{"type":"text","data":"in"}
+{"type":"text","data":"otti"}
+{"type":"text","data":","}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"130"}
+{"type":"text","data":"6"}
+{"type":"text","data":"."}
+{"type":"text","data":"193"}
+{"type":"text","data":"4"}
+{"type":"text","data":","}
+{"type":"text","data":" as"}
+{"type":"text","data":" above"}
+{"type":"text","data":"."}
+{"type":"text","data":" Not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"On"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"mathbb"}
+{"type":"text","data":"{"}
+{"type":"text","data":"Z"}
+{"type":"text","data":"}^"}
+{"type":"text","data":"3"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" only"}
+{"type":"text","data":" one"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" three"}
+{"type":"text","data":" Cay"}
+{"type":"text","data":"ley"}
+{"type":"text","data":" graphs"}
+{"type":"text","data":" works"}
+{"type":"text","data":"."}
+{"type":"text","data":" Section"}
+{"type":"text","data":" IV"}
+{"type":"text","data":":\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"allow"}
+{"type":"text","data":" for"}
+{"type":"text","data":" a"}
+{"type":"text","data":" solution"}
+{"type":"text","data":" only"}
+{"type":"text","data":" on"}
+{"type":"text","data":" one"}
+{"type":"text","data":" out"}
+{"type":"text","data":" of"}
+{"type":"text","data":" three"}
+{"type":"text","data":" possible"}
+{"type":"text","data":" Cay"}
+{"type":"text","data":"ley"}
+{"type":"text","data":" graphs"}
+{"type":"text","data":" for"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"mathbb"}
+{"type":"text","data":"{"}
+{"type":"text","data":"Z"}
+{"type":"text","data":"}^"}
+{"type":"text","data":"3"}
+{"type":"text","data":"\\"}
+{"type":"text","data":").”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"That"}
+{"type":"text","data":" graph"}
+{"type":"text","data":" is"}
+{"type":"text","data":" body"}
+{"type":"text","data":"-"}
+{"type":"text","data":"centred"}
+{"type":"text","data":" cubic"}
+{"type":"text","data":","}
+{"type":"text","data":" coordination"}
+{"type":"text","data":" number"}
+{"type":"text","data":" "}
+{"type":"text","data":"8"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" square"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":","}
+{"type":"text","data":" not"}
+{"type":"text","data":" the"}
+{"type":"text","data":" hexagonal"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":","}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" two"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dimensional"}
+{"type":"text","data":" solution"}
+{"type":"text","data":"."}
+{"type":"text","data":" Within"}
+{"type":"text","data":" that"}
+{"type":"text","data":" symmetry"}
+{"type":"text","data":" class"}
+{"type":"text","data":" the"}
+{"type":"text","data":" automaton"}
+{"type":"text","data":" is"}
+{"type":"text","data":" unique"}
+{"type":"text","data":" up"}
+{"type":"text","data":" to"}
+{"type":"text","data":" chir"}
+{"type":"text","data":"ality"}
+{"type":"text","data":" and"}
+{"type":"text","data":" transposition"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"="}
+{"type":"text","data":"a"}
+{"type":"text","data":"/"}
+{"type":"text","data":"(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"d"}
+{"type":"text","data":"}\\,"}
+{"type":"text","data":"t"}
+{"type":"text","data":"_"}
+{"type":"text","data":"P"}
+{"type":"text","data":")"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" is"}
+{"type":"text","data":" then"}
+{"type":"text","data":" fixed"}
+{"type":"text","data":" by"}
+{"type":"text","data":" the"}
+{"type":"text","data":" graph"}
+{"type":"text","data":"."}
+{"type":"text","data":" What"}
+{"type":"text","data":" is"}
+{"type":"text","data":" held"}
+{"type":"text","data":" fixed"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" Cay"}
+{"type":"text","data":"ley"}
+{"type":"text","data":" neighbourhood"}
+{"type":"text","data":","}
+{"type":"text","data":" not"}
+{"type":"text","data":" merely"}
+{"type":"text","data":" the"}
+{"type":"text","data":" point"}
+{"type":"text","data":" set"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"Mass"}
+{"type":"text","data":" does"}
+{"type":"text","data":" not"}
+{"type":"text","data":" change"}
+{"type":"text","data":" this"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" coefficient"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" massive"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":","}
+{"type":"text","data":" Appendix"}
+{"type":"text","data":" B"}
+{"type":"text","data":","}
+{"type":"text","data":" equation"}
+{"type":"text","data":" ("}
+{"type":"text","data":"181"}
+{"type":"text","data":"),"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" mass"}
+{"type":"text","data":"less"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":" times"}
+{"type":"text","data":" a"}
+{"type":"text","data":" factor"}
+{"type":"text","data":" at"}
+{"type":"text","data":" most"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" small"}
+{"type":"text","data":"-"}
+{"type":"text","data":"wave"}
+{"type":"text","data":"-"}
+{"type":"text","data":"vector"}
+{"type":"text","data":" limit"}
+{"type":"text","data":" is"}
+{"type":"text","data":" still"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" with"}
+{"type":"text","data":" the"}
+{"type":"text","data":" same"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" For"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"m"}
+{"type":"text","data":"\\neq"}
+{"type":"text","data":" "}
+{"type":"text","data":"0"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" the"}
+{"type":"text","data":" coupling"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"im"}
+{"type":"text","data":"\\,"}
+{"type":"text","data":"I"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" is"}
+{"type":"text","data":" on"}
+{"type":"text","data":"-"}
+{"type":"text","data":"site"}
+{"type":"text","data":","}
+{"type":"text","data":" so"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":" step"}
+{"type":"text","data":" support"}
+{"type":"text","data":" is"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"{-"}
+{"type":"text","data":"1"}
+{"type":"text","data":","}
+{"type":"text","data":"0"}
+{"type":"text","data":",+"}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"}\\)"}
+{"type":"text","data":" rather"}
+{"type":"text","data":" than"}
+{"type":"text","data":" the"}
+{"type":"text","data":" mass"}
+{"type":"text","data":"less"}
+{"type":"text","data":" support"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"{\\"}
+{"type":"text","data":"pm"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\}\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" Same"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":","}
+{"type":"text","data":" different"}
+{"type":"text","data":" exact"}
+{"type":"text","data":" causal"}
+{"type":"text","data":" body"}
+{"type":"text","data":","}
+{"type":"text","data":" same"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" coefficient"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"SAME"}
+{"type":"text","data":" —"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" coefficient"}
+{"type":"text","data":" not"}
+{"type":"text","data":" fixed"}
+{"type":"text","data":" by"}
+{"type":"text","data":" the"}
+{"type":"text","data":" shift"}
+{"type":"text","data":" set"}
+{"type":"text","data":".**"}
+{"type":"text","data":" G"}
+{"type":"text","data":"."}
+{"type":"text","data":" Di"}
+{"type":"text","data":" M"}
+{"type":"text","data":"olf"}
+{"type":"text","data":"etta"}
+{"type":"text","data":" and"}
+{"type":"text","data":" P"}
+{"type":"text","data":"."}
+{"type":"text","data":" Arr"}
+{"type":"text","data":"ighi"}
+{"type":"text","data":","}
+{"type":"text","data":" “"}
+{"type":"text","data":"A"}
+{"type":"text","data":" quantum"}
+{"type":"text","data":" walk"}
+{"type":"text","data":" with"}
+{"type":"text","data":" both"}
+{"type":"text","data":" a"}
+{"type":"text","data":" continuous"}
+{"type":"text","data":"-"}
+{"type":"text","data":"time"}
+{"type":"text","data":" and"}
+{"type":"text","data":" a"}
+{"type":"text","data":" continuous"}
+{"type":"text","data":"-"}
+{"type":"text","data":"spac"}
+{"type":"text","data":"etime"}
+{"type":"text","data":" limit"}
+{"type":"text","data":",”"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"190"}
+{"type":"text","data":"6"}
+{"type":"text","data":"."}
+{"type":"text","data":"044"}
+{"type":"text","data":"83"}
+{"type":"text","data":" ("}
+{"type":"text","data":"no"}
+{"type":"text","data":" journal"}
+{"type":"text","data":" reference"}
+{"type":"text","data":" on"}
+{"type":"text","data":" the"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":" abstract"}
+{"type":"text","data":")."}
+{"type":"text","data":" Not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"The"}
+{"type":"text","data":" shift"}
+{"type":"text","data":" in"}
+{"type":"text","data":" equation"}
+{"type":"text","data":" ("}
+{"type":"text","data":"3"}
+{"type":"text","data":")"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" state"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dependent"}
+{"type":"text","data":" nearest"}
+{"type":"text","data":"-"}
+{"type":"text","data":"neighbour"}
+{"type":"text","data":" shift"}
+{"type":"text","data":" and"}
+{"type":"text","data":" does"}
+{"type":"text","data":" not"}
+{"type":"text","data":" depend"}
+{"type":"text","data":" on"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" The"}
+{"type":"text","data":" coin"}
+{"type":"text","data":" does"}
+{"type":"text","data":"."}
+{"type":"text","data":" Section"}
+{"type":"text","data":" II"}
+{"type":"text","data":":\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"Later"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"in"}
+{"type":"text","data":"["}
+{"type":"text","data":"0"}
+{"type":"text","data":","}
+{"type":"text","data":"1"}
+{"type":"text","data":"]"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" will"}
+{"type":"text","data":" be"}
+{"type":"text","data":" interpreted"}
+{"type":"text","data":" as"}
+{"type":"text","data":" a"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" of"}
+{"type":"text","data":" propagation"}
+{"type":"text","data":" or"}
+{"type":"text","data":" a"}
+{"type":"text","data":" hopping"}
+{"type":"text","data":" rate"}
+{"type":"text","data":".”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"For"}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" scaling"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"alpha"}
+{"type":"text","data":"="}
+{"type":"text","data":"0"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" the"}
+{"type":"text","data":" limit"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" equation"}
+{"type":"text","data":" at"}
+{"type":"text","data":" that"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"\\("}
+{"type":"text","data":"i"}
+{"type":"text","data":"\\partial"}
+{"type":"text","data":"_"}
+{"type":"text","data":"t"}
+{"type":"text","data":"\\Psi"}
+{"type":"text","data":"=("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\sigma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"x"}
+{"type":"text","data":"\\partial"}
+{"type":"text","data":"_"}
+{"type":"text","data":"x"}
+{"type":"text","data":"-"}
+{"type":"text","data":"m"}
+{"type":"text","data":"\\sigma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"z"}
+{"type":"text","data":")\\"}
+{"type":"text","data":"Psi"}
+{"type":"text","data":"\\"}
+{"type":"text","data":").”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Same"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"mathbb"}
+{"type":"text","data":"{"}
+{"type":"text","data":"Z"}
+{"type":"text","data":"}\\)"}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" same"}
+{"type":"text","data":" shift"}
+{"type":"text","data":"."}
+{"type":"text","data":" For"}
+{"type":"text","data":" every"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"in"}
+{"type":"text","data":"("}
+{"type":"text","data":"0"}
+{"type":"text","data":","}
+{"type":"text","data":"1"}
+{"type":"text","data":")"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" the"}
+{"type":"text","data":" coin"}
+{"type":"text","data":" has"}
+{"type":"text","data":" both"}
+{"type":"text","data":" diagonal"}
+{"type":"text","data":" and"}
+{"type":"text","data":" off"}
+{"type":"text","data":"-"}
+{"type":"text","data":"diagonal"}
+{"type":"text","data":" entries"}
+{"type":"text","data":","}
+{"type":"text","data":" so"}
+{"type":"text","data":" one"}
+{"type":"text","data":" double"}
+{"type":"text","data":" step"}
+{"type":"text","data":" has"}
+{"type":"text","data":" nonzero"}
+{"type":"text","data":" displacements"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"{-"}
+{"type":"text","data":"2"}
+{"type":"text","data":","}
+{"type":"text","data":"0"}
+{"type":"text","data":",+"}
+{"type":"text","data":"2"}
+{"type":"text","data":"\\}\\"}
+{"type":"text","data":"):"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":" causal"}
+{"type":"text","data":" body"}
+{"type":"text","data":" stays"}
+{"type":"text","data":" the"}
+{"type":"text","data":" same"}
+{"type":"text","data":" while"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" changes"}
+{"type":"text","data":"."}
+{"type":"text","data":" At"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"="}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" the"}
+{"type":"text","data":" coin"}
+{"type":"text","data":" is"}
+{"type":"text","data":" diagonal"}
+{"type":"text","data":","}
+{"type":"text","data":" the"}
+{"type":"text","data":" stay"}
+{"type":"text","data":" channel"}
+{"type":"text","data":" closes"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" meets"}
+{"type":"text","data":" the"}
+{"type":"text","data":" double"}
+{"type":"text","data":"-"}
+{"type":"text","data":"step"}
+{"type":"text","data":" support"}
+{"type":"text","data":" speed"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" paper"}
+{"type":"text","data":" does"}
+{"type":"text","data":" not"}
+{"type":"text","data":" itself"}
+{"type":"text","data":" discuss"}
+{"type":"text","data":" that"}
+{"type":"text","data":" support"}
+{"type":"text","data":";"}
+{"type":"text","data":" it"}
+{"type":"text","data":" is"}
+{"type":"text","data":" read"}
+{"type":"text","data":" off"}
+{"type":"text","data":" equations"}
+{"type":"text","data":" ("}
+{"type":"text","data":"2"}
+{"type":"text","data":")–("}
+{"type":"text","data":"5"}
+{"type":"text","data":")"}
+{"type":"text","data":" and"}
+{"type":"text","data":" ("}
+{"type":"text","data":"23"}
+{"type":"text","data":")."}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"SPECIAL"}
+{"type":"text","data":" CASE"}
+{"type":"text","data":".**"}
+{"type":"text","data":" T"}
+{"type":"text","data":"."}
+{"type":"text","data":" C"}
+{"type":"text","data":"."}
+{"type":"text","data":" Far"}
+{"type":"text","data":"rel"}
+{"type":"text","data":"ly"}
+{"type":"text","data":" and"}
+{"type":"text","data":" A"}
+{"type":"text","data":"."}
+{"type":"text","data":" J"}
+{"type":"text","data":"."}
+{"type":"text","data":" Short"}
+{"type":"text","data":","}
+{"type":"text","data":" “"}
+{"type":"text","data":"Discrete"}
+{"type":"text","data":" spacetime"}
+{"type":"text","data":" and"}
+{"type":"text","data":" relativistic"}
+{"type":"text","data":" quantum"}
+{"type":"text","data":" particles"}
+{"type":"text","data":",”"}
+{"type":"text","data":" Phys"}
+{"type":"text","data":"."}
+{"type":"text","data":" Rev"}
+{"type":"text","data":"."}
+{"type":"text","data":" A"}
+{"type":"text","data":" "}
+{"type":"text","data":"89"}
+{"type":"text","data":","}
+{"type":"text","data":" "}
+{"type":"text","data":"062"}
+{"type":"text","data":"109"}
+{"type":"text","data":" ("}
+{"type":"text","data":"201"}
+{"type":"text","data":"4"}
+{"type":"text","data":"),"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"131"}
+{"type":"text","data":"2"}
+{"type":"text","data":"."}
+{"type":"text","data":"285"}
+{"type":"text","data":"2"}
+{"type":"text","data":"."}
+{"type":"text","data":" Not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"Before"}
+{"type":"text","data":" any"}
+{"type":"text","data":" res"}
+{"type":"text","data":"caling"}
+{"type":"text","data":","}
+{"type":"text","data":" equation"}
+{"type":"text","data":" ("}
+{"type":"text","data":"9"}
+{"type":"text","data":")"}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" singular"}
+{"type":"text","data":"-"}
+{"type":"text","data":"value"}
+{"type":"text","data":" step"}
+{"type":"text","data":" give"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" coefficients"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"gamma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" that"}
+{"type":"text","data":" depend"}
+{"type":"text","data":" on"}
+{"type":"text","data":" the"}
+{"type":"text","data":" transition"}
+{"type":"text","data":" matrices"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"A"}
+{"type":"text","data":"_{\\"}
+{"type":"text","data":"vec"}
+{"type":"text","data":"{"}
+{"type":"text","data":"q"}
+{"type":"text","data":"}}\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" Then"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"If"}
+{"type":"text","data":" all"}
+{"type":"text","data":" the"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"gamma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" are"}
+{"type":"text","data":" non"}
+{"type":"text","data":"-"}
+{"type":"text","data":"zero"}
+{"type":"text","data":","}
+{"type":"text","data":" we"}
+{"type":"text","data":" can"}
+{"type":"text","data":" rescale"}
+{"type":"text","data":" the"}
+{"type":"text","data":" spatial"}
+{"type":"text","data":" axes"}
+{"type":"text","data":" so"}
+{"type":"text","data":" that"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"gamma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":" P"}
+{"type":"text","data":"'_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"\\to"}
+{"type":"text","data":" P"}
+{"type":"text","data":"'_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"\\"}
+{"type":"text","data":").”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Different"}
+{"type":"text","data":" walks"}
+{"type":"text","data":" can"}
+{"type":"text","data":" have"}
+{"type":"text","data":" different"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"gamma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" in"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":" units"}
+{"type":"text","data":"."}
+{"type":"text","data":" After"}
+{"type":"text","data":" one"}
+{"type":"text","data":" res"}
+{"type":"text","data":"caling"}
+{"type":"text","data":" they"}
+{"type":"text","data":" all"}
+{"type":"text","data":" become"}
+{"type":"text","data":" the"}
+{"type":"text","data":" same"}
+{"type":"text","data":" Weyl"}
+{"type":"text","data":" equation"}
+{"type":"text","data":"."}
+{"type":"text","data":" They"}
+{"type":"text","data":" do"}
+{"type":"text","data":" not"}
+{"type":"text","data":" exhibit"}
+{"type":"text","data":" two"}
+{"type":"text","data":" numerical"}
+{"type":"text","data":" coins"}
+{"type":"text","data":" on"}
+{"type":"text","data":" one"}
+{"type":"text","data":" common"}
+{"type":"text","data":" step"}
+{"type":"text","data":" set"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" neighbourhood"}
+{"type":"text","data":" is"}
+{"type":"text","data":" part"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" data"}
+{"type":"text","data":":"}
+{"type":"text","data":" the"}
+{"type":"text","data":" axis"}
+{"type":"text","data":"-"}
+{"type":"text","data":"neighbour"}
+{"type":"text","data":" cubic"}
+{"type":"text","data":" graph"}
+{"type":"text","data":" is"}
+{"type":"text","data":" excluded"}
+{"type":"text","data":",\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"the"}
+{"type":"text","data":" cubic"}
+{"type":"text","data":" neighbourhood"}
+{"type":"text","data":","}
+{"type":"text","data":" cannot"}
+{"type":"text","data":" give"}
+{"type":"text","data":" the"}
+{"type":"text","data":" three"}
+{"type":"text","data":" dimensional"}
+{"type":"text","data":" Weyl"}
+{"type":"text","data":" equation"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" limit"}
+{"type":"text","data":",”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"while"}
+{"type":"text","data":" the"}
+{"type":"text","data":" product"}
+{"type":"text","data":" of"}
+{"type":"text","data":" three"}
+{"type":"text","data":" conditional"}
+{"type":"text","data":" shifts"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"ess"}
+{"type":"text","data":"entially"}
+{"type":"text","data":" uses"}
+{"type":"text","data":" a"}
+{"type":"text","data":" body"}
+{"type":"text","data":" centred"}
+{"type":"text","data":" cubic"}
+{"type":"text","data":" neighbourhood"}
+{"type":"text","data":".”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"RELATED"}
+{"type":"text","data":".**"}
+{"type":"text","data":" I"}
+{"type":"text","data":"."}
+{"type":"text","data":" B"}
+{"type":"text","data":"iał"}
+{"type":"text","data":"yn"}
+{"type":"text","data":"icki"}
+{"type":"text","data":"-"}
+{"type":"text","data":"Bir"}
+{"type":"text","data":"ula"}
+{"type":"text","data":","}
+{"type":"text","data":" “"}
+{"type":"text","data":"W"}
+{"type":"text","data":"eyl"}
+{"type":"text","data":","}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" Maxwell"}
+{"type":"text","data":" equations"}
+{"type":"text","data":" on"}
+{"type":"text","data":" a"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":" as"}
+{"type":"text","data":" unitary"}
+{"type":"text","data":" cellular"}
+{"type":"text","data":" automata"}
+{"type":"text","data":",”"}
+{"type":"text","data":" Phys"}
+{"type":"text","data":"."}
+{"type":"text","data":" Rev"}
+{"type":"text","data":"."}
+{"type":"text","data":" D"}
+{"type":"text","data":" "}
+{"type":"text","data":"49"}
+{"type":"text","data":","}
+{"type":"text","data":" "}
+{"type":"text","data":"692"}
+{"type":"text","data":"0"}
+{"type":"text","data":" ("}
+{"type":"text","data":"199"}
+{"type":"text","data":"4"}
+{"type":"text","data":"),"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"hep"}
+{"type":"text","data":"-"}
+{"type":"text","data":"th"}
+{"type":"text","data":"/"}
+{"type":"text","data":"930"}
+{"type":"text","data":"407"}
+{"type":"text","data":"0"}
+{"type":"text","data":"."}
+{"type":"text","data":" Abstract"}
+{"type":"text","data":" only"}
+{"type":"text","data":";"}
+{"type":"text","data":" not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"Every"}
+{"type":"text","data":" local"}
+{"type":"text","data":" and"}
+{"type":"text","data":" unitary"}
+{"type":"text","data":" automaton"}
+{"type":"text","data":" on"}
+{"type":"text","data":" a"}
+{"type":"text","data":" cubic"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":","}
+{"type":"text","data":" under"}
+{"type":"text","data":" some"}
+{"type":"text","data":" natural"}
+{"type":"text","data":" assumptions"}
+{"type":"text","data":","}
+{"type":"text","data":" leads"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" limit"}
+{"type":"text","data":" to"}
+{"type":"text","data":" the"}
+{"type":"text","data":" Weyl"}
+{"type":"text","data":" equation"}
+{"type":"text","data":".”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"This"}
+{"type":"text","data":" fixes"}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" equation"}
+{"type":"text","data":" up"}
+{"type":"text","data":" to"}
+{"type":"text","data":" coordinates"}
+{"type":"text","data":","}
+{"type":"text","data":" not"}
+{"type":"text","data":" a"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":"-"}
+{"type":"text","data":"unit"}
+{"type":"text","data":" speed"}
+{"type":"text","data":" on"}
+{"type":"text","data":" a"}
+{"type":"text","data":" named"}
+{"type":"text","data":" step"}
+{"type":"text","data":" set"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"##"}
+{"type":"text","data":" "}
+{"type":"text","data":"3"}
+{"type":"text","data":"."}
+{"type":"text","data":" Group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":","}
+{"type":"text","data":" ballistic"}
+{"type":"text","data":" region"}
+{"type":"text","data":","}
+{"type":"text","data":" exact"}
+{"type":"text","data":" support"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"These"}
+{"type":"text","data":" are"}
+{"type":"text","data":" nested"}
+{"type":"text","data":","}
+{"type":"text","data":" not"}
+{"type":"text","data":" equal"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Exact"}
+{"type":"text","data":" support"}
+{"type":"text","data":":"}
+{"type":"text","data":" finite"}
+{"type":"text","data":" jump"}
+{"type":"text","data":" length"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"L"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" gives"}
+{"type":"text","data":" support"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" ball"}
+{"type":"text","data":" of"}
+{"type":"text","data":" radius"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"t"}
+{"type":"text","data":"L"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" by"}
+{"type":"text","data":" the"}
+{"type":"text","data":" wiring"}
+{"type":"text","data":" or"}
+{"type":"text","data":" by"}
+{"type":"text","data":" Pal"}
+{"type":"text","data":"ey"}
+{"type":"text","data":"–"}
+{"type":"text","data":"Wi"}
+{"type":"text","data":"ener"}
+{"type":"text","data":"."}
+{"type":"text","data":" Ced"}
+{"type":"text","data":"z"}
+{"type":"text","data":"ich"}
+{"type":"text","data":","}
+{"type":"text","data":" Joy"}
+{"type":"text","data":"e"}
+{"type":"text","data":","}
+{"type":"text","data":" Werner"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" Werner"}
+{"type":"text","data":","}
+{"type":"text","data":" Section"}
+{"type":"text","data":" "}
+{"type":"text","data":"2"}
+{"type":"text","data":","}
+{"type":"text","data":" quote"}
+{"type":"text","data":" in"}
+{"type":"text","data":" Section"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"."}
+{"type":"text","data":" Outside"}
+{"type":"text","data":" the"}
+{"type":"text","data":" convex"}
+{"type":"text","data":" hull"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" jumps"}
+{"type":"text","data":" the"}
+{"type":"text","data":" rate"}
+{"type":"text","data":" is"}
+{"type":"text","data":" infinite"}
+{"type":"text","data":" ("}
+{"type":"text","data":"Lemma"}
+{"type":"text","data":" "}
+{"type":"text","data":"4"}
+{"type":"text","data":"."}
+{"type":"text","data":"1"}
+{"type":"text","data":")."}
+{"type":"text","data":"\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Ball"}
+{"type":"text","data":"istic"}
+{"type":"text","data":" region"}
+{"type":"text","data":":"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"Q"}
+{"type":"text","data":"("}
+{"type":"text","data":"t"}
+{"type":"text","data":")/"}
+{"type":"text","data":"t"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" converges"}
+{"type":"text","data":" to"}
+{"type":"text","data":" the"}
+{"type":"text","data":" group"}
+{"type":"text","data":"-"}
+{"type":"text","data":"velocity"}
+{"type":"text","data":" law"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" propagation"}
+{"type":"text","data":" region"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"Gamma"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" closure"}
+{"type":"text","data":" of"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"{\\"}
+{"type":"text","data":"nabla"}
+{"type":"text","data":"\\omega"}
+{"type":"text","data":"_"}
+{"type":"text","data":"j"}
+{"type":"text","data":"("}
+{"type":"text","data":"p"}
+{"type":"text","data":")\\"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" Ced"}
+{"type":"text","data":"z"}
+{"type":"text","data":"ich"}
+{"type":"text","data":" et"}
+{"type":"text","data":" al"}
+{"type":"text","data":".,"}
+{"type":"text","data":" Section"}
+{"type":"text","data":" "}
+{"type":"text","data":"2"}
+{"type":"text","data":"."}
+{"type":"text","data":"2"}
+{"type":"text","data":"."}
+{"type":"text","data":" Probability"}
+{"type":"text","data":" strictly"}
+{"type":"text","data":" outside"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"Gamma"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" decays"}
+{"type":"text","data":" exponentially"}
+{"type":"text","data":";"}
+{"type":"text","data":" near"}
+{"type":"text","data":" the"}
+{"type":"text","data":" boundary"}
+{"type":"text","data":" the"}
+{"type":"text","data":" rate"}
+{"type":"text","data":" vanishes"}
+{"type":"text","data":" like"}
+{"type":"text","data":" the"}
+{"type":"text","data":" distance"}
+{"type":"text","data":" to"}
+{"type":"text","data":" the"}
+{"type":"text","data":" power"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"3"}
+{"type":"text","data":"/"}
+{"type":"text","data":"2"}
+{"type":"text","data":"\\"}
+{"type":"text","data":")."}
+{"type":"text","data":"\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Infrared"}
+{"type":"text","data":" coefficient"}
+{"type":"text","data":":"}
+{"type":"text","data":" the"}
+{"type":"text","data":" slope"}
+{"type":"text","data":" of"}
+{"type":"text","data":" a"}
+{"type":"text","data":" Weyl"}
+{"type":"text","data":" or"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" cone"}
+{"type":"text","data":" at"}
+{"type":"text","data":" small"}
+{"type":"text","data":" wave"}
+{"type":"text","data":"-"}
+{"type":"text","data":"vector"}
+{"type":"text","data":"."}
+{"type":"text","data":" It"}
+{"type":"text","data":" is"}
+{"type":"text","data":" one"}
+{"type":"text","data":" point"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" group"}
+{"type":"text","data":"-"}
+{"type":"text","data":"velocity"}
+{"type":"text","data":" map"}
+{"type":"text","data":","}
+{"type":"text","data":" not"}
+{"type":"text","data":" the"}
+{"type":"text","data":" maximum"}
+{"type":"text","data":" over"}
+{"type":"text","data":" the"}
+{"type":"text","data":" Brill"}
+{"type":"text","data":"ouin"}
+{"type":"text","data":" zone"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" not"}
+{"type":"text","data":" the"}
+{"type":"text","data":" jump"}
+{"type":"text","data":" length"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"On"}
+{"type":"text","data":" the"}
+{"type":"text","data":" three"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dimensional"}
+{"type":"text","data":" Weyl"}
+{"type":"text","data":" walk"}
+{"type":"text","data":" of"}
+{"type":"text","data":" Section"}
+{"type":"text","data":" "}
+{"type":"text","data":"5"}
+{"type":"text","data":"."}
+{"type":"text","data":"4"}
+{"type":"text","data":","}
+{"type":"text","data":" the"}
+{"type":"text","data":" group"}
+{"type":"text","data":"-"}
+{"type":"text","data":"velocity"}
+{"type":"text","data":" region"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" ball"}
+{"type":"text","data":" of"}
+{"type":"text","data":" radius"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":"-"}
+{"type":"text","data":"support"}
+{"type":"text","data":" radius"}
+{"type":"text","data":" is"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"3"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" On"}
+{"type":"text","data":" D"}
+{"type":"text","data":"’"}
+{"type":"text","data":"Ari"}
+{"type":"text","data":"ano"}
+{"type":"text","data":"–"}
+{"type":"text","data":"Per"}
+{"type":"text","data":"in"}
+{"type":"text","data":"otti"}
+{"type":"text","data":"’s"}
+{"type":"text","data":" mass"}
+{"type":"text","data":"less"}
+{"type":"text","data":" line"}
+{"type":"text","data":","}
+{"type":"text","data":" equation"}
+{"type":"text","data":" ("}
+{"type":"text","data":"53"}
+{"type":"text","data":"),"}
+{"type":"text","data":" all"}
+{"type":"text","data":" three"}
+{"type":"text","data":" numbers"}
+{"type":"text","data":" equal"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"SPECIAL"}
+{"type":"text","data":" CASE"}
+{"type":"text","data":".**"}
+{"type":"text","data":" A"}
+{"type":"text","data":"."}
+{"type":"text","data":" Pérez"}
+{"type":"text","data":","}
+{"type":"text","data":" “"}
+{"type":"text","data":"As"}
+{"type":"text","data":"ympt"}
+{"type":"text","data":"otic"}
+{"type":"text","data":" properties"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" quantum"}
+{"type":"text","data":" cellular"}
+{"type":"text","data":" automaton"}
+{"type":"text","data":",”"}
+{"type":"text","data":" Phys"}
+{"type":"text","data":"."}
+{"type":"text","data":" Rev"}
+{"type":"text","data":"."}
+{"type":"text","data":" A"}
+{"type":"text","data":" "}
+{"type":"text","data":"93"}
+{"type":"text","data":","}
+{"type":"text","data":" "}
+{"type":"text","data":"012"}
+{"type":"text","data":"328"}
+{"type":"text","data":" ("}
+{"type":"text","data":"201"}
+{"type":"text","data":"6"}
+{"type":"text","data":"),"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"150"}
+{"type":"text","data":"4"}
+{"type":"text","data":"."}
+{"type":"text","data":"074"}
+{"type":"text","data":"18"}
+{"type":"text","data":"."}
+{"type":"text","data":" Not"}
+{"type":"text","data":" read"}
+{"type":"text","data":" in"}
+{"type":"text","data":" full"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"The"}
+{"type":"text","data":" one"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dimensional"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" automaton"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" nearest"}
+{"type":"text","data":"-"}
+{"type":"text","data":"neighbour"}
+{"type":"text","data":" walk"}
+{"type":"text","data":" plus"}
+{"type":"text","data":" an"}
+{"type":"text","data":" on"}
+{"type":"text","data":"-"}
+{"type":"text","data":"site"}
+{"type":"text","data":" mass"}
+{"type":"text","data":" term"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":" is"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"\\("}
+{"type":"text","data":"v"}
+{"type":"text","data":"("}
+{"type":"text","data":"p"}
+{"type":"text","data":")=\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"1"}
+{"type":"text","data":"-\\"}
+{"type":"text","data":"beta"}
+{"type":"text","data":"^"}
+{"type":"text","data":"2"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":"sin"}
+{"type":"text","data":"("}
+{"type":"text","data":"p"}
+{"type":"text","data":")/\\"}
+{"type":"text","data":"sin"}
+{"type":"text","data":"\\lambda"}
+{"type":"text","data":"("}
+{"type":"text","data":"p"}
+{"type":"text","data":")"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":"”\n\n"}
+{"type":"text","data":"and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" position"}
+{"type":"text","data":" spread"}
+{"type":"text","data":" is"}
+{"type":"text","data":" ballistic"}
+{"type":"text","data":",\n\n"}
+{"type":"text","data":">"}
+{"type":"text","data":" “"}
+{"type":"text","data":"\\(\\"}
+{"type":"text","data":"sigma"}
+{"type":"text","data":"("}
+{"type":"text","data":"t"}
+{"type":"text","data":")="}
+{"type":"text","data":"t"}
+{"type":"text","data":"\\sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"1"}
+{"type":"text","data":"-"}
+{"type":"text","data":"|\\"}
+{"type":"text","data":"beta"}
+{"type":"text","data":"|"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" which"}
+{"type":"text","data":" accounts"}
+{"type":"text","data":" for"}
+{"type":"text","data":" the"}
+{"type":"text","data":" ballistic"}
+{"type":"text","data":" spreading"}
+{"type":"text","data":".”"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Changing"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"beta"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" changes"}
+{"type":"text","data":" this"}
+{"type":"text","data":" group"}
+{"type":"text","data":"-"}
+{"type":"text","data":"velocity"}
+{"type":"text","data":" scale"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" Dirac"}
+{"type":"text","data":" Hamiltonian"}
+{"type":"text","data":" is"}
+{"type":"text","data":" recovered"}
+{"type":"text","data":" only"}
+{"type":"text","data":" for"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"pd"}
+{"type":"text","data":"/\\"}
+{"type":"text","data":"hbar"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"ll"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" and"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"md"}
+{"type":"text","data":"c"}
+{"type":"text","data":"/\\"}
+{"type":"text","data":"hbar"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"ll"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" where"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"1"}
+{"type":"text","data":"-\\"}
+{"type":"text","data":"beta"}
+{"type":"text","data":"^"}
+{"type":"text","data":"2"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":"simeq"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"),"}
+{"type":"text","data":" so"}
+{"type":"text","data":" the"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" coefficient"}
+{"type":"text","data":" does"}
+{"type":"text","data":" not"}
+{"type":"text","data":" follow"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"1"}
+{"type":"text","data":"-"}
+{"type":"text","data":"|\\"}
+{"type":"text","data":"beta"}
+{"type":"text","data":"|"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" Same"}
+{"type":"text","data":" lattice"}
+{"type":"text","data":";"}
+{"type":"text","data":" for"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"beta"}
+{"type":"text","data":"\\neq"}
+{"type":"text","data":" "}
+{"type":"text","data":"0"}
+{"type":"text","data":"\\)"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":" step"}
+{"type":"text","data":" support"}
+{"type":"text","data":" includes"}
+{"type":"text","data":" the"}
+{"type":"text","data":" on"}
+{"type":"text","data":"-"}
+{"type":"text","data":"site"}
+{"type":"text","data":" term"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"##"}
+{"type":"text","data":" "}
+{"type":"text","data":"4"}
+{"type":"text","data":"."}
+{"type":"text","data":" Ine"}
+{"type":"text","data":"qualities"}
+{"type":"text","data":" used"}
+{"type":"text","data":" to"}
+{"type":"text","data":" bound"}
+{"type":"text","data":" the"}
+{"type":"text","data":" speeds"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Located"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" sources"}
+{"type":"text","data":" above"}
+{"type":"text","data":":\n\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Pal"}
+{"type":"text","data":"ey"}
+{"type":"text","data":"–"}
+{"type":"text","data":"Wi"}
+{"type":"text","data":"ener"}
+{"type":"text","data":","}
+{"type":"text","data":" applied"}
+{"type":"text","data":" to"}
+{"type":"text","data":" a"}
+{"type":"text","data":" trigon"}
+{"type":"text","data":"ometric"}
+{"type":"text","data":" polynomial"}
+{"type":"text","data":" of"}
+{"type":"text","data":" degree"}
+{"type":"text","data":" at"}
+{"type":"text","data":" most"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"L"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"):"}
+{"type":"text","data":" exact"}
+{"type":"text","data":" cone"}
+{"type":"text","data":" of"}
+{"type":"text","data":" radius"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"t"}
+{"type":"text","data":"L"}
+{"type":"text","data":"\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" Ced"}
+{"type":"text","data":"z"}
+{"type":"text","data":"ich"}
+{"type":"text","data":" et"}
+{"type":"text","data":" al"}
+{"type":"text","data":".,"}
+{"type":"text","data":" Section"}
+{"type":"text","data":" "}
+{"type":"text","data":"2"}
+{"type":"text","data":".\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" The"}
+{"type":"text","data":" Leg"}
+{"type":"text","data":"endre"}
+{"type":"text","data":" transform"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" logarithm"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" norm"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" symbol"}
+{"type":"text","data":" at"}
+{"type":"text","data":" complex"}
+{"type":"text","data":" momentum"}
+{"type":"text","data":"."}
+{"type":"text","data":" Outside"}
+{"type":"text","data":" the"}
+{"type":"text","data":" convex"}
+{"type":"text","data":" hull"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" jumps"}
+{"type":"text","data":" the"}
+{"type":"text","data":" rate"}
+{"type":"text","data":" is"}
+{"type":"text","data":" infinite"}
+{"type":"text","data":" ("}
+{"type":"text","data":"Lemma"}
+{"type":"text","data":" "}
+{"type":"text","data":"4"}
+{"type":"text","data":"."}
+{"type":"text","data":"1"}
+{"type":"text","data":")."}
+{"type":"text","data":" The"}
+{"type":"text","data":" support"}
+{"type":"text","data":" function"}
+{"type":"text","data":" of"}
+{"type":"text","data":" that"}
+{"type":"text","data":" jump"}
+{"type":"text","data":" set"}
+{"type":"text","data":" is"}
+{"type":"text","data":" the"}
+{"type":"text","data":" comparison"}
+{"type":"text","data":" function"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" proof"}
+{"type":"text","data":".\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Herm"}
+{"type":"text","data":"it"}
+{"type":"text","data":"icity"}
+{"type":"text","data":" together"}
+{"type":"text","data":" with"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"B"}
+{"type":"text","data":"^"}
+{"type":"text","data":"2"}
+{"type":"text","data":"="}
+{"type":"text","data":"I"}
+{"type":"text","data":"\\"}
+{"type":"text","data":"):"}
+{"type":"text","data":" the"}
+{"type":"text","data":" continuum"}
+{"type":"text","data":" coefficients"}
+{"type":"text","data":" lie"}
+{"type":"text","data":" in"}
+{"type":"text","data":" \\"}
+{"type":"text","data":"([-"}
+{"type":"text","data":"1"}
+{"type":"text","data":","}
+{"type":"text","data":"1"}
+{"type":"text","data":"]\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" Arr"}
+{"type":"text","data":"ighi"}
+{"type":"text","data":","}
+{"type":"text","data":" Fac"}
+{"type":"text","data":"chini"}
+{"type":"text","data":","}
+{"type":"text","data":" and"}
+{"type":"text","data":" Fore"}
+{"type":"text","data":"ts"}
+{"type":"text","data":","}
+{"type":"text","data":" Appendix"}
+{"type":"text","data":" B"}
+{"type":"text","data":"."}
+{"type":"text","data":" Equality"}
+{"type":"text","data":" is"}
+{"type":"text","data":" in"}
+{"type":"text","data":" the"}
+{"type":"text","data":" parametr"}
+{"type":"text","data":"ization"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"##"}
+{"type":"text","data":" Not"}
+{"type":"text","data":" found"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" A"}
+{"type":"text","data":" use"}
+{"type":"text","data":" of"}
+{"type":"text","data":" Bernstein"}
+{"type":"text","data":"’s"}
+{"type":"text","data":" inequality"}
+{"type":"text","data":","}
+{"type":"text","data":" or"}
+{"type":"text","data":" of"}
+{"type":"text","data":" Markov"}
+{"type":"text","data":"’s"}
+{"type":"text","data":" inequality"}
+{"type":"text","data":","}
+{"type":"text","data":" to"}
+{"type":"text","data":" bound"}
+{"type":"text","data":" these"}
+{"type":"text","data":" speeds"}
+{"type":"text","data":".\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Two"}
+{"type":"text","data":" explicit"}
+{"type":"text","data":" isotropic"}
+{"type":"text","data":" automata"}
+{"type":"text","data":" on"}
+{"type":"text","data":" one"}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" same"}
+{"type":"text","data":" Cay"}
+{"type":"text","data":"ley"}
+{"type":"text","data":" graph"}
+{"type":"text","data":" with"}
+{"type":"text","data":" different"}
+{"type":"text","data":" infrared"}
+{"type":"text","data":" coefficients"}
+{"type":"text","data":"."}
+{"type":"text","data":" Under"}
+{"type":"text","data":" D"}
+{"type":"text","data":"’"}
+{"type":"text","data":"Ari"}
+{"type":"text","data":"ano"}
+{"type":"text","data":" and"}
+{"type":"text","data":" Per"}
+{"type":"text","data":"in"}
+{"type":"text","data":"otti"}
+{"type":"text","data":"’s"}
+{"type":"text","data":" hypotheses"}
+{"type":"text","data":" the"}
+{"type":"text","data":" automaton"}
+{"type":"text","data":" on"}
+{"type":"text","data":" that"}
+{"type":"text","data":" graph"}
+{"type":"text","data":" is"}
+{"type":"text","data":" unique"}
+{"type":"text","data":".\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" A"}
+{"type":"text","data":" result"}
+{"type":"text","data":" in"}
+{"type":"text","data":" which"}
+{"type":"text","data":" the"}
+{"type":"text","data":" maximum"}
+{"type":"text","data":" group"}
+{"type":"text","data":" velocity"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" two"}
+{"type":"text","data":"-"}
+{"type":"text","data":" or"}
+{"type":"text","data":" three"}
+{"type":"text","data":"-"}
+{"type":"text","data":"dimensional"}
+{"type":"text","data":" isotropic"}
+{"type":"text","data":" Weyl"}
+{"type":"text","data":" walk"}
+{"type":"text","data":" equals"}
+{"type":"text","data":" the"}
+{"type":"text","data":" Euclidean"}
+{"type":"text","data":" length"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" longest"}
+{"type":"text","data":" jump"}
+{"type":"text","data":"."}
+{"type":"text","data":" The"}
+{"type":"text","data":" sources"}
+{"type":"text","data":" above"}
+{"type":"text","data":" give"}
+{"type":"text","data":" radius"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":" against"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"2"}
+{"type":"text","data":"}\\)"}
+{"type":"text","data":" or"}
+{"type":"text","data":" \\(\\"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"{"}
+{"type":"text","data":"3"}
+{"type":"text","data":"}\\"}
+{"type":"text","data":")."}
+{"type":"text","data":"\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" A"}
+{"type":"text","data":" statement"}
+{"type":"text","data":" by"}
+{"type":"text","data":" Di"}
+{"type":"text","data":" M"}
+{"type":"text","data":"olf"}
+{"type":"text","data":"etta"}
+{"type":"text","data":" and"}
+{"type":"text","data":" Arr"}
+{"type":"text","data":"ighi"}
+{"type":"text","data":" of"}
+{"type":"text","data":" the"}
+{"type":"text","data":" exact"}
+{"type":"text","data":" step"}
+{"type":"text","data":" support"}
+{"type":"text","data":" as"}
+{"type":"text","data":" a"}
+{"type":"text","data":" function"}
+{"type":"text","data":" of"}
+{"type":"text","data":" \\("}
+{"type":"text","data":"c"}
+{"type":"text","data":"\\"}
+{"type":"text","data":")."}
+{"type":"text","data":" Only"}
+{"type":"text","data":" the"}
+{"type":"text","data":" shift"}
+{"type":"text","data":" and"}
+{"type":"text","data":" the"}
+{"type":"text","data":" coin"}
+{"type":"text","data":" are"}
+{"type":"text","data":" written"}
+{"type":"text","data":" down"}
+{"type":"text","data":".\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Journal"}
+{"type":"text","data":" page"}
+{"type":"text","data":" numbers"}
+{"type":"text","data":"."}
+{"type":"text","data":" Citations"}
+{"type":"text","data":" above"}
+{"type":"text","data":" use"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":" section"}
+{"type":"text","data":" and"}
+{"type":"text","data":" equation"}
+{"type":"text","data":" numbers"}
+{"type":"text","data":"."}
+{"type":"available_commands","tools":["web_search"],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"usage","usage":{"input_tokens":152739,"output_tokens":27140,"cache_read_input_tokens":697472,"cache_creation_input_tokens":0,"reasoning_tokens":22720},"signature":"lZYXMFSKzKeahHZsrGa7pqGZykqFaD8R99XiJs6W3+rm3CAHvZ8Pb8ezqBwEIav/fROEBTrU3OrrSMQz+GaSFy128Alz4RAYsORyn35PPlwfYNU1NRp6j0WRdg8cmgz2+1I265h0FCWM5v8Og8y+YCwqWQqR1NtAQMQlu910h1VdHagEyn2mJkWd0pIy/e8lee4E9LZR17+5d+6QPvaxD2kj5viFiKzOihO4XcKYn+zCLpkaLq5Fe1Zhh2ltFpuVWEq7AYcXWO7UTk4sBRaCzWGtkqEpeaV0WB2iws2+xqQA6ywzd/OibpZQxPNjC052wzIGw4FtGYG6SJ4T8CuKJXhPL2kk3XxhG7YQ2ZgGzx2m05NbohzjqeSM8KUE9BZnLsmATo3Draf7v57cr8dIDvdpl1fRieDX0lnPRgu5O7JZXmGrQge2a2A9E3PAGuP2948ONIwq/P4JNR4bV1Qg7rO1yk8V2XgcT2AkKOkOcHwpsdMP/RfZH9LelpxPhYaNcbh5rwS8I57Gbk7hVq0Lnb5HM+IfHsvyI4e/KiwdTtZrEvm3gDhJplzSyH0cm6tyd79t1FZAlAefo4HwYLy7XCZkyvQDZsSXqp3xfaKzMVIuG/r7MeMQCQnYApvnSSNgc7TO0BJIYFiwtspDyfwsShYkUxpiR7F6VDg7D7ERbvMFH/6JxwuafwOh2zccKRjskmeD6U/R9lWhT3fw8u6p/7zeM0bEhV0mQqpK/wP0vRMuVmOt3fYF9+XPlPlQYZ/RI4+sa0xYDFFG4m1QofSsmgHTJyiculqr+Ls+tkwtb0wdsYqXy8A3AoclB0p+VWfPdw5fSWsyeCGwQ5xRQkHkIP9w3LIR1PDhIAhu0ARog2As02M4uYVA22jCejvVqLaw1ywmjGzAetY+eEHTk9IUxOeqtSfgW2m743V/e6Vv2OrBRKKCo2LhdaOA26411jWz1A84dqLTGfLjLFJXmvZtlwUuNp6/RNJVz+hWG8NcB+Seedq1K1Zlz1yz4wJTSGxSsg7rJYoutM25S4HZpxBwZcVGQh9HC/2Vo08ggX4blu2lU6tEc9v7PpGCTc0nfZYSHxqmA8dnktvUPx6MgVd2qXvEYycFmTsxpqJQtW/+cupIGKErH1BG0vEjkMyHwj4gXIgKMGHgSdGtT8rW21TpPDHTqzYpLXsEQP8f1J0bjylKQyOYtIlfdeXrlMW3NkNQlLpEL3IUA/y2X5tlxB49s72kNzlIWkgLERPBNZ5616rsE2TOWG5tk2QdNJm2qGjlQQHyebTVTB69uiGGMgWVT4lMIuy0Y4KjzxkZofPdyTBdSkLmXDCFrYGy6o31HzbirzczQ4gEWf9Ok1Ktc9Hix5nqc00zsR7C92WYluguDSh2GMG45djvsQBtR2WnmtypCwiOeyTYLN11SLzSz2irbx90dd9wZ5/I9mQS6rUbnwiAkhgBFbMpx5CB0sACT+PvaAQjvX6/PnvTnG2lyVAYwNYo2Xe8QRD40FW7Y4DM8M6NHsRgRftXcHXO6b4xqBqWuAxpIlHKJu0tKBwFocmFvOxjxDfECIptJq4xLZy6RyURmI3+29qhdWSeONZs4sPpC85WrPpZxYJfU/pA7SHmB0xtjqnG4P6JIeT1AgN3tXeiDwXOIRH7Y4eMSGQUsVJeBqVCSJVh3ykiaduizpRQB1OlEbxfyvR8lI2GxGqUf/mZ3NZmOib0Sv5B3aOJohk294J1rRYzmqAUIKhgEm14i4yi5vX+68E3pMa6bHRugtqFutvEjxNw1jGN1yf3hgDxDmIHzdb7y2N7ZG5ffapgKoNc6awCuWl5fGlY5zGIX8BIKt0aHwg49+KPfZgb/yvWI9J+hCFR7zXQ2/+JmhbK+wPW/pF1P0yILCkvYmy0gwiuCNWgEbgz4+bMDg6rw0kOrNXH5zYmFkS+WY6ti6pZXkqfddrVg6T7PW2l48GkzCCx0r1f0NKwjieOEQQp2J5RFdaxx22VvPOADeTwjZEDSmFnZQpy6x62OlDiqKyVXTO99+m9GRPUZuGXGQeO++BWzr+mwgVq+BIw4mxPgai8tJ9YdFN06tBjR4PHKpAAKM/pCkfZUkFFDeKpXq6fsZmdJqSLlSVwvNxTY7Kh/XmgDPuu5q4k85cf3Wg5EDfXnFsgZu+UioYFJl02E5f/4pBuJFZuArl9q0rfZ9U66v9d2ajsLzL6OgzGPyrlc436GNji0aeBzOxeieiLuVGNjzSX8efM4Td8SKcyh2vWom9RoE+03ra1ghVqiOtPGjfGnObAo/snUTDx23j3l9QszEgoI0lf/skcr1FZGs/O6Ar2xa+NcgdvhjABRYjZtSWqjy07SXlRME6ZiciAEJOjjRebB4IpviSP4CvytXHRk/1oDt5jsQCrLhVfzCwaYJ2VwylFfut5X0KGPLZSvOcANDNJ0LY5iNnX+uDnQpissG1F91hzxKPO+qHcu7kzJqepL91581zwpAkmPd690nEYaOAxVxMs5DJ9jVVmc+prhZYLQfDF50cUCvsEDvccj4j4BjyPwNv1ErOy2oHCOthoh+DAqpEdxPxB/HuJfGirnfSkJDtPBRolDIo3FLK8oBEZn2RW0iA3RZeOM0REOy9ykbuJPCHkN/IMRK8lgB9dYhy+uQnQPPBJULBleOP9bLHlMmb+MAbUgoZm7rKSASjJd+pS4QdnE1fjD/7EkVdkA9IA/kzv0FIpQ9DoKB43JVixhVZ0K9SthJ1vhHQOD4/OcCrobnOh/AR83/qka3r0OdxAOiSLqdyGjrUfXZAWeJs79bR311sg7Efi+TpHPgez+FFm9mC1E9l3DZ8gIv2ZRvWhVHclXOHXnMNu7hEPnKeS0EGZRkV4cdeFPKHc15Lz5kQPL2/rsoJr4OvsyUe8zRtAuU69dbqLvEGfp9hZWvdsTJ9jSU5PwwEsMc0bR0nlGTCzY2CoVmImEF4HojGbBCsV2FInExNqxsVppaPEjUM8FEhYvvJa4AJcT6J1usUjTrm+Q3LxY3XPwLKJSYre7RJE0jy+0x3NqbIYVQXt6wtoeNQJx8nFvajMsFjNhkkcghLxf/Ge4RQ5v8qNxJJcPnyY5CKWgUM6TjMS1NiDX52CkHQlpRUDDJotvw0PjktN5D9bqwPqARus3gN625SBvmHUD8Yyg4BpaAV2AsO0XnyU938bZeI+l3px+7d7ykRXjUiIMgNOPtwXskZI+gh0o6jAMDGX7vhM/ZJov0ZQSeU5HQhHuZ/2S2nGG4s8q4Yx6CDe4IyYTDMpOCTqikpFuosTsfUgK5wPIyBQE1FHaC31uZYfczPmW8Yg7RdzfKrViy6pzjHbm8JXMhE46wZdrYBB1SY2UjGtxFsgEJ3ZKpwsEumWIG7XgAHIB/sK/dxJJUBq865Y0iRC/ZXwdfxKr8Ccd+dUer+OUcXVIQe8I5ati4eThUOMceQIM4V6jrfYcNr13nG9MZrxUq28pUJ6MRziYC6dxp+am+bVwfx0j0lc8z/vMYuTKtIYE7W6cFVFhZVmZa4ajTs5Wl2kLKJulHTt83Z1AGSvIlUMHiXwOMMcBT2Yx0HxFOW4utHQ0dwj/pJjXRS4miYvEHU4NX0OUkDA1bdVLXeCEHecIqURv2dmy2JQ2GcqZH//MQJwXuzxtTR3i4pGQPvNEuu3cEg/nw3rPBwZngQnv8PhLyIIETEUpE+4wAYOHPPLkZmqC+1HamgX6VQ0Jfl/n5D2zcH9cSzWXPt7T+gPz3s0oO2vsZktquP3H2CHfaXpYaT2YDhI+3QJOm0BQnN8oUYYyE5RrWGvYHMG4+yQ6OGtPyv3iTsxH1dQYL8zXS6btEjskEOSajKHncM9SbAhNdjtiCq7rdFzOpu9Oa/XBXf9IZjOknPy+BW+nTc+D+WtG1x9foBh2CBxxDZOql5ZyRWdl1gpBUMGZXtxyNDjj20aJcNh1XSVbicuPvHCHCmbjhYrIXFJJnb7Oe4ddJXoK3/4LJFpguohO6ZCC3+HROBeNsH1pvi3gnMYI3BXuySi/POm5K6DgeLNt3wIsbWYyyJkYpC8rlWeQNrv4tOf7q6LsG93KfefbfX6fHHsx3qDRkdcl3vECChj/CvoAlfwVMtn1lX3O/fj/ivFGV8/caREdFEh5hqM09mqhb5GooNTXC2lOCBikH/RHcgGzOUO5lqsuwQzLP2/6BOUiBTHqhS2v5GgIaVh6vuQESOF6sX3hFnHHA9KUuc2dNuWyWZg7jur/0rLtFCnkwMPdhmxOgjVDLSp/OFIWYnu1XKDZNJpMpNKG8QtvqsVKEXqr+5Zpz5nn25mHgKP3MSNd5zU8DT2WsSTxcm1LSEqp2UCy0Xc7bCliQ/E8qdnhV6NOz9rXMRw1qOtWDasweH3eCkBnQ1X3hQFq/ippMyOvTVshn7xatGlTvNZUkgKfFfcCOUDdMIIeiu2ZGHa+W1yOkIO2kVLNgfL3h625KtyKRHXg1GQEAXZleOEL+hB/xgGkoQ9gkCrK+HMmeeMEOdd7jAw/o3IBx+Bd9sOzcjV4MrG79LugwgkPHXG80ndRNkaWGvN4v+gISNHUQLjytEtXseX8o5G4xrEhVEVUDPNh3ITXthwW/l9Zkkj0sJVjDPXzj/NI3MwiiAKqCalD2DoBcZRY6D9+mGXa7wz/wcoGaUEUdzlOjJCwhql6WRN4eWVCfhL0NeoCpaCtmmHCwMAEH2hlF2stjs7lIISO06PPaAOdGT1ln7Hl5iRhGvWlBgTpev/ZHaOJLifJXgfU59D0d63FPSB2cMo4fT6I7fMzBNo4Me+T3HXWBZLQPT5hjEZb85uOl2+mKJJWVSMdrx4LuZvwQlb98ayHdJdbFlLATzmHT/FurCghwHgmnyAKA/Wd75aFvLC0Em8BqcJJFCgFfuPVbt/MKTJvTLVJK82+DmCIGOlNSMtL/TBXV+R4CohJus2aGuEa9LGF7QyiNuu64bqeFy6t6VBjmntW1o3akgOd1KKcWf5p1ht4MQ5S2HCLJLyTcGJ81EXCcQNz26Atx69UGt3Yto86i1qwf6RoYjd+1mRE+eTIIo3AWa9DluG/LZX9HzKYzkJmXGx/TXDg+wboyqt1rXu0Hz4VvSjsmS3zQQH7L1v/I11wwbreV6eC+KUfRmQiAH3tkGEGNA8T5v0JRyOrSJ1wVmrJ76sx0DKJTNm7ynZ2zdK6mLe5XBjaWHKTm0UGeTQKhV7e8sBZPCHQGs7leNXKfoAgYKAQGMf1RIYkvx0GEJgOSWprqIYWMX+uu7+iUwV1zFVk1RnbQ/nX3krBKVPtjvQeh2twTz3wv3HEaFFQX50tuZwe4TDNUBx8C+jhWzWJLPMZUlABsg1w8ne1fLnqqlZU3BcSV4tmJCdupY+2a+JhWz2Tm/lB3LuDkGSyOfRVo6pAEWSw1s6lKbCDyfSshJfueDFKoLwrPuxfhqhGeiX4GEAB0rA3ei7FdHxRMENg6Rwmj5tTlCkW/D7Jyb1aJrIvIfc8phxaKaLrTLTBEH8DkQL5E26ha+NbuuEzNQGPa5i2Kjw7HBO+tDr5SRwqhLL8/DpbcUNhV63yoXuD98VuK9YrP9f+9sMkcOBUT/mfK+1+8+Ypo00iP7o7k544JWPmWBLQ7qT4anb8b79B3l9us2jf+J+H5Q625+zd7itX9UVsUwDkjEbKNquUufhTHpYc/hCxS2/lBaCdzIpeSAPO3K2EqonBmEEvfsdUWVs/pLUefEyLwKsHRNFYV1Is3jSK2zfE0zO5jnDZf0DsFcRFRyklwPk6IuRiZSkUOmmdqHj8IFs3/2dPCXuoVbgjZDIJ+978chf8kQ1w8erudb+zFqbLSas0QqhdLZXAhEaZ20npzyw/v4oRHpKXmC8UjExOeaLrdrAlmo6A0Uk0MOzPUoISw3HsCX0b66EAn2KZe6rWbKsvQ8fVcg0w46VWkPJaJxV5q8SZujsw4yg"}
+{"type":"end","stopReason":"end_turn","sessionId":"01a1e8da-1087-78a1-bbd8-ac5dd62fbc42","requestId":"4ae50578-8d9c-46b7-befc-ce8ff5e92e38","usage":{"input_tokens":152739,"cache_read_input_tokens":697472,"cache_creation_input_tokens":0,"output_tokens":27140,"reasoning_tokens":22720,"total_tokens":877351},"num_turns":1,"total_cost_usd":0.73559672,"total_cost_usd_ticks":7355967200,"modelUsage":{"grok-4.7-build":{"inputTokens":152739,"outputTokens":27140,"cacheReadInputTokens":697472,"cacheCreationInputTokens":0,"modelCalls":1,"costUSD":0.73559672}}}
