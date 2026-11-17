@@ -3973,3 +3973,11 @@ and finite-mu second-window admission needed. DRAFT, not frozen or executed.
 fixed geometry from 215adec. Analytic/formal attempt authorized, with
 explicit distinction between conditional Lean helpers and physical bridge.
 No review or promotion authorized.
+
+**Delayed bridge Lean attempt — 2026-11-17:** preregistration 92e5fc8;
+report `reports/2026-11-17--thirring-delayed-bridge-lean-attempt.md`.
+OPEN_MISSING_BOUND: a conditional transfer lemma compiles in Lean, but the
+physical (3,-2) scattering comparison and delayed-window tail estimates
+remain unproved. No bridge PASS, no two-collision composition, no promotion.
+Permanent Lean source, successful axioms output and failed build retained
+in `formal/ThirringWindow/`; not the unrelated `formal/alice-layers/`.

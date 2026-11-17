@@ -1,0 +1,8 @@
+ThirringWindow/Transfer.lean:14:53: error: Function expected at
+  norm_sub_le ?m.71 ?m.72
+but this term has type
+  ‖?m.71 - ?m.72‖ ≤ ‖?m.71‖ + ‖?m.72‖
+
+Note: Expected a function because this term is being applied to the argument
+  _
+'ThirringWindow.transfer_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
