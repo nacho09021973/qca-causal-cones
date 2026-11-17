@@ -1395,7 +1395,7 @@ with equality only where separately certified (see the d=3 row below).
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
 | B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
 | B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN** |
-| Novelty of the s=4 family and its strict-support statement | **NOT PURSUED AS A NOVELTY CANDIDATE** (user decision 2026-11-02): no identification found (eleven sources 2026-09-15; Arrighi–Facchini compared 2026-11-02), but the compression mechanism and product structure are in AF (arXiv:1609.00305), and published walks (ADMP L6a, JDW L6c/d/f) already have `c_0 < c_strict^iso` (Sec. 11). Residual claim class-relative only. Mathematical result and review unchanged |
+| Novelty of the s=4 family and its strict-support statement | **CANDIDATE WITH RESTRICTED CLAIM, NOVELTY OPEN** (user decision 2026-11-17, superseding «not pursued», 2026-11-02). Restricted claim: an s=4 walk isotropic in the sense of 1708.00826 (Definition 1 + condition (2)), on exactly the eight BCC displacements with no on-site term, irreducible, with continuously variable `c_0 = a/sqrt3`: the s=2 isotropic rigidity does not extend to s=4. AF (arXiv:1609.00305) remains a mandatory structural antecedent (compression mechanism, product structure). The 2026-11-02 objection from ADMP L6a / JDW L6c/d/f does not bear on the restricted claim: by 1708.00826 Fig. 1 the only d=2 graph with isotropic s=2 walks is the simple square. Prior-art search incomplete (forward citations of 1708.00826, 1306.1934, AF not done; AF regrouping search not done; no human expert). The general phenomenon `c_0 < c_strict^iso` is not claimed. Mathematical results and reviews unchanged |
 
 The restricted statements are established for the declared cases below.
 There is no general rigidity theorem, proof of A, or novelty claim.
@@ -1403,8 +1403,8 @@ There is no general rigidity theorem, proof of A, or novelty claim.
 ### 4.1 Declared s=4 counterexample class
 
 **Status: COUNTEREXAMPLE_VERIFIED for this class; independent review PASS;
-NOVELTY: not pursued as a candidate (user decision 2026-11-02, see the
-Sec. 4 table).**
+NOVELTY: candidate with restricted claim, OPEN (user decision 2026-11-17,
+superseding «not pursued», 2026-11-02; see the Sec. 4 table).**
 
 | Item | Declaration |
 | --- | --- |
@@ -4071,3 +4071,16 @@ already verified slope c_0 = a/sqrt3 and c_strict^iso = 1/sqrt3 (Sec. 4.1),
 within this isotropy notion the s=2 rigidity of 1708.00826 does not
 extend to s=4 for this family. NOVELTY = OPEN; candidacy status is a
 separate user decision (Sec. 4 table, 2026-11-02 entry).
+
+**Novelty candidacy of the s=4 family revised — 2026-11-17:** user
+«cambiala», after the reassessment of the 2026-11-02 decision. The family
+is now a **candidate with restricted claim, NOVELTY OPEN** (Sec. 4 table):
+s=4, isotropic in the sense of 1708.00826, exactly the BCC displacements,
+no on-site term, irreducible, continuous c_0 — the s=2 isotropic rigidity
+does not extend to s=4. Of the 2026-11-02 reasons, the Arrighi-Facchini
+structural antecedent stands and must be cited; the ADMP/JDW objection
+does not bear on the restricted claim (those walks lie outside the
+isotropic s=2 class, 1708.00826 Fig. 1). Before any write-up: forward-
+citation search of 1708.00826, 1306.1934 and AF, the AF regrouping check,
+and a human expert. No write-up, external transmission or publication is
+authorized by this entry. The 2026-11-02 entry is kept as history.
