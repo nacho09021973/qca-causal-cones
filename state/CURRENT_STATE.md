@@ -1395,7 +1395,7 @@ with equality only where separately certified (see the d=3 row below).
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
 | B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
 | B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN** |
-| Novelty of the s=4 family and its strict-support statement | **CANDIDATE WITH RESTRICTED CLAIM, NOVELTY OPEN** (user decision 2026-11-17, superseding «not pursued», 2026-11-02). Restricted claim: an s=4 walk isotropic in the sense of 1708.00826 (Definition 1 + condition (2)), on exactly the eight BCC displacements with no on-site term, irreducible, with continuously variable `c_0 = a/sqrt3`: the s=2 isotropic rigidity does not extend to s=4. AF (arXiv:1609.00305) remains a mandatory structural antecedent (compression mechanism, product structure). The 2026-11-02 objection from ADMP L6a / JDW L6c/d/f does not bear on the restricted claim: by 1708.00826 Fig. 1 the only d=2 graph with isotropic s=2 walks is the simple square. Prior-art search incomplete (forward citations of 1708.00826, 1306.1934, AF not done; AF regrouping search not done; no human expert). The general phenomenon `c_0 < c_strict^iso` is not claimed. Mathematical results and reviews unchanged |
+| Novelty of the s=4 family and its strict-support statement | **CANDIDACY CLOSED** (user decision 2026-11-17, «cierra la candidatura s=4»; supersedes the restricted-claim candidacy of the same day and «not pursued», 2026-11-02). Reason: the family is exactly a homogeneous AF (3+1) walk in AF's architecture under the explicit-map gate (`AF_EQUIVALENT_VIA_ANSATZ`, reading R1-R3, unreviewed), the mechanism is AF's, and the general phenomenon (substrate does not fix c_0) is published (1906.04483, 2601.15885); the remaining claim (DEP-isotropic, s=4, continuous c_0) was judged too narrow to pursue. Not pursued further: independent review of the explicit map, write-up. Mathematical results, reviews and promotions unchanged |
 
 The restricted statements are established for the declared cases below.
 There is no general rigidity theorem, proof of A, or novelty claim.
@@ -1403,8 +1403,8 @@ There is no general rigidity theorem, proof of A, or novelty claim.
 ### 4.1 Declared s=4 counterexample class
 
 **Status: COUNTEREXAMPLE_VERIFIED for this class; independent review PASS;
-NOVELTY: candidate with restricted claim, OPEN (user decision 2026-11-17,
-superseding «not pursued», 2026-11-02; see the Sec. 4 table).**
+NOVELTY: candidacy closed (user decision 2026-11-17; see the Sec. 4
+table).**
 
 | Item | Declaration |
 | --- | --- |
@@ -4134,3 +4134,16 @@ carrying W fails it, so the family lies in AF's architecture, not in AF's
 continuum-limit class. The frozen abandonment criterion is met as written;
 the candidacy status in Sec. 4 is left unchanged pending an explicit user
 decision. NOVELTY = OPEN pending that decision.
+
+**s=4 novelty candidacy closed — 2026-11-17:** user «cierra la candidatura
+s=4 y haz push», after the explicit-map execution
+(`AF_EQUIVALENT_VIA_ANSATZ`, unreviewed) and the assessment that the
+remaining restricted claim has little value as a novelty. The candidacy
+is closed (Sec. 4 table); no review of the explicit map, no write-up.
+Results kept with their recorded status: S4 counterexample
+(COUNTEREXAMPLE_VERIFIED), DEP isotropy (promoted in frozen scope),
+regrouping gate (OPEN_AFTER_REGROUPING_ATTEMPT), explicit map
+(AF_EQUIVALENT_VIA_ANSATZ, PRELIMINARY). The prior-art search record stays
+in `investigaciones/2026-11-17-c0-causal-body-prior-art/`. No contract
+open; nothing further authorized. Remaining standing novelty candidate in
+the repo: the IR-corona theorem (2026-11-02 entry), untouched here.
