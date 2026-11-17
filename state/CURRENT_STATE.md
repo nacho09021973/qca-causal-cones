@@ -4095,3 +4095,17 @@ global phase, orthogonal relabeling, cell regrouping, time-step
 regrouping, constant isometric encoding)? Equivalence would drop the
 restricted novelty candidacy. Execution, review and promotion need
 separate authorization. NOVELTY = OPEN.
+
+**S4 vs Arrighi-Facchini regrouping gate executed — 2026-11-17:** user
+«push y autorizo ejecucion». Preregistration `098cb33`.
+[Report](../reports/2026-11-17--s4-af-regrouping.md). Author verdict
+**`OPEN_AFTER_REGROUPING_ATTEMPT`** (PRELIMINARY, unreviewed; reading and
+short algebra only, no verifier). Step 0: the homogeneous AF class is a
+usual QW on the grouped lattice with C^{4s} and ±2 shifts per axis,
+composed by operator splitting with re-encoding; three readings left open
+by the paper. Step 1: strict-body shape (cube), band count (32 per cell
+for s=2) and node structure modulo global phase and time regrouping
+(W^4 = -I) do not separate the two; commutant not computed. Neither an
+equivalence nor a separating invariant obtained within budget. Candidacy
+status unchanged: AF structural antecedent, specialization question OPEN.
+A successor needs a new contract. NOVELTY = OPEN.
