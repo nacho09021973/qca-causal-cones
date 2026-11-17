@@ -34,14 +34,27 @@ Checks (exact SymPy, a symbolic in (0,1), b = sqrt(1-a^2)):
       in AF's phi coordinates: H C H† = I_4 ⊕ U holds for C = I (U = I) and
       fails for C = W ⊗ I_2 (unprimed block equals W ≠ I).
 Fails closed on any failed check or exception.
+
+Run 1 (2026-11-17, db25f3d) hit the 580 s timeout with no output (symbolic
+eigenvects with square roots; buffered prints); retained in
+reports/2026-11-17--s4-af-explicit-map-run1.txt. Eigenvectors are now
+closed-form half-angle vectors on a rational parametrization; no
+expectation changed.
 """
 import sys
 
 import sympy as sp
 from sympy.physics.quantum import TensorProduct as TP
 
-a = sp.symbols("a", positive=True)
-b = sp.sqrt(1 - a**2)
+# Rational parametrization: c = cos(phi/2), s = sin(phi/2) with cos(phi) = a,
+# c = (1-t^2)/(1+t^2), s = 2t/(1+t^2), t in (0,1); a = c^2 - s^2, b = 2cs.
+# All identities below are polynomial in t, hence hold for every t in (0,1),
+# which contains every a in (0,1) (and b = 2cs > 0).
+tt = sp.symbols("t", positive=True)
+c_ = (1 - tt**2) / (1 + tt**2)
+s_ = 2 * tt / (1 + tt**2)
+a = sp.simplify(c_**2 - s_**2)
+b = sp.simplify(2 * c_ * s_)
 p = sp.symbols("p", real=True)
 k = sp.symbols("k_x k_y k_z", real=True)
 I2, I4, I8 = sp.eye(2), sp.eye(4), sp.eye(8)
@@ -60,7 +73,7 @@ checks = []
 
 def ok(name, cond):
     checks.append((name, bool(cond)))
-    print(("PASS " if cond else "FAIL ") + name)
+    print(("PASS " if cond else "FAIL ") + name, flush=True)
 
 
 def z(M):
@@ -105,17 +118,18 @@ try:
     ok("M1 Pi permutation and Pi = X (block swap)", z(Pi * Pi.T - I8) and z(Pi - X))
 
     for i in "xyz":
-        # exact orthonormal eigenbasis of Gamma_i = sigma_i ⊗ T_i
-        evs = []
-        for sval, svec in [(e[0], e[2]) for e in SIG[i].eigenvects()]:
-            for tval, tvec in [(e[0], e[2]) for e in T[i].eigenvects()]:
-                for s1 in svec:
-                    for t1 in tvec:
-                        v = TP(s1 / sp.sqrt((s1.H * s1)[0]), t1)
-                        nrm = sp.sqrt(sp.simplify((v.H * v)[0]))
-                        evs.append((sp.simplify(sval * tval), v / nrm))
-        plus = [v for val, v in evs if sp.simplify(val - 1) == 0]
-        minus = [v for val, v in evs if sp.simplify(val + 1) == 0]
+        # closed-form eigenvectors (half-angle), checked below
+        sq = 1 / sp.sqrt(2)
+        sv = {"x": (sp.Matrix([sq, sq]), sp.Matrix([sq, -sq])),
+              "y": (sp.Matrix([sq, sp.I * sq]), sp.Matrix([sq, -sp.I * sq])),
+              "z": (sp.Matrix([1, 0]), sp.Matrix([0, 1]))}[i]
+        tv = {"x": (sp.Matrix([c_, s_]), sp.Matrix([-s_, c_])),
+              "y": (sp.Matrix([c_, sp.I * s_]), sp.Matrix([sp.I * s_, c_])),
+              "z": (sp.Matrix([c_, -s_]), sp.Matrix([s_, c_]))}[i]
+        ok(f"M2 sigma_{i} eigenvectors", z(SIG[i] * sv[0] - sv[0]) and z(SIG[i] * sv[1] + sv[1]))
+        ok(f"M2 T_{i} eigenvectors", z(T[i] * tv[0] - tv[0]) and z(T[i] * tv[1] + tv[1]))
+        plus = [TP(sv[0], tv[0]), TP(sv[1], tv[1])]
+        minus = [TP(sv[0], tv[1]), TP(sv[1], tv[0])]
         ok(f"M2 Gamma_{i}: two +1 and two -1 eigenvectors", len(plus) == 2 and len(minus) == 2)
         Vi = sp.Matrix.hstack(*(minus + plus))  # columns: -1, -1, +1, +1
         ok(f"M2 eigenbasis of Gamma_{i} unitary", z(Vi.H * Vi - I4))
