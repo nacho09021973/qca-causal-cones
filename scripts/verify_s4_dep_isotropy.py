@@ -19,6 +19,12 @@ W unitary, eight coefficients sum to a unitary symbol at k = 0.
 
 Exit status: 1 on an exception or a failed sanity check. Otherwise 0, with
 the contract verdict printed (a C-task failing is an outcome, not a crash).
+
+Run 1 (2026-11-17, fdae12c) stopped with NotImplementedError in sp.solve
+after C1-C3 PASS; output retained in
+reports/2026-11-17--s4-dep-isotropy-run1.txt. Zero sets are now computed
+on M_h (A_h = W M_h, W unitary and commuting with every U_l, both checked)
+by an exact rational parametrization of the arc; no expectation changed.
 """
 import itertools
 import sys
@@ -27,6 +33,7 @@ import sympy as sp
 from sympy.physics.quantum import TensorProduct as TP
 
 a, b = sp.symbols("a b", positive=True)
+tt = sp.symbols("t", positive=True)
 REL = a**2 + b**2 - 1
 I2 = sp.eye(2)
 sx = sp.Matrix([[0, 1], [1, 0]])
@@ -41,7 +48,8 @@ P = {(i, s): (I4 + s * G[i]) / 2 for i in "xyz" for s in (1, -1)}
 W = TP(I2, sp.diag(sp.exp(-sp.I * sp.pi / 4), sp.exp(sp.I * sp.pi / 4)))
 
 H = list(itertools.product((1, -1), repeat=3))
-A = {h: W * P[("x", h[0])] * P[("y", h[1])] * P[("z", h[2])] for h in H}
+M = {h: P[("x", h[0])] * P[("y", h[1])] * P[("z", h[2])] for h in H}
+A = {h: W * M[h] for h in H}
 SPLUS = [h for h in H if h[0] * h[1] * h[2] == 1]
 SMINUS = [h for h in H if h[0] * h[1] * h[2] == -1]
 
@@ -65,25 +73,35 @@ def mzero(M):
 
 
 def zeros_in_domain(entries):
-    """Real (a,b) with 0<a<1, b>0, a^2+b^2=1, where all entries vanish."""
-    eqs = [REL]
+    """Exact zero set on 0<a<1, b>0 of a list of entries in Q(i)[a,b].
+
+    Rational parametrization a = (1-t^2)/(1+t^2), b = 2t/(1+t^2), t in (0,1)
+    (a bijection onto the arc). Real and imaginary parts of each numerator
+    are polynomials in t over QQ; their gcd carries the common zeros, located
+    exactly by real_roots (Sturm) and mapped back to a.
+    Returns "ALL", or a sorted list of exact a-values (possibly empty).
+    """
+    polys = []
     for x in entries:
-        x = sp.expand_complex(red(x))
-        for part in (sp.re(x), sp.im(x)):
+        x = sp.together(sp.expand(x).subs({a: (1 - tt**2) / (1 + tt**2),
+                                           b: 2 * tt / (1 + tt**2)}))
+        num = sp.expand(sp.numer(x))
+        for part in (sp.re(num), sp.im(num)):
             part = sp.expand(part)
             if part != 0:
-                eqs.append(part)
-    if len(eqs) == 1:
+                polys.append(sp.Poly(part, tt, domain="QQ"))
+    if not polys:
         return "ALL"
-    sols = sp.solve(eqs, [a, b], dict=True)
+    g = polys[0]
+    for q in polys[1:]:
+        g = sp.gcd(g, q)
+    if g.degree() <= 0:
+        return []
     out = []
-    for s in sols:
-        av, bv = s.get(a), s.get(b)
-        if av is None or bv is None:
-            return "UNDECIDED"
-        if av.is_real and bv.is_real and (0 < av) == True and (av < 1) == True and (bv > 0) == True:
-            out.append(sp.nsimplify(av))
-    return sorted(set(out), key=lambda v: float(v))
+    for r in sp.Poly(g, tt).real_roots():
+        if (r > 0) == True and (r < 1) == True:
+            out.append(sp.simplify((1 - r**2) / (1 + r**2)))
+    return out
 
 
 sanity = []
@@ -100,12 +118,14 @@ try:
         sanity_check(f"Gamma_{i} Hermitian", mzero(G[i] - G[i].H))
         sanity_check(f"Gamma_{i}^2 = I", mzero(G[i] * G[i] - I4))
     sanity_check("W unitary", mzero(W * W.H - I4))
+    for l in "xyz":
+        sanity_check(f"U_{l} W = W U_{l}", mzero(U[l] * W - W * U[l]))
     sanity_check("sum_h A_h = W (k=0 symbol)", mzero(sum((A[h] for h in H), sp.zeros(4)) - W))
 
     # C1
     c1_zero_sets = {}
     for h in H:
-        c1_zero_sets[h] = zeros_in_domain(list(A[h]))
+        c1_zero_sets[h] = zeros_in_domain(list(M[h]))  # A_h = W M_h, W unitary
     c1 = all(z == [] for z in c1_zero_sets.values())
     results["C1"] = c1
     print(("PASS " if c1 else "FAIL ") + "C1 A_h != 0 on (0,1) for all eight h;",
@@ -128,7 +148,7 @@ try:
     c4_zero_sets = {}
     for l in "xyz":
         for h in H:
-            comm = U[l] * A[h] - A[h] * U[l]
+            comm = U[l] * M[h] - M[h] * U[l]  # [U_l, A_h] = W [U_l, M_h]
             c4_zero_sets[(l, h)] = zeros_in_domain(list(comm))
     bad_all = [k for k, z in c4_zero_sets.items() if z == "ALL"]
     undecided = [k for k, z in c4_zero_sets.items() if z == "UNDECIDED"]

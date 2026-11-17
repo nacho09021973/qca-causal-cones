@@ -1,0 +1,12 @@
+PASS [sanity] Gamma_x Hermitian
+PASS [sanity] Gamma_x^2 = I
+PASS [sanity] Gamma_y Hermitian
+PASS [sanity] Gamma_y^2 = I
+PASS [sanity] Gamma_z Hermitian
+PASS [sanity] Gamma_z^2 = I
+PASS [sanity] W unitary
+PASS [sanity] sum_h A_h = W (k=0 symbol)
+PASS C1 A_h != 0 on (0,1) for all eight h; no zeros
+PASS C2 U_l A_h U_l^dagger = A_{l(h)} (24 identities)
+PASS C3 transitive on S_+ and S_-, no fixed generator
+FAIL exception: NotImplementedError('could not solve Piecewise((-sqrt(2)*a*sqrt(a**2 - 1)*sin(atan2(0, 1 - a**2)/2)/4 + sqrt(2)*sqrt(a**2 - 1)*sin(atan2(0, 1 - a**2)/2)/8 - sqrt(2)*sqrt(a**2 - 1)*cos(atan2(0, 1 - a**2)/2)/8, a**2 >= 1), (-sqrt(2)*a*sqrt(1 - a**2)*sin(atan2(0, 1 - a**2)/2)/4 + sqrt(2)*sqrt(1 - a**2)*sin(atan2(0, 1 - a**2)/2)/8 - sqrt(2)*sqrt(1 - a**2)*cos(atan2(0, 1 - a**2)/2)/8, True))')
