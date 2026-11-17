@@ -1,0 +1,2230 @@
+OpenAI Codex v0.169.0
+--------
+workdir: /tmp/tmp.AwqhvOcKb9/sello
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1e8ff-7a3a-7790-8d82-3bd75d1b4dfa
+--------
+user
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente el informe adjunto 2026-11-17--s4-dep-isotropy.md,
+escrito por Claude (Anthropic). Se adjuntan: el contrato congelado
+S4_DEP_ISOTROPY_GATE.md; la definición de la familia
+S4_STRICT_CONE_COUNTEREXAMPLE.md; el verificador verify_s4_dep_isotropy.py;
+la salida de la ejecución 1 (fallida) y de la ejecución 2; y la fuente
+primaria D'Ariano-Erba-Perinotti, arXiv:1708.00826v2, en texto extraído.
+No tienes herramientas: no ejecutes, edites ni navegues. Que el script
+imprima PASS no prueba lo que el script no calcula: comprueba que calcula
+lo que dice.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / OPEN:
+
+1. FIDELIDAD A LA FUENTE. ¿Traducen el contrato y el informe con fidelidad
+   la Definición 1 de 1708.00826 (grupo L de automorfismos del grafo de
+   Cayley que actúa como permutaciones de S_+, transitivo en cada S_+^n,
+   representación unitaria proyectiva, covarianza A_lambda(h) =
+   U_l A_h U_l^dagger) y la condición de homogeneidad (2)? ¿Falta alguna
+   condición de la fuente que haga falta para llamar «isótropo» al walk en
+   su sentido (p. ej. A_h ≠ 0 en S_+ ∪ S_-, el tratamiento de S_-, la
+   elección de S_+ en el BCC, fidelidad de la representación)?
+2. FAMILIA. ¿Reconstruye el verificador exactamente la familia de
+   S4_STRICT_CONE_COUNTEREXAMPLE.md en theta = pi/4 (T_i, Gamma_i, P_i^±,
+   W_theta, coeficientes A_h, convención de signos h_s, orden del producto
+   tensorial)? ¿Es correcta la identificación de las medias vueltas l y de
+   la acción h -> l(h) usada en C2?
+3. MÉTODO EXACTO DE C1 Y C4. ¿Es legítimo sustituir A_h por M_h
+   (A_h = W M_h, W unitaria y conmutando con U_l)? ¿Es correcta la
+   parametrización racional del arco (biyección de t en (0,1) sobre
+   0<a<1, b>0)? ¿Es correcto que los ceros comunes de las entradas son las
+   raíces reales en (0,1) del mcd de las partes real e imaginaria de los
+   numeradores, sin perder ceros por denominadores ni por la separación
+   real/imaginaria? ¿Hay algún paso que dependa de simplify o de una
+   comparación no rigurosa?
+4. C2, C3, C5. ¿Son correctas y suficientes las comprobaciones de
+   covarianza (24 identidades), transitividad y representación
+   proyectiva?
+5. EJECUCIONES. ¿Es el cambio entre la ejecución 1 y la 2 un cambio de
+   método sin cambio de expectativas, como dice el informe? ¿Hay algo en
+   las salidas que contradiga el veredicto?
+6. ALCANCE. ¿Separa el informe lo calculado de lo afirmado? ¿Es correcta
+   la frase «la rigidez s=2 no persiste a s=4 dentro de esa noción de
+   isotropía», dado que c_0 = a/sqrt3 se toma de un resultado anterior no
+   adjuntado como prueba? ¿Evita afirmar novedad, isotropía cúbica,
+   otros theta o grupos?
+
+Para cada REPAIR_REQUIRED, da la reparación mínima concreta. Termina con
+un dictamen global.
+
+=== DOCUMENT 1: 2026-11-17--s4-dep-isotropy.md ===
+
+# S4 family: isotropy in the sense of D'Ariano-Erba-Perinotti — execution
+
+2026-11-17. Author: Claude Code (Claude Opus 5.5). Contract
+`theory/S4_DEP_ISOTROPY_GATE.md`, preregistration commit `9188755`.
+User «autorizo ejecutar». Branch `research/thirring-isolated-spectator`.
+Status: author verdict **`DEP_ISOTROPIC_IN_DECLARED_L`**, PRELIMINARY,
+no independent review, no promotion. NOVELTY = OPEN.
+
+## Execution record
+
+- Verifier `scripts/verify_s4_dep_isotropy.py` committed before running
+  (`fdae12c`). Run 1 stopped with `NotImplementedError` in `sp.solve`
+  after C1-C3 PASS (tooling; no verdict). Output retained:
+  `reports/2026-11-17--s4-dep-isotropy-run1.txt`.
+- Method fix committed before run 2 (`36fb8fd`): zero sets computed on
+  M_h = P_x^{s_x} P_y^{s_y} P_z^{s_z}, since A_h = W M_h with W unitary and
+  commuting with every U_l (both checked as sanity), so A_h = 0 iff M_h = 0
+  and [U_l, A_h] = W [U_l, M_h]; the arc a^2+b^2=1, 0<a<1, b>0 is
+  parametrized by a = (1-t^2)/(1+t^2), b = 2t/(1+t^2), t in (0,1); common
+  zeros = real roots in (0,1) of the gcd of the real and imaginary parts of
+  the numerators (exact, SymPy real_roots). No expectation changed.
+- Run 2: all sanity checks PASS; output
+  `reports/2026-11-17--s4-dep-isotropy-run2.txt`. SymPy 1.14.0.
+
+## Results (run 2)
+
+| Task | Result |
+| --- | --- |
+| C1 A_h ≠ 0, eight h, all a in (0,1) | PASS, no zeros |
+| C2 U_l A_h U_l† = A_{l(h)}, 24 identities | PASS |
+| C3 L transitive on S_+ and S_-, no fixed generator | PASS |
+| C4 [U_l, A_h] ≠ 0, 24 pairs | no pair identically zero; no a in (0,1) where any commutator vanishes |
+| C5 U projective representation of L | PASS |
+
+Verdict: `DEP_ISOTROPIC_IN_DECLARED_L`. At theta = pi/4 and every
+0 < a < 1, the s=4 family on the eight BCC displacements, with no on-site
+coefficient, satisfies Definition 1 of arXiv:1708.00826v2 (isotropy with
+respect to S_+ = parity +1 generators, L = Klein group of coordinate
+half-turns, U_l = sigma_l ⊗ I) together with their homogeneity condition
+(2). Its isotropic Weyl slope is c_0 = a/sqrt3 (promoted earlier,
+`CURRENT_STATE.md` Sec. 4.1), so within that isotropy notion the s=2
+rigidity (unique Weyl walks, c = causal speed / sqrt3) does not persist at
+s=4.
+
+## Second reading of C4
+
+By C2, U_l M_h U_l† = M_{l(h)}, so [U_l, M_h] = 0 iff M_{l(h)} = M_h.
+Condition (2) is therefore equivalent here to: transition matrices of
+distinct generators in one L-orbit are distinct — the reading given by
+1708.00826 itself ("two transition matrices associated to different
+generators must be distinct"). This is a structural restatement, not an
+independent computation; an independent check (another CAS, a person or a
+cross-family reviewer) has not been made.
+
+## Scope and what is not claimed
+
+- Only theta = pi/4, this L, this U and this generating set; the family
+  definition of `theory/S4_STRICT_CONE_COUNTEREXAMPLE.md` (`1dae941`).
+- Definition 1 and condition (2) only; other assumptions of 1306.1934
+  (e.g. its quasi-isometric embedding discussion) are not examined.
+  Full cubic isotropy, Lorentz covariance and massive sectors: not claimed.
+- Prior art: open and targeted searches and the original checks are in
+  `investigaciones/2026-11-17-c0-causal-body-prior-art/comprobacion.md`;
+  the statement was not found there, which does not establish absence.
+  NOVELTY = OPEN.
+- Line criterion of the contract: not triggered (C4 holds for every a).
+
+=== DOCUMENT 2: S4_DEP_ISOTROPY_GATE.md ===
+
+# S4 family: isotropy in the sense of D'Ariano-Erba-Perinotti
+
+2026-11-17. Author: Claude Code (Claude Opus 5.5). Initial status
+**OPEN / NOT EXECUTED**. User «si a ambas preguntas» (2026-11-17)
+authorized drafting; user «autorizao congelar» (2026-11-17) authorizes
+freezing by this commit. Execution needs a separate user authorization. One contract; no review,
+promotion or publication follows from it.
+
+## Known, question, abandonment
+
+Known (read in this session, with source):
+- Family: `theory/S4_STRICT_CONE_COUNTEREXAMPLE.md` (last change `1dae941`,
+  SHA256 prefix `bc15165e1acb4268`), Secs. 2-5. On C^2_sigma ⊗ C^2_tau,
+  0<a<1, b = sqrt(1-a^2): T_x = b tau_x + a tau_z, T_y = b tau_y + a tau_z,
+  T_z = -b tau_x + a tau_z; Gamma_i = sigma_i ⊗ T_i; P_i^± = (I ± Gamma_i)/2;
+  W_theta = I ⊗ exp(-i theta tau_z). Fourier coefficients
+  A_{h_s} = W_theta P_x^{s_x} P_y^{s_y} P_z^{s_z} on the eight BCC
+  displacements h_s = (s_x,s_y,s_z)/sqrt3, no on-site coefficient. The
+  counterexample point is theta = pi/4, with c_0 = a/sqrt3 and
+  C_infty^strict = C_micro (reviewed; `CURRENT_STATE.md` Sec. 4.1).
+- Sec. 4 of that file: R_l = sigma_l ⊗ I commute with W_theta and give
+  R_l A(k) R_l^dagger = A(l k) for the binary rotations l of the BCC
+  tetrahedral generators. The independent review
+  (`reports/2026-09-15--s4-independent-review.md`, lines 23-28) states that
+  the coordinate half-turns act transitively on the four parity +1 sign
+  triples, and that full cubic symmetry is not assumed.
+- D'Ariano, Erba, Perinotti, arXiv:1708.00826v2 (read 2026-11-17, logged
+  in `investigaciones/2026-11-17-c0-causal-body-prior-art/comprobacion.md`):
+  Definition 1 (isotropic QW): a group L of Cayley-graph automorphisms
+  acting as permutations lambda of S_+, transitive on each S_+^n, with a
+  projective unitary representation U on C^s such that
+  A_lambda(h) = U_l A_h U_l^dagger for all l in L, h in S_+; plus
+  homogeneity condition (2): [U_l, A_h] ≠ 0 for all h in S_+ and l in L
+  with l(h) ≠ h. They also assume A_h ≠ 0 for all h in S_+ ∪ S_-.
+  Their classification (s = 2) gives, for d = 3, only the two Weyl walks.
+- D'Ariano, arXiv:1701.06309v1, Sec. 3.8: the s ≥ 3 isotropic problem is
+  unsolved; only block-form s = 4 solutions are given.
+
+Question: does the frozen s=4 family at theta = pi/4 satisfy Definition 1
+of 1708.00826 with S_+ the four parity +1 BCC generators, L the Klein
+group of coordinate half-turns and U_l = sigma_l ⊗ I, including condition
+(2), and for which a in (0,1)?
+
+Abandonment of the line (the possible note "s=2 rigidity does not extend
+to s=4"): if condition (2) or covariance fails for every a in (0,1) at
+theta = pi/4 with this L and U, the family is not isotropic in this sense
+and the note has no candidate; stop, record the failure, do not search for
+another family under this contract. If it fails only on a finite set of a,
+the candidate survives on the complement, stated with the exceptions.
+
+## Fixed objects (no change after freezing)
+
+- Family, conventions and theta = pi/4 as above; a symbolic in (0,1).
+- S_+ = {h_s : s_x s_y s_z = +1}, S_- = -S_+ (generating set of the BCC
+  Cayley graph of Z^3 as in 1306.1934 / 1708.00826).
+- L = {id, l_x, l_y, l_z}, l_x(s_x,s_y,s_z) = (s_x,-s_y,-s_z), cyclically.
+  U_l = I, sigma_x ⊗ I, sigma_y ⊗ I, sigma_z ⊗ I.
+- No alternative L, U, generating set or basis change is admitted under
+  this contract. A failure with this choice is reported as such; it is not
+  a proof that no other isotropy group works.
+
+## Tasks (exact SymPy; one permanent verifier, committed before running)
+
+- C1. A_h ≠ 0 for all eight h, for every a in (0,1).
+- C2. Covariance: U_l A_h U_l^dagger = A_{l(h)} for all l in L and all
+  eight h (exact matrix identity, symbolic a).
+- C3. Transitivity: L acts transitively on S_+ and on S_-; no nontrivial
+  l fixes any h.
+- C4. Condition (2): [U_l, A_h] ≠ 0 for the 3 x 8 pairs with l ≠ id.
+  For each pair compute the commutator exactly; report the set of a in
+  (0,1) where it vanishes (expected to be decided by exact polynomial
+  factorization in a and b with b^2 = 1 - a^2).
+- C5. U is a projective representation of L (U_l U_m = phase x U_{lm}).
+Verifier: `scripts/verify_s4_dep_isotropy.py`, standalone, rebuilding the
+family from the definitions above; no reviewed verifier is modified
+(`cert_Aa_s4_counterexample.py` and `review_Aa_s4_exact.py` read-only).
+Add its two exact command forms to `.claude/settings.json`.
+
+## Verdicts
+
+- `DEP_ISOTROPIC_IN_DECLARED_L`: C1-C5 hold for every a in (0,1).
+- `DEP_ISOTROPIC_EXCEPT_FINITE_SET`: C1-C3, C5 hold for all a; C4 fails
+  exactly on a stated finite set of a.
+- `NOT_DEP_ISOTROPIC_IN_DECLARED_L`: C2 or C3 fails, or C4 fails for every
+  a in (0,1).
+Author results PRELIMINARY until an independent review.
+
+## Not claimed under any verdict
+
+Novelty of the family or of the statement; that no published s=4
+isotropic walk with variable speed exists (prior-art search is separate
+and incomplete); full cubic isotropy; Lorentz covariance; anything about
+massive sectors, other theta, other groups L or other generating sets;
+that D'Ariano-Erba-Perinotti's other assumptions (e.g. the quasi-isometric
+embedding discussion of 1306.1934) are met beyond Definition 1 and
+condition (2). NOVELTY = OPEN.
+
+=== DOCUMENT 3: S4_STRICT_CONE_COUNTEREXAMPLE.md ===
+
+# S4 strict-cone counterexample family
+
+**Branch-local status:** analytic freeze for independent review.  
+**Canonical state:** unchanged; `state/CURRENT_STATE.md` remains authoritative until a later explicit promotion commit.
+
+## 1. Claim under test
+
+The strong form of the working hypothesis was
+
+\[
+B_\infty^*:\qquad c_0=c_{\rm strict}^{\rm iso},
+\]
+
+with the strict asymptotic body defined from exact Fourier support under iteration.
+
+This note gives an explicit `s=4` family on the same BCC neighborhood and the same non-trivial Pauli projective `D_2` symmetry class for which
+
+\[
+C_\infty^{\rm strict}=C_{\rm micro},\qquad
+c_{\rm strict}^{\rm iso}=\frac1{\sqrt3},
+\]
+
+but
+
+\[
+c_0(a)=\frac{a}{\sqrt3},\qquad 0<a<1.
+\]
+
+Thus the strict causal body alone does not fix the Weyl slope once the internal multiplicity is enlarged from `s=2` to `s=4`.
+
+This does **not** refute the classified `s=2` Pavia result.
+
+## 2. Definition of the family
+
+Let `sigma_i` act on the Pauli factor and `tau_i` on a two-dimensional multiplicity factor,
+
+\[
+\mathbb C^4=\mathbb C^2_\sigma\otimes\mathbb C^2_\tau.
+\]
+
+For
+
+\[
+0<a<1,\qquad b=\sqrt{1-a^2},
+\]
+
+define
+
+\[
+T_x=b\tau_x+a\tau_z,\qquad
+T_y=b\tau_y+a\tau_z,\qquad
+T_z=-b\tau_x+a\tau_z,
+\]
+
+and
+
+\[
+\Gamma_x=\sigma_x\otimes T_x,\qquad
+\Gamma_y=\sigma_y\otimes T_y,\qquad
+\Gamma_z=\sigma_z\otimes T_z.
+\]
+
+Each `T_i` is Hermitian and satisfies `T_i^2=I`, hence each `Gamma_i` is Hermitian and involutory.
+
+The original one-parameter counterexample uses
+
+\[
+W=I\otimes e^{-i\pi\tau_z/4}
+\]
+
+and
+
+\[
+A_a(\mathbf k)
+=W e^{-iq_x\Gamma_x}e^{-iq_y\Gamma_y}e^{-iq_z\Gamma_z},
+\qquad q_i=k_i/\sqrt3.
+\]
+
+A useful two-parameter deformation is
+
+\[
+A_{a,\theta}(\mathbf k)
+=W_\theta e^{-iq_x\Gamma_x}e^{-iq_y\Gamma_y}e^{-iq_z\Gamma_z},
+\qquad
+W_\theta=I\otimes e^{-i\theta\tau_z}.
+\]
+
+The counterexample itself requires only `theta=pi/4`.
+
+## 3. Exact unitarity and BCC Fourier support
+
+Because `Gamma_i^2=I`,
+
+\[
+e^{-iq_i\Gamma_i}=e^{-iq_i}P_i^+ + e^{iq_i}P_i^-,
+\qquad
+P_i^\pm=\frac{I\pm\Gamma_i}{2}.
+\]
+
+Therefore, with
+
+\[
+h_s=\frac{(s_x,s_y,s_z)}{\sqrt3},\qquad s_i\in\{\pm1\},
+\]
+
+and the repository Fourier convention `exp(-i k.h)`, the only Fourier coefficients are
+
+\[
+A_{h_s}^{(a,\theta)}
+=W_\theta P_x^{s_x}P_y^{s_y}P_z^{s_z}.
+\]
+
+There are exactly eight BCC modes and no on-site coefficient `A_e`.
+
+Unitarity is exact for every `k`, since the four factors in `A_{a,theta}(k)` are unitary.
+
+## 4. Exact D2 covariance
+
+Use
+
+\[
+R_x=\sigma_x\otimes I,\qquad
+R_y=\sigma_y\otimes I,\qquad
+R_z=\sigma_z\otimes I.
+\]
+
+These realize the same non-trivial Pauli projective class used by the minimal Weyl walk. They commute with `W_theta`. Conjugation by `R_x` fixes `Gamma_x` and flips `Gamma_y,Gamma_z`; cyclically for `R_y,R_z`. Hence
+
+\[
+R_l A_{a,\theta}(\mathbf k)R_l^\dagger
+=A_{a,\theta}(l\mathbf k)
+\]
+
+for the binary rotations of the BCC tetrahedral generators.
+
+## 5. Vertex survival and the strict asymptotic body
+
+For a BCC vertex coefficient,
+
+\[
+\operatorname{tr}A_{h_s}^{(a,\theta)}
+=
+\frac12\left[
+\cos\theta
++s_xs_ys_z\,a\left(\sin\theta-2(1-a^2)\cos\theta\right)
+\right].
+\]
+
+At the counterexample point `theta=pi/4`, this becomes
+
+\[
+\operatorname{tr}A_{h_s}^{(a)}
+=
+\frac{\sqrt2}{4}
+\left[1+s_xs_ys_z\,a(2a^2-1)\right].
+\]
+
+For `0<a<1`,
+
+\[
+|a(2a^2-1)|<1,
+\]
+
+so every trace is nonzero. Therefore no vertex coefficient is nilpotent.
+
+Let `S_n` be the exact Fourier support of `A_a^n`. Since each `h_s` is an extreme vertex of
+
+\[
+C_{\rm micro}=\operatorname{conv}\{h_s\}
+=[-1/\sqrt3,1/\sqrt3]^3,
+\]
+
+the displacement `n h_s` can arise from only the word `h_s+...+h_s`. Its coefficient is therefore exactly
+
+\[
+(A_{h_s}^{(a)})^n\neq0.
+\]
+
+Hence every vertex of `C_micro` lies in `S_n/n` for every `n`, while every `n`-step average lies in `C_micro`. Thus
+
+\[
+\boxed{\operatorname{conv}(S_n/n)=C_{\rm micro}\quad\forall n\ge1}
+\]
+
+and consequently
+
+\[
+\boxed{C_\infty^{\rm strict}=C_{\rm micro}},\qquad
+\boxed{c_{\rm strict}^{\rm iso}=1/\sqrt3}.
+\]
+
+For fixed `a`, the same vertex-survival conclusion persists on an open interval of `theta` around `pi/4` by continuity of the nonzero trace condition. No global all-`theta` strict-cone claim is made here.
+
+## 6. Irreducibility
+
+Suppose `X` commutes with all eight Fourier coefficients. Summing the coefficients gives
+
+\[
+W_\theta=\sum_s A_{h_s}^{(a,\theta)},
+\]
+
+and sign-weighted sums give
+
+\[
+W_\theta\Gamma_i=\sum_s s_i A_{h_s}^{(a,\theta)}.
+\]
+
+Therefore `X` commutes with `W_theta` and all three `Gamma_i`.
+
+For `sin(theta) != 0`, the two eigenvalues of `W_theta` on the `tau_z` factor are distinct, so `[X,W_theta]=0` makes `X` block diagonal in the `tau_z` decomposition. Because `a!=0` and `b!=0`, commuting with `Gamma_x` forces the two blocks to coincide and to commute with `sigma_x`. Commuting with `Gamma_y` then forces that common block also to commute with `sigma_y`. The only such `2x2` matrix is scalar. Hence
+
+\[
+\boxed{\{X:[X,A_{h_s}]=0\ \forall s\}=\mathbb C I_4}.
+\]
+
+The family is not a direct sum of two decoupled `s=2` Weyl walks.
+
+## 7. Weyl sectors and tunable velocity
+
+At `k=0`,
+
+\[
+A_{a,\theta}(0)=W_\theta
+\]
+
+has two rank-two eigenspaces with eigenvalues `exp(-i theta)` and `exp(+i theta)`. For `0<theta<pi/2` they are spectrally separated by quasienergy
+
+\[
+\Delta\varepsilon=2\theta.
+\]
+
+On the `tau_z=+1` doublet,
+
+\[
+P_+\Gamma_iP_+=a\,\sigma_iP_+,
+\]
+
+so the first-order effective Hamiltonian is
+
+\[
+H_{\rm eff,+}
+=\theta I_2
++\frac{a}{\sqrt3}\,\mathbf k\cdot\boldsymbol\sigma
++O(|\mathbf k|^2).
+\]
+
+The other doublet has the opposite linear orientation and the same speed magnitude. Therefore
+
+\[
+\boxed{c_0(a)=a/\sqrt3}.
+\]
+
+At `theta=pi/4`, for every `0<a<1`,
+
+\[
+0<c_0(a)<c_{\rm strict}^{\rm iso}=1/\sqrt3.
+\]
+
+This is the explicit counterexample to the strong `B_infty*` claim in the declared `s=4` class.
+
+## 8. Two-parameter deformation and projector quantum metric
+
+Let `P_+(k)` denote the rank-two spectral projector continuing the `exp(-i theta)` doublet near `k=0`, and define
+
+\[
+g_{ij}(0)=\frac12\operatorname{Tr}[(\partial_iP_+)(\partial_jP_+)].
+\]
+
+For a normal unitary,
+
+\[
+Q(\partial_iP_+)P_+
+=
+\frac{Q(\partial_iA)P_+}
+{e^{-i\theta}-e^{+i\theta}},
+\qquad Q=I-P_+.
+\]
+
+At `k=0`,
+
+\[
+\partial_{k_i}A=-\frac{i}{\sqrt3}W_\theta\Gamma_i,
+\]
+
+and the off-doublet part of `T_i` has magnitude `b=sqrt(1-a^2)`. Since `Tr(sigma_i^2)=2`,
+
+\[
+\boxed{g_{ij}(0)=\frac{1-a^2}{6\sin^2\theta}\,\delta_{ij}}.
+\]
+
+Thus
+
+\[
+\boxed{
+ c_0^2+2\sin^2(\Delta\varepsilon/2)\,g_{ii}(0)
+ =\frac13
+ =(c_{\rm strict}^{\rm iso})^2
+}
+\]
+
+(no sum on `i`). At `theta=pi/4`, the prefactor is one and this reduces to `c0^2+g_ii=1/3`.
+
+This weighted identity is **established for this family only**. It is not promoted here to a general QCA theorem. The more primitive structural fact is the intra/inter-sector decomposition `a^2+b^2=1` of the microscopic involutions `Gamma_i`.
+
+## 9. Scope and interpretation limits
+
+1. The `s=2` Pavia classification and its fixed `c0=1/sqrt(3)` remain intact.
+2. `A_{a,theta}(0)=W_theta` is not a global phase. The Weyl doublets live at nonzero Floquet quasienergy.
+3. `C_infty^strict` is an exact-support body. Vertex amplitudes may decay exponentially with iteration even though they remain nonzero. No claim is made here about an essential/ballistic/Lieb-Robinson front defined by amplitude decay.
+4. The weighted quantum-metric rule is a family identity, not yet a substrate principle.
+5. No novelty claim is made by this note. Prior-art comparison is a separate gate.
+
+=== DOCUMENT 4: verify_s4_dep_isotropy.py ===
+
+#!/usr/bin/env python3
+"""S4 family: isotropy in the sense of D'Ariano-Erba-Perinotti (1708.00826).
+
+Contract: theory/S4_DEP_ISOTROPY_GATE.md, frozen at 9188755.
+Family rebuilt from theory/S4_STRICT_CONE_COUNTEREXAMPLE.md Secs. 2-4
+(theta = pi/4, a symbolic in (0,1), b = sqrt(1-a^2) as a positive symbol
+with a^2 + b^2 = 1 imposed). Standalone: no reviewed verifier is imported
+or modified.
+
+Tasks C1-C5 of the contract, all exact:
+  C1  A_h != 0 for the eight BCC displacements, for every a in (0,1);
+  C2  U_l A_h U_l^dagger = A_{l(h)} for l in the Klein group L;
+  C3  L transitive on S_+ and on S_-; no nontrivial l fixes any h;
+  C4  [U_l, A_h] != 0 for the 3 x 8 pairs; set of a in (0,1) where any
+      commutator vanishes;
+  C5  U_l U_m = phase * U_{lm} (projective representation).
+Sanity checks (fail closed): Gamma_i Hermitian involutions, P projectors,
+W unitary, eight coefficients sum to a unitary symbol at k = 0.
+
+Exit status: 1 on an exception or a failed sanity check. Otherwise 0, with
+the contract verdict printed (a C-task failing is an outcome, not a crash).
+
+Run 1 (2026-11-17, fdae12c) stopped with NotImplementedError in sp.solve
+after C1-C3 PASS; output retained in
+reports/2026-11-17--s4-dep-isotropy-run1.txt. Zero sets are now computed
+on M_h (A_h = W M_h, W unitary and commuting with every U_l, both checked)
+by an exact rational parametrization of the arc; no expectation changed.
+"""
+import itertools
+import sys
+
+import sympy as sp
+from sympy.physics.quantum import TensorProduct as TP
+
+a, b = sp.symbols("a b", positive=True)
+tt = sp.symbols("t", positive=True)
+REL = a**2 + b**2 - 1
+I2 = sp.eye(2)
+sx = sp.Matrix([[0, 1], [1, 0]])
+sy = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+sz = sp.Matrix([[1, 0], [0, -1]])
+I4 = sp.eye(4)
+
+T = {"x": b * sx + a * sz, "y": b * sy + a * sz, "z": -b * sx + a * sz}
+SIG = {"x": sx, "y": sy, "z": sz}
+G = {i: TP(SIG[i], T[i]) for i in "xyz"}
+P = {(i, s): (I4 + s * G[i]) / 2 for i in "xyz" for s in (1, -1)}
+W = TP(I2, sp.diag(sp.exp(-sp.I * sp.pi / 4), sp.exp(sp.I * sp.pi / 4)))
+
+H = list(itertools.product((1, -1), repeat=3))
+M = {h: P[("x", h[0])] * P[("y", h[1])] * P[("z", h[2])] for h in H}
+A = {h: W * M[h] for h in H}
+SPLUS = [h for h in H if h[0] * h[1] * h[2] == 1]
+SMINUS = [h for h in H if h[0] * h[1] * h[2] == -1]
+
+LMAP = {"id": lambda h: h,
+        "x": lambda h: (h[0], -h[1], -h[2]),
+        "y": lambda h: (-h[0], h[1], -h[2]),
+        "z": lambda h: (-h[0], -h[1], h[2])}
+U = {"id": I4, "x": TP(sx, I2), "y": TP(sy, I2), "z": TP(sz, I2)}
+
+
+def red(e):
+    """Reduce modulo b^2 = 1 - a^2 and simplify."""
+    e = sp.expand(e)
+    e = sp.expand(e.subs(b**2, 1 - a**2))
+    e = sp.expand(e.subs(b**3, b * (1 - a**2)).subs(b**4, (1 - a**2) ** 2))
+    return sp.simplify(e)
+
+
+def mzero(M):
+    return all(red(x) == 0 for x in M)
+
+
+def zeros_in_domain(entries):
+    """Exact zero set on 0<a<1, b>0 of a list of entries in Q(i)[a,b].
+
+    Rational parametrization a = (1-t^2)/(1+t^2), b = 2t/(1+t^2), t in (0,1)
+    (a bijection onto the arc). Real and imaginary parts of each numerator
+    are polynomials in t over QQ; their gcd carries the common zeros, located
+    exactly by real_roots (Sturm) and mapped back to a.
+    Returns "ALL", or a sorted list of exact a-values (possibly empty).
+    """
+    polys = []
+    for x in entries:
+        x = sp.together(sp.expand(x).subs({a: (1 - tt**2) / (1 + tt**2),
+                                           b: 2 * tt / (1 + tt**2)}))
+        num = sp.expand(sp.numer(x))
+        for part in (sp.re(num), sp.im(num)):
+            part = sp.expand(part)
+            if part != 0:
+                polys.append(sp.Poly(part, tt, domain="QQ"))
+    if not polys:
+        return "ALL"
+    g = polys[0]
+    for q in polys[1:]:
+        g = sp.gcd(g, q)
+    if g.degree() <= 0:
+        return []
+    out = []
+    for r in sp.Poly(g, tt).real_roots():
+        if (r > 0) == True and (r < 1) == True:
+            out.append(sp.simplify((1 - r**2) / (1 + r**2)))
+    return out
+
+
+sanity = []
+results = {}
+
+
+def sanity_check(name, ok):
+    sanity.append((name, bool(ok)))
+    print(("PASS " if ok else "FAIL ") + "[sanity] " + name)
+
+
+try:
+    for i in "xyz":
+        sanity_check(f"Gamma_{i} Hermitian", mzero(G[i] - G[i].H))
+        sanity_check(f"Gamma_{i}^2 = I", mzero(G[i] * G[i] - I4))
+    sanity_check("W unitary", mzero(W * W.H - I4))
+    for l in "xyz":
+        sanity_check(f"U_{l} W = W U_{l}", mzero(U[l] * W - W * U[l]))
+    sanity_check("sum_h A_h = W (k=0 symbol)", mzero(sum((A[h] for h in H), sp.zeros(4)) - W))
+
+    # C1
+    c1_zero_sets = {}
+    for h in H:
+        c1_zero_sets[h] = zeros_in_domain(list(M[h]))  # A_h = W M_h, W unitary
+    c1 = all(z == [] for z in c1_zero_sets.values())
+    results["C1"] = c1
+    print(("PASS " if c1 else "FAIL ") + "C1 A_h != 0 on (0,1) for all eight h;",
+          {h: z for h, z in c1_zero_sets.items() if z != []} or "no zeros")
+
+    # C2
+    c2 = all(mzero(U[l] * A[h] * U[l].H - A[LMAP[l](h)]) for l in "xyz" for h in H)
+    results["C2"] = c2
+    print(("PASS " if c2 else "FAIL ") + "C2 U_l A_h U_l^dagger = A_{l(h)} (24 identities)")
+
+    # C3
+    orbit_plus = {LMAP[l](SPLUS[0]) for l in LMAP}
+    orbit_minus = {LMAP[l](SMINUS[0]) for l in LMAP}
+    c3 = (orbit_plus == set(SPLUS) and orbit_minus == set(SMINUS)
+          and all(LMAP[l](h) != h for l in "xyz" for h in H))
+    results["C3"] = c3
+    print(("PASS " if c3 else "FAIL ") + "C3 transitive on S_+ and S_-, no fixed generator")
+
+    # C4
+    c4_zero_sets = {}
+    for l in "xyz":
+        for h in H:
+            comm = U[l] * M[h] - M[h] * U[l]  # [U_l, A_h] = W [U_l, M_h]
+            c4_zero_sets[(l, h)] = zeros_in_domain(list(comm))
+    bad_all = [k for k, z in c4_zero_sets.items() if z == "ALL"]
+    undecided = [k for k, z in c4_zero_sets.items() if z == "UNDECIDED"]
+    exceptional = sorted({v for z in c4_zero_sets.values() if isinstance(z, list) for v in z},
+                         key=lambda v: float(v))
+    results["C4_all_a_fail_pairs"] = bad_all
+    results["C4_undecided"] = undecided
+    results["C4_exceptional_a"] = exceptional
+    print("C4 pairs with commutator identically zero:", bad_all or "none")
+    print("C4 pairs undecided:", undecided or "none")
+    print("C4 values of a in (0,1) where some commutator vanishes:", exceptional or "none")
+    for k, z in c4_zero_sets.items():
+        if isinstance(z, list) and z:
+            print("   ", k, "->", z)
+
+    # C5
+    prod_table = {("x", "y"): "z", ("y", "z"): "x", ("z", "x"): "y",
+                  ("y", "x"): "z", ("z", "y"): "x", ("x", "z"): "y"}
+    c5 = True
+    for (l, m), n in prod_table.items():
+        M = U[l] * U[m]
+        ratio = None
+        for i in range(4):
+            for j in range(4):
+                if U[n][i, j] != 0:
+                    ratio = sp.simplify(M[i, j] / U[n][i, j])
+                    break
+            if ratio is not None:
+                break
+        c5 = c5 and ratio is not None and sp.Abs(ratio) == 1 and mzero(M - ratio * U[n])
+    c5 = c5 and all(mzero(U[l] * U[l] - I4) for l in "xyz")
+    results["C5"] = c5
+    print(("PASS " if c5 else "FAIL ") + "C5 projective representation of the Klein group")
+except Exception as exc:  # fail closed
+    print("FAIL exception:", repr(exc))
+    sys.exit(1)
+
+if not all(ok for _, ok in sanity):
+    print("FAIL sanity; no verdict")
+    sys.exit(1)
+if undecided:
+    print("VERDICT: none (C4 undecided by exact solver)")
+    sys.exit(1)
+
+base = results["C1"] and results["C2"] and results["C3"] and results["C5"]
+if not (results["C2"] and results["C3"]) or bad_all:
+    verdict = "NOT_DEP_ISOTROPIC_IN_DECLARED_L"
+elif base and not exceptional:
+    verdict = "DEP_ISOTROPIC_IN_DECLARED_L"
+elif base and exceptional:
+    verdict = "DEP_ISOTROPIC_EXCEPT_FINITE_SET"
+else:
+    verdict = "NONE_OF_THE_DECLARED (C1 or C5 failed; see output)"
+print("VERDICT:", verdict)
+sys.exit(0)
+
+=== DOCUMENT 5: 2026-11-17--s4-dep-isotropy-run1.txt ===
+
+PASS [sanity] Gamma_x Hermitian
+PASS [sanity] Gamma_x^2 = I
+PASS [sanity] Gamma_y Hermitian
+PASS [sanity] Gamma_y^2 = I
+PASS [sanity] Gamma_z Hermitian
+PASS [sanity] Gamma_z^2 = I
+PASS [sanity] W unitary
+PASS [sanity] sum_h A_h = W (k=0 symbol)
+PASS C1 A_h != 0 on (0,1) for all eight h; no zeros
+PASS C2 U_l A_h U_l^dagger = A_{l(h)} (24 identities)
+PASS C3 transitive on S_+ and S_-, no fixed generator
+FAIL exception: NotImplementedError('could not solve Piecewise((-sqrt(2)*a*sqrt(a**2 - 1)*sin(atan2(0, 1 - a**2)/2)/4 + sqrt(2)*sqrt(a**2 - 1)*sin(atan2(0, 1 - a**2)/2)/8 - sqrt(2)*sqrt(a**2 - 1)*cos(atan2(0, 1 - a**2)/2)/8, a**2 >= 1), (-sqrt(2)*a*sqrt(1 - a**2)*sin(atan2(0, 1 - a**2)/2)/4 + sqrt(2)*sqrt(1 - a**2)*sin(atan2(0, 1 - a**2)/2)/8 - sqrt(2)*sqrt(1 - a**2)*cos(atan2(0, 1 - a**2)/2)/8, True))')
+
+=== DOCUMENT 6: 2026-11-17--s4-dep-isotropy-run2.txt ===
+
+PASS [sanity] Gamma_x Hermitian
+PASS [sanity] Gamma_x^2 = I
+PASS [sanity] Gamma_y Hermitian
+PASS [sanity] Gamma_y^2 = I
+PASS [sanity] Gamma_z Hermitian
+PASS [sanity] Gamma_z^2 = I
+PASS [sanity] W unitary
+PASS [sanity] U_x W = W U_x
+PASS [sanity] U_y W = W U_y
+PASS [sanity] U_z W = W U_z
+PASS [sanity] sum_h A_h = W (k=0 symbol)
+PASS C1 A_h != 0 on (0,1) for all eight h; no zeros
+PASS C2 U_l A_h U_l^dagger = A_{l(h)} (24 identities)
+PASS C3 transitive on S_+ and S_-, no fixed generator
+C4 pairs with commutator identically zero: none
+C4 pairs undecided: none
+C4 values of a in (0,1) where some commutator vanishes: none
+PASS C5 projective representation of the Klein group
+VERDICT: DEP_ISOTROPIC_IN_DECLARED_L
+
+=== DOCUMENT 7: 1708.00826v2.pdf (plain text extracted from the PDF; formulas may be garbled, the PDF is authoritative) ===
+
+                                                                   Isotropic quantum walks on lattices and the Weyl equation
+
+                                                                           Giacomo Mauro D’Ariano,∗ Marco Erba,† and Paolo Perinotti‡
+                                                                          Università degli Studi di Pavia, Dipartimento di Fisica, QUIT Group,
+                                                                         and INFN Gruppo IV, Sezione di Pavia, via Bassi 6, 27100 Pavia, Italy
+
+                                                             We present a thorough classification of the isotropic quantum walks on lattices of dimension
+                                                          d = 1, 2, 3 with a coin system of dimension s = 2. For d = 3 there exist two isotropic walks, namely
+                                                          the Weyl quantum walks presented in Ref. [1], resulting in the derivation of the Weyl equation from
+                                                          informational principles. The present analysis, via a crucial use of isotropy, is significantly shorter
+                                                          and avoids a superfluous technical assumption, making the result completely general.
+
+                                                          PACS numbers: 03.67.-a, 03.67.Ac, 03.65.Ta
+                                                          Keywords: Quantum walks, Cayley Graphs, Weyl Equation, Isotropy
+arXiv:1708.00826v2 [quant-ph] 30 Nov 2017
+
+
+
+
+                                                              I.    INTRODUCTION                               sphere of nearest neighbours. On the other hand, most of
+                                                                                                               the derivation did not use the isotropy principle. In the
+                                               Recently the possibility of implementing actual quan-           present paper, on the contrary, we exploit the isotropy
+                                            tum simulations of quantum fields [2–5] has been ac-               principle from the very beginning of the derivation, thus
+                                            companied by novel approaches to foundations of the                avoiding the above assumption and making the classifi-
+                                            theory [6–9], including its derivation from informational          cation of the isotropic QWs on Zd completely general.
+                                            principles [1, 10] and the recovery of its Lorentz covari-         In the present paper the derivation of the Weyl QWs is
+                                            ance [11]. This has provided a progress in the research            included in a complete classification of isotropic QWs on
+                                            based on the idea originally proposed by Feynman [12]              lattices of dimension d = 1, 2, 3 with a coin system of
+                                            of recovering physics as pure quantum information pro-             dimension s = 2. The result exploits the isotropy no-
+                                            cessing. Deriving quantum field theory from just denu-             tion of Ref. [1], which is extended in this paper in order
+                                            merable quantum systems provides an emergent notion                to account for groups with generators of different orders.
+                                            of space-time, with no prior background. This suggests             We will introduce a technique to construct the Cayley
+                                            that the approach may be promising for a future devel-             graphs of a given group G supporting an isotropic QW.
+                                            opment of quantum theories of gravity.                             Remarkably, the Cayley graph is unique for each dimen-
+                                               The mathematical formalisation of the discrete quan-            sion d = 1, 2, 3.
+                                            tum algorithm running a quantum field dynamics is pro-                The manuscript is organized as follows. In Sec. II we
+                                            vided by the notion of quantum cellular automaton [13–             review the notion of Cayley graph of a group G, and
+                                            15]. A quantum cellular automaton is a unitary homoge-             define QWs on Cayley graphs, introducing the definition
+                                            neous evolution of the algebra of local observables that           of isotropy and its main properties. In Sec. III we review
+                                            preserves locality. When the automaton is linear in the            the theory of QWs on free Abelian groups. In Sec. IV we
+                                            local algebra generators, the cellular automaton is usu-           select the possible Cayley graphs according to a necessary
+                                            ally referred to as a quantum walk (QW) [16–18], and               condition for a QW to be isotropic. In Sec. V we prove
+                                            is suited for the description of the free field theory for a       a second necessary condition for isotropy that is used in
+                                            fixed number of particles.                                         the appendix to refine the selection of Cayley graphs, and
+                                               A quantum walk on a graph represents a coherent                 we solve the unitarity condition on the selected Cayley
+                                            counterpart of a classical random walk on the same                 graphs for d = 1, 2, 3, finding the two Weyl QWs. Sec. VI
+                                            graph. In the derivation of Ref. [1] it was proved that,           closes the paper with some concluding remarks, whereas
+                                            if one assumes homogeneity of the evolution, the graph             in Appendix A we report technical proofs and details.
+                                            must be the Cayley graph of a group G. When the graph
+                                            corresponds to a free Abelian group G ∼ = Zd , one finds the
+                                                                                                                  II.   ISOTROPIC QWS ON CAYLEY GRAPHS
+                                            two Weyl QWs (one for the left- and one for the right-
+                                            handed mode), recovering the Weyl equation in d + 1
+                                            dimensions for d = 1, 2, 3. An alternative derivation of              We now define the QW on a Cayley graph Γ(G, S+ )
+                                            the Weyl QWs for d = 3 on the BCC lattice has been re-             of a group G, with generating set S+ . A generating set
+                                            cently presented in Ref. [19]. In Ref. [1] the derivation of       S+ ⊆ G is a set of elements of G such that all the elements
+                                            the Weyl QWs exploited the technical assumption that               of the group can be expressed as words of elements of S+
+                                            there is a quasi-isometry [20] of the Cayley graph in a Eu-        along with their inverses. The Cayley graph is a coloured
+                                            clidean manifold such that no vertex can lie within the            directed graph with the elements of G as vertices and
+                                                                                                               the elements of S+ as edges: a colour is associated to
+                                                                                                               each generator h ∈ S+ , and two vertices g, g 0 ∈ G are
+                                            ∗ dariano@unipv.it                                                 connected by the coloured edge h ∈ S+ if g 0 = gh, with
+                                            † marco.erba01@ateneopv.it
+                                                                                                               the arrow directed from g to g 0 . In the following we will
+                                            ‡ paolo.perinotti@unipv.it
+                                                                                                               take |S+ | < ∞, namely the group G is finitely generated.
+                                                                                                                                      2
+
+The Cayley graph of a group can be defined by giving                The previous definition guarantees that the group of
+a presentation, namely choosing a set of generators (an          local changes of basis representing the isotropy group L—
+alphabet) and a set of relators, i.e a set of words which        which is a group of automorphisms of the graph—acts
+are equal to the identity of G. This completely specifies        just as a permutation of the transition matrices, implying
+a unique group G. The cardinality of the group G can be          that all the directions are dynamically equivalent.
+finite or infinite, depending on its relators, however the          To satisfy homogeneity, one has to demand also the
+most interesting case in the present context is that of a        following condition [23]:
+finitely presented infinite group.
+   Let {|gi}g∈G be an orthonormal basis for `2 (G). The                  [Ul , Ah ] 6= 0 ∀h ∈ S+ , ∀l ∈ L : l(h) 6= h.               (2)
+right-regular representation T of G is defined as
+                                                                 Indeed, two transition matrices associated to different
+                     Tg |g 0 i := |g 0 g −1 i.            (1)    generators must be distinct. In particular, this implies
+                                                                 that if L does not contain nontrivial elements stabilizing
+A QW on the Cayley graph Γ(G, S+ ) of the group G is a
+                                                                 all the h ∈ S, then the representation U must be faithful
+unitary operator A on `2 (G) ⊗ Cs , with 1 ≤ s < ∞, that
+                                                                 (otherwise it would contain at least one nontrivial ele-
+can be written as
+                        X                                        ment represented as Is ).
+                   A=       Th ⊗ Ah ,
+                           h∈S
+                                                                 Proposition 1. The automorphisms of the Cayley graph
+                                                                 Γ(G, S+ ) are also automorphisms of G.
+                               −1
+where S = S+ ∪ S− , S− = S+        is the set of inverses of
+S+ , and {Ah }h∈S ⊆ Ms (C) are the so-called transition          Proof. Consider the action of arbitrary elements l ∈ L on
+matrices of the QW.                                              the graph vertices. We have
+   It is worth mentioning that also other constructions of
+QWs have been given in the literature, for example QWs                    λ(h) = l(h) = l(eh) = eλ(h),              ∀h ∈ S+ ,
+such that the coin system is generated by the set of edges
+                                                                 and since l(gh) = l(g)λ(h) ∀g ∈ G, then l(e) = e. The
+of the underlying graph (see e.g. Ref [21], and Ref. [22]
+                                                                 same holds ∀h ∈ S− . Moreover
+for an overview).
+   Generally we will consider also self-transitions, corre-
+                                                                         l(hh0 ) = l(h)λ(h0 ) ≡ l(h)l(h0 ) ∀h, h0 ∈ S.
+sponding to the inclusion of the identity e ∈ G in the
+generating set which is then given by S ≡ S+ ∪ S− ∪ {e}.         Iterating, in general we obtain
+In the following, for each group G considered, we will as-
+sume Ah 6= 0 for all h ∈ S+ ∪ S− , whereas in general we            l(h1 · · · hp ) = l(h1 ) · · · l(hp ),   ∀h1 , . . . , hp ∈ S,   (3)
+                                                     n
+allow for the case Ae = 0. We also denote by S+          ⊆ S+
+the set of generators of order n ≥ 2, i.e. n is the smallest     and, being S a set of generators for G, this amounts to
+integer such that hn = e. Notice that the most common
+case is that of n = +∞.                                                          l(gg 0 ) = l(g)l(g 0 ) ∀g, g 0 ∈ G.
+   For the purpose of introducing the concept of isotropic
+QWs, we remind that a graph automorphism is defined              Accordingly, L is a group automorphism of G. 
+as a bijective map of the vertices that preserves the set of
+edges. For a Cayley graph this means that the automor-             The isotropy conditions corresponds to the covariance
+phism l is such that if g 0 = gh, then l(g 0 ) = l(g)h0 , with
+                                                                                          Tl(h) ⊗ Ul Ah Ul† ∀l ∈ L. (4)
+                                                                        X              X
+g, g 0 ∈ G and h, h0 ∈ S+ . Then, an automorphism of the           A=       Th ⊗ Ah =
+Cayley graph can be expressed as a permutation λ of the                  h∈S                 h∈S
+set of colours S+ , where for every g ∈ G and h ∈ S+ one
+has l(gh) = l(g)λ(h) for some permutation λ of S+ . Let          The covariance condition (4) and the transitivity of Λ on
+                                                                         n
+us denote by Λ a group of permutations of the elements           each S+    imply, by linear independence of the Th , that
+                                                                          n
+of S+ .                                                          every S+    is invariant under some subgroup Ln ≤ L. In
+                                                                              n                                          (n)
+Definition 1 (Isotropic QW). A QW on Γ(G, S+ ) is                fact, any S+    is the orbit of an arbitrary generator h1 ∈
+                                                                   n                                     (n)
+called isotropic with respect to S+ if there exists a group      S+  under Ln , denoted with OLn (h1 ).
+L of automorphisms of Γ(G, S+ ) that can be expressed
+as a permutation of the colours S+ , such that the evolu-        Proposition 2. The isotropy group L is a finite subgroup
+tion operator of the QW is L-covariant, i.e. there exists        of Aut(G).
+a projective unitary representation U over Cs of L such
+                                                                 Proof. By Proposition 1 the isotropy group L is a group
+that
+                                                                 of automorphisms of G. By Eq. (3) L ∼  = Λ, hence L is
+           Aλ(h) = Ul Ah Ul†       ∀l ∈ L, ∀h ∈ S+ ,             finite. 
+
+where λ ∈ Λ, and such that the action of Λ is transitive         Corollary 1. Each subgroup Ln ≤ L is isomorphic to a
+                n                                                                                                 n
+on each subset S+ .                                              finite permutation group acting transitively on S+ .
+                                                                                                                                  3
+
+Corollary 2. If all generators have the same order, L         The unitary operator of the QW is given by
+is isomorphic to a finite permutation group acting tran-                       XX
+sitively on S+ .                                                          A=            |n + hihn| ⊗ Ah .                       (5)
+                                                                                    n∈G h∈S
+   By Eq. (4) one can always choose the projective uni-
+tary representation U with unit determinant, namely           One has [A, Th ⊗ Is ] = 0. The unitary irreps are one-
+Ul ∈ SU(s) ∀l ∈ L. Notice that, by definition of isotropy,    dimensional, and are classified by the joint eigenvectors
+         n                                                    of Th
+either S+   does not contain the inverse of any of its ele-
+ments or it coincides with the whole set S n := S+ n    n
+                                                     ∪ S− .
+   In the following we will consider the isotropic QWs on                           Thi |ki =: e−ik·hi |ki,
+Γ(G, S+ ) with s = 2 and G ∼   = Zd with d = 1, 2, 3. For
+                                                              where
+d = 3 we discover that there are two QWs (modulo dis-                                                            Z
+crete symmetries) that for large-scales give the two Weyl             1 X ik·n                         1
+                                                              |ki := p         e |ni,           |ni = p               dke−ik·n |ki.
+equations, one for left- and one for right-handed mode.                |B| n∈G                          |B|       B
+In Ref. [1] it is shown that, coupling two Weyl QWs in
+the only possible way consistent with the above require-      Notice that
+ments (specifically locality), the resulting QW is unique
+                                                                                   1 X i(k−k0 )·n
+(modulo discrete symmetries) and describes exactly the                hk|k0 i =       e           = δ2π (k − k0 ).
+Dirac equation for large scales.                                                  |B|
+                                                                                      n∈G
+
+                                                              Translation invariance of the QW in Eq. (5) then implies
+III.    QUANTUM WALKS ON CAYLEY GRAPHS                        the following form for the unitary evolution operator
+                  OF Zd                                                             Z
+                                                                               A=      dk|kihk| ⊗ Ak ,
+   Since we are considering Abelian groups, we will de-                                  B
+note the group elements as usual with the boldfaced vec-      where the the matrix
+tor notation as n ∈ G, and the generators as h ∈ S.                                          X
+Moreover, we will use the additive notation for the group                            Ak =          eih·k Ah                     (6)
+composition, and 0 for the identity element. The space                                       h∈S
+`2 (G) will be the span of {|ni}n∈G and the generators h
+are represented by the operators                              is unitary for every k. Notice that Ak is a matrix poly-
+                                                              nomial in eih·k . The unitarity conditions on Ak for all
+                                                              k ∈ B then read
+                         X
+                   Th :=     |n + hihn|.
+                                                                            Ah A†h =
+                                                                        X            X †
+                               n∈G
+                                                                                        Ah Ah = Is ,               (7)
+                                                                        h∈S             h∈S
+We now treat the elements of G as vectors in Rd . Gen-
+                                                                                    Ah A†h0 =               A†h0 Ah = 0.
+                                                                            X                      X
+erally the elements of S are linearly dependent. We in-                                                                         (8)
+troduce all the sets Dn ⊆ S+ of linearly independent                    h−h0 =h00               h−h0 =h00
+elements
+                                                              The previous equations are a set of necessary and suffi-
+                     Dn := {hi1 , . . . , hid },              cient conditions for the unitarity of the time evolution,
+                                                              since they can be derived just imposing that the matrix
+where n labels the specific subset. For every Dn we con-      Ak is unitary. As explained in Sec. II, the requirement of
+struct the dual set D̃n defined by                            isotropy for the QW needs the existence of a group that
+                                                              acts transitively over the generator set S+ with a faithful
+                                (n)           (n)
+                   D̃n := {h̃1 , . . . , h̃d },               projective unitary representation that satisfies Eq. (4).
+                                                              Notice that one has the identity
+where                                                                                 
+                                                                              I ⊗ A†k=0 A =
+                                                                                              X
+                          (n)
+                                                                                                 Th ⊗ A0 h ,
+                        h̃l     · him = δlm .                                                      h∈S
+
+                                                                           0
+                                                                   P
+Now we define the set                                         with    h∈S A h = Is , namely modulo a uniform local
+                                      [                       unitary we can always assume
+                              D̃ :=       D̃n .                                     X
+                                      n                                                Ah = Is ,               (9)
+                                                                                        h∈S
+The Brillouin zone B ⊆ Rd is defined as the polytope
+            \                                                 as explained in the following. Indeed, the isotropy re-
+     B=        {k ∈ Rd | −π|h̃|2 ≤ k · h̃ ≤ π|h̃|2 }.         quirement implies that Ak=0 commutes with the repre-
+           h̃∈D̃                                              sentation of the isotropy group L, whence we can classify
+                                                                                                                                4
+
+the QW by requiring identity (9) and then multiplying                      • d = 2: Zn and Dn with n ∈ {1, 2, 3, 4, 6};
+the QW operator A on the left by (I ⊗V ), with V unitary
+                                                                           • d = 1: {e} and Z2 .
+commuting with the representation of L. In the case that
+the representation is irreducible, then by Schur lemma we             Accordingly, our cases of interest d = 1, 2, 3 can be
+have only V = Is .                                                    treated together, considering just d = 3. We notice that
+  From now on we will restrict to s = 2, which corre-                 for d = 1, 2 the finite subgroups of GL(d, Z) coincide with
+sponds to the simplest nontrivial QW in the case of G                 those of O(d), while for d = 3 we restricted to those finite
+Abelian. Indeed, in Ref. [24] it has been proved that if              subgroups of GL(3, Z) that are also subgroups of O(3).
+G is an arbitrary Abelian group and s = 1 (scalar QW                     A given generating set for Zd satisfying the definition
+case), then the evolution is trivial.                                 of isotropy can be constructed orbiting a vector in Rd
+                                                                      under the aforementioned finite subgroups in O(d). Ac-
+                                                                      cordingly, given a presentation for Zd , if the associated
+   IV.    IMPOSING ISOTROPY: ADMISSIBLE                               Cayley graph satisfies isotropy then one can represent the
+             CAYLEY GRAPHS OF Zd                                      generators having all the same Euclidean norm, namely
+                                                                      they lie on a sphere centered at the origin: they form the
+   In this Section we investigate how the isotropy as-                orbit—which we will denote as OL (v)—of an arbitrary
+sumption restricts the possible presentations of G ∼= Zd .            d-dimensional real vector v under the action of a finite
+By Prop. 2, the isotropy groups are finite subgroups                  subgroup L < GL(d, Z) represented in O(d).
+L < Aut(Zd ) ∼= GL(d, Z): their action, by Cor. 2, is de-                In Appendix A we will consider the orbit of a vector
+fined to be transitive on the generating set S+ and then              v ∈ R3 under the real, orthogonal and three-dimensional
+is extended on all Zd by linearity. Indeed, the generating            faithful representations of L. Indeed, if we took into ac-
+set S+ is the orbit of an arbitrary vector v ∈ Rd under               count also unfaithful representations, these would have
+the action of a finite subgroup L < GL(d, Z).                         nontrivial kernel—which is a normal subgroup—and the
+   Let M be a representation on integers of L (so that                effective action on v would be given by a faithful repre-
+Ml MfP= Mlf for l, f ∈ L), and let us define the matrix               sentation of the quotient group. Inspecting the subgroup
+P := l∈L MlT Ml . For every f ∈ L we have                             structure of the finite subgroups of GL(3, Z), one can
+                                                                      check that all the possible quotients are themselves finite
+                                                                      subgroups of GL(3, Z) [27]. Thus, the case of unfaithful
+                 X                   X
+      P Mf =           MlT Mlf =             MlT0 f −1 Ml0 =
+                 l∈L                 l0 ∈L
+                                                                      representations is already considered as long as we take
+                 X                   T                        (10)   into account the faithful ones.
+             =           Ml0 Mf −1        Ml0 = MfT−1 P.
+                 l0 ∈L
+                                                                      V.    THE QWS WITH MINIMAL COMPLEXITY:
+Moreover, being a sum of positive operators, P is                             THE WEYL QUANTUM WALKS
+P positive.
+also                Then, for |ηi ∈ ker P , hη| P |ηi =
+             T
+   l∈L hη| M l M l |ηi = 0 implies that Ml |ηi = 0 ∀l ∈ L,              In the following X = V |X| will denote the√polar de-
+namely |ηi = 0 since all Ml are invertible. Thus P has
+trivial kernel and we can define the invertible change of             composition of the operator X, with |X| := X † X the
+representation:                                                       modulus of X, and V unitary. Thus we will write the
+                                                                      transition matrix as
+                     M̃l := P 1/2 Ml P −1/2 .                  (11)                          Ah = Vh |Ah |.                  (12)
+Using the definition of P and property (10), we obtain                From Eq. (8) with h00 = 2h it follows that Ah A†−h =
+                                                                      0, namely, |Ah ||A−h | = 0. By definition the transition
+            T
+         M̃l M̃l = P −1/2 MlT P Ml P −1/2 =                           matrices are nonnull, hence |Ah | and |A−h | must have
+                                                                      orthogonal supports, and for s = 2 they must then be
+                    = P −1/2 MlT MlT−1 P P −1/2 = I.                  rank-one. Thus they can be written as follows
+This means that, as long as one embeds the Cayley                        Ah =: αh Vh |ηh ihηh |,   A−h =: α−h V−h |η−h ihη−h |,
+graphs in Rd , L can always be represented orthogonally.                                                                     (13)
+Notice that the representation M̃ is in general on reals,             where {|η+h i, |η−h i} is an orthonormal basis and αh > 0.
+namely {M̃l }l∈L ⊂ O(d, R) (from now on we denote it                  By the isotropy requirement we have that for all h, h0
+just as O(d)).                                                        α±h = α±h0 =: α± . Furthermore, it is easy to see that
+  As one can find in Refs. [25, 26], the finite subgroups of          we can choose Vh = V−h for every h [28].
+GL(d, Z) which are also subgroups of O(d) are isomorphic                 Denoting the elements of S± as ±hi , suppose that
+to:                                                                   there exists a subgroup K ≤ L such that, for some
+                                                                      h1 ∈ S+ , ∀hi , hj ∈ OK (h1 ) with hi 6= hj , and for
+   • d = 3: Zn , Dn with n ∈ {1, 2, 3, 4, 6}, A4 , S4 , and           hl , hm ∈ {0, OL (h1 )}, one has
+     the direct products of all the previous groups with
+     Z2 ;                                                             hi − hj = hl − hm ⇐⇒ (hi = hl ) ∨ (hi = −hm ). (14)
+                                                                                                                                5
+
+Then, a second set of equations from conditions (8) is                       The isotropic QWs on Zd for d = 1, 2, 3
+
+                 Ah1 A†hj + A−hj A†−h1 = 0,                   (15)      In Appendix A we make use of Prop. 3 along with the
+                                                                     unitarity constraints to exclude an infinite set of Cayley
+                 A†h1 Ahj + A†−hj A−h1 = 0.                   (16)
+                                                                     graphs arising from the aforementioned finite subgroups
+                                                                     of O(3). We then proved the following.
+Multiplying Eq. (15) by A†hj on the left or by Ah1 on the
+right, we obtain                                                     Proposition 4. The primitive cells associated to the
+                                                                     unique graphs admitting isotropic QWs in dimensions
+                                                                     d = 1, 2, 3 are those shown in Fig. 1.
+              A†hj Ah1 A†hj = Ah1 A†hj Ah1 = 0.
+                                                                        Throughout the present section, we solve the unitarity
+Using the isotropy requirement and posing Ahj                   =    conditions in dimension d = 1, 2, 3 for the Cayley graphs
+Uk Ahi Uk† , we have                                                 associated to the primitive cells shown in Fig. 1, and
+                                                                     for all the possible isotropy groups. We remind that in
+     Uk A†h1 Uk† Ah1 Uk A†h1 Uk† = Ah1 Uk A†h1 Uk† Ah1 = 0.          general each isotropy group gives rise to a distinct pre-
+                                                                     sentation for Zd , possibly with the same first-neighbours
+                                                                     structure. As discussed in Fig. 1, different presentations
+By exploiting Eq. (13) both the previous equations be-
+                                                                     can be in general associated to the same primitive cell
+come
+                                                                     (one can include in S+ the inverses or not). We will now
+                                                                     prove our main result, which is stated in Prop. 5 after
+           hηh1 |Vh†1 Uk† Vh1 |ηh1 ihηh1 |Uk |ηh1 i = 0.             the following derivation.
+                                                                        Before starting the derivation, we remind that in each
+Then, at least one of the two following conditions must              case we can choose |η±h1 i to be the eigenstates of σZ .
+be satisfied                                                         Moreover, we will make use of Eq. (13) to represent the
+                                                                     transition matrices, reminding that Vh = V−h . Finally,
+                  hηh1 |Vh†1 Uk† Vh1 |ηh1 i = 0,              (17)   we recall that in Sec. III we showed that one can always
+                  hηh1 |Uk |ηh1 i = 0.                        (18)   impose condition (9) and then multiply the transition
+                                                                     matrices on the left by an arbitrary unitary commuting
+Furthermore, we remind that the representation U can                 with the elements of the representation UL .
+be chosen with unit determinant, and for s = 2 one has                  Case d = 1. We can write the transition matrices
+Uk = cos θI + i sin θ nk · σ. Then, from Eqs. (17) and               associated to ±h1 as
+(18) one has Uk = ink · σ. Using the identity
+                                                                       Ah1 = α+ V |ηh1 ihηh1 |,   A−h1 = α− V |η−h1 ihη−h1 |.
+          Uk Uk0 = −nk · nk0 I − i(nk × nk0 ) · σ,            (19)
+                                                                     Multiplying on the right respectively by Ah1 and A†−h1
+it follows that all the nk must be mutually orthogonal               the unitarity conditions
+and then |K| ≤ 4. The case K ∼        = Z3 is not consistent
+with Eqs. (17) and (18). Accordingly, we end up with                                  Ah1 A†e + Ae A†−h1 = 0,
+                                                                                                                           (20)
+K ∈ {I, Z2 , Z2 × Z2 , Z4 }. Notice that, up to a change of                           A†e Ah1 + A†−h1 Ae = 0,
+basis, one can always choose |η±h1 i to be the eigenstates
+of σZ without loss of generality. Then, by Eqs. (17),(18)            one obtains
+and imposing Uk ∈ SU(2) ∀k ∈ K, up to a change of
+basis it must be: either i) UK := RngK (U ) = H, where                                  A±h1 A†e A±h1 = 0,
+H := {I, iσX , iσY , iσZ } is the Heisenberg group, or ii)
+UK = J where J ∈ {Ji }4i=1 , where J1 := {I, iσX },                  which implies Ae = V W , where W has vanishing diago-
+J2 := {I, −Vh1 (iσX )Vh†1 }, J3 := {I, iσX , −I, −iσX }, and         nal elements in the basis {|η+h1 i, |η−h1 i}. Substituting
+J4 := {I, −Vh1 (iσX )Vh†1 , −I, Vh1 (iσX )Vh†1 }, or finally iii)    into Eqs. (20), one derives α+ = α− =: n and, up to
+UK = {I}. We remark that H is a projective faithful                  a change of basis, Ae = imV σX with m ≥ 0. Imposing
+representation of Z2 × Z2 in SU(2), while {Ji }2i=1 are              the normalization condition (7) amounts to the relation
+projective faithful representations of Z2 , while {Ji }4i=3          n2 + m2 = 1. The admissible isotropy groups are I and,
+are unitary faithful representations of Z4 in SU(2). We              up to a change of basis, J1 . Then, for UL = {I}, the
+have thus proved the following result.                               transition matrices are given by:
+                                                                                                                 
+Proposition 3. If the isotropy group L contains a sub-                                   n 0                    0 0
+                                                                              Ah1 = V          , A−h1 = V             ,
+group K such that all the hk ∈ OK (h1 ) (for h1 ∈ S+ )                                   0 0                    0 n
+                                                                                              
+satisfy condition (14), then either UK = H or UK = J                                     0 im
+                                                                              Ae = V             ,
+or UK = I.                                                                              im 0
+                                                                                                                                   6
+
+
+
+                                                             h1                                            h1
+                           h1                                             h2                                          h2
+
+                                                                                                      h4
+                                                                                                                      h3
+
+
+
+                                                                                                              (c)
+                    (a)                                           (b)
+
+ FIG. 1: We report here the primitive cells of the unique graphs admitting isotropic QWs in dimensions d = 1, 2, 3. Integer
+     lattice (a): the isotropy groups can be UL = {I} and UL = {I, iσX }, corresponding respectively to S+ = {h1 } and
+          S+ ≡ S− = {h1 , −h1 }. Simple square lattice (b): the isotropy groups can be UL = {I, iσX }, {I, iσZ } and
+  UL = {I, iσX , iσY , iσZ }, corresponding respectively to S+ = {h1 , h2 } and S+ ≡ S− = {h1 , h2 , −h1 , −h2 }. Body-centered
+ cubic (BCC) lattice (c): the only possible isotropy group is UL = {I, iσX , iσY , iσZ }, corresponding to S+ = {h1 , h2 , h3 , h4 }
+       with the nontrivial relator h1 + h2 + h3 + h4 = 0. We notice that the case d = 1 is the only one supporting the
+                                            self-interaction, namely such that Ae 6= 0.
+
+
+where V is an arbitrary unitary. For UL = {I, iσX },                    and then multiply the transition matrices by a unitary
+we impose condition (9) and then V can be taken as an                   commuting with the representation UL . The isotropy
+arbitrary unitary commuting with σX .                                   group can be either J2 ≡ {I, iσZ } or H for the first family
+  Case d = 2. The form of the transition matrices is:                   of walks, while either J1 = {I, iσX } or H for the second
+                                                                        one. Thus the first family is given by
+               A±h1 = α± Vh1 |η±h1 ihη±h1 |,
+                                                                                                                       
+               A±h2 = α± Vh2 |η±h2 ihη±h2 |.                                          1     1 0               1     0 −1
+                                                                              Ah1 = V             , A−h1 = V                 ,
+                                                                                      2     1 0               2     0 1
+Multiplying on the right by Ah1 the unitarity conditions                                                               
+                                                                                      1      1 0                1     0 1
+                                                                              Ah2 = V               , A−h2 = V               ,
+                                                                                      2     −1  0               2     0 1
+                Ah1 A†±h2 + A∓h2 A†−h1 = 0,                (21)
+
+one obtains                                                             where V is either an arbitrary unitary commuting with
+                                                                        σZ or V = I, while the second family of transition ma-
+                     Ah1 A†±h2 Ah1 = 0.                                 trices is obtained exchanging h2 ↔ −h2 and taking V as
+                                                                        either an arbitrary unitary commuting with σX or V = I.
+The latter implies either i) |η±h1 i = |η±h2 i or ii)                      Case d = 3. The isotropy requirement can be fulfilled
+|η±h1 i = |η∓h2 i and that, in both cases, one can choose               with UL = H. At least one of the two conditions of
+Vh1 = Vh2 (iσY ) up to a change of basis. In either cases,              Eqs. (17) or (18) must be fulfilled for any nontrivial l ∈ L.
+substituting into Eqs. (21) one derives α+ = α− =: α                    Since Eq. (18) cannot be satisfied for Ul = iσZ , then it
+and, from the normalization condition (7), α = √12 . Re-                must be hηh1 |Vh†1 σZ Vh1 |ηh1 i = 0. This implies
+defining V := Vh2 , in case i) one obtains the following
+family of transition matrices:                                                             Tr[Vh†1 σZ Vh1 σZ ] = 0.             (23)
+
+                A±h1 = ±αV |η∓h1 ihη±h1 |,                              Writing Vh1 in the general unitary form
+                                                           (22)
+                 A±h2 = αV |η±h1 ihη±h1 |.
+                                                                                                    µ −ν ∗
+                                                                                                          
+                                                                                          Vh1 = θ            ,
+The second family, namely case ii), is connected to the                                             ν µ∗
+first one via the exchange h2 ↔ −h2 . One can check that
+the self-interaction term Te ⊗ Ae is not supported by the               where |θ|2 = |µ|2 + |ν|2 = 1, the condition in Eq. (23)
+unitarity conditions                                                    implies |µ| = |ν| = 2−1/2 , and using the polar decompo-
+                                                                        sition (13) of A±h1 we obtain
+    Ah A†e + Ae A†−h = A†h Ae + A†e A−h = 0 ∀h ∈ S,
+                                                                                                           α− 0 −ψ ∗
+                                                                                                                    
+                                                                                   α+ φ 0
+                                                                            Ah1 = √            , A−h1 = √            ∗   , (24)
+namely Ae = 0. Imposing Eq. (9), one can choose                                      2 ψ 0                   2 0 φ
+                                
+                       1    1 1                                         with φ, ψ phase factors. Using isotropy, namely consid-
+                 V =  √
+                        2 −1 1                                          ering the orbit of the above matrices under conjugation
+                                                                                                                                7
+
+with H, we obtain                                                        b) Case d = 2: one has Ae = 0 and
+                                                                                                              
+                                ∗                                              1     1 0             1   0 −1
+         α+ 0 ψ               α−   φ 0                                      Ah1 = V           , A−h1 = V           ,
+   Ah2 = √          , A−h2 = √       ∗    ,                                        2     1 0             2   0 1
+           2 0 φ               2 −ψ 0                                                                         
+                                                                                   1     0 1             1    1 0
+                               α− φ∗ 0
+                                     
+         α+ 0 −ψ                                                            Ah2 = V           , A−h2 = V           ,
+   Ah3 = √            , A−h3 = √     ∗    ,                    (25)                2     0 1             2   −1 0
+           2 0 φ                 2 ψ 0
+         α+
+             
+                φ 0
+                    
+                               α− 0 ψ ∗
+                                                                          where V is a unitary commuting with σX if S+ =
+   Ah4 = √            , A−h4 = √       ∗ .                                  {h1 , h2 } or V = I if S+ = {h1 , h2 , −h1 , −h2 }.
+           2 −ψ 0                2 0 φ
+                                                                         c) Case d = 3: one has Ae = 0 and
+Also in this case, the self-interaction term is not sup-                              ± 
+                                                                                                          0 −η ∓
+                                                                                                                
+ported by the unitarity conditions. Finally, we can write                              η 0
+                                                                              Ah1 =            , A−h1 =            ,
+the matrix Ak in Eq. (6) as                                                            η± 0               0 η∓
+                                                                                       0 η±                η∓ 0
+                                                                                                              
+                      4                                                       Ah2 =        ± ,   A−h2 =            ,
+                      X                                                                0 η                −η ∓ 0
+             Ak =           (Ahi eiki + A−hi e−iki )
+                                                                                       0 −η ±               η∓ 0
+                                                                                                              
+                      i=1                                                     Ah3 =             , A−h3 =           ,
+                                                                                            ±
+                                                                                       0 η                  η∓ 0
+and imposing unitarity of Ak for every k, one obtains the                             ±
+                                                                                        η    0
+                                                                                                         
+                                                                                                            0 η∓
+                                                                                                                 
+following conditions                                                          Ah4 =       ±     , A−h4 =           .
+                                                                                       −η 0                 0 η∓
+                          1 ∗2                                              where η ± = 1±i
+          2
+         α+    2
+            = α− =          , φ + φ2 = ψ ∗2 + ψ 2 = 0,                                    4 and S+ = {h1 , h2 , h3 , h4 } with the
+                          4                                                 nontrivial relator h1 + h2 + h3 + h4 = 0.
+namely
+                                                                                     VI.   CONCLUSIONS
+                             1+i           1−i
+       φ, ψ ∈       ±ζ + := ± √ , ±ζ − := ± √              .
+                               2              2                          In this paper we presented a complete classification
+                                                                      of the isotropic quantum walks on lattices of dimension
+The different choices of the overall signs for φ, ψ are con-
+                                                                      d = 1, 2, 3 with coin dimension s = 2. We have extended
+nected to each other by an overall phase factor and by
+                                                                      the isotropy definition of Ref. [1], to account for groups
+unitary conjugation by σZ . Then we can fix then choos-
+                                                                      with generators of different orders. We introduced a tech-
+ing the plus signs. The choices φ = ζ ± , ψ = ζ ∓ are
+                                                                      nique to construct the Cayley graphs of a given group
+equivalent to φ = ψ = ζ ± via conjugation of the former
+       π                                                              G satisfying a relevant necessary condition for isotropy.
+by e±i 4 σZ and an exchange h1 ↔ h4 . Accordingly, the                This allowed us to exclude an infinite class of Cayley
+QWs found are given by the transition matrices of Eqs.                graphs of Zd . The technique is sufficiently flexible to be
+(24) and (25) with ψ = ϕ = ζ ± , namely the two Weyl                  used in the future for other generally non Abelian groups.
+QWs presented in Ref. [1].                                            Remarkably, the Cayley graph is unique for each dimen-
+  We have thus proved the following main result.                      sion d = 1, 2, 3 and for d = 3 the only admissible QWs
+                                                                      are the two Weyl QWs presented in Ref. [1]. The use of
+Proposition 5 (Classification of the isotropic QWs on                 isotropy since the very beginning has made the solution of
+lattices of dimension d = 1, 2, 3 with a coin system of               the unitarity equations significantly shorter. Moreover,
+dimension s = 2). Let S = S+ ∪ S− ∪ {e} denote a set                  we eliminated the superfluous technical assumption used
+of generators for Zd and let {Ah }h∈S denote the set of               in Ref. [1] mentioned in the Introduction. In consider-
+transition matrices of a QW on Zd with a coin system                  ation of the length of the derivation from informational
+of dimension s = 2 and isotropic on S+ . Then for each                principles of the Weyl equation in Ref. [1], the present
+d = 1, 2, 3 the admissible graphs are unique (see Fig. 1)             derivation constitutes a thoroughly independent check.
+and one has the following:                                            Finally, this result represents the extension of the classi-
+                                                                      fication of Ref. [24].
+  a) Case d = 1:
+                      
+                                      
+                  n 0               0 0                                               ACKNOLEDGMENTS
+         Ah1 = V        , A−h1 = V        ,
+                  0 0               0 n
+                       
+                  0 im                                                  This publication was made possible through the sup-
+         Ae = V           ,
+                 im 0                                                 port of a grant from the John Templeton Foundation, ID
+                                                                      # 60609 “Quantum Causal Structures”. The opinions
+      where n, m are real such that n2 +m2 = 1, and V is              expressed in this publication are those of the authors and
+      an arbitrary unitary if S+ = {h1 } or V is a unitary            do not necessarily reflect the views of the John Temple-
+      commuting with σX if S+ = {h1 , −h1 }.                          ton Foundation.
+                                                                                                                           8
+
+         Appendix A: Excluding Cayley graphs                    (s, t signs). Our strategy is now to solve the necessary
+                                                                conditions for the violation of (A1), consisting in systems
+  In Secs. A 1–A 4 we will exclude the infinite family of       of the form
+graphs arising from the following finite isotropy groups
+L < O(3):                                                             ∀A, B ∈ L0 , (I − D − s(A + tB))v = 0.           (A2)
+
+     1. A4 , S4 and their direct product with Z2 (except for    These will produce some solutions v0 . Then we can
+        the cases in item 2);                                   choose another vector in OL (v0 ), impose again Eq. (A2),
+                                                                and iterate until we end up either with the trivial solu-
+     2. the special instances of item 1 where the orbits con-   tion, or with a system of linear equations for α, β, γ. By
+        tain the vertices of a truncated tetrahedron;           Prop. 6, the only A4 - or S4 -symmetric Cayley graphs
+                                                                of Z3 for which the unitarity conditions may be satis-
+     3. Zn , Dn for n = 3, 4, 6 and their direct product with
+                                                                fied must then be found among the non-trivial solutions
+        Z2 ;
+                                                                of the above systems. Since the condition (A2) is only
+     4. one special instance arising from D2 , D2 × Z2 .        necessary, we need to check whether the solutions actu-
+                                                                ally violate condition (A1). The remaining differences
+                                                                (D − D2 )v and (D2 − I)v are the orbit of (I − D)v under
+1.     Excluding A4 - and S4 -symmetric Cayley graphs           D, then we can just solve (A2) and check (A1).
+                                                                   In the following we will show that (A1) has only trivial
+   In this subsection we use the convention that unwrit-        solutions for A, B ∈ L, except for the special case where
+ten matrix elements are zero. In Secs. A 1 a and A 1 b we       v = α(3, 1, 1)T , that will be treated separately in Sub-
+will consider the orbit of an arbitrary three-dimensional       sec. A 2. At the end of Subsec. A 1 b we will then prove
+vector v = (α, β, γ)T under the action of the finite groups     the same result in the case of B = 0.
+L ∼ = A4 , S4 in O(3). To this purpose, as discussed               It is useful to notice the following:
+in Sec. IV, we will use the real, orthogonal and three-
+                                                                Remark 1. v1 ∈ R3 solves
+dimensional faithful representations of L, identifying its
+representation with the group itself. In the present case                      (I − D − s(A + tB))v1 = 0
+of L ∼= A4 , S4 , such representations coincide with the ir-
+reducible ones, since the reducible ones cannot be faithful     iff v2 := F2−1 v1 solves
+(otherwise they would have orthogonal blocks of dimen-
+sion at most 2, but A4 , S4 are not subgroups of O(2)).                     F1 (I − D − s(A + tB))F2 v2 = 0,
+   We denote with OL (v) the family of orbits of v un-
+der the action of L, parametrized by α, β, γ. Each orbit        for some arbitrary F1 , F2 ∈ GL(3, R). In particular, this
+satisfies a necessary condition to give rise to an isotropic    is relevant in the case F2 ∈ L, because it means that the
+presentation for Zd for d = 1, 2, 3.                            orbits generated by the two solutions v1 , v2 coincide.
+Proposition 6. If L contains a ternary subgroup K ∼       =       This remark will allow us to considerably reduce the
+Z3 such that for hi , hj ∈ OK (v) and hl , hm ∈ OL (v), the     number of systems we have to solve. In the following we
+condition in Eq. (14) is satisfied, then the set of vertices    will refer to a particular solution for (A2) indifferently
+OL (v) cannot satisfy the necessary conditions (16),(15)        with: 1) the solution vector v0 , or 2) the lattice which
+for unitarity.                                                  v0 gives rise to, or 3) the polyhedron whose vertices are
+                                                                the elements of OL (v0 ), or 4) any other vector in OL (v0 ),
+Proof. By Prop. 3, K has to be a subgroup of the                or finally 5) the orbit OL (v0 ). The cases we will end up
+Heisenberg group H. However H does not contain                  with are the following:
+ternary subgroups. 
+   We will make use of Prop. 6 to exclude an infinite fam-         1. The simple cubic lattice, generated orbiting vs =
+ily of presentations arising from L ∼
+                                    = A4 , S4 . Since by Eq.          α(1, 0, 0)T under A4 : its vertices are all the signed
+(14) we are interested in sums or differences of generators,          permutations of the coordinates of vs .
+the cases L ∼ = A4 × Z2 , S4 × Z2 are already accounted:           2. The BCC lattice, generated orbiting vb =
+their irreducible representations just add the inversion to           α(1, −1, −1)T under S4 : its vertices are all the
+the irreducible ones of A4 , S4 .                                     signed permutations of the coordinates of vb .
+   The groups L contain four isomorphic copies of Z3 (see
+Subsecs. A 1 a,A 1 b). Let us denote with D the genera-            3. The cuboctahedron, whose vertices are all the
+tor of one of this cyclic subgroups. The content of Eqs.              signed permutations of the coordinates of vc =
+(14) for a fixed choice of i, j translates to the following.          α(1, −1, 0)T and are generated by orbiting vc under
+Suppose that for all A, B ∈ L0 := {0 ∈ M3 (R)} ∪ L one                A4 .
+has:
+                                                                   4. The truncated tetrahedron, whose vertices are all
+ (I−D)v = s(A+tB)v ⇔ (sAv = v)∨(stBv = v), (A1)                       the permutations with an even number of minus
+                                                                                                                          9
+                                                                                                
+      signs of the coordinates of vtt = α(3, 1, 1)T and are                            2s
+      generated by orbiting vtt under A4 ; in addition,             1. s(Xi + tXj ) =    ±ξ          , modulo permutations
+      one can also find the solution including the inverses,                                         0
+      which is given by OS4 (vtt ).                                    of the diagonal elements, with arbitrary sign s and
+                                                                       for ξ := 0, 2.
+   5. The truncated octahedron, whose vertices are all                                                 
+      the signed permutations of the coordinates of vto =                                     s1 0 t1
+      α(1, −2, 0)T and are generated by orbiting vto un-            2. s(Xi + tXj R) =  t2 s2 0 , with s1 s2 + s1 s3 +
+      der S4 .                                                                                 0 t3 s3
+                                                                       s2 s3 = t1 t2 + t1 t3 + t2 t3 = −1.
+One can easily check that OL (v0 ) for the five cases above
+actually are generating sets for some presentation of Z3 .
+                                                                                                       
+                                                                                              s1 t1 0
+  In the following, we will choose D = R with                       3. s(Xi +tXj R2 ) =  0 s2 t2 , with arbitrary signs
+R(x, y, z)T = (z, x, y)T (R is contained in the represen-                                     t3 0 s3
+tation of both A4 and S4 ). As a consequence, we can                   tk , and s1 s2 + s1 s3 + s2 s3 = −1.
+consider A 6= B, since otherwise there are two possible                                                 
+cases:                                                                                                 2s
+                                                                    4. s(Xi + tXj )R = ±ξ                and permutations
+   1. (I − R)v = ±2Av, implying (A−1 − A−1 R)v =                                                     0
+      ±2v. Since A, R ∈ O(3), by the triangle inequality               of the written elements, with arbitrary sign s and
+      it must be                                                       ξ = 0, 2.
+               A−1 v = ±v, A−1 Rv = ∓v,                                                         
+                                                                                                   0 t1 s1
+                                                                                                            
+
+      and in particular v = −Rv holds. This implies                 5. s(Xi + tXj R)R = s2 0 t2 , with arbitrary
+      v = (0, 0, 0)T .                                                                             t3 s3 0
+                                                                       signs tk , and s1 s2 + s1 s3 + s2 s3 = −1.
+   2. (I − R)v = 0, implying v = α(1, 1, 1)T .                                                           
+                                                                                                   2s
+   Finally, the reader can check that for v0 ∈                      6. s(Xi + tXj )R2 =               ±ξ  and permutations
+{vs , vb , vc , vto } condition (A1) is not violated, thus ex-                                  0
+cluding the cases of S+ = OL (v0 ) by virtue of Prop. 6.               of the written elements, with arbitrary sign s and
+                                                                       ξ = 0, 2.
+        a.   Excluding A4 -symmetric Cayley graphs                 All the above mentioned permutations of elements and
+                                                                 those between the si and ti are performed by conjugation
+  A4 has a unique three-dimensional real irreducible rep-        with R±1 . Since
+resentation, generated by the matrices:
+                                                             (I − R − sR(A + tB)R−1 ) = R(I − R − s(A + tB))R−1 ,
+               1 0 0               0 0 1
+       X1 = 0 −1 0  , R = 1 0 0 .               (A3)         by Remark 1 we can just choose one permutation in each
+               0 0 −1              0 1 0                         of the six cases to find the orbits of the solutions.
+                                                                    Accordingly, explicitly computing the expression
+We define                                                                                                
+                                                                                              1 0 −1
+       X0 = I, X2 = RX1 R−1 , X3 = R2 X1 R−2 .                      I − R − s(A + tB) = −1 1 0  − s(A + tB),
+The group contains four isomorphic copies of Z3 ,                                             0 −1 1
+generated respectively by the elements of the set
+                                                                 we end up with the following cases:
+{R, X1 R, X2 R, X3 R} (these are cyclic signed permuta-
+tions of the coordinates).
+                                                                                           
+                                                                         1 + 2s 0 −1
+   We now choose the subgroup generated by R and con-               1.  −1 1 ± ξ 0 , for s arbitrary sign.
+sider the difference (I − R)v, setting the condition (A2)                   0       −1 1
+for any A, B ∈ A4 . Each of these define linear systems                                                     
+of three equations for v. If A equals I or R, then it is                  2        −2       2     0      0     −2
+easy to see that ∃G ∈ A4 such that Gv = sv (s a sign):              2. −ξ 0 ξ         , −2 ξ     , −ξ 0 2   ,
+this implies that either v = (0, β, γ)T up to signed per-                     0 0               0
+                                                                                              −ξ 0           0 ξ
+mutations, or OA4 (v) = OA4 (vb ). The latter case was                 with ξ, ξ 0 = 0, 2.
+excluded in Subsec. A 1. The remaining cases are then i)                              
+A, B 6∈ {I, R} or ii) v = (0, β, γ)T and signed permuta-                  2 s1 −1
+tions. Case (ii), however, will appear as a special instance        3. −1 ξ s2 , with si arbitrary.
+of (i). In case (i), we have six cases for s(A + tB):                    s3 −1 0
+                                                                                                                        10
+                     
+       1   0    2s − 1                                       orbiting the elements generated by (A3) under the left
+   4. −1  1       0 , with s arbitrary.                    action of {I, C} with
+       0 ±ξ − 1    1                                                                        
+                                                                                       0 0 1
+                                                                                 C = 0 1 0 ,
+              
+       1 s1 0
+   5. −2 1 s2 , with s arbitrary.                                                    1 0 0
+       s3 −ξ 1
+                                                             whose effect is just an exchange of the first and third row.
+                                                             Let us now define Xi0 := CXi . In order to perform the
+       1 2s −1
+                                                             computation of s(A + tB), we proceed as follows. We
+   6. −1 1 0 , with s arbitrary.
+                                                             have to compute
+       ±ξ −1 1
+                                                                                     s(Xi + tXj ), s(Xi0 + tXj0 ),
+The only solution to cases 1 and 4 is OA4 (vb ). Cases
+3, 5 and 6 can be treated together since they exhibit a                          s(Xi + tXj R), s(Xi0 + tXj0 R),      (A6)
+common structure: their solutions are OA4 (vb ) (which          s(Xi0 + tXj ),   s(Xi0 + tXj R),   s(Xi0 + tXj R2 )
+has been already excluded by Prop. 6) and OA4 (vtt )
+(which is excluded in Sec. A 2). The only relevant case is   and then recover all the remaining combinations by right
+2, since all the other cases have been already excluded.     multiplication of these by R±1 . For (A6), we obtain the
+   In case 2, the most general orbits of solutions are       following cases:
+OA4 (vi ) for i = 1, 2, 3, where                                    
+                                                                      ±2
+                                                                               
+                                                                                         ±2
+                                                                                            
+                                                             1.      ξ , ξ            , considering all the per-
+                   α             0                                          0      0
+           v1 = β  , v2 = β  , v3 = R2 v2 .      (A4)           mutations of elements and ξ = 0, ±2.
+                   α             γ                                                                      
+                                                                      s1    t1           t1 s1     s1     s2
+Nevertheless, for v ∈ {v2 , v3 } the condition (A1) is not       2.  t2 s2     ,  t2 s2      ,    ξ     ,
+violated. Indeed, v2 was found as a solution of                          t3 s3       s3      t3    s3     s4
+                                                                                          
+                                                                            ξ          t1 s1
+                (I − R + X1 − RX1 )v2 = 0,            (A5)           t2 s2  ,  s2 t2  , for ξ = 0, ±2.
+                                                                      s3 t3         ξ
+however X1 v2 = −v2 , and thus Eq. (A1) is satisfied. A
+similar argument holds for v3 . By virtue of Prop. 6 the     As mentioned above, one has to add to these cases the
+corresponding orbits OA4 (v2 ) and OA4 (v3 ) are excluded.   matrices resulting from a right multiplication of the pre-
+   From the above analysis we already know that the only     vious ones by R±1 , whose action is a cyclic permutation
+relevant solution is v1 for case 2, modulo cyclic permu-     of the columns. Let us now consider
+tations. We now impose that X1 v1 , which is in OA4 (v1 ),                                        
+                                                                                         1 0 −1
+is itself a solution of Eq. (A2). Thus we impose
+                                                                             I − R = −1 1 0  ,
+                                                                                 0 −1 1
+                         α0       α0     β0 
+           X1 v1 = w ∈ β  , α  , α0  .
+                              0     0
+                                                             and derive the following matrices
+                         α0       β0     α0 
+                                                                         I − R + s(A + tB)Ri ,       i = 0, ±1        (A7)
+The solutions are OA4 (vs ) and OA4 (vb ): we can exclude
+also this last case.                                         for all the mentioned cases.
+                                                                1. It’s easy to verify that, in this case, either the ma-
+                                                                   trices in Eq. (A7) have trivial solution or their solu-
+         b.   Excluding S4 -symmetric Cayley graphs                tions are OS4 (vb ) (already excluded) and OS4 (vtt )
+                                                                   (which will be treated in Sec. A 2).
+   The group S4 contains A4 as a subgroup of index                                                                  
+                                                                     1 + s1           t1 − 1         1            ξ−1
+2. The element connecting the two cosets is an involu-
+                                                                2.  t2 − 1 1 + s2            , t2 − 1 1 + s2        ,
+tion, which we will denote with C. S4 has two three-
+                                                                              t3 − 1 1 + s3         s3    t3 − 1    1
+dimensional irreducible representatons: their elements                                                             
+are signed permutations matrices of three elements and                   1      t1    s1 − 1         1     ξ     −1
+the two representations coincide up to a minus sign on the         s2 − 1       1      t2  , s2 − 1 1         t2  ,
+elements in the coset CA4 . Nevertheless, in our case the               t     s3 − 1     1           t3   −1 1 + s3
+                                                                    3                                               
+sign is irrelevant, since we are considering combinations            1 + t1 s1         −1         1+ξ             −1
+s(A + tB) of A, B ∈ S4 with s, t arbitrary signs. Ac-               −1 1 + t2 s2  ,  −1 1 + t2                 s2 ,
+cordingly, we consider the representation resulting from                s3     −1 1 + t3                s3 − 1 1 + t3
+                                                                                                                           11
+                                                     
+          1      t1    s1 − 1      1 + t1    s1      −1            • For M3 one has OS4 (vs ), OS4 (vb ), OS4 (vc ),
+      t2 − 1 1 + s2          , s2 − 1 1 + t2                     OS4 (vt o), OS4 (v1 ) and OS4 (v4 ), with
+          s3     −1 1 + t3                   −1 ξ + 1                                           
+                                                                                               α
+                                                     
+        1 + t1   s1      −1        1 + s1         t1 − 1
+      s2 − 1     1      t2  ,  t2 − 1      1      s2                              v4 =  β  .
+                                                                                              α+β
+               t3 − 1 1 + s3               ξ−1       1                                         2
+                                                    
+       1 + s1          t1 − 1       1     t1    s1 − 1
+       −1 1 + t2        s2  , −1 1 + s2        t2 ,              The systems in the same equivalence class are con-
+          t3   s3 − 1     1         ξ     −1       1                 nected by the permutations F ∈ {R2 , C}.
+                                                     
+       1 + s1         s2 − 1        1      s2    s1 − 1        We notice that v2 is a particular case of v4 , then we can
+       −1 1 + ξ              , ξ − 1     1           ,     just treat the latter. On the other hand, the vectors in
+          s3    −1 1 + s4                s4 − 1 1 + s3         OS4 (v3 ) cannot be solutions for Mi with i 6= 2, otherwise
+                          
+       1 + s2    s1    −1                                      the orbit is reduced to OS4 (vs ), or OS4 (vc ), or OS4 (vto ),
+       −1        1     ξ .                                   which are ruled out. The remaining case of OS4 (v3 ) can
+          s4   s3 − 1 1                                        be then excluded via the same analysis of case 2 in the
+                                                               previous section.
+   The above set can be partitioned into equivalence
+                                                                  We end up with OS4 (v1 ), OS4 (v4 ). We observe that
+classes according to the relation:
+                                                               imposing that X2 v1 is a solutions for M1 , M2 , M3 gives
+   N ∼ M ⇔ ∃F ∈ S4 , F 0 ∈ GL(3, R) : N = F 0 M F.             rise to OS4 (vs ), OS4 (vb ), OS4 (vc ). As for OS4 (v4 ),
+                                                       (A8)    imposing that X2 v4 is a solution leads to OS4 (vtt ),
+By Remark 1 the above equivalence relation preserves           OS4 (vto ), and OS4 (v5 ) with v5 = α(5, 3, 1)T . However,
+the orbits of solutions of the linear systems. It is easy to   it’s easy to verify that (I − X2 R)v5 is uniquely deter-
+check that there are five equivalence classes represented      mined as sum of elements of {0, OS4 (±v5 )}, leading us
+by thefollowing matrices:                                    to exclude this last case by virtue of Prop. 6.
+         1 + s1         s2 − 1                                    Finally, as anticipated at the beginning of Sec. A 1, we
+M1 =  −1 1 + ξ                ,                              can exclude (I − R)v = ±Av for A ∈ L and L ∼        = A4 , S4 :
+           s      −1 1 + s4                                    by direct inspection of the representation matrices of S4 ,
+       3                                                     it turns out that this condition leads to OS4 (vc ).
+         1 + s1          t1 − 1
+M2 =  t2 − 1 1 + s2            ,
+                 t3 − 1 1 + s3
+                                                                  2.   Exclusion of the truncated tetrahedron
+           1       t1    s1 − 1
+M3 = t2 − 1 1 + s2            ,
+           s3     −1 1 + t3                                       In this section we make use of the three-dimensional ir-
+                                                             reducible representation of A4 provided in Subsec. A 1 a
+            1       t1   s1 − 1
+                                                               in order to exclude, by means of the unitarity condi-
+M4 = s2 − 1        1       t2  ,
+                                                               tions, the graph whose primitive cell is the set of ver-
+           t3    s3 − 1     1
+                                                             tices of the truncated tetrahedron. This also excludes
+            1     ξ    −1                                      the case where the inverses are contained in S+ . For
+M5 = s2 − 1 1          t2  .                                 notation convenience, we will use the Pauli matrices no-
+           t3    −1 1 + s3                                     tation X := X1 , Y := X2 , and Z := X3 , and use the
+The solutions for M4 , M5 are OS4 (vs ), OS4 (vb ) (that       vector wtt = α(1, 1, 3)T instead of vtt as a representative
+have been already excluded) and OS4 (vtt ), that will be       of the orbit OA4 (vtt ). In the following we will also denote
+treated in Sec. A 2.                                           the elements Gwtt (for G ∈ A4 ) with the shorthand G.
+  The three remaining cases are given in the following:           Let U be a faithful unitary and (generally projective)
+   • For M1 one has OS4 (vs ), OS4 (vb ), OS4 (vc ),           representation of A4 in SU(2). We will denote the tran-
+     OS4 (vtt ), and OS4 (v1 ), OS4 (v2 ), with                sition matrices as
+                                                                                                  †
+                                     
+                      α                 3                                          A±G := UG A±I UG ,                   (A9)
+                v1 = α , v2 = α 1 ;
+                      β                 2                      with G ∈ A4 . From the unitarity conditions (8), choosing
+                                                               h00 = 2wtt , one derives the form
+      The systems in the same equivalence class are con-
+      nected by the permutations F ∈ {R±1 , C, CR±1 }.                            A±I := α± V |±i h±| ,                (A10)
+   • For M2 one has OS4 (v1 ) and OS4 (v3 ), with
+                                                             with {|+i , |−i} orthonormal basis, α± > 0 and V uni-
+                            0                                  tary. Consider the following unitarity conditions:
+                    v3 = α ;
+                            β                                            AI A†W + A−W A†−I = 0,        W = X, Y.
+                                                                                                                          12
+
+By multiplication on the right by AI we obtain                   Now, substituting Eq. (A10), and using definition (A9),
+                                                                 the nonvanishing matrix element of the previous identity
+                       AI A†W AI = 0,                            in the basis {|+i , |−i} is
+                                                                                                  †
+implying that UW must be antidiagonal in the {|+i , |−i}                   h−| V † URX V |−i h−| URX |−i =
+basis or in {V |+i , V |−i}. On the other hand, from
+                                                                           = −ei h−| V † UY V |−i h−| UY† UR |−i .
+                  AI A†−R + AR A†−I = 0,
+                                                                 Recalling the form of V given above and using the fact
+                                                                 that URX = t0 UR UX (t0 a sign) and that UR cannot have
+one gets
+                                                                 vanishing elements in the basis {|+i , |−i}, for the previ-
+                                                                 ous equation we finally obtain
+                     A−I A†R A−I = 0,                  (A11)
+                                                                            cos(θ1 + ϕ1 ) = −i sin(θ1 + ϕ1 )e2i ,
+meaning that UR must be diagonal in {|+i , |−i} or
+{V |+i , V |−i}.                                                 which has no solution.
+  Let us now suppose that UX is antidiagonal in
+{|+i , |−i} and UY antidiagonal in {V |+i , V |−i} (or
+viceversa): then, since                                           3.   Exclusion of Zn , Dn , Zn × Z2 and Dn × Z2 , with
+                                                                                         n = 3, 4, 6
+       UR UX UR† = s1 UY , UR UY UR† = s2 UZ ,         (A12)
+
+(s1 , s2 arbitrary signs) all of the UG for G = X, Y, Z             The aim of the present section is: 1) to construct the
+would be antidiagonal in one of the two bases, but this          real, orthogonal and three-dimensional faithful represen-
+violates the algebra of D2 ≡ {I, X, Y, Z} in A4 . Accord-        tations of the groups L ∈ {Zn , Dn , Zn ×Z2 , Dn ×Z2 | n =
+ingly, choosing the {|+i , |−i} basis and imposing               3, 4, 6}, and 2) to exclude all the graphs arising from L
+                                                                 by means of the unitarity conditions.
+                                   2
+       UX UY = t1 UY UX = t2 UZ , UG = t3 I            (A13)        By the classification theorem for real matrices of finite
+                                                                 order given in Ref. [29], any matrix in O(3) of order n is
+(for G = X, Y, Z and t1 , t2 , t3 arbitrary signs), it is easy   similar to one of the form
+to see that up to a change of basis we can always take:
+                                                                                                        
+                  UG = iσG , G = X, Y, Z                                                 cos θ − sin θ 0
+                                                                                Rθ,s :=  sin θ cos θ 0 ,
+with |+i , |−i eigenvectors of σZ . This implies that, in or-                               0     0    s
+der to satisfy (A12), UR cannot have vanishing elements
+in {|+i , |−i} and then by Eq.(A11) it must be diagonal          with θ = 2zπ  n , z integer and s a sign. The matrices
+in {V |+i , V |−i}. Consequently we must have:                   Rθ,s represent the generators for the subgroups of order
+                                                                 n = 3, 4, 6 in L. We can generate the orbits of L starting
+                       UR := V DV † ,                  (A14)     from the generic vector (up to a rotation around the z-
+                                                                 axis) given by v1 = (1, 0, h)T . It is easy to show that
+where D = diag(ei , e−i ) in {|+i , |−i} and e3i is a         the only matrices in O(3) of order 2 commuting with
+sign. As a consequence, using conditions (A13) one sees          Rθ,s for all θ and s are R0,t and Rπ,t : they represent
+that the UX , UY , UZ cannot have vanishing elements in          the generators of L/Zn for L ∼   = Zn × Z2 or L/Dn for
+{V |+i , V |−i}. This in turn implies, by Eq. (A12), that        L∼ = Dn × Z2 . On the other hand, the involutions
+V cannot have vanishing elements in {|+i , |−i}.                                                          
+   Let us now pose                                                                         cos ϕ sin ϕ 0
+                                                                               Sϕ,r :=  sin ϕ − cos ϕ 0
+             ρeiθ    τ eiϕ                                                                   0      0    r
+     V =                     : ρ, τ > 0, ρ2 + τ 2 = 1.
+            −τ e−iϕ ρe−iθ
+                                                                                                                    −1
+                                                                 are the only ones such that Sϕ,r Rθ,s Sϕ,r               =
+Multiplying on the left by A†−I     the following unitarity                           −1
+                                                                 Sϕ,r Rθ,s Sϕ,r = Rθ,s .     This implies that the Sϕ,r
+condition                                                        represent the generators for the subgroups of reflections
+                                                                 when L is a dihedral group. Therefore, in general, the
+     AI A†RX + A−RX A†−I + AR A†Y + A−Y A†−R = 0,                elements of OL (v1 ) lie on the two circumferences which
+                                                                 are parallel to the xy-plane at heights z = ±h.
+and reminding that A†−I AR A†Y = 0 by Eq. (A14), one                In order to solve the unitarity conditions, it is neces-
+has                                                              sary to determine the paths with length 2 constructed
+                                                                 by elements in {0} ∪ OL (v1 ): by the above analysis, the
+            A†−I A−RX A†−I + A†−I A−Y A†−R = 0.                  problem is reduced to a two-dimensional problem, since
+                                                                                                                             13
+
+the form of the vectors in OL (v1 ) is vi = (xi , yi , ±h)T :=    Multiplying the last equation by Av1 on the right and
+(cos χi , sin χi , ±h)T . Accordingly, it is easy to see that     taking the adjoint we get [30]
+
+  vi ± vj = svl + tvp ,    vi , vj , vl , vp 6= 0, (s, t signs)
+                                                                               A†v1 Av2 A†v1 + A†v1 A−v4 A†−v3 = 0,
+implies (xi , yi ) = s(xl , yl ) or (xi , yi ) = t(xp , yp ).
+   Case n = 4. There are at least two inequivalent or-            which amounts to
+thogonal representations of L ∈ {Z4 , D4 , Z4 × Z2 , D4 ×                     2
+                                                                             α+      †         †
+Z2 }, since the element of order 4 can be either repre-                       2 h+| R |+i h+| V RV |+i =
+                                                                             α−                                          (A18)
+sented by R π2 ,− or R π2 ,+ . We shall now analyse the two
+                                                                                  ∗        †             †   3
+different cases.                                                           = − ν h−| R |−i h+| V R V |−i .
+   R π2 ,− generates the four vectors
+                                                                  Posing now
+                                        
+        1            0           −1             0
+                                                                                                            
+                                                                                       †               a b
+ v1 =  0  , v2 =  1  , v3 =  0  , v4 =  −1  .                                 V RV =                   ,
+                                                                                                      −b∗ a∗
+       h            −h            h           −h
+                                                                  with a, b 6= 0 since otherwise V † R2 V cannot be anti-
+The differences vi −vj 6= 0 ∀i, j ∈ {1, 2, 3, 4} are uniquely     diagonal (see (A17)), we have that
+determined as sums of elements of {0, OL (±v1 )}. Ac-                                                              
+cordingly, there is a cyclic subgroup of order 4 (i.e. Z4 )                                            a b      0 ν
+                                                                   V † R3 V = (V † RV )(V † R2 V ) =                    .
+whose orbit satisfies Eq. (14) and thus, invoking Prop. 3                                             −b∗ a∗   −ν ∗ 0
+(we remind that the representation U must be faithful),
+we exclude the representation containing R π2 ,− .                Accordingly, Eq. (A18) leads to
+  Taking now R π2 ,+ , the orbit is                                                             2
+                                                                                               α+
+                                                                                                2 = −µ2 ,
+                                                                                       α−
+         1            0           −1           0
+  v1 =  0  , v2 =  1  , v3 =  0  , v4 = −1 .              which is impossible, since µ2 6= µ∗ 2 .
+        h            h             h           h                     Cases n = 3, 6.          The representations of L ∈
+                                                                  {Zn , Dn , Zn ×Z2 , Dn ×Z2 | n = 3, 6} must contain R 2π
+                                                                                                                         3 ,+
+                                                                                                                              ,
+We have that the vectors
+                                                                  which generates a subgroup K isomorphic to Z3 : OK (v1 )
+                    v1 + v2 ,   v1 − v3                   (A15)   is given by the following vectors:
+                                                                                   
+                                                                                      cos 2π
+                                                                                                    
+are uniquely determined as sum of elements of                                              3 (l − 1)
+{0, OL (±v1 )}. Let us denote with R the matrix repre-                        vl =  sin 2π
+                                                                                          3 (l − 1)
+                                                                                                     , l ∈ {1, 2, 3}.
+senting R π2 ,+ in SU(2) and proceed as in Sec. A 2. From                                   h
+now on in the present section we use the notation of Eq.          We denote the representation matrix of R 2π           in SU(2)
+(A9) and perform calculations in the {|+i , |−i} basis.                                                            3 ,+
+                                                                  with U 2π  .
+Multiplying on the right by Av1 the unitarity conditions                   3
+
+associated to the vectors in (A15), we obtain                        If v1 − v2 is uniquely determined as sum of elements of
+                                                                  {0, OL (±v1 )} (a particular case is given by the condition
+                                           †                      h = 0), we can exclude this case by Prop. 6. Let us then
+  Av1 RA†−v1 R† Av1 = 0, Av1 R2 A†v1 R2 Av1 = 0. (A16)
+                                                                  suppose that v1 −v2 is not uniquely determined as sum of
+By the first of conditions (A16), up to a change of basis         elements of {0, OL (±v1 )} (in particular h 6= 0) . Then,
+we can impose                                                     by the above analysis, OL (v1 ) must contain
+                                                                                   
+                                                                                     − cos 2π
+                                                                                                      
+                                                                                            3 (l − 1)
+                            
+                        µ 0
+                 R=            , R4 = sI                                      vl =  − sin 2π
+                                                                                            3 (l − 1)
+                                                                                                       , l ∈ {4, 5, 6}
+                        0 µ∗
+                                                                                            h
+(s arbitrary sign); using the second condition, it follows        (such that v1 − v2 = v5 − v4 ). Again, via the above
+that                                                              arguments on the representations of L, is easy to see
+               2
+                µ    0
+                             
+                                 0 ν
+                                                                 that v1 + v2 is uniquely determined as sum of elements
+          2
+        R =              =V              V †,       (A17)         of {0, OL (±v1 )}. Then, from condition
+                0 µ∗ 2          −ν ∗ 0
+                                                                                   Av1 A†−v2 + Av2 A†−v1 = 0,
+and thus necessarily µ2 6= µ∗ 2 . Consider now the unitar-
+ity condition                                                     by multiplying on the right by Av1 , we get
+
+   Av1 A†v2 + A−v2 A†−v1 + Av4 A†v3 + A−v3 A†−v4 = 0.                                  Av1 A†−v2 Av1 = 0.
+                                                                                                                         14
+
+Up to a change of basis U 2π3
+                              = diag(ei , e−i ) holds with    which cannot be satisfied neither in case 1 nor in case 2.
+e3i = ±1, and  6∈ {0, π}. Let Uπ represent the element        On the other hand in case b), from (A22) one has
+of L mapping v1 to v4 . This element is an involution                    2
+                                                                        α+
+and there are only two cases (by inspection of the groups                   ∗ i
+                                                                         2 a e = −e
+                                                                                    −i
+                                                                                        h−| V † Uπ† U †2π Uπ V |−i ,
+L here considered)                                                      α−                              3
+
+
+                                                               and being Uπ anti-diagonal, one has
+                                   
+                                      sU 2π
+                                           3
+
+                   Uπ U 2π Uπ† =                      (A19)               2
+                                                                         α+
+                         3             0    †                            2 a∗ e2i = − h−| V † U 2π V |−i = −a∗ ,
+                                      s U 2π ,                          α−                        3
+                                             3
+
+
+(s, s0 signs). Recalling that the representation U ⊂ SU(2)      which is impossible, since e3i = ±1, for  6∈ {0, π}.
+is faithful and U 32π = tI (t a sign), it is easy to verify
+                    3
+that the previous two conditions on U 2π 3
+                                           , Uπ are satisfied   4.   Remaining presentations arising from Z2 , D2 and
+respectively only if                                                                  D2 × Z2
+
+   1. Uπ is diagonal;
+                                                                  By the argument of Sec. A 3, any matrix of order 2 in
+   2. Uπ is anti-diagonal.                                      O(3) is similar to
+                                                                                                  
+Multiplying by Av1 on the right the unitarity condition                                      s 0 0
+associated to the difference v1 − v4                                               Ms,t := 0 s 0 ,
+                                                                                             0 0 t
+                  Av1 A†v4 + A−v4 A†−v1 = 0,
+                                                                with s, t signs. Accordingly, up to conjugation, any three-
+one also gets                                                   dimensional orthogonal representation of a group L ∈
+                                                                {Z2 , D2 , D2 × Z2 } contains Ms,t . If s 6= t, any matrix N
+                         Av1 A†v4 Av1 = 0,                      of order 2 in O(3) commuting with Ms,t is either Ms0 ,t0 ,
+                                                                or of the form:
+namely either A†v4 Av1 = 0 or Av1 A†v4 = 0. This implies                                                  
+                                                                                        cos ϕ sin ϕ 0
+that a) V † Uπ V is anti-diagonal or b) Uπ is anti-diagonal.
+                                                                                 N =  sin ϕ − cos ϕ 0 ,
+In case a), multiplying by Av1 on the right the unitarity
+                                                                                          0       0      r
+condition
+                                                                with r a sign. Being the two dimensional block a re-
+   Av1 A†v2 + A−v2 A†−v1 + Av5 A†v4 + A−v4 A†−v5 = 0,           flection matrix, there exists a similarity transformation
+                                                                which maps it to ±σz (and leaving Ms,t invariant). Thus
+it follows that
+                                                                the real, orthogonal and three-dimensional faithful rep-
+                                                                resentations of the groups here considered contain just
+         Av1 A†v2 Av1 + A−v4 A†−v5 Av1 = 0;           (A20)
+                                                                Ms,t and
+in case b) multiplying by A†v1 on the right the unitarity                                  
+                                                                                             r1 0 0
+                                                                                                       
+condition                                                                       Nr1 ,r2 :=  0 −r1 0  .
+                                                                                             0 0 r2
+ A†v1 Av2 + A†−v2 A−v1 + A†v5 Av4 + A†−v4 A−v5 = 0, (A21)
+                                                                The problem reduces to combine signs in Ms,t , Nr1 ,r2 to
+and taking the adjoint, it follows that                         give rise to faithful representations of L. It is easy to
+                                                                check that they give rise to the integer lattice, the square
+            Av1 A†v2 Av1 + A1 A†−v5 A−v4 = 0.         (A22)     lattice or the BCC lattice (one can include the inverses
+                                                                or not). Nevertheless, there are two ways of providing a
+Let us now pose
+                                                                minimal generating set (namely such that S+ 6= S− ) for
+                                                              Z3 and whose Cayley graph is associated with the BCC
+                     †              a b
+                   V U 2π V =               ,                   lattice. Such presentations are both generated by D2 :
+                        3          −b∗ a∗
+                                                                one is made with the vertices of a tetrahedron; the second
+                                                                one corresponds to the vertices given by the following
+where a 6= 0 since U 32π = tI. In case a), from (A20) one
+                       3                                        vectors
+then has                                                                                                      
+                                                                          1            −1            −1               1
+                 2
+                α+                                                v0 =  1  , v1 = −1 , v2 =  1  , v3 = −1 .
+                 2 ei = − h−| Uπ† U 2π Uπ |−i ,
+                α−                    3                                   h            h              h               h
+                                                                                                                                      15
+
+We notice that excluding this solution allows us to ex-               to respect the D2 algebra, while the case A†−v3 Av0 =
+clude the case including the inverses, namely S+ = S− .               Av0 A†−v2 = 0 is accounted by the symmetry of the uni-
+   From the unitarity conditions one has:                             tarity conditions under the exchange 2 ↔ 3. In case 1,
+                                                                      the condition is incompatible with a faithful representa-
+    Av0 A†v1 Av0 = 0,                                       (A23)     tion of D2 in SU(2). In case 2, we have UG = iσG and
+    Av0 A†−vi Av0 = 0, i = 2, 3,               (A24)                  U2 = V DV † with D diagonal, implying U2 = sV (iσ3 )V †
+          †           †          †        †                           (s a sign). Then, up to a global sign, one has
+    Av0 A−v1 + Av1 A−v0 + Av2 A−v3 + Av3 A−v2 = 0.
+                                                            (A25)                                             
+                                                                                               1           i s
+                                                                                           V =√                  ,
+From (A23) and the form of Eqs. (A9),(A10) for the                                              2         −s −i
+transition matrices, we get U1 = iσ1 (we use the equiv-
+alent notation for Pauli matrices: σ0 := I, σ1 := σX ,
+                                                                      and from (A25) we obtain
+σ2 := σY , σ3 := σZ ), up to a change of basis; from (A24)
+we end up with the two cases:
+                                                                                   Av0 A†−v1 Av0 + Av2 A†−v3 Av0 = 0,
+   1. A†−v2 Av0 = A†−v3 Av0 = 0,
+
+   2. A†−v2 Av0 = Av0 A†−v3 = 0,                                      which, using the form of Eqs. (A9),(A10) for the tran-
+                                                                      sition matrices along with the previous results, leads to
+since Av0 A†−v2 = Av0 A†−v3 = 0 is forbidden in order                 −2α+ 2
+                                                                             α− = 0, contradicting the assumption α± 6= 0.
+
+
+
+
+ [1] G. M. D’Ariano and P. Perinotti, Phys. Rev. A 90,                [17] A. Ambainis, E. Bach, A. Nayak, A. Vishwanath, and
+     062106 (2014).                                                        J. Watrous, in Proceedings of the Thirty-third Annual
+ [2] A. Ahlbrecht, A. Alberti, D. Meschede, V. B. Scholz,                  ACM Symposium on Theory of Computing, STOC ’01
+     A. H. Werner, and R. F. Werner, New Journal of Physics                (ACM, New York, NY, USA, 2001) pp. 37–49.
+     14, 073050 (2012).                                               [18] S. Severini, SIAM Journal on Matrix Analysis and Ap-
+ [3] E. Zohar, J. I. Cirac, and B. Reznik, Phys. Rev. A 88,                plications 25, 295 (2003).
+     023617 (2013).                                                   [19] P. Raynal, Phys. Rev. A 95, 062344 (2017).
+ [4] D. González-Cuadra, E. Zohar, and J. I. Cirac, New              [20] J. Meier, Groups, Graphs and Trees (Cambridge Univer-
+     Journal of Physics 19, 063038 (2017).                                 sity Press, 2008) Cambridge Books Online.
+ [5] K. Stannigel, P. Hauke, D. Marcos, M. Hafezi, S. Diehl,          [21] A. Montanaro, Quantum Information and Computation
+     M. Dalmonte, and P. Zoller, Phys. Rev. Lett. 112,                     7, 093 (2007).
+     120406 (2014).                                                   [22] J. Kempe, Contemporary Physics 44, 307 (2003).
+ [6] P. Arnault, G. Di Molfetta, M. Brachet, and F. Deb-              [23] The homogeneity requirement defined in Ref. [1] should
+     basch, Phys. Rev. A 94, 012335 (2016).                                be completed upon requiring that any two nodes remain
+ [7] P. Arrighi, S. Facchini, and M. Forets, New Journal of                “distinguishable” from the point of view of a third node.
+     Physics 16, 093007 (2014).                                            For details we will refer to Ref. [31]. Eq. (2) follows from
+ [8] P. Arrighi, S. Facchini, and M. Forets, Quantum Infor-                this definition.
+     mation Processing 15, 3467 (2016).                               [24] A. Bisio, G. M. D’Ariano, M. Erba, P. Perinotti, and
+ [9] I. Siloi, C. Benedetti, E. Piccinini, J. Piilo, S. Maniscalco,        A. Tosini, Phys. Rev. A 93, 062334 (2016).
+     M. G. A. Paris, and P. Bordone, Phys. Rev. A 95, 022106          [25] G. Mackiw, Mathematics Magazine 69, 356 (1996).
+     (2017).                                                          [26] K.-I. Tahara, Nagoya Mathematical Journal 41, 169
+[10] A. Bisio, G. M. D’Ariano, and P. Perinotti, Annals of                 (1971).
+     Physics 368, 177 (2016).                                         [27] This is straightforward as far as Zn and Dn are con-
+[11] A. Bisio, G. M. D’Ariano, and P. Perinotti, Phys. Rev.                cerned; as for A4 and S4 , one can verify it in a direct
+     A 94, 042120 (2016).                                                  way considering their faithful representations given in
+[12] R. P. Feynman, International Journal of Theoretical                   Secs. A 1 a and A 1 b.
+     Physics 21, 467 (1982).                                          [28] We follow the argument of Ref. [32]. The condition
+[13] J. Watrous, in Foundations of Computer Science, 1995.                 A†h A−h = 0 implies that Vh V−h        †
+                                                                                                                      is diagonal in the
+     Proceedings., 36th Annual Symposium on (IEEE, 1995)                   basis {|η+h i, |η−h i}. Since the transition matrices are
+     pp. 528–537.                                                          not full rank, their polar decomposition is not unique:
+[14] B. Schumacher and R. F. Werner, arXiv preprint quant-                 Vh (|η+h ihη+h | + eiθh |η−h ihη−h |) gives the same polar de-
+     ph/0405174 (2004).                                                    composition as Vh ∀h ∈ S. Accordingly, one can tune the
+                                                                                                          †
+[15] P. Arrighi, V. Nesme, and R. Werner, Journal of Com-                  phases θ±h to choose Vh V−h      = I ∀h ∈ S.
+     puter and System Sciences 77, 372 (2011), adaptivity in          [29] R. Koo, Mathematics magazine 76, 143 (2003).
+     Heterogeneous Environments.                                      [30] One has A−v2 A†−v1 Av1 = 0 since A†−v1 Av1 = 0, and
+[16] Y. Aharonov, L. Davidovich, and N. Zagury, Phys. Rev.                 Av4 A†v3 Av1 = 0, since A†v3 Av1 = R2 A†v1 R2† Av1 and
+     A 48, 1687 (1993).
+                                                                           A†v1 R2 Av1 = α+    2
+                                                                                                 |+i h+| V † R2 V |+i h+|, and by Eq.
+                                                                                                                16
+
+     (A17) h+| V † R2 V |+i = 0.                             Journal of Physics A: Mathematical and Theoretical 50,
+[31] G. M. D’Ariano and P. Perinotti, Unpublished.           035301 (2017).
+[32] G. M. D’Ariano, M. Erba, P. Perinotti, and A. Tosini,
+
+codex
+La conclusión matemática de isotropía se sostiene: puede comprobarse algebraicamente con las definiciones adjuntas, sin depender del `PASS` del script. Hay una corrección documental menor y una limitación de trazabilidad entre ejecuciones.
+
+Esta revisión usa exclusivamente el material pegado. Las referencias a páginas corresponden al texto extraído adjunto; no he consultado el PDF ni ejecutado el verificador.
+
+1. **FIDELIDAD A LA FUENTE — PASS.**
+
+   El contrato reproduce correctamente la Definición 1 y la condición (2), separadas en la fuente —documento 7, p. 2—. También incorpora la exigencia previa de coeficientes no nulos.
+
+   Las condiciones que podrían quedar implícitas se cumplen aquí:
+
+   - **Automorfismos del grafo:** las medias vueltas son aplicaciones lineales invertibles que preservan el retículo generado por los cuatro vectores de paridad positiva y permutan esos generadores. Por tanto, preservan las aristas dirigidas y su coloreado mediante una permutación global.
+   - **Orden de los generadores:** todos tienen orden infinito. La transitividad exigida sobre cada \(S_+^n\) se reduce aquí a la transitividad sobre todo \(S_+\).
+   - **Elección de \(S_+\):** es el tetraedro
+     \[
+     \{(1,1,1),(1,-1,-1),(-1,1,-1),(-1,-1,1)\}/\sqrt3,
+     \]
+     cuyos elementos suman cero. Coincide con la presentación tetraédrica admitida para el BCC —p. 6, figura 1; p. 14—. El retículo generado es abstractamente \(\mathbb Z^3\); no debe confundirse con las coordenadas cartesianas enteras estándar.
+   - **Tratamiento de \(S_-\):** \(S_-=-S_+\), y \(l(-h)=-l(h)\). C2 verifica también sus coeficientes, cubriendo la covarianza completa de la ecuación (4). No se necesita imponer \(A_{-h}=A_h^\dagger\).
+   - **Fidelidad proyectiva:** ningún \(U_x,U_y,U_z\) es escalar y sus clases módulo fases son distintas. La representación es fiel también en sentido proyectivo.
+   - **Unitariedad del walk:** se obtiene del producto de exponenciales de involuciones hermíticas. La comprobación únicamente en \(k=0\) no bastaría, pero la construcción proporciona la prueba para todo \(k\).
+
+   No falta una exigencia de irreducibilidad de \(U\): la Definición 1 no la impone. Tampoco constituye un incumplimiento que \(\sum_h A_h=W\neq I\): la fuente admite multiplicar por una unitaria que conmute con la representación —pp. 3–4—.
+
+   El informe afirma satisfacer específicamente la condición (2). Eso es correcto; no debe ampliarse a una certificación de cualquier formulación adicional de homogeneidad mencionada en la referencia [23].
+
+2. **FAMILIA — PASS.**
+
+   La reconstrucción coincide con las secciones 2–4 del documento 3:
+
+   \[
+   T_x=b\tau_x+a\tau_z,\quad
+   T_y=b\tau_y+a\tau_z,\quad
+   T_z=-b\tau_x+a\tau_z.
+   \]
+
+   `TP(SIG[i], T[i])` mantiene el orden \(\sigma\otimes\tau\); `W` tiene las fases correctas para \(\theta=\pi/4\); y el producto de proyectores conserva el orden \(x,y,z\).
+
+   Con la convención declarada,
+   \[
+   e^{-iq_i\Gamma_i}=\sum_{s_i=\pm1}e^{-is_iq_i}P_i^{s_i},
+   \]
+   el coeficiente de \(e^{-ik\cdot h_s}\) es exactamente \(WP_x^{s_x}P_y^{s_y}P_z^{s_z}\). No hay inversión accidental de signos. La ausencia del factor \(1/\sqrt3\) en las claves del diccionario es inocua para C1–C5: esas claves representan etiquetas de desplazamiento, no cálculos métricos.
+
+   La acción utilizada en C2 también es correcta:
+   \[
+   U_l\Gamma_iU_l^\dagger=
+   \begin{cases}
+   \Gamma_i,&i=l,\\
+   -\Gamma_i,&i\ne l.
+   \end{cases}
+   \]
+   No se permutan los factores del producto. Además, estas rotaciones satisfacen \(l^{-1}=l=l^T\), por lo que aquí no hay discrepancia entre la acción sobre \(k\) y sobre los desplazamientos.
+
+3. **MÉTODO EXACTO DE C1 Y C4 — PASS.**
+
+   La sustitución por \(M_h\) es legítima:
+   \[
+   A_h=WM_h,\qquad [U_l,A_h]=W[U_l,M_h].
+   \]
+   Basta que \(W\) sea invertible y conmute con \(U_l\); el script comprueba ambas propiedades mediante su unitariedad y los tres conmutadores.
+
+   La parametrización es biyectiva sobre el arco solicitado. Su inversa es
+   \[
+   t=\frac{b}{1+a}\in(0,1).
+   \]
+   No se pierde ninguna rama compatible con \(0<a<1,\ b>0\).
+
+   Las entradas de \(M_h\) y de sus conmutadores son polinomios en \(a,b\) con coeficientes en \(\mathbb Q(i)\). Después de sustituir, puede usarse como denominador común
+   \[
+   8(1+t^2)^3,
+   \]
+   que no se anula en el intervalo real. Por tanto, pasar a numeradores no introduce ni elimina ceros allí.
+
+   Para \(t\) real, un numerador complejo se anula exactamente cuando se anulan sus partes real e imaginaria. El mcd de todos esos polinomios tiene precisamente sus ceros comunes. Los casos de polinomios nulos y mcd constante están tratados correctamente.
+
+   **Sobre `simplify` y las comparaciones:** sí se usa `simplify`, especialmente en `red` y `mzero`. No sería correcto describir todo el verificador como independiente de esa función. Sin embargo, las identidades se evalúan simbólicamente, sin tolerancias numéricas. El `float` aparece únicamente al ordenar resultados excepcionales, después de decidir su pertenencia al intervalo.
+
+   Hay una limitación de diseño: `zeros_in_domain` nunca devuelve `"UNDECIDED"`, de modo que la línea que imprime «pairs undecided: none» no aporta una comprobación adicional. Tampoco existe una rama explícita para una comparación de raíces que quedase sin resolver. Esto no refuta el resultado de esta familia, que admite el siguiente certificado directo.
+
+   **Segunda vía algebraica para C1 y C4.** Escribiendo \(J_i=\sigma_i\otimes I\), del producto definido se obtiene
+   \[
+   \operatorname{tr}(J_zM_h)=\frac{i}{2}s_xs_y a^2,\qquad
+   \operatorname{tr}(J_xM_h)=\frac{i}{2}s_ys_z a^2.
+   \]
+   Basta usar \(\operatorname{tr}(T_xT_y)=\operatorname{tr}(T_yT_z)=2a^2\) y las identidades de Pauli.
+
+   La primera expresión prueba \(M_h\neq0\). Por ciclicidad de la traza, además:
+   
+   | Conmutador | Testigo escalar |
+   |---|---|
+   | \([J_x,M_h]\) | \(\operatorname{tr}(J_y[J_x,M_h])=s_xs_y a^2\) |
+   | \([J_y,M_h]\) | \(\operatorname{tr}(J_x[J_y,M_h])=-s_xs_y a^2\) |
+   | \([J_z,M_h]\) | \(\operatorname{tr}(J_y[J_z,M_h])=-s_ys_z a^2\) |
+
+   Todos son no nulos para \(0<a<1\). Así quedan comprobados C1 y los 24 casos de C4 por una vía distinta del cálculo de raíces, sin asumir que las salidas del programa son correctas.
+
+4. **C2, C3 Y C5 — PASS.**
+
+   Las 24 identidades de C2 cubren los tres elementos no triviales y los ocho desplazamientos. Los ocho casos de la identidad son tautológicos.
+
+   En C3, comprobar una órbita por conjunto es suficiente: cada órbita calculada coincide con el conjunto completo. Las medias vueltas preservan la paridad y ningún elemento no trivial fija una terna con todas sus coordenadas iguales a \(\pm1\).
+
+   En C5 se comprueban los seis productos ordenados de elementos no triviales distintos y los tres cuadrados. Los productos con la identidad son inmediatos. Las fases son \(\pm i\) para ejes distintos y \(1\) para los cuadrados. La condición de cociclo se sigue de la asociatividad de las matrices; no hace falta una comprobación separada.
+
+   La unitariedad y fidelidad de los \(U_l\), y la extensión de las permutaciones a automorfismos del grafo, no aparecen como pruebas explícitas separadas en el código, pero quedan establecidas por las matrices y aplicaciones concretas anteriores.
+
+   La segunda lectura de C4 también es correcta:
+   \[
+   [U_l,M_h]=0\iff M_{l(h)}=M_h.
+   \]
+   Como reconoce el informe, esta equivalencia por sí sola no constituye una segunda comprobación.
+
+5. **EJECUCIONES — OPEN para la comparación histórica; PASS para su coherencia matemática.**
+
+   La primera salida registra una excepción durante la resolución simbólica y no contiene un veredicto final. No demuestra un fallo de isotropía.
+
+   El método de la segunda versión conserva exactamente la pregunta matemática: quitar el factor invertible \(W\) y parametrizar biyectivamente el dominio no cambia los conjuntos de ceros buscados. Las expectativas del código adjunto coinciden con C1–C5 del contrato.
+
+   Sin embargo, **no se adjunta el código de la ejecución 1 ni el diff entre versiones**. Por tanto, no puede certificarse que esos fueran los únicos cambios. La afirmación histórica «no expectation changed», los commits y su orden temporal permanecen **[UNVERIFIED]** en esta revisión.
+
+   Para cerrar este punto bastaría adjuntar el diff entre las dos versiones comprometidas. No encuentro ninguna contradicción entre las dos salidas y el resultado matemático comprobado arriba.
+
+6. **ALCANCE — REPAIR_REQUIRED menor, documental.**
+
+   El informe distingue los resultados C1–C5 de la pendiente tomada de un trabajo anterior. No afirma novedad, isotropía cúbica, otros grupos ni otros valores de \(\theta\).
+
+   Además, la pendiente **sí puede comprobarse con el material adjunto**, aunque no la calcula este verificador. En el doblete \(\tau_z=+1\),
+   \[
+   P_+\Gamma_iP_+=a\sigma_iP_+,
+   \]
+   y la expansión alrededor de \(k=0\) da
+   \[
+   P_+A(k)P_+
+   =e^{-i\theta}\left(I_2-\frac{ia}{\sqrt3}\,k\cdot\sigma\right)
+   +O(|k|^2).
+   \]
+   La separación espectral en \(\theta=\pi/4\) permite obtener así la pendiente \(a/\sqrt3\). No hace falta aceptar como prueba la supuesta promoción en `CURRENT_STATE.md`.
+
+   La afirmación sobre la pérdida de rigidez es defendible para estos dobletes de Floquet y con la normalización espacial declarada. Conviene explicitar que compara esa pendiente con el cuerpo de soporte estricto; no demuestra una afirmación sobre un frente balístico definido por amplitudes.
+
+   **La discrepancia documental concreta** está en la cabecera del verificador: anuncia comprobaciones de proyectores `P`, pero no las ejecuta explícitamente. Su propiedad de proyector se deduce de las comprobaciones de hermiticidad e involución de \(\Gamma_i\).
+
+   **Reparación mínima:** sustituir esa descripción por «se comprueba que \(\Gamma_i\) son involuciones hermíticas; de ello se deduce que \(P_i^\pm\) son proyectores». No hace falta añadir pruebas redundantes.
+
+   Para precisar también la conclusión física, recomiendo esta formulación:
+
+   > C1–C5 certifican la isotropía declarada. La expansión espectral de la familia, calculada separadamente, da pendientes Weyl \(c_0=a/\sqrt3\) alrededor de las cuasienergías \(\pm\pi/4\). Con \(c_{\rm strict}^{\rm iso}=1/\sqrt3\), esta noción de isotropía no fija esa pendiente al pasar a dimensión interna cuatro.
+
+**Dictamen global: REPAIR_REQUIRED, limitado a documentación.** La conclusión matemática `DEP_ISOTROPIC_IN_DECLARED_L` recibe **PASS** para todo \(0<a<1\). La comparación histórica íntegra entre las ejecuciones permanece **OPEN** hasta disponer del diff.
+tokens used
+49,010
+La conclusión matemática de isotropía se sostiene: puede comprobarse algebraicamente con las definiciones adjuntas, sin depender del `PASS` del script. Hay una corrección documental menor y una limitación de trazabilidad entre ejecuciones.
+
+Esta revisión usa exclusivamente el material pegado. Las referencias a páginas corresponden al texto extraído adjunto; no he consultado el PDF ni ejecutado el verificador.
+
+1. **FIDELIDAD A LA FUENTE — PASS.**
+
+   El contrato reproduce correctamente la Definición 1 y la condición (2), separadas en la fuente —documento 7, p. 2—. También incorpora la exigencia previa de coeficientes no nulos.
+
+   Las condiciones que podrían quedar implícitas se cumplen aquí:
+
+   - **Automorfismos del grafo:** las medias vueltas son aplicaciones lineales invertibles que preservan el retículo generado por los cuatro vectores de paridad positiva y permutan esos generadores. Por tanto, preservan las aristas dirigidas y su coloreado mediante una permutación global.
+   - **Orden de los generadores:** todos tienen orden infinito. La transitividad exigida sobre cada \(S_+^n\) se reduce aquí a la transitividad sobre todo \(S_+\).
+   - **Elección de \(S_+\):** es el tetraedro
+     \[
+     \{(1,1,1),(1,-1,-1),(-1,1,-1),(-1,-1,1)\}/\sqrt3,
+     \]
+     cuyos elementos suman cero. Coincide con la presentación tetraédrica admitida para el BCC —p. 6, figura 1; p. 14—. El retículo generado es abstractamente \(\mathbb Z^3\); no debe confundirse con las coordenadas cartesianas enteras estándar.
+   - **Tratamiento de \(S_-\):** \(S_-=-S_+\), y \(l(-h)=-l(h)\). C2 verifica también sus coeficientes, cubriendo la covarianza completa de la ecuación (4). No se necesita imponer \(A_{-h}=A_h^\dagger\).
+   - **Fidelidad proyectiva:** ningún \(U_x,U_y,U_z\) es escalar y sus clases módulo fases son distintas. La representación es fiel también en sentido proyectivo.
+   - **Unitariedad del walk:** se obtiene del producto de exponenciales de involuciones hermíticas. La comprobación únicamente en \(k=0\) no bastaría, pero la construcción proporciona la prueba para todo \(k\).
+
+   No falta una exigencia de irreducibilidad de \(U\): la Definición 1 no la impone. Tampoco constituye un incumplimiento que \(\sum_h A_h=W\neq I\): la fuente admite multiplicar por una unitaria que conmute con la representación —pp. 3–4—.
+
+   El informe afirma satisfacer específicamente la condición (2). Eso es correcto; no debe ampliarse a una certificación de cualquier formulación adicional de homogeneidad mencionada en la referencia [23].
+
+2. **FAMILIA — PASS.**
+
+   La reconstrucción coincide con las secciones 2–4 del documento 3:
+
+   \[
+   T_x=b\tau_x+a\tau_z,\quad
+   T_y=b\tau_y+a\tau_z,\quad
+   T_z=-b\tau_x+a\tau_z.
+   \]
+
+   `TP(SIG[i], T[i])` mantiene el orden \(\sigma\otimes\tau\); `W` tiene las fases correctas para \(\theta=\pi/4\); y el producto de proyectores conserva el orden \(x,y,z\).
+
+   Con la convención declarada,
+   \[
+   e^{-iq_i\Gamma_i}=\sum_{s_i=\pm1}e^{-is_iq_i}P_i^{s_i},
+   \]
+   el coeficiente de \(e^{-ik\cdot h_s}\) es exactamente \(WP_x^{s_x}P_y^{s_y}P_z^{s_z}\). No hay inversión accidental de signos. La ausencia del factor \(1/\sqrt3\) en las claves del diccionario es inocua para C1–C5: esas claves representan etiquetas de desplazamiento, no cálculos métricos.
+
+   La acción utilizada en C2 también es correcta:
+   \[
+   U_l\Gamma_iU_l^\dagger=
+   \begin{cases}
+   \Gamma_i,&i=l,\\
+   -\Gamma_i,&i\ne l.
+   \end{cases}
+   \]
+   No se permutan los factores del producto. Además, estas rotaciones satisfacen \(l^{-1}=l=l^T\), por lo que aquí no hay discrepancia entre la acción sobre \(k\) y sobre los desplazamientos.
+
+3. **MÉTODO EXACTO DE C1 Y C4 — PASS.**
+
+   La sustitución por \(M_h\) es legítima:
+   \[
+   A_h=WM_h,\qquad [U_l,A_h]=W[U_l,M_h].
+   \]
+   Basta que \(W\) sea invertible y conmute con \(U_l\); el script comprueba ambas propiedades mediante su unitariedad y los tres conmutadores.
+
+   La parametrización es biyectiva sobre el arco solicitado. Su inversa es
+   \[
+   t=\frac{b}{1+a}\in(0,1).
+   \]
+   No se pierde ninguna rama compatible con \(0<a<1,\ b>0\).
+
+   Las entradas de \(M_h\) y de sus conmutadores son polinomios en \(a,b\) con coeficientes en \(\mathbb Q(i)\). Después de sustituir, puede usarse como denominador común
+   \[
+   8(1+t^2)^3,
+   \]
+   que no se anula en el intervalo real. Por tanto, pasar a numeradores no introduce ni elimina ceros allí.
+
+   Para \(t\) real, un numerador complejo se anula exactamente cuando se anulan sus partes real e imaginaria. El mcd de todos esos polinomios tiene precisamente sus ceros comunes. Los casos de polinomios nulos y mcd constante están tratados correctamente.
+
+   **Sobre `simplify` y las comparaciones:** sí se usa `simplify`, especialmente en `red` y `mzero`. No sería correcto describir todo el verificador como independiente de esa función. Sin embargo, las identidades se evalúan simbólicamente, sin tolerancias numéricas. El `float` aparece únicamente al ordenar resultados excepcionales, después de decidir su pertenencia al intervalo.
+
+   Hay una limitación de diseño: `zeros_in_domain` nunca devuelve `"UNDECIDED"`, de modo que la línea que imprime «pairs undecided: none» no aporta una comprobación adicional. Tampoco existe una rama explícita para una comparación de raíces que quedase sin resolver. Esto no refuta el resultado de esta familia, que admite el siguiente certificado directo.
+
+   **Segunda vía algebraica para C1 y C4.** Escribiendo \(J_i=\sigma_i\otimes I\), del producto definido se obtiene
+   \[
+   \operatorname{tr}(J_zM_h)=\frac{i}{2}s_xs_y a^2,\qquad
+   \operatorname{tr}(J_xM_h)=\frac{i}{2}s_ys_z a^2.
+   \]
+   Basta usar \(\operatorname{tr}(T_xT_y)=\operatorname{tr}(T_yT_z)=2a^2\) y las identidades de Pauli.
+
+   La primera expresión prueba \(M_h\neq0\). Por ciclicidad de la traza, además:
+   
+   | Conmutador | Testigo escalar |
+   |---|---|
+   | \([J_x,M_h]\) | \(\operatorname{tr}(J_y[J_x,M_h])=s_xs_y a^2\) |
+   | \([J_y,M_h]\) | \(\operatorname{tr}(J_x[J_y,M_h])=-s_xs_y a^2\) |
+   | \([J_z,M_h]\) | \(\operatorname{tr}(J_y[J_z,M_h])=-s_ys_z a^2\) |
+
+   Todos son no nulos para \(0<a<1\). Así quedan comprobados C1 y los 24 casos de C4 por una vía distinta del cálculo de raíces, sin asumir que las salidas del programa son correctas.
+
+4. **C2, C3 Y C5 — PASS.**
+
+   Las 24 identidades de C2 cubren los tres elementos no triviales y los ocho desplazamientos. Los ocho casos de la identidad son tautológicos.
+
+   En C3, comprobar una órbita por conjunto es suficiente: cada órbita calculada coincide con el conjunto completo. Las medias vueltas preservan la paridad y ningún elemento no trivial fija una terna con todas sus coordenadas iguales a \(\pm1\).
+
+   En C5 se comprueban los seis productos ordenados de elementos no triviales distintos y los tres cuadrados. Los productos con la identidad son inmediatos. Las fases son \(\pm i\) para ejes distintos y \(1\) para los cuadrados. La condición de cociclo se sigue de la asociatividad de las matrices; no hace falta una comprobación separada.
+
+   La unitariedad y fidelidad de los \(U_l\), y la extensión de las permutaciones a automorfismos del grafo, no aparecen como pruebas explícitas separadas en el código, pero quedan establecidas por las matrices y aplicaciones concretas anteriores.
+
+   La segunda lectura de C4 también es correcta:
+   \[
+   [U_l,M_h]=0\iff M_{l(h)}=M_h.
+   \]
+   Como reconoce el informe, esta equivalencia por sí sola no constituye una segunda comprobación.
+
+5. **EJECUCIONES — OPEN para la comparación histórica; PASS para su coherencia matemática.**
+
+   La primera salida registra una excepción durante la resolución simbólica y no contiene un veredicto final. No demuestra un fallo de isotropía.
+
+   El método de la segunda versión conserva exactamente la pregunta matemática: quitar el factor invertible \(W\) y parametrizar biyectivamente el dominio no cambia los conjuntos de ceros buscados. Las expectativas del código adjunto coinciden con C1–C5 del contrato.
+
+   Sin embargo, **no se adjunta el código de la ejecución 1 ni el diff entre versiones**. Por tanto, no puede certificarse que esos fueran los únicos cambios. La afirmación histórica «no expectation changed», los commits y su orden temporal permanecen **[UNVERIFIED]** en esta revisión.
+
+   Para cerrar este punto bastaría adjuntar el diff entre las dos versiones comprometidas. No encuentro ninguna contradicción entre las dos salidas y el resultado matemático comprobado arriba.
+
+6. **ALCANCE — REPAIR_REQUIRED menor, documental.**
+
+   El informe distingue los resultados C1–C5 de la pendiente tomada de un trabajo anterior. No afirma novedad, isotropía cúbica, otros grupos ni otros valores de \(\theta\).
+
+   Además, la pendiente **sí puede comprobarse con el material adjunto**, aunque no la calcula este verificador. En el doblete \(\tau_z=+1\),
+   \[
+   P_+\Gamma_iP_+=a\sigma_iP_+,
+   \]
+   y la expansión alrededor de \(k=0\) da
+   \[
+   P_+A(k)P_+
+   =e^{-i\theta}\left(I_2-\frac{ia}{\sqrt3}\,k\cdot\sigma\right)
+   +O(|k|^2).
+   \]
+   La separación espectral en \(\theta=\pi/4\) permite obtener así la pendiente \(a/\sqrt3\). No hace falta aceptar como prueba la supuesta promoción en `CURRENT_STATE.md`.
+
+   La afirmación sobre la pérdida de rigidez es defendible para estos dobletes de Floquet y con la normalización espacial declarada. Conviene explicitar que compara esa pendiente con el cuerpo de soporte estricto; no demuestra una afirmación sobre un frente balístico definido por amplitudes.
+
+   **La discrepancia documental concreta** está en la cabecera del verificador: anuncia comprobaciones de proyectores `P`, pero no las ejecuta explícitamente. Su propiedad de proyector se deduce de las comprobaciones de hermiticidad e involución de \(\Gamma_i\).
+
+   **Reparación mínima:** sustituir esa descripción por «se comprueba que \(\Gamma_i\) son involuciones hermíticas; de ello se deduce que \(P_i^\pm\) son proyectores». No hace falta añadir pruebas redundantes.
+
+   Para precisar también la conclusión física, recomiendo esta formulación:
+
+   > C1–C5 certifican la isotropía declarada. La expansión espectral de la familia, calculada separadamente, da pendientes Weyl \(c_0=a/\sqrt3\) alrededor de las cuasienergías \(\pm\pi/4\). Con \(c_{\rm strict}^{\rm iso}=1/\sqrt3\), esta noción de isotropía no fija esa pendiente al pasar a dimensión interna cuatro.
+
+**Dictamen global: REPAIR_REQUIRED, limitado a documentación.** La conclusión matemática `DEP_ISOTROPIC_IN_DECLARED_L` recibe **PASS** para todo \(0<a<1\). La comparación histórica íntegra entre las ejecuciones permanece **OPEN** hasta disponer del diff.

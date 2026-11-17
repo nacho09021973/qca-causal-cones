@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "finish_reason": "cli_exit_0",
+  "requested_model": "gpt-6-astra",
+  "input_sha256": "e4f0d590f7d4dc46b20fa1362ba9aa42223992c891da5bb44c8be743ad9c2ef2",
+  "started": "2026-11-17T10:13:39Z",
+  "finished": "2026-11-17T10:18:21Z",
+  "tool_commit": "7d111a158edda04a469b59f0d380cd69d35bbdea",
+  "script_sha256": "0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0",
+  "library_sha256": "af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c"
+}
