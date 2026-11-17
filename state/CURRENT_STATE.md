@@ -4147,3 +4147,15 @@ regrouping gate (OPEN_AFTER_REGROUPING_ATTEMPT), explicit map
 in `investigaciones/2026-11-17-c0-causal-body-prior-art/`. No contract
 open; nothing further authorized. Remaining standing novelty candidate in
 the repo: the IR-corona theorem (2026-11-02 entry), untouched here.
+
+**Repository paused — 2026-11-17:** user «deja el repositorio en pausa».
+No active line, no open contract, nothing authorized. Status at pause:
+Thirring coexistence line stopped (OPEN, no no-go); s=4 novelty candidacy
+closed; hexagonal M1 parked (2026-11-14); H1 paused under the L2 stop
+record; the IR-corona paper is closed as math-phys with its novelty
+candidacy standing (2026-11-02 entry, NOVELTY = OPEN, targeted search
+unreviewed). Reopening any line requires, before any computation, what is
+already known (with source), the concrete question and the result that
+would force abandoning the line, written into a new contract authorized
+by the user. Branch-local on `research/thirring-isolated-spectator`;
+promotion to `main` is a separate user decision.
