@@ -195,3 +195,15 @@ given a total input assignment). The identification of the character with
 the gate matrix in the computational basis is as restated by
 Terhal-DiVincenzo p.3; Valiant p.120 notes a complemented 0/1 reading
 "inessential".
+
+## S4 isotropy gate (DEP Definition 1) — acquired 2026-11-17
+
+| File | Source | SHA256 | Bytes |
+| --- | --- | --- | --- |
+| `1708.00826v2.pdf` | G. M. D'Ariano, M. Erba, P. Perinotti, *Isotropic quantum walks on lattices and the Weyl equation*, arXiv:1708.00826v2 (Phys. Rev. A 96, 062101), downloaded from `https://arxiv.org/pdf/1708.00826v2` | `dc4107946e6013640dd225bfd6792f8ff4be9cae48d4c9763a7d6da57bb91c81` | 1856564 |
+
+Read (in the alphaXiv full text of the same version, 2026-11-17): abstract,
+introduction, Sec. II (generating set with or without the identity,
+Definition 1, homogeneity condition (2)), d=1, d=2, d=3 solution passages,
+summary theorem, conclusions. Title and authors checked on p.1 of this PDF.
+Used by `theory/S4_DEP_ISOTROPY_GATE.md` and its execution report.
