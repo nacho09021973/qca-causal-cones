@@ -3981,3 +3981,19 @@ physical (3,-2) scattering comparison and delayed-window tail estimates
 remain unproved. No bridge PASS, no two-collision composition, no promotion.
 Permanent Lean source, successful axioms output and failed build retained
 in `formal/ThirringWindow/`; not the unrelated `formal/alice-layers/`.
+
+**Composition line closed (option B) — 2026-11-17:** documentary balance
+`reports/2026-11-17--thirring-composition-balance.md` (Claude, drafting
+only, no calculation). User «acepto el criterio, commit y registra B».
+Accepted abandonment criterion: a coexistence line is abandoned if, in its
+declared architecture, its best possible outcome is already known
+conditionally. Met here: under F, A5 makes crossings at chi=pi/2 in this
+code and resources matchgates, so completing F can only remove the
+condition from a negative. Two-successive-collision draft and delayed
+(3,-2) bridge closed at OPEN_MISSING_BOUND (obligations open: bridge,
+free gap, finite-mu second-window admission); not abandoned on any frozen
+technical criterion. A5 (conditional on F) and the isolated spectator
+corollary keep their promoted scope. No Thirring no-go. F=OPEN;
+COEXISTENCE=OPEN; NOVELTY=OPEN. Pending user choice: option C (chi not
+congruent to pi/2 mod pi, F as premise) or stopping the Thirring
+coexistence line. No contract open; nothing further authorized.
