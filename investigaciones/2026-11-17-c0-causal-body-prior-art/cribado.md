@@ -48,3 +48,33 @@ Read in full 1511.03992, 2112.11828 and 2007.01425, checking for an
 isotropic (Definition 1 of 1708.00826) walk with s>2 and adjustable speed.
 Then the 61 non-arXiv works (titles only so far), and the AF regrouping
 check. NOVELTY = OPEN.
+
+## Full-text reading of the three proposed papers — 2026-11-17
+
+User «autorizado». Read from `biblioteca/citas-s4-2026-11-17/` (pdftotext).
+
+- **1511.03992v3** (D'Ariano, Erba, Perinotti, Tosini, Virtually Abelian
+  QWs), read in full. Isotropy defined as in 1306.1934 (Sec. III, Eq. (4)),
+  classified by imposing sum_g A_g = I_s and then left-multiplying by a
+  unitary commuting with U (Eq. (5) and text). Examples: two planar
+  virtually Abelian groups, s=2 on the original graph; coarse-graining to
+  Z^2 with larger coin (4 and 2 cosets). Example A is massive
+  (mass sqrt(1-nu^2)); example B is "equivalent, up to shifts in
+  wave-vectors, to the Weyl QW one" (p.7). No isotropic s>2 walk on an
+  Abelian group with adjustable massless speed. RELATED, not SAME.
+  Side remark: their classification route (sum = I, then a commuting
+  unitary) is consistent with the s=4 family, whose sum is W ≠ I with W
+  commuting with U_l.
+- **2007.01425** (plasticity in 2D+1), searched in full text: coins are
+  2x2 unitaries (Theorem 1, Eq. (6)); speeds come from epsilon-dependent
+  coin angles in continuum-limit families; the word "isotrop" does not
+  occur. RELATED (tunable speed, s=2, no isotropy in the DEP sense).
+- **2112.11828** (thesis, 87 pp.), searched in full text: plastic QWs in
+  1D/2D/triangulations; isotropy mentioned only generically ("replaced by
+  the invariance under the action of a finite group of rotations", p.3);
+  speed/velocity fields set by epsilon-dependent coins; no isotropic s>2
+  walk with adjustable speed located. RELATED. Not read line by line.
+
+Outcome of this step: the restricted claim was not found in these three
+papers. Remaining: the 61 non-arXiv works (titles only), the AF
+regrouping check, a human expert. NOVELTY = OPEN.
