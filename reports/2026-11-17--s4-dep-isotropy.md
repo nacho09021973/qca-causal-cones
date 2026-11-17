@@ -43,8 +43,9 @@ their Ref. [23]) is certified.
 C1-C5 certify the declared isotropy only. The spectral expansion of the
 family, derived separately (all-parameter analytic proof in
 `theory/S4_STRICT_CONE_COUNTEREXAMPLE.md`, exact spot checks on a six-point
-a panel in `scripts/cert_Aa_s4_counterexample.py`, independently reviewed
-and promoted, `CURRENT_STATE.md` Sec. 4.1; not recomputed here), gives Weyl slopes
+a panel in `scripts/cert_Aa_s4_counterexample.py`; status
+COUNTEREXAMPLE_VERIFIED, independent review PASS, `CURRENT_STATE.md` Sec. 4.1;
+not recomputed here), gives Weyl slopes
 c_0 = a/sqrt3 about the quasienergies ±pi/4. With c_strict^iso = 1/sqrt3
 (strict exact-support body, same section), this isotropy notion does not
 fix that slope when the internal dimension is four. The comparison is with
