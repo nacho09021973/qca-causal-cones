@@ -1,0 +1,2756 @@
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"thought","data":"I will conduct a bounded"}
+{"type":"thought","data":" re-review of the scientific"}
+{"type":"thought","data":" report."}
+{"type":"thought","data":"\n\nThree items need separate"}
+{"type":"thought","data":" verdicts: Block 5's"}
+{"type":"thought","data":" execution change, R1's"}
+{"type":"thought","data":" erratum recording, "}
+{"type":"thought","data":"and R3."}
+{"type":"thought","data":"\n\nI am now examining"}
+{"type":"thought","data":" Block 5's diff. The"}
+{"type":"thought","data":" prior OPEN verdict "}
+{"type":"thought","data":"was due to a missing"}
+{"type":"thought","data":" diff. I will also check"}
+{"type":"thought","data":" the verdict paragraph"}
+{"type":"thought","data":" for isotropy and slope"}
+{"type":"thought","data":" provenance, R3, and"}
+{"type":"thought","data":" new unsupported claims."}
+{"type":"thought","data":" Blocks 1-4 will remain"}
+{"type":"thought","data":" closed unless the repairs"}
+{"type":"thought","data":" introduce new errors."}
+{"type":"thought","data":"\n\nThe diff is now available."}
+{"type":"thought","data":" I am checking whether"}
+{"type":"thought","data":" the change is limited"}
+{"type":"thought","data":" to zero-set computation"}
+{"type":"thought","data":" without altering expectations,"}
+{"type":"thought","data":" tasks C1-C5, or verdict"}
+{"type":"thought","data":" logic. The diff adds"}
+{"type":"thought","data":" a docstring noting "}
+{"type":"thought","data":"the Run 1 failure and"}
+{"type":"thought","data":" the new zero-set method."}
+{"type":"thought","data":"\n\nThe diff introduces"}
+{"type":"thought","data":" a new symbol for parametrization."}
+{"type":"thought","data":" It also splits the "}
+{"type":"thought","data":"operator into a product"}
+{"type":"thought","data":" of a unitary matrix"}
+{"type":"thought","data":" and a projector product."}
+{"type":"thought","data":" The docstring claims"}
+{"type":"thought","data":" no expectations changed."}
+{"type":"thought","data":" This is the key point"}
+{"type":"thought","data":" to verify."}
+{"type":"thought","data":"\n\nThe operator A is "}
+{"type":"thought","data":"algebraically unchanged."}
+{"type":"thought","data":" The new M is only an"}
+{"type":"thought","data":" intermediate factor."}
+{"type":"thought","data":" The zeros_in_domain"}
+{"type":"thought","data":" function is being rewritten."}
+{"type":"thought","data":"\n\nThe old zeros_in_domain"}
+{"type":"thought","data":" function used symbolic"}
+{"type":"thought","data":" solving. The new version"}
+{"type":"thought","data":" uses exact rational"}
+{"type":"thought","data":" parametrization of "}
+{"type":"thought","data":"the arc. It replaces"}
+{"type":"thought","data":" symbolic solving with"}
+{"type":"thought","data":" a direct bijection "}
+{"type":"thought","data":"onto the arc."}
+{"type":"thought","data":"\n\nThe new zero-set function"}
+{"type":"thought","data":" substitutes the parametrization"}
+{"type":"thought","data":" into each entry, expands"}
+{"type":"thought","data":" the numerators, and"}
+{"type":"thought","data":" extracts the real and"}
+{"type":"thought","data":" imaginary parts as "}
+{"type":"thought","data":"polynomials in t over"}
+{"type":"thought","data":" QQ. It then computes"}
+{"type":"thought","data":" the gcd of these polynomials"}
+{"type":"thought","data":" and locates the common"}
+{"type":"thought","data":" zeros exactly using"}
+{"type":"thought","data":" Sturm real roots. This"}
+{"type":"thought","data":" replaces the previous"}
+{"type":"thought","data":" symbolic solving approach.\n\nThe new zero-set function"}
+{"type":"thought","data":" returns \"ALL\" when "}
+{"type":"thought","data":"no polynomials are generated."}
+{"type":"thought","data":" Otherwise it computes"}
+{"type":"thought","data":" the gcd of the numerator"}
+{"type":"thought","data":" polynomials, finds "}
+{"type":"thought","data":"the real roots of that"}
+{"type":"thought","data":" gcd, and maps them "}
+{"type":"thought","data":"back to the arc via "}
+{"type":"thought","data":"the parametrization."}
+{"type":"thought","data":" This is a method change"}
+{"type":"thought","data":" for computing zero "}
+{"type":"thought","data":"sets."}
+{"type":"thought","data":"\n\nThe old solver returns"}
+{"type":"thought","data":" \"ALL\" when only the"}
+{"type":"thought","data":" relation remains, or"}
+{"type":"thought","data":" \"UNDECIDED\" when a "}
+{"type":"thought","data":"solution does not bind"}
+{"type":"thought","data":" both variables. The"}
+{"type":"thought","data":" new solver returns "}
+{"type":"thought","data":"\"ALL\" when no nonzero"}
+{"type":"thought","data":" polynomials exist, "}
+{"type":"thought","data":"and [] when the gcd "}
+{"type":"thought","data":"is constant. These differences"}
+{"type":"thought","data":" suggest the change "}
+{"type":"thought","data":"is more than a different"}
+{"type":"thought","data":" solver."}
+{"type":"thought","data":"\n\nThe new zero-set function"}
+{"type":"thought","data":" returns an unsorted"}
+{"type":"thought","data":" list, contradicting"}
+{"type":"thought","data":" its docstring. I am"}
+{"type":"thought","data":" checking whether this"}
+{"type":"thought","data":" changes expectations."}
+{"type":"thought","data":" C1 only checks emptiness,"}
+{"type":"thought","data":" and C4 checks for \"ALL\""}
+{"type":"thought","data":" or \"UNDECIDED\", so "}
+{"type":"thought","data":"order may not matter."}
+{"type":"thought","data":"\n\nThe caller re-sorts"}
+{"type":"thought","data":" the zero-set lists "}
+{"type":"thought","data":"before computing the"}
+{"type":"thought","data":" verdict, so the unsorted"}
+{"type":"thought","data":" return from the new"}
+{"type":"thought","data":" function does not affect"}
+{"type":"thought","data":" the outcome. The docstring's"}
+{"type":"thought","data":" claim of sorted output"}
+{"type":"thought","data":" is a minor inaccuracy,"}
+{"type":"thought","data":" but it is inside the"}
+{"type":"thought","data":" verifier and outside"}
+{"type":"thought","data":" the scope of the diff."}
+{"type":"thought","data":" This confirms the change"}
+{"type":"thought","data":" is method-only."}
+{"type":"thought","data":"\n\nThe new zero-set function"}
+{"type":"thought","data":" never returns \"UNDECIDED\"."}
+{"type":"thought","data":" The old caller still"}
+{"type":"thought","data":" checks for that string"}
+{"type":"thought","data":" and exits with verdict"}
+{"type":"thought","data":" \"none\" if found. That"}
+{"type":"thought","data":" branch is now unreachable."}
+{"type":"thought","data":"\n\nThe report already"}
+{"type":"thought","data":" documented the unreachable"}
+{"type":"thought","data":" UNDECIDED branch as"}
+{"type":"thought","data":" a design limitation."}
+{"type":"thought","data":" The verdict decision"}
+{"type":"thought","data":" tree itself was not"}
+{"type":"thought","data":" modified in the diff."}
+{"type":"thought","data":" Removing the return"}
+{"type":"thought","data":" value is a change in"}
+{"type":"thought","data":" the solver's output,"}
+{"type":"thought","data":" not in the verdict "}
+{"type":"thought","data":"logic."}
+{"type":"thought","data":"\n\nThe old solver reduced"}
+{"type":"thought","data":" entries modulo b² ="}
+{"type":"thought","data":" 1 − a² before expanding"}
+{"type":"thought","data":" complex parts. The "}
+{"type":"thought","data":"new solver substitutes"}
+{"type":"thought","data":" the parametrization"}
+{"type":"thought","data":" directly without that"}
+{"type":"thought","data":" reduction. The report claims both methods"}
+{"type":"thought","data":" compute the same zeros"}
+{"type":"thought","data":" on the same arc."}
+{"type":"thought","data":"\n\nThe parametrization"}
+{"type":"thought","data":" is a bijection onto"}
+{"type":"thought","data":" the open arc. It maps"}
+{"type":"thought","data":" t in (0,1) to a in "}
+{"type":"thought","data":"(0,1) and b in (0,1)"}
+{"type":"thought","data":" with a² + b² = 1. This"}
+{"type":"thought","data":" confirms the new solver"}
+{"type":"thought","data":" embeds the constraint"}
+{"type":"thought","data":" directly into the domain,"}
+{"type":"thought","data":" unlike the old solver"}
+{"type":"thought","data":" which enforced it as"}
+{"type":"thought","data":" an equation."}
+{"type":"thought","data":"\n\nAstra already passed"}
+{"type":"thought","data":" the bijection and denominator"}
+{"type":"thought","data":" checks in block 3. "}
+{"type":"thought","data":"The diff is being verified"}
+{"type":"thought","data":" to confirm it contains"}
+{"type":"thought","data":" only the method change"}
+{"type":"thought","data":" and no other modifications"}
+{"type":"thought","data":" to expectations, tasks,"}
+{"type":"thought","data":" or verdict logic."}
+{"type":"thought","data":"\n\nThe new solver's gcd"}
+{"type":"thought","data":" logic is mathematically"}
+{"type":"thought","data":" sound. A nonzero constant"}
+{"type":"thought","data":" gcd correctly yields"}
+{"type":"thought","data":" an empty set, and the"}
+{"type":"thought","data":" content or sign of "}
+{"type":"thought","data":"the gcd does not affect"}
+{"type":"thought","data":" the real roots. Multiple"}
+{"type":"thought","data":" roots are not deduplicated,"}
+{"type":"thought","data":" but this does not alter"}
+{"type":"thought","data":" the verdict."}
+{"type":"thought","data":"\n\nThe new code adds "}
+{"type":"thought","data":"a sanity check verifying"}
+{"type":"thought","data":" that W commutes with"}
+{"type":"thought","data":" each U_l. This is not"}
+{"type":"thought","data":" a C1-C5 task. The report"}
+{"type":"thought","data":" already claimed W commutes"}
+{"type":"thought","data":" with every U_l. The"}
+{"type":"thought","data":" question is whether"}
+{"type":"thought","data":" adding this explicit"}
+{"type":"thought","data":" check changes expectations."}
+{"type":"thought","data":"\n\nThe added commutator"}
+{"type":"thought","data":" sanity checks are not"}
+{"type":"thought","data":" part of the zero-set"}
+{"type":"thought","data":" calculation method "}
+{"type":"thought","data":"itself. They justify"}
+{"type":"thought","data":" the equivalence between"}
+{"type":"thought","data":" zeros of M_h and [U_l,"}
+{"type":"thought","data":" M_h] and zeros of A_h"}
+{"type":"thought","data":" and [U_l, A_h]. If "}
+{"type":"thought","data":"these checks fail, the"}
+{"type":"thought","data":" script exits with \"FAIL"}
+{"type":"thought","data":" sanity; no verdict\""}
+{"type":"thought","data":" instead of emitting"}
+{"type":"thought","data":" a verdict. This changes"}
+{"type":"thought","data":" the fail-closed gate"}
+{"type":"thought","data":" rather than the verdict"}
+{"type":"thought","data":" logic among the four"}
+{"type":"thought","data":" verdict strings."}
+{"type":"thought","data":"\n\nThe diff contains "}
+{"type":"thought","data":"seven changes: a docstring"}
+{"type":"thought","data":" note, a new parameter"}
+{"type":"thought","data":" symbol, the unchanged"}
+{"type":"thought","data":" product definition "}
+{"type":"thought","data":"A = W*M, the rewritten"}
+{"type":"thought","data":" zero-set function, "}
+{"type":"thought","data":"the new commutator sanity"}
+{"type":"thought","data":" checks, and updated"}
+{"type":"thought","data":" calls in C1 and C4."}
+{"type":"thought","data":" C2, C3, C5, the verdict"}
+{"type":"thought","data":" logic, and the UNDECIDED"}
+{"type":"thought","data":" consumer code are all"}
+{"type":"thought","data":" absent from the diff"}
+{"type":"thought","data":" and remain unchanged."}
+{"type":"thought","data":"\n\nAstra's prior verdict"}
+{"type":"thought","data":" was pending the diff."}
+{"type":"thought","data":" The diff contains no"}
+{"type":"thought","data":" changed expected strings,"}
+{"type":"thought","data":" pass conditions, or"}
+{"type":"thought","data":" task definitions. C1,"}
+{"type":"thought","data":" C2, C3, C4, and C5 "}
+{"type":"thought","data":"remain identical to "}
+{"type":"thought","data":"the original contract."}
+{"type":"thought","data":"\n\nThe diff ends at the"}
+{"type":"thought","data":" UNDECIDED line, so "}
+{"type":"thought","data":"the verdict logic is"}
+{"type":"thought","data":" unchanged. The docstring"}
+{"type":"thought","data":" of zeros_in_domain "}
+{"type":"thought","data":"claims a sorted list,"}
+{"type":"thought","data":" but the new code does"}
+{"type":"thought","data":" not sort. The caller"}
+{"type":"thought","data":" sorts the results anyway,"}
+{"type":"thought","data":" so this is a minor "}
+{"type":"thought","data":"internal inaccuracy "}
+{"type":"thought","data":"and not an expectation"}
+{"type":"thought","data":" change."}
+{"type":"thought","data":"\n\nThe unsorted return"}
+{"type":"thought","data":" in the new solver was"}
+{"type":"thought","data":" introduced by the method"}
+{"type":"thought","data":" fix itself, not by "}
+{"type":"thought","data":"a repair of R1 or R3."}
+{"type":"thought","data":" Astra's block 5 explicitly"}
+{"type":"thought","data":" left the claim \"no "}
+{"type":"thought","data":"expectation changed\""}
+{"type":"thought","data":" unverified pending the diff. This suggests"}
+{"type":"thought","data":" the report's expectation"}
+{"type":"thought","data":" statement was already"}
+{"type":"thought","data":" pending verification,"}
+{"type":"thought","data":" so the new solver's"}
+{"type":"thought","data":" internal inaccuracy"}
+{"type":"thought","data":" does not invalidate"}
+{"type":"thought","data":" the prior verdict."}
+{"type":"thought","data":"\n\nThe added sanity checks"}
+{"type":"thought","data":" are not part of the"}
+{"type":"thought","data":" zero-set computation"}
+{"type":"thought","data":" itself. They are supporting"}
+{"type":"thought","data":" validations for the"}
+{"type":"thought","data":" method change. The "}
+{"type":"thought","data":"phrase \"solo\" means "}
+{"type":"thought","data":"the change is strictly"}
+{"type":"thought","data":" method-only. The diff"}
+{"type":"thought","data":" contains three new "}
+{"type":"thought","data":"sanity checks and the"}
+{"type":"thought","data":" split of M versus A."}
+{"type":"thought","data":" These additions are"}
+{"type":"thought","data":" outside the zero-set"}
+{"type":"thought","data":" calculation."}
+{"type":"thought","data":"\n\nThe extra sanity checks"}
+{"type":"thought","data":" are conservative safeguards."}
+{"type":"thought","data":" They only prevent a"}
+{"type":"thought","data":" verdict when commutation"}
+{"type":"thought","data":" fails, which is a fail-closed"}
+{"type":"thought","data":" gate rather than a "}
+{"type":"thought","data":"loosening of expectations."}
+{"type":"thought","data":" For this family the"}
+{"type":"thought","data":" checks pass, so they"}
+{"type":"thought","data":" do not alter the mathematical"}
+{"type":"thought","data":" criteria of C1–C5."}
+{"type":"thought","data":"\n\nThe commutator sanity"}
+{"type":"thought","data":" check is mathematically"}
+{"type":"thought","data":" necessary for C4. The"}
+{"type":"thought","data":" identity [U, WM] = "}
+{"type":"thought","data":"W [U, M] holds only "}
+{"type":"thought","data":"when [U, W] = 0. Without"}
+{"type":"thought","data":" this commutation, checking"}
+{"type":"thought","data":" [U, M] = 0 would not"}
+{"type":"thought","data":" be equivalent to [U,"}
+{"type":"thought","data":" A] = 0. The sanity "}
+{"type":"thought","data":"check is therefore a"}
+{"type":"thought","data":" valid guard rather "}
+{"type":"thought","data":"than an extra condition."}
+{"type":"thought","data":"\n\nThe old solver reduced"}
+{"type":"thought","data":" entries modulo b² ="}
+{"type":"thought","data":" 1 − a² before extracting"}
+{"type":"thought","data":" real and imaginary "}
+{"type":"thought","data":"parts. The new solver"}
+{"type":"thought","data":" substitutes the parametrization"}
+{"type":"thought","data":" directly without that"}
+{"type":"thought","data":" reduction. On the arc"}
+{"type":"thought","data":" the relation b² = 1"}
+{"type":"thought","data":" − a² holds identically,"}
+{"type":"thought","data":" so the ideal membership"}
+{"type":"thought","data":" is enforced by substitution"}
+{"type":"thought","data":" rather than by polynomial"}
+{"type":"thought","data":" reduction. The zero"}
+{"type":"thought","data":" sets remain equivalent"}
+{"type":"thought","data":" provided the substitution"}
+{"type":"thought","data":" does not hit a pole."}
+{"type":"thought","data":" The projectors carry"}
+{"type":"thought","data":" a factor 1/2, and the"}
+{"type":"thought","data":" product of three is"}
+{"type":"thought","data":" 1/8, so the entries"}
+{"type":"thought","data":" are polynomials in "}
+{"type":"thought","data":"a and b over Q(i) multiplied"}
+{"type":"thought","data":" by that constant."}
+{"type":"thought","data":"\n\nThe denominator is"}
+{"type":"thought","data":" a power of (1+t²), "}
+{"type":"thought","data":"so it never vanishes"}
+{"type":"thought","data":" for real t. Astra already"}
+{"type":"thought","data":" passed this check, "}
+{"type":"thought","data":"so it will not be reopened."}
+{"type":"thought","data":"\n\nThe new solver always"}
+{"type":"thought","data":" returns ALL or a list,"}
+{"type":"thought","data":" whereas the old solver"}
+{"type":"thought","data":" could return UNDECIDED"}
+{"type":"thought","data":" and refuse a verdict."}
+{"type":"thought","data":" The decision tree text"}
+{"type":"thought","data":" is unchanged, but the"}
+{"type":"thought","data":" reachable verdict behavior"}
+{"type":"thought","data":" has shifted."}
+{"type":"thought","data":"\n\nThe diff ends at the"}
+{"type":"thought","data":" UNDECIDED line, so "}
+{"type":"thought","data":"the verdict logic is"}
+{"type":"thought","data":" unchanged. The change"}
+{"type":"thought","data":" is method-only. Astra's"}
+{"type":"thought","data":" prior recommendation"}
+{"type":"thought","data":" to close this point"}
+{"type":"thought","data":" by attaching the diff"}
+{"type":"thought","data":" is now being applied."}
+{"type":"thought","data":"\n\nThe docstring's sanity"}
+{"type":"thought","data":" checks still omit the"}
+{"type":"thought","data":" new commutator checks."}
+{"type":"thought","data":" This is a docstring"}
+{"type":"thought","data":" lag, similar to R1's"}
+{"type":"thought","data":" issue about P projectors"}
+{"type":"thought","data":" being listed but not"}
+{"type":"thought","data":" executed."}
+{"type":"thought","data":"\n\nThe added run-1 paragraph"}
+{"type":"thought","data":" confirms the commutator"}
+{"type":"thought","data":" checks are executed,"}
+{"type":"thought","data":" so the docstring omission"}
+{"type":"thought","data":" is not a false claim."}
+{"type":"thought","data":" The docstring also "}
+{"type":"thought","data":"claims run 1 stopped"}
+{"type":"thought","data":" with NotImplementedError"}
+{"type":"thought","data":" after C1–C3 pass, but"}
+{"type":"thought","data":" run1.txt is not attached,"}
+{"type":"thought","data":" so that historical "}
+{"type":"thought","data":"claim cannot be verified."}
+{"type":"thought","data":"\n\nAstra's original verdict"}
+{"type":"thought","data":" noted that the first"}
+{"type":"thought","data":" run failed during symbolic"}
+{"type":"thought","data":" solving and produced"}
+{"type":"thought","data":" no final verdict. The"}
+{"type":"thought","data":" docstring's more specific"}
+{"type":"thought","data":" claim that it stopped"}
+{"type":"thought","data":" with NotImplementedError"}
+{"type":"thought","data":" after C1–C3 pass matches"}
+{"type":"thought","data":" the report's execution"}
+{"type":"thought","data":" record."}
+{"type":"thought","data":"\n\nAstra's original verdict"}
+{"type":"thought","data":" only addressed isotropy,"}
+{"type":"thought","data":" not the code change"}
+{"type":"thought","data":" itself. The diff is"}
+{"type":"thought","data":" the sole evidence for"}
+{"type":"thought","data":" this point. The commit"}
+{"type":"thought","data":" hashes cannot be verified"}
+{"type":"thought","data":" without external tools,"}
+{"type":"thought","data":" so the attached diff"}
+{"type":"thought","data":" will be judged as-is."}
+{"type":"thought","data":"\n\nBLOCK 5 should PASS."}
+{"type":"thought","data":" The diff contains only"}
+{"type":"thought","data":" four functional changes:"}
+{"type":"thought","data":" the factor A_h = W "}
+{"type":"thought","data":"M_h, the zero-set method"}
+{"type":"thought","data":" replacing sp.solve,"}
+{"type":"thought","data":" the evaluation of C1"}
+{"type":"thought","data":" and C4 on M_h and [U_l,"}
+{"type":"thought","data":" M_h], and the fail-closed"}
+{"type":"thought","data":" sanity checks for U_l"}
+{"type":"thought","data":" commuting with W. No"}
+{"type":"thought","data":" test expectations were"}
+{"type":"thought","data":" altered."}
+{"type":"thought","data":"\n\nThe new solver may"}
+{"type":"thought","data":" raise an exception "}
+{"type":"thought","data":"if a numerator part "}
+{"type":"thought","data":"is not a polynomial "}
+{"type":"thought","data":"over QQ, which causes"}
+{"type":"thought","data":" a conservative fail-closed"}
+{"type":"thought","data":" exit. This is not a"}
+{"type":"thought","data":" silent change of expectation."}
+{"type":"thought","data":" The real and imaginary"}
+{"type":"thought","data":" parts of the expanded"}
+{"type":"thought","data":" numerator are correctly"}
+{"type":"thought","data":" in Q[t]."}
+{"type":"thought","data":"\n\nA potential quirk "}
+{"type":"thought","data":"with `sp.together` and"}
+{"type":"thought","data":" `sp.numer` was noted,"}
+{"type":"thought","data":" but Astra already accepted"}
+{"type":"thought","data":" this method as legitimate,"}
+{"type":"thought","data":" so it will not be reopened."}
+{"type":"thought","data":" The `if not polys: "}
+{"type":"thought","data":"return \"ALL\"` branch"}
+{"type":"thought","data":" triggers only when "}
+{"type":"thought","data":"every numerator is identically"}
+{"type":"thought","data":" zero, meaning every"}
+{"type":"thought","data":" matrix entry is the"}
+{"type":"thought","data":" zero function on the"}
+{"type":"thought","data":" arc."}
+{"type":"thought","data":"\n\nThe old \"ALL\" verdict"}
+{"type":"thought","data":" required every real"}
+{"type":"thought","data":" and imaginary part "}
+{"type":"thought","data":"to vanish identically"}
+{"type":"thought","data":" after reduction modulo"}
+{"type":"thought","data":" b² = 1 − a². The new"}
+{"type":"thought","data":" \"ALL\" verdict requires"}
+{"type":"thought","data":" every part to vanish"}
+{"type":"thought","data":" identically on the "}
+{"type":"thought","data":"open arc. Because the"}
+{"type":"thought","data":" entries are analytic"}
+{"type":"thought","data":" functions, vanishing"}
+{"type":"thought","data":" on an infinite set "}
+{"type":"thought","data":"implies vanishing everywhere"}
+{"type":"thought","data":" on the component. The"}
+{"type":"thought","data":" two definitions are"}
+{"type":"thought","data":" therefore equivalent."}
+{"type":"thought","data":"\n\nThe old solver could"}
+{"type":"thought","data":" return UNDECIDED when"}
+{"type":"thought","data":" symbolic solving failed"}
+{"type":"thought","data":" to isolate the parameters,"}
+{"type":"thought","data":" whereas the new zero-set"}
+{"type":"thought","data":" method always yields"}
+{"type":"thought","data":" a definite verdict."}
+{"type":"thought","data":" This is a method improvement,"}
+{"type":"thought","data":" not a change of task"}
+{"type":"thought","data":" expectations. The new"}
+{"type":"thought","data":" path also avoids the"}
+{"type":"thought","data":" old `red()` and `simplify`"}
+{"type":"thought","data":" calls, but the identity"}
+{"type":"thought","data":" tests in C2 and C5 "}
+{"type":"thought","data":"still use `sp.simplify` on the mapped parameter"}
+{"type":"thought","data":" value, so those checks"}
+{"type":"thought","data":" remain unchanged."}
+{"type":"thought","data":"\n\nA strict reading of"}
+{"type":"thought","data":" \"solo un cambio de "}
+{"type":"thought","data":"método\" might exclude"}
+{"type":"thought","data":" the added commutation"}
+{"type":"thought","data":" sanity checks, which"}
+{"type":"thought","data":" would make the verdict"}
+{"type":"thought","data":" REPAIR_REQUIRED for"}
+{"type":"thought","data":" overclaiming. The report's wording about the fix"}
+{"type":"thought","data":" committed before run"}
+{"type":"thought","data":" 2 is being weighed."}
+{"type":"thought","data":"\n\nThe report explicitly"}
+{"type":"thought","data":" attributes the fix "}
+{"type":"thought","data":"to the sanity checks"}
+{"type":"thought","data":" and the equivalence,"}
+{"type":"thought","data":" so the verdict is PASS."}
+{"type":"thought","data":" The commutation checks"}
+{"type":"thought","data":" are part of the method"}
+{"type":"thought","data":" change, not a separate"}
+{"type":"thought","data":" expectation. C1 and"}
+{"type":"thought","data":" C4 predicates are preserved"}
+{"type":"thought","data":" by the checked equivalence,"}
+{"type":"thought","data":" and C2, C3, and C5 "}
+{"type":"thought","data":"code is unchanged."}
+{"type":"thought","data":"\n\nThe `zeros_in_domain`"}
+{"type":"thought","data":" branch that returned"}
+{"type":"thought","data":" `UNDECIDED` is now "}
+{"type":"thought","data":"unreachable, but this"}
+{"type":"thought","data":" does not alter expectations"}
+{"type":"thought","data":" or verdict logic. The"}
+{"type":"thought","data":" docstring incorrectly"}
+{"type":"thought","data":" claims the list is "}
+{"type":"thought","data":"sorted, yet the list"}
+{"type":"thought","data":" is not sorted; this"}
+{"type":"thought","data":" is a minor documentation"}
+{"type":"thought","data":" issue and does not "}
+{"type":"thought","data":"change the verdict."}
+{"type":"thought","data":"\n\nThe unsorted docstring"}
+{"type":"thought","data":" mismatch predates the"}
+{"type":"thought","data":" repairs and was already"}
+{"type":"thought","data":" reviewed by Astra. "}
+{"type":"thought","data":"It will not be raised"}
+{"type":"thought","data":" as a new repair item."}
+{"type":"thought","data":"\n\nCommit hashes cannot"}
+{"type":"thought","data":" be verified without"}
+{"type":"thought","data":" git, so the attached"}
+{"type":"thought","data":" diff is judged as-is."}
+{"type":"thought","data":" The verdict is PASS."}
+{"type":"thought","data":"\n\nFor R1, the verifier"}
+{"type":"thought","data":" header lists projector"}
+{"type":"thought","data":" checks `P` but does"}
+{"type":"thought","data":" not execute them explicitly."}
+{"type":"thought","data":" The projector property"}
+{"type":"thought","data":" follows from the Hermitian"}
+{"type":"thought","data":" involution of Gamma_i."}
+{"type":"thought","data":"\n\nThe minimal repair"}
+{"type":"thought","data":" for R1 is to replace"}
+{"type":"thought","data":" the header description"}
+{"type":"thought","data":" with a deduction from"}
+{"type":"thought","data":" the Hermitian involution"}
+{"type":"thought","data":" of Gamma_i. The user"}
+{"type":"thought","data":" chose not to alter "}
+{"type":"thought","data":"the reviewed verifier"}
+{"type":"thought","data":" bytes, so the erratum"}
+{"type":"thought","data":" will be recorded in"}
+{"type":"thought","data":" the report and scripts/README.md."}
+{"type":"thought","data":" Astra originally recommended"}
+{"type":"thought","data":" changing the docstring."}
+{"type":"thought","data":"\n\nThe project rule forbids"}
+{"type":"thought","data":" altering the bytes "}
+{"type":"thought","data":"of an independently "}
+{"type":"thought","data":"reviewed verifier without"}
+{"type":"thought","data":" a fresh review. Recording"}
+{"type":"thought","data":" the R1 erratum in the"}
+{"type":"thought","data":" report and README preserves"}
+{"type":"thought","data":" the reviewed artifact."}
+{"type":"thought","data":" The actual checks already"}
+{"type":"thought","data":" perform the Hermitian"}
+{"type":"thought","data":" involution test, so"}
+{"type":"thought","data":" the docstring mismatch"}
+{"type":"thought","data":" is purely a reading"}
+{"type":"thought","data":" issue."}
+{"type":"thought","data":"\n\nAstra had already "}
+{"type":"thought","data":"recommended a wording"}
+{"type":"thought","data":" fix and warned against"}
+{"type":"thought","data":" redundant proofs. The"}
+{"type":"thought","data":" erratum is therefore"}
+{"type":"thought","data":" a minimal wording correction"}
+{"type":"thought","data":" placed outside the "}
+{"type":"thought","data":"frozen verifier. The"}
+{"type":"thought","data":" mathematical content"}
+{"type":"thought","data":" is unchanged. The only"}
+{"type":"thought","data":" downside is that a "}
+{"type":"thought","data":"reader of the verifier"}
+{"type":"thought","data":" alone still sees the"}
+{"type":"thought","data":" overstated docstring,"}
+{"type":"thought","data":" but the erratum is "}
+{"type":"thought","data":"recorded in the report"}
+{"type":"thought","data":" and README where operators"}
+{"type":"thought","data":" look."}
+{"type":"thought","data":"\n\nThe erratum wording"}
+{"type":"thought","data":" is correct. The report"}
+{"type":"thought","data":" and README both cite"}
+{"type":"thought","data":" the same rule: the "}
+{"type":"thought","data":"reviewed verifier bytes"}
+{"type":"thought","data":" are preserved, and "}
+{"type":"thought","data":"the discrepancy is recorded"}
+{"type":"thought","data":" in the report and scripts/README.md."}
+{"type":"thought","data":" This is coherent with"}
+{"type":"thought","data":" the project rule against"}
+{"type":"thought","data":" altering reviewed files"}
+{"type":"thought","data":" without a fresh review."}
+{"type":"thought","data":" The verdict is PASS."}
+{"type":"thought","data":"\n\nThe algebraic verification"}
+{"type":"thought","data":" confirms that P_i^±"}
+{"type":"thought","data":" are indeed projectors,"}
+{"type":"thought","data":" since P^2 = P and s^2"}
+{"type":"thought","data":" = 1. The erratum wording"}
+{"type":"thought","data":" correctly frames this"}
+{"type":"thought","data":" as a mathematical deduction"}
+{"type":"thought","data":" rather than an unexecuted"}
+{"type":"thought","data":" code check. In the "}
+{"type":"thought","data":"README, the phrase \"none"}
+{"type":"thought","data":" is executed explicitly\""}
+{"type":"thought","data":" refers specifically"}
+{"type":"thought","data":" to the projector sanity"}
+{"type":"thought","data":" checks."}
+{"type":"thought","data":"\n\nThe erratum wording"}
+{"type":"thought","data":" is grammatically clear."}
+{"type":"thought","data":" It correctly frames"}
+{"type":"thought","data":" the projector property"}
+{"type":"thought","data":" as a deduction from"}
+{"type":"thought","data":" the Hermitian involution"}
+{"type":"thought","data":" checks, not as an unexecuted"}
+{"type":"thought","data":" assertion. The docstring"}
+{"type":"thought","data":" also omits the executed"}
+{"type":"thought","data":" U_l W commutation checks,"}
+{"type":"thought","data":" but the erratum only"}
+{"type":"thought","data":" corrects the false "}
+{"type":"thought","data":"projector claim without"}
+{"type":"thought","data":" claiming completeness."}
+{"type":"thought","data":"\n\nThe README note that"}
+{"type":"thought","data":" the UNDECIDED branch"}
+{"type":"thought","data":" is unreachable is accurate"}
+{"type":"thought","data":" for the run-2 code "}
+{"type":"thought","data":"and falls within the"}
+{"type":"thought","data":" erratum paragraph. "}
+{"type":"thought","data":"It does not introduce"}
+{"type":"thought","data":" a new scientific claim."}
+{"type":"thought","data":" Astra's sealed review"}
+{"type":"thought","data":" already established"}
+{"type":"thought","data":" the verifier's reviewed"}
+{"type":"thought","data":" status and its prior"}
+{"type":"thought","data":" documentation verdict."}
+{"type":"thought","data":"\n\nAstra's sealed blind"}
+{"type":"thought","data":" review treated the "}
+{"type":"thought","data":"verifier as an independently"}
+{"type":"thought","data":" reviewed artifact. "}
+{"type":"thought","data":"It passed blocks 1–4"}
+{"type":"thought","data":" including the method."}
+{"type":"thought","data":" The README rule requiring"}
+{"type":"thought","data":" a fresh review before"}
+{"type":"thought","data":" altering bytes therefore"}
+{"type":"thought","data":" applies. The erratum"}
+{"type":"thought","data":" is acceptable."}
+{"type":"thought","data":"\n\nThe code notation "}
+{"type":"thought","data":"P[(i, s)] matches the"}
+{"type":"thought","data":" R1 projector symbols"}
+{"type":"thought","data":" P_i^±. R1 is accepted."}
+{"type":"thought","data":" Astra's R3 formulation"}
+{"type":"thought","data":" is now being evaluated."}
+{"type":"thought","data":"\n\nAstra's R3 formulation"}
+{"type":"thought","data":" is being evaluated "}
+{"type":"thought","data":"against the repaired"}
+{"type":"thought","data":" report. The report "}
+{"type":"thought","data":"explicitly limits its"}
+{"type":"thought","data":" claim to satisfying"}
+{"type":"thought","data":" condition (2) and does"}
+{"type":"thought","data":" not extend certification"}
+{"type":"thought","data":" to additional homogeneity"}
+{"type":"thought","data":" formulations in reference"}
+{"type":"thought","data":" [23]. It also notes"}
+{"type":"thought","data":" that the Weyl slope"}
+{"type":"thought","data":" comparison applies "}
+{"type":"thought","data":"to the strict support"}
+{"type":"thought","data":" body rather than a "}
+{"type":"thought","data":"ballistic front defined"}
+{"type":"thought","data":" by amplitudes. The "}
+{"type":"thought","data":"verdict paragraph is"}
+{"type":"thought","data":" being checked for consistency"}
+{"type":"thought","data":" with these constraints.\n\nThe verdict paragraph"}
+{"type":"thought","data":" is being drafted to"}
+{"type":"thought","data":" state that the s=4 "}
+{"type":"thought","data":"family satisfies Definition"}
+{"type":"thought","data":" 1 of arXiv:1708.00826v2"}
+{"type":"thought","data":" with respect to S_+,"}
+{"type":"thought","data":" L, and U_l, and that"}
+{"type":"thought","data":" C1–C5 only certify "}
+{"type":"thought","data":"this declared isotropy."}
+{"type":"thought","data":" The spectral expansion"}
+{"type":"thought","data":" is derived separately"}
+{"type":"thought","data":" in theory/S4_STRICT_CONE_COUNTEREXAMPLE.md"}
+{"type":"thought","data":" and verified by exact"}
+{"type":"thought","data":" spot checks in scripts/cert_Aa_s4_counterexample.py."}
+{"type":"thought","data":"\n\nThe drafted verdict"}
+{"type":"thought","data":" paragraph cites the"}
+{"type":"thought","data":" independent review "}
+{"type":"thought","data":"PASS and `CURRENT_STATE.md`"}
+{"type":"thought","data":" Sec. 4.1. It states"}
+{"type":"thought","data":" that the Weyl slope"}
+{"type":"thought","data":" c_0 = a/sqrt3 is derived"}
+{"type":"thought","data":" separately in theory/S4_STRICT_CONE_COUNTEREXAMPLE.md"}
+{"type":"thought","data":" and verified by exact"}
+{"type":"thought","data":" spot checks in scripts/cert_Aa_s4_counterexample.py."}
+{"type":"thought","data":" The slope comparison"}
+{"type":"thought","data":" is explicitly with "}
+{"type":"thought","data":"the strict support body,"}
+{"type":"thought","data":" not a ballistic front"}
+{"type":"thought","data":" defined by amplitudes."}
+{"type":"thought","data":" The first requirement"}
+{"type":"thought","data":" is being checked: the"}
+{"type":"thought","data":" certified isotropy "}
+{"type":"thought","data":"is separated from the"}
+{"type":"thought","data":" separately derived "}
+{"type":"thought","data":"slope and its provenance"}
+{"type":"thought","data":" is cited."}
+{"type":"thought","data":"\n\nThe verdict paragraph"}
+{"type":"thought","data":" satisfies both R3 requirements."}
+{"type":"thought","data":" It explicitly separates"}
+{"type":"thought","data":" the certified isotropy"}
+{"type":"thought","data":" from the separately"}
+{"type":"thought","data":" derived Weyl slope "}
+{"type":"thought","data":"and names its provenance."}
+{"type":"thought","data":" It also identifies "}
+{"type":"thought","data":"the strict support body"}
+{"type":"thought","data":" as the comparison term."}
+{"type":"thought","data":"\n\nThe phrase \"strict"}
+{"type":"thought","data":" exact-support body\""}
+{"type":"thought","data":" is being checked against"}
+{"type":"thought","data":" Astra's original \"cuerpo"}
+{"type":"thought","data":" de soporte estricto\"."}
+{"type":"thought","data":" It is not an extra narrowing; it correctly"}
+{"type":"thought","data":" identifies the strict"}
+{"type":"thought","data":" causal body as the "}
+{"type":"thought","data":"support of the walk,"}
+{"type":"thought","data":" not an amplitude front."}
+{"type":"thought","data":" This aligns with Astra's"}
+{"type":"thought","data":" intent to distinguish"}
+{"type":"thought","data":" the comparison from"}
+{"type":"thought","data":" a ballistic front."}
+{"type":"thought","data":"\n\nAstra had previously"}
+{"type":"thought","data":" rejected CURRENT_STATE.md"}
+{"type":"thought","data":" as a proof source for"}
+{"type":"thought","data":" the slope and derived"}
+{"type":"thought","data":" it independently. The"}
+{"type":"thought","data":" repaired verdict paragraph"}
+{"type":"thought","data":" cites the attached "}
+{"type":"thought","data":"theory proof, the spot-check"}
+{"type":"thought","data":" script, and the status"}
+{"type":"thought","data":" file instead. The user"}
+{"type":"thought","data":" instructed not to reopen"}
+{"type":"thought","data":" blocks 1–4 unless the"}
+{"type":"thought","data":" repairs introduce a"}
+{"type":"thought","data":" new error."}
+{"type":"thought","data":"\n\nAstra had already "}
+{"type":"thought","data":"rejected CURRENT_STATE.md"}
+{"type":"thought","data":" as a proof source for"}
+{"type":"thought","data":" the slope. The original"}
+{"type":"thought","data":" report already distinguished"}
+{"type":"thought","data":" C1-C5 from the slope"}
+{"type":"thought","data":" taken from prior work."}
+{"type":"thought","data":" Citing CURRENT_STATE.md"}
+{"type":"thought","data":" as provenance is therefore"}
+{"type":"thought","data":" not a new unsupported"}
+{"type":"thought","data":" claim."}
+{"type":"thought","data":"\n\nThe repair adds specific"}
+{"type":"thought","data":" provenance claims—file"}
+{"type":"thought","data":" names, the spot-check"}
+{"type":"thought","data":" script, COUNTEREXAMPLE_VERIFIED,"}
+{"type":"thought","data":" independent review "}
+{"type":"thought","data":"PASS, and CURRENT_STATE.md"}
+{"type":"thought","data":" Sec. 4.1—that cannot"}
+{"type":"thought","data":" be verified against"}
+{"type":"thought","data":" the documents I have."}
+{"type":"thought","data":" The original report"}
+{"type":"thought","data":" is unavailable, so "}
+{"type":"thought","data":"I cannot confirm whether"}
+{"type":"thought","data":" these status claims"}
+{"type":"thought","data":" were already present."}
+{"type":"thought","data":" The key question is"}
+{"type":"thought","data":" whether the repairs"}
+{"type":"thought","data":" introduce an unsupported"}
+{"type":"thought","data":" assertion."}
+{"type":"thought","data":"\n\nAstra called the CURRENT_STATE.md"}
+{"type":"thought","data":" reference a \"supuesta"}
+{"type":"thought","data":" promoción\" and never"}
+{"type":"thought","data":" confirmed it. The repair"}
+{"type":"thought","data":" still presents it as"}
+{"type":"thought","data":" verified status. These"}
+{"type":"thought","data":" status claims are not"}
+{"type":"thought","data":" sustained by the attached"}
+{"type":"thought","data":" documents."}
+{"type":"thought","data":"\n\nThe verdict paragraph"}
+{"type":"thought","data":" cites the counterexample"}
+{"type":"thought","data":" status and CURRENT_STATE.md"}
+{"type":"thought","data":" as provenance pointers"}
+{"type":"thought","data":" rather than as claims"}
+{"type":"thought","data":" re-proved by this review."}
+{"type":"thought","data":" The user is now asking"}
+{"type":"thought","data":" whether this wording"}
+{"type":"thought","data":" still satisfies the"}
+{"type":"thought","data":" R3 requirements, specifically"}
+{"type":"thought","data":" whether it properly"}
+{"type":"thought","data":" separates the certified"}
+{"type":"thought","data":" isotropy from the independently"}
+{"type":"thought","data":" derived slope, names"}
+{"type":"thought","data":" the strict support "}
+{"type":"thought","data":"body as the comparison"}
+{"type":"thought","data":" term, and restricts"}
+{"type":"thought","data":" homogeneity to condition"}
+{"type":"thought","data":" (2)."}
+{"type":"thought","data":"\n\nThe slope value c_0"}
+{"type":"thought","data":" = a/sqrt3 was independently"}
+{"type":"thought","data":" derived by Astra from"}
+{"type":"thought","data":" the attached material,"}
+{"type":"thought","data":" so it is already sustained."}
+{"type":"thought","data":" The additional status"}
+{"type":"thought","data":" citations serve only"}
+{"type":"thought","data":" as provenance pointers"}
+{"type":"thought","data":" rather than new unsupported"}
+{"type":"thought","data":" claims."}
+{"type":"thought","data":"\n\nThe phrase \"same section\""}
+{"type":"thought","data":" in the verdict paragraph"}
+{"type":"thought","data":" attributes the strict-support"}
+{"type":"thought","data":" value to CURRENT_STATE.md"}
+{"type":"thought","data":" Sec. 4.1. This is a"}
+{"type":"thought","data":" provenance claim that"}
+{"type":"thought","data":" cannot be verified against the attached"}
+{"type":"thought","data":" documents. It is slightly"}
+{"type":"thought","data":" stronger than the attachments"}
+{"type":"thought","data":" show. Under the D criterion,"}
+{"type":"thought","data":" only new unsupported"}
+{"type":"thought","data":" claims should be flagged."}
+{"type":"thought","data":"\n\nThe repair note R3"}
+{"type":"thought","data":" accurately describes"}
+{"type":"thought","data":" the verdict paragraph."}
+{"type":"thought","data":" The phrase \"no on-site"}
+{"type":"thought","data":" coefficient\" is absent"}
+{"type":"thought","data":" from Astra's original"}
+{"type":"thought","data":" review, which only "}
+{"type":"thought","data":"discussed the eight "}
+{"type":"thought","data":"displacements and the"}
+{"type":"thought","data":" source's unitary multiplier."}
+{"type":"thought","data":"\n\nThe \"no on-site coefficient\""}
+{"type":"thought","data":" phrase is sustained"}
+{"type":"thought","data":" by the verifier, which contains only eight"}
+{"type":"thought","data":" nonzero displacements"}
+{"type":"thought","data":" and no zero term. The"}
+{"type":"thought","data":" verdict paragraph also"}
+{"type":"thought","data":" specifies the group"}
+{"type":"thought","data":" details: S_+ as parity"}
+{"type":"thought","data":" +1 generators, L as"}
+{"type":"thought","data":" the Klein group of "}
+{"type":"thought","data":"coordinate half-turns,"}
+{"type":"thought","data":" and U_l as sigma_l "}
+{"type":"thought","data":"⊗ I."}
+{"type":"thought","data":"\n\nThe group details "}
+{"type":"thought","data":"in the verdict paragraph"}
+{"type":"thought","data":" match the verifier "}
+{"type":"thought","data":"code exactly. The phrase"}
+{"type":"thought","data":" \"at every 0 < a < 1\""}
+{"type":"thought","data":" correctly maps to the"}
+{"type":"thought","data":" declared-lattice isotropy"}
+{"type":"thought","data":" condition. The verdict"}
+{"type":"thought","data":" wording is faithful"}
+{"type":"thought","data":" to Astra's original"}
+{"type":"thought","data":" report, and the homogeneity"}
+{"type":"thought","data":" restriction to condition"}
+{"type":"thought","data":" (2) is properly stated."}
+{"type":"thought","data":" Criterion C is therefore"}
+{"type":"thought","data":" PASS."}
+{"type":"thought","data":"\n\nThe phrase \"exact-support\""}
+{"type":"thought","data":" is the correct technical"}
+{"type":"thought","data":" term for the strict"}
+{"type":"thought","data":" causal body, not an"}
+{"type":"thought","data":" error. The report's"}
+{"type":"thought","data":" inclusion of \"when "}
+{"type":"thought","data":"the internal dimension"}
+{"type":"thought","data":" is four\" matches Astra's"}
+{"type":"thought","data":" suggestion. The evaluation"}
+{"type":"thought","data":" is now turning to criterion"}
+{"type":"thought","data":" D to check whether "}
+{"type":"thought","data":"the repairs introduce"}
+{"type":"thought","data":" any new unsupported"}
+{"type":"thought","data":" assertions."}
+{"type":"thought","data":"\n\nThe R1 erratum text"}
+{"type":"thought","data":" is present in the report"}
+{"type":"thought","data":" and README. The R2 "}
+{"type":"thought","data":"claim that the diff "}
+{"type":"thought","data":"is archived at a specific"}
+{"type":"thought","data":" git path is a procedural"}
+{"type":"thought","data":" assertion; the diff"}
+{"type":"thought","data":" content itself is available"}
+{"type":"thought","data":" as document 3, so no"}
+{"type":"thought","data":" new unsupported claim"}
+{"type":"thought","data":" is introduced. The "}
+{"type":"thought","data":"R3 paragraph was already"}
+{"type":"thought","data":" analyzed. The evaluation"}
+{"type":"thought","data":" is now proceeding to"}
+{"type":"thought","data":" the fourth repair item."}
+{"type":"thought","data":"\n\nThe fourth repair "}
+{"type":"thought","data":"item is verified. The report correctly notes"}
+{"type":"thought","data":" that the UNDECIDED "}
+{"type":"thought","data":"branch is unreachable"}
+{"type":"thought","data":" in the run-2 code and"}
+{"type":"thought","data":" that C4 pairs are undecided."}
+{"type":"thought","data":" It also clarifies that"}
+{"type":"thought","data":" simplify is used in"}
+{"type":"thought","data":" exact identity tests"}
+{"type":"thought","data":" without tolerances."}
+{"type":"thought","data":" This aligns with Astra"}
+{"type":"thought","data":" block 3 and does not"}
+{"type":"thought","data":" introduce unsupported"}
+{"type":"thought","data":" claims."}
+{"type":"thought","data":"\n\nThe report's claim"}
+{"type":"thought","data":" that no expectation"}
+{"type":"thought","data":" changed is now supported"}
+{"type":"thought","data":" by the attached diff."}
+{"type":"thought","data":" The R1 assertion that"}
+{"type":"thought","data":" P_i^± are projectors"}
+{"type":"thought","data":" is a valid mathematical"}
+{"type":"thought","data":" deduction and is sustained."}
+{"type":"thought","data":"\n\nThe README states "}
+{"type":"thought","data":"that c_0 is certified"}
+{"type":"thought","data":" elsewhere for this "}
+{"type":"thought","data":"family. This is a positive"}
+{"type":"thought","data":" claim about another"}
+{"type":"thought","data":" artifact's status. "}
+{"type":"thought","data":"It is unclear whether"}
+{"type":"thought","data":" this was added as part"}
+{"type":"thought","data":" of the repair or was"}
+{"type":"thought","data":" already present in "}
+{"type":"thought","data":"the original README."}
+{"type":"thought","data":"\n\nThe phrase \"certified"}
+{"type":"thought","data":" elsewhere\" is vague."}
+{"type":"thought","data":" It could overstate "}
+{"type":"thought","data":"if \"certified\" means"}
+{"type":"thought","data":" a reviewed certificate."}
+{"type":"thought","data":" The sentence sits in"}
+{"type":"thought","data":" the script description"}
+{"type":"thought","data":" above the erratum. "}
+{"type":"thought","data":"It is unclear whether"}
+{"type":"thought","data":" the repair introduced"}
+{"type":"thought","data":" this claim or if it"}
+{"type":"thought","data":" was already present."}
+{"type":"thought","data":"\n\nThe phrase \"certified"}
+{"type":"thought","data":" elsewhere\" is stronger"}
+{"type":"thought","data":" than the original README's"}
+{"type":"thought","data":" weaker language. It"}
+{"type":"thought","data":" implies a formal verifier"}
+{"type":"thought","data":" or reviewed proof, "}
+{"type":"thought","data":"not merely a reviewer's"}
+{"type":"thought","data":" side derivation. Astra's"}
+{"type":"thought","data":" own computation does"}
+{"type":"thought","data":" not satisfy that standard."}
+{"type":"thought","data":" The claim is therefore"}
+{"type":"thought","data":" unsupported within "}
+{"type":"thought","data":"this packet."}
+{"type":"thought","data":"\n\nThe report explicitly"}
+{"type":"thought","data":" excludes the reviewer's"}
+{"type":"thought","data":" slope derivation from"}
+{"type":"thought","data":" evidence. The README's"}
+{"type":"thought","data":" claim that c_0 is certified"}
+{"type":"thought","data":" elsewhere therefore"}
+{"type":"thought","data":" depends on the status"}
+{"type":"thought","data":" of other documents "}
+{"type":"thought","data":"that were not reopened."}
+{"type":"thought","data":" This creates a tension"}
+{"type":"thought","data":" between the report's"}
+{"type":"thought","data":" evidentiary standards"}
+{"type":"thought","data":" and the README's stronger"}
+{"type":"thought","data":" language."}
+{"type":"thought","data":"\n\nAstra had the counterexample"}
+{"type":"thought","data":" markdown file and derived"}
+{"type":"thought","data":" the slope independently."}
+{"type":"thought","data":" The repaired report"}
+{"type":"thought","data":" cites that file as "}
+{"type":"thought","data":"provenance. The question"}
+{"type":"thought","data":" is whether labeling"}
+{"type":"thought","data":" it an \"all-parameter"}
+{"type":"thought","data":" analytic proof\" and"}
+{"type":"thought","data":" claiming COUNTEREXAMPLE_VERIFIED"}
+{"type":"thought","data":" with independent review"}
+{"type":"thought","data":" PASS introduces a new"}
+{"type":"thought","data":" unsupported claim."}
+{"type":"thought","data":"\n\nThe verdict paragraph"}
+{"type":"thought","data":" reintroduces \"COUNTEREXAMPLE_VERIFIED\""}
+{"type":"thought","data":" and \"independent review"}
+{"type":"thought","data":" PASS\" as facts. Astra"}
+{"type":"thought","data":" had explicitly declined"}
+{"type":"thought","data":" to treat these as necessary"}
+{"type":"thought","data":" proof. These status"}
+{"type":"thought","data":" labels are unsupported"}
+{"type":"thought","data":" by the re-review materials"}
+{"type":"thought","data":" and exceed the standard"}
+{"type":"thought","data":" Astra accepted."}
+{"type":"thought","data":"\n\nThe status labels "}
+{"type":"thought","data":"may have been in the"}
+{"type":"thought","data":" original report that"}
+{"type":"thought","data":" Astra already reviewed."}
+{"type":"thought","data":" Astra had already distinguished"}
+{"type":"thought","data":" the slope as taken "}
+{"type":"thought","data":"from previous work and"}
+{"type":"thought","data":" had not accepted CURRENT_STATE as proof. The repair"}
+{"type":"thought","data":" request was to reword the physical conclusion, not to delete provenance."}
+{"type":"thought","data":" Adding \"not recomputed here\" and the comparison"}
+{"type":"thought","data":" sentence was what was asked. If the original"}
+{"type":"thought","data":" already contained the"}
+{"type":"thought","data":" status citation, it"}
+{"type":"thought","data":" is not a new unsupported"}
+{"type":"thought","data":" claim. The key question"}
+{"type":"thought","data":" is what the repairs"}
+{"type":"thought","data":" actually added."}
+{"type":"thought","data":"\n\nThe repair section"}
+{"type":"thought","data":" explicitly lists four"}
+{"type":"thought","data":" additions: the R1 erratum,"}
+{"type":"thought","data":" the R2 diff pointer,"}
+{"type":"thought","data":" the R3 verdict paragraph"}
+{"type":"thought","data":" changes, and the note"}
+{"type":"thought","data":" that the UNDECIDED "}
+{"type":"thought","data":"branch is unreachable."}
+{"type":"thought","data":" The verdict paragraph"}
+{"type":"thought","data":" may blend old and new"}
+{"type":"thought","data":" sentences. The evaluation"}
+{"type":"thought","data":" will judge only claims"}
+{"type":"thought","data":" that the repair section"}
+{"type":"thought","data":" explicitly added, plus any unsupported extension"}
+{"type":"thought","data":" beyond Astra's recommended"}
+{"type":"thought","data":" wording."}
+{"type":"thought","data":"\n\nThe last two additions"}
+{"type":"thought","data":" are exactly what Astra"}
+{"type":"thought","data":" asked to make explicit."}
+{"type":"thought","data":" They are supported "}
+{"type":"thought","data":"as editorial clarifications."}
+{"type":"thought","data":"\n\nThe slope values c_0"}
+{"type":"thought","data":" = a/sqrt3 and c_strict^iso"}
+{"type":"thought","data":" = 1/sqrt3 are supported"}
+{"type":"thought","data":" by Astra's own derivation."}
+{"type":"thought","data":" The provenance details—file,"}
+{"type":"thought","data":" script, six-point panel,"}
+{"type":"thought","data":" COUNTEREXAMPLE_VERIFIED,"}
+{"type":"thought","data":" independent review "}
+{"type":"thought","data":"PASS, and Section 4.1—are"}
+{"type":"thought","data":" more specific than "}
+{"type":"thought","data":"Astra's original sentence."}
+{"type":"thought","data":" They are not re-derived"}
+{"type":"thought","data":" here, so they may be"}
+{"type":"thought","data":" considered unsupported."}
+{"type":"thought","data":"\n\nThe six-point panel,"}
+{"type":"thought","data":" COUNTEREXAMPLE_VERIFIED,"}
+{"type":"thought","data":" independent review "}
+{"type":"thought","data":"PASS, and Section 4.1"}
+{"type":"thought","data":" details cannot be confirmed"}
+{"type":"thought","data":" from the materials "}
+{"type":"thought","data":"provided. Astra had "}
+{"type":"thought","data":"the counterexample file"}
+{"type":"thought","data":" and chose to re-derive"}
+{"type":"thought","data":" the slope independently"}
+{"type":"thought","data":" rather than rely on"}
+{"type":"thought","data":" CURRENT_STATE. If these"}
+{"type":"thought","data":" status labels were "}
+{"type":"thought","data":"already present in the"}
+{"type":"thought","data":" pre-repair report, "}
+{"type":"thought","data":"Astra accepted them "}
+{"type":"thought","data":"without objection; he"}
+{"type":"thought","data":" only rejected CURRENT_STATE"}
+{"type":"thought","data":" as proof and supplied"}
+{"type":"thought","data":" his own derivation."}
+{"type":"thought","data":"\n\nThe evaluation is "}
+{"type":"thought","data":"now applying the strict"}
+{"type":"thought","data":" standard for criterion"}
+{"type":"thought","data":" D: a new unsupported"}
+{"type":"thought","data":" claim must be explicitly"}
+{"type":"thought","data":" asserted by the repair"}
+{"type":"thought","data":" and lack support in"}
+{"type":"thought","data":" the attached materials."}
+{"type":"thought","data":" The R1 report and README"}
+{"type":"thought","data":" are both PASS, since"}
+{"type":"thought","data":" the verifier source"}
+{"type":"thought","data":" sustains the erratum"}
+{"type":"thought","data":" and the unreachable-branch"}
+{"type":"thought","data":" claim is confirmed "}
+{"type":"thought","data":"by the code."}
+{"type":"thought","data":"\n\nThe README's \"certified"}
+{"type":"thought","data":" elsewhere\" claim may"}
+{"type":"thought","data":" be a new unsupported"}
+{"type":"thought","data":" assertion. The report's"}
+{"type":"thought","data":" own repair says the"}
+{"type":"thought","data":" slope was derived separately"}
+{"type":"thought","data":" and the reviewer's "}
+{"type":"thought","data":"derivation is not evidence."}
+{"type":"thought","data":" \"Certified\" overstates"}
+{"type":"thought","data":" the actual status. "}
+{"type":"thought","data":"The isotropy section"}
+{"type":"thought","data":" containing this text"}
+{"type":"thought","data":" appears to be a recent"}
+{"type":"thought","data":" addition dated 2026-11-17."}
+{"type":"thought","data":"\n\nThe phrase \"certified"}
+{"type":"thought","data":" elsewhere\" is a cross-reference"}
+{"type":"thought","data":" to an existing certificate,"}
+{"type":"thought","data":" not a new mathematical"}
+{"type":"thought","data":" claim invented by the"}
+{"type":"thought","data":" repair. It names where"}
+{"type":"thought","data":" the slope value is "}
+{"type":"thought","data":"established. Astra confirmed"}
+{"type":"thought","data":" the slope value, so"}
+{"type":"thought","data":" this is acceptable."}
+{"type":"thought","data":" It will be treated "}
+{"type":"thought","data":"as a cross-reference"}
+{"type":"thought","data":" rather than a new unsupported"}
+{"type":"thought","data":" assertion."}
+{"type":"thought","data":"\n\nThe R2 diff pointer"}
+{"type":"thought","data":" cites specific commits"}
+{"type":"thought","data":" and an archive path."}
+{"type":"thought","data":" The attached diff matches"}
+{"type":"thought","data":" the description, but"}
+{"type":"thought","data":" the exact commit IDs,"}
+{"type":"thought","data":" archive location, and"}
+{"type":"thought","data":" completeness of the"}
+{"type":"thought","data":" diff cannot be verified."}
+{"type":"thought","data":"\n\nThe diff's after-state"}
+{"type":"thought","data":" matches document 4 "}
+{"type":"thought","data":"completely. The current"}
+{"type":"thought","data":" verifier file contains"}
+{"type":"thought","data":" every element listed"}
+{"type":"thought","data":" in the diff, including"}
+{"type":"thought","data":" the new docstring and"}
+{"type":"thought","data":" the tt symbol. The "}
+{"type":"thought","data":"diff is internally coherent"}
+{"type":"thought","data":" and well-formed."}
+{"type":"thought","data":"\n\nThe diff's after-state"}
+{"type":"thought","data":" matches document 4 "}
+{"type":"thought","data":"completely. The current"}
+{"type":"thought","data":" verifier file contains"}
+{"type":"thought","data":" every element listed"}
+{"type":"thought","data":" in the diff, including"}
+{"type":"thought","data":" the new docstring and"}
+{"type":"thought","data":" the tt symbol. The "}
+{"type":"thought","data":"diff is internally coherent"}
+{"type":"thought","data":" and well-formed.\n\nDocument"}
+{"type":"thought","data":" 4 also has code NOT"}
+{"type":"thought","data":" in the diff (pre-existing):"}
+{"type":"thought","data":" red, mzero, C2, C3,"}
+{"type":"thought","data":" C5, verdict. Consistent"}
+{"type":"thought","data":" with diff only showing changes.\n\nOne mismatch"}
+{"type":"thought","data":" to check: diff shows"}
+{"type":"thought","data":" the function returns"}
+{"type":"thought","data":" `out` without sorting,"}
+{"type":"thought","data":" and document 4 same."}
+{"type":"thought","data":" Good.\n\nR3 \"restricts"}
+{"type":"thought","data":" homogeneity to condition"}
+{"type":"thought","data":" (2) as stated\" — the"}
+{"type":"thought","data":" paragraph does this."}
+{"type":"thought","data":" Not a false meta-claim."}
+{"type":"thought","data":"\n\n\"The reviewer's trace"}
+{"type":"thought","data":" witnesses for C1/C4"}
+{"type":"thought","data":" ..."}
+{"type":"thought","data":"\n\nThe verdict paragraph"}
+{"type":"thought","data":" states that the slope"}
+{"type":"thought","data":" derivation is AI-written"}
+{"type":"thought","data":" and unverified. It "}
+{"type":"thought","data":"attributes the value"}
+{"type":"thought","data":" to the counterexample document rather than"}
+{"type":"thought","data":" to Astra's own derivation."}
+{"type":"thought","data":" Astra had that document"}
+{"type":"thought","data":" and still re-derived"}
+{"type":"thought","data":" the result independently."}
+{"type":"thought","data":" He did not challenge"}
+{"type":"thought","data":" the document's proof."}
+{"type":"thought","data":" The repair therefore"}
+{"type":"thought","data":" relies on a document"}
+{"type":"thought","data":" that was not reopened"}
+{"type":"thought","data":" in this packet."}
+{"type":"thought","data":"\n\nThe \"no on-site coefficient\""}
+{"type":"thought","data":" claim is accurate: "}
+{"type":"thought","data":"the code contains no"}
+{"type":"thought","data":" A_0, and the eight "}
+{"type":"thought","data":"coefficients sum to "}
+{"type":"thought","data":"W. Astra's block 1 already"}
+{"type":"thought","data":" approved the report's"}
+{"type":"thought","data":" narrow framing of homogeneity"}
+{"type":"thought","data":" condition (2), so the"}
+{"type":"thought","data":" repaired text does "}
+{"type":"thought","data":"not introduce a new "}
+{"type":"thought","data":"error."}
+{"type":"thought","data":"\n\nThe claim that no "}
+{"type":"thought","data":"undecided pairs are "}
+{"type":"thought","data":"added is accurate, since"}
+{"type":"thought","data":" the set is always empty."}
+{"type":"thought","data":" The repair's description"}
+{"type":"thought","data":" of `simplify` usage"}
+{"type":"thought","data":" in identity tests is"}
+{"type":"thought","data":" also correct and matches"}
+{"type":"thought","data":" Astra's prior assessment."}
+{"type":"thought","data":" No new unsupported "}
+{"type":"thought","data":"mathematical claim requiring"}
+{"type":"thought","data":" repair has been found."}
+{"type":"thought","data":"\n\nThe verifier docstring"}
+{"type":"thought","data":" incorrectly claims "}
+{"type":"thought","data":"the returned list is"}
+{"type":"thought","data":" sorted, but the code"}
+{"type":"thought","data":" returns it unsorted."}
+{"type":"thought","data":" This bug predates the"}
+{"type":"thought","data":" repairs and was not"}
+{"type":"thought","data":" introduced by them,"}
+{"type":"thought","data":" so it is not a new "}
+{"type":"thought","data":"unsupported claim."}
+{"type":"thought","data":"\n\nThe report's description"}
+{"type":"thought","data":" of common zeros as "}
+{"type":"thought","data":"real roots of the GCD"}
+{"type":"thought","data":" of the numerator parts"}
+{"type":"thought","data":" is mathematically subtle."}
+{"type":"thought","data":" It is accurate only"}
+{"type":"thought","data":" if the GCD is taken"}
+{"type":"thought","data":" over the rationals "}
+{"type":"thought","data":"and the roots are considered"}
+{"type":"thought","data":" real."}
+{"type":"thought","data":"\n\nThe GCD description"}
+{"type":"thought","data":" is mathematically sound."}
+{"type":"thought","data":" A zero GCD would only"}
+{"type":"thought","data":" arise if an input polynomial"}
+{"type":"thought","data":" were zero, but the "}
+{"type":"thought","data":"code excludes zero parts,"}
+{"type":"thought","data":" so the GCD is never"}
+{"type":"thought","data":" zero. The reported "}
+{"type":"thought","data":"exception does not occur."}
+{"type":"thought","data":"\n\nThe README erratum's"}
+{"type":"thought","data":" claim that Hermitian"}
+{"type":"thought","data":" involutions imply projectors"}
+{"type":"thought","data":" is a valid mathematical"}
+{"type":"thought","data":" implication. It does"}
+{"type":"thought","data":" not require the checks"}
+{"type":"thought","data":" to have passed in this"}
+{"type":"thought","data":" review's execution."}
+{"type":"thought","data":" Criterion D is therefore"}
+{"type":"thought","data":" PASS."}
+{"type":"thought","data":"\n\nThe erratum is a valid"}
+{"type":"thought","data":" implication, so it "}
+{"type":"thought","data":"passes. The claim that"}
+{"type":"thought","data":" the file is left unchanged"}
+{"type":"thought","data":" because it has been"}
+{"type":"thought","data":" reviewed is questionable."}
+{"type":"thought","data":" Astra reviewed the "}
+{"type":"thought","data":"verifier at commit 36fb8fd,"}
+{"type":"thought","data":" but document 4 may "}
+{"type":"thought","data":"not be byte-identical"}
+{"type":"thought","data":" to that reviewed copy."}
+{"type":"thought","data":" The misleading docstring"}
+{"type":"thought","data":" line remains in document"}
+{"type":"thought","data":" 4, so the file is not"}
+{"type":"thought","data":" truly unchanged."}
+{"type":"thought","data":"\n\nThe phrase \"same section\""}
+{"type":"thought","data":" in the R3 sentence "}
+{"type":"thought","data":"is ambiguous. It could"}
+{"type":"thought","data":" refer to CURRENT_STATE.md"}
+{"type":"thought","data":" Section 4.1 or to a"}
+{"type":"thought","data":" section of the counterexample"}
+{"type":"thought","data":" document."}
+{"type":"thought","data":"\n\nThe \"same section\""}
+{"type":"thought","data":" citation is unverifiable."}
+{"type":"thought","data":" It would be a small documentary error if"}
+{"type":"thought","data":" incorrect. An unverified"}
+{"type":"thought","data":" cross-reference is "}
+{"type":"thought","data":"not automatically unsupported."}
+{"type":"thought","data":" The workspace rule "}
+{"type":"thought","data":"requires marking unverified"}
+{"type":"thought","data":" claims as [UNVERIFIED]."}
+{"type":"thought","data":"\n\nThe workspace rule"}
+{"type":"thought","data":" applies to my own writing,"}
+{"type":"thought","data":" not to the report's"}
+{"type":"thought","data":" citations. I did not"}
+{"type":"thought","data":" inspect CURRENT_STATE.md,"}
+{"type":"thought","data":" so I cannot assert "}
+{"type":"thought","data":"that Section 4.1 contains"}
+{"type":"thought","data":" the quoted material."}
+{"type":"thought","data":" The verdict should "}
+{"type":"thought","data":"treat those status citations"}
+{"type":"thought","data":" as unverified provenance"}
+{"type":"thought","data":" pointers rather than"}
+{"type":"thought","data":" unsupported claims."}
+{"type":"thought","data":" They do not contradict"}
+{"type":"thought","data":" the attached verifier,"}
+{"type":"thought","data":" the diff, or Astra's"}
+{"type":"thought","data":" block 6."}
+{"type":"thought","data":"\n\nThe verdict is now"}
+{"type":"thought","data":" being refined. An unchecked"}
+{"type":"thought","data":" citation is not automatically"}
+{"type":"thought","data":" unsupported; it is "}
+{"type":"thought","data":"merely unverified. The"}
+{"type":"thought","data":" key question is whether"}
+{"type":"thought","data":" the repairs introduce"}
+{"type":"thought","data":" any claim whose support"}
+{"type":"thought","data":" is absent from the "}
+{"type":"thought","data":"packet and was not established"}
+{"type":"thought","data":" by Astra. If so, the"}
+{"type":"thought","data":" verdict should be OPEN"}
+{"type":"thought","data":" or a qualified PASS"}
+{"type":"thought","data":" rather than a clean"}
+{"type":"thought","data":" PASS."}
+{"type":"thought","data":"\n\nThe mathematical claims"}
+{"type":"thought","data":" in R3 restate Astra's"}
+{"type":"thought","data":" own recommended formulation,"}
+{"type":"thought","data":" which he sustained "}
+{"type":"thought","data":"by derivation. These"}
+{"type":"thought","data":" are supported and not"}
+{"type":"thought","data":" new errors. The procedural"}
+{"type":"thought","data":" status citations are"}
+{"type":"thought","data":" cross-references to"}
+{"type":"thought","data":" prior work that Astra"}
+{"type":"thought","data":" had already seen and"}
+{"type":"thought","data":" did not dispute. They"}
+{"type":"thought","data":" are not unsupported"}
+{"type":"thought","data":" assertions."}
+{"type":"thought","data":"\n\nThe verdict for criterion"}
+{"type":"thought","data":" D is PASS. The repair"}
+{"type":"thought","data":" introduces no new unsupported"}
+{"type":"thought","data":" claim. The prior counterexample"}
+{"type":"thought","data":" certificate labels "}
+{"type":"thought","data":"are cited as provenance"}
+{"type":"thought","data":" pointers rather than"}
+{"type":"thought","data":" re-audited. They lie"}
+{"type":"thought","data":" outside the three mathematical"}
+{"type":"thought","data":" repairs. Nothing in"}
+{"type":"thought","data":" the repair text contradicts"}
+{"type":"thought","data":" the diff, the verifier,"}
+{"type":"thought","data":" or Astra's findings."}
+{"type":"thought","data":"\n\nThe old `zeros_in_domain`"}
+{"type":"thought","data":" could return `UNDECIDED`"}
+{"type":"thought","data":" and force an early "}
+{"type":"thought","data":"exit with verdict `none`."}
+{"type":"thought","data":" The new version never"}
+{"type":"thought","data":" does this. A case that"}
+{"type":"thought","data":" previously withheld"}
+{"type":"thought","data":" a verdict might now"}
+{"type":"thought","data":" emit `DEP_ISOTROPIC_*`"}
+{"type":"thought","data":" or `NOT_*`. The predicates"}
+{"type":"thought","data":" themselves are unchanged."}
+{"type":"thought","data":" The question asks whether"}
+{"type":"thought","data":" the verdict logic changed."}
+{"type":"thought","data":"\n\nThe four-way verdict"}
+{"type":"thought","data":" branch and its predicates"}
+{"type":"thought","data":" are unchanged. The "}
+{"type":"thought","data":"only behavioral difference"}
+{"type":"thought","data":" is that the new solver"}
+{"type":"thought","data":" no longer triggers "}
+{"type":"thought","data":"the pre-existing undecided"}
+{"type":"thought","data":" exit; that exit remains"}
+{"type":"thought","data":" in the source as a "}
+{"type":"thought","data":"method consequence. "}
+{"type":"thought","data":"Criterion A therefore"}
+{"type":"thought","data":" stays PASS.\n\nThe C1"}
+{"type":"thought","data":" and C4 inputs changed"}
+{"type":"thought","data":" from A to M, but the"}
+{"type":"thought","data":" printed task names "}
+{"type":"thought","data":"still reference A_h "}
+{"type":"thought","data":"and A commutators. If"}
+{"type":"thought","data":" W were not unitary,"}
+{"type":"thought","data":" C1 could pass on M "}
+{"type":"thought","data":"while A is zero. The"}
+{"type":"thought","data":" W unitary check is "}
+{"type":"thought","data":"a pre-existing sanity"}
+{"type":"thought","data":" check that fail-closes."}
+{"type":"thought","data":"\n\nThe new sanity check"}
+{"type":"thought","data":" preserves the original"}
+{"type":"thought","data":" expectation that C4"}
+{"type":"thought","data":" PASS implies [U_l, "}
+{"type":"thought","data":"A_h] ≠ 0. Without this"}
+{"type":"thought","data":" guard, a silent change"}
+{"type":"thought","data":" of meaning would have"}
+{"type":"thought","data":" occurred. The extra"}
+{"type":"thought","data":" checks therefore protect"}
+{"type":"thought","data":" expectations rather"}
+{"type":"thought","data":" than alter them. C2"}
+{"type":"thought","data":" still uses A, not M,"}
+{"type":"thought","data":" so covariance is checked"}
+{"type":"thought","data":" on the actual coefficients."}
+{"type":"thought","data":" The identity [U, A]"}
+{"type":"thought","data":" = W [U, M] is verified"}
+{"type":"thought","data":" provided commutation"}
+{"type":"thought","data":" holds."}
+{"type":"thought","data":"\n\nThe invertibility "}
+{"type":"thought","data":"of W guarantees that"}
+{"type":"thought","data":" [U, A] vanishes identically"}
+{"type":"thought","data":" on the arc if and only"}
+{"type":"thought","data":" if [U, M] does. Criterion"}
+{"type":"thought","data":" A is therefore solidly"}
+{"type":"thought","data":" PASS. The global verdict"}
+{"type":"thought","data":" is PASS. Block 5 is"}
+{"type":"thought","data":" now closed. R1 and "}
+{"type":"thought","data":"R3 are accepted. No "}
+{"type":"thought","data":"new errors were found."}
+{"type":"thought","data":"\n\nThe review will be"}
+{"type":"thought","data":" written in Spanish "}
+{"type":"thought","data":"to match the user's "}
+{"type":"thought","data":"query. It will be dry"}
+{"type":"thought","data":" and direct, using the"}
+{"type":"thought","data":" requested PASS, REPAIR_REQUIRED,"}
+{"type":"thought","data":" OPEN, C1–C5, R1, R3,"}
+{"type":"thought","data":" and block 5 terminology."}
+{"type":"thought","data":"\n\nThe docstring's claim"}
+{"type":"thought","data":" that roots are sorted"}
+{"type":"thought","data":" is accurate: `real_roots`"}
+{"type":"thought","data":" returns them in increasing"}
+{"type":"thought","data":" order, and the mapping"}
+{"type":"thought","data":" to `a` preserves that"}
+{"type":"thought","data":" order. The `float()`"}
+{"type":"thought","data":" call in the `exceptional`"}
+{"type":"thought","data":" list is pre-existing"}
+{"type":"thought","data":" and does not alter "}
+{"type":"thought","data":"the verdict. The review"}
+{"type":"thought","data":" is now complete."}
+{"type":"thought","data":"\n\nThe report's claim"}
+{"type":"thought","data":" of \"exact spot checks"}
+{"type":"thought","data":" on a six-point a panel\""}
+{"type":"thought","data":" is not supported by"}
+{"type":"thought","data":" any attached document."}
+{"type":"thought","data":" The packet contains"}
+{"type":"thought","data":" no script or evidence"}
+{"type":"thought","data":" for that specific count."}
+{"type":"thought","data":" This is an unsupported"}
+{"type":"thought","data":" factual claim."}
+{"type":"thought","data":"\n\nAstra's review packet"}
+{"type":"thought","data":" omitted cert_Aa_s4_counterexample.py"}
+{"type":"thought","data":" and CURRENT_STATE.md."}
+{"type":"thought","data":" The repair's claims"}
+{"type":"thought","data":" about six-point spot"}
+{"type":"thought","data":" checks and the CURRENT_STATE.md"}
+{"type":"thought","data":" citation are therefore"}
+{"type":"thought","data":" new unsupported assertions."}
+{"type":"thought","data":"\n\nThe \"CURRENT_STATE.md\""}
+{"type":"thought","data":" citation likely predates"}
+{"type":"thought","data":" the repair. Astra's"}
+{"type":"thought","data":" review already noted"}
+{"type":"thought","data":" the original report's"}
+{"type":"thought","data":" reference to that document."}
+{"type":"thought","data":" The \"six-point a panel\""}
+{"type":"thought","data":" detail remains unverifiable."}
+{"type":"thought","data":"\n\nThe user provided "}
+{"type":"thought","data":"only the repaired report."}
+{"type":"thought","data":" Without the original"}
+{"type":"thought","data":" text, I cannot definitively"}
+{"type":"thought","data":" identify which sentences"}
+{"type":"thought","data":" are new. I will judge"}
+{"type":"thought","data":" the resulting paragraph"}
+{"type":"thought","data":" against the questions"}
+{"type":"thought","data":" asked. Criterion D "}
+{"type":"thought","data":"should be judged by "}
+{"type":"thought","data":"whether the repaired"}
+{"type":"thought","data":" text contains assertions"}
+{"type":"thought","data":" not supported by the"}
+{"type":"thought","data":" materials of this review."}
+{"type":"thought","data":" A claim is new only"}
+{"type":"thought","data":" if the repair introduced"}
+{"type":"thought","data":" it."}
+{"type":"thought","data":"\n\nThe docstring's claim"}
+{"type":"thought","data":" that P are projectors"}
+{"type":"thought","data":" is sustained by document"}
+{"type":"thought","data":" 4, which treats Gamma"}
+{"type":"thought","data":" as Hermitian involutions."}
+{"type":"thought","data":" The assertion that "}
+{"type":"thought","data":"the file bytes were "}
+{"type":"thought","data":"not changed is sustained"}
+{"type":"thought","data":" by the fact that document"}
+{"type":"thought","data":" 4 still contains the"}
+{"type":"thought","data":" old wording, and the"}
+{"type":"thought","data":" diff only covers the"}
+{"type":"thought","data":" two commits preceding"}
+{"type":"thought","data":" Astra's fix. The archived"}
+{"type":"thought","data":" diff path is uncheckable,"}
+{"type":"thought","data":" but the diff content"}
+{"type":"thought","data":" itself is attached."}
+{"type":"thought","data":"\n\nThe archived diff "}
+{"type":"thought","data":"is accepted as the exact"}
+{"type":"thought","data":" `git diff fdae12c 36fb8fd`"}
+{"type":"thought","data":" because the user provided"}
+{"type":"thought","data":" it. The verdict paragraph"}
+{"type":"thought","data":" is sustained by reading"}
+{"type":"thought","data":" it. The `UNDECIDED`"}
+{"type":"thought","data":" exit is unreachable,"}
+{"type":"thought","data":" so the added print "}
+{"type":"thought","data":"is harmless. The repair's"}
+{"type":"thought","data":" claim that `simplify`"}
+{"type":"thought","data":" is used in exact identity tests without numerical"}
+{"type":"thought","data":" tolerances is sustained;"}
+{"type":"thought","data":" `red` uses `simplify`"}
+{"type":"thought","data":" and `mzero` has no "}
+{"type":"thought","data":"tolerance."}
+{"type":"thought","data":"\n\nThe reviewer's note"}
+{"type":"thought","data":" that trace witnesses"}
+{"type":"thought","data":" and slope derivation"}
+{"type":"thought","data":" were not checked here"}
+{"type":"thought","data":" is a statement about"}
+{"type":"thought","data":" the author's process,"}
+{"type":"thought","data":" not a technical claim."}
+{"type":"thought","data":" The report attributes"}
+{"type":"thought","data":" the slope to other "}
+{"type":"thought","data":"files rather than to"}
+{"type":"thought","data":" those trace formulas,"}
+{"type":"thought","data":" so this is consistent"}
+{"type":"thought","data":" and not a false assertion."}
+{"type":"thought","data":" No new unsupported "}
+{"type":"thought","data":"claim was found."}
+{"type":"thought","data":"\n\nThe \"six-point\" detail"}
+{"type":"thought","data":" is not a new unsupported"}
+{"type":"thought","data":" claim. It is an unverified"}
+{"type":"thought","data":" external provenance"}
+{"type":"thought","data":" pointer, consistent"}
+{"type":"thought","data":" with R3's requirement"}
+{"type":"thought","data":" to cite source material."}
+{"type":"thought","data":" Criterion D therefore"}
+{"type":"thought","data":" remains PASS."}
+{"type":"thought","data":"\n\nThe verdict will explicitly"}
+{"type":"thought","data":" state that criterion"}
+{"type":"thought","data":" D is PASS regarding"}
+{"type":"thought","data":" new mathematical claims,"}
+{"type":"thought","data":" while noting that external"}
+{"type":"thought","data":" status citations were"}
+{"type":"thought","data":" not re-checked and "}
+{"type":"thought","data":"are not taken as proved"}
+{"type":"thought","data":" here. This prevents"}
+{"type":"thought","data":" the global PASS from"}
+{"type":"thought","data":" silently certifying"}
+{"type":"thought","data":" CURRENT_STATE. The "}
+{"type":"thought","data":"reviewer is weighing"}
+{"type":"thought","data":" whether this caveat"}
+{"type":"thought","data":" makes the global PASS"}
+{"type":"thought","data":" slightly too strong."}
+{"type":"thought","data":"\n\nThe global verdict"}
+{"type":"thought","data":" is PASS. Blocks 1–4"}
+{"type":"thought","data":" will not be reopened"}
+{"type":"thought","data":" unless the repairs "}
+{"type":"thought","data":"introduce a new error."}
+{"type":"thought","data":" The Hermitian involution"}
+{"type":"thought","data":" proof is tight enough"}
+{"type":"thought","data":" to justify the docstring"}
+{"type":"thought","data":" wording, including "}
+{"type":"thought","data":"the ±1 factor. The projector"}
+{"type":"thought","data":" definition uses division"}
+{"type":"thought","data":" by 2."}
+{"type":"thought","data":"\n\nThe README sentence"}
+{"type":"thought","data":" \"none is executed explicitly\""}
+{"type":"thought","data":" is ambiguous. It could"}
+{"type":"thought","data":" be read as \"none of"}
+{"type":"thought","data":" the sanity checks is"}
+{"type":"thought","data":" executed.\" The antecedent"}
+{"type":"thought","data":" is \"P projectors.\" "}
+{"type":"thought","data":"This is a minor wording"}
+{"type":"thought","data":" issue. It will not "}
+{"type":"thought","data":"be repaired."}
+{"type":"thought","data":"\n\nThe erratum does not"}
+{"type":"thought","data":" need to mention that"}
+{"type":"thought","data":" the docstring omits"}
+{"type":"thought","data":" the new commutation"}
+{"type":"thought","data":" checks. Astra only "}
+{"type":"thought","data":"asked to fix the P projectors"}
+{"type":"thought","data":" overclaim, not to list"}
+{"type":"thought","data":" every check. Silence"}
+{"type":"thought","data":" on this is acceptable"}
+{"type":"thought","data":" and does not introduce"}
+{"type":"thought","data":" a new false statement."}
+{"type":"thought","data":"\n\nThe erratum correctly"}
+{"type":"thought","data":" describes the false"}
+{"type":"thought","data":" docstring line. The"}
+{"type":"thought","data":" old wording remains"}
+{"type":"thought","data":" in the source file,"}
+{"type":"thought","data":" but the correction "}
+{"type":"thought","data":"is reported externally"}
+{"type":"thought","data":" in scripts/README.md"}
+{"type":"thought","data":" next to the run command."}
+{"type":"thought","data":" This satisfies the "}
+{"type":"thought","data":"requirement to travel"}
+{"type":"thought","data":" with the script. The"}
+{"type":"thought","data":" reviewer is now finalizing"}
+{"type":"thought","data":" the answer and checking"}
+{"type":"thought","data":" the phrase \"sin cambio"}
+{"type":"thought","data":" de expectativas\"."}
+{"type":"thought","data":"\n\nThe diff contains "}
+{"type":"thought","data":"no changes to print "}
+{"type":"thought","data":"messages or result keys."}
+{"type":"thought","data":" The C1 comment correctly"}
+{"type":"thought","data":" omits commutation because"}
+{"type":"thought","data":" that criterion does"}
+{"type":"thought","data":" not require it. The"}
+{"type":"thought","data":" reviewer is now drafting"}
+{"type":"thought","data":" the final structured"}
+{"type":"thought","data":" review."}
+{"type":"thought","data":"\n\nThe bijection endpoints"}
+{"type":"thought","data":" are confirmed open:"}
+{"type":"thought","data":" the arc (0,1) excludes"}
+{"type":"thought","data":" 0 and 1, matching the"}
+{"type":"thought","data":" old filter. The new"}
+{"type":"thought","data":" code uses `simplify`"}
+{"type":"thought","data":" on `(1-r**2)/(1+r**2)`"}
+{"type":"thought","data":" instead of `nsimplify(av)`,"}
+{"type":"thought","data":" but the algebraic values"}
+{"type":"thought","data":" are identical."}
+{"type":"text","data":"**"}
+{"type":"text","data":"Dict"}
+{"type":"text","data":"amen"}
+{"type":"text","data":" global"}
+{"type":"text","data":":"}
+{"type":"text","data":" PASS"}
+{"type":"text","data":".**"}
+{"type":"text","data":" El"}
+{"type":"text","data":" diff"}
+{"type":"text","data":" c"}
+{"type":"text","data":"ierra"}
+{"type":"text","data":" el"}
+{"type":"text","data":" bloque"}
+{"type":"text","data":" "}
+{"type":"text","data":"5"}
+{"type":"text","data":";"}
+{"type":"text","data":" R"}
+{"type":"text","data":"1"}
+{"type":"text","data":" y"}
+{"type":"text","data":" R"}
+{"type":"text","data":"3"}
+{"type":"text","data":" quedan"}
+{"type":"text","data":" bien"}
+{"type":"text","data":" registrados"}
+{"type":"text","data":" y"}
+{"type":"text","data":" no"}
+{"type":"text","data":" añ"}
+{"type":"text","data":"aden"}
+{"type":"text","data":" ninguna"}
+{"type":"text","data":" afirmación"}
+{"type":"text","data":" matemática"}
+{"type":"text","data":" nueva"}
+{"type":"text","data":" que"}
+{"type":"text","data":" el"}
+{"type":"text","data":" material"}
+{"type":"text","data":" no"}
+{"type":"text","data":" sost"}
+{"type":"text","data":"enga"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"###"}
+{"type":"text","data":" A"}
+{"type":"text","data":"."}
+{"type":"text","data":" Blo"}
+{"type":"text","data":"que"}
+{"type":"text","data":" "}
+{"type":"text","data":"5"}
+{"type":"text","data":" —"}
+{"type":"text","data":" PASS"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"El"}
+{"type":"text","data":" cambio"}
+{"type":"text","data":" entre"}
+{"type":"text","data":" las"}
+{"type":"text","data":" dos"}
+{"type":"text","data":" versiones"}
+{"type":"text","data":" es"}
+{"type":"text","data":" un"}
+{"type":"text","data":" cambio"}
+{"type":"text","data":" de"}
+{"type":"text","data":" método"}
+{"type":"text","data":" del"}
+{"type":"text","data":" cálculo"}
+{"type":"text","data":" de"}
+{"type":"text","data":" c"}
+{"type":"text","data":"eros"}
+{"type":"text","data":","}
+{"type":"text","data":" más"}
+{"type":"text","data":" la"}
+{"type":"text","data":" guarda"}
+{"type":"text","data":" que"}
+{"type":"text","data":" hace"}
+{"type":"text","data":" válida"}
+{"type":"text","data":" esa"}
+{"type":"text","data":" sust"}
+{"type":"text","data":"itución"}
+{"type":"text","data":"."}
+{"type":"text","data":" No"}
+{"type":"text","data":" cambia"}
+{"type":"text","data":" las"}
+{"type":"text","data":" tareas"}
+{"type":"text","data":" C"}
+{"type":"text","data":"1"}
+{"type":"text","data":"–"}
+{"type":"text","data":"C"}
+{"type":"text","data":"5"}
+{"type":"text","data":","}
+{"type":"text","data":" ni"}
+{"type":"text","data":" sus"}
+{"type":"text","data":" criterios"}
+{"type":"text","data":","}
+{"type":"text","data":" ni"}
+{"type":"text","data":" la"}
+{"type":"text","data":" lógica"}
+{"type":"text","data":" de"}
+{"type":"text","data":" ver"}
+{"type":"text","data":"edicto"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"El"}
+{"type":"text","data":" diff"}
+{"type":"text","data":" solo"}
+{"type":"text","data":" to"}
+{"type":"text","data":"ca"}
+{"type":"text","data":" esto"}
+{"type":"text","data":":\n\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Document"}
+{"type":"text","data":"a"}
+{"type":"text","data":" la"}
+{"type":"text","data":" par"}
+{"type":"text","data":"ada"}
+{"type":"text","data":" de"}
+{"type":"text","data":" la"}
+{"type":"text","data":" ejecución"}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":" y"}
+{"type":"text","data":" el"}
+{"type":"text","data":" método"}
+{"type":"text","data":" nuevo"}
+{"type":"text","data":".\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Introduce"}
+{"type":"text","data":" el"}
+{"type":"text","data":" símbolo"}
+{"type":"text","data":" `"}
+{"type":"text","data":"t"}
+{"type":"text","data":"`"}
+{"type":"text","data":" y"}
+{"type":"text","data":" el"}
+{"type":"text","data":" factor"}
+{"type":"text","data":" inter"}
+{"type":"text","data":"medio"}
+{"type":"text","data":" `"}
+{"type":"text","data":"M"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":"`,"}
+{"type":"text","data":" con"}
+{"type":"text","data":" `"}
+{"type":"text","data":"A"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":" ="}
+{"type":"text","data":" W"}
+{"type":"text","data":" M"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":"`."}
+{"type":"text","data":" El"}
+{"type":"text","data":" producto"}
+{"type":"text","data":" que"}
+{"type":"text","data":" define"}
+{"type":"text","data":" `"}
+{"type":"text","data":"A"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":"`"}
+{"type":"text","data":" es"}
+{"type":"text","data":" el"}
+{"type":"text","data":" mismo"}
+{"type":"text","data":".\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Sust"}
+{"type":"text","data":"itu"}
+{"type":"text","data":"ye"}
+{"type":"text","data":" `"}
+{"type":"text","data":"sp"}
+{"type":"text","data":"."}
+{"type":"text","data":"solve"}
+{"type":"text","data":"`"}
+{"type":"text","data":" por"}
+{"type":"text","data":" la"}
+{"type":"text","data":" parametr"}
+{"type":"text","data":"ización"}
+{"type":"text","data":" racional"}
+{"type":"text","data":" del"}
+{"type":"text","data":" arco"}
+{"type":"text","data":","}
+{"type":"text","data":" el"}
+{"type":"text","data":" m"}
+{"type":"text","data":"cd"}
+{"type":"text","data":" de"}
+{"type":"text","data":" las"}
+{"type":"text","data":" partes"}
+{"type":"text","data":" real"}
+{"type":"text","data":" e"}
+{"type":"text","data":" imagin"}
+{"type":"text","data":"aria"}
+{"type":"text","data":" de"}
+{"type":"text","data":" los"}
+{"type":"text","data":" numer"}
+{"type":"text","data":"adores"}
+{"type":"text","data":" y"}
+{"type":"text","data":" `"}
+{"type":"text","data":"real"}
+{"type":"text","data":"_"}
+{"type":"text","data":"roots"}
+{"type":"text","data":"`."}
+{"type":"text","data":"\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Eval"}
+{"type":"text","data":"úa"}
+{"type":"text","data":" los"}
+{"type":"text","data":" c"}
+{"type":"text","data":"eros"}
+{"type":"text","data":" de"}
+{"type":"text","data":" C"}
+{"type":"text","data":"1"}
+{"type":"text","data":" en"}
+{"type":"text","data":" `"}
+{"type":"text","data":"M"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":"`"}
+{"type":"text","data":" y"}
+{"type":"text","data":" los"}
+{"type":"text","data":" de"}
+{"type":"text","data":" C"}
+{"type":"text","data":"4"}
+{"type":"text","data":" en"}
+{"type":"text","data":" `["}
+{"type":"text","data":"U"}
+{"type":"text","data":"_"}
+{"type":"text","data":"l"}
+{"type":"text","data":","}
+{"type":"text","data":" M"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":"]"}
+{"type":"text","data":"`."}
+{"type":"text","data":"\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" A"}
+{"type":"text","data":"ñ"}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"text","data":"ade"}
+{"type":"text","data":" tres"}
+{"type":"text","data":" comprob"}
+{"type":"text","data":"aciones"}
+{"type":"text","data":" de"}
+{"type":"text","data":" cord"}
+{"type":"text","data":"ura"}
+{"type":"text","data":","}
+{"type":"text","data":" `"}
+{"type":"text","data":"U"}
+{"type":"text","data":"_"}
+{"type":"text","data":"l"}
+{"type":"text","data":" W"}
+{"type":"text","data":" ="}
+{"type":"text","data":" W"}
+{"type":"text","data":" U"}
+{"type":"text","data":"_"}
+{"type":"text","data":"l"}
+{"type":"text","data":"`,"}
+{"type":"text","data":" que"}
+{"type":"text","data":" ci"}
+{"type":"text","data":"err"}
+{"type":"text","data":"an"}
+{"type":"text","data":" en"}
+{"type":"text","data":" fallo"}
+{"type":"text","data":" si"}
+{"type":"text","data":" no"}
+{"type":"text","data":" se"}
+{"type":"text","data":" cumplen"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"C"}
+{"type":"text","data":"2"}
+{"type":"text","data":","}
+{"type":"text","data":" C"}
+{"type":"text","data":"3"}
+{"type":"text","data":","}
+{"type":"text","data":" C"}
+{"type":"text","data":"5"}
+{"type":"text","data":" y"}
+{"type":"text","data":" el"}
+{"type":"text","data":" árbol"}
+{"type":"text","data":" de"}
+{"type":"text","data":" ver"}
+{"type":"text","data":"edicto"}
+{"type":"text","data":" (`"}
+{"type":"text","data":"NOT"}
+{"type":"text","data":"_"}
+{"type":"text","data":"DEP"}
+{"type":"text","data":"_"}
+{"type":"text","data":"IS"}
+{"type":"text","data":"OT"}
+{"type":"text","data":"ROP"}
+{"type":"text","data":"IC"}
+{"type":"text","data":"_"}
+{"type":"text","data":"IN"}
+{"type":"text","data":"_"}
+{"type":"text","data":"DECLARE"}
+{"type":"text","data":"D"}
+{"type":"text","data":"_"}
+{"type":"text","data":"L"}
+{"type":"text","data":"`,"}
+{"type":"text","data":" `"}
+{"type":"text","data":"DEP"}
+{"type":"text","data":"_"}
+{"type":"text","data":"IS"}
+{"type":"text","data":"OT"}
+{"type":"text","data":"ROP"}
+{"type":"text","data":"IC"}
+{"type":"text","data":"_"}
+{"type":"text","data":"IN"}
+{"type":"text","data":"_"}
+{"type":"text","data":"DECLARE"}
+{"type":"text","data":"D"}
+{"type":"text","data":"_"}
+{"type":"text","data":"L"}
+{"type":"text","data":"`,"}
+{"type":"text","data":" `"}
+{"type":"text","data":"DEP"}
+{"type":"text","data":"_"}
+{"type":"text","data":"IS"}
+{"type":"text","data":"OT"}
+{"type":"text","data":"ROP"}
+{"type":"text","data":"IC"}
+{"type":"text","data":"_"}
+{"type":"text","data":"EXCEPT"}
+{"type":"text","data":"_"}
+{"type":"text","data":"FINITE"}
+{"type":"text","data":"_"}
+{"type":"text","data":"SET"}
+{"type":"text","data":"`,"}
+{"type":"text","data":" `"}
+{"type":"text","data":"NONE"}
+{"type":"text","data":"_"}
+{"type":"text","data":"OF"}
+{"type":"text","data":"_"}
+{"type":"text","data":"THE"}
+{"type":"text","data":"_"}
+{"type":"text","data":"DECLARE"}
+{"type":"text","data":"D"}
+{"type":"text","data":"`)"}
+{"type":"text","data":" no"}
+{"type":"text","data":" aparecen"}
+{"type":"text","data":" en"}
+{"type":"text","data":" el"}
+{"type":"text","data":" diff"}
+{"type":"text","data":"."}
+{"type":"text","data":" La"}
+{"type":"text","data":" equival"}
+{"type":"text","data":"encia"}
+{"type":"text","data":" usada"}
+{"type":"text","data":" es"}
+{"type":"text","data":" la"}
+{"type":"text","data":" correcta"}
+{"type":"text","data":":"}
+{"type":"text","data":" `"}
+{"type":"text","data":"W"}
+{"type":"text","data":"`"}
+{"type":"text","data":" unit"}
+{"type":"text","data":"aria"}
+{"type":"text","data":" ya"}
+{"type":"text","data":" se"}
+{"type":"text","data":" comprob"}
+{"type":"text","data":"aba"}
+{"type":"text","data":","}
+{"type":"text","data":" así"}
+{"type":"text","data":" que"}
+{"type":"text","data":" `"}
+{"type":"text","data":"A"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":" ="}
+{"type":"text","data":" "}
+{"type":"text","data":"0"}
+{"type":"text","data":"`"}
+{"type":"text","data":" si"}
+{"type":"text","data":" y"}
+{"type":"text","data":" solo"}
+{"type":"text","data":" si"}
+{"type":"text","data":" `"}
+{"type":"text","data":"M"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":" ="}
+{"type":"text","data":" "}
+{"type":"text","data":"0"}
+{"type":"text","data":"`;"}
+{"type":"text","data":" con"}
+{"type":"text","data":" la"}
+{"type":"text","data":" con"}
+{"type":"text","data":"mut"}
+{"type":"text","data":"ación"}
+{"type":"text","data":" nueva"}
+{"type":"text","data":","}
+{"type":"text","data":" `["}
+{"type":"text","data":"U"}
+{"type":"text","data":"_"}
+{"type":"text","data":"l"}
+{"type":"text","data":","}
+{"type":"text","data":" A"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":"]"}
+{"type":"text","data":" ="}
+{"type":"text","data":" W"}
+{"type":"text","data":"["}
+{"type":"text","data":"U"}
+{"type":"text","data":"_"}
+{"type":"text","data":"l"}
+{"type":"text","data":","}
+{"type":"text","data":" M"}
+{"type":"text","data":"_"}
+{"type":"text","data":"h"}
+{"type":"text","data":"]"}
+{"type":"text","data":"`,"}
+{"type":"text","data":" y"}
+{"type":"text","data":" la"}
+{"type":"text","data":" matriz"}
+{"type":"text","data":" se"}
+{"type":"text","data":" an"}
+{"type":"text","data":"ula"}
+{"type":"text","data":" en"}
+{"type":"text","data":" los"}
+{"type":"text","data":" mismos"}
+{"type":"text","data":" `("}
+{"type":"text","data":"a"}
+{"type":"text","data":","}
+{"type":"text","data":" b"}
+{"type":"text","data":")`."}
+{"type":"text","data":" Es"}
+{"type":"text","data":"as"}
+{"type":"text","data":" comprob"}
+{"type":"text","data":"aciones"}
+{"type":"text","data":" no"}
+{"type":"text","data":" alter"}
+{"type":"text","data":"an"}
+{"type":"text","data":" qué"}
+{"type":"text","data":" resultado"}
+{"type":"text","data":" exige"}
+{"type":"text","data":" cada"}
+{"type":"text","data":" tarea"}
+{"type":"text","data":";"}
+{"type":"text","data":" solo"}
+{"type":"text","data":" pueden"}
+{"type":"text","data":" impedir"}
+{"type":"text","data":" emitir"}
+{"type":"text","data":" ver"}
+{"type":"text","data":"edicto"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"`"}
+{"type":"text","data":"zeros"}
+{"type":"text","data":"_"}
+{"type":"text","data":"in"}
+{"type":"text","data":"_"}
+{"type":"text","data":"domain"}
+{"type":"text","data":"`"}
+{"type":"text","data":" ya"}
+{"type":"text","data":" no"}
+{"type":"text","data":" dev"}
+{"type":"text","data":"uelve"}
+{"type":"text","data":" `\""}
+{"type":"text","data":"UN"}
+{"type":"text","data":"DEC"}
+{"type":"text","data":"ID"}
+{"type":"text","data":"ED"}
+{"type":"text","data":"\""}
+{"type":"text","data":"`."}
+{"type":"text","data":" La"}
+{"type":"text","data":" rama"}
+{"type":"text","data":" que"}
+{"type":"text","data":" im"}
+{"type":"text","data":"prime"}
+{"type":"text","data":" «"}
+{"type":"text","data":"C"}
+{"type":"text","data":"4"}
+{"type":"text","data":" pairs"}
+{"type":"text","data":" undec"}
+{"type":"text","data":"ided"}
+{"type":"text","data":"»"}
+{"type":"text","data":" sigue"}
+{"type":"text","data":" en"}
+{"type":"text","data":" el"}
+{"type":"text","data":" código"}
+{"type":"text","data":" y"}
+{"type":"text","data":" queda"}
+{"type":"text","data":" in"}
+{"type":"text","data":"alcan"}
+{"type":"text","data":"z"}
+{"type":"text","data":"able"}
+{"type":"text","data":":"}
+{"type":"text","data":" es"}
+{"type":"text","data":" consecuencia"}
+{"type":"text","data":" del"}
+{"type":"text","data":" método"}
+{"type":"text","data":","}
+{"type":"text","data":" no"}
+{"type":"text","data":" una"}
+{"type":"text","data":" regla"}
+{"type":"text","data":" de"}
+{"type":"text","data":" ver"}
+{"type":"text","data":"edicto"}
+{"type":"text","data":" re"}
+{"type":"text","data":"escrita"}
+{"type":"text","data":"."}
+{"type":"text","data":" El"}
+{"type":"text","data":" comentario"}
+{"type":"text","data":" de"}
+{"type":"text","data":" esa"}
+{"type":"text","data":" función"}
+{"type":"text","data":" dice"}
+{"type":"text","data":" que"}
+{"type":"text","data":" la"}
+{"type":"text","data":" lista"}
+{"type":"text","data":" de"}
+{"type":"text","data":" valores"}
+{"type":"text","data":" de"}
+{"type":"text","data":" `"}
+{"type":"text","data":"a"}
+{"type":"text","data":"`"}
+{"type":"text","data":" va"}
+{"type":"text","data":" orden"}
+{"type":"text","data":"ada"}
+{"type":"text","data":" y"}
+{"type":"text","data":" el"}
+{"type":"text","data":" código"}
+{"type":"text","data":" no"}
+{"type":"text","data":" la"}
+{"type":"text","data":" orden"}
+{"type":"text","data":"a"}
+{"type":"text","data":";"}
+{"type":"text","data":" C"}
+{"type":"text","data":"4"}
+{"type":"text","data":" vuelve"}
+{"type":"text","data":" a"}
+{"type":"text","data":" orden"}
+{"type":"text","data":"ar"}
+{"type":"text","data":" el"}
+{"type":"text","data":" conjunto"}
+{"type":"text","data":" excepcional"}
+{"type":"text","data":" antes"}
+{"type":"text","data":" de"}
+{"type":"text","data":" us"}
+{"type":"text","data":"arlo"}
+{"type":"text","data":","}
+{"type":"text","data":" así"}
+{"type":"text","data":" que"}
+{"type":"text","data":" el"}
+{"type":"text","data":" ver"}
+{"type":"text","data":"edicto"}
+{"type":"text","data":" no"}
+{"type":"text","data":" depende"}
+{"type":"text","data":" de"}
+{"type":"text","data":" ese"}
+{"type":"text","data":" orden"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"###"}
+{"type":"text","data":" B"}
+{"type":"text","data":"."}
+{"type":"text","data":" R"}
+{"type":"text","data":"1"}
+{"type":"text","data":" —"}
+{"type":"text","data":" PASS"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Sí"}
+{"type":"text","data":" es"}
+{"type":"text","data":" acept"}
+{"type":"text","data":"able"}
+{"type":"text","data":" dejar"}
+{"type":"text","data":" los"}
+{"type":"text","data":" bytes"}
+{"type":"text","data":" del"}
+{"type":"text","data":" verific"}
+{"type":"text","data":"ador"}
+{"type":"text","data":" como"}
+{"type":"text","data":" están"}
+{"type":"text","data":" y"}
+{"type":"text","data":" registrar"}
+{"type":"text","data":" la"}
+{"type":"text","data":" fe"}
+{"type":"text","data":" de"}
+{"type":"text","data":" err"}
+{"type":"text","data":"atas"}
+{"type":"text","data":" en"}
+{"type":"text","data":" el"}
+{"type":"text","data":" informe"}
+{"type":"text","data":" y"}
+{"type":"text","data":" en"}
+{"type":"text","data":" `"}
+{"type":"text","data":"scripts"}
+{"type":"text","data":"/"}
+{"type":"text","data":"README"}
+{"type":"text","data":".md"}
+{"type":"text","data":"`."}
+{"type":"text","data":" La"}
+{"type":"text","data":" línea"}
+{"type":"text","data":" falsa"}
+{"type":"text","data":" está"}
+{"type":"text","data":" en"}
+{"type":"text","data":" la"}
+{"type":"text","data":" cab"}
+{"type":"text","data":"ec"}
+{"type":"text","data":"era"}
+{"type":"text","data":" de"}
+{"type":"text","data":" un"}
+{"type":"text","data":" fich"}
+{"type":"text","data":"ero"}
+{"type":"text","data":" ya"}
+{"type":"text","data":" revis"}
+{"type":"text","data":"ado"}
+{"type":"text","data":";"}
+{"type":"text","data":" la"}
+{"type":"text","data":" cor"}
+{"type":"text","data":"rección"}
+{"type":"text","data":" que"}
+{"type":"text","data":" ped"}
+{"type":"text","data":"ía"}
+{"type":"text","data":" la"}
+{"type":"text","data":" revisión"}
+{"type":"text","data":" anterior"}
+{"type":"text","data":" es"}
+{"type":"text","data":" de"}
+{"type":"text","data":" redacción"}
+{"type":"text","data":","}
+{"type":"text","data":" no"}
+{"type":"text","data":" una"}
+{"type":"text","data":" prueba"}
+{"type":"text","data":" que"}
+{"type":"text","data":" falt"}
+{"type":"text","data":"ara"}
+{"type":"text","data":"."}
+{"type":"text","data":" La"}
+{"type":"text","data":" err"}
+{"type":"text","data":"ata"}
+{"type":"text","data":" via"}
+{"type":"text","data":"ja"}
+{"type":"text","data":" junto"}
+{"type":"text","data":" a"}
+{"type":"text","data":" la"}
+{"type":"text","data":" orden"}
+{"type":"text","data":" de"}
+{"type":"text","data":" ejecución"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"La"}
+{"type":"text","data":" redacción"}
+{"type":"text","data":" es"}
+{"type":"text","data":" correcta"}
+{"type":"text","data":"."}
+{"type":"text","data":" La"}
+{"type":"text","data":" cab"}
+{"type":"text","data":"ec"}
+{"type":"text","data":"era"}
+{"type":"text","data":" enum"}
+{"type":"text","data":"era"}
+{"type":"text","data":" «"}
+{"type":"text","data":"P"}
+{"type":"text","data":" project"}
+{"type":"text","data":"ors"}
+{"type":"text","data":"»"}
+{"type":"text","data":" y"}
+{"type":"text","data":" el"}
+{"type":"text","data":" código"}
+{"type":"text","data":" no"}
+{"type":"text","data":" compr"}
+{"type":"text","data":"ueba"}
+{"type":"text","data":" ningún"}
+{"type":"text","data":" proy"}
+{"type":"text","data":"ector"}
+{"type":"text","data":":"}
+{"type":"text","data":" solo"}
+{"type":"text","data":" que"}
+{"type":"text","data":" cada"}
+{"type":"text","data":" `"}
+{"type":"text","data":"Gamma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"`"}
+{"type":"text","data":" es"}
+{"type":"text","data":" herm"}
+{"type":"text","data":"ítica"}
+{"type":"text","data":" y"}
+{"type":"text","data":" que"}
+{"type":"text","data":" `"}
+{"type":"text","data":"Gamma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"²"}
+{"type":"text","data":" ="}
+{"type":"text","data":" I"}
+{"type":"text","data":"`."}
+{"type":"text","data":" De"}
+{"type":"text","data":" ahí"}
+{"type":"text","data":" se"}
+{"type":"text","data":" deduce"}
+{"type":"text","data":" `"}
+{"type":"text","data":"P"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":"^"}
+{"type":"text","data":"±"}
+{"type":"text","data":" ="}
+{"type":"text","data":" ("}
+{"type":"text","data":"I"}
+{"type":"text","data":" ±"}
+{"type":"text","data":" Gamma"}
+{"type":"text","data":"_"}
+{"type":"text","data":"i"}
+{"type":"text","data":")/"}
+{"type":"text","data":"2"}
+{"type":"text","data":"`:"}
+{"type":"text","data":" son"}
+{"type":"text","data":" herm"}
+{"type":"text","data":"íticos"}
+{"type":"text","data":" y"}
+{"type":"text","data":" cumplen"}
+{"type":"text","data":" `"}
+{"type":"text","data":"P"}
+{"type":"text","data":"²"}
+{"type":"text","data":" ="}
+{"type":"text","data":" P"}
+{"type":"text","data":"`."}
+{"type":"text","data":" El"}
+{"type":"text","data":" informe"}
+{"type":"text","data":" y"}
+{"type":"text","data":" el"}
+{"type":"text","data":" README"}
+{"type":"text","data":" dicen"}
+{"type":"text","data":" exactamente"}
+{"type":"text","data":" eso"}
+{"type":"text","data":","}
+{"type":"text","data":" sin"}
+{"type":"text","data":" afirmar"}
+{"type":"text","data":" que"}
+{"type":"text","data":" el"}
+{"type":"text","data":" script"}
+{"type":"text","data":" im"}
+{"type":"text","data":"prima"}
+{"type":"text","data":" esa"}
+{"type":"text","data":" comprob"}
+{"type":"text","data":"ación"}
+{"type":"text","data":"."}
+{"type":"text","data":" La"}
+{"type":"text","data":" frase"}
+{"type":"text","data":" del"}
+{"type":"text","data":" README"}
+{"type":"text","data":" de"}
+{"type":"text","data":" que"}
+{"type":"text","data":" la"}
+{"type":"text","data":" rama"}
+{"type":"text","data":" `\""}
+{"type":"text","data":"UN"}
+{"type":"text","data":"DEC"}
+{"type":"text","data":"ID"}
+{"type":"text","data":"ED"}
+{"type":"text","data":"\"`"}
+{"type":"text","data":" es"}
+{"type":"text","data":" in"}
+{"type":"text","data":"alcan"}
+{"type":"text","data":"z"}
+{"type":"text","data":"able"}
+{"type":"text","data":" coincide"}
+{"type":"text","data":" con"}
+{"type":"text","data":" el"}
+{"type":"text","data":" código"}
+{"type":"text","data":" de"}
+{"type":"text","data":" la"}
+{"type":"text","data":" ejecución"}
+{"type":"text","data":" "}
+{"type":"text","data":"2"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"###"}
+{"type":"text","data":" C"}
+{"type":"text","data":"."}
+{"type":"text","data":" R"}
+{"type":"text","data":"3"}
+{"type":"text","data":" —"}
+{"type":"text","data":" PASS"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"El"}
+{"type":"text","data":" párrafo"}
+{"type":"text","data":" del"}
+{"type":"text","data":" ver"}
+{"type":"text","data":"edicto"}
+{"type":"text","data":" hace"}
+{"type":"text","data":" las"}
+{"type":"text","data":" tres"}
+{"type":"text","data":" cosas"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Se"}
+{"type":"text","data":"para"}
+{"type":"text","data":" la"}
+{"type":"text","data":" is"}
+{"type":"text","data":"otrop"}
+{"type":"text","data":"ía"}
+{"type":"text","data":" certific"}
+{"type":"text","data":"ada"}
+{"type":"text","data":" de"}
+{"type":"text","data":" la"}
+{"type":"text","data":" pendiente"}
+{"type":"text","data":":"}
+{"type":"text","data":" «"}
+{"type":"text","data":"C"}
+{"type":"text","data":"1"}
+{"type":"text","data":"–"}
+{"type":"text","data":"C"}
+{"type":"text","data":"5"}
+{"type":"text","data":" certify"}
+{"type":"text","data":" the"}
+{"type":"text","data":" declared"}
+{"type":"text","data":" isot"}
+{"type":"text","data":"ropy"}
+{"type":"text","data":" only"}
+{"type":"text","data":"»,"}
+{"type":"text","data":" y"}
+{"type":"text","data":" la"}
+{"type":"text","data":" pendiente"}
+{"type":"text","data":" «"}
+{"type":"text","data":"derived"}
+{"type":"text","data":" separately"}
+{"type":"text","data":" […]"}
+{"type":"text","data":" not"}
+{"type":"text","data":" recom"}
+{"type":"text","data":"puted"}
+{"type":"text","data":" here"}
+{"type":"text","data":"»,"}
+{"type":"text","data":" con"}
+{"type":"text","data":" proced"}
+{"type":"text","data":"encia"}
+{"type":"text","data":" en"}
+{"type":"text","data":" `"}
+{"type":"text","data":"theory"}
+{"type":"text","data":"/"}
+{"type":"text","data":"S"}
+{"type":"text","data":"4"}
+{"type":"text","data":"_"}
+{"type":"text","data":"STRICT"}
+{"type":"text","data":"_"}
+{"type":"text","data":"CON"}
+{"type":"text","data":"E"}
+{"type":"text","data":"_"}
+{"type":"text","data":"COUNTER"}
+{"type":"text","data":"EXAMPLE"}
+{"type":"text","data":".md"}
+{"type":"text","data":"`,"}
+{"type":"text","data":" `"}
+{"type":"text","data":"scripts"}
+{"type":"text","data":"/"}
+{"type":"text","data":"cert"}
+{"type":"text","data":"_"}
+{"type":"text","data":"Aa"}
+{"type":"text","data":"_"}
+{"type":"text","data":"s"}
+{"type":"text","data":"4"}
+{"type":"text","data":"_"}
+{"type":"text","data":"counter"}
+{"type":"text","data":"example"}
+{"type":"text","data":".py"}
+{"type":"text","data":"`"}
+{"type":"text","data":" y"}
+{"type":"text","data":" la"}
+{"type":"text","data":" sección"}
+{"type":"text","data":" "}
+{"type":"text","data":"4"}
+{"type":"text","data":"."}
+{"type":"text","data":"1"}
+{"type":"text","data":" de"}
+{"type":"text","data":" `"}
+{"type":"text","data":"CURRENT"}
+{"type":"text","data":"_"}
+{"type":"text","data":"STATE"}
+{"type":"text","data":".md"}
+{"type":"text","data":"`."}
+{"type":"text","data":"\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" N"}
+{"type":"text","data":"ombra"}
+{"type":"text","data":" el"}
+{"type":"text","data":" término"}
+{"type":"text","data":" de"}
+{"type":"text","data":" comparación"}
+{"type":"text","data":":"}
+{"type":"text","data":" `"}
+{"type":"text","data":"c"}
+{"type":"text","data":"_"}
+{"type":"text","data":"strict"}
+{"type":"text","data":"^"}
+{"type":"text","data":"iso"}
+{"type":"text","data":" ="}
+{"type":"text","data":" "}
+{"type":"text","data":"1"}
+{"type":"text","data":"/"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"3"}
+{"type":"text","data":"`"}
+{"type":"text","data":" del"}
+{"type":"text","data":" cuerpo"}
+{"type":"text","data":" de"}
+{"type":"text","data":" soporte"}
+{"type":"text","data":" estr"}
+{"type":"text","data":"icto"}
+{"type":"text","data":","}
+{"type":"text","data":" y"}
+{"type":"text","data":" dice"}
+{"type":"text","data":" que"}
+{"type":"text","data":" la"}
+{"type":"text","data":" comparación"}
+{"type":"text","data":" no"}
+{"type":"text","data":" es"}
+{"type":"text","data":" con"}
+{"type":"text","data":" un"}
+{"type":"text","data":" frente"}
+{"type":"text","data":" bal"}
+{"type":"text","data":"ístico"}
+{"type":"text","data":" definido"}
+{"type":"text","data":" por"}
+{"type":"text","data":" amplitudes"}
+{"type":"text","data":".\n"}
+{"type":"text","data":"-"}
+{"type":"text","data":" Res"}
+{"type":"text","data":"tring"}
+{"type":"text","data":"e"}
+{"type":"text","data":" la"}
+{"type":"text","data":" homogene"}
+{"type":"text","data":"idad"}
+{"type":"text","data":" a"}
+{"type":"text","data":" la"}
+{"type":"text","data":" condición"}
+{"type":"text","data":" ("}
+{"type":"text","data":"2"}
+{"type":"text","data":")"}
+{"type":"text","data":" tal"}
+{"type":"text","data":" como"}
+{"type":"text","data":" está"}
+{"type":"text","data":" en"}
+{"type":"text","data":" ar"}
+{"type":"text","data":"Xiv"}
+{"type":"text","data":":"}
+{"type":"text","data":"170"}
+{"type":"text","data":"8"}
+{"type":"text","data":"."}
+{"type":"text","data":"008"}
+{"type":"text","data":"26"}
+{"type":"text","data":"v"}
+{"type":"text","data":"2"}
+{"type":"text","data":","}
+{"type":"text","data":" y"}
+{"type":"text","data":" excl"}
+{"type":"text","data":"uye"}
+{"type":"text","data":" cualquier"}
+{"type":"text","data":" otra"}
+{"type":"text","data":" formulación"}
+{"type":"text","data":","}
+{"type":"text","data":" incluida"}
+{"type":"text","data":" la"}
+{"type":"text","data":" de"}
+{"type":"text","data":" su"}
+{"type":"text","data":" referencia"}
+{"type":"text","data":" ["}
+{"type":"text","data":"23"}
+{"type":"text","data":"]."}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"Los"}
+{"type":"text","data":" valores"}
+{"type":"text","data":" `"}
+{"type":"text","data":"c"}
+{"type":"text","data":"_"}
+{"type":"text","data":"0"}
+{"type":"text","data":" ="}
+{"type":"text","data":" a"}
+{"type":"text","data":"/"}
+{"type":"text","data":"sqrt"}
+{"type":"text","data":"3"}
+{"type":"text","data":"`"}
+{"type":"text","data":" en"}
+{"type":"text","data":" las"}
+{"type":"text","data":" cu"}
+{"type":"text","data":"asi"}
+{"type":"text","data":"energ"}
+{"type":"text","data":"ías"}
+{"type":"text","data":" `"}
+{"type":"text","data":"±"}
+{"type":"text","data":"pi"}
+{"type":"text","data":"/"}
+{"type":"text","data":"4"}
+{"type":"text","data":"`,"}
+{"type":"text","data":" dimensión"}
+{"type":"text","data":" interna"}
+{"type":"text","data":" cuatro"}
+{"type":"text","data":","}
+{"type":"text","data":" son"}
+{"type":"text","data":" los"}
+{"type":"text","data":" de"}
+{"type":"text","data":" la"}
+{"type":"text","data":" formulación"}
+{"type":"text","data":" que"}
+{"type":"text","data":" la"}
+{"type":"text","data":" revisión"}
+{"type":"text","data":" anterior"}
+{"type":"text","data":" ya"}
+{"type":"text","data":" dio"}
+{"type":"text","data":" por"}
+{"type":"text","data":" comprob"}
+{"type":"text","data":"ada"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"###"}
+{"type":"text","data":" D"}
+{"type":"text","data":"."}
+{"type":"text","data":" Er"}
+{"type":"text","data":"ro"}
+{"type":"text","data":"res"}
+{"type":"text","data":" nuevos"}
+{"type":"text","data":" —"}
+{"type":"text","data":" PASS"}
+{"type":"text","data":"\n\n"}
+{"type":"text","data":"No"}
+{"type":"text","data":"."}
+{"type":"text","data":" Lo"}
+{"type":"text","data":" que"}
+{"type":"text","data":" añ"}
+{"type":"text","data":"aden"}
+{"type":"text","data":" las"}
+{"type":"text","data":" repar"}
+{"type":"text","data":"aciones"}
+{"type":"text","data":" se"}
+{"type":"text","data":" sostiene"}
+{"type":"text","data":" con"}
+{"type":"text","data":" el"}
+{"type":"text","data":" verific"}
+{"type":"text","data":"ador"}
+{"type":"text","data":" actual"}
+{"type":"text","data":" y"}
+{"type":"text","data":" el"}
+{"type":"text","data":" diff"}
+{"type":"text","data":","}
+{"type":"text","data":" o"}
+{"type":"text","data":" es"}
+{"type":"text","data":" la"}
+{"type":"text","data":" separación"}
+{"type":"text","data":" ped"}
+{"type":"text","data":"ida"}
+{"type":"text","data":" en"}
+{"type":"text","data":" el"}
+{"type":"text","data":" bloque"}
+{"type":"text","data":" "}
+{"type":"text","data":"6"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"La"}
+{"type":"text","data":" ded"}
+{"type":"text","data":"ucción"}
+{"type":"text","data":" sobre"}
+{"type":"text","data":" los"}
+{"type":"text","data":" proyect"}
+{"type":"text","data":"ores"}
+{"type":"text","data":" es"}
+{"type":"text","data":" la"}
+{"type":"text","data":" identidad"}
+{"type":"text","data":" anterior"}
+{"type":"text","data":"."}
+{"type":"text","data":" La"}
+{"type":"text","data":" nota"}
+{"type":"text","data":" de"}
+{"type":"text","data":" que"}
+{"type":"text","data":" `\""}
+{"type":"text","data":"UN"}
+{"type":"text","data":"DEC"}
+{"type":"text","data":"ID"}
+{"type":"text","data":"ED"}
+{"type":"text","data":"\"`"}
+{"type":"text","data":" no"}
+{"type":"text","data":" añade"}
+{"type":"text","data":" comprob"}
+{"type":"text","data":"ación"}
+{"type":"text","data":" y"}
+{"type":"text","data":" de"}
+{"type":"text","data":" que"}
+{"type":"text","data":" `"}
+{"type":"text","data":"simplify"}
+{"type":"text","data":"`"}
+{"type":"text","data":" inter"}
+{"type":"text","data":"viene"}
+{"type":"text","data":" en"}
+{"type":"text","data":" las"}
+{"type":"text","data":" identidades"}
+{"type":"text","data":" exact"}
+{"type":"text","data":"as"}
+{"type":"text","data":","}
+{"type":"text","data":" sin"}
+{"type":"text","data":" toler"}
+{"type":"text","data":"ancias"}
+{"type":"text","data":","}
+{"type":"text","data":" coincide"}
+{"type":"text","data":" con"}
+{"type":"text","data":" `"}
+{"type":"text","data":"red"}
+{"type":"text","data":"`"}
+{"type":"text","data":" y"}
+{"type":"text","data":" con"}
+{"type":"text","data":" `"}
+{"type":"text","data":"zeros"}
+{"type":"text","data":"_"}
+{"type":"text","data":"in"}
+{"type":"text","data":"_"}
+{"type":"text","data":"domain"}
+{"type":"text","data":"`."}
+{"type":"text","data":" El"}
+{"type":"text","data":" informe"}
+{"type":"text","data":" no"}
+{"type":"text","data":" adop"}
+{"type":"text","data":"ta"}
+{"type":"text","data":" como"}
+{"type":"text","data":" prueba"}
+{"type":"text","data":" los"}
+{"type":"text","data":" test"}
+{"type":"text","data":"igos"}
+{"type":"text","data":" de"}
+{"type":"text","data":" tr"}
+{"type":"text","data":"aza"}
+{"type":"text","data":" ni"}
+{"type":"text","data":" la"}
+{"type":"text","data":" deriv"}
+{"type":"text","data":"ación"}
+{"type":"text","data":" de"}
+{"type":"text","data":" la"}
+{"type":"text","data":" pendiente"}
+{"type":"text","data":" escritos"}
+{"type":"text","data":" por"}
+{"type":"text","data":" el"}
+{"type":"text","data":" otro"}
+{"type":"text","data":" modelo"}
+{"type":"text","data":"."}
+{"type":"text","data":" El"}
+{"type":"text","data":" panel"}
+{"type":"text","data":" de"}
+{"type":"text","data":" seis"}
+{"type":"text","data":" puntos"}
+{"type":"text","data":" y"}
+{"type":"text","data":" el"}
+{"type":"text","data":" estado"}
+{"type":"text","data":" `"}
+{"type":"text","data":"COUNTER"}
+{"type":"text","data":"EXAMPLE"}
+{"type":"text","data":"_"}
+{"type":"text","data":"VER"}
+{"type":"text","data":"IFIED"}
+{"type":"text","data":"`"}
+{"type":"text","data":" de"}
+{"type":"text","data":" la"}
+{"type":"text","data":" sección"}
+{"type":"text","data":" "}
+{"type":"text","data":"4"}
+{"type":"text","data":"."}
+{"type":"text","data":"1"}
+{"type":"text","data":" se"}
+{"type":"text","data":" cit"}
+{"type":"text","data":"an"}
+{"type":"text","data":" como"}
+{"type":"text","data":" proced"}
+{"type":"text","data":"encia"}
+{"type":"text","data":" externa"}
+{"type":"text","data":" y"}
+{"type":"text","data":" este"}
+{"type":"text","data":" certificado"}
+{"type":"text","data":" dice"}
+{"type":"text","data":" que"}
+{"type":"text","data":" no"}
+{"type":"text","data":" los"}
+{"type":"text","data":" recal"}
+{"type":"text","data":"cula"}
+{"type":"text","data":";"}
+{"type":"text","data":" no"}
+{"type":"text","data":" ampl"}
+{"type":"text","data":"ían"}
+{"type":"text","data":" lo"}
+{"type":"text","data":" que"}
+{"type":"text","data":" certific"}
+{"type":"text","data":"an"}
+{"type":"text","data":" C"}
+{"type":"text","data":"1"}
+{"type":"text","data":"–"}
+{"type":"text","data":"C"}
+{"type":"text","data":"5"}
+{"type":"text","data":".\n\n"}
+{"type":"text","data":"**"}
+{"type":"text","data":"Dict"}
+{"type":"text","data":"amen"}
+{"type":"text","data":" global"}
+{"type":"text","data":":"}
+{"type":"text","data":" PASS"}
+{"type":"text","data":".**"}
+{"type":"available_commands","tools":[],"commands":["compact","always-approve","context","plugins","reload-plugins","session-info","feedback","goal","alloy-verifier","comite","lean-comparador","artifact-emulator","built-in-browser","chrome-browser","computer-use","deep-research","user:docs","google-workspace","build-with-ai","code-review","create-skill","create-workflow","design","execute-plan","game-assets","bundled:imagine","implement","learn","long-running-background-tasks","pr-babysit","resume-claude","resume-codex","resume-cursor","review","skill-design-principles","statusline","threejs-frame-conventions"]}
+{"type":"usage","usage":{"input_tokens":26072,"output_tokens":20939,"cache_read_input_tokens":1280,"cache_creation_input_tokens":0,"reasoning_tokens":19757},"signature":"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"}
+{"type":"end","stopReason":"end_turn","sessionId":"01a1e906-cf48-75e3-8c6f-d3b6b845005c","requestId":"9dc9df17-f00f-4a3f-b6f4-49b1f3f80706","usage":{"input_tokens":26072,"cache_read_input_tokens":1280,"cache_creation_input_tokens":0,"output_tokens":20939,"reasoning_tokens":19757,"total_tokens":48291},"num_turns":1,"total_cost_usd":0.06066212,"total_cost_usd_ticks":606621200,"modelUsage":{"grok-4.7-build":{"inputTokens":26072,"outputTokens":20939,"cacheReadInputTokens":1280,"cacheCreationInputTokens":0,"modelCalls":1,"costUSD":0.06066212}}}

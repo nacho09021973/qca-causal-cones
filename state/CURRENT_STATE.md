@@ -4037,3 +4037,18 @@ does not persist at s=4 within that isotropy notion. Not claimed: other
 theta/L/U, other assumptions of 1306.1934, full cubic isotropy, novelty
 (prior-art search incomplete). Review and promotion need separate
 authorization. NOVELTY = OPEN.
+
+**S4 isotropy gate reviewed — 2026-11-17:** sealed Astra review
+(gpt-6-astra, on `251c163`, archived `ed63258`): REPAIR_REQUIRED limited to
+documentation, mathematical verdict PASS for all 0<a<1 (blocks 1-4 PASS,
+5 OPEN pending the verifier diff, 6 documentary repair). Repairs R1-R3
+(user «si, aplica 1-3»): `929f7f7`, `0ec49f3`, `6331fa5`; verifier bytes
+unchanged, erratum recorded. Astra re-review failed on an account usage
+limit (attempt archived `f14ea7c`); user «prueba con Grok»: bounded sealed
+Grok re-review (grok-4.7) of blocks 5-6 and repairs: PASS on all items, no
+new errors. Two reviewing families (OpenAI, xAI), each partial in scope.
+Author verdict `DEP_ISOTROPIC_IN_DECLARED_L` unchanged; still PRELIMINARY
+until an explicit promotion decision. Note: Sec. 4.1 records «NOVELTY: not
+pursued as a candidate (user decision 2026-11-02)»; any promotion or
+write-up as a candidate requires revisiting that decision explicitly.
+NOVELTY = OPEN.
