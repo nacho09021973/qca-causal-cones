@@ -78,3 +78,41 @@ User «autorizado». Read from `biblioteca/citas-s4-2026-11-17/` (pdftotext).
 Outcome of this step: the restricted claim was not found in these three
 papers. Remaining: the 61 non-arXiv works (titles only), the AF
 regrouping check, a human expert. NOVELTY = OPEN.
+
+## Non-arXiv forward citations (61) — 2026-11-17
+
+User «sigue». Abstracts from OpenAlex (`resumenes_citas_no_arxiv.md`,
+`scripts/prior_art_fetch_openalex_abstracts.py`); 18 of 61 have no abstract
+there and were screened by title only. Most titles are foundational,
+philosophical or book chapters of the Pavia programme.
+
+No abstract states the restricted claim. RELATED, by abstract:
+- Jay, *Discrete Dirac Dynamics* (UWA thesis 2021, cites 1708.00826):
+  systematic DQW construction on non-square grids, polar grid.
+- Arnault / Debbasch-group theses 2019 (*Quantum walks: background
+  geometry and gauge invariance*, cites 1609.00305 and 1708.00826):
+  triangular/hexagonal DQWs, gauge invariance, curved spacetime.
+- Forets, thesis 2015: discrete Lorentz transforms, continuum limits.
+- *Light on a Ticking Lattice* (pith preprints 2026, two versions):
+  classical linear Maxwell update rules on a cubic grid; face-neighbour
+  rules limited by causal reach to 1/sqrt3 along body diagonals; a
+  26-neighbour rule with exact axial speed. Relevant to the causal-reach
+  bound (R1-type), not to coin isotropy at s>2. Unreviewed preprint venue.
+- *SashaLattice* (Zenodo 2026): simulator reproducing the s=2 Weyl
+  automaton on 8 vertex links; no s>2 isotropic family.
+- *Long-Wavelength Lorentz-Like Propagation in a Deformable Cellular
+  Space* (Research Square 2026): classical Voronoi-cell phase model,
+  homogenized isotropic speed; different setting.
+- Farrelly, *A review of quantum cellular automata* (2020), and
+  Arrighi, *An overview of quantum cellular automata* (2019, no abstract):
+  reviews; not read in full here.
+Not obtained: full texts of paywalled chapters and theses.
+
+## Status after the forward-citation search
+
+Restricted claim not found in: 103 arXiv abstracts (24 read), 3 papers in
+full text, 61 non-arXiv abstracts/titles, the two Grok runs and the
+original checks in `comprobacion.md`. This narrows but does not establish
+absence (OpenAlex coverage, abstract-only screening, unread reviews).
+Remaining: the Arrighi-Facchini regrouping check (an analytic task, needs
+its own charter) and a human expert. NOVELTY = OPEN.
