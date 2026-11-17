@@ -1,0 +1,19 @@
+PASS [sanity] Gamma_x Hermitian
+PASS [sanity] Gamma_x^2 = I
+PASS [sanity] Gamma_y Hermitian
+PASS [sanity] Gamma_y^2 = I
+PASS [sanity] Gamma_z Hermitian
+PASS [sanity] Gamma_z^2 = I
+PASS [sanity] W unitary
+PASS [sanity] U_x W = W U_x
+PASS [sanity] U_y W = W U_y
+PASS [sanity] U_z W = W U_z
+PASS [sanity] sum_h A_h = W (k=0 symbol)
+PASS C1 A_h != 0 on (0,1) for all eight h; no zeros
+PASS C2 U_l A_h U_l^dagger = A_{l(h)} (24 identities)
+PASS C3 transitive on S_+ and S_-, no fixed generator
+C4 pairs with commutator identically zero: none
+C4 pairs undecided: none
+C4 values of a in (0,1) where some commutator vanishes: none
+PASS C5 projective representation of the Klein group
+VERDICT: DEP_ISOTROPIC_IN_DECLARED_L

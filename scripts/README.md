@@ -1,5 +1,22 @@
 # Scripts
 
+## S4 family isotropy in the DEP sense (2026-11-17)
+
+`verify_s4_dep_isotropy.py` certifies tasks C1-C5 of
+[`S4_DEP_ISOTROPY_GATE.md`](../theory/S4_DEP_ISOTROPY_GATE.md) (frozen
+`9188755`) for the s=4 family at theta = pi/4, a symbolic in (0,1):
+nonzero transition matrices, Klein-group covariance with sigma_l ⊗ I,
+transitivity, homogeneity condition (2) of arXiv:1708.00826 with exact zero
+sets (rational arc parametrization, gcd, Sturm roots), projective
+representation. Run 1 stopped on a solver limitation (retained); run 2
+gives `DEP_ISOTROPIC_IN_DECLARED_L`. Does not certify other theta, groups or
+generating sets, the other assumptions of 1306.1934, novelty, or c_0 itself
+(certified elsewhere for this family).
+
+```sh
+python3 -B scripts/verify_s4_dep_isotropy.py
+```
+
 ## Prior-art check: Di Molfetta-Arrighi 1D speed (2026-11-17)
 
 `verify_prior_art_dimolfetta_1d_speed.py` supports the source check in

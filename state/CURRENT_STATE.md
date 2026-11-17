@@ -4023,3 +4023,17 @@ generators, L the Klein group of coordinate half-turns and
 U_l = sigma_l ⊗ I, and for which a in (0,1)? Execution, review and
 promotion each need separate authorization. NOVELTY = OPEN. Not part of
 the Thirring coexistence line (stopped).
+
+**S4 isotropy gate executed — 2026-11-17:** user «autorizo ejecutar».
+Preregistration `9188755`; verifier `fdae12c` (run 1: solver
+NotImplementedError after C1-C3 PASS, retained), method fix `36fb8fd`,
+run 2 exact. [Report](../reports/2026-11-17--s4-dep-isotropy.md). Author
+verdict **`DEP_ISOTROPIC_IN_DECLARED_L`** (PRELIMINARY, no independent
+review): at theta=pi/4 and every 0<a<1 the s=4 family on the eight BCC
+displacements, no on-site term, satisfies Definition 1 of 1708.00826 with
+the Klein group of coordinate half-turns, U_l = sigma_l ⊗ I, and
+homogeneity condition (2); with c_0 = a/sqrt3 this means the s=2 rigidity
+does not persist at s=4 within that isotropy notion. Not claimed: other
+theta/L/U, other assumptions of 1306.1934, full cubic isotropy, novelty
+(prior-art search incomplete). Review and promotion need separate
+authorization. NOVELTY = OPEN.
