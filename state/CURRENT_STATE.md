@@ -3909,3 +3909,12 @@ occupation-basis decoupling, initial-tail transfer and the promoted pair
 bridge give vanishing operator-norm error and leakage in the fixed geometry.
 PRELIMINARY, no independent review, no promotion; no verifier or simulation.
 F, coexistence and novelty remain OPEN. Bounded attempt closed.
+
+**Isolated spectator review blocked — 2026-11-17:** candidate committed at
+`8d02630`; user authorized one sealed Opus round. Attempt in
+`reports/reviews/2026-11-17-thirring-isolated-spectator-opus/`, herramientas
+`7d111a158edda04a469b59f0d380cd69d35bbdea`, requested claude-opus-5-5,
+FAILED: authentication_failed, expired login cannot renew; provider reports
+zero input/output tokens. No review report or scientific verdict. Reauthenticate
+with `claude auth login` before retrying. Author result remains PRELIMINARY;
+no promotion. Preserve this attempt unchanged.

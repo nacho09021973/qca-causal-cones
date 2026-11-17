@@ -1,0 +1,1748 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Review the attached isolated-spectator proof adversarially. One round only.
+Expected output: PASS, REPAIR_REQUIRED or FAIL, with precise mandatory
+objections separated from optional improvements. Close on a written verdict;
+do not propose an automatic further round. Write in English.
+
+Re-derive the physical exterior-product decoupling from the on-site rule,
+the cone separation, exact code isometry, tail applicability and truncation
+transfer. Check constants and uniformity for arbitrary entangled logical
+inputs; verify absence of time accumulation and all output-frame signs.
+Check that the existing pair theorem is applied only to original packets.
+Distinguish assumptions inherited from the supplied pair bridge from new
+claims proved here. Do not infer correctness from earlier review labels.
+The proposed corollary does not prove general F or novelty. Identify any
+circular use of F. No tools are available; do not claim execution.
+
+=== DOCUMENT 1: 2026-11-17--thirring-isolated-spectator.md ===
+
+# Isolated spectator: analytic corollary
+
+2026-11-17. Codex (OpenAI), PRELIMINARY author proof, not independently
+reviewed. Preregistration a9d5ae1. No numerical computation or verifier run.
+Verdict: REDUCES_TO_EXISTING_RESULTS, conditional on the promoted pair bridge
+in its declared scope. This is not general multipartarticle factorization F.
+
+## 1. Rule and support
+
+sources/1711.03920v1.pdf pp. 1-2 defines the range-one walk W and on-site
+occupation interaction. Use the repository phase convention for J; the
+argument below is independent of its sign. F_n=wedge^n W and U_n=F_n J_n.
+Exterior products use the normalized determinant convention, so orthonormal
+modes have unit wedge norm. Creation by a vector v has operator norm ||v||.
+
+If psi in wedge^2 H is supported with both coordinates in A and v is
+supported in a disjoint B, then
+J_3(psi wedge v)=(J_2 psi) wedge v.
+Indeed, expand in occupation basis: all occupied sites of v lie outside A,
+so its single occupation creates no double-occupation phase, and every
+phase is precisely that of the pair. This also covers pair double occupancy
+and arbitrary superpositions. The fixed exterior order introduces no
+permutation. Functoriality of exterior powers gives
+F_3(psi wedge v)=(F_2 psi) wedge Wv.
+Induction therefore proves U_3^t(psi wedge v)=(U_2^t psi) wedge W^t v
+whenever A+[-s,s] and B+[-s,s] are disjoint at each intervening time s.
+J changes no positions and W increases support by at most one per step.
+This is an occupation-basis proof and, separately, a support induction;
+no distinguished physical particle or assumed F enters it.
+
+Put R=floor(L/4). The pair support is contained in
+A=[-L-R,L+R] and the spectator in B=[-50L-R,-50L+R].
+The gap between their enlarged intervals is 49L-2R-2t, at least
+(17/2)L at t=20L. Thus separation holds throughout the prescribed window,
+including the instants at which J acts. Pair supports may overlap each other.
+
+## 2. Exact code and initial tails
+
+The three momentum intervals have centres mu times 3,1,-2 and half-width
+delta. Adjacent centre distances are at least 2mu > 2delta. All intervals
+lie in (-0.4,0.4); their pi translates are disjoint from these and each other
+on the torus. Translation of position centres changes only phases.
+Gamma shifts momentum by pi, so <phi_j,Gamma phi_k>=0, while
+<phi_j,phi_k>=delta_jk. Therefore the six modes u_ja=sqrt(2)Pi_a phi_j
+are orthonormal. Their eight declared wedges, B, are an exact isometry;
+C=F_3^T B is also an isometry.
+
+The initial-time tail estimate of the low-energy report Sec. 4(iii) applies
+to each of these three fixed K supports. The K=-2 packet is the flavour
+contract's left packet up to translation; K=1,3 are the co-moving packets.
+At t=0 no extension of a time-dependent estimate is needed. The normalized
+spinor derivatives in scaled coordinates are uniformly bounded on these
+fixed compact K sets. The same two integrations by parts with the stated h
+give squared tail <= C(delta R)^(-3). Since L>=101, R>=L/5 and
+delta L>=mu^(-1/2). Thus each initial norm tail is O(mu^(3/4)).
+Q_j commutes with Gamma and ||sqrt(2)Pi_a||<=sqrt(2), so the same bound
+holds for both flavours. Write epsilon for the maximum of these six norm
+tails. Truncated modes have norm <=1; they need not be orthonormal.
+
+## 3. Transfer without applying the bridge to truncated modes
+
+For one logical column put psi=u_fa wedge u_sb, v=u_ec, and tildes for
+spatially truncated modes. Creation contraction and telescoping give
+||psi-tilde psi||<=2 epsilon and
+||psi wedge v-tilde psi wedge tilde v||<=3 epsilon.
+Unitarity, Section 1 and another telescoping estimate then give
+||U_3^T(psi wedge v)-(U_2^T psi) wedge W^T v||<=6 epsilon.
+No factor T multiplies this error: the truncation is made once at input,
+and both comparisons propagate by unitary maps.
+
+Let eta=||U_2^T B_2-F_2^T B_2 V(r_co)||. The promoted co-moving bridge
+states eta=O(mu^(1/2))+O(mu^(3/4)); its hypotheses and time are unchanged.
+Wedging its column residual with W^T v costs at most eta, since ||v||=1.
+The target is exactly C(V tensor I)|abc>. Each of eight residual columns
+has norm <=6 epsilon+eta. Cauchy-Schwarz on their coefficients gives
+rho:=||U_3^T B-C(V tensor I)||<=sqrt(8)(6 epsilon+eta)->0.
+This covers entangled logical inputs as well as basis inputs.
+
+Since C is isometric,
+||K-V tensor I||<=rho, and ||E||<=rho.
+As a second consistency check, unitarity gives K* K+E* E=I; the obtained
+limits satisfy this identity. This check alone would not establish the gate.
+
+## 4. Frames, limitations and closure
+
+The proved frame is identity order (fast,slow,spectator), with no extra
+phase. For a decreasing-position convention, initial order is (f,s,e)
+and final free-centre order is (s,f,e): the pair order reverses by the
+co-moving bridge, and the spectator remains left of the pair by the
+support separation plus vanishing tails. Define the spatial output frame
+D|abc>=(W^T u_sa) wedge (W^T u_fb) wedge (W^T u_ec).
+Then D=-C(P tensor I), exactly by exterior antisymmetry; hence D*U_3^T B
+converges to (-P V) tensor I. These are mode frames, not sharp particle
+position measurements. No logical-input-dependent phase is removed.
+
+The argument closes using locality and existing packet estimates, with an
+explicit elementary support lemma. It introduces no new scattering solution.
+It establishes only this isolated spectator geometry, not successive
+collisions or simultaneous three-body scattering. F, COEXISTENCE and
+NOVELTY remain OPEN. Independent review and promotion have not occurred.
+
+=== DOCUMENT 2: THIRRING_ISOLATED_SPECTATOR_GATE.md ===
+
+# Isolated spectator gate
+
+2026-11-17. Author: Codex (OpenAI). OPEN; frozen by the preregistration commit.
+User authorization: «adelante con el siguiente trabajo», following the bounded
+proposal to prove physical decoupling, check the fixed geometry and assemble
+truncation and two-particle errors. No external review or promotion authorized.
+
+Known: CURRENT_STATE records the promoted co-moving two-packet result;
+reports/2026-11-09--thirring-low-energy-packet.md Sec. 4(iii) gives tails;
+reports/2026-11-14--thirring-comoving-packet.md Sec. 3 gives the pair bridge.
+Primary rule: sources/1711.03920v1.pdf pp. 1-2, range-one free walk and
+on-site number-preserving interaction. Keep the repository coupling convention.
+Question: does a causally isolated spectator preserve this pair gate uniformly?
+Abandon this construction on a demonstrated failure of its fixed code or
+geometry, or nonvanishing limiting error; do not change parameters to repair it.
+If an indispensable estimate cannot be established, stop OPEN_MISSING_BOUND.
+
+Fixed construction: infinite line, U=FJ, chi=pi/2, 0<mu<1/10,
+nu=sqrt(1-mu^2), delta=mu^(3/2), L=ceil(mu^(-2)), T=20L.
+Use exactly the normalized h, positive-band spinors, Gamma and flavour
+projectors of THIRRING_FLAVOUR_PACKET_GATE.md. Momentum centres K=(3,1,-2),
+position centres (L,-L,-50L). Logical order (fast,slow,spectator).
+B|abc>=(sqrt(2)Pi_a phi_f) wedge (sqrt(2)Pi_b phi_s) wedge
+(sqrt(2)Pi_c phi_e). Prove isometry. Output C=(wedge^3 W)^T B.
+K=C* U^T B; E=(I-CC*)U^T B. Target V(r_co) tensor I, no adjustable phases.
+Spatial ordering, if discussed, must declare both frames before comparison.
+
+Auxiliary spatial cutoffs have radius floor(L/4); do not normalize them.
+Prove exact separated-support decoupling, then transfer to original packets.
+Prove an operator-norm bound on U^T B-C(V tensor I), hence compression and
+leakage. Use analytic arguments, no numerical experiments or new scripts.
+One bounded proof attempt; stop on closure or an unresolved essential bound.
+Verdicts: REDUCES_TO_EXISTING_RESULTS (proved corollary),
+PASS_ISOLATED_SPECTATOR (requires additional proved input),
+FAIL_ISOLATED_SPECTATOR (counterexample), OPEN_MISSING_BOUND.
+All author results PRELIMINARY pending independent review.
+No general F, successive collisions, universality, interacting QFT or novelty
+claim. NOVELTY=OPEN; COEXISTENCE=OPEN.
+
+=== DOCUMENT 3: 2026-11-14--thirring-comoving-packet.md ===
+
+# Thirring co-moving packet gate: results
+
+2026-11-14. Author: Claude Code (Claude Opus 5.5). **PRELIMINARY: written
+proof plus author checks; one sealed cross-family review (Astra) with
+repairs applied, re-review PASS; no promotion.**
+
+**Re-review (2026-11-14).** Astra `gpt-6-astra`, sealed, one bounded
+round on `583868e`:
+[unaltered re-review](reviews/2026-11-14-thirring-comoving-packet-astra-rereview/informe_astra.md).
+PASS: R1 and R2 resolved, clarifications reproduced faithfully, no new
+error, no mandatory repair. Physical simulability and the other questions
+delimited below remain OPEN.
+
+**Human review (2026-11-14).** The repository owner (the user, who also
+chartered and authorized this work) reports having reviewed this report
+and its verifier personally on `3dc6193` and found everything correct.
+Recorded as stated; no written review document. The OPEN items below are
+unchanged.
+
+**Review (2026-11-14).** Astra `gpt-6-astra`, sealed revision-ciega, one
+round, herramientas `2a7342b`, on `e81a719`:
+[unaltered review](reviews/2026-11-14-thirring-comoving-packet-astra/informe_astra.md).
+REPAIR_REQUIRED; blocks 1-3 (bridge geometry, eigenfunctions and
+degeneracies, r_co and values) PASS; no flaw found that invalidates the
+declared gate. Repairs applied (each checked by the author; user «si»):
+
+- R1: the "iff" statements of A2 and A5 omitted r = 1 (where V = P,
+  alpha = 0, beta = 1 and P V = I). Restated in Sec. 2.
+- R2: two checks (`C-beta>0`, `C-concurrence(V|AB>)>0`) evaluate exact
+  expressions numerically (`sp.N(..., 30) > 0`). The count is qualified
+  as 50 exact + 2 numerical positivity checks; exact argument added in
+  Sec. 6. Verifier bytes unchanged.
+
+Clarifications recorded: the factor five bounds the time parameter, not
+necessarily the final tail constant; Lemma 1 also assumes p != n pi/2, and
+here p, k in mu[2 - m, 2 + m], mu[1 - m, 1 + m] keep distances proportional
+to mu from every degeneracy (also in the mixed sector), with scaled
+denominators >= sqrt2; r_co is fixed by the incoming geometry together
+with the declared order; in position order the gate is P V up to a sign
+common to all four basis states. The original text is in git at `e81a719`.
+
+Contract [THIRRING_COMOVING_PACKET_GATE.md](../theory/THIRRING_COMOVING_PACKET_GATE.md),
+frozen at `dca5ebc` before execution; drafting and freezing authorized with
+«si redacta el contrato y luego congelas», execution with «autorizado»
+(both 2026-11-14). Verifier `scripts/verify_thirring_comoving_packet.py`,
+committed before running at `2685635`. It imports read-only the contract-2
+verifier (SHA256 `a1900674…f4d517`) and the flavour-packet verifier
+(SHA256 `7e66c30a…af6cd`), both unchanged.
+
+Runs: one, in `~/.venvs/qca-causal-cones` (sympy 1.14.0), 52/52 passed (50 exact,
+2 numerical positivity checks; see Sec. 6),
+about 112 s ([output](2026-11-14--thirring-comoving-packet.txt),
+[record](2026-11-14--thirring-comoving-packet.json)). No failed run.
+
+## 1. Verdict
+
+`COMOVING_PACKET_GATE_SAME_FAMILY` (author, PRELIMINARY). For the declared
+fast (K = 3) and slow (K = 1) flavour packets, both moving toward negative
+x, as mu -> 0, in the basis (AA, AB, BA, BB) with the fast packet first:
+
+    V_co = V(r_co) = 1 (+) [[ alpha, beta ], [ beta, alpha ]] (+) 1,
+    r_co  = a(3)/a(1) = (sqrt10 + 3)/(sqrt2 + 1) = 3 sqrt2 + 2 sqrt5 - sqrt10 - 3 ~ 2.5525,
+    beta  = 2 r_co/(1 + r_co^2) = (3 + 2 sqrt5)/11 ~ 0.6793,
+    alpha = i (r_co^2 - 1)/(r_co^2 + 1) = i sqrt(92 - 12 sqrt5)/11 ~ 0.7339 i,
+
+with leakage ||E_mu|| -> 0 and no extra global phase. C1 and C2 hold; C3:
+V_co is the family V(r) at r = r_co, with r_co (not 1/r_co) fixed by the
+creation order (Sec. 4). Concurrence of V_co|AB> is 2|alpha beta| ~ 0.997.
+(The closed form of alpha follows from |alpha|^2 = 1 - beta^2 and
+Im alpha > 0; the verifier certifies the r-form.)
+
+The verdict rests on the contract-2 packet/scattering bridge (re-reviewed
+PASS 2026-11-14) and its flavour-gate (+,-) adaptation (Grok PASS),
+adapted here in writing to the co-moving geometry (Sec. 3). The adaptation
+is not reviewed. The verdict is no stronger than it.
+
+## 2. Part A (exact, verifier A1-A5)
+
+- A1: alpha(r) = z(r^2 - 1)/(z^2 r^2 - 1), beta(r) = r(z^2 - 1)/(z^2 r^2 - 1)
+  with r = a1/a2 reproduce (T_+ +- T_-)/2. PASS.
+- A2: 1 + alpha^2 - beta^2 = (z^2 + 1)(r^2 - 1)/(z^2 r^2 - 1) (rational
+  identity, where z^2 r^2 != 1). Hence Delta = (1 + alpha^2 - beta^2)/(2 alpha)
+  = (z^2 + 1)/(2z) = cos chi wherever the quotient is defined (alpha != 0,
+  i.e. r != 1), independent of r. Pointwise, 1 + alpha^2 - beta^2 = 0 iff
+  z^2 = -1 or r = 1; it vanishes for the whole family iff z^2 = -1. PASS
+  (R1).
+- A3: V_12(x) V_13(xy) V_23(y) = V_23(y) V_13(xy) V_12(x), all 64 entries,
+  symbolic in x, y, z, and at z = -i. PASS.
+- A4: with Rcheck = P V, Rcheck_12(x) Rcheck_23(xy) Rcheck_12(y) =
+  Rcheck_23(y) Rcheck_12(xy) Rcheck_23(x), symbolic and at z = -i. PASS.
+- A5 (diagnostic, decides nothing). Matchgate determinants (block {00,11}
+  versus block {01,10}) at z = -i: V: 1 vs -1; fSWAP V: -1 vs 1; P V: 1 vs 1
+  (equal). In general det A(P V) = 1 and det B(P V) =
+  1 - (z^2 + 1)(r^2 - 1)/(z^2 r^2 - 1) (certified identities). So for r != 1
+  P V meets the determinant condition iff z^2 = -1, i.e. chi = pi/2 mod pi;
+  at r = 1, V = P and P V = I for every chi with defined denominators (R1).
+  The declared code has r_co != 1 and chi = pi/2.
+
+Part A is algebra on C^2 tensor C^2 tensor C^2. It does not show that three
+physical packets scatter in factorized form, and it does not decide whether
+the fermionic packets need a graded tensor structure. Both stay OPEN.
+
+**Reading of A5 (author, [UNVERIFIED] against prior art).** In a
+1D line of packets, each crossing acts on the two packets adjacent in
+position, and after the crossing they exchange position: in position
+order the gate is P V. At chi = pi/2, P V has the form G(A, B) with
+A = 1, B = [[beta, alpha], [alpha, beta]], det A = det B. Nearest-neighbour
+circuits of such gates are, by the matchgate literature (Valiant; Terhal
+and DiVincenzo; Jozsa and Miyake), classically simulable. Not one of those
+papers has been read in this session, and the mapping from flavour qubits
+to their qubit convention is not checked. If it holds, gate-only
+universality from crossings at chi = pi/2 in this code is excluded,
+independently of factorization. This is the obligation the contract
+recorded as separate; it is not a verdict of this gate.
+
+## 3. Bridge in the co-moving geometry (written)
+
+Notation of contract 2 Sec. 4: c(q1, q2) = phi_f(q1) phi_s(q2), particle 1
+the fast packet (carrying e^{iq1 L}, centred at x = +L), particle 2 the slow
+one (e^{-iq2 L}, x = -L), y = x1 - x2. Changes with respect to contract 2:
+
+**(i) Eigenfunctions.** The general contact argument of contract 2 Sec. 4(i)
+((+,+)) and of the flavour report Sec. 4 item 1 ((+,-)) uses only the four
+waves sharing one free eigenvalue and contact antisymmetry; it holds for
+any (q1, q2) away from the degeneracies q1 = q2 (and their pi partners,
+Lemma 1 of 1711.03920 as recorded in the flavour contract). On the
+supports q1/mu in [3 - m, 3 + m], q2/mu in [1 - m, 1 + m], m = sqrt(mu) <
+1/sqrt10, these are disjoint (M). Worked examples: E1, E2 certify both
+eigenfunctions exactly at the co-moving pair e^{iq1} = (4+3i)/5,
+e^{iq2} = (12+5i)/13 (both momenta positive), chi = pi/2 and chi = 0.
+
+**(ii) Which wave is incoming.** On y >= 0 the eigenfunction is
+[incoming, q1 on x1] - T [swap, q2 on x1]. Positive-band positive q moves
+toward negative x with speed omega'(q), so dy/dt = omega'(q2) - omega'(q1)
+for the incoming term. omega'(q)^2 = nu^2 s/(mu^2 + nu^2 s), s = sin^2 q,
+is increasing in s (V), so omega'(q1) > omega'(q2) on the supports and
+the term with the fast momentum on the larger coordinate is incoming, as
+in contract 2. At t = 0 the swap term is centred at y = -2L (wrong side),
+as there. In the (+,-) sector, Gamma phi_s moves as phi_s (flavour report
+Sec. 4 item 3), so the same holds.
+
+**(iii) Initial error.** Unchanged: O(mu^{3/4}) from the tail bound with
+D = L.
+
+**(iv) Time T = 20L.** Rational bounds for 0 < mu < 1/10 (V):
+omega'^2 >= 87/100 on the fast support, omega'^2 <= 16/25 on the slow
+support, so omega'(q1) - omega'(q2) >= 93/100 - 4/5 = 13/100. At t = T the
+incoming y-centre is <= 2L - 20L (13/100) = -3L/5 and the outgoing
+y-centre >= +3L/5. The wrong-side restriction of either term needs a
+one-particle deviation >= 3L/10. In the limit v_f - v_s > 0.24 (V), giving
+-2.83L; the rational bound is only what is uniform on 0 < mu < 1/10.
+
+The tail bound of contract 2 (iii) needs the residual phase derivatives
+uniform for 0 <= t <= T: t delta^2 |omega''| <= 20 ceil(mu^{-2}) mu^3 C/mu =
+O(1), five times the contract-2 constant. With D = 3L/10, delta D ≍
+mu^{-1/2}, the wrong-side mass is O(mu^{3/2}) and the norm error O(mu^{3/4}),
+as in contract 2.
+
+**(v) Phase variation.** The scaled denominators at chi = pi/2 are
+|a_s - i a_f| and |-a_s - i a_f|, both sqrt(a_f^2 + a_s^2) > 0; T_+ and T_-
+are smooth in (q1/mu, q2/mu) with gradient O(1/mu); on supports of width
+mu^{3/2}: sup |T - T_c| = O(mu^{1/2}). Unchanged.
+
+**(vi) Assembly.** Exactly as in the flavour report Sec. 5 (reused F3/F4,
+label-agnostic): AA and BB evolve freely (G = +1, exactly); AB and BA mix
+through the two P-sectors with
+T_+ -> (a_f + z a_s)/(a_s + z a_f), T_- -> (a_f - z a_s)/(z a_f - a_s),
+z = -i, a(K) = sqrt(1 + K^2) + K (contract 2, P6, symbolic in K). Error
+O(mu^{1/2}) + O(mu^{3/4}); per-column uniformity gives operator norm
+uniformity. Leakage vanishes because every image lies in the span of
+B_out up to o(1).
+
+## 4. Why r_co and not 1/r_co
+
+T_+ = T(q1, q2) with q1 the particle first in the creation order and on
+the larger coordinate of the incoming wave (ii). Here that is the fast
+packet, so r = a1/a2 = a_f/a_s = r_co (verifier checks C). In the
+opposite-moving flavour gate the same rule gave r = a(1)/a(-2) =
+a(1) a(2), since a(-K) = 1/a(K). In both cases r = e^{theta_1 - theta_2},
+theta = asinh K: one family in the rapidity difference, as hypothesis
+H_co stated. This choice was fixed by the contract's creation order before
+the comparison.
+
+## 5. Low-energy admission under U^2
+
+The flavour report Sec. 3 argument is momentum-general; P5 and P6 of
+contract 2 are symbolic in K, so omega(mu K)/mu -> sqrt(1 + K^2) holds on
+both supports (K near 1 and 3). Not an interacting QFT limit.
+
+## 6. What the verifier does and does not certify
+
+Passed 52/52: 50 exact (E1-E2, reused F1 and F3/F4, M, V, C except two,
+A1-A4, the two A5 identities) and 2 numerical positivity checks,
+`C-beta>0` and `C-concurrence(V|AB>)>0`, which evaluate exact expressions
+with `sp.N(..., 30)` (R2). Exact argument for both: r_co > 1, so
+beta = 2 r_co/(1 + r_co^2) > 0 and Im alpha = (r_co^2 - 1)/(r_co^2 + 1) > 0
+(identities certified exactly by `C-beta=2r/(1+r^2)` and
+`C-alpha=i(r^2-1)/(r^2+1)`); hence the concurrence 2|alpha beta| > 0.
+r_co > 1 because a(3) = sqrt10 + 3 > sqrt2 + 1 = a(1). The A5
+determinant values are recorded diagnostics. Not certified: the bridge adaptation of Sec. 3 (written),
+the U^2 admission (written), the verdict, physical three-packet
+factorization, graded tensor structure, the A5 reading.
+
+## 7. Scope and balance
+
+- Holds for this code, this rule, chi = pi/2, these two packets, T = 20L,
+  mu -> 0. No parameter was varied.
+- With the opposite-moving result, two-packet crossings of either
+  orientation act by one family V(r), r = e^{Delta theta}, which satisfies
+  Yang-Baxter (A3) and the braid relation (A4). This removes the specific
+  objection that same-direction crossings might use a different matrix.
+- It does not establish three-packet factorization, composability or
+  universality. Flavour number stays conserved. A5 indicates that, at
+  chi = pi/2, crossing gates in position order meet the matchgate
+  determinant condition; if the prior-art reading holds, crossings alone
+  do not give universality here.
+- NOVELTY = OPEN: six-vertex / XXZ R-matrices, Yang-Baxter and matchgate
+  simulability are prior art; the two-particle solution is from 1711.03920.
+- Balance: this contract is closed; no further contract follows
+  automatically. Coexistence stays OPEN.
+
+=== DOCUMENT 4: 2026-11-14--thirring-flavour-packet.md ===
+
+# Thirring flavour-packet gate: results
+
+2026-11-14. Author: Claude Code (Claude Opus 5.5). **PRELIMINARY: written
+proof plus exact author checks; one sealed cross-family review PASS; no
+promotion.**
+
+**Review (2026-11-14).** Grok `grok-4.7`, sealed revision-ciega, one round,
+herramientas `2a7342b`, on `24b78e9`:
+[unaltered review](reviews/2026-11-14-thirring-flavour-packet-grok/informe_grok.md).
+PASS on all six blocks, no mandatory repair. Clarifications: (i) F7's
+check name `left-inside-4mu(2-m>0)` repeats the expression of
+`left-negative`; author reading: both bounds of the left support,
+`-2+m < 0` and `-2-m > -4`, reduce to the same inequality `m < 2`, so the
+outer bound is checked, only the label is uninformative (verifier bytes not
+changed); (ii) the ceiling of the argument remains the contract-2 bridge
+(written, repaired, not re-reviewed), as Sec. 1 states. The reviewer
+re-derived the (+,-) contact condition, T_-, the degeneracy margin and
+x = (sqrt10 - 2)/6. The body below is unchanged.
+
+Contract [THIRRING_FLAVOUR_PACKET_GATE.md](../theory/THIRRING_FLAVOUR_PACKET_GATE.md),
+frozen at `d0c59cb` before execution; authorization «AUTORIZO SU EJECUCION»
+(2026-11-14). Verifier `scripts/verify_thirring_flavour_packet.py`, committed
+before running at `b49bf18`; test point replaced at `8d7e444` after run 2.
+Contract-2 verifier imported read-only (SHA256 `a1900674…`, unchanged).
+
+Runs (all retained):
+1. System `python3` without SymPy: import error, no checks, no files.
+   Rerun in `~/.venvs/qca-causal-cones` with `scripts/requirements.txt`
+   (sympy 1.14.0, numpy 1.26.4).
+2. 31/32: the (+,-) eigenfunction check failed at the test point
+   `z2 = -z1`, which gives `q_l = q_r` (k = -pi/2), where the four waves
+   coincide pairwise. Check-construction error; the point is outside the
+   packet supports. Replaced by `z2 = conj(z1)`
+   ([note](2026-11-14--thirring-flavour-packet-failed-run-2-note.txt),
+   [output](2026-11-14--thirring-flavour-packet-failed-run-2.txt)).
+3. 32/32 exact ([output](2026-11-14--thirring-flavour-packet.txt)).
+
+## 1. Verdict
+
+`FLAVOUR_PACKET_EXCHANGE_GATE_IN_DECLARED_CODE` (author, PRELIMINARY). In the
+flavour basis (AA, AB, BA, BB), as mu -> 0,
+
+    V = 1 (+) [[ i y, x ], [ x, i y ]] (+) 1,
+    x = (sqrt10 - 2)/6 ~ 0.1937,   y = sqrt(11/18 + sqrt10/9) ~ 0.9811,
+
+with leakage `||E_mu|| -> 0`. S1 and S2 hold; S3: `|<BA|V|AB>| = x > 0`;
+S4: `V|AB> = i y |AB> + x |BA>` has concurrence `2xy ~ 0.380`.
+
+The proof depends on the packet/scattering bridge of contract 2
+(written, repaired after an Astra review, **not re-reviewed**), reused for
+the (+,+) sector and adapted here for the (+,-) sector (Sec. 4). The
+verdict is no stronger than that bridge.
+
+## 2. Code structure (exact; F3)
+
+Let `phi_r`, `phi_l` be the positive-band packets of the contract and
+`Gamma = sigma_z (-1)^x`. `Gamma` maps a positive-band component at q to a
+negative-band component at q + pi (contract 2, P2), so `phi` and
+`Gamma phi` have disjoint momentum supports (F7). Hence
+`||Pi_f phi||^2 = 1/2` and the four columns
+`(sqrt2 Pi_{f_r} phi_r) wedge (sqrt2 Pi_{f_l} phi_l)` are orthonormal.
+
+With `G = Gamma_1 Gamma_2` and `P = (1 - G)/2`:
+
+- AA and BB have `G = +1`. Since `U(1 - P) = F(1 - P)` exactly (contract 2,
+  Sec. 3), `U^T |AA> = F^T |AA> = B_out |AA>` for every mu and T, and
+  likewise for BB. No error at all.
+- `AB = P(phi_r ^ phi_l) - P(phi_r ^ Gamma phi_l)` and
+  `BA = P(phi_r ^ phi_l) + P(phi_r ^ Gamma phi_l)`. The first vector lies
+  in band sector (+,+) at total momentum near `q_r + q_l`; the second in
+  sector (+,-) (right particle band +, left band - near `q_l + pi`) at
+  total momentum shifted by pi. They are orthogonal, each of norm^2 1/2.
+
+This is why the doubler leakage of contract 2 disappears: the band code
+loses amplitude into `G` times the code; the flavour code contains it.
+
+## 3. Low-energy admission under U^2 (written)
+
+`Gamma W = -W Gamma` (contract 2, P2) gives
+`W (Pi_A phi) = Pi_B (W phi)`: one step swaps the flavour and moves the
+packet; two steps restore it, `W^2 Pi_f phi = Pi_f W^2 phi`. Gamma acts on
+site, so the position-space trajectory of `Gamma phi` equals that of `phi`;
+in momentum space the negative-band component at q + pi carries phase
+`e^{+i omega(q+pi)} = -e^{-i omega(q)}`, so under `W^2` both components
+carry `e^{-2i omega(q)}` with the same group velocity. On the support
+`omega(mu K)/mu -> sqrt(1 + K^2)` (contract 2, P5). This is the admission
+decided by the user for Q2-A; it is not an interacting QFT limit.
+
+## 4. Scattering of the two P-sectors (written; F1, F2, F6)
+
+**(+,+) sector.** `P(phi_r ^ phi_l)` is the P-part of the contract-2
+column with the A mode at k = 1 and the B mode at k = 2 (the same packets).
+Contract 2 Sec. 4 proves
+`U^T P(phi_r ^ phi_l) = T_+ F^T P(phi_r ^ phi_l) + o(1)`, with
+`T_+ -> (a_r + z a_l)/(a_l + z a_r)`, `z = e^{-i chi}`,
+`a(K) = sqrt(1 + K^2) + K` (contract 2, P6), `a_r = sqrt2 + 1`,
+`a_l = sqrt5 - 2`. Consistency check: `|T_+ - 1|^2/4` equals contract 2's
+limit `l01` exactly (F6).
+
+**(+,-) sector.** The same proof applies with these substitutions:
+
+1. *Exact eigenfunctions.* The contract-2 contact argument (Sec. 4(i)) uses
+   only the four waves sharing one free eigenvalue and the contact
+   antisymmetry at y = 0; with `(a,b,c,d) = v+_{q1} (x) v-_{q2'}` it gives
+   `T_- = (g_+(q1) + z g_-(q2'))/(g_-(q2') + z g_+(q1))`, the source's
+   Eq. (12) lower sign. Shifting both momenta by pi and flipping both
+   bands keeps the eigenvalue `e^{-i omega(q1)} e^{+i omega(q2')}`. F2
+   certifies the eigenfunction exactly at two non-degenerate algebraic
+   points. With `g_-(q + pi) = -g_+(q)` (F1) and `q2' = q_l + pi`:
+   `T_- = (a_r - z a_l)/(z a_r - a_l)`.
+2. *Initial error.* `P` of a (+,-) plane-wave pair is
+   `(1/2)[v^{+-} - (-1)^{x1+x2} v^{-+}_{shifted}]`, the incoming part of
+   the eigenfunction, exactly as in Sec. 4(iii) of contract 2.
+3. *Tails and geometry.* The free motion of `Gamma phi_l` is that of
+   `phi_l` up to the on-site unitary Gamma and a sign per step, so every
+   position-space tail, separation and velocity bound of contract 2
+   transfers unchanged.
+4. *Smoothness.* At chi = pi/2, `|T_-| = 1` and the scaled denominator
+   `|z a_r - a_l|^2 = a_r^2 + a_l^2 > 0`; `T_-` depends on `q/mu`, so its
+   variation over a packet of width `mu^{3/2}` is `O(mu^{1/2})`, as for `T_+`.
+5. *Degeneracy.* The (+,-) sector degenerates at `q_l = q_r`; the supports
+   stay `3mu` apart with width `mu^{3/2}`, the same separation that
+   controls the approach to `k = 0` in the (+,+) sector of contract 2.
+
+Hence `U^T P(phi_r ^ Gamma phi_l) = T_- F^T P(phi_r ^ Gamma phi_l) + o(1)`.
+
+## 5. Logical map (F4, F5, F6)
+
+Combining Secs. 2 and 4, with `F^T` mapping each column to `B_out`:
+`U^T |AB> -> al B_out|AB> + be B_out|BA>`, `U^T |BA> -> be B_out|AB> +
+al B_out|BA>`, `al = (T_+ + T_-)/2`, `be = (T_+ - T_-)/2`. The block is
+unitary because the two sectors are orthogonal and `|T_+-| = 1`. Leakage
+vanishes because every image lies in the span of `B_out` up to `o(1)`.
+
+`T_+ - T_- = 2 a1 a2 (z^2 - 1)/((a2 + z a1)(z a1 - a2))`, so the exchange
+amplitude vanishes iff `chi in {0, pi}` (F5). At chi = pi/2:
+`T_+ = x + i y`, `T_- = -x + i y`, so `al = i y`, `be = x`, and
+`|be| = 2 a_r a_l/(a_r^2 + a_l^2) = (sqrt10 - 2)/6` (F6).
+
+## 6. What the verifier does and does not certify
+
+Certified exactly (32/32): F1-F7 as listed in the verifier docstring,
+including the (+,-) eigenfunction at two points, the code algebra in a
+faithful finite model, the form of V given the bridge limits, the
+vanishing condition for `be` and the limiting values. Not certified: the
+bridge (contract 2's written proof and its (+,-) adaptation above), the
+U^2 admission argument, and the verdict.
+
+## 7. Scope and balance
+
+- Holds for this code, this rule, chi = pi/2, these two packets, mu -> 0.
+  The angle depends on the momentum centres; no parameter was varied.
+- The gate conserves the flavour number `N_A` (Hamming weight in the
+  flavour basis). On raw qubits this family is not universal; each pair of
+  packets crosses at most once in 1D, and nothing here composes gates.
+- First result of the line with an entangling, non-diagonal, leakage-free
+  logical gate on carriers in the low-energy regime under U^2. It is not
+  universality, composability or an interacting relativistic QFT limit.
+- `NOVELTY = OPEN`: exchange-type gates and conservation obstructions are
+  prior art; the Thirring two-particle solution is from 1711.03920.
+- Balance: this contract is closed; no further contract follows
+  automatically. Coexistence stays OPEN. Independent review needs separate
+  permission.
+
+=== DOCUMENT 5: 2026-11-09--thirring-low-energy-packet.md ===
+
+# Thirring low-energy packet gate: results and closing balance
+
+2026-11-09. Author Claude (Opus 5.5). **PRELIMINARY: written proof plus exact
+author checks; one sealed cross-family review (GPT-6 Astra, OpenAI) with
+repairs applied, not re-reviewed; no promotion.**
+
+[Sealed Astra review](reviews/2026-11-09-thirring-low-energy-packet-astra/informe_astra.md)
+of the text at b4ac949 (revision-ciega astra, herramientas 97292a9):
+«reparación necesaria». The verdict holds once the proof is completed,
+with no change to the frozen construction. The contract was drafted by
+Codex (same family as the reviewer); the report is by Claude.
+
+Repairs applied (each checked by the author before adopting it):
+
+1. The missing 1/(2pi) Fourier factor in psi~ is restored (Sec. 4(ii)).
+2. The uniform tail bounds now include spinor and T derivatives and the
+   non-separable T factor (Sec. 4(iii)-(v)).
+3. The velocity bound is stated for |omega'|, since B moves with
+   omega' < 0.
+4. A general derivation of the contact condition (valid on the whole
+   support) is separated from the two certified example points
+   (Sec. 4(i)).
+5. The universal remark at the end of Sec. 7 is withdrawn.
+6. The diagnostic "leakage" is labelled an estimator; the announced box-wrap
+   diagnostic was not computed (Sec. 5).
+7. The 39/39 count is qualified (Sec. 6).
+
+The original text is in git at b4ac949.
+
+**Bridge re-review (2026-11-14).** Astra (`gpt-6-astra`), sealed
+revision-ciega, one round, herramientas `2a7342b`, on the repaired text at
+`918f7f4`: [unaltered re-review](reviews/2026-11-14-thirring-low-energy-packet-bridge-astra/informe_astra.md).
+PASS on all six blocks; all seven repairs resolved; no mandatory repair.
+Clarifications recorded, not applied to the body: the denominator written
+with g_+ is bounded away from zero only after division by mu; Sec. 2's
+"omega'(q) > 0" is meant for q > 0; the minimum k-separation over all
+columns is 2mu (3mu for the mixed columns); the result is an operator-norm
+approximation with mu-dependent frames, not convergence of E_mu to a fixed
+operator. The body below is unchanged.
+
+Contract [THIRRING_LOW_ENERGY_PACKET_GATE.md](../theory/THIRRING_LOW_ENERGY_PACKET_GATE.md),
+frozen by Codex at `715096f` before execution: contract 2 of 2 of the Thirring
+coexistence line. Exact verifier and labelled diagnostic committed before
+running at `75b33c3`. First run: one failure, retained (Sec. 6). Passing
+exact run at `8b41761`.
+
+## 1. Verdict
+
+`NO_ENTANGLER_IN_DECLARED_PACKET_CODE`: the necessary condition
+||E_mu|| -> 0 is disproved. For each logical input,
+
+  lim_{mu -> 0} ||E_mu|ab>||^2 = |T_ab - 1|^2 / 4 =: l_ab,
+
+with exact values
+
+| Input ab | l_ab |
+| --- | --- |
+| 00 | 1/3 |
+| 01, 10 | (sqrt10 + 1)/(2(sqrt10 + 2)) ≈ 0.4031 |
+| 11 | 4/9 |
+
+The outgoing doubler content (the contract's Q_D observable) has the same
+limits. The logical compression tends to diag((1+T_ab)/2), which is not
+unitary.
+
+Scope: this packet code, chi = pi/2, mu -> 0, the rule only. Not a no-go for
+the Thirring QCA, for other codes or for other resources (contract, "Neither
+excludes Thirring").
+
+## 2. Admission (certified or immediate)
+
+- Envelope: int h^2 = 1 (P1). The A, B momentum bins are disjoint and inside
+  0 < |q| < 4 mu for 0 < mu < 1/10 (P7). Hence the four columns are
+  orthonormal, B_mu is an isometry, and Q_D B_mu = 0.
+- Positive band at q = O(mu); sin omega(mu K)/mu -> sqrt(1+K^2), so
+  omega(mu K)/mu -> sqrt(1+K^2) (P5).
+- omega'(q) = nu sin q / sin omega > 0 (P5). With |q> = sum e^{-iqx}|x>, the
+  stationary phase of e^{-i(qx + omega t)} is at x = -omega'(q) t: positive-band
+  positive q moves toward negative x, as the contract states. A modes start
+  at +L moving left and B modes at -L moving right, so the packets collide.
+- B_out = F^T B_mu keeps band and momenta, so Q_D B_out = 0.
+
+## 3. Structure: only the opposite-Gamma half interacts
+
+- Gamma = sigma_z (-1)^x satisfies Gamma W Gamma = -W (P2), so
+  G := Gamma_1 Gamma_2 commutes with F = W ⊗ W.
+- Contact configurations (same site, opposite components) have G = -1
+  (P4). Hence J is the identity on the G = +1 subspace, and with
+  P := (1 - G)/2,
+
+    U (1-P) = F (1-P)   exactly.
+
+- G shifts both momenta by pi and flips both bands (sigma_z v^+_q = v^-_{q+pi},
+  P2). So G B_mu has both particles in the negative band within 4 mu of pi
+  (P7). Its momentum support is disjoint from that of every column of B_mu.
+  Therefore <B_mu, G B_mu> = 0, ||P B_mu|ab>||^2 = 1/2, Q_D G B_mu = G B_mu,
+  and F^T G B_mu is orthogonal to the range of B_out.
+
+## 4. The packet/scattering bridge (written proof)
+
+Fix a column and write its two-particle amplitude as
+c(q1,q2) = phi_A(q1) phi_B(q2), where phi_A carries e^{iq1 L} and phi_B
+carries e^{-iq2 L}. Here q1 = p + k and q2 = p - k, with y = x1 - x2 and
+w = x1 + x2.
+
+**(i) Exact eigenfunctions.** For each (q1, q2) in the support, the
+interacting P-sector solution is (1711.03920 Eq.(12) / 1804.08508 Eq.(18)):
+
+    f_{q1,q2} = [v^{++} - (-1)^{x1+x2} v^{--}] e^{-i(q1 x1 + q2 x2)}
+                - T(q1,q2) [v^{++}_swap - (-1)^{x1+x2} v^{--}_swap] e^{-i(q2 x1 + q1 x2)}
+
+on y ≥ 0, with the phase e^{-i chi} on RL at y = 0 and antisymmetric
+extension. It is an exact lattice eigenvector of U with eigenvalue
+e^{-i omega(q1)} e^{-i omega(q2)}, with no evanescent terms. Here
+T(q1,q2) = [g_+(q1) + e^{-i chi} g_+(q2)] / [g_+(q2) + e^{-i chi} g_+(q1)].
+
+General argument, for every (q1, q2) in the support (repair 4):
+
+- The four waves share the free eigenvalue. Shifting both momenta by pi and
+  flipping both bands produces two minus signs.
+- At y = 0 the unmodified combination H has H_RL = 2(b - Tc) and
+  H_LR = 2(c - Tb), with (a,b,c,d) = v+_{q1} ⊗ v+_{q2}.
+- Applying the phase z = e^{-i chi} to RL only, contact antisymmetry
+  requires z(b - Tc) = Tb - c, that is T = (c + zb)/(b + zc), which is the
+  formula above.
+- In the positive half-space, the transitions that reach the contact use
+  its RL component, where J f_RL = H_RL. The remaining equations follow by
+  antisymmetry, and components incompatible with G = -1 vanish.
+- At chi = pi/2, writing g_+(q_j) = -i a_j with a_j > 0, one gets
+  T = (a1 - i a2)/(a2 - i a1), |T| = 1, and the denominator has modulus
+  sqrt(a1^2 + a2^2) > 0. There is no singularity at p = 0.
+
+The exact checks at two algebraic momentum pairs (one with p = 0),
+chi = pi/2 and chi = 0 (P3), are worked examples of this argument, not its
+proof.
+
+**(ii) Exact approximate solution.** Let
+psi~(t) = (1/(2 pi sqrt2)) ∫∫ c(q1,q2) e^{-it(omega(q1)+omega(q2))} (1/2) f_{q1,q2} dq1 dq2,
+where the factor 1/(2pi) comes from the two normalized one-particle waves
+(repair 1),
+with normalized spinors (the swap and doubler partners have the same norm,
+P2). Since each f is an exact eigenvector and c is bounded with compact
+support, U psi~(t) = psi~(t+1) exactly. psi~(t) lies in l^2 by the tail
+bound below. Unitarity gives
+
+    ||U^T P B|ab> - psi~(T)|| = ||P B|ab> - psi~(0)||.
+
+**(iii) Initial error.** By the identity P(plane wave) = (1/2)[v^{++} -
+(-1)^{x1+x2} v^{--}] e^{-i(q1 x1 + q2 x2)} (P2), the A⊗B term of P B|ab> on
+y ≥ 0 equals the incoming part of psi~(0). The rest of P B|ab> - psi~(0) is
+supported where some packet is at least L from its centre:
+
+- the B⊗A term on y ≥ 0, centred at y = -2L;
+- the outgoing part of psi~(0), centred at y = -2L;
+- the incoming part on y < 0;
+- the line y = 0.
+
+Tail bound (repair 2). Rescale q = q_c + delta r with |r| ≤ 1. On the
+supports:
+
+- ||d^j_q v+_q|| ≤ C_j mu^{-j} and |d^j_{q_i} T| ≤ C_j mu^{-j} for j = 1, 2,
+  since q/mu stays in a compact set and the denominator of T, divided by mu,
+  is bounded away from zero;
+- |omega''| ≤ C/mu.
+
+After removing the linear phase at q_c, the residual phase is
+t[omega(q_c + delta r) - omega(q_c) - delta r omega'(q_c)]. Its first two
+r-derivatives are bounded uniformly for 0 ≤ t ≤ 4L, because
+t delta^2/mu ≤ 4 ceil(mu^{-2}) mu^2 = O(1). Two integrations by parts,
+including the jumps of h', then give
+
+    |psi_t(x)| ≤ C delta^{1/2} (1 + delta |x - x_c + t omega'(q_c)|)^{-2},
+
+and the l^2 mass beyond distance D is at most C (delta D)^{-3}. For waves
+multiplied by the non-separable T(q1,q2), the same one-variable estimate is
+combined with Parseval in the other variable. With D = L and
+delta L ≍ mu^{-1/2}, the initial error is O(mu^{3/4}), with constants common
+to the four columns.
+
+**(iv) Time T.** On the support, |omega'(q)| ≥ 0.55 for both packets
+(P5, rational bounds for 0 < mu < 1/10). For B, omega' < 0 (repair 3).
+
+- At t = 4L the incoming centres satisfy x1 ≤ -1.2L and x2 ≥ 1.2L, so the
+  incoming y-centre is at most -2.4L. The outgoing centres are in the
+  opposite order.
+- The wrong-side restriction, including the contact line, requires a
+  one-particle deviation of at least 1.2L. By the uniform tail bound of
+  (iii) this is O(mu^{3/4}).
+- For chi = 0, T = 1 and the eigenfunction is exactly the free antisymmetric
+  wave projected by P, so psi~_free(t) = F^t P B exactly.
+
+**(v) Phase variation.** At low energy, g_+(mu Q) = -i mu e^{asinh Q}(1 + O(mu))
+(P6). So T is a smooth function of (q1/mu, q2/mu) with denominator bounded
+below by c mu, and |grad T| ≤ C/mu on the support. The support has width
+O(delta) around the centre (q1c, q2c) = (mu k_a, -mu k_b), so
+sup |T - T_c| = O(delta/mu) = O(mu^{1/2}), with T_c := T(q1c, q2c).
+Parseval and the contractivity of spatial restrictions turn this into a
+norm bound. Hence
+
+    U^T P B|ab> = T_c F^T P B|ab> + O(mu^{1/2}).
+
+**(vi) Assembly.** Using Sec. 3,
+
+    U^T B = F^T (1-P) B + U^T P B
+          = F^T B + (T_c - 1) F^T P B + o(1)
+          = F^T [ (1+T_c)/2 B - (T_c - 1)/2 G B ] + o(1).
+
+Since F^T G B is orthogonal to B_out and lies in the range of Q_D:
+
+- K_mu -> diag((1+T_ab)/2);
+- ||E_mu|ab>||^2 -> |T_ab - 1|^2 / 4;
+- ||Q_D U^T B|ab>||^2 has the same limit.
+
+T_c -> T_ab, given by the rapidity form
+(e^{theta_a} - i e^{-theta_b}) / (e^{-theta_b} - i e^{theta_a}), with
+theta = asinh k (P6). Then l_ab = (cosh Delta - 1)/(2 cosh Delta), with
+Delta = asinh k_a + asinh k_b. Since Delta > 0 for this code, l_ab > 0.
+
+Error budget: O(mu^{1/2}) from the phase variation and O(mu^{3/4}) from the
+tails. The constants in (iii)-(v) are written, not machine-checked.
+Uniformity per column implies operator-norm uniformity (logical dimension
+4), so lim ||E_mu|| = sqrt(4/9) = 2/3. For any normalized logical input,
+the limiting leakage is the weighted mean of the l_ab, between 1/3 and 4/9.
+
+## 5. Diagnostic (labelled, decides nothing)
+
+[Diagnostic](2026-11-09--thirring-low-energy-packet-diagnostic.txt): direct
+lattice evolution at mu = 1/11 (L = 121, T = 484, box of 1520 sites, packet
+norms 0.99989). The column "leakage" is the estimator
+1 - sum_j |<C_j, Psi>|^2 over truncated, not exactly normalized modes, not
+an exact projective leakage. The box-wrap diagnostic announced in the
+script docstring was not computed (repair 6). Measured values against the
+finite-mu prediction |T_c - 1|^2/4:
+
+| Input | Leakage | Doubler content | Prediction |
+| --- | --- | --- | --- |
+| 00 | 0.3312 | 0.3291 | 0.3321 |
+| 01 | 0.4015 | 0.3996 | 0.4019 |
+| 10 | 0.4015 | 0.3996 | 0.4019 |
+| 11 | 0.4434 | 0.4415 | 0.4435 |
+
+This is a second, independent route to the same mechanism. Per the
+contract it is not evidence for the asymptotic verdict.
+
+## 6. Verifier and failed run
+
+[Script](../scripts/verify_thirring_low_energy_packet.py),
+[record](2026-11-09--thirring-low-energy-packet.txt),
+[JSON](2026-11-09--thirring-low-energy-packet.json): **39/39 checks**.
+Qualifications (repair 7):
+
+- the positivity parts of P6-l_ab>0 use a 30-digit numerical evaluation;
+  positivity is proved by hand from Delta > 0;
+- P2 and P4 inspect finite windows; their generality comes from the local
+  structure, not from the count;
+- P3 gives worked examples (Sec. 4(i)).
+
+Run 1 (`75b33c3`) failed the velocity bound. I had written 0.555; the
+certified chain gives about 0.5545. The constant was lowered to 0.55
+(closing margin -2.4L instead of about -2.44L), which the argument allows.
+Records: `-failed-run-1.{txt,json}`, with a note appended.
+
+Diagnostic script: [diag](../scripts/diag_thirring_low_energy_packet.py).
+
+## 7. Closing balance of the Thirring coexistence line (mandatory)
+
+- **Contract 1** (two-particle low-energy preflight): `OPEN_AFTER_BOUNDED_EXACT_ATTEMPT`.
+- **Contract 2** (low-energy packets): `NO_ENTANGLER_IN_DECLARED_PACKET_CODE`.
+  The opposite-Gamma half of a low-energy pair acquires the scattering
+  phase T, which depends only on the rapidity difference. The same-Gamma
+  half evolves freely. Their relative phase generates doubler content and
+  leakage |T - 1|^2/4 that does not vanish as mu -> 0. This is the momentum
+  transfer described in 1804.08508 (abstract), made quantitative for
+  packets.
+- **Scientific discard:** this packet code only. Not the Thirring model,
+  other codes, ancillas, measurement or geometry.
+- **Operational:** the two-contract budget is exhausted. By the decision of
+  2026-11-09, the Thirring coexistence line stops. The coexistence question
+  remains **OPEN**: no exclusion is demonstrated beyond the declared codes.
+  There is no automatic third contract.
+- **Recorded for whoever resumes:** for this code and output frame, the
+  leakage comes from carriers split between the G = ±1 halves with T ≠ 1.
+  The universal remark in the previous version is withdrawn (repair 5).
+  An output code that includes the partners G B could contain both
+  components, so no statement about other codes is made.
+
+=== DOCUMENT 6: THIRRING_FLAVOUR_PACKET_GATE.md ===
+
+# Thirring flavour-packet gate
+
+2026-11-14. Author: Claude Code (Claude Opus 5.5). Initial status **OPEN**.
+Freeze this document (commit) before any execution.
+
+## Authorization and budget
+
+The Thirring coexistence line stopped on 2026-11-09 after its two-contract
+budget («no automatic third contract»). This contract is a **new explicit
+user authorization**, not a budget reset: after the read-only evaluation of
+2026-11-14 the user replied «me gusta tu plan, adelante, autorizado» and,
+asked separately, decided the quantifier below. One contract; mandatory
+balance on closure; no further contract follows automatically.
+
+**Q2-A decision (user, 2026-11-14):** a packet of definite flavour (defined
+below) counts as a low-energy carrier **under U^2**: the reference rule for
+the relativistic regime is the same fixed rule taken two steps at a time.
+Under a single step U the flavour alternates A <-> B; this is admitted.
+Q1-B, Q3-A and Q4-A apply unchanged.
+
+## Known, question, abandonment
+
+Known (read this session):
+- sources/1711.03920v1.pdf p.3: Lemma 1 (exactly four degenerate
+  two-particle solutions: swap and pi-shifted partners) and Eq. (12)
+  (interacting solutions in sectors (+,+) and (+,-) with phases T_+, T_-).
+- reports/2026-11-09--thirring-low-energy-packet.md Secs. 3-4: Gamma
+  structure, U(1-P) = F(1-P) exactly with P = (1 - Gamma_1 Gamma_2)/2, exact
+  P-sector eigenfunctions in sector (+,+), packet/scattering bridge and tail
+  bounds; verdict NO_ENTANGLER_IN_DECLARED_PACKET_CODE for the band code
+  (PRELIMINARY, repaired, not re-reviewed).
+- state/CURRENT_STATE.md, entry «Thirring, conceptual correction —
+  2026-11-14» (`0ca0685`): candidate phases T_+ != T_- unless z^2 = 1; the
+  XXZ reading is not certified.
+
+Question: in the limit mu -> 0, does the autonomous collision of two
+flavour packets act on the declared flavour code as a unitary logical gate
+with vanishing leakage, and is that gate non-diagonal in the flavour basis?
+
+Abandonment of the flavour route (this code and rule): a positive
+asymptotic leakage, or a limiting logical action that is diagonal in the
+flavour basis (exchange amplitude zero). Neither is a Thirring no-go.
+
+## Frozen construction
+
+Rule and parameters as contract 2 (`theory/THIRRING_LOW_ENERGY_PACKET_GATE.md`):
+infinite line, two fermions, U = F J, chi = pi/2, nu = sqrt(1 - mu^2),
+0 < mu < 1/10, limit mu -> 0. Fourier convention |q> = (2pi)^(-1/2)
+sum_x e^{-iqx}|x>, normalized positive-band v_q^+, W and component labels
+R, L as in `scripts/verify_thirring_low_energy_packet.py` (`W_pre`).
+No ancillas, intermediate measurement, postselection, external control or
+parameter change. Ideal preparation and final readout in the declared modes.
+
+Flavour: Gamma = sigma_z (-1)^x with sigma_z = +1 on R, exactly the Gamma of
+check P2 in that verifier. One-particle projectors Pi_A = (1 + Gamma)/2,
+Pi_B = (1 - Gamma)/2.
+
+Packets (envelope, width and distances of contract 2): h(t) = sqrt(15)/4
+(1 - t^2) on |t| <= 1, delta = mu^(3/2), L = ceil(mu^(-2)), T = 4L (even).
+- right packet phi_r: positive band, momentum centre +mu (k = 1), envelope
+  delta^(-1/2) h((q - mu)/delta), translated to x = +L by e^{iqL};
+- left packet phi_l: positive band, momentum centre -2mu (k = 2), envelope
+  delta^(-1/2) h((q + 2mu)/delta), translated to x = -L by e^{-iqL}.
+
+Logical qubit of each packet: |0> = flavour A, |1> = flavour B. The four
+columns are B_mu|f_r f_l> = (sqrt2 Pi_{f_r} phi_r) wedge (sqrt2 Pi_{f_l} phi_l),
+right packet first in the creation order. Admission checks (not assumptions):
+||Pi_f phi||^2 = 1/2 exactly, columns orthonormal, B_mu an isometry.
+
+Output frame B_out = F^T B_mu (comparison/readout frame, not an applied
+inverse evolution). T even, so the flavour of each free packet is restored.
+No other packet, centre, time, frame or code basis is admissible; no local
+basis change may be chosen after results.
+
+## Low-energy admission under U^2
+
+Show: U^2 maps each flavour packet to the same flavour, acting on its
+positive-band part as e^{-2i omega(q)} and on its Gamma-partner (negative
+band near q + pi) with the same phase; both parts share the group velocity;
+omega(mu K)/mu -> sqrt(1 + K^2) on the support. This is the Q2-A admission
+decided above; it does not establish an interacting relativistic QFT limit.
+
+## Observables and success
+
+K_mu = B_out^* U^T B_mu, E_mu = (I - B_out B_out^*) U^T B_mu, operator
+norms uniform over logical inputs.
+
+- S1: ||E_mu|| -> 0.
+- S2: a fixed unitary V on C^2 tensor C^2 and phases alpha_mu with
+  ||K_mu - e^{i alpha_mu} V|| -> 0.
+- S3: V non-diagonal in the flavour basis: an explicit pair f != f' with
+  |<f'|V|f>| > 0 in the limit, value given exactly.
+- S4: V entangling: explicit product input, strictly positive limiting
+  entanglement measure.
+
+Candidate (hypothesis H_flav, OPEN, from the session reading, not a
+premise): V = 1 on |AA>, |BB>; on {|AB>, |BA>} the matrix [[al, be], [be, al]]
+with al = (T_+ + T_-)/2, be = (T_+ - T_-)/2 evaluated at the limiting
+rapidities, up to convention-dependent phases. Execution must derive V
+independently, including which sector and momentum labels (total momentum
+P versus P + pi) each phase belongs to, and the antisymmetrization.
+
+## Method
+
+Exact analytic packet/scattering analysis first, reusing the contract-2
+bridge (exact eigenfunctions, unitarity, tail and phase-variation bounds)
+and extending it to the (+,-) sector with Eq. (12) lower sign. The bridge
+must be proved for these normalized finite-time packets; a plane-wave phase
+without it decides nothing. No finite scan or fit decides an asymptotic
+claim. Any computation: permanent verifier committed before execution,
+failed runs retained, exact command entries added to `.claude/settings.json`.
+Reviewed verifiers are reused read-only, never modified. Written analytic
+steps are listed separately from machine checks.
+
+## Verdicts
+
+- `FLAVOUR_PACKET_EXCHANGE_GATE_IN_DECLARED_CODE`: S1-S4 proved.
+- `FLAVOUR_PACKET_GATE_DIAGONAL`: S1-S2 proved, S3 fails (route abandoned).
+- `NO_FLAVOUR_PACKET_GATE`: S1 or S2 disproved (route abandoned).
+- `OPEN_AFTER_BOUNDED_EXACT_ATTEMPT`: otherwise; record the open obligation.
+
+All author PRELIMINARY pending independent review (separate permission).
+
+## Not claimed by any verdict
+
+Universality (flavour number N_A is conserved under U^2, so the gates
+preserve Hamming weight on raw qubits; each pair of packets crosses at most
+once in 1D), composability with controlled error, a relativistic
+interacting QFT limit, Thirring no-go, novelty (NOVELTY = OPEN; conservation
+obstructions and exchange-based encoded universality are prior art).
+
+## Execution bound
+
+One working session, one construction, no parameter or packet search. Stop
+on a proved verdict or when a required estimate cannot be closed. After
+closure: balance in `state/CURRENT_STATE.md`; coexistence stays OPEN unless
+actually proved; no promotion or merge authorized by this charter.
+
+## Before freezing
+
+No packet evolution, scattering evaluation or numerical experiment has been
+performed for this construction. Packet choices are inherited from
+contract 2 with one centre per side; they are not optimized.
+
+=== DOCUMENT 7: 1711.03920v1.pdf (plain text extracted from the PDF; formulas may be garbled, the PDF is authoritative) ===
+
+                                                                             The Thirring quantum cellular automaton
+
+                                                           Alessandro Bisio,∗ Giacomo Mauro D’Ariano,† Paolo Perinotti,‡ and Alessandro Tosini§
+                                                                    Dipartimento di Fisica dell’Università di Pavia, via Bassi 6, 27100 Pavia and
+                                                                     Istituto Nazionale di Fisica Nucleare, Gruppo IV, via Bassi 6, 27100 Pavia
+
+                                                            We analytically diagonalize a discrete-time on-site interacting fermionic cellular automaton in
+                                                          the two-particle sector. Important features of the solutions sensibly differ from those of analogous
+                                                          Hamiltonian models. In particular, we found a wider variety of scattering processes, we have bound
+                                                          states for every value of the total momentum, and there exist bound states also in the free case,
+                                                          where the coupling constant is null.
+
+                                                          PACS numbers: 71.10.Fd, 03.67.Ac
+arXiv:1711.03920v1 [quant-ph] 10 Nov 2017
+
+
+
+
+                                               Quantum cellular automata and quantum walks con-               be Fermionic. First we introduce the walk W for a free
+                                            stitute an increasingly attractive arena for research in          two-component Fermionic field ψ defined at any lattice
+                                            many body systems [1–3], quantum computation [4–7],               point x ∈ Z and at any discrete time t ∈ Z
+                                            and foundations of quantum field theory [8–12].                                                                       
+                                               The notion of quantum cellular automaton introduced                                                        ψ↑ (x, t)
+                                                                                                                  ψ(x, t + 1) = W ψ(x, t),    ψ(x, t) =
+                                            by Feynman [13] as a universal quantum simulator, was                                                         ψ↓ (x, t)
+                                            mathematically formalized in Ref. [14, 15]. In the case of                   †       
+                                                                                                                          νTx −iµ
+                                            non-interacting theories the evolution of field operators             W =               , ν, µ > 0, ν 2 + µ2 = 1,
+                                                                                                                          −iµ νTx
+                                            is linear, and its simulation through quantum cellular au-
+                                            tomata reduces to simulation of a single particle through
+                                                                                                              where Tx is the translation operator Tx φ(x) = φ(x + 1)
+                                            a quantum walk [16–18]. The interacting case is largely
+                                                                                                              and ψ↑ and ψ↓ denote the two components of the field.
+                                            unexplored, and was mainly approached by extending the
+                                                                                                              In the one-particle sector the above walk is a unitary
+                                            quantum walk formalism, introducing decoherence [19],
+                                                                                                              operator W over the Hilbert space H = C2 ⊗ `2 (Z) for
+                                            or a classical external field [10, 20–22]. A notable ex-
+                                                                                                              which we will use the factorized orthonormal basis |ai|xi,
+                                            ception is Ref. [23], where bound states in interacting
+                                                                                                              with a ∈ {↑, ↓}.
+                                            quantum walks are studied.
+                                                                                                                 Notice that the walk evolution is local, with the field
+                                               In the present paper we study a one-dimensional mas-
+                                                                                                              at time t and at site x depending only on the field at
+                                            sive Fermionic cellular automaton with a four-Fermion
+                                                                                                              sites x ± 1 at time t − 1 (first-neighbouring scheme).
+                                            on-site interaction. The main result consists in the
+                                                                                                              Moreover, since W commutes with translations along
+                                            complete analytical solution in the two-particle sector.
+                                                                                                              the lattice, the walk can be diagonalized in the momen-
+                                            The linear part of the evolution corresponds to a one-
+                                                                                                              tum space. In the Fourier representation the operator
+                                            dimensional Dirac walk [10], with an interaction having
+                                                                                                              W is expressed P in terms of the momentum p ∈ (−π, π]
+                                            the most general on-site, number-preserving form. The
+                                                                                                              (|pi := (2π)−1/2 x e−ipx |xi) as follows
+                                            same kind of interaction characterizes the most studied
+                                            integrable quantum systems [24–27] such as Hubbard’s
+                                                                                                                                                        νeip −iµ
+                                                                                                                      Z                                             
+                                            [28] and Thirring’s [29] models. For this reason we call            W =       dp W (p) ⊗ |pihp|,   W (p) =
+                                            the present model Thirring quantum cellular automaton.                                                      −iµ νe−ip
+                                                                                                                                                            
+                                               Despite the similarities, the present cellular automaton                                            1    −iµ              (1)
+                                                                                                                W (p)vsp = e−isω(p) vsp , vsp :=               ,
+                                            differs from the above models mainly in the discreteness                                             |Ns | gs (p)
+                                            of time evolution. This feature produces non-trivial dif-
+                                                                                                                ω(p) := Arccos(ν cos p),       s ∈ {+, −},
+                                            ferences in the dynamical solutions of the model, in par-
+                                            ticular a wider spectrum of scattering states, and the
+                                                                                                              with gs (p) = −i(s sin ω(p) + ν sin p), |Ns |2 = µ2 + |gs |2 .
+                                            existence of bound states for every value of the total
+                                            momentum. As a consequence of the departure of the                   The function ω(p) is the walk dispersion relation. In
+                                            present discrete-time evolution from the usual Hamilto-           Ref. [30] it is shown that for small p this discrete dynam-
+                                            nian paradigm, we are not allowed to borrow the common            ics recovers that of a free Dirac field of mass µ.
+                                            Bethe ansatz technique straightforwardly.                            A N -particle walk can then be described taking HN =
+                                               We start defining a quantum walk for interacting par-          H⊗N as the Hilbert space of the system and WN := W ⊗N
+                                            ticles on the lattice Z, assuming the particle statistics to      as the operator providing the evolution. Within this sce-
+                                                                                                              nario we introduce a coupling between particles defining
+                                                                                                              the dynamical time step via a unitary operator of the
+                                            ∗ alessandro.bisio@unipv.it                                       form WN Vint . Here we consider the following interacting
+                                            † dariano@unipv.it                                                term
+                                            ‡ paolo.perinotti@unipv.it
+                                            § alessandro.tosini@unipv.it                                                      Vint := V (χ) = eiχn↑ (x)n↓ (x) ,
+                                                                                                                                           2
+
+where na (x) = ψa† (x)ψa (x) is the number operator at site                                         kI                             f
+
+x and with internal state a ∈ {↑, ↓}. This corresponds                                                                             1
+                                                                                                                             kR
+to an on-site coupling, namely the action of V (χ) is non                           ⇡         ⇡
+                                                                                                   0             ⇡       ⇡         2
+trivial if and only if two Fermions lie at the same site of                                   2                  2
+                                                                                                                                       1
+the lattice. Moreover, since V (χ) commutes with the to-                                                                           0
+tal number operator n = x (ψ↑† (x)ψ↑ (x)+ψ↓ † (x)ψ↓ (x)),
+                           P
+the dynamics preserves the number of particles. This is
+the most general possible coupling with the above prop-                                            i
+erties for the case of a Fermionic walk [31]. In this paper                                                          ei2|p|
+we restrict to the N = 2 case and therefore we focus on
+the walk                                                                                ei2!(p)                                   ⌦++
+                                                                                                                                   f
+                                                                                                                       ⇡
+                                                                                                                i2!(p+ 2 )        ⌦+
+                                                                                                                                   f
+    U2 := W2 V2 (χ),         V2 (χ) := eiχδy,0 (1−δα1 ,α2 ) ,   (2)                                        e
+                                                                               1                   0                          1   ⌦+
+                                                                                                                                   1
+
+which is written in the center of mass basis |a1 , a2 i|yi|wi                                                          ⇡          ⌦++
+                                                                                                               ei2!(p+ 2 )         2
+
+for the two-particles Hilbert space H2 = C4 ⊗ `2 (Z), with                                                                        ⌦+ 1
+a1 , a2 ∈ {↑, ↓}, y = x1 − x2 and w = x1 + x2 the relative                              e i2!(p)                                  ⌦++
+                                                                                                                                   0
+and the center of mass coordinate respectively. Denoting                                                                 i2|p|
+                                                                                                                     e
+by k = 21 (p1 − p2 ) the (half) relative momentum and by
+                                                                                                       i
+p = 12 (p1 + p2 ) the (half) total momentum, the free walk
+W2 in the momentum representation is written as follows
+         Z                                                            FIG. 1. (Colors online) Top: kR and kI represent the real and
+ W2 = dk dp W2 (p, k) ⊗ |kihk| ⊗ |pihp|,                  (3)         the imaginary part of the relative momentum k in the two-
+                                                                      fermion state. The highlighted regions collect the values of
+                     −iωsr (p,k) sr
+ W2 (p, k)vsr
+           p,k , = e            vp,k ,   vsr      s      r
+                                          p,k := vp+k ⊗ vp−k ,        k ∈ C providing a real value of the quasi-energy ω. Bottom:
+                                                                      the disjoint subregions of the unit circle are the images under
+ ωsr (p, k) := sω(p + k) + rω(p − k),         s, r ∈ {+, −},          k 7→ eiωrs (p,k) of the disjoint regions in the top figure, for fixed
+                                                                      values of the total momentum p = 0.55 and mass µ = 0.8.
+where the eigenvectors of W2 (p, k) := W (p+k)⊗W (p−k)                Ωf coincides with the continuous spectrum of U2 (χ, p) (see
+are easily computed as the tensor product of the single-              Eq. (2)). The discrete spectrum lies in the other regions, and
+particle ones in Eq. (1).                                             for a fixed value of the coupling constant χ it consists of a
+    Since the interacting dynamics U2 commutes with                   single point. Varying the value of χ the unit circle is covered,
+translation Tw in the center of mass coordinate w, it                 and the boundary points of the arcs depend on p.
+is convenient to write the walk in the hybrid basis
+|a1 , a2 i|yi|pi, in the following block-diagonal form
+        Z                                                             we are only interested in the solutions that are antisym-
+                                                                      metric under the exchange of the two particles, i.e.
+ U2 = dp U2 (χ, p) ⊗ |pihp|, U2 (χ, p) := W2 (p)Ṽ2 (χ),
+                                                                                       f p,ω,χ (y) = −Ef p,ω,χ (−y),
+                                                      − µν
+                  ν i2p
+                                −ieip Ty −ieip Ty†
+                                                              
+                     µe                                                                                    P3
+                  −ieip Ty       ν 2
+                                  µ Ty        − µν  −ie−ip Ty        where E is represented as E = 21 i=0 σi ⊗ σi (with σ0 =
+ W2 (p) := µν                                          −ip † ,
+                                                             
+                        ip †          µ      ν †2                     I, and σi , i = 1, 2, 3, the Pauli matrices).
+                 −ie Ty          −ν          T
+                                             µ y    −ie    Ty
+                         µ         −ip        −ip †  ν −i2p              In the following, in order to lighten the notation, we
+                      −ν       −ie Ty −ie Ty µ e
+                                                                    will omit the explicit dependence of the solutions from
+               I      0         0       0                             p, ω, χ and we will write f (y) for f p,ω,χ (y).
+             0 eiχδy,0 I       0       0                               Since the interacting term acts only at the origin, for
+ Ṽ2 (χ) :=                  iχδy,0
+                                          ,
+             0       0     e        I 0                             y > 0 Eq. (4) becomes a linear recurrence relation with
+               0      0         0       I                             constant coefficient whose most general solutions [32] are
+                                                                      of two forms: f ∞ (y) or f (y), given by
+with Ty the translation in the relative coordinate y.
+  The first step is to solve the linear difference equation            f ∞ (y) = (ζ∞ , 0, 0, ζ 0 ∞ )T δy,1 ζ∞ , ζ 0 ∞ ∈ C y > 0, (5)
+                                                                                X Z
+                  U2 (χ, p)f p,ω,χ = eiω f p,ω,χ ,              (4)    f (y) =          dk e−iky gω (s, r, k)vsrk       y>0      (6)
+                                                                                s,r=±     S
+                                    4
+                   f p,ω,χ : Z → C ,     ω ∈ C,
+                                                                       k = kR + ikI , S := {k ∈ C | kR ∈ (−π, π]},
+for any possible value of χ and p. Among all the possi-                gω (s, r, k) ∈ C s.t. e−iω 6= e−iωsr (p,k) ⇒ gω (s, r, k) = 0,
+ble solutions of Equation (4) we will then choose those
+ones which are eigenvectors (or generalized eigenvectors)             where the function ωrs (p, k) and the vectors vsr      sr
+                                                                                                                      k := vp,k
+of U2 (χ, p) considered as an operator on the Hilbert space           have been defined in Eq. (3), and for complex argument
+C4 ⊗ `2 (Z). Since the interacting particles are Fermions,            Arccos is the principal value of the arccosine function.
+                                                                                                                            3
+
+  Let us first consider the functions given by Eq. (5).         the evolution, this constraint needs to be verified only for
+A necessary condition for a function obeying Eq. (5) to         y = 0, 1, 2. A tedious albeit straightforward calculation
+be a (proper or improper) eigenvector of U2 (χ, p) is that      allows one to bring Eq. (11) into the following form after
+ωsr (p, k) ∈ R. In order to analyse this condition, it is       suitable reparametrization
+useful to introduce the following sets (see Fig. 1):
+                                                                              ±,f          ±,i
+                                                                f±
+                                                                 k (y) = c1 f k (y) + c2 f k (y),                        (12)
+   Γf := {k ∈ S|kI = 0},
+                                                         (7)    f ±,f      +±
+                                                                  k (y) =[vk  + (−1)y v−∓
+                                                                                       k−π ]e
+                                                                                              −iyk
+                                                                                                   +
+   Γz := {k ∈ S|kR = z π2 },    z = 0, ±1, 2,
+                                                                              ±+       y ∓−      iyk
+   Ωsr                                                                    − [v−k + (−1) vπ−k ]e ,
+    f := {exp(−iωsr (p, k)) | k ∈ Γf },
+                                                         (8)              
+                                                                             −iδ χ   +±       y −∓     −iyk
+   Ωsr                                     z
+    z := {exp(−iωsr (p, k)) | k ∈ Γz , (−1) = sr}.                         e y,0 {[vk − (−1) vk−π ]e
+                                                                                                           +
+                                                                                                                        y≥0
+                                                                  ±,i             ±+       y ∓−    iyk
+                                                                f k (y) =   −T± [v−k − (−1) vπ−k ]e }
+Reminding that ω(x + π) = π − ω(x), one can verify that                   
+                                                                          antisymmetrized                              y < 0,
+        Ω++
+         f  = Ω−−
+               f ,     Ω+−
+                        f  = Ω−+
+                              f ,       Ω++
+                                         0  = Ω−−
+                                               2 ,
+                                                                                      −iχ
+                                                                        g+ (p + k) + e g± (p − k)
+                                                         (9)    T± :=                                ,   c1 , c2 ∈ C.
+        Ωπ = Ω−−
+         ++
+                       Ω−1 = Ω−+
+                        +−
+                                        Ω1 = Ω−+
+                                         +−                             g± (p − k) + e−iχ g+ (p + k)
+               0 ,            1 ,              −1 .
+
+The following technical result, proved in Appendix A,           The next step of the analysis is to identify, among the
+marks the first important difference from the Hamilto-          set of functions of Eq. (12), those ones which correspond
+nian integrable models, relying in the degeneracy of two-       to eigenvectors or generalized eigenvectors of U2 (χ, p).
+particle levels. The degeneracy in the Hamiltonian case is         For k ∈ Γf , Eq. (12) gives the generalized eigenvec-
+two, corresponding to the intuitive one-dimensional pic-        tor of U2 (χ, p) corresponding to the continuous spectrum
+ture where either a classical elastic bounce or a quantum       σc = Ω++       +−
+                                                                        f ∪Ωf . Since U2 −W2 is a finite rank operator,
+tunnelling where the particles cross each other occur. On       the continuous spectrum of the two-particle interacting
+the other hand, in the discrete case the degeneration is        case is the same as that of the free walk (see Theorem
+four, allowing also for scattering events where hopping to      IV 5.35 of Ref.[33]). From Eq. (12) we have that the so-
+a distant region in the Brillouin zone can occur. This phe-     lutions of the kind f ±,f
+                                                                                        k   are generalized eigenvectors of
+nomenon is due to periodicity of the quasi-energy spec-         the free theory which are also generalized eigenvectors of
+trum, which is where the failure of the Bethe ansatz lurks.     the interacting theory. This is easily understood since
+                                                                f ±,f
+                                                                  k (0) = 0, and therefore those eigensolutions do not
+Lemma 1 Let ωsr (p, k) be defined as in Eq. (3) and let         feel the presence of the interaction—which is localized at
+us assume p 6= z π2 (z ∈ Z). Then we have:                      y = 0. On the other hand, we can interpret the solution
+   1.     ω±± (p, k) ∈ R =⇒ k ∈ Γf ∪ Γ0 ∪ Γ2                    of the kind f ±,i
+                                                                               k   as a scattering of plane waves with the
+                                                        (10)    T± playing the role of transmission coefficients.
+          ω±∓ (p, k) ∈ R =⇒ k ∈ Γf ∪ Γ−1 ∪ Γ1
+                                                                   For k 6∈ Γf , necessary conditions for f ±   k to be a
+                                                                (proper or generalized) eigenvector of U2 (χ, p) are that
+   2. The six sets Ω++      +−    ++   ++    +−
+                      f , Ωf , Ω0 , Ω2 , Ω−1 , Ω1
+                                                   +−
+                                                        are
+                                                                kI = =(k) < 0, c1 = 0, c2 6= 0 and T± = 0 (otherwise f ±  k
+      disjoint and their union is the whole unit circle ex-
+                                                                is exponentially divergent). In appendix B we prove the
+      cept for the points e±i2p .
+                                                                following result:
+   3. For any ω ∈ R such that e−iω 6= e±i2p the equation
+      e−iω = e−iωsr (p,k) has four distinct solutions. If the   Lemma 2 Let T± defined as in Eq. (12) and let us as-
+      triple (+, +, k) is a solution then also (+, +, −k),      sume p 6= z π2 . If eiχ 6∈ {e±i2p , 1, −1}, then there ex-
+      (−, −, π − k) and (−, −, k − π) are solutions. If         ists a unique k ∈ Γ0 ∪ Γ−1 ∪ Γ1 ∪ Γ2 with kI < 0 such
+      the triple (+, −, k) is a solution then (−, +, −k),       that either T+ = 0 or T− = 0. On the other hand, if
+      (+, −, π − k) and (−, +, k − π) are solutions.            eiχ ∈ {e±i2p , 1, −1} then T+ 6= 0 and T− 6= 0 for all
+                                                                k ∈ Γ0 ∪ Γ−1 ∪ Γ1 ∪ Γ2 with kI < 0.
+By Lemma 1, Eq. (5) yields two classes of solutions:
+                                                                The above result tells us that, for eiχ 6∈ {e±i2p , 1, −1},
+  f+
+   k (y) with k ∈ Γf ∪ Γ0 ∪ Γ2 ,                                the two-particles interacting evolution U2 (χ, p) has one
+                                                        (11)
+  f−                                                            proper eigenvector whose corresponding eigenvalue con-
+   k (y) with k ∈ Γf ∪ Γ−1 ∪ Γ1 ,
+                                                                stitutes the discrete spectrum of U2 (χ, p). This eigenstate
+              [α± v+±   − (−1)y δ± v−∓
+           
+                                          −iyk
+                    k               k−π ]e     +                is easily interpreted as a bound state of two particles.
+                                                    y>0
+           
+           
+            −[β v±+ − (−1)y γ v∓− ]eiyk
+           
+                   ± −k             ± π−k                          We now consider the functions given by Eq. (6) which
+  f±
+   k (y) =
+           
+            (0, η± , −η± , 0)T                     y=0         lead to the antisymmetric functions
+           
+              antisymmetrized                       y < 0,
+           
+                                                                                             0 T
+                                                                                (ζ∞ , 0, 0, ζ∞ ) δy,1
+                                                                                                            y > 0,
+where α± , β± , . . . , are complex coefficients which depend        f ∞ (y) = (0, η∞ , −η∞ , 0)   T
+                                                                                                             y = 0,     (13)
+on p, k, m, χ. We now determine these coefficients by re-                      
+                                                                                                  0 T
+                                                                                  (−ζ∞ , 0, 0, −ζ∞ ) δy,−1 y < 0.
+                                                                               
+quiring that Eq. (4) is satisfied. Because of the locality of
+                                                                                                                                      4
+
+Imposing condition (4), we obtain the following solutions           and, by setting p = 0, the solutions fk+ of Eq. (12) are
+             ±ip 1±1           −1±1 T
+                                                                    (proper and improper) eigenvectors of U2 (χ, 0). Thus,
+             ie (− 2 , 0, 0, 2 ) δy,1
+                                               y > 0,              the spectrum of U2 (χ, 0) decomposes into a continuous
+                  µ    µ      T                                     spectrum, which is the arc of the unit circle wich contains
+  f ±∞ (y) = (0, ν , − ν , 0)                   y = 0,
+            
+             ±ip 1±1           −1±1 T                              −1 and has e±2iω(0) as extremes, and a point spectrum
+               ie ( 2 , 0, 0, − 2 ) δy,−1 y < 0,
+                                                                    made of two distinct points: e−i2ω(k̃) (where k̃ is the
+   U2 (χ, p)f ±∞ = e±i2p f ±∞ for eiχ = e±i2p .             (14)    solution of T+ = 0 when p = 0) and 1. Since U2 (χ, 0) is
+                                                                    unitary, if e−iω belongs to the point spectrum then it is
+Eq. (14) provides the proper eigenstate of U2 (χ, p) for
+                                                                    a proper eigenvalue of U2 (χ, 0). Let us denote with P0−
+the cases eiχ = e±i2p which were missing in Lemma 2.
+                                                                    the projection on the eigenspace of the eigenvalue 1, and
+   In Fig. 2 we plot the spectrum of U2 (χ, p) as a function
+                                                                    by Pp− the following projection
+of p for different values of the χ. We can then write, for
+p 6= z π2 , the spectral resolution of U2 (χ, p), i.e.                                   X Z π
+                  XZ π                                                          Pps :=       dk |φs,j       s,j
+                                                                                                  p,χ (k)ihφp,χ (k)|.
+                                                                                                  −π
+    U2 (χ, p) =         dk e−iω+s (p,k) |φs,j       s,j
+                                          p,χ (k)ihφp,χ (k)|+
+                                                                                         j=f,i
+                s=±, −π
+                j=f,i                                               Now, since limp→0 kU2 (χ, p) − U2 (χ, 0)k = 0, and 1
+                +e   −iω̃
+                            |ϕp,χ ihϕp,χ |,                         is a separated part of the spectrum of U2 (χ, 0), then
+                                                                    limp→0 kPp− −P0− k = 0 (see Theorem IV 3.16 of Ref.[33]).
+where we defined                                                    We have then that
+                              s,j
+ hy|φs,j
+      p,χ (k)i := Np,χ,s,j,k fk (y),
+                                                                                       X
+                                                                                P0− =      |ψ0− (n, j)ihψ0− (n, j)|,
+                          +,i
+               
+                                       iχ    ±i2p
+               Mp,χ,k̃ fk̃ (y), e 6= e
+                                                 , T+ (k̃) = 0,                           n∈Z
+                                                                                          j=f,i
+                          −,i          iχ    ±i2p
+ hy|ϕp,χ i := Mp,χ,k̃ fk̃ (y), e 6= e             , T− (k̃) = 0,                                    Z π
+                ±
+               
+                 Mp f±∞ (y),        eiχ = e±i2p ,                                 |ψ0− (n, j)i :=           gn (k)|φ−,j
+                                                                                                                    0,χ (k)i
+                                                                                                      −π
+                         iχ      ±i2p
+       ω++ (p, k̃), e 6= e
+                                     , T+ (k̃) = 0,
+                                                                    where gn (k) is an orthonormal basis for L2 (−π, π]. The
+                         iχ
+ ω̃ := ω+− (p, k̃), e 6= e       ±i2p
+                                      , T− (k̃) = 0,                cases p = π, ± π2 can be analysed in the same way. The
+                       eiχ = e±i2p ,
+       
+       ±2p,
+                                                                    eigenspace corresponding to the eigenvalue 1 is thus a
+                                                                    separable Hilbert space of stationary bound states. This
+and N, M are normalization factors such that
+                                                                    result marks an important departure from the behaviour
+          hφs,j
+                        0
+                     s ,j  0 0
+                                                     0              of analogous Hamiltonian models. Remarkably, it occurs
+            p,χ (k)|φp,χ (k )i = δs,s0 δj,j 0 δ(k − k )
+                                                                    even in the non-interacting case χ = 0.
+          hϕp,χ |ϕp,χ i = 1                                            The diagonalisation of U2 (χ, p) summarized by the fol-
+                                                                    lowing proposition
+                                                                    Proposition 1 Let U2 (χ, p) be defined as in Equa-
+                                                                    tion (3). Then its spectral resolution is
+
+                                                                       U2 (χ, p) =
+      !
+                                                                            X
+                                                                           
+                                                                           
+                                                                           
+                                                                                     s,j
+                                                                                    Up,χ + e−iω̃ Pp,χ                   p 6= z π2 ,
+                                                                              s=±,
+                                                                           
+                                                                           
+                                                                           
+                                                                            j=f,i
+                                                                           
+                                                                           
+                                                                            X
+                                                                                              −
+                                                                       =
+                                                                                     +,j
+                                                                                    Uzπ,χ  + Pzπ  + e−iω̃ Pzπ,χ         p = 0, π,
+                                                                              j=f,i
+                                                                           
+                                                                           
+                                                                           
+                                                                           
+                                                                              X −,j
+                                      p                                    
+                                                                           
+                                                                                   U π − P +π + e−iω̃ P± π ,χ          p = ± π2 ,
+                                                                           
+                                                                                    ± 2 ,χ    ±2               2
+                                                                              j=f,i
+FIG. 2. Spectrum of the 2 particle automaton of Eq. (2): In                     Z π
+red and yellow are depicted the continuous spectrum bands;             Up,χ := dk e−iω+s (p,k) |φs,j
+                                                                        s,j                                    s,j
+                                                                                                    p,χ (k)ihφp,χ (k)|,
+in black the discrete band for different values of the coupling:                  −π
+χ1 = − π5 , χ2 = − π2 , χ3 = − 4π
+                                5
+                                  , χ4 = 4π
+                                          5
+                                            , χ5 = π2 , χ6 = π5 .      Pp,χ = |ϕp,χ ihϕp,χ |.
+
+  We conclude our analysis with the discussion of the               We diagonalized an on-site interacting fermionic cellular
+cases p = z π2 starting from p = 0. We have ω±± (0, k) =            automaton in the two-particle sector. Differently from
+±2ω(k), with ω(k) ∈ (−π, π] and ω(k) 6= 0, iff k ∈ Γf ∪             analogous Hamiltonian models, (i) bound states exist for
+Γ0 ∪ Γ2 . On the other hand ω±∓ (0, k) = 0 for all k ∈ C,           every value of the total momentum, (ii) there are four
+and thus ω±∓ (0, k) 6= ω±± (0, k 0 ) for all values of k, k 0 .     classes of scattering solutions instead of two, (iii) the
+Therefore the previous analysis still holds for e−iω 6= 1           bound states exist also in the free case.
+                                                                                                                            5
+
+
+
+
+ [1] C. M. Dawson, J. Eisert, and T. J. Osborne, Phys. Rev.          Physics 354, 244 (2015).
+     Lett. 100, 130501 (2008).                                  [31] S. Östlund and E. Mele, Phys. Rev. B 44, 12413 (1991).
+ [2] B. M. Boghosian and W. Taylor, Phys. Rev. E 57, 54         [32] P. Cull, M. Flahive, and R. Robson, Difference equa-
+     (1998).                                                         tions: from rabbits to chaos (Springer Science & Business
+ [3] J. I. Cirac, D. Perez-Garcia, N. Schuch, and F. Ver-            Media, 2005).
+     straete, Journal of Statistical Mechanics: Theory and      [33] T. Kato, Perturbation theory for linear operators, Vol.
+     Experiment 2017, 083105 (2017).                                 132 (Springer Science & Business Media, 2013).
+ [4] A. M. Childs, Phys. Rev. Lett. 102, 180501 (2009).
+ [5] N. B. Lovett, S. Cooper, M. Everitt, M. Trevers, and
+     V. Kendon, Phys. Rev. A 81, 042330 (2010).
+ [6] A. Schreiber, K. N. Cassemiro, V. Potocek, A. Gabris,
+     P. J. Mosley, E. Andersson, I. Jex, and C. Silberhorn,
+     Phys. Rev. Lett. 104, 050502 (2010).
+ [7] L. Sansoni, F. Sciarrino, G. Vallone, P. Mataloni,
+     A. Crespi, R. Ramponi, and R. Osellame, Phys. Rev.
+     Lett. 108, 010502 (2012).
+ [8] I. Bialynicki-Birula, Physical Review D 49, 6920 (1994).
+ [9] D. Meyer, Journal of Statistical Physics 85, 551 (1996).
+[10] A. Bisio, G. M. D’Ariano, and A. Tosini, Phys. Rev. A
+     88, 032301 (2013).
+[11] P. Arrighi, S. Facchini, and M. Forets, Quantum Infor-
+     mation Processing 15, 3467 (2016).
+[12] G. M. D’Ariano and P. Perinotti, Phys. Rev. A 90,
+     062106 (2014).
+[13] R. Feynman, International journal of theoretical physics
+     21, 467 (1982).
+[14] B. Schumacher and R. Werner, Arxiv preprint quant-
+     ph/0405174 (2004).
+[15] D. Gross, V. Nesme, H. Vogts, and R. Werner, Commu-
+     nications in Mathematical Physics , 1 (2012).
+[16] A. Ambainis, E. Bach, A. Nayak, A. Vishwanath, and
+     J. Watrous, in Proceedings of the thirty-third annual
+     ACM symposium on Theory of computing (ACM, 2001)
+     pp. 37–49.
+[17] Y. Aharonov, L. Davidovich, and N. Zagury, Phys. Rev.
+     A 48, 1687 (1993).
+[18] G. Grossing and A. Zeilinger, Complex Systems 2, 197
+     (1988).
+[19] Y. Shikano, K. Chisaki, E. Segawa, and N. Konno, Phys.
+     Rev. A 81, 062129 (2010).
+[20] P. Arnault and F. Debbasch, Phys. Rev. A 93, 052301
+     (2016).
+[21] P. Arnault, G. Di Molfetta, M. Brachet, and F. Deb-
+     basch, Phys. Rev. A 94, 012335 (2016).
+[22] D. A. Meyer, Phys. Rev. E 55, 5261 (1997).
+[23] A. Ahlbrecht, A. Alberti, D. Meschede, V. B. Scholz,
+     A. H. Werner, and R. F. Werner, New Journal of Physics
+     14, 073050 (2012).
+[24] E. H. Lieb and F. Y. Wu, Physical Review Letters 20,
+     1445 (1968).
+[25] S. Coleman, Phys. Rev. D 11, 2088 (1975).
+[26] V. E. Korepin, Theoretical and Mathematical Physics 41,
+     953 (1979).
+[27] F. H. Essler, H. Frahm, F. Göhmann, A. Klümper,
+     and V. E. Korepin, The one-dimensional Hubbard model
+     (Cambridge University Press, 2005).
+[28] Proceedings of the Royal Society of London A: Math-
+     ematical, Physical and Engineering Sciences 276, 238
+     (1963).
+[29] W. E. Thirring, Annals of Physics 3, 91 (1958).
+[30] A. Bisio, G. M. D’Ariano, and A. Tosini, Annals of
+                                                                                                                                         6
+
+              Appendix A: Proof of Lemma 1                                includes −1 (see Fig. 1). With the same procedure we
+                                                                                                                        π
+                                                                          find that Ω+−
+                                                                                     f   is the arc connecting ei(2ω(p+ 2 )−π) and
+                        1.   Proof of item 1                                        π
+                                                                          e−i(2ω(p+ 2 )−π) which includes 1 (see Fig. 1). We now
+                                                                          verify that Ω++f  and Ω+−f  are disjoint. Since ω(p) < π2 ,
+   Let us define ω̂± + iω̃± := ω(p ± k). Since ω(z ∗ ) =
+ω ∗ (z), we have that both ω̂± and ω̃± are real. Then we
+                                                                                  π       π
+                                                                          ω(p + 2 ) > 2 we have e     −iω
+                                                                                                           ∈ Ω++f   iff ω mod 2π ∈
+                                                                                                          −iω     +−
+have                                                                      (−π, −2ω(p)]∪[2ω(p), π] and e       ∈ Ωf iff ω mod 2π ∈
+                                                                          [π −2ω(p+ π2 ), 2ω(p+ π2 )−π, ]. Then, from the inequality
+           =(ωrs (p, k)) = 0 ⇐⇒ rω̃+ = −sω̃− =⇒                              d
+                                                                          | dx ω(x)| < 1, ∀x ∈ R, we have
+           cosh ω̃+ = cosh ω̃− =: cosh ω̃.                     (A1)
+                                                                                                    Z p+ π           Z p+ π
+                                                                                                         2 d              2 π
+Reminding that cos ω(p ± k) = ν cos(p ± k), Eq. (A1)                          ω(p + π2 ) − ω(p) =      dx     ω(x) <    dx < ,
+                                                                                                     p     dx         p     2
+implies that
+
+      cos2 ω̂± cosh2 ω̃ = ν 2 cos2 (p ± kR ) cosh2 kI                     which implies that the sets (−π, −2ω(p)] ∪ [2ω(p), π] and
+                                                               (A2)       [π − 2ω(p + π2 ), 2ω(p + π2 ) − π, ] are disjoint.
+      sin2 ω̂± sinh2 ω̃ = ν 2 sin2 (p ± kR ) sinh2 kI .                      Let us now consider the set Ω++    0 . For π 6= 0, π, the
+                                                                          function R 3 kI 7→ ω++ (p, ikI ) = ω(p+ikI )+ω(p−ikI ) is
+From the above relations we find that
+                                                                          smooth. Therefore, the extremal points of its range occur
+                  cosh2 kI       2         sinh2 kI   1                   either in its stationary points or at its limiting values for
+ cos2 (p ± kR )            + sin   (p ± k)          = 2 (A3)              kI → ±∞. By setting ∂kI ω++ (p, ikI ) = 0 we obtain
+                  cosh2 ω̃                 sinh2 ω̃  ν
+which gives                                                                     sin(p + ikI )           sin(p − ikI )
+                                                                            p                     =p                         =⇒
+                                                                                   2   2
+                                                                             1 − ν cos (p + ikI )    1 − ν 2 cos2 (p − ikI )
+                                         sinh2 kI   cosh2 kI
+                                                              
+[sin2 (p + kR ) − sin2 (p − kR )]            2    −                = 0.                          sin2 (p + ikI ) = sin2 (p − ikI ) =⇒
+                                         sinh ω̃    cosh2 ω̃
+                                                                                         sin(p + ikI ) = ± sin(p − ikI ) =⇒ kI = 0,
+                    2            2
+                                                        sinh2 kI
+Now, since sinh kI
+                    − cosh kI
+                               = 0 implies                          =
+           sinh2 ω̃   cosh2 ω̃                          sinh2 ω̃          where we used the hypothesis p 6= z π2 . When kI = 0
+cosh2 kI
+       = 1, which is not compatible with Eq. (A3), it
+cosh2 ω̃                                                                  we clearly have ω++ (p, 0) = 2ω(p). Let us now compute
+must be sin2 (p + kR ) = sin2 (p − kR ), which gives                      limkI →+∞ ω++ (p, ikI ). Since ω++ (p, ikI ) is an even func-
+                                                                          tion of kI the limit kI → +∞ and kI → −∞ coincide.
+                         z        z
+                kR =       π ∨ p = π,          z ∈ Z.                     We have
+                         2        2
+By explicit computation one obtains                                                        ω++ (p, ikI ) = ω(p + ikI ) + ω(p − ikI ) =
+                                                                                   = 2< ω(p + ikI ) = 2< Arccos(ν cos(p + ikI )) =
+                                                  π
+  =(ω±± (p, k)) = 0 ∧ kI 6= 0 =⇒ kR = 0, π ∨ p = ± ,                                = 2< Arccos(ν cos p cosh kI − i sin p cosh kI ) =
+                                                  2
+                                         π
+                                                                                          q
+  =(ω±∓ (p, k)) = 0 ∧ kI 6= 0 =⇒ kR = ± , ∨p = 0, π,                      = 2 Arccos 2 −1
+                                                                                             (1 + cos p cosh kI )2 + sin2 p cosh2 kI −
+                                         2
+                                                                                 q                                         
+which proves the first item of Lemma 1.                                                                  2     2       2      kI →+∞
+                                                                                + (1 − cos p cosh kI ) + sin p cosh kI −−        −−−→
+
+                                                                                                               → 2 Arccos cos p = 2|p|.
+                        2.   Proof of item 2
+                                                                          Since we are assuming p ∈ (0, π2 ) we have that
+   Let us consider the case in which p ∈ (0, π2 ). The func-
+tion k 7→ ω++ (p, k) is smooth and periodic with period                                 d               d
+                                                                                           (ω(p) − p) =    ω(p) − 1 < 0,
+2π and therefore it ranges beetween its maximum and                                     dp              dp
+minimal values. The maximum and minimum values are                                                              π    π
+                                                                                               ω(0) > 0 and ω( ) = ,
+found by setting ∂k ω++ (p, k) = 0. By explicit computa-                                                        2    2
+tion one obtains
+                                                                          which imply ω(p)−p > 0 for p ∈ (0, π2 ). Similarly one can
+           sin(p + k)           sin(p − k)                                show ω(p+ π2 )− π2 < p for p ∈ (0, π2 ). From ω(p+ π2 )− π2 <
+                          =p                      ,
+                                                                          p < ω(p) we have that e−iω ∈ Ω++             iff ω mod 2π ∈
+       p
+              2   2
+        1 − ν cos (p + k)    1 − ν 2 cos2 (p − k)                                                                  0
+                                                                          (−2ω(p), ), −2p. Moreover we have that e−iω ∈ Ω++        2    iff
+which implies, for p 6= z π2 , that k = 0, π. we have than                eiω ∈ Ω++
+                                                                                  0    iff ω  mod   2π  ∈ (2p, 2ω(p)). This proves   that,
+that ω++ (p, k) ranges between 2ω(p) and 2π − 2ω(p).                      for p ∈ (0, π2 ) Ω++     ++
+                                                                                             0 , Ω f , Ωf
+                                                                                                          +−
+                                                                                                               and Ω++
+                                                                                                                     2  are disjoint sets
+By noticing that ω++ (p, π2 ) = π we have that Ω++   f   is               (see Fig. 1). Following the same derivation it is easy to
+the arc which connects e    i2ω(p)
+                                   and e −i2ω(p)
+                                                 and which                show that e−iω ∈ Ω+−   1   iff ω mod 2π ∈ (−2p, π − 2ω(p +
+                                                                                                                                        7
+
+π
+2 )) and e
+           −iω
+               ∈ Ω+−
+                  −1 iff ω    mod 2π ∈ (2ω(p + π2 ) − π, 2p)        (d)                   d
+                                                                                ∀kI ,        Gz (kI ) 6= 0,    z = 0, 2, ±1,
+which proves item 2 of Lemma 1 for p ∈ (0, π2 ) (see Fig.                                dkI
+1). The same line of derivation can be followed for the
+cases p ∈ (− π2 , 0), p ∈ ( π2 , π) and p ∈ (−π, − π2 ) thus        (e)                                       lim G0 (kI ) = ei2|p| ,
+completing the proof.                                                                                     kI →−∞
+
+                                                                                                           lim G2 (kI ) = e−i2|p| ,
+                                                                                                        kI →−∞
+                                                                                         (
+                    3.   Proof of item 3                                                  e±i2p , p ∈ (− π2 , π2 )
+                                                                         lim G±1 (kI ) =                                      .
+                                                                      kI →−∞              e∓i2p , p ∈ (−π, − π2 ) ∪ ( π2 , π)
+   Let us consider a value e−iω 6= e±i2p .                  From
+item 2 of Lemma 1 we have that the sets
+                                                                    The statement of the lemma is now proved noticing that
+Ω++     +−      ++   ++    +−
+  f , Ωf , Ω0 , Ω2 , Ω−1 , Ω1
+                                  +−
+                                         cover the whole
+                                    ±i2p
+                                                                    the functions Gz (kI ), z = 0, 2, ±1, from the negative half
+unit circle except the points e           and therefore e−iω        line kI ∈ (−∞, 0] to the unit circle S 1 , are injective and
+must belong to one of those sets. We prove the thesis               their ranges are
+for the case e−iω ∈ Ω++     f , and the remaining cases
+can be proved in the same way. If e−iω ∈ Ω++                              • Range of G0 : the smallest arc having −1 and ei2|p|
+                                                             f ,
+then there exists k ∈ Γf such that ω++ (p, k) = ω                           as its extremal points,
+mod 2π.         By direct computation one verify that
+also ω++ (p, −k) = ω−− (p, k − π) = ω−− (p, π − k)                        • Range of G2 : the smallest arc having −1 and
+mod 2π = ω In order to prove that these are the only                        e−i2|p| as its extremal points,
+admissible solutions we must check that k 0 6= ±k implies
+ω++ (p, k 0 ) 6= ω mod 2π By contradiction let us suppose
+that there exists k 0 6= ±k such that ω++ (p, k 0 ) = ω                   • Range of G±1 : the smallest arc having 1 and (de-
+mod 2π. This clearly implies ω++ (p, k 0 ) = ω++ (p, k 0 )                  pending on the value of p) e±i2|p| as its extremal
+since the range of ω++ is smaller than 2π. Let us consider                  points.
+the case 0 < k 0 < k. Since ω++ is smooth, there must
+                                            d
+exists k 00 such that k 0 < k 00 < k and [ dk ω++ ](p, k 0 ) = 0.     Here we provide the proofs of items 1-5 for the case
+By direct computation one proves that this is impossible.           k ∈ Γ0 . The proof for the other three cases k ∈ Γ2 and
+The generalization to the cases −k < k 0 < 0, k < k 0 < π,          k ∈ Γ±1 is almost identical.
+−π < k 0 < k is straightforward. The analysis of the
+cases k 0 = 0, π is easily done by direct computation.
+                                                                                    a.   Proof of item (a) for k ∈ Γ0
+
+
+            Appendix B: Proof of Lemma 2                               If k ∈ Γ0 it is k = ikI , and starting from the definition
+                                                                    of Eq. (12) we can rewrite T+ (p, k, χ) as follows
+  In order to prove the lemma it is convenient to intro-
+                                                                                            A∗0 (p, k) + e−iχ A0 (p, k)
+duce the following function from the negative half line                             T+ =                                .
+kI ∈ (−∞, 0] to the unit circle S 1 :                                                       e−iχ A∗0 (p, k) + A0 (p, k)
+
+                                Az (p, k)                              Let us replace A0 (p, k) with A and T+ (p, k, χ) with T+
+Gz : R− → S 1 ,     Gz (kI ) = −           ,    j = 0, 2, ±1,       in order to lighten the notation. We have that T+ =
+                                A∗z (p, k)                          0 ⇐⇒ A∗ + e−iχ A = 0 ∧ e−iχ A∗ + A 6= 0. First we
+A0 (p, k) = sin(ω(p − ikI )) + ν sin(p − ikI ),                     observe that A 6= 0, indeed A = 0 ⇐⇒ sin(ω(p − ik)) =
+A2 (p, k) = sin(ω(p − ikI )) − ν sin(p − ikI ),                     −n sin(p − ik) =⇒ sin2 (ω(p − ik)) = n2 sin2 (p − ik) =⇒
+                        π                        π                  ν 2 = 1, which is not an admissible value. Accordingly,
+A±1 (p, k) = sin(ω(p ∓ − ikI )) + ν sin(p ∓ − ikI ).                a straightforward computation shows that T+ = 0 ⇐⇒
+                        2                        2
+                                                                    A∗ + e−iχ A = 0 ∧ e−iχ A∗ + A = 0 iff χ = mπ (m ∈ Z).
+The above function allows to study the constraint                   However, T+ (p, k, mπ) = (−1)m 6= 0 and we conclude
+T± (p, k, χ) = 0 through the following five properties              that T+ = 0 if and only if A∗ + e−iχ A = 0 which proves
+                                                                    item (a).
+(a) k ∈ Γ0 : T+ (p, k, χ) = 0 ⇐⇒ G0 (kI ) = eiχ ,
+      k ∈ Γ2 : T+ (p, k, χ) = 0 ⇐⇒ G2 (kI ) = eiχ ,
+                                                                                    b.   Proof of item (b) for k ∈ Γ0
+      k ∈ Γ±1 : T− (p, k, χ) = 0 ⇐⇒ G±1 (kI ) = eiχ ,
+                                                                       Notice that G0 (kI ) = −1 =⇒ A = A∗ which im-
+(b)       G0 (0) = G2 (0) = −1,         G±1 (0) = 1,                plies =[A] = 0 =⇒ =[A2 ] = 0 (where we replaced
+                                                                    A0 (p, k) with A in order to lighten the notation). Since
+(c)   ∀kI , G0 (kI ) 6= 1, G2 (kI ) 6= 1, G±1 (kI ) 6= −1,          we have A2 = 1 − ν 2 + 2ν sin(p − ikI )A the condition
+                                                                                                                                             8
+
+=[A] = 0 ∧ =[A2 ] = 0 implies = sin(p − ikI ) = 0 that                        e.   Proof of item (e) for k ∈ Γ0
+is cos(p) sinh(kI ) = 0 and then kI = 0 ∨ p = π2 + mπ
+(m ∈ Z) which proves item (b).                                    For convenience in the following we replace A0 (p, k)
+                                                               with A. First we rewrite the function G0 as follows
+                                                                                      Z
+                                                                         G0 (kI ) = − ∗ ,
+                                                                                      Z
+               c.    Proof of item (c) for k ∈ Γ0
+                                                                         Z := −iA = e−iω(p−ikI ) − νei(p−ikI ) .
+                                                                  Reminding that in this case it is k ∈ Γ0 it is k =
+   We have G0 (kI ) = 1 =⇒ A = −A∗ which implies               kR + ikI with kR = 0, from Appendix C we have the
+<[A] = 0 =⇒ =[A2 ] = 0 (where we replaced A0 (p, k)            expressions of e−iω(p−ikI ) for kI → −∞:
+with A in order to lighten the notation). Since it is A2 =
+                                                                                               1
+1−ν 2 +2ν sin(p−ikI )A the condition <[A] = 0∧=[A2 ] =              p > 0 =⇒ e−iω(p−ikI ) = e−ip ekI ,
+0 implies < sin(p − ikI ) = 0 that is sin(p) cosh(kI ) =                                       ν
+0. Since the last equality is satisfied only for p = mπ                          −iω(p−ikI )               µ2 −ip kI
+                                                                    p < 0 =⇒ e               = νeip e−kI −   e e .
+(m ∈ Z), which are not admissible values of p, item (c)                                                    ν
+is proved.                                                     from which item (e) follows.
+
+
+                                                                 Appendix C: Asymptotic behaviour of the walk
+                                                                                eigenvalues
+               d.    Proof of item (d) for k ∈ Γ0
+
+                                                                  The one-particle Dirac walk in momentum space is de-
+  We prove that dkdI G0 (kI ) = 0 =⇒ p = m π2 (m ∈ Z),         fined through the matrix valued function of Eq. (1). Since
+which are not admissible values of p. Again we replace         U (p) ∈ SU(2), its eigenvalues are e−iω(p) and eiω(p) where
+A0 (p, k) with A in order to lighten the notation. Consider    ω(p) is the solution of the equation cos ω = ν cos p with
+                                                               positive value. Then we write
+                                              ∗
+                 d             A0 A∗ − AA0                       ω : (−π, π] → [0, π] p 7→ ω(p) = arccos(ν cos p) ≥ 0.
+                    G0 (kI ) =
+                dkI                (A∗ )2
+                                                               For our purposes it is convenient to consider the analytic
+                                                               continuation of U (p) to the subset S := {p ∈ C | <(p) =
+                                                    ∗
+where A0 = ∂kI A and A∗ 0 := ∂kI A∗ = A0 . Then, re-           pR ∈ (−π, π], =(p) = pI ≤ 0} of the complex plane.
+minding that A 6= 0 (see the proof of item (a)) and notic-     The eigenvalues of U (p), with p ∈ S, are e−iω(p) and
+ing that                                                       eiω(p) where now ω(p) = Arccos(ν cos p), and Arccos de-
+                                                               notes the principal value of the multivalued analytic func-
+                       ∗
+       A0 A∗ − AA0 = −i|1 + ω− 0 2
+                                 | sin(ω− + ω+ ),              tion arccos. We notice that Arg(eiω(p) ) = <(ω(p)) =
+                                                               <(Arccos(ν cos p) ∈ [0, π].
+                                    d                             In the two-particles case we introduced the center of
+       ω± := ω(p ± ik), ω 0 (x) :=    ω(x),
+                                   dx                          mass coordinates p, k, representing respectively the total
+                                                               and the relative momentum. While p is always real, k can
+(this can be verified rewriting A as A = sin(ω(p−ik))(1+       have an imaginary part. Let us study the eigenvalues of
+ω 0 (p − ik))) one has                                         U (p − k) in the limit kI → −∞. We have
+                                                                U (p − k) =
+  d                       0
+                                                                                              e2kI            −i µν e−i(p−kR ) ekI
+                                                                                                                                    
+     G0 (kI ) = 0 ⇐⇒ 1 + ω− = 0 ∨ sin(ω− + ω+ ) = 0.
+ dkI                                                            νei(p−kR ) e−kI                                                          ,
+                                                                                       −i µν e−i(p−kR ) ekI       e−i2(p−kR )
+
+Let us investigate the two possible cases. In the first case   and denoting with λ01 ,λ02 the two eigenvalues of
+     0
+1 + ω−  = 0 it must be                                         ν −1 e−i(p−kR ) ekI D(p − k) we have for kI → −∞
+                                                                          µ2 −2i(p−kR ) 2kI        1
+                                                                λ01 = 1 −   2
+                                                                              e        e , λ02 = 2 e−2i(p−kR ) e2kI .
+           2        ν 2 sin2 (p − ikI )                                   ν                       ν
+         0
+        ω− =                            = 1 =⇒ ν = 1,          Accordingly, for kI → −∞, the eigenvalues λ1 and λ2 of
+                    sin2 (ω(p − ikI ))
+                                                               D(p − k) are
+which is not admissible. Let us now consider the case                                                   µ2 −i(p−kR ) kI
+                                                                        λ1 = νei(p−kR ) e−kI −            e         e ,
+sin(ω− + ω+ ) = 0, that is ω− + ω+ = mπ. We have for                                                    ν
+m even cos ω− = cos ω+ =⇒ sin p = 0 ∨ kI = 0. On the                         1 −i(p−kR ) kI
+                                                                        λ2 =   e        e ,
+other hand, if m is odd we have cos ω− = − cos ω+ =⇒                         ν
+cos p = 0. Item (d) is thus proved.                            and noticing that limkI →−∞ Arg(λ1 ) = p − kR , and
+                                                               limkI →−∞ Arg(λ2 ) = −(p − kR ) we get
+                                                                   p − kR > 0 =⇒ e−iω(p−k) = λ2 , eiω(p−k) = λ1 ,
+                                                                   p − kR < 0 =⇒ e−iω(p−k) = λ1 , eiω(p−k) = λ2 .
+
