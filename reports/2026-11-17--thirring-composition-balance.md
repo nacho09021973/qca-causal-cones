@@ -167,3 +167,21 @@ Thirring no-go; F, coexistence and novelty OPEN. Choice between option C
 and stopping the Thirring coexistence line is pending; nothing further is
 authorized by this decision. Sec. 6 refers to the balance as drafted; the
 status change is recorded in `state/CURRENT_STATE.md` with this decision.
+
+## 8. Correction to option C and user decision to stop — 2026-11-17
+
+Correction (author, after a Codex comment pasted by the user): the order
+proposed for option C in Sec. 5 was wrong. Consistent with the user
+criterion of 2026-11-14 (`state/CURRENT_STATE.md:179-180`), a C contract
+must first ask whether a physically well-defined gate exists at one fixed
+chi (pair bridge admitted at that chi, leakage -> 0), and only then
+whether the available gates are universal. Not being a matchgate does not
+imply universality. A positive result under C would rest on two open
+conditions: new pair bridges at that chi (the promoted ones are at
+chi=pi/2 only) and F. Proposed abandonment criterion for such a
+contract: demonstrated nonvanishing asymptotic leakage, or no pair bridge
+admissible at that chi.
+
+User decision: «si» to stopping the Thirring coexistence line. Status
+OPEN; no Thirring no-go. Option C is not chartered; if reopened, it starts
+from the bounded question above under a new contract.

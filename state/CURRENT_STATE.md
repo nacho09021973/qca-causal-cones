@@ -3997,3 +3997,16 @@ corollary keep their promoted scope. No Thirring no-go. F=OPEN;
 COEXISTENCE=OPEN; NOVELTY=OPEN. Pending user choice: option C (chi not
 congruent to pi/2 mod pi, F as premise) or stopping the Thirring
 coexistence line. No contract open; nothing further authorized.
+
+**Thirring coexistence line stopped — 2026-11-17:** user «si» to stopping
+the line after the option-B closure. Status OPEN; no Thirring no-go;
+promoted results keep their frozen scope (A5 conditional on F, flavour,
+co-moving, isolated spectator). Correction recorded in Sec. 8 of
+`reports/2026-11-17--thirring-composition-balance.md`: any reopening via
+option C (chi not congruent to pi/2 mod pi) must first ask whether a
+physically well-defined gate exists at one fixed chi (pair bridge
+admitted, leakage -> 0) before any universality question; non-matchgate
+does not imply universal; abandon on nonvanishing asymptotic leakage or
+no admissible pair bridge at that chi. Requires a new contract.
+F=OPEN; COEXISTENCE=OPEN; NOVELTY=OPEN. No contract open; nothing
+further authorized.
