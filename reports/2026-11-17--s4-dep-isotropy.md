@@ -37,10 +37,17 @@ Verdict: `DEP_ISOTROPIC_IN_DECLARED_L`. At theta = pi/4 and every
 coefficient, satisfies Definition 1 of arXiv:1708.00826v2 (isotropy with
 respect to S_+ = parity +1 generators, L = Klein group of coordinate
 half-turns, U_l = sigma_l ⊗ I) together with their homogeneity condition
-(2). Its isotropic Weyl slope is c_0 = a/sqrt3 (promoted earlier,
-`CURRENT_STATE.md` Sec. 4.1), so within that isotropy notion the s=2
-rigidity (unique Weyl walks, c = causal speed / sqrt3) does not persist at
-s=4.
+(2) as stated there; no other formulation of homogeneity (e.g. the one of
+their Ref. [23]) is certified.
+
+C1-C5 certify the declared isotropy only. The spectral expansion of the
+family, computed separately (`scripts/cert_Aa_s4_counterexample.py`,
+`CURRENT_STATE.md` Sec. 4.1; not recomputed here), gives Weyl slopes
+c_0 = a/sqrt3 about the quasienergies ±pi/4. With c_strict^iso = 1/sqrt3
+(strict exact-support body, same section), this isotropy notion does not
+fix that slope when the internal dimension is four. The comparison is with
+the strict support body, not with a ballistic front defined by
+amplitudes.
 
 ## Second reading of C4
 
@@ -51,6 +58,32 @@ distinct generators in one L-orbit are distinct — the reading given by
 generators must be distinct"). This is a structural restatement, not an
 independent computation; an independent check (another CAS, a person or a
 cross-family reviewer) has not been made.
+
+## Repairs after the sealed Astra review (2026-11-17)
+
+Review `reports/reviews/2026-11-17-s4-dep-isotropy-astra/informe_astra.md`
+(gpt-6-astra, on `251c163`, archived `ed63258`): REPAIR_REQUIRED limited to
+documentation; blocks 1-4 PASS; block 5 OPEN pending the diff between the
+two verifier versions; block 6 REPAIR_REQUIRED. User «si, aplica 1-3».
+
+- R1 (erratum, verifier untouched): the verifier docstring lists "P
+  projectors" among the sanity checks, but no explicit projector check is
+  executed. What is checked is that each Gamma_i is a Hermitian involution;
+  that P_i^± are projectors follows. The verifier bytes are not changed
+  (reviewed file); the erratum is recorded here and in `scripts/README.md`.
+- R2: the diff between the run-1 and run-2 verifier versions,
+  `git diff fdae12c 36fb8fd -- scripts/verify_s4_dep_isotropy.py`, is
+  archived in `reports/reviews/2026-11-17-s4-dep-isotropy-astra-rereview/`
+  for a bounded re-review of block 5.
+- R3: the verdict paragraph now separates the certified isotropy from the
+  separately computed slope, names the strict support body as the
+  comparison, and restricts homogeneity to condition (2) as stated.
+- Also noted by the reviewer and not changed: the `"UNDECIDED"` branch is
+  unreachable in the run-2 code, so "C4 pairs undecided: none" adds no
+  check; `simplify` is used in identity tests (exact, no tolerances).
+- The reviewer's trace witnesses for C1/C4 (tr(J_y [J_x, M_h]) =
+  s_x s_y a^2, etc.) and its derivation of the slope are AI-written and
+  were not checked here; they are not used as evidence.
 
 ## Scope and what is not claimed
 

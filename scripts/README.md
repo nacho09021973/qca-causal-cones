@@ -12,6 +12,11 @@ representation. Run 1 stopped on a solver limitation (retained); run 2
 gives `DEP_ISOTROPIC_IN_DECLARED_L`. Does not certify other theta, groups or
 generating sets, the other assumptions of 1306.1934, novelty, or c_0 itself
 (certified elsewhere for this family).
+Erratum (Astra review, 2026-11-17): the docstring lists "P projectors"
+among sanity checks; none is executed explicitly. Gamma_i are checked to be
+Hermitian involutions, from which P_i^± are projectors. The file is left
+unchanged because it has been reviewed. The "UNDECIDED" branch is
+unreachable.
 
 ```sh
 python3 -B scripts/verify_s4_dep_isotropy.py
