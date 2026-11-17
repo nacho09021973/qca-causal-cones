@@ -44,6 +44,11 @@ Run 2 (0da360c): 30/31; M3 for axis x (C = W ⊗ I) reported FAIL because
 simplify did not reduce exp(±i pi/4) products; retained in
 reports/2026-11-17--s4-af-explicit-map-run2.txt. The zero test now applies
 expand_complex before simplify (all checks); no expectation changed.
+Run 3 (c8867fb): M1-M3 all PASS, then the 580 s timeout during the old M4
+(expand_complex on the full product of exponentials); retained in
+reports/2026-11-17--s4-af-explicit-map-run3.txt. M4 is now the per-factor
+identity that makes the two ordered products equal; no expectation
+changed.
 """
 import sys
 
@@ -157,16 +162,17 @@ try:
         Fi = sp.exp(-sp.I * p) * Pp[i] + sp.exp(sp.I * p) * Pm[i]
         ok(f"M3 G_{i}(p) = C_{i} (I_2 ⊗ F_{i}(p))", z(Gp - Ci * TP(I2, Fi)))
 
-    # M4 composition on the psi lattice, E8: q_i = 2 k_i
-    F = {i: sp.exp(-2 * sp.I * k["xyz".index(i)]) * Pp[i]
-         + sp.exp(2 * sp.I * k["xyz".index(i)]) * Pm[i] for i in "xyz"}
-    U_af = W * F["x"] * F["y"] * F["z"]
-    q = [2 * kk for kk in k]
-    A_fam = W
-    for i, qi in zip("xyz", q):
-        A_fam = A_fam * (sp.cos(qi) * I4 - sp.I * sp.sin(qi) * G[i])
-    ok("M4 W F_x F_y F_z (AF, doubled steps) = family A(k'), q_i = 2 k_i",
-       z((U_af - A_fam).applyfunc(lambda e: sp.expand(e.rewrite(sp.exp)))))
+    # M4 composition on the psi lattice, E8: q_i = 2 k_i. The AF symbol is
+    # W F_x(2k_x) F_y(2k_y) F_z(2k_z) with F_i(q) = e^{-iq} P_i^+ + e^{iq} P_i^-;
+    # the family symbol is W prod_i exp(-i q_i Gamma_i). Both are the same
+    # ordered product once F_i(q) = cos(q) I - i sin(q) Gamma_i is shown for
+    # a symbolic q, which is checked per axis.
+    qq = sp.symbols("q", real=True)
+    for i in "xyz":
+        Fq = sp.exp(-sp.I * qq) * Pp[i] + sp.exp(sp.I * qq) * Pm[i]
+        ok(f"M4 F_{i}(q) = cos q I - i sin q Gamma_{i} (factor of A at q_i = 2 k_i)",
+           z((Fq - (sp.cos(qq) * I4 - sp.I * sp.sin(qq) * G[i])).applyfunc(
+               lambda e: e.rewrite(sp.exp))))
 
     # M5 remark on Eq. (16)
     def zeroth(C):

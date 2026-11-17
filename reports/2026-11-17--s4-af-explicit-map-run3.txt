@@ -1,0 +1,29 @@
+PASS Had unitary
+PASS M1 J' = Pi Q'
+PASS M1 J = Pi Q
+PASS M1 Pi permutation and Pi = X (block swap)
+PASS M2 sigma_x eigenvectors
+PASS M2 T_x eigenvectors
+PASS M2 Gamma_x: two +1 and two -1 eigenvectors
+PASS M2 eigenbasis of Gamma_x unitary
+PASS M2 E_x unitary
+PASS M2 E_x† Q' E_x = I_2 ⊗ P_x^+
+PASS M3 W'_x unitary
+PASS M3 G_x(p) = C_x (I_2 ⊗ F_x(p))
+PASS M2 sigma_y eigenvectors
+PASS M2 T_y eigenvectors
+PASS M2 Gamma_y: two +1 and two -1 eigenvectors
+PASS M2 eigenbasis of Gamma_y unitary
+PASS M2 E_y unitary
+PASS M2 E_y† Q' E_y = I_2 ⊗ P_y^+
+PASS M3 W'_y unitary
+PASS M3 G_y(p) = C_y (I_2 ⊗ F_y(p))
+PASS M2 sigma_z eigenvectors
+PASS M2 T_z eigenvectors
+PASS M2 Gamma_z: two +1 and two -1 eigenvectors
+PASS M2 eigenbasis of Gamma_z unitary
+PASS M2 E_z unitary
+PASS M2 E_z† Q' E_z = I_2 ⊗ P_z^+
+PASS M3 W'_z unitary
+PASS M3 G_z(p) = C_z (I_2 ⊗ F_z(p))
+[note added 2026-11-17] terminated by 'timeout 580' (exit 124) during M4.
