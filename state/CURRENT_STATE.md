@@ -3894,3 +3894,10 @@ isotropic linear term, `conv F = H25` or H25′, in `W_hex^sym` (hence
 for (PH) beyond H25; hexagonal class and M1 class OPEN. The verifier runs
 are the author's and Codex's, not Grok's. Previous status: PRELIMINARY; one
 local non-blind cross-family review; promotion pending.
+
+## Isolated spectator authorization — 2026-11-17
+
+Branch `research/thirring-isolated-spectator`: user «adelante con el siguiente
+trabajo» authorizes the bounded analytic gate
+`theory/THIRRING_ISOLATED_SPECTATOR_GATE.md`. OPEN at preregistration;
+no execution yet. Review, promotion and publication are separate.
