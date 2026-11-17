@@ -4084,3 +4084,14 @@ isotropic s=2 class, 1708.00826 Fig. 1). Before any write-up: forward-
 citation search of 1708.00826, 1306.1934 and AF, the AF regrouping check,
 and a human expert. No write-up, external transmission or publication is
 authorized by this entry. The 2026-11-02 entry is kept as history.
+
+**S4 vs Arrighi-Facchini regrouping gate frozen — 2026-11-17:** user
+«push y redacta el contrato de la reagrupación» (drafting) and «autorizo
+que congeles» (freezing). Contract `theory/S4_AF_REGROUPING_GATE.md`, OPEN
+/ NOT EXECUTED: is a homogeneous fixed-eps specialization of AF's (3+1)
+construction (arXiv:1609.00305) equivalent to the s=4 family at
+theta=pi/4 under the declared equivalences (constant unitary conjugation,
+global phase, orthogonal relabeling, cell regrouping, time-step
+regrouping, constant isometric encoding)? Equivalence would drop the
+restricted novelty candidacy. Execution, review and promotion need
+separate authorization. NOVELTY = OPEN.
