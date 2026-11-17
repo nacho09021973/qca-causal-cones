@@ -3966,3 +3966,10 @@ windows [0,20L], [2 floor(27L/2),28L], intervening proposed free gap.
 Limiting free-centre sequence: (3,1), then (3,-2); (1,-2) crosses later.
 Design status OPEN_MISSING_BOUND: new second-pair bridge, free-gap estimate
 and finite-mu second-window admission needed. DRAFT, not frozen or executed.
+
+**Second-window bridge authorized — 2026-11-17:** user «commit, push y
+ demostracion del puente con lean». Contract
+`theory/THIRRING_3_MINUS2_WINDOW_BRIDGE_GATE.md`, OPEN before execution;
+fixed geometry from 215adec. Analytic/formal attempt authorized, with
+explicit distinction between conditional Lean helpers and physical bridge.
+No review or promotion authorized.
