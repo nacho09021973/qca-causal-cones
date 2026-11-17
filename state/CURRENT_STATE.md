@@ -3918,3 +3918,13 @@ FAILED: authentication_failed, expired login cannot renew; provider reports
 zero input/output tokens. No review report or scientific verdict. Reauthenticate
 with `claude auth login` before retrying. Author result remains PRELIMINARY;
 no promotion. Preserve this attempt unchanged.
+
+**Isolated spectator sealed review — 2026-11-17:** after renewed login,
+Opus claude-opus-5-5 completed one round on `8d02630` (candidate SHA256
+`519acf05033347626c8ca4f7b138b890f323421cf0714123dcf6fd18e7051934`).
+Archive `reports/reviews/2026-11-17-thirring-isolated-spectator-opus-retry/`.
+REPAIR_REQUIRED, M1 provenance only; all new mathematical claims accepted,
+pair bridge explicitly inherited and not reassessed. Author added the
+canonical promotion entry at `953d200` and explicit H_pair in report Sec. 5.
+M1 addressed by author, no re-review or reviewer PASS claimed. PRELIMINARY,
+no promotion; F, coexistence, novelty OPEN. One authorized round completed.

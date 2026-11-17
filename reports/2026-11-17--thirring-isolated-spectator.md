@@ -98,3 +98,25 @@ explicit elementary support lemma. It introduces no new scattering solution.
 It establishes only this isolated spectator geometry, not successive
 collisions or simultaneous three-body scattering. F, COEXISTENCE and
 NOVELTY remain OPEN. Independent review and promotion have not occurred.
+
+## 5. Independent review and provenance repair — 2026-11-17
+
+Sealed Opus review (`claude-opus-5-5`, high), candidate `8d02630`, SHA256
+`519acf05033347626c8ca4f7b138b890f323421cf0714123dcf6fd18e7051934`:
+`reviews/2026-11-17-thirring-isolated-spectator-opus-retry/informe_opus.md`.
+Verdict REPAIR_REQUIRED: M1 concerns provenance only; no mathematical repair.
+The reviewer re-derived the new claims but did not reassess the pair bridge.
+Tool commit `7d111a158edda04a469b59f0d380cd69d35bbdea`. No code executed.
+
+M1 author repair: the promotion source is `state/CURRENT_STATE.md` at
+`953d2000eff627e121a614e4b8fb932d8ccaa6b0`, entry
+“Co-moving packet result promoted — 2026-11-14”. This canonical entry
+supersedes historical no-promotion wording retained in the pair report.
+It was not included in the sealed packet, causing the provenance objection.
+Explicit inherited hypothesis H_pair is
+||U_2^T B_2-F_2^T B_2 V(r_co)||=O(mu^(1/2))+O(mu^(3/4)), T=20L,
+with no extra phase. Its written chain is co-moving report Sec. 3,
+flavour report Sec. 4 and low-energy report Sec. 4. Sections 1-3 here
+prove the spectator extension given H_pair; they do not re-prove that chain.
+M1 addressed by the author using the review's first permitted repair;
+no second review or reviewer-issued PASS is claimed. No promotion.
