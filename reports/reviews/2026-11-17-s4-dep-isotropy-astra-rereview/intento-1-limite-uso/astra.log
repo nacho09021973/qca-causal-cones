@@ -1,0 +1,1181 @@
+OpenAI Codex v0.169.0
+--------
+workdir: /tmp/tmp.tnkuQq5zaN/sello
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1e905-99d8-7ee2-863e-c221f1f1267b
+--------
+user
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Re-revisión acotada. Se adjuntan: tu revisión anterior (informe_astra.md);
+el informe reparado 2026-11-17--s4-dep-isotropy.md; el diff entre las
+versiones del verificador usadas en las ejecuciones 1 y 2
+(verifier_fdae12c_to_36fb8fd.diff); el verificador actual; y
+scripts/README.md (contiene la fe de erratas R1). No tienes herramientas:
+no ejecutes, edites ni navegues. No reabras los bloques 1-4 salvo que las
+reparaciones introduzcan un error nuevo.
+
+Dictámenes separados PASS / REPAIR_REQUIRED / OPEN:
+
+A. BLOQUE 5. Con el diff, ¿es el cambio entre las ejecuciones 1 y 2 solo
+   un cambio de método (cálculo de conjuntos de ceros) sin cambio de
+   expectativas, de tareas C1-C5 ni de la lógica de veredicto?
+B. R1. ¿Es aceptable registrar la discrepancia de la cabecera del
+   verificador como fe de erratas en el informe y en scripts/README.md,
+   sin cambiar los bytes del verificador revisado? ¿Es correcta la
+   redacción?
+C. R3. ¿Separa ahora el párrafo del veredicto la isotropía certificada de
+   la pendiente obtenida aparte, con su procedencia, y nombra el cuerpo de
+   soporte estricto como término de comparación? ¿Restringe la
+   homogeneidad a la condición (2)?
+D. ERRORES NUEVOS. ¿Introducen las reparaciones alguna afirmación nueva no
+   sostenida?
+
+Termina con un dictamen global.
+
+=== DOCUMENT 1: informe_astra.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ 7d111a158edda04a469b59f0d380cd69d35bbdea; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: cli_exit_0 (estado operativo, no validación del contenido)
+modelo: gpt-6-astra, esfuerzo: high, vía: codex exec sellado (codex-cli 0.169.0)
+inicio: 2026-11-17T10:13:39Z  fin: 2026-11-17T10:18:21Z
+documento: /home/ignac/qca-causal-cones/reports/2026-11-17--s4-dep-isotropy.md ; último commit observado: 251c163 ; sha256 de la copia enviada 1515bce1da3b18255b58e2d3f54bb08474533e2fdabf894d548b7dbf9f02eb8d
+documento: /home/ignac/qca-causal-cones/theory/S4_DEP_ISOTROPY_GATE.md ; último commit observado: 9188755 ; sha256 de la copia enviada 656add33876586db29e8413e67e587543a029ff95f4022dc02d304920eace259
+documento: /home/ignac/qca-causal-cones/theory/S4_STRICT_CONE_COUNTEREXAMPLE.md ; último commit observado: 1dae941 ; sha256 de la copia enviada bc15165e1acb426884018860a78388facc7b98647eefb914e4f2bb2449f47d7c
+documento: /home/ignac/qca-causal-cones/scripts/verify_s4_dep_isotropy.py ; último commit observado: 36fb8fd ; sha256 de la copia enviada 03f8ffb7d9396d029d35fb693d21d09c38651644acc42510672d0de0d08523df
+documento: /home/ignac/qca-causal-cones/reports/2026-11-17--s4-dep-isotropy-run1.txt ; último commit observado: 36fb8fd ; sha256 de la copia enviada 3dd0f133fff2074396309269e31078d62d9e5c5b0ecc7488fd45da0c60b69981
+documento: /home/ignac/qca-causal-cones/reports/2026-11-17--s4-dep-isotropy-run2.txt ; último commit observado: 251c163 ; sha256 de la copia enviada 1ff336e3affa437eb96f8d9b717bbd1ee8d66f04c59f98db433844f9ae316385
+documento: /home/ignac/qca-causal-cones/sources/1708.00826v2.pdf ; último commit observado: f74018f ; sha256 de la copia enviada dc4107946e6013640dd225bfd6792f8ff4be9cae48d4c9763a7d6da57bb91c81
+entrada_astra.txt sha256 e4f0d590f7d4dc46b20fa1362ba9aa42223992c891da5bb44c8be743ad9c2ef2
+respuesta sha256 c04ad1b0c580466e7ae6abe688e9fa9ff33df7391f2c73ea3fe30bde09b622ae
+-->
+
+La conclusión matemática de isotropía se sostiene: puede comprobarse algebraicamente con las definiciones adjuntas, sin depender del `PASS` del script. Hay una corrección documental menor y una limitación de trazabilidad entre ejecuciones.
+
+Esta revisión usa exclusivamente el material pegado. Las referencias a páginas corresponden al texto extraído adjunto; no he consultado el PDF ni ejecutado el verificador.
+
+1. **FIDELIDAD A LA FUENTE — PASS.**
+
+   El contrato reproduce correctamente la Definición 1 y la condición (2), separadas en la fuente —documento 7, p. 2—. También incorpora la exigencia previa de coeficientes no nulos.
+
+   Las condiciones que podrían quedar implícitas se cumplen aquí:
+
+   - **Automorfismos del grafo:** las medias vueltas son aplicaciones lineales invertibles que preservan el retículo generado por los cuatro vectores de paridad positiva y permutan esos generadores. Por tanto, preservan las aristas dirigidas y su coloreado mediante una permutación global.
+   - **Orden de los generadores:** todos tienen orden infinito. La transitividad exigida sobre cada \(S_+^n\) se reduce aquí a la transitividad sobre todo \(S_+\).
+   - **Elección de \(S_+\):** es el tetraedro
+     \[
+     \{(1,1,1),(1,-1,-1),(-1,1,-1),(-1,-1,1)\}/\sqrt3,
+     \]
+     cuyos elementos suman cero. Coincide con la presentación tetraédrica admitida para el BCC —p. 6, figura 1; p. 14—. El retículo generado es abstractamente \(\mathbb Z^3\); no debe confundirse con las coordenadas cartesianas enteras estándar.
+   - **Tratamiento de \(S_-\):** \(S_-=-S_+\), y \(l(-h)=-l(h)\). C2 verifica también sus coeficientes, cubriendo la covarianza completa de la ecuación (4). No se necesita imponer \(A_{-h}=A_h^\dagger\).
+   - **Fidelidad proyectiva:** ningún \(U_x,U_y,U_z\) es escalar y sus clases módulo fases son distintas. La representación es fiel también en sentido proyectivo.
+   - **Unitariedad del walk:** se obtiene del producto de exponenciales de involuciones hermíticas. La comprobación únicamente en \(k=0\) no bastaría, pero la construcción proporciona la prueba para todo \(k\).
+
+   No falta una exigencia de irreducibilidad de \(U\): la Definición 1 no la impone. Tampoco constituye un incumplimiento que \(\sum_h A_h=W\neq I\): la fuente admite multiplicar por una unitaria que conmute con la representación —pp. 3–4—.
+
+   El informe afirma satisfacer específicamente la condición (2). Eso es correcto; no debe ampliarse a una certificación de cualquier formulación adicional de homogeneidad mencionada en la referencia [23].
+
+2. **FAMILIA — PASS.**
+
+   La reconstrucción coincide con las secciones 2–4 del documento 3:
+
+   \[
+   T_x=b\tau_x+a\tau_z,\quad
+   T_y=b\tau_y+a\tau_z,\quad
+   T_z=-b\tau_x+a\tau_z.
+   \]
+
+   `TP(SIG[i], T[i])` mantiene el orden \(\sigma\otimes\tau\); `W` tiene las fases correctas para \(\theta=\pi/4\); y el producto de proyectores conserva el orden \(x,y,z\).
+
+   Con la convención declarada,
+   \[
+   e^{-iq_i\Gamma_i}=\sum_{s_i=\pm1}e^{-is_iq_i}P_i^{s_i},
+   \]
+   el coeficiente de \(e^{-ik\cdot h_s}\) es exactamente \(WP_x^{s_x}P_y^{s_y}P_z^{s_z}\). No hay inversión accidental de signos. La ausencia del factor \(1/\sqrt3\) en las claves del diccionario es inocua para C1–C5: esas claves representan etiquetas de desplazamiento, no cálculos métricos.
+
+   La acción utilizada en C2 también es correcta:
+   \[
+   U_l\Gamma_iU_l^\dagger=
+   \begin{cases}
+   \Gamma_i,&i=l,\\
+   -\Gamma_i,&i\ne l.
+   \end{cases}
+   \]
+   No se permutan los factores del producto. Además, estas rotaciones satisfacen \(l^{-1}=l=l^T\), por lo que aquí no hay discrepancia entre la acción sobre \(k\) y sobre los desplazamientos.
+
+3. **MÉTODO EXACTO DE C1 Y C4 — PASS.**
+
+   La sustitución por \(M_h\) es legítima:
+   \[
+   A_h=WM_h,\qquad [U_l,A_h]=W[U_l,M_h].
+   \]
+   Basta que \(W\) sea invertible y conmute con \(U_l\); el script comprueba ambas propiedades mediante su unitariedad y los tres conmutadores.
+
+   La parametrización es biyectiva sobre el arco solicitado. Su inversa es
+   \[
+   t=\frac{b}{1+a}\in(0,1).
+   \]
+   No se pierde ninguna rama compatible con \(0<a<1,\ b>0\).
+
+   Las entradas de \(M_h\) y de sus conmutadores son polinomios en \(a,b\) con coeficientes en \(\mathbb Q(i)\). Después de sustituir, puede usarse como denominador común
+   \[
+   8(1+t^2)^3,
+   \]
+   que no se anula en el intervalo real. Por tanto, pasar a numeradores no introduce ni elimina ceros allí.
+
+   Para \(t\) real, un numerador complejo se anula exactamente cuando se anulan sus partes real e imaginaria. El mcd de todos esos polinomios tiene precisamente sus ceros comunes. Los casos de polinomios nulos y mcd constante están tratados correctamente.
+
+   **Sobre `simplify` y las comparaciones:** sí se usa `simplify`, especialmente en `red` y `mzero`. No sería correcto describir todo el verificador como independiente de esa función. Sin embargo, las identidades se evalúan simbólicamente, sin tolerancias numéricas. El `float` aparece únicamente al ordenar resultados excepcionales, después de decidir su pertenencia al intervalo.
+
+   Hay una limitación de diseño: `zeros_in_domain` nunca devuelve `"UNDECIDED"`, de modo que la línea que imprime «pairs undecided: none» no aporta una comprobación adicional. Tampoco existe una rama explícita para una comparación de raíces que quedase sin resolver. Esto no refuta el resultado de esta familia, que admite el siguiente certificado directo.
+
+   **Segunda vía algebraica para C1 y C4.** Escribiendo \(J_i=\sigma_i\otimes I\), del producto definido se obtiene
+   \[
+   \operatorname{tr}(J_zM_h)=\frac{i}{2}s_xs_y a^2,\qquad
+   \operatorname{tr}(J_xM_h)=\frac{i}{2}s_ys_z a^2.
+   \]
+   Basta usar \(\operatorname{tr}(T_xT_y)=\operatorname{tr}(T_yT_z)=2a^2\) y las identidades de Pauli.
+
+   La primera expresión prueba \(M_h\neq0\). Por ciclicidad de la traza, además:
+   
+   | Conmutador | Testigo escalar |
+   |---|---|
+   | \([J_x,M_h]\) | \(\operatorname{tr}(J_y[J_x,M_h])=s_xs_y a^2\) |
+   | \([J_y,M_h]\) | \(\operatorname{tr}(J_x[J_y,M_h])=-s_xs_y a^2\) |
+   | \([J_z,M_h]\) | \(\operatorname{tr}(J_y[J_z,M_h])=-s_ys_z a^2\) |
+
+   Todos son no nulos para \(0<a<1\). Así quedan comprobados C1 y los 24 casos de C4 por una vía distinta del cálculo de raíces, sin asumir que las salidas del programa son correctas.
+
+4. **C2, C3 Y C5 — PASS.**
+
+   Las 24 identidades de C2 cubren los tres elementos no triviales y los ocho desplazamientos. Los ocho casos de la identidad son tautológicos.
+
+   En C3, comprobar una órbita por conjunto es suficiente: cada órbita calculada coincide con el conjunto completo. Las medias vueltas preservan la paridad y ningún elemento no trivial fija una terna con todas sus coordenadas iguales a \(\pm1\).
+
+   En C5 se comprueban los seis productos ordenados de elementos no triviales distintos y los tres cuadrados. Los productos con la identidad son inmediatos. Las fases son \(\pm i\) para ejes distintos y \(1\) para los cuadrados. La condición de cociclo se sigue de la asociatividad de las matrices; no hace falta una comprobación separada.
+
+   La unitariedad y fidelidad de los \(U_l\), y la extensión de las permutaciones a automorfismos del grafo, no aparecen como pruebas explícitas separadas en el código, pero quedan establecidas por las matrices y aplicaciones concretas anteriores.
+
+   La segunda lectura de C4 también es correcta:
+   \[
+   [U_l,M_h]=0\iff M_{l(h)}=M_h.
+   \]
+   Como reconoce el informe, esta equivalencia por sí sola no constituye una segunda comprobación.
+
+5. **EJECUCIONES — OPEN para la comparación histórica; PASS para su coherencia matemática.**
+
+   La primera salida registra una excepción durante la resolución simbólica y no contiene un veredicto final. No demuestra un fallo de isotropía.
+
+   El método de la segunda versión conserva exactamente la pregunta matemática: quitar el factor invertible \(W\) y parametrizar biyectivamente el dominio no cambia los conjuntos de ceros buscados. Las expectativas del código adjunto coinciden con C1–C5 del contrato.
+
+   Sin embargo, **no se adjunta el código de la ejecución 1 ni el diff entre versiones**. Por tanto, no puede certificarse que esos fueran los únicos cambios. La afirmación histórica «no expectation changed», los commits y su orden temporal permanecen **[UNVERIFIED]** en esta revisión.
+
+   Para cerrar este punto bastaría adjuntar el diff entre las dos versiones comprometidas. No encuentro ninguna contradicción entre las dos salidas y el resultado matemático comprobado arriba.
+
+6. **ALCANCE — REPAIR_REQUIRED menor, documental.**
+
+   El informe distingue los resultados C1–C5 de la pendiente tomada de un trabajo anterior. No afirma novedad, isotropía cúbica, otros grupos ni otros valores de \(\theta\).
+
+   Además, la pendiente **sí puede comprobarse con el material adjunto**, aunque no la calcula este verificador. En el doblete \(\tau_z=+1\),
+   \[
+   P_+\Gamma_iP_+=a\sigma_iP_+,
+   \]
+   y la expansión alrededor de \(k=0\) da
+   \[
+   P_+A(k)P_+
+   =e^{-i\theta}\left(I_2-\frac{ia}{\sqrt3}\,k\cdot\sigma\right)
+   +O(|k|^2).
+   \]
+   La separación espectral en \(\theta=\pi/4\) permite obtener así la pendiente \(a/\sqrt3\). No hace falta aceptar como prueba la supuesta promoción en `CURRENT_STATE.md`.
+
+   La afirmación sobre la pérdida de rigidez es defendible para estos dobletes de Floquet y con la normalización espacial declarada. Conviene explicitar que compara esa pendiente con el cuerpo de soporte estricto; no demuestra una afirmación sobre un frente balístico definido por amplitudes.
+
+   **La discrepancia documental concreta** está en la cabecera del verificador: anuncia comprobaciones de proyectores `P`, pero no las ejecuta explícitamente. Su propiedad de proyector se deduce de las comprobaciones de hermiticidad e involución de \(\Gamma_i\).
+
+   **Reparación mínima:** sustituir esa descripción por «se comprueba que \(\Gamma_i\) son involuciones hermíticas; de ello se deduce que \(P_i^\pm\) son proyectores». No hace falta añadir pruebas redundantes.
+
+   Para precisar también la conclusión física, recomiendo esta formulación:
+
+   > C1–C5 certifican la isotropía declarada. La expansión espectral de la familia, calculada separadamente, da pendientes Weyl \(c_0=a/\sqrt3\) alrededor de las cuasienergías \(\pm\pi/4\). Con \(c_{\rm strict}^{\rm iso}=1/\sqrt3\), esta noción de isotropía no fija esa pendiente al pasar a dimensión interna cuatro.
+
+**Dictamen global: REPAIR_REQUIRED, limitado a documentación.** La conclusión matemática `DEP_ISOTROPIC_IN_DECLARED_L` recibe **PASS** para todo \(0<a<1\). La comparación histórica íntegra entre las ejecuciones permanece **OPEN** hasta disponer del diff.
+=== DOCUMENT 2: 2026-11-17--s4-dep-isotropy.md ===
+
+# S4 family: isotropy in the sense of D'Ariano-Erba-Perinotti — execution
+
+2026-11-17. Author: Claude Code (Claude Opus 5.5). Contract
+`theory/S4_DEP_ISOTROPY_GATE.md`, preregistration commit `9188755`.
+User «autorizo ejecutar». Branch `research/thirring-isolated-spectator`.
+Status: author verdict **`DEP_ISOTROPIC_IN_DECLARED_L`**, PRELIMINARY,
+no independent review, no promotion. NOVELTY = OPEN.
+
+## Execution record
+
+- Verifier `scripts/verify_s4_dep_isotropy.py` committed before running
+  (`fdae12c`). Run 1 stopped with `NotImplementedError` in `sp.solve`
+  after C1-C3 PASS (tooling; no verdict). Output retained:
+  `reports/2026-11-17--s4-dep-isotropy-run1.txt`.
+- Method fix committed before run 2 (`36fb8fd`): zero sets computed on
+  M_h = P_x^{s_x} P_y^{s_y} P_z^{s_z}, since A_h = W M_h with W unitary and
+  commuting with every U_l (both checked as sanity), so A_h = 0 iff M_h = 0
+  and [U_l, A_h] = W [U_l, M_h]; the arc a^2+b^2=1, 0<a<1, b>0 is
+  parametrized by a = (1-t^2)/(1+t^2), b = 2t/(1+t^2), t in (0,1); common
+  zeros = real roots in (0,1) of the gcd of the real and imaginary parts of
+  the numerators (exact, SymPy real_roots). No expectation changed.
+- Run 2: all sanity checks PASS; output
+  `reports/2026-11-17--s4-dep-isotropy-run2.txt`. SymPy 1.14.0.
+
+## Results (run 2)
+
+| Task | Result |
+| --- | --- |
+| C1 A_h ≠ 0, eight h, all a in (0,1) | PASS, no zeros |
+| C2 U_l A_h U_l† = A_{l(h)}, 24 identities | PASS |
+| C3 L transitive on S_+ and S_-, no fixed generator | PASS |
+| C4 [U_l, A_h] ≠ 0, 24 pairs | no pair identically zero; no a in (0,1) where any commutator vanishes |
+| C5 U projective representation of L | PASS |
+
+Verdict: `DEP_ISOTROPIC_IN_DECLARED_L`. At theta = pi/4 and every
+0 < a < 1, the s=4 family on the eight BCC displacements, with no on-site
+coefficient, satisfies Definition 1 of arXiv:1708.00826v2 (isotropy with
+respect to S_+ = parity +1 generators, L = Klein group of coordinate
+half-turns, U_l = sigma_l ⊗ I) together with their homogeneity condition
+(2) as stated there; no other formulation of homogeneity (e.g. the one of
+their Ref. [23]) is certified.
+
+C1-C5 certify the declared isotropy only. The spectral expansion of the
+family, derived separately (all-parameter analytic proof in
+`theory/S4_STRICT_CONE_COUNTEREXAMPLE.md`, exact spot checks on a six-point
+a panel in `scripts/cert_Aa_s4_counterexample.py`; status
+COUNTEREXAMPLE_VERIFIED, independent review PASS, `CURRENT_STATE.md` Sec. 4.1;
+not recomputed here), gives Weyl slopes
+c_0 = a/sqrt3 about the quasienergies ±pi/4. With c_strict^iso = 1/sqrt3
+(strict exact-support body, same section), this isotropy notion does not
+fix that slope when the internal dimension is four. The comparison is with
+the strict support body, not with a ballistic front defined by
+amplitudes.
+
+## Second reading of C4
+
+By C2, U_l M_h U_l† = M_{l(h)}, so [U_l, M_h] = 0 iff M_{l(h)} = M_h.
+Condition (2) is therefore equivalent here to: transition matrices of
+distinct generators in one L-orbit are distinct — the reading given by
+1708.00826 itself ("two transition matrices associated to different
+generators must be distinct"). This is a structural restatement, not an
+independent computation; an independent check (another CAS, a person or a
+cross-family reviewer) has not been made.
+
+## Repairs after the sealed Astra review (2026-11-17)
+
+Review `reports/reviews/2026-11-17-s4-dep-isotropy-astra/informe_astra.md`
+(gpt-6-astra, on `251c163`, archived `ed63258`): REPAIR_REQUIRED limited to
+documentation; blocks 1-4 PASS; block 5 OPEN pending the diff between the
+two verifier versions; block 6 REPAIR_REQUIRED. User «si, aplica 1-3».
+
+- R1 (erratum, verifier untouched): the verifier docstring lists "P
+  projectors" among the sanity checks, but no explicit projector check is
+  executed. What is checked is that each Gamma_i is a Hermitian involution;
+  that P_i^± are projectors follows. The verifier bytes are not changed
+  (reviewed file); the erratum is recorded here and in `scripts/README.md`.
+- R2: the diff between the run-1 and run-2 verifier versions,
+  `git diff fdae12c 36fb8fd -- scripts/verify_s4_dep_isotropy.py`, is
+  archived in `reports/reviews/2026-11-17-s4-dep-isotropy-astra-rereview/`
+  for a bounded re-review of block 5.
+- R3: the verdict paragraph now separates the certified isotropy from the
+  separately computed slope, names the strict support body as the
+  comparison, and restricts homogeneity to condition (2) as stated.
+- Also noted by the reviewer and not changed: the `"UNDECIDED"` branch is
+  unreachable in the run-2 code, so "C4 pairs undecided: none" adds no
+  check; `simplify` is used in identity tests (exact, no tolerances).
+- The reviewer's trace witnesses for C1/C4 (tr(J_y [J_x, M_h]) =
+  s_x s_y a^2, etc.) and its derivation of the slope are AI-written and
+  were not checked here; they are not used as evidence.
+
+## Scope and what is not claimed
+
+- Only theta = pi/4, this L, this U and this generating set; the family
+  definition of `theory/S4_STRICT_CONE_COUNTEREXAMPLE.md` (`1dae941`).
+- Definition 1 and condition (2) only; other assumptions of 1306.1934
+  (e.g. its quasi-isometric embedding discussion) are not examined.
+  Full cubic isotropy, Lorentz covariance and massive sectors: not claimed.
+- Prior art: open and targeted searches and the original checks are in
+  `investigaciones/2026-11-17-c0-causal-body-prior-art/comprobacion.md`;
+  the statement was not found there, which does not establish absence.
+  NOVELTY = OPEN.
+- Line criterion of the contract: not triggered (C4 holds for every a).
+
+=== DOCUMENT 3: verifier_fdae12c_to_36fb8fd.diff ===
+
+diff --git a/scripts/verify_s4_dep_isotropy.py b/scripts/verify_s4_dep_isotropy.py
+index 28cb963..f3d56b3 100644
+--- a/scripts/verify_s4_dep_isotropy.py
++++ b/scripts/verify_s4_dep_isotropy.py
+@@ -19,6 +19,12 @@ W unitary, eight coefficients sum to a unitary symbol at k = 0.
+ 
+ Exit status: 1 on an exception or a failed sanity check. Otherwise 0, with
+ the contract verdict printed (a C-task failing is an outcome, not a crash).
++
++Run 1 (2026-11-17, fdae12c) stopped with NotImplementedError in sp.solve
++after C1-C3 PASS; output retained in
++reports/2026-11-17--s4-dep-isotropy-run1.txt. Zero sets are now computed
++on M_h (A_h = W M_h, W unitary and commuting with every U_l, both checked)
++by an exact rational parametrization of the arc; no expectation changed.
+ """
+ import itertools
+ import sys
+@@ -27,6 +33,7 @@ import sympy as sp
+ from sympy.physics.quantum import TensorProduct as TP
+ 
+ a, b = sp.symbols("a b", positive=True)
++tt = sp.symbols("t", positive=True)
+ REL = a**2 + b**2 - 1
+ I2 = sp.eye(2)
+ sx = sp.Matrix([[0, 1], [1, 0]])
+@@ -41,7 +48,8 @@ P = {(i, s): (I4 + s * G[i]) / 2 for i in "xyz" for s in (1, -1)}
+ W = TP(I2, sp.diag(sp.exp(-sp.I * sp.pi / 4), sp.exp(sp.I * sp.pi / 4)))
+ 
+ H = list(itertools.product((1, -1), repeat=3))
+-A = {h: W * P[("x", h[0])] * P[("y", h[1])] * P[("z", h[2])] for h in H}
++M = {h: P[("x", h[0])] * P[("y", h[1])] * P[("z", h[2])] for h in H}
++A = {h: W * M[h] for h in H}
+ SPLUS = [h for h in H if h[0] * h[1] * h[2] == 1]
+ SMINUS = [h for h in H if h[0] * h[1] * h[2] == -1]
+ 
+@@ -65,25 +73,35 @@ def mzero(M):
+ 
+ 
+ def zeros_in_domain(entries):
+-    """Real (a,b) with 0<a<1, b>0, a^2+b^2=1, where all entries vanish."""
+-    eqs = [REL]
++    """Exact zero set on 0<a<1, b>0 of a list of entries in Q(i)[a,b].
++
++    Rational parametrization a = (1-t^2)/(1+t^2), b = 2t/(1+t^2), t in (0,1)
++    (a bijection onto the arc). Real and imaginary parts of each numerator
++    are polynomials in t over QQ; their gcd carries the common zeros, located
++    exactly by real_roots (Sturm) and mapped back to a.
++    Returns "ALL", or a sorted list of exact a-values (possibly empty).
++    """
++    polys = []
+     for x in entries:
+-        x = sp.expand_complex(red(x))
+-        for part in (sp.re(x), sp.im(x)):
++        x = sp.together(sp.expand(x).subs({a: (1 - tt**2) / (1 + tt**2),
++                                           b: 2 * tt / (1 + tt**2)}))
++        num = sp.expand(sp.numer(x))
++        for part in (sp.re(num), sp.im(num)):
+             part = sp.expand(part)
+             if part != 0:
+-                eqs.append(part)
+-    if len(eqs) == 1:
++                polys.append(sp.Poly(part, tt, domain="QQ"))
++    if not polys:
+         return "ALL"
+-    sols = sp.solve(eqs, [a, b], dict=True)
++    g = polys[0]
++    for q in polys[1:]:
++        g = sp.gcd(g, q)
++    if g.degree() <= 0:
++        return []
+     out = []
+-    for s in sols:
+-        av, bv = s.get(a), s.get(b)
+-        if av is None or bv is None:
+-            return "UNDECIDED"
+-        if av.is_real and bv.is_real and (0 < av) == True and (av < 1) == True and (bv > 0) == True:
+-            out.append(sp.nsimplify(av))
+-    return sorted(set(out), key=lambda v: float(v))
++    for r in sp.Poly(g, tt).real_roots():
++        if (r > 0) == True and (r < 1) == True:
++            out.append(sp.simplify((1 - r**2) / (1 + r**2)))
++    return out
+ 
+ 
+ sanity = []
+@@ -100,12 +118,14 @@ try:
+         sanity_check(f"Gamma_{i} Hermitian", mzero(G[i] - G[i].H))
+         sanity_check(f"Gamma_{i}^2 = I", mzero(G[i] * G[i] - I4))
+     sanity_check("W unitary", mzero(W * W.H - I4))
++    for l in "xyz":
++        sanity_check(f"U_{l} W = W U_{l}", mzero(U[l] * W - W * U[l]))
+     sanity_check("sum_h A_h = W (k=0 symbol)", mzero(sum((A[h] for h in H), sp.zeros(4)) - W))
+ 
+     # C1
+     c1_zero_sets = {}
+     for h in H:
+-        c1_zero_sets[h] = zeros_in_domain(list(A[h]))
++        c1_zero_sets[h] = zeros_in_domain(list(M[h]))  # A_h = W M_h, W unitary
+     c1 = all(z == [] for z in c1_zero_sets.values())
+     results["C1"] = c1
+     print(("PASS " if c1 else "FAIL ") + "C1 A_h != 0 on (0,1) for all eight h;",
+@@ -128,7 +148,7 @@ try:
+     c4_zero_sets = {}
+     for l in "xyz":
+         for h in H:
+-            comm = U[l] * A[h] - A[h] * U[l]
++            comm = U[l] * M[h] - M[h] * U[l]  # [U_l, A_h] = W [U_l, M_h]
+             c4_zero_sets[(l, h)] = zeros_in_domain(list(comm))
+     bad_all = [k for k, z in c4_zero_sets.items() if z == "ALL"]
+     undecided = [k for k, z in c4_zero_sets.items() if z == "UNDECIDED"]
+
+=== DOCUMENT 4: verify_s4_dep_isotropy.py ===
+
+#!/usr/bin/env python3
+"""S4 family: isotropy in the sense of D'Ariano-Erba-Perinotti (1708.00826).
+
+Contract: theory/S4_DEP_ISOTROPY_GATE.md, frozen at 9188755.
+Family rebuilt from theory/S4_STRICT_CONE_COUNTEREXAMPLE.md Secs. 2-4
+(theta = pi/4, a symbolic in (0,1), b = sqrt(1-a^2) as a positive symbol
+with a^2 + b^2 = 1 imposed). Standalone: no reviewed verifier is imported
+or modified.
+
+Tasks C1-C5 of the contract, all exact:
+  C1  A_h != 0 for the eight BCC displacements, for every a in (0,1);
+  C2  U_l A_h U_l^dagger = A_{l(h)} for l in the Klein group L;
+  C3  L transitive on S_+ and on S_-; no nontrivial l fixes any h;
+  C4  [U_l, A_h] != 0 for the 3 x 8 pairs; set of a in (0,1) where any
+      commutator vanishes;
+  C5  U_l U_m = phase * U_{lm} (projective representation).
+Sanity checks (fail closed): Gamma_i Hermitian involutions, P projectors,
+W unitary, eight coefficients sum to a unitary symbol at k = 0.
+
+Exit status: 1 on an exception or a failed sanity check. Otherwise 0, with
+the contract verdict printed (a C-task failing is an outcome, not a crash).
+
+Run 1 (2026-11-17, fdae12c) stopped with NotImplementedError in sp.solve
+after C1-C3 PASS; output retained in
+reports/2026-11-17--s4-dep-isotropy-run1.txt. Zero sets are now computed
+on M_h (A_h = W M_h, W unitary and commuting with every U_l, both checked)
+by an exact rational parametrization of the arc; no expectation changed.
+"""
+import itertools
+import sys
+
+import sympy as sp
+from sympy.physics.quantum import TensorProduct as TP
+
+a, b = sp.symbols("a b", positive=True)
+tt = sp.symbols("t", positive=True)
+REL = a**2 + b**2 - 1
+I2 = sp.eye(2)
+sx = sp.Matrix([[0, 1], [1, 0]])
+sy = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+sz = sp.Matrix([[1, 0], [0, -1]])
+I4 = sp.eye(4)
+
+T = {"x": b * sx + a * sz, "y": b * sy + a * sz, "z": -b * sx + a * sz}
+SIG = {"x": sx, "y": sy, "z": sz}
+G = {i: TP(SIG[i], T[i]) for i in "xyz"}
+P = {(i, s): (I4 + s * G[i]) / 2 for i in "xyz" for s in (1, -1)}
+W = TP(I2, sp.diag(sp.exp(-sp.I * sp.pi / 4), sp.exp(sp.I * sp.pi / 4)))
+
+H = list(itertools.product((1, -1), repeat=3))
+M = {h: P[("x", h[0])] * P[("y", h[1])] * P[("z", h[2])] for h in H}
+A = {h: W * M[h] for h in H}
+SPLUS = [h for h in H if h[0] * h[1] * h[2] == 1]
+SMINUS = [h for h in H if h[0] * h[1] * h[2] == -1]
+
+LMAP = {"id": lambda h: h,
+        "x": lambda h: (h[0], -h[1], -h[2]),
+        "y": lambda h: (-h[0], h[1], -h[2]),
+        "z": lambda h: (-h[0], -h[1], h[2])}
+U = {"id": I4, "x": TP(sx, I2), "y": TP(sy, I2), "z": TP(sz, I2)}
+
+
+def red(e):
+    """Reduce modulo b^2 = 1 - a^2 and simplify."""
+    e = sp.expand(e)
+    e = sp.expand(e.subs(b**2, 1 - a**2))
+    e = sp.expand(e.subs(b**3, b * (1 - a**2)).subs(b**4, (1 - a**2) ** 2))
+    return sp.simplify(e)
+
+
+def mzero(M):
+    return all(red(x) == 0 for x in M)
+
+
+def zeros_in_domain(entries):
+    """Exact zero set on 0<a<1, b>0 of a list of entries in Q(i)[a,b].
+
+    Rational parametrization a = (1-t^2)/(1+t^2), b = 2t/(1+t^2), t in (0,1)
+    (a bijection onto the arc). Real and imaginary parts of each numerator
+    are polynomials in t over QQ; their gcd carries the common zeros, located
+    exactly by real_roots (Sturm) and mapped back to a.
+    Returns "ALL", or a sorted list of exact a-values (possibly empty).
+    """
+    polys = []
+    for x in entries:
+        x = sp.together(sp.expand(x).subs({a: (1 - tt**2) / (1 + tt**2),
+                                           b: 2 * tt / (1 + tt**2)}))
+        num = sp.expand(sp.numer(x))
+        for part in (sp.re(num), sp.im(num)):
+            part = sp.expand(part)
+            if part != 0:
+                polys.append(sp.Poly(part, tt, domain="QQ"))
+    if not polys:
+        return "ALL"
+    g = polys[0]
+    for q in polys[1:]:
+        g = sp.gcd(g, q)
+    if g.degree() <= 0:
+        return []
+    out = []
+    for r in sp.Poly(g, tt).real_roots():
+        if (r > 0) == True and (r < 1) == True:
+            out.append(sp.simplify((1 - r**2) / (1 + r**2)))
+    return out
+
+
+sanity = []
+results = {}
+
+
+def sanity_check(name, ok):
+    sanity.append((name, bool(ok)))
+    print(("PASS " if ok else "FAIL ") + "[sanity] " + name)
+
+
+try:
+    for i in "xyz":
+        sanity_check(f"Gamma_{i} Hermitian", mzero(G[i] - G[i].H))
+        sanity_check(f"Gamma_{i}^2 = I", mzero(G[i] * G[i] - I4))
+    sanity_check("W unitary", mzero(W * W.H - I4))
+    for l in "xyz":
+        sanity_check(f"U_{l} W = W U_{l}", mzero(U[l] * W - W * U[l]))
+    sanity_check("sum_h A_h = W (k=0 symbol)", mzero(sum((A[h] for h in H), sp.zeros(4)) - W))
+
+    # C1
+    c1_zero_sets = {}
+    for h in H:
+        c1_zero_sets[h] = zeros_in_domain(list(M[h]))  # A_h = W M_h, W unitary
+    c1 = all(z == [] for z in c1_zero_sets.values())
+    results["C1"] = c1
+    print(("PASS " if c1 else "FAIL ") + "C1 A_h != 0 on (0,1) for all eight h;",
+          {h: z for h, z in c1_zero_sets.items() if z != []} or "no zeros")
+
+    # C2
+    c2 = all(mzero(U[l] * A[h] * U[l].H - A[LMAP[l](h)]) for l in "xyz" for h in H)
+    results["C2"] = c2
+    print(("PASS " if c2 else "FAIL ") + "C2 U_l A_h U_l^dagger = A_{l(h)} (24 identities)")
+
+    # C3
+    orbit_plus = {LMAP[l](SPLUS[0]) for l in LMAP}
+    orbit_minus = {LMAP[l](SMINUS[0]) for l in LMAP}
+    c3 = (orbit_plus == set(SPLUS) and orbit_minus == set(SMINUS)
+          and all(LMAP[l](h) != h for l in "xyz" for h in H))
+    results["C3"] = c3
+    print(("PASS " if c3 else "FAIL ") + "C3 transitive on S_+ and S_-, no fixed generator")
+
+    # C4
+    c4_zero_sets = {}
+    for l in "xyz":
+        for h in H:
+            comm = U[l] * M[h] - M[h] * U[l]  # [U_l, A_h] = W [U_l, M_h]
+            c4_zero_sets[(l, h)] = zeros_in_domain(list(comm))
+    bad_all = [k for k, z in c4_zero_sets.items() if z == "ALL"]
+    undecided = [k for k, z in c4_zero_sets.items() if z == "UNDECIDED"]
+    exceptional = sorted({v for z in c4_zero_sets.values() if isinstance(z, list) for v in z},
+                         key=lambda v: float(v))
+    results["C4_all_a_fail_pairs"] = bad_all
+    results["C4_undecided"] = undecided
+    results["C4_exceptional_a"] = exceptional
+    print("C4 pairs with commutator identically zero:", bad_all or "none")
+    print("C4 pairs undecided:", undecided or "none")
+    print("C4 values of a in (0,1) where some commutator vanishes:", exceptional or "none")
+    for k, z in c4_zero_sets.items():
+        if isinstance(z, list) and z:
+            print("   ", k, "->", z)
+
+    # C5
+    prod_table = {("x", "y"): "z", ("y", "z"): "x", ("z", "x"): "y",
+                  ("y", "x"): "z", ("z", "y"): "x", ("x", "z"): "y"}
+    c5 = True
+    for (l, m), n in prod_table.items():
+        M = U[l] * U[m]
+        ratio = None
+        for i in range(4):
+            for j in range(4):
+                if U[n][i, j] != 0:
+                    ratio = sp.simplify(M[i, j] / U[n][i, j])
+                    break
+            if ratio is not None:
+                break
+        c5 = c5 and ratio is not None and sp.Abs(ratio) == 1 and mzero(M - ratio * U[n])
+    c5 = c5 and all(mzero(U[l] * U[l] - I4) for l in "xyz")
+    results["C5"] = c5
+    print(("PASS " if c5 else "FAIL ") + "C5 projective representation of the Klein group")
+except Exception as exc:  # fail closed
+    print("FAIL exception:", repr(exc))
+    sys.exit(1)
+
+if not all(ok for _, ok in sanity):
+    print("FAIL sanity; no verdict")
+    sys.exit(1)
+if undecided:
+    print("VERDICT: none (C4 undecided by exact solver)")
+    sys.exit(1)
+
+base = results["C1"] and results["C2"] and results["C3"] and results["C5"]
+if not (results["C2"] and results["C3"]) or bad_all:
+    verdict = "NOT_DEP_ISOTROPIC_IN_DECLARED_L"
+elif base and not exceptional:
+    verdict = "DEP_ISOTROPIC_IN_DECLARED_L"
+elif base and exceptional:
+    verdict = "DEP_ISOTROPIC_EXCEPT_FINITE_SET"
+else:
+    verdict = "NONE_OF_THE_DECLARED (C1 or C5 failed; see output)"
+print("VERDICT:", verdict)
+sys.exit(0)
+
+=== DOCUMENT 5: README.md ===
+
+# Scripts
+
+## S4 family isotropy in the DEP sense (2026-11-17)
+
+`verify_s4_dep_isotropy.py` certifies tasks C1-C5 of
+[`S4_DEP_ISOTROPY_GATE.md`](../theory/S4_DEP_ISOTROPY_GATE.md) (frozen
+`9188755`) for the s=4 family at theta = pi/4, a symbolic in (0,1):
+nonzero transition matrices, Klein-group covariance with sigma_l ⊗ I,
+transitivity, homogeneity condition (2) of arXiv:1708.00826 with exact zero
+sets (rational arc parametrization, gcd, Sturm roots), projective
+representation. Run 1 stopped on a solver limitation (retained); run 2
+gives `DEP_ISOTROPIC_IN_DECLARED_L`. Does not certify other theta, groups or
+generating sets, the other assumptions of 1306.1934, novelty, or c_0 itself
+(certified elsewhere for this family).
+Erratum (Astra review, 2026-11-17): the docstring lists "P projectors"
+among sanity checks; none is executed explicitly. Gamma_i are checked to be
+Hermitian involutions, from which P_i^± are projectors. The file is left
+unchanged because it has been reviewed. The "UNDECIDED" branch is
+unreachable.
+
+```sh
+python3 -B scripts/verify_s4_dep_isotropy.py
+```
+
+## Prior-art check: Di Molfetta-Arrighi 1D speed (2026-11-17)
+
+`verify_prior_art_dimolfetta_1d_speed.py` supports the source check in
+`investigaciones/2026-11-17-c0-causal-body-prior-art/comprobacion.md`.
+Nine exact SymPy 1.14.0 checks on the massless alpha=0 walk of
+arXiv:1906.04483v2 (Eqs. (1)-(3), Thm III.1 (iii)): unitarity,
+cos Omega(2 steps) = 1 - 2c^2 sin^2 k, low-energy speed c per step, and
+nonzero extreme coefficients (strict causal body [-1,1]) for every 0<c<1.
+Not a gate certificate; does not certify anything beyond that 1D walk, nor
+whether it lies in D'Ariano-Perinotti's isotropy class. Run 1 failed the
+two unitarity checks for a symbol-assumption reason (recorded in the file).
+
+```sh
+python3 -B scripts/verify_prior_art_dimolfetta_1d_speed.py
+```
+
+## Small fixed Gaussian profile algebra (2026-10-31)
+
+`verify_small_gaussian_profile_algebra.py` accompanies the preregistered
+[small Gaussian gate](../theory/H1_SMALL_GAUSSIAN_PROFILE_GATE.md) and its
+[execution](../reports/2026-10-31--h1-small-gaussian-profile.md). It runs
+21 exact SymPy 1.14.0 checks: Gaussian Fourier moments, resource L1
+normalization, channel parity, one abstract noncommuting three-step
+quadratic expansion with the single-coin contribution, positive Hessian
+factorization, geometric moments and power bookkeeping. This is not a
+lattice simulation or finite-N signal scan. The analytic kernel estimate,
+general-N remainder and signal survival remain report proofs pending review;
+the checks do not certify them. The corrected contract is pinned by SHA256.
+
+```sh
+/home/adnac/venvs/torch-gpu/bin/python -B scripts/verify_small_gaussian_profile_algebra.py
+```
+
+No scientific script was present at the initial freeze (`44ad178`).
+
+## IR projection leakage algebra (2026-09-22)
+
+`verify_ir_projection_leakage.py` checks exact algebra for the
+[projection and conditioning derivation](../reports/2026-09-22--ir-projection-leakage-and-conditioning.md):
+rank-two trace norm, conditioning correction, the four original encoders'
+boundary coefficients, radial Fourier constants and the sharp-cutoff kernel.
+Run `python3 -B scripts/verify_ir_projection_leakage.py` (SymPy 1.14.0).
+Fourier/Poisson error estimates remain written, independently unreviewed
+arguments; the script does not certify the asymptotics of the PP observable.
+
+## Exact standard Weyl/Dirac battery
+
+`verify_weyl_dirac_gate.py` implements the
+[pre-execution contract](../reports/2026-09-14--weyl-dirac-gate-contract.md).
+It checks seven standard symbols and their Dirac couplings using exact
+SymPy arithmetic, with no scans or fitted tolerances.
+
+Requirements: Python 3.12 and `sympy==1.14.0` (see `requirements.txt`).
+Run from the repository root:
+
+```sh
+python3 scripts/verify_weyl_dirac_gate.py
+python3 scripts/verify_weyl_dirac_gate.py --output reports/2026-09-14--weyl-dirac-verification.md
+```
+
+The first command prints the record. The second writes it only after all
+checks pass; a failed check exits nonzero and does not replace any earlier
+record. Check hashes before treating an existing record as current.
+
+The retained script is the provenance for the generated comparison table.
+Interval inequalities and continuum scaling are derived separately in the
+[analytic report](../reports/2026-09-14--weyl-dirac-exact-gate.md).
+Neither artifact changes the canonical project state automatically.
+
+## Initial scope (historical)
+
+The initial freeze required the first code to implement only the standard
+Weyl/Dirac battery. That gate is now PASS for its declared cases.
+
+Its tasks were:
+
+- exact causal-body geometry from a declared neighbor set;
+- support function / inradius calculation;
+- symbolic or high-precision verification of Bloch eigenphases;
+- low-`k` expansion with branch conventions made explicit;
+- comparison table for `r_in`, Hamiltonian spatial coefficient, and `ω^2` coefficient.
+
+## Directional causal saturation (2026-09-16)
+
+`verify_directional_saturation.py` is the traced evidence for the
+[directional saturation report](../reports/2026-09-16--directional-causal-saturation.md),
+covering the two 3D walks of CJWW `sources/2408.02108v1.pdf`, Eqs. (5.12) and (5.15).
+It is a verification of a chartered report, not a new gate calculation, and it
+changes no canonical state.
+
+Requirements: Python 3.12, `sympy==1.14.0` and `numpy==1.26.4`; numpy is
+imported at module level (see `requirements.txt`). Run from the repository root:
+
+```sh
+python3 scripts/verify_directional_saturation.py
+```
+
+Fourteen of the fifteen checks are exact. The one numerical check — whether the
+group-velocity sets fill the tricylinder and the ball — is tagged
+`SUPPORTED (numerical)` in its own output and must not be cited as ESTABLISHED.
+The script fails closed: any exception counts as a failed check and the exit
+status is nonzero.
+
+It also carries the four checks of the `LDP_RADIAL_INTERPRETATION` gate
+([contract](../theory/OPERATIONAL_INVISIBILITY_GATE.md)): CJWW Eq. (5.21) at
+their stated maximizer, its two slopes `1` and `sqrt(3)`, the three regimes of
+the dual transform with their quoted control value, and the declared limitation
+that the radial rate function is coarse on the axes. Nineteen checks in total.
+
+Two refinements of the printed source were found while writing it and are
+recorded in the report: the trace of the literal product (5.12) is
+`ccc + sss`, not the `ccc - sss` printed in (5.13) (the two differ by `p -> -p`);
+and for (5.15) the equality set of `|grad omega| = 1` is the full axial lines
+through the conical points, not only the tips.
+
+## Narrow-band signalling gate certificate (2026-09-17)
+
+`verify_narrow_band_gate.py` is the exact certificate for the
+[narrow-band signalling gate report](../reports/2026-09-17--narrow-band-signaling-gate.md),
+which executes the contract
+[`NARROW_BAND_SIGNALING_GATE.md`](../theory/NARROW_BAND_SIGNALING_GATE.md)
+(preregistered at `817050d`). It was frozen at `778a44a` with its
+[independent review](../reports/2026-09-17--narrow-band-signaling-gate-independent-review.md);
+see `state/CURRENT_STATE.md` Sec. 8.16. The verdict is
+`NO_IR_CONTROLLED_SIGNALING_WITHIN_FROZEN_CLASS`.
+
+It covers steps 0-2 of the contract only: class, chart, pre-choice IR control
+and the Sec. 7 encoded-difference test. That test triggers the stop rule, so
+no Bob state and no `D_B` is constructed. It reuses the frozen symbol `walk2()`
+and the Laurent equality test from `verify_directional_saturation.py`
+read-only, and does not modify that reviewed file.
+
+Requirements: Python 3.12, `sympy==1.14.0` and `numpy==1.26.4`, both pinned
+in `requirements.txt`. The certificate itself does not use numpy, but
+`verify_directional_saturation.py` imports it at module level; without numpy
+the import fails before any check runs. Run from the repository root:
+
+```sh
+python3 scripts/verify_narrow_band_gate.py
+```
+
+It runs 34 exact SymPy checks, with no floating point in any computed quantity,
+no quadrature, no lattice truncation and no `Lambda` scan. It fails closed: any
+failed check or exception exits nonzero. The count certifies only the
+identities and limits marked [V] in the report. The analytic steps listed in
+report Sec. 12 are not encoded as checks; the independent review verified them
+by hand. These steps are the chart lemma, the flat-spectrum lemma and the
+reduction to three dimensions, the two-sided bounds on `s`, the sign
+conditions, the upper half of the squeeze, the `R_W` constants and the
+`kappa(pi/4)` link.
+
+## Scaled IR signalling gate certificate (2026-09-17)
+
+`verify_scaled_ir_gate.py` is the exact certificate for the
+[scaled IR signalling gate report](../reports/2026-09-17--scaled-ir-signaling-gate.md),
+which executes the contract
+[`SCALED_IR_SIGNALING_GATE.md`](../theory/SCALED_IR_SIGNALING_GATE.md)
+(preregistered at `31b5797`). See `state/CURRENT_STATE.md` Sec. 8.17. The
+verdict is `OPEN_AFTER_SCALED_IR_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+
+It checks identities supporting geometry, chart, operation algebra, the
+ellipse-product polynomials, contour constants, Laurent-block norms and the
+sixteen response functionals. It does **not** compute signals, certify
+positivity, or encode the analytic steps for `J`, `T_N` or `D_B`. Those were
+re-derived in the
+[independent review](../reports/2026-09-17--scaled-ir-signaling-gate-independent-review.md).
+It reuses `walk2()`, `is_zero`, `PAULI`, `PS` and `exact_blocks` read-only.
+
+Requirements: Python 3.12, `sympy==1.14.0` and `numpy==1.26.4`, both pinned
+in `requirements.txt`. The certificate itself does not use numpy, but
+`verify_directional_saturation.py` imports it at module level. Run from the
+repository root:
+
+```sh
+python3 -B scripts/verify_scaled_ir_gate.py
+```
+
+It runs 53 exact SymPy checks, with no floating point in any computed
+quantity, no quadrature, no lattice truncation and no `N` scan. It fails
+closed: any failed check or exception exits nonzero.
+
+## Lower-bound / no-cancellation certificate (2026-09-17)
+
+`verify_lower_bound_no_cancellation_gate.py` is the exact certificate for
+the [cancellation-gate report](../reports/2026-09-17--lower-bound-no-cancellation-gate.md),
+executing
+[`LOWER_BOUND_NO_CANCELLATION_GATE.md`](../theory/LOWER_BOUND_NO_CANCELLATION_GATE.md)
+(preregistered at `1717d5e`). See `state/CURRENT_STATE.md` Sec. 8.18. The
+verdict is `OPEN_AFTER_CANCELLATION_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+
+It checks unique-path identities, facing-point geometry, the vanishing of
+the profiles on the Euclidean spheres, and the Taylor orders of `c_N` and
+`s_N`. It does **not** identify a leading amplitude, classify `A`, or
+certify vanishing. Those are analytic and remain open. Run from the
+repository root:
+
+```sh
+python3 -B scripts/verify_lower_bound_no_cancellation_gate.py
+```
+
+## Regional directional-asymptotics certificate (2026-09-17)
+
+`verify_regional_directional_asymptotics_gate.py` is the exact certificate
+for the
+[regional-asymptotics report](../reports/2026-09-17--regional-directional-asymptotics-gate.md),
+executing
+[`REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE.md`](../theory/REGIONAL_DIRECTIONAL_ASYMPTOTICS_GATE.md)
+(preregistered at `08613d0`). See `state/CURRENT_STATE.md` Sec. 8.19. The
+verdict is `OPEN_AFTER_REGIONAL_SADDLE_ANALYSIS / INDEPENDENTLY_REVIEWED`.
+
+It checks the holomorphic trace identity, facing-point algebra, the
+`log 2` tilt bound above `J`, tilted mixing `sinh t`, profile Taylor
+orders, and the one-dimensional layer critical point. It does **not**
+certify `C`, `β`, or remainder control. Run from the repository root:
+
+```sh
+python3 -B scripts/verify_regional_directional_asymptotics_gate.py
+```
+
+## Regional Laplace-coefficient certificate (2026-09-17)
+
+`verify_regional_laplace_coefficient_gate.py` is the exact certificate
+for the
+[Laplace-coefficient report](../reports/2026-09-17--regional-laplace-coefficient-gate.md),
+executing
+[`REGIONAL_LAPLACE_COEFFICIENT_GATE.md`](../theory/REGIONAL_LAPLACE_COEFFICIENT_GATE.md)
+(preregistered at `6f520ad`, blob `18d1f65`). See
+`state/CURRENT_STATE.md` Sec. 8.20. The verdict is
+`PAULI_LEADING_COEFFICIENT_NONVANISHING / INDEPENDENTLY_REVIEWED`.
+
+It checks hermiticity of `S(-i ξ)`, half-period Laurent symmetries,
+triviality of plane characters, the closed forms of `P`, `C_*^2`,
+`q_n`, `q_t`, the Weyl tail of `r`, the Laplace/Poisson identities of
+the discrete layer, the prefactor `\mathcal K`, the algebraic power
+count `β = 13/2`, and interval enclosures of the sixteen complete
+coefficients `C_{M,M_B}(θ)` (uniform sign in `θ`). It does **not**
+certify the analytic remainder lemmas (`N_*`, `C'`). `--diagnostics`
+is `SUPPORTED` only and is never used for `β`, `C` or the terminal
+state. Run from the repository root:
+
+```sh
+python3 -B scripts/verify_regional_laplace_coefficient_gate.py
+```
+
+## Current scope
+
+Project status, the active line and any authorized next calculation are
+recorded only in [`state/CURRENT_STATE.md`](../state/CURRENT_STATE.md), which
+is branch-local on `research/b-infinity-post-s4-gate`. This file does not
+restate them. The
+[massless rigidity gate](../theory/MASSLESS_INRADIUS_RIGIDITY_GATE.md), which
+this section previously named as the only next calculation, is historical: it
+was completed by counterexample for the declared `s=4` class (see
+[`PROJECT_INSTRUCTIONS.md`](../PROJECT_INSTRUCTIONS.md) Sec. 7).
+
+Rules for any new scientific script:
+
+- Freeze its contract before adding scientific code.
+- Preserve completed verifiers and their evidence records.
+- Do not change the bytes of an independently reviewed verifier without a new
+  review of that file.
+- No broad scans, anisotropic detours or new substrate classes.
+- Every retained scientific result must have permanent, traced generating
+  code; no ephemeral scripts may supply evidence.
+
+## Exploratory IR spectral attribution (2026-09-22)
+
+`ir_precision_N24.py` preserves the original fixed-N record. `ir_cancellation.py`
+accepts N (default 24) and optional `--direct --scripts-dir scripts`.
+The optional check imports the existing exact blocks and evolves the compact
+perturbation in a nonperiodic box. No frozen verifier is modified.
+See the [audit and reproduction commands](../reports/2026-09-22--ir-spectral-attribution-audit.md).
+These are empirical finite-N diagnostics, not certificates or asymptotic gates.
+
+## c across lattices gate (2026-11-01)
+
+Repaired after the 2026-11-01 reviews: every tabulated value (step sets,
+group indices, `r_in`, `c_0`, vertex counts, Gram matrices, `K`) is now
+asserted by an exact `record`; 135/135 checks. A negative test that
+alters one expected value in memory makes it exit 1. The Part 3 comment
+now states the Duhamel identity with its unitary factor.
+
+`verify_c_across_lattices_gate.py` certifies the
+[`C_ACROSS_LATTICES`](../theory/C_ACROSS_LATTICES_GATE.md) contract,
+preregistered at `30672ba`. Run from the repository root; fail-closed.
+
+Part 1 (22 exact checks): for rows L5a, L5b, L6a, L6c–L6f it builds the
+exact Bloch symbol of one complete update from the source equations,
+checks unitarity on the unit torus, checks the source identities it uses
+(ADMP Eq. (5) C1–C2, JDW printed inverses, the Mlodinow–Brun Clifford
+relations for the chosen representation) and prints the composite step set
+F with its lattice index. Two ADMP sign issues are certified as recorded
+issues (Eq. (8) holds for `alpha=-arccos(sqrt5/3)`; the printed `S` orders
+the `tau_i` backwards, `S^{-1}` restores Eq. (7) = Eq. (10)). Row L6b is
+reported as not encoded, with its reason.
+
+Part 2 (46 further checks, 68 total): massless node at `k=0` for L1, L2
+(from the reviewed `published_symbol`/`fourier_support`, imported
+read-only) and the seven new rows: `U(0)=I`, Hermitian linear generators,
+no tilt, isotropic cone `{T_a,T_b}=2c_0^2 delta_ab`, exact `C_micro` facets
+and vertices, `r_in`, `c_0`, and non-nilpotency of every vertex coefficient
+(hence `C_infty^strict = C_micro`, `c_strict^iso = r_in`). Prints Ha/Hb/Hc
+per row and asserts Hc where decided.
+
+Part 3 (35 further checks, 103 total): massive rows L5b, L6c–L6f with
+mass parameter `theta` (quasienergy gap at `k=0`). Uses the exact identity
+`i dU U(0)^dag = X_par + (sin theta/theta) X_perp` for `U(0)=exp(-i theta Q)`
+to obtain the linear term of `H = i log U` without a matrix-log series, and
+`G=(U+U^dag)/2` for the `omega^2` curvature. It certifies, per row, the
+scalar Gram matrix of the linear term (`c_H(n)`), and the exact
+decomposition `Hess cos(omega)(0) = -c_0^2 cos(theta) I + sin(theta) K`
+with `theta`-independent `K`; isotropy is printed, not assumed. Positive
+control: reproduces the reviewed 1D Dirac block (`c_H = c_0 M cot M`,
+`K=0`). ADMP's mass (inside `W`) is not encoded (OPEN).
+
+What it does **not** certify: the step-set identifications are printed,
+not asserted, except for L5a/L5b (`{±1}^3`); `V_grp^max` is not computed;
+the ADMP massive row is not computed; signs of nonzero radicals use SymPy's exact
+relational evaluation; the
+reading of the source conventions (phase, product order, read-from-
+neighbour routing) is a declared choice documented in the script header,
+not a theorem. Not independently reviewed.
+
+## Hexagonal ceiling gate (2026-11-01, in progress)
+
+`verify_hex_ceiling_gate.py` certifies part of
+[`HEX_CEILING`](../theory/HEX_CEILING_GATE.md), preregistered at `8c56ced`.
+18 exact checks: the lattice-grid step of L0 (facet-normal frequencies on
+a uniform grid), the T1 algebra symbolic in the pairwise overlaps
+(isotropy iff equal overlaps, `c_0^2 = (3/2) l^2 (1-g)`, PSD iff
+`g >= -1/2`, hence `c_0/r_in <= sqrt3/2`), an exactly certified walk
+attaining `sqrt3/2`, and the ADMP overlaps `g = 1/3` reproducing
+`c_0 = 1/2`. Reuses read-only helpers of `verify_c_across_lattices_gate.py`.
+
+T2 minimal support (6 further checks, 24 total): layer structure along
+the three facet normals, the layer equations forcing `A_0 = -I/2`, and a
+lex Gröbner basis of the unitarity system containing a real quadratic of
+discriminant `-1/12` (no real solution); positive control on the square
+substrate (consistent system, solved by the known saturating walk).
+
+Does **not** certify: the Bernstein step of L0 and the Bernstein-equality /
+Julia step of T2 (prior art, applied in the report), the normal-form
+reduction, the reduction of a general `n = 3` antipodal walk to product
+form, or T2 beyond minimal support. Not independently reviewed.
+
+`explore_hex_saturation_support.py` is **exploratory, not a certificate**:
+it builds the same saturation system for a given support and runs a
+grevlex Gröbner basis over `C`. Its docstring records the runs (minimal:
+consistent over `C`, 0.5 s; 19-point ball: not finished in 900 s). It
+supports no verdict.
+
+## Hexagonal supremum gate, M1 (2026-11-03)
+
+`verify_hex_supremum_gate.py` certifies Stage A and M1-B13 of
+[`HEX_SUPREMUM`](../theory/HEX_SUPREMUM_GATE.md), preregistered at
+`86573ca`. 12 exact checks: lattice-point counts of the closed hexagons
+S7, S13, S19 (7, 13, 19); in S13 the facet-normal layers lie on the grid
+`r_in/3` and the layers `+-2 delta` are singletons that together are the
+inner ring; a second route (generic coefficients on all 13 points, exact
+solve of the layer equations) forcing every inner-ring coefficient to 0;
+the surviving `{0} U vert` similar to the T2 configuration; in S19 layer
+sizes 3,4,5,4,3 with no intermediate singleton; and a read-only rerun of
+`check_T2_minimal` of the reviewed `verify_hex_ceiling_gate.py` (4/4).
+Does **not** certify: facet-line rigidity and the normal form (hex-ceiling
+report Sec. 3, Steps 1-2), or that the T2 proof is lattice-free (report).
+Nothing for S19 or larger supports. Reviewed 2026-11-03: Grok PASS,
+Gemini PASS (verifier SHA-256 `ef4b0114…`).
+
+`verify_hex_supremum_b19.py` certifies M1-B19 of the same gate (S19).
+Exact: the linear reductions L1 (layer sums, 56 free real parameters),
+L2 (first moments, lemma A3, 28) and L3 (off-diagonal first order, lemma
+A4, 18), all consistent over `QQ(sqrt3)`; controls (the saturating square
+walk satisfies L1-L3, the whole pipeline on the 3x3 square support keeps
+it and all reduced equations vanish; unitarity_equations detects a
+non-unitary perturbation); the reduced system (18 parameters, 730
+quadratics) and an exact infeasibility certificate: rational multipliers
+from `data/hex_s19_certificate.json`, Gram matrix of their combination
+positive definite by exact elimination (19 positive pivots). About 11
+minutes. Does **not** certify the analytic proofs of rigidity, A3, A4 or
+the normal form (report). Not independently reviewed.
+
+`explore_hex_s19_reduced.py` (least squares on the reduced system) and
+`explore_hex_s19_certificate.py` (search for a positive-definite
+combination; wrote `data/hex_s19_certificate.json`) are **exploratory,
+not certificates**; runs recorded in `reports/2026-11-03--hex-supremum-b19.md`.
+
+## Dispersion corrections gate (2026-11-02)
+
+`verify_dispersion_corrections_gate.py` certifies
+[`DISPERSION_CORRECTIONS_ACROSS_LATTICES`](../theory/DISPERSION_CORRECTIONS_ACROSS_LATTICES_GATE.md),
+preregistered at `a7ff5b7`, for the
+[execution report](../reports/2026-11-02--dispersion-corrections-across-lattices.md).
+81 exact checks, about 11 minutes (79 at the reviewed version; two
+added by the review repairs, see the report Sec. 5). Run it with an interpreter that has
+`sympy==1.14.0` (here `/home/adnac/venvs/torch-gpu/bin/python -B`). It
+imports the thirteen massless symbols read-only from
+`verify_weyl_dirac_gate.py`, `verify_c_across_lattices_gate.py`,
+`verify_directional_saturation.py`, `cert_Aa_s4_counterexample.py` and
+`verify_l6b_triangular_row_gate.py`; those files are unchanged. Importing
+them reruns the parent row constructors' own checks, which the script
+requires to pass.
+
+Certified per row: the exact Taylor coefficients of the node branch
+through relative order `t^4` (`d <= 2`) or `t^2` (`d = 3`), `c_0` against
+the parent table, the absence of a linear phase, the walk's symmetry group
+by Laurent identities of power traces, the harmonic decomposition, and the
+sign of `alpha_0` (for L3s4 symbolic in `a`, with the exact root in
+`0 < a < 1`). Cross-checks: L1 exactly linear, L6b equal to L6a scaled by
+2/3, 2, 4 and rotated 60°, hand closed forms for L2, L6e, L3, L5a, L5b, L4
+and L6a, and the Newton-identity characteristic polynomial against the
+full one on L5b.
+
+Does **not** certify: `V_grp^max` (OPEN), the scale of validity in
+`d >= 2` (OPEN), terms beyond the stated order, or any reading of the
+hypotheses beyond the printed coefficients. The verdicts on Hd, He and Hf
+are drawn in the report from the printed values; the script prints them
+but asserts none. Not independently reviewed.
+
+## Dispersion L3 row gate (2026-11-04)
+
+`verify_dispersion_L3_row_gate.py` certifies
+[`DISPERSION_L3_ROW`](../theory/DISPERSION_L3_ROW_GATE.md), preregistered at
+`d3868fa`, for the [report](../reports/2026-11-04--dispersion-L3-row.md).
+35 exact checks, about 10 s (`python3 -B`, sympy 1.14.0). It imports
+read-only the helpers of `verify_dispersion_corrections_gate.py` and the
+symbols of `verify_weyl_dirac_gate.py` (`published_symbol(3, ±1, ·)` and
+transposes: cases A+, B+, A−, B−), `verify_directional_saturation.py`
+(`walk1`, CJWW (5.12)) and `verify_c_across_lattices_gate.py`
+(`row_L5a`); those files are unchanged. The comparison rows (CJWW (5.12),
+L5a) are recomputed with the parent's own row setup.
+
+Certified per case: unitarity, `det U = 1`, `tr U = 2(ccc + chi sss)`,
+support `{±1}^3`, and the parent's per-row checks (no degree-0/1 terms in
+`omega^2`, `c_0 = 1/sqrt3`, no linear phase). Prints the contract row verdict; hypothesis verdicts print «NOT CERTIFIED» if any check fails. Printed, not asserted: `beta`,
+`alpha`, their cubic projections, `G_walk`, and the verdicts on HL3b–HL3e.
+
+Does **not** certify: `V_grp^max`, the scale of validity, terms beyond
+relative order `t^2`. Reviewed by gpt-6.1-sol (REPAIR_REQUIRED, repairs applied, not re-reviewed).
+
+## PH refutation test on hexagon H25 (2026-11-04)
+
+`verify_ph_refutation_hex_s25_gate.py` certifies
+[`PH_REFUTATION_HEX_S25`](../theory/PH_REFUTATION_HEX_S25_GATE.md),
+preregistered at `6eb50c1`, for the
+[report](../reports/2026-11-04--ph-refutation-hex-s25.md). 14 exact checks,
+about 30 s (`python3 -B`, sympy 1.14.0). Imports read-only
+`verify_hex_supremum_gate.py`, `verify_hex_supremum_b19.py` and, through
+them, `verify_hex_ceiling_gate.py`; those files are unchanged.
+
+Certified: H25 (vertex `2 g1 + g2`) has 25 points, 6 vertices, no lattice
+point inside an edge; layers on the grid `r_in/7`; the singleton
+intermediate layers are exactly the 18 non-vertex, non-origin points (and
+by a second, non-independent route, the exact layer-equation solve forces
+them to 0); the same directly on H25′; the surviving support rotates onto
+the T2 configuration, whose reviewed check is rerun (4/4); the M1-B19
+square controls are rerun (5/5).
+
+Does **not** certify: facet-line rigidity, lemma A1, the normal form, or
+the lattice-freeness of the T2 proof (reports). No nonlinear solver.
+Review: local cross-family review by Codex (OpenAI), not blind, PASS,
+2026-11-05 (`debates/2026-11-05--ph-refutation-hex-s25-review-codex-local/`);
+promotion pending. The sealed Astra attempt has no verdict.
+
+`verify_hex_s25_review.py` (review-side supplement, author Codex, SHA-256
+`010fa7fb…6ac09b7a`). 13 exact checks, pure integer arithmetic, no project
+imports. Recomputes the H25 support (25 points, 6 vertices, exhaustive
+enumeration of `[-3,3]^2` justified by `a^2+ab+b^2 <= 7`), the three layer
+tables, the 18 singleton-forced points, the H25′ mirror orbit, and the
+contract Sec. 2 list of smaller centred lattice hexagons contained in H25
+(exactly S7, S13, S19), which the original verifier does not check.
+Does **not** certify: facet-line rigidity, lemma A1, the T2 theorem or
+its transport to H25. Not itself independently reviewed.
+
+## Aligned hexagons, all m >= 4 (2026-11-05)
+
+`verify_hex_trace_aligned_all_m.py` supports
+[`HEX_TRACE_ALIGNED_ALL_M`](../theory/HEX_TRACE_ALIGNED_ALL_M_GATE.md),
+preregistered at `689fd30`, for the
+[report](../reports/2026-11-05--hex-trace-aligned-all-m.md). 21 exact checks,
+about 2 s. Certified: general-m interpolant and residual factor (symbolic m);
+slice `p = 2q` identities; slice image of invariant residuals (K-point
+constraint, symbolic triangular tops; rank diagnostics m = 3..8 and the m = 3
+control are consistency checks only); inequalities giving the explicit
+bounded slice solution for all m >= 629, with exact instances m = 629, 630,
+1000, a closed-form second route and a negative control.
+Does **not** certify: the divisibility step of the general reduction, any
+bound off the slice, or the all-m question (OPEN). D3a is closed-form moment
+algebra, partly by construction; D2 is the independent Taylor test. Sealed
+OpenAI review REPAIR_REQUIRED (documentary), repairs applied (C2c added);
+re-review pending.
+
+## Thirring co-moving packets (2026-11-14)
+
+`verify_thirring_comoving_packet.py` supports
+[`THIRRING_COMOVING_PACKET_GATE`](../theory/THIRRING_COMOVING_PACKET_GATE.md),
+frozen at `dca5ebc`, for the
+[report](../reports/2026-11-14--thirring-comoving-packet.md). Imports the
+contract-2 and flavour-packet verifiers read-only. Certified: (+,+) and
+(+,-) eigenfunctions at one co-moving algebraic pair; reused F1, F3/F4;
+supports; rational velocity bounds and the T = 20L geometry; the limiting
+gate V(r_co); Part A (Delta = cos chi, Yang-Baxter in R form, braid
+relation for P V; matchgate determinants as a diagnostic). Does **not**
+certify: the packet/scattering bridge in the co-moving geometry, the U^2
+admission, the verdict, physical three-packet factorization.
+
+## Thirring crossing matchgates, A5 (2026-11-14)
+
+`verify_thirring_matchgate_a5.py` supports
+[`THIRRING_MATCHGATE_A5_GATE`](../theory/THIRRING_MATCHGATE_A5_GATE.md),
+frozen at `915e55f`, tasks T2-T3, for the
+[report](../reports/2026-11-14--thirring-matchgate-a5.md). Imports the
+co-moving verifier read-only. Certified: in an explicit Jordan-Wigner Fock
+model, under the stated formalization of F, a crossing acts on the
+position-ordered register as -P v on adjacent slots for generic v,
+spectator-independent; three-packet sequences in both time orders; G(r) =
+-P V(r) = G(A, B) with A, B in SU(2); Valiant's five matchgate identities;
+P V(r) = exp(+i theta (XX+YY)/2), quadratic in JW fermions. Does **not**
+certify: F, the adjacency argument, T4.
+
+ERROR: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 1:12 PM.
+ERROR: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 1:12 PM.
