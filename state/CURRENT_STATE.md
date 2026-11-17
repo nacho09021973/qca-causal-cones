@@ -3928,3 +3928,27 @@ pair bridge explicitly inherited and not reassessed. Author added the
 canonical promotion entry at `953d200` and explicit H_pair in report Sec. 5.
 M1 addressed by author, no re-review or reviewer PASS claimed. PRELIMINARY,
 no promotion; F, coexistence, novelty OPEN. One authorized round completed.
+
+**Isolated spectator corollary promoted — 2026-11-17:** explicit user
+«si autorizo» to promotion of this corollary, with the review history retained.
+Branch-local on `research/thirring-isolated-spectator`; preregistration
+`a9d5ae1`, proof `8d02630`, provenance repair and review archive `ac72922`.
+Verdict `REDUCES_TO_EXISTING_RESULTS`, ESTABLISHED in the frozen geometry
+and conditional on the already promoted two-packet estimate H_pair.
+For chi=pi/2, K=(3,1,-2), centres (L,-L,-50L), delta=mu^(3/2),
+L=ceil(mu^(-2)), T=20L, the three-fermion code has
+||U_3^T B-C(V(r_co) tensor I)|| <= sqrt(8)(6 epsilon+eta) -> 0,
+with epsilon=O(mu^(3/4)) and eta the inherited pair error.
+Thus logical compression tends to V(r_co) tensor I and leakage vanishes
+uniformly over all logical inputs. In the declared decreasing-position
+mode frame the limit is (-P V(r_co)) tensor I.
+Evidence: written analytic proof, one sealed cross-family Opus review
+(claude-opus-5-5), REPAIR_REQUIRED solely for M1 provenance; author supplied
+the permitted documentary repair. No subsequent reviewer PASS or re-review;
+no verifier, numerical experiment or new assessment of H_pair.
+Not promoted: general factorization F, successive collisions, simultaneous
+three-body scattering, universality, interacting QFT or novelty.
+F=OPEN; COEXISTENCE=OPEN; NOVELTY=OPEN. Gate closed; no successor execution,
+external transmission, push or merge to main authorized by this promotion.
+This entry supersedes the earlier PRELIMINARY/no-promotion status only for
+this corollary in its frozen scope.
