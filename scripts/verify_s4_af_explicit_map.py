@@ -40,6 +40,10 @@ eigenvects with square roots; buffered prints); retained in
 reports/2026-11-17--s4-af-explicit-map-run1.txt. Eigenvectors are now
 closed-form half-angle vectors on a rational parametrization; no
 expectation changed.
+Run 2 (0da360c): 30/31; M3 for axis x (C = W ⊗ I) reported FAIL because
+simplify did not reduce exp(±i pi/4) products; retained in
+reports/2026-11-17--s4-af-explicit-map-run2.txt. The zero test now applies
+expand_complex before simplify (all checks); no expectation changed.
 """
 import sys
 
@@ -77,7 +81,7 @@ def ok(name, cond):
 
 
 def z(M):
-    M = M.applyfunc(lambda e: sp.simplify(sp.expand(e)))
+    M = M.applyfunc(lambda e: sp.simplify(sp.expand_complex(sp.expand(e))))
     return M == sp.zeros(*M.shape)
 
 
