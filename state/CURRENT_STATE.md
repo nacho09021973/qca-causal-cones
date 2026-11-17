@@ -4109,3 +4109,14 @@ for s=2) and node structure modulo global phase and time regrouping
 equivalence nor a separating invariant obtained within budget. Candidacy
 status unchanged: AF structural antecedent, specialization question OPEN.
 A successor needs a new contract. NOVELTY = OPEN.
+
+**S4 as AF walk: explicit-map gate frozen — 2026-11-17:** user «si, push y
+redacción» (drafting) and «autorizo que lo congeles» (freezing). Contract
+`theory/S4_AF_EXPLICIT_MAP_GATE.md`, OPEN / NOT EXECUTED, successor of the
+regrouping gate: fixed reading R1-R3 of AF (shift convention, one parity
+sublattice kept, Eq. (16) not imposed at fixed eps), equivalences E1-E8,
+ansatz A1-A3 (each family factor F_i as one AF paired step with s=2, coin
+W absorbed, A(k)^2 if the time unit differs). Verdicts
+AF_EQUIVALENT_VIA_ANSATZ (drops the candidacy) / ANSATZ_OBSTRUCTED (does
+not establish non-equivalence) / OPEN_AFTER_EXPLICIT_MAP_ATTEMPT.
+Execution needs separate authorization. NOVELTY = OPEN.
