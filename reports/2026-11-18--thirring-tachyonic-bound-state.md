@@ -59,6 +59,53 @@ This does not rule out a tachyonic effective field linearized about an
 unstable nonvacuum many-body background: such a background and its
 linearized dynamics have not been defined or tested.
 
+## Auxiliary exact band-slope check at the known bound point
+
+This pointwise check is **not** a test of the full-band maximal group
+velocity and is not used to certify the temporal-instability verdict.
+It checks a nontrivial feature of the actual interacting bound band
+without a fitted dispersion.
+
+At `p0=pi/4`, Eq. (14) gives the compact normalized-up-to-scale
+fiber eigenvector, ordered `(RR,RL,LR,LL)`,
+
+```text
+f(1)=(-i exp(i p0),0,0,0)
+f(0)=(0,mu/nu,-mu/nu,0)
+f(-1)=(i exp(i p0),0,0,0)
+U_2(p0) f = i f.
+```
+
+The existing approximate-recovery proof establishes that `i` is an
+isolated eigenvalue at `p0`, so the unitary eigenvalue branch may be
+differentiated there. By the eigenvalue derivative identity,
+
+```text
+lambda_b'(p0) = <f, U_2'(p0) f> / <f,f>.
+```
+
+Differentiate the original paper's explicit fiber matrix
+`U_2(p)=W_2(p) V_2(chi)` (Eq. (3)), where `V_2` is
+independent of `p`; apply it to the three occupied relative
+coordinates above. In the frozen exceptional case `exp(2i p0)=i`,
+
+```text
+<f, U_2'(p0) f> = 4(mu^2 - nu^2) = -28/25,
+<f,f> = 2 + 2(mu/nu)^2 = 25/8,
+lambda_b'(p0) = -224/625.
+```
+
+With the local eigenphase convention `lambda_b(p)=exp(i epsilon_b(p))`
+and `lambda_b(p0)=i`, this gives
+`epsilon_b'(p0)=224/625`.
+The paper's Fourier variable is conjugate to `w=x1+x2=2X`;
+therefore the **physical center-of-mass group speed at this point**
+has magnitude `|epsilon_b'(p0)|/2=112/625` lattice sites/update.
+It lies below the microscopic speed one. This exact author
+calculation is **PRELIMINARY**, not separately verified or reviewed;
+a single momentum point cannot exclude a faster group-speed window
+elsewhere in the band.
+
 ## Test 2: signal outside the microscopic/free-nodal cone
 
 The original Eq. (1) moves each single-particle component by at most
