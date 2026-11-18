@@ -78,13 +78,18 @@ units. The paper uses `p=(p1+p2)/2` and `w=x1+x2`; comparing
 a derivative with respect to `p` to a physical center-of-mass speed
 without converting `w=2X` would be a coordinate error.
 
-The free **massless nodal** speed for this same rule is
-`c_0=a/tau`, and the microscopic one-step displacement bound is
-also `a/tau`. Consequently no two-body signal crosses that cone.
-This is an exact locality obstruction for the second *operational*
-candidate, **not** a numerical estimate of the interacting band's
-group velocity. Do not identify an arbitrary finite-mass
-`c_H` or `c_{omega^2}` with `c_0`.
+The free **massless nodal limit** of this parameter family has
+`c_0=a/tau` as recorded in the README, but it takes `mu -> 0`:
+**this is not a low-energy speed established for the frozen
+`mu=3/5` interacting rule.** The microscopic one-step displacement
+bound is `a/tau` for the frozen rule. Consequently no two-body
+signal crosses the **microscopic cone**. This exactly answers the
+contract's second *operational* criterion; it does **not** compare
+the bound band's group velocity with a physically derived `c_IR`
+for the massive interacting dynamics. The charter's shorthand
+"of this same rule" for `c_0` is thus only valid as "of the same
+parameter family in the massless limit", not at the frozen mass.
+Do not identify finite-mass `c_H`, `c_{omega^2}`, and `c_0`.
 
 ## Result, restrictions, and stop
 
