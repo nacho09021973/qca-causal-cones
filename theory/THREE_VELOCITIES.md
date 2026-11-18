@@ -110,3 +110,53 @@ the one baseline where the two targets are certified to coincide exactly
 (`c_strict^iso = r_in = 1/sqrt(3)`); see
 [`2026-09-14--strict-asymptotic-pavia-baseline.md`](../reports/2026-09-14--strict-asymptotic-pavia-baseline.md).
 See `B_STAR_HYPOTHESIS.md` for current status.
+
+## 6. Tachyonic-sector diagnostic (2026-11-18; exploratory)
+
+**Status: PRELIMINARY algebraic observation / OPEN for interacting sectors.**
+This is a documentary consistency check, not a new gate, executed verifier,
+independent review, or promotion. **NOVELTY = OPEN.**
+
+- **Known:** the Thirring rule is \`U = FJ\`, and the one-particle sector
+  is free because the on-site two-particle phase \`J\` acts trivially there.
+  The one-particle walk is recorded in
+  [the massive preflight](../reports/2026-11-08--thirring-massive-preflight.md),
+  Sec. 1. The distinctions among microscopic support, spectral group speed,
+  and IR speed are fixed in Secs. 1-4 above.
+- **Question:** does this *fixed* one-particle rule exhibit a tachyonic
+  low-energy branch, or a group velocity outside its microscopic cone?
+- **Stop rule:** if the proposed branch requires a nonunitary parameter
+  continuation or is absent from the declared one-particle spectrum, stop
+  this check; do not extrapolate to collective/unstable backgrounds or
+  introduce another automaton without a separate user-chartered gate.
+
+In lattice units \`a = Δt = 1\`, with real \`0 <= μ <= 1\` and
+\`ν = sqrt(1-μ²)\`, the fixed Bloch walk is
+
+\`\`\`text
+W(k) = [[ν exp(ik), -i μ], [-i μ, ν exp(-ik)]],
+cos ω(k) = ν cos k,              0 <= ω(k) <= π.
+\`\`\`
+
+Consequently both unitary eigenphases are real. At differentiable points,
+
+\`\`\`text
+|v_g(k)| = |ν sin k| / sqrt(1 - ν² cos² k) <= ν <= 1.
+\`\`\`
+
+The inequality follows from \`1 - ν² cos² k >= 1 - cos² k\`;
+the massless degeneracies are interpreted by one-sided band velocities.
+For \`0 < μ <= 1\`, the gap at \`k = 0\` is
+\`ω(0) = arccos(ν) = arcsin(μ) >= 0\`. Thus this branch does **not**
+realize an imaginary-frequency region corresponding to the naive
+continuum tachyonic form \`ω² = c_eff² k² - κ²\` near \`k = 0\`
+for \`κ > 0\`. This is a statement about this branch, not a general
+no-tachyon theorem for QCA.
+
+A group speed exceeding a specifically defined effective \`c_IR\` would
+not alone establish superluminal signaling: it must be compared with
+\`C_micro\` and its actual strict causal support. In a massive lattice
+sector, \`c_H\` and \`c_{ω²}\` must first be distinguished (Sec. 3).
+Tachyonic effective instabilities around a many-body background, if any,
+are **OPEN / NOT TESTED** here. No interacting spectrum, continuation,
+numerics, or new particle species has been introduced.
