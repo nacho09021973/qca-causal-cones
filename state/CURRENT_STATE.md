@@ -1393,12 +1393,45 @@ with equality only where separately certified (see the d=3 row below).
 | B*_cont | **VERIFIED FOR STANDARD DIRAC COUPLINGS / GENERALITY OPEN** |
 | B_infty^*, d=3 Pavia baseline (`C_infty^strict=C_micro`, full nonlinear order) | **CERTIFIED for the standard Weyl family `A+,B+,A-,B-`** (`s=2`): `c_0 = c_strict^iso = 1/sqrt(3)`; d=1,2 not checked; unaffected by the s=4 result |
 | Strong B_infty^* (`c_0 = c_strict^iso` forced by locality, unitarity, homogeneity and D2 covariance at fixed `N_3`) | **REJECTED IN DECLARED s=4 CLASS** — explicit counterexample, Sec. 4.1; false for any class containing that family |
-| B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result; rigidity OPEN as an in-repo claim.** Origin-node inradius matching there is a conditional application of P17's classification plus the standard certificate, not a new theorem. The strict-body certificate is recorded for `A+,B+,A-,B-`; its transfer across all of P17's equivalences is not separately checked |
-| B_infty^* for `s=2` without P17 Eq. (2), or with an irreducible internal symmetry representation `R` for `s>2` | **OPEN** |
+| B_infty^* in the published minimal `s=2` class (P17, including its Eq. (2)) | **NOT REFUTED by the s=4 result.** Origin-node matching follows conditionally from P17's classification and the standard certificate. Transport across all of P17's equivalences remains unchecked (Q-b). The separate frozen `(V4, Pauli)` class is proved rigid without assuming Eq. (2) on `research/inverse-gravity-design`, as recorded below |
+| B_infty^* for `s=2` without P17 Eq. (2) | **RESOLVED IN THE DECLARED FAMILIES P AND F on `research/inverse-gravity-design`.** `(V4, tetrahedron, Pauli)` has `RIGIDITY_PROVED_FOR_FROZEN_CLASS` and `SATURATION_PROVED_FOR_CLASS`, with `c_0 = c_strict^iso = 1/sqrt(3)` at every admissible node. All other classes in those families are empty. Promoted at `b67ea83`, `014753e`, `ea3f401`. Other settings remain OPEN |
+| B_infty^* with an irreducible internal symmetry representation `R` for `s>2` | **EMPTY_CLASS, ESTABLISHED IN THE DECLARED CLASSES T3/O3/O4 on `research/inverse-gravity-design`**, promoted at `5424771`. Under `D2` there is no projective irreducible `R` with `s>2`. The T/O result concerns full `N_3` without an on-site term and makes matching vacuous there. Other groups and supports remain OPEN |
 | Novelty of the s=4 family and its strict-support statement | **CANDIDACY CLOSED** (user decision 2026-11-17, «cierra la candidatura s=4»; supersedes the restricted-claim candidacy of the same day and «not pursued», 2026-11-02). Reason: the family is exactly a homogeneous AF (3+1) walk in AF's architecture under the explicit-map gate (`AF_EQUIVALENT_VIA_ANSATZ`, reading R1-R3, unreviewed), the mechanism is AF's, and the general phenomenon (substrate does not fix c_0) is published (1906.04483, 2601.15885); the remaining claim (DEP-isotropic, s=4, continuous c_0) was judged too narrow to pursue. Not pursued further: independent review of the explicit map, write-up. Mathematical results, reviews and promotions unchanged |
 
 The restricted statements are established for the declared cases below.
 There is no general rigidity theorem, proof of A, or novelty claim.
+
+**Cross-branch reconciliation — 2026-11-19.** The former blanket OPEN row
+omitted completed work on `research/inverse-gravity-design`. The rows above
+now refer to its recorded outcomes. Source snapshot is
+`28c686ee59366995246d7342e6b05a5ae09a1955`, inspected with `git show`.
+This is a documentary reconciliation of existing branch-local statuses.
+
+- Irreducible matching contract `theory/IRREDUCIBLE_ISOTROPY_MATCHING_GATE.md`,
+  preregistration `d112bb0`: T3/O3/O4 EMPTY_CLASS, promoted at `5424771`.
+  Report `reports/2026-10-28--irreducible-isotropy-step01.md` and sealed
+  reviews by Gemini (ACCEPT), Grok and DeepSeek (ACCEPT_WITH_REPAIRS) are on
+  the source branch. Grok's final wording repairs were applied at `5bb09df`
+  and were not re-reviewed. Reviewers did not execute the certificates.
+- Minimal `s=2` contract `theory/MINIMAL_S2_RIGIDITY_GATE.md`, preregistration
+  `785565c`: stage (a), 4b-1 and 4b-2 promoted at `b67ea83`, `014753e` and
+  `ea3f401`. Reports `reports/2026-10-29--minimal-s2-step00.md`,
+  `reports/2026-10-29--minimal-s2-step4b1.md` and
+  `reports/2026-10-29--minimal-s2-step4b2.md` record the frozen families and
+  review limits. The linear `2O` irrep E and scalar full-active-support case
+  were uncovered by the earlier T3/O3/O4 gate, but were subsequently
+  excluded within these families. Q-b transport remains open.
+- The `s=3` contract `58ea188` has an executed determinant-parity result in
+  `reports/2026-10-29--s3-parity-step0.md`, PRELIMINARY with review pending.
+  Its declared result is for `s=3`. Extension to other odd dimensions is
+  reserved for a separate charter by that report.
+
+All these contracts use `N_3` without an on-site term. Reflections, other
+supports and reducible representations outside the declared classes retain
+their existing coverage limits. The referenced artifacts remain on the
+source branch and are accessible by `git show <source-snapshot>:<path>`.
+No new calculation, verifier change, successor charter or execution follows
+from this reconciliation. The repository pause remains in force.
 
 ### 4.1 Declared s=4 counterexample class
 
