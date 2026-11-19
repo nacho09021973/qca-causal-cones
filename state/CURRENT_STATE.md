@@ -4192,3 +4192,15 @@ already known (with source), the concrete question and the result that
 would force abandoning the line, written into a new contract authorized
 by the user. Branch-local on `research/thirring-isolated-spectator`;
 promotion to `main` is a separate user decision.
+
+**Scalar on-site flat-band contract — 2026-11-19:** user «1», choosing the
+option "contrato mínimo, un verificador exacto … y una revisión de otra
+familia". `theory/ONSITE_SCALAR_FLAT_BAND_GATE.md`, OPEN / NOT EXECUTED,
+frozen by this commit. Question: on `N_3 ∪ {0}` with scalar on-site term
+`T_0 = λ I` (forced by Schur for any irreducible `R` of a group fixing the
+origin, including T3/O3/O4), does any unitary symbol disperse? Hand
+derivation (PRELIMINARY) predicts flat bands, hence no cone with `c_0 > 0`.
+Authorized: the contract's Sec. 3 execution (one exact verifier and a
+report). The sealed external review needs a separate confirmation of the
+reviewer before sending. The repository pause is lifted for this contract
+only; everything else stays paused.
