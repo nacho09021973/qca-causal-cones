@@ -1,5 +1,25 @@
 # Scripts
 
+## Scalar on-site flat-band lemma (2026-11-19)
+
+`verify_onsite_scalar_flat_band.py` certifies Sec. 3 of
+[`ONSITE_SCALAR_FLAT_BAND_GATE.md`](../theory/ONSITE_SCALAR_FLAT_BAND_GATE.md)
+(frozen `b2ffcdc`). 14 exact SymPy 1.14.0 checks, under 1 s: difference-set
+combinatorics of `N_3 ∪ {0}` (for `ℓ` in `N_3` only the pairs `(0,ℓ)`,
+`(-ℓ,0)` contribute), a mutation control, `V + V^dagger = 0` from
+`T_{-h} = -T_h^dagger` for generic complex `T_h` at `s = 2, 3` with a
+wrong-sign negative control, the noncommutative identity behind
+`U^2 - 2λU + I = 0`, and the `k`-independent unit-modulus roots. Does not
+certify Schur's lemma or the irreducibility of the T3/O3/O4 representations
+(cited from the predecessor), existence of any symbol in the class, non-scalar
+on-site terms or other supports. Logically, the `s = 2, 3` matrix check
+covers every `s`, because each entry of `V + V^dagger` involves only the
+`(p,q)` and `(q,p)` entries of the `T_h`; this step is argued, not executed.
+
+```sh
+python3 -B scripts/verify_onsite_scalar_flat_band.py
+```
+
 ## S4 family isotropy in the DEP sense (2026-11-17)
 
 `verify_s4_dep_isotropy.py` certifies tasks C1-C5 of
