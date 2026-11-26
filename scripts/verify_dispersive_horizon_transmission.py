@@ -145,15 +145,26 @@ YS = Matrix([qj[0] for qj in qs] + [qj[1] / lamS for qj in qs])
 rS = MS * YS - lamS * YS
 ok('S Bloch stage vector: rows 1..10 of (M_hom - lambda) Y vanish identically',
    all(sp.cancel(rS[i]) == 0 for i in range(1, 11)))
-FF = sp.QQ.frac_field(lamS, wS)
-nE = sp.Poly(sp.fraction(detE)[0], zS, domain=FF)
-div_ok = True
-for v in ((ES[0, 1], -ES[0, 0]), (-ES[1, 1], ES[1, 0])):
-    for i in (0, 11):
-        num = sp.fraction(sp.cancel(rS[i].subs({u1: v[0], u2: v[1]}, simultaneous=True)))[0]
-        div_ok = div_ok and sp.Poly(num, zS, domain=FF).rem(nE).is_zero
-ok('S rows 0 and 11 vanish modulo det(U - z) for both kernel formulas q1 = (U12, z - U11), '
-   '(z - U22, U21): Y is an eigenvector of M_hom at every root lambda', div_ok)
+# Rows 0 and 11 (the closure rows): the fully symbolic divisibility test exhausted
+# memory in run 1. The eigenvector property follows from the reviewed bijection
+# (written step: a Bloch solution of U psi = z psi is an orbit of M). Here it is
+# checked exactly at sample points: w, lambda rational, z symbolic, so that
+# rows 0 and 11 at q1 = (U12, z - U11) and (z - U22, U21) must be divisible by
+# det(U - z) as polynomials in z.
+div_ok, npts = True, 0
+for wv in (R(1, 3), R(2, 7), R(3, 11)):
+    for lv in (R(5, 4), R(-2, 3), R(7, 9)):
+        sub = {wS: wv, lamS: lv}
+        Ep = ES.subs(sub)
+        dE = sp.Poly(sp.expand(sp.cancel(Ep.det())), zS)
+        r0, r11 = sp.cancel(rS[0].subs(sub)), sp.cancel(rS[11].subs(sub))
+        for v in ((Ep[0, 1], -Ep[0, 0]), (-Ep[1, 1], Ep[1, 0])):
+            for ri in (r0, r11):
+                num = sp.fraction(sp.cancel(ri.subs({u1: v[0], u2: v[1]}, simultaneous=True)))[0]
+                div_ok = div_ok and sp.Poly(num, zS).rem(dE).is_zero
+        npts += 1
+ok(f'S rows 0 and 11 vanish modulo det(U - z) for both kernel formulas at {npts} exact sample '
+   'points (w, lambda) with z symbolic (consistency of the closure rows)', div_ok)
 
 # ================================================================= T0
 Cc, tau, cos_t, sin_t = ch.Cc, ch.tau, ch.cos_t, ch.sin_t
