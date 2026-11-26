@@ -581,3 +581,52 @@ equation; Ω″ ≠ 0 at the t = 5/16 band edge (non-semisimplicity there); the
 ```sh
 python3 -B scripts/verify_dispersive_horizon_transfer_amendment2.py
 ```
+
+## Dispersive-horizon asymptotic channels (2026-11-26)
+
+`verify_dispersive_horizon_channels.py` supports
+[`DISPERSIVE_HORIZON_CHANNELS_GATE`](../theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md),
+frozen at `7a63529`. It imports the reviewed transfer-matrix verifier
+read-only, which runs its 61 checks first, then adds 53 exact checks in about
+135 s. It uses exact SymPy and exact rational interval arithmetic (Fractions,
+integer square roots); no floating point enters any certified quantity.
+
+Certified:
+- **C1, flux form.** G_x = M_x^H D M_x − E_77 satisfies
+  M_x^H G_{x+1} M_x = G_x for general angles on three sites and |z| = 1.
+  - A second route, the operational cut flux taken from the word of U, is
+    constant in x and equals Y^H G Y, sesquilinearly, on exact
+    site-dependent solutions.
+  - In a homogeneous medium, det G = −cot²θ.
+- **C2, root structure.** The 1/λ̄ symmetry of P; P = zλ⁶Φ with Φ = −2h on
+  the unit circle; Ω₊ + Ω₋ = −2k.
+- **C3, thresholds.**
+  - The elimination identity and the threshold polynomials.
+  - The interior critical points, with exact radicals, certified rational
+    enclosures, and the minimal polynomial of Re z_c*.
+  - No critical values in the exterior.
+  - z0 = (3+4i)/5 lies in I = (arg z_c*, π/2).
+- **C4, classification at z0 in both media.**
+  - Squarefreeness of P.
+  - Propagating roots counted by Sturm in τ = tan(k/2): 4 per medium.
+  - Exact group-velocity signs: 1 right-mover and 3 left-movers.
+  - 8 evanescent roots, split 4 + 4.
+  - The counts on the full line: 4 incoming and 4 outgoing.
+- **C5, flux of each propagating Bloch eigenvector.**
+  - It is nonzero, has the sign of its group velocity, and flux/(v|q₁|²)
+    is enclosed around 1 to better than 1e-20.
+  - The operator identity −iU^H U′ = Σ R_j^H σ_z R_j − I.
+
+Does **not** certify (written arguments in the report):
+- that the root counts are constant on all of I, which rests on the
+  collision analysis;
+- the exact equality flux = (dΩ/dk)|q₁|², which follows from the
+  Hellmann–Feynman step;
+- the evanescent pairing, which follows from det G ≠ 0 and C1;
+- the λ = e^{−ik} bijection with the τ-line.
+
+Nothing about transmission, Jost asymptotics or thresholds outside I.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_channels.py
+```
