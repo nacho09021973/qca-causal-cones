@@ -15,8 +15,14 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   review). Amendment 1 is reviewed by Grok; Amendment 2 is not reviewed.
 - **Charter:** `theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md`, frozen at the
   commit that adds this entry. Status OPEN.
-- **Authorized:** freezing only. Execution of C1–C5, review and promotion each
-  need separate authorization.
+- **Authorized:** freezing; then (user «autorizo las dos cosas») the branch
+  push and execution of C1–C5. Review and promotion each need separate
+  authorization.
+- **Executed 2026-11-26:** `reports/2026-11-26--dispersive-horizon-channels.md`,
+  verifier `a5b9be3` (53/53 after 61/61). Author verdict
+  `CHANNELS_CLASSIFIED`, PRELIMINARY, unreviewed, not promoted. On
+  I = (arg z_c*, π/2) each medium has 4 propagating channels (1 right-moving,
+  3 left-moving) and 8 evanescent ones, with flux form G_x certified.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Not reconciled to `main`.
 
