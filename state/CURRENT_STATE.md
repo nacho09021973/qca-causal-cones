@@ -33,6 +33,18 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   thresholds outside I, the per-root C3–C5 outputs, and published-value and
   hash assertions in the verifier. As delivered the state is
   `OPEN_AFTER_CHANNEL_ANALYSIS`. Amendment 1 is authorized (user «SI»).
+- **Amendment 1 applied 2026-11-26** (marked [A1] in the report). Verifier
+  `scripts/verify_dispersive_horizon_channels_amendment1.py`, committed at
+  `ea3067a` before its only run: 63/63 after 61/61 and 53/53.
+  - Hashes of the imported verifiers checked.
+  - Published values asserted.
+  - Per-root boxes and per-mode normalizations recorded.
+  - Count between thresholds: the interior has 6 propagating roots
+    (2 right) near ω ≡ 0 (mod π) below arg z_c*, and 4 (1 right)
+    elsewhere; the exterior has 4 (1 right) everywhere.
+
+  Author candidate `CHANNELS_CLASSIFIED` again. Review of Amendment 1
+  pending, and needs authorization.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Not reconciled to `main`.
 

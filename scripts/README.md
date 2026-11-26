@@ -633,6 +633,54 @@ Nothing about transmission, Jost asymptotics or thresholds outside I.
 python3 -B scripts/verify_dispersive_horizon_channels.py
 ```
 
+`verify_dispersive_horizon_channels_amendment1.py` supports Amendment 1 of the
+channels report, after the
+[Astra review](../reports/2026-11-26--dispersive-horizon-channels-astra-review.md).
+It imports the channels verifier read-only, so the 61 + 53 earlier checks run
+first. It then adds 63 exact checks, about 38 min in total. Most of that time
+goes to isolating the 24 complex roots of N = P(·, z0) P(·, z̄0), about 11 min
+in the interior and 24 min in the exterior.
+
+Certified:
+- **H.** The SHA256 of both imported verifiers equals the reviewed values.
+- **V, published values.**
+  - The counts 4 / 1 / 3 / 8 at z0.
+  - The exterior quotient ∝ 343u² − 1211u + 1012.
+  - The primitive minimal polynomial of Re z_c* equals the printed quartic.
+  - z_c* ∈ (9/10, 1) × (1/20, 1/8).
+- **Z.** Printed rational enclosures of the four interior critical values. The
+  critical set is closed under conjugation and negation, and the four
+  enclosures are disjoint.
+- **K, counts on the circle in the eight arcs.** The arcs are cut by
+  {±z_c*, ±z̄_c*} and {±1, ±i}, and each is tested at one exact rational
+  point, in both media. Each point is regular.
+  - Interior near ω ≡ 0 (mod π): 6 propagating (2 right, 4 left).
+  - Elsewhere, and in the exterior: 4 (1 right, 3 left).
+  - The branch slopes at the collision points are nonzero.
+- **E, every root of P(·, z0) in both media,** in isolating rational boxes:
+  - 4 with |λ| < 1 and 4 with |λ| > 1, paired one-to-one by 1/λ̄;
+  - 4 on the circle, matched with the Sturm roots;
+  - v signs −, −, +, − in increasing k.
+- **N, each propagating mode.**
+  - The τ interval, the kernel row, and enclosures of F, 1/√|F| and the 12
+    components of N = Y/√|F|.
+  - N^H G N encloses sign(v), and F equals the reviewed C5 run.
+- **G.** det G_x = −cot²β₆(x) on a varying rational profile at six sites.
+
+Does **not** certify (written arguments):
+- constancy of the counts inside each arc, which rests on the collision
+  analysis of C3;
+- the general-profile proof of det G_x = −cot²β₆(x) (Astra's written
+  argument, spot-checked by G);
+- the G-pairing values Y_μ^H G Y_{1/μ̄} ≠ 0, which follow from det G ≠ 0 and
+  C1.
+
+Nothing about transmission or Jost asymptotics.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
+```
+
 `verify_dispersive_horizon_transfer_amendment3.py` supports Amendment 3 of the
 transfer-matrix audit, after the
 [Astra review of Amendment 2](../reports/2026-11-26--dispersive-horizon-amendment2-astra-review.md).
