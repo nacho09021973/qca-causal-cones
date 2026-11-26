@@ -12,7 +12,10 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
 (`8e5b540`).
 - **Prior status:** its 12×12 transfer matrix is PASS in algebraic scope (audit
   `reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md`, Astra
-  review). Amendment 1 is reviewed by Grok; Amendment 2 is not reviewed.
+  review). Amendment 1 is reviewed by Grok, Amendment 2 by Astra, and
+  Amendment 3 by Astra and Grok (both PASS;
+  `reports/2026-11-26--dispersive-horizon-amendment3-astra-grok-review.md`).
+  The audit chain is closed in its algebraic scope; not promoted.
 - **Charter:** `theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md`, frozen at the
   commit that adds this entry. Status OPEN.
 - **Authorized:** freezing; then (user «autorizo las dos cosas») the branch
