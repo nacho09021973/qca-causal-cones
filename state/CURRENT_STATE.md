@@ -1,6 +1,25 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-14
+**Date:** 2026-11-26
+
+**Dispersive-horizon channels gate chartered — 2026-11-26 (branch-local:
+`research/dispersive-horizon-channels`).** User decision «Autorizo
+conceptualmente Q-a, Q-b y Q-d, y Q-c con la modificación indicada» (Q-c:
+uniqueness stop; Q-b: this branch). This opens a separately chartered
+**exploratory line**, outside the coexistence question of
+`PROJECT_INSTRUCTIONS.md` §1: the one-particle walk U = L₋W² with the imposed
+tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
+(`8e5b540`).
+- **Prior status:** its 12×12 transfer matrix is PASS in algebraic scope (audit
+  `reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md`, Astra
+  review). Amendment 1 is reviewed by Grok; Amendment 2 is not reviewed.
+- **Charter:** `theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md`, frozen at the
+  commit that adds this entry. Status OPEN.
+- **Authorized:** freezing only. Execution of C1–C5, review and promotion each
+  need separate authorization.
+- TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
+- Not reconciled to `main`.
+
 
 **A5 crossing-matchgate result promoted — 2026-11-14:** user «promociona
 el resultado, autorizado». Contract `915e55f`, report
