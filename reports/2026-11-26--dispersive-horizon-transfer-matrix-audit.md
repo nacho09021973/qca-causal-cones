@@ -40,6 +40,24 @@ The repairs are marked "[A2]" below. They are certified by
 `scripts/verify_dispersive_horizon_transfer_amendment2.py` (39 checks, run
 after the 61 + 8 earlier ones). The earlier verifiers' bytes are unchanged.
 
+**Amendment 3 (2026-11-26), after the Astra review of Amendment 2**
+(`2026-11-26--dispersive-horizon-amendment2-astra-review.md`). Astra confirmed
+the Amendment 2 figures and returned REPAIR_REQUIRED on two statements:
+
+- "no root in [0, 1]" at t = 7/16 is true of the quotient, not of the
+  threshold polynomial, which always vanishes at u = 1;
+- the interior band edge was called "ordinary" while Ω″ ≠ 0 was left
+  [UNVERIFIED], and G4's reach was overstated.
+
+Astra also gave hand arguments closing both [UNVERIFIED] points.
+
+The repairs are marked "[A3]" below. They are certified by
+`scripts/verify_dispersive_horizon_transfer_amendment3.py` (10 checks, run
+after the 61 + 8 + 39 earlier ones) where stated, and otherwise marked as
+written steps. The earlier verifiers' bytes are unchanged. In particular, the
+amendment-2 docstring line "t = 7/16: no root in [0, 1]" refers to the
+quotient, which is what its check tests.
+
 ## Reviewer and independence
 
 - **Reviewer:** Claude Opus 5.5 (`claude-opus-5-5`) in Claude Code. The user
@@ -199,26 +217,45 @@ profile the degenerate points are:
   - (z, λ) = (1, 1) is a root of algebraic multiplicity 4 and geometric
     multiplicity 2 (repairs verifier R2).
   - So is its twin (z, λ) = (−1, −1), at k = π (G1) [A2].
-  - The contact orders 3 + 1 give a Jordan partition 3 + 1 [UNVERIFIED: Grok's
-    argument, not machine-checked].
+  - The Jordan partition at both (1, 1) and (−1, −1) is **3 + 1** [A3]. With
+    K = M − λI, the exact ranks over ℚ(√6, √10) give dim ker K^j = 2, 3, 4, 4
+    for j = 1..4 (amendment-3 verifier J1). This confirms Grok's and Astra's
+    arguments; it does not rest on them.
 - **Endpoints, t = 5/16 and t = 7/16.** At both (1, 1) and (−1, −1) the root
   has algebraic multiplicity 2 and geometric multiplicity 2. It is semisimple
   and is not a band edge (repairs verifier R3; G2) [A2].
-- **Interior, ordinary band edge [A2].** Write u = cos²k and C = cos k. On
+- **Interior band edge [A2, A3].** Write u = cos²k and C = cos k. On
   (0, π/2), v₊ = 0 is equivalent to 4(1 − u)g′(C)² = 1 − g(C)². This
   equivalence is a written step: −f′ = sin k · g′(C) > 0 and sin E > 0 there.
-  The resulting polynomial in u factors as (u − 1) × a quadratic.
+  The threshold polynomial P_t(u) vanishes at u = 1 for every t (the nodes,
+  where this equivalence does not apply) and factors as (u − 1) × a quadratic
+  [A3].
   - At t = 5/16, the quadratic is proportional to 2625w² + 5w − 16 with
     w = u − 1. Its discriminant 168025 is nonzero, and it has exactly one root
     u ∈ (0, 1): one zero-velocity point of the outgoing branch in (0, π/2)
     (G4).
-  - At t = 3/8, the factor is (u − 1)², the k³ contact, with no root in
-    (0, 1).
-  - At t = 7/16, there is no root in [0, 1].
-  - So the interior medium has an ordinary band extremum of Ω₊ and the
-    exterior medium does not. Whether the double root there is non-semisimple
-    requires Ω″ ≠ 0 at that point, which is [UNVERIFIED]. A choice of ω* at
-    the extremum's quasienergy must treat it.
+  - At t = 3/8, the factor (u − 1)² divides P_t exactly, and (u − 1)³ does
+    not (J2) [A3]. This is the k³ contact, with no root in (0, 1).
+  - At t = 7/16, the **quotient** P_t/(u − 1) has no root in [0, 1], so there
+    is no zero-velocity point in 0 < k < π/2 [A3, wording repaired]. The
+    endpoint k = 0 is handled by the nonzero slopes 8t − 3 and 1 − 8t.
+  - **Curvature and Jordan structure at the interior edge [A3].** On the
+    outgoing branch, P_t(u(k)) = sin²E · v(v + 2) with v = 2E′ − 1 (identity
+    B1). At the zero k* of v, differentiating gives
+    P_t′(u*) u′(k*) = 2 sin²E(k*) Ω₊″(k*). The factors are:
+    - P_t′(u*) = −(3/1024)(1 − u*)√168025 < 0 (B2);
+    - u′(k*) = −sin 2k* < 0;
+    - sin E(k*) > 0 (B3).
+    
+    Hence Ω₊″(k*) > 0, a minimum. The two bands are distinct there
+    (0 < E < π/2, B3), so the transfer root at z* = e^{iΩ₊(k*)} has algebraic
+    multiplicity 2, geometric multiplicity 1 and one Jordan block of size 2.
+    The steps from the factors to the multiplicities (the order of the zero
+    in k, the coin kernel of dimension 1 and the Bloch correspondence) are
+    written arguments (Astra; checked by hand here), not machine-checked.
+  - So the interior medium has a nondegenerate band minimum of Ω₊ and the
+    exterior medium does not. A choice of ω* at its quasienergy must treat
+    it. (The channels gate window I excludes it.)
 
 The channel analysis must treat these degeneracies separately.
 
@@ -294,8 +331,9 @@ Yes, under these conditions:
 - the homogeneous characteristic polynomial for all admissible θ, with z ≠ 0 [A1];
 - the multiplicities at (z, λ) = (±1, ±1) on the three profile values, and the
   k³ coefficient at the horizon [A1, A2];
-- the location of the ordinary band edge of Ω₊ at t = 5/16 and its absence at
-  t = 7/16 [A2];
+- the location of the band edge of Ω₊ at t = 5/16 (a minimum, Ω₊″ > 0) and
+  its absence at t = 7/16 [A2, A3];
+- the Jordan partition 3 + 1 at (z, λ) = (±1, ±1) on the horizon [A3];
 - the structure at z = i on the profile values;
 - the support, the denominators and the velocity values.
 

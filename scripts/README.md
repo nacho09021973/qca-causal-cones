@@ -572,7 +572,9 @@ Certified:
 - G4: the zero-velocity polynomial in u = cos²k. At t = 5/16 it is
   (u − 1) × a quadratic proportional to 2625w² + 5w − 16, with exactly one
   root in (0, 1) (Sturm count). At t = 3/8 it has a (u − 1)² factor and no
-  root in (0, 1). At t = 7/16 there is no root in [0, 1].
+  root in (0, 1). At t = 7/16 the quotient by (u − 1) has no root in [0, 1];
+  the polynomial itself always vanishes at u = 1, the nodes (wording
+  repaired in Amendment 3).
 
 Does **not** certify: the written equivalence of v₊ = 0 with the squared
 equation; Ω″ ≠ 0 at the t = 5/16 band edge (non-semisimplicity there); the
@@ -629,4 +631,25 @@ Nothing about transmission, Jost asymptotics or thresholds outside I.
 
 ```sh
 python3 -B scripts/verify_dispersive_horizon_channels.py
+```
+
+`verify_dispersive_horizon_transfer_amendment3.py` supports Amendment 3 of the
+transfer-matrix audit, after the
+[Astra review of Amendment 2](../reports/2026-11-26--dispersive-horizon-amendment2-astra-review.md).
+It imports the amendment-2 verifier read-only, so the 61 + 8 + 39 earlier
+checks run first. It then adds 10 exact checks, about 60 s in total.
+Certified:
+- J1: at t = 3/8, dim ker (M − λI)^j = 2, 3, 4, 4 at (±1, ±1), by exact rank
+  over ℚ(√6, √10). The Jordan partition is 3 + 1.
+- J2: (u − 1)² divides the horizon threshold polynomial and (u − 1)³ does not.
+- B1: P_t(u(k)) = sin²E · v(v + 2).
+- B2: P_t′(u*) = −(3/1024)(1 − u*)√168025 < 0 and 0 < u* < 1.
+- B3: 0 < f(k*) < 1.
+
+Does **not** certify: the differentiation step giving Ω₊″(k*) > 0; the
+algebraic multiplicity 2, geometric multiplicity 1 and Jordan block 2 at the
+interior edge (written arguments).
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transfer_amendment3.py
 ```

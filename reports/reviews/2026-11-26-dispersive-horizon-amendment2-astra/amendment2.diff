@@ -1,0 +1,91 @@
+diff --git a/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md b/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
+index 267128d..e013592 100644
+--- a/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
++++ b/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
+@@ -27,6 +27,19 @@ The new results are certified by
+ `scripts/verify_dispersive_horizon_transfer_repairs.py` (8 checks, run after
+ the 61 reviewed ones). The bytes of the reviewed verifier are unchanged.
+ 
++**Amendment 2 (2026-11-26), after the Grok review of Amendment 1**
++(`2026-11-26--dispersive-horizon-amendment1-grok-review.md`). Grok confirmed
++every figure in Amendment 1 and returned REPAIR_REQUIRED on three points:
++
++- the k³ expansion was attributed to R2/R3, which certify only multiplicities;
++- the twin degeneracy at (z, λ) = (−1, −1) was missing;
++- the semisimplicity at the profile endpoints and the ordinary band edge in
++  the interior were not stated.
++
++The repairs are marked "[A2]" below. They are certified by
++`scripts/verify_dispersive_horizon_transfer_amendment2.py` (39 checks, run
++after the 61 + 8 earlier ones). The earlier verifiers' bytes are unchanged.
++
+ ## Reviewer and independence
+ 
+ - **Reviewer:** Claude Opus 5.5 (`claude-opus-5-5`) in Claude Code. The user
+@@ -175,21 +188,39 @@ correspond to Bloch modes with complex k.
+ 
+ The nonzero tests use exact minimal polynomials, not simplification.
+ 
+-**Points of zero group velocity [A1].** The original text said that band edges
+-(∂ₖΩ = 0) give double roots of the usual non-semisimple kind. That holds only
+-at an ordinary quadratic extremum of a simple band. It is false in general,
+-and false on this profile.
+-
+-- At the nominal horizon (t = 3/8, z = 1), the outgoing infrared velocity
+-  vanishes and Ω₊ ~ k³.
+-- There, λ = 1 is a root of algebraic multiplicity **4** and geometric
+-  multiplicity 2.
+-- At t = 5/16 and t = 7/16, the same point (z, λ) = (1, 1) has multiplicity 2.
+-
+-These facts are certified exactly (repairs verifier R2, R3). Astra's analytic
+-derivation gives Ω₊ = (35/32)k³ + O(k⁵) at t = 3/8; this audit has not
+-checked that coefficient. The channel analysis must treat this degeneracy
+-separately.
++**Points of zero group velocity [A1, A2].** The original text said that band
++edges (∂ₖΩ = 0) give double roots of the usual non-semisimple kind. That holds
++only at a nondegenerate quadratic extremum (Ω″ ≠ 0) of a simple band. On this
++profile the degenerate points are:
++
++- **Horizon, t = 3/8.** The outgoing infrared velocity vanishes.
++  - E = k/2 + (35/64)k³ + O(k⁵), so Ω₊ = (35/32)k³ + O(k⁵) (amendment-2
++    verifier G3). This confirms the coefficient Astra and Grok derived.
++  - (z, λ) = (1, 1) is a root of algebraic multiplicity 4 and geometric
++    multiplicity 2 (repairs verifier R2).
++  - So is its twin (z, λ) = (−1, −1), at k = π (G1) [A2].
++  - The contact orders 3 + 1 give a Jordan partition 3 + 1 [UNVERIFIED: Grok's
++    argument, not machine-checked].
++- **Endpoints, t = 5/16 and t = 7/16.** At both (1, 1) and (−1, −1) the root
++  has algebraic multiplicity 2 and geometric multiplicity 2. It is semisimple
++  and is not a band edge (repairs verifier R3; G2) [A2].
++- **Interior, ordinary band edge [A2].** Write u = cos²k and C = cos k. On
++  (0, π/2), v₊ = 0 is equivalent to 4(1 − u)g′(C)² = 1 − g(C)². This
++  equivalence is a written step: −f′ = sin k · g′(C) > 0 and sin E > 0 there.
++  The resulting polynomial in u factors as (u − 1) × a quadratic.
++  - At t = 5/16, the quadratic is proportional to 2625w² + 5w − 16 with
++    w = u − 1. Its discriminant 168025 is nonzero, and it has exactly one root
++    u ∈ (0, 1): one zero-velocity point of the outgoing branch in (0, π/2)
++    (G4).
++  - At t = 3/8, the factor is (u − 1)², the k³ contact, with no root in
++    (0, 1).
++  - At t = 7/16, there is no root in [0, 1].
++  - So the interior medium has an ordinary band extremum of Ω₊ and the
++    exterior medium does not. Whether the double root there is non-semisimple
++    requires Ω″ ≠ 0 at that point, which is [UNVERIFIED]. A choice of ω* at
++    the extremum's quasienergy must treat it.
++
++The channel analysis must treat these degeneracies separately.
+ 
+ ## Additional checks (§5)
+ 
+@@ -261,7 +292,10 @@ Yes, under these conditions:
+ - the bijection with Uψ = zψ;
+ - the determinant;
+ - the homogeneous characteristic polynomial for all admissible θ, with z ≠ 0 [A1];
+-- the multiplicities at (z, λ) = (1, 1) on the three profile values [A1];
++- the multiplicities at (z, λ) = (±1, ±1) on the three profile values, and the
++  k³ coefficient at the horizon [A1, A2];
++- the location of the ordinary band edge of Ω₊ at t = 5/16 and its absence at
++  t = 7/16 [A2];
+ - the structure at z = i on the profile values;
+ - the support, the denominators and the velocity values.
+ 
