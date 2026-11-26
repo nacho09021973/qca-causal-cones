@@ -502,3 +502,37 @@ spectator-independent; three-packet sequences in both time orders; G(r) =
 -P V(r) = G(A, B) with A, B in SU(2); Valiant's five matchgate identities;
 P V(r) = exp(+i theta (XX+YY)/2), quadratic in JW fermions. Does **not**
 certify: F, the adjacency argument, T4.
+
+## Dispersive-horizon transfer matrix audit (2026-11-26)
+
+`verify_dispersive_horizon_transfer_matrix.py` supports the
+[audit](../reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md)
+of the author derivation
+[`2026-11-26--dispersive-horizon-three-step-transfer.md`](../reports/2026-11-26--dispersive-horizon-three-step-transfer.md)
+(commit `8e5b540`). There is no gate charter for this line. 61 exact SymPy
+1.14.0 checks, about 45 s.
+Certified: the coin order read off the word of W; the 144 entries of the
+report's blocks P, Q, R, H against an independent elimination of the raw
+stage and closure equations, for general independent angles at x and x+1
+(numerators reduced modulo c^2+s^2=1), with two negative controls; the
+uniqueness determinant of that linear system; consistency of the auxiliary
+b_6(x+1) with row 12 of M_{x+1}; a second route (iterate M with
+site-dependent rational coins, apply U from its definition, U psi = z psi
+exactly at 22 interior sites, stage vectors matched); det M_x =
+cot beta_6(x)/cot beta_6(x+1), z-free; tr W/2 = A cos 3k + (1-A) cos k and
+det W = 1; charpoly(M_hom) * (-z A^2) = the report's lambda-polynomial for
+symbolic theta; at (z, lambda) = (i, -i) and t = 5/16, 3/8, 7/16, two
+independent eigenvectors and algebraic multiplicity exactly 2; support
+[-7, 5] with nonzero extreme amplitudes for one site-dependent coin
+configuration; the denominators and the six velocity values.
+Does **not** certify: the written bijection argument between recurrence
+solutions and solutions of U psi = z psi (the script checks its local
+ingredients and one exact witness); the analytic steps E'(pi/2) =
+-f'(pi/2)/sin E and v = -1 + 2E'; the continuity/compactness argument for
+omega_* and k_+(t); anything about channels, flux normalisation, band-edge
+Jordan blocks or transmission (OPEN). Author-side audit by Claude; not a
+cross-family review.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transfer_matrix.py
+```
