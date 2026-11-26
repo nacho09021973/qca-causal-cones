@@ -112,7 +112,8 @@ separately:
   argument: both slopes at k = π/2 are nonzero because A < 0. (C) certifies
   only the three profile values.
 - The coefficient Ω₊ = (35/32)k³ + O(k⁵) at t = 3/8. The multiplicity it
-  implies is certified; the coefficient is not.
+  implies is certified; the coefficient is not. *(Later: certified by
+  Amendment 2, verifier G3, after the Grok review.)*
 - A written compactness argument for ω* and k₊(t): a uniform positive slope
   on a strip [π/2 − δ, π/2], then the implicit function theorem.
 

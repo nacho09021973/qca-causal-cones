@@ -556,3 +556,28 @@ compactness step for ω*.
 ```sh
 python3 -B scripts/verify_dispersive_horizon_transfer_repairs.py
 ```
+
+`verify_dispersive_horizon_transfer_amendment2.py` supports Amendment 2 of the
+same audit, after the
+[Grok review of Amendment 1](../reports/2026-11-26--dispersive-horizon-amendment1-grok-review.md).
+It imports the repairs verifier read-only, which itself imports the reviewed
+one, so the 61 + 8 earlier checks run first. It then adds 39 exact checks,
+about 55 s in total.
+Certified:
+- G1: at t = 3/8, (z, λ) = (−1, −1) has algebraic multiplicity 4 and geometric
+  multiplicity 2.
+- G2: at t = 5/16 and t = 7/16, (±1, ±1) has algebraic multiplicity 2 and
+  geometric multiplicity 2 (semisimple).
+- G3: at t = 3/8, E = k/2 + (35/64)k³ + O(k⁵).
+- G4: the zero-velocity polynomial in u = cos²k. At t = 5/16 it is
+  (u − 1) × a quadratic proportional to 2625w² + 5w − 16, with exactly one
+  root in (0, 1) (Sturm count). At t = 3/8 it has a (u − 1)² factor and no
+  root in (0, 1). At t = 7/16 there is no root in [0, 1].
+
+Does **not** certify: the written equivalence of v₊ = 0 with the squared
+equation; Ω″ ≠ 0 at the t = 5/16 band edge (non-semisimplicity there); the
+3 + 1 Jordan partition at the horizon.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transfer_amendment2.py
+```
