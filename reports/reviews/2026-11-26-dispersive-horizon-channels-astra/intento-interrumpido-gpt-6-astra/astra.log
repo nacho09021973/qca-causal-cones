@@ -1,0 +1,1681 @@
+OpenAI Codex v0.172.0
+--------
+workdir: /tmp/tmp.PkRptim0qB/sello
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a2187f-80a8-7db3-9351-3a03d05956a0
+--------
+user
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente la **ejecución del contrato de canales C1–C5** para el
+paseo cuántico U = L₋W², W = S C(θ) S C(θ) S C(−2θ), con t = cos²θ,
+A = t(2t−1), medio interior t = 5/16 (x → −∞) y exterior t = 7/16 (x → +∞).
+La matriz de transferencia 12×12 M_x(z) y su verificador ya pasaron una
+auditoría con revisiones externas; no las revises de nuevo salvo donde C1–C5
+dependan de ellas. Se adjuntan:
+
+(1) `DISPERSIVE_HORIZON_CHANNELS_GATE.md`: el contrato congelado (commit
+    `7a63529`), con la regla de ventana I, los veredictos y las reglas de parada;
+(2) `2026-11-26--dispersive-horizon-channels.md`: el informe de ejecución, con
+    veredicto de autor CHANNELS_CLASSIFIED (PRELIMINARY);
+(3) `verify_dispersive_horizon_channels.py`: el verificador (53 comprobaciones,
+    SHA256 `08a38735…`, commit `a5b9be3`);
+(4) `verify_dispersive_horizon_transfer_matrix.py`: el verificador de la matriz
+    ya revisado, que (3) importa sin modificarlo (`M_report`, `hom_cs`, etc.);
+(5) `2026-11-26--dispersive-horizon-channels-run.txt`: el registro de la
+    ejecución (53/53, exit 0).
+
+Comprueba, informando para cada punto PASS / REPAIR_REQUIRED / FAIL /
+UNVERIFIED, con las derivaciones necesarias:
+
+1. **C1, forma de flujo.** ¿Es correcto G_x = M_x^H D M_x − E₇₇ con
+   D = diag(0,1⁵,−1⁶) como flujo de probabilidad a través del corte entre x y
+   x+1? ¿Decide el verificador M_x^H G_{x+1} M_x = G_x en general (ángulos
+   independientes en x, x+1, x+2, |z| = 1, reducción módulo c²+s²=1)? ¿Es
+   adecuada la segunda vía (flujo operativo leído de la palabra de U sobre
+   soluciones exactas) y es correcto det G = −cot²θ en medio homogéneo?
+2. **C2, estructura de raíces.** La simetría λ¹²P(1/λ,1/z) = z⁻²P(λ,z), la
+   reducción P = zλ⁶Φ, Φ = −2h(k) en el círculo, y el argumento de enrollamiento
+   Σ sign(v) = −2 a partir de det U(k) = e^{−2ik}.
+3. **C3, umbrales y ventana.** La clasificación de colisiones (puntos z = ±1,
+   ±i) frente a valores críticos (4f′² = 1 − f², f ≠ 0); la raíz interior
+   u* = (5245 − √168025)/5250 y la ausencia de valores críticos exteriores;
+   la aritmética de intervalos racionales que sitúa exactamente un valor crítico
+   interior en el primer cuadrante abierto; el polinomio mínimo de Re z_c* y la
+   desigualdad Re z_c* > 3/5. ¿Aplica la regla de ventana del contrato
+   correctamente y es I = (arg z_c*, π/2) la componente correcta? ¿Importa la
+   glosa de C_t que el informe señala?
+4. **C4, clasificación en I.** Libertad de cuadrados, gcd(H, N) = 1, recuento de
+   Sturm en τ = tan(k/2) (incluido el tratamiento de k = π), signo exacto de v
+   en cada raíz, la tabla 4 propagantes (1 a la derecha, 3 a la izquierda) +
+   4 + 4 evanescentes en cada medio, y el argumento escrito de constancia en
+   todo I. ¿Es coherente con C2 (#der − #izq = −2)?
+5. **C5, normalización.** Los intervalos sobre F = Y^H G Y, su signo y el
+   cociente F/(v‖q₁‖²) ≈ 1; la identidad −iU^H ∂ₖU = Σ R_j^H σ_z R_j − I y el
+   paso escrito (forma por etapas + Hellmann–Feynman) que da F = (∂ₖΩ)‖q₁‖²
+   exactamente; el argumento de ortogonalidad de los modos evanescentes
+   (Y_μ^H G Y_ν = 0 salvo μ̄ν = 1).
+6. **Verificador (3).** ¿Deciden sus 53 comprobaciones lo que dicen? Atención a
+   posibles falsos positivos, coma flotante en cantidades certificadas, anchura y
+   corrección de los intervalos (RI/CI, isqrt), aislamiento de raíces, y que no
+   se modifiquen los bytes de (4).
+7. **Veredicto y alcance.** ¿Se sigue CHANNELS_CLASSIFIED de las reglas del
+   contrato (exactamente un canal interior hacia la derecha; ninguna regla de
+   parada)? ¿Separa el informe lo certificado de lo escrito y de lo numérico solo
+   orientativo? ¿Es adecuada la sección «Not claimed»? ¿Afecta la desviación de
+   proceso declarada (una ejecución de desarrollo antes del commit) a la validez?
+
+No tienes acceso al repositorio ni puedes ejecutar código. Distingue lo que
+derivas a mano de lo que solo inspeccionas. No calcules transmisión, matriz de
+dispersión, asintóticas de Jost ni originalidad.
+
+Entrega en español: un veredicto por punto, un único veredicto global
+(PASS / REPAIR_REQUIRED / FAIL / INCONCLUSIVE), las derivaciones críticas, y
+objeciones ordenadas por gravedad con sección y reparación concreta. Si no hay
+fallos, dilo sin inventar objeciones.
+
+=== DOCUMENT 1: DISPERSIVE_HORIZON_CHANNELS_GATE.md ===
+
+# Dispersive-horizon asymptotic channels gate
+
+2026-11-26. Author: Claude Code (Claude Opus 5.5). Initial status **OPEN**.
+Frozen by the commit that adds this file on branch
+`research/dispersive-horizon-channels`, from `b1c6d75`, before any execution.
+
+## Authorization and budget
+
+User message, 2026-11-26: «Yo seguiría con un contrato acotado para clasificar
+los canales asintóticos y normalizarlos por flujo … El siguiente paso que
+autorizaría es redactar el contrato de canales, con la revisión de la Enmienda 2
+como encargo separado.» That message authorized drafting.
+
+User decision, 2026-11-26: «Autorizo conceptualmente Q-a, Q-b y Q-d, y Q-c con
+la modificación indicada», with the order «1. Congelar el contrato de canales.
+2. Resolver C1–C5. 3. Revisar independientemente los resultados. 4. Solo
+entonces abordar la transmisión». The modification and the branch were then
+chosen explicitly: Q-c "Add uniqueness stop"; Q-b "New research branch". See
+"User decisions" below.
+
+Freezing is authorized. Each of the following still needs its own user
+authorization:
+
+- execution of C1–C5;
+- independent review;
+- promotion;
+- any transmission charter.
+
+The review of Amendment 2 is a separate brief. It is not part of this
+contract.
+
+**Scope note, for the user's decision before freezing.**
+`PROJECT_INSTRUCTIONS.md` §1 frames the project as the coexistence question
+(Thirring) plus inherited lines A and B∞*. This walk is a one-particle quantum
+walk with an imposed spatial profile. It is not the homogeneous interacting
+rule of the main objective (`README.md` at `8fd37a5` calls it a separate
+exploratory line). `state/CURRENT_STATE.md` has no entry for it. Freezing this
+charter therefore also means accepting it as a separately chartered
+exploratory line, recorded in `CURRENT_STATE.md` on the branch where it is
+frozen. The user accepted this (Q-a).
+
+One contract. A balance is mandatory on closure. No further contract follows
+automatically: transmission needs its own charter.
+
+## Known, question, abandonment
+
+**Known** (read or certified this session, with source):
+
+- **Operator and conventions.** `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
+  §2, §4 (`8e5b540`) defines:
+  - U = L₋W² and W = S C(θ) S C(θ) S C(−2θ);
+  - the profile t_L(x) = 3/8 + tanh(x/L)/16, so t → 5/16 as x → −∞
+    (interior) and t → 7/16 as x → +∞ (exterior);
+  - Floquet eigenvalue e^{iΩ}, v = ∂ₖΩ, λ = e^{−ik}.
+- **Transfer matrix.** The 12×12 matrix M_x(z) of that report, §6, gives a
+  linear bijection between solutions of Uψ = zψ on ℤ and orbits of M
+  (audit `reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md`).
+  - Its entries are PASS under Astra's review.
+  - The audit is amended twice. Amendment 2 is not yet reviewed.
+  - Certified by `verify_dispersive_horizon_transfer_matrix.py` T2/T3.
+- **Determinant and characteristic polynomial** (T4, T5).
+  - det M_x = cot θ_x / cot θ_{x+1}, z-free.
+  - In a homogeneous medium, det(λ − M) · (−zA²) = z²λ⁵ − zλ⁶(4f² − 2) + λ⁷,
+    with A = t(2t − 1).
+- **Bands.** Ω_± = −k ± 2E with cos E = A cos 3k + (1 − A) cos k.
+  - The outgoing infrared velocity is 8t − 3: −1/2 in the interior and
+    +1/2 in the exterior.
+  - v_UV,out(π/2) = 1 − 8A: 31/16 in the interior and 23/16 in the exterior.
+  - Certified by T8.
+- **Degenerate points on the profile values** (audit A1/A2; repairs verifier
+  R2/R3; amendment-2 verifier G1–G4).
+  - (z, λ) = (±1, ±1): multiplicity 2 and semisimple at t = 5/16 and
+    t = 7/16; multiplicity 4, geometric multiplicity 2, at t = 3/8.
+  - (z, λ) = (i, −i): double and semisimple at the three profile values
+    (T6).
+  - Ω₊ has exactly one zero-velocity point in (0, π/2) at t = 5/16 and none
+    at t = 7/16 (G4).
+- **Local branch** [author and AI arguments; partly certified]. Report §5,
+  with Astra's written compactness step, argues for an ω* < π/2 near π/2
+  and a nondegenerate branch k₊(t) with ∂ₖΩ₊ > 0 for all t on the profile.
+  Only its ingredients are certified (T8): 0 ≤ f < 1 on (0, π/2] and
+  v_UV > 0. Astra's argument is an AI argument, not a source.
+
+**Not known:**
+
+- the full root structure (all twelve λ) at fixed |z| = 1 in either limit;
+- which roots are propagating or evanescent and in which direction;
+- the conserved flux form of M_x;
+- the threshold set (critical values of Ω_±) in either limit.
+
+Author remark to be derived, not a premise [UNVERIFIED]: det U(k) = e^{−2ik},
+so the windings of the bands sum to −2. At every regular ω this would force
+#(propagating roots with v > 0) − #(with v < 0) = −2 in each medium.
+
+**Question.** Fix the tanh profile and its two limits t = 5/16 (interior) and
+t = 7/16 (exterior). Is the interval I declared below nonempty, and on I:
+
+- does the interior medium have at least one propagating right-moving
+  (v > 0) channel, the candidate incident channel, and
+- does the exterior medium have at least one propagating right-moving
+  channel, the candidate transmitted channel?
+
+The full classification of all twelve roots in both media, with flux signs
+and unit-flux normalization, is the deliverable either way.
+
+**Abandonment of this route** (transmission through the declared window):
+verdict `NO_COMMON_CHANNEL_INTERVAL` or `INCIDENT_CHANNEL_NOT_UNIQUE`. Neither
+is a no-go for other windows, profiles or rules.
+
+**Weakness of the falsifier, recorded before freezing.** Report §5 already
+argues that a right-moving Ω₊ branch exists near π/2 in every medium of the
+profile. `NO_COMMON_CHANNEL_INTERVAL` is therefore unlikely on I. For that
+reason the user added a uniqueness stop (Q-c): `INCIDENT_CHANNEL_NOT_UNIQUE`.
+
+## Frozen data
+
+- **Rule:** U = L₋W² of report §2, §4, unchanged.
+- **Media:** homogeneous t_int = 5/16 and t_ext = 7/16. The intermediate
+  profile enters only through C1, the x-dependence of the flux form. The
+  scattering problem is not posed here.
+- **Variables:** z = e^{iω}, |z| = 1, λ = e^{−ik}, Y_x as in report §6.
+- **Window.** Let C_t be the set of critical values of ω ↦ Ω_±(k; t) mod 2π.
+  These are the quasienergies at which two roots λ on the unit circle
+  collide. I is the connected component of
+  S¹ \ (C_{5/16} ∪ C_{7/16} ∪ {π/2}) whose closure contains π/2 from below.
+  - This fixes I before computing: no window is chosen after seeing results.
+  - π/2 is excluded because the two bands cross there (z = i) in every
+    medium.
+  - If π/2 ∈ C_t, then I is the component adjacent to π/2 from below.
+
+## Tasks
+
+- **C1 (flux form).** Derive from the unitarity of U a sesquilinear form
+  G_x (12×12, Hermitian) such that M_x(z)^† G_{x+1} M_x(z) = G_x for all
+  |z| = 1 and all admissible site angles.
+  - Physically, G_x is the probability current through the cut between x
+    and x+1.
+  - Verify it exactly for general independent angles.
+  - Check consistency with |det M_x|.
+  - Second route: on a homogeneous medium, the flux of a propagating Bloch
+    mode must be proportional, with a fixed positive factor, to its group
+    velocity ∂ₖΩ.
+- **C2 (root structure).** For |z| = 1, show that the twelve roots are closed
+  under λ ↦ 1/λ̄, or refute this.
+  - Derive or refute the winding count of the author remark.
+  - Count the roots on the unit circle as a function of ω between
+    thresholds.
+- **C3 (thresholds).** Compute C_{5/16} and C_{7/16} exactly, as algebraic
+  numbers, including zero-velocity points such as the G4 edge.
+  - Give certified rational enclosures. Floating point is not admitted as
+    evidence.
+  - Determine I exactly.
+- **C4 (classification on I).** Root counts are constant on I. Certify them
+  at one exact point z₀ ∈ I with rational coordinates on the unit circle,
+  together with the exclusion of thresholds from I. In each medium, give:
+  - every root λ, propagating (|λ| = 1, with the sign of v and of the flux)
+    or evanescent (|λ| < 1 or > 1, with its decay direction);
+  - the counts.
+- **C5 (normalization).** For each propagating root, give the eigenvector
+  of M_hom(z₀) normalized to Y^† G Y = ±1.
+  - State the pairing of evanescent modes under G.
+  - State the dimension of the incoming and outgoing channel spaces of the
+    full-line problem: interior right-movers plus exterior left-movers in;
+    exterior right-movers plus interior left-movers out. The two must be
+    equal.
+
+Any computation needs a permanent verifier in `scripts/`, committed before
+execution. Failed runs are retained, and exact command entries go into
+`.claude/settings.json`. The reviewed verifiers (transfer matrix, repairs,
+amendment 2) are reused read-only.
+
+## Verdicts
+
+- `CHANNELS_CLASSIFIED`: C1–C5 succeed, I is nonempty, and on I the
+  interior has exactly one right-mover and the exterior at least one
+  right-mover. The counts and normalizations are recorded.
+- `NO_COMMON_CHANNEL_INTERVAL`: I is empty, or on I one of the two media has
+  no right-moving propagating root. This route is closed for this window.
+- `INCIDENT_CHANNEL_NOT_UNIQUE`: I is nonempty and both media have at least
+  one right-mover, but on I the interior has more than one right-moving
+  propagating channel, so "the" incident channel is not unique. The
+  classification and normalization (C1–C5) are still recorded. This route is
+  closed for this window.
+- `FLUX_FORM_NOT_ESTABLISHED`: C1 fails. Stop; no classification is claimed.
+- `OPEN_AFTER_CHANNEL_ANALYSIS`: otherwise, with the open obligation stated.
+
+All verdicts are author PRELIMINARY pending independent review, which needs
+separate permission.
+
+## Not claimed by any verdict
+
+The following stay outside every verdict:
+
+- existence or uniqueness of the scattering matrix for the tanh profile,
+  Jost-type asymptotics, or the convergence rate of the profile;
+- 𝒯_L > 0 or its L → ∞ limit;
+- the Jordan structure at thresholds (outside I by construction);
+- the interpretation of Floquet species;
+- any physical horizon or Hawking statement;
+- other windows, profiles or rules.
+
+NOVELTY = OPEN. Transfer-matrix channel analysis for quantum walks is prior
+art; see the references of report §8, read in the original before any
+citation.
+
+## Execution bound
+
+One working session. No search over windows, profiles or parameters. Stop on
+a proved verdict.
+
+## User decisions (2026-11-26)
+
+- **Q-a (scope):** accepted. This is a separately chartered exploratory line,
+  recorded in `state/CURRENT_STATE.md` on `research/dispersive-horizon-channels`.
+- **Q-b (branch):** new research branch `research/dispersive-horizon-channels`,
+  from `review/dispersive-horizon-transfer-audit` at `b1c6d75`.
+- **Q-c (stop rule):** keep `NO_COMMON_CHANNEL_INTERVAL` and add
+  `INCIDENT_CHANNEL_NOT_UNIQUE` (more than one interior right-mover on I).
+- **Q-d (window):** I as defined in "Frozen data", adjacent to π/2 from below.
+
+The user's stated interest, recorded as motivation and not as a criterion:
+whether the rule admits a dynamical connection between interior and exterior
+modes compatible with a conserved flux. A positive interior group velocity is
+a possibility of escape; a nonzero transmission amplitude would show that it
+is realized. That second question belongs to a later transmission charter.
+
+## Before freezing
+
+No computation has been run for this contract. The facts under "Known" come
+from the audited report and the three verifiers already in the repository.
+
+=== DOCUMENT 2: 2026-11-26--dispersive-horizon-channels.md ===
+
+# Dispersive-horizon asymptotic channels: execution of C1–C5
+
+Date: 2026-11-26. Branch: `research/dispersive-horizon-channels`.
+
+| Item | Reference |
+| --- | --- |
+| Charter | `theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md`, frozen at `7a63529` |
+| Verifier | `scripts/verify_dispersive_horizon_channels.py`, committed at `a5b9be3` before the recorded execution; SHA256 `08a387355884018d09a35b521e341f6219a235cf462167ea3f16c055e76772dc` |
+| Recorded run | `reports/2026-11-26--dispersive-horizon-channels-run.txt`: 53/53 channel checks, after the 61/61 reviewed transfer-matrix checks; exit 0; Python 3.12.3, SymPy 1.14.0 |
+
+**Author verdict: `CHANNELS_CLASSIFIED` (PRELIMINARY; independent review
+pending; not promoted).** TRANSMISSION = OPEN. NOVELTY = OPEN.
+
+## Authorization and process
+
+- **Authorization:** user «autorizo las dos cosas» (2026-11-26), meaning push
+  the research branch and execute C1–C5.
+- **Order of work:**
+  1. a numerical inspection of the band landscape, used for orientation only,
+     with nothing retained;
+  2. one development run of the verifier, which passed;
+  3. the verifier commit `a5b9be3`;
+  4. the recorded execution.
+- **Deviation:** the charter asks for the verifier to be committed before
+  execution. The development run preceded the commit and is disclosed here.
+  No run failed.
+
+**Conventions,** as in the charter:
+
+- U = L₋W² with W = S C(θ) S C(θ) S C(−2θ);
+- z = e^{iω}, λ = e^{−ik}, v = ∂ₖΩ;
+- interior t = 5/16 as x → −∞, exterior t = 7/16 as x → +∞;
+- A = t(2t − 1), f = A cos 3k + (1 − A) cos k = g(cos k), with
+  g(C) = 4AC³ + (1 − 4A)C.
+
+## C1. Flux form: ESTABLISHED (author; verifier C1)
+
+The probability crossing the cut between x and x+1 during one period, summed
+over the six conditional shifts and L₋, is conserved for every solution of
+Uψ = zψ with |z| = 1. The reason is that each site's population returns to
+itself (|zψ|² = |ψ|²) and the coins conserve probability locally.
+
+In transfer variables the cut flux is Y_x^H G_x Y_x with
+
+G_x = M_x^H D M_x − E₇₇,  D = diag(0,1,1,1,1,1,−1,−1,−1,−1,−1,−1).
+
+The verifier checks:
+
+- **Identity.** M_x^H G_{x+1} M_x = G_x for general independent angles at
+  x, x+1, x+2 and |z| = 1, decided exactly modulo c² + s² = 1.
+- **Hermitian.** G_x is Hermitian.
+- **Second route.** On two exact solutions with site-dependent rational
+  coins, the operational flux read off the word of U is constant in x and
+  equals Y^H G Y. The check covers all four sesquilinear pairings and every
+  interior site.
+- **Determinant.** In a homogeneous medium, det G = −cot²θ (−5/11 and −7/9
+  in the two media), so the form is nondegenerate.
+
+Consistency with det M_x = cot θ_x / cot θ_{x+1}: det G_x = |det M_x|² det
+G_{x+1} reproduces −cot²θ_x by telescoping. This is an author remark, not
+separately checked for a varying profile.
+
+## C2. Root structure: ESTABLISHED (verifier C2), winding remark proved
+
+- **Symmetry.** λ¹² P(1/λ, 1/z) = z⁻² P(λ, z). For |z| = 1 the twelve roots
+  are therefore closed under λ ↦ 1/λ̄, and roots off the circle come in
+  pairs, inside and outside.
+- **Reduction to one real function.** P = zλ⁶Φ, and on the circle
+  Φ = −2h(k) with h = 2f² − 1 − cos(ω + k). Hence the roots on the circle,
+  with their multiplicities, are the real zeros of h.
+- **Winding.** Ω₊ + Ω₋ = −2k, because det U(k) = e^{−2ik}. At every regular
+  ω, the signed count of propagating roots, Σ sign(v), equals the degree of
+  k ↦ det U(k), which is −2. So #right − #left = −2 in every medium and at
+  every regular ω. This was the author remark of the charter; it is now a
+  written argument, checked against the counts in C4.
+
+## C3. Thresholds and window: ESTABLISHED (verifier C3, written step noted)
+
+**Where two propagating roots can collide.** A double root on the circle
+needs h = ∂ₖh = 0.
+
+- If ∂_ω h = sin(ω + k) ≠ 0, then v = 0, and eliminating ω gives
+  f²(4f′² − (1 − f²)) = 0 (an identity checked by the verifier).
+- If sin(ω + k) = 0, then f ∈ {0, ±1}, the collision points.
+- On the profile A < 0, so g(C) = C(1 − 4A(1 − C²)) vanishes only at
+  C = 0, and g′ ≥ (4t − 1)² > 0 makes f = ±1 occur only at k = 0, π.
+- The collision points are therefore z ∈ {1, i, −1, −i}. They are band
+  crossings and nodes, not critical values.
+
+**Critical values.** These are the k with 4f′² = 1 − f² and f ≠ 0. In
+u = cos²k the threshold polynomial is (u − 1) × a quadratic. Its root u = 1
+corresponds to the nodes and is not critical, since v ≠ 0 there for
+t ≠ 3/8.
+
+- **Interior.** The quadratic is proportional to 2625u² − 5245u + 2604. It
+  has exactly one root in (0, 1) (Sturm count),
+  u* = (5245 − √168025)/5250.
+  - This gives four critical points (cos k = ±√u*, sin k = ±√(1 − u*)).
+  - Their critical values are
+    z_c = e^{−ik}(2f² − 1 − 4iff′), with f′ = −sin k · g′(cos k).
+- **Exterior.** The quadratic has no root in [0, 1], so there are no
+  critical values at t = 7/16. Its only root on [0, 1] is u = 1, the nodes.
+
+**Window.** Rational interval arithmetic (200-bit integer square roots, no
+floating point) shows the following.
+
+- Exactly one interior critical value lies in the open first quadrant. It is
+  z_c*, with cos k = +√u* and sin k = −√(1 − u*).
+- The other three have Im < 0 or Re < 0.
+- Re z_c* is the algebraic number with minimal polynomial
+  316240512000000000X⁴ − 664624285099139500X² + 348107462168643891,
+  certified inside one isolating interval.
+- Re z_c* > 3/5 = Re z₀.
+
+Hence I = (arg z_c*, π/2) is nonempty and contains z₀ = (3+4i)/5. It also
+excludes all four collision points. For orientation only (a numerical value,
+not a certified quantity): arg z_c* ≈ 0.0894 and arg z₀ ≈ 0.9273.
+
+The charter glosses C_t as "the quasienergies at which two roots on the
+unit circle collide". That gloss would also include the collision points.
+Since none of them lies in (arg z_c*, π/2), the two readings give the same I.
+
+## C4. Classification on I: ESTABLISHED at z₀; constancy on I by written argument
+
+At z₀, in each medium, the verifier certifies:
+
+- P(·, z₀) has degree 12, P(0) ≠ 0, and is squarefree. So the twelve roots
+  are distinct and M_hom(z₀) is diagonalizable.
+- With τ = tan(k/2), H(τ) = (1 + τ²)⁶ h has degree 12, so there is no root
+  at k = π. It is squarefree, and gcd(H, N) = 1, where N is the
+  group-velocity numerator. So there is no zero velocity and no collision at
+  z₀.
+- The real roots of H are counted by Sturm. The sign of
+  v = −(4ff′ + sin(ω + k))/sin(ω + k) at each root is decided exactly, by
+  isolating it away from the roots of N.
+
+| Medium | Propagating | Right-moving (v > 0) | Left-moving (v < 0) | Evanescent, \|λ\| < 1 (decays as x → +∞) | Evanescent, \|λ\| > 1 (decays as x → −∞) |
+| --- | --- | --- | --- | --- | --- |
+| interior t = 5/16 | 4 | **1** | 3 | 4 | 4 |
+| exterior t = 7/16 | 4 | **1** | 3 | 4 | 4 |
+
+Numerically, for orientation only: the interior right-mover is at k ≈ 1.231
+with v ≈ 1.81, the exterior one at k ≈ 1.107 with v ≈ 1.29. These are the
+high-wavenumber Ω₊ branches of report §5.
+
+**Constancy on I** (written argument). On I there is no critical value (C3)
+and no collision point, so h has only simple real zeros. By the implicit
+function theorem these zeros move continuously, with v continuous and
+nonzero. By the 1/λ̄ symmetry a root can leave the circle only through a
+double root on the circle, which is excluded. So the counts and signs at z₀
+hold on all of I.
+
+**Full-line channel count.**
+
+- Incoming: interior right-movers (1) plus exterior left-movers (3), a total
+  of 4.
+- Outgoing: exterior right-movers (1) plus interior left-movers (3), a total
+  of 4.
+
+The counts are equal, as flux conservation requires.
+
+## C5. Normalization: ESTABLISHED (verifier C5, with the written steps marked)
+
+**Each propagating root.** Take the Bloch eigenvector: a kernel vector v of
+U(k) − z₀, with stages q_{j+1} = S(k)C(β_j)q_j and Y = (a_j, b_j/λ). Exact
+rational interval arithmetic on a 10⁻⁴⁵-wide isolating interval of the root
+shows:
+
+- F = Y^H G Y ≠ 0, and its sign is that of the group velocity, at all 8
+  propagating roots;
+- Im F is enclosed around 0;
+- F/(v‖q₁‖²) is enclosed around 1 with width below 10⁻²⁰.
+
+So N = Y/√|F| satisfies N^H G N = sign(v) = ±1. The enclosure of F is the
+certified normalization factor.
+
+**Exact identity F = (∂ₖΩ)‖q₁‖²** (written argument with a certified
+ingredient).
+
+- For a Bloch vector, Y^H G Y equals Σ_j (|(C q_j)↑|² − |(C q_j)↓|²) −
+  ‖q₁‖². This is the stage form of G, obtained by direct expansion.
+- The verifier certifies −iU^H ∂ₖU = Σ_j R_j^H σ_z R_j − I, with R_j the
+  partial products.
+- Hellmann–Feynman gives ∂ₖΩ‖v‖² = v^H(−iU^H ∂ₖU)v. Hence F = (∂ₖΩ)‖q₁‖²
+  exactly.
+
+The interval ratio is a consistency check of this identity at the 8 roots,
+not its proof.
+
+**Evanescent modes** (written argument). From C1, Y_μ^H G Y_ν =
+μ̄ν Y_μ^H G Y_ν, so Y_μ^H G Y_ν = 0 unless μ̄ν = 1.
+
+- The twelve eigenvectors form a basis, because the eigenvalues are
+  distinct.
+- G is nondegenerate.
+- So each evanescent mode pairs nontrivially only with its mirror 1/μ̄.
+  Evanescent modes carry no flux individually; flux appears only in
+  cross-terms between mirror pairs.
+
+## Verdict
+
+**`CHANNELS_CLASSIFIED`** (author PRELIMINARY):
+
+- C1–C5 succeed;
+- I = (arg z_c*, π/2) is nonempty;
+- on I the interior has exactly one right-moving propagating channel, so
+  `INCIDENT_CHANNEL_NOT_UNIQUE` does not apply;
+- the exterior has one right-moving channel.
+
+Neither stop rule fires.
+
+The full-line scattering problem on I has 4 incoming and 4 outgoing
+channels. The candidate incident channel, the interior right-mover, is
+unique. The candidate transmitted channel, the exterior right-mover, is
+unique. Three left-moving channels in each medium are also open.
+
+## Not claimed
+
+- 𝒯_L > 0, or any statement about the coupling between channels across the
+  profile.
+- Existence or uniqueness of the scattering matrix for the tanh profile, or
+  Jost-type asymptotics.
+- Anything at quasienergies outside I, including the Jordan structure at the
+  thresholds z_c and at the collision points.
+- Any statement about the intermediate frozen media 5/16 < t < 7/16. They
+  include the horizon t = 3/8, where (±1, ±1) are quadruple roots (audit
+  A1/A2).
+- A physical horizon or Hawking statement.
+- Novelty.
+
+The user's question (does the rule connect interior and exterior modes
+dynamically, with conserved flux) is now posed on a defined 4 × 4 channel
+space with a certified flux form. Answering it is the task of a separate
+transmission charter.
+
+## Next steps (each needs user authorization)
+
+1. Independent review of this report and its verifier by a model of another
+   family.
+2. A transmission charter on I.
+
+=== DOCUMENT 3: verify_dispersive_horizon_channels.py ===
+
+"""Exact verifier for theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md (frozen at
+7a63529): flux form, root structure, thresholds, classification and unit-flux
+normalization of the asymptotic channels of U = L_- W^2 in the media
+t = 5/16 (interior, x -> -inf) and t = 7/16 (exterior, x -> +inf).
+
+Imports scripts/verify_dispersive_horizon_transfer_matrix.py read-only (its 61
+checks run first). Exact SymPy and exact rational interval arithmetic only:
+no floating point enters any certified quantity. Fails closed.
+
+  C1  flux form G_x = M_x^H D M_x - E_77, D = diag(0,1,1,1,1,1,-1,...,-1):
+      M_x^H G_{x+1} M_x = G_x for general independent angles on three sites
+      and |z| = 1; Hermitian; operational cut flux (second route) on exact
+      site-dependent solutions, sesquilinear, constant in x and equal to
+      Y_x^H G_x Y_x; det G = -cot^2 theta in a homogeneous medium.
+  C2  conjugate-reciprocal symmetry lambda -> 1/conj(lambda) of P(lambda, z)
+      for |z| = 1; P = z lambda^6 Phi with Phi = -2h on the unit circle,
+      h(k) = 2 f^2 - 1 - cos(omega + k); Omega_+ + Omega_- = -2k (winding -2).
+  C3  thresholds (critical values): elimination identity, threshold
+      polynomial in u = cos^2 k, the four interior critical points with exact
+      radical z_c and certified rational enclosures, none in the exterior;
+      I = (arg z_c*, pi/2) with z_c* the unique critical value in the open
+      first quadrant; z0 = (3+4i)/5 in I.
+  C4  at z0 in each medium: P(., z0) squarefree of degree 12 with P(0) != 0;
+      propagating roots = real roots of a degree-12 polynomial in tau =
+      tan(k/2), counted by Sturm; group-velocity signs decided exactly;
+      evanescent roots split 4 + 4 by C2.
+  C5  flux of each propagating Bloch eigenvector: sign = sign of group
+      velocity, nonzero, with certified enclosures (normalization factor);
+      operator identity behind flux = (dOmega/dk) |q_1|^2; det G != 0.
+
+What it does not certify: see scripts/README.md.
+"""
+import importlib.util
+import pathlib
+import random
+import time
+from fractions import Fraction as Fr
+from math import isqrt
+
+import sympy as sp
+from sympy import I, Matrix, Rational as R, eye, zeros
+
+HERE = pathlib.Path(__file__).resolve().parent
+spec = importlib.util.spec_from_file_location(
+    'reviewed', HERE / 'verify_dispersive_horizon_transfer_matrix.py')
+rv = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(rv)          # runs the 61 reviewed checks
+
+checks = []
+T0 = time.perf_counter()
+
+
+def ok(label, cond):
+    if not cond:
+        raise AssertionError(label)
+    checks.append(label)
+    print(f'PASS {label}  [{time.perf_counter() - T0:.1f}s]', flush=True)
+
+
+M_report = rv.M_report
+order = rv.order
+D = sp.diag(0, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1)
+E77 = zeros(12, 12)
+E77[6, 6] = 1
+
+
+def G_of(M, conjM):
+    return conjM.T * D * M - E77
+
+
+# ================================================================= C1
+z = sp.symbols('z')
+cx = sp.symbols('cx1:7'); sx = sp.symbols('sx1:7')
+cy = sp.symbols('cy1:7'); sy = sp.symbols('sy1:7')
+cw, sw = sp.symbols('cw sw')                     # beta_6 at x+2
+CIRC = list(zip(sx, cx)) + list(zip(sy, cy)) + [(sw, cw)]
+
+
+def zero_on_circle(expr):
+    num, _ = sp.fraction(sp.cancel(sp.together(expr)))
+    num = sp.expand(num)
+    for sv, cv in CIRC:
+        num = sp.rem(num, sv**2 + cv**2 - 1, sv)
+    return sp.expand(num) == 0
+
+
+dx = {j: cx[j - 1] for j in range(1, 7)}; ex = {j: sx[j - 1] for j in range(1, 7)}
+dy = {j: cy[j - 1] for j in range(1, 7)}; ey = {j: sy[j - 1] for j in range(1, 7)}
+Mx = M_report(dx, ex, cy[5], sy[5], z)
+My = M_report(dy, ey, cw, sw, z)
+Mx_c = Mx.subs(z, 1 / z)                         # entrywise conjugate for real angles, |z| = 1
+My_c = My.subs(z, 1 / z)
+Gx = G_of(Mx, Mx_c)
+Gy = G_of(My, My_c)
+lhs = Mx_c.T * Gy * Mx - Gx
+ok('C1 M_x^H G_{x+1} M_x = G_x (general angles on sites x, x+1, x+2; |z| = 1)',
+   all(zero_on_circle(e) for e in lhs))
+ok('C1 G_x is Hermitian for |z| = 1',
+   all(sp.cancel(Gx[i, j] - Gx[j, i].subs(z, 1 / z)) == 0
+       for i in range(12) for j in range(12)))
+
+# Second route: operational flux through the cut (x, x+1), from the word of U.
+random.seed(1126)
+TRIPLES = [(R(3, 5), R(4, 5)), (R(5, 13), R(12, 13)), (R(8, 17), R(15, 17)),
+           (R(20, 29), R(21, 29)), (R(48, 73), R(55, 73)), (R(7, 25), R(24, 25))]
+NS = 30
+site = {x: TRIPLES[random.randrange(len(TRIPLES))] for x in range(-10, NS + 10)}
+
+
+def cs_site(m, x):
+    p, q = site[x]
+    return (p, q) if m == 1 else (p * p - q * q, -2 * p * q)
+
+
+def coefs(x):
+    cc, ss = {}, {}
+    for j, m in enumerate(order, 1):
+        cc[j], ss[j] = cs_site(m, x)
+    return cc, ss
+
+
+z0 = R(3, 5) + R(4, 5) * I
+z0c = R(3, 5) - R(4, 5) * I
+
+
+def M_at(x, zz):
+    cc, ss = coefs(x)
+    cn, sn = coefs(x + 1)
+    return M_report(cc, ss, cn[6], sn[6], zz)
+
+
+def solution(seed):
+    rnd = random.Random(seed)
+    Y = {0: Matrix([rnd.randint(-4, 4) + rnd.randint(-4, 4) * I for _ in range(12)])}
+    for x in range(NS):
+        Y[x + 1] = (M_at(x, z0) * Y[x]).applyfunc(sp.expand)
+    return Y
+
+
+Y1, Y2 = solution(1), solution(2)
+
+
+def stage_amplitudes(Y, x):
+    """Coin outputs at every stage around the cut (x, x+1), from the word:
+    q_{j+1} = S C(beta_j) q_j. Returns crossing amplitudes per shift."""
+    # q_j(y) for y in {x, x+1}: a_j(y) = Y[y][j-1], b_j(y) = Y[y+1][6+j-1]
+    def q(j, y):
+        return Matrix([Y[y][j - 1], Y[y + 1][6 + j - 1]])
+    right, left = [], []
+    for j in range(1, 7):
+        cc, ss = coefs(x)
+        cp, sp_ = cs_site(order[j - 1], x)
+        up_x = (Matrix([[cp, -sp_], [sp_, cp]]) * q(j, x))[0]       # moves x -> x+1
+        cp1, sp1 = cs_site(order[j - 1], x + 1)
+        dn_x1 = (Matrix([[cp1, -sp1], [sp1, cp1]]) * q(j, x + 1))[1]  # moves x+1 -> x
+        right.append(up_x)
+        left.append(dn_x1)
+    # L_-: all of q_7 at x+1 moves to x; q_7(x+1) = z q_1(x)
+    q7 = z0 * q(1, x)
+    left.extend([q7[0], q7[1]])
+    return right, left
+
+
+def op_flux(Ya, Yb, x):
+    ra, la = stage_amplitudes(Ya, x)
+    rb, lb = stage_amplitudes(Yb, x)
+    return sp.expand(sum(sp.conjugate(p) * q for p, q in zip(ra, rb))
+                     - sum(sp.conjugate(p) * q for p, q in zip(la, lb)))
+
+
+def form(Ya, Yb, x):
+    M = M_at(x, z0)
+    Mc = M_at(x, z0c)
+    return sp.expand((Ya[x].H * G_of(M, Mc) * Yb[x])[0])
+
+
+xs = range(2, NS - 3)
+ok('C1 operational cut flux is constant in x (two solutions, sesquilinear)',
+   all(op_flux(a, b, x) == op_flux(a, b, 2) for a in (Y1, Y2) for b in (Y1, Y2) for x in xs))
+ok('C1 operational cut flux equals Y_x^H G_x Y_x (sesquilinear, all sites)',
+   all(op_flux(a, b, x) == form(a, b, x) for a in (Y1, Y2) for b in (Y1, Y2) for x in xs))
+ok('C1 the conserved form is not identically zero on these solutions',
+   op_flux(Y1, Y1, 2) != 0 and op_flux(Y1, Y2, 2) != 0)
+
+
+def hom_cs(p, q):
+    cc, ss = {}, {}
+    for j, m in enumerate(order, 1):
+        cc[j], ss[j] = (p, q) if m == 1 else (p * p - q * q, -2 * p * q)
+    return cc, ss
+
+
+pc, qc = sp.symbols('pc qc', positive=True)
+cc, ss = hom_cs(pc, qc)
+Mh = M_report(cc, ss, cc[6], ss[6], z)
+Gh = G_of(Mh, Mh.subs(z, 1 / z))
+dG = sp.factor(sp.cancel(Gh.det(method='berkowitz')))
+num, _ = sp.fraction(sp.cancel(dG + pc**2 / qc**2))
+ok('C1 homogeneous medium: det G = -cot^2 theta (nondegenerate form)',
+   sp.expand(sp.rem(sp.expand(num), qc**2 + pc**2 - 1, qc)) == 0)
+
+# ================================================================= C2
+lam, Aa, k, om = sp.symbols('lambda A k omega')
+fl = Aa / 2 * (lam**3 + lam**-3) + (1 - Aa) / 2 * (lam + 1 / lam)
+P = sp.expand(z**2 * lam**5 - z * lam**6 * (4 * fl**2 - 2) + lam**7)
+ok('C2 lambda^12 P(1/lambda, 1/z) = z^-2 P(lambda, z)  (roots closed under 1/conj)',
+   sp.expand(lam**12 * P.subs({lam: 1 / lam, z: 1 / z}, simultaneous=True) - P / z**2) == 0)
+Phi = z / lam + lam / z - 4 * fl**2 + 2
+ok('C2 P = z lambda^6 Phi', sp.expand(P - z * lam**6 * Phi) == 0)
+f_k = Aa * sp.cos(3 * k) + (1 - Aa) * sp.cos(k)
+h_k = 2 * f_k**2 - 1 - sp.cos(om + k)
+on_circle = Phi.subs({lam: sp.exp(-I * k), z: sp.exp(I * om)}, simultaneous=True)
+ok('C2 on the unit circle Phi = -2 h(k), h = 2 f^2 - 1 - cos(omega + k)',
+   sp.simplify(sp.expand((on_circle + 2 * h_k).rewrite(sp.exp))) == 0)
+ok('C2 deg_lambda P = 12 and P(0) = -z A^2 lambda^0 coefficient (A != 0)',
+   sp.degree(P, lam) == 12 and sp.expand(P.subs(lam, 0)) == sp.expand(-z * Aa**2))
+# Omega_+ + Omega_- = -2k: det U(k) = e^{-2ik} (det W = 1, reviewed T5).
+ok('C2 det U(k) = e^{-2ik}, i.e. Omega_+ + Omega_- = -2k (total winding -2)',
+   sp.simplify(sp.exp(-2 * I * k) * rv.W.det() - sp.exp(-2 * I * k)) == 0)
+
+# ================================================================= C3
+F, Fp = sp.symbols('F Fp')
+ok('C3 elimination: 16F^2Fp^2 + (2F^2-1)^2 - 1 = 4F^2(4Fp^2 - (1 - F^2))',
+   sp.expand(16 * F**2 * Fp**2 + (2 * F**2 - 1)**2 - 1
+             - 4 * F**2 * (4 * Fp**2 - (1 - F**2))) == 0)
+Cc, u, w = sp.symbols('C u w')
+
+
+def g_poly(tt):
+    AA = tt * (2 * tt - 1)
+    return 4 * AA * Cc**3 + (1 - 4 * AA) * Cc, 12 * AA * Cc**2 + 1 - 4 * AA, AA
+
+
+def thr_poly(tt):
+    g, gp, _ = g_poly(tt)
+    expr = sp.expand(4 * (1 - Cc**2) * gp**2 - (1 - g**2))
+    return sp.Poly(sp.expand(expr.subs(Cc**2, u).subs(Cc, sp.sqrt(u))), u)
+
+
+T_int, T_ext = R(5, 16), R(7, 16)
+for tt in (T_int, T_ext):
+    g, gp, AA = g_poly(tt)
+    ok(f'C3 t={tt}: A < 0, so g(C) = C(1 - 4A(1-C^2)) vanishes only at C = 0',
+       AA < 0)
+    ok(f"C3 t={tt}: g' >= g'(1) = (4t-1)^2 > 0 on [-1,1], so f = +-1 only at k = 0, pi",
+       sp.expand(gp.subs(Cc, 1) - (4 * tt - 1)**2) == 0 and 4 * tt - 1 > 0)
+Pint, Pext = thr_poly(T_int), thr_poly(T_ext)
+Qint, rint = sp.div(Pint, sp.Poly(u - 1, u))
+Qext, rext = sp.div(Pext, sp.Poly(u - 1, u))
+ok('C3 threshold polynomials vanish at u = 1 (nodes k = 0, pi, not critical)',
+   rint.is_zero and rext.is_zero)
+ok('C3 interior quotient has exactly one root in (0,1); none at 0 or 1',
+   Qint.count_roots(0, 1) == 1 and Qint.eval(0) != 0 and Qint.eval(1) != 0)
+ok('C3 exterior quotient has no root in [0,1]: no critical values at t = 7/16',
+   Qext.count_roots(0, 1) == 0)
+ok('C3 interior quotient is proportional to 2625 u^2 - 5245 u + 2604',
+   sp.cancel(Qint.as_expr() / (2625 * u**2 - 5245 * u + 2604)).is_number)
+ustar = (5245 - sp.sqrt(168025)) / 5250
+ok('C3 u* = (5245 - sqrt(168025))/5250 is that root', sp.expand(Qint.as_expr().subs(u, ustar)) == 0)
+
+
+def S_(x):
+    return sp.Rational(x.numerator, x.denominator)
+
+
+def F_(x):
+    return Fr(int(x.p), int(x.q))
+
+
+# ---- exact rational interval arithmetic (no floating point)
+class RI:
+    __slots__ = ('lo', 'hi')
+
+    def __init__(self, lo, hi=None):
+        self.lo = Fr(lo)
+        self.hi = Fr(lo if hi is None else hi)
+        assert self.lo <= self.hi
+
+    def __add__(a, b):
+        b = b if isinstance(b, RI) else RI(b)
+        return RI(a.lo + b.lo, a.hi + b.hi)
+    __radd__ = __add__
+
+    def __neg__(a):
+        return RI(-a.hi, -a.lo)
+
+    def __sub__(a, b):
+        return a + (-(b if isinstance(b, RI) else RI(b)))
+
+    def __rsub__(a, b):
+        return RI(b) - a
+
+    def __mul__(a, b):
+        b = b if isinstance(b, RI) else RI(b)
+        ps = [a.lo * b.lo, a.lo * b.hi, a.hi * b.lo, a.hi * b.hi]
+        return RI(min(ps), max(ps))
+    __rmul__ = __mul__
+
+    def inv(a):
+        assert a.lo > 0 or a.hi < 0, 'division by interval containing 0'
+        return RI(1 / a.hi, 1 / a.lo)
+
+    def __truediv__(a, b):
+        return a * (b if isinstance(b, RI) else RI(b)).inv()
+
+    def pos(a):
+        return a.lo > 0
+
+    def neg(a):
+        return a.hi < 0
+
+    def width(a):
+        return a.hi - a.lo
+
+
+BITS = 200
+
+
+def sqrt_RI(x):
+    assert x.lo >= 0
+    S = 4**BITS
+    lo = Fr(isqrt((x.lo * S).numerator // (x.lo * S).denominator), 2**BITS)
+    nh = x.hi * S
+    hi = Fr(isqrt(-(-nh.numerator // nh.denominator)) + 1, 2**BITS)
+    return RI(lo, hi)
+
+
+class CI:
+    __slots__ = ('re', 'im')
+
+    def __init__(self, re, im=0):
+        self.re = re if isinstance(re, RI) else RI(re)
+        self.im = im if isinstance(im, RI) else RI(im)
+
+    def __add__(a, b):
+        b = b if isinstance(b, CI) else CI(b)
+        return CI(a.re + b.re, a.im + b.im)
+    __radd__ = __add__
+
+    def __sub__(a, b):
+        b = b if isinstance(b, CI) else CI(b)
+        return CI(a.re - b.re, a.im - b.im)
+
+    def __rsub__(a, b):
+        return CI(b) - a
+
+    def __neg__(a):
+        return CI(-a.re, -a.im)
+
+    def __mul__(a, b):
+        b = b if isinstance(b, CI) else CI(b)
+        return CI(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re)
+    __rmul__ = __mul__
+
+    def conj(a):
+        return CI(a.re, -a.im)
+
+    def abs2(a):
+        return a.re * a.re + a.im * a.im
+
+    def __truediv__(a, b):
+        b = b if isinstance(b, CI) else CI(b)
+        d = b.abs2()
+        n = a * b.conj()
+        return CI(n.re / d, n.im / d)
+
+
+# interior critical points: C = +-sqrt(u*), sin k = +-sqrt(1-u*)
+r168 = sqrt_RI(RI(168025))
+u_I = (RI(5245) - r168) / 5250
+ok('C3 enclosure: 0 < u* < 1', u_I.pos() and (RI(1) - u_I).pos())
+A_int = T_int * (2 * T_int - 1)
+
+
+def g_I(C, AA):
+    return RI(4 * AA) * C * C * C + RI(1 - 4 * AA) * C
+
+
+def gp_I(C, AA):
+    return RI(12 * AA) * C * C + RI(1 - 4 * AA)
+
+
+zcs = []
+for sC in (1, -1):
+    for sS in (1, -1):
+        C = sqrt_RI(u_I) * sC
+        Sg = sqrt_RI(RI(1) - u_I) * sS
+        gv, gpv = g_I(C, A_int), gp_I(C, A_int)
+        fpv = -Sg * gpv                                   # f'(k) = -sin k g'(cos k)
+        zc = CI(C, -Sg) * CI(RI(2) * gv * gv - 1, RI(-4) * gv * fpv)
+        zcs.append(((sC, sS), zc))
+ok('C3 the four critical z_c have |z_c|^2 enclosures containing 1',
+   all(zc.abs2().lo <= 1 <= zc.abs2().hi for _, zc in zcs))
+first_quadrant = [(sg, zc) for sg, zc in zcs if zc.re.pos() and zc.im.pos()]
+others_out = all(zc.im.neg() or zc.re.neg() for sg, zc in zcs if (sg, zc) not in first_quadrant)
+ok('C3 exactly one critical value lies in the open first quadrant; the others have '
+   'Im < 0 or Re < 0', len(first_quadrant) == 1 and others_out)
+sg_star, zc_star = first_quadrant[0]
+ok(f'C3 z_c* (C sign {sg_star[0]}, sin k sign {sg_star[1]}): Re z_c* > 3/5 = Re z0, '
+   'so arg z_c* < arg z0 < pi/2 and z0 lies in I',
+   (zc_star.re - RI(R(3, 5))).pos() and zc_star.im.pos())
+# exact radical form and minimal polynomial of Re z_c*
+Cs = sg_star[0] * sp.sqrt(ustar)
+Ss = sg_star[1] * sp.sqrt(1 - ustar)
+gS = 4 * A_int * Cs**3 + (1 - 4 * A_int) * Cs
+gpS = 12 * A_int * Cs**2 + 1 - 4 * A_int
+zc_exact = sp.expand((Cs - I * Ss) * (2 * gS**2 - 1 + 4 * I * gS * Ss * gpS))
+Xm = sp.symbols('X')
+mp_re = sp.minimal_polynomial(sp.re(zc_exact), Xm)
+ok(f'C3 Re z_c* is algebraic with minimal polynomial of degree {sp.degree(mp_re, Xm)} '
+   '(exact descriptor), and its enclosure lies inside one isolating interval of it',
+   sp.Poly(mp_re, Xm).count_roots(S_(zc_star.re.lo), S_(zc_star.re.hi)) == 1)
+ok('C3 collision points z = 1, i, -1, -i are not in I = (arg z_c*, pi/2) '
+   '(z = i is excluded by definition)', zc_star.im.pos())   # arg z_c* > 0 = arg 1
+
+# ================================================================= C4
+tau = sp.symbols('tau')
+cos_t = (1 - tau**2) / (1 + tau**2)
+sin_t = 2 * tau / (1 + tau**2)
+cw0, sw0 = R(3, 5), R(4, 5)
+
+
+def tau_polys(tt):
+    AA = tt * (2 * tt - 1)
+    g = 4 * AA * Cc**3 + (1 - 4 * AA) * Cc
+    gp = 12 * AA * Cc**2 + 1 - 4 * AA
+    f = g.subs(Cc, cos_t)
+    fpr = -sin_t * gp.subs(Cc, cos_t)
+    Sv = sw0 * cos_t + cw0 * sin_t                    # sin(omega0 + k)
+    h = 2 * f**2 - 1 - (cw0 * cos_t - sw0 * sin_t)   # 2f^2 - 1 - cos(omega0 + k)
+    H = sp.Poly(sp.cancel(h * (1 + tau**2)**6), tau)
+    N = sp.Poly(sp.cancel((4 * f * fpr + Sv) * Sv * (1 + tau**2)**8), tau)
+    return H, N, AA
+
+
+def sign_at_roots(H, N):
+    """Exact sign of N at each real root of H (gcd(H, N) = 1 required), and a
+    refined rational isolating interval of width < 1e-45 for each root."""
+    out = []
+    for (a, b), mult in H.intervals():
+        a, b = F_(a), F_(b)
+        if a == b:
+            sgn = 1 if N.eval(S_(a)) > 0 else -1
+        else:
+            while N.count_roots(S_(a), S_(b)) > 0:
+                mid = (a + b) / 2
+                if H.eval(S_(mid)) == 0:
+                    a = b = mid
+                    break
+                if H.count_roots(S_(a), S_(mid)) == 1:
+                    b = mid
+                else:
+                    a = mid
+            sgn = 1 if N.eval(S_((a + b) / 2)) > 0 else -1
+        if a != b:
+            ra, rb = H.refine_root(S_(a), S_(b), eps=sp.Rational(1, 10**45))
+            a, b = F_(ra), F_(rb)
+        out.append(((a, b), sgn))
+    return out
+
+
+lam_s = sp.symbols('lam_s')
+results = {}
+for tt, name in ((T_int, 'interior'), (T_ext, 'exterior')):
+    H, N, AA = tau_polys(tt)
+    Pz = sp.Poly(sp.expand(lam_s**7 * P.subs({lam: lam_s, Aa: AA, z: z0}) / lam_s**7), lam_s,
+                 domain='QQ_I')
+    ok(f'C4 {name}: P(., z0) has degree 12, P(0) != 0', Pz.degree() == 12 and Pz.eval(0) != 0)
+    ok(f'C4 {name}: P(., z0) is squarefree (12 distinct roots, M diagonalizable)',
+       sp.gcd(Pz, Pz.diff(lam_s)).degree() == 0)
+    ok(f'C4 {name}: H(tau) has degree 12 (no root at k = pi) and is squarefree',
+       H.degree() == 12 and sp.gcd(H, H.diff(tau)).degree() == 0)
+    ok(f'C4 {name}: gcd(H, N) = 1 (no zero velocity, no collision at z0)',
+       sp.gcd(H, N).degree() == 0)
+    nprop = H.count_roots()
+    sg = sign_at_roots(H, N)
+    right = sum(1 for _, s_ in sg if s_ < 0)          # v = -N / S^2
+    left = sum(1 for _, s_ in sg if s_ > 0)
+    ok(f'C4 {name}: {nprop} propagating roots; {right} right-moving, {left} left-moving',
+       nprop == len(sg) and right + left == nprop)
+    ok(f'C4 {name}: (#right) - (#left) = -2 (winding of C2)', right - left == -2)
+    ok(f'C4 {name}: {12 - nprop} evanescent roots, {(12 - nprop) // 2} with |lambda| < 1 '
+       f'(decay to x -> +inf) and {(12 - nprop) // 2} with |lambda| > 1 (decay to x -> -inf)',
+       (12 - nprop) % 2 == 0)
+    results[name] = dict(H=H, N=N, AA=AA, tt=tt, sg=sg, right=right, left=left, nprop=nprop)
+
+ok('C4 interior has exactly one right-moving propagating channel on I',
+   results['interior']['right'] == 1)
+ok('C4 exterior has at least one right-moving propagating channel on I',
+   results['exterior']['right'] >= 1)
+n_in = results['interior']['right'] + results['exterior']['left']
+n_out = results['exterior']['right'] + results['interior']['left']
+ok(f'C4/C5 full line: incoming channels {n_in} = outgoing channels {n_out}', n_in == n_out)
+
+# ================================================================= C5
+# Operator identity behind flux = (dOmega/dk)|q_1|^2 (Hellmann-Feynman):
+# -i U^dagger dU/dk = sum_{j=1..6} R_j^dagger sigma_z R_j - I, R_j = C(beta_j)...C(beta_1)
+# with the shifts interleaved (R_j = C(beta_j) S C(beta_{j-1}) ... S C(beta_1)).
+kk, th = sp.symbols('kk theta', real=True)
+Sk = sp.diag(sp.exp(I * kk), sp.exp(-I * kk))
+sz = sp.diag(1, -1)
+coins = [rv.coin(m * th) for m in order]
+U = sp.exp(-I * kk) * eye(2)
+Rs = []
+Rj = eye(2)
+for j, Cm in enumerate(coins):
+    Rj = Cm * Rj if j == 0 else Cm * Sk * Rj
+    Rs.append(Rj)
+Ufull = sp.exp(-I * kk) * Sk * Rs[-1]
+lhs5 = (-I * Ufull.H * sp.diff(Ufull, kk)).applyfunc(lambda e: sp.simplify(e.rewrite(sp.exp)))
+rhs5 = (sum((R_.H * sz * R_ for R_ in Rs), zeros(2, 2)) - eye(2)).applyfunc(
+    lambda e: sp.simplify(e.rewrite(sp.exp)))
+ok('C5 -i U^H dU/dk = sum_j R_j^H sigma_z R_j - I (displacement operator per period)',
+   all(sp.simplify(sp.expand((a - b).rewrite(sp.exp))) == 0 for a, b in zip(lhs5, rhs5)))
+
+
+def coin_I(m, p, q):
+    c_, s_ = (p, q) if m == 1 else (p * p - q * q, RI(-2) * p * q)
+    return [[CI(c_), CI(-s_)], [CI(s_), CI(c_)]]
+
+
+def matvec(Mt, v):
+    return [sum((Mt[i][j] * v[j] for j in range(len(v))), CI(0)) for i in range(len(Mt))]
+
+
+def matmul(A_, B_):
+    n, m_, l_ = len(A_), len(B_), len(B_[0])
+    return [[sum((A_[i][k_] * B_[k_][j] for k_ in range(m_)), CI(0)) for j in range(l_)]
+            for i in range(n)]
+
+
+z0I = CI(RI(R(3, 5)), RI(R(4, 5)))
+for name in ('interior', 'exterior'):
+    d = results[name]
+    tt, AA = d['tt'], d['AA']
+    p, q = sqrt_RI(RI(tt)), sqrt_RI(RI(1 - tt))
+    # homogeneous M at z0 with interval coins
+    c_, s_ = {}, {}
+    for j, m in enumerate(order, 1):
+        c_[j], s_[j] = (p, q) if m == 1 else (p * p - q * q, RI(-2) * p * q)
+    Mi = [[CI(0) for _ in range(12)] for _ in range(12)]
+    Mci = [[CI(0) for _ in range(12)] for _ in range(12)]
+    for (zz, MM) in ((z0I, Mi), (z0I.conj(), Mci)):
+        for j in range(1, 6):
+            MM[j][j - 1] = CI(RI(1) / c_[j]); MM[j][6 + j] = CI(-s_[j] / c_[j])
+            MM[6 + j - 1][j - 1] = CI(-s_[j] / c_[j]); MM[6 + j - 1][6 + j] = CI(RI(1) / c_[j])
+        MM[0][4] = CI(1) / (zz * CI(c_[6] * c_[5]))
+        MM[0][6] = CI(-s_[6] / c_[6])
+        MM[0][11] = CI(-s_[5]) / (zz * CI(c_[6] * c_[5]))
+        MM[11][0] = -zz / CI(s_[6])
+        MM[11][5] = CI(c_[6] / s_[6])
+    Dv = [0, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1]
+    DM = [[Mi[i][j] * Dv[i] for j in range(12)] for i in range(12)]
+    MH = [[Mci[j][i] for j in range(12)] for i in range(12)]
+    Gi = matmul(MH, DM)
+    Gi[6][6] = Gi[6][6] - 1
+    fluxes = []
+    for (a, b), sgnN in d['sg']:
+        tI = RI(a, b)
+        den = RI(1) + tI * tI
+        ck = (RI(1) - tI * tI) / den
+        sk = RI(2) * tI / den
+        lamI = CI(ck, -sk)                              # e^{-ik}
+        Sm = [[CI(1) / lamI, CI(0)], [CI(0), lamI]]     # S(k) = diag(1/lambda, lambda)
+        Cm2, Cm1 = coin_I(-2, p, q), coin_I(1, p, q)
+        Wm = matmul(Sm, matmul(Cm1, matmul(Sm, matmul(Cm1, matmul(Sm, Cm2)))))
+        Um = matmul([[lamI, CI(0)], [CI(0), lamI]], matmul(Wm, Wm))
+        v1 = [Um[0][1], z0I - Um[0][0]]                 # kernel of U - z0 (row 1)
+        v2 = [z0I - Um[1][1], Um[1][0]]                 # kernel of U - z0 (row 2)
+        vv = v1 if (v1[0].abs2() + v1[1].abs2()).pos() else v2
+        assert (vv[0].abs2() + vv[1].abs2()).pos()
+        qs = [vv]
+        for m in order[:5]:
+            qs.append(matvec(Sm, matvec(coin_I(m, p, q), qs[-1])))
+        Yv = [qj[0] for qj in qs] + [qj[1] / lamI for qj in qs]
+        GY = matvec(Gi, Yv)
+        Fv = sum((Yv[i].conj() * GY[i] for i in range(12)), CI(0))
+        # group velocity v = -(4 f f' + S)/S, as interval
+        gI = g_I(ck, AA); fpI = -sk * gp_I(ck, AA)
+        SI = RI(R(4, 5)) * ck + RI(R(3, 5)) * sk
+        vI = -(RI(4) * gI * fpI + SI) / SI
+        q1n = vv[0].abs2() + vv[1].abs2()
+        ratio = Fv.re / (vI * q1n)
+        fluxes.append((Fv, vI, ratio, sgnN))
+    ok(f'C5 {name}: every propagating Bloch mode has nonzero flux Y^H G Y with the sign '
+       'of its group velocity (exact intervals)',
+       all((Fv.re.pos() and vI.pos()) or (Fv.re.neg() and vI.neg()) for Fv, vI, _, _ in fluxes))
+    ok(f'C5 {name}: the interval group-velocity sign agrees with the exact Sturm sign',
+       all((vI.pos() and sN < 0) or (vI.neg() and sN > 0) for _, vI, _, sN in fluxes))
+    ok(f'C5 {name}: flux / (v |q_1|^2) enclosures contain 1 and have width < 1e-20',
+       all(r.lo <= 1 <= r.hi and r.width() < Fr(1, 10**20) for _, _, r, _ in fluxes))
+    ok(f'C5 {name}: Im(Y^H G Y) enclosures contain 0',
+       all(Fv.im.lo <= 0 <= Fv.im.hi for Fv, _, _, _ in fluxes))
+    results[name]['fluxes'] = fluxes
+
+print(f'{len(checks)}/{len(checks)} channel checks PASS '
+      f'(after {len(rv.checks)}/{len(rv.checks)} reviewed transfer-matrix checks)')
+for name in ('interior', 'exterior'):
+    d = results[name]
+    print(f'{name} (t = {d["tt"]}): propagating {d["nprop"]} '
+          f'(right {d["right"]}, left {d["left"]}), evanescent {12 - d["nprop"]}')
+print('Verdict candidate: CHANNELS_CLASSIFIED (author PRELIMINARY; review pending)')
+
+=== DOCUMENT 4: verify_dispersive_horizon_transfer_matrix.py ===
+
+"""Exact audit verifier for the 12x12 spatial transfer matrix of
+reports/2026-11-26--dispersive-horizon-three-step-transfer.md (commit 8e5b540).
+
+Operator under audit:  U = L_- W^2,  W = S C(theta) S C(theta) S C(-2 theta),
+C(b) = exp(-i b sigma_y), S|x,up> = |x+1,up>, S|x,dn> = |x-1,dn>,
+L_-|x,s> = |x-1,s>; each coin acts with the coin angle of the site where the
+excitation sits at that stage.
+
+Exact SymPy only (no floating point, no fitted tolerances). Fails closed: any
+failed check raises and the process exits nonzero. Groups:
+
+  T1  conventions: C(b) = exp(-i b sigma_y); coin order read off W's word
+  T2  independent elimination of the raw stage + closure equations (general
+      independent angles, reduced modulo c^2+s^2=1) vs the report's blocks
+      P, Q, R, H, entry by entry (144 entries); uniqueness of the solution;
+      consistency of the auxiliary unknown b_6(x+1) with row 12 of M_{x+1};
+      two negative controls (sign flip; closure coefficients at x not x+1)
+  T3  second route: iterate the report's M with site-dependent rational coins,
+      rebuild psi, apply U from its definition, check U psi = z psi exactly
+  T4  det M_x = cot beta_6(x) / cot beta_6(x+1), general angles, z-free
+  T5  homogeneous symbol: tr W / 2 = A cos 3k + (1-A) cos k, det W = 1,
+      charpoly(M_hom) * (-z A^2) = boxed lambda-polynomial (degree 12), for
+      symbolic theta and at three rational points
+  T6  Floquet degeneracy (z, lambda) = (i, -i) at t = 5/16, 3/8, 7/16:
+      W(pi/2)^2 = -I, two explicit independent eigenvectors of M,
+      algebraic multiplicity exactly 2 (so semisimple)
+  T7  microscopic support [-7, 5] with nonzero extreme coefficients
+      (site-dependent rational coins)
+  T8  denominators, IR/UV velocities, and 0 <= f < 1 on (0, pi/2]
+
+What it does NOT certify: see scripts/README.md.
+"""
+import random
+import sys
+import time
+
+import sympy as sp
+from sympy import I, Matrix, Rational as R, cos, sin, eye, zeros
+
+checks = []
+T0 = time.perf_counter()
+
+
+def ok(label, cond):
+    if not cond:
+        raise AssertionError(label)
+    checks.append(label)
+    print(f'PASS {label}  [{time.perf_counter() - T0:.1f}s]', flush=True)
+
+
+def zero(label, value):
+    entries = list(value) if isinstance(value, sp.MatrixBase) else [value]
+    def z0(x):
+        x = sp.expand(x)
+        return sp.simplify(x) == 0 or sp.simplify(sp.expand(x.rewrite(sp.exp))) == 0
+    ok(label, all(z0(x) for x in entries))
+
+
+XMP = sp.symbols('X_minpoly')
+
+
+def nonzero_alg(x):
+    """Exact nonzero test for an algebraic number: minimal polynomial is not X."""
+    return sp.minimal_polynomial(sp.expand(x), XMP) != XMP
+
+
+def E(i, j):
+    m = zeros(6, 6)
+    m[i - 1, j - 1] = 1
+    return m
+
+
+def M_report(c, s, cp, sp_, z):
+    """Blocks P, Q, R, H transcribed verbatim from report Sec. 6.
+    c[j], s[j] (j = 1..6) at site x; cp, sp_ = c_6, s_6 at site x+1."""
+    P = sum((E(j + 1, j) / c[j] for j in range(1, 6)), zeros(6, 6)) \
+        + E(1, 5) / (z * cp * c[5])
+    Q = -sum((s[j] / c[j] * E(j + 1, j + 1) for j in range(1, 6)), zeros(6, 6)) \
+        - sp_ / cp * E(1, 1) - s[5] / (z * cp * c[5]) * E(1, 6)
+    Rb = -sum((s[j] / c[j] * E(j, j) for j in range(1, 6)), zeros(6, 6)) \
+        - z / s[6] * E(6, 1) + c[6] / s[6] * E(6, 6)
+    H = sum((E(j, j + 1) / c[j] for j in range(1, 6)), zeros(6, 6))
+    return Matrix(sp.BlockMatrix([[P, Q], [Rb, H]]))
+
+
+SY = Matrix([[0, -I], [I, 0]])
+
+
+def coin(b):
+    return Matrix([[cos(b), -sin(b)], [sin(b), cos(b)]])
+
+
+# ---------------------------------------------------------------- T1
+b = sp.symbols('b', real=True)
+zero('T1 C(b) = exp(-i b sigma_y)', (-I * b * SY).exp().applyfunc(lambda e: e.rewrite(cos)) - coin(b))
+# W's word, written left to right exactly as in the report; applied right to left.
+W_WORD = ['S', ('C', 1), 'S', ('C', 1), 'S', ('C', -2)]   # ('C', m): angle m*theta
+order = [f[1] for f in reversed(W_WORD) if f != 'S'] * 2
+ok('T1 coin order of W^2 is (-2,1,1,-2,1,1) theta', order == [-2, 1, 1, -2, 1, 1])
+ok('T1 W^2 has six conditional shifts', [f for f in reversed(W_WORD)].count('S') * 2 == 6)
+
+# ---------------------------------------------------------------- T2
+# General independent angles: free symbols c_j, s_j (j = 1..6, site x) and
+# cP, sP (beta_6 at site x+1). Identities are decided exactly by clearing
+# denominators and reducing the numerator modulo c^2 + s^2 - 1 (division in s).
+cs_ = sp.symbols('c1:7')
+ss_ = sp.symbols('s1:7')
+cP, sP, z = sp.symbols('cP sP z')
+c = {j: cs_[j - 1] for j in range(1, 7)}
+s = {j: ss_[j - 1] for j in range(1, 7)}
+CIRCLE = list(zip(ss_, cs_)) + [(sP, cP)]
+
+
+def is_zero_on_circle(expr):
+    num, _ = sp.fraction(sp.cancel(sp.together(expr)))
+    num = sp.expand(num)
+    for sv, cv in CIRCLE:
+        num = sp.rem(num, sv**2 + cv**2 - 1, sv)
+    return sp.expand(num) == 0
+
+
+a0 = sp.symbols('a0_1:7')      # a_j(x)
+bm = sp.symbols('bm_1:7')      # b_j(x-1)
+a1 = sp.symbols('a1_1:7')      # a_j(x+1)   (unknown)
+b0 = sp.symbols('b0_1:7')      # b_j(x)     (unknown)
+b6n = sp.symbols('b6_next')    # b_6(x+1)   (auxiliary unknown)
+# Raw stage relations: (S C q)(y) = ((C q)_up(y-1), (C q)_dn(y+1)).
+#   a_{j+1}(x+1) = c_j(x) a_j(x) - s_j(x) b_j(x)
+#   b_{j+1}(x-1) = s_j(x) a_j(x) + c_j(x) b_j(x)
+eqs = []
+for j in range(1, 6):
+    eqs.append(a1[j] - (c[j] * a0[j - 1] - s[j] * b0[j - 1]))
+    eqs.append(bm[j] - (s[j] * a0[j - 1] + c[j] * b0[j - 1]))
+# Closure q_7(y+1) = z q_1(y): stage 6 at site x (up), and at site x+1 (up, dn).
+eqs.append(z * a0[0] - (c[6] * a0[5] - s[6] * b0[5]))           # a_7(x+1) = z a_1(x)
+eqs.append(z * a1[0] - (cP * a1[5] - sP * b6n))                 # a_7(x+2) = z a_1(x+1)
+eqs.append(z * bm[0] - (sP * a1[5] + cP * b6n))                 # b_7(x)   = z b_1(x-1)
+unknowns = list(a1) + list(b0) + [b6n]
+ok('T2 13 equations in 13 unknowns', len(eqs) == 13 and len(unknowns) == 13)
+Asys, bsys = sp.linear_eq_to_matrix(eqs, unknowns)
+detA = sp.factor(Asys.det(method='berkowitz'))
+# Unique solution iff c_1..c_5(x), c_6(x+1), s_6(x), z are all nonzero.
+ok('T2 stage system det = -c1 c2 c3 c4 c5 c6(x+1) s6(x) z (unique solution)',
+   sp.expand(detA + c[1] * c[2] * c[3] * c[4] * c[5] * cP * s[6] * z) == 0)
+solv = Asys.LUsolve(bsys)
+sol = {v: sp.cancel(solv[n]) for n, v in enumerate(unknowns)}
+Yx = Matrix(list(a0) + list(bm))
+Ynext = Matrix([sol[v] for v in list(a1) + list(b0)])
+M_ind = Ynext.jacobian(Yx)
+zero('T2 solution is linear homogeneous in Y_x', Ynext - M_ind * Yx)
+M_rep = M_report(c, s, cP, sP, z)
+names = 'PQRH'
+for bi, (r0, c0) in enumerate([(0, 0), (0, 6), (6, 0), (6, 6)]):
+    blk = M_ind[r0:r0 + 6, c0:c0 + 6] - M_rep[r0:r0 + 6, c0:c0 + 6]
+    ok(f'T2 block {names[bi]}: 36 entries agree with independent elimination',
+       all(is_zero_on_circle(x) for x in blk))
+# Negative controls: the same test must reject (a) one flipped sign in Q and
+# (b) the closure coefficients evaluated at x instead of x+1.
+M_bad = M_rep.copy()
+M_bad[0, 6] = -M_bad[0, 6]
+ok('T2 negative control: sign flip in Q[1,1] is detected',
+   not all(is_zero_on_circle(x) for x in (M_ind - M_bad)))
+M_bad = M_report(c, s, c[6], s[6], z)
+ok('T2 negative control: c_6(x), s_6(x) in place of c_6(x+1), s_6(x+1) is detected',
+   not all(is_zero_on_circle(x) for x in (M_ind - M_bad)))
+nnz = sum(1 for x in M_rep if sp.cancel(x) != 0)
+ok('T2 report M has 25 structurally nonzero entries (P 6, Q 7, R 7, H 5)', nnz == 25)
+# Forward direction: the auxiliary b_6(x+1) equals row 12 of M_{x+1}, so the
+# recurrence on consecutive sites reproduces every stage + closure equation.
+ok('T2 b_6(x+1) from stage system equals row 12 of M_{x+1}',
+   is_zero_on_circle(sol[b6n] - (cP * sol[a1[5]] - z * sol[a1[0]]) / sP))
+
+# ---------------------------------------------------------------- T3
+random.seed(20261126)
+TRIPLES = [(R(3, 5), R(4, 5)), (R(5, 13), R(12, 13)), (R(8, 17), R(15, 17)),
+           (R(7, 25), R(24, 25)), (R(20, 29), R(21, 29)), (R(4, 5), R(3, 5)),
+           (R(12, 13), R(5, 13)), (R(48, 73), R(55, 73))]
+NS = 34
+site = {x: TRIPLES[random.randrange(len(TRIPLES))] for x in range(-12, NS + 12)}
+
+
+def coin_cs(m, x):
+    """cos, sin of m*theta_x for m in {1, -2} with rational cos/sin theta."""
+    p, q = site[x]
+    if m == 1:
+        return p, q
+    if m == -2:
+        return p * p - q * q, -2 * p * q
+    raise ValueError(m)
+
+
+def apply_word(word, psi):
+    """Apply a word of 'S', ('C', m), 'L' (right to left) to psi: {x: (up, dn)}.
+    Sites whose value is not determined by the window are dropped."""
+    for f in reversed(word):
+        new = {}
+        if f == 'S':
+            for x in psi:
+                if x - 1 in psi and x + 1 in psi:
+                    new[x] = (psi[x - 1][0], psi[x + 1][1])
+        elif f == 'L':
+            for x in psi:
+                if x + 1 in psi:
+                    new[x] = psi[x + 1]
+        else:
+            for x, (up_, dn_) in psi.items():
+                cc, ss = coin_cs(f[1], x)
+                new[x] = (cc * up_ - ss * dn_, ss * up_ + cc * dn_)
+        psi = new
+    return psi
+
+
+U_WORD = ['L'] + W_WORD + W_WORD
+zr = R(3, 5) + R(4, 5) * I
+
+
+def site_cs(x):
+    cc, ss = {}, {}
+    for j, m in enumerate(order, 1):
+        cc[j], ss[j] = coin_cs(m, x)
+    return cc, ss
+
+
+Y = {0: Matrix([random.randint(-5, 5) + random.randint(-5, 5) * I for _ in range(12)])}
+for x in range(NS):
+    cc, ss = site_cs(x)
+    cn, sn = site_cs(x + 1)
+    Y[x + 1] = (M_report(cc, ss, cn[6], sn[6], zr) * Y[x]).applyfunc(sp.expand)
+psi = {x: (Y[x][0], Y[x + 1][6]) for x in range(NS)}
+Upsi = apply_word(U_WORD, psi)
+interior = [x for x in Upsi if x in psi]
+ok('T3 at least 20 interior sites', len(interior) >= 20)
+ok('T3 U psi = z psi exactly at every interior site (site-dependent coins)',
+   all(sp.expand(Upsi[x][k] - zr * psi[x][k]) == 0 for x in interior for k in (0, 1)))
+# Same psi also reproduces the intermediate stage vectors stored in Y:
+q = dict(psi)
+stage_ok = True
+ncmp = 0
+for j in range(1, 6):
+    q = apply_word(['S', ('C', order[j - 1])], q)
+    for x in q:
+        if 0 <= x < NS and x - 1 >= 0:
+            stage_ok &= sp.expand(q[x][0] - Y[x][j]) == 0          # a_{j+1}(x)
+            stage_ok &= sp.expand(q[x][1] - Y[x + 1][6 + j]) == 0  # b_{j+1}(x)
+            ncmp += 2
+ok(f'T3 rebuilt stage vectors q_2..q_6 equal the components of Y ({ncmp} comparisons)',
+   stage_ok and ncmp >= 100)
+
+# ---------------------------------------------------------------- T4
+d = sp.factor(M_rep.det(method='berkowitz'))
+ok('T4 det M_x = cot beta_6(x) / cot beta_6(x+1), general angles',
+   is_zero_on_circle(d - (c[6] / s[6]) / (cP / sP)))
+zero('T4 det M_x independent of z', sp.diff(d, z))
+th0, th1 = sp.symbols('theta0 theta1', positive=True)
+zero('T4 with beta_6 = theta: cot(theta_x)/cot(theta_{x+1})',
+     (cos(th0) / sin(th0)) / (cos(th1) / sin(th1)) - sp.cot(th0) / sp.cot(th1))
+
+# ---------------------------------------------------------------- T5
+k, th = sp.symbols('k theta', real=True)
+Sk = sp.diag(sp.exp(I * k), sp.exp(-I * k))     # symbol on e^{-ikx}
+W = Sk * coin(th) * Sk * coin(th) * Sk * coin(-2 * th)
+t = cos(th)**2
+A = t * (2 * t - 1)
+f = A * cos(3 * k) + (1 - A) * cos(k)
+zero('T5 tr W / 2 = A cos 3k + (1-A) cos k',
+     (sp.expand_complex(W.trace() / 2) - f).rewrite(sp.exp))
+zero('T5 det W = 1', W.det() - 1)
+lam = sp.symbols('lambda')
+
+
+def hom_cs(p, qq):
+    cc, ss = {}, {}
+    for j, m in enumerate(order, 1):
+        cc[j], ss[j] = (p, qq) if m == 1 else (p * p - qq * qq, -2 * p * qq)
+    return cc, ss
+
+
+def boxed(AA):
+    fl = AA / 2 * (lam**3 + lam**-3) + (1 - AA) / 2 * (lam + 1 / lam)
+    return sp.expand(z**2 * lam**5 - z * lam**6 * (4 * fl**2 - 2) + lam**7)
+
+
+for p, qq in [(R(3, 5), R(4, 5)), (R(48, 73), R(55, 73)), (R(8, 17), R(15, 17))]:
+    tt = p * p
+    AA = tt * (2 * tt - 1)
+    cc, ss = hom_cs(p, qq)
+    Mh = M_report(cc, ss, cc[6], ss[6], z)
+    cpoly = sp.expand((lam * eye(12) - Mh).det(method='berkowitz'))
+    Pb = boxed(AA)
+    zero(f'T5 t={tt}: charpoly(M_hom) * (-z A^2) = boxed polynomial',
+         sp.expand(cpoly * (-z * AA**2)) - Pb)
+    ok(f'T5 t={tt}: boxed polynomial has degree 12, nonzero constant term',
+       sp.degree(Pb, lam) == 12 and sp.expand(Pb.subs(lam, 0)) != 0)
+
+# General theta: cos theta = pc, sin theta = qc symbolic, reduced modulo pc^2+qc^2-1.
+pc, qc = sp.symbols('pc qc')
+cc, ss = hom_cs(pc, qc)
+Mh = M_report(cc, ss, cc[6], ss[6], z)
+cpoly = sp.together((lam * eye(12) - Mh).det(method='berkowitz'))
+AAg = pc**2 * (2 * pc**2 - 1)
+num, _ = sp.fraction(sp.cancel(sp.together(cpoly * (-z * AAg**2) - boxed(AAg))))
+num = sp.rem(sp.expand(num), qc**2 + pc**2 - 1, qc)
+ok('T5 general theta: charpoly(M_hom) * (-z A^2) = boxed polynomial', sp.expand(num) == 0)
+
+# ---------------------------------------------------------------- T6
+Wpi2 = W.subs(k, sp.pi / 2)
+zero('T6 W(pi/2)^2 = -I for all theta', Wpi2 * Wpi2 + eye(2))
+PROFILE = [R(5, 16), R(3, 8), R(7, 16)]
+for tt in PROFILE:
+    p, qq = sp.sqrt(tt), sp.sqrt(1 - tt)
+    cc, ss = hom_cs(p, qq)
+    Mh = M_report(cc, ss, cc[6], ss[6], I)
+    L0 = -I
+    vecs = []
+    for v in (Matrix([1, 0]), Matrix([0, 1])):
+        qs = [v]
+        S_pi2 = sp.diag(I, -I)                      # S(k) at k = pi/2
+        for m in order[:5]:
+            cm, sm = (p, qq) if m == 1 else (p * p - qq * qq, -2 * p * qq)
+            qs.append(S_pi2 * Matrix([[cm, -sm], [sm, cm]]) * qs[-1])
+        Yv = Matrix([qj[0] for qj in qs] + [qj[1] / L0 for qj in qs])
+        vecs.append(Yv.applyfunc(sp.radsimp))
+        zero(f'T6 t={tt}: Bloch vector e{len(vecs)} is an eigenvector of M (z=i, lambda=-i)',
+             (Mh * Yv - L0 * Yv).applyfunc(sp.radsimp))
+    rank2 = Matrix.hstack(*vecs)
+    ok(f'T6 t={tt}: the two eigenvectors are independent',
+       any(nonzero_alg(rank2[i, 0] * rank2[j, 1] - rank2[j, 0] * rank2[i, 1])
+           for i in range(12) for j in range(i + 1, 12)))
+    cpoly = sp.Poly(sp.expand((lam * eye(12) - Mh).det(method='berkowitz')), lam)
+    cpoly = sp.Poly([sp.radsimp(co) for co in cpoly.all_coeffs()], lam)
+    r2 = cpoly.rem(sp.Poly((lam + I)**2, lam))
+    r3 = cpoly.rem(sp.Poly((lam + I)**3, lam))
+    ok(f'T6 t={tt}: (lambda+i)^2 divides charpoly',
+       all(sp.radsimp(co) == 0 for co in r2.all_coeffs()))
+    ok(f'T6 t={tt}: (lambda+i)^3 does not divide charpoly (multiplicity exactly 2)',
+       any(nonzero_alg(co) for co in r3.all_coeffs()))
+
+# ---------------------------------------------------------------- T7
+x0 = 10
+window = range(x0 - 20, x0 + 21)   # wide enough that trimming never reaches [x0-7, x0+5]
+for comp, name in ((0, 'up'), (1, 'dn')):
+    delta = {x: ((1, 0) if comp == 0 else (0, 1)) if x == x0 else (0, 0) for x in window}
+    out = apply_word(U_WORD, delta)
+    supp = [x for x, (p_, q_) in out.items() if p_ != 0 or q_ != 0]
+    ok(f'T7 U delta_{name}: computed window covers [x0-9, x0+7]',
+       all(x in out for x in range(x0 - 9, x0 + 8)))
+    ok(f'T7 U delta_{name}: support inside [x0-7, x0+5]',
+       min(supp) >= x0 - 7 and max(supp) <= x0 + 5)
+    if comp == 0:
+        ok('T7 U delta_up: nonzero up amplitude at x0+5', out[x0 + 5][0] != 0)
+    else:
+        ok('T7 U delta_dn: nonzero dn amplitude at x0-7', out[x0 - 7][1] != 0)
+
+# ---------------------------------------------------------------- T8
+tl, th_ = R(5, 16), R(7, 16)
+ok('T8 profile: 2t-1 in [-3/8,-1/8] (cos 2theta != 0), 0<t<1 (sin, cos theta != 0)',
+   2 * tl - 1 == R(-3, 8) and 2 * th_ - 1 == R(-1, 8) and 0 < tl and th_ < 1)
+ts = sp.symbols('t', positive=True)
+As = ts * (2 * ts - 1)
+zero('T8 1 + 8A = (4t-1)^2', 1 + 8 * As - (4 * ts - 1)**2)
+# IR: f = 1 - (1+8A) k^2/2 + O(k^4); slope of E is |4t-1| = 4t-1 for t > 1/4.
+fk = As * cos(3 * k) + (1 - As) * cos(k)
+zero('T8 f(k) = 1 - (1+8A) k^2/2 + O(k^4)',
+     sp.series(fk, k, 0, 4).removeO() - (1 - (1 + 8 * As) * k**2 / 2))
+vIR = {tt: -1 + 2 * (4 * tt - 1) for tt in PROFILE}
+ok('T8 v_IR,out = 8t-3 = -1/2, 0, 1/2',
+   [vIR[tt] for tt in PROFILE] == [R(-1, 2), 0, R(1, 2)])
+# UV at k = pi/2: f = 0, E = pi/2, E' = -f'/sin E = 1 - 4A, v = -1 + 2E' = 1 - 8A.
+zero('T8 f(pi/2) = 0', fk.subs(k, sp.pi / 2))
+zero("T8 E'(pi/2) = 1 - 4A", -sp.diff(fk, k).subs(k, sp.pi / 2) - (1 - 4 * As))
+vUV = [1 - 8 * As.subs(ts, tt) for tt in PROFILE]
+ok('T8 v_UV,out(pi/2) = 31/16, 7/4, 23/16', vUV == [R(31, 16), R(7, 4), R(23, 16)])
+# 0 <= f < 1 on (0, pi/2]: with C = cos k in [0,1), f = g(C) = 4A C^3 + (1-4A) C,
+# g(0)=0, g(1)=1, g'(C) = 12A C^2 + 1 - 4A, decreasing in C^2 because A < 0,
+# so g' >= g'(1) = 1 + 8A = (4t-1)^2 > 0 on [0,1].
+Cs = sp.symbols('C')
+zero('T8 f = 4A cos^3 k + (1-4A) cos k',
+     sp.expand_trig(fk) - (4 * As * cos(k)**3 + (1 - 4 * As) * cos(k)))
+Aint = [As.subs(ts, tt) for tt in (tl, th_)]
+ok('T8 A < 0 on the profile (A = t(2t-1), both endpoints negative, t<1/2)',
+   all(a_ < 0 for a_ in Aint))
+# g'(1) = 1 + 8A = (4t-1)^2 (checked above) and 4t - 1 >= 4*5/16 - 1 = 1/4 > 0.
+ok("T8 g'(1) = (4t-1)^2 > 0 on the whole profile (4t-1 >= 1/4)", 4 * tl - 1 == R(1, 4))
+# A = t(2t-1) < 0 for every t in (0, 1/2), hence on the whole profile.
+
+print(f'{len(checks)}/{len(checks)} exact checks PASS')
+print('Verdict: TRANSFER_MATRIX_PASS (algebraic scope; author-side audit, '
+      'cross-family independence not established)')
+
+
+=== DOCUMENT 5: 2026-11-26--dispersive-horizon-channels-run.txt ===
+
+# Recorded execution of scripts/verify_dispersive_horizon_channels.py
+# commit a5b9be3, verifier sha256 08a387355884018d09a35b521e341f6219a235cf462167ea3f16c055e76772dc
+# Python 3.12.3, sympy 1.14.0, started 2026-11-26T12:20:35Z
+PASS T1 C(b) = exp(-i b sigma_y)  [0.1s]
+PASS T1 coin order of W^2 is (-2,1,1,-2,1,1) theta  [0.1s]
+PASS T1 W^2 has six conditional shifts  [0.1s]
+PASS T2 13 equations in 13 unknowns  [0.1s]
+PASS T2 stage system det = -c1 c2 c3 c4 c5 c6(x+1) s6(x) z (unique solution)  [0.1s]
+PASS T2 solution is linear homogeneous in Y_x  [0.2s]
+PASS T2 block P: 36 entries agree with independent elimination  [0.3s]
+PASS T2 block Q: 36 entries agree with independent elimination  [0.3s]
+PASS T2 block R: 36 entries agree with independent elimination  [0.4s]
+PASS T2 block H: 36 entries agree with independent elimination  [0.4s]
+PASS T2 negative control: sign flip in Q[1,1] is detected  [0.4s]
+PASS T2 negative control: c_6(x), s_6(x) in place of c_6(x+1), s_6(x+1) is detected  [0.4s]
+PASS T2 report M has 25 structurally nonzero entries (P 6, Q 7, R 7, H 5)  [0.4s]
+PASS T2 b_6(x+1) from stage system equals row 12 of M_{x+1}  [0.5s]
+PASS T3 at least 20 interior sites  [0.8s]
+PASS T3 U psi = z psi exactly at every interior site (site-dependent coins)  [0.8s]
+PASS T3 rebuilt stage vectors q_2..q_6 equal the components of Y (280 comparisons)  [0.8s]
+PASS T4 det M_x = cot beta_6(x) / cot beta_6(x+1), general angles  [1.4s]
+PASS T4 det M_x independent of z  [1.4s]
+PASS T4 with beta_6 = theta: cot(theta_x)/cot(theta_{x+1})  [1.4s]
+PASS T5 tr W / 2 = A cos 3k + (1-A) cos k  [1.5s]
+PASS T5 det W = 1  [1.6s]
+PASS T5 t=9/25: charpoly(M_hom) * (-z A^2) = boxed polynomial  [2.9s]
+PASS T5 t=9/25: boxed polynomial has degree 12, nonzero constant term  [2.9s]
+PASS T5 t=2304/5329: charpoly(M_hom) * (-z A^2) = boxed polynomial  [4.3s]
+PASS T5 t=2304/5329: boxed polynomial has degree 12, nonzero constant term  [4.3s]
+PASS T5 t=64/289: charpoly(M_hom) * (-z A^2) = boxed polynomial  [5.6s]
+PASS T5 t=64/289: boxed polynomial has degree 12, nonzero constant term  [5.6s]
+PASS T5 general theta: charpoly(M_hom) * (-z A^2) = boxed polynomial  [38.5s]
+PASS T6 W(pi/2)^2 = -I for all theta  [38.7s]
+PASS T6 t=5/16: Bloch vector e1 is an eigenvector of M (z=i, lambda=-i)  [38.7s]
+PASS T6 t=5/16: Bloch vector e2 is an eigenvector of M (z=i, lambda=-i)  [38.8s]
+PASS T6 t=5/16: the two eigenvectors are independent  [38.8s]
+PASS T6 t=5/16: (lambda+i)^2 divides charpoly  [40.1s]
+PASS T6 t=5/16: (lambda+i)^3 does not divide charpoly (multiplicity exactly 2)  [40.1s]
+PASS T6 t=3/8: Bloch vector e1 is an eigenvector of M (z=i, lambda=-i)  [40.2s]
+PASS T6 t=3/8: Bloch vector e2 is an eigenvector of M (z=i, lambda=-i)  [40.2s]
+PASS T6 t=3/8: the two eigenvectors are independent  [40.2s]
+PASS T6 t=3/8: (lambda+i)^2 divides charpoly  [41.5s]
+PASS T6 t=3/8: (lambda+i)^3 does not divide charpoly (multiplicity exactly 2)  [41.5s]
+PASS T6 t=7/16: Bloch vector e1 is an eigenvector of M (z=i, lambda=-i)  [41.5s]
+PASS T6 t=7/16: Bloch vector e2 is an eigenvector of M (z=i, lambda=-i)  [41.5s]
+PASS T6 t=7/16: the two eigenvectors are independent  [41.5s]
+PASS T6 t=7/16: (lambda+i)^2 divides charpoly  [42.8s]
+PASS T6 t=7/16: (lambda+i)^3 does not divide charpoly (multiplicity exactly 2)  [42.8s]
+PASS T7 U delta_up: computed window covers [x0-9, x0+7]  [42.8s]
+PASS T7 U delta_up: support inside [x0-7, x0+5]  [42.8s]
+PASS T7 U delta_up: nonzero up amplitude at x0+5  [42.8s]
+PASS T7 U delta_dn: computed window covers [x0-9, x0+7]  [42.8s]
+PASS T7 U delta_dn: support inside [x0-7, x0+5]  [42.8s]
+PASS T7 U delta_dn: nonzero dn amplitude at x0-7  [42.8s]
+PASS T8 profile: 2t-1 in [-3/8,-1/8] (cos 2theta != 0), 0<t<1 (sin, cos theta != 0)  [42.8s]
+PASS T8 1 + 8A = (4t-1)^2  [42.8s]
+PASS T8 f(k) = 1 - (1+8A) k^2/2 + O(k^4)  [42.9s]
+PASS T8 v_IR,out = 8t-3 = -1/2, 0, 1/2  [42.9s]
+PASS T8 f(pi/2) = 0  [42.9s]
+PASS T8 E'(pi/2) = 1 - 4A  [42.9s]
+PASS T8 v_UV,out(pi/2) = 31/16, 7/4, 23/16  [42.9s]
+PASS T8 f = 4A cos^3 k + (1-4A) cos k  [42.9s]
+PASS T8 A < 0 on the profile (A = t(2t-1), both endpoints negative, t<1/2)  [42.9s]
+PASS T8 g'(1) = (4t-1)^2 > 0 on the whole profile (4t-1 >= 1/4)  [42.9s]
+61/61 exact checks PASS
+Verdict: TRANSFER_MATRIX_PASS (algebraic scope; author-side audit, cross-family independence not established)
+PASS C1 M_x^H G_{x+1} M_x = G_x (general angles on sites x, x+1, x+2; |z| = 1)  [0.7s]
+PASS C1 G_x is Hermitian for |z| = 1  [0.7s]
+PASS C1 operational cut flux is constant in x (two solutions, sesquilinear)  [2.4s]
+PASS C1 operational cut flux equals Y_x^H G_x Y_x (sesquilinear, all sites)  [4.4s]
+PASS C1 the conserved form is not identically zero on these solutions  [4.5s]
+PASS C1 homogeneous medium: det G = -cot^2 theta (nondegenerate form)  [4.5s]
+PASS C2 lambda^12 P(1/lambda, 1/z) = z^-2 P(lambda, z)  (roots closed under 1/conj)  [4.5s]
+PASS C2 P = z lambda^6 Phi  [4.5s]
+PASS C2 on the unit circle Phi = -2 h(k), h = 2 f^2 - 1 - cos(omega + k)  [4.6s]
+PASS C2 deg_lambda P = 12 and P(0) = -z A^2 lambda^0 coefficient (A != 0)  [4.6s]
+PASS C2 det U(k) = e^{-2ik}, i.e. Omega_+ + Omega_- = -2k (total winding -2)  [4.7s]
+PASS C3 elimination: 16F^2Fp^2 + (2F^2-1)^2 - 1 = 4F^2(4Fp^2 - (1 - F^2))  [4.7s]
+PASS C3 t=5/16: A < 0, so g(C) = C(1 - 4A(1-C^2)) vanishes only at C = 0  [4.7s]
+PASS C3 t=5/16: g' >= g'(1) = (4t-1)^2 > 0 on [-1,1], so f = +-1 only at k = 0, pi  [4.7s]
+PASS C3 t=7/16: A < 0, so g(C) = C(1 - 4A(1-C^2)) vanishes only at C = 0  [4.7s]
+PASS C3 t=7/16: g' >= g'(1) = (4t-1)^2 > 0 on [-1,1], so f = +-1 only at k = 0, pi  [4.7s]
+PASS C3 threshold polynomials vanish at u = 1 (nodes k = 0, pi, not critical)  [4.7s]
+PASS C3 interior quotient has exactly one root in (0,1); none at 0 or 1  [4.7s]
+PASS C3 exterior quotient has no root in [0,1]: no critical values at t = 7/16  [4.7s]
+PASS C3 interior quotient is proportional to 2625 u^2 - 5245 u + 2604  [4.7s]
+PASS C3 u* = (5245 - sqrt(168025))/5250 is that root  [4.7s]
+PASS C3 enclosure: 0 < u* < 1  [4.7s]
+PASS C3 the four critical z_c have |z_c|^2 enclosures containing 1  [4.7s]
+PASS C3 exactly one critical value lies in the open first quadrant; the others have Im < 0 or Re < 0  [4.7s]
+PASS C3 z_c* (C sign 1, sin k sign -1): Re z_c* > 3/5 = Re z0, so arg z_c* < arg z0 < pi/2 and z0 lies in I  [4.7s]
+PASS C3 Re z_c* is algebraic with minimal polynomial of degree 4 (exact descriptor), and its enclosure lies inside one isolating interval of it  [4.8s]
+PASS C3 collision points z = 1, i, -1, -i are not in I = (arg z_c*, pi/2) (z = i is excluded by definition)  [4.8s]
+PASS C4 interior: P(., z0) has degree 12, P(0) != 0  [4.8s]
+PASS C4 interior: P(., z0) is squarefree (12 distinct roots, M diagonalizable)  [4.8s]
+PASS C4 interior: H(tau) has degree 12 (no root at k = pi) and is squarefree  [4.8s]
+PASS C4 interior: gcd(H, N) = 1 (no zero velocity, no collision at z0)  [4.8s]
+PASS C4 interior: 4 propagating roots; 1 right-moving, 3 left-moving  [4.9s]
+PASS C4 interior: (#right) - (#left) = -2 (winding of C2)  [4.9s]
+PASS C4 interior: 8 evanescent roots, 4 with |lambda| < 1 (decay to x -> +inf) and 4 with |lambda| > 1 (decay to x -> -inf)  [4.9s]
+PASS C4 exterior: P(., z0) has degree 12, P(0) != 0  [4.9s]
+PASS C4 exterior: P(., z0) is squarefree (12 distinct roots, M diagonalizable)  [4.9s]
+PASS C4 exterior: H(tau) has degree 12 (no root at k = pi) and is squarefree  [4.9s]
+PASS C4 exterior: gcd(H, N) = 1 (no zero velocity, no collision at z0)  [4.9s]
+PASS C4 exterior: 4 propagating roots; 1 right-moving, 3 left-moving  [4.9s]
+PASS C4 exterior: (#right) - (#left) = -2 (winding of C2)  [4.9s]
+PASS C4 exterior: 8 evanescent roots, 4 with |lambda| < 1 (decay to x -> +inf) and 4 with |lambda| > 1 (decay to x -> -inf)  [4.9s]
+PASS C4 interior has exactly one right-moving propagating channel on I  [4.9s]
+PASS C4 exterior has at least one right-moving propagating channel on I  [4.9s]
+PASS C4/C5 full line: incoming channels 4 = outgoing channels 4  [4.9s]
+PASS C5 -i U^H dU/dk = sum_j R_j^H sigma_z R_j - I (displacement operator per period)  [127.6s]
+PASS C5 interior: every propagating Bloch mode has nonzero flux Y^H G Y with the sign of its group velocity (exact intervals)  [130.8s]
+PASS C5 interior: the interval group-velocity sign agrees with the exact Sturm sign  [130.8s]
+PASS C5 interior: flux / (v |q_1|^2) enclosures contain 1 and have width < 1e-20  [130.9s]
+PASS C5 interior: Im(Y^H G Y) enclosures contain 0  [130.9s]
+PASS C5 exterior: every propagating Bloch mode has nonzero flux Y^H G Y with the sign of its group velocity (exact intervals)  [134.1s]
+PASS C5 exterior: the interval group-velocity sign agrees with the exact Sturm sign  [134.1s]
+PASS C5 exterior: flux / (v |q_1|^2) enclosures contain 1 and have width < 1e-20  [134.1s]
+PASS C5 exterior: Im(Y^H G Y) enclosures contain 0  [134.1s]
+53/53 channel checks PASS (after 61/61 reviewed transfer-matrix checks)
+interior (t = 5/16): propagating 4 (right 1, left 3), evanescent 8
+exterior (t = 7/16): propagating 4 (right 1, left 3), evanescent 8
+Verdict candidate: CHANNELS_CLASSIFIED (author PRELIMINARY; review pending)
+# exit code 0, finished 2026-11-26T12:23:32Z
+

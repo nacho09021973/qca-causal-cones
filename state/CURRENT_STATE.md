@@ -26,6 +26,13 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   `CHANNELS_CLASSIFIED`, PRELIMINARY, unreviewed, not promoted. On
   I = (arg z_c*, π/2) each medium has 4 propagating channels (1 right-moving,
   3 left-moving) and 8 evanescent ones, with flux form G_x certified.
+- **Reviewed 2026-11-26** (user «autorizo solo Astra», «quiero la version
+  6.2»): `gpt-6.2-astra` **REPAIR_REQUIRED**
+  (`reports/2026-11-26--dispersive-horizon-channels-astra-review.md`). No
+  claim refuted. Missing charter deliverables: the C2 count between
+  thresholds outside I, the per-root C3–C5 outputs, and published-value and
+  hash assertions in the verifier. As delivered the state is
+  `OPEN_AFTER_CHANNEL_ANALYSIS`. Amendment 1 is authorized (user «SI»).
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Not reconciled to `main`.
 
