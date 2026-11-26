@@ -1,0 +1,923 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente, de forma independiente, la matriz de transferencia
+espacial 12×12 del paseo cuántico unitario
+
+U = L₋ W²,   W = S C(θ) S C(θ) S C(−2θ),
+
+y la auditoría de esa matriz hecha por otro modelo. Se adjuntan tres
+documentos:
+
+(A) el informe del autor (`2026-11-26--dispersive-horizon-three-step-transfer.md`),
+    que define el operador (§2, §4) y la matriz (§6);
+(B) la auditoría (`2026-11-26--dispersive-horizon-transfer-matrix-audit.md`),
+    con veredicto PASS en alcance algebraico;
+(C) el verificador SymPy exacto de la auditoría
+    (`verify_dispersive_horizon_transfer_matrix.py`, 61 comprobaciones).
+
+**Orden obligatorio:** deriva primero tú la matriz desde el operador de (A),
+sin mirar (B) ni (C). No presupongas que la matriz publicada es correcta.
+Solo después contrasta con (B) y (C). La auditoría (B) la escribió un modelo;
+no es fuente.
+
+Comprueba, informando para cada apartado PASS / REPAIR_REQUIRED / FAIL /
+UNVERIFIED, con las derivaciones necesarias:
+
+1. Convenciones: C(β) = [[cos β, −sin β], [sin β, cos β]] = exp(−iβσ_y);
+   S|x,↑⟩ = |x+1,↑⟩, S|x,↓⟩ = |x−1,↓⟩; L₋|x,s⟩ = |x−1,s⟩. Determina tú el
+   orden efectivo de las seis monedas y verifica q₇(x+1) = z q₁(x).
+2. Matriz: relaciones entre a_j(x) y b_j(x); vector
+   Y_x = (a₁(x)…a₆(x), b₁(x−1)…b₆(x−1)); las doce filas; los cuatro bloques
+   6×6 P, Q, R, H; las 144 entradas frente a (A). Atención especial a las dos
+   ecuaciones de cierre y a los coeficientes evaluados en x+1. Demuestra o
+   refuta con un contraejemplo concreto que la recurrencia equivale a
+   Uψ = zψ y que no introduce soluciones espurias.
+3. Determinante: det M_x(z) = cot θ_x / cot θ_{x+1}, algebraicamente:
+   independencia de z, signo, ausencia de factores extra, perfil variable,
+   valor 1 en el caso homogéneo.
+4. Dispersión homogénea: con t = cos²θ, A = t(2t−1), comprueba
+   cos E = A cos 3k + (1−A) cos k desde el operador, y que con λ = e^{−ik}
+   la condición de autovalor de M equivale a
+   z²λ⁵ − zλ⁶[4f_t(λ)² − 2] + λ⁷ = 0. Grado, multiplicidades,
+   correspondencia con los modos de Bloch y degeneraciones de Floquet
+   (en particular (z, λ) = (i, −i)).
+5. Adicionales: soporte microscópico [−7, 5]; ausencia de denominadores
+   nulos para t ∈ [5/16, 7/16]; velocidades IR y UV del §5 de (A); la
+   continuidad de la rama Ω₊ en (0, π/2] que (B) añade.
+6. Auditoría y verificador: ¿cada afirmación de (B) está respaldada por una
+   derivación o por una comprobación de (C) que de verdad la decide? Busca
+   comprobaciones vacuas, tests de cero que puedan dar falso positivo,
+   controles negativos insuficientes, o afirmaciones de (B) que excedan lo
+   que (C) certifica. Distingue lo que (C) certifica de lo que solo se
+   argumenta por escrito.
+
+No tienes acceso al repositorio ni puedes ejecutar código. Distingue lo que
+derivas a mano de lo que solo inspeccionas. No calcules el coeficiente de
+transmisión ni evalúes la originalidad. Separa reservas de interpretación
+física de los resultados algebraicos.
+
+Entrega en español: un veredicto por apartado, un único veredicto global
+(PASS / REPAIR_REQUIRED / FAIL / INCONCLUSIVE), las derivaciones críticas,
+objeciones ordenadas por gravedad con sección y reparación concreta, y
+respuesta expresa a: ¿se puede usar matemáticamente la matriz M_x(z)
+publicada como punto de partida fiable para estudiar la transmisión
+estacionaria a través del perfil tanh? Si no hay fallos, dilo sin inventar
+objeciones.
+
+=== DOCUMENT 1: 2026-11-26--dispersive-horizon-three-step-transfer.md ===
+
+# Horizonte dispersivo en una caminata unitaria: regla, obstrucciones y matriz de transferencia
+
+Fecha: 2026-11-26. Repositorio: `qca-causal-cones`.
+
+**Estado: DERIVACION_DE_AUTOR — NO AUDITADA.** Se incluyen identidades algebraicas y comprobaciones numéricas no certificadas. **TRANSMISSION = OPEN; NOVELTY = OPEN.** No se afirma radiación de Hawking, horizonte de sucesos de la relatividad general, universalidad computacional ni recuperación de una métrica dinámica. La construcción es un paseo cuántico unitario monopartícula con perfil espacial impuesto, no la regla homogénea e interactuante que constituye el objetivo principal del repositorio.
+
+## 1. Objetivo y techo de afirmaciones
+
+Se buscan simultáneamente: (A) una velocidad infrarroja saliente negativa dentro y positiva fuera; (B) una velocidad de grupo positiva para algún número de onda de orden de red dentro; y (C) soporte causal microscópico estricto. La existencia de una rama de Bloch saliente a cuasienergía constante es una comprobación adicional **local**. La transmisión a través de la dinámica espacial completa es una obligación distinta.
+
+Esta nota recoge también dos construcciones preliminares descartadas para no confundir el éxito cinemático de la tercera con los fallos anteriores.
+
+## 2. Convenciones independientes de las de otros modelos del repositorio
+
+Hilbert de una partícula: \(\mathcal H=\ell^2(\mathbb Z)\otimes\mathbb C^2\), con base \(|x,\uparrow\rangle,|x,\downarrow\rangle\).
+
+\[
+C(\beta)=e^{-i\beta\sigma_y}
+=\begin{pmatrix}\cos\beta&-\sin\beta\\\sin\beta&\cos\beta\end{pmatrix},
+\]
+\[
+S|x,\uparrow\rangle=|x+1,\uparrow\rangle,\qquad
+S|x,\downarrow\rangle=|x-1,\downarrow\rangle,
+\qquad
+L_-|x,s\rangle=|x-1,s\rangle.
+\]
+
+Usamos \(L_-\), no \(T_-\), porque \(T_\pm\) ya nombra amplitudes de dispersión en la línea Thirring del repositorio. En representación de coordenadas, \((L_-f)(x)=f(x+1)\). Un estado plano tiene amplitudes proporcionales a \(e^{-ikx}\), de modo que
+\[
+S(k)=\operatorname{diag}(e^{ik},e^{-ik}),\qquad
+L_-(k)=e^{-ik}I.
+\]
+En esta convención escribimos autovalores de Floquet como \(e^{i\Omega(k)}\), con velocidad física \(v=\partial_k\Omega\); si se emplea \(e^{-i\omega}\), hay que transformar los signos conjuntamente. Las definiciones anteriores, no una convención implícita de Thirring/Weyl, fijan el operador de esta nota.
+
+## 3. Dos intentos descartados
+
+**Una sola moneda.** Para \(U=L_-S_\eta C(\theta)S_\eta C(\theta)\), la fase constante \(\eta\) se elimina mediante una conjugación de fase espacial, salvo una fase global. La supuesta frontera obtenida tomando \(k=0\) como «IR» no corresponde al verdadero nodo de Dirac. En el nodo, la velocidad saliente es \(-1+2a\), con \(a=\cos\theta\), y para todo \(k\) se verifica \(v_\pm(k)\le-1+2a\). Si \(a<1/2\) atrapa al modo IR, no queda modo UV de velocidad saliente positiva en esa región. Esto no excluye amplitudes no balísticas dentro del cono microscópico.
+
+**Dos monedas split-step en la subfamilia real sin masa.** Para \(W_{\rm ss}=S_+C(\theta_2)S_-C(\theta_1)\) y \(U=L_-W_{\rm ss}^2\), el símbolo congelado cumple
+\[
+\cos E=\cos\theta_1\cos\theta_2\cos k-\sin\theta_1\sin\theta_2.
+\]
+En \(|\theta_j|<\pi/2\), la existencia de un nodo sin masa obliga a \(\theta_2=\pm\theta_1\) (nodos en \(0\) o \(\pi\)). En esos dos casos \(|E'(k)|\le|\cos\theta_1|\) para todo \(k\), y reaparece la obstrucción \(\max v_{\rm grupo}\le-1+2|\cos\theta_1|\). **No es un teorema sobre todas las monedas \(U(2)\) ni sobre todos los split-step.**
+
+## 4. Bloque de tres desplazamientos y evolución completa
+
+Sea un perfil \(0<t_x<1\), con
+\[
+\theta_x=\arccos\sqrt{t_x},\qquad
+W=S C(\theta)S C(\theta)S C(-2\theta),\qquad
+\boxed{U=L_-W^2}.
+\]
+Cada \(C(\cdot)\) se aplica localmente en el sitio en que está la excitación en esa etapa. El bloque \(W\) contiene **tres** desplazamientos condicionales, mientras que una actualización completa \(U\) contiene **seis**, más el desplazamiento global \(L_-\). Todos los factores son unitarios y de alcance finito.
+
+En una actualización, el soporte está dentro de \([-7,5]\); para los parámetros declarados abajo, los desplazamientos extremos tienen coeficientes no nulos. Así,
+\[
+C_{\rm micro}=[-7,5],\qquad
+\operatorname{supp}U^n\delta_x\subseteq[x-7n,x+5n].
+\]
+
+Tomamos el perfil congelado en el espacio
+\[
+\boxed{t_L(x)=\frac38+\frac1{16}\tanh(x/L),\quad L>0.}
+\]
+Sus límites son \(t_{\rm int}=5/16\), \(t_h=3/8\) y \(t_{\rm ext}=7/16\). No se ha fijado ni calculado un coeficiente de transmisión para ningún \(L\).
+
+## 5. Dispersión congelada y criterio cinemático
+
+Escribiendo \(t=\cos^2\theta\) y \(A=t(2t-1)\), la mitad de la traza del bloque homogéneo es exactamente
+\[
+\boxed{\cos E(k;t)=f_t(k)=A\cos3k+(1-A)\cos k}.
+\]
+Se puede obtener seleccionando el coeficiente de \(\cos3k\), igual al producto \(\cos(-2\theta)\cos^2\theta=A\), y usando \(W(0)=I\).
+
+Las fases de \(U\) son
+\[
+\Omega_\pm(k;t)=-k\pm2E(k;t).
+\]
+En \(k=0\) hay un nodo sin masa; su pendiente del bloque es
+\[
+c_{\rm IR}(t)=\sqrt{1+8A}=|4t-1|.
+\]
+Como todo el perfil satisface \(t>1/4\), la velocidad infrarroja saliente de \(U\) vale
+\[
+\boxed{v_{\rm IR,out}(t)=-1+2(4t-1)=8t-3}.
+\]
+Da \(-1/2,0,+1/2\) respectivamente en interior, horizonte y exterior. La otra rama infrarroja es entrante en las tres regiones.
+
+En \(k=\pi/2\), \(E=\pi/2\) y \(E'=1-4A\), por lo que
+\[
+\boxed{v_{\rm UV,out}(\pi/2;t)=1-8A(t)}.
+\]
+Los valores exactos son \(31/16,7/4,23/16\) respectivamente en interior, horizonte y exterior; todos son positivos y menores que el soporte derecho microscópico \(5\).
+
+Además, la fase \(\Omega_+(\pi/2;t)=\pi/2\) es independiente de \(t\). Por continuidad y compacidad existe un \(\omega_*<\pi/2\) suficientemente próximo y una rama \(k_+(t)<\pi/2\), no degenerada, con \(\Omega_+(k_+(t);t)=\omega_*\) y \(\partial_k\Omega_+>0\) en todo el perfil congelado. **Este es un resultado sobre el símbolo local; no demuestra transmisión estacionaria.**
+
+Precaución: el punto exacto \(k=\pi/2\) es una degeneración adicional de Floquet causada por \(W^2\). Antes de interpretar su vecindad como una corrección UV del *mismo* campo infrarrojo hay que auditar la posible especie adicional/doblamiento.
+
+## 6. Matriz de transferencia espacial exacta \(12\times12\)
+
+Para \(z=e^{i\omega}\) buscamos \(U\psi=z\psi\). En el orden de aplicación de las monedas, definimos
+\[
+(\beta_1,\ldots,\beta_6)=(-2\theta,\theta,\theta,-2\theta,\theta,\theta),
+\]
+\[
+q_1=\psi,\qquad q_{j+1}=SC(\beta_j)q_j\quad (1\le j\le6).
+\]
+Así \(q_7=W^2\psi\) y la ecuación estacionaria es exactamente
+\[
+q_7(x+1)=zq_1(x).
+\]
+
+Escribimos \(q_j(x)=(a_j(x),b_j(x))^T\) y elegimos
+\[
+\boxed{
+Y_x=(a_1(x),\ldots,a_6(x),b_1(x-1),\ldots,b_6(x-1))^T.
+}
+\]
+Poniendo \(c_j(x)=\cos\beta_j(x)\), \(s_j(x)=\sin\beta_j(x)\), para \(1\le j\le5\) se obtienen las diez filas
+\[
+a_{j+1}(x+1)=\frac{a_j(x)-s_j(x)b_{j+1}(x-1)}{c_j(x)},
+\]
+\[
+b_j(x)=\frac{b_{j+1}(x-1)-s_j(x)a_j(x)}{c_j(x)}.
+\]
+Las dos filas de cierre son
+\[
+b_6(x)=\frac{c_6(x)a_6(x)-za_1(x)}{s_6(x)},
+\]
+\[
+a_1(x+1)=\frac{a_6(x+1)/z-s_6(x+1)b_1(x-1)}{c_6(x+1)}.
+\]
+
+Por tanto \(Y_{x+1}=M_x(z)Y_x\), donde **todas** las entradas de \(M_x\) quedan dadas por las doce filas anteriores. Para ofrecer además una forma matricial compacta, sean \(E_{ij}\) las unidades matriciales \(6\times6\), y abreviemos \(c_j=c_j(x)\), \(s_j=s_j(x)\), \(c_+=c_6(x+1)\), \(s_+=s_6(x+1)\). Entonces
+\[
+\boxed{M_x(z)=\begin{pmatrix}P_x&Q_x\\R_x&H_x\end{pmatrix}},
+\]
+con bloques
+\[
+P_x=\sum_{j=1}^{5}\frac{E_{j+1,j}}{c_j}+\frac{E_{1,5}}{zc_+c_5},
+\]
+\[
+Q_x=-\sum_{j=1}^{5}\frac{s_j}{c_j}E_{j+1,j+1}
+-\frac{s_+}{c_+}E_{1,1}-\frac{s_5}{zc_+c_5}E_{1,6},
+\]
+\[
+R_x=-\sum_{j=1}^{5}\frac{s_j}{c_j}E_{j,j}
+-\frac{z}{s_6}E_{6,1}+\frac{c_6}{s_6}E_{6,6},
+\]
+\[
+H_x=\sum_{j=1}^{5}\frac{E_{j,j+1}}{c_j}.
+\]
+No se ha sustituido el perfil espacial por coeficientes congelados en esta matriz: aparecen exactamente los valores de moneda en \(x\) y \(x+1\).
+
+En \(5/16\le t\le7/16\), \(\sin\theta\), \(\cos\theta\) y \(\cos2\theta=2t-1\) son no nulos, así que todas las divisiones son legítimas.
+
+La eliminación por bloques da
+\[
+\boxed{
+\det M_x(z)=\frac{\cot\theta_x}{\cot\theta_{x+1}}.
+}
+\]
+En el medio homogéneo \(\det M=1\); en un intervalo el determinante del producto telescopa.
+
+### Comprobación homogénea
+
+Sea \(\lambda=e^{-ik}\), el multiplicador del vector espacial \(Y_{x+1}=\lambda Y_x\), y
+\[
+f_t(\lambda)=\frac A2(\lambda^3+\lambda^{-3})
++\frac{1-A}{2}(\lambda+\lambda^{-1}).
+\]
+La ecuación característica es
+\[
+\boxed{
+z^2\lambda^5-z\lambda^6[4f_t(\lambda)^2-2]+\lambda^7=0.
+}
+\]
+Es un polinomio de grado doce cuando \(A\ne0\), y coincide con la ecuación de Bloch de \(U(k)=e^{-ik}W(k)^2\). En particular, la matriz no debe confundirse con la fórmula obtenida reemplazando ingenuamente \(t\) por \(t(x)\) en el polinomio homogéneo: esa operación omitiría los desplazamientos entre monedas de sitios distintos.
+
+## 7. Transmisión: obligación abierta
+
+Para \(z=e^{i\omega_*}\), la matriz de transferencia de un tramo es
+\[
+\mathcal M_{m:n}(z)=M_n(z)M_{n-1}(z)\cdots M_m(z).
+\]
+Los dos límites \(x\to\pm\infty\) son matrices homogéneas diferentes. El problema requiere los subespacios propagantes y evanescentes de ambas matrices, una onda incidente desde el interior, ninguna incidente desde el exterior y normalización de flujo.
+
+Sea \(\mathcal T_L(\omega_*)\) la probabilidad física de transmisión resultante. Permanece abierto decidir
+\[
+\boxed{\mathcal T_L(\omega_*)>0.}
+\]
+La afirmación más fuerte \(\lim_{L\to\infty}\mathcal T_L(\omega_*)=1\) es solo una **conjetura**: la existencia de una raíz de Bloch saliente en cada medio congelado no controla automáticamente las amplitudes de conversión entre canales.
+
+## 8. Evidencias y controles existentes
+
+- Derivación algebraica directa de las etapas y cierre estacionario, escrita arriba. No auditada por otra familia.
+- Comprobaciones aritméticas propias de la matriz dispersiva homogénea y su determinante en los tres valores racionales del perfil: concuerdan a precisión flotante; no son certificados.
+- Comprobación comunicada por otro modelo: las 144 entradas concuerdan con la regla definida, 54 relaciones de etapa con residuo máximo comunicado \(3\cdot10^{-11}\), determinante y autovalores compatibles con el polinomio hasta los residuos comunicados \(10^{-13}\)–\(10^{-9}\). Es una revisión numérica de convenciones deducidas, **no revisión formal ni certificación intervalar**, y no se atribuye independencia no acreditada.
+- Lectura de convenciones en el repositorio: la línea Thirring usa \(R\) hacia la derecha y \(L\) hacia la izquierda y ya reserva \(T_\pm\) para amplitudes. Se adopta aquí el nombre \(L_-\) para el desplazamiento, sin cambiar el operador. Diferentes líneas documentan distintas elecciones de signo Fourier; las definiciones de §2 son la fuente de verdad para esta nueva construcción.
+- Ninguna simulación temporal o cálculo estacionario del coeficiente \(\mathcal T_L\) se presenta como prueba.
+
+Antecedentes generales, sin pretensión de novedad: Di Molfetta, Brachet y Debbasch, *Phys. Rev. A* 88, 042301 (2013), DOI 10.1103/PhysRevA.88.042301; *Bounds on the dynamics of periodic quantum walks and emergence of the gapless and gapped Dirac equation*, *Phys. Rev. A* 97, 012116 (2018), DOI 10.1103/PhysRevA.97.012116; R. Tiedra de Aldecoa, *J. Funct. Anal.* 2020, DOI 10.1016/j.jfa.2020.108704 (teoría de dispersión unitaria, aplicación directa a esta regla aún no verificada); Bisio, Mosco y Perinotti, arXiv:1912.09768 (dispersión en tiempo discreto).
+
+## 9. Estado y próximo punto de control
+
+**CLOSED AS AUTHOR DERIVATION:** construcción unitaria local; símbolos congelados; desigualdad cinemática IR atrapado / alto número de onda saliente; rama local saliente a cuasienergía constante; matriz espacial exacta y chequeos algebraicos propios.
+
+**OPEN:** revisión independiente de la matriz y de todas las convenciones; existencia/identificación de la matriz de dispersión para el perfil tanh; \(\mathcal T_L(\omega_*)>0\); cota adiabática; interpretación de especies Floquet; comparación de originalidad; obtención de un perfil dinámico bajo una regla homogénea; computación universal e interacciones.
+
+**Siguiente compuerta:** revisión ciega de la equivalencia \(Y_{x+1}=M_x(z)Y_x\iff U\psi=z\psi\), su determinante y la dispersión homogénea, sin reclamar signo de transmisión. Ningún resultado queda promocionado por el solo hecho de estar documentado aquí.
+
+=== DOCUMENT 2: 2026-11-26--dispersive-horizon-transfer-matrix-audit.md ===
+
+# Audit of the 12×12 spatial transfer matrix (dispersive-horizon walk)
+
+Date: 2026-11-26. Branch: `review/dispersive-horizon-transfer-audit`, from
+`main` at `8fd37a5`.
+Reviewed candidate: `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`,
+written at `8e5b540` and unchanged at `8fd37a5`, SHA256
+`7e372669d0155b26c26b50e464c33a4c7d6612dcf2d5e791b01d57cda90d63b6`.
+Verifier: `scripts/verify_dispersive_horizon_transfer_matrix.py`, 61/61 exact
+checks, about 45 s, SHA256
+`98af2f6b90c51c170e1e92b6577cfe62a74fb734ee6e9191bbd5639bf3efbca2`.
+No gate charter exists for this line. This audit records a review of the
+author derivation and does not authorize anything.
+
+**Status: PASS in the algebraic scope below. TRANSMISSION = OPEN.
+NOVELTY = not assessed. Not promoted.**
+
+## Reviewer and independence
+
+- **Reviewer:** Claude Opus 5.5 (`claude-opus-5-5`) in Claude Code. The user
+  asked for the audit with a pasted brief: derive the matrix from the
+  operator, check every block, the determinant, the homogeneous dispersion and
+  the extra checks, give one round and one verdict, and do not compute
+  transmission.
+- **Independence:** the author's model family is not recorded in the
+  candidate. If it was written with Claude, this is an author-side audit and
+  not independent verification (`CLAUDE.md`, "No autophagy"). Independence
+  still needs a cross-family review (`revision-ciega` / `sanedrin`) or a
+  person.
+- **Tools:** no `~/herramientas` or `sanedrin` tool was used.
+- **How the audit ran:** the derivation was first redone by hand. Exploratory
+  SymPy checks were run in a scratchpad and are superseded by the versioned
+  verifier, which is the only provenance for the results below.
+
+## Conventions (§1 of the brief): PASS
+
+In coordinates:
+
+- (Sψ)↑(x) = ψ↑(x−1)
+- (Sψ)↓(x) = ψ↓(x+1)
+- (L₋f)(x) = f(x+1)
+- C(β) = exp(−iβσ_y), verified (T1).
+
+**Coin order.** W = S C(θ) S C(θ) S C(−2θ) acts right to left, so the coin
+order of W² is (−2θ, θ, θ, −2θ, θ, θ). The verifier reads this off the word
+of W (T1).
+
+**Stationary equation.** With q₁ = ψ and q_{j+1} = S C(β_j) q_j, we have
+q₇ = W²ψ and (Uψ)(x) = q₇(x+1). So Uψ = zψ is equivalent to
+q₇(x+1) = z q₁(x).
+
+**Fourier symbol.** On ψ ∝ e^{−ikx}: S(k) = diag(e^{ik}, e^{−ik}) and
+L₋(k) = e^{−ik}. With Floquet eigenvalues e^{iΩ}, the stationary phase gives
+x = (∂ₖΩ) t, so the sign of v = ∂ₖΩ is correct.
+
+## Matrix and equivalence (§2): PASS
+
+**Stage relations.** With the coin at site x and then the shift:
+
+- (i) a_{j+1}(x+1) = c_j(x) a_j(x) − s_j(x) b_j(x)
+- (ii) b_{j+1}(x−1) = s_j(x) a_j(x) + c_j(x) b_j(x)
+
+Solving (ii) for b_j(x) and substituting into (i), using c² + s² = 1, gives
+the report's ten rows.
+
+**Closures.**
+
+- Up closure: a₇(x+1) = z a₁(x) with (i) at j = 6 gives the b₆(x) row.
+- Down closure: it cannot be imposed at x, because b₇(x−1) = z b₁(x−2) lies
+  outside Y_x. It is imposed at site x+1. There, (i) and (ii) for j = 6 give
+  z a₁(x+1) = (a₆(x+1) − s₊ b₇(x)) / c₊, with b₇(x) = z b₁(x−1). The result
+  is the report's a₁(x+1) row, with c₊ and s₊ evaluated at x+1.
+
+**Entries.** All 144 entries agree with the report's P, Q, R and H. Of these,
+25 are structurally nonzero: P 6, Q 7, R 7, H 5.
+
+The verifier checks this without the report's combined forms (T2):
+
+- It solves the raw 13-equation system: (i) and (ii) for j ≤ 5, the up
+  closure at x, and stage 6 at x+1, with b₆(x+1) as an auxiliary unknown.
+- The angles are free and independent: c_j, s_j at x, and c₆, s₆ at x+1.
+- The system's determinant is −c₁c₂c₃c₄c₅ · c₆(x+1) · s₆(x) · z.
+- Each difference from the report's entries is decided exactly by reducing
+  its numerator modulo c² + s² − 1.
+- Negative controls: a single sign flip, and the closure coefficients taken
+  at x instead of x+1, are both detected.
+
+**Second route (T3).**
+
+- Iterate the report's M with site-dependent rational coins and
+  z = (3+4i)/5.
+- Rebuild ψ, apply U from its definition, and check Uψ = zψ exactly at 22
+  interior sites.
+- The intermediate stage vectors match the components of Y in 280
+  comparisons.
+
+**Equivalence, written argument.** Assume c_j(x) ≠ 0 for j ≤ 6, s₆(x) ≠ 0 and
+z ≠ 0 at every site.
+
+- **From the operator to the recurrence.** A solution ψ determines all q_j.
+  The 13-equation system has a unique solution, so Y_{x+1} = M_x Y_x.
+- **From the recurrence to the operator.**
+  - For j ≤ 5, each pair of rows is an invertible transformation of (i)/(ii).
+  - Define q₇ := S C(β₆) q₆. The b₆ row at x gives a₇(x+1) = z a₁(x).
+  - The b₆ row at x+1 combined with the a₁ row gives
+    b₇(x) = s₊ a₆(x+1) + c₊ (c₊ a₆(x+1) − z a₁(x+1)) / s₊ = z b₁(x−1).
+    The verifier checks the algebraic core of this step (T2, auxiliary
+    b₆(x+1)).
+- **Inverse map.** ψ is recovered as q₁(x) = (Y_x[1], Y_{x+1}[7]).
+
+So solutions of Uψ = zψ on ℤ, with no ℓ² condition, correspond one to one and
+linearly to orbits of M. The solution space has dimension 12, and there are no
+spurious solutions.
+
+Caveat for finite segments: the down closure at the last site uses one more
+step, which matters when imposing boundary data.
+
+## Determinant (§3): PASS
+
+**Proof.**
+
+- Stages 1–5 map disjoint pairs (a_j, b_{j+1}) → (a_{j+1}′, b_j′) with
+  matrix (1/c)[[1, −s], [−s, 1]]. Its determinant is (1 − s²)/c² = 1.
+- The two closures are triangular with respect to variables already
+  produced. Their diagonal factors are c₆/s₆ and −s₊/c₊.
+- The slot assignment is one 12-cycle, 1→2→…→6→12→11→…→7→1, with sign −1.
+
+Result: det M_x = cot β₆(x) / cot β₆(x+1), which equals
+cot θ_x / cot θ_{x+1} under the rule.
+
+**Verifier (T4):** the identity holds for general angles, with no z
+dependence.
+
+**Consequences.** The determinant is positive for θ ∈ (0, π/2), has no extra
+factors, holds for a variable profile, and equals 1 in a homogeneous medium.
+
+## Homogeneous dispersion (§4): PASS
+
+**Relation of dispersion (T5).** tr W/2 = A cos 3k + (1−A) cos k with
+A = t(2t − 1) and t = cos²θ, and det W = 1. Hence
+
+det(z − λW²) = z² − zλ(4f² − 2) + λ²,
+
+which times λ⁵ is the report's polynomial. Here λ = e^{−ik}, and f is
+symmetric under λ ↔ 1/λ.
+
+**Characteristic polynomial (T5).** charpoly(M_hom) · (−zA²) equals the
+report's polynomial for symbolic θ, with the same coefficients and therefore
+the same multiplicities. The polynomial has degree 12, with leading and
+constant coefficient both −zA², nonzero for A ≠ 0.
+
+**Bloch correspondence.** Through the bijection above, eigenvalues λ of M
+correspond to Bloch modes with complex k.
+
+**Floquet degeneracy (T6).**
+
+- W(π/2)² = −I for every θ, so U(π/2) = iI.
+- At t = 5/16, 3/8 and 7/16, with z = i and λ = −i:
+  - two explicit, independent Bloch vectors are eigenvectors of M;
+  - (λ + i)² divides the characteristic polynomial and (λ + i)³ does not.
+- The root is therefore double and semisimple.
+
+The nonzero tests use exact minimal polynomials, not simplification.
+
+Band edges (∂ₖΩ = 0) give double roots of the usual non-semisimple kind. This
+is not an error, but it matters for the channel analysis.
+
+## Additional checks (§5)
+
+**Support [−7, 5]: PASS (T7).** Six shifts of ±1 plus L₋ bound the support.
+For one site-dependent coin configuration, U δ_{x0,↑} has a nonzero ↑
+amplitude at x0+5, and U δ_{x0,↓} has a nonzero ↓ amplitude at x0−7. In
+general, the extreme amplitude is a product of coin cosines, which is nonzero
+on the profile.
+
+**Denominators: PASS (T8).** For t ∈ [5/16, 7/16]: cos θ = √t,
+sin θ = √(1−t), and cos 2θ = 2t − 1 ∈ [−3/8, −1/8].
+
+**Velocities: PASS (T8).**
+
+- 1 + 8A = (4t − 1)².
+- f = 1 − (1 + 8A) k²/2 + O(k⁴), which gives v_IR,out = 8t − 3 = −1/2, 0, 1/2.
+- f(π/2) = 0, and −f′(π/2) = 1 − 4A, which gives v_UV = 1 − 8A = 31/16, 7/4,
+  23/16.
+- The step E′ = −f′/sin E and the relation v = −1 + 2E′ are analytic and not
+  certified by the script.
+
+**Branch continuity: proved here, ingredients certified (T8).** This is a
+claim of the candidate's §5 that the brief left as interpretation.
+
+- Write f = g(cos k) with g(C) = 4AC³ + (1 − 4A)C, so g(0) = 0 and g(1) = 1.
+- A < 0 on the profile, so g′(C) = 12AC² + 1 − 4A ≥ g′(1) = (4t − 1)² > 0
+  on [0, 1].
+- Hence 0 ≤ f < 1 on (0, π/2], and E = arccos f is smooth there.
+
+So Ω₊ runs continuously from the infrared node to π/2.
+
+**Not proved here:** the compactness step that gives ω* and k₊(t). It is
+standard, but written only in the candidate.
+
+## Interpretation, separate from the algebra
+
+- Whether the branch near k = π/2 is the same field as the infrared mode, or
+  an extra Floquet species, remains open, as the candidate says.
+- At z = i the degeneracy occurs in every medium at once, because
+  Ω₊(π/2) = π/2 for every t. The candidate's ω* < π/2 avoids that point. A
+  choice of ω* close to π/2 must watch it.
+- "Outgoing" and "incoming" are kinematic labels on group velocities. They
+  do not establish physical channels.
+
+## Verdict
+
+| Section | Verdict |
+| --- | --- |
+| 1 Conventions | PASS |
+| 2 Matrix, 144 entries, equivalence, no spurious solutions | PASS |
+| 3 Determinant | PASS |
+| 4 Homogeneous dispersion, multiplicities, z = i degeneracy | PASS |
+| 5 Support, denominators, velocity values | PASS |
+| 5 ω*, k₊(t) compactness step | UNVERIFIED (author argument only) |
+| Global | **PASS** (algebraic scope) |
+
+**Can the published M_x(z) be used as a reliable mathematical starting point
+for the stationary transmission problem through the tanh profile?**
+
+Yes, under these conditions:
+
+- t_x ∈ (0, 1) and t_x ≠ 1/2 at every site, which the tanh profile
+  satisfies;
+- |z| = 1.
+
+**Validated:**
+
+- every entry of M_x;
+- the bijection with Uψ = zψ;
+- the determinant;
+- the homogeneous characteristic polynomial for all θ;
+- the structure at z = i on the profile values;
+- the support, the denominators and the velocity values.
+
+**Still open:**
+
+- classification of propagating and evanescent modes in both limits;
+- flux normalisation;
+- treatment of band-edge Jordan blocks;
+- 𝒯_L(ω*) > 0;
+- the Floquet-species interpretation;
+- cross-family independence of this review.
+
+Nothing in `state/CURRENT_STATE.md` or `README.md` changes with this report.
+Promotion is a separate decision for the user.
+
+=== DOCUMENT 3: verify_dispersive_horizon_transfer_matrix.py ===
+
+"""Exact audit verifier for the 12x12 spatial transfer matrix of
+reports/2026-11-26--dispersive-horizon-three-step-transfer.md (commit 8e5b540).
+
+Operator under audit:  U = L_- W^2,  W = S C(theta) S C(theta) S C(-2 theta),
+C(b) = exp(-i b sigma_y), S|x,up> = |x+1,up>, S|x,dn> = |x-1,dn>,
+L_-|x,s> = |x-1,s>; each coin acts with the coin angle of the site where the
+excitation sits at that stage.
+
+Exact SymPy only (no floating point, no fitted tolerances). Fails closed: any
+failed check raises and the process exits nonzero. Groups:
+
+  T1  conventions: C(b) = exp(-i b sigma_y); coin order read off W's word
+  T2  independent elimination of the raw stage + closure equations (general
+      independent angles, reduced modulo c^2+s^2=1) vs the report's blocks
+      P, Q, R, H, entry by entry (144 entries); uniqueness of the solution;
+      consistency of the auxiliary unknown b_6(x+1) with row 12 of M_{x+1};
+      two negative controls (sign flip; closure coefficients at x not x+1)
+  T3  second route: iterate the report's M with site-dependent rational coins,
+      rebuild psi, apply U from its definition, check U psi = z psi exactly
+  T4  det M_x = cot beta_6(x) / cot beta_6(x+1), general angles, z-free
+  T5  homogeneous symbol: tr W / 2 = A cos 3k + (1-A) cos k, det W = 1,
+      charpoly(M_hom) * (-z A^2) = boxed lambda-polynomial (degree 12), for
+      symbolic theta and at three rational points
+  T6  Floquet degeneracy (z, lambda) = (i, -i) at t = 5/16, 3/8, 7/16:
+      W(pi/2)^2 = -I, two explicit independent eigenvectors of M,
+      algebraic multiplicity exactly 2 (so semisimple)
+  T7  microscopic support [-7, 5] with nonzero extreme coefficients
+      (site-dependent rational coins)
+  T8  denominators, IR/UV velocities, and 0 <= f < 1 on (0, pi/2]
+
+What it does NOT certify: see scripts/README.md.
+"""
+import random
+import sys
+import time
+
+import sympy as sp
+from sympy import I, Matrix, Rational as R, cos, sin, eye, zeros
+
+checks = []
+T0 = time.perf_counter()
+
+
+def ok(label, cond):
+    if not cond:
+        raise AssertionError(label)
+    checks.append(label)
+    print(f'PASS {label}  [{time.perf_counter() - T0:.1f}s]', flush=True)
+
+
+def zero(label, value):
+    entries = list(value) if isinstance(value, sp.MatrixBase) else [value]
+    def z0(x):
+        x = sp.expand(x)
+        return sp.simplify(x) == 0 or sp.simplify(sp.expand(x.rewrite(sp.exp))) == 0
+    ok(label, all(z0(x) for x in entries))
+
+
+XMP = sp.symbols('X_minpoly')
+
+
+def nonzero_alg(x):
+    """Exact nonzero test for an algebraic number: minimal polynomial is not X."""
+    return sp.minimal_polynomial(sp.expand(x), XMP) != XMP
+
+
+def E(i, j):
+    m = zeros(6, 6)
+    m[i - 1, j - 1] = 1
+    return m
+
+
+def M_report(c, s, cp, sp_, z):
+    """Blocks P, Q, R, H transcribed verbatim from report Sec. 6.
+    c[j], s[j] (j = 1..6) at site x; cp, sp_ = c_6, s_6 at site x+1."""
+    P = sum((E(j + 1, j) / c[j] for j in range(1, 6)), zeros(6, 6)) \
+        + E(1, 5) / (z * cp * c[5])
+    Q = -sum((s[j] / c[j] * E(j + 1, j + 1) for j in range(1, 6)), zeros(6, 6)) \
+        - sp_ / cp * E(1, 1) - s[5] / (z * cp * c[5]) * E(1, 6)
+    Rb = -sum((s[j] / c[j] * E(j, j) for j in range(1, 6)), zeros(6, 6)) \
+        - z / s[6] * E(6, 1) + c[6] / s[6] * E(6, 6)
+    H = sum((E(j, j + 1) / c[j] for j in range(1, 6)), zeros(6, 6))
+    return Matrix(sp.BlockMatrix([[P, Q], [Rb, H]]))
+
+
+SY = Matrix([[0, -I], [I, 0]])
+
+
+def coin(b):
+    return Matrix([[cos(b), -sin(b)], [sin(b), cos(b)]])
+
+
+# ---------------------------------------------------------------- T1
+b = sp.symbols('b', real=True)
+zero('T1 C(b) = exp(-i b sigma_y)', (-I * b * SY).exp().applyfunc(lambda e: e.rewrite(cos)) - coin(b))
+# W's word, written left to right exactly as in the report; applied right to left.
+W_WORD = ['S', ('C', 1), 'S', ('C', 1), 'S', ('C', -2)]   # ('C', m): angle m*theta
+order = [f[1] for f in reversed(W_WORD) if f != 'S'] * 2
+ok('T1 coin order of W^2 is (-2,1,1,-2,1,1) theta', order == [-2, 1, 1, -2, 1, 1])
+ok('T1 W^2 has six conditional shifts', [f for f in reversed(W_WORD)].count('S') * 2 == 6)
+
+# ---------------------------------------------------------------- T2
+# General independent angles: free symbols c_j, s_j (j = 1..6, site x) and
+# cP, sP (beta_6 at site x+1). Identities are decided exactly by clearing
+# denominators and reducing the numerator modulo c^2 + s^2 - 1 (division in s).
+cs_ = sp.symbols('c1:7')
+ss_ = sp.symbols('s1:7')
+cP, sP, z = sp.symbols('cP sP z')
+c = {j: cs_[j - 1] for j in range(1, 7)}
+s = {j: ss_[j - 1] for j in range(1, 7)}
+CIRCLE = list(zip(ss_, cs_)) + [(sP, cP)]
+
+
+def is_zero_on_circle(expr):
+    num, _ = sp.fraction(sp.cancel(sp.together(expr)))
+    num = sp.expand(num)
+    for sv, cv in CIRCLE:
+        num = sp.rem(num, sv**2 + cv**2 - 1, sv)
+    return sp.expand(num) == 0
+
+
+a0 = sp.symbols('a0_1:7')      # a_j(x)
+bm = sp.symbols('bm_1:7')      # b_j(x-1)
+a1 = sp.symbols('a1_1:7')      # a_j(x+1)   (unknown)
+b0 = sp.symbols('b0_1:7')      # b_j(x)     (unknown)
+b6n = sp.symbols('b6_next')    # b_6(x+1)   (auxiliary unknown)
+# Raw stage relations: (S C q)(y) = ((C q)_up(y-1), (C q)_dn(y+1)).
+#   a_{j+1}(x+1) = c_j(x) a_j(x) - s_j(x) b_j(x)
+#   b_{j+1}(x-1) = s_j(x) a_j(x) + c_j(x) b_j(x)
+eqs = []
+for j in range(1, 6):
+    eqs.append(a1[j] - (c[j] * a0[j - 1] - s[j] * b0[j - 1]))
+    eqs.append(bm[j] - (s[j] * a0[j - 1] + c[j] * b0[j - 1]))
+# Closure q_7(y+1) = z q_1(y): stage 6 at site x (up), and at site x+1 (up, dn).
+eqs.append(z * a0[0] - (c[6] * a0[5] - s[6] * b0[5]))           # a_7(x+1) = z a_1(x)
+eqs.append(z * a1[0] - (cP * a1[5] - sP * b6n))                 # a_7(x+2) = z a_1(x+1)
+eqs.append(z * bm[0] - (sP * a1[5] + cP * b6n))                 # b_7(x)   = z b_1(x-1)
+unknowns = list(a1) + list(b0) + [b6n]
+ok('T2 13 equations in 13 unknowns', len(eqs) == 13 and len(unknowns) == 13)
+Asys, bsys = sp.linear_eq_to_matrix(eqs, unknowns)
+detA = sp.factor(Asys.det(method='berkowitz'))
+# Unique solution iff c_1..c_5(x), c_6(x+1), s_6(x), z are all nonzero.
+ok('T2 stage system det = -c1 c2 c3 c4 c5 c6(x+1) s6(x) z (unique solution)',
+   sp.expand(detA + c[1] * c[2] * c[3] * c[4] * c[5] * cP * s[6] * z) == 0)
+solv = Asys.LUsolve(bsys)
+sol = {v: sp.cancel(solv[n]) for n, v in enumerate(unknowns)}
+Yx = Matrix(list(a0) + list(bm))
+Ynext = Matrix([sol[v] for v in list(a1) + list(b0)])
+M_ind = Ynext.jacobian(Yx)
+zero('T2 solution is linear homogeneous in Y_x', Ynext - M_ind * Yx)
+M_rep = M_report(c, s, cP, sP, z)
+names = 'PQRH'
+for bi, (r0, c0) in enumerate([(0, 0), (0, 6), (6, 0), (6, 6)]):
+    blk = M_ind[r0:r0 + 6, c0:c0 + 6] - M_rep[r0:r0 + 6, c0:c0 + 6]
+    ok(f'T2 block {names[bi]}: 36 entries agree with independent elimination',
+       all(is_zero_on_circle(x) for x in blk))
+# Negative controls: the same test must reject (a) one flipped sign in Q and
+# (b) the closure coefficients evaluated at x instead of x+1.
+M_bad = M_rep.copy()
+M_bad[0, 6] = -M_bad[0, 6]
+ok('T2 negative control: sign flip in Q[1,1] is detected',
+   not all(is_zero_on_circle(x) for x in (M_ind - M_bad)))
+M_bad = M_report(c, s, c[6], s[6], z)
+ok('T2 negative control: c_6(x), s_6(x) in place of c_6(x+1), s_6(x+1) is detected',
+   not all(is_zero_on_circle(x) for x in (M_ind - M_bad)))
+nnz = sum(1 for x in M_rep if sp.cancel(x) != 0)
+ok('T2 report M has 25 structurally nonzero entries (P 6, Q 7, R 7, H 5)', nnz == 25)
+# Forward direction: the auxiliary b_6(x+1) equals row 12 of M_{x+1}, so the
+# recurrence on consecutive sites reproduces every stage + closure equation.
+ok('T2 b_6(x+1) from stage system equals row 12 of M_{x+1}',
+   is_zero_on_circle(sol[b6n] - (cP * sol[a1[5]] - z * sol[a1[0]]) / sP))
+
+# ---------------------------------------------------------------- T3
+random.seed(20261126)
+TRIPLES = [(R(3, 5), R(4, 5)), (R(5, 13), R(12, 13)), (R(8, 17), R(15, 17)),
+           (R(7, 25), R(24, 25)), (R(20, 29), R(21, 29)), (R(4, 5), R(3, 5)),
+           (R(12, 13), R(5, 13)), (R(48, 73), R(55, 73))]
+NS = 34
+site = {x: TRIPLES[random.randrange(len(TRIPLES))] for x in range(-12, NS + 12)}
+
+
+def coin_cs(m, x):
+    """cos, sin of m*theta_x for m in {1, -2} with rational cos/sin theta."""
+    p, q = site[x]
+    if m == 1:
+        return p, q
+    if m == -2:
+        return p * p - q * q, -2 * p * q
+    raise ValueError(m)
+
+
+def apply_word(word, psi):
+    """Apply a word of 'S', ('C', m), 'L' (right to left) to psi: {x: (up, dn)}.
+    Sites whose value is not determined by the window are dropped."""
+    for f in reversed(word):
+        new = {}
+        if f == 'S':
+            for x in psi:
+                if x - 1 in psi and x + 1 in psi:
+                    new[x] = (psi[x - 1][0], psi[x + 1][1])
+        elif f == 'L':
+            for x in psi:
+                if x + 1 in psi:
+                    new[x] = psi[x + 1]
+        else:
+            for x, (up_, dn_) in psi.items():
+                cc, ss = coin_cs(f[1], x)
+                new[x] = (cc * up_ - ss * dn_, ss * up_ + cc * dn_)
+        psi = new
+    return psi
+
+
+U_WORD = ['L'] + W_WORD + W_WORD
+zr = R(3, 5) + R(4, 5) * I
+
+
+def site_cs(x):
+    cc, ss = {}, {}
+    for j, m in enumerate(order, 1):
+        cc[j], ss[j] = coin_cs(m, x)
+    return cc, ss
+
+
+Y = {0: Matrix([random.randint(-5, 5) + random.randint(-5, 5) * I for _ in range(12)])}
+for x in range(NS):
+    cc, ss = site_cs(x)
+    cn, sn = site_cs(x + 1)
+    Y[x + 1] = (M_report(cc, ss, cn[6], sn[6], zr) * Y[x]).applyfunc(sp.expand)
+psi = {x: (Y[x][0], Y[x + 1][6]) for x in range(NS)}
+Upsi = apply_word(U_WORD, psi)
+interior = [x for x in Upsi if x in psi]
+ok('T3 at least 20 interior sites', len(interior) >= 20)
+ok('T3 U psi = z psi exactly at every interior site (site-dependent coins)',
+   all(sp.expand(Upsi[x][k] - zr * psi[x][k]) == 0 for x in interior for k in (0, 1)))
+# Same psi also reproduces the intermediate stage vectors stored in Y:
+q = dict(psi)
+stage_ok = True
+ncmp = 0
+for j in range(1, 6):
+    q = apply_word(['S', ('C', order[j - 1])], q)
+    for x in q:
+        if 0 <= x < NS and x - 1 >= 0:
+            stage_ok &= sp.expand(q[x][0] - Y[x][j]) == 0          # a_{j+1}(x)
+            stage_ok &= sp.expand(q[x][1] - Y[x + 1][6 + j]) == 0  # b_{j+1}(x)
+            ncmp += 2
+ok(f'T3 rebuilt stage vectors q_2..q_6 equal the components of Y ({ncmp} comparisons)',
+   stage_ok and ncmp >= 100)
+
+# ---------------------------------------------------------------- T4
+d = sp.factor(M_rep.det(method='berkowitz'))
+ok('T4 det M_x = cot beta_6(x) / cot beta_6(x+1), general angles',
+   is_zero_on_circle(d - (c[6] / s[6]) / (cP / sP)))
+zero('T4 det M_x independent of z', sp.diff(d, z))
+th0, th1 = sp.symbols('theta0 theta1', positive=True)
+zero('T4 with beta_6 = theta: cot(theta_x)/cot(theta_{x+1})',
+     (cos(th0) / sin(th0)) / (cos(th1) / sin(th1)) - sp.cot(th0) / sp.cot(th1))
+
+# ---------------------------------------------------------------- T5
+k, th = sp.symbols('k theta', real=True)
+Sk = sp.diag(sp.exp(I * k), sp.exp(-I * k))     # symbol on e^{-ikx}
+W = Sk * coin(th) * Sk * coin(th) * Sk * coin(-2 * th)
+t = cos(th)**2
+A = t * (2 * t - 1)
+f = A * cos(3 * k) + (1 - A) * cos(k)
+zero('T5 tr W / 2 = A cos 3k + (1-A) cos k',
+     (sp.expand_complex(W.trace() / 2) - f).rewrite(sp.exp))
+zero('T5 det W = 1', W.det() - 1)
+lam = sp.symbols('lambda')
+
+
+def hom_cs(p, qq):
+    cc, ss = {}, {}
+    for j, m in enumerate(order, 1):
+        cc[j], ss[j] = (p, qq) if m == 1 else (p * p - qq * qq, -2 * p * qq)
+    return cc, ss
+
+
+def boxed(AA):
+    fl = AA / 2 * (lam**3 + lam**-3) + (1 - AA) / 2 * (lam + 1 / lam)
+    return sp.expand(z**2 * lam**5 - z * lam**6 * (4 * fl**2 - 2) + lam**7)
+
+
+for p, qq in [(R(3, 5), R(4, 5)), (R(48, 73), R(55, 73)), (R(8, 17), R(15, 17))]:
+    tt = p * p
+    AA = tt * (2 * tt - 1)
+    cc, ss = hom_cs(p, qq)
+    Mh = M_report(cc, ss, cc[6], ss[6], z)
+    cpoly = sp.expand((lam * eye(12) - Mh).det(method='berkowitz'))
+    Pb = boxed(AA)
+    zero(f'T5 t={tt}: charpoly(M_hom) * (-z A^2) = boxed polynomial',
+         sp.expand(cpoly * (-z * AA**2)) - Pb)
+    ok(f'T5 t={tt}: boxed polynomial has degree 12, nonzero constant term',
+       sp.degree(Pb, lam) == 12 and sp.expand(Pb.subs(lam, 0)) != 0)
+
+# General theta: cos theta = pc, sin theta = qc symbolic, reduced modulo pc^2+qc^2-1.
+pc, qc = sp.symbols('pc qc')
+cc, ss = hom_cs(pc, qc)
+Mh = M_report(cc, ss, cc[6], ss[6], z)
+cpoly = sp.together((lam * eye(12) - Mh).det(method='berkowitz'))
+AAg = pc**2 * (2 * pc**2 - 1)
+num, _ = sp.fraction(sp.cancel(sp.together(cpoly * (-z * AAg**2) - boxed(AAg))))
+num = sp.rem(sp.expand(num), qc**2 + pc**2 - 1, qc)
+ok('T5 general theta: charpoly(M_hom) * (-z A^2) = boxed polynomial', sp.expand(num) == 0)
+
+# ---------------------------------------------------------------- T6
+Wpi2 = W.subs(k, sp.pi / 2)
+zero('T6 W(pi/2)^2 = -I for all theta', Wpi2 * Wpi2 + eye(2))
+PROFILE = [R(5, 16), R(3, 8), R(7, 16)]
+for tt in PROFILE:
+    p, qq = sp.sqrt(tt), sp.sqrt(1 - tt)
+    cc, ss = hom_cs(p, qq)
+    Mh = M_report(cc, ss, cc[6], ss[6], I)
+    L0 = -I
+    vecs = []
+    for v in (Matrix([1, 0]), Matrix([0, 1])):
+        qs = [v]
+        S_pi2 = sp.diag(I, -I)                      # S(k) at k = pi/2
+        for m in order[:5]:
+            cm, sm = (p, qq) if m == 1 else (p * p - qq * qq, -2 * p * qq)
+            qs.append(S_pi2 * Matrix([[cm, -sm], [sm, cm]]) * qs[-1])
+        Yv = Matrix([qj[0] for qj in qs] + [qj[1] / L0 for qj in qs])
+        vecs.append(Yv.applyfunc(sp.radsimp))
+        zero(f'T6 t={tt}: Bloch vector e{len(vecs)} is an eigenvector of M (z=i, lambda=-i)',
+             (Mh * Yv - L0 * Yv).applyfunc(sp.radsimp))
+    rank2 = Matrix.hstack(*vecs)
+    ok(f'T6 t={tt}: the two eigenvectors are independent',
+       any(nonzero_alg(rank2[i, 0] * rank2[j, 1] - rank2[j, 0] * rank2[i, 1])
+           for i in range(12) for j in range(i + 1, 12)))
+    cpoly = sp.Poly(sp.expand((lam * eye(12) - Mh).det(method='berkowitz')), lam)
+    cpoly = sp.Poly([sp.radsimp(co) for co in cpoly.all_coeffs()], lam)
+    r2 = cpoly.rem(sp.Poly((lam + I)**2, lam))
+    r3 = cpoly.rem(sp.Poly((lam + I)**3, lam))
+    ok(f'T6 t={tt}: (lambda+i)^2 divides charpoly',
+       all(sp.radsimp(co) == 0 for co in r2.all_coeffs()))
+    ok(f'T6 t={tt}: (lambda+i)^3 does not divide charpoly (multiplicity exactly 2)',
+       any(nonzero_alg(co) for co in r3.all_coeffs()))
+
+# ---------------------------------------------------------------- T7
+x0 = 10
+window = range(x0 - 20, x0 + 21)   # wide enough that trimming never reaches [x0-7, x0+5]
+for comp, name in ((0, 'up'), (1, 'dn')):
+    delta = {x: ((1, 0) if comp == 0 else (0, 1)) if x == x0 else (0, 0) for x in window}
+    out = apply_word(U_WORD, delta)
+    supp = [x for x, (p_, q_) in out.items() if p_ != 0 or q_ != 0]
+    ok(f'T7 U delta_{name}: computed window covers [x0-9, x0+7]',
+       all(x in out for x in range(x0 - 9, x0 + 8)))
+    ok(f'T7 U delta_{name}: support inside [x0-7, x0+5]',
+       min(supp) >= x0 - 7 and max(supp) <= x0 + 5)
+    if comp == 0:
+        ok('T7 U delta_up: nonzero up amplitude at x0+5', out[x0 + 5][0] != 0)
+    else:
+        ok('T7 U delta_dn: nonzero dn amplitude at x0-7', out[x0 - 7][1] != 0)
+
+# ---------------------------------------------------------------- T8
+tl, th_ = R(5, 16), R(7, 16)
+ok('T8 profile: 2t-1 in [-3/8,-1/8] (cos 2theta != 0), 0<t<1 (sin, cos theta != 0)',
+   2 * tl - 1 == R(-3, 8) and 2 * th_ - 1 == R(-1, 8) and 0 < tl and th_ < 1)
+ts = sp.symbols('t', positive=True)
+As = ts * (2 * ts - 1)
+zero('T8 1 + 8A = (4t-1)^2', 1 + 8 * As - (4 * ts - 1)**2)
+# IR: f = 1 - (1+8A) k^2/2 + O(k^4); slope of E is |4t-1| = 4t-1 for t > 1/4.
+fk = As * cos(3 * k) + (1 - As) * cos(k)
+zero('T8 f(k) = 1 - (1+8A) k^2/2 + O(k^4)',
+     sp.series(fk, k, 0, 4).removeO() - (1 - (1 + 8 * As) * k**2 / 2))
+vIR = {tt: -1 + 2 * (4 * tt - 1) for tt in PROFILE}
+ok('T8 v_IR,out = 8t-3 = -1/2, 0, 1/2',
+   [vIR[tt] for tt in PROFILE] == [R(-1, 2), 0, R(1, 2)])
+# UV at k = pi/2: f = 0, E = pi/2, E' = -f'/sin E = 1 - 4A, v = -1 + 2E' = 1 - 8A.
+zero('T8 f(pi/2) = 0', fk.subs(k, sp.pi / 2))
+zero("T8 E'(pi/2) = 1 - 4A", -sp.diff(fk, k).subs(k, sp.pi / 2) - (1 - 4 * As))
+vUV = [1 - 8 * As.subs(ts, tt) for tt in PROFILE]
+ok('T8 v_UV,out(pi/2) = 31/16, 7/4, 23/16', vUV == [R(31, 16), R(7, 4), R(23, 16)])
+# 0 <= f < 1 on (0, pi/2]: with C = cos k in [0,1), f = g(C) = 4A C^3 + (1-4A) C,
+# g(0)=0, g(1)=1, g'(C) = 12A C^2 + 1 - 4A, decreasing in C^2 because A < 0,
+# so g' >= g'(1) = 1 + 8A = (4t-1)^2 > 0 on [0,1].
+Cs = sp.symbols('C')
+zero('T8 f = 4A cos^3 k + (1-4A) cos k',
+     sp.expand_trig(fk) - (4 * As * cos(k)**3 + (1 - 4 * As) * cos(k)))
+Aint = [As.subs(ts, tt) for tt in (tl, th_)]
+ok('T8 A < 0 on the profile (A = t(2t-1), both endpoints negative, t<1/2)',
+   all(a_ < 0 for a_ in Aint))
+# g'(1) = 1 + 8A = (4t-1)^2 (checked above) and 4t - 1 >= 4*5/16 - 1 = 1/4 > 0.
+ok("T8 g'(1) = (4t-1)^2 > 0 on the whole profile (4t-1 >= 1/4)", 4 * tl - 1 == R(1, 4))
+# A = t(2t-1) < 0 for every t in (0, 1/2), hence on the whole profile.
+
+print(f'{len(checks)}/{len(checks)} exact checks PASS')
+print('Verdict: TRANSFER_MATRIX_PASS (algebraic scope; author-side audit, '
+      'cross-family independence not established)')
+

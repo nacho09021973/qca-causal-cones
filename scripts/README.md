@@ -518,7 +518,7 @@ stage and closure equations, for general independent angles at x and x+1
 uniqueness determinant of that linear system; consistency of the auxiliary
 b_6(x+1) with row 12 of M_{x+1}; a second route (iterate M with
 site-dependent rational coins, apply U from its definition, U psi = z psi
-exactly at 22 interior sites, stage vectors matched); det M_x =
+exactly at 21 interior sites, stage vectors matched); det M_x =
 cot beta_6(x)/cot beta_6(x+1), z-free; tr W/2 = A cos 3k + (1-A) cos k and
 det W = 1; charpoly(M_hom) * (-z A^2) = the report's lambda-polynomial for
 symbolic theta; at (z, lambda) = (i, -i) and t = 5/16, 3/8, 7/16, two
@@ -535,4 +535,24 @@ cross-family review.
 
 ```sh
 python3 -B scripts/verify_dispersive_horizon_transfer_matrix.py
+```
+
+`verify_dispersive_horizon_transfer_repairs.py` supports Amendment 1 of the
+same audit, after the
+[Astra review](../reports/2026-11-26--dispersive-horizon-transfer-matrix-astra-review.md).
+It imports the reviewed verifier read-only, which runs its 61 checks first,
+then adds 8 exact checks, about 50 s in total.
+Certified:
+- R1: T3 compares exactly 21 interior sites.
+- R2: at t = 3/8 and z = 1, λ = 1 has algebraic multiplicity 4 and geometric
+  multiplicity 2 (two explicit eigenvectors and a nonzero 10×10 minor of
+  M − I).
+- R3: at t = 5/16 and t = 7/16 the same point has multiplicity 2.
+
+Does **not** certify: Astra's k³ coefficient; Astra's argument that the
+(i, −i) root is semisimple on the whole profile interval; Astra's written
+compactness step for ω*.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transfer_repairs.py
 ```
