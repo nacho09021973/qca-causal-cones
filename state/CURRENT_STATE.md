@@ -57,7 +57,15 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
     unitarity of the S-matrix; transmission at z₀ = (3+4i)/5 for the sharp
     profile 5/16 | 3/8 | 7/16; the horizon arc at z₁ = (2499+100i)/2501
     with two interior right-movers.
-  - Status OPEN. Execution not yet authorized.
+  - Executed 2026-11-26 (user «SI, LO AUTORIZO»):
+    `reports/2026-11-26--dispersive-horizon-transmission.md`, verifier
+    `0959251`. Run 2 gave 33/33; run 1 was interrupted and its log is kept.
+  - Author verdicts, sharp profile only:
+    - z₀: `TRANSMISSION_NONZERO_CERTIFIED`, T ∈ [0.9957193368…]. T0 =
+      CONNECTED, so this is adiabatic continuity, not horizon crossing.
+    - z₁: `TRANSMISSION_NONZERO_CERTIFIED`, σ² ∈ [0.9605413447…]. The two
+      interior right-moving doublers feed the exterior low-k right-mover.
+  - PRELIMINARY: Astra 6.2 review pending, not promoted.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Not reconciled to `main`.

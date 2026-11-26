@@ -681,6 +681,41 @@ Nothing about transmission or Jost asymptotics.
 python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
 ```
 
+## Dispersive-horizon transmission (2026-11-26)
+
+`verify_dispersive_horizon_transmission.py` supports
+[`DISPERSIVE_HORIZON_TRANSMISSION_GATE`](../theory/DISPERSIVE_HORIZON_TRANSMISSION_GATE.md)
+(`8eb8be5`). It checks the SHA256 of the channels and matrix verifiers, then
+imports them read-only, so their 61 + 53 checks run first. It adds 33 checks,
+about 25 min in total.
+
+The method is exact rational intervals. Floating point (numpy, mpmath) only
+supplies root guesses and a preconditioner. Certification is a complex
+Krawczyk test for roots and ||I − RA|| < 1 with a residual bound for linear
+solves.
+
+Certified:
+- **S.** P = λ⁵ det(U(λ) − z); rows 1–10 of (M − λ)Y(λ) vanish identically;
+  rows 0 and 11 vanish modulo det(U − z) at 9 exact sample points.
+- **T0, at z₀.** The discriminant in τ of H_A has no root for
+  t ∈ [5/16, 7/16].
+- **R, at z₀ and z₁.** The 12 roots in disjoint boxes, classified against
+  Sturm; Bloch eigenvectors; flux-normalized modes.
+- **T1.** The matching matrix is invertible (the S-matrix exists) and
+  S^H S ∋ I.
+- **T2.** T at z₀ ∈ [0.995719336841…].
+- **T4.** σ² at z₁ ∈ [0.960541344787…].
+
+Does **not** certify (written arguments in the report):
+- the eigenvector property in general, which rests on the reviewed bijection;
+- unitarity in general, which follows from flux conservation;
+- branch continuity from the discriminant;
+- anything at finite L.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transmission.py
+```
+
 `verify_dispersive_horizon_transfer_amendment3.py` supports Amendment 3 of the
 transfer-matrix audit, after the
 [Astra review of Amendment 2](../reports/2026-11-26--dispersive-horizon-amendment2-astra-review.md).
