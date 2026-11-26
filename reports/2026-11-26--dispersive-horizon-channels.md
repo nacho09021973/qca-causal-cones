@@ -10,6 +10,7 @@ Date: 2026-11-26. Branch: `research/dispersive-horizon-channels`.
 | Review | `reports/2026-11-26--dispersive-horizon-channels-astra-review.md`: `gpt-6.2-astra` REPAIR_REQUIRED (missing charter deliverables; no claim refuted) |
 | [A1] Amendment 1 verifier | `scripts/verify_dispersive_horizon_channels_amendment1.py`, committed at `ea3067a` before its recorded run; SHA256 `37aacbb5a3680fa3de3c74660b2fccfcd507e7b04c7f91b1b2b105c3416ebdd6` |
 | [A1] Recorded run | `reports/2026-11-26--dispersive-horizon-channels-amendment1-run.txt`: 63/63, after 61/61 and 53/53; exit 0; first and only run |
+| [A1] Review | `reports/2026-11-26--dispersive-horizon-channels-amendment1-astra-review.md`: `gpt-6.2-astra` PASS; editorial corrections applied |
 
 **Author verdict: `CHANNELS_CLASSIFIED` (PRELIMINARY; not promoted).**
 TRANSMISSION = OPEN. NOVELTY = OPEN.
@@ -24,7 +25,8 @@ As first delivered, the state was therefore `OPEN_AFTER_CHANNEL_ANALYSIS`.
 Amendment 1 supplies these items, marked [A1] below, with a new verifier. The
 verifier was committed before its only recorded run, and the earlier
 verifiers' bytes are unchanged. After Amendment 1 the author candidate is
-again `CHANNELS_CLASSIFIED`, and it needs a new review.
+again `CHANNELS_CLASSIFIED`. Astra (`gpt-6.2-astra`) reviewed Amendment 1:
+PASS, with editorial corrections that are applied.
 
 ## Authorization and process
 
@@ -108,7 +110,8 @@ the circle as a function of ω between thresholds.
   (2499 + 100i)/2501, of argument 2 atan(1/50) < arg z_c*, and z₀, together
   with their images under conjugation and negation.
 
-With δ = arg z_c* and d_π(ω) = dist(ω, πℤ):
+With δ = arg z_c* and d_π(ω) = dist(ω, πℤ), at regular levels only (the rows exclude the
+collision points ±1, ±i and the critical values) [A1, editorial after review]:
 
 | Medium and arc | Propagating | Right (v > 0) | Left (v < 0) |
 | --- | ---: | ---: | ---: |
@@ -217,8 +220,9 @@ high-wavenumber Ω₊ branches of report §5.
 rational boxes, of width below 10⁻²⁵, for the roots of
 P(·, z₀)P(·, z̄₀) ∈ ℚ[λ]. Each box is assigned to exactly one factor by
 exact interval evaluation, and 12 belong to P(·, z₀).
-- 4 lie inside the unit disk and 4 outside. Each inside box maps under
-  1/λ̄ into exactly one outside box.
+- 4 lie inside the unit disk and 4 outside. For each inside box, the
+  enclosure of its image under 1/λ̄ meets exactly one outside box. By the
+  C2 symmetry, that box contains the partner root.
 - 4 lie on the circle and are matched one-to-one with the Sturm roots.
 - The signs of v in increasing k are −, −, +, − in both media, as Astra
   derived by hand.
@@ -264,14 +268,16 @@ certified normalization factor.
 
 **[A1] Per-mode normalization** (verifier N).
 - **Inputs.** For each propagating root the run log records the τ interval
-  (width < 10⁻⁴⁵), the sign of v, and the kernel row of U(k) − z₀ used. In
+  (refined internally to tolerance 10⁻⁴⁵, printed outward-rounded to 20
+  decimals), the sign of v, and the kernel row of U(k) − z₀ used. In
   all eight modes it is row 1, (U₁₂, z₀ − U₁₁).
 - **Outputs.** It records enclosures of F, of 1/√|F|, and of the twelve
   components of N.
-- **Checks.** N^H G N encloses sign(v) with width < 10⁻¹⁰, and F coincides
-  with the reviewed C5 computation.
+- **Checks.** The real part of N^H G N encloses sign(v), with width
+  < 10⁻¹⁰, and its imaginary part encloses 0. F coincides with the C5
+  computation re-run in the same import.
 
-Endpoints rounded to 6 digits:
+Values rounded to 6 significant digits:
 
 | Medium | mode (increasing k) | sign v | F = Y^H G Y | 1/√\|F\| |
 | --- | --- | --- | --- | --- |
@@ -350,5 +356,5 @@ transmission charter.
 
 ## Next steps (each needs user authorization)
 
-1. [A1] Review of Amendment 1 and its verifier, by a model of another family.
+1. Promotion of `CHANNELS_CLASSIFIED` (user decision).
 2. A transmission charter on I.

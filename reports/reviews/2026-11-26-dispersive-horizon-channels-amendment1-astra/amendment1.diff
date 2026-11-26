@@ -1,0 +1,189 @@
+diff --git a/reports/2026-11-26--dispersive-horizon-channels.md b/reports/2026-11-26--dispersive-horizon-channels.md
+index ef3791b..3933891 100644
+--- a/reports/2026-11-26--dispersive-horizon-channels.md
++++ b/reports/2026-11-26--dispersive-horizon-channels.md
+@@ -7,9 +7,24 @@ Date: 2026-11-26. Branch: `research/dispersive-horizon-channels`.
+ | Charter | `theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md`, frozen at `7a63529` |
+ | Verifier | `scripts/verify_dispersive_horizon_channels.py`, committed at `a5b9be3` before the recorded execution; SHA256 `08a387355884018d09a35b521e341f6219a235cf462167ea3f16c055e76772dc` |
+ | Recorded run | `reports/2026-11-26--dispersive-horizon-channels-run.txt`: 53/53 channel checks, after the 61/61 reviewed transfer-matrix checks; exit 0; Python 3.12.3, SymPy 1.14.0 |
++| Review | `reports/2026-11-26--dispersive-horizon-channels-astra-review.md`: `gpt-6.2-astra` REPAIR_REQUIRED (missing charter deliverables; no claim refuted) |
++| [A1] Amendment 1 verifier | `scripts/verify_dispersive_horizon_channels_amendment1.py`, committed at `ea3067a` before its recorded run; SHA256 `37aacbb5a3680fa3de3c74660b2fccfcd507e7b04c7f91b1b2b105c3416ebdd6` |
++| [A1] Recorded run | `reports/2026-11-26--dispersive-horizon-channels-amendment1-run.txt`: 63/63, after 61/61 and 53/53; exit 0; first and only run |
+ 
+-**Author verdict: `CHANNELS_CLASSIFIED` (PRELIMINARY; independent review
+-pending; not promoted).** TRANSMISSION = OPEN. NOVELTY = OPEN.
++**Author verdict: `CHANNELS_CLASSIFIED` (PRELIMINARY; not promoted).**
++TRANSMISSION = OPEN. NOVELTY = OPEN.
++
++**[A1] Amendment 1 (2026-11-26).** The Astra review found that the report did
++not deliver everything the charter requires:
++- the C2 count between thresholds;
++- the per-root outputs of C3–C5;
++- assertions of the published values and of the imported hashes.
++
++As first delivered, the state was therefore `OPEN_AFTER_CHANNEL_ANALYSIS`.
++Amendment 1 supplies these items, marked [A1] below, with a new verifier. The
++verifier was committed before its only recorded run, and the earlier
++verifiers' bytes are unchanged. After Amendment 1 the author candidate is
++again `CHANNELS_CLASSIFIED`, and it needs a new review.
+ 
+ ## Authorization and process
+ 
+@@ -57,8 +72,16 @@ The verifier checks:
+   in the two media), so the form is nondegenerate.
+ 
+ Consistency with det M_x = cot θ_x / cot θ_{x+1}: det G_x = |det M_x|² det
+-G_{x+1} reproduces −cot²θ_x by telescoping. This is an author remark, not
+-separately checked for a varying profile.
++G_{x+1} reproduces −cot²θ_x by telescoping.
++
++**[A1] det G_x = −cot²β₆(x) for a varying profile.**
++- **Proof** (Astra's written argument, checked by hand). The unitarity of the
++  first five coins rewrites the cut flux as
++  Σ_{j≤5}|a_j(x)|² − Σ_{j≤6}|b_j(x−1)|² − |(c₆a₆ − za₁)/s₆|².
++  Changing a₆ for the last modulus argument has a determinant of modulus
++  |cot β₆(x)|. The resulting diagonal form has signature (5, 7).
++- **Check.** Verifier G confirms it exactly on the rational site-dependent
++  profile of C1 at six sites.
+ 
+ ## C2. Root structure: ESTABLISHED (verifier C2), winding remark proved
+ 
+@@ -74,6 +97,39 @@ separately checked for a varying profile.
+   every regular ω. This was the author remark of the charter; it is now a
+   written argument, checked against the counts in C4.
+ 
++**[A1] Count between thresholds.** The charter asks for the count of roots on
++the circle as a function of ω between thresholds.
++- **Cuts.** The circle is cut by the four interior critical values
++  {z_c*, z̄_c*, −z_c*, −z̄_c*} (the set is closed under conjugation and
++  negation; verifier Z) and by the collision points ±1, ±i. That gives eight
++  arcs.
++- **Sampling.** Verifier K counts at one exact rational point in each arc, in
++  both media, and checks that each point is regular. The points are
++  (2499 + 100i)/2501, of argument 2 atan(1/50) < arg z_c*, and z₀, together
++  with their images under conjugation and negation.
++
++With δ = arg z_c* and d_π(ω) = dist(ω, πℤ):
++
++| Medium and arc | Propagating | Right (v > 0) | Left (v < 0) |
++| --- | ---: | ---: | ---: |
++| interior, 0 < d_π(ω) < δ | 6 | 2 | 4 |
++| interior, d_π(ω) > δ | 4 | 1 | 3 |
++| exterior, every regular arc | 4 | 1 | 3 |
++
++This confirms Astra's table.
++- **Within each arc** the count is constant: this is the written argument of
++  C4, applied per arc.
++- **Across a collision point** the count is unchanged. The two crossing
++  branches have nonzero slopes −1 ± 2(4t − 1) at z = ±1 and −1 ± 2(1 − 4A)
++  at z = ±i (verifier K). The equal counts on both sides of each collision
++  point confirm this.
++- **Across the interior critical values** two propagating roots appear or
++  disappear, one moving each way. This is the fold at the band maximum δ.
++
++The window rule of the charter selects the arc (δ, π/2). Below δ the interior
++has two right-movers, so the uniqueness of the incident channel holds on I
++and not near ω ≡ 0 (mod π).
++
+ ## C3. Thresholds and window: ESTABLISHED (verifier C3, written step noted)
+ 
+ **Where two propagating roots can collide.** A double root on the circle
+@@ -116,6 +172,20 @@ Hence I = (arg z_c*, π/2) is nonempty and contains z₀ = (3+4i)/5. It also
+ excludes all four collision points. For orientation only (a numerical value,
+ not a certified quantity): arg z_c* ≈ 0.0894 and arg z₀ ≈ 0.9273.
+ 
++**[A1] Certified enclosures** (verifier Z; printed outward-rounded):
++
++z_c* ∈ [0.996006471094483079484232973570, 0.996006471094483079484232973571]
+++ i [0.089281070434413149785007027183, 0.089281070434413149785007027184].
++
++The other three critical values are z̄_c* and −z_c*, −z̄_c*, each with the
++corresponding enclosure. The four enclosures are disjoint.
++
++Verifier V checks the following:
++- z_c* lies in the coarse box (9/10, 1) × (1/20, 1/8), given by Astra by hand;
++- the primitive minimal polynomial computed equals the quartic printed
++  above;
++- the exterior quotient is proportional to 343u² − 1211u + 1012.
++
+ The charter glosses C_t as "the quasienergies at which two roots on the
+ unit circle collide". That gloss would also include the collision points.
+ Since none of them lies in (arg z_c*, π/2), the two readings give the same I.
+@@ -143,6 +213,24 @@ Numerically, for orientation only: the interior right-mover is at k ≈ 1.231
+ with v ≈ 1.81, the exterior one at k ≈ 1.107 with v ≈ 1.29. These are the
+ high-wavenumber Ω₊ branches of report §5.
+ 
++**[A1] Every root at z₀** (verifier E). Each medium has 24 isolating
++rational boxes, of width below 10⁻²⁵, for the roots of
++P(·, z₀)P(·, z̄₀) ∈ ℚ[λ]. Each box is assigned to exactly one factor by
++exact interval evaluation, and 12 belong to P(·, z₀).
++- 4 lie inside the unit disk and 4 outside. Each inside box maps under
++  1/λ̄ into exactly one outside box.
++- 4 lie on the circle and are matched one-to-one with the Sturm roots.
++- The signs of v in increasing k are −, −, +, − in both media, as Astra
++  derived by hand.
++- The mode Y ∝ λ^x decays as x → +∞ when |λ| < 1.
++
++Values rounded to 3 decimals; the 12-digit enclosures are in the run log. The k values, k = 2 atan τ, are for orientation only:
++
++| Medium | \|λ\| < 1 (decays as x → +∞) | \|λ\| > 1 (decays as x → −∞) | \|λ\| = 1 (propagating, increasing k; v sign) |
++| --- | --- | --- | --- |
++| interior | −0.344+0.065i, −0.275−0.027i, 0.257−0.011i, 0.475+0.124i | −3.600−0.359i, −2.805+0.533i, 1.970+0.513i, 3.881−0.160i | k ≈ −2.233 (−), −0.482 (−), 1.231 (+), 1.735 (−) |
++| exterior | −0.239+0.047i, −0.198−0.021i, 0.187−0.008i, 0.306+0.068i | −4.985−0.539i, −4.029+0.793i, 3.114+0.695i, 5.334−0.241i | k ≈ −2.326 (−), −0.363 (−), 1.107 (+), 1.758 (−) |
++
+ **Constancy on I** (written argument). On I there is no critical value (C3)
+ and no collision point, so h has only simple real zeros. By the implicit
+ function theorem these zeros move continuously, with v continuous and
+@@ -174,6 +262,31 @@ shows:
+ So N = Y/√|F| satisfies N^H G N = sign(v) = ±1. The enclosure of F is the
+ certified normalization factor.
+ 
++**[A1] Per-mode normalization** (verifier N).
++- **Inputs.** For each propagating root the run log records the τ interval
++  (width < 10⁻⁴⁵), the sign of v, and the kernel row of U(k) − z₀ used. In
++  all eight modes it is row 1, (U₁₂, z₀ − U₁₁).
++- **Outputs.** It records enclosures of F, of 1/√|F|, and of the twelve
++  components of N.
++- **Checks.** N^H G N encloses sign(v) with width < 10⁻¹⁰, and F coincides
++  with the reviewed C5 computation.
++
++Endpoints rounded to 6 digits:
++
++| Medium | mode (increasing k) | sign v | F = Y^H G Y | 1/√\|F\| |
++| --- | --- | --- | --- | --- |
++| interior | 1 | − | −8.03313 | 0.352823 |
++| interior | 2 | − | −0.952931 | 1.02440 |
++| interior | 3 | + | 1.63931 | 0.781032 |
++| interior | 4 | − | −2.27711 | 0.662686 |
++| exterior | 1 | − | −6.08619 | 0.405347 |
++| exterior | 2 | − | −1.38571 | 0.849500 |
++| exterior | 3 | + | 1.88320 | 0.728706 |
++| exterior | 4 | − | −1.47908 | 0.822252 |
++
++F depends on the choice of kernel vector; the normalized N does so only up to
++a phase.
++
+ **Exact identity F = (∂ₖΩ)‖q₁‖²** (written argument with a certified
+ ingredient).
+ 
+@@ -220,8 +333,10 @@ unique. Three left-moving channels in each medium are also open.
+   profile.
+ - Existence or uniqueness of the scattering matrix for the tanh profile, or
+   Jost-type asymptotics.
+-- Anything at quasienergies outside I, including the Jordan structure at the
+-  thresholds z_c and at the collision points.
++- [A1] Outside I, only the C2 counts per arc and the threshold enclosures are
++  claimed. Not claimed there: the classification, normalization or
++  incident-channel uniqueness, or the Jordan structure at the thresholds z_c
++  and at the collision points.
+ - Any statement about the intermediate frozen media 5/16 < t < 7/16. They
+   include the horizon t = 3/8, where (±1, ±1) are quadruple roots (audit
+   A1/A2).
+@@ -235,6 +350,5 @@ transmission charter.
+ 
+ ## Next steps (each needs user authorization)
+ 
+-1. Independent review of this report and its verifier by a model of another
+-   family.
++1. [A1] Review of Amendment 1 and its verifier, by a model of another family.
+ 2. A transmission charter on I.

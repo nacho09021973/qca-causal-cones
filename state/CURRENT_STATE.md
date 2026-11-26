@@ -43,8 +43,13 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
     (2 right) near ω ≡ 0 (mod π) below arg z_c*, and 4 (1 right)
     elsewhere; the exterior has 4 (1 right) everywhere.
 
-  Author candidate `CHANNELS_CLASSIFIED` again. Review of Amendment 1
-  pending, and needs authorization.
+  Author candidate `CHANNELS_CLASSIFIED` again.
+- **Amendment 1 reviewed 2026-11-26** (user «permiso concedido»):
+  `gpt-6.2-astra` **PASS**
+  (`reports/2026-11-26--dispersive-horizon-channels-amendment1-astra-review.md`).
+  Editorial corrections applied; two minor verifier-predicate limits are
+  recorded and not changed. Verdict under the frozen charter:
+  **`CHANNELS_CLASSIFIED`**. One reviewing house (OpenAI). Not promoted.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Not reconciled to `main`.
 
