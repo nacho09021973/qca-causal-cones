@@ -50,6 +50,15 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   Editorial corrections applied; two minor verifier-predicate limits are
   recorded and not changed. Verdict under the frozen charter:
   **`CHANNELS_CLASSIFIED`**. One reviewing house (OpenAI). Not promoted.
+- **Transmission charter frozen 2026-11-26:**
+  `theory/DISPERSIVE_HORIZON_TRANSMISSION_GATE.md`. User decisions: «lo
+  segundo, limite brusco y revision por Astra 6.2».
+  - Scope T0–T4 without finite L: branch continuity at z₀; existence and
+    unitarity of the S-matrix; transmission at z₀ = (3+4i)/5 for the sharp
+    profile 5/16 | 3/8 | 7/16; the horizon arc at z₁ = (2499+100i)/2501
+    with two interior right-movers.
+  - Status OPEN. Execution not yet authorized.
+  - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Not reconciled to `main`.
 
