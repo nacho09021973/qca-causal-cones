@@ -686,8 +686,14 @@ python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
 `verify_dispersive_horizon_heuristic_prediction.py` supports
 [`DISPERSIVE_HORIZON_HEURISTIC_PREDICTION_GATE`](../theory/DISPERSIVE_HORIZON_HEURISTIC_PREDICTION_GATE.md)
 (`35bf83f`, `POST_RESULTS_EXPLORATORY`).
-- It was committed before any run; only `py_compile` has been done.
-- Not yet run.
+- It was committed before any run (`8453304`). It was fixed after two
+  failed runs, at `832f76e` (import harness) and `89f41ab` (π check).
+- Run 3 (`face673`): 34/34 after 228 imported checks, exit 0, about 42 min.
+- Line candidate: `HEURISTIC_WITHIN_TOLERANCE_AT_DECLARED_POINTS`.
+- Report: `reports/2026-11-27--dispersive-horizon-heuristic-prediction.md`.
+- `test_heuristic_prediction_harness.py` (`13d83a9`) is a harness test. It
+  runs the post-import code on real X values, real calibration T_ret and
+  synthetic values, and computes no transmission.
 - It needs `fork`, so it does not run on native Windows.
 
 How it runs:

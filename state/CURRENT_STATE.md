@@ -180,7 +180,22 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   - Verifier `scripts/verify_dispersive_horizon_heuristic_prediction.py`
     was written on user authorization «1 autorizado» and committed before
     any run; only `py_compile` has been done.
-  - Not authorized: execution, review sending and promotion.
+  - Run 3 (`face673`, local WSL2) recorded after two failed runs (`858d1e7`,
+    `b319814`), neither of which reached a new point. Run 3 was beyond the
+    charter's single rerun, on a user decision with a prior harness test
+    (`13d83a9`).
+  - Report: `reports/2026-11-27--dispersive-horizon-heuristic-prediction.md`.
+  - Author verdicts, PRELIMINARY: Q1–Q4 `WITHIN_TOLERANCE`, with
+    ρ = 1.055, 1.037, 1.031 and 0.864; B `SCALING_CONSISTENT` (r = 1.0067);
+    Q4′ `TRUNCATION_CONTROLLED`.
+  - Line candidate: **`HEURISTIC_WITHIN_TOLERANCE_AT_DECLARED_POINTS`**.
+  - Not reviewed; not promoted. NOVELTY = OPEN.
+  - Not authorized: review sending (Astra 6.2 + Grok) and promotion.
+- **Turning-point conjecture note** (not a charter, `OPEN`):
+  `theory/DISPERSIVE_HORIZON_TURNING_POINT_CONJECTURE.md`.
+  - Amendment 1: statement repair after Astra 6.2 (web).
+  - Amendment 2: cross-sheet decoupling as the central obligation; the
+    observed leak is a risk for (C3).
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
