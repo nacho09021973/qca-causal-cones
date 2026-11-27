@@ -1,0 +1,1961 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente la **ejecución del contrato de la rama del retorno**
+(POST_RESULTS_EXPLORATORY) para el paseo U = L₋W², W = S C(θ) S C(θ) S C(−2θ), t = cos²θ, medios
+t = 5/16 y 7/16, z(s) = (1 − s² + 2is)/(1 + s²), perfil brusco y tanh truncado (L = 4, N = 32;
+L = 16, N = 128). Tú mismo revisaste antes la ejecución de frecuencia y L finita (REPAIR_REQUIRED;
+sugeriste este observable y el argumento de sectores). Se adjuntan:
+
+(1) `DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md`: contrato congelado (`08e0703`);
+(2) `2026-11-27--dispersive-horizon-turning-branch.md`: informe de ejecución con veredictos de autor
+    (seis TRANSMISSION_NONZERO_CERTIFIED; candidato de línea T_RET_DECREASING_AT_COMPUTED_L) y una
+    comparación orientativa con la heurística del contrato;
+(3) `verify_dispersive_horizon_turning_branch.py`: verificador (38 comprobaciones, SHA256
+    `397f72b3…0676`, commit `b0bb720`, anterior a su única ejecución), con 4 procesos `fork` tras la
+    importación;
+(4) `verify_dispersive_horizon_frequency_finite_l.py`: verificador importado sin modificar (su
+    tubería ya la revisaste: punto 4 PASS);
+(5) `2026-11-27--dispersive-horizon-turning-branch-run-1.txt`: registro (38/38 tras
+    61 + 53 + 33 + 43, exit 0);
+(6) `compare_turning_branch_heuristic.py` y (7) su salida
+    `2026-11-27--dispersive-horizon-turning-branch-heuristic.txt` (orientación, no certificado).
+
+Comprueba, informando para cada punto PASS / REPAIR_REQUIRED / FAIL / UNVERIFIED, con las
+derivaciones necesarias:
+
+1. **Identificación de rama (R1).** ¿Identifica correctamente el signo de la caja de λ
+   (Re λ > 0, Im λ > 0 ⇔ k = −arg λ ∈ (−π/2, 0)) la rama que encuentra el punto de retorno, según
+   tu argumento de sectores? ¿Es correcta la asignación de columnas (`c_ret`, `c_cont`) en el
+   código, independiente del orden de enumeración?
+2. **Columna y unitariedad (R2).** ¿Es correcta la construcción de la columna |S|² para incidencia
+   unitaria en la rama del retorno (filas: movedores a la izquierda interiores y movedor a la
+   derecha exterior), la comprobación de que suma 1 y S^H S ∋ I? ¿Decide el verificador T_ret y
+   T_cont como dice?
+3. **Cotejos (R3).** T_ret + T_cont frente al σ² importado de cada caso, y T_ret en z₁ brusco
+   frente al |t₂|² revisado. ¿Son controles independientes o comparten código de forma que
+   pierden valor? ¿Confirman la atribución anterior de |t₂|² a la rama k < 0?
+4. **Paralelismo.** Procesos `fork` tras la importación; los trabajadores devuelven Fractions y
+   todas las comprobaciones se hacen en el padre. ¿Puede el reparto afectar a algún resultado o
+   a la detección de fallos (excepciones en trabajadores, estado compartido, cachés)? ¿Es
+   aceptable que las líneas PASS lleven todas la misma marca de tiempo?
+5. **Veredictos.** ¿Se siguen los seis TRANSMISSION_NONZERO_CERTIFIED y el candidato
+   T_RET_DECREASING_AT_COMPUTED_L de las reglas del contrato (comparaciones por encierros
+   disjuntos)? ¿Hay algún motivo contractual para no adoptarlo al cierre?
+6. **Destino del flujo reflejado.** El informe dice que casi todo lo no transmitido va al movedor
+   a la izquierda con k < 0 de mayor |k| (k ≈ −0.083 en s = 1/50, k ≈ −0.020 en s = 1/200), y
+   que el de s = 1/50 está en la hoja de bajo k según el argumento de hoja ya revisado. ¿Es
+   correcta esa lectura con las cajas del registro? ¿Y para s = 1/200?
+7. **Comparación heurística.** T_ret frente a X = 1/(1 + e^{4πωL}) (forma de Sabsovich et al. con
+   α = |dv/dx| = 1/(2L), identificación del autor): cocientes 1.111, 0.971, 0.992, 1.008. ¿Está
+   bien presentada como orientación, sin afirmar ley? ¿Es correcta la identificación
+   α = 8 t_L′(0) = 1/(2L) a partir de v(k → 0) = −1 + 2(4t − 1)? ¿Hay algún motivo por el que la
+   coincidencia sea trivial o esté forzada (p. ej. por construcción del observable)? El informe
+   declara que el script imprime pero no compara el SHA256 del log.
+8. **Alcance.** ¿Es adecuada «Not claimed»? ¿Hay afirmaciones del informe que excedan lo
+   certificado (por ejemplo en «Reading»)?
+
+No tienes acceso al repositorio ni puedes ejecutar código. Distingue lo que derivas a mano de lo
+que solo inspeccionas. No calcules transmisiones nuevas; si un punto exige cálculo, dilo como
+obligación abierta.
+
+Entrega en español: un veredicto por punto, un único veredicto global
+(PASS / REPAIR_REQUIRED / FAIL / INCONCLUSIVE), las derivaciones críticas, y objeciones ordenadas
+por gravedad con sección y reparación concreta. Si no hay fallos, dilo sin inventar objeciones.
+
+=== DOCUMENT 1: DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md ===
+
+# Dispersive-horizon turning-branch transmission gate (POST_RESULTS_EXPLORATORY)
+
+2026-11-27. Author: Claude Code (Claude Opus 5.5). Initial status **OPEN**.
+
+- Frozen by the commit that moves this file here from
+  `reports/2026-11-27--dispersive-horizon-turning-branch-charter-draft.md`
+  (draft committed at `8778db5`), on branch
+  `research/dispersive-horizon-channels`, before any execution.
+- **Label: `POST_RESULTS_EXPLORATORY`.** The question was formulated after
+  seeing the frequency/finite-L results and their review. Nothing in it can
+  retroactively change the verdicts of that charter.
+
+## Authorization and budget
+
+- **Drafting.** User decision, 2026-11-27: «mi decisión es SÍ a las dos
+  propuestas … autorizo, como siguiente paso de investigación, preparar el
+  nuevo contrato exploratorio».
+- **Freezing.** User decision, 2026-11-27: «Q1-Q4 como recomiendas,
+  congela el contrato». See "User decisions" below.
+- **Not authorized:** execution, review sending and promotion. Each needs a
+  separate user decision. The review model is fixed (Q4).
+- **Budget:** one contract. A balance is mandatory on closure. No further
+  contract follows automatically.
+
+## Known, question, abandonment
+
+**Known** (with source):
+
+- **Frequency/finite-L charter, closed.**
+  - Report `reports/2026-11-27--dispersive-horizon-frequency-finite-l.md`,
+    with Amendments 1 and 2; Astra 6.2 REPAIR_REQUIRED.
+  - `LEAKAGE_NOT_SUPPRESSED` adopted for σ² at s = 1/50 and 1/200,
+    L = 16, N = 128 (user decision).
+  - σ² values:
+
+    | s | sharp | L = 4 | L = 16 |
+    | --- | --- | --- | --- |
+    | 1/50 | 0.96054 | 0.97545 | 0.99945 |
+    | 1/200 | 0.95918 | 0.96466 | 0.98719 |
+- **Sector argument** (Astra, written; checked against logged boxes, not
+  machine-checked).
+  - At the arc frequencies no real root changes k-quadrant as t varies over
+    [5/16, 7/16].
+  - The interior right-mover with 0 < k < π/2 continues into the exterior
+    right-mover.
+  - The interior right-mover with −π/2 < k < 0 meets a fold (turning point)
+    in some intermediate medium.
+- **Turning branch, sharp profile, z₁.**
+  - In the reviewed transmission verifier, the incident columns follow the
+    printing order of the right-movers (author check).
+  - The k ≈ −0.476 branch transmits |t₂|² ≈ 0.35726 into the exterior
+    right-mover; the continuing k ≈ +0.596 branch transmits ≈ 0.60328.
+  - These are reviewed enclosures; the branch attribution is the author's
+    reading of the code.
+- **σ² = T_ret + T_cont.** σ² is the maximal transmission over unit-flux
+  interior superpositions, and it equals the sum of the two column weights
+  (transmission report, Amendment 1).
+
+**Author heuristic, not computed, `[UNVERIFIED]`.** If the Sabsovich mixing
+1/(1 + e^{2πω/α}), with α = 1/(2L), described T_ret, one would get:
+- ≈ 0.12 at s = 1/200, L = 16;
+- ≈ 3·10⁻⁴ at s = 1/50, L = 16.
+
+That identification is not established. The heuristic is written down only
+so that the result can contradict it, and no verdict depends on it.
+
+**Question.** For the incident interior right-mover in the sector
+−π/2 < k < 0, which meets the turning point, what is its transmission into
+the exterior right-mover,
+
+  T_ret(s, profile) = |S_{ext R, int R(k<0)}|²,
+
+with unit-flux incidence and all other incoming amplitudes zero? Does it
+decrease from the sharp profile to L = 4 and to L = 16 while σ² increases?
+
+**Abandonment of the line.** If T_ret does **not** decrease, that is
+T_ret(L = 16) ≥ T_ret(sharp) at both points, the rule's turning point does
+not act as a barrier for the incident turning branch at the computed L. That
+closes the confinement question negatively for this rule, at these points
+and profiles. It is a first-class result. A decrease at two L values does
+not establish a law in L.
+
+## Tasks
+
+- **R1. Branch identification (certified).**
+  - In each interior medium box set, exactly one right-mover has
+    Re λ > 0 and Im λ > 0 (k ∈ (−π/2, 0), the turning branch).
+  - Exactly one right-mover has Re λ > 0 and Im λ < 0 (k ∈ (0, π/2), the
+    continuing branch).
+  - Each sign is decided by the interval box. If the identification is not
+    certified, the point is `OPEN_AFTER_TRANSMISSION_ANALYSIS`.
+  - Columns are identified by this sector, never by enumeration order.
+- **R2. Turning-branch column.** At s = 1/50 and 1/200, for the sharp profile
+  (N = 0), L = 4 (N = 32) and L = 16 (N = 128):
+  - the full column of |S|² for incidence on the turning branch: interior
+    left-movers, exterior right-mover; its sum encloses 1 (consistency);
+  - T_ret is the decided quantity;
+  - T_cont = |S_{ext R, int R(k>0)}|² is reported too.
+- **R3. Consistency with the closed charter.** T_ret + T_cont must overlap
+  the σ² enclosure of the same (s, profile) computed by the imported
+  frequency/finite-L verifier. At sharp z₁, the T_ret enclosure must overlap
+  the reviewed |t₂|² enclosure.
+
+## Method
+
+- **Reuse.** A thin new verifier imports
+  `scripts/verify_dispersive_horizon_frequency_finite_l.py` read-only, after
+  a SHA256 check (`3d585a54…80faa`). Its pipeline is reviewed (Astra
+  point 4 PASS) and its bytes must not change.
+  - Its `run_point` returns σ² only and not the S matrix, so the entry cannot
+    be "extracted" without new code.
+  - The new verifier reuses its helpers (`roots_boxes`, `medium_p`,
+    `M_site_p`, `t_profile`, `solve_hp`, the precision rule) unchanged, and
+    adds only the branch identification and the per-column output.
+- **Runtime.** Importing re-runs the full frequency/finite-L verifier
+  (about 70 min, including its own F3). The new part repeats the six
+  (s, profile) solves, about 15 min.
+- **Precision.** The same predeclared rule,
+  p = 256 + 2(2N + 1)⌈log₂κ⌉. Not tuned after seeing results.
+- **Admission.** As in the frequency/finite-L charter:
+  - exact rational intervals;
+  - floating point only for guesses;
+  - `mpmath.iv.exp` for the tanh enclosure;
+  - verifier committed before its recorded run; failed runs retained.
+
+## Verdicts
+
+- **Per (s, profile):**
+  - `TRANSMISSION_NONZERO_CERTIFIED` (T_ret enclosure > 0 and width
+    ≤ 10⁻⁶);
+  - `TRANSMISSION_ZERO_PROVED` (exact zero, with a structural reason);
+  - `OPEN_AFTER_TRANSMISSION_ANALYSIS`;
+  - `S_MATRIX_NOT_ESTABLISHED`.
+- **Line, on closure** (comparisons decided by disjoint enclosures):
+  - `T_RET_DECREASING_AT_COMPUTED_L`: T_ret(sharp) > T_ret(L = 4) >
+    T_ret(L = 16) at both points;
+  - `T_RET_NOT_DECREASING`: T_ret(L = 16) ≥ T_ret(sharp) at both points
+    (the abandonment condition);
+  - `MIXED`: otherwise, stated point by point.
+
+## Not claimed (in any case)
+
+- Any functional law in L or ω, or the limit L → ∞.
+- That T_ret is the Sabsovich mixing, or any Hawking, thermal or
+  physical-horizon statement.
+- Anything about the untruncated tanh profile, or at other s or L.
+- Any change to the verdicts of the closed frequency/finite-L charter.
+- Novelty (OPEN).
+
+## User decisions (2026-11-27)
+
+«Q1-Q4 como recomiendas»:
+- **Q1:** s = 1/50 and 1/200; sharp, L = 4 (N = 32) and L = 16 (N = 128).
+  No new points.
+- **Q2:** the full turning-branch column and T_cont are reported as data;
+  only T_ret is decided.
+- **Q3:** line thresholds as written, with no absolute "barrier" threshold.
+- **Q4:** independent review by Astra 6.2 (`gpt-6.2-astra`).
+
+## Original questions as posed
+
+- **Q1. Points and profiles.** s = 1/50 and 1/200; sharp, L = 4 (N = 32),
+  L = 16 (N = 128), as in the closed charter. Recommendation: as proposed,
+  with no new points, to stay comparable.
+- **Q2. Output.** The full column for the turning branch, plus T_cont, as
+  reported data, with only T_ret decided. Recommendation: yes. The column
+  shows where the reflected flux goes (which interior left-movers), and
+  that costs nothing extra.
+- **Q3. Line thresholds.** As written: strict decrease at both points, or
+  T_ret(L = 16) ≥ T_ret(sharp) at both points as the abandonment
+  condition. Recommendation: as written. An alternative is to add an
+  absolute threshold (for example T_ret(L = 16) < 0.1) for "barrier".
+- **Q4. Review** after execution: model(s). Proposal: Astra 6.2, as before.
+
+=== DOCUMENT 2: 2026-11-27--dispersive-horizon-turning-branch.md ===
+
+# Dispersive-horizon turning-branch transmission: execution (POST_RESULTS_EXPLORATORY)
+
+Date: 2026-11-27. Branch: `research/dispersive-horizon-channels`.
+
+| Item | Reference |
+| --- | --- |
+| Charter | `theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md`, frozen at `08e0703` |
+| Verifier | `scripts/verify_dispersive_horizon_turning_branch.py`, SHA256 `397f72b3…0676`, commit `b0bb720` (before its run) |
+| Run 1 (recorded, only run) | `reports/2026-11-27--dispersive-horizon-turning-branch-run-1.txt`, SHA256 `797cdda1…2c1e`, commit `b22fb05` |
+| Run details | 38/38 new checks after 61 + 53 + 33 + 43 imported. Exit 0. 09:49:54–10:27:11 UTC: the imported run took about 35 min, single-threaded; the six cases took about 2.5 min in 4 forked processes. Local WSL2, 4 cores, Python 3.12.3, SymPy 1.14.0, NumPy 1.26.4, mpmath 1.3.0. |
+| Authorization | Writing: user «si, recuerda que lo ejecutara Claude Code, y que si es posible habria que montarlo para que usara los 4 hilos disponibles». Run: «lanzalo aqui». |
+
+**Author verdicts (PRELIMINARY; independent review pending; not promoted).**
+- All six cases: `TRANSMISSION_NONZERO_CERTIFIED`.
+- Line candidate: **`T_RET_DECREASING_AT_COMPUTED_L`**.
+- The abandonment condition, T_ret(L = 16) ≥ T_ret(sharp) at both points,
+  is **not** met.
+
+POST_RESULTS_EXPLORATORY. NOVELTY = OPEN.
+
+## Results
+
+T_ret = |S_{ext R, int R(k<0)}|² is the transmission of the interior
+right-mover in the sector −π/2 < k < 0, the branch that meets the turning
+point. Incidence has unit flux. Each enclosure has width below 10⁻²⁰ as
+printed; the internal width is about 10⁻⁵⁷.
+
+| s | profile | T_ret | T_cont = \|S_{ext R, int R(k>0)}\|² | p |
+| --- | --- | --- | --- | --- |
+| 1/50 | sharp | [0.35726102067870325215, …216] | [0.60328032410923785982, …983] | 262 |
+| 1/50 | L = 4 | [0.13127930001691567909, …910] | [0.84416959890072483109, …110] | 646 |
+| 1/50 | L = 16 | [0.00031248888433704610, …611] | [0.99913927591483573748, …749] | 1798 |
+| 1/200 | sharp | [0.45019985749482620215, …216] | [0.50897708533477993690, …691] | 262 |
+| 1/200 | L = 4 | [0.37397340891991448117, …118] | [0.59068860829833885602, …603] | 646 |
+| 1/200 | L = 16 | [0.11898601934473758136, …137] | [0.86820082113365185162, …163] | 1798 |
+
+**Line.** T_ret(sharp) > T_ret(L = 4) > T_ret(L = 16) strictly, at both
+points, decided by disjoint enclosures. So the candidate is
+`T_RET_DECREASING_AT_COMPUTED_L`.
+
+**Certified checks in every case:**
+- **R1.** The turning branch is identified by the sign of its λ box:
+  - λ ≈ 0.8889 + 0.4580i at s = 1/50;
+  - λ ≈ 0.8641 + 0.5032i at s = 1/200.
+
+  The continuing branch is the other right-mover, with Im λ < 0.
+- **Channel counts** (2, 4, 1, 3), the reviewed ones.
+- **Matching matrix** certified invertible.
+- **Unitarity:** S^H S ∋ I, and the turning-branch column sums to an
+  enclosure of 1.
+- **R3:**
+  - T_ret + T_cont overlaps the σ² of the same case, which the imported
+    frequency/finite-L verifier recomputed in the same run;
+  - at sharp z₁ (s = 1/50), T_ret overlaps the reviewed
+    |t₂|² = 0.35726102067870325215… of the transmission verifier.
+
+  So the earlier attribution of |t₂|² to the k < 0 branch is now confirmed
+  by box sign, not only by enumeration order.
+
+**Where the rest of the turning-branch flux goes** (column of |S|², reported
+data). At finite L almost all of it is reflected into the interior
+left-mover in the k < 0 sector with the larger |k|:
+- k ≈ −0.083 at s = 1/50;
+- k ≈ −0.020 at s = 1/200.
+
+| s | profile | that left-mover | other k < 0 left-mover | two \|k\| ≈ 2 left-movers |
+| --- | --- | --- | --- | --- |
+| 1/50 | sharp | 0.6054 | 0.0341 | 0.0029, 0.0003 |
+| 1/50 | L = 16 | 0.99681 | 0.00288 | ~10⁻¹⁶ |
+| 1/200 | sharp | 0.5212 | 0.0250 | 0.0033, 0.0004 |
+| 1/200 | L = 16 | 0.86756 | 0.01345 | ~10⁻¹⁷ |
+
+The transmission reviewers already placed the k ≈ −0.083 mode at s = 1/50
+on the low-k sheet: transmission report, Amendment 1, sheet argument. Its
+counterpart at s = 1/200 has not been checked the same way.
+
+## Reading (interpretation, not certified)
+
+- At the computed points, σ² grows with L because T_cont → 1, while the
+  turning-branch transmission T_ret falls.
+  - At s = 1/50 it falls by three orders of magnitude, from 0.357 to
+    3·10⁻⁴.
+  - At s = 1/200 it falls by a factor of about 4, from 0.450 to 0.119.
+- This is the separation that the frequency/finite-L review asked for: σ²
+  conflated the continuing branch with the turning branch.
+- The suppression is stronger at the higher of the two frequencies. That is
+  the direction expected if the turning point acts as a frequency-dependent
+  barrier. Two frequencies do not establish a law.
+
+## Comparison with the charter heuristic (orientation; `[UNVERIFIED]`)
+
+The charter wrote down, before computing, X = 1/(1 + e^{2πω/α}) with
+α = 1/(2L), that is X = 1/(1 + e^{4πωL}). This is the Sabsovich et al. form
+with the author's identification α = |dv/dx| at the horizon. Script
+`scripts/compare_turning_branch_heuristic.py` (commit `71488b0`); output in
+`reports/2026-11-27--dispersive-horizon-turning-branch-heuristic.txt`;
+mpmath at 40 digits, no fitting.
+
+| s | L | X (heuristic) | T_ret | T_ret / X |
+| --- | --- | --- | --- | --- |
+| 1/50 | 4 | 0.11812 | 0.13128 | 1.111 |
+| 1/50 | 16 | 0.00032175 | 0.00031249 | 0.971 |
+| 1/200 | 4 | 0.37692 | 0.37397 | 0.992 |
+| 1/200 | 16 | 0.11809 | 0.11899 | 1.008 |
+
+- The ratio lies between 0.97 and 1.11 at four points, over three decades of
+  T_ret.
+- **This is not claimed as a law or as a derivation.**
+  - Four points with two L values cannot test the functional form.
+  - The identification of α with 8 t_L′(0) = 1/(2L), and of T_ret with
+    Sabsovich's mixing probability, is not established.
+  - The heuristic has no free parameter here, but it was chosen with
+    knowledge of the prior-art formula.
+  - Finite-L corrections (the L = 4 points) are visible.
+- It does make a specific, falsifiable prediction for other (ω, L). Testing
+  it would need a new charter.
+- The script docstring says the log is read "after a SHA256 check". The
+  script prints the SHA256 but does not compare it with a fixed value. The
+  printed value matches the committed log.
+
+## Process
+
+- The verifier was committed (`b0bb720`) before its only run. No
+  development runs; only `py_compile`.
+- The comparison script was committed (`71488b0`) before its run, and its
+  output is kept.
+- **Parallelism.** After the mandatory single-threaded import, the six cases
+  run in 4 forked processes. All checks are made in the parent from
+  returned plain Fractions, so the results do not depend on scheduling.
+  - As a consequence, the six cases' PASS lines carry the same timestamp
+    (about 154 s): they are printed after the pool returns.
+- The `fork` start method requires Linux or WSL. It does not run on native
+  Windows.
+- Floating point appears only in guesses and preconditioners; `mpmath.iv.exp`
+  supplies the tanh enclosure; and the comparison table is orientation, not
+  certified.
+
+## Not claimed
+
+- Any functional law in L or ω, or the limit L → ∞.
+- That T_ret equals the Sabsovich mixing, or any Hawking, thermal or
+  physical-horizon statement.
+- Anything about the untruncated tanh profile, or at other s or L.
+- Any change to the closed frequency/finite-L verdicts, including
+  `LEAKAGE_NOT_SUPPRESSED` for σ².
+- Novelty: OPEN. The suppression mechanism and the formula are prior art.
+
+## Next steps (each needs user authorization)
+
+1. Independent review by Astra 6.2 (fixed by the charter, Q4).
+2. After review, a closure balance. Whether to test the heuristic at other
+   (ω, L) is a separate decision, and would need a new charter.
+
+=== DOCUMENT 3: verify_dispersive_horizon_turning_branch.py ===
+
+"""Verifier for theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md (frozen at 08e0703;
+POST_RESULTS_EXPLORATORY): transmission of the incident interior right-mover in
+the sector -pi/2 < k < 0 (the branch that meets the turning point),
+
+    T_ret(s, profile) = |S_{ext R, int R(k<0)}|^2,
+
+at s in {1/50, 1/200}, for the sharp profile (N = 0), L = 4 (N = 32) and
+L = 16 (N = 128).
+
+Imports scripts/verify_dispersive_horizon_frequency_finite_l.py read-only after
+a SHA256 check. That import re-runs the full frequency/finite-L verifier
+(single-threaded, about 70 min, including the 61 + 53 + 33 checks it imports).
+Its helpers (roots_boxes, ceil_log2_kappa, medium_p, M_site_p, t_profile,
+solve_hp, rnd_CI, zdata) and its precision rule are reused unchanged.
+
+Parallelism. After the import, the six (s, profile) cases are independent.
+They run in up to 4 forked worker processes (multiprocessing, 'fork'),
+longest first. Workers return plain Fractions; every check is made in the
+parent. The results do not depend on the number of workers or on scheduling.
+
+Per case (all certified quantities are exact rational intervals):
+  R1  branch identification by the interval box of lambda (k = -arg lambda):
+      exactly one interior right-mover with Re lambda > 0, Im lambda > 0
+      (k in (-pi/2, 0), turning branch) and exactly one with Re lambda > 0,
+      Im lambda < 0 (k in (0, pi/2), continuing branch);
+  R2  full column of |S|^2 for unit-flux incidence on the turning branch
+      (interior left-movers, exterior right-mover); its sum encloses 1;
+      T_ret (decided), T_cont = |S_{ext R, int R(k>0)}|^2 (reported);
+      S^H S encloses I;
+  R3  T_ret + T_cont overlaps the sigma^2 enclosure of the same case computed
+      by the imported verifier; at sharp z1 (s = 1/50) T_ret overlaps the
+      reviewed |t_2|^2 of the transmission verifier.
+Verdicts per case: TRANSMISSION_NONZERO_CERTIFIED (T_ret > 0, width <= 1e-6),
+OPEN_AFTER_TRANSMISSION_ANALYSIS (a certification step failed or too wide),
+S_MATRIX_NOT_ESTABLISHED (not a regular level).
+Line: T_RET_DECREASING_AT_COMPUTED_L / T_RET_NOT_DECREASING / MIXED.
+
+Written steps (not machine-checked) are listed in scripts/README.md.
+"""
+import hashlib
+import importlib.util
+import multiprocessing
+import os
+import pathlib
+import time
+from fractions import Fraction as Fr
+
+import sympy as sp
+from sympy import Rational as R
+
+HERE = pathlib.Path(__file__).resolve().parent
+SHA_FREQ = '3d585a541663ad7f51a539d728069d228e6a8473772ccc3ca90bb17a8ef80faa'
+h_fr = hashlib.sha256((HERE / 'verify_dispersive_horizon_frequency_finite_l.py').read_bytes()).hexdigest()
+assert h_fr == SHA_FREQ, 'imported frequency/finite-L verifier bytes changed'
+
+spec = importlib.util.spec_from_file_location('freqfl', HERE / 'verify_dispersive_horizon_frequency_finite_l.py')
+fr = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(fr)          # full frequency/finite-L run (and its imports)
+tr, ch, rv = fr.tr, fr.ch, fr.rv
+RI, CI = ch.RI, ch.CI
+assert len(rv.checks) == 61 and len(ch.checks) == 53 and len(tr.checks) == 33 and len(fr.checks) == 43
+
+checks = []
+T0 = time.perf_counter()
+
+
+def ok(label, cond):
+    if not cond:
+        raise AssertionError(label)
+    checks.append(label)
+    print(f'PASS {label}  [{time.perf_counter() - T0:.1f}s]', flush=True)
+
+
+ok('H imported frequency/finite-L verifier has the reviewed SHA256 (checked before import); '
+   '61 + 53 + 33 + 43 imported checks passed', True)
+
+
+def pair(x):                         # RI -> (lo, hi) of Fractions (picklable)
+    return (x.lo, x.hi)
+
+
+def unpair(p):
+    return RI(p[0], p[1])
+
+
+def sector(lam):
+    """'neg' if k = -arg lambda in (-pi/2, 0), 'pos' if in (0, pi/2), else None
+    (decided by the interval box)."""
+    if lam.re.lo > 0 and lam.im.lo > 0:
+        return 'neg'
+    if lam.re.lo > 0 and lam.im.hi < 0:
+        return 'pos'
+    return None
+
+
+def case(task):
+    """Worker: one (s, L, N) case. Returns plain data; raises on unexpected errors."""
+    sv, Lv, N, label = task
+    cw, sw, zz, zI = fr.zdata(sv)
+    out = dict(label=label, status=None)
+    for tt in (fr.T_INT, fr.T_EXT):
+        H, Nn = tr.HN_at(tt, cw, sw)
+        if not (H.degree() == 12 and sp.gcd(H, H.diff(tr.tau)).degree() == 0
+                and sp.gcd(H, Nn).degree() == 0):
+            out['status'] = 'S_MATRIX_NOT_ESTABLISHED'
+            return out
+    try:
+        base = fr.roots_boxes(fr.T_INT * (2 * fr.T_INT - 1), zz, 256) + \
+            fr.roots_boxes(fr.T_EXT * (2 * fr.T_EXT - 1), zz, 256)
+        e = fr.ceil_log2_kappa(base)
+        p = 256 + 2 * (2 * N + 1) * e
+        fr.note(f'{label}: ceil(log2 kappa) = {e}; predeclared precision p = {p} bits; N = {N}')
+        mi = fr.medium_p(fr.T_INT, zI, zz, cw, sw, p, f'{label} interior t=5/16')
+        me = fr.medium_p(fr.T_EXT, zI, zz, cw, sw, p, f'{label} exterior t=7/16')
+        out['counts'] = (mi['nR'], mi['nL'], me['nR'], me['nL'])
+        secs = [sector(m['lam']) for m in mi['R']]
+        out['sectors'] = secs
+        if not (len(secs) == 2 and secs.count('neg') == 1 and secs.count('pos') == 1):
+            raise fr.NotCertified(f'branch identification failed (sectors {secs})')
+        c_ret, c_cont = secs.index('neg'), secs.index('pos')
+        int_out = mi['L'] + mi['ev_large']
+        ext_out = me['R'] + me['ev_small']
+        int_in, ext_in = mi['R'], me['L']
+        vecs = [m['Y'] for m in int_out] + [m['Y'] for m in int_in]
+        ts = {x: fr.t_profile(x, Lv, N, p) for x in range(-N - 1, N + 2)}
+        for x in range(-N - 1, N + 1):
+            Mx = fr.M_site_p(ts[x], ts[x + 1], zI, p)
+            vecs = [[fr.rnd_CI(y, p) for y in ch.matvec(Mx, v)] for v in vecs]
+        prop_out, prop_in = vecs[:len(int_out)], vecs[len(int_out):]
+        cols = prop_out + [[-y for y in m['Y']] for m in ext_out]
+        if len(cols) != 12:
+            raise fr.NotCertified('matching matrix is not 12 x 12')
+        A = [[cols[k][i] for k in range(12)] for i in range(12)]
+        Bcols = [[-y for y in v] for v in prop_in] + [m['Y'] for m in ext_in]
+        sols, beta = fr.solve_hp(A, Bcols, p)
+        out['beta'] = beta
+        Fout = [m['aF'] for m in mi['L']] + [m['aF'] for m in me['R']]
+        Fin = [m['aF'] for m in int_in] + [m['aF'] for m in ext_in]
+        out_rows = list(range(mi['nL'])) + list(range(len(int_out), len(int_out) + me['nR']))
+        nI, nO = len(Bcols), len(out_rows)
+        absS2 = [[sols[c][r].abs2() * Fout[ri] / Fin[c] for c in range(nI)]
+                 for ri, r in enumerate(out_rows)]
+        sq_out = [ch.sqrt_RI(f) for f in Fout]
+        sq_in = [ch.sqrt_RI(f) for f in Fin]
+        S = [[sols[c][r] * CI(sq_out[ri] / sq_in[c]) for c in range(nI)] for ri, r in enumerate(out_rows)]
+        SHS = [[sum((S[r][a].conj() * S[r][b] for r in range(nO)), CI(0)) for b in range(nI)]
+               for a in range(nI)]
+        out['unitary'] = all(fr.contains0(SHS[a][b] - (CI(1) if a == b else CI(0)))
+                             for a in range(nI) for b in range(nI))
+        if not all(fr.cmag(SHS[a][b]) < 2 for a in range(nI) for b in range(nI)):
+            raise fr.NotCertified('S^H S enclosure too wide to be informative')
+        er = mi['nL']
+        col = [absS2[ri][c_ret] for ri in range(nO)]
+        csum = RI(0)
+        for v in col:
+            csum = csum + v
+        out['col'] = [pair(v) for v in col]
+        out['col_sum'] = pair(csum)
+        out['row_lams'] = [fr.ci_str(m['lam'], 12) for m in mi['L']] + [fr.ci_str(m['lam'], 12) for m in me['R']]
+        out['row_sectors'] = [sector(m['lam']) for m in mi['L']] + [sector(m['lam']) for m in me['R']]
+        out['ret_lam'] = fr.ci_str(int_in[c_ret]['lam'], 12)
+        out['cont_lam'] = fr.ci_str(int_in[c_cont]['lam'], 12)
+        out['T_ret'] = pair(absS2[er][c_ret])
+        out['T_cont'] = pair(absS2[er][c_cont])
+        out['p'] = p
+        out['status'] = 'COMPUTED'
+        fr.note(f'{label}: done')
+        return out
+    except fr.NotCertified as exc:
+        out['status'] = 'OPEN_AFTER_TRANSMISSION_ANALYSIS'
+        out['reason'] = str(exc)
+        return out
+
+
+S_PTS = (R(1, 50), R(1, 200))
+PROFILES = ((None, 0, 'sharp'), (4, 32, 'L=4'), (16, 128, 'L=16'))
+tasks = []
+for Lv, N, pname in reversed(PROFILES):                 # longest first
+    for sv in S_PTS:
+        tasks.append((sv, Lv, N, f'R s={sv} {pname} N={N}'))
+
+nworkers = min(4, os.cpu_count() or 1)
+print(f'Running {len(tasks)} cases on {nworkers} worker process(es) (fork)', flush=True)
+ctx = multiprocessing.get_context('fork')
+with ctx.Pool(nworkers) as pool:
+    results = pool.map(case, tasks, chunksize=1)
+res = {}
+for (sv, Lv, N, label), out in zip(tasks, results):
+    res[(sv, Lv)] = out
+
+# ----------------------------------------------------------------- checks in the parent
+EXPECTED = (2, 4, 1, 3)
+verdict = {}
+for (sv, Lv, N, label) in tasks:
+    out = res[(sv, Lv)]
+    if out['status'] == 'S_MATRIX_NOT_ESTABLISHED':
+        print(f'{label}: S_MATRIX_NOT_ESTABLISHED (not a regular level)')
+        verdict[(sv, Lv)] = 'S_MATRIX_NOT_ESTABLISHED'
+        continue
+    if 'counts' in out:
+        ok(f'{label}: channel counts {EXPECTED} (interior R/L, exterior R/L; reviewed counts)',
+           out['counts'] == EXPECTED)
+    if out['status'] != 'COMPUTED':
+        print(f'{label}: OPEN_AFTER_TRANSMISSION_ANALYSIS ({out.get("reason")})')
+        verdict[(sv, Lv)] = 'OPEN_AFTER_TRANSMISSION_ANALYSIS'
+        continue
+    ok(f'{label}: R1 turning branch identified by box sign (one right-mover with k in (-pi/2, 0), '
+       f'lambda in {out["ret_lam"]}; one with k in (0, pi/2), lambda in {out["cont_lam"]})', True)
+    ok(f'{label}: matching matrix certified invertible (||I - R A D|| <= {fr.dec(out["beta"], 6, True)} < 1/2)',
+       out['beta'] < Fr(1, 2))
+    ok(f'{label}: S^H S encloses the identity', out['unitary'])
+    cs = unpair(out['col_sum'])
+    ok(f'{label}: R2 turning-branch column of |S|^2 sums to an enclosure of 1', cs.lo <= 1 <= cs.hi)
+    print(f'{label}: turning-branch column (outgoing channel: lambda box, sector, |S|^2):')
+    for lam_s, sec, v in zip(out['row_lams'], out['row_sectors'], out['col']):
+        print(f'    {lam_s}  [{sec}]  {fr.ri_str(unpair(v), 20)}')
+    Tret, Tcont = unpair(out['T_ret']), unpair(out['T_cont'])
+    print(f'{label}: T_ret in {fr.ri_str(Tret, 20)}; T_cont in {fr.ri_str(Tcont, 20)}; p = {out["p"]}')
+    # R3: sum against the imported sigma^2 of the same case
+    if Lv is None:
+        v2, Q2, _ = fr.F2[sv]
+    else:
+        v2, Q2, _ = fr.F3[(sv, Lv)]
+    tot = Tret + Tcont
+    ok(f'{label}: R3 T_ret + T_cont overlaps the imported sigma^2 enclosure of the same case',
+       Q2 is not None and tot.lo <= Q2.hi and Q2.lo <= tot.hi)
+    if Lv is None and sv == R(1, 50):
+        t2 = tr.S1[4][1].abs2()
+        ok(f'{label}: R3 at sharp z1, T_ret overlaps the reviewed |t_2|^2 of the transmission verifier',
+           Tret.lo <= t2.hi and t2.lo <= Tret.hi)
+    if Tret.lo > 0 and Tret.width() <= Fr(1, 10**6):
+        verdict[(sv, Lv)] = 'TRANSMISSION_NONZERO_CERTIFIED'
+    else:
+        verdict[(sv, Lv)] = 'OPEN_AFTER_TRANSMISSION_ANALYSIS'
+    print(f'{label}: verdict {verdict[(sv, Lv)]}', flush=True)
+
+# ----------------------------------------------------------------- summary
+print('\nSUMMARY')
+for sv in S_PTS:
+    for Lv, N, pname in PROFILES:
+        out = res[(sv, Lv)]
+        extra = ''
+        if out['status'] == 'COMPUTED':
+            extra = (f'; T_ret in {fr.ri_str(unpair(out["T_ret"]), 20)}'
+                     f'; T_cont in {fr.ri_str(unpair(out["T_cont"]), 20)}; p = {out["p"]}')
+        print(f's={sv} {pname}: {verdict[(sv, Lv)]}{extra}')
+
+decided = all(verdict[(sv, Lv)] == 'TRANSMISSION_NONZERO_CERTIFIED' for sv in S_PTS for Lv, _, _ in PROFILES)
+if decided:
+    T = {(sv, Lv): unpair(res[(sv, Lv)]['T_ret']) for sv in S_PTS for Lv, _, _ in PROFILES}
+    dec_ = all(T[(sv, None)].lo > T[(sv, 4)].hi and T[(sv, 4)].lo > T[(sv, 16)].hi for sv in S_PTS)
+    notdec = all(T[(sv, 16)].lo >= T[(sv, None)].hi for sv in S_PTS)
+    print(f'Line: strict decrease sharp > L=4 > L=16 at both points: {dec_}')
+    print(f'Line: abandonment condition T_ret(L=16) >= T_ret(sharp) at both points: {notdec}')
+    if dec_:
+        line = 'T_RET_DECREASING_AT_COMPUTED_L'
+    elif notdec:
+        line = 'T_RET_NOT_DECREASING'
+    else:
+        line = 'MIXED'
+else:
+    line = 'NOT_DECIDABLE (some case is not TRANSMISSION_NONZERO_CERTIFIED)'
+print(f'Line verdict candidate: {line}')
+print(f'{len(checks)} turning-branch checks PASS '
+      f'(after {len(rv.checks)} + {len(ch.checks)} + {len(tr.checks)} + {len(fr.checks)} imported checks)')
+
+=== DOCUMENT 4: verify_dispersive_horizon_frequency_finite_l.py ===
+
+"""Verifier for theory/DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE.md (frozen at 204f33b):
+F1 regime boundary, F2 sharp-profile frequency scan, F3 truncated tanh profile.
+
+Imports scripts/verify_dispersive_horizon_transmission.py read-only, after a
+SHA256 check. That verifier checks and imports the channels and transfer-matrix
+verifiers, so the 61 + 53 + 33 reviewed checks run first (about 25 min). Its
+helpers (M_TEMPLATE, eval_CI, HN_at, H_of, G_hom, horner, gauss_to_CI, zCI)
+are reused unchanged. Its sharp-profile enclosures at z0 and z1 are used as a
+cross-check of the new pipeline.
+
+Certification. Every certified number is an exact rational or a rational
+interval (Fractions; outward rounding to dyadic grids; integer square roots;
+mpmath `iv` with outward rounding only for exp in the tanh enclosure). Floating
+point / mpmath plain arithmetic only supplies root guesses and preconditioners;
+each guess is certified exactly (Krawczyk for roots, ||I - RA|| < 1/2 with an
+interval residual for linear solves).
+
+Points: z(s) = (1 - s^2 + 2 i s)/(1 + s^2).
+  On I:            s = 1/4, 1/2, 3/4.
+  Horizon arc:     s = 1/200, 1/50, 1/30.
+
+  F1  (a) critical-value branch. On a regular level the real double roots of
+      H(tau) are the collisions z = +-1, +-i (t-independent) and the critical
+      values (reviewed C3: 4f'^2 = 1 - f^2, f != 0). With u = cos^2 k,
+      f = C gt(u), f' = -sin k gp(u), the threshold polynomial is
+      thr(u, A) = (u - 1) q(u, A), and Re z_c = C R(u, A), y = (Re z_c)^2 =
+      u R^2. The first-quadrant critical value of a medium A has
+      cos^2(arg z_c) = y. The verifier certifies, over A in
+      [A(5/16), A(7/16)]: the event polynomials q(0, A), lc_u q, disc_u q and
+      res_u(q, J) (J = y_A q_u - y_u q_A, stationarity of y along the branch)
+      have no root, and q(1, A) has exactly one root A_d; q has one root in
+      (0, 1) at A(5/16) and none at A(7/16). Written step: the branch u*(A) is
+      then continuous on [A(5/16), A_d), leaves through u = 1 where y = 1, and
+      y is monotone on it, so the first-quadrant critical set is
+      (0, arg z_c*] with z_c* the reviewed interior critical value.
+      Verdict REGIME_BOUNDARY_CERTIFIED, else OPEN_AFTER_DISCRIMINANT_ANALYSIS.
+      (b) per declared point, the T0 test of the transmission verifier: the
+      discriminant in tau of H_A(tau) at z(s), as a polynomial in A, and its
+      roots in [A(5/16), A(7/16)].
+  F2  sharp profile 5/16 | 3/8 | 7/16 (N = 0) at the six points.
+  F3  truncated profile t(x) = 3/8 + tanh(x/L)/16 for |x| <= N, asymptotic
+      values beyond; (L, N) = (4, 32), (16, 128); s = 1/50, 1/200.
+
+  Per (profile, z): regularity (H squarefree, gcd(H, N) = 1) or
+  S_MATRIX_NOT_ESTABLISHED; base roots at radius 2^-256 give
+  kappa = max(|lambda|, 1/|lambda|) (upper bound) and the predeclared
+  precision p = 256 + 2(2N + 1) ceil(log2 kappa); roots re-certified at radius
+  2^-p; Bloch vectors at p bits; flux signs and |F| from the reviewed G_hom;
+  interval propagation of the unnormalized interior vectors through
+  M_N ... M_{-N-1}, outward rounding to 2^-p after each site; column-scaled
+  matching solve with a high-precision preconditioner; |S_rc|^2 =
+  |x_rc|^2 |F_r| / |F_c|; S^H S encloses I.
+  Verdicts per point: TRANSMISSION_NONZERO_CERTIFIED (enclosure > 0 and width
+  <= 1e-6), OPEN_AFTER_TRANSMISSION_ANALYSIS (wider, or a certification step
+  failed), S_MATRIX_NOT_ESTABLISHED (not a regular level).
+  Line verdict: LEAKAGE_SUPPRESSED_AT_COMPUTED_L / LEAKAGE_NOT_SUPPRESSED /
+  MIXED, as defined in the charter; both conditions are printed.
+
+Written steps (not machine-checked) are listed in scripts/README.md.
+"""
+import hashlib
+import importlib.util
+import pathlib
+import time
+from fractions import Fraction as Fr
+from math import isqrt
+
+import mpmath as mp
+from mpmath import iv
+import sympy as sp
+from sympy import I, Rational as R
+
+HERE = pathlib.Path(__file__).resolve().parent
+SHA_TRANSMISSION = '29ee9f127b2e43dc1a8aabf2cfdffb6e727edf502e9677b823f45b7c27e316ea'
+h_tr = hashlib.sha256((HERE / 'verify_dispersive_horizon_transmission.py').read_bytes()).hexdigest()
+assert h_tr == SHA_TRANSMISSION, 'imported transmission verifier bytes changed'
+
+spec = importlib.util.spec_from_file_location('transmission', HERE / 'verify_dispersive_horizon_transmission.py')
+tr = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(tr)          # 61 + 53 + 33 reviewed checks
+ch, rv = tr.ch, tr.rv
+RI, CI = ch.RI, ch.CI
+order = ch.order
+matvec = ch.matvec
+assert len(rv.checks) == 61 and len(ch.checks) == 53 and len(tr.checks) == 33
+
+checks = []
+T0 = time.perf_counter()
+
+
+def ok(label, cond):
+    if not cond:
+        raise AssertionError(label)
+    checks.append(label)
+    print(f'PASS {label}  [{time.perf_counter() - T0:.1f}s]', flush=True)
+
+
+def note(msg):
+    print(f'{msg}  [{time.perf_counter() - T0:.1f}s]', flush=True)
+
+
+ok('H imported transmission verifier has the reviewed SHA256 (checked before import); '
+   '61 + 53 + 33 imported checks passed', True)
+
+
+class NotCertified(Exception):
+    pass
+
+
+dec, ri_str, ci_str = tr.dec, tr.ri_str, tr.ci_str
+cmag, contains0, coverlap = tr.cmag, tr.contains0, tr.coverlap
+T_INT, T_HOR, T_EXT = R(5, 16), R(3, 8), R(7, 16)
+A_INT, A_EXT = T_INT * (2 * T_INT - 1), T_EXT * (2 * T_EXT - 1)
+
+
+# ----------------------------------------------------------- precision helpers
+def fl(x):                          # floor of a Fraction
+    return x.numerator // x.denominator
+
+
+def ce(x):                          # ceiling of a Fraction
+    return -((-x.numerator) // x.denominator)
+
+
+def rnd_RI(x, p):                   # outward rounding to the grid 2^-p
+    S = 1 << p
+    return RI(Fr(fl(x.lo * S), S), Fr(ce(x.hi * S), S))
+
+
+def rnd_CI(x, p):
+    return CI(rnd_RI(x.re, p), rnd_RI(x.im, p))
+
+
+def rnd_fr(x, p):                   # nearest point of the grid 2^-p (guesses only)
+    S = 1 << p
+    return Fr(round(x * S), S)
+
+
+def sqrt_RI_p(x, p):                # enclosure of sqrt on [lo, hi], grid 2^-p
+    assert x.lo >= 0
+    S = 4**p
+    lo = Fr(isqrt(fl(x.lo * S)), 2**p)
+    hi = Fr(isqrt(ce(x.hi * S)) + 1, 2**p)
+    return RI(lo, hi)
+
+
+def raw_fr(raw):                    # exact value of an mpmath raw mpf tuple
+    sign, man, exp, _ = raw
+    man, exp = int(man), int(exp)
+    v = Fr(man << exp) if exp >= 0 else Fr(man, 1 << -exp)
+    return -v if sign else v
+
+
+def mpf_fr(v):
+    return raw_fr(mp.mpf(v)._mpf_)
+
+
+def fr_mp(x):
+    return mp.mpf(x.numerator) / x.denominator
+
+
+def mid_mp(x):                      # CI -> mpc midpoint (guesses only)
+    return mp.mpc(fr_mp((x.re.lo + x.re.hi) / 2), fr_mp((x.im.lo + x.im.hi) / 2))
+
+
+def tanh_RI(x, Lv, p):              # enclosure of tanh(x / Lv), x, Lv integers
+    if x == 0:
+        return RI(0)
+    if x < 0:
+        return -tanh_RI(-x, Lv, p)
+    iv.prec = p + 64
+    E = iv.exp(iv.mpf(2 * x) / Lv)
+    elo, ehi = raw_fr(E._mpi_[0]), raw_fr(E._mpi_[1])
+    assert 0 < elo <= ehi
+    return RI(1 - Fr(2) / (elo + 1), 1 - Fr(2) / (ehi + 1))   # increasing in e^{2y}
+
+
+def zdata(sv):
+    cw = (1 - sv**2) / (1 + sv**2)
+    sw = 2 * sv / (1 + sv**2)
+    zz = cw + sw * I
+    return cw, sw, zz, tr.zCI(zz)
+
+
+# ================================================================= F1 (a)
+u_, A_ = sp.symbols('u_ A_')
+gt = 4 * A_ * u_ + 1 - 4 * A_            # f = C gt(u)
+gpu = 12 * A_ * u_ + 1 - 4 * A_          # g'(C) = gp(u)
+thr = sp.expand(4 * (1 - u_) * gpu**2 - (1 - u_ * gt**2))
+ok('F1 thr(u, A) = 4(1-u) gp^2 - (1 - u gt^2) equals the reviewed C3 threshold polynomial '
+   'at t = 5/16 and t = 7/16',
+   all(sp.expand(thr.subs(A_, tt * (2 * tt - 1)) - ch.thr_poly(tt).as_expr().subs(ch.u, u_)) == 0
+       for tt in (T_INT, T_EXT)))
+qP, remP = sp.div(sp.Poly(thr, u_), sp.Poly(u_ - 1, u_))
+ok('F1 u = 1 is a root of thr for every A (nodes); q = thr / (u - 1)', remP.is_zero)
+q = qP.as_expr()
+Rr = (2 * u_ * gt**2 - 1) + 4 * (1 - u_) * gt * gpu
+yv = sp.expand(u_ * Rr**2)
+ok('F1 R(1, A) = 1, so y = u R^2 equals 1 at u = 1 for every A',
+   sp.expand(Rr.subs(u_, 1)) == 1)
+J = sp.expand(sp.diff(yv, A_) * sp.diff(q, u_) - sp.diff(yv, u_) * sp.diff(q, A_))
+
+
+def roots_in_A(expr, name):
+    P = sp.Poly(sp.expand(expr), A_)
+    if P.is_zero:
+        note(f'F1 event polynomial {name} vanishes identically')
+        return None
+    if P.degree() <= 0:
+        return 0
+    n = P.count_roots(A_INT, A_EXT)
+    note(f'F1 event {name}: degree {P.degree()} in A, roots in [A(5/16), A(7/16)]: {n}')
+    return n
+
+
+ev = {
+    'q(0, A)': roots_in_A(q.subs(u_, 0), 'q(0, A)'),
+    'lc_u q': roots_in_A(sp.Poly(q, u_).LC(), 'lc_u q'),
+    'disc_u q': roots_in_A(sp.discriminant(q, u_), 'disc_u q'),
+    'res_u(q, J)': roots_in_A(sp.resultant(q, J, u_), 'res_u(q, J)'),
+    'q(1, A)': roots_in_A(q.subs(u_, 1), 'q(1, A)'),
+}
+
+
+def q_roots_open01(Av):
+    P = sp.Poly(q.subs(A_, Av), u_)
+    n = P.count_roots(0, 1)
+    n -= (1 if P.eval(0) == 0 else 0) + (1 if P.eval(1) == 0 else 0)
+    return n
+
+
+n_int, n_ext = q_roots_open01(A_INT), q_roots_open01(A_EXT)
+note(f'F1 roots of q(., A) in (0, 1): {n_int} at A(5/16), {n_ext} at A(7/16)')
+q1P = sp.Poly(q.subs(u_, 1), A_)
+simple_structure = (ev['q(0, A)'] == 0 and ev['lc_u q'] == 0 and ev['disc_u q'] == 0
+                    and ev['res_u(q, J)'] == 0 and ev['q(1, A)'] == 1
+                    and q1P.eval(A_INT) != 0 and q1P.eval(A_EXT) != 0
+                    and n_int == 1 and n_ext == 0)
+ok(f'F1 event structure computed (simple structure: {simple_structure})', True)
+
+# y* = (Re z_c*)^2 at A(5/16): enclosure from the unique root u* of q in (0, 1)
+qi = sp.Poly(q.subs(A_, A_INT), u_)
+ivs = [iv_ for iv_, _ in qi.intervals(eps=R(1, 10**80), inf=0, sup=1)]
+ivs = [(a, b) for a, b in ivs if a > 0 and b < 1]
+ok('F1 exactly one isolating interval of q(., A(5/16)) inside (0, 1)', len(ivs) == 1)
+uI = RI(Fr(int(ivs[0][0].p), int(ivs[0][0].q)), Fr(int(ivs[0][1].p), int(ivs[0][1].q)))
+r168 = ch.sqrt_RI(RI(168025))
+u_rev = (RI(5245) - r168) / 5250
+ok('F1 u* agrees with the reviewed C3 value (5245 - sqrt 168025)/5250 (enclosures overlap)',
+   uI.lo <= u_rev.hi and u_rev.lo <= uI.hi)
+yP = sp.Poly(yv.subs(A_, A_INT), u_)
+y_star = RI(0)
+for c in yP.all_coeffs():
+    y_star = y_star * uI + RI(Fr(int(c.p), int(c.q)))
+rz_lo = Fr('0.996006471094483079484232973570')
+rz_hi = Fr('0.996006471094483079484232973571')
+ok('F1 y* = (Re z_c*)^2 overlaps the square of the reviewed Re z_c* enclosure',
+   y_star.lo <= rz_hi**2 and rz_lo**2 <= y_star.hi and y_star.hi < 1)
+note(f'F1 y* in {ri_str(y_star, 30)}')
+F1_verdict = 'REGIME_BOUNDARY_CERTIFIED' if simple_structure else 'OPEN_AFTER_DISCRIMINANT_ANALYSIS'
+if simple_structure:
+    note('F1 REGIME_BOUNDARY_CERTIFIED: in the open first quadrant the critical values of the '
+         'media t in [5/16, 7/16] fill exactly (0, arg z_c*]; the CONNECTED region there is '
+         '(arg z_c*, pi/2) = I (written step, see header)')
+else:
+    note('F1 OPEN_AFTER_DISCRIMINANT_ANALYSIS: event structure not the simple one (see counts)')
+
+S_I = [R(1, 4), R(1, 2), R(3, 4)]
+S_ARC = [R(1, 200), R(1, 50), R(1, 30)]
+F1_class = {}
+for sv in S_I + S_ARC:
+    cw = (1 - sv**2) / (1 + sv**2)
+    ys = Fr(int((cw**2).p), int((cw**2).q))
+    if ys > y_star.hi:
+        F1_class[sv] = 'horizon arc'
+    elif ys < y_star.lo:
+        F1_class[sv] = 'I'
+    else:
+        F1_class[sv] = 'undecided'
+ok('F1 declared points classified against y*: s in {1/4, 1/2, 3/4} on I, '
+   's in {1/200, 1/50, 1/30} on the horizon arc',
+   all(F1_class[s] == 'I' for s in S_I) and all(F1_class[s] == 'horizon arc' for s in S_ARC))
+
+# ================================================================= F1 (b)
+F1b = {}
+for sv in S_I + S_ARC:
+    cw, sw, zz, _ = zdata(sv)
+    HA = tr.H_of(tr.Asym, cw, sw)
+    lc = sp.expand(HA.LC())
+    Dsc = sp.Poly(sp.discriminant(HA.as_expr(), tr.tau), tr.Asym)
+    nD = Dsc.count_roots(A_INT, A_EXT)
+    conn = (lc.is_number and lc != 0 and HA.degree() == 12 and nD == 0
+            and Dsc.eval(A_INT) != 0 and Dsc.eval(A_EXT) != 0)
+    F1b[sv] = conn
+    note(f'F1b s = {sv}: leading coefficient {lc}; discriminant degree {Dsc.degree()} in A, '
+         f'roots in [A(5/16), A(7/16)]: {nD} -> {"CONNECTED" if conn else "not certified connected"}')
+ok('F1b T0 test at the declared points: CONNECTED at s = 1/4, 1/2, 3/4',
+   all(F1b[s] for s in S_I))
+
+
+# ================================================================= pipeline
+Lsym = tr.L
+
+
+def roots_boxes(AA, zz, p):
+    """12 roots of P(., z) in disjoint boxes of half-width 2^-p (Krawczyk)."""
+    Pz = sp.Poly(sp.expand(ch.P.subs({ch.lam: Lsym, ch.Aa: AA, ch.z: zz})), Lsym)
+    cs = Pz.all_coeffs()
+    assert len(cs) == 13 and cs[-1] != 0
+    cz = [tr.gauss_to_CI(c) for c in cs]
+    dcz = [tr.gauss_to_CI(c) for c in Pz.diff(Lsym).all_coeffs()]
+    dps = int(p * 0.30103) + 60
+    RAD = Fr(1, 2**p)
+    boxes = []
+    with mp.workdps(dps):
+        cmp_ = [mp.mpc(mp.mpf(int(sp.re(c).p)) / int(sp.re(c).q),
+                       mp.mpf(int(sp.im(c).p)) / int(sp.im(c).q)) for c in cs]
+        dmp = [cmp_[k] * (12 - k) for k in range(12)]
+        try:
+            rts = mp.polyroots(cmp_, maxsteps=800, extraprec=2 * dps)
+        except mp.NoConvergence:
+            raise NotCertified('root guesses did not converge')
+        for x in rts:
+            for _ in range(60):
+                dx = mp.polyval(cmp_, x) / mp.polyval(dmp, x)
+                x -= dx
+                if abs(dx) < mp.mpf(2)**(-(p + 64)):
+                    break
+            cr, ci_ = rnd_fr(mpf_fr(x.real), p + 32), rnd_fr(mpf_fr(x.imag), p + 32)
+            X = CI(RI(cr - RAD, cr + RAD), RI(ci_ - RAD, ci_ + RAD))
+            c = CI(RI(cr), RI(ci_))
+            fc = tr.horner(cz, c)
+            yinv = 1 / mp.polyval(dmp, x)
+            Y = CI(RI(rnd_fr(mpf_fr(yinv.real), p + 32)), RI(rnd_fr(mpf_fr(yinv.imag), p + 32)))
+            K = c - Y * fc + (CI(1) - Y * tr.horner(dcz, X)) * (X - c)
+            if not (K.re.lo > X.re.lo and K.re.hi < X.re.hi and K.im.lo > X.im.lo and K.im.hi < X.im.hi):
+                raise NotCertified(f'Krawczyk inclusion failed at radius 2^-{p}')
+            boxes.append(X)
+    if len(boxes) != 12 or any(coverlap(boxes[i], boxes[j]) for i in range(12) for j in range(i + 1, 12)):
+        raise NotCertified(f'root boxes not 12 pairwise disjoint at radius 2^-{p}')
+    return boxes
+
+
+def ceil_log2_kappa(boxes):
+    m = max(max(X.abs2().hi, 1 / X.abs2().lo) for X in boxes)     # kappa^2 upper bound
+    e = 0
+    while Fr(4)**e < m:
+        e += 1
+    return e
+
+
+def coins_t(tI, p):
+    pc = sqrt_RI_p(tI, p)
+    qc = sqrt_RI_p(RI(1) - tI, p)
+    cc, ss = {}, {}
+    for j, m in enumerate(order, 1):
+        cc[j], ss[j] = (pc, qc) if m == 1 else (rnd_RI(RI(2) * tI - 1, p), rnd_RI(RI(-2) * pc * qc, p))
+    return cc, ss, pc, qc
+
+
+def M_site_p(tI, tnI, zI, p):
+    cc, ss, _, _ = coins_t(tI, p)
+    cn, sn, _, _ = coins_t(tnI, p)
+    env = {tr.zT: zI, tr.cPT: CI(cn[6]), tr.sPT: CI(sn[6])}
+    for j in range(1, 7):
+        env[tr.cTs[j - 1]] = CI(cc[j])
+        env[tr.sTs[j - 1]] = CI(ss[j])
+    return [[rnd_CI(tr.eval_CI(tr.M_TEMPLATE[i, k], env), p) for k in range(12)] for i in range(12)]
+
+
+def bloch_vector_p(lamI, zI, tt, p):
+    pc, qc = sqrt_RI_p(RI(tt), p), sqrt_RI_p(RI(1 - tt), p)
+    Sm = [[CI(1) / lamI, CI(0)], [CI(0), lamI]]
+    Cm2, Cm1 = ch.coin_I(-2, pc, qc), ch.coin_I(1, pc, qc)
+    mm = ch.matmul
+    Wm = mm(Sm, mm(Cm1, mm(Sm, mm(Cm1, mm(Sm, Cm2)))))
+    Um = mm([[lamI, CI(0)], [CI(0), lamI]], mm(Wm, Wm))
+    v1 = [Um[0][1], zI - Um[0][0]]
+    v2 = [zI - Um[1][1], Um[1][0]]
+    if (v1[0].abs2() + v1[1].abs2()).pos():
+        vv = v1
+    elif (v2[0].abs2() + v2[1].abs2()).pos():
+        vv = v2
+    else:
+        raise NotCertified('kernel vector norm not certified positive')
+    qv = [vv]
+    for m in order[:5]:
+        qv.append(matvec(Sm, matvec(ch.coin_I(m, pc, qc), qv[-1])))
+    Y = [x[0] for x in qv] + [x[1] / lamI for x in qv]
+    return [rnd_CI(y, p + 32) for y in Y]
+
+
+G_CACHE = {}
+
+
+def medium_p(tt, zI, zz, cw, sw, p, name):
+    H, Nn = tr.HN_at(tt, cw, sw)
+    nprop = H.count_roots()
+    boxes = roots_boxes(tt * (2 * tt - 1), zz, p)
+    inside = [X for X in boxes if X.abs2().hi < 1]
+    outside = [X for X in boxes if X.abs2().lo > 1]
+    circle = [X for X in boxes if X.abs2().lo <= 1 <= X.abs2().hi]
+    if not (len(circle) == nprop and len(inside) == len(outside) == (12 - nprop) // 2):
+        raise NotCertified(f'{name}: box classification does not match the Sturm count')
+    key = (tt, zz)
+    if key not in G_CACHE:
+        G_CACHE[key] = tr.G_hom(tt, zI)
+    G, _ = G_CACHE[key]
+    Mh = M_site_p(RI(tt), RI(tt), zI, p)
+    prop, eig_ok = [], True
+    for X in circle:
+        Y = bloch_vector_p(X, zI, tt, p)
+        MY = matvec(Mh, Y)
+        eig_ok = eig_ok and all(contains0(MY[i] - X * Y[i]) for i in range(12))
+        GY = matvec(G, Y)
+        F = sum((Y[i].conj() * GY[i] for i in range(12)), CI(0))
+        if not (F.re.pos() or F.re.neg()):
+            raise NotCertified(f'{name}: flux sign undecided')
+        prop.append(dict(lam=X, Y=Y, sign=1 if F.re.pos() else -1,
+                         aF=F.re if F.re.pos() else -F.re))
+    ev_s, ev_l = [], []
+    for X in inside + outside:
+        Y = bloch_vector_p(X, zI, tt, p)
+        MY = matvec(Mh, Y)
+        eig_ok = eig_ok and all(contains0(MY[i] - X * Y[i]) for i in range(12))
+        (ev_s if X.abs2().hi < 1 else ev_l).append(dict(lam=X, Y=Y))
+    if not eig_ok:
+        raise NotCertified(f'{name}: eigen-residual does not enclose 0')
+    Rm = [m for m in prop if m['sign'] > 0]
+    Lm = [m for m in prop if m['sign'] < 0]
+    note(f'  {name}: p = {p}; propagating {len(prop)} (right {len(Rm)}, left {len(Lm)})')
+    for m in prop:
+        note(f'    lambda in {ci_str(m["lam"], 12)}, flux sign {m["sign"]:+d}')
+    return dict(R=Rm, L=Lm, ev_small=ev_s, ev_large=ev_l, nR=len(Rm), nL=len(Lm))
+
+
+def solve_hp(A, Bcols, p):
+    """A x = b for each b; A n x n interval. Columns scaled by exact powers of 2;
+    certified by beta = ||I - R A'||_inf < 1/2 (R from an mpmath inverse at
+    precision p + 128 bits, converted exactly) and an interval residual."""
+    n = len(A)
+    ecol = []
+    for k in range(n):
+        m = max(cmag(A[i][k]) for i in range(n))
+        if m == 0:
+            raise NotCertified('zero column in the matching matrix')
+        ecol.append(m.numerator.bit_length() - m.denominator.bit_length())
+    scale = [Fr(1, 2**e) if e >= 0 else Fr(2**(-e)) for e in ecol]
+    As = [[A[i][k] * CI(RI(scale[k])) for k in range(n)] for i in range(n)]
+    pr = p + 128
+    with mp.workprec(pr):
+        Am = mp.matrix([[mid_mp(As[i][k]) for k in range(n)] for i in range(n)])
+        try:
+            Rf = mp.inverse(Am)
+        except ZeroDivisionError:
+            raise NotCertified('midpoint matching matrix numerically singular')
+        Rq = [[CI(RI(rnd_fr(mpf_fr(Rf[i, k].real), pr)), RI(rnd_fr(mpf_fr(Rf[i, k].imag), pr)))
+               for k in range(n)] for i in range(n)]
+        RA = ch.matmul(Rq, As)
+        beta = max(sum((cmag((CI(1) if i == k else CI(0)) - RA[i][k]) for k in range(n)), Fr(0))
+                   for i in range(n))
+        if not beta < Fr(1, 2):
+            raise NotCertified(f'preconditioned matrix not contractive (beta bound {float(beta):.3g})')
+        sols = []
+        for b in Bcols:
+            bm = mp.matrix([mid_mp(x) for x in b])
+            xm = Rf * bm
+            for _ in range(2):          # refinement in mpmath (guess only)
+                xm = xm + Rf * (bm - Am * xm)
+            xt = [CI(RI(rnd_fr(mpf_fr(xm[i].real), pr)), RI(rnd_fr(mpf_fr(xm[i].imag), pr)))
+                  for i in range(n)]
+            Ax = matvec(As, xt)
+            res = matvec(Rq, [b[i] - Ax[i] for i in range(n)])
+            err = max(cmag(r) for r in res) / (1 - beta)
+            xs = [CI(RI(x.re.lo - err, x.re.hi + err), RI(x.im.lo - err, x.im.hi + err)) for x in xt]
+            sols.append([xs[k] * CI(RI(scale[k])) for k in range(n)])
+    return sols, beta
+
+
+def t_profile(x, Lv, N, p):
+    if x < -N:
+        return RI(T_INT)
+    if x > N:
+        return RI(T_EXT)
+    if x == 0:
+        return RI(T_HOR)
+    return rnd_RI(RI(T_HOR) + tanh_RI(x, Lv, p) * Fr(1, 16), p)
+
+
+def run_point(sv, Lv, N, label, arc):
+    """Returns (verdict, quantity enclosure or None, info)."""
+    cw, sw, zz, zI = zdata(sv)
+    for tt in (T_INT, T_EXT):
+        H, Nn = tr.HN_at(tt, cw, sw)
+        if not (H.degree() == 12 and sp.gcd(H, H.diff(tr.tau)).degree() == 0
+                and sp.gcd(H, Nn).degree() == 0):
+            note(f'{label}: S_MATRIX_NOT_ESTABLISHED (not a regular level in medium t = {tt})')
+            return 'S_MATRIX_NOT_ESTABLISHED', None, {}
+    try:
+        base = roots_boxes(T_INT * (2 * T_INT - 1), zz, 256) + roots_boxes(T_EXT * (2 * T_EXT - 1), zz, 256)
+        e = ceil_log2_kappa(base)
+        p = 256 + 2 * (2 * N + 1) * e
+        note(f'{label}: ceil(log2 kappa) = {e}; predeclared precision p = {p} bits; N = {N}')
+        mi = medium_p(T_INT, zI, zz, cw, sw, p, f'{label} interior t=5/16')
+        me = medium_p(T_EXT, zI, zz, cw, sw, p, f'{label} exterior t=7/16')
+        exp_counts = (2, 4, 1, 3) if arc else (1, 3, 1, 3)
+        ok(f'{label}: channel counts {exp_counts} (interior R/L, exterior R/L; reviewed counts)',
+           (mi['nR'], mi['nL'], me['nR'], me['nL']) == exp_counts)
+        int_out = mi['L'] + mi['ev_large']
+        ext_out = me['R'] + me['ev_small']
+        int_in, ext_in = mi['R'], me['L']
+        vecs = [m['Y'] for m in int_out] + [m['Y'] for m in int_in]
+        ts = {x: t_profile(x, Lv, N, p) for x in range(-N - 1, N + 2)}
+        for x in range(-N - 1, N + 1):
+            Mx = M_site_p(ts[x], ts[x + 1], zI, p)
+            vecs = [[rnd_CI(y, p) for y in matvec(Mx, v)] for v in vecs]
+        prop_out = vecs[:len(int_out)]
+        prop_in = vecs[len(int_out):]
+        note(f'{label}: propagated through {2 * N + 2} sites')
+        cols = prop_out + [[-y for y in m['Y']] for m in ext_out]
+        if len(cols) != 12:
+            raise NotCertified('matching matrix is not 12 x 12')
+        A = [[cols[k][i] for k in range(12)] for i in range(12)]
+        Bcols = [[-y for y in v] for v in prop_in] + [m['Y'] for m in ext_in]
+        sols, beta = solve_hp(A, Bcols, p)
+        ok(f'{label}: matching matrix certified invertible (||I - R A D|| <= {dec(beta, 6, True)} < 1/2)', True)
+        Fout = [m['aF'] for m in mi['L']] + [m['aF'] for m in me['R']]
+        Fin = [m['aF'] for m in int_in] + [m['aF'] for m in ext_in]
+        out_rows = list(range(mi['nL'])) + list(range(len(int_out), len(int_out) + me['nR']))
+        nI, nO = len(Bcols), len(out_rows)
+        absS2 = [[sols[c][r].abs2() * Fout[ri] / Fin[c] for c in range(nI)] for ri, r in enumerate(out_rows)]
+        sq_out = [ch.sqrt_RI(f) for f in Fout]
+        sq_in = [ch.sqrt_RI(f) for f in Fin]
+        S = [[sols[c][r] * CI(sq_out[ri] / sq_in[c]) for c in range(nI)] for ri, r in enumerate(out_rows)]
+        SHS = [[sum((S[r][a].conj() * S[r][b] for r in range(nO)), CI(0)) for b in range(nI)]
+               for a in range(nI)]
+        uni = all(contains0(SHS[a][b] - (CI(1) if a == b else CI(0)))
+                  for a in range(nI) for b in range(nI))
+        wid = max(max(SHS[a][b].re.width(), SHS[a][b].im.width()) for a in range(nI) for b in range(nI))
+        ok(f'{label}: S^H S encloses the identity ({nO} x {nI}; max enclosure width {float(wid):.3g})', uni)
+        if not all(cmag(SHS[a][b]) < 2 for a in range(nI) for b in range(nI)):
+            raise NotCertified('S^H S enclosure too wide to be informative')
+        er = mi['nL']                   # row of the exterior right-mover
+        if arc:
+            Q = absS2[er][0] + absS2[er][1]
+            qname = 'sigma^2'
+        else:
+            Q = absS2[er][0]
+            qname = 'T'
+        note(f'{label}: {qname} in {ri_str(Q, 20)} (width {float(Q.width()):.3g})')
+        if Q.lo > 0 and Q.width() <= Fr(1, 10**6):
+            verdict = 'TRANSMISSION_NONZERO_CERTIFIED'
+        else:
+            verdict = 'OPEN_AFTER_TRANSMISSION_ANALYSIS'
+        note(f'{label}: verdict {verdict}')
+        return verdict, Q, dict(p=p, e=e, beta=beta)
+    except NotCertified as exc:
+        note(f'{label}: OPEN_AFTER_TRANSMISSION_ANALYSIS (certification step failed: {exc})')
+        return 'OPEN_AFTER_TRANSMISSION_ANALYSIS', None, {}
+
+
+# ================================================================= F2
+F2 = {}
+for sv in S_I + S_ARC:
+    arc = sv in S_ARC
+    F2[sv] = run_point(sv, None, 0, f'F2 s={sv}', arc)
+
+v12, Q12, _ = F2[R(1, 2)]
+v150, Q150, _ = F2[R(1, 50)]
+ok('F2 cross-check: at s = 1/2 (z0) the new T enclosure overlaps the reviewed one',
+   Q12 is not None and Q12.lo <= tr.T_z0.hi and tr.T_z0.lo <= Q12.hi)
+ok('F2 cross-check: at s = 1/50 (z1) the new sigma^2 enclosure overlaps the reviewed one',
+   Q150 is not None and Q150.lo <= tr.sig2.hi and tr.sig2.lo <= Q150.hi)
+
+# ================================================================= F3
+F3 = {}
+for sv in (R(1, 50), R(1, 200)):
+    for Lv, N in ((4, 32), (16, 128)):
+        F3[(sv, Lv)] = run_point(sv, Lv, N, f'F3 s={sv} L={Lv} N={N}', True)
+
+# ================================================================= summary
+print('\nSUMMARY')
+print(f'F1: {F1_verdict}; y* = (Re z_c*)^2 in {ri_str(y_star, 30)}')
+for sv in S_I + S_ARC:
+    print(f'F1 s={sv}: {F1_class[sv]}; T0-type discriminant test: '
+          f'{"CONNECTED" if F1b[sv] else "not certified connected"}')
+for sv in S_I + S_ARC:
+    v, Q, info = F2[sv]
+    print(f'F2 s={sv}: {v}' + (f'; {"sigma^2" if sv in S_ARC else "T"} in {ri_str(Q, 20)}' if Q is not None else '')
+          + (f'; p = {info["p"]}' if info else ''))
+for key, (v, Q, info) in F3.items():
+    print(f'F3 s={key[0]} L={key[1]}: {v}' + (f'; sigma^2 in {ri_str(Q, 20)}' if Q is not None else '')
+          + (f'; p = {info["p"]}' if info else ''))
+
+
+def lt(a, b):
+    return a.hi < b.lo
+
+
+decided = all(F3[k][1] is not None and F3[k][0] == 'TRANSMISSION_NONZERO_CERTIFIED' for k in F3) \
+    and all(F2[s][1] is not None for s in (R(1, 50), R(1, 200)))
+if decided:
+    supp = all(lt(F3[(s, 16)][1], F2[s][1]) and lt(F3[(s, 16)][1], F3[(s, 4)][1])
+               for s in (R(1, 50), R(1, 200)))
+    notsupp = all(F3[(s, 16)][1].lo >= Fr(1, 2) for s in (R(1, 50), R(1, 200)))
+    print(f'Line: suppression condition (sigma^2(L=16) < sharp and < sigma^2(L=4) at both points): {supp}')
+    print(f'Line: abandonment condition (sigma^2(L=16) >= 1/2 at both points): {notsupp}')
+    if supp and not notsupp:
+        line = 'LEAKAGE_SUPPRESSED_AT_COMPUTED_L'
+    elif notsupp and not supp:
+        line = 'LEAKAGE_NOT_SUPPRESSED'
+    elif supp and notsupp:
+        line = 'BOTH_CONDITIONS_HOLD (charter does not order them; reported, not resolved)'
+    else:
+        line = 'MIXED'
+else:
+    line = 'NOT_DECIDABLE (some F2/F3 point is not TRANSMISSION_NONZERO_CERTIFIED)'
+print(f'Line verdict candidate: {line}')
+ok('summary written', True)
+print(f'{len(checks)}/{len(checks)} frequency/finite-L checks PASS '
+      f'(after {len(rv.checks)} + {len(ch.checks)} + {len(tr.checks)} imported checks)')
+
+=== DOCUMENT 5: 2026-11-27--dispersive-horizon-turning-branch-run-1.txt ===
+
+# Recorded execution of scripts/verify_dispersive_horizon_turning_branch.py
+# commit b0bb720, verifier sha256 397f72b3a9293fe1784dfb9e3d4da8a616f215999c3c97adee006d7d880e0676
+# Python 3.12.3, sympy/numpy/mpmath 1.14.0 1.26.4 1.3.0, nproc 4, started 2026-11-27T09:49:54Z, host: local WSL2 (Claude Code session)
+PASS T1 C(b) = exp(-i b sigma_y)  [0.2s]
+PASS T1 coin order of W^2 is (-2,1,1,-2,1,1) theta  [0.2s]
+PASS T1 W^2 has six conditional shifts  [0.2s]
+PASS T2 13 equations in 13 unknowns  [0.2s]
+PASS T2 stage system det = -c1 c2 c3 c4 c5 c6(x+1) s6(x) z (unique solution)  [0.2s]
+PASS T2 solution is linear homogeneous in Y_x  [0.3s]
+PASS T2 block P: 36 entries agree with independent elimination  [0.4s]
+PASS T2 block Q: 36 entries agree with independent elimination  [0.4s]
+PASS T2 block R: 36 entries agree with independent elimination  [0.5s]
+PASS T2 block H: 36 entries agree with independent elimination  [0.5s]
+PASS T2 negative control: sign flip in Q[1,1] is detected  [0.5s]
+PASS T2 negative control: c_6(x), s_6(x) in place of c_6(x+1), s_6(x+1) is detected  [0.6s]
+PASS T2 report M has 25 structurally nonzero entries (P 6, Q 7, R 7, H 5)  [0.6s]
+PASS T2 b_6(x+1) from stage system equals row 12 of M_{x+1}  [0.6s]
+PASS T3 at least 20 interior sites  [0.9s]
+PASS T3 U psi = z psi exactly at every interior site (site-dependent coins)  [0.9s]
+PASS T3 rebuilt stage vectors q_2..q_6 equal the components of Y (280 comparisons)  [1.0s]
+PASS T4 det M_x = cot beta_6(x) / cot beta_6(x+1), general angles  [1.6s]
+PASS T4 det M_x independent of z  [1.6s]
+PASS T4 with beta_6 = theta: cot(theta_x)/cot(theta_{x+1})  [1.6s]
+PASS T5 tr W / 2 = A cos 3k + (1-A) cos k  [1.7s]
+PASS T5 det W = 1  [1.8s]
+PASS T5 t=9/25: charpoly(M_hom) * (-z A^2) = boxed polynomial  [3.2s]
+PASS T5 t=9/25: boxed polynomial has degree 12, nonzero constant term  [3.2s]
+PASS T5 t=2304/5329: charpoly(M_hom) * (-z A^2) = boxed polynomial  [4.6s]
+PASS T5 t=2304/5329: boxed polynomial has degree 12, nonzero constant term  [4.6s]
+PASS T5 t=64/289: charpoly(M_hom) * (-z A^2) = boxed polynomial  [6.0s]
+PASS T5 t=64/289: boxed polynomial has degree 12, nonzero constant term  [6.0s]
+PASS T5 general theta: charpoly(M_hom) * (-z A^2) = boxed polynomial  [39.7s]
+PASS T6 W(pi/2)^2 = -I for all theta  [40.0s]
+PASS T6 t=5/16: Bloch vector e1 is an eigenvector of M (z=i, lambda=-i)  [40.0s]
+PASS T6 t=5/16: Bloch vector e2 is an eigenvector of M (z=i, lambda=-i)  [40.0s]
+PASS T6 t=5/16: the two eigenvectors are independent  [40.0s]
+PASS T6 t=5/16: (lambda+i)^2 divides charpoly  [41.4s]
+PASS T6 t=5/16: (lambda+i)^3 does not divide charpoly (multiplicity exactly 2)  [41.4s]
+PASS T6 t=3/8: Bloch vector e1 is an eigenvector of M (z=i, lambda=-i)  [41.4s]
+PASS T6 t=3/8: Bloch vector e2 is an eigenvector of M (z=i, lambda=-i)  [41.4s]
+PASS T6 t=3/8: the two eigenvectors are independent  [41.5s]
+PASS T6 t=3/8: (lambda+i)^2 divides charpoly  [42.8s]
+PASS T6 t=3/8: (lambda+i)^3 does not divide charpoly (multiplicity exactly 2)  [42.8s]
+PASS T6 t=7/16: Bloch vector e1 is an eigenvector of M (z=i, lambda=-i)  [42.8s]
+PASS T6 t=7/16: Bloch vector e2 is an eigenvector of M (z=i, lambda=-i)  [42.8s]
+PASS T6 t=7/16: the two eigenvectors are independent  [42.9s]
+PASS T6 t=7/16: (lambda+i)^2 divides charpoly  [44.2s]
+PASS T6 t=7/16: (lambda+i)^3 does not divide charpoly (multiplicity exactly 2)  [44.2s]
+PASS T7 U delta_up: computed window covers [x0-9, x0+7]  [44.2s]
+PASS T7 U delta_up: support inside [x0-7, x0+5]  [44.2s]
+PASS T7 U delta_up: nonzero up amplitude at x0+5  [44.2s]
+PASS T7 U delta_dn: computed window covers [x0-9, x0+7]  [44.2s]
+PASS T7 U delta_dn: support inside [x0-7, x0+5]  [44.2s]
+PASS T7 U delta_dn: nonzero dn amplitude at x0-7  [44.2s]
+PASS T8 profile: 2t-1 in [-3/8,-1/8] (cos 2theta != 0), 0<t<1 (sin, cos theta != 0)  [44.2s]
+PASS T8 1 + 8A = (4t-1)^2  [44.2s]
+PASS T8 f(k) = 1 - (1+8A) k^2/2 + O(k^4)  [44.3s]
+PASS T8 v_IR,out = 8t-3 = -1/2, 0, 1/2  [44.3s]
+PASS T8 f(pi/2) = 0  [44.3s]
+PASS T8 E'(pi/2) = 1 - 4A  [44.3s]
+PASS T8 v_UV,out(pi/2) = 31/16, 7/4, 23/16  [44.3s]
+PASS T8 f = 4A cos^3 k + (1-4A) cos k  [44.3s]
+PASS T8 A < 0 on the profile (A = t(2t-1), both endpoints negative, t<1/2)  [44.3s]
+PASS T8 g'(1) = (4t-1)^2 > 0 on the whole profile (4t-1 >= 1/4)  [44.3s]
+61/61 exact checks PASS
+Verdict: TRANSFER_MATRIX_PASS (algebraic scope; author-side audit, cross-family independence not established)
+PASS C1 M_x^H G_{x+1} M_x = G_x (general angles on sites x, x+1, x+2; |z| = 1)  [0.7s]
+PASS C1 G_x is Hermitian for |z| = 1  [0.7s]
+PASS C1 operational cut flux is constant in x (two solutions, sesquilinear)  [2.5s]
+PASS C1 operational cut flux equals Y_x^H G_x Y_x (sesquilinear, all sites)  [4.6s]
+PASS C1 the conserved form is not identically zero on these solutions  [4.6s]
+PASS C1 homogeneous medium: det G = -cot^2 theta (nondegenerate form)  [4.7s]
+PASS C2 lambda^12 P(1/lambda, 1/z) = z^-2 P(lambda, z)  (roots closed under 1/conj)  [4.7s]
+PASS C2 P = z lambda^6 Phi  [4.7s]
+PASS C2 on the unit circle Phi = -2 h(k), h = 2 f^2 - 1 - cos(omega + k)  [4.7s]
+PASS C2 deg_lambda P = 12 and P(0) = -z A^2 lambda^0 coefficient (A != 0)  [4.7s]
+PASS C2 det U(k) = e^{-2ik}, i.e. Omega_+ + Omega_- = -2k (total winding -2)  [4.8s]
+PASS C3 elimination: 16F^2Fp^2 + (2F^2-1)^2 - 1 = 4F^2(4Fp^2 - (1 - F^2))  [4.8s]
+PASS C3 t=5/16: A < 0, so g(C) = C(1 - 4A(1-C^2)) vanishes only at C = 0  [4.8s]
+PASS C3 t=5/16: g' >= g'(1) = (4t-1)^2 > 0 on [-1,1], so f = +-1 only at k = 0, pi  [4.8s]
+PASS C3 t=7/16: A < 0, so g(C) = C(1 - 4A(1-C^2)) vanishes only at C = 0  [4.8s]
+PASS C3 t=7/16: g' >= g'(1) = (4t-1)^2 > 0 on [-1,1], so f = +-1 only at k = 0, pi  [4.8s]
+PASS C3 threshold polynomials vanish at u = 1 (nodes k = 0, pi, not critical)  [4.9s]
+PASS C3 interior quotient has exactly one root in (0,1); none at 0 or 1  [4.9s]
+PASS C3 exterior quotient has no root in [0,1]: no critical values at t = 7/16  [4.9s]
+PASS C3 interior quotient is proportional to 2625 u^2 - 5245 u + 2604  [4.9s]
+PASS C3 u* = (5245 - sqrt(168025))/5250 is that root  [4.9s]
+PASS C3 enclosure: 0 < u* < 1  [4.9s]
+PASS C3 the four critical z_c have |z_c|^2 enclosures containing 1  [4.9s]
+PASS C3 exactly one critical value lies in the open first quadrant; the others have Im < 0 or Re < 0  [4.9s]
+PASS C3 z_c* (C sign 1, sin k sign -1): Re z_c* > 3/5 = Re z0, so arg z_c* < arg z0 < pi/2 and z0 lies in I  [4.9s]
+PASS C3 Re z_c* is algebraic with minimal polynomial of degree 4 (exact descriptor), and its enclosure lies inside one isolating interval of it  [4.9s]
+PASS C3 collision points z = 1, i, -1, -i are not in I = (arg z_c*, pi/2) (z = i is excluded by definition)  [4.9s]
+PASS C4 interior: P(., z0) has degree 12, P(0) != 0  [5.0s]
+PASS C4 interior: P(., z0) is squarefree (12 distinct roots, M diagonalizable)  [5.0s]
+PASS C4 interior: H(tau) has degree 12 (no root at k = pi) and is squarefree  [5.0s]
+PASS C4 interior: gcd(H, N) = 1 (no zero velocity, no collision at z0)  [5.0s]
+PASS C4 interior: 4 propagating roots; 1 right-moving, 3 left-moving  [5.0s]
+PASS C4 interior: (#right) - (#left) = -2 (winding of C2)  [5.0s]
+PASS C4 interior: 8 evanescent roots, 4 with |lambda| < 1 (decay to x -> +inf) and 4 with |lambda| > 1 (decay to x -> -inf)  [5.0s]
+PASS C4 exterior: P(., z0) has degree 12, P(0) != 0  [5.0s]
+PASS C4 exterior: P(., z0) is squarefree (12 distinct roots, M diagonalizable)  [5.1s]
+PASS C4 exterior: H(tau) has degree 12 (no root at k = pi) and is squarefree  [5.1s]
+PASS C4 exterior: gcd(H, N) = 1 (no zero velocity, no collision at z0)  [5.1s]
+PASS C4 exterior: 4 propagating roots; 1 right-moving, 3 left-moving  [5.1s]
+PASS C4 exterior: (#right) - (#left) = -2 (winding of C2)  [5.1s]
+PASS C4 exterior: 8 evanescent roots, 4 with |lambda| < 1 (decay to x -> +inf) and 4 with |lambda| > 1 (decay to x -> -inf)  [5.1s]
+PASS C4 interior has exactly one right-moving propagating channel on I  [5.1s]
+PASS C4 exterior has at least one right-moving propagating channel on I  [5.1s]
+PASS C4/C5 full line: incoming channels 4 = outgoing channels 4  [5.1s]
+PASS C5 -i U^H dU/dk = sum_j R_j^H sigma_z R_j - I (displacement operator per period)  [130.2s]
+PASS C5 interior: every propagating Bloch mode has nonzero flux Y^H G Y with the sign of its group velocity (exact intervals)  [133.6s]
+PASS C5 interior: the interval group-velocity sign agrees with the exact Sturm sign  [133.6s]
+PASS C5 interior: flux / (v |q_1|^2) enclosures contain 1 and have width < 1e-20  [133.6s]
+PASS C5 interior: Im(Y^H G Y) enclosures contain 0  [133.6s]
+PASS C5 exterior: every propagating Bloch mode has nonzero flux Y^H G Y with the sign of its group velocity (exact intervals)  [136.8s]
+PASS C5 exterior: the interval group-velocity sign agrees with the exact Sturm sign  [136.8s]
+PASS C5 exterior: flux / (v |q_1|^2) enclosures contain 1 and have width < 1e-20  [136.9s]
+PASS C5 exterior: Im(Y^H G Y) enclosures contain 0  [136.9s]
+53/53 channel checks PASS (after 61/61 reviewed transfer-matrix checks)
+interior (t = 5/16): propagating 4 (right 1, left 3), evanescent 8
+exterior (t = 7/16): propagating 4 (right 1, left 3), evanescent 8
+Verdict candidate: CHANNELS_CLASSIFIED (author PRELIMINARY; review pending)
+PASS H imported verifiers have the reviewed SHA256 (checked before import)  [0.0s]
+PASS S P(lambda, z) = lambda^5 det(U(lambda) - z), homogeneous medium (exact, rational parametrization of cos/sin theta)  [1.1s]
+PASS S Bloch stage vector: rows 1..10 of (M_hom - lambda) Y vanish identically  [1.9s]
+PASS S rows 0 and 11 vanish modulo det(U - z) for both kernel formulas at 9 exact sample points (w, lambda) with z symbolic (consistency of the closure rows)  [2.3s]
+PASS T0 leading coefficient of H_A(tau) at z0 is constant in A (8/5) and nonzero  [2.3s]
+T0 discriminant of H_A(tau) at z0: degree 28 in A; roots in [A(5/16), A(7/16)] = [-15/128, -7/128]: 0
+PASS T0 CONNECTED: H_A(tau) at z0 is squarefree of degree 12 for every A in [A(5/16), A(7/16)] (t in [5/16, 7/16]); z0 is a regular value of every intermediate medium  [2.5s]
+PASS R z0 interior t=5/16: H(tau) degree 12, squarefree, gcd(H, N) = 1 (regular point)  [2.5s]
+PASS R z0 interior t=5/16: 12 Krawczyk-certified pairwise disjoint root boxes of P(., z) (each holds exactly one root; degree 12, so all roots)  [2.7s]
+PASS R z0 interior t=5/16: 4 boxes with |lambda| < 1, 4 with |lambda| > 1, 4 undecided = Sturm count 4 of roots on the circle  [2.7s]
+PASS R z0 interior t=5/16: every Bloch vector satisfies M_hom Y - lambda Y enclosing 0 (consistency with S)  [12.1s]
+R z0 interior t=5/16: propagating 4 (right 1, left 3); flux-normalized modes:
+    lambda in [-0.163111754630, -0.163111754629] + i [-0.986607599557, -0.986607599556], flux sign -1, F in [-2.277114696651, -2.277114696650], kernel row 1
+    lambda in [0.333186162262, 0.333186162263] + i [-0.942861061492, -0.942861061491], flux sign +1, F in [1.639314042900, 1.639314042901], kernel row 1
+    lambda in [-0.615040004504, -0.615040004503] + i [0.788495905417, 0.788495905418], flux sign -1, F in [-8.033134725752, -8.033134725751], kernel row 1
+    lambda in [0.886064631101, 0.886064631102] + i [0.463561721360, 0.463561721361], flux sign -1, F in [-0.952931117041, -0.952931117040], kernel row 1
+PASS R z0 exterior t=7/16: H(tau) degree 12, squarefree, gcd(H, N) = 1 (regular point)  [12.1s]
+PASS R z0 exterior t=7/16: 12 Krawczyk-certified pairwise disjoint root boxes of P(., z) (each holds exactly one root; degree 12, so all roots)  [12.3s]
+PASS R z0 exterior t=7/16: 4 boxes with |lambda| < 1, 4 with |lambda| > 1, 4 undecided = Sturm count 4 of roots on the circle  [12.3s]
+PASS R z0 exterior t=7/16: every Bloch vector satisfies M_hom Y - lambda Y enclosing 0 (consistency with S)  [21.7s]
+R z0 exterior t=7/16: propagating 4 (right 1, left 3); flux-normalized modes:
+    lambda in [-0.685679491006, -0.685679491005] + i [0.727903589505, 0.727903589506], flux sign -1, F in [-6.086189025205, -6.086189025204], kernel row 1
+    lambda in [0.934682214498, 0.934682214499] + i [0.355484398953, 0.355484398954], flux sign -1, F in [-1.385711376606, -1.385711376605], kernel row 1
+    lambda in [0.447630603797, 0.447630603798] + i [-0.894218565310, -0.894218565309], flux sign +1, F in [1.883195766101, 1.883195766102], kernel row 1
+    lambda in [-0.186561753208, -0.186561753207] + i [-0.982443236142, -0.982443236141], flux sign -1, F in [-1.479075862002, -1.479075862001], kernel row 1
+PASS T1 z0: unknowns 7 interior + 5 exterior = 12; incoming 4 = outgoing 4  [24.3s]
+PASS T1 z0: matching matrix certified invertible (||I - R A|| <= 0.000001 < 1): the scattering matrix exists (no bound state at this z)  [367.9s]
+PASS T1 z0: S^H S encloses the identity (4 x 4; enclosure width < 1e-20)  [590.2s]
+S-matrix enclosure at z0 (rows: interior left x3, exterior right x1; columns: interior right x1, exterior left x3):
+    [0.0405178907, 0.0405178908] + i [0.0325516912, 0.0325516913] | [-0.0018248858, -0.0018248857] + i [0.0059499766, 0.0059499767] | [-0.0099448988, -0.0099448987] + i [0.0145411302, 0.0145411303] | [-0.9189558053, -0.9189558052] + i [-0.3904738635, -0.3904738634]
+    [-0.0012617033, -0.0012617032] + i [0.0011956165, 0.0011956166] | [0.0735357206, 0.0735357207] + i [0.9972138021, 0.9972138022] | [0.0023617744, 0.0023617745] + i [-0.0106095210, -0.0106095209] | [0.0059916096, 0.0059916097] + i [0.0002643348, 0.0002643349]
+    [-0.0237267711, -0.0237267710] + i [0.0318334734, 0.0318334735] | [0.0081004280, 0.0081004281] + i [-0.0071306512, -0.0071306511] | [0.9102881534, 0.9102881535] + i [-0.4115891093, -0.4115891092] | [-0.0110576975, -0.0110576974] + i [-0.0124425587, -0.0124425586]
+    [-0.6782509634, -0.6782509633] + i [-0.7319118578, -0.7319118577] | [0.0013787499, 0.0013787500] + i [-0.0001845613, -0.0001845612] | [-0.0101564476, -0.0101564475] + i [-0.0379241867, -0.0379241866] | [-0.0449456872, -0.0449456871] + i [-0.0267808887, -0.0267808886]
+PASS T2 z0: interior 1 right / 3 left, exterior 1 right / 3 left (reviewed counts, flux signs)  [590.3s]
+T2 z0: t in [-0.67825096333601940651, -0.67825096333601940650] + i [-0.73191185779097809583, -0.73191185779097809582];  T = |t|^2 in [0.99571933684127928475, 0.99571933684127928476]
+PASS T2 z0: TRANSMISSION_NONZERO_CERTIFIED (sharp profile): T >= 0.995719336841 > 0  [591.7s]
+PASS T1 z0: tr(t'^H t') - 2 - T encloses 0 (unitarity with 1 x 3 reflection block r'; at least two perfectly transmitted left-moving channels)  [609.9s]
+PASS R z1 interior t=5/16: H(tau) degree 12, squarefree, gcd(H, N) = 1 (regular point)  [609.9s]
+PASS R z1 interior t=5/16: 12 Krawczyk-certified pairwise disjoint root boxes of P(., z) (each holds exactly one root; degree 12, so all roots)  [610.1s]
+PASS R z1 interior t=5/16: 3 boxes with |lambda| < 1, 3 with |lambda| > 1, 6 undecided = Sturm count 6 of roots on the circle  [610.1s]
+PASS R z1 interior t=5/16: every Bloch vector satisfies M_hom Y - lambda Y enclosing 0 (consistency with S)  [620.8s]
+R z1 interior t=5/16: propagating 6 (right 2, left 4); flux-normalized modes:
+    lambda in [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053], flux sign -1, F in [-8.262153396361, -8.262153396360], kernel row 1
+    lambda in [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857], flux sign -1, F in [-8.613518187687, -8.613518187686], kernel row 1
+    lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438], flux sign +1, F in [0.518476085865, 0.518476085866], kernel row 1
+    lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376], flux sign +1, F in [0.181728494960, 0.181728494961], kernel row 1
+    lambda in [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306], flux sign -1, F in [-0.000337831258, -0.000337831257], kernel row 1
+    lambda in [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948], flux sign -1, F in [-0.002227249760, -0.002227249759], kernel row 1
+PASS R z1 exterior t=7/16: H(tau) degree 12, squarefree, gcd(H, N) = 1 (regular point)  [620.8s]
+PASS R z1 exterior t=7/16: 12 Krawczyk-certified pairwise disjoint root boxes of P(., z) (each holds exactly one root; degree 12, so all roots)  [621.1s]
+PASS R z1 exterior t=7/16: 4 boxes with |lambda| < 1, 4 with |lambda| > 1, 4 undecided = Sturm count 4 of roots on the circle  [621.1s]
+PASS R z1 exterior t=7/16: every Bloch vector satisfies M_hom Y - lambda Y enclosing 0 (consistency with S)  [630.3s]
+R z1 exterior t=7/16: propagating 4 (right 1, left 3); flux-normalized modes:
+    lambda in [-0.458240224332, -0.458240224331] + i [0.888828384337, 0.888828384338], flux sign -1, F in [-5.836571955262, -5.836571955261], kernel row 1
+    lambda in [-0.436472679623, -0.436472679622] + i [-0.899717511191, -0.899717511190], flux sign -1, F in [-5.567063477899, -5.567063477898], kernel row 1
+    lambda in [0.999872047595, 0.999872047596] + i [0.015996513300, 0.015996513301], flux sign -1, F in [-0.002519549611, -0.002519549610], kernel row 1
+    lambda in [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194], flux sign +1, F in [0.016225958515, 0.016225958516], kernel row 1
+PASS T1 z1: unknowns 7 interior + 5 exterior = 12; incoming 5 = outgoing 5  [632.9s]
+PASS T1 z1: matching matrix certified invertible (||I - R A|| <= 0.000001 < 1): the scattering matrix exists (no bound state at this z)  [1066.7s]
+PASS T1 z1: S^H S encloses the identity (5 x 5; enclosure width < 1e-20)  [1501.4s]
+S-matrix enclosure at z1 (rows: interior left x4, exterior right x1; columns: interior right x2, exterior left x3):
+    [-0.0314952874, -0.0314952873] + i [0.0512387229, 0.0512387230] | [0.0085455629, 0.0085455630] + i [-0.0147838657, -0.0147838656] | [0.0006230222, 0.0006230223] + i [0.0007236457, 0.0007236458] | [-0.5634822351, -0.5634822350] + i [-0.8232717243, -0.8232717242] | [-0.0283083165, -0.0283083164] + i [-0.0004659812, -0.0004659811]
+    [0.0174412610, 0.0174412611] + i [0.0173611750, 0.0173611751] | [-0.0428002432, -0.0428002431] + i [-0.0332166081, -0.0332166080] | [-0.5197206709, -0.5197206708] + i [0.8517375143, 0.8517375144] | [0.0010056266, 0.0010056267] + i [-0.0007678724, -0.0007678723] | [0.0291976910, 0.0291976911] + i [-0.0062219783, -0.0062219782]
+    [-0.0802260361, -0.0802260360] + i [0.0665836681, 0.0665836682] | [0.1425249912, 0.1425249913] + i [0.1175885574, 0.1175885575] | [0.0173263181, 0.0173263182] + i [-0.0106200982, -0.0106200981] | [-0.0164339485, -0.0164339484] + i [-0.0157531772, -0.0157531771] | [0.9762321320, 0.9762321321] + i [0.0320866876, 0.0320866877]
+    [-0.4513500774, -0.4513500773] + i [-0.4217940422, -0.4217940421] | [-0.0997361914, -0.0997361913] + i [-0.7716375032, -0.7716375031] | [0.0363250094, 0.0363250095] + i [0.0018919357, 0.0018919358] | [-0.0223228572, -0.0223228571] + i [0.0157816130, 0.0157816131] | [0.0971690917, 0.0971690918] + i [0.0385857763, 0.0385857764]
+    [0.6852271616, 0.6852271617] + i [-0.3657103513, -0.3657103512] | [-0.5883203711, -0.5883203710] + i [-0.1055469642, -0.1055469641] | [-0.0076384491, -0.0076384490] + i [-0.0513643817, -0.0513643816] | [-0.0010441315, -0.0010441314] + i [-0.0586782863, -0.0586782862] | [0.1795517185, 0.1795517186] + i [-0.0328475036, -0.0328475035]
+PASS T4 z1: interior 2 right / 4 left, exterior 1 right / 3 left (Amendment 1 counts, flux signs)  [1501.4s]
+T4 z1: t_1 in [0.68522716166118497943, 0.68522716166118497944] + i [-0.36571035127679135149, -0.36571035127679135148]; t_2 in [-0.58832037108490174467, -0.58832037108490174466] + i [-0.10554696416869013529, -0.10554696416869013528]
+T4 z1: |t_1|^2 in [0.60328032410923785982, 0.60328032410923785983]; |t_2|^2 in [0.35726102067870325215, 0.35726102067870325216]; sigma^2 = |t_1|^2 + |t_2|^2 in [0.96054134478794111197, 0.96054134478794111198]
+PASS T4 z1: TRANSMISSION_NONZERO_CERTIFIED (sharp profile): sigma^2 >= 0.960541344787 > 0  [1507.8s]
+33/33 transmission checks PASS (after 61 reviewed and 53 channel checks)
+T0: CONNECTED
+PASS H imported transmission verifier has the reviewed SHA256 (checked before import); 61 + 53 + 33 imported checks passed  [0.0s]
+PASS F1 thr(u, A) = 4(1-u) gp^2 - (1 - u gt^2) equals the reviewed C3 threshold polynomial at t = 5/16 and t = 7/16  [0.0s]
+PASS F1 u = 1 is a root of thr for every A (nodes); q = thr / (u - 1)  [0.0s]
+PASS F1 R(1, A) = 1, so y = u R^2 equals 1 at u = 1 for every A  [0.1s]
+F1 event q(0, A): degree 2 in A, roots in [A(5/16), A(7/16)]: 0  [0.1s]
+F1 event lc_u q: degree 2 in A, roots in [A(5/16), A(7/16)]: 0  [0.1s]
+F1 event disc_u q: degree 4 in A, roots in [A(5/16), A(7/16)]: 0  [0.1s]
+F1 event res_u(q, J): degree 26 in A, roots in [A(5/16), A(7/16)]: 1  [0.1s]
+F1 event q(1, A): degree 2 in A, roots in [A(5/16), A(7/16)]: 1  [0.1s]
+F1 roots of q(., A) in (0, 1): 1 at A(5/16), 0 at A(7/16)  [0.1s]
+PASS F1 event structure computed (simple structure: False)  [0.1s]
+PASS F1 exactly one isolating interval of q(., A(5/16)) inside (0, 1)  [0.1s]
+PASS F1 u* agrees with the reviewed C3 value (5245 - sqrt 168025)/5250 (enclosures overlap)  [0.1s]
+PASS F1 y* = (Re z_c*)^2 overlaps the square of the reviewed Re z_c* enclosure  [0.1s]
+F1 y* in [0.992028890462085358141533820605, 0.992028890462085358141533820606]  [0.1s]
+F1 OPEN_AFTER_DISCRIMINANT_ANALYSIS: event structure not the simple one (see counts)  [0.1s]
+PASS F1 declared points classified against y*: s in {1/4, 1/2, 3/4} on I, s in {1/200, 1/50, 1/30} on the horizon arc  [0.1s]
+F1b s = 1/4: leading coefficient 32/17; discriminant degree 28 in A, roots in [A(5/16), A(7/16)]: 0 -> CONNECTED  [0.3s]
+F1b s = 1/2: leading coefficient 8/5; discriminant degree 28 in A, roots in [A(5/16), A(7/16)]: 0 -> CONNECTED  [0.4s]
+F1b s = 3/4: leading coefficient 32/25; discriminant degree 28 in A, roots in [A(5/16), A(7/16)]: 0 -> CONNECTED  [0.6s]
+F1b s = 1/200: leading coefficient 80000/40001; discriminant degree 28 in A, roots in [A(5/16), A(7/16)]: 1 -> not certified connected  [1.0s]
+F1b s = 1/50: leading coefficient 5000/2501; discriminant degree 28 in A, roots in [A(5/16), A(7/16)]: 1 -> not certified connected  [1.2s]
+F1b s = 1/30: leading coefficient 1800/901; discriminant degree 28 in A, roots in [A(5/16), A(7/16)]: 1 -> not certified connected  [1.5s]
+PASS F1b T0 test at the declared points: CONNECTED at s = 1/4, 1/2, 3/4  [1.5s]
+F2 s=1/4: ceil(log2 kappa) = 3; predeclared precision p = 262 bits; N = 0  [1.8s]
+  F2 s=1/4 interior t=5/16: p = 262; propagating 4 (right 1, left 3)  [4.5s]
+    lambda in [0.958339938534, 0.958339938535] + i [0.285630114324, 0.285630114325], flux sign -1  [4.5s]
+    lambda in [0.564624254903, 0.564624254904] + i [-0.825348078555, -0.825348078554], flux sign +1  [4.5s]
+    lambda in [-0.512664079589, -0.512664079588] + i [0.858589274041, 0.858589274042], flux sign -1  [4.5s]
+    lambda in [-0.272988950910, -0.272988950909] + i [-0.962017168601, -0.962017168600], flux sign -1  [4.5s]
+  F2 s=1/4 exterior t=7/16: p = 262; propagating 4 (right 1, left 3)  [7.3s]
+    lambda in [0.981088672016, 0.981088672017] + i [0.193558822171, 0.193558822172], flux sign -1  [7.3s]
+    lambda in [0.749901111930, 0.749901111931] + i [-0.661549939404, -0.661549939403], flux sign +1  [7.3s]
+    lambda in [-0.577225337843, -0.577225337842] + i [0.816584906395, 0.816584906396], flux sign -1  [7.3s]
+    lambda in [-0.311365968560, -0.311365968559] + i [-0.950290078673, -0.950290078672], flux sign -1  [7.3s]
+PASS F2 s=1/4: channel counts (1, 3, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [7.3s]
+F2 s=1/4: propagated through 2 sites  [7.4s]
+PASS F2 s=1/4: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [7.8s]
+PASS F2 s=1/4: S^H S encloses the identity (4 x 4; max enclosure width 1.23e-57)  [7.8s]
+F2 s=1/4: T in [0.99164648646525974543, 0.99164648646525974544] (width 1.23e-57)  [7.8s]
+F2 s=1/4: verdict TRANSMISSION_NONZERO_CERTIFIED  [7.8s]
+F2 s=1/2: ceil(log2 kappa) = 3; predeclared precision p = 262 bits; N = 0  [8.1s]
+  F2 s=1/2 interior t=5/16: p = 262; propagating 4 (right 1, left 3)  [10.8s]
+    lambda in [0.886064631101, 0.886064631102] + i [0.463561721360, 0.463561721361], flux sign -1  [10.8s]
+    lambda in [-0.615040004504, -0.615040004503] + i [0.788495905417, 0.788495905418], flux sign -1  [10.8s]
+    lambda in [0.333186162262, 0.333186162263] + i [-0.942861061492, -0.942861061491], flux sign +1  [10.8s]
+    lambda in [-0.163111754630, -0.163111754629] + i [-0.986607599557, -0.986607599556], flux sign -1  [10.8s]
+  F2 s=1/2 exterior t=7/16: p = 262; propagating 4 (right 1, left 3)  [13.4s]
+    lambda in [0.934682214498, 0.934682214499] + i [0.355484398953, 0.355484398954], flux sign -1  [13.4s]
+    lambda in [-0.685679491006, -0.685679491005] + i [0.727903589505, 0.727903589506], flux sign -1  [13.4s]
+    lambda in [0.447630603797, 0.447630603798] + i [-0.894218565310, -0.894218565309], flux sign +1  [13.4s]
+    lambda in [-0.186561753208, -0.186561753207] + i [-0.982443236142, -0.982443236141], flux sign -1  [13.4s]
+PASS F2 s=1/2: channel counts (1, 3, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [13.4s]
+F2 s=1/2: propagated through 2 sites  [13.5s]
+PASS F2 s=1/2: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [13.8s]
+PASS F2 s=1/2: S^H S encloses the identity (4 x 4; max enclosure width 9.55e-58)  [13.9s]
+F2 s=1/2: T in [0.99571933684127928475, 0.99571933684127928476] (width 9.52e-58)  [13.9s]
+F2 s=1/2: verdict TRANSMISSION_NONZERO_CERTIFIED  [13.9s]
+F2 s=3/4: ceil(log2 kappa) = 3; predeclared precision p = 262 bits; N = 0  [14.2s]
+  F2 s=3/4 interior t=5/16: p = 262; propagating 4 (right 1, left 3)  [16.9s]
+    lambda in [0.816601396902, 0.816601396903] + i [0.577202008465, 0.577202008466], flux sign -1  [16.9s]
+    lambda in [-0.696184285012, -0.696184285011] + i [0.717863107634, 0.717863107635], flux sign -1  [16.9s]
+    lambda in [0.146554559597, 0.146554559598] + i [-0.989202588483, -0.989202588482], flux sign +1  [16.9s]
+    lambda in [-0.072047551432, -0.072047551431] + i [-0.997401198282, -0.997401198281], flux sign -1  [16.9s]
+  F2 s=3/4 exterior t=7/16: p = 262; propagating 4 (right 1, left 3)  [19.5s]
+    lambda in [0.879256484907, 0.879256484908] + i [0.476348647261, 0.476348647262], flux sign -1  [19.5s]
+    lambda in [-0.767752453384, -0.767752453383] + i [0.640746572619, 0.640746572620], flux sign -1  [19.5s]
+    lambda in [0.197425181664, 0.197425181665] + i [-0.980317957423, -0.980317957422], flux sign +1  [19.5s]
+    lambda in [-0.082503778807, -0.082503778806] + i [-0.996590751755, -0.996590751754], flux sign -1  [19.5s]
+PASS F2 s=3/4: channel counts (1, 3, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [19.5s]
+F2 s=3/4: propagated through 2 sites  [19.6s]
+PASS F2 s=3/4: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [20.0s]
+PASS F2 s=3/4: S^H S encloses the identity (4 x 4; max enclosure width 8.79e-58)  [20.0s]
+F2 s=3/4: T in [0.99663415347988300948, 0.99663415347988300949] (width 8.73e-58)  [20.0s]
+F2 s=3/4: verdict TRANSMISSION_NONZERO_CERTIFIED  [20.0s]
+F2 s=1/200: ceil(log2 kappa) = 3; predeclared precision p = 262 bits; N = 0  [20.4s]
+  F2 s=1/200 interior t=5/16: p = 262; propagating 6 (right 2, left 4)  [23.1s]
+    lambda in [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273], flux sign -1  [23.1s]
+    lambda in [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063], flux sign -1  [23.1s]
+    lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499], flux sign +1  [23.1s]
+    lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057], flux sign +1  [23.1s]
+    lambda in [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906], flux sign -1  [23.1s]
+    lambda in [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342], flux sign -1  [23.1s]
+  F2 s=1/200 exterior t=7/16: p = 262; propagating 4 (right 1, left 3)  [25.7s]
+    lambda in [0.999992000185, 0.999992000186] + i [0.003999945501, 0.003999945502], flux sign -1  [25.7s]
+    lambda in [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522], flux sign +1  [25.7s]
+    lambda in [-0.450096890269, -0.450096890268] + i [0.892979725061, 0.892979725062], flux sign -1  [25.7s]
+    lambda in [-0.444654221194, -0.444654221193] + i [-0.895702307452, -0.895702307451], flux sign -1  [25.7s]
+PASS F2 s=1/200: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [25.7s]
+F2 s=1/200: propagated through 2 sites  [25.8s]
+PASS F2 s=1/200: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [26.2s]
+PASS F2 s=1/200: S^H S encloses the identity (5 x 5; max enclosure width 1.75e-57)  [26.3s]
+F2 s=1/200: sigma^2 in [0.95917694282960613905, 0.95917694282960613906] (width 2.32e-57)  [26.3s]
+F2 s=1/200: verdict TRANSMISSION_NONZERO_CERTIFIED  [26.3s]
+F2 s=1/50: ceil(log2 kappa) = 3; predeclared precision p = 262 bits; N = 0  [26.6s]
+  F2 s=1/50 interior t=5/16: p = 262; propagating 6 (right 2, left 4)  [29.3s]
+    lambda in [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306], flux sign -1  [29.3s]
+    lambda in [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948], flux sign -1  [29.3s]
+    lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376], flux sign +1  [29.3s]
+    lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438], flux sign +1  [29.3s]
+    lambda in [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857], flux sign -1  [29.3s]
+    lambda in [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053], flux sign -1  [29.3s]
+  F2 s=1/50 exterior t=7/16: p = 262; propagating 4 (right 1, left 3)  [31.9s]
+    lambda in [0.999872047595, 0.999872047596] + i [0.015996513300, 0.015996513301], flux sign -1  [31.9s]
+    lambda in [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194], flux sign +1  [31.9s]
+    lambda in [-0.458240224332, -0.458240224331] + i [0.888828384337, 0.888828384338], flux sign -1  [31.9s]
+    lambda in [-0.436472679623, -0.436472679622] + i [-0.899717511191, -0.899717511190], flux sign -1  [31.9s]
+PASS F2 s=1/50: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [31.9s]
+F2 s=1/50: propagated through 2 sites  [32.0s]
+PASS F2 s=1/50: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [32.4s]
+PASS F2 s=1/50: S^H S encloses the identity (5 x 5; max enclosure width 1.79e-57)  [32.5s]
+F2 s=1/50: sigma^2 in [0.96054134478794111197, 0.96054134478794111198] (width 2.31e-57)  [32.5s]
+F2 s=1/50: verdict TRANSMISSION_NONZERO_CERTIFIED  [32.5s]
+F2 s=1/30: ceil(log2 kappa) = 3; predeclared precision p = 262 bits; N = 0  [32.9s]
+  F2 s=1/30 interior t=5/16: p = 262; propagating 6 (right 2, left 4)  [35.6s]
+    lambda in [0.999020356430, 0.999020356431] + i [0.044252993535, 0.044252993536], flux sign -1  [35.6s]
+    lambda in [0.988552217306, 0.988552217307] + i [0.150879135930, 0.150879135931], flux sign -1  [35.6s]
+    lambda in [0.915380583412, 0.915380583413] + i [0.402589601842, 0.402589601843], flux sign +1  [35.6s]
+    lambda in [0.809781679133, 0.809781679134] + i [-0.586731311709, -0.586731311708], flux sign +1  [35.6s]
+    lambda in [-0.410552415378, -0.410552415377] + i [0.911836999812, 0.911836999813], flux sign -1  [35.6s]
+    lambda in [-0.377907656483, -0.377907656482] + i [-0.925843292989, -0.925843292988], flux sign -1  [35.6s]
+  F2 s=1/30 exterior t=7/16: p = 262; propagating 4 (right 1, left 3)  [38.2s]
+    lambda in [0.999644811406, 0.999644811407] + i [0.026650535231, 0.026650535232], flux sign -1  [38.2s]
+    lambda in [0.991374969239, 0.991374969240] + i [-0.131055981800, -0.131055981799], flux sign +1  [38.2s]
+    lambda in [-0.465454922229, -0.465454922228] + i [0.885071587710, 0.885071587711], flux sign -1  [38.2s]
+    lambda in [-0.429185571551, -0.429185571550] + i [-0.903216333540, -0.903216333539], flux sign -1  [38.2s]
+PASS F2 s=1/30: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [38.2s]
+F2 s=1/30: propagated through 2 sites  [38.3s]
+PASS F2 s=1/30: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [38.7s]
+PASS F2 s=1/30: S^H S encloses the identity (5 x 5; max enclosure width 1.93e-57)  [38.8s]
+F2 s=1/30: sigma^2 in [0.96378334428854538181, 0.96378334428854538182] (width 2.29e-57)  [38.9s]
+F2 s=1/30: verdict TRANSMISSION_NONZERO_CERTIFIED  [38.9s]
+PASS F2 cross-check: at s = 1/2 (z0) the new T enclosure overlaps the reviewed one  [38.9s]
+PASS F2 cross-check: at s = 1/50 (z1) the new sigma^2 enclosure overlaps the reviewed one  [38.9s]
+F3 s=1/50 L=4 N=32: ceil(log2 kappa) = 3; predeclared precision p = 646 bits; N = 32  [39.2s]
+  F3 s=1/50 L=4 N=32 interior t=5/16: p = 646; propagating 6 (right 2, left 4)  [48.5s]
+    lambda in [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306], flux sign -1  [48.5s]
+    lambda in [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948], flux sign -1  [48.5s]
+    lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376], flux sign +1  [48.5s]
+    lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438], flux sign +1  [48.5s]
+    lambda in [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857], flux sign -1  [48.5s]
+    lambda in [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053], flux sign -1  [48.5s]
+  F3 s=1/50 L=4 N=32 exterior t=7/16: p = 646; propagating 4 (right 1, left 3)  [57.9s]
+    lambda in [0.999872047595, 0.999872047596] + i [0.015996513300, 0.015996513301], flux sign -1  [57.9s]
+    lambda in [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194], flux sign +1  [57.9s]
+    lambda in [-0.458240224332, -0.458240224331] + i [0.888828384337, 0.888828384338], flux sign -1  [57.9s]
+    lambda in [-0.436472679623, -0.436472679622] + i [-0.899717511191, -0.899717511190], flux sign -1  [57.9s]
+PASS F3 s=1/50 L=4 N=32: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [57.9s]
+F3 s=1/50 L=4 N=32: propagated through 66 sites  [62.9s]
+PASS F3 s=1/50 L=4 N=32: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [63.9s]
+PASS F3 s=1/50 L=4 N=32: S^H S encloses the identity (5 x 5; max enclosure width 2.12e-57)  [64.1s]
+F3 s=1/50 L=4 N=32: sigma^2 in [0.97544889891764051019, 0.97544889891764051020] (width 2.3e-57)  [64.1s]
+F3 s=1/50 L=4 N=32: verdict TRANSMISSION_NONZERO_CERTIFIED  [64.1s]
+F3 s=1/50 L=16 N=128: ceil(log2 kappa) = 3; predeclared precision p = 1798 bits; N = 128  [64.4s]
+  F3 s=1/50 L=16 N=128 interior t=5/16: p = 1798; propagating 6 (right 2, left 4)  [114.0s]
+    lambda in [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306], flux sign -1  [114.0s]
+    lambda in [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948], flux sign -1  [114.0s]
+    lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376], flux sign +1  [114.0s]
+    lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438], flux sign +1  [114.0s]
+    lambda in [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857], flux sign -1  [114.0s]
+    lambda in [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053], flux sign -1  [114.0s]
+  F3 s=1/50 L=16 N=128 exterior t=7/16: p = 1798; propagating 4 (right 1, left 3)  [163.4s]
+    lambda in [0.999872047595, 0.999872047596] + i [0.015996513300, 0.015996513301], flux sign -1  [163.4s]
+    lambda in [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194], flux sign +1  [163.4s]
+    lambda in [-0.458240224332, -0.458240224331] + i [0.888828384337, 0.888828384338], flux sign -1  [163.4s]
+    lambda in [-0.436472679623, -0.436472679622] + i [-0.899717511191, -0.899717511190], flux sign -1  [163.4s]
+PASS F3 s=1/50 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [163.4s]
+F3 s=1/50 L=16 N=128: propagated through 258 sites  [212.0s]
+PASS F3 s=1/50 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [215.1s]
+PASS F3 s=1/50 L=16 N=128: S^H S encloses the identity (5 x 5; max enclosure width 2.33e-57)  [215.9s]
+F3 s=1/50 L=16 N=128: sigma^2 in [0.99945176479917278358, 0.99945176479917278359] (width 2.33e-57)  [216.0s]
+F3 s=1/50 L=16 N=128: verdict TRANSMISSION_NONZERO_CERTIFIED  [216.0s]
+F3 s=1/200 L=4 N=32: ceil(log2 kappa) = 3; predeclared precision p = 646 bits; N = 32  [216.3s]
+  F3 s=1/200 L=4 N=32 interior t=5/16: p = 646; propagating 6 (right 2, left 4)  [225.6s]
+    lambda in [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273], flux sign -1  [225.6s]
+    lambda in [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063], flux sign -1  [225.6s]
+    lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499], flux sign +1  [225.6s]
+    lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057], flux sign +1  [225.6s]
+    lambda in [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906], flux sign -1  [225.6s]
+    lambda in [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342], flux sign -1  [225.6s]
+  F3 s=1/200 L=4 N=32 exterior t=7/16: p = 646; propagating 4 (right 1, left 3)  [235.0s]
+    lambda in [0.999992000185, 0.999992000186] + i [0.003999945501, 0.003999945502], flux sign -1  [235.0s]
+    lambda in [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522], flux sign +1  [235.0s]
+    lambda in [-0.450096890269, -0.450096890268] + i [0.892979725061, 0.892979725062], flux sign -1  [235.0s]
+    lambda in [-0.444654221194, -0.444654221193] + i [-0.895702307452, -0.895702307451], flux sign -1  [235.0s]
+PASS F3 s=1/200 L=4 N=32: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [235.0s]
+F3 s=1/200 L=4 N=32: propagated through 66 sites  [240.0s]
+PASS F3 s=1/200 L=4 N=32: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [241.0s]
+PASS F3 s=1/200 L=4 N=32: S^H S encloses the identity (5 x 5; max enclosure width 1.87e-57)  [241.2s]
+F3 s=1/200 L=4 N=32: sigma^2 in [0.96466201721825333719, 0.96466201721825333720] (width 2.33e-57)  [241.2s]
+F3 s=1/200 L=4 N=32: verdict TRANSMISSION_NONZERO_CERTIFIED  [241.2s]
+F3 s=1/200 L=16 N=128: ceil(log2 kappa) = 3; predeclared precision p = 1798 bits; N = 128  [241.5s]
+  F3 s=1/200 L=16 N=128 interior t=5/16: p = 1798; propagating 6 (right 2, left 4)  [291.3s]
+    lambda in [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273], flux sign -1  [291.3s]
+    lambda in [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063], flux sign -1  [291.3s]
+    lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499], flux sign +1  [291.3s]
+    lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057], flux sign +1  [291.3s]
+    lambda in [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906], flux sign -1  [291.3s]
+    lambda in [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342], flux sign -1  [291.3s]
+  F3 s=1/200 L=16 N=128 exterior t=7/16: p = 1798; propagating 4 (right 1, left 3)  [340.5s]
+    lambda in [0.999992000185, 0.999992000186] + i [0.003999945501, 0.003999945502], flux sign -1  [340.5s]
+    lambda in [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522], flux sign +1  [340.5s]
+    lambda in [-0.450096890269, -0.450096890268] + i [0.892979725061, 0.892979725062], flux sign -1  [340.5s]
+    lambda in [-0.444654221194, -0.444654221193] + i [-0.895702307452, -0.895702307451], flux sign -1  [340.5s]
+PASS F3 s=1/200 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [340.5s]
+F3 s=1/200 L=16 N=128: propagated through 258 sites  [388.5s]
+PASS F3 s=1/200 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [391.6s]
+PASS F3 s=1/200 L=16 N=128: S^H S encloses the identity (5 x 5; max enclosure width 2.26e-57)  [392.5s]
+F3 s=1/200 L=16 N=128: sigma^2 in [0.98718684047838943299, 0.98718684047838943300] (width 2.37e-57)  [392.5s]
+F3 s=1/200 L=16 N=128: verdict TRANSMISSION_NONZERO_CERTIFIED  [392.5s]
+
+SUMMARY
+F1: OPEN_AFTER_DISCRIMINANT_ANALYSIS; y* = (Re z_c*)^2 in [0.992028890462085358141533820605, 0.992028890462085358141533820606]
+F1 s=1/4: I; T0-type discriminant test: CONNECTED
+F1 s=1/2: I; T0-type discriminant test: CONNECTED
+F1 s=3/4: I; T0-type discriminant test: CONNECTED
+F1 s=1/200: horizon arc; T0-type discriminant test: not certified connected
+F1 s=1/50: horizon arc; T0-type discriminant test: not certified connected
+F1 s=1/30: horizon arc; T0-type discriminant test: not certified connected
+F2 s=1/4: TRANSMISSION_NONZERO_CERTIFIED; T in [0.99164648646525974543, 0.99164648646525974544]; p = 262
+F2 s=1/2: TRANSMISSION_NONZERO_CERTIFIED; T in [0.99571933684127928475, 0.99571933684127928476]; p = 262
+F2 s=3/4: TRANSMISSION_NONZERO_CERTIFIED; T in [0.99663415347988300948, 0.99663415347988300949]; p = 262
+F2 s=1/200: TRANSMISSION_NONZERO_CERTIFIED; sigma^2 in [0.95917694282960613905, 0.95917694282960613906]; p = 262
+F2 s=1/50: TRANSMISSION_NONZERO_CERTIFIED; sigma^2 in [0.96054134478794111197, 0.96054134478794111198]; p = 262
+F2 s=1/30: TRANSMISSION_NONZERO_CERTIFIED; sigma^2 in [0.96378334428854538181, 0.96378334428854538182]; p = 262
+F3 s=1/50 L=4: TRANSMISSION_NONZERO_CERTIFIED; sigma^2 in [0.97544889891764051019, 0.97544889891764051020]; p = 646
+F3 s=1/50 L=16: TRANSMISSION_NONZERO_CERTIFIED; sigma^2 in [0.99945176479917278358, 0.99945176479917278359]; p = 1798
+F3 s=1/200 L=4: TRANSMISSION_NONZERO_CERTIFIED; sigma^2 in [0.96466201721825333719, 0.96466201721825333720]; p = 646
+F3 s=1/200 L=16: TRANSMISSION_NONZERO_CERTIFIED; sigma^2 in [0.98718684047838943299, 0.98718684047838943300]; p = 1798
+Line: suppression condition (sigma^2(L=16) < sharp and < sigma^2(L=4) at both points): False
+Line: abandonment condition (sigma^2(L=16) >= 1/2 at both points): True
+Line verdict candidate: LEAKAGE_NOT_SUPPRESSED
+PASS summary written  [392.5s]
+43/43 frequency/finite-L checks PASS (after 61 + 53 + 33 imported checks)
+PASS H imported frequency/finite-L verifier has the reviewed SHA256 (checked before import); 61 + 53 + 33 + 43 imported checks passed  [0.0s]
+Running 6 cases on 4 worker process(es) (fork)
+R s=1/200 L=4 N=32: ceil(log2 kappa) = 3; predeclared precision p = 646 bits; N = 32  [392.8s]
+R s=1/200 L=16 N=128: ceil(log2 kappa) = 3; predeclared precision p = 1798 bits; N = 128  [392.8s]
+R s=1/50 L=16 N=128: ceil(log2 kappa) = 3; predeclared precision p = 1798 bits; N = 128  [392.9s]
+R s=1/50 L=4 N=32: ceil(log2 kappa) = 3; predeclared precision p = 646 bits; N = 32  [392.9s]
+  R s=1/50 L=4 N=32 interior t=5/16: p = 646; propagating 6 (right 2, left 4)  [402.4s]
+    lambda in [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306], flux sign -1  [402.4s]
+    lambda in [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948], flux sign -1  [402.4s]
+    lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376], flux sign +1  [402.4s]
+    lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438], flux sign +1  [402.4s]
+    lambda in [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857], flux sign -1  [402.4s]
+    lambda in [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053], flux sign -1  [402.4s]
+  R s=1/200 L=4 N=32 interior t=5/16: p = 646; propagating 6 (right 2, left 4)  [402.4s]
+    lambda in [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273], flux sign -1  [402.4s]
+    lambda in [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063], flux sign -1  [402.4s]
+    lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499], flux sign +1  [402.4s]
+    lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057], flux sign +1  [402.4s]
+    lambda in [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906], flux sign -1  [402.4s]
+    lambda in [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342], flux sign -1  [402.4s]
+  R s=1/50 L=4 N=32 exterior t=7/16: p = 646; propagating 4 (right 1, left 3)  [411.9s]
+    lambda in [0.999872047595, 0.999872047596] + i [0.015996513300, 0.015996513301], flux sign -1  [411.9s]
+    lambda in [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194], flux sign +1  [411.9s]
+    lambda in [-0.458240224332, -0.458240224331] + i [0.888828384337, 0.888828384338], flux sign -1  [411.9s]
+    lambda in [-0.436472679623, -0.436472679622] + i [-0.899717511191, -0.899717511190], flux sign -1  [411.9s]
+  R s=1/200 L=4 N=32 exterior t=7/16: p = 646; propagating 4 (right 1, left 3)  [411.9s]
+    lambda in [0.999992000185, 0.999992000186] + i [0.003999945501, 0.003999945502], flux sign -1  [411.9s]
+    lambda in [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522], flux sign +1  [411.9s]
+    lambda in [-0.450096890269, -0.450096890268] + i [0.892979725061, 0.892979725062], flux sign -1  [411.9s]
+    lambda in [-0.444654221194, -0.444654221193] + i [-0.895702307452, -0.895702307451], flux sign -1  [411.9s]
+R s=1/200 L=4 N=32: done  [419.0s]
+R s=1/50 L=4 N=32: done  [419.0s]
+R s=1/200 sharp N=0: ceil(log2 kappa) = 3; predeclared precision p = 262 bits; N = 0  [419.3s]
+R s=1/50 sharp N=0: ceil(log2 kappa) = 3; predeclared precision p = 262 bits; N = 0  [419.3s]
+  R s=1/200 sharp N=0 interior t=5/16: p = 262; propagating 6 (right 2, left 4)  [422.1s]
+    lambda in [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273], flux sign -1  [422.1s]
+    lambda in [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063], flux sign -1  [422.1s]
+    lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499], flux sign +1  [422.1s]
+    lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057], flux sign +1  [422.1s]
+    lambda in [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906], flux sign -1  [422.1s]
+    lambda in [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342], flux sign -1  [422.1s]
+  R s=1/50 sharp N=0 interior t=5/16: p = 262; propagating 6 (right 2, left 4)  [422.2s]
+    lambda in [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306], flux sign -1  [422.2s]
+    lambda in [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948], flux sign -1  [422.2s]
+    lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376], flux sign +1  [422.2s]
+    lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438], flux sign +1  [422.2s]
+    lambda in [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857], flux sign -1  [422.2s]
+    lambda in [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053], flux sign -1  [422.2s]
+  R s=1/200 sharp N=0 exterior t=7/16: p = 262; propagating 4 (right 1, left 3)  [425.0s]
+    lambda in [0.999992000185, 0.999992000186] + i [0.003999945501, 0.003999945502], flux sign -1  [425.0s]
+    lambda in [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522], flux sign +1  [425.0s]
+    lambda in [-0.450096890269, -0.450096890268] + i [0.892979725061, 0.892979725062], flux sign -1  [425.0s]
+    lambda in [-0.444654221194, -0.444654221193] + i [-0.895702307452, -0.895702307451], flux sign -1  [425.0s]
+  R s=1/50 sharp N=0 exterior t=7/16: p = 262; propagating 4 (right 1, left 3)  [425.0s]
+    lambda in [0.999872047595, 0.999872047596] + i [0.015996513300, 0.015996513301], flux sign -1  [425.0s]
+    lambda in [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194], flux sign +1  [425.0s]
+    lambda in [-0.458240224332, -0.458240224331] + i [0.888828384337, 0.888828384338], flux sign -1  [425.0s]
+    lambda in [-0.436472679623, -0.436472679622] + i [-0.899717511191, -0.899717511190], flux sign -1  [425.0s]
+R s=1/200 sharp N=0: done  [425.7s]
+R s=1/50 sharp N=0: done  [425.7s]
+  R s=1/200 L=16 N=128 interior t=5/16: p = 1798; propagating 6 (right 2, left 4)  [444.3s]
+    lambda in [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273], flux sign -1  [444.3s]
+    lambda in [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063], flux sign -1  [444.3s]
+    lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499], flux sign +1  [444.3s]
+    lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057], flux sign +1  [444.3s]
+    lambda in [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906], flux sign -1  [444.3s]
+    lambda in [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342], flux sign -1  [444.3s]
+  R s=1/50 L=16 N=128 interior t=5/16: p = 1798; propagating 6 (right 2, left 4)  [444.3s]
+    lambda in [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306], flux sign -1  [444.3s]
+    lambda in [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948], flux sign -1  [444.3s]
+    lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376], flux sign +1  [444.3s]
+    lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438], flux sign +1  [444.3s]
+    lambda in [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857], flux sign -1  [444.3s]
+    lambda in [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053], flux sign -1  [444.3s]
+  R s=1/200 L=16 N=128 exterior t=7/16: p = 1798; propagating 4 (right 1, left 3)  [493.8s]
+    lambda in [0.999992000185, 0.999992000186] + i [0.003999945501, 0.003999945502], flux sign -1  [493.8s]
+    lambda in [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522], flux sign +1  [493.8s]
+    lambda in [-0.450096890269, -0.450096890268] + i [0.892979725061, 0.892979725062], flux sign -1  [493.8s]
+    lambda in [-0.444654221194, -0.444654221193] + i [-0.895702307452, -0.895702307451], flux sign -1  [493.8s]
+  R s=1/50 L=16 N=128 exterior t=7/16: p = 1798; propagating 4 (right 1, left 3)  [493.8s]
+    lambda in [0.999872047595, 0.999872047596] + i [0.015996513300, 0.015996513301], flux sign -1  [493.8s]
+    lambda in [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194], flux sign +1  [493.8s]
+    lambda in [-0.458240224332, -0.458240224331] + i [0.888828384337, 0.888828384338], flux sign -1  [493.8s]
+    lambda in [-0.436472679623, -0.436472679622] + i [-0.899717511191, -0.899717511190], flux sign -1  [493.8s]
+R s=1/200 L=16 N=128: done  [546.4s]
+R s=1/50 L=16 N=128: done  [546.5s]
+PASS R s=1/50 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [154.0s]
+PASS R s=1/50 L=16 N=128: R1 turning branch identified by box sign (one right-mover with k in (-pi/2, 0), lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376]; one with k in (0, pi/2), lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438])  [154.0s]
+PASS R s=1/50 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [154.0s]
+PASS R s=1/50 L=16 N=128: S^H S encloses the identity  [154.0s]
+PASS R s=1/50 L=16 N=128: R2 turning-branch column of |S|^2 sums to an enclosure of 1  [154.0s]
+R s=1/50 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+    [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306]  [neg]  [0.00287695254821089067, 0.00287695254821089068]
+    [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948]  [neg]  [0.99681055856745157451, 0.99681055856745157452]
+    [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857]  [None]  [0.00000000000000033624, 0.00000000000000033625]
+    [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053]  [None]  [0.00000000000000015246, 0.00000000000000015247]
+    [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194]  [pos]  [0.00031248888433704610, 0.00031248888433704611]
+R s=1/50 L=16 N=128: T_ret in [0.00031248888433704610, 0.00031248888433704611]; T_cont in [0.99913927591483573748, 0.99913927591483573749]; p = 1798
+PASS R s=1/50 L=16 N=128: R3 T_ret + T_cont overlaps the imported sigma^2 enclosure of the same case  [154.0s]
+R s=1/50 L=16 N=128: verdict TRANSMISSION_NONZERO_CERTIFIED
+PASS R s=1/200 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [154.0s]
+PASS R s=1/200 L=16 N=128: R1 turning branch identified by box sign (one right-mover with k in (-pi/2, 0), lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499]; one with k in (0, pi/2), lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057])  [154.0s]
+PASS R s=1/200 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [154.0s]
+PASS R s=1/200 L=16 N=128: S^H S encloses the identity  [154.0s]
+PASS R s=1/200 L=16 N=128: R2 turning-branch column of |S|^2 sums to an enclosure of 1  [154.0s]
+R s=1/200 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+    [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273]  [neg]  [0.01345336115078934319, 0.01345336115078934320]
+    [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063]  [neg]  [0.86756061950447302276, 0.86756061950447302277]
+    [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906]  [None]  [0.00000000000000000091, 0.00000000000000000092]
+    [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342]  [None]  [0.00000000000000005175, 0.00000000000000005176]
+    [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522]  [pos]  [0.11898601934473758136, 0.11898601934473758137]
+R s=1/200 L=16 N=128: T_ret in [0.11898601934473758136, 0.11898601934473758137]; T_cont in [0.86820082113365185162, 0.86820082113365185163]; p = 1798
+PASS R s=1/200 L=16 N=128: R3 T_ret + T_cont overlaps the imported sigma^2 enclosure of the same case  [154.0s]
+R s=1/200 L=16 N=128: verdict TRANSMISSION_NONZERO_CERTIFIED
+PASS R s=1/50 L=4 N=32: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [154.0s]
+PASS R s=1/50 L=4 N=32: R1 turning branch identified by box sign (one right-mover with k in (-pi/2, 0), lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376]; one with k in (0, pi/2), lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438])  [154.0s]
+PASS R s=1/50 L=4 N=32: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [154.0s]
+PASS R s=1/50 L=4 N=32: S^H S encloses the identity  [154.0s]
+PASS R s=1/50 L=4 N=32: R2 turning-branch column of |S|^2 sums to an enclosure of 1  [154.0s]
+R s=1/50 L=4 N=32: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+    [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306]  [neg]  [0.02226600960924698581, 0.02226600960924698582]
+    [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948]  [neg]  [0.84645468803116892993, 0.84645468803116892994]
+    [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857]  [None]  [0.00000000234186160949, 0.00000000234186160950]
+    [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053]  [None]  [0.00000000000080679565, 0.00000000000080679566]
+    [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194]  [pos]  [0.13127930001691567909, 0.13127930001691567910]
+R s=1/50 L=4 N=32: T_ret in [0.13127930001691567909, 0.13127930001691567910]; T_cont in [0.84416959890072483109, 0.84416959890072483110]; p = 646
+PASS R s=1/50 L=4 N=32: R3 T_ret + T_cont overlaps the imported sigma^2 enclosure of the same case  [154.0s]
+R s=1/50 L=4 N=32: verdict TRANSMISSION_NONZERO_CERTIFIED
+PASS R s=1/200 L=4 N=32: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [154.0s]
+PASS R s=1/200 L=4 N=32: R1 turning branch identified by box sign (one right-mover with k in (-pi/2, 0), lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499]; one with k in (0, pi/2), lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057])  [154.0s]
+PASS R s=1/200 L=4 N=32: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [154.0s]
+PASS R s=1/200 L=4 N=32: S^H S encloses the identity  [154.0s]
+PASS R s=1/200 L=4 N=32: R2 turning-branch column of |S|^2 sums to an enclosure of 1  [154.0s]
+R s=1/200 L=4 N=32: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+    [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273]  [neg]  [0.02175405864331021527, 0.02175405864331021528]
+    [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063]  [neg]  [0.60427252805457740531, 0.60427252805457740532]
+    [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906]  [None]  [0.00000000438143693324, 0.00000000438143693325]
+    [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342]  [None]  [0.00000000000076096498, 0.00000000000076096499]
+    [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522]  [pos]  [0.37397340891991448117, 0.37397340891991448118]
+R s=1/200 L=4 N=32: T_ret in [0.37397340891991448117, 0.37397340891991448118]; T_cont in [0.59068860829833885602, 0.59068860829833885603]; p = 646
+PASS R s=1/200 L=4 N=32: R3 T_ret + T_cont overlaps the imported sigma^2 enclosure of the same case  [154.1s]
+R s=1/200 L=4 N=32: verdict TRANSMISSION_NONZERO_CERTIFIED
+PASS R s=1/50 sharp N=0: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [154.1s]
+PASS R s=1/50 sharp N=0: R1 turning branch identified by box sign (one right-mover with k in (-pi/2, 0), lambda in [0.888943690268, 0.888943690269] + i [0.458016501375, 0.458016501376]; one with k in (0, pi/2), lambda in [0.827759903595, 0.827759903596] + i [-0.561082473439, -0.561082473438])  [154.1s]
+PASS R s=1/50 sharp N=0: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [154.1s]
+PASS R s=1/50 sharp N=0: S^H S encloses the identity  [154.1s]
+PASS R s=1/50 sharp N=0: R2 turning-branch column of |S|^2 sums to an enclosure of 1  [154.1s]
+R s=1/50 sharp N=0: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+    [0.999645494851, 0.999645494852] + i [0.026624887305, 0.026624887306]  [neg]  [0.03414044197627763751, 0.03414044197627763752]
+    [0.996546527360, 0.996546527361] + i [0.083036249947, 0.083036249948]  [neg]  [0.60537174414796795540, 0.60537174414796795541]
+    [-0.404042802565, -0.404042802564] + i [0.914740079856, 0.914740079857]  [None]  [0.00293520386787817363, 0.00293520386787817364]
+    [-0.384450981839, -0.384450981838] + i [-0.923145407054, -0.923145407053]  [None]  [0.00029158932917298129, 0.00029158932917298130]
+    [0.996835421478, 0.996835421479] + i [-0.079493034195, -0.079493034194]  [pos]  [0.35726102067870325215, 0.35726102067870325216]
+R s=1/50 sharp N=0: T_ret in [0.35726102067870325215, 0.35726102067870325216]; T_cont in [0.60328032410923785982, 0.60328032410923785983]; p = 262
+PASS R s=1/50 sharp N=0: R3 T_ret + T_cont overlaps the imported sigma^2 enclosure of the same case  [154.1s]
+PASS R s=1/50 sharp N=0: R3 at sharp z1, T_ret overlaps the reviewed |t_2|^2 of the transmission verifier  [155.5s]
+R s=1/50 sharp N=0: verdict TRANSMISSION_NONZERO_CERTIFIED
+PASS R s=1/200 sharp N=0: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L; reviewed counts)  [155.5s]
+PASS R s=1/200 sharp N=0: R1 turning branch identified by box sign (one right-mover with k in (-pi/2, 0), lambda in [0.864146413416, 0.864146413417] + i [0.503240475498, 0.503240475499]; one with k in (0, pi/2), lambda in [0.849057157385, 0.849057157386] + i [-0.528300997058, -0.528300997057])  [155.5s]
+PASS R s=1/200 sharp N=0: matching matrix certified invertible (||I - R A D|| <= 0.000001 < 1/2)  [155.5s]
+PASS R s=1/200 sharp N=0: S^H S encloses the identity  [155.5s]
+PASS R s=1/200 sharp N=0: R2 turning-branch column of |S|^2 sums to an enclosure of 1  [155.5s]
+R s=1/200 sharp N=0: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+    [0.999977781906, 0.999977781907] + i [0.006666010272, 0.006666010273]  [neg]  [0.02495638264649810833, 0.02495638264649810834]
+    [0.999799110417, 0.999799110418] + i [0.020043423062, 0.020043423063]  [neg]  [0.52115589587206878542, 0.52115589587206878543]
+    [-0.396705092141, -0.396705092140] + i [0.917946114905, 0.917946114906]  [None]  [0.00330385421039279748, 0.00330385421039279749]
+    [-0.391806481902, -0.391806481901] + i [-0.920047651343, -0.920047651342]  [None]  [0.00038400977621410660, 0.00038400977621410661]
+    [0.999800141065, 0.999800141066] + i [-0.019991946523, -0.019991946522]  [pos]  [0.45019985749482620215, 0.45019985749482620216]
+R s=1/200 sharp N=0: T_ret in [0.45019985749482620215, 0.45019985749482620216]; T_cont in [0.50897708533477993690, 0.50897708533477993691]; p = 262
+PASS R s=1/200 sharp N=0: R3 T_ret + T_cont overlaps the imported sigma^2 enclosure of the same case  [155.5s]
+R s=1/200 sharp N=0: verdict TRANSMISSION_NONZERO_CERTIFIED
+
+SUMMARY
+s=1/50 sharp: TRANSMISSION_NONZERO_CERTIFIED; T_ret in [0.35726102067870325215, 0.35726102067870325216]; T_cont in [0.60328032410923785982, 0.60328032410923785983]; p = 262
+s=1/50 L=4: TRANSMISSION_NONZERO_CERTIFIED; T_ret in [0.13127930001691567909, 0.13127930001691567910]; T_cont in [0.84416959890072483109, 0.84416959890072483110]; p = 646
+s=1/50 L=16: TRANSMISSION_NONZERO_CERTIFIED; T_ret in [0.00031248888433704610, 0.00031248888433704611]; T_cont in [0.99913927591483573748, 0.99913927591483573749]; p = 1798
+s=1/200 sharp: TRANSMISSION_NONZERO_CERTIFIED; T_ret in [0.45019985749482620215, 0.45019985749482620216]; T_cont in [0.50897708533477993690, 0.50897708533477993691]; p = 262
+s=1/200 L=4: TRANSMISSION_NONZERO_CERTIFIED; T_ret in [0.37397340891991448117, 0.37397340891991448118]; T_cont in [0.59068860829833885602, 0.59068860829833885603]; p = 646
+s=1/200 L=16: TRANSMISSION_NONZERO_CERTIFIED; T_ret in [0.11898601934473758136, 0.11898601934473758137]; T_cont in [0.86820082113365185162, 0.86820082113365185163]; p = 1798
+Line: strict decrease sharp > L=4 > L=16 at both points: True
+Line: abandonment condition T_ret(L=16) >= T_ret(sharp) at both points: False
+Line verdict candidate: T_RET_DECREASING_AT_COMPUTED_L
+38 turning-branch checks PASS (after 61 + 53 + 33 + 43 imported checks)
+# exit code 0, finished 2026-11-27T10:27:11Z
+
+=== DOCUMENT 6: compare_turning_branch_heuristic.py ===
+
+"""Orientation only (not a certificate): compare the certified turning-branch
+transmissions T_ret of reports/2026-11-27--dispersive-horizon-turning-branch-run-1.txt
+with the charter heuristic of theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md,
+
+    X(s, L) = 1 / (1 + exp(2 pi omega / alpha)),  alpha = 1/(2L),  omega = 2 atan(s),
+
+i.e. X = 1/(1 + exp(4 pi omega L)) (Sabsovich et al. form with the author's
+identification alpha = |dv/dx| at the horizon; [UNVERIFIED]).
+
+Reads the T_ret enclosures from the recorded log (after a SHA256 check) and
+evaluates X with mpmath at 40 digits. Floating point here is only for the
+comparison; no verdict depends on it.
+"""
+import hashlib
+import pathlib
+import re
+from fractions import Fraction as Fr
+
+import mpmath as mp
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+LOG = ROOT / 'reports' / '2026-11-27--dispersive-horizon-turning-branch-run-1.txt'
+
+data = LOG.read_bytes()
+sha = hashlib.sha256(data).hexdigest()
+print(f'log {LOG.name} sha256 {sha}')
+
+mp.mp.dps = 40
+pat = re.compile(r'^s=(\d+)/(\d+) L=(\d+): TRANSMISSION_NONZERO_CERTIFIED; T_ret in \[([0-9.]+), ([0-9.]+)\]')
+rows = []
+for line in data.decode().splitlines():
+    m = pat.match(line)
+    if m:
+        s = Fr(int(m.group(1)), int(m.group(2)))
+        L = int(m.group(3))
+        lo, hi = Fr(m.group(4)), Fr(m.group(5))
+        rows.append((s, L, lo, hi))
+assert len(rows) == 4, f'expected 4 finite-L summary lines, found {len(rows)}'
+
+print(f'{"s":>6} {"L":>3} {"heuristic X":>14} {"T_ret (log lower bound)":>24} {"T_ret / X":>10}')
+for s, L, lo, hi in rows:
+    om = 2 * mp.atan(mp.mpf(s.numerator) / s.denominator)
+    X = 1 / (1 + mp.exp(4 * mp.pi * om * L))
+    T = mp.mpf(lo.numerator) / lo.denominator
+    print(f'{str(s):>6} {L:>3} {mp.nstr(X, 8):>14} {mp.nstr(T, 8):>24} {mp.nstr(T / X, 5):>10}')
+
+=== DOCUMENT 7: 2026-11-27--dispersive-horizon-turning-branch-heuristic.txt ===
+
+# Output of scripts/compare_turning_branch_heuristic.py, commit 71488b0, 2026-11-27T10:47:28Z
+log 2026-11-27--dispersive-horizon-turning-branch-run-1.txt sha256 797cdda126fce0c5134d4b93bc5890e1830a8b80d2f3e699911db753e3452c1e
+     s   L    heuristic X  T_ret (log lower bound)  T_ret / X
+  1/50   4     0.11812038                0.1312793     1.1114
+  1/50  16  0.00032175283            0.00031248888    0.97121
+ 1/200   4     0.37691796               0.37397341    0.99219
+ 1/200  16     0.11809421               0.11898602     1.0076
+# exit code 0
