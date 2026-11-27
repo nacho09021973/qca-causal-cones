@@ -158,6 +158,11 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
       `T_RET_DECREASING_AT_COMPUTED_L`.** The charter is closed, with a
       balance in the report.
     - Not promoted. NOVELTY = OPEN.
+  - Merged into `main` 2026-11-27 (PR #32, `3774c0f`; user decision). Merging
+    is not promotion; no promotion yet (user «TODAVÍA NO»).
+  - Authorized: drafting an exploratory heuristic-prediction charter. Draft:
+    `reports/2026-11-27--dispersive-horizon-heuristic-prediction-charter-draft.md`
+    (not frozen). User answers to Q1–Q5 are pending.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
