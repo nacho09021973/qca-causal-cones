@@ -129,8 +129,15 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   - Authorized: drafting a `POST_RESULTS_EXPLORATORY` charter for
     T_ret = |S_{ext R, int R(k<0)}|². Freezing, execution and promotion are
     not authorized.
-    Draft: `reports/2026-11-27--dispersive-horizon-turning-branch-charter-draft.md`
-    (not frozen). User answers to Q1–Q4 are pending.
+- **Turning-branch charter frozen 2026-11-27** (`POST_RESULTS_EXPLORATORY`):
+  `theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md`, moved from the draft
+  `8778db5`. User decision «Q1-Q4 como recomiendas, congela el contrato».
+  - T_ret at s = 1/50 and 1/200: sharp, L = 4 and L = 16.
+  - The branch is identified by the k sector.
+  - Line verdicts: `T_RET_DECREASING_AT_COMPUTED_L` /
+    `T_RET_NOT_DECREASING` (the abandonment condition) / `MIXED`.
+  - Review: Astra 6.2. Status OPEN. Execution, review sending and promotion
+    each need separate authorization.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).

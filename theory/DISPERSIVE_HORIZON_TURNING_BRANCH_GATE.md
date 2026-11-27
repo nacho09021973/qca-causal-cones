@@ -1,11 +1,11 @@
-# Dispersive-horizon turning-branch transmission gate — DRAFT (POST_RESULTS_EXPLORATORY)
+# Dispersive-horizon turning-branch transmission gate (POST_RESULTS_EXPLORATORY)
 
-2026-11-27. Author: Claude Code (Claude Opus 5.5). **DRAFT, not frozen.**
+2026-11-27. Author: Claude Code (Claude Opus 5.5). Initial status **OPEN**.
 
-- It is kept in `reports/` so that committing it does not freeze it. It is
-  frozen by a later commit, as
-  `theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md`, after the user answers
-  the questions at the end. Initial status after freezing: **OPEN**.
+- Frozen by the commit that moves this file here from
+  `reports/2026-11-27--dispersive-horizon-turning-branch-charter-draft.md`
+  (draft committed at `8778db5`), on branch
+  `research/dispersive-horizon-channels`, before any execution.
 - **Label: `POST_RESULTS_EXPLORATORY`.** The question was formulated after
   seeing the frequency/finite-L results and their review. Nothing in it can
   retroactively change the verdicts of that charter.
@@ -15,8 +15,10 @@
 - **Drafting.** User decision, 2026-11-27: «mi decisión es SÍ a las dos
   propuestas … autorizo, como siguiente paso de investigación, preparar el
   nuevo contrato exploratorio».
-- **Not authorized:** freezing, execution, review sending and promotion.
-  Each needs a separate user decision.
+- **Freezing.** User decision, 2026-11-27: «Q1-Q4 como recomiendas,
+  congela el contrato». See "User decisions" below.
+- **Not authorized:** execution, review sending and promotion. Each needs a
+  separate user decision. The review model is fixed (Q4).
 - **Budget:** one contract. A balance is mandatory on closure. No further
   contract follows automatically.
 
@@ -145,7 +147,17 @@ not establish a law in L.
 - Any change to the verdicts of the closed frequency/finite-L charter.
 - Novelty (OPEN).
 
-## Questions for the user (before freezing)
+## User decisions (2026-11-27)
+
+«Q1-Q4 como recomiendas»:
+- **Q1:** s = 1/50 and 1/200; sharp, L = 4 (N = 32) and L = 16 (N = 128).
+  No new points.
+- **Q2:** the full turning-branch column and T_cont are reported as data;
+  only T_ret is decided.
+- **Q3:** line thresholds as written, with no absolute "barrier" threshold.
+- **Q4:** independent review by Astra 6.2 (`gpt-6.2-astra`).
+
+## Original questions as posed
 
 - **Q1. Points and profiles.** s = 1/50 and 1/200; sharp, L = 4 (N = 32),
   L = 16 (N = 128), as in the closed charter. Recommendation: as proposed,
