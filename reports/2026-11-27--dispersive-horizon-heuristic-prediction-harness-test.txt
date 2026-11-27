@@ -1,0 +1,323 @@
+# Output of scripts/test_heuristic_prediction_harness.py (uncommitted at run time), sha256 a62561be2af4757b96710aa9f84be2049a2b6fc0b4f658bceda64e28dc17de58, 2026-11-27T12:54:21Z
+verifier verify_dispersive_horizon_heuristic_prediction.py sha256 a98bbd6fa344af07688c0fddf787e8e062854b4f2cca766807ca1e9b494086c9
+calibration log 2026-11-27--dispersive-horizon-turning-branch-run-1.txt sha256 797cdda126fce0c5134d4b93bc5890e1830a8b80d2f3e699911db753e3452c1e
+verifier top-level nodes: 85; kept 64; skipped 21:
+    line 87: h_tb = hashlib.sha256((HERE / 'verify_dispersive_horizon_turning_branch.py').read_bytes())
+    line 88: assert h_tb == SHA_TB, 'imported turning-branch verifier bytes changed'
+    line 90: spec = importlib.util.spec_from_file_location('turnbr', HERE / 'verify_dispersive_horizon_
+    line 91: tb = importlib.util.module_from_spec(spec)
+    line 95: sys.modules['turnbr'] = tb
+    line 96: spec.loader.exec_module(tb)
+    line 97: fr, tr, ch, rv = tb.fr, tb.tr, tb.ch, tb.rv
+    line 98: RI = tb.RI
+    line 99: assert (len(rv.checks), len(ch.checks), len(tr.checks), len(fr.checks), len(tb.checks)) ==
+    line 139: def r0(sv):
+    line 153: for sv in (R(1, 50), R(1, 200)):
+    line 158: R0_OK = {}
+    line 159: for sv in (R(1, 80), R(1, 40)):
+    line 243: tasks = []
+    line 244: for pid, sv, Lv, N in [CONTROL] + sorted(POINTS, key=lambda t: -t[3]):    # longest first
+    line 247: nworkers = min(4, os.cpu_count() or 1)
+    line 248: print(f'Running {len(tasks)} cases on {nworkers} worker process(es) (fork)', flush=True)
+    line 249: ctx = multiprocessing.get_context('fork')
+    line 250: with ctx.Pool(nworkers) as pool:
+    line 252: OUT = {}
+    line 253: for (sv, Lv, N, label), out in zip(tasks, results):
+
+===== scenario S1 (SYNTHETIC T_ret except calibration) =====
+  PASS H imported turning-branch verifier has the reviewed SHA256 (checked before import); 61 + 53 + 33 + 43 + 38 imported checks passed  [0.0s]
+  PASS H declared design: Q1-Q4 = (1/80, 8), (1/40, 8), (1/80, 16), (1/40, 16) with N = 8L; control Q4' = (1/40, 16), N = 192  [0.0s]
+  PASS X pi enclosure lies inside the decimal bracket (3.14159265358979323846264, 3.14159265358979323846265) and has width < 2^-300  [0.0s]
+  Q1 s = 1/80 L = 8: omega in [0.024998698038723356903333, 0.024998698038723356903334]; 4 pi omega L in [2.51314323544841185985, 2.51314323544841185986]; X in [0.07494191138617357591, 0.07494191138617357592]
+  PASS Q1: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 749419/10000000 to relative 1e-5  [0.0s]
+  Q2 s = 1/40 L = 8: omega in [0.049989587237840319003434, 0.049989587237840319003435]; 4 pi omega L in [5.02550144071632737007, 5.02550144071632737008]; X in [0.00652543112251145585, 0.00652543112251145586]
+  PASS Q2: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 652543/100000000 to relative 1e-5  [0.0s]
+  Q3 s = 1/80 L = 16: omega in [0.024998698038723356903333, 0.024998698038723356903334]; 4 pi omega L in [5.02628647089682371971, 5.02628647089682371972]; X in [0.00652034386073491778, 0.00652034386073491779]
+  PASS Q3: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 326017/50000000 to relative 1e-5  [0.0s]
+  Q4 s = 1/40 L = 16: omega in [0.049989587237840319003434, 0.049989587237840319003435]; 4 pi omega L in [10.05100288143265474014, 10.05100288143265474015]; X in [0.00004314059939307691, 0.00004314059939307692]
+  PASS Q4: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 215703/5000000000 to relative 1e-5  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: S^H S encloses the identity  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q1 s=1/80 L=8 N=64: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q1 s=1/80 L=8 N=64: T_ret in [0.074941911386173575913630, 0.074941911461115487299805]; T_cont in [0.92405808853888451270, 0.92405808861382642409]; sigma^2 = T_ret + T_cont in [0.99899999992505808861, 0.99900000007494191139]
+  Q1: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q2 s=1/40 L=8 N=64: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: S^H S encloses the identity  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q2 s=1/40 L=8 N=64: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q2 s=1/40 L=8 N=64: T_ret in [0.006525431122511455854570, 0.006525431129036886977083]; T_cont in [0.99247456887096311302, 0.99247456887748854415]; sigma^2 = T_ret + T_cont in [0.99899999999347456887, 0.99900000000652543113]
+  Q2: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q3 s=1/80 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: S^H S encloses the identity  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q3 s=1/80 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q3 s=1/80 L=16 N=128: T_ret in [0.006650750737949616144105, 0.006650750744600366882056]; T_cont in [0.99234924925539963311, 0.99234924926205038386]; sigma^2 = T_ret + T_cont in [0.99899999999334924926, 0.99900000000665075074]
+  Q3: rho = T_ret / X in [1.019999999999, 1.020000001020] -> WITHIN_TOLERANCE
+  PASS Q4 s=1/40 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: S^H S encloses the identity  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q4 s=1/40 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q4 s=1/40 L=16 N=128: T_ret in [0.000040983569423423071451, 0.000040983569464406640875]; T_cont in [0.99895901643053559335, 0.99895901643057657693]; sigma^2 = T_ret + T_cont in [0.99899999999995901643, 0.99900000000004098357]
+  Q4: rho = T_ret / X in [0.949999999999, 0.950000000950] -> WITHIN_TOLERANCE
+  PASS Q4p s=1/40 L=16 N=192: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: S^H S encloses the identity  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q4p s=1/40 L=16 N=192: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q4p s=1/40 L=16 N=192: T_ret in [0.000040987667780365413758, 0.000040987667821353081539]; T_cont in [0.99895901233217864691, 0.99895901233221963459]; sigma^2 = T_ret + T_cont in [0.99899999999995901233, 0.99900000000004098767]
+  Q4': T_ret(N = 192) / T_ret(N = 128) in [1.000099998999, 1.000100001001] -> TRUNCATION_CONTROLLED
+  B: r = rho(Q2) / rho(Q3) in [0.980392155882, 0.980392157844] -> SCALING_CONSISTENT
+  
+  REPORTED DATA (orientation; no verdict depends on it)
+  Q1: kappa_eff = 1.0; sign of ln rho: ?
+  Q2: kappa_eff = 1.0; sign of ln rho: ?
+  Q3: kappa_eff = 0.99603407; sign of ln rho: +
+  Q4: kappa_eff = 1.0051035; sign of ln rho: -
+  s = 1/80: T_ret(L = 16) < T_ret(L = 8) by disjoint enclosures: True
+  s = 1/40: T_ret(L = 16) < T_ret(L = 8) by disjoint enclosures: True
+  Calibration points (excluded from every verdict; T_ret re-certified by the import):
+  
+  SUMMARY
+  Q1 s=1/80 L=8 N=64: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q2 s=1/40 L=8 N=64: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q3 s=1/80 L=16 N=128: WITHIN_TOLERANCE; rho in [1.019999999999, 1.020000001020]
+  Q4 s=1/40 L=16 N=128: WITHIN_TOLERANCE; rho in [0.949999999999, 0.950000000950]
+  Q4' truncation control: TRUNCATION_CONTROLLED
+  B (Q2, Q3): SCALING_CONSISTENT
+  Line verdict candidate: HEURISTIC_WITHIN_TOLERANCE_AT_DECLARED_POINTS
+  32 heuristic-prediction checks PASS (after 61 + 53 + 33 + 0 + 38 imported checks)
+
+===== scenario S2 (SYNTHETIC T_ret except calibration) =====
+  PASS H imported turning-branch verifier has the reviewed SHA256 (checked before import); 61 + 53 + 33 + 43 + 38 imported checks passed  [0.0s]
+  PASS H declared design: Q1-Q4 = (1/80, 8), (1/40, 8), (1/80, 16), (1/40, 16) with N = 8L; control Q4' = (1/40, 16), N = 192  [0.0s]
+  PASS X pi enclosure lies inside the decimal bracket (3.14159265358979323846264, 3.14159265358979323846265) and has width < 2^-300  [0.0s]
+  Q1 s = 1/80 L = 8: omega in [0.024998698038723356903333, 0.024998698038723356903334]; 4 pi omega L in [2.51314323544841185985, 2.51314323544841185986]; X in [0.07494191138617357591, 0.07494191138617357592]
+  PASS Q1: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 749419/10000000 to relative 1e-5  [0.0s]
+  Q2 s = 1/40 L = 8: omega in [0.049989587237840319003434, 0.049989587237840319003435]; 4 pi omega L in [5.02550144071632737007, 5.02550144071632737008]; X in [0.00652543112251145585, 0.00652543112251145586]
+  PASS Q2: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 652543/100000000 to relative 1e-5  [0.0s]
+  Q3 s = 1/80 L = 16: omega in [0.024998698038723356903333, 0.024998698038723356903334]; 4 pi omega L in [5.02628647089682371971, 5.02628647089682371972]; X in [0.00652034386073491778, 0.00652034386073491779]
+  PASS Q3: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 326017/50000000 to relative 1e-5  [0.0s]
+  Q4 s = 1/40 L = 16: omega in [0.049989587237840319003434, 0.049989587237840319003435]; 4 pi omega L in [10.05100288143265474014, 10.05100288143265474015]; X in [0.00004314059939307691, 0.00004314059939307692]
+  PASS Q4: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 215703/5000000000 to relative 1e-5  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: S^H S encloses the identity  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q1 s=1/80 L=8 N=64: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q1 s=1/80 L=8 N=64: T_ret in [0.074941911386173575913630, 0.074941911461115487299805]; T_cont in [0.92405808853888451270, 0.92405808861382642409]; sigma^2 = T_ret + T_cont in [0.99899999992505808861, 0.99900000007494191139]
+  Q1: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q2 s=1/40 L=8 N=64: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: S^H S encloses the identity  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q2 s=1/40 L=8 N=64: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q2 s=1/40 L=8 N=64: T_ret in [0.004567801785758019098199, 0.004567801790325820883958]; T_cont in [0.99443219820967417911, 0.99443219821424198091]; sigma^2 = T_ret + T_cont in [0.99899999999543219821, 0.99900000000456780179]
+  Q2: rho = T_ret / X in [0.699999999999, 0.700000000700] -> INTERMEDIATE
+  PASS Q3 s=1/80 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: S^H S encloses the identity  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q3 s=1/80 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q3 s=1/80 L=16 N=128: T_ret in [0.006520343860734917788338, 0.006520343867255261649074]; T_cont in [0.99247965613274473835, 0.99247965613926508222]; sigma^2 = T_ret + T_cont in [0.99899999999347965613, 0.99900000000652034387]
+  Q3: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q4 s=1/40 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: S^H S encloses the identity  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q4 s=1/40 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q4 s=1/40 L=16 N=128: T_ret in [0.000017256239757230766926, 0.000017256239774487006685]; T_cont in [0.99898274376022551299, 0.99898274376024276924]; sigma^2 = T_ret + T_cont in [0.99899999999998274376, 0.99900000000001725624]
+  Q4: rho = T_ret / X in [0.399999999999, 0.400000000400] -> OUTSIDE_REJECTION_BAND
+  PASS Q4p s=1/40 L=16 N=192: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: S^H S encloses the identity  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q4p s=1/40 L=16 N=192: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q4p s=1/40 L=16 N=192: T_ret in [0.000017773926949947689934, 0.000017773926967721616885]; T_cont in [0.99898222607303227838, 0.99898222607305005232]; sigma^2 = T_ret + T_cont in [0.99899999999998222607, 0.99900000000001777393]
+  Q4': T_ret(N = 192) / T_ret(N = 128) in [1.029999998970, 1.030000001030] -> TRUNCATION_SENSITIVE
+  B: r = rho(Q2) / rho(Q3) in [0.699999999300, 0.700000000701] -> SCALING_VIOLATED
+  
+  REPORTED DATA (orientation; no verdict depends on it)
+  Q1: kappa_eff = 1.0; sign of ln rho: ?
+  Q2: kappa_eff = 1.0713647; sign of ln rho: -
+  Q3: kappa_eff = 1.0; sign of ln rho: ?
+  Q4: kappa_eff = 1.0911667; sign of ln rho: -
+  s = 1/80: T_ret(L = 16) < T_ret(L = 8) by disjoint enclosures: True
+  s = 1/40: T_ret(L = 16) < T_ret(L = 8) by disjoint enclosures: True
+  Calibration points (excluded from every verdict; T_ret re-certified by the import):
+  
+  SUMMARY
+  Q1 s=1/80 L=8 N=64: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q2 s=1/40 L=8 N=64: INTERMEDIATE; rho in [0.699999999999, 0.700000000700]
+  Q3 s=1/80 L=16 N=128: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q4 s=1/40 L=16 N=128: OUTSIDE_REJECTION_BAND; rho in [0.399999999999, 0.400000000400]
+  Q4' truncation control: TRUNCATION_SENSITIVE
+  B (Q2, Q3): SCALING_VIOLATED
+  Line verdict candidate: HEURISTIC_REJECTED_AT_DECLARED_POINTS
+  32 heuristic-prediction checks PASS (after 61 + 53 + 33 + 0 + 38 imported checks)
+
+===== scenario S3 (SYNTHETIC T_ret except calibration) =====
+  PASS H imported turning-branch verifier has the reviewed SHA256 (checked before import); 61 + 53 + 33 + 43 + 38 imported checks passed  [0.0s]
+  PASS H declared design: Q1-Q4 = (1/80, 8), (1/40, 8), (1/80, 16), (1/40, 16) with N = 8L; control Q4' = (1/40, 16), N = 192  [0.0s]
+  PASS X pi enclosure lies inside the decimal bracket (3.14159265358979323846264, 3.14159265358979323846265) and has width < 2^-300  [0.0s]
+  Q1 s = 1/80 L = 8: omega in [0.024998698038723356903333, 0.024998698038723356903334]; 4 pi omega L in [2.51314323544841185985, 2.51314323544841185986]; X in [0.07494191138617357591, 0.07494191138617357592]
+  PASS Q1: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 749419/10000000 to relative 1e-5  [0.0s]
+  Q2 s = 1/40 L = 8: omega in [0.049989587237840319003434, 0.049989587237840319003435]; 4 pi omega L in [5.02550144071632737007, 5.02550144071632737008]; X in [0.00652543112251145585, 0.00652543112251145586]
+  PASS Q2: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 652543/100000000 to relative 1e-5  [0.0s]
+  Q3 s = 1/80 L = 16: omega in [0.024998698038723356903333, 0.024998698038723356903334]; 4 pi omega L in [5.02628647089682371971, 5.02628647089682371972]; X in [0.00652034386073491778, 0.00652034386073491779]
+  PASS Q3: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 326017/50000000 to relative 1e-5  [0.0s]
+  Q4 s = 1/40 L = 16: omega in [0.049989587237840319003434, 0.049989587237840319003435]; 4 pi omega L in [10.05100288143265474014, 10.05100288143265474015]; X in [0.00004314059939307691, 0.00004314059939307692]
+  PASS Q4: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 215703/5000000000 to relative 1e-5  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: S^H S encloses the identity  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q1 s=1/80 L=8 N=64: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q1 s=1/80 L=8 N=64: T_ret in [0.074941911386173575913630, 0.074941911461115487299805]; T_cont in [0.92405808853888451270, 0.92405808861382642409]; sigma^2 = T_ret + T_cont in [0.99899999992505808861, 0.99900000007494191139]
+  Q1: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q2 s=1/40 L=8 N=64: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  Q2 s=1/40 L=8 N=64: OPEN_AFTER_TRANSMISSION_ANALYSIS (SYNTHETIC failure)
+  PASS Q3 s=1/80 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: S^H S encloses the identity  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q3 s=1/80 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q3 s=1/80 L=16 N=128: T_ret in [0.008476447018955393124840, 0.008476447027431840143796]; T_cont in [0.99052355297256815985, 0.99052355298104460688]; sigma^2 = T_ret + T_cont in [0.99899999999152355298, 0.99900000000847644702]
+  Q3: rho = T_ret / X in [1.299999999999, 1.300000001300] -> INTERMEDIATE
+  PASS Q4 s=1/40 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: S^H S encloses the identity  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q4 s=1/40 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q4 s=1/40 L=16 N=128: T_ret in [0.000043140599393076917316, 0.000043140599436217516711]; T_cont in [0.99895685940056378248, 0.99895685940060692309]; sigma^2 = T_ret + T_cont in [0.99899999999995685940, 0.99900000000004314060]
+  Q4: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q4p s=1/40 L=16 N=192: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: S^H S encloses the identity  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q4p s=1/40 L=16 N=192: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q4p s=1/40 L=16 N=192: T_ret in [0.000043140599393076917316, 0.000043140599436217516711]; T_cont in [0.99895685940056378248, 0.99895685940060692309]; sigma^2 = T_ret + T_cont in [0.99899999999995685940, 0.99900000000004314060]
+  Q4': T_ret(N = 192) / T_ret(N = 128) in [0.999999999000, 1.000000001000] -> TRUNCATION_CONTROLLED
+  B: SCALING_UNDECIDED (Q2 or Q3 not certified)
+  
+  REPORTED DATA (orientation; no verdict depends on it)
+  Q1: kappa_eff = 1.0; sign of ln rho: ?
+  Q3: kappa_eff = 0.94740945; sign of ln rho: +
+  Q4: kappa_eff = 1.0; sign of ln rho: ?
+  s = 1/80: T_ret(L = 16) < T_ret(L = 8) by disjoint enclosures: True
+  Calibration points (excluded from every verdict; T_ret re-certified by the import):
+  
+  SUMMARY
+  Q1 s=1/80 L=8 N=64: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q2 s=1/40 L=8 N=64: OPEN_AFTER_TRANSMISSION_ANALYSIS
+  Q3 s=1/80 L=16 N=128: INTERMEDIATE; rho in [1.299999999999, 1.300000001300]
+  Q4 s=1/40 L=16 N=128: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q4' truncation control: TRUNCATION_CONTROLLED
+  B (Q2, Q3): SCALING_UNDECIDED
+  Line verdict candidate: OPEN_AFTER_PREDICTION_TEST
+  28 heuristic-prediction checks PASS (after 61 + 53 + 33 + 0 + 38 imported checks)
+
+===== scenario S4 (SYNTHETIC T_ret except calibration) =====
+  PASS H imported turning-branch verifier has the reviewed SHA256 (checked before import); 61 + 53 + 33 + 43 + 38 imported checks passed  [0.0s]
+  PASS H declared design: Q1-Q4 = (1/80, 8), (1/40, 8), (1/80, 16), (1/40, 16) with N = 8L; control Q4' = (1/40, 16), N = 192  [0.0s]
+  PASS X pi enclosure lies inside the decimal bracket (3.14159265358979323846264, 3.14159265358979323846265) and has width < 2^-300  [0.0s]
+  Q1 s = 1/80 L = 8: omega in [0.024998698038723356903333, 0.024998698038723356903334]; 4 pi omega L in [2.51314323544841185985, 2.51314323544841185986]; X in [0.07494191138617357591, 0.07494191138617357592]
+  PASS Q1: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 749419/10000000 to relative 1e-5  [0.0s]
+  Q2 s = 1/40 L = 8: omega in [0.049989587237840319003434, 0.049989587237840319003435]; 4 pi omega L in [5.02550144071632737007, 5.02550144071632737008]; X in [0.00652543112251145585, 0.00652543112251145586]
+  PASS Q2: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 652543/100000000 to relative 1e-5  [0.0s]
+  Q3 s = 1/80 L = 16: omega in [0.024998698038723356903333, 0.024998698038723356903334]; 4 pi omega L in [5.02628647089682371971, 5.02628647089682371972]; X in [0.00652034386073491778, 0.00652034386073491779]
+  PASS Q3: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 326017/50000000 to relative 1e-5  [0.0s]
+  Q4 s = 1/40 L = 16: omega in [0.049989587237840319003434, 0.049989587237840319003435]; 4 pi omega L in [10.05100288143265474014, 10.05100288143265474015]; X in [0.00004314059939307691, 0.00004314059939307692]
+  PASS Q4: X enclosure positive, relative width < 1e-60, and agrees with the frozen prediction table value 215703/5000000000 to relative 1e-5  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: S^H S encloses the identity  [0.0s]
+  PASS Q1 s=1/80 L=8 N=64: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q1 s=1/80 L=8 N=64: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q1 s=1/80 L=8 N=64: T_ret in [0.112412867079260363870446, 0.112412867191673230949707]; T_cont in [0.88658713280832676905, 0.88658713292073963613]; sigma^2 = T_ret + T_cont in [0.99899999988758713292, 0.99900000011241286708]
+  Q1: rho = T_ret / X in [1.499999999999, 1.500000001500] -> INTERMEDIATE
+  PASS Q2 s=1/40 L=8 N=64: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: S^H S encloses the identity  [0.0s]
+  PASS Q2 s=1/40 L=8 N=64: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q2 s=1/40 L=8 N=64: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q2 s=1/40 L=8 N=64: T_ret in [0.006525431122511455854570, 0.006525431129036886977083]; T_cont in [0.99247456887096311302, 0.99247456887748854415]; sigma^2 = T_ret + T_cont in [0.99899999999347456887, 0.99900000000652543113]
+  Q2: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q3 s=1/80 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: S^H S encloses the identity  [0.0s]
+  PASS Q3 s=1/80 L=16 N=128: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q3 s=1/80 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q3 s=1/80 L=16 N=128: T_ret in [0.006520343860734917788338, 0.006520343867255261649074]; T_cont in [0.99247965613274473835, 0.99247965613926508222]; sigma^2 = T_ret + T_cont in [0.99899999999347965613, 0.99900000000652034387]
+  Q3: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q4 s=1/40 L=16 N=128: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: S^H S encloses the identity  [0.0s]
+  PASS Q4 s=1/40 L=16 N=128: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q4 s=1/40 L=16 N=128: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q4 s=1/40 L=16 N=128: T_ret in [0.000043140599393076917316, 0.000043140599436217516711]; T_cont in [0.99895685940056378248, 0.99895685940060692309]; sigma^2 = T_ret + T_cont in [0.99899999999995685940, 0.99900000000004314060]
+  Q4: rho = T_ret / X in [0.999999999999, 1.000000001000] -> WITHIN_TOLERANCE
+  PASS Q4p s=1/40 L=16 N=192: channel counts (2, 4, 1, 3) (interior R/L, exterior R/L)  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: R1 turning branch identified by box sign (k in (-pi/2, 0), lambda in SYNTHETIC; continuing branch k in (0, pi/2), lambda in SYNTHETIC); p = 0  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: matching matrix certified invertible (||I - R A D|| <= 0.100000 < 1/2)  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: S^H S encloses the identity  [0.0s]
+  PASS Q4p s=1/40 L=16 N=192: turning-branch column of |S|^2 sums to an enclosure of 1  [0.0s]
+  Q4p s=1/40 L=16 N=192: turning-branch column (outgoing channel: lambda box, sector, |S|^2):
+  Q4p s=1/40 L=16 N=192: T_ret in [0.000043356302390042301903, 0.000043356302433398604294]; T_cont in [0.99895664369756660139, 0.99895664369760995770]; sigma^2 = T_ret + T_cont in [0.99899999999995664369, 0.99900000000004335631]
+  Q4': T_ret(N = 192) / T_ret(N = 128) in [1.004999998995, 1.005000001005] -> TRUNCATION_UNDECIDED
+  B: r = rho(Q2) / rho(Q3) in [0.999999999000, 1.000000001001] -> SCALING_CONSISTENT
+  
+  REPORTED DATA (orientation; no verdict depends on it)
+  Q1: kappa_eff = 0.82220872; sign of ln rho: +
+  Q2: kappa_eff = 1.0; sign of ln rho: ?
+  Q3: kappa_eff = 1.0; sign of ln rho: ?
+  Q4: kappa_eff = 1.0; sign of ln rho: ?
+  s = 1/80: T_ret(L = 16) < T_ret(L = 8) by disjoint enclosures: True
+  s = 1/40: T_ret(L = 16) < T_ret(L = 8) by disjoint enclosures: True
+  Calibration points (excluded from every verdict; T_ret re-certified by the import):
+  
+  SUMMARY
+  Q1 s=1/80 L=8 N=64: INTERMEDIATE; rho in [1.499999999999, 1.500000001500]
+  Q2 s=1/40 L=8 N=64: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q3 s=1/80 L=16 N=128: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q4 s=1/40 L=16 N=128: WITHIN_TOLERANCE; rho in [0.999999999999, 1.000000001000]
+  Q4' truncation control: TRUNCATION_UNDECIDED
+  B (Q2, Q3): SCALING_CONSISTENT
+  Line verdict candidate: HEURISTIC_PARTIAL
+  32 heuristic-prediction checks PASS (after 61 + 53 + 33 + 0 + 38 imported checks)
+
+===== assertions =====
+  S1: expected verdict strings present (5)
+  S2: expected verdict strings present (5)
+  S3: expected verdict strings present (4)
+  S4: expected verdict strings present (3)
+  calibration rho s = 1/50 L = 4: [1.1114026144, 1.1114026145] matches recorded 1.1114
+  calibration rho s = 1/50 L = 16: [0.9712078899, 0.9712078900] matches recorded 0.97121
+  calibration rho s = 1/200 L = 4: [0.9921878143, 0.9921878144] matches recorded 0.99219
+  calibration rho s = 1/200 L = 16: [1.0075516797, 1.0075516798] matches recorded 1.0076
+  X enclosures pass the frozen-table check (4 points) in every scenario
+
+All harness assertions passed.
+# exit code 0
