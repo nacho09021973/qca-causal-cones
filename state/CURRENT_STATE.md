@@ -160,9 +160,25 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
     - Not promoted. NOVELTY = OPEN.
   - Merged into `main` 2026-11-27 (PR #32, `3774c0f`; user decision). Merging
     is not promotion; no promotion yet (user «TODAVÍA NO»).
-  - Authorized: drafting an exploratory heuristic-prediction charter. Draft:
-    `reports/2026-11-27--dispersive-horizon-heuristic-prediction-charter-draft.md`
-    (not frozen). User answers to Q1–Q5 are pending.
+  - Authorized: drafting an exploratory heuristic-prediction charter. The
+    first draft (`4c70757`, P1–P7) was superseded by a four-point draft
+    (`714b7dc`).
+- **Heuristic-prediction charter frozen 2026-11-27**
+  (`POST_RESULTS_EXPLORATORY`):
+  `theory/DISPERSIVE_HORIZON_HEURISTIC_PREDICTION_GATE.md`. User decision
+  «si» (design and thresholds approved as written).
+  - It tests X = 1/(1 + e^{4πωL}) against T_ret at four new points, N = 8L:
+    (s, L) = (1/80, 8), (1/40, 8), (1/80, 16), (1/40, 16). A truncation
+    control repeats (1/40, 16) at N = 192.
+  - A: ρ = T_ret/X ⊂ [0.8, 1.25] at every point; rejection if any ρ falls
+    outside [1/2, 2].
+  - B: the equal-ωL pair, as compatibility only.
+  - C (a functional law) is not testable here.
+  - Line verdicts: `HEURISTIC_WITHIN_TOLERANCE_AT_DECLARED_POINTS` /
+    `HEURISTIC_REJECTED_AT_DECLARED_POINTS` / `HEURISTIC_PARTIAL` /
+    `OPEN_AFTER_PREDICTION_TEST`.
+  - Not authorized: writing the verifier, execution, review sending and
+    promotion.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).

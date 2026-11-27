@@ -1,16 +1,23 @@
-# Dispersive-horizon heuristic prediction gate — DRAFT (POST_RESULTS_EXPLORATORY)
+# Dispersive-horizon heuristic prediction gate (POST_RESULTS_EXPLORATORY)
 
-2026-11-27. Author: Claude Code (Claude Opus 5.5). **DRAFT, not frozen.**
+2026-11-27. Author: Claude Code (Claude Opus 5.5). Initial status **OPEN**.
 
-- Kept in `reports/` so that committing it does not freeze it. It would be
-  frozen by a later commit that moves it to
-  `theory/DISPERSIVE_HORIZON_HEURISTIC_PREDICTION_GATE.md`, after the user
-  approves or modifies the design and thresholds. Initial status after
-  freezing: **OPEN**.
-- **Supersedes** the earlier version of this file (commit `4c70757`, points
-  P1–P7 plus a control). That version was never frozen. This one adopts the
-  minimal four-point design the user proposed on 2026-11-27, plus one
-  truncation control.
+- Frozen by the commit that moves this file here from
+  `reports/2026-11-27--dispersive-horizon-heuristic-prediction-charter-draft.md`
+  (approved draft committed at `714b7dc`), on branch
+  `research/dispersive-horizon-channels`, before any new computation.
+- **Supersedes** the earlier draft (`4c70757`, points P1–P7 plus a control),
+  which was never frozen. This charter adopts the minimal four-point design
+  the user proposed on 2026-11-27, plus one truncation control.
+- **Freezing.** User decision, 2026-11-27: «si». This approves the design and
+  thresholds exactly as written below, with no modification:
+  - Q1–Q4 with N = 8L, plus the control Q4′;
+  - the A bands [0.8, 1.25] and [1/2, 2];
+  - the B bands [1/1.1, 1.1] and [0.8, 1.25];
+  - relative width 10⁻⁶;
+  - truncation thresholds 10⁻³ and 10⁻²;
+  - review by Astra 6.2 plus Grok.
+- Below, "draft", "would" and "proposed" refer to this frozen text.
 - **Label: `POST_RESULTS_EXPLORATORY`.**
   - The observable T_ret was chosen after the σ² results of the
     frequency/finite-L charter.
@@ -25,8 +32,9 @@
 - **Drafting.** User decision, 2026-11-27: «Nuevo contrato para la
   heurística: SÍ, exploratorio … No ejecutaría nada hasta congelarlo». The
   four-point brief of the same day restates the design.
-- **Not authorized:** freezing, writing the verifier, execution, review
-  sending, promotion and merging. Each needs a separate user decision.
+- **Freezing:** authorized («si», 2026-11-27; see header).
+- **Not authorized:** writing the verifier, execution, review sending,
+  promotion and merging. Each needs a separate user decision.
 - **Budget:** one contract. A balance is mandatory on closure. No further
   contract follows automatically, whatever the outcome.
 
@@ -495,8 +503,8 @@ Balance table, to be filled on closure:
   could be done before freezing. It would not change X, which is already
   declared, but it would sharpen what agreement means.
 
-**Single pending user decision:** approve, or modify, the design and its
-thresholds:
+**User decision, resolved 2026-11-27 («si»):** the design and its thresholds
+are approved unchanged:
 - points Q1–Q4 with N = 8L, plus the control Q4′;
 - the bands [0.8, 1.25] and [1/2, 2];
 - the B band [1/1.1, 1.1] / [0.8, 1.25];
@@ -504,4 +512,4 @@ thresholds:
 - the truncation thresholds 10⁻³ / 10⁻²;
 - review by Astra 6.2 plus Grok.
 
-Then the charter is frozen.
+The charter is frozen by the commit that moves it to `theory/`.
