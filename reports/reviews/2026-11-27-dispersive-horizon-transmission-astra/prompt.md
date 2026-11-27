@@ -76,3 +76,4 @@ originalidad.
 Entrega en español: un veredicto por punto, un único veredicto global
 (PASS / REPAIR_REQUIRED / FAIL / INCONCLUSIVE), las derivaciones críticas, y objeciones ordenadas
 por gravedad con sección y reparación concreta. Si no hay fallos, dilo sin inventar objeciones.
+---
