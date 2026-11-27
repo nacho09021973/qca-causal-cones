@@ -192,8 +192,12 @@ def exp_hi(a):
 
 
 PI = pi_RI()
-ok('X pi enclosure contains 3.14159265358979323846 and has width < 2^-300',
-   PI.lo < Fr('3.14159265358979323846264') < PI.hi and PI.hi - PI.lo < Fr(1, 2**300))
+# (run 2 failed here: the earlier check required the truncated decimal ...264,
+# which lies below pi, to be inside a 2^-300-wide enclosure of pi)
+ok('X pi enclosure lies inside the decimal bracket (3.14159265358979323846264, '
+   '3.14159265358979323846265) and has width < 2^-300',
+   Fr('3.14159265358979323846264') < PI.lo and PI.hi < Fr('3.14159265358979323846265')
+   and PI.hi - PI.lo < Fr(1, 2**300))
 
 
 def X_RI(sv, Lv):
