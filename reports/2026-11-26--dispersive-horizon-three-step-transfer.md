@@ -201,6 +201,15 @@ La afirmación más fuerte \(\lim_{L\to\infty}\mathcal T_L(\omega_*)=1\) es solo
 
 Antecedentes generales, sin pretensión de novedad: Di Molfetta, Brachet y Debbasch, *Phys. Rev. A* 88, 042301 (2013), DOI 10.1103/PhysRevA.88.042301; *Bounds on the dynamics of periodic quantum walks and emergence of the gapless and gapped Dirac equation*, *Phys. Rev. A* 97, 012116 (2018), DOI 10.1103/PhysRevA.97.012116; R. Tiedra de Aldecoa, *J. Funct. Anal.* 2020, DOI 10.1016/j.jfa.2020.108704 (teoría de dispersión unitaria, aplicación directa a esta regla aún no verificada); Bisio, Mosco y Perinotti, arXiv:1912.09768 (dispersión en tiempo discreto).
 
+
+### Cruce conceptual con la cuantización gravitatoria desde conos nulos (2026-11-25)
+
+**Referencia primaria — CONTEXTO, NO VALIDACIÓN DEL MODELO:** V. Chandrasekaran, *An algebraic quantization of gravity from the null cone*, [arXiv:2611.34924v1](https://arxiv.org/abs/2611.34924) (25-11-2026). El artículo parte de relatividad general clásica en conos nulos que se intersectan, reduce sus restricciones, construye observables y amplitudes cuánticas y discute la composición (*gluing*) de regiones nulas, los diamantes causales y su entropía. Es pertinente por la **organización de observables y amplitudes en fronteras causales nulas**, no porque contenga una teoría de caminatas discretas con dispersión.
+
+**Correspondencia limitada:** en este informe, el «horizonte dispersivo» es el cero de la velocidad de grupo **IR de un símbolo local congelado** para un perfil espacial impuesto externamente, mientras que la evolución microscópica conserva soporte causal finito y puede mantener canales salientes de alta frecuencia. En Chandrasekaran las fronteras son superficies nulas de una geometría gravitatoria dinámica y las variables de horizonte incluyen la expansión y la cizalla de congruencias nulas. El empalme de amplitudes sobre conos nulos **no es** la composición de las matrices de transferencia espaciales \(M_x(z)\); son problemas matemáticos distintos.
+
+**Límite inferencial:** el preprint no demuestra para esta regla que \(\mathcal T_L(\omega_*)>0\), ni identifica sus especies Floquet, ni aporta radiación de Hawking. Tampoco se pueden importar a esta caminata sus afirmaciones sobre cuantización de gravedad, dimensión del espacio de Hilbert o entropía de Bekenstein–Hawking. La conexión es una **pregunta de arquitectura causal y comparación conceptual**. La prueba pendiente sigue siendo la revisión independiente de la matriz 12×12 y la dispersión estacionaria inhomogénea normalizada en flujo; esta referencia no altera el estado **OPEN** de esas compuertas.
+
 ## 9. Estado y próximo punto de control
 
 **CLOSED AS AUTHOR DERIVATION:** construcción unitaria local; símbolos congelados; desigualdad cinemática IR atrapado / alto número de onda saliente; rama local saliente a cuasienergía constante; matriz espacial exacta y chequeos algebraicos propios.
