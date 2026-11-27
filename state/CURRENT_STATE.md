@@ -1,6 +1,99 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-14
+**Date:** 2026-11-27
+
+**Dispersive-horizon channels gate chartered — 2026-11-26 (branch-local:
+`research/dispersive-horizon-channels`).** User decision «Autorizo
+conceptualmente Q-a, Q-b y Q-d, y Q-c con la modificación indicada» (Q-c:
+uniqueness stop; Q-b: this branch). This opens a separately chartered
+**exploratory line**, outside the coexistence question of
+`PROJECT_INSTRUCTIONS.md` §1: the one-particle walk U = L₋W² with the imposed
+tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
+(`8e5b540`).
+- **Prior status:** its 12×12 transfer matrix is PASS in algebraic scope (audit
+  `reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md`, Astra
+  review). Amendment 1 is reviewed by Grok, Amendment 2 by Astra, and
+  Amendment 3 by Astra and Grok (both PASS;
+  `reports/2026-11-26--dispersive-horizon-amendment3-astra-grok-review.md`).
+  The audit chain is closed in its algebraic scope; not promoted.
+- **Charter:** `theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md`, frozen at the
+  commit that adds this entry. Status OPEN.
+- **Authorized:** freezing; then (user «autorizo las dos cosas») the branch
+  push and execution of C1–C5. Review and promotion each need separate
+  authorization.
+- **Executed 2026-11-26:** `reports/2026-11-26--dispersive-horizon-channels.md`,
+  verifier `a5b9be3` (53/53 after 61/61). Author verdict
+  `CHANNELS_CLASSIFIED`, PRELIMINARY, unreviewed, not promoted. On
+  I = (arg z_c*, π/2) each medium has 4 propagating channels (1 right-moving,
+  3 left-moving) and 8 evanescent ones, with flux form G_x certified.
+- **Reviewed 2026-11-26** (user «autorizo solo Astra», «quiero la version
+  6.2»): `gpt-6.2-astra` **REPAIR_REQUIRED**
+  (`reports/2026-11-26--dispersive-horizon-channels-astra-review.md`). No
+  claim refuted. Missing charter deliverables: the C2 count between
+  thresholds outside I, the per-root C3–C5 outputs, and published-value and
+  hash assertions in the verifier. As delivered the state is
+  `OPEN_AFTER_CHANNEL_ANALYSIS`. Amendment 1 is authorized (user «SI»).
+- **Amendment 1 applied 2026-11-26** (marked [A1] in the report). Verifier
+  `scripts/verify_dispersive_horizon_channels_amendment1.py`, committed at
+  `ea3067a` before its only run: 63/63 after 61/61 and 53/53.
+  - Hashes of the imported verifiers checked.
+  - Published values asserted.
+  - Per-root boxes and per-mode normalizations recorded.
+  - Count between thresholds: the interior has 6 propagating roots
+    (2 right) near ω ≡ 0 (mod π) below arg z_c*, and 4 (1 right)
+    elsewhere; the exterior has 4 (1 right) everywhere.
+
+  Author candidate `CHANNELS_CLASSIFIED` again.
+- **Amendment 1 reviewed 2026-11-26** (user «permiso concedido»):
+  `gpt-6.2-astra` **PASS**
+  (`reports/2026-11-26--dispersive-horizon-channels-amendment1-astra-review.md`).
+  Editorial corrections applied; two minor verifier-predicate limits are
+  recorded and not changed. Verdict under the frozen charter:
+  **`CHANNELS_CLASSIFIED`**. One reviewing house (OpenAI).
+- **`CHANNELS_CLASSIFIED` PROMOTED 2026-11-27** (user «promocionar
+  CHANNELS_CLASSIFIED, fusionar con main y quitar el worktree, AUTORIZADA LAS
+  TRES»). Promoted in its frozen scope only
+  (`theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md`, the channels report with
+  Amendment 1): the channel counts, flux form G_x and unit-flux normalization
+  on I and the counts below arg z_c*, for the two asymptotic media of this
+  walk. ESTABLISHED in that scope; reviewed by one house (OpenAI, Astra 6.2),
+  not by a person. Transmission is **not** promoted (Astra REPAIR_REQUIRED,
+  editorial A1 not re-reviewed). NOVELTY = OPEN.
+- **Transmission charter frozen 2026-11-26:**
+  `theory/DISPERSIVE_HORIZON_TRANSMISSION_GATE.md`. User decisions: «lo
+  segundo, limite brusco y revision por Astra 6.2».
+  - Scope T0–T4 without finite L: branch continuity at z₀; existence and
+    unitarity of the S-matrix; transmission at z₀ = (3+4i)/5 for the sharp
+    profile 5/16 | 3/8 | 7/16; the horizon arc at z₁ = (2499+100i)/2501
+    with two interior right-movers.
+  - Executed 2026-11-26 (user «SI, LO AUTORIZO»):
+    `reports/2026-11-26--dispersive-horizon-transmission.md`, verifier
+    `0959251`. Run 2 gave 33/33; run 1 was interrupted and its log is kept.
+  - Author verdicts, sharp profile only:
+    - z₀: `TRANSMISSION_NONZERO_CERTIFIED`, T ∈ [0.9957193368…]. T0 =
+      CONNECTED, so this is adiabatic continuity, not horizon crossing.
+    - z₁: `TRANSMISSION_NONZERO_CERTIFIED`, σ² ∈ [0.9605413447…]. The two
+      interior right-moving doublers feed the exterior low-k right-mover.
+  - **Reviewed 2026-11-27** (user «Yes, send»): `gpt-6.2-astra`
+    **REPAIR_REQUIRED**
+    (`reports/2026-11-27--dispersive-horizon-transmission-astra-review.md`).
+    Points 1–5 are PASS, so both verdicts and T0 = CONNECTED stand. The
+    repairs concern the z₁ interpretation and the documentation:
+    - σ² is the *maximal* transmission from a unit-flux interior
+      superposition; incidence ∝ (t₂, −t₁)ᵀ transmits zero;
+    - "doublers" is an interpretation;
+    - a sheet argument places the interior low-k member at k ≈ −0.083.
+
+    Applied as editorial Amendment 1 [A1], not re-reviewed. Verifier
+    unchanged. One reviewing house (OpenAI). Not promoted.
+  - Draft (not frozen) of the follow-up charter:
+    `reports/2026-11-27--dispersive-horizon-frequency-finite-l-charter-draft.md`, covering the
+    regime boundary, a frequency scan, and finite L. User decisions Q1–Q5
+    are pending.
+  - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
+- TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
+- Merge into `main` authorized by the user on 2026-11-27 (same message).
+
 
 **A5 crossing-matchgate result promoted — 2026-11-14:** user «promociona
 el resultado, autorizado». Contract `915e55f`, report

@@ -1,0 +1,79 @@
+diff --git a/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md b/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
+index 1993b07..267128d 100644
+--- a/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
++++ b/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
+@@ -14,6 +14,19 @@ author derivation and does not authorize anything.
+ **Status: PASS in the algebraic scope below. TRANSMISSION = OPEN.
+ NOVELTY = not assessed. Not promoted.**
+ 
++**Amendment 1 (2026-11-26), after the Astra review**
++(`2026-11-26--dispersive-horizon-transfer-matrix-astra-review.md`). Astra
++returned REPAIR_REQUIRED on three statements of this audit, not on the matrix.
++All three are repaired below and marked "[A1]":
++
++- the T3 site count, which is 21, not 22;
++- the general claim about roots at points of zero velocity;
++- "all θ", which now reads "all admissible θ".
++
++The new results are certified by
++`scripts/verify_dispersive_horizon_transfer_repairs.py` (8 checks, run after
++the 61 reviewed ones). The bytes of the reviewed verifier are unchanged.
++
+ ## Reviewer and independence
+ 
+ - **Reviewer:** Claude Opus 5.5 (`claude-opus-5-5`) in Claude Code. The user
+@@ -88,8 +101,8 @@ The verifier checks this without the report's combined forms (T2):
+ 
+ - Iterate the report's M with site-dependent rational coins and
+   z = (3+4i)/5.
+-- Rebuild ψ, apply U from its definition, and check Uψ = zψ exactly at 22
+-  interior sites.
++- Rebuild ψ, apply U from its definition, and check Uψ = zψ exactly at 21
++  interior sites (6..26) [A1; the original text said 22].
+ - The intermediate stage vectors match the components of Y in 280
+   comparisons.
+ 
+@@ -144,7 +157,8 @@ which times λ⁵ is the report's polynomial. Here λ = e^{−ik}, and f is
+ symmetric under λ ↔ 1/λ.
+ 
+ **Characteristic polynomial (T5).** charpoly(M_hom) · (−zA²) equals the
+-report's polynomial for symbolic θ, with the same coefficients and therefore
++report's polynomial for symbolic admissible θ (all denominators nonzero, z ≠ 0)
++[A1], with the same coefficients and therefore
+ the same multiplicities. The polynomial has degree 12, with leading and
+ constant coefficient both −zA², nonzero for A ≠ 0.
+ 
+@@ -161,8 +175,21 @@ correspond to Bloch modes with complex k.
+ 
+ The nonzero tests use exact minimal polynomials, not simplification.
+ 
+-Band edges (∂ₖΩ = 0) give double roots of the usual non-semisimple kind. This
+-is not an error, but it matters for the channel analysis.
++**Points of zero group velocity [A1].** The original text said that band edges
++(∂ₖΩ = 0) give double roots of the usual non-semisimple kind. That holds only
++at an ordinary quadratic extremum of a simple band. It is false in general,
++and false on this profile.
++
++- At the nominal horizon (t = 3/8, z = 1), the outgoing infrared velocity
++  vanishes and Ω₊ ~ k³.
++- There, λ = 1 is a root of algebraic multiplicity **4** and geometric
++  multiplicity 2.
++- At t = 5/16 and t = 7/16, the same point (z, λ) = (1, 1) has multiplicity 2.
++
++These facts are certified exactly (repairs verifier R2, R3). Astra's analytic
++derivation gives Ω₊ = (35/32)k³ + O(k⁵) at t = 3/8; this audit has not
++checked that coefficient. The channel analysis must treat this degeneracy
++separately.
+ 
+ ## Additional checks (§5)
+ 
+@@ -233,7 +260,8 @@ Yes, under these conditions:
+ - every entry of M_x;
+ - the bijection with Uψ = zψ;
+ - the determinant;
+-- the homogeneous characteristic polynomial for all θ;
++- the homogeneous characteristic polynomial for all admissible θ, with z ≠ 0 [A1];
++- the multiplicities at (z, λ) = (1, 1) on the three profile values [A1];
+ - the structure at z = i on the profile values;
+ - the support, the denominators and the velocity values.
+ 

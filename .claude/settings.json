@@ -73,7 +73,21 @@
       "Bash(python3 scripts/verify_thirring_comoving_packet.py)",
       "Bash(python3 -B scripts/verify_thirring_comoving_packet.py)",
       "Bash(python3 scripts/verify_thirring_matchgate_a5.py)",
-      "Bash(python3 -B scripts/verify_thirring_matchgate_a5.py)"
+      "Bash(python3 -B scripts/verify_thirring_matchgate_a5.py)",
+      "Bash(python3 scripts/verify_dispersive_horizon_transfer_matrix.py)",
+      "Bash(python3 -B scripts/verify_dispersive_horizon_transfer_matrix.py)",
+      "Bash(python3 scripts/verify_dispersive_horizon_transfer_repairs.py)",
+      "Bash(python3 -B scripts/verify_dispersive_horizon_transfer_repairs.py)",
+      "Bash(python3 scripts/verify_dispersive_horizon_transfer_amendment2.py)",
+      "Bash(python3 -B scripts/verify_dispersive_horizon_transfer_amendment2.py)",
+      "Bash(python3 scripts/verify_dispersive_horizon_channels.py)",
+      "Bash(python3 -B scripts/verify_dispersive_horizon_channels.py)",
+      "Bash(python3 scripts/verify_dispersive_horizon_transfer_amendment3.py)",
+      "Bash(python3 -B scripts/verify_dispersive_horizon_transfer_amendment3.py)",
+      "Bash(python3 scripts/verify_dispersive_horizon_channels_amendment1.py)",
+      "Bash(python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py)",
+      "Bash(python3 scripts/verify_dispersive_horizon_transmission.py)",
+      "Bash(python3 -B scripts/verify_dispersive_horizon_transmission.py)"
     ]
   }
 }

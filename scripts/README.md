@@ -502,3 +502,245 @@ spectator-independent; three-packet sequences in both time orders; G(r) =
 -P V(r) = G(A, B) with A, B in SU(2); Valiant's five matchgate identities;
 P V(r) = exp(+i theta (XX+YY)/2), quadratic in JW fermions. Does **not**
 certify: F, the adjacency argument, T4.
+
+## Dispersive-horizon transfer matrix audit (2026-11-26)
+
+`verify_dispersive_horizon_transfer_matrix.py` supports the
+[audit](../reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md)
+of the author derivation
+[`2026-11-26--dispersive-horizon-three-step-transfer.md`](../reports/2026-11-26--dispersive-horizon-three-step-transfer.md)
+(commit `8e5b540`). There is no gate charter for this line. 61 exact SymPy
+1.14.0 checks, about 45 s.
+Certified: the coin order read off the word of W; the 144 entries of the
+report's blocks P, Q, R, H against an independent elimination of the raw
+stage and closure equations, for general independent angles at x and x+1
+(numerators reduced modulo c^2+s^2=1), with two negative controls; the
+uniqueness determinant of that linear system; consistency of the auxiliary
+b_6(x+1) with row 12 of M_{x+1}; a second route (iterate M with
+site-dependent rational coins, apply U from its definition, U psi = z psi
+exactly at 21 interior sites, stage vectors matched); det M_x =
+cot beta_6(x)/cot beta_6(x+1), z-free; tr W/2 = A cos 3k + (1-A) cos k and
+det W = 1; charpoly(M_hom) * (-z A^2) = the report's lambda-polynomial for
+symbolic theta; at (z, lambda) = (i, -i) and t = 5/16, 3/8, 7/16, two
+independent eigenvectors and algebraic multiplicity exactly 2; support
+[-7, 5] with nonzero extreme amplitudes for one site-dependent coin
+configuration; the denominators and the six velocity values.
+Does **not** certify: the written bijection argument between recurrence
+solutions and solutions of U psi = z psi (the script checks its local
+ingredients and one exact witness); the analytic steps E'(pi/2) =
+-f'(pi/2)/sin E and v = -1 + 2E'; the continuity/compactness argument for
+omega_* and k_+(t); anything about channels, flux normalisation, band-edge
+Jordan blocks or transmission (OPEN). Author-side audit by Claude; not a
+cross-family review.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transfer_matrix.py
+```
+
+`verify_dispersive_horizon_transfer_repairs.py` supports Amendment 1 of the
+same audit, after the
+[Astra review](../reports/2026-11-26--dispersive-horizon-transfer-matrix-astra-review.md).
+It imports the reviewed verifier read-only, which runs its 61 checks first,
+then adds 8 exact checks, about 50 s in total.
+Certified:
+- R1: T3 compares exactly 21 interior sites.
+- R2: at t = 3/8 and z = 1, λ = 1 has algebraic multiplicity 4 and geometric
+  multiplicity 2 (two explicit eigenvectors and a nonzero 10×10 minor of
+  M − I).
+- R3: at t = 5/16 and t = 7/16 the same point has multiplicity 2.
+
+Does **not** certify: Astra's k³ coefficient; Astra's argument that the
+(i, −i) root is semisimple on the whole profile interval; Astra's written
+compactness step for ω*.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transfer_repairs.py
+```
+
+`verify_dispersive_horizon_transfer_amendment2.py` supports Amendment 2 of the
+same audit, after the
+[Grok review of Amendment 1](../reports/2026-11-26--dispersive-horizon-amendment1-grok-review.md).
+It imports the repairs verifier read-only, which itself imports the reviewed
+one, so the 61 + 8 earlier checks run first. It then adds 39 exact checks,
+about 55 s in total.
+Certified:
+- G1: at t = 3/8, (z, λ) = (−1, −1) has algebraic multiplicity 4 and geometric
+  multiplicity 2.
+- G2: at t = 5/16 and t = 7/16, (±1, ±1) has algebraic multiplicity 2 and
+  geometric multiplicity 2 (semisimple).
+- G3: at t = 3/8, E = k/2 + (35/64)k³ + O(k⁵).
+- G4: the zero-velocity polynomial in u = cos²k. At t = 5/16 it is
+  (u − 1) × a quadratic proportional to 2625w² + 5w − 16, with exactly one
+  root in (0, 1) (Sturm count). At t = 3/8 it has a (u − 1)² factor and no
+  root in (0, 1). At t = 7/16 the quotient by (u − 1) has no root in [0, 1];
+  the polynomial itself always vanishes at u = 1, the nodes (wording
+  repaired in Amendment 3).
+
+Does **not** certify: the written equivalence of v₊ = 0 with the squared
+equation; Ω″ ≠ 0 at the t = 5/16 band edge (non-semisimplicity there); the
+3 + 1 Jordan partition at the horizon.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transfer_amendment2.py
+```
+
+## Dispersive-horizon asymptotic channels (2026-11-26)
+
+`verify_dispersive_horizon_channels.py` supports
+[`DISPERSIVE_HORIZON_CHANNELS_GATE`](../theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md),
+frozen at `7a63529`. It imports the reviewed transfer-matrix verifier
+read-only, which runs its 61 checks first, then adds 53 exact checks in about
+135 s. It uses exact SymPy and exact rational interval arithmetic (Fractions,
+integer square roots); no floating point enters any certified quantity.
+
+Certified:
+- **C1, flux form.** G_x = M_x^H D M_x − E_77 satisfies
+  M_x^H G_{x+1} M_x = G_x for general angles on three sites and |z| = 1.
+  - A second route, the operational cut flux taken from the word of U, is
+    constant in x and equals Y^H G Y, sesquilinearly, on exact
+    site-dependent solutions.
+  - In a homogeneous medium, det G = −cot²θ.
+- **C2, root structure.** The 1/λ̄ symmetry of P; P = zλ⁶Φ with Φ = −2h on
+  the unit circle; Ω₊ + Ω₋ = −2k.
+- **C3, thresholds.**
+  - The elimination identity and the threshold polynomials.
+  - The interior critical points, with exact radicals, certified rational
+    enclosures, and the minimal polynomial of Re z_c*.
+  - No critical values in the exterior.
+  - z0 = (3+4i)/5 lies in I = (arg z_c*, π/2).
+- **C4, classification at z0 in both media.**
+  - Squarefreeness of P.
+  - Propagating roots counted by Sturm in τ = tan(k/2): 4 per medium.
+  - Exact group-velocity signs: 1 right-mover and 3 left-movers.
+  - 8 evanescent roots, split 4 + 4.
+  - The counts on the full line: 4 incoming and 4 outgoing.
+- **C5, flux of each propagating Bloch eigenvector.**
+  - It is nonzero, has the sign of its group velocity, and flux/(v|q₁|²)
+    is enclosed around 1 to better than 1e-20.
+  - The operator identity −iU^H U′ = Σ R_j^H σ_z R_j − I.
+
+Does **not** certify (written arguments in the report):
+- that the root counts are constant on all of I, which rests on the
+  collision analysis;
+- the exact equality flux = (dΩ/dk)|q₁|², which follows from the
+  Hellmann–Feynman step;
+- the evanescent pairing, which follows from det G ≠ 0 and C1;
+- the λ = e^{−ik} bijection with the τ-line.
+
+Nothing about transmission, Jost asymptotics or thresholds outside I.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_channels.py
+```
+
+`verify_dispersive_horizon_channels_amendment1.py` supports Amendment 1 of the
+channels report, after the
+[Astra review](../reports/2026-11-26--dispersive-horizon-channels-astra-review.md).
+It imports the channels verifier read-only, so the 61 + 53 earlier checks run
+first. It then adds 63 exact checks, about 38 min in total. Most of that time
+goes to isolating the 24 complex roots of N = P(·, z0) P(·, z̄0), about 11 min
+in the interior and 24 min in the exterior.
+
+Certified:
+- **H.** The SHA256 of both imported verifiers equals the reviewed values.
+- **V, published values.**
+  - The counts 4 / 1 / 3 / 8 at z0.
+  - The exterior quotient ∝ 343u² − 1211u + 1012.
+  - The primitive minimal polynomial of Re z_c* equals the printed quartic.
+  - z_c* ∈ (9/10, 1) × (1/20, 1/8).
+- **Z.** Printed rational enclosures of the four interior critical values. The
+  critical set is closed under conjugation and negation, and the four
+  enclosures are disjoint.
+- **K, counts on the circle in the eight arcs.** The arcs are cut by
+  {±z_c*, ±z̄_c*} and {±1, ±i}, and each is tested at one exact rational
+  point, in both media. Each point is regular.
+  - Interior near ω ≡ 0 (mod π): 6 propagating (2 right, 4 left).
+  - Elsewhere, and in the exterior: 4 (1 right, 3 left).
+  - The branch slopes at the collision points are nonzero.
+- **E, every root of P(·, z0) in both media,** in isolating rational boxes:
+  - 4 with |λ| < 1 and 4 with |λ| > 1, paired one-to-one by 1/λ̄;
+  - 4 on the circle, matched with the Sturm roots;
+  - v signs −, −, +, − in increasing k.
+- **N, each propagating mode.**
+  - The τ interval, the kernel row, and enclosures of F, 1/√|F| and the 12
+    components of N = Y/√|F|.
+  - N^H G N encloses sign(v), and F equals the reviewed C5 run.
+- **G.** det G_x = −cot²β₆(x) on a varying rational profile at six sites.
+
+Does **not** certify (written arguments):
+- constancy of the counts inside each arc, which rests on the collision
+  analysis of C3;
+- the general-profile proof of det G_x = −cot²β₆(x) (Astra's written
+  argument, spot-checked by G);
+- the G-pairing values Y_μ^H G Y_{1/μ̄} ≠ 0, which follow from det G ≠ 0 and
+  C1.
+
+Nothing about transmission or Jost asymptotics.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
+```
+
+## Dispersive-horizon transmission (2026-11-26)
+
+`verify_dispersive_horizon_transmission.py` supports
+[`DISPERSIVE_HORIZON_TRANSMISSION_GATE`](../theory/DISPERSIVE_HORIZON_TRANSMISSION_GATE.md)
+(`8eb8be5`). It checks the SHA256 of the channels and matrix verifiers, then
+imports them read-only, so their 61 + 53 checks run first. It adds 33 checks,
+about 25 min in total.
+
+The method is exact rational intervals. Floating point (numpy, mpmath) only
+supplies root guesses and a preconditioner. Certification is a complex
+Krawczyk test for roots and ||I − RA|| < 1 with a residual bound for linear
+solves.
+
+Certified:
+- **S.** P = λ⁵ det(U(λ) − z); rows 1–10 of (M − λ)Y(λ) vanish identically;
+  rows 0 and 11 vanish modulo det(U − z) at 9 exact sample points.
+- **T0, at z₀.** The discriminant in τ of H_A has no root for
+  t ∈ [5/16, 7/16].
+- **R, at z₀ and z₁.** The 12 roots in disjoint boxes, classified against
+  Sturm; Bloch eigenvectors; flux-normalized modes.
+- **T1.** The matching matrix is invertible (the S-matrix exists) and
+  S^H S ∋ I.
+- **T2.** T at z₀ ∈ [0.995719336841…].
+- **T4.** σ² at z₁ ∈ [0.960541344787…].
+
+Reviewed by Astra 6.2 on 2026-11-27: points 1–5 PASS, global REPAIR_REQUIRED
+for the report's interpretation only
+(`reports/2026-11-27--dispersive-horizon-transmission-astra-review.md`). The
+file is unchanged. Its header does not say that the closure rows 0 and 11 are
+checked by the program only at the 9 sample points. The general proof is
+written (report, Method [A1]). Read the T2/T4 decision lines of a run: the
+program can also log an `OPEN` outcome as a passing check.
+
+Does **not** certify (written arguments in the report):
+- the eigenvector property in general, which rests on the reviewed bijection;
+- unitarity in general, which follows from flux conservation;
+- branch continuity from the discriminant;
+- anything at finite L.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transmission.py
+```
+
+`verify_dispersive_horizon_transfer_amendment3.py` supports Amendment 3 of the
+transfer-matrix audit, after the
+[Astra review of Amendment 2](../reports/2026-11-26--dispersive-horizon-amendment2-astra-review.md).
+It imports the amendment-2 verifier read-only, so the 61 + 8 + 39 earlier
+checks run first. It then adds 10 exact checks, about 60 s in total.
+Certified:
+- J1: at t = 3/8, dim ker (M − λI)^j = 2, 3, 4, 4 at (±1, ±1), by exact rank
+  over ℚ(√6, √10). The Jordan partition is 3 + 1.
+- J2: (u − 1)² divides the horizon threshold polynomial and (u − 1)³ does not.
+- B1: P_t(u(k)) = sin²E · v(v + 2).
+- B2: P_t′(u*) = −(3/1024)(1 − u*)√168025 < 0 and 0 < u* < 1.
+- B3: 0 < f(k*) < 1.
+
+Does **not** certify: the differentiation step giving Ω₊″(k*) > 0; the
+algebraic multiplicity 2, geometric multiplicity 1 and Jordan block 2 at the
+interior edge (written arguments).
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_transfer_amendment3.py
+```

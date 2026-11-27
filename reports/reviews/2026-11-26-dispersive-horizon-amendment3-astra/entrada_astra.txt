@@ -1,0 +1,1151 @@
+IMPORTANT: you have no tools in this session: no code execution, no terminal, no files, no file search, no web. Do not emit tool calls of any kind and do not look for further files: everything you will receive is in this message. Write your answer directly.
+
+Revisa adversarialmente la **Enmienda 3** de una auditoría matemática de la
+matriz de transferencia espacial 12×12 del paseo cuántico U = L₋W²,
+W = S C(θ) S C(θ) S C(−2θ), con t = cos²θ, A = t(2t−1), perfil
+t ∈ [5/16, 7/16] y horizonte t = 3/8. La Enmienda 3 responde a una revisión
+de la Enmienda 2 (texto de un modelo, adjunto: no es fuente). Se adjuntan:
+
+(1) `amendment3.diff`: el diff exacto de la auditoría introducido por la
+    Enmienda 3;
+(2) la auditoría completa, con las Enmiendas 1–3;
+(3) el informe de revisión de la Enmienda 2 al que responde;
+(4) `verify_dispersive_horizon_transfer_amendment3.py`: el verificador nuevo
+    (10 comprobaciones);
+(5) `verify_dispersive_horizon_transfer_amendment2.py`, que (4) importa sin
+    modificarlo (y que a su vez importa los verificadores anteriores, no
+    adjuntos: 61 + 8 comprobaciones ya revisadas).
+
+Comprueba, informando para cada punto PASS / REPAIR_REQUIRED / FAIL /
+UNVERIFIED, con las derivaciones necesarias:
+
+1. **Jordan 3+1 en t = 3/8, (z, λ) = (±1, ±1).** ¿Prueban las nulidades
+   dim ker (M − λI)^j = 2, 3, 4, 4 (j = 1..4) la partición 3+1? ¿Es fiable el
+   cálculo de rango exacto con `DomainMatrix` sobre ℚ(√6, √10), incluida la
+   conversión de las entradas (con √6/4, √10/4 y productos) a ese cuerpo?
+   Si puedes, confírmalo a mano por otra vía.
+2. **Contacto exacto (u−1)² (J2).** ¿Decide la comprobación que (u−1)³ no
+   divide?
+3. **Borde interior en t = 5/16.** Comprueba la identidad
+   P_t(u(k)) = sin²E · v(v+2), v = 2E′ − 1 en la rama saliente; la
+   derivación P_t′(u*)u′(k*) = 2 sin²E(k*) Ω₊″(k*) en el cero de v; los
+   signos P_t′(u*) = −(3/1024)(1−u*)√168025 < 0, u′(k*) < 0, sin E > 0; y la
+   conclusión Ω₊″(k*) > 0 (mínimo), multiplicidad algebraica 2, geométrica 1,
+   un bloque de Jordan 2. ¿Separa la enmienda correctamente lo certificado
+   (B1–B3) de los pasos escritos?
+4. **Redacción t = 7/16.** ¿Queda correcta la afirmación sobre el cociente
+   P_t/(u−1) y el tratamiento del extremo u = 1 (k = 0)?
+5. **Verificador (4).** ¿Deciden sus 10 comprobaciones lo que dicen? Atención
+   a: conversiones al cuerpo algebraico; la comprobación B2 de 0 < u* < 1 por
+   comparación entera; la cadena lógica de B3 (g(0) = 0, g(1) = 1,
+   g′ ≥ g′(1) = 1/16 por ser A < 0); posibles falsos positivos; la aserción
+   final de recuentos.
+6. **Alcance y atribución.** ¿Atribuye la Enmienda 3 a cada verificador
+   exactamente lo que certifica? ¿Presenta como verificado algo que solo es
+   un argumento escrito? ¿Queda algún punto [UNVERIFIED] mal etiquetado?
+
+No tienes acceso al repositorio ni puedes ejecutar código. Distingue lo que
+derivas a mano de lo que solo inspeccionas. No revises de nuevo las 144
+entradas ni las Enmiendas 1–2 salvo que la Enmienda 3 las afecte. No calcules
+transmisión, canales asintóticos ni originalidad.
+
+Entrega en español: un veredicto por punto, un único veredicto global
+(PASS / REPAIR_REQUIRED / FAIL / INCONCLUSIVE), las derivaciones críticas, y
+objeciones ordenadas por gravedad con sección y reparación concreta. Si no hay
+fallos, dilo sin inventar objeciones.
+
+=== DOCUMENT 1: amendment3.diff ===
+
+diff --git a/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md b/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
+index e013592..d1e0dfe 100644
+--- a/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
++++ b/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md
+@@ -40,6 +40,24 @@ The repairs are marked "[A2]" below. They are certified by
+ `scripts/verify_dispersive_horizon_transfer_amendment2.py` (39 checks, run
+ after the 61 + 8 earlier ones). The earlier verifiers' bytes are unchanged.
+ 
++**Amendment 3 (2026-11-26), after the Astra review of Amendment 2**
++(`2026-11-26--dispersive-horizon-amendment2-astra-review.md`). Astra confirmed
++the Amendment 2 figures and returned REPAIR_REQUIRED on two statements:
++
++- "no root in [0, 1]" at t = 7/16 is true of the quotient, not of the
++  threshold polynomial, which always vanishes at u = 1;
++- the interior band edge was called "ordinary" while Ω″ ≠ 0 was left
++  [UNVERIFIED], and G4's reach was overstated.
++
++Astra also gave hand arguments closing both [UNVERIFIED] points.
++
++The repairs are marked "[A3]" below. They are certified by
++`scripts/verify_dispersive_horizon_transfer_amendment3.py` (10 checks, run
++after the 61 + 8 + 39 earlier ones) where stated, and otherwise marked as
++written steps. The earlier verifiers' bytes are unchanged. In particular, the
++amendment-2 docstring line "t = 7/16: no root in [0, 1]" refers to the
++quotient, which is what its check tests.
++
+ ## Reviewer and independence
+ 
+ - **Reviewer:** Claude Opus 5.5 (`claude-opus-5-5`) in Claude Code. The user
+@@ -199,26 +217,45 @@ profile the degenerate points are:
+   - (z, λ) = (1, 1) is a root of algebraic multiplicity 4 and geometric
+     multiplicity 2 (repairs verifier R2).
+   - So is its twin (z, λ) = (−1, −1), at k = π (G1) [A2].
+-  - The contact orders 3 + 1 give a Jordan partition 3 + 1 [UNVERIFIED: Grok's
+-    argument, not machine-checked].
++  - The Jordan partition at both (1, 1) and (−1, −1) is **3 + 1** [A3]. With
++    K = M − λI, the exact ranks over ℚ(√6, √10) give dim ker K^j = 2, 3, 4, 4
++    for j = 1..4 (amendment-3 verifier J1). This confirms Grok's and Astra's
++    arguments; it does not rest on them.
+ - **Endpoints, t = 5/16 and t = 7/16.** At both (1, 1) and (−1, −1) the root
+   has algebraic multiplicity 2 and geometric multiplicity 2. It is semisimple
+   and is not a band edge (repairs verifier R3; G2) [A2].
+-- **Interior, ordinary band edge [A2].** Write u = cos²k and C = cos k. On
++- **Interior band edge [A2, A3].** Write u = cos²k and C = cos k. On
+   (0, π/2), v₊ = 0 is equivalent to 4(1 − u)g′(C)² = 1 − g(C)². This
+   equivalence is a written step: −f′ = sin k · g′(C) > 0 and sin E > 0 there.
+-  The resulting polynomial in u factors as (u − 1) × a quadratic.
++  The threshold polynomial P_t(u) vanishes at u = 1 for every t (the nodes,
++  where this equivalence does not apply) and factors as (u − 1) × a quadratic
++  [A3].
+   - At t = 5/16, the quadratic is proportional to 2625w² + 5w − 16 with
+     w = u − 1. Its discriminant 168025 is nonzero, and it has exactly one root
+     u ∈ (0, 1): one zero-velocity point of the outgoing branch in (0, π/2)
+     (G4).
+-  - At t = 3/8, the factor is (u − 1)², the k³ contact, with no root in
+-    (0, 1).
+-  - At t = 7/16, there is no root in [0, 1].
+-  - So the interior medium has an ordinary band extremum of Ω₊ and the
+-    exterior medium does not. Whether the double root there is non-semisimple
+-    requires Ω″ ≠ 0 at that point, which is [UNVERIFIED]. A choice of ω* at
+-    the extremum's quasienergy must treat it.
++  - At t = 3/8, the factor (u − 1)² divides P_t exactly, and (u − 1)³ does
++    not (J2) [A3]. This is the k³ contact, with no root in (0, 1).
++  - At t = 7/16, the **quotient** P_t/(u − 1) has no root in [0, 1], so there
++    is no zero-velocity point in 0 < k < π/2 [A3, wording repaired]. The
++    endpoint k = 0 is handled by the nonzero slopes 8t − 3 and 1 − 8t.
++  - **Curvature and Jordan structure at the interior edge [A3].** On the
++    outgoing branch, P_t(u(k)) = sin²E · v(v + 2) with v = 2E′ − 1 (identity
++    B1). At the zero k* of v, differentiating gives
++    P_t′(u*) u′(k*) = 2 sin²E(k*) Ω₊″(k*). The factors are:
++    - P_t′(u*) = −(3/1024)(1 − u*)√168025 < 0 (B2);
++    - u′(k*) = −sin 2k* < 0;
++    - sin E(k*) > 0 (B3).
++    
++    Hence Ω₊″(k*) > 0, a minimum. The two bands are distinct there
++    (0 < E < π/2, B3), so the transfer root at z* = e^{iΩ₊(k*)} has algebraic
++    multiplicity 2, geometric multiplicity 1 and one Jordan block of size 2.
++    The steps from the factors to the multiplicities (the order of the zero
++    in k, the coin kernel of dimension 1 and the Bloch correspondence) are
++    written arguments (Astra; checked by hand here), not machine-checked.
++  - So the interior medium has a nondegenerate band minimum of Ω₊ and the
++    exterior medium does not. A choice of ω* at its quasienergy must treat
++    it. (The channels gate window I excludes it.)
+ 
+ The channel analysis must treat these degeneracies separately.
+ 
+@@ -294,8 +331,9 @@ Yes, under these conditions:
+ - the homogeneous characteristic polynomial for all admissible θ, with z ≠ 0 [A1];
+ - the multiplicities at (z, λ) = (±1, ±1) on the three profile values, and the
+   k³ coefficient at the horizon [A1, A2];
+-- the location of the ordinary band edge of Ω₊ at t = 5/16 and its absence at
+-  t = 7/16 [A2];
++- the location of the band edge of Ω₊ at t = 5/16 (a minimum, Ω₊″ > 0) and
++  its absence at t = 7/16 [A2, A3];
++- the Jordan partition 3 + 1 at (z, λ) = (±1, ±1) on the horizon [A3];
+ - the structure at z = i on the profile values;
+ - the support, the denominators and the velocity values.
+ 
+
+=== DOCUMENT 2: 2026-11-26--dispersive-horizon-transfer-matrix-audit.md ===
+
+# Audit of the 12×12 spatial transfer matrix (dispersive-horizon walk)
+
+Date: 2026-11-26. Branch: `review/dispersive-horizon-transfer-audit`, from
+`main` at `8fd37a5`.
+Reviewed candidate: `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`,
+written at `8e5b540` and unchanged at `8fd37a5`, SHA256
+`7e372669d0155b26c26b50e464c33a4c7d6612dcf2d5e791b01d57cda90d63b6`.
+Verifier: `scripts/verify_dispersive_horizon_transfer_matrix.py`, 61/61 exact
+checks, about 45 s, SHA256
+`98af2f6b90c51c170e1e92b6577cfe62a74fb734ee6e9191bbd5639bf3efbca2`.
+No gate charter exists for this line. This audit records a review of the
+author derivation and does not authorize anything.
+
+**Status: PASS in the algebraic scope below. TRANSMISSION = OPEN.
+NOVELTY = not assessed. Not promoted.**
+
+**Amendment 1 (2026-11-26), after the Astra review**
+(`2026-11-26--dispersive-horizon-transfer-matrix-astra-review.md`). Astra
+returned REPAIR_REQUIRED on three statements of this audit, not on the matrix.
+All three are repaired below and marked "[A1]":
+
+- the T3 site count, which is 21, not 22;
+- the general claim about roots at points of zero velocity;
+- "all θ", which now reads "all admissible θ".
+
+The new results are certified by
+`scripts/verify_dispersive_horizon_transfer_repairs.py` (8 checks, run after
+the 61 reviewed ones). The bytes of the reviewed verifier are unchanged.
+
+**Amendment 2 (2026-11-26), after the Grok review of Amendment 1**
+(`2026-11-26--dispersive-horizon-amendment1-grok-review.md`). Grok confirmed
+every figure in Amendment 1 and returned REPAIR_REQUIRED on three points:
+
+- the k³ expansion was attributed to R2/R3, which certify only multiplicities;
+- the twin degeneracy at (z, λ) = (−1, −1) was missing;
+- the semisimplicity at the profile endpoints and the ordinary band edge in
+  the interior were not stated.
+
+The repairs are marked "[A2]" below. They are certified by
+`scripts/verify_dispersive_horizon_transfer_amendment2.py` (39 checks, run
+after the 61 + 8 earlier ones). The earlier verifiers' bytes are unchanged.
+
+**Amendment 3 (2026-11-26), after the Astra review of Amendment 2**
+(`2026-11-26--dispersive-horizon-amendment2-astra-review.md`). Astra confirmed
+the Amendment 2 figures and returned REPAIR_REQUIRED on two statements:
+
+- "no root in [0, 1]" at t = 7/16 is true of the quotient, not of the
+  threshold polynomial, which always vanishes at u = 1;
+- the interior band edge was called "ordinary" while Ω″ ≠ 0 was left
+  [UNVERIFIED], and G4's reach was overstated.
+
+Astra also gave hand arguments closing both [UNVERIFIED] points.
+
+The repairs are marked "[A3]" below. They are certified by
+`scripts/verify_dispersive_horizon_transfer_amendment3.py` (10 checks, run
+after the 61 + 8 + 39 earlier ones) where stated, and otherwise marked as
+written steps. The earlier verifiers' bytes are unchanged. In particular, the
+amendment-2 docstring line "t = 7/16: no root in [0, 1]" refers to the
+quotient, which is what its check tests.
+
+## Reviewer and independence
+
+- **Reviewer:** Claude Opus 5.5 (`claude-opus-5-5`) in Claude Code. The user
+  asked for the audit with a pasted brief: derive the matrix from the
+  operator, check every block, the determinant, the homogeneous dispersion and
+  the extra checks, give one round and one verdict, and do not compute
+  transmission.
+- **Independence:** the author's model family is not recorded in the
+  candidate. If it was written with Claude, this is an author-side audit and
+  not independent verification (`CLAUDE.md`, "No autophagy"). Independence
+  still needs a cross-family review (`revision-ciega` / `sanedrin`) or a
+  person.
+- **Tools:** no `~/herramientas` or `sanedrin` tool was used.
+- **How the audit ran:** the derivation was first redone by hand. Exploratory
+  SymPy checks were run in a scratchpad and are superseded by the versioned
+  verifier, which is the only provenance for the results below.
+
+## Conventions (§1 of the brief): PASS
+
+In coordinates:
+
+- (Sψ)↑(x) = ψ↑(x−1)
+- (Sψ)↓(x) = ψ↓(x+1)
+- (L₋f)(x) = f(x+1)
+- C(β) = exp(−iβσ_y), verified (T1).
+
+**Coin order.** W = S C(θ) S C(θ) S C(−2θ) acts right to left, so the coin
+order of W² is (−2θ, θ, θ, −2θ, θ, θ). The verifier reads this off the word
+of W (T1).
+
+**Stationary equation.** With q₁ = ψ and q_{j+1} = S C(β_j) q_j, we have
+q₇ = W²ψ and (Uψ)(x) = q₇(x+1). So Uψ = zψ is equivalent to
+q₇(x+1) = z q₁(x).
+
+**Fourier symbol.** On ψ ∝ e^{−ikx}: S(k) = diag(e^{ik}, e^{−ik}) and
+L₋(k) = e^{−ik}. With Floquet eigenvalues e^{iΩ}, the stationary phase gives
+x = (∂ₖΩ) t, so the sign of v = ∂ₖΩ is correct.
+
+## Matrix and equivalence (§2): PASS
+
+**Stage relations.** With the coin at site x and then the shift:
+
+- (i) a_{j+1}(x+1) = c_j(x) a_j(x) − s_j(x) b_j(x)
+- (ii) b_{j+1}(x−1) = s_j(x) a_j(x) + c_j(x) b_j(x)
+
+Solving (ii) for b_j(x) and substituting into (i), using c² + s² = 1, gives
+the report's ten rows.
+
+**Closures.**
+
+- Up closure: a₇(x+1) = z a₁(x) with (i) at j = 6 gives the b₆(x) row.
+- Down closure: it cannot be imposed at x, because b₇(x−1) = z b₁(x−2) lies
+  outside Y_x. It is imposed at site x+1. There, (i) and (ii) for j = 6 give
+  z a₁(x+1) = (a₆(x+1) − s₊ b₇(x)) / c₊, with b₇(x) = z b₁(x−1). The result
+  is the report's a₁(x+1) row, with c₊ and s₊ evaluated at x+1.
+
+**Entries.** All 144 entries agree with the report's P, Q, R and H. Of these,
+25 are structurally nonzero: P 6, Q 7, R 7, H 5.
+
+The verifier checks this without the report's combined forms (T2):
+
+- It solves the raw 13-equation system: (i) and (ii) for j ≤ 5, the up
+  closure at x, and stage 6 at x+1, with b₆(x+1) as an auxiliary unknown.
+- The angles are free and independent: c_j, s_j at x, and c₆, s₆ at x+1.
+- The system's determinant is −c₁c₂c₃c₄c₅ · c₆(x+1) · s₆(x) · z.
+- Each difference from the report's entries is decided exactly by reducing
+  its numerator modulo c² + s² − 1.
+- Negative controls: a single sign flip, and the closure coefficients taken
+  at x instead of x+1, are both detected.
+
+**Second route (T3).**
+
+- Iterate the report's M with site-dependent rational coins and
+  z = (3+4i)/5.
+- Rebuild ψ, apply U from its definition, and check Uψ = zψ exactly at 21
+  interior sites (6..26) [A1; the original text said 22].
+- The intermediate stage vectors match the components of Y in 280
+  comparisons.
+
+**Equivalence, written argument.** Assume c_j(x) ≠ 0 for j ≤ 6, s₆(x) ≠ 0 and
+z ≠ 0 at every site.
+
+- **From the operator to the recurrence.** A solution ψ determines all q_j.
+  The 13-equation system has a unique solution, so Y_{x+1} = M_x Y_x.
+- **From the recurrence to the operator.**
+  - For j ≤ 5, each pair of rows is an invertible transformation of (i)/(ii).
+  - Define q₇ := S C(β₆) q₆. The b₆ row at x gives a₇(x+1) = z a₁(x).
+  - The b₆ row at x+1 combined with the a₁ row gives
+    b₇(x) = s₊ a₆(x+1) + c₊ (c₊ a₆(x+1) − z a₁(x+1)) / s₊ = z b₁(x−1).
+    The verifier checks the algebraic core of this step (T2, auxiliary
+    b₆(x+1)).
+- **Inverse map.** ψ is recovered as q₁(x) = (Y_x[1], Y_{x+1}[7]).
+
+So solutions of Uψ = zψ on ℤ, with no ℓ² condition, correspond one to one and
+linearly to orbits of M. The solution space has dimension 12, and there are no
+spurious solutions.
+
+Caveat for finite segments: the down closure at the last site uses one more
+step, which matters when imposing boundary data.
+
+## Determinant (§3): PASS
+
+**Proof.**
+
+- Stages 1–5 map disjoint pairs (a_j, b_{j+1}) → (a_{j+1}′, b_j′) with
+  matrix (1/c)[[1, −s], [−s, 1]]. Its determinant is (1 − s²)/c² = 1.
+- The two closures are triangular with respect to variables already
+  produced. Their diagonal factors are c₆/s₆ and −s₊/c₊.
+- The slot assignment is one 12-cycle, 1→2→…→6→12→11→…→7→1, with sign −1.
+
+Result: det M_x = cot β₆(x) / cot β₆(x+1), which equals
+cot θ_x / cot θ_{x+1} under the rule.
+
+**Verifier (T4):** the identity holds for general angles, with no z
+dependence.
+
+**Consequences.** The determinant is positive for θ ∈ (0, π/2), has no extra
+factors, holds for a variable profile, and equals 1 in a homogeneous medium.
+
+## Homogeneous dispersion (§4): PASS
+
+**Relation of dispersion (T5).** tr W/2 = A cos 3k + (1−A) cos k with
+A = t(2t − 1) and t = cos²θ, and det W = 1. Hence
+
+det(z − λW²) = z² − zλ(4f² − 2) + λ²,
+
+which times λ⁵ is the report's polynomial. Here λ = e^{−ik}, and f is
+symmetric under λ ↔ 1/λ.
+
+**Characteristic polynomial (T5).** charpoly(M_hom) · (−zA²) equals the
+report's polynomial for symbolic admissible θ (all denominators nonzero, z ≠ 0)
+[A1], with the same coefficients and therefore
+the same multiplicities. The polynomial has degree 12, with leading and
+constant coefficient both −zA², nonzero for A ≠ 0.
+
+**Bloch correspondence.** Through the bijection above, eigenvalues λ of M
+correspond to Bloch modes with complex k.
+
+**Floquet degeneracy (T6).**
+
+- W(π/2)² = −I for every θ, so U(π/2) = iI.
+- At t = 5/16, 3/8 and 7/16, with z = i and λ = −i:
+  - two explicit, independent Bloch vectors are eigenvectors of M;
+  - (λ + i)² divides the characteristic polynomial and (λ + i)³ does not.
+- The root is therefore double and semisimple.
+
+The nonzero tests use exact minimal polynomials, not simplification.
+
+**Points of zero group velocity [A1, A2].** The original text said that band
+edges (∂ₖΩ = 0) give double roots of the usual non-semisimple kind. That holds
+only at a nondegenerate quadratic extremum (Ω″ ≠ 0) of a simple band. On this
+profile the degenerate points are:
+
+- **Horizon, t = 3/8.** The outgoing infrared velocity vanishes.
+  - E = k/2 + (35/64)k³ + O(k⁵), so Ω₊ = (35/32)k³ + O(k⁵) (amendment-2
+    verifier G3). This confirms the coefficient Astra and Grok derived.
+  - (z, λ) = (1, 1) is a root of algebraic multiplicity 4 and geometric
+    multiplicity 2 (repairs verifier R2).
+  - So is its twin (z, λ) = (−1, −1), at k = π (G1) [A2].
+  - The Jordan partition at both (1, 1) and (−1, −1) is **3 + 1** [A3]. With
+    K = M − λI, the exact ranks over ℚ(√6, √10) give dim ker K^j = 2, 3, 4, 4
+    for j = 1..4 (amendment-3 verifier J1). This confirms Grok's and Astra's
+    arguments; it does not rest on them.
+- **Endpoints, t = 5/16 and t = 7/16.** At both (1, 1) and (−1, −1) the root
+  has algebraic multiplicity 2 and geometric multiplicity 2. It is semisimple
+  and is not a band edge (repairs verifier R3; G2) [A2].
+- **Interior band edge [A2, A3].** Write u = cos²k and C = cos k. On
+  (0, π/2), v₊ = 0 is equivalent to 4(1 − u)g′(C)² = 1 − g(C)². This
+  equivalence is a written step: −f′ = sin k · g′(C) > 0 and sin E > 0 there.
+  The threshold polynomial P_t(u) vanishes at u = 1 for every t (the nodes,
+  where this equivalence does not apply) and factors as (u − 1) × a quadratic
+  [A3].
+  - At t = 5/16, the quadratic is proportional to 2625w² + 5w − 16 with
+    w = u − 1. Its discriminant 168025 is nonzero, and it has exactly one root
+    u ∈ (0, 1): one zero-velocity point of the outgoing branch in (0, π/2)
+    (G4).
+  - At t = 3/8, the factor (u − 1)² divides P_t exactly, and (u − 1)³ does
+    not (J2) [A3]. This is the k³ contact, with no root in (0, 1).
+  - At t = 7/16, the **quotient** P_t/(u − 1) has no root in [0, 1], so there
+    is no zero-velocity point in 0 < k < π/2 [A3, wording repaired]. The
+    endpoint k = 0 is handled by the nonzero slopes 8t − 3 and 1 − 8t.
+  - **Curvature and Jordan structure at the interior edge [A3].** On the
+    outgoing branch, P_t(u(k)) = sin²E · v(v + 2) with v = 2E′ − 1 (identity
+    B1). At the zero k* of v, differentiating gives
+    P_t′(u*) u′(k*) = 2 sin²E(k*) Ω₊″(k*). The factors are:
+    - P_t′(u*) = −(3/1024)(1 − u*)√168025 < 0 (B2);
+    - u′(k*) = −sin 2k* < 0;
+    - sin E(k*) > 0 (B3).
+    
+    Hence Ω₊″(k*) > 0, a minimum. The two bands are distinct there
+    (0 < E < π/2, B3), so the transfer root at z* = e^{iΩ₊(k*)} has algebraic
+    multiplicity 2, geometric multiplicity 1 and one Jordan block of size 2.
+    The steps from the factors to the multiplicities (the order of the zero
+    in k, the coin kernel of dimension 1 and the Bloch correspondence) are
+    written arguments (Astra; checked by hand here), not machine-checked.
+  - So the interior medium has a nondegenerate band minimum of Ω₊ and the
+    exterior medium does not. A choice of ω* at its quasienergy must treat
+    it. (The channels gate window I excludes it.)
+
+The channel analysis must treat these degeneracies separately.
+
+## Additional checks (§5)
+
+**Support [−7, 5]: PASS (T7).** Six shifts of ±1 plus L₋ bound the support.
+For one site-dependent coin configuration, U δ_{x0,↑} has a nonzero ↑
+amplitude at x0+5, and U δ_{x0,↓} has a nonzero ↓ amplitude at x0−7. In
+general, the extreme amplitude is a product of coin cosines, which is nonzero
+on the profile.
+
+**Denominators: PASS (T8).** For t ∈ [5/16, 7/16]: cos θ = √t,
+sin θ = √(1−t), and cos 2θ = 2t − 1 ∈ [−3/8, −1/8].
+
+**Velocities: PASS (T8).**
+
+- 1 + 8A = (4t − 1)².
+- f = 1 − (1 + 8A) k²/2 + O(k⁴), which gives v_IR,out = 8t − 3 = −1/2, 0, 1/2.
+- f(π/2) = 0, and −f′(π/2) = 1 − 4A, which gives v_UV = 1 − 8A = 31/16, 7/4,
+  23/16.
+- The step E′ = −f′/sin E and the relation v = −1 + 2E′ are analytic and not
+  certified by the script.
+
+**Branch continuity: proved here, ingredients certified (T8).** This is a
+claim of the candidate's §5 that the brief left as interpretation.
+
+- Write f = g(cos k) with g(C) = 4AC³ + (1 − 4A)C, so g(0) = 0 and g(1) = 1.
+- A < 0 on the profile, so g′(C) = 12AC² + 1 − 4A ≥ g′(1) = (4t − 1)² > 0
+  on [0, 1].
+- Hence 0 ≤ f < 1 on (0, π/2], and E = arccos f is smooth there.
+
+So Ω₊ runs continuously from the infrared node to π/2.
+
+**Not proved here:** the compactness step that gives ω* and k₊(t). It is
+standard, but written only in the candidate.
+
+## Interpretation, separate from the algebra
+
+- Whether the branch near k = π/2 is the same field as the infrared mode, or
+  an extra Floquet species, remains open, as the candidate says.
+- At z = i the degeneracy occurs in every medium at once, because
+  Ω₊(π/2) = π/2 for every t. The candidate's ω* < π/2 avoids that point. A
+  choice of ω* close to π/2 must watch it.
+- "Outgoing" and "incoming" are kinematic labels on group velocities. They
+  do not establish physical channels.
+
+## Verdict
+
+| Section | Verdict |
+| --- | --- |
+| 1 Conventions | PASS |
+| 2 Matrix, 144 entries, equivalence, no spurious solutions | PASS |
+| 3 Determinant | PASS |
+| 4 Homogeneous dispersion, multiplicities, z = i degeneracy | PASS |
+| 5 Support, denominators, velocity values | PASS |
+| 5 ω*, k₊(t) compactness step | UNVERIFIED (author argument only) |
+| Global | **PASS** (algebraic scope) |
+
+**Can the published M_x(z) be used as a reliable mathematical starting point
+for the stationary transmission problem through the tanh profile?**
+
+Yes, under these conditions:
+
+- t_x ∈ (0, 1) and t_x ≠ 1/2 at every site, which the tanh profile
+  satisfies;
+- |z| = 1.
+
+**Validated:**
+
+- every entry of M_x;
+- the bijection with Uψ = zψ;
+- the determinant;
+- the homogeneous characteristic polynomial for all admissible θ, with z ≠ 0 [A1];
+- the multiplicities at (z, λ) = (±1, ±1) on the three profile values, and the
+  k³ coefficient at the horizon [A1, A2];
+- the location of the band edge of Ω₊ at t = 5/16 (a minimum, Ω₊″ > 0) and
+  its absence at t = 7/16 [A2, A3];
+- the Jordan partition 3 + 1 at (z, λ) = (±1, ±1) on the horizon [A3];
+- the structure at z = i on the profile values;
+- the support, the denominators and the velocity values.
+
+**Still open:**
+
+- classification of propagating and evanescent modes in both limits;
+- flux normalisation;
+- treatment of band-edge Jordan blocks;
+- 𝒯_L(ω*) > 0;
+- the Floquet-species interpretation;
+- cross-family independence of this review.
+
+Nothing in `state/CURRENT_STATE.md` or `README.md` changes with this report.
+Promotion is a separate decision for the user.
+
+=== DOCUMENT 3: informe_astra.md ===
+
+<!-- Procedencia (escrita por ~/herramientas/revision/revision_ciega.sh @ 4a4fccaecc259da07956a30c50ea620f7e21ebd9; lo que sigue a la cabecera es la respuesta sin editar)
+script sha256 0bd5b169c5a1662e022af9b3d1a8d816f1dae50a2c2b6a347aa3b19c89bb14e0; biblioteca sha256 af8f09a6b0e93f91a9b34ccbeba6ef48360e8cd5c6971616365fbd9c0528d51c
+estado: COMPLETED; salida: 0; motivo de fin: cli_exit_0 (estado operativo, no validación del contenido)
+modelo: gpt-6-astra, esfuerzo: high, vía: codex exec sellado (codex-cli 0.172.0)
+inicio: 2026-11-26T12:07:54Z  fin: 2026-11-26T12:12:38Z
+documento: /home/ignac/qca-causal-cones/.worktrees/dispersive-horizon-audit/reports/reviews/2026-11-26-dispersive-horizon-amendment2-astra/amendment2.diff ; último commit observado: sin versionar ; sha256 de la copia enviada e1363940f474ef8cc07d07ea364885613a34c4a1d70776754c2ea0b932fd5030
+documento: /home/ignac/qca-causal-cones/.worktrees/dispersive-horizon-audit/reports/2026-11-26--dispersive-horizon-transfer-matrix-audit.md ; último commit observado: b1c6d75 ; sha256 de la copia enviada f343b25ba654931811198307deee3846f0289cf2d3a1bd507faeacd6da456e72
+documento: /home/ignac/qca-causal-cones/.worktrees/dispersive-horizon-audit/reports/reviews/2026-11-26-dispersive-horizon-amendment1-grok/informe_grok.md ; último commit observado: b1c6d75 ; sha256 de la copia enviada 4e72f4846ff6ef7a80f07651fa41b83276ef0f5b2a22da4d7e0897dbb434629d
+documento: /home/ignac/qca-causal-cones/.worktrees/dispersive-horizon-audit/scripts/verify_dispersive_horizon_transfer_amendment2.py ; último commit observado: b1c6d75 ; sha256 de la copia enviada b6c68dc431aba0b21425b1e24a3329ffbe560e673250261c234e064d0dcff243
+documento: /home/ignac/qca-causal-cones/.worktrees/dispersive-horizon-audit/scripts/verify_dispersive_horizon_transfer_repairs.py ; último commit observado: 63db34b ; sha256 de la copia enviada 5a315b68b7f48ded51290408a256e2c7485e8edb22a8b0299fbcfc750c99b0e8
+documento: /home/ignac/qca-causal-cones/.worktrees/dispersive-horizon-audit/scripts/verify_dispersive_horizon_transfer_matrix.py ; último commit observado: d0114b2 ; sha256 de la copia enviada 98af2f6b90c51c170e1e92b6577cfe62a74fb734ee6e9191bbd5639bf3efbca2
+entrada_astra.txt sha256 4a767cdf6cb92e4aa42be9d2155bbf72e0428629e1b60aedd230147dfcb9d7e7
+respuesta sha256 748185c2289586d5ad64e6f43f6513f5b916e713a085da261f227a7c3e5eed08
+-->
+
+**Veredicto global: REPAIR_REQUIRED.** Las multiplicidades y el coeficiente cúbico son correctos. También pueden cerrarse a mano los dos puntos pendientes: la partición es **3+1** y el borde interior es **cuadrático, con un bloque de Jordan de tamaño 2**.
+
+La reparación necesaria afecta a una afirmación literal falsa sobre las raíces en \([0,1]\) y a la delimitación de lo certificado por G4. No encuentro un fallo de la matriz dentro del alcance solicitado.
+
+Todo lo siguiente procede de derivación manual e inspección del material adjunto. **La ejecución de los verificadores y la identidad histórica de sus bytes quedan UNVERIFIED.** Uso la correspondencia de Bloch y la identidad característica suministradas, sin reabrir las 144 entradas.
+
+| Punto | Veredicto |
+|---|---|
+| 1. Gemelo \((-1,-1)\) en el horizonte | **PASS** |
+| 2. Semisimplicidad en los extremos | **PASS** |
+| 3. Coeficiente cúbico y G3 | **PASS**, con el alcance analítico precisado abajo |
+| 4. Ecuación del borde, raíces y extremos | **REPAIR_REQUIRED** |
+| 5(a). Jordan \(3+1\) frente a \(2+2\) | **PASS**, demostrado aquí |
+| 5(b). Curvatura y defecto del borde interior | **PASS**, demostrado aquí |
+| 6. Verificador nuevo | **REPAIR_REQUIRED** en documentación y alcance; aserciones correctas por inspección |
+| 7. Alcance y atribución | **REPAIR_REQUIRED** |
+
+**1–3. Expansión, gemelo y extremos.**
+
+En el horizonte,
+\[
+A=-\frac3{32},\qquad
+f(k)=A\cos3k+(1-A)\cos k
+=1-\frac{k^2}{8}-\frac{13}{48}k^4+O(k^6).
+\]
+Para la rama con pendiente positiva, escribimos
+\[
+E(k)=\frac{k}{2}+\beta k^3+O(k^5).
+\]
+Entonces
+\[
+\cos E
+=1-\frac{k^2}{8}
++\left(\frac1{384}-\frac{\beta}{2}\right)k^4+O(k^6),
+\]
+y resulta
+\[
+\beta=\frac{35}{64},\qquad
+\Omega_+=\frac{35}{32}k^3+O(k^5),\qquad
+\Omega_-=-2k-\frac{35}{32}k^3+O(k^5).
+\]
+
+La existencia de esa rama analítica impar se justifica, por ejemplo, mediante
+\[
+E(k)=2\arcsin\!\left(
+k\sqrt{\frac{1-f(k)}{2k^2}}
+\right).
+\]
+El cociente tiene prolongación analítica positiva en cero. La fórmula corresponde a \(k\to0^+\) o a esta continuación impar; el \(\arccos\) principal bilateral tiene pendiente de signo opuesto a cada lado.
+
+**G3 comprueba correctamente la serie de \(f\), la cancelación cuadrática y la ecuación que determina \(\beta\).** La elección y existencia de la rama, así como la deducción del resto \(O(k^5)\), requieren el argumento analítico anterior. No son una ejecución de inversión de series por G3.
+
+Para el gemelo, poniendo \(k=\pi+q\),
+\[
+f(\pi+q)=-f(q).
+\]
+Podemos elegir la continuación \(E_\pi(q)=\pi+E(q)\). Módulo \(2\pi\),
+\[
+\Omega_+(\pi+q)=\pi+\frac{35}{32}q^3+O(q^5),
+\]
+\[
+\Omega_-(\pi+q)=\pi-2q-\frac{35}{32}q^3+O(q^5).
+\]
+Por tanto,
+\[
+\det(-I-U(\pi+q))
+=\frac{35}{16}q^4+O(q^5).
+\]
+El orden es exactamente cuatro. Como
+\[
+\lambda=-e^{-iq},\qquad
+\lambda+1=iq+O(q^2),
+\]
+el cambio de coordenada conserva ese orden. Los factores \(\lambda^5\) y \(-zA^2\) de la identidad característica no se anulan: la multiplicidad algebraica es **4**.
+
+La simetría operatorial confirma independientemente el gemelo:
+\[
+W(k+\pi)=-W(k),\qquad U(k+\pi)=-U(k).
+\]
+
+Para la multiplicidad geométrica,
+\[
+S(\pi)=-I,\qquad
+W(\pi)=-C(\theta)^2C(-2\theta)=-I,\qquad U(\pi)=-I.
+\]
+Cada espinor \(v\in\mathbb C^2\) genera las etapas
+\[
+q_{j+1}=-C(\beta_j)q_j,\qquad q_1=v.
+\]
+El vector de transferencia correcto es
+\[
+Y=(a_1,\ldots,a_6,b_1/\lambda,\ldots,b_6/\lambda).
+\]
+Para \(\lambda=-1\), su mitad inferior es \((-b_1,\ldots,-b_6)\).
+
+Los espinores \(e_1,e_2\) producen vectores independientes: en las coordenadas \(a_1,b_1/\lambda\), el menor es \(\operatorname{diag}(1,-1)\). Además, todo vector propio queda determinado por \(q_1\), mediante las etapas de Bloch. La dimensión no puede exceder dos. Así, la multiplicidad geométrica es **2**.
+
+En los extremos, sea \(a=4t-1>0\). Las pendientes locales son
+\[
+\Omega_+'(0)=-1+2a=8t-3,\qquad
+\Omega_-'(0)=-1-2a=1-8t.
+\]
+
+| \(t\) | \(\Omega_+'(0)\) | \(\Omega_-'(0)\) |
+|---|---:|---:|
+| \(5/16\) | \(-1/2\) | \(-3/2\) |
+| \(7/16\) | \(1/2\) | \(-5/2\) |
+
+Ambas bandas tienen contacto de orden uno. La multiplicidad algebraica es dos, tanto en \((1,1)\) como en \((-1,-1)\). El argumento de los dos espinores sigue siendo válido: la geométrica también es dos. **Son raíces semisimples y esos puntos no son bordes de banda.**
+
+**4. Ecuación del borde y recuento de raíces.**
+
+En \(0<k<\pi/2\),
+\[
+g'(C)=12AC^2+1-4A\ge 1+8A=(4t-1)^2>0.
+\]
+Además, \(0<g(C)<1\), de modo que \(0<E<\pi/2\). Por ello
+\[
+E'=\frac{\sin k\,g'(C)}{\sin E}>0.
+\]
+La ecuación \(v_+=-1+2E'=0\) equivale a
+\[
+2\sin k\,g'(C)=\sin E.
+\]
+**Ambos miembros son positivos**, por lo que elevar al cuadrado es reversible en ese intervalo:
+\[
+P_t(u):=4(1-u)g'(C)^2-\bigl(1-g(C)^2\bigr)=0.
+\]
+
+La expansión algebraica da, con \(w=u-1\),
+\[
+P_{5/16}(u)
+=\frac3{1024}(1-u)(2625w^2+5w-16),
+\]
+\[
+P_{3/8}(u)
+=\frac{105}{64}(u-1)^2(4-3u),
+\]
+\[
+P_{7/16}(u)
+=\frac5{1024}(1-u)(343w^2-525w+144).
+\]
+
+De aquí:
+
+- En \(t=5/16\), el discriminante es \(168025\). Las raíces del cuadrático son
+  \[
+  w_\pm=\frac{-5\pm\sqrt{168025}}{5250}.
+  \]
+  Hay exactamente una en \((-1,0)\) y otra positiva. El único punto interior queda determinado por
+  \[
+  u_*=\frac{5245-\sqrt{168025}}{5250},\qquad
+  k_*=\arccos\sqrt{u_*}.
+  \]
+- En \(t=3/8\), \(u=1\) tiene multiplicidad exactamente dos y la otra raíz es \(4/3\). No hay raíces en \((0,1)\).
+- En \(t=7/16\), el cuadrático es estrictamente positivo para \(w\in[-1,0]\): sus tres términos son no negativos y el término constante es positivo. **El cociente no tiene raíces en \([0,1]\), pero \(P_{7/16}\) sí tiene la raíz \(u=1\).**
+
+Esta última distinción exige reparación. El texto de la auditoría y la cabecera del verificador dicen «no root in \([0,1]\)» sin identificar el cociente. Tomado como afirmación sobre el polinomio resultante de la ecuación, es falso.
+
+En realidad, **\(P_t(1)=0\) para todo \(t\)**. En \(k=0\), la ecuación cuadrada se reduce a \(0=0\); allí no puede usarse la equivalencia demostrada solo en el intervalo abierto. La ausencia de velocidad nula en ese extremo se comprueba mediante las pendientes anteriores.
+
+El recuento de Sturm también concuerda. Para el cuadrático de \(t=5/16\), en variable \(u\),
+\[
+T(u)=2625u^2-5245u+2604.
+\]
+Su sucesión de Sturm puede tomarse como
+\[
+T,\quad 5250u-5245,\quad \frac{168025}{10500}.
+\]
+En cero los signos son \(+,-,+\), con dos variaciones; en uno son \(-,+,+\), con una. Hay exactamente una raíz interior.
+
+`roots_in_open_unit` es correcto con la semántica de `Poly.count_roots`: cuenta raíces reales **distintas**, incluidos los extremos finitos, y luego resta cada extremo que sea raíz. Para los usos presentes:
+
+| Polinomio pasado a la función | Raíces distintas en \([0,1]\) | Extremos restados | Resultado |
+|---|---:|---:|---:|
+| `Q516` | 1 | 0 | 1 |
+| `P38` | 1 | 1 | 0 |
+
+La raíz doble \(u=1\) de `P38` se cuenta una vez y se resta una vez. No hay error de multiplicidad en esa resta. No he comprobado una instalación concreta de SymPy.
+
+**5(a). La partición de Jordan es \(3+1\).**
+
+Los órdenes del determinante, por sí solos, no bastan para identificar una partición de Jordan. Aquí puede construirse una cadena.
+
+Cerca de \(k=0\), \(W(0)=I\) y sus autovalores son
+\[
+e^{\pm iE(k)},\qquad E'(0)=\frac12.
+\]
+La matriz analítica
+\[
+\frac{W(k)-I}{k}
+\]
+se prolonga a cero y tiene allí autovalores distintos \(\pm i/2\). Por tanto, pueden elegirse autovectores analíticos no nulos para ambas ramas. Lo mismo vale cerca de \(\pi\), por la simetría anterior.
+
+Sea \(Y(h)\) el vector de Bloch analítico de la rama cúbica, usando
+\[
+h=\lambda-\lambda_0,\qquad
+(z_0,\lambda_0)=(1,1)\ \text{o}\ (-1,-1).
+\]
+Entonces
+\[
+z(h)=z_0+O(h^3),\qquad
+M(z(h))Y(h)=(\lambda_0+h)Y(h).
+\]
+Como \(M\) es analítica en \(z_0\ne0\), escribiendo
+\[
+Y(h)=Y_0+hY_1+h^2Y_2+O(h^3),\qquad
+K=M(z_0)-\lambda_0I,
+\]
+la comparación de coeficientes da
+\[
+KY_0=0,\qquad KY_1=Y_0,\qquad KY_2=Y_1.
+\]
+Y \(Y_0\ne0\). Existe, pues, una cadena de longitud tres.
+
+Con multiplicidad algebraica cuatro y geométrica dos, la única partición compatible es
+\[
+\boxed{3+1}.
+\]
+En particular,
+\[
+\dim\ker K=2,\qquad
+\dim\ker K^2=3,\qquad
+\dim\ker K^3=4.
+\]
+
+Esto cierra el punto mediante una derivación propia; no depende de aceptar la afirmación de Grok ni de ejecutar nulidades.
+
+**5(b). El borde interior tiene \(\Omega''\ne0\) y geométrica uno.**
+
+Escribamos \(v=\Omega_+'=2E'-1\). La identidad cuadrada puede expresarse como
+\[
+P_t(u(k))
+=\sin^2E\,\bigl(4E'^2-1\bigr)
+=\sin^2E\,v(v+2).
+\]
+En el punto \(k_*\) donde \(v=0\), derivar da
+\[
+P_t'(u_*)\,u'(k_*)
+=2\sin^2E(k_*)\,\Omega_+''(k_*).
+\]
+Todos los factores necesarios son no nulos:
+
+- \(u'(k_*)=-\sin2k_*\ne0\);
+- \(\sin E(k_*)>0\);
+- \(P_t'(u_*)\ne0\), porque la raíz del cuadrático es simple y \(u_*\ne1\).
+
+Por tanto,
+\[
+\boxed{\Omega_+''(k_*)\ne0}.
+\]
+Además, en la raíz negativa \(w_-\),
+\[
+5250w_-+5=-\sqrt{168025}<0.
+\]
+Así, \(P_t'(u_*)<0\), mientras que \(u'(k_*)<0\); resulta \(\Omega_+''(k_*)>0\): es un mínimo.
+
+La banda de \(U\) es simple allí. En efecto, \(0<E<\pi/2\) implica
+\[
+e^{2iE}\ne e^{-2iE}.
+\]
+Para \(z_*=e^{i\Omega_+(k_*)}\), el determinante tiene entonces un cero de orden exactamente dos en \(k\), y por tanto en \(\lambda\). El núcleo de moneda tiene dimensión uno; la correspondencia de Bloch conserva esa dimensión. La raíz de transferencia tiene:
+
+\[
+\boxed{\text{algebraica }2,\quad \text{geométrica }1,\quad \text{Jordan }2.}
+\]
+
+**6. Inspección del verificador.**
+
+El recuento estático sí da **39 comprobaciones**:
+\[
+5\text{ de G1}+20\text{ de G2}+3\text{ de G3}+11\text{ de G4}=39.
+\]
+
+- **Multiplicidad algebraica.** El polinomio característico es mónico de grado doce, por lo que no es nulo y el bucle termina. Solo se divide cuando el resto se reconoce como cero. La comprobación final de no anulación del cociente distingue multiplicidad exacta de mera divisibilidad. Si una simplificación no reconoce un cero, la evaluación final mediante polinomio mínimo impide certificar una multiplicidad menor incorrecta.
+- **Vectores en \(\lambda=-1\).** La construcción introduce correctamente tanto \(S(\pi)=-I\) en cada etapa como \(b_j/\lambda=-b_j\) en \(Y\). No falta ninguno de los dos signos.
+- **Menor \(10\times10\).** Un menor no nulo da rango al menos diez. Los dos vectores propios independientes dan rango a lo sumo diez. Juntos prueban nulidad exactamente dos. Las comprobaciones previas abortan ante fallo, por lo que la conclusión final no descansa únicamente en el menor.
+- **No anulación algebraica.** Para las expresiones algebraicas concretas usadas, el polinomio mínimo es \(X\) precisamente cuando el número es cero. No encuentro un falso positivo en este uso de `nonzero_alg`.
+- **G4 y extremos.** La última aserción comprueba explícitamente el **cociente** `Q716`; es correcta. El error está en la descripción más amplia del resultado.
+- **Orden exacto del factor en el horizonte.** G4 comprueba que \((u-1)^2\) divide `P38`, pero no comprueba expresamente que no divida \((u-1)^3\). La ausencia de raíces interiores no suple eso. Aquí el orden exacto queda demostrado por la factorización manual:
+  \[
+  Q38(1)=\frac{105}{64}\ne0.
+  \]
+  Si se quiere atribuir esa exactitud exclusivamente a G4, debe añadirse esa comprobación.
+- **Importaciones.** Los módulos anteriores se ejecutan y sus excepciones no se capturan. Un fallo en ellos aborta antes de G1: no queda enmascarado. Sus mensajes de éxito previos no sustituyen el resultado final del proceso.
+- **Resumen `n/n`.** No comprueba un número esperado de aserciones; en el código adjunto el recuento de 39 se obtiene inspeccionando sus llamadas y bucles.
+
+No encuentro falsos positivos en las aserciones concretas inspeccionadas, bajo las operaciones algebraicas y el contrato de SymPy utilizados. **Sí hay conclusiones más amplias que las aserciones:** G3 necesita la justificación de rama; G4 necesita el argumento analítico para pasar de raíz simple a curvatura y estructura de Jordan.
+
+**7. Alcance y atribución.**
+
+G1, G2 y G3 reparan correctamente las atribuciones principales: el gemelo, la geométrica en los extremos y el coeficiente ya tienen comprobaciones específicas.
+
+Persisten dos problemas de redacción:
+
+- La introducción afirma globalmente que las reparaciones están certificadas por las 39 comprobaciones. Algunas son argumentos escritos, y la propia auditoría reconoce esa diferencia para la reversibilidad del cuadrado.
+- Se llama al borde **«ordinary band extremum»** y se incluye entre lo validado, mientras se deja \(\Omega''\ne0\) como pendiente. La conclusión es verdadera, como demuestra el apartado anterior, pero su justificación debe incorporarse y atribuirse al argumento escrito.
+
+La marca **UNVERIFIED** de la partición de Jordan es prudente: no presenta la afirmación de Grok como certificada. Puede cerrarse incorporando la construcción de cadena anterior. La coincidencia con Astra o Grok no aporta por sí misma prueba adicional.
+
+Las objeciones, por gravedad, son:
+
+1. **Media — §4, apartado interior, y cabecera de G4.** «En \(t=7/16\), no hay raíces en \([0,1]\)» es falso para \(P_t\), que siempre tiene \(u=1\). **Reparación:** escribir «el cociente \(P_t/(u-1)\) no tiene raíces en \([0,1]\); por tanto, no hay puntos de velocidad nula en \(0<k<\pi/2\)». Mantener separado el análisis del extremo.
+
+2. **Media — §4, “ordinary band extremum”, introducción de A2 y lista “Validated”.** La atribución a G4 excede sus aserciones y convive con una curvatura marcada como pendiente. **Reparación:** incorporar
+   \[
+   P_t'(u_*)u'(k_*)=2\sin^2E(k_*)\Omega''(k_*),
+   \]
+   la simplicidad de la banda y la deducción de geométrica uno; atribuir a G4 la factorización y el recuento, y al argumento escrito la curvatura y el bloque de Jordan.
+
+No identifico otras objeciones sustantivas dentro del alcance pedido.
+=== DOCUMENT 4: verify_dispersive_horizon_transfer_amendment3.py ===
+
+"""Exact checks for Amendment 3 of the dispersive-horizon transfer-matrix audit,
+after the Astra review of Amendment 2
+(reports/reviews/2026-11-26-dispersive-horizon-amendment2-astra/).
+
+Imports scripts/verify_dispersive_horizon_transfer_amendment2.py read-only
+(which imports the repairs and the reviewed verifiers read-only); the import
+runs their 61 + 8 + 39 checks first and aborts on any failure. No earlier
+verifier's bytes are changed. Then:
+
+  J1  t = 3/8, (z, lambda) = (1, 1) and (-1, -1): with K = M - lambda I,
+      dim ker K = 2, dim ker K^2 = 3, dim ker K^3 = dim ker K^4 = 4, by exact
+      rank over the number field Q(sqrt 6, sqrt 10). Jordan partition 3 + 1.
+  J2  the horizon threshold polynomial is divisible by (u-1)^2 and not by
+      (u-1)^3.
+  B1  identity 4(1-C^2) g'^2 - (1 - g^2) = (1 - g^2)(4 E'^2 - 1) with
+      E'^2 = (1-C^2) g'^2 / (1 - g^2), i.e. P_t(u(k)) = sin^2 E * v (v + 2),
+      v = 2E' - 1 on the outgoing branch.
+  B2  t = 5/16: P'(u*) = -(3/1024)(1 - u*) sqrt(168025) < 0 at the interior
+      root u* = (5245 - sqrt 168025)/5250, and 0 < u* < 1.
+  B3  t = 5/16: 0 < f(k*) < 1 at the edge (0 < E < pi/2: the two bands are
+      distinct there), from 0 < u* < 1 and g(0) = 0, g(1) = 1, g' > 0 on [0,1]
+      (reviewed T8 / A2 ingredients).
+
+Written steps (not machine-checked) are listed in scripts/README.md.
+Exact SymPy only; fails closed.
+"""
+import importlib.util
+import pathlib
+import time
+
+import sympy as sp
+from sympy import Rational as R, eye
+from sympy.polys.matrices import DomainMatrix
+
+HERE = pathlib.Path(__file__).resolve().parent
+spec = importlib.util.spec_from_file_location(
+    'amendment2', HERE / 'verify_dispersive_horizon_transfer_amendment2.py')
+a2 = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(a2)          # runs 61 + 8 + 39 earlier checks
+rv = a2.rv
+
+checks = []
+T0 = time.perf_counter()
+
+
+def ok(label, cond):
+    if not cond:
+        raise AssertionError(label)
+    checks.append(label)
+    print(f'PASS {label}  [{time.perf_counter() - T0:.1f}s]', flush=True)
+
+
+# ---------------------------------------------------------------- J1
+t38 = R(3, 8)
+p, q = sp.sqrt(t38), sp.sqrt(1 - t38)               # sqrt(6)/4, sqrt(10)/4
+K_field = sp.QQ.algebraic_field(sp.sqrt(6), sp.sqrt(10))
+for z0 in (1, -1):
+    cc, ss = rv.hom_cs(p, q)
+    M = rv.M_report(cc, ss, cc[6], ss[6], z0)
+    Kmat = (M - z0 * eye(12)).applyfunc(sp.radsimp)
+    Kd = DomainMatrix.from_Matrix(Kmat).convert_to(K_field)
+    ranks = []
+    P_ = DomainMatrix.eye(12, K_field)
+    for j in range(1, 5):
+        P_ = P_ * Kd
+        ranks.append(P_.rank())
+    nul = [12 - r for r in ranks]
+    ok(f'J1 t=3/8, (z,lambda)=({z0},{z0}): dim ker K^j, j=1..4, = {nul} (exact rank over '
+       'Q(sqrt6, sqrt10))', nul == [2, 3, 4, 4])
+    ok(f'J1 t=3/8, (z,lambda)=({z0},{z0}): Jordan partition 3 + 1 '
+       '(two blocks; one of size >= 3; generalized eigenspace 4)',
+       nul[0] == 2 and nul[1] - nul[0] == 1 and nul[2] - nul[1] == 1 and nul[3] == nul[2] == 4)
+
+# ---------------------------------------------------------------- J2
+u = a2.u
+C_ = sp.symbols('C_')
+
+
+def edge_poly(tt):
+    AA = tt * (2 * tt - 1)
+    g = 4 * AA * C_**3 + (1 - 4 * AA) * C_
+    gp = 12 * AA * C_**2 + 1 - 4 * AA
+    expr = sp.expand(4 * (1 - C_**2) * gp**2 - (1 - g**2))
+    assert sp.expand(expr - expr.subs(C_, -C_)) == 0
+    return sp.Poly(sp.expand(expr).subs(C_**2, u).subs(C_, sp.sqrt(u)), u)
+
+
+P38 = edge_poly(t38)
+q2, r2 = sp.div(P38, sp.Poly((u - 1)**2, u))
+q3, r3 = sp.div(P38, sp.Poly((u - 1)**3, u))
+ok('J2 t=3/8: (u-1)^2 divides the threshold polynomial and (u-1)^3 does not',
+   r2.is_zero and not r3.is_zero and q2.eval(1) != 0)
+
+# ---------------------------------------------------------------- B1
+Cc, Gs, Gp = sp.symbols('C G Gp')
+Ep2 = (1 - Cc**2) * Gp**2 / (1 - Gs**2)
+ok("B1 4(1-C^2)g'^2 - (1-g^2) = (1-g^2)(4E'^2 - 1), E'^2 = (1-C^2)g'^2/(1-g^2)",
+   sp.simplify(4 * (1 - Cc**2) * Gp**2 - (1 - Gs**2) - (1 - Gs**2) * (4 * Ep2 - 1)) == 0)
+vv = sp.symbols('v')
+ok('B1 4E\'^2 - 1 = v(v+2) with v = 2E\' - 1',
+   sp.expand(4 * ((vv + 1) / 2)**2 - 1 - vv * (vv + 2)) == 0)
+
+# ---------------------------------------------------------------- B2
+t516 = R(5, 16)
+P516 = edge_poly(t516)
+ustar = (5245 - sp.sqrt(168025)) / 5250
+dP = sp.diff(P516.as_expr(), u)
+ok("B2 t=5/16: P_t'(u*) = -(3/1024)(1-u*) sqrt(168025)",
+   sp.simplify(sp.expand(dP.subs(u, ustar) + R(3, 1024) * (1 - ustar) * sp.sqrt(168025))) == 0)
+# u* > 0 iff sqrt(168025) < 5245 iff 168025 < 5245^2 (integers); u* < 1 since sqrt > 0.
+ok('B2 t=5/16: 0 < u* < 1 (168025 < 5245^2), so P_t\'(u*) < 0 and '
+   'u\'(k*) = -sin 2k* < 0 on (0, pi/2)', 168025 < 5245**2)
+
+# ---------------------------------------------------------------- B3
+A516 = t516 * (2 * t516 - 1)
+gC = 4 * A516 * C_**3 + (1 - 4 * A516) * C_
+gpC = sp.diff(gC, C_)
+ok('B3 t=5/16: g(0) = 0, g(1) = 1 and g\' >= g\'(1) = (4t-1)^2 = 1/16 > 0 on [0,1] (A < 0), so '
+   '0 < f(k*) = g(sqrt u*) < 1 for 0 < u* < 1 (0 < E < pi/2, bands distinct)',
+   gC.subs(C_, 0) == 0 and gC.subs(C_, 1) == 1 and A516 < 0
+   and sp.expand(gpC.subs(C_, 1)) == (4 * t516 - 1)**2 == R(1, 16)
+   and sp.expand(gpC - gpC.subs(C_, 1) - 12 * A516 * (C_**2 - 1)) == 0)
+
+print(f'{len(checks)}/{len(checks)} amendment-3 checks PASS '
+      f'(after {len(rv.checks)} reviewed, {len(a2.rp.checks)} repair and '
+      f'{len(a2.checks)} amendment-2 checks)')
+assert len(a2.checks) == 39 and len(a2.rp.checks) == 8 and len(rv.checks) == 61
+
+=== DOCUMENT 5: verify_dispersive_horizon_transfer_amendment2.py ===
+
+"""Exact checks for Amendment 2 of the dispersive-horizon transfer-matrix audit,
+after the Grok review of Amendment 1
+(reports/reviews/2026-11-26-dispersive-horizon-amendment1-grok/).
+
+Imports scripts/verify_dispersive_horizon_transfer_repairs.py read-only, which
+itself imports verify_dispersive_horizon_transfer_matrix.py read-only; the
+import runs their 61 + 8 checks first and aborts on any failure. Neither file's
+bytes are changed. Then:
+
+  G1  t = 3/8, (z, lambda) = (-1, -1): algebraic multiplicity exactly 4,
+      geometric exactly 2 (two Bloch eigenvectors at k = pi, nonzero 10x10
+      minor of M + I).
+  G2  t = 5/16, 7/16: at (1, 1) and (-1, -1), algebraic 2 and geometric 2
+      (semisimple).
+  G3  t = 3/8: E = k/2 + (35/64) k^3 + O(k^5), so Omega_+ = (35/32) k^3 + O(k^5).
+  G4  zero of the outgoing velocity on (0, pi/2): with u = cos^2 k,
+      v_+ = 0 there iff 4(1-u) g'(C)^2 = 1 - g(C)^2 (C = cos k); the polynomial
+      factors as (u-1) * quadratic; t = 5/16: quadratic proportional to
+      2625 w^2 + 5 w - 16 (w = u - 1), one root u in (0, 1), simple;
+      t = 3/8: factor (u-1)^2, no root in (0, 1); t = 7/16: no root in [0, 1].
+
+Exact SymPy only; fails closed. The equivalence of v_+ = 0 with the squared
+equation on (0, pi/2) is a written step (-f' = sin k * g'(C) > 0 and
+sin E > 0 there), not machine-checked.
+"""
+import importlib.util
+import itertools
+import pathlib
+import time
+
+import sympy as sp
+from sympy import Matrix, Rational as R, eye
+
+HERE = pathlib.Path(__file__).resolve().parent
+spec = importlib.util.spec_from_file_location(
+    'repairs', HERE / 'verify_dispersive_horizon_transfer_repairs.py')
+rp = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(rp)          # runs 61 reviewed + 8 repair checks
+rv = rp.rv
+
+checks = []
+T0 = time.perf_counter()
+
+
+def ok(label, cond):
+    if not cond:
+        raise AssertionError(label)
+    checks.append(label)
+    print(f'PASS {label}  [{time.perf_counter() - T0:.1f}s]', flush=True)
+
+
+lam = sp.symbols('lambda')
+
+
+def algebraic_multiplicity(M, l0):
+    cp = sp.Poly(sp.expand((lam * eye(12) - M).det(method='berkowitz')), lam)
+    cp = sp.Poly([sp.radsimp(co) for co in cp.all_coeffs()], lam)
+    m = 0
+    lin = sp.Poly(lam - l0, lam)
+    while all(sp.radsimp(co) == 0 for co in cp.rem(lin).all_coeffs()):
+        cp = cp.quo(lin)
+        m += 1
+    return m, rv.nonzero_alg(cp.eval(l0))
+
+
+def bloch_vectors(p, q, l0):
+    """Bloch eigenvectors of M at k = 0 (l0 = 1) or k = pi (l0 = -1).
+    S(k) = diag(1/l0, l0) = l0 * I for l0 = +-1; Y = (a_j, b_j / l0)."""
+    vecs = []
+    for v in (Matrix([1, 0]), Matrix([0, 1])):
+        qs = [v]
+        for mm in rv.order[:5]:
+            cm, sm = (p, q) if mm == 1 else (p * p - q * q, -2 * p * q)
+            qs.append(l0 * Matrix([[cm, -sm], [sm, cm]]) * qs[-1])
+        vecs.append(Matrix([qj[0] for qj in qs] + [qj[1] / l0 for qj in qs]))
+    return vecs
+
+
+def geometric_two(M, p, q, l0, tag):
+    vecs = bloch_vectors(p, q, l0)
+    for n, Y in enumerate(vecs, 1):
+        ok(f'{tag}: Bloch vector e{n} is an eigenvector (lambda={l0})',
+           all(sp.radsimp(x) == 0 for x in (M * Y - l0 * Y)))
+    B = Matrix.hstack(*vecs)
+    ok(f'{tag}: the two eigenvectors are independent',
+       any(rv.nonzero_alg(B[i, 0] * B[j, 1] - B[j, 0] * B[i, 1])
+           for i in range(12) for j in range(i + 1, 12)))
+    K = M - l0 * eye(12)
+    found = None
+    for rows in itertools.combinations(range(12), 2):
+        for cols in itertools.combinations(range(12), 2):
+            keep_r = [r for r in range(12) if r not in rows]
+            keep_c = [c for c in range(12) if c not in cols]
+            if rv.nonzero_alg(sp.expand(K.extract(keep_r, keep_c).det(method='berkowitz'))):
+                found = (rows, cols)
+                break
+        if found:
+            break
+    ok(f'{tag}: nonzero 10x10 minor of M - lambda (rows {found and found[0]} and '
+       f'cols {found and found[1]} deleted), geometric multiplicity exactly 2',
+       found is not None)
+
+
+def hom(tt, z):
+    p, q = sp.sqrt(tt), sp.sqrt(1 - tt)
+    cc, ss = rv.hom_cs(p, q)
+    return rv.M_report(cc, ss, cc[6], ss[6], z), p, q
+
+
+# ---------------------------------------------------------------- G1
+M, p, q = hom(R(3, 8), -1)
+m, rest = algebraic_multiplicity(M, -1)
+ok('G1 t=3/8, z=-1: lambda=-1 has algebraic multiplicity exactly 4', m == 4 and rest)
+geometric_two(M, p, q, -1, 'G1 t=3/8, z=-1')
+
+# ---------------------------------------------------------------- G2
+for tt in (R(5, 16), R(7, 16)):
+    for z0 in (1, -1):
+        M, p, q = hom(tt, z0)
+        m, rest = algebraic_multiplicity(M, z0)
+        ok(f'G2 t={tt}, z={z0}: lambda={z0} has algebraic multiplicity exactly 2',
+           m == 2 and rest)
+        geometric_two(M, p, q, z0, f'G2 t={tt}, z={z0}')
+
+# ---------------------------------------------------------------- G3
+k, beta = sp.symbols('k beta')
+A38 = R(3, 8) * (2 * R(3, 8) - 1)
+f38 = A38 * sp.cos(3 * k) + (1 - A38) * sp.cos(k)
+ok('G3 t=3/8: f = 1 - k^2/8 - (13/48) k^4 + O(k^6)',
+   sp.expand(sp.series(f38, k, 0, 6).removeO() - (1 - k**2 / 8 - R(13, 48) * k**4)) == 0)
+ser = sp.expand(sp.series(sp.cos(k / 2 + beta * k**3) - f38, k, 0, 6).removeO())
+ok('G3 t=3/8: k^2 term of cos(E) - f vanishes for E = k/2 + beta k^3',
+   sp.expand(ser.coeff(k, 2)) == 0)
+ok('G3 t=3/8: k^4 term fixes beta = 35/64, so Omega_+ = (35/32) k^3 + O(k^5)',
+   sp.solve(ser.coeff(k, 4), beta) == [R(35, 64)])
+
+# ---------------------------------------------------------------- G4
+C, u, w = sp.symbols('C u w')
+
+
+def edge_poly(tt):
+    AA = tt * (2 * tt - 1)
+    g = 4 * AA * C**3 + (1 - 4 * AA) * C
+    gp = 12 * AA * C**2 + 1 - 4 * AA
+    expr = sp.expand(4 * (1 - C**2) * gp**2 - (1 - g**2))
+    ok(f'G4 t={tt}: edge equation is even in C', sp.expand(expr - expr.subs(C, -C)) == 0)
+    return sp.Poly(sp.expand(expr).subs(C**2, u).subs(C, sp.sqrt(u)), u)
+
+
+def roots_in_open_unit(Pu):
+    """Exact count of distinct real roots in (0, 1) by Sturm's theorem."""
+    return sp.Poly(Pu, u).count_roots(0, 1) - (1 if Pu.eval(1) == 0 else 0) \
+        - (1 if Pu.eval(0) == 0 else 0)
+
+
+P516 = edge_poly(R(5, 16))
+Q516, r516 = sp.div(P516, sp.Poly(u - 1, u))
+ok('G4 t=5/16: (u - 1) divides the edge polynomial', r516.is_zero)
+quad_w = sp.Poly(sp.expand(Q516.as_expr().subs(u, w + 1)), w)
+target = sp.Poly(2625 * w**2 + 5 * w - 16, w)
+ratio = sp.cancel(quad_w.as_expr() / target.as_expr())
+ok('G4 t=5/16: quotient is proportional to 2625 w^2 + 5 w - 16 (w = u - 1)',
+   ratio.is_number and ratio != 0)
+ok('G4 t=5/16: discriminant 168025 != 0 (simple roots)',
+   sp.discriminant(target.as_expr(), w) == 168025)
+ok('G4 t=5/16: exactly one root u = cos^2 k in (0, 1), i.e. one k in (0, pi/2)',
+   roots_in_open_unit(Q516) == 1)
+P38 = edge_poly(R(3, 8))
+Q38, r38 = sp.div(P38, sp.Poly((u - 1)**2, u))
+ok('G4 t=3/8: (u - 1)^2 divides the edge polynomial (the k^3 contact at k = 0)',
+   r38.is_zero)
+ok('G4 t=3/8: no root u in (0, 1)', roots_in_open_unit(P38) == 0)
+P716 = edge_poly(R(7, 16))
+Q716, r716 = sp.div(P716, sp.Poly(u - 1, u))
+ok('G4 t=7/16: (u - 1) divides the edge polynomial', r716.is_zero)
+ok('G4 t=7/16: no root u in [0, 1] of the quotient',
+   sp.Poly(Q716, u).count_roots(0, 1) == 0)
+
+print(f'{len(checks)}/{len(checks)} amendment-2 checks PASS '
+      f'(after {len(rv.checks)}/{len(rv.checks)} reviewed and '
+      f'{len(rp.checks)}/{len(rp.checks)} repair checks)')
