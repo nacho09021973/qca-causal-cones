@@ -681,6 +681,50 @@ Nothing about transmission or Jost asymptotics.
 python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
 ```
 
+## Dispersive-horizon heuristic prediction (2026-11-27)
+
+`verify_dispersive_horizon_heuristic_prediction.py` supports
+[`DISPERSIVE_HORIZON_HEURISTIC_PREDICTION_GATE`](../theory/DISPERSIVE_HORIZON_HEURISTIC_PREDICTION_GATE.md)
+(`35bf83f`, `POST_RESULTS_EXPLORATORY`).
+- It was committed before any run; only `py_compile` has been done.
+- Not yet run.
+- It needs `fork`, so it does not run on native Windows.
+
+How it runs:
+- It checks the SHA256 of the turning-branch verifier (`397f72b3…0676`) and
+  imports it read-only.
+- That import re-runs the turning-branch verifier and its whole import
+  chain, which reproduces the six calibration cases. It takes about 37 min.
+- Its `case()` function is then called unchanged for Q1–Q4 and for the
+  control Q4′, in up to 4 forked processes. Every check and verdict is made
+  in the parent.
+
+What it adds:
+- **R0.** The F1 (b)-type discriminant test at each new s, also re-run at
+  s = 1/50 and 1/200 as a cross-check. The y* classification is not used.
+- Channel counts are recorded as a state, not as an abort.
+- A relative-width criterion for T_ret.
+- An exact rational enclosure of X:
+  - ω from the alternating atan series, since `mpmath.iv` has no atan;
+  - π and exp from `mpmath.iv`;
+  - a check against the frozen prediction table.
+- ρ = T_ret/X, the per-point verdicts, B, the truncation control and the
+  line verdict candidate.
+
+Reported only, with no verdict attached: κ_eff, the sign of ln ρ,
+monotonicity in L, T_cont, σ², the column, and ρ at the calibration points.
+
+Does **not** certify (written arguments):
+- that the k < 0 right-mover meets the fold at the new s (the sector
+  argument);
+- the regime between the declared points;
+- anything about the untruncated tanh profile, or any law in (ω, L);
+- the identification of X or α with Sabsovich et al.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_heuristic_prediction.py
+```
+
 ## Dispersive-horizon turning branch (2026-11-27)
 
 `verify_dispersive_horizon_turning_branch.py` supports

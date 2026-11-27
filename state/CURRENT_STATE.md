@@ -177,8 +177,10 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   - Line verdicts: `HEURISTIC_WITHIN_TOLERANCE_AT_DECLARED_POINTS` /
     `HEURISTIC_REJECTED_AT_DECLARED_POINTS` / `HEURISTIC_PARTIAL` /
     `OPEN_AFTER_PREDICTION_TEST`.
-  - Not authorized: writing the verifier, execution, review sending and
-    promotion.
+  - Verifier `scripts/verify_dispersive_horizon_heuristic_prediction.py`
+    was written on user authorization «1 autorizado» and committed before
+    any run; only `py_compile` has been done.
+  - Not authorized: execution, review sending and promotion.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
