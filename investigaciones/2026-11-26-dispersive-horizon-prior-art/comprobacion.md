@@ -125,7 +125,56 @@ Esta lectura no cambia nada del contrato congelado: X y α ya estaban fijados.
   serie en 5–6 cifras.
 - Además: γ(5/16) = 715/256 y γ(7/16) = 105/256.
 
+## Cuarta tanda (2026-11-27): resultados rigurosos para la conjetura del punto de retorno
+
+A petición del usuario («haz la búsqueda bibliográfica de resultados
+rigurosos»), para `theory/DISPERSIVE_HORIZON_TURNING_POINT_CONJECTURE.md`.
+Búsqueda en alphaXiv (`discover_papers`, cuatro consultas) y dos búsquedas web.
+Cada fila se leyó en el original (`answer_pdf_queries`) salvo donde se indica.
+`biblioteca/INDICE.md`: sin coincidencias pertinentes.
+
+| Cita | Verificado en el original | Relación con nuestro problema |
+| --- | --- | --- |
+| Higuchi, «Resonant tunneling effect for quantum walks on directed graphs», arXiv:2504.15584 | **pp. 1–2, 10–12, Thm 1 y Cor. 2.2:** paseo U(ε) en grafo dirigido con colas; ε acopla una parte perturbada **finita**; asintótica rigurosa de Σ(ε, z) cuando ε → 0 mediante resonancias. | Riguroso, pero no hay monedas que varían lentamente, ni punto de retorno, ni horizonte. No aplica. |
+| Tiedra de Aldecoa, «Stationary scattering theory for unitary operators with an application to quantum walks», arXiv:1912.04960 (JFA 2020) | **pp. 20–22, Assumption 5.1 y Thm 5.3:** U = SC de un paso con monedas anisótropas de corto alcance (‖C(x) − C_{ℓ,r}‖ ≤ κ\|x\|^{−1−ε}); los operadores de onda existen, son completos y tienen fórmulas de representación. | Herramienta para el paso 1 (existencia de S), pero solo para U = SC de un paso y L fijo. No da uniformidad en L ni trata nuestro paseo de varios pasos. |
+| Belgiorno, Cacciatori, Trevisan, «Analogous Hawking Radiation in Dispersive Media», Universe 10, 412 (2024), doi 10.3390/universe10110412 (PDF del repositorio de Insubria) | **pp. 1–3:** EDO de cuarto orden tipo Orr–Sommerfeld, continua, con dispersión débil ε; ecuación cerca del punto de retorno w'''' ± (z w'' + λw') = 0; soluciones por integrales de Laplace; fórmulas de conexión «rigurosas» basadas en Nishimoto (Kōdai 1976, 1978) y Langer (1955). **p. 12:** «in a rigorous approach, one should also take into account the dependence on ε … We limit ourselves to the leading order». **pp. 2 y 13:** un modo «espectador» (la solución constante) se desacopla a orden principal mediante matrices de Stokes. | Lo más cercano en estructura: un punto de retorno de orden superior, más un modo extra que se desacopla. Pero es una EDO continua y solo a orden principal en ε, sin cotas de error para perfiles generales. El desacoplo del espectador es el análogo de nuestro problema del cruce entre hojas. |
+| Del Porro, Liberati, Schneider, arXiv:2604.24861 | **pp. 1–2, 10–11, 21–22:** dispersión superlumínica polinómica; cálculo analítico (WKB, aproximaciones de bajo Ω y adiabaticidad); **p. 22:** desprecian explícitamente «backscattering and the coupling to spectator modes». | Analítico, no riguroso. Desprecia justo lo que en nuestro caso puede no ser pequeño. |
+| Arnold, Döpfner, arXiv:1805.10502 | **pp. 1–4, 18:** Schrödinger escalar ε²ψ'' + aψ = 0 con un punto de retorno; cotas de error rigurosas para un esquema híbrido Airy–WKB. | Escalar, continuo y numérico. No aplica. |
+| Geronimo, arXiv:0905.1684 | **pp. 1–4, 10–13, Thms 2.5–2.6:** WKB y puntos de retorno para recurrencias **escalares de tres términos** con coeficientes que varían lentamente; aproximación de Airy con error O(ε). **Ref. [7]:** Costin y Costin, «Rigorous WKB method for finite-order linear recurrence relations with smooth coefficients», SIAM J. Math. Anal. 27 (1996), **no leído**. | Riguroso, pero solo escalar de segundo orden, con dos raíces que colisionan. El nuestro es un sistema 12×12 con colisión múltiple. |
+| Fedotov, Klopp, arXiv:1810.04918 | **pp. 1–6, Thm 1.4:** ψ(z + h) + ψ(z − h) + v(z)ψ(z) = 0, uniforme en un entorno independiente de h de un punto de retorno simple, con error riguroso. **p. 6:** menciona sistemas Y_{k+1} = M(hk)Y_k: Vasil'eva–Yuldashev 1970 (autovalores distintos) y **Tsyganov 1974** (punto de retorno, solo en un entorno pequeño que depende de h), **ninguno leído**. **p. 7:** «the first where one rigorously obtains uniform asymptotics … in an h-independent neighborhood of a turning point». | Riguroso, escalar, punto de retorno simple. Nuestra matriz de transferencia sí encaja en la forma Y_{k+1} = M(hk)Y_k con h = 1/L. |
+
+**Consecuencias para la conjetura** (deducciones de Claude, no de las fuentes):
+
+1. **No ha aparecido ningún resultado riguroso** sobre conversión de modos en
+   un punto de retorno u horizonte para un paseo cuántico de tiempo discreto
+   o un QCA con moneda que varía lentamente. Tampoco para sistemas en
+   diferencias con una colisión múltiple de raíces. Una búsqueda limitada no
+   prueba que no exista.
+2. **Hay herramientas para partes de la prueba:**
+   - **Existencia de S a L fijo** para U = SC de un paso: Richard–Suzuki–Tiedra
+     y Tiedra de Aldecoa. Habría que extenderla al paseo de varios pasos y
+     hacerla uniforme en L.
+   - **Región exterior, con raíces distintas:** WKB riguroso para sistemas
+     Y_{k+1} = M(hk)Y_k (Vasil'eva–Yuldashev; Costin–Costin), no leído.
+   - **Problema interior:** las fórmulas de conexión de Nishimoto y Langer
+     para EDO de tercer y cuarto orden, citadas por Belgiorno et al., no
+     leídas.
+3. **Lo que no cubre ningún trabajo encontrado:**
+   - el empalme riguroso de un sistema discreto 12×12 con un problema
+     interior continuo, con una colisión de cuatro raíces cerca de k = 0 (las
+     tres de la hoja de k bajo más la de la otra hoja);
+   - y, en particular, el desacoplo de la otra hoja.
+
+   Belgiorno et al. obtienen el desacoplo del modo espectador solo a orden
+   principal, en una EDO continua. Del Porro et al. lo desprecian. Es la
+   misma obligación central que señalan nuestros datos de fuga entre hojas.
+
 ## Pendiente de comprobar `[UNVERIFIED]`
+
+- Costin y Costin (SIAM J. Math. Anal. 27, 1996); Vasil'eva–Yuldashev (1970);
+  Tsyganov (1974); Nishimoto (Kōdai Math. Sem. Rep. 1976 y 1978); Langer
+  (Duke 1955); Coutant–Parentani–Finazzi arXiv:1108.1821. Todos citados por
+  otros, ninguno leído.
 
 - arXiv:2609.03272, 2101.07617, 2306.10719, 2504.15584, 2111.15131 y
   2105.10962 (colas homogéneas o estados ligados; poca relevancia).

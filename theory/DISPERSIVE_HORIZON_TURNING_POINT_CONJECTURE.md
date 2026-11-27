@@ -19,6 +19,19 @@ theory/»). Branch `research/dispersive-horizon-channels`.
   - (C4) is restricted to universality in φ, since γ_h is fixed by the walk.
   - Existence of S for large L is made part of the conjecture.
   - The original statement is kept below as superseded.
+- **[A2] Amendment 2 (2026-11-27).**
+  - Step 2 of §5 was wrong for one mode. The other sheet of the dispersion
+    crosses the low-k sheet at (k, ω) = (0, 0), so its low-k left-mover is
+    O(ω) = O(1/L) away in k, not O(1).
+  - Decoupling across that crossing is now listed as the central open
+    obligation (new step 2b).
+  - The observed leak into that mode is recorded in §6 as an explicit risk
+    for the second half of (C3), and through flux conservation for (C1) and
+    (C2).
+  - Source: certified turning-branch columns in
+    `reports/2026-11-27--dispersive-horizon-turning-branch-run-1.txt` and
+    `reports/2026-11-27--dispersive-horizon-heuristic-prediction-run-3.txt`
+    (orientation; no new computation).
 
 ## 1. Why a limit law, and not an identity
 
@@ -212,8 +225,26 @@ No rate of convergence is conjectured.
 2. **Outer region** (|x| ≫ L^{1/3}). An adiabatic or discrete-WKB theorem
    for the 12 × 12 transfer matrix:
    - the low-k-sheet modes are transported with O(1/L)-type errors;
-   - the other sheet, the |k| ≈ 2 channels and the evanescent modes
-     decouple, since they are separated in k by O(1).
+   - the |k| ≈ 2 channels and the evanescent modes decouple, since they
+     are separated in k by O(1).
+   - [A2] The original text also listed "the other sheet" here. That is
+     wrong for its low-k left-mover: see step 2b.
+2b. **[A2] Decoupling across the sheet crossing (central obligation).**
+   - At ω = 0 the two sheets ω = −k ± 2E cross at k = 0.
+   - For ω = μ/L, the other sheet has a left-mover at k ≈ −ω/(8t − 1), at
+     distance O(1/L) from the low-k mode u.
+     - Hand check against the logged boxes: k = −arg λ ≈ −0.0333 at
+       s = 1/40, and ≈ −0.0167 at s = 1/80, with t = 5/16.
+     - The predictions −ω/1.5 are −0.0333 and −0.0167.
+   - The accumulated phase mismatch is Δk·L ~ μ = O(1), so adiabaticity
+     does not give decoupling. It must come from the interband coupling
+     element at the crossing, a Landau–Zener-type two-level problem.
+   - If that element does not vanish, the law needs an extra mixing term,
+     and (C) fails as stated.
+   - De Beule et al. drop the analogous co-propagating mode at first order in
+     V′ (pp. 8–9). Belgiorno et al. (Universe 2024, pp. 2 and 13) show the
+     analogous "spectator" decoupling only at leading order, in a continuum
+     ODE.
 3. **Inner region.** Exact solution of the third-order continuum problem
    (Laplace or Airy-type integral) and its connection coefficients.
    Classical antecedents are likely and have not been checked
@@ -221,7 +252,9 @@ No rate of convergence is conjectured.
 4. **Matching** of the two regions, with error control, in the
    intermediate zone L^{1/3} ≪ |x| ≪ L.
 
-Steps 2 and 4, done rigorously for a discrete-time QCA, are the hard part.
+Steps 2b and 4, done rigorously for a discrete-time QCA, are the hard part.
+[A2] The prior-art search found no rigorous treatment of either
+(`comprobacion.md`, fourth batch).
 Lean formalization is not a realistic first target: it needs a proof on paper
 first. Mathlib support for discrete WKB and turning-point asymptotics is
 `[UNVERIFIED]` and probably absent.
@@ -234,6 +267,8 @@ first. Mathlib support for discrete WKB and turning-point asymptotics is
 | (C2) | σ² = 0.99945 (s = 1/50, L = 16), 0.98719 (s = 1/200, L = 16) | Compatible with σ² → 1 |
 | (C3) | Reflection into the low-k left-mover 0.99681 and 0.86756 at L = 16; \|k\| ≈ 2 channels ~10⁻¹⁶ | Compatible |
 | (C4) | No second profile computed | Untested. This is the cheapest falsification route. |
+| [A2] (C1), run 3 | ρ = 1.0375 (μ ≈ 0.400, L = 8), 1.0306 (μ ≈ 0.400, L = 16); 1.0551 (μ ≈ 0.20, L = 8); 0.8641 (μ ≈ 0.80, L = 16) | At μ ≈ 0.40, compatible with convergence (two L values). The largest deviation is at the highest ω, where the turning point lies outside the linear zone (§4). |
+| [A2] Leak to the other sheet's low-k left-mover (second half of (C3)) | μ ≈ 0.16: 0.0223 (L = 4), 0.0135 (L = 16). μ ≈ 0.40: 0.00875 (L = 8), 0.00592 (L = 16). Also 0.0144 (μ ≈ 0.20, L = 8), 0.00288 (μ ≈ 0.64, L = 16), 0.00172 (μ ≈ 0.80, L = 16). | **Risk.** At fixed μ it decreases only slowly: about L^{−0.36} and L^{−0.57} if read as powers. A positive limit is not excluded. Pairs of points do not decide between the two. |
 
 Caveats on these data:
 - They come from the truncated profile (N = 8L), at fixed s rather than at
