@@ -150,8 +150,14 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   - Orientation only, `[UNVERIFIED]`: the charter heuristic
     1/(1 + e^{4πωL}) matches T_ret within a factor 0.97–1.11 at the four
     finite-L points. This is not claimed as a law.
-  - Astra 6.2 review is pending; sending needs the user's go-ahead. Not
-    promoted.
+  - **Reviewed 2026-11-27** (user «autorizo la revisión de Astra 6.2»):
+    `gpt-6.2-astra` **REPAIR_REQUIRED**, wording only
+    (`reports/2026-11-27--dispersive-horizon-turning-branch-astra-review.md`).
+    - Points 1–6 PASS. Amendment 1 applied, not re-reviewed.
+    - **Line verdict under the frozen charter:
+      `T_RET_DECREASING_AT_COMPUTED_L`.** The charter is closed, with a
+      balance in the report.
+    - Not promoted. NOVELTY = OPEN.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
