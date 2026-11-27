@@ -681,6 +681,42 @@ Nothing about transmission or Jost asymptotics.
 python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
 ```
 
+## Dispersive-horizon turning branch (2026-11-27)
+
+`verify_dispersive_horizon_turning_branch.py` supports
+[`DISPERSIVE_HORIZON_TURNING_BRANCH_GATE`](../theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md)
+(`08e0703`, `POST_RESULTS_EXPLORATORY`). It has not been run yet.
+
+How it runs:
+- It checks the SHA256 of the frequency/finite-L verifier and imports it
+  read-only. That re-runs the whole of that verifier, single-threaded
+  (about 70 min), together with its own imports.
+- It then runs the six (s, profile) cases in up to 4 forked processes,
+  longest first. All checks are made in the parent, and the results do not
+  depend on the number of workers.
+- Helpers and the precision rule are reused unchanged.
+
+What it computes, per case:
+- **R1.** It identifies the turning branch, k ∈ (−π/2, 0), by the sign of
+  the λ box.
+- **R2.** It prints the full turning-branch column of |S|², checks that the
+  column sums to an enclosure of 1, prints T_ret (decided) and T_cont, and
+  checks S^H S ∋ I.
+- **R3.** It checks that T_ret + T_cont overlaps the imported σ², and that
+  at sharp z₁ T_ret overlaps the reviewed |t₂|².
+
+It also prints the line verdict candidate.
+
+Does **not** certify (written arguments):
+- that the k < 0 right-mover is the one that meets the turning point (the
+  reviewer's sector argument);
+- unitarity in general;
+- anything at other s or L, or for the untruncated profile.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_turning_branch.py
+```
+
 ## Dispersive-horizon frequency and finite L (2026-11-27)
 
 `verify_dispersive_horizon_frequency_finite_l.py` supports

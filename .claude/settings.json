@@ -89,7 +89,9 @@
       "Bash(python3 scripts/verify_dispersive_horizon_transmission.py)",
       "Bash(python3 -B scripts/verify_dispersive_horizon_transmission.py)",
       "Bash(python3 scripts/verify_dispersive_horizon_frequency_finite_l.py)",
-      "Bash(python3 -B scripts/verify_dispersive_horizon_frequency_finite_l.py)"
+      "Bash(python3 -B scripts/verify_dispersive_horizon_frequency_finite_l.py)",
+      "Bash(python3 scripts/verify_dispersive_horizon_turning_branch.py)",
+      "Bash(python3 -B scripts/verify_dispersive_horizon_turning_branch.py)"
     ]
   }
 }
