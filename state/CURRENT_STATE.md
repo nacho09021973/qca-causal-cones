@@ -95,8 +95,23 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
     at L = 4, 16 with N = 8L, at s = 1/50 and 1/200.
   - Method: an interval transfer-matrix product with predeclared precision.
   - Abandonment: σ² ≥ 1/2 at every horizon-arc point at L = 16.
-  - Status OPEN. Execution, review sending and promotion each need separate
-    authorization.
+  - Verifier `00f09c9`, committed before its only run. Run 1 (`fdbbe8a`;
+    cloud session, user-authorized): 43/43, exit 0. Report:
+    `reports/2026-11-27--dispersive-horizon-frequency-finite-l.md`.
+  - Author verdicts, PRELIMINARY and unreviewed:
+    - F1 (a): `OPEN_AFTER_DISCRIMINANT_ANALYSIS`; one res_u(q, J) event.
+    - F1 (b): CONNECTED at s = 1/4, 1/2, 3/4.
+    - F2 and F3: all `TRANSMISSION_NONZERO_CERTIFIED`. σ² grows with L:
+      0.9605 → 0.9754 → 0.99945 at s = 1/50, and 0.9592 → 0.9647 →
+      0.9872 at s = 1/200.
+  - Line candidate `LEAKAGE_NOT_SUPPRESSED`, which meets the abandonment
+    condition. **Not adopted.** Author objection: σ² probably measures
+    adiabatic continuity of one interior right-mover into the exterior
+    right-mover, not escape across the horizon.
+  - Verifier defect recorded: the F1 (a) region labels are unjustified when
+    the structure is not simple.
+  - Astra 6.2 review is pending; sending needs the user's go-ahead. Not
+    promoted.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).

@@ -687,7 +687,14 @@ python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
 [`DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE`](../theory/DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE.md)
 (`204f33b`). It checks the SHA256 of the reviewed transmission verifier and
 imports it read-only, so the 61 + 53 + 33 imported checks run first (about
-25 min). It has not been run yet; the runtime of F3 is not known.
+25 min). Run 1 (`fdbbe8a`): 43/43, exit 0, about 70 min in total
+(report `reports/2026-11-27--dispersive-horizon-frequency-finite-l.md`).
+
+**Known defect, file unchanged.** The check "declared points classified
+against y*" prints PASS whatever the F1 (a) structure. The region labels it
+implies are valid only when F1 (a) reports a simple structure. In run 1,
+F1 (a) was `OPEN_AFTER_DISCRIMINANT_ANALYSIS`, so those labels are not
+justified. Use the F1 (b) per-point results instead.
 
 Method:
 - Rational intervals with outward rounding to dyadic grids.
