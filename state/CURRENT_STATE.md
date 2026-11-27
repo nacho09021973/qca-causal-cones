@@ -49,7 +49,16 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   (`reports/2026-11-26--dispersive-horizon-channels-amendment1-astra-review.md`).
   Editorial corrections applied; two minor verifier-predicate limits are
   recorded and not changed. Verdict under the frozen charter:
-  **`CHANNELS_CLASSIFIED`**. One reviewing house (OpenAI). Not promoted.
+  **`CHANNELS_CLASSIFIED`**. One reviewing house (OpenAI).
+- **`CHANNELS_CLASSIFIED` PROMOTED 2026-11-27** (user «promocionar
+  CHANNELS_CLASSIFIED, fusionar con main y quitar el worktree, AUTORIZADA LAS
+  TRES»). Promoted in its frozen scope only
+  (`theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md`, the channels report with
+  Amendment 1): the channel counts, flux form G_x and unit-flux normalization
+  on I and the counts below arg z_c*, for the two asymptotic media of this
+  walk. ESTABLISHED in that scope; reviewed by one house (OpenAI, Astra 6.2),
+  not by a person. Transmission is **not** promoted (Astra REPAIR_REQUIRED,
+  editorial A1 not re-reviewed). NOVELTY = OPEN.
 - **Transmission charter frozen 2026-11-26:**
   `theory/DISPERSIVE_HORIZON_TRANSMISSION_GATE.md`. User decisions: «lo
   segundo, limite brusco y revision por Astra 6.2».
@@ -83,7 +92,7 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
     are pending.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
-- Not reconciled to `main`.
+- Merge into `main` authorized by the user on 2026-11-27 (same message).
 
 
 **A5 crossing-matchgate result promoted — 2026-11-14:** user «promociona
