@@ -34,9 +34,21 @@ repairs are in the section "Amendment 1" below; they are not re-reviewed.
 The reviewer also holds that the frozen charter **requires**
 `LEAKAGE_NOT_SUPPRESSED` for the maximal transmission σ² at both F3 points.
 On this view, withholding it after the conditions are met changes the
-criterion retroactively. That reverses the "not adopted" above, which the
-user had accepted, so it is pending the user's decision. The author agrees
-with the reviewer.
+criterion retroactively. That reverses the "not adopted" above.
+
+**[A2] Line verdict adopted (user decision, 2026-11-27): «mi decisión es SÍ
+a las dos propuestas … adoptamos el veredicto contractual».**
+`LEAKAGE_NOT_SUPPRESSED` is adopted for the maximal transmission σ² at
+s = 1/50 and s = 1/200, truncated profile L = 16, N = 128. It is not adopted
+as a broader physical claim.
+- **Shown at the computed points:** σ², the maximal transmission over
+  unit-flux interior superpositions, is not suppressed.
+- **Not shown:** that a wave incident on the branch that meets the turning
+  point crosses with that probability. In the sharp profile at z₁ that
+  branch transmits ≈ 0.357.
+
+The objection is kept as a limit on the interpretation of σ². It is not a
+reason to withhold the contractual verdict.
 
 ## Main objection: what σ² measures (author, after seeing the results; `[UNVERIFIED]`)
 
@@ -234,8 +246,27 @@ the probable reason: σ² is not that mixing.
 - Suppression condition (σ²(L = 16) below both the sharp value and
   σ²(L = 4), at both points): **False**.
 - Abandonment condition (σ²(L = 16) ≥ 1/2 at both points): **True**.
-- Candidate printed: `LEAKAGE_NOT_SUPPRESSED`. **Not adopted** until the
-  main objection is reviewed (see above).
+- Candidate printed: `LEAKAGE_NOT_SUPPRESSED`. [A2] **Adopted** under the
+  frozen charter (user decision, 2026-11-27), for σ² at the two F3 points.
+  Wording: «The abandonment threshold is met for the maximal transmission
+  at both F3 points. The transmission of the incident branch that meets
+  the turning point stays open at finite L.»
+
+## Closure balance (charter "Budget") [A2]
+
+| Task | Outcome |
+| --- | --- |
+| F1 (a) | `OPEN_AFTER_DISCRIMINANT_ANALYSIS` (run output). Written deduction after review: the first-quadrant real critical locus is (0, arg z_c*]. The literal bivariate deliverable was not computed. |
+| F1 (b) | CONNECTED at s = 1/4, 1/2, 3/4; one real fold on the arc at each point. |
+| F2 | 6 × `TRANSMISSION_NONZERO_CERTIFIED`. T ≈ 0.992–0.997 on I; σ² ≈ 0.959–0.964 on the arc. |
+| F3 | 4 × `TRANSMISSION_NONZERO_CERTIFIED`. σ² grows with L at both points. |
+| Line | `LEAKAGE_NOT_SUPPRESSED` for σ², under the charter's abandonment threshold. Under the charter this closes the "escape" question negatively **for σ²**. It does not close it for the turning branch, which the charter did not measure. |
+| Review | Astra 6.2 REPAIR_REQUIRED; Amendments 1 and 2 are editorial and not re-reviewed. |
+| Promotion | None. NOVELTY = OPEN. |
+
+The charter's budget is spent. The turning-branch question goes to a new
+charter, marked `POST_RESULTS_EXPLORATORY` and drafted separately; it does
+not follow automatically.
 
 ## What is certified, what is written, what is interpretation
 
@@ -265,8 +296,9 @@ the probable reason: σ² is not that mixing.
 
 ## Not claimed
 
-- That the line is abandoned. The candidate verdict rests on σ², and that
-  quantity is under objection.
+- [A2] That the horizon has no barrier effect. The adopted verdict
+  concerns σ² only. The transmission of the turning branch at finite L is
+  open.
 - Any functional law in L or ω from these points.
 - Anything about the untruncated tanh profile, or at other z or L.
 - A Hawking, thermal or physical-horizon statement.
@@ -274,9 +306,8 @@ the probable reason: σ² is not that mixing.
 
 ## Next steps (each needs user authorization)
 
-1. Independent review by Astra 6.2 (fixed by the charter, Q5). The brief
-   should ask explicitly about the main objection, the F1 (a) method
-   choice, and the classification defect.
-2. Depending on the review: an amendment or a new charter for branch
-   tracking at fixed ω and for the amplitude on the reflected branch (the
-   turning-point mixing), marked as post-results.
+1. ~~Independent review by Astra 6.2~~: done (REPAIR_REQUIRED, Amendments 1
+   and 2).
+2. [A2] A new charter for the turning-branch transmission
+   T_ret = |S_{ext R, int R(k<0)}|², marked `POST_RESULTS_EXPLORATORY`.
+   Drafting is authorized; freezing, execution and promotion are not.

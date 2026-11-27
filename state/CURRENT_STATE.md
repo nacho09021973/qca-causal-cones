@@ -120,10 +120,15 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
     - The F1 (a) resultant event is explained at u = 1, A(3/8). This is a
       written deduction; the run output stays OPEN.
     - Editorial Amendment 1 is applied and not re-reviewed.
-  - **Pending user decision:** the reviewer holds that the charter requires
-    adopting `LEAKAGE_NOT_SUPPRESSED`, for the maximal transmission σ² at
-    s = 1/50 and 1/200, L = 16. The author agrees. The branch transmission
-    stays open. Not promoted.
+  - **Line verdict adopted 2026-11-27** (user «mi decisión es SÍ a las dos
+    propuestas»): `LEAKAGE_NOT_SUPPRESSED` for the maximal transmission σ²
+    at s = 1/50 and 1/200, truncated profile L = 16, N = 128. It is not
+    adopted as a broader physical claim. The turning-branch transmission is
+    open; in the sharp profile at z₁ it is ≈ 0.357. The charter is closed,
+    with a balance in the report [A2]. Not promoted. NOVELTY = OPEN.
+  - Authorized: drafting a `POST_RESULTS_EXPLORATORY` charter for
+    T_ret = |S_{ext R, int R(k<0)}|². Freezing, execution and promotion are
+    not authorized.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
