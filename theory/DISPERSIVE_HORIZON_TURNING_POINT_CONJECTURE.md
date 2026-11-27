@@ -10,6 +10,15 @@ theory/»). Branch `research/dispersive-horizon-channels`.
   and the reading of De Beule et al.
 - The formula is prior art (De Beule et al., Sabsovich et al.).
 - NOVELTY = OPEN.
+- **[A1] Amendment 1 (2026-11-27).** The statement in §3 is repaired after
+  Astra 6.2 (web): `reports/2026-11-27--turning-point-conjecture-astra-web-review.md`.
+  - φ′(0) > 0 is required, since tanh(s³)/16 met the old hypotheses with
+    κ = 0.
+  - (C1)–(C3) are written as S-matrix entries, and (C3) excepts both
+    channels e and u, removing an internal contradiction with (C1).
+  - (C4) is restricted to universality in φ, since γ_h is fixed by the walk.
+  - Existence of S for large L is made part of the conjecture.
+  - The original statement is kept below as superseded.
 
 ## 1. Why a limit law, and not an identity
 
@@ -61,10 +70,63 @@ theory/»). Branch `research/dispersive-horizon-channels`.
 
 ## 3. Statement
 
+### 3.1 [A1] Repaired statement (current)
+
+**Admissible profiles.**
+- φ ∈ C^∞(ℝ) is strictly increasing, with φ(0) = 0 and **φ′(0) > 0**.
+- φ tends to ±1/16 with exponentially small error at the respective ends.
+- κ = 8φ′(0) > 0.
+- The full profile on ℤ is t_L(x) = 3/8 + φ(x/L), with no truncation.
+- Uniformity in μ is required for each fixed φ.
+
+**Scattering matrix.** At quasi-energy ω, S_L(ω) is taken between the
+asymptotic media t₋ = 5/16 and t₊ = 7/16. "Defined" means two things:
+- every incidence admits a physical solution with no growing evanescent
+  component at either end;
+- its outgoing propagating amplitudes are uniquely determined, possibly
+  modulo a localized state.
+
+**Channels**, in unit-flux bases; S_{b,a} has outgoing b and incoming a:
+- r: the incoming interior channel with positive velocity and
+  −π/2 < k_r < 0 (the turning branch);
+- c: the same, with 0 < k_c < π/2 (the continuing branch);
+- e: the outgoing exterior channel of the low-k sheet that reaches k = 0 as
+  ω ↓ 0;
+- u: the outgoing interior channel of that same sheet that reaches k = 0.
+
+**Conjecture (C), [A1].** For every nonempty compact K ⊂ (0, ∞) there is
+L₀(φ, K) such that, for all L ≥ L₀ and μ ∈ K:
+- at ω = μ/L the channels above and S_L(ω) are defined;
+- with X_φ(μ) = 1/(1 + e^{2πμ/κ}), the following limits hold as L → ∞,
+  uniformly on K:
+
+| | Conjectured limit |
+| --- | --- |
+| (C1) | \|S_{e,r}\|² → X_φ(μ) |
+| (C2) | \|S_{e,c}\|² → 1 − X_φ(μ) |
+| (C3) | \|S_{u,r}\|² → 1 − X_φ(μ), and Σ_{b ∉ {e, u}} \|S_{b,r}\|² → 0 (sum over outgoing propagating channels) |
+| (C4) | Two admissible profiles with the same φ′(0) have the same limits (C1)–(C3) |
+
+Remarks:
+- If flux unitarity is established (step 1 of §5), the second half of (C3)
+  follows from (C1) and the first half.
+- **Scope of (C4).** All admissible profiles cross t_h = 3/8 under the same
+  rule, so γ_h = γ(3/8) = 35/32 is fixed. (C4) tests universality in φ only.
+  - Whether γ_h cancels from the leading-order connection coefficient is a
+    question for the inner problem (§5, step 3).
+  - A law comparing walks with different γ_h would require declaring the
+    family compared.
+- For φ = tanh/16 (κ = 1/2), (C1) reads |S_{e,r}|² → 1/(1 + e^{4πωL}) at
+  fixed ωL: the heuristic of the turning-branch charter, as a limit.
+- No rate of convergence is conjectured.
+
+### 3.2 Original statement (superseded by [A1]; kept for the record)
+
 **Admissible profiles.** t_L(x) = 3/8 + φ(x/L), where φ: ℝ → ℝ:
 - is smooth and strictly increasing, with φ(0) = 0;
 - has φ(x) → ±1/16 exponentially fast as x → ±∞;
 - defines κ = 8φ′(0), the horizon slope of v(t_L(x)) in units of 1/L.
+  [A1: defect — κ = 0 was admitted, for example by tanh(s³)/16.]
 
 The profile of the turning-branch charter, φ(y) = tanh(y)/16, has κ = 1/2. It
 is truncated at |x| ≤ N = 8L in the computations, which is not covered by
@@ -87,8 +149,11 @@ compact subsets of (0, ∞):
 - **(C2)** T_cont(μ/L, L) → 1 − X(μ), so σ² = T_ret + T_cont → 1.
 - **(C3)** R_u(μ/L, L) → 1 − X(μ). Every other entry of the turning-branch
   column of |S|² tends to 0, including the channels with |k| ≈ 2.
+  [A1: defect — "every other entry" includes T_ret, which contradicts (C1).]
 - **(C4) Universality.** The limits depend on φ only through φ′(0), and they
   do not depend on γ(t_h).
+  [A1: defect — γ_h is fixed by the walk, so the second clause is
+  ill-posed.]
 
 For φ = tanh/16, (C1) reads T_ret → 1/(1 + e^{4πωL}) at fixed ωL: the
 heuristic of the turning-branch charter, as a limit.
@@ -128,8 +193,9 @@ No rate of convergence is conjectured.
     asymptotic medium.
 - **Where e^{2πμ/κ} would come from.** The connection coefficients of the
   inner third-order problem across y = 0, as in De Beule's hypergeometric
-  solution. Whether γ_h drops out of the leading order, as (C4) asserts, is
-  part of what must be shown.
+  solution. [A1] Whether γ_h drops out of the leading-order connection
+  coefficient is a question for this inner problem; it is no longer part of
+  (C4).
 
 ## 5. Possible proof route (sketch; no guarantee)
 
@@ -137,6 +203,12 @@ No rate of convergence is conjectured.
    distinct asymptotic media. Richard–Suzuki–Tiedra (arXiv:1801.02779,
    Thm 3.3) cover one-step U = SC. The extension to U = L₋W² is
    `[UNVERIFIED]`.
+   - [A1] Under the repaired statement, this is the first open obligation.
+     It requires S_L(μ/L) and the channel labels r, c, e, u to exist for
+     the full profile, for all L ≥ L₀ and μ ∈ K.
+   - The channels charter excluded existence and uniqueness of S for the
+     tanh profile from every verdict
+     (`theory/DISPERSIVE_HORIZON_CHANNELS_GATE.md:194`).
 2. **Outer region** (|x| ≫ L^{1/3}). An adiabatic or discrete-WKB theorem
    for the 12 × 12 transfer matrix:
    - the low-k-sheet modes are transported with O(1/L)-type errors;
