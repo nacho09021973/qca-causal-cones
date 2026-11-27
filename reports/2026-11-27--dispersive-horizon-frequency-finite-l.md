@@ -26,6 +26,18 @@ marked as post-results.
 
 NOVELTY = OPEN.
 
+**[A1] Review and Amendment 1 (2026-11-27).** Astra 6.2 returned
+REPAIR_REQUIRED (`reports/2026-11-27--dispersive-horizon-frequency-finite-l-astra-review.md`).
+The ten point verdicts of F2/F3 stand (points 3–5 PASS). The editorial
+repairs are in the section "Amendment 1" below; they are not re-reviewed.
+
+The reviewer also holds that the frozen charter **requires**
+`LEAKAGE_NOT_SUPPRESSED` for the maximal transmission σ² at both F3 points.
+On this view, withholding it after the conditions are met changes the
+criterion retroactively. That reverses the "not adopted" above, which the
+user had accepted, so it is pending the user's decision. The author agrees
+with the reviewer.
+
 ## Main objection: what σ² measures (author, after seeing the results; `[UNVERIFIED]`)
 
 - **σ² grows with L towards 1.**
@@ -65,6 +77,70 @@ NOVELTY = OPEN.
   - the root tracking in t at fixed ω.
 
   Each needs computation, hence an amendment or a new charter.
+
+## Amendment 1 (after Astra review) [A1]
+
+1. **Objection, refined by the sector argument** (reviewer; derivation by
+   hand from logged boxes, not machine-checked).
+   - At the three arc frequencies, h(0) > 0, h(π) > 0 and h(±π/2) ≠ 0. So
+     no real root changes k-quadrant as t varies over [5/16, 7/16].
+   - The logged boxes give:
+     - in 0 < k < π/2: one right-mover inside and one outside;
+     - in −π/2 < k < 0: one right-mover and two left-movers inside, one
+       left-mover outside.
+   - So the turning point (a fold) lies in k < 0, and **the k > 0
+     right-mover continues** into the exterior right-mover.
+   - The geometric part of the objection therefore holds.
+   - What stays `[UNVERIFIED]`: that this continuity *causes* the growth of
+     σ², that σ² → 1, and any identification with Sabsovich's mixing.
+   - The formula k ≈ ω/(8t − 3) is local and fails near t = 3/8, where
+     ω = (35/32)k³ + O(k⁵) on that sheet.
+2. **Per-branch data already available (sharp profile, z₁).**
+   - In the reviewed transmission verifier, the incident columns follow the
+     printing order of the right-movers. So |t₁|² ≈ 0.603 is the k ≈ +0.596
+     continuing branch, and **|t₂|² ≈ 0.357 is the k ≈ −0.476 branch that
+     meets the turning point**.
+   - Unitarity does not force σ² ≥ 1/2: the turning branch alone carries
+     0.357 at the sharp step.
+   - For F3 only the sum σ² was logged. The new verifier may enumerate the
+     branches in a different order, so a per-branch comparison must
+     identify channels by λ box or k sector.
+   - The horizon-relevant observable for a follow-up is
+     |S_{ext R, int R(k<0)}|²: unit-flux incidence on the turning branch
+     alone. Any such computation is post-results and needs a new charter or
+     an amendment.
+3. **Which observable the heuristic was compared with.** The charter
+   heuristic is contradicted only if its mixing probability is identified
+   with σ². It was not a prediction for σ².
+4. **F1 (a): the resultant event is explained.**
+   - With h₀ = 1 + 8A:
+     - q(1, A) = ∂_u thr(1, A) = h₀(1 − 4h₀);
+     - y_A(1, A) = 0;
+     - y_u(1, A) = 1 − 4h₀.
+   - So q and J vanish together at u = 1, A_d = −3/32 = A(3/8). That is the
+     logged root of res_u(q, J) (reviewer; checked by the author by hand).
+   - Written deduction, from the logged counts: the critical-value root
+     exits through u = 1 at A_d, and y is monotone along the open branch.
+     So the first-quadrant real critical locus is (0, arg z_c*], i.e.
+     0 < s ≤ s* with s*² = (1 − √y*)/(1 + √y*).
+   - The run's output stays `OPEN_AFTER_DISCRIMINANT_ANALYSIS`.
+   - Upgrading F1 to `REGIME_BOUNDARY_CERTIFIED` would need either the
+     bivariate discriminant curve the charter names (it also sees complex
+     double roots) or a post-results amendment accepting the real critical
+     locus as the deliverable.
+   - The collisions are part of the locus: f = 0 forces C = 0, giving
+     z = ±i, and the nodes u = 1 give z = ±1.
+5. **What "43/43" means.** Several checks (`event structure computed`,
+   `summary written`) record that a step ran, not a conclusion. The F1 (b)
+   check asserts only the three CONNECTED points; the arc counts are
+   printed. The individual decision lines are what count.
+6. **Counting and wording.**
+   - The charter's "65 and 257 transfer matrices" counts profile sites.
+     The product has 2N + 2 transfers (66 and 258), as the recurrence
+     requires and as the code does. The precision rule was applied with its
+     frozen 2N + 1.
+   - The tanh enclosure relies on interval floating point (`mpmath.iv.exp`)
+     inside a certified quantity, as F3 allows.
 
 ## F1. Regime boundary
 

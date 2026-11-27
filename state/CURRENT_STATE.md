@@ -110,8 +110,20 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
     right-mover, not escape across the horizon.
   - Verifier defect recorded: the F1 (a) region labels are unjustified when
     the structure is not simple.
-  - Astra 6.2 review is pending; sending needs the user's go-ahead. Not
-    promoted.
+  - **Reviewed 2026-11-27** (user «autorizo la revision de AStra 6.2»):
+    `gpt-6.2-astra` **REPAIR_REQUIRED**
+    (`reports/2026-11-27--dispersive-horizon-frequency-finite-l-astra-review.md`).
+    - The ten point verdicts stand.
+    - Sector argument: the k > 0 right-mover continues and the turning
+      point is at k < 0. In the sharp profile at z₁ the turning branch alone
+      transmits |t₂|² ≈ 0.357.
+    - The F1 (a) resultant event is explained at u = 1, A(3/8). This is a
+      written deduction; the run output stays OPEN.
+    - Editorial Amendment 1 is applied and not re-reviewed.
+  - **Pending user decision:** the reviewer holds that the charter requires
+    adopting `LEAKAGE_NOT_SUPPRESSED`, for the maximal transmission σ² at
+    s = 1/50 and 1/200, L = 16. The author agrees. The branch transmission
+    stays open. Not promoted.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
