@@ -86,10 +86,17 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
 
     Applied as editorial Amendment 1 [A1], not re-reviewed. Verifier
     unchanged. One reviewing house (OpenAI). Not promoted.
-  - Draft (not frozen) of the follow-up charter:
-    `reports/2026-11-27--dispersive-horizon-frequency-finite-l-charter-draft.md`, covering the
-    regime boundary, a frequency scan, and finite L. User decisions Q1–Q5
-    are pending.
+- **Frequency and finite-L charter frozen 2026-11-27:**
+  `theory/DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE.md` (moved from the
+  draft `f5a68d3`). User decisions «Q1 b, Q2 y Q3 como propones, Q4 a, Q5
+  Astra 6.2».
+  - Scope: F1, the exact regime boundary; F2, a sharp-profile scan at
+    s = 1/4, 1/2, 3/4 and 1/200, 1/50, 1/30; F3, the truncated tanh profile
+    at L = 4, 16 with N = 8L, at s = 1/50 and 1/200.
+  - Method: an interval transfer-matrix product with predeclared precision.
+  - Abandonment: σ² ≥ 1/2 at every horizon-arc point at L = 16.
+  - Status OPEN. Execution, review sending and promotion each need separate
+    authorization.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
