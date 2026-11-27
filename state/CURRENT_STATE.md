@@ -129,6 +129,8 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   - Authorized: drafting a `POST_RESULTS_EXPLORATORY` charter for
     T_ret = |S_{ext R, int R(k<0)}|². Freezing, execution and promotion are
     not authorized.
+    Draft: `reports/2026-11-27--dispersive-horizon-turning-branch-charter-draft.md`
+    (not frozen). User answers to Q1–Q4 are pending.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
