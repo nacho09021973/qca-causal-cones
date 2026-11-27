@@ -1,6 +1,6 @@
 # CURRENT_STATE
 
-**Date:** 2026-11-26
+**Date:** 2026-11-27
 
 **Dispersive-horizon channels gate chartered — 2026-11-26 (branch-local:
 `research/dispersive-horizon-channels`).** User decision «Autorizo
@@ -65,7 +65,22 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
       CONNECTED, so this is adiabatic continuity, not horizon crossing.
     - z₁: `TRANSMISSION_NONZERO_CERTIFIED`, σ² ∈ [0.9605413447…]. The two
       interior right-moving doublers feed the exterior low-k right-mover.
-  - PRELIMINARY: Astra 6.2 review pending, not promoted.
+  - **Reviewed 2026-11-27** (user «Yes, send»): `gpt-6.2-astra`
+    **REPAIR_REQUIRED**
+    (`reports/2026-11-27--dispersive-horizon-transmission-astra-review.md`).
+    Points 1–5 are PASS, so both verdicts and T0 = CONNECTED stand. The
+    repairs concern the z₁ interpretation and the documentation:
+    - σ² is the *maximal* transmission from a unit-flux interior
+      superposition; incidence ∝ (t₂, −t₁)ᵀ transmits zero;
+    - "doublers" is an interpretation;
+    - a sheet argument places the interior low-k member at k ≈ −0.083.
+
+    Applied as editorial Amendment 1 [A1], not re-reviewed. Verifier
+    unchanged. One reviewing house (OpenAI). Not promoted.
+  - Draft (not frozen, uncommitted) of the follow-up charter:
+    `theory/DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE.md`, covering the
+    regime boundary, a frequency scan, and finite L. User decisions Q1–Q5
+    are pending.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Not reconciled to `main`.

@@ -706,6 +706,14 @@ Certified:
 - **T2.** T at z₀ ∈ [0.995719336841…].
 - **T4.** σ² at z₁ ∈ [0.960541344787…].
 
+Reviewed by Astra 6.2 on 2026-11-27: points 1–5 PASS, global REPAIR_REQUIRED
+for the report's interpretation only
+(`reports/2026-11-27--dispersive-horizon-transmission-astra-review.md`). The
+file is unchanged. Its header does not say that the closure rows 0 and 11 are
+checked by the program only at the 9 sample points. The general proof is
+written (report, Method [A1]). Read the T2/T4 decision lines of a run: the
+program can also log an `OPEN` outcome as a passing check.
+
 Does **not** certify (written arguments in the report):
 - the eigenvector property in general, which rests on the reviewed bijection;
 - unitarity in general, which follows from flux conservation;
