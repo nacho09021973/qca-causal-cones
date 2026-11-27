@@ -86,10 +86,78 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
 
     Applied as editorial Amendment 1 [A1], not re-reviewed. Verifier
     unchanged. One reviewing house (OpenAI). Not promoted.
-  - Draft (not frozen) of the follow-up charter:
-    `reports/2026-11-27--dispersive-horizon-frequency-finite-l-charter-draft.md`, covering the
-    regime boundary, a frequency scan, and finite L. User decisions Q1–Q5
-    are pending.
+- **Frequency and finite-L charter frozen 2026-11-27:**
+  `theory/DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE.md` (moved from the
+  draft `f5a68d3`). User decisions «Q1 b, Q2 y Q3 como propones, Q4 a, Q5
+  Astra 6.2».
+  - Scope: F1, the exact regime boundary; F2, a sharp-profile scan at
+    s = 1/4, 1/2, 3/4 and 1/200, 1/50, 1/30; F3, the truncated tanh profile
+    at L = 4, 16 with N = 8L, at s = 1/50 and 1/200.
+  - Method: an interval transfer-matrix product with predeclared precision.
+  - Abandonment: σ² ≥ 1/2 at every horizon-arc point at L = 16.
+  - Verifier `00f09c9`, committed before its only run. Run 1 (`fdbbe8a`;
+    cloud session, user-authorized): 43/43, exit 0. Report:
+    `reports/2026-11-27--dispersive-horizon-frequency-finite-l.md`.
+  - Author verdicts, PRELIMINARY and unreviewed:
+    - F1 (a): `OPEN_AFTER_DISCRIMINANT_ANALYSIS`; one res_u(q, J) event.
+    - F1 (b): CONNECTED at s = 1/4, 1/2, 3/4.
+    - F2 and F3: all `TRANSMISSION_NONZERO_CERTIFIED`. σ² grows with L:
+      0.9605 → 0.9754 → 0.99945 at s = 1/50, and 0.9592 → 0.9647 →
+      0.9872 at s = 1/200.
+  - Line candidate `LEAKAGE_NOT_SUPPRESSED`, which meets the abandonment
+    condition. **Not adopted.** Author objection: σ² probably measures
+    adiabatic continuity of one interior right-mover into the exterior
+    right-mover, not escape across the horizon.
+  - Verifier defect recorded: the F1 (a) region labels are unjustified when
+    the structure is not simple.
+  - **Reviewed 2026-11-27** (user «autorizo la revision de AStra 6.2»):
+    `gpt-6.2-astra` **REPAIR_REQUIRED**
+    (`reports/2026-11-27--dispersive-horizon-frequency-finite-l-astra-review.md`).
+    - The ten point verdicts stand.
+    - Sector argument: the k > 0 right-mover continues and the turning
+      point is at k < 0. In the sharp profile at z₁ the turning branch alone
+      transmits |t₂|² ≈ 0.357.
+    - The F1 (a) resultant event is explained at u = 1, A(3/8). This is a
+      written deduction; the run output stays OPEN.
+    - Editorial Amendment 1 is applied and not re-reviewed.
+  - **Line verdict adopted 2026-11-27** (user «mi decisión es SÍ a las dos
+    propuestas»): `LEAKAGE_NOT_SUPPRESSED` for the maximal transmission σ²
+    at s = 1/50 and 1/200, truncated profile L = 16, N = 128. It is not
+    adopted as a broader physical claim. The turning-branch transmission is
+    open; in the sharp profile at z₁ it is ≈ 0.357. The charter is closed,
+    with a balance in the report [A2]. Not promoted. NOVELTY = OPEN.
+  - Authorized: drafting a `POST_RESULTS_EXPLORATORY` charter for
+    T_ret = |S_{ext R, int R(k<0)}|². Freezing, execution and promotion are
+    not authorized.
+- **Turning-branch charter frozen 2026-11-27** (`POST_RESULTS_EXPLORATORY`):
+  `theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md`, moved from the draft
+  `8778db5`. User decision «Q1-Q4 como recomiendas, congela el contrato».
+  - T_ret at s = 1/50 and 1/200: sharp, L = 4 and L = 16.
+  - The branch is identified by the k sector.
+  - Line verdicts: `T_RET_DECREASING_AT_COMPUTED_L` /
+    `T_RET_NOT_DECREASING` (the abandonment condition) / `MIXED`.
+  - Review: Astra 6.2.
+  - Verifier `b0bb720`, committed before its only run, with 4 forked
+    workers. Run 1 (`b22fb05`, local WSL2, user «lanzalo aqui»): 38/38,
+    exit 0. Report: `reports/2026-11-27--dispersive-horizon-turning-branch.md`.
+  - Author verdicts, PRELIMINARY: all six cases
+    `TRANSMISSION_NONZERO_CERTIFIED`; line candidate
+    **`T_RET_DECREASING_AT_COMPUTED_L`**. T_ret:
+    - s = 1/50: 0.357 → 0.131 → 3.1·10⁻⁴;
+    - s = 1/200: 0.450 → 0.374 → 0.119.
+
+    Meanwhile T_cont → 1.
+  - Orientation only, `[UNVERIFIED]`: the charter heuristic
+    1/(1 + e^{4πωL}) matches T_ret within a factor 0.97–1.11 at the four
+    finite-L points. This is not claimed as a law.
+  - **Reviewed 2026-11-27** (user «autorizo la revisión de Astra 6.2»):
+    `gpt-6.2-astra` **REPAIR_REQUIRED**, wording only
+    (`reports/2026-11-27--dispersive-horizon-turning-branch-astra-review.md`).
+    - Points 1–6 PASS. Amendment 1 applied, not re-reviewed.
+    - **Line verdict under the frozen charter:
+      `T_RET_DECREASING_AT_COMPUTED_L`.** The charter is closed, with a
+      balance in the report.
+    - Not promoted. NOVELTY = OPEN.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).

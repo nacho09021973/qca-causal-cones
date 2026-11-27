@@ -681,6 +681,97 @@ Nothing about transmission or Jost asymptotics.
 python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
 ```
 
+## Dispersive-horizon turning branch (2026-11-27)
+
+`verify_dispersive_horizon_turning_branch.py` supports
+[`DISPERSIVE_HORIZON_TURNING_BRANCH_GATE`](../theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md)
+(`08e0703`, `POST_RESULTS_EXPLORATORY`). Run 1 (`b22fb05`): 38/38, exit 0,
+about 37 min on 4 cores in WSL2. It needs `fork`, so it does not run on
+native Windows.
+
+`compare_turning_branch_heuristic.py` is orientation only, not a
+certificate. It reads the T_ret enclosures from run 1 and evaluates the
+charter heuristic 1/(1 + e^{4πωL}) with mpmath. Its output is
+`reports/2026-11-27--dispersive-horizon-turning-branch-heuristic.txt`. It
+prints the log's SHA256 but does not compare it with a fixed value.
+
+How it runs:
+- It checks the SHA256 of the frequency/finite-L verifier and imports it
+  read-only. That re-runs the whole of that verifier, single-threaded
+  (about 70 min), together with its own imports.
+- It then runs the six (s, profile) cases in up to 4 forked processes,
+  longest first. All checks are made in the parent, and the results do not
+  depend on the number of workers.
+- Helpers and the precision rule are reused unchanged.
+
+What it computes, per case:
+- **R1.** It identifies the turning branch, k ∈ (−π/2, 0), by the sign of
+  the λ box.
+- **R2.** It prints the full turning-branch column of |S|², checks that the
+  column sums to an enclosure of 1, prints T_ret (decided) and T_cont, and
+  checks S^H S ∋ I.
+- **R3.** It checks that T_ret + T_cont overlaps the imported σ², and that
+  at sharp z₁ T_ret overlaps the reviewed |t₂|².
+
+It also prints the line verdict candidate.
+
+Does **not** certify (written arguments):
+- that the k < 0 right-mover is the one that meets the turning point (the
+  reviewer's sector argument);
+- unitarity in general;
+- anything at other s or L, or for the untruncated profile.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_turning_branch.py
+```
+
+## Dispersive-horizon frequency and finite L (2026-11-27)
+
+`verify_dispersive_horizon_frequency_finite_l.py` supports
+[`DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE`](../theory/DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE.md)
+(`204f33b`). It checks the SHA256 of the reviewed transmission verifier and
+imports it read-only, so the 61 + 53 + 33 imported checks run first (about
+25 min). Run 1 (`fdbbe8a`): 43/43, exit 0, about 70 min in total
+(report `reports/2026-11-27--dispersive-horizon-frequency-finite-l.md`).
+
+**Known defect, file unchanged.** The check "declared points classified
+against y*" prints PASS whatever the F1 (a) structure. The region labels it
+implies are valid only when F1 (a) reports a simple structure. In run 1,
+F1 (a) was `OPEN_AFTER_DISCRIMINANT_ANALYSIS`, so those labels are not
+justified. Use the F1 (b) per-point results instead.
+
+Method:
+- Rational intervals with outward rounding to dyadic grids.
+- mpmath `iv` is used only for exp in the tanh enclosure.
+- Floating point and plain mpmath supply guesses and preconditioners only.
+- Krawczyk certifies the roots; ||I − RA|| < 1/2 with a residual bound
+  certifies the solves.
+- The precision is the predeclared rule of the charter (F3).
+
+What it computes:
+- **F1 (a).** The event polynomials of the critical-value branch over
+  A ∈ [A(5/16), A(7/16)]. The verdict is `REGIME_BOUNDARY_CERTIFIED` or
+  `OPEN_AFTER_DISCRIMINANT_ANALYSIS`.
+- **F1 (b).** The T0-type discriminant test at the six declared points.
+- **F2.** T or σ² for the sharp profile at s = 1/4, 1/2, 3/4, 1/200, 1/50
+  and 1/30. It is cross-checked against the reviewed enclosures at z₀ and z₁.
+- **F3.** σ² for the truncated tanh profile at L = 4 (N = 32) and L = 16
+  (N = 128), at s = 1/50 and 1/200.
+- Per-point verdicts, and the line verdict candidate.
+
+Does **not** certify (written arguments, to be stated in the report):
+- the F1 (a) step from "no events" to "the critical set in the first
+  quadrant is (0, arg z_c*]": continuity of the root branch, exit through
+  u = 1, and monotonicity of y;
+- that the critical-value parametrization covers all real double roots
+  (the collisions ±1, ±i come from the reviewed C3);
+- unitarity in general (it follows from flux conservation);
+- anything about the untruncated tanh profile, or at other z or L.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_frequency_finite_l.py
+```
+
 ## Dispersive-horizon transmission (2026-11-26)
 
 `verify_dispersive_horizon_transmission.py` supports
