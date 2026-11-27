@@ -1,0 +1,8 @@
+# Output of scripts/compare_turning_branch_heuristic.py, commit 71488b0, 2026-11-27T10:47:28Z
+log 2026-11-27--dispersive-horizon-turning-branch-run-1.txt sha256 797cdda126fce0c5134d4b93bc5890e1830a8b80d2f3e699911db753e3452c1e
+     s   L    heuristic X  T_ret (log lower bound)  T_ret / X
+  1/50   4     0.11812038                0.1312793     1.1114
+  1/50  16  0.00032175283            0.00031248888    0.97121
+ 1/200   4     0.37691796               0.37397341    0.99219
+ 1/200  16     0.11809421               0.11898602     1.0076
+# exit code 0

@@ -685,7 +685,15 @@ python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
 
 `verify_dispersive_horizon_turning_branch.py` supports
 [`DISPERSIVE_HORIZON_TURNING_BRANCH_GATE`](../theory/DISPERSIVE_HORIZON_TURNING_BRANCH_GATE.md)
-(`08e0703`, `POST_RESULTS_EXPLORATORY`). It has not been run yet.
+(`08e0703`, `POST_RESULTS_EXPLORATORY`). Run 1 (`b22fb05`): 38/38, exit 0,
+about 37 min on 4 cores in WSL2. It needs `fork`, so it does not run on
+native Windows.
+
+`compare_turning_branch_heuristic.py` is orientation only, not a
+certificate. It reads the T_ret enclosures from run 1 and evaluates the
+charter heuristic 1/(1 + e^{4πωL}) with mpmath. Its output is
+`reports/2026-11-27--dispersive-horizon-turning-branch-heuristic.txt`. It
+prints the log's SHA256 but does not compare it with a fixed value.
 
 How it runs:
 - It checks the SHA256 of the frequency/finite-L verifier and imports it

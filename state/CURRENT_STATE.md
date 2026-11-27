@@ -136,8 +136,22 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
   - The branch is identified by the k sector.
   - Line verdicts: `T_RET_DECREASING_AT_COMPUTED_L` /
     `T_RET_NOT_DECREASING` (the abandonment condition) / `MIXED`.
-  - Review: Astra 6.2. Status OPEN. Execution, review sending and promotion
-    each need separate authorization.
+  - Review: Astra 6.2.
+  - Verifier `b0bb720`, committed before its only run, with 4 forked
+    workers. Run 1 (`b22fb05`, local WSL2, user «lanzalo aqui»): 38/38,
+    exit 0. Report: `reports/2026-11-27--dispersive-horizon-turning-branch.md`.
+  - Author verdicts, PRELIMINARY: all six cases
+    `TRANSMISSION_NONZERO_CERTIFIED`; line candidate
+    **`T_RET_DECREASING_AT_COMPUTED_L`**. T_ret:
+    - s = 1/50: 0.357 → 0.131 → 3.1·10⁻⁴;
+    - s = 1/200: 0.450 → 0.374 → 0.119.
+
+    Meanwhile T_cont → 1.
+  - Orientation only, `[UNVERIFIED]`: the charter heuristic
+    1/(1 + e^{4πωL}) matches T_ret within a factor 0.97–1.11 at the four
+    finite-L points. This is not claimed as a law.
+  - Astra 6.2 review is pending; sending needs the user's go-ahead. Not
+    promoted.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
 - TRANSMISSION = OPEN. NOVELTY = OPEN. Nothing here changes any other front.
 - Merge into `main` authorized by the user on 2026-11-27 (same message).
