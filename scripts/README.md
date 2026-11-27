@@ -681,6 +681,46 @@ Nothing about transmission or Jost asymptotics.
 python3 -B scripts/verify_dispersive_horizon_channels_amendment1.py
 ```
 
+## Dispersive-horizon frequency and finite L (2026-11-27)
+
+`verify_dispersive_horizon_frequency_finite_l.py` supports
+[`DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE`](../theory/DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE.md)
+(`204f33b`). It checks the SHA256 of the reviewed transmission verifier and
+imports it read-only, so the 61 + 53 + 33 imported checks run first (about
+25 min). It has not been run yet; the runtime of F3 is not known.
+
+Method:
+- Rational intervals with outward rounding to dyadic grids.
+- mpmath `iv` is used only for exp in the tanh enclosure.
+- Floating point and plain mpmath supply guesses and preconditioners only.
+- Krawczyk certifies the roots; ||I − RA|| < 1/2 with a residual bound
+  certifies the solves.
+- The precision is the predeclared rule of the charter (F3).
+
+What it computes:
+- **F1 (a).** The event polynomials of the critical-value branch over
+  A ∈ [A(5/16), A(7/16)]. The verdict is `REGIME_BOUNDARY_CERTIFIED` or
+  `OPEN_AFTER_DISCRIMINANT_ANALYSIS`.
+- **F1 (b).** The T0-type discriminant test at the six declared points.
+- **F2.** T or σ² for the sharp profile at s = 1/4, 1/2, 3/4, 1/200, 1/50
+  and 1/30. It is cross-checked against the reviewed enclosures at z₀ and z₁.
+- **F3.** σ² for the truncated tanh profile at L = 4 (N = 32) and L = 16
+  (N = 128), at s = 1/50 and 1/200.
+- Per-point verdicts, and the line verdict candidate.
+
+Does **not** certify (written arguments, to be stated in the report):
+- the F1 (a) step from "no events" to "the critical set in the first
+  quadrant is (0, arg z_c*]": continuity of the root branch, exit through
+  u = 1, and monotonicity of y;
+- that the critical-value parametrization covers all real double roots
+  (the collisions ±1, ±i come from the reviewed C3);
+- unitarity in general (it follows from flux conservation);
+- anything about the untruncated tanh profile, or at other z or L.
+
+```sh
+python3 -B scripts/verify_dispersive_horizon_frequency_finite_l.py
+```
+
 ## Dispersive-horizon transmission (2026-11-26)
 
 `verify_dispersive_horizon_transmission.py` supports
