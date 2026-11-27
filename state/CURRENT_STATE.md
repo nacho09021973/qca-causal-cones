@@ -86,8 +86,8 @@ tanh profile of `reports/2026-11-26--dispersive-horizon-three-step-transfer.md`
 
     Applied as editorial Amendment 1 [A1], not re-reviewed. Verifier
     unchanged. One reviewing house (OpenAI). Not promoted.
-  - Draft (not frozen, uncommitted) of the follow-up charter:
-    `theory/DISPERSIVE_HORIZON_FREQUENCY_FINITE_L_GATE.md`, covering the
+  - Draft (not frozen) of the follow-up charter:
+    `reports/2026-11-27--dispersive-horizon-frequency-finite-l-charter-draft.md`, covering the
     regime boundary, a frequency scan, and finite L. User decisions Q1–Q5
     are pending.
   - Prior-art checks: `investigaciones/2026-11-26-dispersive-horizon-prior-art/comprobacion.md`.
