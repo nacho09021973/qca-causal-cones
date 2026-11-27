@@ -73,6 +73,7 @@ import importlib.util
 import multiprocessing
 import os
 import pathlib
+import sys
 import time
 from fractions import Fraction as Fr
 
@@ -88,6 +89,10 @@ assert h_tb == SHA_TB, 'imported turning-branch verifier bytes changed'
 
 spec = importlib.util.spec_from_file_location('turnbr', HERE / 'verify_dispersive_horizon_turning_branch.py')
 tb = importlib.util.module_from_spec(spec)
+# Register before executing: the imported verifier runs its own multiprocessing
+# Pool at import time, and pickling its module-level case() by reference needs
+# sys.modules['turnbr'] (run 1 failed with PicklingError without this line).
+sys.modules['turnbr'] = tb
 spec.loader.exec_module(tb)          # full turning-branch run (and its imports)
 fr, tr, ch, rv = tb.fr, tb.tr, tb.ch, tb.rv
 RI = tb.RI
